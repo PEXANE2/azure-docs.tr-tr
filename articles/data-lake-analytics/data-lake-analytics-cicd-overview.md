@@ -2,20 +2,20 @@
 title: Azure Data Lake Analytics için CI/CD işlem hattı ayarlama
 description: Azure Data Lake Analytics için sürekli tümleştirmeyi ve sürekli dağıtımı ayarlamayı öğrenin.
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+author: liudan66
+ms.author: liud
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: cd696539cda5b24d801da692822b13de143249dd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121529"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130146"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için CI/CD işlem hattı ayarlama  
 
@@ -472,7 +472,7 @@ Azure Pipelines bir veritabanı dağıtım görevi ayarlamak için aşağıdaki 
 |---------|-----------|-------------|--------|
 |Hesap|Hesap adına göre dağıtılacak Azure Data Lake Analytics hesabını belirtir.|null|true|
 |ResourceGroup|Azure Data Lake Analytics hesabının Azure Kaynak grubu adı.|null|true|
-|kaynak grubundaki|Azure Data Lake Analytics hesabının Azure abonelik KIMLIĞI.|null|true|
+|SubscriptionId|Azure Data Lake Analytics hesabının Azure abonelik KIMLIĞI.|null|true|
 |Kiracı|Kiracı adı Azure Active Directory (Azure AD) etki alanı adıdır. Azure portal abonelik yönetimi sayfasında bulun.|null|true|
 |AzureSDKPath|Azure SDK 'da bağımlı derlemelerin aranacağı yol.|null|true|
 |Etkileşimli|Kimlik doğrulaması için etkileşimli mod kullanılıp kullanılmayacağını belirtir.|yanlış|yanlış|

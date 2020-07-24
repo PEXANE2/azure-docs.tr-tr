@@ -3,18 +3,16 @@ title: Bilişsel hizmetler ve Machine Learning
 titleSuffix: Azure Cognitive Services
 description: Azure Bilişsel Hizmetler’in, makine öğrenmesine yönelik diğer Azure teklifleriyle birlikte nasıl çalıştığını öğrenin.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: diberry
-ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856730"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132849"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -25,8 +23,8 @@ Bilişsel [Hizmetler](welcome.md) , her biri farklı, genelleştirilmiş tahmin 
 |Hizmet kategorisi|Amaç|
 |--|--|
 |[Karar](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneriler sunan uygulamalar derleyin.|
-|[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Önceden oluşturulmuş betiklerle uygulamalarınızın doğal dil işlemesine, duyguları değerlendirmesine ve kullanıcıların ne istediğini tanımayı öğrenmesine imkan sağlayın.|
-|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.|
+|[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Önceden oluşturulmuş betiklerle uygulamalarınıza doğal dil işleme özelliği kazandırabilir, yaklaşım analizi gerçekleştirebilir ve kullanıcılarınızın isteklerini anlamayı öğrenebilirsiniz.|
+|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'lerini ekleyerek tek bir API çağrısıyla milyarlarca web sayfasını, görüntüyü, videoyu ve haberi tarayabilirsiniz.|
 |[Konuşma](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.|
 |[Görsel](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.|
 ||||
@@ -40,7 +38,7 @@ Bilişsel hizmetler 'i şu durumlarda kullanın:
 
 * Algoritmayı seçmeniz ve çok özel verilerde eğitmeniz gerekir.
 
-## <a name="what-is-machine-learning"></a>Machine learning nedir?
+## <a name="what-is-machine-learning"></a>Makine öğrenmesi nedir?
 
 Makine öğrenimi, belirli bir ihtiyacı çözümlemek için verileri ve algoritmayı birlikte getiren bir kavramdır. Veriler ve algoritma eğitilirken, çıktı farklı verilerle tekrar kullanabileceğiniz bir modeldir. Eğitilen model yeni verileri temel alan öngörüler sağlar. 
 
@@ -102,7 +100,7 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |[Mürekkep Tanıma](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Kişiselleştirme](./personalizer/what-is-personalizer.md)|sayı|sayı|x|
-|[Soru-Cevap Oluşturma](./QnAMaker/Overview/overview.md)||x||
+|[Soru-Cevap Oluşturucu](./QnAMaker/Overview/overview.md)||x||
 |[Konuşmacı tanıyıcı](./speaker-recognition/home.md)||x||
 |[Konuşma metni okuma (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Konuşmayı metne dönüştürme (STT)](speech-service/speech-to-text.md)|x|x||

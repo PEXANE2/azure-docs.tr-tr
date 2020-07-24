@@ -2,19 +2,17 @@
 title: U-SQL veritabanını dışarı aktarma-Visual Studio için Azure Data Lake Araçları
 description: Visual Studio için Azure Data Lake Araçları kullanarak U-SQL veritabanını dışarı aktarma ve yerel bir hesaba otomatik olarak içeri aktarma hakkında bilgi edinin.
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: 364682f6bcf2edeecc7af2da6c91e4bfd1de98a4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 05e55d1608323b8e746a1c82ccb915a2db58ce97
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117296"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132101"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL veritabanını dışarı aktarma
 
@@ -51,12 +49,12 @@ Bu adımda, **nesne ver liste** kutusunda seçili nesneleri doğrulayabilirsiniz
 
 Dışa aktarma hedefi için diğer ayarları da yapılandırabilirsiniz. Yapılandırma açıklamaları aşağıdaki tabloda listelenmiştir:
 
-|Yapılandırma|Description|
+|Yapılandırma|Açıklama|
 |-------------|-----------|
 |Hedef adı|Bu ad, dışarıya aktarılmış veritabanı kaynaklarını nereye kaydetmek istediğinizi belirtir. Derlemeler, ek dosyalar ve örnek veriler örnektir. Yerel veri kök klasörünüz altında bu ada sahip bir klasör oluşturulur.|
 |Proje dizini|Bu yol, aktarılmış U-SQL betiğini nereye kaydetmek istediğinizi tanımlar. Tüm veritabanı nesnesi tanımları bu konuma kaydedilir.|
 |Yalnızca şema|Bu seçeneği belirlerseniz, yalnızca veritabanı tanımları ve kaynakları (derlemeler ve ek dosyalar gibi) verilir.|
-|Şema ve veri|Bu seçeneği belirlerseniz, veritabanı tanımları, kaynaklar ve veriler verilir. Tabloların ilk N satırı aktarılmalıdır.|
+|Şema ve Veri|Bu seçeneği belirlerseniz, veritabanı tanımları, kaynaklar ve veriler verilir. Tabloların ilk N satırı aktarılmalıdır.|
 |Yerel veritabanına otomatik olarak aktar|Bu seçeneği belirlerseniz dışarı aktarma işlemi tamamlandığında dışarı aktarılan veritabanı yerel veritabanınıza otomatik olarak aktarılır.|
 
 ![Veritabanı dışarı aktarma Sihirbazı-nesne listesini ve diğer konfigürasyonları dışarı aktarma](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)

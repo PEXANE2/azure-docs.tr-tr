@@ -1,16 +1,16 @@
 ---
-title: Microsoft ticari Market Analytics 'teki kullanım panosu
+title: Microsoft ticari Market Analytics, Azure Marketi ve Microsoft AppSource kullanım panosu
 description: Tüm VM 'ler için kullanım ve ölçümlenen faturalandırma ölçümlerinin nasıl erişebileceğini öğrenin. Ticari Market altında Iş Ortağı Merkezi ' ndeki kullanım panosuna gidin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2020
+ms.openlocfilehash: a03ef316b409fdeff687f0ee7bbbf6316857c54b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120679"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131755"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft ticari Market Analytics 'teki kullanım panosu
 
@@ -30,14 +30,13 @@ VM kullanımı sekmesinde, aşağıdaki öğelerin grafik gösterimleri vardır:
 - [Kullanım Özeti](#usage-summary)
 - [Coğrafya tarafından kullanım](#usage-by-geography)
 - [Tekliflere göre kullanım](#usage-by-offers)
-- [Tekliflere ve SKU 'Lara göre kullanım eğilimi](#usage-trend-by-offers-and-skus)
+- [Tekliflere ve planlara göre kullanım eğilimi](#usage-trend-by-offers-and-plans)
 - [Teklif türüne göre kullanım](#usage-by-offer-type)
 - [VM boyutuna göre kullanım](#usage-by-vm-size)
 - [Satış kanalına göre kullanım](#usage-by-sales-channel)
 - [Ayrıntılı kullanım verileri](#detailed-usage-data)
 
-> [!NOTE]
-> Analiz raporları Bulut İş Ortağı Portalı (CPP) ve Iş Ortağı Merkezi 'nde farklı şekilde görüntülenir. CPP ' deki **satıcı öngörüleri** , hem kullanım tabanlı tekliflere hem de kullanım tabanlı olmayan tekliflere yönelik verileri görüntüleyen bir Siparişler ve kullanım sekmesi içerir. Iş Ortağı Merkezi 'nde, kullanım ölçümleri ayrı bir sayfada görüntülenir.
+Iş Ortağı Merkezi 'nde kullanım olayı oluşturma ve raporlama arasındaki en uzun gecikme süresi 48 saattir.
 
 ### <a name="usage-summary"></a>Kullanım özeti
 
@@ -52,7 +51,7 @@ Kullanım Özeti tablosu, satın aldıkları tüm teklifler için müşterinin k
 
 ### <a name="usage-by-geography"></a>Coğrafya tarafından kullanım
 
-Coğrafya ısı haritasını **tarafından normalleştirilmiş kullanımı** , müşteri ülkesi/bölgesine göre eşlenmiş kullanım saatlerini görüntüler. Ülke/bölge renk çeşitlemesi normalleştirilmiş kullanım yoğunluğu temsil eder. Haritadaki **giriş** düğmesine basarak özgün görünüme dönün.
+Coğrafya ısı haritası **tarafından normalleştirilmiş kullanım** , müşteri ülkesine/bölgesine göre eşlenmiş kullanım saatlerini görüntüler. Ülke/bölge renk çeşitlemesi normalleştirilmiş kullanım yoğunluğu temsil eder. Haritadaki **giriş** düğmesine basarak özgün görünüme dönün.
 
 ### <a name="usage-by-offers"></a>Tekliflere göre kullanım
 
@@ -60,9 +59,9 @@ Coğrafya ısı haritasını **tarafından normalleştirilmiş kullanımı** , m
 - Çubuk grafik, seçilen tarih aralığı için aylık bir ay büyüme eğilimi gösterir. Month sütunları, ilgili ay için en yüksek kullanım saatlerine sahip tekliflerden kullanım saatlerini temsil eder. Çizgi grafik, ikincil Y ekseni üzerinde çizilen büyüme yüzdesi eğilimini gösterir.
 - Sağ üst kısımdaki kaydırıcıyı kullanarak x ekseni üzerinde sola kaydırın ve/veya belirli veri noktalarına odaklayın.
 
-### <a name="usage-trend-by-offers-and-skus"></a>Tekliflere ve SKU 'Lara göre kullanım eğilimi
+### <a name="usage-trend-by-offers-and-plans"></a>Tekliflere ve planlara göre kullanım eğilimi
 
-Bu grafik, bir teklifin seçili SKU 'Larının normalleştirilmiş kullanımının eğilimini görüntüler. Teklif teklifi panosu, en yüksek kullanım için kullanım saatlerine göre sıralanan ilk 50 teklifi görüntüler. SKU öncü kartı, en yüksek kullanım 50 SKU 'Larını seçili teklif için görüntüler.
+Bu grafik, bir teklifin seçili planları (eskiden SKU olarak adlandırılır) için normalleştirilmiş kullanımın eğilimini görüntüler. Teklif teklifi panosu, en yüksek kullanım için kullanım saatlerine göre sıralanan ilk 50 teklifi görüntüler. Plan öncü tablosu, seçili teklif için en yüksek kullanım olan 50 planı görüntüler.
 
 ### <a name="usage-by-offer-type"></a>Teklif türüne göre kullanım
 
@@ -72,7 +71,7 @@ Bu grafik, bir teklifin seçili SKU 'Larının normalleştirilmiş kullanımın�
 
 ### <a name="usage-by-vm-size"></a>VM boyutuna göre kullanım
 
-Bu grafik, tüm tekliflerinizin/SKU 'larınızın seçili VM boyutları (en fazla 5) için kullanım eğilimini temsil eder. Sütun grafiği, seçilen VM boyutlarının kullanım saatleriyle yığılır.
+Bu grafik, tüm tekliflerinizin/planlarınızın seçili VM boyutları (en fazla beş) için kullanım eğilimi gösterir. Sütun grafiği, seçilen VM boyutlarının kullanım saatleriyle yığılır.
 
 Puan tablosu en yüksek kullanım ve kullanım saatlerine göre sıralanan ilk 50 VM boyutunu görüntüler.
 
@@ -90,7 +89,7 @@ Puan tablosu en yüksek kullanım ve kullanım saatlerine göre sıralanan ilk 5
 - Kılavuzdaki her bir sütun sıralanabilir.
 - Kayıt sayısı 1000 'den küçükse, veriler bir CSV dosyasına ayıklanabilir.
 - Kayıt sayısı 1000 ' den fazla ise, dışarı aktarma verileri, sonraki 30 gün boyunca kullanılabilecek bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
-- Filtreler, yalnızca ilgilendiğiniz verileri göstermek için **ayrıntılı kullanım verilerine** uygulanabilir. Veriler ülke/bölge, satış kanalı, Market lisans türü, kullanım türü, teklif adı, teklif türü, ücretsiz denemeler, Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adı ile filtrelenebilir.
+- Yalnızca ilgilendiğiniz verileri göstermek için **ayrıntılı kullanım verilerine** filtre uygulayın. Verileri ülkeye/bölgeye, Satış kanalına, Market lisans türüne, kullanım türüne, teklif adına, teklif türüne, ücretsiz deneme, Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adına göre filtreleyin.
 
 > [!NOTE]
 > Sayfadaki grafikleri "normalleştirilmiş görünüm" veya "ham görünüm" olarak görüntülemek için sayfa filtresindeki **Kullanım türünü** seçin. Bu grafiklerin varsayılan görünümü "normalleştirilmiş görünüm" dir.
@@ -107,7 +106,7 @@ Puan tablosu en yüksek kullanım ve kullanım saatlerine göre sıralanan ilk 5
 **Ölçümlenen faturalandırma kullanımı** sekmesi, kullanım bilgilerinin ölçüm boyutu başına ölçülmüş olduğu teklif türleri için kullanım bilgilerini sunar. SaaS teklif türü fazla kullanımı Şu anda sunulmuştur. Sekme, SaaS ölçülen faturalama kullanımı için fazla kullanım eğilimlerinin grafiksel sunumlarını sunar:
 
 - **Ölçüm boyutuna göre fazla kullanım eğilimi**: bir teklifin seçili ölçüm boyutu için aylık fazla kullanım eğilimi gösterir. X ekseni ayı temsil eder ve Y ekseni kullanım miktarını temsil eder. Özel ölçerin ölçü birimi Y ekseni üzerinde de görüntülenir.
-- **SKU 'ya göre fazla kullanım eğilimi**: SKU 'lara göre seçilen ölçüm boyutunun kullanım miktarının eğilimini temsil eder. Görüntülenecek SKU 'Lar, seçili teklif için en yüksek kullanım miktarına sahip ilk 5 SKU 'yu temsil eder.
+- **Plana göre fazla kullanım eğilimi**: seçili ölçüm boyutunun kullanım miktarının planlara göre eğilimini temsil eder. Görüntülenecek planlar, seçilen teklif için en yüksek kullanım miktarına sahip olan ilk beş planı temsil eder.
 - **Önde gelen 50 müşterilere göre fazla kullanım eğilimi**: en yüksek kullanım saatlerine sahip en iyi 50 teklifleri ***öncü bir panoda*** görüntülenir ve özel ölçerin en yüksek kullanımıyla derecelendirilir. Seçili ölçüm boyutunun kullanım eğilimini görüntülemek için öncü panoda bir müşteri seçin.
 - **Popüler müşterilere göre fazla kullanım eğilimi**: genel kullanım yüzdesi ' ne katkıda bulunan en iyi müşteri yüzdebirlik 'leri sunar. Üst müşteri yüzdebirlik 'i X ekseni boyunca ve müşterinin kullanım miktarına göre belirlenir. Y ekseni kullanım miktarını görüntüler. Çizgi grafik boyunca noktaların üzerine gelerek ayrıntıları gösterebilirsiniz.
 

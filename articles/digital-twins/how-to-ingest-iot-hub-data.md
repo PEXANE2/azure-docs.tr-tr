@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725860"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131574"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure dijital TWINS 'e alma IoT Hub telemetrisi
 
@@ -37,11 +38,11 @@ Bu senaryo aşağıdaki diyagramda özetlenmiştir:
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="IoT Hub cihaz, Azure Digital TWINS 'te ikizlerini üzerinde bir sıcaklık özelliğini güncelleştiren bir Azure işlevine IoT Hub, Event Grid veya sistem konuları aracılığıyla sıcaklık telemetri gönderir." border="false":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneğe devam etmeden önce, aşağıdaki önkoşulları gerçekleştirmeniz gerekir.
 1. IoT Hub 'ı oluşturun. Yönergeler için [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md) konusunun *IoT Hub oluşturma* bölümüne bakın.
-2. IoT Hub olayları işlemek için en az bir Azure işlevi oluşturun. Bkz. nasıl yapılır: Azure dijital TWINS 'e bağlanabilecek ve Azure dijital TWINS API işlevlerini çağırasağlayan temel bir Azure işlevi oluşturmak üzere [verileri işlemek için bir Azure Işlevi ayarlama](how-to-create-azure-function.md) . Bu işlevin geri kalanı bu işlevi oluşturur.
+2. IoT Hub olayları işlemek için en az bir Azure işlevi oluşturun. Bkz. nasıl yapılır: Azure dijital TWINS 'e bağlanabilecek ve Azure dijital TWINS API işlevlerini çağırasağlayan temel bir Azure işlevi oluşturmak üzere [*verileri işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md) . Bu işlevin geri kalanı bu işlevi oluşturur.
 3. Hub verileri için bir olay hedefi ayarlayın. [Azure portal](https://portal.azure.com/)IoT Hub örneğinize gidin. *Olaylar*' ın altında, Azure işleviniz için bir abonelik oluşturun. 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure portal: olay aboneliği ekleme":::
@@ -54,7 +55,7 @@ Bu örneğe devam etmeden önce, aşağıdaki önkoşulları gerçekleştirmeniz
 
 ## <a name="create-an-azure-function-in-visual-studio"></a>Visual Studio 'da bir Azure işlevi oluşturma
 
-Bu bölüm, [nasıl yapılır: verileri işlemek için bir Azure Işlevi ayarlama](how-to-create-azure-function.md)Ile aynı Visual Studio başlangıç adımlarını ve Azure işlevi iskelet 'i kullanır. Çatı, kimlik doğrulamasını işler ve Azure dijital TWINS API 'Leri yanıt olarak çağırabilmeniz için bir hizmet istemcisi oluşturur. 
+Bu bölüm, [*nasıl yapılır: verileri işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md)Ile aynı Visual Studio başlangıç adımlarını ve Azure işlevi iskelet 'i kullanır. Çatı, kimlik doğrulamasını işler ve Azure dijital TWINS API 'Leri yanıt olarak çağırabilmeniz için bir hizmet istemcisi oluşturur. 
 
 İskelet işlevinin kalp olması şu şekilde olur:
 
@@ -267,9 +268,9 @@ Artık IoT Hub gelen senaryo verilerini okumak ve yorumlamak için donatılmış
 
 ## <a name="debug-azure-function-apps-locally"></a>Azure Function uygulamalarında yerel olarak hata ayıklama
 
-Azure işlevleri Event Grid tetikleyicisiyle yerel olarak hata ayıklaması mümkündür. Bunun hakkında daha fazla bilgi için bkz. [Event Grid tetikleyiciden yerel olarak hata ayıklama](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Azure işlevleri Event Grid tetikleyicisiyle yerel olarak hata ayıklaması mümkündür. Bunun hakkında daha fazla bilgi için bkz. [*Event Grid tetikleyiciden yerel olarak hata ayıklama*](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure dijital TWINS ile veri giriş ve çıkış hakkında bilgi edinin:
-* [Kavramlar: diğer hizmetlerle tümleştirme](concepts-integration.md)
+* [*Kavramlar: diğer hizmetlerle tümleştirme*](concepts-integration.md)

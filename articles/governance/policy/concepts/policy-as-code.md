@@ -1,14 +1,14 @@
 ---
 title: İlkeyi Kod iş akışları olarak tasarklama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
-ms.date: 05/20/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970952"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131506"
 ---
 # <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
 
@@ -20,6 +20,24 @@ Bulut yönetimi ile yolculukta ilerleyerek, Azure portal her bir ilke tanımın�
 Kod olarak ilke, bu fikirlerin birleşimidir. Temelde, ilke tanımlarınızı kaynak denetiminde tutun, her değişiklik yapıldığında, test edin ve bu değişikliği doğrulayın. Bununla birlikte, kod veya DevOps ile altyapıyla ilke katılımı olması gerekmez.
 
 Doğrulama adımı aynı zamanda diğer sürekli tümleştirme veya sürekli dağıtım iş akışlarının bir bileşeni olmalıdır. Örnek olarak bir uygulama ortamının veya sanal altyapının dağıtımı sayılabilir. Azure Ilke doğrulamasını derleme ve dağıtım sürecinin erken bir bileşeni yaparak, uygulama ve operasyon ekipleri, değişikliklerin uyumsuz olup olmadığı ve üretimde dağıtmaya çalıştıkları durumlarda bulur.
+
+## <a name="definitions-and-foundational-information"></a>Tanımlar ve temel bilgiler
+
+Ilke ayrıntılarını kod iş akışı olarak almadan önce aşağıdaki tanımları ve örnekleri gözden geçirin:
+
+- [İlke tanımı](./definition-structure.md)
+- [Girişim tanımı](./initiative-definition-structure.md)
+
+Dosya adları, ilke ya da girişim tanımının bölümlerine hizalanır:
+- `policy(set).json`-Tüm tanım
+- `policy(set).parameters.json`- `properties.parameters` Tanımın bölümü
+- `policy.rules.json`- `properties.policyRule` Tanımın bölümü
+- `policyset.definitions.json`- `properties.policyDefinitions` Tanımın bölümü
+
+Bu dosya biçimlerine örnek olarak [Azure Policy GitHub](https://github.com/Azure/azure-policy/)deposunda ulaşılabilir:
+
+- İlke tanımı: [kaynaklara etiket ekleme](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- Girişim tanımı: [faturalandırma etiketleri](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>İş akışına genel bakış
 

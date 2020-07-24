@@ -3,20 +3,18 @@ title: "Hızlı başlangıç: Bilgi Bankası 'ndan yanıt almak için URL aracı
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, kıvrımlı veya Postman gibi bir URL test aracı kullanarak bilgi tabanınızdan yanıt alma işlemi adım adım gösterilmektedir.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 1f19337aea8b39bbc8c7dc11fba683bee3c2955a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 07/16/2020
+ms.openlocfilehash: 6d03870a24e25327b43c14e57715cdaea23e700d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203988"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132915"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'ndan bir yanıt alın
 
@@ -38,3 +36,7 @@ ms.locfileid: "82203988"
 
 > [!div class="nextstepaction"]
 > [Toplu iş dosyasıyla test bilgi tabanı](batch-testing.md)
+
+Meta veriler hakkında daha fazla bilgi edinin:
+* [Yazma-meta verileri QnA çiftine ekleyin](../How-To/edit-knowledge-base.md#add-metadata)
+* [Sorgu tahmini-meta verilere göre filtre yanıtları](../How-To/metadata-generateanswer-usage.md#use-metadata-to-filter-answers-by-custom-metadata-tags)

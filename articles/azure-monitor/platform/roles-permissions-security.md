@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ffbe10a1f9a1629c74c144b8773a7de89890576
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836388"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132033"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Izleyici 'de roller, izinler ve güvenlik
 
@@ -27,10 +28,10 @@ Izleme okuyucusu rolünü atayan kişiler, bir abonelikteki tüm izleme verileri
 
 * Portalda izleme panolarını görüntüleyin ve kendi özel izleme panoları oluşturun.
 * [Azure uyarıları](alerts-overview.md) 'nda tanımlanan uyarı kurallarını görüntüle
-* [Azure izleyici REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell cmdlet 'leri](powershell-quickstart-samples.md)veya [platformlar arası CLI](../samples/cli-samples.md)kullanarak ölçümleri sorgulayın.
+* [Azure izleyici REST API](/rest/api/monitor/metrics), [PowerShell cmdlet 'leri](../samples/powershell-samples.md)veya [platformlar arası CLI](../samples/cli-samples.md)kullanarak ölçümleri sorgulayın.
 * Portal, Azure Izleyici REST API, PowerShell cmdlet 'leri veya platformlar arası CLı kullanarak etkinlik günlüğünü sorgulayın.
 * Bir kaynağın [tanılama ayarlarını](diagnostic-settings.md) görüntüleyin.
-* Bir aboneliğin [günlük profilini](activity-log-export.md) görüntüleyin.
+* Bir aboneliğin [günlük profilini](./activity-log.md#legacy-collection-methods) görüntüleyin.
 * Otomatik ölçeklendirme ayarlarını görüntüleyin.
 * Uyarı etkinliğini ve ayarlarını görüntüleyin.
 * Application Insights verilere erişin ve verileri AI analizinden görüntüleyin.
@@ -51,7 +52,7 @@ Izleme katılımcısı rolünü atayan kişiler, bir abonelikteki tüm izleme ve
 
 * İzleme panoları paylaşılan bir pano olarak yayımlayın.
 * Bir kaynak için [tanılama ayarlarını](diagnostic-settings.md) belirleyin.\*
-* Abonelik için [günlük profilini](activity-log-export.md) ayarlayın.\*
+* Abonelik için [günlük profilini](./activity-log.md#legacy-collection-methods) ayarlayın.\*
 * Uyarı kuralları etkinliğini ve ayarlarını [Azure uyarıları](alerts-overview.md)aracılığıyla ayarlayın.
 * Application Insights Web testleri ve bileşenleri oluşturun.
 * Log Analytics çalışma alanı paylaşılan anahtarlarını listeleyin.
@@ -66,10 +67,10 @@ Izleme katılımcısı rolünü atayan kişiler, bir abonelikteki tüm izleme ve
 > 
 > 
 
-## <a name="monitoring-permissions-and-custom-rbac-roles"></a>İzinleri ve özel RBAC rollerini izleme
-Yukarıdaki yerleşik roller takımınızın tam ihtiyaçlarını karşılamıyorsa, daha ayrıntılı izinlerle [Özel BIR RBAC rolü oluşturabilirsiniz](../../role-based-access-control/custom-roles.md) . Açıklamalarıyla ortak Azure Izleyici RBAC işlemleri aşağıda verilmiştir.
+## <a name="monitoring-permissions-and-azure-custom-roles"></a>İzinleri ve Azure özel rollerini izleme
+Yukarıdaki yerleşik roller takımınızın tam ihtiyaçlarını karşılamıyorsa, daha ayrıntılı izinlerle [bir Azure özel rolü oluşturabilirsiniz](../../role-based-access-control/custom-roles.md) . Açıklamalarıyla ortak Azure Izleyici RBAC işlemleri aşağıda verilmiştir.
 
-| Çalışma | Açıklama |
+| İşlem | Açıklama |
 | --- | --- |
 | Microsoft. Insights/ActionGroups/[okuma, yazma, silme] |Okuma/yazma/silme eylemi grupları. |
 | Microsoft. Insights/ActivityLogAlerts/[okuma, yazma, silme] |Etkinlik günlüğü uyarılarını okuma/yazma/silme. |
@@ -96,7 +97,7 @@ Yukarıdaki yerleşik roller takımınızın tam ihtiyaçlarını karşılamıyo
 > 
 > 
 
-Örneğin, Yukarıdaki tabloyu kullanarak bir "etkinlik günlüğü okuyucusu" için özel bir RBAC rolü oluşturabilirsiniz:
+Örneğin, Yukarıdaki tabloyu kullanarak bir "etkinlik günlüğü okuyucusu" için şu şekilde bir Azure özel rolü oluşturabilirsiniz:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -125,7 +126,7 @@ Bu veri türlerinin üçü de bir depolama hesabında depolanabilir veya her iki
 * Kullanıcı yalnızca izleme verilerine erişmesi gerektiğinde, abonelik kapsamındaki depolama hesapları veya Olay Hub 'ları için ListKeys iznini hiçbir zaman vermeyin. Bunun yerine, bu izinleri kullanıcıya bir kaynak veya kaynak grubunda (özel bir izleme kaynak grubunuz varsa) kapsamını verin.
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>İzleme ile ilgili depolama hesaplarına erişimi sınırlandırma
-Bir kullanıcı veya uygulamanın bir depolama hesabındaki izleme verilerine erişmesi gerektiğinde, depolama hesabında, blob depolamaya yönelik hizmet düzeyinde salt okuma erişimi olan izleme verilerini içeren [bir hesap SAS oluşturmalısınız](https://msdn.microsoft.com/library/azure/mt584140.aspx) . PowerShell 'de bu şöyle görünebilir:
+Bir kullanıcı veya uygulamanın bir depolama hesabındaki izleme verilerine erişmesi gerektiğinde, depolama hesabında, blob depolamaya yönelik hizmet düzeyinde salt okuma erişimi olan izleme verilerini içeren [bir hesap SAS oluşturmalısınız](/rest/api/storageservices/create-account-sas) . PowerShell 'de bu şöyle görünebilir:
 
 ```powershell
 $context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
@@ -134,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 Daha sonra bu depolama hesabından okuması gereken varlığa belirteç verebilir ve bu depolama hesabındaki tüm Blobları listeleyebilir ve okuyabilir.
 
-Alternatif olarak, bu izni RBAC ile denetetmeniz gerekiyorsa, söz konusu depolama hesabında bu varlığa Microsoft. Storage/storageAccounts/ListKeys/Action izinleri verebilirsiniz. Bu, bir depolama hesabına arşivlemek üzere bir tanılama ayarı veya günlük profili ayarlayabilmesi gereken kullanıcılar için gereklidir. Örneğin, yalnızca bir depolama hesabından okuması gereken bir kullanıcı veya uygulama için aşağıdaki özel RBAC rolünü oluşturabilirsiniz:
+Alternatif olarak, bu izni RBAC ile denetetmeniz gerekiyorsa, söz konusu depolama hesabında bu varlığa Microsoft. Storage/storageAccounts/ListKeys/Action izinleri verebilirsiniz. Bu, bir depolama hesabına arşivlemek üzere bir tanılama ayarı veya günlük profili ayarlayabilmesi gereken kullanıcılar için gereklidir. Örneğin, yalnızca bir depolama hesabından okuması gereken bir kullanıcı veya uygulama için aşağıdaki Azure özel rolünü oluşturabilirsiniz:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -188,5 +189,3 @@ Daha fazla bilgi için bkz. [ağ güvenliği ve Azure depolama](../../storage/co
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Kaynak Yöneticisi RBAC ve izinler hakkında bilgi edinin](../../role-based-access-control/overview.md)
 * [Azure 'da izlemeye genel bakış konusunu okuyun](../../azure-monitor/overview.md)
-
-

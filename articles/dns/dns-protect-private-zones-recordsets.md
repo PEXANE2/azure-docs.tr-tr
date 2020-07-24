@@ -7,11 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: a817cb0722bff721891cd290ea4a6552c778dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 550ed5791df821b1793755f5046da92adf6e3f3a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701873"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131557"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Özel DNS bölgelerini ve kayıtlarını koruma
 
@@ -23,7 +24,7 @@ Bu makalede Azure DNS, özel DNS bölgelerinizi ve kayıtlarınızı bu değişi
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Azure rol tabanlı Access Control (RBAC), Azure kullanıcıları, grupları ve kaynakları için ayrıntılı erişim yönetimine izin verebilir. RBAC ile, kullanıcıların ihtiyaç duyduğu erişim düzeyine izin verebilirsiniz. RBAC 'nin erişimi yönetmenize nasıl yardımcı olduğu hakkında daha fazla bilgi için bkz. [rol tabanlı Access Control nedir?](../role-based-access-control/overview.md).
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kullanıcıları, grupları ve kaynakları için ayrıntılı erişim yönetimine izin vermez. RBAC ile, kullanıcıların ihtiyaç duyduğu erişim düzeyine izin verebilirsiniz. RBAC 'nin erişimi yönetmenize nasıl yardımcı olduğu hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md).
 
 ### <a name="the-private-dns-zone-contributor-role"></a>Özel DNS bölgesi katılımcısı rolü
 
@@ -167,7 +168,7 @@ Actions özelliği, aşağıdaki DNS 'e özgü izinleri tanımlar:
 * `Microsoft.Network/privateDNSZones/read`DNS özel bölgelerini okuma izni verir, ancak bunları değiştirmemelidir, CNAME 'in oluşturulduğu bölgeyi görmenizi sağlar.
 
 > [!NOTE]
-> Kayıt kümelerinin güncelleştirilmesini engellemek için özel bir RBAC rolü kullanmak, etkili bir denetim değildir. Kayıt kümelerinin silinmesini engeller, ancak değiştirilmesini engellemez.  İzin verilen değişiklikler, kayıt kümesinden kayıtları ekleme ve kaldırma, boş bir kayıt kümesi bırakmak için tüm kayıtları kaldırma dahil. Bu, kayıt kümesini bir DNS çözünürlüğü bakış açısından silme ile aynı etkiye sahiptir.
+> Kayıt kümelerinin güncelleştirilmesini engellemek için Azure özel rolü kullanma, hala güncelleştirilebilmesine izin verirken etkili bir denetim değildir. Kayıt kümelerinin silinmesini engeller, ancak değiştirilmesini engellemez.  İzin verilen değişiklikler, kayıt kümesinden kayıtları ekleme ve kaldırma, boş bir kayıt kümesi bırakmak için tüm kayıtları kaldırma dahil. Bu, kayıt kümesini bir DNS çözünürlüğü bakış açısından silme ile aynı etkiye sahiptir.
 
 Özel rol tanımları Şu anda Azure portal aracılığıyla tanımlanamaz. Bu rol tanımına dayalı özel bir rol, Azure PowerShell kullanılarak oluşturulabilir:
 

@@ -3,19 +3,17 @@ title: Soru-Cevap Oluşturma hizmetindeki yenilikler nelerdir?
 titleSuffix: Azure Cognitive Services
 description: Bu makale Soru-Cevap Oluşturma hakkındaki haberleri içerir.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 06/15/2020
-ms.author: diberry
-ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/16/2020
+ms.openlocfilehash: 0337abedbc5b592a0ae48fabd5bc7ecbb484def9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791223"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132798"
 ---
 # <a name="whats-new-in-qna-maker"></a>Soru-Cevap Oluşturma yenilikleri
 
@@ -24,6 +22,12 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blo
 ## <a name="release-notes"></a>Sürüm notları
 
 Soru-Cevap Oluşturma yenilikleri öğrenin.
+
+### <a name="july-2020"></a>Temmuz 2020
+
+* [Meta veri: `OR` birden çok metaveri çiftinin mantıksal birleşimi](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* Bilişsel Arama uç noktaları özel olacak şekilde yapılandırma [adımları](how-to/set-up-qnamaker-service-azure.md#configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet) , ancak yine de soru-cevap oluşturma erişilebilir.
+* Ücretsiz Bilişsel Arama kaynakları, [90 gün sonra etkinliksizden](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)sonra kaldırılır.
 
 ### <a name="june-2020"></a>Haziran 2020
 

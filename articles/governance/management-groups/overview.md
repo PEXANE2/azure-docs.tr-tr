@@ -3,16 +3,16 @@ title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963691"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132934"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure Yönetim grupları nelerdir?
 
-Kuruluşunuzda birden fazla abonelik varsa bu abonelikler için verimli bir şekilde erişim, ilke ve uyumluluk yönetimi gerçekleştirmek isteyebilirsiniz. Azure yönetim grupları, aboneliklerin üzerinde bir kapsam düzeyi sunar. Abonelikleri "yönetim grupları" adlı kapsayıcılarla düzenler ve idare koşullarınızı bu yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır. Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar.
+Kuruluşunuzda birden fazla abonelik varsa bu abonelikler için verimli bir şekilde erişim, ilke ve uyumluluk yönetimi gerçekleştirmek isteyebilirsiniz. Azure yönetim grupları aboneliklerin üzerinde bir kapsam düzeyi sağlar. Abonelikleri "yönetim grupları" adlı kapsayıcılarla düzenler ve idare koşullarınızı bu yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır. Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar.
 Tek bir yönetim grubu içindeki tüm abonelikler aynı Azure Active Directory kiracısına güvenmelidir.
 
 Örneğin, sanal makine (VM) oluşturma işlemi için kullanılabilir olan bölgeleri sınırlayan bir yönetim grubuna ilkeleri uygulayabilirsiniz. Bu ilke, yalnızca o bölgede VM oluşturulmasına izin vererek söz konusu yönetim grubu altındaki tüm yönetim gruplarına, aboneliklere ve kaynaklara uygulanır.
@@ -27,13 +27,13 @@ Birleşik ilke ve erişim yönetimi için kaynaklarınızı bir hiyerarşi altı
 
 Yönetim gruplarını kullanacağınız başka bir senaryo ise birden fazla aboneliğe kullanıcı erişimi sağlamaktır. Birden çok aboneliği söz konusu yönetim grubu altına taşıyarak, yönetim grubu üzerinde tüm aboneliklere erişimi devralacak bir [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) (RBAC) ataması oluşturabilirsiniz. Yönetim grubunda bir atama olması, farklı abonelikler üzerinde RBAC komut dosyası kullanmak yerine kullanıcıların ihtiyaç duydukları her şeye erişmesini sağlayabilir.
 
-### <a name="important-facts-about-management-groups"></a>Yönetim grupları hakkında önemli bilgiler
+### <a name="important-facts-about-management-groups"></a>Yönetim gruplarıyla ilgili önemli olgular
 
 - Tek bir dizinde 10.000 yönetim grubu desteklenebilir.
 - Bir yönetim grubu en fazla altı derinlik düzeyini destekleyebilir.
   - Bu sınır, Kök düzeyini veya abonelik düzeyini içermez.
 - Her yönetim grubu ve abonelik yalnızca bir üst öğeyi destekler.
-- Her yönetim grubunda birçok alt öğe olabilir.
+- Her yönetim grubunun birçok alt öğesi olabilir.
 - Tüm abonelikler ve yönetim grupları, her bir dizindeki tek bir hiyerarşi içinde yer alır. Bkz. [Kök yönetim grubu hakkında önemli bilgiler](#important-facts-about-the-root-management-group).
 
 ## <a name="root-management-group-for-each-directory"></a>Her dizin için kök yönetim grubu
@@ -42,7 +42,7 @@ Her dizinde "Kök" yönetim grubu olarak adlandırılan tek bir üst düzey yön
 
 ### <a name="important-facts-about-the-root-management-group"></a>Kök yönetim grubu hakkında önemli bilgiler
 
-- Varsayılan olarak kök yönetim grubunun görünen adı, **Kiracı kök grubu**’dur. Kimlik, Azure Active Directory Kimliği’dir.
+- Varsayılan olarak, kök yönetim grubunun görünen adı **Kiracı kök grubu** olur. Kimlik, Azure Active Directory Kimliği’dir.
 - Görünen adı değiştirmek için hesabınızın, kök yönetim grubunun Sahip veya Katkıda Bulunan rolüne atanması gerekir. Bir yönetim grubunun adını güncelleştirmek için [bir yönetim grubunun adını değiştirme](manage.md#change-the-name-of-a-management-group) konusuna bakın.
 - Diğer yönetim gruplarının aksine kök yönetim grubu taşınamaz veya silinemez.  
 - Tüm abonelikler ve yönetim grupları, dizinin içindeki bir kök yönetim grubu altında birleşir.
@@ -100,9 +100,9 @@ Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eyle
 \*: MG katkıda bulunan ve MG Reader yalnızca kullanıcıların yönetim grubu kapsamında bu eylemleri yapmasına izin verir.  
 \*\*: Kök yönetim grubundaki rol atamaları, bir aboneliği veya yönetim grubunu bu gruba taşımak için gerekli değildir. Hiyerarşi içindeki öğeleri taşımayla ilgili ayrıntılar için bkz. [Kaynaklarınızı yönetim gruplarıyla yönetme](manage.md).
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>Özel RBAC rol tanımı ve ataması
+## <a name="azure-custom-role-definition-and-assignment"></a>Azure özel rol tanımı ve ataması
 
-Yönetim grupları için özel RBAC rol desteği şu anda bazı [kısıtlamalarla önizlemededir](#limitations). Rol Tanımının atanabilir kapsamında yönetim grubu kapsamını tanımlayabilirsiniz. Ardından bu özel RBAC Rolü söz konusu yönetim grubunda ve onun altında yer alan tüm yönetim grupları, abonelikler, kaynak grupları veya kaynaklarda atama için kullanılabilir. Bu özel rol, herhangi bir yerleşik rol gibi hiyerarşide aşağıya doğru devralınır.  
+Yönetim grupları için Azure özel rol desteği şu anda bazı [kısıtlamalarla önizlemededir](#limitations). Rol Tanımının atanabilir kapsamında yönetim grubu kapsamını tanımlayabilirsiniz. Daha sonra bu Azure özel rolü bu yönetim grubu ve bu yönetim grubu, abonelik, kaynak grubu veya kaynak üzerinde atanmak üzere kullanılabilir olacaktır. Bu özel rol, herhangi bir yerleşik rol gibi hiyerarşide aşağıya doğru devralınır.  
 
 ### <a name="example-definition"></a>Örnek tanım
 

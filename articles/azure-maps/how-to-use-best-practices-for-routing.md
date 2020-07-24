@@ -1,18 +1,19 @@
 ---
 title: Azure haritalar için en iyi uygulamalar Yönlendirme Hizmeti | Microsoft Azure haritaları
 description: Microsoft Azure haritalardan Yönlendirme Hizmeti kullanarak her bir yolu yönlendirmeyi öğrenin.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266704"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132220"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
 
@@ -28,9 +29,9 @@ Azure haritalar 'daki yol yönleri ve yol Matrisi API 'Leri [yönlendirme hizmet
 * Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
 * Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure Haritalar API 'Lerine çağrı yapmak için bir Azure Maps hesabına ve bir anahtara ihtiyacınız vardır. Daha fazla bilgi için bkz. [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account). Birincil anahtar, birincil abonelik anahtarı veya abonelik anahtarı olarak da bilinir.
+Azure Haritalar API 'Lerine çağrı yapmak için bir Azure Maps hesabına ve bir anahtara ihtiyacınız vardır. Daha fazla bilgi için bkz. [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account). Birincil anahtar, birincil abonelik anahtarı veya abonelik anahtarı olarak da bilinir.
 
 Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md). Yönlendirme Hizmeti kapsamı hakkında daha fazla bilgi için bkz. [yönlendirme kapsamı](routing-coverage.md).
 

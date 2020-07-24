@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f3e670a4f2a49bcce48be1ba0452a36cbf96df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392327"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131421"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -25,11 +25,11 @@ Bu şekilde nasıl ele alınacaktır:
 2. Azure Maps ınkapılı haritalar Özellik stateset 'i güncelleştirmek için bir Azure işlevi oluşturma.
 3. Haritalar KIMLIĞINIZI ve özellik stateset KIMLIĞINIZI Azure dijital TWINS grafiğinde depolama.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-* Azure dijital TWINS [öğreticisini izleyin: uçtan uca çözümü bağlama](./tutorial-end-to-end.md).
+* Azure dijital TWINS [*öğreticisini izleyin: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md).
     * Bu ikizi ek bir uç nokta ve rotayla genişletiyorsunuz. Ayrıca, bu öğreticiden işlev uygulamanıza başka bir işlev da eklersiniz. 
-* Azure haritalar öğreticisini izleyin: bir *özellik stateset*Ile Azure Maps ınkapısı haritası oluşturmak üzere [ınkapılı haritalar oluşturmak Için Azure haritalar Oluşturucu kullanın](../azure-maps/tutorial-creator-indoor-maps.md) .
+* Azure haritalar öğreticisini izleyin: bir *özellik stateset*Ile Azure Maps ınkapısı haritası oluşturmak üzere [*ınkapılı haritalar oluşturmak Için Azure haritalar Oluşturucu kullanın*](../azure-maps/tutorial-creator-indoor-maps.md) .
     * [Özellik statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) 'ler, odalar veya ekipman gibi veri kümesi özelliklerine atanan dinamik Özellikler (eyaletler) koleksiyonlarıdır. Yukarıdaki Azure haritalar öğreticisinde, stateset özelliği bir haritada görüntülenecek oda durumunu depolar.
     * Özellik *stateset ID* ve Azure Maps *abonelik kimliği*gereklidir.
 
@@ -45,11 +45,11 @@ Aşağıdaki görüntüde, bu öğreticideki ınkapımaps tümleştirme öğeler
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Bir yol oluşturun ve ikizi Update bildirimlerine filtre uygulayın
 
-Azure dijital TWINS örnekleri, bir ikizi durumunun güncelleştirildiği her seferinde ikizi Update olaylarını yayabilir. [Azure dijital TWINS öğreticisi: Yukarıdaki bir uçtan uca çözümü](./tutorial-end-to-end.md) , bir odanın ikizi 'e iliştirilmiş bir sıcaklık özniteliğini güncelleştirmek için bir termometre 'nin kullanıldığı bir senaryoya yol gösterir. Bu çözümü, TWINS güncelleştirme bildirimlerine abone olarak ve haritalarımızı güncelleştirmek için bu bilgileri kullanarak genişlettireceksiniz.
+Azure dijital TWINS örnekleri, bir ikizi durumunun güncelleştirildiği her seferinde ikizi Update olaylarını yayabilir. Azure dijital TWINS [*öğreticisi: Yukarıdaki bir uçtan uca çözümü*](./tutorial-end-to-end.md) , bir odanın ikizi 'e iliştirilmiş bir sıcaklık özniteliğini güncelleştirmek için bir termometre 'nin kullanıldığı bir senaryoya yol gösterir. Bu çözümü, TWINS güncelleştirme bildirimlerine abone olarak ve haritalarınızı güncelleştirmek için bu bilgileri kullanarak genişlettireceksiniz.
 
-Bu kalıp, IoT cihazı yerine doğrudan ikizi ' yi okur, bu da, eşleme mantığımızı güncelleştirmeye gerek kalmadan sıcaklığın temelindeki veri kaynağını değiştirme esnekliği sağlar. Örneğin, eşleme mantığımızı güncelleştirmeye gerek kalmadan, birden fazla salon ölçüm ekleyebilir veya bu odayı başka bir oda ile bir termometre paylaşmak üzere ayarlayabilirsiniz.
+Bu kalıp, IoT cihazı yerine doğrudan ikizi 'dan, eşleme mantığınızı güncelleştirmeye gerek kalmadan, sıcaklık için temel alınan veri kaynağını değiştirme esnekliği sağlayan bir yol elde etmenizi sağlar. Örneğin, eşleme mantığınızı güncelleştirmeye gerek kalmadan, birden fazla salon ölçüm ekleyebilir veya bu odayı başka bir oda ile bir termometre paylaşmak üzere ayarlayabilirsiniz.
 
-1. Azure dijital TWINS örneğinden olay alacak bir Event Grid konusu oluşturun.
+1. Azure dijital TWINS örneğinden olay alacak bir olay Kılavuzu konusu oluşturun.
     ```azurecli
     az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
     ```
@@ -61,14 +61,14 @@ Bu kalıp, IoT cihazı yerine doğrudan ikizi ' yi okur, bu da, eşleme mantığ
 
 3. Azure dijital TWINS 'de, ikizi Update olaylarını uç noktanıza göndermek için bir yol oluşturun.
     ```azurecli
-    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "{ "endpointId": "<endpoint-ID>","filter": "type = 'Microsoft.DigitalTwins.Twin.Update'"}"
+    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-an-azure-function-to-update-maps"></a>Haritaları güncelleştirmek için bir Azure işlevi oluşturma
 
-[Uçtan uca öğreticiden](./tutorial-end-to-end.md)işlev uygulamamız içinde Event Grid tetiklenen bir işlev oluşturacağız. Bu işlev, bir odanın sıcaklığını güncelleştirmek için bu bildirimleri paketten çıkarın ve Azure Maps özelliği stateset 'e güncelleştirmeler gönderir. 
+Uçtan uca öğreticiden işlev uygulamanız içinde Event Grid tetiklenen bir işlev oluşturacağız ([*öğretici: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md)). Bu işlev, bir odanın sıcaklığını güncelleştirmek için bu bildirimleri paketten çıkarın ve Azure Maps özelliği stateset 'e güncelleştirmeler gönderir. 
 
-Başvuru bilgileri için aşağıdaki belgeye bakın: [Azure işlevleri için Azure Event Grid tetikleyicisi](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+Başvuru bilgileri için aşağıdaki belgeye bakın: [*Azure işlevleri için Azure Event Grid tetikleyicisi*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
 
 İşlev kodunu aşağıdaki kodla değiştirin. Yalnızca TWINS 'in bulunduğu güncelleştirmeleri filtreleyerek, güncelleştirilmiş sıcaklığın okunmasını ve bu bilgileri Azure Maps 'a göndermeyecektir.
 
@@ -100,7 +100,7 @@ namespace SampleFunctionsApp
 
             //Parse updates to "space" twins
             if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in our map. 
+            {   //Set the ID of the room to be updated in your map. 
                 //Replace this line with your logic for retrieving featureID. 
                 string featureID = "UNIT103";
 
@@ -138,9 +138,9 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 Canlı güncelleştirme sıcaklığını görmek için aşağıdaki adımları izleyin:
 
-1. Azure dijital TWINS öğreticisindeki **Devicesimülatör** projesini çalıştırarak sanal IoT verilerini göndermeye başlayın [: uçtan uca bir çözüm bağlayın](tutorial-end-to-end.md). Bu yönergeler, [*benzetimi Yapılandır ve Çalıştır*](././tutorial-end-to-end.md#configure-and-run-the-simulation) bölümünde bulunur.
+1. Azure dijital TWINS öğreticisindeki **Devicesimülatör** projesini çalıştırarak sanal IoT verilerini göndermeye başlayın [*: uçtan uca bir çözüm bağlayın*](tutorial-end-to-end.md). Bu yönergeler, [*benzetimi Yapılandır ve Çalıştır*](././tutorial-end-to-end.md#configure-and-run-the-simulation) bölümünde bulunur.
 2. Azure haritalar Oluşturucu 'da oluşturulan ınkapısı haritalarınızı oluşturmak için [ **Azure Maps ınkapısı** modülünü](../azure-maps/how-to-use-indoor-module.md) kullanın.
-    1. Örneğin, HTML 'yi örnek: ınkapıharitaları öğreticisinin [*ınkapıharitaları modülünü kullanın*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) [: Azure Maps ınkapısı haritaları modülünü](../azure-maps/how-to-use-indoor-module.md) yerel bir dosya ile kullanın.
+    1. Örneğin, HTML 'yi örnek: ınkapıharitaları öğreticisinin [*ınkapıharitaları modülünü kullanın*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) [*: Azure Maps ınkapısı haritaları modülünü*](../azure-maps/how-to-use-indoor-module.md) yerel bir dosya ile kullanın.
     1. Yerel HTML dosyasındaki *tilesetıd* ve *statesetıd* değerlerini değerlerinizle değiştirin.
     1. Bu dosyayı tarayıcınızda açın.
 
@@ -160,5 +160,5 @@ Topolojinizin yapılandırmasına bağlı olarak, bu üç özniteliği Haritalar
 
 TWINS grafiğindeki bilgileri yönetme, yükseltme ve alma hakkında daha fazla bilgi edinmek için aşağıdaki başvurulara bakın:
 
-* [Nasıl yapılır: dijital TWINS 'i yönetme](./how-to-manage-twin.md)
-* [Nasıl yapılır: ikizi grafiğini sorgulama](./how-to-query-graph.md)
+* [*Nasıl yapılır: dijital TWINS 'i yönetme*](./how-to-manage-twin.md)
+* [*Nasıl yapılır: ikizi grafiğini sorgulama*](./how-to-query-graph.md)

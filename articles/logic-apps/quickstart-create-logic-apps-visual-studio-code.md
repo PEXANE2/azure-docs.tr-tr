@@ -1,20 +1,20 @@
 ---
-title: Görevleri Visual Studio Code otomatikleştirin
-description: Visual Studio Code kullanarak mantıksal uygulama temel alınan JSON tanımlarını oluşturma veya düzenleme (VS Code)
+title: Görevleri ve iş akışlarını Visual Studio Code otomatikleştirin
+description: Visual Studio Code kullanarak mantıksal uygulama iş akışı tanımlarını oluşturma veya düzenleme (VS Code)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, deli, logicappspm
+ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: 3dccb596be2d97dd0f38d680537913a76ce09e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147055"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131489"
 ---
-# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak mantıksal uygulama iş akışı tanımlarını oluşturma ve yönetme
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Hızlı Başlangıç: Visual Studio Code kullanarak mantıksal uygulama iş akışı tanımlarını oluşturma ve yönetme
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Visual Studio Code sayesinde, kuruluşlar ve kuruluşlar genelinde uygulamaları, verileri, sistemleri ve Hizmetleri tümleştirmek için görevleri, iş akışlarını ve işlemleri otomatikleştirmenize yardımcı olan Logic Apps oluşturabilir ve yönetebilirsiniz. Bu hızlı başlangıçta, kod tabanlı bir deneyim aracılığıyla Logic Apps için JavaScript Nesne Gösterimi (JSON) kullanan temel alınan iş akışı tanımlarını nasıl oluşturabileceğiniz ve düzenleyebileceği gösterilmektedir. Ayrıca, Azure 'a zaten dağıtılan mevcut Logic Apps üzerinde de çalışabilirsiniz.
 
@@ -50,11 +50,11 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
     Daha fazla bilgi için bkz. [uzantı marketi](https://code.visualstudio.com/docs/editor/extension-gallery). Bu uzantının açık kaynaklı sürümüne katkıda bulunmak için [GitHub 'daki Visual Studio Code Azure Logic Apps uzantısını](https://github.com/Microsoft/vscode-azurelogicapps)ziyaret edin.
 
-<a name="sign-in-azure"></a>
+<a name="access-azure"></a>
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="access-azure-from-visual-studio"></a>Visual Studio 'dan Azure 'a erişme
 
-1. Visual Studio Code'u açın. Visual Studio Code araç çubuğunda Azure simgesini seçin.
+1. Visual Studio Code’u açın. Visual Studio Code araç çubuğunda Azure simgesini seçin.
 
    ![Visual Studio Code araç çubuğunda Azure simgesini seçin](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
@@ -99,7 +99,7 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 ## <a name="create-new-logic-app"></a>Yeni mantıksal uygulama oluştur
 
-1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#sign-in-azure).
+1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#access-azure).
 
 1. Visual Studio Code ' un altında, **Logic Apps**altında, aboneliğinizin kısayol menüsünü açın ve **mantıksal uygulama oluştur**' u seçin.
 
@@ -123,17 +123,17 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
    ![Mantıksal uygulamanız için ad belirtin](./media/quickstart-create-logic-apps-visual-studio-code/enter-name-logic-app.png)
 
-   Azure penceresinde, Azure aboneliğiniz altında yeni ve boş mantıksal uygulamanız görüntülenir. Visual Studio Code ayrıca mantıksal uygulamanız için bir iskelet iş akışı tanımı içeren bir JSON (. logicapp. JSON) dosyası açar. Artık mantıksal uygulamanızın iş akışı tanımını bu JSON dosyasında el ile yazmaya başlayabilirsiniz. Bir iş akışı tanımının yapısı ve sözdizimi hakkında teknik başvuru için, [Azure Logic Apps Için Iş akışı Tanım Dili şemasına](../logic-apps/logic-apps-workflow-definition-language.md)bakın.
+   Azure penceresinde, Azure aboneliğiniz altında yeni ve boş mantıksal uygulamanız görüntülenir. Visual Studio Code ayrıca mantıksal uygulamanız için bir iskelet iş akışı tanımı içeren bir JSON (.logicapp.json) dosyası açar. Artık mantıksal uygulamanızın iş akışı tanımını bu JSON dosyasında el ile yazmaya başlayabilirsiniz. Bir iş akışı tanımının yapısı ve sözdizimi hakkında teknik başvuru için, [Azure Logic Apps Için Iş akışı Tanım Dili şemasına](../logic-apps/logic-apps-workflow-definition-language.md)bakın.
 
    ![Boş mantıksal uygulama iş akışı tanımı JSON dosyası](./media/quickstart-create-logic-apps-visual-studio-code/empty-logic-app-workflow-definition.png)
 
    Örneğin, bir RSS tetikleyicisi ve Office 365 Outlook eylemiyle başlayan örnek bir mantıksal uygulama iş akışı tanımı aşağıda verilmiştir. Genellikle, JSON öğeleri her bölümde alfabetik olarak görünür. Ancak bu örnek, bu öğeleri kabaca, mantıksal uygulamanın adımlarının tasarımcıda göründüğü sırayla gösterir.
 
    > [!IMPORTANT]
-   > Bu örnek mantıksal uygulama tanımını yeniden kullanmak istiyorsanız, örneğin, @fabrikam.combir Office 365 Kurumsal hesabına sahip olmanız gerekir. Kurgusal e-posta adresini kendi e-posta adresiniz ile değiştirdiğinizden emin olun. Outlook.com veya Gmail gibi farklı bir e-posta Bağlayıcısı kullanmak için, `Send_an_email_action` eylemi [Azure Logic Apps tarafından desteklenen bir e-posta bağlayıcısından](../connectors/apis-list.md)erişilebilen benzer bir eylemle değiştirin.
+   > Bu örnek mantıksal uygulama tanımını yeniden kullanmak istiyorsanız, örneğin, bir Office 365 Kurumsal hesabına sahip olmanız gerekir @fabrikam.com . Kurgusal e-posta adresini kendi e-posta adresiniz ile değiştirdiğinizden emin olun. Outlook.com veya Gmail gibi farklı bir e-posta Bağlayıcısı kullanmak için, `Send_an_email_action` eylemi [Azure Logic Apps tarafından desteklenen bir e-posta bağlayıcısından](../connectors/apis-list.md)erişilebilen benzer bir eylemle değiştirin.
    >
    > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. 
-   > Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). 
+   > Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). 
    > Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
    ```json
@@ -226,7 +226,7 @@ Azure portal ' de mantıksal uygulamanızı gözden geçirmek için şu adımlar
 
 Visual Studio Code, yayımlanmış bir mantıksal uygulamayı düzenlerseniz ve değişikliklerinizi kaydederseniz, önceden dağıtılmış uygulamanızın *üzerine yazarsınız* . Mantıksal uygulamanızı üretimde bozmamak ve kesintiyi en aza indirmek için öncelikle mantıksal uygulamanızı devre dışı bırakın. Mantıksal uygulamanızı hala işe yarar doğruladıktan sonra mantıksal uygulamanızı yeniden etkinleştirebilirsiniz.
 
-1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#sign-in-azure).
+1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#access-azure).
 
 1. Azure penceresinde, **Logic Apps**altında, Bu abonelikteki tüm mantıksal uygulamaları görüntüleyebilmeniz için Azure aboneliğinizi genişletin.
 
@@ -247,7 +247,7 @@ Visual Studio Code, Azure 'da zaten dağıtılmış bir mantıksal uygulama içi
 > [!IMPORTANT] 
 > Üretim ortamında etkin bir şekilde çalışan bir mantıksal uygulamayı düzenlemeden önce, mantıksal uygulamayı bozma ve [öncelikle mantıksal uygulamanızı devre dışı bırakarak](#disable-enable-logic-app)kesintiyi en aza indirme riskinden kaçının.
 
-1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#sign-in-azure).
+1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#access-azure).
 
 1. Azure penceresinde, **Logic Apps**altında Azure aboneliğinizi genişletin ve istediğiniz mantıksal uygulamayı seçin.
 
@@ -255,7 +255,7 @@ Visual Studio Code, Azure 'da zaten dağıtılmış bir mantıksal uygulama içi
 
    ![Mevcut mantıksal uygulama için düzenleyiciyi aç](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
-   Visual Studio Code mantıksal uygulamanızın iş akışı tanımını görüntüleyebilmeniz için yerel geçici klasörünüzde. logicapp. json dosyasını açar.
+   Visual Studio Code mantıksal uygulamanızın iş akışı tanımını görüntüleyebilmeniz için dosyayı yerel geçici klasörünüzde .logicapp.jsaçar.
 
    ![Yayımlanan mantıksal uygulama için iş akışı tanımını görüntüle](./media/quickstart-create-logic-apps-visual-studio-code/edit-published-logic-app-workflow-definition.png)
 

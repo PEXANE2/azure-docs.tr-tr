@@ -1,19 +1,17 @@
 ---
 title: Azure Data Lake Analytics U-SQL geliştiricileri için Apache Spark kod kavramlarını anlayın.
 description: Bu makalede, U-SQL geliştiricilerinin Spark kod kavramlarını anlamasına yardımcı olacak Apache Spark kavramları açıklanmaktadır.
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: d7cdcd5a3b176b60bb7801b37a831f8feb08c21f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106501"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132356"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL geliştiricileri için Apache Spark kodunu anlayın
 
@@ -131,7 +129,7 @@ Aşağıdaki tabloda, Spark, Scala ve PySpark içindeki eşdeğer türler verile
 Daha fazla bilgi için bkz.
 
 - [org. Apache. spark. Sql. Types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
-- [Spark SQL ve DataFrames türleri](https://spark.apache.org/docs/latest/sql-reference.html#data-types)
+- [Spark SQL ve DataFrames türleri](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
 - [Scala değer türleri](https://www.scala-lang.org/api/current/scala/AnyVal.html)
 - [pyspark. Sql. Types](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.types)
 

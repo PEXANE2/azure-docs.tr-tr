@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 7fe7c1473579c62b110548a2c5e98f9bdfaf6bf9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273770"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131472"
 ---
 # <a name="backend-pool-management"></a>Arka uç havuzu yönetimi
 Arka uç havuzu, yük dengeleyicinin kritik bir bileşenidir. Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak kaynak grubunu tanımlar.
@@ -255,10 +255,12 @@ Tüm arka uç havuzu yönetimi, aşağıdaki örneklerde vurgulanan şekilde do�
 
   >[!IMPORTANT] 
   >Bu özellik şu anda önizleme aşamasındadır ve aşağıdaki sınırlamalara sahiptir:
-  >* 100 IP adresi sınırı eklendi
+  >* Yalnızca standart yük dengeleyici
+  >* Arka uç havuzunda 100 IP adresi sınırı
   >* Arka uç kaynakları, yük dengeleyici ile aynı sanal ağda olmalıdır
   >* Bu özellik şu anda Azure portal desteklenmiyor
-  >* Yalnızca standart yük dengeleyici
+  >* ACI kapsayıcıları Şu anda bu özellik tarafından desteklenmiyor
+  >* Yük dengeleyiciler tarafından konulan yük dengeleyiciler veya hizmetler yük dengeleyicinin arka uç havuzuna yerleştirilemez
   
 ### <a name="powershell"></a>PowerShell
 Yeni arka uç havuzu oluştur:
@@ -271,8 +273,7 @@ $vnetName = "myVnet"
 $location = "eastus"
 $nicName = "myNic"
 
-$backendPool = 
-New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
 ```
 
 Mevcut sanal ağdan arka uç havuzunu yeni bir IP ile güncelleştir:
@@ -281,18 +282,17 @@ Mevcut sanal ağdan arka uç havuzunu yeni bir IP ile güncelleştir:
 $virtualNetwork = 
 Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
  
-$ip1 = 
-New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
  
 $backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
-Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
+Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 ```
 
 Arka uç adreslerinin arka uç havuzuna eklendiğini onaylamak için yük dengeleyicinin arka uç havuzu bilgilerini alın:
 
 ```azurepowershell-interactive
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
 ```
 Bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin. IP adresini arka uç adreslerinden birine ayarlayın:
 
@@ -407,7 +407,7 @@ az vm create \
 Bir arka uç havuzu isteği ile arka uç havuzu oluşturun ve arka uç adreslerini tanımlayın. PUT isteğinin JSON gövdesinde arka uç adreslerini şu şekilde yapılandırın:
 
 * Adres adı
-* IP address
+* IP adresi
 * Sanal ağ KIMLIĞI 
 
 ```

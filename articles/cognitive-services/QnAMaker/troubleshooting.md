@@ -3,13 +3,12 @@ title: Sorun giderme-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma hizmetiyle ilgili en sık sorulan soruların seçkin listesi, hizmeti daha hızlı ve daha iyi sonuçlarla benimsemenizi sağlayacak.
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.author: diberry
-ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804359"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131999"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Soru-Cevap Oluşturma için sorun giderme
 
@@ -30,7 +29,7 @@ Soru-Cevap Oluşturma hizmetiyle ilgili en sık sorulan soruların seçkin liste
 <details>
 <summary><b>QnAMaker hizmet uç noktasını alma</b></summary>
 
-**Yanıt**: qnaoluşturucu hizmeti uç noktası, Qnamaker desteği veya UserVoice ile iletişim kurmak için hata ayıklama amacıyla faydalıdır. Uç noktası bu biçimdeki bir URL 'dir: `https://your-resource-name.azurewebsites.net`.
+**Yanıt**: qnaoluşturucu hizmeti uç noktası, Qnamaker desteği veya UserVoice ile iletişim kurmak için hata ayıklama amacıyla faydalıdır. Uç noktası bu biçimdeki bir URL 'dir: `https://your-resource-name.azurewebsites.net` .
 
 1. [Azure Portal](https://portal.azure.com) QnAMaker hizmetinize (kaynak grubu) gidin
 
@@ -173,7 +172,7 @@ Birden çok dilde içeriğiniz varsa, her dil için ayrı bir hizmet oluşturmay
 </details>
 
 <details>
-<summary><b>Arama hizmetimde `testkb` dizinimi sildim. Bunu nasıl giderebilirim?</b></summary>
+<summary><b>`testkb`Arama hizmetimde dizinimi sildim. Bunu nasıl giderebilirim?</b></summary>
 
 **Cevap**: eski verileriniz kurtarılamıyor. Yeni bir Soru-Cevap Oluşturma kaynağı oluşturun ve bilgi bankanızı tekrar oluşturun.
 
@@ -201,7 +200,7 @@ Birden çok dilde içeriğiniz varsa, her dil için ayrı bir hizmet oluşturmay
 </details>
 
 <details>
-<summary><b>Soru-Cevap Oluşturma, bunu `Runtime core is not initialized,` nasıl giderebilirim?</b></summary>
+<summary><b>Soru-Cevap Oluşturma, `Runtime core is not initialized,` bunu nasıl giderebilirim?</b></summary>
 
 **Cevap**: App Service için disk alanı dolu olabilir. Disk alanınızı çözme adımları:
 
@@ -209,12 +208,12 @@ Birden çok dilde içeriğiniz varsa, her dil için ayrı bir hizmet oluşturmay
 1. Uygulama hizmetinde hala **geliştirme araçları**' nı ve **Gelişmiş Araçlar**' ı seçin, sonra da **Git**' i seçin. Bu, yeni bir tarayıcı penceresi açar.
 1. Komut satırı aracını açmak için **hata ayıklama konsolu**' nu ve ardından **cmd** ' yi seçin.
 1. _Site/Wwwroot/veri/QnAMaker/_ dizine gidin.
-1. Adı ile `rd`başlayan tüm klasörleri kaldırın.
+1. Adı ile başlayan tüm klasörleri kaldırın `rd` .
 
     Aşağıdakileri **silmeyin** :
 
-    * KbIdToRankerMappings. txt dosyası
-    * EndpointSettings. JSON dosyası
+    * KbIdToRankerMappings.txt dosyası
+    * Dosya üzerinde EndpointSettings.js
     * EndpointKeys klasörü
 
 1. App Service 'i başlatın.
@@ -244,12 +243,12 @@ Birden çok dilde içeriğiniz varsa, her dil için ayrı bir hizmet oluşturmay
 **Cevap**: bilgi tabanınız hakkında aşağıdaki bilgilere sahip olmanız gerekir:
 
 * Bilgi Bankası KIMLIĞI.
-* Bilgi Bankası 'nın yayımlanan bitiş noktası özel alt etki alanı adı `host`, yayımlama sonrasında **Ayarlar** sayfasında bulunur.
+* Bilgi Bankası 'nın yayımlanan bitiş noktası özel alt etki alanı adı, `host` Yayımlama sonrasında **Ayarlar** sayfasında bulunur.
 * Bilgi Bankası 'nın yayımlanmış uç nokta anahtarı-yayımladıktan sonra **Ayarlar** sayfasında bulunur.
 
 Bu bilgilerle, Azure portal bot 'ın App Service 'e gidin. **Ayarlar-> yapılandırma-> uygulama ayarları**altında bu değerleri değiştirin.
 
-Bilgi Bankası 'nın uç nokta anahtarı, ABS `QnAAuthkey` hizmetinde etiketlidir.
+Bilgi Bankası 'nın uç nokta anahtarı, `QnAAuthkey` ABS hizmetinde etiketlidir.
 
 </details>
 

@@ -4,11 +4,12 @@ description: Azure Dağıtım Yöneticisi ile birçok bölge üzerinden bir hizm
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057934"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130231"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Dağıtım Yöneticisi ile güvenli dağıtım uygulamalarını etkinleştirme (Genel Önizleme)
 
@@ -36,7 +37,7 @@ Ek kaynaklar:
 
 ## <a name="identity-and-access"></a>Kimlik ve erişim
 
-Dağıtım Yöneticisi, [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md) dağıtım eylemlerini gerçekleştirir. Dağıtımınızı başlatmadan önce bu kimliği oluşturursunuz. Hizmetin dağıttığınız aboneliğe erişimi olması ve dağıtımı tamamlamaya yetecek izinleri olması gerekir. Roller aracılığıyla verilen eylemler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için yerleşik roller](../../role-based-access-control/built-in-roles.md).
+Dağıtım Yöneticisi, [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md) dağıtım eylemlerini gerçekleştirir. Dağıtımınızı başlatmadan önce bu kimliği oluşturursunuz. Hizmetin dağıttığınız aboneliğe erişimi olması ve dağıtımı tamamlamaya yetecek izinleri olması gerekir. Roller aracılığıyla verilen eylemler hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
 Kimliğin dağıtım ile aynı konumda bulunması gerekir.
 

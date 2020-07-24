@@ -1,20 +1,20 @@
 ---
 title: Android harita denetimi ile çalışmaya başlama | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak Android harita denetimiyle çalışmaya nasıl başlacağınızı öğreneceksiniz.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 241f107f0bb2163951104067cb82d6e6a967ad3e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f3a19a3e596d4d0162e92ac3f69c1333eea6aa41
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540137"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132169"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanmaya başlama Android SDK
 

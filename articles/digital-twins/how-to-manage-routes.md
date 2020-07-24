@@ -7,30 +7,25 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 923ae652872246916b2a4c5e8be95871983dbe95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559826"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132271"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure dijital TWINS 'de uç noktaları ve yolları yönetme
 
 Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine yönlendirebilir veya işlem kaynaklarına bağlanabilirsiniz. Bu, önce olayları alabilen **uç noktalar** ayarlanarak, ardından Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten [**olay rotaları**](concepts-route-events.md) tarafından yapılır.
 
 Desteklenen uç nokta türleri şunlardır:
-* [Olay Hub'ı](../event-hubs/event-hubs-about.md)
+* [Olay Hub’ı](../event-hubs/event-hubs-about.md)
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Farklı uç noktalar hakkında daha fazla bilgi için bkz. [Azure mesajlaşma hizmetleri arasında seçim](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)yapın.
+Farklı uç noktalar hakkında daha fazla bilgi için bkz. [*Azure mesajlaşma hizmetleri arasında seçim*](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)yapın.
 
 Uç noktalar ve rotalar [**Eventroutes API 'leri**](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile yönetilir. Ayrıca, [Azure Portal](https://portal.azure.com)aracılığıyla da yönetilebilecek.
-
-> [!NOTE]
-> Azure portal aracılığıyla olay yollarının yönetilmesi, şu anda yalnızca kurumsal etki alanı hesaplarında Azure kullanıcıları tarafından kullanılabilir. 
->
->Hesap gibi bir kişisel [Microsoft hesabı (MSA)](https://account.microsoft.com/account/Account)kullanıyorsanız @outlook.com , lütfen bu makalede açıklandığı gibi olay yollarını yönetmek Için Azure Digital TWINS API 'lerini veya CLI 'yi kullanın.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Azure dijital TWINS için uç nokta oluşturma
 
@@ -70,7 +65,14 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ## <a name="manage-event-routes-with-apis"></a>API 'lerle olay yollarını yönetme
 
-Azure dijital TWINS 'den bir uç noktaya veri göndermek için bir olay yolu tanımlamanız gerekir. Azure dijital TWINS **Eventroutes API 'leri** , geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını bir şekilde yönetmesine olanak tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [: Azure dijital TWINS olaylarını yönlendirme](concepts-route-events.md).
+Azure dijital TWINS 'den bir uç noktaya veri göndermek için bir olay yolu tanımlamanız gerekir. Azure dijital TWINS **Eventroutes API 'leri** , geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını bir şekilde yönetmesine olanak tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [*: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md).
+
+Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
+
+>[!NOTE]
+>Son noktalarınızı dağıttıysanız, yeni bir olay yolu için kullanmayı denemeden **önce** bunların dağıtımını tamamladığınızı doğrulayın. Uç noktalar kullanılamadığından yönlendirme dağıtımı başarısız olursa birkaç dakika bekleyip yeniden deneyin.
+>
+> Bu akışı komut dosyası olarak belirlerseniz, uç nokta hizmeti 'nin yönlendirme kurulumuna geçmeden önce dağıtımı tamamlaması için 2-3 dakika boyunca bir süre oluşturarak bu işlemi hesaba eklemek isteyebilirsiniz.
 
 Bu makaledeki örnekler C# SDK 'SıNı kullanır.
 
@@ -149,7 +151,7 @@ Desteklenen yol filtreleri aşağıda verilmiştir.
 | --- | --- | --- | --- |
 | Tür | Dijital ikizi örneğiniz aracılığıyla akan [olay türü](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Kaynak | Azure dijital TWINS örneğinin adı | `"filter" : "source = '<hostname>'"`|  **Bildirimler için**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetri için**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
-| Özne | Yukarıdaki olay kaynağı bağlamındaki olay açıklaması | `"filter": " subject = '<subject>'"` | **Bildirimler için**: konu`<twinid>` <br> ya da birden çok parça veya kimlik tarafından benzersiz şekilde tanımlanan konular için URI biçimi:<br>`<twinid>/relationships/<relationshipid>`<br> **Telemetri için**: konu bileşen yoludur (telemetri bir ikizi bileşeninden yayıldıysanız), gibi `comp1.comp2` . Telemetri bir bileşenden yayılmadığından, konu alanı boş olur. |
+| Konu | Yukarıdaki olay kaynağı bağlamındaki olay açıklaması | `"filter": " subject = '<subject>'"` | **Bildirimler için**: konu`<twinid>` <br> ya da birden çok parça veya kimlik tarafından benzersiz şekilde tanımlanan konular için URI biçimi:<br>`<twinid>/relationships/<relationshipid>`<br> **Telemetri için**: konu bileşen yoludur (telemetri bir ikizi bileşeninden yayıldıysanız), gibi `comp1.comp2` . Telemetri bir bileşenden yayılmadığından, konu alanı boş olur. |
 | Veri şeması | DTDL model KIMLIĞI | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **Telemetri için**: veri şeması, ikizi veya Telemetriyi gösteren BILEŞENIN model kimliğidir <br>**Bildirimler için**: veri şeması desteklenmez|
 | İçerik türü | Veri değerinin içerik türü | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | Spec sürümü | Kullandığınız olay şemasının sürümü | `"filter": "specversion = '<version>'"` | Olmalıdır `1.0` . Bu, CloudEvents şema sürüm 1,0 ' i gösterir |
@@ -174,7 +176,7 @@ Bir filtreyi uyguladığınızda veya güncelleştirdiğinizde, değişikliğin 
 
 ## <a name="manage-endpoints-and-routes-with-cli"></a>CLı ile uç noktaları ve yolları yönetme
 
-Uç noktalar ve rotalar Ayrıca Azure dijital TWINS CLı kullanılarak yönetilebilir. Komutları [nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma](how-to-use-cli.md)bölümünde bulabilirsiniz.
+Uç noktalar ve rotalar Ayrıca Azure dijital TWINS CLı kullanılarak yönetilebilir. Komutları [*nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma*](how-to-use-cli.md)bölümünde bulabilirsiniz.
 
 ## <a name="monitor-event-routes"></a>Olay yollarını izle
 
@@ -189,4 +191,4 @@ Buradan, örneğiniz için ölçümleri görüntüleyebilir ve özel görünüml
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Alabilmeniz için farklı olay iletisi türleri hakkında bilgi edinin:
-* [Nasıl yapılır: olay verilerini yorumlama](how-to-interpret-event-data.md)
+* [*Nasıl yapılır: olay verilerini yorumlama*](how-to-interpret-event-data.md)

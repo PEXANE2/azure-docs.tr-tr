@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829406"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131064"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -76,7 +76,7 @@ VM 'lerle sahip olduğunuz denetim düzeyi nedeniyle, Azure 'da PaaS modeline s�
 
 > **Ne zaman kullanılır**: uygulama altyapınız üzerinde tam denetim yapmak veya şirket içi uygulama iş yüklerini değişiklik yapmadan Azure 'a geçirmek Istediğinizde sanal makineleri kullanın.
 >
-> **Kullanmaya başlayın**: Azure Portal BIR [Linux VM](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) veya [Windows VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) 'si oluşturun.
+> **Kullanmaya başlayın**: Azure Portal BIR [Linux VM](../../virtual-machines/linux/quick-create-portal.md) veya [Windows VM](../../virtual-machines/windows/quick-create-portal.md) 'si oluşturun.
 
 #### <a name="azure-functions-serverless"></a>Azure Işlevleri (sunucusuz)
 
@@ -141,11 +141,6 @@ Bir işletim sistemi sanallaştırma biçimindeki Docker kapsayıcıları, uygul
 
 Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
 
-- **Azure DOCKER VM Uzantısı**: bir Docker Konağı görevi görecek şekilde sanal makineyi Docker araçlarıyla yapılandırmanıza olanak tanır.
-
-  > **Ne zaman kullanılır**: bir VM 'de uygulamalarınız için tutarlı kapsayıcı dağıtımları oluşturmak istediğinizde veya [Docker Compose](https://docs.docker.com/compose/overview/)kullanmak istediğinizde.
-  >
-  > **Kullanmaya başlayın**: [Docker VM uzantısını kullanarak Azure 'Da bir Docker ortamı oluşturun](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
 - **Azure Kubernetes hizmeti**: Kapsayıcılı uygulamalar çalıştırmak için önceden yapılandırılmış bir sanal makine kümesi oluşturmanıza, yapılandırmanıza ve yönetmenize olanak sağlar. Azure Kubernetes hizmeti hakkında daha fazla bilgi edinmek için bkz. [Azure Kubernetes hizmet tanıtımı](../../aks/intro-kubernetes.md).
 
@@ -163,7 +158,7 @@ Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
   >
   > **Kullanmaya başlayın**: [Linux üzerinde App Service Için özel bir Docker görüntüsü kullanın](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 Yalnızca uygulamalarınızı kimin kullandığını ve ayrıca Kaynaklarınıza yetkisiz erişimi engellemek için çok önemlidir. Azure, uygulama istemcilerinizin kimliğini doğrulamak için çeşitli yollar sağlar.
 
@@ -238,7 +233,7 @@ Azure, uygulamalarınızı ve hizmetlerinizi komut satırından yönetmenin iki 
 
 -   [Azure PowerShell](../../powershell-install-configure.md): Windows PowerShell kullanarak Azure kaynaklarını yönetmenizi sağlayan cmdlet 'ler içeren bir modül kümesi sağlar.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 [Azure Portal](https://portal.azure.com) Web tabanlı bir uygulamadır. Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için Azure portal kullanabilirsiniz. Şunları içerir:
 
@@ -302,7 +297,7 @@ Azure Kaynak Gezgini, aboneliğinizde önceden oluşturduğunuz kaynakları gör
 
 Azure kaynaklarına erişime izin verildiğinde, kullanıcılara belirli bir görevi yapmak için gereken en az ayrıcalığı sağlamak her zaman en iyi uygulamadır.
 
-- **Rol tabanlı erişim denetimi (RBAC)**: Azure 'da, belirli bir kapsamdaki Kullanıcı hesaplarına (sorumlular) erişim izni verebilirsiniz: abonelik, kaynak grubu veya ayrı kaynaklar. RBAC, kaynakları bir kaynak grubuna dağıtmanızı ve belirli bir kullanıcıya veya gruba izin vermenizi sağlar. Ayrıca, erişimi yalnızca hedef kaynak grubuna ait kaynaklarla sınırlandırmanıza da olanak tanır. Ayrıca, sanal makine veya sanal ağ gibi tek bir kaynağa erişim izni verebilirsiniz. Erişim vermek için Kullanıcı, Grup veya hizmet sorumlusuna bir rol atarsınız. Önceden tanımlanmış birçok rol vardır ve kendi özel rollerinizi de tanımlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [rol tabanlı erişim denetimi (RBAC) nedir?](../../role-based-access-control/overview.md).
+- **Rol tabanlı erişim denetimi (RBAC)**: Azure 'da, belirli bir kapsamdaki Kullanıcı hesaplarına (sorumlular) erişim izni verebilirsiniz: abonelik, kaynak grubu veya ayrı kaynaklar. RBAC, kaynakları bir kaynak grubuna dağıtmanızı ve belirli bir kullanıcıya veya gruba izin vermenizi sağlar. Ayrıca, erişimi yalnızca hedef kaynak grubuna ait kaynaklarla sınırlandırmanıza da olanak tanır. Ayrıca, sanal makine veya sanal ağ gibi tek bir kaynağa erişim izni verebilirsiniz. Erişim vermek için Kullanıcı, Grup veya hizmet sorumlusuna bir rol atarsınız. Önceden tanımlanmış birçok rol vardır ve kendi özel rollerinizi de tanımlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
 
   > **Ne zaman kullanılır**: kullanıcılar ve gruplar için ayrıntılı erişim yönetimine ihtiyacınız olduğunda veya bir kullanıcıya abonelik sahibi yapmanız gerektiğinde.
   >
@@ -319,8 +314,8 @@ Azure Resource Manager, tek tek kaynaklara özel Etiketler atamanıza olanak tan
 * Portalda
 * Azure Resource Manager şablonunda
 * REST API’sini kullanma
-* Azure CLI kullanma
-* PowerShell’i kullanma
+* Azure CLI'yı kullanma
+* PowerShell'i kullanma
 
 Her kaynağa birden çok etiket atayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../../resource-group-using-tags.md).
 

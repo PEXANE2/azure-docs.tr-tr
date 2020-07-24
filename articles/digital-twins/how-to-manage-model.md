@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 01bb5f9ae6d8c7a6374a8b1392b061f31fdb63a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390593"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132288"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -66,7 +66,7 @@ Bu model, hasta odası için bir ad ve benzersiz KIMLIĞI ve ziyaretçi sayısı
 Bu yöntemi izleyerek, hospstanonun için modeller, bölgeler veya hastanın kendisi için modeller tanımlama bölümüne geçebilirsiniz.
 
 > [!TIP]
-> DTDL 'yi ayrıştırmak ve doğrulamak için kullanılabilir bir istemci tarafı kitaplığı vardır. Kullanıcı arabirimi öğeleri oluşturma gibi model temelli geliştirme senaryolarında kullanılabilen DTDL içeriğinin bir C# nesne modelini oluşturur. Bu kitaplığı, modellerinizin karşıya yüklemeden önce söz dizimi hatalarına sahip olmadığından emin olmak için de kullanabilirsiniz. Bu kitaplık hakkında daha fazla bilgi ve bir DTDL doğrulayıcısı için üzerine oluşturulmuş bir örneğe erişme hakkında daha fazla bilgi için bkz. [nasıl yapılır: modelleri ayrıştırma ve doğrulama](how-to-use-parser.md).
+> DTDL 'yi ayrıştırmak ve doğrulamak için kullanılabilir bir istemci tarafı kitaplığı vardır. Kullanıcı arabirimi öğeleri oluşturma gibi model temelli geliştirme senaryolarında kullanılabilen DTDL içeriğinin bir C# nesne modelini oluşturur. Bu kitaplığı, modellerinizin karşıya yüklemeden önce söz dizimi hatalarına sahip olmadığından emin olmak için de kullanabilirsiniz. Bu kitaplık hakkında daha fazla bilgi ve bir DTDL doğrulayıcısı için üzerine oluşturulmuş bir örneğe erişme hakkında daha fazla bilgi için bkz. [*nasıl yapılır: modelleri ayrıştırma ve doğrulama*](how-to-use-parser.md).
 
 ## <a name="manage-models-with-apis"></a>Modelleri API 'lerle yönetin.
 
@@ -190,7 +190,7 @@ Modelin yetki alma durumu, `ModelData` model alma API 'leri tarafından döndür
 
 Örneğinizdeki tüm modelleri aynı anda silebilir veya tek bir temelinde yapabilirsiniz.
 
-Tüm modellerin nasıl silineceği hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllModels` işlevde yapar.
+Tüm modellerin nasıl silineceği hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [*: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllModels` işlevde yapar.
 
 Bu bölümün geri kalanı, model silme işlemini daha yakından ayrıntılandırır ve tek bir model için nasıl yapılacağını gösterir.
 
@@ -247,9 +247,9 @@ Azure dijital TWINS bu durumu engellemez, bu nedenle, model tanımı anahtarı a
 
 ## <a name="manage-models-with-cli"></a>CLı ile modelleri yönetme
 
-Modeller ayrıca Azure dijital TWINS CLı kullanılarak yönetilebilir. Komutları [nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma](how-to-use-cli.md)bölümünde bulabilirsiniz.
+Modeller ayrıca Azure dijital TWINS CLı kullanılarak yönetilebilir. Komutları [*nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma*](how-to-use-cli.md)bölümünde bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Modellerinize göre dijital TWINS oluşturma ve yönetme hakkında bilgi için bkz..
-* [Nasıl yapılır: dijital TWINS 'i yönetme](how-to-manage-twin.md)
+* [*Nasıl yapılır: dijital TWINS 'i yönetme*](how-to-manage-twin.md)

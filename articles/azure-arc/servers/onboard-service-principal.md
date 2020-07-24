@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/04/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7ac04b29853ce0d4f6ac4004bdfad4effd283170
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103798"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133002"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Karma makineleri Azure 'a ölçeklendirmeye bağlama
 
@@ -37,7 +37,7 @@ Bu işlemin sonunda, karma makinelerinizi sunucular için Azure yaya başarıyla
 
 PowerShell kullanarak hizmet sorumlusu oluşturmak için aşağıdakileri yapın.
 
-1. Şu komutu çalıştırın. Cmdlet 'in çıkışını bir değişkende depolamanız gerekir [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) , aksi durumda daha sonraki bir adımda gereken parolayı alamazsınız.
+1. Aşağıdaki komutu çalıştırın. Cmdlet 'in çıkışını bir değişkende depolamanız gerekir [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) , aksi durumda daha sonraki bir adımda gereken parolayı alamazsınız.
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -76,7 +76,7 @@ Aşağıdaki özelliklerden alınan değerler öğesine geçirilen parametrelerl
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Aracıyı yükleyip Azure 'a bağlanın
 
-Aşağıdaki adımlar, [Azure Portal makalesinden karma makinelerde Azure 'A bağlanma](onboard-portal.md) bölümünde açıklanan benzer adımları gerçekleştiren betik şablonunu kullanarak, karma makinelerinize bağlı makine aracısını yükler ve yapılandırır. Fark, `azcmagent` hizmet sorumlusunu kullanarak komutu kullanarak Azure Arc bağlantısını oluşturduğunuz son adımdır. 
+Aşağıdaki adımlar, [Azure Portal makalesinden karma makinelerde Azure 'A bağlanma](onboard-portal.md) bölümünde açıklanan benzer adımları gerçekleştiren betik şablonunu kullanarak, karma makinelerinize bağlı makine aracısını yükler ve yapılandırır. Fark, `azcmagent` hizmet sorumlusunu kullanarak komutu kullanarak Azure Arc bağlantısını oluşturduğunuz son adımdır.
 
 Aşağıda, `azcmagent` hizmet sorumlusu için kullanmak üzere komutu yapılandırdığınız ayarlar verilmiştir.
 
@@ -110,6 +110,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>Betik yalnızca Windows PowerShell 'in 64 bitlik bir sürümünden çalışmayı destekler.
+>
+
 ### <a name="linux-installation-script"></a>Linux yükleme betiği
 
 Aşağıda, aracının tam otomatik ve etkileşimli olmayan bir yüklemesini desteklemek üzere hizmet sorumlusunu kullanacak şekilde değiştirilen Linux yükleme betiği için bağlı makine aracısına bir örnek verilmiştir.
@@ -131,7 +135,10 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
-Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure Portal](https://aka.ms/hybridmachineportal)makinelerinizi görüntüleyin.
+>[!NOTE]
+>**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
+
+Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure portalında](https://aka.ms/hybridmachineportal) makinelerinizi görüntüleyin.
 
 ![Başarılı bir sunucu bağlantısı](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

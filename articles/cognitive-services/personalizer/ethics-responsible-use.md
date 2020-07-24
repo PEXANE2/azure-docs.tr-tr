@@ -3,19 +3,17 @@ title: ETCS ve sorumlu kullanımı-kişiselleştirici
 titleSuffix: Azure Cognitive Services
 description: Bu yönergeler, şirketinizde ve hizmetinizde güven oluşturmanıza yardımcı olacak bir şekilde kişiselleştirme uygulamanıza yardımcı olmaya yönelik olarak tasarlanmıştır. Araştırmayı durakladığınızdan emin olun, insanların yaşamına yönelik olarak kişiselleştirmenin etkisini öğrenin ve bilinçli edin. Şüpheli, Arama Kılavuzu.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: diberry
-ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478100"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132730"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Kişiselleştirici sorumlu uygulamasına ilişkin yönergeler
 
@@ -132,10 +130,10 @@ Aşağıda AI 'nin sorumlu uygulamalarına ilişkin tasarımın alanları verilm
 ### <a name="transparency"></a>Saydamlık
 *AI sistemleri*anlaşılabilir olmalıdır. Kişiselleştirici ile:
 
-* *Kullanıcılara içeriğin nasıl kişiselleştirilme hakkında bilgi verin.* Örneğin, kullanıcılarınıza Kullanıcı ve eylemlerin, kişiselleştirici sonuçlarında bir `Why These Suggestions?` rol oynadığı en iyi özellikleri gösteren bir düğme gösterebilirsiniz.
+* *Kullanıcılara içeriğin nasıl kişiselleştirilme hakkında bilgi verin.* Örneğin, kullanıcılarınıza `Why These Suggestions?` Kullanıcı ve eylemlerin, kişiselleştirici sonuçlarında bir rol oynadığı en iyi özellikleri gösteren bir düğme gösterebilirsiniz.
 * Kullanım koşullarınızın, deneyimi kişiselleştirmek için kullanıcılar ve davranışları hakkında bilgi kullanacağınızı söylediğinizden emin olun.
 
-### <a name="fairness"></a>Eşitliği
+### <a name="fairness"></a>Eşitlik
 *AI sistemleri tüm kişileri oldukça kabul etmelidir*.
 
 * Sonuçların uzun süreli, sonuçsal veya gerçek bir zarar olduğu durumlarda kullanım durumları için kişiselleştirici kullanmayın.

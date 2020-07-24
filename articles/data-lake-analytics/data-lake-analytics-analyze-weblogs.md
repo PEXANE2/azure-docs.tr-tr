@@ -2,19 +2,17 @@
 title: Azure Data Lake Analytics'i kullanarak Web sitesi günlüklerini çözümleme
 description: U-SQL işlevleri ve sorguları çalıştırmak için Azure Data Lake Analytics kullanarak Web sitesi günlüklerini çözümlemeyi öğrenin.
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 25b84646bd6a95f0409184cccd40c6b7c9a0ef7f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ad837c51fafd7df2b019c78ae4adaf4967f2df7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117449"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132645"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics'i kullanarak Web sitesi günlüklerini çözümleme
 Özellikle de Web sitesini ziyaret etmeye çalıştıklarında hangi başvuranları hatalara çalıştığını bulmada Data Lake Analytics kullanarak Web sitesi günlüklerini çözümlemeyi öğrenin.
@@ -60,7 +58,7 @@ Uygulamaya Kullanıcı tanımlı operatörler ekleme ekleyebilirsiniz.  Daha faz
 
    ![yeni U-SQL Visual Studio projesi](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
-3. **Tamam**'a tıklayın. Visual Studio, Script. usql dosyası ile bir çözüm oluşturur.
+3. **Tamam** düğmesine tıklayın. Visual Studio, Script. usql dosyası ile bir çözüm oluşturur.
 
 4. Script. usql dosyasına aşağıdaki betiği girin:
 

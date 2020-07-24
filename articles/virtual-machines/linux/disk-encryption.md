@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fba16f9245c8d438268338329ebadad7a57ef206
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502733"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131931"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Depolama sunucu tarafı şifrelemesi
 
@@ -80,8 +80,7 @@ Herhangi bir şifreleme algoritması, uygulama veya anahtarla ilişkili riskten 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Host-CLı ' de şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirme](disks-enable-host-based-encryption-cli.md)
-- [Yönetilen diskler için REST 'de çift şifrelemeyi etkinleştir-CLı](disks-enable-double-encryption-at-rest-cli.md)
-- [Yönetilen diskler için müşteri tarafından yönetilen anahtarları etkinleştirme-CLı](disks-enable-customer-managed-keys-cli.md)
-- [Yönetilen diskler için müşteri tarafından yönetilen anahtarları etkinleştirme-Portal](disks-enable-customer-managed-keys-portal.md)
+- [CLI](disks-enable-host-based-encryption-cli.md) veya [Azure Portal](disks-enable-host-based-encryption-portal.md)ile konakta şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirin.
+- [CLI](disks-enable-double-encryption-at-rest-cli.md) veya [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)ile yönetilen diskler için bekleyen çift şifrelemeyi etkinleştirin.
+- [CLI](disks-enable-customer-managed-keys-cli.md) veya [Azure Portal](disks-enable-customer-managed-keys-portal.md)yönetilen diskler için müşteri tarafından yönetilen anahtarları etkinleştirin.
 - [Azure Key Vault nedir?](../../key-vault/general/overview.md)

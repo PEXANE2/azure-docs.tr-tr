@@ -1,19 +1,19 @@
 ---
 title: Bölge sınırı için geojson veri biçimi | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure Maps ile bölge oluşturma API 'sinde kullanılabilen bölge verilerinin nasıl hazırlanacağı hakkında bilgi edineceksiniz.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7b9860908dd3bdf3dcda727f350578a97b890cac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335612"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131314"
 ---
 # <a name="geofencing-geojson-data"></a>Bölge sınırlaması coğrafi JSON verileri
 
@@ -30,7 +30,7 @@ Bölge ölçütü veya bölge kümesi verileri `Feature` `FeatureCollection` `Ge
 * , `expiredTime` Bölge sınırlaması verilerinin son kullanma tarihi ve saati. `userTime`İstekteki değeri bu değerden daha sonra ise, karşılık gelen bölge verileri, süre dolmayan veriler olarak değerlendirilir ve sorgulanmaz. Bu durumda, bu bölge verilerinin geometryıd 'si, `expiredGeofenceGeometryId` Bölge sınırı yanıtı içinde diziye dahil edilir.
 * , `validityPeriod` Geofence 'ın geçerlilik zaman döneminin bir listesidir. `userTime`İstekteki değeri geçerlilik süresinin dışında kalırsa, ilgili bölge verileri geçersiz olarak kabul edilir ve sorgulanmaz. Bu bölge verilerinin geometryıd 'si, `invalidPeriodGeofenceGeometryId` Bölge sınırı Response içindeki diziye dahil edilmiştir. Aşağıdaki tabloda validityPeriod öğesinin özellikleri gösterilmektedir.
 
-| Name | Tür | Gerekli  | Açıklama |
+| Ad | Tür | Gerekli  | Açıklama |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Tarih saat  | true | Geçerlilik zaman döneminin başlangıç tarihi saati. |
 | endTime   | Tarih saat  | true |  Geçerlilik zaman döneminin bitiş tarihi. |

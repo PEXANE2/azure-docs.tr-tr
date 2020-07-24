@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986793"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132951"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,7 +62,7 @@ Aksi belirtilmedikçe, ilgili hedefi veya gereksinimi elde etmek için her böl�
 
 Burada listelenen öneriler ve en iyi uygulamalar güncelleştirilmeye devam ediyor. Bu makalenin altındaki **geri bildirim** bağlantısını kullanarak bu belge için giriş veya herhangi bir düzeltme sağlayın.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı ve SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:
 
@@ -240,9 +240,9 @@ Gerekli görevleri gerçekleştirmek için yalnızca gerekli [izinleri](https://
   - Kullanıcıları gereksiz rollere atamadığınızdan emin olun.
 
 - Azure Resource Manager:
-  - Kullanılabilir veya özel RBAC rollerinin yerleşik rollerini kullanın ve gerekli izinleri atayın.
-    - [Azure için yerleşik roller](../../role-based-access-control/built-in-roles.md)
-    - [Azure kaynakları için özel roller](../../role-based-access-control/custom-roles.md)
+  - Kullanılabilir veya Azure özel rolleri yerleşik roller kullanın ve gerekli izinleri atayın.
+    - [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md)
+    - [Özel Azure rolleri](../../role-based-access-control/custom-roles.md)
 
 **En iyi uygulamalar**:
 
@@ -291,7 +291,7 @@ Görev ayrımı olarak da adlandırılan görevlerin ayrılması, hassas görevl
 - Sisteme erişen kullanıcıların (ve otomatikleştirilmiş işlemlerin) kapsamlı bir hiyerarşisini belirler.
 
 - Gerekli Kullanıcı gruplarına göre roller oluşturun ve rollere izinler atayın.
-  - Azure portal veya PowerShell aracılığıyla yönetim düzeyi görevler için, RBAC rollerini kullanın. Gereksinimle eşleşen bir yerleşik rol bulun ya da kullanılabilir izinleri kullanarak özel bir RBAC rolü oluşturun
+  - Azure portal veya PowerShell aracılığıyla yönetim düzeyi görevler için, RBAC rollerini kullanın. Gereksinimle eşleşen bir yerleşik rol bulun ya da kullanılabilir izinleri kullanarak bir Azure özel rolü oluşturun
   - Yönetilen bir örnekte sunucu genelindeki görevler için sunucu rolleri oluşturun (yeni oturumlar, veritabanları oluşturma).
   - Veritabanı düzeyindeki görevler için veritabanı rolleri oluşturun.
 
@@ -342,8 +342,8 @@ SoD 'ye daha ayrıntılı bir şekilde geçmek isteyen okuyucular için aşağı
   - [İmza saklı yordamları](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Azure Kaynak yönetimi için:
-  - [Azure için yerleşik roller](../../role-based-access-control/built-in-roles.md)
-  - [Azure kaynakları için özel roller](../../role-based-access-control/custom-roles.md)
+  - [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md)
+  - [Özel Azure rolleri](../../role-based-access-control/custom-roles.md)
   - [Yükseltilmiş erişim için Azure AD Privileged Identity Management kullanma](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 
 ### <a name="perform-regular-code-reviews"></a>Düzenli kod İncelemeleri gerçekleştirin

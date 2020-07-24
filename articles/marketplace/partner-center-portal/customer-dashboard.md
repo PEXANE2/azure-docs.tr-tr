@@ -1,16 +1,16 @@
 ---
-title: Iş Ortağı Merkezi 'nde Microsoft ticari Market Analytics 'te müşteri panosu
+title: Iş Ortağı Merkezi, Azure Marketi ve Microsoft AppSource Microsoft ticari Market Analytics 'te müşteri panosu
 description: Ticari Market Analytics 'teki müşteri panosunu kullanarak, büyüme eğilimleri dahil olmak üzere müşterilerinizle ilgili bilgilere erişmeyi öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 9f71a668b3473521e9d8d7c9318ab2e557380845
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2020
+ms.openlocfilehash: f4dbdbfc3b835871516233e601881012190169ce
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121767"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131778"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Müşteri Panosu
 
@@ -29,17 +29,19 @@ Bu makalede, Iş Ortağı Merkezi 'nde **Müşteri panosu** hakkında bilgi sağ
 - [Coğrafya ile müşteri](#customer-by-geography)
 - [Müşteri eğilimleri](#customer-trends)
 - [Siparişlere ve kullanıma göre müşteriler](#customers-by-orders-and-usage)
-- [SKU 'Lara göre müşteriler](#customers-by-skus)
+- [Planlara göre müşteriler](#customers-by-plans)
 - [Müşteri türüne göre siparişler ve kullanım](#orders-and-usage-by-customer-type)
 - [Müşteri Ayrıntıları tablosu](#customer-details-table)
 - [Müşteri sayfası filtreleri](#customer-page-filters)
+
+Iş Ortağı Merkezi 'nde müşteri alımı ve raporlama arasındaki maksimum gecikme süresi 48 saattir.
 
 ### <a name="customer-summary"></a>Müşteri Özeti
 
 Müşteri Özeti bölümü, seçilen tarih aralığında yeni, mevcut ve tamamen dahil olmak üzere tüm müşterilerin sayısını görüntüler.
 
 - Toplam Müşteri, teklifinizi satın almış olan ve en az bir sipariş iptal edilmemiş tüm müşterilerin sayısı olarak tanımlanır.
-- Müşterilerin önceki aya kıyasla büyüme yüzdesi, yeşil veya aşağı gösterge göstergesinde sayı ve yukarı gösterge olarak belirtilmiştir.
+- Önceki aya kıyasla oluşan büyüme yüzdesi, kırmızı renkle yeşil veya aşağı gösterge göstergesinde sayı ve yukarı gösterge olarak belirtilir.
 - Büyüme eğilimleri çubuk grafiklerle temsil edilir ve grafiğin sütunlarının üzerine gelindiğinde her ay için değeri görüntüler.
 
 Üç **Müşteri türü**vardır: yeni, var ve bir şekilde.
@@ -50,9 +52,9 @@ Müşteri Özeti bölümü, seçilen tarih aralığında yeni, mevcut ve tamamen
 
 ### <a name="customer-by-geography"></a>Coğrafya ile müşteri
 
-**Coğrafya Ile müşteri** grafiği, seçilen tarih aralığı boyunca edinilen tüm müşterilerin ve müşterilerin sayısını gösterir ve müşteri ülkesi/bölgesi temel alınarak eşlenir. Haritadaki koyu renkli bir renk, müşteri sayısının yüksek değerini gösterir. Bir ülkede/bölgede yakınlaştırmak için tablodaki bir kayda tıklayın.
+**Coğrafya Ile müşteri** grafiği, seçilen tarih aralığı süresince edinilen tüm müşterilerin ve müşterilerin sayısını, müşteri ülkesi/bölgesi temel alınarak eşleştirilen şekilde gösterir. Haritadaki koyu renkli bir renk, müşteri sayısının yüksek değerini gösterir. Bir ülkede/bölgede yakınlaştırmak için tablodaki bir kaydı seçin.
 
-Isı haritasını, müşteri sayısını ve% müşteriyi ülke/bölge olarak görüntüler. Tam konumu görüntülemek ve belirli bir konuma yakınlaştırmak için Haritayı taşıyabilirsiniz. Bu haritada, müşterilerin yerinin yüzdesini konuma göre görüntülemenize ve müşterilerin bu konuma yeni eklenmiş olmasına izin veren bir ek kılavuz bulunur.
+Isı haritasında müşteri ülke/bölge ile müşterinin sayısı ve yüzdesi görüntülenir. Tam konumu görüntülemek ve belirli bir konuma yakınlaştırmak için Haritayı taşıyabilirsiniz. Bu haritada, müşterilerin yerinin yüzdesini konuma göre görüntülemenize ve müşterilerin bu konuma yeni eklenmiş olmasına izin veren bir ek kılavuz bulunur.
 
 ### <a name="customer-trends"></a>Müşteri eğilimleri
 
@@ -71,14 +73,14 @@ Isı haritasını, müşteri sayısını ve% müşteriyi ülke/bölge olarak gö
 
 Örnek olarak, normalleştirilmiş kullanım için aşağıdaki grafiğe bakın: ilk 30 yaşın, müşterilerin en fazla %87 ' luk bir normalleştirilmiş kullanımın% ' una katkısı vardır. Müşterilerin 30. Yüzdeliğini yalnızca 1.570.000 saat kullanım için katkıda bulunur.
 
-### <a name="customers-by-skus"></a>SKU 'Lara göre müşteriler
+### <a name="customers-by-plans"></a>Planlara göre müşteriler
 
-**SKU 'lara/kullanım grafiklerine göre müşteriler** aşağıda açıklanmıştır.
+**Planlar/kullanım grafiklerine göre müşteriler** aşağıda açıklanmıştır.
 
 1. Öncü Pano, sipariş sayısına göre derecelendirilen ilk 50 müşterinin ayrıntılarını sunar. Müşteri seçildikten sonra müşterinin ayrıntıları, bu öncü panonun 2., 3 ve 4. bölümlerinde sunulur.
 2. Yayımcılar bir sahip rolüyle oturum açtıklarında, bu alanda müşteri profili ayrıntıları görüntülenir. Yayımcılar bir katkıda bulunan rolüyle oturum açtıysa, bu bölümdeki Ayrıntılar kullanılabilir olmayacaktır.
-3. SKU 'Lara göre siparişler halka grafik, SKU 'Lar için satın alınan siparişlerin dökümünü görüntüler. En yüksek sıra sayısı olan ilk 5 SKU 'Lar görüntülenir, ancak siparişlerin geri kalanı ' rest All ' altında gruplandırılır.
-4. SKU 'Lara göre koltuk halka grafiğinde, SKU 'Lar için sıralanmış bir koltuk dökümü görüntülenir. En yüksek koltuk olan en iyi 5 SKU 'Lar görüntülenir, ancak siparişlerin geri kalanı Rest tümü altında gruplandırılır.
+3. **Planlara göre siparişler** halka grafik, planlar için satın alınan siparişlerin dökümünü görüntüler. En yüksek sıra sayısı olan ilk beş plan görüntülenir, ancak siparişlerin geri kalanı ' rest All ' altında gruplandırılır.
+4. **Planlara göre koltuk** halka grafik, planlar için sıralanmış bir koltuk dökümünü görüntüler. En yüksek bilgisayar sayısı en fazla olan beş plan görüntülenir, ancak siparişlerin geri kalanı kalan tüm altında gruplandırılır.
 
 ### <a name="orders-and-usage-by-customer-type"></a>Müşteri türüne göre siparişler ve kullanım
 
@@ -95,7 +97,7 @@ Isı haritasını, müşteri sayısını ve% müşteriyi ülke/bölge olarak gö
 - Kılavuzdaki her bir sütun sıralanabilir.
 - Kayıt sayısı 1000 ' den küçükse veriler TSV dosyasına ayıklanabilir.
 - Kayıt numarası 1000 üzerinden ise, verilen veriler sonraki 30 gün boyunca bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
-- Filtreler, yalnızca ilgilendiğiniz verileri göstermek için tabloya uygulanabilir. Veriler şirket adı, müşteri KIMLIĞI, Market abonelik KIMLIĞI, Azure lisans türü, alınma tarihi, tarih kaybı, müşteri e-postası, müşteri ülkesi/bölgesi/eyalet/şehir/posta, müşteri dili vb. tarafından filtrelenebilir.
+- Yalnızca ilgilendiğiniz verileri göstermek için tabloya filtre uygulayın. Verileri şirket adı, müşteri KIMLIĞI, Market abonelik KIMLIĞI, Azure lisans türü, alınma tarihi, tarih kaybı, müşteri e-postası, müşteri ülkesi/bölgesi/eyalet/şehir/posta, müşteri dili vb. olarak filtreleyin.
 - Bir teklif, korunan bir müşteri tarafından satın alındığında, **müşterinin ayrıntılı verilerinde** bilgiler maskelenecek (* * * * * * * * * * * *).
 - Şirket adı, müşteri adı ve müşteri e-postası gibi müşteri boyut ayrıntıları, Azure Marketi veya AppSource işlem düzeyinde değil, bir kuruluş KIMLIĞI düzeyidir.
 
@@ -104,7 +106,7 @@ Isı haritasını, müşteri sayısını ve% müşteriyi ülke/bölge olarak gö
 **Müşteriler** sayfası filtreleri, müşteriler sayfa düzeyinde uygulanır. Grafik oluşturmak için seçtiğiniz ölçütlere ve ' ayrıntılı siparişler verileri ' kılavuzunda/dışarı aktarmaya göre görmek istediğiniz verileri görüntülemek için birden çok filtre seçebilirsiniz. Filtreler, siparişler sayfasının sağ üst köşesinde seçtiğiniz veri aralığı için ayıklanan verilere uygulanır.
 
 >[!NOTE]
-> Müşteri kılavuzunda, sayfa filtrelerinde ve olası seçimlerdeki her bir alanın ayrıntılı tanımları, [ticari Market analizine yönelik sık sorulan sorular ve terminoloji](./faq-terminology.md)bölümünde bulunur.
+> Müşteri kılavuzunda, sayfa filtrelerinde ve olası seçimlerdeki alanların her biri için ayrıntılı tanımlar aşağıda belirtilen SSS makalesinde bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

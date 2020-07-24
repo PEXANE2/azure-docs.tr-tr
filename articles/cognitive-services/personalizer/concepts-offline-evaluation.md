@@ -3,19 +3,17 @@ title: Çevrimdışı değerlendirme yöntemini kullanma-kişiselleştirici
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, uygulamanızın verimliliğini ölçmek ve öğrenme döngünüzü çözümlemek için çevrimdışı değerlendirmeyi kullanma açıklanmaktadır.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623600"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132764"
 ---
 # <a name="offline-evaluation"></a>Çevrimdışı değerlendirme
 
@@ -55,7 +53,7 @@ Değerlendirmede yer alan geçerli ilkeler:
 | Öğrenme ayarları | Amaç|
 |--|--|
 |**Çevrimiçi Ilke**| Kişiselleştirici içinde kullanılan geçerli öğrenme Ilkesi |
-|**Taban çizgisi**|Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde)|
+|**Çizgisi**|Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde)|
 |**Rastgele Ilke**|Her zaman sağlanan Işlemlerden rastgele eylem seçimi döndüren sanal bir sıra davranışı.|
 |**Özel Ilkeler**|Değerlendirme başlatılırken ek öğrenme Ilkeleri karşıya yüklendi.|
 |**İyileştirilmiş Ilke**|Değerlendirme, iyileştirilmiş bir ilkeyi bulma seçeneği ile başlatıldıysa, bu da karşılaştırılır ve bunu indirebilir veya çevrimiçi öğrenme ilkesi haline getirmek için geçerli olanı değiştirin.|
@@ -108,5 +106,5 @@ Bu, değerlendirmeler için kullanılan kavramsal işlemdir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kişiselleştirici](how-to-settings.md)
-[çalışma çevrimdışı değerlendirmesini](how-to-offline-evaluation.md) yapılandırma [kişiselleştirici 'ın nasıl çalıştığını](how-personalizer-works.md) anlama
+[Kişiselleştirici yapılandırma](how-to-settings.md) 
+ [Çevrimdışı değerlendirmeleri Çalıştır](how-to-offline-evaluation.md) [Kişiselleştirici 'ın nasıl çalıştığını](how-personalizer-works.md) anlama

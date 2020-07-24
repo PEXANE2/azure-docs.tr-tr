@@ -1,18 +1,18 @@
 ---
-title: Visual Studio 'da görev iş akışlarını otomatikleştirin
-description: Azure Logic Apps ve Visual Studio kullanarak kurumsal tümleştirme için yinelenen iş akışları oluşturma, zamanlama ve çalıştırma
+title: Visual Studio ile görevleri ve iş akışlarını otomatikleştirme
+description: Azure Logic Apps ve Visual Studio kullanarak kurumsal tümleştirme için otomatik iş akışları oluşturma, zamanlama ve çalıştırma
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2019
-ms.openlocfilehash: 4416c9f9d1c55a460cb983089706e984d90ba082
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520775"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132373"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı Başlangıç: Azure Logic Apps ile otomatik görevler, işlemler ve iş akışları oluşturma - Visual Studio
 
@@ -51,9 +51,15 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
   
     Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. Yükleme işlemini tamamladıktan sonra Visual Studio’yu yeniden başlattığınızdan emin olun.
 
+  * Azure Kamu aboneliklerini Visual Studio ile birlikte kullanmak için, ek kurulum için aşağıdaki konulara bakın:
+
+    * Visual Studio 2019: [hızlı başlangıç: Azure Kamu 'Ya Visual Studio Ile bağlanma](../azure-government/documentation-government-connect-vs.md)
+
+    * Visual Studio 2017: [Visual Studio Market](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector)indirebileceğiniz ve yükleyebileceğiniz [Azure ortam Seçicisi Visual Studio Uzantısı ile tanışın](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/).
+
 * Ekli Mantıksal Uygulama Tasarımcısı kullanılırken web erişimi
 
-  Tasarımcı Azure 'da kaynak oluşturmak ve mantıksal uygulamanızdaki bağlayıcılardan özellikleri ve verileri okumak için bir internet bağlantısı gerektirir. Örneğin, Dynamics CRM Online bağlantılarında, tasarımcı varsayılan ve özel özellikler için CRM örneğinizi denetler.
+  Tasarımcı Azure 'da kaynak oluşturmak ve mantıksal uygulamanızdaki bağlayıcılardan özellikleri ve verileri okumak için bir internet bağlantısı gerektirir.
 
 * Logic Apps tarafından desteklenen Office 365 Outlook, Outlook.com veya Gmail gibi bir e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcılar listesini](/connectors/)gözden geçirin. Bu örnekte Office 365 Outlook kullanılmaktadır. Farklı bir sağlayıcı kullanıyorsanız genel adımlar aynıdır, ancak kullanıcı arabirimi biraz farklı olabilir.
 
@@ -112,7 +118,7 @@ Azure Kaynak grubu projeniz olduğunda, mantıksal uygulamanızı **boş mantık
 
    ![Azur aboneliği, kaynak grubu ve kaynak konumu seçme](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Ayar | Örnek değer | Description |
+   | Ayar | Örnek değer | Açıklama |
    | ------- | ------------- | ----------- |
    | Kullanıcı hesabı | Fabrikam <br> sophia-owen@fabrikam.com | Visual Studio 'da oturum açtığınızda kullandığınız hesap |
    | **Abonelik** | Kullandıkça Öde <br> (sophia-owen@fabrikam.com) | Azure aboneliğinizin ve ilişkili hesabın adı |

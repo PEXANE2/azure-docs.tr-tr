@@ -5,13 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74869842"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132662"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 'de benzersiz anahtar kısıtlamaları
 
@@ -19,7 +20,7 @@ Benzersiz anahtarlar bir Azure Cosmos kapsayıcısına veri bütünlüğü katma
 
 Benzersiz anahtar ilkesiyle bir kapsayıcı oluşturduktan sonra, benzersiz anahtar kısıtlaması tarafından belirtilen şekilde, bir mantıksal bölüm içinde yinelenerek yeni veya mevcut bir öğenin güncelleştirilmesi engellenir. Benzersiz anahtarla birlikte birleştirilmiş bölüm anahtarı, kapsayıcının kapsamındaki bir öğenin benzersizlik düzeyini garanti eder.
 
-Örneğin, benzersiz anahtar kısıtlaması ve bölüm anahtarı olarak e-posta adresi ile bir Azure Cosmos kapsayıcısını göz önünde bulundurun `CompanyID` . Kullanıcının e-posta adresini benzersiz bir anahtarla yapılandırdığınızda, her öğe belirli bir içinde benzersiz bir e-posta adresine sahiptir `CompanyID` . Yinelenen e-posta adresleriyle ve aynı bölüm anahtarı değeriyle iki öğe oluşturulamıyor. 
+Örneğin, benzersiz anahtar kısıtlaması ve bölüm anahtarı olarak e-posta adresi ile bir Azure Cosmos kapsayıcısını göz önünde bulundurun `CompanyID` . Kullanıcının e-posta adresini benzersiz bir anahtarla yapılandırdığınızda, her öğe belirli bir içinde benzersiz bir e-posta adresine sahiptir `CompanyID` . Yinelenen e-posta adresleriyle ve aynı bölüm anahtarı değeriyle iki öğe oluşturulamıyor. Azure Cosmos DB SQL (Core) API 'sinde, öğeler JSON değerleri olarak depolanır. Bu JSON değerleri büyük/küçük harfe duyarlıdır. Benzersiz anahtar olarak bir özellik seçtiğinizde, bu özellik için büyük/küçük harfe duyarlı değerler ekleyebilirsiniz. Örneğin, ad özelliğinde tanımlanmış benzersiz bir anahtarınız varsa, "Gaby", "Gaby" öğesinden farklıdır ve her ikisini de kapsayıcıya ekleyebilirsiniz.
 
 Aynı e-posta adresine sahip olan ancak aynı adı, soyadı ve e-posta adresini içermeyen öğeler oluşturmak için benzersiz anahtar ilkesine daha fazla yol ekleyin. Yalnızca e-posta adresini temel alan benzersiz bir anahtar oluşturmak yerine, ad, soyadı ve e-posta adresi birleşimini içeren benzersiz bir anahtar da oluşturabilirsiniz. Bu anahtar, bileşik benzersiz anahtar olarak bilinir. Bu durumda, belirli bir verilen içindeki üç değerin her benzersiz birleşimine `CompanyID` izin verilir. 
 

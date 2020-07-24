@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522270"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131625"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Rol tabanlı erişim denetimi ile Azure dijital TWINS güvenliğini sağlama
 
@@ -35,7 +35,7 @@ Kimlik doğrulama adımı, herhangi bir uygulama isteğinin çalışma zamanınd
 
 Yetkilendirme adımı, güvenlik sorumlusuna bir RBAC rolünün atanmasını gerektirir. Bir güvenlik sorumlusu 'na atanan roller, sorumlunun sahip olacağı izinleri belirleyebilir. Azure dijital TWINS, Azure dijital TWINS kaynakları için izin kümelerini çevreleyen RBAC rolleri sağlar. Bu roller, bu makalenin ilerleyen kısımlarında açıklanmıştır.
 
-Azure 'da desteklenen roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. Azure RBAC belgelerindeki [farklı rolleri anlama](../role-based-access-control/rbac-and-directory-admin-roles.md) .
+Azure 'da desteklenen roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. Azure RBAC belgelerindeki [*farklı rolleri anlama*](../role-based-access-control/rbac-and-directory-admin-roles.md) .
 
 ### <a name="authentication-with-managed-identities"></a>Yönetilen kimliklerle kimlik doğrulaması
 
@@ -46,19 +46,19 @@ Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönet
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Yetkilendirme: Azure dijital TWINS için RBAC rolleri
 
 Azure, bir Azure dijital TWINS kaynağına erişimi yetkilendirmek için aşağıdaki yerleşik RBAC rollerini sağlar:
-* Azure dijital TWINS sahibi (Önizleme) – Azure dijital TWINS kaynakları üzerinden tam erişim sağlamak için bu rolü kullanın.
-* Azure dijital TWINS okuyucu (Önizleme) – Azure dijital TWINS kaynaklarına salt okuma erişimi sağlamak için bu rolü kullanın.
+* *Azure dijital TWINS sahibi (Önizleme)* – Azure dijital TWINS kaynakları üzerinden tam erişim sağlamak için bu rolü kullanın.
+* *Azure dijital TWINS okuyucu (Önizleme)* – Azure dijital TWINS kaynaklarına salt okuma erişimi sağlamak için bu rolü kullanın.
 
 > [!TIP]
-> Azure dijital TWINS okuyucu (Önizleme) rolü artık gözatma ilişkilerini de destekliyor.
+> *Azure dijital TWINS okuyucu (Önizleme)* rolü artık gözatma ilişkilerini de destekliyor.
 
-Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. Azure RBAC belgelerindeki [rol tanımlarını anlama](../role-based-access-control/role-definitions.md) . Özel RBAC rolleri oluşturma hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md).
+Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. Azure RBAC belgelerindeki [*rol tanımlarını anlama*](../role-based-access-control/role-definitions.md) . Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. [*Azure özel roller*](../role-based-access-control/custom-roles.md).
 
 Rolleri iki şekilde atayabilirsiniz:
-* Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz. [Azure RBAC kullanarak rol atamaları ekleme veya kaldırma ve Azure Portal](../role-based-access-control/role-assignments-portal.md))
+* Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz. [*Azure RBAC kullanarak rol atamaları ekleme veya kaldırma ve Azure Portal*](../role-based-access-control/role-assignments-portal.md))
 * bir rol eklemek veya kaldırmak için CLı komutları aracılığıyla
 
-Bunun nasıl yapılacağı hakkında daha ayrıntılı adımlar için [Azure dijital TWINS öğreticisinde deneyin: *uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
+Bunun nasıl yapılacağı hakkında daha ayrıntılı adımlar için Azure dijital TWINS [*öğreticisinde deneyin: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
 
 ## <a name="permission-scopes"></a>İzin kapsamları
 
@@ -71,8 +71,14 @@ Aşağıdaki listede, Azure dijital TWINS kaynaklarına erişimi kapsama ekleyeb
 * Digital Ikizi Relationship: Bu kaynak için Eylemler, ikizi grafiğindeki dijital TWINS arasındaki [ilişkilerdeki](concepts-twins-graph.md) CRUD işlemleri üzerinde denetimi tanımlar.
 * Olay rotası: Bu kaynak için Eylemler, Azure dijital TWINS 'deki olayları [Olay Hub](../event-hubs/event-hubs-about.md)'ı, [Event Grid](../event-grid/overview.md)veya [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)gibi bir uç nokta hizmetine [yönlendiren](concepts-route-events.md) izinleri belirleyebilir.
 
+## <a name="troubleshooting"></a>Sorun giderme
+
+Bir kullanıcı rolü tarafından izin verilmeyen bir eylem gerçekleştirmeye çalışırsa, hizmet isteği okumada bir hata alabilir `403 (Forbidden)` . Daha fazla bilgi ve sorun giderme adımları için bkz. [*sorun giderme: Azure dijital TWINS isteği şu durumla başarısız oldu: 403 (yasak)*](troubleshoot-error-403.md).
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bkz. [*nasıl yapılır: istemci uygulamasında kimlik doğrulama*](how-to-authenticate-client.md)ile ilgili bir örnek istemci uygulamasıyla bu adımlarda izlenecek yol.
+* [*Nasıl yapılır: bir örneği ve kimlik doğrulamasını ayarlama*](how-to-set-up-instance-scripted.md)bölümünde bu kavramlara bakın.
+
+* [*Nasıl yapılır: yazma uygulaması kimlik doğrulaması kodunda*](how-to-authenticate-client.md)istemci uygulama kodundan bu kavramlarla nasıl etkileşim kuracağınızı öğrenin.
 
 * [Azure Için RBAC](../role-based-access-control/overview.md)hakkında daha fazla bilgi edinin.

@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444463"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132832"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
@@ -87,7 +88,7 @@ Hizmet uç noktaları aşağıdaki avantajları sağlar:
 - Uç noktanın yapılandırıldığı sanal ağ, Azure hizmet kaynağıyla aynı veya ondan farklı abonelikte olabilir. Uç noktaları ayarlamak ve Azure hizmetlerinin güvenliğini sağlamak için gerekli olan izinler hakkında daha fazla bilgi için [Sağlama](#provisioning) bölümüne bakın.
 - Desteklenen hizmetler için yeni veya mevcut kaynaklar ile sanal ağlar arasındaki güvenliği hizmet uç noktaları kullanarak sağlayabilirsiniz.
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 - Hizmet uç noktasını etkinleştirdikten sonra, kaynak IP adresleri genel IPv4 adreslerini kullanarak bu alt ağdaki hizmetle iletişim kurarken özel IPv4 adreslerini kullanmaya geçiş yapar. Hizmete giden mevcut açık TCP bağlantıları bu geçiş sırasında kapatılır. Bir alt ağ için hizmete yönelik hizmet uç noktasını etkinleştirmeden veya devre dışı bırakmadan önce çalışan kritik görev olmadığından emin olun. Ayrıca uygulamalarınızın IP adresi değişikliğinin ardından Azure hizmetlerine otomatik olarak bağlanabildiğinden emin olun.
 
@@ -122,7 +123,7 @@ Hizmet uç noktalarını belirli bir hizmete yapılandırdıktan sonra, hizmet u
 
 Hizmet uç noktaları, bir sanal ağa yazma erişimi olan bir kullanıcı tarafından bağımsız olarak sanal ağlarda yapılandırılabilir. Azure hizmet kaynaklarını bir sanal ağa güvenli hale getirmek için, eklenen alt ağlar için kullanıcının *Microsoft. Network/virtualNetworks/alt ağları/Jodavetli Aserviceendpoint/Action* iznine sahip olması gerekir. Yerleşik hizmet yöneticisi rolleri varsayılan olarak bu izni içerir. Özel roller oluşturarak izini değiştirebilirsiniz.
 
-Yerleşik roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için yerleşik roller](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Özel rollere özel izinler atama hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Yerleşik roller hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Özel rollere özel izinler atama hakkında daha fazla bilgi için bkz. [Azure özel roller](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Sanal ağlar ve Azure hizmet kaynakları aynı ağda veya farklı aboneliklerde olabilir. Sanal ağ ve Azure hizmet kaynaklarının farklı aboneliklerde olması halinde kaynakların aynı Active Directory (AD) kiracısı altında bulunması gerekir. 
 
@@ -151,4 +152,3 @@ SSS için bkz. [sanal ağ hizmeti uç noktası SSS](https://docs.microsoft.com/a
 - [Sanal ağlarda Azure hizmet tümleştirmesi](virtual-network-for-azure-services.md)
 - [Sanal ağ hizmeti uç noktası Ilkeleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager şablonu](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
-

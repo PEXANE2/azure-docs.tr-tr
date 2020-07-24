@@ -3,19 +3,17 @@ title: 'Özellikler: eylem ve bağlam kişiselleştirici'
 titleSuffix: Azure Cognitive Services
 description: Kişiselleştirici, daha iyi derecelendirme önerileri sağlamak için özellikleri, Eylemler ve bağlam hakkındaki bilgileri kullanır. Özellikler çok genel veya bir öğeye özgü olabilir.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77026158"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132781"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
@@ -25,8 +23,8 @@ Kişiselleştirici, en iyi **eylemi**seçmek için **geçerli bağlamla** ilgili
 
 Örneğin, şu **özelliklere** sahip olabilirsiniz:
 
-* _Kullanıcı_ gibi `Sports_Shopper`. Bu, tek bir kullanıcı KIMLIĞI olmamalıdır. 
-* Bir _content_ video `Documentary`, `Movie`bir veya bir `TV Series`veya bir perakende öğesinin mağaza 'da kullanılabilir olup olmadığı gibi içerikler.
+* _Kullanıcı_ gibi `Sports_Shopper` . Bu, tek bir kullanıcı KIMLIĞI olmamalıdır. 
+* Bir _content_ video `Documentary` , bir `Movie` veya bir veya bir `TV Series` Perakende öğesinin mağaza 'da kullanılabilir olup olmadığı gibi içerikler.
 * Haftanın günün saati gibi _geçerli_ süre.
 
 Kişiselleştirici, Eylemler ve bağlam için göndereceğiniz özellikleri etkilemez, sınırlamaz veya düzelmez:
@@ -61,7 +59,7 @@ Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda ver
 * http_user_agent
 * VideoResolution
 * Userdeviceınfo
-* Hava durumu
+* Hava Durumu
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,10 +67,10 @@ Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda ver
 Özellik ad alanlarını, geçerli JSON anahtarları oldukları sürece kendi kurallarınızı izleyerek adlandırın. Ad alanları, özellikleri farklı kümeler halinde düzenlemek ve benzer adlarla özellikleri ortadan kaldırmak için kullanılır. Ad alanlarını, özellik adlarına eklenen bir ' önek ' olarak düşünebilirsiniz. Ad alanları iç içe olamaz.
 
 
-Aşağıdaki JSON, `user` `state`, ve `device` Özellik ad uzaylardır. 
+Aşağıdaki JSON,, `user` `state` ve `device` özellik ad uzaylardır. 
 
 > [!Note]
-> Şu anda UTF-8 tabanlı özellik ad alanları için adların kullanılması ve farklı harfler ile başlaması önemle önerilir. Örneğin `user` `state`,,, ve ile `device` `u` `s`başlayın `d`. Şu anda aynı ilk karakterlerle ad alanları olması makine öğreniminde kullanılan dizinlerde çakışmaları ortaya çıkmasına neden olabilir.
+> Şu anda UTF-8 tabanlı özellik ad alanları için adların kullanılması ve farklı harfler ile başlaması önemle önerilir. Örneğin,,, ve `user` `state` `device` ile başlayın `u` `s` `d` . Şu anda aynı ilk karakterlerle ad alanları olması makine öğreniminde kullanılan dizinlerde çakışmaları ortaya çıkmasına neden olabilir.
 
 JSON nesneleri, iç içe geçmiş JSON nesnelerini ve basit özellik/değerleri içerebilir. Bir dizi yalnızca dizi öğeleri sayı ise dahil edilebilir. 
 
@@ -156,7 +154,7 @@ Gibi diğer birçok Azure bilişsel [hizmeti](https://www.microsoft.com/cognitiv
 
 * [Varlık Bağlama](../entitylinking/home.md)
 * [Metin Analizi](../text-analytics/overview.md)
-* [Duygu Tanıma](../emotion/home.md)
+* [Duygu](../emotion/home.md)
 * [Görüntü İşleme](../computer-vision/home.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>Eylemler bir seçenek listesini temsil eder

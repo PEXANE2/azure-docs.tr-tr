@@ -4,16 +4,15 @@ description: Yerel iş istasyonunuzda komut satırını ve programlama arabiriml
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110479"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132424"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK ile U-SQL çalıştırma ve test etme
 
@@ -65,7 +64,7 @@ U-SQL betiklerine hem göreli bir yol hem de yerel mutlak yol kullanabilirsiniz.
 
 U-SQL betiğini yerel olarak çalıştırırken, geçerli çalışan dizin altında derleme sırasında çalışma dizini oluşturulur. Derleme çıktılarına ek olarak, yerel yürütmeye yönelik gerekli çalışma zamanı dosyaları bu çalışma dizinine gölge olarak kopyalanacaktır. Çalışma dizini kök klasörüne "ScopeWorkDir" adı verilir ve çalışma dizini altındaki dosyalar aşağıdaki gibidir:
 
-|Dizin/dosya|Dizin/dosya|Dizin/dosya|Tanım|Description|
+|Dizin/dosya|Dizin/dosya|Dizin/dosya|Tanım|Açıklama|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Çalışma zamanı sürümünün karma dizesi|Yerel yürütme için gereken çalışma zamanı dosyalarının gölge kopyası|
 | |Script_66AE4909AA0ED06C| |Betik adı + betik yolunun karma dizesi|Derleme çıktıları ve yürütme adımı günlüğü|
@@ -142,23 +141,23 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 **Çalıştırma**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Varsayılan değer|Description|
+|Bağımsız Değişken|Varsayılan değer|Açıklama|
 |--------|-------------|-----------|
-|-CodeBehind|False|Betiğin arkasında. cs kodu bulunur|
+|-CodeBehind|Yanlış|Betiğin arkasında. cs kodu bulunur|
 |-CppSDK| |CppSDK dizini|
 |-DataRoot| DataRoot ortam değişkeni|Yerel çalıştırma için DataRoot, varsayılan olarak ' LOCALRUN_DATAROOT ' ortam değişkeni|
 |-MessageOut| |Konsolundaki iletileri bir dosyaya dök|
 |-Paralel|1|Planı belirtilen paralellik ile Çalıştır|
 |-Başvurular| |'; ' İle ayrılmış ek başvuru derlemelerine veya arka plan kod veri dosyalarına yönelik yolların listesi|
-|-UdoRedirect|False|Uıdo derleme yeniden yönlendirme yapılandırması oluştur|
+|-UdoRedirect|Yanlış|Uıdo derleme yeniden yönlendirme yapılandırması oluştur|
 |-UseDatabase|ana|Geçici derleme kaydı arkasında kod için kullanılacak veritabanı|
-|-Ayrıntılı|False|Çalışma zamanının ayrıntılı çıkışlarını göster|
+|-Ayrıntılı|Yanlış|Çalışma zamanının ayrıntılı çıkışlarını göster|
 |-WorkDir|Geçerli dizin|Derleyici kullanımı ve çıkışları için Dizin|
 |-RunScopeCEP|0|Kullanılacak ScopeCEP modu|
 |-ScopeCEPTempPath|kopyalar|Akış verileri için kullanılacak geçici yol|
 |-OptFlags| |İyileştirici bayraklarının virgülle ayrılmış listesi|
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
@@ -174,7 +173,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 **Derleme**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 |--------|-----------|
 | -CodeBehind [varsayılan değer ' false ']|Betiğin arkasında. cs kodu bulunur|
 | -CppSDK [varsayılan değer ' ']|CppSDK dizini|
@@ -219,7 +218,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 **Yürütme**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Varsayılan değer|Description|
+|Bağımsız Değişken|Varsayılan değer|Açıklama|
 |--------|-------------|-----------|
 |-DataRoot | '' |Meta veri yürütme için veri kökü. **LOCALRUN_DATAROOT** ortam değişkenini varsayılan olarak alır.|
 |-MessageOut | '' |Konsolundaki iletileri bir dosyaya döker.|
@@ -332,13 +331,13 @@ LocalRunHelper.exe U-SQL yerel derleme, çalıştırma vb. için programlama ara
 
 Public LocalRunHelper ([System. ıO. TextWriter messageOutput = NULL])
 
-|Parametre|Tür|Description|
+|Parametre|Tür|Açıklama|
 |---------|----|-----------|
 |messageOutput|System. ıO. TextWriter|çıkış iletileri için, konsolu kullanmak üzere null olarak ayarlayın|
 
 ### <a name="properties"></a>Özellikler
 
-|Özellik|Tür|Description|
+|Özellik|Tür|Açıklama|
 |--------|----|-----------|
 |AlgebraPath|string|Algedeniz dosyasının yolu (algeköşeli dosyası, derleme sonuçlarından biridir)|
 |CodeBehindReferences|string|Betik başvuruların arkasında ek kod içeriyorsa, '; ' ile ayrılmış yolları belirtin|
@@ -363,7 +362,7 @@ Public LocalRunHelper ([System. ıO. TextWriter messageOutput = NULL])
 
 ### <a name="method"></a>Yöntem
 
-|Yöntem|Description|Döndürülmesini|Parametre|
+|Yöntem|Açıklama|Döndürülmesini|Parametre|
 |------|-----------|------|---------|
 |ortak bool DoCompile ()|U-SQL betiğini derle|Başarılı olduğunda doğru| |
 |public bool DoExec ()|Derlenen sonucu yürütme|Başarılı olduğunda doğru| |

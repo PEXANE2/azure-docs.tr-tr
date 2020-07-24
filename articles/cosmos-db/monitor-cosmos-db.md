@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850289"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130197"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>İzleme Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Verilerinizi, istemci tarafı ve sunucu tarafı ölçümleriyle izleyebilirsiniz
 
 * **Azure Cosmos DB portalından izleme:** Azure Cosmos hesabının **ölçümler** sekmesinde bulunan ölçülerle izleyebilirsiniz. Bu sekmedeki ölçümler aktarım hızı, depolama, kullanılabilirlik, gecikme süresi, tutarlılık ve sistem düzeyi ölçümlerini içerir. Varsayılan olarak, bu ölçümler 7 günlük bir bekletme dönemine sahiptir. Daha fazla bilgi edinmek için bu makalenin [Azure Cosmos DB toplanan izleme verileri](#monitoring-from-azure-cosmos-db) bölümüne bakın.
 
-* **Azure izleyici 'de ölçümlerle izleme:** Azure Cosmos hesabınızın ölçümlerini izleyebilir ve Azure Izleyici 'den panolar oluşturabilirsiniz. Azure Izleyici, varsayılan olarak Azure Cosmos DB ölçümleri toplar, açıkça hiçbir şey yapılandırmamanız gerekmez. Bu ölçümler bir dakikalık ayrıntı düzeyi ile toplanır ve ayrıntı düzeyi, seçtiğiniz ölçüme göre farklılık gösterebilir. Varsayılan olarak, bu ölçümler 30 günlük bir bekletme dönemine sahiptir. Önceki seçeneklerden kullanılabilen ölçümlerin çoğu bu ölçümlerde de mevcuttur. Daha fazla bilgi edinmek için bu makalenin [ölçüm verilerini çözümleme](#analyze-metric-data) bölümüne bakın.
+* **Azure izleyici 'de ölçümlerle izleme:** Azure Cosmos hesabınızın ölçümlerini izleyebilir ve Azure Izleyici 'den panolar oluşturabilirsiniz. Azure Izleyici, varsayılan olarak Azure Cosmos DB ölçümleri toplar, açıkça hiçbir şey yapılandırmamanız gerekmez. Bu ölçümler bir dakikalık ayrıntı düzeyi ile toplanır ve ayrıntı düzeyi, seçtiğiniz ölçüme göre farklılık gösterebilir. Varsayılan olarak, bu ölçümler 30 günlük bir bekletme dönemine sahiptir. Önceki seçeneklerden kullanılabilen ölçümlerin çoğu bu ölçümlerde de mevcuttur. Kapsayıcı adı gibi ölçümler için boyut değerleri büyük/küçük harfe duyarlıdır. Bu nedenle, bu boyut değerlerinde dize karşılaştırmaları yaparken büyük/küçük harfe duyarsız karşılaştırma kullanmanız gerekir. Daha fazla bilgi edinmek için bu makalenin [ölçüm verilerini çözümleme](#analyze-metric-data) bölümüne bakın.
 
 * **Azure izleyici 'de tanılama günlükleri Ile izleme:** Azure Cosmos hesabınızın günlüklerini izleyebilir ve Azure Izleyici 'den panolar oluşturabilirsiniz. İkinci bir ayrıntı düzeyinde gerçekleşen olaylar ve izlemeler gibi telemetri Günlükler olarak depolanır. Örneğin, bir kapsayıcının üretilen işi değişirse, Cosmos hesabının özellikleri değiştirilir ve bu olaylar Günlükler içinde yakalar. Toplanan verilerde sorgular çalıştırarak bu günlükleri analiz edebilirsiniz. Daha fazla bilgi edinmek için bu makalenin [günlük verilerini çözümleme](#analyze-log-data) bölümüne bakın.
 
