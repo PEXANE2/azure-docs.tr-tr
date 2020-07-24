@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515214"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077790"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure portalı aracılığıyla StorSimple Sanal Diziniz için olağanüstü durum kurtarma ve cihaz yükü devretme
 
@@ -43,7 +44,7 @@ Olağanüstü durum kurtarma cihaz yük devretme özelliği aracılığıyla dü
 
 ## <a name="prerequisites-for-device-failover"></a>Cihaz yük devretme önkoşulları
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bir cihaz yük devretmesi için aşağıdaki önkoşulların sağlandığından emin olun:
 
@@ -121,12 +122,12 @@ Bir hedef StorSimple Sanal cihazına cihaz geri yüklemek için aşağıdaki ad�
 
 5. **Devre dışı bırakma** dikey penceresinde onaylamanız istenir. Cihaz devre dışı bırakma işlemi geri alınamaz *kalıcı* bir işlemdir. Ayrıca, paylaşımlara/birimlerinizi konakta çevrimdışına almanız de anımsatılır. Onaylamak için cihaz adını yazın ve **devre dışı bırak**' a tıklayın.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
+    ![Devre dışı bırakma dikey penceresinin ekran görüntüsü. Cihaz adı kutusu doldurulur ve devre dışı bırak düğmesi vurgulanır.](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. Devre dışı bırakma başlatılır. Devre dışı bırakma işlemi başarıyla tamamlandıktan sonra bir bildirim alırsınız.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
+    ![Cihazın devre dışı bırakıldığını gösteren bir ilerleme çubuğunun ekran görüntüsü.](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. Cihazlar sayfasında, cihaz durumu artık **devre dışı**olarak değiştirilir.
-    ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
+    ![Cihazlar sayfasının ekran görüntüsü. Devre dışı bırakılmış olarak listelenen durum dahil, devre dışı bırakılmış cihazın özellikleri görüntülenir.](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. **Cihazlar** dikey penceresinde, yük devretme için devre dışı bırakılmış kaynak cihazı seçin ve tıklayın. 
 9. **Cihaz panosu** dikey penceresinde **Yük devret**' e tıklayın. 
 10. Yük **devretme cihazı** dikey penceresinde aşağıdakileri yapın:
@@ -139,22 +140,22 @@ Bir hedef StorSimple Sanal cihazına cihaz geri yüklemek için aşağıdaki ad�
 
     4. **Yük devretme**' ye tıklayın.
     
-        ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
+        ![Kaynak ve hedef cihaz ile doldurulan cihaz yük devretme dikey penceresinin ekran görüntüsü, işaretlenmiş seçeneği ve yük devretme düğmesi vurgulanır.](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. Bir yük devretme işi başlatılır ve bir bildirim alırsınız. Yük devretmeyi izlemek için **cihazlara > işlere** gidin.
     
-     ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
+     ![Cihazın yük devretmesini gösteren bir ilerleme çubuğunun ekran görüntüsü.](./media/storsimple-virtual-array-failover-dr/failover5.png)
 12. **İşler** dikey penceresinde, kaynak cihaz için oluşturulmuş bir yük devretme işi görürsünüz. Bu iş, DR ön denetimleri gerçekleştirir.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
+    ![Yük devretme işinin başarıyla başlatıldığını gösteren ekran görüntüsü.](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
      DR ön denetimleri başarılı olduktan sonra, yük devretme işi kaynak cihazınızda bulunan her bir paylaşıma/birime ait geri yükleme işlerini oluşturacak.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
+    ![Durum, cihaz ve süre gibi yük devretme işinin ayrıntılarını gösteren ekran görüntüsü.](./media/storsimple-virtual-array-failover-dr/failover7.png)
 13. Yük devretme tamamlandıktan sonra **cihazlar** dikey penceresine gidin.
     
     1. Yük devretme işlemi için hedef cihaz olarak kullanılan StorSimple cihazını seçin ve tıklayın.
     2. **Ayarlar > yönetim > paylaşımlar** (veya iSCSI sunucusu varsa **birimler** ) bölümüne gidin. **Paylaşımlar** dikey penceresinde, eski cihazdan tüm paylaşımları (birimler) görüntüleyebilirsiniz.
-        ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
+        ![Cihazlar dikey penceresinin ekran görüntüsü. Hedef cihaz çevrimiçi durumuyla listelendi.](./media/storsimple-virtual-array-failover-dr/failover9.png)
 14. Bağlanmaya çalışan tüm uygulamaların yeni cihaza yeniden yönlendirilmesi için [BIR DNS diğer adı oluşturmanız](https://support.microsoft.com/kb/168322) gerekecektir.
 
 ## <a name="errors-during-dr"></a>DR sırasında hatalar

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: f2a514b6f44df7be15f18aa8f7c42668c872ab4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077886"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veead ile yedekleme hedefi olarak StorSimple
 
@@ -104,7 +104,7 @@ Aşağıdaki tablolarda cihaz modelden mimari ilk kılavuz gösterilmektedir.
 | Yedekleme senaryosu  | Yerel depolama kapasitesi  | Bulut depolama kapasitesi  |
 |---|---|---|
 | Birincil yedekleme  | Kurtarma noktası hedefini (RPO) karşılamak üzere hızlı kurtarma için yerel depolama alanında depolanan son yedeklemeler | Yedekleme geçmişi (RPO) bulut kapasitesine uyar |
-| İkincil yedekleme | Yedekleme verilerinin ikincil kopyası, bulut kapasitesinde depolanabilir  | YOK  |
+| İkincil yedekleme | Yedekleme verilerinin ikincil kopyası, bulut kapasitesinde depolanabilir  | Yok  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>Birincil yedekleme hedefi olarak StorSimple
 
@@ -319,7 +319,7 @@ Dört hafta, aylık ve yıllık için bir GFS döndürme zamanlaması örneği a
 | Sıklık/yedekleme türü | Tam | Artımlı (gün 1-5)  |   
 |---|---|---|
 | Haftalık (hafta 1-4) | Cumartesi | Pazartesi-Cuma |
-| Aylık  | Cumartesi  |   |
+| Aylık olarak  | Cumartesi  |   |
 | Yıllık | Cumartesi  |   |
 
 
@@ -399,7 +399,7 @@ GFS haftalık, aylık ve yıllık zamanlama
 | Hafta 2 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Hafta 3 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Hafta 4 | StorSimple hafta 2-4 |   |   |   |   |   |
-| Aylık | StorSimple aylık |   |   |   |   |   |
+| Aylık olarak | StorSimple aylık |   |   |   |   |   |
 | Yıllık | StorSimple yıllık  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Bir Veead kopyalama işine StorSimple birimleri atama
@@ -468,7 +468,7 @@ Aşağıdaki bölümde, yedekleme sonrası işlem sırasında StorSimple bulut a
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Bir bulut anlık görüntüsünü başlatmak veya silmek için
 
-1. [Azure PowerShell'i yükleme](/powershell/azure/overview).
+1. [Azure PowerShell'i yükleme](/powershell/azure/).
 2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell betiğini indirip kurun.
 3. Betiği çalıştıran sunucuda PowerShell 'i yönetici olarak çalıştırın. Betiğin `-WhatIf $true` hangi değişiklikleri yaptığını görmek için betiği ile çalıştırtığınızdan emin olun. Doğrulama tamamlandıktan sonra Pass `-WhatIf $false` . Aşağıdaki komutu çalıştırın:
    ```powershell

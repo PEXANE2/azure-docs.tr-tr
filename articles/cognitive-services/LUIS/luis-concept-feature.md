@@ -1,14 +1,14 @@
 ---
-title: Özellikler-LUSıS
+title: LUSıS ile makine öğrenimi özellikleri
 description: Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: fbf39382e418bef9a7d39886076a4100a26ce3e7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 02a6fd27dbe22a40b29b47515edec5506d3b2075
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075169"
 ---
 # <a name="machine-learning-features"></a>Makine öğrenimi özellikleri
 
@@ -200,7 +200,7 @@ Bir [liste varlığı](reference-entity-list.md) , kendi eş anlamlılarıyla bi
 
 |Kurallı ad|Eş anlamlılar|
 |--|--|
-|Birleşik Devletler|ABD<br>U. S. A<br>ABD<br>ABD<br>0|
+|Birleşik Devletler|ABD<br>U. S. A<br>ABD<br>USA<br>0|
 
 Sohbet bot gibi bir istemci uygulaması, yardım almak için bir takip sorusu isteyebilir. Bu, müşterinin ülke/bölge seçiminin sınırlı ve *gerekli*olduğunu anlamalarına yardımcı olur.
 

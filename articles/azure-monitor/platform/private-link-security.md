@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077171"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
@@ -21,7 +21,7 @@ ms.locfileid: "85602593"
 
 [Azure özel bağlantı](../../private-link/private-link-overview.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir. Birçok hizmet için, yalnızca kaynak başına bir uç nokta ayarlarsınız. Bununla birlikte, Azure Izleyici, iş yüklerinizi izlemek için birlikte çalışan farklı bağlantılı hizmetlerden oluşan bir tutarlılık sağlar. Sonuç olarak, izleme ağınızın sınırlarını tanımlamanızı ve sanal ağınıza bağlanmanızı sağlayan bir Azure Izleyici özel bağlantı kapsamı (AMPLS) adlı bir kaynak geliştirdik. Bu makalede, ne zaman kullanılacağı ve Azure Izleyici özel bağlantı kapsamının nasıl ayarlanacağı ele alınmaktadır.
 
-## <a name="advantages"></a>Yararları
+## <a name="advantages"></a>Avantajlar
 
 Özel bağlantıyla birlikte şunları yapabilirsiniz:
 
@@ -70,6 +70,23 @@ Her VNet yalnızca bir AMPLS kaynağına bağlanabildiğinden, aynı ağlar içi
 
 ![AMPLS B topolojisi diyagramı](./media/private-link-security/ampls-topology-b-1.png)
 
+### <a name="consider-limits"></a>Limitleri değerlendirin
+
+Özel bağlantı kurulumunuzu planlarken göz önünde bulundurmanız gereken birkaç sınır vardır:
+
+* VNet yalnızca 1 AMPLS nesnesine bağlanabilir. Bu, AMPLS nesnesinin, VNet 'in erişimi olması gereken tüm Azure Izleyici kaynaklarına erişim sağlaması gerektiği anlamına gelir.
+* Bir Azure Izleyici kaynağı (çalışma alanı veya Application Insights bileşeni), en çok 5 AMPLSs 'ye bağlanabilir.
+* Bir AMPLS nesnesi, en çok 20 Azure Izleyici kaynağına bağlanabilir.
+* AMPLS nesnesi, en çok 10 özel uç noktaya bağlanabilir.
+
+Aşağıdaki topolojide:
+* Her VNet 1 AMPLS nesnesine bağlanır, bu nedenle diğer AMPLSs 'ye bağlanamaz.
+* AMPLS B, 2 sanal ağa bağlanır: olası özel uç nokta bağlantılarında 2/10 kullanma.
+* AMPLS A, 2 çalışma alanına ve 1 Application Insights bileşenine bağlanır: olası Azure Izleyici kaynaklarının 3/20 ' ünü kullanıyor.
+* Çalışma alanı 2, AMPLS A ve AMPLS B 'ye bağlanır: olası AMPLS bağlantılarında 2/5 kullanma.
+
+![AMPLS limitlerinin diyagramı](./media/private-link-security/ampls-limits.png)
+
 ## <a name="example-connection"></a>Örnek bağlantı
 
 Azure Izleyici özel bağlantı kapsamı kaynağı oluşturarak başlayın.
@@ -81,7 +98,7 @@ Azure Izleyici özel bağlantı kapsamı kaynağı oluşturarak başlayın.
 2. **Oluştur**' a tıklayın.
 3. Bir abonelik ve kaynak grubu seçin.
 4. AMPLS 'e bir ad verin. Kapsamın, ağ güvenlik sınırlarını yanlışlıkla kesmesine izin vermek için, kapsamın kullanılacağı amacı ve güvenlik sınırını belirten bir ad kullanmak en iyisidir. Örneğin, "AppServerProdTelem".
-5. **Gözden geçir + oluştur**' a tıklayın. 
+5. **Gözden Geçir ve Oluştur**’a tıklayın. 
 
    ![Azure Izleyici özel bağlantı kapsamı oluştur](./media/private-link-security/ampls-create-1d.png)
 
@@ -129,7 +146,7 @@ AMPLS 'yi önce özel uç noktalara, sonra da Azure Izleyici kaynaklarına veya 
  
    d.    Doğrulama geçişine izin verin. 
  
-   e.    **Oluştur**'a tıklayın. 
+   e.    **Oluştur**’a tıklayın. 
 
     ![Create Private Endpoint2 Select ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -137,13 +154,13 @@ Artık bu Azure Izleyici özel bağlantı kapsamına bağlı yeni bir özel uç 
 
 ## <a name="configure-log-analytics"></a>Log Analytics Yapılandır
 
-Azure portalına gidin. Azure Izleyici Log Analytics çalışma alanı kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** bulunur. Bu menüden iki farklı durumu kontrol edebilirsiniz. 
+Azure portala gidin. Log Analytics çalışma alanı kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** vardır. Bu menüden iki farklı durumu kontrol edebilirsiniz. 
 
 ![LA ağ yalıtımı](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 İlk olarak, bu Log Analytics kaynağını erişiminiz olan tüm Azure Izleyici özel bağlantı kapsamlarına bağlayabilirsiniz. **Ekle** ' ye tıklayın ve Azure Izleyici özel bağlantı kapsamını seçin.  Bağlanmak için **Uygula** ' ya tıklayın. Tüm bağlı kapsamlar Bu ekranda görünür. Bu bağlantının yapılması, bağlı sanal ağlardaki ağ trafiğinin bu çalışma alanına ulaşmasını sağlar. Bağlantıyı, [Azure izleyici kaynaklarını bağlıyoruz](#connect-azure-monitor-resources), kapsamdan bağlama ile aynı etkiye sahip hale getirme.  
 
-İkincisi, bu kaynağa yukarıda listelenen özel bağlantı kapsamlarının dışından nasıl ulaşılırsa denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez. Bu veriler çalışma kitaplarına, panolara, sorgu API tabanlı istemci deneyimlerini, Azure portal öngörüleri ve daha fazlasını içerir. Log Analytics verileri kullanan Azure portal dışında çalışan deneyimler, özel bağlantılı VNET içinde de çalışıyor olmalıdır.
+İkincisi, bu kaynağa yukarıda listelenen özel bağlantı kapsamlarının dışından nasıl ulaşılırsa denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez. Bu veriler çalışma kitaplarına, panolara, sorgu API tabanlı istemci deneyimlerini, Azure portal öngörüleri ve daha fazlasını içerir. Azure portal dışında çalışan deneyimler ve sorgu Log Analytics verileri özel bağlantılı VNET içinde de çalışıyor olması gerekir.
 
 Erişimin bu şekilde kısıtlanması yalnızca çalışma alanındaki veriler için geçerlidir. Bu erişim ayarlarını açma veya kapatma dahil olmak üzere yapılandırma değişiklikleri Azure Resource Manager tarafından yönetilir. Uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak Kaynak Yöneticisi erişimi kısıtlayın. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](roles-permissions-security.md).
 
@@ -152,7 +169,7 @@ Erişimin bu şekilde kısıtlanması yalnızca çalışma alanındaki veriler i
 
 ## <a name="configure-application-insights"></a>Application Insights Yapılandır
 
-Azure portalına gidin. Azure Izleyici Application Insights bileşen kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** bulunur. Bu menüden iki farklı durumu kontrol edebilirsiniz.
+Azure portala gidin. Azure Izleyici Application Insights bileşen kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** bulunur. Bu menüden iki farklı durumu kontrol edebilirsiniz.
 
 ![AI ağ yalıtımı](./media/private-link-security/ampls-application-insights-lan-network-isolation-6.png)
 
@@ -162,26 +179,26 @@ Azure portalına gidin. Azure Izleyici Application Insights bileşen kaynağınd
 
 Portal dışı tüketim deneyimlerinin, izlenen iş yüklerini içeren özel bağlantılı VNET içinde de çalışıyor olması gerektiğini unutmayın. 
 
-İzlenen iş yüklerini barındıran kaynakları özel bağlantıya eklemeniz gerekir. Bu, uygulama [Hizmetleri için bunu](https://docs.microsoft.com/azure/app-service/networking/private-endpoint) nasıl yapaöğreneceksiniz.
+İzlenen iş yüklerini barındıran kaynakları özel bağlantıya eklemeniz gerekir. Bu, uygulama [Hizmetleri için bunu](../../app-service/networking/private-endpoint.md) nasıl yapaöğreneceksiniz.
 
 Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki veriler için geçerlidir. Bu erişim ayarlarını açma veya kapatma dahil olmak üzere yapılandırma değişiklikleri Azure Resource Manager tarafından yönetilir. Bunun yerine, uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak Kaynak Yöneticisi erişimi kısıtlayın. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](roles-permissions-security.md).
 
 > [!NOTE]
 > Çalışma alanı tabanlı Application Insights tamamen güvenli hale getirmek için, Application Insights kaynağa erişimin yanı sıra temel Log Analytics çalışma alanını da kapatmanız gerekir.
 >
-> Kod düzeyinde Tanılamalar (Profiler/Debugger), özel bağlantıyı desteklemek için kendi depolama hesabınızı sağlamanızı gerektirir. Bunun nasıl yapılacağını gösteren [Belgeler](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage) aşağıda verilmiştir.
+> Kod düzeyinde Tanılamalar (Profiler/Debugger), özel bağlantıyı desteklemek için kendi depolama hesabınızı sağlamanızı gerektirir. Bunun nasıl yapılacağını gösteren [Belgeler](../app/profiler-bring-your-own-storage.md) aşağıda verilmiştir.
 
 ## <a name="use-apis-and-command-line"></a>API 'Leri ve komut satırını kullanma
 
 Azure Resource Manager şablonları ve komut satırı arabirimlerini kullanarak daha önce açıklanan işlemi otomatikleştirebilirsiniz.
 
-Özel bağlantı kapsamları oluşturup yönetmek için [az Monitor Private-link-Scope](https://docs.microsoft.com/cli/azure/monitor/private-link-scope?view=azure-cli-latest)kullanın. Bu komutu kullanarak kapsamlar oluşturabilir, Log Analytics çalışma alanlarını ve Application Insights bileşenlerini ilişkilendirebilir, Özel uç noktaları ekleyebilir/kaldırabilir/onaylayabilirsiniz.
+Özel bağlantı kapsamları oluşturup yönetmek için [az Monitor Private-link-Scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)kullanın. Bu komutu kullanarak kapsamlar oluşturabilir, Log Analytics çalışma alanlarını ve Application Insights bileşenlerini ilişkilendirebilir, Özel uç noktaları ekleyebilir/kaldırabilir/onaylayabilirsiniz.
 
-Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) veya [Application Insights bileşenlerini](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)kullanın.
+Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) veya [Application Insights bileşenlerini](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)kullanın.
 
 ## <a name="collect-custom-logs-over-private-link"></a>Özel bağlantı üzerinden özel günlükleri topla
 
-Depolama hesapları özel günlüklerin alma işleminde kullanılır. Varsayılan olarak, hizmet tarafından yönetilen depolama hesapları kullanılır. Ancak özel bağlantılar üzerinde özel Günlükler almak için kendi depolama hesaplarınızı kullanmanız ve bunları Log Analytics çalışma alanı (ler) ile ilişkilendirmeniz gerekir. Bu hesapları [komut satırını](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)kullanarak ayarlama hakkında daha fazla ayrıntı için bkz..
+Depolama hesapları özel günlüklerin alma işleminde kullanılır. Varsayılan olarak, hizmet tarafından yönetilen depolama hesapları kullanılır. Ancak özel bağlantılar üzerinde özel Günlükler almak için kendi depolama hesaplarınızı kullanmanız ve bunları Log Analytics çalışma alanı (ler) ile ilişkilendirmeniz gerekir. Bu hesapları [komut satırını](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)kullanarak ayarlama hakkında daha fazla ayrıntı için bkz..
 
 Kendi depolama hesabınızı getirme hakkında daha fazla bilgi için bkz. [günlük alma Için müşterinin sahip olduğu depolama hesapları](private-storage.md)
 
@@ -189,7 +206,7 @@ Kendi depolama hesabınızı getirme hakkında daha fazla bilgi için bkz. [gün
 
 ### <a name="agents"></a>Aracılar
 
-Windows ve Linux aracılarının en son sürümleri, Log Analytics çalışma alanlarına güvenli telemetri alımı sağlamak için özel ağlarda kullanılmalıdır. Eski sürümler, izleme verilerini özel bir ağa karşıya yükleyemezsiniz.
+Windows ve Linux aracılarının en son sürümleri, Log Analytics çalışma alanlarına güvenli alma özelliğini etkinleştirmek için özel ağlarda kullanılmalıdır. Eski sürümler, izleme verilerini özel bir ağa karşıya yükleyemezsiniz.
 
 **Log Analytics Windows aracısı**
 
@@ -204,13 +221,13 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Güvenlik duvarınızdan **AzureActiveDirectory**, **AzureResourceManager**, **Azurefrontkapısı. Firstpartisi**ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
 
 ### <a name="programmatic-access"></a>Programlı erişim
 
-REST API, [CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için,**AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)güvenlik duvarınızın **AzureResourceManager** içine ekleyin.  
+REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için,**AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın **AzureResourceManager** içine ekleyin.  
 
 Bu etiketlerin eklenmesi, Log Analytics çalışma alanlarını ve AI bileşenlerini sorgulama, oluşturma ve yönetme gibi eylemleri gerçekleştirmenize olanak tanır.
 

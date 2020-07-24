@@ -1,6 +1,6 @@
 ---
-title: JSON düzleştirme ve kaçış kuralları-Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights 'da JSON düzleştirme, kaçış ve dizi işleme hakkında bilgi edinin.
+title: JSON düzleştirme ve kaçış kuralları-Azure Time Series Insights Gen2 | Microsoft Docs
+description: Azure Time Series Insights Gen2 ' de JSON düzleştirme, kaçış ve dizi işleme hakkında bilgi edinin.
 author: lyrana
 ms.author: lyhughes
 manager: deepakpalled
@@ -8,19 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.custom: seodec18
-ms.openlocfilehash: 45eeebcc092513a0344acaff52c31c2cebfb377c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049981"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075681"
 ---
 # <a name="ingestion-rules"></a>Alma kuralları
 ### <a name="json-flattening-escaping-and-array-handling"></a>JSON düzleştirme, kaçış ve dizi Işleme
 
-Azure Time Series Insights ortamınız, belirli bir adlandırma kuralları kümesinden sonra, normal ve soğuk mağazalarınızın sütunlarını dinamik olarak oluşturur. Bir olay tamamlandığında, JSON yüküne ve özellik adlarına bir dizi kural uygulanır. Bunlar, belirli özel karakterleri kaçış ve iç içe geçmiş JSON nesnelerini düzleştirme içerir. JSON 'nizin şeklinin, olaylarınızın nasıl depolandığını ve sorgulandığını nasıl etkileyeceğini anlayabilmeniz için bu kuralları bilmeniz önemlidir. Kuralların tam listesi için aşağıdaki tabloya bakın. & B örnekleri, bir dizide birden çok zaman serisini verimli bir şekilde toplu olarak nasıl sağlayabileceğinizi gösterir.
+Azure Time Series Insights Gen2 ortamınız, belirli bir adlandırma kuralları kümesinden sonra, normal ve soğuk mağazalarınızın sütunlarını dinamik olarak oluşturur. Bir olay tamamlandığında, JSON yüküne ve özellik adlarına bir dizi kural uygulanır. Bunlar, belirli özel karakterleri kaçış ve iç içe geçmiş JSON nesnelerini düzleştirme içerir. JSON 'nizin şeklinin, olaylarınızın nasıl depolandığını ve sorgulandığını nasıl etkileyeceğini anlayabilmeniz için bu kuralları bilmeniz önemlidir. Kuralların tam listesi için aşağıdaki tabloya bakın. & B örnekleri, bir dizide birden çok zaman serisini verimli bir şekilde toplu olarak nasıl sağlayabileceğinizi gösterir.
 
 > [!IMPORTANT]
 >
@@ -28,8 +27,8 @@ Azure Time Series Insights ortamınız, belirli bir adlandırma kuralları küme
 
 | Kural | Örnek JSON |Depolamadaki sütun adı |
 |---|---|---|
-| TSI veri türü, sütun adınızın sonuna "_" olarak eklenir \<dataType\> | ```"type": "Accumulated Heat"``` | type_string |
-| Olay kaynağı [zaman damgası özelliği](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) , depolama alanında "zaman damgası" olarak ve UTC 'de depolanan değer olarak TSI 'a kaydedilir. Olay kaynak (ler) zaman damgası özelliğini çözümünüzün ihtiyaçlarını karşılayacak şekilde özelleştirebilirsiniz, ancak sıcak ve soğuk depolamada sütun adı "timestamp" olur. Olay kaynak zaman damgası olmayan diğer tarih saat JSON özellikleri, yukarıdaki kuralda belirtildiği gibi sütun adında "_datetime" ile kaydedilir.  | ```"ts": "2020-03-19 14:40:38.318"``` | timestamp |
+| Azure Time Series Insights Gen2 veri türü, sütun adınızın sonuna "_" olarak eklenir \<dataType\> | ```"type": "Accumulated Heat"``` | type_string |
+| Olay kaynağı [zaman damgası özelliği](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) , depolama alanında "timestamp" olarak ve UTC 'de depolanan değer olarak Azure Time Series Insights Gen2 kaydedilir. Olay kaynak (ler) zaman damgası özelliğini çözümünüzün ihtiyaçlarını karşılayacak şekilde özelleştirebilirsiniz, ancak sıcak ve soğuk depolamada sütun adı "timestamp" olur. Olay kaynak zaman damgası olmayan diğer tarih saat JSON özellikleri, yukarıdaki kuralda belirtildiği gibi sütun adında "_datetime" ile kaydedilir.  | ```"ts": "2020-03-19 14:40:38.318"``` | timestamp |
 | Özel karakterleri içeren JSON özelliği adları. [\ ve ', [' ve '] kullanılarak atlanmalıdır  |  ```"id.wasp": "6A3090FD337DE6B"``` | [' id. Wasp '] _string |
 | [' Ve '] içinde, tek tırnak ve ters eğik çizgiler için ek kaçış var. Tek bir teklif \ ' olarak yazılır ve şu şekilde bir ters eğik çizgi yazılacak\\\ | ```"Foo's Law Value": "17.139999389648"``` | [' Foo ' \' yasalar değeri '] _double |
 | İç içe geçmiş JSON nesneleri, ayırıcı olarak bir noktayla düzleştirilir. 10 düzeyden fazla iç içe geçme destekleniyor. |  ```"series": {"value" : 316 }``` | Seriler. value_long |
@@ -186,4 +185,4 @@ Yukarıdaki yapılandırma ve yük, üç sütun ve bir olay oluşturacak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ortamınızın [verimlilik sınırlamalarını](concepts-streaming-throughput-limitations.md) anlayın
+* Ortamınızın [verimlilik sınırlamalarını](./concepts-streaming-ingress-throughput-limits.md) anlayın

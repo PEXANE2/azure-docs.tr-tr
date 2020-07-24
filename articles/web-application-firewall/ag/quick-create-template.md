@@ -1,39 +1,41 @@
 ---
-title: 'Hızlı başlangıç: Application Gateway Kaynak Yöneticisi şablonunda Azure WAF v2 oluşturma'
+title: 'Hızlı başlangıç: Application Gateway Azure Resource Manager şablonunda Azure WAF v2 oluşturma'
 titleSuffix: Azure Application Gateway
-description: Azure Application Gateway üzerinde Web uygulaması güvenlik duvarı v2 oluşturmak için Kaynak Yöneticisi şablonu kullanmayı öğrenin.
+description: Azure Application Gateway üzerinde Web uygulaması güvenlik duvarı v2 oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanmayı öğrenin.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
 ms.date: 04/02/2020
 ms.author: victorh
-ms.openlocfilehash: 6759071e73adfd3af4ac780da6db3a0e6e967ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081bab0cd930d90ca0d359461e4a41b15ba4911b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81617986"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075507"
 ---
-# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway---resource-manager-template"></a>Hızlı başlangıç: Application Gateway Kaynak Yöneticisi şablonunda Azure WAF v2 oluşturma
+# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Application Gateway Azure WAF v2 oluşturma
 
-Bu hızlı başlangıçta, Application Gateway üzerinde bir Azure Web uygulaması güvenlik duvarı v2 oluşturmak için Kaynak Yöneticisi şablonu kullanırsınız.
+Bu hızlı başlangıçta, Application Gateway üzerinde bir Azure Web uygulaması güvenlik duvarı v2 oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-web-application-firewall"></a>Web uygulaması güvenlik duvarı oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu şablon Azure Application Gateway basit bir Web uygulaması güvenlik duvarı v2 oluşturur. Buna genel bir IP ön uç IP adresi, HTTP ayarları, bağlantı noktası 80 üzerinde temel dinleyici içeren bir kural ve arka uç havuzu dahildir. Bir IP adresi eşleşme türüne dayalı olarak arka uç havuzuna giden trafiği engellemek için özel kurala sahip bir WAF ilkesi oluşturulur.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
-
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-wafv2/azuredeploy.json)
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json" range="001-404" highlight="314-358":::
 
@@ -48,9 +50,9 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : sanal makineler için iki
 - [**Microsoft. COMPUTE/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : IIS ve Web sayfalarını yapılandırmak için
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Kaynak Yöneticisi şablonu Azure 'a dağıtma:
+ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon, IIS çalıştıran arka uç havuzunda bir uygulama ağ geçidi, ağ altyapısı ve iki sanal makine oluşturur.
 
@@ -61,11 +63,11 @@ Kaynak Yöneticisi şablonu Azure 'a dağıtma:
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Uygulama ağ geçidi oluşturmak için IIS gerekli olmasa da, Azure 'ın uygulama ağ geçidinde bir WAF v2 'yi başarıyla oluşturduğunu doğrulamak üzere arka uç sunucularına yüklenir. 
+Uygulama ağ geçidi oluşturmak için IIS gerekli olmasa da, Azure 'ın uygulama ağ geçidinde bir WAF v2 'yi başarıyla oluşturduğunu doğrulamak üzere arka uç sunucularına yüklenir.
 
 Uygulama ağ geçidini test etmek için IIS kullanın:
 
-1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![Uygulama ağ GEÇIDI genel IP adresini](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) kaydedin veya **tüm kaynaklar**' ı seçip Arama kutusuna *myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
+1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![ Uygulama Ağ Geçidi genel IP adresini kaydedin ](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) veya **tüm kaynaklar**' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
 2. Genel IP adresini kopyalayın ve ardından bu IP adresine gözatabilmek için tarayıcınızın adres çubuğuna yapıştırın.
 3. Yanıtı denetleyin. **403 yasaklanmış** bir yanıt, WAF 'nin başarıyla oluşturulduğunu doğrular ve arka uç havuzuna yapılan bağlantıları engeller.
 4. Özel kuralı **trafiğe Izin verecek**şekilde değiştirin.

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496970"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077945"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -78,6 +78,13 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure Event Grid** | Microsoft. EventGrid/Domains    | etki alanı |
 |**Azure WebApps** | Microsoft. Web/siteler    | Siteler |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/çalışma alanları    | çalışma alanı |
+|**SignalR** | Microsoft. SignalRService/SignalR    | signalR |
+|**Azure İzleyici** | Microsoft. Insights/privateLinkScopes    | azuremonitor |
+|**Bilişsel Hizmetler** | (Microsoft. Biliveservices/hesapları    | account |
+|**Azure Dosya Eşitleme** | Microsoft. Storagessync/storageSyncServices    | 'Nin |
+    
+  
+
   
  
 ## <a name="network-security-of-private-endpoints"></a>Özel uç noktaların ağ güvenliği 

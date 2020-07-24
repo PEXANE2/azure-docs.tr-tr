@@ -9,11 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fa8838dd5eca03d9dd85e424f0163eb9ca8ed5e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077849"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure depolama izleme veri başvurusu
 
@@ -33,7 +34,7 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 Bu tabloda [hesap düzeyi ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)gösterilmektedir.
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | ------------------- | ----------------- |
 | UsedCapacity | Depolama hesabı tarafından kullanılan depolama miktarı. Standart depolama hesapları için blob, tablo, dosya ve kuyruk tarafından kullanılan kapasitenin toplamıdır. Premium depolama ve Blob Depolama hesapları için BlobCapacity ile aynıdır. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
@@ -41,10 +42,11 @@ Bu tabloda [hesap düzeyi ölçümleri](https://docs.microsoft.com/azure/azure-m
 
 Bu tabloda [BLOB depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)gösterilmektedir.
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | ------------------- | ----------------- |
 | BlobCapacity | Depolama hesabında kullanılan BLOB depolama alanı toplamı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype**ve **blobtier** ([tanım](#metrics-dimensions)) |
 | BlobCount    | Depolama hesabında depolanan BLOB nesnelerinin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype**ve **blobtier** ([tanım](#metrics-dimensions)) |
+| BlobProvisionedSize | Depolama hesabında sağlanan depolama miktarı. Bu ölçüm yalnızca Premium Depolama hesapları için geçerlidir. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama |
 | ContainerCount    | Depolama hesabındaki kapsayıcıların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | Dizin kapasitesi     | ADLS 2. hiyerarşik dizin tarafından kullanılan depolama miktarı <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
@@ -52,7 +54,7 @@ Bu tabloda [BLOB depolama ölçümleri](https://docs.microsoft.com/azure/azure-m
 
 Bu tabloda [Tablo depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)gösterilmektedir.
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | ------------------- | ----------------- |
 | Tablokapasitesi | Depolama hesabı tarafından kullanılan tablo depolaması miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | Tablosayısı   | Depolama hesabındaki tablo sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
@@ -62,7 +64,7 @@ Bu tabloda [Tablo depolama ölçümleri](https://docs.microsoft.com/azure/azure-
 
 Bu tabloda [kuyruk depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)gösterilmektedir.
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | ------------------- | ----------------- |
 | QueueCapacity | Depolama hesabı tarafından kullanılan kuyruk depolama miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | QueueCount   | Depolama hesabındaki sıraların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
@@ -72,11 +74,12 @@ Bu tabloda [kuyruk depolama ölçümleri](https://docs.microsoft.com/azure/azure
 
 Bu tabloda [dosya depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)gösterilmektedir.
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | ------------------- | ----------------- |
 | Dosya kapasitesi | Depolama hesabı tarafından kullanılan dosya depolama alanı miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | FileCount   | Depolama hesabındaki dosyaların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | Dosya ShareCount | Depolama hesabındaki dosya paylaşımlarının sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| FileShareProvisionedIOPS | Bir dosya paylaşımında sağlanan ıOPS sayısı. Bu ölçüm yalnızca Premium dosya depolaması için geçerlidir. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama |
 
 ### <a name="transaction-metrics"></a>İşlem ölçümleri
 
@@ -84,7 +87,7 @@ Bu tabloda [dosya depolama ölçümleri](https://docs.microsoft.com/azure/azure-
 
 Azure depolama, Azure Izleyici 'de aşağıdaki işlem ölçümlerini sağlar.
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | ------------------- | ----------------- |
 | İşlemler | Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız istekleri ve hata üreten istekleri içerir. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Geçerli Boyutlar: ResponseType, GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions))<br/> Değer örneği: 1024 |
 | Giriş | Giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir. <br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
@@ -104,9 +107,9 @@ Azure depolama, Azure Izleyici 'de ölçümler için aşağıdaki boyutları des
 | **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob**ve **Azure Data Lake Storage**. Append blobu BlockBlob 'a dahildir. |
 | **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık**erişimli: etkin katman</li> <li>**Cool**: Cool Tier</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan**: genel amaçlı v1 depolama hesabı için katman türü</li> |
 | **GeoType** | Birincil veya Ikincil kümeden işlem. Kullanılabilir değerler **PRIMARY** ve **Secondary**' i içerir. İkincil kiracının nesnelerini okurken Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için geçerlidir. |
-| **ResponseType** | İşlem yanıt türü. Kullanılabilir değerler şunlardır: <br/><br/> <li>**Serverothererror**: açıklananlar hariç diğer tüm sunucu tarafı hataları </li> <li>**Serverbusyerror**: kimliği doğrulanmış Istek bir http 503 durum kodu döndürdü. </li> <li>**Servertimeouterror**: bir http 500 durum kodu döndüren zaman aşımına uğramış istek kimliği. Zaman aşımı bir sunucu hatası nedeniyle gerçekleşti. </li> <li>**Authorizationerror**: yetkisiz veri erişimi veya yetkilendirme hatası nedeniyle başarısız olan kimliği doğrulanmış istek. </li> <li>**Networkerror**: ağ hataları nedeniyle başarısız olan kimliği doğrulanmış istek. Çoğunlukla bir istemci, zaman aşımı süre sonundan önce bağlantıyı erkenden kapattığında gerçekleşir. </li><li>**ClientAccountBandwidthThrottlingError**: istek, [depolama hesabı ölçeklenebilirlik sınırlarını](scalability-targets-standard-account.md)aşan bant genişliği üzerinde kısıtlandı.</li><li>**Clientaccountrequestazaltıngerror**: istek, [depolama hesabı ölçeklenebilirlik sınırlarını](scalability-targets-standard-account.md)aşmamak için istek hızında kısıtlanıyor.<li>**Clientkısıtlar Lingerror**: diğer istemci tarafı azaltma hatası. ClientAccountBandwidthThrottlingError ve Clientaccountrequestkısıtlar Lingerror hariç tutulur.</li> <li>**Clienttimeouterror**: bir http 500 durum kodu döndüren zaman aşımına uğramış istek kimliği. İstemcinin ağ zaman aşımı veya istek zaman aşımı depolama hizmetinin beklediğinden düşük bir değere ayarlanmışsa beklenen bir zaman aşımıdır. Aksi takdirde, bir ServerTimeoutError olarak bildirilir. </li> <li>**Clienentothererror**: açıklananlar hariç diğer tüm istemci tarafı hataları. </li> <li>**Başarılı: başarılı**istek</li> <li> Başarılı **azaltma**: bir SMB istemcisi ilk denemede azaltılırsa, ancak yeniden denemeler yapıldıktan sonra başarılı olan istek.</li> |
+| **ResponseType** | İşlem yanıt türü. Kullanılabilir değerler şunlardır: <br/><br/> <li>**ServerOtherError**: Açıklananlar hariç diğer tüm sunucu tarafı hatalar </li> <li>**ServerBusyError**: HTTP 503 durum kodu döndüren, kimliği doğrulanmış istek. </li> <li>**ServerTimeoutError**: HTTP 500 durum kodu döndüren, zaman aşımına uğramış ve kimliği doğrulanmış istek. Zaman aşımı bir sunucu hatası nedeniyle gerçekleşti. </li> <li>**AuthorizationError**: Yetkisiz veri erişimi veya yetkilendirme hatası nedeniyle başarısız olmuş bir kimliği doğrulanmış istek. </li> <li>**NetworkError**: Ağ hataları nedeniyle başarısız olmuş bir kimliği doğrulanmış istek. Çoğunlukla bir istemci, zaman aşımı süre sonundan önce bağlantıyı erkenden kapattığında gerçekleşir. </li><li>**ClientAccountBandwidthThrottlingError**: istek, [depolama hesabı ölçeklenebilirlik sınırlarını](scalability-targets-standard-account.md)aşan bant genişliği üzerinde kısıtlandı.</li><li>**Clientaccountrequestazaltıngerror**: istek, [depolama hesabı ölçeklenebilirlik sınırlarını](scalability-targets-standard-account.md)aşmamak için istek hızında kısıtlanıyor.<li>**Clientkısıtlar Lingerror**: diğer istemci tarafı azaltma hatası. ClientAccountBandwidthThrottlingError ve Clientaccountrequestkısıtlar Lingerror hariç tutulur.</li> <li>**ClientTimeoutError**: HTTP 500 durum kodu döndüren, zaman aşımına uğramış ve kimliği doğrulanmış istek. İstemcinin ağ zaman aşımı veya istek zaman aşımı depolama hizmetinin beklediğinden düşük bir değere ayarlanmışsa beklenen bir zaman aşımıdır. Aksi takdirde, bir ServerTimeoutError olarak bildirilir. </li> <li>**ClientOtherError**: Açıklananlar hariç diğer tüm istemci tarafı hatalar. </li> <li>**Success**: Başarılı istek</li> <li> Başarılı **azaltma**: bir SMB istemcisi ilk denemede azaltılırsa, ancak yeniden denemeler yapıldıktan sonra başarılı olan istek.</li> |
 | **ApiName** | İşlemin adı. Örneğin: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Tüm işlem adları için bkz. [belge](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| **Kimlik Doğrulaması** | İşlemlerde kullanılan kimlik doğrulaması türü. Kullanılabilir değerler şunlardır: <br/> <li>**Accountkey**: işlem, depolama hesabı anahtarıyla doğrulanır.</li> <li>**SAS**: işlem, paylaşılan erişim imzaları ile doğrulanır.</li> <li>**OAuth**: Işlem, OAuth erişim belirteçleriyle doğrulanır.</li> <li>**Anonim**: işlem anonim olarak istendi. Bu, ön kontrol isteklerini içermez.</li> <li>**Anonymousbir ön**kontrol: işlem, ön kontrol isteği.</li> |
+| **Kimlik doğrulaması** | İşlemlerde kullanılan kimlik doğrulaması türü. Kullanılabilir değerler şunlardır: <br/> <li>**Accountkey**: işlem, depolama hesabı anahtarıyla doğrulanır.</li> <li>**SAS**: işlem, paylaşılan erişim imzaları ile doğrulanır.</li> <li>**OAuth**: Işlem, OAuth erişim belirteçleriyle doğrulanır.</li> <li>**Anonim**: işlem anonim olarak istendi. Bu, ön kontrol isteklerini içermez.</li> <li>**Anonymousbir ön**kontrol: işlem, ön kontrol isteği.</li> |
 
 Boyutları destekleyen ölçümler için, karşılık gelen ölçüm değerlerini görmek için boyut değerini belirtmeniz gerekir. Örneğin, başarılı yanıtlar için **işlem** değerine bakarsanız, **responseType** boyutunu **başarılı**olarak filtrelemeniz gerekir. Ya da Blok Blobu için **Blobcount** değerine bakarsanız, **Blobtype** boyutunu **blockblob**ile filtrelemeniz gerekir.
 
@@ -140,16 +143,16 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 | Özellik | Açıklama |
 |:--- |:---|
 |**ışınızda** | İsteğin depolama tarafından alındığı evrensel zaman eşgüdümlü (UTC) saati. Örneğin: `2018/11/08 21:09:36.6900118`.|
-|**RESOURCEID** | Depolama hesabının kaynak KIMLIĞI. Örneğin, `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
+|**RESOURCEID** | Depolama hesabının kaynak KIMLIĞI. Örnek: `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
 |**alan** | İstenen işlemin kategorisi. Örneğin: `StorageRead` , `StorageWrite` , veya `StorageDelete` .|
 |**operationName** | Gerçekleştirilen REST işleminin türü. <br> İşlemlerin tüm listesi için bkz. [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri konusu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 |**operationVersion** | İstek yapıldığında belirtilen depolama hizmeti sürümü. Bu, **x-MS-Version** üst bilgisinin değerine eşdeğerdir. Örneğin: `2017-04-17`.|
 |**schemaVersion** | Günlüğün şema sürümü. Örneğin: `1.0`.|
-|**Durum** | İsteğin HTTP durum kodu. İstek kesintiye uğrarsa, bu değer olarak ayarlanabilir `Unknown` . <br> Örneğin, `206` |
-|**statusText** | İstenen işlemin durumu.  Durum iletilerinin tamamı listesi için bkz. [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri konusu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). Sürüm 2017-04-17 ve sonrasında durum iletisi `ClientOtherError` kullanılmaz. Bunun yerine, bu alan bir hata kodu içerir. Örneğin, `SASSuccess`  |
-|**durationMs** | İstenen işlemi gerçekleştirmek için milisaniye olarak ifade edilen toplam süre. Bu, gelen isteği okuma ve yanıtı istek sahibine gönderme süresini içerir. Örneğin: `12`.|
+|**statusCode** | İsteğin HTTP durum kodu. İstek kesintiye uğrarsa, bu değer olarak ayarlanabilir `Unknown` . <br> Örnek: `206` |
+|**statusText** | İstenen işlemin durumu.  Durum iletilerinin tamamı listesi için bkz. [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri konusu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). Sürüm 2017-04-17 ve sonrasında durum iletisi `ClientOtherError` kullanılmaz. Bunun yerine, bu alan bir hata kodu içerir. Örnek: `SASSuccess`  |
+|**Ort** | İstenen işlemi gerçekleştirmek için milisaniye olarak ifade edilen toplam süre. Bu, gelen isteği okuma ve yanıtı istek sahibine gönderme süresini içerir. Örneğin: `12`.|
 |**callerIpAddress** | İstek sahibinin IP adresi (bağlantı noktası numarası dahil). Örneğin: `192.100.0.102:4362`. |
-|**correlationId** | Kaynaklar arasında günlükleri ilişkilendirmek için kullanılan KIMLIK. Örneğin: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
+|**ID** | Kaynaklar arasında günlükleri ilişkilendirmek için kullanılan KIMLIK. Örneğin: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
 |**konumuna** | Depolama hesabının konumu. Örneğin: `North Europe`. |
 |**Protocol**|İşlemde kullanılan protokol. Örneğin: `HTTP` ,, `HTTPS` `SMB` , veya`NFS`|
 | **kullanılmamışsa** | İstenen Tekdüzen Kaynak tanımlayıcısı. Örneğin: `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`. |
@@ -189,7 +192,7 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 |:--- |:---|
 |**kimlik/tür** | İsteği yapmak için kullanılan kimlik doğrulaması türü. Örneğin: `OAuth` ,, `SAS Key` `Account Key` , veya`Anonymous` |
 |**Identity/tokenHash**|Bu alan yalnızca iç kullanım için ayrılmıştır. |
-|**Yetkilendirme/eylem** | İsteğe atanan eylem. Örneğin, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
+|**Yetkilendirme/eylem** | İsteğe atanan eylem. Örnek: `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**Authorization/Roleatamakimliği** | Rol atama KIMLIĞI. Örneğin: `4e2521b7-13be-4363-aeda-111111111111`.|
 |**Yetkilendirme/Roledefinitionıd** | Rol tanımı KIMLIĞI. Örneğin: `ba92f5b4-2d11-453d-a403-111111111111"`.|
 |**sorumlular/ID** | Güvenlik sorumlusunun KIMLIĞI. Örneğin: `a4711f3a-254f-4cfb-8a2d-111111111111`.|
@@ -242,7 +245,7 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 
 | Özellik | Açıklama |
 |:--- |:---|
-|**accountName** | Depolama hesabının adı. Örneğin: `mystorageaccount`.  |
+|**Adı** | Depolama hesabının adı. Örneğin: `mystorageaccount`.  |
 |**requestUrl** | İstenen URL. Örneğin: `http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10`.|
 |**userAgentHeader** | **Kullanıcı Aracısı üst bilgi** değeri, tırnak içinde. Örneğin: `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)`.|
 |**Referyeniden üstbilgi** | **Başvuran** üst bilgi değeri. Örneğin: `http://contoso.com/about.html`.|
@@ -261,16 +264,16 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 |**conditionsUsed** | Bir koşulu temsil eden, anahtar-değer çiftleri için noktalı virgülle ayrılmış bir liste. Koşullar aşağıdakilerden herhangi biri olabilir: <li> If-Modified-Since <li> If-değiştirilmemiş-bu yana <li> IF-Match <li> If-None-Match  <br> Örneğin: `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`. |
 |**contentLengthHeader** | Depolama hizmetine gönderilen isteğin Içerik uzunluğu üstbilgisinin değeri. İstek başarılı olduysa, bu değer requestBodySize değerine eşittir. Bir istek başarısız olursa, bu değer requestBodySize eşit olmayabilir veya boş olabilir. |
 |**tlsVersion** | İstek bağlantısında kullanılan TLS sürümü. Örneğin: `TLS 1.2`. |
-|**Smbtreeconnectıd** | Sunucu Ileti bloğu ( **SMB) ağaç** bağlantı zamanında oluşturulmuştur. Örneğin, `0x3` |
-|**smbPersistentHandleID** | Ağ yeniden bağlandığında SMB2 oluşturma isteğinden kalıcı tanıtıcı KIMLIĞI.  [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 olarak SMB2_FILEID olarak başvurulur **. Kalıcı**. Örneğin, `0x6003f` |
-|**Smbvolatilehandleıd** | Ağ yeniden bağlandığında geri dönüştürülecek bir SMB2 CREATE isteğinden geçici tanıtıcı KIMLIĞI.  [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 olarak SMB2_FILEID olarak başvurulur **. Geçici**. Örneğin, `0xFFFFFFFF00000065` |
-|**Smbmessageıd** | Bağlantı göreli **MessageID**. Örneğin, `0x3b165` |
-|**Smbalacaklı Tstüketilen** | 64K birimi olarak istek tarafından tüketilen giriş veya çıkış. Örneğin, `0x3` |
-|**smbCommandDetail** | Genel istek türü yerine bu özel istek hakkında daha fazla bilgi. Örneğin, `0x2000 bytes at offset 0xf2000` |
-|**Smbfileıd** | Dosya veya dizinle ilişkili **FileId** .  Kabaca bir NTFS FileId 'ye benzer. Örneğin, `0x9223442405598953` |
-|**Smbsessionıd** | Oturum Kurulum zamanında SMB2 **SessionID** oluşturuldu. Örneğin, `0x8530280128000049` |
-|**Smbcommandana uint32** | **SMB2_HEADER. Command**içindeki değer. Şu anda bu sayı 0 ile 18 arasında bir sayıdır. Örneğin, `0x6` |
-|**smbCommandMinor** | Doğru yerde, **Smbcommandana**'nin alt sınıfı. Örneğin, `DirectoryCloseAndDelete` |
+|**Smbtreeconnectıd** | Sunucu Ileti bloğu ( **SMB) ağaç** bağlantı zamanında oluşturulmuştur. Örnek: `0x3` |
+|**smbPersistentHandleID** | Ağ yeniden bağlandığında SMB2 oluşturma isteğinden kalıcı tanıtıcı KIMLIĞI.  [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 olarak SMB2_FILEID olarak başvurulur **. Kalıcı**. Örnek: `0x6003f` |
+|**Smbvolatilehandleıd** | Ağ yeniden bağlandığında geri dönüştürülecek bir SMB2 CREATE isteğinden geçici tanıtıcı KIMLIĞI.  [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 olarak SMB2_FILEID olarak başvurulur **. Geçici**. Örnek: `0xFFFFFFFF00000065` |
+|**Smbmessageıd** | Bağlantı göreli **MessageID**. Örnek: `0x3b165` |
+|**Smbalacaklı Tstüketilen** | 64K birimi olarak istek tarafından tüketilen giriş veya çıkış. Örnek: `0x3` |
+|**smbCommandDetail** | Genel istek türü yerine bu özel istek hakkında daha fazla bilgi. Örnek: `0x2000 bytes at offset 0xf2000` |
+|**Smbfileıd** | Dosya veya dizinle ilişkili **FileId** .  Kabaca bir NTFS FileId 'ye benzer. Örnek: `0x9223442405598953` |
+|**Smbsessionıd** | Oturum Kurulum zamanında SMB2 **SessionID** oluşturuldu. Örnek: `0x8530280128000049` |
+|**Smbcommandana uint32** | **SMB2_HEADER. Command**içindeki değer. Şu anda bu sayı 0 ile 18 arasında bir sayıdır. Örnek: `0x6` |
+|**smbCommandMinor** | Doğru yerde, **Smbcommandana**'nin alt sınıfı. Örnek: `DirectoryCloseAndDelete` |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

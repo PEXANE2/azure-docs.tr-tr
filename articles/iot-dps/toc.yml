@@ -99,6 +99,8 @@
       href: concepts-security.md
     - name: TLS desteği
       href: tls-support.md
+    - name: Sanal ağ desteği
+      href: virtual-network-support.md
     - name: Hizmet
       href: concepts-service.md
     - name: DPS IP adreslerini anlama

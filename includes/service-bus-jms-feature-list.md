@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: service-bus-messaging
 author: axisc
 ms.service: service-bus-messaging
@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 3fd4c6416241302a4969d9b3de26fa6b8316c1f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4b9925459463ff66685c797f0edaba13883f4d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076225"
 ---
-Aşağıdaki tabloda, Azure Service Bus tarafından şu anda desteklenen ve desteklenmeyen **Java Ileti hizmeti (JMS)** özellikleri listelenmektedir.
+Aşağıdaki tabloda Azure Service Bus Şu anda desteklediği Java Ileti hizmeti (JMS) özellikleri listelenmektedir. Ayrıca desteklenmeyen özellikleri gösterir.
 
 
-| Özellikler | Durum |
+| Özellik | Durum |
 |---|---|
-| Kuyruklar   | Destekleniyor |
-| Konu başlıkları   | Destekleniyor |
-| Geçici kuyruklar | Destekleniyor |
-| Geçici konular | Destekleniyor |
-| İleti seçicileri | Destekleniyor |
-| Tarayıcıları kuyruğa al | Destekleniyor |
-| Paylaşılan dayanıklı abonelikler | Destekleniyor|
-| Paylaşılmayan dayanıklı abonelikler | Destekleniyor |
-| Paylaşılan, dayanıklı olmayan abonelikler | Destekleniyor |
-| Paylaşılmayan kalıcı olmayan abonelikler | Destekleniyor |
-| Dağıtılmış İşlemler | **Desteklenmiyor** |
-| Dayanıklı Sonlandırus | **Desteklenmiyor** |
+| Kuyruklar   | Desteklenir |
+| Konu başlıkları   | Desteklenir |
+| Geçici kuyruklar | Desteklenir |
+| Geçici konular | Desteklenir |
+| İleti seçicileri | Desteklenir |
+| Tarayıcıları kuyruğa al | Desteklenir |
+| Paylaşılan dayanıklı abonelikler | Desteklenir|
+| Paylaşılmayan dayanıklı abonelikler | Desteklenir |
+| Paylaşılan, dayanıklı olmayan abonelikler | Desteklenir |
+| Paylaşılmayan kalıcı olmayan abonelikler | Desteklenir |
+| Dağıtılmış işlemler | Desteklenmez |
+| Dayanıklı sonlandırus | Desteklenmez |

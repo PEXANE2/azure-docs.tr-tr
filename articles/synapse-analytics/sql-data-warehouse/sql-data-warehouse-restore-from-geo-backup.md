@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075815"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL havuzu için coğrafi geri yükleme
 
@@ -36,7 +36,7 @@ Bir coğrafi yedeklemeden geri yüklemek için [Get-AzSqlDatabaseGeoBackup](/pow
 > Gen2 'e coğrafi geri yükleme yapabilirsiniz! Bunu yapmak için, isteğe bağlı bir parametre olarak bir Gen2 ServiceObjectiveName (ör. DW1000**c**) belirtin.
 >
 
-1. Başlamadan önce [Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)' yi yüklediğinizden emin olun.
+1. Başlamadan önce [Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)' yi yüklediğinizden emin olun.
 2. PowerShell’i açın.
 3. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listeleyin.
 4. Geri yüklenecek veri ambarını içeren aboneliği seçin.
@@ -77,7 +77,7 @@ Kaynak veritabanı TDE etkinse Kurtarılan veritabanı TDE etkinleştirilir.
 Bir SQL havuzunu coğrafi yedeklemeden geri yüklemek için aşağıda özetlenen adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/) hesabınızda oturum açın.
-2. **+ Kaynak oluştur ' a**tıklayın.
+2. **+ Kaynak oluştur**’a tıklayın.
 
    ![Yeni DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
@@ -87,9 +87,9 @@ Bir SQL havuzunu coğrafi yedeklemeden geri yüklemek için aşağıda özetlene
 
 4. **Temel** bilgiler sekmesinde istenen bilgileri doldurun ve **İleri**' ye tıklayın.
 
-   ![Temel Bilgiler](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Temel bilgiler](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. **Mevcut veri parametresini kullan** için **Yedekle** ' yi seçin ve aşağı kaydırma seçeneklerinden uygun yedeği seçin. **Gözden geçir + oluştur**' a tıklayın.
+5. **Mevcut veri parametresini kullan** için **Yedekle** ' yi seçin ve aşağı kaydırma seçeneklerinden uygun yedeği seçin. **Gözden Geçir ve Oluştur**’a tıklayın.
 
    ![yedekleme](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 

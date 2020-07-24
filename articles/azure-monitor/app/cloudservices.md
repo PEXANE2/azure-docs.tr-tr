@@ -3,18 +3,19 @@ title: Azure Cloud Services için Application Insights | Microsoft Docs
 description: Application Insights ile web ve çalışan rollerinizi etkili bir şekilde izleyin
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075424"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
-[Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
+[Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../platform/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
 
 ![Genel Bakış Panosu](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yapmanız gerekir:
 
 * Bir [Azure](https://azure.com) aboneliği. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için Microsoft hesabı oturum açın. 
@@ -30,7 +31,7 @@ Bu seçenek, uygulamanızı çalışma zamanında gererken, Web rolünüzde iste
 
 İhtiyacınız olan bu seçenek varsa, işiniz bitti demektir. 
 
-Sonraki adımlarınız, [verileri analiz ile sorgulayarak](../../azure-monitor/app/analytics.md) [uygulamanızdaki ölçümleri görüntülüyor](../../azure-monitor/platform/metrics-charts.md). 
+Sonraki adımlarınız, [verileri analiz ile sorgulayarak](../log-query/log-query-overview.md) [uygulamanızdaki ölçümleri görüntülüyor](../../azure-monitor/platform/metrics-charts.md). 
 
 Tarayıcıdaki performansı izlemek için, [kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) ayarlamak ve [Web tarayıcınıza kod eklemek](../../azure-monitor/app/javascript.md)isteyebilirsiniz.
 
@@ -131,7 +132,7 @@ Visual Studio’da her bulut uygulaması projesi için Application Insights SDK�
 
 Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyorsanız gereklidir. 
 
-1. `\*.csdef`Şuna benzer her bir rol için dosya ekleme [Başlangıç görevi](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) 
+1. `\*.csdef`Şuna benzer her bir rol için dosya ekleme [Başlangıç görevi](../../cloud-services/cloud-services-startup-tasks.md) 
 
     ```xml
     <Startup>
@@ -177,7 +178,7 @@ Veri yoksa, şunları yapın:
 Daha fazla bilgi için bkz. [Sorun giderme][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Azure Tanılama olaylarını görüntüle
-[Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) bilgilerini aşağıdaki konumlarda Application Insights bulabilirsiniz:
+[Azure tanılama](../platform/diagnostics-extension-overview.md) bilgilerini aşağıdaki konumlarda Application Insights bulabilirsiniz:
 
 * Performans sayaçları özel ölçümler olarak görüntülenir. 
 * Windows olay günlükleri izlemeler ve özel olaylar olarak gösterilir.
@@ -241,7 +242,7 @@ Zengin bir tanılama deneyimi için, başarısız veya yüksek gecikme süresine
 
 Çalışan rolleri için bu görünümü elde etmek üzere, tüm telemetri için ortak bir Operation.Id bağlamı özniteliği ayarlamak üzere özel bir telemetri başlatıcısı kullanabilirsiniz. Bunun yapılması, gecikme veya hata sorununun bir bağımlılık ya da kodunuzun kaynaklanıp kaynaklanmadığını bir bakışta görüntülemenizi sağlar. 
 
-Aşağıdaki adımları uygulayın:
+Bunu yapmak için:
 
 * [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36), bağıntıkimliği öğesini bir CallContext olarak ayarlayın. Bu durumda, Istek KIMLIĞINI CorrelationId olarak kullanıyoruz.
 * Operation.Id öğesini daha önce ayarlanmış olan CorrelationId 'ye ayarlamak için özel bir Telemetryınitializer uygulamasını ekleyin. Bir örnek için bkz. [ıtemcorrelationtelemetryınitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
@@ -258,7 +259,7 @@ Sisteminizin genel bir resmi için, anahtar izleme grafiklerini bir [panoda](../
 
 Sisteminiz Stream Analytics gibi diğer Azure hizmetlerini kullanıyorsa, bunların izleme grafiklerini de dahil edin. 
 
-İstemci mobil uygulamanız varsa, [App Center](../../azure-monitor/learn/mobile-center-quickstart.md) kullanın. [Analiz](../../azure-monitor/app/analytics.md)’de olay sayılarını görüntüleyecek sorgular oluşturun ve bunları panoya sabitleyin.
+İstemci mobil uygulamanız varsa, [App Center](../../azure-monitor/learn/mobile-center-quickstart.md) kullanın. [Analiz](../log-query/log-query-overview.md)’de olay sayılarını görüntüleyecek sorgular oluşturun ve bunları panoya sabitleyin.
 
 ## <a name="example"></a>Örnek
 [Örnek](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService), bir web rolü ve iki çalışan rolüne sahip bir hizmeti izler.
@@ -283,6 +284,6 @@ Sisteminiz Stream Analytics gibi diğer Azure hizmetlerini kullanıyorsa, bunlar
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md

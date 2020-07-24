@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2b4696886c898eec5895c4ccb59347cf2a49f03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcd7bf46a3def963a4f9fe8913c4f8afcdce743f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209003"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075650"
 ---
-# <a name="connect-with-the-macos-client"></a>macOS istemcisiyle bağlanma
+# <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>MacOS istemcisiyle Windows sanal masaüstüne bağlanma
 
 > Uygulama hedefi: macOS 10,12 veya üzeri
 
@@ -41,7 +41,7 @@ Bir akışa abone olmak için:
 2. Akış URL 'sini girin. Bu bir URL veya e-posta adresi olabilir:
    - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Normalde, URL olur <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - E-posta kullanmak için e-posta adresinizi girin. Bu, yönetici sunucuyu bu şekilde yapılandırdıysa, istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
-3. **Ekle**'yi seçin.
+3. **Ekle**’yi seçin.
 4. İstendiğinde kullanıcı hesabınızla oturum açın.
 
 Oturum açtıktan sonra, kullanılabilir kaynakların bir listesini görmeniz gerekir.

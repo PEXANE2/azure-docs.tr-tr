@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü tanılama günlüğü Analizi-Azure
-description: Windows sanal masaüstü tanılama özelliği ile Log Analytics 'i kullanma.
+title: Windows sanal masaüstü tanılama günlüğü Analizi (sonbahar 2019)-Azure
+description: Log Analytics 'i Windows sanal masaüstü (Fall 2019 sürümü) tanılama özelliği ile nasıl kullanacağınızı öğrenin.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205977"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077624"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
+# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>Tanılama özelliği için Log Analytics kullanın (Fall 2019 sürümü)
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../diagnostics-log-analytics.md)bakın.

@@ -6,12 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80745549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075937"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Stream Analytics Pencereleme işlevlerine giriş
 
@@ -34,7 +35,8 @@ Atlamalı pencere işlevleri, sabit bir süre kadar ileri gider. Bunlar çakış
 ![Stream Analytics atlamalı penceresi](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Kayan pencere
-Kayan pencere işlevleri, ttan veya atlamalı pencerelerin aksine, **yalnızca** bir olay gerçekleştiğinde çıkış üretir. Her pencerede en az bir olay olur ve pencere sürekli olarak bir ε (Epsilon) ile ileriye doğru gider. Atlamalı pencereler gibi olaylar birden fazla kayan pencereye ait olabilir.
+
+Windows, çıkış olayları yalnızca pencerenin içeriğinin değiştiği zaman noktaları için, çıkış olaylarından farklı olarak kayan pencereler. Diğer bir deyişle, bir olay pencereye girdiğinde veya pencereden çıkar. Her pencerede en az bir olay vardır. bu durum, Windows 'un, bir veya daha fazla kayan pencereye ait olabilir
 
 ![Stream Analytics kayan pencere](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -49,6 +51,11 @@ Olaylar belirtilen zaman aşımı süresi içinde gerçekleşirken, en fazla sü
 
 Bir bölüm anahtarı sağlandığında, olaylar anahtar tarafından birlikte gruplandırılır ve oturum penceresi her bir gruba bağımsız olarak uygulanır. Bu bölümlendirme, farklı kullanıcılar veya cihazlar için farklı oturum pencerelerinin olması gereken durumlarda faydalıdır.
 
+## <a name="snapshot-window"></a>Anlık görüntü penceresi
+
+Windows grupları, aynı zaman damgasına sahip olayları görüntüler. Özel bir pencere işlevi gerektiren diğer Pencereleme türlerinden farklı olarak ( [Sessionwindow ()](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)gıbı, group by yan tümcesine System. Timestamp () ekleyerek bir anlık görüntü penceresi uygulayabilirsiniz.
+
+![Stream Analytics anlık görüntü penceresi](media/stream-analytics-window-functions/snapshot.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)

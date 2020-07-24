@@ -3,15 +3,15 @@ title: .NET programlama kılavuzu-Azure Event Hubs (eski) | Microsoft Docs
 description: Bu makalede, Azure .NET SDK kullanarak Azure Event Hubs için kod yazma hakkında bilgi verilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: de731d591c367e386fe8ef1eef03f1b90e0fa126
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314550"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074837"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs için .NET Programlama Kılavuzu (eski Microsoft. Azure. EventHubs paketi)
-Bu makalede, Azure Event Hubs kullanarak kod yazma konusunda bazı yaygın senaryolar ele alınmaktadır. Burada Event Hubs’ın önceden bilindiği varsayılır. Event Hubs’a kavramsal genel bakış için bkz. [Event Hubs’a genel bakış](event-hubs-what-is-event-hubs.md).
+Bu makalede, Azure Event Hubs kullanarak kod yazma konusunda bazı yaygın senaryolar ele alınmaktadır. Burada Event Hubs’ın önceden bilindiği varsayılır. Event Hubs’a kavramsal genel bakış için bkz. [Event Hubs’a genel bakış](./event-hubs-about.md).
 
 > [!WARNING]
 > Bu kılavuz, eski **Microsoft. Azure. EventHubs** paketi içindir. En son [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) paketini kullanmak için kodunuzu [geçirmeniz](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) önerilir.  
@@ -96,7 +96,7 @@ Tek bir toplu işlem, bir olayın 1 MB sınırını aşmamalıdır. Ayrıca, top
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Zaman uyumsuz olarak gönderme ve ölçekli gönderme
 
-Olayları bir olay hub 'ına zaman uyumsuz olarak gönderirsiniz. Zaman uyumsuz olarak gönderilmesi, bir istemcinin olayları gönderme hızını arttırır. [Sendadsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) bir [görev](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) nesnesi döndürüyor. İstemci yeniden deneme seçeneklerini denetlemek için istemci üzerindeki [Retrypolicy](/dotnet/api/microsoft.servicebus.retrypolicy) sınıfını kullanabilirsiniz.
+Olayları bir olay hub 'ına zaman uyumsuz olarak gönderirsiniz. Zaman uyumsuz olarak gönderilmesi, bir istemcinin olayları gönderme hızını arttırır. [Sendadsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) bir [görev](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) nesnesi döndürüyor. İstemci yeniden deneme seçeneklerini denetlemek için istemci üzerindeki [Retrypolicy](/dotnet/api/microsoft.servicebus.retrypolicy) sınıfını kullanabilirsiniz.
 
 ## <a name="event-consumers"></a>Olay tüketicileri
 [EventProcessorHost][] sınıfı Event Hubs verilerini işler. .NET platformu üzerinde olay okuyucuları oluştururken bu uygulamayı kullanmanız gerekir. [EventProcessorHost][] aynı zamanda denetim noktası oluşturma ve bölüm kiralama yönetimi sağlayan olay işlemcisi uygulamaları için iş parçacığı güvenli, çok işlemli, güvenli bir çalışma zamanı ortamı sağlar.
@@ -149,8 +149,8 @@ Yayımcı iptali ve yayımcı olarak Event Hubs’a gönderme hakkında daha faz
 
 Event Hubs senaryoları hakkında daha fazla bilgi almak için aşağıdaki bağlantıları ziyaret edin:
 
-* [Event Hubs API’sine genel bakış](event-hubs-api-overview.md)
-* [Event Hubs nedir?](event-hubs-what-is-event-hubs.md)
+* [Event Hubs API’sine genel bakış](./event-hubs-samples.md)
+* [Event Hubs nedir?](./event-hubs-about.md)
 * [Event Hubs’da kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md)
 * [Olay işlemcisi konak API başvurusu](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 

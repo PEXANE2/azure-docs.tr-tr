@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 07/09/2020
-ms.openlocfilehash: da09cb8aa112cdf927c1a67401ab3f6a92e85ece
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225314"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075193"
 ---
 # <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>Bilişsel hizmetler belgeleri: 1 Haziran 2020 ' deki yenilikler-30 Haziran 2020
 
@@ -25,7 +25,7 @@ ms.locfileid: "86225314"
 - [Hızlı başlangıç: Görüntü İşleme REST API ve Java kullanarak yazdırılmış ve el yazısı metin Ayıkla](/azure/cognitive-services/computer-vision/quickstarts/java-hand-text)
 - [Hızlı başlangıç: Görüntü İşleme REST API ve Python kullanarak yazdırılan ve el yazısı metin Ayıkla](/azure/cognitive-services/computer-vision/quickstarts/python-hand-text)
 
-## <a name="face"></a>Yüz
+## <a name="face"></a>Yüz Tanıma
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
@@ -69,16 +69,16 @@ ms.locfileid: "86225314"
 ### <a name="new-articles"></a>Yeni makaleler
 
 - [Özel Komutlar kavramları](/azure/cognitive-services/speech-service/custom-commands-references)
-- [Komuta onaylar ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-confirmations)
-- [Parametreyi dış Katalog varlığı olarak yapılandırma](/azure/cognitive-services/speech-service/how-to-custom-commands-add-external-catalog-string-entity)
+- [Komuta onaylar ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
+- [Parametreyi dış Katalog varlığı olarak yapılandırma](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
 - [Konuşma yanıtları için dil oluşturma şablonlarını kullanma](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [Bir komutta düzeltme uygulama](/azure/cognitive-services/speech-service/how-to-custom-commands-add-one-step-correction)
+- [Bir komutta düzeltme uygulama](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
 - [Komutlara parametre ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [Basit komutlar ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-simple-commands)
-- [Özel komut parametrelerine doğrulama ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-validations)
-- [Özel komut uygulaması oluşturma](/azure/cognitive-services/speech-service/how-to-custom-commands-create-empty-project)
+- [Basit komutlar ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
+- [Özel komut parametrelerine doğrulama ekleme](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
+- [Özel komut uygulaması oluşturma](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
 - [Özel Konuşma Tanıma için CI/CD](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [Özel komutlar kullanarak uçtan uca ses Yardımcısı oluşturma](/azure/cognitive-services/speech-service/quickstart-custom-commands-e2e-application)
+- [Özel komutlar kullanarak uçtan uca ses Yardımcısı oluşturma](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)
 - [Hızlı başlangıç: konuşma Studio 'da bir ses dosyası kullanarak bir modeli test etme](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
 - [Konuşmacı tanımanın temellerini öğrenin](/azure/cognitive-services/speech-service/speaker-recognition-basics)
 - [Azure konuşmacı tanıma hizmeti nedir?](/azure/cognitive-services/speech-service/speaker-recognition-overview)
@@ -100,7 +100,7 @@ ms.locfileid: "86225314"
 - [Hızlı başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Python REST API kullanma](/azure/cognitive-services/text-analytics/quickstarts/python)
 - [Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için Ruby kullanma](/azure/cognitive-services/text-analytics/quickstarts/ruby)
 
-## <a name="translator"></a>Çevirmen
+## <a name="translator"></a>Translator
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 

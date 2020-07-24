@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225301"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075607"
 ---
 # <a name="safe-url-list"></a>Güvenli URL listesi
 
@@ -33,6 +33,7 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 |catalogartifact.azureedge.net|443|Azure Market|AzureCloud|
 |kms.core.windows.net|1688|Windows etkinleştirme|İnternet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure portal desteği|AzureCloud|
+| 169.254.169.254 | 80 | [Azure örnek meta veri hizmeti uç noktası](../virtual-machines/windows/instance-metadata-service.md) | Yok |
 
 >[!IMPORTANT]
 >Windows sanal masaüstü artık FQDN etiketini destekliyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](../firewall/protect-windows-virtual-desktop.md).
@@ -43,13 +44,13 @@ Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağl�
 
 |Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
 |---|---|---|---|
-|*.microsoftonline.com|443|Microsoft Online Services kimlik doğrulaması|Hiçbiri|
-|*. events.data.microsoft.com|443|Telemetri hizmeti|Hiçbiri|
-|www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Hiçbiri|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Hiçbiri|
-|login.windows.net|443|Microsoft Online Services 'da oturum açın Microsoft 365|Hiçbiri|
-|*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|Hiçbiri|
-|*. digicert.com|443|Sertifika iptal denetimi|Hiçbiri|
+|*.microsoftonline.com|443|Microsoft Online Services kimlik doğrulaması|Yok|
+|*. events.data.microsoft.com|443|Telemetri hizmeti|Yok|
+|www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Yok|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Yok|
+|login.windows.net|443|Microsoft Online Services 'da oturum açın Microsoft 365|Yok|
+|*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|Yok|
+|*. digicert.com|443|Sertifika iptal denetimi|Yok|
 
 >[!NOTE]
 >Windows sanal masaüstü 'nde, ağ trafiğine izin vermek için engelbir IP adresi aralığı listesi yoktur. Şu anda yalnızca belirli URL 'Lerin engellenmesini destekliyoruz.
@@ -59,8 +60,8 @@ Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağl�
 >Hizmet trafiğiyle ilgili URL 'Ler için (*) joker karakterini kullanmanız gerekir. Aracıyla ilgili trafik için * kullanmayı tercih ediyorsanız, joker karakterleri olmayan URL 'Leri bulma hakkında bilgi edinebilirsiniz:
 >
 >1. Sanal makinelerinizi Windows sanal masaüstü ana bilgisayar havuzuna kaydedin.
->2. **Olay Görüntüleyicisi**'ni açın, sonra **Windows günlükleri**  >  **uygulaması**  >  **WVD-Agent** ' a gidin ve olay kimliği 3702 ' i arayın.
->3. Olay KIMLIĞI 3702 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3702 altındaki URL 'Ler bölgeye özeldir. Sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle engellemeyi kaldırma işlemini tekrarlamanız gerekir.
+>2. **Olay Görüntüleyicisi**'ni açın, sonra **Windows günlükleri**  >  **uygulaması**  >  **WVD-Agent** ' a gidin ve olay kimliği 3701 ' i arayın.
+>3. Olay KIMLIĞI 3701 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3701 altındaki URL 'Ler bölgeye özeldir. Sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle engellemeyi kaldırma işlemini tekrarlamanız gerekir.
 
 ## <a name="remote-desktop-clients"></a>Uzak Masaüstü istemcileri
 

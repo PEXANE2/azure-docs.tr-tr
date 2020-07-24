@@ -11,11 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77bb5211d13f9b0566f4226163918a5310287bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075727"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda tabloları bölümleme
 
@@ -31,21 +32,33 @@ Bölümlendirme, veri bakımı ve sorgu performansı avantajına sahip olabilir.
 
 SYNAPSE SQL havuzunda bölümlemenin birincil avantajı, bölüm silme, değiştirme ve birleştirme kullanarak veri yükleme verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin veritabanına yüklendiği sıraya yakın bir tarih sütununda bölümlenir. Bölüm kullanmanın en büyük avantajlarından biri, verileri işlem günlüğü 'nün engelleme. Yalnızca veri ekleme, güncelleştirme veya silme en kolay yaklaşım olabilir. Bu işlem, kısa bir süre sonra, yükleme işleminiz sırasında bölümlemenin kullanılması performansı önemli ölçüde iyileştirebilir.
 
-Bölüm değiştirme, bir tablonun bir bölümünü hızlıca kaldırmak veya değiştirmek için kullanılabilir.  Örneğin, bir Sales olgu tablosu yalnızca son 36 aya ait verileri içerebilir. Her ayın sonunda, satış verilerinin en eski ayı tablodan silinir.  Bu veriler, en eski aya ilişkin verileri silmek için bir Delete ifadesiyle silinebilir. Ancak, bir Delete ifadesiyle büyük miktarda veri satırını satır içinde silmek çok fazla zaman alabilir ve bir şeyler yanlış olursa geri alınması uzun zaman alan büyük işlemler riskini oluşturabilir. En iyi yöntem, en eski veri bölümünü düşürülemedir. Tek tek satırları silmenin saat sürebileceği durumlarda, bölümün tamamının silinmesi saniye sürebilir.
+Bölüm değiştirme, bir tablonun bir bölümünü hızlıca kaldırmak veya değiştirmek için kullanılabilir.  Örneğin, bir Sales olgu tablosu yalnızca son 36 aya ait verileri içerebilir. Her ayın sonunda, satış verilerinin en eski ayı tablodan silinir.  Bu veriler, en eski aya ilişkin verileri silmek için bir Delete ifadesiyle silinebilir. 
+
+Ancak, bir Delete ifadesiyle büyük miktarda veri satırını satır içinde silmek çok fazla zaman alabilir ve bir şeyler yanlış olursa geri alınması uzun zaman alan büyük işlemler riskini oluşturabilir. En iyi yöntem, en eski veri bölümünü düşürülemedir. Tek tek satırları silmenin saat sürebileceği durumlarda, bölümün tamamının silinmesi saniye sürebilir.
 
 ### <a name="benefits-to-queries"></a>Sorguların avantajları
 
-Sorgu performansını artırmak için bölümleme de kullanılabilir. Bölümlenmiş verilere filtre uygulayan bir sorgu, taramayı yalnızca uygun bölümlerle sınırlayabilir. Bu filtreleme yöntemi bir tam tablo taramasını önleyebilir ve yalnızca daha küçük bir veri alt kümesini tarayabilir. Kümelenmiş columnstore dizinlerinin tanıtılmasıyla, koşulun eleme performansı avantajları daha az faydalıdır, ancak bazı durumlarda sorgulara bir avantaj olabilir. Örneğin, Sales olgu tablosu satış tarihi alanı kullanılarak 36 ay içinde bölümleniyorsa, satış tarihini filtreleyen sorgular filtreyle eşleşmeyen bölümlerde aramayı atlayabilir.
+Sorgu performansını artırmak için bölümleme de kullanılabilir. Bölümlenmiş verilere filtre uygulayan bir sorgu, taramayı yalnızca uygun bölümlerle sınırlayabilir. Bu filtreleme yöntemi bir tam tablo taramasını önleyebilir ve yalnızca daha küçük bir veri alt kümesini tarayabilir. Kümelenmiş columnstore dizinlerinin tanıtılmasıyla, koşulun eleme performansı avantajları daha az faydalıdır, ancak bazı durumlarda sorgulara bir avantaj olabilir. 
+
+Örneğin, Sales olgu tablosu satış tarihi alanı kullanılarak 36 ay içinde bölümleniyorsa, satış tarihini filtreleyen sorgular filtreyle eşleşmeyen bölümlerde aramayı atlayabilir.
 
 ## <a name="sizing-partitions"></a>Bölümleri boyutlandırma
 
-Bölümleme performansı artırmak için, bazı senaryolarda **çok fazla** bölüm içeren bir tablo oluşturmak, bazı koşullarda performansı etkileyebilir.  Bu sorunlar özellikle kümelenmiş columnstore tabloları için geçerlidir. Bölümlemenin yararlı olması için bölümleme ve oluşturulacak bölüm sayısının ne zaman kullanılacağını anlamak önemlidir. Birçok bölüm çok fazla olan bir sabit hızlı kural yoktur, bu, verilerinize ve aynı anda kaç bölümden fazla yükleme yapadığınıza bağlıdır. Başarılı bir bölümlendirme şeması genellikle binlerce bölüm olan binlerce bölümden oluşur.
+Bölümleme performansı artırmak için, bazı senaryolarda **çok fazla** bölüm içeren bir tablo oluşturmak, bazı koşullarda performansı etkileyebilir.  Bu sorunlar özellikle kümelenmiş columnstore tabloları için geçerlidir. 
 
-**Kümelenmiş columnstore** tablolarında bölümler oluştururken, her bölüme ait kaç satır olduğunu göz önünde bulundurmanız önemlidir. Kümelenmiş columnstore tablolarının en iyi sıkıştırması ve performansı için, dağıtım ve bölüm başına en az 1.000.000 satır gerekir. Bölümler oluşturulmadan önce, SYNAPSE SQL havuzu, her bir tabloyu zaten 60 dağıtılmış veritabanına böler. Bir tabloya eklenen herhangi bir bölümleme, arka planda oluşturulan dağıtımların yanı sıra. Bu örneği kullanarak, Sales olgu tablosu 36 aylık bölümler içeriyorsa ve bir Synapse SQL havuzunun 60 dağıtımları varsa, Sales olgu tablosu ayda 60.000.000 satır veya tüm aylar doldurulduğunda 2.100.000.000 satır içermelidir. Bir tablo, bölüm başına önerilen en az sayıda satır içeriyorsa, bölüm başına satır sayısını artırmak için daha az bölüm kullanmayı göz önünde bulundurun. Daha fazla bilgi için, küme columnstore dizinlerinin kalitesini değerlendirebilen sorgular içeren [Dizin oluşturma](sql-data-warehouse-tables-index.md) makalesine bakın.
+Bölümlemenin yararlı olması için bölümleme ve oluşturulacak bölüm sayısının ne zaman kullanılacağını anlamak önemlidir. Birçok bölüm çok fazla olan bir sabit hızlı kural yoktur, bu, verilerinize ve aynı anda kaç bölümden fazla yükleme yapadığınıza bağlıdır. Başarılı bir bölümlendirme şeması genellikle binlerce bölüm olan binlerce bölümden oluşur.
+
+**Kümelenmiş columnstore** tablolarında bölümler oluştururken, her bölüme ait kaç satır olduğunu göz önünde bulundurmanız önemlidir. Kümelenmiş columnstore tablolarının en iyi sıkıştırması ve performansı için, dağıtım ve bölüm başına en az 1.000.000 satır gerekir. Bölümler oluşturulmadan önce, SYNAPSE SQL havuzu, her bir tabloyu zaten 60 dağıtılmış veritabanına böler. 
+
+Bir tabloya eklenen herhangi bir bölümleme, arka planda oluşturulan dağıtımların yanı sıra. Bu örneği kullanarak, Sales olgu tablosu 36 aylık bölümler içeriyorsa ve bir Synapse SQL havuzunun 60 dağıtımları varsa, Sales olgu tablosu ayda 60.000.000 satır veya tüm aylar doldurulduğunda 2.100.000.000 satır içermelidir. Bir tablo, bölüm başına önerilen en az sayıda satır içeriyorsa, bölüm başına satır sayısını artırmak için daha az bölüm kullanmayı göz önünde bulundurun. 
+
+Daha fazla bilgi için, küme columnstore dizinlerinin kalitesini değerlendirebilen sorgular içeren [Dizin oluşturma](sql-data-warehouse-tables-index.md) makalesine bakın.
 
 ## <a name="syntax-differences-from-sql-server"></a>SQL Server söz dizimi farklılıkları
 
-SYNAPSE SQL havuzu SQL Server ' den daha basit olan bölümleri tanımlamak için bir yol sunar. Bölümlendirme işlevleri ve şemaları, SQL Server olduklarından SYNAPSE SQL havuzunda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütunu ve sınır noktalarını belirlemektir. Bölümleme sözdizimi SQL Server biraz farklı olabilir, ancak temel kavramlar aynıdır. SQL Server ve SYNAPSE SQL havuzu, her tablo için bir bölüm sütununu destekler ve bu bölüm, sıralaştırılmış bölümdür. Bölümlendirme hakkında daha fazla bilgi için bkz. [bölümlenmiş tablolar ve dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+SYNAPSE SQL havuzu SQL Server ' den daha basit olan bölümleri tanımlamak için bir yol sunar. Bölümlendirme işlevleri ve şemaları, SQL Server olduklarından SYNAPSE SQL havuzunda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütunu ve sınır noktalarını belirlemektir. 
+
+Bölümleme sözdizimi SQL Server biraz farklı olabilir, ancak temel kavramlar aynıdır. SQL Server ve SYNAPSE SQL havuzu, her tablo için bir bölüm sütununu destekler ve bu bölüm, sıralaştırılmış bölümdür. Bölümlendirme hakkında daha fazla bilgi için bkz. [bölümlenmiş tablolar ve dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölümlemek için [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ifadesini kullanır:
 
@@ -236,7 +249,11 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Verileri tek bir adımda içeren bölümlere yeni verileri yükleme
 
-Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcıların yeni verilerde anahtara görünmeyen bir tabloda yeni verileri aşamalandırmaya uygun bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  Bir bölümdeki mevcut verileri temizlemek için, `ALTER TABLE` verileri değiştirmek için kullanılması gerekir.  `ALTER TABLE`Yeni verilerde geçiş yapmak için başka bir tane gerekiyordu.  SYNAPSE SQL havuzunda `TRUNCATE_TARGET` seçeneği, `ALTER TABLE` komutunda desteklenir.  `TRUNCATE_TARGET`Komutuyla, `ALTER TABLE` yeni verilerle bölümdeki mevcut verilerin üzerine yazar.  Aşağıda, `CTAS` var olan verileri içeren yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, varolan verilerin üzerine yazmak için kullanılan bir örnek verilmiştir.
+Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcılara görünmeyen bir tabloda yeni verileri hazırlamak için kullanışlı bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  
+
+Bir bölümdeki mevcut verileri temizlemek için, `ALTER TABLE` verileri değiştirmek için kullanılması gerekir.  `ALTER TABLE`Yeni verilerde geçiş yapmak için başka bir tane gerekiyordu.  
+
+SYNAPSE SQL havuzunda `TRUNCATE_TARGET` seçeneği, `ALTER TABLE` komutunda desteklenir.  `TRUNCATE_TARGET`Komutuyla, `ALTER TABLE` yeni verilerle bölümdeki mevcut verilerin üzerine yazar.  Aşağıda, `CTAS` var olan verileri içeren yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, mevcut verilerin üzerine yazmak için kullanılan bir örnek verilmiştir.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -338,7 +355,7 @@ Kaynak denetim sisteminizde tablo tanımınızın **rusting** bir engel olmasın
     DROP TABLE #partitions;
     ```
 
-Bu yaklaşımla kaynak denetimindeki kod statik kalır ve bölümleme sınırı değerlerinin dinamik olmasına izin verilir; veritabanıyla zaman içinde gelişiyor.
+Bu yaklaşımla, kaynak denetimindeki kod statik kalır ve bölümleme sınırı değerlerinin dinamik olmasına izin verilir; veritabanıyla zaman içinde gelişiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

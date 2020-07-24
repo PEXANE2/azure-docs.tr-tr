@@ -11,11 +11,12 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86610910ed532e737720bb3b83e773596987aba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074669"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Cihazdan buluta iletişim Kılavuzu
 
@@ -31,7 +32,7 @@ Cihaz uygulamasından çözüm arka ucuna bilgi gönderirken IoT Hub üç seçen
 
 Çeşitli cihazdan buluta iletişim seçeneklerinin ayrıntılı bir karşılaştırması aşağıda verilmiştir.
 
-|  | Cihazdan buluta iletiler | Cihaz ikizi bildirilen özellikleri | Dosya karşıya yüklemeleri |
+| Faktör | Cihazdan buluta iletiler | Cihaz ikizi bildirilen özellikleri | Dosya karşıya yüklemeleri |
 | ---- | ------- | ---------- | ---- |
 | Senaryo | Telemetri süresi serisi ve uyarıları. Örneğin, her 5 dakikada bir 256 KB 'lık algılayıcı veri toplu işi gönderilir. | Kullanılabilir yetenekler ve koşullar. Örneğin, hücresel veya WiFi gibi geçerli cihaz bağlantısı modu. Yapılandırma ve yazılım güncelleştirmeleri gibi uzun süre çalışan iş akışlarını eşitleme. | Medya dosyaları. Büyük (genellikle sıkıştırılmış) telemetri toplu işleri. |
 | Depolama ve alma | En fazla 7 güne kadar IoT Hub tarafından geçici olarak depolanır. Yalnızca sıralı okuma. | Cihaz ikizi IoT Hub tarafından depolanır. [IoT Hub sorgu dili](iot-hub-devguide-query-language.md)kullanılarak alınabilir. | Kullanıcı tarafından belirtilen Azure depolama hesabında depolanır. |

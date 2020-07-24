@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518598"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076053"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,10 +23,6 @@ ms.locfileid: "86518598"
 Bulut ortamında barındırılan dağıtılmış bir uygulamada tanılama ve sorun giderme sorunları geleneksel ortamlarından daha karmaşık olabilir. Uygulamalar PaaS veya IaaS altyapısına, şirket içinde, mobil cihaza veya bu ortamların bir birleşimine dağıtılabilir. Genellikle, uygulamanızın ağ trafiği ortak ve özel ağlarla geçiş gösterebilir ve uygulamanız, ilişkisel ve belge veritabanları gibi diğer veri depolarına ek olarak Microsoft Azure Depolama tabloları, Bloblar, kuyruklar veya dosyalar gibi birden çok depolama teknolojilerini kullanabilir.
 
 Bu tür uygulamaları başarılı bir şekilde yönetmek için bunları önceden izlemeniz ve bunların tüm yönlerini ve bağımlı teknolojilerini nasıl tanılamanıza ve giderebileceğinizi anlamanız gerekir. Azure depolama hizmetleri 'nin bir kullanıcısı olarak, uygulamanızda beklenmedik değişiklikler (örneğin, olağan yanıt süreleriyle daha yavaş) için uygulamanızın kullandığı depolama hizmetlerini sürekli olarak izlemeniz ve daha ayrıntılı veriler toplamak ve bir sorunu ayrıntılı olarak çözümlemek için günlüğe kaydetme özelliğini kullanmanız gerekir. Hem izleme hem de günlüğe kaydetme işleminden elde ettiğiniz tanılama bilgileri, uygulamanızın karşılaştığı sorunun temel nedenini belirlemenize yardımcı olur. Daha sonra sorunu giderebilmeniz ve düzeltmek için uygulayabileceğiniz uygun adımları belirleyebilirsiniz. Azure depolama, temel bir Azure hizmetidir ve müşterilerin Azure altyapısına dağıtmaları çözümlerinin önemli bir bölümünü oluşturur. Azure depolama, bulut tabanlı uygulamalarınızda depolama sorunlarını izleme, tanılama ve sorun giderme işlemlerini basitleştirmeye yönelik yetenekler içerir.
-
-> [!NOTE]
-> Azure dosyaları şu anda günlüğe kaydetmeyi desteklemiyor.
->
 
 Azure depolama uygulamalarında uçtan uca sorun giderme kılavuzu için bkz. [Azure depolama ölçümlerini ve günlük, AzCopy ve Ileti Çözümleyicisi 'ni kullanarak uçtan uca sorun giderme](../storage-e2e-troubleshooting.md).
 

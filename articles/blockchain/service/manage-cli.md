@@ -4,18 +4,18 @@ description: Azure CLı ile Azure blok zinciri hizmetini yönetme
 ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b41bc44c9efbf71621fcfba06e668f42caa0f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208170"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076936"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLı kullanarak Azure blok zinciri hizmetini yönetme
 
 Azure portal ek olarak Azure CLı 'yi kullanarak Azure blok zinciri hizmetinize yönelik blok zinciri üyelerini ve işlem düğümlerini yönetebilirsiniz.
 
-En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yi yüklediğinizden ve ' de bir Azure hesabında oturum açtığınızdan emin olun `az login` .
+En son [Azure CLI](/cli/azure/install-azure-cli) 'yi yüklediğinizden ve ' de bir Azure hesabında oturum açtığınızdan emin olun `az login` .
 
 Aşağıdaki örneklerde örneği `<parameter names>` kendi değerlerinizle değiştirin.
 
@@ -229,7 +229,7 @@ az role assignment create \
 | **atanan** | Azure AD Kullanıcı KIMLIĞI. Örneğin, `user@contoso.com` |
 | **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
-**Örnek:**
+**Örneğinde**
 
 Azure AD kullanıcısı için blok zinciri **üyesine**düğüm erişimi verme:
 
@@ -240,7 +240,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Örnek:**
+**Örneğinde**
 
 Azure AD kullanıcısı için blok zinciri **işlem düğümüne**düğüm erişimi verme:
 
@@ -265,7 +265,7 @@ az role assignment create \
 | **atane-nesne kimliği** | Azure AD Grup KIMLIĞI veya uygulama KIMLIĞI. |
 | **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
-**Örnek:**
+**Örneğinde**
 
 **Uygulama rolü** için düğüm erişimi verme
 

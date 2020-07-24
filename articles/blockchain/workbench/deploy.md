@@ -1,15 +1,16 @@
 ---
 title: Azure blok zincirini dağıtma çalışma ekranı önizlemesi
 description: Azure blok zinciri çalışma ekranı önizlemesi nasıl dağıtılır
-ms.date: 01/08/2020
+ms.date: 07/16/2020
 ms.topic: how-to
-ms.reviewer: brendal
-ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: ravastra
+ms.custom: references_regions
+ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210788"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077020"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure blok zincirini dağıtma çalışma ekranı önizlemesi
 
@@ -40,12 +41,12 @@ Aşağıda, **myblockzincirin** kaynak grubunda oluşturulan örnek bir dağıt�
 
 Blok zinciri çalışma ekranının maliyeti, temel alınan Azure hizmetlerinin maliyetinin toplamıdır. Azure hizmetleri fiyatlandırma bilgileri, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)kullanılarak hesaplanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure blok zinciri çalışma ekranı, Azure AD yapılandırması ve uygulama kayıtları gerektirir. Dağıtımdan önce Azure AD [yapılandırmalarının el ile](#azure-ad-configuration) veya bir betik dağıtımı çalıştırmadan önce bu yapılandırmayı seçebilirsiniz. Blok zinciri çalışma ekranı 'nı yeniden dağıtıyorsanız Azure [ad yapılandırması ' na bakın.](#azure-ad-configuration)
 
 > [!IMPORTANT]
-> Çalışma ekranının, bir Azure AD uygulamasını kaydetmek için kullandığınız kiracı ile aynı kiracıya dağıtılması gerekmez. Çalışma ekranı, kaynakları dağıtmak için yeterli izinlere sahip olduğunuz bir kiracıda dağıtılmalıdır. Azure AD kiracılar hakkında daha fazla bilgi için bkz. [Active Directory kiracı alma](../../active-directory/develop/quickstart-create-new-tenant.md) ve [uygulamaları Azure Active Directory tümleştirme](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+> Çalışma ekranının, bir Azure AD uygulamasını kaydetmek için kullandığınız kiracı ile aynı kiracıya dağıtılması gerekmez. Çalışma ekranı, kaynakları dağıtmak için yeterli izinlere sahip olduğunuz bir kiracıda dağıtılmalıdır. Azure AD kiracılar hakkında daha fazla bilgi için bkz. [Active Directory kiracı alma](../../active-directory/develop/quickstart-create-new-tenant.md) ve [uygulamaları Azure Active Directory tümleştirme](../../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="deploy-blockchain-workbench"></a>Blok zinciri dağıtma çalışma ekranı
 
@@ -66,7 +67,7 @@ Azure blok zinciri çalışma ekranı, Azure AD yapılandırması ve uygulama ka
     | Parola | Parola, VM 'lere bağlanmak için kullanılır. |
     | SSH | **Ssh-rsa** ile başlayan tek satırlı BIÇIMDEKI bir RSA ortak anahtarı kullanın veya çok satırlı ped biçimini kullanın. `ssh-keygen`Linux ve OS X veya Windows üzerinde PuTTYGen kullanarak SSH anahtarları oluşturabilirsiniz. SSH anahtarları hakkında daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md). |
     | Veritabanı ve blok zinciri parolası | Dağıtımın bir parçası olarak oluşturulan veritabanına erişim için kullanılacak parolayı belirtin. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır. |
-    | Dağıtım Bölgesi | Blok zinciri çalışma ekranı kaynaklarının nereye dağıtılacağını belirtin. En iyi kullanılabilirlik için bu, **konum** ayarıyla eşleşmelidir. |
+    | Dağıtım Bölgesi | Blok zinciri çalışma ekranı kaynaklarının nereye dağıtılacağını belirtin. En iyi kullanılabilirlik için bu, **bölge** konumu ayarıyla eşleşmelidir. Önizleme sırasında tüm bölgeler kullanılamaz. Özellikler, bazı bölgelerde kullanılamayabilir. Azure blok zinciri Veri Yöneticisi şu Azure bölgelerinde kullanılabilir: Doğu ABD ve Batı Avrupa.|
     | Abonelik | Dağıtımınız için kullanmak istediğiniz Azure aboneliğini belirtin. |
     | Kaynak grupları | **Yeni oluştur** ' a tıklayarak yeni bir kaynak grubu oluşturun ve benzersiz bir kaynak grubu adı belirtin. |
     | Konum | Çerçeveyi dağıtmak istediğiniz bölgeyi belirtin. |
@@ -106,7 +107,7 @@ Azure blok zinciri çalışma ekranı, Azure AD yapılandırması ve uygulama ka
      | Azure Active Directory ayarları | **Daha sonra Ekle**' yi seçin.</br>Note: [Azure AD 'yi önceden yapılandırmayı](#azure-ad-configuration) veya yeniden dağıtımını seçerseniz, *Şimdi eklemeyi*seçin. |
      | VM seçimi | Blok zinciri ağınız için tercih edilen depolama performansı ve VM boyutu ' nu seçin. Azure Ücretsiz katmanı gibi düşük hizmet limitlerine sahip bir aboneliğiniz varsa *Standart DS1 v2* gibi daha küçük bir VM boyutu seçin. |
 
-1. Gelişmiş ayarları bitirirecek **Tamam ' ı** seçin.
+1. Gelişmiş ayarları sona almak için **gözden geçir + oluştur** seçeneğini belirleyin.
 
 1. Parametrelerinizin doğru olduğunu doğrulamak için Özeti gözden geçirin.
 
@@ -279,9 +280,9 @@ Azure blok zinciri çalışma ekranı dağıtıldıktan sonra, dağıtılan blok
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure AD istemci uygulamasını kaydettiğiniz kiracıda olduğunuzu doğrulayın.
-1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Uygulama kayıtları**'nı seçin.
+1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Uygulama kayıtları**’nı seçin.
 1. Önkoşul bölümünde kaydettiğiniz Azure AD istemci uygulamasını seçin.
-1. **Kimlik doğrulaması**' nı seçin.
+1. **Kimlik Doğrulaması**'nı seçin.
 1. [Blok zinciri çalışma ekranı web URL 'si](#blockchain-workbench-web-url) bölümünde aldığınız Azure blok zinciri çalışma ekranı dağıtımının ana Web URL 'sini belirtin. Yanıt URL 'SI ön ekine sahiptir `https://` . Örneğin, `https://myblockchain2-7v75.azurewebsites.net`
 
     ![Kimlik doğrulama yanıtı URL 'Leri](media/deploy/configure-reply-url.png)

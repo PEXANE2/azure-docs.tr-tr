@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87342dcd316b0364522baa01e632b704665c998e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9be0808d4edc9662c1d3a4144f3102242560564
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85363771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075356"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Otomatik izleme veya kodsuz kullanacaksınız Attach-Azure izleyici Application Insights nedir?
 
@@ -26,14 +26,14 @@ Daha fazla ve daha fazla tümleştirme eklediğimiz için, otomatik izleme özel
 |Ortam/kaynak sağlayıcısı | .NET            | .NET Core       | Java            | Node.js         |
 |------------------------------|-----------------|-----------------|-----------------|-----------------|
 |Windows üzerinde Azure App Service  | GA, OnBD *       | GA, kabul etme      | Özel Önizleme | Özel Önizleme |
-|Linux üzerinde Azure App Service    | YOK             | Desteklenmiyor   | Genel Önizleme  | Genel Önizleme  |
-|AKS üzerinde Azure App Service      | YOK             | Tasarımda       | Tasarımda       | Tasarımda       |
+|Linux üzerinde Azure App Service    | Yok             | Desteklenmez   | Genel Önizleme  | Genel Önizleme  |
+|AKS üzerinde Azure App Service      | Yok             | Tasarımda       | Tasarımda       | Tasarımda       |
 |Azure Işlevleri-temel       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
-|Azure Işlevleri-bağımlılıklar| Desteklenmiyor   | Desteklenmiyor   | Genel Önizleme  | Desteklenmiyor   |
-|Azure Kubernetes Service      | YOK             | Tasarımda       | Aracı üzerinden   | Tasarımda       |
-|Azure VM 'Leri Windows             | Genel Önizleme  | Desteklenmiyor   | Desteklenmiyor   | Desteklenmiyor   |
-|Şirket Içi VM 'Ler Windows       | GA, kabul etme      | Desteklenmiyor   | Aracı üzerinden   | Desteklenmiyor   |
-|Tek başına aracı-tüm env.   | Desteklenmiyor   | Desteklenmiyor   | Genel Önizleme  | Desteklenmiyor   |
+|Azure Işlevleri-bağımlılıklar| Desteklenmez   | Desteklenmez   | Genel Önizleme  | Desteklenmez   |
+|Azure Kubernetes Service      | Yok             | Tasarımda       | Aracı üzerinden   | Tasarımda       |
+|Azure VM 'Leri Windows             | Genel Önizleme  | Desteklenmez   | Desteklenmez   | Desteklenmez   |
+|Şirket Içi VM 'Ler Windows       | GA, kabul etme      | Desteklenmez   | Aracı üzerinden   | Desteklenmez   |
+|Tek başına aracı-tüm env.   | Desteklenmez   | Desteklenmez   | Genel Önizleme  | Desteklenmez   |
 
 * OnBD varsayılan olarak açık için kısaysa, uygulamanızı desteklenen ortamlarda dağıttıktan sonra Application Insights otomatik olarak etkinleştirilir. 
 
@@ -41,7 +41,7 @@ Daha fazla ve daha fazla tümleştirme eklediğimiz için, otomatik izleme özel
 
 ### <a name="windows"></a>Windows
 
-[Azure App Service üzerinde uygulama izleme](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net) .NET uygulaması için kullanılabilir ve varsayılan olarak etkindir, .NET Core tek tıklamayla etkinleştirilebilir ve Java ve Node.js özel önizlemededir.
+[Azure App Service üzerinde uygulama izleme](./azure-web-apps.md?tabs=net) .NET uygulaması için kullanılabilir ve varsayılan olarak etkindir, .NET Core tek tıklamayla etkinleştirilebilir ve Java ve Node.js özel önizlemededir.
 
 ### <a name="linux"></a>Linux 
 
@@ -49,24 +49,24 @@ Java ve Node.js uygulamalarının App Service izleme genel önizlemede ve tüm b
 
 ## <a name="azure-functions"></a>Azure İşlevleri
 
-Azure Işlevleri için temel izleme, günlük, performans, hata verileri ve HTTP isteklerini toplamak üzere varsayılan olarak etkinleştirilmiştir. Java uygulamaları için, dağıtılmış izleme ile daha zengin izlemeyi etkinleştirebilir ve uçtan uca işlem ayrıntılarını alabilirsiniz. Java için bu işlev genel önizlemeye sunuldu ve [Azure Portal ' de etkinleştirebilirsiniz](https://docs.microsoft.com/azure/azure-monitor/app/monitor-functions).
+Azure Işlevleri için temel izleme, günlük, performans, hata verileri ve HTTP isteklerini toplamak üzere varsayılan olarak etkinleştirilmiştir. Java uygulamaları için, dağıtılmış izleme ile daha zengin izlemeyi etkinleştirebilir ve uçtan uca işlem ayrıntılarını alabilirsiniz. Java için bu işlev genel önizlemeye sunuldu ve [Azure Portal ' de etkinleştirebilirsiniz](./monitor-functions.md).
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Azure Kubernetes hizmetinin ortak olmayan araçları, [tek başına aracı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)aracılığıyla Java uygulamalarında kullanılabilir. 
+Azure Kubernetes hizmetinin ortak olmayan araçları, [tek başına aracı](./java-in-process-agent.md)aracılığıyla Java uygulamalarında kullanılabilir. 
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows VM 'Leri ve sanal makine ölçek kümesi
 
-[Azure VM 'leri ve sanal makine ölçek kümesi Için otomatik izleme](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps) , .NET uygulamaları için kullanılabilir 
+[Azure VM 'leri ve sanal makine ölçek kümesi Için otomatik izleme](./azure-vm-vmss-apps.md) , .NET uygulamaları için kullanılabilir 
 
 ## <a name="on-premises-servers"></a>Şirket içi sunucular
-.NET uygulamaları ve [Java uygulamaları](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)için şirket [içi Windows sunucularınız](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) için izlemeyi kolayca etkinleştirebilirsiniz.
+.NET uygulamaları ve [Java uygulamaları](./java-in-process-agent.md)için şirket [içi Windows sunucularınız](./status-monitor-v2-overview.md) için izlemeyi kolayca etkinleştirebilirsiniz.
 
 ## <a name="other-environments"></a>Diğer ortamlar
-Çok yönlü Java tek başına Aracısı her türlü ortamda çalışarak, kodunuzu işaretlememeye gerek yoktur. Application Insights etkinleştirmek ve Java aracısının harika özellikleri hakkında bilgi edinmek için [kılavuzu izleyin](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) . Aracı genel önizlemede ve tüm bölgelerde kullanılabilir. 
+Çok yönlü Java tek başına Aracısı her türlü ortamda çalışarak, kodunuzu işaretlememeye gerek yoktur. Application Insights etkinleştirmek ve Java aracısının harika özellikleri hakkında bilgi edinmek için [kılavuzu izleyin](./java-in-process-agent.md) . Aracı genel önizlemede ve tüm bölgelerde kullanılabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Application Insights genel bakış](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Application Insights genel bakış](./app-insights-overview.md)
 * [Uygulama eşlemesi](./../../azure-monitor/app/app-map.md)
 * [Uçtan uca performans izleme](./../../azure-monitor/learn/tutorial-performance.md)

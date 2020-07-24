@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b87d076c12a40d84dc99ef5b48454afa3f0ffce0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69fe84d6546e3fcb9e905a6b77ad3d9af3ed4d51
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738745"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077957"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>PowerShell kullanarak sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
 
@@ -25,6 +25,9 @@ ms.locfileid: "84738745"
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
+
+> [!NOTE]
+> Güvenlik grubu görünümü API 'SI artık korunmaz ve yakında kullanım dışı bırakılacak. Lütfen aynı işlevselliği sağlayan [etkin güvenlik kuralları özelliğini](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) kullanın. 
 
 Güvenlik grubu görünümü, bir sanal makineye uygulanan yapılandırılmış ve etkin ağ güvenlik kurallarını döndürür. Bu özellik, trafiğin doğru şekilde izin verilmesini veya reddedilmemesini sağlamak için bir sanal makinede yapılandırılan ağ güvenlik gruplarını ve kurallarını denetlemek ve tanılamak için yararlıdır. Bu makalede, PowerShell kullanarak yapılandırılmış ve etkin güvenlik kurallarının bir sanal makineye nasıl alınacağını göstereceğiz
 

@@ -3,18 +3,18 @@ title: Azure Izleyici 'de ölçümler-Azure Event Hubs | Microsoft Docs
 description: Bu makalede Azure Event Hubs izlemek için Azure Izleme 'nin nasıl kullanılacağı hakkında bilgi verilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074860"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure İzleyici'deki Azure Event Hubs ölçümleri
 
 Event Hubs ölçümler, Azure aboneliğinizdeki Event Hubs kaynaklarının durumunu sağlar. Zengin bir ölçüm verileri kümesiyle, Olay Hub 'larınızın genel durumunu yalnızca ad alanı düzeyinde değil, varlık düzeyinde değerlendirebilirsiniz. Bu istatistikler, Olay Hub 'larınızın durumunu izlemenize yardımcı olduğu için önemli olabilir. Ölçümler Ayrıca, Azure desteği ile iletişim kurmaya gerek kalmadan, kök neden sorunları gidermenize yardımcı olabilir.
 
-Azure Izleyici, çeşitli Azure hizmetleri genelinde izleme için birleştirilmiş kullanıcı arabirimleri sağlar. Daha fazla bilgi için bkz. [Microsoft Azure 'de izleme](../monitoring-and-diagnostics/monitoring-overview.md) ve GitHub 'da [.net örneği ile Azure izleyici ölçümlerini alma](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) .
+Azure Izleyici, çeşitli Azure hizmetleri genelinde izleme için birleştirilmiş kullanıcı arabirimleri sağlar. Daha fazla bilgi için bkz. [Microsoft Azure 'de izleme](../azure-monitor/overview.md) ve GitHub 'da [.net örneği ile Azure izleyici ölçümlerini alma](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) .
 
 ## <a name="access-metrics"></a>Erişim ölçümleri
 
@@ -103,7 +103,7 @@ Azure Event Hubs, Azure Izleyici 'de ölçümler için aşağıdaki boyutları d
 İzleme verilerinizi (etkinlik günlükleri, tanılama günlükleri vb.) Azure Izleyici ile bir olay hub 'ına yönlendirmek, güvenlik bilgileri ve olay yönetimi (SıEM) araçlarıyla kolayca tümleştirmenize olanak sağlar. Daha fazla bilgi için aşağıdaki makalelere/blog postalarına bakın:
 
 - [Dış bir araçla tüketim için Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Azure Günlük Tümleştirmesi’ne giriş](../security/fundamentals/azure-log-integration-overview.md)
+- [Azure Günlük Tümleştirmesi’ne giriş](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [SIEM araçlarıyla tümleştirmek için Azure İzleyici'yi kullanma](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 Bir SıEM aracının bir olay hub 'ından günlük verilerini tükettiği senaryoda, hiçbir gelen ileti görmüyorsanız veya ölçüm grafiğinde giden iletiler görmüyorsanız, şu adımları izleyin:
@@ -114,7 +114,7 @@ Bir SıEM aracının bir olay hub 'ından günlük verilerini tükettiği senary
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bkz. [Azure izlemeye genel bakış](../monitoring-and-diagnostics/monitoring-overview.md).
+* Bkz. [Azure izlemeye genel bakış](../azure-monitor/overview.md).
 * GitHub 'da [.net örneği Ile Azure izleyici ölçümlerini alın](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) . 
 
 Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
@@ -129,6 +129,3 @@ Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
 
 [1]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor1.png
 [2]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor2.png
-
-
-

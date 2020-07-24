@@ -1,6 +1,6 @@
 ---
-title: Java Ileti hizmeti (JMS) uygulamalarını ActiveMQ 'dan Azure Service Bus 'e geçirme | Microsoft Docs
-description: Bu makalede, Azure Service Bus etkileşimde bulunmak için etkin MQ ile etkileşime geçen mevcut JMS uygulamalarının nasıl geçirileceği açıklanır.
+title: Java Ileti hizmeti (JMS) uygulamalarını Apache ActiveMQ ' den Azure Service Bus | geçir | Microsoft Docs
+description: Bu makalede, Azure Service Bus etkileşimde bulunmak için Apache ActiveMQ ile etkileşime geçen mevcut JMS uygulamalarının nasıl geçirileceği açıklanır.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,87 +13,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
-ms.openlocfilehash: 3da4f693f4cfec47c5456a0c5998f58f5fe02949
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7926e3b8aedde63c3a1a5a57c42b3d4f29cb9797
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122411"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076223"
 ---
-# <a name="migrate-existing-java-message-service-jms-20-applications-from-active-mq-to-azure-service-bus"></a>Mevcut Java Ileti hizmeti (JMS) 2,0 uygulamalarını Active MQ 'dan Azure Service Bus 'e geçirin
+# <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Mevcut Java Ileti hizmeti (JMS) 2,0 uygulamalarını Apache ActiveMQ ' den Azure Service Bus geçirin
 
-Azure Service Bus, gelişmiş Ileti sıraya alma Protokolü (AMQP) protokolü üzerinden Java Ileti hizmeti (JMS) 2,0 API kullanan Java/J2EE ve yay iş yüklerini destekler.
+Bu makalede, bir JMS aracısıyla etkileşim kuran mevcut bir Java Ileti hizmeti (JMS) 2,0 uygulamasının, Azure Service Bus etkileşimde bulunmak için nasıl değiştirileceği açıklanır. Özellikle, makalede Apache ActiveMQ veya Amazon MQ ' den geçiş ele alınmaktadır.
 
-Bu kılavuzda, Azure Service Bus etkileşimde bulunmak için bir JMS aracısıyla (özellikle Apache ActiveMQ veya Amazon MQ) etkileşim kuran mevcut bir Java Ileti hizmeti (JMS) 2,0 uygulamasını değiştirmek istediğinizde dikkat etmeniz gerekenler açıklanmaktadır.
+Azure Service Bus, gelişmiş Ileti sıraya alma Protokolü (AMQP) üzerinden JMS 2,0 API kullanan Java 2 platformunu, Enterprise Edition ve yay iş yüklerini destekler.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
 ### <a name="differences-between-azure-service-bus-and-apache-activemq"></a>Azure Service Bus ile Apache ActiveMQ arasındaki farklar
 
-Azure Service Bus ve Apache ActiveMQ, istemci uygulamalarının ileti gönderebilmesi ve iletileri alabilmesi için JMS sağlayıcıları olarak çalışan ileti aracılarıdır. Bunlar her ikisi de **kuyruklarla** ve yayımlama-abonelik semantiğinin **konular** ve **abonelikler**ile noktadan noktaya semantiğini etkinleştirir. 
+Azure Service Bus ve Apache ActiveMQ her ikisi de ileti aracılarıdır, istemci uygulamaları için JMS sağlayıcıları olarak çalışan ve iletileri ileti gönderme ve alma. Bunlar her ikisi de kuyruklarla noktadan noktaya semantiğini etkinleştirir ve konular ve abonelikler ile yayımlama-abonelik semantiğini etkinleştirir. 
 
-Bu nedenle, iki durumda da bazı farklılıklar vardır.
+Bu nedenle, aşağıdaki tabloda gösterildiği gibi, iki arasında bazı farklılıklar vardır:
 
-| Kategori | Etkin MQ | Azure Service Bus |
+| Kategori | ActiveMQ | Azure Service Bus |
 | --- | --- | --- |
-| Uygulama katmanlama | Kümelenmiş mimariden | İki katmanlı <br> (Ağ geçidi + arka uç) |
+| Uygulama katmanlama | Kümelenmiş mimariden | İki katmanlı <br> (ağ geçidi + arka uç) |
 | Protokol desteği | <ul> <li>AMQP</li> <li> RASTLAYABILIR </li> <li> Opentel </li> </ul> | AMQP |
-| Sağlama modu | <ul> <li> IaaS (Şirket içi) </li> <li> Amazon MQ (yönetilen PaaS) </li> | Yönetilen PaaS |
+| Sağlama modu | <ul> <li> Hizmet olarak altyapı (IaaS), şirket içi </li> <li> Amazon MQ (hizmet olarak yönetilen Platform) </li> | Hizmet olarak platform (PaaS) |
 | İleti boyutu | Müşteri yapılandırılabilir | 1 MB (Premium katman) |
-| Yüksek Kullanılabilirlik | Müşteri tarafından yönetilen | Platform yönetiliyor |
-| Olağanüstü Durum Kurtarma | Müşteri tarafından yönetilen | Platform yönetiliyor | 
+| Yüksek kullanılabilirlik | Müşteri tarafından yönetilen | Platform yönetiliyor |
+| Olağanüstü durum kurtarma | Müşteri tarafından yönetilen | Platform yönetiliyor | 
 
 ### <a name="current-supported-and-unsupported-features"></a>Desteklenen ve desteklenmeyen geçerli özellikler
 
 [!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
 
-### <a name="caveats"></a>Uyarılar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Azure Service Bus iki katmanlı doğası, çeşitli iş sürekliliği özelliklerine sahiptir (yüksek kullanılabilirlik ve olağanüstü durum kurtarma). Ancak, JMS özelliklerinden yararlanarak bazı önemli noktalar vardır.
+Azure Service Bus iki katmanlı doğası, çeşitli iş sürekliliği özelliklerine sahiptir (yüksek kullanılabilirlik ve olağanüstü durum kurtarma). Ancak, JMS özelliklerini kullanırken bazı önemli noktalar vardır.
 
 #### <a name="service-upgrades"></a>Hizmet yükseltmeleri
 
-Service Bus yükseltmeleri ve yeniden başlatmalar söz konusu olduğunda geçici kuyruklar veya konular silinir.
-
-Uygulama geçici kuyruklarda veya konularda veri kaybına karşı duyarlıysa geçici kuyrukları ve konuları kullanmaz ve bunun yerine dayanıklı kuyruklar, konular ve **abonelikler kullanılması önerilir** .
+Service Bus yükseltmeleri ve yeniden başlatmalar söz konusu olduğunda geçici kuyruklar veya konular silinir. Uygulamanız geçici kuyruklarda veya konularda veri kaybına karşı duyarlıysa geçici kuyrukları veya konuları kullanmayın. Bunun yerine dayanıklı kuyruklar, konular ve abonelikler kullanın.
 
 #### <a name="data-migration"></a>Veri geçişi
 
-İstemci uygulamalarınızı Azure Service Bus etkileşimde bulunmak üzere geçirme/değiştirme işleminin bir parçası olarak, ActiveMQ ' de tutulan veriler Service Bus geçirilecek.
-
-ActiveMQ kuyruklarını, konuları ve abonelikleri boşaltmak ve iletileri Service Bus ' kuyruklar, konular ve abonelikler için yeniden oynatmak için özel bir uygulama gerekebilir.
+İstemci uygulamalarınızı Azure Service Bus etkileşimde bulunmak üzere geçirme ve değiştirme işleminin bir parçası olarak, ActiveMQ ' de tutulan veriler Service Bus öğesine geçirilmez. ActiveMQ kuyruklarını, konularını ve aboneliklerini boşaltmak için özel bir uygulamaya ihtiyacınız vardır ve ardından iletileri Service Bus kuyruklara, konularına ve aboneliklerine yeniden çalabilirsiniz.
 
 #### <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
-Azure ActiveDirectory tarafından desteklenen rol tabanlı Access Control (RBAC), Azure Service Bus için tercih edilen kimlik doğrulama mekanizmasıdır.
-
-Ancak, Apache QPID JMS tarafından talep tabanlı kimlik doğrulama desteğinin olmamasından dolayı RBAC Şu anda desteklenmediğinden desteklenmemektedir.
-
-Şimdilik kimlik doğrulaması yalnızca SAS anahtarlarıyla desteklenir.
+Azure Active Directory tarafından desteklenen rol tabanlı erişim denetimi (RBAC), Service Bus için tercih edilen kimlik doğrulama mekanizmasıdır. RBAC veya talep tabanlı kimlik doğrulaması, Apache QPID JMS tarafından şu anda desteklenmediğinden, kimlik doğrulaması için SAS anahtarlarını kullanmanız gerekir.
 
 ## <a name="pre-migration"></a>Geçiş öncesi
 
 ### <a name="version-check"></a>Sürüm denetimi
 
-Aşağıda, JMS uygulamaları ve desteklenen belirli sürümler yazılırken kullanılan bileşenler verilmiştir. 
+JMS uygulamalarını yazarken aşağıdaki bileşenleri ve sürümleri kullanırsınız: 
 
-| Bileşenler | Sürüm |
+| Bileşen | Sürüm |
 |---|---|
 | Java Ileti hizmeti (JMS) API | 1,1 veya üzeri |
-| AMQP Protokolü | 1.0 |
+| AMQP Protokolü | 1,0 |
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>AMQP bağlantı noktalarının açık olduğundan emin olun
 
-Azure Service Bus AMQP protokolü üzerinden iletişimi destekler. Bu amaçla 5671 (AMQP) ve 443 (TCP) bağlantı noktaları üzerinden iletişimin etkinleştirilmesi gerekir. İstemci uygulamalarının nerede barındırıldığına bağlı olarak, bu bağlantı noktaları üzerinden iletişime izin vermek için bir destek bileti gerekebilir.
+Service Bus AMQP protokolü üzerinden iletişimi destekler. Bu amaçla 5671 (AMQP) ve 443 (TCP) bağlantı noktaları üzerinden iletişimi etkinleştirin. İstemci uygulamalarının nerede barındırıldığına bağlı olarak, bu bağlantı noktaları üzerinden iletişime izin vermek için bir destek bileti gerekebilir.
 
 > [!IMPORTANT]
-> Azure Service Bus **yalnızca** amqp 1,0 protokolünü destekler.
+> Service Bus yalnızca AMQP 1,0 protokolünü destekler.
 
-### <a name="set-up-enterprise-configurations-vnet-firewall-private-endpoint-etc"></a>Kurumsal yapılandırmaların (VNET, güvenlik duvarı, Özel uç nokta vb.) kurulumunu yapın
+### <a name="set-up-enterprise-configurations"></a>Kurumsal yapılandırmaların kurulumu
 
-Azure Service Bus, çeşitli kurumsal güvenlik ve yüksek kullanılabilirlik özelliklerine izin verebilir. Bunlarla ilgili daha fazla bilgi edinmek için aşağıdaki belge bağlantılarını izleyin.
+Service Bus, çeşitli kurumsal güvenlik ve yüksek kullanılabilirlik özelliklerine izin verebilir. Daha fazla bilgi için bkz. 
 
-  * [Sanal ağ hizmeti uç noktaları](service-bus-service-endpoints.md)
+  * [Sanal ağ hizmet uç noktaları](service-bus-service-endpoints.md)
   * [Güvenlik Duvarı](service-bus-ip-filtering.md)
   * [Müşterinin yönettiği anahtarla hizmet tarafı şifreleme (BYOK)](configure-customer-managed-key.md)
   * [Özel uç noktalar](private-link-service.md)
@@ -101,32 +93,29 @@ Azure Service Bus, çeşitli kurumsal güvenlik ve yüksek kullanılabilirlik ö
 
 ### <a name="monitoring-alerts-and-tracing"></a>İzleme, uyarılar ve izleme
 
-Ölçümler her bir Service Bus ad alanı için Azure Izleyici üzerinde yayımlanır ve bu ad alanına ayrılan kaynakların uyarı ve dinamik ölçeklendirilmesi için yararlanılabilir olabilir.
+Her bir Service Bus ad alanı için ölçümleri Azure Izleyici üzerinde yayımlayın. Bu ölçümleri, ad alanına ayrılan kaynakların uyarı ve dinamik ölçeklendirilmesi için kullanabilirsiniz.
 
-Farklı ölçümler hakkında daha fazla bilgi edinin ve [Azure izleyici 'de Service Bus ölçümler ' de](service-bus-metrics-azure-monitor.md)bunların üzerinde Uyarılar ayarlama.
+Farklı ölçümler ve bunların üzerinde Uyarılar ayarlama hakkında daha fazla bilgi için bkz. [Azure izleyici 'de Service Bus ölçümleri](service-bus-metrics-azure-monitor.md). Ayrıca, [veri işlemleri için istemci tarafı izleme](service-bus-end-to-end-tracing.md) ve [yönetim işlemleri için işletimsel/tanılama günlüğü](service-bus-diagnostic-logs.md)hakkında daha fazla bilgi edinebilirsiniz.
 
-Ayrıca, [veri işlemleri için istemci tarafı izleme](service-bus-end-to-end-tracing.md) ve [yönetim işlemleri için işletimsel/tanılama günlüğü](service-bus-diagnostic-logs.md) hakkında daha fazla bilgi edinin
+### <a name="metrics---new-relic"></a>Ölçümler-yeni relik
 
-### <a name="metrics---newrelic"></a>Ölçümler-Newrelik
+ActiveMQ haritalarından hangi ölçümlerin Azure Service Bus ' deki ölçümlerle ilişkilendirip ilişkilendirebelirtebilirsiniz. Yeni relik Web sitesinden aşağıdakilere bakın:
 
-Aşağıda, ActiveMQ ' daki hangi ölçümlerin Azure Service Bus ' deki ölçülerle eşlendiğini belirten kullanışlı bir kılavuz yer alır. Aşağıda Newrelik 'ten başvurulur.
-
-  * [ActiveMQ/Amazon MQ Newrelik ölçümleri](https://docs.newrelic.com/docs/integrations/amazon-integrations/aws-integrations-list/aws-mq-integration)
-  * [Azure Service Bus Newrelik ölçümleri](https://docs.newrelic.com/docs/integrations/microsoft-azure-integrations/azure-integrations-list/azure-service-bus-monitoring-integration)
+  * [ActiveMQ/Amazon MQ yeni relik ölçümleri](https://docs.newrelic.com/docs/integrations/amazon-integrations/aws-integrations-list/aws-mq-integration)
+  * [Yeni relik ölçümleri Azure Service Bus](https://docs.newrelic.com/docs/integrations/microsoft-azure-integrations/azure-integrations-list/azure-service-bus-monitoring-integration)
 
 > [!NOTE]
-> Şu anda Newrelik, ActiveMQ ile sorunsuz bir tümleştirme sahibi değildir, ancak Amazon MQ için kullanılabilir ölçümleri vardır.
-> Amazon MQ, ActiveMQ ' den türetildiğinden, aşağıdaki kılavuz Newrelik ölçümlerini AmazonMQ ' dan Azure Service Bus eşler.
+> Şu anda, yeni relik, ActiveMQ ile doğrudan, sorunsuz bir şekilde tümleştirilmesine sahip değildir, ancak Amazon MQ için kullanılabilir ölçümleri vardır. Amazon MQ, ActiveMQ ' den türetildiğinden aşağıdaki tablo, Amazon MQ ' dan Azure Service Bus yeni relik ölçümlerini eşler.
 >
 
-|Ölçüm gruplandırması| AmazonMQ/etkin MQ ölçümü | Azure Service Bus ölçümü |
+|Ölçüm gruplandırması| Amazon MQ/ActiveMQ ölçümü | Azure Service Bus ölçümü |
 |------------|---------------------------|--------------------------|
 |'Ndan|`CpuUtilization`|`CPUXNS`|
 |'Ndan|`MemoryUsage`|`WSXNS`|
 |'Ndan|`CurrentConnectionsCount`|`activeConnections`|
 |'Ndan|`EstablishedConnectionsCount`|`activeConnections` + `connectionsClosed`|
-|'Ndan|`InactiveDurableTopicSubscribersCount`|Abonelik ölçümlerinden yararlanın|
-|'Ndan|`TotalMessageCount`|Kuyruk/konu/abonelik düzeyinden yararlanın`activeMessages`|
+|'Ndan|`InactiveDurableTopicSubscribersCount`|Abonelik ölçümlerini kullanma|
+|'Ndan|`TotalMessageCount`|Kuyruk/konu/abonelik düzeyi kullan`activeMessages`|
 |Kuyruk/konu|`EnqueueCount`|`incomingMessages`|
 |Kuyruk/konu|`DequeueCount`|`outgoingMessages`|
 |Kuyruk|`QueueSize`|`sizeBytes`|
@@ -135,28 +124,25 @@ Aşağıda, ActiveMQ ' daki hangi ölçümlerin Azure Service Bus ' deki ölçü
 
 ## <a name="migration"></a>Geçiş
 
-Mevcut JMS 2,0 uygulamanızı Azure Service Bus etkileşimde bulunmak üzere geçirmek için aşağıdaki adımların gerçekleştirilmesi gerekir.
+Mevcut JMS 2,0 uygulamanızı Service Bus etkileşimde bulunmak üzere geçirmek için, sonraki birkaç bölümde bulunan adımları izleyin.
 
-### <a name="export-topology-from-activemq-and-create-the-entities-in-azure-service-bus-optional"></a>ActiveMQ 'dan topolojiyi dışarı aktarın ve Azure Service Bus varlıkları oluşturun (isteğe bağlı)
+### <a name="export-the-topology-from-activemq-and-create-the-entities-in-service-bus-optional"></a>ActiveMQ ' den topolojiyi dışarı aktarın ve Service Bus varlıkları oluşturun (isteğe bağlı)
 
-İstemci uygulamalarının Azure Service Bus sorunsuzca bağlanabildiğinden emin olmak için, kuyrukları, konuları ve abonelikleri içeren topolojinin, **Apache ActiveMQ** ' dan **Azure Service Bus**geçirilmesi gerekir.
+İstemci uygulamalarının Service Bus sorunsuzca bağlanmasına emin olmak için, topolojiyi (kuyruklar, konular ve abonelikler dahil) Apache ActiveMQ ' dan Service Bus geçirin.
 
 > [!NOTE]
-> Java Ileti hizmeti (JMS) uygulamaları için kuyruklar, konu başlıkları ve aboneliklerin oluşturulması bir çalışma zamanı işlemidir. Çoğu Java Ileti hizmeti (JMS) sağlayıcısı (ileti aracıları) çalışma zamanında *Kuyruklar*, *Konu başlıkları* ve *abonelikler* oluşturma işlevselliği sunar.
->
-> Bu nedenle yukarıdaki adım isteğe bağlıdır.
->
-> Uygulamanızın çalışma zamanında topoloji oluşturma izinlerine sahip olduğundan emin olmak için lütfen ***SAS ' Yönet '*** izinlerine sahip bağlantı dizesinin kullanıldığından emin olun.
+> JMS uygulamaları için, çalışma zamanı işlemi olarak kuyruklar, konu başlıkları ve abonelikler oluşturursunuz. Çoğu JMS sağlayıcısı (ileti aracıları), çalışma zamanında bunları oluşturma olanağı sağlar. Bu, bu dışarı aktarma adımının isteğe bağlı olarak kabul edilmesine neden olur. Uygulamanızın çalışma zamanında topoloji oluşturma izinlerine sahip olduğundan emin olmak için, SAS izinleriyle bağlantı dizesini kullanın `Manage` .
 
-Bunu yapmak için 
-  * Topolojiyi dışarı aktarmak için [ActiveMQ komut satırı araçlarından](https://activemq.apache.org/activemq-command-line-tools-reference) yararlanın
-  * [Azure Resource Manager şablonu](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) kullanarak aynı topolojiyi yeniden oluşturma
-  * Azure Resource Manager şablonunu yürütün.
+Bunu yapmak için:
+
+1. Topolojiyi dışarı aktarmak için [ActiveMQ komut satırı araçlarını](https://activemq.apache.org/activemq-command-line-tools-reference) kullanın.
+1. [Azure Resource Manager şablonu](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)kullanarak aynı topolojiyi yeniden oluşturun.
+1. Azure Resource Manager şablonunu çalıştırın.
 
 
 ### <a name="import-the-maven-dependency-for-service-bus-jms-implementation"></a>JMS uygulamasının Service Bus Maven bağımlılığını içeri aktarma
 
-Azure Service Bus ile sorunsuz bağlantı sağlamak için ***Azure-ServiceBus-JMS*** paketinin `pom.xml` aşağıda gösterildiği gibi Maven dosyasına bir bağımlılık olarak eklenmesi gerekir.
+Service Bus ile sorunsuz bağlantı sağlamak için, `azure-servicebus-jms` paketi Maven dosyasına bir bağımlılık olarak `pom.xml` aşağıdaki gibi ekleyin:
 
 ```xml
 <dependencies>
@@ -171,11 +157,11 @@ Azure Service Bus ile sorunsuz bağlantı sağlamak için ***Azure-ServiceBus-JM
 
 ### <a name="application-server-configuration-changes"></a>Uygulama sunucusu yapılandırma değişiklikleri
 
-Bu bölüm, etkin MQ ' a bağlanan istemci uygulamalarınızı barındıran uygulama sunucusu için özel bir uygulamadır.
+Bu bölüm, ActiveMQ ' a bağlanan istemci uygulamalarınızı barındıran uygulama sunucusuna özelleştirilir.
 
 #### <a name="tomcat"></a>Tomcat
 
-Burada, dosyasında gösterildiği gibi etkin MQ 'e özgü yapılandırma ile başlayacağız `/META-INF/context.xml` .
+Burada, dosyasında gösterildiği gibi, ActiveMQ 'e özgü yapılandırmaya başlayabilirsiniz `/META-INF/context.xml` .
 
 ```XML
 <Context antiJARLocking="true">
@@ -202,7 +188,7 @@ Burada, dosyasında gösterildiği gibi etkin MQ 'e özgü yapılandırma ile ba
 </Context>
 ```
 
-Azure Service Bus işaret etmek için aşağıdaki gibi uyarlanabilen
+Bunu aşağıdaki gibi Service Bus noktaya uyarlayın:
 
 ```xml
 <Context antiJARLocking="true">
@@ -229,11 +215,9 @@ Azure Service Bus işaret etmek için aşağıdaki gibi uyarlanabilen
 
 #### <a name="spring-applications"></a>Yay uygulamaları
 
-##### <a name="update-applicationproperties-file"></a>Güncelleştirme `application.properties` dosyası
+##### <a name="update-the-applicationproperties-file"></a>Dosyayı güncelleştirme `application.properties`
 
-ActiveMQ 'e bağlanmak için bir Spring Boot uygulaması kullanılıyorsa.
-
-Burada, hedef, ActiveMQ 'e özgü özellikleri dosyadan ***kaldırmaktır*** `application.properties` .
+ActiveMQ 'e bağlanmak için bir Spring Boot uygulaması kullanıyorsanız, ActiveMQ 'e özgü özellikleri dosyadan kaldırmak istersiniz `application.properties` .
 
 ```properties
 spring.activemq.broker-url=<ACTIVEMQ BROKER URL>
@@ -241,21 +225,21 @@ spring.activemq.user=<ACTIVEMQ USERNAME>
 spring.activemq.password=<ACTIVEMQ PASSWORD>
 ```
 
-Sonra Service Bus belirli özellikleri dosyaya ***ekleyin*** `application.properties` .
+Sonra, Service Bus özgü özellikleri `application.properties` dosyaya ekleyin.
 
 ```properties
 azure.servicebus.connection-string=Endpoint=myEndpoint;SharedAccessKeyName=mySharedAccessKeyName;SharedAccessKey=mySharedAccessKey
 ```
 
-##### <a name="replace-the-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>ActiveMQConnectionFactory 'yi ServiceBusJmsConnectionFactory ile değiştirme
+##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>Değiştir `ActiveMQConnectionFactory``ServiceBusJmsConnectionFactory`
 
-Sonraki adım, ActiveMQConnectionFactory örneğinin ServiceBusJmsConnectionFactory ile değiştirilmesini sağlar.
+Bir sonraki adım, öğesinin örneğini `ActiveMQConnectionFactory` ile değiştirmek `ServiceBusJmsConnectionFactory` .
 
 > [!NOTE] 
-> Gerçek kod değişiklikleri uygulamaya özeldir ve bağımlılıkların yönetilmesi, ancak aşağıdaki örnek, ***nelerin*** değiştirilmesi gerektiğine ilişkin rehberlik sağlar.
+> Gerçek kod değişiklikleri uygulamaya özeldir ve bağımlılıkların yönetilmesi, ancak aşağıdaki örnek, nelerin değiştirilmesi gerektiğine ilişkin rehberlik sağlar.
 >
 
-Daha önce ActiveMQConnectionFactory 'nin bir nesnesini aşağıda gösterildiği gibi örneklenebilir.
+Daha önce, bir nesnesini şu şekilde örnekleniyor olabilirsiniz `ActiveMQConnectionFactory` :
 
 ```java
 
@@ -267,7 +251,7 @@ connection.start();
 
 ```
 
-Bu, ServiceBusJmsConnectionFactory 'nin bir nesnesinin örneğini oluşturmak için değiştirilir
+Şimdi bunu bir nesnesinin örneğini oluşturmak için şu `ServiceBusJmsConnectionFactory` şekilde değiştiriyorsunuz:
 
 ```java
 
@@ -283,13 +267,13 @@ connection.start();
 
 ## <a name="post-migration"></a>Geçiş sonrası
 
-Artık uygulamayı Azure Service Bus iletileri göndermeye ve almaya başlamak üzere değiştirdiğine göre, bunun beklendiği gibi çalıştığını doğrulamanız gerekir. Bu işlem yapıldıktan sonra, uygulama yığınınızı daha da belirginleştirmek ve modernleştirin için devam edebilirsiniz.
+Artık uygulamayı Service Bus iletileri göndermeye ve almaya başlamak üzere değiştirdiğine göre, bunun beklendiği gibi çalıştığını doğrulamanız gerekir. Bu tamamlandığında, uygulama yığınınızı daha da belirginleştirmek ve modernleştirin için devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Service Bus ile sorunsuz tümleştirme için [Azure Service Bus JMS Için Spring Boot Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) 'ten yararlanın.
+Service Bus ile sorunsuz tümleştirme için [JMS Azure Service Bus Için Spring Boot Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) 'ı kullanın.
 
-Service Bus mesajlaşma ve Java Ileti hizmeti (JMS) hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma ve JMS hakkında daha fazla bilgi edinmek için bkz.:
 
 * [JMS Service Bus](service-bus-java-how-to-use-jms-api-amqp.md)
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)

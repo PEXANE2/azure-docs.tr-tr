@@ -7,17 +7,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: a0dcc53d84edb4dd697213106c02626df24acfd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bae6da2e299065bada3b4e8a9657f00ef07e138b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075559"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell kullanarak Azure 'da bir VM 'ye bağlantı noktalarını ve uç noktaları açma
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Hızlı komutlar
-Bir ağ güvenlik grubu ve ACL kuralları oluşturmak için [Azure PowerShell yüklü en son sürümüne](/powershell/azureps-cmdlets-docs)ihtiyacınız vardır. Ayrıca [, Azure Portal kullanarak da bu adımları](nsg-quickstart-portal.md)uygulayabilirsiniz.
+Bir ağ güvenlik grubu ve ACL kuralları oluşturmak için [Azure PowerShell yüklü en son sürümüne](/powershell/azure/)ihtiyacınız vardır. Ayrıca [, Azure Portal kullanarak da bu adımları](nsg-quickstart-portal.md)uygulayabilirsiniz.
 
 Azure hesabınızda oturum açın:
 
@@ -27,7 +28,7 @@ Connect-AzAccount
 
 Aşağıdaki örneklerde parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *mynetworksecuritygroup*ve *myvnet*dahil olmak üzere örnek parametre adları.
 
-[New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig)ile bir kural oluşturun. Aşağıdaki örnek, *80*numaralı bağlantı noktasında *TCP* trafiğine Izin vermek Için *mynetworksecuritygrouprule* adlı bir kural oluşturur:
+[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile bir kural oluşturun. Aşağıdaki örnek, *80*numaralı bağlantı noktasında *TCP* trafiğine Izin vermek Için *mynetworksecuritygrouprule* adlı bir kural oluşturur:
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -43,7 +44,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Ardından, [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) Ile ağ güvenlik grubunuzu oluşturun ve yenı oluşturduğunuz http kuralını aşağıdaki gibi atayın. Aşağıdaki örnek, *Mynetworksecuritygroup*adlı bir ağ güvenlik grubu oluşturur:
+Ardından, [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) Ile ağ güvenlik grubunuzu oluşturun ve yenı oluşturduğunuz http kuralını aşağıdaki gibi atayın. Aşağıdaki örnek, *Mynetworksecuritygroup*adlı bir ağ güvenlik grubu oluşturur:
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -53,7 +54,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Şimdi ağ güvenlik grubunuzu bir alt ağa atayalim. Aşağıdaki örnek, [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)ile birlikte $VNET *myvnet* adlı var olan *$vnet* bir sanal ağı değişkene atar:
+Şimdi ağ güvenlik grubunuzu bir alt ağa atayalim. Aşağıdaki örnek, [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)ile birlikte $VNET *myvnet* adlı var olan *$vnet* bir sanal ağı değişkene atar:
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -61,7 +62,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-[Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig)Ile ağ güvenlik grubunuzu alt ağınızla ilişkilendirin. Aşağıdaki örnek, *mysubnet* adlı alt ağı ağ güvenlik grubunuz ile ilişkilendirir:
+[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)Ile ağ güvenlik grubunuzu alt ağınızla ilişkilendirin. Aşağıdaki örnek, *mysubnet* adlı alt ağı ağ güvenlik grubunuz ile ilişkilendirir:
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
@@ -73,7 +74,7 @@ Set-AzVirtualNetworkSubnetConfig `
     -NetworkSecurityGroup $nsg
 ```
 
-Son olarak, değişikliklerinizin etkili olması için Sanal ağınızı [set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) ile güncelleştirin:
+Son olarak, değişikliklerinizin etkili olması için Sanal ağınızı [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) ile güncelleştirin:
 
 ```powershell
 Set-AzVirtualNetwork -VirtualNetwork $vnet
@@ -91,4 +92,3 @@ Bu örnekte, HTTP trafiğine izin vermek için basit bir kural oluşturdunuz. A�
 * [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md)
 * [Ağ güvenlik grubu nedir?](../../virtual-network/security-overview.md)
 * [Azure Load Balancer genel bakış](../../load-balancer/load-balancer-overview.md)
-

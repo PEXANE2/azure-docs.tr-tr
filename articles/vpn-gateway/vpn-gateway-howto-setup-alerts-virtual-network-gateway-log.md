@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: Tanılama kaynak günlüğü olaylarında uyarı yapılandırma'
 description: VPN Gateway tanılama kaynak günlüğü olaylarında uyarı yapılandırma adımları
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 3417d2b6e105626bceb992db088a4d0113aa798f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21fcebf6667eb1bc7741dfb4ba268af42567d58e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983096"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075585"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway kaynak günlüğü olayları üzerinde uyarı ayarlama
 
@@ -20,7 +20,7 @@ Bu makale Azure Izleyici Log Analytics kullanarak Azure VPN Gateway kaynak günl
 
 Aşağıdaki kaynak günlükleri Azure 'da kullanılabilir:
 
-|***Adı*** | ***Açıklama*** |
+|***Ad*** | ***Açıklama*** |
 |---        | ---               |
 |GatewayDiagnosticLog | Ağ Geçidi yapılandırma olayları, birincil değişiklikler ve bakım olayları için kaynak günlüklerini içerir |
 |Tüneldiagnosticlog | Tünel durumu değişikliği olaylarını içerir. Tünel bağlantısı/bağlantı kesme olayları, uygunsa durum değişikliği için özetlenen bir nedene sahiptir |

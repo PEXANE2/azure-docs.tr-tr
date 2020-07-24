@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b6055cdf930c93ba096a21ebc0b74c204540a79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076073"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>İkincil siteye Hyper-V VM 'Leri için bir DR ayrıntısı çalıştırın
 
@@ -42,10 +43,10 @@ Birincil siteden ikincil siteye yük devretme testi çalıştırırsınız. Yaln
 
 Yük devretme testi çalıştırdığınızda, tabloda özetlenen test çoğaltma makineleri için ağ ayarları ' nı seçmeniz istenir.
 
-| **Seçeneği** | **Ayrıntılar** | |
+| **Seçenek** | **Ayrıntılar** | |
 | --- | --- | --- |
-| **Yok** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez ve herhangi bir ağa bağlı değildir.<br/><br/> Oluşturulduktan sonra makinenin bir VM ağına bağlanmasını sağlayabilirsiniz.| |
-| **Mevcut olanı kullan** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez.<br/><br/>Üretim ağınızdan yalıtılmış bir VM ağı oluşturun.<br/><br/>VLAN tabanlı bir ağ kullanıyorsanız, bu amaçla VMM 'de ayrı bir mantıksal ağ (üretimde kullanılmamış) oluşturmanızı öneririz. Bu mantıksal ağ yük devretme testi için VM ağları oluşturmak için kullanılır.<br/><br/>Mantıksal ağ, sanal makineleri barındıran tüm Hyper-V sunucularının en az bir ağ bağdaştırıcısı ile ilişkilendirilmelidir.<br/><br/>VLAN mantıksal ağları için, mantıksal ağa eklediğiniz ağ siteleri yalıtılmalıdır.<br/><br/>Windows ağ sanallaştırma tabanlı bir mantıksal ağ kullanıyorsanız, Azure Site Recovery otomatik olarak yalıtılmış VM ağları oluşturur. | |
+| **Hiçbiri** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez ve herhangi bir ağa bağlı değildir.<br/><br/> Oluşturulduktan sonra makinenin bir VM ağına bağlanmasını sağlayabilirsiniz.| |
+| **Var olanı kullan** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez.<br/><br/>Üretim ağınızdan yalıtılmış bir VM ağı oluşturun.<br/><br/>VLAN tabanlı bir ağ kullanıyorsanız, bu amaçla VMM 'de ayrı bir mantıksal ağ (üretimde kullanılmamış) oluşturmanızı öneririz. Bu mantıksal ağ yük devretme testi için VM ağları oluşturmak için kullanılır.<br/><br/>Mantıksal ağ, sanal makineleri barındıran tüm Hyper-V sunucularının en az bir ağ bağdaştırıcısı ile ilişkilendirilmelidir.<br/><br/>VLAN mantıksal ağları için, mantıksal ağa eklediğiniz ağ siteleri yalıtılmalıdır.<br/><br/>Windows ağ sanallaştırma tabanlı bir mantıksal ağ kullanıyorsanız, Azure Site Recovery otomatik olarak yalıtılmış VM ağları oluşturur. | |
 | **Ağ oluşturma** | Geçici bir test ağı, **mantıksal ağda** ve ilgili ağ sitelerinde belirttiğiniz ayara göre otomatik olarak oluşturulur.<br/><br/> Yük devretme, VM 'Lerin oluşturulduğunu denetler.<br/><br/> Bir kurtarma planı birden fazla VM ağı kullanıyorsa bu seçeneği kullanmanız gerekir.<br/><br/> Windows ağ sanallaştırma ağlarını kullanıyorsanız, bu seçenek çoğaltma sanal makinesi ağındaki aynı ayarlarla (alt ağlar ve IP adresi havuzları) VM ağları otomatik olarak oluşturabilir. Bu VM ağları, sınama yük devretmesi tamamlandıktan sonra otomatik olarak temizlenir.<br/><br/> Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez.|
 
 ### <a name="best-practices"></a>En iyi uygulamalar
@@ -102,17 +103,17 @@ Yük devretme testi için bir DNS sunucusunu aşağıdaki şekilde hazırlayın:
 * **DHCP**: sanal makineler DHCP kullanıyorsa, Testın DNS IP adresı test DHCP sunucusunda güncelleştirilmeleri gerekir. Windows ağ sanallaştırma 'nin bir ağ türü kullanıyorsanız, VMM sunucusu DHCP sunucusu işlevi görür. Bu nedenle, DNS 'in IP adresi, sınama yük devretmesi ağında güncellenmelidir. Bu durumda, sanal makineler kendilerini ilgili DNS sunucusuna kaydeder.
 * **Statik adres**: sanal makineler STATIK bir IP adresi kullanıyorsa, sınama yük devretmesi ağı 'NDA test DNS sunucusunun IP adresi güncellenmelidir. DNS 'yi test sanal makinelerinin IP adresiyle güncelleştirmeniz gerekebilir. Bu amaçla aşağıdaki örnek betiği kullanabilirsiniz:
 
-        Param(
-        [string]$Zone,
-        [string]$name,
-        [string]$IP
-        )
-        $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-        $newrecord = $record.clone()
-        $newrecord.RecordData[0].IPv4Address  =  $IP
-        Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
-
-
+  ```powershell
+  Param(
+  [string]$Zone,
+  [string]$name,
+  [string]$IP
+  )
+  $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+  $newrecord = $record.clone()
+  $newrecord.RecordData[0].IPv4Address  =  $IP
+  Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+  ```
 
 ## <a name="run-a-test-failover"></a>Yük devretme testi çalıştırma
 

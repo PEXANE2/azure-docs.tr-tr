@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 550b4fb7ba17d911618e0b60d16c0a9f9d1f2cfa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80298347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077279"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -141,7 +141,7 @@ Kurulum Sihirbazı 'nı kullanarak bir ağ geçidi yüklemek için aşağıdaki 
    ![Ağ geçidi proxy 'sinin yapılandırmasının ekran görüntüsü](./media/gateway/gateway-wizard02.png)
 
 1. Microsoft Update etkinleştirilmemişse, Microsoft Update sayfası görüntülenir ve etkinleştirmeyi seçebilirsiniz. Bir seçim yapın ve ardından **İleri**' yi seçin. Aksi halde, bir sonraki adıma devam edin.
-1. **Hedef klasör** sayfasında, C:\Program Files\oms Gateway varsayılan klasörünü bırakın ya da ağ geçidini yüklemek istediğiniz konumu girin. Ardından **İleri**' yi seçin.
+1. **Hedef klasör** sayfasında, C:\Program Files\oms Gateway varsayılan klasörünü bırakın ya da ağ geçidini yüklemek istediğiniz konumu girin. Sonra **İleri**’yi seçin.
 1. **Yüklemeye hazırlanma** sayfasında, **yükler**' i seçin. Kullanıcı hesabı denetimi, yüklemek için izin isterse, **Evet**' i seçin.
 1. Kurulum bittikten sonra **son**' u seçin. Hizmetin çalıştığını doğrulamak için, Services. msc ek bileşenini açın ve **OMS ağ geçidinin** hizmet listesinde göründüğünü ve durumunun **çalıştığını**doğrulayın.
 
@@ -149,7 +149,7 @@ Kurulum Sihirbazı 'nı kullanarak bir ağ geçidi yüklemek için aşağıdaki 
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Komut satırını kullanarak Log Analytics ağ geçidini yükler
 
-Ağ Geçidi için indirilen dosya, komut satırından veya diğer otomatikleştirilmiş yöntemden sessiz yüklemeyi destekleyen bir Windows Installer paketidir. Windows Installer için standart komut satırı seçenekleri konusunda bilgi sahibi değilseniz, bkz. [komut satırı seçenekleri](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).
+Ağ Geçidi için indirilen dosya, komut satırından veya diğer otomatikleştirilmiş yöntemden sessiz yüklemeyi destekleyen bir Windows Installer paketidir. Windows Installer için standart komut satırı seçenekleri konusunda bilgi sahibi değilseniz, bkz. [komut satırı seçenekleri](/windows/desktop/msi/command-line-options).
  
 Aşağıdaki tabloda, kurulum tarafından desteklenen parametrelerin vurgulanmıştır.
 
@@ -185,11 +185,11 @@ Yükleme sonrasında, aşağıdaki PowerShell cmdlet 'lerini kullanarak ayarlar�
 
 ## <a name="configure-network-load-balancing"></a>Ağ Yükü Dengelemeyi Yapılandırma
 
-Ağ Yükü Dengeleme [(NLB),](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing) [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)veya donanım tabanlı yük dengeleyiciler kullanarak Ağ Yük Dengelemesi 'ni (NLB) kullanarak yüksek kullanılabilirlik için ağ geçidini yapılandırabilirsiniz. Yük dengeleyici, istenen bağlantıları Log Analytics aracılarından veya Operations Manager yönetim sunucularından düğümleri arasında yönlendirerek trafiği yönetir. Bir ağ geçidi sunucusu kapatıyorsa trafik diğer düğümlere yönlendirilir.
+Ağ Yükü Dengeleme [(NLB),](/windows-server/networking/technologies/network-load-balancing) [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)veya donanım tabanlı yük dengeleyiciler kullanarak Ağ Yük Dengelemesi 'ni (NLB) kullanarak yüksek kullanılabilirlik için ağ geçidini yapılandırabilirsiniz. Yük dengeleyici, istenen bağlantıları Log Analytics aracılarından veya Operations Manager yönetim sunucularından düğümleri arasında yönlendirerek trafiği yönetir. Bir ağ geçidi sunucusu kapatıyorsa trafik diğer düğümlere yönlendirilir.
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft Ağ Yükü Dengeleme
 
-Windows Server 2016 Ağ Yükü Dengeleme kümesini nasıl tasarlayacağınızı ve dağıtacağınızı öğrenmek için bkz. [Ağ Yükü Dengeleme](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Aşağıdaki adımlarda, Microsoft Ağ Yükü Dengeleme kümesinin nasıl yapılandırılacağı açıklanır.  
+Windows Server 2016 Ağ Yükü Dengeleme kümesini nasıl tasarlayacağınızı ve dağıtacağınızı öğrenmek için bkz. [Ağ Yükü Dengeleme](/windows-server/networking/technologies/network-load-balancing). Aşağıdaki adımlarda, Microsoft Ağ Yükü Dengeleme kümesinin nasıl yapılandırılacağı açıklanır.  
 
 1. Yönetici hesabıyla NLB kümesinin bir üyesi olan Windows Server üzerinde oturum açın.  
 2. Ağ Yükü Dengeleme Yöneticisi 'Ni Sunucu Yöneticisi ' de açın, **Araçlar**' a ve ardından **Ağ Yükü Dengeleme Yöneticisi**' ne tıklayın.
@@ -248,7 +248,7 @@ Operations Manager desteklemek üzere OMS ağ geçidini kullanmak için şunlar�
 
 Operations Manager yönetim grubunuz ilk kez bir Log Analytics çalışma alanına kaydolurken, Işletim konsolundaki yönetim grubu için proxy yapılandırmasını belirtme seçeneğini görmezsiniz. Bu seçenek yalnızca yönetim grubu hizmete kaydedilmişse kullanılabilir.  
 
-Tümleştirmeyi yapılandırmak için, Işletim konsolunu çalıştırdığınız sistemde ve yönetim grubundaki tüm yönetim sunucularında Netsh kullanarak sistem proxy yapılandırmasını güncelleştirin. Şu adımları uygulayın:
+Tümleştirmeyi yapılandırmak için, Işletim konsolunu çalıştırdığınız sistemde ve yönetim grubundaki tüm yönetim sunucularında Netsh kullanarak sistem proxy yapılandırmasını güncelleştirin. Şu adımları izleyin:
 
 1. Yükseltilmiş bir komut istemi açın:
 
@@ -305,13 +305,13 @@ Her bir bölgenin URL 'sini bulmak için Otomasyon belgelerinin [ağınızı yap
 
 Bilgisayarınız karma runbook çalışanı olarak otomatik olarak kaydedilmişse, örneğin Güncelleştirme Yönetimi çözümü bir veya daha fazla VM için etkinleştirilmişse, aşağıdaki adımları izleyin:
 
-1. Iş çalışma zamanı veri hizmeti URL 'Lerini Log Analytics ağ geçidinde Izin verilen ana bilgisayar listesine ekleyin. Örneğin, `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Iş çalışma zamanı veri hizmeti URL 'Lerini Log Analytics ağ geçidinde Izin verilen ana bilgisayar listesine ekleyin. Örnek: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. Aşağıdaki PowerShell cmdlet 'ini kullanarak Log Analytics Ağ Geçidi hizmetini yeniden başlatın:`Restart-Service OMSGatewayService`
 
 Bilgisayarınız, karma Runbook Worker kayıt cmdlet 'i kullanılarak Azure Otomasyonu 'na katılırsa, şu adımları izleyin:
 
-1. Aracı hizmeti kayıt URL 'sini Log Analytics ağ geçidinde Izin verilen ana bilgisayar listesine ekleyin. Örneğin, `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-1. Iş çalışma zamanı veri hizmeti URL 'Lerini Log Analytics ağ geçidinde Izin verilen ana bilgisayar listesine ekleyin. Örneğin, `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Aracı hizmeti kayıt URL 'sini Log Analytics ağ geçidinde Izin verilen ana bilgisayar listesine ekleyin. Örnek: `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
+1. Iş çalışma zamanı veri hizmeti URL 'Lerini Log Analytics ağ geçidinde Izin verilen ana bilgisayar listesine ekleyin. Örnek: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. Log Analytics Ağ Geçidi hizmetini yeniden başlatın.
     `Restart-Service OMSGatewayService`
 
@@ -350,7 +350,7 @@ Ağ Geçidi tarafından günlüğe kaydedilen olayları toplamak için Log Analy
 
 Aşağıdaki tabloda Log Analytics ağ geçidi günlük olaylarının olay kimlikleri ve açıklamaları gösterilmektedir.
 
-| **ID** | **Açıklama** |
+| **NUMARASıNı** | **Açıklama** |
 | --- | --- |
 | 400 |Özel KIMLIĞI olmayan herhangi bir uygulama hatası. |
 | 401 |Yanlış yapılandırma. Örneğin, listenPort = bir tamsayı yerine "metin". |
@@ -370,7 +370,7 @@ Aşağıdaki tabloda Log Analytics ağ geçidi günlük olaylarının olay kimli
 
 Aşağıdaki tabloda Log Analytics ağ geçidi için kullanılabilen performans sayaçları gösterilmektedir. Sayaçları eklemek için performans Izleyicisini kullanın.
 
-| **Adı** | **Açıklama** |
+| **Ad** | **Açıklama** |
 | --- | --- |
 | Log Analytics ağ geçidi/etkin Istemci bağlantısı |Etkin istemci ağı (TCP) bağlantısı sayısı |
 | Log Analytics ağ geçidi/hata sayısı |Hata sayısı |

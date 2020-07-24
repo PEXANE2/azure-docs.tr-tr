@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: de152a636d8751616744887a521b2f94bbd386a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043453"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077745"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Yönetim .NET SDK: .NET için Azure Stream Analytics API 'sini kullanarak analiz işlerini ayarlama ve çalıştırma
 Yönetim .NET SDK 'sını kullanarak .NET için Stream Analytics API 'sini kullanarak analiz işlerini ayarlamayı ve çalıştırmayı öğrenin. Bir proje kurun, giriş ve çıkış kaynakları, dönüşümler ve işleri başlatın ve durdurun. Analiz işleriniz için blob depolamadan veya bir olay hub 'ından veri akışı yapabilirsiniz.
@@ -25,12 +25,12 @@ Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, y�
 > [!NOTE]
 > Bu makaledeki örnek kodu, Azure Stream Analytics Management .NET SDK v2. x sürümü ile güncelleştirdik. Kullanılan örnek kod için lagecy (1. x) SDK sürümünü kullanır, lütfen bkz. [Stream Analytics Için yönetim .NET SDK v1. x kullanın](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaleye başlamadan önce, aşağıdaki gereksinimlere sahip olmanız gerekir:
 
 * Visual Studio 2019 veya 2015 ' ü yükler.
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)’yı indirip yükleyin.
-* Aboneliğinizde bir Azure Kaynak grubu oluşturun. Aşağıdaki örnek bir örnek Azure PowerShell betiğine örnektir. Azure PowerShell bilgi için bkz. [Azure PowerShell 'Yi yükleyip yapılandırma](/powershell/azure/overview);  
+* Aboneliğinizde bir Azure Kaynak grubu oluşturun. Aşağıdaki örnek bir örnek Azure PowerShell betiğine örnektir. Azure PowerShell bilgi için bkz. [Azure PowerShell 'Yi yükleyip yapılandırma](/powershell/azure/);  
 
    ```powershell
    # Log in to your Azure account

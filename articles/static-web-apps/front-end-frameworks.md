@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 41f0c44ad65af5fdf2560da3f977a28f135af878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3220b9d56ff7107245a0a00aac44bb58f87099f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075967"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi ile ön uç çerçeveleri ve kitaplıkları yapılandırma
 
@@ -55,7 +55,7 @@ Tablo sütunlarının amacı aşağıdaki öğeler tarafından açıklanmıştı
 | [Svelte](https://svelte.dev/) | `public` | yok |
 | [Three.js](https://threejs.org/) | `/` | yok |
 | [TypeScript](https://www.typescriptlang.org/) | `dist` | yok |
-| [Vue](http://vuejs.com/) | `dist` | yok |
+| [Vue.js](https://vuejs.org/) | `dist` | yok |
 
 <sup>1</sup> yukarıdaki tablo, Azure statik Web Apps birlikte çalışan çerçeve ve kitaplıkların ayrıntılı bir listesi olmak üzere tasarlanmamıştır.
 

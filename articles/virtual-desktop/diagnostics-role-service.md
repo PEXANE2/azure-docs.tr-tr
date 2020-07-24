@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2ead16c655d4790e81931371e67da8106dabf83e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b9e63ca3c6822f4fd9ff215ccddaaf82ff55369
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075657"
 ---
-# <a name="identify-and-diagnose-issues"></a>Sorunları belirleme ve tanılama
+# <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Windows sanal masaüstü sorunlarını tanımla ve Tanıla
 
 >[!IMPORTANT]
 >Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)bakın.

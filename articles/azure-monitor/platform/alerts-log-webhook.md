@@ -7,13 +7,14 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3311819f021533a28a41daf2c2f08193218fae96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84323680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075276"
 ---
-# <a name="webhook-actions-for-log-alert-rules"></a>Günlük uyarısı kuralları için Web kancası eylemleri
+# <a name="webhook-actions-for-log-alert-rules"></a>Günlük uyarı kuralları için web kancası eylemleri
 [Azure 'da bir günlük uyarısı oluşturulduğunda](alerts-log.md), bir veya daha fazla eylem gerçekleştirmek için [eylem gruplarını kullanarak yapılandırma](action-groups.md) seçeneğiniz vardır. Bu makalede, kullanılabilen farklı Web kancası eylemleri açıklanmakta ve özel bir JSON tabanlı Web kancasının nasıl yapılandırılacağı gösterilmektedir.
 
 > [!NOTE]
@@ -56,7 +57,7 @@ Web kancaları, dış hizmete gönderilen verilerin JSON 'de biçimlendirildiği
 | *Uyarı türü*| #alerttype | [Ölçüm ölçümü](alerts-unified-log.md#metric-measurement-alert-rules) veya [sonuç sayısı](alerts-unified-log.md#number-of-results-alert-rules)olarak yapılandırılan günlük uyarısı kuralının türü.|
 | *Workspaceıd* |#workspaceid |Log Analytics çalışma alanınızın KIMLIĞI. |
 | *Uygulama Kimliği* |#applicationid |Application Insights uygulamanızın KIMLIĞI. |
-| *Abonelik Kimliği* |#subscriptionid |Kullanılan Azure aboneliğinizin KIMLIĞI. 
+| *Abonelik kimliği* |#subscriptionid |Kullanılan Azure aboneliğinizin KIMLIĞI. 
 
 > [!NOTE]
 > Belirtilen bağlantılar *SearchQuery*, *arama aralığı başlangıçsaati*ve Azure Portal veya API URL 'sindeki *arama aralığı bitiş zamanı* gibi parametreleri geçirir.
@@ -264,6 +265,5 @@ Aşağıdaki örnek yük, herhangi bir günlük uyarısı için özel bir Web ka
 - [Azure uyarılarında günlük uyarıları](alerts-unified-log.md)hakkında bilgi edinin.
 - [Azure 'da günlük uyarılarını yönetmeyi](alerts-log.md)anlayın.
 - [Azure 'da eylem grupları](action-groups.md)oluşturun ve yönetin.
-- [Application Insights](../../azure-monitor/app/analytics.md)hakkında daha fazla bilgi edinin.
+- [Application Insights](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin. 
-

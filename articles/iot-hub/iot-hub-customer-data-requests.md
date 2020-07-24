@@ -7,13 +7,14 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074716"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Müşteri verileri isteme özelliklerinin özeti
+# <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT Hub cihazları için müşteri verileri isteği özellikleri
 
 Azure IoT Hub, kurumsal müşterileri hedefleyen, milyonlarca cihaz ve bölümlenmiş bir Azure hizmeti arasında güvenli, çift yönlü iletişim sağlayan REST API tabanlı bir bulut hizmetidir.
 

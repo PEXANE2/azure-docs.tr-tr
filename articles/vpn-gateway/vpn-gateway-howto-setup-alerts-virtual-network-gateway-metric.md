@@ -2,16 +2,17 @@
 title: Azure VPN Gateway ölçümleri üzerinde uyarı ayarlama
 description: VPN Gateway ölçümlerinde uyarıları yapılandırma adımları
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: ce9ab972d961a9193c3aa568878f9c93ccdcf6b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2c44720853500ad6a9a4af1c8d93d6c8bc3eea2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075521"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>VPN Gateway ölçümlerinde uyarıları ayarlama
 
@@ -22,14 +23,14 @@ Bu makale, Azure VPN Gateway ölçümlerinde uyarı ayarlamanıza yardımcı olu
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bayt/sn  | 5 dakika| Ağ geçidinde tüm siteden siteye bağlantıların ortalama Birleşik bant genişliği kullanımı.     |
 |**P2SBandwidth**| Bayt/sn  | 1 dakika  | Ağ geçidinde tüm Noktadan siteye bağlantıların ortalama Birleşik bant genişliği kullanımı.    |
-|**P2SConnectionCount**| Sayı  | 1 dakika  | Ağ geçidinde Noktadan siteye bağlantı sayısı.   |
+|**P2SConnectionCount**| Count  | 1 dakika  | Ağ geçidinde Noktadan siteye bağlantı sayısı.   |
 |**TunnelAverageBandwidth** | Bayt/sn    | 5 dakika  | Ağ geçidinde oluşturulan tünellerin ortalama bant genişliği kullanımı. |
 |**TunnelEgressBytes** | Bayt | 5 dakika | Ağ geçidinde oluşturulan tünellerde giden trafik.   |
-|**TunnelEgressPackets** | Sayı | 5 dakika | Ağ geçidinde oluşturulan Tünellerdeki giden paket sayısı.   |
-|**TunnelEgressPacketDropTSMismatch** | Sayı | 5 dakika | Trafik seçici uyumsuzluğu nedeniyle oluşan tünellerde bırakılan giden paket sayısı. |
+|**TunnelEgressPackets** | Count | 5 dakika | Ağ geçidinde oluşturulan Tünellerdeki giden paket sayısı.   |
+|**TunnelEgressPacketDropTSMismatch** | Count | 5 dakika | Trafik seçici uyumsuzluğu nedeniyle oluşan tünellerde bırakılan giden paket sayısı. |
 |**TunnelIngressBytes** | Bayt | 5 dakika | Ağ geçidinde oluşturulan tünellerde gelen trafik.   |
-|**TunnelIngressPackets** | Sayı | 5 dakika | Ağ geçidinde oluşturulan Tünellerdeki gelen paket sayısı.   |
-|**TunnelIngressPacketDropTSMismatch** | Sayı | 5 dakika | Trafik seçici uyumsuzluğu nedeniyle oluşan tünellerde bırakılan gelen paket sayısı. |
+|**TunnelIngressPackets** | Count | 5 dakika | Ağ geçidinde oluşturulan Tünellerdeki gelen paket sayısı.   |
+|**TunnelIngressPacketDropTSMismatch** | Count | 5 dakika | Trafik seçici uyumsuzluğu nedeniyle oluşan tünellerde bırakılan gelen paket sayısı. |
 
 
 ## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Azure portal kullanarak ölçümleri temel alarak Azure Izleyici uyarılarını ayarlayın

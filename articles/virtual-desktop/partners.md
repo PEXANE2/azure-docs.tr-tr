@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038064"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075751"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -48,7 +48,22 @@ Microsoft ve adanmış bir Microsoft Azure ve Windows sanal masaüstü ortağıy
 
 10ZiG's World-sanal masaüstleri için Ince ve sıfır Istemci uç noktası cihazlarının ve yönetim yazılımlarının müşterileri için nasıl çalıştıkları Ölçülü Istemci donanımı, müşterilerin gereksinimlerine göre doğru Istemci cihazları aldığından emin olmak için tasarlanan, düşünceli bir şekilde oluşturulmuş avantaj özellikleri ve seçenekleri sunar. 10ZiG, sanal masaüstlerinde hem bulut içinde hem de dışında en iyi performansı sağlayan Windows tabanlı ve Linux tabanlı Istemcilerle müşteri ortamlarına uyum sağlamak için cihazlarını özelleştirir.
 
-- [İş ortağı Web sitesine gidin](https://www.10zig.com/).
+- [İş ortağı Web sitesine gidin](https://www.10zig.com/about/microsoft-wvd).
+
+## <a name="automai"></a>Automaı
+
+![Automaı logosu](./media/partners/automai.png)
+
+Dağıtımınız canlı olmadan önce bir Windows sanal masaüstü ortamında anahtar iş süreçlerini test etmek için Automaı 'nin Robot Otomasyon platformunu kullanabilirsiniz.
+
+Automaı 'nin ScenarioBuilder aracı ve GUI tabanlı iş akışı altyapısından, BT ekipleri gerçek Son Kullanıcı iş akışlarını kaydedebilir ve bunları otomatik olarak betiklere çevirebilir. Ardından automai, bir simülasyondaki Son Kullanıcı etkinliğine öykünmek ve sonuçları raporlamak için ayrı masaüstlerdeki çalışan süreçler kullanır. Bu, BT yöneticilerinin en karmaşık senaryolara bile yük testi yapabilmesi için işlemleri test etmeyi kolaylaştırır.
+
+Başlatma için hazırladıktan sonra, üretimde performansı sürekli olarak izlemek için yük testi için oluşturduğunuz tüm iş akışı betikleri ' ni kullanabilirsiniz. Automaı 'nin botları yalnızca kullanılabilirlik izlemenin daha fazlasını yapabilir. Botlar Ayrıca son kullanıcı iş akışlarını anahtar konumlardan test edebilir, ekran görüntüleri alabilir ve hata raporlarını gerçek zamanlı olarak toplar. Bu, Windows sanal masaüstü uygulamalarına yönelik hata düzeltmelerine yönelik reaktif bir yaklaşıma yol açar.
+
+Automaı, performans testi, işlevsel test, performans izleme ve hatta robot işlem otomasyonu için aynı betikleri tek bir platformda kullanmanıza imkan sağlar.
+
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N).
+- [İş ortağı Web sitesine gidin](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -112,6 +127,17 @@ Ekran sistem istemcilerinin benzersiz kayan nokta lisansı, dinamik olarak deği
 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8).
 - [İş ortağı sayfasına gidin](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring).
+
+## <a name="fabulatech"></a>FabulaTech
+
+![FabulaTech logosu](./media/partners/fabulatech.png)
+
+FabulaTech, Windows sanal masaüstü istemcileriyle sorunsuz bir şekilde tümleşir. Yüklendikten sonra, FabulaTech yazılımı, uzak masaüstü ile bağlantı kurarken otomatik olarak çalışmaya başlar.
+
+Bir Kullanıcı sanal masaüstünde oturum açtığında, FabulaTech yazılımı bir sanal cihaz oluşturur. Örneğin, bir sanal Web Kamerası, tarayıcı veya parmak izi okuyucusu oluşturabilirsiniz. Uzak bir oturumda çalışan tüm uygulamalar, sanal cihaza fiziksel bir cihazlı gibi erişebilir. Windows sanal masaüstündeki sanal cihazı sistem tepsisi simgesi menüsüyle yapılandırabilirsiniz, bu da bu çözümü ince istemcilerde de kullanabilirsiniz. Bunun üzerine, tüm iletişimler mevcut uzak masaüstü bağlantısı üzerinden yapılır, bu da güvenlik duvarının sizin için ayarlandığı anlamına gelir. Her şey, kutudan hemen sonra işe yarar.
+
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B4zO).
+- [İş ortağı Web sitesine gidin](https://www.fabulatech.com/partners/microsoft-windows-virtual-desktop/).
 
 ## <a name="flexxible-it"></a>Orıo It
 
@@ -274,7 +300,7 @@ Rimo3 kullanımı kolay, ölçeklenebilir, otomatik uygulama testi platformu sun
 
 ![sepago logosu](./media/partners/sepago.png)
 
-sepago, Cologne 'da dört arkadaşa göre 2002 ' de kurulmuştur. Bugün sepago, artmasıyla artan sayıda sepagists ile birlikte, Cologne, Münih ve Hamburg içindeki Almanya 'daki konumlara sahip bir BT yönetimi geliştiriciliğe. sepago, otomatik uygulama sağlama, sanallaştırma, bulut çözümleri ve BT güvenliği ile ilgili uzmanlardır. sepago, dijital dönüştürmeye göre orta ölçekli ve büyük şirketleri destekler ve kullanıcıların güvenli ve verimli bir şekilde çalışmasına olanak sağlar.
+sepago, Cologne 'da dört arkadaşa göre 2002 ' de kurulmuştur. Bugün sepago, artmasıyla artan sayıda sepagists ile birlikte, Cologne, Münih ve Hamburg içindeki Almanya 'daki konumlara sahip bir BT yönetimi geliştiriciliğe. sepago, otomatik uygulama sağlama, sanallaştırma, bulut çözümleri ve BT güvenliği ile ilgili uzmanlardır. sepago, dijital dönüştürmeye göre orta ölçekli ve büyük şirketleri destekler ve kullanıcıların güvenli ve verimli bir şekilde çalışabilmesini sağlar.
 
 sepago 'nın yenilik ve geliştirme Laboratuvarı, büyük veri ve AI teknolojilerini kullanarak akıllı çözümler oluşturur. Bu çözümler, Windows sanal masaüstü gibi iş ortağı ürünlerin iş, Kullanıcı deneyimi ve yönetimlerini geliştirmeye odaklanmaktadır.
 

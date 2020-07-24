@@ -7,16 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45b18352d88877a5d611f203d87da83fd0d58c6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79096788"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077131"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Azure Izleyici platformu günlüklerine yapılan biçim değişikliğine hazırlanma bir depolama hesabına arşivlendi
 
 > [!WARNING]
-> [Günlük profillerini kullanarak bir depolama](resource-logs-collect-storage.md)hesabına Tanılama ayarları veya etkinlik günlükleri [kullanarak bir depolama hesabına Azure Kaynak günlükleri veya ölçümleri](resource-logs-collect-storage.md) gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, kas 'de JSON satırları olarak değiştirilmiştir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır.
+> [Günlük profillerini kullanarak bir depolama](./resource-logs.md#send-to-azure-storage)hesabına Tanılama ayarları veya etkinlik günlükleri [kullanarak bir depolama hesabına Azure Kaynak günlükleri veya ölçümleri](./resource-logs.md#send-to-azure-storage) gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, kas 'de JSON satırları olarak değiştirilmiştir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır.
 >
 
 ## <a name="what-changed"></a>Değişen
@@ -28,9 +29,9 @@ Azure Izleyici, Azure Izleyici 'deki bir Azure depolama hesabına, Event Hubs ad
 * Verileri geçerli biçimde 1 Kasım 'a kadar göstermek için 1 Kasım 'dan önce 1 Kasım 'a kadar devam eden bir tanılama ayarı ayarlama.
 * Bu değişiklik, tüm genel bulut bölgelerinde bir kez oluştu. Bu değişiklik, 21Vianet tarafından çalıştırılan Microsoft Azure, Azure Almanya veya Azure Kamu bulutlarında henüz gerçekleşmeyecektir.
 * Bu değişiklik aşağıdaki veri türlerini etkiler:
-  * [Azure Kaynak günlükleri](archive-diagnostic-logs.md) ([kaynakların listesini buraya bakın](diagnostic-logs-schema.md))
+  * [Azure Kaynak günlükleri](./resource-logs.md#send-to-azure-storage) ([kaynakların listesini buraya bakın](./resource-logs-schema.md))
   * [Tanılama ayarları tarafından aktarılan Azure Kaynak ölçümleri](diagnostic-settings.md)
-  * [Azure etkinlik günlüğü verileri, günlük profilleri tarafından veriliyor](activity-log-collect.md)
+  * [Azure etkinlik günlüğü verileri, günlük profilleri tarafından veriliyor](./activity-log.md)
 * Bu değişiklik etkilenmez:
   * Ağ akışı günlükleri
   * Azure hizmet günlükleri henüz Azure Izleyici aracılığıyla kullanılamaz (örneğin, kaynak günlükleri Azure App Service, depolama Analizi günlükleri)
@@ -122,7 +123,7 @@ Yeni biçim, her olayın bir satır olduğu ve yeni bir olayı gösterdiği yeni
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Bu yeni biçim, Azure Izleyici 'nin, yeni olay verilerini sürekli olarak eklemek için daha verimli olan [ekleme Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)kullanarak günlük dosyalarını gönderebilmesine olanak sağlar.
+Bu yeni biçim, Azure Izleyici 'nin, yeni olay verilerini sürekli olarak eklemek için daha verimli olan [ekleme Blobları](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)kullanarak günlük dosyalarını gönderebilmesine olanak sağlar.
 
 ## <a name="how-to-update"></a>Güncelleştirme
 
@@ -132,6 +133,5 @@ Yalnızca bu günlük dosyalarını daha fazla işlemeye yönelik bir özel ara�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak kaynak günlüklerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-diagnostic-logs.md) hakkında bilgi edinin
-* [Etkinlik günlüğü verilerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-activity-log.md) hakkında bilgi edinin
-
+* [Kaynak kaynak günlüklerini bir depolama hesabına arşivleme](./resource-logs.md#send-to-azure-storage) hakkında bilgi edinin
+* [Etkinlik günlüğü verilerini bir depolama hesabına arşivleme](./activity-log.md#legacy-collection-methods) hakkında bilgi edinin

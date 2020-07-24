@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659263"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077156"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS portalı Azure 'a taşınıyor
 
@@ -40,7 +41,7 @@ Birçok özellik herhangi bir geçiş yapılmadan çalışmaya devam ederken, a�
 - [Kullanıcı izinlerinizi Azure Portal geçirmeniz](#user-access-and-role-migration) gerekir.
 - Güncelleştirme Yönetimi çözümünü geçirme hakkında ayrıntılı bilgi için bkz. [OMS güncelleştirme dağıtımlarınızı Azure 'A geçirme](../../automation/migrate-oms-update-deployments.md) .
 
-Azure portal geçiş hakkında daha fazla bilgi için [Log Analytics kullanıcılar IÇIN OMS portalından geçiş Için genel soruların Azure Portal](oms-portal-faq.md) bölümüne bakın. 
+Azure portal geçiş hakkında daha fazla bilgi için [Log Analytics kullanıcılar IÇIN OMS portalından geçiş Için genel soruların Azure Portal](../overview.md) bölümüne bakın. 
 
 ## <a name="user-access-and-role-migration"></a>Kullanıcı erişimi ve rol geçişi
 Azure portal Access Management, OMS portalındaki erişim yönetiminden daha zengin ve daha güçlüdür. Log Analytics 'de erişim yönetiminin ayrıntıları için bkz. [Azure Izleyici günlükleri çalışma alanınızı tasarlama](design-logs-deployment.md) .
@@ -69,7 +70,7 @@ Artık OMS portalını kullanarak yeni çalışma alanları oluşturamayacaksın
 
 ### <a name="alert-extension"></a>Uyarı Uzantısı  
 
-Uyarılar, var olan uyarılar OMS portalında listelenmeye devam edecek [Azure Portal](alerts-extend.md) , ancak yalnızca Azure Portal yönetebilirsiniz. Uyarılara Log Analytics uyarı REST API veya Log Analytics uyarı kaynağı şablonunu kullanarak programlı bir şekilde eriştiğinizde, API aramalarınızdan, Azure Resource Manager şablonlarındaki ve PowerShell komutlarında eylemler yerine eylem gruplarını kullanmanız gerekir.
+Uyarılar, var olan uyarılar OMS portalında listelenmeye devam edecek [Azure Portal](./alerts-unified-log.md) , ancak yalnızca Azure Portal yönetebilirsiniz. Uyarılara Log Analytics uyarı REST API veya Log Analytics uyarı kaynağı şablonunu kullanarak programlı bir şekilde eriştiğinizde, API aramalarınızdan, Azure Resource Manager şablonlarındaki ve PowerShell komutlarında eylemler yerine eylem gruplarını kullanmanız gerekir.
 
 ### <a name="alert-management-solution"></a>Uyarı yönetimi çözümü
 Önceki duyurudan bir değişiklik olarak, [uyarı yönetimi çözümü](alert-management-solution.md) Azure Portal kullanılabilir olmaya devam eder ve tam olarak desteklenir. Çözümü Azure Marketi 'nden yüklemeye devam edebilirsiniz.
@@ -101,7 +102,7 @@ Bu çözüm NSG akış günlüklerini analiz eder ve aşağıdakiler hakkında �
 Mevcut kayıtlı aramalarınız, uyarılar, panolar çalışmaya devam edecek şekilde Log Analytics NSG günlükleri göndermek için tanılama ayarlarını kullanmaya devam edebilirsiniz. Çözümü zaten yüklemiş olan müşteriler daha fazla bildirimde bulununcaya kadar bu uygulamayı kullanmaya devam edebilir. 5 Eylül 'den itibaren, ağ güvenlik grubu analizi çözümü Market 'ten kaldırılacak ve topluluk aracılığıyla bir [Azure hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)olarak kullanıma sunulacaktır.
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-[Operations Manager yönetim grubunuzu Log Analytics bağladıysanız](om-agents.md), hiçbir değişiklik yapmadan çalışmaya devam edecektir. Ancak yeni bağlantılar için, [Operations Management Suite 'i yapılandırmak üzere Microsoft System Center Operations Manager yönetim paketindeki](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/)yönergeleri izlemeniz gerekir.
+[Operations Manager yönetim grubunuzu Log Analytics bağladıysanız](om-agents.md), hiçbir değişiklik yapmadan çalışmaya devam edecektir. Ancak yeni bağlantılar için, [Operations Management Suite 'i yapılandırmak üzere Microsoft System Center Operations Manager yönetim paketindeki](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog)yönergeleri izlemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- OMS portalından Azure portal 'a geçme hakkında rehberlik için bkz. [OMS portalından geçiş Için sık kullanılan sorular Azure portal Log Analytics kullanıcılar](oms-portal-faq.md) .
+- OMS portalından Azure portal 'a geçme hakkında rehberlik için bkz. [OMS portalından geçiş Için sık kullanılan sorular Azure portal Log Analytics kullanıcılar](../overview.md) .

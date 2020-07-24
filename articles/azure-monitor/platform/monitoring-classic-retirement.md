@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dc603a890a112cf475e6ceafb79145dec5a56ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659484"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077228"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Izleyici 'de izleme & birleştirilmiş uyarı, klasik uyarı & izlemeyi değiştirir
 
@@ -27,7 +28,7 @@ Yeni Azure izleme ve uyarı platformu sayesinde, Azure uyarıları 'nın *Klasik
 Başlamanızı ve yeni platformda uyarılarınızı yeniden oluşturmayı öneririz. Çok sayıda uyarı olan müşteriler için, var olan klasik uyarıları, kesintiye uğramadan veya ek maliyetler olmadan yeni uyarılar sistemine taşımaya yönelik [gönüllü bir geçiş aracı](alerts-using-migration-tool.md) olan [aşamalar halinde kullanıma](alerts-understand-migration.md#rollout-phases)sunuyoruz.
 
 > [!IMPORTANT]
-> Etkinlik günlüğünde oluşturulan klasik uyarı kuralları kullanım dışı olmayacaktır veya geçirilmez. Etkinlik günlüğünde oluşturulan tüm klasik uyarı kuralları, yeni Azure Izleyici-uyarılarından olduğu gibi erişilebilir ve kullanılabilir. Daha fazla bilgi için bkz. [Azure izleyici kullanarak etkinlik günlüğü uyarılarını oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-activity-log.md). Benzer şekilde, hizmet durumundaki uyarılara erişilebilir ve yeni hizmet durumu bölümünde olduğu gibi kullanılabilirler. Ayrıntılar için bkz. [hizmet durumu bildirimleri uyarıları](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+> Etkinlik günlüğünde oluşturulan klasik uyarı kuralları kullanım dışı olmayacaktır veya geçirilmez. Etkinlik günlüğünde oluşturulan tüm klasik uyarı kuralları, yeni Azure Izleyici-uyarılarından olduğu gibi erişilebilir ve kullanılabilir. Daha fazla bilgi için bkz. [Azure izleyici kullanarak etkinlik günlüğü uyarılarını oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-activity-log.md). Benzer şekilde, hizmet durumundaki uyarılara erişilebilir ve yeni hizmet durumu bölümünde olduğu gibi kullanılabilirler. Ayrıntılar için bkz. [hizmet durumu bildirimleri uyarıları](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="unified-metrics-and-alerts-in-application-insights"></a>Application Insights 'daki birleştirilmiş ölçümler ve uyarılar
 
@@ -38,7 +39,7 @@ Application Insights için yeni Birleşik Izleme ve uyarı şu şekilde alınaca
 - **Application Insights platform ölçümleri** : Application Insights üründen popüler ön derlenmiş ölçümler sağlar. Daha fazla bilgi için, [yeni Azure izleyici Application Insights Için platform ölçümlerini](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)kullanma hakkında bu makaleye bakın.
 - **Application Insights kullanılabilirliği ve Web testi** , Web uygulamanızın veya sunucunuzun yanıt hızını ve kullanılabilirliğini değerlendirmenizi sağlar. Daha fazla bilgi için, [yeni Azure izleyici Application Insights kullanılabilirlik testlerini ve uyarılarını](../../azure-monitor/app/monitor-web-app-availability.md)kullanma hakkında bu makaleye bakın.
 - İzleme ve uyarılar için kendi ölçümlerini tanımlamanızı ve yaymanızı sağlayan **özel ölçümler Application Insights** . Daha fazla bilgi için, [yeni Azure izleyici Application Insights Için özel ölçüm](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)kullanma hakkında bu makaleye bakın.
-- **Application Insights hata bozukluileri (akıllı algılama 'nın parçası)** : Web UYGULAMANıZ başarısız http istekleri veya bağımlılık çağrıları ücretlerinde anormal bir artış yaşıyorsa sizi gerçek zamanlı olarak neredeyse gerçek zamanlı olarak bildirir. Daha fazla bilgi için [akıllı algılama-hata Anormallarını](https://docs.microsoft.com/azure/azure-monitor/app/proactive-failure-diagnostics)kullanma hakkında bu makaleye bakın.
+- **Application Insights hata bozukluileri (akıllı algılama 'nın parçası)** : Web UYGULAMANıZ başarısız http istekleri veya bağımlılık çağrıları ücretlerinde anormal bir artış yaşıyorsa sizi gerçek zamanlı olarak neredeyse gerçek zamanlı olarak bildirir. Daha fazla bilgi için [akıllı algılama-hata Anormallarını](../app/proactive-failure-diagnostics.md)kullanma hakkında bu makaleye bakın.
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Diğer Azure kaynakları için birleştirilmiş ölçümler ve uyarılar
 
@@ -53,11 +54,11 @@ Azure kaynakları için yeni ölçümler şu şekilde kullanılabilir:
 Daha önce belirtildiği gibi, şu anda Azure portal [Uyarılar (klasik) bölümünden](../../azure-monitor/platform/alerts-classic.overview.md) kullanılabilir olan klasik izleme ve uyarı platformu, daha yeni sistemle değiştirildikleri için gelecek aylarda kullanımdan kaldırılacaktır.
 Daha eski klasik izleme ve uyarı, 31 Ağustos 2019 tarihinde kullanımdan kaldırılacaktır. ilgili API 'lerin kapatılmasını, Azure portal arabirimi ve hizmetleri de dahil olmak üzere. Özellikle, bu özellikler kullanım dışı olacaktır:
 
-- Azure kaynakları için daha eski (klasik) ölçümler ve uyarılar Azure portal, [Uyarılar (klasik) bölümünde](../../azure-monitor/platform/alerts-classic.overview.md) Şu anda kullanılabilir; [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) kaynağı olarak erişilebilir
-- Application Insights için eski (klasik) platform ve özel ölçümler, Azure portal [Uyarılar (klasik) bölümünde](../../azure-monitor/platform/alerts-classic.overview.md) Şu anda kullanılabilir olarak ve [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) kaynağı olarak erişilebilir olarak uyarma
+- Azure kaynakları için daha eski (klasik) ölçümler ve uyarılar Azure portal, [Uyarılar (klasik) bölümünde](../../azure-monitor/platform/alerts-classic.overview.md) Şu anda kullanılabilir; [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules) kaynağı olarak erişilebilir
+- Application Insights için eski (klasik) platform ve özel ölçümler, Azure portal [Uyarılar (klasik) bölümünde](../../azure-monitor/platform/alerts-classic.overview.md) Şu anda kullanılabilir olarak ve [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules) kaynağı olarak erişilebilir olarak uyarma
 - Daha eski (klasik) hata anomali uyarısı Şu anda Azure portal [Application Insights Içinde akıllı algılama](../../azure-monitor/app/proactive-diagnostics.md) olarak sunulmaktadır; Azure portal [Uyarılar (klasik) bölümünde](../../azure-monitor/platform/alerts-classic.overview.md) gösterilen uyarılarla yapılandırılır
 
-İlgili [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md), [CLI](../../azure-monitor/platform/alerts-classic-portal.md), [Azure Portal sayfası](../../azure-monitor/platform/alerts-classic-portal.md)ve [kaynak şablonu](../../azure-monitor/platform/alerts-enable-template.md) dahil tüm klasik izleme ve uyarı sistemleri, Ağustos 2019 bitene kadar kullanılabilir olmaya devam edecektir. 
+İlgili [API](/rest/api/monitor/alertrules), [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md), [CLI](../../azure-monitor/platform/alerts-classic-portal.md), [Azure Portal sayfası](../../azure-monitor/platform/alerts-classic-portal.md)ve [kaynak şablonu](../../azure-monitor/platform/alerts-enable-template.md) dahil tüm klasik izleme ve uyarı sistemleri, Ağustos 2019 bitene kadar kullanılabilir olmaya devam edecektir. 
 
 Azure Izleyici 'de Ağustos 2019 ' nin sonunda:
 

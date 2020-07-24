@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077430"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
 Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta getirmenize ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırmanıza olanak sağlar. Daha fazla bilgi için lütfen bkz. [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -55,7 +55,7 @@ Daha fazla bilgi için:
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Windows 10 ' un çok kiracılı barındırma haklarıyla dağıtımı
-[En son Azure PowerShell yükleyip yapılandırdığınızdan](/powershell/azure/overview)emin olun. VHD 'nizi hazırladıktan sonra cmdlet 'ini kullanarak Azure depolama hesabınıza VHD 'yi `Add-AzVhd` aşağıdaki gibi yükleyin:
+[En son Azure PowerShell yükleyip yapılandırdığınızdan](/powershell/azure/)emin olun. VHD 'nizi hazırladıktan sonra cmdlet 'ini kullanarak Azure depolama hesabınıza VHD 'yi `Add-AzVhd` aşağıdaki gibi yükleyin:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Azure Resource Manager şablonu dağıtımını kullanarak dağıtma** Kaynak Yöneticisi şablonlarınız içinde, için ek bir parametre `licenseType` belirtilebilir. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md)hakkında daha fazla bilgi edinebilirsiniz. VHD 'nizi Azure 'a yükledikten sonra, işlem sağlayıcısının bir parçası olarak lisans türünü içerecek şekilde Kaynak Yöneticisi şablonu düzenleyin ve şablonunuzu normal olarak dağıtın:
+**Azure Resource Manager şablonu dağıtımını kullanarak dağıtma** Kaynak Yöneticisi şablonlarınız içinde, için ek bir parametre `licenseType` belirtilebilir. [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md)hakkında daha fazla bilgi edinebilirsiniz. VHD 'nizi Azure 'a yükledikten sonra, işlem sağlayıcısının bir parçası olarak lisans türünü içerecek şekilde Kaynak Yöneticisi şablonu düzenleyin ve şablonunuzu normal olarak dağıtın:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -106,7 +106,5 @@ LicenseType              :
 >
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Windows 10 için VDA yapılandırma](https://docs.microsoft.com/windows/deployment/vda-subscription-activation) hakkında daha fazla bilgi edinin
+- [Windows 10 için VDA yapılandırma](/windows/deployment/vda-subscription-activation) hakkında daha fazla bilgi edinin
 - [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx) hakkında daha fazla bilgi edinin
-
-

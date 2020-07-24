@@ -1,5 +1,5 @@
 ---
-title: Ayrılmış HSM nedir? -Azure ayrılmış HSM | Microsoft Docs
+title: Adanmış HSM sorunlarını giderme-Azure ayrılmış HSM | Microsoft Docs
 description: Azure adanmış HSM 'ye genel bakış, Azure 'da FIPS 140-2 düzey 3 sertifikasını karşılayan anahtar depolama olanakları sağlar
 services: dedicated-hsm
 author: msmbaldwin
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c398049cfe1d5ec2ee090d4fabf8008803efecb1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209581"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074998"
 ---
-# <a name="troubleshooting"></a>Sorun giderme
+# <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure ayrılmış HSM hizmeti sorunlarını giderme
 
 Azure ayrılmış HSM hizmeti iki ayrı model içerir. İlk olarak, HSM cihazlarının Azure 'daki kayıt ve dağıtım, temel ağ bileşenleriyle birlikte. İkinci olarak, belirli bir iş yükü veya uygulamayla kullanım/tümleştirme hazırlığı için HSM cihazlarının yapılandırması. Thales Luna ağ HSM cihazları Azure 'da doğrudan Thales 'den satın alırken aynı olsa da, Azure 'da bir kaynak olması, bazı benzersiz hususlar oluşturur. Bu konular ve sonuçta ortaya çıkan sorun giderme öngörüleri veya en iyi yöntemleri, önemli bilgilere yüksek görünürlük ve erişim sağlamak için burada belgelenmiştir. Hizmet kullanımda olduktan sonra doğrudan Microsoft veya Thales 'e yönelik destek istekleri aracılığıyla tanımlayıcı bilgilere erişilebilir. 
 

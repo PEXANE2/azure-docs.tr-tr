@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 48a5c192051d8e715deb7e354827ff4cd4152bcd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5be217cd2afbb95c4c02a958c1299db599c349d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077890"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074785"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Etkileşimli olmayan bir kimlik doğrulama .NET HDInsight uygulaması oluşturma
 
@@ -123,4 +123,4 @@ Eylemleri gerçekleştirmek için izin vermek üzere Azure AD uygulamanıza bir 
 
 * [Azure portal Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturun](../active-directory/develop/howto-create-service-principal-portal.md).
 * [Azure Resource Manager ile hizmet sorumlusu için kimlik doğrulaması](../active-directory/develop/howto-authenticate-service-principal-powershell.md)yapmayı öğrenin.
-* [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)hakkında bilgi edinin.
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)hakkında bilgi edinin.

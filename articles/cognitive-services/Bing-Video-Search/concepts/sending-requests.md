@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
 ms.openlocfilehash: b27aa1409d543c157069d2701c49ef54a097e552
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075219"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Bing Video Arama API'si arama istekleri gönderiliyor
 
@@ -37,7 +37,7 @@ Video arama sonuçlarını almak için aşağıdaki uç noktaya bir GET isteği 
 https://api.cognitive.microsoft.com/bing/v7.0/videos/search
 ```
    
-İstek, HTTPS protokolünü kullanmalıdır.
+İsteğin HTTPS protokolünü kullanması gerekir.
 
 Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci uygulamanın parçası olarak dağıtmak, kötü amaçlı bir üçüncü tarafa anahtara erişmek için daha fazla fırsat sunar. Bir sunucudan çağrılar yapıldığında API 'nin gelecekteki sürümleri için tek bir yükseltme noktası da sağlanır.
 

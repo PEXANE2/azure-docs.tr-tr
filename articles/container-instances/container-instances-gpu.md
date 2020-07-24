@@ -3,12 +3,12 @@ title: GPU özellikli kapsayıcı örneği dağıt
 description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygulamaları çalıştırmak için Azure Container Instances 'ı dağıtmayı öğrenin.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259594"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076872"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
 
@@ -63,7 +63,7 @@ GPU kaynaklarını dağıttığınızda, önceki tabloda gösterilen en fazla de
 
 * **CUDA sürücüleri** -GPU kaynaklarıyla kapsayıcı ÖRNEKLERI, NVıDıA CUDA sürücüleriyle ve kapsayıcı çalışma zamanları ile önceden sağlanmış olduğundan CUDA iş yükleri için geliştirilmiş kapsayıcı görüntülerini kullanabilirsiniz.
 
-  Bu aşamada CUDA 9,0 destekliyoruz. Örneğin, Docker dosyanız için aşağıdaki temel görüntüleri kullanabilirsiniz:
+  Bu aşamada yalnızca CUDA 9,0 ' i destekliyoruz. Örneğin, Docker dosyanız için aşağıdaki temel görüntüleri kullanabilirsiniz:
   * [NVIDIA/CUDA: 9.0-Base-Ubuntu 16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [TensorFlow/TensorFlow: 1.12.0-GPU-PY3](https://hub.docker.com/r/tensorflow/tensorflow)
     
@@ -209,7 +209,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-GPU kaynaklarının kullanılması pahalı olabileceğinden, kapsayıcılarınızın uzun süreler boyunca beklenmedik şekilde çalışmadığından emin olun. Azure portal Kapsayıcılarınızı izleyin veya [az Container Show][az-container-show] komutuyla bir kapsayıcı grubunun durumunu denetleyin. Örnek:
+GPU kaynaklarının kullanılması pahalı olabileceğinden, kapsayıcılarınızın uzun süreler boyunca beklenmedik şekilde çalışmadığından emin olun. Azure portal Kapsayıcılarınızı izleyin veya [az Container Show][az-container-show] komutuyla bir kapsayıcı grubunun durumunu denetleyin. Örneğin:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table

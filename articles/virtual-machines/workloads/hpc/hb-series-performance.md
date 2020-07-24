@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: e064db5f67e6f8a7e82093bdae9fac7eaa4b6a55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4745fda5417ea937c367a116f999070bd62cf8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79534210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077413"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB Serisi sanal makine boyutları
 
 HB Serisi boyutlarda çeşitli performans testleri çalıştırıldı. Bu performans testinin bazı sonuçları aşağıda verilmiştir.
 
 
-| İş yükü                                        | HB                    |
+| İş Yükü                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | STREAM Triad                                    | ~ 260 GB/sn (CCX başına 32-33 GB/sn)  |
 | Yüksek performanslı linpack (HPL)                  | ~ 1.000 GigaFLOPS (Rtepe), ~ 860 GigaFLOPS (Rmax) |
@@ -119,8 +119,4 @@ OSU MPı bant genişliği sınama v 5.4.3.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'da [yüksek performanslı bilgi işlem](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.
-
-
-
-
+Azure 'da [yüksek performanslı bilgi işlem](/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.

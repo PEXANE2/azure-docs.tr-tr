@@ -4,15 +4,15 @@ description: Azure Kaynak günlüklerinin Azure Izleyici 'de bir Log Analytics �
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 492aae69895d62c784d15cd77405d0c52ec13e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077084"
 ---
 # <a name="azure-resource-logs"></a>Azure Kaynak günlükleri
 Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.
@@ -85,17 +85,15 @@ Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
 
 
 ### <a name="select-the-collection-mode"></a>Koleksiyon modunu seçin
-Azure kaynaklarının çoğu, verileri bir seçim yapmadan **Azure tanılama** veya **kaynağa özgü modda** çalışma alanına yazar. Hangi modun kullandığı hakkında ayrıntılı bilgi edinmek için [her hizmet için belgelere](diagnostic-logs-schema.md) bakın. Tüm Azure Hizmetleri, sonunda kaynağa özgü modu kullanacaktır. Bu geçişin bir parçası olarak, bazı kaynaklar tanılama ayarında bir mod seçmenizi sağlayacak. Tüm yeni tanılama ayarları için kaynağa özgü modu belirtin çünkü bu, verileri yönetmeyi kolaylaştırır ve daha sonraki bir tarihte karmaşık geçişlere karşı kaçınmanıza yardımcı olabilir.
+Azure kaynaklarının çoğu, verileri bir seçim yapmadan **Azure tanılama** veya **kaynağa özgü modda** çalışma alanına yazar. Hangi modun kullandığı hakkında ayrıntılı bilgi edinmek için [her hizmet için belgelere](./resource-logs-schema.md) bakın. Tüm Azure Hizmetleri, sonunda kaynağa özgü modu kullanacaktır. Bu geçişin bir parçası olarak, bazı kaynaklar tanılama ayarında bir mod seçmenizi sağlayacak. Tüm yeni tanılama ayarları için kaynağa özgü modu belirtin çünkü bu, verileri yönetmeyi kolaylaştırır ve daha sonraki bir tarihte karmaşık geçişlere karşı kaçınmanıza yardımcı olabilir.
   
    ![Tanılama ayarları mod seçicisi](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
-
-
-
 > [!NOTE]
-> Şu anda, **Azure tanılama** ve **kaynağa özgü** mod yalnızca Azure Portal tanılama ayarı yapılandırılırken seçilebilir. Ayarı CLı, PowerShell veya REST API kullanarak yapılandırırsanız, varsayılan olarak **Azure tanılama**olur.
+> Bir Resource Manager şablonu kullanarak koleksiyon modunu ayarlama örneği için bkz. [Azure izleyici 'de Tanılama ayarları için Kaynak Yöneticisi şablonu örnekleri](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
-Mevcut bir tanılama ayarını kaynağa özgü mod olarak değiştirebilirsiniz. Bu durumda, zaten toplanmış olan veriler, çalışma alanının saklama ayarına göre kaldırılana kadar _AzureDiagnostics_ tablosunda kalır. Adanmış tabloda yeni veriler toplanacak. Her iki tablo genelinde verileri sorgulamak için [UNION](https://docs.microsoft.com/azure/kusto/query/unionoperator) işlecini kullanın.
+
+Mevcut bir tanılama ayarını kaynağa özgü mod olarak değiştirebilirsiniz. Bu durumda, zaten toplanmış olan veriler, çalışma alanının saklama ayarına göre kaldırılana kadar _AzureDiagnostics_ tablosunda kalır. Adanmış tabloda yeni veriler toplanacak. Her iki tablo genelinde verileri sorgulamak için [UNION](/azure/kusto/query/unionoperator) işlecini kullanın.
 
 Kaynağa özgü modu destekleyen Azure hizmetleri hakkında duyurular için [Azure Updates](https://azure.microsoft.com/updates/) blogunu izlemeye devam edin.
 
@@ -191,7 +189,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 Her PT1H.json blobu, blob URL’sinde belirtilen saat (örneğin, h=12) içinde gerçekleşen bir JSON olay blobu içerir. Mevcut saat boyunca, olaylar meydana geldikçe PT1H.json dosyasına eklenir. Kaynak günlüğü olayları saat başına ayrı blob 'lara bölündüğü için, dakika değeri (e = 00) her zaman 00 ' dır.
 
-Dosyadaki PT1H.jsiçinde, her olay aşağıdaki biçimde depolanır. Bu, ortak bir en üst düzey şemayı kullanır, ancak [kaynak günlükleri şemasında](diagnostic-logs-schema.md)açıklandığı gibi her bir Azure hizmeti için benzersizdir.
+Dosyadaki PT1H.jsiçinde, her olay aşağıdaki biçimde depolanır. Bu, ortak bir en üst düzey şemayı kullanır, ancak [kaynak günlükleri şemasında](./resource-logs-schema.md)açıklandığı gibi her bir Azure hizmeti için benzersizdir.
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}

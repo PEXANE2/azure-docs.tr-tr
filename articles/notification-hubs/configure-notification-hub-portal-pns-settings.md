@@ -11,18 +11,18 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: af792ccfe8e00c26abc6aab2e4a96d7ef9ff5122
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252058"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077984"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Hızlı başlangıç: Bildirim Hub 'ında anında iletme bildirimleri ayarlama
 
 Azure Notification Hubs, kolayca kullanılan ve ölçeklendirilen bir gönderim altyapısı sağlar. Herhangi bir platforma (iOS, Android, Windows, Baidu) ve herhangi bir arka uçtan (bulutta veya şirket içi) bildirim göndermek için Notification Hubs kullanın. Daha fazla bilgi için bkz. [Azure Notification Hubs nedir?](notification-hubs-push-notification-overview.md).
 
-Bu hızlı başlangıçta, birden çok platformda anında iletme bildirimleri ayarlamak için Notification Hubs platform bildirim sistemi (PNS) ayarlarını kullanacaksınız. Hızlı başlangıç, Azure portal alma adımlarını gösterir.  [Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm) , Azure CLI kullanma yönergelerini içerir.
+Bu hızlı başlangıçta, birden çok platformda anında iletme bildirimleri ayarlamak için Notification Hubs platform bildirim sistemi (PNS) ayarlarını kullanacaksınız. Hızlı başlangıç, Azure portal alma adımlarını gösterir.  [Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) , Azure CLI kullanma yönergelerini içerir.
 
 Henüz bir Bildirim Hub 'ı oluşturmadıysanız, şimdi bir tane oluşturun. Daha fazla bilgi için bkz. [Azure Portal Azure Notification Hub 'ı oluşturma](create-notification-hub-portal.md) veya Azure [CLI kullanarak Azure Notification Hub 'ı oluşturma](create-notification-hub-azure-cli.md)
 
@@ -58,7 +58,7 @@ Google FCM için anında iletme bildirimleri ayarlamak için:
 
 1. Azure portal, **Bildirim Hub** 'ı sayfasında, soldaki menüden **Google (GCM/FCM)** öğesini seçin.
 2. Daha önce kaydettiğiniz Google FCM projesi için **API anahtarını** yapıştırın.
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 
    ![Google FCM için Notification Hubs yapılandırmayı gösteren ekran görüntüsü](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
@@ -66,7 +66,7 @@ Bu adımları tamamladığınızda, bir uyarı bildirim hub 'ının başarıyla 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -118,7 +118,7 @@ Windows anında bildirim hizmeti 'ni (WNS) ayarlamak için:
 
 1. Azure portal, **Bildirim Hub** 'ı sayfasında, sol menüden **Windows (WNS)** seçeneğini belirleyin.
 2. **Paket SID 'si** ve **güvenlik anahtarı**için değerler girin.
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 
    ![Paket SID ve güvenlik anahtarı kutularını gösteren ekran görüntüsü](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
@@ -151,7 +151,7 @@ Baidu için anında iletme bildirimleri ayarlamak için:
 1. Azure portal, **Bildirim Hub** 'ı sayfasında sol menüden **Baidu (Android China)** öğesini seçin.
 2. Baidu bulut anında iletme projesindeki Baidu konsolundan edindiğiniz **API anahtarını** girin.
 3. Baidu bulut anında iletme projesindeki Baidu konsolundan edindiğiniz **gizli anahtarı** girin.
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
     ![Anında iletme bildirimleri için Baidu (Android China) yapılandırmasını gösteren Notification Hubs ekran görüntüsü](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 

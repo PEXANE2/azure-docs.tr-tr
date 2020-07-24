@@ -2,19 +2,22 @@
 title: Atılacak mektup ve yeniden deneme ilkeleri-Azure Event Grid
 description: Event Grid için olay teslim seçeneklerini özelleştirmeyi açıklar. Bir atılacak mektup hedefi ayarlayın ve teslimin ne kadar süreyle yeniden deneneceğini belirtin.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 88e782eb7dafc10956120bdae870aa2eb58778a5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/20/2020
+ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074880"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Atılacak mektup ve yeniden deneme ilkeleri
 
 Olay aboneliği oluştururken, olay teslimi ayarlarını özelleştirebilirsiniz. Bu makalede, bir atılacak mektup konumunun nasıl ayarlanacağı ve yeniden deneme ayarlarını nasıl özelleştireceğiniz gösterilmektedir. Bu özellikler hakkında daha fazla bilgi için bkz. [Event Grid ileti teslimi ve yeniden deneme](delivery-and-retry.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> İleti teslimi, yeniden denemeler ve atılacak alma hakkında bilgi edinmek için bkz. kavramsal Makale: [Event Grid ileti teslimi ve yeniden deneme]().
 
 ## <a name="set-dead-letter-location"></a>Atılacak mektup konumunu ayarla
 
@@ -95,7 +98,8 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Hem hem de ayarlarsanız `event-ttl` `max-deliver-attempts` , Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır.
+> [!NOTE]
+> Hem hem de ayarlarsanız `event-ttl` `max-deliver-attempts` , Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır. Örneğin, yaşam süresi (TTL) ve en fazla 10 teslim girişimi olarak 30 dakika ayarlarsanız. 30 dakika sonra bir olay teslim edilmediğinde (veya) 10 denemeden sonra, bu durum ilk olarak gerçekleşirse, olay atılacak olur.  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -123,7 +127,8 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Hem hem de ayarlarsanız `EventTtl` `MaxDeliveryAttempt` , Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır.
+> [!NOTE]
+> Hem hem de ayarlarsanız `event-ttl` `max-deliver-attempts` , Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır. Örneğin, yaşam süresi (TTL) ve en fazla 10 teslim girişimi olarak 30 dakika ayarlarsanız. 30 dakika sonra bir olay teslim edilmediğinde (veya) 10 denemeden sonra, bu durum ilk olarak gerçekleşirse, olay atılacak olur.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

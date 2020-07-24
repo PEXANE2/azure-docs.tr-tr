@@ -1,6 +1,6 @@
 ---
-title: İzleme işlem hattı çalıştırmaları Azure SYNAPSE Studio (Önizleme)
-description: Çalışma alanı işlem hattı çalıştırmalarını izlemek için Azure SYNAPSE Studio 'Yu kullanın.
+title: SYNAPSE Studio kullanarak işlem hattı çalıştırmalarını izleme
+description: Çalışma alanı işlem hattı çalıştırmalarını izlemek için SYNAPSE Studio 'Yu kullanın.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16400d7f292ad5844add3d4a5fc019e84bd27127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 385b06dd7756c3bebf6557f9ea0b518473a37d49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075898"
 ---
-# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmalarını izlemek için Azure SYNAPSE Studio 'Yu kullanma
+# <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmalarını izlemek için SYNAPSE Studio 'Yu kullanma
 
-Azure SYNAPSE Analytics ile çözümünüzdeki veri taşıma, veri dönüştürme ve işlem etkinliklerini otomatikleştirebilen ve düzenleyen karmaşık işlem hatları oluşturabilirsiniz. Azure SYNAPSE Studio (Önizleme) kullanarak bu işlem hatlarını yazabilir ve izleyebilirsiniz.
+Azure SYNAPSE Analytics ile çözümünüzdeki veri taşıma, veri dönüştürme ve işlem etkinliklerini otomatikleştirebilen ve düzenleyen karmaşık işlem hatları oluşturabilirsiniz. Bu işlem hatlarını SYNAPSE Studio (Önizleme) kullanarak yazabilir ve izleyebilirsiniz.
 
 Bu makalede, işlem hatlarınızın en son durumunu, sorunlarını ve ilerlemesini görmenizi sağlayan işlem hattı çalıştırmalarınızın nasıl izleneceği açıklanır.
 
 ## <a name="access-the-list-of-pipeline-runs"></a>İşlem hattı çalıştırmaları listesine erişin
 
-Çalışma alanınızdaki işlem hattı çalıştırmalarının listesini görmek için önce [Azure SYNAPSE Studio 'yu açın](https://web.azuresynapse.net/) ve çalışma alanınızı seçin.
+Çalışma alanınızdaki işlem hattı çalıştırmalarının listesini görmek için önce [SYNAPSE Studio 'yu açın](https://web.azuresynapse.net/) ve çalışma alanınızı seçin.
 
 ![Çalışma alanında oturum aç](./media/common/login-workspace.png)
 

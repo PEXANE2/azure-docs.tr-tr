@@ -9,11 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077550"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalında sanal makine ölçek kümesi oluşturma
 
@@ -40,11 +41,12 @@ Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen tra
     | Kaynak grubu | **Yeni oluştur** ' u seçin ve metin kutusuna *Myvmssresourcegroup* yazın.|
     | Name           | *myLoadBalancer*         |
     | Bölge         | **Doğu ABD**’yi seçin.       |
-    | Tür          | **Ortak**seçeneğini belirleyin.       |
+    | Tür          | **Genel**’i seçin.       |
     | SKU           | **Standart**' ı seçin.       |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
     | Genel IP adresi adı  | *Mypıp*   |
     | Atama| Statik |
+    | Kullanılabilirlik alanı | **Bölge yedekli**seçeneğini belirleyin. |
 
 1. İşiniz bittiğinde **gözden geçir + oluştur** ' u seçin. 
 1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin. 
@@ -54,11 +56,11 @@ Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen tra
 ## <a name="create-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi oluşturma
 RHEL, CentOS, Ubuntu veya SLES gibi bir Linux görüntüsü ya da Windows Server görüntüsü ile ölçek kümesi dağıtabilirsiniz.
 
-1. Arama kutusuna **Ölçek kümesi** yazın. Sonuçlarda, **Market**altında **Sanal Makine Ölçek Kümeleri**' ni seçin. **Sanal makine ölçek kümesi oluşturma** sayfası açılır. 
+1. Arama kutusuna **Ölçek kümesi** yazın. Sonuçlarda, **Market**altında **Sanal Makine Ölçek Kümeleri**' ni seçin. Sanal makine ölçek **kümeleri** Oluştur sayfasında **Oluştur** ' u seçerek **sanal makine ölçek kümesi oluşturma** sayfasını açarsınız. 
 1. **Temel Bilgiler** sekmesinde, **Proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun, ardından **Yeni oluştur** kaynak grubunu seçin. Ad için *Myvmssresourcegroup* yazın ve ardından **Tamam** ' ı seçin. 
 1. Ölçek kümesi için ad olarak *myScaleSet* yazın.
 1. **Bölge**' de, bulunduğunuz alana yakın bir bölge seçin.
-1. **Orchestrator**Için **Ölçek kümesi VM** 'lerinin varsayılan değerini bırakın.
+1. **Ölçek kümesi VM** 'lerinin **düzenleme modu**için varsayılan değerini bırakın.
 1. **Görüntü**için bir market görüntüsü seçin. Bu örnekte, *Ubuntu Server 18,04 LTS*' yi seçtik.
 1. İstediğiniz kullanıcı adını girin ve tercih ettiğiniz kimlik doğrulaması türünü seçin.
    - **Parola** en az 12 karakter uzunluğunda olmalı ve şu dört karmaşıklık gereksiniminden üçünü karşılamalıdır: bir küçük harf karakter, bir büyük harf karakter, bir sayı ve bir özel karakter. Daha fazla bilgi için [kullanıcı adı ve parola gereksinimlerine](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) bakın.

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: d8c97064af6fecf08af4608cfcd9874ff9bb1936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff12f8857a7977226f836ec0418f74fb29e02906
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504791"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075124"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 
@@ -26,14 +26,14 @@ ms.locfileid: "85504791"
 
 Bir Azure Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri dosyalarını karşıya yükleme ve indirme, hesabınızı silme gibi temel işlemleri gerçekleştirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Data Lake Storage 1. hakkında daha fazla bilgi için bkz. [Data Lake Storage 1. genel bakış](data-lake-store-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0 veya üstü**. Bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview).
+* **Azure PowerShell 1.0 veya üstü**. Bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/).
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Bu makalede, Azure hesabı kimlik bilgilerinizi girmeniz istendiğinde Data Lake Storage 1. daha basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake Storage 1. hesaba ve dosya sistemine yönelik erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, son kullanıcı kimlik doğrulaması veya hizmetten hizmete kimlik doğrulama olan Data Lake Storage 1. kimlik doğrulaması için başka yaklaşımlar vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md) bölümlerine göz atın.
 
@@ -107,7 +107,7 @@ Verileri yönetmek ve depolamak için Data Lake Storage 1. hesabınızın altın
 
     ![Dizini Doğrulama](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Dizini Doğrulama")
 
-## <a name="upload-data"></a>Karşıya veri yükleme
+## <a name="upload-data"></a>Verileri karşıya yükleme
 
 Verilerinizi doğrudan kök düzeyinde veya hesap içinde oluşturduğunuz bir dizine Data Lake Storage 1. yükleyebilirsiniz. Bu bölümdeki kod parçacıkları, birtakım örnek verilerin önceki bölümde oluşturduğunuz dizine (**mynewdirectory**) nasıl yükleneceğini göstermektedir.
 

@@ -1,20 +1,20 @@
 ---
-title: Azure Güvenlik kıyaslaması için Data Lake Analytics güvenlik temeli
+title: Data Lake Analytics için Azure Güvenlik temeli
 description: Data Lake Analytics güvenlik temeli, Azure Güvenlik kıyaslaması 'nda belirtilen güvenlik önerilerini uygulamaya yönelik yordamsal kılavuz ve kaynaklar sağlar.
 author: msmbaldwin
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5e6d5beaad5080bf3081d5f68722623fb62d6c8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb93fa266111a0f60a139d7b76a149ba81b486e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075091"
 ---
-# <a name="data-lake-analytics-security-baseline-for-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması için Data Lake Analytics güvenlik temeli
+# <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics için Azure Güvenlik temeli
 
 Data Lake Analytics için Azure Güvenlik temeli, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 

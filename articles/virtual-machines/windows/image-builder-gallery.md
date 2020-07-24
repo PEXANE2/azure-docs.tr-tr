@@ -7,11 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db618d63964c6f271f9a14b91849e704cfd7820
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077507"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Windows görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
 
@@ -23,7 +24,7 @@ Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için şablon, �
 
 Azure görüntü Oluşturucu görüntüyü genelleştirmek için otomatik olarak Sysprep çalıştırır, bu, gerekirse [geçersiz kılabileceğiniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) genel bir Sysprep komutu. 
 
-Özelleştirmelerin kaç kez özelleştirmeler olduğunu unutmayın. Sysprep komutunu tek bir Windows görüntüsünde en fazla 8 kez çalıştırabilirsiniz. Sysprep 8 kez çalıştırıldıktan sonra, Windows görüntünüzü yeniden oluşturmanız gerekir. Daha fazla bilgi için bkz. [Sysprep 'i kaç kez çalıştıracağınızı gösteren sınırlamalar](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
+Özelleştirmelerin kaç kez özelleştirmeler olduğunu unutmayın. Sysprep komutunu tek bir Windows görüntüsünde en fazla 8 kez çalıştırabilirsiniz. Sysprep 8 kez çalıştırıldıktan sonra, Windows görüntünüzü yeniden oluşturmanız gerekir. Daha fazla bilgi için bkz. [Sysprep 'i kaç kez çalıştıracağınızı gösteren sınırlamalar](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
@@ -97,7 +98,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Kullanıcı tarafından atanan bir kimlik oluşturma ve kaynak grubunda izinleri ayarlama
-Image Builder, görüntüyü Azure Paylaşılan görüntü galerisine (SıG) eklemek için belirtilen [Kullanıcı kimliğini](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell) kullanır. Bu örnekte, görüntüyü SıG 'a dağıtmayı gerçekleştirmeye yönelik ayrıntılı eylemlere sahip bir Azure rol tanımı oluşturacaksınız. Rol tanımı daha sonra kullanıcı kimliğine atanır.
+Image Builder, görüntüyü Azure Paylaşılan görüntü galerisine (SıG) eklemek için belirtilen [Kullanıcı kimliğini](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) kullanır. Bu örnekte, görüntüyü SıG 'a dağıtmayı gerçekleştirmeye yönelik ayrıntılı eylemlere sahip bir Azure rol tanımı oluşturacaksınız. Rol tanımı daha sonra kullanıcı kimliğine atanır.
 
 ```powershell
 # setup role def names, these need to be unique
@@ -239,7 +240,7 @@ Görüntünün oluşturulması ve her iki bölgeye çoğaltılmasının biraz za
 Görüntü oluşturma durumunun otomatikleştirilmesine yönelik seçenekler hakkında bilgi için GitHub 'da bu şablonun [Benioku dosyasına](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) bakın.
 
 
-## <a name="create-the-vm"></a>Sanal makine oluşturma
+## <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
 Azure Image Builder tarafından oluşturulan görüntü sürümünden bir VM oluşturun.
 

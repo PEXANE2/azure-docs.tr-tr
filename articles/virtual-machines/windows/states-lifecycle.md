@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: dbe236cc4a407cca78f7f7ab64f3809797c02614
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4c2039db19d9d10150b7529e4f61b6928e4f64e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100609"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077504"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Sanal makinelerin yaşam döngüsü ve durumları
 
@@ -21,4 +21,4 @@ ms.locfileid: "82100609"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM 'nizi izleme hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sanal makineleri izleme](monitor.md).
+VM 'nizi izleme hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sanal makineleri izleme](../../azure-monitor/insights/monitor-vm-azure.md).

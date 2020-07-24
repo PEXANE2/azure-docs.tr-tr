@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/25/2019
-ms.openlocfilehash: 1a5a2682198f9ce9f5cb39f21e244c723ca513d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076801"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Azure Data Factory kullanarak Salesforce pazarlama bulutlarından veri kopyalama
 
@@ -34,7 +34,7 @@ Bu Salesforce Marketing Cloud Connector, aşağıdaki etkinlikler için destekle
 
 Salesforce pazarlama bulutundaki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Salesforce Marketing Cloud Connector, OAuth 2 kimlik doğrulamasını destekler. [Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)üzerine kurulmuştur.
+Salesforce Marketing Cloud Connector, OAuth 2 kimlik doğrulamasını destekler ve hem eski hem de geliştirilmiş paket türlerini destekler. Bağlayıcı [Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)üzerine kurulmuştur.
 
 >[!NOTE]
 >Bu bağlayıcı özel nesneler veya özel veri uzantıları almayı desteklemiyor.
@@ -52,13 +52,17 @@ Aşağıdaki özellikler, Salesforce pazarlama bulutu bağlı hizmeti için dest
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarbulutu** | Yes |
+| connectionProperties | Salesforce pazarlama bulutuna bağlanmayı tanımlayan bir özellik grubu. | Yes |
+| ***Altında `connectionProperties` :*** | | |
+| authenticationType | Kullanılacak kimlik doğrulama yöntemini belirtir. İzin verilen değerler `Enhanced sts OAuth 2.0` veya `OAuth_2.0` .<br><br>Salesforce pazarlama bulutu eski paketi yalnızca `OAuth_2.0` , Gelişmiş paket gereksinimdeyken desteklenir `Enhanced sts OAuth 2.0` . <br>1 Ağustos 2019 ' den itibaren Salesforce pazarlama bulutu eski paketleri oluşturma özelliğini kaldırdı. Tüm yeni paketler gelişmiş paketlerdir. | Yes |
+| konak | Gelişmiş paket için ana bilgisayar, "Mc" harflerinden başlayan bir 28 karakterlik dize tarafından temsil edilen alt [etki alanı](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm) olmalıdır, örneğin `mc563885gzs27c5t9-63k636ttgm` . <br>Eski paket için, belirtin `www.exacttargetapis.com` . | Yes |
 | clientId | Salesforce pazarlama bulut uygulamasıyla ilişkili istemci KIMLIĞI.  | Yes |
-| clientSecret | Salesforce pazarlama bulut uygulamasıyla ilişkili istemci gizli dizisi. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
+| clientSecret | Salesforce pazarlama bulut uygulamasıyla ilişkili istemci gizli dizisi. Bu alanı bir SecureString olarak güvenli bir şekilde depolamak için bir SecureString olarak işaretlemeyi veya gizli dizi Azure Key Vault ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekimine izin vermek için, [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Yes |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
-**Örnek:**
+**Örnek: Gelişmiş STS için genişletilmiş STS OAuth 2 kimlik doğrulamasını kullanma** 
 
 ```json
 {
@@ -66,14 +70,66 @@ Aşağıdaki özellikler, Salesforce pazarlama bulutu bağlı hizmeti için dest
     "properties": {
         "type": "SalesforceMarketingCloud",
         "typeProperties": {
-            "clientId" : "<clientId>",
+            "connectionProperties": {
+                "host": "<subdomain e.g. mc563885gzs27c5t9-63k636ttgm>",
+                "authenticationType": "Enhanced sts OAuth 2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+**Örnek: eski paket için OAuth 2 kimlik doğrulamasını kullanma** 
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "connectionProperties": {
+                "host": "www.exacttargetapis.com",
+                "authenticationType": "OAuth_2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+Aşağıdaki yük ile Salesforce pazarlama bulutu bağlı hizmetini kullanıyorsanız, bu, hala olduğu gibi desteklenirken, Gelişmiş paket desteği ekleyen yeni bir iletme işlemi kullanmanız önerilir.
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "clientId": "<clientId>",
             "clientSecret": {
                  "type": "SecureString",
                  "value": "<clientSecret>"
             },
-            "useEncryptedEndpoints" : true,
-            "useHostVerification" : true,
-            "usePeerVerification" : true
+            "useEncryptedEndpoints": true,
+            "useHostVerification": true,
+            "usePeerVerification": true
         }
     }
 }
@@ -121,7 +177,7 @@ Salesforce pazarlama bulutundaki verileri kopyalamak için kopyalama etkinliğin
 | tür | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarlamakaynağı** | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

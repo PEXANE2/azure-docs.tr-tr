@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: bd74caf391fcf1538bf920f41638b23672b47015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077824"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracı 'nı ayarlama
+# <a name="setting-up-the-azure-importexport-tool-v1"></a>Azure Içeri/dışarı aktarma aracı v1 ayarlanıyor
 Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışarı Aktarma hizmeti ile kullanabileceğiniz sürücü hazırlama ve onarma aracıdır. Aracı aşağıdaki işlevler için kullanabilirsiniz:  
 
 -   Bir içeri aktarma işi oluşturmadan önce, verileri bir Windows Azure veri merkezine alacağınız sabit sürücülere kopyalamak için bu aracı kullanabilirsiniz.  
@@ -24,7 +24,7 @@ Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışa
 
 -   Tamamlanmış bir dışarı aktarma işinden sürücüleri aldıktan sonra, sürücülerde bozuk veya eksik olan dosyaları onarmak için bu aracı kullanabilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar  
+## <a name="prerequisites"></a>Önkoşullar  
 Sürücüleri bir içeri aktarma işi için hazırlıyorsanız, aşağıdaki önkoşulları karşılamanız gerekir:  
 
 -   Etkin bir Azure aboneliğiniz olmalıdır.  

@@ -4,18 +4,18 @@ description: Akıllı sözleşme işlevlerini tetiklemek ve akıllı sözleşme 
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200741"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077039"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın
 
-Akıllı sözleşme eylemleri gerçekleştirmek ve akıllı sözleşme olaylarına yanıt vermek için [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) Ile [Ethereum blok zinciri bağlayıcısını](https://docs.microsoft.com/connectors/blockchainethereum/) kullanın. Örneğin, bir blok zinciri muhasebenden bilgi döndüren bir REST tabanlı mikro hizmet oluşturmak istediğinizi varsayalım. Bir mantıksal uygulama kullanarak, blok zinciri defterinde depolanan bilgileri sorgulayan HTTP isteklerini kabul edebilirsiniz.
+Akıllı sözleşme eylemleri gerçekleştirmek ve akıllı sözleşme olaylarına yanıt vermek için [Azure Logic Apps](../../logic-apps/index.yml) Ile [Ethereum blok zinciri bağlayıcısını](/connectors/blockchainethereum/) kullanın. Örneğin, bir blok zinciri muhasebenden bilgi döndüren bir REST tabanlı mikro hizmet oluşturmak istediğinizi varsayalım. Bir mantıksal uygulama kullanarak, blok zinciri defterinde depolanan bilgileri sorgulayan HTTP isteklerini kabul edebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İsteğe bağlı önkoşul hızlı başlangıcını doldurun [: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Hızlı başlangıç, [Ethereum Için Azure blok zinciri geliştirme seti 'ni](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) yükleyip blok zinciri geliştirme ortamınızı ayarlamayı gösterir.
 

@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4873c1c998f62b6180df73a04852704665a4125d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831429"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075828"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notları
 
@@ -28,7 +28,6 @@ Bu makalede, Azure SYNAPSE 'de [SYNAPSE SQL](sql-data-warehouse-overview-what-is
 Yeni özellikler tüm bölgelere alındığı için, örneğinize dağıtılan sürümü ve özellik kullanılabilirliği için en son sürüm notlarını kontrol edin. Sürümü denetlemek için SQL Server Management Studio (SSMS) aracılığıyla SQL havuzunuza bağlanın ve `SELECT @@VERSION;` geçerli sürümü döndürmek için komutunu çalıştırın. SQL havuzunuza hangi sürümün uygulandığını onaylamak için bu sürümü kullanın. Çıkışdaki Tarih, SQL havuzunuza uygulanan yayın için ayı belirler. Bu yalnızca hizmet düzeyi iyileştirmeleri için geçerlidir. 
 
 Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü olduğundan emin olun. 
-
 
 > [!NOTE]
 > SELECT @ tarafından döndürülen ürün adı, @VERSION Microsoft Azure SQL Veri Ambarı Microsoft Azure SYNAPSE Analytics 'e göre değişir. Değişiklik yapılmadan önce gelişmiş bildirim göndereceğiz. Bu değişiklik, uygulama kodundaki @ öğesini seçme sonucundan ürün adını ayrıştırlayan müşteriler için uygundur @VERSION . Ürün remarkalaması nedeniyle uygulama kodu değişikliklerinden kaçınmak için lütfen şu komutları kullanarak veritabanı ürün adı ve sürümü için SERVERPROPERTY 'yi sorgulayın: XX sürüm numarasını döndürecek şekilde. X. XXXXX. X (ürün adı olmadan) şu komutu kullanın:
@@ -42,11 +41,13 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 > ```
 
 ## <a name="july-2020"></a>Temmuz 2020
+
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
 |**Sütun düzeyinde şifreleme (Genel Önizleme)**|Transact-SQL kullanarak bir veri sütununa simetrik şifreleme uygulayarak SYNAPSE SQL veri ambarınızdaki hassas bilgileri koruyun. Sütun düzeyinde şifreleme, bir sertifika, parola, simetrik anahtar veya asimetrik anahtarla daha fazla korunan simetrik anahtarlar kullanarak verileri şifrelemek için kullanabileceğiniz yerleşik işlevlere sahiptir. Daha fazla bilgi için lütfen [bir veri sütununu şifreleyin](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)' ı ziyaret edin.|
 |**Uyumluluk düzeyi desteği (GA)**|Bu sürümde, kullanıcılar artık bir veritabanının uyumluluk düzeyini, SYNAPSE SQL altyapısının belirli bir sürümünün Transact-SQL dilini ve sorgu işleme davranışlarını almak için ayarlayabilir. Daha fazla bilgi için bkz. [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [alter database kapsamlıdır Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Satır düzeyi güvenlik**|Bu sürüm, üzerinde RLS 'yi zorlanacak satırlarda güncelleştirme ve silme işlemlerine yönelik bir geliştirme içerir. Bu sürümde, iç işlevlerle ' is_rolemember ' gibi iç işlevler ile güncelleştirme ve silme işlemleri, iç işlem DML hedef tablosundaki herhangi bir sütuna başvurmadığında başarılı olur. Bu iyileştirmadan önce, bu işlemler temeldeki DML işlemlerinde sınırlama nedeniyle başarısız oldu.|
+|**DBCC SHRıNKDATABASE (GA)**|Artık belirtilen veritabanındaki verilerin ve günlük dosyalarının boyutunu küçültebilirsiniz. Daha fazla bilgi için [belgelerine](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)bakın.|
 
 ## <a name="may-2020"></a>Mayıs 2020
 

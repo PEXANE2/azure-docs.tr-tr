@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82983049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077403"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server üzerinde Azure VM’lerindeki IBM Db2 LUW’a yönelik yüksek kullanılabilirlik
 
@@ -66,7 +67,7 @@ Yüklemeye başlamadan önce, aşağıdaki SAP notları ve belgelerine bakın:
 
 
 ## <a name="overview"></a>Genel Bakış
-Yüksek kullanılabilirlik elde etmek için, HADR ile IBM DB2 LUW, [Azure kullanılabilirlik kümesine](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) veya [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)göre dağıtılan en az iki Azure sanal makinesine yüklenir. 
+Yüksek kullanılabilirlik elde etmek için, HADR ile IBM DB2 LUW, [Azure kullanılabilirlik kümesine](../../windows/tutorial-availability-sets.md) veya [Azure kullanılabilirlik alanları](./sap-ha-availability-zones.md)göre dağıtılan en az iki Azure sanal makinesine yüklenir. 
 
 Aşağıdaki grafiklerde iki veritabanı sunucusu Azure VM kurulumu görüntülenir. Veritabanı sunucusu Azure VM 'lerinin her ikisi de kendi depolamasına sahiptir ve çalışır. HADR 'de, Azure VM 'lerinden birindeki bir veritabanı örneği, birincil örnek rolüne sahiptir. Tüm istemciler birincil örneğe bağlanır. Veritabanı işlemlerinde yapılan tüm değişiklikler, DB2 işlem günlüğünde yerel olarak kalıcı hale getirilir. İşlem günlüğü kayıtları yerel olarak kalıcı olduğundan, kayıtlar TCP/IP aracılığıyla ikinci veritabanı sunucusundaki veritabanı örneğine, bekleme sunucusuna veya bekleme örneğine aktarılır. Bekleme örneği, aktarılan işlem günlüğü kayıtlarını ileri alarak yerel veritabanını güncelleştirir. Bu şekilde, bekleme sunucusu birincil sunucuyla eşitlenmiş olarak tutulur.
 
@@ -105,7 +106,7 @@ Bir IBM DB2 yapılandırması dağıtmak için aşağıdaki adımları izlemeniz
 
 Dağıtımı yürütmeden önce planlama işlemini doldurun. Planlama, Azure 'da HADR ile bir DB2 yapılandırmasına dağıtım temelini oluşturur. IDB db2 LUW planlamasının parçası olması gereken anahtar öğeleri (SAP ortamının veritabanı bölümü) aşağıdaki tabloda listelenmiştir:
 
-| Konu başlığı | Kısa açıklama |
+| Konu | Kısa açıklama |
 | --- | --- |
 | Azure kaynak gruplarını tanımlama | VM, VNet, Azure Load Balancer ve diğer kaynakları dağıttığınız kaynak grupları. Mevcut veya yeni olabilir. |
 | Sanal ağ/alt ağ tanımı | IBM DB2 ve Azure Load Balancer VM 'lerinin dağıtıldığı yer. Var olan veya yeni oluşturulmuş olabilir. |
@@ -397,10 +398,10 @@ Daemon durumu: Corosync: etkin/devre dışı pacemaker: etkin/devre dışı pcsd
 
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer'ı yapılandırma
-Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) 'sunu kullanmanızı ve ardından şunları yapmanızı öneririz.
+Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](../../../load-balancer/load-balancer-overview.md) 'sunu kullanmanızı ve ardından şunları yapmanızı öneririz.
 
 > [!NOTE]
-> Standart Load Balancer SKU 'SU, Load Balancer altındaki düğümlerden ortak IP adreslerine erişen kısıtlamalara sahiptir. [SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta bağlantısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) makalesi, bu DÜĞÜMLERIN genel IP adreslerine erişmesini sağlama yollarını açıklayarak
+> Standart Load Balancer SKU 'SU, Load Balancer altındaki düğümlerden ortak IP adreslerine erişen kısıtlamalara sahiptir. [SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta bağlantısı](./high-availability-guide-standard-load-balancer-outbound-connections.md) makalesi, bu DÜĞÜMLERIN genel IP adreslerine erişmesini sağlama yollarını açıklayarak
 
 
 
@@ -494,7 +495,7 @@ JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma arac�
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 1. Değişikliklerinizi kaydetmek için sol üst köşedeki disk simgesini seçin.
 1. Yapılandırma aracını kapatın.
 1. Java örneğini yeniden başlatın.
@@ -510,7 +511,7 @@ Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımları
 
 - [SAP NetWeaver için Red Hat Enterprise Linux üzerinde Azure Sanal Makineler'de GlusterFS][glusterfs] 
 - [SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik][anf-rhel]
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) (NFS paylaşımları oluşturmak için)
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) (NFS paylaşımları oluşturmak için)
 
 ## <a name="test-the-cluster-setup"></a>Küme kurulumunu test etme
 
@@ -815,7 +816,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb02</code></pre>
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+- [SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar](./sap-high-availability-architecture-scenarios.md)
 - [Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama][rhel-pcs-azr]
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533

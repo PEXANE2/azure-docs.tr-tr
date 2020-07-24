@@ -16,11 +16,12 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bad65dbecd6e4a7d9bcb7fbdee6faafc31ead86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657592"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078023"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Azure Notification Hubs 'da bırakılan bildirimleri tanılama
 
@@ -103,7 +104,7 @@ Her toplu işlem anında iletme bildirimi hizmetine gönderilir ve bu da kayıtl
 
 Bu durumda, hatalı kayıt veritabanından kaldırılır. Daha sonra, bu toplu işteki cihazların geri kalanı için bildirim teslimi yeniden deneniyoruz.
 
-Bir kayıtla ilgili başarısız teslimat girişimi hakkında daha fazla bilgi almak için, Ileti telemetri başına Notification Hubs REST API 'Leri kullanabilirsiniz [: bildirim iletisi telemetrisi](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) ve [PNS geri bildirimleri](https://msdn.microsoft.com/library/azure/mt705560.aspx)alın. Örnek kod için [rest gönder örneğine](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)bakın.
+Bir kayıtla ilgili başarısız teslimat girişimi hakkında daha fazla bilgi almak için, Ileti telemetri başına Notification Hubs REST API 'Leri kullanabilirsiniz [: bildirim iletisi telemetrisi](/rest/api/notificationhubs/get-notification-message-telemetry) ve [PNS geri bildirimleri](/previous-versions/azure/reference/mt705560(v=azure.100))alın. Örnek kod için [rest gönder örneğine](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)bakın.
 
 ## <a name="push-notification-service-issues"></a>Anında iletme bildirimi hizmeti sorunları
 
@@ -125,9 +126,9 @@ Notification Hubs ' de bırakılan bildirimlerin kök nedenini tanılamaya yöne
 
 #### <a name="push-notification-service-developer-portal"></a>Anında iletme bildirimi hizmeti geliştirici portalı
 
-İlgili anında iletme bildirimi hizmeti Geliştirici portalındaki (APNs, FCM, Windows Notification hizmeti vb.) kimlik bilgilerini doğrulayın. Daha fazla bilgi için bkz. [öğretici: Azure Notification Hubs kullanarak Evrensel Windows platformu uygulamalara bildirim gönderme](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+İlgili anında iletme bildirimi hizmeti Geliştirici portalındaki (APNs, FCM, Windows Notification hizmeti vb.) kimlik bilgilerini doğrulayın. Daha fazla bilgi için bkz. [öğretici: Azure Notification Hubs kullanarak Evrensel Windows platformu uygulamalara bildirim gönderme](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Anında iletme bildirimi hizmeti Geliştirici portalından edindiğiniz kimlik bilgilerini gözden geçirmek ve eşleştirmek için Azure portal **erişim ilkeleri** sekmesine gidin.
 
@@ -162,7 +163,7 @@ Sınama **gönderme** sayfasını, test bildirim iletisi göndermek için kullan
 ![Visual Studio: test gönderme](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
-> Kayıtları yalnızca geliştirme/test sırasında ve sınırlı sayıda kayıt ile düzenlemek için Visual Studio 'Yu kullanın. Kayıtlarınızı toplu olarak düzenlemeniz gerekiyorsa, [nasıl yapılır: kayıtları toplu olarak dışarı ve değiştirme](https://msdn.microsoft.com/library/dn790624.aspx)bölümünde açıklanan dışarı aktarma ve içeri aktarma kaydetme işlevlerini kullanmayı düşünün.
+> Kayıtları yalnızca geliştirme/test sırasında ve sınırlı sayıda kayıt ile düzenlemek için Visual Studio 'Yu kullanın. Kayıtlarınızı toplu olarak düzenlemeniz gerekiyorsa, [nasıl yapılır: kayıtları toplu olarak dışarı ve değiştirme](/previous-versions/azure/azure-services/dn790624(v=azure.100))bölümünde açıklanan dışarı aktarma ve içeri aktarma kaydetme işlevlerini kullanmayı düşünün.
 
 #### <a name="service-bus-explorer"></a>Service Bus Explorer
 
@@ -170,7 +171,7 @@ Birçok müşteri, Bildirim Hub 'larını görüntülemek ve yönetmek için [Se
 
 ### <a name="verify-message-notifications"></a>İleti bildirimlerini doğrulama
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Bir hizmet arka ucu ve çalışır duruma girmeden istemcilerinize test bildirimi göndermek için, **destek + sorun giderme**altında, **Test gönder**' i seçin.
 
@@ -184,7 +185,7 @@ Ayrıca, Visual Studio 'dan test bildirimleri de gönderebilirsiniz.
 
 Visual Studio Sunucu Gezgini ile Notification Hubs kullanma hakkında daha fazla bilgi için şu makalelere bakın:
 
-* [Bildirim Hub 'ları için cihaz kayıtlarını görüntüleme](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [Bildirim Hub 'ları için cihaz kayıtlarını görüntüleme](/previous-versions/windows/apps/dn792122(v=win.10))
 * [Derin bakış: Visual Studio 2013 güncelleştirme 2 RC ve Azure SDK 2,3]
 * [Visual Studio 2013 güncelleştirme 3 ve Azure SDK 2,4 sürümü duyurusu]
 
@@ -247,7 +248,7 @@ Bu ileti Notification Hubs ' de yapılandırılan kimlik bilgilerinin geçersiz 
 
 ### <a name="review-telemetry"></a>Telemetriyi İnceleme
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Portalda, Bildirim Hub 'ınızdaki tüm etkinliklere hızlı bir genel bakış edinebilirsiniz.
 
@@ -265,7 +266,7 @@ Portalda, Bildirim Hub 'ınızdaki tüm etkinliklere hızlı bir genel bakış e
 
 #### <a name="programmatic-access"></a>Programlı erişim
 
-Programlı erişim hakkında daha fazla bilgi için bkz. [programlı erişim](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Programlı erişim hakkında daha fazla bilgi için bkz. [programlı erişim](/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
 > Kayıt ve telemetri erişimini API 'Ler aracılığıyla dışarı aktarma ve içeri aktarma gibi telemetri ile ilgili birçok özellik yalnızca standart hizmet katmanında kullanılabilir. Bu özellikleri ücretsiz veya temel hizmet katmanından kullanmaya çalışırsanız, SDK kullanıyorsanız bir özel durum iletisi alırsınız. Doğrudan REST API 'Lerinden özellikleri kullanırsanız, HTTP 403 (yasak) hatası alırsınız.
@@ -287,13 +288,13 @@ Programlı erişim hakkında daha fazla bilgi için bkz. [programlı erişim](ht
 <!-- LINKS -->
 [Notification Hubs genel bakış]: notification-hubs-push-notification-overview.md
 [Azure Notification Hubs kullanmaya başlama]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Şablonlar]: https://msdn.microsoft.com/library/dn530748.aspx
+[Şablonlar]: /previous-versions/azure/azure-services/dn530748(v=azure.100)
 [APNs genel bakış]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [FCM iletileri hakkında]: https://firebase.google.com/docs/cloud-messaging/concept-options
-[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: /previous-versions/azure/azure-services/dn790624(v=azure.100)
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [Derin bakış: Visual Studio 2013 güncelleştirme 2 RC ve Azure SDK 2,3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [Visual Studio 2013 güncelleştirme 3 ve Azure SDK 2,4 sürümü duyurusu]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
-[EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)

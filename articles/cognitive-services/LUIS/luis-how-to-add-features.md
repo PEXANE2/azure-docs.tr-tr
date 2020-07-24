@@ -1,5 +1,5 @@
 ---
-title: Özellikler-LUSıS
+title: LUSıS sözcük listesini geliştirmek için özellikleri kullanma
 titleSuffix: Azure Cognitive Services
 description: Bu kategorilerin ve desenlerin ve varlıklarının kullanımını ve tahminini iyileştirebilecek uygulama özellikleri eklemek için Language Understanding (LUO) kullanın
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 7d9f1e520ab5c96b9c5288383324b165a4cd74f0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344450"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075199"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için özellikleri kullanın
 
@@ -43,7 +43,7 @@ Bir özelliğin ne zaman ve neden kullanılacağını anlamak için [kavramları
 
 1. Tümcecik listesi, **genel** ayarı olan tüm uygulamaya veya belirli bir modele (amaç veya varlık) uygulanabilir. Tümcecik listesini bir amaç veya varlıktan bir _özellik_ olarak oluşturursanız, geçiş işlemi genel için ayarlanmadı. Bu durumda, iki durumlu özelliğin anlamı, uygulamanın _genel değil_ , bu modelde yalnızca yerel olduğu bir modeldir.
 
-1. **Done** (Bitti) öğesini seçin. Yeni özellik **ml özellikleri** sayfasına eklenir.
+1. **Bitti**'yi seçin. Yeni özellik **ml özellikleri** sayfasına eklenir.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

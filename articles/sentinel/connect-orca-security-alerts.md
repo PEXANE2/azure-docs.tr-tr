@@ -1,5 +1,5 @@
 ---
-title: Orca uyarılarını Azure Sentinel 'e bağlama | Microsoft Docs
+title: Orca güvenlik uyarılarını Azure Sentinel 'e bağlama | Microsoft Docs
 description: Orca güvenlik uyarısı verilerini Azure Sentinel 'e bağlamayı, panoları görüntülemeyi, özel uyarılar oluşturmayı ve araştırmayı geliştirmeyi öğrenin.
 services: sentinel
 documentationcenter: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f2f67281079142f0c4fe4985738dc48332a107d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 735f4b447d7258a9b444f3b75a6537dec20b1307
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076281"
 ---
-# <a name="connect-your-orca-alerts-to-azure-sentinel"></a>Orca uyarılarınızı Azure Sentinel 'e bağlama 
+# <a name="connect-your-orca-security-alerts-to-azure-sentinel"></a>Orca güvenlik uyarılarınızı Azure Sentinel 'e bağlama 
+
+> [!IMPORTANT]
+> Azure Sentinel 'deki Orca güvenlik uyarıları Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Orca güvenlik uyarıları Bağlayıcısı, [Orca uyarılarınızı](https://orca.security/) güvenlik çözüm uyarılarınızı Azure Sentinel 'e kolayca getirmenize olanak tanır, böylece bunları çalışma kitaplarında görüntüleyebilir, özel uyarılar oluşturmak için kullanabilir ve araştırmayı geliştirebilirsiniz. Orca güvenlik uyarıları ve Azure Sentinel arasında tümleştirme, REST API kullanımını sağlar.
 

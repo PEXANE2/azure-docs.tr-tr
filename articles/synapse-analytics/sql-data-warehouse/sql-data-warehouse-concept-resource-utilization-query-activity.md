@@ -11,11 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077688"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak kullanımını ve sorgu etkinliğini izleme
 
@@ -41,9 +42,6 @@ Aşağıdaki ölçümler, SYNAPSE SQL için Azure portal kullanılabilir. Bu öl
 | İsabetli önbellek okuması yüzdesi    | (önbellek isabet sayısı/önbellek isabetsizliği) * 100, önbellek isabetlerinin yerel SSD önbelleğindeki tüm columnstore segmentlerinin toplamı olduğu ve önbellek isabetsizlik, tüm düğümlerde toplanan yerel SSD önbelleğinde bulunan columnstore kesimlerinin isabetsizliği | Ortalama, en düşük, en fazla    |
 | Önbellek kullanılan yüzde   | (kullanılan önbellek/önbellek kapasitesi) * 100, kullanılan önbellek tüm düğümlerde yerel SSD önbelleğindeki tüm baytların toplamı ve önbellek kapasitesi tüm düğümlerde yerel SSD önbelleğinin depolama kapasitesinin toplamıdır | Ortalama, en düşük, en fazla    |
 | Yerel tempdb yüzdesi | Tüm işlem düğümlerinde yerel tempdb kullanımı-değerler her beş dakikada bir dağıtılır | Ortalama, en düşük, en fazla    |
-| Veri depolama boyutu (GB) | Veritabanının toplam boyutu. Bu, kullanılan, ayrılmış ve ayrılmamış alanı içerir. Sorgu ve yükleme performansını iyileştirmek için veritabanının ayrılmamış alanı tutulur. | Toplam |
-| Olağanüstü durum kurtarma boyutu (GB) | Her 24 saatte bir alınan coğrafi yedeklemenin toplam boyutu | Toplam |
-| Anlık görüntü depolama boyutu (GB) | Veritabanı geri yükleme noktaları sağlamak için alınan anlık görüntülerin toplam boyutu. Buna otomatik ve Kullanıcı tanımlı anlık görüntüler dahildir. | Toplam |
 
 Ölçümleri görüntülerken ve uyarıları ayarlarken dikkate alınması gereken noktalar:
 

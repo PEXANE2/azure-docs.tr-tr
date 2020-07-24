@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Connect ve Query SYNAPSE SQL'
+title: SQL Server Management Studio (SSMS) ile SYNAPSE SQL 'e bağlanma
 description: Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgulamak için SQL Server Management Studio (SSMS) kullanın.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 72006879c7181a8cefe56248215099eeb784d816
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658186"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077725"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "83658186"
 > [!NOTE]
 > AAD oturumunun sorgu yürütme sırasında 1 saatten uzun süre açık bağlantısı varsa, AAD 'yi kullanan herhangi bir sorgu başarısız olur. Bu, AAD ile etkileşime geçen AAD geçişli geçiş ve deyimlerini kullanarak depolamayı sorgulamayı içerir (dış sağlayıcı oluşturma gibi). Bu, SSMS ve REKLAMLARı 'nda sorgu Düzenleyicisi gibi bağlantı açık tutan tüm araçları etkiler. Sorgu yürütmek için yeni bağlantı açan araçlar SYNAPSE Studio gibi etkilenmez.
 > Bu sorunu gidermek için SSMS 'yi yeniden başlatabilir veya reklamlar ' a bağlanıp bağlantıyı kesebilirsiniz. .
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki önkoşullara sahip olduğunuzdan emin olun:  
 
@@ -89,7 +89,7 @@ SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin:
 Bir veritabanı bağlantısı kuruldığına göre, verileri sorgulayabilirsiniz.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
-2. **Yeni Sorgu**'yu seçin. Yeni bir sorgu penceresi açılır.
+2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
    
     ![Yeni sorgu](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
 3. Bu T-SQL sorgusunu sorgu penceresine kopyalayın:
@@ -109,7 +109,7 @@ Bir veritabanı bağlantısı kuruldığına göre, verileri sorgulayabilirsiniz
 Bir veritabanı bağlantısı kurdığınıza göre, verileri sorgulayabilirsiniz.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
-2. **Yeni Sorgu**'yu seçin. Yeni bir sorgu penceresi açılır.
+2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
    
     ![Yeni sorgu](./media/get-started-ssms/new-query.png)
 3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:
