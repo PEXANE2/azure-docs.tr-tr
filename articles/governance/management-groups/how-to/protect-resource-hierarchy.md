@@ -3,15 +3,16 @@ title: Kaynak hiyerarşinizi koruma-Azure Idare
 description: Kaynak hiyerarşinizi, varsayılan yönetim grubunu ayarlamayı içeren hiyerarşi ayarlarıyla nasıl koruyacağınızı öğrenin.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60c184d176ae62c1af525db656c56a83422cb94a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837419"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128005"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Kaynak hiyerarşinizi koruma
 
-Kaynaklarınız, kaynak gruplarınız, abonelikleriniz, yönetim gruplarınız ve kiracınız, kaynak hiyerarşinizi topluca yapar. Özel RBAC rolleri veya Azure Ilke ilkesi atamaları gibi kök yönetim grubundaki ayarlar, kaynak hiyerarşinizdeki her kaynağı etkileyebilir. Kaynak hiyerarşisinin tüm kaynakları olumsuz yönde etkileyebilecek değişikliklerden korunması önemlidir.
+Kaynaklarınız, kaynak gruplarınız, abonelikleriniz, yönetim gruplarınız ve kiracınız, kaynak hiyerarşinizi topluca yapar. Azure özel rolleri veya Azure Ilke ilkesi atamaları gibi kök yönetim grubundaki ayarlar, kaynak hiyerarşinizdeki her kaynağı etkileyebilir. Kaynak hiyerarşisinin tüm kaynakları olumsuz yönde etkileyebilecek değişikliklerden korunması önemlidir.
 
 Yönetim gruplarında artık, kiracı yöneticisinin bu davranışları denetlemesini sağlayan hiyerarşi ayarları vardır. Bu makale, kullanılabilir hiyerarşi ayarlarının her birini ve bunların nasıl ayarlanacağını ele alır.
 

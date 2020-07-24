@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9b2de4f320801b20de5bcc9687a723dadb182ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db65ba904cdce7bec83b851c6b50316c89fcedfd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807719"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128735"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Blob veya kuyruk verilerine erişmek için Azure portal kullanma
 
@@ -25,7 +25,7 @@ Ayrıca, Azure portal tek bir blob karşıya yükleme işleminin nasıl yetkilen
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>Blob veya kuyruk verilerine erişmek için gereken izinler
 
-Azure portal blob veya kuyruk verilerine erişimi nasıl yetkilendirmek istediğinize bağlı olarak, belirli izinlere ihtiyacınız olacaktır. Çoğu durumda, bu izinler rol tabanlı erişim denetimi (RBAC) yoluyla sağlanır. RBAC hakkında daha fazla bilgi için bkz. [rol tabanlı erişim denetimi (RBAC) nedir?](../../role-based-access-control/overview.md).
+Azure portal blob veya kuyruk verilerine erişimi nasıl yetkilendirmek istediğinize bağlı olarak, belirli izinlere ihtiyacınız olacaktır. Çoğu durumda, bu izinler rol tabanlı erişim denetimi (RBAC) yoluyla sağlanır. RBAC hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
 
 ### <a name="use-the-account-access-key"></a>Hesap erişim anahtarını kullan
 
@@ -57,7 +57,7 @@ Blob veya kuyruk verilerinize erişimi destekleyen yerleşik roller şunlardır:
 - [Depolama kuyruğu verileri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): kuyruklar için okuma/yazma/silme izinleri.
 - [Depolama kuyruğu veri okuyucusu](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): kuyruklar için salt okuma izinleri.
 
-Özel roller, yerleşik roller tarafından belirtilen izinlerin farklı birleşimlerini destekleyebilir. Özel RBAC rolleri oluşturma hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../../role-based-access-control/custom-roles.md) ve [Azure kaynakları Için rol tanımlarını anlama](../../role-based-access-control/role-definitions.md).
+Özel roller, yerleşik roller tarafından belirtilen izinlerin farklı birleşimlerini destekleyebilir. Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. Azure [özel rolleri](../../role-based-access-control/custom-roles.md) ve [Azure kaynakları Için rol tanımlarını anlama](../../role-based-access-control/role-definitions.md).
 
 Klasik abonelik Yöneticisi rolüne sahip sıraların listelenmesi desteklenmez. Kuyrukları listelemek için, bir kullanıcının bunlara Azure Resource Manager **okuyucu** rolüne, **depolama kuyruğu veri okuyucusu** rolüne veya **depolama kuyruğu verileri katılımcısı** rolüne atanmış olması gerekir.
 
@@ -107,7 +107,7 @@ Azure portal bir blob yüklediğinizde, hesap erişim anahtarı veya Azure AD ki
 Blob yükleme işleminin nasıl yetkilendirileyeceğinizi belirtmek için şu adımları izleyin:
 
 1. Azure portal, blobu yüklemek istediğiniz kapsayıcıya gidin.
-1. Ardından **Yükle** düğmesini seçin.
+1. **Karşıya Yükle** düğmesini seçin.
 1. Blob 'un gelişmiş özelliklerini göstermek için **Gelişmiş** bölümünü genişletin.
 1. **Kimlik doğrulama türü** alanında, aşağıdaki görüntüde gösterildiği gibi, Azure AD hesabınızı kullanarak veya hesap erişim anahtarıyla karşıya yükleme işlemini yetkilendirmek isteyip istemediğinizi belirtin:
 

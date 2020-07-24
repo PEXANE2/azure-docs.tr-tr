@@ -3,11 +3,12 @@ title: Service Bus ile Azure kaynakları için Yönetilen kimlikler
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve abonelikler) erişmek için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 62c00c92ddd8265b1174cc195bfa83d533ec20d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f803b66323004ac3bf71075cda1a4f2e47bbd4e7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341405"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128871"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
@@ -59,7 +60,7 @@ Aşağıdaki listede, en dar kapsamdan başlayarak Service Bus kaynaklarına eri
 > [!NOTE]
 > RBAC rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 
 
-Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. [rol tanımlarını anlama](../role-based-access-control/role-definitions.md#management-and-data-operations). Özel RBAC rolleri oluşturma hakkında daha fazla bilgi için bkz. [Azure rol tabanlı Access Control için özel roller oluşturma](../role-based-access-control/custom-roles.md).
+Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. [rol tanımlarını anlama](../role-based-access-control/role-definitions.md#management-and-data-operations). Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. [Azure özel roller](../role-based-access-control/custom-roles.md).
 
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 'de yönetilen kimlikleri etkinleştirme
 VM 'nizden Service Bus kaynaklarını yetkilendirmek üzere Azure kaynakları için Yönetilen kimlikler kullanabilmeniz için önce VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure kaynakları için yönetilen kimliklerin nasıl etkinleştireceğinizi öğrenmek için şu makalelerden birine bakın:

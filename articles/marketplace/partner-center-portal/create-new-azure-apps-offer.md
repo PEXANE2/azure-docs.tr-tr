@@ -3,14 +3,16 @@ title: Azure Uygulama teklifi oluşturma-Microsoft ticari Market
 description: Iş Ortağı Merkezi 'nde ticari Market portalında yeni bir Azure uygulaması teklifi oluşturmaya yönelik adımları ve konuları öğrenin. Azure uygulama teklifinizi Azure Market 'te veya bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleyebilir veya satın alabilirsiniz.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: qianw211
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121988"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127443"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -65,7 +67,7 @@ Ticari Market için Azure uygulama teklifinizi hazırlarken aşağıdaki kaynakl
 
 Azure uygulamanızın yönetilmesine yardımcı olmak için aşağıdaki komut dosyası ortamlarının birini veya her ikisini birden seçin:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 Geliştirme ortamınıza aşağıdaki araçları eklemeniz önerilir:
@@ -186,7 +188,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
 7. Özet
-8. Description
+8. Açıklama
 9. Ekran görüntüleri/videolar
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
@@ -212,7 +214,7 @@ Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıkla
 
 Teklifinizin en fazla 256 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -308,7 +310,7 @@ Teknik yapılandırma, [Market ölçüm hizmeti API 'lerini](./marketplace-meter
 
 ## <a name="plan-overview"></a>Plana genel bakış
 
-Bu sekme, aynı teklif içinde farklı plan seçenekleri sağlamanıza olanak sağlar. Bu planlar (Bulut İş Ortağı Portalı SKU 'Lar olarak adlandırılır), plan türü (çözüm şablonu ve yönetilen uygulama), paraya getirme veya hedef kitle bakımından farklı olabilir.  Teklifinizi Market 'te listelemek için en az bir plan yapılandırın.
+Bu sekme, aynı teklif içinde farklı plan seçenekleri sağlamanıza olanak sağlar. Bu planlar (eski adıyla SKU 'Lar), plan türü (çözüm şablonu ve yönetilen uygulama), paraya getirme veya hedef kitle bakımından farklı olabilir. Teklifinizi Market 'te listelemek için en az bir plan yapılandırın.
 
 Oluşturulduktan sonra, plan adları, kimlikleri, plan türü, kullanılabilirliği (genel veya özel), geçerli yayımlama durumu ve bu sekmede kullanılabilir tüm eylemler görüntülenir.
 
@@ -510,7 +512,7 @@ Desteklenen her bulutta bu yönetilen uygulamaya yönetim erişiminin olması ge
 
 **Yetkilendirmeler** – yönetilen kaynak grubu için izin verilmesini istediğiniz kullanıcı, Grup veya uygulamanın Azure ACTIVE DIRECTORY nesne kimliğini ekleyin. Kullanıcıyı, [Azure portal Azure Active Directory Kullanıcıları dikey penceresinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)bulunan birincil kimliğine göre belirler.
 
-Her sorumlu için, listeden (sahip veya katkıda bulunan) Azure AD yerleşik rollerinden birini seçin. Seçtiğiniz rol, sorumlunun müşteri aboneliğindeki kaynaklarda sahip olacağı izinleri anlatmaktadır. Daha fazla bilgi için bkz. [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md). Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure Portal RBAC ile çalışmaya başlama](../../role-based-access-control/overview.md).
+Her sorumlu için, listeden (sahip veya katkıda bulunan) Azure AD yerleşik rollerinden birini seçin. Seçtiğiniz rol, sorumlunun müşteri aboneliğindeki kaynaklarda sahip olacağı izinleri anlatmaktadır. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md). Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure Portal RBAC ile çalışmaya başlama](../../role-based-access-control/overview.md).
 
 >[!Note]
 >Bulut başına en çok 100 yetkilendirmeler ekleyebilseniz de, genellikle bir Active Directory Kullanıcı grubu oluşturmak ve KIMLIĞINI "asıl KIMLIK" içinde belirtmek daha kolay olur. Bu, plan dağıtıldıktan sonra yönetim grubuna daha fazla kullanıcı eklemenize ve daha fazla yetkilendirmeler eklemek için planı güncelleştirme ihtiyacını azaltmasına imkan sağlar.
@@ -571,7 +573,7 @@ Sınama sürücüsü deneyimini açıklama.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 Teklifin tüm gerekli bölümlerini tamamladığınızda, portalın sağ üst köşesinde bulunan **gözden geçir ve Yayımla** ' yı seçin.
 

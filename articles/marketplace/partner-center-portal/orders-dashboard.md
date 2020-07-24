@@ -1,16 +1,16 @@
 ---
-title: Ticari Market Analytics 'te iş ortağı merkezi siparişleri panosu
-description: Market teklif siparişleriniz hakkındaki analitik raporlara grafik ve indirilebilir bir biçimde nasıl erişebileceğinizi öğrenin.
+title: Ticari Market Analytics, Microsoft AppSource ve Azure Market 'teki iş ortağı merkezi siparişleri panosu
+description: Ticari Market teklif siparişleriniz hakkındaki analitik raporlara grafik ve indirilebilir bir biçimde nasıl erişebileceğinizi öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2020
-ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: 7a704936b35ba5c747ab5884c61f3f5413ac5f07
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536139"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127324"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Siparişler panosu
 
@@ -33,6 +33,8 @@ Iş ortağı merkezi analiz araçları 'ndaki **siparişler panosuna** erişmek 
 - [Siparişler ve koltuk eğilimi](#orders-and-seats-trend)
 - [Sipariş Ayrıntıları tablosu](#order-details-table)
 
+Iş Ortağı Merkezi 'nde siparişler oluşturma ve raporlama arasındaki maksimum gecikme süresi 48 saattir.
+
 ## <a name="order-dashboard-details"></a>Pano ayrıntılarını Sırala
 
 Bu bölümde analiz raporları daha ayrıntılı olarak açıklanmaktadır.
@@ -53,7 +55,7 @@ Toplam siparişlerin yanındaki yüzde değeri, seçilen tarih aralığındaki b
 
 ### <a name="orders-by-geography"></a>Coğrafya tarafından siparişler
 
-Coğrafya ısı haritasını 'e **göre siparişler** bir dünya haritasının siparişlerinin sayımını gösterir ve müşteri ülkesi/bölgesine göre eşlenmiş olan yok sayılır. Bu ısı haritasını, **[Coğrafya ısı haritasını ile müşteriyle](./customer-dashboard.md#customer-by-geography)** aynı şekilde çalışır.
+**Coğrafya, coğrafi olarak yapılacak siparişler** bir dünya haritası üzerinde siparişlerin sayımını gösterir ve müşteri ülkesi/bölgesine göre eşlenmiş olan bilgisayarları gösterir. Bu ısı haritasını, **[Coğrafya ısı haritasını ile müşteriyle](./customer-dashboard.md#customer-by-geography)** aynı şekilde çalışır.
 
 ![İş Ortağı Merkezi, coğrafi olarak sipariş Analizi](./media/orders-by-geography.png)
 
@@ -71,7 +73,7 @@ Bu **siparişler** , halka grafik sunarak, teklif adlarına göre siparişleri (
 
 ### <a name="orders-trend-per-site-versus-per-seat"></a>Site başına ve bilgisayar başına düşen sipariş eğilimi
 
-**Site başına ve bilgisayar** başına halka grafik, müşteriler tarafından satın alınan her site SaaS siparişi için ve Kullanıcı başına SaaS siparişlerinin dökümünü temsil eder (Bu grafik iptal edilen siparişleri içerir). Sütun grafiği, her site SaaS için ve müşteriler tarafından satın alınan her bilgisayar SaaS siparişi için eğilimi temsil eder (Bu grafik iptal edilen siparişleri içerir).
+Site başına ve **bilgisayar** başına halka grafik, müşteriler tarafından satın alınan site başına SaaS ve bilgisayar başına SaaS siparişlerinin dökümünü temsil eder (Bu grafik iptal edilen siparişleri içerir). Sütun grafiği, her site SaaS için ve müşteriler tarafından satın alınan her bilgisayar SaaS siparişi için eğilimi temsil eder (Bu grafik iptal edilen siparişleri içerir).
 
 ### <a name="orders-by-plans"></a>Planlara göre siparişler
 
@@ -82,13 +84,13 @@ Plana **göre siparişler** grafiği, tüm teklifleriniz için plan düzeyinde s
 **Siparişler ve koltuk eğilimi** grafiği en yüksek sipariş sayısı ile ilk 50 teklifi sunar. Bunlar bir öncü panoda görüntülenir ve en yüksek sıra sayısına ve sıra yüzdesine göre sıralanır.
 
 - **Planlara göre siparişler** – grafikteki en üstteki beş plan için sıra sayısı dökümünü görüntülemek üzere bir teklif seçin.
-- **Planlara göre** bilgisayar sayısı: ilk beş plan için bir koltuk için aylık eğilim. Seçtiğiniz teklif bir bilgisayar başına teklif değilse, bu alan grafiğinde herhangi bir veri görmezsiniz.
+- **Planlara göre** bilgisayar sayısı: ilk beş plan için bir koltuk için aylık eğilim. Seçtiğiniz teklif, bilgisayar başına bir teklif değilse burada hiçbir veri gösterilmez.
 
 ### <a name="canceled-orders-by-offers"></a>Tekliflere göre iptal edilen siparişler
 
 **Iptal edilen siparişler** , pasta grafiği sunarak, iptal edilen tüm siparişlerinizi kendi teklif adlarına göre düzenler. Üstteki teklifler grafikte görüntülenir ve tekliflerin geri kalanı "Rest All" olarak gruplandırılır. Grafikte göstermek için göstergede belirli teklifleri seçebilirsiniz.
 
-- Grafikteki bir dilimin üzerine gelindiğinde, tüm tekliflerde bulunan toplam sipariş sayısı ile karşılaştırıldığında seçilen teklifin siparişlerinin ve yüzdesinin oranı görüntülenir.
+- Grafikteki bir dilimin üzerine gelindiğinde, tüm tekliflerde bulunan toplam sipariş sayısı ile karşılaştırıldığında seçilen teklifin sipariş sayısı ve yüzdesi görüntülenir.
 - Sütun grafiği, aylık eğilimleri gösterir. Sütunlar, teklif adına göre iptal edilen siparişlerin sayısını temsil eder. X ekseninde sağ ve sol ok ve belirli veri noktalarına odaklanılacak şekilde grafiğin üstündeki kaydırıcıyı kullanabilirsiniz. Açıklamada belirli bir öğe seçerek eğilim grafiğini görüntüleyebilirsiniz.
 
 ### <a name="order-details-table"></a>Sipariş Ayrıntıları tablosu
@@ -98,8 +100,8 @@ Sipariş Ayrıntıları tablosu, Alım tarihine göre sıralanan 1000 üst sipar
 - Kılavuzdaki her bir sütun sıralanabilir.
 - Kayıt sayısı 1000 ' den küçükse veriler TSV dosyasına ayıklanabilir.
 - 1000 üzerinden kayıt numarası varsa, verilen veriler sonraki 30 güne ait bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
-- Yalnızca ilgilendiğiniz verileri göstermek için, **Sipariş Ayrıntıları tablosuna** filtreler uygulanabilir. Veriler ülke/bölge, Azure lisans türü, Market lisans türü, teklif türü, sipariş durumu, ücretsiz izler, Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adı ile filtrelenebilir.
-- Azure Market veya AppSource aracılığıyla satın alınan SaaS teklifleri bir Azure aboneliği gerektirmediğinden, Market abonelik KIMLIĞI **ayrıntılı siparişler verileri** bölümünde 00000000-0000-0000-0000-000000000000 olarak görünür.
+- Yalnızca ilgilendiğiniz verileri göstermek için **Sipariş Ayrıntıları tablosuna** filtre uygulayın. Ülke/bölge, Azure lisans türü, ticari Market lisans türü, teklif türü, sipariş durumu, ücretsiz izler, ticari Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adına göre filtreleyin.
+- Azure Market veya AppSource aracılığıyla satın alınan SaaS teklifleri için Azure aboneliği gerekmez, **ayrıntılı siparişler verileri** bölümünde Market abonelik kimliği 00000000-0000-0000-0000-000000000000 olarak görünür.
 
 #### <a name="orders-page-filters"></a>Sipariş sayfası filtreleri
 

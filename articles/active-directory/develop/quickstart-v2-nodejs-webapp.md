@@ -10,19 +10,19 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
+ms.openlocfilehash: 165f3dab2413afc09a67175bb10471c2bd53ea32
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339899"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129177"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
 Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir Web uygulamasında OpenID Connect kimlik doğrulamasını ayarlamayı öğreneceksiniz. Örnek, herhangi bir platformda çalışmak üzere tasarlanmıştır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -55,7 +55,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
     - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın `http://localhost:3000` .
     - **Gelişmiş ayarlar > örtük verme** bölümünde, **kimlik belirteçlerini** denetleyin, bu örnek, kullanıcının oturum açması için [örtük verme akışının](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) etkinleştirilmesini gerektirir.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin.
     - Bir anahtar açıklaması girin (örneğin, uygulama gizli anahtarı).

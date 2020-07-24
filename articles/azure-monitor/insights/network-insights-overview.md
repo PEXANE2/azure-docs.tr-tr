@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654877"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128684"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Ağlar için Azure Izleyici (Önizleme)
 Ağ için Azure Izleyici, herhangi bir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlar. Gelişmiş arama özelliği, yalnızca barındırılan Web sitesi adını arayarak Web sitenizi barındıran kaynakları tanımlama gibi senaryoları etkinleştirerek Kaynak bağımlılıklarını tanımlamaya yardımcı olur.
@@ -29,7 +30,7 @@ Kaynak durumu ve Uyarılar görünümü, **abonelik**, **kaynak grubu** ve **kay
 
 Arama kutusu, kaynakları ve ilişkili kaynakları aramak için kullanılabilir. Örneğin, genel IP bir Application Gateway ilişkilendirilir. Genel IP DNS adını aramak, hem genel IP hem de ilişkili Application Gateway belirler.
 
-![Arama](media/network-insights-overview/search.png)
+![Arayın](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Kaynak Durumu ve metrik
@@ -47,7 +48,7 @@ Kılavuz görünümündeki her bir öğeye tıklayabilirsiniz. Bu bağlantının
 Sağdaki **Uyarılar** Kılavuzu, tüm abonelikler genelinde seçili kaynaklar için oluşturulan tüm uyarıların bir görünümünü sağlar. Ayrıntılı uyarılar sayfasına gitmek için uyarı sayılarına tıklayın.
 
 ## <a name="dependency-view"></a>Bağımlılık görünümü
-**Bağımlılık** görünümü, kaynağın nasıl yapılandırıldığını görselleştirmenize yardımcı olur. Şu anda bağımlılık görünümü yalnızca Application Gateway için desteklenir. Bağımlılık görünümüne, ölçümler kılavuz görünümündeki Application Gateway kaynak adına tıklanarak erişilebilir.
+**Bağımlılık** görünümü, kaynağın nasıl yapılandırıldığını görselleştirmenize yardımcı olur. Şu anda bağımlılık görünümü artık Application Gateway, sanal WAN ve Load Balancer için desteklenmektedir. Örneğin, Application Gateway durumunda bağımlılık görünümüne, ölçümler kılavuz görünümündeki Application Gateway kaynak adına tıklanarak erişilebilir. Bu ayrıca sanal WAN ve Load Balancer için de geçerlidir. 
 
 ![Application Gateway görünümü](media/network-insights-overview/application-gateway.png)
 
@@ -69,4 +70,4 @@ Uygulama ağ geçidi, tüm arka uç havuzu kaynakları ve ön uç IP 'Leri için
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-- Ağ izleme hakkında daha fazla bilgi edinmek için [Azure Ağ İzleyicisi nedir?](/azure/network-watcher/network-watcher-monitoring-overview).
+- Ağ izleme hakkında daha fazla bilgi edinmek için [Azure Ağ İzleyicisi nedir?](../../network-watcher/network-watcher-monitoring-overview.md).

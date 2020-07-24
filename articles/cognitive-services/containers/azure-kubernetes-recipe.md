@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cdd1cf255c943c8dc6d55a5b749b30357bdcd373
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 24e04e166c13f787f756c97716e2bf0143eecbdb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876734"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128582"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Metin Analizi dil algılama kapsayıcısını Azure Kubernetes hizmetine dağıtma
 
 Dil algılama kapsayıcısını dağıtmayı öğrenin. Bu yordam, yerel Docker Kapsayıcıları oluşturma, kapsayıcıları kendi özel kapsayıcı Kayıt defterinize gönderme, kapsayıcıyı bir Kubernetes kümesinde çalıştırma ve bir Web tarayıcısında test etme işlemlerini gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir. Azure Cloud Shell kullanmayın.
 
@@ -46,13 +46,13 @@ Bu yordam, dil algılama için bilişsel hizmetler kapsayıcı örneğini yükle
 
 ### <a name="the-language-frontend-container"></a>Dil ön uç kapsayıcısı
 
-Bu web sitesi, dil algılama uç noktası isteklerini yapan kendi istemci tarafı uygulamanız ile eşdeğerdir. Yordam tamamlandığında, ile `http://<external-IP>/<text-to-analyze>`bir tarayıcıda Web sitesi kapsayıcısına erişerek bir karakter dizesinin algılanan dilini alırsınız. Bu URL 'ye bir örnek `http://132.12.23.255/helloworld!`. Tarayıcıdaki sonuç `English`.
+Bu web sitesi, dil algılama uç noktası isteklerini yapan kendi istemci tarafı uygulamanız ile eşdeğerdir. Yordam tamamlandığında, ile bir tarayıcıda Web sitesi kapsayıcısına erişerek bir karakter dizesinin algılanan dilini alırsınız `http://<external-IP>/<text-to-analyze>` . Bu URL 'ye bir örnek `http://132.12.23.255/helloworld!` . Tarayıcıdaki sonuç `English` .
 
 ### <a name="the-language-container"></a>Dil kapsayıcısı
 
 Dil algılama kapsayıcısına, bu özel yordamda, herhangi bir dış istek tarafından erişilebilir. Kapsayıcı, standart bilişsel hizmetler kapsayıcısına özgü dil algılama API 'sinin kullanılabilir olması için hiçbir şekilde değiştirilmedi.
 
-Bu kapsayıcı için bu API, dil algılama için bir POST isteğidir. Tüm bilişsel hizmetler kapsayıcılarında olduğu gibi, barındırılan Swagger bilgileriyle kapsayıcı hakkında daha fazla bilgi edinebilirsiniz `http://<external-IP>:5000/swagger/index.html`.
+Bu kapsayıcı için bu API, dil algılama için bir POST isteğidir. Tüm bilişsel hizmetler kapsayıcılarında olduğu gibi, barındırılan Swagger bilgileriyle kapsayıcı hakkında daha fazla bilgi edinebilirsiniz `http://<external-IP>:5000/swagger/index.html` .
 
 Bağlantı noktası 5000, bilişsel hizmetler kapsayıcılarıyla kullanılan varsayılan bağlantı noktasıdır.
 
@@ -66,19 +66,19 @@ Kapsayıcıyı Azure Kubernetes hizmetine dağıtmak için kapsayıcı görünt�
     az login
     ```
 
-1. Bu yordamda oluşturulan her kaynağı `cogserv-container-rg` tutan adlı bir kaynak grubu oluşturun.
+1. `cogserv-container-rg`Bu yordamda oluşturulan her kaynağı tutan adlı bir kaynak grubu oluşturun.
 
     ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. Adınızın biçimiyle kendi Azure Container Registry oluşturun `registry`, örneğin. `pattyregistry` Adda tireler kullanmayın veya karakterlerin altını çizin.
+1. Adınızın biçimiyle kendi Azure Container Registry oluşturun `registry` , örneğin `pattyregistry` . Adda tireler kullanmayın veya karakterlerin altını çizin.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    **Loginserver** özelliğini almak için sonuçları kaydedin. Bu, daha sonra `language.yml` dosyasında kullanılan barındırılan kapsayıcının adresinin bir parçası olacaktır.
+    **Loginserver** özelliğini almak için sonuçları kaydedin. Bu, daha sonra dosyasında kullanılan barındırılan kapsayıcının adresinin bir parçası olacaktır `language.yml` .
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -127,7 +127,7 @@ Kapsayıcıyı Azure Kubernetes hizmetine dağıtmak için kapsayıcı görünt�
     docker build -t language-frontend -t pattiyregistry.azurecr.io/language-frontend:v1 .
     ```
 
-    Kapsayıcı kayıt defterinizde sürümü izlemek için etiketi, gibi bir sürüm biçimiyle ekleyin `v1`.
+    Kapsayıcı kayıt defterinizde sürümü izlemek için etiketi, gibi bir sürüm biçimiyle ekleyin `v1` .
 
 1. Görüntüyü kapsayıcı Kayıt defterinize gönderin. Bu birkaç dakika sürebilir.
 
@@ -135,7 +135,7 @@ Kapsayıcıyı Azure Kubernetes hizmetine dağıtmak için kapsayıcı görünt�
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    Bir `unauthorized: authentication required` hata alırsanız `az acr login --name <your-container-registry-name>` komutuyla oturum açın. 
+    Bir `unauthorized: authentication required` hata alırsanız komutuyla oturum açın `az acr login --name <your-container-registry-name>` . 
 
     İşlem tamamlandığında, sonuçların şuna benzer olması gerekir:
 
@@ -152,13 +152,13 @@ Kapsayıcıyı Azure Kubernetes hizmetine dağıtmak için kapsayıcı görünt�
 
 ## <a name="get-language-detection-docker-image"></a>Dil algılama Docker görüntüsünü al
 
-1. Docker görüntüsünün en son sürümünü yerel makineye çekin. Bu birkaç dakika sürebilir. Bu kapsayıcının daha yeni bir sürümü varsa, değerini daha yeni bir sürüm `1.1.006770001-amd64-preview` olarak değiştirin.
+1. Docker görüntüsünün en son sürümünü yerel makineye çekin. Bu birkaç dakika sürebilir. Bu kapsayıcının daha yeni bir sürümü varsa, değerini `1.1.006770001-amd64-preview` daha yeni bir sürüm olarak değiştirin.
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
     ```
 
-1. Resmi kapsayıcı kayıt defteriyle etiketleyin. En son sürümü bulun ve daha yeni bir `1.1.006770001-amd64-preview` sürüme sahipseniz sürümü değiştirin. 
+1. Resmi kapsayıcı kayıt defteriyle etiketleyin. En son sürümü bulun ve `1.1.006770001-amd64-preview` daha yeni bir sürüme sahipseniz sürümü değiştirin. 
 
     ```console
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
@@ -180,7 +180,7 @@ Bu yordamda daha sonra oluşturduğunuz Azure Kubernetes hizmeti ile kapsayıcı
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    3 `<appId>`. adımdaki `appId` atanan parametrenin sonuç değerini kaydedin. Sonraki bölümün `password` istemci gizli parametresi `<client-secret>`için öğesini kaydedin.
+    `appId`3. adımdaki atanan parametrenin sonuç değerini kaydedin `<appId>` . `password`Sonraki bölümün istemci gizli parametresi için öğesini kaydedin `<client-secret>` .
 
     ```output
     {
@@ -198,7 +198,7 @@ Bu yordamda daha sonra oluşturduğunuz Azure Kubernetes hizmeti ile kapsayıcı
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
-    Kapsam parametre değeri `<acrId>`için çıktıyı bir sonraki adımda kaydedin. Şöyle görünür:
+    Kapsam parametre değeri için çıktıyı bir `<acrId>` sonraki adımda kaydedin. Şöyle görünür:
 
     ```output
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
@@ -206,7 +206,7 @@ Bu yordamda daha sonra oluşturduğunuz Azure Kubernetes hizmeti ile kapsayıcı
 
     3. adım için tam değeri bu bölümde saklayın.
 
-1. AKS kümesine yönelik doğru erişimi, kapsayıcı kayıt defterinizde depolanan görüntüleri kullanmak üzere vermek için, bir rol ataması oluşturun. Ve `<appId>` `<acrId>` değerlerini önceki iki adımda toplanan değerlerle değiştirin.
+1. AKS kümesine yönelik doğru erişimi, kapsayıcı kayıt defterinizde depolanan görüntüleri kullanmak üzere vermek için, bir rol ataması oluşturun. `<appId>`Ve `<acrId>` değerlerini önceki iki adımda toplanan değerlerle değiştirin.
 
     ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
@@ -214,7 +214,7 @@ Bu yordamda daha sonra oluşturduğunuz Azure Kubernetes hizmeti ile kapsayıcı
 
 ## <a name="create-azure-kubernetes-service"></a>Azure Kubernetes hizmeti oluşturma
 
-1. Kubernetes kümesi oluşturun. Tüm parametre değerleri, ad parametresi dışında önceki bölümden oluşur. Kendisini kimin oluşturduğunu ve bunun amacını belirten bir ad seçin `patty-kube`.
+1. Kubernetes kümesi oluşturun. Tüm parametre değerleri, ad parametresi dışında önceki bölümden oluşur. Kendisini kimin oluşturduğunu ve bunun amacını belirten bir ad seçin `patty-kube` .
 
     ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
@@ -305,29 +305,29 @@ Bu bölümde, Azure Kubernetes hizmeti ile konuşmak için **kubectl** CLI kulla
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. Aşağıdaki dosyayı kopyalayın ve adlandırın `language.yml`. Dosyada bir `service` bölüm ve her biri iki `deployment` kapsayıcı türü, `language-frontend` Web sitesi kapsayıcısı ve `language` algılama kapsayıcısı için bir bölüm bulunur.
+1. Aşağıdaki dosyayı kopyalayın ve adlandırın `language.yml` . Dosyada bir `service` bölüm ve `deployment` her biri iki kapsayıcı türü, `language-frontend` Web sitesi kapsayıcısı ve algılama kapsayıcısı için bir bölüm bulunur `language` .
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. Kendi kapsayıcı kayıt defteri görüntü adlarınızı, istemci `language.yml` gizli anahtarı ve metin analizi ayarlarınızı eklemek için aşağıdaki tabloya göre dil ön uç dağıtım hatlarını değiştirin.
+1. `language.yml`Kendi kapsayıcı kayıt defteri görüntü adlarınızı, istemci gizli anahtarı ve metin analizi ayarlarınızı eklemek için aşağıdaki tabloya göre dil ön uç dağıtım hatlarını değiştirin.
 
     Dil ön uç dağıtım ayarları|Amaç|
     |--|--|
     |Satır 32<br> `image`özelliði|Container Registry ön uç görüntüsünün görüntü konumu<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |Satır 44<br> `name`özelliði|Resim için, önceki bölümde olduğu gibi `<client-secret>` bilinen gizli dizi Container Registry.|
+    |Satır 44<br> `name`özelliði|Resim için, önceki bölümde olduğu gibi bilinen gizli dizi Container Registry `<client-secret>` .|
 
-1. Kendi kapsayıcı kayıt defteri görüntü adlarınızı `language.yml` , gizli anahtar ve metin analizi ayarlarınızı eklemek için aşağıdaki tabloya göre dil dağıtım çizgilerini değiştirin.
+1. `language.yml`Kendi kapsayıcı kayıt defteri görüntü adlarınızı, gizli anahtar ve metin analizi ayarlarınızı eklemek için aşağıdaki tabloya göre dil dağıtım çizgilerini değiştirin.
 
     |Dil dağıtım ayarları|Amaç|
     |--|--|
     |Satır 78<br> `image`özelliði|Container Registry dil görüntüsünün görüntü konumu<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |Satır 95<br> `name`özelliði|Resim için, önceki bölümde olduğu gibi `<client-secret>` bilinen gizli dizi Container Registry.|
+    |Satır 95<br> `name`özelliði|Resim için, önceki bölümde olduğu gibi bilinen gizli dizi Container Registry `<client-secret>` .|
     |Satır 91<br> `apiKey`özelliði|Metin analizi kaynak anahtarınız|
     |Satır 92<br> `billing`özelliði|Metin analizi kaynağınız için faturalandırma uç noktası.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    **Apikey** ve **faturalandırma uç noktası** Kubernetes Orchestration tanımının bir parçası olarak ayarlandığı için, Web sitesi kapsayıcısının bu ilgili bilgileri bilmeleri veya isteğin bir parçası olarak iletilmesi gerekmez. Web sitesi kapsayıcısı, Orchestrator adına `language`göre dil algılama kapsayıcısını ifade eder.
+    **Apikey** ve **faturalandırma uç noktası** Kubernetes Orchestration tanımının bir parçası olarak ayarlandığı için, Web sitesi kapsayıcısının bu ilgili bilgileri bilmeleri veya isteğin bir parçası olarak iletilmesi gerekmez. Web sitesi kapsayıcısı, Orchestrator adına göre dil algılama kapsayıcısını ifade eder `language` .
 
-1. Oluşturduğunuz ve kaydettiğiniz klasörden bu örnek için Orchestration tanım dosyasını yükleyin `language.yml`.
+1. Oluşturduğunuz ve kaydettiğiniz klasörden bu örnek için Orchestration tanım dosyasını yükleyin `language.yml` .
 
     ```console
     kubectl apply -f language.yml
@@ -344,7 +344,7 @@ Bu bölümde, Azure Kubernetes hizmeti ile konuşmak için **kubectl** CLI kulla
 
 ## <a name="get-external-ips-of-containers"></a>Kapsayıcılardan dış IP 'Leri al
 
-İki kapsayıcı için, `language-frontend` ve `language` hizmetlerinin ÇALıŞTıĞıNı doğrulayın ve dış IP adresini alın.
+İki kapsayıcı için, `language-frontend` ve `language` hizmetlerinin çalıştığını doğrulayın ve dış IP adresini alın.
 
 ```console
 kubectl get all
@@ -377,17 +377,17 @@ replicaset.apps/language-586849d8dc            1         1         1         13h
 replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 ```
 
-Hizmeti `EXTERNAL-IP` için bekliyor olarak gösteriliyorsa, sonraki adıma geçmeden önce IP adresi gösterilene kadar komutu yeniden çalıştırın.
+`EXTERNAL-IP`Hizmeti için bekliyor olarak gösteriliyorsa, sonraki adıma geçmeden önce IP adresi gösterilene kadar komutu yeniden çalıştırın.
 
 ## <a name="test-the-language-detection-container"></a>Dil algılama kapsayıcısını test etme
 
-Bir tarayıcı açın ve önceki bölümden `language` KAPSAYıCıNıN dış IP adresine gidin:. `http://<external-ip>:5000/swagger/index.html` Dil algılama uç noktasını `Try it` test etmek için API 'nin özelliğini kullanabilirsiniz.
+Bir tarayıcı açın ve önceki bölümden kapsayıcının dış IP adresine gidin `language` : `http://<external-ip>:5000/swagger/index.html` . `Try it`Dil algılama uç noktasını test etmek IÇIN API 'nin özelliğini kullanabilirsiniz.
 
 ![Kapsayıcının Swagger belgelerini görüntüleme](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
 
 ## <a name="test-the-client-application-container"></a>İstemci uygulama kapsayıcısını test etme
 
-Tarayıcıdaki URL 'YI aşağıdaki biçimi kullanarak `language-frontend` KAPSAYıCıNıN dış IP 'sine değiştirin:. `http://<external-ip>/helloworld` ' Nin `helloworld` İngilizce kültür metni olarak `English`tahmin edilir.
+Tarayıcıdaki URL 'YI `language-frontend` aşağıdaki biçimi kullanarak kapsayıcının dış IP 'sine değiştirin: `http://<external-ip>/helloworld` . ' Nin Ingilizce kültür metni `helloworld` olarak tahmin edilir `English` .
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -405,15 +405,3 @@ az group delete --name cogserv-container-rg
 
 > [!div class="nextstepaction"]
 > [Bilişsel hizmetler kapsayıcıları](../cognitive-services-container-support.md)
-
-<!--
-kubectl get secrets
-
->az aks browse --resource-group diberry-cogserv-container-rg --name diberry-kubernetes-languagedetection
-
-kubectl proxy
-
-http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/pod/default/language-frontend-6d65bdb77c-8f4qv?namespace=default
-
-kubectl describe pod language-frontend-6d65bdb77c
--->

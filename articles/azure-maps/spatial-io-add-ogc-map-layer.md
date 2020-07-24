@@ -1,19 +1,19 @@
 ---
 title: Open Geospatial Consortium (OGC) eşleme katmanı ekleme | Microsoft Azure haritaları
 description: Haritadaki bir OGC Haritası katmanını nasıl kaplayacağınızı ve Logcmaplayer sınıfında farklı seçeneklerin nasıl kullanılacağını öğrenin.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334291"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128565"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Open Geospatial Consortium eşleme katmanını ekleme (OGC)
 
@@ -28,7 +28,7 @@ Aşağıdaki bölümlerde, sınıfı tarafından desteklenen Web harita hizmeti 
 - Getfeatureınfo, hizmetin `EPSG:4326` yeniden tahminleri desteklemesini veya işlemesini gerektirir. 
 - Desteklenen işlemler:
 
-    | | |
+    | İşlem | Açıklama |
     | :-- | :-- |
     | GetCapabilities | Desteklenen yeteneklere sahip hizmet hakkındaki meta verileri alır |
     | GetMap | Belirtilen bölge için bir harita görüntüsü alır |
@@ -42,7 +42,7 @@ Aşağıdaki bölümlerde, sınıfı tarafından desteklenen Web harita hizmeti 
 - TileMatrix tanımlayıcısı, eşlemedeki yakınlaştırma düzeyine karşılık gelen bir tamsayı değeri olmalıdır. Azure haritasında yakınlaştırma düzeyi ve arasında bir değerdir `"0"` `"22"` . Bu nedenle `"0"` desteklenir, ancak `"00"` desteklenmez.
 - Desteklenen işlemler:
 
-    | | |
+    | İşlem | Açıklama |
     | :-- | :-- |
     | GetCapabilities | Desteklenen işlemleri ve özellikleri alır |
     | GetTile | Belirli bir kutucuk için canlandırın alır |

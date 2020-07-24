@@ -7,11 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263387"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127205"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -45,7 +46,7 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD etki alanı hizmet kim
 
 -   **Azure rol tabanlı Access Control (RBAC)**
 
-    Azure Rol Tabanlı Erişim Denetimi (RBAC), Azure için ayrıntılı erişim yönetimi sağlar. RBAC kullanarak, kullanıcılara işlerini gerçekleştirmek için gereken en az izni vererek kaynaklara erişimi yönetebilirsiniz. RBAC hakkında daha fazla bilgi için bkz. [Azure 'da rol tabanlı erişim denetimi (RBAC) nedir?](../../role-based-access-control/overview.md).
+    Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. RBAC kullanarak, kullanıcılara işlerini gerçekleştirmek için gereken en az izni vererek kaynaklara erişimi yönetebilirsiniz. RBAC hakkında daha fazla bilgi için bkz. [Azure 'Da Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
 
 ## <a name="common-use-cases"></a>Genel kullanım örnekleri
 
@@ -145,7 +146,7 @@ Depolama hesabınızda SMB üzerinden kimlik tabanlı kimlik doğrulamasını et
 ## <a name="next-steps"></a>Sonraki adımlar
 SMB üzerinden Azure dosyaları ve kimlik tabanlı kimlik doğrulaması hakkında daha fazla bilgi için şu kaynaklara bakın:
 
-- [Azure Dosyaları dağıtımı planlama](storage-files-planning.md)
+- [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
 - [Azure dosya paylaşımları için SMB üzerinden şirket içi Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-enable.md)
 - [Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [SSS](storage-files-faq.md)

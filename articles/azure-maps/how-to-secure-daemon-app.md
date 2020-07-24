@@ -2,18 +2,19 @@
 title: Daemon uygulamasının güvenliğini sağlama
 titleSuffix: Azure Maps
 description: Güvenilen bir Daemon uygulamasını yapılandırmak üzere kimlik doğrulamasını yönetmek için Azure portal kullanın.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fa3492b0cd71e61900dc4be150cd0f0169379ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988697"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126780"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon uygulamasının güvenliğini sağlama
 
@@ -113,7 +114,7 @@ Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azu
 > [!div class="mx-imgBorder"]
 > ![Kullanılabilir rolleri görüntüle](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. **Azure haritalar hesabınıza**gidin. **Erişim denetimi (IAM)**  >  **rol atamalarını**seçin.
+1. **Azure haritalar hesabınıza**gidin. **Erişim denetimi (IAM)** > **Rol atamaları**’nı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![RBAC verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -123,7 +124,7 @@ Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azu
     > [!div class="mx-imgBorder"]
     > ![Rol ataması ekle](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. **Azure haritalar veri okuyucusu** veya **Azure haritalar veri katılımcısı**gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata**' nın altında, **Kullanıcı tarafından atanan yönetilen kimlik**sistemine atanmış yönetilen kimlik ile **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** veya yönetilen kimlik ' i seçin  /  **System assigned Managed identity**. Sorumluyu seçin. Sonra **Kaydet**'i seçin.
+3. **Azure haritalar veri okuyucusu** veya **Azure haritalar veri katılımcısı**gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata**' nın altında, **Kullanıcı tarafından atanan yönetilen kimlik**sistemine atanmış yönetilen kimlik ile **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** veya yönetilen kimlik ' i seçin  /  **System assigned Managed identity**. Sorumluyu seçin. Ardından **Kaydet**’i seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Rol ataması ekle](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

@@ -1,19 +1,19 @@
 ---
 title: Çizim araçları modülü | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak çizim seçenekleri verilerini ayarlamayı öğreneceksiniz.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 261202173a0692c66a24091b2173f5d4fe271058
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334303"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129517"
 ---
 # <a name="use-the-drawing-tools-module"></a>Çizim araçları modülünü kullanma
 
@@ -30,7 +30,7 @@ Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül,
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
-    - Ya da Azure Haritalar Web SDK 'Sı kaynak kodu için çizim araçları modülünü [Azure-Maps-Drawing-Tools](https://www.npmjs.com/package/azure-maps-drawing-tools) NPM paketini kullanarak yerel olarak yükleyebilir ve sonra uygulamanızla birlikte barındırabilirsiniz. Bu paket TypeScript tanımlarını da içerir. Şu komutu kullanın:
+    - Ya da Azure Haritalar Web SDK 'Sı kaynak kodu için çizim araçları modülünü [Azure-Maps-Drawing-Tools](https://www.npmjs.com/package/azure-maps-drawing-tools) NPM paketini kullanarak yerel olarak yükleyebilir ve sonra uygulamanızla birlikte barındırabilirsiniz. Bu paket TypeScript tanımlarını da içerir. Şu komutu çalıştırın:
     
         > **NPM yüklemesi Azure-Maps-çizim-Araçlar**
     

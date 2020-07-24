@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70999163"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128412"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage kullanarak PaaS Web ve mobil uygulamaları güvenli hale getirmenin en iyi yöntemleri
 Bu makalede, hizmet olarak platform (PaaS) Web ve mobil uygulamalarınızın güvenliğini sağlamak için Azure Depolama güvenliği en iyi uygulamalarının bir koleksiyonunu tartıştık. Bu en iyi uygulamalar, Azure deneyimimizden ve sizin gibi müşterilerin deneyimlerini elde edilmiştir.
@@ -65,7 +65,7 @@ RBAC gibi özellikleri kullanarak veri erişim denetimini zorunlu olmayan kurulu
 RBAC hakkında daha fazla bilgi için bkz.:
 
 - [RBAC ve Azure portalı kullanarak erişimi yönetme](/azure/role-based-access-control/role-assignments-portal)
-- [Azure kaynakları için yerleşik roller](/azure/role-based-access-control/built-in-roles)
+- [Yerleşik Azure rolleri](/azure/role-based-access-control/built-in-roles)
 - [Azure Depolama güvenlik kılavuzu](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Yüksek değerli veriler için istemci tarafı şifrelemeyi kullanın

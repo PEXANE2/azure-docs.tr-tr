@@ -1,20 +1,20 @@
 ---
-title: Market öngörüleri-Microsoft ticari Market
+title: Market öngörüleri-Microsoft ticari Market, Microsoft AppSource ve Azure Marketi
 description: Microsoft AppSource ve Azure Marketi 'nde müşteri katılımını ölçmenizi sağlayan Market Web Analytics özetine erişin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2019
+ms.openlocfilehash: c72f3c9cce19896557fa9f4114b935fcc5ca8dc2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120407"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128956"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Iş Ortağı Merkezi 'nde Market öngörüleri panosu
 
-Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bilgi sağlanmaktadır. Bu pano Market Web Analytics 'in bir özetini görüntüler. Bu, yayımcıların Market storeları: Microsoft AppSource ve Azure Market 'te listelenen ilgili ürün ayrıntı sayfaları için müşteri etkileşimini ölçmesine olanak sağlar.
+Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bilgi sağlanmaktadır. Bu Pano, yayımcıların ticari Market storefronts: Microsoft AppSource ve Azure Marketi 'nde listelenen ilgili ürün ayrıntıları sayfaları için müşteri etkileşimini ölçmesine olanak tanıyan Market Web Analytics 'in bir özetini görüntüler.
 
 ## <a name="marketplace-insights-dashboard"></a>Market İçgörüleri panosu
 
@@ -25,18 +25,20 @@ Aşağıdaki öğelerin grafik sunumlarını görüntüleyebilirsiniz:
 - [Market öngörüleri Özeti](#marketplace-insights-summary)
 - [Coğrafya tarafından sayfa ziyaretleri](#page-visits-by-geography)  
 - [Sayfa ziyaretleri ve benzersiz ziyaretçi eğilimi karşılaştırması](#page-visits-versus-unique-visitors-trend)
-- [CTAs ile eyleme karşı benzersiz ziyaretçilere çağrı](#call-to-action-versus-unique-visitors-with-ctas)
+- [CTAs ile farklı ziyaretçilere karşı eylem (CTA) çağrısı](#call-to-action-versus-unique-visitors-with-ctas)
 - [Sayfa ziyaretleri ve tekliflere göre eyleme çağrı](#page-visits-and-calls-to-action-by-offers)
 - [Eylem yüzdesi eğilimi çağrısı](#call-to-action-percentage-trend)
 - [Sayfa ziyaretleri ve başvuru etki alanlarına göre eyleme çağrılar](#page-visits-and-calls-to-action-by-referral-domains)
 - [Market öngörüleri Ayrıntıları tablosu](#marketplace-insights-details-table)
+
+Azure Market veya AppSource 'ta teklifleri ziyaret eden kullanıcılar ve Iş Ortağı Merkezi 'nde rapor veren en fazla gecikme 48 saattir.
 
 >[!NOTE]
 > Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
 
 ### <a name="insights-dashboard-layout"></a>Öngörüler Pano düzeni
 
-Market ölçümlerini çeşitli yollarla görüntüleyebilirsiniz:
+Ticari Market ölçümlerini çeşitli yollarla görüntüleyin:
 
 - Storefront sekmeleri
 - Sayfa filtreleri
@@ -74,7 +76,7 @@ Bu sayı, sayfa filtresinde seçilen teklif (ler) i için seçilen tarih aralı�
 
 ### <a name="call-to-action"></a>Eyleme çağrı
 
-Bu sayı teklif sayfasında (Ürün Ayrıntısı sayfası) tamamlanan eylem düğmesi tıklamaları **çağrısının** sayısını temsil eder. **Şimdi al**, **ücretsiz deneme**, **benimle iletişim**ve **test sürücüsü** düğmeleri seçili olduğunda **eyleme yapılan çağrılar** sayılır.
+Bu sayı teklif sayfasında (Ürün Ayrıntısı sayfası) tamamlanan eylem düğmesi tıklamaları **çağrısının** sayısını temsil eder. Kullanıcılar **Şimdi al**, **ücretsiz deneme**, **benimle iletişim**veya **test sürücüsü** düğmelerini seçerken **eyleme yapılan çağrılar** sayılır.
 
 ![İş Ortağı Merkezi öngörüleri eylem özetine çağrı](./media/insights-summary.png)
 
@@ -128,7 +130,7 @@ Bu tabloda, sayfa ziyaretlerinin bir liste görünümü ve seçili teklifleriniz
 
 - Kayıt sayısı 1000 ' den küçükse veriler bir CSV dosyasına ayıklanabilir.
 - Kayıt sayısı 1000 üzerinde ise, verilen veriler sonraki 30 gün boyunca bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
-- İlgilendiğiniz verileri göstermek için filtreler uygulanabilir. Veriler, teklif adlarına ve kampanya adlarına göre filtrelenebilir.  
+- İlgilendiğiniz verileri göstermek için adlar ve kampanya adları sunarak verileri filtreleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

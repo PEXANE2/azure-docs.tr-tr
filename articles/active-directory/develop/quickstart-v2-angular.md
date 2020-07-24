@@ -7,26 +7,26 @@ author: jasonnutter
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860061"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129194"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
 
 Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel Microsoft hesapları, iş hesapları veya okul hesapları olan kullanıcıların oturumunu nasıl imzalayabileceğinizi öğrenmek için bir kod örneği kullanırsınız. Angular SPA, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirteci de alabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Node. js](https://nodejs.org/en/download/).
+* [Node.js](https://nodejs.org/en/download/).
 * Projeyi çalıştırmak için proje dosyalarını veya [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 'yi düzenlemek [Visual Studio Code](https://code.visualstudio.com/download) .
 
 > [!div renderon="docs"]
@@ -62,7 +62,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 
 #### <a name="step-2-download-the-code-sample"></a>2. Adım: kod örneğini Indirme
 >[!div renderon="docs"]
->Projeyi Node. js kullanarak bir Web sunucusuyla çalıştırmak için, [örnek depoyu kopyalayın](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) veya [temel proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Visual Studio Code gibi bir düzenleyiciyi kullanarak dosyaları açın.
+>Node.js kullanarak projeyi bir Web sunucusuyla çalıştırmak için, [örnek depoyu kopyalayın](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) veya [temel proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Visual Studio Code gibi bir düzenleyiciyi kullanarak dosyaları açın.
 
 > [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
@@ -107,9 +107,9 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kişisel 
 > > [!TIP]
 > > **Uygulama (istemci) Kimliği**, **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
 
-Kullanılabilir yapılandırılabilir seçenekler hakkında daha fazla bilgi için bkz. [istemci uygulamalarını başlatma](msal-js-initializing-client-applications.md). 
+Kullanılabilir yapılandırılabilir seçenekler hakkında daha fazla bilgi için bkz. [istemci uygulamalarını başlatma](msal-js-initializing-client-applications.md).
 
-MSAL. js kitaplığı için kaynak kodunu GitHub ' da [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
+GitHub 'da, MSAL.js kitaplığının kaynak kodunu, [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
 
 >[!div class="sxs-lookup" renderon="portal"]
 >#### <a name="step-3-run-the-project"></a>3. Adım: projeyi çalıştırma
@@ -117,7 +117,7 @@ MSAL. js kitaplığı için kaynak kodunu GitHub ' da [Azuread/Microsoft-Authent
 >[!div renderon="docs"]
 >#### <a name="step-4-run-the-project"></a>4. Adım: projeyi çalıştırma
 
-Node. js kullanıyorsanız:
+Node.js kullanıyorsanız:
 
 1. Proje dizininden aşağıdaki komutları çalıştırarak sunucuyu başlatın:
 
@@ -126,7 +126,7 @@ Node. js kullanıyorsanız:
    npm start
    ```
 
-1. Öğesine gidin **http://localhost:4200/** .
+1. **http://localhost:4200/** adresine göz atın.
 1. **Oturum aç**' ı seçin.
 1. Microsoft Graph çağırmak için **profil** ' i seçin.
 
@@ -134,7 +134,7 @@ Tarayıcı uygulamayı yükledikten sonra **oturum aç**' ı seçin. İlk kez ot
 
 ## <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
 
-![Bu hızlı başlangıçta örnek uygulamanın nasıl çalıştığını gösteren diyagram](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+![Bu hızlı başlangıçta örnek uygulamanın nasıl çalıştığını gösteren diyagram](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: a43b2282974e30cfcf9fa6950e32008c06da98d2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9f9a84726b54569d612a94f183531567b2242ff5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956806"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127171"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel izinleri
 
@@ -78,14 +78,14 @@ Aşağıdaki tabloda, Azure Sentinel 'de roller ve izin verilen eylemler özetle
 
 | Rol | PlayBook 'lar oluşturma ve çalıştırma| Çalışma kitaplarını, analitik kuralları ve diğer Azure Sentinel kaynaklarını oluşturma ve düzenleme | Olayları yönetme (Kapat, ata, vb.) | Verileri, olayları, çalışma kitaplarını ve diğer Azure Sentinel kaynaklarını görüntüleyin |
 |---|---|---|---|---|
-| Azure Sentinel okuyucusu | -- | -- | -- | &#10003; |
+| Azure Sentinel Okuyucusu | -- | -- | -- | &#10003; |
 | Azure Sentinel Yanıtlayıcısı | -- | -- | &#10003; | &#10003; |
-| Azure Sentinel Katılımcısı | -- | &#10003; | &#10003; | &#10003; |
+| Azure Sentinel Katkıda Bulunanı | -- | &#10003; | &#10003; | &#10003; |
 | Azure Sentinel katkıda bulunan + Logic App Katılımcısı | &#10003; | &#10003; | &#10003; | &#10003; |
 
 ## <a name="custom-roles-and-advanced-rbac"></a>Özel roller ve gelişmiş RBAC
 
-- Ya da yerine, yerleşik RBAC rollerini kullanarak Azure Sentinel için özel RBAC rolleri oluşturabilirsiniz. Azure Sentinel için özel RBAC rolleri, [Azure Sentinel 'e](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) ve [Azure Log Analytics kaynaklarına](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)özel izinler temel ALıNARAK diğer [özel Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) rollerini oluşturduğunuz şekilde oluşturulmuştur.
+- Ya da yerine, yerleşik RBAC rollerini kullanarak Azure Sentinel için Azure özel rolleri oluşturabilirsiniz. Azure Sentinel için Azure özel rolleri, [Azure Sentinel 'e](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) ve [Azure Log Analytics kaynaklarına](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)özel izinler temel ALıNARAK diğer [özel Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) rollerini oluşturduğunuz şekilde oluşturulmuştur.
 
 - Log Analytics gelişmiş rol tabanlı erişim denetimini Azure Sentinel çalışma alanınızdaki veriler arasında kullanabilirsiniz. Bu hem veri türü tabanlı RBAC hem de kaynak merkezli RBAC içerir. Log Analytics rolleri hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerini ve çalışma alanlarını yönetme](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 

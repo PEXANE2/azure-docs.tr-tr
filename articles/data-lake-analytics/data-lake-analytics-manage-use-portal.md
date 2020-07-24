@@ -3,18 +3,16 @@ title: Azure Data Lake Analytics Azure portal kullanarak yönetin
 description: Bu makalede, Data Lake Analytics hesaplarını, veri kaynaklarını, kullanıcıları & işlerini yönetmek için Azure portal nasıl kullanılacağı açıklanır.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121325"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127545"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics'i Azure portalını kullanarak yönetme
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -37,7 +35,7 @@ Bu makalede, Azure portal kullanılarak Azure Data Lake Analytics hesaplarının
    3. **Kaynak grubu**: hesabın oluşturulacağı Azure Kaynak grubu. 
    4. **Konum**: Data Lake Analytics hesabı için Azure veri merkezi. 
    5. **Data Lake Store**: Data Lake Analytics hesabı için kullanılacak varsayılan depo. Azure Data Lake Store hesabı ve Data Lake Analytics hesabı aynı konumda olmalıdır.
-4. **Oluştur**'a tıklayın. 
+4. **Oluştur**’a tıklayın. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics hesabı silme
 
@@ -89,7 +87,7 @@ Yeni Data Lake kullanıcılarını kolayca sağlamak için **Kullanıcı ekleme 
 3. Bir kullanıcı seçin ve ardından **Seç**' e tıklayın.
 4. Bir rol seçin ve ardından **Seç**' e tıklayın. Azure Data Lake kullanmak üzere yeni bir geliştirici ayarlamak için **Data Lake Analytics geliştirici** rolünü seçin.
 5. U-SQL veritabanlarının erişim denetim listelerini (ACL 'Ler) seçin. Seçimlerinizden memnun olduğunuzda **Seç**' e tıklayın.
-6. Dosyalar için ACL 'Leri seçin. Varsayılan depo için, "/" kök klasörü ve/sistem klasörü için ACL 'leri değiştirmeyin. **Seç**' e tıklayın.
+6. Dosyalar için ACL 'Leri seçin. Varsayılan depo için, "/" kök klasörü ve/sistem klasörü için ACL 'leri değiştirmeyin. **Seç**’e tıklayın.
 7. Seçtiğiniz tüm değişiklikleri gözden geçirin ve ardından **Çalıştır**' a tıklayın.
 8. Sihirbaz tamamlandığında **bitti**' ye tıklayın.
 
@@ -114,7 +112,7 @@ U-SQL geliştiricilerinin Data Lake Analytics hizmetini kullanmasını sağlamak
 2. **Erişim denetimi (IAM)**  >  **rol ataması Ekle**' ye tıklayın.
 3. Bir rol seçin.
 4. Bir kullanıcı ekleyin.
-5. **Tamam**'a tıklayın.
+5. **Tamam** düğmesine tıklayın.
 
 >[!NOTE]
 >Bir kullanıcının veya güvenlik grubunun işleri göndermesi gerekiyorsa mağaza hesabında da izne ihtiyacı vardır. Daha fazla bilgi için bkz. [Data Lake Store 'de depolanan verileri güvenli hale getirme](../data-lake-store/data-lake-store-secure-data.md).

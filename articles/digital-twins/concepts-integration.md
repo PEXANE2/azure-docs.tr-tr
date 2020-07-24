@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737181"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129738"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure dijital TWINS 'i diğer hizmetlerle tümleştirme
 
@@ -24,16 +24,16 @@ Azure dijital TWINS, IoT Hub verilerle yönetilebilir. Bu sayede ortamınızdaki
 
 Azure dijital TWINS 'in yerleşik IoT Hub yok. Şu anda üretimde olan mevcut bir IoT Hub kullanabilir veya yeni bir tane dağıtabilirsiniz. Bu, IoT Hub tüm cihaz yönetimi özelliklerine tam erişim sağlar.
 
-Azure dijital TWINS 'e IoT Hub verileri almak için bir [Azure işlevi](../azure-functions/functions-overview.md)kullanın. Bu model hakkında daha fazla bilgi edinin [IoT Hub nasıl yapılır: alma telemetriyle](how-to-ingest-iot-hub-data.md)ilgili daha fazla bilgi edinin veya [Azure dijital TWINS öğreticisinde kendiniz deneyin: uçtan uca bir çözümü bağlama](tutorial-end-to-end.md).
+Azure dijital TWINS 'e IoT Hub verileri almak için bir [Azure işlevi](../azure-functions/functions-overview.md)kullanın. Bu model hakkında daha fazla bilgi edinin [*IoT Hub nasıl yapılır: alma telemetriyle*](how-to-ingest-iot-hub-data.md)ilgili daha fazla bilgi edinin veya Azure dijital TWINS [*öğreticisinde kendiniz deneyin: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
 
 ## <a name="data-egress-services"></a>Veri çıkış Hizmetleri
 
 Azure dijital TWINS, bağlı **uç noktalara**veri gönderebilir. Desteklenen uç noktalar şu olabilir:
-* [Olay Hub'ı](../event-hubs/event-hubs-about.md)
+* [Olay Hub’ı](../event-hubs/event-hubs-about.md)
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Uç noktalar, yönetim API 'Leri veya Azure portal kullanılarak Azure dijital TWINS 'e eklenir. [Nasıl yapılır: uç noktaları ve yolları yönetme](how-to-manage-routes.md)bölümünde Azure dijital TWINS 'e bir uç nokta iliştirme hakkında daha fazla bilgi edinin.
+Uç noktalar, yönetim API 'Leri veya Azure portal kullanılarak Azure dijital TWINS 'e eklenir. [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes.md)bölümünde Azure dijital TWINS 'e bir uç nokta iliştirme hakkında daha fazla bilgi edinin.
 
 Verilerinizi [Azure depolama](../storage/common/storage-introduction.md) veya [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md)gibi son olarak yönlendirmek isteyebileceğiniz birçok farklı hizmet vardır. Verilerinizi bunlar gibi hizmetlere göndermek için, hedef hizmeti bir uç noktaya bağlayın.
 
@@ -42,7 +42,7 @@ Verilerinizi [Azure depolama](../storage/common/storage-introduction.md) veya [T
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Dış hizmetlere yönelik uç noktalar ve yönlendirme olayları hakkında daha fazla bilgi edinin:
-* [Kavramlar: Azure dijital TWINS olaylarını yönlendirme](concepts-route-events.md)
+* [*Kavramlar: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md)
 
 IoT Hub verileri almak için Azure dijital TWINS ayarlama hakkında bilgi alın:
-* [Nasıl yapılır: IoT Hub 'dan alma telemetrisi](how-to-ingest-iot-hub-data.md)
+* [*Nasıl yapılır: IoT Hub 'dan alma telemetrisi*](how-to-ingest-iot-hub-data.md)

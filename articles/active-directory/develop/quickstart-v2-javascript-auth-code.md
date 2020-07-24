@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.openlocfilehash: cf86e2b747975e18fc999949340207b618dd8864
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134176"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129806"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: Kullanıcı oturum açma ve kimlik doğrulama kod akışını kullanarak JavaScript SPA 'da erişim belirteci edinme
-
-> [!IMPORTANT]
-> Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma (GA) önce değişebilir.
 
 Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamasının (SPA), yetkilendirme kodu akışını kullanarak kişisel hesap, iş hesabı ve okul hesaplarının kullanıcılarına nasıl oturum açıp çalıştırabileceklerini gösteren bir kod örneği çalıştırırsınız. Kod örneği Ayrıca, bir Web API 'SI çağırmak için bir erişim belirteci alma, bu durumda Microsoft Graph API 'SI de gösterir. Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
@@ -42,10 +39,10 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > 1. [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
-> 1. [Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)'nı seçin.
+> 1. [Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)’nı seçin.
 > 1. Uygulamanız için bir ad girin.
 > 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
-> 1. **Kaydol**’u seçin.
+> 1. **Kaydet**’i seçin.
 > 1. Hızlı başlangıç bölmesine gidin ve yeni uygulamanızı indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
 >
 > ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>Seçenek 2 (El Ile): uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
@@ -54,11 +51,11 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > 1. [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabınızı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısı olarak ayarlayın.
-> 1. [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908)'nı seçin.
+> 1. [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908)’nı seçin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
 > 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
-> 1. **Kaydol**’u seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
+> 1. **Kaydet**’i seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 > 1. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
 > 1. **Platform yapılandırması**altında **Platform Ekle**' yi seçin. Açılan bölmedeki **tek sayfalı uygulama**Seç ' i seçin.
 > 1. **Yeniden YÖNLENDIRME URI** değerini olarak ayarlayın `http://localhost:3000/` .

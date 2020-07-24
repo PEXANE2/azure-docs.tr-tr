@@ -1,19 +1,19 @@
 ---
 title: Azure haritalar hesabınızı Azure portal yönetme | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları hesabınızı yönetmek için Azure portal nasıl kullanacağınızı öğreneceksiniz.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3317b063b5b05a57f08bbd15be827cd83075de34
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335544"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126967"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure haritalar hesabınızı yönetme
 
@@ -23,11 +23,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-new-account"></a>Yeni hesap oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. Azure portalın sol üst köşesinde bulunan **Kaynak oluştur**’u seçin.
+2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur**’u seçin.
 
-3. **Haritalar**arayın ve seçin. Ardından **Oluştur**'u seçin.
+3. **Haritalar**arayın ve seçin. Ardından **Oluştur**’u seçin.
 
 4. Yeni hesabınızın bilgilerini girin.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255668"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129313"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -47,13 +47,21 @@ Takımlar için medya iyileştirmesini etkinleştirmek üzere konakta aşağıda
 1. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **HKEY_LOCAL_MACHINE \Software\microsoft\ekiplerine**gidin.
 2. Takımlar anahtarı için aşağıdaki değeri oluşturun:
 
-| Ad             | Type   | Veri/değer  |
+| Ad             | Tür   | Veri/değer  |
 |------------------|--------|-------------|
 | IsWVDEnvironment | DWORD  | 1           |
 
 ### <a name="install-the-teams-websocket-service"></a>Takımlar WebSocket hizmetini yükler
 
 [WebSocket HIZMETINI](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) VM yansımanıza yükler. Yükleme hatasıyla karşılaşırsanız, yeniden [dağıtılabilir en son Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yükleyip yeniden deneyin.
+
+#### <a name="latest-websocket-service-versions"></a>En son WebSocket hizmeti sürümleri
+
+Aşağıdaki tabloda her kullanıcı grubu için kullanılabilen geçerli sürümler listelenmiştir:
+
+|Sürüm    |Sürüm tarihi  |
+|-----------|--------------|
+|0.11.0     |05/29/2020    |
 
 ### <a name="install-microsoft-teams"></a>Microsoft ekipleri 'nı yükler
 

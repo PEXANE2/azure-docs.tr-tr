@@ -3,18 +3,16 @@ title: Python, R ve C# ' de U-SQL işlerini çalıştırma-Azure Data Lake Analy
 description: Azure Data Lake içinde iş göndermek Için Python, R ve C# ile arkasındaki kodu nasıl kullanacağınızı öğrenin.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jejiang
-ms.author: jejiang
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: tracking-python
-ms.openlocfilehash: a9686cefbbdf04d8425de673827f31cbfecb873c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bdb40fee95c018cbdebac7c28aa131c98e3ee4c3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121240"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129875"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code Azure Data Lake Analytics Için Python, R ve C# ile U-SQL geliştirme
 U-SQL ile arka planda Python, R ve C# kodu yazmak ve Azure Data Lake hizmetine iş göndermek için Visual Studio Code (VSCode) kullanmayı öğrenin. VSCode için Azure Data Lake araçları hakkında daha fazla bilgi için bkz. [Visual Studio için Azure Data Lake araçları kodunu kullanma](data-lake-analytics-data-lake-tools-for-vscode.md).

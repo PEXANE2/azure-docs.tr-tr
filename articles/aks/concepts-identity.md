@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: b7739320fa23bf4469548f61486da1a5ee6110da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507173"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128667"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -105,7 +105,7 @@ Azure RBAC, Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan
 
 Azure RBAC ile uygulanacak izinleri özetleyen bir *rol tanımı* oluşturursunuz. Daha sonra bir kullanıcı veya Grup, belirli bir *kapsam*için bir *rol ataması* aracılığıyla bu rol tanımına atanır. Bu, tek bir kaynak, bir kaynak grubu veya abonelik genelinde olabilir.
 
-Daha fazla bilgi için bkz. [Azure RBAC nedir?][azure-rbac]
+Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?][azure-rbac]
 
 Bir AKS kümesini tam olarak çalıştırmak için iki erişim düzeyi gereklidir: 
 1. [Azure aboneliğinizdeki AKS kaynağına erişin](#azure-rbac-to-authorize-access-to-the-aks-resource). Bu işlem, AKS API 'Lerini kullanarak kümenizi ölçeklendirmeyi veya yükseltmeyi denetlemenizi sağlar ve kubeconfig 'nizi çekin.

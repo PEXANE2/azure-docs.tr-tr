@@ -9,30 +9,26 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.custom: it-pro, seodec18
+ms.date: 7/21/2020
+ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dc659f3d580646c1e86e5e97940268311e5546f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 749ee479f19b0855700cf1ca15aefd9b983dd7f7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460543"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129551"
 ---
-# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 'de Avustralya ve Yeni Zelanda müşterileri için kimlik verileri depolama
+# <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 'de Avustralya ve Yeni Zelanda müşterileri için müşteri verileri depolama
 
-Kimlik verileri, Azure AD tarafından, Office 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik müşteri verilerinizin depolandığı yer hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
+Azure Active Directory (Azure AD), bir Microsoft Online hizmeti için kaydolduğunuzda verdiğiniz ülkeyi temel alarak müşteri verilerini coğrafi bir konumda depolar. Microsoft Online Services, Office 365 ve Azure ' i içerir. 
+
+Azure AD ve diğer Microsoft Hizmetleri verilerinin nerede bulunduğu hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri nerede bulunuyor?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümüne bakın.
+
+Microsoft, 26 Şubat 2020 ' den itibaren Azure AD 'nin müşteri verilerini Avustralya veri merkezleri içinde Avustralya veya Yeni Zelanda faturalama adresiyle yeni kiracılar için depolamaya başlamıştır. Microsoft, 1 Mayıs 2020 ile 31 Ekim 2020 arasında herhangi bir müşteri eylemi gerekmeden Avustralya veya Yeni Zelanda faturalandırma adresine sahip mevcut kiracıları Avustralya veri merkezlerine geçirecektir. Geçiş işlemi, müşteriler için kapalı kalma süresi içermez ve geçiş sırasında kiracının işlevselliğini etkilemez.
+
+Ayrıca, belirli Azure AD özellikleri henüz Avustralya 'daki müşteri verilerinin depolanmasını desteklemez. Belirli özellik bilgileri için lütfen [Azure ad veri haritasına](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9)gidin. Örneğin, Microsoft Azure Multi-Factor Authentication müşteri verilerini ABD 'de depolar ve küresel olarak işler. Bkz. [Azure Multi-Factor Authentication Için veri yerleşimi ve müşteri verileri](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency).
 
 > [!NOTE]
-> Azure AD ile tümleştirilen hizmetler ve uygulamalar, kimlik müşteri verilerine erişebilir. Kimlik müşteri verilerinin, belirli bir hizmet ve uygulama tarafından nasıl işlendiğini ve şirketinizin veri depolama gereksinimlerini karşılayıp karşılamadığını öğrenmek için kullandığınız her hizmeti ve uygulamayı değerlendirin. Microsoft hizmetlerinin verileri depoladığı konumlar hakkında daha fazla bilgi için Microsoft Güven Merkezi'nin Verileriniz nerede bulunur? bölümünü inceleyebilirsiniz.
+> Azure AD ile tümleştirilen Microsoft ürünleri, hizmetleri ve üçüncü taraf uygulamaların müşteri verilerine erişimi vardır. Müşteri verilerinin ilgili ürün, hizmet ve uygulama tarafından nasıl işlendiğini ve şirketinizin veri depolama gereksinimlerini karşılayıp karşılamadığını öğrenmek için kullandığınız her bir ürünü, hizmeti ve uygulamayı değerlendirin. Microsoft hizmetlerinin verileri depoladığı konumlar hakkında daha fazla bilgi için Microsoft Güven Merkezi'nin [Verileriniz nerede bulunur?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünü inceleyebilirsiniz.
 
-Avustralya ve Yeni Zelanda 'da bir adres sağlayan ve Azure AD ücretsiz sürüm kullanan müşteriler için Azure AD, Avustralya veri merkezleri içindeki bekleyen PII verilerini korur. 
-
-Diğer tüm Azure AD Premium Hizmetleri, müşteri verilerini küresel veri merkezlerinde depolar. Bir hizmetin veri merkezini bulmak için bkz. [Azure Active Directory – verileriniz nerede bulunur?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
-
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor Authentication (MFA)
-
-Azure AD 'de MFA hizmeti, kimlik müşteri verilerini bekleyen genel veri merkezlerinde depolar. Bulut tabanlı Azure MFA ve Azure MFA sunucusu tarafından toplanan ve depolanan kullanıcı bilgileri hakkında daha fazla bilgi edinmek için bkz. [Azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency). Müşteriler MFA kullanıyorsa verileri, bekleyen Avustralya veri merkezleri dışında saklanır. 
-
-## <a name="next-steps"></a>Sonraki adımlar
-Yukarıda açıklanan özellik ve işlevlerden herhangi biri hakkında daha fazla bilgi için şu makalelere bakın:
-- [Multi-Factor Authentication nedir?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)

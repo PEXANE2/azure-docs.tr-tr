@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386292"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128939"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -52,6 +52,9 @@ Hayır, bu senaryo desteklenmiyor. Varsayılan ayarlar şunlardır:
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Bağlayıcı sunuculardan Azure 'a giden trafik için TLS sonlandırması (TLS/HTTPS denetimi veya hızlandırma) mi kullanıyorsunuz?
 
 Uygulama proxy Bağlayıcısı, Azure 'da sertifika tabanlı kimlik doğrulaması gerçekleştirir. TLS sonlandırma (TLS/HTTPS denetimi veya hızlandırma) bu kimlik doğrulama yöntemini keser ve desteklenmez. Bağlayıcıdan Azure 'a giden trafiğin TLS sonlandırmasını gerçekleştiren tüm cihazları atlaması gerekir.  
+
+### <a name="is-tls-12-required-for-all-connections"></a>TLS 1,2 tüm bağlantılar için gereklidir mi?
+Evet. Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, uygulama proxy hizmeti yalnızca TLS 1,2 protokollerine erişimi sınırlandırır. Bu değişiklikler 31 Ağustos 2019 tarihinden itibaren kademeli olarak alındı ve geçerli. Tüm istemci sunucu ve tarayıcı-sunucu birleşimlerinizin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) için hazırlanma.
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Bağlayıcı sunucu (ler) ve arka uç uygulama sunucusu arasında bir iletme proxy cihazı yerleştirebilir miyim?
 Evet, bu senaryo bağlayıcı sürümü 1.5.1526.0 'dan başlayarak desteklenir. Bkz. [mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -93,6 +96,9 @@ Uygulama kayıtları sayfasında, giriş sayfasının istenen dış URL 'si içi
 
 Hayır, yayımlanan uygulamalar için IIS gereksinimi yoktur. Windows Server dışındaki sunucularda çalışan Web uygulamalarını yayımlayabilirsiniz. Ancak, Web sunucusunun anlaşmayı (Kerberos kimlik doğrulaması) destekleyip desteklemediğine bağlı olarak, Windows dışı bir sunucu ile ön kimlik doğrulaması kullanmeyebilirsiniz. Bağlayıcının yüklü olduğu sunucuda IIS gerekli değildir.
 
+### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>Uygulama proxy 'sini HSTS üst bilgisini eklemek için yapılandırabilir miyim?
+Uygulama proxy 'Si HTTP Strict-Transport-Security üst bilgisini HTTPS yanıtlarına otomatik olarak eklemez, ancak yayımlanan uygulama tarafından gönderilen özgün yanıt ise üstbilgiyi korur. Bu işlevi etkinleştirmek için bir ayarı sağlamak yol haritasında bulunur. Bunu yanıtlara eklemeyi sağlayan bir önizleme ile ilgileniyorsanız, Ayrıntılar için ' e ulaşın aadapfeedback@microsoft.com .
+
 ## <a name="integrated-windows-authentication"></a>Tümleşik Windows Kimlik Doğrulaması
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>Kerberos kısıtlı temsilci (KCD) ayarlarken Principalsallodilimtodelegatetoaccount metodunu ne zaman kullanmalıyım?
@@ -107,7 +113,7 @@ Daha fazla bilgi için bkz. [uygulama proxy 'si Ile Kerberos kısıtlanmış tem
 
 NTLM kimlik doğrulaması, ön kimlik doğrulama veya çoklu oturum açma yöntemi olarak kullanılamaz. NTLM kimlik doğrulaması yalnızca istemci ile yayınlanan web uygulaması arasında doğrudan anlaşılırken kullanılabilir. NTLM kimlik doğrulamasının kullanılması genellikle tarayıcıda bir oturum açma isteminin görünmesine neden olur.
 
-## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
+## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulaması
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>Doğrudan kimlik doğrulamasıyla yayımlanan uygulamalar için koşullu erişim Ilkelerini kullanabilir miyim?
 
@@ -133,7 +139,7 @@ Evet, bekleniyor. Ön kimlik doğrulama senaryosu, üçüncü taraf tarayıcıla
 
 ### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Uzak Masaüstü Web Istemcisi (HTML5) destekleniyor mu?
 
-Hayır, bu senaryo şu anda desteklenmiyor. Bu özellikte güncelleştirmeler için [UserVoice](https://aka.ms/aadapuservoice) geri bildirim Forumumuzu izleyin.
+Evet, bu senaryo şu anda genel önizlemededir. [Azure AD uygulama ara sunucusu uzak masaüstünü yayımlama](application-proxy-integrate-with-remote-desktop-services.md)konusuna bakın.
 
 ### <a name="after-i-configured-the-pre-authentication-scenario-i-realized-that-the-user-has-to-authenticate-twice-first-on-the-azure-ad-sign-in-form-and-then-on-the-rdweb-sign-in-form-is-this-expected-how-can-i-reduce-this-to-one-sign-in"></a>Ön kimlik doğrulama senaryosunu yapılandırdıktan sonra, kullanıcının kimlik doğrulamasının iki kez olduğunu fark ediyorum: ilk olarak Azure AD oturum açma formunda ve ardından RDWeb oturum açma formunda. Bu beklensin mi? Bunu bir oturum açma ile nasıl azaltabilirim?
 
