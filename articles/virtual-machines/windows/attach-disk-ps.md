@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6f16784d89d1f3edec491d5c7ae312dbd46212f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6be91be4d1189fb99ffa39ec96d555d4534cdb2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005744"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell ile bir Windows sanal makinesine veri diski iliştirme
 
@@ -20,9 +21,9 @@ Bu makalede, PowerShell kullanarak yeni ve var olan disklerin her ikisini de bir
 İlk olarak, bu ipuçlarını gözden geçirin:
 
 * Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Daha fazla bilgi için bkz. [sanal makineler Için boyutlar](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Premium SSD 'leri kullanmak için DS serisi veya GS serisi sanal makinesi gibi [Premium depolama özellikli BIR VM türüne](sizes-memory.md)ihtiyacınız vardır.
+* Premium SSD 'leri kullanmak için DS serisi veya GS serisi sanal makinesi gibi [Premium depolama özellikli BIR VM türüne](../sizes-memory.md)ihtiyacınız vardır.
 
-Bu makale, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içinde PowerShell kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
+Bu makale, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](../../cloud-shell/overview.md)içinde PowerShell kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Sanal makineye boş bir veri diski ekleme
 
@@ -48,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Bir kullanılabilirlik bölgesinde yönetilen diskleri kullanma
 
-Bir kullanılabilirlik bölgesinde bir disk oluşturmak için, parametresiyle [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) komutunu kullanın `-Zone` . Aşağıdaki örnek, bölge *1*' de bir disk oluşturur.
+Bir kullanılabilirlik bölgesinde bir disk oluşturmak için, parametresiyle [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) komutunu kullanın `-Zone` . Aşağıdaki örnek, bölge *1*' de bir disk oluşturur.
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -68,7 +69,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="initialize-the-disk"></a>Diski başlatma
 
-Boş bir disk ekledikten sonra onu başlatmalısınız. Diski başlatmak için bir VM 'de oturum açıp disk yönetimini kullanabilirsiniz. Sanal makineyi oluştururken [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) 'yi ve sertifikayı etkinleştirdiyseniz, uzak PowerShell 'i kullanarak diski başlatabilirsiniz. Özel bir betik uzantısı da kullanabilirsiniz:
+Boş bir disk ekledikten sonra onu başlatmalısınız. Diski başlatmak için bir VM 'de oturum açıp disk yönetimini kullanabilirsiniz. Sanal makineyi oluştururken [WinRM](/windows/desktop/winrm/portal) 'yi ve sertifikayı etkinleştirdiyseniz, uzak PowerShell 'i kullanarak diski başlatabilirsiniz. Özel bir betik uzantısı da kullanabilirsiniz:
 
 ```azurepowershell-interactive
     $location = "location-name"

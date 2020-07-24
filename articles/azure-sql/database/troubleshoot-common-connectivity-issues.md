@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003925"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği 'nde geçici bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -148,8 +148,8 @@ Bu testi pratik hale getirmek için programınız programın şunları yapmasın
 
 **ConnectRetryCount** ve **ConnectRetryInterval** parametreleri, **SqlConnection** nesnenizin, programınız için denetim döndüren veya bothering olmadan Connect işlemini yeniden denemesini sağlar. Yeniden denemeler aşağıdaki durumlarda oluşabilir:
 
-- mySqlConnection. Open Yöntem çağrısı
-- mySqlConnection.Exeşirin Yöntem çağrısı
+- SqlConnection. Open Yöntem çağrısı
+- SqlConnection.Exeşirin Yöntem çağrısı
 
 Bir alt tcellik vardır. *Sorgunuz* yürütülürken geçici bir hata oluşursa, **SqlConnection** nesneniz bağlantı işlemini yeniden denemez. Sorgunuzu kesinlikle yeniden denemez. Ancak, **SqlConnection** yürütme için sorgunuzu göndermeden önce bağlantıyı çok hızlı denetler. Hızlı denetim bir bağlantı sorunu algılarsa, **SqlConnection** bağlantı işlemini yeniden dener. Yeniden deneme başarılı olursa, sorgunuz yürütme için gönderilir.
 
@@ -276,7 +276,7 @@ Enterprise Library 6 (EntLib60), günlüğe kaydetmeye yardımcı olacak .NET y�
 
 Hata günlüklerini ve diğer bilgileri sorgulayan bazı Transact-SQL SELECT deyimleri aşağıda verilmiştir.
 
-| Günlük sorgusu | Description |
+| Günlük sorgusu | Açıklama |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) görünümü, geçici hatalara veya bağlantı hatalarına neden olabilecek bazı olaylar hakkında bilgi sunar.<br/><br/>İdeal olarak, **start_time** veya **end_time** değerlerini, istemci programınızın sorun yaşadığında ilgili bilgilerle ilişkilendirebiliriz.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) görünümü, ek Tanılamalar için toplanan olay türleri sayısını sunar.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |

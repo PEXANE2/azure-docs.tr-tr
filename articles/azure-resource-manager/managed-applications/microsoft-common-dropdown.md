@@ -3,45 +3,74 @@ title: Açılan Kullanıcı arabirimi öğesi
 description: Azure portal için Microsoft. Common. DropDown Kullanıcı arabirimi öğesini açıklar. Yönetilen bir uygulamayı dağıttığınızda kullanılabilir seçenekler arasından seçim yapmak için kullanın.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5eac1d331bd439ad4066d1dea1b9aa950fcce60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004502"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown UI öğesi
 
-Açılan liste içeren seçim denetimi.
+Açılan liste içeren seçim denetimi. Yalnızca tek bir öğe veya birden çok öğe seçimine izin verebilirsiniz. Ayrıca, isteğe bağlı olarak öğelerle birlikte bir açıklama ekleyebilirsiniz.
 
 ## <a name="ui-sample"></a>UI örneği
 
-![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
+DropDown öğesi, portalda görünüşünü belirleyen farklı seçeneklere sahiptir.
+
+Seçim için yalnızca tek bir öğeye izin verildiğinde, denetim şöyle görünür:
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-1.png" alt-text="Microsoft. Common. DropDown tek seçim":::
+
+Açıklamalar dahil edildiğinde, denetim şöyle görünür:
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Açıklamalarla birlikte Microsoft. Common. DropDown tek seçim":::
+
+Çoklu seçim etkinleştirildiğinde denetim, birden fazla öğe seçmek için bir **Tümünü Seç** seçeneği ve onay kutuları ekler:
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown çoklu seçim":::
+
+Açıklamalar çoklu seçim etkinleştirilmiş olarak dahil edilebilir.
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. Common. DropDown çoklu seçme açıklamalarını içeren":::
+
+Filtreleme etkinken denetim, filtreleme değerini eklemek için bir metin kutusu içerir.
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown çoklu seçme açıklamalarını içeren":::
 
 ## <a name="schema"></a>Şema
 
 ```json
 {
-  "name": "element1",
-  "type": "Microsoft.Common.DropDown",
-  "label": "Example drop down",
-  "defaultValue": "Value two",
-  "toolTip": "",
-  "constraints": {
-    "allowedValues": [
-      {
-        "label": "Value one",
-        "value": "one"
-      },
-      {
-        "label": "Value two",
-        "value": "two"
-      }
-    ],
-    "required": true
-  },
-  "visible": true
+    "name": "element1",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Example drop down",
+    "defaultValue": "Value two",
+    "toolTip": "",
+    "multiselect": true,  
+    "selectAll": true,  
+    "filter": true,  
+    "filterPlaceholder": "Filter items ...",  
+    "multiLine": true,  
+    "defaultDescription": "A value for selection",  
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Value one",
+                "description": "The value to select for option 1.",
+                "value": "one"
+            },
+            {
+                "label": "Value two",
+                "description": "The value to select for option 2.",
+                "value": "two"
+            }
+        ],
+        "required": true
+    },
+    "visible": true
 }
 ```
 
@@ -53,10 +82,14 @@ Açılan liste içeren seçim denetimi.
 
 ## <a name="remarks"></a>Açıklamalar
 
+- `multiselect`Kullanıcıların birden fazla öğe seçip seçmeyeceğini belirtmek için kullanın.
+- , Varsayılan olarak `selectAll` `true` Çoklu seçim etkindir.
+- `filter`Özelliği, kullanıcıların uzun bir seçenek listesi içinde arama yapmasına olanak sağlar.
 - Etiketi, `constraints.allowedValues` bir öğe için görüntüleme metintir ve değeri seçildiğinde öğenin çıkış değeridir.
 - Belirtilmişse, varsayılan değer içinde bulunan bir etiket olmalıdır `constraints.allowedValues` . Belirtilmemişse, içindeki ilk öğe `constraints.allowedValues` seçilir. Varsayılan değer **null**.
 - `constraints.allowedValues`en az bir öğe olmalıdır.
 - Zorunlu olmayan bir değere öykünmek için, etiketi ve değeri `""` (boş dize) olan bir öğe ekleyin `constraints.allowedValues` .
+- `defaultDescription`Özelliği, açıklaması olmayan öğeler için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

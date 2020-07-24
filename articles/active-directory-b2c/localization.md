@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005387"
 ---
-# <a name="localization"></a>Yerelleştirme
+# <a name="localization-element"></a>Yerelleştirme öğesi
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -56,7 +56,7 @@ ms.locfileid: "85204192"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| DefaultLanguage | Evet | Yerelleştirilmiş kaynaklar için varsayılan olarak kullanılacak dil. |
+| DefaultLanguage | Yes | Yerelleştirilmiş kaynaklar için varsayılan olarak kullanılacak dil. |
 | MergeBehavior | Hayır | Aynı tanımlayıcıya sahip bir üst ilkede bulunan tüm ClaimType ile birlikte birleştirilmiş değerlerin sabit listesi değerleri. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append` , `Prepend` , veya `ReplaceAll` . `Append`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyonun sonuna eklenmesi gerektiğini belirtir. `Prepend`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyondan önce eklenmesi gerektiğini belirtir. `ReplaceAll`Değer, üst ilkede tanımlanan veri koleksiyonunun, bunun yerine geçerli ilkede tanımlanan veriler kullanılarak yoksayılacağını belirtir. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
@@ -73,7 +73,7 @@ ms.locfileid: "85204192"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Yerelleştirilmiş kaynakları benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcı. |
+| Id | Yes | Yerelleştirilmiş kaynakları benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcı. |
 
 **Localizedresources** öğesi aşağıdaki öğeleri içerir:
 
@@ -96,9 +96,9 @@ ms.locfileid: "85204192"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ElementType | Evet | İlke dosyasında bir ClaimType öğesine veya bir kullanıcı arabirimi öğesine başvurur. |
-| ElementID | Evet | **ElementType** bir ClaimType olarak ayarlandıysa kullanılan ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içeren bir dize. |
-| TargetCollection | Evet | Hedef koleksiyon. |
+| ElementType | Yes | İlke dosyasında bir ClaimType öğesine veya bir kullanıcı arabirimi öğesine başvurur. |
+| ElementID | Yes | **ElementType** bir ClaimType olarak ayarlandıysa kullanılan ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içeren bir dize. |
+| TargetCollection | Yes | Hedef koleksiyon. |
 
 **Localizedcollection** öğesi aşağıdaki öğeleri içerir:
 
@@ -110,8 +110,8 @@ ms.locfileid: "85204192"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Metin | Evet | Bu seçenek için Kullanıcı arabiriminde kullanıcıya gösterilmesi gereken kullanıcı dostu görüntüleme dizesi. |
-| Değer | Evet | Bu seçeneği belirleyerek ilişkili dize talep değeri. |
+| Metin | Yes | Bu seçenek için Kullanıcı arabiriminde kullanıcıya gösterilmesi gereken kullanıcı dostu görüntüleme dizesi. |
+| Değer | Yes | Bu seçeneği belirleyerek ilişkili dize talep değeri. |
 | SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
 
 Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösterir. Biri Ingilizce ve diğeri Ispanyolca için olmak üzere iki **Localizedcollection** öğesi içerir. Her ikisi de, bir öğenin **kısıtlama** koleksiyonunu `Gender` İngilizce ve İspanyolca için bir öğe listesiyle ayarlayın.
@@ -146,9 +146,9 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ElementType | Evet | Olası değerler: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [getlocalizedstringstransformationclaimtype](#getlocalizedstringstransformationclaimtype), [koşul](#predicate), [ınputvalidation](#inputvalidation)veya [uxelement](#uxelement).   | 
-| ElementID | Evet | **ElementType** , veya olarak ayarlandıysa `ClaimType` , `Predicate` `InputValidation` Bu öğe claimsschema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içerir. |
-| StringID | Evet | **ElementType** olarak ayarlandıysa `ClaimType` , bu öğe bir talep türü özniteliğine başvuru içerir. Olası değerler: `DisplayName` , `AdminHelpText` , veya `PatternHelpText` . `DisplayName`Değer, talep görünen adını ayarlamak için kullanılır. `AdminHelpText`Değer, talep kullanıcısının yardım metni adını ayarlamak için kullanılır. `PatternHelpText`Değer, talep deseninin yardım metnini ayarlamak için kullanılır. **ElementType** olarak ayarlandıysa `UxElement` , bu öğe bir kullanıcı arabirimi öğesinin özniteliğine bir başvuru içerir. **ElementType** olarak ayarlandıysa `ErrorMessage` , bu öğe bir hata iletisinin tanımlayıcısını belirtir. Tanımlayıcıların tüm listesi için bkz. [Yerelleştirme dize kimlikleri](localization-string-ids.md) `UxElement` .|
+| ElementType | Yes | Olası değerler: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [getlocalizedstringstransformationclaimtype](#getlocalizedstringstransformationclaimtype), [koşul](#predicate), [ınputvalidation](#inputvalidation)veya [uxelement](#uxelement).   | 
+| ElementID | Yes | **ElementType** , veya olarak ayarlandıysa `ClaimType` , `Predicate` `InputValidation` Bu öğe claimsschema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içerir. |
+| StringID | Yes | **ElementType** olarak ayarlandıysa `ClaimType` , bu öğe bir talep türü özniteliğine başvuru içerir. Olası değerler: `DisplayName` , `AdminHelpText` , veya `PatternHelpText` . `DisplayName`Değer, talep görünen adını ayarlamak için kullanılır. `AdminHelpText`Değer, talep kullanıcısının yardım metni adını ayarlamak için kullanılır. `PatternHelpText`Değer, talep deseninin yardım metnini ayarlamak için kullanılır. **ElementType** olarak ayarlandıysa `UxElement` , bu öğe bir kullanıcı arabirimi öğesinin özniteliğine bir başvuru içerir. **ElementType** olarak ayarlandıysa `ErrorMessage` , bu öğe bir hata iletisinin tanımlayıcısını belirtir. Tanımlayıcıların tüm listesi için bkz. [Yerelleştirme dize kimlikleri](localization-string-ids.md) `UxElement` .|
 
 ## <a name="elementtype"></a>ElementType
 

@@ -3,13 +3,14 @@ title: UI tanımı öğeleri oluşturma
 description: Azure portal için Kullanıcı arabirimi tanımları oluştururken kullanılacak öğeleri açıklar.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 07/13/2020
 ms.author: tomfitz
-ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221e4dc2e909561c70b1cd1b86df026619c2b31f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77086712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004316"
 ---
 # <a name="createuidefinition-elements"></a>Createuıdefinition öğeleri
 
@@ -34,9 +35,9 @@ Bu makalede bir Createuıdefinition öğesinin tüm desteklenen öğelerinin şe
 
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
-| name | Evet | Bir öğenin belirli bir örneğine başvurmak için bir iç tanımlayıcı. Öğe adının en yaygın kullanımı, `outputs` belirtilen öğelerin çıkış değerlerinin şablonun parametreleriyle eşlendiği yerdir. Ayrıca, bir öğenin çıkış değerini başka bir öğenin öğesine bağlamak için de kullanabilirsiniz `defaultValue` . |
-| tür | Evet | Öğesi için işlenecek Kullanıcı arabirimi denetimi. Desteklenen türlerin listesi için bkz. [öğeleri](#elements). |
-| etiket | Evet | Öğenin görüntüleme metni. Bazı öğe türleri birden çok etiket içerir, bu nedenle değer birden fazla dize içeren bir nesne olabilir. |
+| name | Yes | Bir öğenin belirli bir örneğine başvurmak için bir iç tanımlayıcı. Öğe adının en yaygın kullanımı, `outputs` belirtilen öğelerin çıkış değerlerinin şablonun parametreleriyle eşlendiği yerdir. Ayrıca, bir öğenin çıkış değerini başka bir öğenin öğesine bağlamak için de kullanabilirsiniz `defaultValue` . |
+| tür | Yes | Öğesi için işlenecek Kullanıcı arabirimi denetimi. Desteklenen türlerin listesi için bkz. [öğeleri](#elements). |
+| etiket | Yes | Öğenin görüntüleme metni. Bazı öğe türleri birden çok etiket içerir, bu nedenle değer birden fazla dize içeren bir nesne olabilir. |
 | Değerinin | Hayır | Öğesinin varsayılan değeri. Bazı öğe türleri karmaşık varsayılan değerleri destekler, bu yüzden değer bir nesne olabilir. |
 | Ipucuna | Hayır | Öğenin araç ipucunda görüntülenecek metin. Benzer şekilde `label` , bazı öğeler birden çok araç ipucu dizesini destekler. Satır içi bağlantılar markın sözdizimi kullanılarak gömülebilir.
 | kısıtlamaları | Hayır | Öğesinin doğrulama davranışını özelleştirmek için kullanılan bir veya daha fazla özellik. Kısıtlamaların desteklenen özellikleri öğe türüne göre farklılık gösterir. Bazı öğe türleri doğrulama davranışının özelleştirilmesini desteklemez ve bu nedenle kısıtlama özelliğine sahip değildir. |
@@ -47,12 +48,14 @@ Bu makalede bir Createuıdefinition öğesinin tüm desteklenen öğelerinin şe
 
 Her bir öğe için belge, Kullanıcı arabirimi örneği, şema, öğe (genellikle doğrulama ve desteklenen özelleştirme ile ilgili) ve örnek çıkış gibi bir kullanıcı arabirimi örneği, şema, açıklamalar içerir.
 
+- [Microsoft. Common. CheckBox](microsoft-common-checkbox.md)
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
 - [Microsoft. Common. Infobox](microsoft-common-infobox.md)
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
+- [Microsoft. Common. Slider](microsoft-common-slider.md)
 - [Microsoft. Common. TagsByResource](microsoft-common-tagsbyresource.md)
 - [Microsoft. Common. TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
@@ -62,6 +65,8 @@ Her bir öğe için belge, Kullanıcı arabirimi örneği, şema, öğe (genelli
 - [Microsoft. Managedıdentity. ıdentityselector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
+- [Microsoft. Solutions. ArmApiControl](microsoft-solutions-armapicontrol.md)
+- [Microsoft. Solutions. ResourceSelector](microsoft-solutions-resourceselector.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 

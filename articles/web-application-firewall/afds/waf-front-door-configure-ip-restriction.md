@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
-ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336104"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005625"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure ön kapısı için Web uygulaması güvenlik duvarıyla bir IP kısıtlama kuralı yapılandırma
 
@@ -31,13 +31,13 @@ Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle
 ### <a name="create-a-waf-policy"></a>WAF ilkesi oluşturma
 
 1. Azure portal, **kaynak oluştur**' u seçin, arama kutusuna **Web uygulaması güvenlik duvarı** yazın ve ardından **Web uygulaması güvenlik duvarı (WAF)** seçeneğini belirleyin.
-2. **Oluştur**'u seçin.
+2. **Oluştur**’u seçin.
 3. **BIR WAF Ilkesi oluştur** sayfasında, **temel bilgiler** sekmesini gerçekleştirmek için aşağıdaki değerleri kullanın:
    
    |Ayar  |Değer  |
    |---------|---------|
    |İlke     |Global WAF (ön kapı)|
-   |Abonelik     |Aboneliğinizi seçme|
+   |Abonelik     |Aboneliğinizi seçin|
    |Kaynak grubu     |Ön kapılarınızın olduğu kaynak grubunu seçin.|
    |İlke adı     |İlkeniz için bir ad yazın|
    |İlke durumu     |Etkin|
@@ -58,17 +58,17 @@ Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle
    |Öncelik    |100|
    |Eşleşme türü     |IP adresi|
    |Match değişkeni|RemoteAddr|
-   |Çalışma|İçermez|
+   |İşlem|İçermez|
    |IP adresi veya aralığı|10.10.10.0/24|
    |Ardından|Trafiği reddetme|
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Özel kural":::
 
-   **Add (Ekle)** seçeneğini belirleyin.
+   **Ekle**’yi seçin.
 6. **İleri: ilişkilendirme**öğesini seçin.
 7. **Ön uç Konağı Ekle**' yi seçin.
 8. **Ön uç Konağı**için ön uç konağını seçin ve **Ekle**' yi seçin.
-9. **İncele ve oluştur**’u seçin.
+9. **Gözden geçir ve oluştur**’u seçin.
 10. İlke doğrulamanız geçtikten sonra **Oluştur**' u seçin.
 
 ### <a name="test-your-waf-policy"></a>WAF ilkenizi test etme
@@ -168,7 +168,7 @@ Bir IP kısıtlama ilkesini yapılandırmaya başlamadan önce, PowerShell ortam
 #### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
 Azure PowerShell, Azure kaynaklarını yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir cmdlet kümesi sağlar.
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizi kullanarak PowerShell 'de oturum açmak için sayfasındaki yönergeleri izleyin ve sonra az Module ' ü kullanın.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizi kullanarak PowerShell 'de oturum açmak için sayfasındaki yönergeleri izleyin ve sonra az Module ' ü kullanın.
 
 1. Aşağıdaki komutu kullanarak Azure 'a bağlanın ve ardından oturum açmak için etkileşimli bir iletişim kutusu kullanın.
     ```

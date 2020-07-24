@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
-ms.openlocfilehash: 4d6b984fd451a835afaa51482f0158e9f315f8fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22273cf23e48de62d99a8c149ae3e2b1c05db3af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82130925"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005438"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Log Analytics kullanarak Application Gateway Web Uygulaması Güvenlik Duvarı Günlüklerini inceleme
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Application Gateway Web uygulaması güvenlik duvarı (WAF) günlüklerini incelemek için Log Analytics kullanma
 
 Application Gateway WAF çalışmaya başladıktan sonra, her istekte ne olduğunu incelemek için günlükleri etkinleştirebilirsiniz. Güvenlik Duvarı günlükleri WAF 'nin değerlendirme, eşleştirme ve engelleme hakkında fikir verir. Azure Izleyici Log Analytics ile, daha da fazla öngörü sağlamak için güvenlik duvarı günlüklerinin içindeki verileri inceleyebilirsiniz. Log Analytics çalışma alanı oluşturma hakkında daha fazla bilgi için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md). Günlük sorguları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/log-query/log-query-overview.md).
 

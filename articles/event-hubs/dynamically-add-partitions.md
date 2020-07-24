@@ -3,12 +3,12 @@ title: Azure Event Hubs bir olay hub 'ına dinamik olarak bölüm ekleme
 description: Bu makalede, Azure Event Hubs 'te bir olay hub 'ına dinamik olarak bölüm ekleme konusu gösterilmektedir.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ea0477dcc695c7a2fb936daadc3679c94bfac12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317939"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002548"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Azure Event Hubs bir olay hub 'ına (Apache Kafka konuya) dinamik olarak bölüm ekleme
 Event Hubs her bir tüketicinin ileti akışında yalnızca belirli bir alt küme ya da bölümü okuduğu bölünmüş bir tüketici modeli aracılığıyla ileti akışı sağlar. Bu model, olay işleme için yatay ölçek sağlar ve kuyruklar ile konularda kullanılamayan diğer akış odaklı özellikleri sunar. Bölüm bir olay hub'ında tutulan olayların sıralı dizisidir. Daha yeni olaylar geldikçe, bu sıranın sonuna eklenir. Genel olarak bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-scalability.md#partitions)
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>CLI
-Bir olay hub 'ındaki bölümleri güncelleştirmek için [az eventhubs eventhub Update](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) CLI komutunu kullanın. 
+[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update)Bir olay hub 'ındaki bölümleri güncelleştirmek için CLI komutunu kullanın. 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -64,7 +64,7 @@ az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-na
 ## <a name="event-hubs-clients"></a>Event Hubs istemcileri
 Bir olay hub 'ında bölüm sayısı güncelleştirilirken Event Hubs istemcilerinin nasıl davranacağını inceleyelim. 
 
-Mevcut bir çift hub 'a bir bölüm eklediğinizde, Olay Hub 'ı istemcisi bu hizmetten "MessagingException" değerini alır ve bu da istemcilere varlık meta verileri (varlık, Olay Hub 'ınız ve meta veriler bölüm bilgileri olduğunu gösterir) değiştirilmiştir. İstemciler AMQP bağlantılarını otomatik olarak yeniden açar ve ardından değiştirilen meta veri bilgilerini seçer. İstemciler normal olarak çalışır.
+Var olan bir hub 'a bir bölüm eklediğinizde, Olay Hub 'ı istemcisi, `MessagingException` istemcilere varlık meta verilerinin (varlık, Olay Hub 'ınız ve meta verileri bölüm bilgileri olduğunu) bildiren bir hizmet alır. İstemciler AMQP bağlantılarını otomatik olarak yeniden açar ve ardından değiştirilen meta veri bilgilerini seçer. İstemciler normal olarak çalışır.
 
 ### <a name="senderproducer-clients"></a>Sender/Producer istemcileri
 Event Hubs üç gönderici seçeneği sağlar:
@@ -84,7 +84,7 @@ Event Hubs doğrudan alıcılar ve [olay Işlemcisi Konağı (eskı SDK)](event-
 ## <a name="apache-kafka-clients"></a>Apache Kafka istemcileri
 Bu bölümde, bir olay hub 'ı için bölüm sayısı güncelleştirildiği zaman Azure Event Hubs 'ın Kafka uç noktasını kullanan Apache Kafka istemcilerinin nasıl davranacağını açıklanmaktadır. 
 
-Apache Kafka protokolle Event Hubs kullanan Kafka istemcileri AMQP protokolünü kullanan Olay Hub istemcilerinden farklı şekilde davranır. Kafka istemcileri, her milisaniyede bir meta verilerini güncelleştirir `metadata.max.age.ms` . Bu değeri istemci yapılandırmalarında belirtirsiniz. `librdkafka`Kitaplıklar aynı yapılandırmayı de kullanır. Meta veri güncelleştirmeleri, bölüm sayısı arttıkça birlikte hizmet değişikliklerinin istemcilerine bildirir. Yapılandırmaların listesi için bkz. [Event Hubs için Apache Kafka yapılandırması](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+Apache Kafka protokolle Event Hubs kullanan Kafka istemcileri AMQP protokolünü kullanan Olay Hub istemcilerinden farklı şekilde davranır. Kafka istemcileri, her milisaniyede bir meta verilerini güncelleştirir `metadata.max.age.ms` . Bu değeri istemci yapılandırmalarında belirtirsiniz. `librdkafka`Kitaplıklar aynı yapılandırmayı de kullanır. Meta veri güncelleştirmeleri, bölüm sayısı arttıkça birlikte hizmet değişikliklerinin istemcilerine bildirir. Yapılandırmaların listesi için bkz. [Event Hubs için Apache Kafka yapılandırması](apache-kafka-configurations.md).
 
 ### <a name="senderproducer-clients"></a>Sender/Producer istemcileri
 Üreticileri her zaman her bir üretilen kayıt kümesi için bölüm hedefini içeren gönderme isteklerini belirler. Bu nedenle, tüm oluşturma bölümlendirme işlemi, üreticinin aracısının meta verilerinin görünümü ile istemci tarafında yapılır. Yeni bölümler üreticinin meta veri görünümüne eklendikten sonra, bunlar üretici istekleri için kullanılabilir olacaktır.
@@ -100,7 +100,7 @@ Bir tüketici grubu üyesi bir meta veri yenilemesi gerçekleştirdiğinde ve ye
     > Mevcut veriler sıralamayı korur, ancak bölümlerin eklenmesi nedeniyle bölüm sayısı değiştirildikten sonra karma iletiler için bölüm karma değeri bozulur.
 - Mevcut bir konuya veya Olay Hub örneğine bölüm eklemek aşağıdaki durumlarda önerilir:
     - Olayların gönderilmesi için hepsini bir kez deneme (varsayılan) yöntemini kullandığınızda
-     - Kafka varsayılan bölümleme stratejileri, örnek – Kyassignor stratejisi
+     - Kafka varsayılan bölümleme stratejileri, örnek: yapışkan Atamaveya strateji
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

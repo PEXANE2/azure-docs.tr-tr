@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 3756e7d1f58c37038347888a21d98326cd4eb71f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006322"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>HDInsight ile verilere erişimi kısıtlamak için Azure Depolama Paylaşılan Erişim İmzaları kullanma
 
@@ -25,13 +25,13 @@ HDInsight, kümeyle ilişkili Azure depolama hesaplarında bulunan verilere tam 
 > [!WARNING]  
 > HDInsight, küme için varsayılan depolamaya tam erişime sahip olmalıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Var olan bir [depolama kapsayıcısı](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
+* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir.
 
 * Azure CLı 'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, bkz. [Azure CLI 'Yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -86,7 +86,7 @@ Her yöntemin sonunda üretilen SAS belirtecini kaydedin. Belirteç aşağıdaki
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
 ```
 
-### <a name="using-powershell"></a>PowerShell’i kullanma
+### <a name="using-powershell"></a>PowerShell'i kullanma
 
 `RESOURCEGROUP`, `STORAGEACCOUNT` Ve `STORAGECONTAINER` değerlerini mevcut depolama Kapsayıcınız için uygun değerlerle değiştirin. Dizini değiştirin `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` veya `-File` parametresi için mutlak yolu içerecek şekilde düzeltin `Set-AzStorageblobcontent` . Aşağıdaki PowerShell komutunu girin:
 

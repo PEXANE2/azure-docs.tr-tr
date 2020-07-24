@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98afd1eb1f8a73c2d6dd3f293a07cdb70780d238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311574"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004775"
 ---
 # <a name="pricing-and-associated-costs"></a>Fiyatlandırma ve ilişkili maliyetler
 
@@ -54,7 +54,7 @@ Ayarlarınızı değiştirmek için:
 
 Aşağıdaki tabloda, her bir seçeneğin ilişkili maliyetlerinin ve etkilerine ilişkin bir özet verilmektedir.
 
-|     | Kullanım | Yorum |
+| Seçenek | Kullanım | Yorum |
 | --- | --- | --- |
 | **Log Analytics depolama** |  |
 | Cihaz önerisi ve uyarılar| Hizmet tarafından oluşturulan güvenlik önerisi ve uyarılar | İsteğe bağlı değil |

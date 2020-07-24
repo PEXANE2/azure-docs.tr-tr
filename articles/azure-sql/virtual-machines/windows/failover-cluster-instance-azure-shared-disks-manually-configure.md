@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 4e704a25e0c9700afbe4fa85031d7ff4d6a8d0c1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965679"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003636"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan di
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -157,7 +157,7 @@ Kullanıcı arabirimini kullanarak kümeyi doğrulamak için sanal makinelerden 
 1. **Sunucu veya küme Seç**altında, her iki sanal makinenin adını da girin.
 1. **Test seçenekleri**altında **yalnızca Seçdiğim Testleri Çalıştır**' ı seçin. 
 1. **İleri**’yi seçin.
-1. **Test seçimi**altında, **depolama alanları doğrudan** *hariç* tüm testleri seçin.
+1. **Test seçimi**altında, **depolama** *hariç* tüm testleri seçin
 
 ## <a name="test-cluster-failover"></a>Test kümesi yük devretmesi
 
@@ -181,9 +181,7 @@ Yük devretme kümesini ve depolama dahil tüm küme bileşenlerini yapılandır
 
 1. **Yeni SQL Server yük devretme kümesi yüklemesi ' ni**seçin. SQL Server FCı 'yi yüklemek için sihirbazdaki yönergeleri izleyin.
 
-   FCı veri dizinlerinin kümelenmiş depolamada olması gerekir. Depolama Alanları Doğrudan, paylaşılan bir disk değildir, ancak her sunucuda bir birime bağlama noktasıdır. Depolama Alanları Doğrudan, birimi her iki düğüm arasında eşitler. Birim, kümeye bir Küme Paylaşılan Birimi (CSV) olarak sunulur. Veri dizinleri için CSV bağlama noktasını kullanın.
-
-   ![Veri dizinleri](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
+FCı veri dizinlerinin Azure Paylaşılan disklerinde olması gerekir. 
 
 1. Sihirbazdaki yönergeleri tamamladıktan sonra, kurulum ilk düğümde bir SQL Server FCı yükler.
 

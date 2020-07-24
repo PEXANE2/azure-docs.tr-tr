@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 80481bc11933b0404079221f23b5054024f00acb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811357"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002939"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure portal Cloud Services yönetme
 Azure portal **Cloud Services** alanında şunları yapabilirsiniz:
@@ -76,7 +77,7 @@ Başarılı bir dağıtım takası için iki temel önkoşul vardır:
 
 - Üretim yuvalarınız için statik bir IP adresi kullanmak istiyorsanız, hazırlama yuvalarınız için bir tane de ayırmanız gerekir. Aksi takdirde, değiştirme başarısız olur.
 
-- Değiştirme işlemini gerçekleştirebilmeniz için rollerinizin tüm örneklerinin çalışıyor olması gerekir. Örneklerinizin durumunu Azure portal **genel bakış** dikey penceresinde kontrol edebilirsiniz. Alternatif olarak, Windows PowerShell 'de [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) komutunu da kullanabilirsiniz.
+- Değiştirme işlemini gerçekleştirebilmeniz için rollerinizin tüm örneklerinin çalışıyor olması gerekir. Örneklerinizin durumunu Azure portal **genel bakış** dikey penceresinde kontrol edebilirsiniz. Alternatif olarak, Windows PowerShell 'de [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) komutunu da kullanabilirsiniz.
 
 Konuk işletim sistemi güncelleştirmelerinin ve hizmet düzeltme işlemlerinin de dağıtım yamasının başarısız olmasına neden olabileceğini unutmayın. Daha fazla bilgi için bkz. [Cloud Service dağıtım sorunlarını giderme](cloud-services-troubleshoot-deployment-problems.md).
 

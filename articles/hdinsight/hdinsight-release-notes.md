@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 0481f92666c8ca547dc427e117f9917afb257629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef243d5b151f95a00e22ac7636a46b93090ccce3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006543"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -62,4 +62,4 @@ HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ed
 Zeppelin, dize biçimi için tablo çıktısında baştaki sıfırları yanlış bir şekilde kırpmıştı. Bu sorunu bu sürümde düzelttik.
 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
-Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.

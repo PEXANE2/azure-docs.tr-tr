@@ -3,12 +3,12 @@ title: Windows sistem durumunu Azure 'a yedekleme
 description: Windows Server ve/veya Windows bilgisayarlarının sistem durumunu Azure 'a yedeklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611450"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003843"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Windows sistem durumunu Azure 'a yedekleme
 
@@ -40,7 +40,7 @@ Kurtarma Hizmetleri kasası oluşturduğunuzda, depolama yedekliliğinin istedi�
 
     ![depolama yapılandırması seçenekleri](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    Varsayılan olarak, kasanız coğrafi olarak yedekli depolamaya sahiptir. Azure'ı birincil yedek depolama uç noktası olarak kullanıyorsanız, **Coğrafi olarak yedekli** seçeneğini kullanmaya devam edin. Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin. [Coğrafi olarak yedekli](../storage/common/storage-redundancy-grs.md) ve [yerel olarak yedekli](../storage/common/storage-redundancy-lrs.md) depolama seçenekleri hakkında daha fazla bilgiyi [Depolama yedekliliğine genel bakış](../storage/common/storage-redundancy.md) bölümünden edinebilirsiniz.
+    Varsayılan olarak, kasanız coğrafi olarak yedekli depolamaya sahiptir. Azure'ı birincil yedek depolama uç noktası olarak kullanıyorsanız, **Coğrafi olarak yedekli** seçeneğini kullanmaya devam edin. Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin. [Coğrafi olarak yedekli](../storage/common/storage-redundancy.md) ve [yerel olarak yedekli](../storage/common/storage-redundancy.md) depolama seçenekleri hakkında daha fazla bilgiyi [Depolama yedekliliğine genel bakış](../storage/common/storage-redundancy.md) bölümünden edinebilirsiniz.
 
 Artık bir kasa oluşturduğunuza göre, Windows sistem durumunu yedeklemek için yapılandırın.
 
@@ -174,7 +174,7 @@ Aracı artık yüklenmiş ve makineniz kasaya kaydedilmiştir. Yedeklemenizi yap
 
 5. Sihirbazı kapatmak için **Kapat**'a tıklayın. Yedekleme işlemi tamamlanmadan önce sihirbazı kapatırsanız, sihirbaz arka planda çalışmaya devam eder.
     > [!NOTE]
-    > MARS Aracısı, her sistem durumu yedeklemesinden önce ön denetimlerin parçası olarak yalnızca SFC/verifyonly 'yi tetikler. Bu, sistem durumunun bir parçası olarak Yedeklenen dosyaların Windows sürümüne karşılık gelen doğru sürümlere sahip olduğundan emin olmak için gereklidir. [Bu makalede](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc)sistem dosyası DENETLEYICISI (Sfc) hakkında daha fazla bilgi edinin.
+    > MARS Aracısı, her sistem durumu yedeklemesinden önce ön denetimlerin parçası olarak yalnızca SFC/verifyonly 'yi tetikler. Bu, sistem durumunun bir parçası olarak Yedeklenen dosyaların Windows sürümüne karşılık gelen doğru sürümlere sahip olduğundan emin olmak için gereklidir. [Bu makalede](/windows-server/administration/windows-commands/sfc)sistem dosyası DENETLEYICISI (Sfc) hakkında daha fazla bilgi edinin.
     >
 
 İlk yedekleme tamamlandıktan sonra, Yedekleme konsolunda **İş tamamlandı** durumu görünür.

@@ -3,12 +3,12 @@ title: Azure Event Hubs-farklı protokoller kullanarak Exchange olayları
 description: Bu makalede, Azure Event Hubs kullanılırken farklı protokoller (AMQP, Apache Kafka ve HTTPS) kullanan tüketiciler ve üreticileri olayları nasıl değiş tokuş edebilir gösterilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ec3122dcf151fe3e7b7b9578725e810ddca22bdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320613"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002514"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Farklı protokoller kullanan tüketiciler ve üreticileri arasında Exchange olayları: AMQP, Kafka ve HTTPS
 Azure Event Hubs, tüketiciler ve üreticileri için üç protokolü destekler: AMQP, Kafka ve HTTPS. Bu protokollerin her birinin bir iletiyi temsil eden kendi yolu vardır. bu nedenle, bir uygulama bir olay hub 'ına bir protokol ile olayları gönderirse ve farklı bir protokolle kullanırsa, olayın çeşitli parçaları ve değerleri tüketiciye ulaştığında nasıl görünür? Bu makalede, bir olay içindeki değerlerin, tüketen uygulama tarafından doğru şekilde yorumlandığından emin olmak için hem üretici hem de tüketici için en iyi yöntemler açıklanmaktadır.
@@ -331,7 +331,7 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Event Hubs nasıl akışa alınacağını öğrendiniz. Kafka için Event Hubs ve Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
 
-* [Event Hubs hakkında bilgi edinin](event-hubs-what-is-event-hubs.md)
+* [Event Hubs hakkında bilgi edinin](./event-hubs-about.md)
 * [Kafka için Event Hubs hakkında bilgi edinin](event-hubs-for-kafka-ecosystem-overview.md)
 * [Kafka için Event Hubs GitHub'ındaki diğer örnekleri keşfedin](https://github.com/Azure/azure-event-hubs-for-kafka)
 * [Bulutta Event Hubs Için Kafka şirket içi olayları akışa](event-hubs-kafka-mirror-maker-tutorial.md) almak üzere [mirrormaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 'ı kullanın.

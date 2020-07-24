@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4778ea7781d181a89e7a6b2d6c4ad5d474e9b5c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005948"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows için Azure seri konsol
 
@@ -38,7 +38,7 @@ Linux için seri konsol belgeleri için bkz. [Linux Için Azure seri konsolu](se
 
 - Seri konsol kullanan hesabınızda VM ve [önyükleme tanılama](boot-diagnostics.md) depolama hesabı Için [sanal makine katılımcısı rolü](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) olmalıdır
 
-- VM 'niz veya sanal makine ölçek kümesi örneğinizin parola tabanlı bir kullanıcısı olmalıdır. VM erişimi uzantısının [parola sıfırlama](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) işleviyle bir tane oluşturabilirsiniz. **Destek + sorun giderme** bölümünde **Parolayı Sıfırla** ' yı seçin.
+- VM 'niz veya sanal makine ölçek kümesi örneğinizin parola tabanlı bir kullanıcısı olmalıdır. VM erişimi uzantısının [parola sıfırlama](../extensions/vmaccess.md#reset-password) işleviyle bir tane oluşturabilirsiniz. **Destek + sorun giderme** bölümünde **Parolayı Sıfırla** ' yı seçin.
 
 * Sanal makine ölçek kümesi örneği için VM 'nin [önyükleme tanılaması](boot-diagnostics.md) etkinleştirilmiş olması gerekir.
 
@@ -50,7 +50,7 @@ Linux için seri konsol belgeleri için bkz. [Linux Için Azure seri konsolu](se
 > Seri konsolda hiçbir şey görmüyorsanız, VM 'niz veya sanal makine ölçek kümesinde önyükleme tanılaması 'nın etkinleştirildiğinden emin olun.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Özel veya eski görüntülerde seri konsolunu etkinleştirme
-Azure 'da daha yeni Windows Server görüntülerinin varsayılan olarak etkin olan [Özel Yönetim Konsolu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (sac) vardır. SAC, Windows 'un sunucu sürümlerinde desteklenir, ancak istemci sürümlerinde (örneğin, Windows 10, Windows 8 veya Windows 7) kullanılamaz.
+Azure 'da daha yeni Windows Server görüntülerinin varsayılan olarak etkin olan [Özel Yönetim Konsolu](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10)) (sac) vardır. SAC, Windows 'un sunucu sürümlerinde desteklenir, ancak istemci sürümlerinde (örneğin, Windows 10, Windows 8 veya Windows 7) kullanılamaz.
 
 Eski Windows Server yansımaları için (2018 Şubat 'tan önce oluşturulan), seri konsolu Azure portal Çalıştır komutu özelliği aracılığıyla otomatik olarak etkinleştirebilirsiniz. Azure portal, **Çalıştır komutunu**seçin ve ardından listeden **enableems** adlı komutu seçin.
 
@@ -76,11 +76,11 @@ Gerekirse, SAC çevrimdışı olarak da etkinleştirilebilir:
 
 #### <a name="how-do-i-know-if-sac-is-enabled"></a>Nasıl yaparım? SAC 'nin etkinleştirilip etkinleştirilmediğini bilir mi?
 
-[Sac](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) etkinleştirilmemişse, SERI konsol sac istemi 'ni görüntülemez. Bazı durumlarda, VM sistem durumu bilgileri gösterilir ve diğer durumlarda boş olur. 2018 Şubat 'tan önce oluşturulmuş bir Windows Server görüntüsü kullanıyorsanız, SAC büyük olasılıkla etkinleştirilmez.
+[Sac](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10)) etkinleştirilmemişse, SERI konsol sac istemi 'ni görüntülemez. Bazı durumlarda, VM sistem durumu bilgileri gösterilir ve diğer durumlarda boş olur. 2018 Şubat 'tan önce oluşturulmuş bir Windows Server görüntüsü kullanıyorsanız, SAC büyük olasılıkla etkinleştirilmez.
 
 ### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>Seri konsolundaki Windows önyükleme menüsünü etkinleştirin
 
-Windows önyükleme yükleyicisi komut istemlerini seri konsolunda görüntülemesi gerekirse, önyükleme yapılandırma verilerinize aşağıdaki ek seçenekleri ekleyebilirsiniz. Daha fazla bilgi için bkz. [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set).
+Windows önyükleme yükleyicisi komut istemlerini seri konsolunda görüntülemesi gerekirse, önyükleme yapılandırma verilerinize aşağıdaki ek seçenekleri ekleyebilirsiniz. Daha fazla bilgi için bkz. [bcdedit](/windows-hardware/drivers/devtest/bcdedit--set).
 
 1. Uzak Masaüstü 'Nü kullanarak Windows sanal makinmenize veya sanal makine ölçek kümesi örneğine bağlanın.
 
@@ -126,7 +126,7 @@ Windows 'u bir NMI aldığında kilitlenme döküm dosyası oluşturmak üzere y
 İşlev anahtarları Windows VM 'lerinde seri konsol kullanımı için etkinleştirilmiştir. Seri konsol açılan menüsünde F8, gelişmiş önyükleme ayarları menüsünü kolayca girmeye kolaylık sağlar, ancak seri konsol diğer tüm işlev anahtarlarıyla uyumludur. **Fn**  +  Seri konsol kullanmakta olduğunuz bilgisayara bağlı olarak, klavyenizde FN**F1** (veya F2, F3, vb.) tuşlarına basmanız gerekebilir.
 
 ### <a name="use-wsl-in-serial-console"></a>Seri konsolda WSL kullanma
-Linux için Windows alt sistemi (WSL) Windows Server 2019 veya üzeri için etkinleştirilmiştir, bu nedenle Windows Server 2019 veya sonraki bir sürümünü çalıştırıyorsanız, seri konsol içinde kullanmak üzere WSL 'yi etkinleştirmek de mümkündür. Bu, Linux komutlarına alışkın olan kullanıcılar için yararlı olabilir. Windows Server için WSL 'yi etkinleştirme yönergeleri için bkz. [Yükleme Kılavuzu](https://docs.microsoft.com/windows/wsl/install-on-server).
+Linux için Windows alt sistemi (WSL) Windows Server 2019 veya üzeri için etkinleştirilmiştir, bu nedenle Windows Server 2019 veya sonraki bir sürümünü çalıştırıyorsanız, seri konsol içinde kullanmak üzere WSL 'yi etkinleştirmek de mümkündür. Bu, Linux komutlarına alışkın olan kullanıcılar için yararlı olabilir. Windows Server için WSL 'yi etkinleştirme yönergeleri için bkz. [Yükleme Kılavuzu](/windows/wsl/install-on-server).
 
 ### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>Windows VM/sanal makine ölçek kümesi örneğinizi seri konsol içinde yeniden başlatın
 Güç düğmesine gidip "VM 'yi yeniden Başlat" seçeneğine tıklayarak seri konsol içinde yeniden başlatma başlatabilirsiniz. Bu işlem bir VM yeniden başlatması başlatır ve Azure portal içinde yeniden başlatma ile ilgili bir bildirim görürsünüz.
@@ -147,7 +147,7 @@ Seri konsol erişimi, sanal makine [katılımcısı](../../role-based-access-con
 İleri ve geri gönderilen tüm veriler kabloda şifrelenir.
 
 ### <a name="audit-logs"></a>Denetim günlükleri
-Seri konsoluna tüm erişim şu anda sanal makinenin [önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) günlüklerinde oturum açtı. Bu günlüklere erişim, Azure sanal makine yöneticisi tarafından sahiplenilir ve denetlenir.
+Seri konsoluna tüm erişim şu anda sanal makinenin [önyükleme tanılama](./boot-diagnostics.md) günlüklerinde oturum açtı. Bu günlüklere erişim, Azure sanal makine yöneticisi tarafından sahiplenilir ve denetlenir.
 
 > [!CAUTION]
 > Konsolun hiçbir erişim parolası günlüğe kaydedilmez. Ancak, konsolda çalıştırılan komutlar, parola, gizli dizileri, Kullanıcı adlarını veya herhangi bir kişisel olarak tanımlanabilir bilgi (PII) gibi bir diğer biçimi içeriyorsa, bunlar VM önyüklemesi tanılama günlüklerine yazılır. Seri konsolunun geri Kaydır işlevi uygulamasının bir parçası olarak, diğer tüm görünür metinle birlikte yazılır. Bu Günlükler dairesel ve yalnızca tanılama depolama hesabı için okuma iznine sahip olan bireyler bunlara erişebilir. Ancak, gizli dizi ve/veya PII içerebilen herhangi bir şey için Uzak Masaüstü kullanmanın en iyi yöntemini takip etmenizi öneririz.
@@ -161,7 +161,7 @@ Bir Kullanıcı seri konsoluna bağlandıysa ve başka bir kullanıcı aynı san
 ## <a name="accessibility"></a>Erişilebilirlik
 Erişilebilirlik, Azure seri konsolu için önemli bir odadır. Bu uçta, seri konsolunun görme engelli kişiler veya işitme güçlüğü çeken kişilerin yanı sıra fare kullanamayacak kişiler için erişilebilir olduğunu duyduk.
 
-### <a name="keyboard-navigation"></a>Klavye ile gezinme
+### <a name="keyboard-navigation"></a>Klavye ile gezinti
 Azure portal seri konsol arabiriminde gezinmek için klavyenizde **Tab** tuşunu kullanın. Konumunuz ekranda vurgulanacaktır. Seri konsol penceresinin odağını bırakmak için klavyenizde **CTRL** + **F6** tuşuna basın.
 
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>Seri konsolu 'nu ekran okuyucu ile kullanma
@@ -173,7 +173,7 @@ Senaryo          | Seri konsolundaki eylemler
 :------------------|:-----------------------------------------
 Yanlış güvenlik duvarı kuralları | Seri konsoluna erişin ve Windows güvenlik duvarı kurallarını onarın.
 Dosya sistemi Bozulması/denetimi | Seri konsoluna erişin ve dosya sistemini kurtarın.
-RDP yapılandırma sorunları | Seri konsoluna erişin ve ayarları değiştirin. Daha fazla bilgi için bkz. [RDP belgeleri](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
+RDP yapılandırma sorunları | Seri konsoluna erişin ve ayarları değiştirin. Daha fazla bilgi için bkz. [RDP belgeleri](/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
 Ağ kilitleme sistemi | Sistemi yönetmek için Azure portal seri konsoluna erişin. Bazı ağ komutları [Windows komutları: cmd ve PowerShell](serial-console-cmd-ps-commands.md)içinde listelenmiştir.
 Önyükleme yükleyicisine etkileşim | Seri konsol aracılığıyla BCD 'ye erişin. Bilgi için, bkz. [seri konsolundaki Windows önyükleme menüsünü etkinleştirme](#enable-the-windows-boot-menu-in-the-serial-console).
 

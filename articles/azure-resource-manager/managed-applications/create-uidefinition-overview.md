@@ -3,32 +3,35 @@ title: Portal bölmesi için dosya CreateUiDefinition.js
 description: Azure portal için Kullanıcı arabirimi tanımlarının nasıl oluşturulacağını açıklar. Azure yönetilen uygulamaları tanımlarken kullanılır.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ee489e8b596adf0767856e3358c9bdcb17fbb6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004383"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure tarafından yönetilen uygulamanın oluşturma deneyimi için CreateUiDefinition.json
 
-Bu belgede, Azure portal yönetilen bir uygulama oluştururken Kullanıcı arabirimini tanımlamak için kullanılan **createUiDefinition.js** dosyadaki temel kavramlar tanıtılmaktadır.
+Bu belgede **createUiDefinition.js** dosyadaki temel kavramlar tanıtılmaktadır. Azure portal, yönetilen bir uygulama oluştururken Kullanıcı arabirimini tanımlamak için bu dosyayı kullanır.
 
 Şablon aşağıdaki gibidir
 
 ```json
 {
-   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-   "handler": "Microsoft.Azure.CreateUIDef",
-   "version": "0.1.2-preview",
-   "parameters": {
-      "basics": [ ],
-      "steps": [ ],
-      "outputs": { },
-      "resourceTypes": [ ]
-   }
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Azure.CreateUIDef",
+    "version": "0.1.2-preview",
+    "parameters": {
+        "config": {
+            "basics": { }
+        },
+        "basics": [ ],
+        "steps": [ ],
+        "outputs": { },
+        "resourceTypes": [ ]
+    }
 }
 ```
 
@@ -36,23 +39,109 @@ Createuıdefinition her zaman üç özellik içerir:
 
 * Iy
 * sürüm
-* parametreler
+* parameters
 
 İşleyici her zaman `Microsoft.Azure.CreateUIDef` ve desteklenen en son sürüm olmalıdır `0.1.2-preview` .
 
-Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler `basics` , ve ' dir `steps` `outputs` . Temel bilgiler ve adımlar özellikleri, Azure portal görüntülenecek metin kutuları ve açılan [öğeler](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıkış değerlerini Azure Resource Manager dağıtım şablonunun parametreleriyle eşlemek için kullanılır.
+Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler,, ve ' dir `basics` `steps` `outputs` `config` . Temel bilgiler ve adımlar özellikleri, Azure portal görüntülenecek metin kutuları ve açılan [öğeler](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıkış değerlerini Azure Resource Manager şablonunun parametreleriyle eşlemek için kullanılır. `config`Yalnızca adımın varsayılan davranışını geçersiz kılmanız gerektiğinde kullanırsınız `basics` .
 
 Dahil edilmesi `$schema` önerilir, ancak isteğe bağlıdır. Belirtilmişse, değeri `version` URI içindeki sürümle eşleşmelidir `$schema` .
 
 Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir, ardından bunu önizlemek için [Createuıdefinition korumalı](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) alanında test edebilirsiniz. Korumalı alan hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için Portal arabiriminizi test](test-createuidefinition.md)etme.
 
-## <a name="basics"></a>Temel Bilgiler
+## <a name="basics"></a>Temel bilgiler
 
-Temel bilgiler, Azure portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Portal, içinde belirtilen öğeleri görüntülemenin yanı sıra, `basics` kullanıcıların abonelik, kaynak grubu ve dağıtımın konumunu seçmesi için öğeleri çıkarır. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım çapındaki parametreleri sorgulayan öğeler bu adımda ilerlemelidir.
+**Temel kavramlar** adımı Azure Portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Varsayılan olarak, temel bilgiler, kullanıcıların dağıtım için abonelik, kaynak grubu ve konum seçmesini sağlar.
+
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Temel bilgiler varsayılan":::
+
+Bu bölüme daha fazla öğe ekleyebilirsiniz. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım genelindeki parametreleri sorgulayan öğeleri ekleyin.
+
+Aşağıdaki örnek, varsayılan öğelere eklenen bir metin kutusunu gösterir.
+
+```json
+"basics": [
+    {
+        "name": "textBox1",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Textbox on basics",
+        "defaultValue": "my text value",
+        "toolTip": "",
+        "visible": true
+    }
+]
+```
+
+## <a name="config"></a>Config
+
+Temel adımlar için varsayılan davranışı geçersiz kılmanız gerektiğinde yapılandırma öğesini belirtirsiniz. Aşağıdaki örnek, kullanılabilir özellikleri gösterir.
+
+```json
+"config": {  
+    "basics": {  
+        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
+        "subscription": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                    },
+                    {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                    }
+                ]
+            },
+            "resourceProviders": [ "<Resource Provider>" ]
+        },
+        "resourceGroup": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                    }
+                ]
+            },
+            "allowExisting": true
+        },
+        "location": {  
+            "label": "Custom label for location",  
+            "toolTip": "provide a useful tooltip",  
+            "resourceTypes": [ "Microsoft.Compute/virtualMachines" ],
+            "allowedValues": [ "eastus", "westus2" ],  
+            "visible": true  
+        }  
+    }  
+},  
+```
+
+İçin `description` kaynağını açıklayan markaşağı etkin bir dize sağlayın. Çok satırlı biçim ve bağlantılar desteklenir.
+
+İçin `location` , geçersiz kılmak istediğiniz konum denetimi özelliklerini belirtin. Geçersiz kılınmayan özellikler, varsayılan değerlerine ayarlanır. `resourceTypes`tam kaynak türü adlarını içeren bir dize dizisini kabul eder. Konum seçenekleri yalnızca kaynak türlerini destekleyen bölgelerle kısıtlıdır.  `allowedValues`   bir bölge dizesi dizisini kabul eder. Yalnızca bu bölgeler açılan menüde görünür.Hem hem de ayarlayabilirsiniz `allowedValues`    `resourceTypes` . Sonuç, her iki listenin kesişmesi olur. Son olarak, `visible` özellik konum açılan listesini koşullu veya tamamen devre dışı bırakmak için kullanılabilir.  
+
+`subscription`Ve `resourceGroup` öğeleri ek doğrulamalar belirtmenize olanak tanır. Doğrulamaları belirtmenin sözdizimi, [metin kutusu](microsoft-common-textbox.md)için özel doğrulama ile aynıdır. Ayrıca `permission` , abonelik veya kaynak grubunda doğrulama belirtebilirsiniz.  
+
+Abonelik denetimi, kaynak sağlayıcısı ad alanlarının listesini kabul eder. Örneğin, **Microsoft. COMPUTE**belirtebilirsiniz. Kullanıcı kaynak sağlayıcısını desteklemeyen bir abonelik seçtiğinde bir hata iletisi gösterir. Bu hata, kaynak sağlayıcısı bu abonelikte kayıtlı olmadığında ve kullanıcının kaynak sağlayıcısını kaydetme izni yoksa oluşur.  
+
+Kaynak grubu denetimi için bir seçeneği vardır `allowExisting` . Ne zaman `true` , kullanıcılar zaten kaynakları olan kaynak gruplarını seçebilir. Bu bayrak en çok çözüm şablonları için geçerlidir; burada varsayılan davranış, kullanıcıların yeni veya boş bir kaynak grubu seçmesini sağlamalıdır. Çoğu senaryoda, bu özelliğin belirtilmesi gerekli değildir.  
 
 ## <a name="steps"></a>Adımlar
 
-Steps özelliği, her biri bir veya daha fazla öğe içeren temel kavramlar sonrasında görüntülenecek sıfır veya daha fazla ek adım içerebilir. Dağıtılan uygulamanın rol veya katmanına göre adımları eklemeyi düşünün. Örneğin, ana düğüm girişleri için bir adım ve bir kümedeki çalışan düğümlerine yönelik bir adım ekleyin.
+Steps özelliği, temel esadan sonra görüntülenecek sıfır veya daha fazla ek adım içerir. Her adım bir veya daha fazla öğe içerir. Dağıtılan uygulamanın rol veya katmanına göre adımları eklemeyi düşünün. Örneğin, ana düğüm girişleri için bir adım ve bir kümedeki çalışan düğümlerine yönelik bir adım ekleyin.
+
+```json
+"steps": [
+    {
+        "name": "demoConfig",
+        "label": "Configuration settings",
+        "elements": [
+          ui-elements-needed-to-create-the-instance
+        ]
+    }
+]
+```
 
 ## <a name="outputs"></a>Çıkışlar
 
@@ -80,9 +169,9 @@ Kullanılabilir konumları yalnızca dağıtılacak kaynak türlerini destekleye
     "handler": "Microsoft.Azure.CreateUIDef",
     "version": "0.1.2-preview",
     "parameters": {
-      "resourceTypes": ["Microsoft.Compute/disks"],
-      "basics": [
-        ...
+        "resourceTypes": ["Microsoft.Compute/disks"],
+        "basics": [
+          ...
 ```  
 
 ## <a name="functions"></a>İşlevler

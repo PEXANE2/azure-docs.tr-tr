@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970543"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003824"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -51,6 +51,10 @@ Bir kurtarma hizmetleri Kasası oluşturmak için aşağıdaki adımları izleyi
       > Veri kaynağınızın konumundan emin değilseniz iletişim kutusunu kapatın. Portaldaki kaynaklarınızın listesine gidin. Birden çok bölgede veri kaynaklarınız varsa, her bölge için bir kurtarma hizmetleri Kasası oluşturun. Kasayı, başka bir konum için oluşturmadan önce ilk konumda oluşturun. Yedekleme verilerini depolamak için depolama hesapları belirtmeniz gerekmez. Kurtarma Hizmetleri kasası ve Azure Backup tanıtıcısı otomatik olarak yapılır.
       >
       >
+
+1. Değerleri sağladıktan sonra, **gözden geçir + oluştur**' u seçin.
+
+    ![Kurtarma Hizmetleri kasasını oluşturma](./media/backup-create-rs-vault/review-and-create.png)
 
 1. Kurtarma Hizmetleri kasasını oluşturmaya hazırsanız **Oluştur**' u seçin.
 

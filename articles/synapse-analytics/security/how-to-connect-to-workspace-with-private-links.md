@@ -1,5 +1,5 @@
 ---
-title: Özel bağlantıları kullanarak bir Azure SYNAPSE çalışma alanına bağlanma
+title: Özel bağlantıları kullanarak bir Synapse çalışma alanına bağlanma
 description: Bu makalede, özel bağlantıları kullanarak Azure SYNAPSE çalışma alanınıza nasıl bağlanabileceğiniz anlatılmaktadır
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17636bf993df5105093ca690e36db22493a2472e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193881"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005982"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Özel bağlantıları kullanarak Azure SYNAPSE çalışma alanınıza bağlanma (Önizleme)
 
@@ -47,7 +47,7 @@ Ileri ' yi seçin: Kurulum 'un bir sonraki bölümüne ilerlemek için **yapıla
 
 **Yapılandırma** sekmesinde, Özel uç noktanın oluşturulması gereken **sanal ağı** ve **alt ağı** seçin. Ayrıca özel uç nokta ile eşleşen bir DNS kaydı oluşturmanız gerekir.
 
-Özel uç noktanızı özel bir DNS bölgesiyle bütünleştirmek için özel **DNS bölgesi Ile tümleştir** için **Evet** ' i seçin. VNet 'iniz ile ilişkili özel bir DNS bölgesi yoksa, yeni bir özel DNS bölgesi oluşturulur. Tamamlandığında **gözden geçir + oluştur** ' u seçin.
+Özel uç noktanızı özel bir DNS bölgesiyle bütünleştirmek için özel **DNS bölgesi Ile tümleştir** için **Evet** ' i seçin. Microsoft Azure Sanal Ağ ilişkili özel bir DNS bölgeniz yoksa, yeni bir özel DNS bölgesi oluşturulur. Tamamlandığında **gözden geçir + oluştur** ' u seçin.
 
 ![Abonelik ve bölge ayrıntılarını seçin](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
@@ -57,7 +57,7 @@ Dağıtım tamamlandığında, Azure SYNAPSE çalışma alanınızı Azure porta
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Yönetilen çalışma alanı VNET](./synapse-workspace-managed-vnet.md) hakkında daha fazla bilgi edinin
+[Yönetilen çalışma alanı sanal ağı](./synapse-workspace-managed-vnet.md) hakkında daha fazla bilgi edinin
 
 [Yönetilen özel uç noktalar](./synapse-workspace-managed-private-endpoints.md) hakkında daha fazla bilgi edinin
 

@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: f620ced1bc859e5c824b45839a21ab21d0244d89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd7a0fe60639bbb17661a906d15136996b325e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005455"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door için bir etki alanında coğrafi filtreleme nedir?
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>Azure ön kapı hizmeti için bir etki alanında coğrafi filtreleme nedir?
 
 Azure Front Door Hizmeti, varsayılan olarak kullanıcı isteklerine, isteğin geldiği konumdan bağımsız olarak yanıt verir. Ancak bazı durumlarda, Web uygulamalarınıza olan erişimi ülkeye/bölgeye göre kısıtlamak isteyebilirsiniz. Ön kapıda Web uygulaması güvenlik duvarı (WAF) hizmeti, belirli ülkelerde/bölgelerde erişime izin vermek veya erişimi engellemek için uç noktanıza özel erişim kuralları kullanarak bir ilke tanımlamanızı sağlar. 
 

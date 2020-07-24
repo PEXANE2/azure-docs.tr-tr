@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 843a51ca04ae4256ed21912268443595a5f36083
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005727"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows VM 'yi Amazon Web Services (AWS) 'den Azure sanal makinesine taşıma
 
 İş yüklerinizi barındırmak için Azure sanal makinelerini değerlendiriyorsanız, mevcut bir Amazon Web Services (AWS) EC2 Windows sanal makıne örneğini dışa aktarabilir ve ardından sanal sabit diski (VHD) Azure 'a yükleyebilirsiniz. VHD karşıya yüklendikten sonra, VHD 'den Azure 'da yeni bir VM oluşturabilirsiniz. 
 
-Bu makalede, AWS 'den Azure 'a tek bir VM 'nin taşınması ele alınmaktadır. AWS 'den Azure 'a sanal makineleri ölçekli olarak taşımak istiyorsanız, bkz. [Amazon Web Services (AWS) sanal makinelerini Azure Site Recovery Azure 'A geçirme](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+Bu makalede, AWS 'den Azure 'a tek bir VM 'nin taşınması ele alınmaktadır. AWS 'den Azure 'a sanal makineleri ölçekli olarak taşımak istiyorsanız, bkz. [Amazon Web Services (AWS) sanal makinelerini Azure Site Recovery Azure 'A geçirme](../../site-recovery/migrate-tutorial-aws-azure.md).
 
 ## <a name="prepare-the-vm"></a>VM’yi hazırlama 
  

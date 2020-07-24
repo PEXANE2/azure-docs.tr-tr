@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2c5ef71059fd3ba96299624818a13ebe1ae0929b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a25625e085ee07a2dc036fd40f70e6b0376b42a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737861"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003891"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server sağlamak için Azure PowerShell kullanma
 
@@ -152,7 +152,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Sanal makine, işletim sistemi diski ve SQL Server veri ve günlük dosyaları için depolama kaynakları gerektirir. Kolaylık olması için her ikisi için tek bir disk oluşturacaksınız. SQL Server verilerinizi ve günlük dosyalarını ayrılmış disklere yerleştirmek için [Add-Azure disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) cmdlet 'ini kullanarak daha sonra ek diskler ekleyebilirsiniz. Yeni kaynak grubunuzda standart bir depolama hesabı oluşturmak için [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanın. Depolama hesabı adı, depolama SKU adı ve konum için daha önce oluşturduğunuz değişkenleri belirtin.
+Sanal makine, işletim sistemi diski ve SQL Server veri ve günlük dosyaları için depolama kaynakları gerektirir. Kolaylık olması için her ikisi için tek bir disk oluşturacaksınız. SQL Server verilerinizi ve günlük dosyalarını ayrılmış disklere yerleştirmek için [Add-Azure disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) cmdlet 'ini kullanarak daha sonra ek diskler ekleyebilirsiniz. Yeni kaynak grubunuzda standart bir depolama hesabı oluşturmak için [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanın. Depolama hesabı adı, depolama SKU adı ve konum için daha önce oluşturduğunuz değişkenleri belirtin.
 
 Yeni depolama hesabınızı oluşturmak için bu cmdlet 'i çalıştırın.
 
@@ -351,7 +351,7 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
 Yapılandırma adımlarını tamamladığınıza göre, sanal makineyi oluşturmaya hazırsınız demektir. Tanımladığınız değişkenleri kullanarak sanal makineyi oluşturmak için [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanın.
 
 > [!TIP]
-> VM oluşturmak birkaç dakika sürebilir.
+> Sanal makine oluşturulması birkaç dakika sürebilir.
 
 Sanal makinenizi oluşturmak için bu cmdlet 'i çalıştırın.
 

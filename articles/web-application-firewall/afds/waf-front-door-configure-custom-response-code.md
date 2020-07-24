@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 14e4ccdf17647823dc9e1005c1c68a9f1f217b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005608"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Azure Web uygulaması güvenlik duvarı (WAF) için özel bir yanıt yapılandırma
 
@@ -36,7 +37,7 @@ Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntü
 
 Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir dizi cmdlet sunar. 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak ve az PowerShell modülünü yüklemek için sayfadaki yönergeleri izleyin.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak ve az PowerShell modülünü yüklemek için sayfadaki yönergeleri izleyin.
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli iletişim kutusuyla Azure 'a bağlanma
 

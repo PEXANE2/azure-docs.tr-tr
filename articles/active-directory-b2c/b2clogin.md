@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4297ee64742b81e86eb8b85c0a6c405fac07d67f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79807e8e0f798a73063576a00b8d0c32cdfe5a4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386173"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005353"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeniden yönlendirme URL 'Lerini b2clogin.com olarak ayarlayın
 
@@ -89,24 +89,42 @@ Azure AD B2C tarafından korunan Azure API Management API ['leri geçirmek için
 
 ## <a name="microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL)
 
-### <a name="validateauthority-property"></a>ValidateAuthority özelliği
+### <a name="msalnet-validateauthority-property"></a>MSAL.NET ValidateAuthority özelliği
 
-[Msal.net][msal-dotnet] v2 veya daha önceki bir sürümünü kullanıyorsanız, b2clogin.com 'e yeniden yönlendirmeye izin vermek Için **validateauthority** özelliğini `false` istemci örneği oluşturma *b2clogin.com*' ya ayarlayın. Bu ayar MSAL.NET v3 ve üzeri için gerekli değildir.
+[Msal.net][msal-dotnet] v2 veya daha önceki bir sürümünü kullanıyorsanız, b2clogin.com 'e yeniden yönlendirmeye izin vermek Için **validateauthority** özelliğini `false` istemci örneği oluşturma *b2clogin.com*' ya ayarlayın. Bu değerin olarak ayarlanması `false` msal.net v3 ve üzeri için gerekli değildir.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```
 
-[JavaScript Için msal][msal-js]kullanıyorsanız:
+### <a name="msal-for-javascript-validateauthority-property"></a>JavaScript için MSAL validateAuthority özelliği
+
+JavaScript v 1.2.2 veya daha önceki bir sürümü [Için msal][msal-js] kullanıyorsanız, **validateauthority** özelliğini olarak ayarlayın `false` .
 
 ```JavaScript
+// MSAL.js v1.2.2 and earlier
 this.clientApplication = new UserAgentApplication(
   env.auth.clientId,
   env.auth.loginAuthority,
   this.authCallback.bind(this),
   {
-    validateAuthority: false
+    validateAuthority: false // Required in MSAL.js v1.2.2 and earlier **ONLY**
+  }
+);
+```
+
+`validateAuthority: true`MSAL.js 1.3.0 + (varsayılan) ' de ayarlarsanız, ile geçerli bir belirteç veren de belirtmeniz gerekir `knownAuthorities` :
+
+```JavaScript
+// MSAL.js v1.3.0+
+this.clientApplication = new UserAgentApplication(
+  env.auth.clientId,
+  env.auth.loginAuthority,
+  this.authCallback.bind(this),
+  {
+    validateAuthority: true, // Supported in MSAL.js v1.3.0+
+    knownAuthorities: ['tenant-name.b2clogin.com'] // Required if validateAuthority: true
   }
 );
 ```

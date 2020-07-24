@@ -3,14 +3,14 @@ title: Terminoloji-kişiselleştirici
 description: Kişiselleştirici, pekiştirmeye dayalı Learning 'teki terminolojiyi kullanır. Bu terimler Azure portal ve API 'lerde kullanılır.
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8177606ac6e968bd287a23554be7b9dd06d880a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002871"
 ---
-# <a name="terminology"></a>Terminoloji
+# <a name="personalizer-terminology"></a>Kişiselleştirici terminolojisi
 
 Kişiselleştirici, pekiştirmeye dayalı Learning 'teki terminolojiyi kullanır. Bu terimler Azure portal ve API 'lerde kullanılır.
 

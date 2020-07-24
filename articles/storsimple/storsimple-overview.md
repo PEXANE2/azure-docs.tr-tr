@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965110"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006033"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 serisi: karma bulut depolama çözümü
 
@@ -59,7 +60,7 @@ Microsoft Azure StorSimple çözümü aşağıdaki bileşenleri içerir:
 * **StorSimple Cloud Appliance** – StorSimple Sanal gereci olarak da bilinen, bu, fiziksel karma depolama cihazının mimarisini ve yeteneklerini çoğaltan StorSimple cihazının bir yazılım sürümüdür. StorSimple Cloud Appliance, bir Azure sanal makinesinde tek bir düğümde çalışır. Azure Premium Storage 'ın avantajlarından yararlanan Premium sanal cihazlar güncelleştirme 2 ve sonrasında kullanılabilir.
 * **Storsimple Aygıt Yöneticisi hizmeti** : bir StorSimple cihazını veya StorSimple Cloud Appliance tek bir web arabiriminden yönetmenizi sağlayan bir Azure Portal uzantısı. StorSimple Aygıt Yöneticisi hizmetini kullanarak hizmetleri oluşturabilir ve yönetebilir, cihazları görüntüleyebilir ve yönetebilir, uyarıları görüntüleyebilir, birimleri yönetebilir, yedekleme ilkelerini ve yedekleme kataloğunu görüntüleyebilir ve yönetebilirsiniz.
 * **StorSimple için Windows PowerShell** : StorSimple cihazını yönetmek için kullanabileceğiniz bir komut satırı arabirimi. StorSimple için Windows PowerShell, StorSimple cihazınızı kaydetmenize, cihazınızda ağ arabirimini yapılandırmanıza, belirli güncelleştirme türlerini yüklemenize, destek oturumuna erişerek cihazınızda sorun gidermenize ve cihaz durumunu değiştirmenize olanak tanıyan özellikler içerir. StorSimple için Windows PowerShell, seri konsoluna bağlanarak veya Windows PowerShell uzaktan iletişimini kullanarak erişebilirsiniz.
-* **Azure PowerShell StorSimple cmdlet 'leri** : komut satırından hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan Windows PowerShell cmdlet 'lerinin bir koleksiyonu. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [cmdlet başvurusuna](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure)gidin.
+* **Azure PowerShell StorSimple cmdlet 'leri** : komut satırından hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan Windows PowerShell cmdlet 'lerinin bir koleksiyonu. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0#azure)gidin.
 * **StorSimple Snapshot Manager** : uygulamayla tutarlı yedeklemeler oluşturmak için birim grupları ve Windows birim gölge kopyası hizmeti kullanan bir MMC ek bileşeni. Ayrıca, StorSimple Snapshot Manager kullanarak yedekleme zamanlamaları oluşturabilir, birimleri kopyalayabilir veya geri yükleyebilirsiniz.
 * **SharePoint Için StorSimple Bağdaştırıcısı** : Microsoft Azure StorSimple depolama ve veri korumasını SharePoint Server gruplarına şeffaf bir şekilde genişleten, StorSimple depolama alanını SharePoint Merkezi Yönetim portalından görüntülenebilir ve yönetilebilir hale getiren bir araç.
 
@@ -128,7 +129,7 @@ Windows PowerShell uzaktan iletişimini kullanarak, bir seri konsolundan (doğru
 Daha fazla bilgi için [cihazınızı yönetmek üzere StorSimple için Windows PowerShell kullanma](storsimple-8000-windows-powershell-administration.md)bölümüne gidin.
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple cmdlet 'leri
-Azure PowerShell StorSimple cmdlet 'leri, komut satırından hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan Windows PowerShell cmdlet 'lerinin bir koleksiyonudur. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [cmdlet başvurusuna](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)gidin.
+Azure PowerShell StorSimple cmdlet 'leri, komut satırından hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan Windows PowerShell cmdlet 'lerinin bir koleksiyonudur. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0)gidin.
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager, yerel ve bulut verilerinin tutarlı, noktadan noktaya yedek kopyalarını oluşturmak için kullanabileceğiniz bir Microsoft Yönetim Konsolu (MMC) ek bileşenidir. Ek bileşen Windows Server tabanlı bir konakta çalışır. StorSimple Snapshot Manager kullanarak şunları yapabilirsiniz:
@@ -207,12 +208,12 @@ Yinelenenleri kaldırma, depolanan veri kümesindeki yedekliliği ortadan kaldı
 ## <a name="storsimple-workload-summary"></a>StorSimple iş yükü Özeti
 Desteklenen StorSimple iş yüklerinin özeti aşağıda verilmiştir.
 
-| Senaryo | İş yükü | Destekleniyor | Kısıtlamalar | Sürüm |
+| Senaryo | İş Yükü | Desteklenir | Kısıtlamalar | Sürüm |
 | --- | --- | --- | --- | --- |
-| İş Birliği |Dosya paylaşımı |Evet | |Tüm sürümler |
-| İş Birliği |Dağıtılmış dosya paylaşımı |Evet | |Tüm sürümler |
-| İş Birliği |SharePoint |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
-| Arşivleme |Basit dosya arşivleme |Evet | |Tüm sürümler |
+| İşbirliği |Dosya paylaşımı |Yes | |Tüm sürümler |
+| İşbirliği |Dağıtılmış dosya paylaşımı |Yes | |Tüm sürümler |
+| İşbirliği |SharePoint |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
+| Arşivleme |Basit dosya arşivleme |Yes | |Tüm sürümler |
 | Sanallaştırma |Sanal makineler |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
 | Veritabanı |SQL |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
 | Video gözetimi |Video gözetimi |Evet* |StorSimple cihazı yalnızca bu iş yüküne ayrılmışsa desteklenir |Güncelleştirme 2 ve üzeri |
@@ -225,7 +226,7 @@ Aşağıdaki iş yükleri StorSimple 8000 serisi cihazlar tarafından desteklenm
 
 * Tıp görüntüleme
 * Exchange
-* VDı
+* VDI
 * Oracle
 * SAP
 * Big Data
@@ -234,9 +235,9 @@ Aşağıdaki iş yükleri StorSimple 8000 serisi cihazlar tarafından desteklenm
 
 Aşağıda, StorSimple desteklenen altyapı bileşenlerinin bir listesi verilmiştir.
 
-| Senaryo | İş yükü | Destekleniyor | Kısıtlamalar | Sürüm |
+| Senaryo | İş Yükü | Desteklenir | Kısıtlamalar | Sürüm |
 | --- | --- | --- | --- | --- |
-| Genel |Express Route |Evet | |Tüm sürümler |
+| Genel |Express Route |Yes | |Tüm sürümler |
 | Genel |DataCore FC |Evet* |DataCore Sansimphony ile desteklenir |Tüm sürümler |
 | Genel |DFSR |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Tüm sürümler |
 | Genel |Dizinleme |Evet* |Katmanlı birimlerde yalnızca meta veri dizinleme desteklenir (veri yok).<br>Yerel olarak sabitlenmiş birimlerde, tam dizin oluşturma desteklenir. |Tüm sürümler |
@@ -251,7 +252,7 @@ Aşağıda, StorSimple ile çözüm oluşturmak için kullanılan diğer yazıl�
 | Yedekleme hedefi |Veeam |Veeab v 9 ve üzeri |[Veahar ile yedekleme hedefi olarak StorSimple](storsimple-configure-backup-target-veeam.md)|
 | Yedekleme hedefi |VERITAS Backup Exec |Backup Exec 16 ve üzeri |[Backup Exec ile bir yedekleme hedefi olarak StorSimple](storsimple-configure-backup-target-using-backup-exec.md)|
 | Yedekleme hedefi |VERITAS NetBackup |NetBackup 7.7. x ve üzeri  |[NetBackup ile bir yedekleme hedefi olarak StorSimple](storsimple-configure-backuptarget-netbackup.md)|
-| Genel dosya paylaşımı <br></br> İş Birliği |Talon  |[Talon ile StorSimple](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
+| Genel dosya paylaşımı <br></br> İşbirliği |Talon  |[Talon ile StorSimple](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple terminolojisi
 Microsoft Azure StorSimple çözümünüzü dağıtmaya başlamadan önce, aşağıdaki hüküm ve tanımları incelemenizi öneririz.

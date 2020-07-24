@@ -3,11 +3,12 @@ title: Azure Backup Sunucusu kullanarak SQL Server yedekleme
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak SQL Server veritabanlarının yedeklenme yapılandırmasını öğrenin.
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003653"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Azure Backup Sunucusu kullanarak SQL Server Azure 'a yedekleme
 
@@ -18,6 +19,34 @@ SQL Server veritabanını yedeklemek ve Azure 'dan kurtarmak için:
 1. Azure 'da SQL Server veritabanlarını korumak için bir yedekleme ilkesi oluşturun.
 1. Azure 'da isteğe bağlı yedekleme kopyaları oluşturun.
 1. Azure 'da veritabanını kurtarın.
+
+## <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
+
+* Uzak bir dosya paylaşımında dosyalar içeren bir veritabanına sahipseniz koruma, Hata Kimliği 104 ile başarısız olur. MABS, uzak bir dosya paylaşımında SQL Server veri korumasını desteklemez.
+* MABS, uzak SMB paylaşımlarında depolanan veritabanlarını koruyamaz.
+* [Kullanılabilirlik grubu çoğaltmalarının salt okuma olarak yapılandırıldığından](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)emin olun.
+* **NTAuthority\System adlı** sistem hesabını SQL Server üzerinde sysadmin grubuna açıkça eklemeniz gerekir.
+* Kısmen kapsanan bir veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [Kapsanan veritabanları](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) özelliğinin etkin olduğundan emin olmanız gerekir.
+* Bir dosya akışı veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [dosya akışı veritabanı](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) özelliğinin etkinleştirildiğinden emin olmanız gerekir.
+* SQL Server AlwaysOn için koruma:
+  * MABS, koruma grubu oluşturma sırasında sorgu çalıştırırken kullanılabilirlik gruplarını algılar.
+  * MABS bir yük devretme algılar ve veritabanını korumaya devam eder.
+  * MABS, bir SQL Server örneği için çok siteli küme yapılandırmasını destekler.
+* AlwaysOn özelliğini kullanan veritabanlarını koruduğunuzda, MABS 'ler aşağıdaki sınırlamalara sahiptir:
+  * MABS, yedekleme tercihlerine göre SQL Server ayarlanan kullanılabilirlik grupları için yedekleme ilkesini aşağıdaki gibi kabul eder:
+    * İkincil olanı tercih et - Birincil çoğaltmanın tek çoğaltma olması durumu haricinde yedeklemekler ikincil çoğaltmada gerçekleşmelidir. Kullanılabilir birden fazla ikincil çoğaltma varsa, yedekleme önceliği en yüksek olan düğüm yedekleme için seçilir. Yalnızca birincil çoğaltma kullanılabilirse, yedekleme birincil çoğaltmada gerçekleşmelidir.
+    * Yalnızca ikincil - Birincil çoğaltmada yedekleme gerçekleştirilmemelidir. Birincil çoğaltma çevrimiçi olan tek çoğaltmaysa, yedekleme gerçekleşmemelidir.
+    * Birincil - Yedeklemeler her zaman birincil çoğaltmada gerçekleşmelidir.
+    * Herhangi Bir Çoğaltma - Kullanılabilirlik grubundaki kullanılabilir çoğaltmaların herhangi birinde yedekleme gerçekleşebilir. Yedeklemenin kaynağı olan düğüm, her düğümün yedekleme önceliklerine dayalı olarak belirlenir.
+  * Şunlara dikkat edin:
+    * Yedeklemeler, tüm okunabilir çoğaltmalardan (birincil, zaman uyumlu ikincil, zaman uyumsuz ikincil) meydana gelebilir.
+    * Herhangi bir çoğaltma yedeklemeden dışlanmazsa, örneğin **çoğaltma dışlama** etkinse veya okunamaz olarak işaretlenmişse, bu çoğaltma, herhangi bir seçeneğin altında yedekleme için seçilmeyecek.
+    * Kullanılabilir ve okunabilir durumda birden fazla çoğaltma varsa, yedekleme önceliği en yüksek olan düğüm yedekleme için seçilir.
+    * Seçili düğümde yedekleme başarısız olursa, yedekleme işlemi başarısız olur.
+    * Özgün konuma kurtarma desteklenmez.
+* SQL Server 2014 veya üzeri yedekleme sorunları:
+  * SQL Server 2014 [, Windows Azure Blob depolama alanında Şirket içi SQL Server için veritabanı](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)oluşturmak üzere yeni bir özellik ekledi. MABS bu yapılandırmayı korumak için kullanılamaz.
+  * SQL AlwaysOn seçeneği için "ikincil tercih et" yedekleme tercihiyle ilgili bazı bilinen sorunlar vardır. MABS her zaman ikincili bir yedekleme alır. İkincil bulunamazsa yedekleme başarısız olur.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -31,7 +60,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 1. Koruma grubu oluşturmak için **Yeni** ' yi seçin.
 
     ![Azure Backup Sunucusu bir koruma grubu oluşturun](./media/backup-azure-backup-sql/protection-group.png)
-1. Başlangıç sayfasında, bir koruma grubu oluşturma kılavuzunu gözden geçirin. Ardından **İleri**' yi seçin.
+1. Başlangıç sayfasında, bir koruma grubu oluşturma kılavuzunu gözden geçirin. Sonra **İleri**’yi seçin.
 1. Koruma grubu türü için **sunucular**' ı seçin.
 
     ![Sunucular koruma grubu türünü seçin](./media/backup-azure-backup-sql/pg-servers.png)
@@ -59,19 +88,19 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
     Varsayılan olarak, MABS veri kaynağı başına bir birim (SQL Server veritabanı) oluşturur. Birim, ilk yedekleme kopyası için kullanılır. Bu yapılandırmada, mantıksal disk Yöneticisi (LDM) MABS korumasını 300 veri kaynağı (SQL Server veritabanları) ile sınırlandırır. Bu kısıtlamayı geçici olarak çözmek için **DPM depolama havuzundaki verileri birlikte Konumlandır**' ı seçin. Bu seçeneği kullanırsanız, MABS birden çok veri kaynağı için tek bir birim kullanır. Bu kurulum, MABS 'in 2.000 SQL Server veritabanlarının korunmasını sağlar.
 
     **Birimleri otomatik olarak Büyüt**' i seçerseniz, mabs 'ler, üretim verileri büyüdükçe artan yedekleme birimi için hesap oluşturabilir. **Birimleri otomatik olarak Büyüt**' i seçmezseniz mabs, yedekleme depolama alanını koruma grubundaki veri kaynaklarıyla sınırlandırır.
-1. Yöneticiyseniz, bu ilk yedeklemeyi **ağ üzerinden otomatik olarak** aktarmayı ve aktarım zamanını seçmenizi seçebilirsiniz. Ya da yedeklemeyi **el ile** aktarmayı seçebilirsiniz. Ardından **İleri**' yi seçin.
+1. Yöneticiyseniz, bu ilk yedeklemeyi **ağ üzerinden otomatik olarak** aktarmayı ve aktarım zamanını seçmenizi seçebilirsiniz. Ya da yedeklemeyi **el ile** aktarmayı seçebilirsiniz. Sonra **İleri**’yi seçin.
 
     ![MABS 'te çoğaltma oluşturma yöntemi seçme](./media/backup-azure-backup-sql/pg-manual.png)
 
     İlk yedekleme kopyası, tüm veri kaynağının (SQL Server veritabanı) aktarılmasını gerektirir. Yedekleme verileri, üretim sunucusundan (SQL Server bilgisayardan) MABS 'ye gider. Bu yedekleme büyükse, verilerin ağ üzerinden aktarılması bant genişliği tıkanıklığı sağlayabilir. Bu nedenle, Yöneticiler ilk yedeklemenin **el ile**aktarılması için çıkarılabilir medya kullanmayı seçebilir. Ya da verileri belirli bir zamanda **ağ üzerinden otomatik olarak** aktarabilirler.
 
     İlk yedekleme tamamlandıktan sonra yedeklemeler ilk yedekleme kopyasında artımlı olarak devam eder. Artımlı yedeklemeler küçük olma eğilimindedir ve ağ üzerinden kolayca aktarılır.
-1. Tutarlılık denetiminin ne zaman çalıştırılacağını seçin. Ardından **İleri**' yi seçin.
+1. Tutarlılık denetiminin ne zaman çalıştırılacağını seçin. Sonra **İleri**’yi seçin.
 
     ![Tutarlılık denetiminin ne zaman çalıştırılacağını seçin](./media/backup-azure-backup-sql/pg-consistent.png)
 
     MABS, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi çalıştırabilir. Üretim sunucusundaki (Bu örnekteki SQL Server bilgisayar) yedekleme dosyasının sağlama toplamını ve bu dosya için MABS içindeki yedeklenen verileri hesaplar. Denetim bir çakışma bulursa, MABS içindeki yedeklenen dosyanın bozuk olduğu varsayılır. MABS, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri düzeltir. Tutarlılık denetimi performansı yoğun bir işlem olduğundan, Yöneticiler tutarlılık denetimini zamanlamayı veya otomatik olarak çalıştırmayı seçebilirler.
-1. Azure 'da korunacak veri kaynaklarını seçin. Ardından **İleri**' yi seçin.
+1. Azure 'da korunacak veri kaynaklarını seçin. Sonra **İleri**’yi seçin.
 
     ![Azure 'da korunacak veri kaynaklarını seçin](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 1. Yöneticiyseniz, kuruluşunuzun ilkelerine uygun olan yedekleme zamanlamaları ve bekletme ilkeleri ' ni seçebilirsiniz.
@@ -135,12 +164,12 @@ Azure 'dan SQL Server veritabanı gibi korumalı bir varlığı kurtarmak için:
 1. Veritabanı adına sağ tıklayın ve **kurtar**' ı seçin.
 
     ![Azure 'dan bir veritabanını kurtarma](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. Ardından **İleri**' yi seçin.
+1. DPM, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. Sonra **İleri**’yi seçin.
 
     ![Veritabanını özgün konumuna kurtar](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     Bu örnekte DPM, veritabanının başka bir SQL Server örneğine veya tek başına bir ağ klasörüne kurtarılmasını sağlar.
-1. **Kurtarma seçeneklerini belirtin** sayfasında kurtarma seçeneklerini belirleyebilirsiniz. Örneğin, kurtarmanın kullandığı bant genişliğini azaltmak için **ağ bant genişliği kullanımını azaltmayı** seçebilirsiniz. Ardından **İleri**' yi seçin.
+1. **Kurtarma seçeneklerini belirtin** sayfasında kurtarma seçeneklerini belirleyebilirsiniz. Örneğin, kurtarmanın kullandığı bant genişliğini azaltmak için **ağ bant genişliği kullanımını azaltmayı** seçebilirsiniz. Sonra **İleri**’yi seçin.
 1. **Özet** sayfasında, geçerli kurtarma yapılandırmasını görürsünüz. **Kurtar**' ı seçin.
 
     Kurtarma durumu kurtarılan veritabanını gösterir. Sihirbazı kapatmak için **Kapat** ' ı seçebilirsiniz ve ilerlemeyi **izleme** çalışma alanında görüntüleyebilirsiniz.

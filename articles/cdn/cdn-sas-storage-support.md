@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 702ea4e76f1fb13a3c7935f131da4ef11d369813
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003007"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS ile Azure CDN kullanma
 
@@ -32,7 +32,7 @@ SAS ile başlangıç ve sona erme zamanları, izinler (okuma/yazma) ve IP aralı
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Depolama SAS ile çalışmak için Azure CDN ayarlama
 Azure CDN ile SAS kullanımı için aşağıdaki üç seçenek önerilir. Tüm seçenekler zaten bir çalışma SAS oluşturmuş olduğunu varsayar (bkz. Önkoşullar). 
  
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Başlamak için bir depolama hesabı oluşturun ve ardından varlığınız için bir SAS oluşturun. İki tür saklı erişim imzası oluşturabilirsiniz: hizmet SAS veya hesap SAS. Daha fazla bilgi için bkz. [paylaşılan erişim Imzaları türleri](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures).
 
 Bir SAS belirteci oluşturduktan sonra, URL 'nize ekleyerek BLOB depolama dosyanıza erişebilirsiniz `?sv=<SAS token>` . Bu URL aşağıdaki biçimdedir: 
@@ -81,7 +81,8 @@ Bu seçenek yalnızca **Verizon profillerden Azure CDN Premium** için kullanıl
    
    Kaynak:   
    `(container1\/.*)`
-   
+
+
    Hedef:   
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D

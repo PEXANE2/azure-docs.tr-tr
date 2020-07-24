@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 845b48d84040343f829648f9c7fda2372e3413dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734750"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005115"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Bir CoreOS sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -23,7 +24,7 @@ Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal ma
 
 Bu makalede, bir CoreOS VM 'sini yönetilen bir etki alanına nasıl katmak gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -41,7 +42,7 @@ Azure 'da mevcut bir CoreOS Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir CoreOS Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalındaki](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -84,7 +85,7 @@ sudo vi /etc/sssd/sssd.conf
 Aşağıdaki parametreler için kendi yönetilen etki alanı adınızı belirtin:
 
 * Tüm büyük durumlarda *etki alanları*
-* *[Domain/aeklemeleri]* , AEKLEMELERI her büyük durumda olduğunda
+* *[Domain/aaddscontoso]* burada AADDSCONTOSO her büyük durumda
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
@@ -96,7 +97,7 @@ config_file_version = 2
 services = nss, pam
 domains = AADDSCONTOSO.COM
 
-[domain/AADDSCONTOSO.COM]
+[domain/AADDSCONTOSO]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad

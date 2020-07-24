@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186206"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004758"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Otomasyonu iş verilerini Azure İzleyici günlüklerine iletme
 
@@ -28,7 +28,7 @@ Azure Otomasyonu, Log Analytics çalışma alanınıza runbook iş durumu ve iş
 
 Otomasyon günlüklerinizi Azure Izleyici günlüklerine göndermeye başlamak için şunlar gerekir:
 
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs/)en son sürümü.
+* [Azure PowerShell](/powershell/azure/)en son sürümü.
 * Log Analytics çalışma alanı. Daha fazla bilgi için bkz. [Azure izleyici günlüklerini kullanmaya başlama](../azure-monitor/overview.md).
 * Azure Otomasyonu hesabınızın kaynak KIMLIĞI.
 
@@ -67,15 +67,15 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak etiketlenen ik
 | Caller_s |İşlemi başlatan arayan. Olası değerler, bir e-posta adresi veya zamanlanan işlere yönelik bir sistemdir. |
 | Tenant_g | Çağıran için kiracıyı tanımlayan GUID. |
 | JobId_g |Runbook işini tanımlayan GUID. |
-| 'I |Runbook işinin durumudur. Olası değerler şunlardır:<br>-Yeni<br>-Oluşturuldu<br>- Başlatıldı<br>- Durduruldu<br>- Askıya alındı<br>- Başarısız oldu<br>-Tamamlandı |
+| ResultType |Runbook işinin durumudur. Olası değerler şunlardır:<br>-Yeni<br>-Oluşturuldu<br>- Başlatıldı<br>- Durduruldu<br>- Askıya alındı<br>- Başarısız oldu<br>-Tamamlandı |
 | Kategori | Veri türü sınıflandırması. Otomasyon için değer JobLogs olacaktır. |
-| ThrottledRequests | Azure 'da gerçekleştirilen işlem türü. Otomasyon için değer Iş olur. |
+| OperationName | Azure 'da gerçekleştirilen işlem türü. Otomasyon için değer Iş olur. |
 | Kaynak | Otomasyon hesabının adı |
 | SourceSystem | Azure Izleyici günlüklerinin verileri toplamak için kullandığı sistem. Azure Tanılama için değer her zaman Azure ' dır. |
 | ResultDescription |Runbook işi sonuç durumu. Olası değerler şunlardır:<br>- İş başlatıldı<br>- İş Başarısız Oldu<br>- İş Tamamlandı |
 | CorrelationId |Runbook işinin bağıntı GUID 'SI. |
 | ResourceId |Runbook 'un Azure Otomasyonu hesabı kaynak KIMLIĞI. |
-| kaynak grubundaki | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
+| SubscriptionId | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
 | ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | Kaynak sağlayıcısı. Değer MICROSOFT. Otomasyon. |
 | ResourceType | Kaynak türü. Değer AUTOMATIONACCOUNTS değeridir. |
@@ -89,15 +89,15 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak etiketlenen ik
 | StreamType_s |İş akışı türü. Olası değerler şunlardır:<br>- İlerleme durumu<br>- Çıktı<br>- Uyarı<br>- Hata<br>- Hata ayıklama<br>- Ayrıntılı |
 | Tenant_g | Çağıran için kiracıyı tanımlayan GUID. |
 | JobId_g |Runbook işini tanımlayan GUID. |
-| 'I |Runbook işinin durumudur. Olası değerler şunlardır:<br>-Devam ediyor |
+| ResultType |Runbook işinin durumudur. Olası değerler şunlardır:<br>-Devam ediyor |
 | Kategori | Veri türü sınıflandırması. Otomasyon için değer JobStreams olacaktır. |
-| ThrottledRequests | Azure 'da gerçekleştirilen işlem türü. Otomasyon için değer Iş olur. |
+| OperationName | Azure 'da gerçekleştirilen işlem türü. Otomasyon için değer Iş olur. |
 | Kaynak | Otomasyon hesabının adı. |
 | SourceSystem | Azure Izleyici günlüklerinin verileri toplamak için kullandığı sistem. Azure Tanılama için değer her zaman Azure ' dır. |
 | ResultDescription |Runbook 'tan çıkış akışını içeren açıklama. |
 | CorrelationId |Runbook işinin bağıntı GUID 'SI. |
 | ResourceId |Runbook 'un Azure Otomasyonu hesabı kaynak KIMLIĞI. |
-| kaynak grubundaki | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
+| SubscriptionId | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
 | ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | Kaynak sağlayıcısı. Değer MICROSOFT. Otomasyon. |
 | ResourceType | Kaynak türü. Değer AUTOMATIONACCOUNTS değeridir. |

@@ -3,12 +3,12 @@ title: Olay Işleyicisi ana bilgisayarı 'nı kullanarak olayları alma-Azure Ev
 description: Bu makalede, Azure Event Hubs 'daki olay Işleyicisi ana bilgisayarı açıklanmaktadır. Bu, denetim noktası oluşturma, kiralama ve okuma olaylarının paralel olarak yönetilmesini basitleştirir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002531"
 ---
 # <a name="event-processor-host"></a>Olay işlemcisi konağı
 > [!NOTE]
@@ -22,7 +22,7 @@ ms.locfileid: "85320647"
 
 Azure Event Hubs, düşük maliyetli milyonlarca olayı akışa almak için kullanılabilen güçlü bir telemetri alma hizmetidir. Bu makalede, *olay Işlemcisi Konağı* (EPH) kullanılarak alınan olayların nasıl kullanılacağı açıklanır; checkişaret, kiralama ve paralel olay okuyucularının yönetimini kolaylaştıran akıllı bir tüketici Aracısı.  
 
-Event Hubs Ölçeklendirilecek anahtar bölümlenmiş tüketicilerinin fikrine yöneliktir. [Rekabet tüketicilerinin](https://msdn.microsoft.com/library/dn568101.aspx) deseninin aksine, bölümlenmiş tüketici deseninin çekişme sorunlarını ortadan kaldırarak ve uçtan uca paralellik için kolaylaştırarak yüksek ölçeklenmesini sağlar.
+Event Hubs Ölçeklendirilecek anahtar bölümlenmiş tüketicilerinin fikrine yöneliktir. [Rekabet tüketicilerinin](/previous-versions/msp-n-p/dn568101(v=pandp.10)) deseninin aksine, bölümlenmiş tüketici deseninin çekişme sorunlarını ortadan kaldırarak ve uçtan uca paralellik için kolaylaştırarak yüksek ölçeklenmesini sağlar.
 
 ## <a name="home-security-scenario"></a>Ana güvenlik senaryosu
 
@@ -162,7 +162,7 @@ Ayrıca, [Registereventprocessorasync](/dotnet/api/microsoft.azure.eventhubs.pro
 Alma süresinin nasıl çalıştığı aşağıda verilmiştir:
 
 ### <a name="with-epoch"></a>Dönem ile
-Dönem, hizmetin kullandığı, Bölüm/kira sahipliğini zorlamak için benzersiz bir tanımlayıcıdır (dönem değeri). [Createdönemler Chahize](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) yöntemini kullanarak dönem tabanlı bir alıcı oluşturun. Bu yöntem, dönem tabanlı bir alıcı oluşturur. Alıcı, belirtilen tüketici grubundan belirli bir olay hub 'ı bölümü için oluşturulur.
+Dönem, hizmetin kullandığı, Bölüm/kira sahipliğini zorlamak için benzersiz bir tanımlayıcıdır (dönem değeri). [Createdönemler Chahize](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) yöntemini kullanarak dönem tabanlı bir alıcı oluşturun. Bu yöntem, dönem tabanlı bir alıcı oluşturur. Alıcı, belirtilen tüketici grubundan belirli bir olay hub 'ı bölümü için oluşturulur.
 
 Dönem özelliği, kullanıcılara, aşağıdaki kurallara göre herhangi bir zamanda bir tüketici grubunda yalnızca bir alıcı olmasını sağlar:
 
@@ -171,7 +171,7 @@ Dönem özelliği, kullanıcılara, aşağıdaki kurallara göre herhangi bir za
 - Bir dönem değeri E1 olan bir alıcı varsa ve bir dönem değeri > E2 ile yeni bir alıcı oluşturulduysa, bu durumda E2 oluşturma işlemi şu hatayla başarısız olur: "dönemi olan bir alıcı zaten var.
 
 ### <a name="no-epoch"></a>Dönem yok
-[Createreceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) yöntemini kullanarak dönem tabanlı olmayan bir alıcı oluşturursunuz. 
+[Createreceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) yöntemini kullanarak dönem tabanlı olmayan bir alıcı oluşturursunuz. 
 
 Akış işlemede, kullanıcıların tek bir tüketici grubunda birden çok alıcı oluşturmak istediğiniz bazı senaryolar vardır. Bu tür senaryoları desteklemek için, dönem olmadan bir alıcı oluşturabilir ve bu durumda tüketici grubunda 5 ' e kadar eşzamanlı alıcıya izin veririz.
 

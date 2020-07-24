@@ -4,11 +4,12 @@ description: Azure VMware çözümü (AVS) ile ilgili bazı yaygın soruların y
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003432"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware çözümü (AVS) önizleme hakkında sık sorulan sorular
 
@@ -84,15 +85,15 @@ Sunucularda 576 GB RAM vardır.
 
 **Her Konağın depolama kapasitesi nedir?**
 
-Her ESXi konağında, 15,2 TB 'lik kapasite katmanı ve 3,2 TB NVMe önbellek katmanı (her diskgroup 'ta 1,6 TB) içeren iki VSAN diskgroups vardır.
+Her ESXi konağında, 15,2 TB 'lik kapasite katmanı ve 3,2 TB NVMe önbellek katmanı (her diskgroup 'ta 1,6 TB) içeren iki vSAN diskgroups vardır.
 
 **Her ESXi konağında kullanılabilir ağ bant genişliği miktarı nedir?**
 
 ESXi Konakları, 25 Gbps 'e kadar bağlantı bant genişliğini destekler.
 
-**Veriler, bekleyen VSAN veri depoları üzerinde mi depolanıyor?**
+**Veriler, bekleyen vSAN veri depoları üzerinde mi depolanıyor?**
 
-Evet, tüm VSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak varsayılan olarak şifrelenir.
+Evet, tüm vSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak varsayılan olarak şifrelenir.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Konaklar, kümeler ve özel bulutlar
 
@@ -136,7 +137,7 @@ Hayır, NSX 'i şirket içinde kullanmak zorunda değilsiniz.
 
 **Özel buluttaki VMware yazılımı için yükseltme ve güncelleştirme zamanlaması nedir?**
 
-Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümünde tutmak için yapılır. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, VSAN) farklı olabilir.
+Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümünde tutmak için yapılır. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, vSAN) farklı olabilir.
 
 **Özel bulut yazılım yığını ne sıklıkla güncelleştirilir?**
 
@@ -215,7 +216,7 @@ Bir [destek isteği göndererek](..\azure-portal\supportability\how-to-create-az
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+> Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
 
 1. Azure portal, **Yardım + Destek**altında, **Yeni bir destek isteği** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
    - **Sorun türü:** Teknik

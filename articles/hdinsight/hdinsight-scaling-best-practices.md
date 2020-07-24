@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006459"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
 HDInsight, kümelerinizdeki çalışan düğümlerinin sayısını artırma ve azaltma seçenekleri sayesinde esneklik sağlar. Bu esneklik, bir kümeyi saat veya hafta sonları ile küçültmenize olanak sağlar. Ve yoğun iş taleplerine göre genişletin.
 
-Kümede yeterli kaynak olması için periyodik toplu işlemeden önce kümenizi ölçeklendirin. İşlem tamamlandıktan sonra ve kullanım azaldığında, HDInsight kümesini daha az çalışan düğümü olarak ölçeklendirin.
+Kümede yeterli kaynak olması için periyodik toplu işlemeden önce kümenizi ölçeklendirin.  İşlem tamamlandıktan sonra ve kullanım azaldığında, HDInsight kümesini daha az çalışan düğümü olarak ölçeklendirin.
 
 Aşağıda özetlenen yöntemlerden birini kullanarak bir kümeyi el ile ölçekleyebilirsiniz. Ayrıca, belirli ölçümlere yanıt olarak ölçeği otomatik olarak genişletmek ve daraltmak için otomatik [ölçeklendirme](hdinsight-autoscale-clusters.md) seçeneklerini de kullanabilirsiniz.
 
@@ -30,13 +30,13 @@ Aşağıda özetlenen yöntemlerden birini kullanarak bir kümeyi el ile ölçek
 
 Microsoft, kümeleri ölçeklendirmek için aşağıdaki yardımcı programları sağlar:
 
-|Yardımcı program | Açıklama|
+|Yardımcı Program | Açıklama|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure Klasik CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
-|[Azure portalındaki](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
+|[Azure Portal](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
 
 ![Azure portal ölçeği kümesi seçeneği](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
@@ -106,6 +106,14 @@ Veri düğümlerinin sayısını değiştirmenin etkisi, HDInsight tarafından d
 * Kafka
 
     Ölçeklendirme işlemlerinden sonra bölüm çoğaltmalarını yeniden dengelemeniz gerekir. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Kafka verilerin yüksek kullanılabilirliği](./kafka/apache-kafka-high-availability.md) belgesi.
+
+* Apache Hive LLAP
+
+    Çalışan düğümlerine ölçeklendirdikten sonra `N` , HDInsight aşağıdaki konfigürasyonları otomatik olarak ayarlar ve Hive 'yi yeniden başlatır.
+
+  * Toplam eşzamanlı sorgu sayısı üst sınırı:`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Hive 'ın LLAP tarafından kullanılan düğüm sayısı:`num_llap_nodes  = N`
+  * Hive LLAP cini çalıştırmak için düğüm sayısı:`num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Bir kümenin güvenle ölçeğini azaltma
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 67064cf694445acf8472b958660133c2f2d31db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660986"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005914"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows durma hatası - Durum Bellek Yok
 
@@ -26,7 +27,7 @@ Bu makalede, Windows 'un başlayaamadığı sorunları gidermeye yönelik adıml
 
 ## <a name="symptom"></a>Belirti
 
-Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde hata kodu görüntülenir: `0xC0000017` . Çalıştırmakta olduğunuz Windows sürümüne bağlı olarak, bu kodun **Windows Önyükleme Yöneticisi** veya **Kurtarma ekranında**görüntülendiğini görebilirsiniz.
+Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde hata kodu görüntülenir: `0xC0000017` . Çalıştırmakta olduğunuz Windows sürümüne bağlı olarak, bu kodun **Windows Önyükleme Yöneticisi** veya **Kurtarma ekranında**görüntülendiğini görebilirsiniz.
 
    **Windows Önyükleme Yöneticisi**
 
@@ -56,7 +57,7 @@ Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme t
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) kullanın.
 1. Uzak Masaüstü Bağlantısı kullanarak, onarım VM 'ye bağlanın.
 
 ### <a name="for-generation-2-vms-assign-a-letter-to-the-extensible-firmware-interface-efi-partition"></a>2. nesil VM 'Ler için Genişletilebilir Bellenim Arabirimi (EFı) bölümüne bir harf atayın:
@@ -93,7 +94,7 @@ Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme t
 Artık bozuk disk onarım sanal makinesine bağlı olduğuna göre, o diskteki işletim sisteminin düzgün şekilde çalışması için yeterli alanı olduğunu doğrulamanız gerekir. 
 
 1. Eklenen diskin sürücüsüne sağ tıklayıp **Özellikler**' i seçerek diskin dolu olup olmadığını denetleyin.
-1. Diskte **300 MB 'tan az boş alan**varsa, [PowerShell kullanarak en fazla 1 TB 'a genişletin](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Diskte **300 MB 'tan az boş alan**varsa, [PowerShell kullanarak en fazla 1 TB 'a genişletin](../windows/expand-os-disk.md).
 1. Disk boyutu **1 TB**olduğunda disk temizleme işlemi gerçekleştirmeniz gerekir. [Disk Temizleme aracını](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) kullanarak boş alan açabilirsiniz.
 1. Yükseltilmiş bir komut istemi (yönetici olarak çalıştır) örneği açın ve sürücüde parçalama gerçekleştirin:
 
@@ -222,4 +223,4 @@ Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için aşağıdaki
    
 ### <a name="rebuild-the-vm"></a>VM 'yi yeniden oluşturma
 
-VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

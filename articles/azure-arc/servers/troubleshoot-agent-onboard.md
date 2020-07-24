@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/10/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37f99ade366a73cb96caf55a562a92476223eb6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004554"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Bağlı makine Aracısı bağlantı sorunlarını giderme
 
@@ -48,6 +48,9 @@ Aşağıda, bir hizmet sorumlusu kullanarak ölçekli bir yükleme gerçekleşti
 
 Aşağıda, etkileşimli bir yükleme gerçekleştirirken Linux için bağlı makine Aracısı ile ayrıntılı günlüğe yazmayı etkinleştirme komutuna bir örnek verilmiştir.
 
+>[!NOTE]
+>**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
+
 ```
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
@@ -73,12 +76,15 @@ Aşağıdaki tabloda, bilinen hatalardan bazıları ve bunların nasıl giderile
 |--------|------|---------------|---------|
 |Yetkilendirme belirteci cihaz akışı alınamadı |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |`login.windows.net`Uç noktaya ulaşılamıyor | Uç nokta bağlantısını doğrulayın. |
 |Yetkilendirme belirteci cihaz akışı alınamadı |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |Proxy veya güvenlik duvarı `login.windows.net` uç noktaya erişimi engelliyor. | Uç nokta bağlantısını doğrulayın ve bir güvenlik duvarı veya proxy sunucusu tarafından engellenmiyor. |
+|Yetkilendirme belirteci cihaz akışı alınamadı  |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp lookup login.windows.net: no such host`. | Grup ilkesi nesne *Bilgisayar Yapılandırması \ Yönetim Şablonları \ sistem \ Kullanıcı profilleri \ sistem yeniden başlatıldığında belirtilen gün sayısından daha eski Kullanıcı profillerini Sil* etkin. | GPO 'nun etkinleştirildiğini ve etkilenen makinenin hedeflendiğini doğrulayın. Daha fazla ayrıntı için bkz. dipnot <sup>[1](#footnote1)</sup> . |
 |SPN 'den yetkilendirme belirteci alınamadı |`Failed to execute the refresh request. Error = 'Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/token?api-version=1.0: Forbidden'` |Proxy veya güvenlik duvarı `login.windows.net` uç noktaya erişimi engelliyor. |Uç nokta bağlantısını doğrulayın ve bir güvenlik duvarı veya proxy sunucusu tarafından engellenmiyor. |
 |SPN 'den yetkilendirme belirteci alınamadı |`Invalid client secret is provided` |Yanlış veya geçersiz hizmet sorumlusu gizli anahtarı. |Hizmet sorumlusu gizliliğini doğrulayın. |
 | SPN 'den yetkilendirme belirteci alınamadı |`Application with identifier 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' was not found in the directory 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant` |Yanlış hizmet sorumlusu ve/veya kiracı KIMLIĞI. |Hizmet sorumlusu ve/veya kiracı KIMLIĞINI doğrulayın.|
 |ARM kaynak yanıtını al |`The client 'username@domain.com' with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to perform action 'Microsoft.HybridCompute/machines/read' over scope '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01' or the scope is invalid. If access was recently granted, please refresh your credentials."}}" Status Code=403` |Yanlış kimlik bilgileri ve/veya izinler |**Azure bağlı makine ekleme** rolünün bir üyesi olduğunu veya hizmet sorumlunun olduğunu doğrulayın. |
 |ARM kaynağı AzcmagentConnect başarısız oldu |`The subscription is not registered to use namespace 'Microsoft.HybridCompute'` |Azure kaynak sağlayıcıları kayıtlı değil. |[Kaynak sağlayıcılarını](./agent-overview.md#register-azure-resource-providers)kaydedin. |
 |ARM kaynağı AzcmagentConnect başarısız oldu |`Get https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01?api-version=2019-03-18-preview:  Forbidden` |Proxy sunucusu veya güvenlik duvarı `management.azure.com` uç noktaya erişimi engelliyor. |Uç nokta bağlantısını doğrulayın ve bir güvenlik duvarı veya proxy sunucusu tarafından engellenmiyor. |
+
+<a name="footnote1"></a><sup>1</sup> Bu GPO etkin ve bağlı makine aracısına sahip makineler için geçerliyse, *hımds* hizmeti için belirtilen yerleşik hesapla ilişkili kullanıcı profilini siler. Sonuç olarak, yerel sertifika deposunda önbelleğe alınan hizmetle iletişim kurmak için kullanılan kimlik doğrulama sertifikasını 30 gün boyunca de siler. 30 günlük sınırından önce, sertifikayı yenilemek için bir girişimde bulunuldu. Bu sorunu çözmek için, [makinenin kaydını silme](manage-agent.md#unregister-machine) adımlarını izleyin ve ardından çalıştıran hizmete yeniden kaydedin `azcmagent connect` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

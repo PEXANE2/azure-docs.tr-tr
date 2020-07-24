@@ -3,14 +3,14 @@ title: Azure Otomasyonu veri güvenliği
 description: Bu makale, Azure Otomasyonu 'nun gizliliğinizi nasıl koruduğunu ve verilerinizin güvenliğini nasıl sağladığını öğrenmenize yardımcı olur.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/03/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186172"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004656"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
@@ -47,10 +47,10 @@ Azure Otomasyonu 'nda bir kaynağı sildiğinizde, kalıcı kaldırma işleminde
 
 Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 
-| Veriler | İlke |
+| Veri | İlke |
 |:--- |:--- |
 | Hesaplar |Bir hesap, bir kullanıcı tarafından silindikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
-| Varlıklar |Bir varlık, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı varlığı tutan bir hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
+| Varlıklar |Bir varlık, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı varlığı tutan bir hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. Varlıklar arasında değişkenler, zamanlamalar, kimlik bilgileri, sertifikalar, Python 2 paketleri ve bağlantılar bulunur. |
 | DSC düğümleri |DSC düğümü, Windows PowerShell 'de Azure portal veya [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 'ini kullanarak bir Otomasyon hesabından silinen 30 gün sonra kalıcı olarak kaldırılır. Düğüm, düğüm tutan hesabı sildikten sonra 30 gün sonra da kalıcı olarak kaldırılır. |
 | İşler |Bir iş silinir ve değişiklik sonrasında 30 gün sonra kalıcı olarak kaldırılır. Örneğin, iş tamamlandıktan sonra, durdurulur veya askıya alınır. |
 | Modül |Bir modül, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı modülü tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
@@ -66,7 +66,7 @@ Azure 'da bir Otomasyon hesabını sildiğinizde, hesaptaki tüm nesneler silini
 
 ### <a name="runbooks"></a>Runbook'lar
 
-Windows PowerShell 'de Azure portal veya [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 'ini kullanarak runbook 'larınızı betik dosyalarına aktarabilirsiniz. Bu komut dosyalarını, [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md)bölümünde anlatıldığı gibi başka bir Otomasyon hesabına içeri aktarabilirsiniz.
+Windows PowerShell 'de Azure portal veya [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure.service/get-azureautomationrunbookdefinition) cmdlet 'ini kullanarak runbook 'larınızı betik dosyalarına aktarabilirsiniz. Bu komut dosyalarını, [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md)bölümünde anlatıldığı gibi başka bir Otomasyon hesabına içeri aktarabilirsiniz.
 
 ### <a name="integration-modules"></a>Tümleştirme modülleri
 

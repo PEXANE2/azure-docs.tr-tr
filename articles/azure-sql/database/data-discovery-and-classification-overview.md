@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 8e04cb87895f00e1ee992745c43a884596bd8398
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004112"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -77,7 +77,7 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 > [!NOTE]
 > Aşağıdaki örnek Azure SQL veritabanı 'nı kullanır, ancak veri bulma & sınıflandırmasını yapılandırmak istediğiniz uygun ürünü seçmeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 
 2. Azure SQL veritabanı bölmesinizdeki **güvenlik** başlığı altında **Gelişmiş veri güvenliği** ' ne gidin. **Gelişmiş veri güvenliği**' ni seçin ve ardından **veri bulma & sınıflandırma** kartını seçin.
 
@@ -117,7 +117,7 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Gizli verilere erişimi denetleme
 
-Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izleme olanağıdır. [Azure SQL denetimi](../../azure-sql/database/auditing-overview.md) , adlı denetim günlüğüne yeni bir alan içerecek şekilde geliştirilmiştir `data_sensitivity_information` . Bu alan, bir sorgu tarafından döndürülen verilerin duyarlılık sınıflandırmalarını (etiketleri) günlüğe kaydeder. İşte bir örnek:
+Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izleme olanağıdır. [Azure SQL denetimi](../../azure-sql/database/auditing-overview.md) , adlı denetim günlüğüne yeni bir alan içerecek şekilde geliştirilmiştir `data_sensitivity_information` . Bu alan, bir sorgu tarafından döndürülen verilerin duyarlılık sınıflandırmalarını (etiketleri) günlüğe kaydeder. Aşağıda bir örnek verilmiştir:
 
 ![Denetim günlüğü](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
@@ -137,7 +137,7 @@ Bu yerleşik roller bir veritabanının veri sınıflandırmasını değiştireb
 - Katılımcı
 - SQL Güvenlik Yöneticisi
 
-[Azure kaynakları Için RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)'de rol tabanlı izinler hakkında daha fazla bilgi edinin.
+[Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)'de rol tabanlı izinler hakkında daha fazla bilgi edinin.
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>Sınıflandırmaları Yönet
 

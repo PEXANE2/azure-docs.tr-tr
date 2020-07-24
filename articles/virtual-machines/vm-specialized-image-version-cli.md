@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1ccf03deee2a2f72c1eb2008e1acc5bf67d16447
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a22c0941a405dd2fcf37403e3a12113bc51cb774
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796778"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005812"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLı ile özel görüntü sürümünü kullanarak VM oluşturma
 
-Paylaşılan görüntü galerisinde depolanan [özelleştirilmiş görüntü sürümünden](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) bir VM oluşturun. Genelleştirilmiş görüntü sürümü kullanarak bir VM oluşturmak istiyorsanız, bkz. [Genelleştirilmiş görüntü sürümünden VM oluşturma](vm-generalized-image-version-cli.md).
+Paylaşılan görüntü galerisinde depolanan [özelleştirilmiş görüntü sürümünden](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir VM oluşturun. Genelleştirilmiş görüntü sürümü kullanarak bir VM oluşturmak istiyorsanız, bkz. [Genelleştirilmiş görüntü sürümünden VM oluşturma](vm-generalized-image-version-cli.md).
 
 Kaynak adlarını bu örnekte gereken şekilde değiştirin. 
 
@@ -58,5 +58,3 @@ Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da olu
 - [Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Görüntü Sürümünden Sanal Makine Oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
-
-

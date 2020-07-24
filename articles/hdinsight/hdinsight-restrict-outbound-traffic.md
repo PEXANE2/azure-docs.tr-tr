@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 37e6b2986f76529b5f3b2edc69f50259485df0b4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006526"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma
 
 Bu makalede, Azure Güvenlik Duvarı 'nı kullanarak HDInsight kümenizdeki giden trafiği güvenli hale getirmeye yönelik adımlar sağlanmaktadır. Aşağıdaki adımlarda, var olan bir küme için bir Azure Güvenlik Duvarı yapılandırdığınızı varsayalım. Bir güvenlik duvarının arkasında yeni bir küme dağıtıyorsanız, önce HDInsight kümenizi ve alt ağını oluşturun. Ardından bu kılavuzdaki adımları izleyin.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 HDInsight kümeleri normalde bir sanal ağda dağıtılır. Kümede, bu sanal ağın dışındaki hizmetler üzerinde bağımlılıklar vardır.
 
@@ -63,7 +63,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
     | Özellik|  Değer|
     |---|---|
-    |Adı| FwAppRule|
+    |Ad| FwAppRule|
     |Öncelik|200|
     |Eylem|İzin Ver|
 
@@ -75,7 +75,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
     **Hedef FQDN bölümü**
 
-    | Name | Kaynak adresler | `Protocol:Port` | Hedef FQDN 'ler | Notlar |
+    | Name | Kaynak adresler | Protokol: bağlantı noktası | Hedef FQDN 'ler | Notlar |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
@@ -83,7 +83,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
    ![Başlık: uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Ağ kurallarıyla güvenlik duvarını yapılandırma
 
@@ -97,7 +97,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
     | Özellik|  Değer|
     |---|---|
-    |Adı| FwNetRule|
+    |Ad| FwNetRule|
     |Öncelik|200|
     |Eylem|İzin Ver|
 
@@ -106,7 +106,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
     | Name | Protokol | Kaynak adresler | Hedef adresler | Hedef bağlantı noktaları | Notlar |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Zaman hizmeti |
-    | Rule_2 | Herhangi biri | * | DC_IP_Address_1, DC_IP_Address_2 | * | Kurumsal Güvenlik Paketi (ESP) kullanıyorsanız, IP adresleri bölümüne, ESP kümeleri için AAD-DS ile iletişime izin veren bir ağ kuralı ekleyin. Etki alanı denetleyicilerinin IP adreslerini portaldaki AAD-DS bölümünde bulabilirsiniz |
+    | Rule_2 | Herhangi bir | * | DC_IP_Address_1, DC_IP_Address_2 | * | Kurumsal Güvenlik Paketi (ESP) kullanıyorsanız, IP adresleri bölümüne, ESP kümeleri için AAD-DS ile iletişime izin veren bir ağ kuralı ekleyin. Etki alanı denetleyicilerinin IP adreslerini portaldaki AAD-DS bölümünde bulabilirsiniz |
     | Rule_3 | TCP | * | Data Lake Storage hesabınızın IP adresi | * | Azure Data Lake Storage kullanıyorsanız, ADLS 1. ve Gen2 ile ilgili bir SNı sorunu gidermek için IP adresleri bölümüne bir ağ kuralı ekleyebilirsiniz. Bu seçenek, trafiği güvenlik duvarıyla yönlendirmeyecektir. Bu, büyük veri yükleri için daha yüksek maliyetlere neden olabilir, ancak trafik günlüğe kaydedilir ve güvenlik duvarı günlüklerinde denetlenebilir. Data Lake Storage hesabınızın IP adresini belirleme. `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`FQDN 'yi BIR IP adresine çözümlemek için gibi bir PowerShell komutu kullanabilirsiniz.|
     | Rule_4 | TCP | * | * | 12000 | Seçim Log Analytics kullanıyorsanız, Log Analytics çalışma alanınız ile iletişimi etkinleştirmek için IP adresleri bölümünde bir ağ kuralı oluşturun. |
 
@@ -119,7 +119,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
     
    ![Başlık: uygulama kuralı koleksiyonu girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
 ### <a name="create-and-configure-a-route-table"></a>Rota tablosu oluşturma ve yapılandırma
 
@@ -141,12 +141,12 @@ Aşağıdaki girişlerle bir yol tablosu oluşturun:
 
 | Yönlendirme adı | Adres ön eki | Sonraki atlama türü | Sonraki atlama adresi |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
+| 168.61.49.99 | 168.61.49.99/32 | İnternet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | İnternet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | İnternet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | İnternet | NA |
+| 13.82.225.233 | 13.82.225.233/32 | İnternet | NA |
+| 40.71.175.99 | 40.71.175.99/32 | İnternet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | Sanal gereç | 10.0.2.4 |
 
 Yol tablosu yapılandırmasını doldurun:

@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: d43c12681c7230dc4959261ffd6d96f74ea095d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734733"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005098"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux bir sanal makineyi Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -23,7 +24,7 @@ Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal ma
 
 Bu makalede bir Red Hat Enterprise Linux (RHEL) sanal makinesini yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -41,7 +42,7 @@ Azure 'da var olan bir RHEL Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir RHEL Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalındaki](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -115,7 +116,7 @@ Gerekli paketler VM 'ye yüklendikten sonra VM 'yi yönetilen etki alanına kat�
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Son olarak, komutunu kullanarak makineyi yönetilen etki alanına katın `realm join` . Önceki komutta belirttiğiniz yönetilen etki alanının bir parçası olan kullanıcı hesabını kullanın `kinit` , örneğin `contosoadmin@AADDSCONTOSO.COM` :
+1. Son olarak, komutunu kullanarak VM 'yi yönetilen etki alanına katın `realm join` . Önceki komutta belirttiğiniz yönetilen etki alanının bir parçası olan kullanıcı hesabını kullanın `kinit` , örneğin `contosoadmin@AADDSCONTOSO.COM` :
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'

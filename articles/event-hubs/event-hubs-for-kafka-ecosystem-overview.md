@@ -2,13 +2,13 @@
 title: Apache Kafka App 'ten Olay Hub 'ı kullanma-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs tarafından Apache Kafka desteği hakkında bilgi sağlanır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 733623895176bb3b573c2efcbda8a40b9e2d87c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002487"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka uygulamalardan Azure Event Hubs kullanma
 Event Hubs, kendi Kafka kümenizi çalıştırmaya alternatif olarak, var olan Kafka tabanlı uygulamalarınız tarafından kullanılabilecek bir Kafka uç noktası sağlar. Event Hubs, [Apache Kafka protokol 1,0 ve üstünü](https://kafka.apache.org/documentation/)destekler ve mirrormaker da dahil olmak üzere var olan Kafka uygulamalarınızla birlikte kullanılabilir.  
@@ -26,7 +26,7 @@ Kavramsal Kafka ve Event Hubs neredeyse aynıdır: akış verileri için oluştu
 | Kafka kavram | Event Hubs kavram|
 | --- | --- |
 | Küme | Ad Alanı |
-| Konu başlığı | Olay Hub'ı |
+| Konu | Olay Hub'ı |
 | Bölüm | Bölüm|
 | Tüketici grubu | Tüketici grubu |
 | Uzaklık | Uzaklık|
@@ -79,12 +79,10 @@ Kafka özelliği için Event Hubs, bir protokolle yazmanızı ve diğer kişiler
 
 Henüz desteklenmeyen Kafka özelliklerinin listesi aşağıda verilmiştir:
 
-*   Idempotent üreticisi
 *   İşlem
 *   Sıkıştırma
 *   Boyut tabanlı bekletme
 *   Günlük düzenleme
-*   Mevcut bir konuya bölüm ekleme
 *   HTTP Kafka API desteği
 *   Kafka akışlar
 

@@ -4,12 +4,12 @@ description: Bu makalede, Azure Relay durumunu izlemek için Azure Izleyici 'yi 
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0383d99aaca487bb89ab198c42d0ce189ad20249
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42de5205be9a611957a6e340b5eaa55c5b7f52c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314371"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004571"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Relay ölçümleri 
 Azure Relay ölçümler, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm verileri kümesiyle, geçiş kaynaklarınızın genel durumunu yalnızca ad alanı düzeyinde değil, aynı zamanda varlık düzeyinde değerlendirebilirsiniz. Bu istatistikler Azure Relay durumunu izlemenize yardımcı olduklarından önemli olabilir. Ölçümler Ayrıca, Azure desteği ile iletişim kurmaya gerek kalmadan, kök neden sorunları gidermenize yardımcı olabilir.
@@ -29,7 +29,7 @@ Azure Izleyici, ölçümlere erişmek için birden çok yol sağlar. Ölçümler
 
 [Azure Portal](https://portal.azure.com)ölçümleri zaman içinde izleyebilirsiniz. Aşağıdaki örnek, başarılı isteklerin ve gelen isteklerin hesap düzeyinde nasıl görüntüleneceğini göstermektedir:
 
-![][1]
+!["Izleyici-ölçümler (Önizleme)" başlıklı bir sayfa, son 30 gün için bellek kullanımının bir çizgi grafiğini gösterir.][1]
 
 Ölçümlere doğrudan ad alanı aracılığıyla da erişebilirsiniz. Bunu yapmak için, ad alanınızı seçin ve ardından * * ölçümler * * öğesine tıklayın. 
 
