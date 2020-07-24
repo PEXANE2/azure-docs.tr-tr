@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4fcaf0e5842ce8a65175d2fc1dfa2483a1203b2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe70c42387e9dedea8943b5dcce04a1f9ded5190
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033316"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft. Storage. StorageAccountSelector Kullanıcı arabirimi öğesi
 
@@ -19,11 +20,11 @@ Yeni veya mevcut bir depolama hesabı seçmek için bir denetim.
 
 Denetim varsayılan değeri gösterir.
 
-![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector.png)
+![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft-storage-storageaccountselector.png)
 
 Denetim, kullanıcının yeni bir depolama hesabı oluşturmasını veya var olan bir depolama hesabını seçmesini sağlar.
 
-![Microsoft. Storage. StorageAccountSelector yeni](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
+![Microsoft. Storage. StorageAccountSelector yeni](./media/managed-application-elements/microsoft-storage-storageaccountselector-new.png)
 
 ## <a name="schema"></a>Şema
 

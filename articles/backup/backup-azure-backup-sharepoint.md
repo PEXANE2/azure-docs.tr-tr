@@ -3,12 +3,12 @@ title: DPM ile bir SharePoint grubunu Azure 'a yedekleme
 description: Bu makalede, Azure 'da bir SharePoint grubunun DPM/Azure Backup sunucu korumasına genel bakış sunulmaktadır
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 447776af7cb021fd0c3381334bf3acf258ff22ab
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b326ce15cd605f4f768a03b95337bbc5bd6aaabc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032893"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -32,7 +32,7 @@ Ek Önkoşullar ve sınırlamalar, [DPM Ile yedekleme](/system-center/dpm/back-u
 
 ## <a name="configure-backup"></a>Yedeklemeyi yapılandırma
 
-SharePoint grubunu yedeklemek için ConfigureSharePoint.exe dosyasını kullanarak SharePoint için koruma yapılandırır ve ardından DPM’de bir koruma grubu oluşturursunuz. Yönergeler için bkz. DPM belgelerinde [yedeklemeyi yapılandırma](//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) .
+SharePoint grubunu yedeklemek için ConfigureSharePoint.exe dosyasını kullanarak SharePoint için koruma yapılandırır ve ardından DPM’de bir koruma grubu oluşturursunuz. Yönergeler için bkz. DPM belgelerinde [yedeklemeyi yapılandırma](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) .
 
 ## <a name="monitoring"></a>İzleme
 

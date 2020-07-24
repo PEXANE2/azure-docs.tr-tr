@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033651"
 ---
 # <a name="durable-orchestrations"></a>Dayanıklı düzenlemeler
 
@@ -41,9 +41,9 @@ Bir Orchestration örnek KIMLIĞI, çoğu [Örnek Yönetimi işlemi](durable-fun
 
 ## <a name="reliability"></a>Güvenilirlik
 
-Orchestrator işlevleri, yürütme durumlarını [olay](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) kaynağını belirleme tasarım düzenini kullanarak güvenilir bir şekilde korur. Bir Orchestration 'un geçerli durumunu doğrudan depolamak yerine, dayanıklı görev çerçevesi, bir yalnızca bir Append deposu kullanarak, düzenleme işlevinin aldığı tüm eylem serisini kaydeder. Yalnızca bir Append deposunda, tam çalışma zamanı durumunun "dökümünü alma" ile karşılaştırıldığında birçok avantaj bulunur. Avantajlar, performansı, ölçeklenebilirliği ve yanıt hızını daha da içerir. Ayrıca işlem verileri için nihai tutarlılık ve tam denetim izleri ve geçmişi de alırsınız. Denetim izleri güvenilir telafi eylemlerini destekler.
+Orchestrator işlevleri, yürütme durumlarını [olay](/azure/architecture/patterns/event-sourcing) kaynağını belirleme tasarım düzenini kullanarak güvenilir bir şekilde korur. Bir Orchestration 'un geçerli durumunu doğrudan depolamak yerine, dayanıklı görev çerçevesi, bir yalnızca bir Append deposu kullanarak, düzenleme işlevinin aldığı tüm eylem serisini kaydeder. Yalnızca bir Append deposunda, tam çalışma zamanı durumunun "dökümünü alma" ile karşılaştırıldığında birçok avantaj bulunur. Avantajlar, performansı, ölçeklenebilirliği ve yanıt hızını daha da içerir. Ayrıca işlem verileri için nihai tutarlılık ve tam denetim izleri ve geçmişi de alırsınız. Denetim izleri güvenilir telafi eylemlerini destekler.
 
-Dayanıklı İşlevler, saydam olarak olay kaynağını kullanır. Arka planda, `await` bir Orchestrator işlevindeki (C#) veya `yield` (JavaScript) işleci, Orchestrator iş parçacığının denetimini dayanıklı görev çerçevesi dağıtıcısına gönderir. Dağıtıcı daha sonra Orchestrator işlevinin zamanladığı (bir veya daha fazla alt işlevi çağırma ya da dayanıklı bir Zamanlayıcı zamanlama gibi) tüm yeni eylemleri depolamaya kaydeder. Saydam işleme eylemi Orchestration örneğinin yürütme geçmişine ekler. Geçmiş bir depolama tablosunda depolanır. Sonra Kaydet eylemi, gerçek işi zamanlamak için bir kuyruğa ileti ekler. Bu noktada, Orchestrator işlevi bellekten bellekten kaldırılabilir.
+Dayanıklı İşlevler, saydam olarak olay kaynağını kullanır. Arka planda, `await` bir Orchestrator işlevindeki (C#) veya `yield` (JavaScript/Python) işleci, Orchestrator iş parçacığının denetimini dayanıklı görev çerçevesi dağıtıcısına verir. Dağıtıcı daha sonra Orchestrator işlevinin zamanladığı (bir veya daha fazla alt işlevi çağırma ya da dayanıklı bir Zamanlayıcı zamanlama gibi) tüm yeni eylemleri depolamaya kaydeder. Saydam işleme eylemi Orchestration örneğinin yürütme geçmişine ekler. Geçmiş bir depolama tablosunda depolanır. Sonra Kaydet eylemi, gerçek işi zamanlamak için bir kuyruğa ileti ekler. Bu noktada, Orchestrator işlevi bellekten bellekten kaldırılabilir.
 
 Bir Orchestration işlevine daha fazla iş verildiğinde (örneğin, bir yanıt iletisi alındığında veya dayanıklı Zamanlayıcı sona erdiğinde), Orchestrator başlatılır ve yerel durumu yeniden derlemek için başlangıçtan itibaren tüm işlevi yeniden yürütür. Yeniden yürütme sırasında, kod bir işlevi çağırmaya çalışırsa (veya başka bir zaman uyumsuz çalışma yaparsanız), dayanıklı görev çerçevesi geçerli düzenleme 'nin yürütme geçmişini çağırır. [Etkinlik işlevinin](durable-functions-types-features-overview.md#activity-functions) zaten yürütüldüğünü ve bir sonuç verdiğini belirlerse, bu işlevin sonucunu yeniden yürütür ve Orchestrator kodu çalışmaya devam eder. Yeniden yürütme, işlev kodu tamamlanana kadar veya yeni zaman uyumsuz çalışmayı zamanlana kadar devam eder.
 
@@ -91,9 +91,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    result1 = yield context.call_activity('SayHello', "Tokyo")
+    result2 = yield context.call_activity('SayHello', "Seattle")
+    result3 = yield context.call_activity('SayHello', "London")
+    return [result1, result2, result3]
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
-Her `await` (C#) veya `yield` (JavaScript) Ifadesinde, dayanıklı görev çerçevesi işlevin yürütme durumunu, bazı dayanıklı depolama arka ucuna (genellikle Azure Tablo Depolaması) kontrol noktaları. Bu durum, *düzenleme geçmişi*olarak adlandırılan şeydir.
+Her `await` (C#) veya `yield` (JavaScript/Python) bildiriminde, dayanıklı görev çerçevesi, işlevin yürütme durumunu, bazı dayanıklı depolama arka ucuna (genellikle Azure Tablo Depolaması) kontrol noktaları. Bu durum, *düzenleme geçmişi*olarak adlandırılan şeydir.
 
 ### <a name="history-table"></a>Geçmiş tablosu
 
@@ -133,7 +147,7 @@ Sütun değerlerinde birkaç Not:
 
 * **Partitionkey**: Orchestration 'un örnek kimliğini içerir.
 * **EventType**: olayın türünü temsil eder. Aşağıdaki türlerden biri olabilir:
-  * **Orchestrationstarted**: Orchestrator işlevi bir await 'den devam ettirildi veya ilk kez çalışıyor. `Timestamp`Sütunu, `CurrentUtcDateTime` (.net) ve `currentUtcDateTime` (JavaScript) API 'lerinin belirleyici değerini doldurmak için kullanılır.
+  * **Orchestrationstarted**: Orchestrator işlevi bir await 'den devam ettirildi veya ilk kez çalışıyor. `Timestamp`Sütunu `CurrentUtcDateTime` (.net), `currentUtcDateTime` (JavaScript) ve `current_utc_datetime` (Python) API 'lerinin belirleyici değerini doldurmak için kullanılır.
   * **Executionstarted**: Orchestrator işlevi ilk kez yürütülmeye başladı. Bu olay sütundaki işlev girişini de içerir `Input` .
   * **Taskzamanlandı**: bir etkinlik işlevi zamanlandı. Etkinlik işlevinin adı `Name` sütununda yakalanır.
   * **TaskCompleted**: etkinlik işlevi tamamlandı. İşlevin sonucu `Result` sütununda.
@@ -151,7 +165,7 @@ Sütun değerlerinde birkaç Not:
 > [!WARNING]
 > Hata ayıklama aracı olarak yararlı olsa da, bu tablo üzerinde hiçbir bağımlılığı olmaz. Dayanıklı İşlevler uzantısı geliştikçe değişiklik gösterebilir.
 
-İşlev bir `await` (C#) veya `yield` (JavaScript) ' den her başlatıldığında, dayanıklı görev çerçevesi Orchestrator işlevini sıfırdan yeniden çalıştırır. Her yeniden çalıştırmada, geçerli zaman uyumsuz işlemin yapılıp yapılmayacağını belirlemede yürütme geçmişine bakar.  İşlem gerçekleştiyse, çerçeve bu işlemin çıkışını hemen yeniden yürütür ve bir sonrakine `await` (C#) veya `yield` (JavaScript) gider. Bu işlem, tüm geçmiş yeniden yürütülene kadar devam eder. Geçerli geçmiş yeniden yürütüldüğünde, yerel değişkenler önceki değerlerine geri yüklenmiş olur.
+İşlev bir `await` (C#) veya `yield` (JavaScript/Python) ' den her başlatıldığında, dayanıklı görev çerçevesi Orchestrator işlevini sıfırdan yeniden çalıştırır. Her yeniden çalıştırmada, geçerli zaman uyumsuz işlemin yapılıp yapılmayacağını belirlemede yürütme geçmişine bakar.  İşlem gerçekleştiyse, çerçeve bu işlemin çıkışını hemen yeniden yürütür ve bir sonrakine `await` (C#) veya `yield` (JavaScript/Python) gider. Bu işlem, tüm geçmiş yeniden yürütülene kadar devam eder. Geçerli geçmiş yeniden yürütüldüğünde, yerel değişkenler önceki değerlerine geri yüklenmiş olur.
 
 ## <a name="features-and-patterns"></a>Özellikler ve desenler
 
@@ -165,7 +179,7 @@ Daha fazla bilgi ve örnekler için bkz. [alt](durable-functions-sub-orchestrati
 
 ### <a name="durable-timers"></a>Dayanıklı zamanlayıcılar
 
-Düzenlemeler, gecikmeler uygulamak veya zaman uyumsuz eylemlerde zaman aşımı işlemeyi ayarlamak için *sürekli zamanlayıcılar* zamanlayabilir. `Thread.Sleep`Ve `Task.Delay` (C#) veya `setTimeout()` ve `setInterval()` (JavaScript) yerine Orchestrator işlevlerinde dayanıklı zamanlayıcılar kullanın.
+Düzenlemeler, gecikmeler uygulamak veya zaman uyumsuz eylemlerde zaman aşımı işlemeyi ayarlamak için *sürekli zamanlayıcılar* zamanlayabilir. `Thread.Sleep`Ve `Task.Delay` (C#) veya ( `setTimeout()` `setInterval()` JavaScript) veya ( `time.sleep()` Python) yerine Orchestrator işlevlerinde dayanıklı zamanlayıcılar kullanın.
 
 Daha fazla bilgi ve örnekler için bkz. [dayanıklı zamanlayıcılar](durable-functions-timers.md) makalesi.
 
@@ -252,6 +266,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    res = yield context.call_http('GET', url)
+    if res.status_code >= 400:
+        # handing of error code goes here
+```
 ---
 
 Yöntemi, temel istek/yanıt düzenlerini desteklemeye ek olarak, ortak zaman uyumsuz HTTP 202 yoklama desenlerinin otomatik işlemesini destekler ve ayrıca [yönetilen kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md)kullanarak dış hizmetlerle kimlik doğrulamasını destekler.
@@ -267,7 +293,7 @@ Birden çok parametreyi doğrudan bir etkinlik işlevine geçirmek mümkün değ
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-.NET ' te, [Valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) nesnelerini de kullanabilirsiniz. Aşağıdaki örnek, [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples)Ile eklenen [Valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
+.NET ' te, [Valuetuples](/dotnet/csharp/tuples) nesnelerini de kullanabilirsiniz. Aşağıdaki örnek, [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples)Ile eklenen [Valuetuples](/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -322,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="activity"></a>Etkinlik
+#### <a name="getweather-activity"></a>`GetWeather`Etkinlik
 
 ```javascript
 module.exports = async function (context, location) {
@@ -330,6 +356,36 @@ module.exports = async function (context, location) {
 
     // ...
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```python
+from collections import namedtuple
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    Location = namedtuple('Location', ['city', 'state'])
+    location = Location(city='Seattle', state= 'WA')
+
+    weather = yield context.call_activity("GetWeather", location)
+
+    # ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather`Etkinlik
+
+```python
+from collections import namedtuple
+
+Location = namedtuple('Location', ['city', 'state'])
+
+def main(location: Location) -> str:
+    city, state = location
+    return f"Hello {city}, {state}!"
 ```
 
 ---

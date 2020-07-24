@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, karşılaştırma, SDK, farklar, donanım, yazılım
-ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67452520"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031584"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Azure Kinect ve Kinect Windows V2 karşılaştırması
 
@@ -22,8 +22,8 @@ Azure Kinect DK donanım ve yazılım geliştirme setlerinin Windows V2 için Ki
 
 Windows V2 için Azure Kinect geliştirme seti ve Kinect arasındaki üst düzey farklılıklar aşağıdaki tabloda listelenmiştir.
 
-|    |      | Azure Kinect DK |  Windows V2 için Kinect |
-|----------|---------------|--------| ------------|
+| Özellik | Tür | Azure Kinect DK | Windows V2 için Kinect |
+| ------- | ---- | --------------- | --------------------- |
 | **Ses** | Ayrıntılar  | 7 MIC dairesel dizi | 4 MIC doğrusal aşamalı dizi |
 | **Hareket algılayıcısı** | Ayrıntılar | 3 eksenli ivme ölçer 3-eksen cayro | 3 eksenli ivme ölçer |
 | **RGB Kamerası**    | Ayrıntılar | 3840 x 2160 px @30 fps | 1920 x 1080 px @30 fps |
@@ -31,8 +31,8 @@ Windows V2 için Azure Kinect geliştirme seti ve Kinect arasındaki üst düzey
 |                   | Çözüm | 640 x 576 px @30 fps | 512 x 424 px @ 30 fps |
 |                   |            | 512 x 512 px @30 fps |                       |
 |                   |            | 1024x1024 piksel @15 fps |                       |
-| **Bağlantı** | Veriler | USB 3.1 Gen 1-C türü  | USB 3,1 Gen 1|
-|  | Üs | Dış PSU veya USB-C | Dış PSU |
+| **Bağlantı** | Veri | USB 3.1 Gen 1-C türü  | USB 3,1 Gen 1|
+|  | Güç | Dış PSU veya USB-C | Dış PSU |
 |  | Eşitleme | RGB & derinliği iç, dış cihazdan cihaza| Yalnızca RGB & derinliği iç |
 | **Mekanik** | Boyutlar | 103 x 39 x 126 mm | 249 x 66 x 67 mm |
 |  | Alıcısına | 440 g | 970 g |
@@ -48,7 +48,7 @@ Aşağıdaki tabloda alt düzey cihaz algılayıcısı erişim yeteneği karşı
 |---------|---------|------------|---------|
 | **Derinliğini** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
-| **Renk** | ✔️ | ✔️ | Renk biçimi farkları destekler, Azure Kinect DK şu kamera denetimlerini destekler: pozlama, beyaz dengesi, parlaklık, karşıtlık, doygunluk, netlik ve kazanç denetimi |
+| **Color (Renk)** | ✔️ | ✔️ | Renk biçimi farkları destekler, Azure Kinect DK şu kamera denetimlerini destekler: pozlama, beyaz dengesi, parlaklık, karşıtlık, doygunluk, netlik ve kazanç denetimi |
 | **Ses** | ✔️ | ✔️ | Azure Kinect DK miklerine konuşma SDK 'Sı veya Windows Native API aracılığıyla erişilir |
 | **IMU** | ✔️ |  | Azure Kinect DK tam 6 eksenli ıMU ve Windows için Kinect yalnızca 1 eksen sağlar |
 | **Ayarlama verileri** | ✔️ | ✔️ | OpenCV uyumlu kamera modeli ayarlaması |

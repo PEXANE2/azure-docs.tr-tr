@@ -3,11 +3,12 @@ title: Azure Stack SQL Server iş yüklerini yedekleme
 description: Bu makalede, Azure Stack SQL Server veritabanlarını korumak için Microsoft Azure Backup sunucusu (MABS) yapılandırma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 706050fa37e4234a0ffc902f6b696ebd84e6701e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84192975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032655"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
 
@@ -18,6 +19,34 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 1. SQL Server veritabanlarını korumak için bir yedekleme ilkesi oluşturma
 2. İsteğe bağlı yedekleme kopyaları oluşturma
 3. Veritabanını disklerden ve Azure 'dan kurtarma
+
+## <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
+
+* Uzak bir dosya paylaşımında dosyalar içeren bir veritabanına sahipseniz koruma, Hata Kimliği 104 ile başarısız olur. MABS, uzak bir dosya paylaşımında SQL Server veri korumasını desteklemez.
+* MABS, uzak SMB paylaşımlarında depolanan veritabanlarını koruyamaz.
+* [Kullanılabilirlik grubu çoğaltmalarının salt okuma olarak yapılandırıldığından](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)emin olun.
+* **NTAuthority\System adlı** sistem hesabını SQL Server üzerinde sysadmin grubuna açıkça eklemeniz gerekir.
+* Kısmen kapsanan bir veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [Kapsanan veritabanları](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) özelliğinin etkin olduğundan emin olmanız gerekir.
+* Bir dosya akışı veritabanı için alternatif bir konum kurtarma gerçekleştirdiğinizde, hedef SQL örneğinde [dosya akışı veritabanı](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) özelliğinin etkinleştirildiğinden emin olmanız gerekir.
+* SQL Server AlwaysOn için koruma:
+  * MABS, koruma grubu oluşturma sırasında sorgu çalıştırırken kullanılabilirlik gruplarını algılar.
+  * MABS bir yük devretme algılar ve veritabanını korumaya devam eder.
+  * MABS, bir SQL Server örneği için çok siteli küme yapılandırmasını destekler.
+* AlwaysOn özelliğini kullanan veritabanlarını koruduğunuzda, MABS 'ler aşağıdaki sınırlamalara sahiptir:
+  * MABS, yedekleme tercihlerine göre SQL Server ayarlanan kullanılabilirlik grupları için yedekleme ilkesini aşağıdaki gibi kabul eder:
+    * İkincil olanı tercih et - Birincil çoğaltmanın tek çoğaltma olması durumu haricinde yedeklemekler ikincil çoğaltmada gerçekleşmelidir. Kullanılabilir birden fazla ikincil çoğaltma varsa, yedekleme önceliği en yüksek olan düğüm yedekleme için seçilir. Yalnızca birincil çoğaltma kullanılabilirse, yedekleme birincil çoğaltmada gerçekleşmelidir.
+    * Yalnızca ikincil - Birincil çoğaltmada yedekleme gerçekleştirilmemelidir. Birincil çoğaltma çevrimiçi olan tek çoğaltmaysa, yedekleme gerçekleşmemelidir.
+    * Birincil - Yedeklemeler her zaman birincil çoğaltmada gerçekleşmelidir.
+    * Herhangi Bir Çoğaltma - Kullanılabilirlik grubundaki kullanılabilir çoğaltmaların herhangi birinde yedekleme gerçekleşebilir. Yedeklemenin kaynağı olan düğüm, her düğümün yedekleme önceliklerine dayalı olarak belirlenir.
+  * Şunlara dikkat edin:
+    * Yedeklemeler, tüm okunabilir çoğaltmalardan (birincil, zaman uyumlu ikincil, zaman uyumsuz ikincil) meydana gelebilir.
+    * Herhangi bir çoğaltma yedeklemeden dışlanmazsa, örneğin **çoğaltma dışlama** etkinse veya okunamaz olarak işaretlenmişse, bu çoğaltma, herhangi bir seçeneğin altında yedekleme için seçilmeyecek.
+    * Kullanılabilir ve okunabilir durumda birden fazla çoğaltma varsa, yedekleme önceliği en yüksek olan düğüm yedekleme için seçilir.
+    * Seçili düğümde yedekleme başarısız olursa, yedekleme işlemi başarısız olur.
+    * Özgün konuma kurtarma desteklenmez.
+* SQL Server 2014 veya üzeri yedekleme sorunları:
+  * SQL Server 2014 [, Windows Azure Blob depolama alanında Şirket içi SQL Server için veritabanı](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)oluşturmak üzere yeni bir özellik ekledi. MABS bu yapılandırmayı korumak için kullanılamaz.
+  * SQL AlwaysOn seçeneği için "ikincil tercih et" yedekleme tercihiyle ilgili bazı bilinen sorunlar vardır. MABS her zaman ikincili bir yedekleme alır. İkincil bulunamazsa yedekleme başarısız olur.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 

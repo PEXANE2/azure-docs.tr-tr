@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4815e51d22501d6110f3bc26a878513d6d700ce7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031295"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -212,26 +212,26 @@ Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/d
 Zaman serisi `forecasting` görevinin yapılandırma nesnesinde ek parametreler olması gerekir:
 
 1. `time_column_name`: Eğitim verilerinizde geçerli bir zaman serisi içeren sütunun adını tanımlayan gerekli parametre.
-1. `max_horizon`: Eğitim verilerinin dönemselliği temelinde tahmin etmek istediğiniz sürenin uzunluğunu tanımlar. Örneğin, günlük saat grasınlar ile eğitim verileriniz varsa, modelin ne kadar süreyle eğmesini istediğinizi tanımlarsınız.
-1. `grain_column_names`: Eğitim verilerinizde bireysel zaman serisi verileri içeren sütunların adını tanımlar. Örneğin, belirli bir markaların mağazasının satışlarını tahmin ediyorsanız, bir mağaza ve marka sütunları gren sütunları olarak tanımlarsınız. Her bir Gren/gruplama için ayrı zaman serisi ve tahminler oluşturulacaktır. 
+1. `forecast_horizon`: Kaç dönemin tahmin etmek istediğinizi tanımlar. Tamsayı ufuk süresi, zaman serisi sıklığının birimleridir. Örneğin, günlük sıklık ile eğitim verileriniz varsa, modelin ne kadar süreyle eğmesini istediğinizi tanımlarsınız.
+1. `time_series_id_column_names`: Aynı zaman damgasına sahip birden çok satırı olan verilerdeki zaman serisini benzersiz bir şekilde tanımlayan sütunları tanımlar. Örneğin, belirli bir marka mağazasının satışlarını tahmin ediyorsanız, zaman serisi tanımlayıcılarınız olarak mağaza ve marka sütunları tanımlamanız gerekir. Her gruplama için ayrı tahminler oluşturulacaktır. Zaman serisi tanımlayıcıları tanımlanmamışsa, veri kümesinin bir zaman serisi olduğu varsayılır.
 
 Aşağıda kullanılan ayarların örnekleri için bkz. [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
-# Setting Store and Brand as grains for training.
-grain_column_names = ['Store', 'Brand']
-nseries = data.groupby(grain_column_names).ngroups
+# Setting Store and Brand as time series identifiers for training.
+time_series_id_column_names = ['Store', 'Brand']
+nseries = data.groupby(time_series_id_column_names).ngroups
 
-# View the number of time series data with defined grains
+# View the number of time series data with defined time series identifiers
 print('Data contains {0} individual time-series.'.format(nseries))
 ```
 
 ```python
 time_series_settings = {
     'time_column_name': time_column_name,
-    'grain_column_names': grain_column_names,
+    'time_series_id_column_names': time_series_id_column_names,
     'drop_column_names': ['logQuantity'],
-    'max_horizon': n_test_periods
+    'forecast_horizon': n_test_periods
 }
 
 automl_config = AutoMLConfig(task = 'forecasting',
@@ -422,7 +422,7 @@ Daha fazlasını anlamak için, bu 2 API 'Leri, monte edilecek modelin ilk adım
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Konum:
+   Burada:
 
    |Çıktı|Tanım|
    |----|--------|

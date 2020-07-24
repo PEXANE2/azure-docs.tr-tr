@@ -6,17 +6,19 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: e932930e43e6131e8e1e82fe2f42246c967a19fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 5cfc13700decf0176b283f5f1f9bd81503c1b10a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84206012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037602"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot Actuator ile uygulama yönetme ve izleme
 
 Uygulamanıza yeni ikili dağıttıktan sonra, işlevleri denetlemek ve çalışan uygulamanız hakkındaki bilgileri görmek isteyebilirsiniz. Bu makalede, Azure Spring Cloud tarafından sunulan bir test uç noktasından API 'ye nasıl erişebileceğiniz ve uygulamanız için üretime yönelik kullanıma sunma özelliklerinin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, Azure yay bulut hizmetinde başarıyla dağıtılabilecek ve önyüklenebilecek bir Spring Boot 2. x uygulamasına sahip olduğunuz varsayılır.  Bkz [. hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart-launch-app-portal.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>Test uç noktası aracılığıyla uygulamayı doğrulama

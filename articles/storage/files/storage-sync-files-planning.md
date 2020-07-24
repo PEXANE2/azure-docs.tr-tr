@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036803"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -303,37 +303,37 @@ Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 
 | Azure bulut | Coğrafi bölge | Azure bölgesi | Bölge kodu |
 |-------------|-------------------|--------------|-------------|
-| Ortak | Asya | Doğu Asya | `eastasia` |
-| Ortak | Asya | Güneydoğu Asya | `southeastasia` |
-| Ortak | Avustralya | Doğu Avustralya | `australiaeast` |
-| Ortak | Avustralya | Güneydoğu Avustralya | `australiasoutheast` |
-| Ortak | Brezilya | Güney Brezilya | `brazilsouth` |
-| Ortak | Kanada | Orta Kanada | `canadacentral` |
-| Ortak | Kanada | Doğu Kanada | `canadaeast` |
-| Ortak | Avrupa | Kuzey Avrupa | `northeurope` |
-| Ortak | Avrupa | Batı Avrupa | `westeurope` |
-| Ortak | Fransa | Orta Fransa | `francecentral` |
-| Ortak | Fransa | Fransa Güney * | `francesouth` |
-| Ortak | Hindistan | Orta Hindistan | `centralindia` |
-| Ortak | Hindistan | Güney Hindistan | `southindia` |
-| Ortak | Japonya | Doğu Japonya | `japaneast` |
-| Ortak | Japonya | Batı Japonya | `japanwest` |
-| Ortak | Güney Kore | Güney Kore - Orta | `koreacentral` |
-| Ortak | Güney Kore | Güney Kore - Güney | `koreasouth` |
-| Ortak | Güney Afrika | Güney Afrika Kuzey | `southafricanorth` |
-| Ortak | Güney Afrika | Güney Afrika Batı * | `southafricawest` |
-| Ortak | BAE | BAE Orta * | `uaecentral` |
-| Ortak | BAE | BAE Kuzey | `uaenorth` |
-| Ortak | Birleşik Krallık | Güney Birleşik Krallık | `uksouth` |
-| Ortak | Birleşik Krallık | Batı Birleşik Krallık | `ukwest` |
-| Ortak | ABD | Orta ABD | `centralus` |
-| Ortak | ABD | Doğu ABD | `eastus` |
-| Ortak | ABD | Doğu ABD 2 | `eastus2` |
-| Ortak | ABD | Orta Kuzey ABD | `northcentralus` |
-| Ortak | ABD | Orta Güney ABD | `southcentralus` |
-| Ortak | ABD | Orta Batı ABD | `westcentralus` |
-| Ortak | ABD | Batı ABD | `westus` |
-| Ortak | ABD | Batı ABD 2 | `westus2` |
+| Genel | Asya | Doğu Asya | `eastasia` |
+| Genel | Asya | Güneydoğu Asya | `southeastasia` |
+| Genel | Avustralya | Doğu Avustralya | `australiaeast` |
+| Genel | Avustralya | Avustralya Güneydoğu | `australiasoutheast` |
+| Genel | Brezilya | Brezilya Güney | `brazilsouth` |
+| Genel | Kanada | Orta Kanada | `canadacentral` |
+| Genel | Kanada | Doğu Kanada | `canadaeast` |
+| Genel | Avrupa | Kuzey Avrupa | `northeurope` |
+| Genel | Avrupa | Batı Avrupa | `westeurope` |
+| Genel | Fransa | Orta Fransa | `francecentral` |
+| Genel | Fransa | Fransa Güney * | `francesouth` |
+| Genel | Hindistan | Orta Hindistan | `centralindia` |
+| Genel | Hindistan | Güney Hindistan | `southindia` |
+| Genel | Japonya | Doğu Japonya | `japaneast` |
+| Genel | Japonya | Batı Japonya | `japanwest` |
+| Genel | Güney Kore | Güney Kore - Orta | `koreacentral` |
+| Genel | Güney Kore | Güney Kore - Güney | `koreasouth` |
+| Genel | Güney Afrika | Güney Afrika Kuzey | `southafricanorth` |
+| Genel | Güney Afrika | Güney Afrika Batı * | `southafricawest` |
+| Genel | BAE | BAE Orta * | `uaecentral` |
+| Genel | BAE | BAE Kuzey | `uaenorth` |
+| Genel | Birleşik Krallık | Güney Birleşik Krallık | `uksouth` |
+| Genel | Birleşik Krallık | Batı Birleşik Krallık | `ukwest` |
+| Genel | ABD | Orta ABD | `centralus` |
+| Genel | ABD | Doğu ABD | `eastus` |
+| Genel | ABD | Doğu ABD 2 | `eastus2` |
+| Genel | ABD | Orta Kuzey ABD | `northcentralus` |
+| Genel | ABD | Orta Güney ABD | `southcentralus` |
+| Genel | ABD | Orta Batı ABD | `westcentralus` |
+| Genel | ABD | Batı ABD | `westus` |
+| Genel | ABD | Batı ABD 2 | `westus2` |
 | US Gov | ABD | US Gov Arizona | `usgovarizona` |
 | US Gov | ABD | US Gov Texas | `usgovtexas` |
 | US Gov | ABD | US Gov Virginia | `usgovvirginia` |
@@ -360,7 +360,7 @@ Ayrıca, verileri bir Azure Dosya Eşitleme dağıtımına geçirmek için Data 
 Müşterilerin yeni Azure Dosya Eşitleme dağıtımına veri geçirirken, verileri Windows dosya sunucuları yerine doğrudan Azure dosya paylaşımında kopyalaması, yaygın bir hata olur. Azure Dosya Eşitleme, Azure dosya paylaşımındaki tüm yeni dosyaları tanımlatacak ve bunları Windows dosya paylaşımlarınıza eşitlese de, bu, verileri Windows dosya sunucusu üzerinden yüklemeden önemli ölçüde daha yavaştır. AzCopy gibi Azure kopyalama araçlarını kullanırken, en son sürümü kullanmak önemlidir. Zaman damgaları ve ACL 'Ler gibi bir dosyanın tüm önemli meta verilerini kopyalayabilmeniz için Azure kopyalama araçlarına genel bir bakış almak üzere [dosya kopyalama araçları tablosuna](storage-files-migration-overview.md#file-copy-tools) bakın.
 
 ## <a name="antivirus"></a>Virüsten Koruma
-Virüsten koruma, bilinen kötü amaçlı kod için dosyaları tarayarak çalıştığından, bir virüsten koruma ürünü katmanlı dosyaların geri çekmesine neden olabilir. Azure Dosya Eşitleme aracısının 4,0 ve üzeri sürümlerinde katmanlı dosyalar, güvenli Windows özniteliği FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ayarlanmış olmalıdır. Bu öznitelik kümesi ile dosya okumayı atlamak üzere çözümlerini nasıl yapılandıracağınızı öğrenmek için yazılım satıcınıza danışmanız önerilir (birçok şey otomatik olarak yapılır). 
+Virüsten koruma, bilinen kötü amaçlı kod için dosyaları tarayarak çalıştığından, bir virüsten koruma ürünü katmanlı dosyaların geri çekmesine neden olabilir ve bu da yüksek çıkış ücretleri elde edilir. Azure Dosya Eşitleme aracısının 4,0 ve üzeri sürümlerinde katmanlı dosyalar, güvenli Windows özniteliği FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ayarlanmış olmalıdır. Bu öznitelik kümesi ile dosya okumayı atlamak üzere çözümlerini nasıl yapılandıracağınızı öğrenmek için yazılım satıcınıza danışmanız önerilir (birçok şey otomatik olarak yapılır). 
 
 Microsoft 'un Şirket içi virüsten koruma çözümleri, Windows Defender ve System Center Endpoint Protection (SCEP), her ikisi de bu özniteliği ayarlanmış dosyaları okumayı otomatik olarak atlar. Bunları test ettik ve bir ikincil sorun tanımladı: var olan bir eşitleme grubuna sunucu eklediğinizde, yeni sunucuda 800 bayttan daha küçük dosyalar geri çekilir (indirilir). Bu dosyalar yeni sunucuda kalacak ve katmanlama boyut gereksinimini (>64 KB) karşılamadığında katmanlanmayacak.
 
@@ -368,9 +368,9 @@ Microsoft 'un Şirket içi virüsten koruma çözümleri, Windows Defender ve Sy
 > Virüsten koruma satıcıları, Microsoft Indirme Merkezi ' nde indirileceği [Azure dosya eşitleme virüsten koruma Uyumluluk testi paketini](https://www.microsoft.com/download/details.aspx?id=58322)kullanarak ürün ve Azure dosya eşitleme arasındaki uyumluluğun denetlemesini denetleyebilir.
 
 ## <a name="backup"></a>Backup 
-Virüsten koruma çözümleri gibi, yedekleme çözümleri katmanlı dosyaların geri alınmasına neden olabilir. Şirket içi yedekleme ürünü yerine Azure dosya paylaşımının yedeklenmesi için bir bulut yedekleme çözümü kullanmanızı öneririz.
+Bulut katmanlaması etkinleştirilirse, sunucu uç noktasını veya sunucu uç noktasının bulunduğu VM 'yi doğrudan yedekleyen çözümler kullanılmamalıdır. Bulut katmanlaması, Azure dosya paylaşımınızda bulunan tam veri kümesi ile sunucu uç noktasında yalnızca verilerinizin bir alt kümesinin depolanmasına neden olur. Kullanılan yedekleme çözümüne bağlı olarak, katmanlı dosyalar atlanır ve yedeklenmez (FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği ayarlanmış olduklarından) veya diske geri çekilir ve bu da yüksek çıkış ücretlerine yol açar. Azure dosya paylaşımının doğrudan yedeklenmesi için bir bulut yedekleme çözümü kullanmanızı öneririz. Daha fazla bilgi için bkz. [Azure dosya paylaşımı yedeklemesi hakkında](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) veya Azure dosya paylaşımlarının yedeklenmesini desteklediğini öğrenmek için yedekleme sağlayıcınızla iletişim kurun.
 
-Şirket içi yedekleme çözümü kullanıyorsanız, yedeklemelerin bulut katmanlaması devre dışı olan eşitleme grubundaki bir sunucuda gerçekleştirilmesi gerekir. Geri yükleme gerçekleştirirken birim düzeyinde veya dosya düzeyinde geri yükleme seçeneklerini kullanın. Dosya düzeyi geri yükleme seçeneği kullanılarak geri yüklenen dosyalar, eşitleme grubundaki tüm uç noktalarla eşitlenir ve mevcut dosyalar yedekten geri yüklenen sürümle birlikte değişir.  Birim düzeyinde geri yüklemeler, Azure dosya paylaşımındaki veya diğer sunucu uç noktalarında yeni dosya sürümlerinin yerini olmayacaktır.
+Şirket içi yedekleme çözümünü kullanmayı tercih ediyorsanız, yedeklemelerin bulut katmanlaması devre dışı bırakılmış olan eşitleme grubundaki bir sunucuda gerçekleştirilmesi gerekir. Geri yükleme gerçekleştirirken birim düzeyinde veya dosya düzeyinde geri yükleme seçeneklerini kullanın. Dosya düzeyi geri yükleme seçeneği kullanılarak geri yüklenen dosyalar, eşitleme grubundaki tüm uç noktalarla eşitlenir ve mevcut dosyalar yedekten geri yüklenen sürümle birlikte değişir.  Birim düzeyinde geri yüklemeler, Azure dosya paylaşımındaki veya diğer sunucu uç noktalarında yeni dosya sürümlerinin yerini olmayacaktır.
 
 > [!Note]  
 > Çıplak (BMR) geri yükleme beklenmeyen sonuçlara neden olabilir ve şu anda desteklenmemektedir.
@@ -383,7 +383,7 @@ Virüsten koruma çözümleri gibi, yedekleme çözümleri katmanlı dosyaların
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Güvenlik duvarını ve proxy ayarlarını değerlendirin](storage-sync-files-firewall-and-proxy.md)
-* [Azure Dosyaları dağıtımı planlama](storage-files-planning.md)
+* [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
 * [Azure Dosyaları’nı dağıtma](storage-files-deployment-guide.md)
 * [Azure Dosya Eşitleme’yi dağıtma](storage-sync-files-deployment-guide.md)
 * [Azure Dosya Eşitleme’yi izleme](storage-sync-files-monitoring.md)

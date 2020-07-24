@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033231"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft. Network. VirtualNetworkCombo UI öğesi
 
@@ -19,11 +20,11 @@ Yeni veya var olan bir sanal ağı seçmek için bir denetim grubu.
 
 Kullanıcı yeni bir sanal ağ seçtiğinde, Kullanıcı her bir alt ağın adını ve adres önekini özelleştirebilir. Alt ağları yapılandırma isteğe bağlıdır.
 
-![Microsoft. Network. VirtualNetworkCombo yeni](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Microsoft. Network. VirtualNetworkCombo yeni](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-new.png)
 
 Kullanıcı var olan bir sanal ağı seçtiğinde, dağıtım şablonu için gereken her bir alt ağı eşleştirmelidir. Bu durumda alt ağların yapılandırılması gerekir.
 
-![Microsoft. Network. VirtualNetworkCombo var](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft. Network. VirtualNetworkCombo var](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Şema
 

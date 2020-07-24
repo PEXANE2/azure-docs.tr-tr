@@ -3,11 +3,12 @@ title: Web uygulaması performans izleme-Azure Application Insights
 description: Application Insights devOps döngüsüne nasıl uyar
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033691"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights ile ayrıntılı web uygulaması ve hizmet tanılama
 ## <a name="why-do-i-need-application-insights"></a>Neden Application Insights gerekir?
@@ -109,7 +110,7 @@ Uygulama eşleme, dağıtılmış ortamınızdaki performans sorunlarını ve so
 ![Uygulama Eşlemesi](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analizi
-[Analiz](../../azure-monitor/app/analytics.md)sayesinde, güçlü bir SQL benzeri dilde rastgele sorgular yazabilirsiniz.  Birçok perspektifin birbirine bağlanması, tüm uygulama yığınının tamamında tanılanması kolaydır ve hizmet performansını Iş ölçümleri ve müşteri deneyimiyle ilişkilendirmek için doğru soruları sorabilirsiniz. 
+[Analiz](../log-query/log-query-overview.md)sayesinde, güçlü bir SQL benzeri dilde rastgele sorgular yazabilirsiniz.  Birçok perspektifin birbirine bağlanması, tüm uygulama yığınının tamamında tanılanması kolaydır ve hizmet performansını Iş ölçümleri ve müşteri deneyimiyle ilişkilendirmek için doğru soruları sorabilirsiniz. 
 
 Portalda depolanan tüm telemetri örneğinizi ve ölçüm ham verilerini sorgulayabilirsiniz. Dil, filtre, birleştirme, toplama ve diğer işlemleri içerir. Alanları hesaplayabilir ve istatistiksel çözümlemeler yapabilirsiniz. Tablosal ve grafik görselleştirmeler vardır.
 
@@ -159,4 +160,3 @@ Application Insights kullanmaya başlamak kolaydır. Ana Seçenekler şunlardır
 * [Azure App Service](../../azure-monitor/app/app-insights-overview.md)Için de [IIS sunucuları](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * Geliştirme sırasında projenizi işaretleyin. Bunu [ASP.net](../../azure-monitor/app/asp-net.md) veya [Java](../../azure-monitor/app/java-get-started.md) uygulamaları için, [Node.js](../../azure-monitor/app/nodejs.md) ve [diğer türlerde](../../azure-monitor/app/platforms.md)bir konak için yapabilirsiniz. 
 * Kısa bir kod parçacığı ekleyerek [herhangi bir Web sayfasını](../../azure-monitor/app/javascript.md) işaretleyin.
-

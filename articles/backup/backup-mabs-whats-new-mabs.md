@@ -3,11 +3,12 @@ title: Microsoft Azure Backup Server 'daki yenilikler
 description: Microsoft Azure Backup sunucusu, VM 'Leri, dosyaları ve klasörleri, iş yüklerini ve daha fazlasını korumak için gelişmiş yedekleme olanakları sağlar.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 5f8d0aa83f6d54575b76847efa892864b32c456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9d04d9f763549ce15e57f768432cd933cf1414c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629083"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032451"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server 'daki yenilikler (MABS)
 
@@ -22,7 +23,7 @@ Microsoft Azure Backup Server (MABS) sürüm 3 UR1, en son güncelleştirmedir v
 
 MABS v2 [modern yedekleme alanı](backup-mabs-add-storage.md) (MB) tanıtılan, depolama kullanımını ve performansı geliştirir. MB 'ler, temel dosya sistemi olarak ReFS kullanır ve katmanlı depolama gibi karma depolamayı kullanmak için tasarlanmıştır.
 
-MB ile ölçek ve performans elde etmek için, MABS v3 UR1 ile birlikte, bir katmanlı birim olarak (genel depolama alanının %4 ' i), DPM HDD depolaması ile birlikte bir katmanlı birim olarak kullanmanızı öneririz. Katmanlı depolama ile MABS v3 UR1,% 50-70 daha hızlı yedeklemeler sağlar. Katmanlı depolamayı yapılandırma adımları için [katmanlı depolamada MB olarak ayarlanan](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) DPM makalesine başvurun.
+MB ile ölçek ve performans elde etmek için, MABS v3 UR1 ile birlikte, bir katmanlı birim olarak (genel depolama alanının %4 ' i), DPM HDD depolaması ile birlikte bir katmanlı birim olarak kullanmanızı öneririz. Katmanlı depolama ile MABS v3 UR1,% 50-70 daha hızlı yedeklemeler sağlar. Katmanlı depolamayı yapılandırma adımları için [katmanlı depolamada MB olarak ayarlanan](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) DPM makalesine başvurun.
 
 ### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>Yinelenenleri kaldırma özelliği etkinken ReFS birimleri ve ReFS birimleri için destek
 
@@ -38,7 +39,7 @@ MABS v3 UR1 ile ReFS hacminde dağıtılan ReFS birimlerini ve iş yüklerini ye
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware Çözüm koruması desteği
 
-MABS v3 UR1 ile artık [Azure VMware çözümünde](https://docs.microsoft.com/azure/azure-vmware/)dağıtılan sanal makineleri koruyabilirsiniz.
+MABS v3 UR1 ile artık [Azure VMware çözümünde](../azure-vmware/index.yml)dağıtılan sanal makineleri koruyabilirsiniz.
 
 ### <a name="vmware-parallel-backups"></a>VMware paralel yedeklemeleri
 
@@ -55,7 +56,7 @@ MABS v3 UR1 ile kritik işlemler için ek bir kimlik doğrulama katmanı eklenmi
 
 ### <a name="offline-backup-improvements"></a>Çevrimdışı yedekleme geliştirmeleri
 
-MABS v3 UR1, Azure Içeri/dışarı aktarma hizmeti ile çevrimdışı yedekleme deneyimini geliştirir. Daha fazla bilgi için [buradaki](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export)güncelleştirilmiş adımlara bakın.
+MABS v3 UR1, Azure Içeri/dışarı aktarma hizmeti ile çevrimdışı yedekleme deneyimini geliştirir. Daha fazla bilgi için [buradaki](./backup-azure-backup-server-import-export.md)güncelleştirilmiş adımlara bakın.
 
 >[!NOTE]
 >Güncelleştirme ayrıca MABS 'teki Azure Data Box kullanarak çevrimdışı yedekleme için önizleme sağlar. [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com)Daha fazla bilgi edinmek için iletişim kurun.
@@ -69,7 +70,7 @@ MABS v3 UR1 yeni bir **[-checkreplicaparçalanma]** parametresi içerir. Yeni pa
 MABS v3 UR1 ile 32 bit koruma Aracısı desteği artık desteklenmemektedir. MABS v3 sunucusunu UR1 'e yükselttikten sonra 32 bit iş yüklerini koruyamazsınız. Mevcut 32-bit koruma aracılarının hiçbiri devre dışı durumda olur ve zamanlanan yedeklemeler **Aracı devre dışı** bırakılır hatasıyla başarısız olur. Bu aracıların yedekleme verilerini sürdürmek istiyorsanız, verileri sakla seçeneği ile korumayı durdurabilirsiniz. Aksi takdirde, koruma Aracısı kaldırılabilir.
 
 >[!NOTE]
->MABS UR 1 ile koruma için desteklenen iş yüklerini öğrenmek üzere [güncelleştirilmiş koruma matrisini](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) gözden geçirin.
+>MABS UR 1 ile koruma için desteklenen iş yüklerini öğrenmek üzere [güncelleştirilmiş koruma matrisini](./backup-mabs-protection-matrix.md) gözden geçirin.
 
 ## <a name="whats-new-in-mabs-v3-rtm"></a>MABS v3 RTM 'deki yenilikler
 
@@ -83,7 +84,7 @@ MABS v2 'de Modern Yedekleme Alanı (MB) ile, belirli iş yüklerini depolama ö
 
 ### <a name="prevent-unexpected-data-loss"></a>Beklenmeyen veri kaybını önleme
 
-Kurumlar ' de, MABS bir Yöneticiler ekibi tarafından yönetilir. Depolama üzerinde yedeklemeler için kullanılması gereken yönergeler olsa da, yedek depolama olarak MABS 'e verilen yanlış bir birim kritik verilerin kaybedilmesine neden olabilir. MABS v3 ile, [Bu birimleri bu PowerShell cmdlet 'lerini](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)kullanarak depolama için kullanılamayan şekilde yapılandırarak bu senaryolara engel olabilirsiniz.
+Kurumlar ' de, MABS bir Yöneticiler ekibi tarafından yönetilir. Depolama üzerinde yedeklemeler için kullanılması gereken yönergeler olsa da, yedek depolama olarak MABS 'e verilen yanlış bir birim kritik verilerin kaybedilmesine neden olabilir. MABS v3 ile, [Bu birimleri bu PowerShell cmdlet 'lerini](./backup-mabs-add-storage.md)kullanarak depolama için kullanılamayan şekilde yapılandırarak bu senaryolara engel olabilirsiniz.
 
 ### <a name="custom-size-allocation"></a>Özel boyut ayırma
 
@@ -114,7 +115,7 @@ MABS v3, MABS veritabanı olarak SQL 2017 ile yüklenebilir. SQL Server 'ı SQL 
 MABS v3, Windows Server 2019 ' ye yüklenebilir. MABS v3 'i WS2019 ile birlikte kullanmak için, MABS v3 'e yüklemeden/yükseltmeden önce işletim sistemini WS2019 'e yükseltebilir ya da işletim sistemi sonrası v3 'yi yükleme/yükseltme işlemini WS2016 üzerinde yükseltmeniz sağlayabilirsiniz.
 
 MABS v3 tam bir sürümdür ve doğrudan Windows Server 2016, Windows Server 2019 üzerine yüklenebilir veya MABS v2 'den yükseltilebilir. Yedekleme sunucusu v3 sürümüne yükseltmeden veya yüklemeden önce, yükleme önkoşulları hakkında bilgi edinin.
-[Burada](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package)mabs yükleme/yükseltme adımları hakkında daha fazla bilgi bulabilirsiniz.
+[Burada](./backup-azure-microsoft-azure-backup.md#software-package)mabs yükleme/yükseltme adımları hakkında daha fazla bilgi bulabilirsiniz.
 
 > [!NOTE]
 >

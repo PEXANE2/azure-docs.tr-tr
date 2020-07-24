@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/21/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e4ec4925da40cf6051b88d77fbbc35d93ececf87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518513"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036735"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -59,11 +59,11 @@ Microsoft, birincil bölgede, tutarlılık, dayanıklılık ve yüksek kullanıl
 
 Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS destekledikleri gösterilmektedir:
 
-|    Depolama hesabı türü    |    Desteklenen bölgeler    |    Desteklenen hizmetler    |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Genel amaçlı v2<sup>1</sup>    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2    |    Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu    |    Yalnızca blok Blobları    |
-|    Dosya depolama    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu    |    Yalnızca Azure dosyaları    |
+| Depolama hesabı türü | Desteklenen bölgeler | Desteklenen hizmetler |
+|--|--|--|
+| Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
+| BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu | Yalnızca Premium blok Blobları |
+| Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu | Yalnızca Premium dosya paylaşımları |
 
 <sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
 <sup>2</sup> sanal makineler için Azure yönetilen diskleri içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak zaman uyumsuz coğrafi çoğaltma üzerinde tutarlılık nedeniyle olası sorunlar nedeniyle bu önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS 'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -122,6 +122,9 @@ Fiyatlandırma hakkında daha fazla bilgi için bkz. [Bloblar](https://azure.mic
 
 Coğrafi olarak yedekli depolama (GRS veya GZRS ile), bölgesel kesintilere karşı koruma sağlamak için verilerinizi ikincil bölgedeki başka bir fiziksel konuma çoğaltır. Ancak, bu veriler yalnızca müşteri veya Microsoft birincili ikincil bölgeye yük devretme işlemi başlattığında okunabilir. İkincil bölgeye okuma erişimini etkinleştirdiğinizde, verileriniz her zaman okunabilir ve birincil bölgenin kullanılamaz hale geldiği bir durum da dahil olmak üzere kullanılabilir. İkincil bölgeye okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolamayı (RA-GZRS) etkinleştirin.
 
+> [!NOTE]
+> Azure dosyaları, Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) ve Okuma Erişimli Coğrafi bölge erişimli yedekli depolamayı (RA-GZRS) desteklemez.
+
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Uygulamalarınızı ikincil için okuma erişimi için tasarlama
 
 Depolama Hesabınız ikincil bölgeye okuma erişimi için yapılandırılmışsa, birincil bölge herhangi bir nedenden dolayı kullanılamaz hale gelirse, uygulamalarınızı ikincil bölgeden verileri okumak için sorunsuz bir şekilde kaydırma yapmak üzere tasarlayabilirsiniz. 
@@ -146,11 +149,11 @@ Aşağıdaki bölümlerde yer alarak bulunan tablolar, Azure depolama için kull
 
 Aşağıdaki tabloda her artıklık seçeneği için anahtar parametreleri açıklanmaktadır:
 
-| Parametre                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Belirli<sup>bir yıl boyunca</sup> nesnelerin yüzde dayanıklılığı yüzdesi                                          | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
-| Okuma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup>  | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
-| Yazma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup>  | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) |
+| Parametre | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|:-|
+| Belirli<sup>bir yıl boyunca</sup> nesnelerin yüzde dayanıklılığı yüzdesi | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
+| Okuma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup> | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
+| Yazma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup> | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) |
 
 <sup>1</sup> dayanıklılık ve kullanılabilirlik Için Azure depolama garantisi hakkında daha fazla bilgi için bkz. [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
@@ -158,12 +161,12 @@ Aşağıdaki tabloda her artıklık seçeneği için anahtar parametreleri açı
 
 Aşağıdaki tabloda, depolama hesabınız için hangi artıklık türünün geçerli olduğuna bağlı olarak verilerinizin belirli bir senaryoda dayanıklı ve kullanılabilir olup olmadığı gösterilir:
 
-| Kesinti senaryosu                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                 |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | No                              | Yes                              | Evet<sup>1</sup>                                  | Yes                                  |
-| Birincil bölgede bölge genelinde bir kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Evet<sup>1</sup>                                  | Evet<sup>1</sup>                                  |
-| Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
+| Kesinti senaryosu | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|:-|
+| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir | Yes | Yes | Yes | Yes |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir | Hayır | Evet | Evet<sup>1</sup> | Yes |
+| Birincil bölgede bölge genelinde bir kesinti meydana gelir | Hayır | Hayır | Evet<sup>1</sup> | Evet<sup>1</sup> |
+| Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır | Hayır | Evet (RA-GRS ile) | Evet (RA-GZRS ile) |
 
 birincil bölge kullanılamaz duruma gelirse, yazma kullanılabilirliğini geri yüklemek için <sup>1</sup> hesap yük devretmesi gerekir. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](storage-disaster-recovery-guidance.md).
 
@@ -171,9 +174,9 @@ birincil bölge kullanılamaz duruma gelirse, yazma kullanılabilirliğini geri 
 
 Aşağıdaki tabloda, her bir depolama hesabı türü tarafından hangi artıklık seçeneklerinin desteklendiği gösterilmektedir. Depolama hesabı türleri hakkında bilgi için bkz. [depolama hesabına genel bakış](storage-account-overview.md).
 
-| LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Genel amaçlı v2<br /> Genel amaçlı v1<br /> Blob depolamayı engelle<br /> Blob depolama<br /> Dosya depolama                | Genel amaçlı v2<br /> Blob depolamayı engelle<br /> Dosya depolama                             | Genel amaçlı v2<br /> Genel amaçlı v1<br /> Blob depolama                     | Genel amaçlı v2                     |
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| Genel amaçlı v2<br /> Genel amaçlı v1<br /> Blob depolamayı engelle<br /> Blob depolama<br /> Dosya depolama | Genel amaçlı v2<br /> Blob depolamayı engelle<br /> Dosya depolama | Genel amaçlı v2<br /> Genel amaçlı v1<br /> Blob depolama | Genel amaçlı v2 |
 
 Tüm depolama hesaplarına ait tüm veriler, depolama hesabının artıklık seçeneğine göre kopyalanır. Blok Blobları, ekleme Blobları, sayfa Blobları, kuyruklar, tablolar ve dosyalar da dahil olmak üzere nesneler kopyalanır. Arşiv katmanı da dahil olmak üzere tüm katmanlardaki veriler kopyalanır. Blob katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md).
 

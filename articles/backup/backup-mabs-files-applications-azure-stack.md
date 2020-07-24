@@ -3,11 +3,12 @@ title: Azure Stack VM 'lerde dosyaları yedekleme
 description: Azure Stack dosyalarını ve uygulamaları Azure Stack ortamınıza yedeklemek ve kurtarmak için Azure Backup kullanın.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172328"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032774"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack dosya ve uygulamaları yedekleme
 
@@ -43,7 +44,7 @@ Azure Stack sanal makinelerdeki dosyaları korumak üzere Azure Backup Sunucusu 
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Microsoft, bir koruma ilkesini paylaşacak tüm verilerin tek bir koruma grubuna yerleştirilmesini önerir. Koruma gruplarını planlama ve dağıtma hakkında ayrıntılı bilgi için bkz. System Center DPM makalesi, [koruma gruplarını dağıtma](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Microsoft, bir koruma ilkesini paylaşacak tüm verilerin tek bir koruma grubuna yerleştirilmesini önerir. Koruma gruplarını planlama ve dağıtma hakkında ayrıntılı bilgi için bkz. System Center DPM makalesi, [koruma gruplarını dağıtma](/system-center/dpm/create-dpm-protection-groups).
 
 4. **Veri koruma yöntemini seçin** ekranında, koruma grubu için bir ad yazın. **Kullanarak kısa vadeli koruma** istiyorum onay kutusunu seçin ve **çevrimiçi koruma**istiyorum ' u seçin. **İleri**’ye tıklayın.
 
@@ -132,5 +133,5 @@ Azure portal Azure Backup Sunucusu varlıkları görüntülemek için aşağıda
 
 Diğer iş yüklerini korumak için Azure Backup Sunucusu kullanma hakkında daha fazla bilgi için aşağıdaki makalelerden birine bakın:
 
-* [SharePoint grubunu yedekleme](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-* [SQL sunucusunu yedekleme](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+* [SharePoint grubunu yedekleme](./backup-mabs-sharepoint-azure-stack.md)
+* [SQL sunucusunu yedekleme](./backup-mabs-sql-azure-stack.md)

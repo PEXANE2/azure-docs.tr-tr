@@ -6,17 +6,19 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 6c7ed01cb0af164531fbee99fe0d71246c47d6f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037245"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda hazırlama ortamı ayarlama
 
 Bu makalede, Azure Spring Cloud 'daki mavi yeşil dağıtım modelini kullanarak bir hazırlama dağıtımının nasıl ayarlanacağı açıklanır. Mavi/yeşil dağıtım, yeni (yeşil) sürüm dağıtıldığı sırada mevcut (mavi) sürümü canlı tutma prensibine dayanan bir Azure DevOps Sürekli Teslim düzenidir. Bu makalede, üretim dağıtımını doğrudan değiştirmeden bu hazırlama dağıtımını üretime nasıl koyabileceğiniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [Azure yay bulut uygulaması başlatma hakkında öğreticimiz](spring-cloud-quickstart-launch-app-portal.md)tarafından zaten POF ölçümleri uygulamasını dağıttığınızı varsaymış olursunuz. Pıof ölçümleri üç uygulama içerir: "Gateway," "Account-Service" ve "Auth-Service."  
 

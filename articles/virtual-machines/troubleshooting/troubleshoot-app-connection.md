@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036446"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Azure'da sanal makinelerdeki uygulama bağlantısı sorunlarını giderme
 
@@ -117,7 +117,7 @@ Uygulamaya erişemiyorsanız, aşağıdaki ayarları doğrulayın:
   
   * VM için uç nokta yapılandırmasının gelen trafiğe, özellikle protokol (TCP veya UDP) ve genel ve özel bağlantı noktası numaralarına izin vermesini doğrulayın.
   * Uç noktasındaki erişim denetim listelerinin (ACL 'Ler) Internet 'ten gelen trafiği engellemediğini doğrulayın.
-  * Daha fazla bilgi için bkz. [sanal makineye uç noktaları ayarlama](../windows/classic/setup-endpoints.md).
+  * Daha fazla bilgi için bkz. [sanal makineye uç noktaları ayarlama](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints).
 * Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan VM 'Ler için:
   
   * VM için gelen NAT kuralı yapılandırmasının, özellikle protokol (TCP veya UDP) ve genel ve özel bağlantı noktası numaralarını gelen trafiğe izin vermesini doğrulayın.
@@ -138,11 +138,9 @@ Uygulamaya erişebiliyorsanız, Internet Edge cihazınızın izin vermesini sağ
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>4. adım uygulamaya erişemiyorsanız, ayarları denetlemek için IP doğrulamasını kullanın. 
 
-Daha fazla bilgi için bkz. [Azure ağ izlemeye genel bakış](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+Daha fazla bilgi için bkz. [Azure ağ izlemeye genel bakış](../../network-watcher/network-watcher-monitoring-overview.md). 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](troubleshoot-rdp-connection.md)
 
 [Linux tabanlı bir Azure sanal makinesine yönelik Secure Shell (SSH) bağlantılarında sorun giderme](troubleshoot-ssh-connection.md)
-
-

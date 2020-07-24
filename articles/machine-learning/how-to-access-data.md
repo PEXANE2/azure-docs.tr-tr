@@ -11,19 +11,19 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 194864d223d908cc2d8b1d7f14efe81e16bbd058
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146733"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031516"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage Services 'a bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, **Azure Machine Learning veri depoları aracılığıyla Azure Storage Services 'a nasıl bağlanacağınızı**öğrenin. Veri deposu, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi mağaza bağlantı bilgilerini, betiklerinizde kalıcı olarak kodlamadan depolamaya güvenle erişebilmek için depolar. 
 
-**Desteklenmeyen depolama çözümleri için**ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümlerine [taşıyın](#move) .  [Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. 
+**Desteklenmeyen depolama çözümleri için**ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşıyın](#move) .  [Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. 
 
 Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
@@ -92,8 +92,9 @@ Veri deposu oluşturulduktan sonra, bu doğrulama yalnızca, veri deposu nesnele
 ### <a name="python-sdk"></a>Python SDK'sı
 
 Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıfta bulunur ve formundadır `register_azure_*` .
+
 > [!IMPORTANT]
-> Bir sanal ağ içindeki depolama hesapları için bir veri deposu oluşturmayı planlıyorsanız, sanal ağ içindeki verilere erişim bölümüne bakın.
+> Bir sanal ağ içindeki depolama hesapları için bir veri deposu oluşturmayı planlıyorsanız, [sanal ağ içindeki verilere erişim](#access-data-in-a-virtual-network) bölümüne bakın.
 
 Yöntemi Azure portal doldurmanız için gereken bilgileri bulabilirsiniz `register_azure_*()` . [Azure portal](https://portal.azure.com)
 
@@ -185,7 +186,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Azure Machine Learning Studio 'da birkaç adımda yeni bir veri deposu oluşturun:
 
 > [!IMPORTANT]
-> Veri depolama hesabınız bir sanal ağda ise, Studio 'nun verilerinize erişebildiğinden emin olmak için ek yapılandırma adımları gereklidir. Uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [ağ yalıtımı & gizliliği] (nasıl yapılır-etkinleştirme-sanal-ağ. MD # Machine-Learning-Studio). 
+> Veri depolama hesabınız bir sanal ağda ise, Studio 'nun verilerinize erişebildiğinden emin olmak için ek yapılandırma adımları gereklidir. Uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [ağ yalıtımı & gizliliği](how-to-enable-virtual-network.md#machine-learning-studio) . 
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 1. **Yönet**altında sol bölmedeki **veri depoları** ' nı seçin.
@@ -262,7 +263,7 @@ datastore.upload(src_dir='your source directory',
 
 Ayrıca, yöntemi aracılığıyla tek tek dosyaların bir listesini veri deposuna yükleyebilirsiniz `upload_files()` .
 
-### <a name="download"></a>İndirme
+### <a name="download"></a>İndir
 
 Veri deposundaki verileri yerel dosya sisteminize indirin:
 

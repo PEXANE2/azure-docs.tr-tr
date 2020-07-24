@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: baa238f36c41b5f494e8748cd5cd563bd212f483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c082c74ab448fda0926b5aab52088bf00fb719bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031176"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -32,8 +32,9 @@ Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
 * Veri paylaşma ve diğer kullanıcılarla işbirliği yapma.
 
-## <a name="prerequisites"></a>Ön koşullar
-' Veri kümelerini oluşturmak ve bunlarla çalışmak için şunlar gerekir:
+## <a name="prerequisites"></a>Önkoşullar
+
+Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -42,13 +43,13 @@ Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 * Azureml [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), azureml veri kümesi paketini içerir.
 
 > [!NOTE]
-> Bazı veri kümesi sınıflarının yalnızca 64 bitlik Python ile uyumlu olan [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlarda desteklenir: Red Hat Enterprise Linux, Ubuntu, Fedora ve CentOS.
+> Bazı veri kümesi sınıflarının yalnızca 64 bitlik Python ile uyumlu olan [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlara göre desteklenir: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), demı (8, 9) ve CentOS (7).
 
 ## <a name="compute-size-guidance"></a>İşlem boyutu kılavuzu
 
 Bir veri kümesi oluştururken, işlem işleme gücünü ve verilerinizin bellekteki boyutunu gözden geçirin. Depolama alanındaki verilerinizin boyutu bir veri çerçevesindeki verilerin boyutuyla aynı değildir. Örneğin, CSV dosyalarındaki veriler bir veri çerçevesinde en fazla 10 x genişleyebilir, bu nedenle 1 GB CSV dosyası bir veri çerçevesinde 10 GB olabilir. 
 
-Ana faktör, veri kümesinin bellek içi, yani bir veri çerçevesi olarak ne kadar büyük olduğunu gösteren bir etkendir. İşlem boyutunuzu ve işlem gücünü kullanmanızı öneririz, RAM 'in boyutu 2x olmalıdır. Bu nedenle, veri çerçeverizin 10 GB ise, veri çerçevesinin belleğe uygun ve işlenebilir olmasını sağlamak için 20 + GB RAM 'e sahip bir işlem hedefi istersiniz. Verileriniz sıkıştırılmışsa, daha fazla genişleyebilir; sıkıştırılmış Parquet biçiminde depolanan 20 GB görece seyrek veri, bellekte ~ 800 GB 'a genişleyebilir. Parquet dosyaları bir sütunlu biçimde veri depolarsanız, yalnızca sütunların yarısını içeriyorsa yalnızca ~ 400 GB 'yi belleğe yüklemeniz gerekir.
+Ana faktör, veri kümesinin bellek içi, yani bir veri çerçevesi olarak ne kadar büyük olduğunu gösteren bir etkendir. İşlem boyutunuzu ve işlem gücünü kullanmanızı öneririz, RAM 'in boyutu 2x olmalıdır. Bu nedenle, veri çerçeverizin 10 GB ise, veri çerçevesinin belleğe sığması ve işlenebilmesi için 20 + GB RAM ile bir işlem hedefi istersiniz. Verileriniz sıkıştırılmışsa, daha fazla genişleyebilir; sıkıştırılmış Parquet biçiminde depolanan 20 GB görece seyrek veri, bellekte ~ 800 GB 'a genişleyebilir. Parquet dosyaları bir sütunlu biçimde veri depolarsanız, yalnızca sütunların yarısını içeriyorsa yalnızca ~ 400 GB 'yi belleğe yüklemeniz gerekir.
  
 Pandas kullanıyorsanız, hepsi kullanacağı için 1 ' den fazla vCPU olması gerekmez. Tek bir Azure Machine Learning işlem örneğinde/düğümünde Modın ve DASK/Ray aracılığıyla kolayca paralel hale getirmek ve gerektiğinde büyük bir kümeye ölçeklendirebilirsiniz `import pandas as pd` `import modin.pandas as pd` . 
  
@@ -121,11 +122,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |Passengerıd|Kalan|PClass|Name|Komutu|Yaş|SibSp|Parch|Bilet|Tarifeli havayolu|Cabin|Embarked
+|INDEKS|Passengerıd|Kalan|PClass|Name|Komutu|Yaş|SibSp|Parch|Bilet|Tarifeli havayolu|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|False|3|Braund, Mr. Owen HARRIS|erkek|22,0|1|0|A/5 21171|7,2500||S
-1|2|True|1|Hanler, Mrs. John Bradley (çiçek)...|kadın|38,0|1|0|BILGISAYAR 17599|71,2833|C85|C
-2|3|True|3|Heıkkinen, Isabetsizlik. Laina|kadın|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|Yanlış|3|Braund, Mr. Owen HARRIS|erkek|22,0|1|0|A/5 21171|7,2500||S
+1|2|Doğru|1|Hanler, Mrs. John Bradley (çiçek)...|kadın|38,0|1|0|BILGISAYAR 17599|71,2833|C85|C
+2|3|Doğru|3|Heıkkinen, Isabetsizlik. Laina|kadın|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Bellek Pandas dataframe 'ten bir veri kümesi oluşturmak için, verileri CSV gibi yerel bir dosyaya yazın ve veri kümenizi bu dosyadan oluşturun. Aşağıdaki kod bu iş akışını gösterir.
 
@@ -158,7 +159,7 @@ dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv
 
 from azureml.core import Dataset, Datastore
 
-# create tabular dataset from a SQL database in datastore
+# create tabular dataset from a SQL database in datastore. Take note of double parenthesis.
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
@@ -186,7 +187,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>Dosya veri kümesi oluşturma
 
-[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) `FileDatasetFactory` Dosyaları herhangi bir biçimde yüklemek ve kayıtsız bir dosya veri kümesi oluşturmak için sınıfındaki yöntemini kullanın. Depolama alanınızı bir sanal ağ veya güvenlik duvarının arkasındaysa, `validate =False` yöntebinizdeki parametreyi ayarlayın `from_files()` . Bu, ilk doğrulama adımını atlar ve veri kümenizi bu güvenli dosyalardan oluşturmanıza da emin olmanızı sağlar.
+[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) `FileDatasetFactory` Dosyaları herhangi bir biçimde yüklemek ve kayıtsız bir dosya veri kümesi oluşturmak için sınıfındaki yöntemini kullanın. Depolama alanı bir sanal ağın veya güvenlik duvarının arkasındaysa, `validate=False` yöntebinizdeki parametreyi ayarlayın `from_files()` . Bu, ilk doğrulama adımını atlar ve veri kümenizi bu güvenli dosyalardan oluşturmanıza da emin olmanızı sağlar.
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -210,6 +211,7 @@ Studio 'da bir veri kümesi oluşturmak için:
 1. Veri kümenizin kaynağını seçmek için **veri kümesi oluştur** ' u seçin. Bu kaynak yerel dosyalar, bir veri deposu veya genel URL olabilir.
 1. Veri kümesi türü için **tablo** veya **Dosya** seçin.
 1. **Veri deposu ve dosya seçim** formunu açmak için **İleri ' yi** seçin. Bu formda, oluşturulduktan sonra veri kümenizin saklanacağı yeri ve veri kümeniz için kullanılacak veri dosyalarını seçin. 
+    1. Verileriniz bir sanal ağda ise doğrulamayı atlamayı etkinleştirin. [Sanal ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md#machine-learning-studio)hakkında daha fazla bilgi edinin.
 1. **Ayarları ve önizleme** ve **şema** formlarını doldurmak için **İleri ' yi** seçin; Bunlar dosya türüne göre akıllıca doldurulmuştur ve veri kümenizi bu formlarda oluşturmadan önce daha sonra yapılandırabilirsiniz. 
 1. **Ayrıntıları Onayla** formunu gözden geçirmek için **İleri ' yi** seçin. Seçimlerinizi denetleyin ve veri kümeniz için isteğe bağlı bir veri profili oluşturun. [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin. 
 1. Veri kümesi oluşturmayı gerçekleştirmek için **Oluştur** ' u seçin.
@@ -262,7 +264,7 @@ Kutucuğunu seçerek bir veri kümesi seçin. (Arama çubuğunu kullanarak filtr
 
 ![Veri kümesi seçin](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, genel tatiller veri kümesi için zaman aralığını bir yıla, ülke kodunu ise yalnızca BIZIMLE filtreleyerek filtreleyebilirsiniz. **Oluştur**'u seçin.
+Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, genel tatiller veri kümesi için zaman aralığını bir yıla, ülke kodunu ise yalnızca BIZIMLE filtreleyerek filtreleyebilirsiniz. **Oluştur**’u seçin.
 
 ![Veri kümesi params 'i ayarlama ve veri kümesi oluşturma](./media/how-to-create-register-datasets/open-datasets-3.png)
 

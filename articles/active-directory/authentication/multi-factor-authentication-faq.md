@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483793"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035086"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -55,6 +56,8 @@ Bulut hizmetine kimlik doğrulama istekleri gönderildiğinde, veriler kimlik do
 
 Doğrulama sonucu (başarı veya reddetme) ve reddedilme nedeni kimlik doğrulama verileriyle birlikte depolanır. Bu veriler, kimlik doğrulama ve kullanım raporlarında kullanılabilir.
 
+Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Için veri yerleşimi ve müşteri verileri](concept-mfa-data-residency.md).
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>Kullanıcılarıma SMS iletileri göndermek için hangi SMS kısa kodları kullanılır?
 
 Birleşik Devletler, aşağıdaki SMS kısa kodlarını kullanırız:
@@ -69,7 +72,9 @@ Kanada 'da aşağıdaki SMS kısa kodlarını kullanırız:
 * *759731*
 * *673801*
 
-Aynı numarayla tutarlı SMS veya ses tabanlı Multi-Factor Authentication istemi teslimi garantisi yoktur. Kullanıcılarımıza ilişkin olarak, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için istediğiniz zaman kısa kodlar ekleyebilir veya kaldırabiliriz. Birleşik Devletler ve Kanada yanı sıra ülkeler ve bölgeler için kısa kodları desteklemiyoruz.
+Aynı numarayla tutarlı SMS veya ses tabanlı Multi-Factor Authentication istemi teslimi garantisi yoktur. Kullanıcılarımıza ilişkin olarak, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için istediğiniz zaman kısa kodlar ekleyebilir veya kaldırabiliriz.
+
+Birleşik Devletler ve Kanada yanı sıra ülkeler ve bölgeler için kısa kodları desteklemiyoruz.
 
 ## <a name="billing"></a>Faturalandırma
 
@@ -185,7 +190,7 @@ Bazı durumlarda, evet.
 
 Azure MFA Server v 7.0 veya üzeri bir tek yönlü SMS için bir kayıt defteri anahtarı ayarlayarak zaman aşımı ayarını yapılandırabilirsiniz. MFA bulut hizmeti SMS iletisini gönderdikten sonra, MFA sunucusuna doğrulama kodu (veya bir kerelik geçiş kodu) döndürülür. MFA sunucusu, kodu varsayılan olarak 300 saniye için belleğe depolar. Kullanıcı, 300 saniye geçtikten sonra kodu girmezse, kimlik doğrulaması reddedilir. Varsayılan zaman aşımı ayarını değiştirmek için bu adımları kullanın:
 
-1. `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor` kısmına gidin.
+1. `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor` öğesine gidin.
 2. *Pfsvc_pendingSmsTimeoutSeconds* adlı bir **DWORD** kayıt defteri anahtarı oluşturun ve Azure MFA sunucusunun bir kerelik geçiş kodlarını depolamasını istediğiniz süreyi saniye cinsinden ayarlayın.
 
 >[!TIP]

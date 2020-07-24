@@ -6,18 +6,19 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: e17fa3e99de9f429fa279ba2e5413b60e9084de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 960e480bc3271a24f1fa898e1af6c55bcaaada7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125711"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037568"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub eylemleri ile Azure yay bulut CI/CD
 
 GitHub eylemleri otomatik yazılım geliştirme yaşam döngüsü iş akışını destekler. Azure Spring Cloud için GitHub eylemleri sayesinde deponuzda oluşturmak, test etmek, paketlemek, yayınlamak ve Azure 'a dağıtmak için iş akışları oluşturabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu örnek, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerektirir.
 
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub deposunu ayarlama ve kimlik doğrulama

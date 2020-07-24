@@ -14,21 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 121c9258353505b6147aa059d327bc711e9fede4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038248"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Alcide Kaudıt 'nizi Azure Sentinel 'e bağlama
+
+> [!IMPORTANT]
+> Azure Sentinel 'deki Alcide Kaudıt veri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Alcide Kaudıt](https://www.alcide.io/kaudit-K8s-forensics/) , anormal Kubernetes davranışlarını belirlemenize ve algılama süresini azaltırken Kubernetes ihlallerine ve olaylarına odaklanmanıza yardımcı olur. Bu makalede, Alcide Kaudıt çözümünüzü Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Alcide Kaudıt veri Bağlayıcısı, Kauıdıt günlük verilerinizi Azure Sentinel 'e kolayca getirmenize olanak tanır. böylece, çalışma kitaplarında görüntüleyebilmeniz için özel uyarılar oluşturabilir ve bunu araştırmayı geliştirebilirsiniz. Alcide Kaudıt ve Azure Sentinel arasındaki tümleştirme REST API kullanır.
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izinlerine sahip olmanız gerekir.
 

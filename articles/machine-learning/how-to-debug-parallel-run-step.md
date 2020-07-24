@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
+ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/06/2020
-ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/16/2020
+ms.openlocfilehash: a6a3e9a7a914711f6b7c923ac2249ebf3285c877
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031040"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Hata ayıklama ve ParallelRunStep sorunlarını giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ ParallelRunStep işlerinin dağıtılmış doğası nedeniyle, birkaç farklı k
 
 - `~/logs/overview.txt`: Bu dosya, şimdiye kadar oluşturulan mini toplu işlerin sayısı (görevler olarak da bilinir) ve şimdiye kadar işlenen mini toplu iş sayısı hakkında üst düzey bilgiler sağlar. Bu uçta, işin sonucunu gösterir. İş başarısız olursa, hata iletisini ve sorun giderme işleminin başlatılacağı konumu gösterir.
 
-- `~/logs/sys/master.txt`: Bu dosya, çalışan işin ana düğümü (Orchestrator olarak da bilinir) görünümünü sağlar. Görev oluşturma, ilerleme izleme, çalıştırma sonucu içerir.
+- `~/logs/sys/master.txt`: Bu dosya, çalışan işin asıl düğümünü (Orchestrator olarak da bilinir) sağlar. Görev oluşturma, ilerleme izleme, çalıştırma sonucu içerir.
 
 Giriş betiğinin EntryScript yardımcısını ve Print deyimlerini kullanarak oluşturulan Günlükler aşağıdaki dosyalarda bulunur:
 
@@ -61,11 +61,11 @@ Her bir düğümün puan betiğini nasıl yürütülebileceğini tam olarak anla
 Her çalışan için işlemlerin kaynak kullanımı hakkındaki bilgileri de bulabilirsiniz. Bu bilgiler CSV biçimindedir ve konumunda bulunur `~/logs/sys/perf/overview.csv` . Her işlemle ilgili bilgiler altında bulunabilir `~logs/sys/processes.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Kullanıcı betiğimin uzak bağlamdan Nasıl yaparım? mi?
-Günlüklerin **günlüklerde/Kullanıcı** klasöründe günlük görünmesini sağlamak için aşağıdaki örnek kodda gösterildiği gibi entryscript 'ten bir günlükçü alabilirsiniz.
+ParallelRunStep, bir düğümde process_count_per_node göre birden çok işlem çalıştırabilir. Düğüm üzerindeki her bir işlemden günlükleri düzenlemek ve Print ve log ifadesini birleştirmek için aşağıda gösterildiği gibi ParallelRunStep günlükçü kullanılması önerilir. EntryScript 'ten bir günlükçüyle alınır ve günlüklerin, portalda **günlüklerde/Kullanıcı** klasöründe görünmesini sağlayabilirsiniz.
 
 **Günlükçü kullanılarak örnek bir giriş betiği:**
 ```python
-from entry_script import EntryScript
+from azureml_user.parallel_run import EntryScript
 
 def init():
     """ Initialize the node."""
@@ -87,7 +87,9 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Tüm çalışanlarıma, bir arama tablosu içeren dosya veya dosyalar gibi bir yan girişi nasıl geçebilirim?
 
-Yan girişi içeren bir [veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) oluşturun ve çalışma alanınıza kaydedin. Bu `side_input` parametreye geçirin `ParallelRunStep` . Ayrıca, `arguments` bağlı yoluna kolayca erişmek için bölümüne yolunu ekleyebilirsiniz:
+Kullanıcı, ParalleRunStep side_inputs parametresi kullanarak başvuru verilerini betiğe geçirebilir. Side_inputs olarak belirtilen tüm veri kümeleri her çalışan düğümüne bağlanır. Kullanıcı, bağımsız değişkeni geçirerek bağlama konumunu alabilir.
+
+Başvuru verilerini içeren bir [veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) oluşturun ve çalışma alanınıza kaydedin. Bu `side_inputs` parametreye geçirin `ParallelRunStep` . Ayrıca, `arguments` bağlı yoluna kolayca erişmek için bölümüne yolunu ekleyebilirsiniz:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")

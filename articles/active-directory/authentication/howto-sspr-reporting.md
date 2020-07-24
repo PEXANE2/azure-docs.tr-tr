@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035307"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD parola yönetimi için raporlama seçenekleri
 
@@ -50,9 +51,9 @@ Azure portal deneyiminde, parola sıfırlama ve parola sıfırlama kayıt etkinl
 6. Bölmenin üst kısmındaki **filtre** menüsünde, **hizmet** açılır listesini seçin ve **self servis parola yönetimi** hizmet türüyle değiştirin.
 7. İsteğe bağlı olarak, ilgilendiğiniz belirli **etkinlikleri** seçerek listeye daha fazla filtre uygulayın.
 
-### <a name="converged-registration-preview"></a>Yakınsama kaydı (Önizleme)
+### <a name="combined-registration"></a>Birleşik kayıt
 
-Yakınsama kaydının genel önizlemesine katılımını yapıyorsanız, denetim günlüklerinde Kullanıcı etkinliğiyle ilgili bilgiler **güvenlik**  >  **kimlik doğrulama yöntemleri**altında bulunur.
+[Birleşik kaydı](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)etkinleştirdiyseniz, denetim günlüklerinde Kullanıcı etkinliğiyle ilgili bilgiler **güvenlik**  >  **kimlik doğrulama yöntemleri**altında bulunur.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure portal rapor sütunlarının açıklaması
 

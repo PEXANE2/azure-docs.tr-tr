@@ -11,11 +11,12 @@ author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 3afe5d0993f7e647cbae1281cb9e7387df6e2f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f42729b97f4a02e549766dc816db8361b3b8e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030938"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Işlevlerine makine öğrenme modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +28,7 @@ Azure Işlevlerinde bir işlev uygulaması olarak Azure Machine Learning bir mod
 
 Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Artık Azure Machine Learning, bu makine öğrenimi modellerini [Azure işlevlerine dağıtılabilecek](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)işlev uygulamalarına derlemek için Önizleme işlevselliğine sahiptir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -55,6 +56,7 @@ Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerek
     >
     > Varsayılan olarak, işlevler için paketleme sırasında giriş metin olarak değerlendirilir. Girişin ham baytlarını kullanmak istiyorsanız (örneğin, blob Tetikleyicileri için), [ham verileri kabul etmek Için Amlrequest](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)' i kullanmanız gerekir.
 
+Giriş betiği hakkında daha fazla bilgi için bkz. [Puanlama kodu tanımlama](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script)
 
 * Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**
 

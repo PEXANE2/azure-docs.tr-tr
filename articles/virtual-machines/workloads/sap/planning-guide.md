@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7e12b750f569a81f6931333a05f884e16ac4d9e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5cd335d34a67cc5a102bde11366813c53770266e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508024"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036344"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -73,7 +73,7 @@ ms.locfileid: "86508024"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -686,7 +686,7 @@ Bir SAP sisteminin Azure sanal makine Hizmetleri 'ne uygun olup olmadığını v
 
 ![Azure 'da SAP dağıtma olanağı için karar ağacı][planning-guide-figure-700]
 
-1. İle başlamak için en önemli bilgiler, belirli bir SAP sistemine yönelik SAPS gereksinimidir. SAP sistemi 2 katmanlı bir yapılandırmada şirket içinde zaten dağıtılmış olsa bile, SAPS gereksinimlerinin DBMS bölümüne ve SAP uygulama bölümüne ayrılması gerekir. Mevcut sistemlerde, kullanılan donanımla ilgili olan SAPS 'ler, mevcut SAP kıyaslamaları temelinde belirlenebilir veya tahmin edilebilir. Sonuçlar [burada](https://sap.com/about/benchmark.html)bulunabilir. Yeni dağıtılan SAP sistemlerinde, sistemin SAPS gereksinimlerini belirleyecek bir boyutlandırma alıştırması yapmanız gerekir. Ayrıca bkz. [Azure 'Da SAP boyutlandırma](https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx) için bu blog ve ekli belge
+1. İle başlamak için en önemli bilgiler, belirli bir SAP sistemine yönelik SAPS gereksinimidir. SAP sistemi 2 katmanlı bir yapılandırmada şirket içinde zaten dağıtılmış olsa bile, SAPS gereksinimlerinin DBMS bölümüne ve SAP uygulama bölümüne ayrılması gerekir. Mevcut sistemlerde, kullanılan donanımla ilgili olan SAPS 'ler, mevcut SAP kıyaslamaları temelinde belirlenebilir veya tahmin edilebilir. Sonuçlar [burada](https://sap.com/about/benchmark.html)bulunabilir. Yeni dağıtılan SAP sistemlerinde, sistemin SAPS gereksinimlerini belirleyecek bir boyutlandırma alıştırması yapmanız gerekir. 
 1. Mevcut sistemlerde, DBMS sunucusunda g/ç birimi ve saniye başına g/ç işlemleri ölçülmelidir. Yeni planlanmış sistemlerde, yeni sistem için boyutlandırma alıştırması, DBMS tarafında g/ç gereksinimlerine ilişkin kaba fikirler de vermelidir. Emin değilseniz, sonunda bir kavram kanıtı uygulamanız gerekir.
 1. DBMS sunucusunun SAPS gereksinimini Azure 'un sağladığı farklı VM türleri ile karşılaştırın. Farklı Azure VM türlerinin SAPS 'si ile ilgili bilgiler SAP Note [1928533]' de belgelenmiştir. Veritabanı katmanı, dağıtımların çoğunda ölçeklendirolmayan bir SAP NetWeaver sistemindeki katman olduğundan, odak DBMS VM 'sinde olmalıdır. Buna karşılık, SAP uygulama katmanı da genişletilebilir. SAP tarafından desteklenen Azure VM türlerinden hiçbiri gerekli SAPS 'leri sunabiliyorsa, planlı SAP sisteminin iş yükü Azure üzerinde çalıştırılamaz. Sistemi şirket içinde dağıtmanız ya da sistem için iş yükü birimini değiştirmeniz gerekir.
 1. [Burada (Linux)][virtual-machines-sizes-linux] ve [burada (Windows)][virtual-machines-sizes-windows]belgelendiği gibi, Azure Standart depolama veya Premium Depolama kullanıp kullanmayacağınızı bağımsız olarak disk başına bir IOPS kotası uygular. VM türüne bağlı olarak, birbirine bağlanan veri disklerinin sayısı farklılık gösterir. Sonuç olarak, her farklı VM türüyle elde edilebilir maksimum ıOPS numarasını hesaplayabilirsiniz. Veritabanı dosyası düzenine bağlı olarak, Konuk işletim sisteminde tek bir birim olacak şekilde disk şeridi oluşturabilirsiniz. Ancak, dağıtılmış bir SAP sisteminin geçerli ıOPS birimi, Azure 'un en büyük VM türüne ait hesaplanan sınırları aşarsa ve daha fazla bellekle telafi şansı yoksa, SAP sisteminin iş yükü ciddi bir şekilde etkilenebilir. Bu gibi durumlarda, Azure 'da sistemi dağıtmayan bir noktaya basabilirsiniz.
@@ -700,7 +700,7 @@ DBMS ve SAP uygulama katmanı bileşenleri Azure VM 'lerinde çalıştırılabil
 
 ## <a name="managing-azure-assets"></a>Azure varlıklarını yönetme
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, Azure VM dağıtımlarını yönetmek için üç arabirimden biridir. Görüntülerden VM dağıtımı gibi temel yönetim görevleri, Azure portal aracılığıyla yapılabilir. Ayrıca, depolama hesapları, sanal ağlar ve diğer Azure bileşenlerinin oluşturulması de Azure portal görevlerdir. Ancak, VHD 'leri Şirket içinden Azure 'a yükleme veya Azure 'da bir VHD kopyalama gibi işlevler, üçüncü taraf araçlar ya da PowerShell veya CLı aracılığıyla yönetim gerektiren görevlerdir.
 
@@ -734,7 +734,7 @@ SAP için Azure uzantısı 'nın dağıtımı (Bu belgedeki [SAP Için Azure uza
 
 Azure daha fazla işlevsellik sağladığından cmdlet 'lerin güncelleştirilmesini gerektiren yeni PS cmdlet 'leri eklenecektir. Bu nedenle, <https://azure.microsoft.com/downloads/> cmdlet 'lerin yeni bir sürümü için ayda en az bir kez Azure indirme sitesini denetlemek mantıklı olur. Yeni sürüm eski sürümün üzerine yüklenir.
 
-Azure ile ilgili PowerShell komutlarının genel listesi için buraya bakın: <https://docs.microsoft.com/powershell/azure/overview> .
+Azure ile ilgili PowerShell komutlarının genel listesi için buraya bakın: <https://docs.microsoft.com/powershell/azure/> .
 
 ### <a name="management-via-microsoft-azure-cli-commands"></a>Microsoft Azure CLı komutları aracılığıyla yönetim
 
@@ -970,7 +970,7 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
 
   Save-AzVhd cmdlet 'i hakkında daha fazla bilgi için buraya bakın <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
 
-#### <a name="azure-cli"></a>Azure CLI’si
+#### <a name="azure-cli"></a>Azure CLI
 * Yönetilen disk indiriliyor  
   Önce yönetilen diskin temel blobuna erişim almanız gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
 
@@ -1012,7 +1012,7 @@ $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscr
 New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="azure-cli"></a>Azure CLI’si
+##### <a name="azure-cli"></a>Azure CLI
 
 Bir VHD 'YI kopyalamak için Azure CLı kullanabilirsiniz. Yeni bir yönetilen disk oluşturmak için aşağıdaki örnekte gösterildiği gibi *az disk Create* kullanın.
 
@@ -1101,7 +1101,7 @@ Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container
 
 Örnekler için [Bu makaleye][storage-powershell-guide-full-copy-vhd]bakın.
 
-##### <a name="azure-cli"></a>Azure CLI’si
+##### <a name="azure-cli"></a>Azure CLI
 * Kopyayı ile Başlat
 
 ```azurecli

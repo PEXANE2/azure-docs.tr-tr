@@ -6,16 +6,18 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037321"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud 'da sorunları kendi kendine tanılama ve çözme
 Azure yay bulutu Tanılaması, uygulamanızın sorunlarını gidermenize yardımcı olacak etkileşimli bir deneyimdir. Yapılandırma gerekmez. Sorunları bulduğunuzda, Azure yay Bulut Tanılaması, nelerin yanlış olduğunu gösterir ve sorunu gidermeye ve sorunu çözmeye yardımcı olan bilgilere kılavuzluk eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -23,7 +25,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 * Hizmet örneğiniz için en az bir uygulama zaten oluşturulmuş.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Tanılama sayfasına gidin
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Azure yay bulutuna **genel bakış** sayfasına gidin.
 3. Sayfanın sol tarafındaki menüden **Tanıla ve çöz sorunlarını** açın.
 

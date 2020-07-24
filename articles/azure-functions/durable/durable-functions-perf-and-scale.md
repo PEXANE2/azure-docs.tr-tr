@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762131"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033590"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler'de pe ve ölçek (Azure İşlevleri)
 
@@ -22,13 +22,13 @@ Performansı ve ölçeklenebilirliği iyileştirmek için [dayanıklı işlevler
 
 **Geçmiş** tablosu, bir görev hub 'ında bulunan tüm düzenleme örnekleri için geçmiş olaylarını Içeren bir Azure depolama tablosudur. Bu tablonun adı *Taskhubname*geçmişi biçiminde olur. Örnekler çalıştırıldığında, bu tabloya yeni satırlar eklenir. Bu tablonun bölüm anahtarı, düzenleme örnek KIMLIĞINDEN türetilir. Çoğu durumda, Azure Storage 'da iç bölümlerin en iyi şekilde dağıtılmasını sağlayan bir örnek KIMLIĞI rasgeledir.
 
-Bir Orchestration örneğinin çalıştırılması gerektiğinde, geçmiş tablosunun uygun satırları belleğe yüklenir. Daha sonra bu *geçmiş olaylar* daha önceden denetim noktası durumuna geri dönmek için Orchestrator işlev koduna yeniden yürütülür. Durumu bu şekilde yeniden derlemek için yürütme geçmişinin kullanılması olay kaynağını belirleme [düzeniyle](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)etkilenir.
+Bir Orchestration örneğinin çalıştırılması gerektiğinde, geçmiş tablosunun uygun satırları belleğe yüklenir. Daha sonra bu *geçmiş olaylar* daha önceden denetim noktası durumuna geri dönmek için Orchestrator işlev koduna yeniden yürütülür. Durumu bu şekilde yeniden derlemek için yürütme geçmişinin kullanılması olay kaynağını belirleme [düzeniyle](/azure/architecture/patterns/event-sourcing)etkilenir.
 
 ## <a name="instances-table"></a>Örnekler tablosu
 
 **Örnekler** tablosu, bir görev hub 'ında bulunan tüm düzenleme ve varlık örneklerinin durumlarını içeren başka bir Azure depolama tablosudur. Örnek oluşturulurken bu tabloya yeni satırlar eklenir. Bu tablonun bölüm anahtarı Orchestration örnek KIMLIĞI veya varlık anahtarıdır ve satır anahtarı sabit bir sabittir. Düzenleme veya varlık örneği başına bir satır vardır.
 
-Bu tablo, `GetStatusAsync` (.net) ve `getStatus` (JavaScript) API 'lerinin yanı sıra [durum sorgusu HTTP API](durable-functions-http-api.md#get-instance-status)'sindeki örnek sorgu isteklerini karşılamak için kullanılır. Sonunda daha önce bahsedilen **Geçmiş** tablosunun içeriğiyle tutarlı tutulur. Örnek sorgu işlemlerini bu şekilde sağlamak için ayrı bir Azure depolama tablosunun kullanılması [komut ve sorgu sorumluluklarının ayrılığı (CQRS) düzeniyle](https://docs.microsoft.com/azure/architecture/patterns/cqrs)etkilenir.
+Bu tablo, `GetStatusAsync` (.net) ve `getStatus` (JavaScript) API 'lerinin yanı sıra [durum sorgusu HTTP API](durable-functions-http-api.md#get-instance-status)'sindeki örnek sorgu isteklerini karşılamak için kullanılır. Sonunda daha önce bahsedilen **Geçmiş** tablosunun içeriğiyle tutarlı tutulur. Örnek sorgu işlemlerini bu şekilde sağlamak için ayrı bir Azure depolama tablosunun kullanılması [komut ve sorgu sorumluluklarının ayrılığı (CQRS) düzeniyle](/azure/architecture/patterns/cqrs)etkilenir.
 
 ## <a name="internal-queue-triggers"></a>İç sıra Tetikleyicileri
 

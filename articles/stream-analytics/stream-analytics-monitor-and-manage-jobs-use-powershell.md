@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 74d3f154f9965e44c9fba42ec094b9240972b40d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0387b4363a438ac48142d97b2a829faf38f1895d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036667"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell cmdlet 'leriyle Stream Analytics işlerini izleme ve yönetme
 Temel Stream Analytics görevlerini çalıştıran Azure PowerShell cmdlet 'leri ve PowerShell betiği ile Stream Analytics kaynakları izlemeyi ve yönetmeyi öğrenin.
@@ -20,7 +20,7 @@ Temel Stream Analytics görevlerini çalıştıran Azure PowerShell cmdlet 'leri
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics için Azure PowerShell cmdlet 'leri çalıştırmaya yönelik önkoşullar
-* Aboneliğinizde bir Azure Kaynak grubu oluşturun. Aşağıda örnek bir Azure PowerShell betiği verilmiştir. Azure PowerShell bilgi için bkz. [Azure PowerShell 'Yi yükleyip yapılandırma](/powershell/azure/overview);  
+* Aboneliğinizde bir Azure Kaynak grubu oluşturun. Aşağıda örnek bir Azure PowerShell betiği verilmiştir. Azure PowerShell bilgi için bkz. [Azure PowerShell 'Yi yükleyip yapılandırma](/powershell/azure/);  
 
 Azure PowerShell 0.9.8:  
 

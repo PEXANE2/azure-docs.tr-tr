@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82103da3f2547baab62d0d95cf9a6084ef099cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033776"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT cihazınızda bir güvenlik Aracısı seçin ve dağıtın
 
@@ -43,19 +44,18 @@ C tabanlı güvenlik aracısının daha düşük bir bellek parmak izi vardır v
 
 |     | C tabanlı güvenlik Aracısı | C# tabanlı güvenlik Aracısı |
 | --- | ----------- | --------- |
-| Açık kaynak | [GitHub](https://aka.ms/iot-security-github-c) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir | [GitHub](https://aka.ms/iot-security-github-cs) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir |
-| Geliştirme dili    | C | C# |
-| Desteklenen Windows platformları? | Hayır | Evet |
-| Windows önkoşulları | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| Desteklenen Linux platformları? | Evet, x64 ve x86 | Evet, yalnızca x64 |
-| Linux önkoşulları | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-eklentiler | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-Eklentiler, sudo, netstat, Iptables |
-| Disk ayak izi | 10,5 MB | 90 MB |
-| Bellek ayak izi (Ortalama) | 5,5 MB | 33 MB |
-| IoT Hub için [kimlik doğrulaması](concept-security-agent-authentication-methods.md) | Evet | Yes |
-| Güvenlik verileri [toplama](how-to-agent-configuration.md#supported-security-events) | Evet | Yes |
-| Olay toplama | Evet | Yes |
-| [Güvenlik modülü ikizi](concept-security-module.md) aracılığıyla uzaktan yapılandırma | Evet | Yes |
-|
+| **Açık kaynak** | [GitHub](https://aka.ms/iot-security-github-c) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir | [GitHub](https://aka.ms/iot-security-github-cs) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir |
+| **Geliştirme dili**    | C | C# |
+| **Desteklenen Windows platformları?** | Hayır | Evet |
+| **Windows önkoşulları** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Desteklenen Linux platformları?** | Evet, x64 ve x86 | Evet, yalnızca x64 |
+| **Linux önkoşulları** | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-eklentiler | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-Eklentiler, sudo, netstat, Iptables |
+| **Disk ayak izi** | 10,5 MB | 90 MB |
+| **Bellek ayak izi (Ortalama)** | 5,5 MB | 33 MB |
+| **IoT Hub için [kimlik doğrulaması](concept-security-agent-authentication-methods.md)** | Yes | Yes |
+| **Güvenlik verileri [toplama](how-to-agent-configuration.md#supported-security-events)** | Yes | Yes |
+| **Olay toplama** | Yes | Yes |
+| **[Güvenlik modülü ikizi](concept-security-module.md) aracılığıyla uzaktan yapılandırma** | Yes | Yes |
 
 ## <a name="security-agent-installation-guidelines"></a>Güvenlik Aracısı yükleme yönergeleri
 
@@ -87,7 +87,7 @@ Daha fazla bilgi için bkz. [Güvenlik Aracısı karşılaştırması](how-to-de
 
 Aşağıdaki liste, şu anda desteklenen tüm platformları içerir.
 
-|IoT Aracısı için Azure Güvenlik Merkezi |İşletim Sistemi |Mimari |
+|IoT Aracısı için Azure Güvenlik Merkezi |Operating System |Mimari |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |    x64|
 |C|Ubuntu 18.04 |    x64, ARMv7|

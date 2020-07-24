@@ -6,11 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655659"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033522"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Işlevleri 'nin desteklediği özellikler için Application Insights
 
@@ -26,27 +27,27 @@ Application Insights uyumlu sürümleri hakkında daha fazla bilgi için bkz. [B
 |-----------------------------------    |---------------    |------------------ |
 | | | | 
 | **Otomatik toplama**        |                 |                   |               
-| &bull;İstekleri                     | Evet             | Evet               | 
-| &bull;Larý                   | Evet             | Evet               | 
-| &bull;Performans sayaçları         | Evet             | Evet               |
+| &bull;İstekleri                     | Yes             | Yes               | 
+| &bull;Larý                   | Yes             | Yes               | 
+| &bull;Performans sayaçları         | Yes             | Yes               |
 | &bull;Bağlantılıdır                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Evet               | 
-| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Evet               | 
-| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Evet               | 
-| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Evet               | 
+| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Yes               | 
 | | | | 
 | **Desteklenen özellikler**                |                   |                   |               
-| &bull;QuickPulse/Liveölçümleri       | Evet             | Evet               | 
-| &nbsp;&nbsp;&nbsp;&mdash;Güvenli denetim kanalı|                 | Evet               | 
-| &bull;Aşağıdakine                     | Evet             | Evet               | 
-| &bull;Sinyal                   |                 | Evet               | 
+| &bull;QuickPulse/Liveölçümleri       | Yes             | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash;Güvenli denetim kanalı|                 | Yes               | 
+| &bull;Aşağıdakine                     | Yes             | Yes               | 
+| &bull;Sinyal                   |                 | Yes               | 
 | | | | 
-| **Bağıntı**                       |                   |                   |               
-| &bull;ServiceBus                     |                   | Evet               | 
-| &bull;EventHub                       |                   | Evet               | 
+| **Correlation (Bağıntı)**                        |                   |                   |               
+| &bull;ServiceBus                     |                   | Yes               | 
+| &bull;EventHub                       |                   | Yes               | 
 | | | | 
 | **Yapılandırılabilir**                      |                   |                   |           
-| &bull;Tamamen yapılandırılabilir.<br/>Yönergeler için bkz. [Azure işlevleri](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Tüm seçenekler için bkz. [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Evet                   | 
+| &bull;Tamamen yapılandırılabilir.<br/>Yönergeler için bkz. [Azure işlevleri](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Tüm seçenekler için bkz. [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Yes                   | 
 
 
 ## <a name="performance-counters"></a>Performans Sayaçları
@@ -56,11 +57,11 @@ Performans sayaçlarının otomatik toplanması yalnızca Windows makinelerini i
 
 ## <a name="live-metrics--secure-control-channel"></a>Canlı ölçümler & güvenli denetim kanalı
 
-Belirttiğiniz özel filtreler ölçütü, Application Insights SDK 'sindeki canlı ölçümler bileşenine geri gönderilir. Filtreler potansiyel olarak CustomerIDs gibi hassas bilgileri içerebilir. Kanalı gizli bir API anahtarı ile güvenli hale getirebilirsiniz. Yönergeler için bkz. [Denetim kanalını güvenli hale getirme](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) .
+Belirttiğiniz özel filtreler ölçütü, Application Insights SDK 'sindeki canlı ölçümler bileşenine geri gönderilir. Filtreler potansiyel olarak CustomerIDs gibi hassas bilgileri içerebilir. Kanalı gizli bir API anahtarı ile güvenli hale getirebilirsiniz. Yönergeler için bkz. [Denetim kanalını güvenli hale getirme](./live-stream.md#secure-the-control-channel) .
 
 ## <a name="sampling"></a>Örnekleme
 
-Azure Işlevleri, yapılandırmasında varsayılan olarak örnekleme imkanı sunar. Daha fazla bilgi için bkz. [örneklemesi yapılandırma](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
+Azure Işlevleri, yapılandırmasında varsayılan olarak örnekleme imkanı sunar. Daha fazla bilgi için bkz. [örneklemesi yapılandırma](../../azure-functions/functions-monitoring.md#configure-sampling).
 
 Projeniz, el ile Telemetriyi izlemeyi yapmak üzere Application Insights SDK üzerinde bir bağımlılık alırsa, örnekleme yapılandırmanız Işlevlerin örnekleme yapılandırmasından farklı olduğunda garip davranışlar yaşayabilirsiniz. 
 

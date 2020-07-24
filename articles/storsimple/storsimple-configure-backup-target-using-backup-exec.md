@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 699df6ab44a08645c9f46e95cd2ad279de75ea70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036939"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec ile bir yedekleme hedefi olarak StorSimple
 
@@ -102,7 +102,7 @@ Aşağıdaki tablolarda cihaz modelden mimari ilk kılavuz gösterilmektedir.
 | Yedekleme senaryosu  | Yerel depolama kapasitesi  | Bulut depolama kapasitesi  |
 |---|---|---|
 | Birincil yedekleme  | Kurtarma noktası hedefini (RPO) karşılamak üzere hızlı kurtarma için yerel depolama alanında depolanan son yedeklemeler | Yedekleme geçmişi (RPO) bulut kapasitesine uyar |
-| İkincil yedekleme | Yedekleme verilerinin ikincil kopyası, bulut kapasitesinde depolanabilir  | YOK  |
+| İkincil yedekleme | Yedekleme verilerinin ikincil kopyası, bulut kapasitesinde depolanabilir  | Yok  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>Birincil yedekleme hedefi olarak StorSimple
 
@@ -313,7 +313,7 @@ Dört hafta, aylık ve yıllık için bir GFS döndürme zamanlaması örneği a
 | Sıklık/yedekleme türü | Tam | Artımlı (gün 1-5)  |   
 |---|---|---|
 | Haftalık (hafta 1-4) | Cumartesi | Pazartesi-Cuma |
-| Aylık  | Cumartesi  |   |
+| Aylık olarak  | Cumartesi  |   |
 | Yıllık | Cumartesi  |   |
 
 
@@ -387,7 +387,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 | Hafta 2 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Hafta 3 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Hafta 4 | StorSimple hafta 2-4 |   |   |   |   |   |
-| Aylık | StorSimple aylık |   |   |   |   |   |
+| Aylık olarak | StorSimple aylık |   |   |   |   |   |
 | Yıllık | StorSimple yıllık  |   |   |   |   |   |
 
 
@@ -448,7 +448,7 @@ Aşağıdaki bölümde, yedekleme sonrası işlem sırasında StorSimple bulut a
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Bir bulut anlık görüntüsünü başlatmak veya silmek için
 
-1. [Azure PowerShell'i yükleme](/powershell/azure/overview).
+1. [Azure PowerShell'i yükleme](/powershell/azure/).
 2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell betiğini indirip kurun.
 3. Betiği çalıştıran sunucuda PowerShell 'i yönetici olarak çalıştırın. Betiğin `-WhatIf $true` hangi değişiklikleri yaptığını görmek için betiği ile çalıştırtığınızdan emin olun. Doğrulama tamamlandıktan sonra Pass `-WhatIf $false` . Aşağıdaki komutu çalıştırın:
    ```powershell

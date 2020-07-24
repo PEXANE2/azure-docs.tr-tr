@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 502fbe3bc7b1de2038bc444ae5daf180cfc80203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 832bf1dd06d550f82090a336bc4cceac8cd8a9be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038197"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
@@ -33,7 +33,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
     - TCP bağlantı noktası 514 ' deki güvenlik çözümlerinizde syslog iletilerini dinleme
     - TCP bağlantı noktası 25226 kullanarak yalnızca, CEF olarak tanımladığı iletileri localhost üzerinde Log Analytics aracısına iletme
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 - Linux makinesinde Python yüklü olmalıdır.<br>`python -version`Denetlemek için komutunu kullanın.
@@ -75,8 +75,10 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
 
         `security-config-omsagent.conf`Dosyanın içeriği:
 
-            :rawmsg, regex, "CEF"|"ASA"
-            *.* @@127.0.0.1:25226
+        ```console
+        :rawmsg, regex, "CEF"|"ASA"
+        *.* @@127.0.0.1:25226
+        ```
 
 1. **Syslog Daemon 'u yeniden başlatma**
 
@@ -107,9 +109,11 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
 
         `security-config-omsagent.conf`Dosyanın içeriği:
 
-            filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-            destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
-            log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```console
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
+        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```
 
 1. **Syslog Daemon 'u yeniden başlatma**
 

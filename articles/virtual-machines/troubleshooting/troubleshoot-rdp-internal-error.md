@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 8600971ffd23b1c253e8de807d365c46409b37bc
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036395"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Azure VM'ye Uzak Masaüstü ile bağlanmaya çalıştığınızda dahili hata oluşuyor
 
@@ -55,8 +55,7 @@ Bu sorunu gidermek için, sanal makinenin işletim sistemi diskini bir kurtarma 
 
 #### <a name="step-1-check-the-rdp-port"></a>Adım: 1 RDP bağlantı noktasını denetleyin
 
-1. Bir PowerShell örneğinde, bağlantı noktası 8080 ' nin diğer uygulamalar tarafından kullanılıp kullanılmadığını denetlemek için [netstat](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-) kullanın:
+1. Bir PowerShell örneğinde, bağlantı noktası 8080 ' nin diğer uygulamalar tarafından kullanılıp kullanılmadığını denetlemek için [netstat](/windows-server/administration/windows-commands/netstat) kullanın:
 
     ```powershell
     Netstat -anob |more
@@ -186,7 +185,7 @@ RDP istemcisi varsayılan protokol olarak TLS 1,0 kullanır. Ancak bu, yeni stan
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>İşletim sistemi diskini bir kurtarma VM 'sine iliştirme
 
-1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
+1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](./troubleshoot-recovery-disks-portal-windows.md).
 2. İşletim sistemi diski kurtarma VM 'sine eklendikten sonra, diskin Disk Yönetimi konsolunda **çevrimiçi** olarak işaretlendiğinden emin olun. Bağlı işletim sistemi diskine atanan sürücü harfini unutmayın.
 3. Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı başlatın.
 
@@ -224,7 +223,7 @@ Döküm günlüğünü ve seri konsolunu etkinleştirmek için aşağıdaki beti
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>MachineKeys klasörü için izinleri sıfırlayın
 
 1. Yükseltilmiş bir komut istemi oturumu açın (**yönetici olarak çalıştır**).
-2. Aşağıdaki komut dosyasını çalıştırın. Bu betikte, bağlı işletim sistemi diskine atanan sürücü harfinin F olduğunu varsaytık. Bu sürücü harfini VM 'niz için uygun değerle değiştirin.
+2. Aşağıdaki betiği çalıştırın. Bu betikte, bağlı işletim sistemi diskine atanan sürücü harfinin F olduğunu varsaytık. Bu sürücü harfini VM 'niz için uygun değerle değiştirin.
 
     ```console
     Md F:\temp
@@ -299,4 +298,4 @@ Döküm günlüğünü ve seri konsolunu etkinleştirmek için aşağıdaki beti
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
     ```
 
-5. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](../windows/troubleshoot-recovery-disks-portal.md)ve sorunun çözümlenip çözümlenmediğini denetleyin.
+5. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](./troubleshoot-recovery-disks-portal-windows.md)ve sorunun çözümlenip çözümlenmediğini denetleyin.

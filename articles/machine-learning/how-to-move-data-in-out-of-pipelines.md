@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: laobri
 author: lobrien
-ms.date: 04/01/2020
+ms.date: 07/20/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 54b8161634d15853719d98a52d0d17e2e55a6bb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c1a64b96e1548e0eeaadbccc5ff2ec3020f3ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559349"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030856"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -31,9 +32,9 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 - İşlem `PipelineData` hattı adımlarına girdi olarak nesneleri kullanma
 - `Dataset`Kalıcı hale getirmek istediğiniz yeni nesneler oluşturun `PipelineData`
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Gerekenler:
+Şunlara ihtiyacınız var:
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 

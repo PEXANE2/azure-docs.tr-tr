@@ -4,12 +4,12 @@ description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi de
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170318"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032468"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -193,7 +193,7 @@ Aşağıdaki RBAC işlemleri için bir Azure AD kullanıcısına, gruba veya hiz
 }
 ```
 
-Özel bir rol oluşturma hakkında daha fazla genel bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md).
+Özel bir rol oluşturma hakkında daha fazla genel bilgi için bkz. [Azure özel roller](../role-based-access-control/custom-roles.md).
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>Azure Active Directory kiracı KIMLIĞINI alın
 

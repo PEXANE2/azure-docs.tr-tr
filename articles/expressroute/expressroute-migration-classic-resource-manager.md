@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 85b0fdd56b51a89cfbf88fac58aec4cb2f110142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7be7ce55e527d76abee0118a762c0ca666f9bdb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031703"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>ExpressRoute ile ilişkili sanal ağları klasik 'ten Kaynak Yöneticisi geçirme
 
@@ -22,16 +22,16 @@ Bu makalede, ExpressRoute bağlantı hattınızı taşıdıktan sonra ExpressRou
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Azure PowerShell modüllerinin en son sürümlerine sahip olduğunuzu doğrulayın. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview). PowerShell hizmeti yönetim modülünü (klasik dağıtım modeli için gereklidir) yüklemek için, bkz. [Azure PowerShell Service Management modülünü yükleme](/powershell/azure/servicemanagement/install-azure-ps).
+* Azure PowerShell modüllerinin en son sürümlerine sahip olduğunuzu doğrulayın. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/). PowerShell hizmeti yönetim modülünü (klasik dağıtım modeli için gereklidir) yüklemek için, bkz. [Azure PowerShell Service Management modülünü yükleme](/powershell/azure/servicemanagement/install-azure-ps).
 * Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md), [yönlendirme gereksinimlerini](expressroute-routing.md)ve [iş akışlarını](expressroute-workflows.md) gözden geçirdiğinizden emin olun.
 * [Bir ExpressRoute bağlantı hattını klasik ' ten Kaynak Yöneticisi taşıma](expressroute-move.md)altında sunulan bilgileri gözden geçirin. Sınırları ve sınırlamaları tam olarak anladığınızdan emin olun.
 * Devreninin klasik dağıtım modelinde tam olarak çalıştığını doğrulayın.
 * Kaynak Yöneticisi dağıtım modelinde oluşturulmuş bir kaynak grubuna sahip olduğunuzdan emin olun.
 * Aşağıdaki kaynak geçiş belgelerini gözden geçirin:
 
-    * [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-    * [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-    * [SSS: IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+    * [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+    * [SSS: IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/windows/migration-classic-resource-manager-faq.md)
     * [En yaygın geçiş hatalarını ve azaltmaları gözden geçirin](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Desteklenen ve desteklenmeyen senaryolar
@@ -82,7 +82,7 @@ Bu bölümde, ExpressRoute devresi ile aynı abonelikte bir sanal ağ, ağ geçi
    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-* [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-* [SSS: IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+* [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+* [SSS: IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/windows/migration-classic-resource-manager-faq.md)
 * [En yaygın geçiş hatalarını ve azaltmaları gözden geçirin](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

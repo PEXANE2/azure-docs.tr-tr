@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 9525f339861b5de8dc22da753f7c36dcc6eede8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ceeb20b138307b40fcd6f8c03d614fc3e811473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70078983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035783"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makinelerinde SAP kullanma
 Bulut Bilgi İşlem, BT sektöründeki küçük ölçekli şirketlerden büyük ve çok uluslu kuruluşlara kadar çok geniş ölçekte kullanılan ve her geçen gün daha önemli hale gelen bir terimdir. Microsoft Azure, Microsoft tarafından sunulan ve birçok yeni özelliğe sahip olan Bulut Hizmetleri Platformudur. Bu özellikler sayesinde müşteriler artık teknik veya mali kısıtlamalara takılmadan uygulamalarını Bulut Hizmetleri olarak hazırlayabilir ve kullanımdan kaldırabilir. Şirketler, zamanlarını ve bütçelerini donanım altyapısına harcamak yerine uygulamanın kendisine, iş süreçlerine ve hem müşteriler hem de kullanıcılar için fayda sağlamaya odaklanabilir.
 
-Microsoft Azure sanal makinelerle, Microsoft kapsamlı bir hizmet olarak altyapı (IaaS) platformu sunar. SAP NetWeaver tabanlı uygulamalar, Azure Sanal Makinelerinde (IaaS) desteklenmektedir. Aşağıdaki teknik incelemeler, Azure 'daki Windows sanal makinelerinde SAP NetWeaver tabanlı uygulamaların nasıl planlanacağı ve uygulanacağı açıklanır. Ayrıca, [Windows sanal MAKINELERINDE](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)SAP NetWeaver tabanlı uygulamalar da uygulayabilirsiniz.
+Microsoft Azure sanal makinelerle, Microsoft kapsamlı bir hizmet olarak altyapı (IaaS) platformu sunar. SAP NetWeaver tabanlı uygulamalar, Azure Sanal Makinelerinde (IaaS) desteklenmektedir. Aşağıdaki teknik incelemeler, Azure 'daki Windows sanal makinelerinde SAP NetWeaver tabanlı uygulamaların nasıl planlanacağı ve uygulanacağı açıklanır. Ayrıca, [Windows sanal MAKINELERINDE](./get-started.md?toc=/azure/virtual-machines/windows/classic/toc.json)SAP NetWeaver tabanlı uygulamalar da uygulayabilirsiniz.
 
 [!INCLUDE [virtual-machines-common-classic-sap-get-started](../../../../includes/virtual-machines-common-classic-sap-get-started.md)]
 
@@ -36,5 +36,4 @@ Başlık: Microsoft Azure SUSE Linux VM 'lerinde SAP NetWeaver test etme
 
 Güncelleştirilme tarihi: Aralık 2015
 
-[Bu makaleye buradan ulaşabilirsiniz](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+[Bu makaleye buradan ulaşabilirsiniz](./sap-deployment-checklist.md?toc=/azure/virtual-machines/linux/toc.json)

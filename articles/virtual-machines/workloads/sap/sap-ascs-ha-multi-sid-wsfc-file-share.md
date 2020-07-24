@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035987"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşımıyla Azure 'da yüksek oranda kullanılabilirlik
 
@@ -41,12 +42,12 @@ Bu makalede, **dosya paylaşımıyla**mevcut bir Windows Server yük devretme K�
 >
 >Bir WSFC kümesindeki en fazla SAP ASCS/SCS örneği sayısı, her bir Azure iç yük dengeleyici için en fazla özel ön uç IP sayısına eşittir.
 >
-> Bu belgede tanıtılan yapılandırma henüz [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview) için kullanılmak üzere desteklenmiyor
+> Bu belgede tanıtılan yapılandırma henüz [Azure kullanılabilirlik alanları](../../../availability-zones/az-overview.md) için kullanılmak üzere desteklenmiyor
 > 
 
-Yük dengeleyici sınırları hakkında daha fazla bilgi için [ağ sınırları: Azure Resource Manager][networking-limits-azure-resource-manager]"yük dengeleyiciye göre özel ön uç IP" bölümüne bakın. Azure Yük dengeleyicinin temel SKU 'SU yerine [azure standart Load Balancer SKU 'su](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) kullanmayı da düşünün.
+Yük dengeleyici sınırları hakkında daha fazla bilgi için [ağ sınırları: Azure Resource Manager][networking-limits-azure-resource-manager]"yük dengeleyiciye göre özel ön uç IP" bölümüne bakın. Azure Yük dengeleyicinin temel SKU 'SU yerine [azure standart Load Balancer SKU 'su](../../../load-balancer/load-balancer-standard-availability-zones.md) kullanmayı da düşünün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu diyagramda gösterildiği gibi, **dosya paylaşma**kullanarak BIR SAP ascs/SCS örneği için kullanılacak bir wsfc kümesini zaten yapılandırdınız.
 

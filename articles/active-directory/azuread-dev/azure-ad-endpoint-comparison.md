@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154925"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034916"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft kimlik platformuna (v2.0) güncelleştirmelisiniz?
 
@@ -141,34 +141,7 @@ Microsoft Identity platform uç noktasıyla tümleştirebilmek istediğiniz her 
 
 ### <a name="restrictions-on-redirect-urls"></a>Yeniden yönlendirme URL 'Lerinde kısıtlamalar
 
-Microsoft Identity platformu için kaydedilen uygulamalar, sınırlı bir yeniden yönlendirme URL değerleri kümesiyle kısıtlıdır. Web uygulamaları ve hizmetleri için yeniden yönlendirme URL 'SI şemayla başlamalıdır `https` ve tüm yeniden YÖNLENDIRME URL değerleri tek BIR DNS etki alanını paylaşmalıdır.  Kayıt sistemi, mevcut yeniden yönlendirme URL 'sinin tam DNS adını, eklediğiniz yeniden yönlendirme URL 'sinin DNS adı ile karşılaştırır. `http://localhost`yeniden yönlendirme URL 'SI olarak da desteklenir.  
-
-Aşağıdaki koşullardan biri geçerli olduğunda DNS adı ekleme isteği başarısız olur:  
-
-* Yeni yeniden yönlendirme URL 'sinin tam DNS adı, mevcut yeniden yönlendirme URL 'sinin DNS adı ile eşleşmiyor.
-* Yeni yeniden yönlendirme URL 'sinin tam DNS adı, mevcut yeniden yönlendirme URL 'sinin bir alt etki alanı değil.
-
-#### <a name="example-1"></a>Örnek 1
-
-Uygulamanın yeniden yönlendirme URL 'SI varsa `https://login.contoso.com` , aşağıdaki örnekte gösterildiği gibi, DNS adının tam olarak eşleştiği bir yeniden yönlendirme URL 'si ekleyebilirsiniz:
-
-`https://login.contoso.com/new`
-
-Ya da, aşağıdaki örnekte gösterildiği gibi login.contoso.com DNS alt etki alanına başvurabilirsiniz:
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>Örnek 2
-
-Yeniden yönlendirme URL 'Leri olan ve içeren bir uygulamaya sahip olmak istiyorsanız `login-east.contoso.com` `login-west.contoso.com` , bu yeniden yönlendirme URL 'lerini aşağıdaki sırayla eklemeniz gerekir:
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-İkinci iki tane ekleyebilirsiniz, çünkü ilk yeniden yönlendirme URL 'SI olan contoso.com alt etki alanları.
-
-Belirli bir uygulama için yalnızca 20 yanıt URL 'Si olabilir. bu sınır, kaydın desteklediği tüm uygulama türleri boyunca geçerlidir (tek sayfalı uygulama (SPA), yerel istemci, Web uygulaması ve hizmet).  
+Microsoft Identity platform için kayıtlı olan uygulamalar için yeniden yönlendirme URL 'Lerinde kısıtlamalar hakkında en güncel bilgiler için, bkz. Microsoft Identity platform belgelerindeki [URI/yanıt URL 'si kısıtlamalarını ve kısıtlamalarını yeniden yönlendirme](https://docs.microsoft.com/azure/active-directory/develop/reply-url) .
 
 Bir uygulamayı Microsoft Identity platform ile kullanmak üzere nasıl kaydedeceğinizi öğrenmek için, bkz. [yeni uygulama kayıtları deneyimini kullanarak bir uygulamayı kaydetme](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 964bab2b81f6ce69e77fd69cab55f6d1894e4edb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c57f4a49ac89f1347fc88f8bacddce3abab7e44e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038231"
 ---
 # <a name="connect-ai-vectra-detect-to-azure-sentinel"></a>AI Vektöri algılamasına Azure Sentinel 'e bağlama
+
+> [!IMPORTANT]
+> Azure Sentinel 'deki AI Vektöri algılama verileri Bağlayıcısı Şu anda genel önizleme aşamasındadır.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, [AI Vektörte algılama](https://www.vectra.ai/product/cognito-detect) gerecinizi Azure Sentinel 'e bağlama açıklanmaktadır. AI vektörler Data Connector, AI vektörler verilerini Azure Sentinel 'e kolayca getirmenize olanak tanır. böylece, çalışma kitaplarında görüntüleyebilmeniz için, özel uyarılar oluşturmak için onu kullanabilir ve araştırmayı geliştirebilirsiniz.
 

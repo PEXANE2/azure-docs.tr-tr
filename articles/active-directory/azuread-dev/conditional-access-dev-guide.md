@@ -13,19 +13,20 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8895e52209622025f943aaa6a4261b68a7e2899c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83738056"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034848"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory Koşullu Erişimi için geliştirici kılavuzu
+# <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory Koşullu erişim özelliği için Geliştirici Kılavuzu
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 Azure Active Directory (Azure AD) içindeki koşullu erişim özelliği, uygulamanızın güvenliğini sağlamak ve bir hizmeti korumak için kullanabileceğiniz çeşitli yollarla bir tane sunmaktadır. Koşullu erişim, geliştiricilerin ve kurumsal müşterilerin hizmetleri dahil etmek için çok sayıda şekilde korunmasını sağlar:
 
-* Multi-factor authentication
+* Çok faktörlü kimlik doğrulaması
 * Yalnızca Intune 'a kayıtlı cihazların belirli hizmetlere erişmesine izin verme
 * Kullanıcı konumlarını ve IP aralıklarını kısıtlama
 
@@ -87,7 +88,7 @@ Geliştiriciler bu zorluğu alabilir ve Azure AD 'ye yeni bir istek ekleyebilir.
 
 ## <a name="scenarios"></a>Senaryolar
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure AD koşullu erişimi, [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)eklenen bir özelliktir. [Lisanssız kullanım raporundaki](../active-directory-conditional-access-unlicensed-usage-report.md)lisanslama gereksinimleri hakkında daha fazla bilgi edinebilirsiniz. Geliştiriciler, Azure AD Premium içeren Enterprise Mobility Suite 'e ücretsiz bir abonelik içeren [Microsoft Geliştirici ağı](https://msdn.microsoft.com/dn308572.aspx)'na katılabilir.
 

@@ -9,17 +9,20 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/14/2020
+ms.openlocfilehash: 4e76a7adf7435cc1bdee3bb4e64f8cc699a16724
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134868"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031227"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma (Önizleme)
 
-Bu belgede, Azure özel bağlantısının Azure Machine Learning çalışma alanıyla nasıl kullanılacağını öğrenirsiniz. Bu özellik şu anda önizleme aşamasındadır ve ABD Doğu, ABD Batı 2 ABD Orta Güney bölgelerinde kullanılabilir. 
+Bu belgede, Azure özel bağlantısının Azure Machine Learning çalışma alanıyla nasıl kullanılacağını öğrenirsiniz. 
+
+> [!IMPORTANT]
+> Azure Machine Learning çalışma alanı ile Azure özel bağlantısı 'nın kullanımı Şu anda genel önizlemededir. Bu işlevsellik yalnızca **ABD Doğu**, **ABD Batı 2**ve **ABD Orta Güney** bölgelerinde kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza bağlanmanızı sağlar. Özel uç nokta, sanal ağınız içindeki özel IP adresleri kümesidir. Daha sonra çalışma alanınıza erişimi yalnızca özel IP adresleri üzerinden oluşacak şekilde sınırlayabilirsiniz. Özel bağlantı, veri taşması riskini azaltmaya yardımcı olur. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel bağlantı](/azure/private-link/private-link-overview) makalesi.
 
@@ -112,6 +115,9 @@ Azure sanal makineleri hakkında daha fazla bilgi için bkz. [sanal makineler be
 Çalışma alanınız tarafından kullanılan Azure depolama hesabının güvenliğini sağlamak için sanal ağın içine yerleştirin.
 
 Depolama hesabını sanal ağa yerleştirme hakkında daha fazla bilgi için bkz. [çalışma alanınız için bir depolama hesabı kullanma](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace).
+
+> [!WARNING]
+> Azure Machine Learning, özel bağlantısı etkin olan bir Azure depolama hesabı kullanmayı desteklemez.
 
 ## <a name="using-azure-key-vault"></a>Azure Key Vault kullanma
 

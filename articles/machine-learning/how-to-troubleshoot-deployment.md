@@ -11,17 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68c328bde853bbf4e48ab7ab1a6e2c7b51198f59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030700"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Azure Kubernetes hizmeti ve Azure Container Instances modelinin Docker dağıtımı sorunlarını giderin 
 
 Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kubernetes Service (AKS) ile genel Docker dağıtım hatalarını nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
@@ -99,6 +100,8 @@ Dağıtım sürecini tek tek görevlere doldurduktan sonra, en yaygın hatalarda
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
 
 Bir modeli ACG veya AKS 'e dağıtmaya yönelik sorunlarla karşılaşırsanız, yerel bir Web hizmeti olarak dağıtımı deneyin. Yerel bir Web hizmeti kullanmak, sorunları gidermenize daha kolay hale getirir. Modeli içeren Docker görüntüsü indirilip yerel sisteminizde başlatılır.
+
+Bir çalıştırılabilir örnek bulmak için [Machinelearningnotebook](https://github.com/Azure/MachineLearningNotebooks) deposunda örnek bir [Yerel dağıtım Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb) bulabilirsiniz.
 
 > [!WARNING]
 > Yerel Web hizmeti dağıtımları, üretim senaryolarında desteklenmez.
@@ -181,6 +184,7 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+
 ## <a name="container-cannot-be-scheduled"></a>Kapsayıcı zamanlanamaz
 
 Bir Azure Kubernetes hizmet işlem hedefine bir hizmet dağıttığınızda, Azure Machine Learning hizmeti istenen miktarda kaynakla zamanlamayı dener. 5 dakika sonra kümede uygun miktarda kaynak kullanılabilir olan bir düğüm yoksa dağıtım iletiyle başarısız olur `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Daha fazla düğüm ekleyerek, düğümlerinizin SKU 'sunu değiştirerek veya hizmetinizin kaynak gereksinimlerini değiştirerek bu hatayı ele alabilirsiniz. 

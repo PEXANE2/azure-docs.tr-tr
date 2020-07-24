@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038452"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Media Encoder Standard için örnek ön ayarlar (MES)
 
@@ -29,7 +29,7 @@ ms.locfileid: "61463412"
 Media Services, özel kodlama ihtiyaçlarınızı ve gereksinimlerinizi karşılamak için hazır ayarların tüm değerlerini özelleştirmeyi tam olarak destekler. Bir kodlama ön ayarını özelleştirmeniz gerekiyorsa, bu bölümde özel yapılandırmanızın bir şablonu olarak belirtilen sistem ön ayarlarından biriyle başlamanız gerekir. Bu önayarlardır her öğe ve her öğe için geçerli değerler hakkında açıklamalar için [Media Encoder Standard şeması](media-services-mes-schema.md) konusuna bakın.  
   
 > [!NOTE]
->  4k kodlama için önceden ayarlanmış bir ayar kullanırken, `S3` ayrılmış birim türünü almalısınız. Daha fazla bilgi için bkz. [kodlamayı ölçeklendirme](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  4k kodlama için önceden ayarlanmış bir ayar kullanırken, `S3` ayrılmış birim türünü almalısınız. Daha fazla bilgi için bkz. [kodlamayı ölçeklendirme](./media-services-scale-media-processing-overview.md).  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>Önceden ayarlı video döndürme varsayılan ayarı:
 Media Encoder Standard ile çalışırken, video döndürme varsayılan olarak etkindir. Videonuz bir mobil cihazda dikey modda kaydedilmişse, bu Önayarlar kodlama öncesinde yatay moda döndürülür.
@@ -86,4 +86,4 @@ Media Encoder Standard ile çalışırken, video döndürme varsayılan olarak e
   
  [Android Için H264 tek bit hızı düşük kalıtelı SD](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) , bit hızı 56 Kbps ve stereo AAC ses içeren tek bir MP4 dosyası üretir.  
   
- Media Services kodlayıcılarla ilgili daha fazla bilgi için bkz. [Azure Media Services Ile Isteğe bağlı kodlama](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).
+ Media Services kodlayıcılarla ilgili daha fazla bilgi için bkz. [Azure Media Services Ile Isteğe bağlı kodlama](./media-services-encode-asset.md).

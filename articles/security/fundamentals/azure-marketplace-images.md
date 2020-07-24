@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80548666"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038282"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Market görüntüleri için güvenlik önerileri
 
@@ -27,9 +27,8 @@ Göndermeden önce, yansımanıza her zaman bir güvenlik açığı algılaması
 
 ## <a name="open-source-based-images"></a>Açık kaynak tabanlı görüntüler
 
-|||
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Kategori**                                                 | **İşaretli**                                                                                                                                                                                                                                                                              |
+| Kategori | İşaretli |
+| -------- | ----- |
 | Güvenlik                                                     | Linux dağıtımı için en son güvenlik düzeltme eklerini yükler.                                                                                                                                                                                                              |
 | Güvenlik                                                     | Belirli bir Linux dağıtımına yönelik VM görüntüsünü güvenli hale getirmek için sektör kılavuzlarını izleyin.                                                                                                                                                                                     |
 | Güvenlik                                                     | Yalnızca gerekli Windows Server rolleri, özellikleri, hizmetleri ve ağ bağlantı noktalarıyla en az sayıda parmak izi tutarak saldırı yüzeyini sınırlayın.                                                                                                                                               |
@@ -50,9 +49,8 @@ Göndermeden önce, yansımanıza her zaman bir güvenlik açığı algılaması
 
 ## <a name="windows-server-based-images"></a>Windows Server tabanlı görüntüler
 
-|||
-|-------------| -------------------------|
-| **Kategori**                                                     | **İşaretli**                                                                                                                                                                |
+| Kategori | İşaretli |
+|--------- | ----- |
 | Güvenlik                                                         | Güvenli bir işletim sistemi temel görüntüsü kullanın. Windows Server tabanlı herhangi bir görüntünün kaynağı için kullanılan VHD, Microsoft Azure ile sunulan Windows Server işletim sistemi görüntülerinden olmalıdır. |
 | Güvenlik                                                         | Tüm en son güvenlik güncelleştirmelerini yükler.                                                                                                                                     |
 | Güvenlik                                                         | Uygulamalar, yönetici, kök veya yönetici gibi kısıtlı kullanıcı adlarına bağlı olmamalıdır.                                                                |

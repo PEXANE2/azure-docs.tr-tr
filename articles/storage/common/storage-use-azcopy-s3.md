@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee58f21881c9799eba27dec3e71c601e94401deb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036718"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy kullanarak Amazon S3 'ten Azure depolama 'ya veri kopyalama
 
@@ -127,7 +127,7 @@ Ayrıca, dosya üzerinde AzCopy kopyaları olarak, adlandırma çakışmaların�
 
 AWS S3 ve Azure, nesne anahtarlarının adlarındaki farklı karakter kümelerine izin veriyor. AWS S3 tarafından [burada](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)kullanılan karakterler hakkında bilgi edinebilirsiniz. Azure tarafında, blob nesne anahtarları [C# tanımlayıcıları](https://docs.microsoft.com/dotnet/csharp/language-reference/)için adlandırma kurallarına uyar.
 
-AzCopy komutunun bir parçası olarak `copy` , `s2s-invalid-metadata-handle` dosyanın meta verilerinin uyumsuz anahtar adlarını içerdiği dosyaları nasıl işlemek istediğinizi belirten isteğe bağlı bayrak için bir değer sağlayabilirsiniz. Aşağıdaki tabloda her bayrak değeri açıklanmaktadır.
+AzCopy komutunun bir parçası olarak `copy` , `s2s-handle-invalid-metadata` dosyanın meta verilerinin uyumsuz anahtar adlarını içerdiği dosyaları nasıl işlemek istediğinizi belirten isteğe bağlı bayrak için bir değer sağlayabilirsiniz. Aşağıdaki tabloda her bayrak değeri açıklanmaktadır.
 
 | Bayrak değeri | Açıklama  |
 |--------|-----------|
@@ -159,6 +159,6 @@ Bu makalelerden herhangi birinde daha fazla örnek bulabilirsiniz:
 
 - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
 
-- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)

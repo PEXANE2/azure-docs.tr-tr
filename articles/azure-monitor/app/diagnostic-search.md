@@ -3,11 +3,12 @@ title: Azure Application Insights arama kullanma | Microsoft Docs
 description: Web uygulamanız tarafından gönderilen ham Telemetriyi arayın ve filtreleyin.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a264f25f92bed1b93848c323fd59eafd7b09215
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695666"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033624"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights arama kullanma
 
@@ -98,7 +99,7 @@ Alt dizeler değil, tüm sözcükleri arayın. Özel karakterleri kapsamak için
 
 Kullanabileceğiniz arama ifadeleri aşağıda verilmiştir:
 
-| Örnek sorgu | Efekt |
+| Örnek sorgu | Etki |
 | --- | --- |
 | `apple` |Alanları "Apple" sözcüğünü içeren zaman aralığındaki tüm olayları bul |
 | `apple AND banana` <br/>`apple banana` |Her iki sözcüğü de içeren olayları bulun. "Ve" değil, sermaye "ve" kullanın. <br/>Kısa biçim. |
@@ -147,4 +148,4 @@ POST verilerini otomatik olarak günlüğe vermedik, ancak [Tracktrace veya log 
 * [Analytics 'te karmaşık sorgular yazma](../../azure-monitor/log-query/get-started-portal.md)
 * [Application Insights için Günlükler ve özel telemetri gönder](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Kullanılabilirlik ve yanıt verme testlerini ayarlama](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Sorun giderme](../../azure-monitor/app/troubleshoot-faq.md)
+* [Sorun giderme](../faq.md)

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 253cd8174ec523f6c8a6aae2b94f7ed367701fec
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: d73782d9de7da2c5daacbff5397d9a365ff9ae03
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038418"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
@@ -48,10 +48,10 @@ Dizin oluşturucular Azure 'da veri depolarında gezinme.
 
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage 2.](search-howto-index-azure-data-lake-storage.md) (önizlemede)
-* [Azure Tablo depolama](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL veritabanı ve SQL yönetilen örneği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Sanal Makineler'de SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [Azure Sanal Makinelerde SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Yönetilen Örnek](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>Temel yapılandırma adımları
@@ -136,6 +136,6 @@ Artık temel fikri anladığınıza göre, atmanız gereken bir sonraki adım he
 * [Azure SQL veritabanı, SQL yönetilen örneği veya bir Azure sanal makinesinde SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
-* [Azure Tablo depolama](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Bilişsel Arama blob Dizin oluşturucuyu kullanarak CSV bloblarını dizine ekleme](search-howto-index-csv-blobs.md)
 * [JSON bloblarını Azure Bilişsel Arama blob Indexer ile dizinleme](search-howto-index-json-blobs.md)

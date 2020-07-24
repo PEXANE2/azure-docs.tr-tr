@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 07a6b84569fe0356267440e38b31ac738b2659d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6892f4ebb250290a0faad546fd000530baf4479
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260840"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038180"
 ---
 # <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
 Günlük ileticinizi dağıttıktan sonra (adım 1 ' de) ve Güvenlik çözümünüzü BT CEF iletileri gönderecek şekilde yapılandırdıysanız (adım 2 ' de), güvenlik çözümünüz ile Azure Sentinel arasındaki bağlantıyı doğrulamak için bu yönergeleri izleyin. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Günlük ileticisi makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
@@ -54,21 +54,23 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 
 1. Dosyanın aşağıdaki metni içerip içermediğini denetler:
 
-        <source>
-            type syslog
-            port 25226
-            bind 127.0.0.1
-            protocol_type tcp
-            tag oms.security
-            format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
-            <parse>
-                message_format auto
-            </parse>
-        </source>
+    ```console
+    <source>
+        type syslog
+        port 25226
+        bind 127.0.0.1
+        protocol_type tcp
+        tag oms.security
+        format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
+        <parse>
+            message_format auto
+        </parse>
+    </source>
 
-        <filter oms.security.**>
-            type filter_syslog_security
-        </filter>
+    <filter oms.security.**>
+        type filter_syslog_security
+    </filter>
+    ```
 
 1. Makinede ağ trafiğini (örneğin, bir ana bilgisayar güvenlik duvarı) engelliyor olabilecek herhangi bir güvenlik geliştirmesi olup olmadığını denetler.
 
@@ -76,17 +78,21 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 
     - Yapılandırma dosyası:`/etc/rsyslog.d/security-config-omsagent.conf`
 
-            :rawmsg, regex, "CEF"|"ASA"
-            *.* @@127.0.0.1:25226
-
+        ```console
+        :rawmsg, regex, "CEF"|"ASA"
+        *.* @@127.0.0.1:25226
+        ```
+  
 1. Syslog arka plan programının 514 numaralı bağlantı noktasında veri aldığını denetler
 
 1. Gerekli bağlantıların kurulu olduğunu denetler: veri almak için TCP 514, Syslog Daemon ve Log Analytics Aracısı arasındaki iç iletişim için TCP 25226
 
 1. SAHTE verileri, localhost üzerinde 514 numaralı bağlantı noktasına gönderir. Bu veriler, aşağıdaki sorguyu çalıştırarak Azure Sentinel çalışma alanında observable olmalıdır:
 
-        CommonSecurityLog
-        | where DeviceProduct == "MOCK"
+    ```console
+    CommonSecurityLog
+    | where DeviceProduct == "MOCK"
+    ```
 
 # <a name="syslog-ng-daemon"></a>[Syslog-ng Daemon](#tab/syslogng)
 
@@ -96,21 +102,23 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 
 1. Dosyanın aşağıdaki metni içerip içermediğini denetler:
 
-        <source>
-            type syslog
-            port 25226
-            bind 127.0.0.1
-            protocol_type tcp
-            tag oms.security
-            format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
-            <parse>
-                message_format auto
-            </parse>
-        </source>
+    ```console
+    <source>
+        type syslog
+        port 25226
+        bind 127.0.0.1
+        protocol_type tcp
+        tag oms.security
+        format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
+        <parse>
+            message_format auto
+        </parse>
+    </source>
 
-        <filter oms.security.**>
-            type filter_syslog_security
-        </filter>
+    <filter oms.security.**>
+        type filter_syslog_security
+    </filter>
+    ```
 
 1. Makinede ağ trafiğini (örneğin, bir ana bilgisayar güvenlik duvarı) engelliyor olabilecek herhangi bir güvenlik geliştirmesi olup olmadığını denetler.
 
@@ -118,9 +126,11 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 
     - Yapılandırma dosyası:`/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
-            filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-            destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
-            log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```console
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
+        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```
 
 1. Syslog arka plan programının 514 numaralı bağlantı noktasında veri aldığını denetler
 
@@ -128,9 +138,10 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 
 1. SAHTE verileri, localhost üzerinde 514 numaralı bağlantı noktasına gönderir. Bu veriler, aşağıdaki sorguyu çalıştırarak Azure Sentinel çalışma alanında observable olmalıdır:
 
-        CommonSecurityLog
-        | where DeviceProduct == "MOCK"
-
+    ```console
+    CommonSecurityLog
+    | where DeviceProduct == "MOCK"
+    ```
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar

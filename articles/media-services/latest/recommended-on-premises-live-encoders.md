@@ -9,16 +9,16 @@ ms.author: johndeu
 ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 53d68a18c5904b8b7e2f6145ae26221e99395a82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67c26cbad2a723fa21fbe1719c6e43d3d63f2547
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749941"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030674"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Doğrulanan şirket içi canlı akış kodlayıcıları
 
-Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/media/liveevents) (kanal) canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Canlı olay, canlı giriş akışlarını iki şekilde alır.
+Azure Media Services, canlı bir [olay](/rest/api/media/liveevents) (kanal) canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Canlı olay, canlı giriş akışlarını iki şekilde alır.
 
 * Şirket içi bir Live Encoder, Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilmemiş canlı olayına çoklu bit hızlı bir RTMP veya Kesintisiz Akış (parçalanmış MP4) akışı gönderir. Alınan akışlar, daha fazla işlem yapmadan canlı olayları geçer. Bu yönteme **doğrudan geçiş**adı verilir. Canlı kodlayıcının, istemciye Uyarlamalı bit hızında akışa izin vermek için tek bit hızlı bir akış yerine çoklu bit hızına sahip akışlar göndermesini öneririz. 
 

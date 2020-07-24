@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: daefaca45adb061295928c64b6a0e328a12d8a3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036191"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>İşletim sistemi başlatma – bilgisayar beklenmedik şekilde yeniden başlatıldı veya beklenmeyen bir hatayla karşılaşıldı
 
@@ -27,7 +27,7 @@ Bu makalede, Windows yüklenirken sanal makinenin (VM) beklenmedik bir yeniden b
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünün Windows yüklemesinin başarısız olduğunu aşağıdaki hata ile görüntülediğini görürsünüz:
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünün Windows yüklemesinin başarısız olduğunu aşağıdaki hata ile görüntülediğini görürsünüz:
 
 **Bilgisayar beklenmedik şekilde yeniden başlatıldı veya beklenmedik bir hatayla karşılaştı. Windows yüklemesi devam edemiyor. Windows 'u yüklemek için "Tamam" a tıklayarak bilgisayarı yeniden başlatın ve yüklemeyi yeniden başlatın.**
 
@@ -37,7 +37,7 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 ## <a name="cause"></a>Nedeni
 
-Makine [genelleştirilmiş bir görüntünün](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)ilk önyüklemesini gerçekleştirmeye çalışıyor, ancak işlenmekte olan özel yanıt dosyası (unattend.xml) nedeniyle sorunlarla karşılaşıyor. Özel yanıt dosyaları Azure'da desteklenmez. 
+Makine [genelleştirilmiş bir görüntünün](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)ilk önyüklemesini gerçekleştirmeye çalışıyor, ancak işlenmekte olan özel yanıt dosyası (unattend.xml) nedeniyle sorunlarla karşılaşıyor. Özel yanıt dosyaları Azure'da desteklenmez. 
 
 Yanıt dosyası, bir Windows Server işletim sistemi yüklemesi sırasında otomatikleştirmek istediğiniz yapılandırma ayarları için tanımları ve değerleri içeren özel bir XML dosyasıdır. Yapılandırma seçenekleri, disklerin nasıl bölümleyeceğinize, yüklenecek Windows görüntüsünün nerede bulunacağını, uygulanacak ürün anahtarlarını ve çalıştırmak istediğiniz diğer komutları içerir.
 
@@ -57,7 +57,7 @@ Bu durum, bir görüntü Azure 'da kullanıma hazır olduğunda, ancak Azure 'da
 
 - Önceki komutta, değerini `<NameOfYourAnswerFile.XML>` dosyanızın adıyla değiştirin.
 
-Bu sorunu giderecek [bir görüntü hazırlama/yakalama](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) ve yeni bir Genelleştirilmiş görüntü hazırlama hakkında Azure kılavuzunu izleyin. Sysprep sırasında `/unattend:<answerfile>` bayrak kullanmayın. Bunun yerine yalnızca aşağıdaki bayrakları kullanın:
+Bu sorunu giderecek [bir görüntü hazırlama/yakalama](../windows/upload-generalized-managed.md) ve yeni bir Genelleştirilmiş görüntü hazırlama hakkında Azure kılavuzunu izleyin. Sysprep sırasında `/unattend:<answerfile>` bayrak kullanmayın. Bunun yerine yalnızca aşağıdaki bayrakları kullanın:
 
 `sysprep /oobe /generalize /shutdown`
 

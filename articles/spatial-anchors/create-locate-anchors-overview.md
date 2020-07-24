@@ -8,16 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 000fb50c002353982d128d6715ae5d8006d35177
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74270452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037823"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Azure uzamsal bağlayıcıları kullanarak bağlayıcıları oluşturma ve bulma
 
-Azure uzamsal bağlantıları, dünyanın farklı cihazları arasında bağlantıları paylaşmanızı sağlar.
+Azure uzamsal bağlantıları, dünyanın farklı cihazları arasındaki bağlantıları paylaşmanıza olanak sağlar.
 
 Çeşitli farklı geliştirme ortamlarını destekler.
 

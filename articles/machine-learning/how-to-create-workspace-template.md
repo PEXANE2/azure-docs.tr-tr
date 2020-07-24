@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031125"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -30,7 +30,7 @@ Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıt
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-* CLı 'dan bir şablon kullanmak için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) ya da [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerekir.
+* CLı 'dan bir şablon kullanmak için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) ya da [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerekir.
 
 ## <a name="workspace-resource-manager-template"></a>Çalışma alanı Kaynak Yöneticisi şablonu
 
@@ -154,6 +154,9 @@ Aşağıdaki örnek şablon, üç ayarı olan bir çalışma alanının nasıl o
 * Çalışma alanı için yüksek gizlilik ayarlarını etkinleştir
 * Çalışma alanı için şifrelemeyi etkinleştir
 * Müşteri tarafından yönetilen anahtarları almak için mevcut bir Azure Key Vault kullanır
+
+> [!IMPORTANT]
+> Bir çalışma alanı oluşturulduktan sonra gizli verilerin, şifrelemenin, Anahtar Kasası KIMLIĞININ veya anahtar tanımlayıcılarının ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
 
 Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md#encryption-at-rest).
 
@@ -353,6 +356,9 @@ Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_da
 * Çalıştırmalar arasındaki yerel karalama diskini temizler.
 * Anahtar Kasası 'nı kullanarak depolama hesabı, kapsayıcı kayıt defteri ve SSH hesabı için kimlik bilgilerini yürütme katmanından işlem kümelerinize güvenli bir şekilde geçirir.
 * Temel alınan toplu iş havuzlarının AzureMachineLearningService dışında herhangi bir dış hizmet tarafından çağrılıp çağrılmaması için IP filtrelemeyi sağlar.
+
+    > [!IMPORTANT]
+    > Bir çalışma alanı oluşturulduktan sonra gizli verilerin, şifrelemenin, Anahtar Kasası KIMLIĞININ veya anahtar tanımlayıcılarının ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
 
   Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md#encryption-at-rest).
 
@@ -629,7 +635,7 @@ New-AzResourceGroupDeployment `
 
 --- -->
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 1. [Özel şablondan kaynak dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)bölümündeki adımları izleyin. __Şablon seçin__ ekranına geldiğinizde, açılan listeden **201-Machine-Learning-Advanced** şablonunu seçin.
 1. Şablonu kullanmak için __şablon seç__ ' i seçin. Dağıtım senaryonuza bağlı olarak aşağıdaki gerekli bilgileri ve diğer parametreleri sağlayın.

@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec0862a0d4de644630c972387f01feaa1a327e67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa87fc874be5e60d018b5663b4655d069930ab88
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036157"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Şifrelemesi için anahtar kasası oluşturma ve yapılandırma
 
@@ -25,7 +25,7 @@ Azure disk şifrelemesi, disk şifreleme anahtarlarını ve gizli dizileri denet
 Azure disk şifrelemesi ile kullanım için bir Anahtar Kasası oluşturmak ve yapılandırmak üç adımdan oluşur:
 
 > [!Note]
-> Birim şifrelemesi için Azure disk şifrelemesi 'ne erişimi etkinleştirmek üzere Azure Key Vault erişim ilkesi ayarları ' nda bu seçeneği seçmeniz gerekir.
+> Birim şifrelemesi için Azure disk şifrelemesi 'ne erişimi etkinleştirmek üzere Azure Key Vault erişim ilkesi ayarları ' nda bu seçeneği seçmeniz gerekir. Anahtar kasasında güvenlik duvarını etkinleştirdiyseniz, anahtar kasasındaki Ağ sekmesine gitmeniz ve Microsoft güvenilir hizmetlerine erişimi etkinleştirmeniz gerekir. 
 
 1. Gerekirse bir kaynak grubu oluşturma.
 2. Anahtar Kasası oluşturma. 
@@ -43,7 +43,7 @@ Ayrıca, anahtar şifreleme anahtarı (KEK) oluşturabilir veya içeri aktarabil
 
 ## <a name="install-tools-and-connect-to-azure"></a>Araçları yükleyip Azure 'a bağlanın
 
-Bu makaledeki adımlar [Azure CLI](/cli/azure/), [Azure PowerShell Az Module](/powershell/azure/overview)veya [Azure Portal](https://portal.azure.com)ile tamamlanabilir.
+Bu makaledeki adımlar [Azure CLI](/cli/azure/), [Azure PowerShell Az Module](/powershell/azure/)veya [Azure Portal](https://portal.azure.com)ile tamamlanabilir.
 
 Portal, tarayıcınız aracılığıyla erişilebilir olsa da, Azure CLı ve Azure PowerShell yerel yükleme gerektirir; bkz. [Windows Için Azure disk şifrelemesi: Ayrıntılar için araçları yükler](disk-encryption-windows.md#install-tools-and-connect-to-azure) .
 

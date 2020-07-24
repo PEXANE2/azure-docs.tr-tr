@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70883935"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036480"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma
 Bir sanal makineyi (VM) önyüklerken gördüğünüz ilk şey, genel Birleşik önyükleme yükleyicisinden (GRUB) büyük olasılıkla karşılaşırsınız. İşletim sistemi başlatılmadan önce görüntülendiğinden, GRUB SSH aracılığıyla erişilebilir değildir. GRUB 'de, önyükleme yapılandırmanızı, diğer şeyler arasında tek kullanıcılı modda önyüklenecek şekilde değiştirebilirsiniz.
@@ -36,7 +37,7 @@ Tek kullanıcılı modu girmek için, VM 'niz önyüklenirken, GRUB girin ve GRU
 ## <a name="general-grub-access"></a>Genel GRUB erişimi
 GRUB 'ye erişmek için seri konsol bölmesi açıkken VM 'nizi yeniden başlatın. Bazı dağıtımlarca, GRUB 'yi göstermek için klavye girişi gerekir ve diğerleri, Kullanıcı klavye girişinin zaman aşımını iptal edebilmesini sağlamak için birkaç saniye sonra otomatik olarak GRUB 'yi gösterir.
 
-Tek kullanıcı moduna erişebilmek için, sanal makinenizde GRUB 'nin etkinleştirildiğinden emin olmak istersiniz. Dağıtıma bağlı olarak, bazı kurulum işleri, GRUB 'nin etkinleştirildiğinden emin olmak için gerekli olabilir. Dağıtıma özgü bilgiler için bkz. [Azure 'Da Linux Için destek sayfasında yer](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) alan bir sonraki bölüm.
+Tek kullanıcı moduna erişebilmek için, sanal makinenizde GRUB 'nin etkinleştirildiğinden emin olmak istersiniz. Dağıtıma bağlı olarak, bazı kurulum işleri, GRUB 'nin etkinleştirildiğinden emin olmak için gerekli olabilir. Dağıtıma özgü bilgiler için bir sonraki bölüme bakın.
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>Seri konsolundaki GRUB 'ye erişmek için sanal makineyi yeniden başlatın
 **Yeniden başlatma** düğmesini ve sonra **VM 'yi yeniden Başlat**' ı seçerek VM 'nizi seri konsol içinde yeniden başlatabilirsiniz. Yeniden başlatma hakkında bir bildirim bölmenin en altında görüntülenir.
@@ -112,7 +113,7 @@ Yukarıdaki yönergeleri kullanarak GRUB ve kök erişim ayarladıysanız, aşa�
 
    Tek kullanıcı moduna girebilmeniz için önce yönetici parolasını girmeniz istenir. Bu parola, önceki yönergelerde oluşturduğunuz bir paroladır.
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Bir komut satırı arabirimini gösteren animasyonlu resim. Kullanıcı bir sunucu seçer, çekirdek çizginin sonunu bulur ve sonra belirtilen metni girer.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>RHEL 'de kök hesabı etkin olmadan tek kullanıcılı mod girin
 Önceki yönergeleri izleyerek kök kullanıcıyı etkinleştirmediyseniz, aşağıdaki işlemleri yaparak kök parolanızı yine de sıfırlamayı seçebilirsiniz:
@@ -136,7 +137,7 @@ Yukarıdaki yönergeleri kullanarak GRUB ve kök erişim ayarladıysanız, aşa�
 1. Artık kökte olursunuz. `passwd`Önceki yönergeleri girerek ve ardından tek kullanıcılı mod girmek için kök parolanızı sıfırlayabilirsiniz. 
 1. İşiniz bittiğinde `reboot -f` yeniden başlatmak için girin.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Bir komut satırı arabirimini gösteren animasyonlu resim. Kullanıcı bir sunucu seçer, çekirdek çizginin sonunu bulur ve belirtilen komutları girer.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
 > Önceki yönergelerden çalıştırılması sizi acil durum kabuğuna bırakır, böylece, Düzenle gibi görevleri de gerçekleştirebilirsiniz `fstab` . Bununla birlikte, genellikle kök parolanızı sıfırlamanıza ve tek kullanıcılı mod girmek için kullanmanızı öneririz.
@@ -240,7 +241,7 @@ Oracle Linux çoklu Kullanıcı modunu etkinleştirmek için, önceki RHEL yöne
 ## <a name="next-steps"></a>Sonraki adımlar
 Seri konsol hakkında daha fazla bilgi için bkz.
 * [Linux seri konsol belgeleri](serial-console-linux.md)
-* [Çeşitli dağıtımlardan GRUB 'yi etkinleştirmek için seri konsol kullanma](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [Çeşitli dağıtımlardan GRUB 'yi etkinleştirmek için seri konsol kullanma](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
 * [NMI ve SysRq çağrıları için seri konsol kullan](serial-console-nmi-sysrq.md)
 * [Windows VM 'Leri için seri konsol](serial-console-windows.md)
-* [Önyükleme tanılamaları](boot-diagnostics.md)
+* [Önyükleme tanılaması](boot-diagnostics.md)

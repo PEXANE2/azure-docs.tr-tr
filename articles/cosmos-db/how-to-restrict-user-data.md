@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032001"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Kullanıcı erişimini yalnızca veri işlemleriyle sınırlama
 
@@ -51,7 +51,7 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>Özel Azure Active Directory rolünü oluşturma
 
-Aşağıdaki betik, Azure Cosmos hesapları için "yalnızca anahtar" erişimine sahip Azure Active Directory bir rol ataması oluşturur. Rol, [Azure kaynakları Için özel rollere](../role-based-access-control/custom-roles.md) ve [Azure Cosmos DB yönelik ayrıntılı eylemlere](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)dayanır. Bu roller ve eylemler `Microsoft.DocumentDB` Azure Active Directory ad alanının bir parçasıdır.
+Aşağıdaki betik, Azure Cosmos hesapları için "yalnızca anahtar" erişimine sahip Azure Active Directory bir rol ataması oluşturur. Rol, [Azure özel rollerine](../role-based-access-control/custom-roles.md) ve [Azure Cosmos DB yönelik ayrıntılı eylemlere](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)dayalıdır. Bu roller ve eylemler `Microsoft.DocumentDB` Azure Active Directory ad alanının bir parçasıdır.
 
 1. İlk olarak, aşağıdaki içerikle adlı bir JSON belgesi oluşturun `AzureCosmosKeyOnlyAccess.json` :
 

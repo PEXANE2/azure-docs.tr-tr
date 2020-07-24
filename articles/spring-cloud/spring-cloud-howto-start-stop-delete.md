@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
-ms.openlocfilehash: daa549e248668add54530e90174134c4e0059b3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: efe2a8825e1817a934db7d36edae6feaf820ab79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76276832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037194"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Azure Spring Cloud uygulamanızı başlatma, durdurma ve silme
 
@@ -25,7 +27,7 @@ Bir uygulamayı dağıttıktan sonra, Azure portal kullanarak başlatabilir, dur
 1. Durumunu değiştirmek istediğiniz uygulamayı seçin.
 1. Bu uygulamanın **genel bakış** sayfasında **Başlat/Durdur**, **Yeniden Başlat**veya **Sil**' i seçin.
 
-## <a name="using-the-azure-cli"></a>Azure CLI kullanma
+## <a name="using-the-azure-cli"></a>Azure CLI'yı kullanma
 
 > [!NOTE]
 > İsteğe bağlı parametreleri kullanabilir ve Varsayılanları Azure CLı ile yapılandırabilirsiniz. [Başvuru belgelerimizi](spring-cloud-cli-reference.md)okuyarak Azure CLI hakkında daha fazla bilgi edinin.  

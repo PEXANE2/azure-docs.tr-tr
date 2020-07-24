@@ -3,12 +3,13 @@ title: Kurtarma Hizmetleri kasaları oluşturma ve yapılandırma
 description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurtarma hizmetleri kasalarını oluşturma ve yapılandırma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 65f7265dccc5fe28d3503e72bdd6e49123871594
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.custom: references_regions
+ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032961"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
@@ -21,7 +22,7 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
 > [!NOTE]
 > Bir kurtarma hizmetleri Kasası için **depolama çoğaltma türünü** değiştirme (yerel olarak yedekli/coğrafi olarak yedekli), kasadaki yedeklemeleri yapılandırmadan önce yapılmalıdır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır.
 >
->- Yedeklemeyi henüz yapılandırmadıysanız, ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+>- Yedeklemeyi henüz yapılandırmadıysanız, ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](#set-storage-redundancy) .
 >- Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız gerekiyorsa, [Bu geçici çözümleri gözden geçirin](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. **Kurtarma Hizmetleri kasaları** dikey penceresinden yeni kasaya tıklayın. **Ayarlar** bölümünde, **Özellikler**' e tıklayın.
@@ -33,14 +34,14 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
 
    - Azure 'u birincil yedek depolama uç noktası olarak kullanıyorsanız, varsayılan **coğrafi olarak yedekli** ayarını kullanmaya devam edebilirsiniz.
    - Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin.
-   - [Coğrafi](../storage/common/storage-redundancy-grs.md) ve [Yerel](../storage/common/storage-redundancy-lrs.md) artıklık hakkında daha fazla bilgi edinin.
+   - [Coğrafi](../storage/common/storage-redundancy.md) ve [Yerel](../storage/common/storage-redundancy.md) artıklık hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
 >Geçerli çözüm, anlık görüntü tabanlı olduğundan ve kasaya aktarılan bir veri olmadığından, kasa için depolama çoğaltma ayarları Azure dosya paylaşımının yedeğine uygun değildir. Anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır.
 
 ## <a name="set-cross-region-restore"></a>Çapraz bölge geri yüklemeyi ayarla
 
-Geri yükleme seçeneklerinden biri olan çapraz bölge geri yükleme (CRR), Azure sanal makinelerini bir [Azure eşlenmiş bölgesi](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)olan ikincil bir bölgeye geri yüklemenize olanak tanır. Bu seçenek şunları yapmanıza olanak sağlar:
+Geri yükleme seçeneklerinden biri olan çapraz bölge geri yükleme (CRR), Azure sanal makinelerini bir [Azure eşlenmiş bölgesi](../best-practices-availability-paired-regions.md)olan ikincil bir bölgeye geri yüklemenize olanak tanır. Bu seçenek şunları yapmanıza olanak sağlar:
 
 - Denetim veya uyumluluk gereksinimi olduğunda ayrıntıya ait ayrıntıları yürütün
 - Birincil bölgede bir olağanüstü durum varsa VM 'yi veya diskini geri yükleyin.
@@ -83,10 +84,10 @@ GRS yedekliliği ile oluşturulan bir kasa, çapraz bölge geri yükleme özelli
 Kasadaki yedeklemeleri yapılandırmadan önce **depolama çoğaltma türü** ve **güvenlik ayarları** için varsayılan ayarları incelemenizi kesinlikle öneririz.
 
 - **Depolama çoğaltma türü** varsayılan olarak **coğrafi olarak yedekli** (GRS) olarak ayarlanır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır.
-  - Yedeklemeyi henüz yapılandırmadıysanız, ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+  - Yedeklemeyi henüz yapılandırmadıysanız, ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](#set-storage-redundancy) .
   - Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız gerekiyorsa, [Bu geçici çözümleri gözden geçirin](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-- Varsayılan olarak **geçici silme** , yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmelerden yedekleme verilerini korumak için **etkinleştirilir** . Ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) .
+- Varsayılan olarak **geçici silme** , yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmelerden yedekleme verilerini korumak için **etkinleştirilir** . Ayarları gözden geçirmek ve değiştirmek için [aşağıdaki adımları izleyin](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) .
 
 ### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>Yedekleme yapılandırıldıktan sonra GRS 'den LRS 'ye değiştirme
 
@@ -123,7 +124,7 @@ Geçerli korunan verileri GRS kasasında tutmanız ve yeni bir LRS kasasında ko
   - Yalnızca GRS kasasındaki süre dolma edilmemiş kurtarma noktaları için yedeklenmiş verileri geri yükleyebileceksiniz.
   - LRS kasasında verilerin yeni bir ilk kopyasının oluşturulması gerekir.
 
-- Bir Azure VM için, GRS kasasında VM için [verileri koruma ile korumayı durdurabilir](backup-azure-manage-vms.md#stop-protecting-a-vm) , VM 'yi başka bir kaynak grubuna taşıyabilir ve LRS KASASıNDAKI VM 'yi koruyabilirsiniz. Bir VM 'yi başka bir kaynak grubuna taşımak için [rehberlik ve sınırlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) bölümüne bakın.
+- Bir Azure VM için, GRS kasasında VM için [verileri koruma ile korumayı durdurabilir](backup-azure-manage-vms.md#stop-protecting-a-vm) , VM 'yi başka bir kaynak grubuna taşıyabilir ve LRS KASASıNDAKI VM 'yi koruyabilirsiniz. Bir VM 'yi başka bir kaynak grubuna taşımak için [rehberlik ve sınırlamalar](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) bölümüne bakın.
 
   Bir VM tek seferde yalnızca bir kasada korunabilir. Ancak, yeni kaynak grubundaki VM, farklı bir VM olarak kabul edildiği için LRS kasasında korunabilir.
 

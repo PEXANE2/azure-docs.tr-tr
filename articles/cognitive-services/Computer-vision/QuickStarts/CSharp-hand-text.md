@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b47d579a8b086f86194d7129f5289f9c5c839c85
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 70244f6709e35271f63834fd818ea7c72e52a419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987533"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032077"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme 3,0 REST API ve C kullanarak yazdırılmış ve el yazısı metin Ayıkla #
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görünt�
 > [!IMPORTANT]
 > [Okuma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının değerinde BIR URI döndürür. Daha sonra bu URI 'yi, [okuma sonucu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API 'sini temsil eder, her ikisi de durumu denetlemek ve okuma yöntemi çağrısının sonuçlarını döndürmek için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır
@@ -44,6 +44,7 @@ Visual Studio 'da örnek oluşturmak için:
     2. **Gözat** sekmesine tıklayın ve **Arama** kutusuna "Newtonsoft.Json" yazın.
     3. Görüntülendiğinde **Newtonsoft.Json**’ı seçin, sonra proje adınızın yanındaki onay kutusuna ve **Yükle**’ye tıklayın.
 3. Aşağıdaki kodu kopyalayıp çözümünüzdeki Program.cs dosyasına yapıştırın.
+1. `imageFilePath`Kendi görüntünüzün yoluna ayarlayın. Kullanılabilecek [örnek bir görüntü](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) indirebilirsiniz.
 4. Programı çalıştırın.
 
 ```csharp

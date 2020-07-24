@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3505427ab88a2241aa2781366c3d15179b03f050
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 72408b4f17aa5e8601095b27478806883739a7a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231169"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031635"
 ---
-# <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
+# <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı ortakları ve eşleme konumları
 
 > [!div class="op_single_selector"]
 > * [Sağlayıcıya göre konumlar](expressroute-locations.md)
@@ -133,6 +133,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Desteklenir |Desteklenir |Dallas, Los Angeles, MIAMI, Sao Paulo, Washington DC |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Desteklenir |Desteklenir |Newport(Galler) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |Desteklenir |Desteklenir |Melbourne, Perth, Sidney, Sydney2 |
+| **[ALANıNDA](https://www.nos.pt/empresas/corporate/cloud/cloud/Pages/nos-cloud-connect.aspx)** |Desteklenir |Desteklenir |Amsterdam2 |
 | **[NTT Iletişimleri](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Desteklenir |Desteklenir |Amsterdam, Hong Kong ÖIB, Londra, Los Angeles, Osaka, Singapur, Sidney, Tokyo, Washington DC |
 | **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |Desteklenir |Desteklenir |Tokyo |
 | **[NTT küresel veri merkezleri EMEA](https://www.ntt.com/en/services/data-center.html)** |Desteklenir |Desteklenir |Berlin |
@@ -355,7 +356,7 @@ Uzaktan çalışıyorsanız ve fiber bağlantınız yoksa veya diğer bağlantı
 | **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | Asya |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | Avrupa |
 | **[Perficient](https://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | Kuzey Amerika |
-| **[Presidio](https://info.presidio.com/microsoft-azure-expressroute)** | Kuzey Amerika |
+| **[Presidio](https://www.presidio.com/subpage/1107/microsoft-azure)** | Kuzey Amerika |
 | **[sol-tec](https://www.sol-tec.com/what-we-do/)** | Avrupa |
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Güney Amerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Avustralya |

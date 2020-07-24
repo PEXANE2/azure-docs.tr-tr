@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: c69aa91596ff203445aa4fa3ccd59001ffe16649
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2c118ec298ebddf16d428ea2278de42e91309
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78197496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036701"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -31,9 +31,14 @@ ms.locfileid: "78197496"
 * Kuyruktaki iletileri silme
 * Bir kuyruk silme
 
-[API başvurusu belge](/dotnet/api/azure.storage.queues) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [paketi (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+Ek kaynaklar:
 
-## <a name="prerequisites"></a>Ön koşullar
+* [API başvuru belgeleri](/dotnet/api/azure.storage.queues)
+* [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
+* [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
+* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -47,7 +52,7 @@ Bu bölümde, bir projeyi .NET için Azure kuyruk depolama istemci kitaplığı 
 
 *QueuesQuickstartV12*adlı bir .NET Core uygulaması oluşturun.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), *QueuesQuickstartV12*adlı yeni bir konsol uygulaması `dotnet new` oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *QueuesQuickstartV12*adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
    ```console
    dotnet new console -n QueuesQuickstartV12
@@ -61,7 +66,7 @@ Bu bölümde, bir projeyi .NET için Azure kuyruk depolama istemci kitaplığı 
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-Hala uygulama dizininde, `dotnet add package` komutunu kullanarak .net Için Azure kuyruk depolama istemci kitaplığı 'nı yükleyebilirsiniz.
+Hala uygulama dizininde, komutunu kullanarak .NET için Azure kuyruk depolama istemci kitaplığı 'nı yükleyebilirsiniz `dotnet add package` .
 
 ```console
 dotnet add package Azure.Storage.Queues
@@ -72,8 +77,8 @@ dotnet add package Azure.Storage.Queues
 Proje dizininden:
 
 1. *Program.cs* dosyasını Düzenleyicinizde açın
-1. `Console.WriteLine("Hello World!");` İfadeyi kaldır
-1. Yönergeler `using` ekleme
+1. İfadeyi Kaldır `Console.WriteLine("Hello World!");`
+1. `using`Yönergeler ekleme
 1. `Main` [Zaman uyumsuz kodu desteklemek](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7-1#async-main) için yöntem bildirimini güncelleştirme
 
 
@@ -115,8 +120,8 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Şu kaynaklarla etkileşim kurmak için aşağıdaki .NET sınıflarını kullanın:
 
 * [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
-* [Queueclient](/dotnet/api/azure.storage.queues.queueclient): sınıfı `QueueClient` , tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
-* [Queuemessage](/dotnet/api/azure.storage.queues.models.queuemessage): sınıf `QueueMessage` , bir kuyrukta [receivemessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) çağrılırken döndürülen ayrı nesneleri temsil eder.
+* [Queueclient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
+* [Queuemessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` sınıf, bir kuyrukta [receivemessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) çağrılırken döndürülen ayrı nesneleri temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -135,7 +140,7 @@ Bu örnek kod parçacıkları, .NET için Azure kuyruk depolama istemci kitaplı
 
 Aşağıdaki kod, depolama hesabı için bağlantı dizesini alır. Bağlantı dizesi, [depolama Bağlantı dizenizi yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkeninde depolanır.
 
-Bu kodu `Main` metodun içine ekleyin:
+Bu kodu metodun içine ekleyin `Main` :
 
 ```csharp
 Console.WriteLine("Azure Queue storage v12 - .NET quickstart sample\n");
@@ -159,7 +164,7 @@ Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin
 
 [Queueclient](/dotnet/api/azure.storage.queues.queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [Createasync](/dotnet/api/azure.storage.queues.queueclient.createasync) yöntemini çağırın.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 // Create a unique name for the queue
@@ -177,9 +182,9 @@ await queueClient.CreateAsync();
 
 ### <a name="add-messages-to-a-queue"></a>Bir kuyruğa ileti ekleme
 
-Aşağıdaki kod parçacığı, [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) yöntemini çağırarak zaman uyumsuz iletileri kuyruğa ekler. Ayrıca, bir `SendMessageAsync` çağrıdan döndürülen [sendalındısı](/dotnet/api/azure.storage.queues.models.sendreceipt) de kaydeder. Okundu bilgisi, programın ilerleyen kısımlarında iletiyi güncelleştirmek için kullanılır.
+Aşağıdaki kod parçacığı, [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) yöntemini çağırarak zaman uyumsuz iletileri kuyruğa ekler. Ayrıca, bir çağrıdan döndürülen [Sendalındısı](/dotnet/api/azure.storage.queues.models.sendreceipt) de kaydeder `SendMessageAsync` . Okundu bilgisi, programın ilerleyen kısımlarında iletiyi güncelleştirmek için kullanılır.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 Console.WriteLine("\nAdding messages to the queue...");
@@ -194,9 +199,9 @@ SendReceipt receipt = await queueClient.SendMessageAsync("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Kuyruktaki iletilere göz atın
 
-[PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) yöntemini çağırarak kuyruktaki iletilere göz atın. `PeekMessagesAsync` Yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
+[PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) yöntemini çağırarak kuyruktaki iletilere göz atın. `PeekMessagesAsync`Yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 Console.WriteLine("\nPeek at the messages in the queue...");
@@ -213,7 +218,7 @@ foreach (PeekedMessage peekedMessage in peekedMessages)
 
 ### <a name="update-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi güncelleştirme
 
-[Updatemessageasync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. Yöntemi `UpdateMessageAsync` , bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. İletinin yeni içeriğiyle birlikte, kodda daha önce kaydedilen değerleri ' den `SendReceipt` geçirin. `SendReceipt` Değerler güncelleştirilecek iletiyi belirler.
+[Updatemessageasync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `UpdateMessageAsync`Yöntemi, bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. İletinin yeni içeriğiyle birlikte, `SendReceipt` kodda daha önce kaydedilen değerleri ' den geçirin. `SendReceipt`Değerler güncelleştirilecek iletiyi belirler.
 
 ```csharp
 Console.WriteLine("\nUpdating the third message in the queue...");
@@ -226,7 +231,7 @@ await queueClient.UpdateMessageAsync(receipt.MessageId, receipt.PopReceipt, "Thi
 
 [Receivemessagesasync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) yöntemini çağırarak önceden eklenmiş iletileri indirin.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 Console.WriteLine("\nReceiving messages from the queue...");
@@ -239,9 +244,9 @@ QueueMessage[] messages = await queueClient.ReceiveMessagesAsync(maxMessages: 10
 
 İşlenmeden sonra sıradaki iletileri silin. Bu durumda, işleme yalnızca konsolda iletiyi görüntülüyor.
 
-Uygulama, iletileri işleyerek ve silmeden önce çağırarak `Console.ReadLine` Kullanıcı girişi için duraklatılır. [Azure Portal](https://portal.azure.com) , kaynakların silinmeden önce doğru şekilde oluşturulduğunu doğrulayın. Açıkça silinmeyen tüm iletiler, daha sonra bu işlemleri işlemek için bir süre sonra sırada görünür hale gelir.
+Uygulama, `Console.ReadLine` iletileri işleyerek ve silmeden önce çağırarak kullanıcı girişi için duraklatılır. [Azure Portal](https://portal.azure.com) , kaynakların silinmeden önce doğru şekilde oluşturulduğunu doğrulayın. Açıkça silinmeyen tüm iletiler, daha sonra bu işlemleri işlemek için bir süre sonra sırada görünür hale gelir.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 Console.WriteLine("\nPress Enter key to 'process' messages and delete them from the queue...");
@@ -263,7 +268,7 @@ foreach (QueueMessage message in messages)
 
 Aşağıdaki kod, [DeleteAsync](/dotnet/api/azure.storage.queues.queueclient.deleteasync) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 Console.WriteLine("\nPress Enter key to delete the queue...");

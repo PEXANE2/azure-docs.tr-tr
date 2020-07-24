@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338203"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034411"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -38,10 +38,10 @@ Kurumsal kuruluşlar, çalışanların şu gibi kaynaklara erişimini yönetirke
 - Kullanıcılar sahip olmaları gereken erişimi bilmiyor olabilir ve olsalar bile, erişimleri onaylamak için doğru bireyleri bulmaya zorluk gösterebilir
 - Kullanıcılar bir kaynağa erişim bulup aldıktan sonra, iş amaçları için gerekenden daha uzun bir süre erişim için açık kalabilir
 
-Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örnek:
+Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örneğin:
 
 - Başka bir kişi, diğer kuruluş dizinlerindeki tüm kişilerin davet etmesini sağlayabilmesi için
-- Bu kullanıcılar davet edebilse bile, bu kuruluştan hiç kimse kullanıcının tüm erişimini tutarlı bir şekilde yönetmeyi anımsayabilir
+- Bu kullanıcılar davet edebilse bile, bu kuruluştan hiç kimse kullanıcının tüm erişimini sürekli olarak yönetmeyi anımsayabilir
 
 Azure AD Yetkilendirme Yönetimi, bu zorlukları ele almanıza yardımcı olabilir.  Müşterilerin Azure AD Yetkilendirme Yönetimi 'ni nasıl kullandığı hakkında daha fazla bilgi edinmek için, [Avanade örnek olay incelemesi](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) ve [Centrica örnek olay incelemesi](https://customers.microsoft.com/story/757467-centrica-energy-azure)okuyabilirsiniz.  Bu videoda, yetkilendirme yönetimine genel bakış ve bunun değeri verilmiştir:
 
@@ -71,7 +71,7 @@ Yetkilendirme Yönetimi, Azure AD 'ye bir *erişim paketi*kavramını tanıtır.
 - SaaS uygulamaları ve Federasyon/çoklu oturum açma ve/veya sağlamayı destekleyen özel tümleşik uygulamalar dahil olmak üzere Azure AD kurumsal uygulamalarına atama
 - SharePoint Online sitelerinin üyeliği
 
-Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örnek:
+Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örneğin:
 
 - Erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için [grup tabanlı lisanslama](../users-groups-roles/licensing-groups-assign.md) 'yi yapılandırarak Microsoft 365 kullanıcılara lisans verebilirsiniz
 - Erişim paketindeki bir Azure AD güvenlik grubunu kullanarak ve bu grup için bir [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) oluşturarak kullanıcılara Azure kaynaklarını yönetmeye yönelik erişim izni verebilirsiniz.
@@ -114,7 +114,7 @@ Erişim paketleri, erişim atama için diğer mekanizmaların yerini alır.  Bun
 
 Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için, aşağıdaki terim listesine geri başvurabilirsiniz.
 
-| Terim | Description |
+| Terim | Açıklama |
 | --- | --- |
 | erişim paketi | Bir ekibin veya projenin ihtiyaç duyacağı ve ilkelerle ilişkilendirilen kaynak demeti. Bir erişim paketi her zaman bir katalogda bulunur. Kullanıcıların erişim istemesi gereken bir senaryo için yeni bir erişim paketi oluşturacaksınız.  |
 | erişim isteği | Erişim paketindeki kaynaklara erişim isteği. İstek genellikle bir onay iş akışından geçer.  Onaylanırsa, isteyen Kullanıcı bir erişim paketi ataması alır. |
@@ -165,4 +165,4 @@ Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Öğretici: ilk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
-- [Yaygın senaryolar](entitlement-management-scenarios.md)
+- [Genel senaryolar](entitlement-management-scenarios.md)

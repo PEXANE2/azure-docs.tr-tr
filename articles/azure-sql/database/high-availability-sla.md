@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: 01906935de76b2b262f2058563a3eee0e297e8a4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cc0c4b6bc7dd340f17ac500c5d319a83370a2f2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985338"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033080"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -104,7 +104,7 @@ Yük devretme, REST API veya PowerShell kullanılarak başlatılabilir. REST API
 
 ## <a name="conclusion"></a>Sonuç
 
-Azure SQL veritabanı ve Azure SQL yönetilen örnek özelliği, Azure platformuyla derin bir şekilde tümleştirilmiş yerleşik yüksek kullanılabilirlik çözümüdür. Hata algılama ve kurtarma, veri koruma için Azure Blob depolama ve daha yüksek hata toleransı için Kullanılabilirlik Alanları Service Fabric bağımlıdır. Ayrıca, SQL veritabanı ve SQL yönetilen örneği, çoğaltma ve yük devretme için SQL Server örneğinden her zaman açık kullanılabilirlik grubu teknolojisini de devreder. Bu teknolojilerin birleşimi, uygulamaların karma depolama modelinin avantajlarını tam olarak elde etmesini ve en zorlu SLA 'Ları desteklemesini sağlar.
+Azure SQL veritabanı ve Azure SQL yönetilen örnek özelliği, Azure platformuyla derin bir şekilde tümleştirilmiş yerleşik yüksek kullanılabilirlik çözümüdür. Hata algılama ve kurtarma, veri koruma için Azure Blob depolama 'da ve daha yüksek hata toleransı (belgede daha önce Azure SQL yönetilen örneği için geçerli değildir) için Kullanılabilirlik Alanları için Service Fabric bağımlıdır. Ayrıca, SQL veritabanı ve SQL yönetilen örneği, çoğaltma ve yük devretme için SQL Server örneğinden her zaman açık kullanılabilirlik grubu teknolojisini de devreder. Bu teknolojilerin birleşimi, uygulamaların karma depolama modelinin avantajlarını tam olarak elde etmesini ve en zorlu SLA 'Ları desteklemesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

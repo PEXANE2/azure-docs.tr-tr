@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e44edff9ac81588e4f861b7a1d1ae1a1628d5e04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71266067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035647"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure sanal makineleri için yüksek kullanılabilirlik SAP HANA
 
@@ -37,9 +37,9 @@ Bu makalede ayrıca SAP HANA örnekleri yükleme ve yönetme ve çalıştırma S
 
 Bu makaleler, Azure 'da SAP HANA kullanmaya yönelik iyi bir genel bakış sunar:
 
-- [Azure VM 'lerinde tek örnekli SAP HANA el ile yüklenmesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Azure VM 'lerinde tek örnekli SAP HANA el ile yüklenmesi](./hana-get-started.md)
 - [Azure VM 'lerinde SAP HANA sistem çoğaltması ayarlama](sap-hana-high-availability.md)
-- [Azure VM’leri üzerinde SAP HANA yedekleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [Azure VM’leri üzerinde SAP HANA yedekleme](./sap-hana-backup-guide.md)
 
 Ayrıca, SAP HANA hakkındaki bu makalelerle ilgili bilgi sahibi olmak iyi bir fikirdir:
 
@@ -52,7 +52,7 @@ Ayrıca, SAP HANA hakkındaki bu makalelerle ilgili bilgi sahibi olmak iyi bir f
 - [SAP HANA hizmeti otomatik yeniden başlatma](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [SAP HANA sistem çoğaltmasını yapılandırma](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Azure 'da VM dağıtımı hakkında daha fazla bilgi sahibi olmak için, Azure 'da kullanılabilirlik mimarinizi tanımladıktan önce, [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)konusunu okumanız önerilir.
+Azure 'da VM dağıtımı hakkında daha fazla bilgi sahibi olmak için, Azure 'da kullanılabilirlik mimarinizi tanımladıktan önce, [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../windows/manage-availability.md)konusunu okumanız önerilir.
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure bileşenleri için hizmet düzeyi sözleşmeleri
 
@@ -60,16 +60,16 @@ Azure, ağ, depolama ve sanal makineler gibi farklı bileşenler için farklı k
 
 [Sanal makineler Için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) üç farklı SLA tanımlar, üç farklı yapılandırma için:
 
-- İşletim sistemi diski ve tüm veri diskleri için [Azure Premium SSD 'ler](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) kullanan tek bir VM. Bu seçenek yüzde 99,9 ' lik bir aylık çalışma süresi sağlar.
-- Bir [Azure kullanılabilirlik kümesinde](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)düzenlenmiş birden çok (en az Iki) VM. Bu seçenek yüzde 99,95 ' lik bir aylık çalışma süresi sağlar.
-- Bir [kullanılabilirlik bölgesinde](https://docs.microsoft.com/azure/availability-zones/az-overview)düzenlenmiş birden çok (en az Iki) VM. Bu seçenek yüzde 99,99 ' lik bir aylık çalışma süresi sağladı.
+- İşletim sistemi diski ve tüm veri diskleri için [Azure Premium SSD 'ler](../../windows/managed-disks-overview.md) kullanan tek bir VM. Bu seçenek yüzde 99,9 ' lik bir aylık çalışma süresi sağlar.
+- Bir [Azure kullanılabilirlik kümesinde](../../windows/tutorial-availability-sets.md)düzenlenmiş birden çok (en az Iki) VM. Bu seçenek yüzde 99,95 ' lik bir aylık çalışma süresi sağlar.
+- Bir [kullanılabilirlik bölgesinde](../../../availability-zones/az-overview.md)düzenlenmiş birden çok (en az Iki) VM. Bu seçenek yüzde 99,99 ' lik bir aylık çalışma süresi sağladı.
 
 Azure bileşenlerinin sağlayacağımız SLA 'Lara karşı kullanılabilirlik gereksinimini ölçün. Ardından, gerekli kullanılabilirlik düzeyini elde etmek için SAP HANA senaryolarınızı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Tek bir Azure bölgesinde SAP HANA kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)hakkında bilgi edinin.
-- [Azure bölgeleri arasında SAP HANA kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)hakkında bilgi edinin. 
+- [Tek bir Azure bölgesinde SAP HANA kullanılabilirliği](./sap-hana-availability-one-region.md)hakkında bilgi edinin.
+- [Azure bölgeleri arasında SAP HANA kullanılabilirliği](./sap-hana-availability-across-regions.md)hakkında bilgi edinin. 
 
 
 
@@ -86,5 +86,3 @@ Azure bileşenlerinin sağlayacağımız SLA 'Lara karşı kullanılabilirlik ge
 
 
   
-
-

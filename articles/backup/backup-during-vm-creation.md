@@ -3,11 +3,12 @@ title: Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 description: Azure Backup ile bir Azure VM oluşturduğunuzda yedeklemenin nasıl etkinleştirileceğini açıklar.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672816"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032859"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 
@@ -29,7 +30,7 @@ Hesabınızda zaten oturum açmadıysanız [Azure Portal](https://portal.azure.c
 
 2. Azure Marketi 'nde **işlem**' e tıklayın ve ardından bir VM görüntüsü seçin.
 
-3. [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) yönergelerine uygun olarak VM 'yi ayarlayın.
+3. [Windows](../virtual-machines/windows/quick-create-portal.md) veya [Linux](../virtual-machines/linux/quick-create-portal.md) yönergelerine uygun olarak VM 'yi ayarlayın.
 
 4. **Yönetim** sekmesinde, **yedeklemeyi etkinleştir**' de, **Açık**' a tıklayın.
 5. Kurtarma Hizmetleri kasasındaki yedeklemeleri Azure Backup. Mevcut bir kasanız yoksa **Yeni oluştur** ' a tıklayın.

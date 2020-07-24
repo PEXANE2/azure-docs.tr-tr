@@ -13,11 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: e13e6d9ac2f4600e41f221efd23997f712dffc54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79458163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032094"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Azure Cloud Shell Bash 'ten Terrayform ile dağıtma
 Bu makalede, [Terrayform Azurerd sağlayıcısına](https://www.terraform.io/docs/providers/azurerm/index.html)sahip bir kaynak grubu oluşturma işlemi adım adım açıklanmaktadır.
@@ -33,7 +35,7 @@ Terrayform, ayarlanan varsayılan Azure CLı aboneliğini kullanır. Varsayılan
 az account set --subscription mySubscriptionName
 ```
 
-## <a name="walkthrough"></a>Kılavuz
+## <a name="walkthrough"></a>İzlenecek yol
 ### <a name="launch-bash-in-cloud-shell"></a>Cloud Shell 'da Bash 'i başlatın
 1. Tercih ettiğiniz konumdan Cloud Shell başlatın
 2. Tercih ettiğiniz aboneliğin ayarlandığını doğrulayın

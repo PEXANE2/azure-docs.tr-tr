@@ -3,12 +3,12 @@ title: Azure Service Bus-mesajlaşma varlıklarını askıya alma
 description: Bu makalede Azure Service Bus ileti varlıklarının (kuyruklar, konular ve abonelikler) geçici olarak askıya alınması ve yeniden etkinleştirilmesi açıklanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c4e554ada8c66b56d5d466c7becfc813701402a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038146"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme (devre dışı bırakma)
 
@@ -20,7 +20,7 @@ Askıya alma veya yeniden etkinleştirme, Kullanıcı ya da sistem tarafından g
 
 Portalda ilgili varlık için **Özellikler** bölümü, durumun değiştirilmesini mümkün; Aşağıdaki ekran görüntüsünde bir sıranın geçişi gösterilmektedir:
 
-![][1]
+![Özellikler ayarı vurgulanmış ve sıra durumu seçeneği etkin ve kırmızı olarak seviyelendirilmiş Service Bus özelliğinin ekran görüntüsü.][1]
 
 Portal yalnızca sıraların tamamen devre dışı bırakılmasını sağlar. Ayrıca, .NET Framework SDK 'sında Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak veya Azure clı veya Azure PowerShell aracılığıyla Azure Resource Manager şablonuyla, gönderme ve alma işlemlerini ayrı olarak devre dışı bırakabilirsiniz.
 

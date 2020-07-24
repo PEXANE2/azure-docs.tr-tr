@@ -3,18 +3,18 @@ title: Zaman serisi tahmin modelini otomatik eğitme
 titleSuffix: Azure Machine Learning
 description: Otomatik makine öğrenimi kullanarak zaman serisi tahmin regresyon modelini eğitmek için Azure Machine Learning nasıl kullanacağınızı öğrenin.
 services: machine-learning
-author: trevorbye
-ms.author: trbye
+author: nibaccam
+ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: trbye
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 72b0a3074bfdfb6b6038f6c63eb01a7b33d45ea6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ec2ef52978a24619103d9a0a2b7fb8ed1099c40b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031601"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,13 +52,13 @@ Microsoft 'un Foreroı tcn gibi derin öğrenme modelleri verilen büyük verile
 
 Otomatikleştirilen ML, kullanıcılara öneri sisteminin bir parçası olarak hem yerel zaman serisi hem de derin öğrenme modelleri sağlar. 
 
-Modeller| Açıklama | Yararları
+Modeller| Açıklama | Avantajlar
 ----|----|---
 Prophet (Önizleme)|Prophet, önemli dönemsel etkileri ve geçmiş verilerin çeşitli mevsimlerine sahip zaman serisiyle en iyi şekilde çalışmaktadır. Bu modelden yararlanmak için kullanarak yerel olarak yüklemesini yapın `pip install fbprophet` . | Daha hızlı, güçlü ve aykırı verilere, eksik verilere ve zaman serinizdeki önemli değişikliklere göre doğru &.
 Otomatik-ARıMA (Önizleme)|Oto gerileme tümleşik hareketli ortalama (ARıMA), veriler sabit olduğunda en iyi şekilde çalışır. Bu, ortalama ve fark gibi istatistiksel özelliklerinin tüm küme üzerinde sabit olduğu anlamına gelir. Örneğin, bir para alanı çevirdiğinizde, bugün, yarın veya sonraki yılda bir değer çevirmenize bakılmaksızın kafa alma olasılığı %50 ' dir.| Sonraki değerleri tahmin etmek için geçmiş değerler kullanıldığından, tek değişkenli seriler için harika.
 Forekaletcn (Önizleme)| Forekaletcn, en zorlu tahmin görevlerinin üstesinden gelmek, verilerinizdeki doğrusal olmayan yerel ve küresel eğilimleri ve zaman serileri arasındaki ilişkileri yakalamak için tasarlanan bir sinir ağ modelidir.|Verilerinizdeki karmaşık eğilimleri kullanmaktan ve veri kümelerinin en büyük katına kolayca ölçeklenebilme özelliği.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 * Bu makalede, bir otomatik makine öğrenimi denemesi ayarlamaya yönelik temel benzerlik varsayılmaktadır. Temel otomatik makine öğrenimi tasarım düzenlerini görmek için [öğreticiyi](tutorial-auto-train-models.md) izleyin veya [nasıl yapılır?](how-to-configure-auto-train.md)

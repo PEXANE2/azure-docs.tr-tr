@@ -4,11 +4,12 @@ description: Bu makalede, Microsoft Azure Backup Server (MABS) v3 için bilinen 
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629144"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032570"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup sunucusu için sürüm notları
 
@@ -53,13 +54,13 @@ Bu makalede Microsoft Azure Backup Server (MABS) v3 için bilinen sorunlar ve ge
 
 **Geçici çözüm:** Rusça Install paketini kullanarak MABS v3 'e yükseltmek için aşağıdaki adımları uygulayın:
 
-1. SQL veritabanınızı [yedekleyin](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) ve Mabs v2 'yi kaldırın (kaldırma sırasında korumalı verileri tutmayı seçin).
+1. SQL veritabanınızı [yedekleyin](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server#SSMSProcedure) ve Mabs v2 'yi kaldırın (kaldırma sırasında korumalı verileri tutmayı seçin).
 2. Yükseltme kapsamında SQL 2017 (Enterprise) ve raporlamayı Kaldır ' a yükseltin.
-3. [Yüklemesi](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
-4. [Yüklemesi](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
-5. [SQL 2017 Ile SSRS yapılandırmasında](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)belgelenen parametreleri kullanarak raporlamayı yapılandırın.
+3. [Yüklemesi](/sql/reporting-services/install-windows/install-reporting-services#install-your-report-server) SQL Server Reporting Services (SSRS).
+4. [Yüklemesi](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
+5. [SQL 2017 Ile SSRS yapılandırmasında](./backup-azure-microsoft-azure-backup.md#upgrade-mabs)belgelenen parametreleri kullanarak raporlamayı yapılandırın.
 6. [Yüklemesi](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Geri yükle](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SSMS kullanarak SQL ve [burada](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)AÇıKLANDıĞı gibi DPM-Sync aracını çalıştırın.
+7. [Geri yükle](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SSMS kullanarak SQL ve [burada](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)AÇıKLANDıĞı gibi DPM-Sync aracını çalıştırın.
 8. Aşağıdaki komutu kullanarak dbo. tbl_DLS_GlobalSetting tablosundaki ' DataBaseVersion ' özelliğini güncelleştirin:
 
     ```sql
@@ -96,7 +97,7 @@ Bu makalede Microsoft Azure Backup Server (MABS) v3 için bilinen sorunlar ve ge
 
     En son rapor dosyaları yolda bulunabilir`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
-    Örneğin, `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+    Örnek: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
     ![Dosyaları en son rapor dosyalarıyla değiştirin](./media/backup-mabs-release-notes-v3/replace-files.png)
 

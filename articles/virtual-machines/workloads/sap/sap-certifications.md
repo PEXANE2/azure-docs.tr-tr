@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f78d5f839c5dd7816ae28eeed175503427abb43c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035851"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure üzerinde çalışan SAP Sertifikaları ve yapılandırması
 
-SAP ve Microsoft, müşterileri için karşılıklı avantajlara sahip güçlü bir iş ortaklığında birlikte çalışan uzun bir geçmişe sahiptir. Microsoft, SAP iş yüklerinizin çalıştırılacağı en iyi platform olduğundan emin olmak için, platformunu sürekli olarak güncelleştiriyor ve yeni sertifika ayrıntılarını SAP 'ye gönderen Microsoft Azure. Aşağıdaki tablolarda Azure desteklenen konfigürasyonlar ve büyüyen SAP sertifikalarının listesi ana hatlarıyla verilmiştir. Bu liste, burada ve resmi SAP listelerinden farklı olabilecek bir genel bakış listesidir. Ayrıntılı verilere nasıl ulaşırsanız, [Azure dağıtımları Için HANGI SAP yazılımlarının desteklendiği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) makalesinde açıklanmaktadır.
+SAP ve Microsoft, müşterileri için karşılıklı avantajlara sahip güçlü bir iş ortaklığında birlikte çalışan uzun bir geçmişe sahiptir. Microsoft, SAP iş yüklerinizin çalıştırılacağı en iyi platform olduğundan emin olmak için, platformunu sürekli olarak güncelleştiriyor ve yeni sertifika ayrıntılarını SAP 'ye gönderen Microsoft Azure. Aşağıdaki tablolarda Azure desteklenen konfigürasyonlar ve büyüyen SAP sertifikalarının listesi ana hatlarıyla verilmiştir. Bu liste, burada ve resmi SAP listelerinden farklı olabilecek bir genel bakış listesidir. Ayrıntılı verilere nasıl ulaşırsanız, [Azure dağıtımları Için HANGI SAP yazılımlarının desteklendiği](./sap-supported-product-on-azure.md) makalesinde açıklanmaktadır.
 
 ## <a name="sap-hana-certifications"></a>SAP HANA sertifikaları
 Başvur

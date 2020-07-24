@@ -3,30 +3,24 @@ author: baanders
 description: Azure dijital TWINS için dosya ekleme-Cloud Shell ve IoT uzantısını ayarlama
 ms.service: digital-twins
 ms.topic: include
-ms.date: 5/25/2020
+ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: 6f472865c131b873f1ae0a21fa9ec55865fb2b29
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7c91d648c06970d53799c6ff505919dea17b3c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032246"
 ---
-[!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
-
-### <a name="set-up-cloud-shell-session"></a>Cloud Shell oturum ayarlama
-
-Cloud Shell bir pencere açtıktan sonra, ilk yapmanız gereken oturum açma ve kabuk bağlamını bu oturum için aboneliğinize ayarlamış. Cloud Shell şu komutları çalıştırın:
+Açık bir [Azure Cloud Shell](https://shell.azure.com) penceresinde Azure dijital TWINS ile çalışmaya başlamak için ilk yapmanız gereken oturum açma ve kabuk bağlamını bu oturum için aboneliğinize ayarlamış. Cloud Shell şu komutları çalıştırın:
 
 ```azurecli
 az login
-az account set --subscription <your-Azure-subscription-ID>
+az account set --subscription "<your-Azure-subscription-ID>"
 ```
 > [!TIP]
-> Aboneliğinizi, abonelik adınızı kullanarak da ayarlayabilirsiniz. Şu komutu çalıştırın: 
-> ```azurecli
-> az account set --subscription "your-Azure-subscription-name"
-> 
+> Yukarıdaki komutta KIMLIK yerine abonelik adınızı de kullanabilirsiniz. 
+
 Bu aboneliği Azure Digital TWINS ile ilk kez kullandıysanız, Azure Digital TWINS ad alanına kaydolmak için bu komutu çalıştırın. (Emin değilseniz, geçmişte bir zaman gerçekleştirseniz bile bu işlemi yeniden çalıştırmak daha iyi olur.)
 
 ```azurecli
@@ -41,10 +35,10 @@ Daha sonra, Azure dijital TWINS ve diğer IoT hizmetleriyle etkileşime yönelik
 az extension list
 ```
 
-Çıktıda, `"name"` uzantıların adlarını görmek için her bir liste girişi alanını bulun.
+Çıktı, şu anda sahip olduğunuz tüm uzantıların bir dizisidir. `"name"`Uzantıların adlarını görmek için her liste girişi alanını bulun.
 
 Uzantı kurulumu için aşağıdaki komutlardan hangisinin çalıştırılacağını öğrenmek için çıktıyı kullanın (birden fazla çalıştırma olabilirsiniz).
-* Liste şunu içeriyorsa `azure-iot` : uzantıya zaten sahipsiniz. En son güncelleştirmeye sahip olduğunuzdan emin olmak için bu komutu çalıştırın:
+* Liste şunu içeriyorsa `azure-iot` : uzantıya zaten sahipsiniz. En son güncelleştirmeye sahip olduğunuzdan emin olmak için bu komutu çalıştırın ve kullanılabilir başka güncelleştirme yok:
 
    ```azurecli-interactive
    az extension update --name azure-iot

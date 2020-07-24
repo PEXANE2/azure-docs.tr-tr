@@ -15,20 +15,21 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255471"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035868"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Tek bir Azure bölgesinde kullanılabilirliği SAP HANA
-Bu makalede, bir Azure bölgesindeki çeşitli kullanılabilirlik senaryoları açıklanmaktadır. Azure, dünyanın tamamında yayılan birçok bölgeye sahiptir. Azure bölgelerinin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/). Tek bir Azure bölgesindeki sanal makinelere SAP HANA dağıtmak için, Microsoft, bir HANA örneğiyle tek bir sanal makinenin dağıtımını sunmaktadır. Daha yüksek kullanılabilirlik için, kullanılabilirlik için HANA sistem çoğaltması kullanan bir [Azure kullanılabilirlik kümesi](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) IÇINDE iki Hana örneğiyle iki VM dağıtabilirsiniz. 
+Bu makalede, bir Azure bölgesindeki çeşitli kullanılabilirlik senaryoları açıklanmaktadır. Azure, dünyanın tamamında yayılan birçok bölgeye sahiptir. Azure bölgelerinin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/). Tek bir Azure bölgesindeki sanal makinelere SAP HANA dağıtmak için, Microsoft, bir HANA örneğiyle tek bir sanal makinenin dağıtımını sunmaktadır. Daha yüksek kullanılabilirlik için, kullanılabilirlik için HANA sistem çoğaltması kullanan bir [Azure kullanılabilirlik kümesi](../../windows/tutorial-availability-sets.md) IÇINDE iki Hana örneğiyle iki VM dağıtabilirsiniz. 
 
-Azure Şu anda [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview)sunmaktadır. Bu makale Kullanılabilirlik Alanları ayrıntılı olarak tanımlamaz. Ancak, Kullanılabilirlik Alanları ve kullanılabilirlik kümelerini kullanma hakkında genel bir tartışma içerir.
+Azure Şu anda [Azure kullanılabilirlik alanları](../../../availability-zones/az-overview.md)sunmaktadır. Bu makale Kullanılabilirlik Alanları ayrıntılı olarak tanımlamaz. Ancak, Kullanılabilirlik Alanları ve kullanılabilirlik kümelerini kullanma hakkında genel bir tartışma içerir.
 
 Kullanılabilirlik Alanları sunulan Azure bölgelerinin birden çok veri merkezi vardır. Veri merkezleri, güç kaynağı, soğutma ve ağ tedarikinden bağımsızdır. Tek bir Azure bölgesi içinde farklı bölgeler sunma nedeni, sunulan iki veya üç Kullanılabilirlik Alanları arasında uygulama dağıtmaktır. Bölgeler arasında dağıtım, güç ve ağ sorunları yalnızca bir Azure kullanılabilirlik alanı altyapısını etkileyerek, bir Azure bölgesindeki uygulama dağıtımınız hala çalışır durumda. Azaltılan bazı kapasite meydana gelebilir. Örneğin, bir bölgedeki VM 'Ler kaybolabilir, ancak diğer iki bölgedeki VM 'Ler çalışmaya devam edebilir. 
  
-Azure kullanılabilirlik kümesi, kullanılabilirlik kümesi içinde yerleştirdiğiniz VM kaynaklarının, bir Azure veri merkezinde dağıtıldığında birbirinden hata yalıtımlı olmasını sağlamaya yardımcı olan bir mantıksal gruplandırma özelliğidir. Azure, bir Kullanılabilirlik Kümesi içine yerleştirdiğiniz sanal makinelerin birden fazla fiziksel sunucuda, bilgi işlem rafında, depolama biriminde ve ağ anahtarında çalışmasını sağlar. Bazı Azure belgelerinde, bu yapılandırma farklı [güncelleştirme ve hata etki alanlarında](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)placeas olarak adlandırılır. Bu Place, genellikle bir Azure veri merkezinde yer alan. Güç kaynağı ve ağ sorunlarının dağıttığınız veri merkezini etkileyeceğini varsayarsak, bir Azure bölgesindeki tüm kapasiteniz etkilenir.
+Azure kullanılabilirlik kümesi, kullanılabilirlik kümesi içinde yerleştirdiğiniz VM kaynaklarının, bir Azure veri merkezinde dağıtıldığında birbirinden hata yalıtımlı olmasını sağlamaya yardımcı olan bir mantıksal gruplandırma özelliğidir. Azure, bir Kullanılabilirlik Kümesi içine yerleştirdiğiniz sanal makinelerin birden fazla fiziksel sunucuda, bilgi işlem rafında, depolama biriminde ve ağ anahtarında çalışmasını sağlar. Bazı Azure belgelerinde, bu yapılandırma farklı [güncelleştirme ve hata etki alanlarında](../../windows/manage-availability.md)placeas olarak adlandırılır. Bu Place, genellikle bir Azure veri merkezinde yer alan. Güç kaynağı ve ağ sorunlarının dağıttığınız veri merkezini etkileyeceğini varsayarsak, bir Azure bölgesindeki tüm kapasiteniz etkilenir.
 
 Azure Kullanılabilirlik Alanları temsil eden veri merkezlerinin yerleşimi, farklı bölgelerde dağıtılan hizmetler arasında kabul edilebilir ağ gecikme süresi ve veri merkezleri arasında bir mesafe arasında bir uzlaşdır. Doğal catastrophes ideal olarak bu bölgedeki tüm Kullanılabilirlik Alanları için güç, ağ kaynağı ve altyapıyı etkilemez. Ancak, Monumental doğal catastrophes gösterildiği gibi, Kullanılabilirlik Alanları her zaman bir bölgede istediğiniz kullanılabilirliği sağlayamayabilir. 20 Eylül 2017 ' de Porto Riko 'nun Adası ile başlayan Acericane Maria hakkında düşünün. Acericane, temelde 90-Wide Adası üzerinde yaklaşık %100 bir kararya neden oldu.
 
@@ -81,7 +82,7 @@ Mimari şöyle görünür:
 
 Bu kurulum, harika kurtarma noktası hedefi (RPO) ve kurtarma süresi hedefi (RTO) zamanlarını elde etmek için uygun değildir. RTO zamanları özellikle, kopyalanmış yedeklemeleri kullanarak tam veritabanını tamamen geri yükleme gereksiniminden kaynaklanıyor olabilir. Ancak, bu kurulum ana örneklerde istenmeden veri silmeyi kurtarmak için yararlıdır. Bu kurulumla, herhangi bir zamanda belirli bir noktaya geri yükleme yapabilir, verileri ayıklayabilir ve silinen verileri ana örneğinizle içeri aktarabilirsiniz. Bu nedenle, bir yedek kopya yönteminin diğer yüksek kullanılabilirlik işlevselliğiyle birlikte kullanılması mantıklı olabilir. 
 
-Yedeklemeler kopyalanırken, SAP HANA örneğinin üzerinde çalıştığı ana VM 'den daha küçük bir VM kullanabilirsiniz. Daha küçük VM 'lere daha az sayıda VHD iliştirebileceğinizi aklınızda bulundurun. Tek tek VM türlerinin limitleri hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Yedeklemeler kopyalanırken, SAP HANA örneğinin üzerinde çalıştığı ana VM 'den daha küçük bir VM kullanabilirsiniz. Daha küçük VM 'lere daha az sayıda VHD iliştirebileceğinizi aklınızda bulundurun. Tek tek VM türlerinin limitleri hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar](../../linux/sizes.md).
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>Otomatik yük devretme olmadan sistem çoğaltmasını SAP HANA
 
@@ -107,7 +108,7 @@ Bu senaryoda, ikinci VM 'de HANA örneğine çoğaltılan veriler önceden yükl
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>Otomatik yük devretme ile sistem çoğaltmasını SAP HANA
 
-Tek bir Azure bölgesindeki standart ve en yaygın kullanılabilirlik yapılandırmasında, SLES Linux çalıştıran iki Azure VM 'nin tanımlanmış bir yük devretme kümesi vardır. SLES Linux kümesi, bir [Stonith](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) aygıtıyla birlikte [pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) çerçevesini temel alır. 
+Tek bir Azure bölgesindeki standart ve en yaygın kullanılabilirlik yapılandırmasında, SLES Linux çalıştıran iki Azure VM 'nin tanımlanmış bir yük devretme kümesi vardır. SLES Linux kümesi, bir [Stonith](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) aygıtıyla birlikte [pacemaker](./high-availability-guide-suse-pacemaker.md) çerçevesini temel alır. 
 
 SAP HANA perspektifinden, kullanılan çoğaltma modu eşitlenir ve otomatik yük devretme yapılandırılır. İkinci VM 'de SAP HANA örnek, etkin bir bekleme düğümü işlevi görür. Bekleme düğümü, birincil SAP HANA örneğinden gelen değişiklik kayıtlarının zaman uyumlu bir akışını alır. İşlemler, HANA birincil düğümündeki uygulama tarafından işlendiği için, birincil HANA düğümü, ikincil SAP HANA düğümü, işleme kaydını aldığını onaylaana kadar uygulamaya yapılan yürütmeyi onaylamasını bekler. SAP HANA iki zaman uyumlu çoğaltma modu sunar. Ayrıntılar ve bu iki zaman uyumlu çoğaltma modu arasındaki farkların açıklaması için, [SAP HANA sistem çoğaltması IÇIN SAP makalesi çoğaltma modları](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)bölümüne bakın.
 
@@ -126,5 +127,4 @@ Azure 'da bu yapılandırmaların ayarlanmasına yönelik adım adım yönergele
 
 Azure bölgelerinde SAP HANA kullanılabilirliği hakkında daha fazla bilgi için bkz.:
 
-- [Azure bölgeleri arasında kullanılabilirlik SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
-
+- [Azure bölgeleri arasında kullanılabilirlik SAP HANA](./sap-hana-availability-across-regions.md) 

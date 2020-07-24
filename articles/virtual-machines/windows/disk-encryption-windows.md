@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036140"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -238,7 +238,7 @@ Azure disk şifrelemesi, aşağıdaki senaryolar, Özellikler ve teknolojiler i�
 - Gen2 VM 'Ler (bkz. [Azure 'da 2. nesil VM 'ler Için destek](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Lsv2 serisi VM 'Ler (bkz: [Lsv2-Series](../lsv2-series.md))
 - Yazma Hızlandırıcısı disklere sahip, d serisi VM 'Ler.
-- Müşteri tarafından yönetilen anahtarlarla ADE tarafından şifrelenen bir VM 'ye [sunucu tarafı şifrelemeyi](disk-encryption.md) uygulama ve tam tersi.
+- Bir veri diski, müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](disk-encryption.md) şifrelenen bir VM 'ye veya Ade ile ŞIFRELENEN bir VM 'deki bir VERI diskine SSE + CMK uygulayarak bir sanal makineye uygulanıyor.
 - [Müşteri tarafından yönetilen ANAHTARLARLA](disk-encryption.md)Ade ile ŞIFRELENEN bir VM 'yi sunucu tarafı şifrelemeye geçirme.
 
 
