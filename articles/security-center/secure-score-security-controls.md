@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083999"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde gelişmiş güvenli puan
 
@@ -172,7 +172,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">En iyi güvenlik uygulamalarını uygulayın (en fazla puan 0)</p></strong>Modern güvenlik uygulamaları, ağ çevre ' ün ihlal olduğunu varsayar. Bu nedenle, bu denetimdeki en iyi uygulamalardan birçoğu kimlikleri yönetmeye odaklanmaktadır.<br>Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtarları,. pfx dosyalarını ve parolaları şifreleyerek anahtarları ve gizli dizileri <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> korur.<br>Sanal özel ağlar (VPN 'Ler), sanal makinelerinize erişmenin güvenli bir yoludur. VPN 'Ler kullanılamıyorsa, karmaşık parola ve <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a>gibi iki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulaması, yalnızca Kullanıcı adları ve parolalara bağlı olan zayıf yanları önler.<br>Güçlü kimlik doğrulama ve yetkilendirme platformlarının kullanılması, başka bir en iyi uygulamadır. Federal kimliklerin kullanılması, kuruluşların yetkili kimliklerin yönetimini temsilciliğini sağlar. Bu, çalışanlar sonlandırıldığı ve erişiminin iptal edilmesi gereken durumlarda da önemlidir.</td>
-    <td class="tg-lboi"; width=55%>-Aboneliğiniz için en fazla 3 sahip belirtilmelidir<br>-Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir<br>-MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir<br>-Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır<br>-RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır<br>-SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır<br>-Olay Hub 'ı örneğindeki yetkilendirme kuralları tanımlanmalıdır<br>-Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir<br>-Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir<br>-SQL veritabanı için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir<br>-Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir<br>-SQL yönetilen örnek gelişmiş veri güvenliği ayarları 'nda tüm gelişmiş tehdit koruması türleri etkinleştirilmelidir<br>-SQL Server Gelişmiş veri güvenliği ayarları 'nda Yöneticiler ve abonelik sahiplerine e-posta bildirimleri etkinleştirilmelidir<br>-Gelişmiş tehdit koruması türleri SQL Server Gelişmiş veri güvenliği ayarları 'nda ' tümü ' olarak ayarlanmalıdır<br>-Alt ağlar bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>-Sunucunuzun SQL veritabanı gelişmiş veri güvenliği ayarlarındaki tüm gelişmiş tehdit koruması türleri etkinleştirilmelidir<br>-Önizle Windows Exploit Guard etkinleştirilmelidir <br>-Önizle Konuk yapılandırma aracısının yüklü olması gerekir<br>-İnternet 'e yönelik olmayan sanal makineler ağ güvenlik gruplarıyla korunmalıdır</td>
+    <td class="tg-lboi"; width=55%>-Aboneliğiniz için en fazla 3 sahip belirtilmelidir<br>-Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir<br>-MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir<br>-Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır<br>-RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır<br>-SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır<br>-Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir<br>-Olay Hub 'ı örneğindeki yetkilendirme kuralları tanımlanmalıdır<br>-Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir<br>-Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir<br>-Alt ağlar bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>-Önizle Windows Exploit Guard etkinleştirilmelidir <br>-Önizle Konuk yapılandırma aracısının yüklü olması gerekir<br>-İnternet 'e yönelik olmayan sanal makineler ağ güvenlik gruplarıyla korunmalıdır</td>
   </tr>
 </tbody>
 </table>

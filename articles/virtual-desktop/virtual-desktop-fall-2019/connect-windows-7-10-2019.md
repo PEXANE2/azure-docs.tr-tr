@@ -5,24 +5,24 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c400ffc6a84696a82c219294f133b729754259
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3bddfe22f70c1044ca02fb41a1959884f41797bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083557"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>Windows Masaüstü istemcisine bağlanma
+# <a name="connect-with-the-windows-desktop-client---fall-2019"></a>Windows Masaüstü istemcisi Fall 2019 ile bağlantı
 
 > Uygulama hedefi: Windows 7, Windows 10 ve Windows 10 IoT Enterprise
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../connect-windows-7-10.md)bakın.
 
-Windows Masaüstü istemcisi 'ni kullanarak Windows 7, Windows 10 ve Windows 10 IoT Enterprise ile cihazlarda Windows sanal masaüstü kaynaklarına erişebilirsiniz.
+Windows Masaüstü istemcisi 'ni kullanarak Windows 7, Windows 10 ve Windows 10 IoT Enterprise ile cihazlarda Windows sanal masaüstü kaynaklarına erişebilirsiniz. İstemci Windows 8 veya Windows 8.1 desteklemez.
 
 >[!NOTE]
 >Windows istemcisi varsayılan olarak Windows sanal masaüstü Fall 2019 sürümüne otomatik olarak girer. Ancak, istemci kullanıcının Azure Resource Manager kaynaklara sahip olduğunu algılarsa, kaynakları otomatik olarak ekler veya kullanıcılara kullanılabilir olduğunu bildirir.

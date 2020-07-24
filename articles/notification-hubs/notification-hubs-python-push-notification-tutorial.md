@@ -17,18 +17,18 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5688caa16faf4a9d83b6d23b24676d43ad16697b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084305"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python 'dan Notification Hubs kullanma
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Bir Java/PHP/Python/Ruby arka ucundan tüm Notification Hubs özelliklerine, MSDN makalesinde [NOTIFICATION HUBS REST API 'lerinde](https://msdn.microsoft.com/library/dn223264.aspx)açıklandığı gibi Bildirim Hub 'ı Rest arabirimini kullanarak erişebilirsiniz.
+Bir Java/PHP/Python/Ruby arka ucundan tüm Notification Hubs özelliklerine, MSDN makalesinde [NOTIFICATION HUBS REST API 'lerinde](/previous-versions/azure/reference/dn223264(v=azure.100))açıklandığı gibi Bildirim Hub 'ı Rest arabirimini kullanarak erişebilirsiniz.
 
 > [!NOTE]
 > Bu, Python 'da bildirim gönderilmesini uygulamaya yönelik bir örnek başvuru uygulamasıdır ve resmi olarak desteklenen bildirimler hub 'ı Python SDK 'Sı değildir. Örnek, Python 3,4 kullanılarak oluşturulmuştur.
@@ -68,7 +68,7 @@ hub.send_windows_notification(wns_payload)
 
 Henüz yapmadıysanız, arka ucun uygulanması gereken son bölüme kadar [kullanmaya başlayın öğreticisini] takip edin.
 
-Tam REST sarmalayıcı uygulamak için tüm ayrıntılar [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)'de bulunabilir. Bu bölümde, Notification Hubs REST uç noktalarına erişmek ve bildirim göndermek için gereken ana adımların Python uygulamasını açıklanmaktadır
+Tam REST sarmalayıcı uygulamak için tüm ayrıntılar [MSDN](/previous-versions/azure/reference/dn530746(v=azure.100))'de bulunabilir. Bu bölümde, Notification Hubs REST uç noktalarına erişmek ve bildirim göndermek için gereken ana adımların Python uygulamasını açıklanmaktadır
 
 1. Bağlantı dizesini ayrıştırma
 2. Yetkilendirme belirtecini oluşturma
@@ -103,7 +103,7 @@ class NotificationHub:
 
 ### <a name="create-security-token"></a>Güvenlik belirteci oluştur
 
-Güvenlik belirteci oluşturma ayrıntılarına [buradan](https://msdn.microsoft.com/library/dn495627.aspx)ulaşabilirsiniz.
+Güvenlik belirteci oluşturma ayrıntılarına [buradan](/previous-versions/azure/reference/dn495627(v=azure.100))ulaşabilirsiniz.
 `NotificationHub`Geçerli ISTEĞIN URI 'sini ve bağlantı dizesinden ayıklanan kimlik bilgilerini temel alan belirteci oluşturmak için aşağıdaki yöntemleri sınıfına ekleyin.
 
 ```python
@@ -164,7 +164,7 @@ class Notification:
 
 Bu sınıf, yerel bir bildirim gövdesi veya bir şablon bildiriminin özellikler kümesi, biçim (yerel platform veya şablon) ve platforma özgü özellikler (Apple Expiration özelliği ve WNS üstbilgileri gibi) içeren bir üst bilgi kümesi olan bir kapsayıcıdır.
 
-Kullanılabilir tüm seçenekler için [NOTIFICATION HUBS REST API belgelerine](https://msdn.microsoft.com/library/dn495827.aspx) ve belirli bildirim platformlarına yönelik biçimlere bakın.
+Kullanılabilir tüm seçenekler için [NOTIFICATION HUBS REST API belgelerine](/previous-versions/azure/reference/dn495827(v=azure.100)) ve belirli bildirim platformlarına yönelik biçimlere bakın.
 
 Şimdi bu sınıfla, sınıfının içine gönder bildirim yöntemlerini yazın `NotificationHub` .
 
@@ -293,7 +293,7 @@ Bu yöntemler Bildirim Hub 'ınızın/messages uç noktasına, bildirimi gönder
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>Ayrıntılı günlük kaydını etkinleştirmek için hata ayıklama özelliğini kullanma
 
 Bildirim Hub 'ını başlatırken hata ayıklama özelliğinin etkinleştirilmesi, HTTP isteği ve yanıt dökümü hakkında ayrıntılı günlük bilgilerini ve ayrıntılı bildirim iletisi gönderme sonucunu yazar.
-[Notification Hubs testsend özelliği](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100)) , bildirim gönderme sonucuyla ilgili ayrıntılı bilgileri döndürür.
+[Notification Hubs testsend özelliği](/previous-versions/azure/reference/dn495827(v=azure.100)) , bildirim gönderme sonucuyla ilgili ayrıntılı bilgileri döndürür.
 Bunu kullanmak için, aşağıdaki kodu kullanarak başlatın:
 
 ```python
@@ -456,9 +456,9 @@ Bu makalede, Notification Hubs için bir Python REST istemcisinin nasıl oluştu
 
 <!-- URLs -->
 [Python REST sarmalayıcı örneği]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[Başlangıç öğreticisi]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Son Haberler öğreticisi]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[Haber öğreticisini yerelleştirme]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[Kullanmaya başlama öğreticisi]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Son Haberler öğreticisi]: ./notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Haber öğreticisini yerelleştirme]: ./notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

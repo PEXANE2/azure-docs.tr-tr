@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78163769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082996"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Işlevlerini yerel olarak hata ayıklama
 
@@ -37,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Bu işlev uygulaması, [PowerShell hızlı](functions-create-first-function-powershell.md)başlangıcını tamamladığınızda aldığınız birine benzer.
+Bu işlev uygulaması, [PowerShell hızlı](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)başlangıcını tamamladığınızda aldığınız birine benzer.
 
 İçindeki işlev kodu `run.ps1` aşağıdaki komut dosyası gibi görünür:
 
@@ -94,7 +95,7 @@ Visual Studio Code PowerShell işlevlerinizi hata ayıklaması yapmak için aşa
 * [Visual Studio Code için Azure İşlevleri uzantısı](functions-create-first-function-vs-code.md)
 * [PowerShell Core 6,2 veya üzeri](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Bu bağımlılıkları yükledikten sonra var olan bir PowerShell Işlevleri projesini yükleyin veya [Ilk PowerShell işlevleri projenizi oluşturun](functions-create-first-function-powershell.md).
+Bu bağımlılıkları yükledikten sonra var olan bir PowerShell Işlevleri projesini yükleyin veya [Ilk PowerShell işlevleri projenizi oluşturun](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell).
 
 >[!NOTE]
 > Projenizde gerekli yapılandırma dosyaları yoksa, bunları eklemeniz istenir.
@@ -128,7 +129,7 @@ Hata ayıklamayı Başlat işlemi aşağıdaki görevleri yapar:
 * PowerShell hata ayıklayıcısını, Işlevler çalışma zamanı içindeki PowerShell çalışma alanına ekleyin.
 
 >[!NOTE]
-> Visual Studio Code doğru hata ayıklama deneyimini sağlamak için PSWorkerInProcConcurrencyUpperBound 'in 1 olarak ayarlandığından emin olmanız gerekir. Bu varsayılandır.
+> Visual Studio Code doğru hata ayıklama deneyimini sağlamak için PSWorkerInProcConcurrencyUpperBound 'in 1 olarak ayarlandığından emin olmanız gerekir. Bu varsayılan seçenektir.
 
 İşlev uygulamanız çalışırken, HTTP ile tetiklenen işlevi çağırmak için ayrı bir PowerShell konsoluna ihtiyacınız vardır.
 

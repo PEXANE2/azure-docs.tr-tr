@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü ortamı-Azure
-description: Windows sanal masaüstü ortamının temel öğeleri.
+title: Windows sanal masaüstü ortamı (sonbahar 2019)-Azure
+description: Kiracılar ve konak havuzları gibi bir Windows sanal masaüstü (Fall 2019 sürümü) ortamının temel öğeleri hakkında bilgi edinin.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8cb41b4f94b14a94c79b490e38889825fd9d8d1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082656"
 ---
-# <a name="windows-virtual-desktop-environment"></a>Windows Sanal Masaüstü ortamı
+# <a name="windows-virtual-desktop-environment-fall-2019-release"></a>Windows sanal masaüstü ortamı (Fall 2019 sürümü)
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../environment-setup.md)bakın.

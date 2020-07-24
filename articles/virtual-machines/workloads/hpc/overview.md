@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f88496a6c474194089f20e128b2b92ec61e8559
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76271013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083438"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>H serisi VM 'lerde yüksek performanslı bilgi işlem
 
@@ -39,7 +39,7 @@ HB Serisi veya HC Serisi sanal makinelerinize InfiniBand ayarlama hakkında daha
 
 ## <a name="get-started"></a>başlarken
 
-İlk olarak, hangi H serisi sanal makineyi kullanacağınızı belirleyin. HPC iyileştirilmiş VM 'Ler hakkında daha fazla bilgi için bkz. [HB-serinin genel bakış](hb-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md). Belirtimler için bkz. [yüksek performanslı Işlem VM boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc).
+İlk olarak, hangi H serisi sanal makineyi kullanacağınızı belirleyin. HPC iyileştirilmiş VM 'Ler hakkında daha fazla bilgi için bkz. [HB-serinin genel bakış](hb-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md). Belirtimler için bkz. [yüksek performanslı Işlem VM boyutları](../../sizes-hpc.md).
 
 Uygulamanız için bir VM seçtikten ve oluşturduktan sonra, InfiniBand 'yi etkinleştirerek yapılandırmanız gerekir. InfiniBand 'i hem Windows hem de Linux VM 'lerde etkinleştirmeyi öğrenmek için bkz. [InfiniBand 'Yi etkinleştirme](enable-infiniband.md).
 
@@ -51,4 +51,4 @@ VM serisini seçtikten sonra, InfiniBand ve MPı 'yi ayarladıktan sonra HPC iş
 
 - Temel farklılıklar ve özellikler hakkında bilgi edinmek için [HB Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md) konusunu gözden geçirin.
 
-- Çalıştırılan HPC iş yüklerinin daha yüksek bir düzeyi olan mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+- Çalıştırılan HPC iş yüklerinin daha yüksek bir düzeyi olan mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

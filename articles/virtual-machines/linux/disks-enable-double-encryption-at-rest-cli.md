@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 52a52f6f7bca99d662a68ae48276062969b194f0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 25f4f99d2bd80034d2f337aa649417d2d06026be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082537"
 ---
 # <a name="azure-cli---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure CLı-yönetilen disklerinizde Rest 'te çift şifrelemeyi etkinleştirin
 
@@ -73,5 +73,5 @@ En son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip, [az Login](/cli/a
 
 Bu kaynakları oluşturup yapılandırdığınıza göre, bunları yönetilen disklerinizin güvenliğini sağlamak için kullanabilirsiniz. Aşağıdaki bağlantılar, her biri ilgili senaryoya sahip olan, yönetilen disklerinizin güvenliğini sağlamak için kullanabileceğiniz örnek betikler içerir.
 
-[Azure Resource Manager şablonu örnekleri](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption) 
- [Sunucu tarafı şifreleme ile müşteri tarafından yönetilen anahtarları etkinleştirme-örnekler](disks-enable-customer-managed-keys-cli.md#examples)
+- [Azure Resource Manager şablonu örnekleri](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
+- [Sunucu tarafı şifreleme ile müşteri tarafından yönetilen anahtarları etkinleştirme-örnekler](disks-enable-customer-managed-keys-cli.md#examples)

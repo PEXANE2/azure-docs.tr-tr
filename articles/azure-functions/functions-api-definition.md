@@ -5,11 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59425456d6d8f4dc426a20deef7b866b3eaa1df4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81866712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083077"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Işlevlerinde Openapı 2,0 meta veri desteği (Önizleme)
 Azure Işlevlerinde Openapı 2,0 (eski adıyla Swagger) meta veri desteği, bir işlev uygulamasının içine Openapı 2,0 tanımını yazmak için kullanabileceğiniz bir önizleme özelliğidir. Ardından, işlev uygulamasını kullanarak bu dosyayı barındırabilirsiniz.
@@ -22,7 +23,7 @@ Azure Işlevlerinde Openapı 2,0 (eski adıyla Swagger) meta veri desteği, bir 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 >[!TIP]
->Belirli özellikler hakkında daha fazla bilgi edinmek için [kullanmaya başlama öğreticisiyle](./functions-api-definition-getting-started.md) başlayıp bu belgeye geri dönmenizi öneririz.
+>Belirli özellikler hakkında daha fazla bilgi edinmek için [kullanmaya başlama öğreticisiyle](./functions-openapi-definition.md) başlayıp bu belgeye geri dönmenizi öneririz.
 
 ## <a name="enable-openapi-definition-support"></a><a name="enable"></a>Openapı tanımı desteğini etkinleştir
 İşlev uygulamanızın **platform özelliklerinin** **API tanımı** sayfasındaki tüm openapı ayarlarını yapılandırabilirsiniz.
@@ -35,11 +36,11 @@ Barındırılan bir Openapı tanımının ve hızlı başlangıç tanımının o
 ## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>İşlevinizin meta verilerinden bir Swagger iskelet oluşturun
 Şablon, ilk Openapı tanımınızı yazmaya başlamanıza yardımcı olabilir. Tanım şablonu özelliği, HTTP tetikleyici işlevlerinizin her biri için dosyadaki function.jstüm meta verileri kullanarak bir seyrek Openapı tanımı oluşturur. İstek ve yanıt şablonları gibi [openapı BELIRTIMINDEN](https://swagger.io/specification/)API 'niz hakkında daha fazla bilgi doldurmanız gerekir.
 
-Adım adım yönergeler için bkz. [Başlangıç Öğreticisi](./functions-api-definition-getting-started.md).
+Adım adım yönergeler için bkz. [Başlangıç Öğreticisi](./functions-openapi-definition.md).
 
 ### <a name="available-templates"></a><a name="templates"></a>Kullanılabilir şablonlar
 
-|Name| Açıklama |
+|Ad| Açıklama |
 |:-----|:-----|
 |Oluşturulan tanım|İşlevin mevcut meta verilerinden çıkarsanoluşturulabilecek en fazla bilgi miktarına sahip bir Openapı tanımı.|
 
@@ -59,7 +60,7 @@ Aşağıdaki tablo, oluşturulan Swagger iskelet ile eşlendiği için function.
 > [!NOTE]
 > X-MS-Summary uzantısı, Logic Apps, PowerApps ve Flow 'da bir görünen ad sağlar.
 >
-> Daha fazla bilgi için bkz. [PowerApps Için Swagger tanımınızı özelleştirme](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions).
+> Daha fazla bilgi için bkz. [PowerApps Için Swagger tanımınızı özelleştirme](/connectors/custom-connectors/openapi-extensions).
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>Bir API tanımı ayarlamak için CI/CD kullanma
 
@@ -69,12 +70,12 @@ Aşağıdaki tablo, oluşturulan Swagger iskelet ile eşlendiği için function.
    1. **API tanımı kaynağını** **işlev**olarak ayarlayın.
    1. **API tanımı şablonu oluştur** ' a tıklayın ve ardından daha sonra değiştirmek üzere bir şablon tanımı oluşturmak için **kaydedin** .
    1. API tanımı URL 'nizi ve anahtarınızı aklınızda edin.
-1. [Sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlayın](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
+1. [Sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlayın](./functions-continuous-deployment.md#requirements-for-continuous-deployment).
 2. \Site\wwwrootazurefunctions\swagger\swagger.jskonumundaki kaynak denetimindeki swagger.jsdeğiştirin \. .
 
 Şimdi, deponuzdaki swagger.jsdeğişiklikler, API tanım URL 'sindeki ve adım 1. c ' de not ettiğiniz anahtar üzerinde işlev uygulamanız tarafından barındırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Kullanmaya başlama öğreticisi](functions-api-definition-getting-started.md). Bir Openapı tanımını eylemde görmek için kılavuzumuzu deneyin.
+* [Kullanmaya başlama öğreticisi](./functions-openapi-definition.md). Bir Openapı tanımını eylemde görmek için kılavuzumuzu deneyin.
 * [Azure Işlevleri GitHub deposu](https://github.com/Azure/Azure-Functions/). API tanımı desteği önizlemesi hakkında geri bildirimde bulunmak için Işlevler deposuna göz atın. Güncelleştirilmesini istediğiniz her şey için bir GitHub sorunu oluşturun.
 * [Azure işlevleri geliştirici başvurusu](functions-reference.md). Kodlama işlevleri ve Tetikleyicileri ve bağlamaları tanımlama hakkında bilgi edinin.

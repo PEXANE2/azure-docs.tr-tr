@@ -13,10 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281242"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082843"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL 'ten veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -31,7 +32,7 @@ Bu makalede, verileri şirket içi PostgreSQL veritabanından taşımak için Az
 
 Şirket içi bir PostgreSQL veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory Şu anda verileri bir PostgreSQL veritabanından diğer veri depolarına taşımayı destekler, ancak diğer veri depolarından verileri bir PostgreSQL veritabanına taşımaya yönelik değildir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi PostgreSQL kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
@@ -71,14 +72,14 @@ Aşağıdaki tabloda, PostgreSQL bağlı hizmetine özgü JSON öğeleri için a
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **OnPremisesPostgreSql** olarak ayarlanmalıdır |Evet |
-| sunucu |PostgreSQL sunucusunun adı. |Evet |
-| database |PostgreSQL veritabanının adı. |Evet |
-| manızı |Veritabanındaki şemanın adı. Şema adı büyük/küçük harfe duyarlıdır. |Hayır |
-| authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
-| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
+| tür |Type özelliği: **OnPremisesPostgreSql** olarak ayarlanmalıdır |Yes |
+| sunucu |PostgreSQL sunucusunun adı. |Yes |
+| database |PostgreSQL veritabanının adı. |Yes |
+| schema |Veritabanındaki şemanın adı. Şema adı büyük/küçük harfe duyarlıdır. |Hayır |
+| authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
+| username |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
-| gatewayName |Data Factory hizmetinin şirket içi PostgreSQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
+| gatewayName |Data Factory hizmetinin şirket içi PostgreSQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri için benzerdir.
@@ -103,7 +104,7 @@ Kaynak, **Relationalsource** türünde olduğunda (PostgreSQL içeren), typeprop
 > [!NOTE]
 > Şema ve tablo adları büyük/küçük harfe duyarlıdır. Onları `""` sorguya (çift tırnak) içine alın.
 
-**Örnek:**
+**Örneğinde**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -308,7 +309,7 @@ Verileri PostgreSQL 'e taşırken, PostgreSQL türünden .NET türüne aşağıd
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], dize |
 | bit farklı [(n)] |varbit |Byte [], dize |
-| boole |bool |Boole |
+| boolean |bool |Boole |
 | Kutudaki | |Byte [], dize |
 | bytea | |Byte [], dize |
 | karakter [(n)] |Char [(n)] |Dize |
@@ -334,7 +335,7 @@ Verileri PostgreSQL 'e taşırken, PostgreSQL türünden .NET türüne aşağıd
 | sayısal [(p, s)] |Decimal [(p, s)] |Ondalık |
 | numrange | |Dize |
 | id | |Int32 |
-| yol | |Byte [], dize |
+| path | |Byte [], dize |
 | pg_lsn | |Int64 |
 | seçeneğinin | |Byte [], dize |
 | Gen | |Byte [], dize |

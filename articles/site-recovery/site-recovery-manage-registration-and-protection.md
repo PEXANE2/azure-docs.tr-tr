@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77dc21b4a04ec5de440b1a17da4747a3dcc711f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083727"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Sunucuları kaldırma ve korumayı devre dışı bırakma
 
@@ -168,11 +169,11 @@ VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır.
    - **Çoğaltmayı devre dışı bırak ve Kaldır (önerilir)** -Bu seçenek, çoğaltılan öğeyi Azure Site Recovery kaldırır ve makinenin çoğaltması durdurulur. Şirket içi sanal makinedeki çoğaltma yapılandırması temizlenir ve bu korumalı sunucu için faturalandırma Site Recovery durdurulur.
    - **Remove** -bu seçeneğin yalnızca kaynak ortam silinirse veya erişilebilir değilse (bağlı değil) kullanılması gerekir. Bu, çoğaltılan öğeyi Azure Site Recovery kaldırır (Faturalandırma durdurulur). Şirket içi **sanal makinede çoğaltma yapılandırması temizlenmeyecektir.** 
 
- > [!NOTE]
-     > **Kaldır** seçeneğini belirlediyseniz, şirket içi Hyper-V Server çoğaltma ayarlarını temizlemek için aşağıdaki komut dosyası kümesini çalıştırın.
+    > [!NOTE]
+    > **Kaldır** seçeneğini belirlediyseniz, şirket içi Hyper-V Server çoğaltma ayarlarını temizlemek için aşağıdaki komut dosyası kümesini çalıştırın.
 
-> [!NOTE]
-> Zaten bir VM yük devretiyorsa ve Azure 'da çalışıyorsa, korumayı devre dışı bırakma işlemi yük devredilen VM 'nin kaldırılmasını/etkilenmeyeceğini unutmayın.
+    > [!NOTE]
+    > Zaten bir VM yük devretiyorsa ve Azure 'da çalışıyorsa, korumayı devre dışı bırakma işlemi yük devredilen VM 'nin kaldırılmasını/etkilenmeyeceğini unutmayın.
 
 1. Kaynak Hyper-V ana bilgisayar sunucusunda, sanal makine çoğaltmasını kaldırmak için. SQLVM1 değerini sanal makinenizin adıyla değiştirin ve betiği bir yönetim PowerShell 'den çalıştırın
 
@@ -195,8 +196,11 @@ VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır.
      > Kaldır seçeneğini belirlediyseniz, şirket içi VMM sunucusu çoğaltma ayarlarını temizlemek için aşağıdaki komut dosyalarını tun altına **çıkarın** .
 3. Bu betiği, VMM konsolundan PowerShell (yönetici ayrıcalıkları gerekir) kullanarak kaynak VMM sunucusunda çalıştırın. **SQLVM1** yer tutucusunu sanal makinenizin adıyla değiştirin.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. Yukarıdaki adımlar VMM sunucusundaki çoğaltma ayarlarını temizler. Hyper-V konak sunucusunda çalışan sanal makine için çoğaltmayı durdurmak üzere bu betiği çalıştırın. SQLVM1 değerini sanal makinenizin adı ve host01.contoso.com ile birlikte Hyper-V ana bilgisayar sunucusunun adını ile değiştirin.
 
 ```powershell
@@ -219,17 +223,21 @@ VMM tarafından yönetilmeyen Hyper-V konakları bir Hyper-V sitesine toplanır.
 
 3. Bu betiği, VMM konsolundan PowerShell (yönetici ayrıcalıkları gerekir) kullanarak kaynak VMM sunucusunda çalıştırın. **SQLVM1** yer tutucusunu sanal makinenizin adıyla değiştirin.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. İkincil VMM sunucusunda, ikincil sanal makinenin ayarlarını temizlemek için şu betiği çalıştırın:
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Remove-SCVirtualMachine -VM $vm -Force
+    ```
+
 5. İkincil VMM sunucusunda, Hyper-V ana bilgisayar sunucusundaki sanal makineleri yenileyerek VMM konsolunda ikincil VM 'nin yeniden algılanmasını sağlayın.
 6. Yukarıdaki adımlar VMM sunucusundaki çoğaltma ayarlarını temizler. Sanal makine için çoğaltmayı durdurmak istiyorsanız, birincil ve ikincil VM 'Ler için aşağıdaki betiği çalıştırın. SQLVM1 değerini sanal makinenizin adıyla değiştirin.
 
-        Remove-VMReplication –VMName “SQLVM1”
-
-
-
-
+    ```powershell
+    Remove-VMReplication –VMName "SQLVM1"
+    ```

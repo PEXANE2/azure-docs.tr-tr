@@ -2,14 +2,14 @@
 title: Azure Site Recovery hizmetiyle ilgili genel sorular
 description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular ele alınmaktadır.
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083744"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -116,6 +116,19 @@ Evet, TLS 1,2 Protokolü, Azure 'dan Azure Site Recovery senaryosu için varsay�
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>HyperV-Azure Site Recovery senaryolarında TLS 1,2 ' I nasıl zorlayabilirim?
 Azure Site Recovery mikro hizmetleri arasındaki tüm iletişimler TLS 1,2 protokolünde olur. Site Recovery, sistemde (OS) yapılandırılan güvenlik sağlayıcılarını kullanır ve kullanılabilir en son TLS protokolünü kullanır. Bir tek yapmanız gereken, kayıt defterinde TLS 1,2 ' i açıkça etkinleştirmektir ve Site Recovery hizmetlerle iletişim kurmak için TLS 1,2 ' i kullanmaya başlayacaktır. 
 
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>Çoğaltma verilerini okumak/yazmak için Site Recovery hizmeti tarafından erişilen depolama hesaplarıma kısıtlı erişimi nasıl zorlayabilirim?
+*Kimlik* ayarına giderek, kurtarma hizmetleri kasasının yönetilen kimliği üzerinde geçiş yapabilirsiniz. Kasa Azure Active Directory kaydedildikten sonra depolama hesaplarınıza gidebilir ve kasaya aşağıdaki rol atamalarını verebilirsiniz:
+
+- Kaynak Yöneticisi tabanlı depolama hesapları (Standart tür):
+  - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor)
+  - [Depolama Blobu veri Katılımcısı](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- Kaynak Yöneticisi tabanlı depolama hesapları (Premium türü):
+  - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor)
+  - [Depolama Blobu veri sahibi](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- Klasik depolama hesapları:
+  - [Klasik depolama hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
+  - [Klasik depolama hesabı anahtar operatörü hizmet rolü](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
+
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery neleri koruyabilirim?
@@ -142,7 +155,7 @@ Evet, Site Recovery şirket içi VMware VM 'lerinin olağanüstü durum kurtarma
 ### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Hyper-V VM 'Leri için olağanüstü durum kurtarma destekleniyor mu?
 Evet, Site Recovery şirket içi Hyper-V VM 'lerinin olağanüstü durum kurtarmasını destekler. Hyper-V VM 'lerinin olağanüstü durum kurtarma için [genel soruları gözden geçirin](hyper-v-azure-common-questions.md) .
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>Fiziksel sunucular için olağanüstü durum kurtarma destekleniyor mu?
+### <a name="is-disaster-recovery-supported-for-physical-servers"></a>Fiziksel sunucular için olağanüstü durum kurtarma destekleniyor mu?
 Evet, Site Recovery Windows ve Linux çalıştıran şirket içi fiziksel sunucuların Azure 'a veya ikincil bir siteye olağanüstü durum kurtarmayı destekler. [Azure](vmware-physical-azure-support-matrix.md#replicated-machines)'a olağanüstü durum kurtarma ve[ikincil bir siteye](vmware-physical-secondary-support-matrix.md#replicated-vm-support)yönelik gereksinimler hakkında bilgi edinin.
 Fiziksel sunucuların yük devretmeden sonra Azure 'da VM olarak çalışacağını unutmayın. Azure 'dan şirket içi fiziksel sunucuya yeniden çalışma şu anda desteklenmiyor. Yalnızca bir VMware sanal makinesine geri dönebilirsiniz.
 

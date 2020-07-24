@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 51a5c5de7bce07aa6a54b9ff81e957c38cfffdd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe49481357b542ce52de5fc9dab3059cb584c229
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532026"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083914"
 ---
 # <a name="connect-your-symantec-proxysg-to-azure-sentinel"></a>Symantec ProxySG 'nizi Azure Sentinel 'e bağlama
+
+> [!IMPORTANT]
+> Azure Sentinel 'deki Symantec ProxySG veri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede [Symantec ProxySG](https://www.broadcom.com/products/cyber-security/network/gateway/proxy-sg-and-advanced-secure-gateway) gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Symantec ProxySG veri Bağlayıcısı, Azure Sentinel ile Symantec ProxySG günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. Symantec ProxySG ve Azure Sentinel arasındaki tümleştirme Syslog kullanımını sağlar.
 

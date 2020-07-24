@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3cc561a7f7f6f58c439a70315eba857e63def09d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d266dbd0ee908c41a7d29ddbb6d9c73fcfdc7c9e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561221"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083472"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Azure 'daki bir Docker kapsayıcısında mikro odak kurumsal sunucu 5,0 ' i çalıştırın
 
@@ -27,7 +27,7 @@ Docker, uygulamalara taşınabilirlik ve yalıtım ekler. Örneğin, bir Windows
 
 Bu öğretici, Azure Marketi 'nden **Windows 2016 Datacenter 'ı kapsayıcı VM 'si ile birlikte** yüklenir. Bu VM, **Docker 18.09.0**içerir. Aşağıdaki adımlar, kapsayıcının nasıl dağıtılacağını, çalıştırılacağını nasıl çalıştıracağınızı ve bir 3270 öykünücüsü ile bu sunucuya nasıl bağlanacağını göstermektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce Şu önkoşullara göz atın:
 
@@ -171,6 +171,6 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--   [Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure)
+-   [Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler](./set-up-micro-focus-azure.md)
 
--   [Ana bilgisayar uygulaması geçişi](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [Ana bilgisayar uygulaması geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

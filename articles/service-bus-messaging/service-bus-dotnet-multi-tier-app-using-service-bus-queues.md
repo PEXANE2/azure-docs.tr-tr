@@ -4,11 +4,12 @@ description: Azure'da katmanlar arasında iletişim sağlamak için Service Bus 
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 183f3b6e1231c843c04290024a89c270f0dd0026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083948"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus kuyruklarını kullanan çok katmanlı .NET uygulaması
 
@@ -27,7 +28,7 @@ Bu öğreticide, Azure bulut hizmetinde çok katmanlı bir uygulama derleyip ça
 
 Aşağıdaki ekran görüntüsünde, tamamlanmış uygulama gösterilmektedir.
 
-![][0]
+![Uygulamanın gönderme sayfasının ekran görüntüsü.][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Senaryoya genel bakış: roller arası iletişim
 İşlenmek üzere bir sipariş göndermeniz için web rolünde çalışan ön uç kullanıcı arabirimi bileşeninin çalışan rolünde çalışmakta olan orta katman mantığı ile etkileşim içinde olması gerekir. Bu örnekte, katmanlar arasındaki iletişim için Service Bus mesajlaşması kullanılır.
@@ -36,7 +37,7 @@ Web katmanı ve orta katman arasında Service Bus mesajlaşmasını kullanma iki
 
 Service Bus, kuyruklar ve konu başlıkları olmak üzere aracılı mesajlaşmayı desteklemek için iki varlık sunar. Kuyruklar kısmında, kuyruğa gönderilen her ileti tek bir alıcı tarafından kullanılır. Konu başlıkları ise yayınlanan tüm iletilerin konu başlığına kayıtlı olan bir abonelikte kullanılabilir hale geldiği yayımla/paylaş düzenini destekler. Her abonelik mantıksal olarak kendi ileti kuyruğunu korur. Ayrıca abonelikler, filtreyle eşleşen abonelik kuyruğuna gönderilen ileti kümesini sınırlayan filtre kuralları ile yapılandırabilir. Aşağıdaki örnekte Service Bus kuyrukları kullanılır.
 
-![][1]
+![Web rolü, Service Bus ve çalışan rolü arasındaki iletişimi gösteren diyagram.][1]
 
 Bu iletişim mekanizması, doğrudan mesajlaşma ile karşılaştırıldığında birçok avantaj sunar:
 
@@ -44,7 +45,7 @@ Bu iletişim mekanizması, doğrudan mesajlaşma ile karşılaştırıldığınd
 * **Yük dengeleme.** Birçok uygulamada, sistem yükü zamana göre değişirken çalışmanın her birimi için gereken işleme süresi genel olarak aynıdır. Bir kuyruk aracılığıyla ileti üreticileri ve tüketicileri arasında bağlantı kurmak, kullanıcı uygulamaya (çalışan) en fazla yük yerine yalnızca ortalama yük sağlanması gerektiği anlamına gelir. Gelen yük hacmi değiştikçe kuyruğun derinliği artar ve daralır. Bu işlem, uygulama yükünü sunmak için gereken altyapı miktarı bağlamında doğrudan para tasarrufu sağlar.
 * **Yük Dengeleme.** Yük arttıkça kuyruktan okunmak üzere daha fazla çalışan işlemi eklenebilir. Her ileti yalnızca bir çalışan işlemi tarafından işlenir. Ayrıca bu çekme tabanlı yük dengelemesi, çalışan makineler işleme gücü bağlamında farklılık gösterse bile çalışan makinelerin optimum kullanımına olanak sağlar. Çalışan makinelerin işleme gücündeki farklar, her birinin iletileri kendi maksimum hızında çekmesinden kaynaklanır. Bu düzen, genelde *rakip tüketici* düzeni olarak adlandırılır.
   
-  ![][2]
+  ![Web rolü, Service Bus ve iki çalışan rolü arasındaki iletişimi gösteren diyagram.][2]
 
 Aşağıdaki bölümlerde, bu mimariyi uygulayan kod ele alınır.
 
@@ -64,26 +65,26 @@ Daha sonra, Service Bus kuyruğuna öğe gönderen ve kuyruk hakkındaki durum b
 1. Yönetici ayrıcalıklarıyla Visual Studio'yu başlatın: **Visual Studio** programının simgesine sağ tıklayın ve ardından **Yönetici olarak çalıştır**'a tıklayın. Bu makalenin sonraki bölümlerinde ele alınan Azure işlem öykünücüsü, Visual Studio'nun yönetici ayrıcalıklarıyla başlatılmasını gerektirir.
    
    Visual Studio'da, **Dosya** menüsündeki **Yeni** seçeneğine ve ardından **Proje**'ye tıklayın.
-2. **Yüklü Şablonlar**'da **Visual C#** kısmında **Bulut** seçeneğine ve ardından **Azure Bulut Hizmeti**'ne tıklayın. Projeyi **MultiTierApp** olarak adlandırın. Ardından **Tamam**'a tıklayın.
+2. **Yüklü Şablonlar**'da **Visual C#** kısmında **Bulut** seçeneğine ve ardından **Azure Bulut Hizmeti**'ne tıklayın. Projeyi **MultiTierApp** olarak adlandırın. Daha sonra, **Tamam**'a tıklayın.
    
-   ![][9]
+   ![Bulut seçiliyken yeni proje iletişim kutusunun ekran görüntüsü ve Azure bulut hizmeti Visual C# vurgulanmış ve kırmızı renkle Seviyelendirilmiş.][9]
 3. **Roller** bölmesinde **ASP.NET Web Rolü**'ne çift tıklayın.
    
-   ![][10]
-4. **Azure Bulut Hizmeti çözümü** kısmında **WebRole1** öğesinin üzerine gelin, kurşun kalem simgesine tıklayın ve web rolünü **FrontendWebRole** olarak yeniden adlandırın. Ardından **Tamam**'a tıklayın. ("Frontend" öğesini "FrontEnd" olarak değil de küçük 'e' ile yazdığınızdan emin olun.)
+   ![Yeni Microsoft Azure bulut hizmeti iletişim kutusunun ASP.NET Web rolüyle seçili ve WebRole1 de seçili olan ekran görüntüsü.][10]
+4. **Azure Bulut Hizmeti çözümü** kısmında **WebRole1** öğesinin üzerine gelin, kurşun kalem simgesine tıklayın ve web rolünü **FrontendWebRole** olarak yeniden adlandırın. Daha sonra, **Tamam**'a tıklayın. ("Frontend" öğesini "FrontEnd" olarak değil de küçük 'e' ile yazdığınızdan emin olun.)
    
-   ![][11]
+   ![Yeni Microsoft Azure bulut hizmeti iletişim kutusunun, çözümü FrontendWebRole olarak yeniden adlandırılarak ekran görüntüsü.][11]
 5. **Yeni ASP.NET Projesi** iletişim kutusundaki **Bir şablon seçin** listesinde **MVC**'ye tıklayın.
    
-   ![][12]
+   ![Yeni ASP.NET projesi iletişim kutusu, MVC vurgulanmış ve kırmızı olarak ana hatlarıyla gösterilen ve kırmızı renkle gösterilen değişiklik kimlik doğrulaması seçeneği olan screenshotof.][12]
 6. Yine **Yeni ASP.NET projesi** iletişim kutusunda **Kimlik Doğrulamayı Değiştir** düğmesine tıklayın. **Kimlik Doğrulamayı Değiştir** iletişim kutusunda **Kimlik Doğrulama Yok** seçeneğinin belirlendiğinden emin olun ve ardından **Tamam**'a tıklayın. Bu öğreticide kullanıcının oturum açmasını gerektirmeyen bir uygulamayı dağıtıyorsunuz.
    
-    ![][16]
+    ![Kimlik doğrulaması yok seçeneği işaretli ve kırmızı olarak özetlenen kimlik doğrulamasını Değiştir iletişim kutusunun ekran görüntüsü.][16]
 7. **Yeni ASP.NET Projesi** iletişim kutusuna geri döndükten sonra projeyi oluşturmak için **Tamam**'a tıklayın.
 8. **Çözüm Gezgini**'ndeki, **FrontendWebRole** projesinde **Başvurular** seçeneğine ve ardından **NuGet Paketlerini Yönet**'e tıklayın.
 9. **Gözat** sekmesine tıklayıp **WindowsAzure.ServiceBus** için arama yapın. **WindowsAzure.ServiceBus** paketini seçin, **Yükle**’ye tıklayın ve kullanım koşullarını kabul edin.
    
-   ![][13]
+   ![WindowsAzure. ServiceBus vurgulanmış ve Install seçeneğinin kırmızı renkle gösterildiği NuGet Paketlerini Yönet iletişim kutusunun ekran görüntüsü.][13]
    
    Gerekli istemci derlemelerine başvuru oluşturulduğunu ve bazı yeni kod dosyaları eklendiğini unutmayın.
 10. **Çözüm Gezgini**'nde, **Modeller**'e sağ tıklayın ve ardından **Ekle** ile **Sınıf** seçeneklerine tıklayın. **Ad** kutusuna **OnlineOrder.cs** yazın: Daha sonra **Ekle**'ye tıklayın.
@@ -165,16 +166,16 @@ Bu bölümde, uygulamanızın görüntülediği çeşitli sayfalar oluşturursun
 4. Çalışmanızın o ana kadarki doğruluğunu test etmek için **Derle** menüsünden **Çözümü Derle**'ye tıklayın.
 5. Şimdi daha önceden oluşturduğunuz `Submit()` yöntemi görünümünü oluşturun. `Submit()` yöntemi içinde sağ tıklayın (parametre almayan `Submit()` aşırı yükü) ve ardından **Görünüm Ekle**'yi seçin.
    
-   ![][14]
+   ![Gönderme yöntemine odaklanılmış kodun ekran görüntüsü ve Görünüm Ekle seçeneğinin vurgulandığı bir açılan liste.][14]
 6. Görünüm oluşturmanız için bir iletişim kutusu belirir. **Şablon** listesinde **Oluştur** seçeneğini belirleyin. **Model sınıfı** listesinde **OnlineOrder** sınıfını seçin.
    
-   ![][15]
+   ![Şablon ve model sınıfı aşağı açılan listeleri kırmızı renkle gösterilen Görünüm Ekle iletişim kutusunun ekran görüntüsü.][15]
 7. **Ekle**'ye tıklayın.
 8. Şimdi, uygulamanızın görüntülenen adını değiştirin. **Çözüm Gezgini**'nde, **Views\Shared\\_Layout.cshtml** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
 9. **My ASP.NET Application** uygulamasının tüm örneklerini **Northwind Traders Products** olarak değiştirin.
 10. **Home**, **About** ve **Contact** bağlantılarını kaldırın. Vurgulanmış kodu silme:
     
-    ![][28]
+    ![Üç satırlık bir r m m satırı içeren kodun ekran görüntüsü, vurgulanan eylem bağlantı kodu.][28]
 11. Son olarak, gönderim sayfasını kuyruk hakkındaki bazı bilgileri içerecek şekilde değiştirin. **Çözüm Gezgini**'nde, **Views\Home\Submit.cshtml** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın. `<h2>Submit</h2>` öğesinden sonra aşağıdaki satırı ekleyin. `ViewBag.MessageCount`, şimdilik boştur. Bu alanı daha sonra dolduracaksınız.
     
     ```html
@@ -182,7 +183,7 @@ Bu bölümde, uygulamanızın görüntülediği çeşitli sayfalar oluşturursun
     ```
 12. Şu anda kullanıcı arabiriminizi uyguladınız. Uygulamanızı çalıştırmak ve istediğiniz gibi göründüğünü doğrulamak için **F5**'e basabilirsiniz.
     
-    ![][17]
+    ![Uygulamanın gönderme sayfasının ekran görüntüsü.][17]
 
 ### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>Service Bus kuyruğuna öğe göndermek için kod yazma
 Şimdi, öğeleri kuyruğa göndermek için bir kod ekleyin. İlk olarak, Service Bus kuyruğunuzun bağlantı bilgilerini içeren bir sınıf oluşturun. Ardından, bağlantınızı Global.aspx.cs üzerinden başlatın. Son olarak, öğeleri gerçekten Service Bus kuyruğuna göndermek için daha önce HomeController.cs dosyasında oluşturduğunuz gönderme kodunu güncelleştirin.
@@ -289,13 +290,13 @@ Bu bölümde, uygulamanızın görüntülediği çeşitli sayfalar oluşturursun
        }
        else
        {
-           return View(order);
+           return View(order); 
        }
    }
    ```
 9. Şimdi uygulamayı tekrar çalıştırabilirsiniz. Siz her sipariş gönderdiğinizde ileti sayısı da artar.
    
-   ![][18]
+   ![İleti sayısı 1 ' e arttırılan uygulamanın gönderme sayfasının ekran görüntüsü.][18]
 
 ## <a name="create-the-worker-role"></a>Çalışan rolü oluşturma
 Şimdi, sipariş gönderimlerini işleyen çalışan rolünü oluşturacaksınız. Bu örnekte, **Service Bus Kuyruğu İçeren Çalışan Rolü** Visual Studio proje şablonu kullanılır. Gerekli kimlik bilgilerini zaten portaldan almıştınız.
@@ -304,16 +305,16 @@ Bu bölümde, uygulamanızın görüntülediği çeşitli sayfalar oluşturursun
 2. Visual Studio'da bulunan **Çözüm Gezgini**'ndeki **MultiTierApp** projesi kısmında **Roller**'e çift tıklayın.
 3. **Ekle**'ye ve ardından **Yeni Çalışan Rolü Projesi**'ne tıklayın. **Yeni Çalışan Rolü Projesi** iletişim kutusu görünür.
    
-   ![][26]
+   ![Yeni çalışan rolü projesi seçeneği ile soultion gezgin bölmesinin ekran görüntüsü ve Ekle seçeneği vurgulanmış.][26]
 4. **Yeni Rol Projesi Ekle** iletişim kutusunda **Service Bus kuyruğu içeren Çalışan Rolü**'ne tıklayın.
    
-   ![][23]
+   ![Service Bus Queue seçeneği vurgulanmış ve kırmızı renkle Seviyelendirilmiş olan çalışan rolü ile ad yeni rol projesi iletişim kutusunun ekran görüntüsü.][23]
 5. **Ad** kutusunda projeyi **OrderProcessingRole** olarak adlandırın. Daha sonra **Ekle**'ye tıklayın.
 6. "Service Bus ad alanı oluşturma" bölümünün 9. adımında elde ettiğiniz bağlantı dizesini panoya kopyalayın.
 7. **Çözüm Gezgini**'nde, 5.adımda oluşturduğunuz **OrderProcessingRole** rolüne çift tıklayın (sınıf kısmındakine değil de, **Roller** bölümündeki **OrderProcessingRole** öğesine çift tıkladığınızdan emin olun). Daha sonra **Özellikler**'e tıklayın.
 8. **Özellikler** iletişim kutusunun **Ayarlar** sekmesinde, **Microsoft.ServiceBus.ConnectionString** için **Değer** kutusuna çift tıklayın ve 6.adımda kopyaladığınız uç nokta değerini yapıştırın.
    
-   ![][25]
+   ![Ayarlar sekmesi seçili ve Microsoft. ServiceBus. ConnectionString tablo satırı kırmızı renkle gösterilen özellikler iletişim kutusunun ekran görüntüsü.][25]
 9. Kuyruktan işlediğiniz siparişleri temsil etmesi için **OnlineOrder** sınıfı oluşturun. Önceden oluşturduğunuz bir sınıfı yeniden kullanabilirsiniz. **Çözüm Gezgini**'nde, **OrderProcessingRole** sınıfına sağ tıklayın (rol simgesine değil, sınıf simgesine sağ tıklayın). **Ekle**'ye ve **Var Olan Öğe**'ye tıklayın.
 10. **FrontendWebRole\Models** alt klasörüne gözatın ve ardından bu projeye eklemek için **OnlineOrder.cs** sınıfına çift tıklayın.
 11. **WorkerRole.cs** içindeki `"ProcessingQueue"` olan **QueueName** değişkenin değerini aşağıdaki kodda gösterildiği şekilde `"OrdersQueue"` olarak değiştirin.
@@ -338,9 +339,9 @@ Bu bölümde, uygulamanızın görüntülediği çeşitli sayfalar oluşturursun
     ```
 14. Uygulamayı tamamladınız. Çözüm Gezgini'nde MultiTierApp projesine sağ tıklayarak uygulamanın tamamını test edebilirsiniz. **Başlangıç Projesi Olarak Ayarla**'yı seçip F5'e basın. Çalışan rolü öğeleri kuyruktan işlediğinden ve işlediği öğeleri tamamlanmış olarak işaretlediğinden ileti sayısında artış olmayacağını unutmayın. Azure İşlem Öykünücüsü kullanıcı arabiriminde görüntüleyerek çalışan rolünüzün izleme çıktısını görebilirsiniz. Bu işlemi, görev çubuğunuzdaki bildirim alanında bulunan öykünücü simgesine sağ tıklayıp **İşlem Öykünücüsü Kullanıcı Arabirimini Göster**'i seçerek gerçekleştirebilirsiniz.
     
-    ![][19]
+    ![Öykünücü simgesine tıkladığınızda görüntülenen ekran görüntüsü. Işlem öykünücüsü Kullanıcı arabirimini göster seçeneği, Seçenekler listesinde.][19]
     
-    ![][20]
+    ![Microsoft Azure Işlem öykünücüsü (Express) iletişim kutusunun ekran görüntüsü.][20]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Service Bus hakkında daha fazla bilgi edinmek için şu kaynaklara bakın:  

@@ -4,13 +4,14 @@ description: Azure Kubernetes hizmeti 'ni (AKS) PostgreSQL için Azure veritaban
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.date: 5/6/2019
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4214b01f3f3651f8785f8644cf12326bf182bce7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74769889"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084186"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Azure Kubernetes hizmetini ve PostgreSQL için Azure veritabanı 'nı bağlama-tek sunucu
 
@@ -40,11 +41,6 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeRe
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
-## <a name="open-service-broker-for-azure"></a>Azure için Açık Hizmet Aracısı 
-[Azure Için açık hizmet Aracısı](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (osba), Azure hizmetlerini doğrudan Kubernetes veya Cloud Foundry üzerinden sağlamanıza olanak tanır. Azure için [açık bir HIZMET ARACıSı API](https://www.openservicebrokerapi.org/) uygulamasıdır.
-
-OSBA ile, PostgreSQL için Azure veritabanı sunucusu oluşturabilir ve Kubernetes 'in yerel dilini kullanarak AKS kümenize bağlayabilirsiniz. Osba ve PostgreSQL için Azure veritabanı 'nı [osba GitHub sayfasında](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md)birlikte kullanma hakkında bilgi edinin. 
-
 
 ## <a name="connection-pooling"></a>Bağlantı havuzu
 Bir bağlantı havuzlayıcı, veritabanına yeni bağlantılar oluşturma ve kapatma ile ilişkili maliyet ve süreyi en aza indirir. Havuz yeniden kullanılabilen bir bağlantı koleksiyonudur. 
@@ -53,4 +49,4 @@ PostgreSQL ile kullanabileceğiniz birden çok bağlantı havuzleyiciler vardır
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
--  [Azure Kubernetes hizmet kümesi oluşturma](../aks/kubernetes-walkthrough.md)
+-  [Azure Kubernetes Service kümesi oluşturma](../aks/kubernetes-walkthrough.md)

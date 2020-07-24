@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 07/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 61d9712026daab63a002793adf2e17b9db943f94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1640395b3a73116c27894a2b3f2b95b8bd5bb2eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084169"
 ---
 # <a name="supported-postgresql-major-versions"></a>Desteklenen PostgreSQL ana sürümleri
 Microsoft amaçlar, PostgreSQL için Azure veritabanı 'nda PostgreSQL altyapısının n-2 sürümlerini desteklemeye yöneliktir-tek sunucu. Sürümler, Azure 'daki geçerli ana sürümdür (n) ve önceki iki ana sürüm (-2) olacaktır.
@@ -34,7 +34,9 @@ Geçerli ikincil sürüm 9.5.20. Bu küçük sürümdeki geliştirmeler ve düze
 ## <a name="managing-upgrades"></a>Yükseltmeleri yönetme
 PostgreSQL projesi, bildirilen hataları çözmek için düzenli olarak küçük yayınlar yayınlar. PostgreSQL için Azure veritabanı, hizmetin aylık dağıtımları sırasında küçük yayınlar içeren sunucuları otomatik olarak ekler. 
 
-Otomatik ana sürüm yükseltmesi desteklenmez. Örneğin PostgreSQL 9.5’ten PostgreSQL 9.6’ya otomatik yükseltme yoktur. Sonraki ana sürüme yükseltmek için, yeni altyapı sürümünde oluşturulmuş bir sunucuya [veritabanı dökümü ve yedeklemesi](./howto-migrate-using-dump-and-restore.md) oluşturun.
+Ana sürümler için otomatik yerinde yükseltmeler desteklenmez. Bir sonraki ana sürüme yükseltmek için, şunları yapabilirsiniz 
+   * Yeni altyapı sürümüyle oluşturulan bir sunucuya bir veritabanını taşımak için [pg_dump ve pg_restore](./howto-migrate-using-dump-and-restore.md) kullanın
+   * Alternatif olarak, [Azure veritabanı geçiş hizmeti](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) 'Ni kullanarak PostgreSQL 10 ' dan 11 ' e yükseltebilirsiniz
 
 ### <a name="version-syntax"></a>Sürüm sözdizimi
 PostgreSQL sürüm 10 ' dan önce, [PostgreSQL sürüm oluşturma ilkesi](https://www.postgresql.org/support/versioning/) , _ana sürüm_ yükseltmesini birinci _veya_ ikinci sayıda artış olacak şekilde kabul ediyor. Örneğin, 9,5 9,6, _ana_ sürüm yükseltmesi olarak kabul edildi. Sürüm 10 itibariyle, yalnızca ilk sayıdaki değişiklik ana sürüm yükseltmesi olarak kabul edilir. Örneğin, 10,0 ile 10,1 arasında _küçük_ bir yayın yükseltmesi vardır. Sürüm 10 ' dan 11 ' e _büyük_ bir sürüm yükseltirsiniz.

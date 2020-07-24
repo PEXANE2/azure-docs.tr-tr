@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74224722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082180"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Azure VM'lerini HANA Büyük Örnekleri'ne bağlama
 
-[Azure 'da SAP HANA nedir (büyük örnekler)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) Azure 'da SAP uygulama katmanıyla en az HANA büyük örnek dağıtımının aşağıdaki gibi göründüğünü bahsetmeler:
+[Azure 'da SAP HANA nedir (büyük örnekler)?](./hana-overview-architecture.md) Azure 'da SAP uygulama katmanıyla en az HANA büyük örnek dağıtımının aşağıdaki gibi göründüğünü bahsetmeler:
 
 ![Azure 'da SAP HANA bağlı Azure VNet (büyük örnekler) ve şirket içi](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -93,13 +94,13 @@ HANA büyük örneklerinin dağıtımı için gerekli olan bazı IP adresi aral�
 
 Son olarak Microsoft 'a gönderilmesi gereken isteğe bağlı IP adresi aralıkları:
 
-- Şirket içinden HANA büyük örnek birimlerine doğrudan yönlendirmeyi etkinleştirmek üzere [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) kullanmayı seçerseniz, başka bir/29 IP adresi aralığı ayırmanız gerekir. Bu Aralık, daha önce tanımladığınız diğer IP adresi aralıklarıyla çakışmayabilir.
-- Bir Azure bölgesindeki bir HANA büyük örnek kiracısından başka bir Azure bölgesindeki başka bir HANA büyük örnek kiracıya doğrudan yönlendirmeyi etkinleştirmek üzere [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) kullanmayı seçerseniz, başka bir/29 IP adresi aralığı ayırmanız gerekir. Bu Aralık, daha önce tanımladığınız diğer IP adresi aralıklarıyla çakışmayabilir.
+- Şirket içinden HANA büyük örnek birimlerine doğrudan yönlendirmeyi etkinleştirmek üzere [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) kullanmayı seçerseniz, başka bir/29 IP adresi aralığı ayırmanız gerekir. Bu Aralık, daha önce tanımladığınız diğer IP adresi aralıklarıyla çakışmayabilir.
+- Bir Azure bölgesindeki bir HANA büyük örnek kiracısından başka bir Azure bölgesindeki başka bir HANA büyük örnek kiracıya doğrudan yönlendirmeyi etkinleştirmek üzere [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) kullanmayı seçerseniz, başka bir/29 IP adresi aralığı ayırmanız gerekir. Bu Aralık, daha önce tanımladığınız diğer IP adresi aralıklarıyla çakışmayabilir.
 
 ExpressRoute Global Reach ve HANA büyük örnekleri etrafında kullanım hakkında daha fazla bilgi için belgelere bakın:
 
-- [SAP HANA (büyük örnekler) ağ mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Sanal ağı HANA büyük örneklerine bağlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA (büyük örnekler) ağ mimarisi](./hana-network-architecture.md)
+- [Sanal ağı HANA büyük örneklerine bağlama](./hana-connect-vnet-express-route.md)
  
 Daha önce açıklanan IP adresi aralıklarını tanımlamanız ve planlamanız gerekir. Ancak, bunların tümünü Microsoft 'a iletmeniz gerekmez. Microsoft 'a ad almanız gereken IP adresi aralıkları şunlardır:
 

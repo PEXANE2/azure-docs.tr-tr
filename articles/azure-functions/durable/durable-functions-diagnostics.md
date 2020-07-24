@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081823"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure'da Dayanıklı İşlevler'de Tanılama
 
@@ -19,7 +20,7 @@ ms.locfileid: "84698011"
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) , Azure işlevlerinde tanılama ve izleme yapmak için önerilen yoldur. Aynı Dayanıklı İşlevler için de geçerlidir. İşlev uygulamanızda Application Insights nasıl yararlanacağınızı gösteren bir genel bakış için bkz. [Azure Işlevlerini izleme](../functions-monitoring.md).
 
-Azure Işlevleri dayanıklı uzantısı, bir Orchestration 'un uçtan uca yürütülmesini izlemenize imkan tanıyan *olayları izleme* özelliği de yayar. Bu izleme olayları, Azure portal [Application Insights Analytics](../../azure-monitor/app/analytics.md) Aracı kullanılarak bulunabilir ve sorgulanır.
+Azure Işlevleri dayanıklı uzantısı, bir Orchestration 'un uçtan uca yürütülmesini izlemenize imkan tanıyan *olayları izleme* özelliği de yayar. Bu izleme olayları, Azure portal [Application Insights Analytics](../../azure-monitor/log-query/log-query-overview.md) Aracı kullanılarak bulunabilir ve sorgulanır.
 
 ### <a name="tracking-data"></a>İzleme verileri
 
@@ -382,7 +383,7 @@ Azure Işlevleri, işlev kodu doğrudan hata ayıklamayı destekler ve aynı des
 
 ## <a name="storage"></a>Depolama
 
-Varsayılan olarak, Dayanıklı İşlevler durumu Azure Storage 'da depolar. Bu davranış, [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)gibi araçları kullanarak, düzenleyiclarınızın durumunu inceleyebilmeniz anlamına gelir.
+Varsayılan olarak, Dayanıklı İşlevler durumu Azure Storage 'da depolar. Bu davranış, [Microsoft Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md)gibi araçları kullanarak, düzenleyiclarınızın durumunu inceleyebilmeniz anlamına gelir.
 
 ![Azure Depolama Gezgini ekran görüntüsü](./media/durable-functions-diagnostics/storage-explorer.png)
 

@@ -3,11 +3,12 @@ title: Yinelenen ileti algılamayı Azure Service Bus | Microsoft Docs
 description: Bu makalede Azure Service Bus iletilerinde yinelenenleri nasıl Algılayabileceğiniz açıklanır. Yinelenen ileti yoksayılabilir ve bırakılabilir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083897"
 ---
 # <a name="duplicate-detection"></a>Yineleme algılama
 
@@ -32,7 +33,7 @@ Bazı uygulama bağlamını işleme sürecinde birden fazla iletinin gönderildi
 
 Portalda, özellik varsayılan olarak kapalı olan **yinelenen saptamayı etkinleştir** onay kutusu ile varlık oluşturma sırasında açıktır. Yeni konu başlıkları oluşturma ayarı eşdeğerdir.
 
-![][1]
+![Yinelenen saptamayı etkinleştir seçeneği belirlenmiş ve kırmızı renkle anahatlı bir sıra oluştur iletişim kutusunun ekran görüntüsü.][1]
 
 > [!IMPORTANT]
 > Sıra oluşturulduktan sonra yinelenen saptamayı etkinleştiremez/devre dışı bırakabilirsiniz. Bunu yalnızca kuyruğu oluşturma sırasında yapabilirsiniz. 
@@ -41,7 +42,7 @@ Programlama yoluyla, bayrağı Full Framework .NET API 'sindeki [Queuedescriptio
 
 Yinelenen algılama zaman geçmişi, kuyruklar ve konular için en fazla yedi gün olacak şekilde 30 saniye olur. Bu ayarı, Azure portal sıra ve konu özellikleri penceresinde değiştirebilirsiniz.
 
-![][2]
+![Özellikler ayarı vurgulanmış Service Bus özelliğinin ekran görüntüsü ve kırmızı renkle yinelenen algılama geçmişi seçeneği.][2]
 
 Programlama yoluyla, tam .NET Framework API 'SI ile [Queuedescription. DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) özelliğini kullanarak ileti kimliklerinin saklanacağı yinelenen saptama penceresinin boyutunu yapılandırabilirsiniz. Azure Resource Manager API 'SI ile, değeri [Queueproperties. duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliği ile ayarlanır.
 

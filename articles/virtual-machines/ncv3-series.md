@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c553117aa02106e744150469dee533da3ddc0265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cd5cee2d452e7762d784b90e80f8b9e39cf2007
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085359"
 ---
 # <a name="ncv3-series"></a>NCv3 serisi
 
-NCv3 serisi VM 'Ler [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tesla-v100/) GPU 'ları tarafından desteklenir. Bu GPU 'Lar 1.5 x 'in NCv2 serisi hesaplama performansını sağlayabilir. Müşteriler rezervoır modelleme, DNA sıralaması, protestolu analiz, Monte Carlo simülasyonları ve diğerleri gibi geleneksel HPC iş yükleri için bu güncelleştirilmiş GPU 'ların avantajlarından yararlanabilir. NC24rs v3 yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem iş yükleri için iyileştirilmiş, düşük gecikme süreli ve yüksek performanslı bir ağ arabirimi sağlar. GPU 'Ların yanı sıra, NCv3 serisi VM 'Ler Intel Xeon E5-2690 v4 (geniş) CPU 'Lar tarafından da desteklenir.
+NCv3 serisi VM 'Ler NVıDıA Tesla V100 GPU 'ları tarafından desteklenir. Bu GPU 'Lar 1.5 x 'in NCv2 serisi hesaplama performansını sağlayabilir. Müşteriler rezervoır modelleme, DNA sıralaması, protestolu analiz, Monte Carlo simülasyonları ve diğerleri gibi geleneksel HPC iş yükleri için bu güncelleştirilmiş GPU 'ların avantajlarından yararlanabilir. NC24rs v3 yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem iş yükleri için iyileştirilmiş, düşük gecikme süreli ve yüksek performanslı bir ağ arabirimi sağlar. GPU 'Ların yanı sıra, NCv3 serisi VM 'Ler Intel Xeon E5-2690 v4 (geniş) CPU 'Lar tarafından da desteklenir.
 
 Premium Depolama: desteklenir
 
@@ -27,7 +27,7 @@ Dinamik Geçiş: desteklenmiyor
 Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 > [!IMPORTANT]
-> Bu VM Serisi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. [Kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/)bu seri Için [bir vCPU kota artışı isteyin](../azure-supportability/resource-manager-core-quotas-request.md) .
+> Bu VM Serisi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. [Kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/)bu seri Için [bir vCPU kota artışı isteyin](../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 >
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC |
 |---|---|---|---|---|---|---|---|---|

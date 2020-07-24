@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eca36a2c13fcdc232d4d06ca6e59598fe9a611f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082146"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -31,11 +31,11 @@ Makalesinde senaryonuz için en uygun seçeneği seçmenizi sağlayan çeşitli 
 
 ## <a name="overview"></a>Genel Bakış
 
-Kümeleme aracılığıyla SAP Çözümleri için yüksek kullanılabilirlik uygularken, gerekli bileşenlerden biri [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). Azure iki yük dengeleyici SKU 'su sunar: Standart ve temel.
+Kümeleme aracılığıyla SAP Çözümleri için yüksek kullanılabilirlik uygularken, gerekli bileşenlerden biri [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md). Azure iki yük dengeleyici SKU 'su sunar: Standart ve temel.
 
 Standart Azure yük dengeleyici, temel yük dengeleyiciye bazı avantajlar sunmaktadır. Örneğin, Azure kullanılabilirlik bölgelerinde çalışarak, daha kolay sorun giderme ve gecikme süresini azaltmak için daha iyi izleme ve günlüğe kaydetme olanakları sağlar. "HA bağlantı noktaları" özelliği tüm bağlantı noktalarını kapsamakta, diğer bir deyişle, tüm tek bağlantı noktalarını listelemek artık gerekli değildir.  
 
-Azure Yük dengeleyicinin temel ve standart SKU 'SU arasında bazı önemli farklılıklar vardır. Bunlardan biri, giden trafiğin genel uç noktasına işlenmesiyle aynıdır. Tam temel ve standart SKU yük dengeleyici karşılaştırması için bkz. [Load Balancer SKU karşılaştırması](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).  
+Azure Yük dengeleyicinin temel ve standart SKU 'SU arasında bazı önemli farklılıklar vardır. Bunlardan biri, giden trafiğin genel uç noktasına işlenmesiyle aynıdır. Tam temel ve standart SKU yük dengeleyici karşılaştırması için bkz. [Load Balancer SKU karşılaştırması](../../../load-balancer/load-balancer-overview.md).  
  
 Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyiciye yerleştirildiğinde, ek yapılandırma yapılmadığı takdirde genel uç noktalarına giden bağlantı yok demektir.  
 
@@ -60,20 +60,20 @@ SAP dağıtımınız ortak uç noktalara giden bağlantı gerektirmiyorsa, ek ya
 Önce aşağıdaki kağıtları okuyun:
 
 * Azure Standart Load Balancer
-  * [Azure standart Load Balancer genel bakış](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) -Azure Standard yük dengeleyici, önemli ilkeler, kavramlar ve öğreticiler hakkında kapsamlı genel bakış 
-  * [Azure 'Da giden bağlantılar](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) -Azure 'da giden bağlantıya ulaşmak için senaryolar
-  * [Yük dengeleyici giden kuralları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)-yük dengeleyici giden kuralları kavramlarını ve giden kuralların nasıl oluşturulacağını açıklar
+  * [Azure standart Load Balancer genel bakış](../../../load-balancer/load-balancer-overview.md) -Azure Standard yük dengeleyici, önemli ilkeler, kavramlar ve öğreticiler hakkında kapsamlı genel bakış 
+  * [Azure 'Da giden bağlantılar](../../../load-balancer/load-balancer-outbound-connections.md#scenarios) -Azure 'da giden bağlantıya ulaşmak için senaryolar
+  * [Yük dengeleyici giden kuralları](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)-yük dengeleyici giden kuralları kavramlarını ve giden kuralların nasıl oluşturulacağını açıklar
 * Azure Güvenlik Duvarı
-  * [Azure Güvenlik duvarına genel bakış](https://docs.microsoft.com/azure/firewall/overview)-Azure Güvenlik Duvarı 'na genel bakış
-  * [Öğretici: Azure Güvenlik Duvarı 'Nı dağıtma ve yapılandırma](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) -Azure güvenlik duvarını Azure Portal aracılığıyla yapılandırma yönergeleri
-* [Sanal ağlar-Kullanıcı tanımlı kurallar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) -Azure yönlendirme kavramları ve kuralları  
-* [Güvenlik grupları hizmet etiketleri](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) -hizmet etiketleriyle ağ güvenlik gruplarınızı ve güvenlik duvarı yapılandırmanızı basitleştirme
+  * [Azure Güvenlik duvarına genel bakış](../../../firewall/overview.md)-Azure Güvenlik Duvarı 'na genel bakış
+  * [Öğretici: Azure Güvenlik Duvarı 'Nı dağıtma ve yapılandırma](../../../firewall/tutorial-firewall-deploy-portal.md) -Azure güvenlik duvarını Azure Portal aracılığıyla yapılandırma yönergeleri
+* [Sanal ağlar-Kullanıcı tanımlı kurallar](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) -Azure yönlendirme kavramları ve kuralları  
+* [Güvenlik grupları hizmet etiketleri](../../../virtual-network/security-overview.md#service-tags) -hizmet etiketleriyle ağ güvenlik gruplarınızı ve güvenlik duvarı yapılandırmanızı basitleştirme
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>İnternet 'e giden bağlantılar için ek dış Azure Standart Load Balancer
 
-Ortak uç noktalara giden bağlantılara izin vermeden, genel uç noktalarına giden bağlantı sağlamak için bir seçenek, genel IP adresine sahip ikinci bir yük dengeleyici oluşturmak, VM 'Leri ikinci yük dengeleyicinin arka uç havuzuna eklemek ve yalnızca [giden kuralları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)tanımlamak.  
-VM 'den giden çağrılar için erişilebilen genel uç noktalarını denetlemek için [ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview) 'nı kullanın.  
-Daha fazla bilgi için belge [giden bağlantılarında](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)Senaryo 2 ' ye bakın.  
+Ortak uç noktalara giden bağlantılara izin vermeden, genel uç noktalarına giden bağlantı sağlamak için bir seçenek, genel IP adresine sahip ikinci bir yük dengeleyici oluşturmak, VM 'Leri ikinci yük dengeleyicinin arka uç havuzuna eklemek ve yalnızca [giden kuralları](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)tanımlamak.  
+VM 'den giden çağrılar için erişilebilen genel uç noktalarını denetlemek için [ağ güvenlik grupları](../../../virtual-network/security-overview.md) 'nı kullanın.  
+Daha fazla bilgi için belge [giden bağlantılarında](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)Senaryo 2 ' ye bakın.  
 Yapılandırma şöyle görünür:  
 
 ![Ağ güvenlik gruplarıyla ortak uç noktalara bağlantıyı denetleme](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
@@ -81,17 +81,17 @@ Yapılandırma şöyle görünür:
 ### <a name="important-considerations"></a>Önemli noktalar
 
 - Ortak uç noktasına giden bağlantı sağlamak ve maliyeti iyileştirmek için aynı alt ağda birden fazla VM için ek bir genel Load Balancer kullanabilirsiniz  
-- VM 'lerden hangi ortak uç noktaların erişilebilir olduğunu denetlemek için [ağ güvenlik gruplarını](https://docs.microsoft.com/azure/virtual-network/security-overview) kullanın. Ağ güvenlik grubunu alt ağa ya da her bir VM 'ye atayabilirsiniz. Mümkün olduğunda, güvenlik kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanın.  
+- VM 'lerden hangi ortak uç noktaların erişilebilir olduğunu denetlemek için [ağ güvenlik gruplarını](../../../virtual-network/security-overview.md) kullanın. Ağ güvenlik grubunu alt ağa ya da her bir VM 'ye atayabilirsiniz. Mümkün olduğunda, güvenlik kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/security-overview.md#service-tags) kullanın.  
 - Genel IP adresi ve giden kuralları olan Azure Standart yük dengeleyici, genel uç noktasına doğrudan erişim sağlar. Tüm giden trafiğin, denetim ve günlüğe kaydetme için merkezi kurumsal çözümle geçişini sağlamak üzere kurumsal güvenlik gereksinimleriniz varsa, bu senaryoya gereksinimi karşılamayabilir.  
 
 >[!TIP]
->Mümkün olduğunda, ağ güvenlik grubunun karmaşıklığını azaltmak için [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanın. 
+>Mümkün olduğunda, ağ güvenlik grubunun karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/security-overview.md#service-tags) kullanın. 
 
 ### <a name="deployment-steps"></a>Dağıtım adımları
 
 1. Load Balancer oluştur  
    1. [Azure Portal](https://portal.azure.com) , tüm kaynaklar ' a tıklayın, ekleyin ve sonra **Load Balancer** arayın  
-   1. **Oluştur** 'a tıklayın 
+   1. **Oluştur** seçeneğine tıklayın 
    1. Load Balancer adı **Mypublicilb**  
    1. Tür olarak **genel** ' i SEÇIN, SKU olarak **Standart**  
    1. **Genel IP adresi oluştur** ' u seçin ve ad olarak belirtin **Mypublicilbmindendip**  
@@ -100,7 +100,7 @@ Yapılandırma şöyle görünür:
 2. **Mybackendpoolofpublicılb** arka uç havuzunu oluşturun ve VM 'leri ekleyin.  
    1. Sanal ağı seçin  
    1. VM 'Leri ve IP adreslerini seçin ve arka uç havuzuna ekleyin  
-3. [Giden kuralları oluşturun](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule). Şu anda Azure portal giden kuralların oluşturulması mümkün değildir. [Azure CLI](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)ile giden kurallar oluşturabilirsiniz.  
+3. [Giden kuralları oluşturun](../../../load-balancer/configure-load-balancer-outbound-cli.md#create-outbound-rule). Şu anda Azure portal giden kuralların oluşturulması mümkün değildir. [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest)ile giden kurallar oluşturabilirsiniz.  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
@@ -117,13 +117,13 @@ Yapılandırma şöyle görünür:
 
    ![Genel IP ile Ikinci Load Balancer giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Azure ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [güvenlik grupları ](https://docs.microsoft.com/azure/virtual-network/security-overview). 
+   Azure ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [güvenlik grupları ](../../../virtual-network/security-overview.md). 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>İnternet 'e giden bağlantılar için Azure Güvenlik Duvarı
 
 Ortak uç noktalara giden bağlantılara izin vermeden, genel uç noktalarına giden bağlantı sağlamak için başka bir seçenek de Azure güvenlik duvarıdır. Azure Güvenlik Duvarı, yerleşik yüksek kullanılabilirliğe sahip ve birden çok Kullanılabilirlik Alanları yayılabilen bir yönetilen hizmettir.  
-Ayrıca, Azure Güvenlik Duvarı üzerinden trafiği yönlendirmek için VM 'Lerin ve Azure Yük dengeleyicinin dağıtıldığı alt ağla ilişkili [Kullanıcı tanımlı yolu](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)da dağıtmanız gerekir.  
-Azure Güvenlik Duvarı 'nı dağıtma hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını dağıtma ve yapılandırma](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal).  
+Ayrıca, Azure Güvenlik Duvarı üzerinden trafiği yönlendirmek için VM 'Lerin ve Azure Yük dengeleyicinin dağıtıldığı alt ağla ilişkili [Kullanıcı tanımlı yolu](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes)da dağıtmanız gerekir.  
+Azure Güvenlik Duvarı 'nı dağıtma hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını dağıtma ve yapılandırma](../../../firewall/tutorial-firewall-deploy-portal.md).  
 
 Mimari şöyle görünür:
 
@@ -137,7 +137,7 @@ Mimari şöyle görünür:
 - Şirket güvenlik duvarı çözümü Azure Güvenlik Duvarı değilse ve tüm giden trafiğin Merkezi şirket çözümüne geçmesine yönelik güvenlik gereksinimleriniz varsa, bu çözüm pratik olmayabilir.  
 
 >[!TIP]
->Mümkün olduğunda, Azure Güvenlik Duvarı kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanın.  
+>Mümkün olduğunda, Azure Güvenlik Duvarı kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](../../../virtual-network/security-overview.md#service-tags) kullanın.  
 
 ### <a name="deployment-steps"></a>Dağıtım adımları
 
@@ -165,7 +165,7 @@ Mimari şöyle görünür:
    Güvenlik duvarı kuralı şöyle görünebilir: ![ Azure Güvenlik Duvarı ile giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM 'nizin alt ağından, **Myazurefirewall**özel IP 'Sinden Kullanıcı tanımlı yol oluşturun.
-   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle'yi seçin. 
+   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle’yi seçin. 
    1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0**. Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4**.  
    1. Kaydet
 
@@ -229,5 +229,5 @@ Giden trafik üçüncü taraf güvenlik duvarı aracılığıyla yönlendirilmem
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure 'da SUSE üzerinde pacemaker 'ı yapılandırma hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
-* [Azure 'da, Red hat üzerinde pacemaker 'ı nasıl yapılandıracağınızı öğrenin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)
+* [Azure 'da SUSE üzerinde pacemaker 'ı yapılandırma hakkında bilgi edinin](./high-availability-guide-suse-pacemaker.md)
+* [Azure 'da, Red hat üzerinde pacemaker 'ı nasıl yapılandıracağınızı öğrenin](./high-availability-guide-rhel-pacemaker.md)

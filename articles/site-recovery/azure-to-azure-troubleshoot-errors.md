@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083829"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-Azure VM çoğaltma hatalarında sorun giderme
 
@@ -534,6 +534,44 @@ Bu sorun, sanal makine daha önce korunuyorsa ve çoğaltma devre dışı bırak
 ### <a name="fix-the-problem"></a>Sorunu çözme
 
 Hata iletisinde tanımlanan çoğaltma diskini silin ve başarısız koruma işini yeniden deneyin.
+
+## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>Yükleyici kök diski bulamadığı için korumayı etkinleştirme başarısız oldu (hata kodu 151137)
+
+Bu hata, işletim sistemi diskinin Azure disk şifrelemesi (ADE) kullanılarak şifrelendiği Linux makinelerinde oluşur. Bu yalnızca aracı sürümü 9,35 ' de geçerli bir sorundur.
+
+### <a name="possible-causes"></a>Olası Nedenler
+
+Yükleyici, kök dosya sistemini barındıran kök diski bulamıyor.
+
+### <a name="fix-the-problem"></a>Sorunu çözme
+
+Bu sorunu gidermeye yönelik aşağıdaki adımları izleyin-
+
+1. Aşağıdaki komutu kullanarak RHEL ve CentOS makinelerinde _/var/lib/waagent_ dizininde bulunan aracı bitlerini bulun: <br>
+
+    `# find /var/lib/ -name Micro\*.gz`
+
+   Beklenen çıktı:
+
+    `/var/lib/waagent/Microsoft.Azure.RecoveryServices.SiteRecovery.LinuxRHEL7-1.0.0.9139/UnifiedAgent/Microsoft-ASR_UA_9.35.0.0_RHEL7-64_GA_30Jun2020_release.tar.gz`
+
+2. Yeni bir dizin oluşturun ve dizini bu yeni dizin ile değiştirin.
+3. Aşağıdaki komutu kullanarak buradaki ilk adımda bulunan aracı dosyasını ayıklayın:
+
+    `tar -xf <Tar Ball File>`
+
+4. Dosya _prereq_check_installer.js_ açın ve aşağıdaki satırları silin. Dosyayı kaydettikten sonra kaydedin.
+
+    ```
+       {
+          "CheckName": "SystemDiskAvailable",
+          "CheckType": "MobilityService"
+       },
+    ```
+5. Şu komutu kullanarak yükleyiciyi çağırın: <br>
+
+    `./install -d /usr/local/ASR -r MS -q -v Azure`
+6. Yükleyici başarılı olursa, çoğaltmayı etkinleştir işini yeniden deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

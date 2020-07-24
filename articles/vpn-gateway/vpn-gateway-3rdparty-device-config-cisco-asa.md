@@ -7,28 +7,26 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986104"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082010"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Örnek yapılandırma: Cisco ASA cihazı (Ikev2/BGP yok)
 Bu makalede Cisco Uyarlamalı güvenlik gereci (ASA) cihazlarını Azure VPN ağ geçitlerine bağlamak için örnek yapılandırma sağlanmaktadır. Örnek, Sınır Ağ Geçidi Protokolü (BGP) olmadan Ikev2 çalıştıran Cisco ASA cihazları için geçerlidir. 
 
 ## <a name="device-at-a-glance"></a>Tek bakışta cihaz
 
-|                        |                                   |
-| ---                    | ---                               |
-| Cihaz satıcısı          | Cisco                             |
-| Cihaz modeli           | ASA                               |
-| Hedef sürüm         | 8,4 ve üzeri                     |
-| Test edilen model           | ASA 5505                          |
-| Test edilen sürüm         | 9,2                               |
-| IKE sürümü            | IKEv2                             |
-| BGP                    | Hayır                                |
-| Azure VPN ağ geçidi türü | Rota temelli VPN ağ geçidi           |
-|                        |                                   |
+* Cihaz satıcısı: **Cisco**
+* Cihaz modeli: **asa**           
+* Hedef sürüm: **8,4 ve üzeri**
+* Test edilen model: **ASA 5505**
+* Test edilen sürüm: **9,2**             
+* IKE sürümü: **Ikev2**                  
+* BGP: **No**      
+* Azure VPN ağ geçidi türü: **Rota tabanlı VPN Gateway**
 
 > [!NOTE]
 > Örnek yapılandırma, bir Cisco ASA cihazını Azure **Rota tabanlı** bir VPN ağ geçidine bağlar. Bağlantı, [Bu makalede](vpn-gateway-connect-multiple-policybased-rm-ps.md)açıklandığı gibi **UsePolicyBasedTrafficSelectors** seçeneğiyle özel bir IPSec/IKE ilkesi kullanır.

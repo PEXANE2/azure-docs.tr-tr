@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027248"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084832"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>ODBC sürücüsü ile bı Analytics araçlarını kullanarak Azure Cosmos DB bağlanma
 
@@ -127,7 +128,7 @@ Aşağıdaki adımlarda **tablo sınırlayıcıları** eşleme yöntemi kullanı
 
     Örneğin, şehir olarak bir **öznitelik** değeri eklerseniz ve tablonuzu yalnızca New York ve Dubai City değeri olan satırları içerecek şekilde sınırlandırmak Istiyorsanız, Attributes kutusuna City ve New York ' a ve ardından **değerler** kutusuna Dubai yazın.
 
-1. **Tamam**'a tıklayın. 
+1. **Tamam** düğmesine tıklayın. 
 
 1. Örneklemek istediğiniz kapsayıcıların eşleme tanımlarını tamamladıktan sonra, **şema Düzenleyicisi** penceresinde **örnek**' e tıklayın.
      Her sütun için, SQL adı, SQL türü, SQL uzunluğu (varsa), ölçek (varsa), duyarlık (varsa) ve null yapılabilir sütununu değiştirebilirsiniz.
@@ -235,9 +236,9 @@ Tüm ODBC uyumlu araçlarla Azure Cosmos DB bağlanmak için yeni DSN 'nizi kull
 
 1. Power BI masaüstündeki verileri görselleştirmek için tablo adının önündeki kutuyu işaretleyin ve ardından **Yükle**' ye tıklayın.
 
-1. Power BI Desktop ' de, en solda, veri sekmesini seçin. ![Power BI Desktop veri sekmesi](./media/odbc-driver/odbc-driver-data-tab.png) verilerin içeri aktarıldığını onaylamak için.
+1. Power BI Desktop, en solda, :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: verilerinizin içeri aktarıldığını onaylamak Için veri sekmesini seçin. 
 
-1. Artık ![ , Power BI Desktop ' de rapor sekmesi rapor sekmesine tıklayıp ](./media/odbc-driver/odbc-driver-report-tab.png) **yeni görsel**' e tıklayıp Kutucuğunuzu özelleştirerek Power BI kullanarak görseller oluşturabilirsiniz. Power BI Desktop görselleştirmeler oluşturma hakkında daha fazla bilgi için bkz. [Power BI Içindeki görselleştirme türleri](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
+1. Artık, rapor sekmesine tıklayıp :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: **yeni görsel**' e tıklayıp kutucuğunuzu özelleştirerek Power BI kullanarak görseller oluşturabilirsiniz. Power BI Desktop görselleştirmeler oluşturma hakkında daha fazla bilgi için bkz. [Power BI Içindeki görselleştirme türleri](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/). 
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

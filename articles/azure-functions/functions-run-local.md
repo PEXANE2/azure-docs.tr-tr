@@ -5,16 +5,16 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085155"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
-Azure Functions Core Tools, komut isteminden veya terminalden yerel bilgisayarınızda işlevlerinizi geliştirmenize ve test etmenize olanak tanır. Yerel işlevleriniz canlı Azure hizmetlerine bağlanabilir ve tüm Işlevler çalışma zamanını kullanarak işlevlerinizi yerel bilgisayarınızdaki hata ayıklaması yapabilirsiniz. Hatta, Azure aboneliğinize bir işlev uygulaması dağıtabilirsiniz.
+Azure Functions Core Tools, yerel bilgisayarınızda komut isteminden veya terminalden işlevlerinizi geliştirip test etmenize olanak tanır. Yerel işlevleriniz canlı Azure hizmetlerine bağlanabilir ve tüm Işlevler çalışma zamanını kullanarak işlevlerinizi yerel bilgisayarınızdaki hata ayıklaması yapabilirsiniz. Hatta, Azure aboneliğinize bir işlev uygulaması dağıtabilirsiniz.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
@@ -35,7 +35,7 @@ Azure Functions Core Tools üç sürümü vardır. Kullandığınız sürüm yer
 
 + **Sürüm 1. x**: Azure işlevleri çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://www.npmjs.com/package/azure-functions-core-tools)yüklenir.
 
-+ [**Sürüm 3. x/2. x**](#v2): [Azure işlevleri çalışma zamanının sürüm 3. x veya 2. x](functions-versions.md)'i destekler. Bu sürümler [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)ve [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) 'u destekler ve yükleme için platforma özgü paket yöneticilerini veya NPM 'yi kullanır.
++ [**Sürüm 3. x/2. x**](#v2): [Azure işlevleri çalışma zamanının sürüm 3. x veya 2. x](functions-versions.md)'i destekler. Bu sürümler [Windows](?tabs=windows#v2), [MacOS](?tabs=macos#v2)ve [Linux](?tabs=linux#v2) 'u destekler ve yükleme için platforma özgü paket yöneticilerini veya NPM 'yi kullanır.
 
 Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
 
@@ -48,7 +48,7 @@ Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>Sürüm 3. x ve 2. x
 
-Araçların sürüm 3. x/2. x, .NET Core üzerinde oluşturulan Azure Işlevleri çalışma zamanını kullanır. Bu sürüm, [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)ve [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2)dahil tüm platformlarda .NET Core desteği için desteklenir. 
+Araçların sürüm 3. x/2. x, .NET Core üzerinde oluşturulan Azure Işlevleri çalışma zamanını kullanır. Bu sürüm, [Windows](?tabs=windows#v2), [MacOS](?tabs=macos#v2)ve [Linux](?tabs=linux#v2)dahil tüm platformlarda .NET Core desteği için desteklenir. 
 
 > [!IMPORTANT]
 > [Uzantı paketleri]'ni kullanarak .NET Core SDK yükleme gereksinimini atlayabilirsiniz.
@@ -240,7 +240,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 
 ### <a name="get-your-storage-connection-strings"></a>Depolama bağlantı dizelerinizi alın
 
-Geliştirme için Microsoft Azure Depolama Öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-create-storage-account.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
+Geliştirme için Microsoft Azure Depolama Öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-account-create.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
 
 - [Azure Portal], **depolama hesaplarını**arayıp seçin. 
   ![Azure portal depolama hesaplarını seçin](./media/functions-run-local/select-storage-accounts.png)
@@ -343,7 +343,7 @@ func start
 ```
 func start
 ```
-Bu komutun [sanal bir ortamda çalıştırılması](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)gerekir.
+Bu komutun [sanal bir ortamda çalıştırılması](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)gerekir.
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -486,7 +486,7 @@ Sürüm 1. x ' de, kullanarak bir işlevi doğrudan çağırabilirsiniz `func ru
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish-to-azure"></a><a name="publish"></a>Azure 'da yayımlama
+## <a name="publish-to-azure"></a><a name="publish"></a>Azure’da Yayımlama
 
 Azure Functions Core Tools iki tür dağıtımı destekler: işlev projesi dosyalarını [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy) ve [dağıtım](functions-deployment-technologies.md#docker-container)aracılığıyla doğrudan işlev uygulamanıza dağıtma. Kodunuzu dağıtacağınız [Azure aboneliğinizde zaten bir işlev uygulaması oluşturmuş](functions-cli-samples.md#create)olmanız gerekir. İkililerin dağıtılması için derleme gerektiren projeler oluşturulmalıdır.
 
@@ -574,7 +574,7 @@ Bu tür akış günlükleri, işlev uygulamanız için Application Insights tüm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Microsoft](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools kullanarak Azure işlevleri geliştirmeyi, test yapmayı ve yayımlamayı öğrenin Azure Functions Core Tools [açık kaynak ve GitHub üzerinde barındırılır](https://github.com/azure/azure-functions-cli).  
+[Microsoft](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools kullanarak Azure işlevleri geliştirmeyi, test yapmayı ve yayımlamayı öğrenin Azure Functions Core Tools [açık kaynak ve GitHub üzerinde barındırılır](https://github.com/azure/azure-functions-cli).  
 Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->

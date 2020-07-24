@@ -5,11 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d84e1269fecf3bd85538415b5790c22aaf6eb01e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063790"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085121"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Sorun giderme hatası: "Azure İşlevleri Çalışma Zamanı erişilebilir değil"
 
@@ -17,7 +18,7 @@ Bu makale, Azure portal görüntülenen aşağıdaki hata dizesinin sorunların�
 
 > "Hata: Azure İşlevleri Çalışma Zamanı ulaşılamaz. Depolama yapılandırmasıyla ilgili ayrıntılar için buraya tıklayın. "
 
-Azure İşlevleri Çalışma Zamanı başlayamediğinde bu sorun oluşur. Sorunun en yaygın nedeni, işlev uygulamasının depolama hesabına erişiminin kaybedilme nedenidir. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
+Azure İşlevleri Çalışma Zamanı başlayamediğinde bu sorun oluşur. Sorunun en yaygın nedeni, işlev uygulamasının depolama hesabına erişiminin kaybedilme nedenidir. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](./functions-create-function-app-portal.md#storage-account-requirements).
 
 Bu makalenin geri kalanında, her bir durumu belirleme ve çözme dahil olmak üzere bu hatanın aşağıdaki nedenlerini gidermenize yardımcı olur.
 
@@ -25,7 +26,7 @@ Bu makalenin geri kalanında, her bir durumu belirleme ve çözme dahil olmak ü
 
 Her işlev uygulamasının çalışması için bir depolama hesabının olması gerekir. Bu hesap silinirse, işleviniz çalışmaz.
 
-Uygulama ayarlarınızda depolama hesabı adınızı arayarak başlayın. `AzureWebJobsStorage`Ya da `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bir bağlantı dizesinde sarmalanmış depolama hesabınızın adını içerir. Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
+Uygulama ayarlarınızda depolama hesabı adınızı arayarak başlayın. `AzureWebJobsStorage`Ya da `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bir bağlantı dizesinde sarmalanmış depolama hesabınızın adını içerir. Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](./functions-app-settings.md#azurewebjobsstorage).
 
 Hala mevcut olup olmadığını görmek için Azure portal depolama hesabınızı arayın. Silinmişse, depolama hesabını yeniden oluşturun ve depolama bağlantı dizelerinizi değiştirin. İşlev kodunuz kaybolur ve yeniden dağıtmanız gerekir.
 
@@ -36,12 +37,12 @@ Hala mevcut olup olmadığını görmek için Azure portal depolama hesabınız�
 ### <a name="required-application-settings"></a>Gerekli uygulama ayarları
 
 * Gerekli:
-    * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+    * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
 * Tüketim planı işlevleri için gereklidir:
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
+    * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
-Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
+Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](./functions-app-settings.md).
 
 ### <a name="guidance"></a>Rehber
 
@@ -51,7 +52,7 @@ Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurus
 
 ## <a name="storage-account-credentials-are-invalid"></a>Depolama hesabı kimlik bilgileri geçersiz
 
-Depolama anahtarlarını yeniden oluşturursanız, daha önce tartışılan depolama hesabı bağlantı dizeleri güncelleştirilmeleri gerekir. Depolama anahtarı yönetimi hakkında daha fazla bilgi için bkz. [Azure Storage hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Depolama anahtarlarını yeniden oluşturursanız, daha önce tartışılan depolama hesabı bağlantı dizeleri güncelleştirilmeleri gerekir. Depolama anahtarı yönetimi hakkında daha fazla bilgi için bkz. [Azure Storage hesabı oluşturma](../storage/common/storage-account-create.md).
 
 ## <a name="storage-account-is-inaccessible"></a>Depolama hesabına erişilemiyor
 
@@ -59,7 +60,7 @@ Depolama anahtarlarını yeniden oluşturursanız, daha önce tartışılan depo
 
 * İşlev uygulaması, depolama hesabından gelen ve giden trafiğe izin vermek için doğru ağ kuralları olmadan App Service Ortamı dağıtılır.
 
-* Depolama hesabı güvenlik duvarı etkinleştirilir ve işlevlere ve işlevlerine giden trafiğe izin verecek şekilde yapılandırılmamıştır. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* Depolama hesabı güvenlik duvarı etkinleştirilir ve işlevlere ve işlevlerine giden trafiğe izin verecek şekilde yapılandırılmamıştır. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="daily-execution-quota-is-full"></a>Günlük yürütme kotası dolu
 
@@ -87,7 +88,7 @@ App Service Ortamı yapılandırmanızı doğrulamak için:
    
 Portalı, uygulamanızı çalıştıran sanal ağa veya sanal ağınızda çalışan bir sanal makineye bağlı bir bilgisayardan da kullanabilirsiniz. 
 
-Gelen kuralı yapılandırması hakkında daha fazla bilgi için, [bir App Service ortamı Için ağ oluşturma konuları](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)"ağ güvenlik grupları" bölümüne bakın.
+Gelen kuralı yapılandırması hakkında daha fazla bilgi için, [bir App Service ortamı Için ağ oluşturma konuları](../app-service/environment/network-info.md#network-security-groups)"ağ güvenlik grupları" bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

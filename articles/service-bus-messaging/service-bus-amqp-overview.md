@@ -3,11 +3,12 @@ title: Azure Service Bus AMQP 1,0 'ye Genel Bakış
 description: Azure Service Bus bir açık standart protokol olan Gelişmiş İleti Sıraya Alma Protokolü (AMQP) nasıl destekleyeceğinizi öğrenin.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8ddeadde85e3e0b574c93db0227dcba6ad746f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083880"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus 'da AMQP 1,0 desteği
 Azure Service Bus bulut hizmeti ve [Windows Server için şirket içi Service Bus (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) , gelişmiş ileti sıraya alma Protokolü (amqp) 1,0 ' i destekler. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar. Farklı diller ve çerçeveler kullanılarak oluşturulan ve farklı işletim sistemlerinde çalışan bileşenleri kullanarak uygulamalar oluşturabilirsiniz. Tüm bu bileşenler Service Bus bağlanabilir ve yapılandırılmış iş iletilerini verimli bir şekilde ve tam Aslına göre sorunsuz şekilde değiştirebilir.
@@ -53,7 +54,7 @@ Azure Service Bus ' de AMQP 1,0 desteği, artık Service Bus sıraya alma ve ver
 
 Aşağıdaki şekilde, Linux üzerinde çalışan Java istemcilerinin, Windows üzerinde çalışan standart Java Ileti hizmeti (JMS) API 'SI ve .NET istemcileri kullanılarak yazılmış, AMQP 1,0 kullanılarak Service Bus aracılığıyla Exchange iletileri kullanılarak yazıldığı örnek bir dağıtım gösterilmektedir.
 
-![][0]
+![İki Linux ortamı ve iki Windows ortamı içeren bir Service Bus ileti alışverişi gösteren diyagram.][0]
 
 **Şekil 1: Service Bus ve AMQP 1,0 kullanarak platformlar arası mesajlaşma gösteren örnek dağıtım senaryosu**
 

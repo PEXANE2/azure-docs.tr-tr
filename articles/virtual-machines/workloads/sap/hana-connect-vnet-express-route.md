@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082163"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Sanal ağı HANA büyük örneklerine bağlama
 
@@ -95,7 +96,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> New-AzVirtualNetworkGatewayConnection komutundaki son parametre olan **Expressroutegatewaybypass** , ExpressRoute hızlı yolunu sağlayan yeni bir parametredir. HANA büyük örnek birimleriniz ile Azure VM 'Ler arasındaki ağ gecikmesini azaltan bir işlev. İşlevselliği 2019 Mayıs 'ta eklenmiştir. Daha fazla ayrıntı için [SAP HANA (büyük örnekler) ağ mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)makalesine bakın. Komutları çalıştırmadan önce PowerShell cmdlet 'lerinin en son sürümünü çalıştırdığınızdan emin olun.
+> New-AzVirtualNetworkGatewayConnection komutundaki son parametre olan **Expressroutegatewaybypass** , ExpressRoute hızlı yolunu sağlayan yeni bir parametredir. HANA büyük örnek birimleriniz ile Azure VM 'Ler arasındaki ağ gecikmesini azaltan bir işlev. İşlevselliği 2019 Mayıs 'ta eklenmiştir. Daha fazla ayrıntı için [SAP HANA (büyük örnekler) ağ mimarisi](./hana-network-architecture.md)makalesine bakın. Komutları çalıştırmadan önce PowerShell cmdlet 'lerinin en son sürümünü çalıştırdığınızdan emin olun.
 
 Ağ geçidini aboneliğinizle ilişkili birden fazla ExpressRoute devresine bağlamak için bu adımı birden çok kez çalıştırmanız gerekebilir. Örneğin, büyük olasılıkla aynı sanal ağ geçidini, sanal ağı şirket içi ağınıza bağlayan ExpressRoute bağlantı hattına bağlayacağız.
 
@@ -138,7 +139,7 @@ ExpressRoute hızlı yolu işlevselliğini etkinleştirmek için yukarıda gör�
 - Şirket içi rotalarınızı HANA büyük örneklerine tanıtmak için kullanılabilen ASNs (otonom sistem numarası) üzerinde bir sınırlama vardır. Şirket içi ağınız, 65000 – 65020 veya 65515 aralığında özel ASNs ile hiçbir yol bildirmemelidir. 
 - Şirket içi doğrudan erişimi HANA büyük örneklerine bağlama senaryosunda, sizi Azure 'a bağlayan bağlantı ücretini hesaplamanız gerekir. Fiyatlar için [Global Reach eklentisinin](https://azure.microsoft.com/pricing/details/expressroute/)fiyatlarını kontrol edin.
 
-Dağıtımınıza uygulanan senaryolardan birini veya her ikisini almak için, Azure ile bir destek iletisi açın ve [Hana büyük örnekler için destek Isteği açma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances) bölümünde açıklandığı gibi
+Dağıtımınıza uygulanan senaryolardan birini veya her ikisini almak için, Azure ile bir destek iletisi açın ve [Hana büyük örnekler için destek Isteği açma](./hana-li-portal.md#open-a-support-request-for-hana-large-instances) bölümünde açıklandığı gibi
 
 Gerekli veriler ve Microsoft 'un isteğiniz üzerinde yönlendirimek ve yürütebilmesi için kullanmanız gereken anahtar sözcükler şöyle görünür:
 

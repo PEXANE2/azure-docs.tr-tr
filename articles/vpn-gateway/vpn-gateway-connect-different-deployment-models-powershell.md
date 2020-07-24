@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 843727c005fefdc2ca0484492a1feafe2a291b46
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082061"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>PowerShell kullanarak farklı dağıtım modellerindeki sanal ağları birbirine bağlama
 
@@ -37,7 +37,7 @@ Aşağıdaki adımlarda, her VNet için dinamik veya yol tabanlı bir ağ geçid
 
 * Her iki sanal ağ zaten oluşturulmuş. Resource Manager sanal ağı oluşturmanız gerekiyorsa bkz. [kaynak grubu ve sanal ağ oluşturma](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Klasik bir sanal ağ oluşturmak için bkz. [Klasik VNET oluşturma](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
 * VNET 'lerin adres aralıkları birbirleriyle örtüşmez veya ağ geçitlerinin bağlı olabileceği diğer bağlantılar için aralıklardan herhangi biriyle çakışmaz.
-* En son PowerShell cmdlet 'lerini yüklediniz. Daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview) . Hem hizmet yönetimi (SM) hem de Kaynak Yöneticisi (RM) cmdlet 'lerini yüklediğinizden emin olun. 
+* En son PowerShell cmdlet 'lerini yüklediniz. Daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/) . Hem hizmet yönetimi (SM) hem de Kaynak Yöneticisi (RM) cmdlet 'lerini yüklediğinizden emin olun. 
 
 ### <a name="example-settings"></a><a name="exampleref"></a>Örnek ayarlar
 
@@ -97,7 +97,7 @@ Ağ geçidi IP adresleme yapılandırması = gwipconfig
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-**Örnek:**
+**Örneğinde**
 
 ```xml
 <VirtualNetworkSites>
@@ -306,7 +306,7 @@ Ağ geçitleri arasında bağlantı oluşturmak PowerShell gerektirir. PowerShel
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-classic](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
@@ -317,7 +317,7 @@ Ağ geçitleri arasında bağlantı oluşturmak PowerShell gerektirir. PowerShel
 
 [!INCLUDE [vpn-gateway-verify-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

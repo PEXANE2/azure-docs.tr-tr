@@ -6,17 +6,18 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122791"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083030"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Işlevlerinde bir HTTP uç noktasını özelleştirme
 
 Bu makalede, Azure Işlevlerinin yüksek düzeyde ölçeklenebilir API 'Ler oluşturmanıza nasıl izin verdiğini öğrenirsiniz. Azure Işlevleri, Node.js, C# ve daha fazlasını içeren çeşitli dillerde bir uç nokta yazmayı kolaylaştıran yerleşik HTTP Tetikleyicileri ve bağlamaları koleksiyonuyla birlikte gelir. Bu makalede, API tasarımınızda belirli eylemleri işlemek üzere bir HTTP tetikleyicisi özelleştireceksiniz. Ayrıca, Azure İşlev Proxy'leri ile tümleştirerek ve sahte API 'Ler ayarlayarak API 'nizi büyümeye hazırlarsınız. Bu görevler, Işlevlerin sunucusuz işlem ortamının üzerinde gerçekleştirilir. bu nedenle, kaynakları ölçeklendirmeniz gerekmez; API mantığınıza odaklanmanız yeterlidir.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -46,7 +47,7 @@ Varsayılan olarak HTTP tetikleyici işleviniz herhangi bir HTTP yöntemini kabu
 
 1. **Kaydet**'i seçin.
 
-HTTP işlevlerinin özelleştirilmesi hakkında daha fazla bilgi için bkz. [Azure IŞLEVLERI http bağlamaları](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook).
+HTTP işlevlerinin özelleştirilmesi hakkında daha fazla bilgi için bkz. [Azure IŞLEVLERI http bağlamaları](./functions-bindings-http-webhook.md).
 
 ### <a name="test-your-api"></a>API’nizi test etme
 
@@ -73,8 +74,8 @@ Sonraki bölümde, API 'nizi bir ara sunucu üzerinden sunacağız. Azure İşle
 
 Proxy, herhangi bir HTTP kaynağına yönlendirme yapabilir, örneğin:
 - Azure İşlevleri 
-- [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)'teki API uygulamaları
-- [Linux App Service](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)'teki Docker kapsayıcıları
+- [Azure App Service](../app-service/overview.md)'teki API uygulamaları
+- [Linux App Service](../app-service/containers/app-service-linux-intro.md)'teki Docker kapsayıcıları
 - Barındırılan herhangi bir API
 
 Proxy'ler hakkında daha fazla bilgi için bkz. [Azure İşlev Proxy'leri ile çalışma].
@@ -85,7 +86,7 @@ Bu bölümde, genel API 'niz için ön uç görevi gören yeni bir ara sunucu ol
 
 ### <a name="setting-up-the-frontend-environment"></a>Ön uç ortamını ayarlama
 
-Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İşlev uygulaması oluşturma](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) bölümündeki adımları tekrarlayın. Bu yeni uygulamanın URL 'SI API 'imiz için ön uç işlevi görür ve daha önce düzenlediğiniz işlev uygulaması arka uç görevi görür.
+Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İşlev uygulaması oluşturma](./functions-create-first-azure-function.md#create-a-function-app) bölümündeki adımları tekrarlayın. Bu yeni uygulamanın URL 'SI API 'imiz için ön uç işlevi görür ve daha önce düzenlediğiniz işlev uygulaması arka uç görevi görür.
 
 1. Portalda yeni ön uç işlev uygulamanıza gidin.
 1. **Platform Özellikleri**'ni ve **Uygulama Ayarları**'nı seçin.
@@ -106,7 +107,7 @@ Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İ
 
     | Alan | Örnek değer | Açıklama |
     |---|---|---|
-    | Name | HelloProxy | Yalnızca yönetim için kullanılan kolay ad |
+    | Ad | HelloProxy | Yalnızca yönetim için kullanılan kolay ad |
     | Yol şablonu | /api/remotemerhaba | Bu proxy'yi çağırmak için kullanılacak yolu belirler |
     | Arka uç URL'si | https://%HELLO_HOST%/api/hello | İsteğe proxy uygulanacak uç noktayı belirtir |
 
@@ -125,7 +126,7 @@ Daha sonra, çözümünüz için bir sahte API oluşturmak üzere bir ara sunucu
 
 Bu sahte API 'yi oluşturmak için, bu kez [App Service Düzenleyicisi](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)kullanarak yeni bir ara sunucu oluşturacağız. Başlamak için portalda işlev uygulamanıza gidin. **Platform özellikleri**' ni seçin ve **geliştirme araçları** altında **App Service Düzenleyicisi**bulun. App Service Düzenleyicisi yeni bir sekmede açılır.
 
-Sol gezinti bölmesinden `proxies.json` öğesini seçin. Bu dosya, tüm proxy 'lerinizin yapılandırmasını depolar. [İşlevlerden birini dağıtım yöntemlerinden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)birini kullanırsanız, bu dosyayı kaynak denetiminde koruursunuz. Bu dosya hakkında daha fazla bilgi için bkz. [Gelişmiş proxy yapılandırması](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
+Sol gezinti bölmesinden `proxies.json` öğesini seçin. Bu dosya, tüm proxy 'lerinizin yapılandırmasını depolar. [İşlevlerden birini dağıtım yöntemlerinden](./functions-continuous-deployment.md)birini kullanırsanız, bu dosyayı kaynak denetiminde koruursunuz. Bu dosya hakkında daha fazla bilgi için bkz. [Gelişmiş proxy yapılandırması](./functions-proxies.md#advanced-configuration).
 
 Şimdiye kadar ilerlediyseniz, üzerinde proxies.jsaşağıdaki gibi görünmelidir:
 
@@ -179,7 +180,7 @@ Bundan sonra, sahte API 'nizi ekleyeceksiniz. proxies.jsdosyadaki aşağıdaki k
 }
 ```
 
-Bu kod, özelliği olmadan yeni bir ara sunucu ekler `GetUserByName` `backendUri` . Bu proxy başka bir kaynağı çağırmak yerine yanıt geçersiz kılma özelliğini kullanarak Proxy'lerden gelen varsayılan yanıtı değiştirir. İstek ve yanıt geçersiz kılma işlemleri bir arka uç URL'si ile birlikte de kullanılabilir. Bu teknik özellikle, üst bilgileri, sorgu parametrelerini ve benzerlerini değiştirmeniz gerekebilecek eski bir sisteme proxy oluştururken kullanışlıdır. İstek ve yanıt geçersiz kılma işlemleri hakkında daha fazla bilgi için bkz. [Proxy'lerde istekleri ve yanıtları değiştirme](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
+Bu kod, özelliği olmadan yeni bir ara sunucu ekler `GetUserByName` `backendUri` . Bu proxy başka bir kaynağı çağırmak yerine yanıt geçersiz kılma özelliğini kullanarak Proxy'lerden gelen varsayılan yanıtı değiştirir. İstek ve yanıt geçersiz kılma işlemleri bir arka uç URL'si ile birlikte de kullanılabilir. Bu teknik özellikle, üst bilgileri, sorgu parametrelerini ve benzerlerini değiştirmeniz gerekebilecek eski bir sisteme proxy oluştururken kullanışlıdır. İstek ve yanıt geçersiz kılma işlemleri hakkında daha fazla bilgi için bkz. [Proxy'lerde istekleri ve yanıtları değiştirme](./functions-proxies.md).
 
 Sahte API'nizi test etmek için bir tarayıcı veya sık kullandığınız REST istemcisini kullanarak `<YourProxyApp>.azurewebsites.net/api/users/{username}` uç noktasını çağırın. _{username}_ yerine kullanıcı adını temsil eden bir dize değeri yazmayı unutmayın.
 
@@ -189,10 +190,10 @@ Bu makalede, Azure Işlevlerinde bir API oluşturmayı ve özelleştirmeyi öğr
 
 API'nizi geliştirirken aşağıdaki konulara da başvurabilirsiniz:
 
-- [Azure İşlevleri HTTP bağlamaları](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [Azure İşlevleri HTTP bağlamaları](./functions-bindings-http-webhook.md)
 - [Azure İşlev Proxy'leri ile çalışma]
-- [Azure İşlevleri API'sini belgeleme (önizleme)](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
+- [Azure İşlevleri API'sini belgeleme (önizleme)](./functions-openapi-definition.md)
 
 
-[Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[Azure İşlev Proxy'leri ile çalışma]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[Create your first function]: ./functions-create-first-azure-function.md
+[Azure İşlev Proxy'leri ile çalışma]: ./functions-proxies.md

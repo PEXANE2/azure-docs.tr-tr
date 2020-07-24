@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07857feb2e5552429c445b22c4c4b2f121f29a93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1010f89057d83a11fb2e156f01509e909270b044
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083581"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>Sorun çözümüne genel bakış, geri bildirim ve destek
+# <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Sorun giderme genel bakış, geri bildirim ve Windows sanal masaüstü desteği
 
 >[!IMPORTANT]
 >Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)bakın.

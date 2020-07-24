@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832568"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085087"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler
 
@@ -40,13 +40,13 @@ Ortamınızı ayarlamak için bir Işlev ve test uygulaması oluşturun. Aşağ�
 3. [Şablondan bir Zamanlayıcı Işlevi oluşturun](./functions-create-scheduled-function.md) ve **mytimertrigger**olarak adlandırın.
 4. Çözümde [bir xUnit test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) ve bunu **Functions. Tests**olarak adlandırın.
 5. Test uygulamasından [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 'ye bir başvuru eklemek için NuGet kullanın
-6. [*Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
+6. [*Functions* ](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
 
 ### <a name="create-test-classes"></a>Test sınıfları oluşturma
 
 Artık projeler oluşturuldığına göre otomatik testleri çalıştırmak için kullanılan sınıfları oluşturabilirsiniz.
 
-Her işlev, ileti günlüğünü işlemek için bir [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) örneğini alır. Bazı sınamalar iletileri günlüğe kaydetme veya günlük kaydı ile ilgili hiçbir sorun yoktur. Diğer testlerin, bir testin geçirilip geçirilmediğini belirlemede günlüğe kaydedilen iletileri değerlendirmesi gerekir.
+Her işlev, ileti günlüğünü işlemek için bir [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) örneğini alır. Bazı sınamalar iletileri günlüğe kaydetme veya günlük kaydı ile ilgili hiçbir sorun yoktur. Diğer testlerin, bir testin geçirilip geçirilmediğini belirlemede günlüğe kaydedilen iletileri değerlendirmesi gerekir.
 
 `ListLogger`Bir test sırasında değerlendirmek için bir iç ileti listesini tutan adlı yeni bir sınıf oluşturacaksınız. Gerekli arabirimi uygulamak için `ILogger` , sınıfı bir kapsama ihtiyaç duyuyor. Aşağıdaki sınıf, sınıfa geçirilecek test çalışmalarının kapsamını gizler `ListLogger` .
 
@@ -192,7 +192,7 @@ namespace Functions.Tests
 
 `TestFactory`Sınıfı aşağıdaki üyeleri uygular:
 
-- **Veri**: Bu özellik, örnek verilerin bir [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) koleksiyonunu döndürür. Anahtar değer çiftleri bir sorgu dizesine geçirilen değerleri temsil eder.
+- **Veri**: Bu özellik, örnek verilerin bir [IEnumerable](/dotnet/api/system.collections.ienumerable) koleksiyonunu döndürür. Anahtar değer çiftleri bir sorgu dizesine geçirilen değerleri temsil eder.
 
 - **CreateDictionary**: Bu yöntem, anahtar/değer çiftini bağımsız değişken olarak kabul eder ve `Dictionary` `QueryCollection` sorgu dizesi değerlerini temsil etmek için oluşturmak üzere yeni bir değer döndürür.
 

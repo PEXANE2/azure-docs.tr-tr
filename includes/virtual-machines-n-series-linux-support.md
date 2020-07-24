@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 279f4cb1d8891f64fb01f4f8abb6b23a004c2b4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99c8ee79c51205c33d14328530f527ad8e3ff7b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84268845"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085478"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Desteklenen dağıtımlar ve sürücüler
 
@@ -29,9 +29,11 @@ NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Ler için NVıDıA CUDA sürücüleri (NV 
 
 Microsoft, sanal iş istasyonları veya sanal uygulamalar olarak kullanılan NV ve NVv3 serisi VM 'Ler için NVıDıA GRID sürücü yükleyicilerini yeniden dağıtır. Yalnızca aşağıdaki tabloda listelenen işletim sistemlerinde Azure NV VM 'lerine yalnızca bu KıLAVUZ sürücülerini yükler. Bu sürücüler Azure 'da GRID sanal GPU yazılımı için lisanslama içerir. NVıDıA vGPU yazılım lisans sunucusu ayarlamanız gerekmez.
 
+Azure tarafından yeniden dağıtılan KıLAVUZ sürücüleri, NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Ler gibi NV serisi olmayan VM 'lerde çalışmaz.
+
 | Dağıtım | Sürücü |
 | --- | -- |
-|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>7,0 Red Hat Enterprise Linux 7,7<br/><br/>CentOS tabanlı 7,0 7,7<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVıDıA GRID 10,1, sürücü dalı R440|
+|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>7,6 Red Hat Enterprise Linux 7,8, 8,0, 8,1<br/><br/>CentOS tabanlı 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVıDıA GRID 11, sürücü dalı R450|
 
 > [!WARNING] 
 > Red Hat ürünlerine üçüncü taraf yazılım yüklenmesi Red Hat destek koşullarını etkileyebilir. Bkz. [Red Hat Bilgi Bankası makalesi](https://access.redhat.com/articles/1067).

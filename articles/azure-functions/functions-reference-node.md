@@ -3,23 +3,27 @@ title: Azure Işlevleri için JavaScript geliştirici başvurusu
 description: JavaScript kullanarak işlevleri geliştirmeyi anlayın.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: c0e5dd7e1869accd309656b69bd2a07d21b1a3ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252748"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082979"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
-Bu kılavuzda, JavaScript ile Azure Işlevleri yazma hakkında bilgiler yer alır.
+Bu kılavuz, JavaScript kullanarak Azure Işlevleri geliştirmeye yardımcı olacak ayrıntılı bilgiler içerir.
 
-JavaScript işlevi, tetiklendiğinde yürütülen bir dışarıya kaydedilir `function` ([Tetikleyiciler function.jsüzerinde yapılandırılır](functions-triggers-bindings.md)). Her işleve geçirilen ilk bağımsız değişken, `context` bağlama verilerini alma ve gönderme, günlüğe kaydetme ve çalışma zamanına iletişim için kullanılan bir nesnedir.
+Express.js, Node.js veya JavaScript geliştiricisi olarak Azure Işlevleri 'ne yeni bir deyişle, lütfen önce aşağıdaki makalelerden birini okuyun:
 
-Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. [Visual Studio Code](functions-create-first-function-vs-code.md) veya [portalda](functions-create-first-azure-function.md)kullanarak ilk işlevinizi oluşturmak için hızlı başlangıç işlevlerini doldurun.
+| Başlarken | Kavramlar| Kılavuzlu öğrenme |
+| -- | -- | -- | 
+| <ul><li>[Visual Studio Code kullanarakNode.js işlevi](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)</li><li>[Terminal/komut istemiyleNode.js işlevi](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-javascript)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-Bu makale, [TypeScript uygulama geliştirmeyi](#typescript)de destekler.
+## <a name="javascript-function-basics"></a>JavaScript işlevi temelleri
+
+JavaScript (Node.js) işlevi, tetiklendiğinde yürütülen bir dışarıya kaydedilir `function` ([Tetikleyiciler function.jsüzerinde yapılandırılır](functions-triggers-bindings.md)). Her işleve geçirilen ilk bağımsız değişken, `context` bağlama verilerini alma ve gönderme, günlüğe kaydetme ve çalışma zamanına iletişim için kullanılan bir nesnedir.
 
 ## <a name="folder-structure"></a>Klasör yapısı
 
@@ -118,7 +122,7 @@ Giriş, Azure Işlevlerinde iki kategoriye ayrılmıştır: biri tetikleyici gir
    };
    ```
    
- - **JavaScript nesnesini kullanan girişler [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) .** Bu aslında girişleri parametre olarak geçirmesiyle aynıdır, ancak girişleri dinamik olarak işlemeniz sağlanır.
+ - **JavaScript nesnesini kullanan girişler [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) .** Bu aslında girişleri parametre olarak geçirmesiyle aynıdır, ancak girişleri dinamik olarak işlemeniz sağlanır.
  
    ```javascript
    module.exports = async function(context) { 
@@ -559,11 +563,11 @@ Bu örnekte, bir nesne verilse de yürütmeler arasında durumu korumak için he
 
 Parametresi ile birlikte başlatıldığında `--inspect` , Node.js işlemi belirtilen bağlantı noktasında hata ayıklama istemcisini dinler. Azure Işlevleri 2. x içinde, ortam değişkeni veya uygulama ayarı ekleyerek kodunuzu çalıştıran Node.js işlemine geçirilecek bağımsız değişkenleri belirtebilirsiniz `languageWorkers:node:arguments = <args>` . 
 
-Yerel olarak hata ayıklamak için `"languageWorkers:node:arguments": "--inspect=5858"` , `Values` [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) dosyasına altına ekleyin ve 5858 numaralı bağlantı noktasına bir hata ayıklayıcı ekleyin.
+Yerel olarak hata ayıklamak için `"languageWorkers:node:arguments": "--inspect=5858"` , `Values` [local.settings.js](./functions-run-local.md#local-settings-file) dosyasına altına ekleyin ve 5858 numaralı bağlantı noktasına bir hata ayıklayıcı ekleyin.
 
 VS Code kullanarak hata ayıklarken, `--inspect` parametresi `port` projenin launch.jsdosyadaki değeri kullanılarak otomatik olarak eklenir.
 
-Sürüm 1. x içinde, ayar `languageWorkers:node:arguments` çalışmayacak. Hata ayıklama bağlantı noktası, [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) Azure Functions Core Tools parametresiyle seçilebilir.
+Sürüm 1. x içinde, ayar `languageWorkers:node:arguments` çalışmayacak. Hata ayıklama bağlantı noktası, [`--nodeDebugPort`](./functions-run-local.md#start) Azure Functions Core Tools parametresiyle seçilebilir.
 
 ## <a name="typescript"></a>TypeScript
 
@@ -632,7 +636,7 @@ JavaScript işlevleriyle çalışırken, aşağıdaki bölümlerde yer aldığı
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Tek-vCPU App Service planlarını seçin
 
-App Service planını kullanan bir işlev uygulaması oluşturduğunuzda, birden fazla vCPU içeren bir plan yerine tek bir vCPU planı seçmenizi öneririz. Günümüzde Işlevler, JavaScript işlevlerini tek-vCPU VM 'lerinde daha verimli bir şekilde çalıştırır ve daha büyük VM 'Lerin kullanılması beklenen performans geliştirmelerini oluşturmaz. Gerektiğinde, daha fazla çoklu-vCPU VM örneği ekleyerek ölçeği el ile ölçeklendirebilir veya otomatik ölçeklendirmeyi etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [örnek sayısını el ile veya otomatik olarak ölçeklendirme](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
+App Service planını kullanan bir işlev uygulaması oluşturduğunuzda, birden fazla vCPU içeren bir plan yerine tek bir vCPU planı seçmenizi öneririz. Günümüzde Işlevler, JavaScript işlevlerini tek-vCPU VM 'lerinde daha verimli bir şekilde çalıştırır ve daha büyük VM 'Lerin kullanılması beklenen performans geliştirmelerini oluşturmaz. Gerektiğinde, daha fazla çoklu-vCPU VM örneği ekleyerek ölçeği el ile ölçeklendirebilir veya otomatik ölçeklendirmeyi etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [örnek sayısını el ile veya otomatik olarak ölçeklendirme](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json).
 
 ### <a name="cold-start"></a>Soğuk başlangıç
 

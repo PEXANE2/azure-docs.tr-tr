@@ -3,11 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 459162c277a9510297580a99acb8a88b0702a290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8ccb93013b16fc919630251aa02edf48e30ce6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732488"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083132"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -37,7 +38,7 @@ Bu makalede, işlevleri geliştirmek ve Azure 'da yayımlamak için Azure Işlev
 > [!IMPORTANT]
 > Tek bir işlev uygulaması için yerel geliştirme ve Portal geliştirmeyi karışmayın. Yerel bir projeden bir işlev uygulamasına yayımladığınızda, dağıtım işlemi portalda geliştirdiğiniz işlevlerin üzerine yazar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Visual Studio Code için [Azure işlevleri uzantısı][Azure işlevleri uzantısını]yükleyip çalıştırmadan önce, şu gereksinimleri karşılamanız gerekir:
 
@@ -294,7 +295,7 @@ Işlevler projenizi yerel olarak çalıştırmak için aşağıdaki ek gereksini
 
     | Dil | Gereksinim |
     | -------- | --------- |
-    | **C#** | [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI araçları](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
+    | **C#** | [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI araçları](/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Java uzantısı için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 veya üzeri](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) önerilir|

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131332"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083778"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Çok katmanlı bir IIS tabanlı Web uygulaması için olağanüstü durum kurtarmayı ayarlama
 
@@ -102,12 +102,14 @@ Bağlantı dizesi, Web sitesinin iletişim kurduğu veritabanını belirtir. Ba�
 
 Bağlantı dizesi bir IP adresi kullanarak veritabanı sanal makinesine başvuruyorsa, bunun yük devretme sonrası güncelleştirilmesi gerekir. Örneğin, aşağıdaki bağlantı dizesi veritabanına 127.0.1.2 IP adresiyle işaret eder:
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-        <connectionStrings>
-        <add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
-        </connectionStrings>
-        </configuration>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<connectionStrings>
+<add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
+</connectionStrings>
+</configuration>
+```
 
 Web katmanındaki bağlantı dizesini güncelleştirmek için, kurtarma planında Grup 3 ' den sonra bir [IIS bağlantı güncelleştirme betiği](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) ekleyin.
 

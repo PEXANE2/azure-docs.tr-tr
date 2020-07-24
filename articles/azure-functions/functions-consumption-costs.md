@@ -3,19 +3,20 @@ title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
 description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76963997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083047"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
 Azure Işlevleri 'nde çalışan bir uygulama için şu anda üç tür barındırma planı vardır: her plan kendi fiyatlandırma modeline sahiptir: 
 
-| Planlama | Açıklama |
+| Plan | Açıklama |
 | ---- | ----------- |
-| [**Mine**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
+| [**Tüketim**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
 | [**Premium**](functions-scale.md#premium-plan) | Tüketim planıyla aynı özellikleri ve ölçeklendirme mekanizmasını, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](functions-premium-plan.md). |
 | [**Adanmış (App Service)**](functions-scale.md#app-service-plan) <br/>(temel katman veya daha yüksek) | Adanmış VM 'lerde veya yalıtımda çalıştırmanız gerektiğinde, özel görüntüleri kullanın veya fazla App Service planı kapasitenizi kullanmak isteyebilirsiniz. [Düzenli App Service planı faturalandırmasını](https://azure.microsoft.com/pricing/details/app-service/)kullanır. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir.|
 
@@ -60,7 +61,7 @@ Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin y�
 
 ## <a name="view-execution-data"></a>Yürütme verilerini görüntüle
 
-[Faturanızda](/azure/billing/billing-download-azure-invoice), **Toplam yürütme-Işlev** ve **yürütme süresi-işlevlerinin**maliyet ile ilgili verilerini, gerçek fatura maliyetleriyle birlikte görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemi için aylık bir topladır. 
+[Faturanızda](../cost-management-billing/understand/download-azure-invoice.md), **Toplam yürütme-Işlev** ve **yürütme süresi-işlevlerinin**maliyet ile ilgili verilerini, gerçek fatura maliyetleriyle birlikte görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemi için aylık bir topladır. 
 
 İşlevlerinizin maliyet etkisini daha iyi anlamak için, Azure Izleyici 'yi kullanarak işlev uygulamalarınız tarafından şu anda oluşturulan maliyetlerle ilgili ölçümleri görüntüleyebilirsiniz. Bu verileri almak için [Azure Portal] veya REST API 'Lerinde [Azure izleyici ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) 'ni kullanabilirsiniz.
 
@@ -205,7 +206,7 @@ performanceCounters
 
 Sonuçlar aşağıdaki örneğe benzer şekilde görünür:
 
-| zaman damgası \[ UTC\]          | name          | değer       |
+| zaman damgası \[ UTC\]          | name          | value       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14 \. 947 | Özel baytlar | 209.932.288 |
 | 9/12/2019, 1:06:14 \. 994 | Özel baytlar | 212.189.184 |
@@ -237,4 +238,4 @@ customMetrics
 > [İşlev uygulamalarını Izleme hakkında daha fazla bilgi edinin](functions-monitoring.md)
 
 [fiyatlandırma sayfası]:https://azure.microsoft.com/pricing/details/functions/
-[Azure portalındaki]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

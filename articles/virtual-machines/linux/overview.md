@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a62cb11e862bb8733e2758297d82aa7732b2d739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84232988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082473"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
 
@@ -30,7 +30,7 @@ Azure sanal makineleri farklı amaçlarla kullanılabilir. Bazı örnekler şunl
 Uygulamanız tarafından kullanılan VM sayısı, ihtiyaçlarınıza göre ölçeklendirilebilir.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>VM oluşturmadan önce dikkat etmem gereken noktalar nelerdir?
-Azure’da uygulama altyapısı oluştururken [dikkate almanız gereken tasarım ölçütleri](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) vardır. Başlamadan önce dikkat etmeniz gereken VM özellikleri şunlardır:
+Azure’da uygulama altyapısı oluştururken [dikkate almanız gereken tasarım ölçütleri](/azure/architecture/reference-architectures/n-tier/windows-vm) vardır. Başlamadan önce dikkat etmeniz gereken VM özellikleri şunlardır:
 
 * Uygulama kaynaklarınızın adları
 * Kaynakların depolanacağı konum
@@ -47,10 +47,10 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portal |VM oluştururken listeden konum seçin. |
-| Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
-| REST API |[List locations](https://docs.microsoft.com/rest/api/resources/subscriptions) işlemini kullanın. |
-| Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
+| Azure portalı |VM oluştururken listeden konum seçin. |
+| Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
+| REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
+| Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
 
 ## <a name="availability"></a>Kullanılabilirlik
 Azure, sanal makineyi tüm diskler için premium depolamayla dağıtmanız koşuluyla, tek örnekli sanal makinelerde endüstri lideri %99,9 kullanılabilirlik Hizmet Düzeyi Sözleşmesi'nin duyurusunu yaptı.  Dağıtımınızın standart %99,95 VM Hizmet Düzeyi Sözleşmesinin kapsamına girebilmesi için iş yükünüzü çalıştıran iki veya daha fazla VM’yi yine bir kullanılabilirlik kümesi içinde dağıtmanız gerekir. Bir kullanılabilirlik kümesi, VM’lerinizin Azure veri merkezlerinde birden çok hata etki alanına dağıtılmasını ve aynı zamanda dağıtımlarının farklı bakım aralıklarına sahip konaklara yapılmasını sağlar. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
@@ -95,7 +95,7 @@ Microsoft, sağlanan görüntülerin güncelleştirilmiş ve Azure çalışma za
 Düzgün bir DevOps kültürünü başarmak için tüm altyapı kod olmalıdır.  Tüm altyapı kodda bulunduğunda kolayca yeniden oluşturulabilir.  Azure tüm önemli otomasyon araçlarıyla, örneğin Ansible, Chef, SaltStack ve Puppet ile çalışır.  Azure'un ayrıca kendi otomasyon aracı da vardır:
 
 * [Azure şablonları](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](using-vmaccess-extension.md)
+* [Azure VMAccess](../extensions/vmaccess.md)
 
 Azure, en çok Linux destekleri tarafından desteklenen [bulutta init](https://cloud-init.io/) 'yi destekler.  Azure Marketi 'nde Cloud-init özellikli görüntülerin kullanılabilmesini sağlamak için, onaylanan Linux olmayan iş ortaklarıyla etkin bir şekilde çalışıyoruz. Bu görüntüler, Cloud-init dağıtımlarınızın ve yapılandırmalarının VM 'Ler ve sanal makine ölçek kümeleri ile sorunsuz bir şekilde çalışmasını sağlayacak.
 
@@ -120,4 +120,3 @@ Azure, en çok Linux destekleri tarafından desteklenen [bulutta init](https://c
 - [Portal](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)
-

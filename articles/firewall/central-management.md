@@ -5,26 +5,25 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 07/13/2020
 ms.author: victorh
-ms.openlocfilehash: 58f670f3f55a63f0c1823adc13c98f5863d4d650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23a7682d8a64de57db4ff9ae785ada90d4a06944
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77444556"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084679"
 ---
 # <a name="azure-firewall-central-management"></a>Azure Güvenlik duvarı merkezi yönetimi
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
 Birden çok güvenlik duvarını yönetiyorsanız, Güvenlik Duvarı kurallarının sürekli olarak değiştirilmesini, bunları eşitlenmiş halde tutmayı zorlaştırır. Merkezi BT ekiplerinin, temel güvenlik duvarı ilkelerini tanımlamak ve bunları birden çok iş biriminde zorunlu kılmak için bir yol gerekir. Aynı zamanda DevOps ekipleri, daha iyi çeviklik için kendi yerel türetilmiş güvenlik duvarı ilkelerini oluşturmak ister.
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi, bu sorunların çözülmesine yardımcı olabilir.
+Azure Güvenlik Duvarı Yöneticisi bu sorunların çözülmesine yardımcı olabilir.
 
 
-## <a name="azure-firewall-manager-preview"></a>Azure Güvenlik Duvarı Yöneticisi önizlemesi
+## <a name="azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi, bulut tabanlı güvenlik perimeters için merkezi güvenlik ilkesi ve Yönlendirme yönetimi sağlayan bir ağ güvenliği yönetim hizmetidir. Kurumsal BT ekiplerinin birden çok Azure Güvenlik Duvarı örneği arasında trafik filtrelemesi için ağ ve uygulama düzeyi kuralları merkezi olarak tanımlamasını kolaylaştırır. Trafiği idare ve koruma için hub ve bağlı bileşen mimarilerinde farklı Azure bölgelerine ve aboneliklerine yayılabilir. Ayrıca, kuruluşlar genelinde uygulanan türetilmiş yerel güvenlik duvarı güvenlik ilkeleriyle DevOps daha iyi bir çeviklik sağlar.
+Azure Güvenlik Duvarı Yöneticisi, bulut tabanlı güvenlik perimeters için merkezi güvenlik ilkesi ve Yönlendirme yönetimi sağlayan bir ağ güvenliği yönetim hizmetidir. Kurumsal BT ekiplerinin birden çok Azure Güvenlik Duvarı örneği arasında trafik filtrelemesi için ağ ve uygulama düzeyi kuralları merkezi olarak tanımlamasını kolaylaştırır. Trafiği idare ve koruma için hub ve bağlı bileşen mimarilerinde farklı Azure bölgelerine ve aboneliklerine yayılabilir. Ayrıca, kuruluşlar genelinde uygulanan türetilmiş yerel güvenlik duvarı güvenlik ilkeleriyle DevOps daha iyi bir çeviklik sağlar.
 
 ### <a name="firewall-policy"></a>Güvenlik duvarı ilkesi
 
@@ -47,4 +46,4 @@ Aşağıdaki önde gelen üçüncü taraf çözümler, standart Azure REST API '
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Yöneticisi önizlemesi nedir?](../firewall-manager/overview.md)
+Azure Güvenlik Duvarı Yöneticisi hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Yöneticisi nedir?](../firewall-manager/overview.md)

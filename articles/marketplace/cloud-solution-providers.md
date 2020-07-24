@@ -3,16 +3,16 @@ title: Bulut çözümü sağlayıcısı-Microsoft ticari Market
 description: Tekliflerinizi ticari Market 'teki Microsoft Bulut çözüm sağlayıcısı (CSP) program iş ortağı kanalı aracılığıyla satma hakkında bilgi edinin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082825"
 ---
 # <a name="cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı
 
@@ -30,31 +30,31 @@ Aşağıdaki teklifler, CSP programındaki iş ortakları tarafından satılmas�
 - Yönetilen uygulamalar
 
 > [!NOTE]
-> Kapsayıcılar ve kendi lisansını getir (KLG) VM SKU 'Ları, varsayılan olarak CSP programındaki iş ortakları tarafından satılmasını tercih edilir.
+> Kapsayıcılar ve kendi lisansını getir (KLG) VM planları, varsayılan olarak CSP programındaki iş ortakları tarafından satılmasını tercih edilir.
 
-## <a name="how-to-configure-an-offering"></a>Bir teklifi yapılandırma
+## <a name="how-to-configure-an-offer"></a>Bir teklifi yapılandırma
 
-CSP program kabul etme ayarı, Iş Ortağı Merkezi 'nde veya Bulut İş Ortağı Portalı teklif oluşturma deneyimi ' nde yapılandırılır. [Değişen yayımcı deneyimi hakkında daha fazla bilgi edinin](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
+Teklif Iş Ortağı Merkezi 'nde oluştururken CSP program kabul etme ayarını yapılandırın. [Değişen yayımcı deneyimi hakkında daha fazla bilgi edinin](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
 
 ### <a name="partner-center-opt-in"></a>İş Ortağı Merkezi kabul etme
 
-Iş Ortağı Merkezi 'nde, CSP satıcısı hedef kitle modülü kapsamında katılım deneyimini bulacaksınız.
+Kabul etme deneyimi, CSP satıcısı hedef kitle modülünün altında bulunur:
 
 ![CSP satıcı hedef kitlesi](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-CSP satıcı kitlesi modülünde seçebileceğiniz üç seçeneğiniz vardır:
+Üç seçenekten birini belirleyin:
 
-- Seçenek One: CSP programındaki herhangi bir iş ortağı
-- İki seçenek: seçtiğiniz CSP programında belirli iş ortakları
-- Seçenek üç: CSP programında iş ortağı yok
+1. CSP programındaki tüm iş ortakları.
+2. Seçtiğiniz CSP programındaki belirli iş ortakları.
+3. CSP programında iş ortağı yok.
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>Seçenek One: CSP programındaki herhangi bir iş ortağı
+#### <a name="option-1-any-partner-in-the-csp-program"></a>Seçenek 1: CSP programındaki herhangi bir iş ortağı
 
 ![CSP programındaki tüm iş ortakları](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  Bu seçeneği belirleyerek, CSP programındaki tüm iş ortakları teklifinizi müşterilere yeniden satmaya uygundur.
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>İki seçenek: seçtiğiniz CSP programında belirli iş ortakları
+#### <a name="option-2-specific-partners-in-the-csp-program-i-select"></a>Seçenek 2: Select CSP programındaki belirli iş ortakları
 
 ![Seçtiğiniz CSP programındaki belirli iş ortakları](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
@@ -87,17 +87,11 @@ Zaten yayımlanmış bir teklifin CSP listesini güncelleştiriyorsanız, ek iş
 
 Zaten yetkili iş ortakları listesine sahip bir teklifiniz varsa ve başka bir teklif için aynı listeyi kullanmak istiyorsanız **içeri/dışarı aktarma**' yı kullanın. CSP listesine sahip olan teklifine gidin ve **CSP 'Leri dışarı aktar**' ı seçin. İşlevi, başka bir teklifine aktarılabilecek bir. csv dosyası geliştirir.
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>Seçenek üç: CSP programında iş ortağı yok
+#### <a name="option-3-no-partners-in-the-csp-program"></a>Seçenek 3: CSP programında iş ortağı yok
 
 ![CSP programında iş ortağı yok](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 Bu seçeneği belirleyerek, sizin teklifinizin CSP programını kullanıma sunuyorsunuz. Bu seçimi dilediğiniz zaman değiştirebilirsiniz.
-
-### <a name="cloud-partner-portal-opt-in"></a>Bulut İş Ortağı Portalı kabul etme
-
-Bulut İş Ortağı Portalı, katılım Market veya storefront sekmesinde ayarlanır. CSP programında belirli iş ortakları seçebilme özelliği yalnızca Iş Ortağı Merkezi 'nde kullanılabilir.
-
-![CPP içinde CSP katılım deneyimi](media/marketplace-publishers-guide/csp-opt-in.png)
 
 ## <a name="deauthorize-partners-in-the-csp-program"></a>CSP programındaki Iş ortaklarının yetkisini kaldırma
 
@@ -115,9 +109,6 @@ CSP programındaki bir iş, ürününüzü müşterilerine satmamışsa ve tekli
 4. **Sorunu en iyi açıklayan bir sorun seçin**için **Mevcut teklifi Güncelleştir**' i seçin.
 5. Sorun **ayrıntıları sayfasına** yönlendirilmek için **İleri ' yi** seçin ve sorununuz hakkında daha fazla ayrıntı girin.
 6. Sorun başlığı olarak **Deyetkilendir CSP** kullanın ve gerekli bölümlerin geri kalanını doldurun.
-
-
-
 
 ## <a name="navigate-between-options"></a>Seçenekler arasında gezinme
 
@@ -175,19 +166,13 @@ Teklifiniz Şu anda **seçenek 3: CSP programında iş ortakları**yoksa diledi�
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>CSP programındaki iş ortaklarıyla satış ve destek malzemeleri paylaşma
 
-Bulut çözümü sağlayıcısı programındaki iş ortaklarının teklifinizi en verimli şekilde temsil etmesini ve kuruluşunuzla birlikte çalışmasını sağlamak için, satıcılar tarafından kullanılabilecek satış ve destek malzemeleri göndermeniz gerekir. Bu kaynaklar Market storets 'deki müşterilere sunulmayacak.
+Bulut çözümü sağlayıcısı programındaki iş ortaklarının teklifinizi en verimli şekilde temsil etmesini ve kuruluşunuzla birlikte çalışmasını sağlamak için, satıcıların kullanabildiği satış ve destek malzemeleri göndermeniz gerekir. Bu kaynaklar Market storets 'deki müşterilere sunulmayacak.
 
 ### <a name="partner-center-csp-channel"></a>İş Ortağı Merkezi CSP kanalı
 
 Iş Ortağı Merkezi 'nde CSP kanalını kabul ettiyseniz, yayımcılar teklif listesi modülünün altındaki CSP kanalına ilgili pazarlama malzemeleri ve kanal iletişim bilgilerini barındıran bir URL girmelidir:
 
 ![İş Ortağı Merkezi CSP yardımcı bilgileri](media/marketplace-publishers-guide/pc-csp-channel.png)
-
-### <a name="cloud-partner-portal-csp-channel"></a>Bulut İş Ortağı Portalı CSP kanalı
-
-Bulut İş Ortağı Portalı içinde CSP kanalını kabul ettiyseniz, yayımcılar ilgili pazarlama malzemeleri ve kanal iletişim bilgilerini CSP kanalına barındıran bir URL girmelidir:
-
-![Bulut İş Ortağı Portalı CSP yardımcı malzemeleri bilgileri](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

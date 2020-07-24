@@ -5,40 +5,41 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: how-to
-ms.date: 11/11/2019
+ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: 446d876033b09728ebcbec43c6300884a5c29cd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89dc81cdd06bedb6237cf48312ee7ed0510d93ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262744"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084747"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB veri izleme başvurusu
-Bu makalede Azure Cosmos DB'nin performansını ve kullanılabilirliğini analiz etmek için toplanan günlük ve ölçüm verilerine başvuru sağlar. Azure Cosmos DB izleme verilerini toplama ve çözümleme hakkında ayrıntılar için bkz. [izleme Cosmos DB](monitor-cosmos-db.md) .
 
+Bu makalede Azure Cosmos DB'nin performansını ve kullanılabilirliğini analiz etmek için toplanan günlük ve ölçüm verilerine başvuru sağlar. Azure Cosmos DB izleme verilerini toplama ve çözümleme hakkında bilgi için bkz. [izleyici Azure Cosmos DB](monitor-cosmos-db.md) makalesi.
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
-Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da toplandıklarında Azure Cosmos DB kaynak günlüklerinin özellikleri listelenmektedir. Azure Izleyici günlüklerinde, **AzureDiagnostics** tablosunda, *umentdbMICROSOFT.DOC* **ResourceProvider** değeri ile toplanır. 
+
+Aşağıdaki tabloda Azure Cosmos DB içindeki kaynak günlüklerinin özellikleri listelenmektedir. Kaynak günlükleri Azure Izleyici günlüklerine veya Azure Storage 'a toplanır. Azure Izleyici 'de, Günlükler kaynak sağlayıcısı * * adı altında **AzureDiagnostics** tablosunda toplanır `MICROSOFT.DOCUMENTDB` .
 
 | Azure depolama alanı veya özelliği | Azure Izleyici günlükleri özelliği | Açıklama |
 | --- | --- | --- |
 | **ışınızda** | **TimeGenerated** | İşlem gerçekleştiği tarih ve saat (UTC). |
 | **RESOURCEID** | **Kaynak** | Günlüklerin etkinleştirildiği Azure Cosmos DB hesabı.|
-| **alan** | **Kategori** | Azure Cosmos DB günlükleri, **Dataplanerequests**, **mongorequests**, **QueryRuntimeStatistics**, **partitionkeystatıstıcs**, **partitionkeyrutüketim**, **controlplanerequests** , kullanılabilir günlük türleridir. |
-| **operationName** | **OperationName** | İşlemin adı. Bu değer şu işlemlerden herhangi biri olabilir: oluşturma, güncelleştirme, okuma, ReadFeed, silme, değiştirme, yürütme, SqlQuery, Query, JSQuery, Head, HeadFeed veya upsert.   |
+| **alan** | **Kategori** | Azure Cosmos DB, **Dataplanerequests**, **mongorequests**, **QueryRuntimeStatistics**, **partitionkeystatıstıcs**, **partitionkeyrutüketim**, **controlplanerequests** , kullanılabilir günlük türlerdir. |
+| **operationName** | **OperationName** | İşlemin adı. İşlem adı,,,,,,,, `Create` `Update` `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` , `JSQuery` ,, veya olabilir `Head` `HeadFeed` `Upsert` .   |
 | **özelliklerinin** | yok | Bu alanın içeriği, izleyen satırlarda açıklanmıştır. |
 | **Etkinlik kimliği** | **activityId_g** | Günlüğe kaydedilen işlem için benzersiz GUID. |
-| **Kullanıcı** | **userAgent_s** | İsteği gerçekleştiren istemci Kullanıcı aracısını belirten bir dize. Biçim {User Agent Name}/{Version} biçimindedir.|
-| **requestResourceType** | **requestResourceType_s** | Erişilen kaynağın türü. Bu değer, şu kaynak türlerinden herhangi biri olabilir: veritabanı, kapsayıcı, belge, ek, Kullanıcı, Izin, StoredProcedure, tetikleyici, UserDefinedFunction veya teklif. |
-| **Durum** | **statusCode_s** | İşlemin yanıt durumu. |
-| **Requestresourceıd** | **ResourceId** | İstekle ilgili olan RESOURCEID. Değer, gerçekleştirilen işleme bağlı olarak databaseRid, collectionRid veya belge kimliği ' ni işaret edebilir.|
+| **Kullanıcı** | **userAgent_s** | İsteğin gönderildiği istemci Kullanıcı aracısını belirten bir dize. Kullanıcı aracısının biçimi `{user agent name}/{version}` .|
+| **requestResourceType** | **requestResourceType_s** | Erişilen kaynağın türü. Bu değer veritabanı, kapsayıcı, belge, ek, Kullanıcı, izin, saklı yordam, tetikleyici, Kullanıcı tanımlı işlev veya teklif olabilir. |
+| **statusCode** | **statusCode_s** | İşlemin yanıt durumu. |
+| **Requestresourceıd** | **ResourceId** | İstekle ilgili olan RESOURCEID. Gerçekleştirilen işleme bağlı olarak, bu değer, veya öğesine işaret `databaseRid` edebilir `collectionRid` `documentRid` .|
 | **ClientIpAddress** | **clientIpAddress_s** | İstemcinin IP adresi. |
-| **Istek ücreti** | **requestCharge_s** | İşlem tarafından kullanılan RUs sayısı |
+| **Istek ücreti** | **requestCharge_s** | İşlem tarafından kullanılan RU/sn sayısı |
 | **collectionRid** | **collectionId_s** | Koleksiyonun benzersiz KIMLIĞI.|
-| **sürenin** | **duration_s** | İşlemin süresi (milisaniye cinsinden). |
+| **sürenin** | **duration_d** | İşlemin süresi (milisaniye cinsinden). |
 | **requestLength** | **requestLength_s** | İsteğin bayt cinsinden uzunluğu. |
 | **responseLength** | **responseLength_s** | Yanıtın bayt cinsinden uzunluğu.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Bu değer, kimlik doğrulaması için [kaynak belirteçleri](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) kullanılırken boş değildir. Değer, kullanıcının kaynak KIMLIĞINE işaret eder. |
@@ -49,7 +50,7 @@ Tüm Azure Izleyici günlük kategorilerinin ve ilişkili şemaların bağlantı
 ## <a name="metrics"></a>Ölçümler
 Aşağıdaki tablolarda Azure CosmOS DB için toplanan platform ölçümleri listelenmektedir. Tüm ölçümler, **Standart ölçümler Cosmos DB**ad alanında depolanır.
 
-Tüm Azure Izleyici desteği ölçümlerinin bir listesi (CosmosDB dahil) için bkz. [Azure izleyici desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md). 
+Tüm Azure Izleyici desteği ölçümlerinin bir listesi (Azure Cosmos DB dahil) için bkz. [Azure izleyici desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md). 
 
 #### <a name="request-metrics"></a>İstek ölçümleri
             
@@ -98,7 +99,7 @@ Tüm Azure Izleyici desteği ölçümlerinin bir listesi (CosmosDB dahil) için 
 |Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman granluğunu| Kullanım |
 |---|---|---|---| ---| ---|
 | CassandraRequests (Cassandra Istekleri) | Sayı (sayı) | Yapılan Cassandra API isteği sayısı| DatabaseName, CollectionName, ErrorCode, bölge, OperationType, ResourceType| Tümü| Cassandra isteklerini bir dakikalık ayrıntı düzeyinde izlemek için kullanılır. Saniye başına ortalama istek almak için dakika olarak sayı toplama kullanın ve 60 ile bölün.|
-| CassandraRequestCharges (Cassandra Istek ücretleri) | Sayı (Toplam, en az, en fazla, Ortalama) | Cassandra API istekleri tarafından tüketilen istek birimleri| DatabaseName, CollectionName, bölge, OperationType, ResourceType| Tümü| Bir Cassandra API hesabıyla dakikada kullanılan ru 'yi izlemek için kullanılır.|
+| CassandraRequestCharges (Cassandra Istek ücretleri) | Sayı (Toplam, en az, en fazla, Ortalama) | Cassandra API tarafından tüketilen istek birimleri | DatabaseName, CollectionName, bölge, OperationType, ResourceType| Tümü| Bir Cassandra API hesabıyla dakikada kullanılan ru 'yi izlemek için kullanılır.|
 | Cassandraconnectionkapanışları (Cassandra bağlantı kapanışları) |Sayı (sayı) |Kapatılan Cassandra bağlantısı sayısı| ClosureReason, bölge| Tümü | İstemcilerle Azure Cosmos DB Cassandra API arasındaki bağlantıyı izlemek için kullanılır.|
 
 ## <a name="see-also"></a>Ayrıca Bkz.

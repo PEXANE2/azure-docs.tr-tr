@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045918"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082639"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -35,14 +35,14 @@ Bu makalede VM uzantılarına genel bakış, Azure VM uzantıları kullanma önk
 Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile kullanılabilir. Bazı örnekler:
 
 - PowerShell Istenen durum yapılandırmasını Windows için DSC uzantısına sahip bir VM 'ye uygulayın. Daha fazla bilgi için bkz. [Azure Istenen durum yapılandırması uzantısı](dsc-overview.md).
-- Log Analytics Aracısı VM uzantısıyla bir VM 'nin izlenmesini yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'leri Azure izleyici günlüklerine bağlama](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Log Analytics Aracısı VM uzantısıyla bir VM 'nin izlenmesini yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'leri Azure izleyici günlüklerine bağlama](../../azure-monitor/learn/quick-collect-azurevm.md).
 - Chef kullanarak bir Azure VM yapılandırın. Daha fazla bilgi için bkz. [Chef Ile Azure VM dağıtımını otomatikleştirme](../../chef/chef-automation.md).
 - Dataköpek uzantısıyla Azure altyapınızı izlemeyi yapılandırın. Daha fazla bilgi için bkz. [Dataköpek blogu](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -65,18 +65,18 @@ Bazı uzantılar tüm Işletim sistemlerinde desteklenmez ve *51 hata kodu, ' de
 
 #### <a name="network-access"></a>Ağ erişimi
 
-Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu karşıya yüklemeleri Azure depolama 'ya gönderilir. Aracıların [desteklenen](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) sürümünü kullanıyorsanız, sanal makine bölgesinde Azure depolama 'ya erişime izin vermeniz gerekmez, çünkü aracıyı aracı Iletişimleri için Azure Fabric denetleyicisi 'Ne (HostGAPlugin özelliği, özel IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)üzerinde ayrıcalıklı kanal aracılığıyla) yeniden yönlendirmek için kullanabilir. Aracının desteklenmeyen bir sürümü kullanıyorsanız, VM 'den o bölgedeki Azure depolama 'ya giden erişime izin vermeniz gerekir.
+Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu karşıya yüklemeleri Azure depolama 'ya gönderilir. Aracıların [desteklenen](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) sürümünü kullanıyorsanız, sanal makine bölgesinde Azure depolama 'ya erişime izin vermeniz gerekmez, çünkü aracıyı aracı Iletişimleri için Azure Fabric denetleyicisi 'Ne (HostGAPlugin özelliği, özel IP [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)üzerinde ayrıcalıklı kanal aracılığıyla) yeniden yönlendirmek için kullanabilir. Aracının desteklenmeyen bir sürümü kullanıyorsanız, VM 'den o bölgedeki Azure depolama 'ya giden erişime izin vermeniz gerekir.
 
 > [!IMPORTANT]
 > Konuk güvenlik duvarını veya bir ara sunucu kullanarak *168.63.129.16* 'e erişimi engellediğiniz takdirde, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir.
 
-Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama veya Azure Active Directory erişimi gerektiren uzantılar için, [Azure NSG hizmeti etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) depolama veya AzureActiveDirectory kullanarak erişime izin verebilirsiniz.
+Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama veya Azure Active Directory erişimi gerektiren uzantılar için, [Azure NSG hizmeti etiketlerini](../../virtual-network/security-overview.md#service-tags) depolama veya AzureActiveDirectory kullanarak erişime izin verebilirsiniz.
 
 Windows Konuk Aracısı, aracı trafik isteklerini aracılığıyla yeniden yönlendirebilmeniz için proxy sunucu desteğine sahip değildir. Bu, Windows Konuk aracısının internet üzerindeki kaynaklara veya IP 168.63.129.16 üzerinden ana bilgisayar üzerinde erişim için özel ara sunucunuza (varsa) bağlı olacağı anlamına gelir.
 
 ## <a name="discover-vm-extensions"></a>VM uzantılarını bulma
 
-Azure VM'leri ile kullanabileceğiniz birçok farklı VM uzantısı vardır. Tam listeyi görmek için [Get-Azvmextensionımage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage)komutunu kullanın. Aşağıdaki örnek, *WestUS* konumundaki tüm kullanılabilir uzantıları listeler:
+Azure VM'leri ile kullanabileceğiniz birçok farklı VM uzantısı vardır. Tam listeyi görmek için [Get-Azvmextensionımage](/powershell/module/az.compute/get-azvmextensionimage)komutunu kullanın. Aşağıdaki örnek, *WestUS* konumundaki tüm kullanılabilir uzantıları listeler:
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -92,7 +92,7 @@ Aşağıdaki yöntemler mevcut bir VM 'ye karşı bir uzantı çalıştırmak i�
 
 ### <a name="powershell"></a>PowerShell
 
-Tek tek uzantıları çalıştırmak için çeşitli PowerShell komutları vardır. Bir listeyi görmek için, [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) ve *EXTENSION*FILTER kullanın:
+Tek tek uzantıları çalıştırmak için çeşitli PowerShell komutları vardır. Bir listeyi görmek için, [Get-Command](/powershell/module/microsoft.powershell.core/get-command) ve *EXTENSION*FILTER kullanın:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-Aşağıdaki örnekte, VM erişimi uzantısı bir Windows sanal makinesinin yönetici parolasını geçici bir parolaya sıfırlamak için kullanılır. VM erişimi uzantısı hakkında daha fazla bilgi için bkz. [WINDOWS VM 'de Uzak Masaüstü hizmetini sıfırlama](../windows/reset-rdp.md). Bunu çalıştırdığınızda, ilk oturum açmada parolayı sıfırlamanız gerekir:
+Aşağıdaki örnekte, VM erişimi uzantısı bir Windows sanal makinesinin yönetici parolasını geçici bir parolaya sıfırlamak için kullanılır. VM erişimi uzantısı hakkında daha fazla bilgi için bkz. [WINDOWS VM 'de Uzak Masaüstü hizmetini sıfırlama](../troubleshooting/reset-rdp.md). Bunu çalıştırdığınızda, ilk oturum açmada parolayı sıfırlamanız gerekir:
 
 ```powershell
 $cred=Get-Credential
@@ -137,10 +137,10 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-`Set-AzVMExtension`Komut herhangi BIR VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+`Set-AzVMExtension`Komut herhangi BIR VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
@@ -315,7 +315,7 @@ En son küçük sürüm hata düzeltmelerini almak için, uzantı dağıtımlar�
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Uzantının, bir VM 'de oto Upgrademinorversion ile ayarlanmış olup olmadığını belirleme
 
-Uzantının ' oto Upgrademinorversion ' ile sağlanması durumunda VM modelinden bakabilirsiniz. Denetlemek için [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ' i kullanın ve kaynak grubunu ve VM adını şu şekilde sağlayın:
+Uzantının ' oto Upgrademinorversion ' ile sağlanması durumunda VM modelinden bakabilirsiniz. Denetlemek için [Get-AzVm](/powershell/module/az.compute/get-azvm) ' i kullanın ve kaynak grubunu ve VM adını şu şekilde sağlayın:
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -371,7 +371,7 @@ Aşağıdaki sorun giderme adımları tüm VM uzantıları için geçerlidir.
 
 ### <a name="view-extension-status"></a>Uzantı durumunu görüntüle
 
-VM uzantısı bir VM 'ye karşı çalıştırıldıktan sonra, uzantı durumunu döndürmek için [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ' yi kullanın. *Alt durumlar [0]* uzantı sağlama işleminin başarılı olduğunu, yani VM 'ye başarıyla dağıtıldığını gösterir, ancak uzantının VM içinde yürütülmesi başarısız oldu, *alt durumlar [1]*.
+VM uzantısı bir VM 'ye karşı çalıştırıldıktan sonra, uzantı durumunu döndürmek için [Get-AzVM](/powershell/module/az.compute/get-azvm) ' yi kullanın. *Alt durumlar [0]* uzantı sağlama işleminin başarılı olduğunu, yani VM 'ye başarıyla dağıtıldığını gösterir, ancak uzantının VM içinde yürütülmesi başarısız oldu, *alt durumlar [1]*.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -407,7 +407,7 @@ Uzantı yürütme durumu Azure portal da bulunabilir. Bir uzantının durumunu g
 
 ### <a name="rerun-vm-extensions"></a>VM uzantılarını yeniden çalıştır
 
-Bir VM uzantısının yeniden çalıştırılması gereken durumlar olabilir. Bir uzantıyı kaldırarak yeniden çalıştırabilir ve sonra uzantıyı seçtiğiniz bir yürütme yöntemiyle yeniden çalıştırabilirsiniz. Bir uzantıyı kaldırmak için [Remove-Azvmexgerkomutunu](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) aşağıdaki gibi kullanın:
+Bir VM uzantısının yeniden çalıştırılması gereken durumlar olabilir. Bir uzantıyı kaldırarak yeniden çalıştırabilir ve sonra uzantıyı seçtiğiniz bir yürütme yöntemiyle yeniden çalıştırabilirsiniz. Bir uzantıyı kaldırmak için [Remove-Azvmexgerkomutunu](/powershell/module/az.compute/remove-azvmextension) aşağıdaki gibi kullanın:
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"

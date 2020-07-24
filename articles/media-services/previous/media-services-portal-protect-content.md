@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d0e2487632971579a1a473375eb2200f3a63a46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084543"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Azure portal kullanarak içerik koruma ilkelerini yapılandırma
 
 > [!NOTE]
-> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 >
 
  Azure Media Services, medyanızın depolama, işleme ve teslim aracılığıyla bilgisayarınızdan ayrıldığı zamandan güvenli hale getirebilirsiniz. Media Services, içeriğinizi, 128 bit şifreleme anahtarlarını kullanarak Gelişmiş Şifreleme Standardı (AES) ile şifreli olarak dağıtmak için kullanabilirsiniz. Ayrıca, PlayReady ve/veya Widevine dijital hak yönetimi (DRM) ve Apple FairPlay kullanarak ortak şifreleme (CENC) ile de kullanabilirsiniz. 
@@ -132,4 +133,3 @@ AES şifresiz anahtar şifrelemesi tüm akış protokollerinde etkinleştirilmi�
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

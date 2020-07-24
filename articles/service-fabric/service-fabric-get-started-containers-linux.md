@@ -4,12 +4,12 @@ description: Azure Service Fabric üzerinde ilk Linux kapsayıcı uygulamanızı
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 547030b983dd02e7b65d404188dccdcc24d53a22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083846"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ Bir Service Fabric kümesindeki Linux kapsayıcısında mevcut olan bir uygulama
   * [Service Fabric SDK’sı ve araçları](service-fabric-get-started-linux.md).
   * [Linux için Docker CE](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric CLI](service-fabric-cli.md)
+
+* Üç veya daha fazla düğüme sahip bir Linux kümesi.
 
 * Azure Container Registry’deki bir kayıt defteri - Azure aboneliğinizde [Kapsayıcı kayıt defteri oluşturun](../container-registry/container-registry-get-started-portal.md). 
 
@@ -371,7 +373,7 @@ Bu makalede kullanılan tam hizmet ve uygulama bildirimleri aşağıda verilmiş
 Yeoman kullanılarak zaten oluşturulmuş bir uygulamaya başka bir kapsayıcı hizmeti eklemek için aşağıdaki adımları uygulayın:
 
 1. Dizini mevcut uygulamanın kök dizinine değiştirin. Örneğin Yeoman tarafından oluşturulan uygulama `MyApplication` ise `cd ~/YeomanSamples/MyApplication` olacaktır.
-2. `yo azuresfcontainer:AddService` öğesini çalıştırın
+2. `yo azuresfcontainer:AddService` komutunu çalıştırın
 
 <a id="manually"></a>
 

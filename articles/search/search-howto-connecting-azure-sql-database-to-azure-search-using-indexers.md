@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/12/2020
+ms.openlocfilehash: 725ee57a06d3d547142fdd39ef03e1c7e7c296a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084152"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL içeriğine bağlanma ve dizin oluşturma
 
@@ -325,8 +325,8 @@ Geçici silme tekniği kullanılırken, veri kaynağını oluştururken veya gü
 | smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, Edm. String | |
 | uniqueıdentıer |Edm.String | |
 | Coğrafya |Edm.GeographyPoint |Yalnızca SRID 4326 (varsayılan) ile tür noktası olan Coğrafya örnekleri desteklenir |
-| rowversion |YOK |Satır sürümü sütunları arama dizininde depolanamaz, ancak değişiklik izleme için kullanılabilirler |
-| Time, TimeSpan, BINARY, varbinary, Image, XML, geometry, CLR türleri |YOK |Desteklenmiyor |
+| rowversion |Yok |Satır sürümü sütunları arama dizininde depolanamaz, ancak değişiklik izleme için kullanılabilirler |
+| Time, TimeSpan, BINARY, varbinary, Image, XML, geometry, CLR türleri |Yok |Desteklenmez |
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 SQL Indexer çeşitli yapılandırma ayarları sunar:

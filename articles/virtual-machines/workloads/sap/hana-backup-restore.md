@@ -13,13 +13,14 @@ ms.workload: infrastructure
 ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cb2647cc5ac2dc60f5ae7327ee39ed2ff625193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79ef279423c524f0d409815e7ae163aa699f5428
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82901385"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082214"
 ---
-# <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
+# <a name="backup-and-restore-on-sap-hana-on-azure"></a>Azure 'da SAP HANA yedekleme ve geri yükleme
 
 >[!IMPORTANT]
 >Bu makale SAP HANA yönetimi belgelerinin veya SAP notlarının yerini almaz. Özellikle yedekleme, geri yükleme, yüksek kullanılabilirlik ve olağanüstü durum kurtarma için SAP HANA yönetim ve işlemlerde, uzmanlığın iyi bir şekilde anlaşılmasını umuz. Bu makalede SAP HANA Studio 'daki ekran görüntüleri gösterilir. İçerik, yapı ve SAP yönetim araçlarının ekranlarının doğası ve araçların kendisi SAP HANA sürümden sürüme değişebilir.

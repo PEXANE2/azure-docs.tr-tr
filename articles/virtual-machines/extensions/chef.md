@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76544727"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082622"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux ve Windows için Chef VM Uzantısı
 
 Chef Software, Linux ve Windows için fiziksel ve sanal sunucu yapılandırmalarının yönetilmesine olanak sağlayan bir DevOps otomasyon platformu sunar. Chef VM uzantısı, sanal makinelerde Chef sağlayan bir uzantıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -77,15 +78,15 @@ Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az C
 
 | Name | Değer/örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ----
-| ayarlar/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | dize (URL) | E |
-| ayarlar/bootstrap_options/validation_client_name | `myorg-validator` | string | E |
-| ayarlar/runlist | `recipe[mycookbook::default]` | string | E |
+| ayarlar/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | dize (URL) | Y |
+| ayarlar/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
+| ayarlar/runlist | `recipe[mycookbook::default]` | string | Y |
 
 ### <a name="protected-settings"></a>Korumalı ayarlar
 
 | Name | Örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | E |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
 
 <!--
 ### Linux-specific settings
@@ -105,7 +106,7 @@ Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. 
 
 Chef VM uzantısını içeren örnek bir Kaynak Yöneticisi şablonu [Azure hızlı başlangıç galerisinde](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)bulunabilir.
 
-Bir sanal makine uzantısının JSON yapılandırması, sanal makine kaynağının içinde iç içe veya Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirilmiş olabilir. JSON yapılandırmasının yerleştirilmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. [alt kaynaklar için ad ve tür ayarlama](../../azure-resource-manager/resource-manager-template-child-resource.md).
+Bir sanal makine uzantısının JSON yapılandırması, sanal makine kaynağının içinde iç içe veya Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirilmiş olabilir. JSON yapılandırmasının yerleştirilmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. [alt kaynaklar için ad ve tür ayarlama](../../azure-resource-manager/templates/child-resource-name-type.md).
 
 ## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 

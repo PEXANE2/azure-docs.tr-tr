@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77562148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081874"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator işlev kodu kısıtlamaları
 
@@ -17,7 +18,7 @@ Dayanıklı İşlevler, [Azure işlevlerinin](../functions-overview.md) bir uzan
 
 ## <a name="orchestrator-code-constraints"></a>Düzenleyici kodu kısıtlamaları
 
-Orchestrator işlevleri, güvenilir bir yürütme sağlamak ve yerel değişken durumunu korumak için [olay](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) kaynağını kullanır. Orchestrator kodunun yeniden [yürütme davranışı](durable-functions-orchestrations.md#reliability) , bir Orchestrator işlevinde yazabileceğiniz kod türü üzerinde kısıtlamalar oluşturur. Örneğin, Orchestrator işlevleri *belirleyici*olmalıdır: bir Orchestrator işlevi birden çok kez yeniden yürütülür ve her seferinde aynı sonucu üretmelidir.
+Orchestrator işlevleri, güvenilir bir yürütme sağlamak ve yerel değişken durumunu korumak için [olay](/azure/architecture/patterns/event-sourcing) kaynağını kullanır. Orchestrator kodunun yeniden [yürütme davranışı](durable-functions-orchestrations.md#reliability) , bir Orchestrator işlevinde yazabileceğiniz kod türü üzerinde kısıtlamalar oluşturur. Örneğin, Orchestrator işlevleri *belirleyici*olmalıdır: bir Orchestrator işlevi birden çok kez yeniden yürütülür ve her seferinde aynı sonucu üretmelidir.
 
 ### <a name="using-deterministic-apis"></a>Belirleyici API 'Leri kullanma
 
@@ -27,7 +28,7 @@ Orchestrator işlevleri, hedef dillerinde API 'leri çağırabilir. Ancak, Orche
 
 Aşağıdaki tabloda, oluşmaması gereken API 'Ler örnekleri gösterilmektedir çünkü belirleyici *değildir* . Bu kısıtlamalar yalnızca Orchestrator işlevleri için geçerlidir. Diğer işlev türlerinde bu tür kısıtlamalar yoktur.
 
-| API kategorisi | Nedeni | Geçici çözüm |
+| API kategorisi | Neden | Geçici çözüm |
 | ------------ | ------ | ---------- |
 | Tarihler ve saatler  | Döndürülen değer her yeniden yürütme için farklı olduğundan geçerli tarih veya saati döndüren API 'Ler belirleyici değildir. | .NET veya API içindeki API 'yi `CurrentUtcDateTime` `currentUtcDateTime` , yeniden yürütme için güvenli olan JavaScript 'te kullanın. |
 | GUID 'Ler ve UUID 'ler  | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele bir GUID veya UUID döndüren API 'Ler belirleyici değildir. | `NewGuid` `newGuid` Rastgele GUID 'leri güvenle oluşturmak için .NET veya JavaScript içinde kullanın. |

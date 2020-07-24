@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791665"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083693"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Yaygın Azure Spring Cloud sorunlarını giderme
 
@@ -106,7 +108,7 @@ Ancak Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cl
 * Abonelik etkin.
 * Konum, Azure Spring Cloud tarafından [desteklenir](spring-cloud-faq.md) .
 * Örnek için kaynak grubu zaten oluşturulmuş.
-* Kaynak adı adlandırma kuralına uyar. Yalnızca küçük harf, sayı ve kısa çizgi içermelidir. İlk karakter bir harf olmalıdır. Son karakter bir harf veya sayı olmalıdır. Değer, 2 ile 32 karakter arasında olmalıdır.
+* Kaynak adı adlandırma kuralına uyar. Yalnızca küçük harf, sayı ve kısa çizgi içermelidir. İlk karakter harf olmalıdır. Son karakter harf veya sayı olmalıdır. Değer, 2 ile 32 karakter arasında olmalıdır.
 
 Azure yay bulut hizmeti örneğini Kaynak Yöneticisi şablonunu kullanarak ayarlamak istiyorsanız, önce [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlamak](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)için bölümüne bakın.
 
@@ -157,7 +159,7 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek uygulaman
 > [!WARNING]
 > Bu yordam, test uç noktanızı kullanarak ortam değişkenlerinizi kullanıma sunar.  Test uç noktanız herkese açık ise veya uygulamanıza bir etki alanı adı atadıysanız devam edin.
 
-1. `https://<your application test endpoint>/actuator/health` kısmına gidin.  
+1. `https://<your application test endpoint>/actuator/health` öğesine gidin.  
     - Aşağıdakine benzer bir yanıt `{"status":"UP"}` , uç noktanın etkinleştirildiğini gösterir.
     - Yanıt negatifse, *POM.xml* dosyanıza aşağıdaki bağımlılığı ekleyin:
 

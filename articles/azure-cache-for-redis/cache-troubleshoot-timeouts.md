@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9360a4b5c5f0ef080b3de2a9d425bcdf2b2e70
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081908"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Redis için Azure Cache zaman aşımı sorunlarını giderme
 
@@ -30,7 +30,7 @@ Redsıs için Azure önbelleği, sağladığı yönetilen hizmet işlevselliğin
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange. Redsıs zaman aşımı özel durumları
 
-StackExchange. Redo, `synctimeout` varsayılan 1000 ms değeri ile zaman uyumlu işlemler için adlı bir yapılandırma ayarı kullanır. Zaman uyumlu bir çağrı bu süre içinde tamamlanmazsa, StackExchange. Redsıs istemcisi aşağıdaki örneğe benzer bir zaman aşımı hatası oluşturur:
+StackExchange. Redo, `synctimeout` varsayılan 5000 MS değeri ile zaman uyumlu işlemler için adlı bir yapılandırma ayarı kullanır. Zaman uyumlu bir çağrı bu süre içinde tamamlanmazsa, StackExchange. Redsıs istemcisi aşağıdaki örneğe benzer bir zaman aşımı hatası oluşturur:
 
 ```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
@@ -73,7 +73,7 @@ Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsi
 
 1. Sunucunuzun ve istemci uygulamanızın Azure 'da aynı bölgede bulunduğundan emin olun. Örneğin, önbelleğiniz Doğu ABD, ancak istemci Batı ABD ve istek Aralık içinde tamamlanmadığında zaman aşımları alabilir `synctimeout` veya yerel geliştirme makinenizden hata ayıklarken zaman aşımları elde edebilirsiniz. 
 
-    Önbelleğin ve istemcisinin aynı Azure bölgesinde olması kesinlikle önerilir. Çapraz bölge çağrılarını içeren bir senaryonuz varsa, `synctimeout` bağlantı dizesine bir özellik ekleyerek aralığı varsayılan 1000-ms aralığından daha yüksek bir değere ayarlamanız gerekir `synctimeout` . Aşağıdaki örnek, 2000 MS ile redin için Azure önbelleği tarafından StackExchange için bir bağlantı dizesinin kod parçacığını gösterir `synctimeout` .
+    Önbelleğin ve istemcisinin aynı Azure bölgesinde olması kesinlikle önerilir. Çapraz bölge çağrılarını içeren bir senaryonuz varsa, `synctimeout` bağlantı dizesine bir özellik ekleyerek aralığı varsayılan 5000-MS aralığından daha yüksek bir değere ayarlamanız gerekir `synctimeout` . Aşağıdaki örnek, 2000 MS ile redin için Azure önbelleği tarafından StackExchange için bir bağlantı dizesinin kod parçacığını gösterir `synctimeout` .
 
     ```output
     synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...

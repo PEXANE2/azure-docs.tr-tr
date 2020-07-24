@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 1d463242c923d766b500c1ede796e399e7af9c54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a6bf0499eb9ed6700111918c416f118414ae895
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085477"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler
 
@@ -21,7 +21,7 @@ NVıDıA GPU 'Lar tarafından desteklenen Azure N serisi VM 'lerinin GPU Özelli
 
 NVıDıA GPU sürücülerini el ile yüklemeyi seçerseniz, bu makale desteklenen dağıtımlar, sürücüler ve yükleme ve doğrulama adımları sağlar. [Windows VM 'leri](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)için el ile sürücü kurulum bilgileri de mevcuttur.
 
-N serisi VM özellikleri, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU LINUX VM boyutları](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+N serisi VM özellikleri, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU LINUX VM boyutları](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
@@ -355,7 +355,7 @@ Ardından, içinde güncelleştirme betiğinizin bir girdisini oluşturun, `/etc
 ## <a name="troubleshooting"></a>Sorun giderme
 
 * ' I kullanarak Kalıcılık modunu ayarlayabilirsiniz `nvidia-smi` . böylece, kartları sorgulamak için komutun çıktısının daha hızlı olması gerekir. Kalıcılık modunu ayarlamak için yürütün `nvidia-smi -pm 1` . VM yeniden başlatılırsa mod ayarının dışarıda olacağını unutmayın. Başlatma sırasında her zaman Mod ayarını çalıştırmak için komut dosyası oluşturabilirsiniz.
-* NVıDıA CUDA sürücülerini en son sürüme güncelleştirdiyseniz ve RDMA bağlantısı bulunursa, bu bağlantıyı yeniden kurmak için [RDMA sürücülerini yeniden yükleyin](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) . 
+* NVıDıA CUDA sürücülerini en son sürüme güncelleştirdiyseniz ve RDMA bağlantısı bulunursa, bu bağlantıyı yeniden kurmak için [RDMA sürücülerini yeniden yükleyin](#rdma-network-connectivity) . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

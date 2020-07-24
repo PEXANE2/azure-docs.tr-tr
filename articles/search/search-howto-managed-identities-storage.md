@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084084"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak bir Azure depolama hesabına bağlantı kurma
 
@@ -53,17 +53,19 @@ Bu adımda, Azure Bilişsel Arama Service 'e depolama hesabınızdan veri okuma 
     ![Rol ataması ekle](./media/search-managed-identities/add-role-assignment-storage.png "Rol ataması ekle")
 
 4. Dizin oluşturmak istediğiniz depolama hesabı türüne göre uygun rolleri seçin:
-    1. Azure Blob depolama, arama hizmetinizi **okuyucu ve veri erişimi** ve **Depolama Blobu veri okuyucusu** rollerine eklemenizi gerektirir.
-    1. Azure Data Lake Storage 2., arama hizmetinizi **okuyucu ve veri erişimi** ve **Depolama Blobu veri okuyucusu** rollerine eklemenizi gerektirir.
-    1. Azure Tablo depolaması, arama hizmetinizi yalnızca **okuyucu ve veri erişim** rolüne eklemenizi gerektirir.
+    1. Azure Blob depolama, arama hizmetinizi **Depolama Blobu veri okuyucusu** rolüne eklemenizi gerektirir.
+    1. Azure Data Lake Storage 2., arama hizmetinizi **Depolama Blobu veri okuyucusu** rolüne eklemenizi gerektirir.
+    1. Azure Tablo depolaması, arama hizmetinizi **okuyucu ve veri erişim** rolüne eklemenizi gerektirir.
 5.  **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** olarak **erişim atamasını** bırak
 6.  Arama hizmetinizi arayın, seçin ve ardından **Kaydet** ' i seçin.
 
+    Azure Blob depolama ve Azure Data Lake Storage 2. için örnek:
+
+    ![Depolama Blobu veri okuyucusu rol ataması Ekle](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Depolama Blobu veri okuyucusu rol ataması Ekle")
+
+    Azure Tablo Depolaması örneği:
+
     ![Okuyucu ve veri erişimi rol ataması ekleme](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "Okuyucu ve veri erişimi rol ataması ekleme")
-
-Azure Blob depolama ve Azure Data Lake Storage 2. bağlantı kurulurken, **Depolama Blobu veri okuyucu** rolü atamasını de eklemeniz gerektiğini unutmayın.
-
-![Depolama Blobu veri okuyucusu rol ataması Ekle](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Depolama Blobu veri okuyucusu rol ataması Ekle")
 
 ### <a name="3---create-the-data-source"></a>3-veri kaynağını oluşturma
 

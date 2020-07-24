@@ -3,13 +3,14 @@ title: Rest 'te uygulama kaynağınızı şifreleyin
 description: Azure Storage 'da uygulama verilerinizi şifreleyin ve paket dosyası olarak dağıtın.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79408733"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081891"
 ---
-# <a name="encryption-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme
+# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak uygulama verilerinizi Rest 'te şifreleyin
 
 İşlev uygulamanızın uygulama verilerini bekleyen şekilde şifrelemek için bir Azure depolama hesabı ve bir Azure Key Vault gerekir. Bu hizmetler, uygulamanızı bir dağıtım paketinden çalıştırdığınızda kullanılır.
 
@@ -104,7 +105,7 @@ Uygulama dosyalarınız artık depolama hesabınızda Rest olarak şifrelenir. �
 
 Uygulamanın depolama hesabınıza erişimini iptal etmeniz gerekirse, anahtar kasasına erişimi iptal edebilir veya SAS URL 'sini geçersiz kılan depolama hesabı anahtarlarını döndürebilirsiniz.
 
-## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
 ### <a name="is-there-any-additional-charge-for-running-my-function-app-from-the-deployment-package"></a>Dağıtım paketinden işlev uygulamamı çalıştırmak için herhangi bir ek ücret var mı?
 

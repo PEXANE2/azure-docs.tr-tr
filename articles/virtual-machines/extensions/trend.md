@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: 874e6f9b1c0bebedb5f50ca38d0703420be69de5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c4a4f641283a9a4771a236ba844cfe296b31c28c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082687"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak
 
@@ -38,7 +38,7 @@ Bir şirket içi çözüm için Trend Micro 'den geçerli bir aboneliğiniz vars
 
 [Azure Portal](https://portal.azure.com) , sanal makineyi oluşturmak için **Market** 'Ten bir görüntü kullandığınızda eğilim mikro güvenlik uzantısını yüklemenizi sağlar. Tek bir sanal makine oluşturuyorsanız, portalı kullanmak Trend Micro 'ten koruma eklemenin kolay bir yoludur.
 
-**Market** 'ten bir giriş kullanmak, sanal makineyi ayarlamanıza yardımcı olan bir sihirbaz açar. Trend mikro güvenlik uzantısını yüklemek için sihirbazın üçüncü paneli olan **Ayarlar** dikey penceresini kullanın.  Genel yönergeler için [Azure Portal Windows çalıştıran bir sanal makine oluşturma](../windows/classic/tutorial.md)bölümüne bakın.
+**Market** 'ten bir giriş kullanmak, sanal makineyi ayarlamanıza yardımcı olan bir sihirbaz açar. Trend mikro güvenlik uzantısını yüklemek için sihirbazın üçüncü paneli olan **Ayarlar** dikey penceresini kullanın.  Genel yönergeler için [Azure Portal Windows çalıştıran bir sanal makine oluşturma](../windows/quick-create-portal.md)bölümüne bakın.
 
 Sihirbazın **Ayarlar** dikey penceresine geldiğinizde, aşağıdaki adımları uygulayın:
 
@@ -57,7 +57,7 @@ Sihirbazın **Ayarlar** dikey penceresine geldiğinizde, aşağıdaki adımları
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Derin güvenlik aracısını var olan bir VM 'ye yükler
 Aracıyı var olan bir VM 'ye yüklemek için aşağıdaki öğeler gereklidir:
 
-* Yerel bilgisayarınızda yüklü olan Azure PowerShell modülü, sürüm 0.8.2 veya daha yeni bir sürüm. Yüklediğiniz Azure PowerShell sürümünü **Get-Module Azure | Format-Table sürümü** komutunu kullanarak kontrol edebilirsiniz. Yönergeler ve en son sürüme bağlantı için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview). Kullanarak Azure aboneliğinizde oturum açın `Add-AzureAccount` .
+* Yerel bilgisayarınızda yüklü olan Azure PowerShell modülü, sürüm 0.8.2 veya daha yeni bir sürüm. Yüklediğiniz Azure PowerShell sürümünü **Get-Module Azure | Format-Table sürümü** komutunu kullanarak kontrol edebilirsiniz. Yönergeler ve en son sürüme bağlantı için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/). Kullanarak Azure aboneliğinizde oturum açın `Add-AzureAccount` .
 * Hedef sanal makinede yüklü VM Aracısı.
 
 İlk olarak, VM aracısının zaten yüklü olduğunu doğrulayın. Bulut hizmeti adını ve sanal makine adını doldurup yönetici düzeyinde bir Azure PowerShell komut isteminde aşağıdaki komutları çalıştırın. < ve > karakterler dahil olmak üzere tırnak içindeki her şeyi değiştirin.

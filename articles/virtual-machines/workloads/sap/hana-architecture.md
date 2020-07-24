@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041da4198b0bdd040a4916008a1135aa2e2a5f7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa059ec8159779969c7ef7a5f4c97f3e985993a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77614530"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082197"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) mimarisi
 
@@ -40,7 +41,7 @@ Gösterilen mimari üç bölüme ayrılmıştır:
 
    SAP NetWeaver uygulamaları ve Azure 'da çalışması desteklenen veritabanları için bkz. [sap destek notunun #1928533 – Azure 'DA SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri](https://launchpad.support.sap.com/#/notes/1928533). SAP çözümlerini Azure 'da dağıtmaya ilişkin belgeler için, bkz.:
 
-  -  [Windows sanal makinelerinde SAP kullanma](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [Windows sanal makinelerinde SAP kullanma](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [Azure sanal makineler 'de SAP çözümlerini kullanma](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 - **Sol**: Azure büyük örnek damgasında SAP HANA TDI sertifikalı donanımı gösterir. HANA büyük örnek birimleri, Şirket içinden Azure 'a bağlantı ile aynı teknolojiyi kullanarak Azure aboneliğinizin sanal ağlarına bağlanır. 2019 Mayıs itibariyle, ExpressRoute ağ geçidi ile Azure VM 'Leri arasında iletişim kurmaya izin veren bir iyileştirme tanıtılmıştır. ExpressRoute hızlı yolu olarak adlandırılan bu iyileştirme, Bu mimaride görüntülenir (kırmızı çizgiler). 

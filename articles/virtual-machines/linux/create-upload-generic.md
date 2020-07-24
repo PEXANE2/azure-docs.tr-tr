@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc18c278754afd4bb08d564a2f82680fd94bf866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082588"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Onaylı olmayan dağıtımlar için bilgi
 
@@ -24,17 +24,18 @@ Azure üzerinde çalışan tüm dağıtımların sayıda önkoşulları vardır.
 
 Azure tarafından onaylanan [dağıtımlarla bir Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)ile başlamasını öneririz. Aşağıdaki makalelerde, Azure 'da desteklenen çeşitli desteklenen Linux dağıtımlarını nasıl hazırlayacağınız gösterilmektedir:
 
-* **[CentOS Tabanlı Dağıtımlar](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES ve openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+- [CentOS Tabanlı Dağıtımlar](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES ve openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
 
 Bu makalede, Azure 'da Linux dağıtımınızı çalıştırmaya yönelik genel rehberlik ele alınmaktadır.
 
 ## <a name="general-linux-installation-notes"></a>Genel Linux yükleme notları
-* Hyper-V sanal sabit disk (VHDX) biçimi Azure 'da desteklenmiyor, yalnızca *sabıt VHD*.  Hyper-V Yöneticisi 'Ni veya [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak diski vhd biçimine dönüştürebilirsiniz. VirtualBox kullanıyorsanız, disk oluştururken varsayılan (dinamik olarak ayrılan) yerine **sabit boyut** ' u seçin.
+* Hyper-V sanal sabit disk (VHDX) biçimi Azure 'da desteklenmiyor, yalnızca *sabıt VHD*.  Hyper-V Yöneticisi 'Ni veya [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak diski vhd biçimine dönüştürebilirsiniz. VirtualBox kullanıyorsanız, disk oluştururken varsayılan (dinamik olarak ayrılan) yerine **sabit boyut** ' u seçin.
 * Azure, Gen1 (BIOS önyükleme) & Gen2 (UEFı önyüklemesi) sanal makinelerini destekler.
 * VHD için izin verilen en büyük boyut 1.023 GB 'dir.
 * Linux sistemini yüklerken, çoğu yükleme için varsayılan olan mantıksal birim Yöneticisi (LVM) yerine standart bölümleri kullanmanızı öneririz. Standart bölümlerin kullanılması, özellikle de sorun giderme için bir işletim sistemi diski başka bir özdeş VM 'ye iliştirilmişse, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
@@ -66,7 +67,7 @@ Azure üzerinde VHD görüntülerinin 1 MB 'a hizalanmış bir sanal boyutu olma
 
 * VHD http: \/ / \<mystorageaccount> . blob.Core.Windows.net/VHDs/MyLinuxVM.vhd desteklenmeyen bir 21475270656 baytlık sanal boyuta sahiptir. Boyut bir tam sayı olmalıdır (MB cinsinden).
 
-Bu durumda, Hyper-V Yöneticisi konsolunu veya [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell cmdlet 'ini kullanarak VM 'yi yeniden boyutlandırın.  Bir Windows ortamında çalıştırmıyorsanız, `qemu-img` (gerekirse) dönüştürmek ve VHD 'yi yeniden boyutlandırmak için kullanmanızı öneririz.
+Bu durumda, Hyper-V Yöneticisi konsolunu veya [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) PowerShell cmdlet 'ini kullanarak VM 'yi yeniden boyutlandırın.  Bir Windows ortamında çalıştırmıyorsanız, `qemu-img` (gerekirse) dönüştürmek ve VHD 'yi yeniden boyutlandırmak için kullanmanızı öneririz.
 
 > [!NOTE]
 > [QEMU-img sürümlerindeki bilinen bir hata](https://bugs.launchpad.net/qemu/+bug/1490611) vardır >= 2.2.1, hatalı BIÇIMLI bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. `qemu-img`2.2.0 veya daha düşük ya da 2,6 ya da daha yüksek bir sürümü kullanmanızı öneririz.
@@ -189,4 +190,3 @@ Aşağıdaki düzeltme eklerinin çekirdeğe dahil olması gerekir. Bu liste tü
    > VirtualBox üzerinde çalıştırdıktan sonra aşağıdaki hatayla karşılaşabilirsiniz `waagent -force -deprovision` `[Errno 5] Input/output error` . Bu hata iletisi kritik değildir ve yoksayılabilir.
 
 * Sanal makineyi kapatın ve VHD 'yi Azure 'a yükleyin.
-

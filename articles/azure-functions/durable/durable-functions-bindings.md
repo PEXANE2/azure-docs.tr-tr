@@ -4,11 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısı için Teti
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081857"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
 
@@ -18,7 +19,7 @@ ms.locfileid: "84698070"
 
 Orchestration tetikleyicisi, [dayanıklı Orchestrator işlevlerini](durable-functions-types-features-overview.md#orchestrator-functions)yazmanıza olanak sağlar. Bu tetikleyici, yeni Orchestrator işlev örneklerinin başlamasını ve "bekleyen" bir görevi olan mevcut Orchestrator işlev örneklerinin devam ettirmeyi destekler.
 
-Azure Işlevleri için Visual Studio Araçları 'nı kullandığınızda Orchestration tetikleyicisi, [Orchestrationtriggerattribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .net özniteliği kullanılarak yapılandırılır.
+Azure Işlevleri için Visual Studio Araçları 'nı kullandığınızda Orchestration tetikleyicisi, [Orchestrationtriggerattribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute?view=azure-dotnet) .net özniteliği kullanılarak yapılandırılır.
 
 Komut dosyası dillerinde Orchestrator işlevleri yazdığınızda (örneğin, JavaScript veya C# komut dosyası), düzenleme tetikleyicisi `bindings` dosyadaki *function.js* dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
@@ -463,7 +464,7 @@ Varlık sınıfları bağlamalarla ve .NET bağımlılığı ekleme ile etkileş
 
 Aşağıdaki kod, JavaScript 'te yazılmış dayanıklı bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `add` `reset` `get` her biri bir tamsayı durumu üzerinde çalışan üç işlem,,, ve tanımlar.
 
-**Üzerindefunction.js**
+**function.json**
 ```json
 {
   "bindings": [
@@ -601,7 +602,7 @@ public static async Task AddValueClient(
 
 JavaScript 'te bir "Counter" varlığına işaret eden örnek bir Queue-tetiklenen işlev aşağıda verilmiştir.
 
-**Üzerindefunction.js**
+**function.json**
 ```json
 {
     "bindings": [

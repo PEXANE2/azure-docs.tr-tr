@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db51ec682f43366f5637c461e3fe4037dec8e364
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085223"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>Azure sanal makinelerine Azure büyük örnek geçişi SAP HANA
 Bu makalede olası Azure büyük örnek dağıtım senaryoları açıklanmakta ve küçültülmüş geçiş kapalı kalma süresi ile planlama ve geçiş yaklaşımı sunulmaktadır
@@ -40,7 +41,7 @@ Bu makalede aşağıdaki varsayımlar yapılır:
 - Müşteriler tasarım ve geçiş planını doğruladı.
 - Birincil siteyle birlikte olağanüstü durum kurtarma VM 'si için plan yapın.  Müşteriler, geçişten sonra VM 'lerde çalışan birincil site için DR düğümü olarak HLI 'yi kullanamaz.
 - Müşteriler gerekli yedekleme dosyalarını, iş kurtarılabilirlik ve uyumluluk gereksinimlerine bağlı olarak hedef VM 'lere kopyaladı. VM erişilebilir yedeklemelerde geçiş süresi boyunca zaman içinde kurtarma yapılmasına izin verir.
-- HSR HA için müşterilerin, [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) ve [rhel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)için SAP HANA ha Kılavuzu başına stonith cihazı ayarlaması ve yapılandırması gerekir.  HLI durumu gibi önceden yapılandırılmış değildir.
+- HSR HA için müşterilerin, [SLES](./high-availability-guide-suse-pacemaker.md) ve [rhel](./high-availability-guide-rhel-pacemaker.md)için SAP HANA ha Kılavuzu başına stonith cihazı ayarlaması ve yapılandırması gerekir.  HLI durumu gibi önceden yapılandırılmış değildir.
 - Bu geçiş yaklaşımı, Optane yapılandırmasına sahip HLI SKU 'Larını kapsamıyor.
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
@@ -48,21 +49,21 @@ HLI müşterilerine sahip ortak dağıtım modelleri aşağıdaki tabloda özetl
 
 | Senaryo KIMLIĞI | HLI senaryosu | VM 'ye geçiş mı? | Görüyorum |
 | --- | --- | --- | --- |
-| 1 | [Tek bir SID içeren tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Evet | - |
-| 2 | [MCOS ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Evet | - |
-| 3 | [Depolama çoğaltması kullanan DR ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | Hayır | Depolama çoğaltması Azure sanal platformunda kullanılamaz, geçerli DR çözümünü HSR veya yedekleme/geri yükleme olarak değiştirin |
-| 4 | [Depolama çoğaltması kullanarak DR (çok amaçlı) ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | Hayır | Depolama çoğaltması Azure sanal platformunda kullanılamaz, geçerli DR çözümünü HSR veya yedekleme/geri yükleme olarak değiştirin |
-| 5 | [Yüksek kullanılabilirlik için STONITH ile HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Evet | Hedef VM 'Ler için önceden yapılandırılmış bir SBD yok.  Bir STONITH çözümü seçin ve dağıtın.  Olası seçenekler: Azure Uçuşlama Aracısı (hem [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)Için desteklenir), SBD |
-| 6 | [HSR ile, depolama çoğaltması ile DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | Hayır | DR için depolama çoğaltmasını, HSR veya yedekleme/geri yükleme ile değiştirin |
-| 7 | [Konak otomatik yük devretme (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Evet | Azure VM 'leriyle paylaşılan depolama için ANF kullanma |
-| 8 | [Bekleme ile genişleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Evet | Yalnızca depolama için ANF kullanan M128s, M416s, M416ms VM 'Ler ile siyah beyaz/4HANA |
-| 9 | [Bekleme olmadan genişleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Evet | M128s, M416s, M416ms VM 'Leri ile siyah beyaz/4HANA (depolama için ANF kullanma ile veya olmadan) |
-| 10 | [Depolama çoğaltması kullanarak DR ile genişleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | Hayır | DR için depolama çoğaltmasını, HSR veya yedekleme/geri yükleme ile değiştirin |
-| 11 | [HSR kullanarak DR ile tek düğüm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Evet | - |
-| 12 | [Tek düğümlü HSR-DR (maliyet için iyileştirilmiş)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Evet | - |
-| 13 | [HSR ile HA ve DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Evet | - |
-| 14 | [HSR ile HA ve DR (maliyet için iyileştirilmiş)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Evet | - |
-| 15 | [HSR kullanarak DR ile ölçeklendirme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Evet | M128s ile siyah beyaz/4HANA. M416s, M416ms VM 'Leri (depolama için ANF kullanma ile veya olmadan) |
+| 1 | [Tek bir SID içeren tek düğüm](./hana-supported-scenario.md#single-node-with-one-sid) | Yes | - |
+| 2 | [MCOS ile tek düğüm](./hana-supported-scenario.md#single-node-mcos) | Yes | - |
+| 3 | [Depolama çoğaltması kullanan DR ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | Hayır | Depolama çoğaltması Azure sanal platformunda kullanılamaz, geçerli DR çözümünü HSR veya yedekleme/geri yükleme olarak değiştirin |
+| 4 | [Depolama çoğaltması kullanarak DR (çok amaçlı) ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | Hayır | Depolama çoğaltması Azure sanal platformunda kullanılamaz, geçerli DR çözümünü HSR veya yedekleme/geri yükleme olarak değiştirin |
+| 5 | [Yüksek kullanılabilirlik için STONITH ile HSR](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Yes | Hedef VM 'Ler için önceden yapılandırılmış bir SBD yok.  Bir STONITH çözümü seçin ve dağıtın.  Olası seçenekler: Azure Uçuşlama Aracısı (hem [RHEL](./high-availability-guide-rhel-pacemaker.md), [SLES](./high-availability-guide-suse-pacemaker.md)Için desteklenir), SBD |
+| 6 | [HSR ile, depolama çoğaltması ile DR](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | Hayır | DR için depolama çoğaltmasını, HSR veya yedekleme/geri yükleme ile değiştirin |
+| 7 | [Konak otomatik yük devretme (1 + 1)](./hana-supported-scenario.md#host-auto-failover-11) | Yes | Azure VM 'leriyle paylaşılan depolama için ANF kullanma |
+| 8 | [Bekleme ile genişleme](./hana-supported-scenario.md#scale-out-with-standby) | Yes | Yalnızca depolama için ANF kullanan M128s, M416s, M416ms VM 'Ler ile siyah beyaz/4HANA |
+| 9 | [Bekleme olmadan genişleme](./hana-supported-scenario.md#scale-out-without-standby) | Yes | M128s, M416s, M416ms VM 'Leri ile siyah beyaz/4HANA (depolama için ANF kullanma ile veya olmadan) |
+| 10 | [Depolama çoğaltması kullanarak DR ile genişleme](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | Hayır | DR için depolama çoğaltmasını, HSR veya yedekleme/geri yükleme ile değiştirin |
+| 11 | [HSR kullanarak DR ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | Yes | - |
+| 12 | [Tek düğümlü HSR-DR (maliyet için iyileştirilmiş)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | Yes | - |
+| 13 | [HSR ile HA ve DR](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
+| 14 | [HSR ile HA ve DR (maliyet için iyileştirilmiş)](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
+| 15 | [HSR kullanarak DR ile ölçeklendirme](./hana-supported-scenario.md#scale-out-with-dr-using-hsr) | Yes | M128s ile siyah beyaz/4HANA. M416s, M416ms VM 'Leri (depolama için ANF kullanma ile veya olmadan) |
 
 
 ## <a name="source-hli-planning"></a>Kaynak (HLI) planlaması
@@ -72,7 +73,7 @@ Bir HLI sunucusu eklerken, hem Microsoft hizmet yönetimi hem de müşterileri, 
 Veritabanı içeriğini istenmeyen, süresi geçmiş veriler veya eski Günlükler yeni veritabanına geçirilmeyecek şekilde almak için iyi bir işletimsel uygulamadır.  Temizlik genellikle eski, son kullanma veya etkin olmayan verileri silme veya arşivlemeyi içerir.  Bu ' veri hygiene ' eylemleri, üretim kullanımından önce veri kırpma geçerliliğini doğrulamak için üretim dışı sistemlerde test edilmelidir.
 
 ### <a name="allow-network-connectivity-for-new-vms-and-or-virtual-network"></a>Yeni VM 'Ler ve sanal ağ için ağ bağlantısına izin ver 
-Bir müşterinin HLI dağıtımında, ağ, makale [SAP HANA (büyük örnekler) ağ mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)bölümünde açıklanan bilgilere göre ayarlanmıştır. Ayrıca, ağ trafiği yönlendirme, ' Azure 'da yönlendirme ' bölümünde özetlenen şekilde yapılır.
+Bir müşterinin HLI dağıtımında, ağ, makale [SAP HANA (büyük örnekler) ağ mimarisi](./hana-network-architecture.md)bölümünde açıklanan bilgilere göre ayarlanmıştır. Ayrıca, ağ trafiği yönlendirme, ' Azure 'da yönlendirme ' bölümünde özetlenen şekilde yapılır.
 - Yeni bir VM 'yi geçiş hedefi olarak ayarlama sırasında, IP adresi aralıklarına sahip var olan sanal ağa zaten HLI 'ya bağlanmasına izin verildiğinde, başka bir bağlantı güncelleştirmesi gerekmez.
 - Yeni Azure VM yeni bir Microsoft Azure Sanal Ağ yerleştirilmişse, başka bir bölgede olabilir ve var olan sanal ağla eşlenirse, bu yeni sanal ağ IP aralığı için erişime izin vermek üzere özgün HLı sağlama alanındaki ExpressRoute hizmet anahtarı ve kaynak KIMLIĞI kullanılabilir.  Sanal ağın HLI bağlantı kurmasını sağlamak için Microsoft hizmet yönetimiyle koordine edin.  Note: uygulama ve veritabanı katmanları arasındaki ağ gecikmesini en aza indirmek Için hem uygulama hem de veritabanı katmanları aynı sanal ağda olmalıdır.  
 
@@ -106,7 +107,7 @@ Var olan bir altyapının yerini almak için yeni bir altyapının çıkarılmas
 Geçerli SAP uygulama sunucularının dağıtım bölgesi genellikle ilişkili HLIs ile yakın yakınlardır.  Ancak, HLIs kullanılabilir Azure bölgelerinden daha az sayıda konumda sunulur.  Fiziksel HLI 'ı Azure VM 'ye geçirirken, tüm ilgili hizmetlerin performans iyileştirmesi için yakınlık uzaklığı ' ince ayar ' için de iyi bir zaman vardır.  Bu işlemi yaparken, bir anahtar dikkate alınması, seçilen bölgenin tüm gerekli kaynaklara sahip olduğundan emin olunması.  Örneğin, belirli VM ailesinin kullanılabilirliği veya yüksek kullanılabilirlik kurulumu için Azure bölgelerinin sunumu.
 
 ### <a name="virtual-network"></a>Sanal ağ 
-Müşterilerin yeni HANA veritabanını var olan bir sanal ağda çalıştırıp çalıştırmayacağını veya yeni bir tane oluşturmasını seçmesi gerekir.  Birincil karar verme faktörü, SAP yatay için geçerli ağ yerleşimidir.  Ayrıca, altyapı bir bölgeden iki bölgeler dağıtımına geçtiğinde ve PPG kullanıyorsa, mimari değişiklik uygular. Daha fazla bilgi için [SAP uygulamasıyla en iyi ağ gecikmesi Için Azure PPG](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)makalesine bakın.   
+Müşterilerin yeni HANA veritabanını var olan bir sanal ağda çalıştırıp çalıştırmayacağını veya yeni bir tane oluşturmasını seçmesi gerekir.  Birincil karar verme faktörü, SAP yatay için geçerli ağ yerleşimidir.  Ayrıca, altyapı bir bölgeden iki bölgeler dağıtımına geçtiğinde ve PPG kullanıyorsa, mimari değişiklik uygular. Daha fazla bilgi için [SAP uygulamasıyla en iyi ağ gecikmesi Için Azure PPG](./sap-proximity-placement-scenarios.md)makalesine bakın.   
 
 ### <a name="security"></a>Güvenlik
 Yeni SAP HANA VM 'nin yeni veya mevcut bir VNET/alt ağ üzerinde giriş yapılıp yapılmayacağını belirtir. Bu, güvenli koruma gerektiren yeni bir iş açısından kritik hizmeti temsil eder.  Bu yeni hizmet sınıfı için değerlendirilmek ve dağıtılması için şirket bilgileri güvenlik ilkesiyle uyumlu erişim denetimi.
@@ -115,7 +116,7 @@ Yeni SAP HANA VM 'nin yeni veya mevcut bir VNET/alt ağ üzerinde giriş yapıl�
 Bu geçiş Ayrıca, HANA işlem motorunuzu doğru boyuta geçirmek için de bir fırsattır.  Bir diğeri, harcama verimliliğini artırmak için doğru boyutlandırmayı sağlayan sistem kaynak tüketimini anlamak için Hana Studio ile birlikte hana [sistem görünümlerini](https://help.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/Cloud/3859e48180bb4cf8a207e15cf25a7e57.html) kullanabilir.
 
 ### <a name="storage"></a>Depolama 
-Depolama performansı, SAP uygulama kullanıcı deneyimini etkileyen faktörlerden biridir.  Belirli bir VM SKU 'SU temel alınarak, [Azure sanal makine depolama yapılandırmalarının SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)yayımlanan minimum depolama düzeni vardır. Yeni HANA VM için yeterli GÇ kapasitesi ve performans sağlamak üzere, bu en düşük özellikleri gözden geçirdikten ve mevcut HLI sistem istatistiklerine göre karşılaştırılmasını öneririz.
+Depolama performansı, SAP uygulama kullanıcı deneyimini etkileyen faktörlerden biridir.  Belirli bir VM SKU 'SU temel alınarak, [Azure sanal makine depolama yapılandırmalarının SAP HANA](./hana-vm-operations-storage.md)yayımlanan minimum depolama düzeni vardır. Yeni HANA VM için yeterli GÇ kapasitesi ve performans sağlamak üzere, bu en düşük özellikleri gözden geçirdikten ve mevcut HLI sistem istatistiklerine göre karşılaştırılmasını öneririz.
 
 Yeni HANA sanal makinesi ve ilişkili sanal makine için PPG 'yi yapılandırırsanız, depolama ve VM 'nin birlikte bulunması için bir destek bileti göndererek Yedekleme çözümünüzün değiştirilmesi gerektiğinden, işlemsel harcama sürprizleri önlemek için depolama maliyetinin de yeniden ziyaret edilmelidir.
 
@@ -123,13 +124,13 @@ Yeni HANA sanal makinesi ve ilişkili sanal makine için PPG 'yi yapılandırır
 HLI ile, depolama çoğaltma, olağanüstü durum kurtarma için varsayılan seçenek olarak sunulmuştur. Bu özellik, Azure VM 'de SAP HANA için varsayılan seçenektir. HSR, yedekleme/geri yükleme veya iş gereksinimlerinizi karşılayan diğer desteklenen çözümleri göz önünde bulundurun.
 
 ### <a name="availability-sets-availability-zones-and-proximity-placement-groups"></a>Kullanılabilirlik kümeleri, Kullanılabilirlik Alanları ve yakınlık yerleştirme grupları 
-Uygulama katmanı ve SAP HANA arasındaki mesafeyi kısaltmak için, ağ gecikmesini en düşük düzeyde tutmak üzere yeni veritabanı sanal makinesi ve geçerli SAP uygulama sunucuları bir PPG 'ye yerleştirilmelidir. Azure kullanılabilirlik kümesi 'nin ve Kullanılabilirlik Alanları SAP dağıtımları için PPG ile nasıl çalıştığını öğrenmek için [yakınlık yerleşimi grubuna](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) bakın.
+Uygulama katmanı ve SAP HANA arasındaki mesafeyi kısaltmak için, ağ gecikmesini en düşük düzeyde tutmak üzere yeni veritabanı sanal makinesi ve geçerli SAP uygulama sunucuları bir PPG 'ye yerleştirilmelidir. Azure kullanılabilirlik kümesi 'nin ve Kullanılabilirlik Alanları SAP dağıtımları için PPG ile nasıl çalıştığını öğrenmek için [yakınlık yerleşimi grubuna](./sap-proximity-placement-scenarios.md) bakın.
 Hedef HANA sisteminin üyeleri birden fazla Azure bölgesinde dağıtılmışsa, müşteriler seçili bölgelerin gecikme süresi profilinin net bir görünümüne sahip olmalıdır. SAP sistem bileşenlerinin yerleştirilmesi, SAP uygulaması ve veritabanı arasındaki uzaklığı en iyi şekilde elde etmek için idealdir.  Genel etki alanı [kullanılabilirlik bölgesi gecikme testi aracı](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) ölçüyü daha kolay hale getirmeye yardımcı olur.  
 
 
 ### <a name="backup-strategy"></a>Yedekleme stratejisi
 Birçok müşteri, HLI SAP HANA için üçüncü taraf yedekleme çözümlerini zaten kullanıyor.  Bu durumda yalnızca ek korumalı bir VM ve HANA veritabanlarının yapılandırılması gerekir.  Artık, makinenin geçiş işleminden sonra kullanımdan kalkmakta olması durumunda sürekli olarak devam eden yedekleme işleri planlanmamış olabilir.
-VM 'de SAP HANA için Azure Backup genel kullanıma sunulmuştur.  Azure VM 'lerinde [yedekleme](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database), [geri yükleme](https://docs.microsoft.com/azure/backup/sap-hana-db-restore), SAP HANA yedeklemeyi [yönetme](https://docs.microsoft.com/azure/backup/sap-hana-db-manage) hakkında ayrıntılı bilgi için şu bağlantılara bakın:
+VM 'de SAP HANA için Azure Backup genel kullanıma sunulmuştur.  Azure VM 'lerinde [yedekleme](../../../backup/backup-azure-sap-hana-database.md), [geri yükleme](../../../backup/sap-hana-db-restore.md), SAP HANA yedeklemeyi [yönetme](../../../backup/sap-hana-db-manage.md) hakkında ayrıntılı bilgi için şu bağlantılara bakın:
 
 ### <a name="dr-strategy"></a>DR stratejisi
 Hizmet düzeyi hedefleriniz daha uzun bir kurtarma süresi içeriyorsa, blob depolamaya ve geri yüklemeye yönelik basit bir yedekleme, en basit ve en ucuz DR stratejisidir.  
@@ -196,5 +197,5 @@ VM sunucuları Stood ve HLI Blade 'ler kullanımdan kaldırılarak, işletim sis
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şu makalelere bakın:
-- [Azure 'da altyapı yapılandırma ve işlemlerini SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
-- [Azure 'Da SAP iş yükleri: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist).
+- [Azure 'da altyapı yapılandırma ve işlemlerini SAP HANA](./hana-vm-operations.md).
+- [Azure 'Da SAP iş yükleri: planlama ve dağıtım denetim listesi](./sap-deployment-checklist.md).

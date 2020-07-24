@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory varlıkları adlandırma kuralları
+title: Azure Data Factory varlıkları adlandırma kuralları-sürüm 1
 description: Data Factory varlıkların adlandırma kurallarını açıklar.
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8fa1340b586434bf98d51437d4dc6b08594f0afa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b6dc5b89b8c5d691b19e9e3368d805eb59b1db1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74931882"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082869"
 ---
-# <a name="azure-data-factory---naming-rules"></a>Azure Data Factory adlandırma kuralları
+# <a name="rules-for-naming-azure-data-factory-entities"></a>Azure Data Factory varlıkları adlandırma kuralları
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory kuralları adlandırma](../naming-rules.md).
 

@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d8ca41c56239bc994b34119600dfa9db60ada6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559949"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083098"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama bağlamaları
 
@@ -139,7 +140,7 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-CloudTable 'ın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/table-storage-how-to-use-dotnet.md).
+CloudTable 'ın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/tutorial-develop-table-dotnet.md).
 
 ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
@@ -305,7 +306,7 @@ public class LogEntity : TableEntity
 }
 ```
 
-CloudTable 'ın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/table-storage-how-to-use-dotnet.md).
+CloudTable 'ın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/tutorial-develop-table-dotnet.md).
 
 ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
@@ -562,7 +563,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**tableName** | **TableName** | Tablonun adı.| 
 |**partitionKey** | **PartitionKey** |İsteğe bağlı. Okunacak tablo varlığının bölüm anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
 |**rowKey** |**RowKey** | İsteğe bağlı. Okunacak tablo varlığının satır anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
-|**almanız** |**Take** | İsteğe bağlı. JavaScript 'te okunacak en fazla varlık sayısı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
+|**take** |**Almanız** | İsteğe bağlı. JavaScript 'te okunacak en fazla varlık sayısı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
 |**filtreyle** |**Filtrele** | İsteğe bağlı. JavaScript 'te tablo girişi için bir OData filtre ifadesi. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
 |**bağlanma** |**Bağlantı** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Bu ayar bir "AzureWebJobs" önekli uygulama ayarının veya bağlantı dizesi adının adı olabilir. Örneğin, ayar adınız "AzureWebJobsMyStorage" ise burada "MyStorage" belirtebilirsiniz. Işlevler çalışma zamanı, "AzureWebJobsMyStorage" adlı bir uygulama ayarını otomatik olarak arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .|
 
@@ -606,7 +607,7 @@ Tablo verileri, işleve JSON dizesi olarak geçirilir. `json.loads`Giriş [örne
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Tableınput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput) özniteliği, işlevi tetikleyen tablo satırına erişmenizi sağlar.
+[Tableınput](/java/api/com.microsoft.azure.functions.annotation.tableinput) özniteliği, işlevi tetikleyen tablo satırına erişmenizi sağlar.
 
 ---
 
@@ -977,15 +978,15 @@ Bir işlevden tablo depolama satırı iletisi çıktısı için iki seçenek var
 
 - **Dönüş değeri**: `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri tablo depolama satırı olarak kalıcıdır.
 
-- **Zorunludur**: bir değeri, [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` bir olay hub 'ı iletisi olarak kalıcıdır.
+- **Zorunludur**: bir değeri, [Out](/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` bir olay hub 'ı iletisi olarak kalıcıdır.
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Tablestorageoutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) ek açıklamasını kullanarak bir işlevden tablo depolama satırını almak için iki seçenek vardır:
+[Tablestorageoutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) ek açıklamasını kullanarak bir işlevden tablo depolama satırını almak için iki seçenek vardır:
 
 - **Dönüş değeri**: ek açıklamanın işleve uygulanması için, işlevin dönüş değeri tablo depolama satırı olarak kalıcıdır.
 
-- **Kesinlik**: ileti değerini açık olarak ayarlamak için, ek açıklamayı türünün belirli bir parametresine uygulayın [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) ; burada `T` `PartitionKey` ve özellikleri de bulunur `RowKey` . Bu özellikler genellikle uygulama `ITableEntity` veya devralma ile birlikte sunulur `TableEntity` .
+- **Kesinlik**: ileti değerini açık olarak ayarlamak için, ek açıklamayı türünün belirli bir parametresine uygulayın [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) ; burada `T` `PartitionKey` ve özellikleri de bulunur `RowKey` . Bu özellikler genellikle uygulama `ITableEntity` veya devralma ile birlikte sunulur `TableEntity` .
 
 ---
 
@@ -993,9 +994,9 @@ Bir işlevden tablo depolama satırı iletisi çıktısı için iki seçenek var
 
 | Bağlama | Başvuru |
 |---|---|
-| Tablo | [Tablo hata kodları](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
-| Blob, tablo, kuyruk | [Depolama hatası kodları](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, tablo, kuyruk | [Sorun giderme](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Tablo | [Tablo hata kodları](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Blob, tablo, kuyruk | [Depolama hatası kodları](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, tablo, kuyruk | [Sorun giderme](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

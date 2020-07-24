@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge 'de ONNX 'i dağıtma ve tahmine dayalı hale getirme (Önizleme)
-description: Bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL Edge 'e (Önizleme) dağıtma ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın etme hakkında bilgi edinin.
+title: ONNX ile tahmine dayalı hale getirin ve bu tahminleri yapın
+description: Bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL Edge (Önizleme) veya Azure SQL yönetilen örneği 'ne (Önizleme) dağıtma hakkında bilgi edinin ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel tahmın etmeye çalıştırın.
 keywords: SQL Edge dağıtma
 services: sql-edge
 ms.service: sql-edge
@@ -8,32 +8,40 @@ ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 05/19/2020
-ms.openlocfilehash: b5cd655aaf9992c6908a7f9287f691fd36d84871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: fe1e4a195903803d3103da5f350de30a016e614b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476742"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085022"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de bir ONNX modeliyle tahminlere dağıtım yapın ve tahmin edin (Önizleme)
+# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Bir ONNX modeliyle tahmine dayalı dağıtım ve dağıtım yapma
 
-Bu hızlı başlangıçta, bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL Edge 'e (Önizleme) dağıtma ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın etme hakkında bilgi edineceksiniz. Daha fazla bilgi için bkz. [SQL Edge 'de ONNX Ile makine öğrenimi ve AI (Önizleme)](onnx-overview.md).
+Bu hızlı başlangıçta, bir modeli eğitme, ONNX 'e dönüştürme, [Azure SQL Edge (Önizleme)](onnx-overview.md) veya [Azure SQL yönetilen örneği 'ne (Önizleme)](../azure-sql/managed-instance/machine-learning-services-overview.md)dağıtma hakkında bilgi edineceksiniz ve ardından karşıya yüklenen onnx modelini kullanarak verileri yerel olarak tahmin etmeye çalışacaktır.
 
 Bu hızlı başlangıç, **scikit-** ' i öğrenin ve [Boston Muhafazası veri kümesini](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)kullanır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure SQL Edge modülünü dağıtmadıysanız, [Azure Portal kullanarak SQL Edge (Önizleme) dağıtma](deploy-portal.md)adımlarını izleyin.
+* Azure SQL Edge kullanıyorsanız ve bir Azure SQL Edge modülü dağıtmadıysanız, [Azure Portal kullanarak SQL Edge (Önizleme) dağıtma](deploy-portal.md)adımlarını izleyin.
 
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)'i yükler.
 
-* Azure Data Studio açın ve bu hızlı başlangıç için gereken paketleri yüklemek için şu adımları izleyin:
+* Bu hızlı başlangıç için gereken Python paketlerini yükler:
 
-    1. Python 3 çekirdeğine bağlı [Yeni Not defteri](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) 'ni açın. 
-    1. **Paketleri Yönet** ' e tıklayın ve **Yeni Ekle**' nin altında, **scikit**için arama yapın-scikit-öğrenme paketini öğrenin ve yüklemeyi yapın. 
-    1. Ayrıca **setuptools**, **sayısal tuş takımı**, **onnxmltools**, **onnxruntime**, **skl2onnx**, **pyodbc**ve **sqlalchemy** paketlerini de yüklemelisiniz.
-    
+  1. Python 3 çekirdeğine bağlı [Yeni Not defteri](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) 'ni açın. 
+  1. **Paketleri Yönet** 'e tıklayın
+  1. **Yüklü** sekmesinde, yüklü paketler listesinde aşağıdaki Python paketlerini arayın. Bu paketlerden herhangi biri yüklü değilse, **Yeni Ekle** sekmesini seçin, paketi arayın ve **yükleme**' ye tıklayın.
+     - **scikit-learn**
+     - **numpy**
+     - **onnxmltools**
+     - **onnxruntime**
+     - **pyodbc**
+     - **setuptools**
+     - **skl2onnx**
+     - **sqlalchemy**
+
 * Aşağıdaki her komut bölümü için, Azure Data Studio not defterindeki bir hücreye girin ve hücreyi çalıştırın.
 
 ## <a name="train-a-pipeline"></a>İşlem hattını eğitme
@@ -219,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>ONNX modelini ekleme
 
-Modeli, bir veritabanındaki bir tabloda Azure SQL Edge 'de depolayın `models` `onnx` . Bağlantı dizesinde **sunucu adresini**, **Kullanıcı adını**ve **parolayı**belirtin.
+Modeli, bir veritabanındaki bir tabloda Azure SQL Edge veya Azure SQL yönetilen örneği 'nde depolayın `models` `onnx` . Bağlantı dizesinde **sunucu adresini**, **Kullanıcı adını**ve **parolayı**belirtin.
 
 ```python
 import pyodbc
@@ -277,7 +285,7 @@ conn.commit()
 
 ## <a name="load-the-data"></a>Verileri yükleme
 
-Verileri Azure SQL Edge 'e yükleyin.
+Verileri SQL 'e yükleyin.
 
 İlk olarak, Boston Muhafazası veri kümesinin alt kümelerini depolamak için iki tablo, **özellik** ve **hedef**oluşturun.
 
@@ -350,7 +358,7 @@ Artık verileri veritabanında görüntüleyebilirsiniz.
 
 ## <a name="run-predict-using-the-onnx-model"></a>ONNX modelini kullanarak ÖNTAHMIN Çalıştır
 
-Azure SQL Edge 'deki modelde, karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın edin.
+SQL 'deki modeliyle, karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın edin.
 
 > [!NOTE]
 > Kalan hücreyi çalıştırmak için Not defteri çekirdeğini SQL olarak değiştirin.
@@ -390,3 +398,4 @@ FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * [SQL Edge 'de ONNX ile Machine Learning ve AI](onnx-overview.md)
+* [Azure SQL yönetilen örneği 'nde Machine Learning Services (Önizleme)](../azure-sql/managed-instance/machine-learning-services-overview.md)

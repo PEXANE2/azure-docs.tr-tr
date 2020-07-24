@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 37ade037b7f3c88f5ff33d7fc4640b19f366fe7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 05a9b8009d896a2ee87df3e1c4493d249a887566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083931"
 ---
 # <a name="connect-your-okta-single-sign-on-to-azure-sentinel-with-azure-function"></a>Azure Işleviyle okta çoklu oturum açmanızı Azure Sentinel 'e bağlama
+
+> [!IMPORTANT]
+> Azure Sentinel 'de okta çoklu oturum açma verileri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Okta çoklu oturum açma (SSO) Bağlayıcısı, Azure Sentinel ile tüm [okta çoklu oturum açma (SSO)](https://www.okta.com/products/single-sign-on/) güvenlik çözüm günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. Okta çoklu oturum açma ve Azure Sentinel arasında tümleştirme, REST API kullanarak günlük verileri çekmek için Azure Işlevleri 'ni kullanır.
 

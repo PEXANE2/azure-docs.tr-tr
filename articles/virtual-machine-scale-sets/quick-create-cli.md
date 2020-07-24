@@ -9,11 +9,12 @@ ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c7621915d9393adce373f68363f6c57b70d9907
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 416b5c03686f1b008473dd843c71bbe1139c444c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083591"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile sanal makine ölçek kümesi oluşturma
 Bir sanal makine ölçek kümesi, otomatik ölçeklendirme sanal makineleri kümesini dağıtmanıza ve yönetmenize olanak tanır. Ölçek kümesi içindeki sanal makine sayısını el ile ölçeklendirebilir veya CPU, bellek talebi ya da ağ trafiği gibi kaynak kullanımını temel alan otomatik ölçeklendirme kuralları tanımlayabilirsiniz. Azure Load Balancer daha sonra ölçek kümesindeki sanal makine örneklerine trafiği dağıtır. Bu hızlı başlangıçta, Azure CLI ile bir sanal makine ölçek kümesi oluşturur ve örnek uygulama dağıtırsınız.
@@ -48,7 +49,7 @@ Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılmas
 
 
 ## <a name="deploy-sample-application"></a>Örnek uygulama dağıtma
-Ölçek kümenizi test etmek için temel web uygulaması yükleyin. Sanal makine örneklerine uygulama yükleyen bir betik indirip çalıştırmak için Azure Özel Betik Uzantısı kullanılır. Bu uzantı dağıtım sonrası yapılandırma, yazılım yükleme veya diğer yapılandırma/yönetim görevleri için kullanışlıdır. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/linux/extensions-customscript.md).
+Ölçek kümenizi test etmek için temel web uygulaması yükleyin. Sanal makine örneklerine uygulama yükleyen bir betik indirip çalıştırmak için Azure Özel Betik Uzantısı kullanılır. Bu uzantı dağıtım sonrası yapılandırma, yazılım yükleme veya diğer yapılandırma/yönetim görevleri için kullanışlıdır. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/extensions/custom-script-linux.md).
 
 Temel bir NGINX web sunucusu yüklemek için Özel Betik Uzantısı kullanın. [az vmss extension set](/cli/azure/vmss/extension) ile NGINX yükleyen Özel Betik Uzantısı'nı aşağıdaki şekilde uygulayın:
 
@@ -108,4 +109,3 @@ Bu hızlı başlangıçta basit bir ölçek kümesi oluşturdunuz ve Özel Betik
 
 > [!div class="nextstepaction"]
 > [Azure sanal makine ölçek kümeleri oluşturma ve yönetme](tutorial-create-and-manage-cli.md)
-

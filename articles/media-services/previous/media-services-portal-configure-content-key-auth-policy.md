@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2be430fc032acd94f851072f80d14a43638c8863
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058172"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084594"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>İçerik anahtarı yetkilendirme ilkesini yapılandırma
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -57,7 +57,7 @@ Açık kısıtlama, sistemin anahtarı bir anahtar isteği yapan herkese teslim 
 ### <a name="token-restriction"></a>Belirteç kısıtlaması
 Belirteç kısıtlı ilkesini seçmek için **belirteç** düğmesini seçin.
 
-Belirteç kısıtlı ilkesi, bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç ile birlikte kullanılmalıdır. Media Services basit Web belirteci ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) ve JSON Web token (JWT) biçimlerindeki belirteçleri destekler. Daha fazla bilgi için bkz. [JWT kimlik doğrulaması](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
+Belirteç kısıtlı ilkesi, bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç ile birlikte kullanılmalıdır. Media Services basit Web belirteci ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) ve JSON Web token (JWT) biçimlerindeki belirteçleri destekler. Daha fazla bilgi için bkz. [JWT kimlik doğrulaması](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
 
 Media Services STS sağlamıyor. Belirteçleri vermek için özel bir STS oluşturabilirsiniz. STS, belirtilen anahtarla imzalanmış bir belirteç oluşturacak ve belirteç kısıtlama yapılandırmasında belirttiğiniz talepler verecek şekilde yapılandırılmalıdır. Belirteç geçerliyse ve belirteçteki talepler içerik anahtarı için yapılandırılananlarla eşleşiyorsa, Media Services anahtar teslim hizmeti, istemciye şifreleme anahtarını döndürür.
 
@@ -94,4 +94,3 @@ Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarın
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-

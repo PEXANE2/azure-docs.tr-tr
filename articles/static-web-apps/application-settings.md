@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71748959f8b5350a4bd34349eefedbf9d99c76e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083625"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için uygulama ayarlarını yapılandırma
 
@@ -30,10 +30,10 @@ Uygulama ayarları bazen ortam değişkenleri olarak da adlandırılır.
 >
 > Ön uç Web uygulamanızla ortam değişkenlerini kullanma hakkında daha fazla bilgi için, [JavaScript Framework](#javascript-frameworks-and-libraries) veya [statik site Oluşturucu](#static-site-generators)belgelerine bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure statik Web Apps uygulaması
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="types-of-application-settings"></a>Uygulama ayarları türleri
 
@@ -93,7 +93,7 @@ Uygulama ayarlarını Azure portal aracılığıyla veya Azure CLı ile yapılan
 
 Azure portal, uygulama ayarlarını oluşturmak, güncelleştirmek ve silmek için bir arabirim sağlar.
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 
 1. Arama çubuğunda **statik Web Apps**bulun ve seçin.
 
@@ -107,11 +107,11 @@ Azure portal, uygulama ayarlarını oluşturmak, güncelleştirmek ve silmek iç
 
 1. Bir **ad** ve **değer**girin.
 
-1. **Tamam**'a tıklayın.
+1. **Tamam** düğmesine tıklayın.
 
 1. **Kaydet**’e tıklayın.
 
-### <a name="using-the-azure-cli"></a>Azure CLI kullanma
+### <a name="using-the-azure-cli"></a>Azure CLI'yı kullanma
 
 `az rest`Ayarlarınızı Azure 'a toplu olarak karşıya yüklemek için komutunu kullanabilirsiniz. Komut, uygulama ayarlarını adlı bir üst özellikte JSON nesneleri olarak kabul eder `properties` .
 

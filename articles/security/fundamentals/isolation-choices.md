@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084066"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 
@@ -63,9 +64,9 @@ Kiracı kapsayıcıları kavramı, portallardan ve kalıcı depolamaya kadar her
 
 Birden çok Azure Active Directory kiracısından gelen meta veriler aynı fiziksel diskte depolandığında bile, dizin hizmeti tarafından tanımlandıkları dışındaki kapsayıcılar arasında hiçbir ilişki yoktur, bu da kiracı yöneticisi tarafından belirlenir.
 
-### <a name="azure-role-based-access-control-rbac"></a>Azure rol tabanlı Access Control (RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC)
 
-Azure [rol tabanlı Access Control (RBAC)](../../role-based-access-control/overview.md) , Azure için ayrıntılı erişim yönetimi sağlayarak bir Azure aboneliğinde bulunan çeşitli bileşenleri paylaşmanıza yardımcı olur. Azure RBAC, kuruluşunuzdaki görevleri ayırabilirsiniz ve kullanıcıların işlerini gerçekleştirmesi için ihtiyaç duyduğu kullanıcılara göre erişim izni vermenizi sağlar. Azure aboneliğinde veya kaynaklarında herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz.
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure için ayrıntılı erişim yönetimi sağlayarak bir Azure aboneliğinde bulunan çeşitli bileşenleri paylaşmanıza yardımcı olur. Azure RBAC, kuruluşunuzdaki görevleri ayırabilirsiniz ve kullanıcıların işlerini gerçekleştirmesi için ihtiyaç duyduğu kullanıcılara göre erişim izni vermenizi sağlar. Azure aboneliğinde veya kaynaklarında herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz.
 
 Azure RBAC, tüm kaynak türleri için uygulanan üç temel role sahiptir:
 
@@ -144,7 +145,7 @@ Azure yapı denetleyicisi, kiracı iş yüklerine altyapı kaynakları ayırmada
 
 Azure Hiper Yöneticisi, sanal makineler arasında bellek ve işlem ayrımı uygular ve ağ trafiğini Konuk işletim sistemi kiracılarına güvenli bir şekilde yönlendirir. Bu, VM düzeyinde ve yan kanal saldırısı olasılığını ortadan kaldırır.
 
-Azure 'da, kök VM özeldir: bir yapı Aracısı (SK) barındıran kök IŞLETIM sistemi olarak adlandırılan, sağlamlaştırılmış bir işletim sistemini çalıştırır. FAs, müşteri VM 'lerinde Konuk Işletim sistemleri içinde Konuk aracılarını (GA) yönetmek için kullanılır. FAs Ayrıca depolama düğümlerini da yönetir.
+Azure 'da, kök VM özeldir: bir yapı Aracısı (SK) barındıran kök IŞLETIM sistemi olarak adlandırılan, sağlamlaştırılmış bir işletim sistemini çalıştırır. FAs, müşteri VM 'lerinde Konuk işletim sistemleri içinde Konuk aracılarını (GA) yönetmek için kullanılır. FAs Ayrıca depolama düğümlerini da yönetir.
 
 Azure Hiper Yöneticisi, kök işletim sistemi/SK ve müşteri VM 'Leri/gaz koleksiyonu bir işlem düğümünü kapsar. FAs, işlem ve depolama düğümlerinin dışında bulunan bir yapı denetleyicisi (FC) tarafından yönetilir (işlem ve depolama kümeleri ayrı FCs tarafından yönetilir). Bir müşteri, uygulamanın yapılandırma dosyasını çalışırken güncelleştirirken, FC, bu, yapılandırma değişikliğini uygulamaya bildiren, daha sonra gaz ile iletişim kuran SK ile iletişim kurar. Donanım arızası durumunda, FC otomatik olarak kullanılabilir donanımı bulur ve VM 'yi burada yeniden başlatır.
 
@@ -210,7 +211,7 @@ Azure, verileri korumak için aşağıdaki şifreleme türlerini sunar:
 - Aktarım sırasında şifreleme
 - Bekleme sırasında şifreleme
 
-#### <a name="encryption-in-transit"></a>Aktarım Sırasında Şifreleme
+#### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 
 Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmasında bir mekanizmadır. Azure depolama ile, aşağıdakileri kullanarak verileri güvenli hale getirebilirsiniz:
 
@@ -318,4 +319,4 @@ Azure dağıtımında birden çok ağ yalıtımı katmanı vardır. Aşağıdaki
 
 - [Windows Azure sanal ağlarında makineler Için ağ yalıtımı seçenekleri](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)hakkında bilgi edinin. Bu, belirli bir arka uç ağı veya alt ağı içindeki makinelerin yalnızca belirli bir uç noktaya izin verilen IP adresleri listesine bağlı olarak belirli bir uç noktaya bağlanmasına izin veren klasik ön uç ve arka uç senaryosunu içerir.
 
-- [Azure 'da sanal makine yalıtımı](../../virtual-machines/windows/isolation.md)hakkında bilgi edinin. Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar.
+- [Azure 'da sanal makine yalıtımı](../../virtual-machines/isolation.md)hakkında bilgi edinin. Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar.

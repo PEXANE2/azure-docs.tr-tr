@@ -3,13 +3,14 @@ title: Dayanıklı İşlevler görev hub 'ları-Azure
 description: Bir görev hub 'ının Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda olduğunu öğrenin. Görev hub 'larını yapılandırmayı öğrenin.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afee79aecaad97ec4b441df0758166073b2413cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81604608"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083115"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler görev hub 'ları (Azure Işlevleri)
 
@@ -127,6 +128,19 @@ public static async Task<HttpResponseMessage> Run(
 > Önceki C# örneği Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Dosyadaki görev hub 'ı özelliği `function.json` uygulama ayarı aracılığıyla ayarlanır:
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
 
 Dosyadaki görev hub 'ı özelliği `function.json` uygulama ayarı aracılığıyla ayarlanır:
 

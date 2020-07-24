@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084509"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure portalı ile akış uç noktalarını yönetme 
 
@@ -66,7 +67,7 @@ Akış uç noktası aşağıdaki özellikleri yapılandırmanıza olanak sağlar
 * Önbellek denetimi
 * Çapraz site erişim ilkeleri
 
-Bu özellikler hakkında ayrıntılı bilgi için bkz. [Streamingendpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+Bu özellikler hakkında ayrıntılı bilgi için bkz. [Streamingendpoint](/rest/api/media/operations/streamingendpoint).
 
 >[!NOTE]
 >CDN etkinleştirildiğinde, IP erişimine erişemezsiniz. IP erişimi yalnızca CDN olmadığında geçerlidir.
@@ -121,4 +122,3 @@ Media Services öğrenme yollarını gözden geçirin.
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

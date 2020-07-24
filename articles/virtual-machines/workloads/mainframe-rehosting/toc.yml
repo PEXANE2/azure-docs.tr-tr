@@ -2,7 +2,7 @@
   items:
     - name: Genel Bakış
       items:
-        - name: başlarken
+        - name: Kullanmaya başlayın
           href: overview.md
         - name: İş yükleri
           href: partner-workloads.md
@@ -39,9 +39,9 @@
         - name: zD&T üzerinde ADCD ayarlama
           href: ibm/demo.md
         - name: IBM DB2 pureScale
-          href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
         - name: IBM Db2 pureScale dağıtma
-          href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/deploy-ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: Kaynaklar
       items:
         - name: Teknik incelemeler

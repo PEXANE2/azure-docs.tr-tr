@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082962"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
-Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetimin (IOC) bir Iç sürümünü](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elde etmek için bir tekniktir olan bağımlılık ekleme (dı) yazılım tasarım modelini destekler.
+Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetimin (IOC) bir Iç sürümünü](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elde etmek için bir tekniktir olan bağımlılık ekleme (dı) yazılım tasarım modelini destekler.
 
-- Azure Işlevlerine bağımlılık ekleme, .NET Core bağımlılığı ekleme özellikleri üzerine kurulmuştur. [.NET Core bağımlılığı ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) konusunda benzerlik yapmanız önerilir. Bağımlılıkları geçersiz kılma ve yapılandırma değerlerinin tüketim planında Azure Işlevleri ile nasıl okunduğu konusunda farklılıklar vardır.
+- Azure Işlevlerine bağımlılık ekleme, .NET Core bağımlılığı ekleme özellikleri üzerine kurulmuştur. [.NET Core bağımlılığı ekleme](/aspnet/core/fundamentals/dependency-injection) konusunda benzerlik yapmanız önerilir. Bağımlılıkları geçersiz kılma ve yapılandırma değerlerinin tüketim planında Azure Işlevleri ile nasıl okunduğu konusunda farklılıklar vardır.
 
 - Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
@@ -115,7 +115,7 @@ Bu örnek, bir başlangıç kaydı için gereken [Microsoft. Extensions. http](h
 
 ## <a name="service-lifetimes"></a>Hizmet yaşam süreleri
 
-Azure Işlevleri uygulamaları, [ASP.net bağımlılığı ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)ile aynı hizmet yaşam sürelerini sağlar. Işlevler uygulaması için farklı hizmet yaşam süreleri aşağıdaki gibi davranır:
+Azure Işlevleri uygulamaları, [ASP.net bağımlılığı ekleme](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)ile aynı hizmet yaşam sürelerini sağlar. Işlevler uygulaması için farklı hizmet yaşam süreleri aşağıdaki gibi davranır:
 
 - **Geçici**: hizmet istekleri üzerine geçici hizmetler oluşturulur.
 - **Kapsam**: kapsamlı hizmet ömrü bir işlev yürütme ömrü ile eşleşir. Kapsamlı hizmetler, her yürütme için bir kez oluşturulur. Yürütme sırasında o hizmetin sonraki istekleri, var olan hizmet örneğini yeniden kullanır.
@@ -125,7 +125,7 @@ GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://aka
 
 ## <a name="logging-services"></a>Günlüğe kaydetme hizmetleri
 
-Kendi günlük sağlayıcınıza ihtiyacınız varsa, bir özel türü [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) [Microsoft. Extensions. Logging. soyutlamalar](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet paketi aracılığıyla kullanılabilen bir örneği olarak kaydedin.
+Kendi günlük sağlayıcınıza ihtiyacınız varsa, bir özel türü [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) [Microsoft. Extensions. Logging. soyutlamalar](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet paketi aracılığıyla kullanılabilen bir örneği olarak kaydedin.
 
 Application Insights, Azure Işlevleri tarafından otomatik olarak eklenir.
 
@@ -250,7 +250,7 @@ public class HttpTrigger
 }
 ```
 
-Seçeneklerle çalışma hakkında daha fazla ayrıntı için [ASP.NET Core Içindeki seçenekler düzenine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) bakın.
+Seçeneklerle çalışma hakkında daha fazla ayrıntı için [ASP.NET Core Içindeki seçenekler düzenine](/aspnet/core/fundamentals/configuration/options) bakın.
 
 > [!WARNING]
 > *local.settings.json* veya appSettings gibi dosyalardaki değerleri okumaya çalışmadan kaçının *. { Tüketim planında Environment}. JSON* . Tetikleyici bağlantılarıyla ilgili bu dosyalardan okunan değerler, uygulama ölçeklenirken, ölçek denetleyicisi uygulamanın yeni örneklerini oluşturduğundan, barındırma altyapısının yapılandırma bilgilerine erişimi olmadığı için kullanılabilir değildir.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 71f4209b4af9c5bb5f171cf3c8e35b0fbc05fac9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f930fbb9cad893363db2b1a6b9b6ea8acade5a54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083795"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware 'den Azure 'a Azure Site Recovery Dağıtım Planlayıcısı hakkında
 Bu makale, VMware’den Azure’a üretim dağıtımları için Azure Site Recovery Dağıtım Planlayıcısı kullanım kılavuzudur.
@@ -62,9 +62,9 @@ Araç aşağıdaki bilgileri sağlar:
 
 ## <a name="support-matrix"></a>Destek matrisi
 
-| | **Vmware’den Azure’a** |**Hyper-V'den Azure'a**|**Azure-Azure arası**|**Hyper-V’den ikincil siteye**|**VMware’den ikincil siteye**
+| **Kategori** | **Vmware’den Azure’a** |**Hyper-V'den Azure'a**|**Azure-Azure arası**|**Hyper-V’den ikincil siteye**|**VMware’den ikincil siteye**
 --|--|--|--|--|--
-Desteklenen senaryolar |Yes|Yes|Hayır|Evet*|No
+Desteklenen senaryolar |Yes|Yes|Hayır|Evet*|Hayır
 Desteklenen sürüm | vCenter 6,7, 6,5, 6,0 veya 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
 Desteklenen yapılandırma|vCenter, ESXi| Hyper-V kümesi, Hyper-V konağı|NA|Hyper-V kümesi, Hyper-V konağı|NA|
 Çalışan Site Recovery Dağıtım Planlayıcısı örneği başına profili oluşturulabilecek sunucu sayısı |Tek (bir vCenter Server ve bir ESXi sunucusuna ait VM’lerin profili aynı anda oluşturulabilir)|Birden çok (birden çok konak veya konak kümesindeki sanal makinelerin profili tek seferde oluşturulabilir)| NA |Birden çok (birden çok konak veya konak kümesindeki sanal makinelerin profili tek seferde oluşturulabilir)| NA
@@ -74,7 +74,7 @@ Desteklenen yapılandırma|vCenter, ESXi| Hyper-V kümesi, Hyper-V konağı|NA|H
 ## <a name="prerequisites"></a>Önkoşullar
 Araçta başlıca iki aşama vardır: profil oluşturma ve rapor oluşturma. Yalnızca aktarım hızını hesaplamaya yönelik üçüncü bir seçenek de mevcuttur. Profil oluşturma ve aktarım hızı ölçümünün başlatıldığı sunucuya yönelik gereksinimler, aşağıdaki tabloda sunulmuştur.
 
-| Sunucu gereksinimi | Description|
+| Sunucu gereksinimi | Açıklama|
 |---|---|
 |Profil oluşturma ve aktarım hızı ölçümü| <ul><li>İşletim sistemi: Windows Server 2016 veya Windows Server 2012 R2<br>(En azından [yapılandırma sunucusuna yönelik boyut önerileri](https://aka.ms/asr-v2a-on-prem-components) ile eşleşmesi idealdir)</li><li>Makine yapılandırması: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 için Visual C++ Yeniden Dağıtılabilir](https://aka.ms/vcplusplus-redistributable)</li><li>Bu sunucudan Azure 'a (*. blob.core.windows.net) Internet erişimi, bağlantı noktası 443<br>[Bu isteğe bağlıdır. Rapor oluşturma sırasında kullanılabilir bant genişliğini el ile sağlamayı tercih edebilirsiniz.]</li><li>Azure depolama hesabı</li><li>Sunucu üzerinde yönetici erişimi</li><li>En az 100 GB boş disk alanı (30 günlük profili oluşturulmuş ve her biri ortalama üç diske sahip 1.000 VM varsayıldığında)</li><li>VMware vCenter istatistik düzeyi ayarları 1 veya daha yüksek bir düzey olabilir</li><li>VCenter bağlantı noktasına izin ver (varsayılan 443): Site Recovery Dağıtım Planlayıcısı vCenter sunucusuna/ESXi konağına bağlanmak için bu bağlantı noktasını kullanır</ul></ul>|
 | Rapor oluşturma | Excel 2013 veya üzeri bir Windows BILGISAYARı veya Windows Server.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 için Visual C++ Yeniden Dağıtılabilir](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) yalnızca VM 'lerin en son VM yapılandırma bilgilerini getirmek için rapor oluşturma komutunda Kullanıcı seçeneğini geçirdiğinizde gereklidir. Dağıtım Planlayıcısı vCenter Server 'a bağlanır. VCenter bağlantı noktası (varsayılan 443) bağlantı noktasının vCenter Server 'a bağlanmasına izin verin.</li>|

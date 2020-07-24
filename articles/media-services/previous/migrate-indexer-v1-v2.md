@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84e4e34ab7b9f0250ae7bc94248fa98cbf23cd6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084390"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer ve Media Indexer 2 ' den Video Indexer 'e geçiş
 
-[Azure Media Indexer](media-services-index-content.md) medya işlemcisi ve [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) medya işlemcileri kullanımdan kaldırılıyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+[Azure Media Indexer](media-services-index-content.md) medya işlemcisi ve [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) medya işlemcileri kullanımdan kaldırılıyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
 
 Azure Media Services Video Indexer Azure Media Analytics, Azure Bilişsel Arama, bilişsel hizmetler (Yüz Tanıma API'si, Microsoft Translator, Görüntü İşleme API'si ve Özel Konuşma Tanıma hizmeti) üzerinde oluşturulmuştur. Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar. Hangi senaryolar Video Indexer kullanılabileceğini, hangi özellikleri sunduğunu ve nasıl başladıklarınızı görmek için bkz. [video Indexer video ve ses modelleri](../video-indexer/video-indexer-overview.md). 
 
@@ -41,13 +42,13 @@ Bu makalede, Azure Media Indexer geçiş adımlarını ve Azure Media Indexer 2 
 
 ## <a name="getting-started-with-video-indexer"></a>Video Indexer kullanmaya başlama
 
-Aşağıdaki bölümde ilgili bağlantılar [gösterilmektedir: video Indexer kullanmaya nasıl başlamalıyım?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+Aşağıdaki bölümde ilgili bağlantılar [gösterilmektedir: video Indexer kullanmaya nasıl başlamalıyım?](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile çalışmaya başlama
 
 Azure Media Services v3 API, [Azure Media Services v3 Çözümleyicisi ön ayarları](../latest/analyzing-video-audio-files-concept.md)aracılığıyla video ve ses dosyalarından öngörüleri ayıklamanızı sağlar. 
 
-**Audioanalsete önceden ayarlanmış** , bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar. Çıktı, ses dökümü için bir VTT veya TTML dosyası ve bir JSON dosyası (tüm ek ses öngörüleri ile) içerir. Ses öngörüleri, anahtar sözcükleri, konuşmacı dizin oluşturma ve konuşma yaklaşımı analizini içerir. Audioanalönayarı belirli diller için dil algılamayı de destekler. Ayrıntılı bilgi için bkz. [dönüşümler](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
+**Audioanalsete önceden ayarlanmış** , bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar. Çıktı, ses dökümü için bir VTT veya TTML dosyası ve bir JSON dosyası (tüm ek ses öngörüleri ile) içerir. Ses öngörüleri, anahtar sözcükleri, konuşmacı dizin oluşturma ve konuşma yaklaşımı analizini içerir. Audioanalönayarı belirli diller için dil algılamayı de destekler. Ayrıntılı bilgi için bkz. [dönüşümler](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
 ### <a name="get-started"></a>başlarken
 
@@ -59,12 +60,12 @@ Başlamak için bkz:
 
 ## <a name="getting-started-with-cognitive-services-speech-services"></a>Bilişsel hizmetler konuşma Hizmetleri 'ni kullanmaya başlama
 
-[Azure](https://docs.microsoft.com/azure/cognitive-services/) bilişsel hizmetler, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntülemesi için ses akışlarını gerçek zamanlı olarak metne aktarmak için bir konuşma konuşmadan metne bir hizmet sağlar. [Kendi akustik modelinizi, dil modelinizi veya telaffuz modelinizi özelleştirmek](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)için konuşmayı metne dönüştürme özelliğini kullanabilirsiniz. Daha fazla bilgi için bkz. bilişsel [Hizmetler konuşmayı metne](../../cognitive-services/speech-service/speech-to-text.md)dönüştürme. 
+[Azure](../../cognitive-services/index.yml) bilişsel hizmetler, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntülemesi için ses akışlarını gerçek zamanlı olarak metne aktarmak için bir konuşma konuşmadan metne bir hizmet sağlar. [Kendi akustik modelinizi, dil modelinizi veya telaffuz modelinizi özelleştirmek](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)için konuşmayı metne dönüştürme özelliğini kullanabilirsiniz. Daha fazla bilgi için bkz. bilişsel [Hizmetler konuşmayı metne](../../cognitive-services/speech-service/speech-to-text.md)dönüştürme. 
 
 > [!NOTE] 
-> Konuşmaya metin hizmeti video dosya biçimlerini almaz ve yalnızca [belirli ses biçimlerini](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#audio-formats)alır. 
+> Konuşmaya metin hizmeti video dosya biçimlerini almaz ve yalnızca [belirli ses biçimlerini](../../cognitive-services/speech-service/rest-speech-to-text.md#audio-formats)alır. 
 
-Metinden konuşmaya hizmeti ile çalışmaya başlama hakkında daha fazla bilgi için bkz. [konuşmayı metne](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text) dönüştürme nedir?
+Metinden konuşmaya hizmeti ile çalışmaya başlama hakkında daha fazla bilgi için bkz. [konuşmayı metne](../../cognitive-services/speech-service/speech-to-text.md) dönüştürme nedir?
 
 ## <a name="known-differences-from-deprecated-services"></a>Kullanım dışı hizmetler 'den bilinen farklılıklar 
 
@@ -82,5 +83,3 @@ Bazı bilinen farklılıklar şunlardır:
 
 * [Eski bileşenler](legacy-components.md)
 * [Fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/media-services/#encoding)
-
-

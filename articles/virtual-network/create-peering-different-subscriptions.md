@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55993162c4ea3cd5bf60a9ee9acc869cc088a9d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085138"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Sanal ağ eşlemesi oluşturma-Kaynak Yöneticisi, farklı abonelikler ve Azure Active Directory kiracılar
 
@@ -180,7 +181,7 @@ Her iki sanal ağda oluşturduğunuz tüm Azure kaynakları, IP adresleri aracı
 
 Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik için izinleri olan bir hesap kullanıyorsanız, tüm adımlar için aynı hesabı kullanabilir, Azure oturumunu kapatmak için gereken adımları atlayabilir ve Kullanıcı rolü atamaları oluşturan komut dosyası satırlarını kaldırabilirsiniz. UserA@azure.com UserB@azure.com Aşağıdaki betiklerin tümünde ve KullanıcıA ve KullanıcıB için kullandığınız kullanıcı adlarıyla değiştirin.
 
-1. Sürüm 1.0.0 veya daha yüksek Azure PowerShell olduğunu doğrulayın. Bunu çalıştırarak bunu yaparak `Get-Module -Name Az` PowerShell [az modülünün](/powershell/azure/install-az-ps)en son sürümünü yüklemenizi öneririz. Azure PowerShell'i kullanmaya yeni başladıysanız [Azure PowerShell'e genel bakış](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json) sayfasını inceleyin. 
+1. Sürüm 1.0.0 veya daha yüksek Azure PowerShell olduğunu doğrulayın. Bunu çalıştırarak bunu yaparak `Get-Module -Name Az` PowerShell [az modülünün](/powershell/azure/install-az-ps)en son sürümünü yüklemenizi öneririz. Azure PowerShell'i kullanmaya yeni başladıysanız [Azure PowerShell'e genel bakış](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json) sayfasını inceleyin. 
 2. Bir PowerShell oturumu başlatın.
 3. PowerShell 'de komutunu girerek KullanıcıA olarak Azure 'da oturum açın `Connect-AzAccount` . Oturum açarken kullandığınız hesabın, sanal ağ eşlemesi oluşturmak için gerekli izinlere sahip olması gerekir. İzinlerin listesi için bkz. [sanal ağ eşleme izinleri](virtual-network-manage-peering.md#permissions).
 4. A kaynak grubu ve sanal ağ oluşturun. aşağıdaki betiği bilgisayarınızdaki bir metin düzenleyicisine kopyalayın. `<SubscriptionA-Id>`, SubscriptionA 'NıN kimliğiyle değiştirin. Abonelik kimliğinizi bilmiyorsanız, `Get-AzSubscription` görüntülemek için komutunu girin. Döndürülen çıktıda **kimliği** için olan değer abonelik kimliğiniz olur. Betiği yürütmek için, değiştirilmiş betiği kopyalayın, PowerShell 'e yapıştırın ve ardından ' a basın `Enter` .

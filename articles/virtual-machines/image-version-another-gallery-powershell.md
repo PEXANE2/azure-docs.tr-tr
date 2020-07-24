@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082605"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>PowerShell kullanarak başka bir galerinin görüntüsünü kopyalama
 
@@ -100,7 +100,7 @@ Get-AzGalleryImageDefinition `
 }
 ```
 
-[Yeni-Azgallerımagedefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) cmdlet 'ini ve yukarıdaki çıktıdaki bilgileri kullanarak hedef galerinizin yeni bir görüntü tanımını oluşturun.
+[Yeni-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion) cmdlet 'ini ve yukarıdaki çıktıdaki bilgileri kullanarak hedef galerinizin yeni bir görüntü tanımını oluşturun.
 
 
 Bu örnekte, görüntü tanımı *Mydestinationgallery*adlı galerideki *Mydestinationımgdef* olarak adlandırılmıştır.
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>Görüntü sürümü oluşturma
 
-[New-Azgallerımageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak bir görüntü sürümü oluşturun. `--managed-image`Hedef Galerinizdeki görüntü sürümünü oluşturmak için parametresindeki kaynak görüntünün kimliğini geçirmeniz gerekecektir. 
+[New-Azgallerımageversion](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak bir görüntü sürümü oluşturun. `--managed-image`Hedef Galerinizdeki görüntü sürümünü oluşturmak için parametresindeki kaynak görüntünün kimliğini geçirmeniz gerekecektir. 
 
 Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) tarafından Premiun depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
+> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](../storage/common/storage-redundancy.md) tarafından Premiun depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
 >
 
 

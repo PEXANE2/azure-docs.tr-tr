@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984625"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081993"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell kullanarak Azure VPN ağ geçitlerini birden çok şirket içi ilke tabanlı VPN cihazına bağlama
 
@@ -35,8 +36,8 @@ Aşağıdaki diyagramlar iki modeli vurgulayacaktır:
 ### <a name="azure-support-for-policy-based-vpn"></a>İlke tabanlı VPN için Azure desteği
 Şu anda Azure, her iki VPN ağ geçidi modunu destekler: rota tabanlı VPN ağ geçitleri ve ilke tabanlı VPN ağ geçitleri. Farklı belirtimlerle sonuçlanan farklı iç platformlar üzerinde oluşturulmuştur:
 
-|                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**       |**RouteBased VPN Gateway**                          |
-| ---                      | ---                         | ---                              |---                                                 |
+| Kategori | PolicyBased VPN Gateway | RouteBased VPN Gateway | RouteBased VPN Gateway |
+| -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure ağ geçidi SKU 'SU**    | Temel                       | Temel                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE sürümü**          | IKEv1                       | IKEv2                            | IKEv1 ve IKEv2                         |
 | **Biçimlendir. S2S bağlantıları** | **1**                       | 10                               | 30                     |
@@ -204,6 +205,6 @@ Aşağıdaki satırda, bağlantı için ilke tabanlı trafik seçicileri kullan�
       ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [Sanal Makine Oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [Sanal Makine Oluşturma](../virtual-machines/windows/quick-create-portal.md).
 
 Özel IPSec/ıKE ilkeleri hakkında daha fazla bilgi için [bkz. S2S VPN veya VNET-VNET bağlantıları Için IPSec/IKE Ilkesini yapılandırma](vpn-gateway-ipsecikepolicy-rm-powershell.md) .

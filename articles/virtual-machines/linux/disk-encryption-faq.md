@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d28d7bd85326e8a4cf27dba1f3f605b64477c5aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0bdc5b9f3d43075cbeba664a5cfb4277c20de57
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829948"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082554"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux sanal makineleri için Azure disk şifrelemesi hakkında SSS
 
@@ -153,15 +154,15 @@ XFS veri disklerinin şifrelenmesi yalnızca EncryptFormatAll parametresi kullan
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Şifrelenmiş bir VM 'yi yedeklebilirim ve geri yükleyebilir miyim? 
 
-Azure Backup, şifrelenmiş VM 'nin aynı abonelik ve bölge içinde yedeklenmesi ve geri yüklenmesi için bir mekanizma sağlar.  Yönergeler için lütfen [Azure Backup ile şifrelenmiş sanal makineleri yedekleme ve geri yükleme](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)bölümüne bakın.  Şifrelenmiş bir sanal makinenin farklı bir bölgeye geri yüklenmesi Şu anda desteklenmiyor.  
+Azure Backup, şifrelenmiş VM 'nin aynı abonelik ve bölge içinde yedeklenmesi ve geri yüklenmesi için bir mekanizma sağlar.  Yönergeler için lütfen [Azure Backup ile şifrelenmiş sanal makineleri yedekleme ve geri yükleme](../../backup/backup-azure-vms-encryption.md)bölümüne bakın.  Şifrelenmiş bir sanal makinenin farklı bir bölgeye geri yüklenmesi Şu anda desteklenmiyor.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Soru sormak veya geri bildirimde bulunmak için nereye gidebilirim?
 
-[Azure disk şifrelemesi Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html)sorular sorabilir veya geribildirim sağlayabilirsiniz.
+[Azure disk şifrelemesi Için Microsoft Q&soru sayfasında](/answers/topics/azure-disk-encryption.html)sorular sorabilir veya geribildirim sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure disk şifrelemesi ile ilgili en sık sorulan sorular hakkında daha fazla bilgi edindiniz. Bu hizmet hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure Disk Şifrelemesine Genel Bakış](disk-encryption-overview.md)
-- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Bekleyen Azure veri şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](../../security-center/security-center-virtual-machine-protection.md)
+- [Azure bekleyen verileri şifreleme](../../security/fundamentals/encryption-atrest.md)

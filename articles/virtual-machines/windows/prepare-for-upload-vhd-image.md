@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6010c67b531d0f1ebb0ed836062cd5e323e5474c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083523"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
@@ -62,7 +62,7 @@ Sanal diskinizi Azure için gereken biçime dönüştürmek ve yeniden boyutland
 
 ### <a name="use-powershell-to-convert-the-disk"></a>Diski dönüştürmek için PowerShell 'i kullanma
 
-PowerShell 'de [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak bir sanal diski dönüştürebilirsiniz. Bu cmdlet 'i yükleme hakkında bilgiye ihtiyacınız varsa [buraya](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)tıklayın.
+PowerShell 'de [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak bir sanal diski dönüştürebilirsiniz. Bu cmdlet 'i yükleme hakkında bilgiye ihtiyacınız varsa [buraya](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)tıklayın.
 
 Aşağıdaki örnek, diski VHDX 'ten VHD 'ye dönüştürür. Ayrıca, diski dinamik olarak genişleyen bir diskten sabit boyutlu bir diske dönüştürür.
 
@@ -86,7 +86,7 @@ Bu örnekte, **yol** değerini dönüştürmek istediğiniz sanal sabit disk ile
 
 ### <a name="use-powershell-to-resize-the-disk"></a>Diski yeniden boyutlandırmak için PowerShell 'i kullanma
 
-PowerShell 'de [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 'ini kullanarak bir sanal diski yeniden boyutlandırabilirsiniz. Bu cmdlet 'i yükleme hakkında bilgiye ihtiyacınız varsa [buraya](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)tıklayın.
+PowerShell 'de [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 'ini kullanarak bir sanal diski yeniden boyutlandırabilirsiniz. Bu cmdlet 'i yükleme hakkında bilgiye ihtiyacınız varsa [buraya](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)tıklayın.
 
 Aşağıdaki örnek, Azure hizalama gereksinimini karşılamak için diski 100,5 MIB 'den 101 MiB 'ye yeniden boyutlandırır.
 
@@ -138,7 +138,7 @@ SFC taraması tamamlandıktan sonra, Windows güncelleştirmelerini yükledikten
    netsh.exe winhttp reset proxy
    ```
 
-    VM 'nin belirli bir ara sunucu ile çalışması gerekiyorsa, sanal makinenin Azure 'a bağlanabilmesi için Azure IP adresi ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)) için bir proxy özel durumu ekleyin:
+    VM 'nin belirli bir ara sunucu ile çalışması gerekiyorsa, sanal makinenin Azure 'a bağlanabilmesi için Azure IP adresi ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) için bir proxy özel durumu ekleyin:
 
     ```
     $proxyAddress='<your proxy server>'
@@ -472,7 +472,7 @@ Genellikle, `sysprep.exe` belirli bir yapılandırmaya sahip olan birkaç diğer
 Bir diskten yalnızca bir VM oluşturmak için Sysprep 'i kullanmanız gerekmez. Bunun yerine, VM 'yi *özelleştirilmiş bir görüntüden*oluşturabilirsiniz. Özel bir diskten VM oluşturma hakkında daha fazla bilgi için, bkz:
 
 - [Özelleştirilmiş diskten VM oluşturma](create-vm-specialized.md)
-- [Özelleştirilmiş bir VHD diskinden VM oluşturma](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [Özelleştirilmiş bir VHD diskinden VM oluşturma](./create-vm-specialized-portal.md)
 
 Genelleştirilmiş bir görüntü oluşturmak için Sysprep 'i çalıştırmanız gerekir. Daha fazla bilgi için bkz. [Sysprep 'i kullanma: giriş](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)).
 
@@ -519,4 +519,4 @@ Aşağıdaki ayarlar, VHD karşıya yüklemeyi etkilemez. Ancak, bunları yapıl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kaynak Yöneticisi dağıtımları için Azure 'a bir Windows VM görüntüsü yükleme](upload-generalized-managed.md)
-- [Azure Windows VM etkinleştirme sorunlarını giderme](troubleshoot-activation-problems.md)
+- [Azure Windows VM etkinleştirme sorunlarını giderme](../troubleshooting/troubleshoot-activation-problems.md)

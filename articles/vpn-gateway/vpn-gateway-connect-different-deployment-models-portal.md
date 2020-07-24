@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987682"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082112"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Portalı kullanarak farklı dağıtım modellerindeki sanal ağları bağlama
 
@@ -33,7 +34,7 @@ Zaten bir sanal ağ geçidinizin yoksa ve bir tane oluşturmak istemiyorsanız V
 
 * Bu adımlarda her iki VNET de zaten oluşturulmuş olduğu varsayılır. Bu makaleyi bir alıştırma olarak kullanıyorsanız ve sanal ağlar yoksa, bunları oluşturmanıza yardımcı olacak adımlarda bağlantılar vardır.
 * Sanal ağlar için adres aralıklarının birbirleriyle çakışmayacak veya ağ geçitlerinin bağlı olabileceği diğer bağlantılar için aralıklardan hiçbiriyle çakışmadığından emin olun.
-* Hem Kaynak Yöneticisi hem de hizmet yönetimi (klasik) için en son PowerShell cmdlet 'lerini yükler. Bu makalede hem Azure portal hem de PowerShell kullanırız. Klasik VNet 'ten Kaynak Yöneticisi VNet 'e bağlantı oluşturmak için PowerShell gereklidir. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview). 
+* Hem Kaynak Yöneticisi hem de hizmet yönetimi (klasik) için en son PowerShell cmdlet 'lerini yükler. Bu makalede hem Azure portal hem de PowerShell kullanırız. Klasik VNet 'ten Kaynak Yöneticisi VNet 'e bağlantı oluşturmak için PowerShell gereklidir. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/). 
 
 ### <a name="example-settings"></a><a name="values"></a>Örnek ayarlar
 

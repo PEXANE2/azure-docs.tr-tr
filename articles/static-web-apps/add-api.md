@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4df1aa53c09777ac2470581df07ac132255b005a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083676"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemesine API ekleme
 
@@ -53,7 +53,7 @@ Daha sonra, uygulamanın API 'SI olarak bir Azure Işlevleri projesi oluştururs
 1. _My-Vanilla-API_ projesinde, **API**adlı bir alt klasör oluşturun.
 1. Komut paletini açmak için **F1** tuşuna basın
 1. **Azure işlevleri yazın: yeni proje oluştur...**
-1. **ENTER** tuşuna basın
+1. **Enter** tuşuna basın
 1. **Gözatmayı** seçin
 1. Proje çalışma alanınızın dizini olarak **API** klasörünü seçin
 1. **Seç ' i** seçin
@@ -133,7 +133,7 @@ Yukarıdaki ayarlarla API uç noktası şu şekilde olur:
 
 ## <a name="run-the-api-locally"></a>API 'YI yerel olarak çalıştırma
 
-Visual Studio Code, Azure 'da yayımlamadan önce bu projeyi yerel geliştirme bilgisayarınızda çalıştırmanıza olanak sağlamak için [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local) tümleştirilir.
+Visual Studio Code, Azure 'da yayımlamadan önce bu projeyi yerel geliştirme bilgisayarınızda çalıştırmanıza olanak sağlamak için [Azure Functions Core Tools](../azure-functions/functions-run-local.md) tümleştirilir.
 
 > [!TIP]
 > Devam etmeden önce [Önkoşul](#prerequisites) bölümünde listelenen tüm kaynakların yüklü olduğundan emin olun.
@@ -218,10 +218,10 @@ Visual Studio Code kullanarak değişikliklerinizi uzak git deposuna yürütün 
 ## <a name="create-a-static-web-app"></a>Statik Web uygulaması oluşturma
 
 1. [Azure Portal](https://portal.azure.com) gidin
-1. **Kaynak oluştur ' a** tıklayın
+1. **Kaynak oluştur** seçeneğine tıklayın
 1. **Statik Web uygulaması** ara
 1. **Statik Web uygulaması (Önizleme)** seçeneğine tıklayın
-1. **Oluştur** 'a tıklayın
+1. **Oluştur** seçeneğine tıklayın
 
 Sonra uygulamaya özgü ayarları ekleyin.
 
@@ -230,11 +230,11 @@ Sonra uygulamaya özgü ayarları ekleyin.
 1. Uygulamayı **My-Vanilla-API**olarak adlandırın.
 1. Size en yakın _bölgeyi_ seçin
 1. **Ücretsiz** _SKU 'yu_ seçin
-1. GitHub ile **oturum açma** düğmesine tıklayın ve GitHub ile kimlik doğrulaması yapın
+1. **GitHub ile Oturum Aç** düğmesine tıklayın ve GitHub ile kimliğinizi doğrulayın
 1. Tercih ettiğiniz _kuruluşu_ seçin
 1. _Depo_ açılır listesinden **My-Vanilla-API** ' yi seçin
 1. _Dal_ açılan listesinden **ana öğe** seçin
-1. Derleme yapılandırmasını düzenlemek için **İleri: oluştur >** düğmesine tıklayın
+1. Derleme yapılandırmasını düzenlemek için **İleri: Derleme >** düğmesine tıklayın
 
 Ardından, aşağıdaki derleme ayrıntılarını ekleyin.
 

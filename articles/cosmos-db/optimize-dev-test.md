@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 3fe5ea98f8db633eed7ce4e2c0ac0cafa56408ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5d975b73afcf03ad97bafd1c6f68f2b55263c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82194525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084730"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de geliştirme ve test maliyetlerini iyileştirme
 
@@ -23,7 +23,9 @@ Bu makalede, geliştirme ve test için Azure Cosmos DB kullanmanın yanı sıra 
 
 ## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB ücretsiz katman
 
-Azure Cosmos DB ücretsiz katman sayesinde çalışmaya başlamak, uygulamalarınızı geliştirmek ve test etmek, hatta küçük üretim iş yüklerini ücretsiz olarak çalıştırmak kolaylaşır. Hesapta ücretsiz katman etkinleştirildiğinde, hesapta ücretsiz olarak ilk 400 RU/sn ve 5 GB depolama alanı alırsınız. Ayrıca, ücretsiz katmana (5 paylaşılan üretilen iş veritabanlarını ücretsiz katman hesabında sınırlayın), veritabanı düzeyinde 400 RU/s paylaşan bir paylaşılan verimlilik veritabanı da oluşturabilirsiniz. Ücretsiz katman hesabın kullanım ömrü boyunca süresiz olarak sürer ve sınırsız depolama ve aktarım hızı (RU/s), SLA 'Lar, yüksek kullanılabilirlik, tüm Azure bölgelerinde anahtar genel dağıtım ve daha fazlası dahil olmak üzere normal Azure Cosmos DB hesabının tüm [avantajları ve özellikleriyle](introduction.md#key-benefits) birlikte gelir. Azure aboneliği başına en fazla bir ücretsiz katman hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Başlamak için, [ücretsiz katman etkinken Azure Portal yeni bir hesap oluşturun](create-cosmosdb-resources-portal.md) veya [ARM şablonu](manage-sql-with-resource-manager.md#free-tier)kullanın. Daha ayrıntılı bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
+Azure Cosmos DB ücretsiz katman sayesinde çalışmaya başlamak, uygulamalarınızı geliştirmek ve test etmek, hatta küçük üretim iş yüklerini ücretsiz olarak çalıştırmak kolaylaşır. Hesapta ücretsiz katman etkinleştirildiğinde, hesapta ücretsiz olarak ilk 400 RU/sn ve 5 GB depolama alanı alırsınız. Ayrıca, ücretsiz katmana (5 paylaşılan üretilen iş veritabanlarını ücretsiz katman hesabında sınırlayın), veritabanı düzeyinde 400 RU/s paylaşan bir paylaşılan verimlilik veritabanı da oluşturabilirsiniz. Ücretsiz katmanı kullanırken, en az 400 RU/sn aktarım hızı ile paylaşılan bir veritabanı sağlarsanız, bu veritabanındaki tüm kapsayıcılar üretilen işi paylaşabilir. Adanmış işleme sahip paylaşılan aktarım hızı veya kapsayıcılar içeren tüm yeni veritabanları, normal fiyatlandırmadan faturalandırılır.
+
+Ücretsiz katman hesabın kullanım ömrü boyunca süresiz olarak sürer ve sınırsız depolama ve aktarım hızı (RU/s), SLA 'Lar, yüksek kullanılabilirlik, tüm Azure bölgelerinde anahtar genel dağıtım ve daha fazlası dahil olmak üzere normal Azure Cosmos DB hesabının tüm [avantajları ve özellikleriyle](introduction.md#key-benefits) birlikte gelir. Azure aboneliği başına en fazla bir ücretsiz katman hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Başlamak için, [ücretsiz katman etkinken Azure Portal yeni bir hesap oluşturun](create-cosmosdb-resources-portal.md) veya [ARM şablonu](manage-sql-with-resource-manager.md#free-tier)kullanın. Daha ayrıntılı bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB’yi ücretsiz deneyin
 

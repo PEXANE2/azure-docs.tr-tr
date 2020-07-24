@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/27/2020
 ms.author: banders
-ms.openlocfilehash: 8d9b883c5319108166951814fcedb18181e25145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c78c04acb1d59ed49366683ddfb7f7e1ec5804f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083489"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure ayrılmış VM örnekleri ile maliyetleri kaydetme
+# <a name="save-costs-with-azure-reserved-vm-instances-windows"></a>Azure ayrılmış VM örnekleri (Windows) ile maliyetleri kaydetme
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]

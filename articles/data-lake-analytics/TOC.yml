@@ -21,6 +21,12 @@
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+- name: Kavramlar
+  items:
+    - name: Güvenlik
+      items:
+        - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
+          href: security-baseline.md
 - name: Nasıl yapılır
   items:
     - name: Data Lake Analytics'i yönetme
@@ -87,7 +93,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: İşlere göz atma ve bunları görüntüleme
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: 'Özel C# kodunda hata ayıklama'
+            - name: Özel C# kodunda hata ayıklama
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: Yinelenen işlerde sorun giderme
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md

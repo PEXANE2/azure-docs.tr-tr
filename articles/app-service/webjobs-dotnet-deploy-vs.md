@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 971ab39ddf4b383f92f0cd81e5258ad357e76e99
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cf2437443350cf9b21b6abc0d0dd1dbd5d22e41f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083200"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio'yu kullanarak Web İşleri geliştirme ve dağıtma - Azure App Service
 
@@ -79,7 +79,7 @@ Bir projeyi bir Web Işi olarak dağıtabilir veya Web projesini her dağıttı�
 
 ![Web projesine yönelik WebJob projesi bağlantısını gösteren diyagram](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Visual Studio 2015 kullanıyorsanız [.net Için Azure SDK 'sını (Visual studio 2015)](https://azure.microsoft.com/downloads/)yükleyebilirsiniz.
 
@@ -225,7 +225,7 @@ Bu dosya Web işi klasörünün kökünde, veya gibi WebJob betiğinizin bir bö
 
 ### <a name="cron-expressions"></a>CRON ifadeleri
 
-WebJobs, Azure Işlevlerinde Zamanlayıcı tetikleyicisi olarak zamanlama için aynı CRON ifadelerini kullanır. CRON desteği hakkında daha fazla bilgi edinmek için bkz. [süreölçer tetikleme başvurusu makalesi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions).
+WebJobs, Azure Işlevlerinde Zamanlayıcı tetikleyicisi olarak zamanlama için aynı CRON ifadelerini kullanır. CRON desteği hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Için süreölçer tetikleyicisi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions).
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 

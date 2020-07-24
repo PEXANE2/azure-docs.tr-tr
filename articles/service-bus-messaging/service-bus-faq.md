@@ -2,12 +2,13 @@
 title: Azure Service Bus sık sorulan sorular (SSS) | Microsoft Docs
 description: Bu makalede Azure Service Bus hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 35721d174ec4b840185727efe5fb384015040b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 01d7869a158a3c2b5418f38f2a5d88fc161796c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341454"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083863"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -17,7 +18,7 @@ Bu makalede Microsoft Azure Service Bus hakkında sık sorulan bazı sorular aç
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus ilgili genel sorular
 ### <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
-[Azure Service Bus](service-bus-messaging-overview.md) , ayrılmış sistemler arasında veri göndermenizi sağlayan zaman uyumsuz mesajlaşma bulutu platformudur. Microsoft bu özelliği bir hizmet olarak sunmaktadır, bu da onu kullanmak için kendi donanımınızı barındırmanıza gerek kalmaz.
+[Azure Service Bus](service-bus-messaging-overview.md) , ayrılmış sistemler arasında veri göndermenizi sağlayan zaman uyumsuz mesajlaşma bulutu platformudur. Microsoft bu özelliği bir hizmet olarak sunar. Bu, bunu kullanmak için kendi donanımınızı barındırmanıza gerek kalmaz anlamına gelir.
 
 ### <a name="what-is-a-service-bus-namespace"></a>Service Bus ad alanı nedir?
 [Ad alanı](service-bus-create-namespace-portal.md) , uygulamanızdaki Service Bus kaynakları adresleme için bir kapsam kapsayıcısı sağlar. Service Bus kullanmak için ad alanı oluşturma gereklidir ve Başlarken ilk adımlardan biridir.
@@ -29,9 +30,9 @@ Bu makalede Microsoft Azure Service Bus hakkında sık sorulan bazı sorular aç
 Bir konu bir sıra olarak görselleştirilir ve birden çok abonelik kullanıldığında, daha zengin bir mesajlaşma modeli olur; esas olarak bire çok iletişim aracı. Bu yayımla/abone ol modeli (veya *pub/Sub*), birden fazla uygulama tarafından alınan bir konuya bir ileti gönderen bir uygulamayı, bu iletinin birden çok uygulama tarafından alınmasını sağlar.
 
 ### <a name="what-is-a-partitioned-entity"></a>Bölümlenmiş varlık nedir?
-Geleneksel bir kuyruk veya konu, tek bir ileti Aracısı tarafından işlenir ve tek bir mesajlaşma deposunda depolanır. Yalnızca temel ve standart mesajlaşma katmanlarında desteklenir, [bölümlenmiş bir kuyruk veya konu](service-bus-partitioning.md) birden çok ileti aracılarıyla işlenir ve birden çok mesajlaşma mağazasında saklanır. Bu özellik, bölümlenmiş bir sıranın veya konunun genel üretilen işinin artık tek bir ileti aracısının veya mesajlaşma deposunun performansıyla sınırlı olmadığı anlamına gelir. Ayrıca, bir mesajlaşma deposunun geçici kesilmesi bölümlenmiş bir kuyruğu veya konuyu işlemez.
+Geleneksel bir kuyruk veya konu, tek bir ileti Aracısı tarafından işlenir ve tek bir mesajlaşma deposunda depolanır. Yalnızca temel ve standart mesajlaşma katmanlarında desteklenir, [bölümlenmiş bir kuyruk veya konu](service-bus-partitioning.md) , birden çok ileti aracılarıyla işlenir ve birden çok mesajlaşma mağazasında saklanır. Bu özellik, bölümlenmiş bir sıranın veya konunun genel üretilen işinin artık tek bir ileti aracısının veya mesajlaşma deposunun performansıyla sınırlı olmadığı anlamına gelir. Ayrıca, bir mesajlaşma deposunun geçici kesilmesi bölümlenmiş bir kuyruğu veya konuyu işlemez.
 
-Bölümlenmiş varlıklar kullanılırken sıralama işlemi desteklenmez. Bir bölümün kullanılamaz olması durumunda diğer bölümlerden ileti almaya ve almaya devam edebilirsiniz.
+Bölümlenmiş varlıklar kullanılırken sıralama değildir. Bir bölümün kullanılamaz olması durumunda diğer bölümlerden ileti almaya ve almaya devam edebilirsiniz.
 
  Bölümlenmiş varlıklar artık [Premium SKU 'sunda](service-bus-premium-messaging.md)desteklenmez. 
 
@@ -50,15 +51,15 @@ Azure Event Hubs ile iletişim kurmak için bu protokolleri kullanmak üzere aç
 | SBMP | 9350 9354 | Bkz. [bağlantı modu](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP, HTTPS | 80, 443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Beyaz listeye hangi IP adreslerine ihtiyacım var?
-Bağlantılarınız için beyaz listeye doğru IP adreslerini bulmak için şu adımları izleyin:
+### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>İzin verilenler listesine hangi IP adreslerini eklemem gerekir?
+Bağlantılarınızın izin verilenler listesine eklenecek doğru IP adreslerini bulmak için şu adımları izleyin:
 
 1. Komut isteminden aşağıdaki komutu çalıştırın: 
 
     ```
     nslookup <YourNamespaceName>.cloudapp.net
     ```
-2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Bu IP adresi statiktir. Ad alanını farklı bir kümeye geri yükledikten sonra değişikliğin değiştirileceği tek zaman nokta.
+2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Bu IP adresi statiktir. Aynı zamanda, ad alanını farklı bir kümeye geri yüklemeniz durumunda değişir.
 
 Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapmanız gerekir: 
 
@@ -76,13 +77,17 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
     ```
 3. Her biri için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırarak üç kullanılabilirlik alanında çalışan üç örnek için IP adreslerini alın. 
 
+### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Bir ad alanına/bir ad alanından gönderilen/alınan iletilerin IP adresini nerede bulabilirim? 
+Ad alanınızı/onlardan ileti gönderen veya alan istemcilerin IP adreslerini günlüğe almadık. Yalnızca izin verilen kullanıcıların veya uygulamaların ad alanına erişebildiğinden emin olmak için, mevcut tüm istemcilerin kimlik doğrulaması yapamaması ve rol tabanlı erişim denetimi ([RBAC](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)) ayarlarını gözden geçirebilmesi için anahtarları yeniden oluşturun. 
+
+**Premium** ad alanı kullanıyorsanız, ad alanına erişimi sınırlandırmak için [IP filtrelemesi](service-bus-ip-filtering.md), [sanal ağ hizmeti uç noktaları](service-bus-service-endpoints.md)ve [Özel uç noktalar](private-link-service.md) kullanın. 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus en iyi uygulamalar nelerdir?
 [Service Bus kullanarak performans iyileştirmeleri Için en iyi uygulamalar][Best practices for performance improvements using Service Bus] bölümüne bakın – bu makalede ileti alışverişi sırasında performansın nasıl iyileştirileceği açıklanır.
 
 ### <a name="what-should-i-know-before-creating-entities"></a>Varlık oluşturmadan önce neleri bilmem gerekir?
-Bir kuyruğun ve konunun aşağıdaki özellikleri sabittir. Bu özellikleri yeni bir değiştirme varlığı oluşturmadan değiştirilemediği için, varlıklarınızı sağladığınızda Bu kısıtlamayı göz önünde bulundurun.
+Bir kuyruğun ve konunun aşağıdaki özellikleri sabittir. Bu özellikleri yeni bir değiştirme varlığı oluşturmadan değiştirilemediği için, varlıklarınızı sağladığınızda Bu sınırlamayı göz önünde bulundurun.
 
 * Bölümleme
 * Oturumlar
@@ -99,25 +104,25 @@ Genel Azure fiyatlandırma bilgileri için [Azure desteği SSS](https://azure.mi
 ### <a name="how-do-you-charge-for-service-bus"></a>Service Bus için ücret ödersiniz?
 Service Bus fiyatlandırması hakkında tüm bilgiler için bkz. [Service Bus fiyatlandırma ayrıntıları][Pricing overview]. Belirtilen fiyatlara ek olarak, uygulamanızın sağlandığı veri merkezinin dışında çıkış için ilişkili veri aktarımları için ücretlendirilirsiniz.
 
-### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Hangi Service Bus kullanımı veri aktarımına tabidir? Ne değildir?
+### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-isnt"></a>Hangi Service Bus kullanımı veri aktarımına tabidir? Ne değildir?
 Belirli bir Azure bölgesindeki tüm veri aktarımlarında, tüm gelen veri aktarımlarında da ücret alınmaz. Bölge dışında veri aktarımı, [burada](https://azure.microsoft.com/pricing/details/bandwidth/)bulunan çıkış ücretlerine tabidir.
 
 ### <a name="does-service-bus-charge-for-storage"></a>Service Bus depolama için ücretlendirilir mi?
-Hayır, Service Bus depolama için ücret alınmaz. Ancak, kuyruk/Konu başına kalıcı olabilecek maksimum veri miktarını sınırlayan bir kota vardır. Sonraki SSS bölümüne bakın.
+Hayır. Service Bus depolama için ücret alınmaz. Ancak, kuyruk/Konu başına kalıcı olabilecek maksimum veri miktarını sınırlayan bir kota vardır. Sonraki SSS bölümüne bakın.
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Service Bus standart bir ad alanı var. ' $System ' kaynak grubu altında ücretleri neden görüyorum?
-Azure Service Bus son zamanlarda faturalandırma bileşenleri yükseltildi. Bu nedenle, Service Bus standart bir ad alanınız varsa, ' $system ' kaynak grubu altında '/Subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' kaynağı için satır öğeleri görebilirsiniz.
+Azure Service Bus son zamanlarda faturalandırma bileşenleri yükseltildi. Bu değişiklik nedeniyle, Service Bus standart bir ad alanınız varsa, ' $system ' kaynak grubu altında '/Subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' kaynağı için satır öğeleri görebilirsiniz.
 
 Bu ücretler, Azure aboneliği başına Service Bus standart ad alanı sağlayan temel ücreti temsil eder. 
 
-Bunların yeni ücretler olmadığına dikkat edin, yani önceki faturalandırma modelinde var. Tek değişiklik, artık ' $system ' altında listelenirler. Bu, yeni faturalandırma sisteminde bulunan ve ' $system ' kaynak kimliği altında belirli bir kaynağa bağlı olmayan abonelik düzeyi ücretlerini gruplandıran bir değer nedeniyle yapılır.
+Bu ücretlerin yeni değil, diğer bir deyişle önceki faturalandırma modelinde var olduğunu unutmayın. Tek değişiklik, artık ' $system ' altında listelenmektedir. Yeni faturalandırma sisteminde, belirli bir kaynağa bağlı olmayan, ' $system ' kaynak KIMLIĞI altında, abonelik düzeyi ücretleri gruplandıran kısıtlamalar nedeniyle bu işlem yapılır.
 
 ## <a name="quotas"></a>Kotalar
 
 Service Bus limitlerin ve kotaların listesi için bkz. [Service Bus kotalara genel bakış][Quotas overview].
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>> 1 MB boyutundaki iletiler nasıl ele alınacağını?
-Service Bus mesajlaşma hizmetleri (kuyruklar ve konular/abonelikler), uygulamanın 256 KB 'ye (Standart katmana) veya 1 MB 'a (Premium katman) kadar mesaj göndermesini sağlar. 1 MB 'tan büyük boyuttaki iletilerle uğraşıyorsanız, [Bu blog gönderisine](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)göre açıklanan talep denetimi modelini kullanın.
+Service Bus mesajlaşma hizmetleri (kuyruklar ve konular/abonelikler), uygulamanın 256 KB 'ye (Standart katmana) veya 1 MB 'a (Premium katman) kadar mesaj göndermesini sağlar. 1 MB 'den büyük iletilerle uğraşıyorsanız, [Bu blog gönderisine](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)göre açıklanan talep denetimi modelini kullanın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Neden bir ad alanını başka bir abonelikten sildikten sonra oluşturamadım? 

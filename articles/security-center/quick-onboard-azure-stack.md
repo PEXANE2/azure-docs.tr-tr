@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1f0a11616fe996f02d6464d23724156906176041
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771164"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084016"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Hızlı başlangıç: Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne ekleme
 Azure aboneliğinizi ekledikten sonra, Azure Stack marketi 'nden **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısını ekleyerek Azure Stack çalıştıran sanal makinelerinizi korumak Için Güvenlik Merkezi 'ni etkinleştirebilirsiniz.
 
 Bu hızlı başlangıçta, **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makinesi uzantısının bir sanal makinede (Linux ve Windows 'un her ikisi de desteklenir) Azure Stack nasıl ekleneceğini gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
 Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart katmanında bir Azure aboneliğinizin olması gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi Standart katmanını, 30 gün boyunca ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
@@ -34,7 +34,7 @@ Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart katm
 ## <a name="select-your-workspace-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde çalışma alanınızı seçme
 
 1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
-2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır. 
+2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi-genel bakış** açılır. 
 
    ![Güvenlik Merkezi’ne genel bakış][2]
 

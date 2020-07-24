@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75454204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082826"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini kullanma
 
 Bu makalede, uygulamaların nasıl kaydedileceği ve OPC UA cihazlarınız için imzalı uygulama sertifikalarının nasıl giderileceği açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="deploy-the-certificate-management-service"></a>Sertifika Yönetimi hizmetini dağıtma
 
@@ -37,7 +38,7 @@ Henüz yapmadıysanız, veren CA sertifikası oluşturun. Ayrıntılar için bkz
 
 1. Sertifika hizmetinizi adresinde açın `https://myResourceGroup-app.azurewebsites.net` ve oturum açın.
 2. **Yeni kaydet**' e gidin. Bir uygulama kaydı için, bir kullanıcının en azından yazıcı rolü atanmış olması gerekir.
-2. Giriş formu OPC UA 'daki adlandırma kurallarına uyar. Örneğin, aşağıdaki ekran görüntüsünde OPC UA .NET Standard yığınında [OPC UA başvuru sunucusu](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) örneği için ayarlar gösterilir:
+2. Giriş formu OPC UA 'daki adlandırma kurallarına uyar. Örneğin, aşağıdaki ekran görüntüsünde OPC UA .NET Standard yığınında [OPC UA başvuru sunucusu](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) örneği için ayarlar gösterilir:
 
    ![UA başvuru sunucusu kaydının ekran görüntüsü](media/howto-opc-vault-secure/reference-server-registration.png "UA başvuru sunucusu kaydı")
 

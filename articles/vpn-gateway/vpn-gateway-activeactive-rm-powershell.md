@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 854ca905ca8f951fb7678e46268b8bef57bd02bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b4707ec7d6de3b617572b194bbad76b608f185a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082044"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ağ geçitleri ile etkin-etkin S2S VPN bağlantılarını yapılandırma
 
@@ -48,7 +49,7 @@ Diğer özellikler, etkin olmayan etkin ağ geçitleriyle aynıdır.
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 * Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
-* Azure Resource Manager PowerShell cmdlet’lerini yüklemelisiniz. PowerShell cmdlet 'lerini yükleme hakkında daha fazla bilgi için bkz. [Azure PowerShell genel bakış](/powershell/azure/overview) .
+* Azure Resource Manager PowerShell cmdlet’lerini yüklemelisiniz. PowerShell cmdlet 'lerini yükleme hakkında daha fazla bilgi için bkz. [Azure PowerShell genel bakış](/powershell/azure/) .
 
 ### <a name="step-1---create-and-configure-vnet1"></a>1. adım-VNet1 oluşturma ve yapılandırma
 #### <a name="1-declare-your-variables"></a>1. değişkenlerinizi bildirin
@@ -444,4 +445,4 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActiveFeatu
 Bu güncelleştirme 30 ila 45 dakikaya kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [Sanal Makine Oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [Sanal Makine Oluşturma](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

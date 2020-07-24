@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47fb242a82097a9fa5c9c41dac99f0a7f8ab2c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085444"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 'da Linux VM 'Leri için zaman eşitleme
 
@@ -127,11 +128,11 @@ Bu örnekte döndürülen değer *ptp0*, bu nedenle saat adını denetlemek içi
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-Bu, **hyperv**döndürmelidir.
+Bu, döndürmelidir `hyperv` .
 
 ### <a name="chrony"></a>zaman hatası
 
-Ubuntu 19,10 ve sonraki sürümlerinde, Red Hat Enterprise Linux ve CentOS 7. x, zaman [hatası](https://chrony.tuxfamily.org/) , PTP kaynak saati kullanacak şekilde yapılandırılmıştır. Daha eski Linux sürümleri, bu şekilde, PTP kaynaklarını desteklemeyen ağ zaman protokol cini (ntpd) kullanır. Bu sürümlerde PTP 'i etkinleştirmek için, zaman zaman aşağıdaki kod kullanılarak el ile yüklenmeli ve yapılandırılmalıdır (zaman hatası):
+Ubuntu 19,10 ve sonraki sürümlerinde, Red Hat Enterprise Linux ve CentOS 8. x, zaman [hatası](https://chrony.tuxfamily.org/) , PTP kaynak saati kullanacak şekilde yapılandırılmıştır. Daha eski Linux sürümleri, bu şekilde, PTP kaynaklarını desteklemeyen ağ zaman protokol cini (ntpd) kullanır. Bu sürümlerde PTP 'i etkinleştirmek için, zaman zaman aşağıdaki kod kullanılarak el ile yüklenmeli ve yapılandırılmalıdır (zaman hatası):
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -143,9 +144,9 @@ Red Hat ve NTP hakkında daha fazla bilgi için bkz. [NTP yapılandırma](https:
 
 Zaman hatası hakkında daha fazla bilgi için bkz. zaman [hatası kullanımı](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
-Aynı anda hem Tarihçe hem de zaman eşitleme kaynakları etkinleştirilmişse, diğerini bir yedekleme olarak ayarlayan bir tane **tercih**edebilirsiniz. NTP Hizmetleri uzun bir süre sonra büyük bir eğriltin saatini güncelleştirmediğinden, Vmictimessync, saati yalnızca NTP tabanlı araçlardan daha hızlı bir şekilde duraklatılmış şekilde kurtaracaktır.
+Aynı anda hem Tarihçe hem de Vmictimessync kaynakları etkinleştirilmişse, diğer kaynağı yedek olarak ayarlayan bir tane **tercih**edebilirsiniz. NTP Hizmetleri uzun bir süre sonra büyük bir eğriltin saatini güncelleştirmediğinden, Vmictimessync, saati yalnızca NTP tabanlı araçlardan daha hızlı bir şekilde duraklatılmış şekilde kurtaracaktır.
 
-Varsayılan olarak, Tarihçe her zaman drivi giderecek şekilde sistem saatini hızlandırır veya yavaşlatır. Drın çok büyük hale gelirse, zaman hatası, drmali 'i düzeltemedi. Bunu aşmak için, `makestep` /etc/bir değeri, belirtilen eşiği aşarsa, bir zaman akmaya zorlamak üzere **/etc/timesyı.exe** içindeki parametre değiştirilebilir.
+Varsayılan olarak, Tarihçe her zaman drivi giderecek şekilde sistem saatini hızlandırır veya yavaşlatır. Drın çok büyük hale gelirse, zaman hatası, drmali 'i düzeltemedi. Bunu aşmak için, `makestep` /etc/, ' deki parametre, belirtilen eşiği aşarsa, bir zaman eşitlemesini zorlamak için **/etc/yılın.exe** .
 
  ```bash
 makestep 1.0 -1

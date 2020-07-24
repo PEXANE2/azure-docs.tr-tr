@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116290"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084203"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Bilişsel Arama dile göre filtreleme 
 
@@ -34,7 +34,7 @@ Azure Bilişsel Arama 'de sorgular tek bir dizini hedefler. Tek bir arama deneyi
 
 Aşağıdaki örnek, farklı dillerdeki içerikleri içeren birkaç dize alanına sahip olan [gerçek emlak örneğinden](search-get-started-portal.md) biridir. Bu dizindeki alanlar için dil çözümleyici atamalarına dikkat edin. Dizeleri içeren alanlar, hedef dilin dil kurallarını işlemek için mühendislik uygulanan bir çözümleyici ile eşleştirildiği zaman tam metin aramasında daha iyi işlem yapar.
 
-  ![](./media/search-filters-language/lang-fields.png)
+  ![Gerçek emlak örneğinin alanlar ekranını gösteren ekran görüntüsü. Bir grup alan, dil Çözümleyicisi atamalarının vurgulanan alanlarla ilgili dillere nasıl karşılık geldiğini göstermek için vurgulanır.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
 > Dil Çözümleyicileri ile alan tanımlarını gösteren kod örnekleri için bkz. [Dizin tanımlama (.net)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) ve [DIZIN tanımlama (REST)](search-create-index-rest-api.md).

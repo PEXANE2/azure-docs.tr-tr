@@ -7,11 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082877"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Denetimi veri akışları nelerdir?
 
@@ -27,7 +28,7 @@ Wrangling veri akışı, Power Query çevrimiçi karma düzenleyici tarafından 
 Wrangling veri akışları, özellikle veri mühendisleri veya ' vatandaşlık veri tümleştiricileri ' için faydalıdır.
 
 > [!NOTE]
-> Wrangling veri akışı şu anda genel önizlemede bir avılamaz
+> Wrangling veri akışı şu anda genel önizlemede kullanılabilir
 
 ## <a name="use-cases"></a>Uygulama alanları
 

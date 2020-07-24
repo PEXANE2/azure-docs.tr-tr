@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085495"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB kullanarak Linux VM 'lerinde Azure dosya depolamayı bağlama
 
@@ -62,7 +63,7 @@ STORAGEKEY=$(az storage account keys list \
 
 [Az Storage Share Create](/cli/azure/storage/share)kullanarak dosya depolama payını oluşturun. 
 
-Paylaşma adları, küçük harf, sayı ve tek kısa çizgilerden oluşmalıdır, ancak kısa çizgi ile başlayamaz. Dosya paylaşımlarını ve dosyaları adlandırma hakkında tüm ayrıntılar için bkz. [adlandırma ve başvuru paylaşımları, dizinler, dosyalar ve meta veriler](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Paylaşma adları, küçük harf, sayı ve tek kısa çizgilerden oluşmalıdır, ancak kısa çizgi ile başlayamaz. Dosya paylaşımlarını ve dosyaları adlandırma hakkında tüm ayrıntılar için bkz. [adlandırma ve başvuru paylaşımları, dizinler, dosyalar ve meta veriler](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata).
 
 Bu örnek, 10-GiB kotası ile *myshare* adlı bir paylaşma oluşturur. 
 
@@ -110,4 +111,3 @@ Linux VM 'yi yeniden başlattığınızda, bağlı SMB paylaşımının kapalı 
 - [Oluşturma sırasında bir Linux sanal makinesini özelleştirmek için Cloud-init kullanma](using-cloud-init.md)
 - [Linux VM'ye disk ekleme](add-disk.md)
 - [Linux sanal makineleri için Azure disk şifrelemesi](disk-encryption-overview.md)
-

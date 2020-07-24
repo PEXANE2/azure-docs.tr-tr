@@ -4,12 +4,12 @@ description: 'Tümleştirme görevleri için optimize edilmiş Microsoft bulut h
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1e6d1462a4f94db424081ea1567e5926806d3e81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083013"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure’da doğru tümleştirme ve otomasyon hizmetlerini seçme
 
@@ -38,8 +38,8 @@ Aşağıdaki tablo, Power otomatikleştirin veya Logic Apps 'nin belirli bir tü
 | --- | --- | --- |
 | **Kullanıcılar** |Ofis çalışanları, iş kullanıcıları veya SharePoint yöneticileri |Uzman tümleştiriciler ve geliştiriciler, BT uzmanları |
 | **Senaryolar** |Self servis |Gelişmiş tümleştirmeler |
-| **Tasarım Aracı** |Tarayıcı içi ve mobil uygulama, yalnızca kullanıcı arabirimi |Tarayıcı içi ve [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Cod görünümü](../logic-apps/logic-apps-author-definitions.md) sağlanır |
-| **Uygulama yaşam döngüsü yönetimi (ALM)** |Üretim dışı ortamlarda tasarım ve test etme, hazırlık sırasında üretime yükseltme |Azure DevOps: [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) kaynak denetimi, test, destek, otomasyon ve yönetilebilirlik |
+| **Tasarım Aracı** |Tarayıcı içi ve mobil uygulama, yalnızca kullanıcı arabirimi |Tarayıcı içi ve [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), [Cod görünümü](../logic-apps/logic-apps-author-definitions.md) sağlanır |
+| **Uygulama yaşam döngüsü yönetimi (ALM)** |Üretim dışı ortamlarda tasarım ve test etme, hazırlık sırasında üretime yükseltme |Azure DevOps: [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) kaynak denetimi, test, destek, otomasyon ve yönetilebilirlik |
 | **Yönetici deneyimi** |Power otomatikleştir ortamlarını ve veri kaybı önleme (DLP) ilkelerini yönetme, lisanslama izleme: [Yönetim Merkezi](https://admin.flow.microsoft.com) |Kaynak gruplarını, bağlantıları, erişim yönetimini ve günlüğe kaydetmeyi yönetme: [Azure Portal](https://portal.azure.com) |
 | **Güvenlik** |Office 365 güvenlik ve uyumluluk denetim günlükleri, DLP, hassas veriler için [bekleyen şifreleme](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure güvenlik güvencesi: [Azure güvenliği](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/), [Denetim günlükleri](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
@@ -56,8 +56,8 @@ Düzenleme oluşturduğunuzda, mantıksal uygulamalardan işlev çağırdığın
 | **Geliştirme** | Koda öncelik veren (kesinlik temelli) | Tasarımcıya öncelik veren (bildirim temelli) |
 | **Bağlantı** | [Bir düzine yerleşik bağlama türü hakkında](functions-triggers-bindings.md#supported-bindings), özel bağlamalar için kod yazın | [Büyük bağlayıcılar koleksiyonu](../connectors/apis-list.md), [B2B senaryoları için Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md), [özel bağlayıcılar oluşturma](../logic-apps/custom-connector-overview.md) |
 | **Eylemler** | Her etkinlik bir Azure işlevidir; eylem işlevleri için kod yazma |[Hazır eylemlerden oluşan büyük koleksiyon](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **İzleme** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure izleyici günlükleri](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| **Yönetim** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| **İzleme** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure izleyici günlükleri](../logic-apps/monitor-logic-apps.md)|
+| **Yönetim** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **Yürütme bağlamı** | [Yerel olarak](functions-runtime-overview.md) veya bulutta çalışabilir | Yalnızca bulutta çalışır|
 
 <a name="function"></a>

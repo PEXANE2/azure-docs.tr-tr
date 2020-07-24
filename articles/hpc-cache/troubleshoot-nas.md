@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
-ms.author: rohogue
-ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515465"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082775"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS yapılandırma ve NFS depolama hedefi sorunlarını giderme
 
@@ -20,7 +20,7 @@ Bu makalede, bazı yaygın yapılandırma hataları ve Azure HPC önbelleğinin 
 Bu makale, bağlantı noktalarını denetleme ve bir NAS sistemine kök erişimin nasıl etkinleştirileceği hakkındaki ayrıntıları içerir. Ayrıca, NFS depolama hedefi oluşturmanın başarısız olmasına neden olabilecek daha az yaygın sorunlar hakkında ayrıntılı bilgiler içerir.
 
 > [!TIP]
-> Bu kılavuzu kullanmadan önce, [NFS depolama hedefleri için önkoşulları](hpc-cache-prereqs.md#nfs-storage-requirements)okuyun.
+> Bu kılavuzu kullanmadan önce, [NFS depolama hedefleri için önkoşulları](hpc-cache-prerequisites.md#nfs-storage-requirements)okuyun.
 
 Sorununuza yönelik çözüm buraya eklenmiyorsa, Microsoft hizmet ve destek 'in sorunu araştırmak ve çözmek için sizinle çalışabilmesi için lütfen [bir destek bileti açın](hpc-cache-support-ticket.md) .
 

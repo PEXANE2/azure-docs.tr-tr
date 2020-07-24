@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: e8dc2edf19279aff05e5d5be6096505acf1b3438
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66c8db580d0da29aa0be1193bf41b491f388e55a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519616"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083982"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -33,8 +33,8 @@ Bu sayfa düzenli olarak güncelleştirildiğinden, sık sık ziyaret edin. Alt�
 
 Temmuz ayında güncelleştirmeler şunları içerir:
 - [Azure depolama için tehdit koruması Azure dosyaları ve Azure Data Lake Storage 2. içerecek şekilde genişletildi (Önizleme)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [Kapsayıcı güvenlik geliştirmeleri-daha hızlı kayıt defteri tarama ve yenilenen belgeler](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
 - [SQL gelişmiş veri güvenliği için altı ilke kullanım dışı](#six-policies-for-sql-advanced-data-security-deprecated)
-
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure depolama için tehdit koruması Azure dosyaları ve Azure Data Lake Storage 2. içerecek şekilde genişletildi (Önizleme)
@@ -44,6 +44,25 @@ Azure depolama için tehdit koruması, Azure depolama hesaplarınızdaki zararl�
 Verileriniz, blob kapsayıcıları, dosya paylaşımları veya veri Lakes olarak depolanıp saklanmadığı için korunabilir. 
 
 [Azure depolama için tehdit koruması](threat-protection.md#threat-protection-for-azure-storage-)hakkında daha fazla bilgi edinin.
+
+
+### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>Kapsayıcı güvenlik geliştirmeleri-daha hızlı kayıt defteri tarama ve yenilenen belgeler
+
+Kapsayıcı güvenlik etki alanındaki sürekli yatırımların bir parçası olarak, güvenlik merkezi 'nin Azure Container Registry ' de depolanan kapsayıcı görüntülerinin dinamik taramalarında önemli bir performans geliştirmesini paylaşabiliriz. Şimdi taramalar genellikle yaklaşık iki dakika içinde tamamlanır. Bazı durumlarda, bu işlem 15 dakikaya kadar sürebilir.
+
+Azure Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri ile ilgili açıklık ve kılavuz kalitesini artırmak için kapsayıcı güvenliği belge sayfalarını de yeniledik. 
+
+Aşağıdaki makalelerde Güvenlik Merkezi 'nin kapsayıcı güvenliği hakkında daha fazla bilgi edinin:
+
+- [Güvenlik Merkezi 'nin kapsayıcı güvenlik özelliklerine genel bakış](https://docs.microsoft.com/azure/security-center/container-security)
+- [Azure Container Registry ile tümleştirmenin ayrıntıları](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+- [Azure Kubernetes hizmeti ile tümleştirmenin ayrıntıları](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
+- [Kayıt defterlerine nasıl tarama yapılır ve Docker konaklarınızı sağlamlaştırın](https://docs.microsoft.com/azure/security-center/monitor-container-security)
+- [Azure Kubernetes hizmet kümeleri için tehdit koruması özelliklerinden güvenlik uyarıları](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [Azure Kubernetes hizmet konakları için tehdit koruması özelliklerinden güvenlik uyarıları](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
+- [Kapsayıcılar için güvenlik önerileri](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+
+
 
 
 ### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>SQL gelişmiş veri güvenliği için altı ilke kullanım dışı
@@ -132,7 +151,7 @@ Otomasyon yapılandırmalarınızı kuruluşunuz genelinde dağıtmak için bu y
 |Hedef  |İlke  |İlke KIMLIĞI  |
 |---------|---------|---------|
 |Olay Hub 'ına sürekli dışarı aktarma|[Azure Güvenlik Merkezi uyarıları ve önerileri için Olay Hub 'ına aktarma dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
-|Log Analytics çalışma alanına sürekli dışa aktarma|[Azure Güvenlik Merkezi uyarıları ve önerileri için Log Analytics çalışma alanına dışarı aktarma dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+|Log Analytics çalışma alanına sürekli dışarı aktarma|[Azure Güvenlik Merkezi uyarıları ve önerileri için Log Analytics çalışma alanına dışarı aktarma dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
 |Güvenlik uyarıları için iş akışı Otomasyonu|[Azure Güvenlik Merkezi uyarıları için Iş akışı Otomasyonu dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
 |Güvenlik önerileri için iş akışı Otomasyonu|[Azure Güvenlik Merkezi önerileri için Iş akışı Otomasyonu dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
 ||||
@@ -230,14 +249,14 @@ Bu güncelleştirme, bu özelliğe aşağıdaki değişiklikleri getirir:
 
 - Bir VM üzerinde JıT 'i etkinleştirmenizi öneren öneri yeniden adlandırıldı. Eskiden, "tam zamanında ağ erişim denetimi sanal makinelere uygulanmalıdır": "sanal makinelerin yönetim bağlantı noktaları tam zamanında ağ erişim denetimiyle korunmalıdır".
 
-- Öneri yalnızca açık yönetim bağlantı noktaları varsa tetiklenecek şekilde ayarlanmıştır.
+- Öneri yalnızca açık yönetim bağlantı noktaları varsa tetiklenir.
 
 [JIT erişim özelliği](security-center-just-in-time.md)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>Özel öneriler ayrı bir güvenlik denetimine taşındı
 
-Gelişmiş güvenli puanla birlikte sunulan güvenlik denetimlerinden biri "en iyi güvenlik uygulamalarını uygulama" idi. Abonelikleriniz için oluşturulan tüm özel öneriler otomatik olarak bu denetime yerleştirildi. 
+Gelişmiş güvenli puanla sunulan bir güvenlik denetimi "en iyi güvenlik uygulamalarını uygulama" idi. Abonelikleriniz için oluşturulan tüm özel öneriler otomatik olarak bu denetime yerleştirildi. 
 
 Özel önerilerinizi bulmayı kolaylaştırmak için, bunları "özel öneriler" olarak ayrılmış bir güvenlik denetimine taşıdık. Bu denetim, güvenli puanınızı etkilemez.
 
@@ -260,7 +279,7 @@ Güvenlik denetimleri ve bu geçiş, yeni güvenli puan deneyiminin bir parças�
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Genişletilmiş Güvenlik denetimi "en iyi güvenlik uygulamalarını uygulayın" 
 
-Gelişmiş güvenli puanla birlikte sunulan güvenlik denetimlerinden biri "en iyi güvenlik uygulamalarını uygulama" dir. Bu denetimde bir öneri olduğunda, güvenli puanı etkilemez. 
+Gelişmiş güvenli puanla sunulan bir güvenlik denetimi "en iyi güvenlik uygulamalarını uygulama" dır. Bu denetimde bir öneri olduğunda, güvenli puanı etkilemez. 
 
 Bu güncelleştirmeyle, üç öneri özgün olarak yerleştirildiği denetimlerden ve bu en iyi yöntemler denetimine taşınmıştır. Bu üç önerinin riskini başlangıçta düşündükten daha düşük olduğunu belirlediğimiz için bu adımı aldık.
 

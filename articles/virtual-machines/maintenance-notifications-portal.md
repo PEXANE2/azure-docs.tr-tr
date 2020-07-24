@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678741"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082452"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Portalı kullanarak planlı bakım bildirimlerini işleme
 
@@ -49,7 +50,7 @@ Azure portal kullanabilir ve bakım için zamanlanmış VM 'Ler için arama yapa
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Portalda bildirim ve uyarılar
 
-Azure, abonelik sahibine ve ortak sahipler grubuna bir e-posta göndererek planlı bakım için bir zamanlama iletişim kurar. Azure etkinlik günlüğü uyarıları oluşturarak bu iletişime ek alıcılar ve kanallar ekleyebilirsiniz. Daha fazla bilgi için bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+Azure, abonelik sahibine ve ortak sahipler grubuna bir e-posta göndererek planlı bakım için bir zamanlama iletişim kurar. Azure etkinlik günlüğü uyarıları oluşturarak bu iletişime ek alıcılar ve kanallar ekleyebilirsiniz. Daha fazla bilgi için bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications-portal.md).
 
 **Olay türünü** **Planlı bakım**olarak ve **Sanal Makine Ölçek Kümeleri** ve/veya **sanal makineler**olarak **Hizmetler** olarak ayarladığınızdan emin olun.
 

@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78b11a4d900b8c9cf30a1d37a2b7e6380d6b989a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082571"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>REST API ile SSH kimlik doğrulaması kullanan bir Linux sanal makinesi oluşturma
 
@@ -45,7 +46,7 @@ Aşağıdaki üstbilgiler gereklidir:
 | İstek üst bilgisi   | Açıklama |
 |------------------|-----------------|
 | *Content-Type:*  | Gereklidir. `application/json` olarak ayarlayın. |
-| *Yetkilendirme:* | Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) ayarlayın. |
+| *Yetkilendirme:* | Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](/rest/api/azure/#authorization-code-grant-interactive-clients) ayarlayın. |
 
 REST API isteklerle çalışma hakkında genel bilgi için, bkz. [bir REST API isteği/yanıtı bileşenleri](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -121,13 +122,13 @@ Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
 ## <a name="sending-the-request"></a>İstek gönderiliyor
 
-Bu HTTP isteğini göndermek için tercih ettiğiniz istemciyi kullanabilirsiniz. Ayrıca, **deneyin** düğmesine tıklayarak [tarayıcı içi bir araç](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) da kullanabilirsiniz.
+Bu HTTP isteğini göndermek için tercih ettiğiniz istemciyi kullanabilirsiniz. Ayrıca, **deneyin** düğmesine tıklayarak [tarayıcı içi bir araç](/rest/api/compute/virtualmachines/createorupdate) da kullanabilirsiniz.
 
 ### <a name="responses"></a>Yanıtlar
 
 Bir sanal makineyi oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
-| Name        | Tür                                                                              | Description |
+| Ad        | Tür                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 TAMAM      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Tamam          |
 | 201 oluşturuldu | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Oluşturulan     |
@@ -150,4 +151,4 @@ Azure REST API 'Leri veya Azure CLı veya Azure PowerShell gibi diğer yönetim 
 - [Azure Işlem sağlayıcısı REST API](/rest/api/compute/)
 - [Azure REST API’yi kullanmaya başlayın](/rest/api/azure/)
 - [Azure CLI](/cli/azure/)
-- [Azure PowerShell modülü](/powershell/azure/overview)
+- [Azure PowerShell modülü](/powershell/azure/)
