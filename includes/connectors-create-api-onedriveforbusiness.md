@@ -3,28 +3,40 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 11/03/2016
-ms.openlocfilehash: 3a0cb48e7fe5f3eef101f644e4f72fcfa2689d6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 06a503e800309d8689735417931820d9f16a6e75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87103076"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [OneDrive](https://OneDrive.com) hesabı 
+* [OneDrive iş](https://OneDrive.com) hesabı 
 
-Bir mantıksal uygulamada OneDrive Iş hesabınızı kullanabilmeniz için, mantıksal uygulamayı OneDrive Iş hesabınıza bağlanacak şekilde yetkilendirmelisiniz. Neyse ki bunu, Azure portalında mantıksal uygulamanızın içinden kolayca yapabilirsiniz. 
+OneDrive Iş hesabınızı Logic Apps ile kullanabilmeniz için önce Azure portal OneDrive Iş hesabınıza bağlanmak üzere Logic Apps yetkilendirmelisiniz.
 
-Mantıksal uygulamanızı OneDrive Iş hesabınıza bağlamak için yetkilendirme adımları aşağıda verilmiştir:
+OneDrive Iş hesabınıza bağlanmak üzere Logic Apps yetkilendirmek için aşağıdaki adımları izleyin:  
 
-1. OneDrive Iş 'e bir bağlantı oluşturmak için, mantıksal uygulama Tasarımcısı 'nda, açılan listeden **Microsoft yönetilen API 'Leri göster** ' i seçin ve arama kutusuna *OneDrive iş* ' i girin. Kullanmak istediğiniz tetikleyiciyi veya eylemi seçin:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Daha önce OneDrive Iş ile herhangi bir bağlantı oluşturmadıysanız OneDrive Iş kimlik bilgilerinizi sağlamanız istenir. Bu kimlik bilgileri, mantıksal uygulamanızı bağlanmak ve OneDrive Iş hesabınızın verilerine erişmek üzere yetkilendirmek için kullanılır:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
+1. Azure portalında oturum açın. 
+
+1. **Azure hizmetleri**altında **Logic Apps**' yi seçin. Ardından, listeden mantıksal uygulamanızın adını seçin.
+
+1. Mantıksal uygulamanızın menüsünde, **geliştirme araçları**altında **Logic App Designer** ' ı seçin.
+
+1. Logic Apps tasarımcısında, açılan listeden **Microsoft yönetilen API 'Leri göster** ' i seçin, sonra arama kutusuna *OneDrive iş* girin. Kullanılacak tetikleyiciyi veya eylemi seçin:  
+
+   ![OneDrive Iş API 'SI eylemleriyle yineleme tetikleyicisi gösteren Logic Apps tasarımcısının ekran görüntüsü.](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
+
+2. Daha önce OneDrive Iş ile herhangi bir bağlantı oluşturmadıysanız, OneDrive Iş kimlik bilgilerinizi sağlamak için istemi izleyin. Bu kimlik bilgileri, mantıksal uygulamanızı OneDrive Iş hesabınızın verilerine erişmek üzere yetkilendirmek için kullanılır:  
+
+   ![OneDrive Iş için oturum açma istemi gösteren Logic Apps Designer 'ın ekran görüntüsü.](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
+
 3. Mantıksal uygulamanızı yetkilendirmek için OneDrive Iş Kullanıcı adınızı ve parolanızı sağlayın:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Bağlantı oluşturulduğunu ve mantıksal uygulamanızdaki diğer adımlara devam etmek için artık ücretsiz olduğunu göreceksiniz:  
-   ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 
+   ![OneDrive Iş oturum açma sayfasının, oturum açma istemi gösteren ekran görüntüsü.](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
+
+4. Bağlantı artık adımda listelenmiştir. Kaydet ' i seçin ve ardından mantıksal uygulamanızı oluşturmaya devam edin. 
+
+   ![Logic Apps Tasarımcısı 'nın, OneDrive Iş bağlantısı olan tetikleyiciyi listelenmiş şekilde gösterildiği ekran görüntüsü.](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115762"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -130,7 +130,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
    - **Değer adı**: Kerberos biletleri Iletileceği Azure AD URL 'si.
    - **Değer** (veri): **1** Intranet bölgesini gösterir.
 
-     Sonuç şöyle görünür:
+     Sonuç şuna benzer:
 
      Değer adı:`https://autologon.microsoftazuread-sso.com`
   
@@ -162,9 +162,9 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
 4. Uygun alanlara aşağıdaki değerleri girin ve **Tamam**' a tıklayın.
    - **Anahtar yolu**: ***Software\microsoft\windows\currentversion\ınternet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
-   - **Değer adı**: ***https***.
-   - **Değer türü**: ***REG_DWORD***.
-   - **Değer verisi**: ***00000001***.
+   - **Değer adı**: ***https***
+   - **Değer türü**: ***REG_DWORD***
+   - **Değer verisi**: ***00000001***
  
      ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso16.png)
  

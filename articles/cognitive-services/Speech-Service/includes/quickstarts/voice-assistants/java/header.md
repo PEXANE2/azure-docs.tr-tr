@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: travisw
-ms.openlocfilehash: c6985cefe9b0a7aefd0441d426808ef9fd1e8217
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 017b5161235093a0ae35a14310824a16b43a71f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87103081"
 ---
-Sağ tarafta doğrudan geçiş yapmayı tercih ediyorsanız, GitHub 'da tüm <a href="https://aka.ms/speech/github-java">konuşma SDK 'Sı Java örneklerini</a> görüntüleyin veya indirin. Aksi takdirde, haydi başlayalım.
+GitHub 'da tüm <a href="https://aka.ms/speech/github-java">konuşma SDK 'Sı Java örneklerini</a> görüntüleyebilir veya indirebilirsiniz. 

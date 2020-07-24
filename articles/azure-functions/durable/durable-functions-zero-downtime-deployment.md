@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165711"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093077"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
 
-Dayanıklı İşlevler [güvenilir yürütme modeli](durable-functions-checkpointing-and-replay.md) , güncelleştirmeleri dağıtırken göz önünde bulundurmanız gereken ek bir sınama oluşturan, düzenleme belirleyici olmasını gerektirir. Bir dağıtım, etkinlik işlevi imzalarında veya Orchestrator mantığındaki değişiklikler içerdiğinde uçuş düzenleme örnekleri başarısız olur. Bu durum özellikle uzun süre çalışan düzenleyiciler örneklerine yönelik bir sorundur ve bu da saatleri veya iş günlerini temsil edebilir.
+Dayanıklı İşlevler [güvenilir yürütme modeli](./durable-functions-orchestrations.md) , güncelleştirmeleri dağıtırken göz önünde bulundurmanız gereken ek bir sınama oluşturan, düzenleme belirleyici olmasını gerektirir. Bir dağıtım, etkinlik işlevi imzalarında veya Orchestrator mantığındaki değişiklikler içerdiğinde uçuş düzenleme örnekleri başarısız olur. Bu durum özellikle uzun süre çalışan düzenleyiciler örneklerine yönelik bir sorundur ve bu da saatleri veya iş günlerini temsil edebilir.
 
 Bu hataların oluşmasını engellemek için iki seçeneğiniz vardır: 
 - Çalışan tüm düzenleme örnekleri tamamlanana kadar dağıtımınızı geciktirebilirsiniz.
@@ -23,13 +23,13 @@ Bu hataların oluşmasını engellemek için iki seçeneğiniz vardır:
 
 Aşağıdaki grafik, Dayanıklı İşlevler için sıfır kesinti temelli bir dağıtım elde etmek üzere üç ana stratejileri karşılaştırır: 
 
-| Strateji |  Kullanılması gereken durumlar | Artıları | Simgeler |
+| Strateji |  Kullanılması gereken durumlar | Avantajlar | Dezavantajlar |
 | -------- | ------------ | ---- | ---- |
-| [Sürüm oluşturma](#versioning) |  Sık karşılaşılan değişiklikler hakkında daha fazla karşılaşmeyen uygulamalar [.](durable-functions-versioning.md) | Basit uygulama. |  Bellekte ve işlev sayısında daha fazla işlev uygulaması boyutu.<br/>Kod çoğaltma. |
+| [Sürüm Oluşturma](#versioning) |  Sık karşılaşılan değişiklikler hakkında daha fazla karşılaşmeyen uygulamalar [.](durable-functions-versioning.md) | Basit uygulama. |  Bellekte ve işlev sayısında daha fazla işlev uygulaması boyutu.<br/>Kod çoğaltma. |
 | [Yuva ile durum denetimi](#status-check-with-slot) | 24 veya daha fazla çakışan düzenleme için uzun süre çalışan bir düzenleme gerçekleştirmeyen bir sistem. | Basit kod tabanı.<br/>Ek işlev uygulama yönetimi gerektirmez. | Ek depolama hesabı veya görev merkezi yönetimi gerektirir.<br/>Hiçbir düzenleme çalışmadığı zaman dönem gerektirir. |
 | [Uygulama yönlendirme](#application-routing) | En son 24 saatten uzun veya sık sık çakışan düzenleyicilerle bu dönemler gibi, düzenleme çalışmadığı zaman süreleri olmayan bir sistem. | Sürekli değişiklikler içeren düzenlemeleri çalıştıran sistemlerin yeni sürümlerini işler. | Akıllı uygulama yönlendiricisi gerektirir.<br/>Aboneliğiniz tarafından izin verilen işlev uygulamalarının sayısı en fazla olabilir. Varsayılan değer 100'dür. |
 
-## <a name="versioning"></a>Sürüm oluşturma
+## <a name="versioning"></a>Sürüm Oluşturma
 
 İşlevlerinizin yeni sürümlerini tanımlayın ve işlev uygulamanızda eski sürümleri bırakın. Diyagramda görebileceğiniz gibi, bir işlevin sürümü adının bir parçası haline gelir. İşlevlerin önceki sürümleri korunduğundan, uçuş sırasında düzenleme örnekleri bunlara başvurmasına devam edebilir. Bu sırada, Orchestration Client işlevinizin bir uygulama ayarından başvurmasına yönelik yeni düzenleme örnekleri istekleri en son sürüm için çağrı yapılır.
 
@@ -52,7 +52,7 @@ Bu senaryoyu ayarlamak için aşağıdaki yordamı kullanın.
 
 1. Her yuva için, [AzureWebJobsStorage uygulama ayarını](../functions-app-settings.md#azurewebjobsstorage) paylaşılan bir depolama hesabının bağlantı dizesine ayarlayın. Bu depolama hesabı bağlantı dizesi, Azure Işlevleri çalışma zamanı tarafından kullanılır. Bu hesap, Azure Işlevleri çalışma zamanı tarafından kullanılır ve işlevin anahtarlarını yönetir.
 
-1. Her yuva için, örneğin, yeni bir uygulama ayarı oluşturun `DurableManagementStorage` . Değerini farklı depolama hesaplarının bağlantı dizesine ayarlayın. Bu depolama hesapları, [güvenilir yürütme](durable-functions-checkpointing-and-replay.md)için dayanıklı işlevler uzantısı tarafından kullanılır. Her yuva için ayrı bir depolama hesabı kullanın. Bu ayarı bir dağıtım yuvası ayarı olarak işaretlemeyin.
+1. Her yuva için, örneğin, yeni bir uygulama ayarı oluşturun `DurableManagementStorage` . Değerini farklı depolama hesaplarının bağlantı dizesine ayarlayın. Bu depolama hesapları, [güvenilir yürütme](./durable-functions-orchestrations.md)için dayanıklı işlevler uzantısı tarafından kullanılır. Her yuva için ayrı bir depolama hesabı kullanın. Bu ayarı bir dağıtım yuvası ayarı olarak işaretlemeyin.
 
 1. İşlev uygulamanızın [Dosya durableTask bölümündehost.js](durable-functions-bindings.md#hostjson-settings), `azureStorageConnectionStringName` Adım 3 ' te oluşturduğunuz uygulama ayarının adı olarak belirtin.
 
@@ -172,4 +172,3 @@ Daha fazla bilgi için bkz. [Azure 'da dayanıklı işlevler örnekleri yönetme
 
 > [!div class="nextstepaction"]
 > [Sürüm oluşturma Dayanıklı İşlevler](durable-functions-versioning.md)
-

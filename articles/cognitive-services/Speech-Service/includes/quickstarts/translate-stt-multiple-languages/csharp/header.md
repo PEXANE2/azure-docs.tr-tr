@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: a0acb96eaee73e3286f3957564ef3fa1a93e72bb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 58e0d916f876af916bc8db32c93af5029641878d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75468638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87103083"
 ---
-Sağ tarafta doğrudan geçiş yapmayı tercih ediyorsanız, GitHub 'da tüm <a href="https://aka.ms/speech/github-csharp">konuşma SDK C# örneklerini</a> görüntüleyin veya indirin. Aksi takdirde, haydi başlayalım.
+GitHub 'da tüm <a href="https://aka.ms/speech/github-csharp">konuşma SDK C# örneklerini</a> görüntüleyebilir veya indirebilirsiniz. 

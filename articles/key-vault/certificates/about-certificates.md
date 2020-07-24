@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81685904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115663"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
@@ -66,7 +66,7 @@ Yanıtta bulunan ek salt okuma öznitelikleri vardır:
 -   *NBF*: intdate: x509 sertifikası tarihinin değerini içerir.  
 
 > [!Note] 
-> Bir Key Vault sertifikasının süresi dolarsa, adreslenebilir anahtar ve gizli dizi çalışamaz duruma gelir.  
+> Key Vault sertifikasının süresi dolarsa adreslenebilir anahtarı ve gizli dizisi çalışmaz.  
 
 ### <a name="tags"></a>Etiketler
 
@@ -81,10 +81,10 @@ Sertifika ilkesi, bir Key Vault sertifikasının yaşam döngüsünü oluşturma
 
 Sıfırdan bir Key Vault sertifikası oluşturulduğunda, bir ilkenin sağlanması gerekir. İlke, bu Key Vault sertifikası sürümünün veya sonraki Key Vault sertifika sürümünün nasıl oluşturulacağını belirtir. Bir ilke kurulduktan sonra, gelecekteki sürümler için art arda oluşturma işlemlerinde bu gerekli değildir. Bir Key Vault sertifikasının tüm sürümleri için bir ilkenin yalnızca bir örneği bulunur.  
 
-Yüksek düzeyde, bir sertifika ilkesi aşağıdaki bilgileri içerir:  
+Yüksek düzeyde, bir sertifika ilkesi aşağıdaki bilgileri içerir (tanımları [burada](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)bulunabilir):  
 
 -   X509 sertifika özellikleri: bir x509 sertifika isteği oluşturmak için kullanılan konu adını, konu diğer adlarını ve diğer özellikleri Içerir.  
--   Anahtar özellikleri: anahtar türü, anahtar uzunluğu, dışarı aktarılabilir ve anahtar alanlarını yeniden kullanır. Bu alanlar anahtar kasasının nasıl oluşturulacağını gösteren anahtar kasasına yönlendirir.  
+-   Anahtar özellikleri: anahtar türü, anahtar uzunluğu, dışarı aktarılabilir ve Reusekeyonyenilemesi alanlarını içerir. Bu alanlar anahtar kasasının nasıl oluşturulacağını gösteren anahtar kasasına yönlendirir.  
 -   Gizli özellikler: sertifikayı gizli olarak almak için, gizli değeri oluşturmak üzere adreslenebilir gizli dizi içerik türü gibi gizli özellikler içerir.  
 -   Ömür Işlemleri: KV sertifikası için ömür eylemleri içerir. Her ömür eylemi şunları içerir:  
 
@@ -150,7 +150,7 @@ Bir sertifikanın ilkesi otomatik olarak yenilemeye ayarlandıysa, aşağıdaki 
 
 ## <a name="certificate-access-control"></a>Sertifika Access Control
 
- Sertifikalar için erişim denetimi Key Vault tarafından yönetilir ve bu sertifikaları içeren Key Vault tarafından sağlanır. Sertifikalar için erişim denetimi ilkesi, aynı Key Vault anahtarlar ve gizli diziler için erişim denetimi ilkelerinden farklıdır. Kullanıcılar, senaryoya uygun bir veya daha fazla kasa oluşturarak sertifikaların uygun segmentlerini ve yönetimini korumanıza olanak sağlayabilir.  
+ Sertifikalar için erişim denetimi, Key Vault tarafından yönetilir ve bu sertifikaları içeren Key Vault tarafından sağlanır. Sertifikalar için erişim denetimi ilkesi, aynı Key Vault anahtarlar ve gizli diziler için erişim denetimi ilkelerinden farklıdır. Kullanıcılar, senaryoya uygun bir veya daha fazla kasa oluşturarak sertifikaların uygun segmentlerini ve yönetimini korumanıza olanak sağlayabilir.  
 
  Aşağıdaki izinler, bir anahtar kasasındaki gizli dizi erişim denetimi girişinde, her bir sorumlu temelinde kullanılabilir ve gizli bir nesne üzerinde izin verilen işlemleri yakından yansıtır:  
 
@@ -178,9 +178,9 @@ Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlem
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Anahtar Kasası Hakkında](../general/overview.md)
+- [Key Vault Hakkında](../general/overview.md)
 - [Anahtarlar, gizli diziler ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
 - [Anahtarlar hakkında](../keys/about-keys.md)
 - [Gizli diziler hakkında](../secrets/about-secrets.md)
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
-- [Geliştirici Kılavuzu Key Vault](../general/developers-guide.md)
+- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,13 +8,14 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87103069"
 ---
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 Aşağıdaki senaryolar büyük ölçüde patlanabilir:
 - **Önyükleme zamanlarını iyileştirme** : tekrarlaması sayesinde, örneğiniz önemli ölçüde daha hızlı bir hızda önyüklenecektir. Örneğin, Premium etkin VM 'Ler için varsayılan işletim sistemi diski, 120 ıOPS ve 25 MB/sn için sağlanan bir performans olan P4 disktir. Patlama ile P4, bir önyükleme süresinin 6X ile hızlanmasına izin veren 3500 ıOPS ve 170 MB/sn 'ye kadar sürebilir.
 - **Toplu Işleri işleme** – bazı uygulamaların iş yükleri doğası açısından döngüsel olur ve çoğu zaman için bir temel performans gerektirir ve kısa bir süre için daha yüksek performans gerektirir. Bu işlemin bir örneği, az miktarda disk trafiği gerektiren işlemleri günlük olarak işleyen bir muhasebe programıdır. Daha sonra ayın sonunda, çok daha yüksek miktarda disk trafiğine ihtiyacı olan raporların uzlaştırılıyor.
@@ -27,7 +28,7 @@ Gereksiz kredi sistemi, hem sanal makine düzeyinde hem de disk düzeyinde aynı
 
 ![Patlama demeti diyagramı](media/managed-disks-bursting/bucket-diagram.jpg)
 
-En fazla 30 dakikalık bir kaç dakika kullanmak istediğinize kadar. Bunu günde 30 dakika boyunca art arda veya sporda kullanabilirsiniz. Ürün dağıtıldığında, tüm kredileri gelir ve kredilerin tam olarak tamamen stoklanması için bir günden daha az sürdüğü krediler. Ani kredilerini biriktiribilmeniz ve harcamanız ve 30 dakikalık demet 'in, veri bloğu için yeniden tam olarak tam olması gerekmez. Veri bloğu birikmesi konusunda bir şey, kullanılmayan ıOPS 'yi temel alan ve performans tutarlarının altındaki MB/s değerlerini temel aldığı için her kaynak için farklı olmasıdır. Bu, daha yüksek temel performans ürünlerinin, en düşük temel performanslı ürünlerden daha hızlı bir şekilde patlama miktarlarını tahakkuk alabileceği anlamına gelir. Örneğin, hiçbir etkinlik olmadan bir P1 disk kimliği, bir P20 disk 2.300 tahakkuk ederken saniyede 120 ıOPS tahakkuk eder.
+En fazla 30 dakikalık bir kaç dakika kullanmak istediğinize kadar. Bunu günde 30 dakika boyunca art arda veya sporda kullanabilirsiniz. Ürün dağıtıldığında, tam kredilerle kullanıma sunulur ve kredilerin tam olarak tamamen stoklanması için bir günden daha az zaman alır. Ani kredilerini biriktiribilmeniz ve harcamanız ve 30 dakikalık demet 'in, veri bloğu için yeniden tam olarak tam olması gerekmez. Veri bloğu birikmesi konusunda bir şey, kullanılmayan ıOPS 'yi temel alan ve performans tutarlarının altındaki MB/s değerlerini temel aldığı için her kaynak için farklı olmasıdır. Bu, daha yüksek temel performans ürünlerinin, en düşük temel performanslı ürünlerden daha hızlı bir şekilde patlama miktarlarını tahakkuk alabileceği anlamına gelir. Örneğin, hiçbir etkinlik olmadan bir P1 disk kimliği, bir P20 disk 2.300 tahakkuk ederken saniyede 120 ıOPS tahakkuk eder.
 
 ## <a name="bursting-states"></a>Gereksiz durumlar
 Kaynağınız, yazılabilir özelliği etkin olan üç durum vardır:

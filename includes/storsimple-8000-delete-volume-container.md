@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storsimple
 author: alkohli
 ms.service: storsimple
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67188418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87103064"
 ---
 Bir birim kapsayıcısını silmek için şunları yapmanız gerekir
  - birim kapsayıcısında birimleri silin. Birim kapsayıcısının ilişkili birimleri varsa, önce bu birimleri çevrimdışına alın. [Birimi çevrimdışına alma](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)bölümündeki adımları izleyin. Birimler çevrimdışı olduktan sonra bunları silebilirsiniz. 
@@ -36,6 +36,6 @@ Birim kapsayıcısının ilişkili birimleri, yedekleme ilkeleri ve bulut anlık
 
 Birim kapsayıcıları listesi, silinen birim kapsayıcısını yansıtacak şekilde güncelleştirilir.
 
-![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
+![Birim kapsayıcısı sayfasının ekran görüntüsü. Birim kapsayıcılarının tablosal listesi artık silinen kapsayıcıyı içermiyor.](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343455"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87103070"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -45,22 +45,30 @@ Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-
 
 ### <a name="upload-your-vhd"></a>VHD 'nizi karşıya yükleyin
 
- Doğrudan karşıya yükleme, VHD 'nizi Azure yönetilen diskine aktarmayı kolaylaştırır. Daha önce, verilerinizi bir depolama hesabına hazırlama dahil daha fazla ilgili bir işlemi izlemeniz gerekiyordu. Şimdi, daha az adım vardır. Şirket içi VM 'Lere Azure 'a yükleme, büyük yönetilen disklere yükleme, yedekleme ve geri yükleme işlemi basitleştirilmiştir. Ayrıca, yönetilen disklere doğrudan VM 'lere iliştirmeden veri yükleme olanağı vererek maliyeti azaltır. VHD 'leri boyut olarak 32 TiB 'ye kadar yüklemek için doğrudan karşıya yükleme kullanabilirsiniz.
+Doğrudan karşıya yükleme, VHD 'nizi Azure yönetilen diskine aktarmayı kolaylaştırır. Daha önce, verilerinizi bir depolama hesabına hazırlama dahil daha fazla ilgili bir işlemi izlemeniz gerekiyordu. Şimdi, daha az adım vardır. Şirket içi VM 'Lere Azure 'a yükleme, büyük yönetilen disklere yükleme, yedekleme ve geri yükleme işlemi basitleştirilmiştir. Ayrıca, yönetilen disklere doğrudan VM 'lere iliştirmeden veri yükleme olanağı vererek maliyeti azaltır. VHD 'leri boyut olarak 32 TiB 'ye kadar yüklemek için doğrudan karşıya yükleme kullanabilirsiniz.
 
- VHD 'nizi Azure 'a aktarmayı öğrenmek için bkz. [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) veya [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) makaleleri.
+VHD 'nizi Azure 'a aktarmayı öğrenmek için bkz. [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) veya [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) makaleleri.
 
-## <a name="encryption"></a>Şifreleme
+## <a name="security"></a>Güvenlik
+
+### <a name="private-links"></a>Özel bağlantılar
+
+Yönetilen diskler, ağınıza dahili bir yönetilen diski içeri veya dışarı aktarmak için özel bağlantıları kullanarak desteklenir. Özel bağlantılar, eklenmemiş yönetilen diskler ve bu verileri bölgesel genişletme, olağanüstü durum kurtarma ve Forli analiz için diğer bölgelere dışarı aktarmak için kullanabileceğiniz bir zamana bağlı paylaşılan erişim Imzası (SAS) URI 'SI oluşturmanıza olanak tanır. Ayrıca, bir VHD 'yi Şirket içindeki boş bir diske doğrudan yüklemek için SAS URI 'sini de kullanabilirsiniz. Artık, yönetilen disklerin içeri ve dışarı aktarılmasını kısıtlamak için [özel bağlantılardan](../articles/private-link/private-link-overview.md) yararlanarak yalnızca Azure sanal ağınızda yer alabilir. Özel bağlantılar verilerinizin yalnızca güvenli Microsoft omurga ağı içinde hareket etmenizi sağlamanıza olanak tanır.
+
+Yönetilen bir diski içeri veya dışarı aktarmaya yönelik özel bağlantıları nasıl etkinleştireceğinizi öğrenmek için bkz. [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) veya [Portal](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) makaleleri.
+
+### <a name="encryption"></a>Şifreleme
 
 Yönetilen diskler iki farklı şifreleme türü sunar. Birincisi, depolama hizmeti tarafından gerçekleştirilen sunucu tarafı şifrelemesi (SSE). İkincisi, sanal makinelerinize yönelik işletim sistemi ve veri diskleri üzerinde etkinleştirebileceğiniz Azure disk şifrelemesi (ADE) ' dir.
 
-### <a name="server-side-encryption"></a>Sunucu tarafı şifrelemesi
+#### <a name="server-side-encryption"></a>Sunucu tarafı şifrelemesi
 
-[Azure sunucu tarafı şifrelemesi](../articles/virtual-machines/windows/disk-encryption.md) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. Yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için sunucu tarafı şifreleme varsayılan olarak etkindir. (Diğer taraftan, geçici diskler Depolama Hizmeti Şifrelemesi tarafından şifrelenmez; bkz. [disk rolleri: geçici diskler](#temporary-disk)).
+Sunucu tarafı şifreleme, bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. Yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için sunucu tarafı şifreleme varsayılan olarak etkindir. (Konakta şifrelemeyi etkinleştirmediğiniz takdirde, diğer yandan geçici diskler sunucu tarafı şifreleme tarafından şifrelenmez; bkz. [disk rolleri: geçici diskler](#temporary-disk)).
 
-Azure 'un anahtarlarınızı sizin için yönetmesine izin verebilir, bunlar platform tarafından yönetilen anahtarlardır ya da anahtarları kendiniz yönetebilirsiniz. Bunlar, müşteri tarafından yönetilen anahtarlardır. Daha fazla ayrıntı için [yönetilen DISKLER SSS sayfasını](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) ziyaret edin.
+Azure 'un anahtarlarınızı sizin için yönetmesine izin verebilir, bunlar platform tarafından yönetilen anahtarlardır ya da anahtarları kendiniz yönetebilirsiniz. Bunlar, müşteri tarafından yönetilen anahtarlardır. Ayrıntılar için [Azure disk depolama makalesinin sunucu tarafı şifrelemesini](../articles/virtual-machines/windows/disk-encryption.md) ziyaret edin.
 
 
-### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
+#### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
 Azure disk şifrelemesi, bir IaaS sanal makinesi tarafından kullanılan işletim sistemini ve veri disklerini şifrelemenizi sağlar. Bu şifreleme yönetilen diskler içerir. Windows için Sürücüler, sektör standardı BitLocker şifreleme teknolojisi kullanılarak şifrelenir. Linux için diskler DM-Crypt teknolojisi kullanılarak şifrelenir. Şifreleme işlemi, disk şifreleme anahtarlarını denetlemenize ve yönetmenize olanak tanımak için Azure Key Vault ile tümleşiktir. Daha fazla bilgi için bkz. [Linux VM 'leri Için Azure disk şifrelemesi](../articles/virtual-machines/linux/disk-encryption-overview.md) veya [Windows VM 'Leri Için Azure disk şifrelemesi](../articles/virtual-machines/windows/disk-encryption-overview.md).
 
@@ -82,9 +90,9 @@ Bu diskin en fazla 2.048 GiB kapasitesi vardır.
 
 ### <a name="temporary-disk"></a>Geçici disk
 
-Her VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) olayı sırasında veya [bir VM 'yi](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir.  
+Her VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) sırasında veya [bir VM 'yi](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir.  
 
-Azure Linux VM 'lerinde geçici disk genellikle/dev/sdb ve Windows VM 'lerinde geçici disk D: varsayılan olarak olur. Geçici disk, sunucu tarafı şifrelemesi tarafından şifrelenmemiştir (bkz. [şifreleme](#encryption)).
+Azure Linux VM 'lerinde geçici disk genellikle/dev/sdb ve Windows VM 'lerinde geçici disk D: varsayılan olarak olur. Konakta şifrelemeyi etkinleştirmediğiniz takdirde geçici disk sunucu tarafı şifrelemesi tarafından şifrelenmez.
 
 ## <a name="managed-disk-snapshots"></a>Yönetilen disk anlık görüntüleri
 

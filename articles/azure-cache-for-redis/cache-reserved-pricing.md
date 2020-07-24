@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974849"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093026"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip Redsıs işlem kaynakları için Azure önbelleği için ön ödeme
 
@@ -32,7 +32,7 @@ Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satı
 
 Ayırma boyutu, belirli bir bölgedeki mevcut veya hemen dağıtılmış önbellek tarafından kullanılan ve aynı hizmet katmanını kullanan toplam bellek boyutu miktarına bağlı olmalıdır.
 
-Örneğin, 13 GB ve diğeri de 26 GB olmak üzere iki önbellek kullandığınızı varsayalım. Her ikisine de en az bir yıl gerek duyarsınız. Ayrıca, bir ay boyunca mevcut 13 GB önbellekler için, dönemsel taleplerinizi karşılayacak şekilde ölçeklendirediğinizi ve sonra geri ölçeklendirmenizi varsayalım. Bu durumda, tasarrufları en üst düzeye çıkarmak için 1 P1 önbellek ve 1 P2 önbellek veya 3 P1 önbellekler tek yıllık bir ayırma üzerinde satın alabilirsiniz. Bu miktarın önbelleğiniz arasında nasıl ayrılacağını bağımsız olarak, ayırmış olduğunuz toplam önbellek belleği miktarına göre indirim alacaksınız.
+Örneğin, 13 GB ve diğeri de 26 GB olmak üzere iki önbellek kullandığınızı varsayalım. Her ikisine de en az bir yıl gerek duyarsınız. Ayrıca, bir ay boyunca mevcut 13 GB önbellekler için, dönemsel taleplerinizi karşılayacak şekilde ölçeklendirediğinizi ve sonra geri ölçeklendirmenizi varsayalım. Bu durumda, tasarrufları en üst düzeye çıkarmak için 1 P2 Cache ve 1 P3 Cache veya 3 P2 önbellekler tek yıllık bir ayırma üzerinde satın alabilirsiniz. Bu miktarın önbelleğiniz arasında nasıl ayrılacağını bağımsız olarak, ayırmış olduğunuz toplam önbellek belleği miktarına göre indirim alacaksınız.
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Redsıs ayrılmış kapasitesi için Azure önbelleği satın alın
@@ -55,7 +55,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 | Bölge | Reddir için Azure önbelleğinin kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
 | Fiyatlandırma katmanı | Redsıs sunucuları için Azure önbelleğinin hizmet katmanı.
 | Terim | Bir yıl veya üç yıl
-| Miktar | Reda için Azure önbelleği içinde satın alınan işlem kaynakları miktarı, ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve hizmet katmanındaki ayrılan ve fatura iskontosunu alacak olan bir dizi önbelleklerdir. Örneğin, Doğu ABD bölgesinde toplam önbellek kapasitesi olan Redsıs sunucuları için bir Azure önbelleği çalıştırıyorsanız veya çalıştırmayı planlıyorsanız, tüm önbellekler için avantajı en üst düzeye çıkarmak üzere miktarı 26 olarak belirtirsiniz.
+| Miktar | Reda için Azure önbelleği içinde satın alınan işlem kaynakları miktarı, ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve hizmet katmanındaki ayrılan ve fatura iskontosunu alacak olan bir dizi önbelleklerdir. Örneğin, Doğu ABD bölgesinde toplam önbellek kapasitesi 16 GB olan Redsıs sunucuları için bir Azure önbelleği çalıştırmayı planlıyorsanız veya, tüm önbellekler için avantajı en üst düzeye çıkarmak üzere 26 GB eşdeğerini sağlayan miktarı belirtirsiniz. Bu 1 P3 veya 2 P2 önbellekler olabilir.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 

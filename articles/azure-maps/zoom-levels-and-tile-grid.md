@@ -1,18 +1,19 @@
 ---
-title: Yakınlaştırma düzeyleri ve kutucuk Kılavuzu | Microsoft Azure haritaları
+title: Microsoft Azure haritalardaki yakınlaştırma düzeyleri ve kutucuk Kılavuzu
 description: Bu makalede, Microsoft Azure haritalardaki yakınlaştırma düzeyleri ve kutucuk Kılavuzu hakkında bilgi edineceksiniz.
-author: Philmea
-ms.author: philmea
-ms.date: 01/22/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093060"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Yakınlaştırma düzeyleri ve kutucuk kılavuzu
 
@@ -23,15 +24,11 @@ Azure haritalar Küresel Mercator projeksiyon koordinat sistemi (EPSG: 3857) kul
 
 Harita alımı ve görüntüleme performansını iyileştirmek için harita kare kutucuklarına bölünür. Azure Haritalar SDK 'sının, yol haritaları için 512 x 512 piksel boyutunda ve uydu Imagery için daha küçük 256 x 256 pikselleriyle kullanım kutucukları. Azure haritalar, 23 yakınlaştırma düzeyleri için 0 ile 22 arasında görüntü ve vektör kutucukları sağlar. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar:
 
-<center>
-
-![Dünya Haritası kutucuğu](./media/zoom-levels-and-tile-grid/world0.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="Dünya Haritası kutucuğu":::
 
 Yakınlaştırma düzeyi 1, dünyayı işlemek için dört kutucuk kullanır: 2 x 2 kare
 
-<center>
-
-![2x2 harita kutucuk düzeni](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="2x2 harita kutucuk düzeni":::
 
 Her ek yakınlaştırma düzeyi, bir önceki birinin kutucuklarını dörtlü böler ve 2<sup>Yakınlaştırma</sup> x 2<sup>yakınlaştırmasına</sup>ilişkin bir kılavuz oluşturur. Yakınlaştırma düzeyi 22, kılavuz 2<sup>22</sup> x 2<sup>22</sup>veya 4.194.304 x 4.194.304 kutucukları (toplamda 17.592.186.044.416).
 
@@ -79,11 +76,7 @@ var mapHeight = mapWidth;
 
 Harita genişliği ve yüksekliği her yakınlaştırma düzeyinde farklı olduğundan, piksel koordinatları vardır. Haritanın sol üst köşesindeki pikselin her zaman piksel koordinatları vardır (0, 0). Haritanın sağ alt köşesindeki piksel, piksel koordinatları *(Width-1, Height-1)* veya önceki bölümdeki denklemlere başvuruyor *(TileSize \* 2<sup>zoom</sup>– 1, TileSize \* 2<sup>zoom</sup>– 1)*. Örneğin, düzey 2 ' de 512 kare döşeme kullanırken piksel koordinatları (0, 0) ile (2047, 2047) arasındadır:
 
-<center>
-
-![Harita piksel boyutlarını gösteriyor](media/zoom-levels-and-tile-grid/map-width-height.png)
-
-</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Harita piksel boyutlarını gösteriyor":::
 
 Derece cinsinden Enlem ve boylam ve ayrıntı düzeyi olarak XY koordinatları aşağıdaki şekilde hesaplanır:
 
@@ -109,9 +102,7 @@ var numberOfTilesHigh = numberOfTilesWide;
 
 Her kutucuğa, sol üst köşedeki (0, 0), sağ alt köşedeki ( *2<sup>zoom</sup>– 1, 2<sup>zoom</sup>– 1)* arasında olan XY koordinatları verilir. Örneğin, yakınlaştırma düzeyi 2 ' de, kutucuk koordinatları (0, 0) ile (7, 7) arasında şu şekilde değişir:
 
-<center>
-
-![Döşeme koordinatları Haritası](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Döşeme koordinatları Haritası":::
 
 Piksel XY koordinatları çifti verildiğinde, bu pikselin bulunduğu kutucuğun XY koordinatlarını kolayca belirleyebilirsiniz:
 
@@ -125,17 +116,13 @@ Kutucuklar yakınlaştırma düzeyiyle çağrılır. X ve y koordinatları, bu y
 
 Hangi yakınlaştırma düzeyinin kullanılacağını belirlerken, her konumun kutucuğunda sabit bir konumda olduğunu unutmayın. Sonuç olarak, belirli bir expanl bölgesini göstermek için gereken kutucuk sayısı, World eşlemesindeki yakınlaştırma kılavuzunun belirli bir yerleşimine bağımlıdır. Örneğin, 900 ölçüm olarak iki işaret varsa, bu, yalnızca üç *kutucuk alabilir ve* bunlar arasında bir yol görüntüleyebilirsiniz. Ancak, Batı noktası kutucuğunun sağ tarafında ve kutucuğunun sol tarafında yer alıyorsa, bu dört kutucuğa sahip olabilir:
 
-<center>
-
-![Yakınlaştırma gösterisi ölçeği](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="Yakınlaştırma gösterisi ölçeği":::
 
 Yakınlaştırma düzeyi belirlendikten sonra x ve y değerleri hesaplanabilir. Her yakınlaştırma kılavuzundaki sol üst kutucuk x = 0, y = 0; sağ alt kutucuk x = 2<sup>zoom-1</sup>, y = 2<sup>zoom-1</sup>' dir.
 
 Yakınlaştırma düzeyi 1 ' in yakınlaştırma Kılavuzu aşağıda verilmiştir:
 
-<center>
-
-![Yakınlaştırma düzeyi 1 için yakınlaştırma Kılavuzu](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="Yakınlaştırma düzeyi 1 için yakınlaştırma Kılavuzu":::
 
 ## <a name="quadkey-indices"></a>Çeyrek anahtar dizinleri
 
@@ -156,9 +143,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 `Qquadkeys`ilginç birçok özelliğe sahiptir. İlk olarak, a 'nın uzunluğu `quadkey` (basamak sayısı) karşılık gelen kutucuğun yakınlaştırma düzeyine eşittir. İkincisi, `quadkey` herhangi bir kutucuğun `quadkey` üst kutucuğu (önceki düzeyde kapsayan kutucuk) ile başlar. Aşağıdaki örnekte gösterildiği gibi, 2. kutucuk, 20 ile 23 arasındaki kutucukların üst öğesidir:
 
-<center>
-
-![Quadkey kutucuğu piramit](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey kutucuğu piramit":::
 
 Son olarak, `quadkeys` genellıkle XY alanındaki kutucukların yakınlığını koruyan tek boyutlu bir dizin anahtarı sağlayın. Diğer bir deyişle, yakın XY koordinatlarına sahip iki kutucuk genellikle `quadkeys` görece bir şekilde yakın olur. Bu, veritabanı performansını iyileştirmek için önemlidir, çünkü komşu kutucuklar genellikle gruplar halinde istenir ve disk okuma sayısını en aza indirmek için bu kutucukları aynı disk blokları üzerinde tutmanız istenebilir.
 
