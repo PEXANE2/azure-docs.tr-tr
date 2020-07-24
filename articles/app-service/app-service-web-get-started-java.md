@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d8f03d714ab44dc01d9e138a63a89892ead60fe9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 248e4e6966004ee70cd2c84a1f526bdad06cfa26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005268"
 ---
-# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Hızlı başlangıç: Windows üzerinde Azure App Service Java uygulaması oluşturma
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Hızlı Başlangıç: Windows üzerinde Azure App Service’ta Java uygulaması oluşturma
 
 > [!NOTE]
 > Bu makalede bir uygulamanın Windows üzerinde App Service'e dağıtımı yapılır. _Linux_üzerinde App Service dağıtmak için bkz. [Linux üzerinde Java Web uygulaması oluşturma](./containers/quickstart-java.md).
@@ -25,7 +25,7 @@ ms.locfileid: "85249474"
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, bir Java Web arşivi (WAR) dosyası dağıtmak üzere [Maven için Azure Web App eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
 
 > [!NOTE]
-> Aynı şey, IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
+> Aynı şey, IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
 >
 ![Azure App Service 'de çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 

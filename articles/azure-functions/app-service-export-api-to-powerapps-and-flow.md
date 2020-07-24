@@ -4,11 +4,12 @@ description: App Service ' de barındırılan bir API 'yi PowerApps ve Microsoft
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115838"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015094"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure 'da barındırılan bir API 'yi PowerApps ve Microsoft Flow dışa aktarma
 
@@ -65,7 +66,7 @@ Dışarı aktarmayı **hızlı** modda gerçekleştirmek için şu adımları iz
  
     ![PowerApps ve Microsoft Flow Express dışa aktarma](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. **Tamam**'a tıklayın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
+3. **Tamam** düğmesine tıklayın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>El ile dışarı aktarma kullan
@@ -145,9 +146,9 @@ Azure AD kullanırken iki Azure AD uygulama kaydı gerekir: biri API kendisi iç
 
 - API 'nin kaydını yapılandırmak için [App Service kimlik doğrulaması/yetkilendirme](../app-service/configure-authentication-provider-aad.md) özelliğini kullanın.
 
-- Bağlayıcının kaydını yapılandırmak için, [Azure AD uygulaması ekleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)bölümündeki adımları izleyin. Kayıt, API 'nize atanmış erişime ve yanıt URL 'sine sahip olmalıdır `https://msmanaged-na.consent.azure-apim.net/redirect` . 
+- Bağlayıcının kaydını yapılandırmak için, [Azure AD uygulaması ekleme](../active-directory/develop/quickstart-register-app.md)bölümündeki adımları izleyin. Kayıt, API 'nize atanmış erişime ve yanıt URL 'sine sahip olmalıdır `https://msmanaged-na.consent.azure-apim.net/redirect` . 
 
-Daha fazla bilgi için bkz. [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) IÇIN Azure AD kayıt örnekleri ve [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Bu örnekler, API olarak Azure Resource Manager kullanır; adımları izlerseniz API 'nizi değiştirin.
+Daha fazla bilgi için bkz. [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) IÇIN Azure AD kayıt örnekleri ve [Microsoft Flow](/connectors/custom-connectors/azure-active-directory-authentication). Bu örnekler, API olarak Azure Resource Manager kullanır; adımları izlerseniz API 'nizi değiştirin.
 
 Aşağıdaki yapılandırma değerleri gereklidir:
 - **ISTEMCI kimliği** -bağlayıcınızın Istemci KIMLIĞI Azure ad kaydı
@@ -168,5 +169,3 @@ Aşağıdaki yapılandırma değerleri gereklidir:
 - **Yetkilendirme URL 'si** -OAuth 2,0 yetkilendirme URL 'si
 - **Belirteç URL 'si** -OAuth 2,0 belirteç URL 'si
 - **URL 'Yi Yenile** -OAuth 2,0 yenileme URL 'si
-
-

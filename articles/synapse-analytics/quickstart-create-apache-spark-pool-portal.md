@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Azure portal kullanarak Apache Spark Havuzu (Önizleme) oluşturma'
+title: 'Hızlı başlangıç: Azure portal kullanarak Apache Spark havuzu oluşturma'
 description: Bu kılavuzdaki adımları izleyerek Azure portal kullanarak yeni bir Apache Spark havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 959ad0413c83389aef6a7607c1239043e242b75b
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 0930b7cb7b98874e20f070763a7ec50a6b4f3ef0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274365"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006084"
 ---
-# <a name="quickstart-create-a-new-apache-spark-pool-preview-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir Apache Spark Havuzu (Önizleme) oluşturma
+# <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir Apache Spark havuzu oluşturma
 
 Azure SYNAPSE Analytics, verilerinizi alma, dönüştürme, modellemeyle, analiz etmenize ve dağıtmanıza yardımcı olmak için çeşitli analiz motorları sunmaktadır. Apache Spark havuzu, açık kaynak büyük veri işlem özellikleri sağlar. SYNAPSE çalışma alanınızda bir Apache Spark havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve daha hızlı analitik Öngörüler için dağıtılabilir.
 

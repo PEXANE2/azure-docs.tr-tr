@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: go-Azure Event Hubs kullanarak olay gönderme ve a
 description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları gönderen bir go uygulaması oluşturmaya yönelik bir yol sağlar.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002463"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Hızlı başlangıç: go kullanarak Event Hubs olay gönderme veya olayları alma
 Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
@@ -18,7 +18,7 @@ Bu öğreticide, Olay Hub 'ından olay göndermek veya olayları almak üzere go
 > [!NOTE]
 > Bu hızlı başlangıcı [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs)’dan örnek olarak indirebilir, `EventHubConnectionString` ve `EventHubName` dizelerini olay hub’ınızdaki değerlerle değiştirebilir ve çalıştırabilirsiniz. Alternatif olarak bu öğreticideki adımları izleyerek kendi çözümünüzü de oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -126,7 +126,7 @@ Tebrikler! Bir olay hub'ına ileti gönderdiniz.
 
 ### <a name="create-a-storage-account-and-container"></a>Depolama hesabı ve kapsayıcı oluşturma
 
-Olay akışındaki bölüm ve denetim noktalarında kiralamalar gibi durum, Azure depolama kapsayıcısı kullanılarak alıcılar arasında paylaşılır. Go SDK ile bir depolama hesabı ve kapsayıcı oluşturabilirsiniz, ancak [Azure depolama hesapları hakkındaki](../storage/common/storage-create-storage-account.md)yönergeleri izleyerek de bir tane oluşturabilirsiniz.
+Olay akışındaki bölüm ve denetim noktalarında kiralamalar gibi durum, Azure depolama kapsayıcısı kullanılarak alıcılar arasında paylaşılır. Go SDK ile bir depolama hesabı ve kapsayıcı oluşturabilirsiniz, ancak [Azure depolama hesapları hakkındaki](../storage/common/storage-account-create.md)yönergeleri izleyerek de bir tane oluşturabilirsiniz.
 
 Go SDK ile depolama yapıtları oluşturma örnekleri, [Go örnekleri](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) deposunda ve Bu öğreticiye karşılık gelen örnekte bulunabilir.
 

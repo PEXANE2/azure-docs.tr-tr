@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f884e6d3cbc2e1f3127b251818f4617fccb6a999
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011337"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -20,7 +20,12 @@ ms.locfileid: "85833426"
 
 Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri dahil metin veya ikili veri içerebilen nesnelerdir. Bu hızlı başlangıçta, bir tarayıcıda JavaScript kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blobları karşıya yükleyip listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
 
-[API başvuru belgeleri](/javascript/api/@azure/storage-blob)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob)  |  [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+Ek kaynaklar:
+
+* [API başvuru belgeleri](/javascript/api/@azure/storage-blob)
+* [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+* [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob)
+* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 > [!NOTE]
 > Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: JavaScript Ile v10 ARASıNDAKI SDK ile Blobları yönetme Node.js](storage-quickstart-blobs-nodejs-legacy.md).
@@ -71,7 +76,7 @@ Azure portal depolama hesabınızı seçin. Yeni bir CORS kuralı tanımlamak i�
 
 Aşağıdaki tabloda her bir CORS ayarı açıklanmakta ve kuralı tanımlamak için kullanılan değerler anlatılmaktadır.
 
-|Ayar  |Değer  | Description |
+|Ayar  |Değer  | Açıklama |
 |---------|---------|---------|
 | **IZIN VERILEN ÇıKıŞ NOKTALARı** | **\*** | Kabul edilebilir çıkış noktaları olarak etki alanları kümesinin virgülle ayrılmış bir listesini kabul eder. Değerin `*` olarak ayarlanması, depolama hesabına tüm etki alanlarının erişmesine izin verir. |
 | **IZIN VERILEN YÖNTEMLER** | **Silme**, **Get**, **Head**, **birleştirme**, **gönderi**, **Seçenekler**ve **yerleştirme** | Depolama hesabına göre yürütülmesine izin verilen HTTP fiillerini listeler. Bu hızlı başlangıçta tüm kullanılabilir seçenekleri işaretleyin. |
@@ -267,7 +272,7 @@ Visual Studio Code hata ayıklayıcı eklenmiş bir tarayıcıda *index.html* 'y
 #### <a name="step-1---create-a-container"></a>1. adım-kapsayıcı oluşturma
 
 1. Web uygulamasında **kapsayıcı oluştur**' u seçin. Durum, bir kapsayıcının oluşturulduğunu gösterir.
-2. Azure portal doğrulamak için depolama hesabınızı seçin. **BLOB hizmeti**altında **kapsayıcılar**' ı seçin. Yeni kapsayıcının göründüğünü doğrulayın. ( **Yenile**' yi seçmeniz gerekebilir.)
+2. Azure portal doğrulamak için depolama hesabınızı seçin. **Blob hizmeti** bölümünden **Kapsayıcılar**’ı seçin. Yeni kapsayıcının göründüğünü doğrulayın. ( **Yenile**' yi seçmeniz gerekebilir.)
 
 #### <a name="step-2---upload-a-blob-to-the-container"></a>2. adım-bir blobu kapsayıcıya yükleme
 

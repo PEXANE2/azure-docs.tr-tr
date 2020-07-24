@@ -3,17 +3,17 @@ title: Hızlı başlangıç-Azure IoT Central sanal cihaz ekleme
 description: Bu hızlı başlangıçta bir cihaz şablonu oluşturma ve IoT Central uygulamanıza sanal cihaz ekleme işlemleri gösterilmektedir.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 25e1742612c6fc8c326f2918a4d69c55a9888c97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001969"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Hızlı başlangıç: IoT Central uygulamanıza sanal cihaz ekleme
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, bir *Mxyonga IoT devkit* (devkit) panosu için bir ci
 * Açma ve kapatma gibi komutlara yanıt verir.
 * Bellenim sürümü ve seri numarası gibi genel cihaz özelliklerini raporlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Özel uygulama **> özel uygulama** şablonunu kullanarak bir IoT Central uygulaması oluşturmak için [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md) hızlı başlangıcı ' nı doldurun.
 
@@ -62,16 +62,16 @@ Aşağıdaki adımlarda, bir **Mxyonga IoT DevKit** cihazı için yetenek modeli
 
     Mxyongaıot DevKit yetenek modeli, **mxchip_sensor**, **Mxchip_settings**ve **cihaz bilgileri**gibi arabirimleri içerir. Arabirimler bir Mxyongaıot DevKit cihazının yeteneklerini tanımlar. Özellikler, bir cihazın gönderdiği Telemetriyi, bir cihaz rapor özelliklerini ve bir cihazın yanıt verdiği komutları içerir.
 
-### <a name="add-cloud-properties"></a>Bulut özellikleri ekle
+### <a name="add-cloud-properties"></a>Bulut özelliklerini ekleme
 
-Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca IoT Central uygulamasında bulunur ve bir cihaza hiçbir şekilde gönderilmez veya buradan alınmaz.
+Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca IoT Central uygulamasında bulunur ve bir cihaza hiçbir şekilde gönderilmez veya buradan alınmaz. Bir bulut özelliği eklemek için:
 
 1. **Bulut özellikleri** ' ni seçin ve **+ bulut özelliği Ekle**' ye tıklayın. Cihaz şablonunuza iki bulut özelliği eklemek için aşağıdaki tablodaki bilgileri kullanın:
 
     | Görünen Ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
-    | Müşteri adı     | Hiçbiri          | Dize |
+    | Son Hizmet Tarihi | Yok          | Tarih   |
+    | Müşteri Adı     | Yok          | Dize |
 
 1. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin:
 
@@ -128,23 +128,25 @@ Uygulamanıza sanal bir cihaz eklemek için, oluşturduğunuz **Mxyonga IoT DevK
 
 1. Yeni bir cihazı operatör olarak eklemek için sol bölmedeki **cihazlar** ' ı seçin. **Cihazlar** sekmesinde **tüm cihazlar** ve **mxyonga IoT devkit** cihaz şablonu gösterilmektedir. **Mxyongaıot DevKit**' i seçin.
 
-1. Sanal bir DevKit cihazı eklemek için öğesini seçin **+**. Önerilen **CIHAZ kimliğini** kullanın veya kendi küçük BIR **Cihaz Kimliğinizi**girin. Ayrıca, yeni cihazınız için bir ad girebilirsiniz. **Benzetimli** geçiş 'nin **Açık** olduğundan emin olun ve ardından **Oluştur**' u seçin.
+1. Sanal bir DevKit cihazı eklemek için öğesini seçin **+** . Önerilen **CIHAZ kimliğini** kullanın veya kendi küçük BIR **Cihaz Kimliğinizi**girin. Ayrıca, yeni cihazınız için bir ad girebilirsiniz. **Benzetimli** geçiş 'nin **Açık** olduğundan emin olun ve ardından **Oluştur**' u seçin.
 
     ![Sanal cihaz](./media/quick-create-simulated-device/simulated-device.png)
 
 Artık, benzetimli verileri kullanarak cihaz şablonu için Oluşturucu tarafından oluşturulan görünümlerle etkileşime geçebilirsiniz:
 
-1. **Cihazlar** sayfasında sanal cihazınızı seçin.
+1. **Cihazlar** sayfasında sanal cihazınızı seçin
 
-1. **Genel bakış** görünümünde, sanal Telemetriyi gösteren bir çizim gösterilmektedir:
+    * **Genel bakış** görünümünde, sanal Telemetriyi gösteren bir çizim gösterilmektedir:
 
-    ![Genel bakış görünümü](./media/quick-create-simulated-device/simulated-telemetry.png)
+        ![Genel bakış görünümü](./media/quick-create-simulated-device/simulated-telemetry.png)
 
-1. **Hakkında** görünümü, görünüme eklediğiniz bulut özellikleri de dahil olmak üzere özellik değerlerini gösterir.
+    * **Hakkında** görünümü, görünüme eklediğiniz bulut özellikleri de dahil olmak üzere özellik değerlerini gösterir.
 
-1. **Komutlar** görünümü, cihazda **yanıp sönme** gibi komutları çalıştırmanıza olanak sağlar.
+    * **Komutlar** görünümü, cihazda **yanıp sönme** gibi komutları çalıştırmanıza olanak sağlar.
 
-1. **Cihazları yönet** görünümü, cihazı yönetmek için işleci için oluşturduğunuz formdur.
+    * **Cihazları yönet** görünümü, cihazı yönetmek için işleci için oluşturduğunuz formdur.
+
+    * **Ham veri** görünümü, cihaz tarafından gönderilen ham telemetri ve özellik değerlerini görüntülemenize olanak sağlar. Bu görünüm cihazlarda hata ayıklama için yararlıdır.
 
 ## <a name="use-a-simulated-device-to-improve-views"></a>Görünümleri geliştirmek için sanal cihaz kullanma
 
@@ -154,7 +156,7 @@ Yeni bir sanal cihaz oluşturduktan sonra, Oluşturucu bu cihazı kullanarak cih
 
 1. Düzenlemek istediğiniz görünümlerden birini seçin veya yeni bir görünüm oluşturun. **Önizleme cihazını Yapılandır**' ı seçin ve ardından **çalışan bir cihazdan öğesini seçin**. Burada, bir önizleme cihazı, test için yapılandırılmış gerçek bir cihaz ya da IoT Central eklemiş olduğunuz mevcut bir cihaz yok seçeneklerinden birini belirleyebilirsiniz.
 
-1. Listeden sanal cihazınızı seçin. Ardından **Uygula**'yı seçin. Artık cihaz şablonu görünümlerini oluşturma deneyiminizdeki aynı sanal cihazı görebilirsiniz. Bu görünüm, grafikler ve diğer görselleştirmeler için kullanışlıdır.
+1. Listeden sanal cihazınızı seçin. Sonra **Uygula**'yı seçin. Artık cihaz şablonu görünümlerini oluşturma deneyiminizdeki aynı sanal cihazı görebilirsiniz. Bu görünüm, grafikler ve diğer görselleştirmeler için kullanışlıdır.
 
     ![Önizleme cihazını Yapılandır](./media/quick-create-simulated-device/configure-preview.png)
 

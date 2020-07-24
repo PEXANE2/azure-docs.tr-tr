@@ -3,12 +3,12 @@ title: Tüm ortamlarda Java uygulamalarını izleme-Azure Izleyici Application I
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014346"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
 
@@ -32,11 +32,11 @@ Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, tüm 
 
 Tipik JVM bağımsız değişkenleri `-Xmx512m` ve içerir `-XX:+UseG1GC` . Bu nedenle, bunların nereye ekleneceğini biliyorsanız, bunun nereye ekleneceğini zaten öğrenmiş olursunuz.
 
-Uygulamanızın JVM bağımsız değişkenlerini yapılandırmayla ilgili ek yardım için lütfen bkz. [3,0 Preview: JVM bağımsız değişkenlerini güncelleştirme ipuçları](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
+Uygulamanızın JVM bağımsız değişkenlerini yapılandırmayla ilgili ek yardım için lütfen bkz. [3,0 Preview: JVM bağımsız değişkenlerini güncelleştirme ipuçları](./java-standalone-arguments.md).
 
 **3. aracıyı Application Insights kaynağına getirin**
 
-Zaten bir Application Insights kaynağınız yoksa, [kaynak oluşturma kılavuzundaki](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)adımları izleyerek yeni bir tane oluşturabilirsiniz.
+Zaten bir Application Insights kaynağınız yoksa, [kaynak oluşturma kılavuzundaki](./create-new-resource.md)adımları izleyerek yeni bir tane oluşturabilirsiniz.
 
 Bir ortam değişkenini ayarlayarak aracıyı Application Insights kaynağına getirin:
 
@@ -80,7 +80,7 @@ Bağlantı dizenizi Application Insights kaynağınız için bulabilirsiniz:
 * HTTP proxy 'Si
 * Kendi kendine tanılama
 
-Ayrıntılar için bkz. [3,0 genel önizleme: yapılandırma seçenekleri](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
+Ayrıntılar için bkz. [3,0 genel önizleme: yapılandırma seçenekleri](./java-standalone-config.md).
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Oto toplanan istekler, bağımlılıklar, Günlükler ve ölçümler
 
@@ -150,7 +150,7 @@ private static final TelemetryClient telemetryClient = new TelemetryClient();
 
 ve bunu özel telemetri göndermek için kullanın.
 
-### <a name="events"></a>Olaylar
+### <a name="events"></a>Ekinlikler
 
   ```java
 telemetryClient.trackEvent("WinGame");

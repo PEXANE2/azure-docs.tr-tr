@@ -2,14 +2,14 @@
 title: Dayanıklı İşlevler dış olayları işleme-Azure
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda dış olayları nasıl işleyeceğinizi öğrenin.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165558"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014948"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler dış olayları işleme (Azure Işlevleri)
 
@@ -20,7 +20,7 @@ Orchestrator işlevlerinin dış olayları bekleme ve dinleme yeteneği vardır.
 
 ## <a name="wait-for-events"></a>Olayları bekle
 
-Orchestration tetikleyicisi bağlamasının [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net) ve `waitForExternalEvent` (JavaScript) yöntemleri [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) bir Orchestrator işlevinin bir dış olayı zaman uyumsuz olarak bekleyip dinlemesine izin verir. Dinleme Orchestrator işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
+Orchestration tetikleyicisi bağlamasının [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net), `waitForExternalEvent` (JavaScript) ve `wait_for_external_event` (Python) yöntemleri bir [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) Orchestrator işlevinin bir dış olayı zaman uyumsuz olarak bekleyip dinlemesine izin verir. Dinleme Orchestrator işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -57,6 +57,22 @@ module.exports = df.orchestrator(function*(context) {
         // approval denied - send a notification
     }
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    approved = context.wait_for_external_event('Approval')
+    if approved:
+        # approval granted - do the approved action
+    else:
+        # approval denied - send a notification
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---
@@ -116,6 +132,28 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    event1 = context.wait_for_external_event('Event1')
+    event2 = context.wait_for_external_event('Event2')
+    event3 = context.wait_for_external_event('Event3')
+
+    winner = context.task_any([event1, event2, event3])
+    if winner == event1:
+        # ...
+    elif winner == event2:
+        # ...
+    elif winner == event3:
+        # ...
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Önceki örnek, birden çok *any* olayı dinler. *Tüm* olayları beklemek da mümkündür.
@@ -164,12 +202,31 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    application_id = context.get_input()
+    
+    gate1 = context.wait_for_external_event('CityPlanningApproval')
+    gate2 = context.wait_for_external_event('FireDeptApproval')
+    gate3 = context.wait_for_external_event('BuildingDeptApproval')
+
+    yield context.task_all([gate1, gate2, gate3])
+    yield context.call_activity('IssueBuildingPermit', application_id)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 `WaitForExternalEvent`Bazı girişler için süresiz olarak bekler.  İşlev uygulaması beklerken güvenli bir şekilde kaldırılabilir. Bu düzenleme örneğine bir olay ulaştığında, başlatılabilmesi uyandırılır otomatik olarak oluşturulur ve olayı anında işler.
 
 > [!NOTE]
-> İşlev uygulamanız tüketim planını kullanıyorsa, bir Orchestrator işlevi bir görevi beklerken `WaitForExternalEvent` (.net) veya (JavaScript) bekleme süresi ne olursa olsun, hiçbir faturalandırma ücreti tahakkuk `waitForExternalEvent` etmez.
+> İşlev uygulamanız tüketim planını kullanıyorsa, bir Orchestrator işlevi bir görevi beklerken `WaitForExternalEvent` (.net), `waitForExternalEvent` (JavaScript) veya (Python), ne kadar bekleyeceğini bağımsız olarak hiçbir faturalandırma ücreti tahakkuk etmez `wait_for_external_event` .
 
 ## <a name="send-events"></a>Olayları gönderme
 
@@ -210,9 +267,20 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(instance_id:str, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    await client.raise_event(instance_id, 'Approval', True)
+```
+
 ---
 
-Dahili olarak, `RaiseEventAsync` (.net) veya `raiseEvent` (JavaScript), bekleyen Orchestrator işlevinin oluşturduğu bir iletiyi kuyruğa alır. Örnek, belirtilen *olay adında* beklemmediyse, olay iletisi bir bellek içi kuyruğa eklenir. Düzenleme örneği daha sonra bu *olay adını* dinlemeye başlarsa, olay iletileri için sırayı denetler.
+Dahili, `RaiseEventAsync` (.net), `raiseEvent` (JavaScript) veya `raise_event` (Python), bekleyen Orchestrator işlevinin oluşturduğu bir iletiyi sıraya alır. Örnek, belirtilen *olay adında* beklemmediyse, olay iletisi bir bellek içi kuyruğa eklenir. Düzenleme örneği daha sonra bu *olay adını* dinlemeye başlarsa, olay iletileri için sırayı denetler.
 
 > [!NOTE]
 > Belirtilen *örnek kimliğine*sahip bir düzenleme örneği yoksa, olay iletisi atılır.

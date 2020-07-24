@@ -3,12 +3,12 @@ title: Azure DevTest Labs | laboratuvarınızda bir yapıt deposu ekleyin | Micr
 description: Azure DevTest Labs 'de laboratuvarınızda yapıt deposu eklemeyi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483916"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013489"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs 'de laboratuvarınızda yapıt deposu ekleme
 DevTest Labs, VM oluşturma sırasında veya VM oluşturulduktan sonra VM 'ye eklenecek bir yapıt belirtmenize olanak tanır. Bu yapıt, VM 'ye yüklemek istediğiniz bir araç veya uygulama olabilir. Yapıtlar, GitHub veya Azure DevOps git deposundan yüklenen bir JSON dosyasında tanımlanır.
@@ -19,7 +19,7 @@ Bu makalede, Azure portal, Azure Kaynak Yönetimi şablonlarını ve Azure Power
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri alın. Aşağıdaki bölümlerde **GitHub** veya **Azure DevOps**üzerinde barındırılan depolarda gerekli bilgilerin nasıl alınacağı açıklanır.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub deposu kopya URL 'sini ve kişisel erişim belirtecini al
@@ -48,7 +48,7 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
    2. **Kuruluş** listesinde, **tüm erişilebilir kuruluşlar**' ı seçin.
    3. **Süre sonu (UTC)** listesinde, **90 gün**veya özel bir tanımlı süre sonu dönemi ' ni seçin.
    4. Kapsamlar için **tam erişim** seçeneğini belirleyin.
-   5. **Oluştur**'u seçin.
+   5. **Oluştur**’u seçin.
 9. Yeni belirteç, **kişisel erişim belirteçleri** listesinde görünür. **Belirteci Kopyala**' yı seçin ve ardından daha sonra kullanmak üzere belirteç değerini kaydedin.
 10. Laboratuvarınızı depoya bağlama bölümüne devam edin.
 
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 New-AzResourceGroupDeployment başarıyla çalıştıktan sonra, komut sağlama durumu (başarılı olmalıdır) ve şablon için tüm çıktılar gibi önemli bilgileri çıktı olarak verir.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
-Bu bölüm, bir laboratuvara yapıt deposu eklemek için kullanılabilecek bir örnek PowerShell betiği sağlar. Azure PowerShell yoksa, yüklemek için ayrıntılı yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview?view=azps-1.2.0) .
+Bu bölüm, bir laboratuvara yapıt deposu eklemek için kullanılabilecek bir örnek PowerShell betiği sağlar. Azure PowerShell yoksa, yüklemek için ayrıntılı yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/?view=azps-1.2.0) .
 
 ### <a name="full-script"></a>Tam betik
 Bazı ayrıntılı iletiler ve açıklamalar dahil olmak üzere tam komut dosyası aşağıda verilmiştir:

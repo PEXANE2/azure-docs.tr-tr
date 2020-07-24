@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015026"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -173,7 +173,7 @@ Arama sonuçlarında, makineye bağlı olduğunu ve hizmete raporlanmasını bel
 
 2. Karma Runbook Worker sürümünü onaylamak için, `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` **Sürüm** alt klasörüne göz atarak göz atabilirsiniz.
 
-### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>3. adım-runbook ortamını yükleyip Azure Otomasyonu 'na bağlanma
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>2. adım-runbook ortamını yükleyip Azure Otomasyonu 'na bağlanma
 
 Bir aracıyı bir Log Analytics çalışma alanına rapor verecek şekilde yapılandırdığınızda, Azure Otomasyonu özelliği `HybridRegistration` cmdlet 'ini içeren PowerShell modülünü aşağı iter `Add-HybridRunbookWorker` . Runbook ortamını makineye yüklemek ve Azure Otomasyonu 'na kaydetmek için bu cmdlet 'i kullanın.
 
@@ -202,7 +202,7 @@ Parametreler için gereken bilgileri `Url` ve `Key` Otomasyon hesabınızdaki **
 
 * Gerekirse, `Verbose` yükleme hakkındaki ayrıntıları almak için parametresini ayarlayın.
 
-### <a name="step-4----install-powershell-modules"></a>4. adım-PowerShell modüllerini Install
+### <a name="step-3----install-powershell-modules"></a>3. adım-PowerShell modüllerini yükler
 
 Runbook 'lar, Azure Otomasyonu ortamınızda yüklü olan modüllerde tanımlanan etkinlikleri ve cmdlet 'leri kullanabilir. Bu modüller şirket içi makinelere otomatik olarak dağıtılmadığından, el ile kurmanız gerekir. Özel durum Azure modülüdür. Bu modül varsayılan olarak yüklenir ve Azure Otomasyonu için tüm Azure hizmetleri ve etkinlikleri için cmdlet 'lere erişim sağlar.
 

@@ -3,11 +3,12 @@ title: Azure Application Insights IP adresi koleksiyonu | Microsoft Docs
 description: IP adreslerinin ve coğrafi konum 'un Azure Application Insights nasıl işlendiğini anlama
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1576207eb267166a33b84009407ec119de471e6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014448"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -26,7 +27,7 @@ Bu davranış, gereksiz kişisel veri toplamayı önlemeye yardımcı olmak içi
 
 ## <a name="overriding-default-behavior"></a>Varsayılan davranışı geçersiz kılma
 
-Varsayılan davranış kişisel verileri toplamayı en aza indirirken, IP adresi verilerini toplama ve depolama esnekliği de sunuyoruz. IP adresleri gibi kişisel verileri depolamayı seçmeden önce, bunun herhangi bir uyumluluk gereksinimini veya tabi olduğunuz yerel düzenlemeleri bozmadığının doğrulanması önemle önerilir. Application Insights kişisel veri işleme hakkında daha fazla bilgi edinmek için [kişisel veriler kılavuzuna](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)bakın.
+Varsayılan davranış kişisel verileri toplamayı en aza indirirken, IP adresi verilerini toplama ve depolama esnekliği de sunuyoruz. IP adresleri gibi kişisel verileri depolamayı seçmeden önce, bunun herhangi bir uyumluluk gereksinimini veya tabi olduğunuz yerel düzenlemeleri bozmadığının doğrulanması önemle önerilir. Application Insights kişisel veri işleme hakkında daha fazla bilgi edinmek için [kişisel veriler kılavuzuna](../platform/personal-data-mgmt.md)bakın.
 
 ## <a name="storing-ip-address-data"></a>IP adresi verileri depolanıyor
 
@@ -98,7 +99,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
 
 ### <a name="rest-api"></a>REST API 'SI
 
-Aynı değişiklikleri yapmak için [REST API](https://docs.microsoft.com/rest/api/azure/) yükü aşağıdaki gibidir:
+Aynı değişiklikleri yapmak için [REST API](/rest/api/azure/) yükü aşağıdaki gibidir:
 
 ```
 PATCH https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/microsoft.insights/components/<resource-name>?api-version=2018-05-01-preview HTTP/1.1
@@ -119,7 +120,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Telemetri başlatıcısı
 
-`DisableIpMasking`IP adreslerinin tümünü veya bir kısmını kaydetmeye kıyasla daha esnek bir alternatif gerekirse, IP 'nin tamamını veya kısmını özel bir alana kopyalamak için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) kullanabilirsiniz. 
+`DisableIpMasking`IP adreslerinin tümünü veya bir kısmını kaydetmeye kıyasla daha esnek bir alternatif gerekirse, IP 'nin tamamını veya kısmını özel bir alana kopyalamak için bir [telemetri başlatıcısı](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) kullanabilirsiniz. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -232,6 +233,6 @@ Yeni toplanan IP adresleri `customDimensions_client-ip` sütununda görünmelidi
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* Application Insights 'de [kişisel veri toplama](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) hakkında daha fazla bilgi edinin.
+* Application Insights 'de [kişisel veri toplama](../platform/personal-data-mgmt.md) hakkında daha fazla bilgi edinin.
 
 * Application Insights içindeki [IP adresi koleksiyonunun](https://apmtips.com/posts/2016-07-05-client-ip-address/) nasıl çalıştığı hakkında daha fazla bilgi edinin. (Bu, mühendislerimizden biri tarafından yazılan eski bir dış blog gönderisine sahiptir. IP adresinin kaydedildiği geçerli varsayılan davranışın ön tarihlerini `0.0.0.0` alır, ancak yerleşik olarak yerleşik olarak daha fazla derinliğe gider `ClientIpHeaderTelemetryInitializer` .)

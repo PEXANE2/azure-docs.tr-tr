@@ -3,12 +3,12 @@ title: Application Insights 'de .NET izleme günlüklerini keşfet
 description: Trace, NLog veya Log4Net tarafından oluşturulan arama günlükleri.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: d010fe4389e22c9909800f5329911b6b5619d7b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aad81855b58ee96789d097fbfbd3e7f9b17f6900
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829542"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014584"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights 'de .NET/.NET Core ve Python izleme günlüklerini keşfet
 
@@ -84,7 +84,7 @@ Log4net veya NLog tercih ediyorsanız şunu kullanın:
 ```
 
 ## <a name="use-eventsource-events"></a>EventSource olaylarını kullanma
-[System. Diagnostics. Tracing. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını, izleme olarak Application Insights gönderilmek üzere yapılandırabilirsiniz. İlk olarak, `Microsoft.ApplicationInsights.EventSourceListener` NuGet paketini yüklemeniz gerekir. Sonra `TelemetryModules` [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasının bölümünü düzenleyin.
+[System. Diagnostics. Tracing. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) olaylarını, izleme olarak Application Insights gönderilmek üzere yapılandırabilirsiniz. İlk olarak, `Microsoft.ApplicationInsights.EventSourceListener` NuGet paketini yüklemeniz gerekir. Sonra `TelemetryModules` [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasının bölümünü düzenleyin.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -190,7 +190,7 @@ Uygulamanızın genel bakış bölmesinde [Application Insights portalında][por
 
 ## <a name="troubleshooting"></a>Sorun giderme
 ### <a name="how-do-i-do-this-for-java"></a>Bunu Java için Nasıl yaparım? misiniz?
-Java kodsuz kullanacaksınız araçları 'nda (önerilir) Günlükler kutudan alınır ve [Java 3,0 Aracısı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)' nı kullanın.
+Java kodsuz kullanacaksınız araçları 'nda (önerilir) Günlükler kutudan alınır ve [Java 3,0 Aracısı](./java-in-process-agent.md)' nı kullanın.
 
 Java SDK 'sını kullanıyorsanız, [Java günlük bağdaştırıcılarını](../../azure-monitor/app/java-trace-logs.md)kullanın.
 
@@ -200,7 +200,7 @@ Java SDK 'sını kullanıyorsanız, [Java günlük bağdaştırıcılarını](..
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Yapılandırma aracında günlük bağdaştırıcısı seçeneği yok
 * Önce günlüğe kaydetme çerçevesini yükler.
-* System. Diagnostics. Trace kullanıyorsanız, [ *web.config*' de yapılandırdığınızdan ](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)emin olun.
+* System. Diagnostics. Trace kullanıyorsanız, [ *web.config*' de yapılandırdığınızdan ](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)emin olun.
 * Application Insights en son sürümüne sahip olduğunuzdan emin olun. Visual Studio 'da **Araçlar**  >  **Uzantılar ve güncelleştirmeler**' e gidin ve **güncelleştirmeler** sekmesini açın. **Developer Analytics Tools** , güncelleştirmek için seçin.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>"Izleme anahtarı boş olamaz" hata iletisini alıyorum
@@ -228,5 +228,5 @@ Uygulamanız Voluminous miktarda veri gönderiyorsa ve ASP.NET sürümü 2.0.0-B
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [start]: ../../azure-monitor/app/app-insights-overview.md

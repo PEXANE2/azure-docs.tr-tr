@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fff1aac5df50550e43ae3e87c63c2130c6b39644
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013972"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
@@ -149,7 +149,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 ### <a name="log-alerts"></a>Günlük uyarıları
 
 > [!NOTE]
-> Özel bir e-posta konusu ve/veya JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, e-posta konusu ve/veya yük şemasının aşağıdaki gibi açıklanacak şekilde geri dönmesiyle yapılır. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bayrağını denetleyerek bunu belirleyebilirsiniz `IncludeSearchResults` . Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get)'siyle birlikte kullanmanız gerekir. 
+> Özel bir e-posta konusu ve/veya JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, e-posta konusu ve/veya yük şemasının aşağıdaki gibi açıklanacak şekilde geri dönmesiyle yapılır. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bayrağını denetleyerek bunu belirleyebilirsiniz `IncludeSearchResults` . Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](/rest/api/loganalytics/dataaccess/query/get)'siyle birlikte kullanmanız gerekir. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +220,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
                     "Heartbeat"
                 ]
             }
-        ]
+        ],
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
     }
@@ -500,5 +500,4 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ortak uyarı şeması](https://aka.ms/commonAlertSchemaDocs)hakkında daha fazla bilgi edinin.
-- [Tüm uyarılarınızı işlemek için ortak uyarı şemasını kullanan bir mantıksal uygulama oluşturmayı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)öğrenin. 
-
+- [Tüm uyarılarınızı işlemek için ortak uyarı şemasını kullanan bir mantıksal uygulama oluşturmayı](./alerts-common-schema-integrations.md)öğrenin. 

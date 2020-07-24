@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcıl
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007013"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te hata ayıklama ve yineleme: Visual Studio & .NET Core-Azure Dev Spaces
 
@@ -25,16 +25,16 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemenize olanak tanır:
 - [Java ve Visual Studio Code](quickstart-java.md)
-- [Node. js ve Visual Studio Code](quickstart-nodejs.md)
+- [Node.js ve Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core ve Visual Studio Code](quickstart-netcore.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 - Azure geliştirme iş yükü yüklü olan Windows üzerinde Visual Studio 2019. Visual Studio yüklü değilse, [buradan](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)indirin.
 - [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesi oluşturma
 
 [Desteklenen bir bölgede][supported-regions]aks kümesi oluşturmanız gerekir. Aşağıdaki komutlar *Myresourcegroup* adlı bir kaynak grubu ve *myaks*adlı bir aks kümesi oluşturur.
 
@@ -78,21 +78,21 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 1. Projenizin *Web ön uç* adını adlandırın ve *Oluştur*' a tıklayın.
 1. İstendiğinde, şablon için *Web uygulaması (Model-View-Controller)* öğesini seçin.
 1. En üstteki *.NET Core* ve *2,1 ASP.NET Core* seçin.
-1. *Oluştur*' a tıklayın.
+1. *Oluştur*’a tıklayın.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Projenizi geliştirme alanınıza bağlayın
 
 Projenizde, aşağıda gösterildiği gibi başlatma ayarları açılır listesinden **Azure dev Spaces** ' yi seçin.
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![IIS Express seçeneğinin vurgulandığı ve seçildiği ve Azure Dev Spaces seçeneğinin vurgulandığı Visual Studio Kullanıcı arabiriminin ekran görüntüsü.](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-Azure Dev Spaces iletişim kutusunda, *aboneliğinizi* ve *Azure Kubernetes kümenizi*seçin. *Alanı* *varsayılan* olarak ayarlayın ve *herkese açık olarak erişilebilir* onay kutusunu etkinleştirin. *Tamam*'a tıklayın.
+Azure Dev Spaces iletişim kutusunda, *aboneliğinizi* ve *Azure Kubernetes kümenizi*seçin. *Alanı* *varsayılan* olarak ayarlayın ve *herkese açık olarak erişilebilir* onay kutusunu etkinleştirin. *Tamam* düğmesine tıklayın.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
+![Azure Dev Spaces iletişim kutusunun ekran görüntüsü.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Bu işlem, hizmetinizi genel olarak erişilebilen bir URL ile *varsayılan* geliştirme alanına dağıtır. Azure Dev Spaces ile çalışacak şekilde yapılandırılmamış bir küme seçerseniz, yapılandırmak isteyip istemediğinizi soran bir ileti görürsünüz. *Tamam*'a tıklayın.
+Bu işlem, hizmetinizi genel olarak erişilebilen bir URL ile *varsayılan* geliştirme alanına dağıtır. Azure Dev Spaces ile çalışacak şekilde yapılandırılmamış bir küme seçerseniz, yapılandırmak isteyip istemediğinizi soran bir ileti görürsünüz. *Tamam* düğmesine tıklayın.
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![Azure Spaces kaynağı Ekle iletişim kutusunun ekran görüntüsü.](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 *Varsayılan* dev alanında çalışan hizmetin genel URL 'si *Çıkış* penceresinde görüntülenir:
 

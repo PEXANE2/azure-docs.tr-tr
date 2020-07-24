@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: a4624d16f29834e8948a7bbc7ef882041727a823
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ecc2925b52679c5807c9fa79a67d7b45411df526
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171882"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014040"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında d
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, bir sunucu veya yönetilen örnek üzerinde veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 
-- [Azure portalındaki](geo-distributed-application-configure-tutorial.md)
+- [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLı: yük devretme grubu](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: yük devretme grubu](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: yük devretme grubu](/rest/api/sql/failovergroups).
@@ -398,7 +398,7 @@ Aşağıdaki sınırlamalara dikkat edin:
 
 ## <a name="programmatically-managing-failover-groups"></a>Yük devretme gruplarını programlı olarak yönetme
 
-Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğrafi çoğaltma de Azure PowerShell ve REST API kullanılarak programlı bir şekilde yönetilebilir. Aşağıdaki tablolarda kullanılabilen komut kümesi açıklanır. Etkin coğrafi çoğaltma, [Azure SQL veritabanı REST API](https://docs.microsoft.com/rest/api/sql/) ve [Azure PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/overview)dahil olmak üzere yönetim için Azure Resource Manager API 'ler kümesi içerir. Bu API 'Ler, kaynak gruplarının kullanımını gerektirir ve rol tabanlı güvenliği (RBAC) destekler. Erişim rollerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure rol tabanlı Access Control](../../role-based-access-control/overview.md).
+Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğrafi çoğaltma de Azure PowerShell ve REST API kullanılarak programlı bir şekilde yönetilebilir. Aşağıdaki tablolarda kullanılabilen komut kümesi açıklanır. Etkin coğrafi çoğaltma, [Azure SQL veritabanı REST API](https://docs.microsoft.com/rest/api/sql/) ve [Azure PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/)dahil olmak üzere yönetim için Azure Resource Manager API 'ler kümesi içerir. Bu API 'Ler, kaynak gruplarının kullanımını gerektirir ve rol tabanlı güvenliği (RBAC) destekler. Erişim rollerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure rol tabanlı Access Control](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>SQL veritabanı yük devretmesini yönetme
 

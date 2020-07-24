@@ -7,14 +7,14 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 26594486e1d98c0349fd41470c749109faf71b0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011422"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı V12
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Hızlı Başlangıç: .NET için Azure Blob depolama istemci kitaplığı v12
 
 .NET için Azure Blob depolama istemci kitaplığı V12 ile çalışmaya başlayın. Azure Blob depolama, Microsoft’un buluta yönelik nesne depolama çözümüdür. Paketi yüklemek ve temel görevler için örnek kodu denemek için adımları izleyin. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir.
 
@@ -29,11 +29,16 @@ ms.locfileid: "84711876"
 * Blobu yerel bilgisayarınıza indirme
 * Kapsayıcı silme
 
-[API başvuru belgeleri](/dotnet/api/azure.storage.blobs)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+Ek kaynaklar:
+
+* [API başvuru belgeleri](/dotnet/api/azure.storage.blobs)
+* [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+* [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012953"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Azure Machine Learning tasarımcı, makine öğrenimi modelleri oluşturmak içi
 
 Tasarımcı, şu gibi paylaşılan kaynakları düzenlemek için Azure Machine Learning [çalışma alanınızı](concept-workspace.md) kullanır:
 
-+ [İşlem hatları](#pipeline)
++ [Pipelines](#pipeline)
 + [Veri kümeleri](#datasets)
 + [İşlem kaynakları](#compute)
 + [Kayıtlı modeller](concept-azure-machine-learning-architecture.md#models)
@@ -90,7 +90,7 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı üzerinden gez
 
 İş hattınızı çalıştırmak ve dağıtılan modellerinizi gerçek zamanlı uç noktalar veya ardışık düzen uç noktaları olarak barındırmak (Batch çıkarımı için) için çalışma alanınızdan işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
 
-| İşlem hedefi | Eğitiliyor | Dağıtım |
+| İşlem hedefi | Eğitim | Dağıtım |
 | ---- |:----:|:----:|
 | Azure Machine Learning işlem | ✓ | |
 | Azure Machine Learning işlem örneği | ✓ | |
@@ -98,7 +98,7 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı üzerinden gez
 
 İşlem hedefleri [Azure Machine Learning çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda yönetirsiniz.
 
-## <a name="deploy"></a>Dağıtma
+## <a name="deploy"></a>Dağıt
 
 Gerçek zamanlı bir işlem hattı gerçekleştirmek için, bir işlem hattını **gerçek zamanlı uç nokta**olarak dağıtmanız gerekir. Gerçek zamanlı uç nokta, bir dış uygulama ve Puanlama modeliniz arasında bir arabirim oluşturur. Gerçek zamanlı bir uç noktaya yapılan çağrı, uygulamaya gerçek zamanlı olarak tahmin sonuçları döndürür. Gerçek zamanlı bir uç noktaya çağrı yapmak için, uç noktasını dağıtırken oluşturulan API anahtarını geçirirsiniz. Uç nokta, Web programlama projeleri için popüler bir mimari seçimi olan REST 'i temel alır.
 
@@ -115,25 +115,6 @@ Yayınlanan işlem hatları esnektir, modelleri eğitme veya yeniden eğitme, [t
 Yayımlanan bir işlem hattı, her modülün ardışık düzen taslağı içinde tanımladığınız işlem kaynakları üzerinde çalışır.
 
 Tasarımcı, SDK ile aynı [Publishedpipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) nesnesini oluşturur.
-
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>Görsel arabirimden tasarımcıya geçme
-
-Görsel Arabirim (Önizleme) güncelleştirildi ve artık Azure Machine Learning tasarımcı (Önizleme). Tasarımcı, Azure Machine Learning diğer özellikleriyle tamamen tümleştirilen bir ardışık düzen tabanlı arka uç kullanmak üzere tasarlanmıştır. 
-
-Bu güncelleştirmelerin sonucunda, görsel arabirim için bazı kavramlar ve terimler değiştirilmiştir veya yeniden adlandırılacaktır. En önemli kavramsal değişiklikler için aşağıdaki tabloya bakın. 
-
-| Tasarımcıda kavram | Daha önce görsel arabirimde |
-| ---- |:----:|
-| Ardışık düzen taslağı | Deneme |
-| Gerçek zamanlı uç nokta | Web hizmeti |
-
-### <a name="migrating-to-the-designer"></a>Tasarımcıya geçme
-
-Varolan Visual Interface denemeleri ve Web hizmetlerini, tasarımcıda işlem hatlarına ve gerçek zamanlı uç noktalara dönüştürebilirsiniz. Visual Interface varlıklarınızı geçirmek için aşağıdaki adımları kullanın:
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

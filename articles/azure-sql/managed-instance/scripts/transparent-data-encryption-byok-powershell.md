@@ -12,11 +12,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34d91b23b0383f4128b7f03619ad0e2b07496f33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014176"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>Azure Key Vault kendi anahtarınızı kullanarak SQL yönetilen örneği 'nde Saydam Veri Şifrelemesi
 
@@ -24,7 +25,7 @@ ms.locfileid: "84708463"
 
 Bu PowerShell betiği örneği, Azure Key Vault bir anahtar kullanarak Azure SQL yönetilen örneği için müşteri tarafından yönetilen bir anahtarla Saydam Veri Şifrelemesi (TDE) yapılandırır. Bu, genellikle TDE için kendi anahtarını getir (BYOK) senaryosu olarak adlandırılır. Daha fazla bilgi edinmek için bkz. [Azure SQL saydam veri şifrelemesi ile müşteri tarafından yönetilen anahtar](../../database/transparent-data-encryption-byok-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Mevcut bir yönetilen örnek. Bkz. [yönetilen bir örnek oluşturmak Için PowerShell 'ı kullanma](create-configure-managed-instance-powershell.md).
 
@@ -44,6 +45,6 @@ PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 SQL yönetilen örneği için ek PowerShell betiği örnekleri, [Azure SQL yönetilen örnek PowerShell betikleri](../../database/powershell-script-content-guide.md)içinde bulunabilir.

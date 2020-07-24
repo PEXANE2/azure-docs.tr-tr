@@ -13,19 +13,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 14e7f4d09185f76786fd88576eef0b6df02877c4
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368082"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004170"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için SSMS kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu hızlı başlangıçta, SQL Server Management Studio (SSMS) kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanıp bazı sorguları nasıl çalıştıracağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki öğeler gereklidir:
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdaki öğeler gereklidir:
 
 - Azure SQL veritabanı 'nda bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
-  || SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
+  | Eylem | SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
   |:--- |:--- |:---|:---|
   | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -53,7 +53,7 @@ Yalnızca bazı geçici sorguları SSMS yüklemeden çalıştırmak istiyorsanı
 
 Veritabanınıza bağlanmak için gereken bağlantı bilgilerini alın. Bu hızlı başlangıcı tamamlayabilmeniz için tam [sunucu](logical-servers.md) adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Sorgulamak istediğiniz **veritabanına** veya **yönetilen örneğe** gidin.
 
@@ -62,7 +62,7 @@ Veritabanınıza bağlanmak için gereken bağlantı bilgilerini alın. Bu hızl
 > [!NOTE]
 > Azure VM 'de SQL Server bağlantı bilgileri için bkz. [Connect SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
 
-## <a name="connect-to-your-database"></a>Veritabanınıza bağlanın
+## <a name="connect-to-your-database"></a>Veritabanınıza bağlanma
 
 SSMS 'de sunucunuza bağlanın.
 
@@ -77,7 +77,7 @@ SSMS 'de sunucunuza bağlanın.
    | ------------ | ------------------ | ----------- |
    | **Sunucu türü** | Veritabanı altyapısı | Gerekli değer. |
    | **Sunucu adı** | Tam sunucu adı | Şöyle bir şey: **ServerName.Database.Windows.net**. |
-   | **Kimlik Doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğretici, SQL kimlik doğrulamasını kullanır. |
+   | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğretici, SQL kimlik doğrulamasını kullanır. |
    | **Oturum aç** | Sunucu Yöneticisi hesabı kullanıcı KIMLIĞI | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki Kullanıcı KIMLIĞI. |
    | **Parola** | Sunucu Yöneticisi hesap parolası | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki parola. |
    ||||

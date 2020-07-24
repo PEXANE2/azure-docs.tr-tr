@@ -3,28 +3,28 @@ title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014533"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights’tan telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
 
 > [!NOTE]
-> Sürekli dışa aktarma yalnızca klasik Application Insights kaynakları için desteklenir. [Çalışma alanı tabanlı Application Insights kaynakların](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) [tanılama ayarlarını](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)kullanması gerekir.
+> Sürekli dışa aktarma yalnızca klasik Application Insights kaynakları için desteklenir. [Çalışma alanı tabanlı Application Insights kaynakların](./create-workspace-resource.md) [tanılama ayarlarını](./create-workspace-resource.md#export-telemetry)kullanması gerekir.
 >
 
 Sürekli dışarı aktarmayı ayarlamadan önce şunları göz önünde bulundurmanız isteyebileceğiniz bazı alternatifler vardır:
 
 * Ölçüm veya arama sekmesinin en üstündeki dışarı aktar düğmesi, tabloları ve grafikleri bir Excel elektronik tablosuna aktarmanıza olanak tanır.
 
-* [Analytics](../../azure-monitor/app/analytics.md) , telemetri için güçlü bir sorgu dili sağlar. Ayrıca sonuçları dışarı aktarabilir.
+* [Analytics](../log-query/log-query-overview.md) , telemetri için güçlü bir sorgu dili sağlar. Ayrıca sonuçları dışarı aktarabilir.
 * [Verilerinizi Power BI araştırmak](../../azure-monitor/app/export-power-bi.md )istiyorsanız, bu Işlemi sürekli dışarı aktarma kullanmadan yapabilirsiniz.
 * [Veri erişimi REST API](https://dev.applicationinsights.io/) , telemetrinize programlı bir şekilde erişmenizi sağlar.
-* Ayrıca, [PowerShell aracılığıyla sürekli dışarı aktarmayı](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)ayarla ' da erişebilirsiniz.
+* Ayrıca, [PowerShell aracılığıyla sürekli dışarı aktarmayı](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)ayarla ' da erişebilirsiniz.
 
 Sürekli dışa aktarma Işlemi, verilerinizi depolama alanına kopyaladıktan sonra (istediğiniz kadar uzun sürebileceği), her zamanki [Bekletme dönemi](../../azure-monitor/app/data-retention-privacy.md)için Application Insights de kullanılabilir.
 
@@ -32,9 +32,9 @@ Sürekli dışa aktarma Işlemi, verilerinizi depolama alanına kopyaladıktan s
 
 Sürekli dışarı aktarma, aşağıdaki Azure depolama özelliklerini/yapılandırmasını **desteklemez** :
 
-* Azure Blob depolama ile birlikte [VNET/Azure Storage güvenlik duvarları](https://docs.microsoft.com/azure/storage/common/storage-network-security) kullanımı.
+* Azure Blob depolama ile birlikte [VNET/Azure Storage güvenlik duvarları](../../storage/common/storage-network-security.md) kullanımı.
 
-* [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
+* [Azure Data Lake Storage 2.](../../storage/blobs/data-lake-storage-introduction.md).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>Sürekli dışarı aktarma oluşturma
 
@@ -58,7 +58,7 @@ Verilerin depolamada görünmesi için bir saat yaklaşık bir gecikme olabilir.
 
 İlk dışa aktarma işlemi tamamlandıktan sonra, Azure Blob depolama kapsayıcısında aşağıdakine benzer bir yapı bulacaksınız: (Bu, topladığınız verilere bağlı olarak farklılık gösterir.)
 
-|Name | Description |
+|Ad | Açıklama |
 |:----|:------|
 | [Kullanılabilirlik](export-data-model.md#availability) | [Kullanılabilirlik Web testlerini](../../azure-monitor/app/monitor-web-app-availability.md)raporlar.  |
 | [Olay](export-data-model.md#events) | [Trackevent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)tarafından oluşturulan özel olaylar. 

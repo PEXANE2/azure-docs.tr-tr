@@ -73,8 +73,6 @@
               href: how-dev-spaces-works-routing.md
             - name: Uzaktan hata ayıklama
               href: how-dev-spaces-works-remote-debugging.md
-            - name: Kubernetes ile Yerel İşlem
-              href: how-dev-spaces-works-local-process-kubernetes.md
         - name: Dev Spaces ile VS Code nasıl çalışır?
           href: how-vs-code-works-with-dev-spaces.md
         - name: Farklı ağ topolojilerinde ağ yapılandırması
@@ -111,10 +109,6 @@
           href: how-to/ingress-https-traefik.md
         - name: Özel giriş ve HTTPS için NGINX kullanma
           href: how-to/ingress-https-nginx.md
-        - name: Visual Studio Code aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
-          href: how-to/local-process-kubernetes-vs-code.md
-        - name: Visual Studio aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
-          href: how-to/local-process-kubernetes-visual-studio.md
     - name: Sorun giderme
       href: troubleshooting.md
     - name: SSS

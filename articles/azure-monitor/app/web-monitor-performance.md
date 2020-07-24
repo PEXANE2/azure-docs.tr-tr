@@ -4,11 +4,12 @@ description: Application Insights kullanmaya başlayın. Şirket içi veya Micro
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014174"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web uygulamalarının performansını izleme
 
@@ -25,7 +26,7 @@ Projenize henüz Application Insights eklemediyseniz (yani, ApplicationInsights.
 * [ASP.NET web uygulamaları](../../azure-monitor/app/asp-net.md)
   * [Özel durum izleme ekleme](../../azure-monitor/app/asp-net-exceptions.md)
   * [Bağımlılık izleme ekleme](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web uygulamaları](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Java EE Web uygulamaları](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Performans ölçümlerini keşfetme
 [Azure Portal](https://portal.azure.com), uygulamanız için ayarladığınız Application Insights kaynağına gidin. Genel Bakış dikey penceresinde temel performans verileri gösterilmektedir:
@@ -60,15 +61,15 @@ Olağan dışı tepe noktaları arayın. Genel olarak, yanıt süresinin artmas�
 
 Belirli URL 'Lerin zamanlarını almak için kutucuğa tıklayın.
 
-![](./media/web-monitor-performance/appinsights-42reqs.png)
+![İsteklerin ve yanıt süresinin hareketli ortalamaları sırasında çizgi grafiklerini görüntüleyen uygulama durumu bölmesinin ekran görüntüsü.](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>En yavaş istekler
-![](./media/web-monitor-performance/appinsights-44slowest.png)
+![En yavaş isteklerin ve yanıt sürelerinin bir listesinin ekran görüntüsü.](./media/web-monitor-performance/appinsights-44slowest.png)
 
 Hangi isteklerin performans ayarlamaya ihtiyacı olabileceğini gösterir.
 
 ### <a name="failed-requests"></a>Başarısız istekler
-![](./media/web-monitor-performance/appinsights-46failed.png)
+![Başarısız istek sayısı sırasında çizgi grafiğinin ekran görüntüsü; diğer bir deyişle, yakalanamayan özel durumlar gerçekleştiren isteklardır.](./media/web-monitor-performance/appinsights-46failed.png)
 
 Yakalanmayan özel durumları oluşturan istek sayısı.
 
@@ -86,7 +87,7 @@ Herhangi bir ölçümü seçmek, aynı grafikte görünmeyen diğerlerini devre 
 ## <a name="set-alerts"></a>Uyarı ayarlama
 Herhangi bir ölçümün olağandışı değerlerinin e-postasından haberdar olmak için bir uyarı ekleyin. E-postayı hesap yöneticilerine veya belirli e-posta adreslerine göndermek üzere birini seçebilirsiniz.
 
-![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+![Bir uyarı kuralı Ekle iletişim kutusunun ve bu iletişim kutusuna Ölçüm Gezgini ' den nasıl ulaşmayı gösteren oklara bağlı ekran görüntüleri.](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 Kaynağı diğer özelliklerden önce ayarlayın. Performans veya kullanım ölçümlerinde uyarı ayarlamak istiyorsanız WebTest kaynaklarını seçmeyin.
 
@@ -144,12 +145,9 @@ Performans araştırma deneyimi, odaklanmaya karar verdiğiniz örnek küme üze
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
 [usage]: usage-overview.md
 [livestream]: ../../azure-monitor/app/live-stream.md
 [snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
-

@@ -6,18 +6,18 @@ ms.topic: overview
 description: Azure Dev Spaces Azure Kubernetes hizmet kümelerinde takımlar için hızlı ve yinelemeli bir Kubernetes geliştirme deneyimi sağlar
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: fd757d5392a7cefcacdd1d77807beb72e34c8f89
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 691845cd888e4d24c1144f2805402a3baf14a86e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006973"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Azure Dev Spaces nedir?
 
 Azure Dev Spaces, Azure Kubernetes Service (AKS) kümelerinde takımlar için hızlı ve yinelemeli bir Kubernetes geliştirme deneyimi sağlar. Azure Dev Spaces Ayrıca, bağımlılıklarda uygulamanızın tüm bileşenlerinin hatalarını ayıklamanıza ve test etmenize gerek kalmadan, en az geliştirme makinesi kurulumuyla test etmenizi sağlar.
 
-![](media/azure-dev-spaces/collaborate-graphic.gif)
+![Diyagramda, uygulamanın bağımsız olarak geliştirilen iki sürümü gösterilmektedir. Daha sonra bir Azure Dev Spaces geliştirme ortamında birleştirilir.](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>Azure Dev Spaces’in Kubernetes geliştirmeyi kolaylaştırması
 

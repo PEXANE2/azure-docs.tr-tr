@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012731"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
 
@@ -27,7 +27,7 @@ Makine öğreniminde fazla sığdırma, bir model eğitim verilerine çok uygun 
 
 Aşağıdaki eğitilen modelleri ve bunlara karşılık gelen tren ve test accuracies göz önünde bulundurun.
 
-| Model | Tren doğruluğu | Test doğruluğu |
+| Modelleme | Tren doğruluğu | Test doğruluğu |
 |-------|----------------|---------------|
 | A | %99,9 | %95 |
 | B | %87 | %87 |
@@ -101,7 +101,7 @@ Aşağıdaki teknikler, **OTOMATIK ml dışında**imdengeli verileri işlemek i�
 
 - Daha küçük sınıfları örnekleyerek veya daha büyük sınıfları aşağı örnekleyerek sınıf dengesizliği olarak yeniden örnekleme yapın. Bu yöntemler, işlemek ve analiz etmek için uzmanlık gerektirir.
 
-- İmdengelenmiş veriler için performans ölçümlerini gözden geçirin. Örneğin, F1 puanı ağırlıklı duyarlık ve geri çağırma ortasıdır. Duyarlık, bir sınıflandırıcının exactness--düşük--, duyarlık değeri, bir sınıflandırıcının bir sınıflandırıcısını ölçer, ancak en düşük düzeyde geri çağırma, çok sayıda yanlış negatiflik olduğunu gösterir.
+- İmdengelenmiş veriler için performans ölçümlerini gözden geçirin. Örneğin, F1 puanı duyarlık ve geri çağırma 'nin harmonik ortalaması olur. Duyarlık, bir sınıflandırıcının exactness ' i ölçer, burada daha yüksek duyarlık daha az yanlış pozitif sonuç gösteriyorsa, geri çağırma bir sınıflandırıcının tamamlanmasını ölçer ve daha yüksek geri çekmenin daha az yanlış negatifleri gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

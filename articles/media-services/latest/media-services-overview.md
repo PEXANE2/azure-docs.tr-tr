@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79461019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000967"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3'e genel bakış
 
@@ -31,7 +31,7 @@ Azure Media Services, yayın kalitesinde video akışı elde etmenizi, erişileb
 Media Services v3 SDK 'Ları, [Media Services v3 Openapı belirtimini (Swagger)](https://aka.ms/ams-v3-rest-sdk)temel alır.
 
 > [!NOTE]
-> Şu anda [Azure Portal](https://portal.azure.com/) kullanabilirsiniz: Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, (yönetmiyorsanız) v3 [varlıklarını](assets-concept.md)görüntülemek, [API 'lere erişme hakkında bilgi almak](access-api-portal.md). Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+> Şu anda [Azure Portal](https://portal.azure.com/) kullanabilirsiniz: Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, (yönetmiyorsanız) v3 [varlıklarını](assets-concept.md)görüntülemek, [API 'lere erişme hakkında bilgi almak](./access-api-howto.md). Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,8 +53,8 @@ Media Services, bulutta çeşitli medya iş akışları oluşturmanıza olanak t
 * Kaydedilen videoları veya ses içeriğini analiz edin. Örneğin, daha yüksek müşteri memnuniyeti elde etmek için kuruluşlar, konuşmayı metne dönüştürebilir ve arama dizinleri ve panolar derleyebilir. Daha sonra genel şikayetlerden, şikayet kaynaklarından ve diğer ilişkili verilerden istihbarat çıkarabilir.
 * Bir müşterinin (örneğin, bir filmi stüdyosu), telif hakkıyla korunan bir çalışmaya erişimi ve kullanım yetkisini kısıtlaması gerektiğinde bir abonelik video hizmeti oluşturun ve DRM korumalı içeriği akışa alın.
 * Uçak, tren ve otomobillerde kayıttan yürütülmesi için çevrimdışı içerik sunun. Bir müşterinin, ağ bağlantısının kesileceğini tahmin ettiğinde kayıttan yürütülmesi için içeriği telefonuna veya tabletine indirmesi gerekebilir.
-* Konuşmayı metne dönüştürme, çok dilde çevirme ve benzeri Azure Media Services ve [Azure bilişsel hizmetler API'si](https://docs.microsoft.com/azure/?pivot=products&panel=ai) ile eğitim e-öğrenim video platformunu uygulayın.
-* Daha geniş bir hedef kitle (örneğin, işitme engelli kişiler veya farklı bir dilde okumak isteyen kişiler) için videolara alt yazı ve açıklamalı alt yazılar eklemek için [Azure bilişsel hizmetler API'si](https://docs.microsoft.com/azure/?pivot=products&panel=ai) ile birlikte Azure Media Services kullanın.
+* Konuşmayı metne dönüştürme, çok dilde çevirme ve benzeri Azure Media Services ve [Azure bilişsel hizmetler API'si](../../index.yml?pivot=products&panel=ai) ile eğitim e-öğrenim video platformunu uygulayın.
+* Daha geniş bir hedef kitle (örneğin, işitme engelli kişiler veya farklı bir dilde okumak isteyen kişiler) için videolara alt yazı ve açıklamalı alt yazılar eklemek için [Azure bilişsel hizmetler API'si](../../index.yml?pivot=products&panel=ai) ile birlikte Azure Media Services kullanın.
 * Anında yüksek yükleri daha iyi işleyebilmek için büyük ölçeklemeye ulaşmak üzere Azure CDN etkinleştirin (örneğin, bir ürün başlatma olayının başlangıcı).
 
 ## <a name="how-can-i-get-started-with-v3"></a>v3’ü kullanmaya nasıl başlayabilirim? 
@@ -64,11 +64,11 @@ Media Services v3 ile içerik kodlama ve paketleme, Videoları isteğe bağlı o
 > [!TIP]
 > Geliştirmeye başlamadan önce şunları gözden geçirin:<br/>* [Temel kavramlar](concepts-overview.md) (paketleme, kodlama ve koruma gibi önemli kavramlar)<br/>* [Media Services v3 API 'leri Ile geliştirme](media-services-apis-overview.md) (API 'lere erişme, adlandırma kuralları vb.)
 
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK
 
 [Azure Media Services v3 Istemci SDK 'ları](media-services-apis-overview.md#sdks)ile geliştirmeye başlayın.
 
-### <a name="quickstarts"></a>Hızlı başlangıçlar  
+### <a name="quickstarts"></a>Hızlı Başlangıçlar  
 
 Hızlı başlangıçlarda yeni müşterilerin Media Services hızla deneyebilmesinin temel gün 1 yönergeleri gösterilir.
 
@@ -88,14 +88,14 @@ Hızlı başlangıçlarda yeni müşterilerin Media Services hızla deneyebilmes
 
 ### <a name="samples"></a>Örnekler
 
-Azure Media Services kod örneklerine gitmek için [Bu örnek tarayıcıyı](https://docs.microsoft.com/samples/browse/?products=azure-media-services) kullanın.
+Azure Media Services kod örneklerine gitmek için [Bu örnek tarayıcıyı](/samples/browse/?products=azure-media-services) kullanın.
 
 ### <a name="how-to-guides"></a>Nasıl yapılır kılavuzları
 
 Nasıl yapılır kılavuzlarında bir görevi tamamlamayı gösteren kod örnekleri yer almaktadır. Bu bölümde birçok örnek bulacaksınız. Bunlardan bazıları şunlardır:
 
-* [Hesap oluşturma - CLI](create-account-cli-how-to.md)
-* [API'lere erişim - CLI](access-api-cli-how-to.md)
+* [Hesap oluşturma - CLI](./create-account-howto.md)
+* [API'lere erişim - CLI](./access-api-howto.md)
 * [İş girişi olarak HTTPS ile kodlama-.NET](job-input-from-http-how-to.md)  
 * [Olayları izleme - Portal](monitor-events-portal-how-to.md)
 * [Multi-DRM-.NET ile dinamik olarak şifreleyin](protect-with-drm.md) 

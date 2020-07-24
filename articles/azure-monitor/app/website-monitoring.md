@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, Azure Izleyici Application Insights ile 
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: fa2ecd5d953ec0411a122dc7107ce23de1ae5bc6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014057"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Hızlı başlangıç: Azure Izleyici Application Insights Web sitenizi izlemeye başlayın
 
@@ -17,7 +17,7 @@ Bu hızlı başlangıçta, Web sitenize açık kaynaklı Application Insights Ja
 
 Azure İzleyici Application Insights ile web sitenizi kullanılabilirlik, performans ve kullanım bakımından kolayca izleyebilirsiniz. Ayrıca, bir kullanıcının bildirmesini beklemeden uygulamanızdaki hataları hızlıca tanımlayıp tespit edebilirsiniz. Application Insights hem sunucu tarafı izleme hem de istemci/tarayıcı tarafı izleme özellikleri sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * JavaScript SDK Application Insights ekleyebileceğiniz bir Web sitesi.
@@ -26,24 +26,24 @@ Azure İzleyici Application Insights ile web sitenizi kullanılabilirlik, perfor
 
 Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağlı herhangi bir uygulamadan telemetri verilerini toplayabilir. Bu verileri görüntülemek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-1. Application Insights **kaynak** > **yönetimi araçları** > **Application Insights**oluştur ' u seçin.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. Application Insights **kaynak**  >  **yönetimi araçları**oluştur ' u seçin  >  **Application Insights**.
 
    > [!NOTE]
-   >İlk kez bir Application Insights kaynağı oluşturuyorsanız, bkz. [Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+   >İlk kez bir Application Insights kaynağı oluşturuyorsanız, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
 1. Yapılandırma kutusu göründüğünde, giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın:
 
     | Ayarlar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
-   | **Kaynak grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
+   | **Ad**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
+   | **Kaynak Grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
    | **Konum** | Doğu ABD | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
 1. **Oluştur**’u seçin.
 
 ## <a name="create-an-html-file"></a>HTML dosyası oluşturma
 
-1. Yerel bilgisayarınızda ``hello_world.html`` adlı bir dosya oluşturun. Bu örnek için, dosyayı C sürücüsünün kökünde oluşturun, böylece benzer ``C:\hello_world.html``şekilde görünür.
-1. Aşağıdaki betiği kopyalayıp içine ``hello_world.html``yapıştırın:
+1. Yerel bilgisayarınızda ``hello_world.html`` adlı bir dosya oluşturun. Bu örnek için, dosyayı C sürücüsünün kökünde oluşturun, böylece benzer şekilde görünür ``C:\hello_world.html`` .
+1. Aşağıdaki betiği kopyalayıp içine yapıştırın ``hello_world.html`` :
 
     ```html
     <!DOCTYPE html>
@@ -60,11 +60,11 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
 
 ## <a name="configure-application-insights-sdk"></a>SDK Application Insights yapılandırma
 
-1. **Genel bakış** > **temel**bileşenleri ' ni seçin ve ardından uygulamanızın **izleme anahtarını**kopyalayın.
+1. **Genel bakış**  >  **temel**bileşenleri ' ni seçin ve ardından uygulamanızın **izleme anahtarını**kopyalayın.
 
    ![Yeni Application Insights kaynağı formu](media/website-monitoring/instrumentation-key-001.png)
 
-1. Aşağıdaki betiği, kapatma ``hello_world.html`` ``</head>`` etiketinden önce dosyanıza ekleyin:
+1. Aşağıdaki betiği, ``hello_world.html`` kapatma etiketinden önce dosyanıza ekleyin ``</head>`` :
 
    ```javascript
    <script type="text/javascript">
@@ -86,7 +86,7 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
 
    Genel bakış sayfasındaki dört varsayılan grafik, sunucu tarafı uygulama verilerini kapsar. JavaScript SDK 'Sı ile istemci/tarayıcı tarafı etkileşimlerini seçtiğimiz için, sunucu tarafı SDK 'Sı yüklü olmadığı müddetçe bu belirli görünüm uygulanmaz.
 
-1. **Analiz** ![uygulama Haritası simgesini](media/website-monitoring/006.png)seçin.  Bu eylem, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Analytics**'i açar. İstemci tarafı tarayıcı istekleriyle ilgili verileri görüntülemek için aşağıdaki sorguyu çalıştırın:
+1. **Analiz** ![ uygulama Haritası simgesini seçin ](media/website-monitoring/006.png) .  Bu eylem, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Analytics**'i açar. İstemci tarafı tarayıcı istekleriyle ilgili verileri görüntülemek için aşağıdaki sorguyu çalıştırın:
 
     ```kusto
     // average pageView duration by name
@@ -132,4 +132,4 @@ Ek hızlı başlangıçlarla veya öğreticilerle çalışmaya devam etmeyi plan
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Performans sorunlarını bulma ve tanılama](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [Performans sorunlarını bulma ve tanılama](../log-query/log-query-overview.md)

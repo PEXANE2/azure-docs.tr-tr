@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482131"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014147"
 ---
 # <a name="connection-strings"></a>Bağlantı dizeleri
 
@@ -31,12 +31,12 @@ Bu, en etkili olduğunu görselleştirdiğimiz müşteri senaryolarında:
 
 - Güvenlik Duvarı özel durumları veya proxy yönlendirmeleri 
 
-    Intranet web sunucusu için izlemenin gerekli olduğu durumlarda, daha önceki çözümümüzde müşterilerin yapılandırmanıza ayrı hizmet uç noktaları eklemesi istenir. Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)bakın. 
+    Intranet web sunucusu için izlemenin gerekli olduğu durumlarda, daha önceki çözümümüzde müşterilerin yapılandırmanıza ayrı hizmet uç noktaları eklemesi istenir. Daha fazla bilgi için [buraya](../faq.md#can-i-monitor-an-intranet-web-server)bakın. 
     Bağlantı dizeleri, bu çabayı tek bir ayara azaltarak daha iyi bir alternatif sunar. Basit önek, sonek değişikliği, tüm uç noktaların doğru hizmetlere otomatik olarak doldurulmasını ve yeniden yönlendirilmesine olanak tanır. 
 
 - Sogeign veya hibrit bulut ortamları
 
-    Kullanıcılar, tanımlı bir [Azure Kamu bölgesine](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)veri gönderebilir.
+    Kullanıcılar, tanımlı bir [Azure Kamu bölgesine](../../azure-government/compare-azure-government-global-azure.md#application-insights)veri gönderebilir.
     Bağlantı dizeleri, intranet sunucularınız veya karma bulut ayarları için uç nokta ayarlarını tanımlamanızı sağlar. 
 
 ## <a name="getting-started"></a>Başlarken

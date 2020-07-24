@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/06/2020
+ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: feababd3d6f6845142a13ccb3b2b31b78315704b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 99c22edac7acefe3ec34ff40e892a7071b932ada
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013819"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Python REST API kullanma 
 <a name="HOLTop"></a>
@@ -24,7 +25,7 @@ Metin Analizi REST API ve Python ile dili çözümlemeye başlamak için bu hız
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python 3.x](https://python.org)
 
@@ -64,7 +65,7 @@ Aşağıdaki bölümlerde, API 'nin özelliklerinin her birinin nasıl çağrıl
 
 ## <a name="detect-languages"></a>Dilleri algılama
 
-`/text/analytics/v3.0/languages`Dil ALGıLAMA URL 'sini oluşturmak için metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`
+`/text/analytics/v3.0/languages`Dil ALGıLAMA URL 'sini oluşturmak için metin analizi temel uç noktaya ekleyin. Örnek: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v3.0/languages"
@@ -131,7 +132,7 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Yaklaşımı analiz etme
 
-Bir belge kümesinin yaklaşımını (pozitif veya negatif) algılamak için, `/text/analytics/v3.0/sentiment` dil ALGıLAMA URL 'sini oluşturmak üzere metin analizi temel uç noktasına ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
+Bir belge kümesinin yaklaşımını (pozitif veya negatif) algılamak için, `/text/analytics/v3.0/sentiment` dil ALGıLAMA URL 'sini oluşturmak üzere metin analizi temel uç noktasına ekleyin. Örnek: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v3.0/sentiment"
@@ -220,7 +221,7 @@ Bir belge için yaklaşım puanı, daha pozitif bir yaklaşım belirten daha yü
 
 ## <a name="extract-key-phrases"></a>Anahtar ifadeleri ayıklama
  
-Bir belge kümesinden anahtar tümceleri ayıklamak için, `/text/analytics/v3.0/keyPhrases` dil ALGıLAMA URL 'sini oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+Bir belge kümesinden anahtar tümceleri ayıklamak için, `/text/analytics/v3.0/keyPhrases` dil ALGıLAMA URL 'sini oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örnek: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v3.0/keyphrases"
@@ -294,10 +295,10 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Varlıkları tanımla
 
-Metin belgelerindeki iyi bilinen varlıkları (kişiler, konumlar ve şeyler) belirlemek için, `/text/analytics/v3.0/entities/recognition/general` dil ALGıLAMA URL 'sini oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
+Metin belgelerindeki iyi bilinen varlıkları (kişiler, konumlar ve şeyler) belirlemek için, `/text/analytics/v3.0/entities/recognition/general` dil ALGıLAMA URL 'sini oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örnek: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
     
 ```python
-entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general/recognition/general"
+entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general"
 ```
 
 Önceki örneklerde olduğu gibi bir belge koleksiyonu oluşturun. 

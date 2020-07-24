@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015111"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Web kancasından runbook başlatma
 
@@ -133,7 +133,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-İstemci, runbook işinin ne zaman tamamlandığını veya Web kancasından tamamlanma durumunu belirleyemez. Bu bilgileri, [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) veya [Azure Otomasyonu API](/rest/api/automation/job)gibi başka BIR mekanizmasıyla iş kimliğini kullanarak bulabilir.
+İstemci, runbook işinin ne zaman tamamlandığını veya Web kancasından tamamlanma durumunu belirleyemez. Bu bilgileri, [Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) veya [Azure Otomasyonu API](/rest/api/automation/job)gibi başka BIR mekanizmasıyla iş kimliğini kullanarak bulabilir.
 
 ## <a name="renew-a-webhook"></a>Web kancasını yenileme
 

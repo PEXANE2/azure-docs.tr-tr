@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir .NET Core uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 104e812cc9e792ce71f263085ba1a3474cc2226b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002786"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'de hata ayıklama ve yineleme: Visual Studio Code ve .NET Core-Azure Dev Spaces
 
@@ -155,7 +155,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 Dosyayı kaydedin. Hata *Ayıkla* ' ya tıklayın ve *hata ayıklamayı yeniden başlatın* veya *Hata Ayıkla araç çubuğunda* *hata ayıklamayı yeniden Başlat* düğmesine tıklayın
 
-![Hata ayıklama araç çubuğu, sayfanın üst merkezinde (sayfa başlığının hemen altında) küçük bir bölmesidir. Yeniden Başlat düğmesi dairesel ok görüntüler ve vurgulanır. Düğmenin üzerine gelme resmi "yeniden Başlat (Ctrl + Shift + F5)" ' dir.](media/common/debug-action-refresh.png)
+![Hata ayıklama araç çubuğu, sayfanın üst merkezinde (sayfa başlığının hemen altında) küçük bir bölmesidir. Yeniden Başlat düğmesi dairesel ok görüntüler ve vurgulanır. Düğmenin üzerine gelme resmi "Restart (Control + SHIFT + f 5)" ' tir.](media/common/debug-action-refresh.png)
 
 Hizmetinizi bir tarayıcıda açın ve güncelleştirilmiş iletinizin görüntülendiğini unutmayın.
 

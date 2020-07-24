@@ -3,12 +3,12 @@ title: Java uygulamalarını her yerde izleyin-Azure Izleyici Application Insigh
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için codeless uygulama performansı izleme. Dağıtılmış izleme ve uygulama haritasını kullanarak sorunlar için temel nedenini bulur.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a01f2e9339f3ba4f8f50fc41617fabf9da9d8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014210"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Yapılandırma seçenekleri-Azure Izleyici için Java tek başına aracı Application Insights
 
@@ -216,7 +216,7 @@ Maliyeti azaltmanız gerekiyorsa örnekleme yararlı olur.
 
 ## <a name="http-proxy"></a>HTTP proxy 'Si
 
-Uygulamanız bir güvenlik duvarının arkasındaysa ve Application Insights doğrudan bağlanamıyorsa (bkz. [Application Insights tarafından kullanılan IP adresleri](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), bir http proxy kullanmak için Java 3,0 Preview Application Insights yapılandırabilirsiniz:
+Uygulamanız bir güvenlik duvarının arkasındaysa ve Application Insights doğrudan bağlanamıyorsa (bkz. [Application Insights tarafından kullanılan IP adresleri](./ip-addresses.md)), bir http proxy kullanmak için Java 3,0 Preview Application Insights yapılandırabilirsiniz:
 
 ```json
 {

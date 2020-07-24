@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015230"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Azure Kubernetes Service’e dağıtma
 
@@ -29,7 +29,7 @@ Bu makalede, Azure [Kubernetes hizmetine](https://azure.microsoft.com/services/k
 
 ## <a name="deploy-the-self-hosted-gateway-to-aks"></a>Şirket içinde barındırılan ağ geçidini AKS 'e dağıtma
 
-1. **Ayarlar**altında **ağ geçitleri** ' ni seçin.
+1. **Dağıtım ve altyapı**altında **ağ geçitleri** ' ni seçin.
 2. Dağıtmayı düşündüğünüz şirket içinde barındırılan ağ geçidi kaynağını seçin.
 3. **Dağıtım**' ı seçin.
 4. Varsayılan **süre sonu** ve **gizli anahtar** değerlerini kullanarak, **belirteç** metin kutusundaki yeni bir belirtecin sizin için otomatik olarak oluşturulduğunu unutmayın. İsterseniz veya her ikisini de ayarlayın ve yeni bir belirteç oluşturmak için **Oluştur** ' u seçin.

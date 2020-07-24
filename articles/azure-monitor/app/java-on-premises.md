@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: aadc9c7bfaa9ad6338015f5dd085b5ab865673f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c083e24ce44272ef9394b8418d3dc66771ceb8a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014278"
 ---
 # <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme-şirket içi-Azure izleyici Application Insights-genel önizleme
 
@@ -19,10 +20,10 @@ Java kodsuz kullanacaksınız uygulama izleme kolaylık sağlaması, hiçbir kod
 
 Java Aracısı etkinleştirildikten sonra, en yaygın kullanılan kitaplıklar ve çerçevelerden çok sayıda isteği, bağımlılığı, günlüğü ve ölçümü otomatik olarak toplar.
 
-Lütfen şirket içi dahil olmak üzere tüm ortamlara yönelik [ayrıntılı yönergeleri](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) izleyin.
+Lütfen şirket içi dahil olmak üzere tüm ortamlara yönelik [ayrıntılı yönergeleri](./java-in-process-agent.md) izleyin.
 
  ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Java aracısını indirme yönergelerini alın](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Java aracısını indirme yönergelerini alın](./java-in-process-agent.md)
 * [JVM bağımsız değişkenlerini yapılandırma](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
 * [Yapılandırmayı özelleştirme](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options)

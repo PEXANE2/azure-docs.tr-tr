@@ -3,13 +3,14 @@ title: Dayanıklı İşlevler-Azure Işlevlerinde HTTP özellikleri
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki tümleşik HTTP özellikleri hakkında bilgi edinin.
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16a133205b13a3d0a4aa76f75c8ce316f6c09199
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014907"
 ---
 # <a name="http-features"></a>HTTP özellikleri
 
@@ -50,9 +51,60 @@ Dayanıklı İşlevler uzantısı tarafından kullanıma sunulan tüm yerleşik 
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**Üzerindefunction.js**
+**function.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+**__init__. Kopyala**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    function_name = req.route_params['functionName']
+    event_data = req.get_body()
+
+    instance_id = await client.start_new(function_name, instance_id, event_data)
+    
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+```
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{functionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 
 ---
 
@@ -147,6 +199,22 @@ module.exports = df.orchestrator(function*(context){
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    response = yield context.call_http('GET', url)
+    
+    if response["statusCode"] >= 400:
+        # handling of error codes goes here
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 
 ---
 
@@ -169,7 +237,7 @@ HTTP API 'Lerini doğrudan Orchestrator işlevlerinden kullanma özelliği, beli
 
 Dayanıklı İşlevler, yetkilendirme için Azure Active Directory (Azure AD) belirteçlerini kabul eden API 'Lerin çağrılarını yerel olarak destekler. Bu destek, bu belirteçleri almak için [Azure yönetilen kimliklerini](../../active-directory/managed-identities-azure-resources/overview.md) kullanır.
 
-Aşağıdaki kod .NET Orchestrator işlevine bir örnektir. İşlevi, Azure Resource Manager [sanal makineler REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)kullanarak bir sanal makineyi yeniden başlatmak için kimliği doğrulanmış çağrılar yapar.
+Aşağıdaki kod .NET Orchestrator işlevine bir örnektir. İşlevi, Azure Resource Manager [sanal makineler REST API](/rest/api/compute/virtualmachines)kullanarak bir sanal makineyi yeniden başlatmak için kimliği doğrulanmış çağrılar yapar.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -221,6 +289,30 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    subscription_id = "mySubId"
+    resource_group = "myRg"
+    vm_name = "myVM"
+    api_version = "2019-03-01"
+    token_source = df.ManagedIdentityTokenSource("https://management.core.windows.net")
+
+    # get a list of the Azure subscriptions that I have access to
+    restart_response = yield context.call_http("POST", 
+        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        None,
+        None,
+        token_source)
+    return restart_response
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Önceki örnekte, `tokenSource` parametresi [Azure Resource Manager](../../azure-resource-manager/management/overview.md)için Azure AD belirteçlerini almak üzere yapılandırılmıştır. Belirteçler, kaynak URI 'SI tarafından tanımlanır `https://management.core.windows.net` . Örnek, geçerli işlev uygulamasının yerel olarak çalıştığını ya da yönetilen kimliğe sahip bir işlev uygulaması olarak dağıtıldığını varsayar. Yerel kimliğin veya yönetilen kimliğin, belirtilen kaynak grubundaki VM 'Leri yönetme izni olduğu varsayılır `myRG` .
@@ -255,7 +347,7 @@ Bu sınırlamaların herhangi biri kullanım durumunu etkileyebileceğinden, gid
 
 ### <a name="extensibility-net-only"></a>Genişletilebilirlik (yalnızca .NET)
 
-Orchestration 'ın iç HTTP istemcisinin davranışını özelleştirmek, [Azure işlevleri .net bağımlılığı ekleme](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)kullanılarak yapılabilir. Bu özellik küçük davranışsal değişiklikler yapmak için yararlı olabilir. Ayrıca, ekleme sahte nesneler tarafından HTTP istemcisinin birim testi için de yararlı olabilir.
+Orchestration 'ın iç HTTP istemcisinin davranışını özelleştirmek, [Azure işlevleri .net bağımlılığı ekleme](../functions-dotnet-dependency-injection.md)kullanılarak yapılabilir. Bu özellik küçük davranışsal değişiklikler yapmak için yararlı olabilir. Ayrıca, ekleme sahte nesneler tarafından HTTP istemcisinin birim testi için de yararlı olabilir.
 
 Aşağıdaki örnek, dış HTTP uç noktaları çağıran Orchestrator işlevleri için TLS/SSL sertifika doğrulamasını devre dışı bırakma bağımlılığı ekleme işlemini gösterir.
 

@@ -3,11 +3,12 @@ title: Azure Application Insights Kullanım Analizi | Microsoft docs
 description: Kullanıcılarınıza ve uygulamalarınızla neler olduğunu anlayın.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014074"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights ile kullanım analizi
 
@@ -33,7 +34,7 @@ En iyi deneyim, hem App Server kodunuzda hem de Web sayfalarınızda Application
     </script>
     ```
 
-    Web sitelerini izlemeye yönelik daha gelişmiş yapılandırma hakkında daha fazla bilgi edinmek için [JAVASCRIPT SDK başvuru makalesine](https://docs.microsoft.com/azure/azure-monitor/app/javascript)göz atın.
+    Web sitelerini izlemeye yönelik daha gelişmiş yapılandırma hakkında daha fazla bilgi edinmek için [JAVASCRIPT SDK başvuru makalesine](./javascript.md)göz atın.
 
 3. **Mobil uygulama kodu:** Uygulamanızdaki olayları toplamak için App Center SDK 'sını kullanın, ardından [Bu kılavuzu izleyerek](../../azure-monitor/learn/mobile-center-quickstart.md)bu olayların kopyalarını analiz için Application Insights gönderin.
 
@@ -44,7 +45,7 @@ En iyi deneyim, hem App Server kodunuzda hem de Web sayfalarınızda Application
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>Telemetrinize Kullanıcı ve oturum KIMLIĞINI dahil etme
 Kullanıcılara zaman içinde izlemek için Application Insights bunları tanımlamak için bir yol gerekir. Olaylar Aracı, bir kullanıcı KIMLIĞI veya oturum KIMLIĞI gerektirmeyen tek kullanım aracıdır.
 
-[Bu işlemi](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)kullanarak Kullanıcı ve oturum kimlikleri göndermeye başlayın.
+[Bu işlemi](./usage-send-user-context.md)kullanarak Kullanıcı ve oturum kimlikleri göndermeye başlayın.
 
 ## <a name="explore-usage-demographics-and-statistics"></a>Kullanım demografgrafiklerini ve istatistiklerini keşfet
 Kullanıcılarınızın uygulamanızı ne zaman kullandığı, ne kadar ilgilendiğiniz ve hangi tarayıcıların kullandıkları, hangi tarayıcıların ve işletim sistemlerinin bulunduğu hakkında bilgi edinin. 
@@ -174,5 +175,5 @@ Tüm yeni TelemetryClients, belirttiğiniz özellik değerini otomatik olarak ek
    - [Huniler](usage-funnels.md)
    - [Bekletme](usage-retention.md)
    - [Kullanıcı Akışları](usage-flows.md)
-   - [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
+   - [Çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md)
    - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)

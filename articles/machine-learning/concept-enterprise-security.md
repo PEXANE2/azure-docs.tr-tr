@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259447"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012929"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmışsa Multi-
 1. İstemci belirteci Azure Resource Manager ve tüm Azure Machine Learning gösterir.
 1. Machine Learning hizmeti, Kullanıcı işlem hedefine bir Machine Learning hizmet belirteci sağlar (örneğin, Machine Learning İşlem). Bu belirteç, Kullanıcı işlem hedefi tarafından, çalıştırma tamamlandıktan sonra Machine Learning hizmetine geri çağrı yapmak için kullanılır. Kapsam, çalışma alanıyla sınırlıdır.
 
-[![Azure Machine Learning kimlik doğrulaması](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
+[![Azure Machine Learning kimlik doğrulaması](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
 Daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](how-to-setup-authentication.md). Bu makalede, kimlik doğrulama hakkında hizmet sorumluları ve otomatik iş akışları gibi bilgiler ve örnekler sağlanmaktadır.
 
@@ -88,14 +88,14 @@ Her çalışma alanı Ayrıca, çalışma alanıyla aynı ada sahip ilişkili bi
 
 Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-| Resource | İzinler |
+| Kaynak | İzinler |
 | ----- | ----- |
-| Çalışma alanı | Katkıda Bulunan |
+| Çalışma alanı | Katılımcı |
 | Depolama hesabı | Depolama Blobu veri Katılımcısı |
 | Key Vault | Tüm anahtarlar, gizlilikler, sertifikalara erişim |
-| Azure Container Registry | Katkıda Bulunan |
-| Çalışma alanını içeren kaynak grubu | Katkıda Bulunan |
-| Anahtar kasasını içeren kaynak grubu (çalışma alanını içeren bunlardan farklıysa) | Katkıda Bulunan |
+| Azure Container Registry | Katılımcı |
+| Çalışma alanını içeren kaynak grubu | Katılımcı |
+| Anahtar kasasını içeren kaynak grubu (çalışma alanını içeren bunlardan farklıysa) | Katılımcı |
 
 Yöneticilerin yönetilen kimliğin önceki tabloda bahsedilen kaynaklara erişimini iptal etmemenizi önermiyoruz. Yeniden eşitleme anahtarları işlemini kullanarak erişimi geri yükleyebilirsiniz.
 
@@ -124,10 +124,12 @@ Ayrıca, çalışma alanınız için Azure özel bağlantısını etkinleştireb
 `hbi_workspace`Bayrak, Microsoft 'un tanılama amacıyla topladığı veri miktarını denetler ve Microsoft tarafından yönetilen ortamlarda ek şifrelemeye izin vermez. Ayrıca, aşağıdaki eylemleri sunar:
 
 * Azure Machine Learning işlem kümenizde, bu abonelikte daha önceki kümelerin oluşturulmadığından, yerel çalışma diskini şifrelemeye başlar. Aksi takdirde, işlem kümelerinizin karalama diskinin şifrelenmesini etkinleştirmek için bir destek bileti yükseltmeniz gerekir 
-* Çalıştırmalar arasında yerel çalışma diskinizi temizler
+* Çalıştırmalar arasında yerel karalama diskinizi temizler
 * Anahtar kasanızı kullanarak depolama hesabınız, kapsayıcı kayıt defteriniz ve SSH hesabınız için kimlik bilgilerini yürütme katmanından işlem kümelerinize güvenli bir şekilde geçirir
 * Temel alınan toplu iş havuzlarının AzureMachineLearningService dışında herhangi bir dış hizmet tarafından çağrılıp çağrılmaması için IP filtrelemeyi sağlar
 
+> [!WARNING]
+> `hbi_workspace`Bayrak yalnızca bir çalışma alanı oluşturulduğunda ayarlanabilir. Mevcut bir çalışma alanı için değiştirilemez.
 
 Azure 'da bekleyen şifrelemenin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [rest 'de Azure veri şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
@@ -317,7 +319,7 @@ Aşağıdaki diyagramda, çalışma alanı oluşturma iş akışı gösterilmekt
 
 Kullanıcı, gerektiğinde bir çalışma alanına (Azure Kubernetes hizmeti veya VM 'Ler gibi) bağlı diğer işlem hedeflerini de temin edebilir.
 
-[![Çalışma alanı iş akışı oluştur](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
+[![Çalışma alanı iş akışı oluştur](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
 
 ### <a name="save-source-code-training-scripts"></a>Kaynak kodunu kaydet (eğitim betikleri)
 
@@ -325,9 +327,9 @@ Aşağıdaki diyagramda, kod anlık görüntüsü iş akışı gösterilmektedir
 
 Bir Azure Machine Learning çalışma alanıyla ilişkili, kaynak kodu (eğitim betikleri) içeren dizinlerdir (denemeleri). Bu betikler yerel makinenizde ve bulutta depolanır (aboneliğiniz için Azure Blob depolama alanında). Kod anlık görüntüleri, geçmiş denetimi için yürütme veya denetleme için kullanılır.
 
-[![Kod anlık görüntüsü iş akışı](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
+[![Kod anlık görüntüsü iş akışı](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
-### <a name="training"></a>Eğitiliyor
+### <a name="training"></a>Eğitim
 
 Aşağıdaki diyagramda eğitim iş akışı gösterilmektedir.
 
@@ -352,7 +354,7 @@ Machine Learning İşlem yönetilen bir işlem hedefi olduğundan (Microsoft tar
 
 Aşağıdaki akış diyagramında, bu adım, eğitim işlem hedefi Cosmos DB veritabanındaki depolamadan Azure Machine Learning için yeniden çalıştırma ölçümleri yazdığında meydana gelir. İstemciler, Azure Machine Learning çağırabilir. Machine Learning, Cosmos DB veritabanından çekme ölçümlerini açıp istemciye geri döndürmeyecektir.
 
-[![Eğitim iş akışı](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
+[![Eğitim iş akışı](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
 
 ### <a name="creating-web-services"></a>Web Hizmetleri oluşturma
 
@@ -367,7 +369,7 @@ Ayrıntılar aşağıda verilmiştir:
 * Puanlama isteği ayrıntıları, Kullanıcı aboneliğindeki Application Insights depolanır.
 * Telemetri ayrıca Microsoft/Azure aboneliğine de gönderilir.
 
-[![Çıkarım iş akışı](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
+[![Çıkarım iş akışı](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

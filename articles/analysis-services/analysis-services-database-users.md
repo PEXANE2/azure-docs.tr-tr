@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81454212"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015281"
 ---
 # <a name="manage-database-roles-and-users"></a>Veritabanı rollerini ve kullanıcılarını yönetme
 
@@ -41,9 +42,9 @@ Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid` .
   
 4.  Aşağıdaki izinlerden birini seçin:  
   
-    |İzin|Description|  
+    |İzin|Açıklama|  
     |----------------|-----------------|  
-    |**Yok**|Üyeler model şemasını okuyamıyor veya değiştiremezler ve verileri sorgulayamaz.|  
+    |**Hiçbiri**|Üyeler model şemasını okuyamıyor veya değiştiremezler ve verileri sorgulayamaz.|  
     |**Okuma**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
     |**Okuma ve Işleme**|Üyeler, verileri sorgulayabilir (satır düzeyi filtrelere göre) ve Işlemi çalıştırabilir ve tüm işlemleri Işleyebilir, ancak model şemasını değiştiremezler.|  
     |**İşleme**|Üyeler, Işlem çalıştırabilir ve tüm işlemleri Işleyebilir. Model şeması okunamıyor veya değiştirilemiyor ve veri sorgulanamıyor.|  
@@ -70,7 +71,7 @@ Dağıtılan bir model veritabanına roller ve kullanıcılar eklemek için sunu
 
 3. Bir izin seçin.
 
-   |İzin|Description|  
+   |İzin|Açıklama|  
    |----------------|-----------------|  
    |**Tam denetim (yönetici)**|Üyeler model şemasını değiştirebilir, işleyebilir ve tüm verileri sorgulayabilir.| 
    |**İşlem veritabanı**|Üyeler, Işlem çalıştırabilir ve tüm işlemleri Işleyebilir. Model şeması değiştirilemiyor ve veri sorgulanamıyor.|  
@@ -120,7 +121,7 @@ Bu örnekte, B2B dış kullanıcısı ve bir grubu, satış bı veritabanı içi
 
 [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modülü, göreve özgü veritabanı yönetim cmdlet 'Leri ve tablosal model betik DILI (tmsl) sorgusu veya betiği kabul eden genel amaçlı Invoke-ASCmd cmdlet 'ini sağlar. Aşağıdaki cmdlet 'ler veritabanı rollerini ve kullanıcılarını yönetmek için kullanılır.
   
-|Cmdlet|Description|
+|Cmdlet|Açıklama|
 |------------|-----------------| 
 |[Add-Rolemebir](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Bir veritabanı rolüne üye ekleyin.| 
 |[Remove-Rolemeoda](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Bir üyeyi veritabanı rolünden kaldırın.|   

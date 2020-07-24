@@ -3,12 +3,12 @@ title: Nasıl yaparım?... Azure Application Insights | Microsoft Docs
 description: Application Insights SSS.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 63a958e1d3fb784651043181bff0428666fad6db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224477"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014602"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights’ta nasıl ... yapabilirim?
 ## <a name="get-an-email-when-"></a>Şu durumlarda bir e-posta alın...
@@ -74,7 +74,7 @@ Dikkat edilmesi gereken bazı noktalar:
 [PowerShell kullanarak yeni uyarılar oluşturma](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Application Insights yönetmek için PowerShell 'i kullanma
-* [Yeni kaynaklar oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [Yeni kaynaklar oluşturma](./create-new-resource.md#creating-a-resource-automatically)
 * [Yeni uyarılar oluşturma](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Farklı sürümlerden telemetri ayırın

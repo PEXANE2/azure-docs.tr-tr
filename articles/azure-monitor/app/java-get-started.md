@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3835f88eb581693d10f68a9a495329466a657a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537517"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014499"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı başlangıç: Java Web projesinde Application Insights ile çalışmaya başlama
 
@@ -17,7 +18,7 @@ Bu hızlı başlangıçta, isteği otomatik olarak işaretlemek, bağımlılıkl
 
 Application Insights, web geliştiricileri için canlı uygulamanızın performansını ve kullanımını anlamanıza yardımcı olan genişletilebilir bir analiz hizmetidir. Application Insights; Linux, Unix veya Windows üzerinde çalışan Java uygulamalarını destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Çalışan bir Java uygulaması.
@@ -171,7 +172,7 @@ Ayrı ayrı örnekleri görmek için belirli bir istek türüne tıklayın.
 ![Belirli bir örnek görünüm detayına gitme](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analiz: Güçlü sorgu dili
-Daha fazla veri birleştirdiğinizde hem veri toplama, hem de tek tek örneklerini bulmak için sorguları çalıştırabilirsiniz.  [Analiz](../../azure-monitor/app/analytics.md) hem performans, hem de kullanım için olmasının yanı sıra tanılama için de güçlü bir araçtır.
+Daha fazla veri birleştirdiğinizde hem veri toplama, hem de tek tek örneklerini bulmak için sorguları çalıştırabilirsiniz.  [Analiz](../log-query/log-query-overview.md) hem performans, hem de kullanım için olmasının yanı sıra tanılama için de güçlü bir araçtır.
 
 ![Analizi örneği](./media/java-get-started/0025.png)
 
@@ -263,7 +264,7 @@ Toplanacak ek performans sayaçları belirtebilirsiniz.
   * `tabular`: performans sayacı verileri tablo satırı biçimindedir
 
 #### <a name="windows-performance-counters"></a>Windows performans sayaçları
-Her [Windows performans sayacı](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) bir kategorinin üyesidir (alanın bir sınıf üyesi olması gibi). Kategoriler genel olabileceği gibi numaralı veya adlı örneklere de sahip olabilir.
+Her [Windows performans sayacı](/windows/win32/perfctrs/performance-counters-portal) bir kategorinin üyesidir (alanın bir sınıf üyesi olması gibi). Kategoriler genel olabileceği gibi numaralı veya adlı örneklere de sahip olabilir.
 
 ```XML
     <PerformanceCounters>
@@ -307,7 +308,7 @@ Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Ins
 * [Unix Performans sayaçlarını izleme](java-collectd.md)
 * Sayfa yükleme sürelerini, AJAX çağrılarını ve tarayıcı özel durumlarını izlemek için [web sayfalarınıza izleme ekleyin](javascript.md).
 * Tarayıcıda veya sunucuda kullanımı izlemek için [özel telemetri](../../azure-monitor/app/api-custom-events-metrics.md) yazın.
-* Uygulamanızdan telemetri üzerinde güçlü sorgular için [analiz](../../azure-monitor/app/analytics.md) kullanın
+* Uygulamanızdan telemetri üzerinde güçlü sorgular için [analiz](../log-query/log-query-overview.md) kullanın
 * Daha fazla bilgi için bkz. [Java geliştiricileri için Azure](/java/azure).
 
 <!--Link references-->

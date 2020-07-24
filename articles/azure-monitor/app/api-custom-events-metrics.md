@@ -3,11 +3,12 @@ title: Özel olaylar ve ölçümler için API Application Insights | Microsoft D
 description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza veya masaüstü uygulamanıza, Web sayfasına veya hizmete birkaç satır kod ekleyin.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43951a415256577144b93c7deea168e30e7a13ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014737"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -144,7 +145,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics 'te özel olaylar
 
-Telemetri, `customEvents` [Application Insights Analytics](analytics.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackEvent(..)` .
+Telemetri, `customEvents` [Application Insights Analytics](../log-query/log-query-overview.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackEvent(..)` .
 
 [Örnekleme](../../azure-monitor/app/sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackEvent () için 10 çağrının (), örnekleme işleminin yalnızca birini aktardığı anlamına gelir. Özel olayların doğru sayısını almak için, bu nedenle gibi bir kod kullanmanız gerekir `customEvents | summarize sum(itemCount)` .
 
@@ -200,7 +201,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Analytics 'te özel ölçümler
 
-Telemetri, `customMetrics` [Application Insights Analytics](analytics.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackMetric(..)` .
+Telemetri, `customMetrics` [Application Insights Analytics](../log-query/log-query-overview.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackMetric(..)` .
 
 * `valueSum`-Bu, ölçümlerin toplamıdır. Ortalama değeri almak için, öğesini ayırın `valueCount` .
 * `valueCount`-Bu çağrıda toplanmış ölçüm sayısı `trackMetric(..)` .
@@ -270,7 +271,7 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 
 ### <a name="page-telemetry-in-analytics"></a>Analytics 'te sayfa telemetrisi
 
-[Analiz](analytics.md) ' de iki tabloda, tarayıcı işlemlerinden verileri göster:
+[Analiz](../log-query/log-query-overview.md) ' de iki tabloda, tarayıcı işlemlerinden verileri göster:
 
 * `pageViews`Tablo, URL ve sayfa başlığı hakkındaki verileri içerir
 * `browserTimings`Tablo, gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki verileri içerir
@@ -306,7 +307,7 @@ Ancak, istek Telemetriyi göndermek için önerilen yol, isteğin bir <a href="#
 
 ## <a name="operation-context"></a>İşlem bağlamı
 
-Telemetri öğelerini işlem bağlamıyla ilişkilendirerek ilişkilendirilebilir. Standart istek izleme modülü, bir HTTP isteği işlenirken gönderilen özel durumlar ve diğer olaylar için bunu yapar. [Arama](../../azure-monitor/app/diagnostic-search.md) ve [analiz](analytics.md)' de, istekle ILIŞKILI tüm olayları işlem kimliğini kullanarak kolayca bulabilirsiniz.
+Telemetri öğelerini işlem bağlamıyla ilişkilendirerek ilişkilendirilebilir. Standart istek izleme modülü, bir HTTP isteği işlenirken gönderilen özel durumlar ve diğer olaylar için bunu yapar. [Arama](../../azure-monitor/app/diagnostic-search.md) ve [analiz](../log-query/log-query-overview.md)' de, istekle ILIŞKILI tüm olayları işlem kimliğini kullanarak kolayca bulabilirsiniz.
 
 Bağıntı hakkında daha fazla bilgi için [Application Insights telemetri bağıntısını](../../azure-monitor/app/correlation.md) inceleyin.
 
@@ -344,7 +345,7 @@ Aramada, işlem bağlamı **Ilgili öğeler** listesini oluşturmak için kullan
 
 ### <a name="requests-in-analytics"></a>Analytics istekleri
 
-[Application Insights Analytics](analytics.md)'te, istekler `requests` tabloda gösterilir.
+[Application Insights Analytics](../log-query/log-query-overview.md)'te, istekler `requests` tabloda gösterilir.
 
 [Örnekleme](../../azure-monitor/app/sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değer gösterir. Örneğin ItemCount = = 10, trackRequest () için 10 çağrının, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. İstek adlarına göre doğru istek sayısını ve ortalama süreyi almak için, şöyle bir kod kullanın:
 
@@ -426,7 +427,7 @@ SDK 'lar birçok özel durumu otomatik olarak yakalar, bu nedenle her zaman Trac
 
 ### <a name="exceptions-in-analytics"></a>Analytics 'te özel durumlar
 
-[Application Insights Analytics](analytics.md)'te özel durumlar `exceptions` tabloda gösterilir.
+[Application Insights Analytics](../log-query/log-query-overview.md)'te özel durumlar `exceptions` tabloda gösterilir.
 
 [Örnekleme](../../azure-monitor/app/sampling.md) işlemi ise, `itemCount` özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackException () için 10 çağrının, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. Özel durum türüne göre bölünmüş özel durumların doğru sayısını almak için, şu gibi bir kod kullanın:
 
@@ -490,7 +491,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
  Parametre | Açıklama
 ---|---
 `message` | Tanılama verileri. Bir adından çok daha uzun olabilir.
-`properties` | Dizenin dize eşlemesi: portalda [özel durumları filtrelemek](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties) Için kullanılan ek veriler. Varsayılan olarak boştur.
+`properties` | Dizenin dize eşlemesi: portalda [özel durumları filtrelemek](#properties) Için kullanılan ek veriler. Varsayılan olarak boştur.
 `severityLevel` | Desteklenen değerler: [Severitylevel. TS](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 İleti içeriğinde arama yapabilirsiniz, ancak (Özellik değerlerinden farklı olarak) üzerinde filtreleme yapamazsınız.
@@ -521,7 +522,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 ### <a name="traces-in-analytics"></a>Analizler
 
-[Application Insights Analytics](analytics.md)'te, tabloda tracktrace çağrıları gösterilir `traces` .
+[Application Insights Analytics](../log-query/log-query-overview.md)'te, tabloda tracktrace çağrıları gösterilir `traces` .
 
 [Örnekleme](../../azure-monitor/app/sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, için 10 `trackTrace()` ' un, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. İzleme çağrılarının doğru sayısını almak için, bu kodu gibi bir kod kullanmanız gerekir `traces | summarize sum(itemCount)` .
 
@@ -600,7 +601,7 @@ C# ' de standart bağımlılık izleme modülünü devre dışı bırakmak için
 
 ### <a name="dependencies-in-analytics"></a>Analytics 'teki bağımlılıklar
 
-[Application Insights Analytics](analytics.md)'te, trackdependency çağrıları `dependencies` tabloda gösterilir.
+[Application Insights Analytics](../log-query/log-query-overview.md)'te, trackdependency çağrıları `dependencies` tabloda gösterilir.
 
 [Örnekleme](../../azure-monitor/app/sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackDependency () için 10 çağrının olduğu anlamına gelir ve örnekleme işlemi bunlardan yalnızca birini iletilir. Hedef bileşene göre bölünmüş bağımlılıkların doğru sayısını almak için, şu gibi bir kod kullanın:
 
@@ -809,7 +810,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Analiz içindeki özel ölçümler ve Özellikler
 
-[Analytics](analytics.md)'te özel ölçümler ve özellikler, `customMeasurements` `customDimensions` her telemetri kaydının ve özniteliklerinde gösterilir.
+[Analytics](../log-query/log-query-overview.md)'te özel ölçümler ve özellikler, `customMeasurements` `customDimensions` her telemetri kaydının ve özniteliklerinde gösterilir.
 
 Örneğin, istek telemetrinize "oyun" adlı bir özellik eklediyseniz, bu sorgu farklı "oyun" değerlerinin oluşumlarını sayar ve "Score" özel ölçüsünün ortalamasını gösterir:
 
@@ -1091,8 +1092,8 @@ Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama 
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [ASP.NET başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [Java başvurusu](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET başvurusu](/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Java başvurusu](/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript başvurusu](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK kodu
@@ -1116,4 +1117,4 @@ Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 
 * [Olayları ve günlükleri ara](../../azure-monitor/app/diagnostic-search.md)
-* [Sorun giderme](../../azure-monitor/app/troubleshoot-faq.md)
+* [Sorun giderme](../faq.md)

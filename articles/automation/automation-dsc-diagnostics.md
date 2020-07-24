@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015162"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle tümleştirme
 
@@ -34,7 +34,7 @@ Azure Izleyici günlükleri, otomasyon durumu yapılandırma verilerinize daha f
 
 Automation durum yapılandırma raporlarınızı Azure Izleyici günlüklerine göndermeye başlamak için şunlar gerekir:
 
-- [Azure PowerShell](/powershell/azure/overview) Kasım 2016 veya sonraki bir sürümü (v 2.3.0).
+- [Azure PowerShell](/powershell/azure/) Kasım 2016 veya sonraki bir sürümü (v 2.3.0).
 - Azure Otomasyonu hesabı. Daha fazla bilgi için bkz. [Azure Otomasyonu 'na giriş](automation-intro.md).
 - Otomasyon & denetim hizmeti teklifiyle Log Analytics çalışma alanı. Daha fazla bilgi için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md).
 - En az bir Azure Otomasyonu durum yapılandırması düğümü. Daha fazla bilgi için bkz. [Azure Otomasyonu durum yapılandırmasına göre yönetim için makineleri ekleme](automation-dsc-onboarding.md).
@@ -142,8 +142,8 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | ConfigurationMode | Yapılandırmayı düğüme uygulamak için kullanılan mod. Olası değerler şunlardır: <ul><li>`ApplyOnly`: DSC yapılandırmayı uygular ve hedef düğüme yeni bir yapılandırma itilemez veya bir sunucudan yeni bir yapılandırma çekilmediği takdirde hiçbir şey yapmaz. Yeni yapılandırmanın ilk uygulamasından sonra DSC, daha önce yapılandırılmış bir durumdan DRFT 'yi denetlemez. DSC, değer yürürlüğe girmeden önce başarılı olana kadar yapılandırmayı uygulamaya çalışır `ApplyOnly` . </li><li>`ApplyAndMonitor`: Bu, varsayılan değerdir. LCM, yeni yapılandırma uygular. Yeni yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenen durumdan Drifts, DSC, günlüklerde tutarsızlığı raporlar. DSC, değer yürürlüğe girmeden önce başarılı olana kadar yapılandırmayı uygulamaya çalışır `ApplyAndMonitor` .</li><li>`ApplyAndAutoCorrect`: DSC yeni yapılandırma uygular. Yeni bir yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenen durumdan Drifts, DSC günlüklerde tutarsızlığı raporlar ve ardından geçerli yapılandırmayı yeniden uygular.</li></ul> |
 | HostName_s | Yönetilen düğümün adı. |
 | IPAddress | Yönetilen düğümün IPv4 adresi. |
-| Category | `DscNodeStatus`. |
-| Resource | Azure Otomasyonu hesabının adı. |
+| Kategori | `DscNodeStatus`. |
+| Kaynak | Azure Otomasyonu hesabının adı. |
 | Tenant_g | Çağıran için kiracıyı tanımlayan GUID. |
 | NodeId_g | Yönetilen düğümü tanımlayan GUID. |
 | DscReportId_g | Raporu tanımlayan GUID. |
@@ -154,7 +154,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | SourceSystem | Azure Izleyici günlüklerinin verileri nasıl topladığını tanımlayan kaynak sistem. Her zaman `Azure` Azure Tanılama için. |
 | ResourceId |Azure Otomasyonu hesabının kaynak tanımlayıcısı. |
 | ResultDescription | Bu işlem için kaynak açıklaması. |
-| kaynak grubundaki | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
+| SubscriptionId | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
 | ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | MICROSOFT. Otomasyon. |
 | ResourceType | AUTOMATIONACCOUNTS. |
@@ -168,8 +168,8 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | OperationName |`DscResourceStatusData`.|
 | ResultType |Kaynağın uyumlu olup olmadığı. |
 | NodeName_s |Yönetilen düğümün adı. |
-| Category | DscNodeStatus. |
-| Resource | Azure Otomasyonu hesabının adı. |
+| Kategori | DscNodeStatus. |
+| Kaynak | Azure Otomasyonu hesabının adı. |
 | Tenant_g | Çağıran için kiracıyı tanımlayan GUID. |
 | NodeId_g |Yönetilen düğümü tanımlayan GUID. |
 | DscReportId_g |Raporu tanımlayan GUID. |
@@ -185,7 +185,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Her zaman `Azure` Azure Tanılama için. |
 | ResourceId |Azure Otomasyonu hesabının tanımlayıcısı. |
 | ResultDescription | Bu işlemin açıklaması. |
-| kaynak grubundaki | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
+| SubscriptionId | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
 | ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | MICROSOFT. Otomasyon. |
 | ResourceType | AUTOMATIONACCOUNTS. |

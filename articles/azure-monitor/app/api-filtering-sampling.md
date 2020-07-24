@@ -3,12 +3,12 @@ title: Application Insights SDK 'da filtreleme ve ön işleme | Microsoft Docs
 description: Telemetri Application Insights portalına gönderilmeden önce verileri filtrelemek veya eklemek için SDK için telemetri işlemcileri ve telemetri başlatıcıları yazın.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: d33aeebfb374f081b4ae5dee7f83ccd04d0835ee
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adaada3589fd0db1c7d47b788ad50d570defe780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014635"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 'da telemetri filtreleme ve ön işleme
 
@@ -498,7 +498,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>HttpContext 'ten bilgi ekleme
 
-Aşağıdaki örnek başlatıcı verileri okur [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) ve bir `RequestTelemetry` örneğe ekler. , `IHttpContextAccessor` Oluşturucu bağımlılığı ekleme yoluyla otomatik olarak sağlanır.
+Aşağıdaki örnek başlatıcı verileri okur [`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) ve bir `RequestTelemetry` örneğe ekler. , `IHttpContextAccessor` Oluşturucu bağımlılığı ekleme yoluyla otomatik olarak sağlanır.
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
@@ -542,8 +542,8 @@ Telemetri işlemcileri ve telemetri başlatıcıları arasındaki fark nedir?
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [API 'ye Genel Bakış](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET başvurusu](https://msdn.microsoft.com/library/dn817570.aspx)
+* [API’ye genel bakış](../../azure-monitor/app/api-custom-events-metrics.md)
+* [ASP.NET başvurusu](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK kodu
 
@@ -554,4 +554,4 @@ Telemetri işlemcileri ve telemetri başlatıcıları arasındaki fark nedir?
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 * [Olayları ve günlükleri ara](../../azure-monitor/app/diagnostic-search.md)
 * [Örnekleme](../../azure-monitor/app/sampling.md)
-* [Sorun giderme](../../azure-monitor/app/troubleshoot-faq.md)
+* [Sorun giderme](../faq.md)
