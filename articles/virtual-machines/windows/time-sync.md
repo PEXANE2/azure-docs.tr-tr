@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100507"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074053"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 'da Windows VM 'Leri için zaman eşitleme
 
@@ -24,7 +24,7 @@ Azure artık Windows Server 2016 çalıştıran altyapı tarafından desteklenme
 >[!NOTE]
 >Windows Saat hizmeti 'ne hızlı bir genel bakış için, bu [üst düzey genel bakış videosunu](https://aka.ms/WS2016TimeVideo)inceleyin.
 >
-> Daha fazla bilgi için bkz. [Windows Server 2016 Için doğru süre](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Daha fazla bilgi için bkz. [Windows Server 2016 Için doğru süre](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -172,9 +172,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 Zaman eşitleme hakkında daha fazla ayrıntı için bağlantılar aşağıda verilmiştir:
 
-- [Windows Zaman Hizmeti Araçları ve Ayarları](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [Windows Server 2016 geliştirmeleri](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Windows Server 2016 için doğru saat](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [Windows Saat hizmetini yüksek doğruluk ortamları için yapılandırmak üzere sınır desteği](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
-
-
+- [Windows Zaman Hizmeti Araçları ve Ayarları](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
+- [Windows Server 2016 geliştirmeleri](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Windows Server 2016 için doğru saat](/windows-server/networking/windows-time-service/accurate-time)
+- [Windows Saat hizmetini yüksek doğruluk ortamları için yapılandırmak üzere sınır desteği](/windows-server/networking/windows-time-service/support-boundary)
