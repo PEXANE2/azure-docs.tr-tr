@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/27/2019
-ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/21/2020
+ms.openlocfilehash: c54979efbbd164a11614b92d9a337a86e2f221fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007750"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği tarafından kullanılan s
 - Daha yüksek işlem, bellek, g/ç ve depolama sınırları.
 - İş yükünün işlem ve bellek gereksinimlerini daha iyi eşleştirmek için donanım oluşturma üzerinde denetim.
 - [Azure hibrit avantajı (AHB)](../azure-hybrid-benefit.md) ve [ayrılmış örnek (RI)](reserved-capacity-overview.md)için fiyatlandırma iskontoları.
-- İşlem gücüne yönelik donanım ayrıntılarında daha büyük saydamlık; Şirket içi dağıtımlardan geçiş planlamayı kolaylaştırır.
+- Şirket içi dağıtımlardan geçiş planlamayı kolaylaştıran, işlem gücünü destekleyen donanım ayrıntılarında daha fazla saydamlık.
 
 ## <a name="service-tiers"></a>Hizmet katmanları
 
@@ -38,7 +38,7 @@ Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş A�
 |IOPS ve aktarım hızı (yaklaşık)|**SQL veritabanı**: [tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.<br/>**SQL yönetilen örneği**: bkz. [Azure SQL yönetilen örnek kaynak sınırlarına genel bakış](../managed-instance/resource-limits.md#service-tier-characteristics).|[Tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS ve aktarım hızı iş yüküne bağlıdır.|
 |Kullanılabilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](read-scale-out.md)|
 |Yedeklemeler|[Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 gün (varsayılan olarak 7 gün)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 gün (varsayılan olarak 7 gün)|Azure uzak depolama 'da anlık görüntü tabanlı yedeklemeler. Geri yükleme bu anlık görüntüleri hızlı kurtarma için kullanır. Yedeklemeler anında gerçekleşir ve işlem g/ç performansını etkilemez. Geri yükleme işlemleri hızlıdır ve veri boyutu (saatler veya günler yerine dakikalar içinde).|
-|Bellek içi|Desteklenmiyor|Destekleniyor|Desteklenmiyor|
+|Bellek içi|Desteklenmez|Desteklenir|Desteklenmez|
 |||
 
 
@@ -69,7 +69,7 @@ Sağlanan işlem katmanı, iş yükü etkinliğinden bağımsız olarak sürekli
 
 ## <a name="hardware-generations"></a>Donanım nesilleri
 
-VCore modelindeki donanım oluşturma seçenekleri arasında gen 4/5, M serisi (Önizleme) ve Fsv2-Series (Önizleme) bulunur. Donanım oluşturma genellikle işlem ve bellek sınırlarını ve iş yükünün performansını etkileyen diğer özellikleri tanımlar.
+VCore modelindeki donanım oluşturma seçenekleri gen 4/5, M serisi ve Fsv2-Series ' i içerir. Donanım oluşturma genellikle işlem ve bellek sınırlarını ve iş yükünün performansını etkileyen diğer özellikleri tanımlar.
 
 ### <a name="gen4gen5"></a>4. nesil/5. nesil
 
@@ -77,21 +77,21 @@ VCore modelindeki donanım oluşturma seçenekleri arasında gen 4/5, M serisi (
 
 4. nesil/5. nesil kullanılabildiği bölgelerde, bkz. [4. nesil/5. nesil kullanılabilirliği](#gen4gen5-1).
 
-### <a name="fsv2-seriespreview"></a>Fsv2 serisi (Önizleme)
+### <a name="fsv2-series"></a>Fsv2 serisi
 
 - Fsv2-Series, en düşük CPU gecikme süresi ve yüksek hızda yoğun iş yükleri sağlayan, işlem için iyileştirilmiş bir donanım seçeneğidir.
 - Fsv2 serisi, iş yüküne bağlı olarak, 5. nesil 'den vCore başına daha fazla CPU performansı sunabilir ve 72 vCore boyutu 5. nesil üzerindeki 80 sanal çekirdekten daha az maliyet sağlamak için daha fazla CPU performansı sağlayabilir. 
 - Fsv2, Diğer donanımlardan sanal çekirdek başına daha az bellek ve tempdb sağlar, bu sınırlara duyarlı iş yükleri bunun yerine 5. nesil veya d serisini düşünmek isteyebilir.  
 
-Fsv2-Series yalnızca Genel Amaçlı katmanında desteklenir.  Fsv2-Series 'in kullanılabildiği bölgeler için bkz. [Fsv2 serisi kullanılabilirliği](#fsv2-series).
+Fsv2-Series yalnızca Genel Amaçlı katmanında desteklenir. Fsv2-Series 'in kullanılabildiği bölgeler için bkz. [Fsv2 serisi kullanılabilirliği](#fsv2-series).
 
 
-### <a name="m-seriespreview"></a>A serisi (Önizleme)
+### <a name="m-series"></a>M serisi
 
 - D serisi, 5. nesil tarafından sağlanenden daha fazla bellek ve daha fazla işlem sınırı gerektiren iş yükleri için bellek için iyileştirilmiş bir donanım seçeneğidir.
-- A serisi, vCore başına 29 GB ve 128 sanal çekirdek sağlar. bu da, 5. nesil ile 8X arasındaki bellek sınırını neredeyse 4 TB 'a yükseltir.
+- A serisi, vCore başına 29 GB ve 128 sanal çekirdek sağlar. Bu, 5. nesil ile 8X arasındaki bellek sınırını neredeyse 4 TB 'a yükseltir.
 
-A serisi yalnızca İş Açısından Kritik katmanında desteklenir ve bölge yedekliliği desteklemez.  Abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır.  D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
+A serisi yalnızca İş Açısından Kritik katmanında desteklenir ve bölge yedekliliği desteklemez.  Abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır. D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
@@ -104,8 +104,8 @@ To enable M-series hardware for a subscription and region, a support request mus
 |:---------|:---------|:---------|
 |4. nesil     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
 |5. nesil     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) * işlemciler<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) * işlemciler<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
-|Fsv2 serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-Sağlama 72 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-Sağlama 136 GB|
-|M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz ve Intel Xeon Platinum 8280M2,7 GHz (Cascade Lake) işlemcileri<br>-Sağlama 128 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-Sağlama 3,7 TB|
+|Fsv2 serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-En fazla 72 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-136 GB 'a kadar sağlama|
+|M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz ve Intel Xeon Platinum 8280M2,7 GHz (Cascade Lake) işlemcileri<br>-En fazla 128 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-3,7 TB 'a kadar sağlama|
 
 \*[Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, Intel SP-8160 (ufuk Gölü) Işlemcileri kullanılarak 5. nesil veritabanları için donanım oluşturma, Gen6 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (geniş ve ufuk Gölü) bağımsız olarak aynıdır.
 
@@ -154,7 +154,7 @@ SQL yönetilen örneği sayfasında, Ayarlar bölümünün altına yerleştirilm
 
 ![SQL yönetilen örnek donanımını değiştirme](./media/service-tiers-vcore/change-managed-instance-hardware.png)
 
-**Fiyatlandırma katmanı** sayfasında, önceki adımlarda açıklandığı gibi donanım oluşturmayı değiştirebilirsiniz.
+Fiyatlandırma Katmanı sayfasında, önceki adımlarda açıklandığı gibi donanım oluşturmayı değiştirebilirsiniz.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -164,7 +164,7 @@ Aşağıdaki PowerShell komut dosyasını kullanın:
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Daha fazla ayrıntı için [set-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) komutunu inceleyin.
+Daha fazla ayrıntı için [set-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) komutunu işaretleyin.
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -174,7 +174,7 @@ Aşağıdaki CLı komutunu kullanın:
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-Daha fazla ayrıntı için, [az SQL mı Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) komutunu inceleyin.
+Daha fazla ayrıntı için [az SQL mı Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) komutunu işaretleyin.
 
 ---
 
