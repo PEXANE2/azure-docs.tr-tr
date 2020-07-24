@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091496"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure uzamsal bağlantıları hakkında sık sorulan sorular
 
@@ -88,9 +88,9 @@ Y **:** Azure uzamsal bağlayıcıları Şu anda Batı ABD 2, Doğu ABD, Doğu A
 
 Bu, hem işlem hem de depolamanın bu hizmeti destekleyen bu bölgelerde olduğu anlamına gelir. Bu şekilde, istemcilerinizin bulunduğu yerde bir kısıtlama yoktur. 
 
-**S: Azure uzamsal Tutturucuların ücretlendirmi? Ücret ödemeniz gerekecek mi?**
+**S: Azure uzamsal Tutturucuların ücretlendirmi?**
 
-Y **:** Fiyatlandırma [sayfamız](https://azure.microsoft.com/pricing/details/spatial-anchors/)sırasında, önizleme sırasında fiyatlandırma hakkındaki ayrıntıları bulabilirsiniz.
+Y **:** Fiyatlandırma [sayfamızda](https://azure.microsoft.com/pricing/details/spatial-anchors/), fiyatlandırma hakkındaki ayrıntıları bulabilirsiniz.
 
 ## <a name="technical-faqs"></a>Teknik SSS
 

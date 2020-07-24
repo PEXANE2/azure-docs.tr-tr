@@ -3,11 +3,12 @@ title: Pagerharcı ile Azure hizmet durumu uyarılarını gönderin
 description: Pagerharcı örneğiniz için hizmet sistem durumu olayları hakkında kişiselleştirilmiş bildirimler alın.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654078"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091547"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Web kancalarını kullanarak Pagerharcı ile Azure hizmet durumu uyarıları gönderme
 
@@ -38,7 +39,7 @@ Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizm
 
 ## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Azure portal Pagerharcı kullanarak uyarı oluşturma
 ### <a name="for-a-new-action-group"></a>Yeni bir eylem grubu için:
-1. [Azure Portal kullanarak yeni bir eylem grubu için hizmet durumu bildiriminde uyarı oluşturma](../azure-monitor/platform/alerts-activity-log-service-notifications.md)bölümünde 1 ile 8 arasındaki adımları izleyin.
+1. [Azure Portal kullanarak yeni bir eylem grubu için hizmet durumu bildiriminde uyarı oluşturma](./alerts-activity-log-service-notifications-portal.md)bölümünde 1 ile 8 arasındaki adımları izleyin.
 
 1. **Eylem**listesinde tanımlayın:
 
@@ -86,5 +87,5 @@ Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizm
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin.
 - [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
-- [Hizmet durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
+- [Hizmet durumu bildirimleri](./service-notifications.md)hakkında bilgi edinin.
 - [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.

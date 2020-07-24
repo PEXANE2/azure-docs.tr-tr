@@ -24,7 +24,7 @@
 - name: Nasıl yapılır
   items:
     - name: Hizmet durumu olayları için uyarıları yapılandırma
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: Azure portalını kullanarak hizmet durumu bildirimlerini görüntüleme
       href: service-notifications.md
     - name: Web kancası aracılığıyla dış sistemlere uyarı gönderme

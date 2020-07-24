@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ec516ac1cd9c2a6201bfc77bd1169bcd8ea83e44
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091513"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Yakınlık yerleştirme gruplarında çalışan Azure sanal makinelerini başka bir bölgeye çoğaltma
 
@@ -22,7 +22,7 @@ Bu makalede, bir yakınlık yerleştirme grubunda çalışan sanal makinelerin i
 
 Tipik bir senaryoda, uygulamanızın çeşitli katmanları arasındaki ağ gecikmesini önlemek için sanal makineleriniz bir yakınlık yerleşimi grubunda çalışıyor olabilir. Bu, uygulamanızın en iyi ağ gecikmesini sağlayabildiği sürece, herhangi bir bölge düzeyindeki başarısızlık için Site Recovery kullanarak bu uygulamaları korumak istersiniz. Site Recovery, verileri bir bölgeden başka bir Azure bölgesine çoğaltır ve yük devretme durumunda makineleri olağanüstü durum kurtarma bölgesinde getirir.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 - En iyi çaba, sanal makineleri bir yakınlık yerleşimi grubuna devretmek/yeniden çalıştırmanız olacaktır. Ancak, VM yük devretme/yeniden çalışma sırasında yakınlık yerleşimi içinde getirilemeiyorsa, yük devretme/yeniden çalışma işlemi devam eder ve sanal makineler bir yakınlık yerleşimi grubu dışında oluşturulur.
 -  Bir kullanılabilirlik kümesi bir yakınlık yerleşimi grubuna sabitlenmiştir ve kullanılabilirlik kümesindeki yük devretme/yeniden çalışma VM 'Leri için bir ayırma kısıtlaması varsa, sanal makineler hem kullanılabilirlik kümesi hem de yakınlık yerleşimi grubu dışında oluşturulur.
@@ -68,7 +68,7 @@ $datadiskId1 = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
 $RecoveryReplicaDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
 $RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
 
-$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id ` -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
 #Create a list of disk replication configuration objects for the disks of the virtual machine that are to be replicated.
 

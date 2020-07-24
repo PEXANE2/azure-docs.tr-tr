@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 2aadc5806f0c5c610dc28b32039ca944af87ab13
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-java
+ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091462"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme
 Azure kaynakları için Yönetilen kimlikler, Azure Spring Cloud uygulamanız gibi bir Azure kaynağına Azure Active Directory otomatik olarak yönetilen bir kimlik sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.
