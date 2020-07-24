@@ -1,5 +1,5 @@
 ---
-title: VM Uzantısı yüklemesini kısıtlamak için Azure Ilkesini kullanma
+title: VM Uzantısı yüklemesini (Windows) kısıtlamak için Azure Ilkesini kullanma
 description: Uzantı dağıtımlarını kısıtlamak için Azure Ilkesini kullanın.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e4959c9dca909afde4bf6d351d79ecca1e4022a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919791"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069759"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Windows VM 'lerinde uzantıları yüklemeyi kısıtlamak için Azure Ilkesini kullanma
 
@@ -98,7 +98,7 @@ Aşağıdaki. json dosyasını kopyalayıp dosyaya yapıştırın.
 
 ## <a name="create-the-policy"></a>İlkeyi oluşturma
 
-İlke tanımı, kullanmak istediğiniz yapılandırmayı depolamak için kullanılan bir nesnedir. İlke tanımı, ilkeyi tanımlamak için kuralları ve parametreler dosyalarını kullanır. [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) cmdlet 'ini kullanarak bir ilke tanımı oluşturun.
+İlke tanımı, kullanmak istediğiniz yapılandırmayı depolamak için kullanılan bir nesnedir. İlke tanımı, ilkeyi tanımlamak için kuralları ve parametreler dosyalarını kullanır. [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition) cmdlet 'ini kullanarak bir ilke tanımı oluşturun.
 
  İlke kuralları ve parametreleri, oluşturduğunuz ve bulut kabuğunuzda. JSON dosyaları olarak depoladığınız dosyalardır.
 
@@ -117,9 +117,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>İlke atama
 
-Bu örnek, ilkeyi [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment)kullanarak bir kaynak grubuna atar. **Myresourcegroup** kaynak grubunda oluşturulan herhangi bir sanal makıne, VM erişim Aracısı veya özel Betik uzantıları 'nı yükleyemeyecektir. 
+Bu örnek, ilkeyi [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment)kullanarak bir kaynak grubuna atar. **Myresourcegroup** kaynak grubunda oluşturulan herhangi bir sanal makıne, VM erişim Aracısı veya özel Betik uzantıları 'nı yükleyemeyecektir. 
 
-[Get-AzSubscription | kullanın ](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription)ABONELIK kimliğinizi örnekteki bir yerde kullanmak üzere almak için biçim tablosu cmdlet 'i.
+[Get-AzSubscription | kullanın ](/powershell/module/az.accounts/get-azsubscription)ABONELIK kimliğinizi örnekteki bir yerde kullanmak üzere almak için biçim tablosu cmdlet 'i.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"

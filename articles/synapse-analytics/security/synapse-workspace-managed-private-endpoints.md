@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ac62b1706749c4708d804dd2102ad3f2a7132a16
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85193660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070101"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>SYNAPSE yönetilen özel uç noktaları (Önizleme)
 
@@ -21,19 +21,19 @@ Bu makalede, Azure SYNAPSE Analytics 'te yönetilen özel uç noktalar açıklan
 
 ## <a name="managed-private-endpoints"></a>Yönetilen özel uç noktalar
 
-Yönetilen özel uç noktalar, Azure kaynaklarına özel bir bağlantı oluşturan yönetilen çalışma alanı sanal ağı 'nda oluşturulan özel uç noktalardır. Azure SYNAPSE, bu özel uç noktaları sizin adınıza yönetir.
+Yönetilen özel uç noktalar, Azure kaynaklarına özel bir bağlantı kurmak Microsoft Azure Sanal Ağ yönetilen çalışma alanında oluşturulan özel uç noktalardır. Azure SYNAPSE, bu özel uç noktaları sizin adınıza yönetir.
 
-Azure SYNAPSE özel bağlantıları destekler. Özel bağlantı, Azure hizmetlerine (Azure depolama, Azure Cosmos DB ve Azure SQL veri ambarı gibi) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine güvenli bir şekilde erişmenizi sağlar.
+Azure SYNAPSE özel bağlantıları destekler. Özel bağlantı, Azure hizmetlerine (Azure depolama, Azure Cosmos DB ve Azure SQL veri ambarı gibi) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine Azure sanal ağınızdan güvenli bir şekilde erişmenizi sağlar.
 
-Özel bir bağlantı kullandığınızda, VNet ve çalışma alanınız arasındaki trafik tamamen Microsoft omurga ağı üzerinden geçer. Özel bağlantı, veri savunma risklerine karşı koruma sağlar. Özel bir uç nokta oluşturarak kaynağa özel bir bağlantı kurarsınız.
+Özel bir bağlantı kullandığınızda, sanal ağınız ile çalışma alanınız arasındaki trafik tamamen Microsoft omurga ağı üzerinden geçer. Özel bağlantı, veri savunma risklerine karşı koruma sağlar. Özel bir uç nokta oluşturarak kaynağa özel bir bağlantı kurarsınız.
 
 Özel uç nokta, hizmeti sanal ağınıza etkin bir şekilde taşımak için sanal ağınızdan özel bir IP adresi kullanır. Özel uç noktalar Azure 'daki belirli bir kaynakla eşlenir ve hizmetin tamamı değildir. Müşteriler, şirket tarafından onaylanan belirli bir kaynakla bağlantıyı sınırlayabilir. [Özel bağlantılar ve özel uç noktalar](https://docs.microsoft.com/azure/private-link/)hakkında daha fazla bilgi edinin.
 
 >[!IMPORTANT]
->Yönetilen özel uç noktalar yalnızca yönetilen bir çalışma alanı VNet 'i olan Azure SYNAPSE çalışma alanlarında desteklenir.
+>Yönetilen özel uç noktalar yalnızca yönetilen çalışma alanı sanal ağı olan Azure SYNAPSE çalışma alanlarında desteklenir.
 
 >[!NOTE]
->Yönetilen özel uç noktalar hariç yönetilen çalışma alanı VNet 'ten giden tüm trafik gelecekte engellenir. Çalışma alanı dışındaki tüm Azure veri kaynaklarınıza bağlanmak için yönetilen özel uç noktalar oluşturmanız önerilir. 
+>Yönetilen özel uç noktaları hariç yönetilen çalışma alanı sanal ağından gelen tüm giden trafik gelecekte engellenir. Çalışma alanı dışındaki tüm Azure veri kaynaklarınıza bağlanmak için yönetilen özel uç noktalar oluşturmanız önerilir. 
 
 Azure SYNAPSE 'de yönetilen özel uç nokta oluşturduğunuzda bir "bekleyen" durumunda özel bir uç nokta bağlantısı oluşturulur. Bir onay iş akışı başlatılır. Özel bağlantı kaynağı sahibi bağlantıyı onaylaması veya reddetmekten sorumludur.
 
@@ -43,7 +43,7 @@ Yalnızca onaylanan bir durumdaki yönetilen özel uç nokta, belirli bir özel 
 
 ## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>SQL havuzu ve isteğe bağlı SQL için yönetilen özel uç noktalar
 
-SQL havuzu ve isteğe bağlı SQL, Azure SYNAPSE çalışma alanınızda analitik yeteneklerdir. Bu yetenekler, [yönetilen çalışma alanı VNET](./synapse-workspace-managed-vnet.md)'e dağıtılan çok kiracılı altyapıyı kullanır.
+SQL havuzu ve isteğe bağlı SQL, Azure SYNAPSE çalışma alanınızda analitik yeteneklerdir. Bu yetenekler, [yönetilen çalışma alanı sanal ağına](./synapse-workspace-managed-vnet.md)dağıtılmamış çok kiracılı altyapıyı kullanır.
 
 Bir çalışma alanı oluşturulduğunda Azure SYNAPSE, SQL havuzunda ve bu çalışma alanında SQL isteğe bağlı olarak iki yönetilen özel uç nokta oluşturur. 
 

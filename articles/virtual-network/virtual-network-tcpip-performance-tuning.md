@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068518"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM 'Leri için TCP/IP performans ayarı
 
@@ -125,9 +125,8 @@ Azure için TCP/üst sınırı 1.350 bayt ve tünel arabirimi MTU değerini 1.40
 
 Ağ gecikmesi, fiber optik bir ağ üzerinden ışık hızına tabidir. TCP 'nin ağ aktarım hızı, iki ağ aygıtı arasındaki gidiş dönüş süresi (RTT) ile de etkili bir şekilde yönetilir.
 
-| | | | |
-|-|-|-|-|
-|**Yolu**|**Uzaklık**|**Tek yönlü saat**|**RTT**|
+| Yol | Uzaklık | Tek yönlü saat | RTT |
+| ----- | -------- | ------------ | --- |
 |New York-San Francisco|4.148 km|21 MS|42 ms|
 |New York-Londra|5.585 km|28 MS|56 MS|
 |Yeni York-Sidney|15.993 km|80 MS|160 ms|
@@ -162,9 +161,8 @@ Tek bir TCP bağlantısının en yüksek aktarım hızını hesaplamak için aş
 
 Bu tabloda tek bir TCP bağlantısının en fazla megabayt/saniye başına aktarım hızı gösterilmektedir. (Okunabilirlik için, ölçü birimi için megabayt kullanılır.)
 
-| | | | |
-|-|-|-|-|
-|**TCP pencere boyutu (bayt)**|**RTT gecikmesi (MS)**|**Maksimum megabayt/saniye üretilen iş**|**Maksimum megabit/saniye işleme**|
+| TCP pencere boyutu (bayt) | RTT gecikmesi (MS) | Maksimum megabayt/saniye üretilen iş | Maksimum megabit/saniye işleme |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|1|65,54|524,29|
 |65.535|30|2,18|17,48|
 |65.535|60|1.09|8,74|
@@ -179,9 +177,8 @@ TCP pencere ölçeklendirmesi, bir onaylama gerekmeden önce daha fazla verinin 
 
 Bu tabloda bu ilişkiler gösterilmektedir:
 
-| | | | |
-|-|-|-|-|
-|**TCP pencere boyutu (bayt)**|**RTT gecikmesi (MS)**|**Maksimum megabayt/saniye üretilen iş**|**Maksimum megabit/saniye işleme**|
+| TCP pencere boyutu (bayt) | RTT gecikmesi (MS) | Maksimum megabayt/saniye üretilen iş | Maksimum megabit/saniye işleme |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|30|2,18|17,48|
 |131.070|30|4,37|34,95|
 |262.140|30|8,74|69,91|
@@ -221,10 +218,9 @@ Set-NetTCPSetting
 
 Bunlar için geçerli TCP ayarları şunlardır `AutoTuningLevel` :
 
-| | | | |
-|-|-|-|-|
-|**Oto Tuninglevel**|**Ölçeklendirme faktörü**|**Ölçek çarpanı**|**<br/>Maksimum pencere boyutunu hesaplama formülü**|
-|Devre dışı|Hiçbiri|Hiçbiri|Pencere boyutu|
+| Oto Tuninglevel | Ölçeklendirme faktörü | Ölçek çarpanı | Formülü<br/>maksimum pencere boyutunu hesapla |
+| --------------- | -------------- | ------------------ | -------------------------------------------- |
+|Devre dışı|Yok|Yok|Pencere boyutu|
 |Kısıtlı|4|2 ^ 4|Pencere boyutu * (2 ^ 4)|
 |Yüksek oranda kısıtlanmış|2|2 ^ 2|Pencere boyutu * (2 ^ 2)|
 |Normal|8|2 ^ 8|Pencere boyutu * (2 ^ 8)|

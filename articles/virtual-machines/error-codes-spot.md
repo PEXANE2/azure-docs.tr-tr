@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676582"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069798"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>Spot VM 'Ler ve ölçek kümeleri için hata iletileri
 
@@ -34,7 +35,6 @@ Spot VM 'Leri ve ölçek kümelerini kullanırken alacağınız bazı olası hat
 | MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  En yüksek fiyat yalnızca Azure spot sanal makineler için desteklenir. | Daha fazla bilgi için bkz. [sanal makineleri spot](./linux/spot-vms.md). |
 | MoveResourcesWithAzureSpotVMNotSupported  |  Kaynakları taşıma isteği bir Azure spot sanal makinesi içerir. Bu şu anda desteklenmiyor. Lütfen sanal makine kimlikleri için hata ayrıntılarını kontrol edin. | Spot VM 'Leri taşıyamazsınız. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  Kaynakları taşıma isteği bir Azure spot sanal makine ölçek kümesi içerir. Bu şu anda desteklenmiyor. Lütfen sanal makine ölçek kümesi kimlikleri için hata ayrıntılarını kontrol edin. | Nokta ölçeği kümesi örneklerini taşıyamazsınız. |
-| EphemeralOSDisksNotSupportedForSpotVMs | Kısa ömürlü işletim sistemi diskleri, spot VM 'Ler için desteklenmez. | Spot VM 'niz için normal bir işletim sistemi diski kullanın. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | Azure spot sanal makinesi, VM düzenleme modu ile sanal makine ölçek kümesinde desteklenmez. | Spot örnekleri kullanmak için Orchestration modunu sanal makine ölçek kümesine ayarlayın. |
 
 

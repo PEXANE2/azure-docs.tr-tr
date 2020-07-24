@@ -7,11 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80810239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067975"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway özellikleri
 
@@ -23,7 +24,7 @@ Application Gateway aşağıdaki özellikleri içerir:
 
 - [Güvenli Yuva Katmanı (SSL/TLS) sonlandırma](#secure-sockets-layer-ssltls-termination)
 - [Otomatik ölçeklendirme](#autoscaling)
-- [Bölge artıklığı](#zone-redundancy)
+- [Bölge yedekliliği](#zone-redundancy)
 - [Statik VIP](#static-vip)
 - [Web Uygulaması Güvenlik Duvarı](#web-application-firewall)
 - [AKS için Giriş Denetleyicisi](#ingress-controller-for-aks)
@@ -34,7 +35,7 @@ Application Gateway aşağıdaki özellikleri içerir:
 - [Websocket ve HTTP/2 trafiği](#websocket-and-http2-traffic)
 - [Bağlantı boşaltma](#connection-draining)
 - [Özel hata sayfaları](#custom-error-pages)
-- [HTTP üst bilgilerini yeniden üretme](#rewrite-http-headers)
+- [HTTP üstbilgilerini ve URL 'YI yeniden yaz](#rewrite-http-headers-and-url)
 - [Boyutlandırma](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>Güvenli Yuva Katmanı (SSL/TLS) sonlandırma
@@ -49,7 +50,7 @@ Application Gateway Standard_v2 otomatik ölçeklendirmeyi destekler ve değişe
 
 Application Gateway Standard_v2 özellikleri hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md).
 
-## <a name="zone-redundancy"></a>Bölge artıklığı
+## <a name="zone-redundancy"></a>Bölge yedekliliği
 
 Standard_v2 Application Gateway birden fazla Kullanılabilirlik Alanları yayarak, daha iyi hata dayanıklılığı sunarak her bölgede ayrı uygulama ağ geçitleri sağlama ihtiyacını ortadan kaldırabilir.
 
@@ -82,13 +83,13 @@ Daha fazla bilgi için bkz. [URL yolu tabanlı yönlendirmeye genel bakış](url
 
 ## <a name="multiple-site-hosting"></a>Birden çok site barındırma
 
-Birden çok site barındırma, aynı uygulama ağ geçidi örneğinde birden fazla web sitesi yapılandırmanızı sağlar. Bu özellik, bir Application Gateway (en iyi performans için) en fazla 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi kendi havuzuna yönlendirilebilir. Örneğin, uygulama ağ geçidi ContosoServerPool ve FabrikamServerPool adlı iki sunucu havuzundan `contoso.com` ve `fabrikam.com` için trafik sunabilir.
+Application Gateway ile, aynı uygulama ağ geçidinde birden fazla Web uygulaması için konak adına veya etki alanı adına göre yönlendirmeyi yapılandırabilirsiniz. Bir Application Gateway 'e en fazla 100 + web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin, üç etki alanı, contoso.com, fabrikam.com ve adatum.com, uygulama ağ geçidinin IP adresine işaret edin. Üç adet çok siteli dinleyici oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız. 
 
-`http://contoso.com` için istekler ContosoServerPool’a ve `http://fabrikam.com` için istekler FabrikamServerPool’a yönlendirilir.
+İstekleri `http://contoso.com` ContosoServerPool 'a yönlendirilir, `http://fabrikam.com` FabrikamServerPool 'a yönlendirilir ve bu şekilde devam eder.
 
-Benzer şekilde, aynı üst etki alanının iki alt etki alanı, aynı uygulama ağ geçidi dağıtımında barındırılabilir. Alt etki alanı kullanım örnekleri, tek bir uygulama ağ geçidi dağıtımında barındırılan `http://blog.contoso.com` ve `http://app.contoso.com` öğelerini içerebilir.
+Benzer şekilde, aynı üst etki alanının iki alt etki alanı, aynı uygulama ağ geçidi dağıtımında barındırılabilir. Alt etki alanı kullanım örnekleri, tek bir uygulama ağ geçidi dağıtımında barındırılan `http://blog.contoso.com` ve `http://app.contoso.com` öğelerini içerebilir. Daha fazla bilgi için bkz. [birden çok site barındırma Application Gateway](multiple-site-overview.md).
 
-Daha fazla bilgi için bkz. [birden çok site barındırma Application Gateway](multiple-site-overview.md).
+Ayrıca, çok siteli bir dinleyicide joker karakter ana bilgisayar adlarını ve dinleyici başına en fazla 5 ana bilgisayar adını tanımlayabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları (Önizleme)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
 ## <a name="redirection"></a>Yönlendirme
 
@@ -130,7 +131,7 @@ Application Gateway, varsayılan hata sayfalarını göstermek yerine özel hata
 
 Daha fazla bilgi için bkz. [özel hatalar](custom-error.md).
 
-## <a name="rewrite-http-headers"></a>HTTP üst bilgilerini yeniden üretme
+## <a name="rewrite-http-headers-and-url"></a>HTTP üstbilgilerini ve URL 'YI yeniden yaz
 
 HTTP üstbilgileri, istemci ve sunucunun istek veya Yanıt ile ek bilgi geçmesine izin verir. Bu HTTP üstbilgilerini yeniden yazmak, aşağıdaki gibi çeşitli önemli senaryolar gerçekleştirmenize yardımcı olur:
 
@@ -138,9 +139,11 @@ HTTP üstbilgileri, istemci ve sunucunun istek veya Yanıt ile ek bilgi geçmesi
 - Hassas bilgileri açığa çıkartan yanıt üst bilgisi alanlarını kaldırma.
 - Üst bilgiler Için X-Iletilen bağlantı noktası bilgilerini yakdırın.
 
-Application Gateway, HTTP isteği ve yanıt üst bilgilerini ekleme, kaldırma veya güncelleştirme özelliğini destekler, ancak istek ve yanıt paketleri istemci ile arka uç havuzları arasında taşınır. Ayrıca, belirtilen üstbilgilerin yalnızca belirli koşullar karşılandığında yeniden yazılabilir olmasını sağlamak için koşullar ekleme özelliği de sağlar.
+Application Gateway ve WAF v2 SKU, HTTP isteği ve yanıt üst bilgilerini ekleme, kaldırma veya güncelleştirme özelliğini destekler, ancak istek ve yanıt paketleri istemci ile arka uç havuzları arasında hareket eder. Ayrıca, URL 'Leri, sorgu dizesi parametrelerini ve ana bilgisayar adını da yeniden yazabilirsiniz. URL yeniden yazma ve URL yol tabanlı yönlendirme sayesinde, yol eşlemesini yeniden değerlendir seçeneğini kullanarak, istekleri orijinal yola veya yeniden yazma yoluna göre arka uç havuzlarından birine yönlendirmenizi seçebilirsiniz. 
 
-Daha fazla bilgi için bkz. [HTTP üstbilgilerini yeniden yazma](rewrite-http-headers.md).
+Ayrıca, belirtilen üstbilgilerin veya URL 'nin yalnızca belirli koşullar karşılandığında yeniden yazılabilir olmasını sağlamak için koşullar ekleme özelliği de sağlar. Bu koşullar istek ve yanıt bilgilerini temel alır.
+
+Daha fazla bilgi için bkz. [http üst bilgilerini ve URL 'Yi yeniden yazma](rewrite-http-headers-url.md).
 
 ## <a name="sizing"></a>Boyutlandırma
 
@@ -154,8 +157,8 @@ Aşağıdaki tabloda SSL boşaltması etkin olan her bir Application Gateway v1 
 
 | Ortalama arka uç sayfa yanıt boyutu | Küçük | Orta | Büyük |
 | --- | --- | --- | --- |
-| 6 KB |7,5 Mbps |13 Mbps |50 Mbps |
-| 100 KB |35 Mbps |100 Mbps |200 Mb/sn |
+| 6 KB |7,5 Mbps |13 Mbps |50 Mb/sn |
+| 100 KB |35 Mbps |100 Mb/sn |200 Mb/sn |
 
 > [!NOTE]
 > Bu değerler bir uygulama ağ geçidi verimliliği için yaklaşık değerlerdir. Gerçek verimlilik; ortalama sayfa boyutu, arka uç örneklerinin konumu ve bir sayfaya hizmet etmek için işleme süresi gibi çeşitli ortam ayrıntılarına bağlıdır. Tam performans rakamlarına ulaşmak için kendi testlerinizi çalıştırmanız gerekir. Bu değerler yalnızca kapasite planlama konusunda yardımcı olmak için verilmiştir.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517867"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068033"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -286,7 +286,7 @@ Yeniden yazma kurallarını kullanarak, HTTP (S) isteği ve yanıt üst bilgiler
 Üst bilgiler ve URL parametreleri statik değerlere veya diğer üst bilgilere ve sunucu değişkenlerine ayarlanabilir. Bu, istemci IP adreslerini ayıklama, arka uç hakkındaki hassas bilgileri kaldırma, daha fazla güvenlik ekleme vb. gibi önemli kullanım durumlarının sağlanmasına yardımcı olur.
 Daha fazla bilgi için bkz.
 
- - [HTTP üstbilgilerini yeniden yazma genel bakış](rewrite-http-headers-url.md)
+ - [HTTP üstbilgilerini ve URL genel bakış 'ı yeniden yazma](rewrite-http-headers-url.md)
  - [HTTP üstbilgisini yeniden yazmayı yapılandırma](rewrite-http-headers-portal.md)
  - [URL yeniden yazmayı yapılandırma](rewrite-url-portal.md)
 

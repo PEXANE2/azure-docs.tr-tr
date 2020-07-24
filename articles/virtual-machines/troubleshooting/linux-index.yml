@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: f19ce0f1e088d2360f4afb2925d2a5d67b4c0252
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: b78ce7baf60431e0f9ee1b1218d2d57019b35359
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77920850"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87068971"
 landingContent:
 - title: Dağıtım sorunlarını giderme
   linkLists:
@@ -24,39 +24,39 @@ landingContent:
     - text: Azure’da VM’leri oluştururken, yeniden başlatırken ve yeniden boyutlandırırken ortaya çıkan ayırma hatalarında sorun giderme
       url: allocation-failure.md
     - text: Azure’da yeni bir sanal makine oluştururken ortaya çıkan dağıtım sorunlarını giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm
+      url: ./troubleshoot-deployment-new-vm-linux.md
     - text: Geçersiz şablon hatalarını giderme
       url: ../../azure-resource-manager/templates/error-invalid-template.md
     - text: Kullanılamayan SKU’larla ilgili hataları giderme
-      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+      url: ../../azure-resource-manager/templates/error-sku-not-available.md
 - title: VM dağıtım kılavuzu
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure’da onaylı olmayan bir görüntü hazırlama ve karşıya yükleme
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic
+      url: ../linux/create-upload-generic.md
     - text: Azure’da genelleştirilmiş bir VM’nin görüntüsünü oluşturma veya kopyalama
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/capture-image
+      url: ../linux/capture-image.md
 - title: Sanal makineme bağlanamıyorum
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure’daki Linux sanal makineleriyle ilgili sorunları gidermek için önyükleme tanılamasını kullanma
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics
+      url: ./boot-diagnostics.md
     - text: Azure VM’lerinde yerel Linux parolasını sıfırlama
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/reset-password
+      url: ./reset-password.md
     - text: Uzak sunucu sorunlarını PowerShell veya CLI kullanarak gidermek için Uzaktan Erişimi sıfırlama
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection
+      url: ./troubleshoot-ssh-connection.md
     - text: Yaygın olarak karşılaşılan SSH bağlantı sorunlarını tanılamak ve gidermek için hızlı adımlar
-      url: https://azure.microsoft.com/documentation/articles/virtual-machines-troubleshoot-ssh-connections/
+      url: ./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json
 - title: Parola sıfırlama
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: VM Erişimi Uzantısını kullanarak SSH anahtarını veya parolayı sıfırlama
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#ways-to-use-the-vmaccess-extension
+      url: ../extensions/vmaccess.md#ways-to-use-the-vmaccess-extension
     - text: Azure Linux VM yerel parolasını çevrimdışı yöntemle sıfırlama
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/reset-password
+      url: ./reset-password.md
 - title: Sanal makine önyüklenemiyor
   linkLists:
   - linkListType: how-to-guide
@@ -64,9 +64,9 @@ landingContent:
     - text: Belirli çekirdek değişiklikleri uyguladıktan sonra ortaya çıkan VM önyükleme hatalarını çözme
       url: https://support.microsoft.com/help/4091524/how-recovery-azure-linux-vm-from-kernel-related-boot-related-issues
     - text: Önyükleme yapılandırma Modunu değiştirmek için GRUB’a erişmenizi sağlayan Seri konsolu kullanma
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode
+      url: ./serial-console-grub-single-user-mode.md
     - text: Azure’daki Linux sanal makineleriyle ilgili sorunları gidermek için önyükleme tanılamasını kullanma
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics
+      url: ./boot-diagnostics.md
     - text: FSTAB hatalarını ve sorunu hafifletme adımlarını anlama
       url: https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors
 - title: VM başlatılamıyor veya durdurulamıyor
@@ -74,9 +74,9 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Azure'da Windows sanal makinesi dağıtma sorunlarını giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+      url: ./restart-resize-error-troubleshooting.md
     - text: Ayırma sorunlarını giderme (Klasik dağıtım yöntemi)
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+      url: ./allocation-failure-classic.md
 - title: Beklenmeyen VM yeniden başlatma İşlemleri
   linkLists:
   - linkListType: how-to-guide
@@ -88,52 +88,52 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Sanal Diskler hakkında SSS
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks
+      url: ../linux/faq-for-disks.md
     - text: VM yeniden boyutlandırma sırasında ortaya çıkan ayırma hatalarını giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+      url: ./allocation-failure.md
     - text: VM’nizde geçici sürücüyü anlama
-      url: https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux#temporary-disk
+      url: ../linux/managed-disks-overview.md#temporary-disk
     - text: Azure Yönetilen Disklere genel bakış
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/managed-disks-overview
+      url: ../linux/managed-disks-overview.md
     - text: Azure VM diskleri ve yönetilen ve yönetilmeyen premium diskler hakkında SSS
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks
+      url: ../linux/convert-unmanaged-to-managed-disks.md
 - title: Disk şifreleme sorunları
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Linux VM’lerinde Azure disk şifrelemesi senaryoları
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux
+      url: ../linux/disk-encryption-linux.md
     - text: Disk şifrelemesi sorunlarını giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-troubleshooting
+      url: ../linux/disk-encryption-troubleshooting.md
     - text: Azure disk şifrelemesi hakkında SSS
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-faq
+      url: ../linux/disk-encryption-faq.md
 - title: VM performans sorunları
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure VM performans sorunlarını giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-performance-virtual-machine-linux-windows
+      url: ./troubleshoot-performance-virtual-machine-linux-windows.md
     - text: Azure VM’leri için performans tanılamaları
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics
+      url: ./performance-diagnostics.md
 - title: VM Uzantısı sorunları
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Uzantılar için genel sorun giderme adımları
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+      url: ../extensions/troubleshoot.md
     - text: Uzantıyı sanal makinenize yükleme
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#installing-the-extension-in-your-vm
+      url: ../extensions/diagnostics-linux.md#installing-the-extension-in-your-vm
     - text: Windows için Özel Betik Uzantısı
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+      url: ../extensions/custom-script-windows.md#tips-and-tricks
 - title: Yedekleme ve geri yükleme
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure Portal’da Azure VM yedekleme sorunlarını giderme
-      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot
+      url: ../../backup/backup-azure-vms-troubleshoot.md
     - text: Azure Backup Sunucusu sorunlarını giderme
-      url: https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot
+      url: ../../backup/backup-azure-mabs-troubleshoot.md
     - text: Azure Backup özelliklerini gözden geçirme
-      url: https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup
+      url: ../../backup/backup-overview.md
     - text: Azure sanal makinelerinin Kurtarma Hizmetleri kasalarına nasıl yedeklendiğini anlama
-      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm
+      url: ../../backup/backup-azure-vms-first-look-arm.md

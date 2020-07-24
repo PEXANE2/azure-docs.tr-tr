@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982981"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068696"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure 'da bir dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP yoks/SCS örneği oluşturma
 
@@ -31,7 +32,7 @@ Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirli�
 
 Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğüm) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi oluşabilecek hata sayısını hesaplar ve uygulamalar ve hizmetler sağlamak için sağlıklı bir kümeyi sürdürür. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede açıklanan görevlere başlamadan önce şu makaleyi gözden geçirin:
 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
@@ -113,7 +114,7 @@ Depolama Alanları Doğrudan, genişleme dosya paylaşımında paylaşılan disk
 Depolama Alanları Doğrudan seçerken şu kullanım örneklerini göz önünde bulundurun:
 
 - Depolama Alanları Doğrudan kümesini oluşturmak için kullanılan sanal makinelerin bir Azure kullanılabilirlik kümesinde dağıtılması gerekir.
-- Depolama Alanları Doğrudan kümesinin olağanüstü durum kurtarması için [Azure Site Recovery Hizmetleri](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)' ni kullanabilirsiniz.
+- Depolama Alanları Doğrudan kümesinin olağanüstü durum kurtarması için [Azure Site Recovery Hizmetleri](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)' ni kullanabilirsiniz.
 - Farklı Azure Kullanılabilirlik Alanları depolama alanı doğrudan kümesini uzatmak desteklenmez.
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 'da genişleme dosya paylaşımları için SAP önkoşulları

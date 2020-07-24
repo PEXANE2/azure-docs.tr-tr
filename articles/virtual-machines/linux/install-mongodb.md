@@ -11,11 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 953e474eb5d160b38981d61fbfda051f1da9f968
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944882"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069586"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM 'de MongoDB 'yi yüklemek ve yapılandırmak
 
@@ -213,5 +214,4 @@ Bu örnekler, geliştirme amacıyla çekirdek MongoDB ortamını dağıtır. Ort
 
 Şablonları kullanarak oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 
-Azure Resource Manager şablonlar, VM 'lerinizde betikleri indirmek ve yürütmek için özel betik uzantısını kullanır. Daha fazla bilgi için bkz. [Azure Özel Betik uzantısı 'nı Linux sanal makineleri Ile kullanma](extensions-customscript.md).
-
+Azure Resource Manager şablonlar, VM 'lerinizde betikleri indirmek ve yürütmek için özel betik uzantısını kullanır. Daha fazla bilgi için bkz. [Azure Özel Betik uzantısı 'nı Linux sanal makineleri Ile kullanma](../extensions/custom-script-linux.md).

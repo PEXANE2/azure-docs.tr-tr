@@ -6,18 +6,14 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 1b537e57edd777d78ce40d0ac4c5c6a7acca7659
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206760"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068209"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
-
-> [!NOTE]
-> Şu anda ASP.NET Core, geçerli kullanıcıyı kimlik doğrulama/yetkilendirme özelliğiyle doldurmayı desteklememektedir.
->
 
 Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sunarak, Web uygulamanızda, yeniden derlenen API 'de ve mobil arka uçta ve ayrıca [Azure işlevlerinde](../azure-functions/functions-overview.md)en az veya hiç kod yazmadan kullanıcılara oturum açabilir ve verilere erişebilirsiniz. Bu makalede, App Service uygulamanızın kimlik doğrulama ve yetkilendirme işlemlerini basitleştirmeye nasıl yardımcı olduğu açıklanır.
 
@@ -28,6 +24,9 @@ Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web b
 >
 > App Service tarafından barındırılan ASP.NET Core 2,1 ve üzeri sürümleri, bu son değişiklik için zaten düzeltme eki uygulanmış ve Chrome 80 ve daha eski tarayıcıları uygun şekilde işleyecek. Ayrıca, ASP.NET Framework 4.7.2 için de aynı düzeltme eki, Ocak 2020 boyunca App Service örneklerine dağıtılır. Uygulamanızın düzeltme ekini aldığını nasıl öğrendiklerini de içeren daha fazla bilgi için, [Azure App Service SameSite tanımlama bilgisi güncelleştirmesi](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)' ne bakın.
 >
+
+> [!NOTE]
+> Kimlik doğrulama/yetkilendirme özelliği bazen "kolay kimlik doğrulaması" olarak da adlandırılır.
 
 Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobil uygulamalar Için Kullanıcı kimlik doğrulaması ve yetkilendirme](../app-service-mobile/app-service-mobile-auth.md).
 
@@ -53,6 +52,10 @@ Tüm dil çerçeveleri için App Service, gelen belirteçteki talepleri (kimliğ
 [Azure işlevleri](../azure-functions/functions-overview.md)için, `ClaimsPrincipal.Current` .NET kodu için doldurulmamış, ancak istek üst bilgilerinde kullanıcı taleplerini bulabilir veya istek `ClaimsPrincipal` bağlamından ya da bir bağlama parametresi aracılığıyla nesne alabilirsiniz. Daha fazla bilgi için bkz. [istemci kimlikleriyle çalışma](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
 Daha fazla bilgi için bkz. [Kullanıcı taleplerine erişme](app-service-authentication-how-to.md#access-user-claims).
+
+> [!NOTE]
+> Şu anda ASP.NET Core, geçerli kullanıcıyı kimlik doğrulama/yetkilendirme özelliğiyle doldurmayı desteklememektedir. Ancak, bu boşluğun doldurulmasına yardımcı olmak için bazı [üçüncü taraf, açık kaynaklı ara yazılım bileşenleri](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) bulunur.
+>
 
 ### <a name="token-store"></a>Belirteç deposu
 
@@ -134,10 +137,6 @@ Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gere
 
 > [!CAUTION]
 > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi genel kullanıma açık bir giriş sayfası gerektiren uygulamalar için istenmeyebilir.
-
-> [!NOTE]
-> Kimlik doğrulama/yetkilendirme daha önce kolay kimlik doğrulaması olarak bilinirdi.
->
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 

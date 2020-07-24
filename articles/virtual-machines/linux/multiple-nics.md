@@ -8,11 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 054462834d2712b8db10b40f2d7befdf330eec48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069501"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Azure 'da birden çok ağ arabirim kartı ile Linux sanal makinesi oluşturma
 
@@ -166,7 +167,7 @@ Azure Resource Manager şablonlar, ortamınızı tanımlamak için bildirim teme
 }
 ```
 
-[ *Kopyayı*kullanarak birden çok örnek oluşturma](../../resource-group-create-multiple.md)hakkında daha fazla bilgi edinin. 
+[ *Kopyayı*kullanarak birden çok örnek oluşturma](../../azure-resource-manager/templates/copy-resources.md)hakkında daha fazla bilgi edinin. 
 
 Ayrıca `copyIndex()` , bir kaynak adına bir sayı eklemek için bir de kullanabilirsiniz. bu sayede `myNic1` ,, `myNic2` vb. oluşturabilirsiniz. Aşağıda dizin değeri ekleme örneği gösterilmektedir:
 

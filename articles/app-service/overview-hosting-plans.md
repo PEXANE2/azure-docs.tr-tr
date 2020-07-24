@@ -6,11 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068188"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service planına genel bakış
 
@@ -78,8 +79,10 @@ Kullanabileceğiniz App Service Özellikleri (özel etki alanları, TLS/SSL sert
 
 > [!NOTE]
 > App Service başka bir Azure hizmeti ile tümleştirirseniz, bu diğer hizmetlerden gelen ücretleri dikkate almanız gerekebilir. Örneğin, uygulamanızı coğrafi olarak ölçeklendirmek için Azure Traffic Manager kullanıyorsanız, Azure Traffic Manager kullanımınıza göre de ücretlendirilecek. Azure 'da hizmetler arası maliyetlerinizi tahmin etmek için bkz. [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/). 
->
->
+
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
+
+[!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Uygulamamın daha fazla özelliğe veya özelliğe ihtiyacı varsa ne olacak?
 
@@ -97,7 +100,7 @@ Uygulamanız diğer uygulamalarla aynı App Service planalıyorsa, işlem kaynak
 
 App Service planınız için ayrılan bilgi işlem kaynakları için ödeme yapınızdan (bkz. [App Service planımın maliyeti nedir?](#cost)), birden çok uygulamayı tek bir App Service plana yerleştirerek para tasarrufu sağlayabilirsiniz. Planda yükü işlemek için yeterli kaynak olduğu sürece mevcut bir plana uygulama eklemeye devam edebilirsiniz. Ancak, aynı App Service planı içindeki uygulamaların aynı işlem kaynaklarını paylaştığından emin olmak için aklınızda bulundurun. Yeni uygulamanın gerekli kaynaklara sahip olup olmadığını belirlemek için var olan App Service planının kapasitesini ve yeni uygulamanın beklenen yükünü anlamanız gerekir. Bir App Service planının aşırı yüklenmesi yeni ve var olan uygulamalarınızın kesinti yaşamasına neden olabilir.
 
-Aşağıdaki durumlarda uygulamanızı yeni bir App Service planında yalıtabilirsiniz:
+Aşağıdaki durumlarda, uygulamanızı yeni bir App Service planında yalıtabilirsiniz:
 
 - Uygulama yoğun kaynak yoğunluklu bir işlemdir.
 - Uygulamayı, mevcut plandaki diğer uygulamalardan bağımsız olarak ölçeklendirmek istiyorsunuz.

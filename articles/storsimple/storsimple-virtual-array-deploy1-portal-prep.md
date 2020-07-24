@@ -8,15 +8,16 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070321"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Sanal dizisi dağıtma-Azure portal hazırlama
 
-![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+![Bir sanal diziyi dağıtmak için gereken adımları gösteren diyagram. İlk adım Başlarken ' i etiketlidir ve vurgulanır.](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
 
 ## <a name="overview"></a>Genel Bakış
@@ -51,7 +52,7 @@ Yapılandırma denetim listesi, yazılımı StorSimple Sanal diziniz üzerinde y
 * [StorSimple Sanal dizisi dosya sunucusu yapılandırma denetim listesini](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)indirin.
 * [StorSimple Sanal dizisi Iscsı sunucusu yapılandırma denetim listesini](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)indirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Burada, StorSimple Aygıt Yöneticisi hizmetiniz, StorSimple Sanal diziniz ve veri merkezi ağı için yapılandırma önkoşullarını bulabilirsiniz.
 

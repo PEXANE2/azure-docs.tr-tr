@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba6ceec3064c5c876ca899ab58881e23913b9701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85b0137f8d89def2f38ffe82199950c9158888d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429024"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070047"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL özellikleri için tasarım kararları ve kodlama teknikleri
 Bu makalede, SQL havuzu için kaynakların bir listesini ve SYNAPSE SQL 'nin isteğe bağlı SQL (Önizleme) işlevlerini bulabilirsiniz. Önerilen makaleler iki bölüme ayrılır: temel tasarım kararları ve geliştirme ve kodlama teknikleri.
@@ -25,8 +25,8 @@ Bu makalelerin amacı, SYNAPSE Analytics 'te SYNAPSE SQL bileşenleri için en i
 ## <a name="key-design-decisions"></a>Anahtar tasarım kararları
 Aşağıdaki makalelerde SYNAPSE SQL geliştirme için kavramlar ve tasarım kararları vurgulanacak:
 
-|                                                          |   SQL havuzu   | İsteğe bağlı SQL |
-| -----------------------------------------------------    | ---- | ---- |
+| Makale | SQL havuzu | İsteğe bağlı SQL |
+| ------- | -------- | ------------- |
 | [Bağlantılar](connect-overview.md)                    | Yes | Yes |
 | [Kaynak sınıfları ve eşzamanlılık](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Evet    | Hayır |
 | [İşlemler](develop-transactions.md)              | Evet | Hayır |
@@ -44,8 +44,8 @@ Aşağıdaki makalelerde SYNAPSE SQL geliştirme için kavramlar ve tasarım kar
 
 Aşağıda, geliştirmeye yönelik belirli kodlama tekniklerini, ipuçlarını ve önerilerini vurgulayacak önemli makaleler bulacaksınız:
 
-|                                            | SQL havuzu | İsteğe bağlı SQL |
-| ------------------------------------------ | ------------------ | ----------------------- |
+| Makale | SQL havuzu | İsteğe bağlı SQL |
+| ------- | -------- | ------------- |
 | [Saklı yordamlar](develop-stored-procedures.md)  | Evet                | Hayır                      |
 | [Etiketler](develop-label.md)                           | Evet                | Hayır                      |
 | [Görünümler](develop-views.md)                             | Yes                | Yes                     |

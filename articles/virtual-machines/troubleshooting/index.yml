@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: 4111df079f6e4c0d49ab1381add835d493b3540a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 1b70dfb508ef00f370f0a6fa1456ab7178ec0eae
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77519249"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87069051"
 landingContent:
 - title: Dağıtım sorunlarını giderme
   linkLists:
@@ -28,65 +28,65 @@ landingContent:
     - text: Geçersiz şablon hatalarını giderme
       url: ../../azure-resource-manager/templates/error-invalid-template.md
     - text: Kullanılamayan SKU’larla ilgili hataları giderme
-      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+      url: ../../azure-resource-manager/templates/error-sku-not-available.md
 - title: VM dağıtım kılavuzu
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image
+      url: ../windows/prepare-for-upload-vhd-image.md
     - text: Azure’da Windows istemcisi işletim sistemi dağıtma veya oluşturma
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/client-images
+      url: ../windows/client-images.md
     - text: Kotalarla ilgili hataları giderme
-      url: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors
+      url: ../../azure-resource-manager/templates/error-resource-quota.md
 - title: Sanal makineme bağlanamıyorum
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Yaygın olarak karşılaşılan RDP bağlantı sorunlarını gidermek için hızlı adımlar
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-rdp-connection
+      url: ./troubleshoot-rdp-connection.md
     - text: Azure VM RDP bağlantı sorunlarını olay kimliğine göre giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/event-id-troubleshoot-vm-rdp-connecton
+      url: ./event-id-troubleshoot-vm-rdp-connecton.md
     - text: Azure VM’ye RDP kullanarak bağlandığınızda karşılaştığınız kimlik doğrulaması hatalarını giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-authentication-error-rdp-vm
+      url: ./troubleshoot-authentication-error-rdp-vm.md
     - text: VM konuk ağ kartı devre dışı
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-nic-disabled
+      url: ./troubleshoot-rdp-nic-disabled.md
 - title: Parola sıfırlama
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Windows VM’sinde Uzak Masaüstü hizmetini veya oturum açma parolasını sıfırlama
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp
+      url: ./reset-rdp.md
     - text: Azure VM yerel Windows parolasını çevrimdışı yöntemle sıfırlama
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-local-password-without-agent
+      url: ./reset-local-password-without-agent.md
     - text: Azure’da Windows VM’si için belirli RDP hata iletileri sorunları giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-specific-rdp-errors
+      url: ./troubleshoot-specific-rdp-errors.md
     - text: Azure Sanal Makinesine yönelik uzak masaüstü bağlantılarında sorun giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection
+      url: ./troubleshoot-rdp-connection.md
 - title: Sanal makine önyüklenemiyor
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Disk denetimi önyükleme hatası
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-check-disk-boot-error
+      url: ./troubleshoot-check-disk-boot-error.md
     - text: BitLocker önyükleme hatası
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-bitlocker-boot-error
+      url: ./troubleshoot-bitlocker-boot-error.md
     - text: Önyükleme yapılandırması güncelleştirme hatası
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+      url: ./troubleshoot-vm-boot-configure-update.md
     - text: Sık karşılaşılan mavi ekran hataları
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-common-blue-screen-error
+      url: ./troubleshoot-common-blue-screen-error.md
 - title: VM başlatılamıyor veya durdurulamıyor
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: VM dağıtımı sorunlarını giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+      url: ./restart-resize-error-troubleshooting.md
     - text: Ayırma sorunlarını giderme (Klasik dağıtım yöntemi)
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+      url: ./allocation-failure-classic.md
     - text: Önyükleme yapılandırması güncelleştirme hatası
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+      url: ./troubleshoot-vm-boot-configure-update.md
     - text: VM yaşam döngüsü ve durumları
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle
+      url: ../windows/states-lifecycle.md
 - title: Beklenmeyen VM yeniden başlatma İşlemleri
   linkLists:
   - linkListType: how-to-guide
@@ -96,50 +96,50 @@ landingContent:
     - text: Yeniden başlatma sonrası önyükleme hatalarını tanılama ve bu hatalardan kurtarma
       url: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
     - text: Azure’da sanal makineler için planlı bakımı anlama
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates
+      url: ../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
     - text: Azure VM başlatma işlemi Windows Update’te takılı kaldı
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-stuck-updating-boot-error
+      url: ./troubleshoot-stuck-updating-boot-error.md
 - title: Sanal Disk yönetimi sorunları
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Sanal Diskler hakkında SSS
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks
+      url: ../windows/faq-for-disks.md
     - text: VM yeniden boyutlandırma sırasında ortaya çıkan ayırma hatalarını giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+      url: ./allocation-failure.md
     - text: VM’nizde geçici sürücüyü anlama
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk
+      url: ../windows/managed-disks-overview.md#temporary-disk
     - text: Azure Yönetilen Disklere genel bakış
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview
+      url: ../windows/managed-disks-overview.md
 - title: Disk şifreleme sorunları
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure disk şifrelemesi sorunlarını giderme
-      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg
+      url: ../../security/fundamentals/azure-disk-encryption-vms-vmss.md
     - text: Azure disk şifrelemesi hakkında SSS
-      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq
+      url: ../../security/fundamentals/azure-disk-encryption-vms-vmss.md
     - text: Azure Uzantıları’nda sorunları giderme
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+      url: ../extensions/troubleshoot.md
 - title: VM performans sorunları
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Paylaşılan görüntü galerisi sorunlarını giderme - çoğaltma yavaş
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/troubleshooting-shared-images#replication-is-slow
+      url: ../windows/troubleshooting-shared-images.md#replication-is-slow
 - title: VM Uzantısı sorunları
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Uzantılar için genel sorun giderme adımları
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+      url: ../extensions/troubleshoot.md
     - text: Uzantıyı sanal makinenize yükleme
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-windows
+      url: ../extensions/diagnostics-windows.md
     - text: Windows için Özel Betik Uzantısı
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+      url: ../extensions/custom-script-windows.md#tips-and-tricks
 - title: Yedekleme ve geri yükleme
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure Portal’da Azure sanal makine yedekleme sorunlarını giderme
-      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot
+      url: ../../backup/backup-azure-vms-troubleshoot.md

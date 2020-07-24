@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069144"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Önyükleme hatası sorunlarını giderme-disk okuma hatası oluştu
 
@@ -26,7 +27,7 @@ Bu makalede, diskin bir Azure sanal makinesinde (VM) okungeçirebileceği sorunl
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde "disk okuma hatası oluştu" iletisiyle bir istem görüntülediğini görürsünüz. Yeniden başlatmak için Ctrl+Alt+Del tuşlarına basın”.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde "disk okuma hatası oluştu" iletisiyle bir istem görüntülediğini görürsünüz. Yeniden başlatmak için Ctrl+Alt+Del tuşlarına basın”.
 
    ![Hata iletisi: bir disk okuma hatası oluştu. Yeniden başlatmak için Ctrl + Alt + Del tuşlarına basın.](./media/disk-read-error-occurred/1.png)
 
@@ -50,7 +51,7 @@ Bu hata iletisi, disk yapısının bozuk ve okunamaz olduğunu gösterir. 1. nes
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
 1. Uzak Masaüstü Bağlantısı kullanarak, onarım sanal makinesine bağlanın.
 
 ### <a name="set-partition-status-to-active"></a>Bölüm durumunu etkin olarak ayarla
@@ -142,4 +143,4 @@ Bu hata iletisi, disk yapısının bozuk ve okunamaz olduğunu gösterir. 1. nes
    
 ### <a name="rebuild-the-vm"></a>VM 'yi yeniden oluşturma
 
-VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

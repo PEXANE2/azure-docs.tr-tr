@@ -1,5 +1,5 @@
 ---
-title: Genelleştirilmiş görüntüden ölçek kümesi oluşturma
+title: Azure CLı ile Genelleştirilmiş görüntüden ölçek kümesi oluşturma
 description: Paylaşılan görüntü galerisinde genelleştirilmiş bir görüntü kullanarak ölçek kümesi oluşturma.
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,14 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82797142"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069852"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Genelleştirilmiş görüntüden ölçek kümesi oluşturma
+# <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Azure CLı ile Genelleştirilmiş görüntüden ölçek kümesi oluşturma
 
 Azure CLı kullanarak [paylaşılan görüntü galerisinde](shared-image-galleries.md) depolanan Genelleştirilmiş görüntü sürümünden bir ölçek kümesi oluşturun. Özel görüntü sürümünü kullanarak bir ölçek kümesi oluşturmak istiyorsanız, bkz. [özelleştirilmiş görüntüden ölçek kümesi örnekleri oluşturma](instance-specialized-image-version-cli.md).
 
