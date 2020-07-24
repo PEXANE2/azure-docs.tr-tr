@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 12389484f63d35eb31b38d5067061dc99b7284f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115918"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -29,7 +29,7 @@ Bu makalede, Azure portal hizmet sorumlusunu oluşturmak için portalın nasıl 
 > Hizmet sorumlusu oluşturmak yerine, uygulama kimliğiniz için Azure kaynakları için Yönetilen kimlikler kullanmayı göz önünde bulundurun. Kodunuz yönetilen kimlikleri destekleyen bir hizmette çalışıyorsa ve Azure AD kimlik doğrulamasını destekleyen kaynaklara eriştiğinde, Yönetilen kimlikler sizin için daha iyi bir seçenektir. Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi edinmek için şu anda hangi hizmetleri desteklediği hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../managed-identities-azure-resources/overview.md).
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>Uygulama kaydı, uygulama nesneleri ve hizmet sorumluları
-Azure portal kullanarak doğrudan hizmet sorumlusu oluşturmanın bir yolu yoktur.  Azure portal aracılığıyla bir uygulamayı kaydettiğinizde, ana dizin veya kiracınızı otomatik olarak bir uygulama nesnesi ve hizmet sorumlusu oluşturulur.  Uygulama kaydı, uygulama nesneleri ve hizmet sorumluları arasındaki ilişki hakkında daha fazla bilgi için, [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesnelerini](app-objects-and-service-principals.md)okuyun.
+Azure portal kullanarak doğrudan hizmet sorumlusu oluşturmanın bir yolu yoktur.  Azure portal aracılığıyla bir uygulamayı kaydettiğinizde, giriş dizininizde veya kiracınızda bir uygulama nesnesi ve hizmet sorumlusu otomatik olarak oluşturulur.  Uygulama kaydı, uygulama nesneleri ve hizmet sorumluları arasındaki ilişki hakkında daha fazla bilgi için, [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesnelerini](app-objects-and-service-principals.md)okuyun.
 
 ## <a name="permissions-required-for-registering-an-app"></a>Bir uygulamayı kaydettirmek için gereken izinler
 
@@ -55,7 +55,7 @@ Abonelik izinlerinizi denetlemek için:
 
 1. **Abonelik**arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
 
-   ![Arama](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Arayın](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin.
 
@@ -77,7 +77,7 @@ Abonelik izinlerinizi denetlemek için:
 
 1. [Azure Portal](https://portal.azure.com)aracılığıyla Azure hesabınızda oturum açın.
 1. **Azure Active Directory**seçin.
-1. **Uygulama kayıtları**'nı seçin.
+1. **Uygulama kayıtları**’nı seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
 1. Uygulamayı adlandırın. Uygulamayı kimlerin kullanabileceğinizi belirleyen desteklenen bir hesap türü seçin. **Yeniden yönlendirme URI 'si**altında, oluşturmak istediğiniz uygulama türü için **Web** ' i seçin. Erişim belirtecinin gönderildiği URI 'yi girin. [Yerel bir uygulama](../manage-apps/application-proxy-configure-native-client-application.md)için kimlik bilgileri oluşturamazsınız. Bu türü otomatik bir uygulama için kullanamazsınız. Değerleri ayarladıktan sonra **Kaydet**' i seçin.
 
@@ -159,7 +159,7 @@ Sertifikayı karşıya yüklemek için:
 
     ![Sertifikayı karşıya yükle ' yi seçin ve eklemek istediğiniz birini seçin](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
 Sertifikayı uygulama kayıt portalı 'nda uygulamanıza kaydettikten sonra, sertifikayı kullanmak için istemci uygulama kodunu etkinleştirmeniz gerekir.
 

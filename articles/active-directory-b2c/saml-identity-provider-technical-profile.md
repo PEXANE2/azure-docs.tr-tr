@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 724178f71befbe4eace0d3d5615871c21253c1f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0c30d5c072c66e04b97cae2f88e4c8ef96b32779
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170080"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116216"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir SAML kimlik sağlayıcısı teknik profili tanımlama
 
@@ -146,7 +146,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İş ortağı varlığı | Evet | SAML kimlik sağlayıcısı meta verisinin URL 'SI. Kimlik sağlayıcısı meta verilerini kopyalayın ve CDATA öğesinin içine ekleyin`<![CDATA[Your IDP metadata]]>` |
+| İş ortağı varlığı | Yes | SAML kimlik sağlayıcısı meta verisinin URL 'SI. Kimlik sağlayıcısı meta verilerini kopyalayın ve CDATA öğesinin içine ekleyin`<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | Hayır | Teknik profilin tüm giden kimlik doğrulama isteklerinin imzalanmasını gerektirip gerektirmediğini belirtir. Olası değerler: `true` veya `false` . Varsayılan değer: `true`. Değer olarak ayarlandığında `true` , **Samlmessagesigning** şifreleme anahtarının belirtilmesi gerekir ve giden tüm kimlik doğrulama istekleri imzalanır. Değer olarak ayarlanırsa `false` , **sigalg** ve **imza** parametreleri (sorgu dizesi veya post parametresi) istekten çıkarılır. Bu meta veriler ayrıca kimlik sağlayıcısıyla paylaşılan Azure AD B2C teknik profilin meta verilerinde çıkış olan meta veri **AuthnRequestsSigned** özniteliğini de denetler. Teknik profil meta verilerindeki **Wantssignedrequests** değeri olarak ayarlandıysa `false` ve **Wantauthnrequestssigned** kimlik sağlayıcısı meta verileri olarak ayarlandıysa veya belirtilmemişse isteği imzalayamıyor Azure AD B2C `false` . |
 | XmlSignatureAlgorithm | Hayır | Azure AD B2C SAML isteğini imzalamak için kullandığı yöntem. Bu meta veriler, SAML isteğindeki **Sigalg** parametresinin (sorgu dizesi veya post parametresi) değerini denetler. Olası değerler: `Sha256` , `Sha384` , `Sha512` veya `Sha1` . Aynı değere sahip her iki tarafta de imza algoritmasını yapılandırdığınızdan emin olun. Yalnızca sertifikanızın desteklediği algoritmayı kullanın. |
 | WantsSignedAssertions | Hayır | Teknik profilin tüm gelen onayların imzalanmasını gerektirip gerektirmediğini belirtir. Olası değerler: `true` veya `false` . Varsayılan değer: `true`. Değer olarak ayarlanmışsa `true` , `saml:Assertion` kimlik sağlayıcısı tarafından Azure AD B2C gönderilen tüm onaylar bölümü imzalanmalıdır. Değer olarak ayarlanırsa `false` , kimlik sağlayıcısı onaylamaları imzalamamamalıdır, ancak bile Azure AD B2C imza doğrulamaz. Bu meta veriler ayrıca, kimlik sağlayıcısıyla paylaşılan Azure AD B2C teknik profilin meta verilerinde çıktı olan meta veri bayrağını **WantsAssertionsSigned**denetler. Onayların doğrulanmasını devre dışı bırakırsanız, yanıt imza doğrulamasını devre dışı bırakmak isteyebilirsiniz (daha fazla bilgi için bkz. **ResponsesSigned**). |
@@ -166,9 +166,41 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik |Gerekli | Açıklama |
 | --------- | ----------- | ----------- |
-| SamlMessageSigning |Evet | SAML iletilerini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Azure AD B2C, istekleri imzalamak ve kimlik sağlayıcısına göndermek için bu anahtarı kullanır. |
-| SamlAssertionDecryption |Evet | SAML iletilerinin şifresini çözmek için kullanılacak x509 sertifikası (RSA anahtar kümesi). Bu sertifika, kimlik sağlayıcısı tarafından sağlanmalıdır. Azure AD B2C, kimlik sağlayıcısı tarafından gönderilen verilerin şifresini çözmek için bu sertifikayı kullanır. |
+| SamlMessageSigning |Yes | SAML iletilerini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Azure AD B2C, istekleri imzalamak ve kimlik sağlayıcısına göndermek için bu anahtarı kullanır. |
+| SamlAssertionDecryption |Yes | SAML iletilerinin şifresini çözmek için kullanılacak x509 sertifikası (RSA anahtar kümesi). Bu sertifika, kimlik sağlayıcısı tarafından sağlanmalıdır. Azure AD B2C, kimlik sağlayıcısı tarafından gönderilen verilerin şifresini çözmek için bu sertifikayı kullanır. |
 | MetadataSigning |Hayır | SAML meta verilerini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Azure AD B2C meta verileri imzalamak için bu anahtarı kullanır.  |
+
+## <a name="saml-entityid-customization"></a>SAML EntityId özelleştirmesi
+
+Farklı EntityId değerlerine bağımlı birden çok SAML uygulamanız varsa, `issueruri` bağlı olan taraf dosyanızdaki değeri geçersiz kılabilirsiniz. Bunu yapmak için, temel dosyadaki "Saml2AssertionIssuer" KIMLIĞIYLE teknik profili kopyalayın ve değeri geçersiz kılın `issueruri` .
+
+> [!TIP]
+> `<ClaimsProviders>`Temel öğeden bölümü kopyalayın ve bu öğeleri talep sağlayıcısı içinde koruyun: `<DisplayName>Token Issuer</DisplayName>` , `<TechnicalProfile Id="Saml2AssertionIssuer">` ve `<DisplayName>Token Issuer</DisplayName>` .
+ 
+Örnek:
+
+```xml
+   <ClaimsProviders>   
+    <ClaimsProvider>
+      <DisplayName>Token Issuer</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Saml2AssertionIssuer">
+          <DisplayName>Token Issuer</DisplayName>
+          <Metadata>
+            <Item Key="IssuerUri">customURI</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+  </ClaimsProviders>
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpInSAML" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2" />
+      <Metadata>
+     …
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

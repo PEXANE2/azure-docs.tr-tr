@@ -9,23 +9,24 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0a75aecde13abebe4f343d336e2554fc7e31c429
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536530"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116026"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma
 
 Kapsayıcılı kodu bir sanal Linux IoT Edge cihazına dağıtarak bu hızlı başlangıçta Azure IoT Edge test edin. IoT Edge, iş yüklerinizi kenarda daha fazla gönderebilmeniz için cihazlarınızda kodu uzaktan yönetmenizi sağlar. Bu hızlı başlangıçta, IoT Edge cihazınız için bir Azure sanal makinesi kullanmanızı öneririz. Bu, IoT Edge hizmetinin yüklü olduğu bir test makinesini hızlıca oluşturmanızı ve işiniz bittiğinde silmenizi sağlar.
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
-
-1. Bir IoT Hub oluşturma.
-2. Bir IoT Edge cihazını IoT hub'ınıza kaydetme.
-3. IoT Edge çalışma zamanını sanal cihazınıza yükleyip başlatın.
-4. Bir IoT Edge cihazına uzaktan modül dağıtma.
+> [!div class="checklist"]
+>
+> * Bir IoT Hub oluşturma.
+> * Bir IoT Edge cihazını IoT hub'ınıza kaydetme.
+> * IoT Edge çalışma zamanını sanal cihazınıza yükleyip başlatın.
+> * Bir IoT Edge cihazına uzaktan modül dağıtma.
 
 ![Diyagram-cihaz ve bulut için hızlı başlangıç mimarisi](./media/quickstart-linux/install-edge-full.png)
 

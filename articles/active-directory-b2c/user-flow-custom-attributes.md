@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/30/2018
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d02a7acf1d59c628e3b83161ab9cabb4a19ca41a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d631c47225fac7d8a95541313593333a1399e07
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115961"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel öznitelikleri tanımlama
 
@@ -39,7 +40,7 @@ ms.locfileid: "85385000"
 5. Özel öznitelik için bir **ad** sağlayın (örneğin, "shoesize")
 6. Bir **veri türü**seçin. Yalnızca **String**, **Boolean**ve **Int** kullanılabilir.
 7. İsteğe bağlı olarak, bilgilendirici amaçlar için bir **Açıklama** girin.
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’a tıklayın.
 
 Özel öznitelik artık **Kullanıcı öznitelikleri** listesinde ve Kullanıcı akışlarınızda kullanılmak üzere kullanılabilir. Özel bir öznitelik, **Kullanıcı öznitelikleri**listesine eklediğinizde değil, yalnızca herhangi bir Kullanıcı akışında kullanıldığı zaman oluşturulur.
 

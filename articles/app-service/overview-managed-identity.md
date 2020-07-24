@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116912"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -46,7 +46,7 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygu
 > Web uygulamanız veya yuva uygulamanız için yönetilen kimliği Azure portal, **Kurumsal uygulamalar**altında, **Kullanıcı ayarları** bölümüne bakın. Genellikle yuva adı öğesine benzerdir `<app name>/slots/<slot name>` .
 
 
-### <a name="using-the-azure-cli"></a>Azure CLI kullanma
+### <a name="using-the-azure-cli"></a>Azure CLI'yı kullanma
 
 Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, `az webapp identity assign` mevcut bir uygulamada komutunu kullanmanız gerekir. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
 
@@ -84,7 +84,7 @@ Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak b
 
 #### <a name="using-azure-powershell-for-a-web-app"></a>Bir Web uygulaması için Azure PowerShell kullanma
 
-1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 2. Azure PowerShell kullanarak bir Web uygulaması oluşturun. App Service Azure PowerShell kullanma hakkında daha fazla örnek için bkz. [App Service PowerShell örnekleri](../app-service/samples-powershell.md):
 
@@ -107,7 +107,7 @@ Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak b
 
 #### <a name="using-azure-powershell-for-a-function-app"></a>İşlev uygulaması için Azure PowerShell kullanma
 
-1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın:
 
@@ -208,7 +208,7 @@ Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak b
 > [!NOTE]
 > Azure PowerShell Command'in geçerli sürümü, Azure App Service için Kullanıcı tarafından atanan kimlikleri desteklemez. Aşağıdaki yönergeler Azure Işlevleri içindir.
 
-1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın. Aşağıdaki komut dosyası Ayrıca, `New-AzUserAssignedIdentity` [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)ile ayrı olarak yüklenmesi gereken öğesinin kullanımını da sağlar.
 
@@ -431,7 +431,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanma
 
-.NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketi aracılığıyla yapılır. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](/cli/azure)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusuna]bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
+.NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketi aracılığıyla yapılır. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](/cli/azure)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bulutta barındırıldığında, varsayılan olarak sistem tarafından atanan bir kimlik kullanılır, ancak bu davranışı Kullanıcı tarafından atanan bir kimliğin istemci KIMLIĞINE başvuran bir bağlantı dizesi ortam değişkeni kullanarak özelleştirebilirsiniz. Bu kitaplıkla ilgili geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusuna]bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
 
 1. Uygulamanıza [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve diğer gerekli NuGet paketlerine başvurular ekleyin. Aşağıdaki örnek [Microsoft. Azure. Keykasasını](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)de kullanır.
 
@@ -447,7 +447,17 @@ $accessToken = $tokenResponse.access_token
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
 
-Microsoft. Azure. Services. AppAuthentication ve sunduğu işlemler hakkında daha fazla bilgi edinmek için, [MSI .net örneği Ile](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet) [Microsoft. Azure. Services. appauthentication başvurusu] ve App Service ve keykasası ' na bakın.
+Kullanıcı tarafından atanan yönetilen kimlik kullanmak istiyorsanız, `AzureServicesAuthConnectionString` uygulama ayarını olarak ayarlayabilirsiniz `RunAs=App;AppId=<clientId-guid>` . `<clientId-guid>`Kullanmak istediğiniz kimliğin ISTEMCI kimliği ile değiştirin. Özel uygulama ayarlarını kullanarak ve değerlerini AzureServiceTokenProvider oluşturucusuna geçirerek, birden fazla bağlantı dizesi tanımlayabilirsiniz.
+
+```csharp
+    var identityConnectionString1 = Environment.GetEnvironmentVariable("UA1_ConnectionString");
+    var azureServiceTokenProvider1 = new AzureServiceTokenProvider(identityConnectionString1);
+    
+    var identityConnectionString2 = Environment.GetEnvironmentVariable("UA2_ConnectionString");
+    var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
+```
+
+AzureServiceTokenProvider ve sunduğu işlemleri yapılandırma hakkında daha fazla bilgi edinmek için, [MSI .net örneği Ile](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet) [Microsoft. Azure. Services. appauthentication başvurusu] ve App Service ve keykasası ' na bakın.
 
 ### <a name="using-the-azure-sdk-for-java"></a>Java için Azure SDK 'sını kullanma
 

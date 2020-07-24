@@ -3,14 +3,14 @@ title: Kayıt defterini coğrafi olarak çoğaltma
 description: Kayıt defterinin çoklu ana bölge çoğaltmalarıyla birden çok bölgeye erişmesini sağlayan coğrafi olarak çoğaltılan bir Azure Container Registry oluşturmaya ve yönetmeye başlayın. Coğrafi çoğaltma, Premium hizmet katmanının bir özelliğidir.
 author: stevelas
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116792"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry coğrafi çoğaltma
 
@@ -95,7 +95,7 @@ ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye ba�
 * Coğrafi olarak çoğaltılan bir kayıt defterinden görüntü gönderdiğinizde veya çektiğinizde, arka planda Azure Traffic Manager, isteği ağ gecikmesi açısından en yakın bölgede bulunan kayıt defterine gönderir.
 * En yakın bölgeye bir görüntü veya etiket güncelleştirmesi gönderdikten sonra, Azure Container Registry bildirimlerin ve katmanların seçtiğiniz kalan bölgelere çoğaltılması biraz zaman alır. Daha büyük resimler daha küçük olanlara çoğaltılmak için daha uzun sürer. Görüntüler ve Etiketler, son tutarlılık modeliyle çoğaltma bölgeleri arasında eşitlenir.
 * Coğrafi olarak çoğaltılan bir kayıt defterine gönderim güncelleştirmelerine bağlı olan iş akışlarını yönetmek için, [Web kancalarını](container-registry-webhook.md) anında iletme olaylarına yanıt verecek şekilde yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde gerçekleştirilen anında iletme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel Web kancaları oluşturabilirsiniz.
-* İçerik katmanlarını temsil eden bloblara hizmeti sağlamak için Azure Container Registry veri uç noktalarını kullanır. Kayıt defterinizin coğrafi olarak çoğaltılan bölgelerindeki her birinde kayıt defteriniz için [adanmış veri uç noktalarını](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) etkinleştirebilirsiniz. Bu uç noktalar sıkı kapsamlı güvenlik duvarı erişim kuralları yapılandırmasına izin verir.
+* İçerik katmanlarını temsil eden bloblara hizmeti sağlamak için Azure Container Registry veri uç noktalarını kullanır. Kayıt defterinizin coğrafi olarak çoğaltılan bölgelerindeki her birinde kayıt defteriniz için [adanmış veri uç noktalarını](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) etkinleştirebilirsiniz. Bu uç noktalar sıkı kapsamlı güvenlik duvarı erişim kuralları yapılandırmasına izin verir. Sorun giderme amacıyla, çoğaltılan verileri koruyarak [bir çoğaltma için isteğe bağlı yönlendirmeyi devre dışı](#temporarily-disable-routing-to-replication) bırakabilirsiniz.
 * Bir sanal ağdaki özel uç noktaları kullanarak kayıt defteriniz için [özel bir bağlantı](container-registry-private-link.md) yapılandırırsanız, coğrafi olarak çoğaltılan bölgelerin her birinde ayrılmış veri uç noktaları varsayılan olarak etkinleştirilir. 
 
 ## <a name="delete-a-replica"></a>Bir çoğaltmayı sil
@@ -127,9 +127,36 @@ Bu sorun oluşursa, bir çözüm, Linux ana bilgisayarına gibi bir istemci tara
 
 Görüntüleri gönderirken en yakın çoğaltma ile DNS çözümlemesini iyileştirmek için, çekme işlemlerinin kaynağıyla aynı Azure bölgelerinde coğrafi olarak çoğaltılan bir kayıt defteri veya Azure dışında çalışırken en yakın bölgeyi yapılandırın.
 
+### <a name="temporarily-disable-routing-to-replication"></a>Çoğaltmaya yönlendirmeyi geçici olarak devre dışı bırak
+
+Coğrafi olarak çoğaltılan bir kayıt defteriyle ilgili sorunları gidermek için, bir veya daha fazla çoğaltma için Traffic Manager yönlendirmeyi geçici olarak devre dışı bırakmak isteyebilirsiniz. Azure CLı sürüm 2,8 ' den başlayarak, `--region-endpoint-enabled` çoğaltılan bölge oluştururken veya güncelleştirdiğinizde bir seçenek (Önizleme) yapılandırabilirsiniz. ' A bir çoğaltma seçeneğini belirlediğinizde `--region-endpoint-enabled` `false` , Traffic Manager artık Docker Push veya çekme isteklerini bu bölgeye yönlendirmez. Varsayılan olarak, tüm çoğaltmalar için yönlendirme etkindir ve tüm çoğaltmalar genelinde veri eşitlemesi yönlendirmenin etkin veya devre dışı olup olmadığını meydana getirebilir.
+
+Mevcut bir çoğaltmaya yönlendirmeyi devre dışı bırakmak için öncelikle kayıt defterindeki çoğaltmaları listelemek üzere [az ACR çoğaltma listesini][az-acr-replication-list] çalıştırın. Ardından, [az ACR çoğaltma güncelleştirmesini][az-acr-replication-update] çalıştırın ve `--region-endpoint-enabled false` belirli bir çoğaltma için ayarlayın. Örneğin, *myregistry*içinde *westus* çoğaltması için ayarı yapılandırmak için:
+
+```azurecli
+# Show names of existing replications
+az acr replication list --registry --output table
+
+# Disable routing to replication
+az acr replication update update --name westus \
+  --registry myregistry --resource-group MyResourceGroup \
+  --region-endpoint-enabled false
+```
+
+Yönlendirmeyi bir çoğaltmaya geri yüklemek için:
+
+```azurecli
+az acr replication update update --name westus \
+  --registry myregistry --resource-group MyResourceGroup \
+  --region-endpoint-enabled true
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)olmak üzere üç parçalı öğretici serisine göz atın. Coğrafi olarak çoğaltılan bir kayıt defteri oluşturma, kapsayıcı oluşturma ve daha sonra `docker push` kapsayıcı örnekleri için birden çok bölgesel Web Apps tek bir komutla dağıtma adımları.
 
 > [!div class="nextstepaction"]
 > [Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)
+
+[az-acr-replication-list]: /cli/azure/acr/replication#az-acr-replication-list
+[az-acr-replication-update]: /cli/azure/acr/replication#az-acr-replication-update

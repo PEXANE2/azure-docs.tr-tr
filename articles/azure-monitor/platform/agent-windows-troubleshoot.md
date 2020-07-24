@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 338fdcb6ee2ebad98972bead7e16c9bc5944f2b3
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117063"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -37,8 +37,9 @@ Güvenlik duvarının veya proxy 'nin aşağıdaki tabloda açıklanan bağlant�
 |*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
 |*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
 |*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Yes |  
+|*. agentsvc.azure-automation.net |Bağlantı noktası 443 |Giden|Yes |  
 
-Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
+Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
 
 Aracının Azure Izleyici ile başarılı bir şekilde iletişim kurduğunu doğrulayabilmeniz için birkaç yol vardır.
 
@@ -60,7 +61,7 @@ Aracının Azure Izleyici ile başarılı bir şekilde iletişim kurduğunu doğ
 
 - Modül, sistem durumu hizmeti ve **Event sources**hizmet Bağlayıcısı sistem sağlığı hizmeti olay kaynaklarına göre *Operations Manager* olay günlüğünü filtreleyin  -  *Health Service Modules*ve **Olay düzeyi** *uyarısı* *HealthService*ve *hata* ile filtreleyerek olayları aşağıdaki tablodan yazıp yazamadığına emin olun. *Service Connector* Bunlar, olası her olay için dahil edilen çözüm adımlarını gözden geçirin.
 
-    |Olay Kimliği |Kaynak |Description |Çözüm |
+    |Olay Kimliği |Kaynak |Açıklama |Çözüm |
     |---------|-------|------------|-----------|
     |2133 & 2129 |Sistem Sağlığı Hizmeti |Aracıdan hizmetle bağlantı kurulamadı |Bu hata, aracı doğrudan veya bir güvenlik duvarı/ara sunucu aracılığıyla Azure Izleyici hizmetine iletişim kuramadığınızda ortaya çıkabilir. Aracı ara sunucu ayarlarını doğrulayın veya ağ güvenlik duvarının/proxy 'sinin bilgisayardan hizmete TCP trafiğine izin verdiğini doğrulayın.|
     |2138 |Sistem Sağlığı Hizmeti modüller |Proxy kimlik doğrulaması gerektiriyor |Aracı proxy ayarlarını yapılandırın ve proxy sunucu ile kimlik doğrulamak için gereken kullanıcı adını/parolayı belirtin. |
@@ -98,9 +99,8 @@ Sorgu sonuçları döndürürse, belirli bir veri türünün toplanmadığını 
 
 3. Birkaç dakika sonra, verileri bir çözüm veya öngörüden görüntülüyor olmanıza bağlı olarak sorgu sonuçlarında veya görselleştirmede beklenen verileri görmüyorsanız, *Operations Manager* olay günlüğünden olay **kaynakları** *HealthService* ve *sistem sağlığı hizmeti modülleri* ' ni arayın ve **Olay düzeyi** *uyarısı* ve *hata* ile filtreleme yapın.
 
-    |Olay Kimliği |Kaynak |Description |Çözüm |
+    |Olay Kimliği |Kaynak |Açıklama |Çözüm |
     |---------|-------|------------|
     |8000 |HealthService |Bu olay, performans, olay veya toplanan diğer veri türüyle ilgili bir iş akışının, çalışma alanına alma için hizmete iletilememesine yönelik olduğunu belirtir. | Kaynak HealthService 'ten olay KIMLIĞI 2136, bu olayla birlikte yazılır ve aracının hizmetle iletişim kuramadığını belirtebilir, bunun nedeni proxy 'nin ve kimlik doğrulama ayarlarının yanlış yapılandırılmasından, ağ kesintisinden veya ağ güvenlik duvarının/proxy 'sinin bilgisayardan hizmete TCP trafiğine izin vermez.| 
     |10102 ve 10103 |Sistem Sağlığı Hizmeti modüller |İş akışı veri kaynağını çözümleyemedi. |Bu durum, belirtilen performans sayacı veya örneği bilgisayarda yoksa veya çalışma alanı veri ayarları 'nda yanlış tanımlanmışsa oluşabilir. Bu, Kullanıcı tarafından belirtilen bir [performans sayacıdır](data-sources-performance-counters.md#configuring-performance-counters), belirtilen bilgilerin doğru biçimi takip ettiğini ve hedef bilgisayarlarda mevcut olduğunu doğrulayın. |
     |26002 |Sistem Sağlığı Hizmeti modüller |İş akışı veri kaynağını çözümleyemedi. |Belirtilen Windows olay günlüğü bilgisayarda yoksa bu durum oluşabilir. Bu hata, bilgisayarın bu olay günlüğünün kayıtlı olması beklenmiyorsa güvenli bir şekilde yoksayılabilir, aksi takdirde Kullanıcı tarafından belirtilen bir [olay günlüğü](data-sources-windows-events.md#configuring-windows-event-logs)ise, belirtilen bilgilerin doğru olduğundan emin olun. |
-

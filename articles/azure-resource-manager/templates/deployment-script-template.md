@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 07/16/2020
 ms.author: jgao
-ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117055"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -335,7 +335,7 @@ Genel Bakış sayfası kaynağı **sağlama durumu**, **depolama hesabı**, **ka
 
 Sol taraftaki menüden dağıtım betiği içeriğini, Betiğe geçirilen bağımsız değişkenleri ve çıktıyı görüntüleyebilirsiniz.  Dağıtım betiği için dağıtım betiği de dahil olmak üzere bir şablonu dışa aktarabilirsiniz.
 
-### <a name="use-powershell"></a>PowerShell kullanma
+### <a name="use-powershell"></a>PowerShell'i kullanma
 
 Azure PowerShell kullanarak, Dağıtım betiklerini abonelik veya kaynak grubu kapsamında yönetebilirsiniz:
 
@@ -600,6 +600,34 @@ Ayrıca, Dağıtım betiklerini içeren dizini Docker kapsayıcısına bağlamak
     ![Kaynak Yöneticisi şablonu dağıtım betiği Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
 Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir dağıtım betiği olarak kullanabilirsiniz.
+
+## <a name="deployment-script-error-codes"></a>Dağıtım betiği hata kodları
+
+| Hata kodu | Açıklama |
+|------------|-------------|
+| DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
+| DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramazsınız. |
+| Deploymentscriptoperationbaşarısız oldu | Dağıtım betiği işlemi dahili olarak başarısız oldu. Lütfen Microsoft desteğine başvurun. |
+| Deploymentscriptstorageaccountaccesskeynotbelirtti | Mevcut depolama hesabı için erişim anahtarı belirtilmedi.|
+| Deploymentscriptcontainergroupcontainsınvalidcontainers | Dağıtım betiği hizmeti tarafından oluşturulan bir kapsayıcı grubu dışarıdan değiştirildi ve geçersiz kapsayıcılar eklendi. |
+| Deploymentscriptcontainergroupınnonterminalstate | İki veya daha fazla dağıtım betiği kaynağı aynı kaynak grubunda aynı Azure Kapsayıcı örneği adını kullanır ve bunlardan biri henüz yürütmesini tamamlamadı. |
+| Deploymentscriptstorageaccountınvalidkind | BlobBlobStorage veya BlobStorage türünün mevcut depolama hesabı dosya paylaşımlarını desteklemez ve kullanılamaz. |
+| Deploymentscriptstorageaccountınvalidkindandsku | Mevcut depolama hesabı dosya paylaşımlarını desteklemiyor. Desteklenen depolama hesabı türlerinin bir listesi için bkz. [var olan depolama hesabını kullanma](#use-existing-storage-account). |
+| DeploymentScriptStorageAccountNotFound | Depolama hesabı yok veya bir dış işlem ya da araç tarafından silindi. |
+| DeploymentScriptStorageAccountWithServiceEndpointEnabled | Belirtilen depolama hesabı bir hizmet uç noktası içeriyor. Hizmet uç noktası olan bir depolama hesabı desteklenmiyor. |
+| Deploymentscriptstorageaccounınvalidaccesskey | Mevcut depolama hesabı için geçersiz erişim anahtarı belirtildi. |
+| Deploymentscriptstorageaccounınvalidaccesskeyformat | Geçersiz depolama hesabı anahtar biçimi. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md). |
+| DeploymentScriptExceededMaxAllowedTime | Dağıtım betiği yürütme süresi, dağıtım betiği kaynak tanımında belirtilen zaman aşımı değerini aştı. |
+| DeploymentScriptInvalidOutputs | Dağıtım betiği çıkışları geçerli bir JSON nesnesi değil. |
+| Deploymentscriptcontainerınstancesserviceloginfailure | Kullanıcı tarafından atanan yönetilen kimlik, 1 dakikalık aralığa göre 10 denemeden sonra oturum açamayacak. |
+| DeploymentScriptContainerGroupNotFound | Dağıtım betiği hizmeti tarafından oluşturulan bir kapsayıcı grubu, dış bir araç veya işlem tarafından silindi. |
+| DeploymentScriptDownloadFailure | Destekleyici bir betik indirilemedi. Bkz. [destekleyici betiği kullanma](#use-supporting-scripts).|
+| DeploymentScriptError | Kullanıcı betiği bir hata oluşturdu. |
+| Deploymentscriptbootstrapscriptexecutionbaşarısız oldu | Önyükleme betiği bir hata oluşturdu. Önyükleme betiği, dağıtım betiği yürütmeyi düzenleyen sistem betiğdir. |
+| Deploymentscriptexecutionbaşarısız oldu | Dağıtım betiği yürütülürken bilinmeyen bir hata oluştu. |
+| Deploymentscriptcontainerınstancesserviceunavailable | Azure Container Instance (acı) oluştururken, acı hizmeti kullanılamayan bir hata oluşturdu. |
+| Deploymentscriptcontainergroupınnonterminalstate | Azure Container Instance (acı) oluştururken, başka bir dağıtım betiği aynı kapsamda aynı acı adını (aynı abonelik, kaynak grubu adı ve kaynak adı) kullanıyor. |
+| Deploymentscriptcontainergroupnamegeçersiz | Belirtilen Azure Container Instance Name (acı), acı gereksinimlerini karşılamıyor. Bkz. [Azure Container Instances genel sorunları giderme](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
