@@ -1,21 +1,25 @@
 ---
-title: Geliştirme ve test için Azure depolama öykünücüsünü kullanma | Microsoft Docs
+title: Geliştirme ve test için Azure depolama öykünücüsünü kullanma
 description: Azure depolama öykünücüsü, Azure depolama uygulamalarınızı geliştirmek ve test etmek için ücretsiz bir yerel geliştirme ortamı sağlar.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/21/2019
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd179160ad6796da40a5b98e89a10999ad0445d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070549"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
 
 Microsoft Azure depolama öykünücüsü, yerel geliştirme amaçlarıyla Azure blob, kuyruk ve tablo hizmetlerine öykünen bir araçtır. Uygulamanızı, Azure aboneliği oluşturmadan veya herhangi bir ücret ödemeden yerel olarak depolama hizmetlerine karşı test edebilirsiniz. Uygulamanızın öykünücü üzerinde nasıl çalıştığı konusunda memnun olduğunuzda, bulutta bir Azure depolama hesabı kullanmaya geçiş yapın.
+
+> [!IMPORTANT]
+> Azure depolama öykünücüsü artık etkin bir şekilde geliştirilmiyor. [**Azurite**](storage-use-azurite.md) , iletme sonrasında depolama öykünücü platformudur. Azurite, Azure depolama öykünücüsünün yerini almıştır. Azurite, Azure depolama API 'lerinin en son sürümlerini destekleyecek şekilde güncellenmeye devam edecektir. Daha fazla bilgi için bkz. [**Yerel Azure depolama geliştirmesi Için Azurite öykünücüsünü kullanma**](storage-use-azurite.md).
 
 ## <a name="get-the-storage-emulator"></a>Depolama öykünücüsünü al
 
@@ -74,7 +78,7 @@ Depolama öykünücüsünü varsayılan LocalDB örneğinden farklı bir SQL ver
 
    `AzureStorageEmulator.exe init /server .`
 
-   Ya da, veritabanını varsayılan LocalDB örneğine yeniden başlatan aşağıdaki komutu kullanabilirsiniz:
+   Ya da, veritabanını varsayılan LocalDB örneğine Başlatan aşağıdaki komutu kullanabilirsiniz:
 
    `AzureStorageEmulator.exe init /forceCreate`
 
@@ -327,3 +331,7 @@ Depolama öykünücüsü yerel bir Öykünülmüş ortam olduğundan, öykünüc
 * Platformlar arası, topluluk tarafından tutulan açık kaynaklı depolama öykünücüsü [Azurıite](https://github.com/azure/azurite)'yi değerlendirin. 
 * [.NET kullanan Azure depolama örnekleri](../storage-samples-dotnet.md) , uygulamanızı geliştirirken kullanabileceğiniz çeşitli kod örneklerinin bağlantılarını içerir.
 * Bulut depolama hesabınızda ve depolama öykünücüsünde kaynaklarla çalışmak için [Microsoft Azure Depolama Gezgini](https://storageexplorer.com) kullanabilirsiniz.
+
+## <a name="see-also"></a>Ayrıca Bkz.
+
+* [Azurite, Azure SDK 'Ları ve Azure Depolama Gezgini yerel Azure depolama geliştirmesi](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)
