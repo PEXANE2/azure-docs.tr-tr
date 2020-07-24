@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1756bd72dc78bfafc8959c4ff1c8f95d255c931
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067573"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
 
@@ -20,7 +20,7 @@ VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve
 >[!NOTE]
 >Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. VM'ler için Azure İzleyici Map özelliği, tek başına Hizmet Eşlemesi çözümünün yerini alacak şekilde tasarlanmıştır. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](vminsights-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * System Center Operations Manager yönetim grubu (2012 R2 veya üzeri).
 * VM'ler için Azure İzleyici desteklemek için yapılandırılmış bir Log Analytics çalışma alanı.
@@ -138,9 +138,9 @@ Geçerli tasarımda aşağıdaki sorunlar ve sınırlamalar sunulmaktadır:
 
 Hizmet sorumlusu oluşturma hakkında resmi Azure belgeleri için bkz.:
 
-* [PowerShell kullanarak hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Azure CLı kullanarak hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [Azure portal kullanarak bir hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [PowerShell kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Azure CLı kullanarak hizmet sorumlusu oluşturma](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Azure portal kullanarak bir hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>Öneriler
 

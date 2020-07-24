@@ -3,12 +3,12 @@ title: Sistem durumunu bir Windows sunucusuna geri yükleme
 description: Windows Server sistem durumunu Azure 'daki bir yedekten geri yüklemek için adım adım açıklama.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184489"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067365"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -88,7 +88,7 @@ Bu adımlarda kullanılan terminoloji şunları içerir:
 6. Yedekleme sunucusunu seçin bölmesinde, görünen makineler listesinden *kaynak makineyi* seçin.
 7. Kurtarma modunu seçin bölmesinde **sistem durumu** ' nu seçin ve **İleri**' ye tıklayın.
 
-    ![Ara](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Arayın](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. **Birim ve tarih seçin** bölmesinde takvimde, bir kurtarma noktası seçin. Herhangi bir kurtarma noktasından dilediğiniz zaman geri yükleyebilirsiniz. **Kalın yazı** tarihi, en az bir kurtarma noktasının kullanılabilirliğini gösterir. Bir tarih seçtiğinizde, birden fazla kurtarma noktası varsa, **zaman** açılan menüsünde belirli bir kurtarma noktasını seçin.
 
@@ -183,7 +183,7 @@ Bu makale yalnızca, AD DS yetkisiz geri yükleme ve SYSVOL klasörünün yetkil
         >[!NOTE]
         >Tüm Active Directory verilerini geri yüklüyorsanız (ve ormanda kalan çalışan etki alanı denetleyicileri yoksa), yukarıdaki 9. adımda **Active Directory dosyalarının yetkili geri yükleme Işlemini gerçekleştirmeyi**seçtiğinizden emin olun.
 
-    * Komut satırından geri yüklemeyi gerçekleştirmek için [Wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) yardımcı programını kullanın.
+    * Komut satırından geri yüklemeyi gerçekleştirmek için [Wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) yardımcı programını kullanın.
 
         Kullanmak istediğiniz yedeğin sürüm tanımlayıcısına ihtiyacınız vardır. Şu komutu çalıştırarak sürüm tanımlayıcılarının listesini alabilirsiniz:
 
@@ -193,7 +193,7 @@ Bu makale yalnızca, AD DS yetkisiz geri yükleme ve SYSVOL klasörünün yetkil
 
         Daha sonra bu sürüm tanımlayıcısını geri yüklemeyi çalıştırmak için kullanacaksınız.
 
-        Örneğin, AD DS yetkisiz geri yükleme ve için paylaşılan kaynakta depolanan 9:00 ' de 04/30/2020 ' dan yedeklemeyi kullanarak [SYSVOL klasörünün yetkilendirmeli geri yüklemesini](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) gerçekleştirmek için `\\servername\share` `server01` şunu yazın:
+        Örneğin, AD DS yetkisiz geri yükleme ve için paylaşılan kaynakta depolanan 9:00 ' de 04/30/2020 ' dan yedeklemeyi kullanarak [SYSVOL klasörünün yetkilendirmeli geri yüklemesini](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) gerçekleştirmek için `\\servername\share` `server01` şunu yazın:
 
         ```cmd
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol

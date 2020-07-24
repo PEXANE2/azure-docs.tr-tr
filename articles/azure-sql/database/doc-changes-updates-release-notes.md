@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981386"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067411"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 |**Azure SQL Veritabanı**|Azure SQL veritabanı *tek veritabanı*| Açıkça belirtilmediği takdirde, Azure SQL veritabanı ürün adı, elastik bir havuza dağıtılan tek veritabanlarını ve veritabanlarını içerir. |
 |**Azure SQL Veritabanı**|Azure SQL veritabanı *elastik havuzu*| Açıkça belirtilmediği takdirde, Azure SQL veritabanı ürün adı, elastik bir havuza dağıtılan tek veritabanlarını ve veritabanlarını içerir.  |
 |**Azure SQL Veritabanı** |Azure SQL Veritabanı | Terim aynı kalır, ancak artık tek veritabanı ve elastik havuz dağıtımları için geçerli olur ve yönetilen örnek içermez. |
-| **Azure SQL**| YOK | Bu, Azure 'da kullanılabilen SQL Server veritabanı motoru ürünlerinin ailesini ifade eder: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'lerinde SQL Server. | 
+| **Azure SQL**| Yok | Bu, Azure 'da kullanılabilen SQL Server veritabanı motoru ürünlerinin ailesini ifade eder: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'lerinde SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>Genel önizlemede Özellikler
 
@@ -50,7 +50,6 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 | Özellik | Ayrıntılar |
 | ---| --- |
-| Yeni Fsv2 serisi ve d serisi donanım nesilleri| Bilgi için bkz. [donanım nesilleri](service-tiers-vcore.md#hardware-generations).|
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md).|
 | Veri bulma ve sınıflandırma  |Bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics veri bulma & sınıflandırması](data-discovery-and-classification-overview.md).|
 | Esnek veritabanı işleri | Bilgi için bkz. [elastik Işler oluşturma, yapılandırma ve yönetme](elastic-jobs-overview.md). |
@@ -98,8 +97,8 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 
 |Sorun  |Keşfedilen Tarih  |Durum  |Çözümlenme tarihi  |
 |---------|---------|---------|---------|
-|[SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir](#restoring-manual-backup-without-checksum-might-fail)|Mayıs 2020|Geçici çözüm vardır| |
-|[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Otomatik olarak azaltıldığında| |
+|[SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir](#restoring-manual-backup-without-checksum-might-fail)|Mayıs 2020|Çözümlendi|Haziran 2020|
+|[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Çözümlendi|Haziran 2020|
 |[Kaynak grubundaki izinler SQL yönetilen örneği 'ne uygulanmadı](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Şub 2020|Geçici çözüm vardır||
 |[Yük devretme grupları için Portal aracılığıyla el ile yük devretme sınırlaması](#limitation-of-manual-failover-via-portal-for-failover-groups)|Ocak 2020|Geçici çözüm vardır||
 |[SQL Server Agent rolleri, sysadmin dışındaki oturum açma bilgileri için açık EXECUTE izinlerine ihtiyaç duyar](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Geçici çözüm vardır||

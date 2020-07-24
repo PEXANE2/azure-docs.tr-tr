@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067551"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinesinden veri toplama
 
-[Azure izleyici](../overview.md) , ayrıntılı analiz ve bağıntı için Azure sanal makinelerinizden doğrudan bir Log Analytics çalışma alanına veri toplayabilir. [Windows](../../virtual-machines/extensions/oms-windows.md) ve [LINUX](../../virtual-machines/extensions/oms-linux.md) için Log Analytics VM uzantısının yüklenmesi, Azure izleyici 'nin Azure sanal makinelerinizden veri toplamasına izin verir. Bu hızlı başlangıçta, birkaç kolay adımla VM uzantısını kullanarak Azure Linux veya Windows sanal makinelerinizdeki verileri nasıl yapılandıracağınız ve toplayacağınız gösterilmektedir.  
+[Azure izleyici](../overview.md) , ayrıntıları ve bağıntıları analiz etmek için Azure sanal makinelerinizden doğrudan bir Log Analytics çalışma alanına veri toplayabilir. [Windows](../../virtual-machines/extensions/oms-windows.md) ve [LINUX](../../virtual-machines/extensions/oms-linux.md) için Log Analytics VM uzantısının yüklenmesi, Azure izleyici 'nin Azure sanal makinelerinizden veri toplamasına izin verir. Bu hızlı başlangıçta, birkaç kolay adımla VM uzantısını kullanarak Azure Linux veya Windows sanal makinelerinizdeki verileri nasıl yapılandıracağınız ve toplayacağınız gösterilmektedir.  
  
 Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılmaktadır. Yoksa VM hızlı başlangıçlarımızı izleyerek bir [Windows VM](../../virtual-machines/windows/quick-create-portal.md) veya bir [Linux VM](../../virtual-machines/linux/quick-create-cli.md) oluşturabilirsiniz.
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılma
 
 1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure portalı](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
@@ -141,4 +141,4 @@ Artık gerekli olmadığında, Log Analytics çalışma alanını silin. Bunu ya
 Verileri görüntüleme ve analiz etmeyi öğrenmek için, öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Log Analytics’te verileri görüntüleme veya analiz etme](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/get-started-portal.md)

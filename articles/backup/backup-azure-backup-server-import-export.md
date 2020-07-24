@@ -3,12 +3,12 @@ title: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f27a38657bb43a1d1153a0372db0e1f9e284eccc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187804"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067348"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM ve Azure Backup Sunucusu (MABS) için çevrimdışı yedekleme iş akışı
 
@@ -49,7 +49,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
 * DPM veya MABS sunucusunda, Microsoft Edge veya Internet Explorer 11 ' in yüklü olduğundan ve JavaScript 'in etkinleştirildiğinden emin olun.
 * Kurtarma Hizmetleri kasasıyla aynı abonelikte bir Azure depolama hesabı oluşturun.
-* Azure Active Directory uygulamasını oluşturmak için [gerekli izinlere](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) sahip olduğunuzdan emin olun. Çevrimdışı yedekleme iş akışı, Azure depolama hesabıyla ilişkili abonelikte bir Azure Active Directory uygulaması oluşturur. Uygulamanın amacı, Azure Içeri aktarma hizmeti 'ne yönelik güvenli ve kapsamlı erişime sahip Azure Backup, çevrimdışı yedekleme iş akışı için gereklidir.
+* Azure Active Directory uygulamasını oluşturmak için [gerekli izinlere](../active-directory/develop/howto-create-service-principal-portal.md) sahip olduğunuzdan emin olun. Çevrimdışı yedekleme iş akışı, Azure depolama hesabıyla ilişkili abonelikte bir Azure Active Directory uygulaması oluşturur. Uygulamanın amacı, Azure Içeri aktarma hizmeti 'ne yönelik güvenli ve kapsamlı erişime sahip Azure Backup, çevrimdışı yedekleme iş akışı için gereklidir.
 * Microsoft. ımportexport kaynak sağlayıcısını Azure Storage hesabını içeren abonelikle kaydedin. Kaynak sağlayıcısını kaydetmek için:
     1. Ana menüden **abonelikler**' e tıklayın.
     2. Birden çok aboneliğe abone değilseniz, çevrimdışı yedekleme için kullanmakta olduğunuz aboneliği seçin. Yalnızca bir abonelik kullanıyorsanız, aboneliğiniz görüntülenir.
@@ -64,7 +64,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
 ## <a name="workflow"></a>İş akışı
 
-Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure depolama 'ya yüklenebilmesi için çevrimdışı yedekleme iş akışını tamamlamanıza yardımcı olur. Içeri aktarma hizmeti veya işlemin herhangi bir yönü hakkında sorularınız varsa, daha önce başvurulan [hizmete genel bakış](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) belgelerine bakın.
+Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure depolama 'ya yüklenebilmesi için çevrimdışı yedekleme iş akışını tamamlamanıza yardımcı olur. Içeri aktarma hizmeti veya işlemin herhangi bir yönü hakkında sorularınız varsa, daha önce başvurulan [hizmete genel bakış](../storage/common/storage-import-export-service.md) belgelerine bakın.
 
 ## <a name="initiate-offline-backup"></a>Çevrimdışı Yedeklemeyi Başlat
 
@@ -188,7 +188,7 @@ Bir Azure içeri aktarma işinin işlenmesi için gereken süre farklılık gös
 
 ### <a name="monitor-azure-import-job-status"></a>Azure içeri aktarma işinin durumunu izleme
 
-İçeri **/dışarı aktarma işleri** sayfasına giderek ve Işinizi seçerek içeri aktarma işinizin durumunu Azure Portal izleyebilirsiniz. Içeri aktarma işlerinin durumu hakkında daha fazla bilgi için bkz. [depolama içeri aktarma verme hizmeti](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) makalesi.
+İçeri **/dışarı aktarma işleri** sayfasına giderek ve Işinizi seçerek içeri aktarma işinizin durumunu Azure Portal izleyebilirsiniz. Içeri aktarma işlerinin durumu hakkında daha fazla bilgi için bkz. [depolama içeri aktarma verme hizmeti](../storage/common/storage-import-export-service.md) makalesi.
 
 ### <a name="complete-the-workflow"></a>İş akışını doldurun
 

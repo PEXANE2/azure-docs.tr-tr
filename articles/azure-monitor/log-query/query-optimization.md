@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864258"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067489"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -156,7 +157,7 @@ Heartbeat
 > Bu gösterge yalnızca en hızlı kümeden CPU gösterir. Çok bölgeli sorguda bölge yalnızca birini temsil eder. Çoklu çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
 
 ### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Dize ayrıştırması çalışırken tam XML ve JSON ayrıştırmayı önleyin
-Bir XML veya JSON nesnesinin tam ayrıştırması, yüksek CPU ve bellek kaynakları tüketebilir. Çoğu durumda, yalnızca bir veya iki parametre gerektiğinde ve XML veya JSON nesneleri basit olduğunda, [ayrıştırma işlecini](/azure/kusto/query/parseoperator) veya diğer [metin ayrıştırma tekniklerini](/azure/azure-monitor/log-query/parse-text)kullanarak bunları dizeler olarak ayrıştırmanız daha kolay olur. XML veya JSON nesnesindeki kayıt sayısı arttıkça performans artışı daha önemli olacaktır. Kayıt sayısı on milyona ulaştığında, bu önemlidir.
+Bir XML veya JSON nesnesinin tam ayrıştırması, yüksek CPU ve bellek kaynakları tüketebilir. Çoğu durumda, yalnızca bir veya iki parametre gerektiğinde ve XML veya JSON nesneleri basit olduğunda, [ayrıştırma işlecini](/azure/kusto/query/parseoperator) veya diğer [metin ayrıştırma tekniklerini](./parse-text.md)kullanarak bunları dizeler olarak ayrıştırmanız daha kolay olur. XML veya JSON nesnesindeki kayıt sayısı arttıkça performans artışı daha önemli olacaktır. Kayıt sayısı on milyona ulaştığında, bu önemlidir.
 
 Örneğin, aşağıdaki sorgu tam XML ayrıştırma gerçekleştirmeksizin yukarıdaki sorgularla tam olarak aynı sonuçları döndürür. XML dosya yapısında, FilePath öğesinin dosya karmasından sonra geldiği ve hiçbirinin özniteliklere sahip olmadığı gibi bazı varsayımlar yaptığı unutulmamalıdır. 
 
@@ -218,6 +219,64 @@ SecurityEvent
 | where EventID == 4624 //Logon GUID is relevant only for logon event
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
+
+### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>Koşullu toplama işlevlerini ve materitıon işlevini kullanarak aynı kaynak verilerinin birden çok taramasını önleyin
+Bir sorgu, JOIN veya Union işleçleri kullanılarak birleştirilmiş birkaç alt sorgu olduğunda, her bir alt sorgu tüm kaynağı ayrı olarak tarar ve sonuçları birleştirir. Bu, çok büyük veri kümelerinde verilerin taranma sayısı kritik etmendir.
+
+Bunu önlemek için bir teknik, koşullu toplama işlevlerini kullanmaktır. Özet işlecinde kullanılan [toplama işlevlerinin](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions) çoğu, birden çok koşula sahip tek bir özetleme işleci kullanmanıza imkan tanıyan koşullu bir sürüme sahiptir. 
+
+Örneğin, aşağıdaki sorgular oturum açma olaylarının sayısını ve her bir hesap için işlem yürütme olaylarının sayısını gösterir. Aynı sonuçları döndürürler, ancak birincisi verileri iki kez tarıyor, ikincisi yalnızca bir kez tarar:
+
+```Kusto
+//Scans the SecurityEvent table twice and perform expensive join
+SecurityEvent
+| where EventID == 4624 //Login event
+| summarize LoginCount = count() by Account
+| join 
+(
+    SecurityEvent
+    | where EventID == 4688 //Process execution event
+    | summarize ExecutionCount = count(), ExecutedProcesses = make_set(Process) by Account
+) on Account
+```
+
+```Kusto
+//Scan only once with no join
+SecurityEvent
+| where EventID == 4624 or EventID == 4688 //early filter
+| summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
+```
+
+Alt sorguların gereksiz olduğu başka bir durum, yalnızca belirli bir desenle eşleşen kayıtları işlediğinden emin olmak için [ayrıştırma operatörü](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor) için önceden filtrelemedir. Bu, Parse işleci ve diğer benzer işleçler, model eşleşmediği zaman boş sonuçlar döndürüyor olarak gereksizdir. İkinci sorgu verileri yalnızca bir kez taraırken, tam olarak aynı sonuçları döndüren iki sorgu vardır. İkinci sorguda, her Parse komutu yalnızca olayları için geçerlidir. Uzatma işleci daha sonra boş veri durumuna nasıl başvurabileceğiniz gösterir.
+
+```Kusto
+//Scan SecurityEvent table twice
+union(
+SecurityEvent
+| where EventID == 8002 
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| distinct FilePath
+),(
+SecurityEvent
+| where EventID == 4799
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" * 
+| distinct CallerProcessName1
+)
+```
+
+```Kusto
+//Single scan of the SecurityEvent table
+SecurityEvent
+| where EventID == 8002 or EventID == 4799
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" * //Relevant only for event 8002
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" *  //Relevant only for event 4799
+| extend FilePath = iif(isempty(CallerProcessName1),FilePath,"")
+| distinct FilePath, CallerProcessName1
+```
+
+Yukarıdaki alt sorgular kullanmaktan kaçınmaya izin vermezse, başka bir teknik ise, her birinde [materitıon () işlevi](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)kullanılarak kullanılan tek bir kaynak veri olduğunu gösteren sorgu motoruna ipucu kullanmaktır. Bu, kaynak verileri sorgu içinde birkaç kez kullanılan bir işlevden geldiği zaman yararlıdır.
+
+
 
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Alınan sütun sayısını azaltın
 

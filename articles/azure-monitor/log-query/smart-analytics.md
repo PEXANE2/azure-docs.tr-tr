@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82960845e357579b82c493958287cb602d75182e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659841"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067398"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics akıllı analiz örnekleri
 Bu makale, Kullanıcı etkinliğinin analizini gerçekleştirmek üzere Log Analytics içindeki akıllı analiz işlevlerini kullanan örnekleri içerir. Bu örnekleri, Application Insights tarafından izlenen kendi uygulamalarınızı çözümlemek ya da diğer verilerde benzer analizler için bu sorguların kavramlarını kullanmak üzere kullanabilirsiniz. 
 
-Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](https://docs.microsoft.com/azure/kusto/query/) bakın. Log Analytics yeni başladıysanız [sorgu oluşturma konusunda bir derste](get-started-queries.md) ilerleyin.
+Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](/azure/kusto/query/) bakın. Log Analytics yeni başladıysanız [sorgu oluşturma konusunda bir derste](get-started-queries.md) ilerleyin.
 
 ## <a name="cohorts-analytics"></a>Cohorts Analizi
 

@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/18/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103917"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067710"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
@@ -142,6 +142,9 @@ Azcmagent Aracı (Azcmagent.exe), yükleme sırasında sunucu aracısına bağl�
 * **-v veya--verbose** -ayrıntılı günlüğü etkinleştir
 
 Etkileşimli olarak oturum açtığınızda bir **bağlanma**, **bağlantısını kesme**ve el ile **yeniden bağlanma** gerçekleştirebilir veya birden çok aracı eklemek için kullandığınız hizmet sorumlusunu veya Microsoft Identity Platform [erişim belirtecini](../../active-directory/develop/access-tokens.md)kullanarak otomatik hale getirebilirsiniz. Makineyi sunucular için Azure Arc (Önizleme) ile kaydettirmek üzere bir hizmet sorumlusu kullanmıyorsanız, hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
+
+>[!NOTE]
+>**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
 
 ### <a name="connect"></a>Bağlan
 

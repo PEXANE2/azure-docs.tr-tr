@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067634"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK ile mikro ölçüm kullanma
 Mikro ölçüm uygulama izleme, JVM tabanlı uygulama kodu için ölçümleri ölçer ve verileri en sevdiğiniz izleme sistemlerine aktarmanıza olanak tanır. Bu makale, hem Spring Boot hem de Spring Boot uygulamaları için Application Insights ile mikro ölçer 'i nasıl kullanacağınızı öğretir.
@@ -270,4 +271,4 @@ Aşağıdaki bağlama kodunu yapılandırma dosyasına ekleyin:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Mikro ölçüm hakkında daha fazla bilgi için bkz. resmi [mikro ölçüm belgeleri](https://micrometer.io/docs).
-* Azure 'daki Spring hakkında bilgi edinmek için bkz. [Azure 'da resmi yay belgeleri](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).
+* Azure 'daki Spring hakkında bilgi edinmek için bkz. [Azure 'da resmi yay belgeleri](/java/azure/spring-framework/?view=azure-java-stable).
