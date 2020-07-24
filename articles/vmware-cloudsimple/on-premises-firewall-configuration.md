@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998909"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>CloudSimple özel bulut ortamınıza ve şirket içi uygulamalarınıza erişme
 
@@ -34,7 +35,7 @@ Azure ExpressRoute veya siteden siteye VPN kullanılarak, şirket içi ağdan Cl
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>Kimlik kaynağı olarak şirket içi Active Directory 'yi kullanmak için gereken bağlantı noktaları
 
-Şirket içi Active Directory 'yi özel bulut vCenter 'da kimlik kaynağı olarak yapılandırmak için, tabloda tanımlanan bağlantı noktaları açılmalıdır.  Yapılandırma adımları için bkz. [CloudSimple özel bulutu 'Nda vCenter için kimlik sağlayıcısı olarak Azure ad kullanma](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/) .
+Şirket içi Active Directory 'yi özel bulut vCenter 'da kimlik kaynağı olarak yapılandırmak için, tabloda tanımlanan bağlantı noktaları açılmalıdır.  Yapılandırma adımları için bkz. [CloudSimple özel bulutu 'Nda vCenter için kimlik sağlayıcısı olarak Azure ad kullanma](./azure-ad.md) .
 
 | Bağlantı noktası         | Kaynak                           | Hedef                                         | Amaç                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -59,6 +60,6 @@ Azure ExpressRoute veya siteden siteye VPN kullanılarak, şirket içi ağdan Cl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [VLAN 'Ları ve alt ağları oluşturma ve yönetme](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
-* [Azure ExpressRoute kullanarak şirket içi ağa bağlanma](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
-* [Şirket içinden siteden siteye VPN kurma](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)
+* [VLAN 'Ları ve alt ağları oluşturma ve yönetme](./create-vlan-subnet.md)
+* [Azure ExpressRoute kullanarak şirket içi ağa bağlanma](./on-premises-connection.md)
+* [Şirket içinden siteden siteye VPN kurma](./vpn-gateway.md)

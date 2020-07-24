@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: abf9610dd67c82af0da9a629245ea792bd5a3402
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e477b95f43c091bf17ec54d2fef9f971d5f6986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170760"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000169"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Depolama şifrelemesiyle içeriğinizi şifreleme 
 
 > [!NOTE]
-> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 >   
 
 AES-256 bit şifrelemeyi kullanarak içeriğinizi yerel olarak şifrelemeniz ve sonra geri kalanı şifreli olarak depolandığı Azure depolama 'ya yüklemeniz kesinlikle önerilir.
@@ -49,8 +49,8 @@ Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi ala
 |Şifreleme seçeneği|Açıklama|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
-|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure depolama tarafından sunulan, Azure veya müşteri tarafından yönetilen anahtar olan sunucu tarafı şifrelemesi|Desteklenir|Desteklenir|
-|[Depolama Istemci tarafı şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama tarafından sunulan istemci tarafı şifreleme, Key Vault ' de müşteri tarafından yönetilen anahtar|Desteklenmez|Desteklenmez|
+|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan, Azure veya müşteri tarafından yönetilen anahtar olan sunucu tarafı şifrelemesi|Desteklenir|Desteklenir|
+|[Depolama Istemci tarafı şifrelemesi](../../storage/common/storage-client-side-encryption.md)|Azure depolama tarafından sunulan istemci tarafı şifreleme, Key Vault ' de müşteri tarafından yönetilen anahtar|Desteklenmez|Desteklenmez|
 
 <sup>1</sup> Media Services, şifresiz ve herhangi bir şifreleme formu olmadan içerik işlemeyi desteklese de, bunu yapmanız önerilmez.
 
@@ -75,7 +75,7 @@ Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içe
 1. Depolama şifrelemesi için rastgele bir 32 baytlık AES anahtarı oluşturun. 
    
     32 baytlık AES anahtarı, varlığınızın içerik anahtarıdır. Bu, söz konusu varlıkla ilişkili tüm dosyaların şifre çözme sırasında aynı içerik anahtarını kullanması gerektiği anlamına gelir. 
-2. İçerik anahtarınızı şifrelemek için kullanılması gereken doğru X. 509.952 sertifikasını almak için [Getprotectionkeyıd](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) ve [getprotectionkey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) yöntemlerini çağırın.
+2. İçerik anahtarınızı şifrelemek için kullanılması gereken doğru X. 509.952 sertifikasını almak için [Getprotectionkeyıd](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) ve [getprotectionkey](/rest/api/media/operations/rest-api-functions#getprotectionkey) yöntemlerini çağırın.
 3. İçerik anahtarınızı X. 509.440 sertifikasının ortak anahtarıyla şifreleyin. 
    
    Media Services .NET SDK, şifrelemeyi yaparken OAEP ile RSA kullanır.  Bir .NET örneğini [Encryptsymmetrickeydata işlevinde](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)görebilirsiniz.
@@ -115,7 +115,7 @@ Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içe
 
     İstek gövdesi özelliği    | Açıklama
     ---|---
-    Kimlik | ContentKey KIMLIĞI, "NB: KID: UUID:" biçiminde şu biçim kullanılarak oluşturulur \<NEW GUID> .
+    Id | ContentKey KIMLIĞI, "NB: KID: UUID:" biçiminde şu biçim kullanılarak oluşturulur \<NEW GUID> .
     ContentKeyType | İçerik anahtar türü, anahtarı tanımlayan bir tamsayıdır. Depolama şifreleme biçimi için değer 1 ' dir.
     EncryptedContentKey | 256 bitlik (32 bayt) bir değer olan yeni bir içerik anahtarı değeri oluşturacağız. Anahtar, Getprotectionkeyıd ve GetProtectionKey yöntemleri için bir HTTP GET isteği yürüterek Microsoft Azure Media Services elde ettiğimiz depolama şifreleme X. 509.440 sertifikası kullanılarak şifrelenir. Örnek olarak, aşağıdaki .NET koduna bakın: [burada](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)tanımlanan **Encryptsymmetrickeydata** yöntemi.
     Protectionkeyıd | Bu, içerik anahtarımızı şifrelemek için kullanılan depolama şifrelemesi X. 509.440 sertifikası için koruma anahtarı KIMLIĞIDIR.
@@ -331,7 +331,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="create-an-assetfile"></a>Assetdosyası oluşturma
-[Assetfile](https://docs.microsoft.com/rest/api/media/operations/assetfile) varlığı bir blob kapsayıcısında depolanan bir videoyu veya ses dosyasını temsil eder. Bir varlık dosyası her zaman bir varlıkla ilişkilendirilir ve bir varlık bir veya daha fazla varlık dosyası içerebilir. Bir varlık dosya nesnesi bir blob kapsayıcısındaki dijital dosyayla ilişkilendirilmediğinde Media Services kodlayıcı görevi başarısız olur.
+[Assetfile](/rest/api/media/operations/assetfile) varlığı bir blob kapsayıcısında depolanan bir videoyu veya ses dosyasını temsil eder. Bir varlık dosyası her zaman bir varlıkla ilişkilendirilir ve bir varlık bir veya daha fazla varlık dosyası içerebilir. Bir varlık dosya nesnesi bir blob kapsayıcısındaki dijital dosyayla ilişkilendirilmediğinde Media Services kodlayıcı görevi başarısız olur.
 
 **Assetfile** örneği ve gerçek medya dosyası iki ayrı nesne. Maldosya örneği medya dosyası hakkındaki meta verileri içerir, ancak medya dosyası gerçek medya içeriğini içerir.
 

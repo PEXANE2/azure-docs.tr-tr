@@ -7,11 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002361"
 ---
 # <a name="what-are-device-templates"></a>Cihaz şablonları nedir?
 
@@ -28,7 +29,7 @@ Bir cihaz şablonu aşağıdaki bölümleri içerir:
 - _Özelleştirmeler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin DCM içindeki bazı tanımları geçersiz kılmasına izin verir. Çözüm geliştiricisi, uygulamanın bir özelliğin görünen adını değiştirme veya telemetri değerini göstermek için kullanılan renk gibi bir değeri nasıl işleyeceğini iyileştirmek isterse, özelleştirmeler yararlı olur. Özelleştirmeler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
 - _Görünümler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin Cihazdaki verileri görüntülemek ve bir cihazı yönetmek ve denetlemek için form görselleştirmeleri tanımlamasına olanak sağlar. Görünümler DCM, bulut özellikleri ve özelleştirmeleri kullanır. Görünümler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
 
-## <a name="device-capability-models"></a>Cihaz yetenek modelleri
+## <a name="device-capability-models"></a>Cihaz özelliği modelleri
 
 Bir DCM, cihazın IoT Central uygulamanızla nasıl etkileşime gireceğini tanımlar. Cihaz geliştiricisi, cihazın IoT Central cihazı izleyip yönetebilmesi için DCM 'de tanımlanan davranışları uyguladığından emin olmalıdır. Bir DCM, bir veya daha fazla _arabirimden_oluşur ve her arabirim _telemetri_ türlerinin, _cihaz özelliklerinin_ve _komutlarının_bir koleksiyonunu tanımlayabilir. Çözüm geliştiricisi, DCM 'yi bir cihaz şablonuna tanımlayan bir JSON dosyasını içeri aktarabilir veya bir DCM oluşturmak veya düzenlemek için IoT Central Web Kullanıcı arabirimini kullanabilirsiniz. Web Kullanıcı arabirimi kullanılarak yapılan bir DCM üzerinde yapılan değişiklikler, [cihaz şablonunun sürümlendirimesini](./howto-version-device-template.md)gerektirir.
 
@@ -220,6 +221,6 @@ Bir görünüme ekleyebileceğiniz telemetri, Özellikler ve komutlar, cihaz şa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cihaz geliştiricisi olarak cihaz şablonları hakkında bilgi edindiğinize göre, cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarını IoT Central nasıl güvenlik altına aldığı hakkında daha fazla bilgi edinmek için, önerilen bir sonraki adım [Azure IoT Central 'a](./concepts-get-connected.md) bağlanın.
+Cihaz geliştiricisi olarak cihaz şablonları hakkında bilgi edindiğinize göre, bir sonraki adım önerilir IoT Central bir cihaz alışverişi hakkında daha fazla bilgi edinmek için [telemetri, özellik ve komut yüklerini](./concepts-telemetry-properties-commands.md) okumalıdır.
 
 Çözüm geliştiricisi olarak bir sonraki adım, bir cihaz şablonu oluşturma hakkında daha fazla bilgi edinmek için [Azure IoT Central uygulamanızda yeni bir IoT cihaz türü tanımlama](./howto-set-up-template.md) ' ı okumalıdır.

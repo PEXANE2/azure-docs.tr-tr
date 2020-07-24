@@ -7,13 +7,17 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84249581"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001932"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central uygulamasına bağlı cihazların genel sistem durumunu izleme
+
+> [!NOTE]
+> Ölçümler yalnızca sürüm 3 IoT Central uygulamalarında kullanılabilir. Uygulamanızın sürümünü nasıl denetleyeceğinizi öğrenmek için, bkz. [uygulamanız hakkında](./howto-get-app-info.md).
 
 *Bu makale işleçler ve yöneticiler için geçerlidir.*
 
@@ -34,25 +38,15 @@ Portalda IoT Central ölçümleri görüntülemek için:
 1. Portalda IoT Central uygulama kaynağına gidin. Varsayılan olarak, IoT Central kaynaklar **ıotc**adlı bir kaynak grubunda bulunur.
 1. Uygulamanızın ölçümlerinden bir grafik oluşturmak için **izleme** bölümünde **ölçümler** ' i seçin.
 
+![Azure ölçümleri](media/howto-monitor-application-health/metrics.png)
+
 ### <a name="azure-portal-permissions"></a>Azure portal izinleri
 
 Azure portal ölçümlerine erişim, [Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)tarafından yönetilir. Kullanıcılara erişim izni vermek için IoT Central uygulama/kaynak grubu/aboneliğine Kullanıcı eklemek için Azure portal kullanın. IoT Central uygulamasına zaten eklendikleri halde portala bir Kullanıcı eklemeniz gerekir. Daha ayrıntılı erişim denetimi için [Azure yerleşik rollerini](../../role-based-access-control/built-in-roles.md) kullanın.
 
 ## <a name="iot-central-metrics"></a>IoT Central ölçümleri
 
-Aşağıdaki tabloda IoT Central için şu anda kullanılabilen ölçümler açıklanmaktadır:
-
-| Ölçüm | Ölçüm görünen adı | Birim | Toplama türü | Açıklama |
-|--------|---------------------|------|------------------|-------------|
-| connectedDeviceCount         | Toplam bağlı cihaz sayısı                              | Sayı  | Toplam             | IoT Central bağlı cihazların sayısı                               |
-| C2D. Property. Read. Success    | IoT Central 'den başarılı cihaz özelliği okumaları    | Sayı  | Toplam             | IoT Central başlatılan tüm başarılı Özellik okuma sayısı    |
-| C2D. Property. Read. Failure    | IoT Central 'den cihaz özelliği okumaları başarısız oldu        | Sayı  | Toplam             | IoT Central başlatılan tüm başarısız Özellik okuma sayısı        |
-| D2C. Property. Read. Success    | Cihazlardan başarılı cihaz özelliği okumaları        | Sayı  | Toplam             | Cihazlardan başlatılan tüm başarılı Özellik okuma sayısı        |
-| D2C. Property. Read. Failure    | Cihazlardan cihaz özelliği okumaları başarısız oldu            | Sayı  | Toplam             | Cihazlardan başlatılan tüm başarısız Özellik okuma sayısı            |
-| C2D. Property. Update. Success  | IoT Central 'den başarılı cihaz özelliği güncelleştirmeleri  | Sayı  | Toplam             | IoT Central başlatıldığı tüm başarılı özellik güncelleştirmeleri sayısı  |
-| C2D. Property. Update. Failure  | IoT Central cihaz özelliği güncelleştirmeleri başarısız oldu      | Sayı  | Toplam             | IoT Central tarafından başlatılan tüm başarısız özellik güncelleştirmelerinin sayısı      |
-| D2C. Property. Update. Success  | Cihazlardan başarılı cihaz özelliği güncelleştirmeleri      | Sayı  | Toplam             | Cihazlardan başlatılan tüm başarılı özellik güncelleştirmelerinin sayısı      |
-| D2C. Property. Update. Failure  | Cihazlardan cihaz özelliği güncelleştirmeleri başarısız oldu          | Sayı  | Toplam             | Cihazlardan başlatılan tüm başarısız özellik güncelleştirmelerinin sayısı          |
+IoT Central için şu anda kullanılabilen ölçümlerin listesi için bkz. [Azure izleyici Ile desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Ölçümler ve faturalar
 

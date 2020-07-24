@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
-ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000960"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services canlı olay hata kodları
 
@@ -26,9 +26,9 @@ Bu bölümdeki tablolarda, [canlı olay](live-events-outputs-concept.md) hata ko
 
 ## <a name="liveeventconnectionrejected"></a>Liveeventconnectionreddedildi
 
-Canlı bir olay için [Event Grid](https://docs.microsoft.com/azure/event-grid/) olaylarına abone olduğunuzda, [Liveeventconnectionreddedildi](media-services-event-schemas.md#liveeventconnectionrejected) olayından aşağıdaki hatalardan birini görebilirsiniz.
+Canlı bir olay için [Event Grid](../../event-grid/index.yml) olaylarına abone olduğunuzda, [Liveeventconnectionreddedildi](media-services-event-schemas.md#liveeventconnectionrejected) olayından aşağıdaki hatalardan birini görebilirsiniz.
 
-| Sonuç kodu | Description |
+| Sonuç kodu | Açıklama |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Hatalı alma URL 'SI |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | IP izin verilenler listesinde kodlayıcı IP 'si yok |
@@ -46,7 +46,7 @@ Canlı bir olay için [Event Grid](https://docs.microsoft.com/azure/event-grid/)
 
 [Liveeventencoderconnected](media-services-event-schemas.md#liveeventencoderdisconnected) olayında aşağıdaki hatalardan birini görebilirsiniz.
 
-|Sonuç kodu|Description|
+|Sonuç kodu|Açıklama|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|RTMP oturumu izin verilen süre sınırı boyunca boşta kaldıktan sonra zaman aşımına uğradı.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|Video veya ses FLVTag zaman damgası, RTMP kodlayıcısından geçersizdir.|

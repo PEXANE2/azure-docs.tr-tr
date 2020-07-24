@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 373b863441eb21b52a18bbaece10779260eaeb7a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 76717c580136d23030565c5476f8b282897784a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000423"
 ---
 # <a name="create-content-keys-with-rest"></a>REST ile içerik anahtarları oluşturma
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içe
 1. Rastgele bir 16 baytlık AES anahtarı (ortak ve zarf şifrelemesi için) veya 32 baytlık AES anahtarını (depolama şifrelemesi için) rastgele oluşturun. 
    
     Bu, varlığınızın içerik anahtarıdır. Bu, söz konusu varlıkla ilişkili tüm dosyaların şifre çözme sırasında aynı içerik anahtarını kullanması gerektiği anlamına gelir. 
-2. İçerik anahtarınızı şifrelemek için kullanılması gereken doğru X. 509.952 sertifikasını almak için [Getprotectionkeyıd](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) ve [getprotectionkey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) yöntemlerini çağırın.
+2. İçerik anahtarınızı şifrelemek için kullanılması gereken doğru X. 509.952 sertifikasını almak için [Getprotectionkeyıd](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) ve [getprotectionkey](/rest/api/media/operations/rest-api-functions#getprotectionkey) yöntemlerini çağırın.
 3. İçerik anahtarınızı X. 509.440 sertifikasının ortak anahtarıyla şifreleyin. 
    
    Media Services .NET SDK, şifrelemeyi yaparken OAEP ile RSA kullanır.  [Encryptsymmetrickeydata işlevinde](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)bir örnek görebilirsiniz.
@@ -268,4 +268,3 @@ HTTP/1.1 204 No Content
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

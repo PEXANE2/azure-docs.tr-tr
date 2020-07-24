@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8075de6690026a6d7ee08a581985744cf88ec6f4
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 71e336ffac557c33aa803cf0e9c123c3bae9427d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000610"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dinamik şifreleme: içerik anahtarı yetkilendirme ilkesini yapılandırma  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -31,7 +31,7 @@ Bir varlığı şifrelemek Media Services isterseniz, bir şifreleme anahtarın�
 
 Bir akış bir oyuncu tarafından istendiğinde, Media Services AES veya PlayReady şifrelemesini kullanarak içeriğinizi dinamik olarak şifrelemek için belirtilen anahtarı kullanır. Oynatıcı, akışın şifresini çözmek için anahtar teslim hizmetinden anahtarı ister. Kullanıcının anahtarı almak için yetkilendirilip yetkilendirilmediğini belirleme hizmeti, anahtar için belirttiğiniz yetkilendirme ilkelerini değerlendirir.
 
-Media Services, anahtar isteğinde bulunan kullanıcıların kimlik doğrulamasını yapmanın birden çok yöntemini destekler. İçerik anahtarı yetkilendirme ilkesi, açık veya belirteç kısıtlaması kullanarak bir veya daha fazla yetkilendirme kısıtlamalarına sahip olabilir. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services basit Web belirteci ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) ve JSON Web token (JWT) biçimlerindeki belirteçleri destekler.
+Media Services, anahtar isteğinde bulunan kullanıcıların kimlik doğrulamasını yapmanın birden çok yöntemini destekler. İçerik anahtarı yetkilendirme ilkesi, açık veya belirteç kısıtlaması kullanarak bir veya daha fazla yetkilendirme kısıtlamalarına sahip olabilir. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services basit Web belirteci ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) ve JSON Web token (JWT) biçimlerindeki belirteçleri destekler.
 
 Media Services STS sağlamıyor. Belirteçleri vermek için özel bir STS oluşturabilir veya Azure Active Directory (Azure AD) kullanabilirsiniz. STS, belirtilen anahtarla imzalanmış bir belirteç oluşturacak ve belirteç kısıtlama yapılandırmasında (Bu makalede açıklandığı gibi) belirttiğiniz talepler verecek şekilde yapılandırılmalıdır. Belirteç geçerliyse ve belirteçteki talepler içerik anahtarı için yapılandırılananlarla eşleşiyorsa, Media Services anahtar teslim hizmeti, istemciye şifreleme anahtarını döndürür.
 
@@ -490,4 +490,3 @@ public enum ContentKeyDeliveryType
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bir içerik anahtarının yetkilendirme ilkesini yapılandırdığınıza göre, bkz. [varlık teslim Ilkesini yapılandırma](media-services-rest-configure-asset-delivery-policy.md).
-

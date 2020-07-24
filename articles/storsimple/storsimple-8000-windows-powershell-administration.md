@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999526"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>StorSimple için Windows PowerShell’i kullanarak cihazınızı yönetme
 
@@ -29,7 +29,7 @@ Bu makaleyi okuduktan sonra şunları yapabilirsiniz:
 
 > [!NOTE]
 > * StorSimple için Windows PowerShell cmdlet 'leri, StorSimple cihazınızı bir seri konsolundan veya Windows PowerShell uzaktan iletişim yoluyla uzaktan yönetmenize olanak sağlar. Bu arabirimde kullanılabilecek tek tek cmdlet 'ler hakkında daha fazla bilgi için, [StorSimple için Windows PowerShell için cmdlet başvurusuna](https://technet.microsoft.com/library/dn688168.aspx)gidin.
-> * Azure PowerShell StorSimple cmdlet 'leri, komut satırından StorSimple hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan farklı cmdlet koleksiyonlardır. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [Azure StorSimple cmdlet başvurusuna](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)gidin.
+> * Azure PowerShell StorSimple cmdlet 'leri, komut satırından StorSimple hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan farklı cmdlet koleksiyonlardır. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [Azure StorSimple cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)gidin.
 
 
 Aşağıdaki yöntemlerden birini kullanarak StorSimple için Windows PowerShell erişebilirsiniz:
@@ -60,13 +60,13 @@ Seri konsolundan Windows PowerShell arabirimine bağlanmak için aşağıdaki Pu
    | Ek klavye özelliklerini etkinleştir |Denetim-alt, AltGr 'tan farklı |
    
     ![Desteklenen Putty ayarları](./media/storsimple-windows-powershell-administration/IC740877.png)
-3. **Uygula**'ya tıklayın.
+3. **Uygula**’ya tıklayın.
 4. **Kategori** bölmesinde **çeviri**' yi seçin.
 5. **Uzak karakter kümesi** liste kutusunda **UTF-8**' i seçin.
 6. **Çizgi çizim karakterlerinin Işlenmesiyle**, **Unicode çizgi çizim kod noktalarını kullan**' ı seçin. Aşağıdaki ekran görüntüsünde doğru PuTTY seçimleri gösterilmektedir.
    
     ![UTF Putty ayarları](./media/storsimple-windows-powershell-administration/IC740878.png)
-7. **Uygula**'ya tıklayın.
+7. **Uygula**’ya tıklayın.
 
 Artık, aşağıdaki adımları uygulayarak cihaz seri konsoluna bağlanmak için PuTTY kullanabilirsiniz.
 

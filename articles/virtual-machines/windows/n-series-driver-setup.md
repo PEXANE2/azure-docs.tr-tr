@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5dfcb4abc7a6859955bc36fad2cee893a78c79cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726574"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998994"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler 
 
@@ -22,7 +23,7 @@ NVıDıA GPU 'Lar tarafından desteklenen Azure N serisi VM 'lerinin GPU Özelli
 
 NVıDıA GPU sürücülerini el ile yüklemeyi seçerseniz, bu makale desteklenen işletim sistemleri, sürücüler ve yükleme ve doğrulama adımları sağlar. [Linux sanal makineleri](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)için el ile sürücü kurulum bilgileri de mevcuttur.
 
-Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU WINDOWS VM boyutları](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU WINDOWS VM boyutları](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json). 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
@@ -52,19 +53,17 @@ GPU cihaz durumunu sorgulamak için, sürücüyle birlikte yüklenen [NVIDIA-SMI
 
 ## <a name="rdma-network-connectivity"></a>RDMA ağ bağlantısı
 
-RDMA ağ bağlantısı, NC24r gibi, aynı Kullanılabilirlik kümesinde veya bir sanal makine ölçek kümesindeki tek bir yerleştirme grubunda dağıtılan gibi, RDMA özellikli N serisi VM 'lerde etkinleştirilebilir. RDMA bağlantısı sağlayan Windows ağ cihazı sürücülerini yüklemek için HpcVmDrivers uzantısının eklenmesi gerekir. VM uzantısını RDMA özellikli N serisi bir VM 'ye eklemek için Azure Resource Manager [Azure PowerShell](/powershell/azure/overview) cmdlet 'lerini kullanın.
+RDMA ağ bağlantısı, NC24r gibi, aynı Kullanılabilirlik kümesinde veya bir sanal makine ölçek kümesindeki tek bir yerleştirme grubunda dağıtılan gibi, RDMA özellikli N serisi VM 'lerde etkinleştirilebilir. RDMA bağlantısı sağlayan Windows ağ cihazı sürücülerini yüklemek için HpcVmDrivers uzantısının eklenmesi gerekir. VM uzantısını RDMA özellikli N serisi bir VM 'ye eklemek için Azure Resource Manager [Azure PowerShell](/powershell/azure/) cmdlet 'lerini kullanın.
 
 Batı ABD bölgesinde myVM adlı mevcut bir RDMA özellikli VM 'ye en son sürüm 1,1 HpcVMDrivers uzantısını yüklemek için:
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Daha fazla bilgi için bkz. [Windows Için sanal makine uzantıları ve özellikleri](extensions-features.md).
+  Daha fazla bilgi için bkz. [Windows Için sanal makine uzantıları ve özellikleri](../extensions/features-windows.md).
 
-RDMA ağı, [MICROSOFT MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) veya Intel MPI 5. x ile çalışan uygulamalar Için Ileti geçirme arabirimi (MPI) trafiğini destekler. 
+RDMA ağı, [MICROSOFT MPI](/message-passing-interface/microsoft-mpi) veya Intel MPI 5. x ile çalışan uygulamalar Için Ileti geçirme arabirimi (MPI) trafiğini destekler. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * NVıDıA Tesla GPU 'Lar için GPU hızlandırmalı uygulamalar oluşturmaya yönelik geliştiriciler ayrıca en son [CUDA araç setini](https://developer.nvidia.com/cuda-downloads)indirebilir ve yükleyebilir. Daha fazla bilgi için bkz. [CUDA Yükleme Kılavuzu](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
-
-

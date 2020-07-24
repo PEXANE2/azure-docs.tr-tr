@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d776362b0447b148c0b2bdedba1287fa56058b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170794"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000202"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST kullanarak Media Services hesabına dosya yükleme  
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "86170794"
 > * [Portal](media-services-portal-upload-files.md)
 > 
 
-Media Services’de dijital dosyalar bir varlığa yüklenir. Varlık [varlığı video](https://docs.microsoft.com/rest/api/media/operations/asset) , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar varlığa yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır. 
+Media Services’de dijital dosyalar bir varlığa yüklenir. Varlık [varlığı video](/rest/api/media/operations/asset) , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar varlığa yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır. 
 
 Bu öğreticide, bir dosya ve onunla ilişkili başka bir işlemi karşıya yüklemeyi öğreneceksiniz:
 
@@ -40,12 +40,12 @@ Bu öğreticide, bir dosya ve onunla ilişkili başka bir işlemi karşıya yük
 > * Karşıya yükleme URL 'sini kullanarak blob depolamaya bir dosya yükleme
 > * Karşıya yüklediğiniz medya dosyası için varlık içinde meta veri oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 - [Azure Portal kullanarak bir Azure Media Services hesabı oluşturun](media-services-portal-create-account.md).
 - [AAD kimlik doğrulamasına genel bakış makalesini Azure Media Services API 'sine](media-services-use-aad-auth-to-access-ams-api.md) göz atın.
-- Ayrıca, [rest makalesine MEDIA SERVICES API 'sine erişmek Için Azure AD kimlik doğrulamasını kullanma](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) konusunu gözden geçirin.
+- Ayrıca, [rest makalesine MEDIA SERVICES API 'sine erişmek Için Azure AD kimlik doğrulamasını kullanma](./media-services-rest-connect-with-aad.md) konusunu gözden geçirin.
 - [Media Services REST API çağrılarında Postman yapılandırma](media-rest-apis-with-postman.md)bölümünde açıklandığı gibi **Postman** 'ı yapılandırın.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
@@ -106,7 +106,7 @@ Bu öğretici için Postman 'ı ayarlama adımları için bkz. [Postman 'ı yap�
 >[!NOTE]
 >Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
 
-Blob depolamaya herhangi bir dosyayı yüklemeden önce, bir varlığa yazma için erişim ilkesi haklarını ayarlayın. Bunu yapmak için AccessPolicies varlık kümesine bir HTTP isteği GÖNDERIN. Oluşturma sonrasında bir DurationInMinutes değeri tanımlayın veya yanıt olarak 500 Iç sunucu hatası iletisi alırsınız. AccessPolicies hakkında daha fazla bilgi için bkz. [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+Blob depolamaya herhangi bir dosyayı yüklemeden önce, bir varlığa yazma için erişim ilkesi haklarını ayarlayın. Bunu yapmak için AccessPolicies varlık kümesine bir HTTP isteği GÖNDERIN. Oluşturma sonrasında bir DurationInMinutes değeri tanımlayın veya yanıt olarak 500 Iç sunucu hatası iletisi alırsınız. AccessPolicies hakkında daha fazla bilgi için bkz. [AccessPolicy](/rest/api/media/operations/accesspolicy).
 
 ### <a name="create-an-access-policy"></a>Erişim ilkesi oluşturma
 
@@ -121,7 +121,7 @@ Blob depolamaya herhangi bir dosyayı yüklemeden önce, bir varlığa yazma iç
 
 ### <a name="overview"></a>Genel Bakış
 
-[Varlık](https://docs.microsoft.com/rest/api/media/operations/asset) , video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil olmak üzere Media Services birden çok tür veya nesne kümesi için bir kapsayıcıdır. REST API bir varlık oluşturmak için POST isteğinin Media Services gönderilmesi ve istek gövdesine varlığınızın herhangi bir özellik bilgisini yerleştirilmesi gerekir.
+[Varlık](/rest/api/media/operations/asset) , video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil olmak üzere Media Services birden çok tür veya nesne kümesi için bir kapsayıcıdır. REST API bir varlık oluşturmak için POST isteğinin Media Services gönderilmesi ve istek gövdesine varlığınızın herhangi bir özellik bilgisini yerleştirilmesi gerekir.
 
 Bir varlık oluştururken ekleyebileceğiniz özelliklerden biri **Seçenekler**. Şu şifreleme seçeneklerinden birini belirtebilirsiniz: **hiçbiri** (varsayılan, şifreleme yok), **storageşifrelenmiştir** (istemci tarafı depolama şifrelemesi ile önceden şifrelenmiş Içerik Için), **CommonEncryptionProtected**veya **EnvelopeEncryptionProtected**. Şifrelenmiş bir varlığınız olduğunda, bir teslim İlkesi yapılandırmanız gerekir. Daha fazla bilgi için bkz. [varlık teslim Ilkelerini yapılandırma](media-services-rest-configure-asset-delivery-policy.md).
 
@@ -144,9 +144,9 @@ Bu örnekte, şifrelenmemiş bir varlık oluşturuyoruz.
 
 AccessPolicy ve Locator kümesine sahip olduğunuzda, gerçek dosya Azure depolama REST API 'Leri kullanılarak bir Azure Blob depolama kapsayıcısına yüklenir. Dosyaları blok Blobları olarak yüklemeniz gerekir. Sayfa Blobları Azure Media Services tarafından desteklenmez.  
 
-Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](/rest/api/storageservices/blob-service-rest-api).
 
-Gerçek karşıya yükleme URL 'sini almak için SAS Konumlandırıcı (aşağıda gösterilmiştir) oluşturun. Konumlandırıcı, bir varlıktaki dosyalara erişmek isteyen istemciler için başlangıç saatini ve bağlantı uç noktası türünü tanımlar. Farklı istemci isteklerini ve ihtiyaçlarını işlemek için, belirli bir AccessPolicy ve varlık çifti için birden çok Konumlandırıcı varlığı oluşturabilirsiniz. Bu belirleyicilerinin her biri, bir URL 'nin kullanılabileceği sürenin uzunluğunu öğrenmek için StartTime değerini ve AccessPolicy DurationInMinutes değerini kullanır. Daha fazla bilgi için bkz. [Locator](https://docs.microsoft.com/rest/api/media/operations/locator).
+Gerçek karşıya yükleme URL 'sini almak için SAS Konumlandırıcı (aşağıda gösterilmiştir) oluşturun. Konumlandırıcı, bir varlıktaki dosyalara erişmek isteyen istemciler için başlangıç saatini ve bağlantı uç noktası türünü tanımlar. Farklı istemci isteklerini ve ihtiyaçlarını işlemek için, belirli bir AccessPolicy ve varlık çifti için birden çok Konumlandırıcı varlığı oluşturabilirsiniz. Bu belirleyicilerinin her biri, bir URL 'nin kullanılabileceği sürenin uzunluğunu öğrenmek için StartTime değerini ve AccessPolicy DurationInMinutes değerini kullanır. Daha fazla bilgi için bkz. [Locator](/rest/api/media/operations/locator).
 
 SAS URL 'SI aşağıdaki biçime sahiptir:
 
@@ -173,11 +173,11 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 ### <a name="overview"></a>Genel Bakış
 
-Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Azure Depolama REST API’sini kullanma](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Blobu koy](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Blobları blob depolamaya yükleme](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Azure Depolama REST API’sini kullanma](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Blobu koy](/rest/api/storageservices/put-blob)
+- [Blobları blob depolamaya yükleme](/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Postman ile karşıya dosya yükleme
 
@@ -209,7 +209,7 @@ Dosyanın yüklenmesi ve meta verilerinin ayarlanmış olması gerekir.
 
 ## <a name="validate"></a>Doğrulama
 
-Dosyanın başarıyla karşıya yüklendiğini doğrulamak için, [assetdosyasını](https://docs.microsoft.com/rest/api/media/operations/assetfile) sorgulamak ve **contentfilesize** (veya diğer ayrıntılar) ' ı yeni varlık içinde görmeyi beklediğiniz gibi karşılaştırmak isteyebilirsiniz. 
+Dosyanın başarıyla karşıya yüklendiğini doğrulamak için, [assetdosyasını](/rest/api/media/operations/assetfile) sorgulamak ve **contentfilesize** (veya diğer ayrıntılar) ' ı yeni varlık içinde görmeyi beklediğiniz gibi karşılaştırmak isteyebilirsiniz. 
 
 Örneğin, aşağıdaki **Get** işlemi, varlık dosyanız için dosya verilerini (veya BigBuckBunny.mp4 dosyası) getirir. Sorgu daha önce ayarladığınız [ortam değişkenlerini](postman-environment.md) kullanıyor.
 
@@ -229,4 +229,3 @@ Yanıt boyut, ad ve diğer bilgileri içerir.
 Karşıya yüklenen varlıklarınızı artık kodlayabilirsiniz. Daha fazla bilgi için bkz. [Varlıkları kodlama](media-services-portal-encode.md).
 
 Yapılandırılmış kapsayıcıya gelen dosyaya göre bir kodlama işi tetiklemek için Azure İşlevleri’ni de kullanabilirsiniz. Daha fazla bilgi için [bu örneğe](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ) bakın.
-

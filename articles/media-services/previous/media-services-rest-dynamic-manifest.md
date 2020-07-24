@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 8166a85d1c3421d95ac2b818e51b6b60e7663165
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9bc351f72f5dac38ebfc1983a7b918d46f5fc8ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000321"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API'si ile Filtreler oluşturma 
 > [!div class="op_single_selector"]
@@ -38,10 +38,10 @@ Bu makalede, filtre oluşturmak, güncelleştirmek ve silmek için REST API 'Ler
 ## <a name="types-used-to-create-filters"></a>Filtre oluşturmak için kullanılan türler
 Şu türler, filtre oluştururken kullanılır:  
 
-* [Filtrele](https://docs.microsoft.com/rest/api/media/operations/filter)
-* [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* [FilterTrackSelect ve FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* [Filtrele](/rest/api/media/operations/filter)
+* [AssetFilter](/rest/api/media/operations/assetfilter)
+* [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* [FilterTrackSelect ve FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 > [!NOTE]
 > 
@@ -217,7 +217,7 @@ x-ms-client-request-id: 00000000
 ```
 
 ## <a name="update-filters"></a>Filtreleri Güncelleştir
-Yeni özellik değerleriyle bir filtreyi güncelleştirmek için PATCH, PUT veya MERGE kullanın.  Bu işlemler hakkında daha fazla bilgi için bkz. [Patch, put, Merge](https://msdn.microsoft.com/library/dd541276.aspx).
+Yeni özellik değerleriyle bir filtreyi güncelleştirmek için PATCH, PUT veya MERGE kullanın.  Bu işlemler hakkında daha fazla bilgi için bkz. [Patch, put, Merge](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893).
 
 Bir filtreyi güncelleştirirseniz akış uç noktasının kuralların yenilenmesi iki dakika kadar sürebilir. İçerik bu filtre kullanılarak sunulduysa (ve proxy 'lerde ve CDN önbelleklerde önbelleğe alınmışsa), bu filtrenin güncelleştirilmesi oynatıcı hatalara neden olabilir. Filtreyi güncelleştirdikten sonra önbelleğin işaretini kaldırın. Bu seçenek mümkün değilse, farklı bir filtre kullanmayı düşünün.  
 
@@ -371,4 +371,3 @@ Aşağıdaki örneklerde, akış URL 'Lerine filtrelerin nasıl ekleneceği gös
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 [Dinamik bildirimlere genel bakış](media-services-dynamic-manifest-overview.md)
-

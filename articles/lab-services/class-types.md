@@ -3,11 +3,12 @@ title: Azure Lab Services üzerinde örnek sınıf türleri | Microsoft Docs
 description: ', Azure Lab Services kullanarak laboratuvarları ayarlayabileceğiniz bazı sınıf türlerini sağlar.'
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8564f5ece9d6df7db852c5ac16f00f1455d013ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001632"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Sınıf türlerine genel bakış-Azure Lab Services
 
@@ -44,11 +45,6 @@ Bu tür Laboratuvarı ayarlama hakkında ayrıntılı bilgi için bkz. [ilişkis
 Öğrencilerle, [jupi not defterlerini](http://jupyter-notebook.readthedocs.io)nasıl kullanacağınızı öğretmek için gereken araçlarla Azure Lab Services bir şablon makinesi ayarlayabilirsiniz. Jupyter Not defterleri, zengin metin ve yürütülebilir [Python](https://www.python.org/) kaynak kodunu not defteri adlı tek bir tuval üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem. Bir not defteri çalıştırmak, giriş ve çıkışları doğrusal bir kaydıyla sonuçlanır.  Bu çıktılar metin, bilgi tabloları, dağılım çizimleri ve daha fazlasını içerebilir.
 
 Bu tür laboratuvar kurulumu hakkında ayrıntılı bilgi için bkz. [Python ve jupi Not defterleri ile veri bilimi öğretmek için laboratuvar ayarlama](class-type-jupyter-notebook.md).
-
-## <a name="mobile-app-development-with-android-studio"></a>Android Studio ile mobil uygulama geliştirme
-Tanıtım amaçlı bir mobil uygulama geliştirme sınıfı öğretmek için Azure Lab Services bir laboratuvar oluşturabilirsiniz. Bu sınıf, [Google Play Store](https://play.google.com/store/apps)yayımlanmakta olabilecek Android mobil uygulamalarına odaklanır.  Öğrenciler, uygulama derlemek için [Android Studio](https://developer.android.com/studio) kullanmayı öğrenin.  [Android Için Visual Studio öykünücüsü](https://visualstudio.microsoft.com/vs/msft-android-emulator/) , uygulamayı yerel olarak test etmek için kullanılır.
-
-Bu tür laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [mobil uygulama geliştirmeyi Android Studio öğretmek için laboratuvar ayarlama](class-type-mobile-dev-android-studio.md).
 
 ## <a name="big-data-analytics"></a>Büyük veri analizi
 Büyük bir veri analizi sınıfı öğretmek için bir GPU Laboratuvarı ayarlayabilirsiniz. Bu tür bir sınıfla, öğrenciler büyük hacimlere yönelik verileri nasıl işleyeceğinizi ve veri öngörüleri türetmede makine ve istatistiksel öğrenme algoritmaları uygulamayı öğreniyor. Öğrenciler için önemli bir amaç, büyük verileri depolamak, yönetmek ve işlemek için araçlar sağlayan Apache Hadoop açık kaynaklı yazılım paketi gibi veri analizi araçlarını kullanmayı öğrenmektir. 

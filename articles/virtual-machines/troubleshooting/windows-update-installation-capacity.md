@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999114"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>İşletim sistemi başlatma sorunlarını giderme – Windows Update yükleme kapasitesi
 
@@ -48,7 +49,7 @@ Bu durumda, işletim sistemi (OS), dosya sisteminde çekirdek dosya oluşturuolu
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
 1. Uzak Masaüstü Bağlantısı kullanarak, onarım sanal makinesine bağlanın.
 
 ### <a name="free-up-space-on-the-disk"></a>Diskte yer açın
@@ -59,10 +60,10 @@ Sorunu gidermek için:
 - Disk Temizleme işlemi gerçekleştirin.
 - Sürücünün parçasını kaldır.
 
-1. Diskin dolu olup olmadığını denetleyin. Disk boyutu 1 TB altındaysa, [PowerShell kullanarak](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)en fazla 1 TB 'a kadar genişletin.
+1. Diskin dolu olup olmadığını denetleyin. Disk boyutu 1 TB altındaysa, [PowerShell kullanarak](../windows/expand-os-disk.md)en fazla 1 TB 'a kadar genişletin.
 1. Disk zaten 1 TB ise disk temizleme gerçekleştirmeniz gerekecektir.
-   1. Veri diskini [bozuk VM 'den](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)ayırın.
-   1. Veri diskini [çalışan BIR VM 'ye](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)bağlayın.
+   1. Veri diskini [bozuk VM 'den](../windows/detach-disk.md)ayırın.
+   1. Veri diskini [çalışan BIR VM 'ye](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)bağlayın.
    1. Boş alan boşaltmak için [Disk Temizleme aracını](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) kullanın.
 1. Yeniden boyutlandırma ve Temizleme işlemi tamamlandıktan sonra, aşağıdaki komutu kullanarak sürücüyü serbest bırakma:
 
@@ -122,4 +123,4 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
    
 ### <a name="rebuild-the-vm"></a>VM 'yi yeniden oluşturma
 
-VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

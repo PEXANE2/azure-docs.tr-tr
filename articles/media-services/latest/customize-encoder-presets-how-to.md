@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2bcd5f0e6229c4130dddb48c1a20de1c711c6fcf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28525c198bb6863e942f5ff33d17226769efdc21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519890"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001154"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Özel bir dönüşümle kodlama-.NET
 
@@ -32,7 +32,7 @@ Azure Media Services ile kodlarken, [akış dosyaları](stream-files-tutorial-wi
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-[Media Services hesabı oluşturma](create-account-cli-how-to.md)
+[Media Services hesabı oluşturma](./create-account-howto.md)
 
 ## <a name="download-the-sample"></a>Örneği indirme
 
@@ -46,9 +46,9 @@ Aşağıdaki komutu kullanarak makinenize tam .NET Core örneği içeren bir Git
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Özel önayar olan bir dönüşüm oluşturma 
 
-Yeni bir [dönüşüm](https://docs.microsoft.com/rest/api/media/transforms)oluştururken, ne zaman çıkış olarak üretmek istediğinizi belirtmeniz gerekir. Gerekli parametre, aşağıdaki kodda gösterildiği gibi bir [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) nesnesidir. Her **TransformOutput** bir **Ön ayar** içerir. **Önceden belirlenmiş** , Istenen **Transformoutput**oluşturmak için kullanılacak video ve/veya ses işleme işlemlerinin adım adım talimatlarını açıklar. Aşağıdaki **Transformoutput** , özel codec ve katman çıkış ayarları oluşturur.
+Yeni bir [dönüşüm](/rest/api/media/transforms)oluştururken, ne zaman çıkış olarak üretmek istediğinizi belirtmeniz gerekir. Gerekli parametre, aşağıdaki kodda gösterildiği gibi bir [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) nesnesidir. Her **TransformOutput** bir **Ön ayar** içerir. **Önceden belirlenmiş** , Istenen **Transformoutput**oluşturmak için kullanılacak video ve/veya ses işleme işlemlerinin adım adım talimatlarını açıklar. Aşağıdaki **Transformoutput** , özel codec ve katman çıkış ayarları oluşturur.
 
-Bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) oluştururken ilk olarak aşağıdaki kodda gösterildiği gibi **Get** yöntemi ile bir dönüşümün zaten var olup olmadığını denetlemeniz gerekir. Media Services v3 'de varlık mevcut değilse (ad üzerinde büyük/küçük harfe duyarsız bir denetim), varlıklarda yöntemleri **Al** **null değeri** döndürür.
+Bir [Dönüşüm](/rest/api/media/transforms) oluştururken ilk olarak aşağıdaki kodda gösterildiği gibi **Get** yöntemi ile bir dönüşümün zaten var olup olmadığını denetlemeniz gerekir. Media Services v3 'de varlık mevcut değilse (ad üzerinde büyük/küçük harfe duyarsız bir denetim), varlıklarda yöntemleri **Al** **null değeri** döndürür.
 
 ### <a name="example"></a>Örnek
 

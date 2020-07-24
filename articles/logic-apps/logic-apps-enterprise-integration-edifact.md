@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c9d80ccac311b02d8734663d99a37804f8280771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115542"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001545"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps'te B2B kurumsal tümleştirme için EDIFACT iletilerini gönderme ve alma
 
@@ -36,7 +36,7 @@ Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDI
 
 ## <a name="create-an-edifact-agreement"></a>EDIOLGU sözleşmesi oluşturma 
 
-1. [Azure Portal](https://portal.azure.com "Azure portal") oturum açın. 
+1. [Azure portalında](https://portal.azure.com "Azure portalı") oturum açın. 
 
 2. Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna "tümleştirme" yazın ve ardından **tümleştirme hesapları**' nı seçin.
 
@@ -63,7 +63,7 @@ Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDI
 
    | Özellik | Açıklama |
    | --- | --- |
-   | Name |Sözleşmenin adı |
+   | Ad |Sözleşmenin adı |
    | Anlaşma türü | EDIOLGU olmalıdır |
    | Ana bilgisayar ortağı |Bir anlaşmanın hem ana bilgisayar hem de Konuk iş ortağı olması gerekir. Ana bilgisayar ortağı, sözleşmeyi yapılandıran kuruluşu temsil eder. |
    | Ana bilgisayar kimliği |Ana bilgisayar ortağı için bir tanımlayıcı |
@@ -251,7 +251,7 @@ Her doğrulama satırını tamamladığınızda, başka bir otomatik olarak ekle
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlamalar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/edifact/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlamalar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/edifact/)bakın.
 
 > [!NOTE]
 > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü [Ise için B2B ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)kullanır.

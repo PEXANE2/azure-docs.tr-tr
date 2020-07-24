@@ -14,17 +14,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c5afe45ce864ba76d5d637df3534d426d39167a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995816"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001001"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>İsteğe bağlı video oynatma oluşturmak için zaman değiştirme ve canlı çıktıları kullanma
 
-Azure Media Services, [canlı çıkış](https://docs.microsoft.com/rest/api/media/liveoutputs) nesnesi canlı akışınızı yakalayıp Media Services hesabınızdaki bir varlığa kaydeden dijital video kaydedicisi gibidir. Kaydedilen içerik, [varlık](https://docs.microsoft.com/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcı hale getirilir (kapsayıcı, hesabınıza bağlı olan Azure Storage hesabıdır). Canlı çıktı ayrıca giden canlı akışın bazı özelliklerini denetlemenize olanak tanır (örneğin, bulut DVR 'ın kapasitesi gibi) veya görüntüleyiciler canlı akışı izlemeye başlayabileceği zaman. Diskteki arşiv, yalnızca canlı çıktının **archiveWindowLength** özelliğinde belirtilen içerik miktarını tutan bir dairesel arşiv "penceresidir". Bu pencerenin dışında kalan içerikler, depolama kapsayıcısından otomatik olarak atılır ve kurtarılamaz. ArchiveWindowLength değeri, DVR 'ın kapasitesini belirten bir ISO-8601 TimeSpan süresini (örneğin, PTHH: MM: SS) temsil eder. Değer en az bir dakika ile en fazla 25 saat arasında ayarlanabilir.
+Azure Media Services, [canlı çıkış](/rest/api/media/liveoutputs) nesnesi canlı akışınızı yakalayıp Media Services hesabınızdaki bir varlığa kaydeden dijital video kaydedicisi gibidir. Kaydedilen içerik, [varlık](/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcı hale getirilir (kapsayıcı, hesabınıza bağlı olan Azure Storage hesabıdır). Canlı çıktı ayrıca giden canlı akışın bazı özelliklerini denetlemenize olanak tanır (örneğin, bulut DVR 'ın kapasitesi gibi) veya görüntüleyiciler canlı akışı izlemeye başlayabileceği zaman. Diskteki arşiv, yalnızca canlı çıktının **archiveWindowLength** özelliğinde belirtilen içerik miktarını tutan bir dairesel arşiv "penceresidir". Bu pencerenin dışında kalan içerikler, depolama kapsayıcısından otomatik olarak atılır ve kurtarılamaz. ArchiveWindowLength değeri, DVR 'ın kapasitesini belirten bir ISO-8601 TimeSpan süresini (örneğin, PTHH: MM: SS) temsil eder. Değer en az bir dakika ile en fazla 25 saat arasında ayarlanabilir.
 
-Canlı bir olay ve canlı çıkışları arasındaki ilişki geleneksel TV yayınına benzer, bu da bir kanalın (canlı olay) sabit bir video akışını ve bir kaydın (canlı çıktı) belirli bir zaman segmentine (örneğin, 6:12 ila 7:00PM) kapsamı vardır. Akışın canlı olayına akışını tamamladıktan sonra bir varlık, canlı çıkış ve akış Bulucu oluşturarak akış olayını başlatabilirsiniz. Canlı çıktı akışı Arşivle ve [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints)aracılığıyla görüntüleyiciler için kullanılabilir hale getirir. Farklı arşiv uzunlukları ve ayarları ile canlı bir olayda birden fazla canlı çıkış (en fazla üç maksimum) oluşturabilirsiniz. Canlı akış iş akışı hakkında daha fazla bilgi için, [genel adımlar](live-streaming-overview.md#general-steps) bölümüne bakın.
+Canlı bir olay ve canlı çıkışları arasındaki ilişki geleneksel TV yayınına benzer, bu da bir kanalın (canlı olay) sabit bir video akışını ve bir kaydın (canlı çıktı) belirli bir zaman segmentine (örneğin, 6:12 ila 7:00PM) kapsamı vardır. Akışın canlı olayına akışını tamamladıktan sonra bir varlık, canlı çıkış ve akış Bulucu oluşturarak akış olayını başlatabilirsiniz. Canlı çıktı akışı Arşivle ve [akış uç noktası](/rest/api/media/streamingendpoints)aracılığıyla görüntüleyiciler için kullanılabilir hale getirir. Farklı arşiv uzunlukları ve ayarları ile canlı bir olayda birden fazla canlı çıkış (en fazla üç maksimum) oluşturabilirsiniz. Canlı akış iş akışı hakkında daha fazla bilgi için, [genel adımlar](live-streaming-overview.md#general-steps) bölümüne bakın.
 
 ## <a name="using-a-dvr-during-an-event"></a>Bir olay sırasında DVR kullanma
 
@@ -38,7 +39,7 @@ Canlı bir olay, en fazla üç eşzamanlı çalışan canlı çıkışı destekl
 
 ## <a name="creating-an-archive-for-on-demand-playback"></a>İsteğe bağlı kayıttan yürütme için Arşiv oluşturma
 
-Canlı çıktının silindiği varlık, canlı çıktı silindiğinde otomatik olarak isteğe bağlı bir varlık haline gelir. Canlı bir olay durdurulmadan önce tüm canlı çıktıları silmeniz gerekir. Durdurulduğunda canlı çıktıları otomatik olarak kaldırmak için, bir [Removeoutputsonstop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) isteğe bağlı bayrağını kullanabilirsiniz.
+Canlı çıktının silindiği varlık, canlı çıktı silindiğinde otomatik olarak isteğe bağlı bir varlık haline gelir. Canlı bir olay durdurulmadan önce tüm canlı çıktıları silmeniz gerekir. Durdurulduğunda canlı çıktıları otomatik olarak kaldırmak için, bir [Removeoutputsonstop](/rest/api/media/liveevents/stop#request-body) isteğe bağlı bayrağını kullanabilirsiniz.
 
 Olayı durdurup sildikten sonra bile, varlık silinmedikçe, kullanıcılar arşivlenmiş içeriğinizi isteğe bağlı bir video olarak akışa alabilir. Bir olay tarafından kullanılıyorsa bir varlık silinmemelidir; önce olayın silinmesi gerekir.
 

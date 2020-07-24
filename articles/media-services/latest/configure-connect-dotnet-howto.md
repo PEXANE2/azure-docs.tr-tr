@@ -14,19 +14,20 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c91b71b952bb68761015325a00ff6926c62dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001324"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
 
 Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 .NET SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun
+- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun
 - .NET geliştirme için kullanmak istediğiniz bir araç yükler. Bu makaledeki adımlarda, [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)'ın nasıl kullanılacağı gösterilmektedir. Visual Studio Code kullanabilirsiniz, bkz. [C# ile çalışma](https://code.visualstudio.com/docs/languages/csharp). Ya da farklı bir kod düzenleyicisi kullanabilirsiniz.
 
 > [!IMPORTANT]
@@ -38,7 +39,7 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 1. **Dosya** menüsünde **Yeni**  >  **Proje**' ye tıklayın. 
 1. **.NET Core** konsol uygulaması oluşturun.
 
-Bu konudaki örnek uygulama, hedefler `netcoreapp2.0` . Kod, C# 7,1 ile başlayarak kullanılabilir olan ' Async Main ' kullanır. Daha fazla ayrıntı için bu [bloga](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) bakın.
+Bu konudaki örnek uygulama, hedefler `netcoreapp2.0` . Kod, C# 7,1 ile başlayarak kullanılabilir olan ' Async Main ' kullanır. Daha fazla ayrıntı için bu [bloga](/archive/blogs/benwilli/async-main-is-available-but-hidden) bakın.
 
 ## <a name="add-required-nuget-packages"></a>Gerekli NuGet paketlerini ekleyin
 
@@ -63,7 +64,7 @@ Bu konudaki örnek uygulama, hedefler `netcoreapp2.0` . Kod, C# 7,1 ile başlaya
 
 ### <a name="set-values-in-appsettingsjson"></a>Üzerinde appsettings.jsdeğerleri ayarlama
 
-`az ams account sp create`Komutunu [erişim API 'lerinde](access-api-cli-how-to.md)açıklandığı gibi çalıştırın. Komutu, "appsettings.json" uygulamanıza kopyalamanız gereken JSON döndürür.
+`az ams account sp create`Komutunu [erişim API 'lerinde](./access-api-howto.md)açıklandığı gibi çalıştırın. Komutu, "appsettings.json" uygulamanıza kopyalamanız gereken JSON döndürür.
  
 ## <a name="add-configuration-file"></a>Yapılandırma dosyasını ekleme
 
@@ -242,5 +243,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [.NET başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET başvurusu](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * Daha fazla kod örneği için bkz. [.NET SDK örnek](https://github.com/Azure-Samples/media-services-v3-dotnet) deposu.

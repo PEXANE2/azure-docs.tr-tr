@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2225633e5621c51067b64af2968a0dc0f5da87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75428718"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001426"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Işlevleri 'ni ve Azure Service Bus kullanarak mantıksal uygulamaları çağırın veya tetikleyin
 
 Uzun süre çalışan bir dinleyici veya görev dağıtmanız gerektiğinde, bir mantıksal uygulamayı tetiklemek için [Azure işlevleri](../azure-functions/functions-overview.md) 'ni kullanabilirsiniz. Örneğin, bir [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) kuyruğu üzerinde dinleme yapan bir Azure işlevi oluşturabilir ve bir mantıksal uygulamayı anında iletme tetikleyicisi olarak tetikleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -118,11 +119,11 @@ Sonra tetikleyici olarak davranan ve kuyruğu dinleyen işlevi oluşturun.
 
    * Bu örnek `application/json` ileti içerik türünü kullanır, ancak bu türü gerektiği gibi değiştirebilirsiniz.
    
-   * Eş zamanlı çalışan işlevlerin, yüksek birimlerin veya ağır yükün olması nedeniyle, [HttpClient sınıfının](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) `using` deyimle örneklemeyi ve Istek başına HttpClient örnekleri oluşturmayı önleyin. Daha fazla bilgi için bkz. [Esnek http isteklerini uygulamak Için HttpClientFactory kullanma](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   * Eş zamanlı çalışan işlevlerin, yüksek birimlerin veya ağır yükün olması nedeniyle, [HttpClient sınıfının](/dotnet/api/system.net.http.httpclient) `using` deyimle örneklemeyi ve Istek başına HttpClient örnekleri oluşturmayı önleyin. Daha fazla bilgi için bkz. [Esnek http isteklerini uygulamak Için HttpClientFactory kullanma](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
    
    * Mümkünse, HTTP istemcilerinin örneğini yeniden kullanın. Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](../azure-functions/manage-connections.md).
 
-   Bu örnek, [ `Task.Run` yöntemi](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) [zaman uyumsuz](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) modda kullanır. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
+   Bu örnek, [ `Task.Run` yöntemi](/dotnet/api/system.threading.tasks.task.run) [zaman uyumsuz](/dotnet/csharp/language-reference/keywords/async) modda kullanır. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](/dotnet/csharp/programming-guide/concepts/async/).
 
    ```csharp
    using System;

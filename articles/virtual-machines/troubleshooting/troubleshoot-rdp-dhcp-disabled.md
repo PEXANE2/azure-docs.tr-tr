@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 278d976f044deb8a7387763306cf07f8b6b55d90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 945f8896a844e7a73107df44d03abc7290f4e3fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999148"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP Istemci hizmeti devre dışı bırakıldığından Azure sanal makinelerinde RDP yapılamıyor
 
@@ -204,7 +204,7 @@ Bu sorunu çözmek için seri denetim 'i kullanarak VM için DHCP 'yi etkinleşt
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>İşletim sistemi diskini bir kurtarma VM 'sine iliştirme
 
-1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
+1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](./troubleshoot-recovery-disks-portal-windows.md).
 2. Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı başlatın. Disk Yönetimi konsolunda, eklenen diskin **çevrimiçi** olarak işaretlendiğinden emin olun. Bağlı işletim sistemi diskine atanan sürücü harfini unutmayın.
 3.  Yükseltilmiş bir komut istemi örneği açın (**yönetici olarak çalıştır**). Ardından aşağıdaki betiği çalıştırın. Bu betik, bağlı işletim sistemi diskine atanan sürücü harfinin **F**olduğunu varsayar. Harfi, sanal makinenizin değeri ile uygun şekilde değiştirin.
 
@@ -222,7 +222,7 @@ Bu sorunu çözmek için seri denetim 'i kullanarak VM için DHCP 'yi etkinleşt
     reg unload HKLM\BROKENSYSTEM
     ```
 
-4. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](../windows/troubleshoot-recovery-disks-portal.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
+4. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](./troubleshoot-recovery-disks-portal-windows.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,17 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998961"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından özel bulut vCenter ayrıcalıklarını ilerletin
 
 Özel bulut vCenter 'nize yönetici erişimi için, CloudSimple ayrıcalıklarınızı geçici olarak ilerletebilirsiniz.  Yükseltilmiş ayrıcalıkları kullanarak, VMware çözümlerini yükleyebilir, kimlik kaynakları ekleyebilir ve kullanıcıları yönetebilirsiniz.
 
-Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter erişimi verilebilir.  Yeni kullanıcılar oluştururken, vCenter 'a erişim için onları CloudSimple yerleşik gruplarına ekleyin.  Daha fazla bilgi için bkz. [Cloudsimple özel bulut izin modeli VMware vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/).
+Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter erişimi verilebilir.  Yeni kullanıcılar oluştururken, vCenter 'a erişim için onları CloudSimple yerleşik gruplarına ekleyin.  Daha fazla bilgi için bkz. [Cloudsimple özel bulut izin modeli VMware vCenter](./learn-private-cloud-permissions.md).
 
 > [!CAUTION]
 > Yönetim bileşenleri için herhangi bir yapılandırma değişikliği yapmayın. İlerletilen ayrıcalıklı durum sırasında gerçekleştirilen eylemler sisteminizi olumsuz etkileyebilir veya sisteminizin kullanılamaz hale gelmesine neden olabilir.
@@ -46,7 +47,7 @@ Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter eriş
 
     ![Ayrıcalığı ilerlet iletişim kutusu](media/escalate-private-cloud-privilege-dialog.png)
 
-7. **Tamam**'a tıklayın.
+7. **Tamam** düğmesine tıklayın.
 
 8. Yükseltme işlemi birkaç dakika sürebilir. İşlem tamamlandığında **Tamam**’a tıklayın.
 
@@ -80,12 +81,12 @@ Yönetim görevleriniz tamamlandıktan sonra, ayrıcalıklarınızı geçersiz b
 
 2. **Ön yükseltme**' ye tıklayın.
 
-3. **Tamam**'a tıklayın.
+3. **Tamam** düğmesine tıklayın.
 
 > [!IMPORTANT]
 > Herhangi bir hatayı önlemek için vCenter oturumunu kapatın ve yükseltme ayrıcalıklarından sonra tekrar oturum açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* Yedekleme [iş yükü sanal makinelerini](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/) yedekleme çözümünü yükler
+* [Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory](./set-vcenter-identity.md)
+* Yedekleme [iş yükü sanal makinelerini](./backup-workloads-veeam.md) yedekleme çözümünü yükler

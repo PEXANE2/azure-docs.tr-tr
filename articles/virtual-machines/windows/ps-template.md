@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cafe28be1d7c08c24b728de2476cb2210c6e5bd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58b8a22ff36f85f25bb6a4b22617029fe3858660
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098331"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998876"
 ---
-# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Kaynak Yöneticisi şablonundan Windows sanal makinesi oluşturma
+# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Resource Manager şablonundan bir Windows sanal makinesi oluşturma
 
 Azure Cloud Shell 'den bir Azure Resource Manager şablonu ve Azure PowerShell kullanarak Windows sanal makinesi oluşturmayı öğrenin. Bu makalede kullanılan şablon, tek bir alt ağa sahip yeni bir sanal ağda Windows Server çalıştıran tek bir sanal makine dağıtır. Linux sanal makinesi oluşturmak için bkz. [Azure Resource Manager şablonlarıyla Linux sanal makinesi oluşturma](../linux/create-ssh-secured-vm-from-template.md).
 
@@ -56,7 +56,7 @@ PowerShell 'i Azure Cloud Shell yerine yerel olarak yükleyip kullanmayı tercih
 
 Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
-- Kaynak Yöneticisi şablonlarının nasıl geliştirileceği hakkında bilgi edinmek için bkz. [Azure Resource Manager belgeleri](/azure/azure-resource-manager/).
+- Kaynak Yöneticisi şablonlarının nasıl geliştirileceği hakkında bilgi edinmek için bkz. [Azure Resource Manager belgeleri](../../azure-resource-manager/index.yml).
 - Azure sanal makine şemalarını görmek için bkz. [Azure şablon başvurusu](/azure/templates/microsoft.compute/allversions).
 - Daha fazla sanal makine şablonu örneği görmek için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
 
@@ -66,7 +66,7 @@ Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- Dağıtım ile ilgili sorunlar varsa, [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları gidermeye](../../resource-manager-common-deployment-errors.md)göz atabilirsiniz.
+- Dağıtım ile ilgili sorunlar varsa, [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları gidermeye](../../azure-resource-manager/templates/common-deployment-errors.md)göz atabilirsiniz.
 - [Azure PowerShell modülü Ile Windows VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bölümünde bir sanal makine oluşturma ve yönetme hakkında bilgi edinin.
 
 Şablon oluşturma hakkında daha fazla bilgi edinmek için, dağıttığınız kaynak türlerinin JSON sözdizimini ve özelliklerini görüntüleyin:

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.openlocfilehash: 5e59872a4da0136232652008a2980601428eeab6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f5813cf5ff0d52b57f7a4b55d86195051f217f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796791"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999080"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>CLı kullanarak Genelleştirilmiş görüntü sürümünden VM oluşturma
 
-Paylaşılan görüntü galerisinde depolanan [Genelleştirilmiş görüntü sürümünden](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) bir VM oluşturun. Özel bir görüntü kullanarak bir VM oluşturmak istiyorsanız, bkz. [özel bir GÖRÜNTÜDEN VM oluşturma](vm-specialized-image-version-powershell.md). 
+Paylaşılan görüntü galerisinde depolanan [Genelleştirilmiş görüntü sürümünden](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir VM oluşturun. Özel bir görüntü kullanarak bir VM oluşturmak istiyorsanız, bkz. [özel bir GÖRÜNTÜDEN VM oluşturma](vm-specialized-image-version-powershell.md). 
 
 
 ## <a name="get-the-image-id"></a>Görüntü KIMLIĞINI al
@@ -30,7 +30,7 @@ gallery=myGallery
 az sig image-definition list --resource-group $resourceGroup --gallery-name $gallery --query "[].[name, id]" --output tsv
 ```
 
-## <a name="create-the-vm"></a>Sanal makine oluşturma
+## <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
 [az vm create](/cli/azure/vm#az-vm-create) kullanarak VM oluşturun. Görüntünün en son sürümünü kullanmak için, `--image` görüntü TANıMıNıN kimliğine ayarlayın. 
 

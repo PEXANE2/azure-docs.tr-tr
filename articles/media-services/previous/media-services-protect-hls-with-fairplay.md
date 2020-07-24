@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7f4df99ccd960a6569cd293a86f21359368c139f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058257"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000582"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay veya Microsoft PlayReady ile HLS içeriğinizi koruma
 
 > [!NOTE]
-> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 >
 
 Azure Media Services, aşağıdaki biçimleri kullanarak HTTP Canlı Akışı (HLS) içeriğinizi dinamik olarak şifrelemenizi sağlar:  
@@ -51,7 +51,7 @@ Bu makalede, HLS içeriğinizi Apple FairPlay ile dinamik olarak şifrelemek iç
 
 FairPlay ile şifrelenen HLS 'leri iletmek ve FairPlay lisanslarını iletmek için Media Services kullanılırken aşağıdakiler gereklidir:
 
-  * Bir Azure hesabı. Ayrıntılar için bkz. [Azure Ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+  * Azure hesabı. Ayrıntılar için bkz. [Azure Ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
   * Bir Media Services hesabı. Bir tane oluşturmak için, bkz. [Azure Portal kullanarak Azure Media Services hesabı oluşturma](media-services-portal-create-account.md).
   * [Apple geliştirme programı](https://developer.apple.com/)ile kaydolun.
   * Apple, içerik sahibinin [dağıtım paketini](https://developer.apple.com/contact/fps/)almasını gerektirir. Anahtar güvenlik modülünü (KSM) Media Services ile zaten uygulamış ve son FPS paketini istediğini unutmayın. Son FPS paketinde sertifika oluşturmak ve uygulama gizli anahtarı (ASK) almak için yönergeler vardır. FairPlay yapılandırmak için sorma ' yı kullanın.

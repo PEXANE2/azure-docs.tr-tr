@@ -8,23 +8,24 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
-ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005333"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001494"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Enterprise Integration Pack'i kullanarak Azure Logic Apps'te düz dosyaları kodlama ve kodunu çözme
 
 İşletmeden işletmeye (B2B) senaryosunda bir iş ortağına XML içeriği göndermeden önce, önce bu içeriği kodlamak isteyebilirsiniz. Bir mantıksal uygulama oluşturarak, düz **Dosya** bağlayıcısını kullanarak düz dosyaları kodlayabilir ve kod çözme yapabilirsiniz. Mantıksal uygulamanız, Istek tetikleyicisi, başka bir uygulama veya [Azure Logic Apps tarafından desteklenen diğer bağlayıcılar](../connectors/apis-list.md)gibi çeşitli kaynaklardan gelen bu XML içeriğini alabilir. Daha fazla bilgi için bkz. [Azure Logic Apps](logic-apps-overview.md)nedir?
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * **Düz dosya** bağlayıcısını ve mantıksal uygulamanızın iş akışını başlatan bir tetikleyiciyi kullanmak istediğiniz mantıksal uygulama. **Düz dosya** Bağlayıcısı, yalnızca Tetikleyiciler değil, yalnızca eylemler sağlar. Kodlama veya kod çözme amacıyla XML içeriğini mantıksal uygulamanıza akışa almak için tetikleyiciyi veya başka bir eylemi kullanabilirsiniz. Logic Apps 'e yeni başladıysanız [hızlı başlangıç: ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)konusunu inceleyin.
 
-* Azure aboneliğinizle ilişkili ve **düz dosya** bağlayıcısını kullanmayı planladığınız [mantıksal uygulamayla bağlantılı](logic-apps-enterprise-integration-accounts.md#link-account) bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) . Hem mantıksal uygulamanız hem de tümleştirme hesabınız aynı konumda veya Azure bölgesinde bulunmalıdır.
+* Azure aboneliğinizle ilişkili ve **düz dosya** bağlayıcısını kullanmayı planladığınız [mantıksal uygulamayla bağlantılı](./logic-apps-enterprise-integration-create-integration-account.md#link-account) bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) . Hem mantıksal uygulamanız hem de tümleştirme hesabınız aynı konumda veya Azure bölgesinde bulunmalıdır.
 
 * XML içeriğini kodlamada veya kod çözmede tümleştirme hesabınıza yüklediğiniz düz bir dosya [şeması](logic-apps-enterprise-integration-schemas.md)
 

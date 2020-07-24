@@ -14,22 +14,23 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: tracking-python
-ms.openlocfilehash: 3e6e421d346925f751595ce2fb2d0891e31dc108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b283d04c7d9ddf7639c198625ea69ca958170210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001188"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API 'sine bağlanma-Python
 
 Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 Python SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Python.org](https://www.python.org/downloads/) 'ten Python indirin
 - Ortam değişkenini ayarladığınızdan emin olun `PATH`
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
-- [Erişim API 'leri](access-api-cli-how-to.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve sonraki adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
+- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
+- [Erişim API 'leri](./access-api-howto.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve sonraki adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
 
 > [!IMPORTANT]
 > [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
@@ -54,7 +55,7 @@ pip3 install azure-mgmt-media==1.1.1
 1. Dosyayı en sevdiğiniz düzenleyicide açın
 1. Aşağıdaki kodu dosyaya ekleyin. Kod, gerekli modülleri içeri aktarır ve Media Services bağlanmak için gereken Active Directory kimlik bilgileri nesnesini oluşturur.
 
-      Değişkenlerin değerlerini [erişim API 'lerinden](access-api-cli-how-to.md) aldığınız değerlere ayarlayın
+      Değişkenlerin değerlerini [erişim API 'lerinden](./access-api-howto.md) aldığınız değerlere ayarlayın
 
       ```
       import adal

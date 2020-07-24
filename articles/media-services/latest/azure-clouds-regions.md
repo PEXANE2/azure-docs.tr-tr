@@ -12,11 +12,12 @@ ms.topic: article
 ms.date: 5/28/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196249"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001358"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 'nin bulunduğu bulutlar ve bölgeler
 
@@ -44,7 +45,7 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 - Orta ABD
 - Orta Güney ABD
 - Batı ABD 2
-- Güney Brezilya
+- Brezilya Güney
 
 ## <a name="regionsgeographieslocations"></a>Bölgeler/geographler/konumlar
 
@@ -52,7 +53,7 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 
 ### <a name="region-code-name"></a>Bölge kodu adı
 
-**Konum** parametresini sağlamanız gerektiğinde **konum** değeri olarak bölge kodu adını belirtmeniz gerekir. Hesabınızın bulunduğu bölgenin kod adını almak ve çağrın ' a yönlendirilmek için, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 'de aşağıdaki satırı çalıştırabilirsiniz
+**Konum** parametresini sağlamanız gerektiğinde **konum** değeri olarak bölge kodu adını belirtmeniz gerekir. Hesabınızın bulunduğu bölgenin kod adını almak ve çağrın ' a yönlendirilmek için, [Azure CLI](/cli/azure/?view=azure-cli-latest) 'de aşağıdaki satırı çalıştırabilirsiniz
 
 ```azurecli-interactive
 az account list-locations
@@ -79,34 +80,34 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 
 ### <a name="global-azure"></a>Küresel Azure
 
-|Uç Noktalar||
-| --- | --- |
+| Hizmet | Uç Noktası |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Kimlik Doğrulaması | `https://login.microsoftonline.com/` |
+| Kimlik doğrulaması | `https://login.microsoftonline.com/` |
 | Belirteç hedef kitlesi | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Kamu
 
-|Uç Noktalar||
-| --- | --- |
+| Hizmet | Uç Noktası |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Kimlik Doğrulaması | `https://login.microsoftonline.us/` |
+| Kimlik doğrulaması | `https://login.microsoftonline.us/` |
 | Belirteç hedef kitlesi | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Almanya
 
-| Uç Noktalar ||
-| --- | --- |  
+| Hizmet | Uç Noktası |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Kimlik Doğrulaması | `https://login.microsoftonline.de/` |
+| Kimlik doğrulaması | `https://login.microsoftonline.de/` |
 | Belirteç hedef kitlesi | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
-|Uç Noktalar||
-| --- | --- |
+| Hizmet | Uç Noktası |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Kimlik Doğrulaması | `https://login.chinacloudapi.cn/` |
+| Kimlik doğrulaması | `https://login.chinacloudapi.cn/` |
 | Belirteç hedef kitlesi |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Ayrıca bkz.

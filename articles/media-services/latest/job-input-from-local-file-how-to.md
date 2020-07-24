@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: aba987ba232a29ffc240f72039b1e24bb87a2ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80345919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001137"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Yerel dosyadan iş girişi oluşturma
 
@@ -24,7 +24,7 @@ Media Services v3 sürümünde işlenecek İşleri videolarınıza gönderirken 
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-* [Media Services hesabı oluşturun](create-account-cli-how-to.md).
+* [Media Services hesabı oluşturun](./create-account-howto.md).
 * [Varlıkları Yönet](manage-asset-concept.md)' i gözden geçirin.
 
 ## <a name="net-sample"></a>.NET örneği
@@ -32,7 +32,7 @@ Media Services v3 sürümünde işlenecek İşleri videolarınıza gönderirken 
 Aşağıdaki kod, bir giriş varlığının nasıl oluşturulduğunu ve iş için giriş olarak nasıl kullanılacağını gösterir. Createınputasset işlevi aşağıdaki eylemleri gerçekleştirir:
 
 * Varlığı oluşturur
-* Varlığın [depolamadaki kapsayıcısına](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) yazılabilir bir [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)’si alır
+* Varlığın [depolamadaki kapsayıcısına](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container) yazılabilir bir [SAS URL](../../storage/common/storage-sas-overview.md)’si alır
 * SAS URL’sini kullanarak dosyayı depolamadaki kapsayıcıya yükler
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -47,7 +47,7 @@ Aşağıdaki kod parçacığı bir kodlama işi gönderir:
 
 ## <a name="job-error-codes"></a>İş hata kodları
 
-Bkz. [hata kodları](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Bkz. [hata kodları](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

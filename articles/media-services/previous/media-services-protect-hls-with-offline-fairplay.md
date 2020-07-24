@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eee718627f35154c878c717e02febe0ea7958fe6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000559"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>iOS için Çevrimdışı FairPlay Akışı 
 
@@ -28,7 +29,7 @@ ms.locfileid: "82995519"
 > * [Sürüm 2](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services, aşağıdakileri kapsayan iyi tasarlanmış bir [içerik koruma hizmetleri](https://azure.microsoft.com/services/media-services/content-protection/) kümesi sağlar:
 
@@ -53,7 +54,7 @@ Bu makalede iOS 10 veya üstünü çalıştıran cihazları hedefleyen FairPlay 
 * FairPlay için çevrimiçi içerik koruması hakkında bilgi sahibi olun. Daha fazla bilgi için aşağıdaki makalelere ve örneklere bakın:
 
     - [Azure Media Services için Apple FairPlay streaming genel kullanıma sunuldu](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
-    - [Apple FairPlay veya Microsoft PlayReady ile HLS içeriğinizi koruma](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
+    - [Apple FairPlay veya Microsoft PlayReady ile HLS içeriğinizi koruma](./media-services-protect-hls-with-fairplay.md)
     - [Çevrimiçi FPS akışı için bir örnek](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
 
 * Apple geliştirici ağından FPS SDK 'sını edinin. FPS SDK 'Sı iki bileşen içerir:
@@ -210,7 +211,7 @@ Aşağıdaki sık sorulan sorular, sorun giderme konusunda yardım sağlar:
 - **Son parametre, FPS çevrimdışı modu için aşağıdaki API 'de ne için stand?**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    Bu API için belgeler için bkz. [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametresi, birim olarak saniye ile çevrimdışı kiralama süresini temsil eder.
+    Bu API için belgeler için bkz. [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration yöntemi](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration?view=azure-dotnet). Parametresi, birim olarak saniye ile çevrimdışı kiralama süresini temsil eder.
 - **İOS cihazlarında indirilen/OFFLINE dosya yapısı nedir?** Bir iOS cihazında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer şekilde görünür. `_keys`Klasör, INDIRILEN fps lisanslarını, her bir lisans hizmeti ana bilgisayarı için bir depolama dosyası ile depolar. `.movpkg`Klasör, ses ve video içeriğini depolar. Bir tire ile biten ve ardından sayısal olan bir ada sahip ilk klasörün video içeriği vardır. Sayısal değer, video yorumlamaları 'nın en yüksek bant genişliğidir. Bir kısa çizgi ile biten bir ada sahip ikinci klasör, izleyen 0 ile ses içeriği içerir. "Data" adlı üçüncü klasör, FPS içeriğinin ana çalma listesini içerir. Son olarak, boot.xml klasör içeriğinin tamamını açıklama sağlar `.movpkg` . 
 
 ![Çevrimdışı FairPlay iOS örnek uygulama dosyası yapısı](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)

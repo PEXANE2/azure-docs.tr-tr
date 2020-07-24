@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2337a7543f84d7eba5f565d875129cf22e8b27ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74888504"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001222"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API 'sine bağlanma-Java
 
@@ -25,7 +26,7 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 
 Bu makalede, örnek uygulamayı geliştirmek için Visual Studio Code kullanılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yüklemek için [Visual Studio Code Java yazma](https://code.visualstudio.com/docs/java/java-tutorial) ' yı izleyin:
 
@@ -33,8 +34,8 @@ Bu makalede, örnek uygulamayı geliştirmek için Visual Studio Code kullanıl�
    - Apache Maven
    - Java Uzantı paketi
 - `JAVA_HOME`Ve ortam değişkenlerini ayarladığınızdan emin olun `PATH` .
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
-- [Erişim API 'leri](access-api-cli-how-to.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve daha sonraki bir adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
+- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
+- [Erişim API 'leri](./access-api-howto.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve daha sonraki bir adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
 
 Ayrıca şunları gözden geçirin:
 
@@ -93,7 +94,7 @@ Komutunu çalıştırdığınızda,, `pom.xml` `App.java` ve diğer dosyalar olu
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. İstek yapmak için ihtiyaç duyduğunuz Active Directory kimlik bilgilerini oluşturmak için, uygulama sınıfının Main yöntemine aşağıdaki kodu ekleyin ve [erişim API 'lerinden](access-api-cli-how-to.md)aldığınız değerleri ayarlayın:
+1. İstek yapmak için ihtiyaç duyduğunuz Active Directory kimlik bilgilerini oluşturmak için, uygulama sınıfının Main yöntemine aşağıdaki kodu ekleyin ve [erişim API 'lerinden](./access-api-howto.md)aldığınız değerleri ayarlayın:
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -129,4 +130,4 @@ Komutunu çalıştırdığınızda,, `pom.xml` `App.java` ve diğer dosyalar olu
 
 Artık `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` varlıkları ekleme ve düzenleme ' ye başlayabilirsiniz.
 
-Daha fazla kod örneği için bkz. [Java SDK örnek](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) deposu.
+Daha fazla kod örneği için bkz. [Java SDK örnek](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) deposu.

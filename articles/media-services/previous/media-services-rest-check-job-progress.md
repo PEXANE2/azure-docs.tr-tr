@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d5f3382965d9166fabf99ac650e707e29c38a72
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a8ada16bbfff66c60a1400542742396b667160dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000525"
 ---
 # <a name="how-to-check-job-progress"></a>Nasıl yapılır: iş ilerlemesini denetleme
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-İşleri çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. İşin durum özelliğini kullanarak Iş durumunu görebilirsiniz. Durum özelliği hakkında daha fazla bilgi için bkz. [Iş varlığı özellikleri](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+İşleri çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. İşin durum özelliğini kullanarak Iş durumunu görebilirsiniz. Durum özelliği hakkında daha fazla bilgi için bkz. [Iş varlığı özellikleri](/rest/api/media/operations/job#job_entity_properties).
 
 ## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
 

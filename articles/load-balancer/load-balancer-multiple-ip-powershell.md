@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8f1273f1476ea7da03eb44b700519482deac3284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8fedad40c18818932bf37dfe93c1b236357c30b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809168"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001614"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>PowerShell kullanarak birden çok IP yapılandırmasında Yük Dengeleme
 
@@ -38,7 +38,7 @@ Bu makalede, bir ikincil ağ arabirimi (NIC) üzerinde birden çok IP adresi ile
 
 Bu makalede özetlenen senaryoya ulaşmak için aşağıdaki adımları izleyin:
 
-1. Azure PowerShell'i yükleyin. Azure PowerShell’in en son sürümünü yükleme, aboneliğinizi seçme ve hesabınızda oturum açma hakkında bilgi almak için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+1. Azure PowerShell'i yükleyin. Azure PowerShell’in en son sürümünü yükleme, aboneliğinizi seçme ve hesabınızda oturum açma hakkında bilgi almak için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/).
 2. Aşağıdaki ayarları kullanarak bir kaynak grubu oluşturun:
 
     ```powershell
@@ -46,7 +46,7 @@ Bu makalede özetlenen senaryoya ulaşmak için aşağıdaki adımları izleyin:
     $myResourceGroup = "contosofabrikam"
     ```
 
-    Daha fazla bilgi için bkz. Adım 2/ [kaynak grubu oluşturma](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+    Daha fazla bilgi için bkz. Adım 2/ [kaynak grubu oluşturma](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
 3. VM 'lerinizi içerecek [bir kullanılabilirlik kümesi oluşturun](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) . Bu senaryo için aşağıdaki komutu kullanın:
 
@@ -54,14 +54,14 @@ Bu makalede özetlenen senaryoya ulaşmak için aşağıdaki adımları izleyin:
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. Tek bir NIC ile VM oluşturmayı hazırlamak için [WINDOWS VM oluşturma](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) makalesinde 3 ile 5 arasındaki yönergeleri izleyin. 6,1 adımını çalıştırın ve adım 6,2 yerine aşağıdakini kullanın:
+4. Tek bir NIC ile VM oluşturmayı hazırlamak için [WINDOWS VM oluşturma](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) makalesinde 3 ile 5 arasındaki yönergeleri izleyin. 6,1 adımını çalıştırın ve adım 6,2 yerine aşağıdakini kullanın:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    Ardından 6,3 ile 6,8 arasında [WINDOWS VM adımları oluştur](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) ' u doldurun.
+    Ardından 6,3 ile 6,8 arasında [WINDOWS VM adımları oluştur](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) ' u doldurun.
 
 5. VM 'lerin her birine ikinci bir IP yapılandırması ekleyin. [Sanal makinelere birden çok IP adresi atama](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) makalesindeki yönergeleri izleyin. Aşağıdaki yapılandırma ayarlarını kullanın:
 

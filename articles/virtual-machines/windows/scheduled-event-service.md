@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999029"
 ---
 # <a name="monitoring-scheduled-events"></a>İzleme Zamanlanan Olaylar
 
@@ -25,7 +25,7 @@ Bu makalede, sanal makinelerinizi etkileyen bakım olayları hakkında bildirim 
 
 Zamanlanan Olaylar, [azure Instance Metadata Service](instance-metadata-service.md)her Azure sanal makinesinde kullanılabilen bir parçası olarak kullanılabilir. Müşteriler, zamanlanmış bakım bildirimleri bulmak ve durumu kaydetme ve sanal makineyi döndürme dışında yapma gibi azaltmalar gerçekleştirmek için sanal makinelerinin uç noktasını sorgulamak üzere otomasyon yazabilir. Azure bakım olaylarının denetim günlüğüne sahip olmak için Zamanlanan Olaylar kaydetmek üzere otomasyon oluşturmanız önerilir. 
 
-Bu makalede, Log Analytics için bakım Zamanlanan Olaylar yakalama konusunda size kılavuzluk edeceğiz. Daha sonra, takımınızda e-posta gönderme ve sanal makinelerinizi etkileyen tüm olayların geçmiş bir görünümünü alma gibi bazı temel bildirim eylemlerini tetikleyeceğiz. Olay toplama ve otomasyon için [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace)kullanacağız, ancak bu günlükleri toplamak ve Otomasyonu tetiklemek için herhangi bir izleme çözümünü kullanabilirsiniz.
+Bu makalede, Log Analytics için bakım Zamanlanan Olaylar yakalama konusunda size kılavuzluk edeceğiz. Daha sonra, takımınızda e-posta gönderme ve sanal makinelerinizi etkileyen tüm olayların geçmiş bir görünümünü alma gibi bazı temel bildirim eylemlerini tetikleyeceğiz. Olay toplama ve otomasyon için [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md)kullanacağız, ancak bu günlükleri toplamak ve Otomasyonu tetiklemek için herhangi bir izleme çözümünü kullanabilirsiniz.
 
 ![Olay yaşam döngüsünü gösteren diyagram](./media/notifications/events.png)
 
@@ -35,7 +35,7 @@ Bu örnekte, bir [kullanılabilirlik kümesinde bir Windows sanal makinesi](tuto
 
 Öğreticinin sonunda Grup kaynak grubunu silmeyin.
 
-Ayrıca, kullanılabilirlik kümesindeki VM 'lerden bilgi toplamak için kullanacağınız [bir Log Analytics çalışma alanı oluşturmanız](/azure/azure-monitor/learn/quick-create-workspace) gerekecektir.
+Ayrıca, kullanılabilirlik kümesindeki VM 'lerden bilgi toplamak için kullanacağınız [bir Log Analytics çalışma alanı oluşturmanız](../../azure-monitor/learn/quick-create-workspace.md) gerekecektir.
 
 ## <a name="set-up-the-environment"></a>Ortamı ayarlama
 
@@ -112,7 +112,7 @@ Herhangi bir noktada, ve anahtarlarını kullanarak zamanlanan olay hizmetini du
 1. **Mycollectorvm**öğesini arayın ve seçin. 
 1. **Mycollectorvm**için yeni sayfada **Bağlan**' ı seçin.
 
-Bu işlem, sanal makinenize [Microsoft Monitoring Agent](/azure/virtual-machines/extensions/oms-windows) 'ı yükler. SANAL makinenizin çalışma alanına bağlanması ve uzantıyı yüklemesi birkaç dakika sürer. 
+Bu işlem, sanal makinenize [Microsoft Monitoring Agent](../extensions/oms-windows.md) 'ı yükler. SANAL makinenizin çalışma alanına bağlanması ve uzantıyı yüklemesi birkaç dakika sürer. 
 
 ## <a name="configure-the-workspace"></a>Çalışma alanını yapılandırma
 
@@ -132,7 +132,7 @@ Bu işlem, sanal makinenize [Microsoft Monitoring Agent](/azure/virtual-machines
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Azure Izleyici ile bir uyarı kuralı oluşturma 
 
 
-Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için aşağıdaki [sorguyu](/azure/azure-monitor/log-query/get-started-portal) çalıştırabilirsiniz.
+Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için aşağıdaki [sorguyu](../../azure-monitor/log-query/get-started-portal.md) çalıştırabilirsiniz.
 
 1. Sayfanın üst kısmında, **Günlükler** ' i seçin ve aşağıdaki metin kutusuna yapıştırın:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 621d657f527e5307ed3a0b583e4c9171005d4f8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001443"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations teklifi oluşturma
 
@@ -134,9 +134,9 @@ Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren 
 7. Gizlilik ilkesi
 8. Teklif adı
 9. Ekran görüntüleri/videolar
-10. Description
+10. Açıklama
 
-### <a name="name"></a>Name
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -144,7 +144,7 @@ Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığ�
 
 Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıklama sağlayın. Bu açıklama Market arama sonuçlarında kullanılabilir.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -283,7 +283,7 @@ Bu dosya. xls veya. xlsx biçiminde olmalıdır. Birden fazla raporunuz varsa, t
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 ### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 
@@ -295,7 +295,7 @@ Bu teklifi ilk kez yayımladıysanız şunları yapabilirsiniz:
     - **Başlatılmamış** – bölüm dokunulmamış ve tamamlanmalıdır.
     - **Tamamlanmamış** – bölümde düzeltilmesi gereken hatalar var veya daha fazla bilgi sağlanması gerekiyor. Bölüm (ler) e geri dönün ve güncelleştirin.
     - **Tamamlandı** – bölüm tamamlandı, tüm gerekli veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
-- **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
+- **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın. Yönergeleri test etme ve ilk yayımlamayı tamamlama hakkında daha fazla bilgi için bkz. [Appsource Dynamics 365 finans ve Operations ilevsel doğrulaması](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation).
 - **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve teklifinizi herkese açık bir şekilde **yayımlamak için teklif ' i seçin.**
 
 ## <a name="next-step"></a>Sonraki adım

@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 0f2f0def9a23437dff57dda2d1a57950cef86275
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999590"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
-[Azure dosyaları](storage-files-introduction.md)   iki tür etki alanı hizmeti ile sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler: Azure Active Directory Domain Services (Azure AD DS) ve şirket içi Active Directory Domain Services (AD DS). Kimlik tabanlı kimlik doğrulama yönteminin kullanılması, Azure dosya paylaşımlarınızı ayrı ayrı yönetmek zorunda kalmadan, mevcut kimlik tabanlı kimlik doğrulama süreciyle tümleştirme işlemini tümleştirmenize olanak sağlar. Bu makale dizisi, Azure dosya paylaşımları ile kimlik doğrulaması için şirket içi AD DS etkinleştirmeye ve yapılandırmaya odaklanmaktadır.
+[Azure dosyaları](storage-files-introduction.md)   iki tür etki alanı hizmeti arasında sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler: şirket içi Active Directory Domain Services (AD DS) ve Azure Active Directory Domain Services (Azure AD DS). Authentcation için doğru etki alanı hizmetini seçmek üzere [nasıl çalıştığını](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) incelemenizi önemle öneririz. Kurulum farklı, seçtiğiniz etki alanı hizmetine bağlıdır. Bu makale dizisi, Azure dosya paylaşımları ile kimlik doğrulaması için şirket içi AD DS etkinleştirmeye ve yapılandırmaya odaklanmaktadır.
 
 Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale serisini okumadan önce [planlama kılavuzumuzu](storage-files-planning.md) okumanızı öneririz.
 

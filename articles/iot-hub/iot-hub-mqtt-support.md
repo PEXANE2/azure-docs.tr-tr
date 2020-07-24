@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 72c012ba9ce28c0ca5dd5a315cf94b8895558a0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521131"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001698"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -41,7 +41,7 @@ MQTT bağlantı noktası (8883) birçok kurumsal ve eğitim ağı ortamında eng
 
 ## <a name="using-the-device-sdks"></a>Cihaz SDK 'larını kullanma
 
-MQTT protokolünü destekleyen [cihaz SDK 'ları](https://github.com/Azure/azure-iot-sdks) , Java, Node.js, C, C# ve Python için kullanılabilir. Cihaz SDK 'Ları, IoT Hub ile bağlantı kurmak için standart IoT Hub bağlantı dizesini kullanır. MQTT protokolünü kullanmak için, istemci protokol parametresi **MQTT**olarak ayarlanmalıdır. İstemci protokol parametresinde, Web Yuvaları üzerinden MQTT ' i de belirtebilirsiniz. Varsayılan olarak, cihaz SDK 'Ları **Cleansession** bayrağı **0** olarak ayarlanmış bir IoT Hub bağlanır ve IoT Hub Ile ileti alışverişi için **QoS 1** kullanır.
+MQTT protokolünü destekleyen [cihaz SDK 'ları](https://github.com/Azure/azure-iot-sdks) , Java, Node.js, C, C# ve Python için kullanılabilir. Cihaz SDK 'Ları, IoT Hub ile bağlantı kurmak için standart IoT Hub bağlantı dizesini kullanır. MQTT protokolünü kullanmak için, istemci protokol parametresi **MQTT**olarak ayarlanmalıdır. İstemci protokol parametresinde, Web Yuvaları üzerinden MQTT ' i de belirtebilirsiniz. Varsayılan olarak, cihaz SDK 'Ları **Cleansession** bayrağı **0** olarak ayarlanmış bir IoT Hub bağlanır ve IoT Hub Ile ileti alışverişi için **QoS 1** kullanır. Daha hızlı ileti alışverişi için **QoS 0** ' ı yapılandırmak mümkün olsa da, teslimin garanti veya onaylanmadığını unutmayın. Bu nedenle, **QoS 0** genellikle "yangın ve unut" olarak adlandırılır.
 
 Bir cihaz IoT Hub 'ına bağlandığında cihaz SDK 'Ları, cihazın IoT Hub ile ileti alışverişi için izin veren yöntemler sağlar.
 
@@ -76,11 +76,11 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 |Dil  |Varsayılan etkin tut aralığı  |Yapılandırılabilir  |
 |---------|---------|---------|
-|Node.js     |   180 saniye      |     No    |
-|Java     |    230 saniye     |     No    |
+|Node.js     |   180 saniye      |     Hayır    |
+|Java     |    230 saniye     |     Hayır    |
 |C     | 240 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 saniye |  No   |
+|Python (v2)   | 60 saniye |  Hayır   |
 
 Aşağıdaki [MQTT belirtiminin](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)IoT Hub, etkin tutma zaman aşımı süresi, istemci canlı tutma değerinin 1,5 katından fazla. Ancak, tüm Azure hizmetleri Azure yük dengeleyici TCP boşta kalma zaman aşımı süresi olan 29,45 (1767 saniye) ile birlikte IoT Hub en fazla sunucu tarafı zaman aşımını 29,45 dakikaya (saniye) sınırlar. 
 
@@ -308,7 +308,7 @@ IoT Hub, **Konu adı** ile `devices/{device_id}/messages/devicebound/` veya `dev
 
 Buluttan cihaza iletilerde, özellik çantasındaki değerler aşağıdaki tabloda olarak temsil edilir:
 
-| Özellik değeri | İmle | Description |
+| Özellik değeri | İmle | Açıklama |
 |----|----|----|
 | `null` | `key` | Özellik paketinde yalnızca anahtar görünür |
 | boş dize | `key=` | Bu anahtar, değer olmadan eşittir işareti izler |
@@ -346,7 +346,7 @@ Yanıt gövdesi, aşağıdaki yanıt örneğinde gösterildiği gibi, Device iki
 
 Olası durum kodları şunlardır:
 
-|Durum | Description |
+|Durum | Açıklama |
 | ----- | ----------- |
 | 200 | Başarılı |
 | 429 | [IoT Hub azaltma](iot-hub-devguide-quotas-throttling.md) başına çok fazla istek (daraltılmış) |

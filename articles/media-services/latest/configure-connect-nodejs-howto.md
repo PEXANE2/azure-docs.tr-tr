@@ -13,20 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac82687cb28344f682c58a132f04d71184d5d74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001205"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API 'sine bağlanma-Node.js
 
 Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 node.js SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Node.js](https://nodejs.org/en/download/)'i yükler.
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
+- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
 
 > [!IMPORTANT]
 > [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
@@ -69,7 +70,7 @@ npm install azure-arm-mediaservices
 
 1. En sevdiğiniz düzenleyiciyi kullanarak bir. js dosyası oluşturun.
 1. Dosyayı açın ve aşağıdaki kodu yapıştırın.
-1. "Endpoint config" bölümündeki değerleri, [erişim API 'lerinden](access-api-cli-how-to.md)aldığınız değerlere ayarlayın.
+1. "Endpoint config" bölümündeki değerleri, [erişim API 'lerinden](./access-api-howto.md)aldığınız değerlere ayarlayın.
 
 ```js
 'use strict';
@@ -130,4 +131,3 @@ node index.js
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Media Services [Node.js başvuru](/javascript/api/overview/azure/mediaservices/management) belgelerini inceleyin ve node.js ile Media Services API 'sinin nasıl kullanılacağını gösteren [örneklere](https://github.com/Azure-Samples/media-services-v3-node-tutorials) göz atın.
-

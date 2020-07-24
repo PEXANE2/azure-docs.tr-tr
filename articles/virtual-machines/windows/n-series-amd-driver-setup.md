@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 4693ad8b168ce1ddd7c07afe650a89fc1888ccd7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183333"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999012"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere AMD GPU sürücülerini yükler
 
@@ -23,7 +23,7 @@ AMD GPU sürücülerini el ile yüklemeyi seçerseniz, bu makale desteklenen iş
 
 NVv4 VM 'lerinde yalnızca Microsoft tarafından yayımlanan GPU sürücüleri desteklenir. Lütfen GPU sürücülerini başka bir kaynaktan yüklemeyin.
 
-Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU WINDOWS VM boyutları](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU WINDOWS VM boyutları](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json).
 
 
 
@@ -57,5 +57,3 @@ Video RAM dahil GPU görüntüleme özelliklerini doğrulamak için dxdiag 'ı k
 Windows 10 derleme 1903 veya sonraki bir sürümü çalıştırıyorsanız, dxdiag ' görüntü ' sekmesinde hiçbir bilgi göstermez. Lütfen en alttaki ' tüm bilgileri Kaydet ' seçeneğini kullanın ve çıkış dosyasında AMD MI25 GPU ile ilgili bilgiler gösterilir.
 
 ![GPU sürücüsü özellikleri](./media/n-series-amd-driver-setup/dxdiag-details.png)
-
-

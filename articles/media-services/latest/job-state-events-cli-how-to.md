@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 276cb3e6078fec915f266c5eb9aa557f92973dd7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71937281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001171"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Azure CLı kullanarak Event Grid Media Services olaylar oluşturma ve izleme
 
@@ -31,7 +31,7 @@ Bu makalede, Azure CLı kullanarak Azure Media Services hesabınıza yönelik ol
 
     Şu anda, tüm [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) komutları Azure Cloud Shell çalışmaz. CLı 'nın yerel olarak kullanılması önerilir.
 
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md).
+- [Media Services hesabı oluşturun](./create-account-howto.md).
 
     Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
 
@@ -69,7 +69,7 @@ az account set --subscription mySubscriptionId
     amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
     ```
 
-    Örnek:
+    Örneğin:
 
     ```
     amsResourceId=$(az ams account show --name amsaccount --resource-group amsResourceGroup --query id --output tsv)
@@ -84,7 +84,7 @@ az account set --subscription mySubscriptionId
     --endpoint <endpoint_URL>
     ```
 
-    Örnek:
+    Örneğin:
 
     ```
     az eventgrid event-subscription create --source-resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
@@ -109,4 +109,3 @@ Web uygulamanızı yeniden görüntüleyin ve buna bir abonelik doğrulama olay�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Karşıya yükleme, kodlama ve akışla aktarma](stream-files-tutorial-with-api.md)
-

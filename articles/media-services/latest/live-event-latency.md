@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 24eb5f8691c94c1f319820f3133b66065504ace3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232466"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000900"
 ---
 # <a name="live-event-low-latency-settings"></a>Canlı olay düşük gecikme süresi ayarları
 
-Bu makalede, [canlı bir olayda](https://docs.microsoft.com/rest/api/media/liveevents)düşük gecikme süresinin nasıl ayarlanacağı gösterilmektedir. Ayrıca, çeşitli oynatıcılarda düşük gecikme süresi ayarlarını kullanırken gördüğünüz tipik sonuçları da açıklar. Sonuçlar CDN ve ağ gecikme süresine göre farklılık gösterir.
+Bu makalede, [canlı bir olayda](/rest/api/media/liveevents)düşük gecikme süresinin nasıl ayarlanacağı gösterilmektedir. Ayrıca, çeşitli oynatıcılarda düşük gecikme süresi ayarlarını kullanırken gördüğünüz tipik sonuçları da açıklar. Sonuçlar CDN ve ağ gecikme süresine göre farklılık gösterir.
 
-Yeni **LowLatency** özelliğini kullanmak Için, **Streammoptionsflag** öğesini **liveevent**üzerinde **LowLatency** olarak ayarlarsınız. HLS kayıttan yürütme için [liveoutput](https://docs.microsoft.com/rest/api/media/liveoutputs) oluştururken [Liveoutput. Hls. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) değerini 1 olarak ayarlayın. Akış çalışır duruma getirildikten sonra, [Azure Media Player](https://ampdemo.azureedge.net/) (amp demo sayfası) kullanabilir ve kayıttan yürütme seçeneklerini "düşük gecikmeli buluşsal yöntemler profilini" kullanacak şekilde ayarlayabilirsiniz.
+Yeni **LowLatency** özelliğini kullanmak Için, **Streammoptionsflag** öğesini **liveevent**üzerinde **LowLatency** olarak ayarlarsınız. HLS kayıttan yürütme için [liveoutput](/rest/api/media/liveoutputs) oluştururken [Liveoutput. Hls. fragmentsPerTsSegment](/rest/api/media/liveoutputs/create#hls) değerini 1 olarak ayarlayın. Akış çalışır duruma getirildikten sonra, [Azure Media Player](https://ampdemo.azureedge.net/) (amp demo sayfası) kullanabilir ve kayıttan yürütme seçeneklerini "düşük gecikmeli buluşsal yöntemler profilini" kullanacak şekilde ayarlayabilirsiniz.
 
 > [!NOTE]
 > Şu anda Azure Media Player içindeki LowLatency HeuristicProfile, MPEG-DASH protokolünde, CSF veya CMAF biçimiyle (örneğin, ya da) birlikte akış çalmak için tasarlanmıştır `format=mdp-time-csf` `format=mdp-time-cmaf` . 
@@ -79,4 +79,3 @@ Aşağıdaki tablolarda, bir Görüntüleyici Player 'da kayıttan yürütmeyi g
 
 - [Canlı akışa genel bakış](live-streaming-overview.md)
 - [Canlı akış öğreticisi](stream-live-tutorial-with-api.md)
-

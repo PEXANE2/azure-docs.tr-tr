@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ac35fde59479ffc13c17f8e63d6fccf65c3be27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714585"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001715"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps'ten Azure işlevlerini çağırma
 
@@ -25,7 +26,7 @@ Kod parçacıklarını Azure işlevleri oluşturmadan çalıştırmak için [sat
 > [!NOTE]
 > Logic Apps ve Azure Işlevleri arasındaki tümleştirme Şu anda etkin yuvalarla çalışmıyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -256,7 +257,7 @@ Bu göreve başlamadan önce, daha sonra kullanmak üzere bu değerleri bulup ye
 
 * Azure Active Directory (Azure AD) kiracınız için dizin KIMLIĞI
 
-  Kiracının Dizin KIMLIĞINI almak için [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) PowerShell komutunu çalıştırabilirsiniz. Veya Azure portal, aşağıdaki adımları izleyin:
+  Kiracının Dizin KIMLIĞINI almak için [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) PowerShell komutunu çalıştırabilirsiniz. Veya Azure portal, aşağıdaki adımları izleyin:
 
   1. [Azure Portal](https://portal.azure.com), işlev uygulamanızı bulun ve seçin.
 

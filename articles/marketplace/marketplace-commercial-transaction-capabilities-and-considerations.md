@@ -4,13 +4,13 @@ description: Bu makalede ticari Market Transact seçeneğine yönelik fiyatland�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 29fa4126d8d0b4f3419c729ee3a73ae315b13122
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001375"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -95,7 +95,7 @@ Bu senaryoda, Microsoft, yayımlanmış VM Görüntünüzün kullanımı için s
 |Microsoft, Azure kullanım maliyetinin %100 ' ünü tutar | $0,14/saat |
 ||
 
-**Kendi lisansınızı getirin (KLG)**
+**Kendi Lisansını Getir (KLG)**
 
 KLG aşağıdaki maliyet yapısına sahiptir:
 
@@ -134,7 +134,7 @@ Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır 
 |Microsoft, lisans maliyetinizi %80 oranında ödetir <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %90 oranında ödetir   |   $80,00/ay <br> \*$90,00/ay    |
 |Microsoft, lisans maliyetlerinizin %20 ' sini tutar <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %10 oranında tutar.  |  $20,00/ay <br> \*$10,00     |
 
-Ticari Market 'te yayımladığınız belirli SaaS ürünleri için Microsoft, **Market hizmet ücretini** %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Teklifinizin uygun olması için, tekliflerinizin en az birinin, IP ortak satışı veya IP ortak satışı kapsamında Microsoft tarafından belirlenmiş olması gerekir. Bu ay için daha düşük olan bu Market hizmeti ücretini almak için, uygunluk önceki takvim ayının sonundan önce en az beş iş günü önce sağlanmalıdır. Daha az Market hizmeti ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market aracılığıyla sunulan diğer ürünlerden hiçbiri için de geçerlidir. Bu azaltılan ücret, Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 arasında toplanan lisans ücretleri sayesinde nitelikli tekliflerle kullanılabilir. Bu süreden sonra, ücret normal miktarına geri döner.
+Microsoft, ticari Market 'te yayımladığınız bazı tekliflerle ilgili Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incetivized olarak belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized SaaS, VM 'Ler, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için geçerlidir.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Müşteri Faturalama, ödeme, faturalandırma ve koleksiyonlar
 
@@ -180,7 +180,7 @@ Bu hesapları ayarlama hakkında daha fazla bilgi için bkz. [Iş Ortağı Merke
 
 Transact yayımlama seçeneği yalnızca aşağıdaki Market teklif türleriyle kullanılabilir:
 
-- **Sanal makine** : ücretsiz, kendi lisansını getir veya kullandıkça öde fiyatlandırma modelleri arasından seçim yapın ve teklif düzeyinde tanımlanan SKU 'lar olarak sunun. Microsoft, müşterinin Azure faturasında, yayımcı yazılımı lisans ücretlerini temel alınan Azure altyapı ücretlerinden ayrı olarak sunar. Azure altyapı ücretleri, yayımcı yazılımı kullanılarak dağıtılır.
+- **Sanal makine** : ücretsiz, kendi lisansını getir veya kullandıkça öde fiyatlandırma modelleri arasından seçim yapın ve teklif düzeyinde tanımlanan planlar olarak sunun. Microsoft, müşterinin Azure faturasında, yayımcı yazılımı lisans ücretlerini temel alınan Azure altyapı ücretlerinden ayrı olarak sunar. Azure altyapı ücretleri, yayımcı yazılımı kullanılarak dağıtılır.
 
 - **Azure uygulaması: çözüm şablonu veya yönetilen uygulama** – bir veya daha fazla sanal makine sağlamalıdır ve sanal makine fiyatlandırmasının toplamını almalıdır. Tek bir planda yönetilen uygulamalar için, sanal makine fiyatlandırması yerine fiyatlandırma modeli olarak bir sabit hızlı aylık abonelik seçilebilir. Bazı durumlarda, Azure altyapı kullanım ücretleri müşteriye yazılım lisans ücretlerinden ayrı olarak geçirilir, ancak aynı faturalandırma beyanının üzerinden yapılır. Ancak, ISV altyapı ücretleri için yönetilen bir uygulama teklifi yapılandırırsanız Azure kaynakları yayımcıya faturalandırılır ve müşteri altyapı, yazılım lisansı ve yönetim hizmetleri maliyetini içeren bir sabit ücret alır.
 

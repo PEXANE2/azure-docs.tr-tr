@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: 0ddf15ffad086bab5ed6c4e2508cd0874f6ee567
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d0a449a84bebcc0a296bde51234b0ceb128b2d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000142"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Depolama erişim anahtarlarını dağıttıktan sonra Media Services'i güncelleştirme 
 
 Yeni bir Azure Media Services (AMS) hesabı oluşturduğunuzda, Ayrıca medya içeriğinizi depolamak için kullanılan bir Azure depolama hesabı seçmeniz istenir. Media Services hesabınıza birden fazla depolama hesabı ekleyebilirsiniz. Bu makalede, depolama anahtarlarının nasıl döndürüleceğini gösterilmektedir. Ayrıca, bir medya hesabına depolama hesaplarının nasıl ekleneceğini gösterir. 
 
-Bu makalede açıklanan eylemleri gerçekleştirmek için [Azure Resource Manager API 'leri](/rest/api/media/operations/azure-media-services-rest-api-reference) ve [PowerShell](https://docs.microsoft.com/powershell/module/az.media)'i kullanmanız gerekir.  Daha fazla bilgi için bkz. [Azure kaynaklarını PowerShell ile yönetme ve Kaynak Yöneticisi](../../azure-resource-manager/management/manage-resource-groups-powershell.md).
+Bu makalede açıklanan eylemleri gerçekleştirmek için [Azure Resource Manager API 'leri](/rest/api/media/operations/azure-media-services-rest-api-reference) ve [PowerShell](/powershell/module/az.media)'i kullanmanız gerekir.  Daha fazla bilgi için bkz. [Azure kaynaklarını PowerShell ile yönetme ve Kaynak Yöneticisi](../../azure-resource-manager/management/manage-resource-groups-powershell.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -72,7 +72,7 @@ Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountNam
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>AMS hesabınıza depolama hesapları ekleme adımları
 
-Aşağıdaki makalede, AMS hesabınıza depolama hesaplarının nasıl ekleneceği gösterilmektedir: [bir Media Services hesabına birden çok depolama hesabı](meda-services-managing-multiple-storage-accounts.md)ekleme.
+Aşağıdaki makalede, AMS hesabınıza depolama hesaplarının nasıl ekleneceği gösterilmektedir: [bir Media Services hesabına birden çok depolama hesabı](./media-services-managing-multiple-storage-accounts.md)ekleme.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

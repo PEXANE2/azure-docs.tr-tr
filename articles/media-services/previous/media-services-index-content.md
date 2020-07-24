@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2989343a5cc9612ea0f4d3b177093fdef93f5d73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78164007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000679"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer ile medya dosyalarını dizine alma
 
 > [!NOTE]
-> **Azure Media Indexer** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
+> **Azure Media Indexer** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
 
 Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenizi ve kapalı açıklamalı alt yazı ve anahtar sözcükler için tam metin dökümü oluşturmanıza olanak sağlar. Bir toplu işte bir medya dosyası veya birden çok medya dosyası işleyebilirsiniz.  
 
@@ -44,7 +45,7 @@ Bir görev yapılandırması kullanarak, dizin oluşturma görevleriniz için da
 
 Ayrıca, bir bildirim dosyası kullanarak birden çok medya dosyasını aynı anda işleyebilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](https://msdn.microsoft.com/library/dn783454.aspx).
+Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](/azure/media-services/previous/media-services-analytics-overview).
 
 ## <a name="index-an-asset"></a>Varlık dizini oluşturma
 Aşağıdaki yöntem bir ortam dosyasını varlık olarak yükler ve varlığı dizine eklemek için bir iş oluşturur.
@@ -157,7 +158,7 @@ Tüm giriş medyası dosyaları başarıyla dizinlenmezse, dizin oluşturma işi
 ## <a name="index-multiple-files"></a>Birden çok dosya dizini oluştur
 Aşağıdaki yöntem, birden çok medya dosyasını bir varlık olarak yükler ve bir toplu işteki tüm bu dosyaları dizine almak için bir iş oluşturur.
 
-". Lst" uzantısına sahip bir bildirim dosyası oluşturulup varlığa karşıya yüklenir. Bildirim dosyası tüm varlık dosyalarının listesini içerir. Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](https://msdn.microsoft.com/library/dn783454.aspx).
+". Lst" uzantısına sahip bir bildirim dosyası oluşturulup varlığa karşıya yüklenir. Bildirim dosyası tüm varlık dosyalarının listesini içerir. Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](/azure/media-services/previous/media-services-analytics-overview).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -277,4 +278,3 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 [Azure Media Services Analytics genel bakışı](media-services-analytics-overview.md)
 
 [Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma](media-services-process-content-with-indexer2.md)
-

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8553c54b60d1d4e60e28bcb3006bcc804dbc39ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803699"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001596"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Kaynak Yöneticisi için PowerShell kullanarak Internet 'e yönelik yük dengeleyici oluşturmaya başlama
 
@@ -66,7 +67,7 @@ Daha fazla bilgi için bkz. [Azure Load Balancer bileşenleri](./components.md).
 
 PowerShell için Azure Resource Manager modülünün en son üretim sürümüne sahip olduğunuzdan emin olun.
 
-1. Azure’da oturum açma
+1. Azure oturumu açma
 
     ```azurepowershell-interactive
     Connect-AzAccount
@@ -198,7 +199,7 @@ Bu örnek aşağıdaki nesneleri oluşturur:
 
 ## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Sanal makineler oluşturma ve yeni oluşturulan NIC 'Leri atama
 
-VM oluşturma hakkında daha fazla bilgi için, bkz. [Kaynak Yöneticisi ve Azure PowerShell bir Windows sanal makinesi oluşturma ve önceden](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) yapılandırma
+VM oluşturma hakkında daha fazla bilgi için, bkz. [Kaynak Yöneticisi ve Azure PowerShell bir Windows sanal makinesi oluşturma ve önceden](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json) yapılandırma
 
 1. Kullanılabilirlik kümesi ve depolama hesabı oluşturma
 

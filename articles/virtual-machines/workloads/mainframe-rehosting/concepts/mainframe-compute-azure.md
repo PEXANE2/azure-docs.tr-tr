@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998944"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Anabilgisayar işlem hareketini Azure 'a taşıma
 
@@ -93,13 +94,13 @@ Bu yaklaşım, LPARs 'Leri ayrı VM 'lere geçirkullanmaktır. Daha sonra Azure,
 
 Azure tabanlı bir çözümün avantajlarından biri, ölçeği genişletme olanağıdır. Ölçeklendirme, bir uygulama için neredeyse sınırsız işlem kapasitesi sağlar. Azure, işlem gücünü genişletmek için birden çok yöntemi destekler:
 
-- **Bir küme genelinde yük dengeleme.** Bu senaryoda, bir uygulama bir kümedeki birden çok VM arasında iş yükünü yaymak için bir [yük dengeleyici](/azure/load-balancer/load-balancer-overview) veya Resource Manager kullanabilir. Daha fazla işlem kapasitesi gerekiyorsa, kümeye ek VM 'Ler eklenir.
+- **Bir küme genelinde yük dengeleme.** Bu senaryoda, bir uygulama bir kümedeki birden çok VM arasında iş yükünü yaymak için bir [yük dengeleyici](../../../../load-balancer/load-balancer-overview.md) veya Resource Manager kullanabilir. Daha fazla işlem kapasitesi gerekiyorsa, kümeye ek VM 'Ler eklenir.
 
-- **Sanal Makine Ölçek Kümeleri.** Bu patlama senaryosunda, bir uygulama VM kullanımına göre ek [işlem kaynaklarına](/azure/virtual-machine-scale-sets/overview) ölçeklendirebilir. Talep geldiğinde, bir ölçek kümesindeki sanal makinelerin sayısı da, işlem gücünün verimli bir şekilde kullanılması için de kullanılabilir.
+- **Sanal Makine Ölçek Kümeleri.** Bu patlama senaryosunda, bir uygulama VM kullanımına göre ek [işlem kaynaklarına](../../../../virtual-machine-scale-sets/overview.md) ölçeklendirebilir. Talep geldiğinde, bir ölçek kümesindeki sanal makinelerin sayısı da, işlem gücünün verimli bir şekilde kullanılması için de kullanılabilir.
 
-- **PaaS Ölçeklendirmesi.** Azure PaaS teklifleri, işlem kaynaklarını ölçeklendirir. Örneğin, [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) , işlem kaynaklarını, istek hacminde artımlardan buluşmak üzere ayırır.
+- **PaaS Ölçeklendirmesi.** Azure PaaS teklifleri, işlem kaynaklarını ölçeklendirir. Örneğin, [Azure Service Fabric](../../../../service-fabric/service-fabric-overview.md) , işlem kaynaklarını, istek hacminde artımlardan buluşmak üzere ayırır.
 
-- **Kubernetes kümeleri.** Azure 'daki uygulamalar, belirtilen kaynaklar için işlem hizmetleri için [Kubernetes kümelerini](/azure/aks/concepts-clusters-workloads) kullanabilir. Azure Kubernetes hizmeti (AKS), Azure 'da Kubernetes düğümlerini, havuzlarını ve kümelerini düzenleyen bir yönetilen hizmettir.
+- **Kubernetes kümeleri.** Azure 'daki uygulamalar, belirtilen kaynaklar için işlem hizmetleri için [Kubernetes kümelerini](../../../../aks/concepts-clusters-workloads.md) kullanabilir. Azure Kubernetes hizmeti (AKS), Azure 'da Kubernetes düğümlerini, havuzlarını ve kümelerini düzenleyen bir yönetilen hizmettir.
 
 İşlem kaynaklarını ölçeklendirmeye yönelik doğru yöntemi seçmek için, Azure ve ana bilgisayarlar 'ın nasıl farklı olduğunu anlamak önemlidir. Bu anahtar, verileri işlem kaynakları tarafından paylaşılır (veya ise). Azure 'da veriler (varsayılan olarak) genellikle birden çok VM tarafından paylaşılmaz. Genişleme işlem kümesinde birden çok VM için veri paylaşımı gerekliyse, paylaşılan verilerin bu işlevselliği destekleyen bir kaynakta bulunması gerekir. Azure 'da, veri paylaşımı aşağıdaki bölümde açıklandığı gibi depolama ile ilgilidir.
 
@@ -114,7 +115,7 @@ Her katman, uygun olağanüstü durum kurtarma hizmetleri de sağlayabilir. Örn
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ana bilgisayar geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure sanal makinelerinde Ana bilgisayar yeniden barındırma](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure sanal makinelerinde Ana bilgisayar yeniden barındırma](../overview.md)
 - [Ana bilgisayar depolama alanını Azure 'a taşıma](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM kaynakları

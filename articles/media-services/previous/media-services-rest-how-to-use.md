@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 288b7302b12d607c9090f699af83691b832256a3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 83e945fccfbfbec207723d6c16f2a4dfc7290c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170828"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000056"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-**Media Services OPERATIONS Rest** API 'si, bir Media Services hesabında Işler, varlıklar, Canlı Kanallar ve diğer kaynakları oluşturmak için kullanılır. Daha fazla bilgi için bkz. [Media Services Operations REST API başvurusu](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+**Media Services OPERATIONS Rest** API 'si, bir Media Services hesabında Işler, varlıklar, Canlı Kanallar ve diğer kaynakları oluşturmak için kullanılır. Daha fazla bilgi için bkz. [Media Services Operations REST API başvurusu](/rest/api/media/operations/azure-media-services-rest-api-reference).
 
 Media Services hem JSON hem de atom + pub XML biçimini kabul eden bir REST API sağlar. Media Services REST API, her istemcinin Media Services bağlantı kurulurken gönderilmesi gereken belirli HTTP üstbilgileri ve isteğe bağlı üstbilgiler kümesi gerektirir. Aşağıdaki bölümlerde, istek oluştururken ve Media Services yanıtlarını alırken kullanabileceğiniz üst bilgiler ve HTTP fiilleri açıklanır.
 
@@ -64,8 +64,8 @@ Media Services yaptığınız her çağrı için, isteğinize dahil etmeniz gere
 | --- | --- | --- |
 | Yetkilendirme |Taşıyıcı |Taşıyıcı tek kabul edilen yetkilendirme mekanizmasıdır. Değer, Azure Active Directory tarafından sağlanmış erişim belirtecini de içermelidir. |
 | x-MS-sürümü |Ondalık |2,17 (veya en son sürüm)|
-| DataServiceVersion |Ondalık |3.0 |
-| MaxDataServiceVersion |Ondalık |3.0 |
+| DataServiceVersion |Ondalık |3,0 |
+| MaxDataServiceVersion |Ondalık |3,0 |
 
 > [!NOTE]
 > Media Services, REST API 'Lerini kullanıma sunmak için OData kullandığından, DataServiceVersion ve MaxDataServiceVersion üstbilgileri tüm isteklere eklenmelidir; Ancak, yoksa şu anda Media Services, kullanılmakta olan DataServiceVersion değerinin 3,0 olduğunu varsayar.
@@ -130,4 +130,3 @@ Azure AD kimlik doğrulamasını Media Services REST API ile nasıl kullanacağ�
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

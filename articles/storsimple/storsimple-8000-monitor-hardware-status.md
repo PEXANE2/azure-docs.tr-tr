@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 6eb983eb5e36c5f3ac6b6eca049239d12bc01a0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8faf4ca8e27b280a60750d5f349ab0282ed593bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999505"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Donanım bileşenlerini ve durumunu izlemek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -49,11 +49,11 @@ Bir cihaz bileşeninin donanım durumunu görüntülemek için aşağıdaki adı
 
 1. **Cihazlar**' a gidin, belirli bir StorSimple cihazı seçin. **> donanım durumunu izle**' ye gidin.
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
+    ![Aygıt Yöneticisi hizmetinin ayarlar dikey penceresini gösteren ekran görüntüsü. Izleyici altında, donanım durumu seçilidir.](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
 2. **Donanım bileşenleri** bölümünü bulun ve kullanılabilir bileşenler ' i seçin. Bileşen etiketine tıklayarak listeyi genişletin ve çeşitli cihaz bileşenlerinin durumunu görüntüleyebilirsiniz. [Birincil kasa için ayrıntılı bileşen listesini](#component-list-for-primary-enclosure-of-storsimple-device) ve [ebod Kasası için ayrıntılı bileşen listesini](#component-list-for-ebod-enclosure-of-storsimple-device)görüntüleyin.
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
+    ![Donanım bileşenleri bölümünde seçilen bir bileşeni gösteren ekran görüntüsü. Bitişik dikey pencerede, bu bileşenin bölümlerinin adı ve durumu gösterilir.](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
 3. Bileşen durumunu yorumlamak için aşağıdaki renk kodlama şemasını kullanın:
    
@@ -64,15 +64,15 @@ Bir cihaz bileşeninin donanım durumunu görüntülemek için aşağıdaki adı
    
    Aşağıdaki ekran görüntüsünde, **Tamam**, **Uyarı**ve **hata** durumunda bileşenleri olan bir cihaz gösterilmektedir.
        
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
+   ![Donanım bileşenleri bölümünde üç bileşeni gösteren ekran görüntüsü: biri sorunsuz durumda, biri başarısız durumunda ve diğeri de uyarı durumunda.](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
    **Paylaşılan bileşenler listesini**GENIŞLETEREK, NVRAM 'ın ve kümenin düşürülmüş olduğunu görebiliriz.
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
+   ![Seçili paylaşılan bileşenler öğesini gösteren ekran görüntüsü. Bitişik dikey pencerede N V R A M ve küme bir uyarı durumundadır.](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
    **Denetleyici 1 bileşenleri** listesini genişleterek, küme düğümünün başarısız olduğunu görebiliriz.  
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
+   ![Denetleyici 1 bileşenleri öğesinin seçili olduğunu gösteren ekran görüntüsü. Bitişik dikey pencerede, küme düğümü hatalı durumda.](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
 4. **Sağlıklı** durumda olmayan bir bileşenle karşılaşırsanız Microsoft desteği başvurun. Cihazınızda uyarılar etkinse, bir e-posta uyarısı alırsınız. Hatalı bir donanım bileşenini değiştirmeniz gerekiyorsa bkz. [StorSimple donanım bileşeni değiştirme](storsimple-hardware-component-replacement.md).
 
@@ -81,31 +81,31 @@ Aşağıdaki tabloda, şirket içi StorSimple cihazınızın birincil kasasında
 
 | Bileşen | Modül | Tür | Konum | Alan değiştirilebilir birim (FRU)? | Açıklama |
 | --- | --- | --- | --- | --- | --- |
-| Yuva içindeki sürücü [0-11] |Disk sürücüleri |Fiziksel |Shared |Evet |Birincil kasadaki her SSD veya HDD sürücüsü için bir satır sunulur. |
-| Çevresel sıcaklık algılayıcısı |Kutu |Fiziksel |Shared |Hayır |Kasadaki sıcaklığı ölçer. |
-| Orta düzlem sıcaklık algılayıcısı |Kutu |Fiziksel |Shared |Hayır |Orta düzlemin sıcaklığını ölçer. |
-| Duyulabilir alarm |Kutu |Fiziksel |Shared |Hayır |Kasa içindeki duyulabilir alarm alt sisteminin işlevsel olup olmadığını gösterir. |
-| Kutu |Kutu |Fiziksel |Shared |Evet |Bir gövdenin varlığını gösterir. |
-| Kutu ayarları |Kutu |Fiziksel |Shared |Hayır |Kasanın ön paneline başvurur. |
-| Hat gerilimi sensörleri |PCM |Fiziksel |Shared |Hayır |Sayısız hat gerilimi algılayıcılarının durumu görüntülenir ve bu, ölçülen voltaj tolerans dahilinde olup olmadığını gösterir. |
-| Geçerli algılayıcılar satırı |PCM |Fiziksel |Shared |Hayır |Çok sayıda satır geçerli sensörlerden biri görüntülenir, bu da ölçülen geçerli, tolerans dahilinde olup olmadığını gösterir. |
-| PCM 'de sıcaklık algılayıcıları |PCM |Fiziksel |Shared |Hayır |Giriş ve etkin nokta algılayıcıları gibi çok sayıda sıcaklık algılayıcıları, ölçülen sıcaklığın tolerans dahilinde olup olmadığını belirten durumlarını gösterir. |
-| Güç kaynağı [0-1] |PCM |Fiziksel |Shared |Evet |Cihazın arkasında bulunan iki PCMs içindeki her güç kaynağı için bir satır sunulur. |
-| Soğutma [0-1] |PCM |Fiziksel |Shared |Evet |İki PCMs 'de bulunan dört Soğutma fanının her biri için bir satır sunulur. |
-| Pil [0-1] |PCM |Fiziksel |Shared |Evet |PCM 'de dağıtılmış olan her yedekleme pil modülü için bir satır sunulur. |
-| METIS |YOK |Mantıksal |Shared |YOK |Pillerin durumunu görüntüler: şarj gerekip gerekmediğini ve yaşam sonuna yaklaşmayı ister. |
-| Küme |YOK |Mantıksal |Shared |YOK |İki tümleşik denetleyici modülü arasında oluşturulan kümenin durumunu görüntüler. |
-| Küme düğümü |YOK |Mantıksal |Shared |YOK |Denetleyicinin, kümenin bir parçası olarak durumunu gösterir. |
-| Küme çekirdeği |YOK |Mantıksal | |YOK |HDD depolama havuzundaki çoğunluk disk üyeliğinin varlığını gösterir. |
-| HDD veri alanı |YOK |Mantıksal |Shared |YOK |Sabit disk sürücüsü (HDD) depolama havuzundaki veriler için kullanılan depolama alanı. |
-| HDD yönetim alanı |YOK |Mantıksal |Shared |YOK |Yönetim görevleri için HDD depolama havuzunda ayrılmış alan. |
-| HDD çekirdek alanı |YOK |Mantıksal |Shared |YOK |Küme çekirdeği için HDD depolama havuzunda ayrılmış alan. |
-| HDD değiştirme alanı |YOK |Mantıksal |Shared |YOK |Denetleyiciyi değiştirme için HDD depolama havuzunda ayrılmış alan. |
-| SSD veri alanı |YOK |Mantıksal |Shared |YOK |Katı hal sürücüsü (SSD) depolama havuzundaki veriler için kullanılan depolama alanı. |
-| SSD NVRAM alanı |YOK |Mantıksal |Shared |YOK |SSD depolama havuzundaki, NVRAM Logic için ayrılmış depolama alanı. |
-| HDD depolama havuzu |YOK |Mantıksal |Shared |YOK |Cihaz HDD 'lerden oluşturulan mantıksal depolama havuzunun durumunu görüntüler. |
-| SSD depolama havuzu |YOK |Mantıksal |Shared |YOK |Cihaz SSD 'lerden oluşturulan mantıksal depolama havuzunun durumunu görüntüler. |
-| Denetleyici [0-1] [durum] |G/Ç |Fiziksel |Kumandasını |Evet |Denetleyicinin durumunu ve kasadaki etkin veya bekleme modunda olup olmadığını gösterir. |
+| Yuva içindeki sürücü [0-11] |Disk sürücüleri |Fiziksel |Paylaşılan |Yes |Birincil kasadaki her SSD veya HDD sürücüsü için bir satır sunulur. |
+| Çevresel sıcaklık algılayıcısı |Kutu |Fiziksel |Paylaşılan |Hayır |Kasadaki sıcaklığı ölçer. |
+| Orta düzlem sıcaklık algılayıcısı |Kutu |Fiziksel |Paylaşılan |Hayır |Orta düzlemin sıcaklığını ölçer. |
+| Duyulabilir alarm |Kutu |Fiziksel |Paylaşılan |Hayır |Kasa içindeki duyulabilir alarm alt sisteminin işlevsel olup olmadığını gösterir. |
+| Kutu |Kutu |Fiziksel |Paylaşılan |Yes |Bir gövdenin varlığını gösterir. |
+| Kutu ayarları |Kutu |Fiziksel |Paylaşılan |Hayır |Kasanın ön paneline başvurur. |
+| Hat gerilimi sensörleri |PCM |Fiziksel |Paylaşılan |Hayır |Sayısız hat gerilimi algılayıcılarının durumu görüntülenir ve bu, ölçülen voltaj tolerans dahilinde olup olmadığını gösterir. |
+| Geçerli algılayıcılar satırı |PCM |Fiziksel |Paylaşılan |Hayır |Çok sayıda satır geçerli sensörlerden biri görüntülenir, bu da ölçülen geçerli, tolerans dahilinde olup olmadığını gösterir. |
+| PCM 'de sıcaklık algılayıcıları |PCM |Fiziksel |Paylaşılan |Hayır |Giriş ve etkin nokta algılayıcıları gibi çok sayıda sıcaklık algılayıcıları, ölçülen sıcaklığın tolerans dahilinde olup olmadığını belirten durumlarını gösterir. |
+| Güç kaynağı [0-1] |PCM |Fiziksel |Paylaşılan |Yes |Cihazın arkasında bulunan iki PCMs içindeki her güç kaynağı için bir satır sunulur. |
+| Soğutma [0-1] |PCM |Fiziksel |Paylaşılan |Yes |İki PCMs 'de bulunan dört Soğutma fanının her biri için bir satır sunulur. |
+| Pil [0-1] |PCM |Fiziksel |Paylaşılan |Yes |PCM 'de dağıtılmış olan her yedekleme pil modülü için bir satır sunulur. |
+| METIS |Yok |Mantıksal |Paylaşılan |Yok |Pillerin durumunu görüntüler: şarj gerekip gerekmediğini ve yaşam sonuna yaklaşmayı ister. |
+| Küme |Yok |Mantıksal |Paylaşılan |Yok |İki tümleşik denetleyici modülü arasında oluşturulan kümenin durumunu görüntüler. |
+| Küme düğümü |Yok |Mantıksal |Paylaşılan |Yok |Denetleyicinin, kümenin bir parçası olarak durumunu gösterir. |
+| Küme çekirdeği |Yok |Mantıksal | |Yok |HDD depolama havuzundaki çoğunluk disk üyeliğinin varlığını gösterir. |
+| HDD veri alanı |Yok |Mantıksal |Paylaşılan |Yok |Sabit disk sürücüsü (HDD) depolama havuzundaki veriler için kullanılan depolama alanı. |
+| HDD yönetim alanı |Yok |Mantıksal |Paylaşılan |Yok |Yönetim görevleri için HDD depolama havuzunda ayrılmış alan. |
+| HDD çekirdek alanı |Yok |Mantıksal |Paylaşılan |Yok |Küme çekirdeği için HDD depolama havuzunda ayrılmış alan. |
+| HDD değiştirme alanı |Yok |Mantıksal |Paylaşılan |Yok |Denetleyiciyi değiştirme için HDD depolama havuzunda ayrılmış alan. |
+| SSD veri alanı |Yok |Mantıksal |Paylaşılan |Yok |Katı hal sürücüsü (SSD) depolama havuzundaki veriler için kullanılan depolama alanı. |
+| SSD NVRAM alanı |Yok |Mantıksal |Paylaşılan |Yok |SSD depolama havuzundaki, NVRAM Logic için ayrılmış depolama alanı. |
+| HDD depolama havuzu |Yok |Mantıksal |Paylaşılan |Yok |Cihaz HDD 'lerden oluşturulan mantıksal depolama havuzunun durumunu görüntüler. |
+| SSD depolama havuzu |Yok |Mantıksal |Paylaşılan |Yok |Cihaz SSD 'lerden oluşturulan mantıksal depolama havuzunun durumunu görüntüler. |
+| Denetleyici [0-1] [durum] |G/Ç |Fiziksel |Kumandasını |Yes |Denetleyicinin durumunu ve kasadaki etkin veya bekleme modunda olup olmadığını gösterir. |
 | Denetleyicideki sıcaklık algılayıcıları |G/Ç |Fiziksel |Kumandasını |Hayır |G/ç modülü, CPU sıcaklık, DıMM ve PCIe algılayıcıları gibi çok sayıda sıcaklık algılayıcıları, karşılaştığı sıcaklığın tolerans dahilinde olup olmadığını belirten bir durum görüntülenir. |
 | SAS Genişleticisi |G/Ç |Fiziksel |Kumandasını |Hayır |Tümleşik depolamayı denetleyiciye bağlamak için kullanılan seri ekli SCSI (SAS) genişletic'nın durumunu gösterir. |
 | SAS Bağlayıcısı [0-1] |G/Ç |Fiziksel |Kumandasını |Hayır |Her SAS bağlayıcısının, tümleşik depolamayı SAS genişleticiye bağlamak için kullanılan durumunu gösterir. |
@@ -122,19 +122,19 @@ Aşağıdaki tabloda, şirket içi StorSimple cihazınızın EBOD muhafazasını
 
 | Bileşen | Modül | Tür | Konum | FRU? | Açıklama |
 | --- | --- | --- | --- | --- | --- |
-| Yuva içindeki sürücü [0-11] |Disk sürücüleri |Fiziksel |Shared |Evet |EBOD Kasası 'nın önündeki her HDD sürücüsünün bir satırı sunulur. |
-| Çevresel sıcaklık algılayıcısı |Kutu |Fiziksel |Shared |Hayır |Kasadaki sıcaklığı ölçer. |
-| Orta düzlem sıcaklık algılayıcısı |Kutu |Fiziksel |Shared |Hayır |Orta düzlemin sıcaklığını ölçer. |
-| Duyulabilir alarm |Kutu |Fiziksel |Shared |Hayır |Kasa içindeki duyulabilir alarm alt sisteminin işlevsel olup olmadığını gösterir. |
-| Kutu |Kutu |Fiziksel |Shared |Evet |Bir gövdenin varlığını gösterir. |
-| Kutu ayarları |Kutu |Fiziksel |Shared |Hayır |Kasanın OPS veya ön panelini ifade eder. |
-| Hat gerilimi sensörleri |PCM |Fiziksel |Shared |Hayır |Sayısız hat gerilimi algılayıcılarının durumu görüntülenir ve bu, ölçülen voltaj tolerans dahilinde olup olmadığını gösterir. |
-| Geçerli algılayıcılar satırı |PCM |Fiziksel |Shared |Hayır |Çok sayıda satır geçerli sensörlerden biri görüntülenir, bu da ölçülen geçerli, tolerans dahilinde olup olmadığını gösterir. |
-| PCM 'de sıcaklık algılayıcıları |PCM |Fiziksel |Shared |Hayır |Giriş ve etkin nokta algılayıcıları gibi çok sayıda sıcaklık algılayıcıları, ölçülen sıcaklığın tolerans dahilinde olup olmadığını gösteren durumunun görüntülenmesini ister. |
-| Güç kaynağı [0-1] |PCM |Fiziksel |Shared |Evet |Cihazın arkasında bulunan iki PCMs içindeki her güç kaynağı için bir satır sunulur. |
-| Soğutma [0-1] |PCM |Fiziksel |Shared |Evet |İki PCMs 'de bulunan dört Soğutma fanının her biri için bir satır sunulur. |
-| Yerel depolama [HDD] |YOK |Mantıksal |Shared |YOK |Cihaz HDD 'lerden oluşturulan mantıksal depolama havuzunun durumunu görüntüler. |
-| Denetleyici [0-1] [durum] |G/Ç |Fiziksel |Kumandasını |Evet |EBOD modülündeki denetleyicilerin durumunu görüntüler. |
+| Yuva içindeki sürücü [0-11] |Disk sürücüleri |Fiziksel |Paylaşılan |Yes |EBOD Kasası 'nın önündeki her HDD sürücüsünün bir satırı sunulur. |
+| Çevresel sıcaklık algılayıcısı |Kutu |Fiziksel |Paylaşılan |Hayır |Kasadaki sıcaklığı ölçer. |
+| Orta düzlem sıcaklık algılayıcısı |Kutu |Fiziksel |Paylaşılan |Hayır |Orta düzlemin sıcaklığını ölçer. |
+| Duyulabilir alarm |Kutu |Fiziksel |Paylaşılan |Hayır |Kasa içindeki duyulabilir alarm alt sisteminin işlevsel olup olmadığını gösterir. |
+| Kutu |Kutu |Fiziksel |Paylaşılan |Yes |Bir gövdenin varlığını gösterir. |
+| Kutu ayarları |Kutu |Fiziksel |Paylaşılan |Hayır |Kasanın OPS veya ön panelini ifade eder. |
+| Hat gerilimi sensörleri |PCM |Fiziksel |Paylaşılan |Hayır |Sayısız hat gerilimi algılayıcılarının durumu görüntülenir ve bu, ölçülen voltaj tolerans dahilinde olup olmadığını gösterir. |
+| Geçerli algılayıcılar satırı |PCM |Fiziksel |Paylaşılan |Hayır |Çok sayıda satır geçerli sensörlerden biri görüntülenir, bu da ölçülen geçerli, tolerans dahilinde olup olmadığını gösterir. |
+| PCM 'de sıcaklık algılayıcıları |PCM |Fiziksel |Paylaşılan |Hayır |Giriş ve etkin nokta algılayıcıları gibi çok sayıda sıcaklık algılayıcıları, ölçülen sıcaklığın tolerans dahilinde olup olmadığını gösteren durumunun görüntülenmesini ister. |
+| Güç kaynağı [0-1] |PCM |Fiziksel |Paylaşılan |Yes |Cihazın arkasında bulunan iki PCMs içindeki her güç kaynağı için bir satır sunulur. |
+| Soğutma [0-1] |PCM |Fiziksel |Paylaşılan |Yes |İki PCMs 'de bulunan dört Soğutma fanının her biri için bir satır sunulur. |
+| Yerel depolama [HDD] |Yok |Mantıksal |Paylaşılan |Yok |Cihaz HDD 'lerden oluşturulan mantıksal depolama havuzunun durumunu görüntüler. |
+| Denetleyici [0-1] [durum] |G/Ç |Fiziksel |Kumandasını |Yes |EBOD modülündeki denetleyicilerin durumunu görüntüler. |
 | EBOD içindeki sıcaklık algılayıcıları |G/Ç |Fiziksel |Kumandasını |Hayır |Her denetleyicideki çok sayıda sıcaklık algılayıcıları, karşılaşılan sıcaklığın tolerans dahilinde olup olmadığını gösteren durumunun görüntülenmesini ister. |
 | SAS Genişleticisi |G/Ç |Fiziksel |Kumandasını |Hayır |Tümleşik depolamayı denetleyiciye bağlamak için kullanılan SAS genişletic'nın durumunu gösterir. |
 | SAS Bağlayıcısı [0-2] |G/Ç |Fiziksel |Kumandasını |Hayır |Her SAS bağlayıcısının, tümleşik depolamayı SAS genişleticiye bağlamak için kullanılan durumunu gösterir. |

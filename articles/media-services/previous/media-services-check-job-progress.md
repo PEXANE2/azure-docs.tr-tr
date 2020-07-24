@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d00dd096bcfba32912337b122aefd0c00195ee8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64867095"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000865"
 ---
 # <a name="monitor-job-progress-using-net"></a>.NET kullanarak Iş Ilerlemesini izleme 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 İşleri çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. Bir StateChanged olay işleyicisi tanımlayarak (Bu konuda açıklandığı gibi) veya Media Services iş bildirimlerini ( [Bu](media-services-dotnet-check-job-progress-with-queues.md) konuda açıklandığı gibi) Izlemek Için Azure kuyruk depolama alanını kullanarak ilerleme durumunu kontrol edebilirsiniz.
 
@@ -117,4 +117,3 @@ Media Services öğrenme yollarını gözden geçirin.
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

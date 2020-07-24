@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 06/29/2020
 ms.author: genli
-ms.openlocfilehash: ff4822b513ed2aea6a18ba45bffc1d060ee2410e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a843a42de6fc1e6cd8ef788552ab4a8ac17b4e25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937572"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999063"
 ---
 # <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>Azure 'da bir sanal makine oluşturduğunuzda VHD desteklenmez
 
@@ -48,21 +48,21 @@ Bu sorun aşağıdaki nedenlerden biriyle oluşur:
 
 Bu sorunu çözmek için, diski 1 MB hizalı olacak şekilde yeniden boyutlandırın:
 
-- Windows 'daki sorunu çözmek için, [Resize-VHD PowerShell cmdlet 'ini](https://docs.microsoft.com/powershell/module/hyper-v/resize-vhd)kullanın. **Yeniden boyutlandırma-VHD** 'nin bir Azure PowerShell cmdlet 'i olmadığına unutmayın.
+- Windows 'daki sorunu çözmek için, [Resize-VHD PowerShell cmdlet 'ini](/powershell/module/hyper-v/resize-vhd)kullanın. **Yeniden boyutlandırma-VHD** 'nin bir Azure PowerShell cmdlet 'i olmadığına unutmayın.
 
-  1. [Windows Server 'da Hyper-V rolünü yükler](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
-  1. [Sanal diski sabit boyutlu bir VHD 'ye Dönüştür](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#convert-the-virtual-disk-to-a-fixed-size-vhd)
+  1. [Windows Server 'da Hyper-V rolünü yükler](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
+  1. [Sanal diski sabit boyutlu bir VHD 'ye Dönüştür](../windows/prepare-for-upload-vhd-image.md#convert-the-virtual-disk-to-a-fixed-size-vhd)
 
-- Linux 'taki sorunu çözmek için [QEMU-img komutunu](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)kullanın.
+- Linux 'taki sorunu çözmek için [QEMU-img komutunu](../linux/create-upload-generic.md)kullanın.
 
 Azure VM oluşturmak için bir VHD oluşturma ve karşıya yükleme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure CLı 1,0 kullanarak özel disk görüntüsünden Linux VM yükleme ve oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
-- [Windows Server VHD oluşturma ve Azure’a yükleme](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+- [Azure CLı 1,0 kullanarak özel disk görüntüsünden Linux VM yükleme ve oluşturma](../linux/upload-vhd.md)
+- [Windows Server VHD oluşturma ve Azure’a yükleme](../windows/upload-generalized-managed.md)
 
 Sorun devam ettirilmesi bozulmuş bir VHD 'YI gösteriyor olabilir. Bu durumda, VHD 'yi sıfırdan yeniden oluşturmanızı öneririz.
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Windows VHD hakkında](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#about-vhds)
-- [Linux VHD hakkında](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds#about-vhds)
+- [Windows VHD hakkında](../windows/managed-disks-overview.md)
+- [Linux VHD hakkında](../linux/managed-disks-overview.md)

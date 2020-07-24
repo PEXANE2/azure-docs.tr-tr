@@ -14,25 +14,25 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: e5978cff8da4697cf130e499c8d9273d75118963
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057866"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000627"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services için Java istemci SDK’sı kullanmaya başlama  
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Bu öğretici, Java istemci SDK’sı kullanarak Azure Media Services ile basit bir video içerik teslim hizmeti uygulama adımlarında size kılavuzluk eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
-* Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
+* Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 * Bir Media Services hesabı. Bir Media Services hesabı oluşturmak için bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
 * Geçerli [Azure Media Services Java SDK'sı](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
@@ -65,7 +65,7 @@ Kod, Azure AD hizmet sorumlusu kimlik doğrulamasını kullanarak Azure Media Se
 * `clientKey`: Azure AD uygulamasının istemci anahtarı
 * `restApiEndpoint`: Azure Media Services hesabının REST API uç noktası
 
-Bir Azure AD uygulaması oluşturabilir ve Azure portalından önceki yapılandırma değerlerini alabilirsiniz. Daha fazla bilgi için [Azure portalı ile Azure AD kimlik doğrulamasını kullanmaya başlama](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) makalesinin **Hizmet sorumlusu kimlik doğrulaması** bölümüne bakın.
+Bir Azure AD uygulaması oluşturabilir ve Azure portalından önceki yapılandırma değerlerini alabilirsiniz. Daha fazla bilgi için [Azure portalı ile Azure AD kimlik doğrulamasını kullanmaya başlama](./media-services-portal-get-started-with-aad.md) makalesinin **Hizmet sorumlusu kimlik doğrulaması** bölümüne bakın.
 
 Kod ayrıca yerel olarak saklanan bir video dosyası kullanır. Karşıya yüklemek için kendi yerel dosyanızı sağlamak üzere kodu düzenlemeniz gerekir.
 
@@ -320,6 +320,5 @@ Media Services Javadoc belgeleri için [Java için Azure Kitaplıkları belgeler
 
 [Azure Media Services SDK Maven Package]: https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[Azure for Java developers]: https://docs.microsoft.com/java/azure/
-[Media Services Client Development]: https://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
+[Azure for Java developers]: /java/azure/
+[Media Services Client Development]: /previous-versions/azure/dn223283(v=azure.100)

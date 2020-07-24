@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 40e5a1bf940e46aed566a1e3fa6dcb4e6b2d9230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b085d2e990a580ddc99acb3b83ac8bd8ac2db3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77135022"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998995"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Desteklenen işletim sistemleri ve sürücüler
 
@@ -34,12 +34,14 @@ NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Ler için NVıDıA Tesla (CUDA) sürücül
 
 Microsoft, sanal iş istasyonları veya sanal uygulamalar olarak kullanılan NV ve NVv3 serisi VM 'Ler için NVıDıA GRID sürücü yükleyicilerini yeniden dağıtır. Yalnızca aşağıdaki tabloda listelenen işletim sistemlerinde Azure NV serisi VM 'lerine yalnızca bu KıLAVUZ sürücülerini yükler. Bu sürücüler Azure 'da GRID sanal GPU yazılımı için lisanslama içerir. NVıDıA vGPU yazılım lisans sunucusu ayarlamanız gerekmez.
 
+Azure tarafından yeniden dağıtılan KıLAVUZ sürücüleri, NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Ler gibi NV serisi olmayan VM 'lerde çalışmaz.
+
 NVIDIA uzantısının en son sürücüyü her zaman yükleyeceğini lütfen unutmayın. Daha eski bir sürüme bağımlılığı olan müşteriler için buradaki önceki sürüme bağlantılar sağlıyoruz.
 
-Windows Server 2019, Windows Server 2016 ve Windows 10 için (derleme 1909 ' ye kadar):
-- [Kılavuz 10,1 (442,06)](https://go.microsoft.com/fwlink/?linkid=874181) (. exe)
-- [Kılavuz 10,0 (441,66)](https://download.microsoft.com/download/2/a/3/2a316e62-3be9-4ddb-ae8e-c04b6df6e22d/441.66_grid_win10_server2016_server2019_64bit_international.exe) (. exe) 
+Windows Server 2019, Windows Server 2016 ve Windows 10 için (derleme 2004 ' ye kadar):
+- [Kılavuz 11 (451,48)](https://go.microsoft.com/fwlink/?linkid=874181) (. exe)
+- [Kılavuz 10,1 (442,06)](https://download.microsoft.com/download/b/8/f/b8f5ecec-b8f9-47de-b007-ac40adc88dc8/442.06_grid_win10_64bit_international_whql.exe) (. exe) 
 
-Windows Server 2012 R2, Windows Server 2008 R2, Windows 8 ve Windows 7 için: 
-- [Kılavuz 10,1 (442,06)](https://go.microsoft.com/fwlink/?linkid=874184) (. exe)
-- [Kılavuz 10,0 (441,66)](https://download.microsoft.com/download/d/8/0/d80091f8-0d55-47c2-958a-bacd136f432a/441.66_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) (. exe)  
+Windows Server 2012 R2 için: 
+- [Kılavuz 11 (451,48)](https://go.microsoft.com/fwlink/?linkid=874184) (. exe)
+- [Kılavuz 10,1 (442,66)](https://download.microsoft.com/download/4/3/3/4330fd5c-c685-4ca1-abca-3b2fb3c11d2e/442.06_grid_win8_win7_64bit_international_whql.exe) (. exe)  

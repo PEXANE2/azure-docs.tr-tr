@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998485"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Sanal ağa yönelik VPN aktarım hızını doğrulama
 
@@ -43,11 +43,11 @@ Aşağıdaki diyagramda, VPN aracılığıyla bir Azure sanal ağı ile şirket 
 
 1. Uygulamanızın temel aktarım hızı gereksinimlerini saptayın.
 1. Azure VPN ağ geçidi verimlilik limitlerinizi belirleme. Yardım için, [VPN Gateway hakkında](vpn-gateway-about-vpngateways.md#gwsku)konusunun "ağ geçidi SKU 'ları" bölümüne bakın.
-1. VM boyutunuz için [Azure VM işleme kılavuzunu](../virtual-machines/virtual-machines-windows-sizes.md) saptayın.
+1. VM boyutunuz için [Azure VM işleme kılavuzunu](../virtual-machines/sizes.md) saptayın.
 1. Internet servis sağlayıcınız (ISS) bant genişliğinizi belirleme.
 1. VM, VPN Gateway veya ISS 'nin en az bant genişliğini alarak beklenen aktarım hızını hesaplayın; saniye başına megabit (/) cinsinden ölçülen (/) sekiz (8) olarak ölçülür.
 
-Hesaplanan aktarım hızı uygulamanızın temel aktarım hızı gereksinimlerini karşılamıyorsa, performans sorunu olarak tanımladığınız kaynağın bant genişliğini artırmanız gerekir. Azure VPN Gateway yeniden boyutlandırmak için bkz. [ağ GEÇIDI SKU 'Sunu değiştirme](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Bir sanal makineyi yeniden boyutlandırmak için bkz. [bir VM 'Yi yeniden boyutlandırma](../virtual-machines/virtual-machines-windows-resize-vm.md). Beklenen Internet bant genişliğiyle karşılaşamıyorsanız ISS 'nize da başvurabilirsiniz.
+Hesaplanan aktarım hızı uygulamanızın temel aktarım hızı gereksinimlerini karşılamıyorsa, performans sorunu olarak tanımladığınız kaynağın bant genişliğini artırmanız gerekir. Azure VPN Gateway yeniden boyutlandırmak için bkz. [ağ GEÇIDI SKU 'Sunu değiştirme](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Bir sanal makineyi yeniden boyutlandırmak için bkz. [bir VM 'Yi yeniden boyutlandırma](../virtual-machines/windows/resize-vm.md). Beklenen Internet bant genişliğiyle karşılaşamıyorsanız ISS 'nize da başvurabilirsiniz.
 
 > [!NOTE]
 > VPN Gateway üretilen iş, tüm Site-to-Site\VNET-to-VNET veya Noktadan siteye bağlantıları toplasıdır.
