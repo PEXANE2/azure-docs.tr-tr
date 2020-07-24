@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a7cdeb7bfde7396026b782382b34228c309b37d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116466"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088154"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps ile tümleşen bir işlev oluşturma
 
@@ -32,13 +32,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Mantıksal uygulamayı işleve bağlayın.
 > * İşlevden alınan yanıta göre bir e-posta gönderin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Etkin bir [Twitter](https://twitter.com/) hesabı. 
 + Bir [Outlook.com](https://outlook.com/) hesabı (bildirim göndermek için).
 
 > [!NOTE]
-> Gmail bağlayıcısını kullanmak istiyorsanız, yalnızca G-Suite iş hesapları bu bağlayıcıyı mantıksal uygulamalarda kısıtlama olmadan kullanabilir. Gmail tüketicisi hesabınız varsa, Gmail bağlayıcısını yalnızca belirli Google-onaylanan uygulamalar ve hizmetlerle kullanabilir ya da [Gmail bağlayıcısında kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+> Gmail bağlayıcısını kullanmak istiyorsanız, yalnızca G-Suite iş hesapları bu bağlayıcıyı mantıksal uygulamalarda kısıtlama olmadan kullanabilir. Gmail tüketicisi hesabınız varsa, Gmail bağlayıcısını yalnızca belirli Google-onaylanan uygulamalar ve hizmetlerle kullanabilir ya da [Gmail bağlayıcısında kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
 + Bu makalede, başlangıç noktası olarak [Azure portalında ilk işlevinizi oluşturma](functions-create-first-azure-function.md) bölümünde oluşturulan kaynaklar kullanılmaktadır.
 Daha önce yapmadıysanız işlev uygulamanızı oluşturmak için bu adımları uygulayın.
@@ -47,7 +47,7 @@ Daha önce yapmadıysanız işlev uygulamanızı oluşturmak için bu adımları
 
 Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. İzlenmekte olan tweetlerin duyarlılığını algılamak için Metin Analizi API’sini kullanın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 
@@ -57,9 +57,9 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
 
     | Ayar      |  Önerilen değer   | Açıklama                                        |
     | --- | --- | --- |
-    | **Adı** | MyCognitiveServicesAccnt | Benzersiz bir hesap adı seçin. |
+    | **Ad** | MyCognitiveServicesAccnt | Benzersiz bir hesap adı seçin. |
     | **Konum** | Batı ABD | Size en yakın konumu kullanın. |
-    | **Fiyatlandırma Katmanı** | F0 | En düşük katman ile başlayın. Çağrılarınız biterse daha yüksek bir katmana ölçeklendirin.|
+    | **Fiyatlandırma katmanı** | F0 | En düşük katman ile başlayın. Çağrılarınız biterse daha yüksek bir katmana ölçeklendirin.|
     | **Kaynak grubu** | myResourceGroup | Bu öğreticideki tüm hizmetler için aynı kaynak grubunu kullanın.|
 
 4. Kaynağınızı oluşturmak için **Oluştur**'a tıklayın. 
@@ -144,7 +144,7 @@ Artık duyarlılık puanlarını kategorilere ayıran bir işleviniz vardır. bu
 
     | Ayar      |  Önerilen değer   | Açıklama                                        |
     | ----------------- | ------------ | ------------- |
-    | **Adı** | TweetSentiment | Uygulamanız için uygun bir ad seçin. |
+    | **Ad** | TweetSentiment | Uygulamanız için uygun bir ad seçin. |
     | **Kaynak grubu** | myResourceGroup | Daha önceki ile aynı mevcut kaynak grubunu seçin. |
     | **Konum** | Doğu ABD | Size yakın bir konum seçin. |    
 
@@ -169,7 +169,7 @@ Artık Logic Apps Tasarımcısı'nı kullanarak uygulamanıza hizmetler ve tetik
     | Ayar      |  Önerilen değer   | Açıklama                                        |
     | ----------------- | ------------ | ------------- |
     | **Arama metni** | #Azure | Seçilen aralıkta yeni tweetler oluşturmak için yeterince popüler olan bir diyez etiketi kullanın. Ücretsiz katmanını kullanırken diyez etiketiniz çok popüler olursa, Bilişsel Hizmetler API'nizdeki işlem kotasını hızlı bir şekilde tüketebilirsiniz. |
-    | **Interval** | 15 | Sıklık birimleri cinsinden Twitter istekleri arasında geçen süre. |
+    | **Aralık** | 15 | Sıklık birimleri cinsinden Twitter istekleri arasında geçen süre. |
     | **Sıklık** | Dakika | Twitter’ı yoklamak için kullanılan sıklık birimi.  |
 
 3.  Twitter hesabınıza bağlanmak için **Kaydet**’e tıklayın. 
@@ -304,4 +304,3 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [Azure İşlevleri'ni kullanarak sunucusuz bir API oluşturma](functions-create-serverless-api.md)
 
 Logic Apps hakkında daha fazla bilgi için bkz. [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
-

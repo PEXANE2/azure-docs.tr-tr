@@ -10,11 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090595"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -37,12 +38,12 @@ Azure Anahtar Kasası günlüğü ile çalışmaya başlamada yardım almak içi
 
 Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](overview.md)). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
 * Kullanmakta olduğunuz var olan bir anahtar kasası.  
-* En düşük 1.0.0 sürümü Azure PowerShell. Azure PowerShell'i yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview). Azure PowerShell zaten yüklediyseniz ve sürümü bilmiyorsanız, Azure PowerShell konsolundan yazın `$PSVersionTable.PSVersion` .  
+* En düşük 1.0.0 sürümü Azure PowerShell. Azure PowerShell'i yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/). Azure PowerShell zaten yüklediyseniz ve sürümü bilmiyorsanız, Azure PowerShell konsolundan yazın `$PSVersionTable.PSVersion` .  
 * Anahtar Kasası günlükleriniz için Azure'da yeterli depolama.
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Anahtar Kasası aboneliğinize bağlanma
@@ -69,7 +70,7 @@ Daha sonra, günlük kaydı yaptığınız Anahtar Kasası ile ilişkili aboneli
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-Özellikle hesabınızla ilişkili birden fazla aboneliğiniz varsa, PowerShell 'in doğru aboneliğe işaret edilmesi önemli bir adımdır. Azure PowerShell yapılandırma hakkında daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
+Özellikle hesabınızla ilişkili birden fazla aboneliğiniz varsa, PowerShell 'in doğru aboneliğe işaret edilmesi önemli bir adımdır. Azure PowerShell yapılandırma hakkında daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/).
 
 ## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Günlüklerinizi için bir depolama hesabı oluşturun
 
@@ -96,7 +97,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Azure PowerShell kullanarak günlüğü etkinleştirme
 
-Key Vault için günlüğe kaydetmeyi etkinleştirmek üzere, **set-AzDiagnosticSetting** cmdlet 'ini yeni depolama hesabı ve Anahtar Kasası için oluşturduğumuz değişkenlerle birlikte kullanacağız. Ayrıca, **-Enabled** bayrağını **$true** ve kategoriyi **auditevent** (Key Vault günlük için tek kategori) olarak ayarlayacağız:
+Key Vault için günlüğe kaydetmeyi etkinleştirmek üzere, **set-AzDiagnosticSetting** cmdlet 'ini yeni depolama hesabı ve Anahtar Kasası için oluşturduğumuz değişkenlerle birlikte kullanacağız. Ayrıca, **-Enabled** bayrağını **$true** ve kategoriyi `AuditEvent` (Key Vault günlük için tek kategori) olarak ayarlayacağız:
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -270,15 +271,15 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 | **RESOURCEID** |Azure Resource Manager kaynak KIMLIĞI. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
 | **operationName** |Sonraki tabloda belirtildiği gibi işlemin adı. |
 | **operationVersion** |İstemci tarafından istenen sürümü REST API. |
-| **alan** |Sonuç türü. Key Vault günlükleri için, **auditevent** tek ve kullanılabilir bir değerdir. |
-| **resultType** |REST API isteğinin sonucu. |
+| **alan** |Sonuç türü. Key Vault günlükleri için, `AuditEvent` tek, kullanılabilir değerdir. |
+| **'ı** |REST API isteğinin sonucu. |
 | **resultSignature** |HTTP durumu. |
 | **resultDescription** |Kullanılabilir olduğunda sonuç hakkında ek açıklama. |
-| **durationMs** |Milisaniye cinsinden REST API'si isteğini sunmak için geçen süre. Buna ağ gecikme süresi dahil değildir; bu nedenle istemci tarafında ölçtüğünüz süre bu süreyle eşleşmeyebilir. |
+| **Ort** |Milisaniye cinsinden REST API'si isteğini sunmak için geçen süre. Buna ağ gecikme süresi dahil değildir; bu nedenle istemci tarafında ölçtüğünüz süre bu süreyle eşleşmeyebilir. |
 | **callerIpAddress** |İsteği yapan istemcinin IP adresi. |
-| **correlationId** |İstemci tarafı günlüklerini hizmet tarafı (Anahtar Kasası) günlükleriyle ilişkilendirmek için istemcinin geçirebileceği isteğe bağlı bir GUID. |
+| **ID** |İstemci tarafı günlüklerini hizmet tarafı (Anahtar Kasası) günlükleriyle ilişkilendirmek için istemcinin geçirebileceği isteğe bağlı bir GUID. |
 | **IDENTITY** |REST API isteğinde sunulan belirteçten kimlik. Bu, genellikle bir "Kullanıcı," bir "hizmet sorumlusu" veya "Kullanıcı + AppID" birleşimidir ve bir Azure PowerShell cmdlet 'inin sonucu olan bir istekte bulunur. |
-| **özelliklerinin** |İşleme göre farklılık gösteren bilgiler (**OperationName**). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget**), anahtar URI 'sini ("kimlik" olarak), kasa URI 'sini veya gizli URI 'yi de içerir. |
+| **özelliklerinin** |İşleme göre farklılık gösteren bilgiler (**OperationName**). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget**), anahtar URI (as `id` ), kasa URI 'si veya gizli URI 'yi de içerir. |
 
 **OperationName** alan değerleri *objectverb* biçimindedir. Örneğin:
 
@@ -290,7 +291,7 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 
 | operationName | REST API komutu |
 | --- | --- |
-| **Kimlik Doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
+| **Kimlik doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
 | **VaultGet** |[Bir anahtar kasası hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Bir anahtar kasası oluşturma veya güncelleştirme](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Bir anahtar kasasını silme](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
@@ -320,9 +321,9 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Izleyici günlüklerini kullanma
 
-Key Vault **auditevent** günlüklerini gözden geçirmek Için Azure izleyici günlüklerinde Key Vault çözümünü kullanabilirsiniz. Azure Izleyici günlüklerinde, verileri analiz etmek ve ihtiyacınız olan bilgileri almak için günlük sorgularını kullanırsınız. 
+Key Vault günlüklerini gözden geçirmek için Azure Izleyici günlüklerinde Key Vault çözümünü kullanabilirsiniz `AuditEvent` . Azure Izleyici günlüklerinde, verileri analiz etmek ve ihtiyacınız olan bilgileri almak için günlük sorgularını kullanırsınız. 
 
-Bunu ayarlama dahil daha fazla bilgi için bkz. [Azure izleyici günlüklerinde Azure Key Vault çözümü](../../azure-monitor/insights/azure-key-vault.md). Bu makalede, Azure Izleyici günlükleri önizlemesi sırasında sunulan eski Key Vault çözümünden geçiş yapmanız gerekiyorsa, günlüklerinizi bir Azure depolama hesabına ilk kez yönlendirmekte ve Azure Izleyici günlüklerini buradan okumak üzere yapılandırmış olursunuz.
+Bunu ayarlama dahil daha fazla bilgi için bkz. [Azure izleyici 'de Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="next-steps"></a><a id="next"></a>Sonraki adımlar
 

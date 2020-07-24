@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: isteğe bağlı SQL 'i Power BI Desktop & rapor oluşturmak için bağlama"
+title: İsteğe bağlı SQL 'i Power BI Desktop & rapor oluşturmak için bağlama
 description: Bu öğreticide, Azure SYNAPSE Analytics 'te Azure 'da isteğe bağlı SQL 'i Power BI masaüstüne bağlamayı ve bir görünümü temel alan bir demo raporu oluşturmayı öğrenin.
 services: synapse analytics
 author: azaricstefan
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2f4a1ab6dc2f5cb8576931ea5fc1da85f5597624
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089184"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Öğretici: Power BI Desktop & bir rapor oluşturmak için isteğe bağlı SQL kullanma
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -27,7 +27,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > - İsteğe bağlı SQL 'e Power BI Desktop bağlama
 > - Görünümü temel alan rapor oluştur
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -100,7 +100,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 
 2000 ve 2010 ' den kaynaklanan her bir ABD İlçesi için cinsiyet ve yarış tarafından popülasyon, Parquet biçiminde ABD 'de Cennial
 
-| Klasör yolu                                                  | Description                                                  |
+| Klasör yolu                                                  | Açıklama                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release                                                    | Tanıtım depolama hesabındaki veriler için üst klasör               |
 | /Release/us_population_county/                               | Veri dosyalarını, Hive/Hadoop bölümlendirme şeması kullanılarak yıla göre bölümlenen Parquet biçiminde doldurma. |
@@ -125,7 +125,7 @@ Aşağıdaki adımları kullanarak Power BI Desktop raporu oluşturun:
 
     - AAD için örnek 
   
-        ![Oturum aç ' a tıklayın.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
+        ![Oturum aç’a tıklayın.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
     - SQL oturum açma örneği-Kullanıcı adınızı ve parolanızı yazın.
 

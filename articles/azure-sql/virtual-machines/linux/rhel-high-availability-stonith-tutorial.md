@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483066"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086804"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -497,7 +497,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Çit Aracısı için özel bir rol oluşturma
 
-[Azure CLI kullanarak Azure kaynakları için özel bir rol oluşturma](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)öğreticisini izleyin.
+[Azure CLI kullanarak Azure özel rolü oluşturma](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)öğreticisini izleyin.
 
 JSON dosyanız aşağıdakine benzer şekilde görünmelidir:
 
@@ -532,7 +532,7 @@ Rolü eklemek için aşağıdaki komutu çalıştırın:
 az role definition create --role-definition "<filename>.json"
 ```
 
-Aşağıdaki çıktıyı görmeniz gerekir:
+Aşağıdaki çıkışı görmeniz gerekir:
 
 ```output
 {
@@ -571,7 +571,7 @@ Aşağıdaki çıktıyı görmeniz gerekir:
 5. **Rol ataması Ekle** ' ye tıklayın
 6. `Linux Fence Agent Role-<username>` **Rol** listesinden rolü seçin
 7. **Seç** listesinde, yukarıda oluşturduğunuz uygulamanın adını girin.`<resourceGroupName>-app`
-8. **Kaydet** 'e tıklayın
+8. **Kaydet**’e tıklayın
 9. Tüm küme düğümü için yukarıdaki adımları tekrarlayın.
 
 ### <a name="create-the-stonith-devices"></a>STONITH cihazlarını oluşturma
@@ -669,7 +669,7 @@ Yapılandırma ile işiniz bittiğinde, SQL Server durumunu denetleyebilir ve ç
 systemctl status mssql-server --no-pager
 ```
 
-Aşağıdaki çıktıyı görmeniz gerekir:
+Aşağıdaki çıkışı görmeniz gerekir:
 
 ```output
 ● mssql-server.service - Microsoft SQL Server Database Engine
@@ -951,17 +951,17 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 
 1. Kaynak kullanılabilirlik grubunda oluşturmak için daha önce seçilen ortama göre aşağıdaki komutlardan birini kullanın `ag_cluster` `ag1` .
 
-      **RHEL 7** 
+    **RHEL 7**
   
-        ```bash
-        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-        ```
+    ```bash
+    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+    ```
 
-      **RHEL 8** 
+    **RHEL 8**
   
-        ```bash
-        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
-        ```
+    ```bash
+    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+    ```
 
 2. Aşağıdaki komutu kullanmaya devam etmeden önce kaynağı denetleyip çevrimiçi olduklarından emin olun:
 
@@ -969,7 +969,7 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     sudo pcs resource
     ```
 
-    Aşağıdaki çıktıyı görmeniz gerekir:
+    Aşağıdaki çıkışı görmeniz gerekir:
     
     **RHEL 7** 
     
@@ -1051,7 +1051,7 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     sudo pcs constraint list --full
     ```
 
-    Aşağıdaki çıktıyı görmeniz gerekir:
+    Aşağıdaki çıkışı görmeniz gerekir:
     
     **RHEL 7**
 
@@ -1203,7 +1203,7 @@ sudo pcs stonith fence <VM3> --debug
 > [!NOTE]
 > Varsayılan olarak, çit eylemi düğümü kapalı ve sonra açık duruma getirir. Düğümü yalnızca çevrimdışı duruma getirmek istiyorsanız, komutundaki seçeneğini kullanın `--off` .
 
-Aşağıdaki çıktıyı almalısınız:
+Aşağıdaki çıkışı almalısınız:
 
 ```output
 [<username>@<VM1> ~]$ sudo pcs stonith fence <VM3> --debug

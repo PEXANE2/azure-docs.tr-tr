@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 06/27/2020
 ms.author: punagpal
-ms.openlocfilehash: 95e3e2be175fa810b1b966a7dda5a0e53e23d780
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: aeed0c90eeecd59e23a1d87a3ebc1e1a836a84ec
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536740"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116843"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Öğretici: Azure IoT Hub aracılığıyla cihaz verileri alma
 
@@ -48,7 +48,7 @@ Bu adım IoT Hub verileri yönlendiren bir uç nokta tanımlar. Bu uç noktayı,
 
 Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak parametrelerin listesi verilmiştir:
 
-|PowerShell parametresi|CLı parametresi|Description|
+|PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|resource-group|IoT Hub kaynağınızın kaynak grubu adı.|
 |Name|Hub-adı|IoT Hub kaynağınızın adı.|
@@ -63,7 +63,7 @@ Bu adım, yukarıda oluşturulan uç noktayı kullanarak bir ileti yolunu tanım
 
 Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak parametrelerin listesi verilmiştir:
 
-|PowerShell parametresi|CLı parametresi|Description|
+|PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|g|IoT Hub kaynağınızın kaynak grubu adı.|
 |Name|Hub-adı|IoT Hub kaynağınızın adı.|
@@ -96,7 +96,7 @@ Aşağıda gösterilen örnek kalp oranı iletisini Azure IoT Hub göndermek iç
 IoT Bağlayıcısı tarafından oluşturulan FHıR izleme kaynakları 'nı Postman kullanarak FHıR için Azure API üzerinde görüntüleyebilirsiniz. [Fhır Için Azure API 'sine erişmek üzere Postman](access-fhir-postman-tutorial.md) 'nizi ayarlayın ve `GET` `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` Yukarıdaki örnek iletide sinyal oranı değeri gönderilen gözehar kaynaklarını görüntülemek için bir istek yapın.
 
 > [!TIP]
-> Usx'lerinizin FHıR veri düzlemi için Azure API 'sine uygun erişimi olduğundan emin olun. Gerekli veri düzlemi rollerini atamak için [Azure rol tabanlı Access Control](configure-azure-rbac.md) kullanın.
+> Kullanıcının FHıR veri düzlemi için Azure API 'sine uygun erişimi olduğundan emin olun. Gerekli veri düzlemi rollerini atamak için [Azure rol tabanlı Access Control](configure-azure-rbac.md) kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

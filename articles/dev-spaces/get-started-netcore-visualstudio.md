@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde bir .NET Core uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 722f2f5b86bd67df7c7250cdbfc44ebcc048c773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090799"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes geliştirme alanı oluşturma: Azure Dev Spaces Visual Studio ve .NET Core
 
@@ -23,10 +23,10 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 - İki ayrı hizmeti bağımsız olarak geliştirin ve Kubernetes’in DNS hizmet bulma yöntemini kullanarak başka bir hizmete çağrı yapın.
 - Kodunuzu bir ekip ortamında verimli bir şekilde geliştirip test edin.
 
-> [!Note]
+> [!NOTE]
 > Herhangi bir zamanda **takıldıysanız** , [sorun giderme](troubleshooting.md) bölümüne bakın.
 
-## <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
+## <a name="install-the-azure-cli"></a>Azure CLI'yi yükleme
 Azure Dev Spaces, çok az yerel makine kurulumu gerektirir. Geliştirme ortamı yapılandırmanızın büyük bölümü bulutta depolanır ve diğer kullanıcılarla paylaşılabilir. İlk olarak [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) indirip yükleyin.
 
 ### <a name="sign-in-to-azure-cli"></a>Azure CLI'da oturum açma
@@ -36,7 +36,7 @@ Azure'da oturum açın. Bir terminal penceresine aşağıdaki komutu yazın:
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Birden çok Azure aboneliğiniz varsa...
@@ -91,31 +91,31 @@ Bu bölümde, bir ASP.NET Core Web uygulaması oluşturacak ve Kubernetes içind
 
 Visual Studio içinden yeni bir proje oluşturun. Şu anda, projenin bir **ASP.NET Core Web Uygulaması** olması gerekir. Projeyi '**webön uç**' olarak adlandırın.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+!["Yeni proje" iletişim kutusunda C:\source\reposlocation içinde "webön uç" adlı bir C Sharp Web uygulamasının oluşturulması gösterilmektedir. "Çözüm" açılan listesinde "yeni çözüm oluşturma" ve "çözüm için dizin oluşturma" onay kutusunun işaretli olması gösterilmektedir.](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
 **Web Uygulaması (Model-Görünüm-Denetleyici)** şablonunu seçin ve iletişim kutusunun üstündeki iki açılır listede **.NET Core** ve **ASP.NET Core 2.0**’ı hedeflediğinizden emin olun. Projeyi oluşturmak için **Tamam**'a tıklayın.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
+![İletişim kutusunda "yenı A S P NET Core Web uygulaması", iki açılan liste kutusu "Dot NET Core" ve "A S P dot NET Core 2 Point 0" gösterir. Liste kutularının altındaki proje şablonu düğmeleri dizisinde, "Web uygulaması (Model-View-Controller)" şablonu seçilidir. "Docker desteğini etkinleştir" onay kutusu işaretli değil.](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>AKS kümesi için Azure Dev Spaces'i etkinleştirme
 
 Yeni oluşturduğunuz projede, aşağıda gösterildiği gibi başlatma ayarları açılır listesinden **Azure Dev Spaces** seçeneğini belirleyin.
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![Açılan liste kutusu, Microsoft Visual Studio Int önizlemesi etiketli pencerenin en üstünde yer aldığı bir pencere. "Azure Dev Spaces" seçilidir.](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 Daha sonra gösterilen iletişim kutusunda, uygun hesapla oturum açtığınızdan emin olun ve ardından mevcut bir Kubernetes kümesini seçin.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
+![Azure Dev Spaces iletişim kutusunda şu kutular vardır: "abonelik," "Azure Kubernetes hizmet kümesi" ve "Space".](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
 **Alan** açılır listesini şimdilik varsayılan `default` değerinde bırakın. Daha sonra bu seçenek hakkında daha fazla bilgi edineceksiniz. Web uygulamasına bir genel uç noktadan erişilebilmesi için **Genel Erişime Açık** onay kutusunu işaretleyin. Bu ayar zorunlu değildir ancak bu kılavuzun sonraki kısımlarında bazı kavramları göstermeye yardımcı olacaktır. Yine de endişelenmeyin, her iki durumda da Visual Studio kullanarak web sitenizde hata ayıklayabilirsiniz.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
+![Herkese açık onay kutusu işaretlenir.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
 Kümeyi seçmek veya oluşturmak için **Tamam**’a tıklayın.
 
 Azure Dev Spaces ile çalışacak şekilde etkinleştirilmemiş bir küme seçerseniz, yapılandırmak isteyip istemediğinizi soran bir ileti görürsünüz.
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![İleti şunu okur: "Azure Dev Spaces kaynağı Ekle? Seçilen bir K kümesi, kullanılmadan önce Azure Dev Spaces kullanacak şekilde yapılandırılmalıdır. Bunu yapmak istiyor musunuz? " "O K" ve "Iptal" düğmeleri vardır.](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 **Tamam ' ı**seçin.
 
@@ -124,9 +124,9 @@ Azure Dev Spaces ile çalışacak şekilde etkinleştirilmemiş bir küme seçer
 
  Bunu gerçekleştirmek için bir arka plan görevi başlatılır. Tamamlanması birkaç dakika sürer. Oluşturma işleminin devam edip etmediğini görmek için, aşağıdaki görüntüde gösterildiği gibi işaretçinizi durum çubuğunun sol alt köşesindeki **Arka plan görevleri** simgesinin üzerine getirin.
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
+![Üzerine gelindiğinde görüntülenen açılır pencere, kaynak grubunda "My A K S ' oluşturma ' yı gösterir."](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
 
-> [!Note]
+> [!NOTE]
 > Geliştirme alanı başarıyla oluşturulana kadar uygulamanızda hata ayıklayamazsınız.
 
 ### <a name="look-at-the-files-added-to-project"></a>Projeye eklenen dosyalara bakın
@@ -138,7 +138,7 @@ Geliştirme alanının oluşturulmasını beklerken, geliştirme alanını kulla
 
 Son olarak geliştirme alanının ihtiyaç duyduğu geliştirme zamanı yapılandırmasını içeren `azds.yaml` adlı dosyayı görürsünüz.
 
-![](media/get-started-netcore-visualstudio/ProjectFiles.png)
+!["A z d s dot YAML" dosyası, Çözüm Gezgini penceresinde "webön uç" çözümünde görüntülenir.](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Kubernetes’te bir kapsayıcının hatalarını ayıklama
 Geliştirme alanı başarıyla oluşturulduktan sonra uygulamanızda hata ayıklayabilirsiniz. Kodda bir kesme noktası oluşturun. Örneğin, `Message` değişkeninin ayarlandığı `HomeController.cs` dosyasının 20. satırında. Hata ayıklamaya başlamak için **F5**’e tıklayın. 

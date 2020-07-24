@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116932"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Öğretici: Notification Hubs ve Bing uzamsal veriler ile konum temelli anında iletme bildirimleri gönderme
 
@@ -37,7 +37,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Arka ucu ayarlama
 > * Evrensel Windows Platformu (UWP) uygulamasında anında iletme bildirimlerini test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Visual Studio 2015 Güncelleştirme 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) veya üzeri ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)).
@@ -63,7 +63,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
     Kanal dosyası şu varlığı temsil eder:
 
-    ![Piçilerin bir alanının ana hattı için kırmızı bir çokgen içeren San Francisco 'ın bir AP 'nin ekran görüntüsü.](./media/notification-hubs-geofence/bing-maps-geofence.png)
+    ![Piçilerin bir alanının ana hattı için kırmızı bir çokgen ile San Francisco sulu birinin bir eşlemesinin ekran görüntüsü.](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. **Veri kaynağını karşıya yükleyin** sayfasında aşağıdaki eylemleri yapın:
    1. **Veri biçimi** için **kanal**’ı seçin.
    2. `NotificationHubGeofence.pipe`Önceki adımda oluşturduğunuz dosyaya gözatıp seçin.
@@ -164,7 +164,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     }
     ```
 
-    Kullanıcının UWP uygulamalarında konumunu alma hakkında daha fazla bilgi edinmek için bkz.[kullanıcının konumunu alma](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
+    Kullanıcının UWP uygulamalarında konumunu alma hakkında daha fazla bilgi edinmek için bkz.[kullanıcının konumunu alma](/windows/uwp/maps-and-location/get-location).
 5. Konum almanın çalışıp çalışmadığını denetlemek için ana sayfanızın kod tarafını açın (`MainPage.xaml.cs`). `MainPage` oluşturucusunda `Loaded` olayı için yeni bir olay işleyicisi oluşturun.
 
     ```csharp
@@ -393,7 +393,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 Çözümü üretime hazır hale getirmek için izlemeniz gerekebilecek birkaç adım vardır.
 
-1. İlk olarak, bölge sınırlarının dinamik olduğundan emin olmanız gerekir. Bunun yapılması, yeni sınırları mevcut veri kaynağı içinde karşıya yükleyebilmek için Bing API'si ile bazı ek çalışmalar yapmayı gerektirir. Daha fazla bilgi için bkz. [Bing Uzamsal Veri Hizmetleri API’si belgeleri](https://msdn.microsoft.com/library/ff701734.aspx).
+1. İlk olarak, bölge sınırlarının dinamik olduğundan emin olmanız gerekir. Bunun yapılması, yeni sınırları mevcut veri kaynağı içinde karşıya yükleyebilmek için Bing API'si ile bazı ek çalışmalar yapmayı gerektirir. Daha fazla bilgi için bkz. [Bing Uzamsal Veri Hizmetleri API’si belgeleri](/bingmaps/spatial-data-services/).
 2. İkinci olarak, teslimin doğru katılımcılara yapıldığından emin olmaya çalıştığınızdan, onları [etiketleme](notification-hubs-tags-segment-push-message.md) yoluyla hedeflemek isteyebilirsiniz.
 
-Bu öğreticide gösterilen çözümde, çok çeşitli hedef platformlara sahip olabileceğiniz bir senaryo açıklanmaktadır. Bu nedenle, bölge sınırlamasını sisteme özgü özelliklerle sınırlamaz. Bununla birlikte, Evrensel Windows Platformu [bölge sınırlarını hemen algılayan](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence) özellikler sunar.
+Bu öğreticide gösterilen çözümde, çok çeşitli hedef platformlara sahip olabileceğiniz bir senaryo açıklanmaktadır. Bu nedenle, bölge sınırlamasını sisteme özgü özelliklerle sınırlamaz. Bununla birlikte, Evrensel Windows Platformu [bölge sınırlarını hemen algılayan](/windows/uwp/maps-and-location/set-up-a-geofence) özellikler sunar.

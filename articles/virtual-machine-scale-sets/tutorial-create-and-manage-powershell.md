@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure sanal makine ölçek kümesi oluşturma ve yönetme
+title: 'Öğretici: Azure VM Ölçek kümesi oluşturma & yönetme – Azure PowerShell'
 description: Örnek başlatma ve durdurma veya ölçek kümesi kapasitesini değiştirme gibi bazı genel yönetim görevlerinin yanı sıra, sanal makine ölçek kümesi oluşturmak için Azure PowerShell'in nasıl kullanılacağını öğrenin.
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a657f8a4fd7b92aeb858b919052ca732bf630ae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091343"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi oluşturma ve yönetme
 
@@ -45,7 +45,7 @@ Bu öğreticide bir ölçek kümesi oluşturduğunuzda veya değiştirdiğinizde
 
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
-İlk olarak, VM örnekleri için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+İlk olarak, VM örnekleri için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -66,6 +66,9 @@ New-AzVmss `
 ```
 
 Tüm ölçek kümesi kaynaklarının ve sanal makine örneklerinin oluşturulup yapılandırılması birkaç dakika sürer.
+
+> [!IMPORTANT]
+> Ölçek kümesine bağlanamıyorsanız, *[-securitygroupname "mySecurityGroup"](/powershell/module/az.compute/new-azvmss)* parametresini ekleyerek bir ağ güvenlik grubu oluşturmanız gerekebilir.
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>Bir ölçek kümesindeki sanal makine örneklerini görüntüleme
@@ -200,14 +203,14 @@ Sanal makine örneğinin boyutu veya *SKU*, sanal makine örneği tarafından ku
 ### <a name="vm-instance-sizes"></a>Sanal makine örneği boyutları
 Aşağıdaki tabloda genel sanal makine boyutları, kullanım durumlarına göre kategorilere ayrılmıştır.
 
-| Tür                     | Ortak boyutlar           |    Description       |
+| Tür                     | Ortak boyutlar           |    Açıklama       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Genel amaçlı](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
-| [İşlem için iyileştirilmiş](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |
-| [Bellek için iyileştirilmiş](../virtual-machines/windows/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Yüksek bellek/çekirdek. İlişkisel veritabanı, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
-| [Depolama için iyileştirilmiş](../virtual-machines/windows/sizes-storage.md)      | Ls                | Yüksek disk aktarım hızı ve GÇ. Büyük Veri, SQL ve NoSQL veritabanları için ideal.                                                         |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | Ağır grafik işlemleri ile video düzenleme işlemleri için özel olarak hedeflenen VM’ler.       |
-| [Yüksek performans](../virtual-machines/windows/sizes-hpc.md) | H, A8-11          | İşleme düzeyi yüksek olan isteğe bağlı ağ arabirimleri (RDMA) içeren VM’lerimiz, şimdiye kadarki en güçlü CPU ile sunuluyor. 
+| [Genel amaçlı](../virtual-machines/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
+| [İşlem için iyileştirilmiş](../virtual-machines/sizes-compute.md)   | Fs, F             | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |
+| [Bellek için iyileştirilmiş](../virtual-machines/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Yüksek bellek/çekirdek. İlişkisel veritabanı, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
+| [Depolama için iyileştirilmiş](../virtual-machines/sizes-storage.md)      | Ls                | Yüksek disk aktarım hızı ve GÇ. Büyük Veri, SQL ve NoSQL veritabanları için ideal.                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | Ağır grafik işlemleri ile video düzenleme işlemleri için özel olarak hedeflenen VM’ler.       |
+| [Yüksek performans](../virtual-machines/sizes-hpc.md) | H, A8-11          | İşleme düzeyi yüksek olan isteğe bağlı ağ arabirimleri (RDMA) içeren VM’lerimiz, şimdiye kadarki en güçlü CPU ile sunuluyor. 
 
 ### <a name="find-available-vm-instance-sizes"></a>Kullanılabilir sanal makine örneği boyutlarını bulma
 Belirli bir bölgede kullanılabilen sanal makine örneği boyutlarının listesini görmek için [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) komutunu kullanın. 

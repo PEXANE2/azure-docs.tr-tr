@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 595440dc727f3faf1fa475266825a671f00d9153
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 2e22ac4601384508869ff43d473dd191f405cd43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143614"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092312"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak *öğreticiler/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* Not defterini açın.
@@ -863,13 +863,13 @@ Bir modeli otomatik olarak eğitmek için aşağıdaki adımları uygulayın:
 
 ### <a name="define-training-settings"></a>Eğitim ayarlarını tanımlama
 
-Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların](how-to-configure-auto-train.md)tam listesini görüntüleyin. Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_minutes` parametreyi küçültün.
+Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların](how-to-configure-auto-train.md)tam listesini görüntüleyin. Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_hours` parametreyi küçültün.
 
 |Özellik| Bu öğreticideki değer |Açıklama|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Her yineleme için dakika cinsinden zaman sınırı. Toplam çalışma zamanını azaltmak için bu değeri küçültün.|
-|**experiment_timeout_minutes**|20|Deneme sona ermeden önce tüm yinelemelerin birleştirilebilmesi için geçmesi gereken en uzun süre.|
-|**enable_early_stopping**|True|Puan, kısa vadede iyileştirilmediğinden erken sonlandırmayı etkinleştirmek için bayrak.|
+|**experiment_timeout_hours**|0.3|Deneme sona ermeden önce tüm yinelemelerin birleştirilebilmesi için en fazla saat cinsinden süre.|
+|**enable_early_stopping**|Doğru|Puan, kısa vadede iyileştirilmediğinden erken sonlandırmayı etkinleştirmek için bayrak.|
 |**primary_metric**| spearman_correlation | İyileştirmek istediğiniz ölçüm. En uygun model bu ölçüme göre seçilecek.|
 |**korturlama**| auto | **Otomatik**, deneme kullanarak giriş verilerini önceden işleyebilir (eksik verileri işleme, metni sayısal olarak dönüştürme vb.)|
 |**ayrıntı**| logging.INFO | Günlüğe kaydetme düzeyini denetler.|
@@ -880,7 +880,7 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "experiment_timeout_minutes": 20,
+    "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
     "featurization": 'auto',
@@ -984,7 +984,9 @@ print(fitted_model)
 Taksi Fares 'yi tahmin etmek için test verileri kümesindeki tahminleri çalıştırmak için en iyi modeli kullanın. İşlevi `predict` en iyi modeli kullanır ve veri kümesinden y, **seyahat maliyeti**değerlerini tahmin eder `x_test` . İlk 10 tahmini maliyet değerini ' den yazdırın `y_predict` .
 
 ```python
-y_predict = fitted_model.predict(x_test.values)
+y_test = x_test.pop("totalAmount")
+
+y_predict = fitted_model.predict(x_test)
 print(y_predict[:10])
 ```
 

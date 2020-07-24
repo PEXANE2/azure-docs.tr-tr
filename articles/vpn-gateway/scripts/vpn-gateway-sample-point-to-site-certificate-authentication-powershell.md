@@ -3,20 +3,20 @@ title: Azure PowerShell betiği örneği - Yerel Azure sertifika kimlik doğrula
 description: Otomatik olarak imzalanan sertifikaları kullanarak yerel Azure sertifika kimlik doğrulaması ile noktadan siteye VPN’yi yapılandırın. Bu makalede PowerShell kullanılmıştır.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: alzam
-ms.openlocfilehash: 6a82aedb20adb404cad6a51644b13a59be85ac2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a76cad8cb89e016d231566089ce30a337ea91d8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75867214"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086974"
 ---
-# <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>PowerShell kullanarak bir VPN Gateway oluşturma ve noktadan siteye yapılandırması ekleme
+# <a name="configure-a-point-to-site-vpn-using-native-azure-certificate-authentication"></a>Yerel Azure sertifika kimlik doğrulaması kullanarak noktadan siteye VPN yapılandırma
 
 Bu betik, yerel Azure sertifika kimlik doğrulamasını kullanarak rota temelli bir VPN Gateway oluşturur ve noktadan siteye yapılandırması ekler
 
@@ -121,4 +121,4 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).

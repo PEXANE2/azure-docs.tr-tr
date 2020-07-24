@@ -6,12 +6,13 @@ ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: dd97932d0aaa89373636a60e793f531cda18abdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091445"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Hizmetiniz için bir Spring Cloud config Server örneği ayarlama
 
@@ -56,7 +57,7 @@ Genel Git deposunu kurmak için kullanılan yapılandırılabilir tüm özellikl
 
 | Özellik        | Gerekli | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlar. |
+| `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlar. |
 | `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`  | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 
@@ -71,7 +72,7 @@ SSH ile özel Git deposunu kurmak için kullanılan yapılandırılabilir tüm �
 
 | Özellik                   | Gerekli | Özellik                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
+| `uri`                      | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
 | `default-label`            | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`             | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 | `private-key`              | Hayır     | Git deposuna erişmek için SSH özel anahtarı, URI *Git@* veya *SSH://* ile başladığı zaman _gereklidir_ . |
@@ -90,7 +91,7 @@ Temel kimlik doğrulaması ile özel Git deposunu kurmak için kullanılan tüm 
 
 | Özellik        | Gerekli | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
+| `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
 | `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`  | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 | `username`      | Hayır     | Git deposu sunucusu ' nu desteklediğinde _gereken_ , git deposu sunucusuna erişmek için kullanılan Kullanıcı adı `Http Basic Authentication` . |
@@ -125,7 +126,7 @@ Aşağıdaki şekilde Git depoları ayarlamak için kullanılan yapılandırıla
 
 Yapılandırma dosyalarınız bir depoya kaydedildiğinden artık Azure Spring Cloud 'ı buna bağlamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure yay bulutuna **genel bakış** sayfasına gidin.
 

@@ -9,18 +9,21 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 06/04/2020
-ms.openlocfilehash: 3786b7a2b8b8fc40b1cf393aa452c15d72c5b963
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 07/10/2020
+ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092309"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile talep tahmini
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Bu öğreticide, bir bisiklet paylaşma hizmeti için Kiralama taleplerini tahmin etmek üzere bir zaman serisi tahmin modeli oluşturmak için Azure Machine Learning Studio 'da otomatik makine öğrenimi veya otomatik ML 'yi kullanırsınız.
+
+>[!IMPORTANT]
+> Azure Machine Learning Studio 'daki otomatik ML deneyimi önizlemededir. Bazı özellikler desteklenmeyebilir veya sınırlı özelliklere sahip olabilir.
 
 Bir sınıflandırma modeli örneği için bkz. [öğretici: Azure Machine Learning OTOMATIK ml ile sınıflandırma modeli oluşturma](tutorial-first-experiment-automated-ml.md).
 
@@ -37,11 +40,11 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 
 * Enterprise Edition Azure Machine Learning çalışma alanı. Bir çalışma alanınız yoksa, [Enterprise Edition çalışma alanı oluşturun](how-to-manage-workspace.md). 
     * Azure Machine Learning Studio 'da otomatik makine öğrenimi yalnızca Enterprise Edition çalışma alanları için kullanılabilir. 
-* [Bike-No. csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) veri dosyasını indirin
+* [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) veri dosyasını indirin
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da çalışmaya başlama
 
-Bu öğreticide, tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için Machine Learning araçları 'nı içeren bir birleştirilmiş arabirim olan Azure Machine Learning Studio 'da otomatik ML denemenizin çalıştırılması oluşturursunuz. Studio, Internet Explorer tarayıcılarında desteklenmez.
+Bu öğreticide, tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere Machine Learning araçları 'nı içeren birleştirilmiş bir Web arabirimi olan Azure Machine Learning Studio 'da otomatik ML denemelerinizi oluşturacaksınız. Studio, Internet Explorer tarayıcılarında desteklenmez.
 
 1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
 
@@ -67,15 +70,15 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
 
     1. **Gözat**'ı seçin. 
     
-    1. Yerel bilgisayarınızda **Bike-No. csv** dosyasını seçin. Bu, bir [Önkoşul](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv)olarak indirdiğiniz dosyadır.
+    1. Yerel bilgisayarınızda **bike-no.csv** dosyasını seçin. Bu, bir [Önkoşul](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv)olarak indirdiğiniz dosyadır.
 
-    1. **İleri** Seç
+    1. **İleri**’yi seçin
 
        Karşıya yükleme tamamlandığında, ayarlar ve önizleme formu dosya türüne göre önceden doldurulur. 
        
     1. **Ayarlar ve önizleme** formunun aşağıdaki gibi doldurulduğunu doğrulayın ve **İleri ' yi**seçin.
         
-        Alan|Description| Öğretici için değer
+        Alan|Açıklama| Öğretici için değer
         ---|---|---
         Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Ted
         Sınırlayıcı|&nbsp;Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
@@ -110,11 +113,14 @@ Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarla
 
     1. **Yeni Işlem oluştur** ' u seçin ve işlem hedefini yapılandırın. Otomatikleştirilmiş ML yalnızca Azure Machine Learning işlem destekler. 
 
-        Alan | Description | Öğretici için değer
+        Alan | Açıklama | Öğretici için değer
         ----|---|---
         İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Bisiklet-işlem
+        Sanal &nbsp; makine &nbsp; türü|İşlem için sanal makine türünü seçin.|CPU (Merkezi Işlem birimi)
         Sanal &nbsp; makine &nbsp; boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
-        En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
+        En az/en fazla düğüm| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
+        Ölçeği ölçeklendirmeye başlamadan önce boşta geçen Saniyeler | Küme otomatik olarak en düşük düğüm sayısına ölçeklendirildiğinde boşta geçen süre.|120 (varsayılan)
+        Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Yok
   
         1. İşlem hedefini almak için **Oluştur** ' u seçin. 
 
@@ -130,23 +136,23 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
 
 1. **Görev türü ve ayarlar** formunda, makine öğrenimi görev türü olarak **zaman serisi tahmini** ' ni seçin.
 
-1. **Zaman sütununuz** olarak **Tarih** ' i seçin ve **grubu sütunlara göre** boş bırakın. 
+1. **Zaman sütununuz** olarak **Tarih** ' i seçin ve **zaman serisi tanımlayıcılarını** boş bırakın. 
 
-    1. **Ek yapılandırma ayarlarını görüntüle** ' yi seçin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denet, tahmininize yönelik ayarları belirtmenize yöneliktir. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
+1. **Tahmin ufku** , gelecekte tahmin etmek istediğiniz sürenin uzunluğudur.  Otomatik Algıla seçimini kaldırın ve alana 14 yazın. 
 
-  
-        Ek &nbsp; yapılandırma|Description|&nbsp;Öğretici için &nbsp; değer
-        ------|---------|---
-        Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|Normalleştirilmiş kök ortalama kare hatası
-        Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
-        En iyi modeli açıkla (Önizleme)| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
-        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Aşırı rastgele ağaçlar
-        Ek tahmin ayarları| Bu ayarlar, modelinizin doğruluğunu artırmaya yardımcı olur <br><br> _**Tahmin ufku**_: gelecekte tahmin etmek istediğiniz sürenin uzunluğu <br> _**Tahmin hedefi lags:**_ hedef değişkenin lags 'ı ne kadar geri oluşturmak istiyorsunuz <br> _**Hedef sıralı pencere**_: *maksimum, en düşük* ve *Toplam*gibi özelliklerin oluşturulacağı pencere sayısını belirtir. |Tahmin ufuk: 14 <br> Tahmin &nbsp; hedefi &nbsp; lags: None <br> Hedef &nbsp; hareketli &nbsp; pencere &nbsp; boyutu: yok
-        Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 3 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
-        Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 5
-        Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 6
-        
-        **Kaydet**'i seçin.
+1. **Ek yapılandırma ayarlarını görüntüle** ' yi seçin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denet, tahmininize yönelik ayarları belirtmenize yöneliktir. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
+
+    Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
+    ------|---------|---
+    Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|Normalleştirilmiş kök ortalama kare hatası
+    En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
+    Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Aşırı rastgele ağaçlar
+    Ek tahmin ayarları| Bu ayarlar, modelinizin doğruluğunu artırmaya yardımcı olur <br><br> _**Tahmin hedefi lags:**_ hedef değişkenin lags 'ı ne kadar geri oluşturmak istiyorsunuz <br> _**Hedef sıralı pencere**_: *maksimum, en düşük* ve *Toplam*gibi özelliklerin oluşturulacağı pencere sayısını belirtir. | <br><br>Tahmin &nbsp; hedefi &nbsp; lags: None <br> Hedef &nbsp; hareketli &nbsp; pencere &nbsp; boyutu: yok
+    Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 3 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
+    Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 5
+    Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 6
+    
+    **Kaydet**'i seçin.
 
 ## <a name="run-experiment"></a>Deneme Çalıştır
 
@@ -163,7 +169,7 @@ Test edilen algoritmaları (modeller) görmek için **modeller** sekmesine gidin
 
 Deneme modellerinin tümünün bitmesini beklerken, performans ayrıntılarını araştırmak için tamamlanmış bir modelin **algoritma adını** seçin. 
 
-Aşağıdaki örnek, seçili modelin özelliklerini, ölçümlerini ve performans grafiklerini görüntülemek için **model ayrıntıları** ve **görselleştirmeler** sekmelerinde gezinir. 
+Aşağıdaki örnek, seçili modelin özelliklerini, ölçümlerini ve performans grafiklerini görüntülemek için **Ayrıntılar** ve **ölçümler** sekmelerinde gezinir. 
 
 ![Ayrıntıları Çalıştır](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
 
@@ -173,11 +179,15 @@ Azure Machine Learning Studio 'da otomatik makine öğrenimi, birkaç adımda We
 
 Bu deneme için, bir Web hizmetine dağıtım, Bisiklet payı şirketinin tahmin Bisiklet payını sağlamak için artık yinelemeli ve ölçeklenebilir bir Web çözümüne sahip olduğu anlamına gelir. 
 
-Çalıştırma tamamlandıktan sonra, **ayrıntıları Çalıştır** sayfasına dönün ve **modeller** sekmesini seçin.
+Çalıştırma tamamlandıktan sonra, ekranınızın en üstünde **1. Çalıştır** ' ı seçerek üst çalışma sayfasına geri gidin.
 
-Bu deneme bağlamında, **Stackensediskte** **normalleştirilmiş kök ortalama kare hata** ölçüsüne göre en iyi model kabul edilir.  Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer. Dağıtım işlemi, modeli kaydetme, kaynakları oluşturma ve bunları Web hizmeti için yapılandırma dahil olmak üzere birkaç adım gerektirir.
+**En iyi model Özeti** bölümünde, **stackensediskte** **normalleştirilmiş kök ortalama kare hata** ölçüsüne bağlı olarak bu deneme bağlamında en iyi model kabul edilir.  
 
-1. Sol alt köşedeki **en iyi modeli dağıt** düğmesini seçin.
+Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer. Dağıtım işlemi, modeli kaydetme, kaynakları oluşturma ve bunları Web hizmeti için yapılandırma dahil olmak üzere birkaç adım gerektirir.
+
+1. Modele özgü sayfayı açmak için **Stackensebir** öğesini seçin.
+
+1. Ekranın sol üst bölümünde bulunan **Dağıt** düğmesini seçin.
 
 1. **Model dağıt** bölmesini aşağıdaki gibi doldurun:
 
@@ -193,8 +203,7 @@ Bu deneme bağlamında, **Stackensediskte** **normalleştirilmiş kök ortalama 
 
 1. **Dağıt**'ı seçin.  
 
-    **Çalıştırma** ekranının üst kısmında, dağıtımın başarıyla başlatıldığını belirten yeşil başarı iletisi görüntülenir. Dağıtımın ilerlemesi bulunabilir  
-    **dağıtım durumu**altında **Önerilen model** bölmesinde.
+    **Çalıştırma** ekranının üst kısmında, dağıtımın başarıyla başlatıldığını belirten yeşil başarı iletisi görüntülenir. Dağıtımın ilerlemesi, dağıtım **durumu**' nun altındaki **model Özeti** bölmesinde bulunabilir.
     
 Dağıtım başarılı olduktan sonra, tahminleri oluşturmak için işlemsel bir Web hizmetiniz vardır. 
 

@@ -10,15 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 53b1c22e93c342373cae2bbb14958f4810a79630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092329"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!IMPORTANT]
+> Azure Machine Learning R SDK Şu anda genel önizlemededir.
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu öğreticide, bir arabadaki bir Fatality olma olasılığını tahmin eden bir lojistik regresyon modeli oluşturmak için Azure Machine Learning R SDK (Önizleme) kullanacaksınız. Azure Machine Learning Bulut kaynaklarının, eğitim ve bir modeli dağıtmaya yönelik ölçeklenebilir bir ortam sağlamak için R ile nasıl çalıştığını göreceksiniz.  
 
@@ -307,7 +311,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 Modelinize göre, çakışmadan ölüm tehlikini tahmin edebilirsiniz. Azure ML 'yi kullanarak modelinizi bir tahmin hizmeti olarak dağıtın. Bu öğreticide, Web hizmetini [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (aci) ' de dağıtacaksınız.
 
-### <a name="register-the-model"></a>Modeli kaydedin
+### <a name="register-the-model"></a>Modeli Kaydet
 
 İlk olarak, çalışma alanınıza indirdiğiniz modeli ile kaydedin [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html) . Kayıtlı bir model herhangi bir dosya koleksiyonu olabilir, ancak bu durumda R model nesnesi yeterlidir. Azure ML, dağıtım için kayıtlı modeli kullanır.
 

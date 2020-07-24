@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/03/2020
-ms.openlocfilehash: d8ace63ed99b8fc857f61b9211068e37e3bac412
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: bb66f215241755ae0fbcef3c95f5ea67a686a4fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84514703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092584"
 ---
 # <a name="create-resource-lock-for-a-azure-cosmos-db-table-api-table-using-azure-cli"></a>Azure CLı kullanarak bir Azure Cosmos DB Tablo API'si tablosu için kaynak kilidi oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "84514703"
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]
-> Kaynak kilitleri Cosmos DB tablo SDK 'Sı, Azure depolama tablo SDK 'Sı, hesap anahtarları aracılığıyla bağlanan tüm araçlar veya Cosmos DB hesabı etkin özellik ile kilitlenmediği takdirde Azure portalından bağlanan kullanıcılar tarafından yapılan değişiklikler için çalışmaz `disableKeyBasedMetadataWriteAccess` . Bu özelliğin nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri engellemeyi](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk).
+> Kaynak kilitleri Cosmos DB tablo SDK 'Sı, Azure depolama tablo SDK 'Sı, hesap anahtarları aracılığıyla bağlanan tüm araçlar veya Cosmos DB hesabı etkin özellik ile kilitlenmediği takdirde Azure portalından bağlanan kullanıcılar tarafından yapılan değişiklikler için çalışmaz `disableKeyBasedMetadataWriteAccess` . Bu özelliğin nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri engellemeyi](../../../role-based-access-control.md#prevent-sdk-changes).
 
 ## <a name="sample-script"></a>Örnek betik
 

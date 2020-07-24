@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
-ms.openlocfilehash: b9300845f6bc62d8ed90c2dc87efb626efae05bb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-java
+ms.openlocfilehash: 2b68c4857d3d688c42779be9b5f5fa6e43e0403e
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116893"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Öğretici: Azure Spring Cloud uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
@@ -19,7 +20,7 @@ Bu makalede, Azure yay bulutu uygulaması için yönetilen kimlik oluşturma ve 
 
 Azure Key Vault, uygulamanızın belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri güvenli bir şekilde depolamak ve güvenle denetlemek için kullanılabilir. Azure Active Directory (AAD) ' de yönetilen bir kimlik oluşturabilir ve kodunuzda kimlik bilgilerini görüntülemeye gerek kalmadan Key Vault dahil AAD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
 * [Azure CLı sürüm 2.0.67 veya üstünü yükler](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)

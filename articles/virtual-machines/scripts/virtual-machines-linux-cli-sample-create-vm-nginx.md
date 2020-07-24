@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4cea4fa293083298858a775eff01b9acf17d6c7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f894d4f29ce8729ff88faa72b0d6c470fd6f87c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088691"
 ---
 # <a name="create-a-vm-with-nginx"></a>NGINX ile VM oluşturma
 
@@ -62,14 +62,14 @@ Bu betik, bir kaynak grubu, sanal makine ve tüm ilgili kaynakları oluşturmak 
 
 | Komut | Notlar |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Sanal makineyi oluşturur. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
-| [az vm open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Gelen trafiğe izin veren bir ağ güvenlik grubu kuralı oluşturur. Bu örnekte, 80 numaralı bağlantı noktası HTTP trafiğine açılır. |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Bir VM’ye sanal makine uzantısı ekler ve çalıştırır. Bu örnekte NGINX yüklemek için özel betik uzantısı kullanılır.|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [az vm create](/cli/azure/vm) | Sanal makineyi oluşturur. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
+| [az vm open-port](/cli/azure/network/nsg/rule) | Gelen trafiğe izin veren bir ağ güvenlik grubu kuralı oluşturur. Bu örnekte, 80 numaralı bağlantı noktası HTTP trafiğine açılır. |
+| [azure vm extension set](/cli/azure/vm/extension) | Bir VM’ye sanal makine uzantısı ekler ve çalıştırır. Bu örnekte NGINX yüklemek için özel betik uzantısı kullanılır.|
+| [az group delete](/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek sanal makine CLI betiği örnekleri, [Azure Linux VM belgeleri](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) içinde bulunabilir.
