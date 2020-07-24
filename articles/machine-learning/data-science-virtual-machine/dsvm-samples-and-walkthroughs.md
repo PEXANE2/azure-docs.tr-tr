@@ -10,11 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900040"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012578"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde örnekler
 
@@ -22,9 +23,9 @@ Azure veri bilimi sanal makineleri (DSVMs) kapsamlı bir örnek kod kümesi içe
 > [!NOTE]
 > Veri bilimi sanal makinelerinizde Jupyıter not defterlerini çalıştırma hakkında daha fazla bilgi için bkz. [Access jupi](#access-jupyter) Section.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu örnekleri çalıştırmak için bir Veri Bilimi Sanal Makinesi sağlamış olmanız gerekir. Bkz. [Windows](./provision-vm.md) ve [Ubuntu](./dsvm-ubuntu-intro.md)için hızlı başlangıçlara bakın.
+Bu örnekleri çalıştırmak için, bir [Ubuntu veri bilimi sanal makinesi](./dsvm-ubuntu-intro.md)sağlamış olmanız gerekir.
 
 ## <a name="available-samples"></a>Kullanılabilir örnekler
 | Örnek kategorisi | Açıklama | Konumlar |
@@ -35,7 +36,7 @@ Bu örnekleri çalıştırmak için bir Veri Bilimi Sanal Makinesi sağlamış o
 | Azure Machine Learning  | Machine Learning ile makine öğrenimi ve derin öğrenme modelleri oluşturmayı gösterir. Modelleri her yerde dağıtın. Otomatik makine öğrenimi ve akıllı hiper parametre ayarlamayı kullanın. Model yönetimi ve dağıtılmış eğitim ' i de kullanın. <br/> [Machine Learning](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
 | PyTorch Not defterleri  | PyTorch tabanlı sinir ağlarını kullanan derin öğrenme örnekleri. Not defterleri acemi 'ten ileri düzey senaryolar arasında değişir.  <br/> [PyTorch Not defterleri](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
 | TensorFlow  |  TensorFlow çerçevesi kullanılarak uygulanan çeşitli sinir ağ örnekleri ve teknikleri. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
-| Microsoft Bilişsel Araç Seti <br/>   | Microsoft 'ta Cognitive Toolkit ekibi tarafından yayımlanan derin öğrenme örnekleri.  <br/> [Bilişsel Araç Seti](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
+| Microsoft Bilişsel Araç Seti <br/>   | Microsoft 'ta Cognitive Toolkit ekibi tarafından yayımlanan derin öğrenme örnekleri.  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
 | Caffe2 | Caffe2 tabanlı sinir ağlarını kullanan derin öğrenme örnekleri. Birçok Not defteri, kullanıcılara Caffe2 ve verimli bir şekilde nasıl kullanılacağını öğrenmiştir. Örnek olarak, görüntü ön işleme ve veri kümesi oluşturma sayılabilir. Ayrıca gerileme ve önceden eğitilen modellerin nasıl kullanılacağı de dahil değildir. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
 | H2O   | Gerçek dünyada sorun senaryoları için H2O kullanan Python tabanlı örnekler. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
 | Parlak ml dili  | Apache Spark 2. x üzerinde Apache Spark için pySpark ve MMLSpark: Microsoft Machine Learning aracılığıyla Apache Spark MLLib araç seti özelliklerini kullanan örnekler.  <br/> [Parlak ml dili](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |

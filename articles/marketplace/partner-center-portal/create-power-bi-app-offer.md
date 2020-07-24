@@ -1,20 +1,20 @@
 ---
-title: Microsoft ticari Market 'te Power BI uygulama teklifi oluşturma
+title: Microsoft AppSource Power BI uygulama teklifi oluşturma
 description: Microsoft AppSource için Power BI uygulama teklifi oluşturmayı ve yayımlamayı öğrenin.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/22/2020
+ms.openlocfilehash: fa8c08f5d6f49b12306ea1f4bb82c07747622f48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980365"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011949"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource için Power BI uygulaması oluşturma
+# <a name="create-a-power-bi-app-offer"></a>Power BI uygulama teklifi oluşturma
 
 Bu makalede, Microsoft [Appsource](https://appsource.microsoft.com/)'a Power BI bir uygulama teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır.
 
@@ -143,7 +143,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 7. Gizlilik ilkesi
 8. Teklif adı
 9. Özet
-10. Description
+10. Açıklama
 11. Ekran görüntüleri/videolar
 
 ### <a name="name"></a>Name
@@ -160,7 +160,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

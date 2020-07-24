@@ -7,11 +7,12 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
-ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d40352d2110fa54ab699e41fa6d161d5c9ea4f4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758591"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010521"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Linux sanal makinenizde betikleri çalıştırma
 
@@ -32,7 +33,7 @@ Görevleri otomatikleştirmek veya sorunları gidermek için, bir VM 'de komutla
 [Çalıştır komutu](run-command.md) özelliği, sanal makine ve uygulama yönetimini ve betikleri kullanarak sorun gidermeyi ve makinenin ulaşılamaz olduğu durumlarda bile kullanılabilir. Örneğin, Konuk GÜVENLIK duvarında RDP veya SSH bağlantı noktası açık olmaz.
 
 * Azure sanal makinelerinde betikleri çalıştırın.
-* [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)veya [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) kullanarak çalıştırılabilir
+* [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)veya [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) kullanarak çalıştırılabilir
 * Azure portal hızlıca bir betiği çalıştırın ve çıktıyı görüntüleyin ve gerektiğinde tekrarlayın.
 * Betik doğrudan yazılabilir veya yerleşik betiklerin birini çalıştırabilirsiniz.
 * Linux makinelerde Windows makinelerinde ve Bash betikte PowerShell betiğini çalıştırın.
@@ -55,7 +56,7 @@ Görevleri otomatikleştirmek veya sorunları gidermek için, bir VM 'de komutla
 
 ## <a name="serial-console"></a>Seri konsol
 
-[Seri konsol](serial-console.md) , VM 'ye bağlı bir klavye olmasına benzer şekilde, bir VM 'ye doğrudan erişim sağlar.
+[Seri konsol](../troubleshooting/serial-console-linux.md) , VM 'ye bağlı bir klavye olmasına benzer şekilde, bir VM 'ye doğrudan erişim sağlar.
 
 * Azure sanal makinelerinde komutları çalıştırın.
 * Azure portal makineye metin tabanlı bir konsol kullanılarak çalıştırılabilir.
@@ -69,4 +70,4 @@ Sanal makinelerinizdeki betikleri ve komutları çalıştırmak için kullanıla
 * [Özel Betik Uzantısı](../extensions/custom-script-linux.md)
 * [Çalıştır Komutu](run-command.md)
 * [Karma Runbook Çalışanı](../../automation/automation-hybrid-runbook-worker.md)
-* [Seri konsol](serial-console.md)
+* [Seri konsol](../troubleshooting/serial-console-linux.md)

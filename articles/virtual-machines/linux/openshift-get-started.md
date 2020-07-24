@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: c338e9a6a793d1c2d0557d70242996175d5a85ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e254c0c87465b79a37d9a849cc966e34eed01474
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010572"
 ---
 # <a name="openshift-in-azure"></a>Azure 'da OpenShift
 
@@ -29,7 +30,7 @@ Birden çok OpenShift sürümü mevcuttur.  Bu sürümler, günümüzde müşter
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Red Hat OpenShift Microsoft Azure, Azure 'da çalışan bir OpenShift 'in tamamen yönetilen bir tekliftir. Bu hizmet, Microsoft ve Red Hat tarafından ortaklaşa yönetilir ve desteklenir. Daha fazla ayrıntı için bkz. [Azure Red Hat OpenShift hizmeti](https://docs.microsoft.com/azure/openshift/) belgeleri.
+Red Hat OpenShift Microsoft Azure, Azure 'da çalışan bir OpenShift 'in tamamen yönetilen bir tekliftir. Bu hizmet, Microsoft ve Red Hat tarafından ortaklaşa yönetilir ve desteklenir. Daha fazla ayrıntı için bkz. [Azure Red Hat OpenShift hizmeti](../../openshift/index.yml) belgeleri.
 
 ## <a name="openshift-container-platform"></a>OpenShift Kapsayıcı Platformu
 

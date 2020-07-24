@@ -4,15 +4,16 @@ description: Uygulama haritası ile karmaşık uygulama topolojilerini izleme
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f9f19ea9370b9da3e69d871e8b53ccf7f64a6a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80989536"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008515"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: dağıtılmış uygulamaları önceliklendirme
 
-Uygulama Haritası, dağıtılmış uygulamanızın tüm bileşenlerinde performans sorunlarını veya hata etkin noktalarını ayarlamanıza yardımcı olur. Eşlemedeki her düğüm bir uygulama bileşenini veya bağımlılıklarını temsil eder; ve sistem durumu KPI 'si ve uyarı durumu içerir. Herhangi bir bileşenden, Application Insights olayları gibi daha ayrıntılı Tanılamalar 'e tıklayabilirsiniz. Uygulamanız Azure Hizmetleri kullanıyorsa, SQL Veritabanı Danışmanı önerileri gibi Azure tanılama 'ya de tıklayabilirsiniz.
+Uygulama Haritası, dağıtılmış uygulamanızın tüm bileşenlerindeki performans sorunlarını veya başarısız etkin noktaları belirlemenize yardımcı olur. Eşlemedeki her düğüm bir uygulama bileşenini veya bağımlılıklarını temsil eder; ve sistem durumu KPI 'si ve uyarı durumu içerir. Herhangi bir bileşenden, Application Insights olayları gibi daha ayrıntılı Tanılamalar 'e tıklayabilirsiniz. Uygulamanız Azure Hizmetleri kullanıyorsa, SQL Veritabanı Danışmanı önerileri gibi Azure tanılama 'ya de tıklayabilirsiniz.
 
 ## <a name="what-is-a-component"></a>Bileşen nedir?
 
@@ -156,7 +157,7 @@ ASP.NET Web Apps için alternatif bir yöntem, örneğin Global.aspx.cs içindek
 
 **Java Aracısı**
 
-[Java aracısı 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) için bulut rolü adı şu şekilde ayarlanır:
+[Java aracısı 3,0](./java-in-process-agent.md) için bulut rolü adı şu şekilde ayarlanır:
 
 ```json
 {
@@ -258,15 +259,15 @@ Uygulama haritasını beklenen şekilde çalışacak bir sorun yaşıyorsanız, 
 
 1. Resmi olarak desteklenen bir SDK kullandığınızdan emin olun. Desteklenmeyen/Topluluk SDK’ları bağıntıyı desteklemeyebilir.
 
-    Desteklenen SDK 'ların listesi için bu [makaleye](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) başvurun.
+    Desteklenen SDK’ların listesi için [bu makaleye](./platforms.md) bakın.
 
 2. Tüm bileşenleri en son SDK sürümüne yükseltin.
 
-3. C# ile Azure Işlevleri kullanıyorsanız, [Işlevler v2](https://docs.microsoft.com/azure/azure-functions/functions-versions)'ye yükseltin.
+3. C# ile Azure Işlevleri kullanıyorsanız, [Işlevler v2](../../azure-functions/functions-versions.md)'ye yükseltin.
 
 4. [Bulut rolü adının](#set-cloud-role-name) doğru şekilde yapılandırıldığını onaylayın.
 
-5. Bir bağımlılık eksikse, bunun [otomatik olarak toplanan bağımlılıklar](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) listesinde bulunduğundan emin olun. Listede yoksa, bunu yine de [izleme bağımlılık çağrısı](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) kullanarak el ile izleyebilirsiniz.
+5. Bir bağımlılık eksikse, bunun [otomatik olarak toplanan bağımlılıklar](./auto-collect-dependencies.md) listesinde bulunduğundan emin olun. Listede yoksa, bunu yine de [izleme bağımlılık çağrısı](./api-custom-events-metrics.md#trackdependency) kullanarak el ile izleyebilirsiniz.
 
 ### <a name="too-many-nodes-on-the-map"></a>Haritada çok fazla düğüm
 
@@ -280,7 +281,7 @@ Bunu yapmak için, bulut rolü adı, bağımlılık türü ve bağımlılık hed
 
 * Bağımlılık türü, bağımlılığın mantıksal türünü temsil etmelidir. Örneğin, HTTP, SQL veya Azure blobu tipik bağımlılık türleridir. Benzersiz kimlikler içermemelidir.
 
-* Bulut rolü adının amacı [yukarıdaki bölümde](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)açıklanmıştır.
+* Bulut rolü adının amacı [yukarıdaki bölümde](#set-cloud-role-name)açıklanmıştır.
 
 ## <a name="portal-feedback"></a>Portal geri bildirimi
 

@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201286"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008209"
 ---
-# <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Izleyici günlükleri dağıtımınızı tasarlama
+# <a name="designing-your-azure-monitor-logs-deployment"></a>Azure İzleyici Günlükleri dağıtımınızı tasarlama
 
 Azure Izleyici, [günlük](data-platform-logs.md) verilerini bir Azure kaynağı olan bir Log Analytics çalışma alanında ve verilerin toplandığı, toplandığı ve yönetim sınırı olarak hizmet verdiği bir kapsayıcı olarak depolar. Azure aboneliğinizde bir veya daha fazla çalışma alanı dağıtabilirken, kuruluşunuzun ihtiyaç duymasıyla ilgili uygun maliyetli, yönetilebilir ve ölçeklenebilir bir dağıtım sunmak için ilk dağıtımınızın kılavuzumuzu takip etmek amacıyla anlamanız gereken birkaç önemli noktalar vardır.
 
@@ -25,7 +25,7 @@ Bir Log Analytics çalışma alanı şunları sağlar:
 
 * Veri depolama için coğrafi bir konum.
 * Önerilen tasarım stratejilerimizden birini izleyerek farklı kullanıcılara erişim hakları vererek veri yalıtımı.
-* [Fiyatlandırma katmanı](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [bekletme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)ve [veri dönüşü](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)gibi ayarların yapılandırılması için kapsam.
+* [Fiyatlandırma katmanı](./manage-cost-storage.md#changing-pricing-tier), [bekletme](./manage-cost-storage.md#change-the-data-retention-period)ve [veri dönüşü](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)gibi ayarların yapılandırılması için kapsam.
 
 Bu makalede, tasarım ve geçiş konuları, erişim denetimine genel bakış ve BT kuruluşunuz için önerdiğimiz tasarım uygulamalarının anlaşılmasına ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
@@ -62,7 +62,7 @@ Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çal
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| Çarpan | Açıklama |
+| Faktör | Açıklama |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |

@@ -4,19 +4,21 @@ description: Yeni bir teklif oluşturmak veya var olan bir teklifi güncelleşti
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: 5104d11c1eaf9641f1d631db97dcca036308cd45
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115732"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012000"
 ---
 <a name="create-or-modify-an-offer"></a>Teklifi oluşturma veya değiştirme
 =========================
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir veya yeni bir teklif oluşturur.
 
@@ -26,7 +28,7 @@ Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir ve
 <a name="uri-parameters"></a>URI parametreleri
 --------------
 
-|  **Adı**         |  **Açıklama**                      |  **Veri türü**  |
+|  **Ad**         |  **Açıklama**                      |  **Veri türü**  |
 |  --------         |  ----------------                     |  -------------  |
 | PublisherId       |  Yayımcı tanımlayıcı, örneğin`contoso` |   Dize |
 | OfferId           |  Teklif tanımlayıcısı                     |   Dize        |
@@ -36,7 +38,7 @@ Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir ve
 <a name="header"></a>Üst bilgi
 ------
 
-|  **Adı**        |  **Değer**               |
+|  **Ad**        |  **Değer**               |
 |  ---------       |  ----------              | 
 | İçerik Türü     | `application/json`       |
 | Yetkilendirme    | `Bearer YOUR_TOKEN`      |

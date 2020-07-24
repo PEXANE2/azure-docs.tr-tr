@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670585"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008195"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Izleyici 'de IIS günlükleri toplama
 Internet Information Services (IIS), Azure Izleyici tarafından toplanabilecek ve [günlük verileri](data-platform.md)olarak depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
@@ -18,7 +19,7 @@ Internet Information Services (IIS), Azure Izleyici tarafından toplanabilecek v
 ![IIS günlükleri](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>IIS günlüklerini yapılandırma
-Azure Izleyici, IIS tarafından oluşturulan günlük dosyalarından girişler toplar, bu nedenle [IIS 'yi günlüğe kaydetmek için yapılandırmanız](https://technet.microsoft.com/library/hh831775.aspx)gerekir.
+Azure Izleyici, IIS tarafından oluşturulan günlük dosyalarından girişler toplar, bu nedenle [IIS 'yi günlüğe kaydetmek için yapılandırmanız](/previous-versions/orphan-topics/ws.11/hh831775(v=ws.11))gerekir.
 
 Azure Izleyici yalnızca W3C biçiminde depolanan IIS günlük dosyalarını destekler ve özel alanları veya IIS gelişmiş günlüğe kaydetmeyi desteklemez. NCSA veya IIS yerel biçiminde Günlükler toplanmaz.
 

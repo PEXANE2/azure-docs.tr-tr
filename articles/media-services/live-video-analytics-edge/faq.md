@@ -3,11 +3,12 @@ title: IoT Edge SSS üzerinde canlı video analizi-Azure
 description: Bu konu, IoT Edge SSS üzerinde canlı video analizlerine yanıt verir.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011524"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 
@@ -19,14 +20,14 @@ Grafik topolojisi tanımında kullanılabilecek sistem değişkenleri nelerdir?
 
 |Değişken   |Açıklama|
 |---|---|
-|[System. DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Genellikle günün tarih ve saati olarak ifade edilen bir anlık zamanı temsil eder.|
+|[System. DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Genellikle günün tarih ve saati olarak ifade edilen bir anlık zamanı temsil eder.|
 |System. Graphtopologyıname   |Bir medya grafiği topolojisini temsil eder, grafiğin şeması saklar.|
 |System. Graphınstancename|  Bir medya grafiği örneğini temsil eder, parametre değerlerini tutar ve topolojiye başvurur.|
 
 ## <a name="configuration-and-deployment"></a>Yapılandırma ve dağıtım
 
 Medya Edge modülünü bir Windows 10 cihazına dağıtabilir miyim?
-    * Evet. [Windows 10 ' da Linux kapsayıcılarındaki](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/linux-containers)makaleye bakın.
+    * Evet. [Windows 10 ' da Linux kapsayıcılarındaki](/virtualization/windowscontainers/deploy-containers/linux-containers)makaleye bakın.
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>IP kamerası ve RTSP ayarlarından yakala
 

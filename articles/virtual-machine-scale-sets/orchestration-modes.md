@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011082"
 ---
 # <a name="orchestration-modes-preview"></a>Düzenleme modları (Önizleme)
 
@@ -42,26 +42,26 @@ Sanal Makine Ölçek Kümeleri 2 farklı düzenleme modunu destekleyecektir:
 
 ## <a name="orchestration-modes"></a>Düzenleme modları
 
-|                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
+| Özellik                     | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| VM yapılandırma modeli      | Hiçbiri                                       | Gerekli |
+| VM yapılandırma modeli      | Yok                                       | Gerekli |
 | Ölçek kümesine yeni VM ekleniyor  | VM oluşturulduğunda, sanal makineler ölçek kümesine açıkça eklenir. | VM 'Ler örtük olarak oluşturulur ve VM yapılandırma modeli, örnek sayısı ve otomatik ölçeklendirme kuralları temelinde ölçek kümesine eklenir | |
 | VM Silme                   | VM 'Lerin tek tek silinmesi gerekir, ölçek kümesi içinde herhangi bir VM varsa silinmeyecektir. | VM 'Ler tek tek silinebilir, ölçek kümesini silmek tüm sanal makine örneklerini siler.  |
-| VM 'Leri iliştirme/ayır           | Desteklenmiyor                              | Desteklenmiyor |
+| VM 'Leri iliştirme/ayır           | Desteklenmez                              | Desteklenmez |
 | Örnek yaşam döngüsü (silme yoluyla oluşturma) | Sanal makineler ve yapıtlar (diskler ve NIC 'Ler gibi) bağımsız olarak yönetilebilir. | Örnekler ve yapıtlar (diskler ve NIC 'ler gibi), bunları oluşturan ölçek kümesi örneklerine örtülü olarak uygulanır. Ölçek kümesi dışında ayrı olarak ayrılamadığı veya yönetilemez |
 | Hata etki alanları               | , Hata etki alanlarını tanımlayabilir. 2 veya 3 kullanılabilirlik alanı için bölgesel destek ve 5 ' i temel alır. | 1 ile 5 arasında bir hata etki alanı tanımlayabilir |
 | Güncelleme etki alanları              | Güncelleştirme etki alanları hata etki alanlarına otomatik olarak eşlenir | Güncelleştirme etki alanları hata etki alanlarına otomatik olarak eşlenir |
 | Kullanılabilirlik Alanları          | Tek bir kullanılabilirlik bölgesindeki bölgesel dağıtımı veya VM 'Leri destekler | Bölgesel dağıtımı veya birden çok Kullanılabilirlik Alanları destekler; Bölge Dengeleme stratejisini tanımlayabilir |
-| Ayarının                   | Desteklenmiyor                              | Destekleniyor |
-| İşletim sistemi yükseltmesi                  | Desteklenmiyor                              | Destekleniyor |
-| Model güncelleştirmeleri               | Desteklenmiyor                              | Destekleniyor |
+| Ayarının                   | Desteklenmez                              | Desteklenir |
+| İşletim sistemi yükseltmesi                  | Desteklenmez                              | Desteklenir |
+| Model güncelleştirmeleri               | Desteklenmez                              | Desteklenir |
 | Örnek denetimi            | Tam VM denetimi. VM 'Ler, Azure VM yönetimi yeteneklerini (Azure Ilkesi, Azure Backup ve Azure Site Recovery gibi) tam olarak destekleyen tam URI 'ye sahiptir | VM 'Ler, ölçek kümesinin bağımlı kaynaklarıdır. Örneklere yalnızca ölçek kümesi üzerinden yönetim için erişilebilir. |
 | Örnek modeli              | Microsoft. COMPUTE/VirtualMachines model tanımı. | Microsoft. COMPUTE/VirtualMachineScaleSets/VirtualMachines model tanımı. |
 | Kapasite                    | Boş bir ölçek kümesi oluşturulabilir; ölçek kümesine 200 adede kadar VM eklenebilir | Ölçek Kümeleri, örnek sayısı 0-1000 ile tanımlanabilir |
-| Taşı                        | Destekleniyor                                  | Destekleniyor |
-| Tek yerleşim grubu = = false | Desteklenmiyor                          | Destekleniyor |
+| Taşı                        | Desteklenir                                  | Desteklenir |
+| Tek yerleşim grubu = = false | Desteklenmez                          | Desteklenir |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [kullanılabilirlik seçeneklerine genel bakış](availability.md).
+Daha fazla bilgi için bkz. [kullanılabilirlik seçeneklerine genel bakış](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json).

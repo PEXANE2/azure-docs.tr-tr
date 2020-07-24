@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3e9a14edf9235baff2955c9f8419dc78e45755c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007988"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
 Azure [Tanılama uzantısı](diagnostics-extension-overview.md) , Azure izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows Tanılama uzantısı 'nı yükleme ve yapılandırma hakkında ayrıntılar ve verilerin ve Azure depolama hesabında nasıl depolandığı hakkında bir açıklama sağlanmaktadır.
@@ -77,7 +77,7 @@ Tanılama uzantısını, yapılandırma ile doğrudan çalışmaktan farklı bir
 Tanılama uzantısını Azure Resource Manager şablonlarıyla dağıtma hakkında [bir Windows sanal makinesi ve Azure Resource Manager şablonları ile izleme ve tanılamayı kullanma](../../virtual-machines/extensions/diagnostics-template.md) konusuna bakın. 
 
 ## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
-Azure CLı, aşağıdaki örnekte olduğu gibi [az VM Extension set](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) kullanılarak mevcut bir sanal makineye Azure tanılama uzantısını dağıtmak için kullanılabilir. 
+Azure CLı, aşağıdaki örnekte olduğu gibi [az VM Extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) kullanılarak mevcut bir sanal makineye Azure tanılama uzantısını dağıtmak için kullanılabilir. 
 
 ```azurecli
 az vm extension set \
@@ -133,7 +133,7 @@ Ortak ayarlar, yapılandırma şemasının [ortak öğesinde](diagnostics-extens
 
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
-PowerShell, aşağıdaki örnekte olduğu gibi [set-Azvmdiagnosticsextenma](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) kullanılarak mevcut bir sanal makineye Azure tanılama uzantısını dağıtmak için kullanılabilir. 
+PowerShell, aşağıdaki örnekte olduğu gibi [set-Azvmdiagnosticsextenma](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) kullanılarak mevcut bir sanal makineye Azure tanılama uzantısını dağıtmak için kullanılabilir. 
 
 ```powershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
@@ -191,7 +191,7 @@ Ayrıca bkz. [Windows çalıştıran bir sanal makinede Azure tanılama etkinle�
 Aşağıdaki tabloda, tanılama uzantısından toplanan farklı veri türleri ve bunların bir tablo ya da blob olarak saklanıp saklanmayacağı listelenmiştir. Tablolarda depolanan veriler ayrıca, ortak yapılandırmanızda [StorageType ayarına](diagnostics-extension-schema-windows.md#publicconfig-element) bağlı olarak bloblarda depolanabilir.
 
 
-| Veriler | Depolama türü | Açıklama |
+| Veri | Depolama türü | Açıklama |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tablo | Tanılama İzleyicisi ve yapılandırma değişiklikleri. |
 | WADDirectoriesTable | Tablo | Tanılama izleyicisinin izlediği dizinler.  Buna IIS günlükleri, IIS başarısız istek günlükleri ve özel dizinler dahildir.  Blob günlük dosyasının konumu kapsayıcı alanında belirtilir ve BLOB adı RelativePath alanında bulunur.  AbsolutePath alanı, Azure sanal makinesinde var olan dosyanın konumunu ve adını gösterir. |

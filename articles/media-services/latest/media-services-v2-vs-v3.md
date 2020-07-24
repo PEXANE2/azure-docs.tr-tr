@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087824"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011643"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 ve v3 karşılaştırması
 
@@ -27,7 +28,7 @@ Bu makalede, Azure Media Services v3 sürümünde tanıtılan ve iki sürüm ara
 
 ## <a name="general-changes-from-v2"></a>V2 'den genel değişiklikler
 
-* V3 ile oluşturulan varlıklar için Media Services yalnızca [Azure Storage sunucu tarafı depolama şifrelemesini](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)destekler.
+* V3 ile oluşturulan varlıklar için Media Services yalnızca [Azure Storage sunucu tarafı depolama şifrelemesini](../../storage/common/storage-service-encryption.md)destekler.
     * V3 API 'Leri, Media Services tarafından sağlanmış [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) (AES 256) olan v2 API 'Leriyle oluşturulmuş varlıklarla birlikte kullanabilirsiniz.
     * V3 API 'Leri kullanarak eski AES 256 [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) Ile yeni varlıklar oluşturamazsınız.
 * [Varlıkların](assets-concept.md)v3 'deki özellikleri v2 'den farklıdır, bkz. [Özellikler nasıl eşlenir](#map-v3-asset-properties-to-v2).
@@ -87,11 +88,11 @@ V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Bo
 
 ### <a name="map-v3-asset-properties-to-v2"></a>V3 varlık özelliklerini v2 'ye eşleyin
 
-Aşağıdaki tabloda, [varlıkların](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)sürüm 2 ' deki varlık özelliklerinin v2 'de nasıl eşlenme şekli gösterilmektedir.
+Aşağıdaki tabloda, [varlıkların](/rest/api/media/assets/createorupdate#asset)sürüm 2 ' deki varlık özelliklerinin v2 'de nasıl eşlenme şekli gösterilmektedir.
 
 |V3 Özellikleri|v2 özellikleri|
 |---|---|
-|`id`-(benzersiz) tam Azure Resource Manager yolu, bkz. [varlık](https://docs.microsoft.com/rest/api/media/assets/createorupdate) içindeki örnekler||
+|`id`-(benzersiz) tam Azure Resource Manager yolu, bkz. [varlık](/rest/api/media/assets/createorupdate) içindeki örnekler||
 |`name`-(benzersiz) bkz. [adlandırma kuralları](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
 |`assetId`|`Id`-(unique) değeri `nb:cid:UUID:` önekiyle başlar.|
@@ -109,8 +110,8 @@ Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı
 |Şifreleme seçeneği|Açıklama|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor.|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
-|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Destekleniyor|Destekleniyor|
-|[Depolama Istemci tarafı şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmiyor|Desteklenmiyor|
+|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Desteklenir|Desteklenir|
+|[Depolama Istemci tarafı şifrelemesi](../../storage/common/storage-client-side-encryption.md)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmez|Desteklenmez|
 
 <sup>1</sup> Media Services hiçbir şifreleme formu olmadan açık/olmayan içerik işlemeyi desteklese de, bunu yapmanız önerilmez.
 

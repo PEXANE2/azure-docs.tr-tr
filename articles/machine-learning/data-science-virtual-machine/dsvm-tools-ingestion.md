@@ -10,11 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012323"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Veri Bilimi Sanal Makinesi veri alımı araçları
 
@@ -24,9 +25,9 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 
 ## <a name="adlcopy"></a>AdlCopy
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Verileri Azure Blob depolamadan Azure Data Lake Store 'e kopyalamak için bir araç. Ayrıca, verileri iki Azure Data Lake Store hesabı arasında kopyalayabilir.      |
+| Nedir o?   | Verileri Azure Blob depolamadan Azure Data Lake Store 'e kopyalamak için bir araç. Ayrıca, verileri iki Azure Data Lake Store hesabı arasında kopyalayabilir.      |
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | Azure Blob depolamadan birden çok blob 'u Azure Data Lake Store içine aktarma.      |
 |  Nasıl kullanılır/çalıştırılır?    |   Yardım almak için bir komut istemi açın ve yazın `adlcopy` .    |
@@ -35,9 +36,9 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Azure için bir yönetim aracı. Ayrıca Azure Blob depolama ve Azure Data Lake Store gibi Azure veri platformlarından verileri taşımak için komut fiilleri de içerir.     |
+| Nedir o?   | Azure için bir yönetim aracı. Ayrıca Azure Blob depolama ve Azure Data Lake Store gibi Azure veri platformlarından verileri taşımak için komut fiilleri de içerir.     |
 | Desteklenen DSVM sürümleri      | Windows, Linux     |
 | Tipik kullanımlar      | Azure depolama ve Azure Data Lake Store verileri içeri ve dışarı aktarma.      |
 |  Nasıl kullanılır/çalıştırılır?    |   Yardım almak için bir komut istemi açın ve yazın `az` .    |
@@ -47,9 +48,9 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 
 ## <a name="azcopy"></a>AzCopy
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Yerel dosyalara, Azure Blob depolama, dosyalar ve tablolar arasında veri kopyalamak için bir araç.      |
+| Nedir o?   | Yerel dosyalara, Azure Blob depolama, dosyalar ve tablolar arasında veri kopyalamak için bir araç.      |
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | Azure Blob depolama alanına dosya kopyalama ve BLOB 'ları hesaplar arasında kopyalama.      |
 |  Nasıl kullanılır/çalıştırılır?    |   Yardım almak için bir komut istemi açın ve yazın `azcopy` .    |
@@ -59,9 +60,9 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 
 ## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB veri geçiş aracı
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Bulutta bir NoSQL veritabanı olan Azure Cosmos DB çeşitli kaynaklardan veri içeri aktarma aracı. Bu kaynaklar JSON dosyalarını, CSV dosyalarını, SQL, MongoDB, Azure Tablo depolama, Amazon DynamoDB ve Azure Cosmos DB SQL API koleksiyonlarını içerir.      |
+| Nedir o?   | Bulutta bir NoSQL veritabanı olan Azure Cosmos DB çeşitli kaynaklardan veri içeri aktarma aracı. Bu kaynaklar JSON dosyalarını, CSV dosyalarını, SQL, MongoDB, Azure Tablo depolama, Amazon DynamoDB ve Azure Cosmos DB SQL API koleksiyonlarını içerir.      |
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | Bir VM 'den CosmosDB 'ye dosya aktarma, Azure Tablo depolama alanından CosmosDB 'ye veri aktarma ve bir Microsoft SQL Server veritabanından CosmosDB 'ye veri aktarma.     |
 |  Nasıl kullanılır/çalıştırılır?    |   Komut satırı sürümünü kullanmak için bir komut istemi açın ve yazın `dt` . GUI aracını kullanmak için bir komut istemi açın ve yazın `dtui` .    |
@@ -70,9 +71,9 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 
 ## <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Azure bulutunda depolanan dosyalarla etkileşim kurmak için grafik kullanıcı arabirimi. |
+| Nedir o?   | Azure bulutunda depolanan dosyalarla etkileşim kurmak için grafik kullanıcı arabirimi. |
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | DSVM 'den verileri içeri ve dışarı aktarma.    |
 |  Nasıl kullanılır/çalıştırılır?    | Başlat menüsünde "Azure Depolama Gezgini" araması yapın. |
@@ -81,9 +82,9 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 
 ## <a name="bcp"></a>bcp
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | SQL Server ve bir veri dosyası arasında veri kopyalamak için SQL Server araç.      |
+| Nedir o?   | SQL Server ve bir veri dosyası arasında veri kopyalamak için SQL Server araç.      |
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | Bir CSV dosyasını SQL Server tablosuna aktarma ve bir SQL Server tablosunu bir dosyaya aktarma.      |
 |  Nasıl kullanılır/çalıştırılır?    |   Yardım almak için bir komut istemi açın ve yazın `bcp` .    |
@@ -92,9 +93,9 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 
 ## <a name="blobfuse"></a>blobsigortası
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Linux dosya sistemine bir Azure Blob depolama kapsayıcısını bağlamak için bir araç.      |
+| Nedir o?   | Linux dosya sistemine bir Azure Blob depolama kapsayıcısını bağlamak için bir araç.      |
 | Desteklenen DSVM sürümleri      | Linux      |
 | Tipik kullanımlar      | Bir kapsayıcıdaki Blobları okuma ve yazma.      |
 |  Nasıl kullanılır ve çalıştırılır?    |   Bir terminalde _blobsigortası_ çalıştırın.    |

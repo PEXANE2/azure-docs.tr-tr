@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: dc9e4e0a896677fd22baf33e7776e8158bd0bee6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919921"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011354"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -118,10 +118,10 @@ Aşağıdaki tabloda, Premium performans bloğu blob depolaması ve sık erişim
 |                                           | **Premium performans**   | **Etkin katman** | **Cool katmanı**       | **Arşiv katmanı**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Kullanılabilirlik**                          | %99,9                     | %99,9        | %99                 | Çevrimdışı           |
-| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | YOK                       | %99,99       | %99,9               | Çevrimdışı           |
+| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Çevrimdışı           |
 | **Kullanım ücretleri**                         | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyeti | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
-| **En düşük nesne boyutu**                   | YOK                       | YOK          | YOK                 | YOK               |
-| **En az depolama süresi**              | YOK                       | YOK          | 30 gün<sup>1</sup> | 180 gün
+| **En düşük nesne boyutu**                   | Yok                       | Yok          | Yok                 | Yok               |
+| **En az depolama süresi**              | Yok                       | Yok          | 30 gün<sup>1</sup> | 180 gün
 | **Gecikme süresi** <br> **(İlk bayta kalan süre)** | Tek basamaklı milisaniye | milisaniye | milisaniye        | Saat<sup>2</sup> |
 
 GPv2 hesaplarındaki seyrek katmandaki <sup>1</sup> nesne en az 30 günlük saklama süresine sahiptir. BLOB depolama hesapları, seyrek erişimli katman için en düşük saklama süresine sahip değildir.
@@ -248,7 +248,7 @@ Blob düzeyi katmanlama ile birlikte sık ve seyrek erişimli katmanlar, tüm b�
 
 Sık erişimli erişim katmanındaki Bloblar, GPv1, GPv2 ve BLOB depolama hesaplarındaki bloblarla aynı gecikme süresine sahiptir. Seyrek Erişimli erişim katmanındaki Bloblar, GPv1, GPv2 ve BLOB depolama hesaplarındaki bloblarla benzer gecikme süresine (milisaniye olarak) sahiptir. Arşiv erişim katmanındaki Bloblar, GPv1, GPv2 ve BLOB depolama hesaplarında birkaç saatlik gecikme süresine sahiptir.
 
-Seyrek Erişimli erişim katmanındaki Bloblar, sık erişimli erişim katmanında depolanan bloblara göre biraz daha düşük kullanılabilirlik hizmet düzeyine (SLA) sahiptir. Daha fazla bilgi için bkz. [depolama SLA’sı](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
+Seyrek Erişimli erişim katmanındaki Bloblar, sık erişimli erişim katmanında depolanan bloblara göre biraz daha düşük kullanılabilirlik hizmet düzeyine (SLA) sahiptir. Daha fazla bilgi için bkz. [depolama SLA’sı](https://azure.microsoft.com/support/legal/sla/storage/v1_5/).
 
 **İşlemler sık erişimli, seyrek erişimli ve arşiv katmanları arasında aynı mıdır?**
 

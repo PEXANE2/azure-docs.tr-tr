@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996332"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012697"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -80,7 +81,7 @@ AmlCompute kümeleri, iş yükünüze göre dinamik olarak ölçeklendirilecek �
 
 Ayrıca, düğümlerin ölçeğini ölçeklendirmadan önce boşta kaldığı süreyi de yapılandırabilirsiniz. Varsayılan olarak, ölçek azaltma öncesindeki boşta geçen süre 120 saniyeye ayarlanır.
 
-+ Daha az yinelemeli deneme gerçekleştirirseniz, maliyetleri kaydetmek için bu süreyi azaltın. 
++ Daha az yinelemeli deneme gerçekleştirirseniz, maliyetleri kaydetmek için bu süreyi azaltın.
 + Son derece yinelemeli geliştirme/test deneme gerçekleştirirseniz, eğitim betiğinizdeki veya ortamınızdaki her değişiklikten sonra sabit ölçekleme için ödeme yapmak zorunda kalmaması için süreyi artırmanız gerekebilir.
 
 AmlCompute kümeleri, amlcompute [SDK sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py)olan AMLCOMPUTE [CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)ve [REST API 'leri](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)ile birlikte Azure Portal değişen iş yükü gereksinimleriniz için yapılandırılabilir.
@@ -106,31 +107,13 @@ Bazı durumlarda, eğitim çalıştırmalarını süreleri sınırlamak veya erk
 * [Hiper parametre ayarlama](how-to-tune-hyperparameters.md#early-termination)için, bir bandıt ilkesinden erken sonlandırma Ilkesi, ortanca durdurma Ilkesi veya kesme seçim ilkesi tanımlayın. Hiper parametre sweeps 'yi daha fazla denetlemek için veya gibi parametreleri `max_total_runs` kullanın `max_duration_minutes` .
 * [Otomatik makine öğrenimi](how-to-configure-auto-train.md#exit)için bayrağını kullanarak benzer sonlandırma ilkeleri ayarlayın `enable_early_stopping` . Ayrıca, `iteration_timeout_minutes` ve `experiment_timeout_minutes` bir çalıştırmanın en uzun süresini denetlemek için veya tüm denemeler için ve gibi özellikleri kullanın.
 
-## <a name="use-low-priority-vms"></a>Düşük öncelikli VM’ler kullanma
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>Düşük öncelikli VM 'Ler kullanma
 
 Azure, sanal makine ölçek kümeleri, toplu Iş ve Machine Learning hizmeti arasında düşük öncelikli VM 'Ler olarak fazla unutilized kapasitesini kullanmanıza olanak tanır. Bu ayırmalar ön azaltıldı, ancak adanmış VM 'Lerle karşılaştırıldığında daha düşük bir fiyata gelir. Genel olarak, toplu iş yükleri için düşük öncelikli VM 'Ler kullanmanızı öneririz. Ayrıca, kesintileri resubmits aracılığıyla kurtarılabilir (toplu Iş için geçiş için) veya yeniden başlatmalar aracılığıyla (checksize ile derin öğrenme eğitimi için) de kullanmanız gerekir.
 
 Düşük öncelikli VM 'Ler, VM ailesi ile olan ayrılmış kota değerinden ayrı tek bir kotaya sahiptir. [AmlCompute kotaları hakkında daha fazla](how-to-manage-quotas.md)bilgi edinin.
 
-SANAL makinenizin önceliğini şu yollarla ayarlayın:
-
-* Studio 'da, bir VM oluştururken **düşük öncelik** ' i seçin.
-
-* Python SDK ile, `vm_priority` sağlama yapılandırmanızda özniteliğini ayarlayın.  
-
-    ```python
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                               vm_priority='lowpriority',
-                                                               max_nodes=4)
-    ```
-
-* CLı 'yi kullanarak şunları ayarlayın `vm-priority` :
-
-    ```azurecli-interactive
-    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
-    ```
-
- Düşük öncelikli VM 'Ler, etkileşimli not defteri deneyimlerini desteklemesi gerektiğinden, işlem örnekleri için çalışmaz. 
+ Düşük öncelikli VM 'Ler, etkileşimli not defteri deneyimlerini desteklemesi gerektiğinden, işlem örnekleri için çalışmaz.
 
 ## <a name="use-reserved-instances"></a>Ayrılmış örnekleri kullanma
 
@@ -143,5 +126,5 @@ Azure Machine Learning Işlem, ayrılmış örnekleri kendiliğinden destekler. 
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 * [Kaynak kotalarını yönetme ve artırma](how-to-manage-quotas.md)
-* [ [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md)ile maliyetleri yönetme.
+* [Maliyet Analizi ile maliyetleri yönetme](../cost-management-billing/costs/quick-acm-cost-analysis.md).
 * [İşlem Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute).

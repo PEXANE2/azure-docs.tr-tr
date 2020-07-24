@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008413"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
 
@@ -23,7 +23,7 @@ Bu makalede, kendi iş mantığınızla TimerTrigger işlevinde verilen yapılan
 
 - Bir Application Insights kaynağınız varsa:
     - Varsayılan olarak Azure Işlevleri bir Application Insights kaynağı oluşturur, ancak önceden oluşturulmuş kaynaklarınızın birini kullanmak istiyorsanız oluşturma sırasında bunu belirtmeniz gerekir.
-    - Aşağıdaki seçimlerle [bir Azure işlevleri kaynağı oluşturma ve Zamanlayıcı ile tetiklenen işlev](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (temizlemeden önce durdurma) hakkındaki yönergeleri izleyin.
+    - Aşağıdaki seçimlerle [bir Azure işlevleri kaynağı oluşturma ve Zamanlayıcı ile tetiklenen işlev](../../azure-functions/functions-create-scheduled-function.md) (temizlemeden önce durdurma) hakkındaki yönergeleri izleyin.
         -  Üst taraftaki **izleme** sekmesini seçin.
 
             ![ Kendi App Insights kaynağınız ile bir Azure Işlevleri uygulaması oluşturma](media/availability-azure-functions/create-function-app.png)
@@ -35,7 +35,7 @@ Bu makalede, kendi iş mantığınızla TimerTrigger işlevinde verilen yapılan
         - **Gözden geçir + oluştur** ' u seçin
 - Zamanlayıcı tarafından tetiklenen işleviniz için henüz oluşturulmuş bir Application Insights kaynağınız yoksa:
     - Varsayılan olarak, Azure Işlevleri uygulamanızı oluştururken sizin için bir Application Insights kaynağı oluşturulur.
-    - [Azure işlevleri kaynağı oluşturma ve Zamanlayıcı tarafından tetiklenen işlev](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (temizlemeden önce durdurma) hakkındaki yönergeleri izleyin.
+    - [Azure işlevleri kaynağı oluşturma ve Zamanlayıcı tarafından tetiklenen işlev](../../azure-functions/functions-create-scheduled-function.md) (temizlemeden önce durdurma) hakkındaki yönergeleri izleyin.
 
 ## <a name="sample-code"></a>Örnek kod
 
@@ -45,7 +45,7 @@ Aşağıdaki kodu Run. CSX dosyasına kopyalayın (Bu, önceden var olan kodun y
 >![Azure işlevinin Run. CSX Azure portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Uç nokta adresi için şunu kullanın: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Kaynağınız Azure Kamu veya Azure Çin gibi bir bölgede yer almadığı takdirde, bu durumda [varsayılan uç noktaları geçersiz kılma](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) ve bölgeniz Için uygun telemetri kanalı uç noktasını seçme konusunda bu makaleye başvurun.
+> Uç nokta adresi için şunu kullanın: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Kaynağınız Azure Kamu veya Azure Çin gibi bir bölgede yer almadığı takdirde, bu durumda [varsayılan uç noktaları geçersiz kılma](./custom-endpoints.md#regions-that-require-endpoint-modification) ve bölgeniz Için uygun telemetri kanalı uç noktasını seçme konusunda bu makaleye başvurun.
 
 ```C#
 #load "runAvailabilityTest.csx"

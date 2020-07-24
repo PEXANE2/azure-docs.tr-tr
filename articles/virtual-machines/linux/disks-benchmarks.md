@@ -7,13 +7,14 @@ ms.date: 01/11/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: a658bfc0815a03d0f6944d1c42eacdd04397458d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1dfcad5a4fb6611543e6421e82889f239f14951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010844"
 ---
-# <a name="benchmarking-a-disk"></a>Diski sınama
+# <a name="benchmark-your-application-on-azure-disk-storage"></a>Azure Disk Depolama uygulamanızı kıyaslama
 
 Sınama, uygulamanızdaki farklı iş yüklerini taklit etme ve her iş yükü için uygulama performansını ölçme işlemidir. [Yüksek performans için tasarlama makalesinde](premium-storage-performance.md)açıklanan adımları kullanma. Uygulamayı barındıran VM 'lerde benchişaretleme araçları 'nı çalıştırarak, uygulamanızın Premium depolamayla elde edilebileceği performans düzeylerini belirleyebilirsiniz. Bu makalede, Azure Premium Depolama disklerinde sağlanan standart bir DS14 VM 'yi sınama örnekleri sunuyoruz.
 

@@ -3,8 +3,8 @@ title: Azure için istenen durum yapılandırması genel bakış
 description: PowerShell Istenen durum yapılandırması (DSC) için Microsoft Azure uzantısı işleyicisini nasıl kullanacağınızı öğrenin. Makale önkoşulları, mimarisi ve cmdlet 'leri içerir.
 services: virtual-machines-windows
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
+manager: evansma
 editor: ''
 tags: azure-resource-manager
 keywords: DSC
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: robreed
-ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: magoedte
+ms.openlocfilehash: edf1fce488bf3bb8aa107a295cf3488243775192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010929"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration uzantısı işleyicisine giriş
 
@@ -59,7 +59,7 @@ Uzantı ilk kez çağrıldığında, aşağıdaki mantığı kullanarak WMF 'in 
 - **Wmfversion** özelliği belirtilmişse, bu sürüm VM 'nin işletim sistemi ile uyumlu olmadığı IÇIN bu WMF sürümü yüklenir.
 - **Wmfversion** özelliği belirtilmemişse, en son geçerli WMF sürümü yüklenir.
 
-WMF 'nin yüklenmesi için yeniden başlatma gerekir. Yeniden başlatıldıktan sonra uzantı, sağlanmışsa, **modulesUrl** özelliğinde belirtilen. zip dosyasını indirir. Bu konum Azure Blob depolama alanında ise, dosyaya erişmek için **Sastoken** ÖZELLIĞINDE bir SAS belirteci belirtebilirsiniz. . Zip indirildikten ve yüklendikten sonra, **configurationfunction** içinde tanımlanan yapılandırma işlevi bir. mof ([yönetilen nesne biçimi](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) dosyası oluşturmak için çalışır. Uzantı daha sonra `Start-DscConfiguration -Force` oluşturulan. mof dosyasını kullanarak çalışır. Uzantı çıktıyı yakalar ve Azure durum kanalına yazar.
+WMF 'nin yüklenmesi için yeniden başlatma gerekir. Yeniden başlatıldıktan sonra uzantı, sağlanmışsa, **modulesUrl** özelliğinde belirtilen. zip dosyasını indirir. Bu konum Azure Blob depolama alanında ise, dosyaya erişmek için **Sastoken** ÖZELLIĞINDE bir SAS belirteci belirtebilirsiniz. . Zip indirildikten ve yüklendikten sonra, **configurationfunction** içinde tanımlanan yapılandırma işlevi bir. mof ([yönetilen nesne biçimi](/windows/win32/wmisdk/managed-object-format--mof-)) dosyası oluşturmak için çalışır. Uzantı daha sonra `Start-DscConfiguration -Force` oluşturulan. mof dosyasını kullanarak çalışır. Uzantı çıktıyı yakalar ve Azure durum kanalına yazar.
 
 ### <a name="default-configuration-script"></a>Varsayılan yapılandırma betiği
 
@@ -81,7 +81,7 @@ Bu bilgiler Azure portal görünebilir veya PowerShell kullanabilirsiniz.
 ```
 
 Düğüm yapılandırma adı için, düğüm yapılandırmasının Azure Durum Yapılandırması 'nda bulunduğundan emin olun.  Değilse, uzantı dağıtımı bir hata döndürür.  Ayrıca, yapılandırma değil, *düğüm yapılandırmasının* adını kullandığınızdan emin olun.
-Bir yapılandırma, [düğüm yapılandırmasını (MOF dosyası) derlemek için](https://docs.microsoft.com/azure/automation/automation-dsc-compile)kullanılan bir betikte tanımlanır.
+Bir yapılandırma, [düğüm yapılandırmasını (MOF dosyası) derlemek için](../../automation/automation-dsc-compile.md)kullanılan bir betikte tanımlanır.
 Ad her zaman yapılandırma ve ardından bir nokta, `.` `localhost` ya da belirli bir bilgisayar adı olacaktır.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarda DSC Uzantısı
@@ -188,11 +188,11 @@ Portal aşağıdaki girişi toplar:
 
 - **Yapılandırma bağımsız değişkenleri**: yapılandırma işlevi bağımsız değişkenler alırsa, bunları **argumentName1 = değer1, argumentName2 = değer2**biçiminde girin. Bu biçim, PowerShell cmdlet 'lerinde veya Kaynak Yöneticisi şablonlarda yapılandırma bağımsız değişkenlerinin kabul edildiği farklı bir biçimdir.
 
-- **Yapılandırma VERILERI PSD1 dosyası**: yapılandırmanız için. PSD1 içinde bir yapılandırma veri dosyası gereklidir, bu alanı kullanarak veri dosyasını seçin ve Kullanıcı BLOB depolama alanına yükleyin. Yapılandırma veri dosyası, BLOB depolama alanındaki bir SAS belirteci ile korunmuş olur.
+- **Yapılandırma VERILERI PSD1 dosyası**: yapılandırmanız için bir yapılandırma veri dosyası gerekiyorsa `.psd1` , bu alanı kullanarak veri dosyasını seçin ve Kullanıcı BLOB depolama alanına yükleyin. Yapılandırma veri dosyası, BLOB depolama alanındaki bir SAS belirteci ile korunmuş olur.
 
 - **WMF sürümü**: sanal makinenize yüklenmesi gereken Windows Management Framework (WMF) sürümünü belirtir. Bu özelliğin en son olarak ayarlanması WMF 'nin en son sürümünü yüklüyor. Şu anda bu özellik için olası tek değerler 4,0, 5,0, 5,1 ve en son değerlerdir. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer **en**sonuncusudur.
 
-- **Veri toplama**: uzantının telemetri toplayıp toplayacağını belirler. Daha fazla bilgi için bkz. [Azure DSC Uzantısı veri toplama](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
+- **Veri toplama**: uzantının telemetri toplayıp toplayacağını belirler. Daha fazla bilgi için bkz. [Azure DSC Uzantısı veri toplama](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/).
 
 - **Sürüm**: yüklenecek DSC uzantısının sürümünü belirtir. Sürümler hakkında bilgi için bkz. [DSC Uzantısı sürüm geçmişi](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 

@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 4cfa136585611e81a4060c5544d5dc464b32f12c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05527ff456c70290a925befc9d30fb1eaf177199
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008243"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Izleyici Application Insights Aracısı 'nı kullanmaya başlama
 
@@ -72,7 +73,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
 - Performansı ve kullanımı izlemek için [ölçümleri](../../azure-monitor/platform/metrics-charts.md) bulun.
 - Sorunları tanılamak için [olayları ve günlükleri arayın](../../azure-monitor/app/diagnostic-search.md) .
-- Daha gelişmiş sorgular için [analiz kullanın](../../azure-monitor/app/analytics.md) .
+- Daha gelişmiş sorgular için [analiz kullanın](../log-query/log-query-overview.md) .
 - [Panolar oluşturun](../../azure-monitor/app/overview-dashboard.md).
 
  Daha fazla telemetri ekleyin:

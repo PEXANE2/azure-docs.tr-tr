@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478493"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010946"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -23,12 +23,12 @@ ms.locfileid: "85478493"
 
 Bu belgede, Windows sistemlerinde Azure PowerShell modülü, Azure Resource Manager şablonları ve Ayrıntılar sorunlarını giderme adımları kullanılarak özel betik uzantısının nasıl kullanılacağı ayrıntılı olarak açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]  
 > Kendi kendine beklemesi gerektiğinden, Update-AzVM öğesini parametresiyle aynı VM ile çalıştırmak için özel Betik uzantısı kullanmayın.  
 
-### <a name="operating-system"></a>İşletim Sistemi
+### <a name="operating-system"></a>Operating System
 
 Windows için özel Betik uzantısı, uzantı tarafından desteklenen OSs uzantısında çalışır;
 ### <a name="windows"></a>Windows
@@ -144,7 +144,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 * `timestamp`(isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılması tetiklenecek şekilde kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
 * `storageAccountName`: (isteğe bağlı, dize) depolama hesabının adı. Depolama kimlik bilgilerini belirtirseniz, `fileUris` Azure Blobları için tümünün URL 'si olması gerekir.
 * `storageAccountKey`: (isteğe bağlı, dize) depolama hesabının erişim anahtarı
-* `managedIdentity`: (isteğe bağlı, JSON nesnesi) dosya indirmek için [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* `managedIdentity`: (isteğe bağlı, JSON nesnesi) dosya indirmek için [yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md)
   * `clientId`: (isteğe bağlı, dize) yönetilen kimliğin istemci KIMLIĞI
   * `objectId`: (isteğe bağlı, dize) yönetilen kimliğin nesne KIMLIĞI
 
@@ -160,9 +160,9 @@ Ortak ayarlar, betiğin yürütüleceği sanal makineye şifresiz metin olarak g
 > [!NOTE]
 > Bu özellik **yalnızca korunan ayarlarda belirtilmelidir.**
 
-CustomScript (sürüm 1,10 ve üzeri), "fileUris" ayarında belirtilen URL 'lerden dosya indirmek için [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) destekler. Kullanıcı, SAS belirteçleri veya depolama hesabı anahtarları gibi gizli dizileri geçmesi gerekmeden, CustomScript 'in Azure Storage özel bloblarına veya kapsayıcılarına erişmesini sağlar.
+CustomScript (sürüm 1,10 ve üzeri), "fileUris" ayarında belirtilen URL 'lerden dosya indirmek için [yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md) destekler. Kullanıcı, SAS belirteçleri veya depolama hesabı anahtarları gibi gizli dizileri geçmesi gerekmeden, CustomScript 'in Azure Storage özel bloblarına veya kapsayıcılarına erişmesini sağlar.
 
-Bu özelliği kullanmak için kullanıcının, CustomScript 'in çalıştırılması beklenen VM 'ye veya VMSS 'ye [sistem tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) veya [Kullanıcı tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) bir kimlik eklemesi ve [yönetilen kimlik erişimini Azure depolama kapsayıcısına veya blobuna vermesi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)gerekir.
+Bu özelliği kullanmak için kullanıcının, CustomScript 'in çalıştırılması beklenen VM 'ye veya VMSS 'ye [sistem tarafından atanan](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) veya [Kullanıcı tarafından atanan](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) bir kimlik eklemesi ve [yönetilen kimlik erişimini Azure depolama kapsayıcısına veya blobuna vermesi](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access)gerekir.
 
 Hedef VM/VMSS 'de sistem tarafından atanan kimliği kullanmak için, "managedıdentity" alanını boş bir JSON nesnesi olarak ayarlayın. 
 
@@ -283,7 +283,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri
 
-Özel Betik uzantısını bir ölçek kümesine dağıtmak için bkz. [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
+Özel Betik uzantısını bir ölçek kümesine dağıtmak için bkz. [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>Klasik VM'ler
 
@@ -291,7 +291,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Özel Betik uzantısını klasik VM 'lerde dağıtmak için Azure portal veya klasik Azure PowerShell cmdlet 'lerini kullanabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Klasik VM kaynağına gidin. **Ayarlar**altındaki **Uzantılar** ' ı seçin.
 
@@ -301,7 +301,7 @@ Klasik VM kaynağına gidin. **Ayarlar**altındaki **Uzantılar** ' ı seçin.
 
 ### <a name="powershell"></a>PowerShell
 
-Özel Betik uzantısını var olan bir sanal makineye eklemek için [set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) cmdlet 'ini kullanın.
+Özel Betik uzantısını var olan bir sanal makineye eklemek için [set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure.service/set-azurevmcustomscriptextension) cmdlet 'ini kullanın.
 
 ```powershell
 # define your file URI

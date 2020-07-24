@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddf9a1309cb4f9156cec3aeb5d2ddd9d22cde485
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011457"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltmasını yapılandırma (Önizleme)
 
@@ -36,7 +36,7 @@ Başlamadan önce, aşağıdaki özellik önizlemeleri için kaydolduğunuzdan e
 - [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
 - [Azure Blob depolamada akış desteğini değiştirme (Önizleme)](storage-blob-change-feed.md)
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal nesne çoğaltmasını yapılandırmadan önce, zaten mevcut değilse kaynak ve hedef kapsayıcıları ilgili depolama hesaplarında oluşturun. Ayrıca, blob sürümü oluşturma ve kaynak hesapta akışı değiştirme ve hedef hesapta blob sürümü oluşturma 'yı etkinleştirme.
 
@@ -52,7 +52,7 @@ Azure portal bir çoğaltma ilkesi oluşturmak için şu adımları izleyin:
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="Azure portal 'de çoğaltma kurallarını gösteren ekran görüntüsü":::
 
-1. İsterseniz yalnızca önek düzeniyle eşleşen Blobları kopyalamak için bir veya daha fazla filtre belirtin. Örneğin, bir ön ek belirtirseniz `b` , yalnızca adı Bu harfle başlayan Bloblar çoğaltılır. Önekinin bir parçası olarak bir sanal dizin belirtebilirsiniz.
+1. İsterseniz yalnızca önek düzeniyle eşleşen Blobları kopyalamak için bir veya daha fazla filtre belirtin. Örneğin, bir ön ek belirtirseniz `b` , yalnızca adı Bu harfle başlayan Bloblar çoğaltılır. Önekinin bir parçası olarak bir sanal dizin belirtebilirsiniz. Ön ek dizesi joker karakterleri desteklemiyor.
 
     Aşağıdaki görüntüde, bir çoğaltma kuralının bir parçası olarak hangi Blobların kopyalanacağını kısıtlayan filtreler gösterilmektedir.
 
@@ -68,7 +68,7 @@ Azure portal bir çoğaltma ilkesi oluşturmak için şu adımları izleyin:
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell ile bir çoğaltma ilkesi oluşturmak için, önce sürüm 2.0.1 'yi yükler-az. Storage PowerShell modülünün [önizlemesi](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) . Önizleme modülünü yüklemek için aşağıdaki adımları izleyin:
+PowerShell ile bir çoğaltma ilkesi oluşturmak için, önce az. Storage PowerShell modülünün sürüm [2.0.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) veya daha sonraki bir sürümünü yüklemeniz gerekir. Önizleme modülünü yüklemek için aşağıdaki adımları izleyin:
 
 1. **Ayarlar**altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
 
@@ -234,7 +234,7 @@ az storage account or-policy show --resource-group <resource-group> \
 
 Bir çoğaltma ilkesini ve ilişkili kurallarını kaldırmak için Azure portal, PowerShell veya CLı kullanın.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal bir çoğaltma ilkesini kaldırmak için şu adımları izleyin:
 

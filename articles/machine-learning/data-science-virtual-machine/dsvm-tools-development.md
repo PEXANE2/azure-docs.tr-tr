@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012392"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi geliştirme araçları
 
@@ -23,9 +23,9 @@ Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geli
 
 ## <a name="visual-studio-community-edition"></a>Visual Studio Community sürümü
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Genel amaçlı IDE      |
+| Nedir o?   | Genel amaçlı IDE      |
 | Desteklenen DSVM sürümleri      | Windows: Visual Studio 2017, Windows 2019: Visual Studio 2019      |
 | Tipik kullanımlar      | Yazılım geliştirme    |
 | DSVM 'de nasıl yapılandırılır ve yüklenir?      | Veri bilimi Iş yükü (Python ve R araçları), Azure iş yükü (Hadoop, Data Lake), Node.js, SQL Server araçları, [Visual Studio Code için Azure Machine Learning](https://github.com/Microsoft/vs-tools-for-ai)    |
@@ -37,9 +37,9 @@ Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geli
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Genel amaçlı IDE      |
+| Nedir o?   | Genel amaçlı IDE      |
 | Desteklenen DSVM sürümleri      | Windows, Linux     |
 | Tipik kullanımlar      | Kod Düzenleyicisi ve git tümleştirmesi   |
 | Kullanma ve çalıştırma      | Linux 'ta masaüstü kısayolu ( `C:\Program Files (x86)\Microsoft VS Code\Code.exe` ) Windows, masaüstü kısayolu veya terminali ( `code` )    |
@@ -47,9 +47,9 @@ Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geli
 
 ## <a name="rstudio-desktop"></a>RStudio Desktop
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | R için istemci IDE dili   |
+| Nedir o?   | R için istemci IDE dili   |
 | Desteklenen DSVM sürümleri      | Windows, Linux      |
 | Tipik kullanımlar      |  R geliştirme     |
 | Kullanma ve çalıştırma      | Linux 'ta masaüstü kısayolu ( `C:\Program Files\RStudio\bin\rstudio.exe` ) Windows, masaüstü kısayolu ( `/usr/bin/rstudio` )      |
@@ -57,10 +57,10 @@ Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geli
 
 ## <a name="rstudio-server"></a>RStudio Server
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | R için istemci IDE dili   |
-| Bu nedir?   | R için Web tabanlı IDE    |
+| Nedir o?   | R için istemci IDE dili   |
+| Nedir o?   | R için Web tabanlı IDE    |
 | Desteklenen DSVM sürümleri      | Linux      |
 | Tipik kullanımlar      |  R geliştirme     |
 | Kullanma ve çalıştırma      | Hizmeti _systemctl rstudio-Server_' ı etkinleştirerek etkinleştirin ve ardından hizmeti _systemctl start rstudio-Server_ile başlatın. Ardından, http: \/ /Your-VM-IP: 8787 konumundaki RStudio sunucusunda oturum açın.       |
@@ -68,9 +68,9 @@ Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geli
 
 ## <a name="juno"></a>Juno 
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Julia için istemci IDE dili   |
+| Nedir o?   | Julia için istemci IDE dili   |
 | Desteklenen DSVM sürümleri      | Windows, Linux      |
 | Tipik kullanımlar      |  Julia geliştirme     |
 | Kullanma ve çalıştırma      | Linux 'ta masaüstü kısayolu ( `C:\JuliaPro-0.5.1.1\Juno.bat` ) Windows, masaüstü kısayolu ( `/opt/JuliaPro-VERSION/Juno` )      |
@@ -78,9 +78,9 @@ Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geli
 
 ## <a name="pycharm"></a>PyCharm
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Python için istemci IDE dili    |
+| Nedir o?   | Python için istemci IDE dili    |
 | Desteklenen DSVM sürümleri      | Windows 2019, Linux      |
 | Tipik kullanımlar      |  Python geliştirme     |
 | Kullanma ve çalıştırma      | Windows üzerinde masaüstü kısayolu ( `C:\Program Files\tk` ). Linux üzerinde masaüstü kısayolu ( `/usr/bin/pycharm` )      |

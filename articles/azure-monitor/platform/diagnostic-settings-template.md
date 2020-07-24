@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f2b3ea90cc94fa3411552c7b812fe53eb4dbbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008107"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma
 Azure Izleyici 'de [Tanılama ayarları](diagnostic-settings.md) Azure kaynakları tarafından toplanan [Platform günlüklerinin](platform-logs-overview.md) ve bağımlı oldukları Azure platformunun nereden gönderileceğini belirtir. Bu makalede, farklı hedeflere platform günlüklerini toplamak için tanılama ayarlarını oluşturmak ve yapılandırmak üzere bir [Azure Resource Manager şablonu](../../azure-resource-manager/templates/template-syntax.md) kullanmak için Ayrıntılar ve örnekler sağlanmaktadır.
@@ -29,7 +30,7 @@ Ayrıntılar için bkz. [Kaynak Yöneticisi şablonlarıyla kaynakları dağıtm
 
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
-Kaynak günlükleri için, şablona türünde bir kaynak ekleyin `<resource namespace>/providers/diagnosticSettings` . Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. Toplamak istediğiniz `category` `logs` kaynak için geçerli kategorilerin her biri için bölümünde bir sağlar. Kaynak ölçümlerini `metrics` [destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplayacak özelliği ekleyin.
+Kaynak günlükleri için, şablona türünde bir kaynak ekleyin `<resource namespace>/providers/diagnosticSettings` . Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. Toplamak istediğiniz `category` `logs` kaynak için geçerli kategorilerin her biri için bölümünde bir sağlar. Kaynak ölçümlerini `metrics` [destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplayacak özelliği ekleyin.
 
 Aşağıda, belirli bir kaynak için bir Log Analytics çalışma alanına, depolama hesabına ve Olay Hub 'ına bir kaynak günlüğü kategorisi toplayan bir şablon verilmiştir.
 
@@ -143,7 +144,7 @@ Aşağıda, kaynak günlüklerinin bir olay hub 'ına, depolama hesabına ve Log
 ```
 
 ## <a name="activity-log"></a>Etkinlik günlüğü
-Azure etkinlik günlüğü için türünde bir kaynak ekleyin `Microsoft.Insights/diagnosticSettings` . Kullanılabilir Kategoriler, [etkinlik günlüğündeki kategorilerde](activity-log-view.md#categories-in-the-activity-log)listelenmiştir. Aşağıda, tüm etkinlik günlüğü kategorilerini bir Log Analytics çalışma alanına, depolama hesabına ve Olay Hub 'ına toplayan bir şablon verilmiştir.
+Azure etkinlik günlüğü için türünde bir kaynak ekleyin `Microsoft.Insights/diagnosticSettings` . Kullanılabilir Kategoriler, [etkinlik günlüğündeki kategorilerde](./activity-log.md#view-the-activity-log)listelenmiştir. Aşağıda, tüm etkinlik günlüğü kategorilerini bir Log Analytics çalışma alanına, depolama hesabına ve Olay Hub 'ına toplayan bir şablon verilmiştir.
 
 
 ```json

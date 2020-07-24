@@ -1,37 +1,41 @@
 ---
-title: SQL Server VM oluşturma (Azure Resource Manager şablonu)
-description: Azure Resource Manager şablonu kullanarak Azure sanal makinesi (VM) üzerinde SQL Server oluşturma hakkında bilgi edinin.
+title: ARM şablonu kullanarak SQL Server VM oluşturma
+description: Bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Azure sanal makinesi (VM) üzerinde SQL Server oluşturma hakkında bilgi edinin.
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1b6f54c823f59bb654ac86f041eefe80af3eb5ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003874"
 ---
-# <a name="create-sql-server-vm-azure-resource-manager-template"></a>SQL Server VM oluşturma (Azure Resource Manager şablonu)
+# <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak SQL Server VM oluşturma
 
-Azure sanal makinesine (VM) bir SQL Server dağıtmak için bu Azure Resource Manager şablonunu kullanın. 
+Azure sanal makinesine (VM) bir SQL Server dağıtmak için bu Azure Resource Manager şablonu (ARM şablonu) kullanın. 
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
+
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server VM ARM şablonu şunları gerektirir:
 
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ve/veya [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7)'in en son sürümü. 
+- [Azure CLI](/cli/azure/install-azure-cli) ve/veya [PowerShell](/powershell/scripting/install/installing-powershell)'in en son sürümü. 
 - Hazırlanmış bir [sanal ağ](../../../virtual-network/quick-create-portal.md) ve [alt ağı](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)olan önceden yapılandırılmış bir [kaynak grubu](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) .
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json" highlight="169-310":::
 
@@ -43,7 +47,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Azure 'da bir sanal makine oluşturur. 
 - [Microsoft. sqlvirtualmachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): sanal MAKINEYI SQL VM kaynak sağlayıcısına kaydeder. 
 
-Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine)bulabilirsiniz.
+Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)bulabilirsiniz.
 
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
@@ -73,7 +77,7 @@ Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu 
     * **Günlük yolu**: SQL Server günlük dosyalarının yolu. 
     * **Konum**: tüm kaynakların konumu, bu değer varsayılan olarak kalmalıdır `[resourceGroup().location]` . 
 
-3. **İncele ve oluştur**’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
+3. **Gözden geçir ve oluştur**’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -116,10 +120,10 @@ Write-Host "Press [ENTER] to continue..."
 Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 SQL Server VM dağıtmanın diğer yolları için bkz.: 
-- [Azure portalındaki](create-sql-vm-portal.md)
+- [Azure Portal](create-sql-vm-portal.md)
 - [PowerShell](create-sql-vm-powershell.md)
 
 Daha fazla bilgi edinmek için bkz. [Azure VM 'lerinde SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md).

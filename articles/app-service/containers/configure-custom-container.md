@@ -3,12 +3,12 @@ title: Özel bir Linux kapsayıcısı yapılandırma
 description: Azure App Service bir özel Linux kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 57281bedb34078dff6878d69be1bfe7f7300f545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84905808"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008600"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service için özel bir Linux kapsayıcısı yapılandırma
 
@@ -18,7 +18,7 @@ Bu kılavuzda, App Service Linux uygulamalarının kapsayıcılama için temel k
 
 ## <a name="configure-port-number"></a>Bağlantı noktası numarasını Yapılandır
 
-Özel görüntinizdeki Web sunucusu 80 dışında bir bağlantı noktası kullanabilir. Azure 'a özel kapsayıcının kullandığı bağlantı noktasını uygulama ayarını kullanarak söylemiş olursunuz `WEBSITES_PORT` . [Bu öğreticideki Python örneği](https://github.com/Azure-Samples/docker-django-webapp-linux) için GitHub sayfası, `WEBSITES_PORT` olarak _8000_ ayarlamanız gerektiğini gösterir. Bu ayarı, [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Cloud Shell komutunu çalıştırarak ayarlayabilirsiniz. Örneğin:
+Varsayılan olarak App Service, özel kapsayıcının 80 numaralı bağlantı noktasında dinlediğini varsayar. Özel görüntinizdeki Web sunucusu 80 dışında bir bağlantı noktası kullanabilir. Azure 'a özel kapsayıcının kullandığı bağlantı noktasını uygulama ayarını kullanarak söylemiş olursunuz `WEBSITES_PORT` . [Bu öğreticideki Python örneği](https://github.com/Azure-Samples/docker-django-webapp-linux) için GitHub sayfası, `WEBSITES_PORT` olarak _8000_ ayarlamanız gerektiğini gösterir. Bu ayarı, [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Cloud Shell komutunu çalıştırarak ayarlayabilirsiniz. Örneğin:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -138,7 +138,7 @@ Aşağıdaki listede desteklenen ve desteklenmeyen Docker Compose yapılandırma
 
 - command
 - entrypoint
-- environment
+- ortam
 - image
 - ports
 - restart

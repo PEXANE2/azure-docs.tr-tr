@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010843"
 ---
 *Önbelleği hazırlama*  
 ReadOnly konak önbelleğe alma ile disk, disk sınırından daha yüksek ıOPS verebilir. Ana bilgisayar önbelleğinden bu en büyük okuma performansını almak için öncelikle bu diskin önbelleğini ısınma yapmanız gerekir. Bu, sınama aracının, benchereads birimini önbelleğe almasını sağlar ve aslında diski doğrudan değil, önbelleğe alır. Önbellek İsabetleri, tek önbellek etkin diskten ek ıOPS ile sonuçlanır.
@@ -153,7 +153,7 @@ sudo fio --runtime 30 fiowrite.ini
 ```
 
 Test çalışırken, VM ve Premium disklerin teslim aldığı yazma ıOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, DS14 VM, 50.000 ıOPS 'nin en büyük yazma ıOPS sınırını dağıtmakta.  
-    ![Yazma ıOPS sanal makinesi ve Premium disklerin sayısı](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+    ![Yazma ıOPS VM 'si ve Premium diskler teslim edilir.](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
 #### <a name="maximum-read-iops"></a>Maksimum okuma ıOPS 'si
 
@@ -194,7 +194,7 @@ sudo fio --runtime 30 fioread.ini
 ```
 
 Test çalışırken, VM ve Premium disklerin teslim aldığı okuma ıOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, DS14 sanal makinesi 64.000 'den fazla okuma ıOPS 'yi teslim ediyor. Bu, diskin ve önbellek performansının bir birleşimidir.  
-    ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+    ![Yazma ıOPS sanal makinesi ve Premium disklerinin sayısını teslim eden ekran görüntüsü.](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
 #### <a name="maximum-read-and-write-iops"></a>Maksimum okuma ve yazma ıOPS 'si
 

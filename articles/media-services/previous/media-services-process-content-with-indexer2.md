@@ -14,16 +14,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: c24218dc116803ca0e0a1f166b7b54b24fc4d5ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4589e2e923bf4068cc3a707c69f0304a1539745
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78163803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011558"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma
 
 > [!NOTE]
-> **Azure Media Indexer 2** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
+> **Azure Media Indexer 2** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
 
 **Azure Media Indexer 2 Preview** medya IŞLEMCISI (MP), medya dosyalarını ve içeriği aranabilir yapmanızı ve kapalı açıklamalı altyazı parçaları oluşturmanızı sağlar. Önceki [Azure Media Indexer](media-services-index-content.md)sürümüyle karşılaştırıldığında, **Azure Media Indexer 2 önizlemesi** daha hızlı Dizin oluşturma gerçekleştirir ve daha geniş bir dil desteği sunar. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Mandarin, Basitleştirilmiş), Portekizce, Arapça, Rusça ve Japonca bulunur.
 
@@ -31,7 +32,7 @@ ms.locfileid: "78163803"
 
 Bu makalede **Azure Media Indexer 2 Preview**ile dizin oluşturma işlerinin nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Aşağıdaki noktalara dikkat edilmelidir:
  
@@ -300,4 +301,3 @@ namespace IndexContent
 [Azure Media Services Analytics genel bakışı](media-services-analytics-overview.md)
 
 [Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-

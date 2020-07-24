@@ -10,11 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958744"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012494"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi desteklenen veri platformları
 
@@ -24,13 +25,13 @@ DSVM 'de aşağıdaki veri platformu araçları desteklenir.
 
 ## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
 
-| | |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Yerel bir ilişkisel veritabanı örneği      |
+| Nedir o?   | Yerel bir ilişkisel veritabanı örneği      |
 | Desteklenen DSVM sürümleri      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
-| Tipik kullanımlar      | Daha küçük veri kümesiyle yerel olarak hızlı geliştirme <br/> Veritabanı Içinde Çalıştır R   |
-| Örneklere bağlantılar      |    Yeni bir York City veri kümesinin küçük bir örneği SQL veritabanına yüklenir:<br/>  `nyctaxi` <br/> Microsoft Machine Learning Server ve veritabanı içi analizlerini gösteren Jupyter örneği şurada bulunabilir:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| DSVM 'deki ilgili araçlar       | SQL Server Management Studio <br/> ODBC/JDBC sürücüleri<br/> pyodbc, RODBC<br />Apache Drill      |
+| Tipik kullanımlar      | <ul><li>Daha küçük veri kümesiyle yerel olarak hızlı geliştirme</li><li>Veritabanı Içinde Çalıştır R</li></ul> |
+| Örneklere bağlantılar      | <ul><li>Yeni bir York City veri kümesinin küçük bir örneği SQL veritabanına yüklenir:<br/>  `nyctaxi`</li><li>Microsoft Machine Learning Server ve veritabanı içi analizlerini gösteren Jupyter örneği şurada bulunabilir:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
+| DSVM 'deki ilgili araçlar       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC sürücüleri</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer sürümü yalnızca geliştirme ve test amaçları için kullanılabilir. Üretimde çalıştırmak için bir lisansa veya SQL Server sanal makinelerinden birine ihtiyacınız vardır.
@@ -61,13 +62,13 @@ Ayrıca, DSVM, Python ve Machine Learning Server dahil olmak üzere birden çok 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2. x (tek başına)
 
-| | |
+| Kategori | Değer |
 | ------------- | ------------- |
-| Bu nedir?   | Popüler Apache Spark platformunun tek başına (işlem içi tek düğümlü) örneği; hızlı, büyük ölçekli veri işleme ve makine öğrenimi için bir sistem     |
+| Nedir o?   | Popüler Apache Spark platformunun tek başına (işlem içi tek düğümlü) örneği; hızlı, büyük ölçekli veri işleme ve makine öğrenimi için bir sistem     |
 | Desteklenen DSVM sürümleri      | Linux     |
-| Tipik kullanımlar      | * Azure HDInsight gibi büyük Spark kümelerinde daha küçük bir veri kümesiyle ve daha sonra dağıtımıyla Spark/PySpark uygulamalarının hızla geliştirilmesi<br/> * Test Microsoft Machine Learning Server Spark bağlamı <br />* ML uygulamaları derlemek için parlak ml veya Microsoft 'un açık kaynaklı bir [Mmlspark](https://github.com/Azure/mmlspark) kitaplığı kullanın |
-| Örneklere bağlantılar      |    Jupyter örneği: <br />&nbsp;&nbsp;* ~/Notebooks/parlak ml/pyspark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (Spark bağlamı):/Dsvm/Samples/Mrs/mrsmini Contextsample.exe |
-| DSVM 'deki ilgili araçlar       | PySpark, Scala<br/>Jupyter (Spark/PySpark kernels)<br/>Microsoft Machine Learning Server, parlak r, parlak LYR <br />Apache Drill      |
+| Tipik kullanımlar      | <ul><li>Spark/PySpark uygulamalarının yerel olarak daha küçük bir veri kümesiyle ve daha sonra Azure HDInsight gibi büyük Spark kümelerine dağıtımıyla birlikte hızla geliştirilmesi</li><li>Spark bağlamını test Microsoft Machine Learning Server</li><li>ML uygulamaları derlemek için parlak ml veya Microsoft 'un açık kaynaklı [Mmlspark](https://github.com/Azure/mmlspark) kitaplığını kullanın</li></ul> |
+| Örneklere bağlantılar      |    Jupyter örneği:<ul><li>~/Notebooks/parlak ml/pyspark</li><li>~/notebooks/MMLSpark</li></ul><p>Microsoft Machine Learning Server (Spark bağlamı):/Dsvm/Samples/Mrs/mrsmini Contextsample.exe</p> |
+| DSVM 'deki ilgili araçlar       | <ul><li>PySpark, Scala</li><li>Jupyter (Spark/PySpark kernels)</li><li>Microsoft Machine Learning Server, parlak r, parlak LYR</li><li>Apache Drill</li></ul> |
 
 ### <a name="how-to-use-it"></a>Nasıl kullanılır?
 Veya komutunu çalıştırarak Spark işlerini komut satırına gönderebilirsiniz `spark-submit` `pyspark` . Spark çekirdeğiyle yeni bir not defteri oluşturarak da Jupyter Not defteri oluşturabilirsiniz.

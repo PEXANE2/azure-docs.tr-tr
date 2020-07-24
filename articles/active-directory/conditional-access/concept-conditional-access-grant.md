@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 85beb04e39c5c47b9ee71ee96c2dff8910766ea3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009060"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -81,7 +81,6 @@ Bu ayar, aşağıdaki iOS ve Android uygulamaları için geçerlidir:
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
-- Microsoft Intune Yönetilen Tarayıcı
 - Microsoft faturalandırma
 - Microsoft Kaizala
 - Microsoft başlatıcısı
@@ -123,9 +122,22 @@ Bu izin denetiminden yararlanmak için, koşullu erişim cihazın bir aracı uyg
 Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 
 - Microsoft Cortana
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Office
 - Microsoft OneDrive
+- Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Word
+- Intune için çok satırlı
+- Dokuz posta-e-posta & takvimi
+
+> [!NOTE]
+> Microsoft Kaizala, Microsoft Skype Kurumsal ve Microsoft Visio, **Uygulama koruma Ilkesi gerektir** iznini desteklemez. Bu uygulamaların çalışmasını gerektiriyorsa, lütfen **onaylanan uygulamaları gerektir** ' i kullanın. İki izin kümesi arasındaki OR yan tümcesinin kullanımı, bu üç uygulama için çalışmaz.
 
 **Açıklamalar**
 

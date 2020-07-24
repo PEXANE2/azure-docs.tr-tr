@@ -1,18 +1,18 @@
 ---
 title: Azure Market 'te Azure sanal makine teklifi oluşturma
-description: Gerekli SKU ile Azure Marketi 'nde sanal makine teklifi oluşturmayı öğrenin.
+description: Gerekli planla Azure Marketi 'nde sanal makine teklifi oluşturmayı öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/17/2020
+ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110989"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012034"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -196,7 +196,7 @@ Azure Marketi arama sonuçlarında gösterilmek üzere teklifinizin kısa bir a�
 
 Azure Marketi arama sonuçlarında gösterilmek üzere teklifiniz için daha uzun bir açıklama sağlayın. Bu, en fazla 256 karakter içerebilir.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -286,7 +286,7 @@ Sonraki bölüme geçmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="plan-overview"></a>Plana genel bakış
 
-Iş Ortağı Merkezi 'nde aynı teklif dahilinde çeşitli plan seçenekleri sağlayabilirsiniz. Bu planlar daha önce SKU 'Lar olarak adlandırılmıştı. Bir teklif en az bir plan gerektirir; Bu, Monaya getirme izleyiciyi, Azure bölgesini, özellikleri veya VM görüntülerine göre farklılık gösterebilir.
+Iş Ortağı Merkezi 'nde aynı teklif dahilinde çeşitli plan seçenekleri sağlayabilirsiniz. Bir teklif en az bir plan (daha önce SKU olarak adlandırılır) gerektirir; Bu, Monaya getirme seyirci kitlesi, Azure bölgesi, özellikleri veya VM görüntülerine göre farklılık gösterebilir.
 
 Planlarınızı oluşturduktan sonra, görüntülenecek **plana genel bakış** sekmesini seçin:
 
@@ -312,7 +312,7 @@ En üstte **Yeni plan oluştur** ' u seçin. **Yeni plan** iletişim kutusu gör
 
 **Plan adı** kutusuna bu plan için bir ad girin. Müşteriler teklifiniz dahilinde hangi planın seçeceğinize karar verirken bu adı görür. Planlar arasındaki farkları açıkça gösteren benzersiz bir ad oluşturun. Örneğin, *Kullandıkça Öde*, *KLG*, *Gelişmiş*ve *Kurumsal* planlar ile **Windows Server** girebilirsiniz.
 
-**Oluştur**'u seçin.
+**Oluştur**’u seçin.
 
 ### <a name="plan-setup"></a>Planı ayarla
 
@@ -412,7 +412,6 @@ Her planı herkese görünür olacak şekilde veya yalnızca önceden seçilmiş
 
 >[!Note]
 >Özel teklifler, bulut çözümü sağlayıcısı programı 'nın (CSP) satıcısı aracılığıyla oluşturulan Azure abonelikleri ile desteklenmez.
-
 
 #### <a name="hide-a-plan"></a>Planı gizleme
 
@@ -516,10 +515,10 @@ Yayımlama işlemindeki **el ile doğrulama** adımı, teklifinizin ve ilişkili
 
 Bu sayfa, durumuna bağlı olarak teklifle çalışmanıza yardımcı olacak bağlantılar da içerir:
 
-- Teklif bir taslak ise: [taslak teklifini sil](update-existing-offer.md#delete-a-draft-offer))
+- Teklif bir taslak ise: [taslak teklifini sil](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise: [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Teklif önizlemededir: [Go-Live](publishing-status.md#publisher-approval))
-- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız: [yayımlamayı Iptal et](update-existing-offer.md#cancel-publishing))
+- Teklif önizlemededir: [Go-Live](publishing-status.md#publisher-approval)
+- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız: [yayımlamayı Iptal et](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>Market örnekleri
 
@@ -535,7 +534,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
-7. Description
+7. Açıklama
 8. Yararlı bağlantılar
 9. Ekran görüntüleri/videolar
 
@@ -566,8 +565,8 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-1. Name
-2. Description
+1. Ad
+2. Açıklama
 3. Yararlı bağlantılar
 4. Ekran görüntüleri/videolar
 

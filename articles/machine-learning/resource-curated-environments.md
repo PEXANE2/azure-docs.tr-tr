@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9d0964fb28451abe0a77276d6f9d605fcaac2514
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156446"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012221"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning seçkin ortamlar
 
-Bu makalede, Azure Machine Learning ' deki seçkin ortamlar ve bunlara önceden yüklenmiş paketler ve kanallar listelenmektedir.
+Bu makalede, Azure Machine Learning ' deki seçkin ortamlar ve bunlara önceden yüklenmiş paketler ve kanallar listelenmektedir. Seçkin ortamlar Azure Machine Learning tarafından sağlanır ve varsayılan olarak çalışma alanınızda kullanılabilir. Bunlar, önbelleğe alınmış Docker görüntüleri tarafından desteklenir, çalıştırma hazırlık maliyeti azalır ve daha hızlı dağıtım zamanına izin verir. Çeşitli makine öğrenimi çerçevelerini hızlıca kullanmaya başlamak için bu ortamları kullanın.
 
 > [!NOTE]
 > Bu liste Haziran 2020 itibariyle güncelleştirilir. En güncel listeyi almak için Python SDK 'sını kullanın. Daha fazla bilgi için [ortamlar makalesine](./how-to-use-environments.md#use-a-curated-environment)bakın.

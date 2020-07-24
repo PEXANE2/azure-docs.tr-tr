@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011065"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Önizleme: PowerShell kullanarak yakınlık yerleşimi grupları oluşturma ve kullanma
 
@@ -29,7 +30,7 @@ Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbir
 
 
 ## <a name="create-a-proximity-placement-group"></a>Yakınlık yerleştirme grubu oluşturma
-[New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) cmdlet 'ini kullanarak bir yakınlık yerleşimi grubu oluşturun. 
+[New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) cmdlet 'ini kullanarak bir yakınlık yerleşimi grubu oluşturun. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -54,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
 
-`-ProximityPlacementGroup $ppg.Id`Ölçek kümesini oluşturmak Için [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) kullandığınızda YAKıNLıK yerleşimi grubu kimliğine başvurmak için kullanarak yakınlık yerleşimi grubunda bir ölçek oluşturun.
+`-ProximityPlacementGroup $ppg.Id`Ölçek kümesini oluşturmak Için [New-AzVMSS](/powershell/module/az.compute/new-azvmss) kullandığınızda YAKıNLıK yerleşimi grubu kimliğine başvurmak için kullanarak yakınlık yerleşimi grubunda bir ölçek oluşturun.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

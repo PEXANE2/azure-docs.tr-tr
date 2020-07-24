@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b5640a42c0fdcb0bd958011db28c19854b16a547
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4e951b7eb2d3d5e49ab80af2604d5b44565dd25e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008549"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management için Azure Güvenlik temeli
 
@@ -640,7 +640,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Kılavuz**: Azure API Management erişimini denetlemek için rol tabanlı erişim denetimi kullanın. Azure API Management, API Management Hizmetleri ve varlıkları için ayrıntılı erişim yönetimini (örneğin, API 'Ler ve ilkeler) etkinleştirmek üzere Azure rol tabanlı Access Control (RBAC) kullanır.
+**Kılavuz**: Azure API Management erişimini denetlemek için rol tabanlı erişim denetimi kullanın. Azure API Management, API Management Hizmetleri ve varlıkları (örneğin, API 'Ler ve ilkeler) için ayrıntılı erişim yönetimini sağlamak üzere Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanır.
 
 * [Azure API Management'te Rol Tabanlı Erişim Denetimini kullanma](./api-management-role-based-access-control.md)
 

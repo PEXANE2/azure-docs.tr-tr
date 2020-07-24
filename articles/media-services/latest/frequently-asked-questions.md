@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011694"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -45,7 +46,7 @@ Ayrıntılar için bkz. [medya Işlemeyi ölçeklendirme](media-reserved-units-c
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Videoları işlemek için önerilen yöntem nedir?
 
-Videoları kodlamaya veya çözümlemeye yönelik ortak görevleri yapılandırmak için [dönüşümler](https://docs.microsoft.com/rest/api/media/transforms) kullanın. Her dönüşüm, video veya ses dosyalarınızı işlemeye yönelik bir tarif veya bir görev iş akışını açıklar. Bir [iş](https://docs.microsoft.com/rest/api/media/jobs) , bir giriş video veya ses içeriğine dönüştürmeyi uygulamak için Media Services yapılan gerçek istedir. Dönüşüm oluşturulduktan sonra, Media Services API 'Lerini veya yayımlanmış SDK 'Ları kullanarak Işleri gönderebilirsiniz. Daha fazla bilgi için bkz. [dönüşümler ve işler](transforms-jobs-concept.md).
+Videoları kodlamaya veya çözümlemeye yönelik ortak görevleri yapılandırmak için [dönüşümler](/rest/api/media/transforms) kullanın. Her dönüşüm, video veya ses dosyalarınızı işlemeye yönelik bir tarif veya bir görev iş akışını açıklar. Bir [iş](/rest/api/media/jobs) , bir giriş video veya ses içeriğine dönüştürmeyi uygulamak için Media Services yapılan gerçek istedir. Dönüşüm oluşturulduktan sonra, Media Services API 'Lerini veya yayımlanmış SDK 'Ları kullanarak Işleri gönderebilirsiniz. Daha fazla bilgi için [Dönüşümler ve İşler](transforms-jobs-concept.md) konusuna bakın.
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Karşıya yükleme, kodlama ve bir video yayımladım. Akışa neden olan video oynatılsın?
 
@@ -158,9 +159,9 @@ Genellikle, müşteriler bir lisans sunucu grubuna kendi veri merkezinde veya DR
 
 * Media Services v3 içindeki [canlı olayları](live-events-outputs-concept.md) yönetin. 
 * V3 [varlıklarını](assets-concept.md)görüntüleyin (yönetmez). 
-* [API 'lere erişme hakkında bilgi alın](access-api-portal.md). 
+* [API 'lere erişme hakkında bilgi alın](./access-api-howto.md). 
 
-Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) IÇIN [REST API](https://docs.microsoft.com/rest/api/media/), [Azure CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) IÇIN [REST API](/rest/api/media/), [Azure CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>V3 'de bir AssetFile kavramı var mı?
 
@@ -170,7 +171,7 @@ Daha fazla bilgi için bkz. [Media Services v3 'ye geçirme](media-services-v2-v
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>İstemci tarafı depolama şifrelemesi nerede?
 
-Artık sunucu tarafı depolama şifrelemesini (varsayılan olarak açık) kullanmanızı öneririz. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Artık sunucu tarafı depolama şifrelemesini (varsayılan olarak açık) kullanmanızı öneririz. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md).
 
 ## <a name="offline-streaming"></a>Çevrimdışı akış
 

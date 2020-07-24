@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/08/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253367"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009127"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için uygulama koruma ilkesi ve onaylanan istemci uygulaması gerektirme
 
@@ -29,10 +30,11 @@ Bu makalede, Office 365, Exchange Online ve SharePoint Online gibi kaynaklar iç
 
 Koşullu erişim 'de, bu istemci uygulamalarının bir uygulama koruma ilkesiyle korunması bilinmektedir. Uygulama koruma ilkeleri hakkında daha fazla bilgi için, [Uygulama koruma ilkelerine genel bakış](/intune/apps/app-protection-policy)
 
-Uygun istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md).
+> [!WARNING]
+> Tüm uygulamalar onaylanan uygulamalar olarak desteklenmez veya uygulama koruma ilkelerini desteklemez. Uygun istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md#require-app-protection-policy).
 
 > [!NOTE]
->    OR yan tümcesi, kullanıcıların **Uygulama koruma Ilkesini iste** veya **onaylanmış istemci uygulama** izni denetimleri gerektiren uygulamaları kullanmalarını sağlamak için ilke içinde kullanılır. **Uygulama koruma Ilkesi gerektir** denetimini destekleyen uygulamalar hakkında daha fazla bilgi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md).
+> İzin verme denetimleri altında "seçili denetimlerden birini gerektir", OR yan tümcesi gibidir. Bu, kullanıcıların **Uygulama koruma Ilkesini iste** veya **onaylanmış istemci uygulaması** izin denetimleri gerektir uygulamalarını destekleyen uygulamaları kullanmalarını sağlamak için ilke içinde kullanılır. Her iki ilkede de bir uygulama destekleniyorsa, **Uygulama koruma ilkesinin** zorunlu kılınmasını gerektir. **Uygulama koruma Ilkesi gerektir** denetimini destekleyen uygulamalar hakkında daha fazla bilgi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md#require-app-protection-policy).
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Senaryo 1: Office 365 uygulamaları, uygulama koruma ilkeleriyle onaylanan uygulamalar gerektirir
 
@@ -48,7 +50,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
@@ -72,7 +74,7 @@ Bu adımdaki koşullu erişim ilkesi için aşağıdaki bileşenleri yapılandı
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online**' ı seçin.
 1. **Koşullar**altında:
    1. **İstemci uygulamaları (Önizleme)**:
@@ -100,7 +102,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
@@ -133,7 +135,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online** ve **Office 365 SharePoint Online**' ı seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
@@ -155,7 +157,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online**' ı seçin.
 1. **Koşullar**altında:
    1. **İstemci uygulamaları (Önizleme)**:
@@ -175,5 +177,5 @@ Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [Uygul
 
 [Koşullu erişim bileşenleri](concept-conditional-access-policies.md)
 
-[Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)
+[Sık kullanılan Koşullu Erişim İlkeleri](concept-conditional-access-policy-common.md)
 
