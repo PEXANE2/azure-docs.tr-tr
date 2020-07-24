@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207110"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064698"
 ---
 # <a name="how-to-use-image-templates"></a>Görüntü şablonlarını kullanma
 
@@ -148,44 +148,337 @@ Bu tablo, Azure Maps web SDK 'sının Şu anda kullanılabilir olan tüm görün
 
 **Sembol simgesi şablonları**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| im | işaretleyici-kalın | işaretleyici daire | işaretleyici-düz |
-|![işaret simgesi](./media/image-templates/marker.png)|![işaretleyici-kalın simgesi](./media/image-templates/marker-thick.png)|![işaret-daire simgesi](./media/image-templates/marker-circle.png)|![işaret-düz simgesi](./media/image-templates/marker-flat.png)|
-||||
-| işaretleyici-kare | işaretleyici-kare-küme | işaretleyici-ok | işaretleyici-bol-pin | 
-|![işaret-kare simgesi](./media/image-templates/marker-square.png)|![işaretleyici-kare-küme simgesi](./media/image-templates/marker-square-cluster.png)|![işaret-ok simgesi](./media/image-templates/marker-arrow.png)|![işaretleyici-bol-pin simgesi](./media/image-templates/marker-ball-pin.png)|
-||||
-| işaretleyici-kare yuvarlatılmış | işaretleyici-kare yuvarlatılmış-küme | flag | bayrak-üçgen |
-| ![işaretleyici-kare yuvarlatılmış simgesi](./media/image-templates/marker-square-rounded.png) | ![işaretleyici-kare yuvarlatılmış-küme simgesi](./media/image-templates/marker-square-rounded-cluster.png) | ![bayrak simgesi](./media/image-templates/flag.png) | ![bayrak-üçgen simgesi](./media/image-templates/flag-triangle.png) |
-||||
-| üçgen | üçgen-kalın | üçgen-yukarı ok | üçgen-sol ok |
-| ![üçgen simgesi](./media/image-templates/triangle.png) | ![üçgen-kalın simgesi](./media/image-templates/triangle-thick.png) | ![Üçgen-aşağı ok simgesi](./media/image-templates/triangle-arrow-up.png) | ![üçgen-sol ok simgesi](./media/image-templates/triangle-arrow-left.png) |
-||||
-| altıgeni | altıgen-kalın | altıgen yuvarlatılmış | altıgen-yuvarlatılmış-kalın |
-| ![altıgen simgesi](./media/image-templates/hexagon.png) | ![altıgen-kalın simgesi](./media/image-templates/hexagon-thick.png) | ![altıgen yuvarlatılmış simgesi](./media/image-templates/hexagon-rounded.png) | ![altıgen-yuvarlatılmış-kalın simgesi](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| sabitleme | PIN-yuvarlak | yuvarlak kare | yuvarlak köşeli-kalın |
-| ![raptiye simgesi](./media/image-templates/pin.png) | ![PIN-Round simgesi](./media/image-templates/pin-round.png) | ![Yuvarlatılmış-kare simgesi](./media/image-templates/rounded-square.png) | ![yuvarlak köşeli-kalın simgesi](./media/image-templates/rounded-square-thick.png) |
-||||
-| yukarı ok | ok-yukarı-ince | car ||
-| ![yukarı ok simgesi](./media/image-templates/arrow-up.png) | ![ok-yukarı-ince simgesi](./media/image-templates/arrow-up-thin.png) | ![Araba simgesi](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      im
+   :::column-end:::
+   :::column span="":::
+      işaretleyici-kalın
+   :::column-end:::
+   :::column span="":::
+      işaretleyici daire
+   :::column-end:::
+   :::column span="":::
+      işaretleyici-düz
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![işaret simgesi](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![işaretleyici-kalın simgesi](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![işaret-daire simgesi](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![işaret-düz simgesi](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      işaretleyici-kare
+   :::column-end:::
+   :::column span="":::
+      işaretleyici-kare-küme
+   :::column-end:::
+   :::column span="":::
+      işaretleyici-ok
+   :::column-end:::
+   :::column span="":::
+      işaretleyici-bol-pin
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![işaret-kare simgesi](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![işaretleyici-kare-küme simgesi](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![işaret-ok simgesi](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![işaretleyici-bol-pin simgesi](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      işaretleyici-kare yuvarlatılmış
+   :::column-end:::
+   :::column span="":::
+      işaretleyici-kare yuvarlatılmış-küme
+   :::column-end:::
+   :::column span="":::
+      flag
+   :::column-end:::
+   :::column span="":::
+      bayrak-üçgen
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![işaretleyici-kare yuvarlatılmış simgesi](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![işaretleyici-kare yuvarlatılmış-küme simgesi](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![bayrak simgesi](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![bayrak-üçgen simgesi](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      üçgen
+   :::column-end:::
+   :::column span="":::
+      üçgen-kalın
+   :::column-end:::
+   :::column span="":::
+      üçgen-yukarı ok
+   :::column-end:::
+   :::column span="":::
+      üçgen-sol ok
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![üçgen simgesi](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![üçgen-kalın simgesi](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![Üçgen-aşağı ok simgesi](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![üçgen-sol ok simgesi](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      altıgeni
+   :::column-end:::
+   :::column span="":::
+      altıgen-kalın
+   :::column-end:::
+   :::column span="":::
+      altıgen yuvarlatılmış
+   :::column-end:::
+   :::column span="":::
+      altıgen-yuvarlatılmış-kalın
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![altıgen simgesi](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![altıgen-kalın simgesi](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![altıgen yuvarlatılmış simgesi](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![altıgen-yuvarlatılmış-kalın simgesi](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      sabitleme
+   :::column-end:::
+   :::column span="":::
+      PIN-yuvarlak
+   :::column-end:::
+   :::column span="":::
+      yuvarlak kare
+   :::column-end:::
+   :::column span="":::
+      yuvarlak köşeli-kalın
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![raptiye simgesi](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![PIN-Round simgesi](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![Yuvarlatılmış-kare simgesi](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![yuvarlak köşeli-kalın simgesi](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      yukarı ok
+   :::column-end:::
+   :::column span="":::
+      ok-yukarı-ince
+   :::column-end:::
+   :::column span="":::
+      car
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![yukarı ok simgesi](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![ok-yukarı-ince simgesi](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![Araba simgesi](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **Çokgen dolgusu kalıp şablonları**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| denetimc | denetleyici-döndürülmüş | daireleri | Daire-aralıklı |
-| ![denetleyici simgesi](./media/image-templates/checker.png) | ![denetleyici-döndürülmüş simgesi](./media/image-templates/checker-rotated.png) | ![daireler simgesi](./media/image-templates/circles.png) | ![Daire içinde aralıklı simge](./media/image-templates/circles-spaced.png) |
-|||||
-| köşegen-çizgiler | Köşegen-aşağı satırlar | Köşegen-Yukarı şeritler | Köşegen-aşağı şeritler |
-| ![köşegen-çizgiler-yukarı simgesi](./media/image-templates/diagonal-lines-up.png) | ![köşegen-çizgiler-aşağı simgesi](./media/image-templates/diagonal-lines-down.png) | ![çapraz şeritler-yukarı simgesi](./media/image-templates/diagonal-stripes-up.png) | ![Köşegen-aşağı açılan simgesi](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| kılavuz çizgileri | Döndürülmüş-kılavuz çizgileri | Döndürülmüş-ızgara-şeritler | x dolgusu |
-| ![kılavuz çizgileri simgesi](./media/image-templates/grid-lines.png) | ![Döndürülmüş-kılavuz çizgileri simgesi](./media/image-templates/rotated-grid-lines.png) | ![Döndürülmüş-Grid-şeritler simgesi](./media/image-templates/rotated-grid-stripes.png) | ![x dolgusu simgesi](./media/image-templates/x-fill.png) |
-|||||
-| zg-Zak | Zig-Zak-dikey | noktaları |  |
-| ![Zig-Zak simgesi](./media/image-templates/zig-zag.png) | ![Zig-Zak-dikey simgesi](./media/image-templates/zig-zag-vertical.png) | ![noktalar simgesi](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      denetimc
+   :::column-end:::
+   :::column span="":::
+      denetleyici-döndürülmüş
+   :::column-end:::
+   :::column span="":::
+      daireleri
+   :::column-end:::
+   :::column span="":::
+      Daire-aralıklı
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![denetleyici simgesi](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![denetleyici-döndürülmüş simgesi](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![daireler simgesi](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![Daire içinde aralıklı simge](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      köşegen-çizgiler
+   :::column-end:::
+   :::column span="":::
+      Köşegen-aşağı satırlar
+   :::column-end:::
+   :::column span="":::
+      Köşegen-Yukarı şeritler
+   :::column-end:::
+   :::column span="":::
+      Köşegen-aşağı şeritler
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![köşegen-çizgiler-yukarı simgesi](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![köşegen-çizgiler-aşağı simgesi](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![çapraz şeritler-yukarı simgesi](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Köşegen-aşağı açılan simgesi](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      kılavuz çizgileri
+   :::column-end:::
+   :::column span="":::
+      Döndürülmüş-kılavuz çizgileri
+   :::column-end:::
+   :::column span="":::
+      Döndürülmüş-ızgara-şeritler
+   :::column-end:::
+   :::column span="":::
+      x dolgusu
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![kılavuz çizgileri simgesi](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![Döndürülmüş-kılavuz çizgileri simgesi](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![Döndürülmüş-Grid-şeritler simgesi](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![x dolgusu simgesi](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      zg-Zak
+   :::column-end:::
+   :::column span="":::
+      Zig-Zak-dikey
+   :::column-end:::
+   :::column span="":::
+      noktaları
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Zig-Zak simgesi](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![Zig-Zak-dikey simgesi](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![noktalar simgesi](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
 
 **Önceden yüklenmiş görüntü simgeleri**
 

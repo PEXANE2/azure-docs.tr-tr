@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e6abeff8998e55eb7cbf450d1c3cc32f233e382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065964"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps ile şirket içi dosya sistemlerine bağlanma
 
@@ -35,10 +35,10 @@ Bu makalede, bir şirket içi dosya sistemine bu örnek senaryo tarafından aç�
 
 * Kullanmak istediğiniz dosya sistemine sahip olan bilgisayara erişin. Örneğin, veri ağ geçidini dosya sisteminizle aynı bilgisayara yüklerseniz, bu bilgisayarın hesap kimlik bilgilerine sahip olmanız gerekir.
 
-* Office 365 Outlook, Outlook.com veya Gmail gibi Logic Apps tarafından desteklenen sağlayıcıdan gelen bir e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcı listesini inceleyin](https://docs.microsoft.com/connectors/). Bu mantıksal uygulama bir Office 365 Outlook hesabı kullanır. Başka bir e-posta hesabı kullanıyorsanız genel adımlar aynıdır, ancak kullanıcı arabirimi biraz farklı olabilir.
+* Office 365 Outlook, Outlook.com veya Gmail gibi Logic Apps tarafından desteklenen sağlayıcıdan gelen bir e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcı listesini inceleyin](/connectors/). Bu mantıksal uygulama bir Office 365 Outlook hesabı kullanır. Başka bir e-posta hesabı kullanıyorsanız genel adımlar aynıdır, ancak kullanıcı arabirimi biraz farklı olabilir.
 
   > [!IMPORTANT]
-  > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)hakkında temel bilgi. Bu örnekte, boş bir mantıksal uygulama gerekir.
 
@@ -68,12 +68,12 @@ Bu makalede, bir şirket içi dosya sistemine bu örnek senaryo tarafından aç�
 
    ![Bağlantı oluşturma](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Özellik | Gerekli | Değer | Description |
+   | Özellik | Gerekli | Değer | Açıklama |
    | -------- | -------- | ----- | ----------- |
    | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için istediğiniz ad |
-   | **Kök klasör** | Yes | <*kök klasörü-adı*> | Dosya sisteminiz için kök klasör; Örneğin, şirket içi veri ağ geçidinin yüklü olduğu bilgisayarda yerel bir klasör gibi şirket içi veri ağ geçidinizi veya bilgisayarın erişebileceği bir ağ paylaşımının klasörünü yüklediyseniz. <p>Örneğin, `\\PublicShare\\DropboxFiles` <p>Kök klasör, tüm dosya ile ilgili eylemler için göreli yollar için kullanılan ana üst klasördür. |
-   | **Kimlik doğrulama türü** | No | <*kimlik doğrulama türü*> | Dosya sisteminizin kullandığı kimlik doğrulaması türü: **Windows** |
-   | **Nitelen** | Yes | <*etki* > \\ alanı < *Kullanıcı adı*> <p>-veya- <p><*Yerel* > \\ bilgisayar < *Kullanıcı adı*> | Dosya sistemi klasörünüzün bulunduğu bilgisayarın Kullanıcı adı. <p>Dosya sistemi klasörünüz şirket içi veri ağ geçidiyle aynı bilgisayarda varsa, <*Yerel bilgisayar* > \\ < *Kullanıcı adı*> kullanabilirsiniz. |
+   | **Kök klasör** | Yes | <*kök klasörü-adı*> | Dosya sisteminiz için kök klasör; Örneğin, şirket içi veri ağ geçidinin yüklü olduğu bilgisayarda yerel bir klasör gibi şirket içi veri ağ geçidinizi veya bilgisayarın erişebileceği bir ağ paylaşımının klasörünü yüklediyseniz. <p>Örnek: `\\PublicShare\\DropboxFiles` <p>Kök klasör, tüm dosya ile ilgili eylemler için göreli yollar için kullanılan ana üst klasördür. |
+   | **Kimlik doğrulama türü** | Hayır | <*kimlik doğrulama türü*> | Dosya sisteminizin kullandığı kimlik doğrulaması türü: **Windows** |
+   | **Kullanıcı adı** | Yes | <*etki* > \\ alanı < *Kullanıcı adı*> <p>-veya- <p><*Yerel* > \\ bilgisayar < *Kullanıcı adı*> | Dosya sistemi klasörünüzün bulunduğu bilgisayarın Kullanıcı adı. <p>Dosya sistemi klasörünüz şirket içi veri ağ geçidiyle aynı bilgisayarda varsa, <*Yerel bilgisayar* > \\ < *Kullanıcı adı*> kullanabilirsiniz. |
    | **Parola** | Yes | <*Parolanız*> | Dosya sisteminizin bulunduğu bilgisayarın parolası |
    | **geçidinde** | Yes | <*yüklü-ağ geçidi-adı*> | Daha önce yüklenen ağ geçidinizin adı |
    |||||
@@ -96,7 +96,7 @@ Bu makalede, bir şirket içi dosya sistemine bu örnek senaryo tarafından aç�
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/fileconnector/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/fileconnector/)bakın.
 
 > [!NOTE]
 > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.

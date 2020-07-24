@@ -1,18 +1,19 @@
 ---
 title: Azure haritalar için en iyi uygulamalar Arama Hizmeti | Microsoft Azure haritaları
 description: Microsoft Azure haritalardan Arama Hizmeti kullanırken en iyi uygulamaları nasıl uygulayacağınızı öğrenin.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84264375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064269"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure haritalar için en iyi uygulamalar Arama Hizmeti
 
@@ -25,9 +26,9 @@ Bu makalede Arama Hizmeti Azure Maps 'tan veri çağırdığınızda ses uygulam
 * Sonuç türleri arasındaki farkları öğrenin
 * Adres Arama-Yanıt yapısını okuyun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure haritalar hizmeti API 'Lerine çağrı yapmak için bir Azure Maps hesabına ve bir anahtara ihtiyacınız vardır. Daha fazla bilgi için bkz. [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+Azure haritalar hizmeti API 'Lerine çağrı yapmak için bir Azure Maps hesabına ve bir anahtara ihtiyacınız vardır. Daha fazla bilgi için bkz. [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
 
 Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
@@ -84,7 +85,7 @@ Bir arama sorgusuna yönelik Kullanıcı girdlerinizi bilmiyorsanız, Azure hari
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Coğrafya varlık türü için ters coğrafi kod ve filtre
 
-[Arama adresi ters API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)'sinde ters coğrafi kod araması yaptığınızda hizmet, yönetim alanlarının çokgenler döndürebilir. Örneğin, bir şehirde alan poligonu getirmek isteyebilir.Belirli Coğrafya varlık türlerine aramayı daraltmak için, `entityType` isteklerinizin parametresini ekleyin. 
+[Arama adresi ters API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)'sinde ters coğrafi kod araması yaptığınızda hizmet, yönetim alanlarının çokgenler döndürebilir. Örneğin, bir şehirde alan çokgeni getirmek isteyebilirsiniz.Belirli Coğrafya varlık türlerine aramayı daraltmak için, `entityType` isteklerinizin parametresini ekleyin. 
 
 Elde edilen yanıt, Coğrafya KIMLIĞI ve eşleşen varlık türü içerir. Birden fazla varlık sağlarsanız, uç nokta *kullanılabilir en küçük varlığı*döndürür. [Arama Çokgen hizmeti](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)aracılığıyla Coğrafya geometrisini almak için döndürülen geometri kimliğini kullanabilirsiniz.
 
@@ -948,7 +949,7 @@ Adres aramasının POI döndürmediğine dikkat edin.
 }
 ```
 
-### <a name="geometry"></a>Geometrisi
+### <a name="geometry"></a>Geometri
 
 Bir *geometri* yanıt türü, `dataSources` ve altındaki NESNESINDE döndürülen geometri kimliğini içerebilir `geometry` `id` . Örneğin, bir GeoJSON biçiminde geometri verileri istemek için [arama Çokgen hizmetini](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) kullanabilirsiniz. Bu biçimi kullanarak bir varlık kümesi için bir şehir veya Havaalanı ana hattı edinebilirsiniz. Daha sonra bu sınır verilerini kullanarak [bir bölge alanı ayarlayabilir](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) veya [geometrisi içinde POI araması](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)yapabilirsiniz.
 

@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 02cc2ddc793906ff79cbb8619a43d54d696b42ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8339ed5f6b570f392a76d8e4109f015c951b9df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065609"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>PowerShell kullanarak Azure Media Services API ile kullanmak üzere bir Azure AD uygulaması oluşturma
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services kaynaklarına erişmek için bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturmak üzere bir PowerShell betiği kullanmayı öğrenin.  
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın. 
+- Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın. 
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure portal Azure Media Services hesap oluşturma](media-services-portal-create-account.md)konusuna bakın.
 
-- Azure PowerShell. Daha fazla bilgi için bkz. [Azure PowerShell kullanma](https://docs.microsoft.com/powershell/azure/overview).
+- Azure PowerShell. Daha fazla bilgi için bkz. [Azure PowerShell kullanma](/powershell/azure/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

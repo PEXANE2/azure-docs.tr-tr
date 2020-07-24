@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: fe348c2bbd901934c6365be6efefafb44ef8d875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97b5118f74cbd098beea804c312ed08f1a152873
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067174"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos kaynaklarını yönetme
 
@@ -274,7 +274,7 @@ az cosmosdb sql database throughput update \
 
 ### <a name="manage-lock-on-a-database"></a>Bir veritabanında kilidi yönetme
 
-Bir veritabanına silme kilidi koyun. Bu şekilde nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri önler](role-based-access-control.md#preventing-changes-from-cosmos-sdk).
+Bir veritabanına silme kilidi koyun. Bu şekilde nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri önler](role-based-access-control.md#prevent-sdk-changes).
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -433,7 +433,7 @@ az cosmosdb sql container throughput update \
 
 ### <a name="manage-lock-on-a-container"></a>Kapsayıcıda kilidi yönetme
 
-Bir kapsayıcıya silme kilidi koyun. Bu şekilde nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri önler](role-based-access-control.md#preventing-changes-from-cosmos-sdk).
+Bir kapsayıcıya silme kilidi koyun. Bu şekilde nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri önler](role-based-access-control.md#prevent-sdk-changes).
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'

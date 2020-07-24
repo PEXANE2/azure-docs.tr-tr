@@ -8,17 +8,18 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83739541"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066128"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange x12 iletileri
 
 Azure Logic Apps içinde x12 iletilerle çalışmak için, x12 iletişimini yönetmeye yönelik Tetikleyiciler ve eylemler sağlayan x12 bağlayıcısını kullanabilirsiniz. Bunun yerine EDIOLGU iletileri hakkında daha fazla bilgi için bkz. [Exchange ediolgu iletileri](logic-apps-enterprise-integration-edifact.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -86,7 +87,7 @@ Anlaşma özelliklerini ayarladıktan sonra, bu sözleşmenin bu anlaşma aracı
 
 ![Gelen iletiler için şemalar](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-Bu bölüm için, [tümleştirme hesabınızdan](../logic-apps/logic-apps-enterprise-integration-accounts.md) her işlem türü (ST01) ve gönderen UYGULAMASı (GS02) için bir [şema](../logic-apps/logic-apps-enterprise-integration-schemas.md) seçin. EDI alma işlem hattı, gelen iletideki ST01 ve GS02 değerleri ve gelen ileti şeması ile bu bölümde ayarladığınız değerleri ve şemayı eşleştirerek gelen iletiyi ayrıştırır. Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
+Bu bölüm için, [tümleştirme hesabınızdan](./logic-apps-enterprise-integration-create-integration-account.md) her işlem türü (ST01) ve gönderen UYGULAMASı (GS02) için bir [şema](../logic-apps/logic-apps-enterprise-integration-schemas.md) seçin. EDI alma işlem hattı, gelen iletideki ST01 ve GS02 değerleri ve gelen ileti şeması ile bu bölümde ayarladığınız değerleri ve şemayı eşleştirerek gelen iletiyi ayrıştırır. Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
 
 | Özellik | Açıklama |
 |----------|-------------|
@@ -173,7 +174,7 @@ Anlaşma özelliklerini ayarladıktan sonra, bu sözleşmenin bu sözleşme arac
    * [Denetim sürüm numarası](#outbound-control-version-number)
    * [Denetim numaraları](#outbound-control-numbers)
    * [Karakter kümeleri ve ayırıcılar](#outbound-character-sets-separators)
-   * [Doğrulamasına](#outbound-validation)
+   * [Doğrulama](#outbound-validation)
 
 1. İşiniz bittiğinde, **Tamam**' ı seçerek ayarlarınızı kaydettiğinizden emin olun.
 
@@ -209,7 +210,7 @@ Anlaşma özelliklerini ayarladıktan sonra, bu sözleşmenin bu sözleşme arac
 
 ![Giden ileti şemaları](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
 
-Bu bölüm için, [tümleştirme hesabınızdan](../logic-apps/logic-apps-enterprise-integration-accounts.md) her işlem türü için bir [şema](../logic-apps/logic-apps-enterprise-integration-schemas.md) seçin (ST01). Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
+Bu bölüm için, [tümleştirme hesabınızdan](./logic-apps-enterprise-integration-create-integration-account.md) her işlem türü için bir [şema](../logic-apps/logic-apps-enterprise-integration-schemas.md) seçin (ST01). Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
 
 | Özellik | Açıklama |
 |----------|-------------|
@@ -235,7 +236,7 @@ Bu bölüm için, [tümleştirme hesabınızdan](../logic-apps/logic-apps-enterp
 
 ![Giden iletiler için denetim sürüm numarası](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
 
-Bu bölüm için, her değişim için [tümleştirme hesabınızdan](../logic-apps/logic-apps-enterprise-integration-accounts.md) bir [şema](../logic-apps/logic-apps-enterprise-integration-schemas.md) seçin. Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
+Bu bölüm için, her değişim için [tümleştirme hesabınızdan](./logic-apps-enterprise-integration-create-integration-account.md) bir [şema](../logic-apps/logic-apps-enterprise-integration-schemas.md) seçin. Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
 
 | Özellik | Açıklama |
 |----------|-------------|
@@ -279,7 +280,7 @@ Bu bölüm için, her değişim için [tümleştirme hesabınızdan](../logic-ap
 |----------|-------------|
 | **Kullanılacak karakter kümesi** | **Temel**, **genişletilmiş**ya da **UTF8**olan x12 karakter kümesi. |
 | **Şema** | Kullanmak istediğiniz şema. Şemayı seçtikten sonra, aşağıdaki ayırıcı açıklamalara göre kullanmak istediğiniz karakter kümesini seçin. |
-| **Giriş Türü** | Karakter kümesi için giriş türü |
+| **Giriş türü** | Karakter kümesi için giriş türü |
 | **Bileşen ayırıcısı** | Bileşik veri öğelerini ayıran tek bir karakter |
 | **Veri öğesi ayırıcısı** | Bileşik veriler içindeki basit veri öğelerini ayıran tek bir karakter |
 | **değiştirme karakter ayırıcısı** | Giden x12 iletisini oluştururken yük verilerinde tüm ayırıcı karakterlerinin yerini alan bir değiştirme karakteri |
@@ -380,7 +381,7 @@ Bu belge sürümü numaralarını ve ileti türlerini belirtmek için şu adıml
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlamalar gibi ek teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/x12/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlamalar gibi ek teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/x12/)bakın.
 
 > [!NOTE]
 > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü [Ise için B2B ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)kullanır.

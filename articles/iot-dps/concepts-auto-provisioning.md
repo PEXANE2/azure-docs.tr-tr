@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4755d3ac30a4f6fdc0568dd88fa0e362d7d140a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975338"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066557"
 ---
 # <a name="auto-provisioning-concepts"></a>Otomatik sağlama kavramları
 
@@ -46,7 +47,7 @@ Otomatik sağlama, kanıtlama mekanizmasını etkinleştirmeye özgü gereksinim
 
 Sol taraftaki içindekiler tablosunda, uygulamalı deneyim aracılığıyla otomatik sağlamayı açıklamaya yardımcı olmak üzere bir dizi hızlı başlangıç sağlanır. Öğrenme sürecini kolaylaştırmak/basitleştirmek için, yazılım kayıt ve kayıt için fiziksel bir cihazın benzetimini yapmak üzere kullanılır. Bazı hızlı başlangıçları, hızlı Başlangıçlarının benzetimiyle dolayı, mevcut olmayan roller için işlemler de dahil olmak üzere birden çok rol için işlemleri karşılamanız gerekir.
 
-| Rol | Çalışma | Açıklama |
+| Rol | İşlem | Açıklama |
 |------| --------- | ------------|
 | Üretici | Kimliği ve kayıt URL 'sini kodla | Kullanılan kanıtlama mekanizmasına bağlı olarak, üretici cihaz kimliği bilgilerini ve cihaz sağlama hizmeti kayıt URL 'sini kodlamadan sorumludur.<br><br>**Hızlı başlangıç**: cihaz benzetildiğinden üretici rolü yoktur. Örnek bir kayıt uygulaması kodlamak için kullanılan bu bilgileri nasıl alacağınız hakkında ayrıntılar için geliştirici rolüne bakın. |
 | | Cihaz kimliği sağlama | Cihaz kimliği bilgisinin kaynağı olarak, üretici onu işleçle (veya belirlenen bir aracı) iletmekten veya API aracılığıyla cihaz sağlama hizmetine doğrudan kaydetmekten sorumludur.<br><br>**Hızlı başlangıç**: cihaz benzetildiğinden üretici rolü yoktur. Cihaz kimliğini nasıl alacağınız hakkındaki ayrıntılar için bkz. operatör rolü, cihaz sağlama hizmeti Örneğinizde sanal bir cihazı kaydetmek için kullanılır. |
@@ -102,10 +103,10 @@ Havalandırma makineleri veya otomatik kahve makineleri bu senaryoya yönelik ö
 
 Ardından cihaz kanıtlama mekanizmanıza ve cihaz sağlama hizmeti SDK/dil tercihine uygun bir "sanal cihazı otomatik sağlama" hızlı başlangıcı ile devam edin. Bu hızlı başlangıçta, "cihaz kaydı" ve "cihaz kaydı ve yapılandırma" aşamaları üzerinden gezintiniz: 
 
-|  | Sanal cihaz kanıtlama mekanizması | Hızlı başlangıç SDK/dil |  |
-|--|--|--|--|
-|  | Güvenilir Platform Modülü (TPM) | [,](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X. 509.440 sertifikası | [,](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+| Sanal cihaz kanıtlama mekanizması | Hızlı başlangıç SDK/dil |
+| -------------------------------------- | ----------------------- |
+| Güvenilir Platform Modülü (TPM) | [,](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |
+| X. 509.440 sertifikası | [,](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |
 
 
 

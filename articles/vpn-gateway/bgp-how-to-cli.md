@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d71e8af607ac15c708ff18a2f2a91e11ed36a987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a6dd70bf57cabe8014c49e2cd3ee38c8de72b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987747"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064773"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>CLı kullanarak bir Azure VPN ağ geçidinde BGP 'yi yapılandırma
 
@@ -302,4 +303,4 @@ Bu adımları tamamladıktan sonra bağlantı birkaç dakika içinde kurulacakt�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [sanal makine oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [sanal makine oluşturma](../virtual-machines/windows/quick-create-portal.md).

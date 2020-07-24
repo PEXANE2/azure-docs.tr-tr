@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066528"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps için iş sürekliliği ve olağanüstü durum kurtarma
 
@@ -100,7 +100,7 @@ Veri ağ geçidi kaynağı, mantıksal uygulama kaynağınız gibi bir konum vey
 
 Birincil ve ikincil konumlarınızı, bu konumlardaki mantıksal uygulama örneklerinizin bu rolleri oynayabilmesi için ayarlayabilirsiniz:
 
-| Birincil-ikincil rol | Description |
+| Birincil-ikincil rol | Açıklama |
 |------------------------|-------------|
 | *Etkin-etkin* | Her iki konumdaki birincil ve ikincil mantıksal uygulama örnekleri şu desenlerden birini izleyerek istekleri etkin bir şekilde işler: <p><p>- *Yük Dengeleme*: her iki örneğin, her bir örneğe bir uç nokta dinlemesi ve gerektiğinde trafiği yük dengelemesi sağlayabilirsiniz. <p>- *Rekabet tüketicileri*: örneklerin bir kuyruktan iletiler için rekabet etmesi için her iki örneğin birden rekabet eden tüketici işlevi görmesini sağlayabilirsiniz. Bir örnek başarısız olursa, diğer örnek iş yükünü devralır. |
 | *Aktif-pasif* | Birincil mantıksal uygulama örneği, ikincil örnek pasif iken (devre dışı veya etkin değil) tüm iş yükünü etkin bir şekilde işler. İkincil bir sinyal bekler veya hata nedeniyle, birincil kullanım dışı veya çalışmayan bir sinyal bekler ve iş yükünü etkin örnek olarak alır. |
@@ -157,7 +157,7 @@ Mantıksal uygulamanız tetiklenip çalışmaya başladığında, uygulamanın d
 
 Bırakılan devam eden iş akışı örneklerinin sayısını en aza indirmek için uygulayabileceğiniz çeşitli ileti desenlerinden seçim yapabilirsiniz, örneğin:
 
-* [Sabit yönlendirme SLIP deseninin](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [Sabit yönlendirme SLIP deseninin](/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
   Bir iş işlemini daha küçük aşamalar halinde ayıran bu kurumsal ileti deseninin. Her aşamada, söz konusu aşama için iş yükünü işleyen bir mantıksal uygulama ayarlarsınız. Mantıksal uygulamalarınız birbirleriyle iletişim kurmak için Azure Service Bus kuyrukları veya konuları gibi zaman uyumsuz mesajlaşma protokolü kullanır. Bir işlemi daha küçük bir aşamaya bölediğiniz zaman, başarısız bir Logic App örneğine takılmış olabilecek iş işlemlerinin sayısını azaltırsınız. Bu düzen hakkında daha fazla genel bilgi için bkz. [kurumsal tümleştirme desenleri-yönlendirme makbuzu](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html).
 
@@ -165,7 +165,7 @@ Bırakılan devam eden iş akışı örneklerinin sayısını en aza indirmek i�
 
   ![İş sürecini, Azure Service Bus kuyrukları kullanarak birbirleriyle iletişim kuran Logic Apps tarafından temsil edilen aşamalara böler](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  Birincil ve ikincil mantıksal uygulama örneklerinin her ikisi de konumlarında aynı yönlendirme makbuzu düzeniyle karşılaşlarsa, bu örnekler için [etkin-etkin roller](#roles) ayarlayarak [rekabet tüketicileri modelini](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) uygulayabilirsiniz.
+  Birincil ve ikincil mantıksal uygulama örneklerinin her ikisi de konumlarında aynı yönlendirme makbuzu düzeniyle karşılaşlarsa, bu örnekler için [etkin-etkin roller](#roles) ayarlayarak [rekabet tüketicileri modelini](/azure/architecture/patterns/competing-consumers) uygulayabilirsiniz.
 
 * [İşlem Yöneticisi (aracı) kalıbı](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
@@ -249,7 +249,7 @@ Olağanüstü durum kurtarma perspektifinden mantıksal uygulamanızın birincil
   Örneğin, Azure Service Bus kuyruğu gibi bir ileti kuyruğundan okuma, diğer istemcilerin aynı iletileri okumasını engellemek için iletileri kilitlediği için sunucu tarafı durumu kullanır.
 
   > [!NOTE]
-  > Mantıksal uygulamanızın iletileri belirli bir sırada okuması gerekiyorsa (örneğin, bir Service Bus kuyruğundan), rekabet eden tüketici düzenini, ancak [ *sıralı konvoy* düzeni](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)olarak da bilinen Service Bus oturumlarıyla birleştirildiğinde kullanabilirsiniz. Aksi takdirde, mantıksal uygulama örneklerinizi aktif-pasif rollerle ayarlamanız gerekir.
+  > Mantıksal uygulamanızın iletileri belirli bir sırada okuması gerekiyorsa (örneğin, bir Service Bus kuyruğundan), rekabet eden tüketici düzenini, ancak [ *sıralı konvoy* düzeni](/azure/architecture/patterns/sequential-convoy)olarak da bilinen Service Bus oturumlarıyla birleştirildiğinde kullanabilirsiniz. Aksi takdirde, mantıksal uygulama örneklerinizi aktif-pasif rollerle ayarlamanız gerekir.
 
 <a name="request-trigger"></a>
 
@@ -271,7 +271,7 @@ Bir olağanüstü durum kurtarma açısından, mantıksal uygulama hiçbir iş g
 
 * [Etkin-Pasif](#roles): yalnızca birincil örnek etkindir ve tüm işleri işler, ikincil örnek birincil deneyimle veya başarısız olana kadar bekler. Çağıran veya yönlendirici, ikincil örnek ne zaman çağrılacağını belirler.
 
-Önerilen bir mimari olarak, Azure API Management, Istek Tetikleyicileri kullanan mantıksal uygulamalar için proxy olarak kullanabilirsiniz. API Management, [yerleşik çapraz bölgesel dayanıklılık ve trafiği birden çok uç nokta arasında yönlendirme yeteneği](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)sağlar.
+Önerilen bir mimari olarak, Azure API Management, Istek Tetikleyicileri kullanan mantıksal uygulamalar için proxy olarak kullanabilirsiniz. API Management, [yerleşik çapraz bölgesel dayanıklılık ve trafiği birden çok uç nokta arasında yönlendirme yeteneği](../api-management/api-management-howto-deploy-multi-region.md)sağlar.
 
 <a name="webhook-trigger"></a>
 
@@ -331,7 +331,7 @@ Bu görev için, ikincil konumda, şu görevleri gerçekleştiren bir izleme man
 
 ### <a name="activate-your-secondary-instance"></a>İkincil örneğinizi etkinleştirin
 
-İkincil örneği otomatik olarak etkinleştirmek için, [Azure Resource Manager Bağlayıcısı](https://docs.microsoft.com/connectors/arm/) gıbı yönetim API 'sini çağıran bir mantıksal uygulama oluşturabilirsiniz. Bu, ikincil konumda uygun mantık uygulamalarını etkinleştirir. İzleme uygulamanızı, belirli bir sayıda hatadan sonra bu etkinleştirme mantıksal uygulamasını çağırmak için genişletebilirsiniz.
+İkincil örneği otomatik olarak etkinleştirmek için, [Azure Resource Manager Bağlayıcısı](/connectors/arm/) gıbı yönetim API 'sini çağıran bir mantıksal uygulama oluşturabilirsiniz. Bu, ikincil konumda uygun mantık uygulamalarını etkinleştirir. İzleme uygulamanızı, belirli bir sayıda hatadan sonra bu etkinleştirme mantıksal uygulamasını çağırmak için genişletebilirsiniz.
 
 <a name="collect-diagnostic-data"></a>
 
@@ -348,9 +348,9 @@ Mantıksal uygulama çalışmalarınız için günlük kaydı ayarlayabilir ve e
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure için dayanıklılık genel bakışı](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-* [Belirli Azure hizmetleri için dayanıklılık denetim listesi](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [Azure 'da dayanıklılık için veri yönetimi](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Azure uygulamaları için yedekleme ve olağanüstü durum kurtarma](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
-* [Bölge genelinde hizmet kesintisinden kurtarma](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+* [Azure için dayanıklılık genel bakışı](/azure/architecture/framework/resiliency/overview)
+* [Belirli Azure hizmetleri için dayanıklılık denetim listesi](/azure/architecture/checklist/resiliency-per-service)
+* [Azure 'da dayanıklılık için veri yönetimi](/azure/architecture/framework/resiliency/data-management)
+* [Azure uygulamaları için yedekleme ve olağanüstü durum kurtarma](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Bölge genelinde hizmet kesintisinden kurtarma](/azure/architecture/resiliency/recovery-loss-azure-region)
 * [Azure hizmetleri için Microsoft hizmet düzeyi sözleşmeleri (SLA 'Lar)](https://azure.microsoft.com/support/legal/sla/)

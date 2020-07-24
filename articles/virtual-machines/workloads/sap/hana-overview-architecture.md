@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d413b2babda4c73f9f29ce3750bf7d0461db43c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616961"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065102"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
 
@@ -39,7 +40,7 @@ Bu çıplak sunucu birimleri yalnızca SAP HANA çalıştırmak için destekleni
 - "Düzeltme 4" (Rev 4): Azure VM konaklarına yakın bir yerde dağıtılan ve şimdiye kadar Azure bölgelerinde yayınlanan yeni damga tasarımı:
     -  Batı ABD 2 
     -  Doğu ABD 
-    -  Batı Avrupa
+    -  West Europe
     -  Kuzey Avrupa
 
 
@@ -53,8 +54,8 @@ HANA büyük örnek kılavuzunun farklı belgeleri aşağıdaki alanlara sahipti
 - [Azure 'da SAP HANA (büyük örnekler) yükleyip yapılandırma](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma SAP HANA (büyük örnekler)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 'da sorun giderme ve izleme SAP HANA (büyük örnekler)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [STONITH kullanarak SUSE 'de yüksek kullanılabilirlik kurulumu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Düzeltme 3 damgalarının tür II SKU 'Ları için işletim sistemi yedekleme ve geri yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [STONITH kullanarak SUSE 'de yüksek kullanılabilirlik kurulumu](./ha-setup-with-stonith.md)
+- [Düzeltme 3 damgalarının tür II SKU 'Ları için işletim sistemi yedekleme ve geri yükleme](./os-backup-type-ii-skus.md)
 
 **Sonraki adımlar**
 - [Koşulları öğrenin](hana-know-terms.md)

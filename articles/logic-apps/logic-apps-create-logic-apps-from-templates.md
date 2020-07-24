@@ -8,11 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 8f9513c3ac28b8f65d9023fc529927b208323ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066233"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Önceden oluşturulmuş şablonlardan mantıksal uygulama iş akışları oluşturma
 
@@ -33,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
 ## <a name="create-logic-apps-from-templates"></a>Şablonlardan mantıksal uygulamalar oluşturma
 
-1. Henüz yapmadıysanız [Azure Portal](https://portal.azure.com "Azure portal")oturum açın.
+1. Henüz yapmadıysanız [Azure Portal](https://portal.azure.com "Azure portalı")oturum açın.
 
 2. Ana Azure menüsünden **kaynak oluştur**  >  **kurumsal tümleştirme**  >  **mantıksal uygulama**' yı seçin.
 
@@ -45,14 +46,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
-   | **Adı** | *mantıksal uygulama adınız* | Mantıksal uygulama için benzersiz bir ad girin. | 
+   | **Ad** | *mantıksal uygulama adınız* | Mantıksal uygulama için benzersiz bir ad girin. | 
    | **Abonelik** | *your-Azure-subscription-name* | Kullanmak istediğiniz Azure aboneliğini seçin. | 
    | **Kaynak grubu** | *Azure-kaynak-grubunuzun-adı* | Bu mantıksal uygulama için bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun veya seçin ve bu uygulamayla ilişkili tüm kaynakları düzenleyin. | 
    | **Konum** | *Azure-veri-merkezi-bölgeniz* | Batı ABD gibi mantıksal uygulamanızın dağıtılacağı veri merkezi bölgesini seçin. | 
-   | **Log Analytics** | **Kapalı** (varsayılan) veya **Açık** | [Azure izleyici günlüklerini](../log-analytics/log-analytics-overview.md)kullanarak mantıksal uygulamanız için [tanılama günlüğü](../logic-apps/monitor-logic-apps-log-analytics.md) ayarlayın. Zaten bir Log Analytics çalışma alanına sahip olmanızı gerektirir. | 
+   | **Log Analytics** | **Kapalı** (varsayılan) veya **Açık** | [Azure izleyici günlüklerini](../azure-monitor/log-query/log-query-overview.md)kullanarak mantıksal uygulamanız için [tanılama günlüğü](../logic-apps/monitor-logic-apps-log-analytics.md) ayarlayın. Zaten bir Log Analytics çalışma alanına sahip olmanızı gerektirir. | 
    |||| 
 
-4. Hazır olduğunuzda **Panoya sabitle**'yi seçin. Bu şekilde mantıksal uygulamanız otomatik olarak Azure panonuzda görüntülenir ve dağıtımdan sonra açılır. **Oluştur**’u seçin.
+4. Hazır olduğunuzda **Panoya sabitle**'yi seçin. Bu şekilde mantıksal uygulamanız otomatik olarak Azure panonuzda görüntülenir ve dağıtımdan sonra açılır. **Oluştur**' a tıklayın.
 
    > [!NOTE]
    > Mantıksal uygulamanızı sabitlemek istemezseniz öğreticiye devam edebilmek için dağıtım sonrasında mantıksal uygulamanızı el ile bulup açmanız gerekir.
@@ -98,7 +99,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
 ## <a name="update-logic-apps-with-templates"></a>Mantıksal uygulamaları şablonlarla güncelleştirme
 
-1. [Azure Portal](https://portal.azure.com "Azure portal"), mantıksal uygulama Tasarımcısı ' nda mantıksal uygulamanızı bulun ve açın.
+1. [Azure Portal](https://portal.azure.com "Azure portalı"), mantıksal uygulama Tasarımcısı ' nda mantıksal uygulamanızı bulun ve açın.
 
 2. Tasarımcı araç çubuğunda **Şablonlar**' ı seçin. Bu eylem kaydedilmemiş değişiklikleri atar, bu nedenle devam etmek istediğinizi doğrulayabilmeniz için bir uyarı iletisi görüntülenir. Onaylamak için **Tamam**' ı seçin. Örneğin:
 
@@ -145,7 +146,7 @@ Tasarımcı araç çubuğunda **Kaydet**'i seçin.
 
 ## <a name="get-support"></a>Destek alma
 
-* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

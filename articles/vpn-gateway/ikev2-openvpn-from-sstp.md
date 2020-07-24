@@ -2,16 +2,17 @@
 title: SSTP 'den OpenVPN veya Ikev2 'e geçiş | Azure VPN Gateway
 description: Bu makale, SSTP 'nin 128 eşzamanlı bağlantı sınırını aşmanın yollarını anlamanıza yardımcı olur.
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1531bca6c56c159b7535536fb31a577f0d7253ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064676"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP 'den OpenVPN protokolüne veya Ikev2 'e geçiş
 
@@ -115,7 +116,7 @@ ZIP dosyası Ayrıca, Azure tarafında bu cihazların kendi profilinizi oluştur
 |AES256     |   SHA256        | SHA256    | GROUP_ECP256 |
 |AES256     |   SHA256        | SHA256    | GROUP_2 |
 
-**IPsec**
+**Bkz**
 
 |**Şifre** | **Bütünlük** | **PFS Grubu** |
 |---        | ---            | ---        |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 7e8f34f3d68a957dbd5bb13b69f751184d224e2c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 785054222dc3281b11b5e6abe1b82f67e2fc5ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066648"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Şablon kullanarak iç yük dengeleyici oluşturma
 
@@ -40,7 +40,7 @@ Genel depoda yer alan örnek şablonda, yukarıdaki senaryoyu oluşturmak için 
 
 PowerShell kullanarak yüklediğiniz şablonu dağıtmak için aşağıdaki adımları izleyin.
 
-1. Daha önce Azure PowerShell kullanmadıysanız, [Azure PowerShell’i Yükleme ve Yapılandırma](/powershell/azure/overview) sayfasına gidin ve Azure’da oturum açıp aboneliğinizi seçmek için talimatları sonuna kadar uygulayın.
+1. Daha önce Azure PowerShell kullanmadıysanız, [Azure PowerShell’i Yükleme ve Yapılandırma](/powershell/azure/) sayfasına gidin ve Azure’da oturum açıp aboneliğinizi seçmek için talimatları sonuna kadar uygulayın.
 2. Parametre dosyasını yerel diskinize indirin.
 3. Dosyayı düzenleyin ve kaydedin.
 4. Şablonu kullanarak bir kaynak grubu oluşturmak için **New-AzResourceGroupDeployment** cmdlet 'ini çalıştırın.

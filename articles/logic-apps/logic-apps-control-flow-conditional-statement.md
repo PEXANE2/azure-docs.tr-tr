@@ -6,22 +6,23 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831509"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066362"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemlerini denetleyen koşullu deyimler oluşturma
 
-Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu geçirdikten sonra çalıştırmak için, *koşullu bir ifade*ekleyin. Bu denetim yapısı, iş akışındaki verileri belirli değerler veya alanlarla karşılaştırır. Daha sonra, verilerin koşulu karşılayıp karşılamadığını temel alarak çalışan farklı eylemler belirtebilirsiniz. Koşulları birbirine iç içe yerleştirebilirsiniz.
+Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu geçirdikten sonra çalıştırmak için, *koşullu bir ifade*ekleyin. Bu denetim yapısı, iş akışınızdaki verileri belirli değerlerle veya alanlarla karşılaştırır. Daha sonra, verilerin koşulu karşılayıp karşılamadığını temel alarak çalışan farklı eylemler belirtebilirsiniz. Koşulları birbirine iç içe yerleştirebilirsiniz.
 
 Örneğin, bir Web sitesinin RSS akışında yeni öğeler görüntülendiğinde çok fazla e-posta gönderen bir mantıksal uygulamanız olduğunu varsayalım. Yalnızca yeni öğe belirli bir dize içerdiğinde e-posta göndermek için koşullu bir ifade ekleyebilirsiniz. 
 
 > [!TIP]
 > Farklı belirli değerlere göre farklı adımlar çalıştırmak için bunun yerine [*switch ifadesini*](../logic-apps/logic-apps-control-flow-switch-statement.md) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -109,7 +110,7 @@ Bir koşullu deyimin arkasındaki üst düzey kod tanımı aşağıda verilmişt
 
 ## <a name="get-support"></a>Destek alma
 
-* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

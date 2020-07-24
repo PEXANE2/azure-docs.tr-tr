@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 06/23/2020
+ms.date: 07/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127a83bbe29a5e102a82cf169919a44f52532228
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 228a24fbc4fb68a72f2cb8abb7d4382127be2147
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064417"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimi’ne genel bakış
 
@@ -98,7 +98,7 @@ Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.<br> Azure Windows sanal masaüstü (WVD) için önerilen yöntem<br> güncelleştirmeleri yönetmek için [Windows Update for Business for](/windows/deployment/update/waas-manage-updates-wufb) Windows 10 Client Machine Patch Management. |
+|Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.<br> Azure Windows sanal masaüstü (WVD) için önerilen yöntem<br> güncelleştirmeleri yönetmek için Windows 10 istemci makinesi düzeltme eki yönetimi için [Microsoft uç nokta Configuration Manager](../virtual-desktop/configure-automatic-updates.md) . |
 |Windows Server 2016 Nano Server     | Desteklenmez.       |
 |Azure Kubernetes hizmet düğümleri | Desteklenmez. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../aks/node-updates-kured.md) bölümünde açıklanan düzeltme eki uygulama sürecini kullanın|
 
@@ -168,9 +168,9 @@ Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı 
 
 | Bağlı kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -193,15 +193,15 @@ Aşağıdaki adresler Güncelleştirme Yönetimi için özel olarak gereklidir. 
 |`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
 |`*.azure-automation.net` | `*.azure-automation.us`|
 
+Ağ grubu güvenlik kuralları oluşturduğunuzda veya Otomasyon hizmetine ve Log Analytics çalışma alanına giden trafiğe izin vermek üzere Azure Güvenlik Duvarı 'nı yapılandırdığınızda, **guestandhybridmanagement** ve **AzureMonitor** [hizmet etiketini](../virtual-network/service-tags-overview.md#available-service-tags) kullanın. Bu, ağ güvenliği kurallarınızın devam eden yönetimini basitleştirir. Azure VM 'lerinizin Otomasyon hizmetine güvenli bir şekilde ve özel olarak bağlanmak için [Azure özel bağlantı kullanımı](how-to/private-link-security.md)' nı gözden geçirin. Şirket içi güvenlik duvarı yapılandırmalarının bir parçası olarak dahil edilecek geçerli hizmet etiketi ve Aralık bilgilerini almak için bkz. [INDIRILEBILIR JSON dosyaları](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+
 Windows makinelerinde, Windows Update için gereken tüm uç noktalara giden trafiğe de izin vermeniz gerekir. [Http/proxy ile Ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy), gerekli uç noktaların güncelleştirilmiş bir listesini bulabilirsiniz. Yerel bir [Windows Update sunucunuz](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)varsa, [WSUS anahtarınıza](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)belirtilen sunucuya giden trafiğe de izin vermeniz gerekir.
 
 Red Hat Linux makineleri için, gerekli uç noktalar için [rhuı içerik teslim sunucuları Için IP 'ler](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) bölümüne bakın. Diğer Linux dağıtımları için sağlayıcı belgelerinize bakın.
 
 Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bilgi için bkz. [karma Runbook Worker için güncelleştirme yönetimi adresleri](automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker).
 
-Özel durumları tanımlarken listelenen adresleri kullanmanızı öneririz. IP adresleri için [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıkları ve IP aralıklarında yaklaşan değişiklikleri yansıtır.
-
-İnternet erişimi olmayan makineleri yapılandırmak için [İnternet erişimi olmadan bilgisayarları bağlama](../azure-monitor/platform/gateway.md) bölümündeki yönergeleri izleyin.
+BT güvenlik ilkeleriniz ağdaki makinelerin internet 'e bağlanmasına izin vermediğinden, bir [Log Analytics ağ geçidi](../azure-monitor/platform/gateway.md) ayarlayabilir ve ardından makineyi ağ geçidinden Azure Otomasyonu ve Azure izleyici 'ye bağlanacak şekilde yapılandırabilirsiniz.
 
 ## <a name="update-classifications"></a>Update classifications
 

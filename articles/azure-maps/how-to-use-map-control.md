@@ -1,23 +1,31 @@
 ---
-title: Web harita denetimi ile çalışmaya başlama | Microsoft Azure haritaları
-description: Haritalar ve katıştırılmış Azure Maps işlevlerini Web veya mobil uygulamanıza işlemek için Microsoft Azure Maps harita denetimi istemci tarafı JavaScript kitaplığını kullanmayı öğrenin.
-author: philmea
-ms.author: philmea
-ms.date: 01/15/2020
+title: Microsoft Azure Maps web harita denetimi ile çalışmaya başlama
+description: Haritalar ve katıştırılmış Azure Maps işlevlerini Web veya mobil uygulamanıza işlemek için Microsoft Azure Maps web harita denetimi istemci tarafı JavaScript kitaplığını kullanmayı öğrenin.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: bdbdbfada3c7c4cfb4350bb11a33defd743b7195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064219"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Haritalar harita denetimini kullanma
 
 Harita Denetimi istemci tarafı JavaScript kitaplığı, haritalar ve katıştırılmış Azure haritaları işlevlerini Web veya mobil uygulamanıza işletirmesini sağlar.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Harita Denetimi bir Web sayfasında kullanmak için aşağıdaki önkoşulların birine sahip olmanız gerekir:
+
+* [Azure haritalar hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account) ve birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
+
+* [Kimlik doğrulama seçenekleriyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)Azure ACTIVE DIRECTORY (AAD) kimlik bilgilerinizi alın.
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Web sayfasında yeni eşleme oluşturma
 
@@ -36,19 +44,18 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
 
     * Azure Haritalar Web SDK kaynak kodunu [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) NPM paketini kullanarak yerel olarak yükleyin ve uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir.
 
-        > **NPM Install Azure-Maps-Control**
+    > **NPM Install Azure-Maps-Control**
 
-       Ardından, Azure Maps stil sayfasına ve komut dosyası kaynak başvurularına başvuruları `<head>` Dosya öğesine ekleyin:
+    Ardından, Azure Maps stil sayfasına başvuruları `<head>` dosyanın öğesine ekleyin:
 
-        ```HTML
-        <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-        <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-        ```
+    ```HTML
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+     ```
 
-    > [!Note]
+    > [!NOTE]
     > Aşağıdaki kod eklenerek TypeScript tanımları uygulamanıza aktarılabilir:
     >
-    > ```Javascript
+    > ```javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
@@ -70,54 +77,59 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
 4. Sayfanın gövdesinde bir `<div>` öğe ekleyin ve bunu `id` **myMap**' den verin.
 
    ```HTML
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
     </body>
    ```
 
-5. Harita denetimini başlatmak için HTML gövdesinde yeni bir betik etiketi tanımlayın. `id` `<div>` `HTMLElement` Sınıfın bir örneğini oluştururken haritanın veya bir (örneğin, `document.getElementById('myMap')` ) ilk parametre olarak geçirin `Map` . [Kimlik doğrulama seçeneklerini](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)kullanarak haritanın kimliğini doğrulamak Için kendi Azure haritalar hesap anahtarınızı veya Azure ACTIVE DIRECTORY (AAD) kimlik bilgilerinizi kullanın. 
+5. Şimdi harita denetimini başlatacağız. Denetimin kimliğini doğrulamak için bir Azure Maps abonelik anahtarınız olması veya [kimlik doğrulama seçenekleriyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)Azure ACTIVE DIRECTORY (AAD) kimlik bilgileri kullanmanız gerekir.
 
-   Bir hesap oluşturmanız veya anahtarınızı bulmanız gerekiyorsa, [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki yönergeleri izleyin. 
+    Kimlik doğrulaması için bir abonelik anahtarı kullanıyorsanız, aşağıdaki betik öğesini kopyalayın ve `<head>` öğesinin içine ve ilk öğenin altına yapıştırın `<script>` . `<Your Azure Maps Key>`Azure haritalar birincil abonelik anahtarınızla değiştirin.
 
-   **Dil** seçeneği, harita etiketleri ve denetimleri için kullanılacak dili belirtir. Desteklenen diller hakkında daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md). Kimlik doğrulaması için bir abonelik anahtarı kullanıyorsanız, aşağıdakileri kullanın:
-
-   ```HTML
+     ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'subscriptionKey',
-                subscriptionKey: '<Your Azure Maps Key>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '<Your Azure Maps Key>'
+                }
             }
         });
     </script>
     ```
 
-   Kimlik doğrulaması için Azure Active Directory (AAD) kullanıyorsanız, aşağıdakileri kullanın:
+    Kimlik doğrulaması için Azure Active Directory (AAD) kullanıyorsanız, aşağıdaki betik öğesini kopyalayın ve `<head>` öğesinin içine ve ilk öğenin altına yapıştırın `<script>` .
 
-   ```HTML
+      ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'aad',
-                clientId: '<Your AAD Client Id>',
-                aadAppId: '<Your AAD App Id>',
-                aadTenant: '<Your AAD Tenant Id>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'aad',
+                    clientId: '<Your AAD Client Id>',
+                    aadAppId: '<Your AAD App Id>',
+                    aadTenant: '<Your AAD Tenant Id>'
+                }
             }
         });
     </script>
    ```
 
-   Azure haritalar ile Azure Active Directory (AAD) nasıl tümleştirileceğini gösteren örneklerin listesi [burada](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)bulunabilir. 
-    
-   Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgesi ve ayrıca [Azure haritalar Azure AD kimlik doğrulaması örnekleri](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
+    Azure haritalar ile kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgesi. Ayrıca, Azure Active Directory (AAD) Azure eşlemeleriyle nasıl tümleştirileceğini gösteren örneklerin listesi [burada](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)bulunabilir.
 
-6. İsteğe bağlı olarak, aşağıdaki meta etiketi öğelerini sayfanızın baş bir sayfasına eklemeyi yararlı bulabilirsiniz:
+    >[!TIP]
+    >Bu örnekte, eşlemenin ' de geçirdik `id` `<div>` . Bunu yapmanın bir diğer yolu, `HTMLElement` ilk parametre olarak geçirerek nesneyi geçirmektir `document.getElementById('myMap')` .
+
+6. İsteğe bağlı olarak, aşağıdaki `meta` öğeleri sayfanın öğesine eklemeyi de yararlı bulabilirsiniz `head` :
 
    ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
@@ -127,7 +139,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    ```
 
-7. HTML dosyanızın tümünü bir araya getirmek aşağıdaki koda benzer bir şekilde görünmelidir:
+7. Hepsini birlikte koymak, HTML dosyanız aşağıdaki işarettekine benzer bir şekilde görünmelidir:
 
    ```HTML
     <!DOCTYPE html>
@@ -147,6 +159,23 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
+
+        <script type="text/javascript">
+            //Create an instance of the map control and set some options.
+            function InitMap()
+            {
+                var map = new atlas.Map('myMap', {
+                    center: [-122.33, 47.6],
+                    zoom: 12,
+                    language: 'en-US',
+                    authOptions: {
+                        authType: 'subscriptionKey',
+                        subscriptionKey: '<Your Azure Maps Key>'
+                    }
+                });
+            }
+        </script>
+
         <style>
             html, body {
                 margin: 0;
@@ -158,21 +187,8 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
             }
         </style>
     </head>
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
-
-        <script type="text/javascript">
-            //Create an instance of the map control and set some options.
-            var map = new atlas.Map('myMap', {
-                center: [-122.33, 47.6],
-                zoom: 12,
-                language: 'en-US',
-                authOptions: {
-                    authType: 'subscriptionKey',
-                    subscriptionKey: '<Your Azure Maps Key>'
-                }
-            });
-        </script>
     </body>
     </html>
     ```
@@ -206,8 +222,8 @@ map = new atlas.Map('myMap', {
 });
 ```
 
-> [!Note]
-> Web SDK ile aynı sayfada farklı dil ve bölge ayarlarıyla birden çok eşleme örneği yüklemek mümkündür. Buna ek olarak, bu ayarlar haritanın işlevi kullanılarak yüklendikten sonra da güncelleştirilemeyebilir `setStyle` . 
+> [!NOTE]
+> Aynı sayfada farklı dil ve bölge ayarlarıyla birden çok eşleme örneği yüklemek mümkündür. Buna ek olarak, bu ayarlar haritanın işlevi kullanılarak yüklendikten sonra da güncelleştirilemeyebilir `setStyle` .
 
 Aşağıda, dil "fr-FR" olarak ayarlanan ve bölgesel görünüm "Auto" olarak ayarlanmış bir Azure Maps örneği verilmiştir.
 
@@ -219,7 +235,7 @@ Desteklenen dillerin ve bölgesel görünümlerin tamamen listesi [burada](suppo
 
 Azure Haritalar Web SDK 'Sı, Azure Kamu Bulutu 'nı destekler. Azure Maps web SDK 'sına erişmek için kullanılan tüm JavaScript ve CSS URL 'Leri aynı kalır. Azure haritalar platformunun Azure Kamu bulut sürümüne bağlanmak için aşağıdaki görevlerin yapılması gerekir.
 
-Etkileşimli harita denetimini kullanırken, sınıfının bir örneğini oluşturmadan önce aşağıdaki kod satırını ekleyin `Map` . 
+Etkileşimli harita denetimini kullanırken, sınıfının bir örneğini oluşturmadan önce aşağıdaki kod satırını ekleyin `Map` .
 
 ```javascript
 atlas.setDomain('atlas.azure.us');

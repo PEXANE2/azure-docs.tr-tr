@@ -3,12 +3,12 @@ title: Şifrelenmiş VM için Key Vault anahtarı & gizliliğini geri yükleme
 description: PowerShell kullanarak Azure Backup Key Vault anahtarı ve gizli anahtarı geri yüklemeyi öğrenin
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49628697b7a271fed55c752026026ab57b17cd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067218"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup kullanarak şifreli VM’ler için Key Vault anahtarını ve parolasını geri yükleme
 
@@ -19,7 +19,7 @@ Bu makalede, anahtar ve gizli anahtarı anahtar kasasında yoksa, şifrelenmiş 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * **Yedekleme şifreli VM 'ler** -şifrelenmiş Azure vm 'ler Azure Backup kullanılarak yedeklendi. Şifrelenmiş Azure sanal makinelerini yedekleme hakkında ayrıntılı bilgi için [PowerShell 'i kullanarak Azure VM 'lerini yedekleme ve geri yükleme makalesini yönetme](backup-azure-vms-automation.md) makalesine bakın.
-* **Azure Key Vault yapılandırma** – anahtarların ve parolaların geri yüklenmesi gereken anahtar kasasının zaten mevcut olduğundan emin olun. Anahtar Kasası yönetimi hakkında ayrıntılı bilgi [edinmek için Azure Key Vault kullanmaya başlama](../key-vault/key-vault-get-started.md) makalesine başvurun.
+* **Azure Key Vault yapılandırma** – anahtarların ve parolaların geri yüklenmesi gereken anahtar kasasının zaten mevcut olduğundan emin olun. Anahtar Kasası yönetimi hakkında ayrıntılı bilgi [edinmek için Azure Key Vault kullanmaya başlama](../key-vault/general/overview.md) makalesine başvurun.
 * **Diski geri yükleme** - [PowerShell ADıMLARıNı](backup-azure-vms-automation.md#restore-an-azure-vm)kullanarak şifrelenmiş VM için diskleri geri yüklemek üzere geri yükleme işini tetiklemiş olduğunuzdan emin olun. Bunun nedeni, bu işin depolama hesabınızda şifreli VM 'nin geri yüklenecek anahtarlar ve gizli dizileri içeren bir JSON dosyası oluşturması.
 
 ## <a name="get-key-and-secret-from-azure-backup"></a>Azure Backup anahtar ve gizli dizi alın

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eed53725507325351dcf51fbe368331c2a4fd2f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85366840"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065144"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
 
@@ -120,7 +120,7 @@ ms.locfileid: "85366840"
    </code></pre>
 
    > [!IMPORTANT]
-   > Azure sınır Aracısı 'nı güncelleştirmeniz gerekiyorsa ve özel rol kullanıyorsanız, özel rolü eylem **poweroff**içerecek şekilde güncelleştirdiğinizden emin olun. Ayrıntılar için bkz. sınır [Aracısı için özel rol oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
+   > Azure sınır Aracısı 'nı güncelleştirmeniz gerekiyorsa ve özel rol kullanıyorsanız, özel rolü eylem **poweroff**içerecek şekilde güncelleştirdiğinizden emin olun. Ayrıntılar için bkz. sınır [Aracısı için özel rol oluşturma](#1-create-a-custom-role-for-the-fence-agent).  
 
 1. **[A]** kurulum konak adı çözümlemesi
 
@@ -220,7 +220,7 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 
-Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme iznine sahip değildir. Kümenin tüm sanal makinelerini başlatmak ve durdurmak (kapatmak) için hizmet sorumlusu izinleri vermeniz gerekir. Zaten özel rolü oluşturmadıysanız, [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) kullanarak oluşturabilirsiniz
+Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme iznine sahip değildir. Kümenin tüm sanal makinelerini başlatmak ve durdurmak (kapatmak) için hizmet sorumlusu izinleri vermeniz gerekir. Zaten özel rolü oluşturmadıysanız, [PowerShell](../../../role-based-access-control/role-assignments-powershell.md) veya [Azure CLI](../../../role-based-access-control/role-assignments-cli.md) kullanarak oluşturabilirsiniz
 
 Giriş dosyası için aşağıdaki içeriği kullanın. İçeriği aboneliklerinize uyarlamanız gerekir, c276fc76-9cd4-44c9-99a7-4fd71546436e ve e91d47c4-76f3-4271-a796-21b4ecfe3624 ' i aboneliğinizin kimlikleriyle değiştirin. Yalnızca bir aboneliğiniz varsa, Astifblescopes ikinci girişi kaldırın.
 
@@ -291,7 +291,7 @@ op monitor interval=3600
 </code></pre>
 
 > [!TIP]
->Azure sınır Aracısı, [Standart ILB kullanan VM 'ler Için genel uç nokta bağlantısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)' nda açıklandığı gibi ortak uç noktalara giden bağlantı kurulmasını gerektirir.  
+>Azure sınır Aracısı, [Standart ILB kullanan VM 'ler Için genel uç nokta bağlantısı](./high-availability-guide-standard-load-balancer-outbound-connections.md)' nda açıklandığı gibi ortak uç noktalara giden bağlantı kurulmasını gerektirir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

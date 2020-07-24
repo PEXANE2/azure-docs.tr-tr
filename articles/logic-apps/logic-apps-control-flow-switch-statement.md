@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c8271f0bc33bc47e64c85846061a9b77bbe66f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834535"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066221"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps içindeki belirli değerlere göre iş akışı eylemlerini çalıştıran Switch deyimleri oluşturma
 
@@ -22,7 +23,7 @@ Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri 
 > Tüm programlama dilleri gibi, Switch deyimleri yalnızca eşitlik işleçlerini destekler. "Büyüktür" gibi diğer ilişkisel işleçlere ihtiyacınız varsa, [koşullu bir ifade](../logic-apps/logic-apps-control-flow-conditional-statement.md)kullanın.
 > Belirleyici yürütme davranışının güvence altına almak için, durumların dinamik belirteçler veya ifadeler yerine benzersiz ve statik bir değer içermesi gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -66,7 +67,7 @@ Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri 
    |--------|--------------------|--------|
    | Durum 1 | **Onaylama** | Outlook 'U, RSS öğesiyle ilgili ayrıntıları göndermek için yalnızca **onaylayan seçili olduğunda** **bir e-posta gönder** eylemi ekleyin. |
    | Durum 2 | **Reddet** | Outlook 'un RSS öğesinin reddedildiğini diğer onaylayanlara bildirmek için **e-posta gönder** eylemini ekleyin. |
-   | Varsayılan | Hiçbiri | Herhangi bir işlem gerekli değil. Bu örnekte, **SelectedOption** yalnızca iki seçeneğe sahip olduğundan, **varsayılan** durum boştur. |
+   | Varsayılan | Yok | Herhangi bir işlem gerekli değil. Bu örnekte, **SelectedOption** yalnızca iki seçeneğe sahip olduğundan, **varsayılan** durum boştur. |
    |||
 
    ![Tamamlanan Switch ekstresi](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
@@ -120,7 +121,7 @@ Artık bir switch ifadesini kullanarak bir mantıksal uygulama oluşturduğunuza
 
 ## <a name="get-support"></a>Destek alma
 
-* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri veya önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

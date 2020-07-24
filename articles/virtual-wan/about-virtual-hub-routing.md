@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064922"
 ---
 # <a name="about-virtual-hub-routing"></a>Sanal merkez yönlendirmesi hakkında
 
@@ -33,7 +33,7 @@ Aşağıdaki bölümlerde, sanal hub yönlendirmesinde temel kavramlar açıklan
 
 Bir sanal hub yol tablosu, bir veya daha fazla yol içerebilir. Rota, adını, etiketini, hedef türünü, hedef önekleri listesini ve bir paketin yönlendirileceği sonraki atlama bilgilerini içerir. Bir **bağlantı** genellikle bir rota tablosuna ilişkili veya yayan bir yönlendirme yapılandırmasına sahip olur
 
-### <a name="connection"></a><a name="connection"></a>Bağlantı
+### <a name="connection"></a><a name="connection"></a>Bağlanma
 
 Bağlantılar, yönlendirme yapılandırmasına sahip Kaynak Yöneticisi kaynaklardır. Dört bağlantı türü şunlardır:
 
@@ -59,6 +59,9 @@ Bağlantılar yolları bir yol tablosuna dinamik olarak yayar. VPN bağlantısı
 Her sanal hub için bir **yol tablosu** da kullanılabilir. None yol tablosuna yayılması, bağlantıdan yayılmaması için hiçbir yolun gerekli olmadığını gösterir. VPN, ExpressRoute ve kullanıcı VPN bağlantıları, rotaları aynı yol tabloları kümesine yayar.
 
 :::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Yayma":::
+
+### <a name="labels"></a><a name="static"></a>Etiketler
+Etiketler, yönlendirme tablolarını mantıksal olarak gruplamak için bir mekanizma sağlar. Bu, özellikle birden çok yol tablosuna yapılan bağlantılardan yolların yayılması sırasında yararlı olur. Örneğin, varsayılan yol tablosunun ' default ' adlı yerleşik bir etiketi vardır. Kullanıcılar bağlantı yollarını ' default ' etiketine yaydığı zaman, otomatik olarak sanal WAN 'daki her hub 'daki tüm varsayılan rota tablolarına uygulanır. 
 
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Bir sanal ağ bağlantısında statik yolları yapılandırma
 

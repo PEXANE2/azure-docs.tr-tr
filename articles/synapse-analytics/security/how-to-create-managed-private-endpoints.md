@@ -1,5 +1,5 @@
 ---
-title: Veri kaynağı sonuçlarınıza bağlanmak için yönetilen bir özel uç nokta oluşturun.
+title: Veri kaynağı sonuçlarınıza bağlanmak için yönetilen bir özel uç nokta oluşturma
 description: Bu makalede, Azure SYNAPSE çalışma alanından veri kaynaklarınıza yönetilen bir özel uç nokta oluşturma hakkında öğretir.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065469"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Veri kaynağınıza yönetilen özel uç nokta oluşturma (Önizleme)
 
@@ -36,7 +36,7 @@ Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS 2. he
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>4. Adım: veri kaynağıyla ilgili bilgileri girin
 
-Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, bir ADLS 2. hesabına yönetilen özel uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı**sağlayın. **Oluştur**'u seçin.
+Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, bir ADLS 2. hesabına yönetilen özel uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı**sağlayın. **Oluştur**’u seçin.
 ![Hedef veri kaynağı ayrıntılarını girin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>5. Adım: yönetilen özel uç noktanızın başarıyla oluşturulduğunu doğrulama

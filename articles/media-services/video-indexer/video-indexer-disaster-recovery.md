@@ -14,19 +14,20 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 17c21900448fcb6d0a40fe5407f3b8bd62f9e3e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab376c44065979de86e5c70b796be952fccffaa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499612"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065407"
 ---
 # <a name="video-indexer-failover-and-disaster-recovery"></a>Video Indexer yük devretme ve olağanüstü durum kurtarma
 
-Azure Media Services Video Indexer, bölgesel bir veri merkezi kesintisi veya hatası varsa hizmetin anında yük devretmesini sağlamaz. Bu makalede, bir olağanüstü durum oluşursa uygulamalar için en iyi kullanılabilirliği sağlamak üzere bir yük devretme için ortamınızın nasıl yapılandırılacağı ve en aza küçültülmüş kurtarma süresi açıklanır.
+Azure Media Services Video Indexer, bölgesel bir veri merkezi kesintisi veya hatası olduğunda hizmetin yükünü anında devretmez. Bu makalede, bir olağanüstü durum oluşursa uygulamalar için en iyi kullanılabilirliği sağlamak üzere bir yük devretme için ortamınızın nasıl yapılandırılacağı ve en aza küçültülmüş kurtarma süresi açıklanır.
 
-Azure 'un yalıtım ve kullanılabilirlik ilkelerinden faydalanmasını sağlamak için iş sürekliliği olağanüstü durum kurtarma (BCDR) ' i bölgesel çiftler arasında yapılandırmanızı öneririz. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Azure'ın yalıtım ve kullanılabilirlik ilkelerinden yararlanmak için bölgesel çiftler arasında iş sürekliliği ve olağanüstü durum kurtarmayı (BCDR) yapılandırmanızı öneririz. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](../../best-practices-availability-paired-regions.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/free/)için kaydolun.
 
@@ -38,7 +39,7 @@ BCDR 'yi uygulamak için, artıklığı işlemek üzere iki Video Indexer hesab�
 1. Birincil bölgenizde bir hata varsa, ikincil hesabı kullanarak dizin oluşturma ' ya geçin.
 
 > [!TIP]
-> Hizmet [bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../service-health/alerts-activity-log-service-notifications.md)başına hizmet durumu bildirimleri için etkinlik günlüğü uyarılarını ayarlayarak BCDR 'yi otomatikleştirebilirsiniz.
+> Hizmet [bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../service-health/alerts-activity-log-service-notifications-portal.md)başına hizmet durumu bildirimleri için etkinlik günlüğü uyarılarını ayarlayarak BCDR 'yi otomatikleştirebilirsiniz.
 
 Birden çok kiracı kullanma hakkında bilgi için bkz. [birden çok kiracıyı yönetme](manage-multiple-tenants.md). BCDR 'yi uygulamak için şu iki seçenekten birini seçin: [kiracı başına video Indexer hesap](manage-multiple-tenants.md#video-indexer-account-per-tenant) veya [kiracı başına Azure aboneliği](manage-multiple-tenants.md#azure-subscription-per-tenant).
 

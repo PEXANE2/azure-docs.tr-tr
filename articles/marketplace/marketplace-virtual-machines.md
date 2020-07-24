@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065640"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Sanal makine teklifleri için Yayımlama Kılavuzu
 
@@ -47,7 +47,7 @@ Müşterinizle ilişkili aboneliğe bir Sanal Gereç dağıtırken *sanal makine
 > Şu anda, bir Kurumsal Anlaşma ilişkili parasal taahhütler, VM 'nizin Azure kullanımında kullanılabilir, ancak yazılım lisans ücretlerine karşı kullanılamaz.  
 > 
 > [!NOTE]
-> Görüntüyü ve fiyatlandırmayı özel bir teklif olarak yayımlayarak, sanal makinenizin bulma ve dağıtımını belirli bir müşteri kümesiyle kısıtlayabilirsiniz. Özel teklifler, en yakın müşterileriniz için özel teklifler oluşturma ve özelleştirilmiş yazılım ve koşulları sunma imkanını açar. Özelleştirilmiş terimler, özel fiyatlandırma ve koşullara sahip alan ve sınırlı yayın yazılımına erken erişim dahil olmak üzere çeşitli senaryolar vurgulamanızı sağlar. Özel teklifler, bu ayrıntılarla yeni bir SKU oluşturarak belirli fiyatlandırma veya ürünleri sınırlı bir müşteri kümesine vermenizi sağlar.  
+> Görüntüyü ve fiyatlandırmayı özel bir teklif olarak yayımlayarak, sanal makinenizin bulma ve dağıtımını belirli bir müşteri kümesiyle kısıtlayabilirsiniz. Özel teklifler, en yakın müşterileriniz için özel teklifler oluşturma ve özelleştirilmiş yazılım ve koşulları sunma imkanını açar. Özelleştirilmiş terimler, özel fiyatlandırma ve koşullara sahip alan ve sınırlı yayın yazılımına erken erişim dahil olmak üzere çeşitli senaryolar vurgulamanızı sağlar. Özel teklifler, bu ayrıntılarla yeni bir plan oluşturarak belirli fiyatları veya ürünleri sınırlı bir müşteri kümesine vermenizi sağlar.  
 >
 > Daha fazla bilgi için bkz. [Azure Marketi 'Ndeki özel teklifler](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 

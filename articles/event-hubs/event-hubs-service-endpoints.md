@@ -2,13 +2,13 @@
 title: Sanal ağ hizmeti uç noktaları-Azure Event Hubs | Microsoft Docs
 description: Bu makalede bir sanal ağa Microsoft. EventHub hizmet uç noktası ekleme hakkında bilgi sağlanır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: cf8b956a38f0b22581da3608cd64219aba484988
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066700"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Event Hubs ile sanal ağ hizmet uç noktalarını kullanma
 
@@ -24,7 +24,6 @@ Sonuç olarak, alt ağa ve ilgili Event Hubs ad alanıyla ilişkili olan iş yü
 > Sanal ağlar uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
 >
 > Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
-> - Azure Izleyici (Tanılama ayarı)
 > - Azure Stream Analytics
 > - Azure Event Grid ile tümleştirme
 > - Azure IoT Hub yolları
@@ -98,7 +97,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bi
 > ```json
 > "defaultAction": "Allow"
 > ```
-> -
+> şöyle değiştirin:
 > ```json
 > "defaultAction": "Deny"
 > ```

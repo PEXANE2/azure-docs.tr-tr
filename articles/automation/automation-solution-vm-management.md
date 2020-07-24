@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064453"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
@@ -49,7 +49,7 @@ Abonelik üzerinde bir katkıda bulunsanız ve Azure Active Directory (AD) kirac
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>Önceden var olan Otomasyon hesabı ve Log Analytics çalışma alanı için izinler
 
-Mevcut bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanarak VM'leri çalışma saatleri dışında başlat/durdur özelliği için VM 'Leri etkinleştirmek üzere, kaynak grubu kapsamında aşağıdaki izinlere sahip olmanız gerekir. Roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md).
+Mevcut bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanarak VM'leri çalışma saatleri dışında başlat/durdur özelliği için VM 'Leri etkinleştirmek üzere, kaynak grubu kapsamında aşağıdaki izinlere sahip olmanız gerekir. Roller hakkında daha fazla bilgi için bkz. [Azure özel roller](../role-based-access-control/custom-roles.md).
 
 | İzin | Kapsam|
 | --- | --- |
@@ -108,7 +108,7 @@ Tüm üst runbook 'lar `WhatIf` parametresi içerir. True olarak ayarlandığın
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Üst runbook 'tan çağırılır. Bu runbook otomatik durdurma senaryosu için kaynak temelinde uyarı oluşturur.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true veya false  | Hedeflenen abonelik veya kaynak gruplarındaki VM 'lerde Azure uyarı kuralları oluşturur veya güncelleştirir. <br> `VMList`, örneğin, bir VM 'lerin virgülle ayrılmış listesidir (boşluk olmadan) `vm1,vm2,vm3` .<br> `WhatIf`yürütme olmadan runbook mantığının doğrulanmasına izin vermez.|
-|AutoStop_Disable | Hiçbiri | Otomatik durdurma uyarılarını ve Varsayılan zamanlamayı devre dışı bırakır.|
+|AutoStop_Disable | Yok | Otomatik durdurma uyarılarını ve Varsayılan zamanlamayı devre dışı bırakır.|
 |AutoStop_VM_Child | WebHookData | Üst runbook 'tan çağırılır. Uyarı kuralları, klasik bir sanal makineyi durdurmak için bu runbook 'u çağırır.|
 |AutoStop_VM_Child_ARM | WebHookData |Üst runbook 'tan çağırılır. Uyarı kuralları bir sanal makineyi durdurmak için bu runbook 'u çağırır.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Eylem: Başlat veya Durdur<br> VMList  | Cloud Services tarafından klasik VM grubunda Eylem Başlat veya durdur işlemini gerçekleştirir. |

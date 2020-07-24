@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066340"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı eylemlerini veya işlem dizilerini tekrarlayacak döngüler oluşturma
 
@@ -21,7 +22,7 @@ Bir koşul karşılanana veya bir durum değişikliği yapılıncaya kadar eylem
 > [!TIP]
 > Bir diziyi alan ve her dizi öğesi için bir iş akışı çalıştırmak istediğiniz bir Tetikleyiciniz varsa, bu diziyi [ **spton** tetikleyici özelliğiyle](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *toplu* olarak silebilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
@@ -161,7 +162,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
 > [!NOTE]
 > Bu adımlar Office 365 Outlook kullanır, ancak Logic Apps desteklediği herhangi bir e-posta sağlayıcısını kullanabilirsiniz. 
-> [Burada bağlayıcılar listesini kontrol edin](https://docs.microsoft.com/connectors/). Başka bir e-posta hesabı kullanırsanız, genel adımlar aynı kalır, ancak kullanıcı arabirimi biraz farklı görünebilir. 
+> [Burada bağlayıcılar listesini kontrol edin](/connectors/). Başka bir e-posta hesabı kullanırsanız, genel adımlar aynı kalır, ancak kullanıcı arabirimi biraz farklı görünebilir. 
 
 1. Boş bir mantıksal uygulama oluşturma. Mantıksal uygulama Tasarımcısı ' nda, arama kutusunda **Tümü**' ni seçin. "Yinelenme" araması yapın. 
    Tetikleyiciler listesinden şu tetikleyiciyi seçin: **yineleme-zamanlama**
@@ -174,7 +175,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
    | Özellik | Değer |
    | -------- | ----- |
-   | **Interval** | 1 | 
+   | **Aralık** | 1 | 
    | **Sıklık** | Gün |
    | **Şu saatlerde** | 8 |
    ||| 
@@ -190,7 +191,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
    | Özellik | Değer | Açıklama |
    | -------- | ----- | ----------- |
-   | **Adı** | Sınır | Değişkeninin adı | 
+   | **Ad** | Sınır | Değişkeninin adı | 
    | **Tür** | Tamsayı | Değişkeninizin veri türü | 
    | **Değer** | 0 | Değişkeninizin başlangıç değeri | 
    |||| 
@@ -249,7 +250,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 | Özellik | Varsayılan değer | Açıklama | 
 | -------- | ------------- | ----------- | 
 | **Biriktirme** | 60 | Döngüden önce çalışan en yüksek döngü sayısı. Varsayılan değer 60 döngüdir. | 
-| **Zaman aşımı** | PT1H | Döngünün çıkış yapmadan önce bir döngü çalıştırmak için en fazla süre. Varsayılan değer bir saattir ve ISO 8601 biçiminde belirtilir. <p>Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz. | 
+| **Aş** | PT1H | Döngünün çıkış yapmadan önce bir döngü çalıştırmak için en fazla süre. Varsayılan değer bir saattir ve ISO 8601 biçiminde belirtilir. <p>Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz. | 
 |||| 
 
 Bu varsayılan sınırları değiştirmek için döngü eylemi şeklinin **Gelişmiş seçeneklerini göster** ' i seçin.
@@ -334,7 +335,7 @@ Bu örnek "Until" döngüsü bir kaynak oluşturan bir HTTP uç noktası çağı
 
 ## <a name="get-support"></a>Destek alma
 
-* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Kullanıcı geri bildirim sitesini Azure Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Sonraki adımlar

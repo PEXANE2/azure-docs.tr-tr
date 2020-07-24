@@ -3,17 +3,17 @@ title: Azure Maps ınkapısı haritaları modülünü kullanma
 description: Modülün JavaScript kitaplıklarını gömerek haritaları işlemek için Microsoft Azure Maps ınkapısı haritaları modülünü kullanmayı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f7bca363e22524546e7ee46bf44ddb18dacf00d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517476"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064229"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps ınkapısı haritaları modülünü kullanma
 
@@ -42,16 +42,14 @@ Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azu
 
  Ya da *Azure Maps ınkapıl* modülünü de indirebilirsiniz. *Azure Maps ınkapısı* modülü, Azure Maps hizmetlerine erişmek için bir istemci kitaplığı içerir. *Inkapısı* modülünü yüklemek ve Web uygulamanıza yüklemek için aşağıdaki adımları izleyin.  
   
-  1. [Azure-Maps-ınkapısı paketini](https://www.npmjs.com/package/azure-maps-indoor)indirin.
+  1. [Azure-Maps-ınkapısı paketini](https://www.npmjs.com/package/azure-maps-indoor)yükler.
   
-  2. NPM paketini yükler. Konsolunda yönetici ayrıcalıklarını kullandığınızdan emin olun:
-
       ```powershell
       >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
-  3. HTML dosyasının öğesindeki *Azure Maps ınkapısı* modül JavaScript ve stil sayfasına başvurun `<head>` :
+  2. HTML dosyasının öğesindeki *Azure Maps ınkapısı* modül JavaScript ve stil sayfasına başvurun `<head>` :
 
       ```html
       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
@@ -71,7 +69,7 @@ const map = new atlas.Map("map-id", {
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
-  authOptions: { 
+  authOptions: {
       authType: 'subscriptionKey',
       subscriptionKey: subscriptionKey
   },

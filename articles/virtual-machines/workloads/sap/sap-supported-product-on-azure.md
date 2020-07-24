@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065093"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure dağıtımları için hangi SAP yazılımı desteklenir?
 Bu makalede, Azure dağıtımları için hangi SAP yazılımlarının desteklendiğini ve gereken işletim sistemi yayınlarının veya DBMS sürümlerinin ne olduğu nasıl bulabileceğiniz açıklanır.
@@ -87,12 +87,12 @@ Hedeflenen Azure altyapısıyla desteklenen DBMS sürümlerini bilmenin gerekli 
 Azure 'da, HANA veritabanını çalıştırmak için kullanılabilecek iki hizmet vardır:
 
 - Azure Sanal Makineler
-- [HANA büyük örnekler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [HANA büyük örnekler](./hana-overview-architecture.md)
 
 SAP HANA çalıştırmak için SAP daha fazla ve daha güçlü koşullara sahiptir. Bu altyapı, NetWeaver veya diğer SAP uygulamaları ve DBMS çalıştırmalarından daha fazlasını karşılar. Sonuç olarak, SAP HANA DBMS 'yi çalıştırmaya yönelik daha az sayıda Azure sanal makinesi vardır. SAP HANA için desteklenen desteklenen Azure altyapısının listesi, [SAP HANA donanım dizini](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)adlı bölümünde bulunabilir. 
 
 > [!NOTE]
-> Mektupla başlayan birimler [Hana büyük örnekler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) birimleridir. 
+> Mektupla başlayan birimler [Hana büyük örnekler](./hana-overview-architecture.md) birimleridir. 
 
 > [!NOTE]
 > SAP 'nin SAP HANA ana sürümlere bağımlı belirli bir sertifikası yoktur. [Hana sertifikalı IaaS platformlarındaki](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)sütun **sertifikasyon senaryosu** olan yaygın GÖRÜŞLERDE, sütun, **Hana büyük veya küçük yayın sertifikalı bir ifade**yapmaz. Belirli birimlere yönelik sertifikalı işletim sistemi yayınları de HANA 1,0 yayınları tarafından desteklendiği sürece, HANA 1,0 ve HANA 2,0 için kullanılabilen tüm birimlerin kabul etmeniz gerekir. 
@@ -138,12 +138,11 @@ SAP BPC 10,1 SP08 desteği [sap destek notunda açıklanmaktadır #2451795](http
 Azure 'da SAP Hybrsıs ticaret platformu desteği, [Hybrin belgelerinde](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html)ayrıntılı olarak açıklanmıştır. SAP Hybrsıs ticaret platformu için desteklenen DBMS itibariyle şu şekilde listeler:
 
 - Windows işletim sistemi platformunda SQL Server ve Oracle. SAP NetWeaver için aynı en düşük yayınlar geçerlidir. Ayrıntılar için bkz. [sap destek notuna #1928533](https://launchpad.support.sap.com/#/notes/1928533)
-- Red Hat ve SUSE Linux üzerinde SAP HANA. SAP HANA sertifikalı VM türleri, [Bu belgede](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)daha önce belgelenen şekilde gereklidir. SAP (Hybrsıs) ticaret platformu OLTP iş yükü olarak kabul edilir
+- Red Hat ve SUSE Linux üzerinde SAP HANA. SAP HANA sertifikalı VM türleri, [Bu belgede](#sap-hana-support)daha önce belgelenen şekilde gereklidir. SAP (Hybrsıs) ticaret platformu OLTP iş yükü olarak kabul edilir
 - SQL Azure DB as SAP (Hybrsıs) ticaret platformu sürüm 1811
 
 
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-[SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) 'da sonraki adımları okuyun
-
+[SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama](./planning-guide.md) 'da sonraki adımları okuyun

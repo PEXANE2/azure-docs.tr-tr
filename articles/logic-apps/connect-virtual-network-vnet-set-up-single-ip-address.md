@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066400"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps bir veya daha fazla tümleştirme hizmeti ortamı için tek bir IP adresi ayarlayın
 
@@ -18,7 +19,7 @@ Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-net
 
 Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzerinden nasıl yönlendirileceği gösterilmektedir, ancak Azure Marketi 'nden üçüncü taraf güvenlik duvarı gibi bir ağ sanal gerecine benzer kavramlar uygulayabilirsiniz. Bu konu, birden çok ıSE örneğine yönelik kuruluma odaklanırken, senaryonuza erişmesi gereken IP adresi sayısını sınırlamayı gerektirdiğinde tek bir ıSE için de bu yaklaşımı kullanabilirsiniz. Güvenlik duvarının veya sanal ağ gerecinin ek maliyetlerinin senaryonuz için anlamlı olup olmadığını göz önünde bulundurun. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-firewall/)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * ISE ile aynı sanal ağda çalışan bir Azure Güvenlik Duvarı. Güvenlik duvarınız yoksa, önce sanal ağınıza adlı [bir alt ağ ekleyin](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) `AzureFirewallSubnet` . Daha sonra, sanal ağınızda [bir güvenlik duvarı oluşturabilir ve dağıtabilirsiniz](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) .
 
@@ -74,7 +75,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*Ağ kuralı-koleksiyon-adı*> | Ağ kuralı koleksiyonunuzun adı |
+   | **Ad** | <*Ağ kuralı-koleksiyon-adı*> | Ağ kuralı koleksiyonunuzun adı |
    | **Priority** | <*öncelik düzeyi*> | Kural koleksiyonunu çalıştırmak için kullanılacak öncelik sırası. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı kavramları nelerdir](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
    | **Eylem** | **İzin Ver** | Bu kural için gerçekleştirilecek eylem türü |
    |||
@@ -83,7 +84,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*Ağ kuralı-adı*> | Ağ kuralınız için ad |
+   | **Ad** | <*Ağ kuralı-adı*> | Ağ kuralınız için ad |
    | **Protokol** | <*bağlantı-protokoller*> | Kullanılacak bağlantı protokolleri. Örneğin, NSG kurallarını kullanıyorsanız **, yalnızca TCP**değil **TCP** ve **UDP**' yi seçin. |
    | **Kaynak adresler** | <*ISE-alt ağ-adresler*> | ISE 'nin çalıştığı ve mantıksal uygulamanızdan gelen trafiğin kaynaklandığı alt ağ IP adresleri |
    | **Hedef adresler** | <*hedef-IP adresi*> | Giden trafiğin gitmesini istediğiniz hedef sisteminizin IP adresi. Bu örnekte, bu IP adresi SFTP sunucusu içindir. |
@@ -95,8 +96,8 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
    * [Ağ kuralını yapılandırma](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Azure Güvenlik Duvarı kural işleme mantığı](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Azure Güvenlik Duvarı SSS](../firewall/firewall-faq.md)
-   * [Azure PowerShell: New-AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLı: az Network Firewall Network-Rule](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
+   * [Azure CLı: az Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

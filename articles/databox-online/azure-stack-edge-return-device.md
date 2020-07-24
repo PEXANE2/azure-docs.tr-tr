@@ -1,38 +1,40 @@
 ---
-title: Azure Stack Edge cihazınızı döndürün veya değiştirin | Microsoft Docs
-description: Azure Stack Edge cihazının nasıl dönebileceğinizi veya değiştirileceğini açıklar.
+title: Azure Stack Edge cihazınızı döndürme | Microsoft Docs
+description: Azure Stack Edge cihazının nasıl geri dönebileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ecd2e90812da533eb59db71a876b6d23f20918
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339374"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066963"
 ---
-# <a name="return-or-replace-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızı döndürme veya değiştirme
+# <a name="return-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızı döndürün
 
-Bu makalede, verileri silme ve sonra Azure Stack Edge cihazınızı döndürme açıklanmaktadır. Cihazı geri aldıktan sonra, cihazla ilişkili kaynağı da silebilir veya bir değiştirme cihazını sipariş edebilirsiniz.
+Bu makalede, verileri silme ve sonra Azure Stack Edge cihazınızı döndürme açıklanmaktadır. Cihazı geri aldıktan sonra cihazla ilişkili kaynağı da silebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > * Cihazdaki veri disklerinin verileri silme
-> * Cihazınızı döndürmek için bir destek bileti açın
+> * Azure portal cihaz dönüşü başlatma
 > * Cihazı paketleme ve bir toplama zamanlama
 > * Azure portal kaynağı silme
-> * Yeni bir cihaz alma
 
 ## <a name="erase-data-from-the-device"></a>Cihazdan verileri silme
 
 Cihazınızın veri disklerinin verilerini silmek için cihazınızı sıfırlamanız gerekir. Yerel Web Kullanıcı arabirimini veya PowerShell arabirimini kullanarak cihazınızı sıfırlayabilirsiniz.
 
 Sıfırlamadan önce, gerekirse, cihazdaki yerel verilerin bir kopyasını oluşturun. Cihazdan verileri bir Azure depolama kapsayıcısına kopyalayabilirsiniz.
+
+Cihaz sıfırlanmadan önce, cihazın dönmesini başlatabilirsiniz. 
 
 Yerel Web Kullanıcı arabirimini kullanarak cihazınızı sıfırlamak için aşağıdaki adımları uygulayın.
 
@@ -53,19 +55,50 @@ Alternatif olarak, cihazın PowerShell arabirimine bağlanın ve `Reset-HcsAppli
 > - Yeni bir cihaza değiş tokuş yapıyorsanız veya yükseltiyorsanız, Cihazınızı yalnızca yeni cihazı aldıktan sonra sıfırlamanız önerilir.
 > - Cihaz sıfırlaması yalnızca cihazdaki tüm yerel verileri siler. Buluttaki veriler silinmez ve [ücretleri](https://azure.microsoft.com/pricing/details/storage/)toplar. Bu verilerin, [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi bir bulut depolama yönetim aracı kullanılarak ayrı olarak silinmesi gerekir.
 
-## <a name="open-a-support-ticket"></a>Bir destek bileti açın
+## <a name="initiate-device-return"></a>Cihaz döndürmeyi Başlat
 
 Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 
-1. Cihazı döndürmek istediğinizi belirten Microsoft Desteği bir destek bileti açın. **Azure Stack Edge donanımı**olarak sorun türünü seçin.
+1. Azure portal Azure Stack Edge/Data Box Gateway kaynağına gidin. **Genel**görünümde, sağ bölmedeki komut çubuğuna gidin ve **cihazı geri döndür**' ü seçin. 
 
-    ![Destek bileti açma](media/azure-stack-edge-return-device/open-support-ticket-1.png)  
+    ![Cihazı geri dön 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
-2. Bir Microsoft Desteği mühendisi sizinle iletişim kuracaktır. Sevkıyat ayrıntılarını belirtin.
-3. İade sevk etme kutusuna ihtiyacınız varsa, isteği isteyebilirsiniz. Sorunun **geri dönmesi Için** **Evet** yanıtını yazın.
+2. **Geri dönüş aygıtı** dikey penceresinde, **temel Ayrıntılar**altında:
 
+    1. Cihazın seri numarasını belirtin. Cihaz seri numarasını almak için, cihazın yerel Web Kullanıcı arabirimine gidin ve **genel bakış**' a gidin.  
+    
+    ![Cihaz seri numarası 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+
+    2. Cihazınız için benzersiz olan beş veya daha fazla karakter tanımlayıcısı olan hizmet etiketi numarasını girin. Hizmet etiketi, cihazın sağ alt köşesinde bulunur (cihazı hissettiden başlayarak). Bilgi etiketini çekin (bir slayt etiketi bölmesi olur). Bu panel, hizmet etiketi, NIC, MAC adresi vb. gibi sistem bilgilerini içerir. 
+    
+    ![Hizmet etiketi numarası 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+
+    3. Açılan listeden, dönüş için bir neden seçin.
+
+    ![Cihaz dön 2](media/azure-stack-edge-return-device/return-device-2.png) 
+
+3. **Gönderim ayrıntıları**:
+
+    1. Adınızı, şirket adınızı ve tam şirket adresini belirtin. Alan kodu ve bildirim için bir e-posta KIMLIĞI dahil bir iş telefonu girin.
+    2. İade sevk etme kutusuna ihtiyacınız varsa, isteği isteyebilirsiniz. Sorunun **geri dönmesi Için** **Evet** yanıtını yazın.
+
+    ![Geri dönüş cihazı 3](media/azure-stack-edge-return-device/return-device-3.png)
+
+4. **Gizlilik koşullarını** gözden geçirin ve gözden geçirdiğinize ve gizlilik koşullarını kabul etmiş olduğunuz nota karşı onay kutusunu seçin.
+
+5. **Döndürmeyi Başlat**' ı seçin.
+
+    ![Geri dönüş aygıtı 4](media/azure-stack-edge-return-device/return-device-4.png) 
+
+6. Cihazınızın geri dönüş ayrıntıları yakalandıktan sonra Azure Stack Edge işlemleri ekibine bir e-posta ile bildirim gönderebilirsiniz. E-posta uygulamanızın yüklü ve yapılandırılmış olduğu varsayıldığında e-posta uygulamanızı kullanabilirsiniz. Ayrıca, bir e-posta oluşturup göndermek için verileri kopyalayabilirsiniz.
+
+    ![Geri dönüş aygıtı 5](media/azure-stack-edge-return-device/return-device-5.png) 
+
+7. Azure Stack Edge işlemler ekibi e-postayı aldıktan sonra, size ters Sevkiyat Etiketi gönderilir. Bu etiketi aldığınızda, taşıyıcı ile cihaz alımı zamanlayabilirsiniz. 
 
 ## <a name="schedule-a-pickup"></a>Çekme zamanlaması
+
+Bir toplama zamanlamak için aşağıdaki adımları uygulayın.
 
 1. Cihazı kapatın. Yerel Web Kullanıcı arabiriminde **bakım > güç ayarları**' na gidin.
 2. **Kapat ' ı**seçin. Onay istendiğinde, devam etmek için **Evet** ' e tıklayın. Daha fazla bilgi için bkz. [güç yönetimi](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
@@ -84,13 +117,14 @@ Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 
 Cihaz Azure veri merkezinde alındıktan sonra, cihaz hasar veya herhangi bir değişiklik işareti için denetlenir.
 
-- Cihaz bozulmadan ve iyi bir şekle ulaştığında, faturalandırma ölçümü o kaynak için duraklar. Microsoft Desteği, cihazın döndürüldüğünden emin olmak için sizinle iletişim kuracaktır. Daha sonra Azure portal cihazla ilişkili kaynağı silebilirsiniz.
+- Cihaz bozulmadan ve iyi bir şekilde yer alıyorsa, faturalandırma ölçümü o kaynak için de duraklar. Microsoft Desteği, cihazın döndürüldüğünden emin olmak için sizinle iletişim kuracaktır. Daha sonra Azure portal cihazla ilişkili kaynağı silebilirsiniz.
 - Cihaz önemli ölçüde hasar görmüşse, cezaları uygulanabilir. Ayrıntılar için bkz. [kayıp veya hasarlı cihaz](https://azure.microsoft.com/pricing/details/databox/edge/) ve [ürün hizmet koşulları](https://www.microsoft.com/licensing/product-licensing/products)hakkında SSS.  
 
 
 Azure portal cihazı silebilirsiniz:
--    Siparişi yerleştirdikten ve cihaz Microsoft tarafından hazırlanmadan önce.
--    Cihazı Microsoft 'a döndürdüyseniz, Azure veri merkezinde fiziksel incelemeyi geçirir ve cihazın döndürüldüğünden emin olmak için çağrılar Microsoft Desteği.
+
+- Siparişi yerleştirdikten ve cihaz Microsoft tarafından hazırlanmadan önce.
+- Cihazı Microsoft 'a döndürdüyseniz, Azure veri merkezinde fiziksel incelemeyi geçirir ve cihazın döndürüldüğünden emin olmak için çağrılar Microsoft Desteği.
 
 Cihazı başka bir abonelik veya konuma karşı etkinleştirdiyseniz, Microsoft siparişinizi bir iş günü içinde yeni abonelik veya konuma taşır. Sipariş taşındıktan sonra bu kaynağı silebilirsiniz.
 
@@ -107,21 +141,7 @@ Azure portal, cihazı ve kaynağı silmek için aşağıdaki adımları uygulay�
 
 Cihaz ve ilişkili kaynak başarıyla silindikten sonra size bildirimde bulunuluyoruz.
 
-## <a name="get-a-replacement-device"></a>Yeni bir cihaz alma
-
-Mevcut cihazda bir donanım arızası olduğunda veya bir yükseltme gerektiğinde bir değiştirme cihazı gerekir. Cihazınızda bir donanım sorunu olduğunda aşağıdaki adımları uygulayın:
-
-1. [Donanım sorunu için bir destek bileti açın](#open-a-support-ticket). Microsoft Desteği, bu örnek için bir alan değiştirme birimi (FRU) bulunmadığını veya cihazın bir donanım yükseltmesine ihtiyacı olduğunu belirlemektir. Her iki durumda da destek, bir değiştirme cihazını sıraya alır.
-2. Değiştirme cihazı için [Yeni bir kaynak oluşturun](azure-stack-edge-deploy-prep.md#create-a-new-resource) . **Azure Stack Edge cihazım olmasına**karşı onay kutusunu seçtiğinizden emin olun. 
-3. Bir değiştirme aygıtı aldıktan sonra, yeni kaynağa karşı değiştirme cihazını [yükleyip](azure-stack-edge-deploy-install.md) [etkinleştirin](azure-stack-edge-deploy-connect-setup-activate.md) .
-4. Özgün cihazı döndürmek için tüm adımları izleyin:
-    1. Özgün cihazı döndürmek için başka bir bilet açın.
-    2. [Cihazdaki verileri silin](#erase-data-from-the-device).
-    3. [Bir toplama zamanlayın](#schedule-a-pickup).
-    5. Döndürülen cihazla ilişkili [kaynağı silin](#delete-the-resource) .
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bant genişliğini yönetmeyi](azure-stack-edge-manage-bandwidth-schedules.md) öğrenin.
+- [Değiştirme Azure Stack Edge cihazını nasıl alabileceğinizi](azure-stack-edge-replace-device.md)öğrenin.

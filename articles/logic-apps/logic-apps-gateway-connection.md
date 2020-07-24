@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b216fa668483ef6fc30c1054dd4f65361ad17934
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065958"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps'ten şirket içi veri kaynaklarına bağlanma
 
@@ -47,9 +48,9 @@ Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirk
 * SQL Server
 * Teradata
 
-Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
+Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](/data-integration/gateway/service-gateway-onprem#considerations)vardır. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Şirket [içi veri ağ geçidini zaten yerel bir bilgisayara yüklediniz](../logic-apps/logic-apps-gateway-install.md).
 
@@ -82,7 +83,7 @@ Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azu
 
    | Özellik | Açıklama |
    |----------|-------------|
-   | **Kaynak adı** | Ağ Geçidi kaynağınız için yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) veya nokta ( `.` ) içeren bir ad sağlayın. |
+   | **Kaynak Adı** | Ağ Geçidi kaynağınız için yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) veya nokta ( `.` ) içeren bir ad sağlayın. |
    | **Abonelik** | Ağ geçidi yüklemesi için kullanılan Azure hesabı için Azure aboneliğini seçin. Varsayılan abonelik, oturum açmak için kullandığınız Azure hesabını temel alır. |
    | **Kaynak grubu** | Kullanmak istediğiniz [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) |
    | **Konum** | Ağ [geçidi yüklemesi](../logic-apps/logic-apps-gateway-install.md)sırasında ağ geçidi bulutu hizmeti için seçilen bölge veya konum. Aksi takdirde, ağ geçidi yüklemeniz **yükleme adı** listesinde görünmez. Mantıksal uygulama konumunuz, ağ geçidi kaynak konumunuzda farklılık gösterebilir. |
@@ -116,7 +117,7 @@ Ağ Geçidi kaynağınızı oluşturduktan ve Azure aboneliğinizi bu kaynakla i
 
    Benzersiz bir bağlantı adı, özellikle birden çok bağlantı oluşturuyorsanız bu bağlantıyı daha sonra kolayca bulmanıza yardımcı olur. Uygulanabiliyorsa, Kullanıcı adınız için tam etki alanını da dahil edin.
 
-   Örnek aşağıda verilmiştir:
+   Aşağıda bir örnek verilmiştir:
 
    ![Mantıksal uygulama ve veri ağ geçidi arasında bağlantı oluşturma](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 

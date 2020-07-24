@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294329"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065486"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android için çevrimdışı Widevine akışı  
 
@@ -29,7 +29,7 @@ ms.locfileid: "80294329"
 > * [Sürüm 2](offline-widevine-for-android.md)
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Çevrimiçi akış için içeriği korumanın yanı sıra, medya içerik aboneliği ve Kiralama Hizmetleri, internet 'e bağlı değilseniz kullanılan indirilebilir içerik sunar. Ağ bağlantısı kesildiğinde Uçak modunda kayıttan yürütmek için içeriği telefonunuza veya tabletinize indirmeniz gerekebilir. İçeriği indirmek isteyebileceğiniz ek senaryolar:
 
@@ -181,7 +181,7 @@ Bu, güvenli belirteç hizmeti 'nin (STS) bir belirtece karşılık gelen talep 
 
 ### <a name="question"></a>Soru
 
-Widevine güvenlik düzeyleri için, Google 'ın [WIDEVINE DRM mimarisine genel bakış belge](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) belgelerinde üç farklı güvenlik düzeyi tanımlanmaktadır. Ancak, [Widevine lisans şablonunda Azure Media Services belgelerde](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), beş farklı güvenlik düzeyi özetlenmiştir. İki farklı güvenlik düzeyi kümesi arasındaki ilişki veya eşleme nedir?
+Widevine güvenlik düzeyleri için, Google 'ın [WIDEVINE DRM mimarisine genel bakış belge](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) belgelerinde üç farklı güvenlik düzeyi tanımlanmaktadır. Ancak, [Widevine lisans şablonunda Azure Media Services belgelerde](./media-services-widevine-license-template-overview.md), beş farklı güvenlik düzeyi özetlenmiştir. İki farklı güvenlik düzeyi kümesi arasındaki ilişki veya eşleme nedir?
 
 ### <a name="answer"></a>Yanıt
 
@@ -191,7 +191,7 @@ Google 'ın [Widevine DRM mimarisine genel bakış](https://storage.googleapis.c
 2.  Güvenlik düzeyi 2: t içinde şifreleme gerçekleştirir (ancak video işleme değil): şifresi çözülmüş arabellekler uygulama etki alanına döndürülür ve ayrı video donanımı veya yazılım aracılığıyla işlenir. Ancak, düzey 2 ' de, şifreleme bilgileri yalnızca t içinde işlenir.
 3.  Güvenlik düzeyi 3 ' te cihazda t yok. Şifreleme bilgilerini ve konak işletim sistemindeki şifresi çözülmüş içeriği korumak için uygun ölçüler alınabilir. 3. düzey bir uygulama de bir donanım şifreleme altyapısı içerebilir, ancak bu yalnızca performansı artırır, güvenliği etkilemez.
 
-Aynı zamanda, [Widevine lisans şablonu 'ndaki Azure Media Services belgelerde](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), content_key_specs security_level özelliği aşağıdaki beş farklı değere sahip olabilir (kayıttan yürütme için istemci sağlamlık gereksinimleri):
+Aynı zamanda, [Widevine lisans şablonu 'ndaki Azure Media Services belgelerde](./media-services-widevine-license-template-overview.md), content_key_specs security_level özelliği aşağıdaki beş farklı değere sahip olabilir (kayıttan yürütme için istemci sağlamlık gereksinimleri):
 
 1.  Yazılım tabanlı beyaz kutu şifreleme gereklidir.
 2.  Yazılım şifreleme ve karıştırılmış bir kod çözücü gereklidir.
