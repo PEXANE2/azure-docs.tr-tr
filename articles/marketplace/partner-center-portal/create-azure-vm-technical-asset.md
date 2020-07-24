@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: dannyevers
 ms.author: mingshen
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5bed073799521498efe5302ab9af616dcdf9f9ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107164"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053574"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure sanal makineli teknik varlıklarınızı oluşturun
 
@@ -43,7 +43,7 @@ Bu varlıkların tasarlanmasına, oluşturulmasına ve test edilmesine zaman al�
 
 VM 'Lerin ve VHD 'lerin yönetilmesine yardımcı olmak için aşağıdaki komut dosyası ortamlarının birini kullanmayı göz önünde bulundurun:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://code.visualstudio.com/)
 
 Ayrıca, aşağıdaki araçları geliştirme ortamınıza eklemeyi göz önünde bulundurun:
@@ -125,7 +125,7 @@ Bu makalede, yerleşik Windows RDP desteğinin sanal makinenize bağlanmak için
 
 Linux tabanlı bir VM 'ye bağlanmak için güvenli bir kabuk Protokolü (SSH) istemcisine ihtiyacınız vardır. Aşağıdaki adımlarda ücretsiz [Putty](https://www.ssh.com/ssh/putty/) Shh terminali kullanılır.
 
-1. [Azure Portal](https://ms.portal.azure.com/)gidin.
+1. [Azure portalına](https://ms.portal.azure.com/) gidin.
 2. **Sanal makineleri**arayın ve seçin.
 3. Bağlanmak istediğiniz VM 'yi seçin.
 4. Zaten çalışmıyorsa VM 'yi başlatın.
@@ -163,7 +163,7 @@ Bu bölümde, Kullanıcı tarafından belirtilen bir sanal makine (VM) görünt�
 
 Azure portal ya da Azure PowerShell kullanarak görüntünüzü oluşturun.
 
-#### <a name="deploy-using-the-azure-portal"></a>Azure portalı kullanarak dağıtma
+#### <a name="deploy-using-the-azure-portal"></a>Azure portalını kullanarak dağıtma
 
 1. Giriş sayfasında, **kaynak oluştur**' u seçin, "şablon dağıtımı" ifadesini arayın ve **Oluştur**' u seçin.
 2. **Düzenleyicide kendi şablonunuzu oluşturun**öğesini seçin.
