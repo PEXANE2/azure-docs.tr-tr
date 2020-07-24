@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015417"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme 
 
@@ -44,7 +44,7 @@ Sunucu yöneticilerini, SQL Server Management Studio (SSMS) kullanarak yapıland
 
 ## <a name="using-a-resource-manager-template"></a>Resource Manager şablonu kullanma
 
-Ayrıca, bir Azure Resource Manager şablonu kullanarak Analysis Services sunucusunu dağıtarak sunucu yöneticilerini yapılandırabilirsiniz. Dağıtımı çalıştıran kimlik, [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)içindeki kaynak için **katkıda** bulunan rolüne ait olmalıdır.
+Ayrıca, bir Azure Resource Manager şablonu kullanarak Analysis Services sunucusunu dağıtarak sunucu yöneticilerini yapılandırabilirsiniz. Dağıtımı çalıştıran kimlik, [Azure rol tabanlı erişim denetimindeki (Azure RBAC)](../role-based-access-control/overview.md)kaynak için **katkıda** bulunan rolüne ait olmalıdır.
 
 > [!IMPORTANT]
 > Hizmet sorumlusu biçim kullanılarak eklenmelidir `app:{service-principal-client-id}@{azure-ad-tenant-id}` .
@@ -119,5 +119,3 @@ Daha sonra bu istemci KIMLIĞINI, yukarıda açıklandığı gibi Analysis Servi
 
 * [PowerShell modülünü indir SQL Server](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [SSMS 'yi indir](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-
-

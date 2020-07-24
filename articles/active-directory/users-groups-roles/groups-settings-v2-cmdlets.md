@@ -14,16 +14,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015706"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Grup yönetimi için sürüm 2 cmdlet 'leri Azure Active Directory
 
 > [!div class="op_single_selector"]
-> - [Azure portalındaki](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
@@ -49,7 +50,7 @@ Modülün kullanıma hazırsa emin olmak için aşağıdaki komutu kullanın:
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Artık modüldeki cmdlet 'leri kullanmaya başlayabilirsiniz. Azure AD modülündeki cmdlet 'lerin tam açıklaması için lütfen [Azure Active Directory PowerShell sürüm 2](/powershell/azure/install-adv2?view=azureadps-2.0)' ye yönelik çevrimiçi başvuru belgelerine bakın.
+Artık modüldeki cmdlet 'leri kullanmaya başlayabilirsiniz. Azure AD modülündeki cmdlet 'lerin tam açıklaması için lütfen [Azure Active Directory PowerShell sürüm 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)' ye yönelik çevrimiçi başvuru belgelerine bakın.
 
 > [!NOTE]
 > Azure AD PowerShell cmdlet 'leri, .NET Core temel alınarak yeni PowerShell 7 ile birlikte çalışmaz. Bizim için farkındayız ve bu, güncelleştirilme sürecinde. Şu andan itibaren Azure AD PowerShell işlemleri için kullanılacak Windows PowerShell 5. x modülünü kullanmayı öneririz. 
@@ -337,7 +338,7 @@ Office 365 grup geri yazma, Azure Active Directory (Azure AD) genel önizleme ö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Active Directory cmdlet 'lerinde](/powershell/azure/install-adv2?view=azureadps-2.0)daha fazla Azure Active Directory PowerShell belgesi bulabilirsiniz.
+[Azure Active Directory cmdlet 'lerinde](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)daha fazla Azure Active Directory PowerShell belgesi bulabilirsiniz.
 
 * [Azure Active Directory grupları ile kaynaklara erişimi yönetme](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 01dcd6b7b366b7a1ada581ec154409ee7598e7a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2994a616d60258e81cbd5a409690abc18538183a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015536"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
@@ -28,14 +28,16 @@ Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *dü�
 Sistem düğüm havuzlarını destekleyen AKS kümelerini oluştururken ve yönetirken aşağıdaki sınırlamalar geçerlidir.
 
 * [Azure Kubernetes Service (AKS) Içindeki kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği][quotas-skus-regions]konusuna bakın.
-* AKS kümesi VM türü olarak sanal makine ölçek kümeleri ile oluşturulmalıdır.
+* AKS kümesi, sanal makine ölçek kümeleri ile VM türü ve *Standart* SKU yük dengeleyici olarak oluşturulmalıdır.
 * Düğüm havuzunun adı yalnızca küçük harfli alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır. Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
 * Düğüm havuzu modunu ayarlamak için 2020-03-01 veya üzeri bir API sürümü kullanılmalıdır. 2020-03-01 ' den eski API sürümlerinde oluşturulan kümeler yalnızca Kullanıcı düğümü havuzlarını içerir, ancak [güncelleştirme havuzu modu adımlarını](#update-existing-cluster-system-and-user-node-pools)izleyerek Sistem düğüm havuzlarını içerecek şekilde geçirilebilirler.
 * Düğüm havuzunun modu gerekli bir özelliktir ve ARM şablonları veya doğrudan API çağrıları kullanılırken açıkça ayarlanması gerekir.
 
 ## <a name="system-and-user-node-pools"></a>Sistem ve Kullanıcı düğümü havuzları
 
-Sistem düğüm havuzu düğümlerinin her biri **Kubernetes.Azure.com/Mode: System**etiketine sahiptir. Her AKS kümesi en az bir sistem düğüm havuzu içerir. Sistem düğüm havuzları aşağıdaki kısıtlamalara sahiptir:
+Bir sistem düğüm havuzu için AKS, **Kubernetes.Azure.com/Mode: System** etiketini otomatik olarak düğümlerine atar. Bu, AKS 'in bu etiketi içeren düğüm havuzlarında sistem kimliklerinin planlanmasını tercih etmesine neden olur. Bu etiket, sistem düğüm havuzlarında uygulama yığınlarını zamanınızdan engel olmaz. Bununla birlikte, yanlış yapılandırılmış veya standart dışı uygulama kimliklerinin sistem dizilerini yanlışlıkla sonlandırmasını engellemek için uygulama yığınlarından önemli sistem dizilerini yalıtmanızı öneririz. Özel bir sistem düğüm havuzu oluşturarak bu davranışı uygulayabilirsiniz. `CriticalAddonsOnly=true:NoSchedule`Uygulama kimliklerinin sistem düğüm havuzlarında zamanlanmasını engellemek için taınt kullanın.
+
+Sistem düğüm havuzları aşağıdaki kısıtlamalara sahiptir:
 
 * Sistem havuzları osType, Linux olmalıdır.
 * Kullanıcı düğümü havuzları osType, Linux veya Windows olabilir.
@@ -46,6 +48,7 @@ Sistem düğüm havuzu düğümlerinin her biri **Kubernetes.Azure.com/Mode: Sys
 
 Düğüm havuzlarıyla aşağıdaki işlemleri yapabilirsiniz:
 
+* Ayrılmış bir sistem düğüm havuzu oluşturma (düğüm havuzlarının sistem havuzları planlamasını tercih et `mode:system` )
 * Bir sistem düğüm havuzunu bir Kullanıcı düğümü havuzu olacak şekilde değiştirin. Bu, AKS kümesinde konumunu almak için başka bir sistem düğüm havuzunuz olması gerekir.
 * Bir Kullanıcı düğümü havuzunu sistem düğüm havuzu olacak şekilde değiştirin.
 * Kullanıcı düğümü havuzlarını silin.
@@ -55,7 +58,7 @@ Düğüm havuzlarıyla aşağıdaki işlemleri yapabilirsiniz:
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Sistem düğüm havuzu ile yeni bir AKS kümesi oluşturma
 
-Yeni bir AKS kümesi oluşturduğunuzda, otomatik olarak tek bir düğüm içeren bir sistem düğüm havuzu oluşturursunuz. İlk düğüm havuzu, sistem türü bir mod olarak varsayılan olarak belirlenmiştir. Az aks nodepool Add ile yeni düğüm havuzları oluşturduğunuzda, mod parametresini açıkça belirtmediğiniz müddetçe bu düğüm havuzları Kullanıcı düğümü havuzlarıdır.
+Yeni bir AKS kümesi oluşturduğunuzda, otomatik olarak tek bir düğüm içeren bir sistem düğüm havuzu oluşturursunuz. İlk düğüm havuzu, sistem türü bir mod olarak varsayılan olarak belirlenmiştir. İle yeni düğüm havuzları oluşturduğunuzda `az aks nodepool add` , mod parametresini açıkça belirtmediğiniz müddetçe, bu düğüm havuzları Kullanıcı düğüm havuzlarıdır.
 
 Aşağıdaki örnek *eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur.
 
@@ -63,54 +66,73 @@ Aşağıdaki örnek *eastus* bölgesinde *myresourcegroup* adlı bir kaynak grub
 az group create --name myResourceGroup --location eastus
 ```
 
-AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnek, bir düğüm içeren bir sistem havuzu ile *Myakscluster* adlı bir küme oluşturur. Üretim iş yükleriniz için en az üç düğüm ile sistem düğüm havuzlarını kullandığınızdan emin olun. Bu işlemin tamamlanması birkaç dakika sürebilir.
+AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnek, bir düğüm içeren ayrılmış bir sistem havuzu ile *Myakscluster* adlı bir küme oluşturur. Üretim iş yükleriniz için en az üç düğüm ile sistem düğüm havuzlarını kullandığınızdan emin olun. Bu işlemin tamamlanması birkaç dakika sürebilir.
 
 ```azurecli-interactive
+# Create a new AKS cluster with a single system pool
 az aks create -g myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>Mevcut bir AKS kümesine sistem düğüm havuzu ekleme
+## <a name="add-a-dedicated-system-node-pool-to-an-existing-aks-cluster"></a>Mevcut bir AKS kümesine ayrılmış bir sistem düğüm havuzu ekleme
 
-Varolan AKS kümelerine bir veya daha fazla sistem düğüm havuzu ekleyebilirsiniz. Aşağıdaki komut, varsayılan sayıda üç düğüme sahip bir mod türü sisteminin düğüm havuzunu ekler.
+> [!Important]
+> Düğüm havuzu oluşturulduktan sonra CLı aracılığıyla düğüm ilerledikten geçiş yapamazsınız.
+
+Varolan AKS kümelerine bir veya daha fazla sistem düğüm havuzu ekleyebilirsiniz. Uygulama yığınlarınızı Kullanıcı düğümü havuzlarında zamanlamanız ve sistem düğüm havuzlarını yalnızca kritik sistem yığınlarına ayırmayı öneririz. Bu, uygulama kimliklerinin yanlışlıkla sistem yığınlarını sonlandırmasını önler. `CriticalAddonsOnly=true:NoSchedule`Sistem düğüm havuzlarınız için bu davranışı [taınt][aks-taints] ile zorlayın. 
+
+Aşağıdaki komut, varsayılan sayıda üç düğüme sahip bir mod türü sisteminin ayrılmış düğüm havuzunu ekler.
 
 ```azurecli-interactive
-az aks nodepool add -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name systempool \
+    --node-count 3 \
+    --node-taints CriticalAddonsOnly=true:NoSchedule \
+    --mode system
 ```
 ## <a name="show-details-for-your-node-pool"></a>Düğüm havuzunuzun ayrıntılarını gösterme
 
 Aşağıdaki komutla, düğüm havuzunuzun ayrıntılarını denetleyebilirsiniz.  
 
 ```azurecli-interactive
-az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
+az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n systempool
 ```
 
-Sistem düğüm havuzları için **sistem** türü bir mod tanımlanır ve Kullanıcı düğüm havuzları için **Kullanıcı** türünde bir mod tanımlanır.
+Sistem düğüm havuzları için **sistem** türü bir mod tanımlanır ve Kullanıcı düğüm havuzları için **Kullanıcı** türünde bir mod tanımlanır. Bir sistem havuzu için, taınt 'nin olarak ayarlandığını doğrulayın `CriticalAddonsOnly=true:NoSchedule` . Bu, uygulama yığınlarının bu düğüm havuzunda zamanlanmasını engeller.
 
 ```output
 {
   "agentPoolType": "VirtualMachineScaleSets",
   "availabilityZones": null,
-  "count": 3,
+  "count": 1,
   "enableAutoScaling": null,
   "enableNodePublicIp": false,
-  "id": "/subscriptions/666d66d8-1e43-4136-be25-f25bb5de5883/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/mynodepool",
+  "id": "/subscriptions/yourSubscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/systempool",
   "maxCount": null,
   "maxPods": 110,
   "minCount": null,
   "mode": "System",
-  "name": "mynodepool",
+  "name": "systempool",
+  "nodeImageVersion": "AKSUbuntu-1604-2020.06.30",
   "nodeLabels": {},
-  "nodeTaints": null,
-  "orchestratorVersion": "1.15.10",
-  "osDiskSizeGb": 100,
+  "nodeTaints": [
+    "CriticalAddonsOnly=true:NoSchedule"
+  ],
+  "orchestratorVersion": "1.16.10",
+  "osDiskSizeGb": 128,
   "osType": "Linux",
-  "provisioningState": "Succeeded",
+  "provisioningState": "Failed",
+  "proximityPlacementGroupId": null,
   "resourceGroup": "myResourceGroup",
   "scaleSetEvictionPolicy": null,
   "scaleSetPriority": null,
   "spotMaxPrice": null,
   "tags": null,
   "type": "Microsoft.ContainerService/managedClusters/agentPools",
+  "upgradeSettings": {
+    "maxSurge": null
+  },
   "vmSize": "Standard_DS2_v2",
   "vnetSubnetId": null
 }
@@ -146,6 +168,16 @@ Daha önce bir AKS kümesindeki ilk varsayılan düğüm havuzu olan sistem dü�
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
 ```
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Kümeyi silmek için, AKS kaynak grubunu silmek için [az Group Delete][az-group-delete] komutunu kullanın:
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, bir AKS kümesinde sistem düğüm havuzlarını oluşturmayı ve yönetmeyi öğrendiniz. Birden çok düğüm havuzu kullanma hakkında daha fazla bilgi için bkz. [birden çok düğüm havuzu kullanma][use-multiple-node-pools].
@@ -159,6 +191,7 @@ Bu makalede, bir AKS kümesinde sistem düğüm havuzlarını oluşturmayı ve y
 [kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
+[aks-taints]: use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create

@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91eb361d4bcae304734817ee7f57141d6f06415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd060972e562759fcc1071f2c6549578bd3d4ed9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727866"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015723"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 
@@ -31,7 +32,7 @@ Yönetici olmayan kullanıcıların güvenlik grupları oluşturmasını engelle
 
 Office 365 grupları ayarları, bir ayarlar nesnesi ve bir SettingsTemplate nesnesi kullanılarak yapılandırılır. İlk olarak, dizininiz varsayılan ayarlarla yapılandırıldığından, dizininizde herhangi bir ayar nesnesi görmezsiniz. Varsayılan ayarları değiştirmek için, bir ayarlar şablonu kullanarak yeni bir ayar nesnesi oluşturmanız gerekir. Ayarlar şablonları Microsoft tarafından tanımlanır. Birçok farklı ayar şablonu vardır. Dizininizde Office 365 grup ayarlarını yapılandırmak için "Group. Unified" adlı şablonu kullanın. Tek bir grupta Office 365 grup ayarlarını yapılandırmak için, "Group. Unified. Guest" adlı şablonu kullanın. Bu şablon, bir Office 365 grubuna konuk erişimini yönetmek için kullanılır. 
 
-Cmdlet 'ler Azure Active Directory PowerShell V2 modülünün bir parçasıdır. Modülün bilgisayarınıza nasıl indirileceği ve yükleneceğine ilişkin yönergeler için [PowerShell sürüm 2 Azure Active Directory](https://docs.microsoft.com/powershell/azuread/)makalesine bakın. Modülün sürüm 2 sürümünü [PowerShell galerisinden](https://www.powershellgallery.com/packages/AzureAD/)yükleyebilirsiniz.
+Cmdlet 'ler Azure Active Directory PowerShell V2 modülünün bir parçasıdır. Modülün bilgisayarınıza nasıl indirileceği ve yükleneceğine ilişkin yönergeler için [PowerShell sürüm 2 Azure Active Directory](https://docs.microsoft.com/powershell/azure/active-directory/overview)makalesine bakın. Modülün sürüm 2 sürümünü [PowerShell galerisinden](https://www.powershellgallery.com/packages/AzureAD/)yükleyebilirsiniz.
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell cmdlet'lerini yükleme
 
@@ -318,7 +319,7 @@ Bu adım dizin düzeyindeki ayarları kaldırır ve dizindeki tüm Office grupla
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Cmdlet söz dizimi başvurusu
-[Azure Active Directory cmdlet 'lerinde](/powershell/azure/install-adv2?view=azureadps-2.0)daha fazla Azure Active Directory PowerShell belgesi bulabilirsiniz.
+[Azure Active Directory cmdlet 'lerinde](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)daha fazla Azure Active Directory PowerShell belgesi bulabilirsiniz.
 
 ## <a name="additional-reading"></a>Ek okuma
 
