@@ -3,21 +3,24 @@ title: Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 description: Iş Ortağı Merkezi 'nde Microsoft ticari Market hesabı oluşturmayı öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: guide
-ms.date: 04/14/2020
-ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: 5a55d66bfed19f6d88d4ff13a9f59d7e791664cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092193"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
 Tekliflerinizi [Azure Market](https://azuremarketplace.microsoft.com/) veya [Microsoft AppSource](https://appsource.microsoft.com/)'de yayımlamak için iş ortağı merkezi 'nde ticari Market programında bir hesap oluşturmanız gerekir. Bu makalede bir Iş Ortağı Merkezi hesabı oluşturma ve ticari Market programına yeni yayımcılar ekleme konuları ele alınmaktadır.
 
 >[!IMPORTANT]
->[Bulut iş ortağı portalı](https://cloudpartner.azure.com) Iş Ortağı Merkezi 'ne taşınmış bir hesabınız varsa, yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için, [bulut iş ortağı portalı taşınan yayımcılar için](#for-publishers-who-are-moving-from-the-cloud-partner-portal)bkz..
+>Ticari Market 'teki teklifleri yayımlamak için bir şirket veya kuruluşla ilişkili bir iş hesabı kullanmanız gerekir. Kişisel hesaplar desteklenmez.
+
+>[!IMPORTANT]
+>Bulut İş Ortağı Portalı (CPP) ' de bir hesabınız varsa, bunu Iş Ortağı Merkezi 'ne taşıdık; Yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için, [bulut iş ortağı portalı taşınan yayımcılar için](#for-publishers-who-moved-from-the-cloud-partner-portal)bkz..
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -43,7 +46,7 @@ Iş Ortağı Merkezi 'ne yeni başladıysanız ve Microsoft İş Ortağı Ağı 
 - [Yayımcı profilinizi sağlama](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->Iş Ortağı Merkezi 'ne taşınmış bir [bulut iş ortağı portalı](https://cloudpartner.azure.com) hesabınız varsa, yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için, [bulut iş ortağı portalı taşınan yayımcılar için](#for-publishers-who-are-moving-from-the-cloud-partner-portal)bkz..
+>Bulut İş Ortağı Portalı bir hesabınız varsa, bunu Iş Ortağı Merkezi 'ne taşıdık; Yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için, [bulut iş ortağı portalı taşınan yayımcılar için](#for-publishers-who-moved-from-the-cloud-partner-portal)bkz..
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Iş ortağı merkezi kayıt sayfasında kaydolun
 
@@ -94,7 +97,7 @@ Her iki kayıt türü için şunları yapmanız gerekir:
 Hesap bilgilerinizin elinizin altında olduğundan emin olun.
 
 >[!IMPORTANT]
->[Bulut iş ortağı portalı](https://cloudpartner.azure.com/) Iş Ortağı Merkezi 'ne taşınmış bir hesabınız varsa, yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için, [bulut iş ortağı portalı taşınan yayımcılar için](#for-publishers-who-are-moving-from-the-cloud-partner-portal)bkz..
+>Bulut İş Ortağı Portalı bir hesabınız varsa, bunu Iş Ortağı Merkezi 'ne taşıdık; Yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için, [bulut iş ortağı portalı taşınan yayımcılar için](#for-publishers-who-moved-from-the-cloud-partner-portal)bkz..
 
 ### <a name="what-if-im-already-enrolled-in-the-microsoft-partner-network"></a>Microsoft İş Ortağı Ağı zaten kaydedildiyse ne yapmalıyım?
 
@@ -154,15 +157,13 @@ Iş Ortağı Merkezi ' nde oturum açtıktan sonra aşağıdakileri yaparak hesa
 
 Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. Daha fazla bilgi için bkz. [ticari Market 'e genel bakış](./commercial-marketplace-overview.md). Yayımcılar ekleme konusunda yardım için bkz. [ticari Market 'e yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
 
-## <a name="for-publishers-who-are-moving-from-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı taşınan yayımcılar için
+## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı taşınan yayımcılar için
 
-Hesabınız [bulut iş ortağı portalı](https://cloudpartner.azure.com)geçirilirse, yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez. Mevcut Bulut İş Ortağı Portalı hesabınızda oturum açtıktan sonra, e-posta ve başlık bildiriminde, yeni Iş Ortağı Merkezi hesabınıza özelleştirilmiş bir bağlantı almış olmanız gerekir.
+Bulut İş Ortağı Portalı hesabınız varsa, bunu Iş Ortağı Merkezi 'ne taşıdık. Yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez. Mevcut Bulut İş Ortağı Portalı hesabınızda oturum açtıktan sonra, e-posta ve başlık bildiriminde, yeni Iş Ortağı Merkezi hesabınıza özelleştirilmiş bir bağlantı almış olmanız gerekir.
 
 Özelleştirilmiş bağlantıyı seçtikten ve yeni Iş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, Iş Ortağı Merkezi 'nde [ticari Market panosuna](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) giderek hesabınıza dönebilirsiniz.
 
-Yayımlama sözleşmesi ve şirket profili bilgileri, yeni Iş Ortağı Merkezi hesabınıza geçirilir, daha önce ayarlanan hesap bilgileri, Kullanıcı hesapları ve izinler ve Bulut İş Ortağı Portalı hesabınızla ilişkili etkin tekliflerdir.
-
-Hesap bilgileriniz Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşındıktan sonra, hesap güncelleştirmelerini yapmak veya kullanıcıları, izinleri ve faturalandırmayı yönetmek için Bulut İş Ortağı Portalı artık kullanmayacaktır. Sınırlı bir süre için, Iş Ortağı Merkezi 'nde yaptığınız tüm hesap güncelleştirmeleri, son kullanım dışı olana kadar salt okunurdur Bulut İş Ortağı Portalı hesabınızda otomatik olarak güncelleştirilir.
+Yayımlama sözleşmesi ve şirket profili bilgileri, yeni Iş Ortağı Merkezi hesabınıza, daha önce ayarlanan hesap bilgileri, Kullanıcı hesapları ve izinler ve Bulut İş Ortağı Portalı hesabınızla ilişkili etkin tekliflerle birlikte geçiş.
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Ticari Market programına yeni yayımcılar ekleme
 

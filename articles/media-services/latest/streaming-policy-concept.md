@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091955"
 ---
 # <a name="streaming-policies"></a>Akış İlkeleri
 
-Azure Media Services v3 'de akış [ilkeleri](https://docs.microsoft.com/rest/api/media/streamingpolicies) , akış bulucular için akış protokollerini ve şifreleme seçeneklerini tanımlamanızı sağlar [.](streaming-locators-concept.md) Media Services v3, önceden deneme veya üretim için bunları kullanabilmeniz için bazı öntanımlı akış Ilkeleri sağlar. 
+Azure Media Services v3 'de akış [ilkeleri](/rest/api/media/streamingpolicies) , akış bulucular için akış protokollerini ve şifreleme seçeneklerini tanımlamanızı sağlar [.](streaming-locators-concept.md) Media Services v3, önceden deneme veya üretim için bunları kullanabilmeniz için bazı öntanımlı akış Ilkeleri sağlar. 
 
 Şu anda kullanılabilir önceden tanımlanmış akış Ilkeleri:<br/>
 * ' Predefined_DownloadOnly '
@@ -44,11 +44,11 @@ Resmi tam boyutlu görüntülemek için tıklayın.
 
 İçeriğinizi şifreliyorsanız bir [Içerik anahtarı ilkesi](content-key-policy-concept.md)oluşturmanız gerekir, **içerik anahtarı ilkesi** açık akış veya indirme için gerekli değildir. 
 
-Özel gereksinimleriniz varsa (örneğin, farklı protokoller belirtmek istiyorsanız, özel bir anahtar teslim hizmeti kullanmanız veya net bir ses izi kullanmanız gerekiyorsa), özel bir akış Ilkesi [oluşturabilirsiniz](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) . 
+Özel gereksinimleriniz varsa (örneğin, farklı protokoller belirtmek istiyorsanız, özel bir anahtar teslim hizmeti kullanmanız veya net bir ses izi kullanmanız gerekiyorsa), özel bir akış Ilkesi [oluşturabilirsiniz](/rest/api/media/streamingpolicies/create) . 
 
 ## <a name="get-a-streaming-policy-definition"></a>Akış Ilkesi tanımı alma  
 
-Bir akış Ilkesinin tanımını görmek istiyorsanız [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) ' i kullanın ve ilke adını belirtin. Örnek:
+Bir akış Ilkesinin tanımını görmek istiyorsanız [Get](/rest/api/media/streamingpolicies/get) ' i kullanın ve ilke adını belirtin. Örneğin:
 
 ### <a name="rest"></a>REST
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39f564bea8d300d2966afe27ff0239c527f038cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672336"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092822"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Bulut hizmeti, sanal makine veya Service Fabric tanılama verilerini Application Insights gönderin
 Bulut Hizmetleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric tümü, veri toplamak için Azure Tanılama uzantısını kullanır.  Azure tanılama, verileri Azure depolama tablolarına gönderir.  Ancak, Azure Tanılama uzantısı 1,5 veya sonraki bir sürümü kullanarak, verilerin tamamını veya bir alt kümesini diğer konumlara de kanal oluşturarak aktarabilirsiniz.
@@ -212,7 +213,6 @@ Ortak yapılandırma dosyasının bir örneği aşağıda verilmiştir
 - **Azure tanılama uzantısı tarafından toplanan blob verilerini Application Insights için gönderemezsiniz.** Örneğin, *dizinler* düğümü altında belirtilen her şey. Kilitlenme dökümlerinde, gerçek kilitlenme dökümü blob depolamaya gönderilir ve yalnızca kilitlenme dökümünün oluşturulduğu bir bildirim Application Insights gönderilir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* Application Insights [Azure tanılama bilgilerinizi görüntülemeyi](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) öğrenin.
+* Application Insights [Azure tanılama bilgilerinizi görüntülemeyi](../app/cloudservices.md) öğrenin.
 * Uygulamanızın Azure tanılama uzantısını etkinleştirmek için [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) 'i kullanın.
 * Uygulamanız için Azure tanılama uzantısını etkinleştirmek üzere [Visual Studio 'yu](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) kullanma
-

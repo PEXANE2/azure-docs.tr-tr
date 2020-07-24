@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 433768ddea6e250c66483ec3da4c7737b3538a1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092057"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay lisansı gereksinimleri ve yapılandırması 
 
@@ -84,7 +84,7 @@ FairPlay lisanslarını yapılandırmak için Media Services API kullanabilirsin
 > [!NOTE]
 > Genellikle yalnızca bir sertifika kümesine ve SORMANıZ gerektiğinden, FairPlay ilke seçeneklerini yalnızca bir kez yapılandırmak isteyeceksiniz.
 
-Aşağıdaki örnek, lisansı yapılandırmak için [.NET SDK Media Services](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) kullanır.
+Aşağıdaki örnek, lisansı yapılandırmak için [.NET SDK Media Services](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) kullanır.
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()

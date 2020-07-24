@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965289"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092771"
 ---
 # <a name="rendering-using-azure"></a>Azure ile işleme
 
@@ -79,7 +79,7 @@ Azure Batch kullanmanın birkaç yolu vardır ve bunların tümü Azure Batch i�
 * API'ler:
   * [Rest](/rest/api/batchservice), [.net](/dotnet/api/overview/azure/batch), [Python](/python/api/overview/azure/batch), [Java](/java/api/overview/azure/batch)veya diğer desteklenen API 'leri kullanarak kod yazın.  Geliştiriciler Azure Batch yeteneklerini bulut ya da şirket içinde bulunan mevcut uygulamalarına veya iş akışına tümleştirebilir.  Örneğin, [Autodesk Maya eklentisi](https://github.com/Azure/azure-batch-maya) Batch çağırmak, havuzları oluşturmak ve yönetmek, işleri ve görevleri göndermek ve durumu Izlemek Için Batch Python API 'sini kullanır.
 * Komut satırı araçları:
-  * [Azure komut satırı](/cli/azure/) veya [Azure PowerShell](/powershell/azure/overview) , Batch kullanımına betik eklemek için kullanılabilir.
+  * [Azure komut satırı](/cli/azure/) veya [Azure PowerShell](/powershell/azure/) , Batch kullanımına betik eklemek için kullanılabilir.
   * Özellikle, Batch CLı şablonu desteği havuzları oluşturmayı ve işleri göndermeyi çok daha kolay hale getirir.
 * Kullanıcı arabirimleri
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) , Batch hesaplarının yönetilmesine ve izlenmesine izin veren platformlar arası bir istemci aracıdır, ancak Azure Portal Kullanıcı arabirimine kıyasla daha zengin bazı yetenekler sağlar.  Desteklenen her uygulama için uyarlanmış bir havuz ve iş şablonları kümesi sağlanır ve kolayca havuzlar oluşturmak ve işleri göndermek için kullanılabilir.

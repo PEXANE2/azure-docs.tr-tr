@@ -5,11 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18d3460804528d736cfc74c1c2d358eb08013513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092975"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Çalışma alanı tabanlı Application Insights kaynakları (Önizleme)
 
@@ -24,7 +25,7 @@ Yeni deneyimi test etmek için [Azure Portal](https://portal.azure.com)oturum a�
 
 ![Çalışma alanı tabanlı Application Insights kaynağı](./media/create-workspace-resource/create-workspace-based.png)
 
-Zaten mevcut bir Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturma belgelerine başvurun](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Zaten mevcut bir Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturma belgelerine başvurun](../learn/quick-create-workspace.md).
 
 Genel Önizleme **çalışma alanı tabanlı kaynaklar şu anda Batı ABD 2, Doğu ABD ve Orta Güney ABD ile sınırlıdır.**
 
@@ -39,7 +40,7 @@ Mavi bağlantı metnine tıkladığınızda, yeni Birleşik çalışma alanı so
 
 ## <a name="copy-the-connection-string"></a>Bağlantı dizesini kopyalayın
 
-[Bağlantı dizesi](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
+[Bağlantı dizesi](./sdk-connection-string.md?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
 
 ## <a name="monitoring-configuration"></a>İzleme yapılandırması
 
@@ -51,14 +52,14 @@ Kod tabanlı uygulama izleme için, yalnızca uygun Application Insights SDK 's�
 
 Kod tabanlı izleme için bir Application Insights SDK 'Sı ayarlamaya yönelik ayrıntılı belgeler için dile/çerçeveye özgü belgelere başvurun:
 
-- [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-- [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-- [Modern konsol uygulamaları & arka plan görevleri (.NET/.NET Core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
-- [Klasik konsol uygulamaları (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
-- [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
-- [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-- [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
-- [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
+- [ASP.NET](./asp-net.md)
+- [ASP.NET Core](./asp-net-core.md)
+- [Modern konsol uygulamaları & arka plan görevleri (.NET/.NET Core)](./worker-service.md)
+- [Klasik konsol uygulamaları (.NET)](./console.md) 
+- [Java](./java-get-started.md?tabs=maven)
+- [JavaScript](./javascript.md)
+- [Node.js](./nodejs.md)
+- [Python](./opencensus-python.md)
 
 ### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>Codeless izleme ve Visual Studio kaynak oluşturma
 
@@ -101,7 +102,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-Bu komutla ilgili tam Azure CLı belgeleri için [Azure CLI belgelerine](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)başvurun.
+Bu komutla ilgili tam Azure CLı belgeleri için [Azure CLI belgelerine](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)başvurun.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -197,7 +198,7 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ölçümleri keşfetme](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics sorguları yazma](../../azure-monitor/app/analytics.md)
+* [Analytics sorguları yazma](../log-query/log-query-overview.md)
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md

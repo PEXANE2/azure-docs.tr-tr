@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750881"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092023"
 ---
 # <a name="diagnostic-logs-schemas"></a>Tanılama günlükleri şemaları
 
@@ -29,7 +30,7 @@ Bu makalede tanılama günlükleri şemaları Media Services açıklanmaktadır.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Üst düzey tanılama günlükleri şeması
 
-Üst düzey tanılama günlükleri şemasının ayrıntılı açıklaması için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../../azure-monitor/platform/tutorial-dashboards.md).
+Üst düzey tanılama günlükleri şemasının ayrıntılı açıklaması için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../../azure-monitor/platform/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema"></a>Anahtar teslim günlüğü şeması
 
@@ -37,7 +38,7 @@ Bu makalede tanılama günlükleri şemaları Media Services açıklanmaktadır.
 
 Bu özellikler, anahtar teslim günlüğü şemasına özeldir.
 
-|Name|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |keyId|İstenen anahtarın KIMLIĞI.|
 |Anahtar|Şu değerlerden biri olabilir: "Clear" (şifreleme yok), "FairPlay", "PlayReady" veya "Widevine".|

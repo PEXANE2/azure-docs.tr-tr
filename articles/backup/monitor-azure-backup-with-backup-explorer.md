@@ -4,11 +4,12 @@ description: Bu makalede, kasaların, aboneliklerde, bölgelerde ve kiracılar g
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715214"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092805"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Yedekleme Gezgini ile yedeklemelerinizi izleme
 
@@ -93,8 +94,8 @@ Azure portal panonuza sabitlemek için her bir tablonun veya grafiğin en üstü
 
 ## <a name="cross-tenant-views"></a>Çapraz kiracı görünümleri
 
-Çoklu kiracı ortamlarında abonelikler için temsilci erişimi olan bir Azure açık Kullanıcı kullanıyorsanız, varsayılan abonelik filtresini kullanabilirsiniz. Azure portal, ' ın sağ üst köşesindeki "filtre" simgesini seçerek verilerini görmek istediğiniz abonelikleri görüntüleyebilirsiniz. Bu özelliği kullandığınızda, yedek gezgin seçili aboneliklerinizde tüm kasaların bilgilerini toplar. Daha fazla bilgi edinmek için bkz. [Azure ışıklı kullanım nedir?](https://docs.microsoft.com/azure/lighthouse/overview).
+Çoklu kiracı ortamlarında abonelikler için temsilci erişimi olan bir Azure açık Kullanıcı kullanıyorsanız, varsayılan abonelik filtresini kullanabilirsiniz. Azure portal, ' ın sağ üst köşesindeki "filtre" simgesini seçerek verilerini görmek istediğiniz abonelikleri görüntüleyebilirsiniz. Bu özelliği kullandığınızda, yedek gezgin seçili aboneliklerinizde tüm kasaların bilgilerini toplar. Daha fazla bilgi edinmek için bkz. [Azure ışıklı kullanım nedir?](../lighthouse/overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Yedekleme verileriniz hakkında öngörü almak için Azure Izleyici 'yi nasıl kullanacağınızı öğrenin](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)
+[Yedekleme verileriniz hakkında öngörü almak için Azure Izleyici 'yi nasıl kullanacağınızı öğrenin](./backup-azure-monitoring-use-azuremonitor.md)

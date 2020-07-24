@@ -3,12 +3,12 @@ title: Hareket & ekran, uç cihazlarda video kaydetme-Azure
 description: Bu hızlı başlangıçta, (sanal) bir IP kamerasından canlı video akışını analiz etmek, herhangi bir hareketin mevcut olup olmadığını algılamak ve bu durumda bir MP4 video klibini, sınır cihazında yerel dosya sistemine kaydetmek için IoT Edge 'da canlı video analizinin nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 32f1ae5e9edbdbe522afb39bd56584cd2423dd33
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091870"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Hızlı başlangıç: Edge cihazlarındaki hareketi algılama ve video kaydetme
  
@@ -16,7 +16,7 @@ Bu hızlı başlangıçta, (benzetimli) bir IP kamerasından canlı video akış
 
 Bu makale, C# dilinde yazılan örnek kodu temel alır. Bu BT, [hareket Algıla ve olayları göster](detect-motion-emit-events-quickstart.md) hızlı başlangıç sayfasında oluşturulur. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/), aşağıdaki uzantılara sahip:
@@ -164,7 +164,7 @@ Bu hızlı başlangıç önkoşulları kapsamında, örnek kodu bir klasöre ind
      * İçin son çağrı `GraphTopologyList` , listenin artık boş olduğunu gösterir.
 
 ## <a name="interpret-results"></a>Sonuçları yorumlama 
-Medya grafiğini çalıştırdığınızda, hareket algılayıcısı işlemci düğümündeki sonuçlar, IoT Hub havuz düğümünden IoT Hub 'ına geçer. Visual Studio Code **Çıkış** penceresinde gördüğünüz iletiler bir `body` bölümü ve bir `applicationProperties` bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Medya grafiğini çalıştırdığınızda, hareket algılayıcısı işlemci düğümündeki sonuçlar, IoT Hub havuz düğümünden IoT Hub 'ına geçer. Visual Studio Code **Çıkış** penceresinde gördüğünüz iletiler bir `body` bölümü ve bir `applicationProperties` bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 Aşağıdaki iletilerde, canlı video analizi modülü, uygulama özelliklerini ve gövdenin içeriğini tanımlar.
 
@@ -252,9 +252,9 @@ MP4 klibini oynatmak için:
 1. [Azure kaynaklarınızı ayarlarken](detect-motion-emit-events-quickstart.md#set-up-azure-resources)oluşturulan kimlik bilgilerini kullanarak oturum açın. 
 1. Komut isteminde ilgili dizine gidin. Varsayılan konum */Home/lvaadmin/Samples/output*' dır. MP4 dosyalarını dizinde görmeniz gerekir.
 
-    ![Çıkış](./media/quickstarts/samples-output.png) 
+    ![Çıktı](./media/quickstarts/samples-output.png) 
 
-1. Dosyaları yerel makinenize kopyalamak için [Güvenli kopya (SCP)](https://docs.microsoft.com/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp) kullanın. 
+1. Dosyaları yerel makinenize kopyalamak için [Güvenli kopya (SCP)](../../virtual-machines/linux/copy-files-to-linux-vm-using-scp.md) kullanın. 
 1. [VLC medya oynatıcı](https://www.videolan.org/vlc/) veya başka bir MP4 oynatıcı kullanarak dosyaları yürütün.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -267,4 +267,4 @@ Diğer hızlı başlangıçlarını denemek istiyorsanız, oluşturduğunuz kayn
 * Gelişmiş kullanıcılar için ek güçlükleri gözden geçirin:
 
     * RTSP simülatörü kullanmak yerine RTSP 'yi destekleyen bir [IP kamera](https://en.wikipedia.org/wiki/IP_camera) kullanın. [ONVIF uyumlu ürünler](https://www.onvif.org/conformant-products) sayfasında RTSP 'YI destekleyen IP kameralarını bulabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
-    * Azure 'da Linux VM kullanmak yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) bölümündeki yönergeleri izleyin.
+    * Azure 'da Linux VM kullanmak yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge-linux.md)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](../../iot-edge/quickstart-linux.md) bölümündeki yönergeleri izleyin.

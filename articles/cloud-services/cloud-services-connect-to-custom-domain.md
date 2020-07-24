@@ -7,18 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75387029"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092720"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services rollerini Azure 'da barındırılan özel bir AD etki alanı denetleyicisine bağlama
 Önce Azure 'da bir sanal ağ (VNet) ayarlayacağız. Bundan sonra sanal ağa bir Active Directory Etki Alanı Denetleyicisi (Azure sanal makinesinde barındırılan) ekleyeceğiz. Daha sonra, önceden oluşturulmuş VNet 'e mevcut bulut hizmeti rollerini ekleyecek ve ardından bunları etki alanı denetleyicisine bağlayacağız.
 
 Başlamadan önce göz önünde bulundurmanız gereken birkaç şey vardır:
 
-1. Bu öğretici PowerShell kullanır, bu nedenle Azure PowerShell yüklü olduğundan ve başlamaya hazırlandığınızdan emin olun. Azure PowerShell ayarlama hakkında yardım almak için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
+1. Bu öğretici PowerShell kullanır, bu nedenle Azure PowerShell yüklü olduğundan ve başlamaya hazırlandığınızdan emin olun. Azure PowerShell ayarlama hakkında yardım almak için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/).
 2. AD etki alanı denetleyiciniz ve web/çalışan rolü örneklerinizin VNet 'te olması gerekir.
 
 Bu adım adım kılavuzu izleyin ve herhangi bir sorunla karşılaşırsanız makalenin sonunda bize bir yorum bırakın. Birisi sizi geri alacak (Evet, yorum okuyacağız).

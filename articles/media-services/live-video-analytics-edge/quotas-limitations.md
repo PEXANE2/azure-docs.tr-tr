@@ -3,11 +3,12 @@ title: IoT Edge kotaları üzerinde canlı video analizi-Azure
 description: Bu makalede, IoT Edge kotaları ve sınırlamaları hakkında canlı video analizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091819"
 ---
 # <a name="quotas-and-limitations"></a>Kotalar ve sınırlamalar
 
@@ -46,11 +47,8 @@ Modül başına en fazla 50 Graf topolojisi (Graphtopologyıset aracılığıyla
 * Sinyal kapısı işlemcisi
    * RTSP kaynağından hemen aşağı akış olmalıdır.
 * Varlık havuzu 
-   * Grafik topolojisi başına en çok bir düğüm olabilir.
-      * Bir varlık havuzu kullanılıyorsa, bir dosya havuzu bulunamaz veya tam tersi de geçerlidir.
    * RTSP kaynağı veya sinyal kapısı işlemcisinden hemen aşağı akış olmalıdır.
 * Dosya havuzu
-   * Grafik topolojisi başına en çok bir düğüm olabilir (bkz. varlık havuzunda ilgili notlardan biri).
    * Sinyal kapısı işlemcisinden hemen aşağı akış olmalıdır.
    * HTTP uzantısı işlemcisinin veya hareket algılama işlemcisinin hemen bir aşağı akış yapılamaz
 * IoT Hub havuzu
@@ -68,4 +66,4 @@ Hem hareket algılama hem de filtre hızı işlemci düğümleri kullanılıyors
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel Bakış](overview.md)
+[Genel bakış](overview.md)

@@ -4,18 +4,19 @@ description: Azure Kamu gibi bölgeler için varsayılan Azure Izleyici Applicat
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
-ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a072cd7e509642c36c783e3cc0fd78e4d5adc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194828"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092873"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılmak Application Insights
 
 Application Insights verileri belirli bölgelere göndermek için varsayılan uç nokta adreslerini geçersiz kılmanız gerekir. Her SDK, hepsi bu makalede açıklanan biraz farklı değişiklik gerektirir. Bu değişiklikler, örnek kodu ayarlamayı ve,, ve için yer tutucu değerlerini `QuickPulse_Endpoint_Address` , `TelemetryChannel_Endpoint_Address` `Profile_Query_Endpoint_address` belirli bölgeniz için gerçek uç nokta adresleriyle değiştirmeyi gerektirir. Bu makalenin sonunda, bu yapılandırmanın gerekli olduğu bölgelere yönelik uç nokta adreslerinin bağlantıları bulunur.
 
 > [!NOTE]
-> [Bağlantı dizeleri](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) Application Insights içindeki özel uç noktaları ayarlamanın yeni tercih edilen yöntemidir.
+> [Bağlantı dizeleri](./sdk-connection-string.md?tabs=net) Application Insights içindeki özel uç noktaları ayarlamanın yeni tercih edilen yöntemidir.
 
 ---
 
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure İşlevleri](#tab/functions)
 
-Azure Işlevleri için artık Işlevin uygulama ayarlarında ayarlanan [bağlantı dizelerini](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) kullanmanız önerilir. İşlevinizin uygulama ayarlarına işlevler bölmesinde erişmek için **Ayarlar**  >  **yapılandırma**  >  **uygulama ayarları**' nı seçin. 
+Azure Işlevleri için artık Işlevin uygulama ayarlarında ayarlanan [bağlantı dizelerini](./sdk-connection-string.md?tabs=net) kullanmanız önerilir. İşlevinizin uygulama ayarlarına işlevler bölmesinde erişmek için **Ayarlar**  >  **yapılandırma**  >  **uygulama ayarları**' nı seçin. 
 
 Ad: `APPLICATIONINSIGHTS_CONNECTION_STRING` değer:`Connection String Value`
 
@@ -155,7 +156,7 @@ Opencensus-Python SDK 'sının alma uç noktasını değiştirme Kılavuzu için
 
 ## <a name="regions-that-require-endpoint-modification"></a>Uç nokta değişikliği gerektiren bölgeler
 
-Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) ve [Azure Çin](https://docs.microsoft.com/azure/china/resources-developer-guide)' dir.
+Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](../../azure-government/compare-azure-government-global-azure.md#application-insights) ve [Azure Çin](/azure/china/resources-developer-guide)' dir.
 
 |Bölge |  Uç nokta adı | Değer |
 |-----------------|:------------|:-------------|
@@ -179,5 +180,5 @@ Opencensus-Python SDK 'sının alma uç noktasını değiştirme Kılavuzu için
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Kamu ile ilgili özel değişiklikler hakkında daha fazla bilgi edinmek için [Azure izleme ve yönetimine](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)yönelik ayrıntılı kılavuza başvurun.
-- Azure Çin hakkında daha fazla bilgi edinmek için [Azure Çin PlayBook](https://docs.microsoft.com/azure/china/)' a bakın.
+- Azure Kamu ile ilgili özel değişiklikler hakkında daha fazla bilgi edinmek için [Azure izleme ve yönetimine](../../azure-government/compare-azure-government-global-azure.md#application-insights)yönelik ayrıntılı kılavuza başvurun.
+- Azure Çin hakkında daha fazla bilgi edinmek için [Azure Çin PlayBook](/azure/china/)' a bakın.

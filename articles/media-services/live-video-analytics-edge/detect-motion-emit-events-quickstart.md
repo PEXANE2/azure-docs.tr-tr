@@ -3,12 +3,12 @@ title: Hareket ve yayma olaylarını algılama-Azure
 description: Bu hızlı başlangıçta, program aracılığıyla doğrudan yöntemleri çağırarak hareket ve yayma olaylarını algılamak için IoT Edge canlı video analizlerinin nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: 69486515125c624b3ef5d44aba6e6d8f7694a3cc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: fca773d0583bee3bef4e7254bcca95866b2205e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091928"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Hızlı başlangıç: hareket ve yayma olaylarını Algıla
 
@@ -18,7 +18,7 @@ Bu hızlı başlangıç, IoT Edge üzerinde canlı video analizlerini kullanmaya
 
 Bu makale, C# dilinde yazılan [örnek kodu](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp) temel alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * Aşağıdaki uzantılara sahip [Visual Studio Code](https://code.visualstudio.com/) :
@@ -36,17 +36,17 @@ Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 * IoT Hub
 * Depolama hesabı
 * Azure Media Services hesabı
-* Azure 'da [IoT Edge Runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) yüklüyken Linux sanal makinesi
+* Azure 'da [IoT Edge Runtime](../../iot-edge/how-to-install-iot-edge-linux.md) yüklüyken Linux sanal makinesi
 
 Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıtmak üzere [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanızı öneririz. Bunu yapmak için şu adımları uygulayın:
 
-1. [Azure Cloud Shell](https://shell.azure.com)'i açın.
+1. [Azure Cloud Shell](https://shell.azure.com)’i açın.
 1. İlk kez Cloud Shell kullanıyorsanız, bir depolama hesabı ve bir Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmeniz istenir. Cloud Shell oturum bilgileriniz için bir depolama hesabı oluşturmak üzere **depolama oluştur** ' u seçin. Bu depolama hesabı, komut dosyasının Azure Media Services hesabınızla kullanılmak üzere oluşturulacağı hesaptan ayrıdır.
 1. Cloud Shell penceresinin sol tarafındaki açılan menüde, ortamınız olarak **Bash** ' i seçin.
 
     ![Ortam Seçicisi](./media/quickstarts/env-selector.png)
 
-1. Şu komutu çalıştırın.
+1. Aşağıdaki komutu çalıştırın.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
@@ -119,7 +119,7 @@ Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığın
 
 Şablon dosyasından bildirim oluşturmak ve ardından Edge cihazına dağıtmak için bu adımları izleyin.
 
-1. Visual Studio Code'u açın.
+1. Visual Studio Code’u açın.
 1. **Azure ıOT hub** bölmesinin yanındaki IoT Hub bağlantı dizesini ayarlamak için **diğer eylemler** simgesini seçin. Dizeyi *src/buluttan cihazdan-Console-App/appsettings.js* dosyasından kopyalayabilirsiniz. 
 
     ![IOT bağlantı dizesi ayarla](./media/quickstarts/set-iotconnection-string.png)
@@ -228,7 +228,7 @@ IoT Edge modüldeki canlı video analizlerini kullanarak gelen canlı video akı
 
 ## <a name="interpret-results"></a>Sonuçları yorumlama
 
-Medya grafiğini çalıştırdığınızda, hareket algılayıcısı işlemci düğümündeki sonuçlar, IoT Hub havuz düğümünden IoT Hub 'ına geçer. Visual Studio Code **Çıkış** penceresinde gördüğünüz iletiler bir `body` bölümü ve bir `applicationProperties` bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Medya grafiğini çalıştırdığınızda, hareket algılayıcısı işlemci düğümündeki sonuçlar, IoT Hub havuz düğümünden IoT Hub 'ına geçer. Visual Studio Code **Çıkış** penceresinde gördüğünüz iletiler bir `body` bölümü ve bir `applicationProperties` bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 Aşağıdaki iletilerde, canlı video analizi modülü, uygulama özelliklerini ve gövdenin içeriğini tanımlar.
 

@@ -9,17 +9,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
-ms.openlocfilehash: 76cdffed813fd182980b36f848e0ae42f3226539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02f63af9c34424ed83ba01424c832334639f46c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092686"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell kullanarak Azure Cloud Services tanılamayı etkinleştirme
-Uygulama günlükleri, performans sayaçları vb. gibi tanılama verilerini bir bulut hizmetinden Azure Tanılama uzantısını kullanarak toplayabilirsiniz. Bu makalede, PowerShell kullanarak bir bulut hizmeti için Azure Tanılama uzantısının nasıl etkinleştirileceği açıklanır.  Bu makale için gereken önkoşullar için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview) .
+Uygulama günlükleri, performans sayaçları vb. gibi tanılama verilerini bir bulut hizmetinden Azure Tanılama uzantısını kullanarak toplayabilirsiniz. Bu makalede, PowerShell kullanarak bir bulut hizmeti için Azure Tanılama uzantısının nasıl etkinleştirileceği açıklanır.  Bu makale için gereken önkoşullar için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/) .
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Bulut Hizmeti dağıtımının bir parçası olarak tanılama uzantısını etkinleştirme
-Bu yaklaşım, bulut hizmetini dağıtmanın bir parçası olarak tanılama uzantısının etkinleştirilebileceği, sürekli tümleştirme türü senaryolar için geçerlidir. Yeni bir bulut hizmeti dağıtımı oluştururken, *Extensionconfiguration* parametresini [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) cmdlet 'ine geçirerek tanılama uzantısını etkinleştirebilirsiniz. *Extensionconfiguration* parametresi, [New-Azurezervicediagnokılarsextensionconfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) cmdlet 'i kullanılarak oluşturulabilen bir dizi tanılama yapılandırması alır.
+Bu yaklaşım, bulut hizmetini dağıtmanın bir parçası olarak tanılama uzantısının etkinleştirilebileceği, sürekli tümleştirme türü senaryolar için geçerlidir. Yeni bir bulut hizmeti dağıtımı oluştururken, *Extensionconfiguration* parametresini [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-3.7.0) cmdlet 'ine geçirerek tanılama uzantısını etkinleştirebilirsiniz. *Extensionconfiguration* parametresi, [New-Azurezervicediagnokılarsextensionconfig](/powershell/module/servicemanagement/azure.service/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) cmdlet 'i kullanılarak oluşturulabilen bir dizi tanılama yapılandırması alır.
 
 Aşağıdaki örnek, her birinin farklı bir tanılama yapılandırmasına sahip bir WebRole ve WorkerRole ile bulut hizmeti için tanılamayı nasıl etkinleştirekullanabileceğinizi gösterir.
 
@@ -91,7 +92,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 ```
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>Mevcut bir Bulut Hizmetinde tanılama uzantısını etkinleştirme
-Zaten çalışmakta olan bir bulut hizmetinde tanılama yapılandırmasını etkinleştirmek veya güncelleştirmek için [set-Azurezervicediagnokıkıma](/powershell/module/servicemanagement/azure/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) cmdlet 'ini kullanabilirsiniz.
+Zaten çalışmakta olan bir bulut hizmetinde tanılama yapılandırmasını etkinleştirmek veya güncelleştirmek için [set-Azurezervicediagnokıkıma](/powershell/module/servicemanagement/azure.service/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) cmdlet 'ini kullanabilirsiniz.
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -107,14 +108,14 @@ Set-AzureServiceDiagnosticsExtension -DiagnosticsConfiguration @($webrole_diagco
 ```
 
 ## <a name="get-current-diagnostics-extension-configuration"></a>Güncel tanılama uzantı yapılandırmasını alma
-Bir bulut hizmeti için geçerli tanılama yapılandırmasını almak üzere [Get-Azurezervicediagnokıkagama](/powershell/module/servicemanagement/azure/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) cmdlet 'ini kullanın.
+Bir bulut hizmeti için geçerli tanılama yapılandırmasını almak üzere [Get-Azurezervicediagnokıkagama](/powershell/module/servicemanagement/azure.service/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) cmdlet 'ini kullanın.
 
 ```powershell
 Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>Tanılama uzantısını kaldırma
-Bir bulut hizmetinde tanılamayı devre dışı bırakmak için, [Remove-Azurezervicediagnoyassextenma](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) cmdlet 'ini kullanabilirsiniz.
+Bir bulut hizmetinde tanılamayı devre dışı bırakmak için, [Remove-Azurezervicediagnoyassextenma](/powershell/module/servicemanagement/azure.service/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) cmdlet 'ini kullanabilirsiniz.
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"

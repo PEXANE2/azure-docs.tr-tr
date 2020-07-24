@@ -12,16 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 030a10e9138af32ee848009a14216c37567d9d2d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092006"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
 
-Microsoft Azure Media Services, bir [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints) , canlı ve isteğe bağlı içeriğinizi ortak akış medya protokollerinden (HLS veya Dash) birini kullanarak doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Ayrıca, **akış uç noktası** sektör lideri drms için dinamik (tam zamanında) şifreleme sağlar. 
+Microsoft Azure Media Services, bir [akış uç noktası](/rest/api/media/streamingendpoints) , canlı ve isteğe bağlı içeriğinizi ortak akış medya protokollerinden (HLS veya Dash) birini kullanarak doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Ayrıca, **akış uç noktası** sektör lideri drms için dinamik (tam zamanında) şifreleme sağlar. 
 
 Media Services bir hesap oluşturduğunuzda, bir durdurulmuş durumda sizin için **varsayılan** bir akış uç noktası oluşturulur. **Varsayılan** akış uç noktasını silemezsiniz. Hesap altında daha fazla akış uç noktası oluşturulabilir (bkz. [Kotalar ve sınırlar](limits-quotas-constraints.md)).
 
@@ -41,7 +41,7 @@ Varsayılan akış uç noktası kullanılırken `servicename` URL: olarak atlan�
 ### <a name="limitations"></a>Sınırlamalar
 
 * Akış uç noktası adı, en fazla 24 karakter uzunluğunda bir değer içerir.
-* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
+* Ad şu [Regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
 ## <a name="types"></a>Türler
 
@@ -49,7 +49,7 @@ Varsayılan akış uç noktası kullanılırken `servicename` URL: olarak atlan�
 
 Türler aşağıdaki tabloda açıklanmıştır:
 
-|Tür|Ölçek birimleri|Description|
+|Tür|Ölçek birimleri|Açıklama|
 |--------|--------|--------|  
 |**Standart**|0|Varsayılan akış uç noktası **Standart** bir türdür — ayarlanarak Premium türüne değiştirilebilir `scaleUnits` .|
 |**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. Bir **Premium** türüne `scaleUnits` (akış birimleri) ayarlayarak geçiş yapabilirsiniz. `scaleUnits`200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
@@ -77,7 +77,7 @@ Aşamalı indirme|Yes|Yes
 
 ## <a name="streaming-endpoint-properties"></a>Akış uç noktası özellikleri
 
-Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları sağlar. Yeni bir akış uç noktası ve tüm özelliklerin açıklamalarını oluşturma örnekleri için bkz. [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
+Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları sağlar. Yeni bir akış uç noktası ve tüm özelliklerin açıklamalarını oluşturma örnekleri için bkz. [akış uç noktası](/rest/api/media/streamingendpoints/create).
 
 - `accessControl`: Bu akış uç noktası için şu güvenlik ayarlarını yapılandırmak için kullanılır: Akamai Imza üst bilgisi kimlik doğrulama anahtarları ve bu uç noktaya bağlanmasına izin verilen IP adresleri. Bu özellik yalnızca `cdnEnabled` false olarak ayarlandığında ayarlanabilir.
 
@@ -92,7 +92,7 @@ Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları s
 
 - `cdnProfile`: `cdnEnabled` True olarak ayarlandığında değerleri de geçirebilirsiniz `cdnProfile` . `cdnProfile`CDN uç nokta noktasının oluşturulacağı CDN profilinin adıdır. Var olan bir cdnProfile sağlayabilirsiniz veya yenisini kullanabilirsiniz. Değer NULL ise ve `cdnEnabled` true ise, "AzureMediaStreamingPlatformCdnProfile" varsayılan değeri kullanılır. Belirtilen `cdnProfile` zaten varsa, altında bir uç nokta oluşturulur. Profil yoksa, yeni bir profil otomatik olarak oluşturulur.
 - `cdnProvider`: CDN etkinleştirildiğinde değerleri de geçirebilirsiniz `cdnProvider` . `cdnProvider`hangi sağlayıcının kullanılacağını denetler. Şu anda üç değer desteklenir: "StandardVerizon", "PremiumVerizon" ve "Standardadkamai". Değer sağlanmazsa ve `cdnEnabled` true ise, "StandardVerizon" kullanılır (varsayılan değer).
-- `crossSiteAccessPolicies`: Çeşitli istemciler için çapraz site erişim ilkeleri belirtmek için kullanılır. Daha fazla bilgi için bkz. [etki alanları arası ilke dosyası belirtimi](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) ve [bir hizmetin etki alanı sınırları genelinde kullanılabilir hale getirilmesi](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx). Ayarlar yalnızca Kesintisiz Akış için geçerlidir.
+- `crossSiteAccessPolicies`: Çeşitli istemciler için çapraz site erişim ilkeleri belirtmek için kullanılır. Daha fazla bilgi için bkz. [etki alanları arası ilke dosyası belirtimi](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) ve [bir hizmetin etki alanı sınırları genelinde kullanılabilir hale getirilmesi](/previous-versions/azure/azure-services/gg185950(v=azure.100)). Ayarlar yalnızca Kesintisiz Akış için geçerlidir.
 - `customHostNames`: Bir akış uç noktasını, özel bir ana bilgisayar adına yönlendirilmiş trafiği kabul edecek şekilde yapılandırmak için kullanılır. Bu özellik standart ve Premium akış uç noktaları için geçerlidir ve şu durumlarda ayarlanabilir `cdnEnabled` : false.
 
     Etki alanı adının sahipliğinin Media Services tarafından onaylanması gerekir. Media Services, `CName` kullanımda olan etki alanına eklenecek bir bileşen olarak Media Services hesap kimliğini içeren bir kayıt isteyerek etki alanı adı sahipliğini doğrular. Örnek olarak, "sports.contoso.com" için, akış uç noktası için özel bir ana bilgisayar adı olarak kullanılmak üzere, için bir kayıt `<accountId>.contoso.com` Media Services doğrulama ana bilgisayar adlarından birine işaret etmek üzere yapılandırılmalıdır. Doğrulama ana bilgisayar adı, verifydns ' den oluşur \<mediaservices-dns-zone> .

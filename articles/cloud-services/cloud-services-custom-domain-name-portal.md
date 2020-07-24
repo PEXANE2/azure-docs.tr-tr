@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092737"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure bulut hizmeti için özel bir etki alanı adı yapılandırma
 Bir bulut hizmeti oluşturduğunuzda, Azure onu **cloudapp.net**'in bir alt etki alanına atar. Örneğin, bulut hizmetiniz "contoso" olarak adlandırılmışsa, kullanıcılarınız uygulamanıza benzer bir URL üzerinden erişebilecektir `http://contoso.cloudapp.net` . Azure, bir sanal IP adresi de atar.
@@ -42,7 +43,7 @@ CNAME kaydı, **contoso.com** veya **www \. contoso.com**gibi *belirli* bir etki
 > [!NOTE]
 > Bazı etki alanı kayıt şirketlerinde, yalnızca www contoso.com gibi bir CNAME kaydı kullanırken (örneğin, contoso.com gibi) alt etki alanlarını eşlemenizi sağlar \. . CNAME kayıtları hakkında daha fazla bilgi için, kaydediciniz tarafından verilen belgelere, [CNAME kaydı üzerindeki Vikipedi entry](https://en.wikipedia.org/wiki/CNAME_record)veya [IETF etki alanı adları-uygulama ve belirtim](https://tools.ietf.org/html/rfc1035) belgesine bakın.
 
-### <a name="a-record"></a>Bir kayıt
+### <a name="a-record"></a>A kaydı
 *A* kaydı, **contoso.com** veya **www \. contoso.com**gibi bir etki alanını veya ** \* . contoso.com**gibi bir *joker etki alanını* bir IP adresine eşler. Azure bulut hizmeti söz konusu olduğunda hizmetin sanal IP 'si. Bu nedenle, bir CNAME kaydı üzerinden bir kaydın ana avantajı, \* **mail.contoso.com**, **login.contoso.com**veya **www \. contso.com**gibi birden çok alt etki alanı için istekleri işleyecek **. contoso.com**gibi bir joker karakter kullanan bir girişiniz olabilir.
 
 > [!NOTE]
@@ -62,7 +63,7 @@ Bir CNAME kaydı oluşturmak için, kaydediciniz tarafından sunulan araçları 
        ![Site URL 'sini gösteren hızlı bakış bölümü][csurl]
 
        **VEYA**
-   * [Azure PowerShell](/powershell/azure/overview)'i yükleyip yapılandırın ve ardından aşağıdaki komutu kullanın:
+   * [Azure PowerShell](/powershell/azure/)'i yükleyip yapılandırın ve ardından aşağıdaki komutu kullanın:
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -95,7 +96,7 @@ Bir kayıt oluşturmak için, önce bulut hizmetinizin sanal IP adresini bulman�
        ![VIP 'yi gösteren hızlı bakış bölümü][vip]
 
        **VEYA**
-   * [Azure PowerShell](/powershell/azure/overview)'i yükleyip yapılandırın ve ardından aşağıdaki komutu kullanın:
+   * [Azure PowerShell](/powershell/azure/)'i yükleyip yapılandırın ve ardından aşağıdaki komutu kullanın:
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -134,7 +135,7 @@ Bu örnek, kök etki alanı için bir kayıt oluşturmayı gösterir. Tüm alt e
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure portalındaki]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
 

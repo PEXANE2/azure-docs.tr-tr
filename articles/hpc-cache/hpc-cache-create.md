@@ -4,17 +4,18 @@ description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 07/10/2020
 ms.author: v-erkel
-ms.openlocfilehash: 894595ee3660532bf046a39e994fa669f7c6b002
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092499"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC önbelleği oluşturma
 
-Önbelleğinizi oluşturmak için Azure portal kullanın.
+Önbelleğinizi oluşturmak için Azure portal veya Azure CLı 'yi kullanın.
 
 ![En altta oluştur düğmesi ile Azure portal önbellekte genel bakış ekran görüntüsü](media/hpc-cache-home-page.png)
 
@@ -22,11 +23,13 @@ ms.locfileid: "84434075"
 
 [![video küçük resmi: Azure HPC Cache: Setup (video sayfasını ziyaret etmek için tıklayın)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
+## <a name="portal"></a>[Portal](#tab/azure-portal)
+
 ## <a name="define-basic-details"></a>Temel ayrıntıları tanımla
 
 ![Azure portal içindeki proje ayrıntıları sayfasının ekran görüntüsü](media/hpc-cache-create-basics.png)
 
-**Proje ayrıntıları**' nda, önbelleği barındıracak aboneliği ve kaynak grubunu seçin. Aboneliğin [erişim](hpc-cache-prereqs.md#azure-subscription) listesinde olduğundan emin olun.
+**Proje ayrıntıları**' nda, önbelleği barındıracak aboneliği ve kaynak grubunu seçin. Aboneliğin [erişim](hpc-cache-prerequisites.md#azure-subscription) listesinde olduğundan emin olun.
 
 **Hizmet Ayrıntıları**' nda, önbellek adını ve bu diğer öznitelikleri ayarlayın:
 
@@ -56,9 +59,9 @@ Azure HPC Cache, önbellek isabet oranlarını en üst düzeye çıkarmak için 
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Azure Key Vault şifrelemeyi etkinleştir (isteğe bağlı)
 
-Önbelleğiniz, müşteri tarafından yönetilen şifreleme anahtarlarını destekleyen bir bölgedeyse, **önbellek** ve **Etiketler** sekmeleri arasında **disk şifreleme anahtarları** sayfası görüntülenir. Yayın zamanında, bu seçenek Doğu ABD, Orta Güney ABD ve Batı ABD 2 desteklenir.
+Önbelleğiniz, müşteri tarafından yönetilen şifreleme anahtarlarını destekleyen bir bölgedeyse, **önbellek** ve **Etiketler** sekmeleri arasında **disk şifreleme anahtarları** sayfası görüntülenir. Bölge desteği hakkında daha fazla bilgi edinmek için [Bölgesel kullanılabilirliği](hpc-cache-overview.md#region-availability) okuyun.
 
-Önbellek depolamayla kullanılan şifreleme anahtarlarını yönetmek istiyorsanız **disk şifreleme anahtarları** sayfasında Azure Key Vault bilgilerinizi sağlayın. Anahtar Kasası, önbellek ile aynı bölgede ve aynı abonelikte olmalıdır.
+Önbellek depolama alanı için kullanılan şifreleme anahtarlarını yönetmek istiyorsanız **disk şifreleme anahtarları** sayfasında Azure Key Vault bilgilerinizi sağlayın. Anahtar Kasası, önbellek ile aynı bölgede ve aynı abonelikte olmalıdır.
 
 Müşteri tarafından yönetilen anahtarlar gerekmiyorsa, bu bölümü atlayabilirsiniz. Azure, verileri varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifreler. Daha fazla bilgi edinmek için [Azure depolama şifrelemesini](../storage/common/storage-service-encryption.md) okuyun.
 
@@ -94,6 +97,99 @@ Oluşturma tamamlandığında, yeni Azure HPC önbellek örneğinin bağlantıs�
 
 > [!NOTE]
 > Önbelleğiniz müşteri tarafından yönetilen şifreleme anahtarlarını kullanıyorsa, dağıtım durumu tamamlanmadan önce önbellek kaynaklar listesinde görünebilir. Önbelleğin durumu **anahtar beklerken** , anahtar kasasını kullanmak için [bunu yetkilendirebilirsiniz](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) .
+
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+## <a name="create-the-cache-with-azure-cli"></a>Azure CLı ile önbellek oluşturma
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+> [!NOTE]
+> Azure CLı Şu anda müşteri tarafından yönetilen şifreleme anahtarlarıyla bir önbellek oluşturmayı desteklemiyor. Azure portal kullanın.
+
+Yeni bir Azure HPC önbelleği oluşturmak için [az HPC-Cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) komutunu kullanın.
+
+Bu değerleri sağlayın:
+
+* Önbellek kaynak grubu adı
+* Önbellek adı
+* Azure bölgesi
+* Önbellek alt ağı şu biçimde:
+
+  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"``
+
+  Önbellek alt ağının en az 64 IP adresi (/24) gerekir ve diğer kaynakları da barındırabilir.
+
+* Önbellek kapasitesi. İki değer, Azure HPC önbelleğinizin en yüksek aktarım hızını ayarlar:
+
+  * Önbellek boyutu (GB olarak)
+  * Önbellek altyapısında kullanılan sanal makinelerin SKU 'SU
+
+  [az HPC-Cache SKU listesi](/cli/azure/ext/hpc-cache/hpc-cache/skus) , kullanılabilir SKU 'ları ve her biri için geçerli önbellek boyutu seçeneklerini gösterir. Önbellek boyutu seçenekleri 3 TB ile 48 TB arasındadır, ancak yalnızca bazı değerler desteklenir.
+
+  Bu grafik, bu belgenin hazırlanması sırasında hangi önbellek boyutunun ve SKU birleşimlerinin geçerli olduğunu gösterir (2020 Temmuz).
+
+  | Önbellek boyutu | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | evet         | hayır          | hayır          |
+  | 6144 GB    | evet         | evet         | hayır          |
+  | 12288 GB   | evet         | evet         | evet         |
+  | 24576 GB   | hayır          | evet         | evet         |
+  | 49152 GB   | hayır          | hayır          | evet         |
+
+  Fiyatlandırma, aktarım hızı ve önbelleğinizi iş akışınız için uygun şekilde boyutlandırma hakkında önemli bilgiler için Portal yönergeleri sekmesindeki **önbellek kapasitesini ayarla** bölümünü okuyun.
+
+Önbellek oluşturma örneği:
+
+```azurecli
+az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
+    --location "eastus" --cache-size-gb "3072" \
+    --subnet "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default" \
+    --sku-name "Standard_2G"
+```
+
+Önbellek oluşturma birkaç dakika sürer. Başarılı olduğunda Create komutu aşağıdakine benzer bir çıktı döndürür:
+
+```azurecli
+{
+  "cacheSizeGb": 3072,
+  "health": {
+    "state": "Healthy",
+    "statusDescription": "The cache is in Running state"
+  },
+  "id": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619",
+  "location": "eastus",
+  "mountAddresses": [
+    "10.3.0.17",
+    "10.3.0.18",
+    "10.3.0.19"
+  ],
+  "name": "my-cache-0619",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "doc-demo-rg",
+  "sku": {
+    "name": "Standard_2G"
+  },
+  "subnet": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default",
+  "tags": null,
+  "type": "Microsoft.StorageCache/caches",
+  "upgradeStatus": {
+    "currentFirmwareVersion": "5.3.42",
+    "firmwareUpdateDeadline": "0001-01-01T00:00:00+00:00",
+    "firmwareUpdateStatus": "unavailable",
+    "lastFirmwareUpdate": "2020-04-01T15:19:54.068299+00:00",
+    "pendingFirmwareVersion": null
+  }
+}
+```
+
+İleti, şu öğeler dahil bazı yararlı bilgiler içerir:
+
+* İstemci bağlama adresleri-istemcileri önbelleğe bağlamaya hazırsanız bu IP adreslerini kullanın. Daha fazla bilgi edinmek için [Azure HPC önbelleğini bağlama](hpc-cache-mount.md) makalesini okuyun.
+* Yükseltme durumu-bir yazılım güncelleştirmesi yayınlandığında, bu ileti değişecektir. [Önbellek yazılımını](hpc-cache-manage.md#upgrade-cache-software) uygun bir zamanda el ile yükseltebilirsiniz veya birkaç gün sonra otomatik olarak uygulanır.
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

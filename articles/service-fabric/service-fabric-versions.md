@@ -3,12 +3,12 @@ title: Azure Service Fabric 'de desteklenen küme sürümleri
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 88c91558360f6be8343c955f8e6185366cd3279a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211197ced52ca094d375d3ae212957fa25a523fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808923"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091649"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
@@ -41,8 +41,9 @@ Aşağıdaki tabloda Service Fabric sürümleri ve destek bitiş tarihleri liste
 | 7.0.466.* | 6,5. * |Sürüm 4,0 ' den küçük veya buna eşit|1 Ağustos 2020 |
 | 7.0.470.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |1 Ağustos 2020  |
 | 7.0.472.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |1 Ağustos 2020  |
-| 7.1.409.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
-| 7.1.417.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
+| 7.1.409.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
+| 7.1.417.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
+| 7.1.428.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -113,3 +114,4 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 7,0 CU6 | 7.0.472.9590 | 7.0.471.1 |
 | 7,1 RTO | 7.1.409.9590 | 7.1.410.1 |
 | 7,1 CU1 | 7.1.417.9590 | 7.1.418.1 |
+| 7,1 CU2 UYGULAMAZSANıZ | 7.1.428.9590 | 7.1.428.1 |

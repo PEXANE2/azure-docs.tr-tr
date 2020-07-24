@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 001d408eaa7ce637bd7cc1f1183dd8748cddf539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8e637cd3691e7b1acf1988efe40fc80561a183
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189531"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091683"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 için Çevrimdışı PlayReady Akışı  
 
@@ -28,7 +28,7 @@ ms.locfileid: "82189531"
 > * [Sürüm 2](offline-playready-streaming-windows-10.md)
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services, DRM koruması ile çevrimdışı indirmeyi/kayıttan yürütmeyi destekler. Bu makalede, Windows 10/PlayReady istemcileri için Azure Media Services çevrimdışı desteği ele alınmaktadır. Aşağıdaki makalelerde iOS/FairPlay ve Android/Widevine cihazları için çevrimdışı mod desteği hakkında bilgi edinebilirsiniz:
 
@@ -48,7 +48,7 @@ Bu bölüm, çevrimdışı modda Kayıttan yürütmede bazı arka plan sağlar, 
 * MP4 birçok oyuncu, kodlayıcı araçları tarafından desteklenir, ancak MP4 kapsayıcısı ile DRM arasında bağlama yoktur;
 * Uzun dönemde CENC ile CFF, gitmenin yoludur. Ancak, günümüzde araçlar/yürütücü ekosistemi henüz desteklemez. Bugün bir çözüme ihtiyacımız var.
  
-Fikir: H264/AAC ile kesintisiz akış ([pff](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) dosya biçimi PLAYREADY (AES-128 Mrk) ile bir bağlamaya sahiptir. Tek bir kesintisiz akış. IMV dosyası (videonun videoda zaman içinde olduğu varsayılarak), bir fMP4 ve kayıttan yürütme için kullanılabilir. Kesintisiz bir akış içeriği PlayReady şifrelemesi aracılığıyla gelirse her. ismv dosyası PlayReady korumalı parçalanmış bir MP4 haline gelir. Tercih edilen bit hızında bir. ISMV dosyası seçebiliriz ve bunu indirmek üzere. mp4 olarak yeniden adlandırabilirsiniz.
+Fikir: H264/AAC ile kesintisiz akış ([pff](/iis/media/smooth-streaming/protected-interoperable-file-format)) dosya biçimi PLAYREADY (AES-128 Mrk) ile bir bağlamaya sahiptir. Tek bir kesintisiz akış. IMV dosyası (videonun videoda zaman içinde olduğu varsayılarak), bir fMP4 ve kayıttan yürütme için kullanılabilir. Kesintisiz bir akış içeriği PlayReady şifrelemesi aracılığıyla gelirse her. ismv dosyası PlayReady korumalı parçalanmış bir MP4 haline gelir. Tercih edilen bit hızında bir. ISMV dosyası seçebiliriz ve bunu indirmek üzere. mp4 olarak yeniden adlandırabilirsiniz.
 
 Aşamalı indirme için PlayReady korumalı MP4 barındırmak için iki seçenek vardır:
 

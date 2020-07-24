@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d6e60329f3c61811aa8a42528244b2883ff4b685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092397"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
-Bu makalede, bir Güvenilir Platform Modülü (TPM) kullanarak bir Linux IoT Edge cihazında otomatik sağlamayı test etme işlemi gösterilmektedir. [Cihaz sağlama hizmeti](../iot-dps/index.yml)Azure IoT Edge cihazları otomatik olarak sağlayabilirsiniz. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [Otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
+Bu makalede, bir Güvenilir Platform Modülü (TPM) kullanarak bir Linux IoT Edge cihazında otomatik sağlamayı test etme işlemi gösterilmektedir. [Cihaz sağlama hizmeti](../iot-dps/index.yml)ile Azure IoT Edge cihazları otomatik olarak sağlayabilirsiniz. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [Otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
 
 Görevler aşağıdaki gibidir:
 
@@ -31,7 +31,7 @@ Görevler aşağıdaki gibidir:
 >
 > Fiziksel bir cihaz kullanıyorsanız, bu makaledeki [sağlama bilgilerini bir fiziksel cihazdan alma](#retrieve-provisioning-information-from-a-physical-device) bölümüne geçebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)' y i etkin bir Windows geliştirme makinesi. Bu makalede bir Ubuntu sunucu VM 'sini çalıştıran Windows 10 kullanılır.
 * Etkin bir IoT Hub.
@@ -55,7 +55,7 @@ Sanal bir anahtar, sanal makinenizin bir fiziksel ağa bağlanmasını sağlar.
 
 4. Yeni sanal anahtarınızda bir ad verin, örneğin **EdgeSwitch**. Bağlantı türünün **dış ağ**olarak ayarlandığından emin olun ve ardından **Tamam**' ı seçin.
 
-5. Bir açılır pencere, ağ bağlantısının kesintiye uğrayabileceği konusunda sizi uyarır. Devam etmek için **Evet** ' i seçin.
+5. Bir açılır pencere, ağ bağlantısının kesintiye uğrayabileceği konusunda sizi uyarır. Devam etmek için **Evet**’i seçin.
 
 Yeni sanal anahtarı oluştururken hata görürseniz, başka hiçbir anahtarın Ethernet bağdaştırıcısını kullandığından ve başka hiçbir anahtarın aynı adı kullankullanılmadığından emin olun.
 
@@ -87,7 +87,7 @@ VM 'niz oluşturulduktan sonra, cihazı otomatik olarak sağlamanıza olanak tan
 
 4. **Güvenilir Platform Modülü etkinleştir**' i işaretleyin.
 
-5. **Tamam**'a tıklayın.  
+5. **Tamam** düğmesine tıklayın.  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Sanal makineyi başlatın ve TPM verilerini toplayın
 

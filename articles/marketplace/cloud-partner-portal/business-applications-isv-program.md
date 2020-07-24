@@ -3,15 +3,16 @@ title: Microsoft Business Applications Bağımsız Yazılım Satıcısı (ISV) C
 description: Business Applications ISV Connect programına nasıl ekleneceği aşağıda açıklanmaktadır.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 6/25/2020
+ms.topic: article
+author: qianw211
 ms.author: dsindona
-ms.openlocfilehash: 37d8c26bd41f06a39d4404c142aef5faa0bf199c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 7/14/2020
+ms.openlocfilehash: 65d18bca4f8f7b5d655d91ece1c9d966311b701b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170250"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092227"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications Bağımsız Yazılım Satıcısı (ISV) Connect Programı katılım kılavuzu
 
@@ -38,7 +39,7 @@ Bu programa katılım, [Business Applications eki](https://aka.ms/bizappsisvadde
 
 1.  [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
 2.  **Ayarları** (dişli simgesi) seçin ve **Geliştirici ayarları**' nı seçin.
-3.  **Anlaşmaları**seçin. 
+3.  **Anlaşmaları**seçin.
 4.  Sürüm bağlantısını seçin ve sözleşmeyi görüntüleyin.
 5.  Sözleşmeyi kabul edip kabul etmek için **sözleşmeyi kabul et**' i seçin.
 
@@ -69,15 +70,14 @@ Business Applications ISV Connect programında kayıt için son adım, mevcut uy
 - [Finans ve Işlemler için Dynamics 365](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> Uygulamalarınızı AppSource 'ta canlı tutmak için 6 ayda bir yeniden belirlemeniz gerekir. Ayrıntılar için bkz. Market ilkesi [ticari Market sertifika ilkeleri](https://docs.microsoft.com/legal/marketplace/certification-policies). 
+> Uygulamanızı AppSource 'ta canlı tutmak için her 6 ayda bir yeniden sertifikalandırmalısınız. Ayrıntılar için bkz. Market ilkesi [ticari Market sertifika ilkeleri](https://docs.microsoft.com/legal/marketplace/certification-policies). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Hesabınız hakkında yardım almak için hesap yöneticinize danışın veya [Microsoft Iş ortağı desteği](https://aka.ms/marketplacepublishersupport) ile iletişime geçin. Business Applications ISV Connect programı hakkında genel bilgi için bkz.:
 
-- **[ISV 'Ler için Business Applications (çevrimiçi makale)](https://aka.ms/bizappsisvweb)**
-
-- **[Business Applications ISV 'Ler için yeni programa genel bakış (PDF)](https://aka.ms/bizappsisvprogram)**
-
-- **[ISV Connect program Ilkeleri](https://aka.ms/bizappsisvpolicies)**
-
+- [ISV 'ler için Business Applications](https://partner.microsoft.com/solutions/business-applications/isv-overview) (çevrimiçi makale)
+- [Business Applications ISV 'ler Için yeni programa genel bakış](https://aka.ms/BizAppsISVProgram) (PDF)
+- [BUSINESS APPLICATIONS ISV Connect program hakkında SSS](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf) (PDF)
+- [Business Applications ISV 'ler Için yaklaşan program](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) (blog gönderisi)
+- [ISV Connect program ilkeleri](https://aka.ms/bizappsisvpolicies) (PDF)

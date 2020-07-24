@@ -4,13 +4,14 @@ description: Azure Cosmos DB hesabınız için müşteri tarafından yönetilen 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: thweiss
-ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092634"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault ile Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -227,7 +228,15 @@ Azure Cosmos hesabınız tarafından kullanılan müşteri tarafından yönetile
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Yeni bir anahtar sürümü oluştur":::
 
-- Hesabınızın özelliğini güncelleştirerek, şu anda kullanılan anahtarı tamamen farklı bir anahtarla değiştirin `keyVaultKeyUri` . PowerShell 'de nasıl yapılır:
+- Hesabınızdaki anahtar URI 'sini güncelleştirerek Şu anda tamamen farklı bir anahtarla kullanılan anahtarı değiştirin. Azure portal Azure Cosmos hesabınıza gidin ve sol menüden **veri şifrelemeyi** seçin:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Veri şifreleme menü girdisi":::
+
+    Ardından, **anahtar URI** 'sini kullanmak istediğiniz yeni anahtarla değiştirin ve **Kaydet**' i seçin:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="Anahtar URI 'sini Güncelleştir":::
+
+    PowerShell 'de aynı sonucu elde etmek için şu adımları uygulayın:
 
     ```powershell
     $resourceGroupName = "myResourceGroup"
@@ -286,7 +295,11 @@ Bu özellik şu anda yalnızca yeni hesaplar için kullanılabilir.
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>Azure Cosmos hesabmda müşteri tarafından yönetilen anahtarların etkinleştirilip etkinleştirilmediğini nasıl anlayabilirim?
 
-Azure Cosmos hesabınızın ayrıntılarını programlı bir şekilde getirip özelliğin varlığını arayabilirsiniz `keyVaultKeyUri` . [PowerShell](#using-powershell) ve [Azure CLI 'yi kullanma](#using-azure-cli)yolları için yukarıdaki bölümüne bakın.
+Azure portal Azure Cosmos hesabınıza gidin ve Sol menüdeki **veri şifreleme** girişini izleyin; Bu giriş varsa, hesabınızda müşteri tarafından yönetilen anahtarlar etkinleştirilir:
+
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Veri şifreleme menü girdisi":::
+
+Ayrıca, Azure Cosmos hesabınızın ayrıntılarını programlı bir şekilde getirip özelliğin varlığını arayabilirsiniz `keyVaultKeyUri` . [PowerShell](#using-powershell) ve [Azure CLI 'yi kullanma](#using-azure-cli)yolları için yukarıdaki bölümüne bakın.
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Müşteri tarafından yönetilen anahtarlar yedeklemeyi nasıl etkiler?
 

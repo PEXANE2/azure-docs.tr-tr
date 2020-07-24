@@ -3,15 +3,16 @@ title: IoT Edge-Azure 'da canlı video Analizte doğrudan Yöntemler kullanma
 description: IoT Edge canlı video analizi, çeşitli doğrudan yöntemler sunar. Doğrudan Yöntemler, bu konuda açıklanan kuralları temel alır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091836"
 ---
 # <a name="direct-methods"></a>Doğrudan yöntemler
 
-IoT Edge canlı video analizi, IoT Hub çağrılabilen çeşitli doğrudan yöntemler sunar. Doğrudan Yöntemler, başarılı veya başarısız olmaları durumunda (Kullanıcı tarafından belirtilen zaman aşımından sonra) bir HTTP çağrısına benzer bir cihazla bir istek-yanıt etkileşimini temsil eder. Bu yaklaşım, cihazın yanıt verip vermediği bağımsız olarak, anlık eylem kursunun farklı olduğu senaryolar için yararlıdır. Daha fazla bilgi için bkz. [IoT Hub doğrudan yöntemleri anlama ve çağırma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods).
+IoT Edge canlı video analizi, IoT Hub çağrılabilen çeşitli doğrudan yöntemler sunar. Doğrudan Yöntemler, başarılı veya başarısız olmaları durumunda (Kullanıcı tarafından belirtilen zaman aşımından sonra) bir HTTP çağrısına benzer bir cihazla bir istek-yanıt etkileşimini temsil eder. Bu yaklaşım, cihazın yanıt verip vermediği bağımsız olarak, anlık eylem kursunun farklı olduğu senaryolar için yararlıdır. Daha fazla bilgi için bkz. [IoT Hub doğrudan yöntemleri anlama ve çağırma](../../iot-hub/iot-hub-devguide-direct-methods.md).
 
 Bu konu, bu yöntemleri ve kuralları açıklamaktadır.
 
@@ -141,7 +142,7 @@ Bu doğrudan yöntem tek bir grafik topolojisi alır.
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Varlık bulundu|  200 |YOK
+|Varlık bulundu|  200 |Yok
 |Genel Kullanıcı hataları    |400 aralığı  ||
 |Varlık bulunamadı   |404        ||
 |Genel sunucu hataları| 500 aralığı       ||
@@ -192,8 +193,8 @@ Anahtar yönleri:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-Var olan varlık güncelleştirildi |200|   YOK|
-Yeni varlık oluşturuldu  |201|   YOK|
+Var olan varlık güncelleştirildi |200|   Yok|
+Yeni varlık oluşturuldu  |201|   Yok|
 Genel Kullanıcı hataları |400 aralığı  ||
 Grafik doğrulama hataları |400    |GraphValidationError|
 Modül doğrulama hataları|   400 |ModuleValidationError|
@@ -228,8 +229,8 @@ Tek bir grafik topolojisini siler.
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Varlık silindi|    200|    YOK|
-|Varlık bulunamadı|  204|    YOK|
+|Varlık silindi|    200|    Yok|
+|Varlık bulunamadı|  204|    Yok|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Grafik topolojisine bir veya daha fazla grafik örneği tarafından başvuruluyor| 409 |Graphtopologyuse|
 |Genel sunucu hataları| 500 aralığı   ||
@@ -277,7 +278,7 @@ Filtre ölçütleriyle eşleşen tüm grafik topolojilerinin bir listesini alır
 
 #### <a name="filter-support"></a>Filtre desteği
 
-|Çalışma      |Alan (lar)   |İşleçler|
+|İşlem      |Alan (lar)   |İşleçler|
 |---|---|---|
 |$orderby|name  |ASC|
 
@@ -286,7 +287,7 @@ Filtre ölçütleriyle eşleşen tüm grafik topolojilerinin bir listesini alır
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Başarılı|   200 |YOK|
+|Başarılı|   200 |Yok|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Genel sunucu hataları| 500 aralığı   ||
 
@@ -324,7 +325,7 @@ Tek bir grafik örneği alır:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Varlık bulundu   |200|   YOK|
+|Varlık bulundu   |200|   Yok|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Varlık bulunamadı|  404 ||
 |Genel sunucu hataları| 500 aralığı   ||
@@ -374,8 +375,8 @@ Anahtar yönleri:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Var olan varlık güncelleştirildi    |200    |YOK|
-|Yeni varlık oluşturuldu|    201 |YOK|
+|Var olan varlık güncelleştirildi    |200    |Yok|
+|Yeni varlık oluşturuldu|    201 |Yok|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Grafik doğrulama hataları    |400|   GraphValidationError|
 |Modül doğrulama hataları|  400 |ModuleValidationError|
@@ -415,8 +416,8 @@ Anahtar yönleri:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Grafik başarıyla silindi|    200|    YOK|
-|Grafik bulunamadı|   204|    YOK|
+|Grafik başarıyla silindi|    200|    Yok|
+|Grafik bulunamadı|   204|    Yok|
 |Genel Kullanıcı hataları    |400 aralığı  ||
 |Grafik "durduruldu" durumunda değil    |409    |OperationNotAllowedInState|
 |Genel sunucu hataları| 500 aralığı   ||
@@ -465,7 +466,7 @@ Filtre ölçütleriyle eşleşen tüm grafik örneklerinin listesini alır.
 
 #### <a name="filter-support"></a>Filtre desteği
 
-|Çalışma  |   Alan (lar)|   İşleçler|
+|İşlem  |   Alan (lar)|   İşleçler|
 |---|---|---|
 |$orderby|  name|   ASC|
 
@@ -473,7 +474,7 @@ Filtre ölçütleriyle eşleşen tüm grafik örneklerinin listesini alır.
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Başarılı    |200    |YOK|
+|Başarılı    |200    |Yok|
 |Genel Kullanıcı hataları|   400 aralığı   ||
 |Genel sunucu hataları| 500 aralığı   ||
 
@@ -517,8 +518,8 @@ Anahtar yönleri
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Grafik başarıyla etkinleştirildi   |200    |YOK|
-|Yeni varlık oluşturuldu |201|   YOK|
+|Grafik başarıyla etkinleştirildi   |200    |Yok|
+|Yeni varlık oluşturuldu |201|   Yok|
 |Genel Kullanıcı hataları    |400 aralığı  ||
 |Modül doğrulama hataları   |400|   ModuleValidationError|
 |Kaynak doğrulama hataları|    409|    ResourceValidationError|
@@ -566,8 +567,8 @@ Anahtar yönleri:
 
 |Koşul  |Durum kodu    |Ayrıntılı hata kodu|
 |---|---|---|
-|Grafik başarıyla etkinleştirildi   |200|   YOK|
-|Yeni varlık oluşturuldu |201|   YOK|
+|Grafik başarıyla etkinleştirildi   |200|   Yok|
+|Yeni varlık oluşturuldu |201|   Yok|
 |Genel Kullanıcı hataları    |400 aralığı  ||
 |Grafik etkinleştiriliyor durumunda   |409|   OperationNotAllowedInState|
 |Genel sunucu hataları  |500 aralığı  ||

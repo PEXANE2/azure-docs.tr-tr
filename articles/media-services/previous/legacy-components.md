@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
-ms.openlocfilehash: 94a70a1234d902787f248890f0cb538a4ba9c2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d961ab58e900a6d619ec64297c783abdb7b6ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921088"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091700"
 ---
 # <a name="azure-media-services-legacy-components"></a>Eski Azure Media Services bileşenleri
 
@@ -34,13 +35,13 @@ Ayrıca, aşağıdaki Media Analytics medya işlemcilerinin kullanımdan kaldır
  
 |Medya işlemci adı|Emeklilik tarihi|Ek notlar|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)|1 Ocak 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştiriliyor. Daha fazla bilgi için, bkz. [Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md).|
-|[Azure Media Indexer](media-services-index-content.md)|1 Mart 2023|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştiriliyor. Daha fazla bilgi için bkz. [Azure Media Indexer 'den Azure Media Services 'ye geçirme video Indexer](migrate-indexer-v1-v2.md)|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)|1 Ocak 2020|Bu medya işlemcisi [Azure Media Services video Indexer](../video-indexer/index.yml)ile değiştiriliyor. Daha fazla bilgi için, bkz. [Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md).|
+|[Azure Media Indexer](media-services-index-content.md)|1 Mart 2023|Bu medya işlemcisi [Azure Media Services video Indexer](../video-indexer/index.yml)ile değiştiriliyor. Daha fazla bilgi için bkz. [Azure Media Indexer 'den Azure Media Services 'ye geçirme video Indexer](migrate-indexer-v1-v2.md)|
 |[Hareket algılama](media-services-motion-detection.md)|1 Haziran 2020|Şu anda değişiklik planı yok.|
 |[Video özetleme](media-services-video-summarization.md)|1 Haziran 2020|Şu anda değişiklik planı yok.|
-|[Video optik karakter tanıma](media-services-video-optical-character-recognition.md)|1 Haziran 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştiriliyor. Ayrıca, [Azure Media Services v3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)kullanmayı düşünün. <br/>Bkz. [Azure Media Services v3 önayarlarını karşılaştırma ve video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[Yüz Algılayıcısı](media-services-face-and-emotion-detection.md)|1 Haziran 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştiriliyor. Ayrıca, [Azure Media Services v3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)kullanmayı düşünün. <br/>Bkz. [Azure Media Services v3 önayarlarını karşılaştırma ve video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[Content Moderator](media-services-content-moderation.md)|1 Haziran 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştiriliyor. Ayrıca, [Azure Media Services v3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)kullanmayı düşünün. <br/>Bkz. [Azure Media Services v3 önayarlarını karşılaştırma ve video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
+|[Video optik karakter tanıma](media-services-video-optical-character-recognition.md)|1 Haziran 2020|Bu medya işlemcisi [Azure Media Services video Indexer](../video-indexer/index.yml)ile değiştiriliyor. Ayrıca, [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)kullanmayı düşünün. <br/>Bkz. [Azure Media Services v3 önayarlarını karşılaştırma ve video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[Yüz Algılayıcısı](media-services-face-and-emotion-detection.md)|1 Haziran 2020|Bu medya işlemcisi [Azure Media Services video Indexer](../video-indexer/index.yml)ile değiştiriliyor. Ayrıca, [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)kullanmayı düşünün. <br/>Bkz. [Azure Media Services v3 önayarlarını karşılaştırma ve video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[Content Moderator](media-services-content-moderation.md)|1 Haziran 2020|Bu medya işlemcisi [Azure Media Services video Indexer](../video-indexer/index.yml)ile değiştiriliyor. Ayrıca, [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md)kullanmayı düşünün. <br/>Bkz. [Azure Media Services v3 önayarlarını karşılaştırma ve video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

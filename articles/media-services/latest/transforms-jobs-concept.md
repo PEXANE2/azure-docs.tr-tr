@@ -12,15 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73571230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091938"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services dönüşümler ve Işler
 
-Bu konu, [dönüşümler](https://docs.microsoft.com/rest/api/media/transforms) ve [işlerle](https://docs.microsoft.com/rest/api/media/jobs) ilgili ayrıntıları verir ve bu varlıklar arasındaki ilişkiyi açıklar.
+Bu konu, [dönüşümler](/rest/api/media/transforms) ve [işlerle](/rest/api/media/jobs) ilgili ayrıntıları verir ve bu varlıklar arasındaki ilişkiyi açıklar.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -57,7 +58,7 @@ Videoları kodlamaya veya çözümlemeye yönelik ortak görevleri yapılandırm
 
 ### <a name="viewing-schema"></a>Şemayı görüntüleme
 
-Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net sdk](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)veya diğer Media Services v3 SDK başvuru belgelerindeki önceden ayarlanmış tanımları ( **standardencoderönayar**gibi) da görüntüleyebilirsiniz.
+Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net sdk](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)veya diğer Media Services v3 SDK başvuru belgelerindeki önceden ayarlanmış tanımları ( **standardencoderönayar**gibi) da görüntüleyebilirsiniz.
 
 ### <a name="creating-transforms"></a>Dönüşümler oluşturma
 
@@ -65,7 +66,7 @@ REST, CLı veya yayımlanmış SDK 'Lardan herhangi birini kullanarak dönüşü
 
 ### <a name="updating-transforms"></a>Dönüşümler güncelleştiriliyor
 
-[Dönüşümünü](https://docs.microsoft.com/rest/api/media/transforms)güncelleştirmeniz gerekiyorsa **güncelleştirme** işlemini kullanın. Açıklamada değişiklik yapmak veya temel alınan Transformoutin öncelikleri için tasarlanmıştır. Tüm devam eden işler tamamlandığında bu tür güncelleştirmelerin yapılması önerilir. Tarifi yeniden yazmayı düşünüyorsanız, yeni bir dönüşüm oluşturmanız gerekir.
+[Dönüşümünü](/rest/api/media/transforms)güncelleştirmeniz gerekiyorsa **güncelleştirme** işlemini kullanın. Açıklamada değişiklik yapmak veya temel alınan Transformoutin öncelikleri için tasarlanmıştır. Tüm devam eden işler tamamlandığında bu tür güncelleştirmelerin yapılması önerilir. Tarifi yeniden yazmayı düşünüyorsanız, yeni bir dönüşüm oluşturmanız gerekir.
 
 ### <a name="transform-object-diagram"></a>Nesne diyagramını Dönüştür
 
@@ -77,7 +78,7 @@ Tam boyutunu görüntülemek için görüntüyü seçin.
 
 ## <a name="jobs"></a>İşler
 
-Bir **iş** , belirli bir giriş videosunun veya ses içeriğinin **dönüşümünü** uygulamak için Media Services yapılan gerçek istedir. Dönüşüm oluşturulduktan sonra, Media Services API 'Leri veya yayımlanmış SDK 'Lardan herhangi birini kullanarak işleri gönderebilirsiniz. **İş** , giriş videonun konumu ve çıktının konumu gibi bilgileri belirtir. Giriş videolarınızın konumunu kullanarak şunları yapabilirsiniz: HTTPS URL 'Leri, SAS URL 'Leri veya [varlıklar](https://docs.microsoft.com/rest/api/media/assets).  
+Bir **iş** , belirli bir giriş videosunun veya ses içeriğinin **dönüşümünü** uygulamak için Media Services yapılan gerçek istedir. Dönüşüm oluşturulduktan sonra, Media Services API 'Leri veya yayımlanmış SDK 'Lardan herhangi birini kullanarak işleri gönderebilirsiniz. **İş** , giriş videonun konumu ve çıktının konumu gibi bilgileri belirtir. Giriş videolarınızın konumunu kullanarak şunları yapabilirsiniz: HTTPS URL 'Leri, SAS URL 'Leri veya [varlıklar](/rest/api/media/assets).  
 
 ### <a name="job-input-from-https"></a>HTTPS 'den iş girişi
 
@@ -93,7 +94,7 @@ Giriş içeriği zaten bir varlık içinde veya içerik yerel dosyada depolanıy
 
 ### <a name="updating-jobs"></a>Işler güncelleştiriliyor
 
-[İş varlığındaki güncelleştirme](https://docs.microsoft.com/rest/api/media/jobs) işlemi, iş gönderildikten sonra *açıklamayı* ve *Öncelik* özelliklerini değiştirmek için kullanılabilir. *Priority* özelliğinde yapılan bir değişiklik, ancak iş hala sıraya alınmış durumdaysa geçerlidir. İş işleme başlamışsa veya tamamlandıysa, önceliğin değiştirilmesi etkisizdir.
+[İş varlığındaki güncelleştirme](/rest/api/media/jobs) işlemi, iş gönderildikten sonra *açıklamayı* ve *Öncelik* özelliklerini değiştirmek için kullanılabilir. *Priority* özelliğinde yapılan bir değişiklik, ancak iş hala sıraya alınmış durumdaysa geçerlidir. İş işleme başlamışsa veya tamamlandıysa, önceliğin değiştirilmesi etkisizdir.
 
 ### <a name="job-object-diagram"></a>İş nesnesi diyagramı
 
@@ -115,7 +116,7 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Hata kodları](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [Hata kodları](/rest/api/media/jobs/get#joberrorcode)
 * [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](entities-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

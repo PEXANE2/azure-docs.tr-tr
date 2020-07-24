@@ -3,11 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: fd607ee027b46cf386180338440e6530da911302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28260728532d9db52b8d36488c2e456bd11803ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261040"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091788"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -20,6 +21,23 @@ Bu makalede hakkında bilgi verilmektedir:
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
 
+## <a name="july-13-2020"></a>13 Temmuz 2020
+
+Modülün Temmuz 2020 yenilemesi için bu yayın etiketi:
+
+```
+     mcr.microsoft.com/media/live-video-analytics:1.0.2
+```
+
+> [!NOTE]
+> Hızlı başlangıç ve öğreticiler bölümünde, dağıtım bildirimleri 1 (canlı-video-analiz: 1) etiketini kullanır. Bu nedenle, bu tür bildirimleri yeniden dağıtmak Edge > cihazlarınızda modülü güncellemelidir.
+
+### <a name="new-features"></a>Yeni özellikler
+* Artık bir varlık havuzu düğümünün yanı sıra bir sinyal kapısı işlemcisi düğümünün bir dosya havuzu düğümü aşağı akış olan Graph topolojileri oluşturabilirsiniz. Bir [örnek için bkz](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) ..
+
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+* İstenen özellikleri doğrulamaya yönelik iyileştirmeler
+
 ## <a name="june-1-2020"></a>1 Haziran 2020
 
 Bu sürüm, IoT Edge üzerindeki canlı video analizinin ilk genel önizleme sürümüdür. Yayın etiketi
@@ -30,7 +48,7 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin ilk genel önizleme sü
 
 ### <a name="supported-functionalities"></a>Desteklenen işlevler
 * Seçtiğiniz AI modüllerini kullanarak canlı video akışlarını çözümleyin ve isteğe bağlı olarak, uç cihazında veya bulutta video kaydedin
-* IoT Edge tarafından [desteklenen](https://docs.microsoft.com/azure/iot-edge/support) Linux AMD64 işletim sistemlerinde kullanın
+* IoT Edge tarafından [desteklenen](../../iot-edge/support.md) Linux AMD64 işletim sistemlerinde kullanın
 * IoT Hub Azure portal veya Visual Studio Code kullanarak modül dağıtın ve yapılandırın
 * [Grafik topolojilerini ve grafik örneklerini](media-graph-concept.md#media-graph-topologies-and-instances) , aşağıdaki doğrudan Yöntem çağrıları aracılığıyla uzaktan veya yerel olarak yönetin
 
@@ -46,4 +64,4 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin ilk genel önizleme sü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel Bakış](overview.md)
+[Genel bakış](overview.md)

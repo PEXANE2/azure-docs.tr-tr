@@ -2,13 +2,13 @@
 title: Service Fabric ve kapsayıcılara genel bakış
 description: Mikro hizmet uygulamalarını dağıtmak için Service Fabric ve kapsayıcıların kullanımına genel bakış. Bu makalede, kapsayıcıların nasıl kullanılabileceği ve Service Fabric içindeki kullanılabilir yetenekler hakkında genel bir bakış sunulmaktadır.
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091666"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric ve kapsayıcılar
 
@@ -53,7 +53,7 @@ Linux tabanlı bir öğretici için bkz. [Linux üzerinde ilk Service Fabric kap
 
 #### <a name="windows-server-containers"></a>Windows Server kapsayıcıları
 
-Windows Server 2016, yalıtım düzeyine göre farklılık gösteren iki farklı kapsayıcı türü sağlar. Windows Server kapsayıcıları ve Docker kapsayıcıları, hem ad alanı hem de dosya sistemi yalıtımı içerdiğinden benzerdir çünkü çekirdek, üzerinde çalıştıkları konakla birlikte paylaşımda bulunur. Linux 'ta, bu yalıtım geleneksel olarak cgroups ve ad alanları tarafından sağlanmış ve Windows Server kapsayıcıları benzer şekilde davranır.
+Windows Server 2016 ve üzeri yalıtım düzeyine göre farklılık gösteren iki farklı kapsayıcı türü sağlar. Windows Server kapsayıcıları ve Docker kapsayıcıları, hem ad alanı hem de dosya sistemi yalıtımı içerdiğinden benzerdir çünkü çekirdek, üzerinde çalıştıkları konakla birlikte paylaşımda bulunur. Linux 'ta, bu yalıtım geleneksel olarak cgroups ve ad alanları tarafından sağlanmış ve Windows Server kapsayıcıları benzer şekilde davranır.
 
 Hyper-V desteğiyle Windows kapsayıcıları, hiçbir kapsayıcı işletim sistemi çekirdeğini başka bir kapsayıcı veya konakla paylaştığı için daha fazla yalıtım ve güvenlik sağlar. Bu daha yüksek güvenlik yalıtımıyla, Hyper-V etkin kapsayıcılar, büyük olasılıkla çok kiracılı senaryolara yöneliktir.
 Windows tabanlı bir öğretici için bkz. [Windows 'da ilk Service Fabric kapsayıcı uygulamanızı oluşturma](service-fabric-get-started-containers.md).
@@ -73,7 +73,10 @@ Bir kapsayıcının iyi bir seçenek olduğu tipik örnekler aşağıda verilmi�
 
 ## <a name="service-fabric-support-for-containers"></a>Kapsayıcılar için Service Fabric desteği
 
-Service Fabric, Linux üzerinde Docker kapsayıcıları ve Windows Server 2016 ' de Windows Server kapsayıcıları ile birlikte Hyper-V yalıtım modu desteğini destekler. 
+Service Fabric, Linux üzerinde Docker kapsayıcıları ve Windows Server 2016 ve üzeri Windows Server kapsayıcıları ile birlikte Hyper-V yalıtım modu desteğini destekler.
+
+> [!NOTE]
+> Kapsayıcılar yerel tek düğümlü Service Fabric kümelerinde (OneBox 'ta Linux kümeleri ve Yerel Service Fabric yüklemelerinde Windows kümeleri) desteklenmez.
 
 Service Fabric, kapsayıcının birden çok hizmet çoğaltmalarının yerleştirildiği bir uygulama konağını temsil ettiği bir [uygulama modeli](service-fabric-application-model.md) sağlar. Service Fabric Ayrıca, yerleşik Service Fabric programlama modellerini kullanmadığınız [Konuk yürütülebilir bir senaryoyu](service-fabric-guest-executables-introduction.md) destekler, bunun yerine bir kapsayıcı içinde herhangi bir dil veya çerçeve kullanılarak yazılmış mevcut bir uygulamayı paketleyin. Bu senaryo, kapsayıcılar için ortak kullanım durumdur.
 

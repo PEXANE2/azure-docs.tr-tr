@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091989"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>Akış uç noktası (başlangıç) hataları 
+# <a name="streaming-endpoint-origin-errors"></a>Akış Uç Noktası (Kaynak) hataları 
 
 Bu konuda Azure Media Services [akış uç noktası hizmetinden](streaming-endpoint-concept.md)alabileceğiniz hatalar açıklanmaktadır.
 
-## <a name="400-bad-request"></a>400 Hatalı Istek
+## <a name="400-bad-request"></a>400 Hatalı İstek
 
 İstek geçersiz bilgiler içeriyor ve bu hata kodlarıyla ve aşağıdaki nedenlerden biri nedeniyle reddedildi:
 
@@ -66,7 +66,7 @@ Aşağıdaki nedenlerden biri nedeniyle isteğe izin verilmiyor:
 |MPE_METADATA_NOT_FOUND |0x80890257 |Bildirimde belirli meta veriler bulunamadı veya depolama alanından yeniden temellendirme bulunamıyor. |
 |MPE_STORAGE_RESOURCE_NOT_FOUND |0x808900ED |Depolama Işlemi hatası, kaynak bulunamadı. |
 
-## <a name="409-conflict"></a>409 çakışması
+## <a name="409-conflict"></a>409 Çakışma
 
 Veya işlemindeki bir kaynak için belirtilen KIMLIK, `PUT` `POST` var olan bir kaynak tarafından alındı. Bu sorunu çözmek için kaynak için başka bir KIMLIK kullanın.
 
@@ -82,7 +82,7 @@ Veya işlemindeki bir kaynak için belirtilen KIMLIK, `PUT` `POST` var olan bir 
 
 ## <a name="412-precondition-failure"></a>412 Önkoşul hatası
 
-İşlem, sunucuda bulunan sürümden farklı bir eTag belirtti, diğer bir deyişle, iyimser eşzamanlılık hatası. Kaynağın en son sürümünü okuduktan sonra isteği yeniden deneyin ve istekte eTag 'i güncelleştirin.
+İşlem, sunucuda bulunan sürümden farklı bir eTag belirtti, diğer bir deyişle, iyimser eşzamanlılık hatası. Kaynağın en son sürümünü okuyup istekteki eTag’i güncelleştirdikten sonra isteği yeniden deneyin.
 
 |Hata kodu|Onaltılık değer |Hata açıklaması|
 |---|---|---|
@@ -163,7 +163,7 @@ Canlı makaleler ve örnekler için bkz.:
 - [Kavram: canlı olaylar ve canlı çıktılar](live-events-outputs-concept.md)
 - [Örnek: canlı akış öğreticisi](stream-live-tutorial-with-api.md)
 
-## <a name="416-range-not-satisfiable"></a>416 Aralık Satisfiable
+## <a name="416-range-not-satisfiable"></a>416 Aralık Karşılanamıyor
 
 |Hata kodu|Onaltılık değer |Hata açıklaması|
 |---|---|---|
@@ -184,10 +184,10 @@ Canlı makaleler ve örnekler için bkz.:
 
 ## <a name="503-service-unavailable"></a>503 Hizmet Kullanılamıyor
 
-Sunucu şu anda istekleri alamıyor. Bu hata, hizmete aşırı istek oluşmasına neden olabilir. Media Services azaltma mekanizması, hizmette aşırı istek yapan uygulamalar için kaynak kullanımını kısıtlar.
+Sunucu şu anda istekleri alamıyor. Bu hata hizmetin aşırı istek almasından kaynaklanıyor olabilir. Media Services azaltma mekanizması hizmete çok sayıda istek gönderen uygulamaların kaynak kullanımını kısıtlar.
 
 > [!NOTE]
-> 503 hatası aldığınız neden hakkında daha ayrıntılı bilgi edinmek için hata iletisini ve hata kodu dizesini kontrol edin. Bu hata her zaman daraltma anlamına gelmez.
+> 503 hatasını alma nedeniniz hakkında daha fazla bilgi edinmek için hata iletisini ve hata kodu dizesini kontrol edin. Bu hata her zaman azaltma anlamına gelmez.
 > 
 
 |Hata kodu|Onaltılık değer |Hata açıklaması|
@@ -200,7 +200,7 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Kodlama hata kodları](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [Kodlama hata kodları](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services kavramlar](concepts-overview.md)
 - [Kotalar ve sınırlar](limits-quotas-constraints.md)
 

@@ -7,11 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 1db7937cb574ce62986f25e0bfa688dc54b5c606
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700608"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092516"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin uyumluluğu
 Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) geçiş adımları belirtimini yakından izler, ancak uygulamada Azure Cosmos DB özgü farklılıklar vardır. Desteklenen Gremlin adımlarının listesini öğrenmek için bkz. [GREMLIN API tel protokolü desteği](gremlin-support.md) makalesi.
@@ -68,7 +69,7 @@ Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/do
     g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
     ```
 
-    [Gremlin `executionProfile()` Step] (Graf-Execution-profile.MD) kullanarak sorguların performansını gözden geçirebilirsiniz.
+    [Gremlin `executionProfile()` adımını](graph-execution-profile.md)kullanarak sorguların performansını gözden geçirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Geri bildirim paylaşmak ve takımınızın sizin için önemli olan özelliklere odaklanmasına yardımcı olmak için [Cosmos DB Kullanıcı sesi](https://feedback.azure.com/forums/263030-azure-cosmos-db) sayfasını ziyaret edin.

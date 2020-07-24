@@ -3,12 +3,12 @@ title: Azure Arc etkin Kubernetes kümesini kapsayıcılar için Azure Izleyici 
 description: Bu makalede, Azure Arc etkin Kubernetes kümelerinde kapsayıcılar için Azure Izleyici ile izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b1adbd5c1f9f0710a814c91872d3f8a9f1afb50f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261061"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092890"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc etkin Kubernetes kümesini izlemeyi etkinleştir
 
@@ -32,7 +32,7 @@ Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir:
 
 - Desteklenen ana ve çalışan düğümleri için Linux işletim sistemi sürümü: Ubuntu (18,04 LTS ve 16,04 LTS).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -63,7 +63,7 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
     >[!IMPORTANT]
     >Yay etkin Kubernetes kümelerini izlemek için desteklenen en düşük aracı sürümü ciprod04162020 veya üzeri bir sürüm.
 
-- PowerShell komut dosyalı metodunu kullanarak izlemeyi etkinleştirirseniz [PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-6) gereklidir.
+- PowerShell komut dosyalı metodunu kullanarak izlemeyi etkinleştirirseniz [PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) gereklidir.
 
 - Bash komut dosyası yöntemini kullanarak izlemeyi etkinleştirirseniz [Bash sürüm 4](https://www.gnu.org/software/bash/) gerekir.
 
@@ -212,7 +212,7 @@ Ara sunucu yapılandırma değeri aşağıdaki sözdizimine sahiptir:`[protocol:
 |proxyhost | Proxy sunucusunun adresi veya FQDN 'si |
 |port | Proxy sunucusu için isteğe bağlı bağlantı noktası numarası |
 
-Örneğin, `http://user01:password@proxy01.contoso.com:3128`
+Örnek: `http://user01:password@proxy01.contoso.com:3128`
 
 Protokolü **http**olarak BELIRTIRSENIZ, http istekleri SSL/TLS güvenli bağlantı kullanılarak oluşturulur. Ara sunucunuzun SSL/TLS protokollerini desteklemesi gerekir.
 

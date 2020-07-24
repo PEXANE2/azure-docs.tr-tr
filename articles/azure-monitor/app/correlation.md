@@ -7,11 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092992"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -33,7 +34,7 @@ Mikro hizmetler ortamında, bileşenlerden izlemeler farklı depolama öğelerin
 
 ## <a name="example"></a>Örnek
 
-Şimdi örneği inceleyelim. Hisse senedi fiyatları adlı bir uygulama, hisse senedi adlı bir dış API kullanarak bir stokun geçerli pazar fiyatını gösterir. Hisse senedi fiyatları uygulaması, kullanarak istemci Web tarayıcısının açtığı hisse senedi sayfası adlı bir sayfa içerir `GET /Home/Stock` . Uygulama, HTTP çağrısını kullanarak hisse senedi API 'sini sorgular `GET /api/stock/value` .
+Bir örneğe göz atalım. Hisse senedi fiyatları adlı bir uygulama, hisse senedi adlı bir dış API kullanarak bir stokun geçerli pazar fiyatını gösterir. Hisse senedi fiyatları uygulaması, kullanarak istemci Web tarayıcısının açtığı hisse senedi sayfası adlı bir sayfa içerir `GET /Home/Stock` . Uygulama, HTTP çağrısını kullanarak hisse senedi API 'sini sorgular `GET /api/stock/value` .
 
 Bir sorgu çalıştırarak elde edilen telemetrisini çözümleyebilirsiniz:
 
@@ -301,15 +302,15 @@ Bu kod çalıştırıldığında, konsolunda aşağıdaki şekilde yazdırılır
 ```
 `spanId`Yayılma alanındaki günlük iletisi için bir mevcut olduğuna dikkat edin. Bu, `spanId` adlı yayılmasına ait olan aynıdır `hello` .
 
-Kullanarak günlük verilerini dışa aktarabilirsiniz `AzureLogHandler` . Daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)bakın.
+Kullanarak günlük verilerini dışa aktarabilirsiniz `AzureLogHandler` . Daha fazla bilgi için [Bu makaleye](./opencensus-python.md#logs)bakın.
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 'te telemetri bağıntısı
 
 Zaman içinde, .NET telemetri ve tanılama günlüklerini ilişkilendirmek için çeşitli yollar tanımladı:
 
-- `System.Diagnostics.CorrelationManager`[LogicalOperationStack ve ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)'nin izlenmesine izin verir.
-- `System.Diagnostics.Tracing.EventSource`ve Windows için olay Izleme (ETW) [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) metodunu tanımlar.
-- `ILogger`[günlük kapsamlarını](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)kullanır.
+- `System.Diagnostics.CorrelationManager`[LogicalOperationStack ve ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)'nin izlenmesine izin verir.
+- `System.Diagnostics.Tracing.EventSource`ve Windows için olay Izleme (ETW) [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) metodunu tanımlar.
+- `ILogger`[günlük kapsamlarını](/aspnet/core/fundamentals/logging#log-scopes)kullanır.
 - Windows Communication Foundation (WCF) ve HTTP dağıtımı "geçerli" bağlam yayma.
 
 Ancak bu yöntemler otomatik dağıtılmış izleme desteğini etkinleştirmedi. `DiagnosticSource`, otomatik makine çapraz bağıntısını destekler. .NET kitaplıkları, `DiagnosticSource` http gibi bir aktarım aracılığıyla bağıntı bağlamının otomatik makine çapraz olarak yayılmasını destekler ve bunlara izin verir.
@@ -327,7 +328,7 @@ Klasik ASP.NET için [Microsoft. Aspnet. TelemetryCorrelation](https://www.nuget
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java 'da telemetri bağıntısı
 
-Java [aracısının](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) yanı sıra [Java SDK](../../azure-monitor/app/java-get-started.md) sürümü 2.0.0 veya üzeri, telemetri otomatik bağıntısını destekler. `operation_id`Bir isteğin kapsamında verilen tüm telemetri (izlemeler, özel durumlar ve özel olaylar gibi) otomatik olarak doldurulur. [Java SDK Aracısı](../../azure-monitor/app/java-agent.md) yapılandırılmışsa, hizmet-hizmet çağrıları için de bağıntı üst bilgilerini (daha önce AÇıKLANAN) http aracılığıyla yayar.
+Java [aracısının](./java-in-process-agent.md) yanı sıra [Java SDK](../../azure-monitor/app/java-get-started.md) sürümü 2.0.0 veya üzeri, telemetri otomatik bağıntısını destekler. `operation_id`Bir isteğin kapsamında verilen tüm telemetri (izlemeler, özel durumlar ve özel olaylar gibi) otomatik olarak doldurulur. [Java SDK Aracısı](../../azure-monitor/app/java-agent.md) yapılandırılmışsa, hizmet-hizmet çağrıları için de bağıntı üst bilgilerini (daha önce AÇıKLANAN) http aracılığıyla yayar.
 
 > [!NOTE]
 > Application Insights Java Aracısı, JMS, Kafka, netty/Webflox ve daha fazlası için istekleri ve bağımlılıkları otomatik olarak toplar. Java SDK için yalnızca Apache HttpClient aracılığıyla yapılan çağrılar bağıntı özelliği için desteklenir. (Kafka, Kbbitmq ve Azure Service Bus gibi) mesajlaşma teknolojileri genelinde otomatik bağlam yayma SDK 'da desteklenmez. 
