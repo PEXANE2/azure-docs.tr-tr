@@ -2,13 +2,13 @@
 title: Belirtilen genel IP adreslerine sahip bir havuz oluşturun
 description: Kendi genel IP adreslerinizi kullanan bir Batch havuzu oluşturmayı öğrenin.
 ms.topic: how-to
-ms.date: 06/16/2020
-ms.openlocfilehash: 51cb023bf3749233878fa4d544c6fd8ef4703645
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/20/2020
+ms.openlocfilehash: 630da3ff9c1f2318c7ed4da0e8f4b5ee8212f389
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961566"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023764"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Belirtilen genel IP adreslerine sahip bir Azure Batch havuzu oluşturun
 
@@ -18,7 +18,7 @@ Havuzunuzdaki sanal makinelerle birlikte kullanmak üzere statik genel IP adresl
 
 Genel IP adresleri olmayan havuzlar oluşturma hakkında bilgi için, [genel IP adresleri olmadan Azure Batch havuzu oluştur](./batch-pool-no-public-ip-address.md)' u okuyun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Kimlik doğrulaması**. Genel bir IP adresi kullanmak için Batch istemci API 'sinin [Azure Active Directory (ad) kimlik doğrulamasını](batch-aad-auth.md)kullanması gerekir.
 
@@ -71,9 +71,11 @@ client-request-id: 00000000-0000-0000-0000-000000000000
         "nodeAgentSKUId": "batch.node.ubuntu 16.04"
       },
 "networkConfiguration": {
-          "subnetId": "/subscriptions/subid/resourceGroups/rg1234/providers/Microsoft.Network/virtualNetworks/network1234/subnets/subnet123",
-          "publicIPs": [
-            "/subscriptions/subid1/resourceGroups/rg13/providers/Microsoft.Network/publicIPAddresses/ip135"
+          "subnetId": "/subscriptions/<subId>/resourceGroups/<rgId>/providers/Microsoft.Network/virtualNetworks/<vNetId>/subnets/<subnetId>",
+          "publicIPAddressConfiguration": {
+            "provision": "usermanaged",
+            "ipAddressIds": [
+              "/subscriptions/<subId>/resourceGroups/<rgId>/providers/Microsoft.Network/publicIPAddresses/<publicIpId>"
           ]
         },
 

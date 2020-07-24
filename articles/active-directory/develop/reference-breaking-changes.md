@@ -12,16 +12,16 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fe41cdc6fa1adef96568981df5bb13129fe900f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477252"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026739"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir?
 
->Bu sayfadaki güncelleştirmeler hakkında bildirim alın. [Bu URL 'YI](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us) RSS Akış okuyucunuzun altına eklemeniz yeterlidir.
+> Bu URL 'YI RSS Akış okuyucunuzun içine yapıştırarak bu sayfada yapılan güncelleştirmeleri öğrenin:<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
 Kimlik doğrulama sistemi değiştirir ve güvenlik ve standartlar uyumluluğunu artırmak için sürekli olarak özellikler ekler. En son gelişmelerden haberdar olmak için, bu makalede aşağıdaki Ayrıntılar hakkında bilgi verilmektedir:
 

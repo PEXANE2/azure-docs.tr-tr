@@ -5,16 +5,17 @@ description: Depolama hesabınızdaki verileri korumak için kendi şifreleme an
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d53818c91d32bc7435d1328c2ae73a8eb3172cd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029799"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma
 
@@ -46,13 +47,13 @@ Blob ve dosya hizmetlerindeki veriler, depolama hesabı için müşteri tarafın
 
 ## <a name="enable-customer-managed-keys-for-a-storage-account"></a>Bir depolama hesabı için müşteri tarafından yönetilen anahtarları etkinleştirin
 
-Müşterinin yönettiği anahtarlar yalnızca mevcut depolama hesaplarında etkinleştirilebilir. Anahtar kasasının, depolama hesabıyla ilişkili yönetilen kimliğe anahtar izinleri veren erişim ilkeleriyle sağlanması gerekir. Yönetilen kimlik yalnızca depolama hesabı oluşturulduktan sonra kullanılabilir.
-
 Müşteri tarafından yönetilen bir anahtar yapılandırdığınızda, Azure depolama, ilişkili anahtar kasasındaki müşterinin yönettiği anahtarla hesaba ait kök veri şifreleme anahtarını sarmalanmış. Müşteri tarafından yönetilen anahtarların etkinleştirilmesi performansı etkilemez ve hemen yürürlüğe girer.
 
-Müşteri tarafından yönetilen anahtarları etkinleştirerek veya devre dışı bırakarak, anahtar sürümünü güncelleştirerek veya farklı bir anahtar belirterek, Azure depolama şifrelemesi için kullanılan anahtarı değiştirdiğinizde, kök anahtarın şifrelenmesi değişir ancak Azure Storage hesabınızdaki verilerin yeniden şifrelenmesi gerekmez.
-
 Müşteri tarafından yönetilen anahtarları etkinleştirdiğinizde veya devre dışı bıraktığınızda veya anahtarı ya da anahtar sürümünü değiştirdiğinizde, kök şifreleme anahtarının korunması değişir, ancak Azure Depolama hesabınızdaki verilerin yeniden şifrelenmesi gerekmez.
+
+Müşterinin yönettiği anahtarlar yalnızca mevcut depolama hesaplarında etkinleştirilebilir. Anahtar Kasası, depolama hesabıyla ilişkili yönetilen kimliğe izin veren erişim ilkeleriyle yapılandırılmalıdır. Yönetilen kimlik yalnızca depolama hesabı oluşturulduktan sonra kullanılabilir.
+
+Müşteri tarafından yönetilen anahtarlar ile Microsoft tarafından yönetilen anahtarlar arasında istediğiniz zaman geçiş yapabilirsiniz. Microsoft tarafından yönetilen anahtarlar hakkında daha fazla bilgi için bkz. [şifreleme anahtarı yönetimi hakkında](storage-service-encryption.md#about-encryption-key-management).
 
 Azure depolama şifrelemesi için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanmayı öğrenmek için şu makalelerden birine bakın:
 
@@ -65,15 +66,22 @@ Azure depolama şifrelemesi için Azure Key Vault ile müşteri tarafından yön
 
 ## <a name="store-customer-managed-keys-in-azure-key-vault"></a>Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde depola
 
-Bir depolama hesabında müşteri tarafından yönetilen anahtarları etkinleştirmek için, anahtarlarınızı depolamak üzere bir Azure Key Vault kullanmanız gerekir. Anahtar kasasında hem **geçici silme** hem de **Temizleme** özelliklerini etkinleştirmeniz gerekir.
+Bir depolama hesabında müşteri tarafından yönetilen anahtarları etkinleştirmek için, anahtarlarınızı depolamak üzere bir Azure Anahtar Kasası kullanmanız gerekir. Anahtar kasasında hem **geçici silme** hem de **Temizleme** özelliklerini etkinleştirmeniz gerekir.
 
 Azure depolama şifrelemesi, 2048, 3072 ve 4096 boyutlarının RSA ve RSA-HSM anahtarlarını destekler. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault anahtarlar** .
 
+Azure Key Vault kullanarak ilişkili maliyetler vardır. Daha fazla bilgi için bkz. [Key Vault fiyatlandırması](/pricing/details/key-vault/).
+
 ## <a name="rotate-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları döndür
 
-Azure Key Vault, müşteri tarafından yönetilen bir anahtarı uyumluluk ilkelerinize göre döndürebilirsiniz. Anahtar döndürüldüğünde, depolama hesabını yeni anahtar sürümü URI 'sini kullanacak şekilde güncelleştirmeniz gerekir. Azure portal anahtarın yeni bir sürümünü kullanmak üzere depolama hesabını güncelleştirme hakkında bilgi edinmek için [Azure Portal kullanarak Azure depolama için müşteri tarafından yönetilen anahtarları yapılandırma](storage-encryption-keys-portal.md)konusunun **temel sürümü güncelleştirme** başlıklı bölümüne bakın.
+Azure Key Vault, müşteri tarafından yönetilen bir anahtarı uyumluluk ilkelerinize göre döndürebilirsiniz. Müşteri tarafından yönetilen anahtarı döndürmek için iki seçeneğiniz vardır:
 
-Anahtarın döndürülmesi, depolama hesabındaki verilerin yeniden şifrelenmesini tetiklemez. Kullanıcıdan başka bir eylem gerekli değildir.
+- **Otomatik döndürme:** Müşteri tarafından yönetilen anahtarların otomatik döndürmesini yapılandırmak için, depolama hesabı için müşteri tarafından yönetilen anahtarlarla şifrelemeyi etkinleştirdiğinizde anahtar sürümünü atlayın. Anahtar sürümü atlanırsa Azure Depolama müşteri tarafından yönetilen anahtarın yeni sürümü için Azure Key Vault’u her gün denetler. Yeni anahtar sürümü sağlanırsa Azure Depolama otomatik olarak anahtarın en son sürümünü kullanır.
+- **El ile döndürme:** Azure depolama şifrelemesi için belirli bir anahtar sürümü kullanmak için, depolama hesabı için müşteri tarafından yönetilen anahtarlarla şifrelemeyi etkinleştirdiğinizde bu anahtar sürümünü belirtin. Anahtar sürümünü belirtirseniz, anahtar sürümünü el ile güncelleştirene kadar Azure Storage bu sürümü şifreleme için kullanır.
+
+    Anahtar el ile döndürüldüğünde, depolama hesabını yeni anahtar sürümü URI 'sini kullanacak şekilde güncelleştirmeniz gerekir. Azure portal anahtarın yeni bir sürümünü kullanmak üzere depolama hesabını güncelleştirme hakkında bilgi edinmek için bkz. [anahtar sürümünü el ile güncelleştirme](storage-encryption-keys-portal.md#manually-update-the-key-version).
+
+Müşteri tarafından yönetilen bir anahtarın döndürülmesi, depolama hesabındaki verilerin yeniden şifrelenmesini tetiklemez. Kullanıcıdan başka bir eylem gerekli değildir.
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>Müşterinin yönettiği anahtarlara erişimi iptal etme
 

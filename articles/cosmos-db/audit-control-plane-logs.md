@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023696"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB denetim düzlemi işlemlerini denetleme
 
@@ -26,9 +27,9 @@ Denetim denetim düzlemi işlemlerinin yararlı olduğu bazı örnek senaryolar 
 
 ## <a name="disable-key-based-metadata-write-access"></a>Anahtar tabanlı meta veri yazma erişimini devre dışı bırak
 
-Azure Cosmos DB ' de denetim düzlemi işlemlerini denetetmeden önce, hesabınızda anahtar tabanlı meta veri yazma erişimini devre dışı bırakın. Anahtar tabanlı meta veri yazma erişimi devre dışı bırakıldığında, hesap anahtarları üzerinden Azure Cosmos hesabına bağlanan istemcilerin hesaba erişmesi engellenir. Özelliği true olarak ayarlayarak yazma erişimini devre dışı bırakabilirsiniz `disableKeyBasedMetadataWriteAccess` . Bu özelliği ayarladıktan sonra, herhangi bir kaynakta yapılan değişiklikler, uygun rol tabanlı erişim denetimi (RBAC) rolüne ve kimlik bilgilerine sahip olan bir kullanıcıdan meydana gelebilir. Bu özelliği ayarlama hakkında daha fazla bilgi için bkz. SDK 'larda [değişiklik](role-based-access-control.md#preventing-changes-from-cosmos-sdk) yapma makalesi. 
+Azure Cosmos DB ' de denetim düzlemi işlemlerini denetetmeden önce, hesabınızda anahtar tabanlı meta veri yazma erişimini devre dışı bırakın. Anahtar tabanlı meta veri yazma erişimi devre dışı bırakıldığında, hesap anahtarları üzerinden Azure Cosmos hesabına bağlanan istemcilerin hesaba erişmesi engellenir. Özelliği true olarak ayarlayarak yazma erişimini devre dışı bırakabilirsiniz `disableKeyBasedMetadataWriteAccess` . Bu özelliği ayarladıktan sonra, herhangi bir kaynakta yapılan değişiklikler, uygun rol tabanlı erişim denetimi (RBAC) rolüne ve kimlik bilgilerine sahip olan bir kullanıcıdan meydana gelebilir. Bu özelliği ayarlama hakkında daha fazla bilgi için bkz. SDK 'larda [değişiklik](role-based-access-control.md#prevent-sdk-changes) yapma makalesi. 
 
-Etkinleştirildikten sonra `disableKeyBasedMetadataWriteAccess` , SDK tabanlı istemciler oluşturma veya güncelleştirme işlemleri çalıştırdıysa, *' ContainerNameorDatabaseName ' kaynağındaki "Işlem ' Post ' öğesine Azure Cosmos DB uç noktası üzerinden izin verilmez* . Hesabınız için bu tür işlemlere erişimi açmanız veya Azure Resource Manager, Azure CLı veya Azure PowerShell aracılığıyla oluşturma/güncelleştirme işlemleri gerçekleştirmeniz gerekir. Geri dönmek için, [Cosmos SDK 'dan gelen değişiklikleri](role-based-access-control.md#preventing-changes-from-cosmos-sdk) kısıtlama makalesinde açıklandığı gibi, Azure CLI kullanarak disableKeyBasedMetadataWriteAccess 'i **false** olarak ayarlayın. Değerini `disableKeyBasedMetadataWriteAccess` doğru yerine false olarak değiştirdiğinizden emin olun.
+Etkinleştirildikten sonra `disableKeyBasedMetadataWriteAccess` , SDK tabanlı istemciler oluşturma veya güncelleştirme işlemleri çalıştırdıysa, *' ContainerNameorDatabaseName ' kaynağındaki "Işlem ' Post ' öğesine Azure Cosmos DB uç noktası üzerinden izin verilmez* . Hesabınız için bu tür işlemlere erişimi açmanız veya Azure Resource Manager, Azure CLı veya Azure PowerShell aracılığıyla oluşturma/güncelleştirme işlemleri gerçekleştirmeniz gerekir. Geri dönmek için, [Cosmos SDK 'dan gelen değişiklikleri](role-based-access-control.md#prevent-sdk-changes) kısıtlama makalesinde açıklandığı gibi, Azure CLI kullanarak disableKeyBasedMetadataWriteAccess 'i **false** olarak ayarlayın. Değerini `disableKeyBasedMetadataWriteAccess` doğru yerine false olarak değiştirdiğinizden emin olun.
 
 Meta veri yazma erişimini kapatırken aşağıdaki noktaları göz önünde bulundurun:
 

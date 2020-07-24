@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023271"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services dinamik şifreleme ile içeriğinizi koruyun
 
@@ -185,7 +186,7 @@ Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarın
 
 *Belirteç yeniden yürütme engellemesi* özelliği, Media Services müşterilerin aynı belirtecin bir anahtar veya lisans istemek için kaç kez kullanılabileceği konusunda bir sınır ayarlamasına olanak tanır. Müşteri, `urn:microsoft:azure:mediaservices:maxuses` belirtecin bir lisans ya da anahtar almak için kaç kez kullanılabileceğini, belirteçte bir tür talep ekleyebilir. Anahtar teslimine aynı belirtece sahip sonraki tüm istekler, yetkisiz bir yanıt verecektir. Bkz. isteği [DRM örneğine](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)ekleme.
  
-#### <a name="considerations"></a>Önemli noktalar
+#### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * Müşterilerin belirteç oluşturma üzerinde denetimi olmalıdır. Talebin kendisini belirtece yerleştirilmesi gerekir.
 * Bu özellik kullanılırken, zaman aşımı süresi, isteğin alındığı zamandan bir saatten fazla olan istekleri yetkisiz bir Yanıtla reddedilir.
@@ -243,7 +244,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId`istenen anahtarın bir değeri vardır. `AlternativeMediaId`İsteği kendi tarafınızda bir varlıkla eşlemek istiyorsanız kullanabilirsiniz. Örneğin, `AlternativeMediaId` izinleri bulmanıza yardımcı olması için kullanılabilir.
 
-Özel lisans/anahtar alma URL 'Leri kullanan REST örnekleri için bkz. [akış ilkeleri-oluştur](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
+Özel lisans/anahtar alma URL 'Leri kullanan REST örnekleri için bkz. [akış ilkeleri-oluştur](/rest/api/media/streamingpolicies/create).
 
 > [!NOTE]
 > Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
@@ -265,4 +266,4 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 * [Access Control ile çoklu DRM içerik koruma sistemi tasarlama](design-multi-drm-system-with-access-control.md)
 * [Depolama tarafı şifrelemesi](storage-account-concept.md#storage-side-encryption)
 * [Sık sorulan sorular](frequently-asked-questions.md)
-* [JSON Web Belirteci İşleyicisi](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)
+* [JSON Web Belirteci İşleyicisi](/dotnet/framework/security/json-web-token-handler)

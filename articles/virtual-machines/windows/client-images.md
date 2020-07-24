@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0853b08ced0b9ca328d5e7f506ca54299aebeee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083283"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028201"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure’da geliştirme/test senaryoları için Windows istemcisini kullanma
 Azure 'da, uygun bir Visual Studio (eski adıyla MSDN) aboneliğine sahip olduğunuz geliştirme ve test senaryoları için Windows 7, Windows 8 veya Windows 10 Enterprise (x64) kullanabilirsiniz. Bu makalede, Azure 'da Windows 7, Windows 8.1, Windows 10 Enterprise ve aşağıdaki Azure Galeri görüntülerinin kullanımıyla ilgili uygunluk gereksinimleri özetlenmektedir.
@@ -58,5 +58,4 @@ Teklif KIMLIĞINI Azure hesap portalının [' abonelikler ' sekmesinden](https:/
 ![Azure hesap portalından teklif KIMLIĞI ayrıntıları](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık VM 'lerinizi [PowerShell](quick-create-powershell.md), [Kaynak Yöneticisi şablonları](ps-template.md)veya [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)kullanarak dağıtabilirsiniz.
-
+Artık VM 'lerinizi [PowerShell](quick-create-powershell.md), [Kaynak Yöneticisi şablonları](ps-template.md)veya [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)kullanarak dağıtabilirsiniz.

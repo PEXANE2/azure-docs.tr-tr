@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634651"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027623"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
 
@@ -220,7 +221,7 @@ NPS uzantısını devre dışı bırak:
 -   VPN için birincil kimlik doğrulamanın başarılı olup olmadığını belirleme.
 
 Hizmet kurtarıldıktan sonra kullanıcılarınıza MFA 'yı zorlamak için yeniden hazırsanız NPS uzantısını etkinleştirin: 
--   Yedeklemeden kayıt defteri anahtarının önemli HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   Kayıt defteri anahtarını yedekten içeri aktarma HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   Değişikliklerin etkili olması için ağ Ilkesi hizmeti (IAS) hizmetini yeniden başlatın 
 -   VPN için ikincil kimlik doğrulamasının yanı sıra birincil kimlik doğrulamanın başarılı olup olmadığını belirleme.
 -   Acil durum penceresi sırasında hangi kullanıcıların oturum açdığını öğrenmek için NPS sunucusunu ve VPN günlüğünü gözden geçirin.

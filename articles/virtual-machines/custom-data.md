@@ -7,17 +7,18 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dcba7da09cff3b7123521a4daf1028ab17e199a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678367"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029153"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure sanal makinelerinde özel veriler ve Cloud-Init
 
 Sağlama zamanında bir Microsoft Azure sanal makinesine bir betik veya diğer meta veri eklemeniz gerekebilir.  Diğer bulutlarda, bu kavram genellikle kullanıcı verileri olarak adlandırılır.  Microsoft Azure, özel veri adlı benzer bir özelliktir. 
 
-Özel veriler yalnızca ilk önyükleme/ilk kurulum sırasında VM için kullanılabilir hale getirilir, bu ' sağlama ' işlemini çağıracağız. Sağlama, sanal makine oluşturma parametrelerinin (örneğin, ana bilgisayar adı, Kullanıcı adı, parola, sertifikalar, özel veriler, anahtarlar vb.) VM için kullanılabilir hale getirilme işlemidir ve [Linux Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ve [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)gibi bir sağlama Aracısı tarafından işlenir. 
+Özel veriler yalnızca ilk önyükleme/ilk kurulum sırasında VM için kullanılabilir hale getirilir, bu ' sağlama ' işlemini çağıracağız. Sağlama, sanal makine oluşturma parametrelerinin (örneğin, ana bilgisayar adı, Kullanıcı adı, parola, sertifikalar, özel veriler, anahtarlar vb.) VM için kullanılabilir hale getirilme işlemidir ve [Linux Aracısı](./extensions/agent-linux.md) ve [Cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init)gibi bir sağlama Aracısı tarafından işlenir. 
 
 
 ## <a name="passing-custom-data-to-the-vm"></a>Özel verileri VM 'ye geçirme
@@ -33,7 +34,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Azure Resource Manager (ARM) içinde, bir [Base64 işlevi](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64)vardır.
+Azure Resource Manager (ARM) içinde, bir [Base64 işlevi](../azure-resource-manager/templates/template-functions-string.md#base64)vardır.
 
 ```json
 "name": "[parameters('virtualMachineName')]",
@@ -73,21 +74,21 @@ Azure Şu anda iki sağlama aracısını desteklemektedir:
 
 Özel veri yürütme sorunlarını gidermek için */var/log/waagent.log* inceleyin
 
-* Cloud-init varsayılan olarak özel verileri varsayılan olarak işler, Cloud-init, bulut-init yapılandırması, betikler vb. gibi özel verilerin [birden çok biçimini](https://cloudinit.readthedocs.io/en/latest/topics/format.html) kabul eder. Linux aracısına benzer ve Cloud-init özel verileri işler. Yapılandırma işleminin veya betiklerin yürütülmesi sırasında hatalar oluşursa, önemli bir sağlama hatası değildir ve betiğin tamamlanma durumu için sizi uyarmak üzere bir bildirim yolu oluşturmanız gerekir. Ancak, Linux aracısıyla farklı olarak, Cloud-init, Kullanıcı özel veri yapılandırmalarının VM 'ye hazırlanmadan önce tamamlanmasını beklemez. Azure 'da Cloud-init hakkında daha fazla bilgi için [belgeleri](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)gözden geçirin.
+* Cloud-init varsayılan olarak özel verileri varsayılan olarak işler, Cloud-init, bulut-init yapılandırması, betikler vb. gibi özel verilerin [birden çok biçimini](https://cloudinit.readthedocs.io/en/latest/topics/format.html) kabul eder. Linux aracısına benzer ve Cloud-init özel verileri işler. Yapılandırma işleminin veya betiklerin yürütülmesi sırasında hatalar oluşursa, önemli bir sağlama hatası değildir ve betiğin tamamlanma durumu için sizi uyarmak üzere bir bildirim yolu oluşturmanız gerekir. Ancak, Linux aracısıyla farklı olarak, Cloud-init, Kullanıcı özel veri yapılandırmalarının VM 'ye hazırlanmadan önce tamamlanmasını beklemez. Azure 'da Cloud-init hakkında daha fazla bilgi için [belgeleri](./linux/using-cloud-init.md)gözden geçirin.
 
 
-Özel veri yürütme sorunlarını gidermek için sorun giderme [belgelerini](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)gözden geçirin.
+Özel veri yürütme sorunlarını gidermek için sorun giderme [belgelerini](./linux/using-cloud-init.md#troubleshooting-cloud-init)gözden geçirin.
 
 
 ## <a name="faq"></a>SSS
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>VM oluşturulduktan sonra özel verileri güncelleştirebilir miyim?
-Tek VM 'Lerde, VM modelindeki özel veriler güncelleştirilemez, ancak VMSS için, [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) aracılığıyla VMSS özel verilerini GÜNCELLEŞTIREBILIRSINIZ (PS veya az CLI istemcileri için geçerli değildir). VMSS modelinde özel verileri güncelleştirdiğinizde:
+Tek VM 'Lerde, VM modelindeki özel veriler güncelleştirilemez, ancak VMSS için, [REST API](/rest/api/compute/virtualmachinescalesets/update) aracılığıyla VMSS özel verilerini GÜNCELLEŞTIREBILIRSINIZ (PS veya az CLI istemcileri için geçerli değildir). VMSS modelinde özel verileri güncelleştirdiğinizde:
 * VMSS 'deki mevcut örnekler, yalnızca yeniden yansıma oluşturuluncaya kadar güncelleştirilmiş özel verileri almaz.
 * VMSS yükseltilen mevcut örnekler güncelleştirilmiş özel verileri almaz.
 * Yeni örnekler yeni özel verileri alır.
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>Gizli değerleri özel verilere ekleyebilir miyim?
-Gizli verileri **not** özel verilerde depolamadığımğiz. Daha fazla bilgi için bkz. [Azure Güvenlik ve şifreleme en iyi uygulamaları](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices).
+Gizli verileri **not** özel verilerde depolamadığımğiz. Daha fazla bilgi için bkz. [Azure Güvenlik ve şifreleme en iyi uygulamaları](../security/fundamentals/data-encryption-best-practices.md).
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>Özel veriler IMDS 'de kullanıma sunuldu mu?

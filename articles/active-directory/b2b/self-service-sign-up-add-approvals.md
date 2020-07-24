@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027470"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Self Servis kaydolma 'ya özel bir onay iş akışı ekleme
 
@@ -38,7 +38,7 @@ Azure AD 'de kimlik doğrulaması yapabilmek ve Kullanıcı oluşturma iznine sa
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
-5. **Kaydol**’u seçin. Diğer alanları varsayılan olarak bırakabilirsiniz.
+5. **Kaydet**’i seçin. Diğer alanları varsayılan olarak bırakabilirsiniz.
 
    ![Uygulama sayfası kaydetme](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
@@ -61,11 +61,11 @@ Azure AD 'de kimlik doğrulaması yapabilmek ve Kullanıcı oluşturma iznine sa
 
 Daha sonra self servis kaydolma Kullanıcı akışınız için [API bağlayıcıları oluşturacaksınız](self-service-sign-up-add-api-connector.md#create-an-api-connector) . Onay sistemi API 'niz, aşağıda gösterilen örneklerde olduğu gibi iki bağlayıcı ve karşılık gelen uç noktalar gerektirir. Bu API bağlayıcıları şunları yapın:
 
-- Onay **durumunu kontrol edin**. Kullanıcı bir kimlik sağlayıcısı ile oturum açtıktan hemen sonra onay sistemine çağrı gönderin. Bu, kullanıcının var olan onay isteğine sahip olup olmadığını veya zaten reddedildiğini kontrol etmek için bir kimlik sağlayıcısıyla oturum açar. Onay sisteminiz yalnızca otomatik onay kararları alıyorsa, bu API Bağlayıcısı gerekmeyebilir. Aşağıda "onay durumunu denetle" API bağlayıcısının bir örneği verilmiştir.
+- Onay **durumunu kontrol edin**. Kullanıcı bir kimlik sağlayıcısı ile oturum açtıktan hemen sonra onay sistemine çağrı gönderin. Bu, kullanıcının var olan onay isteğine sahip olup olmadığını veya zaten reddedildiğini kontrol etmek için bir kimlik sağlayıcısıyla oturum açar. Onay sisteminiz yalnızca otomatik onay kararları alıyorsa, bu API Bağlayıcısı gerekmeyebilir. "Onay durumunu denetleme" API Bağlayıcısı örneği.
 
   ![Onay durumu API Bağlayıcısı yapılandırmasını denetle](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Onay iste** -Kullanıcı, öznitelik toplama sayfasını tamamladıktan sonra, onay istemek için Kullanıcı hesabı oluşturulmadan önce onay sistemine çağrı gönderin. Onay isteği otomatik olarak verilebilir veya el ile incelenebilir. Aşağıda bir "Istek onayı" API Bağlayıcısı örneği verilmiştir. Onay sisteminin onay kararı vermesini sağlamak için gereken **talepler ' ı** seçin.
+- **Onay iste** -Kullanıcı, öznitelik toplama sayfasını tamamladıktan sonra, onay istemek için Kullanıcı hesabı oluşturulmadan önce onay sistemine çağrı gönderin. Onay isteği otomatik olarak verilebilir veya el ile incelenebilir. "Istek onayı" API Bağlayıcısı örneği. Onay sisteminin onay kararı vermesini sağlamak için gereken **talepler ' ı** seçin.
 
   ![Onay API Bağlayıcısı yapılandırması iste](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -94,14 +94,14 @@ Onay sisteminiz, kaydolma akışını denetlemek için iki API uç noktasından 
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>"Onay durumunu denetle" API Bağlayıcısı için istek ve yanıtlar
 
-Aşağıda, "onay durumunu denetle" API bağlayıcısının API tarafından alınan isteğin bir örneği verilmiştir:
+"Onay durumunu denetle" API bağlayıcısının API tarafından alınan istek örneği:
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -119,7 +119,7 @@ Content-type: application/json
 
 - Kullanıcı daha önce bir onay istemedi.
 
-Devamlılık yanıtının bir örneği aşağıda verilmiştir:
+Devamlılık yanıtı örneği:
 
 ```http
 HTTP/1.1 200 OK
@@ -166,14 +166,14 @@ Content-type: application/json
 
 ### <a name="request-and-responses-for-the-request-approval-api-connector"></a>"Istek onayı" API Bağlayıcısı için istek ve yanıtlar
 
-Aşağıda, "Istek onayı" API bağlayıcısının API tarafından alınan bir HTTP isteği örneği verilmiştir:
+"Istek onayı" API bağlayıcısının API tarafından alınan bir HTTP isteği örneği:
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -194,7 +194,7 @@ Content-type: application/json
 
 - Kullanıcı **_otomatik olarak onaylanabilir_**.
 
-Devamlılık yanıtının bir örneği aşağıda verilmiştir:
+Devamlılık yanıtı örneği:
 
 ```http
 HTTP/1.1 200 OK
@@ -257,14 +257,14 @@ El ile onay aldıktan sonra, özel onay sistemi [Microsoft Graph](https://docs.m
 
 Kullanıcılarınız bir Google veya Facebook hesabıyla oturum açmışsa, [Kullanıcı oluşturma API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)'sini kullanabilirsiniz.
 
-1. Onay sistemi kullanımları Kullanıcı akışından gelen HTTP isteğini alır.
+1. Onay sistemi, Kullanıcı akışından gelen HTTP isteğini alır.
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -305,11 +305,11 @@ Content-type: application/json
 
 | Parametre                                           | Gerekli | Açıklama                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Evet      | , `email_address` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Evet      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
-| posta                                                | Evet      | `email_address`API 'ye gönderilen talebe denktir.                                                                                                               |
-| userType                                            | Evet      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
-| lerinizde                                          | Evet      | Federal kimlik bilgileri.                                                                                                                                    |
+| userPrincipalName                                   | Yes      | , `email` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
+| posta                                                | Yes      | `email`API 'ye gönderilen talebe denktir.                                                                                                               |
+| userType                                            | Yes      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
+| lerinizde                                          | Yes      | Federal kimlik bilgileri.                                                                                                                                    |
 | \<otherBuiltInAttribute>                            | Hayır       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
 | \<extension\_\{extensions-app-id}\_CustomAttribute> | Hayır       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
 
@@ -324,7 +324,7 @@ POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
  "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
@@ -332,7 +332,7 @@ Content-type: application/json
 }
 ```
 
-2. Onay sistemi, `email_address` API Bağlayıcısı tarafından sağlanarak daveti oluşturur.
+2. Onay sistemi, `email` API Bağlayıcısı tarafından sağlanarak daveti oluşturur.
 
 ```http
 POST https://graph.microsoft.com/v1.0/invitations
@@ -344,7 +344,7 @@ Content-type: application/json
 }
 ```
 
-Yanıtın bir örneği aşağıda verilmiştir:
+Yanıt örneği:
 
 ```http
 HTTP/1.1 201 OK

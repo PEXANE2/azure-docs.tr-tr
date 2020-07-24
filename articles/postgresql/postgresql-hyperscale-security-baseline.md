@@ -1,20 +1,20 @@
 ---
-title: PostgreSQL için Azure veritabanı-Azure Güvenlik kıyaslaması için hiper ölçek güvenlik temeli
+title: PostgreSQL için Azure veritabanı için Azure Güvenlik temeli-hiper ölçek
 description: PostgreSQL için Azure veritabanı-Hyperscale güvenlik temeli, Azure Güvenlik kıyaslaması 'nda belirtilen güvenlik önerilerini uygulamaya yönelik yordamsal kılavuz ve kaynaklar sağlar.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca08ac30c5d8e925197a0df1d327bf9a0923b046
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030054"
 ---
-# <a name="azure-database-for-postgresql---hyperscale-security-baseline-for-azure-security-benchmark"></a>PostgreSQL için Azure veritabanı-Azure Güvenlik kıyaslaması için hiper ölçek güvenlik temeli
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>PostgreSQL için Azure veritabanı için Azure Güvenlik temeli-hiper ölçek
 
 PostgreSQL için Azure veritabanı için Azure Güvenlik temeli-hiper ölçek, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 

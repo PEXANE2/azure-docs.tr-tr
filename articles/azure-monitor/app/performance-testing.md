@@ -4,16 +4,17 @@ description: Azure Application Insights performans ve yük testlerini ayarlama
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8885a2e511c11317f593706255437e52819adcae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024359"
 ---
 # <a name="performance-testing"></a>Performansı test etme
 
 > [!NOTE]
-> Bulut tabanlı yük testi hizmeti kullanımdan kaldırılmıştır. Kullanımdan kaldırma, hizmet kullanılabilirliği ve alternatif hizmetler hakkında daha fazla bilgi [bulabilirsiniz.](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)
+> Bulut tabanlı yük testi hizmeti kullanımdan kaldırılmıştır. Kullanımdan kaldırma, hizmet kullanılabilirliği ve alternatif hizmetler hakkında daha fazla bilgi [bulabilirsiniz.](/azure/devops/test/load-test/overview?view=azure-devops)
 
 Application Insights, Web siteleriniz için yük testleri oluşturmanıza olanak sağlar. [Kullanılabilirlik testleri](monitor-web-app-availability.md)gibi, dünyanın dört bir yanındaki Azure test aracılarından temel istekleri veya [çok adımlı istekleri](availability-multistep.md) gönderebilirsiniz. Performans testleri, en fazla 20.000 dakikaya kadar eşzamanlı 60 kullanıcının benzetimini yapmanıza olanak sağlar.
 

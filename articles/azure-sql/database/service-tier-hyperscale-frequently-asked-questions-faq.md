@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024036"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -204,7 +204,9 @@ Evet. Belirli bir tabloyla ilişkili veri sayfaları, aynı dosya grubunun bir p
 
 ### <a name="can-i-move-my-existing-databases-in-azure-sql-database-to-the-hyperscale-service-tier"></a>Azure SQL veritabanında var olan veritabanlarınızı hiper ölçekli hizmet katmanına taşıyabilir miyim?
 
-Evet. Mevcut veritabanlarınızı Azure SQL veritabanı 'nda hiper ölçeğe taşıyabilirsiniz. Bu tek yönlü geçişdir. Veritabanlarını Hyperscale 'den başka bir hizmet katmanına taşıyamazsınız. Kavram provaları (POCs) için veritabanınızın bir kopyasını oluşturmanızı ve kopyayı hiper ölçeğe geçirmeniz önerilir.
+Evet. Mevcut veritabanlarınızı Azure SQL veritabanı 'nda hiper ölçeğe taşıyabilirsiniz. Bu tek yönlü geçişdir. Veritabanlarını Hyperscale 'den başka bir hizmet katmanına taşıyamazsınız. Kavram provaları (POCs) için veritabanınızın bir kopyasını oluşturmanızı ve kopyayı hiper ölçeğe geçirmeniz önerilir. 
+
+Mevcut bir veritabanını hiper ölçeğe taşımak için gereken süre, verileri kopyalama zamanından oluşur ve veri kopyalanırken kaynak veritabanında yapılan değişiklikleri yeniden oynatma süresini içerir. Veri kopyalama süresi veri boyutuyla orantılıdır. Küçük bir yazma etkinliği sırasında taşıma işlemi yapıldığında değişiklikleri yeniden yürütme süresi daha kısa olur.
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-service-tiers"></a>Hiperscale veritabanlarınızı diğer hizmet katmanlarına taşıyabilir miyim?
 

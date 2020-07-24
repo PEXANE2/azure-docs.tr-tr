@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250303"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024971"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure Event Hubs olayları Azure 'da günlüğe kaydetme API Management
 Azure Event Hubs, bağlı cihazlarınız ve uygulamalarınız tarafından üretilen oldukça büyük miktardaki verileri işleyip analiz edebilmeniz için saniye başına milyonlarca olayı işleyebilen ileri düzeyde ölçeklenebilir bir veri alım sistemidir. Event Hubs, bir olay ardışık düzeni için "ön kapı" olarak görev yapar ve veriler bir olay hub 'ına toplandıktan sonra herhangi bir gerçek zamanlı analiz sağlayıcısı veya toplu işlem/depolama bağdaştırıcısı kullanılarak dönüştürülebilir ve depolanabilir. Event Hubs olay akışı üretimlerini bu olayların tüketilmesinden ayırır, böylece olay tüketicileri olaylara kendi zamanlamalarında erişebilir.
@@ -66,6 +66,9 @@ Günlükçüize API Management bir kez yapılandırıldıktan sonra, istenen ola
 Öğesi için değer olarak bir dize döndüren herhangi bir ifadeyi kullanabilirsiniz `log-to-eventhub` . Bu örnekte, tarih ve saat, hizmet adı, istek kimliği, istek IP adresi ve işlem adı içeren JSON biçimindeki bir dize günlüğe kaydedilir.
 
 Güncelleştirilmiş ilke yapılandırmasını kaydetmek için **Kaydet** ' e tıklayın. Kaydedilen ilke etkin olur ve olaylar belirlenen Olay Hub 'ına kaydedilir.
+
+> [!NOTE]
+> Bu API Management ilkesinden bir olay hub 'ına gönderilebilecek en büyük desteklenen ileti boyutu 200 kilobayttır (KB). Bir olay hub 'ına gönderilen bir ileti 200 KB 'tan büyükse, otomatik olarak kesilir ve kesilen ileti olay hub 'larına aktarılır.
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Event Hubs Azure Stream Analytics kullanarak günlüğü önizleyin
 

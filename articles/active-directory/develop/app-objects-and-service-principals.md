@@ -9,23 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/29/2020
+ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: d8ff8ced1723a3cdc969b4a951c31ea1da2d3093
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 65726a1b43cdbcb5a36d4a6d3f3df97669e1028f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027275"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri
 
 Bu makalede uygulama kaydı, uygulama nesneleri ve hizmet sorumluları Azure Active Directory: ne oldukları, nasıl kullanıldıkları ve birbirleriyle nasıl ilişkili oldukları açıklanmaktadır. Bir uygulamanın uygulama nesnesi ile buna karşılık gelen hizmet sorumlusu nesneleri arasındaki ilişkiyi göstermek için de çok kiracılı bir örnek senaryo sunulmaktadır.
 
 ## <a name="application-registration"></a>Uygulama kaydı
-Kimlik ve erişim yönetimi işlevlerinin Azure AD 'ye temsilciliğini sağlamak için bir uygulamanın bir Azure AD [kiracısıyla](developer-glossary.md#tenant)kayıtlı olması gerekir. Uygulamanızı Azure AD 'ye kaydettiğinizde, uygulamanız için Azure AD ile tümleşmesini sağlayan bir kimlik yapılandırması oluşturuyorsunuz. [Azure Portal][AZURE-Portal]bir uygulamayı kaydettiğinizde, tek bir kiracının (yalnızca kiracınızda erişilebilir) veya çok kiracılı (diğer kiracılarda erişilebilir) olup olmadığını ve isteğe bağlı olarak bir yeniden yönlendirme URI 'si (erişim belirtecinin gönderildiği konum) ayarlayabileceğinizi seçersiniz.
+Kimlik ve erişim yönetimi işlevlerinin Azure AD 'ye temsilciliğini sağlamak için bir uygulamanın bir Azure AD [kiracısıyla](developer-glossary.md#tenant)kayıtlı olması gerekir. Uygulamanızı Azure AD 'ye kaydettiğinizde, uygulamanız için Azure AD ile tümleşmesini sağlayan bir kimlik yapılandırması oluşturuyorsunuz. [Azure Portal][AZURE-Portal]bir uygulamayı kaydettiğinizde, tek bir kiracı (yalnızca kiracınızda erişilebilir) veya çok kiracılı (diğer kiracılarda erişilebilir) olduğunu ve isteğe bağlı olarak bir yeniden yönlendirme URI 'si (erişim belirtecinin gönderildiği konum) ayarlayabileceğinizi seçersiniz.
+
+![Uygulama kaydı](./media/app-objects-and-service-principals/app-registration.png)
 
 Uygulama kaydını tamamladığınızda, ana kiracınızda veya dizininizde bulunan, uygulamanın (uygulama nesnesi) genel olarak benzersiz bir örneğine sahip olursunuz.  Ayrıca, uygulamanız için genel olarak benzersiz bir KIMLIĞINIZ (uygulama veya istemci KIMLIĞI) vardır.  Portalda, uygulamanızı çalışır hale getirmek, oturum açma iletişim kutusunda uygulamanızın markasını özelleştirmek ve daha fazlasını yapmak için gizli dizileri veya sertifikaları ve kapsamları ekleyebilirsiniz.
 
@@ -38,16 +40,20 @@ Uygulama nesnesi bir uygulamanın üç yönlerini açıklar: hizmetin uygulamaya
 
 Azure portal **uygulama kayıtları** dikey penceresi, [Azure portal][AZURE-Portal] giriş kiracınızdaki uygulama nesnelerini listelemek ve yönetmek için kullanılır.
 
+![Uygulama kayıtları dikey pencere](./media/app-objects-and-service-principals/app-registrations-blade.png)
+
 Microsoft Graph [uygulama varlığı][MS-Graph-App-Entity] , uygulama nesnesinin özellikleri için şemayı tanımlar.
 
 ## <a name="service-principal-object"></a>Hizmet sorumlusu nesnesi
-Bir Azure AD kiracısı tarafından güvenliği sağlanmış olan kaynaklara erişmek için, erişim gerektiren varlık bir güvenlik sorumlusu tarafından temsil etmelidir. Bu, hem kullanıcılar (Kullanıcı sorumlusu) hem de uygulamalar (hizmet sorumlusu) için geçerlidir. Güvenlik sorumlusu, Azure AD kiracısında Kullanıcı/uygulama için erişim ilkesini ve izinleri tanımlar. Bu, oturum açma sırasında kullanıcı/uygulamanın kimlik doğrulaması ve kaynak erişimi sırasında yetkilendirme gibi temel özellikleri sunar.
+Bir Azure AD kiracısı tarafından güvenliği sağlanmış olan kaynaklara erişmek için, erişim gerektiren varlık bir güvenlik sorumlusu tarafından temsil etmelidir. Bu gereksinim, hem kullanıcılar (Kullanıcı sorumlusu) hem de uygulamalar (hizmet sorumlusu) için geçerlidir. Güvenlik sorumlusu, Azure AD kiracısında Kullanıcı/uygulama için erişim ilkesini ve izinleri tanımlar. Bu, oturum açma sırasında kullanıcı/uygulamanın kimlik doğrulaması ve kaynak erişimi sırasında yetkilendirme gibi temel özellikleri sunar.
 
 Hizmet sorumlusu, tek bir Kiracıdaki veya dizindeki genel uygulama nesnesinin yerel temsili veya uygulama örneğidir. Hizmet sorumlusu, uygulama nesnesinden oluşturulan somut bir örneğidir ve bu uygulama nesnesinden belirli özellikleri devralır.  Uygulamanın kullanıldığı her kiracıda bir hizmet sorumlusu oluşturulur ve genel olarak benzersiz uygulama nesnesine başvurur.  Hizmet sorumlusu nesnesi, uygulamanın belirli bir kiracıda ne yapabileceğini, uygulamaya kimlerin erişebileceğini ve uygulamanın erişebileceği kaynakları tanımlar. 
 
 Bir uygulamaya bir Kiracıdaki kaynaklara erişim izni verildiğinde (kayıt veya [onay](developer-glossary.md#consent)sağlandığında), bir hizmet sorumlusu nesnesi oluşturulur. [Azure PowerShell](howto-authenticate-service-principal-powershell.md), Azure clı, [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), [Azure Portal][AZURE-Portal]ve diğer araçları kullanarak bir kiracıda hizmet sorumlusu nesnesi de oluşturabilirsiniz.  Portalı kullanırken, bir uygulamayı kaydettiğinizde bir hizmet sorumlusu otomatik olarak oluşturulur.
 
 Portaldaki **Kurumsal uygulamalar** dikey penceresi, bir Kiracıdaki hizmet sorumlularını listelemek ve yönetmek için kullanılır. Hizmet sorumlusunun izinlerini, Kullanıcı onaylı izinleri, hangi kullanıcıların onay, oturum açma bilgileri ve daha fazlasını yapmış olduğunu görebilirsiniz.
+
+![Kurumsal uygulamalar dikey penceresi](./media/app-objects-and-service-principals/enterprise-apps-blade.png)
 
 Microsoft Graph [ServicePrincipal varlığı][MS-Graph-Sp-Entity] , bir hizmet sorumlusu nesnesinin özelliklerine ilişkin şemayı tanımlar.
 
@@ -85,8 +91,8 @@ Bu örnek senaryoda:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Hem uygulama hem de hizmet sorumlusu nesnelerini sorgulamak için [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) kullanabilirsiniz.
-- Bir uygulamanın uygulama nesnesine, Microsoft Graph API 'sini, [Azure Portal][AZURE-Portal] uygulama bildirimi düzenleyicisini veya [Azure AD PowerShell cmdlet 'Lerini](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)kullanarak, OData [uygulaması varlığıyla][MS-Graph-App-Entity]temsil ederek erişebilirsiniz.
-- Bir uygulamanın hizmet sorumlusu nesnesine, Microsoft Graph API veya [Azure AD PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)aracılığıyla OData [ServicePrincipal varlığıyla][MS-Graph-Sp-Entity]temsil ederek erişebilirsiniz.
+- Bir uygulamanın uygulama nesnesine, Microsoft Graph API 'sini, [Azure Portal][AZURE-Portal] uygulama bildirimi düzenleyicisini veya [Azure AD PowerShell cmdlet 'Lerini](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0)kullanarak, OData [uygulaması varlığıyla][MS-Graph-App-Entity]temsil ederek erişebilirsiniz.
+- Bir uygulamanın hizmet sorumlusu nesnesine, Microsoft Graph API veya [Azure AD PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0)aracılığıyla OData [ServicePrincipal varlığıyla][MS-Graph-Sp-Entity]temsil ederek erişebilirsiniz.
 
 <!--Image references-->
 

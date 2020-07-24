@@ -14,15 +14,16 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727339"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025226"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 'de grup tabanlı lisanslama için PowerShell ve Graph örnekleri
 
-Grup tabanlı lisanslama için tam işlevsellik [Azure Portal](https://portal.azure.com)aracılığıyla kullanılabilir ve şu anda PowerShell ve Microsoft Graph desteği salt okuma işlemleriyle sınırlıdır. Ancak, mevcut [MSOnline PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) ve Microsoft Graph kullanılarak gerçekleştirilebilecek bazı yararlı görevler vardır. Bu belge, mümkün olan örneklere örnek sağlar.
+Grup tabanlı lisanslama için tam işlevsellik [Azure Portal](https://portal.azure.com)aracılığıyla kullanılabilir ve şu anda PowerShell ve Microsoft Graph desteği salt okuma işlemleriyle sınırlıdır. Ancak, mevcut [MSOnline PowerShell cmdlet 'leri](/powershell/module/msonline) ve Microsoft Graph kullanılarak gerçekleştirilebilecek bazı yararlı görevler vardır. Bu belge, mümkün olan örneklere örnek sağlar.
 
 > [!NOTE]
 > Cmdlet 'leri çalıştırmaya başlamadan önce cmdlet 'ini çalıştırarak kuruluşunuza ilk kez bağlandığınızdan emin olun `Connect-MsolService`   .

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025090"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -29,6 +29,9 @@ Bu makalede, API Management 'de geliştirici portalının şirket içinde barın
 ![API Management geliştirici portalı](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+> [!NOTE]
+> <a name="migrate-from-legacy"></a>Yeni geliştirici portalı, eski geliştirici portalı ile uyumsuzdur ve otomatik geçiş mümkün değildir. İçeriği (sayfalar, metin, medya dosyaları) el ile yeniden oluşturmanız ve yeni portalın görünümünü özelleştirmeniz gerekir. Rehberlik için [Geliştirici Portalı öğreticisine](api-management-howto-developer-portal-customize.md) bakın.
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>Yönetilen ve şirket içinde barındırılan sürümler
 
@@ -82,17 +85,11 @@ Portalın içeriğini sıfırlamak istemiyorsanız, sayfalarınızın tamamında
 
 Portalınız genel kullanılabilirlik duyurusu sonrasında sağlandıysa, yeni varsayılan içeriği zaten kullanıma hazır olmalıdır. Sizin tarafınızdan bir işlem yapılması gerekmez.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>Eski geliştirici portalından geliştirici portalına nasıl geçiş yapabilirim?
-
-Portallar uyumsuzdur ve içeriği el ile geçirmeniz gerekir.
-
-### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>Portal eski portalın tüm özelliklerine sahip mi?
+### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Portal eski portalın tüm özelliklerine sahip mi?
 
 Geliştirici portalı artık *uygulamaları* ve *sorunları*desteklememektedir.
 
-Etkileşimli geliştirici konsolundaki OAuth ile kimlik doğrulaması henüz desteklenmiyor. İlerleme durumunu [GitHub sorunuyla](https://github.com/Azure/api-management-developer-portal/issues/208)izleyebilirsiniz.
-
-### <a name="has-the-old-portal-been-deprecated"></a>Eski Portal kullanımdan kaldırılmıştır mı?
+### <a name="has-the-legacy-portal-been-deprecated"></a>Eski portalın kullanım dışı bırakılmış mi?
 
 Eski geliştirici ve yayımcı portalları artık *eski* özelliklerdir; yalnızca güvenlik güncelleştirmelerini alacak. Yeni özellikler yalnızca yeni geliştirici portalında uygulanır.
 
@@ -203,7 +200,7 @@ API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna baş
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>Portal için tarayıcı desteği nedir?
 
-| Tarayıcı                     | Destekleniyor       |
+| Tarayıcı                     | Desteklenir       |
 |-----------------------------|-----------------|
 | Apple Safari                | Evet<sup>1</sup> |
 | Google Chrome               | Evet<sup>1</sup> |

@@ -3,15 +3,16 @@ title: Azure VM 'lerde performansı izleme-Azure Application Insights
 description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77661337"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024641"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 
-[Azure sanal makinelerinde](https://azure.microsoft.com/services/virtual-machines/) ve [Azure sanal makine ölçek kümelerinde](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) çalışan .NET tabanlı Web uygulamalarınızda izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Kodunuzda değişiklik yapmadan Application Insights kullanmanın avantajlarından yararlanın.
+[Azure sanal makinelerinde](https://azure.microsoft.com/services/virtual-machines/) ve [Azure sanal makine ölçek kümelerinde](../../virtual-machine-scale-sets/index.yml) çalışan .NET tabanlı Web uygulamalarınızda izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Kodunuzda değişiklik yapmadan Application Insights kullanmanın avantajlarından yararlanın.
 
 Bu makale, Application Insights Aracısı kullanarak Application Insights izlemeyi etkinleştirme konusunda size kılavuzluk eder ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlar.
 
@@ -29,15 +30,15 @@ Azure sanal makineleri ve Azure sanal makine ölçek kümeleri barındırılan u
 
     * Azure sanal makineleri ve Azure sanal makine ölçek kümeleri için, bu izleme düzeyini en az etkinleştirmenize önerilir. Bu tarihten sonra, özel senaryonuza bağlı olarak, el ile izleme gerekip gerekmediğini değerlendirebilirsiniz.
 
-    * Application Insights Aracısı .NET SDK 'Sı ile aynı bağımlılık sinyallerini otomatik olarak toplar. Daha fazla bilgi için bkz. [bağımlılık otomatik koleksiyonu](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) .
+    * Application Insights Aracısı .NET SDK 'Sı ile aynı bağımlılık sinyallerini otomatik olarak toplar. Daha fazla bilgi için bkz. [bağımlılık otomatik koleksiyonu](./auto-collect-dependencies.md#net) .
         > [!NOTE]
         > Şu anda yalnızca .NET IIS tarafından barındırılan uygulamalar desteklenir. Bir Azure sanal makinelerinde ve sanal makine ölçek kümelerinde barındırılan ASP.NET Core, Java ve Node.js uygulamalarını işaretlemek için bir SDK kullanın.
 
 * SDK aracılığıyla **kod tabanlı**
 
-    * Bu yaklaşım çok daha özelleştirilebilir, ancak [APPLICATION INSIGHTS SDK NuGet paketlerine bağımlılık eklemeyi](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)gerektirir. Bu yöntem, ayrıca paketlerin en son sürümüne yönelik güncelleştirmeleri yönetmeniz anlamına gelir.
+    * Bu yaklaşım çok daha özelleştirilebilir, ancak [APPLICATION INSIGHTS SDK NuGet paketlerine bağımlılık eklemeyi](./asp-net.md)gerektirir. Bu yöntem, ayrıca paketlerin en son sürümüne yönelik güncelleştirmeleri yönetmeniz anlamına gelir.
 
-    * Aracı tabanlı izleme ile varsayılan olarak yakalanmayan olayları/bağımlılıkları izlemek için özel API çağrıları yapmanız gerekiyorsa, bu yöntemi kullanmanız gerekir. Daha fazla bilgi edinmek için [özel olaylar ve ölçümler makalesine yönelik API](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) 'ye göz atın.
+    * Aracı tabanlı izleme ile varsayılan olarak yakalanmayan olayları/bağımlılıkları izlemek için özel API çağrıları yapmanız gerekiyorsa, bu yöntemi kullanmanız gerekir. Daha fazla bilgi edinmek için [özel olaylar ve ölçümler makalesine yönelik API](./api-custom-events-metrics.md) 'ye göz atın.
 
 > [!NOTE]
 > Hem aracı tabanlı izleme hem de el ile SDK tabanlı izleme algılanırsa yalnızca el ile izleme ayarları kabul edilir. Bu, yinelenen verilerin gönderilmesini önlemektir. Bu konuda daha fazla bilgi edinmek için aşağıdaki [sorun giderme bölümüne](#troubleshooting) bakın.
@@ -45,10 +46,10 @@ Azure sanal makineleri ve Azure sanal makine ölçek kümeleri barındırılan u
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>PowerShell kullanarak Azure sanal makinelerinde .NET uygulamaları için Application Insights aracısını yönetme
 
 > [!NOTE]
-> Application Insights aracısını yüklemeden önce bir bağlantı dizesine ihtiyacınız vardır. [Yeni bir Application Insights kaynağı oluşturun](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) veya var olan bir Application Insights kaynağından bağlantı dizesini kopyalayın.
+> Application Insights aracısını yüklemeden önce bir bağlantı dizesine ihtiyacınız vardır. [Yeni bir Application Insights kaynağı oluşturun](./create-new-resource.md) veya var olan bir Application Insights kaynağından bağlantı dizesini kopyalayın.
 
 > [!NOTE]
-> PowerShell 'de yeni misiniz? [Başlarken kılavuzuna](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)göz atın.
+> PowerShell 'de yeni misiniz? [Başlarken kılavuzuna](/powershell/azure/get-started-azureps?view=azps-2.5.0)göz atın.
 
 Application Insights aracısını Azure sanal makineleri için bir uzantı olarak yükler veya güncelleştirin
 ```powershell
@@ -98,7 +99,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-Ayrıca, portaldaki [Azure sanal makine dikey](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) penceresinde yüklü uzantıları da görüntüleyebilirsiniz.
+Ayrıca, portaldaki [Azure sanal makine dikey](../../virtual-machines/extensions/overview.md) penceresinde yüklü uzantıları da görüntüleyebilirsiniz.
 
 > [!NOTE]
 > Application Insights Aracısı uzantısını dağıtmak için kullandığınız bağlantı dizesiyle ilişkili Application Insights kaynak içindeki Canlı Ölçüm Akışı tıklayarak yüklemeyi doğrulayın. Birden çok sanal makineden veri gönderiyorsanız, sunucu adı altında hedef Azure sanal makinelerini seçin. Verilerin akışa başlaması bir dakika kadar sürebilir.

@@ -12,15 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3c16724dc3eb99549b692df93ee6cd5f1fc0bf30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027708"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
-Azure Multi-Factor Authentication Son Kullanıcı deneyimini özelleştirmek için hesap kilitleme eşikleri veya sahtekarlık uyarıları ve bildirimleri gibi ayarların seçeneklerini yapılandırabilirsiniz. Bazı ayarlar, Azure Active Directory (Azure AD) ve bazıları ayrı bir Azure Multi-Factor Authentication portalında Azure portal.]
+Azure Multi-Factor Authentication Son Kullanıcı deneyimini özelleştirmek için hesap kilitleme eşikleri veya sahtekarlık uyarıları ve bildirimleri gibi ayarların seçeneklerini yapılandırabilirsiniz. Bazı ayarlar, Azure Active Directory (Azure AD) ve bazıları ayrı bir Azure Multi-Factor Authentication portalında Azure portal.
 
 Aşağıdaki Azure Multi-Factor Authentication ayarları Azure portal sunulmaktadır:
 
@@ -267,7 +268,7 @@ Aşağıdaki adımları kullanarak adlandırılmış konumları tanımlamak içi
 1. Konum için bir ad girin.
 1. **Güvenilen konum olarak işaretle**' yi seçin.
 1. Ortamınız için *40.77.182.32/27*gibi CıDR gösteriminde IP aralığını girin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Koşullu erişimi kullanarak güvenilir IP 'Ler özelliğini etkinleştirme
 
@@ -293,7 +294,7 @@ Koşullu erişim ilkelerini kullanarak güvenilen IP 'Leri etkinleştirmek için
 Güvenilen IP 'Leri etkinleştirmek için koşullu erişim ilkeleri kullanmak istemiyorsanız, aşağıdaki adımları kullanarak Azure Multi-Factor Authentication *hizmet ayarlarını* yapılandırabilirsiniz:
 
 1. Azure portal, **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
-1. **Multi-Factor Authentication**seçin.
+1. **Multi-Factor Authentication**'ı seçin.
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 1. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler**altında, aşağıdaki iki seçenekten birini (veya her ikisini) seçin:
 
@@ -328,7 +329,7 @@ Daha fazla bilgi için bkz. [Azure AD 'de hangi kimlik doğrulama ve doğrulama 
 Doğrulama yöntemlerini etkinleştirmek veya devre dışı bırakmak için aşağıdaki adımları izleyin:
 
 1. Azure portal, **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
-1. **Multi-Factor Authentication**seçin.
+1. **Multi-Factor Authentication**'ı seçin.
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 1. **Hizmet ayarları** sayfasında, **doğrulama seçenekleri**altında kullanıcılarınıza sağlanacak yöntemlerin seçin/seçimini kaldırın.
 1. **Kaydet**’e tıklayın.
@@ -363,7 +364,7 @@ Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark e
 Kullanıcıların MFA durumunu hatırlamaları ve istemleri atlaması için seçeneğini etkinleştirmek ve yapılandırmak için aşağıdaki adımları izleyin:
 
 1. Azure portal, **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
-1. **Multi-Factor Authentication**seçin.
+1. **Multi-Factor Authentication**'ı seçin.
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 1. **Hizmet ayarları** sayfasında, **çok faktörlü kimlik doğrulamasını anımsa**' yı yönetin, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.
 1. Güvenilen cihazların iki aşamalı doğrulamayı atlamasına izin vermek için gün sayısını ayarlayın. Varsayılan değer 14 gündür.

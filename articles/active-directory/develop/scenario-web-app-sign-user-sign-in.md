@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7393b0f3d3004c28e0d6befe2fdbbeda7f9a592
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026161"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Kullanıcı oturumu açan Web uygulaması: oturum açma ve oturum kapatma
 
@@ -32,7 +33,7 @@ Oturum açma iki bölümden oluşur:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core, Microsoft Identity platform uygulamaları için, **oturum açma** düğmesi ' de gösterilir `Views\Shared\_LoginPartial.cshtml` (bir MVC uygulaması için) veya `Pages\Shared\_LoginPartial.cshtm` (Razor uygulaması için). Yalnızca kullanıcının kimliği doğrulanmadığı zaman görüntülenir. Diğer bir deyişle, Kullanıcı henüz oturum açmamış veya oturumu kapatmamışsa görüntülenir. Aksine, Kullanıcı zaten oturum açtığında **oturumu** Kapat düğmesi görüntülenir. Hesap denetleyicisinin **Microsoft. Identity. Web. UI** NuGet paketinde, **microsoftıdentity** adlı alanda tanımlandığını unutmayın.
+ASP.NET Core, Microsoft Identity platform uygulamaları için, **oturum açma** düğmesi ' de gösterilir `Views\Shared\_LoginPartial.cshtml` (bir MVC uygulaması için) veya `Pages\Shared\_LoginPartial.cshtm` (Razor uygulaması için). Yalnızca kullanıcının kimliği doğrulanmadığı zaman gösterilir. Diğer bir deyişle, Kullanıcı henüz oturum açmamış veya oturumu kapatmamışsa görüntülenir. Aksine, Kullanıcı zaten oturum açtığında **oturumu** Kapat düğmesi görüntülenir. Hesap denetleyicisinin **Microsoft. Identity. Web. UI** NuGet paketinde, **microsoftıdentity** adlı alanda tanımlandığını unutmayın.
 
 ```html
 <ul class="navbar-nav">
@@ -334,7 +335,7 @@ ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web 
 - Çağrı `Signout()` , OpenID Connect ara yazılım Microsoft Identity platform uç noktasıyla bağlantı sağlar `logout` . Bitiş noktası bundan sonra:
 
   - Oturum tanımlama bilgisini tarayıcıdan temizler.
-  - Oturum kapatma URL 'sini geri çağırır. Varsayılan olarak, oturum kapatma URL 'SI [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml), imzalanmış görünüm sayfasını görüntüler. Bu sayfa MIcrosoft. Identity. Web 'in bir parçası olarak da sağlanır.
+  - Oturum kapatma URL 'sini geri çağırır. Varsayılan olarak, oturum kapatma URL 'SI, imzalanmış görünüm sayfasını [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)görüntüler. Bu sayfa MIcrosoft. Identity. Web 'in bir parçası olarak da sağlanır.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -432,4 +433,4 @@ Oturum kapatma hakkında daha fazla bilgi edinmek istiyorsanız, [Açık kimlik 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşı](scenario-web-app-sign-user-production.md)
+> [Üretime geçme](scenario-web-app-sign-user-production.md)

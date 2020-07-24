@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e530f76c8301dc74f73b675befa6f0710aedab7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026637"
 ---
 # <a name="scenario-protected-web-api"></a>Senaryo: korumalı Web API 'SI
 
@@ -24,7 +25,7 @@ Bu senaryoda, bir Web API 'sini kullanıma sunma hakkında bilgi edineceksiniz. 
 
 Web API 'nizi kullanmak için hem iş hem de okul hesaplarıyla kimliği doğrulanmış kullanıcıları etkinleştirmeniz ya da Microsoft kişisel hesaplarını etkinleştirmeniz gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
@@ -32,8 +33,12 @@ Web API 'nizi kullanmak için hem iş hem de okul hesaplarıyla kimliği doğrul
 
 Web API 'Lerini korumak için bilmeniz gereken belirli bilgiler aşağıda verilmiştir:
 
-- Uygulama kaydınız en az bir kapsam kullanıma sunmalıdır. Web API 'niz tarafından kabul edilen belirteç sürümü, oturum açma izleyicisine bağlıdır.
+- Uygulama kaydınız en az bir *kapsam* veya bir *uygulama rolü*kullanıma sunmalıdır.
+  - Kapsamlar, bir kullanıcı adına çağrılan Web API 'Leri tarafından sunulur.
+  - Uygulama rolleri, Daemon uygulamaları tarafından çağrılan Web API 'Leri tarafından sunulur (Web API 'nizi kendi adına çağırır).
+- Yeni bir Web API 'SI uygulama kaydı oluşturursanız, Web API 'niz tarafından kabul edilen [erişim belirteci sürümünü](reference-app-manifest.md#accesstokenacceptedversion-attribute) seçin `2` . Eski Web API 'Leri için kabul edilen belirteç sürümü olabilir `null` , ancak bu değer, oturum açma kitlesini yalnızca kuruluşlar ile kısıtlar ve kişisel Microsoft hesapları (MSA) desteklenmez.
 - Web API 'SININ kod yapılandırması, Web API 'SI çağrıldığında kullanılan belirteci doğrulamalıdır.
+- Denetleyici eylemlerindeki kodun, belirteçteki rol veya kapsamları doğrulaması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

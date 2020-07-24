@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675852"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028660"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Bakım denetimi ve Azure PowerShell güncelleştirmeleri denetleme
 
@@ -46,7 +47,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-Bir bakım yapılandırması oluşturmak için [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) kullanın. Bu örnek, konakta *MyConfig* adlı bir bakım yapılandırması oluşturur. 
+Bir bakım yapılandırması oluşturmak için [New-AzMaintenanceConfiguration](/powershell/module/az.maintenance/new-azmaintenanceconfiguration) kullanın. Bu örnek, konakta *MyConfig* adlı bir bakım yapılandırması oluşturur. 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -60,7 +61,7 @@ Kullanımı, `-MaintenanceScope host` bakım yapılandırmasının konaktaki gü
 
 Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, aboneliğiniz için benzersiz olmalıdır.
 
-[Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration)kullanarak kullanılabilir bakım yapılandırması için sorgulama yapabilirsiniz.
+[Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration)kullanarak kullanılabilir bakım yapılandırması için sorgulama yapabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
@@ -68,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ## <a name="assign-the-configuration"></a>Yapılandırmayı ata
 
-Yapılandırmayı yalıtılmış sanal makinenize veya Azure adanmış ana bilgisayarınıza atamak için [New-Azconfigurationatama](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) ' yı kullanın.
+Yapılandırmayı yalıtılmış sanal makinenize veya Azure adanmış ana bilgisayarınıza atamak için [New-Azconfigurationatama](/powershell/module/az.maintenance/new-azconfigurationassignment) ' yı kullanın.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
@@ -105,7 +106,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Bekleyen güncelleştirmeleri denetle
 
-Bekleyen güncelleştirmeler olup olmadığını görmek için [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) kullanın. `-subscription`Oturum açmış olduğunuz sunucudan FARKLıYSA VM 'Nin Azure aboneliğini belirtmek için kullanın.
+Bekleyen güncelleştirmeler olup olmadığını görmek için [Get-AzMaintenanceUpdate](/powershell/module/az.maintenance/get-azmaintenanceupdate) kullanın. `-subscription`Oturum açmış olduğunuz sunucudan FARKLıYSA VM 'Nin Azure aboneliğini belirtmek için kullanın.
 
 Gösterilecek güncelleştirme yoksa, bu komut hiçbir şey döndürmez. Aksi takdirde, bir PSApplyUpdate nesnesi döndürür:
 
@@ -151,7 +152,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>Güncelleştirme uygulama
 
-Bekleyen güncelleştirmeleri uygulamak için [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) kullanın.
+Bekleyen güncelleştirmeleri uygulamak için [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) kullanın.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
@@ -182,7 +183,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>Güncelleştirme durumunu denetle
-Bir güncelleştirmenin durumunu denetlemek için [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) kullanın. Aşağıda gösterilen komutlar, parametresi için kullanılarak en son güncelleştirmenin durumunu gösterir `default` `-ApplyUpdateName` . Belirli bir güncelleştirmenin durumunu almak için, güncelleştirmenin adını ( [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) komutu tarafından döndürülen) kullanabilirsiniz.
+Bir güncelleştirmenin durumunu denetlemek için [Get-AzApplyUpdate](/powershell/module/az.maintenance/get-azapplyupdate) kullanın. Aşağıda gösterilen komutlar, parametresi için kullanılarak en son güncelleştirmenin durumunu gösterir `default` `-ApplyUpdateName` . Belirli bir güncelleştirmenin durumunu almak için, güncelleştirmenin adını ( [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) komutu tarafından döndürülen) kullanabilirsiniz.
 
 ```text
 Status         : Completed
@@ -226,7 +227,7 @@ Get-AzApplyUpdate `
 
 ## <a name="remove-a-maintenance-configuration"></a>Bakım yapılandırmasını kaldırma
 
-Bir bakım yapılandırmasını silmek için [Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) kullanın.
+Bir bakım yapılandırmasını silmek için [Remove-AzMaintenanceConfiguration](/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) kullanın.
 
 ```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `

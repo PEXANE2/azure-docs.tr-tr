@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82515449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030088"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-hiper ölçek (Citus)
 
@@ -32,7 +32,11 @@ Geçerli yedekleme depolama fiyatlandırması için bkz. PostgreSQL için Azure 
 
 ## <a name="restore"></a>Geri Yükleme
 
-PostgreSQL için Azure veritabanı 'nda, hiper ölçek (Citus) kümesini geri yüklemek, özgün düğümlerin yedeklemelerinden yeni bir küme oluşturur.
+PostgreSQL için Azure veritabanı 'nda, hiper ölçek (Citus) kümesini geri yüklemek, özgün düğümlerin yedeklemelerinden yeni bir küme oluşturur. 
+
+> [!IMPORTANT]
+>Hiper ölçek kümesini yalnızca aynı abonelik ve kaynak grubu içinde ve farklı bir küme adı ile geri yükleyebilirsiniz.
+
 
 > [!IMPORTANT]
 > Silinen hiper ölçek (Citus) kümeleri geri yüklenemez. Kümeyi silerseniz, kümeye ait olan tüm düğümler silinir ve kurtarılamaz. Küme kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](/azure/azure-resource-manager/management/lock-resources)faydalanabilir.

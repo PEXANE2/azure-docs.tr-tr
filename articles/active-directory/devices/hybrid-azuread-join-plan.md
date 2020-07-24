@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025716"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -30,7 +30,7 @@ Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği s
 
 Şirket içi Active Directory (AD) ortamınız varsa ve AD alanına katılmış bilgisayarlarınızı Azure AD 'ye eklemek istiyorsanız, karma Azure AD katılımı yaparak bunu yapabilirsiniz. Bu makalede, ortamınızda karma Azure AD katılımı uygulamak için ilgili adımlar sağlanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -92,12 +92,12 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Cihazları Azure AD kayıtlı durumuyla işleme
 Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azure AD](overview.md#getting-devices-in-azure-ad) Ise, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazın iki durumuna yol açabilir. Bu senaryoyu otomatik olarak çözmek için Windows 10 1803 ' e (KB4489894 uygulanmış olan) veya üstüne yükseltmeniz önerilir. 1803 öncesi sürümlerde, hibrit Azure AD JOIN 'i etkinleştirmeden önce Azure AD kayıtlı durumunu el ile kaldırmanız gerekecektir. 1803 ve üzeri sürümlerde, bu iki durumdan kaçınmak için aşağıdaki değişiklikler yapılmıştır:
 
-- Bir kullanıcı için mevcut Azure AD kayıtlı durumu, <i>cihaz karma Azure AD 'ye katılmış olduktan ve aynı kullanıcı oturum açtığında</i>otomatik olarak kaldırılacaktır. Örneğin, Kullanıcı A 'nın cihazda bir Azure AD kayıtlı durumu varsa, Kullanıcı a 'nın çift durumu yalnızca cihazda oturum açan kullanıcı tarafından temizlenir. aynı cihazda birden fazla kullanıcı varsa, bu kullanıcılar oturum açarken iki durum tek tek temizlenir.
+- Bir kullanıcı için mevcut Azure AD kayıtlı durumu, <i>cihaz karma Azure AD 'ye katılmış olduktan ve aynı kullanıcı oturum açtığında</i>otomatik olarak kaldırılacaktır. Örneğin, Kullanıcı A 'nın cihazda bir Azure AD kayıtlı durumu varsa, Kullanıcı a 'nın çift durumu yalnızca cihazda oturum açan kullanıcı tarafından temizlenir. Aynı cihazda birden fazla kullanıcı varsa, bu kullanıcılar oturum açarken iki durum tek tek temizlenir. Azure AD kayıtlı durumunun kaldırılmasına ek olarak, kayıt, Azure AD kaydının bir parçası olarak otomatik kayıt yoluyla gerçekleştiyse, Windows 10 da cihazın Intune veya diğer MDM 'den kaydını kaldırır.
 - Hklm\software\policies\microsoft\windows\workplacejoın: "Blockaadworkplacejoın" = DWORD: 00000001 ' ye aşağıdaki kayıt defteri değerini ekleyerek etki alanına katılmış cihazın Azure AD 'den kaydedilmesini engelleyebilirsiniz.
 - Windows 10 1803 ' de, Iş için Windows Hello yapılandırılmışsa, ikili durum temizleme sonrasında kullanıcının Iş için Windows Hello 'Yu yeniden kurulumu gerekir. Bu sorun KB4512509 ile giderilmiştir
 
 > [!NOTE]
-> Azure AD kayıtlı cihaz, Intune tarafından yönetiliyorsa otomatik olarak kaldırılmaz.
+> Windows 10 yerel olarak Azure AD kayıtlı durumunu otomatik olarak kaldırsa da, Intune tarafından yönetiliyorsa Azure AD 'deki cihaz nesnesi hemen silinmez. Dsregcmd/Status ' i çalıştırarak Azure AD kayıtlı durumunun kaldırılmasını doğrulayabilir ve bu cihazı, Azure AD 'ye göre kayıtlı değil olarak kabul edebilirsiniz.
 
 ### <a name="additional-considerations"></a>Diğer konular
 - Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
@@ -164,7 +164,7 @@ Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD 
 | Lemez | Federe | 1703 sürümünden | Genel kullanıma sunuldu |
 | Yönlendirilemeyen | Federe | 1803 sürümünden | Genel kullanıma sunuldu |
 | Lemez | Yönetilen | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez |
-| Yönlendirilemeyen | Yönetilen | Desteklenmiyor | |
+| Yönlendirilemeyen | Yönetilen | Desteklenmez | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

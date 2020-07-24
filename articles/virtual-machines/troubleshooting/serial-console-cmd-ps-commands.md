@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167038"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028473"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows komutları-CMD ve PowerShell
 
 Bu bölüm, RDP bağlantı hatalarıyla ilgili sorunları gidermeniz gerektiğinde olduğu gibi, Windows sanal makinenize erişmek için SAC kullanmanız gerekebilecek senaryolarda yaygın görevleri gerçekleştirmeye yönelik örnek komutlar içerir.
 
-SAC, Windows Server 2003 ' den beri tüm Windows sürümlerine eklenmiştir ancak varsayılan olarak devre dışıdır. SAC `sacdrv.sys` çekirdek sürücüsünü, `Special Administration Console Helper` hizmeti ( `sacsvr` ) ve `sacsess.exe` işlemi kullanır. Daha fazla bilgi için bkz. [acil durum Yönetim Hizmetleri araçları ve ayarları](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
+SAC, Windows Server 2003 ' den beri tüm Windows sürümlerine eklenmiştir ancak varsayılan olarak devre dışıdır. SAC `sacdrv.sys` çekirdek sürücüsünü, `Special Administration Console Helper` hizmeti ( `sacsvr` ) ve `sacsess.exe` işlemi kullanır. Daha fazla bilgi için bkz. [acil durum Yönetim Hizmetleri araçları ve ayarları](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
 
 SAC, çalışan işletim sistemine seri bağlantı noktası aracılığıyla bağlanmanızı sağlar. SAC 'yi SAC 'den başlattığınızda, `sacsess.exe` `cmd.exe` çalışan işletim sistemi içinde başlatılır. VM 'niz için aynı anda sanal makinenizde RDP 'niz varsa, seri konsol özelliği aracılığıyla da SAC 'ye bağlı olursunuz. SAC aracılığıyla erişebileceğiniz CMD, `cmd.exe` RDP ile bağlıyken kullandığınız aynıdır. Aynı komutların ve araçların tümü, bu CMD örneğinden PowerShell 'i başlatma özelliği de dahil olmak üzere kullanılabilir. Bu, sac ile Windows kurtarma ortamı (WinRE) arasında büyük bir farklılık olduğunu ve bu, WinRE 'nin farklı ve en az bir işletim sistemi üzerinde önyüklemesinde çalışan işletim sistemini yönetmenize olanak sağlar. Azure VM 'Leri, seri konsol özelliği ile WinRE 'ye erişme özelliğini desteklemediğinden, Azure VM 'Leri SAC aracılığıyla yönetilebilir.
 
@@ -90,7 +91,7 @@ veya
 ### <a name="set-nic-to-use-dhcp"></a>NIC 'yi DHCP kullanacak şekilde ayarlama
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-Hakkında daha fazla bilgi `netsh` için [buraya tıklayın](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
+Hakkında daha fazla bilgi `netsh` için [buraya tıklayın](/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Azure VM 'Leri, bir IP adresi almak için DHCP kullanmak üzere Konuk işletim sisteminde her zaman yapılandırılmalıdır. Azure statik IP ayarı yine de DHCP 'yi kullanarak statik IP 'yi VM 'ye verir.
 ### <a name="ping"></a>Ping
@@ -182,11 +183,11 @@ Bu örnek, Windows sürümüne bağlı olarak netvsc.sys, netvsc63.sys veya netv
 ### <a name="scan-for-system-file-corruption"></a>Sistem dosyası bozukluğunu Tara
 `sfc /scannow`
 
-Ayrıca bkz. [Windows görüntüsünü onarma](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Ayrıca bkz. [Windows görüntüsünü onarma](/windows-hardware/manufacture/desktop/repair-a-windows-image).
 ### <a name="scan-for-system-file-corruption"></a>Sistem dosyası bozukluğunu Tara
 `dism /online /cleanup-image /scanhealth`
 
-Ayrıca bkz. [Windows görüntüsünü onarma](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Ayrıca bkz. [Windows görüntüsünü onarma](/windows-hardware/manufacture/desktop/repair-a-windows-image).
 ### <a name="export-file-permissions-to-text-file"></a>Dosya izinlerini metin dosyasına aktar
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>Dosya izinlerini ACL dosyasına kaydet
@@ -435,7 +436,7 @@ OsType, location, vmSize, VMID, Name, resourceGroupName, SubscriptionID, Private
 
 Örnek meta verilerin sorgulanması, Azure ana bilgisayarında örnek meta veri hizmetine REST çağrısı yaptığından sağlıklı Konuk ağ bağlantısı gerektirir. Bu nedenle, Konuk meta verileri sorgulayabilirsiniz. Bu, konuğun bir Azure 'da barındırılan bir hizmetle ağ üzerinden iletişim kurabildiğini söyler.
 
-Daha fazla bilgi için bkz. [Azure örnek meta verileri hizmeti](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service).
+Daha fazla bilgi için bkz. [Azure örnek meta verileri hizmeti](../windows/instance-metadata-service.md).
 
 ### <a name="instance-metadata"></a>Örnek meta verileri
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

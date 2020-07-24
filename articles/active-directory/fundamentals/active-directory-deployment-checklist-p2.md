@@ -3,21 +3,22 @@ title: Azure AD dağıtımı denetim listesi
 description: Azure Active Directory özellik dağıtımı denetim listesi
 services: active-directory
 ms.service: active-directory
-ms.subservice: ''
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063654"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025396"
 ---
-# <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özelliği dağıtım kılavuzu
+# <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özellik dağıtım kılavuzu
 
 Kuruluşunuz için Azure Active Directory (Azure AD) dağıtımı yapabilir ve güvenli bir şekilde koruyabilirsiniz. Bu makalede, müşterilerin güvenlik duruşunu iyileştirmek için 30, 60, 90 gün veya daha fazla aşamada, müşterilerin evrelerde tamamlaması faydalı olan ortak görevleri tanımlanmaktadır. Azure AD 'yi zaten dağıtmış olan kuruluşlar bile bu kılavuzu kullanarak yatırımlarından en iyi şekilde yararlanmanızı sağlar.
 
@@ -25,7 +26,7 @@ Kuruluşunuz için Azure Active Directory (Azure AD) dağıtımı yapabilir ve g
 
 Ayrıca müşteriler, Microsoft 'un en iyi uygulamalarına nasıl hizalanacağını öğrenmek için kendi [kimlik güvenli Puanını](identity-secure-score.md) denetleyebilir. Sektörünüz ve boyutlarınızın diğer kuruluşlarındaki diğer kuruluşlara kıyasla ne kadar iyi işlem yaptığınızı görmek için bu önerileri uyguladıktan önce ve sonra güvenli puanınızı kontrol edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzdaki önerilerin birçoğu Azure AD Ücretsiz veya hiçbir lisans olmadan uygulanabilir. Lisansların gerekli olduğu durumlar, görevi gerçekleştirmek için en düşük düzeyde lisansın gerekli olduğu durumdur.
 
@@ -52,10 +53,11 @@ Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan vey
 | [Bulut tabanlı kullanıcı hesapları için düzenli parola sıfırlamaları devre dışı bırak](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Düzenli parola sıfırlama, kullanıcılarınızın mevcut parolalarını artırmasını teşvik eder. Microsoft 'un parola Kılavuzu belgesi ' nde yer alan yönergeleri kullanın ve şirket içi ilkenizi yalnızca bulutta bulunan kullanıcılara yansıtın. | Azure AD Ücretsiz |
 | [Akıllı kilitleme Azure Active Directory özelleştirme](../authentication/howto-password-smart-lockout.md) | Bulut tabanlı kullanıcılardan gelen kilitlenmelerini, şirket içi Active Directory kullanıcılarına çoğaltılmalarını durdurun | |
 | [AD FS için extranet akıllı kilitlemeyi etkinleştir](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS Extranet kilitleme, deneme yanılma, parola tahmin saldırılarına karşı koruma sağlar, ancak geçerli AD FS kullanıcıların hesaplarını kullanmaya devam etmesine izin verir. | |
+| [Koşullu erişimle Azure AD 'de eski kimlik doğrulamasını engelleyin](../conditional-access/block-legacy-authentication.md) | Multi-Factor Authentication zorlayamayan POP, SMTP, IMAP ve MAPI gibi eski kimlik doğrulama protokollerini engelleyin ve bunları reklam işlemleri için tercih edilen bir giriş noktası haline getirin. | Azure AD Premium P1 |
 | [Koşullu erişim ilkelerini kullanarak Azure AD Multi-Factor Authentication dağıtma](../authentication/howto-mfa-getstarted.md) | Kullanıcıların koşullu erişim ilkelerini kullanarak gizli uygulamalara erişirken iki adımlı doğrulama gerçekleştirmesini gerektir. | Azure AD Premium P1 |
 | [Azure Active Directory Kimlik Koruması etkinleştir](../identity-protection/overview-identity-protection.md) | Kuruluşunuzdaki kullanıcılar için riskli oturum açma işlemlerinin ve güvenliği aşılmış kimlik bilgilerinin izlenmesini etkinleştirin. | Azure AD Premium P2 |
 | [Çok faktörlü kimlik doğrulaması ve parola değişikliklerini tetiklemek için risk algılamalarını kullanma](../authentication/tutorial-risk-based-sspr-mfa.md) | Multi-Factor Authentication, parola sıfırlama ve oturum açma işlemlerini riske göre engelleme gibi olayları tetikleyemeyen Otomasyonu etkinleştirin. | Azure AD Premium P2 |
-| [Self servis parola sıfırlama ve Azure AD Multi-Factor Authentication (Önizleme) için yakınsama kaydını etkinleştirme](../authentication/concept-registration-mfa-sspr-converged.md) | Kullanıcılarınızın hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. | Azure AD Premium P1 |
+| [Self servis parola sıfırlama ve Azure AD Multi-Factor Authentication için Birleşik kaydı etkinleştirme](../authentication/concept-registration-mfa-sspr-combined.md) | Kullanıcılarınızın hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2. Aşama: kullanıcıları Içeri aktarma, eşitlemeyi etkinleştirme ve cihazları yönetme
 

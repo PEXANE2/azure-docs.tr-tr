@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029289"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri ile dikey otomatik ölçeklendirme
 
@@ -87,9 +87,9 @@ Sanal makine ölçek kümesinden ölçüm tabanlı uyarılara dayalı olarak tet
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Farklı Çalıştır özelliği ile bir Azure Otomasyonu hesabı oluşturma
-Yapmanız gereken ilk şey, sanal makine ölçek kümesi örneklerini ölçeklendirmek için kullanılan runbook 'ları barındıran bir Azure Otomasyonu hesabı oluşturmaktır. Son [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) , bir kullanıcı adına runbook 'ları otomatik olarak çalıştırmak Için hizmet sorumlusu ayarlamayı sağlayan "farklı çalıştır hesabı" özelliğini kullanıma sunmuştur. Daha fazla bilgi için bkz:
+Yapmanız gereken ilk şey, sanal makine ölçek kümesi örneklerini ölçeklendirmek için kullanılan runbook 'ları barındıran bir Azure Otomasyonu hesabı oluşturmaktır. Son [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) , bir kullanıcı adına runbook 'ları otomatik olarak çalıştırmak Için hizmet sorumlusu ayarlamayı sağlayan "farklı çalıştır hesabı" özelliğini kullanıma sunmuştur. Daha fazla bilgi için bkz.
 
-* [Azure Farklı Çalıştır hesabıyla Runbook Kimlik Doğrulaması](../automation/automation-sec-configure-azure-runas-account.md)
+* [Azure Farklı Çalıştır hesabıyla Runbook Kimlik Doğrulaması](../automation/manage-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Azure Otomasyonu dikey ölçek runbook 'larını aboneliğinize aktarma
 

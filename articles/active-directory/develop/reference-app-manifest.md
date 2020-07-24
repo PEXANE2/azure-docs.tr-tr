@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory uygulama bildirimini anlama
+titleSuffix: Microsoft identity platform
 description: Uygulamanın Azure AD kiracısındaki kimlik yapılandırmasını temsil eden ve OAuth yetkilendirme, onay deneyimini ve daha fazlasını kolaylaştırmak için kullanılan Azure Active Directory Uygulama bildiriminin ayrıntılı kapsamı.
 services: active-directory
 author: rwike77
@@ -12,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479258"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026756"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
-Uygulama bildirimi Microsoft Identity platformunda bir uygulama nesnesinin tüm özniteliklerinin tanımını içerir. Ayrıca uygulama nesnesini güncelleştirmek için bir mekanizma işlevi görür. Uygulama varlığı ve şeması hakkında daha fazla bilgi için [Graph API uygulama varlığı belgelerine](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)bakın.
+Uygulama bildirimi Microsoft Identity platformunda bir uygulama nesnesinin tüm özniteliklerinin tanımını içerir. Ayrıca uygulama nesnesini güncelleştirmek için bir mekanizma işlevi görür. Uygulama varlığı ve şeması hakkında daha fazla bilgi için [Graph API uygulama varlığı belgelerine](/graph/api/resources/application)bakın.
 
-Bir uygulamanın özniteliklerini Azure portal veya [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) veya [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)kullanarak program aracılığıyla yapılandırabilirsiniz. Ancak, bir uygulamanın özniteliğini yapılandırmak için uygulama bildirimini düzenlemeniz gereken bazı senaryolar vardır. Bu senaryolar şunlardır:
+Bir uygulamanın özniteliklerini Azure portal veya [REST API](/graph/api/resources/application) veya [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)kullanarak program aracılığıyla yapılandırabilirsiniz. Ancak, bir uygulamanın özniteliğini yapılandırmak için uygulama bildirimini düzenlemeniz gereken bazı senaryolar vardır. Bu senaryolar şunlardır:
 
 * Uygulamayı Azure AD çok kiracılı ve kişisel Microsoft hesapları olarak kaydettiniz, Kullanıcı arabirimindeki desteklenen Microsoft hesaplarını değiştiremezsiniz. Bunun yerine, desteklenen hesap türünü değiştirmek için uygulama bildirimi düzenleyicisini kullanmanız gerekir.
 * Uygulamanızın desteklediği izinleri ve rolleri tanımlamanız gerekiyorsa, uygulama bildirimini değiştirmeniz gerekir.
@@ -32,8 +33,8 @@ Bir uygulamanın özniteliklerini Azure portal veya [REST API](https://docs.micr
 
 Uygulama bildirimini yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com)gidin. **Azure Active Directory** hizmetini arayıp seçin.
-1. **Uygulama kayıtları**'nı seçin.
+1. [Azure portalına](https://portal.azure.com) gidin. **Azure Active Directory** hizmetini arayıp seçin.
+1. **Uygulama kayıtları**’nı seçin.
 1. Yapılandırmak istediğiniz uygulamayı seçin.
 1. Uygulamanın **Genel Bakış** sayfasında, **Bildirim** bölümünü seçin. Web tabanlı bir bildirim Düzenleyicisi açılır ve bu, portalı içindeki bildirimi düzenlemenize olanak tanır. İsteğe bağlı olarak, bildirimi yerel olarak düzenlemek için **İndir** ' i seçip uygulamanıza yeniden uygulamak Için **karşıya yükle** ' yi kullanabilirsiniz.
 
@@ -433,7 +434,7 @@ OAuth 2,0 belirteç isteklerinin bir parçası olarak, Azure AD 'nin istekleri a
 | parentalControlSettings | Dize |
 
 - `countriesBlockedForMinors`uygulamanın minors için engellediği ülkeleri/bölgeleri belirtir.
-- `legalAgeGroupRule`uygulamanın kullanıcıları için geçerli olan geçerli yaş grubu kuralını belirtir. ,,, `Allow` Veya olarak `RequireConsentForPrivacyServices` ayarlanabilir `RequireConsentForMinors` `RequireConsentForKids` `BlockMinors` .  
+- `legalAgeGroupRule`uygulamanın kullanıcıları için geçerli olan geçerli yaş grubu kuralını belirtir. ,,, `Allow` Veya olarak `RequireConsentForPrivacyServices` ayarlanabilir `RequireConsentForMinors` `RequireConsentForKids` `BlockMinors` .
 
 Örnek:
 
@@ -493,7 +494,7 @@ Kapalı onay için uygulamaları ve istenen izinleri listeler. Uygulamaya onay s
 | :--- | :--- |
 | publicClient | Boole|
 
-Bu uygulamanın ortak bir istemci olup olmadığını belirtir (örneğin, bir mobil cihazda çalışan yüklü bir uygulama gibi). 
+Bu uygulamanın ortak bir istemci olup olmadığını belirtir (örneğin, bir mobil cihazda çalışan yüklü bir uygulama gibi).
 
 Bu özellik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `allowPublicClient` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
 
@@ -622,7 +623,7 @@ Geçerli uygulama için hangi Microsoft hesaplarının desteklendiğini belirtir
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| etiketler | Dize dizisi  |
+| tags | Dize dizisi  |
 
 Uygulamayı kategorilere ayırmak ve tanımlamak için kullanılabilen özel dizeler.
 
@@ -669,7 +670,7 @@ Daha önce indirilen bir bildirimi karşıya yüklemeye çalıştığınızda, a
 
 Bu hatalardan birini gördüğünüzde, aşağıdaki işlemleri yapmanızı öneririz:
 
-1. Daha önce indirilen bir bildirimi karşıya yüklemek yerine, öznitelikleri bildirim düzenleyicisinde tek tek düzenleyin. İlgilendiğiniz öznitelikleri başarıyla düzenleyebilmeniz için, eski ve yeni özniteliklerin sözdizimini ve semantiğini anlamak için [bildirim başvuru](#manifest-reference) tablosunu kullanın. 
+1. Daha önce indirilen bir bildirimi karşıya yüklemek yerine, öznitelikleri bildirim düzenleyicisinde tek tek düzenleyin. İlgilendiğiniz öznitelikleri başarıyla düzenleyebilmeniz için, eski ve yeni özniteliklerin sözdizimini ve semantiğini anlamak için [bildirim başvuru](#manifest-reference) tablosunu kullanın.
 1. İş akışınız, daha sonra kullanmak üzere bildirimleri kaynak deponuza kaydetmenizi gerektiriyorsa, kayıtlı bildirimleri deponuzda **uygulama kayıtları** deneyiminde gördüğünüz bir şekilde yeniden temellendirmenizi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

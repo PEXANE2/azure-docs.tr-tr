@@ -1,18 +1,18 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 07/20/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df78133f602466681da64d2666a311e1649c598f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506063"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028813"
 ---
 Spot VM 'Lerin kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
 
@@ -26,10 +26,6 @@ VM 'Ler, belirlenen kapasiteye veya en yüksek fiyata göre çıkartılabilir. B
 *Serbest bırakma* ILKESI, VM 'nizi durdurulmuş serbest bırakılmış duruma, daha sonra yeniden dağıtmanıza olanak tanır. Ancak, ayırmanın başarılı olacağını garanti etmez. Serbest bırakılmış VM 'Ler kotaıza göre sayılır ve temel diskler için depolama maliyetleri ücretlendirilecektir. 
 
 SANAL makinenizin çıkarıldıktan sonra silinmesini isterseniz, çıkarma ilkesini *silme*olarak ayarlayabilirsiniz. Çıkarılan VM 'Ler temel disklerle birlikte silinir, bu nedenle depolama alanı için ücretlendirilmeye devam edersiniz. 
-
-> [!NOTE]
->
-> Portal Şu anda `Delete` çıkarma seçeneği olarak desteklememektedir, yalnızca `Delete` POWERSHELL, CLI ve şablonları kullanarak ayarlayabilirsiniz.
 
 [Azure zamanlanan olaylar](../articles/virtual-machines/linux/scheduled-events.md)aracılığıyla VM içi bildirimler almayı tercih edebilirsiniz. Bu, VM 'leriniz çıkarıldıktan sonra herhangi bir işi tamamlamak ve çıkarma öncesi görevleri gerçekleştirmek için 30 saniyelik bir işlem yapmanız durumunda size bildirir. 
 
@@ -54,19 +50,14 @@ Aşağıdaki VM boyutları, spot VM 'Ler için desteklenmez:
 
 Spot sanal makineler, Microsoft Azure Çin 21Vianet dışında herhangi bir bölgeye dağıtılabilir.
 
-Bazı abonelik kanalları desteklenmez:
-
 <a name="channel"></a>
 
-| Azure kanalları               | Azure spot VM kullanılabilirliği       |
-|------------------------------|-----------------------------------|
-| Kurumsal Anlaşma         | Evet                               |
-| Kullandıkça Öde                | Evet                               |
-| Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Yararları                     | Kullanılamaz                     |
-| Sponsorlu                    | Evet                               |
-| Ücretsiz Deneme                   | Kullanılamaz                     |
+Şu [teklif türleri](https://azure.microsoft.com/support/legal/offer-details/) Şu anda destekleniyor:
 
+-   Kurumsal Anlaşma
+-   Kullandıkça öde
+-   Sponsorlu
+- Bulut hizmeti sağlayıcısı (CSP) için iş ortağınızla iletişime geçin
 
 
 ## <a name="pricing"></a>Fiyatlandırma

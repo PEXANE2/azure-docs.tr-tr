@@ -15,11 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83120972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028405"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure 'da yeni bir Windows VM oluştururken dağıtım sorunlarını giderme
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +37,7 @@ Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etk
 
 [Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/templates/deployment-history.md)
 
-[Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../../resource-group-audit.md)
+[Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -52,7 +53,7 @@ Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etk
 
 **Çözünürlük**
 
-Bu hataları çözmek için, şirket içinde kullanılabilir olan özgün VHD 'yi, işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarla birlikte [karşıya yüklemek Için Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)kullanın. Genelleştirilmiş olarak karşıya yüklemek için önce Sysprep 'i çalıştırmayı unutmayın.
+Bu hataları çözmek için, şirket içinde kullanılabilir olan özgün VHD 'yi, işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarla birlikte [karşıya yüklemek Için Add-AzVhd](/powershell/module/az.compute/add-azvhd)kullanın. Genelleştirilmiş olarak karşıya yüklemek için önce Sysprep 'i çalıştırmayı unutmayın.
 
 **Yakalama hataları:**
 
@@ -89,5 +90,3 @@ Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Durdurulmuş bir Windows sanal makinesini başlattığınızda veya Azure 'da var olan bir Windows VM 'yi yeniden boyutlandırdığınızda sorunlarla karşılaşırsanız bkz. [Azure 'da var olan bir Windows sanal makinesini yeniden başlatma veya yeniden boyutlandırma ile ilgili dağıtım sorunlarını giderme Kaynak Yöneticisi](restart-resize-error-troubleshooting.md).
-
-

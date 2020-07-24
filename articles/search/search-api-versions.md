@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/15/2020
-ms.openlocfilehash: 2cdac18ed20c90861fe23f0a9ccbd02680d380af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: 5be50453dff9acaf4a9876eec1d95b56abebf745
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029850"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -24,7 +24,7 @@ Bir kural olarak, Azure Bilişsel Arama ekibi, kodunuzu yeni bir API sürümü k
 Aynı kural SDK güncelleştirmeleri için de geçerlidir. Azure Bilişsel Arama SDK, anlam sürümü [oluşturma](https://semver.org/) kurallarını izler, yani sürümünün üç bölümü vardır: Ana, ikincil ve derleme numarası (örneğin, 1.1.0). SDK 'nın yeni bir ana sürümü yalnızca geriye dönük uyumluluğu kesen değişiklikler için serbest bırakılır. Önemli olmayan özellik güncelleştirmeleri ikincil sürümü artırır ve hata düzeltmeleri yalnızca derleme sürümünü artırır.
 
 > [!Important]
-> .NET, Java, Python ve JavaScript için Azure SDK 'Ları, Azure Bilişsel Arama yönelik yeni istemci kitaplıklarını kullanıma alıyor. Şu anda Azure SDK kitaplıklarının hiçbirinde en son arama REST API 'Leri (2020-06-30) veya yönetim REST API 'Leri (2020-03-13) desteklenmez, ancak bu süre içinde değişecektir. Bu sayfayı veya işlevsel geliştirmelerle [ilgili duyurulara yönelik yenilikler](whats-new.md) ' i düzenli olarak denetleyebilirsiniz. 
+> .NET, Java, Python ve JavaScript için Azure SDK 'Ları, Azure Bilişsel Arama yönelik yeni istemci kitaplıklarını kullanıma alıyor. Şu anda Azure SDK kitaplıklarının hiçbiri en son arama REST API 'Lerini (2020-06-30) veya yönetim REST API 'Lerini (2020-03-13) tam olarak desteklemez, ancak bu zaman içinde değişecektir. Bu sayfayı veya işlevsel geliştirmelerle [ilgili duyurulara yönelik yenilikler](whats-new.md) ' i düzenli olarak denetleyebilirsiniz. 
 
 ## <a name="rest-apis"></a>REST API'leri
 
@@ -69,7 +69,7 @@ Paket sürümü geçmişi NuGet.org üzerinde kullanılabilir. Bu tablo, her pak
 
 | SDK sürümü | Durum | Açıklama |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documstaları 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
+| [Azure.Search.Documstaları 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2020-06-30 REST API, ancak henüz, coğrafi filtreler veya [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)'ı desteklemez. |
 | [Microsoft. Azure. Search 10,0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Dengeli | Yayınlanan 2019 Mayıs. Arama REST API-Version = 2019-05-06 ' i hedefler.|
 | [Microsoft. Azure. Search 8,0-Önizleme](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | Önizleme | Yayın tarihi 2019 Nisan. Arama REST API-Version = 2019-05 -06-Preview ' i hedefler.|
 | [Microsoft. Azure. Management. Search 3.0.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler.  |

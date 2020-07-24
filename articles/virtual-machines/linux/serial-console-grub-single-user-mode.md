@@ -8,11 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d594f4d8019a7c23da79506cd702adbe9f25038d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028950"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma
 GRUB, genel olarak birleştirilmiş önyükleme yükleyicisinden. GRUB 'den önyükleme yapılandırmanızı, diğer şeyler arasında tek kullanıcı modunda önyüklenecek şekilde değiştirebilirsiniz.
@@ -77,7 +78,7 @@ Yukarıdaki yönergelerle bir GRUB ve kök erişim ayarladıysanız, aşağıdak
 1. Çıkmak için CTRL + X tuşlarına basın ve uygulanan ayarlarla yeniden başlatın
 1. Tek kullanıcı moduna girebilmek için önce yönetici parolasını girmeniz istenir-bu, yukarıdaki yönergelerde oluşturduğunuz parolayla aynı olur    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Bir komut satırı arabirimini gösteren animasyonlu resim. Kullanıcı bir sunucu seçer, çekirdek çizginin sonunu bulur ve sonra belirtilen metni girer.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>RHEL 'de kök hesabı etkin olmadan tek kullanıcı modu girin
 Kök kullanıcıyı etkinleştirmek için yukarıdaki adımlara gitmediyseniz, yine de kök parolanızı sıfırlamayı seçebilirsiniz. Aşağıdaki yönergeleri kullanın:
@@ -94,7 +95,7 @@ Kök kullanıcıyı etkinleştirmek için yukarıdaki adımlara gitmediyseniz, y
 1. Tek Kullanıcı modunda önyükleme yaptıktan sonra, `chroot /sysroot` jailbreak uygulanmış 'e geçiş yapmak için yazın `sysroot`
 1. Artık köküdür. Kök parolanızı ile sıfırlayabilir `passwd` ve sonra tek bir Kullanıcı modu girmek için yukarıdaki yönergeleri kullanabilirsiniz. `reboot -f`İşiniz bittiğinde yeniden başlatmak için yazın.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Bir komut satırı arabirimini gösteren animasyonlu resim. Kullanıcı bir sunucu seçer, çekirdek çizginin sonunu bulur ve belirtilen komutları girer.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Göz atın: Yukarıdaki yönergelerden çalıştırılması sizi acil durum kabuğuna bırakacak, bu sayede de Düzenle gibi görevler gerçekleştirebilirsiniz `fstab` . Bununla birlikte, genellikle kabul edilen öneri, kök parolanızı sıfırlayıp tek kullanıcı moduna girmek için bunu kullanmaktır. 
 
@@ -119,7 +120,7 @@ Varsayılan olarak, Ubuntu görüntüleri, GRUB ekranını otomatik olarak göst
 1. `GRUB_TIMEOUT`Değeri sıfır olmayan bir değerle değiştirin
 1. `/etc/default/grub`Seçtiğiniz bir metin düzenleyicisinde açın
 1. `GRUB_HIDDEN_TIMEOUT=1`Satırı açıklama
-1. `sudo update-grub` öğesini çalıştırın
+1. `sudo update-grub` komutunu çalıştırın
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 'da tek kullanıcı modu
 Ubuntu, normal şekilde önyükleme yapmam durumunda sizi otomatik olarak tek kullanıcı moduna bırakacak. Tek kullanıcı moduna el ile girmek için aşağıdaki yönergeleri kullanın:
@@ -156,7 +157,7 @@ SLES 'deki GRUB erişimi, YaST aracılığıyla önyükleme yükleyicisi yapıla
 1. GRUB girmek için sanal makinenizi yeniden başlatın ve önyükleme sırası sırasında herhangi bir tuşa basarak GRUB 'nin ekranda kalmasını sağlayın
     - GRUB için varsayılan zaman aşımı 1 ' dir. Bunu, içindeki değişkenini değiştirerek değiştirebilirsiniz. `GRUB_TIMEOUT``/etc/default/grub`
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![Bir komut satırı arabirimini gösteren animasyonlu resim. Kullanıcı belirtilen metni girer, belirtilen seçeneği seçer ve ayarları kaydeder.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>SUSE SLES 'de tek kullanıcı modu
 SLES normal şekilde önyüklenemediğinde, otomatik olarak acil durum kabuğu 'na bırakılır. Acil durum kabuğunu el ile girmek için aşağıdaki yönergeleri kullanın:
@@ -177,7 +178,7 @@ Oracle Linux, kutudan çıkan GRUB ile birlikte gelir. GRUB girmek için VM 'niz
 Oracle Linux ' de tek kullanıcı modunu etkinleştirmek için yukarıdaki RHEL yönergelerini izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ana seri konsol Linux belge sayfası [burada](serial-console.md)bulunur.
+* Ana seri konsol Linux belge sayfası [burada](../troubleshooting/serial-console-linux.md)bulunur.
 * [NMI ve SysRq çağrıları](serial-console-nmi-sysrq.md) Için seri konsol kullan
-* Seri konsol [Windows](../windows/serial-console.md) VM 'leri için de kullanılabilir
-* [Önyükleme tanılaması](boot-diagnostics.md) hakkında daha fazla bilgi
+* Seri konsol [Windows](../troubleshooting/serial-console-windows.md) VM 'leri için de kullanılabilir
+* [Önyükleme tanılaması](../troubleshooting/boot-diagnostics.md) hakkında daha fazla bilgi

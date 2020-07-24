@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029986"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)
 
@@ -74,12 +74,12 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 | Azure AD kimlik doğrulaması ile Azure SQL veritabanları | Evet | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-other-known-resources) |  |  |
 | Azure depolama ve Azure Data Lake Storage 2. | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Data Lake Storage 1. Nesil | Evet |  |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
-| Azure Dosyalar | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
+| Azure Dosyaları | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Dosya Eşitleme | Yes | Yes |  |  |
-| Azure Yönetilen Diskleri | Evet | Yok |  |  |
+| Azure Yönetilen Diskleri | Yes | Yok |  |  |
 | Kubernetes için Azure Kapsayıcı Hizmetleri | Yes | Yes |  |  |
 | Azure Active Directory Domain Services | Evet | Hayır |  |  |
-| Uygulama kayıtları | Evet | Evet |  |  |
+| Uygulama kayıtları | Yes | Yes |  |  |
 
 Aktarılmakta olan abonelikte aynı abonelikte olmayan bir anahtar kasasına bağımlılığı olan bir depolama hesabı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
@@ -145,7 +145,7 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 ### <a name="save-custom-roles"></a>Özel rolleri Kaydet
 
-1. Özel rollerinizi listelemek için [az role Definition listesini](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme](custom-roles-cli.md).
+1. Özel rollerinizi listelemek için [az role Definition listesini](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-cli.md).
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -215,7 +215,7 @@ Yönetilen kimlikler, bir abonelik başka bir dizine aktarıldığında güncell
 
 ### <a name="list-key-vaults"></a>Anahtar kasalarını Listele
 
-Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneliğin varsayılan Azure Active Directory kiracı KIMLIĞINE bağlanır. Tüm erişim ilkesi girdileri de bu kiracı kimliğine bağlanır. Daha fazla bilgi için bkz. [Azure Key Vault başka bir aboneliğe taşıma](../key-vault/general/keyvault-move-subscription.md).
+Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneliğin varsayılan Azure Active Directory kiracı KIMLIĞINE bağlanır. Tüm erişim ilkesi girdileri de bu kiracı kimliğine bağlanır. Daha fazla bilgi için bkz. [Azure Key Vault başka bir aboneliğe taşıma](../key-vault/general/move-subscription.md).
 
 > [!WARNING]
 > Depolama hesabı veya SQL veritabanı gibi bir kaynak için bekleyen şifreleme kullanıyorsanız, aktarılmakta olan abonelikte aynı abonelikte olmayan bir Anahtar Kasası bağımlılığı olan bir kurtarılamaz senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
@@ -291,7 +291,7 @@ Bu adımda, aboneliğin faturalama sahipliğini Kaynak dizinden hedef dizine akt
 
 ### <a name="create-custom-roles"></a>Özel roller oluşturma
         
-- Daha önce oluşturduğunuz dosyalardaki her bir özel rolü oluşturmak için [az role Definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) ' i kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme](custom-roles-cli.md).
+- Daha önce oluşturduğunuz dosyalardaki her bir özel rolü oluşturmak için [az role Definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) ' i kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-cli.md).
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -339,7 +339,7 @@ Bu adımda, aboneliğin faturalama sahipliğini Kaynak dizinden hedef dizine akt
 
 ### <a name="update-key-vaults"></a>Anahtar kasalarını Güncelleştir
 
-Bu bölümde, anahtar kasalarınızı güncelleştirmek için temel adımlar açıklanmaktadır. Daha fazla bilgi için bkz. [Azure Key Vault başka bir aboneliğe taşıma](../key-vault/general/keyvault-move-subscription.md).
+Bu bölümde, anahtar kasalarınızı güncelleştirmek için temel adımlar açıklanmaktadır. Daha fazla bilgi için bkz. [Azure Key Vault başka bir aboneliğe taşıma](../key-vault/general/move-subscription.md).
 
 1. Abonelikteki tüm mevcut anahtar kasaları ile ilişkili kiracı KIMLIĞINI hedef dizine güncelleştirin.
 

@@ -3,14 +3,14 @@ title: Azure Otomasyonu karma Runbook Worker genel bakış
 description: Bu makalede, yerel veri merkezinizdeki veya bulut sağlayıcınızdaki makinelerde runbook 'ları çalıştırmak için kullanabileceğiniz karma Runbook Worker 'a genel bakış sunulmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0960dfe067e5092f3d64f66cad1d49c2bea28ae6
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186257"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024835"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -77,6 +77,17 @@ Azure Otomasyonu hizmetinin hizmet etiketi yalnızca aşağıdaki senaryolar iç
 >[!NOTE]
 >**Guestandhybridmanagement** hizmet etiketi şu anda yalnızca bir karma runbook çalışanında bulunan bir Azure korumalı alanında runbook işi yürütmeyi desteklememektedir.
 
+## <a name="support-for-impact-level-5-il5"></a>Etki düzeyi 5 için destek (IL5)
+
+Azure Otomasyonu karma Runbook Worker, Azure Kamu 'da aşağıdaki iki yapılandırmanın herhangi birindeki 5 iş yüklerini etkileyebilir:
+
+* [Yalıtılmış sanal makine](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). Dağıtıldığında, IL5 iş yüklerini desteklemek için gereken yalıtım düzeyini sağlayan bu sanal makine için tüm fiziksel ana bilgisayarı tüketir.
+
+* Tek bir Azure aboneliğine ayrılmış bir veya daha fazla sanal makineyi barındırabilen fiziksel sunucular sağlayan [Azure ayrılmış Konakları](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts).
+
+>[!NOTE]
+>Karma runbook çalışanı rolü aracılığıyla işlem yalıtımı, Azure ticari ve ABD kamu bulutları için kullanılabilir. 
+
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde Güncelleştirme Yönetimi
 
 Azure Otomasyonu [güncelleştirme yönetimi](automation-update-management.md) etkinleştirildiğinde, Log Analytics çalışma alanınıza bağlı tüm makineler otomatik olarak karma runbook çalışanı olarak yapılandırılır. Her çalışan, güncelleştirme yönetimine hedeflenmiş runbook 'ları destekleyebilir.
@@ -85,13 +96,7 @@ Bu şekilde yapılandırılan bir makine, Otomasyon hesabınızda zaten tanımla
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Karma Runbook Worker için Güncelleştirme Yönetimi adresleri
 
-Karma Runbook Worker için gereken standart adreslerin ve bağlantı noktalarının üstünde, Güncelleştirme Yönetimi sonraki tabloda yer alan adreslere ihtiyaç duyar. Bu adreslere yönelik iletişim 443 numaralı bağlantı noktasını kullanır.
-
-|Azure Genel  |Azure Kamu  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`     | `*.ods.opinsights.azure.us`         |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+Karma Runbook Worker için gereken standart adreslerin ve bağlantı noktalarının üstünde, Güncelleştirme Yönetimi [ağ planlama](automation-update-management.md#ports) bölümünde açıklanan ek ağ yapılandırması gereksinimleri vardır.
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde Azure Otomasyonu durum yapılandırması
 
@@ -114,4 +119,5 @@ Azure dışı kaynaklara erişirken, karma runbook çalışanı üzerinde çalı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatik hale getirmek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [runbook 'Ları karma Runbook Worker üzerinde çalıştırma](automation-hrw-run-runbooks.md).
+
 * Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [karma Runbook Worker sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#general).

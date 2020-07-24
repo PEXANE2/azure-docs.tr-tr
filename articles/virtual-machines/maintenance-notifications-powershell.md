@@ -7,17 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677942"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028594"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>PowerShell kullanarak planlı Bakımı işleme
 
 **Bu makale hem Linux hem de Windows çalıştıran sanal makineler için geçerlidir.**
 
-VM 'Lerin [bakım](maintenance-notifications.md)için ne zaman zamanlandığını görmek için Azure PowerShell kullanabilirsiniz. Planlı bakım bilgileri, parametresini kullandığınızda [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) cmdlet 'inden kullanılabilir `-status` .
+VM 'Lerin [bakım](maintenance-notifications.md)için ne zaman zamanlandığını görmek için Azure PowerShell kullanabilirsiniz. Planlı bakım bilgileri, parametresini kullandığınızda [Get-AzVM](/powershell/module/az.compute/get-azvm) cmdlet 'inden kullanılabilir `-status` .
   
 Bakım bilgileri yalnızca bakım planlandı durumunda döndürülür. VM 'yi etkileyen bakım zamanlanmamışsa, cmdlet herhangi bir bakım bilgisi döndürmez. 
 
@@ -39,7 +40,7 @@ Aşağıdaki özellikler MaintenanceRedeployStatus altında döndürülür:
 
 
 
-Ayrıca, [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ' i kullanarak bir kaynak grubundaki tüm VM 'lerin bakım durumunu alabılır ve VM belirtmemelidir.
+Ayrıca, [Get-AzVM](/powershell/module/az.compute/get-azvm) ' i kullanarak bir kaynak grubundaki tüm VM 'lerin bakım durumunu alabılır ve VM belirtmemelidir.
  
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Status

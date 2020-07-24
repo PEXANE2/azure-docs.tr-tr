@@ -4,12 +4,12 @@ description: Azure CLı kullanarak Azure blok zinciri hizmeti için bir blok zin
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200471"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023747"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>CLI kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
 
@@ -23,24 +23,24 @@ Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapı
 * Blok zinciri uygulaması ekleme
 * Örnek başlatma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yı yükleyip kullanarak oturum açın `az login` .
+* En son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip kullanarak oturum açın `az login` .
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Blok zinciri Veri Yöneticisi kullanılırken Azure blok zinciri hizmeti *Standart* katmanı önerilir.
 * [Event Grid konu başlığı](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) oluşturma
 * [Azure Event Grid Içindeki olay işleyicileri](../../event-grid/event-handlers.md) hakkında bilgi edinin
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
 Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.51 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.51 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'yı yüklemek](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[az group create](https://docs.microsoft.com/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
+[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -347,7 +347,7 @@ az resource invoke-action \
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| action | İzleyiciyi çalıştırmak için **Başlat** 'ı kullanın. |
+| eylem | İzleyiciyi çalıştırmak için **Başlat** 'ı kullanın. |
 | ayrılacak | İzleyici kaynak KIMLIĞI. \<Subscription ID\>, \<Resource group\> Ve \<Watcher name\> değerlerini izleyici kaynağı değerleriyle değiştirin.|
 
 ### <a name="start-instance-example"></a>Örnek örneğini Başlat
@@ -372,7 +372,7 @@ az resource invoke-action \
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| action | İzleyiciyi durdurmak için **Durdur** kullanın. |
+| eylem | İzleyiciyi durdurmak için **Durdur** kullanın. |
 | ayrılacak | İzleyicinin adı. \<Subscription ID\>, \<Resource group\> Ve \<Watcher name\> değerlerini izleyici kaynağı değerleriyle değiştirin. |
 
 ### <a name="stop-watcher-example"></a>İzleyici örneğini durdur

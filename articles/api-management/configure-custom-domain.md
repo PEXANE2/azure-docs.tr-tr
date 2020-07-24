@@ -12,14 +12,14 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024869"
 ---
-# <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
+# <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Azure API Management örneğiniz için özel bir etki alanı adı yapılandırma
 
 Azure API Management hizmet örneği oluşturduğunuzda, Azure bu alt etki alanını `azure-api.net` (örneğin, `apim-service-name.azure-api.net` ) atar. Ancak, **contoso.com**gibi kendi özel etki alanı adınızı kullanarak API Management uç noktalarınızı kullanıma sunabilirsiniz. Bu öğreticide, mevcut bir özel DNS adını API Management örneği tarafından sunulan uç noktalara nasıl eşleyebileceğiniz gösterilmektedir.
 

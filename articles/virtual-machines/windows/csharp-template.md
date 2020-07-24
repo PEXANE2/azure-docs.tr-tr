@@ -8,18 +8,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25d8dc467ce8f7e34faaeaa2c61fd0c5da1da4e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082926"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027963"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# ve Kaynak Yöneticisi şablonu kullanarak bir Azure sanal makinesini dağıtma
 
 Bu makalede, C# kullanarak Azure Resource Manager şablonunun nasıl dağıtılacağı gösterilir. Oluşturduğunuz şablon, tek bir alt ağa sahip yeni bir sanal ağda Windows Server çalıştıran tek bir sanal makine dağıtır.
 
-Sanal makine kaynağının ayrıntılı açıklaması için, bkz. [Azure Resource Manager şablonundaki sanal makineler](template-description.md). Şablondaki tüm kaynaklar hakkında daha fazla bilgi için bkz. [Azure Resource Manager Template izlenecek yol](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Sanal makine kaynağının ayrıntılı açıklaması için, bkz. [Azure Resource Manager şablonundaki sanal makineler](template-description.md). Şablondaki tüm kaynaklar hakkında daha fazla bilgi için bkz. [Azure Resource Manager Template izlenecek yol](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 Bu adımların uygulanması yaklaşık 10 dakika sürer.
 
@@ -27,7 +27,7 @@ Bu adımların uygulanması yaklaşık 10 dakika sürer.
 
 Bu adımda, Visual Studio 'nun yüklü olduğundan ve şablonu dağıtmak için kullanılan bir konsol uygulaması oluşturduğunuzdan emin olursunuz.
 
-1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **.net masaüstü geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özet içinde, **.NET Framework 4-4,6 geliştirme araçlarının** sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak .NET iş yükünü ekleyebilirsiniz.
+1. Henüz yapmadıysanız, [Visual Studio 'yu](/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **.net masaüstü geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özet içinde, **.NET Framework 4-4,6 geliştirme araçlarının** sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak .NET iş yükünü ekleyebilirsiniz.
 2. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayın.
 3. **Şablonlar**  >  **Visual C#**' de **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
 
@@ -325,5 +325,5 @@ Bu konsol uygulamasının başlangıçtan sonuna kadar tam olarak çalıştırı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Dağıtım ile ilgili sorunlar varsa, bir sonraki adım [Azure Resource Manager Genel Azure dağıtım hatalarıyla Ilgili sorunları giderme](../../resource-manager-common-deployment-errors.md)bölümüne bakmak olacaktır.
+* Dağıtım ile ilgili sorunlar varsa, bir sonraki adım [Azure Resource Manager Genel Azure dağıtım hatalarıyla Ilgili sorunları giderme](../../azure-resource-manager/templates/common-deployment-errors.md)bölümüne bakmak olacaktır.
 * [C# kullanarak bir Azure sanal makinesini dağıtmayı](csharp.md)inceleyerek bir sanal makineyi ve destekleyici kaynaklarını dağıtmayı öğrenin.

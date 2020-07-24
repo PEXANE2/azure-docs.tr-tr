@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121023"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029306"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini değiştirme
 
@@ -319,13 +320,13 @@ Küresel ölçek kümesi özelliklerinde, yükseltme ilkesini takip eden bir de�
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- [Set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)ile Azure PowerShell:
+- [Set-AzVmssVm](/powershell/module/az.compute/set-azvmssvm)ile Azure PowerShell:
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- [Az VMSS ReImage](https://docs.microsoft.com/cli/azure/vmss)Ile Azure CLI:
+- [Az VMSS ReImage](/cli/azure/vmss)Ile Azure CLI:
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -368,12 +369,12 @@ Bir uygulama, uzantılar aracılığıyla bir ölçek kümesine dağıtılırsa,
 Uygulamaların özel bir görüntü ile dağıtılması da yaygındır. Bu senaryo aşağıdaki bölümde ele alınmıştır.
 
 ### <a name="os-updates"></a>İşletim sistemi güncelleştirmeleri
-Azure platform görüntülerini kullanıyorsanız, *ImageReference* 'ı değiştirerek görüntüyü güncelleştirebilirsiniz (daha fazla bilgi, [REST API belgelerine](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)bakın).
+Azure platform görüntülerini kullanıyorsanız, *ImageReference* 'ı değiştirerek görüntüyü güncelleştirebilirsiniz (daha fazla bilgi, [REST API belgelerine](/rest/api/compute/virtualmachinescalesets/createorupdate)bakın).
 
 >[!NOTE]
 > Platform görüntüleriyle birlikte, görüntü başvuru sürümü için "en son" belirtmek yaygın bir sürümdür. Oluşturduğunuz, ölçeklendirilen ve yeniden görüntü oluşturduğunuzda, VM 'Ler kullanılabilir en son sürümle oluşturulur. Ancak, yeni görüntü sürümleri serbest bırakıldığı için işletim sistemi görüntüsünün zaman içinde otomatik olarak **güncelleştirildiği anlamına gelmez** . Otomatik işletim sistemi yükseltmeleri sağlayan, şu anda önizleme aşamasında olan ayrı bir özellik vardır. Daha fazla bilgi için [Otomatik işletim sistemi yükseltmeleri belgelerine](virtual-machine-scale-sets-automatic-upgrade.md)bakın.
 
-Özel görüntüler kullanıyorsanız, *ImageReference* kimliğini güncelleştirerek görüntüyü güncelleştirebilirsiniz (daha fazla bilgi için [REST API belgelerine](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)bakın).
+Özel görüntüler kullanıyorsanız, *ImageReference* kimliğini güncelleştirerek görüntüyü güncelleştirebilirsiniz (daha fazla bilgi için [REST API belgelerine](/rest/api/compute/virtualmachinescalesets/createorupdate)bakın).
 
 ## <a name="examples"></a>Örnekler
 

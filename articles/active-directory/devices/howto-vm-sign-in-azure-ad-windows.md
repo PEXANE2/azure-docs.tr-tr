@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554884"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025855"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
-Kuruluşlar artık **Windows Server 2019 Datacenter Edition** veya **Windows 10 1809** ve üstünü çalıştıran Azure sanal makineleri (vm 'ler) için Azure Active Directory (ad) kimlik doğrulaması kullanabilir. VM 'Lerde kimlik doğrulaması yapmak için Azure AD 'nin kullanılması, ilkeleri merkezi olarak denetleme ve zorunlu kılmak için bir yol sağlar. Azure rol tabanlı Access Control (RBAC) ve Azure AD koşullu erişim gibi araçlar, bir VM 'ye kimlerin erişebileceğini denetlemenize olanak tanır. Bu makalede, Azure AD kimlik doğrulamasını kullanmak üzere bir Windows Server 2019 VM oluşturma ve yapılandırma açıklanmaktadır.
+Kuruluşlar artık **Windows Server 2019 Datacenter Edition** veya **Windows 10 1809** ve üstünü çalıştıran Azure sanal makineleri (vm 'ler) için Azure Active Directory (ad) kimlik doğrulaması kullanabilir. VM 'Lerde kimlik doğrulaması yapmak için Azure AD 'nin kullanılması, ilkeleri merkezi olarak denetleme ve zorunlu kılmak için bir yol sağlar. Azure rol tabanlı erişim denetimi (Azure RBAC) ve Azure AD koşullu erişim gibi araçlar, bir VM 'ye kimlerin erişebileceğini denetlemenize olanak tanır. Bu makalede, Azure AD kimlik doğrulamasını kullanmak üzere bir Windows Server 2019 VM oluşturma ve yapılandırma açıklanmaktadır.
 
 > [!NOTE]
 > Azure Windows VM 'Leri için Azure AD oturum açma, Azure Active Directory genel bir önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -32,7 +32,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum a
 - Artık yerel yönetici hesaplarını yönetmek zorunda değildir.
 - Azure RBAC, ihtiyaç duymak üzere VM 'lere uygun erişim izni vermenizi ve artık gerekli olmadığında kaldırmanızı sağlar.
 - Bir sanal makineye erişime izin vermeden önce Azure AD koşullu erişimi, şöyle ek gereksinimler uygulayabilir: 
-   - Multi-factor authentication
+   - Çok faktörlü kimlik doğrulaması
    - Oturum açma risk denetimi
 - VDı dağıtımlarınız için bir parçası olan Azure Windows VM 'lerinin Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
 
@@ -200,7 +200,10 @@ Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında
 Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Windows VM 'lerine erişimi yetkilendirmeden önce Multi-Factor Authentication veya Kullanıcı oturum açma riski denetimi gibi koşullu erişim ilkelerini uygulayabilirsiniz. Koşullu erişim ilkesini uygulamak için, bulut uygulamaları veya eylemler atama seçeneğinden "Azure Windows VM oturum açma" uygulamasını seçmeniz ve ardından bir koşul olarak oturum açma riskini ve/veya çok faktörlü kimlik doğrulamasının izin verme erişim denetimi olarak kullanılmasını sağlamanız gerekir. 
 
 > [!NOTE]
-> "Multi-Factor Authentication gerektir" seçeneğini, "Azure Windows VM oturum açma" uygulamasına erişim isteğinde bulunmak için erişim denetimi izni olarak kullanırsanız, Azure 'daki hedef Windows VM 'sine yönelik RDP oturumunu başlatan istemcinin bir parçası olarak Multi-Factor Authentication talebi sağlamalısınız. Bunu bir Windows 10 istemcisinde elde etmenin tek yolu, RDP istemcisi ile Iş için Windows Hello PIN veya biyometrik kimlik doğrulaması kullanmaktır. Windows 10 sürüm 1809 ' de RDP istemcisine biyometrik kimlik doğrulaması desteği eklenmiştir. Iş için Windows Hello kimlik doğrulaması kullanan uzak masaüstü yalnızca sertifika güven modeli kullanan dağıtımlar için kullanılabilir ve şu anda anahtar güven modeli için kullanılamaz.
+> "Multi-Factor Authentication gerektir" seçeneğini, "Azure Windows VM oturum açma" uygulamasına erişim isteğinde bulunmak için erişim denetimi izni olarak kullanırsanız, Azure 'daki hedef Windows VM 'sine yönelik RDP oturumunu başlatan istemcinin bir parçası olarak Multi-Factor Authentication talebi sağlamalısınız. Bunu bir Windows 10 istemcisinde elde etmenin tek yolu, Iş için Windows Hello PIN 'ini veya RDP istemcisiyle biyometrik kimlik doğrulamasını kullanmaktır. Windows 10 sürüm 1809 ' de RDP istemcisine biyometrik kimlik doğrulaması desteği eklenmiştir. Iş için Windows Hello kimlik doğrulaması kullanan uzak masaüstü yalnızca sertifika güven modeli kullanan dağıtımlar için kullanılabilir ve şu anda anahtar güven modeli için kullanılamaz.
+
+> [!WARNING]
+> Kullanıcı başına etkin/Zorlanmış Azure Multi-Factor Authentication, VM 'de oturum açma için desteklenmez.
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD kimlik bilgilerini kullanarak bir Windows VM 'de oturum açma
 
@@ -211,7 +214,7 @@ Azure AD 'yi kullanarak Windows Server 2019 sanal makinenizde oturum açmak içi
 
 1. Azure AD oturum açma özelliği ile etkinleştirilen sanal makinenin genel bakış sayfasına gidin.
 1. **Bağlan** ' ı seçerek sanal makine bağlantısı dikey penceresini açın.
-1. **RDP dosyasını indir**' i seçin.
+1. **RDP Dosyasını İndir**’i seçin.
 1. Uzak Masaüstü Bağlantısı istemcisini başlatmak için **Aç** ' ı seçin.
 1. Windows oturum açma iletişim kutusunu başlatmak için **Bağlan** ' ı seçin.
 1. Azure AD kimlik bilgilerinizi kullanarak oturum açın.

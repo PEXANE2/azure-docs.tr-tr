@@ -3,11 +3,12 @@ title: Çok adımlı Web testleri ile izleme-Azure Application Insights
 description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlayın
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873344"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024785"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -16,7 +17,7 @@ ms.locfileid: "83873344"
 > [!NOTE]
 > Çok adımlı Web testleri, Visual Studio WebTest dosyalarına bağımlıdır. Visual Studio 2019 ' nin, WebTest işlevselliğiyle ilgili son sürüm olacağı [duyurulmuştur](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) . Yeni özellik eklenmadığında, Visual Studio 2019 ' deki WebTest işlevinin hala desteklenmekte olduğunu ve ürünün destek yaşam döngüsü sırasında desteklenmeye devam edecek olduğunu anlamak önemlidir. Azure Izleyici ürün ekibi, [buradaki](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)çok adımlı kullanılabilirlik testlerinin geleceği hakkında sorular buldu.  
 > </br>
-> [Azure Kamu](https://docs.microsoft.com/azure/azure-government/) bulutu 'nda çok adımlı Web testleri **desteklenmez** .
+> [Azure Kamu](../../azure-government/index.yml) bulutu 'nda çok adımlı Web testleri **desteklenmez** .
 
 
 ## <a name="pre-requisites"></a>Ön koşullar
@@ -36,7 +37,7 @@ Test araçlarını önkoşul olarak belirlemek için. **Visual Studio Installer*
 > [!WARNING]
 > Artık multi-step kaydedicisinin kullanılması önerilmez. Kaydedici, temel etkileşimleri olan statik HTML sayfaları için geliştirilmiştir ve modern web sayfaları için işlevsel bir deneyim sağlamıyor.
 
-Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual studio 2019 belgelerine](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)bakın.
+Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual studio 2019 belgelerine](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)bakın.
 
 ## <a name="upload-the-web-test"></a>Web testini karşıya yükleyin
 

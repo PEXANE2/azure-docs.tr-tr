@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026518"
 ---
 # <a name="single-page-application-app-registration"></a>Tek sayfalı uygulama: uygulama kaydı
 
@@ -37,7 +38,7 @@ Ardından, Microsoft Identity platformunun istemciyi bir güvenlik belirteci ile
 - [AUTH Code Flow ileMSAL.js 2,0](#redirect-uri-msaljs-20-with-auth-code-flow) (önerilir)
 - [Örtük Flow ileMSAL.js 1,0](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Yeniden yönlendirme URI 'SI: MSAL.js 2,0, auth Code Flow
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Yeniden yönlendirme URI 'SI: [MSAL.js 2,0, auth Code Flow](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 MSAL.js 2,0 veya sonraki bir sürümü kullanan bir uygulama için yeniden yönlendirme URI 'SI eklemek için bu adımları izleyin. MSAL.js 2.0 +, [tarayıcı üçüncü taraf tanımlama bilgisi kısıtlamalarına](reference-third-party-cookies-spas.md)yanıt olarak pkce ve CORS ile yetkilendirme kodu akışını destekler. Örtük izin akışı MSAL.js 2.0 + içinde desteklenmez.
 
@@ -49,7 +50,9 @@ MSAL.js 2,0 veya sonraki bir sürümü kullanan bir uygulama için yeniden yönl
 
 Artık tek sayfalı uygulamanızın (SPA) kaydını tamamladınız ve istemcinin yeniden yönlendirileceği ve herhangi bir güvenlik belirtecinin gönderileceği bir yeniden yönlendirme URI 'SI yapılandırdınız. **Platform Ekle** bölmesindeki **tek sayfalı uygulama** kutucuğunu kullanarak yeniden yönlendirme URI 'sini yapılandırarak, uygulama kaydınız, PKI CE ve CORS ile yetkilendirme kodu akışını destekleyecek şekilde yapılandırılır.
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Yeniden yönlendirme URI 'SI: MSAL.js 1,0 örtük akışla
+Daha fazla rehberlik için [öğreticiyi](tutorial-v2-javascript-auth-code.md) izleyin.
+
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Yeniden yönlendirme URI 'SI: [MSAL.js 1,0 örtük akışla](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
 MSAL.js 1,3 veya önceki bir sürümü ve örtük izin akışını kullanan tek sayfalı bir uygulama için yeniden yönlendirme URI 'SI eklemek için bu adımları izleyin. MSAL.js 1,3 veya önceki bir sürümü kullanan uygulamalar, kimlik doğrulama kod akışını desteklemez.
 
@@ -63,6 +66,8 @@ MSAL.js 1,3 veya önceki bir sürümü ve örtük izin akışını kullanan tek 
 1. Yeniden yönlendirme URI 'sini eklemeyi bitirmeden **Yapılandır** ' ı seçin.
 
 Artık tek sayfalı uygulamanızın (SPA) kaydını tamamladınız ve istemcinin yeniden yönlendirileceği ve herhangi bir güvenlik belirtecinin gönderileceği bir yeniden yönlendirme URI 'SI yapılandırdınız. **Kimlik belirteçlerinin** ve **erişim belirteçlerinin**birini veya her ikisini belirleyerek örtük verme akışını etkinleştirdiniz.
+
+Daha fazla rehberlik için [öğreticiyi](tutorial-v2-javascript-spa.md) izleyin. 
 
 ## <a name="note-about-authorization-flows"></a>Yetkilendirme akışları hakkında
 

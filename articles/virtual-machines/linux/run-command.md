@@ -8,17 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a14fafde8ecea0370c74cdbfd39a85d8dfb15612
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0210b3bf13bc852e2ace0e8b490b3ddf952dc288
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83651073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028983"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Run komutunu kullanarak Linux sanal makinenizde kabuk betikleri çalıştırma
 
 Çalıştır komutu özelliği, bir Azure Linux VM 'de kabuk betikleri çalıştırmak için sanal makine (VM) aracısını kullanır. Bu betikleri, genel makine veya uygulama yönetimi için kullanabilirsiniz. VM erişimi ve ağ sorunlarını hızla tanılamanıza ve düzeltmenize ve VM 'yi iyi bir duruma almanıza yardımcı olabilirler.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 Sanal makinelerinize birden çok şekilde erişebilirsiniz. Çalıştır komutu, sanal makinelerinizde VM aracısını kullanarak uzaktan betikleri çalıştırabilir. Linux VM 'Leri için Azure portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)veya [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) aracılığıyla Çalıştır komutunu kullanın.
 
@@ -48,7 +49,7 @@ Bu tabloda, Linux VM 'Leri için kullanılabilen komutların listesi gösterilme
 The entity was not found in this Azure location
 ```
 
-|**Adı**|**Açıklama**|
+|**Ad**|**Açıklama**|
 |---|---|
 |**RunShellScript**|Bir Linux kabuğu betiği çalıştırır.|
 |**ifconfig**| Tüm ağ arabirimlerinin yapılandırmasını alır.|
@@ -64,7 +65,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 > [!NOTE]
 > Komutları farklı bir kullanıcı olarak çalıştırmak için, `sudo -u` bir kullanıcı hesabı belirtmek üzere girin.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 [Azure Portal](https://portal.azure.com) bir VM 'ye gidin ve **Işlemler**altında **komutu Çalıştır** ' ı seçin. VM 'de çalıştırılacak kullanılabilir komutların listesini görürsünüz.
 
@@ -81,7 +82,7 @@ Komutu seçtikten sonra, betiği çalıştırmak için **Çalıştır** ' ı se�
 
 ### <a name="powershell"></a>PowerShell
 
-Aşağıdaki örnek, bir Azure VM üzerinde PowerShell betiğini çalıştırmak için [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 'ini kullanır. Cmdlet 'i, parametrede başvurulan betiğin, `-ScriptPath` cmdlet 'in çalıştırıldığı yere yerelde olmasını bekler.
+Aşağıdaki örnek, bir Azure VM üzerinde PowerShell betiğini çalıştırmak için [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 'ini kullanır. Cmdlet 'i, parametrede başvurulan betiğin, `-ScriptPath` cmdlet 'in çalıştırıldığı yere yerelde olmasını bekler.
 
 ```powershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}

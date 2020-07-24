@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029952"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine puanlama profilleri ekleme
 
@@ -254,7 +254,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a>Enterpolasyonlarını ayarla  
  Ara değer, Puanlama için kullanılan eğim şeklini ayarlamanıza olanak sağlar. Puanlama yüksek ve düşük olduğundan, eğim her zaman azalabilir, ancak ilişkilendirme, aşağı doğru eğim eğrisini belirler. Aşağıdaki enterpolasyonda kullanılabilir:  
 
-|||  
+| İlişkilendirme | Açıklama |  
 |-|-|  
 |`linear`|En büyük ve en düşük aralıktaki öğeler için, öğeye uygulanan arttırma sürekli azalan bir miktarda yapılır. Doğrusal, bir Puanlama profili için varsayılan enterpolasyon.|  
 |`constant`|Başlangıç ve bitiş aralığı içinde olan öğeler için, derece sonuçlarına sabit bir artırma uygulanır.|  
@@ -281,6 +281,6 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-+ [REST API başvurusu](https://docs.microsoft.com/rest/api/searchservice/)   
++ [REST API Başvurusu](https://docs.microsoft.com/rest/api/searchservice/)   
 + [Dizin API 'SI oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)   
 + [Azure Bilişsel Arama .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

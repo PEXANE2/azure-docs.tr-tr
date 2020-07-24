@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028558"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows için Azure Performans Tanılama VM Uzantısı
 
@@ -66,12 +66,12 @@ Aşağıdaki JSON, Azure Performans Tanılama VM Uzantısı şemasını gösteri
 
 ### <a name="property-values"></a>Özellik değerleri
 
-|   **Adı**   |**Değer/örnek**|       **Açıklama**      |
+|   **Ad**   |**Değer/örnek**|       **Açıklama**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API sürümü.
 |yayımcı|Microsoft. Azure. performance. Diagnostics|Uzantı için yayımcı ad alanı.
 |tür|AzurePerformanceDiagnostics|VM uzantısının türü.
-|typeHandlerVersion|1.0|Uzantı işleyicisinin sürümü.
+|typeHandlerVersion|1,0|Uzantı işleyicisinin sürümü.
 |Performanslı Orceni|basit|Verilerin yakalanması için performans senaryosu. Geçerli değerler şunlardır: **Basic**, **vmslow**, **azurefiles**ve **Custom**.
 |traceDurationInSeconds|300|İzleme seçeneklerinden herhangi biri seçilirse izlemelerin süresi.
 |perfCounterTrace|p|Performans sayacı Izlemesini etkinleştirme seçeneği. Geçerli değerler **p** veya boş değerdir. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın.
@@ -233,7 +233,7 @@ Perfinsıghts Aracı, seçilen senaryoya bağlı olarak çeşitli günlükleri, 
 
 ## <a name="view-and-share-the-results"></a>Sonuçları görüntüleme ve paylaşma
 
-Uzantının çıktısı, yükleme sırasında belirtilen depolama hesabına yüklenen ve [paylaşılan erişim imzaları (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)kullanılarak 30 gün boyunca paylaşılabilecek bir ZIP dosyasında bulunabilir. Bu ZIP dosyası tanılama günlükleri ve bulguları ve önerilerle bir rapor içerir. Çıkış ZIP dosyasına bir SAS bağlantısı, ** \\ \<version> C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics**klasörü altındaki *zipfilename*_saslink.txt adlı bir metin dosyası içinde bulunabilir. Bu bağlantıya sahip olan herkes ZIP dosyasını indirebiliyor.
+Uzantının çıktısı, yükleme sırasında belirtilen depolama hesabına yüklenen ve [paylaşılan erişim imzaları (SAS)](../../storage/common/storage-sas-overview.md)kullanılarak 30 gün boyunca paylaşılabilecek bir ZIP dosyasında bulunabilir. Bu ZIP dosyası tanılama günlükleri ve bulguları ve önerilerle bir rapor içerir. Çıkış ZIP dosyasına bir SAS bağlantısı, ** \\ \<version> C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics**klasörü altındaki *zipfilename*_saslink.txt adlı bir metin dosyası içinde bulunabilir. Bu bağlantıya sahip olan herkes ZIP dosyasını indirebiliyor.
 
 Destek mühendisinize yönelik destek Mühendisinize yardımcı olmak için, Microsoft bu SAS bağlantısını kullanarak tanılama verilerini indirebilir.
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 198ab9505c550ad5bf8dc75211864a562b45979f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0470ab635f34291b4c92259e556329d6b2f401c7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026093"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
 
@@ -159,7 +159,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`   | gerekli   | `{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | gerekli  | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atandığı uygulama (ISTEMCI) kimliği. |
 | `grant_type` | gerekli   | `authorization_code`, Yetkilendirme kodu akışı için olmalıdır.   |
-| `scope`      | gerekli   | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, ilk Bata istenen kapsamların alt kümesiyle veya buna eşit olmalıdır. Kapsamların tümü tek bir kaynaktan olmalıdır ve OıDC kapsamları ( `profile` , `openid` ,) ile birlikte `email` . Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
+| `scope`      | isteğe bağlı   | Kapsamların boşlukla ayrılmış listesi. Kapsamların tümü tek bir kaynaktan olmalıdır ve OıDC kapsamları ( `profile` , `openid` ,) ile birlikte `email` . Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. Bu, yetkilendirme kodu akışına yönelik bir Microsoft uzantısıdır. Bu, uygulamaların belirteç satın alma sırasında belirtecin istedikleri kaynağı bildirmesine izin vermeyi amaçlar.|
 | `code`          | gerekli  | Akışın ilk Bata elde ettiğiniz authorization_code. |
 | `redirect_uri`  | gerekli  | Authorization_code elde etmek için kullanılan aynı redirect_uri değeri. |
 | `client_secret` | gizli Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets cihazlarda veya Web sayfalarında güvenilir bir şekilde depolanamadığından, uygulama gizli anahtarını yerel bir uygulamada veya tek sayfalı uygulamada kullanmamanız gerekir. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir.  İstemci parolası gönderilmeden önce URL kodlamalı olmalıdır. URI kodlaması hakkında daha fazla bilgi için bkz. [URI genel sözdizimi belirtimi](https://tools.ietf.org/html/rfc3986#page-12). |

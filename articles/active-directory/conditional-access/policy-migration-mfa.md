@@ -1,5 +1,5 @@
 ---
-title: Koşullu erişim ilkelerini geçirme-Azure Active Directory
+title: Çok faktörlü kimlik doğrulamasıyla koşullu erişim ilkelerini geçirme-Azure Active Directory
 description: Bu makalede, Azure portal çok faktörlü kimlik doğrulaması gerektiren klasik bir ilkenin nasıl geçirileceği gösterilmektedir.
 services: active-directory
 ms.service: active-directory
@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993737"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027402"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Azure portal klasik bir ilkeyi geçirme
 
@@ -51,13 +52,13 @@ Geçiş işlemi aşağıdaki adımlardan oluşur:
 1. **Atama** bölümünde **bulut uygulamaları veya eylemleri**' ne tıklayın.
 1. **Bulut uygulamaları veya eylemler** sayfasında, aşağıdaki adımları uygulayın:
    1. **Uygulama Seç**' e tıklayın.
-   1. **Seç**' e tıklayın.
+   1. **Seç**’e tıklayın.
    1. **Seç** sayfasında, bulut uygulamanızı seçin ve ardından **Seç**' e tıklayın.
    1. **Bulut uygulamaları** sayfasında **bitti**' ye tıklayın.
 1. **Multi-Factor Authentication** ' ın seçili olmasını istiyorsanız:
    1. **Erişim denetimleri** bölümünde, **izin ver**' e tıklayın.
    1. **İzin** sayfasında, **erişim ver**' e tıklayın ve ardından **çok faktörlü kimlik doğrulaması iste**' ye tıklayın.
-   1. **Seç**' e tıklayın.
+   1. **Seç**’e tıklayın.
 1. İlkenizi **etkinleştirmek için tıklayın** ve ardından **Kaydet**' i seçin.
 
    ![Koşullu erişim ilkesi oluşturma](./media/policy-migration-mfa/conditional-access-policy-migration.png)

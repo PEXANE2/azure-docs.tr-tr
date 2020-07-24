@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 992c29cb8380cf6acbe970b2fd5e958b6b2b33dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882480"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026722"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -90,11 +91,33 @@ Bu bölümde, bir taşıyıcı belirtecinin nasıl yapılandırılacağı açık
 }
 ```
 
+#### <a name="case-where-you-used-a-custom-app-id-uri-for-your-web-api"></a>Web API 'niz için özel bir uygulama KIMLIĞI URI 'SI kullandığınız durumlar
+
+Uygulama kayıt portalı tarafından önerilen uygulama KIMLIĞI URI 'sini kabul ettiyseniz, hedef kitleyi belirtmeniz gerekmez (bkz. [uygulama kimliği URI 'si ve kapsamlar](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)). Aksi takdirde, `Audience` değeri, Web API 'niz Için uygulama kimliği URI 'si olan bir özellik eklemelisiniz.
+
+```Json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common",
+    "Audience": "custom App ID URI for your web API"
+  },
+  // more lines
+}
+```
+
 ### <a name="code-initialization"></a>Kod başlatma
 
 Bir uygulama bir **[Yetkilendir]** özniteliği tutan bir denetleyici eyleminde çağrıldığında, ASP.NET ve ASP.NET Core erişim belirtecini yetkilendirme üstbilgisinin taşıyıcı belirtecinden ayıklayın. Daha sonra erişim belirteci, .NET için Microsoft IdentityModel uzantıları 'nı çağıran Jwttaşıyıcı ara yazılıma iletilir.
 
-ASP.NET Core, bu ara yazılım Startup.cs dosyasında başlatılır.
+#### <a name="using-microsoftidentityweb-templates"></a>Microsoft. Identity. Web şablonlarını kullanma
+
+Microsoft. Identity. Web proje şablonlarını kullanarak sıfırdan bir Web API 'SI oluşturabilirsiniz. Ayrıntılar için bkz. [Microsoft. Identity. Web-Web API proje şablonu](https://aka.ms/ms-id-web/webapi-project-templates)
+
+#### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Mevcut bir ASP.NET Core 3,1 uygulamasından başlayarak
+
+Günümüzde ASP.NET Core 3,1, Microsoft. AspNetCore. AzureAD. UI kitaplığını kullanır. Ara yazılım Startup.cs dosyasında başlatılır.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -103,33 +126,37 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 Bu yönerge, ara yazılım Web API 'sine eklenir:
 
 ```csharp
- services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
-         .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+          .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+}
 ```
 
- Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, bu kodu Startup.cs 'e ekleyerek şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
+ Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs*' deki kodu değiştirerek, bir NuGet paketi olarak kullanılabilen [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web)kullanarak şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
 
 ```csharp
-services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-{
-    // This is a Microsoft identity platform web API.
-    options.Authority += "/v2.0";
-
-    // The web API accepts as audiences both the Client ID (options.Audience) and api://{ClientID}.
-    options.TokenValidationParameters.ValidAudiences = new []
-    {
-     options.Audience,
-     $"api://{options.Audience}"
-    };
-
-    // Instead of using the default validation (validating against a single tenant,
-    // as we do in line-of-business apps),
-    // we inject our own multitenant validation logic (which even accepts both v1 and v2 tokens).
-    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.GetIssuerValidator(options.Authority).Validate;;
-});
+using Microsoft.Identity.Web;
 ```
 
-Yukarıdaki kod parçacığı, [Microsoft. Identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63)' deki ASP.NET Core Web API artımlı öğreticiden ayıklanır. Kod parçacığının gösterdiği daha fazla olan **Addprotectedwebapi** yöntemi, Startup.cs adresinden çağırılır.
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+ // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
+ services.AddMicrosoftWebApiAuthentication(Configuration, "AzureAd");
+
+ services.AddControllers();
+}
+```
+
+> [!NOTE]
+> Microsoft. Identity. Web kullanıyorsanız ve ' `Audience` de *appsettings.js*' yi ayarlamazsanız, aşağıdakiler kullanılır:
+> -  `$"{ClientId}"`[erişim belirtecinin kabul edilen sürümünü](scenario-protected-web-api-app-registration.md#accepted-token-version) `2` veya Azure AD B2C Web API 'lerini olarak ayarladıysanız.
+> - `$"api://{ClientId}`diğer tüm durumlarda (v 1.0 [erişim belirteçleri](access-tokens.md)için).
+> Ayrıntılar için bkz. Microsoft. Identity. Web [kaynak kodu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
+
+Yukarıdaki kod parçacığı [ASP.NET Core Web API 'si artımlı öğreticiden](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)ayıklanır. **AddMicrosoftWebApiAuthentication** ayrıntısı [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27)içinde kullanılabilir. Bu yöntem, kendi ara yazılım tarafından belirtecin nasıl doğrulanacağı hakkında bir [Addmicrosoftwebapi](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58)çağırır. Ayrıntılar için bkz. [kaynak kodu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122).
 
 ## <a name="token-validation"></a>Belirteç doğrulama
 
@@ -158,13 +185,40 @@ Bu tabloda doğrulayıcılar açıklanmaktadır:
 | **ValidateSignature** | Belirtecin oynanmamasını sağlar. |
 | **ValidateTokenReplay** | Belirtecin yeniden çalınmamasını sağlar. Bazı Onetime kullanım protokolleri için özel bir durum vardır. |
 
+#### <a name="customizing-token-validation"></a>Belirteç doğrulamayı özelleştirme
+
 Doğrulayıcılar **Tokenvalidationparameters** sınıfının özellikleriyle ilişkilendirilir. Özellikler, ASP.NET ve ASP.NET Core yapılandırmasından başlatılır.
 
-Çoğu durumda, parametreleri değiştirmeniz gerekmez. Tek kiracılar olmayan uygulamalar özel durumlardır. Bu Web Apps kullanıcıları herhangi bir kuruluştan veya kişisel Microsoft hesaplarından kabul eder. Bu durumda verenler doğrulanması gerekir.
+Çoğu durumda, parametreleri değiştirmeniz gerekmez. Tek kiracılar olmayan uygulamalar özel durumlardır. Bu Web Apps kullanıcıları herhangi bir kuruluştan veya kişisel Microsoft hesaplarından kabul eder. Bu durumda verenler doğrulanması gerekir. Microsoft. Identity. Web, veren doğrulamasının yanı sıra ele alır. Ayrıntılar için bkz. Microsoft. Identity. Web [Aadıssuervalidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
+
+ASP.NET Core, belirteç doğrulama parametrelerini özelleştirmek istiyorsanız, *Startup.cs*içinde aşağıdaki kod parçacığını kullanın:
+
+```c#
+services.AddMicrosoftWebApiAuthentication(Configuration);
+services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+{
+  var existingOnTokenValidatedHandler = options.Events.OnTokenValidated;
+  options.Events.OnTokenValidated = async context =>
+  {
+       await existingOnTokenValidatedHandler(context);
+      // Your code to add extra configuration that will be executed after the current event implementation.
+      options.TokenValidationParameters.ValidIssuers = new[] { /* list of valid issuers */ };
+      options.TokenValidationParameters.ValidAudiences = new[] { /* list of valid audiences */};
+  }
+});
+```
+
+ASP.NET MVC için aşağıdaki kod örneği, özel belirteç doğrulamanın nasıl yapılacağını göstermektedir:
+
+https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation
 
 ## <a name="token-validation-in-azure-functions"></a>Azure Işlevlerinde belirteç doğrulama
 
-Ayrıca, Azure Işlevlerinde gelen erişim belirteçlerini doğrulayabilirsiniz. [Microsoft .net](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)ve [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)'da bu doğrulamanın örneklerini bulabilirsiniz.
+Ayrıca, Azure Işlevlerinde gelen erişim belirteçlerini doğrulayabilirsiniz. GitHub 'da aşağıdaki kod örneklerinde bu doğrulamanın örneklerini bulabilirsiniz:
+
+- .NET: [Azure-Samples/MS-Identity-DotNet-WebApi-azurefunctions](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)
+- Node.js: [Azure-Samples/MS-Identity-NodeJS-WebApi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
+- Python: [Azure-Samples/MS-Identity-Python-WebApi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

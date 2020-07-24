@@ -5,20 +5,20 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d790a6f02fdc07609e374639c6e452b9088262e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024580"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Azure Izleme Application Insights Azure Işlevleri 'Ni izleme
 
-[Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) , işlevleri Izlemek için Azure Application Insights ile yerleşik tümleştirme sunar. 
+[Azure işlevleri](../../azure-functions/functions-overview.md) , işlevleri Izlemek için Azure Application Insights ile yerleşik tümleştirme sunar. 
 
 Application Insights günlük, performans ve hata verilerini toplar ve performans bozuklularını otomatik olarak algılar. Application Insights sorunları tanılamanıza ve işlevlerinizin nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Uygulama verilerinize ilişkin görünürlük varsa, performansı ve kullanılabilirliği sürekli olarak geliştirebilirsiniz. Application Insights, yerel işlev uygulama projesi geliştirme sırasında bile kullanabilirsiniz. 
 
-Gerekli Application Insights araçları Azure Işlevleri 'nde yerleşik olarak bulunur. Tek yapmanız gereken tek şey, işlev uygulamanızı bir Application Insights kaynağına bağlamak için geçerli bir izleme anahtarıdır. İşlev uygulaması kaynağınız Azure 'da oluşturulduğunda, izleme anahtarı uygulama ayarlarınıza eklenmelidir. İşlev uygulamanız zaten bu anahtara sahip değilse, el ile ayarlayabilirsiniz. Daha fazla bilgi için [Azure işlevlerini izleme](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd)hakkında daha fazla bilgi edinin.
+Gerekli Application Insights araçları Azure Işlevleri 'nde yerleşik olarak bulunur. Tek yapmanız gereken tek şey, işlev uygulamanızı bir Application Insights kaynağına bağlamak için geçerli bir izleme anahtarıdır. İşlev uygulaması kaynağınız Azure 'da oluşturulduğunda, izleme anahtarı uygulama ayarlarınıza eklenmelidir. İşlev uygulamanız zaten bu anahtara sahip değilse, el ile ayarlayabilirsiniz. Daha fazla bilgi için [Azure işlevlerini izleme](../../azure-functions/functions-monitoring.md?tabs=cmd)hakkında daha fazla bilgi edinin.
 
 ## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Windows 'da Java uygulamaları için dağıtılmış izleme (Genel Önizleme)
 
@@ -40,8 +40,8 @@ ApplicationInsightsAgent_EXTENSION_VERSION -> ~2
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* İzleme [Azure işlevlerini](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) izleme hakkında daha fazla yönerge ve bilgi okuyun
-* [Dağıtılmış izlemeye](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing) genel bakış alın
-* İşletmeniz için [uygulama Haritalarınızın](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net) neler yapabileceğini görün
-* [Java uygulamaları için İstekler ve bağımlılıklar](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) hakkında bilgi edinin
-* [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) ve [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) hakkında daha fazla bilgi edinin
+* İzleme [Azure işlevlerini](../../azure-functions/functions-monitoring.md) izleme hakkında daha fazla yönerge ve bilgi okuyun
+* [Dağıtılmış izlemeye](./distributed-tracing.md) genel bakış alın
+* İşletmeniz için [uygulama Haritalarınızın](./app-map.md?tabs=net) neler yapabileceğini görün
+* [Java uygulamaları için İstekler ve bağımlılıklar](./java-in-process-agent.md) hakkında bilgi edinin
+* [Azure izleyici](../overview.md) ve [Application Insights](./app-insights-overview.md) hakkında daha fazla bilgi edinin

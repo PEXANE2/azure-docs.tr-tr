@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: d6560f11d26200bdd9f39c4cbae643022872d362
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653106c54644749174fd8530fccf30329c7751ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506081"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028779"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Azure CLı kullanarak spot VM 'Leri dağıtma
 
@@ -23,7 +23,7 @@ Nokta VM 'Leri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir
 
 VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Bir spot VM 'nin en yüksek fiyatı, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin, değer, `0.98765` saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır. En yüksek fiyatı ayarlama hakkında daha fazla bilgi için bkz. [spot VM 'ler-fiyatlandırma](spot-vms.md#pricing).
 
-Azure CLı kullanarak spot ile bir VM oluşturma işlemi [hızlı başlangıç makalesinde](/azure/virtual-machines/linux/quick-create-cli)ayrıntılıdır. Yalnızca '--Priority Spot ' parametresini ekleyin, öğesini serbest bırak `--eviction-policy` (varsayılan) veya `Delete` olarak ayarlayın ve en yüksek fiyat ya da belirtin `-1` . 
+Azure CLı kullanarak spot ile bir VM oluşturma işlemi [hızlı başlangıç makalesinde](./quick-create-cli.md)ayrıntılıdır. Yalnızca '--Priority Spot ' parametresini ekleyin, öğesini serbest bırak `--eviction-policy` (varsayılan) veya `Delete` olarak ayarlayın ve en yüksek fiyat ya da belirtin `-1` . 
 
 
 ## <a name="install-azure-cli"></a>Azure CLI'yı yükleme

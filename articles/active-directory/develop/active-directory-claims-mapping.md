@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027181"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -177,7 +177,7 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | unique_name |
 | 'le |
 | user_setting_sync_url |
-| kullanıcı adı |
+| username |
 | UTI |
 | ver |
 | verified_primary_email |
@@ -286,49 +286,49 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 | Kaynak | ID | Açıklama |
 |-----|-----|-----|
-| User | surname | Aile adı |
-| User | givenname | Verilen Ad |
-| User | DisplayName | Görünen Ad |
-| User | uzantının | ObjectID |
-| User | posta | E-posta Adresi |
-| User | userPrincipalName | Kullanıcı Asıl Adı |
-| User | bölüm|Bölüm|
-| User | onpremisessamaccountname | Şirket içi SAM hesap adı |
-| User | NetbiosName| NetBIOS adı |
-| User | DN | DNS Etki Alanı Adı |
-| User | onpremisesecurityidentifier | Şirket içi güvenlik tanımlayıcısı |
-| User | tadı| Organizasyon Adı |
-| User | StreetAddress | Adres |
-| User | PostalCode | Posta Kodu |
-| User | preferredlanguange | Tercih edilen dil |
-| User | onpremisesuserprincipalname | Şirket içi UPN |
-| User | mailNickname | Posta takma adı |
-| User | extensionattribute1 | Uzantı özniteliği 1 |
-| User | extensionattribute2 | Uzantı özniteliği 2 |
-| User | extensionattribute3 | Uzantı özniteliği 3 |
-| User | extensionattribute4 | Uzantı özniteliği 4 |
-| User | extensionattribute5 | Uzantı özniteliği 5 |
-| User | extensionattribute6 | Uzantı özniteliği 6 |
-| User | extensionattribute7 | Uzantı özniteliği 7 |
-| User | extensionattribute8 | Uzantı özniteliği 8 |
-| User | extensionattribute9 | Uzantı özniteliği 9 |
-| User | extensionattribute10 | Uzantı özniteliği 10 |
-| User | extensionattribute11 | Uzantı özniteliği 11 |
-| User | extensionattribute12 | Uzantı özniteliği 12 |
-| User | extensionattribute13 | Uzantı özniteliği 13 |
-| User | extensionattribute14 | Uzantı özniteliği 14 |
-| User | extensionattribute15 | Uzantı özniteliği 15 |
-| User | diğer posta | Diğer posta |
-| User | ülke | Ülke/Bölge |
-| User | city | City |
-| User | durum | Durum |
-| User | JobTitle | İş Unvanı |
-| User | çalışan | Çalışan Numarası |
-| User | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
-| User | atanan | kullanıcıya atanan uygulama rollerinin listesi|
+| Kullanıcı | surname | Aile adı |
+| Kullanıcı | givenname | Verilen Ad |
+| Kullanıcı | DisplayName | Görünen Ad |
+| Kullanıcı | uzantının | ObjectID |
+| Kullanıcı | posta | E-posta Adresi |
+| Kullanıcı | userPrincipalName | Kullanıcı Asıl Adı |
+| Kullanıcı | bölüm|Bölüm|
+| Kullanıcı | onpremisessamaccountname | Şirket içi SAM hesap adı |
+| Kullanıcı | NetbiosName| NetBIOS adı |
+| Kullanıcı | DN | DNS Etki Alanı Adı |
+| Kullanıcı | onpremisesecurityidentifier | Şirket içi güvenlik tanımlayıcısı |
+| Kullanıcı | tadı| Organizasyon Adı |
+| Kullanıcı | StreetAddress | Adres |
+| Kullanıcı | PostalCode | Posta Kodu |
+| Kullanıcı | preferredlanguange | Tercih edilen dil |
+| Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |
+| Kullanıcı | mailNickname | Posta takma adı |
+| Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
+| Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
+| Kullanıcı | extensionattribute3 | Uzantı özniteliği 3 |
+| Kullanıcı | extensionattribute4 | Uzantı özniteliği 4 |
+| Kullanıcı | extensionattribute5 | Uzantı özniteliği 5 |
+| Kullanıcı | extensionattribute6 | Uzantı özniteliği 6 |
+| Kullanıcı | extensionattribute7 | Uzantı özniteliği 7 |
+| Kullanıcı | extensionattribute8 | Uzantı özniteliği 8 |
+| Kullanıcı | extensionattribute9 | Uzantı özniteliği 9 |
+| Kullanıcı | extensionattribute10 | Uzantı özniteliği 10 |
+| Kullanıcı | extensionattribute11 | Uzantı özniteliği 11 |
+| Kullanıcı | extensionattribute12 | Uzantı özniteliği 12 |
+| Kullanıcı | extensionattribute13 | Uzantı özniteliği 13 |
+| Kullanıcı | extensionattribute14 | Uzantı özniteliği 14 |
+| Kullanıcı | extensionattribute15 | Uzantı özniteliği 15 |
+| Kullanıcı | diğer posta | Diğer posta |
+| Kullanıcı | ülke | Ülke/Bölge |
+| Kullanıcı | city | Şehir |
+| Kullanıcı | durum | Durum |
+| Kullanıcı | JobTitle | İş Unvanı |
+| Kullanıcı | çalışan | Çalışan Numarası |
+| Kullanıcı | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
+| Kullanıcı | atanan | kullanıcıya atanan uygulama rollerinin listesi|
 | uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
 | uygulama, kaynak, hedef kitle | objected | ObjectID |
-| uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
+| uygulama, kaynak, hedef kitle | tags | Hizmet sorumlusu etiketi |
 | Şirket | tenantcountry | Kiracının ülkesi/bölgesi |
 
 **Dönüştürme kimliği:** Dönüşümtionıd öğesi yalnızca kaynak öğe "dönüşüm" olarak ayarlandıysa sağlanmalıdır.
@@ -362,7 +362,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 |Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
 |-----|-----|-----|-----|
 |Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: " foo@bar.com ", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: " foo@bar.com.sandbox "|
-|ExtractMailPrefix|e-posta veya UPN|UPN|ExtensionAttributes 1-15 veya Kullanıcı için bir UPN ya da e-posta adresi değeri depolayan diğer şema uzantıları gibi johndoe@contoso.com . Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: " foo@bar.com " outputClaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
+|ExtractMailPrefix|E-posta veya UPN|ayıklanan dize|ExtensionAttributes 1-15 veya Kullanıcı için bir UPN ya da e-posta adresi değeri depolayan diğer şema uzantıları gibi johndoe@contoso.com . Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: " foo@bar.com " outputClaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
 
 **Inputclaim:** Bir talep şeması girdisinden bir dönüşüme veri geçirmek için ınputclaim öğesi kullanın. İki özniteliğe sahiptir: **ClaimTypeReferenceId** ve **dönüştürülebilir tionclaimtype**.
 
@@ -387,25 +387,25 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 |Kaynak|ID|Açıklama|
 |-----|-----|-----|
-| User | posta|E-posta Adresi|
-| User | userPrincipalName|Kullanıcı Asıl Adı|
-| User | onpremisessamaccountname|Şirket Içi Sam hesap adı|
-| User | çalışan|Çalışan Numarası|
-| User | extensionattribute1 | Uzantı özniteliği 1 |
-| User | extensionattribute2 | Uzantı özniteliği 2 |
-| User | extensionattribute3 | Uzantı özniteliği 3 |
-| User | extensionattribute4 | Uzantı özniteliği 4 |
-| User | extensionattribute5 | Uzantı özniteliği 5 |
-| User | extensionattribute6 | Uzantı özniteliği 6 |
-| User | extensionattribute7 | Uzantı özniteliği 7 |
-| User | extensionattribute8 | Uzantı özniteliği 8 |
-| User | extensionattribute9 | Uzantı özniteliği 9 |
-| User | extensionattribute10 | Uzantı özniteliği 10 |
-| User | extensionattribute11 | Uzantı özniteliği 11 |
-| User | extensionattribute12 | Uzantı özniteliği 12 |
-| User | extensionattribute13 | Uzantı özniteliği 13 |
-| User | extensionattribute14 | Uzantı özniteliği 14 |
-| User | extensionattribute15 | Uzantı özniteliği 15 |
+| Kullanıcı | posta|E-posta Adresi|
+| Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
+| Kullanıcı | onpremisessamaccountname|Şirket Içi Sam hesap adı|
+| Kullanıcı | çalışan|Çalışan Numarası|
+| Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
+| Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
+| Kullanıcı | extensionattribute3 | Uzantı özniteliği 3 |
+| Kullanıcı | extensionattribute4 | Uzantı özniteliği 4 |
+| Kullanıcı | extensionattribute5 | Uzantı özniteliği 5 |
+| Kullanıcı | extensionattribute6 | Uzantı özniteliği 6 |
+| Kullanıcı | extensionattribute7 | Uzantı özniteliği 7 |
+| Kullanıcı | extensionattribute8 | Uzantı özniteliği 8 |
+| Kullanıcı | extensionattribute9 | Uzantı özniteliği 9 |
+| Kullanıcı | extensionattribute10 | Uzantı özniteliği 10 |
+| Kullanıcı | extensionattribute11 | Uzantı özniteliği 11 |
+| Kullanıcı | extensionattribute12 | Uzantı özniteliği 12 |
+| Kullanıcı | extensionattribute13 | Uzantı özniteliği 13 |
+| Kullanıcı | extensionattribute14 | Uzantı özniteliği 14 |
+| Kullanıcı | extensionattribute15 | Uzantı özniteliği 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tablo 6: SAML NameID için izin verilen dönüştürme yöntemleri
 

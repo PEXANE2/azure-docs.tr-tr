@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 905a42c5a9bc297e2c27408a58a5b3019755fdef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736662"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029102"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux için Log Analytics sanal makine uzantısı
 
@@ -32,7 +32,7 @@ Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme, 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -204,7 +204,7 @@ Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
 
 | Hata Kodu | Anlamı | Olası eylem |
 | :---: | --- | --- |
-| 9 | Etkinleştirme erken çağrıldı | [Azure Linux aracısını](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) kullanılabilir en son sürüme güncelleştirin. |
+| 9 | Etkinleştirme erken çağrıldı | [Azure Linux aracısını](./update-linux-agent.md) kullanılabilir en son sürüme güncelleştirin. |
 | 10 | VM zaten bir Log Analytics çalışma alanına bağlı | Sanal makineyi uzantı şemasında belirtilen çalışma alanına bağlamak için, genel ayarlarda stopOnMultipleConnections 'ı false olarak ayarlayın veya bu özelliği kaldırın. Bu VM, bağlandığı her çalışma alanı için bir kez faturalandırılır. |
 | 11 | Uzantıya geçersiz yapılandırma belirtildi | Dağıtım için gerekli tüm özellik değerlerini ayarlamak için yukarıdaki örnekleri izleyin. |
 | 17 | Log Analytics paketi yükleme hatası | 

@@ -9,16 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82926723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027113"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -50,7 +51,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 ### <a name="header-claims"></a>Üst bilgi talepleri
 
-|İste | Biçim | Açıklama |
+|İste | Biçimlendir | Açıklama |
 |-----|--------|-------------|
 |`typ` | Dize-Always "JWT" | Belirtecin bir JWT belirteci olduğunu gösterir.|
 |`alg` | Dize | Belirteci imzalamak için kullanılan algoritmayı belirtir. Örnek: "RS256" |
@@ -61,7 +62,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (aksi belirtilmedikçe).  Bununla birlikte, uygulamanız id_token ek JWT talepleri istemek için [isteğe bağlı talepler](active-directory-optional-claims.md) kullanabilir.  Bunlar, `groups` kullanıcıdan kullanıcının adı hakkında bilgi talep edebilir.
 
-|İste | Biçim | Açıklama |
+|İste | Biçimlendir | Açıklama |
 |-----|--------|-------------|
 |`aud` |  Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. `id_tokens`' De hedef kitle, uygulamanızın Azure Portal uygulamanıza atanan uygulama kimliğidir. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
 |`iss` |  Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Belirteç v 2.0 uç noktası tarafından verildiyse, URI sona ermeyecektir `/v2.0` .  Kullanıcının Microsoft hesabı bir tüketici kullanıcısı olduğunu gösteren GUID `9188040d-6c67-4c5b-b112-36a304b66dad` . Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
@@ -86,10 +87,10 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 |`ver` | Dize, 1,0 ya da 2,0 | İd_token sürümünü gösterir. |
 
 > [!NOTE]
-> V1 ve v2 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklılıklar vardır. Sürüm temelde, verildiği yerden Azure AD platformu uç noktasını belirtir. [Azure AD OAuth uygulamasında](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) yıllarca bir gelişmiştir. Şu anda AzureAD uygulamaları için iki farklı oAuth uç noktası sunuyoruz. V2 olarak sınıflandırılan yeni bitiş noktalarından herhangi birini ya da v1 olarak söyedilen eskileri kullanabilirsiniz. Her ikisine ait OAuth uç noktaları farklı. V2 uç noktası, v1 uç noktasının tüm özelliklerini geçirmeye çalıştığı ve yeni geliştiricilerin v2 uç noktasını kullanmasını önerdiğimiz yeni bir noktadır.
+> V 1.0 ve v 22.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklılıklara sahiptir. Sürüm temelde, verildiği yerden Azure AD platformu uç noktasını belirtir. [Azure AD OAuth uygulama](about-microsoft-identity-platform.md) yıllardır. Şu anda Azure AD uygulamaları için iki farklı outh uç noktası vardır. V 2.0 veya v 1.0 olarak sınıflandırılan yeni uç noktalardan herhangi birini kullanabilirsiniz. Bunların her ikisi için de OAuth uç noktaları farklı. V 2.0 uç noktası daha yenidir ve v 1.0 uç noktasının özellikleri bu uç noktaya geçiriliyor. Yeni geliştiriciler v 2.0 uç noktasını kullanmalıdır.
 >
-> - V1: Azure Active Directory uç noktaları:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - V2: Microsoft Identity platform uç noktaları:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 1.0: Azure AD uç noktaları:`https://login.microsoftonline.com/common/oauth2/authorize`
+> - v 2.0: Microsoft identitypPlatform uç noktaları:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>İd_token doğrulama
 

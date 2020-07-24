@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027521"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
 
@@ -76,7 +76,7 @@ POST <API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
@@ -99,7 +99,7 @@ Gönderilecek bir talebin API uç noktası çağrıldığında bir değeri yoksa
 **Extension_ \<extensions-app-id> _AttributeName** biçimi kullanılarak kullanıcı için özel öznitelikler oluşturulabilir. API 'nizin bu aynı serileştirilmiş biçimde talepler alması beklenir. API 'niz, veya olmadan talepler döndürebilir `<extensions-app-id>` . Özel öznitelikler hakkında daha fazla bilgi için bkz. [self servis kaydolma akışları için özel öznitelikler tanımlama](user-flow-add-custom-attributes.md).
 
 > [!TIP] 
-> [**kimlikler (' kimlikler ')**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) ve **e-posta adresi (' email_address ')** talepleri, kiracınızda bir hesaba girmeden önce bir kullanıcıyı tanımlamak için kullanılabilir. ' Kimlikler ' talebi, bir kullanıcı Google veya Facebook ile kimlik doğrulaması yapıldığında ve ' email_address ' her zaman gönderiliyorsa gönderilir.
+> [**kimlikler (' kimlikler ')**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) ve **e-posta adresi (' e-posta ')** talepleri, kiracınızda bir hesaba girmeden önce bir kullanıcıyı tanımlamak için kullanılabilir. Bir kullanıcı Google veya Facebook ile kimlik doğrulaması yapıldığında ve ' e-posta ' her zaman gönderiliyorsa ' kimlikler ' talebi gönderilir.
 
 ## <a name="expected-response-types-from-the-web-api"></a>Web API 'sinden beklenen yanıt türleri
 
@@ -135,16 +135,16 @@ Content-type: application/json
 
 | Parametre                                          | Tür              | Gerekli | Açıklama                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sürüm                                            | Dize            | Evet      | API sürümü.                                                                                                                                                                                                                                                                |
-| action                                             | Dize            | Evet      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
+| sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
+| eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi**olarak seçilirse, belirteçte değerler döndürülür.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talep isteğe bağlı olarak içermez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
 
 ### <a name="blocking-response"></a>Engelleme yanıtı
 
 Engelleme yanıtı Kullanıcı akışından çıkar. Kullanıcıya bir engelleme sayfası görüntüleyerek Kullanıcı akışının devamlılığını durdurmak için özellikle API tarafından verilebilir. Engelleme sayfası `userMessage` API tarafından sunulan ' i görüntüler.
 
-Engelleme yanıtının bir örneği aşağıda verilmiştir:
+Engelleme yanıtı örneği:
 
 ```http
 HTTP/1.1 200 OK
@@ -161,9 +161,9 @@ Content-type: application/json
 
 | Parametre   | Tür   | Gerekli | Açıklama                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize | Evet      | API sürümü.                                                    |
-| action      | Dize | Evet      | Değer olmalıdır`ShowBlockPage`                                              |
-| userMessage | Dize | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+| sürüm     | Dize | Yes      | API sürümü.                                                    |
+| eylem      | Dize | Yes      | Değer olmalıdır`ShowBlockPage`                                              |
+| userMessage | Dize | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
 | kod        | Dize | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 #### <a name="end-user-experience-with-a-blocking-response"></a>Engelleyici bir Yanıt ile son kullanıcı deneyimi
@@ -191,10 +191,10 @@ Content-type: application/json
 
 | Parametre   | Tür    | Gerekli | Açıklama                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize  | Evet      | API sürümü.                                                    |
-| action      | Dize  | Evet      | Değer olmalıdır `ValidationError` .                                           |
-| durum      | Tamsayı | Evet      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
-| userMessage | Dize  | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+| sürüm     | Dize  | Yes      | API sürümü.                                                    |
+| eylem      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
+| durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
+| userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
 | kod        | Dize  | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 #### <a name="end-user-experience-with-a-validation-error-response"></a>Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi

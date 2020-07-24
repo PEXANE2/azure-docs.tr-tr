@@ -3,15 +3,16 @@ title: Application Insights 'da performans sayaçları | Microsoft Docs
 description: Application Insights 'de sistem ve özel .NET performans sayaçlarını izleyin.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024427"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 'de sistem performans sayaçları
 
-Windows tarafından CPU doluluğu, bellek, disk ve ağ kullanımı gibi şeylere yönelik birçok çeşit [performans sayacı](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) sunulur. Ayrıca, kendi performans Sayaçlarınızı tanımlayabilirsiniz. Performans sayaçları koleksiyonu, uygulamanız şirket içi bir konakta veya yönetim erişiminizin olduğu sanal makinede çalıştığı sürece desteklenir. Azure Web Apps olarak çalışan uygulamaların performans sayaçlarına doğrudan erişimi olmasa da, kullanılabilir sayaçların bir alt kümesi Application Insights tarafından toplanır.
+Windows tarafından CPU doluluğu, bellek, disk ve ağ kullanımı gibi şeylere yönelik birçok çeşit [performans sayacı](/windows/desktop/perfctrs/about-performance-counters) sunulur. Ayrıca, kendi performans Sayaçlarınızı tanımlayabilirsiniz. Performans sayaçları koleksiyonu, uygulamanız şirket içi bir konakta veya yönetim erişiminizin olduğu sanal makinede çalıştığı sürece desteklenir. Azure Web Apps olarak çalışan uygulamaların performans sayaçlarına doğrudan erişimi olmasa da, kullanılabilir sayaçların bir alt kümesi Application Insights tarafından toplanır.
 
 ## <a name="view-counters"></a>Sayaçları görüntüle
 
@@ -39,7 +40,7 @@ ASP.NET/ASP.NET Core Web uygulamaları için toplanmaya yapılandırılmış ge�
 
     `Get-Counter -ListSet *`
 
-    (Bkz [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx) ..)
+    (Bkz [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1) ..)
 2. ApplicationInsights.config açın.
 
    * Geliştirme sırasında uygulamanıza Application Insights eklediyseniz, projenizdeki ApplicationInsights.config düzenleyin ve ardından sunucularınıza yeniden dağıtın.
@@ -108,7 +109,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Analytics 'te performans sayaçları
-[Analiz](../../azure-monitor/app/analytics.md)içinde performans sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
+[Analiz](../log-query/log-query-overview.md)içinde performans sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
 
 **PerformanceCounters** şeması, `category` `counter` `instance` her bir performans sayacının, adını ve adını gösterir.  Her uygulama için telemetri bölümünde yalnızca bu uygulama için sayaçları görürsünüz. Örneğin, hangi sayaçların kullanılabildiğini görmek için: 
 
@@ -152,4 +153,3 @@ Diğer ölçümler gibi, bir performans sayacı belirttiğiniz sınırın dış�
 
 * [Bağımlılık izleme](../../azure-monitor/app/asp-net-dependencies.md)
 * [Özel durum izleme](../../azure-monitor/app/asp-net-exceptions.md)
-

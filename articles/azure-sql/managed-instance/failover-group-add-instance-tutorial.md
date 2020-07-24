@@ -12,11 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: f1bf8eff4a6f518fc24c87c5fbd24984ef8f8b29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad0079a0a48178f1e662e2fdf1daa685ae768857
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024202"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Öğretici: yük devretme grubuna SQL yönetilen örneği ekleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +35,7 @@ Azure SQL yönetilen örneği 'nin yönetilen örneklerini bir yük devretme gru
   > - Yük devretme grubuna katılan yönetilen örnekler için [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) veya ıkı bağlı VPN ağ geçidi gerekir. Bu öğretici, VPN ağ geçitleri oluşturmak ve bağlamak için gereken adımları sağlar. ExpressRoute zaten yapılandırılmışsa bu adımları atlayın. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
@@ -46,7 +47,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 Öğreticiyi tamamlayabilmeniz için aşağıdaki öğelerin bulunduğundan emin olun:
 
 - Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azure/)
 
 ---
 
@@ -390,7 +391,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil yönetilen örneği oluşturu
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Bir sanal ağa alt ağ yapılandırması ekler. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Bir kaynak grubundaki sanal ağı alır. | 
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Bir sanal ağ içindeki bir alt ağı alır. | 
-| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Ağ güvenlik grubu oluşturur. | 
+| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Bir ağ güvenlik grubu oluşturur. | 
 | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Bir yol tablosu oluşturur. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Bir sanal ağ için alt ağ yapılandırmasını güncelleştirir.  |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Bir sanal ağı güncelleştirir.  |
@@ -427,10 +428,10 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin:
 
     | **Alan** | Değer |
     | --- | --- |
-    | **Adı** |  İkincil yönetilen örnek tarafından kullanılacak sanal ağın adı (gibi) `vnet-sql-mi-secondary` . |
+    | **Ad** |  İkincil yönetilen örnek tarafından kullanılacak sanal ağın adı (gibi) `vnet-sql-mi-secondary` . |
     | **Adres alanı** | Sanal ağınız için gibi adres alanı `10.128.0.0/16` . | 
     | **Abonelik** | Birincil yönetilen örneğinizin ve kaynak grubunuzun bulunduğu abonelik. |
-    | **Geli** | İkincil yönetilen örneğinizi dağıtacağınız konum. |
+    | **Bölge** | İkincil yönetilen örneğinizi dağıtacağınız konum. |
     | **Alt ağ** | Alt ağınızın adı. `default`Varsayılan olarak sizin için sağlanır. |
     | **Adres aralığı**| Alt ağınızın adres aralığı. Bunun gibi, birincil yönetilen örneğinizin sanal ağı tarafından kullanılan alt ağ adres aralığından farklı olması gerekir `10.128.0.0/24` .  |
     | &nbsp; | &nbsp; |
@@ -469,7 +470,7 @@ Azure portal kullanarak ikincil yönetilen örnek oluşturun.
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Kaynak grubu**| Birincil yönetilen örneğinizin bulunduğu kaynak grubu. |
     | **SQL yönetilen örnek adı** | Yeni ikincil yönetilen örneğinizin adı, örneğin `sql-mi-secondary` .  | 
-    | **Geli**| İkincil yönetilen örneğinizin konumu.  |
+    | **Bölge**| İkincil yönetilen örneğinizin konumu.  |
     | **SQL yönetilen örnek Yöneticisi oturum açma** | Yeni ikincil yönetilen örneğiniz için kullanmak istediğiniz oturum açma gibi `azureuser` . |
     | **Parola** | Yeni ikincil yönetilen örnek için yönetici oturumu tarafından kullanılacak karmaşık bir parola.  |
     | &nbsp; | &nbsp; |
@@ -720,7 +721,7 @@ PowerShell kullanarak ikincil yönetilen örnek oluşturun.
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Bir sanal ağa alt ağ yapılandırması ekler. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Bir kaynak grubundaki sanal ağı alır. | 
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Bir sanal ağ içindeki bir alt ağı alır. | 
-| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Ağ güvenlik grubu oluşturur. | 
+| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Bir ağ güvenlik grubu oluşturur. | 
 | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Bir yol tablosu oluşturur. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Bir sanal ağ için alt ağ yapılandırmasını güncelleştirir.  |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Bir sanal ağı güncelleştirir.  |
@@ -761,8 +762,8 @@ Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ
     | **Alan** | Değer |
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
-    | **Adı** | Sanal ağ geçidinizin adı, örneğin `primary-mi-gateway` . | 
-    | **Geli** | Birincil yönetilen örneğinizin bulunduğu bölge. |
+    | **Ad** | Sanal ağ geçidinizin adı, örneğin `primary-mi-gateway` . | 
+    | **Bölge** | Birincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı**' ı seçin. |
     | **SKU**| Varsayılan bırakın `VpnGw1` . |
@@ -843,8 +844,8 @@ Azure portal kullanarak, ikincil yönetilen örnek için sanal ağ alt ağını 
    | **Alan** | Değer |
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
-   | **Adı** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . | 
-   | **Geli** | İkincil yönetilen örneğinizin bulunduğu bölge. |
+   | **Ad** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . | 
+   | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı**' ı seçin. |
    | **SKU**| Varsayılan bırakın `VpnGw1` . |
@@ -1122,7 +1123,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Bir sanal ağa alt ağ yapılandırması ekler. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Bir kaynak grubundaki sanal ağı alır. | 
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Bir sanal ağ içindeki bir alt ağı alır. | 
-| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Ağ güvenlik grubu oluşturur. | 
+| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Bir ağ güvenlik grubu oluşturur. | 
 | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Bir yol tablosu oluşturur. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Bir sanal ağ için alt ağ yapılandırmasını güncelleştirir.  |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Bir sanal ağı güncelleştirir.  |

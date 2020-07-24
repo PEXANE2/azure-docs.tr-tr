@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565889"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023475"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub terimlerin sözlüğü
 
@@ -26,7 +26,7 @@ Bu makalede IoT Hub makalelerinde kullanılan yaygın terimlerin bazıları list
 
 [Gelişmiş Ileti sıraya alma Protokolü (AMQP)](https://www.amqp.org/) , cihazlarla iletişim kurmak için [IoT Hub](#iot-hub) desteklediği mesajlaşma protokollerinden biridir. IoT Hub desteklediği mesajlaşma protokolleri hakkında daha fazla bilgi için, bkz. [IoT Hub ile Ileti gönderme ve alma](iot-hub-devguide-messaging.md).
 
-## <a name="automatic-device-management"></a>Otomatik cihaz yönetimi
+## <a name="automatic-device-management"></a>Otomatik Cihaz Yönetimi
 
 Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filliklerini tümüyle yaşam döngülerine göre yönetmenin yinelenen ve karmaşık görevlerinin çoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve IoT Hub cihazları kapsama geldiğinde güncelleştirme sağlayabilirsiniz.  [Otomatik cihaz yapılandırmalarının](iot-hub-auto-device-config.md) ve [IoT Edge otomatik dağıtımlarından](../iot-edge/how-to-deploy-at-scale.md)oluşur.
 
@@ -58,13 +58,13 @@ Bir IoT Hub ile etkileşime geçen [arka uç uygulamaları](#back-end-app) oluş
 
 [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , VS Code Azure IoT Hub ve cihazlarını yönetmenize yardımcı olan platformlar arası, açık kaynaklı Visual Studio Code uzantısıdır. IoT geliştiricileri, Azure IoT araçlarıyla VS Code ' de kolayca IoT projesi geliştirebilir.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 [Microsoft Azure Portal](https://portal.azure.com) , Azure kaynaklarınızı sağlayabileceğiniz ve yönetebileceğiniz merkezi bir yerdir. Dikey _pencereleri kullanarak içeriğini_düzenler.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview) , Azure 'ı Windows PowerShell ile yönetmek için kullanabileceğiniz cmdlet 'lerin bir koleksiyonudur. Cmdlet 'lerini kullanarak Azure platformunda sunulan çözümleri ve Hizmetleri oluşturabilir, test edebilir, dağıtabilir ve yönetebilirsiniz.
+[Azure PowerShell](/powershell/azure/) , Azure 'ı Windows PowerShell ile yönetmek için kullanabileceğiniz cmdlet 'lerin bir koleksiyonudur. Cmdlet 'lerini kullanarak Azure platformunda sunulan çözümleri ve Hizmetleri oluşturabilir, test edebilir, dağıtabilir ve yönetebilirsiniz.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -178,7 +178,7 @@ Bir [cihaz ikizi](iot-hub-devguide-device-twins.md) , meta veriler, konfigürasy
 
 [Doğrudan yöntem](iot-hub-devguide-direct-methods.md) , IoT Hub 'ıNıZDA bir API çağırarak bir cihazdaki bir yöntemi yürütmek için bir yöntem tetiklemeniz için bir yoldur.
 
-## <a name="endpoint"></a>Uç Nokta
+## <a name="endpoint"></a>Uç Noktası
 
 IoT Hub 'ı, uygulamalarınızın IoT Hub 'ına bağlanmasını sağlayan birden çok [uç nokta](iot-hub-devguide-endpoints.md) sunar. Cihazların, [cihazdan buluta](#device-to-cloud) iletileri gönderme ve [buluttan cihaza](#cloud-to-device) iletileri alma gibi işlemleri gerçekleştirmesini sağlayan cihaza yönelik uç noktalar vardır. [Arka uç uygulamalarının](#back-end-app) [cihaz kimlik](#device-identity) yönetimi ve cihaz ikizi yönetimi gibi işlemleri gerçekleştirmesini sağlayan hizmete yönelik yönetim uç noktaları vardır. Cihazdan buluta iletileri okumak için hizmete yönelik [yerleşik uç noktalar](#built-in-endpoints) vardır. Bir [yönlendirme kuralı](#routing-rules)tarafından dağıtılan cihazdan buluta iletileri almak için [Özel uç noktalar](#custom-endpoints) oluşturabilirsiniz.
 

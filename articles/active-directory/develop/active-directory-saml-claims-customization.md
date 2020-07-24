@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f56427dabdee715412596557fa075c5eb4df500
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027317"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -56,7 +56,7 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa Azure AD, belirttiğiniz
 
 | NameID biçimi | Açıklama |
 |---------------|-------------|
-| **Varsayılan** | Azure AD varsayılan kaynak biçimini kullanır. |
+| **Varsayılanını** | Azure AD varsayılan kaynak biçimini kullanır. |
 | **Kalıcı** | Azure AD, NameID biçimi olarak kalıcı kullanacaktır. |
 | **EmailAddress** | Azure AD, NameID biçimi olarak Emapostaadı kullanacaktır. |
 | **Belirtilmemiş** | Azure AD, NameID biçimi olarak belirtilmemiş kullanır. |
@@ -68,7 +68,7 @@ Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tar
 
 `NameIdentifier`(Veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
 
-| Name | Açıklama |
+| Ad | Açıklama |
 |------|-------------|
 | E-posta | Kullanıcının e-posta adresi |
 | userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |
@@ -164,7 +164,7 @@ Talep koşulu eklemek için:
 
 1. **Talep yönetme**' de talep koşullarını genişletin.
 2. Kullanıcı türünü seçin.
-3. Kullanıcının ait olacağı grupları seçin. Belirli bir uygulama için tüm talepler genelinde en fazla 10 benzersiz grup seçebilirsiniz. 
+3. Kullanıcının ait olacağı grupları seçin. Belirli bir uygulama için tüm talepler genelinde en fazla 50 benzersiz grup seçebilirsiniz. 
 4. Talebin değerini almak için gereken **kaynağı** seçin. Kaynak özniteliği açılan listesinden bir kullanıcı özniteliği seçebilir veya bir talep olarak yaymadan önce Kullanıcı özniteliğine bir dönüşüm uygulayabilirsiniz.
 
 Koşulları eklediğiniz sıra önemlidir. Azure AD, talebe göre hangi değerin yayacağına karar vermek için koşulları yukarıdan aşağıya değerlendirir. 

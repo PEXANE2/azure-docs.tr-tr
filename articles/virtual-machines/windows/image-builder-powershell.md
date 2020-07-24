@@ -7,12 +7,12 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5be21eea9dbb9ea0925ac014fce6272ce8c32a0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028168"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Önizleme: PowerShell kullanarak Azure Image Builder ile Windows VM oluşturma
 
@@ -21,11 +21,11 @@ Bu makalede, Azure VM Image Builder PowerShell modülünü kullanarak özelleşt
 > [!CAUTION]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > **Az. ımagebuilder** ve **az. managedserviceıdentity** PowerShell modülleri önizlemede olduğunda, `Install-Module` cmdlet 'ini parametresiyle birlikte kullanarak bunları ayrı olarak yüklemelisiniz `AllowPrerelease` . Bu PowerShell modülleri genel kullanıma sunulduğunda, gelecekteki az PowerShell modülü sürümlerinin bir parçası haline gelir ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
@@ -36,7 +36,7 @@ PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell mod�
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Birden çok Azure aboneliğiniz varsa, kaynakların faturalandırılması gereken uygun aboneliği seçin. [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) cmdlet 'ini kullanarak belirli bir abonelik seçin.
+Birden çok Azure aboneliğiniz varsa, kaynakların faturalandırılması gereken uygun aboneliği seçin. [Set-AzContext](/powershell/module/az.accounts/set-azcontext) cmdlet 'ini kullanarak belirli bir abonelik seçin.
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -100,7 +100,7 @@ Write-Output $subscriptionID
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini kullanarak bir [Azure Kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini kullanarak bir [Azure Kaynak grubu](../../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek, değişkeninde belirtilen bölgedeki ada göre bir kaynak grubu oluşturur `$imageResourceGroup` `$location` . Bu kaynak grubu, görüntü yapılandırma şablonu yapıtı ve görüntüsünü depolamak için kullanılır.
 
@@ -168,7 +168,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> Şu hatayı alırsanız: "_New-AzRoleDefinition: rol tanımı sınırı aşıldı. Başka rol tanımı oluşturulamıyor._", bkz. [Azure RBAC sorunlarını giderme](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting).
+> Şu hatayı alırsanız: "_New-AzRoleDefinition: rol tanımı sınırı aşıldı. Başka rol tanımı oluşturulamıyor._", bkz. [Azure RBAC sorunlarını giderme](../../role-based-access-control/troubleshooting.md).
 
 ## <a name="create-a-shared-image-gallery"></a>Paylaşılan Görüntü Galerisi Oluşturma
 
@@ -200,7 +200,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>Görüntü oluşturma
 
-Azure görüntü Oluşturucu kaynak nesnesi oluşturun. Geçerli parametre değerleri için [Azure PowerShell Azure Marketi 'Nde WINDOWS VM görüntülerini bulma](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) bölümüne bakın.
+Azure görüntü Oluşturucu kaynak nesnesi oluşturun. Geçerli parametre değerleri için [Azure PowerShell Azure Marketi 'Nde WINDOWS VM görüntülerini bulma](./cli-ps-findimage.md) bölümüne bakın.
 
 ```azurepowershell-interactive
 $SrcObjParams = @{

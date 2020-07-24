@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 03/26/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025600"
 ---
 # <a name="what-is-a-device-identity"></a>Cihaz kimliği nedir?
 
@@ -45,9 +45,9 @@ Azure AD 'de bir cihaz almak için, birden çok seçeneğiniz vardır:
 - **Azure AD'ye katılanlar**
    - Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açanlar. Bunlar yalnızca bulutta bulunur.
       - Windows 10 
-      - [Azure 'da çalışan Windows Server 2019 sanal makineleri] (./howto-vm-sign-in-azure-ad-windows.md) (Sunucu Çekirdeği desteklenmez)
+      - [Azure 'da çalışan Windows Server 2019 sanal makineleri](howto-vm-sign-in-azure-ad-windows.md) (Sunucu Çekirdeği desteklenmez)
 - **Hibrit Azure AD'ye katılmış**
-   - Karma Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açanlar. Bunlar bulutta ve şirket içinde mevcuttur.
+   - Karma Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Active Directory Domain Services hesabıyla oturum açanlar. Bunlar bulutta ve şirket içinde mevcuttur.
       - Windows 7, 8,1 veya 10
       - Windows Server 2008 veya üzeri
 

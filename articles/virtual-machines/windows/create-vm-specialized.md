@@ -7,13 +7,14 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49554c053af0ceecf2b7f0b1162b7212694239db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234543"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028099"
 ---
-# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell kullanarak özel bir diskten Windows VM oluşturma
+# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell kullanarak özelleştirilmiş bir diskten Windows VM oluşturma
 
 Özel bir yönetilen diski işletim sistemi diski olarak ekleyerek yeni bir VM oluşturun. Özel bir disk, var olan bir VM 'den bir sanal sabit diskin (VHD) bir kopyasıdır ve bu, özgün VM 'nizden Kullanıcı hesaplarını, uygulamaları ve diğer durum verilerini içerir. 
 
@@ -32,7 +33,7 @@ Tek bir VHD 'den veya anlık görüntüden 20 VM 'ye eş zamanlı dağıtım say
 
 ## <a name="option-1-use-an-existing-disk"></a>Seçenek 1: mevcut bir diski kullanın
 
-Sildiğiniz bir sanal makine varsa ve yeni bir VM oluşturmak için işletim sistemi diskini yeniden kullanmak istiyorsanız [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)' i kullanın.
+Sildiğiniz bir sanal makine varsa ve yeni bir VM oluşturmak için işletim sistemi diskini yeniden kullanmak istiyorsanız [Get-AzDisk](/powershell/module/az.compute/get-azdisk)' i kullanın.
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -67,7 +68,7 @@ Var olan bir VM 'yi başka bir bölgeye kopyalamak istiyorsanız, [başka bir b�
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>İşletim sistemi diskinin anlık görüntüsünü alın
 
-Tüm VM 'nin (tüm diskler dahil) veya yalnızca tek bir diskin anlık görüntüsünü alabilirsiniz. Aşağıdaki adımlarda, [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) cmdlet 'ı ile sanal makinenizin yalnızca işletim sistemi diskinin anlık görüntüsünü alma işlemleri gösterilmektedir. 
+Tüm VM 'nin (tüm diskler dahil) veya yalnızca tek bir diskin anlık görüntüsünü alabilirsiniz. Aşağıdaki adımlarda, [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) cmdlet 'ı ile sanal makinenizin yalnızca işletim sistemi diskinin anlık görüntüsünü alma işlemleri gösterilmektedir. 
 
 İlk olarak, bazı parametreleri ayarlayın. 
 
@@ -115,7 +116,7 @@ Bu anlık görüntüyü, yüksek performanslı olması gereken bir VM oluşturma
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Anlık görüntüden yeni bir disk oluştur
 
-[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)kullanarak anlık görüntüden yönetilen disk oluşturun. Bu örnek, disk adı için *Myosdisk* kullanır.
+[New-AzDisk](/powershell/module/az.compute/new-azdisk)kullanarak anlık görüntüden yönetilen disk oluşturun. Bu örnek, disk adı için *Myosdisk* kullanır.
 
 Yeni VM için yeni bir kaynak grubu oluşturun.
 
@@ -235,7 +236,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>İşletim sistemi diskini ekleme 
 
-[Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk)kullanarak işletim sistemi diskini yapılandırmaya ekleyin. Bu örnek, diskin boyutunu *128 GB* olarak ayarlar ve yönetilen diski bir *Windows* işletim sistemi diski olarak ekler.
+[Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk)kullanarak işletim sistemi diskini yapılandırmaya ekleyin. Bu örnek, diskin boyutunu *128 GB* olarak ayarlar ve yönetilen diski bir *Windows* işletim sistemi diski olarak ekler.
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -244,7 +245,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
 
 ### <a name="complete-the-vm"></a>VM 'yi doldurun 
 
-Yeni oluşturduğumuz yapılandırmalara sahip [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) kullanarak VM 'yi oluşturun.
+Yeni oluşturduğumuz yapılandırmalara sahip [New-AzVM](/powershell/module/az.compute/new-azvm) kullanarak VM 'yi oluşturun.
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
@@ -269,4 +270,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yeni sanal makinenizde oturum açın. Daha fazla bilgi için bkz. [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum](connect-logon.md)açma.
-

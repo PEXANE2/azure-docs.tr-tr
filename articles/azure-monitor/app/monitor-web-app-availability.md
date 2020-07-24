@@ -4,11 +4,12 @@ description: Application Insights’ta web testleri ayarlayın. Web sitesi kulla
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024597"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
@@ -22,7 +23,7 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 
 * [URL ping testi](#create-a-url-ping-test): Azure portalında oluşturabileceğiniz basit bir test.
 * [Çok adımlı Web testi](availability-multistep.md): daha karmaşık senaryoları test etmek için oynatılabilecek Web istekleri dizisinin bir kaydı. Çok adımlı Web testleri Visual Studio Enterprise oluşturulur ve yürütülmek üzere portala yüklenir.
-* [Özel Izleme kullanılabilirlik testleri](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz, bu `TrackAvailability()` Yöntem sonuçları Application Insights göndermek için kullanılabilir.
+* [Özel Izleme kullanılabilirlik testleri](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz, bu `TrackAvailability()` Yöntem sonuçları Application Insights göndermek için kullanılabilir.
 
 **Application Insights kaynak başına en çok 100 kullanılabilirlik testi oluşturabilirsiniz.**
 
@@ -50,7 +51,7 @@ Azure Portal **kaynak oluştur**  >  **Geliştirici Araçları**  >  **Applicati
 |**Sınama sıklığı**| Testin her test konumundan ne sıklıkla çalıştırılacağını ayarlar. Beş dakikalık varsayılan sıklıkta ve beş test konumuyla, siteniz ortalama olarak dakikada bir test edilir.|
 |**Test konumları**| , Sunucularımızın URL 'nize Web istekleri gönderdiğimiz yerdir. Web sitenizdeki sorunları ağ sorunlarından ayırabilmeniz için **en az önerilen test konumu sayısı beş ' dir** . En fazla 16 konum seçebilirsiniz.
 
-**URL 'niz genel İnternet 'ten görünmüyorsa, yalnızca test işlemlerine izin vermek için güvenlik duvarınızı seçmeli olarak açmayı seçebilirsiniz**. Kullanılabilirlik testi aracılarımız için güvenlik duvarı özel durumları hakkında daha fazla bilgi edinmek için [IP adresi kılavuzuna](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)bakın.
+**URL 'niz genel İnternet 'ten görünmüyorsa, yalnızca test işlemlerine izin vermek için güvenlik duvarınızı seçmeli olarak açmayı seçebilirsiniz**. Kullanılabilirlik testi aracılarımız için güvenlik duvarı özel durumları hakkında daha fazla bilgi edinmek için [IP adresi kılavuzuna](./ip-addresses.md#availability-tests)bakın.
 
 > [!NOTE]
 > **En az beş konum**içeren birden çok konumdan test etmenizi önemle öneririz. Bu, belirli bir konum ile geçici sorunlardan kaynaklanan yanlış alarmları önlemektir. Ayrıca en iyi yapılandırmanın, **Test konumları sayısının, uyarı konum eşiğine + 2 ' ye eşit**olduğunu bulduk.
@@ -112,7 +113,7 @@ Yapay kullanılabilirlik testinin başarısız olmasına neden olan sunucu taraf
 
 ![Sunucu tarafı tanılama](./media/monitor-web-app-availability/open-instance-4.png)
 
-Ham sonuçlara ek olarak, [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)' de Iki temel kullanılabilirlik ölçümü de görebilirsiniz:
+Ham sonuçlara ek olarak, [Ölçüm Gezgini](../platform/metrics-getting-started.md)' de Iki temel kullanılabilirlik ölçümü de görebilirsiniz:
 
 1. Kullanılabilirlik: Tüm test yürütmelerinde başarılı olan testlerin yüzdelik oranı.
 2. Test Süresi: Tüm test yürütmelerinde ortalama test süresi.
@@ -130,5 +131,3 @@ Adanmış [sorun giderme makalesi](troubleshoot-availability.md).
 
 * [Kullanılabilirlik uyarıları](availability-alerts.md)
 * [Çok adımlı web testleri](availability-multistep.md)
-
-

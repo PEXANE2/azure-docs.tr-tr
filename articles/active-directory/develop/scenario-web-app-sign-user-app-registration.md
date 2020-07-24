@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026278"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
 
@@ -40,9 +41,9 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 > Kullanılacak Portal, uygulamanızın Microsoft Azure genel bulutta mi yoksa ulusal veya bağımsız bulutta mı çalışmasına bağlı olarak farklılık belirtir. Daha fazla bilgi için bkz. [Ulusal bulutlar](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. Alternatif olarak, Ulusal bulut için tercih edilen Azure portal oturum açın.
-1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabınızı seçin. Ardından, Portal oturumunuzu istenen Azure Active Directory (Azure AD) kiracısına ayarlayın.
-1. Sol bölmede **Azure Active Directory** hizmetini seçin ve sonra **uygulama kayıtları**  >  **Yeni kayıt**' ı seçin.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. Alternatif olarak, Ulusal bulut için [tercih edilen Azure Portal](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints) oturum açın.
+2. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabınızı seçin. Ardından, Portal oturumunuzu istenen Azure Active Directory (Azure AD) kiracısına ayarlayın.
+3. Sol bölmede **Azure Active Directory** hizmetini seçin ve sonra **uygulama kayıtları**  >  **Yeni kayıt**' ı seçin.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -50,12 +51,14 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
    1. Uygulamanız için desteklenen hesap türlerini seçin. (Bkz. [Desteklenen hesap türleri](./v2-supported-account-types.md).)
    1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin, **Aspnetcore-WebApp**yazın.
    1. **Yeniden yönlendirme URI 'si**için, başarılı kimlik doğrulamasından sonra döndürülen belirteç yanıtlarını kabul edecek olan uygulama türünü ve URI hedefini ekleyin. Örneğin, girin **https://localhost:44321** . Sonra **Kaydet**' i seçin.
+   ![kaydını](media/scenario-webapp/scenario-webapp-app-registration-1.png)
 1. **Kimlik doğrulama** menüsünü seçin ve ardından aşağıdaki bilgileri ekleyin:
    1. **Yanıt URL 'si**için **https://localhost:44321/signin-oidc** **Web**türü ekleyin.
    1. **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın **https://localhost:44321/signout-oidc** .
    1. **Örtük onay**'ın altında **Kimlik belirteçleri**'ni seçin.
-   1. **Kaydet**'i seçin.
-
+   1. **Kaydet**’i seçin.
+  ![kaydını](media/scenario-webapp/scenario-webapp-app-registration-2.png)
+ 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
@@ -88,7 +91,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 
    1. Bir anahtar açıklaması girin.
    1. **1 yılda**anahtar süresini seçin.
-   1. **Ekle**'yi seçin.
+   1. **Ekle**’yi seçin.
    1. Anahtar değeri göründüğünde, daha sonra için kopyalayın. Bu değer, bir daha görüntülenmez veya başka yollarla alınabilir.
 
 # <a name="python"></a>[Python](#tab/python)
@@ -104,7 +107,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 
    1. Bir anahtar açıklaması girin.
    1. **1 yılda**bir anahtar süresi seçin.
-   1. **Ekle**'yi seçin.
+   1. **Ekle**’yi seçin.
    1. Anahtar değeri göründüğünde kopyalayın. Buna daha sonra ihtiyacınız olacak.
 ---
 
@@ -116,7 +119,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 > - MyOrg (yalnızca bu kuruluş dizinindeki hesaplar)
 > - AnyOrg (herhangi bir kuruluş dizinindeki hesaplar)
 >
-> Kullanıcılar kendi kişisel Microsoft hesaplarıyla oturum açan bir uygulama (örneğin, Skype, Xbox veya Outlook.com) oluşturabilirsiniz. İlk olarak, çok kiracılı bir uygulama oluşturun. Desteklenen hesap türleri, herhangi bir kuruluş dizinindeki hesaplardır. Sonra, `signInAudience` uygulama bildirimindeki özelliği Azure Portal değiştirin. Daha fazla bilgi için ASP.NET Core öğreticisindeki [1,3. adıma](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) bakın. Bu adımı dilediğiniz dilde web uygulamalarına genelleştirebilirsiniz.
+> Kullanıcılar kendi kişisel Microsoft hesaplarıyla oturum açan bir uygulama (örneğin, Skype, Xbox veya Outlook.com) oluşturabilirsiniz. İlk olarak, çok kiracılı bir uygulama oluşturun. Desteklenen hesap türleri, herhangi bir kuruluş dizinindeki hesaplardır. Ardından, [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) özelliği **2** olarak ve [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute) özelliğini `AzureADandPersonalMicrosoftAccount` Azure Portal [uygulama bildiriminde](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) olarak değiştirin. Daha fazla bilgi için ASP.NET Core öğreticisindeki [1,3. adıma](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) bakın. Bu adımı dilediğiniz dilde web uygulamalarına genelleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

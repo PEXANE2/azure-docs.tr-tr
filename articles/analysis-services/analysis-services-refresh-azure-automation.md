@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389981"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025413"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Otomasyonu ile yenileme
 
@@ -19,11 +19,11 @@ Azure Otomasyonu ve PowerShell runbook 'Larını kullanarak Azure Analysis tablo
 
 Bu makaledeki örnek, [SqlServer PowerShell modülünü](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)kullanır. Bir modelin yenilenmesini gösteren örnek bir PowerShell runbook 'u, bu makalenin ilerleyen kısımlarında verilmiştir.  
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örnek, Azure Analysis Services kimlik doğrulaması yapmak için bir hizmet sorumlusu (SPN) kullanır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!IMPORTANT]
 > Aşağıdaki örnek, Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını varsayar. Bir Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi bir güvenlik duvarı kuralına dahil olmalıdır.
@@ -40,7 +40,7 @@ Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belir
  
     ![Modül içeri aktar](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. **Tamam**'a tıklayın.
+4. **Tamam** düğmesine tıklayın.
  
 ### <a name="create-a-service-principal-spn"></a>Hizmet sorumlusu oluşturma (SPN)
 
@@ -64,11 +64,14 @@ Oluşturduğunuz hizmet sorumlusu sunucuda Sunucu Yöneticisi izinlerine sahip o
 
     ![Runbook 'U içeri aktar](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. **Refresh-Model.ps1** dosyasına gidip bir **ad** ve **Açıklama**girin ve ardından **Oluştur**' a tıklayın.
+4. [Refresh-Model.ps1](#sample-powershell-runbook) dosyasına gidip bir **ad** ve **Açıklama**girin ve ardından **Oluştur**' a tıklayın.
+
+    > [!NOTE]
+    > Refresh-Model.ps1 adlı bir dosya oluşturmak ve Runbook 'a aktarmak için yerel makineye kaydetmek üzere bu belgenin altındaki [örnek PowerShell runbook](#sample-powershell-runbook) ' dan betiği kullanın.
 
     ![Runbook 'U içeri aktar](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. Runbook oluşturulduğunda, otomatik olarak düzenleme moduna geçer.  **Yayımla** seçeneğini belirleyin.
+5. Runbook oluşturulduğunda, otomatik olarak düzenleme moduna geçer.  **Yayımla**’yı seçin.
 
     ![Runbook 'U Yayımla](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -101,13 +104,13 @@ Bu, aşağıdaki gibi yapılandırılabilir:
 
     ![Zamanlamayı Yapılandır](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. **Oluştur**'a tıklayın.
+3. **Oluştur**’a tıklayın.
 
 4. Zamanlamanın parametrelerini girin. Bunlar runbook 'un her tetiklenilişinde kullanılacaktır. **Web kancası verileri** parametresi, bir zamanlama aracılığıyla çalışırken boş bırakılmalıdır.
 
     ![Parametreleri Yapılandır](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. **Tamam**'a tıklayın.
+5. **Tamam** düğmesine tıklayın.
 
 ## <a name="consume-with-data-factory"></a>Data Factory kullanma
 

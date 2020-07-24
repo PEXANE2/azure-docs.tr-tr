@@ -6,17 +6,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65c0838c06207435934e36d421b2cafc12ee39bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029034"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Azure kaynaklarını yönetmek için genel Azure CLI komutları
 
 Azure CLı, Azure kaynaklarınızı macOS, Linux ve Windows üzerinde oluşturmanıza ve yönetmenize olanak sağlar. Bu makalede, sanal makineler (VM 'Ler) oluşturmak ve yönetmek için en sık kullanılan komutların bazıları ayrıntılı olarak açıklanır.
 
-Bu makale, Azure CLı sürüm 2.0.4 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). Ayrıca, tarayıcınızdan [Cloud Shell](/azure/cloud-shell/quickstart) de kullanabilirsiniz.
+Bu makale, Azure CLı sürüm 2.0.4 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). Ayrıca, tarayıcınızdan [Cloud Shell](../../cloud-shell/quickstart.md) de kullanabilirsiniz.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI’daki Temel Azure Resource Manager komutları
 Belirli komut satırı anahtarları ve seçenekleriyle ilgili daha ayrıntılı yardım için yazarak çevrimiçi komut yardımını ve seçeneklerini kullanabilirsiniz `az <command> <subcommand> --help` .
@@ -59,6 +60,3 @@ Belirli komut satırı anahtarları ve seçenekleriyle ilgili daha ayrıntılı 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 CLı komutlarına ek örnekler için [Azure CLI Ile Linux VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md) öğreticisine bakın.
-
-
-

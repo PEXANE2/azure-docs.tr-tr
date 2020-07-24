@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197365"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029323"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir sanal makine ölçek kümesi oluşturma
 
@@ -57,7 +58,7 @@ Tek bir bölgede bir ölçek kümesi oluşturduğunuzda, bu sanal makine örnekl
 
 Kullanılabilirlik Alanları kullanmak için, ölçek kümesinin [desteklenen bir Azure bölgesinde](../availability-zones/az-region.md)oluşturulması gerekir. Aşağıdaki yöntemlerden biriyle Kullanılabilirlik Alanları kullanan bir ölçek kümesi oluşturabilirsiniz:
 
-- [Azure portalındaki](#use-the-azure-portal)
+- [Azure Portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager şablonları](#use-azure-resource-manager-templates)
@@ -91,7 +92,7 @@ Tek bölgeli ölçek kümesi ve ağ kaynaklarının tam bir örneği için, bkz.
 
 ### <a name="zone-redundant-scale-set"></a>Bölgesel olarak yedekli ölçek kümesi
 
-Bölgesel olarak yedekli ölçek kümesi oluşturmak için *Standart* SKU genel IP adresi ve yük dengeleyici kullanın. Gelişmiş artıklık için *Standart* SKU, bölgesel olarak yedekli ağ kaynakları oluşturur. Daha fazla bilgi için bkz. [Azure Load Balancer standart genel bakış](../load-balancer/load-balancer-standard-overview.md) ve [Standart Load Balancer ve kullanılabilirlik alanları](../load-balancer/load-balancer-standard-availability-zones.md).
+Bölgesel olarak yedekli ölçek kümesi oluşturmak için *Standart* SKU genel IP adresi ve yük dengeleyici kullanın. Gelişmiş artıklık için *Standart* SKU, bölgesel olarak yedekli ağ kaynakları oluşturur. Daha fazla bilgi için bkz. [Azure Load Balancer standart genel bakış](../load-balancer/load-balancer-overview.md) ve [Standart Load Balancer ve kullanılabilirlik alanları](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Bölgesel olarak yedekli ölçek kümesi oluşturmak için, parametresiyle birden çok bölge belirtin `--zones` . Aşağıdaki örnek, bölge *1, 2, 3*üzerinde *myScaleSet* adlı bölgesel olarak yedekli bir ölçek kümesi oluşturur:
 
@@ -208,7 +209,7 @@ Bölgesel olarak yedekli ölçek kümesi oluşturmak için, `zones` *Microsoft. 
 }
 ```
 
-Genel bir IP adresi veya yük dengeleyici oluşturursanız, bölgesel olarak yedekli ağ kaynakları oluşturmak için *"SKU": {"Name": "standart"} "* özelliğini belirtin. Ayrıca, herhangi bir trafiğe izin vermek için bir ağ güvenlik grubu ve kurallar oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure Load Balancer standart genel bakış](../load-balancer/load-balancer-standard-overview.md) ve [Standart Load Balancer ve kullanılabilirlik alanları](../load-balancer/load-balancer-standard-availability-zones.md).
+Genel bir IP adresi veya yük dengeleyici oluşturursanız, bölgesel olarak yedekli ağ kaynakları oluşturmak için *"SKU": {"Name": "standart"} "* özelliğini belirtin. Ayrıca, herhangi bir trafiğe izin vermek için bir ağ güvenlik grubu ve kurallar oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure Load Balancer standart genel bakış](../load-balancer/load-balancer-overview.md) ve [Standart Load Balancer ve kullanılabilirlik alanları](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Bölgesel olarak yedekli ölçek kümesi ve ağ kaynaklarının tam bir örneği için, bkz. [Bu örnek kaynak yöneticisi şablonu](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

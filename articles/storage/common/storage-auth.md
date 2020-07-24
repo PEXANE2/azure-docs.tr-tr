@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1db26e6e1308299325e15b4c856fc2ebbaed8326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807603"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029544"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Azure depolama 'daki verilere erişimi yetkilendirme
 
@@ -23,13 +23,13 @@ Depolama hesabınızdaki verilere her eriştiğinizde istemciniz, HTTP/HTTPS üz
 
 Aşağıdaki tabloda, Azure depolama 'nın kaynaklara erişimi yetkilendirmek için sunduğu seçenekler açıklanmaktadır:
 
-|  |Paylaşılan anahtar (depolama hesabı anahtarı)  |Paylaşılan erişim imzası (SAS)  |Azure Active Directory (Azure AD)  |Şirket içi Active Directory Domain Services (Önizleme) |Anonim genel okuma erişimi  |
-|---------|---------|---------|---------|---------|---------|
-|Azure Blobları     |[Destek](/rest/api/storageservices/authorize-with-shared-key/)         |[Destek](storage-sas-overview.md)         |[Destek](storage-auth-aad.md)         |Desteklenmiyor|[Destek](../blobs/storage-manage-access-to-resources.md)         |
-|Azure dosyaları (SMB)     |[Destek](/rest/api/storageservices/authorize-with-shared-key/)         |Desteklenmiyor         |[Yalnızca AAD etki alanı Hizmetleri ile desteklenir](../files/storage-files-active-directory-overview.md)         |[Desteklenir, kimlik bilgilerinin Azure AD ile eşitlenmesi gerekir](../files/storage-files-active-directory-overview.md)|Desteklenmiyor         |
-|Azure dosyaları (REST)     |[Destek](/rest/api/storageservices/authorize-with-shared-key/)         |[Destek](storage-sas-overview.md)         |Desteklenmiyor         |Desteklenmiyor |Desteklenmiyor         |
-|Azure Kuyrukları     |[Destek](/rest/api/storageservices/authorize-with-shared-key/)         |[Destek](storage-sas-overview.md)         |[Destek](storage-auth-aad.md)         |Desteklenmiyor | Desteklenmiyor         |
-|Azure Tabloları     |[Destek](/rest/api/storageservices/authorize-with-shared-key/)         |[Destek](storage-sas-overview.md)         |Desteklenmiyor         |Desteklenmiyor| Desteklenmiyor         |
+| Azure yapıtı | Paylaşılan anahtar (depolama hesabı anahtarı) | Paylaşılan erişim imzası (SAS) | Azure Active Directory (Azure AD) | Şirket içi Active Directory Domain Services (Önizleme) | Anonim genel okuma erişimi |
+| -------------- | -------------------------------- | ----------------------------- | --------------------------------- | ------------------------------------------------------ | ---------------------------- |
+|Azure Blobları     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |[Desteklenir](storage-sas-overview.md)         |[Desteklenir](storage-auth-aad.md)         |Desteklenmez|[Desteklenir](../blobs/storage-manage-access-to-resources.md)         |
+|Azure dosyaları (SMB)     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |Desteklenmez         |[Yalnızca AAD etki alanı Hizmetleri ile desteklenir](../files/storage-files-active-directory-overview.md)         |[Desteklenir, kimlik bilgilerinin Azure AD ile eşitlenmesi gerekir](../files/storage-files-active-directory-overview.md)|Desteklenmez         |
+|Azure dosyaları (REST)     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |[Desteklenir](storage-sas-overview.md)         |Desteklenmez         |Desteklenmez |Desteklenmez         |
+|Azure Kuyrukları     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |[Desteklenir](storage-sas-overview.md)         |[Desteklenir](storage-auth-aad.md)         |Desteklenmiyor | Desteklenmez         |
+|Azure Tabloları     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |[Desteklenir](storage-sas-overview.md)         |Desteklenmez         |Desteklenmez| Desteklenmez         |
 
 Her yetkilendirme seçeneği kısaca aşağıda açıklanmıştır:
 

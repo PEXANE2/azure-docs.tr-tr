@@ -4,11 +4,12 @@ description: Application Insights için kullanılabilen diller, platformlar ve t
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 153d4ad3d95c182dcc4f2aa3bad857d7e1984cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5403162a2511862dd1c649dc273a35a550abaaf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024291"
 ---
 # <a name="supported-languages"></a>Desteklenen diller
 
@@ -25,7 +26,7 @@ ms.locfileid: "82891105"
 * [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET - zaten canlı olan uygulamalar için](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * Hem Web hem de çalışan rolleri dahil olmak üzere [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)
-* [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+* [Azure İşlevleri](../../azure-functions/functions-monitoring.md)
 ### <a name="instrumentation-through-code-sdks"></a>Kod üzerinden izleme (SDK)
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
@@ -38,11 +39,11 @@ ms.locfileid: "82891105"
 * [Windows masaüstü uygulamaları, hizmetleri ve çalışan rolleri](../../azure-monitor/app/windows-desktop.md)
 
 ## <a name="logging-frameworks"></a>Günlük altyapıları
-* [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
+* [ILogger](./ilogger.md)
 * [Log4Net, NLog veya System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Java, Log4J veya Logback](../../azure-monitor/app/java-trace-logs.md)
 * [LogStash eklentisi](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [Azure İzleyici](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
+* [Azure İzleyici](/archive/blogs/msoms/application-insights-connector-in-oms)
 
 ## <a name="export-and-data-analysis"></a>Dışarı aktarma ve veri analizi
 * [Power BI](https://powerbi.microsoft.com/blog/explore-your-application-insights-data-with-power-bi/)

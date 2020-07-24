@@ -9,19 +9,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 511c3aa65bf0a10e42d7a54c98662cc388a5d711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028233"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>D: sürücüsünü Windows VM 'de veri sürücüsü olarak kullanma
 Uygulamanızın verileri depolamak için D sürücüsünü kullanması gerekiyorsa, geçici disk için farklı bir sürücü harfi kullanmak üzere bu yönergeleri uygulayın. Saklamanız gereken verileri depolamak için hiçbir şekilde geçici diski kullanmayın.
 
 Bir sanal makineyi yeniden boyutlandırabilir veya **durdurursanız (serbest bırakırsanız)** , bu, sanal makinenin yerleşimini yeni bir hiper yöneticiye tetikleyebilir. Planlı veya planlanmamış bir bakım olayı da bu yerleşimi tetikleyebilir. Bu senaryoda geçici disk, kullanılabilir ilk sürücü harfine yeniden atanır. Özellikle D: sürücüsünü gerektiren bir uygulamanız varsa, pagefile.sys geçici olarak taşımak, yeni bir veri diski eklemek ve D harfine atamak ve sonra pagefile.sys yeniden geçici sürücüye taşımak için aşağıdaki adımları izlemeniz gerekir. İşlem tamamlandıktan sonra, sanal makine farklı bir Hiper yöneticide taşınırsa Azure, D: ' yi geri almaz.
 
-Azure 'un geçici diski nasıl kullandığı hakkında daha fazla bilgi için bkz [. Microsoft Azure sanal makineler geçici sürücüyü anlama](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Azure 'un geçici diski nasıl kullandığı hakkında daha fazla bilgi için bkz [. Microsoft Azure sanal makineler geçici sürücüyü anlama](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)
 
 ## <a name="attach-the-data-disk"></a>Veri diski iliştirme
 İlk olarak, veri diskini sanal makineye bağlamanız gerekir. Bunu Portal 'ı kullanarak yapmak için, bkz. [Azure Portal yönetilen veri diski iliştirme](attach-managed-disk-portal.md).
@@ -35,7 +35,7 @@ Azure 'un geçici diski nasıl kullandığı hakkında daha fazla bilgi için bk
 6. **Sanal bellek** bölümünde **Değiştir**' i seçin.
 7. **C** sürücüsünü seçin ve ardından **Sistem Yönetimli boyut** ' a ve **Ayarla**' ya tıklayın.
 8. **D** sürücüsünü seçin ve ardından **disk belleği dosyası yok** ' a tıkladıktan sonra **Ayarla**' ya tıklayın.
-9. Uygula'ya tıklayın. Değişikliklerin etkili olması için bilgisayarın yeniden başlatılması gerektiğini belirten bir uyarı alacaksınız.
+9. Uygula’ya tıklayın. Değişikliklerin etkili olması için bilgisayarın yeniden başlatılması gerektiğini belirten bir uyarı alacaksınız.
 10. Sanal makineyi yeniden başlatın.
 
 ## <a name="change-the-drive-letters"></a>Sürücü harflerini değiştirme
@@ -54,9 +54,8 @@ Azure 'un geçici diski nasıl kullandığı hakkında daha fazla bilgi için bk
 5. **Sanal bellek** bölümünde **Değiştir**' i seçin.
 6. **C** OS sürücüsünü seçin ve **disk belleği dosyası yok** ' a tıkladıktan sonra **Ayarla**' ya tıklayın.
 7. Geçici **depolama sürücüsünü seçin** ve ardından **Sistem Yönetimli boyut** ' a ve **Ayarla**' ya tıklayın.
-8. **Uygula**'ya tıklayın. Değişikliklerin etkili olması için bilgisayarın yeniden başlatılması gerektiğini belirten bir uyarı alacaksınız.
+8. **Uygula**’ya tıklayın. Değişikliklerin etkili olması için bilgisayarın yeniden başlatılması gerektiğini belirten bir uyarı alacaksınız.
 9. Sanal makineyi yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Ek bir veri diski ekleyerek](attach-managed-disk-portal.md)sanal makineniz için kullanılabilir depolama alanını artırabilirsiniz.
-

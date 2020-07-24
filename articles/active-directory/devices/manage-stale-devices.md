@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 292ba1d52b107acd164408767747e5a33cb0c67d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a4b2a44902dde798f760f970ccff2c1e8f15c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025650"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -56,7 +57,7 @@ Etkinlik zaman damgasının değerini almak için iki seçeneğiniz vardır:
 
     ![Etkinlik zaman damgası](./media/manage-stale-devices/01.png)
 
-- [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet'i
+- [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice) cmdlet 'i
 
     ![Etkinlik zaman damgası](./media/manage-stale-devices/02.png)
 
@@ -88,7 +89,7 @@ Cihazınız Intune'un veya başka bir MDM çözümünün denetimi altındaysa, c
 
 ### <a name="system-managed-devices"></a>Sistem tarafından yönetilen cihazlar
 
-Sistem tarafından yönetilen cihazları silmeyin. Bunlar genellikle Autopilot gibi cihazlardır. Silinen bu cihazlar yeniden sağlanmıyor. `get-msoldevice` cmdlet'i sistem tarafından yönetilen cihazları varsayılan olarak dışlar. 
+Sistem tarafından yönetilen cihazları silmeyin. Bunlar genellikle Autopilot gibi cihazlardır. Silinen bu cihazlar yeniden sağlanmıyor. `Get-AzureADDevice` cmdlet'i sistem tarafından yönetilen cihazları varsayılan olarak dışlar. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hibrit Azure AD’ye katılmış cihazlar
 
@@ -128,26 +129,25 @@ Eski cihazları Azure portalda temizleyebilirsiniz ama bu işlemi PowerShell bet
 
 Tipik bir yordam aşağıdaki adımlardan oluşur:
 
-1. [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) cmdlet'ini kullanarak Azure Active Directory'ye bağlanma
+1. [Connect-AzureAD](/powershell/module/azuread/connect-azuread) cmdlet 'ini kullanarak Azure Active Directory bağlanma
 1. Cihaz listesini alma
-1. [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) cmdlet'ini kullanarak cihazı devre dışı bırakma. 
+1. [Set-AzureADDevice](/powershell/module/azuread/Set-AzureADDevice) cmdlet 'ini kullanarak cihazı devre dışı bırakın (-AccountEnabled seçeneğini kullanarak devre dışı bırakın). 
 1. Cihazı silmeden önce seçtiğiniz yetkisiz kullanım süresinin tamamlanmasını bekleyin.
-1. [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) cmdlet'ini kullanarak cihazı kaldırma.
+1. [Remove-AzureADDevice](/powershell/module/azuread/Remove-AzureADDevice) cmdlet 'ini kullanarak cihazı kaldırın.
 
 ### <a name="get-the-list-of-devices"></a>Cihaz listesini alma
 
 Tüm cihazları almak ve döndürülen verileri CSV dosyasında depolamak için:
 
 ```PowerShell
-Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, Approxi
-mateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
 Dizininizde çok sayıda cihaz varsa, döndürülen cihaz sayısını daraltmak için zaman damgası filtresini kullanın. Zaman damgası belirli bir tarihten daha eski olan tüm cihazları almak ve döndürülen verileri CSV dosyasında depolamak için: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler

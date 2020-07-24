@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e7323793dcbbd05fc5abf032d140b2caa5975da4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e3acfb9552db9fa972b0a407e52cece014b45389
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249470"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025022"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -119,7 +119,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 | */5671, 5672, 443          | Giden           | TCP                | VIRTUAL_NETWORK/EventHub            | [Olay Hub 'ı ilkesine](api-management-howto-log-event-hubs.md) ve Izleme aracısına günlük bağımlılığı | Dış & Iç  |
 | */445                      | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | [GIT](api-management-configuration-repository-git.md) Için Azure dosya paylaşımında bağımlılık                      | Dış & Iç  |
 | */443                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Durum ve Izleme uzantısı         | Dış & Iç  |
-| */1886, 443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümleri](api-management-howto-use-azure-monitor.md) yayımlama ve [kaynak durumu](../service-health/resource-health-overview.md)                     | Dış & Iç  |
+| */1886, 443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümlerini](api-management-howto-use-azure-monitor.md)yayımlayın, [kaynak durumu](../service-health/resource-health-overview.md) ve [Application Insights](api-management-howto-app-insights.md)                   | Dış & Iç  |
 | */25, 587, 25028                       | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
 | */6381-6383              | Gelen & giden | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [önbellek](api-management-caching-policies.md) Ilkeleri için Redsıs hizmetine erişme         | Dış & Iç  |
 | */4290              | Gelen & giden | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [hız limiti](api-management-access-restriction-policies.md#LimitCallRateByKey) ilkeleri Için eşitleme sayaçları         | Dış & Iç  |
@@ -138,7 +138,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Genel      | <ul><li>gcs.prod.monitoring.core.windows.net (**Yeni**)</li><li>prod.warmpath.msftcloudes.com (**kullanım dışı**)</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3-black.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-red.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3-red.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
     | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
-    | Azure Çin 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > DNS bölgesi **. nsatc.net** to **. microsoftmetrics.com** ile yukarıdaki kümelerin DEĞIŞIKLIĞI, genellikle bir DNS değişiklidir. Kümenin IP adresi değişmeyecektir.
@@ -152,6 +152,8 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 + **Tanılama Azure Portal**: Azure Portal bir sanal ağ içinden API Management uzantısı kullanılırken tanılama günlüklerinin akışını etkinleştirmek için, `dc.services.visualstudio.com` 443 numaralı bağlantı noktasına giden erişim gerekir. Bu, uzantıyı kullanırken karşılaşabileceğiniz sorunları gidermeye yardımcı olur.
 
 + **Azure Load Balancer**: hizmet etiketinin gelen istek için izin verme, bu, `AZURE_LOAD_BALANCER` `Developer` arkasında yalnızca bir işlem birimi dağıttiğimiz için SKU için bir gereksinim değildir. Ancak [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) `Premium` , Load Balancer ' den gelen sistem durumu araştırmasının başarısız olması nedeniyle, 168.63.129.16 from, daha yüksek SKU 'ya ölçeklendirilirken kritik hale gelir.
+
++ **Application Insights**: [Azure Application Insights](api-management-howto-app-insights.md) Monitoring API Management etkinleştirilmişse, sanal ağdan [telemetri uç noktasına](/azure/azure-monitor/app/ip-addresses#outgoing-ports) giden bağlantıya izin vermemiz gerekir. 
 
 + **Express Route veya ağ sanal gereci kullanarak tünel trafiğini şirket Içi güvenlik duvarında zorla**: ortak bir müşteri yapılandırması, API Management atanmış alt ağdan gelen tüm trafiği şirket içi bir güvenlik duvarı veya ağ sanal gereci üzerinden akışa zorlayan kendi varsayılan yolunu (0.0.0.0/0) tanımlamaktır. Giden trafik, şirket içi veya NAT 'ın, artık çeşitli Azure uç noktalarıyla çalışmayan tanınmayan bir adres kümesine engellediği için bu trafik akışı, Azure API Management ile bağlantıyı keser. Çözüm için birkaç şey yapmanız gerekir:
 
@@ -203,7 +205,7 @@ Her ek ölçek birimi API Management için iki IP adresi gerekir.
 
 IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin verilmesi durumunda **genel** Ile işaretlenen IP adresinin, **bölgeye** özgü IP adresiyle birlikte beyaz listelenmesi gerekir.
 
-| **Azure ortamı**|   **Bölge**|  **IP address**|
+| **Azure ortamı**|   **Bölge**|  **IP adresi**|
 |-----------------|-------------------------|---------------|
 | Azure Genel| Orta Güney ABD (genel)| 104.214.19.224|
 | Azure Genel| Orta Kuzey ABD (genel)| 52.162.110.80|
@@ -215,7 +217,7 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Güney Birleşik Krallık| 51.145.56.125|
 | Azure Genel| Batı Hindistan| 40.81.89.24|
 | Azure Genel| Doğu ABD| 52.224.186.99|
-| Azure Genel| West Europe| 51.145.179.78|
+| Azure Genel| Batı Avrupa| 51.145.179.78|
 | Azure Genel| Doğu Japonya| 52.140.238.179|
 | Azure Genel| Orta Fransa| 40.66.60.111|
 | Azure Genel| Doğu Kanada| 52.139.80.117|
@@ -230,7 +232,7 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Avustralya Güneydoğu| 20.40.160.107|
 | Azure Genel| Orta Avustralya| 20.37.52.67|
 | Azure Genel| Güney Hindistan| 20.44.33.246|
-| Azure Genel| Central US| 13.86.102.66|
+| Azure Genel| Orta ABD| 13.86.102.66|
 | Azure Genel| Doğu Avustralya| 20.40.125.155|
 | Azure Genel| Batı ABD 2| 51.143.127.203|
 | Azure Genel| EUAP Doğu ABD 2| 52.253.229.253|
@@ -249,12 +251,12 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Almanya Kuzey| 51.116.0.0|
 | Azure Genel| Norveç Doğu| 51.120.2.185|
 | Azure Genel| Norveç Batı| 51.120.130.134|
-| Azure Çin 21Vianet| Çin Kuzey (genel)| 139.217.51.16|
-| Azure Çin 21Vianet| Çin Doğu (genel)| 139.217.171.176|
-| Azure Çin 21Vianet| Kuzey Çin| 40.125.137.220|
-| Azure Çin 21Vianet| Doğu Çin| 40.126.120.30|
-| Azure Çin 21Vianet| Çin Kuzey 2| 40.73.41.178|
-| Azure Çin 21Vianet| Çin Doğu 2| 40.73.104.4|
+| Azure China 21Vianet| Çin Kuzey (genel)| 139.217.51.16|
+| Azure China 21Vianet| Çin Doğu (genel)| 139.217.171.176|
+| Azure China 21Vianet| Kuzey Çin| 40.125.137.220|
+| Azure China 21Vianet| Doğu Çin| 40.126.120.30|
+| Azure China 21Vianet| Çin Kuzey 2| 40.73.41.178|
+| Azure China 21Vianet| Çin Doğu 2| 40.73.104.4|
 | Azure Kamu| USGov Virginia (genel)| 52.127.42.160|
 | Azure Kamu| USGov Texas (genel)| 52.127.34.192|
 | Azure Kamu| USGov Virginia| 52.227.222.92|

@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc846d8d330459587745795edf21c5ac04f2291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026348"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Kullanıcılara oturum açan Web uygulaması: kod yapılandırması
 
@@ -28,7 +29,7 @@ Bir Web uygulamasını (ve bir Web API 'SI) korumak için kullanılan kitaplıkl
 
 | Platform | Kitaplık | Açıklama |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [.NET için kimlik modeli uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Doğrudan ASP.NET ve ASP.NET Core tarafından kullanılan .NET için Microsoft Identity model uzantıları, hem .NET Framework hem de .NET Core üzerinde çalışan bir dll kümesi önerir. Bir ASP.NET veya ASP.NET Core Web uygulamasından belirteç doğrulamayı, **Tokenvalidationparameters** sınıfını (özellikle de bazı iş ortakları senaryolarında) kullanarak kontrol edebilirsiniz. |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [.NET için kimlik modeli uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Doğrudan ASP.NET ve ASP.NET Core tarafından kullanılan .NET için Microsoft Identity model uzantıları, hem .NET Framework hem de .NET Core üzerinde çalışan bir dll kümesi önerir. Bir ASP.NET veya ASP.NET Core Web uygulamasından belirteç doğrulamayı, **Tokenvalidationparameters** sınıfını (özellikle de bazı iş ortakları senaryolarında) kullanarak kontrol edebilirsiniz. Uygulamada karmaşıklık, [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) kitaplığında kapsüllenir |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java Web uygulamaları için destek |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python web uygulamaları için destek |
 
@@ -62,7 +63,7 @@ Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
 
 ## <a name="configuration-files"></a>Yapılandırma dosyaları
 
-Microsoft Identity platformunu kullanarak kullanıcıların oturum açmasını sağlayan Web uygulamaları genellikle yapılandırma dosyaları aracılığıyla yapılandırılır. Doldurmanız gereken ayarlar şunlardır:
+Microsoft Identity platformunu kullanarak kullanıcıların oturum açmasını sağlayan Web uygulamaları, yapılandırma dosyaları aracılığıyla yapılandırılır. Doldurmanız gereken ayarlar şunlardır:
 
 - `Instance`Uygulamanızın Ulusal bulutlarda çalışmasını istiyorsanız (örneğin,) bulut örneği ()
 - Kiracı KIMLIĞINDEKI () hedef kitle `TenantId`
@@ -210,13 +211,21 @@ ASP.NET Core Web Apps (ve Web API 'Leri) içinde, `[Authorize]` denetleyicilerde
 Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulaması eklemek için aşağıdaki kodu eklemeniz gerekir. Koddaki yorumların kendine açıklayıcı olması gerekir.
 
 > [!NOTE]
-> Projenizi Visual Studio 'da varsayılan ASP.NET Core Web projesi veya ya da kullanarak başlatırsanız `dotnet new mvc --auth SingleAuth` `dotnet new webapp --auth SingleAuth` , aşağıdaki gibi bir kod görürsünüz: `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));` .
-> 
+> Microsoft. Identity. Web 'den yararlanan Microsoft Identity platform için yeni ASP.NET Core şablonlarıyla doğrudan başlamak istiyorsanız, .NET Core 3,1 ve .NET 5,0 için proje şablonları içeren bir önizleme NuGet paketi indirebilirsiniz. Sonra, yüklendikten sonra doğrudan ASP.NET Core Web uygulamaları (MVC veya Blazor) örneğini oluşturabilirsiniz. Ayrıntılar için bkz. [Microsoft. Identity. Web Web uygulaması proje şablonları](https://aka.ms/ms-id-web/webapp-project-templates) . Bu en basit yaklaşım, sizin için aşağıdaki adımları sizin için yapacağız.
+>
+> Projenizi Visual Studio içinde geçerli varsayılan ASP.NET Core Web projesi veya ya da kullanarak başlatmak isterseniz `dotnet new mvc --auth SingleAuth` `dotnet new webapp --auth SingleAuth` , aşağıdaki gibi bir kod görürsünüz:
+>
+>```c#
+>  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+>          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+> ```
+>
 > Bu kod, bir Azure AD v 1.0 uygulaması oluşturmak için kullanılan eski **Microsoft. AspNetCore. Authentication. AzureAD. UI** NuGet paketini kullanır. Bu makalede, bu kodun yerini alan bir Microsoft Identity platform (Azure AD v 2.0) uygulamasının nasıl oluşturulacağı açıklanmaktadır.
+>
 
 1. Projenize [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) ve [Microsoft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet paketlerini ekleyin. Varsa Microsoft. AspNetCore. Authentication. AzureAD. UI NuGet paketini kaldırın.
 
-2. ' Deki kodu `ConfigureServices` , ve yöntemlerini kullanacak şekilde güncelleştirin `AddSignIn` `AddMicrosoftIdentityUI` .
+2. ' Deki kodu `ConfigureServices` , ve yöntemlerini kullanacak şekilde güncelleştirin `AddMicrosoftWebAppAuthentication` `AddMicrosoftIdentityUI` .
 
    ```c#
    public class Startup
@@ -225,7 +234,7 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddSignIn(Configuration, "AzureAd");
+     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -250,18 +259,23 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
    ```
 
 Yukarıdaki kodda:
-- `AddSignIn`Uzantı yöntemi **Microsoft. Identity. Web**içinde tanımlanmıştır. İçerdiği
+- `AddMicrosoftWebAppAuthentication`Uzantı yöntemi **Microsoft. Identity. Web**içinde tanımlanmıştır. İçerdiği
   - Kimlik doğrulama hizmetini ekler.
   - Yapılandırma dosyasını okuma seçeneklerini yapılandırır (burada "AzureAD" bölümünden)
   - OpenID Connect seçeneklerini, yetkilinin Microsoft Identity platform uç noktası olmasını sağlayacak şekilde yapılandırır.
   - Belirtecin vereni doğrular.
   - Ada karşılık gelen taleplerin `preferred_username` kimlik belirtecindeki talepten eşlenmesini sağlar.
 
-- Yapılandırma nesnesine ek olarak, çağrılırken yapılandırma bölümünün adını belirtebilirsiniz `AddSignIn` . Varsayılan olarak, bu `AzureAd` .
+- Yapılandırma nesnesine ek olarak, çağrılırken yapılandırma bölümünün adını belirtebilirsiniz `AddMicrosoftWebAppAuthentication` . Varsayılan olarak, bu `AzureAd` .
 
-- `AddSignIn`, gelişmiş senaryolar için başka parametrelere sahiptir. Örneğin, OpenID Connect ara yazılım olaylarını izlemek, kimlik doğrulaması çalışmazsa Web uygulamanızın sorunlarını gidermenize yardımcı olabilir. İsteğe bağlı parametresinin olarak ayarlanması, `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` HTTP yanıtından ' deki kullanıcının kimliğine ilerledikçe, bilgilerin ASP.NET Core ara yazılım tarafından nasıl işlendiğini gösterir `HttpContext.User` .
+- `AddMicrosoftWebAppAuthentication`, gelişmiş senaryolar için başka parametrelere sahiptir. Örneğin, OpenID Connect ara yazılım olaylarını izlemek, kimlik doğrulaması çalışmazsa Web uygulamanızın sorunlarını gidermenize yardımcı olabilir. İsteğe bağlı parametresinin olarak ayarlanması, `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` HTTP yanıtından ' deki kullanıcının kimliğine ilerledikçe, bilgilerin ASP.NET Core ara yazılım tarafından nasıl işlendiğini gösterir `HttpContext.User` .
 
-- `AddMicrosoftIdentityUI`Genişletme yöntemi **Microsoft. Identity. Web. UI**içinde tanımlanmıştır. Oturumu kapatma işlemek için varsayılan bir denetleyici sağlar.
+- `AddMicrosoftIdentityUI`Genişletme yöntemi **Microsoft. Identity. Web. UI**içinde tanımlanmıştır. Oturum açma ve oturum kapatma işlemek için varsayılan bir denetleyici sağlar.
+
+Microsoft. Identity. Web ' de Web uygulamaları oluşturmanıza nasıl olanak tanıyan hakkında daha fazla ayrıntı bulabilirsiniz.<https://aka.ms/ms-id-web/webapp>
+
+> [!WARNING]
+> Şu anda Microsoft. Identity. Web, Azure AD ve dış oturum açma sağlayıcısı kullanılırken **bireysel kullanıcı hesaplarının** (uygulama içi kullanıcı hesaplarını depolayan) senaryoyu desteklemez. Ayrıntılar için bkz. [Azuread/Microsoft-Identity-Web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

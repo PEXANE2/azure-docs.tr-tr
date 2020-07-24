@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502580"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029017"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>Konakta şifreleme kullanarak uçtan uca şifrelemeyi etkinleştirme-Azure CLı
 
@@ -43,34 +43,144 @@ VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullan
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
-## <a name="enable-encryption-at-host-for-disks-attached-to-vm-and-virtual-machine-scale-sets"></a>VM ve sanal makine ölçek kümelerine bağlı diskler için konakta şifrelemeyi etkinleştir
+## <a name="examples"></a>Örnekler
 
-Konakta şifrelemeyi etkinleştirerek VM 'Ler için securityProfile veya API sürüm **2020-06-01** ve üstünü kullanarak sanal makine ölçek kümeleri altında yeni bir EncryptionAtHost özelliği ayarlayabilirsiniz.
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla etkinleştirilmiş konakta şifreleme ile bir VM oluşturun. 
 
-`"securityProfile": { "encryptionAtHost": "true" }`
-
-## <a name="example-scripts"></a>Örnek betikler
-
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla bir VM 'ye bağlı diskler için konakta şifrelemeyi etkinleştirin
-
-Daha önce oluşturulan DiskEncryptionSet 'in Kaynak URI 'sini kullanarak yönetilen disklere sahip bir VM oluşturun.
-
-,,,,, `<yourPassword>` `<yourVMName>` `<yourVMSize>` `<yourDESName>` `<yoursubscriptionID>` `<yourResourceGroupName>` , Ve `<yourRegion>` sonra betiği çalıştırın.
+Daha önce oluşturulan DiskEncryptionSet 'in Kaynak URI 'sini kullanarak yönetilen disklere sahip bir VM oluşturun ve müşteri tarafından yönetilen anahtarlarla işletim sistemi ve veri diskleri önbelleğini şifreleyin. Geçici diskler, platform tarafından yönetilen anahtarlarla şifrelenir. 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithCMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "diskEncryptionSetId=/subscriptions/<yoursubscriptionID>/resourceGroups/<yourResourceGroupName>/providers/Microsoft.Compute/diskEncryptionSets/<yourDESName>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 128 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-platform-managed-keys"></a>Platform tarafından yönetilen anahtarlarla bir VM 'ye bağlı diskler için konakta şifrelemeyi etkinleştirin
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Platform tarafından yönetilen anahtarlarla etkinleştirilmiş konakta şifreleme ile bir VM oluşturun. 
 
-,,,, `<yourPassword>` `<yourVMName>` `<yourVMSize>` `<yourResourceGroupName>` Ve öğesini değiştirin ve `<yourRegion>` betiği çalıştırın.
+İşletim sisteminde şifrelemeye sahip bir sanal makine oluşturun ve işletim sistemi/veri disklerinin ve platformlar arası anahtarlarla geçici disklerin önbelleğini şifreleyin. 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithPMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--data-disk-sizes-gb 128 128 \
+```
+
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>Konakta şifrelemeyi etkinleştirmek için bir VM 'yi güncelleştirin. 
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>VM için konaktaki şifreleme durumunu denetleme
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm show -n $vmName \
+-g $rgName \
+--query [securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Ana bilgisayarda, müşteri tarafından yönetilen anahtarlarla etkinleştirilmiş bir sanal makine ölçek kümesi oluşturun. 
+
+Daha önce oluşturulan DiskEncryptionSet Kaynak URI 'sini kullanarak yönetilen disklere sahip bir sanal makine ölçek kümesi oluşturun ve müşteri tarafından yönetilen anahtarlarla işletim sistemi ve veri diskleri önbelleğini şifreleyin. Geçici diskler, platform tarafından yönetilen anahtarlarla şifrelenir. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 64 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Platform tarafından yönetilen anahtarlarla etkinleştirilmiş konakta şifreleme ile bir sanal makine ölçek kümesi oluşturun. 
+
+İşletim sisteminde şifrelemeye sahip bir sanal makine ölçek kümesi oluşturun ve işletim sistemi/veri disklerinin önbelleğini ve platform tarafından yönetilen anahtarlarla geçici diskleri şifreler. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--data-disk-sizes-gb 64 128 \
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>Konakta şifrelemeyi etkinleştirmek için bir sanal makine ölçek kümesini güncelleştirin. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi için konaktaki şifreleme durumunu denetle
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss show -n $vmssName \
+-g $rgName \
+--query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>Desteklenen VM boyutlarını bulma

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476844"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027504"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarının güvenliğini sağlamak için kullanıcı başına Azure Multi-Factor Authentication’ı etkinleştirme
 
@@ -55,7 +55,7 @@ Kullanıcı durumlarını görüntüleyebileceğiniz ve yönetebileceğiniz Azur
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
 1. *Azure Active Directory*arayıp seçin, sonra **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
-1. **Multi-Factor Authentication**seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. **Multi-Factor Authentication**'ı seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Aşağıdaki örnekte gösterildiği gibi, Kullanıcı durumunu görüntüleyen yeni bir sayfa açılır.
    ![Azure Multi-Factor Authentication için örnek Kullanıcı durumu bilgilerini gösteren ekran görüntüsü](./media/howto-mfa-userstates/userstate1.png)
 
@@ -78,7 +78,7 @@ Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Kullanıc
 
 ## <a name="change-state-using-powershell"></a>PowerShell kullanarak durumu değiştirme
 
-Kullanıcı durumunu [Azure AD PowerShell](/powershell/azure/overview)kullanarak değiştirmek için, `$st.State` bir kullanıcı hesabının parametresini değiştirirsiniz. Bir kullanıcı hesabının üç olası durumu vardır:
+Kullanıcı durumunu [Azure AD PowerShell](/powershell/azure/)kullanarak değiştirmek için, `$st.State` bir kullanıcı hesabının parametresini değiştirirsiniz. Bir kullanıcı hesabının üç olası durumu vardır:
 
 * *Etkin*
 * *Uygulandı*
@@ -177,12 +177,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> Kısa süre önce davranışı ve bu PowerShell betiğini değiştirdik. Daha önce, komut dosyası MFA yöntemlerine kaydedilir, MFA 'yı devre dışı bırakmış ve yöntemleri geri yükledi. Artık devre dışı bırakma için varsayılan davranış metotları temizlemez.
->
 > MFA, telefon veya e-posta gibi kayıt ayrıntılarına sahip olan bir kullanıcı nesnesi üzerinde yeniden etkinleştirilmişse, yöneticilerin bu kullanıcının MFA 'yı Azure portal veya PowerShell aracılığıyla yeniden kaydetmesi gerekir. Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabiriminde *etkin* durumuna geçmez. *Enforced*
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenilen IP 'Ler, özel ses iletileri ve sahtekarlık uyarıları gibi Azure Multi-Factor Authentication ayarlarını yapılandırmak için bkz. [azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md). Azure Multi-Factor Authentication Kullanıcı ayarlarını yönetmek için bkz. [azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme](howto-mfa-userdevicesettings.md).
+Azure Multi-Factor Authentication ayarlarını yapılandırmak için bkz. [azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md).
+
+Azure Multi-Factor Authentication Kullanıcı ayarlarını yönetmek için bkz. [azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme](howto-mfa-userdevicesettings.md).
 
 Bir kullanıcının neden MFA yapması istenmediğini anlamak için, bkz. [Azure Multi-Factor Authentication raporları](howto-mfa-reporting.md).

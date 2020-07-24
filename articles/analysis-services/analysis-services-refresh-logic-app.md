@@ -6,11 +6,13 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79126927"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025328"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps ile yenileme
 
@@ -18,7 +20,7 @@ Logic Apps ve REST çağrılarını kullanarak, Azure Analysis tablolu modelleri
 
 Azure Analysis Services ile REST API 'Leri kullanma hakkında daha fazla bilgi için bkz. [REST API Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örneklerde Azure Analysis Services kimlik doğrulaması için bir hizmet sorumlusu (SPN) kullanılır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -27,7 +29,7 @@ Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belir
 > [!IMPORTANT]
 > Aşağıdaki örneklerde Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını kabul edilir. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi Azure Analysis Services güvenlik duvarında beyaz listeye alınmalıdır. Bölge başına Azure Logic Apps IP aralıkları hakkında daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgilerine](../logic-apps/logic-apps-limits-and-config.md#configuration)bakın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 #### <a name="create-a-service-principal-spn"></a>Hizmet sorumlusu oluşturma (SPN)
 
@@ -65,9 +67,9 @@ HTTP etkinliğini şu şekilde yapılandırın:
 |---------|---------|
 |**Yöntem**     |POST         |
 |**URI**     | https://*sunucu bölgenizi*/Servers/*AAS sunucu adı*/models/*veritabanınızın adı*/yenilemeler <br /> <br /> Örneğin: https: \/ /westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/refreshes|
-|**Üst bilgiler**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Üst Bilgiler**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst Bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Gövde**     |   İstek gövdesini oluşturan hakkında daha fazla bilgi edinmek için, [REST API-Post/Refresh Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md#post-refreshes)bölümüne bakın. |
-|**Kimlik Doğrulaması**     |Active Directory OAuth         |
+|**Kimlik doğrulaması**     |Active Directory OAuth         |
 |**Kiracı**     |Azure Active Directory Tenantıd 'nizi girin         |
 |**Hedef kitle**     |https://*. aşama zure. Windows. net         |
 |**İstemci KIMLIĞI**     |Hizmet asıl adı ClientID değerini girin         |

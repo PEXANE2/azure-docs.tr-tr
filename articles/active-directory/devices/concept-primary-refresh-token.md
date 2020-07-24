@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025889"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
 
@@ -64,7 +65,7 @@ PRT, bir Windows 10 cihazında Kullanıcı kimlik doğrulaması sırasında iki 
 Azure AD kayıtlı cihaz senaryolarında, Azure AD WAM eklentisi, bu Azure AD hesabında Windows oturum açma işlemi gerçekleşmediği için PRT 'in birincil yetkilisindir.
 
 > [!NOTE]
-> 3. taraf kimlik sağlayıcılarının Windows 10 cihazlarında PRT verilmesini etkinleştirmek için WS-Trust protokolünü desteklemesi gerekir. WS-Trust olmadan, karma Azure AD 'ye katılmış veya Azure AD 'ye katılmış cihazlarda kullanıcılara PRT verilemez
+> 3. taraf kimlik sağlayıcılarının Windows 10 cihazlarında PRT verilmesini etkinleştirmek için WS-Trust protokolünü desteklemesi gerekir. WS-Trust olmadan, karma Azure AD 'ye katılmış veya Azure AD 'ye katılmış cihazlarda kullanıcılara PRT verilemez. Yalnızca ADFS 'de usernamemixed uç noktalar gereklidir. ADFS/Services/Trust/2005/windowstransport ve ADFS/Services/Trust/13/windowstransport, yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak **gösterilmemelidir** .
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Bir PRT 'in yaşam süresi nedir?
 
@@ -166,6 +167,9 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 | E | CloudAP eklentisi, kimlik doğrulama isteğini kullanıcının kimlik bilgileri, nonce ve var olan PRT ile oluşturur, oturum anahtarını oturum anahtarıyla imzalar ve Azure AD 'ye gönderir. Federasyon ortamında, CloudAP eklentisi kullanıcının kimlik bilgileri yerine Federasyon sağlayıcısı tarafından döndürülen SAML belirtecini kullanır. |
 | F | Azure AD, oturum anahtarı imzasını, PRT 'ye gömülü oturum anahtarıyla karşılaştırarak doğrular, nonce 'yi doğrular ve cihazın kiracıda geçerli olduğunu doğrular ve yeni bir PRT yayınlar. Daha önce görüldüğü gibi, PRT, Aktarım anahtarı (tkpub) tarafından şifrelenen oturum anahtarı ile birlikte gönderilir. |
 | G | CloudAP eklentisi şifreli PRT ve oturum anahtarını CloudAP 'e geçirir. CloudAP, aktarım anahtarını (tkprıv) kullanarak oturum anahtarının şifresini çözmek ve TPM 'nin kendi anahtarını kullanarak yeniden şifrelemek için TPM 'YI ister. CloudAP, şifreli oturum anahtarını önbelleğinde ve PRT ile birlikte depolar. |
+
+> [!NOTE]
+> Usernamemixed uç noktalar dışarıdan etkinleştirildiğinde bir VPN bağlantısı gerekmeden dışarıdan yenilenebilir.
 
 ### <a name="prt-usage-during-app-token-requests"></a>Uygulama belirteci istekleri sırasında PRT kullanımı
 

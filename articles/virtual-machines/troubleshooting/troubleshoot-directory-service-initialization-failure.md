@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
-ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 909481964f8aa3272715e235fa011562225a9422
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83665141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028371"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>Windows durma hatası – dizin hizmeti başlatma hatası sorunlarını giderme
 
@@ -26,7 +27,7 @@ Bu makalede, Azure 'daki bir Active Directory etki alanı denetleyicisi sanal ma
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda ekran görüntüsünde, bir hata nedeniyle VM 'nin yeniden başlatılması gerektiğini, windows Server 2008 R2 'de durma kodunu görüntüleme **0XC00002E1** veya Windows Server 2012 veya sonraki bir sürümü **0xC00002E2** .
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda ekran görüntüsünde, bir hata nedeniyle VM 'nin yeniden başlatılması gerektiğini, windows Server 2008 R2 'de durma kodunu görüntüleme **0XC00002E1** veya Windows Server 2012 veya sonraki bir sürümü **0xC00002E2** .
 
 ![Windows Server 2012 Başlangıç ekranı "BILGISAYARıNıZ bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatacağız. ".](./media/troubleshoot-directory-service-initialization-failure/1.png)
 
@@ -61,7 +62,7 @@ Bu hataya aşağıdaki koşullardan biri neden olmuş olabilir:
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.
 1. Uzak Masaüstü Bağlantısı kullanarak, onarım VM 'ye bağlanın.
 
 ### <a name="free-up-space-on-disk"></a>Diskte boş alan açın
@@ -69,11 +70,11 @@ Bu hataya aşağıdaki koşullardan biri neden olmuş olabilir:
 Disk şimdi bir onarım sanal makinesine bağlı olduğundan, Active Directory iç veritabanını tutan diskte doğru şekilde yürütmek için yeterli alan olduğunu doğrulayın.
 
 1. Sürücüye sağ tıklayıp **Özellikler**' i seçerek diskin dolu olup olmadığını denetleyin.
-1. Diskte 300 MB 'tan az boş alan varsa, [PowerShell kullanarak en fazla 1 TB 'a genişletin](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Diskte 300 MB 'tan az boş alan varsa, [PowerShell kullanarak en fazla 1 TB 'a genişletin](../windows/expand-os-disk.md).
 1. Disk, 1 TB kullanılan alana eriştiğinde disk temizleme işlemi gerçekleştirin.
 
-   1. [Veri diskini](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell) bozuk VM 'den ayırmak için PowerShell 'i kullanın.
-   1. Bozuk VM 'den ayrıldıktan sonra, [veri diskini](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm) çalışan bir VM 'ye bağlayın.
+   1. [Veri diskini](../windows/detach-disk.md#detach-a-data-disk-using-powershell) bozuk VM 'den ayırmak için PowerShell 'i kullanın.
+   1. Bozuk VM 'den ayrıldıktan sonra, [veri diskini](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm) çalışan bir VM 'ye bağlayın.
    1. Ek alan boşaltmak için [Disk Temizleme aracını](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) kullanın.
 
 1. **Isteğe bağlı** -daha fazla alan gerekiyorsa, bir cmd örneği açın ve `defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g` sürücüde parçalama gerçekleştirmek için komutu girin:
@@ -182,7 +183,7 @@ Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için, yükseltilm
 
 ### <a name="rebuild-the-vm"></a>VM 'yi yeniden oluşturma
 
-1. VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+1. VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.
 
 ### <a name="reconfigure-the-storage-area-network-policy"></a>Depolama alanı ağ ilkesini yeniden yapılandırın
 

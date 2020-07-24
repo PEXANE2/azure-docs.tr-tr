@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: fc8304fb068152c800d7b71f77fb601956fb6510
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698317"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023408"
 ---
 # <a name="changelog"></a>Değişiklik günlüğü #
 
@@ -72,7 +72,7 @@ ms.locfileid: "83698317"
 
 ### <a name="changes"></a>Değişiklikler ###
 
-- Değişebilir [Canlı açıklamalı alt yazı] 608 ile 708 arasındaki CEA açıklamalı alt yazılar için API adı değiştirildi. Daha fazla bilgi için bkz. [CEA708 açıklamalı altyazı ayarları](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- Değişebilir [Canlı açıklamalı alt yazı] 608 ile 708 arasındaki CEA açıklamalı alt yazılar için API adı değiştirildi. Daha fazla bilgi için bkz. [CEA708 açıklamalı altyazı ayarları](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0 (resmi sürüm) ##
 
@@ -448,7 +448,7 @@ ms.locfileid: "83698317"
 
 ### <a name="features-160"></a>Özellikler 1.6.0 ###
 
-- [Özellik] 33% azudüzeltici Aplayer. min. js için Boyut azaltma
+- [Özellik] %33 Boyut azaltma azuremediaplayer.min.js
 - Özellik [AzureHtml5JS | Edge] [test edilmemiş] Edge 'de gg + ses akışları desteği (ilk seçimden sonra codec geçişi yok). Uygulamanın Şu anda doğru ses akışını seçmeli.
 - Özellik Sık kullanılan tuş denetimleri (daha fazla ayrıntı için belgelere bakın)
 - Özellik Zaman doğru arama için ilerleme süresi ipucu üzerine gelme

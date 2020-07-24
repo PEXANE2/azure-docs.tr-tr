@@ -5,20 +5,46 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2020
+ms.date: 07/19/2020
 ms.author: abnarain
-ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023895"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümleştirme çalışma zamanı için genel sorun giderme yöntemleri incelenmektedir.
+
+## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>Azure Data Factory şirket içinde barındırılan tümleştirme çalışma zamanı günlüklerini toplayın
+
+Şirket içinde barındırılan IR/paylaşılan IR üzerinde çalışan başarısız etkinlikler için Azure Data Factory hata günlüklerini görüntülemeyi ve yüklemeyi destekler. Aşağıdaki adımları izleyerek hata raporu KIMLIĞINI alabilir ve ilgili bilinen sorunları bulmak için rapor KIMLIĞINI girebilirsiniz.
+
+1. **Etkinlik çalıştırmaları** sayfasına gidin.
+
+1. **Hata** sütununun altında, aşağıdaki düğmeye tıklayın.
+
+    ![Etkinlik çalıştırmaları sayfası](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+
+1. Başarısız etkinlik çalıştırması için ilgili günlükleri görürsünüz. Daha fazla yardım için **günlükleri Gönder** düğmesine tıklayın.
+
+    ![Günlükleri Gönder](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
+
+1. Göndermek istediğiniz günlükleri seçebilirsiniz. *Şirket içinde BARıNDıRıLAN IR*için, başarısız etkinlikle ilgili günlükleri veya şirket IÇINDE barındırılan IR düğümündeki tüm günlükleri karşıya yükleyebilirsiniz. *PAYLAŞıLAN IR*için yalnızca başarısız etkinlikle ilgili günlükleri karşıya yükleyebilirsiniz.
+
+    ![Günlükleri Seç](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+
+1. Günlükler karşıya yüklendiğinde, sorunu çözmeye yönelik daha fazla yardıma ihtiyacınız varsa rapor KIMLIĞININ bir kaydını saklayın.
+
+    ![Günlükleri karşıya yükle](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+
+> [!NOTE]
+> Günlük görüntüleme ve karşıya yükleme istekleri, tüm çevrimiçi şirket içinde barındırılan IR örneklerinde yürütülür. Lütfen tüm şirket içinde barındırılan IR örneklerinin eksik Günlükler olması durumunda çevrimiçi olduğundan emin olun. 
+
 
 ## <a name="common-errors-and-resolutions"></a>Genel sorunlar ve çözümleri
 

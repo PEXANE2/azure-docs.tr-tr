@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be8863d86fd1525e6f64b46ddf5ca3c702ecdea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029238"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Şifrelenmiş cihazlarda LVM ve RAID yapılandırma
 
@@ -40,15 +41,15 @@ Fiziksel birimler (PVs), şifrelenen katmanın üstünde oluşturulur. Fiziksel 
 
 Benzer şekilde, RAID cihazı, disklerdeki şifreli katmanın üzerine oluşturulur. RAID cihazının üzerine bir dosya sistemi oluşturulur ve normal bir cihaz olarak/etc/fstab 'e eklenir.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 LVM-on-Crypt ' i kullanmanızı öneririz. Belirli bir uygulama veya ortam sınırlamaları nedeniyle, LVM kullanılmıyorsa, RAID bir seçenektir.
 
-**Encryptformatall** seçeneğini kullanacaksınız. Bu seçenek hakkında daha fazla bilgi için bkz. [Linux VM 'lerinde veri diskleri Için EncryptFormatAll özelliğini kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+**Encryptformatall** seçeneğini kullanacaksınız. Bu seçenek hakkında daha fazla bilgi için bkz. [Linux VM 'lerinde veri diskleri Için EncryptFormatAll özelliğini kullanma](./disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
 
 Ayrıca, işletim sistemini şifrelerken bu yöntemi kullanabilirsiniz, ancak yalnızca veri sürücüleri şifreliyoruz.
 
-Yordamlar, Linux VM 'lerinde [Azure disk şifrelemesi senaryolarında](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) önkoşulları zaten gözden geçirdiğinizi ve [hızlı başlangıç: Azure CLI Ile bir Linux VM oluşturma ve şifreleme](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart).
+Yordamlar, Linux VM 'lerinde [Azure disk şifrelemesi senaryolarında](./disk-encryption-linux.md) önkoşulları zaten gözden geçirdiğinizi ve [hızlı başlangıç: Azure CLI Ile bir Linux VM oluşturma ve şifreleme](./disk-encryption-cli-quickstart.md).
 
 Azure disk şifrelemesi çift taramalı sürümü kullanımdan kalkmaya yol açık ve artık yeni şifrelemeleri üzerinde kullanılmamalıdır.
 
@@ -459,4 +460,3 @@ df -h
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Disk Şifrelemesi sorunlarını giderme](disk-encryption-troubleshooting.md)
-

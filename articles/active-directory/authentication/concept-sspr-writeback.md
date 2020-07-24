@@ -5,26 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83639795"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027606"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Self servis parola sıfırlama geri yazma özelliği Azure Active Directory nasıl çalışır?
 
 Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR), kullanıcıların buluttaki parolalarını sıfırlamasına izin verir, ancak çoğu şirket, kullanıcılarının bulunduğu şirket içi Active Directory Domain Services (AD DS) ortamına da sahiptir. Parola geri yazma özelliği, buluttaki parola değişikliklerinin gerçek zamanlı olarak mevcut bir şirket içi dizine yazılmasına izin veren [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) etkinleştirilmiş bir özelliktir. Bu yapılandırmada, kullanıcılar bulutta SSPR kullanarak parolalarını değiştirirken veya sıfırlarsa da, güncelleştirilmiş parolalar şirket içi AD DS ortamına geri yazılır.
 
+> [!IMPORTANT]
+> Bu kavramsal makalede, self servis parola sıfırlama geri yazmanın nasıl çalıştığı bir yöneticiye açıklanmaktadır. Self servis parola sıfırlama için zaten kayıtlı bir son kullanıcı varsa ve hesabınıza geri dönmek istiyorsanız adresine gidin https://aka.ms/sspr .
+>
+> BT ekibiniz kendi parolanızı sıfırlama özelliğini etkinleştirmediyseniz, ek yardım için yardım masasına ulaşın.
+
 Parola geri yazma, aşağıdaki karma kimlik modellerini kullanan ortamlarda desteklenir:
 
 * [Parola karması eşitleme](../hybrid/how-to-connect-password-hash-synchronization.md)
-* [Doğrudan kimlik doğrulama](../hybrid/how-to-connect-pta.md)
+* [Doğrudan kimlik doğrulaması](../hybrid/how-to-connect-pta.md)
 * [Active Directory Federation Services (Active Directory Federasyon Hizmetleri)](../hybrid/how-to-connect-fed-management.md)
 
 Parola geri yazma özelliği aşağıdaki özellikleri sağlar:
@@ -36,7 +42,12 @@ Parola geri yazma özelliği aşağıdaki özellikleri sağlar:
 * **Tüm gelen güvenlik duvarı kuralları gerektirmez**: parola geri yazma, temel bir iletişim kanalı olarak Azure Service Bus geçişini kullanır. Tüm iletişimler 443 numaralı bağlantı noktasından dışarıya gönderilir.
 
 > [!NOTE]
-> Şirket içi AD içindeki korumalı gruplar içinde bulunan yönetici hesapları parola geri yazma ile birlikte kullanılabilir. Yöneticiler buluttaki parolalarını değiştirebilir, ancak unutulan bir parolayı sıfırlamak için parola sıfırlama kullanamaz. Korumalı gruplar hakkında daha fazla bilgi için, bkz. [Active Directory korunan hesaplar ve gruplar](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Şirket içi AD içindeki korumalı gruplar içinde bulunan yönetici hesapları parola geri yazma ile birlikte kullanılabilir. Yöneticiler buluttaki parolalarını değiştirebilir, ancak unutulan bir parolayı sıfırlamak için parola sıfırlama kullanamaz. Korumalı gruplar hakkında daha fazla bilgi için, bkz. [AD DS korunan hesaplar ve gruplar](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+
+SSPR geri yazma 'yı kullanmaya başlamak için aşağıdaki öğreticiyi izleyin:
+
+> [!div class="nextstepaction"]
+> [Öğretici: Self servis parola sıfırlama (SSPR) geri yazmayı etkinleştirme](tutorial-enable-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Parola geri yazma nasıl çalışır?
 
@@ -52,14 +63,14 @@ Bir Federasyon veya parola karması eşitlendiğinde Kullanıcı, bulutta parola
 1. İleti Service Bus 'a ulaştıktan sonra, parola sıfırlama uç noktası otomatik olarak uyandırır ve bekleyen bir sıfırlama isteğine sahip olduğunu görür.
 1. Daha sonra hizmet, bulut bağlayıcısı özniteliğini kullanarak kullanıcıyı arar. Bu aramanın başarılı olması için aşağıdaki koşulların karşılanması gerekir:
 
-   * Kullanıcı nesnesi Active Directory bağlayıcı alanında bulunmalıdır.
+   * Kullanıcı nesnesi AD DS bağlayıcı alanında bulunmalıdır.
    * Kullanıcı nesnesi, karşılık gelen meta veri deposu (MV) nesnesine bağlanmalıdır.
-   * Kullanıcı nesnesi, karşılık gelen Azure Active Directory bağlayıcı nesnesiyle bağlantılı olmalıdır.
-   * Active Directory bağlayıcı nesnesinden MV 'ya bağlantı, bağlantıda eşitleme kuralına sahip olmalıdır `Microsoft.InfromADUserAccountEnabled.xxx` .
+   * Kullanıcı nesnesi, karşılık gelen Azure AD Bağlayıcısı nesnesine bağlanmalıdır.
+   * AD DS bağlayıcı nesnesinden MV 'ya bağlantı, bağlantıda eşitleme kuralına sahip olmalıdır `Microsoft.InfromADUserAccountEnabled.xxx` .
 
-   Çağrı buluttan geldiğinde, eşitleme altyapısı Azure Active Directory bağlayıcı alanı nesnesini aramak için **Cloudtutturucu** özniteliğini kullanır. Daha sonra MV nesnesine geri bağlantıyı izler ve sonra Active Directory nesnesine geri bağlantıyı izler. Aynı kullanıcı için birden çok Active Directory nesne (çok ormanlı) olabileceğinden, eşitleme altyapısı `Microsoft.InfromADUserAccountEnabled.xxx` doğru olanı seçmek için bağlantıyı kullanır.
+   Çağrı buluttan geldiğinde, eşitleme altyapısı Azure AD bağlayıcı alanı nesnesini aramak için **Cloudtutturucu** özniteliğini kullanır. Daha sonra MV nesnesine geri bağlantıyı izler ve sonra AD DS nesnesine geri bağlantıyı izler. Aynı kullanıcı için birden çok AD DS nesne (çok ormanlı) olabileceğinden, eşitleme altyapısı `Microsoft.InfromADUserAccountEnabled.xxx` doğru olanı seçmek için bağlantıyı kullanır.
 
-1. Kullanıcı hesabı bulduktan sonra, uygun Active Directory ormanında parolayı doğrudan sıfırlama girişimi yapılır.
+1. Kullanıcı hesabı bulduktan sonra, uygun AD DS ormanında parolayı doğrudan sıfırlama girişimi yapılır.
 1. Parola ayarlama işlemi başarılı olursa, kullanıcıya parolasını değiştirme bildirilir.
 
    > [!NOTE]
@@ -68,7 +79,7 @@ Bir Federasyon veya parola karması eşitlendiğinde Kullanıcı, bulutta parola
 1. Parola ayarlama işlemi başarısız olursa, bir hata kullanıcıdan yeniden denemesini ister. İşlem aşağıdaki nedenlerden dolayı başarısız olabilir:
     * Hizmet kapatıldı.
     * Seçtiğiniz parola, kuruluşun ilkelerini karşılamıyor.
-    * Kullanıcı yerel Active Directory bulunamıyor.
+    * Kullanıcı yerel AD DS ortamında bulunamıyor.
 
    Hata iletileri kullanıcılara yönetici müdahalesi olmadan çözüm deneyebilmeleri için rehberlik sağlar.
 
@@ -85,7 +96,7 @@ Parola geri yazma, yüksek oranda güvenli bir hizmettir. Bilgilerinizin korundu
    1. Şifrelenmiş parola, Service Bus geçişinizdeki Microsoft TLS/SSL sertifikaları kullanılarak şifreli bir kanal üzerinden gönderilen bir HTTPS iletisine yerleştirilir.
    1. İleti Service Bus 'a ulaştıktan sonra, şirket içi aracılarınız uyandırır ve daha önce oluşturulan güçlü parolayı kullanarak Service Bus 'ın kimliğini doğrular.
    1. Şirket içi aracı, şifreli iletiyi alır ve özel anahtarı kullanarak şifresini çözer.
-   1. Şirket içi aracı, AD DS SetPassword API 'SI aracılığıyla parolayı ayarlamaya çalışır. Bu adım, bulutta Active Directory Şirket içi parola ilkenizin (karmaşıklık, yaş, geçmiş ve filtreler gibi) zorlanmasını sağlar.
+   1. Şirket içi aracı, AD DS SetPassword API 'SI aracılığıyla parolayı ayarlamaya çalışır. Bu adım, bulutta AD DS şirket içi parola ilkenizin (karmaşıklık, yaş, geçmiş ve filtreler gibi) zorlanmasını sağlar.
 * **İleti süre sonu ilkeleri**
    * Şirket içi hizmetiniz çalışmadığından ileti Service Bus 'da yer alıyorsa, zaman aşımına uğrar ve birkaç dakika sonra kaldırılır. İletinin zaman aşımı ve kaldırılması, güvenliği daha da artırır.
 
@@ -94,9 +105,9 @@ Parola geri yazma, yüksek oranda güvenli bir hizmettir. Bilgilerinizin korundu
 Bir kullanıcı parola sıfırlama gönderdikten sonra, sıfırlama isteği, şirket içi ortamınıza ulaşmadan önce birkaç şifreleme adımı üzerinden geçer. Bu şifreleme adımları en yüksek hizmet güvenilirliğini ve güvenliğini güvence altına aldığından. Bunlar aşağıdaki gibi açıklanmıştır:
 
 1. **2048 BIT RSA anahtarıyla parola şifreleme**: bir Kullanıcı, şirket içine geri yazılacak bir parola gönderdikten sonra, gönderilen parola 2048 bit RSA anahtarıyla şifrelenir.
-1. **AES-GCM Ile paket düzeyinde şifreleme**: tüm paket, parola artı gerekli meta VERILER, AES-GCM kullanılarak şifrelenir. Bu şifreleme, temel ServiceBus kanalına doğrudan erişimi olan herkesin içerikleri görüntülemesini veya bunlarla müdahale etmesini engeller.
-1. **TLS/SSL üzerinden gerçekleştirilen tüm iletişimler**: bir SSL/TLS kanalında ServiceBus ile olan tüm iletişim oluşur. Bu şifreleme, yetkisiz üçüncü taraflardan içerik güvenliğini sağlar.
-1. **Her altı ayda bir otomatik anahtar al**: tüm anahtarlar altı ayda bir veya her bir parola geri yazma devre dışı bırakıldığında, en yüksek hizmet güvenliği ve güvenliğini sağlamak için Azure AD Connect yeniden etkinleştirilir.
+1. **AES-GCM Ile paket düzeyinde şifreleme**: tüm paket, parola artı gerekli meta VERILER, AES-GCM kullanılarak şifrelenir. Bu şifreleme, temeldeki Service Bus kanalına doğrudan erişimi olan herkesin içerikleri görüntülemesini veya bunlarla müdahale etmesini engeller.
+1. **TLS/SSL üzerinden gerçekleştirilen tüm iletişimler**: Service Bus ile olan tüm ILETIŞIMLER bir SSL/TLS kanalında gerçekleşir. Bu şifreleme, yetkisiz üçüncü taraflardan içerik güvenliğini sağlar.
+1. **Altı ayda bir otomatik anahtar geçişi**: tüm anahtarlar altı ayda bir veya her bir parola geri yazma özelliği devre dışı bırakılır ve en yüksek hizmet güvenliği ve güvenliğini sağlamak için Azure AD Connect yeniden etkinleştirilir.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Parola geri yazma bant genişliği kullanımı
 

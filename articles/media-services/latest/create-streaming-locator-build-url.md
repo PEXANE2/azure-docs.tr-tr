@@ -11,15 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e6e0d18665ac5fc28da2935c20b467f9d7662d8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78304569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023254"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Akış bulucusu ve derleme URL’leri oluşturma
 
-Azure Media Services, akış URL 'SI oluşturmak için önce bir [akış Bulucu](streaming-locators-concept.md)oluşturmanız gerekir. Daha sonra [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirebilirsiniz. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir Media Service hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olur, bu nedenle akışı başlatmak için **Start** 'ı çağırmanız gerekir.
+Azure Media Services, akış URL 'SI oluşturmak için önce bir [akış Bulucu](streaming-locators-concept.md)oluşturmanız gerekir. Daha sonra [akış uç noktası](/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirebilirsiniz. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir Media Service hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olur, bu nedenle akışı başlatmak için **Start** 'ı çağırmanız gerekir.
 
 Bu makalede, bir akış Bulucu oluşturma ve Java ve .NET SDK 'Ları kullanarak akış URL 'SI oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
