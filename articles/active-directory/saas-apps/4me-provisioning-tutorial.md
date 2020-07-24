@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 423ba8c7aea9659a4c91f68a01392954c2ba6db2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c83d43fe1a2068fa4c9f24a10c0975610142a84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018698"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 4me yapılandırma
 
@@ -30,7 +31,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları 4me 'y
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -127,7 +128,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     ![4me Kullanıcı eşlemeleri](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. **Öznitelik eşleme** bölümünde Azure AD 'den 4me 'ye eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için 4me 'deki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde Azure AD 'den 4me 'ye eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için 4me 'deki Kullanıcı hesaplarını eşleştirmek için kullanılır. Lütfen 4me 'nin seçtiğiniz eşleşen öznitelikte [filtrelemeyi desteklediğinden](https://developer.4me.com/v1/scim/users/) emin olun. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
     ![4me Kullanıcı eşlemeleri](media/4me-provisioning-tutorial/4me-user-attributes.png)
     

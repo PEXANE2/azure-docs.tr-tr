@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8559ba3bf78b6adc8e6ca3d3c628cd3c0b9fec0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 274f603fa0d7a48b99a7caed5d465d44bc68e9ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019973"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Çoklu Oturum Açma için SAML 2.0 Kimlik Sağlayıcısı (IdP) Kullanma
 
@@ -250,7 +250,7 @@ Kullanıcılarınızın kimliğini Office 365 ' e doğrulayabilmeniz için önce
 
 Azure AD Connect, şirket içi Active Directory Azure AD dizininizde bulunan etki alanlarına sorumluları sağlamak için kullanılabilir. Daha ayrıntılı bilgi için bkz. Şirket [içi dizinlerinizi Azure Active Directory tümleştirme](whatis-hybrid-identity.md).
 
-Windows PowerShell Ayrıca, Azure AD 'ye yeni kullanıcı ekleme ve şirket içi dizindeki değişiklikleri eşitlemeye otomatik hale getirmek için de kullanılabilir. Windows PowerShell cmdlet 'lerini kullanmak için [Azure Active Directory modüllerini](https://docs.microsoft.com/powershell/azure/install-adv2?view=azureadps-2.0)indirmeniz gerekir.
+Windows PowerShell Ayrıca, Azure AD 'ye yeni kullanıcı ekleme ve şirket içi dizindeki değişiklikleri eşitlemeye otomatik hale getirmek için de kullanılabilir. Windows PowerShell cmdlet 'lerini kullanmak için [Azure Active Directory modüllerini](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)indirmeniz gerekir.
 
 Bu yordam, Azure AD 'ye tek bir kullanıcının nasıl ekleneceğini gösterir.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 178c4b92722453cd1c97471e725cb0fc68abb6fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82098025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020330"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile Windows sanal makinesi oluşturma
 
@@ -21,11 +21,11 @@ Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluştur
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -39,8 +39,8 @@ az group create --name myResourceGroup --location eastus
 
 [az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, *myvm*ADLı bir VM oluşturur. Bu örnek, bir Yönetici Kullanıcı adı için *azureuser* kullanır. 
 
-[Azure VM 'lerinin parola gereksinimlerini](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-)karşılayan bir parola sağlamanız gerekir. Aşağıdaki örneği kullanarak komut satırına bir parola girmeniz istenir. Parolanız için bir değer ile `--admin-password` parametresini de ekleyebilirsiniz. SANAL makineye bağlandığınızda Kullanıcı adı ve parola daha sonra kullanılacaktır.
+[Azure VM 'lerinin parola gereksinimlerini](./faq.md#what-are-the-password-requirements-when-creating-a-vm
+)karşılayan bir parola sağlamanız gerekir. Aşağıdaki örneği kullanarak komut satırına bir parola girmeniz istenir. `--admin-password`Parolanız için bir değer ile parametresini de ekleyebilirsiniz. SANAL makineye bağlandığınızda Kullanıcı adı ve parola daha sonra kullanılacaktır.
 
 ```azurecli-interactive
 az vm create \

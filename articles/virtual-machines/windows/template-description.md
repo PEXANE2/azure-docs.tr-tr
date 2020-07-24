@@ -7,16 +7,16 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac2e94e9c0213f14999d730027e118df6584519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100541"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020211"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki sanal makineler
 
-Bu makalede, sanal makinelere uygulanan Azure Resource Manager şablonun yönleri açıklanmaktadır. Bu makale, sanal makine oluşturmaya yönelik tüm şablonları tanımlamaz; Bunun için, depolama hesapları, ağ arabirimleri, genel IP adresleri ve sanal ağlar için kaynak tanımlarına ihtiyacınız vardır. Bu kaynakların nasıl birlikte tanımlanbileceğine ilişkin daha fazla bilgi için [Kaynak Yöneticisi şablonu izlenecek yol](../../azure-resource-manager/resource-manager-template-walkthrough.md)başlığına bakın.
+Bu makalede, sanal makinelere uygulanan Azure Resource Manager şablonun yönleri açıklanmaktadır. Bu makale, sanal makine oluşturmaya yönelik tüm şablonları tanımlamaz; Bunun için, depolama hesapları, ağ arabirimleri, genel IP adresleri ve sanal ağlar için kaynak tanımlarına ihtiyacınız vardır. Bu kaynakların nasıl birlikte tanımlanbileceğine ilişkin daha fazla bilgi için [Kaynak Yöneticisi şablonu izlenecek yol](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)başlığına bakın.
 
 Galerideki VM kaynağını içeren birçok [şablon](https://azure.microsoft.com/documentation/templates/?term=VM) vardır. Bir şablonda yer alan öğelerin hepsi burada açıklanmamaktadır.
 
@@ -156,14 +156,14 @@ Kaynakları bir şablon kullanarak dağıttığınızda, API 'nin kullanmak içi
 
 En son API sürümlerini almak için bu fırsatları kullanın:
 
-- REST API- [tüm kaynak sağlayıcılarını listeleme](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell- [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLı- [az Provider Show](https://docs.microsoft.com/cli/azure/provider)
+- REST API- [tüm kaynak sağlayıcılarını listeleme](/rest/api/resources/providers)
+- PowerShell- [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLı- [az Provider Show](/cli/azure/provider)
 
 
 ## <a name="parameters-and-variables"></a>Parametreler ve değişkenler
 
-[Parametreler](../../resource-group-authoring-templates.md) , çalıştırdığınızda şablon için değer belirtmenizi kolaylaştırır. Bu parametreler bölümü örnekte kullanılır:
+[Parametreler](../../azure-resource-manager/templates/template-syntax.md) , çalıştırdığınızda şablon için değer belirtmenizi kolaylaştırır. Bu parametreler bölümü örnekte kullanılır:
 
 ```json
 "parameters": {
@@ -175,7 +175,7 @@ En son API sürümlerini almak için bu fırsatları kullanın:
 
 Örnek şablonu dağıttığınızda, her VM 'de yönetici hesabının adı ve parolası ve oluşturulacak sanal makine sayısı için değerler girersiniz. Parametre değerlerini şablonla yönetilen ayrı bir dosyada belirtme veya istendiğinde değer sağlama seçeneğiniz vardır.
 
-[Değişkenler](../../resource-group-authoring-templates.md) , şablonda sürekli olarak kullanılan veya zaman içinde değiştirebileceğiniz değerleri ayarlamanıza olanak kolaylaştırır. Bu değişkenler bölümü örnekte kullanılır:
+[Değişkenler](../../azure-resource-manager/templates/template-syntax.md) , şablonda sürekli olarak kullanılan veya zaman içinde değiştirebileceğiniz değerleri ayarlamanıza olanak kolaylaştırır. Bu değişkenler bölümü örnekte kullanılır:
 
 ```json
 "variables": { 
@@ -208,7 +208,7 @@ En son API sürümlerini almak için bu fırsatları kullanın:
 }, 
 ```
 
-Örnek şablonu dağıttığınızda, değişken değerleri daha önce oluşturulan depolama hesabının adı ve tanımlayıcısı için kullanılır. Değişkenler, tanılama uzantısının ayarlarını sağlamak için de kullanılır. Şablonunuzda parametreleri ve değişkenleri nasıl yapılandırmak istediğinize karar vermenize yardımcı olmak üzere [Azure Resource Manager şablonları oluşturmak için en iyi uygulamaları](../../resource-manager-template-best-practices.md) kullanın.
+Örnek şablonu dağıttığınızda, değişken değerleri daha önce oluşturulan depolama hesabının adı ve tanımlayıcısı için kullanılır. Değişkenler, tanılama uzantısının ayarlarını sağlamak için de kullanılır. Şablonunuzda parametreleri ve değişkenleri nasıl yapılandırmak istediğinize karar vermenize yardımcı olmak üzere [Azure Resource Manager şablonları oluşturmak için en iyi uygulamaları](../../azure-resource-manager/templates/template-best-practices.md) kullanın.
 
 ## <a name="resource-loops"></a>Kaynak döngüleri
 
@@ -247,7 +247,7 @@ Ayrıca, örneğin, kaynak için bazı değerleri belirtirken döngü dizininin 
 
 ## <a name="dependencies"></a>Bağımlılıklar
 
-Kaynakların çoğu, doğru şekilde çalışmak için diğer kaynaklara bağımlıdır. Sanal makinelerin bir sanal ağla ilişkilendirilmesi ve bir ağ arabirimine ihtiyacı olması gerekir. [Bağımlıdson](../../resource-group-define-dependencies.md) öğesi, ağ arabiriminin VM 'ler oluşturulmadan önce kullanılabilir olduğundan emin olmak için kullanılır:
+Kaynakların çoğu, doğru şekilde çalışmak için diğer kaynaklara bağımlıdır. Sanal makinelerin bir sanal ağla ilişkilendirilmesi ve bir ağ arabirimine ihtiyacı olması gerekir. [Bağımlıdson](../../azure-resource-manager/templates/define-resource-dependency.md) öğesi, ağ arabiriminin VM 'ler oluşturulmadan önce kullanılabilir olduğundan emin olmak için kullanılır:
 
 ```json
 "dependsOn": [
@@ -277,7 +277,7 @@ Bir sanal makine kaynağı tanımlarken çeşitli profil öğeleri kullanılır.
 - [boyutla](sizes.md)
 - [ad](/azure/architecture/best-practices/resource-naming) ve kimlik bilgileri
 - disk ve [işletim sistemi ayarları](cli-ps-findimage.md)
-- [Ağ arabirimi](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- [Ağ arabirimi](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
 - önyükleme tanılaması
 
 ## <a name="disks-and-images"></a>Diskler ve görüntüler
@@ -369,7 +369,7 @@ Yönetilen görüntüden bir sanal makine oluşturmak istiyorsanız, ImageRefere
 
 ## <a name="extensions"></a>Uzantıları
 
-[Uzantılar](extensions-features.md) ayrı bir kaynak olmakla birlikte, sanal makinelere yakın bir şekilde bağlanır. Uzantılar, VM 'nin alt kaynağı veya ayrı bir kaynak olarak eklenebilir. Örnek, VM 'lere eklenen [Tanılama uzantısını](extensions-diagnostics-template.md) gösterir:
+[Uzantılar](../extensions/features-windows.md) ayrı bir kaynak olmakla birlikte, sanal makinelere yakın bir şekilde bağlanır. Uzantılar, VM 'nin alt kaynağı veya ayrı bir kaynak olarak eklenebilir. Örnek, VM 'lere eklenen [Tanılama uzantısını](../extensions/diagnostics-template.md) gösterir:
 
 ```json
 { 
@@ -404,7 +404,7 @@ Yönetilen görüntüden bir sanal makine oluşturmak istiyorsanız, ImageRefere
 
 Bu uzantı kaynağı, değer sağlamak için storageName değişkenini ve tanılama değişkenlerini kullanır. Bu uzantı tarafından toplanan verileri değiştirmek istiyorsanız, wadperfcounters değişkenine daha fazla performans sayacı ekleyebilirsiniz. Ayrıca, tanılama verilerini VM disklerinin depolandığı yerden farklı bir depolama hesabına koymaya de seçim yapabilirsiniz.
 
-Bir VM 'ye yükleyebileceğiniz birçok uzantı vardır, ancak en iyi yöntem büyük olasılıkla [Özel Betik uzantısıdır](extensions-customscript.md). Örnekte, start.ps1 adlı bir PowerShell betiği, ilk başladığında her bir VM üzerinde çalışır:
+Bir VM 'ye yükleyebileceğiniz birçok uzantı vardır, ancak en iyi yöntem büyük olasılıkla [Özel Betik uzantısıdır](../extensions/custom-script-windows.md). Örnekte, start.ps1 adlı bir PowerShell betiği, ilk başladığında her bir VM üzerinde çalışır:
 
 ```json
 {
@@ -447,11 +447,11 @@ Dağıtımdaki kaynakların durumunu merak ediyorsanız, Azure portal kaynak gru
 
 ![Dağıtım bilgilerini al](./media/template-description/virtual-machines-deployment-info.png)
     
-Kaynak oluşturmak veya mevcut kaynakları güncelleştirmek için aynı şablonu kullanma sorunu değildir. Şablonları dağıtmak için komutlar kullandığınızda, hangi [modu](../../resource-group-template-deploy.md) kullanmak istediğinizi söylemeniz gerekir. Mod **tamamen** veya **artımlı**olarak ayarlanabilir. Varsayılan değer artımlı güncelleştirmeler gerçekleştirmemesidir. Kaynakları yanlışlıkla silebileceğinden, **Tüm** modunu kullanırken dikkatli olun. Modu, **tamamlanacak**şekilde ayarladığınızda, Kaynak Yöneticisi şablonda olmayan kaynak grubundaki tüm kaynakları siler.
+Kaynak oluşturmak veya mevcut kaynakları güncelleştirmek için aynı şablonu kullanma sorunu değildir. Şablonları dağıtmak için komutlar kullandığınızda, hangi [modu](../../azure-resource-manager/templates/deploy-powershell.md) kullanmak istediğinizi söylemeniz gerekir. Mod **tamamen** veya **artımlı**olarak ayarlanabilir. Varsayılan değer artımlı güncelleştirmeler gerçekleştirmemesidir. Kaynakları yanlışlıkla silebileceğinden, **Tüm** modunu kullanırken dikkatli olun. Modu, **tamamlanacak**şekilde ayarladığınızda, Kaynak Yöneticisi şablonda olmayan kaynak grubundaki tüm kaynakları siler.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md)kullanarak kendi şablonunuzu oluşturun.
+- [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md)kullanarak kendi şablonunuzu oluşturun.
 - Bir [Kaynak Yöneticisi şablonuyla Windows sanal makinesi oluşturma](ps-template.md)kullanarak oluşturduğunuz şablonu dağıtın.
 - [Azure PowerShell modülü Ile Windows VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)konusunu Inceleyerek oluşturduğunuz VM 'leri yönetmeyi öğrenin.
 - Şablonlarda kaynak türlerinin JSON sözdizimi ve özellikleri için bkz. [Azure Resource Manager şablonu başvurusu](/azure/templates/).

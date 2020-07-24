@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134806"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021588"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Kurtarma planlarına Azure Otomasyonu runbook’ları ekleme
 
@@ -51,7 +51,7 @@ Bir betik çalıştırıldığında, runbook 'a bir kurtarma planı bağlamını
 | ID |Plan çalışırken kurtarma planındaki grup numarasını tanımlar. |
 | VmMap |Gruptaki tüm VM 'lerin bir dizisi. |
 | VMMap anahtarı |Her VM için benzersiz bir anahtar (GUID). |
-| kaynak grubundaki |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
+| SubscriptionId |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
 | ResourceGroupName | VM 'nin bulunduğu kaynak grubunun adı.
 | CloudServiceName |VM 'nin altında oluşturulduğu Azure bulut hizmeti adı. |
 | RoleName |Azure VM 'nin adı. |
@@ -199,7 +199,7 @@ Bazı senaryolarda, her kurtarma planı için ayrı değişkenler oluşturabilem
 - Örneğin, bir SharePoint kurtarması iki ön ucu vardır. Temel bir iş kolu (LOB) uygulamasının yalnızca bir ön ucu vardır.
 - Bu senaryoda, her kurtarma planı için ayrı değişkenler oluşturamazsınız.
 
-Aşağıdaki örnekte, Azure Otomasyonu hesabında karmaşık bir [değişken](/powershell/module/servicemanagement/azure/set-azureautomationvariable) oluşturacağız.
+Aşağıdaki örnekte, Azure Otomasyonu hesabında karmaşık bir [değişken](/powershell/module/servicemanagement/azure.service/set-azureautomationvariable) oluşturacağız.
 
 Bunu, Azure PowerShell kullanarak birden çok değer belirterek yapacağız.
 

@@ -5,27 +5,27 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 04/15/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170b90816535562d6740449157840cedb00f291d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416989"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020517"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Parametreli URL'yi kullanarak özel görünümü paylaşma
 
-Time Series Insights Explorer 'da özel bir görünüm paylaşmak için programlı bir şekilde özel görünümün parametreli bir URL 'SI oluşturabilirsiniz.
+Azure Time Series Insights Explorer 'da özel bir görünüm paylaşmak için programlı bir şekilde özel görünümün parametreli bir URL 'SI oluşturabilirsiniz.
 
-Time Series Insights Gezgini, deneyimdeki görünümleri doğrudan URL 'den belirtmek için URL sorgu parametrelerini destekler. Örneğin, yalnızca URL'yi kullanarak hedef ortamı, arama koşulunu ve istenen zaman aralığını belirtebilirsiniz. Kullanıcı özelleştirilmiş URL 'yi seçtiğinde, arabirim Time Series Insights portalında doğrudan bu varlığa bir bağlantı sağlar. Veri erişimi ilkeleri uygulanır.
+Azure Time Series Insights Explorer, deneyimdeki görünümleri doğrudan URL 'den belirtmek için URL sorgu parametrelerini destekler. Örneğin, yalnızca URL'yi kullanarak hedef ortamı, arama koşulunu ve istenen zaman aralığını belirtebilirsiniz. Kullanıcı özelleştirilmiş URL 'yi seçtiğinde, arabirim Azure Time Series Insights portalında doğrudan bu varlığa bir bağlantı sağlar. Veri erişimi ilkeleri uygulanır.
 
 > [!TIP]
-> * Ücretsiz [Time Series Insights tanıtımı](https://insights.timeseries.azure.com/samples)' nı görüntüleyin.
-> * Eşlik eden [Time Series Insights gezgin](./time-series-insights-explorer.md) belgelerini okuyun.
+> * Ücretsiz [Azure Time Series Insights tanıtımı](https://insights.timeseries.azure.com/samples)' nı görüntüleyin.
+> * Eşlik eden [Azure Time Series Insights gezgin](./time-series-insights-explorer.md) belgelerini okuyun.
 
 ## <a name="environment-id"></a>Ortam Kimliği
 
@@ -33,7 +33,7 @@ Time Series Insights Gezgini, deneyimdeki görünümleri doğrudan URL 'den beli
 
 Örnek bir ortam kimliği parametresi olarak `?environmentId=10000000-0000-0000-0000-100000000108` verilebilir.
 
-## <a name="time"></a>Saat
+## <a name="time"></a>Zaman
 
 Parametreli URL ile mutlak veya göreli zaman değerleri belirtebilirsiniz.
 
@@ -53,7 +53,7 @@ Göreli bir zaman değeri için, `relativeMillis=<value>` *değeri* API 'den al�
 
 Örneğin, `&relativeMillis=3600000` en 60 dakikanın verilerini görüntüler.
 
-Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsüne karşılık gelir ve şunları içerir:
+Kabul edilen değerler Azure Time Series Insights Explorer **hızlı zaman** menüsüne karşılık gelir ve şunları içerir:
 
 * `1800000`(Son 30 dakika)
 * `3600000`(Son 60 dakika)
@@ -66,9 +66,9 @@ Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsün
 
 ### <a name="optional-parameters"></a>İsteğe bağlı parametreler
 
-`timeSeriesDefinitions=<collection of term objects>`Parametresi bir Time Series Insights görünümünde görünecek koşul koşullarını belirtir:
+`timeSeriesDefinitions=<collection of term objects>`Parametresi bir Azure Time Series Insights görünümünde görünecek koşul koşullarını belirtir:
 
-| Parametre | URL öğesi | Description |
+| Parametre | URL öğesi | Açıklama |
 | --- | --- | --- |
 | **ada** | `\<string>` | *Dönem* adı. |
 | **Bölünmüş** | `\<string>` | *Bölme ölçütü* sütunun adı. |
@@ -85,7 +85,7 @@ Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsün
 * , `timeBucketUnit=<Unit>&timeBucketSize=<integer>` Grafiğin daha ayrıntılı veya daha yumuşak, daha toplanmış bir görünümünü sağlamak için Aralık kaydırıcısını ayarlamanıza olanak sağlar.  
 * `timezoneOffset=<integer>`Parametresi, grafiğin saat DILIMINI UTC 'ye bir uzaklığa göre görüntülenecek şekilde ayarlamanıza olanak sağlar.
 
-| Çift (ler) | Description |
+| Çift (ler) | Açıklama |
 | --- | --- |
 | `multiChartStack=false` | `true`Varsayılan olarak etkin olduğundan yığına geçirin `false` . |
 | `multiChartStack=false&multiChartSameScale=true` | Terimler arasında aynı Y ekseni ölçeğini kullanmak için yığın oluşturmanın etkinleştirilmesi gerekir.  `false`Bu, varsayılan olarak, geçirme `true` Bu işlevselliği sunar. |
@@ -98,7 +98,7 @@ Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsün
 
 ### <a name="examples"></a>Örnekler
 
-Bir Time Series Insights ortamına URL parametresi olarak zaman serisi tanımları eklemek için, şunu ekleyin:
+Bir Azure Time Series Insights ortamına URL parametresi olarak zaman serisi tanımları eklemek için, şunu ekleyin:
 
 ```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -117,16 +117,16 @@ Bir görünüm için aşağıdaki parametreli URL 'YI oluşturabilirsiniz:
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![Time Series Insights Explorer parametreli URL 'SI](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![Azure Time Series Insights Explorer parametreli URL 'SI](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
 > Yukarıdaki [URL örneğini kullanarak](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) gezgin Live ' a bakın.
 
-Yukarıdaki URL tanımlar ve parametreli Time Series Insights Gezgin görünümünü görüntüler. 
+Yukarıdaki URL tanımlar ve parametreli Azure Time Series Insights Gezgin görünümünü görüntüler. 
 
 * Parametreli koşullar.
 
-  [![Time Series Insights Explorer parametreli koşullar.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![Azure Time Series Insights Explorer parametreli koşullar.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
 * Paylaşılan tam grafik görünümü.
 
@@ -136,4 +136,4 @@ Yukarıdaki URL tanımlar ve parametreli Time Series Insights Gezgin görünüm�
 
 * [C# kullanarak verileri sorgulamayı](time-series-insights-query-data-csharp.md)öğrenin.
 
-* [Time Series Insights Gezgini](./time-series-insights-explorer.md)hakkında bilgi edinin.
+* [Azure Time Series Insights Gezgini](./time-series-insights-explorer.md)hakkında bilgi edinin.

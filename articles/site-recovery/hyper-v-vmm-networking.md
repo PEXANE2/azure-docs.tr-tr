@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73961436"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021673"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Yük devretmeden sonra ikincil şirket içi bir siteye bağlanmak için IP adresi ayarlama
 
@@ -78,12 +79,12 @@ Yük devretmeden sonra, Site Recovery VM 'deki her bir ağ arabirimi için bir I
 
 Bir VM için korumayı etkinleştirdikten sonra, VM 'ye atanan adresi doğrulamak için aşağıdaki örnek betiği kullanabilirsiniz. Bu IP adresi, yük devretme IP adresi olarak ayarlanır ve yük devretme sırasında VM 'ye atanır:
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>Farklı bir IP adresi kullanın
 
@@ -92,7 +93,7 @@ Bu senaryoda yük devretme yapan VM 'lerin IP adresleri değişir. Bu çözümü
 - İntranet uygulamaları için düşük TTL değerlerini kullanın.
 - DNS sunucusunun zamanında güncelleştirilmesi için Site Recovery kurtarma planında aşağıdaki betiği kullanın. Dinamik DNS kaydı kullanırsanız betiğe gerek yoktur.
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,

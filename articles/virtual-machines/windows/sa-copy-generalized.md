@@ -9,11 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8077689bce988124da34428842df8fd2ef757bf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020194"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Azure VM'sinden yönetilmeyen VM görüntüsü oluşturma
 
@@ -24,9 +25,9 @@ Bu makalede, bir depolama hesabı kullanarak genelleştirilmiş bir Azure VM 'ni
  
 
 ## <a name="generalize-the-vm"></a>VM 'yi Genelleştirme 
-Bu bölümde, Windows sanal makinenizi görüntü olarak kullanılmak üzere genelleştirirsiniz. Bir VM 'nin genelleştirilmesi, tüm kişisel hesap bilgilerinizi diğer şeyler arasında kaldırır ve makineyi bir görüntü olarak kullanılmak üzere hazırlar. Sysprep hakkındaki ayrıntılar için bkz. [Sysprep İşlemini Kullanma: Giriş](https://technet.microsoft.com/library/bb457073.aspx).
+Bu bölümde, Windows sanal makinenizi görüntü olarak kullanılmak üzere genelleştirirsiniz. Bir VM 'nin genelleştirilmesi, tüm kişisel hesap bilgilerinizi diğer şeyler arasında kaldırır ve makineyi bir görüntü olarak kullanılmak üzere hazırlar. Sysprep hakkındaki ayrıntılar için bkz. [Sysprep İşlemini Kullanma: Giriş](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)).
 
-Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > VHD 'nizi ilk kez Azure 'a yüklüyorsanız, Sysprep 'ı çalıştırmadan önce [VM 'nizi hazırladığınızdan](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) emin olun. 
@@ -40,7 +41,7 @@ Ayrıca, kullanarak bir Linux VM 'yi genelleştirdiğinizde, `sudo waagent -depr
 2. Yönetici olarak Komut İstemi penceresini açın. Dizini **%windir%\system32\sysprep**olarak değiştirip komutunu çalıştırın `sysprep.exe` .
 3. **Sistem Hazırlama Aracı** iletişim kutusunda ** Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 4. **Kapalı seçenekleri**' nde, **kapatır**' ı seçin.
-5. **Tamam**'a tıklayın.
+5. **Tamam** düğmesine tıklayın.
    
     ![Sysprep 'ı Başlat](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep tamamlandığında, sanal makineyi kapatır. 
@@ -183,7 +184,7 @@ Tamamlanan sanal ağ için bir değişken oluşturun.
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
-### <a name="create-the-vm"></a>Sanal makine oluşturma
+### <a name="create-the-vm"></a>Sanal makineyi oluşturma
 Aşağıdaki PowerShell sanal makine yapılandırmasını tamamlar ve yeni yüklemenin kaynağı olarak yönetilmeyen görüntü kullanır.
 
 </br>
@@ -251,5 +252,3 @@ Tamamlandığında, sanal makinelere **gözatadaki** [Azure Portal](https://port
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yeni sanal makinenizi Azure PowerShell yönetmek için bkz. [Azure Resource Manager ve PowerShell kullanarak sanal makineleri yönetme](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-

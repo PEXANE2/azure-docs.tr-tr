@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93ef342ecee9bb9e2f32400655db0cacc01835c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75780343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023118"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API ile Filtreler oluşturma
 
@@ -25,12 +26,12 @@ ms.locfileid: "75780343"
 
 Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
 
-Bu konu, Isteğe bağlı bir video için bir filtre tanımlanacağını ve [hesap filtreleri](https://docs.microsoft.com/rest/api/media/accountfilters) ve [varlık FILTRELERI](https://docs.microsoft.com/rest/api/media/assetfilters)oluşturmak için REST API 'lerini nasıl kullanacağınızı gösterir. 
+Bu konu, Isteğe bağlı bir video için bir filtre tanımlanacağını ve [hesap filtreleri](/rest/api/media/accountfilters) ve [varlık FILTRELERI](/rest/api/media/assetfilters)oluşturmak için REST API 'lerini nasıl kullanacağınızı gösterir. 
 
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu konuda açıklanan adımları tamamlayabilmeniz için şunları yapmanız gerekir:
 
@@ -96,7 +97,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Filtre oluşturuldu.
 
-Daha fazla bilgi için bkz. [oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Ayrıca bkz. [Filtreler Için JSON örnekleri](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Daha fazla bilgi için bkz. [oluşturma veya güncelleştirme](/rest/api/media/accountfilters/createorupdate). Ayrıca bkz. [Filtreler Için JSON örnekleri](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Varlık filtreleri oluşturma  
 
@@ -114,13 +115,13 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Varlık filtresi oluşturuldu.
 
-Varlık filtrelerini oluşturma veya güncelleştirme hakkında daha fazla bilgi için bkz. [Create veya Update](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Ayrıca bkz. [Filtreler Için JSON örnekleri](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
+Varlık filtrelerini oluşturma veya güncelleştirme hakkında daha fazla bilgi için bkz. [Create veya Update](/rest/api/media/assetfilters/createorupdate). Ayrıca bkz. [Filtreler Için JSON örnekleri](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
 
 ## <a name="associate-filters-with-streaming-locator"></a>Filtreleri akış bulucu ile ilişkilendir
 
 Akış Konumlayıcı için uygulanabilecek varlık veya hesap filtrelerinin bir listesini belirtebilirsiniz. [Dinamik Paketleyici (akış uç noktası)](dynamic-packaging-overview.md) , bu filtre listesini ISTEMCINIZDEKI URL 'de belirttiği değişikliklerle birlikte uygular. Bu bileşim, akış Bulucu üzerinde belirlediğiniz URL + filtrelerdeki filtreleri temel alan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak, ancak URL 'de filtre adlarını göstermek istemiyorsanız bu özelliği kullanmanızı öneririz.
 
-REST kullanarak bir akış bulucu ile filtreler oluşturup ilişkilendirmek için, [akış Konumlandırıcı-API oluştur](https://docs.microsoft.com/rest/api/media/streaminglocators/create) ' u kullanın ve `properties.filters` [istek gövdesinde](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)öğesini belirtin.
+REST kullanarak bir akış bulucu ile filtreler oluşturup ilişkilendirmek için, [akış Konumlandırıcı-API oluştur](/rest/api/media/streaminglocators/create) ' u kullanın ve `properties.filters` [istek gövdesinde](/rest/api/media/streaminglocators/create#request-body)öğesini belirtin.
                                 
 ## <a name="stream-using-filters"></a>Filtreleri kullanarak akış
 

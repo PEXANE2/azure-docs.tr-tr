@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711859"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021384"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure’da StorSimple Cloud Appliance dağıtma ve yönetme (StorSimple Güncelleştirme 3 ve üstü)
 
@@ -66,7 +67,7 @@ Aşağıdaki tabloda StorSimple Cloud Appliance ile StorSimple fiziksel cihazı 
 | **Konum** |Veri merkezinde yer alır. |Azure üzerinde çalışır. |
 | **Ağ arabirimleri** |Altı ağ arabirimi bulunur: VERİ 0’dan VERİ 5’e. |Yalnızca bir ağ arabirimi bulunur: VERİ 0 |
 | **Kayıt** |İlk yapılandırma adımı sırasında kaydedilir. |Kayıt ayrı bir görevdir. |
-| **Hizmeti verileri şifreleme anahtarı** |Fiziksel cihazda yeniden üretin ve ardından yeni anahtarla bulut gerecini güncelleştirin. |Bulut gerecinden yeniden üretemezsiniz. |
+| **Hizmet verileri şifreleme anahtarı** |Fiziksel cihazda yeniden üretin ve ardından yeni anahtarla bulut gerecini güncelleştirin. |Bulut gerecinden yeniden üretemezsiniz. |
 | **Desteklenen birim türleri** |Hem yerel olarak sabitlenmiş hem de katmanlı birimleri destekler. |Yalnızca katmanlı birimleri destekler. |
 
 ## <a name="prerequisites-for-the-cloud-appliance"></a>Bulut gereci için önkoşullar
@@ -83,7 +84,7 @@ Bulut gereci sağlamadan önce, Azure ortamınızda aşağıdaki hazırlıkları
 * Bulut gereci için, [Azure üzerinde bir sanal ağ yapılandırın](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Premium Storage kullanıyorsanız, Premium Storage’ı destekleyen bir Azure bölgesinde sanal ağ oluşturmanız gerekir. Premium depolama bölgeleri, [bölgeye göre Azure hizmetleri listesindeki](https://azure.microsoft.com/regions/services/)disk depolaması satırına karşılık gelen bölgelerdir.
 * Kendi DNS sunucu adınızı belirtmek yerine Azure tarafından sağlanan varsayılan DNS sunucusunu kullanmanızı öneririz. DNS sunucusu adınız geçerli değilse veya DNS sunucusu IP adreslerini doğru çözümleyemiyorsa, bulut gerecini oluşturma işlemi başarısız olur.
 * Noktadan siteye ve siteden siteye isteğe bağlıdır, ancak gerekli değildir. İsterseniz, daha gelişmiş senaryolar için bu seçenekleri yapılandırabilirsiniz.
-* Bulut gereci tarafından sunulan birimleri kullanabileceğiniz sanal ağda [Azure Sanal Makineleri](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (barındırma sunucuları) oluşturabilirsiniz. Bu sunucular aşağıdaki gereksinimleri karşılamalıdır:
+* Bulut gereci tarafından sunulan birimleri kullanabileceğiniz sanal ağda [Azure Sanal Makineleri](../virtual-machines/windows/quick-create-portal.md) (barındırma sunucuları) oluşturabilirsiniz. Bu sunucular aşağıdaki gereksinimleri karşılamalıdır:
 
   * iSCSI Initiator yazılımı yüklü Windows veya Linux sanal makineleri olmalıdır.
   * Bulut gereciyle aynı sanal ağda çalışıyor olmalıdır.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73161202"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016794"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory için atlasme Jira ve Confluence Yönetici Kılavuzu
 
@@ -147,7 +147,7 @@ Aşağıdaki görüntüde hem Jira hem de Confluence içindeki yapılandırma ek
 
 * **WebSudo 'ı devre dışı bırakmak istiyorsunuz (güvenli Yönetici oturumunu devre dışı bırak)**:
 
-  * Jira için güvenli yönetici oturumları (diğer bir deyişle, yönetim işlevlerine erişmeden önce parola onayı) varsayılan olarak etkinleştirilir. Jira örneğinizdeki bu özelliği kaldırmak istiyorsanız, Jira-config. Properties dosyanızda aşağıdaki satırı belirtin:`ira.websudo.is.disabled = true`
+  * Jira için güvenli yönetici oturumları (diğer bir deyişle, yönetim işlevlerine erişmeden önce parola onayı) varsayılan olarak etkinleştirilir. Jira örneğinizdeki bu özelliği kaldırmak istiyorsanız, Jira-config. Properties dosyanızda aşağıdaki satırı belirtin:`jira.websudo.is.disabled = true`
 
   * Confluence için, [Confluence support sitesindeki](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)adımları izleyin.
 

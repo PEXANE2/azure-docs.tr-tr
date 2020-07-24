@@ -15,22 +15,20 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7936b33c51897c35444a250d82e22870182ca1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27144dcd4c7d7490aba3626264e1cb4b64fbb162
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608509"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019208"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Azure portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama
-
-[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Azure kaynakları için Yönetilen kimlikler, Azure Active Directory yönetilen bir kimlik ile Azure hizmetleri sağlar. Kodunuzda kimlik bilgileri gerekmeden Azure AD kimlik doğrulamasını destekleyen hizmetlere kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz. 
 
 Bu makalede, Azure portalını kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atamayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
@@ -46,7 +44,7 @@ Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza 
    - **Abonelik**: Kullanıcı tarafından atanan yönetilen kimliği oluşturmak için aboneliği seçin
    - **Kaynak grubu**: Kullanıcı tarafından atanan yönetilen kimliğinizi içerecek yeni bir kaynak grubu oluşturun veya mevcut bir kaynak grubunda Kullanıcı tarafından atanan yönetilen kimliği oluşturmak Için **Varolanı kullan** ' ı seçin.
    - **Konum**: Kullanıcı tarafından atanan yönetilen kimliğin dağıtılacağı bir konum seçin, örneğin **Batı ABD**.
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 
 ![Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

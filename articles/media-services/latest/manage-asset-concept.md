@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6accd303ba11c4c1406c7a157fa8176972fc7a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022916"
 ---
 # <a name="manage-assets"></a>Varlıkları yönetme
 
-Azure Media Services, bir [varlık](https://docs.microsoft.com/rest/api/media/assets) nerede 
+Azure Media Services, bir [varlık](/rest/api/media/assets) nerede 
 
 * medya dosyalarını bir varlığa yükleme,
 * Canlı akışları bir varlığa alma ve arşivleme,
@@ -56,13 +56,13 @@ Dijital dosyalar depolama alanına yüklendikten ve bir varlıkla ilişkilendiri
     ```
 2. Dijital dosyaları Varlık kapsayıcısına yüklemek için kullanmak üzere okuma-yazma izinlerine sahip bir SAS URL'si alın.
 
-    Media Services API'sini kullanarak [varlık kapsayıcısı URL'lerini listeleyebilirsiniz](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+    Media Services API'sini kullanarak [varlık kapsayıcısı URL'lerini listeleyebilirsiniz](/rest/api/media/assets/listcontainersas).
 
-    **Assetcontainersas. listcontainersas** , ayarladığınız bir [Listcontainersasinput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) parametresi alır `expiryTime` . Süre < 24 saat olarak ayarlanmalıdır.
+    **Assetcontainersas. listcontainersas** , ayarladığınız bir [Listcontainersasinput](/rest/api/media/assets/listcontainersas#listcontainersasinput) parametresi alır `expiryTime` . Süre < 24 saat olarak ayarlanmalıdır.
 
-    [Listcontainersasınput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) , her depolama hesabı için iki depolama hesabı anahtarı olduğu için bırden çok SAS URL 'si döndürür. Depolama hesabı anahtarlarının yük devretme ve sorunsuz şekilde dönüşmesine yardımcı olduğundan bir depolama hesabının iki anahtarı vardır. İlk SAS URL 'SI ilk depolama hesabı anahtarını temsil eder ve ikinci SAS URL 'SI ikinci anahtarı temsil eder.
+    [Listcontainersasınput](/rest/api/media/assets/listcontainersas#listcontainersasinput) , her depolama hesabı için iki depolama hesabı anahtarı olduğu için bırden çok SAS URL 'si döndürür. Depolama hesabı anahtarlarının yük devretme ve sorunsuz şekilde dönüşmesine yardımcı olduğundan bir depolama hesabının iki anahtarı vardır. İlk SAS URL 'SI ilk depolama hesabı anahtarını temsil eder ve ikinci SAS URL 'SI ikinci anahtarı temsil eder.
 3. Dosyaları varlık kapsayıcısına yüklemek için Azure depolama API 'Lerini veya SDK 'Larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanın.
-4. Media Services v3 API'lerini kullanarak "input" Varlığınızı işlemek üzere bir Dönüşüm ve bir İş oluşturun. Daha fazla bilgi için bkz. [dönüşümler ve işler](transform-concept.md).
+4. Media Services v3 API'lerini kullanarak "input" Varlığınızı işlemek üzere bir Dönüşüm ve bir İş oluşturun. Daha fazla bilgi için [Dönüşümler ve İşler](./transforms-jobs-concept.md) konusuna bakın.
 5. "Çıkış" kıymetinin içeriğini akışla.
 
 ### <a name="create-a-new-asset"></a>Yeni bir varlık oluşturun
@@ -76,7 +76,7 @@ Dijital dosyalar depolama alanına yüklendikten ve bir varlıkla ilişkilendiri
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-REST örneği için bkz. [rest Ile varlık oluşturma](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) örneği.
+REST örneği için bkz. [rest Ile varlık oluşturma](/rest/api/media/assets/createorupdate#examples) örneği.
 
 Örnek, açıklama, kapsayıcı adı, depolama hesabı ve diğer yararlı bilgileri belirtebileceğiniz **Istek gövdesinin** nasıl oluşturulacağını gösterir.
 
@@ -107,7 +107,7 @@ curl -X PUT \
 
 ## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Canlı akışları bir varlığa alma ve arşivleme
 
-Media Services, [canlı çıkış](https://docs.microsoft.com/rest/api/media/liveoutputs) nesnesi canlı akışınızı yakalayıp Media Services hesabınızdaki bir varlığa kaydeden dijital video kaydedicisi gibidir. Kaydedilen içerik, [varlık](https://docs.microsoft.com/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcıdır.
+Media Services, [canlı çıkış](/rest/api/media/liveoutputs) nesnesi canlı akışınızı yakalayıp Media Services hesabınızdaki bir varlığa kaydeden dijital video kaydedicisi gibidir. Kaydedilen içerik, [varlık](/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcıdır.
 
 Daha fazla bilgi için bkz.
 
@@ -145,6 +145,6 @@ Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](enti
 
 Nasıl karşıya yükleneceğini, kodlayabileceğinizi, analiz edeceğinizi, canlı ve isteğe bağlı olarak akışı gösteren tam kod örneklerine bakın: 
 
-* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
-* [.Net](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
-* [Rest](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [Java](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
+* [.Net](/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
+* [Rest](/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).

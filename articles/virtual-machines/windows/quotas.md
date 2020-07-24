@@ -8,22 +8,23 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 6640640248854d91078203012a01d8865845702a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7ba5f15b30e5515c9b5d8c5104f65d411b220a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020279"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Sanal makine vCPU kotaları
 
 Sanal makineler ve sanal makine ölçek kümeleri için vCPU kotaları her bir bölgede her bir abonelik için iki katmanda düzenlenir. İlk katman toplam bölgesel vCPU sayısı ve ikinci katman D serisi vCPU 'Lar gibi çeşitli VM boyutu ailesi çekirdekleri. Yeni bir VM 'nin dağıtıldığı her zaman, sanal makine için vCPU 'Lar VM boyut ailesi için vCPU kotasını veya toplam bölgesel vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmez. Ayrıca, bölgedeki toplam sanal makine sayısı için bir kota de vardır. Bu kotaların her biri hakkındaki ayrıntılar, [Azure Portal](https://portal.azure.com) **abonelik** sayfasının **kullanım + kotalar** bölümünde görünebilir veya PowerShell kullanarak değerleri sorgulayabilirsiniz.
 
 > [!NOTE]
-> Kota, birlikte kullanılan ve serbest bırakılmış toplam çekirdek sayısına göre hesaplanır. Ek çekirdeklere ihtiyacınız varsa, daha fazla ihtiyaç duyulmayan [bir kota artışı](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) veya silme VM 'leri isteyin. 
+> Kota, birlikte kullanılan ve serbest bırakılmış toplam çekirdek sayısına göre hesaplanır. Ek çekirdeklere ihtiyacınız varsa, daha fazla ihtiyaç duyulmayan [bir kota artışı](../../azure-portal/supportability/resource-manager-core-quotas-request.md) veya silme VM 'leri isteyin. 
  
 ## <a name="check-usage"></a>Kullanımı denetleme
 
-Kota kullanımınızı denetlemek için [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) cmdlet 'ini kullanabilirsiniz.
+Kota kullanımınızı denetlemek için [Get-AzVMUsage](/powershell/module/az.compute/get-azvmusage) cmdlet 'ini kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzVMUsage -Location "East US"
@@ -75,8 +76,8 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>Ayrılmış VM Örnekleri
 VM boyutu esnekliği olmayan tek bir aboneliğin kapsamına alınmış ayrılmış VM örnekleri, vCPU kotaları için yeni bir boyut ekler. Bu değerler, belirtilen boyutun abonelikte dağıtılabilir olması gereken örneklerinin sayısını anlatır. Kota, ayrılmış VM örneklerinin abonelikte dağıtılabilir olmasını sağlamak için kotanın ayrıldığından emin olmak üzere kota sisteminde bir yer tutucu olarak çalışır. Örneğin, belirli bir abonelikte 10 Standard_D1 ayrılmış VM örneği varsa, Standard_D1 ayrılmış VM örnekleri için kullanım sınırı 10 olur. Bu, Azure 'un, Standard_D1 örnekleri için kullanılmak üzere toplam bölgesel vCPU kotasında her zaman en az 10 vCPU olduğundan ve Standard_D1 örnekleri için kullanılacak standart D ailesi vCPU kotasında en az 10 vCPU olduğundan emin olmasına neden olur.
 
-Tek bir aboneliği satın almak için kota artışı gerekiyorsa, aboneliğinizde [bir kota artışı isteyebilirsiniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
+Tek bir aboneliği satın almak için kota artışı gerekiyorsa, aboneliğinizde [bir kota artışı isteyebilirsiniz](../../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Faturalandırma ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json).
+Faturalandırma ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json).

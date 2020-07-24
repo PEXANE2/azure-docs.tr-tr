@@ -1,5 +1,5 @@
 ---
-title: Windows 7 sanal makinesini dağıtma Windows sanal masaüstü-Azure
+title: Windows 7 sanal makinesini dağıtma Windows sanal masaüstü Spring 2020-Azure
 description: Windows sanal masaüstü 'nde Windows 7 sanal makinesini yapılandırma ve dağıtma.
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 542d0bcea6cfae2af2918d699952d4c054bd68cb
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: b589890f7b65b41cf6b7ba4fdf53b71173ed6a38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277679"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020449"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
 

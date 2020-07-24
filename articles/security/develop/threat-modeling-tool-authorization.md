@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 809e9fa5143ede65f5bc6bf8d81020d508272fd8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021843"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Güvenlik çerçevesi: yetkilendirme | Karşı 
 | Ürün/hizmet | Makale |
@@ -48,8 +49,8 @@ ms.locfileid: "85322667"
 | **Bileşen**               | Makine güven sınırı | 
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Uygun ACL 'Lerin cihazdaki verilere yetkisiz erişimi kısıtlamak için yapılandırıldığından emin olun|
 
 ## <a name="ensure-that-sensitive-user-specific-application-content-is-stored-in-user-profile-directory"></a><a id="sensitive-directory"></a>Kullanıcıya özgü gizli uygulama içeriğinin Kullanıcı profili dizininde depolandığından emin olun
@@ -59,8 +60,8 @@ ms.locfileid: "85322667"
 | **Bileşen**               | Makine güven sınırı | 
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Gizli kullanıcıya özgü uygulama içeriğinin Kullanıcı profili dizininde depolandığından emin olun. Bu, makinenin birden çok kullanıcının diğer verilerine erişmesini önlemektir.|
 
 ## <a name="ensure-that-the-deployed-applications-are-run-with-least-privileges"></a><a id="deployed-privileges"></a>Dağıtılan uygulamaların en az ayrıcalıklarla çalıştığından emin olun
@@ -70,8 +71,8 @@ ms.locfileid: "85322667"
 | **Bileşen**               | Makine güven sınırı | 
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Dağıtılan uygulamanın en az ayrıcalıklarla çalıştığından emin olun. |
 
 ## <a name="enforce-sequential-step-order-when-processing-business-logic-flows"></a><a id="sequential-logic"></a>İş mantığı akışlarını işlerken sıralı adım sırasını zorla
@@ -81,8 +82,8 @@ ms.locfileid: "85322667"
 | **Bileşen**               | Web Uygulaması | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Bu aşamanın, orijinal bir kullanıcı tarafından çalıştırıldığını doğrulamak için, uygulamayı yalnızca sıralı adım düzeninde işlemek üzere uygulamayı zorlamak, tüm adımların gerçekçi bir insan süresi içinde işlenmesini, atlanan adımları, başka bir kullanıcıdan işlenen adımları veya çok hızlı bir şekilde gönderilme işlemlerini yapmak isteyebilirsiniz.|
 
 ## <a name="implement-rate-limiting-mechanism-to-prevent-enumeration"></a><a id="rate-enumeration"></a>Numaralandırmayı engellemek için hız sınırlaması mekanizmasını uygulayın
@@ -92,8 +93,8 @@ ms.locfileid: "85322667"
 | **Bileşen**               | Web Uygulaması | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Hassas tanımlayıcıların rastgele olduğundan emin olun. Anonim sayfalarda CAPTCHA denetimi uygulayın. Hata ve özel durumun belirli verileri açığa çıkarmadığından emin olun|
 
 ## <a name="ensure-that-proper-authorization-is-in-place-and-principle-of-least-privileges-is-followed"></a><a id="principle-least-privilege"></a>Doğru yetkilendirmenin yerinde olduğundan ve en az ayrıcalık ilkesinin izlendiğinden emin olun
@@ -103,8 +104,8 @@ ms.locfileid: "85322667"
 | **Bileşen**               | Web Uygulaması | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | <p>Bu ilke, Kullanıcı hesabına yalnızca kullanıcıların çalışması için gerekli olan ayrıcalıkların verilmesi anlamına gelir. Örneğin, bir yedekleme kullanıcısının yazılım yüklemesi gerekmez: Bu nedenle, yedekleme kullanıcısının yalnızca yedekleme ve yedeklemeyle ilgili uygulamaları çalıştırma hakları vardır. Yeni yazılım yükleme gibi başka ayrıcalıklar engellenir. Bu ilke, genellikle normal bir kullanıcı hesabında çalışan bir kişisel bilgisayar kullanıcısına uygulanır ve ayrıcalıklı, parola korumalı bir hesabı (yani, Süper Kullanıcı) yalnızca durum size kesinlikle talep edildiğinde açar. </p><p>Bu ilke, Web uygulamalarınız için de uygulanabilir. Yalnızca oturumları kullanan rol tabanlı kimlik doğrulama yöntemlerine bağlı olarak, kullanıcılara bir veritabanı tabanlı kimlik doğrulama sistemi yoluyla ayrıcalık atamak istiyoruz. Kullanıcının doğru şekilde oturum açmış olup olmadığını belirlemek için oturumları hala kullandığımızda, bu kullanıcıyı belirli bir rol ile atamak yerine, sistem üzerinde hangi eylemlerin ayrıcalıklı olduğunu doğrulama ayrıcalıklarına sahip olduğunu belirlemek için de oturum kullanırız. Ayrıca, bu yöntemin büyük bir uzmanı olması, bir kullanıcıya daha az ayrıcalık atanması gerektiğinde değişiklikleriniz, aksi takdirde önce süresi dolacak olan oturuma bağlı olmadığından değişiklikler anında uygulanır.</p>|
 
 ## <a name="business-logic-and-resource-access-authorization-decisions-should-not-be-based-on-incoming-request-parameters"></a><a id="logic-request-parameters"></a>İş mantığı ve kaynak erişimi yetkilendirme kararları gelen istek parametrelerine dayanmamalıdır
@@ -114,8 +115,8 @@ ms.locfileid: "85322667"
 | **Bileşen**               | Web Uygulaması | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Bir kullanıcının belirli verileri incelemeye kısıtlı olup olmadığını kontrol ettiğinizde, erişim kısıtlamaları sunucu tarafında işlenmelidir. Kullanıcı kimliği, oturum açma sırasında bir oturum değişkeni içinde depolanmalıdır ve veritabanından kullanıcı verilerini almak için kullanılmalıdır |
 
 ### <a name="example"></a>Örnek
@@ -133,8 +134,8 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | **Bileşen**               | Web Uygulaması | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | <p>Gizli statik ve yapılandırma dosyaları Web kökünde tutulmamalıdır. İçeriğin genel olması gerekmediği için, içeriğin kendisi için uygun erişim denetimlerinin uygulanması veya kaldırılması gerekir.</p><p>Ayrıca, zorla göz atma genellikle bir sunucudaki dizinleri ve dosyaları numaralandırmak için mümkün olduğunca fazla URL 'ye erişmeyi deneyerek, deneme yanılma teknikleriyle birleştirilir. Saldırganlar, yaygın olarak varolan dosyaların tüm çeşitlemelerini denetleyebilir. Örneğin, bir parola dosya araması psswd.txt, password.htm, Password. dat ve diğer çeşitlemeler dahil olmak üzere dosyaları kapsayabilir.</p><p>Bunu azaltmak için, deneme yanılma girişimlerini algılama özellikleri dahil edilmelidir.</p>|
 
 ## <a name="ensure-that-least-privileged-accounts-are-used-to-connect-to-database-server"></a><a id="privileged-server"></a>Veritabanı sunucusuna bağlanmak için en az ayrıcalıklı hesapların kullanıldığından emin olun
@@ -144,7 +145,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | **Bileşen**               | Veritabanı | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [SQL izinleri hiyerarşisi](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL securables](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Adımlar** | Veritabanına bağlanmak için en az ayrıcalıklı hesaplar kullanılmalıdır. Uygulama oturum açma, veritabanında kısıtlamalı ve yalnızca seçili saklı yordamları yürütmelidir. Uygulamanın oturum açma, doğrudan tablo erişimi içermemelidir. |
 
@@ -168,7 +169,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Veritabanı | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [SQL izinleri hiyerarşisi](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL securables](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Adımlar** | SysAdmin sabit sunucu rolünün üyeleri çok sınırlı olmalı ve hiçbir şekilde uygulamalar tarafından kullanılan hesapları içermemelidir.  Lütfen roldeki kullanıcıların listesini gözden geçirin ve gereksiz hesapları kaldırın|
 
@@ -190,7 +191,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Azure Event Hub | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Adımlar** | Tek tek cihaz belirteçleri oluşturmak için SAS anahtarı kullanılır. Belirli bir yayımcının cihaz belirtecini oluştururken yalnızca bir salt-Send izin SAS anahtarı kullanın|
 
@@ -201,7 +202,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Azure Event Hub | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Adımlar** | Olay Hub 'ına doğrudan erişim veren bir belirteç cihaza verilmemelidir. Yalnızca bir yayımcıya erişim sağlayan cihaz için en az ayrıcalıklı bir belirteç kullanılması, bir standart dışı veya güvenliği aşılmış bir cihaz olup olmadığı tespit etmenize yardımcı olur.|
 
@@ -212,7 +213,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Azure Event Hub | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Adımlar** | Olay Hub 'ına bağlanan çeşitli arka uç uygulamalarına en az ayrıcalık izinleri verin. Her bir arka uç uygulaması için ayrı SAS anahtarları oluşturun ve yalnızca gerekli izinleri (gönderme, alma veya yönetme) sağlayın.|
 
@@ -223,8 +224,8 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Azure belge DB | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Kaynak belirteci Azure Cosmos DB bir izin kaynağıyla ilişkilendirilir ve bir veritabanının kullanıcısı ile kullanıcının belirli bir Azure Cosmos DB uygulama kaynağına (örn. koleksiyon, belge) sahip olduğu izni yakalar. İstemci, bir mobil veya masaüstü istemcisi gibi son kullanıcı uygulaması gibi ana veya salt okunurdur anahtarlar ile güvenilemiyorsa Azure Cosmos DB erişmek için her zaman bir kaynak belirteci kullanın. Bu anahtarları güvenli bir şekilde depolayabilen arka uç uygulamalarından ana anahtar veya salt okuma anahtarları kullanın.|
 
 ## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>RBAC kullanarak Azure aboneliğine ayrıntılı erişim yönetimini etkinleştirme
@@ -234,9 +235,9 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Azure Güven sınırı | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanın](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
-| **Adımlar** | Azure Rol Tabanlı Erişim Denetimi (RBAC), Azure için ayrıntılı erişim yönetimi sağlar. RBAC kullanarak, yalnızca kullanıcıların işlerini yapmak için gereksinim duyduğu erişim miktarını verebilirsiniz.|
+| **Adımlar** | Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. RBAC kullanarak, yalnızca kullanıcıların işlerini yapmak için gereksinim duyduğu erişim miktarını verebilirsiniz.|
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>RBAC kullanarak istemcinin küme işlemlerine erişimini kısıtlama
 
@@ -256,8 +257,8 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Dynamics CRM | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Güvenlik modellemesini gerçekleştirin ve gereken yerlerde alan düzeyi güvenliği kullanın|
 
 ## <a name="perform-security-modeling-of-portal-accounts-keeping-in-mind-that-the-security-model-for-the-portal-differs-from-the-rest-of-crm"></a><a id="portal-security"></a>Portalın güvenlik modelinin CRM 'nin geri kalanından farklı olduğunu aklınızda tutarak Portal hesaplarının güvenlik modellemesini gerçekleştirin
@@ -267,8 +268,8 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Dynamics CRM portalı | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Portalın güvenlik modelinin CRM 'nin geri kalanından farklı olduğunu aklınızda tutarak Portal hesaplarının güvenlik modellemesini gerçekleştirin|
 
 ## <a name="grant-fine-grained-permission-on-a-range-of-entities-in-azure-table-storage"></a><a id="permission-entities"></a>Azure Tablo depolama alanındaki çeşitli varlıklar üzerinde hassas izinler verin
@@ -289,7 +290,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Azure Storage | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Rol tabanlı Access Control (RBAC) ile depolama hesabınızı güvenli hale getirme](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
 | **Adımlar** | <p>Yeni bir depolama hesabı oluşturduğunuzda, klasik veya Azure Resource Manager dağıtım modelini seçersiniz. Azure 'da kaynak oluşturmak için klasik model, yalnızca aboneliğe hiçbir şey erişimi ve depolama hesabını sırayla sağlar.</p><p>Azure Resource Manager modeliyle, depolama hesabını bir kaynak grubuna yerleştirip, bu belirli depolama hesabının yönetim düzlemine erişimi Azure Active Directory kullanarak kontrol edersiniz. Örneğin, belirli kullanıcılara depolama hesabı anahtarlarına erişme özelliği verebilirsiniz, ancak diğer kullanıcılar depolama hesabı hakkındaki bilgileri görüntüleyebilir, ancak depolama hesabı anahtarlarına erişemez.</p>|
 
@@ -300,8 +301,8 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | Mobil Istemci | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | <p>Telefonun kökü veya daha kopuk olması durumunda uygulama kendi yapılandırmasını ve Kullanıcı verilerini korumaya almalıdır. Kök ayırma/JAIL bölünmesi, normal kullanıcıların kendi telefonlarında yapamayacağı yetkisiz erişim anlamına gelir. Bu nedenle uygulamanın, telefonun kökü olup olmadığını algılamak için uygulama başlangıcında örtük algılama mantığı olmalıdır.</p><p>Algılama mantığı yalnızca normal olarak yalnızca kök kullanıcının erişebileceği dosyalara erişebilir, örneğin:</p><ul><li>/System/App/superuser,APK</li><li>/sbin/su</li><li>/system/bin/su</li><li>/system/xbin/su</li><li>/data/local/xbin/su</li><li>/data/local/bin/su</li><li>/system/sd/xbin/su</li><li>/system/bin/failsafe/su</li><li>/Data/Local/su</li></ul><p>Uygulama bu dosyalardan herhangi birine erişebildiğinden, uygulamanın kök kullanıcı olarak çalıştığını gösterir.</p>|
 
 ## <a name="weak-class-reference-in-wcf"></a><a id="weak-class-wcf"></a>WCF 'de zayıf sınıf başvurusu
@@ -311,7 +312,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Bileşen**               | WCF | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Adımlar** | <p>Sistem zayıf bir sınıf başvurusu kullanır ve bu da bir saldırganın yetkisiz kod yürütmesine izin verebilir. Program, benzersiz şekilde tanımlanmayan Kullanıcı tanımlı bir sınıfa başvurur. .NET, bu zayıf tanımlı sınıfı yüklediğinde CLR tür yükleyicisi aşağıdaki konumlarda belirtilen sırada sınıfı arar:</p><ol><li>Türün derlemesi biliniyorsa, yükleyici yapılandırma dosyasının yeniden yönlendirme konumlarını, GAC 'yi, yapılandırma bilgilerini kullanarak geçerli derlemeyi ve uygulama temel dizinini arar</li><li>Derleme bilinmiyorsa, yükleyici geçerli derlemeyi, mscorlib 'yi ve TypeResolve olay işleyicisi tarafından döndürülen konumu arar</li><li>Bu CLR arama sırası tür Iletme mekanizması ve AppDomain. TypeResolve olayı gibi kancalarla değiştirilebilir</li></ol><p>Bir saldırgan aynı ada sahip alternatif bir sınıf oluşturup clr 'nin ilk yükleneceği alternatif bir konuma yerleştirilerek CLR arama sırasını kullanıyorsa, CLR istemeden saldırgan tarafından sağlanan kodu yürütür</p>|
 
@@ -348,7 +349,7 @@ Tam nitelikli (tanımlayıcı) adların kullanılması, bir türü benzersiz bir
 | **Bileşen**               | WCF | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
-| **Öznitelikler**              | YOK  |
+| **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Adımlar** | <p>Bu hizmet bir yetkilendirme denetimi kullanmaz. İstemci belirli bir WCF hizmetini çağırdığında, arayanın sunucuda hizmet yöntemini yürütme iznine sahip olduğunu doğrulayan çeşitli yetkilendirme şemaları sağlar. Yetkilendirme denetimleri WCF Hizmetleri için etkinleştirilmemişse, kimliği doğrulanmış bir Kullanıcı ayrıcalık yükseltme elde edebilir.</p>|
 
@@ -447,8 +448,8 @@ public class CustomController : ApiController
 | **Bileşen**               | IoT cihazı | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | <p>Cihaz, çağıranın istenen eylemi gerçekleştirmek için gerekli izinlere sahip olup olmadığını denetlemek için çağrıyı yapana yetki almalıdır. Örneğin, cihazın buluttan izlenebilecek bir akıllı kapı kilidi olduğunu ve ayrıca, kapıyı uzaktan kilitleme gibi işlevler sağladığını varsayalım.</p><p>Akıllı kapı kilidi, yalnızca biri bir kartla kapıya yakın bir şekilde geldiğinde kilit açma işlevi sağlar. Bu durumda, uzak komut ve denetim uygulamasının uygulamanın, kapısının kilidini açmak için bir komut gönderme yetkisi olmadığı sürece, kapısının kilidini açmak için herhangi bir işlev sağlamacağından bu şekilde yapılması gerekir.</p>|
 
 ## <a name="perform-authorization-checks-in-the-field-gateway-if-it-supports-various-actions-that-require-different-permission-levels"></a><a id="field-permission"></a>Farklı izin düzeyleri gerektiren çeşitli eylemleri destekliyorsa, alan ağ geçidinde yetkilendirme denetimleri gerçekleştirin
@@ -458,6 +459,6 @@ public class CustomController : ApiController
 | **Bileşen**               | IoT alan ağ geçidi | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | YOK  |
-| **Başvurular**              | YOK  |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | Yok  |
 | **Adımlar** | Alan ağ geçidi, çağıranın istenen eylemi gerçekleştirmek için gerekli izinlere sahip olup olmadığını denetlemek için çağrıyı yapana yetki verir. Örneğin, buna bağlanan bir alan ağ geçidi v/s cihazlarını yapılandırmak için kullanılan yönetici kullanıcı arabirimi/API 'SI için farklı izinler olmalıdır.|

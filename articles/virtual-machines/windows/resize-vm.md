@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98a0a1a2ce0a5122a953b8cc9916e2bf56955feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020246"
 ---
 # <a name="resize-a-windows-vm"></a>Bir Windows VM'yi yeniden boyutlandırma
 
@@ -25,7 +25,7 @@ VM 'niz Premium Depolama kullanıyorsa, Premium Depolama desteğini almak için 
 
 ## <a name="use-the-portal"></a>Portalı kullanma
 
-1. [Azure Portal](https://portal.azure.com)açın.
+1. [Azure portalını](https://portal.azure.com) açın.
 1. Sanal makine için sayfayı açın.
 1. Sol taraftaki menüde **Boyut**' u seçin.
 1. Kullanılabilir boyutlar listesinden yeni bir boyut seçip **yeniden boyutlandır**' ı seçin.
@@ -126,5 +126,4 @@ $vmIds = $as.VirtualMachinesReferences
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ek ölçeklenebilirlik için birden fazla sanal makine örneği çalıştırın ve ölçeği ölçeklendirin. Daha fazla bilgi için bkz. [sanal makine ölçek kümesindeki Windows makinelerini otomatik olarak ölçeklendirme](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
-
+Ek ölçeklenebilirlik için birden fazla sanal makine örneği çalıştırın ve ölçeği ölçeklendirin. Daha fazla bilgi için bkz. [sanal makine ölçek kümesindeki Windows makinelerini otomatik olarak ölçeklendirme](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md).

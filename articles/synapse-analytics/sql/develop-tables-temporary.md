@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE SQL ile geçici tabloları kullanma
+title: SYNAPSE SQL 'de geçici tablolar kullanma
 description: SYNAPSE SQL 'de geçici tabloları kullanmaya yönelik temel kılavuz.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e871b7959c11d7fbae650abf8394811b9088ed1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020569"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>SYNAPSE SQL 'de geçici tablolar
 
@@ -33,7 +33,7 @@ SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldı
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
-Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örnek:
+Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örneğin:
 
 ```sql
 CREATE TABLE #stats_ddl

@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2226d7a769caf049af30bbca81ca3079d72970b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023135"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK ile filtre oluşturma
 
@@ -25,21 +26,21 @@ ms.locfileid: "75779255"
 
 Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
 
-Bu konu başlığı altında, Isteğe bağlı bir video için filtre tanımlamak ve [hesap filtreleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) ve [varlık filtreleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)oluşturmak için Media Services .NET SDK 'nın nasıl kullanılacağı gösterilmektedir. 
+Bu konu başlığı altında, Isteğe bağlı bir video için filtre tanımlamak ve [hesap filtreleri](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) ve [varlık filtreleri](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)oluşturmak için Media Services .NET SDK 'nın nasıl kullanılacağı gösterilmektedir. 
 
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - [Filtreleri ve dinamik bildirimleri](filters-dynamic-manifest-overview.md)gözden geçirin.
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
-- [API 'lere erişmek](access-api-cli-how-to.md) için gereken bilgileri alın
+- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
+- [API 'lere erişmek](./access-api-howto.md) için gereken bilgileri alın
 - [.NET SDK 'yı kullanmaya başlama](stream-files-tutorial-with-api.md#start_using_dotnet) hakkında bilgi için [Azure Media Services kullanarak karşıya yükleme, kodlama ve akışı](stream-files-tutorial-with-api.md) gözden geçirin
 
 ## <a name="define-a-filter"></a>Filtre tanımlama  
 
-.NET ' te, izleme seçimlerini [Filtertrackselection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) ve [Filtertrackpropertycondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) sınıflarıyla birlikte yapılandırırsınız. 
+.NET ' te, izleme seçimlerini [Filtertrackselection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) ve [Filtertrackpropertycondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) sınıflarıyla birlikte yapılandırırsınız. 
 
 Aşağıdaki kod, EC-3 olan herhangi bir ses parçasını ve 0-1000000 aralığında bit hızına sahip herhangi bir video parçasını içeren bir filtre tanımlar.
 
@@ -118,5 +119,3 @@ Aşağıdaki tabloda, filtre içeren URL 'lerin bazı örnekleri gösterilmekted
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Video akışı](stream-files-tutorial-with-api.md) 
-
-

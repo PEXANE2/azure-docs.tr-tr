@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019072"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle ilgili SSS ve bilinen sorunlar
 
@@ -55,9 +55,12 @@ Yönetilen kimliklerin dizinde uygulama nesnesi yoktur, bu da genellikle MS Grap
 
 Hayır, Azure Cloud Services Azure kaynakları için yönetilen kimlikleri desteklemeye yönelik bir plan yoktur.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Azure kaynakları için Yönetilen kimlikler Active Directory Authentication Library (ADAL) veya Microsoft kimlik doğrulama kitaplığı (MSAL) ile çalışır mı?
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>Yönetilen bir kimlikle ilişkili kimlik bilgileri nedir? Ne kadar geçerlidir ve ne sıklıkta döndürülür?
 
-Hayır, Azure kaynakları için Yönetilen kimlikler henüz ADAL veya MSAL ile tümleştirmemiştir. REST uç noktasını kullanarak Azure kaynakları için Yönetilen kimlikler için bir belirteç alma hakkında daha fazla bilgi için bkz. bir [Azure VM 'de Azure kaynakları için Yönetilen kimlikler kullanma, erişim belirteci alma](how-to-use-vm-token.md).
+> [!NOTE]
+> Yönetilen kimliklerin kimlik doğrulaması, bildirimde bulunulmadan değişikliğe tabi olan dahili bir uygulama ayrıntısıyla yapılır.
+
+Yönetilen kimlikler sertifika tabanlı kimlik doğrulaması kullanır. Her yönetilen kimliğin kimlik bilgileri 90 gün süre sonu içerir ve 45 gün sonra alınır.
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerin güvenlik sınırı nedir?
 

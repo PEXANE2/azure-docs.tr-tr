@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528987"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021656"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure sanal makineleri için bölgeyi bölgeye olağanüstü durum kurtarmaya etkinleştirme
 
@@ -20,7 +20,6 @@ Bu makalede, Azure sanal makinelerini aynı Azure bölgesindeki bir kullanılabi
 
 >[!NOTE]
 >
->- Site Recovery Şu anda Portal aracılığıyla bölge olağanüstü durum kurtarmaya yönelik kurtarma planlarını desteklememektedir. Bölgenin olağanüstü durum kurtarma için kurtarma planlarından yararlanmak için lütfen PowerShell veya REST API kullanın. 
 >- Bölge için olağanüstü durum kurtarma desteği şu anda iki bölgeyle sınırlı: Güneydoğu Asya ve UK Güney.  
 >- Site Recovery, müşteri verileri, sistem olağanüstü durum kurtarma için bölge kullanırken dağıtıldığı bölgenin dışına taşımaz veya depolamaz. Müşteriler, bir kurtarma hizmetleri kasasını tercih ettikleri farklı bir bölgeden seçebilirler. Kurtarma Hizmetleri Kasası meta veriler içeriyor ancak gerçek müşteri verisi yok.
 

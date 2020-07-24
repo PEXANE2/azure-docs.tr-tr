@@ -5,26 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5e5a4075705e43dc0ac37181bf33b078013177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81c3715995d0d53cd72acf7277f46a279fa4cfb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555225"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019667"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
 
-Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan dört API vardır. İlk API, **riskDetection**, hem Kullanıcı hem de oturum açma ile bağlantılı risk algılamaları ve algılamayla ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum**açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. Dördüncü API, **ıdentityriskevents**, [risk algılamaları](../reports-monitoring/concept-risk-events.md) ve ilgili bilgilerin listesi için Microsoft Graph sorgulamanızı sağlar. Identityriskevents API 'SI 10 Ocak 2020 tarihinde kullanım dışı bırakılacak. Bunun yerine **riskDetections** API 'sini kullanmanızı öneririz. Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
+Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan üç API vardır. İlk API, **riskDetection**, hem Kullanıcı hem de oturum açma ile bağlantılı risk algılamaları ve algılamayla ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum**açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. 
 
-* [riskDetection API 'SI](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
-* [riskyUsers API 'SI](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
-* [Oturum açma API 'SI](/graph/api/resources/signin?view=graph-rest-v1.0)
+Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
+
+* [riskDetection API'si](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
+* [riskyUsers API'si](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
+* [signIn API'si](/graph/api/resources/signin?view=graph-rest-v1.0)
 
 ## <a name="connect-to-microsoft-graph"></a>Microsoft Graph 'a bağlanma
 
@@ -48,7 +50,7 @@ Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adım
 1. **Oluştur** sayfasında, aşağıdaki adımları uygulayın:
    1. **Ad** metin kutusuna uygulamanız için bir ad yazın (örneğin: Azure AD risk algılama API 'si).
    1. **Desteklenen hesap türleri**altında, API 'leri kullanacak hesapların türünü seçin.
-   1. **Kaydol**’u seçin.
+   1. **Kaydet**’i seçin.
 1. **Uygulama kimliğini**kopyalayın.
 
 ### <a name="configure-api-permissions"></a>API izinlerini yapılandırma
@@ -68,7 +70,7 @@ Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adım
 1. Oluşturduğunuz **uygulamadan** **Sertifikalar & parolaları**' nı seçin.
 1. **İstemci gizli**dizileri altında **yeni istemci parolası**' nı seçin.
    1. İstemciye gizli dizi **açıklaması** verin ve kullanım süresi sonu süresini kuruluş ilkelerinize göre ayarlayın.
-   1. **Ekle**'yi seçin.
+   1. **Ekle**’yi seçin.
 
    > [!NOTE]
    > Bu anahtarı kaybederseniz, bu bölüme dönüp yeni bir anahtar oluşturmanız gerekir. Bu anahtarı gizli tut: verilerinize erişebilen herkes, verilerinize erişebilir.

@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 674befe7d01d0ef88026afeb2cb9179b167a88ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357945"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019740"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Kesintisiz çoklu oturum açma Azure Active Directory: sık sorulan sorular
 
@@ -54,7 +54,7 @@ Ayrıca, bir uygulama Azure AD uç noktalarına kiracı olarak ayarlanan bir otu
 | Uygulama adı | Kullanılacak uygulama URL 'SI |
 | -- | -- |
 | SharePoint Online | https: \/ /contoso.SharePoint.com |
-| Azure portal | https: \/ /Portal.Azure.com/contoso.com |
+| Azure portalı | https: \/ /Portal.Azure.com/contoso.com |
 
 Yukarıdaki tablolarda, kiracınızın doğru uygulama URL 'Lerine ulaşmak için "contoso.com" yerine etki alanı adınızı koyun.
 
@@ -102,6 +102,10 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
    >Kullanılan etki alanı yönetici hesabı, protected Users grubunun bir üyesi olmamalıdır. Öyleyse, işlem başarısız olur.
 
    2. Çağrısı yapın `Update-AzureADSSOForest -OnPremCredentials $creds` . Bu komut, `AZUREADSSO` Bu belırlı ad ormanındaki bilgisayar hesabının Kerberos şifre çözme anahtarını güncelleştirir ve Azure AD 'de güncelleştirir.
+   
+   >[!NOTE]
+   >Bir etki alanı yöneticisi değilseniz ve etki alanı yöneticisi tarafından izinler atadıysanız,`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   
    3. Özelliği ayarladığınız her AD Ormanı için önceki adımları tekrarlayın.
 
    >[!IMPORTANT]

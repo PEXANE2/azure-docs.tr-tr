@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 01d41b20c543262280e215cf4e31fd0cccce877f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7f6de717f0ed9a2e27e15199b6f0ea566e0fdcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021639"
 ---
 # <a name="connect-your-pulse-connect-secure-to-azure-sentinel"></a>Azure Sentinel 'de Pulse Connect 'i güvenli hale getirin
+
+> [!IMPORTANT]
+> Azure Sentinel 'de Pulse Connect Secure Data Connector Şu anda genel önizleme aşamasındadır.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, [Pulse Connect güvenli](https://www.pulsesecure.net/products/pulse-connect-secure/) Gerecinizin Azure Sentinel 'e nasıl bağlanacağı açıklanır. Pulse Connect Secure Data Connector, Azure Sentinel ile Pulse Connect güvenli günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. Pulse Connect Secure ve Azure Sentinel arasında tümleştirme, syslog kullanımını sağlar.
 

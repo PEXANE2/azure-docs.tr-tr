@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a13236294f74bbe4bdaf8c1a30408afad09d9796
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a94d356cb3c0345f575b4b5a44aa7f228535e66d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225328"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019888"
 ---
 # <a name="importing-and-exporting-azure-ad-connect-configuration-settings-public-preview"></a>Azure AD Connect yapılandırma ayarlarını içeri ve dışarı aktarma (Genel Önizleme) 
 
@@ -24,7 +24,7 @@ Azure AD Connect dağıtımları, tek bir orman hızlı modundan yüklemeden, ö
 
 Yapılandırma Azure AD Connect sihirbazından her değiştirildiğinde, yeni zaman damgalı JSON ayarları dosyası **%ProgramData%\AADConnect**' e otomatik olarak verilir. Ayarlar dosya adı, **uygulanan-SynchronizationPolicy-* biçimindedir. **Dosya adının son bölümünün zaman damgası olduğu JSON. 
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Yalnızca Azure AD Connect tarafından yapılan değişiklikler otomatik olarak verilir. Güncel bir kopyayı sürdürmek için gerektiğinde PowerShell, Synchronization Service Manager veya eşitleme kuralları Düzenleyicisi kullanılarak yapılan tüm değişiklikler isteğe bağlı olarak verilmelidir. İsteğe bağlı dışarı aktarma, bir ayarların bir kopyasını olağanüstü durum kurtarma amacıyla güvenli bir konuma yerleştirmek için de kullanılabilir. 
 
 ## <a name="exporting-azure-ad-connect-settings"></a>Azure AD Connect ayarları dışarı aktarılıyor 
@@ -59,8 +59,8 @@ Yükleme deneyimi sırasında yapılabilecek tek değişiklikler aşağıda veri
 
 ![Dizinlerinizi bağlama](media/how-to-connect-import-export-config/import2.png)
 
->[!NOTE]
->Birincil rolde yalnızca bir eşitleme sunucusu olabilir ve yapılandırma değişiklikleri Azure 'a etkin bir şekilde dışarı aktarabilirsiniz. Diğer tüm sunucuların hazırlama modunda yerleştirilmesi gerekir. 
+> [!NOTE]
+> Birincil rolde yalnızca bir eşitleme sunucusu olabilir ve yapılandırma değişiklikleri Azure 'a etkin bir şekilde dışarı aktarabilirsiniz. Diğer tüm sunucuların hazırlama modunda yerleştirilmesi gerekir. 
 
 ## <a name="migrating-settings-from-an-existing-server"></a>Ayarları var olan bir sunucudan geçirme 
 
@@ -71,21 +71,21 @@ Geçiş için, Yeni yüklemede kullanılmak üzere var olan ayarları çıkaran 
 ### <a name="migration-process"></a>Geçiş Işlemi 
 Ayarları geçirmek için aşağıdakileri yapın:
 
-1. Yeni hazırlama sunucusunda cmd 'yi yönetici olarak açın.
-2. Aşağıdakileri çalıştırarak **AzureADConnect.msi** ayıklayın: `msiexec /a msifile/qb TARGETDIR=targetpath` **msıfile** , MSI adresidir ve **targetPath** , dosyaları ayıklamak istediğiniz dizindir.
-   
-   Örneğinde`msiexec /a "C:\Holding\AzureADConnect.msi" TARGETDIR="C:\extractedfiles"`
-3. Microsoft Azure AD Connect\Tools dizininden **MigrateSettings.ps1** var olan sunucudaki bir konuma kopyalayın.  Örneğin, C:\setup.  Burada kurulum, var olan sunucuda oluşturulmuş bir dizindir. 
-![Dizinlerinizi bağlama](media/how-to-connect-import-export-config/migrate1.png)
+1. Yeni hazırlama sunucusunda **AzureADConnect.msi** başlatın ve Azure AD Connect hoş geldiniz sayfasından durun.
 
-4. Aşağıda gösterildiği gibi betiği çalıştırın ve tüm alt düzey sunucu yapılandırma dizinini kaydedin. Bu dizini yeni hazırlama sunucusuna kopyalayın. Lütfen tüm **aktarılmış-ServerConfiguration-*** klasörünü yeni sunucuya kopyalamanız gerektiğini unutmayın. 
- ![Dizinlerinizi bağlama](media/how-to-connect-import-export-config/migrate2.png)
+2. Microsoft Azure AD Connect\Tools dizininden **MigrateSettings.ps1** var olan sunucudaki bir konuma kopyalayın.  Örneğin, C:\setup.  Burada kurulum, var olan sunucuda oluşturulmuş bir dizindir.
 
- ![Dizinlerinizi bağlama](media/how-to-connect-import-export-config/migrate3.png)
+   ![Dizinlerinizi bağlama](media/how-to-connect-import-export-config/migrate1.png)
+
+3. Aşağıda gösterildiği gibi betiği çalıştırın ve tüm alt düzey sunucu yapılandırma dizinini kaydedin. Bu dizini yeni hazırlama sunucusuna kopyalayın. Lütfen tüm **aktarılmış-ServerConfiguration-*** klasörünü yeni sunucuya kopyalamanız gerektiğini unutmayın.
+
+   ![Bağlantı dizinleri bağlantı ](media/how-to-connect-import-export-config/migrate2.png)
+    ![ dizinleri](media/how-to-connect-import-export-config/migrate3.png)
 
 5. Masaüstündeki simgeye çift tıklayarak **Azure AD Connect** başlatın. EULA 'Yı kabul et, sonraki sayfada **Özelleştir** düğmesine tıklayın. 
 6. **Eşitleme ayarlarını Içeri aktar** onay kutusunu Işaretleyin ve dışarı aktarılan-ServerConfiguration-* klasörüne kopyalamak için **Gözden** geçir düğmesine tıklayın ve geçirilen ayarları içeri aktarmak için MigratedPolicy.jsseçin.
- ![Dizinlerinizi bağlama](media/how-to-connect-import-export-config/migrate4.png)
+
+   ![Dizinlerinizi bağlama](media/how-to-connect-import-export-config/migrate4.png)
 
 7. Geçirilen ayarları uygulanan ayarların ile karşılaştırmak için, en son **geçirilmekte olan-SynchronizationPolicy-* ' i arayın. JSON** ve **uygulandı-synchronizationpolicy-*. JSON** (* zaman damgasıdır), **%ProgramData%\AADConnect**altında. Eşlik ' i karşılaştırmak için en sevdiğiniz dosya karşılaştırma aracını kullanın. 
 
@@ -94,11 +94,13 @@ Ayarları geçirmek için aşağıdakileri yapın:
 İlk olarak içeri aktarılan ayarlar dosyası, verilen ayarlar dosyası ile karşılaştırıldığında, yeni dağıtılan sunucu, amaçlanan dağıtım ve sonuçta elde edilen dağıtım arasındaki farkları anlamak için önemli bir adımdır. En sevdiğiniz yan yana metin karşılaştırma uygulamanızı kullanmak, istenen veya yanlışlıkla yapılan değişiklikleri hızlıca vurgulayan bir anlık görselleştirme oluşturur. Daha önce el ile yapılan birçok yapılandırma adımı ortadan kalkmış olsa da, ek bir yapılandırmanın gerekli olmamasını sağlamak için kuruluşunuzun sertifika sürecini yine de izlemeniz gerekir. Bu yapılandırma, şu anda ayarlar yönetimi 'nin genel önizleme sürümünde yakalanmayan gelişmiş ayarlardan yararlandıysanız meydana gelebilir. 
 
 Bilinen Sınırlamalar şunları içerir: 
-- **Eşitleme kuralları**   – Microsoft 'un standart kurallarıyla çakışmaları önlemek için özel bir kuralın önceliği 0-99 ayrılmış aralığında olmalıdır. Özel bir kuralın ayrılmış aralığın dışına yerleştirilmesi, yapılandırmaya standart kurallar eklendikçe özel kuralınızın etrafında kaydırılmasıyla sonuçlanabilir. Yapılandırmanız değiştirilmiş standart kuralları içeriyorsa, benzer bir sorun oluşur. Standart bir kuralı değiştirmenin kesinlikle önerilmez ve kural yerleşimi büyük olasılıkla yanlış olabilir. Cihaz geri yazma – bu ayarlar kataloglandırırlar, ancak şu anda yapılandırma sırasında uygulanmaz. Özgün sunucunuz için cihaz geri yazma etkinleştirildiyse, özelliği yeni dağıtılan sunucuda el ile yapılandırmanız gerekir. 
+- **Eşitleme kuralları**   – Microsoft 'un standart kurallarıyla çakışmaları önlemek için özel bir kuralın önceliği 0-99 ayrılmış aralığında olmalıdır. Özel bir kuralın ayrılmış aralığın dışına yerleştirilmesi, yapılandırmaya standart kurallar eklendikçe özel kuralınızın etrafında kaydırılmasıyla sonuçlanabilir. Yapılandırmanız değiştirilmiş standart kuralları içeriyorsa, benzer bir sorun oluşur. Standart bir kuralı değiştirmenin kesinlikle önerilmez ve kural yerleşimi büyük olasılıkla yanlış olabilir. 
+- **Cihaz geri yazma**   – Bu ayarlar kataloglandığında, ancak şu anda yapılandırma sırasında uygulanmaz. Özgün sunucunuz için cihaz geri yazma etkinleştirildiyse, özelliği yeni dağıtılan sunucuda el ile yapılandırmanız gerekir. 
 - **Eşitlenmiş nesne türleri**   – Synchronization Service Manager kullanarak eşitlenmiş nesne türleri (kullanıcılar, kişiler, gruplar, vb.) listesini kısıtlamak mümkün olsa da, bu özellik şu anda eşitleme ayarları aracılığıyla desteklenmez. Yüklemeyi tamamladıktan sonra, gelişmiş yapılandırmayı el ile yeniden uygulamalısınız. 
 - **Özel çalıştırma profilleri**   -Synchronization Service Manager kullanarak varsayılan çalıştırma profili kümesini değiştirmek mümkün olsa da, bu özellik şu anda eşitleme ayarları aracılığıyla desteklenmez. Yüklemeyi tamamladıktan sonra, gelişmiş yapılandırmayı el ile yeniden uygulamalısınız. 
 - **Sağlama hiyerarşisini yapılandırma**   – Synchronization Service Manager Bu gelişmiş özelliği eşitleme ayarları aracılığıyla desteklenmez ve ilk dağıtımı tamamladıktan sonra el ile yeniden yapılandırılması gerekir. 
 - **AD FS ve PingFederate kimlik doğrulaması**   – Bu kimlik doğrulama özellikleriyle ilişkili oturum açma yöntemleri otomatik olarak önceden seçilir, ancak diğer tüm gerekli yapılandırma parametrelerini etkileşimli olarak sağlamanız gerekir. 
+- **Devre dışı bir özel eşitleme kuralı, etkin olarak içeri aktarılacak** Devre dışı bir özel eşitleme kuralı, etkin olarak içeri aktarılır. Bunu yeni sunucu üzerinde de devre dışı bıraktığınızdan emin olun.
 
  ## <a name="next-steps"></a>Sonraki Adımlar
 

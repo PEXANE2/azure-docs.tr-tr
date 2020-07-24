@@ -1,5 +1,5 @@
 ---
-title: Windows sanal masaüstü-Azure 'da yerleşik uygulamaları yayımlama
+title: Windows sanal masaüstü Fall 2019-Azure 'da yerleşik uygulamaları yayımlama
 description: Windows sanal masaüstü 'nde yerleşik uygulamaları yayımlama.
 services: virtual-desktop
 author: Heidilohr
@@ -8,13 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a453ef44a1ede86290f4130a6147eaaad09fa97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e20d2ca8f2f0ef2b8c0290702a2b9e91cc22bb09
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020382"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Windows sanal masaüstünde yerleşik uygulamaları yayımlama
+# <a name="publish-built-in-apps-in-windows-virtual-desktop---fall-2019"></a>Windows sanal masaüstü 'nde yerleşik uygulamaları yayımlama-sonbahar 2019
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../publish-apps.md)bakın.

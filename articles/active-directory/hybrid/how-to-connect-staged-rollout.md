@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019837"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
-Hazırlanmış bir dağıtım yaklaşımı kullanarak, tüm etki alanınızı kullanmaktan kaçınabilirsiniz.  Bu, Azure Multi-Factor Authentication (MFA), koşullu erişim, sızdırılan kimlik bilgileri için kimlik koruması, kimlik yönetimi ve diğerleri gibi bulut kimlik doğrulama özelliklerine sahip kullanıcı gruplarını seçmeli olarak test etmenize olanak tanır.  Bu makalede, anahtarın nasıl yapılacağı açıklanır. Ancak, hazırlanan piyasaya başlamadan önce, aşağıdaki koşullardan biri veya daha fazlası doğru olduğunda etkilerini göz önünde bulundurmanız gerekir:
+Hazırlanan dağıtım, etki alanlarınızı kesmeden önce Azure Multi-Factor Authentication (MFA), koşullu erişim, sızdırılan kimlik bilgileri için kimlik koruması, kimlik yönetimi ve diğerleri gibi bulut kimlik doğrulama özelliklerine sahip kullanıcı gruplarını seçmeli olarak test etmenize olanak tanır.  Bu makalede, anahtarın nasıl yapılacağı açıklanır. Ancak, hazırlanan piyasaya başlamadan önce, aşağıdaki koşullardan biri veya daha fazlası doğru olduğunda etkilerini göz önünde bulundurmanız gerekir:
     
 -  Şu anda bir şirket içi Multi-Factor Authentication sunucusu kullanıyorsunuz. 
 -  Kimlik doğrulaması için akıllı kartlar kullanıyorsunuz. 
@@ -33,7 +33,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
@@ -45,7 +45,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 -   Bulut kimlik doğrulamasına geçirilmekte olan kullanıcılar için gereken tüm uygun kiracı marka ve koşullu erişim ilkelerini yapılandırdınız.
 
--   Azure Multi-Factor Authentication kullanmayı planlıyorsanız, kullanıcılarınızın kimlik doğrulama yöntemlerini bir kez kaydetmesi için, [self servis parola sıfırlama (SSPR) ve Multi-Factor Authentication için yakınsama kaydı](../authentication/concept-registration-mfa-sspr-combined.md) kullanmanızı öneririz.
+-   Azure Multi-Factor Authentication kullanmayı planlıyorsanız, kullanıcılarınızın kimlik doğrulama yöntemlerini bir kez kaydetmesi için [self servis parola sıfırlama (SSPR) ve Multi-Factor Authentication Birleşik kayıt](../authentication/concept-registration-mfa-sspr-combined.md) kullanmanızı öneririz.
 
 -   Hazırlanan dağıtım özelliğini kullanmak için kiracınızda genel yönetici olmanız gerekir.
 
@@ -81,6 +81,8 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
 
 - Hazırlanmış dağıtım için ilk olarak bir güvenlik grubu eklediğinizde, bir UX zaman aşımını önlemek için 200 kullanıcıyla sınırlı olursunuz. Grubu ekledikten sonra, gerektiğinde doğrudan buna daha fazla kullanıcı ekleyebilirsiniz.
+
+- Kullanıcılar hazırlanan piyasaya sürülirken parola süre sonu ilkesi, özelleştirme seçeneği olmadan 90 gün olarak ayarlanır. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Hazırlanan piyasaya çıkma ile çalışmaya başlama
@@ -173,6 +175,7 @@ Aşağıdaki seçeneklerden birini kullanabilirsiniz:
 
    >[!NOTE]
    >Bir gruptaki üyeler, hazırlanan dağıtım için otomatik olarak etkinleştirilir. İç içe ve dinamik gruplar, hazırlanan dağıtım için desteklenmez.
+   >Yeni bir grup eklenirken, gruptaki kullanıcılar (yeni bir grup için en çok 200 kullanıcıya kadar) yönetilen kimlik doğrulama imsedily kullanacak şekilde güncelleştirilir. Bir grubu (Kullanıcı ekleme veya kaldırma) düzenlemeyle, değişikliklerin etkili olması 24 saate kadar sürebilir.
 
 ## <a name="auditing"></a>Denetim
 

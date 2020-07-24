@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5df104efb65152f5bcb71a86911e694611d8a742
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382945"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022880"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services ölçümlerini izleme
 
@@ -28,7 +28,7 @@ Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluş
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Media Services hesabı oluşturma](create-account-cli-how-to.md)
+- [Media Services hesabı oluşturma](./create-account-howto.md)
 - [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md) gözden geçirin
 
 ## <a name="view-metrics-in-azure-portal"></a>Azure portal ölçümleri görüntüleme

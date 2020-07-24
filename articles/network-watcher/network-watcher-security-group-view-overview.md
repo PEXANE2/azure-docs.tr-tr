@@ -1,6 +1,6 @@
 ---
-title: Azure ağ Izleyicisi 'nde güvenlik grubu görünümüne giriş | Microsoft Docs
-description: Bu sayfa, ağ Izleyicisi güvenlik görünümü özelliğine genel bakış sağlar
+title: Azure ağ Izleyicisi 'nde etkin güvenlik kuralları görünümüne giriş | Microsoft Docs
+description: Bu sayfada ağ Izleyicisi-etkin güvenlik kuralları görünümü özelliğine genel bir bakış sunulmaktadır
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4c601184a060c3dfc4f033bcf983bf773f7167f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022659"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde etkin güvenlik kuralları görünümüne giriş
 
@@ -32,6 +33,11 @@ Kurallar seçilebilir ve ağ güvenlik grubunu ve kaynak ve hedef öneklerini g�
 !['i][2]
 
 ### <a name="next-steps"></a>Sonraki adımlar
+
+*Geçerli güvenlik grupları* özelliğini aşağıda listelenen diğer yöntemlerle de kullanabilirsiniz:
+* [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
+* [PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)
 
 [PowerShell Ile ağ güvenlik grubu ayarlarını denetleyin](network-watcher-nsg-auditing-powershell.md) ' i ziyaret ederek ağ güvenlik grubu ayarlarınızı nasıl denetleyeceğinizi öğrenin
 

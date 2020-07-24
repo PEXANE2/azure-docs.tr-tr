@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure Active Directory | için başarılı etmenleri yapılandırma Microsoft Docs'
+title: "Öğretici: AD ve Azure AD 'de başarılı olan özel faktörleri yapılandırma | Microsoft Docs"
 description: Başarılı faktörlerden gelen sağlamayı yapılandırmayı öğrenin
 services: active-directory
 author: cmmdesai
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702184"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016981"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma (Önizleme)
 Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. Bu tümleştirme genel önizlemededir ve başarılı bir şekilde çalışan merkezi 'nden 70 ' ten fazla [Kullanıcı özniteliği](../app-provisioning/sap-successfactors-attribute-reference.md) almayı destekler.

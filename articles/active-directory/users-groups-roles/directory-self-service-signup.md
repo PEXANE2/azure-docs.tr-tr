@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a61bd162baf6f079b625dc07d4faa397493ba618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015876"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory için self servis kaydolma nedir?
 
@@ -77,9 +77,9 @@ Bu parametrelerin nasıl kullanılacağına ilişkin daha fazla bilgi ve örnekl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD 'ye özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)
-* [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Azure AD’ye özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)
+* [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure Cmdlet Başvurusu](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 * [İş veya okul hesabınızı yönetilmeyen bir dizinde kapatma](users-close-account.md)

@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020075"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -41,7 +41,7 @@ SAML ile iki özel olmayan temel senaryoyu özetleme:
 | Uygulamam bir kimlik doğrulamasını tamamlamaya yönelik bir SAML onayı bekliyor. | **Azure AD B2C, kimlik sağlayıcısı (IDP) olarak davranır**<br />Azure AD B2C, uygulamalar için SAML IDP işlevi görür. | Bu makale. |
 | Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](identity-provider-adfs2016-custom.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
 * Security Assertion Markup Language (SAML) protokolünü temel olarak anlama.
@@ -104,7 +104,7 @@ Ardından, Azure AD B2C için SAML onaylama ve yanıt imzalama sertifikasını k
 1. Örneğin, *Samlidpcert*gibi bir **ad**girin. Önek *B2C_1A_* , anahtarınızın adına otomatik olarak eklenir.
 1. Karşıya yükleme dosyası denetimini kullanarak sertifikanızı karşıya yükleyin.
 1. Sertifikanın parolasını girin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. Anahtarın beklenen şekilde göründüğünü doğrulayın. Örneğin, *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. ilkenizi hazırlayın
@@ -274,7 +274,7 @@ Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandır
 1. Uygulama için bir **ad** girin. Örneğin, *SAMLApp1*.
 1. **Desteklenen hesap türleri**altında **yalnızca bu kuruluş dizinindeki hesaplar** ' ı seçin
 1. **Yeniden yönlendirme URI 'si**altında **Web**' i seçin ve ardından girin `https://localhost` . Bu değeri daha sonra uygulama kaydının bildiriminde değiştirirsiniz.
-1. **Kaydol**’u seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 uygulama bildirimini güncelleştirme
 
@@ -353,6 +353,51 @@ Aşağıdakilerin bazıları veya tümü genellikle gereklidir:
 * Bu veren URI 'sini belirtin:`https://contoso.onmicrosoft.com/app-name`
 
 **Oturum aç** ' ı seçin ve Kullanıcı oturum açma ekranı ile karşılaşırsınız. Oturum açma sırasında, bir SAML onaylama işlemi örnek uygulamaya geri verilir.
+
+## <a name="enable-encypted-assertions"></a>Şifreli onayları etkinleştir
+Hizmet sağlayıcısına geri gönderilen SAML onayları şifrelemek için, Azure AD B2C hizmet sağlayıcıları ortak anahtar sertifikasını kullanacaktır. Ortak anahtar, yukarıdaki ["Samlmetadataurl"](#samlmetadataurl) bölümünde özetlenen SAML meta verilerinde, ' Encryption ' kullanımına sahip bir KeyDescriptor olarak bulunmalıdır.
+
+Aşağıda, bir kullanımı şifreleme olarak ayarlanmış olan SAML meta verisi KeyDescriptor örneği verilmiştir:
+
+```xml
+<KeyDescriptor use="encryption">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+    <X509Data>
+      <X509Certificate>valid certificate</X509Certificate>
+    </X509Data>
+  </KeyInfo>
+</KeyDescriptor>
+```
+
+Azure AD B2C şifreli onaylar göndermek üzere etkinleştirmek için, aşağıda gösterildiği gibi, bağlı olan taraf teknik profilinde **WantsEncryptedAssertion** meta veri öğesini true olarak ayarlayın;
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="contoso.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin_saml"
+  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
+ ..
+ ..
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+          <Item Key="WantsEncryptedAssertions">true</Item>
+      </Metadata>
+     ..
+     ..
+     ..
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+```
 
 ## <a name="sample-policy"></a>Örnek ilke
 

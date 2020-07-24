@@ -11,11 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741580"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015979"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına Microsoft dışı hesapları ekleme
 
@@ -49,7 +50,7 @@ Facebook, Google, GitHub ve Amazon hesaplarınız için bu işlemi burada sunuyo
 
 ### <a name="add-your-google-account-to-the-app"></a>Google hesabınızı uygulamaya ekleyin
 
-1. Bilgisayarınızdaki Google sayfasında, **Alternatif ikinci ikinci adımı ayarlama** bölümüne gidin, **Authenticator uygulaması** bölümünden **Ayarla** ' yı seçin.
+1. Bilgisayarınızdaki Google hesabı güvenlik sayfasında ( https://myaccount.google.com/security) **daha fazla Ikinci adım ekleme** bölümüne giderek, **kimlik doğrulayıcı uygulaması** bölümünden **Ayarla** ' yı seçin.
 
 2. **Doğrulayıcı uygulamasındaki kodları al** sayfasında, telefon türüne göre **Android** veya **iPhone** ' ı seçin ve ardından **İleri**' yi seçin.
 

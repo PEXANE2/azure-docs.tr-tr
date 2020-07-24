@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023220"
 ---
 # <a name="creating-filters-with-cli"></a>CLı ile filtre oluşturma 
 
@@ -26,14 +27,14 @@ ms.locfileid: "74896067"
 
 Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
 
-Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapılandırılacağı ve [hesap filtreleri](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) ve [varlık filtreleri](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)oluşturmak IÇIN Media Services v3 için CLI kullanımı gösterilmektedir. 
+Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapılandırılacağı ve [hesap filtreleri](/cli/azure/ams/account-filter?view=azure-cli-latest) ve [varlık filtreleri](/cli/azure/ams/asset-filter?view=azure-cli-latest)oluşturmak IÇIN Media Services v3 için CLI kullanımı gösterilmektedir. 
 
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
+- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -79,7 +80,7 @@ Aşağıdaki örnek, son bildirime eklenen izleme seçim koşullarını tanımla
 
 ## <a name="create-account-filters"></a>Hesap filtreleri oluşturma
 
-Aşağıdaki [az AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir hesap filtresi oluşturur. 
+Aşağıdaki [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir hesap filtresi oluşturur. 
 
 Komutu, `--tracks` izleme seçimlerini temsil eden JSON içeren isteğe bağlı bir parametreyi geçirmenize olanak sağlar.  JSON 'ı bir dosyadan yüklemek için @ {File} kullanın. Azure CLı 'yi yerel olarak kullanıyorsanız, tüm dosya yolunu belirtin:
 
@@ -87,17 +88,17 @@ Komutu, `--tracks` izleme seçimlerini temsil eden JSON içeren isteğe bağlı 
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-Ayrıca bkz. [Filtreler Için JSON örnekleri](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Ayrıca bkz. [Filtreler Için JSON örnekleri](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Varlık filtreleri oluşturma
 
-Aşağıdaki [az AMS varlık-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir varlık filtresi oluşturur. 
+Aşağıdaki [az AMS varlık-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir varlık filtresi oluşturur. 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-Ayrıca bkz. [Filtreler Için JSON örnekleri](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
+Ayrıca bkz. [Filtreler Için JSON örnekleri](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
 
 ## <a name="associate-filters-with-streaming-locator"></a>Filtreleri akış bulucu ile ilişkilendir
 
@@ -131,4 +132,4 @@ Aşağıdaki tabloda, filtre içeren URL 'lerin bazı örnekleri gösterilmekted
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams?view=azure-cli-latest)

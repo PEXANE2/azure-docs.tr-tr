@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2020
+ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c41a357ebaf65cca8465bfc48dda3dd065c3e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019395"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi
 Bu makalede, yayımlanan Azure Active Directory (Azure AD) uygulama proxy 'sinin sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, uygulama ara sunucusunu düzenli olarak yeni özellikler ve işlevlerle güncelleştirir. Uygulama proxy bağlayıcıları, yeni bir sürüm yayınlandığında otomatik olarak güncelleştirilir. 
@@ -35,6 +35,31 @@ Kaynak |  Ayrıntılar
 Uygulama proxy 'Sini etkinleştirme | Uygulama proxy 'Sini etkinleştirme ve bir bağlayıcıyı yükleme ve kaydetme önkoşulları, bu [öğreticide](application-proxy-add-on-premises-application.md)açıklanmıştır.
 Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama | [Bağlayıcı yönetimi](application-proxy-connectors.md) ve bağlayıcılar [otomatik yükseltme](application-proxy-connectors.md#automatic-updates)hakkında daha fazla bilgi edinin.
 Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme |  [En son bağlayıcıyı indirin](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+
+## <a name="1519750"></a>1.5.1975.0
+
+### <a name="release-status"></a>Yayın durumu
+
+22 Temmuz 2020: bu sürümü indirmek için yayımlanmıştır yalnızca indirme sayfası aracılığıyla yüklenebilir. Bu sürümün otomatik yükseltme sürümü daha sonra yayımlanacak.
+
+### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
+-   Azure Kamu bulut ortamları için geliştirilmiş destek. Azure Kamu Bulutu için bağlayıcının düzgün şekilde yüklenmesiyle ilgili adımlar için [önkoşulları](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) ve [yükleme adımlarını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)gözden geçirin.
+- Uygulama proxy 'Si ile Uzak Masaüstü Hizmetleri Web istemcisinin kullanılmasına yönelik destek. Daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu Uzak Masaüstü yayımlama](application-proxy-integrate-with-remote-desktop-services.md) .
+- İyileştirilmiş WebSocket uzantı anlaşmaları. 
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+- Küçük harfli dizeler zorlayan bir WebSocket sorunu düzeltildi.
+- Bağlayıcıların bazen yanıt vermemesine neden olan bir sorun düzeltildi.
+
+## <a name="1516260"></a>1.5.1626.0
+
+### <a name="release-status"></a>Yayın durumu
+
+17 Temmuz 2020: indirme için yayınlandı. Bu sürüm, yükleme için yalnızca indirme sayfası aracılığıyla kullanılabilir. Bu sürümün otomatik yükseltme sürümü daha sonra yayımlanacak.
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+- Önceki sürümde bulunan bellek sızıntısı sorunu çözüldü
+- WebSocket desteği için genel iyileştirmeler
 
 ## <a name="1515260"></a>1.5.1526.0
 

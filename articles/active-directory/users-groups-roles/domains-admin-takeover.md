@@ -14,13 +14,14 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732659"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015893"
 ---
-# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory yönetilmeyen bir dizinden yönetici olarak yararlanın
+# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma
 
 Bu makalede, Azure Active Directory (Azure AD) içinde yönetilmeyen bir dizindeki DNS etki alanı adını almanın iki yolu açıklanmaktadır. Bir self servis kullanıcısı, Azure AD kullanan bir bulut hizmetine kaydolduğunda bu kullanıcı, e-posta etki alanına göre yönetilmeyen bir Azure AD dizinine eklenir. Self servis veya "viral" bir hizmete kaydolma hakkında daha fazla bilgi için bkz. [Azure Active Directory için self servis kaydolma nedir?](directory-self-service-signup.md)
 
@@ -31,7 +32,7 @@ Yönetici devralma işlemi sırasında, [Azure AD’ye özel etki alanı adı ek
 
 * Yönetilmeyen bir Azure dizininin ["harici" bir yönetim](#external-admin-takeover) gerçekleştiri gerçekleştirdiğinizde, YÖNETILMEYEN dizinin DNS etki alanı adını yönetilen Azure dizininize eklersiniz. Etki alanı adını eklediğinizde, kullanıcıların kesinti olmadan hizmetlere erişmeye devam edebilmesi için yönetilen Azure dizininizde, kullanıcıların kaynaklara bir eşlemesi oluşturulur. 
 
-## <a name="internal-admin-takeover"></a>İç yönetici yönetim
+## <a name="internal-admin-takeover"></a>İç yönetici devralması
 
 SharePoint ve OneDrive içeren bazı ürünler (Office 365 gibi) dışarıdan devralmayı desteklemez. Bu senaryonuz varsa veya bir yöneticileriniz varsa ve self servis kaydolma kullanan kullanıcılar tarafından yönetilen bir yönetilmeyen veya "gölge" Azure AD kuruluşu üzerinden yararlanmak istiyorsanız, bunu bir iç yönetici ile gerçekleştirebilirsiniz.
 
@@ -73,7 +74,7 @@ Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü 
 > [!NOTE]
 > Office 365 kuruluşunda atanmış lisanslarına sahip tüm Power BI veya Azure Rights Management hizmet kullanıcıları, etki alanı adı kaldırılırsa panoları kaydetmelidir. Kullanıcı * \@ fourthcoffeexyz.onmicrosoft.com* gibi Kullanıcı adı ile oturum açması gerekir, yani Kullanıcı, * \@ mathcoffee. xyz*.
 
-## <a name="external-admin-takeover"></a>Dış yönetici
+## <a name="external-admin-takeover"></a>Dış yönetici devralması
 
 Bir kuruluşu zaten Azure hizmetleri veya Office 365 ile yönetiyorsanız, başka bir Azure AD kuruluşunda zaten doğrulandıysa, özel bir etki alanı adı ekleyemezsiniz. Ancak, Azure AD 'de yönetilen kuruluşunuzda, yönetilmeyen bir kuruluştan dışarıdan bir dış yönetici tarafından yararlanalabilirsiniz. Genel yordam, [Azure AD 'ye özel etki alanı ekleme](../fundamentals/add-custom-domain.md)makalesini izler.
 
@@ -86,7 +87,7 @@ Etki alanı adının sahipliğini doğruladıktan sonra, Azure AD etki alanı ad
 ### <a name="support-for-external-admin-takeover"></a>Dış yönetici için destek
 Dış yönetici yönetim aşağıdaki çevrimiçi hizmetler tarafından desteklenir:
 
-- Azure Rights Management
+- Azure Hak Yönetimi
 - Exchange Online
 
 Desteklenen hizmet planları şunları içerir:
@@ -169,9 +170,9 @@ Başarılı bir sınama sizi hata olmadan isteme geri döndürür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD 'ye özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)
-* [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Azure AD’ye özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)
+* [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure Cmdlet Başvurusu](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 

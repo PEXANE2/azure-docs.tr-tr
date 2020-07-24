@@ -6,11 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 009e8c7e1cb59d68f3d3aa15de32ec47083095f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b9a7bf243931443b8273253dee7618c0e594aaf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513098"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020874"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>StorSimple cihazlarını yönetmek için Azure Resource Manager SDK tabanlı betikleri kullanma
 
@@ -48,13 +49,13 @@ Aşağıdaki örnek betikler çeşitli StorSimple işlerini otomatikleştirmek i
 
 Bu bölüm örnek bir betiği alır ve betiği çalıştırmak için gereken çeşitli adımlara ilişkin ayrıntılar sağlar.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 
 *   Azure PowerShell yüklendi. Azure PowerShell modüllerini yüklemek için:
-    * Bir Windows ortamında, [Azure PowerShell yükleyip yapılandırma](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)içindeki adımları izleyin. Kullanıyorsanız, StorSimple için Windows Server ana bilgisayarınıza Azure PowerShell yükleyebilirsiniz.
-    * Bir Linux veya MacOS ortamında, [MacOS veya Linux üzerinde Azure PowerShell yükleyip yapılandırma](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux)bölümündeki adımları izleyin.
+    * Bir Windows ortamında, [Azure PowerShell yükleyip yapılandırma](/powershell/azure/install-az-ps)içindeki adımları izleyin. Kullanıyorsanız, StorSimple için Windows Server ana bilgisayarınıza Azure PowerShell yükleyebilirsiniz.
+    * Bir Linux veya MacOS ortamında, [MacOS veya Linux üzerinde Azure PowerShell yükleyip yapılandırma](/powershell/azure/install-az-ps)bölümündeki adımları izleyin.
 
 Azure PowerShell kullanma hakkında daha fazla bilgi için [Azure PowerShell kullanmaya başlama](https://docs.microsoft.com/powershell/azure/get-started-azureps)bölümüne gidin.
 

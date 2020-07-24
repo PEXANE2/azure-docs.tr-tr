@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389878"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016352"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bolluk yapılandırma
 
@@ -36,7 +36,7 @@ Bu öğreticinin amacı, Azure AD 'den bolluk 'ye Kullanıcı hesaplarını otom
 > * Bolluk ['de çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) (önerilir)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
@@ -62,7 +62,7 @@ Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup öznitelikleri
 
 * Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz.
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>4. Adım. Otomatik Kullanıcı sağlamayı bolluk olarak yapılandırma 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>4. Adım: Otomatik Kullanıcı sağlamayı bolluk olarak yapılandırma 
 
 Bu bölümde, Azure AD 'nizi bolluk 'in Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasına göre bolluk içinde atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
 
@@ -169,7 +169,7 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
 2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
 3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
 
-## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
+## <a name="troubleshooting-tips"></a>Sorun Giderme İpuçları
 
 * Bolluk **DisplayName** özniteliğini yapılandırırken aşağıdaki davranışlardan haberdar olun:
 
@@ -179,11 +179,15 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
   
   * İzin verilen noktalama noktalar, alt çizgiler, tireler, kesme işareti, köşeli ayraçlar (ör. **([{}])**) ve ayırıcılar (ör. **,/;**) içerir.
   
+  * displayName özelliğinin ' @ ' karakteri olamaz. ' @ ' Varsa, sağlama günlüklerinde "AttributeValidationFailed" açıklamasıyla atlanan bir olay bulabilirsiniz.
+
   * Yalnızca bu iki ayar, bolluk 'in çalışma alanında/kuruluşta yapılandırılmışsa, **profil eşitlemesi etkinleştirilir** ve **Kullanıcılar kendi görünen adlarını değiştiremezler**.
-  
+
 * Bolluk **Kullanıcı adı** özniteliği 21 karakterden oluşmalıdır ve benzersiz bir değere sahip olmalıdır.
 
 * Bolluk yalnızca **Kullanıcı adı** ve **e-posta**öznitelikleriyle eşleştirmeye izin verir.  
+  
+* Ortak erorr kodları resmi bolluk belgelerinde belgelenmiştir-https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Değişiklik günlüğü
 

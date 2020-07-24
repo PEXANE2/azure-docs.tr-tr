@@ -16,19 +16,19 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d156afbd367e83945397760a6afe98a1cfb98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356942"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019684"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect Eşitleme: Teknik Kavramlar
 Bu makale, [mimariyi anlama](how-to-connect-sync-technical-concepts.md)konusunun bir özetidir.
 
 Azure AD Connect derlemeleri sağlam bir Metadirectory eşitleme platformunda eşitler.
 Aşağıdaki bölümlerde Metadirectory eşitlemesine yönelik kavramlar tanıtılmaktadır.
-MıSıS, ıLA ve FIM üzerine derleme Azure Active Directory Eşitleme Hizmetleri, veri kaynaklarına bağlanmak, veri kaynakları arasında verilerin eşitlenmesi ve kimliklerin sağlanması ve sağlanması için bir sonraki platformu sağlar.
+MıSıS (Microsoft Identity Integration Server), ıLı (kimlik yaşam döngüsü Yöneticisi) ve FIM (Forefront Identity Manager) üzerine derleme Azure Active Directory Eşitleme Hizmetleri, veri kaynaklarına bağlanmak, veri kaynakları arasında verilerin eşitlenmesi ve kimliklerin sağlanması ve sağlanması için bir sonraki platformu sağlar.
 
 ![Teknik Kavramlar](./media/how-to-connect-sync-technical-concepts/scenario.png)
 

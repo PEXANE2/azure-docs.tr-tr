@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 07/22/2020
 ms.author: kenwith
 ms.custom: it-pro
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019531"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu uzak masaüstü 'Nü yayımlama
 
@@ -28,7 +29,7 @@ Uzak Masaüstü hizmeti ve Azure AD Uygulama Ara Sunucusu, kurumsal ağdan uzakt
 
 Bu makale için amaçlanan hedef kitle şunlardır:
 - Uzak Masaüstü Hizmetleri aracılığıyla şirket içi uygulamaları yayımlayarak son kullanıcılarına daha fazla uygulama sunmak isteyen geçerli uygulama proxy 'Si müşterileri.
-- Azure AD Uygulama Ara Sunucusu kullanarak dağıtımının saldırı yüzeyini azaltmak isteyen geçerli Uzak Masaüstü Hizmetleri müşteriler. Bu senaryo, RDS 'ye sınırlı bir iki adımlı doğrulama ve koşullu erişim denetimi kümesi sağlar.
+- Azure AD Uygulama Ara Sunucusu kullanarak dağıtımının saldırı yüzeyini azaltmak isteyen geçerli Uzak Masaüstü Hizmetleri müşteriler. Bu senaryo, RDS 'ye bir dizi iki adımlı doğrulama ve koşullu erişim denetimi sağlar.
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Uygulama proxy 'Sinin standart RDS dağıtımına uygun olması
 
@@ -45,17 +46,17 @@ Bir RDS dağıtımında, RD Web rolü ve RD Ağ Geçidi rolü Internet 'e yönel
 
 ## <a name="requirements"></a>Gereksinimler
 
-- Web istemcisi uygulama ara sunucusunu desteklemediğinden, Uzak Masaüstü Web istemcisi dışında bir istemci kullanın.
-
 - Hem RD Web hem de RD Ağ Geçidi uç noktaları aynı makinede ve ortak bir köke yerleştirilmelidir. RD Web ve RD Ağ Geçidi, uygulama proxy 'Si ile tek bir uygulama olarak yayımlanır, böylece iki uygulama arasında çoklu oturum açma deneyimine sahip olabilirsiniz.
 
 - Zaten [RDS 'yi dağıtmış](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)ve [uygulama proxy 'si etkinleştirmiş](application-proxy-add-on-premises-application.md)olmanız gerekir.
 
-- Bu senaryoda, son kullanıcılarınızın Windows 7 veya Windows 10 masaüstleri üzerinde RD Web sayfası aracılığıyla bağlanan Internet Explorer üzerinden gittiğinizi varsayar. Diğer işletim sistemlerini desteklemeniz gerekiyorsa bkz. [diğer istemci yapılandırması desteği](#support-for-other-client-configurations).
+- Son kullanıcılarınızın RD Web 'e veya RD Web istemcisine bağlanmak için uyumlu bir tarayıcı kullanması gerekir. Daha fazla ayrıntı için bkz. [istemci yapılandırmalarına yönelik destek](#support-for-other-client-configurations).
 
-- RD Web 'i yayımlarken, aynı iç ve dış FQDN 'nin kullanılması önerilir. İç ve dış FQDN 'Ler farklıysa, istemcinin geçersiz bağlantılar almasını önlemek için Istek üst bilgisi çevirisini devre dışı bırakmanız gerekir. 
+- RD Web 'i yayımlarken, aynı iç ve dış FQDN 'nin kullanılması önerilir. İç ve dış FQDN 'Ler farklıysa, istemcinin geçersiz bağlantılar almasını önlemek için Istek üst bilgisi çevirisini devre dışı bırakmanız gerekir.
 
-- Internet Explorer 'da RDS ActiveX eklentisini etkinleştirin.
+- Internet Explorer 'da RD Web kullanıyorsanız, RDS ActiveX eklentisini etkinleştirmeniz gerekir.
+
+- RD Web istemcisini kullanıyorsanız, uygulama proxy [Bağlayıcısı Sürüm 1.5.1975 veya üstünü](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history)kullanmanız gerekir.
 
 - Azure AD ön kimlik doğrulama akışı için, kullanıcılar yalnızca **RemoteApp ve masaüstleri** bölmesinde yayımlanmış kaynaklara bağlanabilir. Kullanıcılar, **uzak bilgisayara bağlan** bölmesine kullanarak bir masaüstüne bağlanamaz.
 
@@ -71,7 +72,11 @@ Ortamınız için RDS ve Azure AD Uygulama Ara Sunucusu ayarladıktan sonra, iki
    - Ön kimlik doğrulama yöntemi: Azure Active Directory
    - URL üst bilgilerini çevir: Hayır
 2. Yayınlanan RD uygulamasına kullanıcı atama. Bunların tümünün RDS 'ye erişimi olduğundan emin olun.
-3. **Azure AD çoklu oturum açma devre dışı**olduğundan uygulama için çoklu oturum açma yöntemini bırakın. Kullanıcılarınızın Azure AD 'de bir kez kimlik doğrulaması yapması ve bir kez RD Web 'e bağlanmak istenir, ancak RD Ağ Geçidi için çoklu oturum açma gerekir.
+3. **Azure AD çoklu oturum açma devre dışı**olduğundan uygulama için çoklu oturum açma yöntemini bırakın.
+
+   >[!Note]
+   >Kullanıcılarınızın Azure AD 'de bir kez kimlik doğrulaması yapması ve RD Web 'e bir kez doğrulanması istenir, ancak RD Ağ Geçidi için çoklu oturum açma vardır.
+
 4. **Azure Active Directory**ve ardından **uygulama kayıtları**' nı seçin. Listeden uygulamanızı seçin.
 5. **Yönet**altında **marka**' i seçin.
 6. **Ana sayfa URL 'si** alanını RD Web uç noktanıza işaret etmek için (gibi `https://\<rdhost\>.com/RDWeb` ) güncelleştirin.
@@ -110,6 +115,11 @@ RDS dağıtımına yönetici olarak bağlanın ve dağıtım için RD Ağ Geçid
 
 Uzak Masaüstü 'Nü yapılandırdığınıza göre, Azure AD Uygulama Ara Sunucusu, internet 'e yönelik bir bileşen olarak kullanıma sunulmuştur. RD Web ve RD Ağ Geçidi makinelerinizdeki diğer herkese açık internet 'e yönelik uç noktaları kaldırabilirsiniz.
 
+### <a name="enable-the-rd-web-client"></a>RD Web Istemcisini etkinleştirme
+Ayrıca, kullanıcıların RD Web Istemcisini kullanmasını istiyorsanız, [kullanıcılarınız Için Uzak Masaüstü Web Istemcisini ayarlama](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin) adımlarını izleyin.
+
+Uzak Masaüstü Web istemcisi, kullanıcıların Microsoft Edge, Internet Explorer 11, Google Chrome, Safari veya Mozilla Firefox (v 55.0 ve üzeri) gibi HTML5 uyumlu bir Web tarayıcısı aracılığıyla kuruluşunuzun uzak masaüstü altyapısına erişmesini sağlar.
+
 ## <a name="test-the-scenario"></a>Senaryoyu test etme
 
 Bir Windows 7 veya 10 bilgisayarda Internet Explorer ile senaryoyu test edin.
@@ -121,11 +131,12 @@ Bir Windows 7 veya 10 bilgisayarda Internet Explorer ile senaryoyu test edin.
 
 ## <a name="support-for-other-client-configurations"></a>Diğer istemci yapılandırmalarına yönelik destek
 
-Bu makalede özetlenen yapılandırma, Internet Explorer ve RDS ActiveX eklentisi ile Windows 7 veya 10 ' daki kullanıcılara yöneliktir. Bununla birlikte, diğer işletim sistemlerini veya tarayıcılarını de destekleyebilirsiniz. Fark, kullandığınız kimlik doğrulama yöntemidir.
+Bu makalede özetlenen yapılandırma RD Web veya RD Web Istemcisi aracılığıyla RDS 'ye erişim için kullanılır. Bununla birlikte, diğer işletim sistemlerini veya tarayıcılarını de destekleyebilirsiniz. Fark, kullandığınız kimlik doğrulama yöntemidir.
 
-| Kimlik doğrulama yöntemi | Desteklenen istemci yapılandırması |
+| Kimlik doğrulaması yöntemi | Desteklenen istemci yapılandırması |
 | --------------------- | ------------------------------ |
-| Ön kimlik doğrulama    | Internet Explorer + RDS ActiveX eklentisini kullanarak Windows 7/10 |
+| Ön kimlik doğrulama    | RD Web-Internet Explorer + RDS ActiveX eklentisini kullanarak Windows 7/10 |
+| Ön kimlik doğrulama    | Microsoft Edge, Internet Explorer 11, Google Chrome, Safari veya Mozilla Firefox gibi RD Web Istemcisi-HTML5 uyumlu Web tarayıcısı (v 55.0 ve üzeri) |
 | Doğrudan geçiş | Microsoft Uzak Masaüstü uygulamasını destekleyen diğer tüm işletim sistemleri |
 
 Ön kimlik doğrulama akışı, geçiş akışından daha fazla güvenlik avantajı sunar. Ön kimlik doğrulaması sayesinde, çoklu oturum açma, koşullu erişim ve şirket içi kaynaklarınız için iki aşamalı doğrulama gibi Azure AD kimlik doğrulama özelliklerini kullanabilirsiniz. Ayrıca, yalnızca kimliği doğrulanmış trafiğin ağınıza ulaşmasını de güvence altına alırsınız.
@@ -136,5 +147,5 @@ Geçiş kimlik doğrulamasını kullanmak için, bu makalede listelenen adımlar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD Uygulama Ara Sunucusu ile SharePoint’e uzaktan erişimi etkinleştirme](application-proxy-integrate-with-sharepoint-server.md)  
-[Azure AD Uygulama Ara Sunucusu kullanarak uygulamalara uzaktan erişmek için güvenlik konuları](application-proxy-security.md)
+[Azure AD uygulama ara sunucusu](application-proxy-integrate-with-sharepoint-server.md) 
+ ile SharePoint 'e uzaktan erişimi etkinleştirme [Azure AD uygulama ara sunucusu kullanarak uygulamalara uzaktan erişmek Için güvenlik konuları](application-proxy-security.md)

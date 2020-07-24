@@ -14,21 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: a0eb234d9677c479d2cb404b065da408854168e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9a7a09d3085b1ec67bf29f142c6e7b205561ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368456"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021758"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>Çevre 81 etkinlik günlüklerinizi Azure Sentinel 'e bağlama
+
+> [!IMPORTANT]
+> Azure Sentinel 'deki çevre 81 veri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, [çevre 81 etkinlik günlükleri](https://www.perimeter81.com/) gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Çevre 81 etkinlik günlükleri Bağlayıcısı, çevre 81 verilerinizi Azure Sentinel 'e kolayca getirmenize olanak tanır; böylece, çalışma kitaplarında görüntüleyebilmeniz için, özel uyarılar oluşturmak için kullanabilir ve araştırmayı geliştirebilirsiniz.
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izinlerine sahip olmanız gerekir.
 

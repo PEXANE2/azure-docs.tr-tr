@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6c329b7de3e18989e7dbfa35aa6e9303c129654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019310"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Uygulamalarım listesinde beklenmeyen uygulama
 
@@ -28,7 +28,7 @@ Bu makale, uygulamaların **Kurumsal uygulamalar**altındaki **tüm uygulamalar*
 
 ## <a name="how-to-see-all-applications-in-your-tenant"></a>Kiracınızdaki tüm uygulamaları görme
 
-Kiracınızdaki tüm uygulamaları görmek için, **Tüm** uygulamalar listesi altındaki **tüm uygulamaları** göstermek için **filtre** denetimini kullanmanız gerekir. Şu adımları uygulayın:
+Kiracınızdaki tüm uygulamaları görmek için, **Tüm** uygulamalar listesi altındaki **tüm uygulamaları** göstermek için **filtre** denetimini kullanmanız gerekir. Şu adımları izleyin:
 
 1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **ortak yönetici** olarak oturum açın.
 
@@ -68,7 +68,7 @@ Kiracınızdaki tüm uygulamaları görmek için, **Tüm** uygulamalar listesi a
 
 6. Visual Studio 'nun [ASP.NET kimlik doğrulama yöntemlerini](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) veya [bağlı hizmetlerini](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) kullanarak geliştirmekte olduğunuz bir uygulamayı eklediğinizde
 
-7. [Azure AD PowerShell modülünü](/powershell/azure/install-adv2?view=azureadps-2.0) kullanarak bir hizmet sorumlusu nesnesi oluşturduğunuzda
+7. [Azure AD PowerShell modülünü](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) kullanarak bir hizmet sorumlusu nesnesi oluşturduğunuzda
 
 8. [Bir uygulamayı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) kiracınızdaki verileri kullanmak üzere yönetici olarak kabul ettiğinizde
 

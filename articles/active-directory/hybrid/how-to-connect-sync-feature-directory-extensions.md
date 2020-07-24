@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357469"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019770"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Eşitleme Azure AD Connect: Dizin uzantıları
 Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler, [Uzantılar](https://docs.microsoft.com/graph/extensibility-overview
@@ -33,8 +33,8 @@ Mevcut olduğunda, Office 365 iş yükü bu öznitelikleri kullanır.
 
 Yükleme sihirbazındaki özel ayarlar yolunda hangi ek özniteliklerin eşitlenmesini istediğinizi yapılandırırsınız.
 
->[!NOTE]
->Kullanılabilir öznitelikler kutusu, büyük/küçük harfe duyarlıdır.
+> [!NOTE]
+> 1.2.65.0 ' den önceki sürümlerde Azure AD Connect, **kullanılabilir özniteliklerin** arama kutusu büyük/küçük harfe duyarlıdır.
 
 ![Şema uzantısı Sihirbazı](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

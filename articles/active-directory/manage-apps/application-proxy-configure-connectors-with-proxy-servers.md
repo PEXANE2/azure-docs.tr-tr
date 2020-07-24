@@ -12,11 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c785e2b13e7d5c57ff6d5ce9161fea1a80da77e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764936"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019548"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -152,6 +153,9 @@ Bunu etkinleştirmek için lütfen sonraki adımları izleyin:
 4.  Gerekli proxy ayarlarını yapılandırın. 
 
 Bu ayarlar, bağlayıcının Azure ile iletişim için aynı ileri ara sunucusunu ve arka uç uygulamasını kullanmasını sağlar. Azure iletişimine yönelik bağlayıcı, ileri ara sunucu veya farklı bir ileri ara sunucu gerektirmez, bu ayarı, giden proxy 'leri atlama veya giden ara sunucu kullanma bölümlerinde açıklandığı gibi dosya ApplicationProxyConnectorService.exe.config değiştirmek üzere ayarlayabilirsiniz.
+
+> [!NOTE]
+> İşletim sisteminde Internet proxy 'yi yapılandırmanın çeşitli yolları vardır. NETSH WINHTTP (doğrulamak için Çalıştır) ile yapılandırılan proxy ayarları `NETSH WINHTTP SHOW PROXY` 2. adımda yapılandırdığınız proxy ayarlarını geçersiz kılar. 
 
 Bağlayıcı Güncelleştirici hizmeti, makine proxy 'sini de kullanacaktır. Bu davranış, ApplicationProxyConnectorUpdaterService.exe.config dosya değiştirilerek değiştirilebilir.
 

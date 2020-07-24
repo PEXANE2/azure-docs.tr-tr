@@ -2,14 +2,14 @@
 title: Azure geçişi destek matrisi
 description: Azure geçişi hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
-ms.date: 04/19/2020
+ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 8350f557efd9224d92388835f55871cb861eda25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022727"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -21,18 +21,20 @@ Tablo, desteklenen bulma, değerlendirme ve geçiş senaryolarını özetler.
 
 **Dağıtım** | **Ayrıntılar** 
 --- | --- 
-**Uygulamaya özel bulma** | VMware VM 'lerinde çalışan uygulamaları, rolleri ve özellikleri bulabilirsiniz. Şu anda bu özellik yalnızca bulma ile sınırlıdır. Değerlendirme Şu anda makine düzeyindedir. Henüz uygulama, rol veya özelliğe özgü değerlendirme sunmuyoruz. 
-**Şirket içi değerlendirme** | Şirket içi iş yüklerini ve VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucularda çalışan verileri değerlendirin. Azure geçişi sunucu değerlendirmesi ve Microsoft Data Migration Yardımcısı (DMA) ile diğer araçların yanı sıra diğer araçları ve ISV tekliflerini kullanmayı değerlendirin.
-**Azure 'a şirket içi geçiş** | Fiziksel sunucular, VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular ve bulut tabanlı VM 'lerde çalışan iş yüklerini ve verileri Azure 'a geçirin. Azure geçişi sunucu değerlendirmesi ve Azure veritabanı geçiş hizmeti 'ni (DMS) ve diğer araçlar ve ISV tekliflerini kullanarak geçirin.
+**Bulma** | Makine meta verilerini ve dinamik performans verilerini bulabilirsiniz.
+**Uygulama bulma** | VMware VM 'lerinde çalışan uygulamaları, rolleri ve özellikleri bulabilirsiniz. Şu anda bu özellik yalnızca bulma ile sınırlıdır. Değerlendirme Şu anda makine düzeyindedir. Henüz uygulama, rol veya özellik tabanlı değerlendirmeler sunmuyoruz. 
+**Değerlendirme** | Şirket içi iş yüklerini ve VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucularda çalışan verileri değerlendirin. Azure geçişi sunucu değerlendirmesi, Microsoft Data Migration Yardımcısı (DMA) ve diğer araçların yanı sıra diğer araçlar ve ISV tekliflerini kullanmayı değerlendirin.
+**Geçiş** | Fiziksel sunucular, VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular ve bulut tabanlı VM 'lerde çalışan iş yüklerini ve verileri Azure 'a geçirin. Azure geçişi sunucu değerlendirmesi ve Azure veritabanı geçiş hizmeti 'ni (DMS) ve diğer araçlar ve ISV tekliflerini kullanarak geçirin.
 
 > [!NOTE]
 > Şu anda ISV araçları, Azure Kamu 'da Azure geçişi 'ne veri gönderemiyor. Tümleşik Microsoft araçları kullanabilir veya ortak araçları bağımsız olarak kullanabilirsiniz.
 
 ## <a name="supported-tools"></a>Desteklenen araçlar
 
+
 Belirli araç desteği tabloda özetlenmiştir.
 
-**Araç** | **Lamayı** | **Geçiş** 
+**Araç** | **Değerlendirme** | **Geçiş** 
 --- | --- | ---
 Azure geçişi sunucu değerlendirmesi | [VMware VM](tutorial-prepare-vmware.md)'lerini, [Hyper-V VM](tutorial-prepare-hyper-v.md)'lerini ve [fiziksel sunucuları](tutorial-prepare-physical.md)değerlendirin. |  Kullanılamıyor (yok)
 Azure Geçişi Sunucu Geçişi | NA | [VMware VM 'leri](tutorial-migrate-vmware.md), [Hyper-V VM 'leri](tutorial-migrate-hyper-v.md)ve [fiziksel sunucuları](tutorial-migrate-physical-virtual-machines.md)geçirin.
@@ -73,13 +75,17 @@ VMware aracısız geçişi için bir Anahtar Kasası oluşturma | Azure geçişi
 
 ## <a name="supported-geographies-public-cloud"></a>Desteklenen coğrafyalar (genel bulut)
 
-Bir Azure geçişi projesini, genel buluttaki çeşitli coğrafi bölgelerde oluşturabilirsiniz. Yalnızca bu coğrafi bölgelerde proje oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
+Bir Azure geçişi projesini, genel buluttaki çeşitli coğrafi bölgelerde oluşturabilirsiniz.
+
+- Yalnızca bu coğrafi bölgelerde proje oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz.
+- Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
+- Bir proje oluşturduğunuzda, bir Coğrafya seçersiniz. Proje ve ilgili kaynaklar Coğrafya 'daki bölgelerden birinde oluşturulur. Bölge, Azure geçişi hizmeti tarafından ayrılır.
 
 **Coğrafya** | **Meta veri depolama konumu**
 --- | ---
 Asya Pasifik | Doğu Asya veya Güneydoğu Asya
 Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
-Brezilya | Güney Brezilya
+Brezilya | Brezilya Güney
 Kanada | Kanada Orta veya Kanada Doğu
 Avrupa | Kuzey Avrupa veya Batı Avrupa
 Fransa | Orta Fransa

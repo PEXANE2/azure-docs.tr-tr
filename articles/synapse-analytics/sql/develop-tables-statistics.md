@@ -1,5 +1,5 @@
 ---
-title: İstatistikleri oluşturma, güncelleştirme
+title: Azure SYNAPSE SQL kaynaklarını kullanarak istatistikleri oluşturma ve güncelleştirme
 description: SYNAPSE SQL 'de sorgu iyileştirme istatistikleri oluşturma ve güncelleştirme önerileri ve örnekleri.
 services: synapse-analytics
 author: filippopovic
@@ -11,11 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25c92437b350d7329c340fe1ea13b3df40e231ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020608"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 

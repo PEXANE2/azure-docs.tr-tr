@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: c96fa4c453911c4ca4b8cf6d8f74647b4532109f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d4abd68e60201a17e56ee105777614c42691bfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020347"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>PowerShell kullanarak bir Azure VM tarafından kullanılan işletim sistemi diskini değiştirme
 
@@ -24,7 +25,7 @@ VM 'nin stopped\serbest bırakılmış olması gerekir, ardından yönetilen dis
 VM boyutunun ve depolama türünün iliştirmek istediğiniz diskle uyumlu olduğundan emin olun. Örneğin, kullanmak istediğiniz disk Premium depolamada ise, VM 'nin Premium depolama alanı (DS serisi boyutu gibi) olması gerekir. Her iki diskin de aynı boyutta olması gerekir.
 Ve şifreli bir işletim sistemi diski ile şifreli olmayan bir VM 'yi karıştırtığınızdan emin olun; bu desteklenmez. VM, Azure disk şifrelemesi kullanmıyorsa, ' de takas edilmekte olan işletim sistemi diski Azure disk şifrelemesi 'ni kullanmamalıdır.
 
-[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) kullanarak bir kaynak grubundaki disklerin listesini alın
+[Get-AzDisk](/powershell/module/az.compute/get-azdisk) kullanarak bir kaynak grubundaki disklerin listesini alın
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name

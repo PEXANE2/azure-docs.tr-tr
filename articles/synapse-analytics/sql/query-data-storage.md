@@ -1,5 +1,5 @@
 ---
-title: Genel Bakış-isteğe bağlı SQL kullanarak verileri depolamada sorgulama (Önizleme)
+title: İsteğe bağlı SQL kullanarak verileri depolamada sorgulama (Önizleme)
 description: Bu makalede, Azure SYNAPSE Analytics içindeki SQL isteğe bağlı (Önizleme) kaynağını kullanarak Azure Storage 'ın nasıl sorgulanyapılacağı açıklanır.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a30874a14a1c2c44ec04b17b9ebddb52a9e9fb58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259669"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020551"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 

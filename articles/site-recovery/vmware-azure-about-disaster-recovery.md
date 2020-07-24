@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: dfbdff01064b483085233ece47d1d3b635b68743
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132115"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021469"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM 'lerinin Azure 'a olağanüstü durum kurtarması hakkında
 
@@ -23,6 +23,9 @@ Bu makalede, şirket içi VMware VM 'lerinin [Azure Site Recovery](site-recovery
 
 - [Azure Backup](../backup/backup-overview.md) , şirket Içi ve Azure VM verilerinizi yedekler. Bir dosya ve klasörleri, belirli iş yüklerini veya tüm VM 'leri yedekleyebilirsiniz. 
 - [Azure Site Recovery](site-recovery-overview.md) , şirket içi makinelerde çalışan uygulamalar ve iş yükleri ya da Azure IaaS VM 'leri için esnekliği ve olağanüstü durum kurtarma sağlar. Site Recovery çoğaltmayı düzenler ve kesintiler gerçekleştiğinde Azure 'a yük devretmeyi işler. Ayrıca, Azure 'dan birincil sitenize kurtarmayı işler. 
+
+> [!NOTE]
+> Site Recovery, müşteri verilerini, kaynak makineler için olağanüstü durum kurtarma için ayarlanan hedef bölgeden taşımaz veya depolamaz. Müşteriler, bir kurtarma hizmetleri kasasını tercih ettikleri farklı bir bölgeden seçebilirler. Kurtarma Hizmetleri Kasası meta veriler içeriyor ancak gerçek müşteri verisi yok.
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Recovery olağanüstü durum kurtarma nasıl yapılır?
 

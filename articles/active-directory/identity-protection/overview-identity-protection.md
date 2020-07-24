@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f83c7896ca371809d9103489b140ae73d5a42d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019620"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Kimlik Koruması nedir?
 
@@ -71,7 +71,7 @@ Makalesinde daha fazla bilgi bulabilirsiniz [: riski araştırma](howto-identity
 
 ## <a name="exporting-risk-data"></a>Risk verileri dışarı aktarılıyor
 
-Kimlik korumasından alınan veriler, arşiv ve daha fazla inceleme ve corelation için diğer araçlara aktarılabilir. Microsoft Graph tabanlı API 'Ler, kuruluşların bu verileri SıEM gibi bir araçla daha fazla işlenmek üzere toplamasına olanak tanır. Kimlik koruma API 'sine erişme hakkında bilgiler, [Azure Active Directory kimlik koruması ve Microsoft Graph kullanmaya başlama](howto-identity-protection-graph-api.md) hakkında bilgi edinebilirsiniz.
+Kimlik Koruması verileri, arşiv ve daha fazla araştırma ve bağıntı için diğer araçlara aktarılabilir. Microsoft Graph tabanlı API 'Ler, kuruluşların bu verileri SıEM gibi bir araçla daha fazla işlenmek üzere toplamasına olanak tanır. Kimlik koruma API 'sine erişme hakkında bilgiler, [Azure Active Directory kimlik koruması ve Microsoft Graph kullanmaya başlama](howto-identity-protection-graph-api.md) hakkında bilgi edinebilirsiniz.
 
 Kimlik koruması bilgilerini Azure Sentinel ile tümleştirme hakkında bilgi için, [Azure AD kimlik koruması verileri bağlama](../../sentinel/connect-azure-ad-identity-protection.md)makalesinde bulabilirsiniz.
 
@@ -96,15 +96,15 @@ Koşullu erişim yöneticileri Ayrıca, bir koşul olarak oturum açma riskini g
 
 | Yetenek | Ayrıntılar | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Ücretsiz/Office 365 uygulamaları |
 | --- | --- | --- | --- | --- |
-| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla) | Evet | Hayır | Hayır |
-| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla) | Evet | Hayır | Hayır |
-| Güvenlik raporları | Genel Bakış | Evet | Hayır | Hayır |
+| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla) | Yes | Hayır | Hayır |
+| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla) | Yes | Hayır | Hayır |
+| Güvenlik raporları | Genel Bakış | Yes | Hayır | Hayır |
 | Güvenlik raporları | Riskli kullanıcılar | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
 | Güvenlik raporları | Riskli oturum açma işlemleri | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
 | Güvenlik raporları | Risk algılamaları | Tam erişim | Sınırlı bilgi | Hayır |
-| Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti | Evet | Hayır | Hayır |
-| Bildirimler | Haftalık Özet | Evet | Hayır | Hayır |
-| | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Evet | Hayır | Hayır |
+| Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti | Yes | Hayır | Hayır |
+| Bildirimler | Haftalık Özet | Yes | Hayır | Hayır |
+| | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Yes | Hayır | Hayır |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
