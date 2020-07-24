@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117259"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -22,10 +22,12 @@ Kapsayıcılı kodu sanal bir Windows IoT Edge cihazına dağıtarak bu hızlı 
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
-1. IoT Hub 'ı oluşturun.
-2. Bir IoT Edge cihazını IoT hub'ınıza kaydetme.
-3. IoT Edge çalışma zamanını sanal cihazınıza yükleyip başlatın.
-4. IoT Edge cihazına uzaktan modül dağıtma ve IoT Hub'a telemetri verileri gönderme.
+> [!div class="checklist"]
+>
+> * IoT Hub 'ı oluşturun.
+> * Bir IoT Edge cihazını IoT hub'ınıza kaydetme.
+> * IoT Edge çalışma zamanını sanal cihazınıza yükleyip başlatın.
+> * IoT Edge cihazına uzaktan modül dağıtma ve IoT Hub'a telemetri verileri gönderme.
 
 ![Diyagram-cihaz ve bulut için hızlı başlangıç mimarisi](./media/quickstart/install-edge-full.png)
 

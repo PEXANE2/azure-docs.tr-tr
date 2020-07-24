@@ -5,14 +5,14 @@ services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: aa77ac3652d8646a3354cb137ba7cf4240e58e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9a8b44cc6e78eda4a3e0b18d59d2372e7129c05
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482896"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124195"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -20,7 +20,7 @@ ms.locfileid: "85482896"
 
 Azure ağ MSPs, bulut ve hibrit ağın tüm yönleri genelinde Kurumsal bulut ağı gereksinimlerini ve sorunlarını ele alan özel bir yönetilen hizmet sağlayıcıları kümesidir. Yönetilen ağ hizmetleri şu hizmetlerden birini veya daha fazlasını içerir: ağ mimarisi, planlama, dağıtım, işlemler, bakım ve iyileştirme.
 
-![MSP][0]
+:::image type="content" source="./media/networking-partners-msp/msp.jpg" alt-text="ortaklarınıza":::
 
 Müşteriler, Azure Market 'te veya doğrudan MSP 'den MSP ile yönetilen hizmet teklifleri satın alabilir. MSPs 'ler, Azure [Athouse](https://azure.microsoft.com/services/azure-lighthouse/)kullanarak müşterilerin abonelikleri ve kaynak gruplarında Azure ağ kaynaklarını dağıtabilir ve yönetebilir.
 
@@ -32,6 +32,7 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 | ---| ---| ---| ---| ---|
 |[ANS grubu UK](https://www.ans.co.uk/)|[Azure yönetilen svc + ANS cam 10wk uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|[ExpressRoute & bağlantısı: 2 hafta değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_er)|[Azure sanal WAN + Fortinet: 2 hafta değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_vw)|||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure sanal WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
+|[AXESDN](https://www.axesdn.com/en/azure-msp.html)||[AXESDN yönetilen Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/1584591601184.axesdn_managed_azure_expressroute?tab=Overview)|[AXESDN yönetilen Azure sanal WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/1584591601184.axesdn_managed_azure_virtualwan?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Ağ dönüştürme danışmanlık: 1-hr değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting); [BT bulutu Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)|[BT bulutu Azure ExpressRoute 'a bağlanma](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[BT bulutu Azure VWAN Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
 |[CenturyLink](https://www.centurylink.com/business.html)||[ExpressRoute danışmanlık svc 'leri: 8-WK uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylink2362604-2362604.centurylink_consultingservicesforexpressroute)||||
 |[Cogelişme](https://www.coevolve.com/services/azure-networking-services/)|||[Yönetilen VMware SD-WAN sanal kenarı](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
@@ -53,7 +54,7 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 |[Dikkatli IT](https://vigilant.it/manage-cloud-service/)|[Azure sistem durumu denetimi: 5 günlük değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 günlük uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandıs yönetilen ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet tarafından desteklenen Vandıs, sanal WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Palo Alto Networks Ile desteklenen vandis yönetilen VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Market, yeni yönetilen güvenlik hizmetleri ve yönetilen MEC hizmetleri dahil olmak üzere aşağıdaki Azure ağ MSP Iş ortaklarımızın yol haritası: [Amdocs](https://www.amdocs.com/); [Axesdn](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Deutsche Telekod](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [X 'ye ulaşma](https://www.ixreach.com/services/sdn-cloud-connect/);  [Tümleşik bulut](https://intercloud.com/partners/microsoft-azure/);  [Kinx](https://www.kinx.net/service/cloud/?lang=en); [Omnicloud](https://omniclouds.com/services/);  [Sejong telekomünikasyon](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Federasyon kablosuz](https://www.federatedwireless.com/caas/)
+Azure Market, sanal WAN, güvenlik hizmetleri ve özel kenar bölgesi Hizmetleri için Azure Marketi, şu Azure ağı MSP Iş ortaklarından, yol haritası: [Amdocs](https://www.amdocs.com/);  [Deutsche Telekod](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [X 'ye ulaşma](https://www.ixreach.com/services/sdn-cloud-connect/);  [Tümleşik bulut](https://intercloud.com/partners/microsoft-azure/);  [Kinx](https://www.kinx.net/service/cloud/?lang=en); [Omnicloud](https://omniclouds.com/);  [Sejong telekomünikasyon](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Federasyon kablosuz](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute iş ortakları
 
@@ -62,6 +63,3 @@ Azure Market, yeni yönetilen güvenlik hizmetleri ve yönetilen MEC hizmetleri 
 ## <a name="virtual-wan-partners"></a><a name="vwan"></a>Sanal WAN iş ortakları
 
 İş ortakları hakkında daha fazla bilgi için bkz. [sanal WAN iş ortakları ve sağlayıcıları](../virtual-wan/virtual-wan-locations-partners.md).
-
-<!--Image References-->
-[0]: ./media/networking-partners-msp/msp.png "MSP program açıklaması"

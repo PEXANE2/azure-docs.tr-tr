@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik kıyaslaması için Linux Sanal Makineleri güvenlik temeli
+title: Linux Sanal Makineleri için Azure Güvenlik temeli
 description: Linux Sanal Makineleri güvenlik temeli, Azure Güvenlik kıyaslaması 'nda belirtilen güvenlik önerilerini uygulamaya yönelik yordamsal kılavuz ve kaynaklar sağlar.
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d8c4d67ed9b268bae55711fae8c4def33b967fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd6157f2775b2496e489cfbf03b35f49fb6f5442
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532006"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124723"
 ---
-# <a name="linux-virtual-machines-security-baseline-for-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması için Linux Sanal Makineleri güvenlik temeli
+# <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Sanal Makineleri için Azure Güvenlik temeli
 
 Linux Sanal Makineleri için Azure Güvenlik temeli, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 
@@ -568,7 +568,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 * [Azure kaynakları için rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)
 
-* [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 

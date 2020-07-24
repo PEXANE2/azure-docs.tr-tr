@@ -1,19 +1,19 @@
 ---
 title: Web özellik hizmeti (WFS) hizmetine bağlanma | Microsoft Azure haritaları
 description: WFS hizmetine nasıl bağlanacağınızı öğrenin ve ardından Azure Maps web SDK 'sını ve uzamsal GÇ modülünü kullanarak WFS hizmetini sorgulayın.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42e8356dabc8172ddb75595dc63b01aaf4244958
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334214"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124672"
 ---
 # <a name="connect-to-a-wfs-service"></a>WFS hizmetine bağlanma
 
@@ -26,7 +26,7 @@ Aşağıdaki özellikler sınıfı tarafından desteklenir `WfsClient` :
 - İstekler yalnızca kullanılarak yapılır `HTTP GET` .
 - Desteklenen işlemler:
 
-    | | |
+    | İşlem | Açıklama |
     | :-- | :-- |
     | GetCapabilities | Geçerli WFS işlemlerine ve parametrelerine sahip bir meta veri belgesi oluşturur |
     | GetFeature | Bir veri kaynağından özelliklerin bir seçimini döndürür |

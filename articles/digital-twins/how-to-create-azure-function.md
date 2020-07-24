@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725911"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124315"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
 
@@ -77,7 +78,7 @@ Bu, temel Azure işleviniz.
 
 Artık işlevi derleyebilir ve çalıştırabilirsiniz. Azure işlevlerinin sonunda bulutta çalıştırılması amaçlanıyor olsa da, Azure işlevlerini yerel olarak çalıştırabilir ve hata ayıklayabilirsiniz.
 
-Bunun hakkında daha fazla bilgi için bkz. [Event Grid tetikleyiciden yerel olarak hata ayıklama](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Bunun hakkında daha fazla bilgi için bkz. [*Event Grid tetikleyiciden yerel olarak hata ayıklama*](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>Azure Digital TWINS SDK 'sını Azure işlev uygulamanıza ekleyin
 
@@ -162,9 +163,9 @@ az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(fu
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Yönetilen kimlik hakkında daha fazla bilgi için lütfen bkz. [App Service ve Azure işlevleri için Yönetilen kimlikler kullanma](../app-service/overview-managed-identity.md).
+Yönetilen kimlik hakkında daha fazla bilgi için lütfen bkz. [*App Service ve Azure işlevleri için Yönetilen kimlikler kullanma*](../app-service/overview-managed-identity.md).
 
-Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Bunun hakkında daha fazla bilgi için bkz. [ortam değişkenleri](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables).
+Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Bunun hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables).
 
 > [!TIP]
 > Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının*başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -208,7 +209,7 @@ Ayrıca, sonraki bölümde kullanılacak şekilde bu sayfada gösterilen **nesne
 
 ### <a name="assign-access-roles"></a>Erişim rolleri atama
 
-Azure dijital TWINS, erişimi yönetmek için rol tabanlı erişim denetimi kullandığından (Bu konuda daha fazla bilgi için bkz [. kavramlar: Azure dijital TWINS çözümleri Için güvenlik](concepts-security.md) ), Azure dijital TWINS erişimine izin vermek istediğiniz her bir işlev uygulaması için de bir rol eklemeniz gerekir.
+Azure dijital TWINS, erişimi yönetmek için rol tabanlı erişim denetimi kullandığından (Bu konuda daha fazla bilgi için bkz [*. kavramlar: Azure dijital TWINS çözümleri Için güvenlik*](concepts-security.md) ), Azure dijital TWINS erişimine izin vermek istediğiniz her bir işlev uygulaması için de bir rol eklemeniz gerekir.
 
 Rol atamak için, oluşturduğunuz Azure dijital TWINS örneğinin **kaynak kimliği** gereklidir. Örneğinizi oluşturduğunuz sırada daha önce kaydetmediyseniz, bu komutu kullanarak alabilirsiniz:
 
@@ -231,4 +232,4 @@ Bu makalede, Azure Digital TWINS ile kullanmak üzere bir Azure işlevi ayarlama
 * Diğer hizmetlerden ileti alma Event Grid uç noktası
 
 Daha sonra, Azure dijital TWINS 'e IoT Hub verileri almak için temel Azure işlevinizde nasıl derleme yapılacağını inceleyin:
-* [Nasıl yapılır: IoT Hub 'dan alma telemetrisi](how-to-ingest-iot-hub-data.md)
+* [*Nasıl yapılır: IoT Hub 'dan alma telemetrisi*](how-to-ingest-iot-hub-data.md)

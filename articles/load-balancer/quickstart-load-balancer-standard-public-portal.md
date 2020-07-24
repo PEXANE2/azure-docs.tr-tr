@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536564"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125199"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Leri dengelemek için yük dengeleyici oluşturma
 
@@ -111,7 +111,7 @@ Sanal makinelerin durumunu izlemek için **myHealthProbe** adlı bir durum araş
     | İyi durumda olmayan durum eşiği | Bir VM sağlıksız kabul edilmeden önce gerçekleşmesi gereken **sağlıksız eşik** veya arka arkaya araştırma hatası sayısı için **2** ' yi seçin.|
     | | |
 
-3. **Tamam**’ı seçin.
+3. Rest varsayılanlarını bırakın ve **Tamam**' ı seçin.
 
 ### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
@@ -140,7 +140,7 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     | Arka uç bağlantı noktası | **80**girin. |
     | Arka uç havuzu | **Mybackendpool**öğesini seçin.|
     | Durum yoklaması | **Myhealtharaştırması**' ni seçin. |
-    | Örtük giden kuralları oluşturma | **Evet**’i seçin. </br> Daha fazla bilgi ve gelişmiş giden kural yapılandırması için bkz.: </br> [Azure’da giden bağlantılar](load-balancer-outbound-connections.md) </br> [Standart Load Balancer Azure portal kullanarak yük dengelemeyi ve giden kuralları yapılandırma](configure-load-balancer-outbound-portal.md)
+    | Örtük giden kuralları oluşturma | **Hayır**'ı seçin.
 
 4. Kalan varsayılan değerleri bırakın ve **Tamam**' ı seçin.
 
@@ -237,6 +237,49 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Kullanılabilirlik alanı | **2** |**3**|
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin| Mevcut **Mynsg** 'yi seçin|
 
+## <a name="create-outbound-rule-configuration"></a>Giden kuralı yapılandırması oluştur
+Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 'yi yapılandırır. 
+
+Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağlantılar](load-balancer-outbound-connections.md).
+
+### <a name="create-outbound-rule"></a>Giden kuralı oluştur
+
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myloadbalancer** ' ı seçin.
+
+2. **Ayarlar**altında **giden kuralları**' nı ve ardından **Ekle**' yi seçin.
+
+3. Giden kuralları yapılandırmak için şu değerleri kullanın:
+
+    | Ayar | Değer |
+    | ------- | ----- |
+    | Ad | **Mbir Boundrule**girin. |
+    | Ön uç IP adresi | **Yeni oluştur**’u seçin. </br> **Ad**alanına **LoadBalancerFrontEndOutbound**girin. </br> **IP adresi** veya **IP öneki**' ni seçin. </br> **Genel IP adresi** veya **genel IP ön eki**altında **Yeni oluştur** ' u seçin. </br> Ad için **Mypublicıpoıb Utbağlanmadı** veya **myPublicIPPrefixOutbound**girin. </br> **Tamam**’ı seçin. </br> **Ekle**’yi seçin.|
+    | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15 dakikaya**taşıyın.|
+    | TCP sıfırlaması | **Etkin**'i seçin.|
+    | Arka uç havuzu | **Yeni oluştur**’u seçin. </br> **Ad**alanına **Mybackendpooloutbound** yazın. </br> **Ekle**’yi seçin. |
+    | Bağlantı noktası ayırma-> bağlantı noktası ayırma | **Giden bağlantı noktası sayısını el ile** seçin |
+    | Giden bağlantı noktaları-> seçin | **Örnek başına bağlantı noktası** seçin |
+    | Giden bağlantı noktaları-örnek başına > bağlantı noktaları | **10000**girin. |
+
+4. **Ekle**’yi seçin.
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>Sanal makineleri giden havuzuna Ekle
+
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myloadbalancer** ' ı seçin.
+
+2. **Ayarlar**’ın altında **Arka Uç Havuzları**’nı seçin.
+
+3. **Mybackendpooloutbound**öğesini seçin.
+
+4. **Sanal ağ**' da, **myvnet**' i seçin.
+
+5. **Sanal makinelerde** **+ Ekle**' yi seçin.
+
+6. **MyVM1**, **myVM2**ve **myVM3**' nin yanındaki kutuları işaretleyin. 
+
+7. **Ekle**’yi seçin.
+
+8. **Kaydet**'i seçin.
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[2. seçenek: yük dengeleyici oluşturma (temel SKU)](#tab/option-1-create-load-balancer-basic)
 
@@ -441,9 +484,10 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Name |  **myVM2** |**myVM3**|
     | Kullanılabilirlik kümesi| **MyAvailabilitySet** seçin | **MyAvailabilitySet** seçin|
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin| Mevcut **Mynsg** 'yi seçin|
+
 ---
 
-### <a name="install-iis"></a>IIS yükleme
+## <a name="install-iis"></a>IIS yükleme
 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden, **myresourcegrouplb** kaynak grubunda bulunan **myVM1** ' yi seçin.
 

@@ -3,8 +3,8 @@ title: PHP için Azure Web ve çalışan rolleri oluşturma
 description: Bir Azure bulut hizmetinde PHP Web ve çalışan rolleri oluşturmaya ve PHP çalışma zamanını yapılandırmaya yönelik kılavuz.
 services: ''
 documentationcenter: php
-author: msangapu
-manager: cfowler
+author: msangapu-msft
+manager: gwallace
 ms.assetid: 9f7ccda0-bd96-4f7b-a7af-fb279a9e975b
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,11 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 70d48ba9519c627addf58939866633cdcc43049e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: fd04c6315a5a6915159c0cbb6a9640ae0695ed73
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919834"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117234"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP web ve çalışan rolleri oluşturma
 
@@ -31,7 +32,7 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [Azure tarafından sunulan 
 
 ## <a name="download-the-azure-sdk-for-php"></a>PHP için Azure SDK 'sını indirin
 
-[Php Için Azure SDK](https://github.com/Azure/azure-sdk-for-php) çeşitli bileşenlerden oluşur. Bu makalede bunların ikisi de kullanılır: Azure PowerShell ve Azure öykünücüleri. Bu iki bileşen Microsoft Web Platformu Yükleyicisi aracılığıyla yüklenebilir. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+[Php Için Azure SDK](https://github.com/Azure/azure-sdk-for-php) çeşitli bileşenlerden oluşur. Bu makalede bunların ikisi de kullanılır: Azure PowerShell ve Azure öykünücüleri. Bu iki bileşen Microsoft Web Platformu Yükleyicisi aracılığıyla yüklenebilir. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/).
 
 ## <a name="create-a-cloud-services-project"></a>Cloud Services projesi oluşturma
 
@@ -181,7 +182,7 @@ PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>Uygulamanızı yayımlama
 
-Uygulamanızı yayımlamak için, önce [Import-Azuikinci adı SettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) cmdlet 'ini kullanarak yayımlama ayarlarınızı içeri aktarmanız gerekir. Daha sonra [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) cmdlet 'ini kullanarak uygulamanızı yayımlayabilirsiniz. Oturum açma hakkında daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
+Uygulamanızı yayımlamak için, önce [Import-Azuikinci adı SettingsFile](/powershell/module/servicemanagement/azure.service/import-azurepublishsettingsfile) cmdlet 'ini kullanarak yayımlama ayarlarınızı içeri aktarmanız gerekir. Daha sonra [Publish-AzureServiceProject](/powershell/module/servicemanagement/azure.service/publish-azureserviceproject) cmdlet 'ini kullanarak uygulamanızı yayımlayabilirsiniz. Oturum açma hakkında daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

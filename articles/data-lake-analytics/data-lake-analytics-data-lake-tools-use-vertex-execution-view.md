@@ -3,17 +3,15 @@ title: Visual Studio için Data Lake araçları 'nda köşe yürütme görünüm
 description: Bu makalede Data Lake Analytics işleri yürütmek için köşe yürütme görünümünün nasıl kullanılacağı açıklanır.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: how-to
 ms.date: 10/13/2016
-ms.openlocfilehash: 2dfb03a1b3e0f2bf1146a65627247256125480a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2fdce38b19cd38439baa5d640707d159cd713657
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120118"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125625"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçları 'nda köşe yürütme görünümünü kullanma
 Data Lake Analytics işleri yürütmek için köşe yürütme görünümünü nasıl kullanacağınızı öğrenin.

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: c1828bcde5c26c5605b867c115127eb2502bdd86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505350"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124740"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT oluşturmaya hazırlanma
 
@@ -38,7 +38,7 @@ Sahip olmayan bir Azure kümesi için avere vFXT oluşturma izni veren bazı ge�
 |----------|--------|-------|
 | Kaynak Grubu Yöneticisi vFXT 'yi oluşturuyor | Sanal ağ, küme denetleyicisi ve küme düğümlerinin kaynak grubu içinde oluşturulması gerekir. | Hedef kaynak grubu kapsamındaki [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) ve [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor) rolleri. |
 | Mevcut, dış sanal ağı kullan | Küme denetleyicisi ve küme düğümleri vFXT 'nin kaynak grubu içinde oluşturulur, ancak farklı bir kaynak grubunda var olan bir sanal ağı kullanır. | (1) vFXT kaynak grubu kapsamındaki [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) ve [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor) rolleri; ve (2) sanal [makine katılımcısı](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator)ve [avere katkıda](../role-based-access-control/built-in-roles.md#avere-contributor) bulunan rolleri sanal ağın kaynak grubu kapsamında. |
-| Küme oluşturucuları için özel rol | Kaynak yerleştirme kısıtlaması yok. Bu yöntem, sahip olmayan önemli ayrıcalıklar sağlar. | Abonelik sahibi, [Bu makalede](avere-vfxt-non-owner.md)açıklandığı gibi özel bir RBAC rolü oluşturur. |
+| Küme oluşturucuları için özel rol | Kaynak yerleştirme kısıtlaması yok. Bu yöntem, sahip olmayan önemli ayrıcalıklar sağlar. | Abonelik sahibi, [Bu makalede](avere-vfxt-non-owner.md)açıklandığı gibi bir Azure özel rolü oluşturur. |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>VFXT kümesi için kota
 

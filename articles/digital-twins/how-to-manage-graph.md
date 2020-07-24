@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258112"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125541"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
 Azure dijital TWINS 'in kalbi, tüm ortamınızı temsil eden [ikizi grafiktir](concepts-twins-graph.md) . İkizi Graph, **ilişkiler**aracılığıyla bağlanan tek tek dijital TWINS 'ten oluşur.
 
-Çalışan bir [Azure dijital TWINS örneğiniz](how-to-set-up-instance.md) olduğunda ve istemci uygulamanız için [kimlik doğrulaması](how-to-authenticate-client.md) ayarladıktan sonra, Azure dijital TWINS örneğindeki dijital TWINS ve bunların ilişkilerini oluşturmak, değiştirmek ve silmek Için [**digitaltwins API 'lerini**](how-to-use-apis-sdks.md) kullanabilirsiniz. [.Net (C#) SDK 'sını](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure DIGITAL TWINS CLI](how-to-use-cli.md)'yi de kullanabilirsiniz.
+Çalışan bir [Azure dijital TWINS örneğinden](how-to-set-up-instance-scripted.md) ve istemci uygulamanızda [kimlik doğrulama](how-to-authenticate-client.md) kodu ayarladıktan sonra, Azure dijital TWINS örneğindeki dijital TWINS ve bunların ilişkilerini oluşturmak, değiştirmek ve silmek Için [**digitaltwins API 'lerini**](how-to-use-apis-sdks.md) kullanabilirsiniz. [.Net (C#) SDK 'sını](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure DIGITAL TWINS CLI](how-to-use-cli.md)'yi de kullanabilirsiniz.
 
-Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek dijital TWINS ile çalışmak için bkz. [nasıl yapılır: dijital TWINS 'ı yönetme](how-to-manage-twin.md).
+Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek dijital TWINS ile çalışmak için bkz. [*nasıl yapılır: dijital TWINS 'ı yönetme*](how-to-manage-twin.md).
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -62,7 +62,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Yardımcı sınıfı hakkında daha fazla bilgi için `BasicRelationship` bkz. [nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'larını kullanma](how-to-use-apis-sdks.md).
+Yardımcı sınıfı hakkında daha fazla bilgi için `BasicRelationship` bkz. [*nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'larını kullanma*](how-to-use-apis-sdks.md).
 
 ## <a name="list-relationships"></a>Liste ilişkileri
 
@@ -108,7 +108,7 @@ Azure dijital TWINS 'in Ayrıca belirli bir ikizi gelen tüm ilişkileri bulmas�
 
 Önceki kod örneği giden ilişkileri bulmaya odaklanır. Aşağıdaki örnek benzerdir, ancak bunun yerine gelen ilişkileri bulur. Ayrıca, bunları bulduktan sonra da siler.
 
-Incomingrelationship çağrılarının tam olarak döndürülmediğini unutmayın
+`IncomingRelationship`Çağrıların ilişkinin tam gövdesini döndürmediğini unutmayın.
 
 ```csharp
 async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
@@ -229,7 +229,7 @@ Pratik kullanım durumlarında, ikizi hiyerarşileri genellikle farklı bir veri
 
 Oluşturulacak bir dizi dijital TWINS ve ilişki tanımlayan aşağıdaki veri tablosunu göz önünde bulundurun.
 
-| Model    | ID | Üst | İlişki adı | Diğer veriler |
+| Modelleme    | ID | Üst | İlişki adı | Diğer veriler |
 | --- | --- | --- | --- | --- |
 | sını    | Floor01 | | | … |
 | Oda    | Room10 | Floor01 | contains | … |
@@ -301,10 +301,10 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>CLı ile ilişkileri yönetme
 
-Azure dijital TWINS CLı kullanılarak aynı zamanda ve ilişkileri de yönetilebilir. Komutları [nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma](how-to-use-cli.md)bölümünde bulabilirsiniz.
+Azure dijital TWINS CLı kullanılarak aynı zamanda ve ilişkileri de yönetilebilir. Komutları [*nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma*](how-to-use-cli.md)bölümünde bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure dijital TWINS ikizi grafiğini sorgulama hakkında bilgi edinin:
-* [Kavramlar: sorgu dili](concepts-query-language.md)
-* [Nasıl yapılır: ikizi grafiğini sorgulama](how-to-query-graph.md)
+* [*Kavramlar: sorgu dili*](concepts-query-language.md)
+* [*Nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md)

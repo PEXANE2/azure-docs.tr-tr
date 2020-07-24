@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77565902"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124145"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure Identity Management güvenliğine genel bakış
 
@@ -90,10 +91,15 @@ Daha fazla bilgi edinin:
 
 RBAC, Azure Resource Manager'ı temel alan, Azure kaynakları için ayrıntılı erişim yönetimi sağlayan bir yetkilendirme sistemidir. RBAC, kullanıcıların sahip olduğu erişim düzeyini, ne kadar fazla kontrol etmenizi sağlar. Örneğin, bir kullanıcıyı bir kaynak grubundaki tüm kaynakları yönetmek için yalnızca sanal ağları ve başka bir kullanıcıyı yönetecek şekilde sınırlayabilirsiniz. Azure'da kullanabileceğiniz birçok yerleşik rol vardır. Dört temel yerleşik rol aşağıda listelenmiştir. İlk üçü tüm kaynak türleri için geçerlidir.
 
+- [Sahip](/azure/role-based-access-control/built-in-roles.md#owner) -başkalarına erişim yetkisi verme hakkı dahil tüm kaynaklara tam erişim sağlar. 
+- [Katkıda bulunan](/azure/role-based-access-control/built-in-roles.md#contributor) -tüm Azure Kaynak türlerini oluşturabilir ve yönetebilir, ancak diğer kullanıcılara erişim izni veremez.
+- [Okuyucu](/azure/role-based-access-control/built-in-roles.md#reader) -mevcut Azure kaynaklarını görüntüleyebilir.
+- [Kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles.md#administrator) -Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar.
+
 Daha fazla bilgi edinin:
 
-* [Rol tabanlı erişim denetimi (RBAC) nedir?](/azure/role-based-access-control/overview)
-* [Azure kaynakları için yerleşik roller](/azure/role-based-access-control/built-in-roles)
+* [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](/azure/role-based-access-control/overview)
+* [Yerleşik Azure rolleri](/azure/role-based-access-control/built-in-roles)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 

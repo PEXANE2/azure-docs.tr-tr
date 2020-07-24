@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f5ad0b493f925ce34ffe19892fa432322995a9c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258011"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125216"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -44,7 +44,7 @@ DTDL, [ıot Tak ve kullan (PnP)](../iot-pnp/overview-iot-plug-and-play.md) ve [T
 
 Azure dijital TWINS 'deki dijital modeller gerçek dünyanın canlı, güncel temsilleridir. Özel DTDL modellerinizde ilişkileri kullanarak, TWINS 'i ortamınızı temsil eden **canlı bir grafiğe** bağlayacaksınız.
 
-Azure dijital TWINS grafınızı, [**Azure Digital TWINS Explorer**](https://github.com/Azure-Samples/digital-twins-explorer)örnek bir uygulamanın yardımıyla görüntüleyebilirsiniz.
+Azure dijital TWINS grafınızı, [**Azure Digital TWINS Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)örnek bir uygulamanın yardımıyla görüntüleyebilirsiniz.
 
 Örnek görselleştirmenin nasıl görüneceğine ilişkin bir görünüm aşağıda verilmiştir:
 
@@ -94,16 +94,16 @@ Aşağıdaki diyagramda Azure Digital TWINS 'in daha büyük bir Azure IoT çöz
 
 > [!IMPORTANT]
 > Azure dijital TWINS Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [*Microsoft Azure önizlemeleri Için ek kullanım koşulları*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Genel Önizleme sırasında Azure dijital TWINS sınırları listesi için bkz. [Başvuru: genel önizleme hizmeti sınırları](reference-service-limits.md).
+Genel Önizleme sırasında Azure dijital TWINS sınırları listesi için bkz. [*Başvuru: genel önizleme hizmeti sınırları*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure dijital TWINS 'in önceki önizleme sürümüyle çalıştıysanız, nelerin değiştiğini öğrenin:
-* [Genel Bakış: önceki sürümden farklılıklar](overview-differences.md)
+* [*Genel Bakış: önceki sürümden farklılıklar*](overview-differences.md)
 
 Veya ilk öğreticiyle Azure dijital ikgörüleri ile çalışmaya devam edin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: istemci uygulamasını kodlayın](tutorial-code.md)
+> [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)

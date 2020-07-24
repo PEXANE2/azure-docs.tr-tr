@@ -3,19 +3,17 @@ title: GenerateAnswer API 'SI ile meta veriler-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
 description: Soru-Cevap Oluşturma, anahtar/değer çiftleri biçiminde meta verileri soru/yanıt çiftlerine eklemenizi sağlar. Sonuçları Kullanıcı sorgularıyla filtreleyebilir ve izleme konuşmalarında kullanılabilecek ek bilgileri saklayabilirsiniz.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: diberry
-ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 863143cb2ec1085bf03b070c225f2be5e8e4393d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993516"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126185"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
@@ -146,7 +144,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi.
 
-## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Node. js ' de bir bot ile Soru-Cevap Oluşturma kullanma
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Node.js bir bot ile Soru-Cevap Oluşturma kullanma
 
 Bot Framework, [Getanswer API 'si](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)ile soru-cevap oluşturma özelliklerine erişim sağlar:
 
@@ -184,13 +182,40 @@ Sonuçlar yalnızca Restoran "PARADISE" için gerekli olduğundan, "restoran ad�
 {
     "question": "When does this hotel close?",
     "top": 1,
-    "strictFilters": [
-      {
-        "name": "restaurant",
-        "value": "paradise"
-      }]
+    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+### <a name="logical-and-by-default"></a>Mantıksal ve varsayılan olarak
+
+Sorgudaki çeşitli meta veri filtrelerini birleştirmek için, özelliğin dizisine ek meta veri filtreleri ekleyin `strictFilters` . Varsayılan olarak, değerler mantıksal olarak birleştirilir (ve). Bir mantıksal birleşim, çiftin yanıt içinde döndürülmesi için tüm filtrelerin QnA çiftleriyle eşleşmesini gerektirir.
+
+Bu, `strictFiltersCompoundOperationType` özelliğinin değeri ile birlikte kullanılmasına eşdeğerdir `AND` .
+
+### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>StrictFiltersCompoundOperationType özelliğini kullanarak mantıksal veya
+
+Birden çok meta veri filtresi birleştirilirken, yalnızca bir veya birkaç filtre eşleştirme ile ilgileniyorlarsa, `strictFiltersCompoundOperationType` özelliği değerini kullanın `OR` .
+
+Bu, herhangi bir filtre eşleştiğinde, ancak meta verisi olmayan yanıtlar döndürmeyeceği bilgi Bankalarınızın yanıtları döndürmesini sağlar.
+
+```json
+{
+    "question": "When do facilities in this hotel close?",
+    "top": 1,
+    "strictFilters": [
+      { "name": "type","value": "restaurant"},
+      { "name": "type", "value": "bar"},
+      { "name": "type", "value": "poolbar"}
+    ],
+    "strictFiltersCompoundOperationType": "OR"
+}
+```
+
+### <a name="metadata-examples-in-quickstarts"></a>Hızlı başlangıçlarda meta veri örnekleri
+
+Meta veriler hakkında daha fazla bilgi için Soru-Cevap Oluşturma Portal Hızlı başlangıcı:
+* [Yazma-meta verileri QnA çiftine ekleyin](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [Sorgu tahmini-meta verilere göre filtre yanıtları](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 
