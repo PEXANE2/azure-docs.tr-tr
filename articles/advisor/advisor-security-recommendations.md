@@ -3,12 +3,12 @@ title: Azure Danışmanı ile kaynakları daha güvenli hale getirme
 description: Azure dağıtımlarınızın güvenliğini artırmaya yardımcı olmak için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113866"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057656"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Danışmanı ile kaynakları daha güvenli hale getirme
 
@@ -16,7 +16,7 @@ Azure Advisor, tüm Azure kaynaklarınız için tutarlı ve birleştirilmiş bir
 
 Güvenlik Merkezi, artırılmış görünürlük aracılığıyla tehditleri engellemenize, algılamanıza ve yanıtlamanıza, ayrıca Azure kaynaklarınızın güvenliğini denetlemenize yardımcı olur. Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde öneriler oluşturur. Öneriler, ihtiyacınız olan denetimleri yapılandırma sürecinde size kılavuzluk eder. 
 
-Güvenlik önerileri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
+Güvenlik önerileri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](../security-center/security-center-recommendations.md).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Azure Advisor 'da güvenlik önerilerine erişme
 
@@ -33,5 +33,5 @@ Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)
-* [Danışman REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Danışman REST API](/rest/api/advisor/)
  

@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc442886c4c4c26db5f5cde908ea647e2ee2f1bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059012"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü yüklemek ve yapılandırmak
 Azure 'daki Linux sanal makineleri (VM 'Ler), genellikle güvenli bir kabuk (SSH) bağlantısı kullanılarak komut satırından yönetilir. Linux 'ta yeni veya hızlı sorun giderme senaryolarında, uzak masaüstü kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux sanal ağınız için masaüstü ortamının ([Xfce](https://www.xfce.org)) ve uzak masaüstü 'nün ([xrdp](http://xrdp.org)) nasıl yükleneceği ve yapılandırılacağı açıklanır.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, Azure 'da mevcut bir Ubuntu 18,04 LTS sanal makinesi gereklidir. Bir VM oluşturmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:
 
 - [Azure CLI](quick-create-cli.md)
@@ -132,11 +133,10 @@ tail -f /var/log/syslog
 
 Red Hat Enterprise Linux ve SUSE gibi diğer Linux dağıtımlarındaki hizmetleri yeniden başlatmak için farklı yollar ve gözden geçirmek için alternatif günlük dosyası konumları olabilir.
 
-Uzak Masaüstü istemcinizdeki herhangi bir yanıt almazsanız ve sistem günlüğünde herhangi bir olay görmüyorsanız, bu davranış uzak masaüstü trafiğinin sanal makineye ulaşamayacağını gösterir. 3389 numaralı bağlantı noktasında TCP 'ye izin veren bir kuralınız olduğundan emin olmak için ağ güvenlik grubu kurallarınızı gözden geçirin. Daha fazla bilgi için bkz. [uygulama bağlantı sorunlarını giderme](../windows/troubleshoot-app-connection.md).
+Uzak Masaüstü istemcinizdeki herhangi bir yanıt almazsanız ve sistem günlüğünde herhangi bir olay görmüyorsanız, bu davranış uzak masaüstü trafiğinin sanal makineye ulaşamayacağını gösterir. 3389 numaralı bağlantı noktasında TCP 'ye izin veren bir kuralınız olduğundan emin olmak için ağ güvenlik grubu kurallarınızı gözden geçirin. Daha fazla bilgi için bkz. [uygulama bağlantı sorunlarını giderme](../troubleshooting/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha fazla bilgi için bkz. [Azure 'Da Linux VM 'ler IÇIN SSH anahtarları oluşturma](mac-create-ssh-keys.md).
 
 Windows 'dan SSH kullanma hakkında bilgi için bkz. [Windows Ile SSH anahtarlarını kullanma](ssh-from-windows.md).
-

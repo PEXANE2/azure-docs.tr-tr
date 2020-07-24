@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731521"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057902"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
 
@@ -47,6 +48,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
 - Önce gerekli sütunlar listelenir.
 - Şablona yeni sütun eklenmesini önermiyoruz. Eklediğiniz tüm ek sütunlar yoksayılır ve işlenmez.
 - CSV şablonunun en son sürümünü mümkün olduğunca sık indirmeniz önerilir.
+- Herhangi bir alandan önce/sonra hiçbir istenmeyen boşluk olmadığından emin olun. **Kullanıcı asıl adı**için, bu tür boşluklar içeri aktarma hatasına neden olur.
 
 ## <a name="to-create-users-in-bulk"></a>Toplu olarak Kullanıcı oluşturmak için
 

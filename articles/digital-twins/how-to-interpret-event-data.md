@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 34624358a26fbd52db5832cf3531a6f1d3b91e5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142434"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061747"
 ---
 # <a name="understand-event-data"></a>Olay verilerini anlama
 
@@ -103,11 +103,11 @@ Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 
 İşte bir yaşam döngüsü bildiriminin gövdesinde yer alan alanlar.
 
-| Ad | Değer |
+| Name | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir. |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı |
-| `specversion` | 1.0 |
+| `specversion` | 1,0 |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | Dijital ikizi KIMLIĞI |
@@ -189,11 +189,11 @@ Dijital ikizi başka bir örneği aşağıda verilmiştir. Bu, bir [modeli](conc
 
 Bir Edge değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
-| Ad    | Değer |
+| Name    | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir |
 | `source` | *Mydigitaltwins.westus2.azuredigitaltwins.net* gibi Azure dijital TWINS örneğinin adı |
-| `specversion` | 1.0 |
+| `specversion` | 1,0 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | İlişkinin KIMLIĞI, örneğin`<twinID>/relationships/<relationshipID>` |
@@ -245,11 +245,11 @@ Dijital **ikizi değişiklik bildirimleri** , bir dijital ikizi güncelleştiril
 
 Dijital ikizi değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
-| Ad    | Değer |
+| Name    | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı
-| `specversion` | 1.0 |
+| `specversion` | 1,0 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | Dijital ikizi KIMLIĞI |
@@ -300,7 +300,7 @@ Karşılık gelen bildirim (Azure Digital TWINS bir dijital ikizi güncelleştir
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Olayları iletmek için uç noktalar ve rotalar oluşturma konusuna bakın:
-* [Nasıl yapılır: uç noktaları ve yolları yönetme](how-to-manage-routes.md)
+* [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes.md)
 
 Ya da Azure Digital TWINS API 'Leri ve SDK seçenekleri hakkında daha fazla bilgi edinin:
-* [Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma](how-to-use-apis-sdks.md)
+* [*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md)

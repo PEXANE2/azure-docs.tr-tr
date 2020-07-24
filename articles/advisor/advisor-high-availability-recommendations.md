@@ -3,12 +3,12 @@ title: Danışman ile uygulamanızın güvenilirliğini geliştirme
 description: İş açısından kritik Azure dağıtımlarınızda güvenilirliği sağlamak ve geliştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057680"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak uygulamanızın güvenilirliğini geliştirme
 
@@ -59,7 +59,7 @@ Coğrafi yönlendirme için bir Traffic Manager profili yapılandırılmışsa t
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Yanlışlıkla üzerine yazma veya silme işleminden sonra verileri kaydetmek ve kurtarmak için Azure depolama hesabınızda geçici silme kullanın
 
-Silinen Blobların kalıcı olarak silinmesi yerine geçici olarak silinen bir duruma geçmesi için depolama hesabınızda [geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) özelliğini etkinleştirin. Verilerin üzerine yazıldığında, üzerine yazılan verilerin durumunu kaydetmek için geçici silinen bir anlık görüntü oluşturulur. Geçici silme kullanmak, yanlışlıkla silme veya üzerine yazma işlemleri için kurtarma yapmanıza olanak sağlar. Danışman, geçici silme özelliği etkinleştirilmemiş Azure depolama hesaplarını tanımlar ve bunu etkinleştirmenizi önerir.
+Silinen Blobların kalıcı olarak silinmesi yerine geçici olarak silinen bir duruma geçmesi için depolama hesabınızda [geçici silme](../storage/blobs/soft-delete-overview.md) özelliğini etkinleştirin. Verilerin üzerine yazıldığında, üzerine yazılan verilerin durumunu kaydetmek için geçici silinen bir anlık görüntü oluşturulur. Geçici silme kullanmak, yanlışlıkla silme veya üzerine yazma işlemleri için kurtarma yapmanıza olanak sağlar. Danışman, geçici silme özelliği etkinleştirilmemiş Azure depolama hesaplarını tanımlar ve bunu etkinleştirmenizi önerir.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>VPN ağ geçidinizi bağlantı dayanıklılığı için etkin-etkin olarak yapılandırma
 
@@ -107,7 +107,7 @@ Azure Advisor, Azure Cosmos DB Spark bağlayıcısının eski sürümlerini kull
 1 Temmuz 2020 ' den itibaren, HDInsight 3,6 ' te Spark 2,1 veya 2,2 ' i kullanarak yeni Spark kümeleri oluşturamayacak. HDInsight 4,0 üzerinde Spark 2,3 kullanarak yeni Spark kümeleri oluşturamayacak. Mevcut kümeler Microsoft desteği olmadan, olduğu gibi çalıştırılacak. 
 
 ## <a name="enable-virtual-machine-replication"></a>Sanal makine çoğaltmasını etkinleştirme
-Başka bir bölgeye çoğaltma özelliği etkinleştirilmemiş sanal makineler, bölgesel kesintiler için esnek değildir. Sanal makinelerin çoğaltılması, Azure bölgesi kesintileri sırasında olumsuz iş etkisini azaltır. Advisor, çoğaltmanın etkin olmadığı ve etkinleştirilmesini önerdiği VM 'Leri algılar. Çoğaltmayı etkinleştirdiğinizde, bir kesinti oluşursa, sanal makinelerinizi uzak bir Azure bölgesinde hızlıca alabilirsiniz. [Sanal makine çoğaltma hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Başka bir bölgeye çoğaltma özelliği etkinleştirilmemiş sanal makineler, bölgesel kesintiler için esnek değildir. Sanal makinelerin çoğaltılması, Azure bölgesi kesintileri sırasında olumsuz iş etkisini azaltır. Advisor, çoğaltmanın etkin olmadığı ve etkinleştirilmesini önerdiği VM 'Leri algılar. Çoğaltmayı etkinleştirdiğinizde, bir kesinti oluşursa, sanal makinelerinizi uzak bir Azure bölgesinde hızlıca alabilirsiniz. [Sanal makine çoğaltma hakkında daha fazla bilgi edinin.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Danışman 'de yüksek kullanılabilirlik önerilerine erişme
 

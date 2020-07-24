@@ -4,14 +4,15 @@ description: Yüksek performanslı bilgi işlem için bir dosya erişim Hızland
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 05/29/2020
+ms.date: 07/16/2020
 ms.author: v-erkel
-ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: references_regions
+ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433669"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053686"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Önbelleği nedir?
 
@@ -53,22 +54,16 @@ Azure HPC önbellek dağıtımı, finansal hizmetler şirketlerinin stratejik ka
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Azure HPC önbelleği şu Azure bölgelerinde kullanılabilir:
+Azure HPC önbelleğinin kullanılabilir olduğunu öğrenmek için [bölgeye göre Azure küresel altyapı ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache) sayfasını ziyaret edin.
 
-| Kuzey Amerika      | Avrupa         | Asya            | Avustralya      |
-|--------------------|----------------|-----------------|----------------|
-| Doğu ABD            | Kuzey Avrupa   | Güney Kore - Orta   | Doğu Avustralya |
-| Doğu ABD 2          | Batı Avrupa    | Güneydoğu Asya  |               |
-| Orta Güney ABD | | | |
-| Batı ABD 2        | | | |
-
-[Müşteri tarafından yönetilen anahtarlar özelliği](customer-keys.md) yalnızca şu bölgelerde desteklenir:
+[Müşteri tarafından yönetilen anahtarlar özelliği](customer-keys.md) yalnızca şu Azure bölgelerinde desteklenir:
 
 * Doğu ABD
 * Orta Güney ABD
 * Batı ABD 2
-
-En son kullanılabilirlik bilgileri için [Azure HPC önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) kontrol edin.
+* Batı Avrupa
+* US Gov Arizona
+* US Gov Virginia
 
 ## <a name="service-availability"></a>Hizmet kullanılabilirliği
 
@@ -79,5 +74,5 @@ Azure HPC Cache ile kullanacağınız her abonelik için erişim istemeniz gerek
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Özellikleri hakkında daha fazla bilgi edinmek için [Azure HPC önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) okuyun
-* Ürün [önkoşulları](hpc-cache-prereqs.md) hakkında bilgi edinin
+* Ürün [önkoşulları](hpc-cache-prerequisites.md) hakkında bilgi edinin
 * Azure portal [bir Azure HPC önbelleği oluşturun](hpc-cache-create.md)

@@ -13,11 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44299a55424f9b0338ee49d2742aeedf16db22e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732098"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057928"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Active Directory Microsoft Graph API 'sini kullanarak özel yönetici rolleri atama 
 
@@ -25,11 +26,11 @@ Microsoft Graph API kullanarak Kullanıcı hesaplarına roller atamayı otomatik
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Rolleri atamak veya kaldırmak için genel yönetici hesabı veya ayrıcalıklı Kimlik Yöneticisi kullanarak Azure AD kuruluşunuza bağlanın.
+Rolleri atamak veya kaldırmak için genel yönetici veya ayrıcalıklı rol yöneticisi hesabı kullanarak Azure AD kuruluşunuza bağlanın.
 
 ## <a name="post-operations-on-roleassignment"></a>Roleatama üzerinde POST Işlemleri
 
-Bir kullanıcı ile rol tanımı arasında rol ataması oluşturmak için HTTP isteği.
+### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>Örnek 1: Kullanıcı ile rol tanımı arasında bir rol ataması oluşturun.
 
 POST
 
@@ -44,7 +45,7 @@ Gövde
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  // Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
@@ -54,7 +55,7 @@ Yanıt
 HTTP/1.1 201 Created
 ```
 
-Sorumlu veya rol tanımının bulunmadığı bir rol ataması oluşturmak için HTTP isteği
+### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>Örnek 2: sorumlu veya rol tanımının bulunmadığı bir rol ataması oluşturun
 
 POST
 
@@ -68,7 +69,7 @@ Gövde
 {
     "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  //Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
@@ -77,11 +78,31 @@ Yanıt
 ``` HTTP
 HTTP/1.1 404 Not Found
 ```
+### <a name="example-3-create-a-role-assignment-on-a-single-resource-scope"></a>Örnek 3: tek bir kaynak kapsamında rol ataması oluşturma
 
-Yerleşik rol tanımında tek bir kaynak kapsamlı rol ataması oluşturmak için HTTP isteği.
+POST
 
-> [!NOTE] 
-> Günümüzde yerleşik roller, yalnızca "/" kuruluş genelindeki kapsam veya "/AU/*" kapsamı kapsamında olabilecek bir sınırlamaya sahiptir. Tek kaynak kapsamı, yerleşik roller için çalışmaz, ancak özel roller için çalışır.
+``` HTTP
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+```
+
+Gövde
+
+``` HTTP
+{
+    "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
+    "roleDefinitionId":"e9b2b976-1dea-4229-a078-b08abd6c4f84",    //role template ID of a custom role
+    "directoryScopeId":"/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"  //object ID of an application
+}
+```
+
+Yanıt
+
+``` HTTP
+HTTP/1.1 201 Created
+```
+
+### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>Örnek 4: desteklenmeyen yerleşik rol tanımında yönetim birimi kapsamlı rol ataması oluşturma
 
 POST
 
@@ -94,8 +115,8 @@ Gövde
 ``` HTTP
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
+    "roleDefinitionId":"29232cdf-9323-42fd-ade2-1d097af3e4de",    //role template ID of Exchange Administrator
+    "directoryScopeId":"/administrativeUnits/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"    //object ID of an administrative unit
 }
 ```
 
@@ -109,23 +130,17 @@ HTTP/1.1 400 Bad Request
         "code":"Request_BadRequest",
         "message":
         {
-            "lang":"en",
-            "value":"Provided authorization scope is not supported for built-in role definitions."},
-            "values":
-            [
-                {
-                    "item":"scope",
-                    "value":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
-                }
-            ]
+            "message":"The given built-in role is not supported to be assigned to a single resource scope."
         }
     }
 }
 ```
 
+Yönetim birimi kapsamı için yalnızca yerleşik rollerin bir alt kümesi etkindir. Yönetim birimi üzerinden desteklenen yerleşik rollerin listesi için [Bu belgeye](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles) bakın.
+
 ## <a name="get-operations-on-roleassignment"></a>Roleatama 'da Işlemleri al
 
-Belirli bir sorumlu için rol ataması almak için HTTP isteği
+### <a name="example-5-get-role-assignments-for-a-given-principal"></a>Örnek 5: belirli bir sorumlu için rol atamaları alın
 
 GET
 
@@ -137,21 +152,25 @@ Yanıt
 
 ``` HTTP
 HTTP/1.1 200 OK
-{ 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
-} ,
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/"  
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+        ]
 }
 ```
 
-Belirli bir rol tanımı için rol ataması almak için HTTP isteği.
+### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>Örnek 6: belirli bir rol tanımı için rol atamaları alın.
 
 GET
 
@@ -164,14 +183,18 @@ Yanıt
 ``` HTTP
 HTTP/1.1 200 OK
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+     ]
 }
 ```
 
-KIMLIĞE göre rol ataması almak için HTTP isteği.
+### <a name="example-7-get-a-role-assignment-by-id"></a>Örnek 7: KIMLIĞE göre rol ataması alın.
 
 GET
 
@@ -187,13 +210,44 @@ HTTP/1.1 200 OK
     "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"
+}
+```
+
+### <a name="example-8-get-role-assignments-for-a-given-scope"></a>Örnek 8: belirli bir kapsam için rol atamalarını al
+
+
+GET
+
+``` HTTP
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=directoryScopeId eq '/d23998b1-8853-4c87-b95f-be97d6c6b610'
+```
+
+Yanıt
+
+``` HTTP
+HTTP/1.1 200 OK
+{
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            }
+        ]
 }
 ```
 
 ## <a name="delete-operations-on-roleassignment"></a>Roleatamasında SILME Işlemleri
 
-Bir kullanıcı ile rol tanımı arasında rol atamasını silmek için HTTP isteği.
+### <a name="example-9-delete-a-role-assignment-between-a-user-and-a-role-definition"></a>Örnek 9: Kullanıcı ve rol tanımı arasında rol atamasını silme.
 
 DELETE
 
@@ -206,7 +260,7 @@ Yanıt
 HTTP/1.1 204 No Content
 ```
 
-Artık mevcut olmayan bir rol atamasını silmek için HTTP isteği
+### <a name="example-10-delete-a-role-assignment-that-no-longer-exists"></a>Örnek 10: artık mevcut olmayan bir rol atamasını silme
 
 DELETE
 
@@ -220,7 +274,7 @@ Yanıt
 HTTP/1.1 404 Not Found
 ```
 
-Self ve yerleşik rol tanımı arasında rol atamasını silmek için HTTP isteği
+### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>11. örnek: kendi ve genel yönetici rolü tanımı arasında rol atamasını silme
 
 DELETE
 
@@ -239,12 +293,14 @@ HTTP/1.1 400 Bad Request
         "message":
         {
             "lang":"en",
-            "value":"Cannot remove self from built-in role definitions."},
+            "value":"Removing self from Global Administrator built-in role is not allowed"},
             "values":null
         }
     }
 }
 ```
+
+Bir kiracının sıfır genel yöneticisi olan bir senaryoya engel olmak için kullanıcıların kendi genel yönetici rollerini silmesini önliyoruz. Kendisine atanan diğer rollerin kaldırılmasına izin verilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

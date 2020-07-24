@@ -3,15 +3,16 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054964"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
-Bu makale, Azure Dosyalarını yedekleme hakkındaki yaygın sorulara yanıtlar sunar. Bazı yanıtlarda, kapsamlı bilgiler içeren makalelerin bağlantıları vardır. [Tartışma Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-backup.html)Azure Backup hizmetiyle ilgili sorular da gönderebilirsiniz.
+Bu makale, Azure Dosyalarını yedekleme hakkındaki yaygın sorulara yanıtlar sunar. Bazı yanıtlarda, kapsamlı bilgiler içeren makalelerin bağlantıları vardır. [Tartışma Için Microsoft Q&soru sayfasında](/answers/topics/azure-backup.html)Azure Backup hizmetiyle ilgili sorular da gönderebilirsiniz.
 
 Bu makaledeki bölümleri hızlı taramak için **bu makale altında** sağ taraftaki bağlantıları kullanın.
 
@@ -55,7 +56,7 @@ Zamanın herhangi bir noktasında dosya paylaşımı için en fazla 200 Anlık G
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Silinen bir Azure dosya paylaşımından kurtarma gerçekleştirebilir miyim?
 
-Dosya paylaşma geçici olarak silinmiş durumdaysa, geri yükleme işlemini gerçekleştirmek için öncelikle dosya paylaşımının silinmesini yapmanız gerekir. Silmeyi geri alma işlemi, dosya paylaşımının zaman içinde herhangi bir noktaya geri yüklediğiniz etkin duruma gelmesini sağlar. Dosya paylaşımınızın silmeyi geri alma hakkında bilgi edinmek için [Bu bağlantıyı](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) ziyaret edin veya [silmeyi geri al dosya paylaşma betiğine](./scripts/backup-powershell-script-undelete-file-share.md)bakın. Dosya paylaşımının kalıcı olarak silinmesi halinde içerikleri ve anlık görüntüleri geri yükleyemezsiniz.
+Dosya paylaşma geçici olarak silinmiş durumdaysa, geri yükleme işlemini gerçekleştirmek için öncelikle dosya paylaşımının silinmesini yapmanız gerekir. Silmeyi geri alma işlemi, dosya paylaşımının zaman içinde herhangi bir noktaya geri yüklediğiniz etkin duruma gelmesini sağlar. Dosya paylaşımınızın silmeyi geri alma hakkında bilgi edinmek için [Bu bağlantıyı](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) ziyaret edin veya [silmeyi geri al dosya paylaşma betiğine](./scripts/backup-powershell-script-undelete-file-share.md)bakın. Dosya paylaşımının kalıcı olarak silinmesi halinde içerikleri ve anlık görüntüleri geri yükleyemezsiniz.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Azure dosya paylaşımındaki korumayı durdurursam yedeklemelerden geri yükleme yapabilir miyim?
 
@@ -104,7 +105,7 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 | -------------- | ------------------------------ | --------- |
 | Günlük          | Her gün 9 saat              | 50 gün   |
 | Haftalık         | Pazar günü saat 9 ' da              | 3 hafta   |
-| Aylık        | Son Pazartesi günü saat 9 ' da         | 1 ay   |
+| Aylık olarak        | Son Pazartesi günü saat 9 ' da         | 1 ay   |
 | Yıllık         | Üçüncü Pazar günü saat 9 ' da | 4 yıl   |
 
 #### <a name="impact"></a>Etki
@@ -139,7 +140,7 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 | -------------- | ---------------------- | --------- |
 | Günlük          | Her gün 9 saat     | 10 gün   |
 | Haftalık         | Pazartesi günü saat 9 ' da      | 2 hafta   |
-| Aylık        | Son Pazartesi günü saat 9 ' da | 2 ay  |
+| Aylık olarak        | Son Pazartesi günü saat 9 ' da | 2 ay  |
 
 #### <a name="impact-of-change"></a>Değişikliğin etkisi
 

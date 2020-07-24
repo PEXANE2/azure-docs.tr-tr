@@ -66,6 +66,9 @@
       items:
         - name: Genel Bakış
           href: best-practices.md
+        - name: AKS kümesi için temel mimarisi
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          maintainContext: true
         - name: Küme operatörleri için
           items:
             - name: Çok kiracılılık ve küme yalıtımı

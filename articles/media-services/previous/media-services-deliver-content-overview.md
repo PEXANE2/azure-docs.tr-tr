@@ -1,25 +1,21 @@
 ---
-title: Müşterilere içerik sunma | Microsoft Docs
+title: Müşterilere içerik sunma
 description: Bu konu, Azure Media Services ile içeriğinizi sunmaya nelerin ilgili olduğuna ilişkin genel bir bakış sunar.
 services: media-services
-documentationcenter: ''
 author: Juliako
 manager: femila
-editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060353"
 ---
 # <a name="deliver-content-to-customers"></a>Müşterilere içerik sunma
 Akışa veya isteğe bağlı video içeriğinizi müşterilere sunarken, amacınız farklı ağ koşulları altında çeşitli cihazlara yüksek kaliteli video sunmaktır.
@@ -55,7 +51,7 @@ Media Services olan varlıklarınız için filtreler tanımlayabilirsiniz. Bu fi
 
 Daha fazla bilgi için bkz. [filtreler ve dinamik bildirimler](media-services-dynamic-manifest-overview.md).
 
-## <a name="locators"></a><a id="locators"/>Bulucuları
+## <a name="locators"></a><a name="locators"></a>Bulucuları
 İçeriğinizi içeriğinizi akışa almak veya indirmek için kullanılabilecek bir URL 'yi sağlamak için, önce bir bulucu oluşturarak varlığınızı yayımlamanız gerekir. Bir bulucu, bir varlık içinde bulunan dosyalara erişmek için bir giriş noktası sağlar. Media Services iki tür bulucuyu destekler:
 
 * OnDemandOrigin Konumlandırıcı. Bunlar, medyayı (örneğin, MPEG-DASH, HLS veya Kesintisiz Akış) veya aşamalı olarak indirme dosyalarını akışa almak için kullanılır.
@@ -70,9 +66,9 @@ Konum belirleyicilerinin süre sonu tarihleri vardır. Azure portal, gelecekte b
 > 
 > 
 
-Bir bulucunun sona erme tarihini güncelleştirmek için [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) ya da [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API’lerini kullanın. SAS bulucunun sona erme tarihini güncelleştirdiğinizde URL’nin değiştiğini unutmayın.
+Bir bulucunun sona erme tarihini güncelleştirmek için [REST](/rest/api/media/operations/locator#update_a_locator) ya da [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API’lerini kullanın. SAS bulucunun sona erme tarihini güncelleştirdiğinizde URL’nin değiştiğini unutmayın.
 
-Konumlandırıcı, Kullanıcı başına erişim denetimini yönetmek için tasarlanmamıştır. Dijital Rights Management (DRM) çözümlerini kullanarak, bireysel kullanıcılara farklı erişim hakları verebilirsiniz. Daha fazla bilgi için bkz. [medyayı güvenli hale getirme](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+Konumlandırıcı, Kullanıcı başına erişim denetimini yönetmek için tasarlanmamıştır. Dijital Rights Management (DRM) çözümlerini kullanarak, bireysel kullanıcılara farklı erişim hakları verebilirsiniz. Daha fazla bilgi için bkz. [medyayı güvenli hale getirme](/previous-versions/azure/dn282272(v=azure.100)).
 
 Bir bulucu oluşturduğunuzda, Azure depolama 'daki gerekli depolama ve yayma işlemlerine bağlı olarak 30 saniyelik bir gecikme olabilir.
 
@@ -87,7 +83,7 @@ Kullanıcılara akış URL 'Leri sağlamak için önce bir OnDemandOrigin Bulucu
 
 Yalnızca içeriğinizi teslim ettiğiniz akış uç noktası 10 Eylül 2014 ' den sonra oluşturulduysa TLS üzerinden akış yapabilirsiniz. Akış URL 'larınız 10 Eylül 2014 ' den sonra oluşturulan akış uç noktalarına dayıyorsa, URL "streaming.mediaservices.windows.net" içerir. "Origin.mediaservices.windows.net" (eski biçim) içeren akış URL 'Leri TLS 'yi desteklemez. URL 'niz eski biçimindeyse ve TLS üzerinden akış oluşturabilmek istiyorsanız yeni bir akış uç noktası oluşturun. İçeriğinizi TLS üzerinden akışındaki yeni akış uç noktasına göre URL 'Leri kullanın.
 
-## <a name="streaming-url-formats"></a><a id="URLs"/>Akış URL biçimleri
+## <a name="streaming-url-formats"></a><a name="URLs"></a>Akış URL biçimleri
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH biçimi
 {akış uç noktası adı-media services hesabı adı}.streaming.mediaservices.windows.net/{konum kimliği}/{dosya adı}.ism/Manifest(format=mpd-time-csf)
@@ -192,4 +188,3 @@ Eski Kesintisiz Akış istemcilerinden bazıları yineleme etiketlerini destekle
 
 ## <a name="related-topics"></a>İlgili konular
 [Depolama anahtarları alındıktan sonra Media Services bulıcıları Güncelleştir](media-services-roll-storage-access-keys.md)
-

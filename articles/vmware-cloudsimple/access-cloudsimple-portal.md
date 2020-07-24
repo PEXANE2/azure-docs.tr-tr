@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ea178655646f7f130476acaffc35c60181968ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058705"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portal CloudSimple Portal tarafından kullanılan VMware çözümüne erişin
 
@@ -23,7 +23,7 @@ ms.locfileid: "86525101"
 
 Yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rollerin, CloudSimple hizmeti 'nin dağıtıldığı kaynak grubunda yapılandırılması gerekir.  Roller, CloudSimple hizmeti nesnesinde de yapılandırılabilir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](../role-based-access-control/check-access.md) makalesi. Yalnızca yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rolün abonelikte yapılandırılması gerekir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](../role-based-access-control/check-access.md) makalesi.
 
-Özel roller kullanıyorsanız, rol altında aşağıdaki işlemlerden herhangi birine sahip olmalıdır ```Actions``` .  Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md).  İşlemlerden herhangi biri bir parçasıysa ```NotActions``` , Kullanıcı CloudSimple portalına erişemez.
+Özel roller kullanıyorsanız, rol altında aşağıdaki işlemlerden herhangi birine sahip olmalıdır ```Actions``` .  Özel roller hakkında daha fazla bilgi için bkz. [Azure özel rolleri](../role-based-access-control/custom-roles.md).  İşlemlerden herhangi biri bir parçasıysa ```NotActions``` , Kullanıcı CloudSimple portalına erişemez.
 
 ```
 Microsoft.VMwareCloudSimple/*

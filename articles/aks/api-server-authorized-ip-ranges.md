@@ -4,11 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de API sunucusuna erişim için bi
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 4d9030e21c3b8f31c18c26fc54dc76d5b8d84a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c92d4e00da1cc3d372cca0bf4efbe648ae522608
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057475"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -17,7 +18,7 @@ Kubernetes 'de, API sunucusu, küme içinde kaynak oluşturmak veya düğüm say
 Bu makalede, API sunucusu yetkilendirilmiş IP adresi aralıklarının hangi IP adreslerinin ve Cıdrs 'nin denetim düzlemine erişebileceğini sınırlamak için nasıl kullanılacağı gösterilmektedir.
 
 > [!IMPORTANT]
-> Yeni kümelerde, API sunucusu yetkilendirilmiş IP adresi aralıkları yalnızca *Standart* SKU yük dengeleyicide desteklenir. Yapılandırılmış *temel* SKU yük dengeleyiciye ve API sunucusu yetkilendirilmiş IP adresi aralıklarına sahip mevcut kümeler, olduğu gibi çalışmaya devam eder, ancak *Standart* bir SKU yük dengeleyiciye geçirilemez. Bu mevcut kümeler, Kubernetes sürümü veya denetim düzlemi yükseltildiyse de çalışmaya devam edecektir.
+> API sunucusu yetkilendirilmiş IP adresi aralıklarının ön izleme 2019 ' de önizleme dışına taşındıktan sonra oluşturulan kümelerde, API sunucusu yetkilendirilmiş IP adresi aralıkları yalnızca *Standart* SKU yük dengeleyicide desteklenir. Yapılandırılmış *temel* SKU yük dengeleyiciye ve API sunucusu yetkilendirilmiş IP adresi aralıklarına sahip mevcut kümeler, olduğu gibi çalışmaya devam eder, ancak *Standart* bir SKU yük dengeleyiciye geçirilemez. Bu mevcut kümeler, Kubernetes sürümü veya denetim düzlemi yükseltildiyse de çalışmaya devam edecektir. API sunucusu yetkilendirilmiş IP adresi aralıkları özel kümeler için desteklenmez.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -35,7 +36,7 @@ API sunucusu ve diğer küme bileşenleri hakkında daha fazla bilgi için bkz. 
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>API sunucusu yetkilendirilmiş IP aralıkları etkin olan bir AKS kümesi oluşturma
 
-API sunucusu yetkilendirilmiş IP aralıkları yalnızca yeni AKS kümelerinde çalışır ve özel AKS kümelerinde desteklenmez. [Az aks Create][az-aks-create] ' i kullanarak bir küme oluşturun ve *`--api-server-authorized-ip-ranges`* yetkili IP adresi aralıklarının listesini sağlamak için parametresini belirtin. Bu IP adresi aralıkları genellikle şirket içi ağlarınızda veya genel IP 'Lerde kullanılan adres aralıklarından oluşur. Bir CıDR aralığı belirttiğinizde, aralıktaki ilk IP adresi ile başlayın. Örneğin, *137.117.106.90/29* geçerli bir aralıktır, ancak ARALıKTAKI ilk IP adresini *137.117.106.88/29*gibi belirttiğinizden emin olun.
+[Az aks Create][az-aks-create] ' i kullanarak bir küme oluşturun ve *`--api-server-authorized-ip-ranges`* yetkili IP adresi aralıklarının listesini sağlamak için parametresini belirtin. Bu IP adresi aralıkları genellikle şirket içi ağlarınızda veya genel IP 'Lerde kullanılan adres aralıklarından oluşur. Bir CıDR aralığı belirttiğinizde, aralıktaki ilk IP adresi ile başlayın. Örneğin, *137.117.106.90/29* geçerli bir aralıktır, ancak ARALıKTAKI ilk IP adresini *137.117.106.88/29*gibi belirttiğinizden emin olun.
 
 > [!IMPORTANT]
 > Varsayılan olarak, kümeniz, giden ağ geçidini yapılandırmak için kullanabileceğiniz [Standart SKU yük dengeleyiciyi][standard-sku-lb] kullanır. Küme oluşturma sırasında API sunucusu yetkilendirilmiş IP aralıklarını etkinleştirdiğinizde, belirttiğiniz aralıklara ek olarak kümenizin genel IP 'sine de varsayılan olarak izin verilir. İçin *""* veya hiçbir değer belirtmezseniz *`--api-server-authorized-ip-ranges`* , API sunucusu yetkilendirilmiş IP aralıkları devre dışı bırakılır. PowerShell kullanıyorsanız, *`--api-server-authorized-ip-ranges=""`* ayrıştırma sorunlarından kaçınmak için (eşittir işareti ile) öğesini kullanın.
@@ -58,8 +59,10 @@ az aks create \
 > - Güvenlik Duvarı genel IP adresi
 > - Kümeyi yönettiğiniz ağları temsil eden herhangi bir Aralık
 > - AKS kümenizde Azure Dev Spaces kullanıyorsanız, [bölgeniz temelinde ek aralıklara][dev-spaces-ranges]izin vermeniz gerekir.
-
-> Belirtebileceğiniz IP aralıklarının sayısı için üst sınır 3500 ' dir. 
+>
+> Belirtebileceğiniz IP aralıklarının sayısı için üst sınır 200 ' dir.
+>
+> Kuralların yayılması 2 dakika kadar sürebilir. Lütfen bağlantıyı sınarken bu saate kadar izin verin.
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyici için giden IP 'Leri belirtin
 

@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0efff05f84bf02908dfc8b966b80539d309f491d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059137"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Uzak masaüstü istemcisinde sorun giderme
 
@@ -61,7 +62,7 @@ Web istemcisini kullanırken tarayıcınızın çalışmaya başlaması veya ça
 
 ## <a name="web-client-does-not-show-my-resources"></a>Web istemcisi kaynaklarımı göstermiyor
 
-İlk olarak, kullanmakta olduğunuz Azure Active Directory hesabı kontrol edin. Winodws sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, veya özel tarayıcı penceresi kullanmanız gerekir.
+İlk olarak, kullanmakta olduğunuz Azure Active Directory hesabı kontrol edin. Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, veya özel tarayıcı penceresi kullanmanız gerekir.
 
 Windows sanal masaüstü Fall 2019 sürümünü kullanıyorsanız, kaynaklarınıza bağlanmak için [Bu makaledeki](./virtual-desktop-fall-2019/connect-web-2019.md) Web istemcisi bağlantısını kullanın.
 

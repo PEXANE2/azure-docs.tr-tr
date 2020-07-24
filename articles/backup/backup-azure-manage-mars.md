@@ -4,11 +4,12 @@ description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetle
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054985"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yedeklemelerini yönetme
 
@@ -94,7 +95,7 @@ Dosya ve klasör yedeklemesini korumayı durdurmanın iki yolu vardır:
   - Korumayı sürdürmeye karar verirseniz, *Yedekleme zamanlamasını yeniden etkinleştir* seçeneğini kullanabilirsiniz. Bundan sonra, veriler yeni bekletme ilkesine göre tutulacaktır.
 - **Korumayı durdurun ve yedekleme verilerini silin**.
   - Bu seçenek, gelecekteki tüm yedekleme işlerinin verilerinizi korumasını durdurur ve tüm kurtarma noktalarını siler.
-  - *Bu yedekleme öğesi için verileriniz silinmiş bir iletiyle birlikte yedekleme verilerini sil uyarı e-postasını alırsınız. Bu veriler 14 gün boyunca geçici olarak kullanılabilir olacak, sonrasında kalıcı olarak silinecek* ve önerilen eylem, *verilerinizi kurtarmak için 14 gün içinde yedekleme öğesini yeniden koruacaktır.*
+  - *Bu yedekleme öğesi için verileriniz silinmiş bir iletiyle birlikte yedekleme verilerini silme uyarısı e-postası alacaksınız. Bu veriler 14 gün boyunca geçici olarak kullanılabilir olacak, sonrasında kalıcı olarak silinecek* ve önerilen eylem, *verilerinizi kurtarmak için 14 gün içinde yedekleme öğesini yeniden koruacaktır.*
   - Korumayı sürdürmesini sağlamak için silme işleminden 14 gün içinde yeniden koruma yapın.
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Korumayı durdurun ve yedekleme verilerini koruyun
@@ -108,10 +109,10 @@ Dosya ve klasör yedeklemesini korumayı durdurmanın iki yolu vardır:
 1. **Zamanlanmış bir yedeklemeyi Değiştir veya Durdur** sayfasında, **Bu yedekleme zamanlamasını kullanmayı Durdur ' u seçin, ancak bir zamanlama yeniden etkinleştirilinceye kadar depolanan yedeklemeleri saklayın**. Ardından **İleri**' yi seçin.
 
     ![Zamanlanmış bir yedeklemeyi değiştirin veya durdurun.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. **Zamanlanan yedeklemeyi Duraklat** bölümünde bilgileri gözden geçirin ve **son**' a tıklayın.
+1. **Zamanlanan yedeklemeyi Duraklat**bölümünde, bilgileri gözden geçirin ve **son**' a tıklayın.
 
     ![Zamanlanmış bir yedeklemeyi değiştirin veya durdurun.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. **Yedekleme Işlemini Değiştir** bölümünde, zaman çizelgesi yedekleme duraklamanızın başarılı durumunda olduğunu denetleyin ve sona **çıkmak için Kapat** ' a tıklayın.
+1. **Yedekleme Işlemini Değiştir**bölümünde, zaman çizelgenizi yedeklemeyi Duraklat ' ın başarı durumunda olduğunu denetleyin ve sona **çıkmak için Kapat** ' a tıklayın.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Korumayı Durdur ve yedekleme verilerini sil
 
@@ -155,17 +156,18 @@ Verileri korurken korumayı durdurduysanız ve korumayı sürdürmeye karar verd
 
 Bir parola, şirket içi veya yerel makinenizi, MARS aracısını veya Azure 'dan veya Azure 'dan yedekleme sırasında verileri şifrelemek ve şifrelerini çözmek için kullanılır. Parolayı kaybettiyseniz veya unuttuysanız, bu adımları izleyerek, parolayı yeniden oluşturabilirsiniz (makineniz hala kurtarma hizmetleri kasası ile kaydedilir ve yedekleme yapılandırılmışsa):
 
-- Mars Aracısı konsolundan **Eylemler bölmesi**  >  >**Özellikleri Değiştir** ' e gidin. Ardından **şifreleme sekmesine**gidin.<br>
-- **Parolayı Değiştir** onay kutusunu seçin.<br>
-- Yeni bir parola girin veya **parola oluştur**' a tıklayın.
-- Yeni parolayı kaydetmek için, **Araştır** ' a tıklayın.
+1. Mars Aracısı konsolundan **Eylemler bölmesi**  >  >**Özellikleri Değiştir** ' e gidin. Ardından **şifreleme sekmesine**gidin.<br>
+1. **Parolayı Değiştir** onay kutusunu seçin.<br>
+1. Yeni bir parola girin veya **parola oluştur**' a tıklayın.
+1. Yeni parolayı kaydetmek için, **Araştır** ' a tıklayın.
 
     ![Parola oluştur.](./media/backup-azure-manage-mars/passphrase.png)
-- Değişiklikleri uygulamak için **Tamam** ' ı tıklatın.  Kurtarma Hizmetleri Kasası için Azure portal [güvenlik özelliği](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) etkinleştirilmişse, güvenlik PIN 'ini girmeniz istenir. PIN 'i almak için bu [makalede](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)listelenen adımları izleyin.<br>
-- Portaldan güvenlik PIN 'ini yapıştırın ve değişiklikleri uygulamak için **Tamam** ' a tıklayın.<br>
+
+1. Değişiklikleri uygulamak için **Tamam** ' ı tıklatın.  Kurtarma Hizmetleri Kasası için Azure portal [güvenlik özelliği](./backup-azure-security-feature.md#enable-security-features) etkinleştirilmişse, güvenlik PIN 'ini girmeniz istenir. PIN 'i almak için bu [makalede](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)listelenen adımları izleyin.<br>
+1. Portaldan güvenlik PIN 'ini yapıştırın ve değişiklikleri uygulamak için **Tamam** ' a tıklayın.<br>
 
     ![Parola oluştur.](./media/backup-azure-manage-mars/passphrase2.png)
-- Parolanın, Azure Key Vault tercihen farklı bir konuma (kaynak makineden başka) güvenli bir şekilde kaydedildiğinden emin olun. MARS aracılarıyla yedeklenmekte olan birden fazla makineniz varsa tüm parolaları izleyin.
+1. Parolanın, Azure Key Vault tercihen farklı bir konuma (kaynak makineden başka) güvenli bir şekilde kaydedildiğinden emin olun. MARS aracılarıyla yedeklenmekte olan birden fazla makineniz varsa tüm parolaları izleyin.
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>Kullanılamayan makineler için yedekleme verilerini yönetme
 
@@ -182,13 +184,14 @@ Bu makineler için Azure Backup hizmeti, son kurtarma noktasının, yedekleme il
 MARS için yedekleme ilkesini yönetmek, Portal üzerinden değil MARS konsolu aracılığıyla yapılır. Mevcut kurtarma noktalarının bekletme ayarlarını, süresi dolmadan önce genişletmeniz gerekiyorsa, makineyi geri yüklemeniz, MARS konsolunu yüklemeniz ve ilkeyi genişletmeniz gerekir.
 
 - Makineyi geri yüklemek için aşağıdaki adımları uygulayın:
-  - [VM 'yi alternatif bir hedef makineye geri yükleme](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
-  - Hedef Makineyi, kaynak makineyle aynı ana bilgisayar adına yeniden oluştur
-  - Aracıyı yükler ve aynı kasaya ve aynı parolayla yeniden kaydolun
-  - Saklama süresini gereksinimlerinize göre genişletmek için MARS istemcisini başlatın
+  1. [VM 'yi alternatif bir hedef makineye geri yükleme](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  1. Hedef Makineyi, kaynak makineyle aynı ana bilgisayar adına yeniden oluştur
+  1. Aracıyı yükler ve aynı kasaya ve aynı parolayla yeniden kaydolun
+  1. Saklama süresini gereksinimlerinize göre genişletmek için MARS istemcisini başlatın
 - MARS ile korunan yeni geri yüklenen makineniz yedeklemeler almaya devam edecektir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Desteklenen senaryolar ve sınırlamalar hakkında daha fazla bilgi için, [Mars aracısının destek matrisine](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)bakın.
+- Desteklenen senaryolar ve sınırlamalar hakkında daha fazla bilgi için, [Mars aracısının destek matrisine](./backup-support-matrix-mars-agent.md)bakın.
 - [İsteğe bağlı yedekleme ilkesi saklama davranışı](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)hakkında daha fazla bilgi edinin.
+- Daha sık sorulan sorular için bkz. [Mars ARACıSı SSS](backup-azure-file-folder-backup-faq.md).

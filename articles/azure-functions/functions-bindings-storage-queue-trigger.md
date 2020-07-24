@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 920f53fa962cc30f2068d78c9d1907b93019fe34
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559907"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055862"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
 
@@ -350,17 +351,17 @@ Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js*
 
 # <a name="python"></a>[Python](#tab/python)
 
-Sıra iletisine [queuemessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)olarak yazılan parametre aracılığıyla erişin.
+Sıra iletisine [queuemessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)olarak yazılan parametre aracılığıyla erişin.
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Queuetrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) ek açıklaması, işlevi tetikleyen kuyruk iletisine erişmenizi sağlar.
+[Queuetrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) ek açıklaması, işlevi tetikleyen kuyruk iletisine erişmenizi sağlar.
 
 ---
 
 ## <a name="message-metadata"></a>İleti meta verileri
 
-Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Özellikler [Cloudqueuemessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) sınıfının üyeleridir.
+Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Özellikler [Cloudqueuemessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) sınıfının üyeleridir.
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|

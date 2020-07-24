@@ -3,12 +3,12 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6fa57726ee37d78438b4e07d329f1af00f157d7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057741"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -89,7 +89,7 @@ Maliyetin %60 ' i kaydetmek için, üst diskin depolama türünden bağımsız o
 Azure Blob depolama nesne sayısı, toplam boyut ve işlemler hakkında zeka kullanarak, danışman, depolama hesaplarınızdaki bir veya daha fazla veri katmanı için yaşam döngüsü yönetiminin etkinleştirilip etkinleştirilmeyeceğini algılar. Verilerinizi, uygulama uyumluluğu için Azure Blob depolama alanında korurken depolama maliyetlerinizi iyileştirmek için bir yaşam döngüsü yönetimi kuralları oluşturmanızı ister.
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>Kısa ömürlü işletim sistemi diski oluşturma önerisi
-[Kısa ömürlü işletim sistemi diski](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks) şunları yapmanıza olanak sağlar: 
+[Kısa ömürlü işletim sistemi diski](../virtual-machines/windows/ephemeral-os-disks.md) şunları yapmanıza olanak sağlar: 
 - İşletim sistemi diskleri için depolama maliyetlerinde tasarruf edin. 
 - İşletim sistemi disklerine daha düşük okuma/yazma gecikme süresi alın. 
 - İşletim sistemini (ve geçici diski) özgün durumuna sıfırlayarak daha hızlı sanal makine yeniden görüntüsü işlemleri yapın.
@@ -114,4 +114,3 @@ Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)
 * [Danışman işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)
-

@@ -1,20 +1,20 @@
 ---
 title: Azure Marketi 'nde Iş Ortağı Merkezi ile Azure IoT Edge bir modül teklifi oluşturma
-description: Iş Ortağı Merkezi 'ni kullanarak Azure Marketi 'nde IoT Edge modül teklifi oluşturma, yapılandırma ve yayımlama hakkında bilgi edinin
+description: Iş Ortağı Merkezi 'ni kullanarak Azure Marketi 'nde bir IoT Edge modülü teklifi oluşturmayı, yapılandırmayı ve yayımlamayı öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: b2a1e523e2af8c0be9c4211dfc8a0ffd2a889ca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053655"
 ---
-# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modülü teklifi oluşturma, yapılandırma ve yayımlama
+# <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
 
 Bu makalede, Azure Marketi için bir Nesnelerin İnterneti (IoT) Edge modülü teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır. Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
@@ -149,7 +149,7 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 Teklifinizin daha ayrıntılı bir açıklamasını sağlayın. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -231,7 +231,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Name
 7. Özet
-8. Description
+8. Açıklama
 9. Yararlı bağlantılar
 10. Ekran görüntüleri/videolar
 

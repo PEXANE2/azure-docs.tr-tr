@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 2e2a7f09ac6ff3be119a07ed0a2162525801ceef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061849"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel SDK 'lar oluşturma
 
-Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Sı .NET için geçerlidir (C#). .NET SDK ve genel olarak API 'Ler hakkında bilgi edinmek için bkz. [nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi SDK 'nizi tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilir.
+Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Sı .NET için geçerlidir (C#). .NET SDK ve genel olarak API 'Ler hakkında bilgi edinmek için bkz. [*nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi SDK 'nizi tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilir.
 
 ## <a name="set-up-your-machine"></a>Makinenizi kurma
 
@@ -37,23 +37,23 @@ npm install -g autorest@2.0.4413
 Azure dijital TWINS Swagger dosyasında oto Rest 'i çalıştırmak için aşağıdaki adımları izleyin:
 1. Azure dijital TWINS Swagger dosyasını ve buna eşlik eden örnek klasörünü çalışma dizinine kopyalayın.
 2. Bu çalışma dizinine geçiş yapmak için bir komut istemi penceresi kullanın.
-3. Aşağıdaki komutla, oto REST komutunu çalıştırın. `<language>`Yer tutucusunu tercih ettiğiniz dille değiştirin: `--python` , `--java` , `--go` , vb. ( [oto Rest Benioku](https://github.com/Azure/autorest)dosyasında seçeneklerin tam listesini bulabilirsiniz.)
+3. Aşağıdaki komutla, oto REST komutunu çalıştırın. `<language>`Yer tutucusunu tercih ettiğiniz dille değiştirin: `--python` , `--java` ,, vb `--go` . ( [Oto Rest Benioku](https://github.com/Azure/autorest)dosyasında seçeneklerin tam listesini bulabilirsiniz.)
 
 ```cmd/sh
 autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Sonuç olarak, çalışma dizininizde *Adtapı* adlı yeni bir klasör görürsünüz. Oluşturulan SDK dosyaları *Adtapı*ad alanına sahip olacaktır, bu da bu makaledeki kullanım örneklerinin geri kalanı aracılığıyla kullanmaya devam edersiniz.
+Sonuç olarak, çalışma dizininizde *Adtapı* adlı yeni bir klasör görürsünüz. Oluşturulan SDK dosyaları *Adtapı*ad alanına sahip olacaktır. Bu makaledeki kullanım örneklerinin geri kalanı aracılığıyla bu ad alanını kullanmaya devam edersiniz.
 
 Oto Rest, çok çeşitli dil kodu oluşturucuları destekler.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>SDK 'Yı bir Visual Studio projesine ekleme
 
-Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları dahil edebilirsiniz. Ancak, Azure dijital TWINS SDK 'sına birçok ayrı projede (istemci uygulamalarınız, Azure Işlevleri uygulamalarınız vb.) ihtiyaç duymadığınızda, oluşturulan dosyalardan ayrı bir proje (.NET sınıf kitaplığı) oluşturmak yararlı olabilir. Daha sonra bu sınıf kitaplığı projesini bir proje başvurusu olarak çeşitli çözümlere dahil edebilirsiniz.
+Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları dahil edebilirsiniz. Ancak, Azure dijital TWINS SDK 'sını çeşitli ayrı projelere (istemci uygulamalarınız, Azure Işlevleri uygulamalarınız vb.) eklemek isteyeceksiniz. Bu nedenle, oluşturulan dosyalardan ayrı bir proje (.NET sınıf kitaplığı) oluşturmak yararlı olabilir. Daha sonra, bu sınıf kitaplığı projesini bir proje başvurusu olarak çeşitli çözümlere dahil edebilirsiniz.
 
 Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Bu adımlar **Visual Studio 'yu** kullanır (en son sürümü [buradan](https://visualstudio.microsoft.com/downloads/)yükleyebilirsiniz).
 
-Uygulamanız gereken adımlar:
+Adımlar şunlardır:
 
 1. Sınıf kitaplığı için yeni bir Visual Studio çözümü oluşturma
 2. Proje adı olarak *Adtapi* kullanın
@@ -73,7 +73,7 @@ Bunları eklemek için *NuGet paket yöneticisi > açık araçlar > çözüm Iç
 
 1. Panelde, *tarayıcı* sekmesinin seçili olduğundan emin olun
 2. *Microsoft. Rest* 'i arayın
-3. *ClientRuntime* ve *ClientRuntime. Azure* paketlerini seçin ve bunları çözümünüze ekleyin
+3. `ClientRuntime`Ve paketlerini seçip `ClientRuntime.Azure` çözümünüze ekleyin
 
 Artık projeyi oluşturabilir ve yazdığınız herhangi bir Azure dijital TWINS uygulamasına bir proje başvurusu olarak ekleyebilirsiniz.
 
@@ -87,7 +87,7 @@ Tüm SDK işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde gelir.
 
 ### <a name="typed-and-untyped-data"></a>Türü belirtilmiş ve türsüz veriler
 
-REST API çağrılar genellikle kesin türü belirtilmiş nesneleri döndürür. Ancak Azure dijital TWINS, kullanıcıların TWINS için kendi özel türlerini tanımlamasına izin vermediğinden, birçok Azure dijital TWINS çağrısı için statik dönüş verilerini önceden tanımlamanız mümkün değildir. Bunun yerine, API 'Ler uygun olduğunda kesin türü belirtilmiş sarmalayıcı türleri döndürür ve özel olarak yazılmış ikizi verileri Json.NET nesnelerinde (API imzalarında "Object" veri türünün göründüğü her yerde kullanılır). Bu nesneleri kodunuzda uygun şekilde çevirebilirsiniz.
+REST API çağrılar genellikle kesin türü belirtilmiş nesneleri döndürür. Ancak Azure dijital TWINS, kullanıcıların TWINS için kendi özel türlerini tanımlamasına izin vermediğinden, birçok Azure dijital TWINS çağrısı için statik dönüş verilerini önceden tanımlamanız mümkün değildir. Bunun yerine, API 'Ler uygun olduğunda türü kesin belirlenmiş sarmalayıcı türleri döndürür ve özel olarak yazılmış ikizi verileri Json.NET nesnelerinde bulunur (API imzalarında "Object" veri türünün göründüğü her yerde kullanılır). Bu nesneleri kodunuzda uygun şekilde çevirebilirsiniz.
 
 ### <a name="error-handling"></a>Hata işleme
 
@@ -115,7 +115,7 @@ Oto Rest, SDK için iki tür sayfalama deseni üretir:
 
 Sorgu olmayan sayfalama düzeninde her çağrının iki sürümü vardır:
 * Başlangıç çağrısını yapmak için bir sürüm (gibi `DigitalTwins.ListEdges()` )
-* Sonraki sayfaları almak için bir sürüm, sonal "Ileri" (gibi `DigitalTwins.ListEdgesNext()` )
+* Aşağıdaki sayfaları almak için bir sürüm. Bu çağrılar "Next" (gibi) sonekine sahiptir `DigitalTwins.ListEdgesNext()`
 
 Azure dijital TWINS 'ten gelen giden ilişkilerin disk belleğine alınmış bir listesini almayı gösteren bir kod parçacığı aşağıda verilmiştir:
 ```csharp
@@ -188,4 +188,4 @@ try
 ## <a name="next-steps"></a>Sonraki adımlar
 
 SDK 'nizi kullanabileceğiniz bir istemci uygulaması oluşturma adımlarını gözden geçir:
-* [Öğretici: istemci uygulamasını kodlayın](tutorial-code.md)
+* [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)

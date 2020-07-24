@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142374"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061596"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
 Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sını](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
 
-Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](concepts-twins-graph.md) bir bütün olarak çalışmak için bkz. [nasıl yapılır: ilişkiler Ile ikizi grafiğini yönetme](how-to-manage-graph.md).
+Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](concepts-twins-graph.md) bir bütün olarak çalışmak için bkz. [*nasıl yapılır: ilişkiler Ile ikizi grafiğini yönetme*](how-to-manage-graph.md).
 
 > [!TIP]
 > Tüm SDK işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde gelir.
@@ -44,7 +44,7 @@ Model ve ilk özellik değerleri `initData` , ilgili verileri içeren BIR JSON d
 
 ### <a name="initialize-properties"></a>Özellikleri Başlat
 
-İkizi oluşturma API 'SI, ikizi özelliklerinin geçerli bir JSON açıklamasında seri hale getirilebilir bir nesne kabul eder. Bir ikizi için JSON biçiminin açıklaması için bkz. [Kavramlar: dijital TWINS ve ikizi Graph](concepts-twins-graph.md) .
+İkizi oluşturma API 'SI, ikizi özelliklerinin geçerli bir JSON açıklamasında seri hale getirilebilir bir nesne kabul eder. Bir ikizi için JSON biçiminin açıklaması için bkz. [*Kavramlar: dijital TWINS ve ikizi Graph*](concepts-twins-graph.md) .
 
 Bir parametre nesnesini el ile ya da bir belirtilen yardımcı sınıfı kullanarak oluşturabilirsiniz. Her birine bir örnek aşağıda verilmiştir.
 
@@ -91,7 +91,7 @@ object result = await client.GetDigitalTwin(id);
 
 Bu çağrı, ikizi verilerini JSON dizesi olarak döndürür. 
 
-Tek bir API çağrısını kullanarak birden çok TWINS almak için, sorgu API 'SI örneklerine bkz. [nasıl yapılır: ikizi grafiğini sorgulama](how-to-query-graph.md).
+Tek bir API çağrısını kullanarak birden çok TWINS almak için, sorgu API 'SI örneklerine bkz. [*nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md).
 
 Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)olarak yazılmış) göz önünde bulundurun:
 
@@ -148,14 +148,14 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
 Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri şunları içerir:
 * Bu Azure dijital TWINS örneğindeki dijital ikizi KIMLIĞI (as) `$dtId` .
 * `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı
-* Bir bölümdeki diğer özellikler `$metadata` . Bunlar:
+* Bir bölümdeki diğer özellikler `$metadata` . Bunlara
     - Dijital ikizi modelinin DTMı 'ı.
     - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
     - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 
 
 İkizi için döndürülen JSON 'ı, tercih ettiğiniz bir JSON ayrıştırma kitaplığı kullanarak ayrıştırtırabilirsiniz `System.Text.Json` .
 
-Ayrıca, SDK 'da bulunan serileştirme Yardımcısı sınıfını da kullanabilirsiniz `BasicDigitalTwin` ; Bu, önceden ayrıştırılmış form içindeki Core ikizi meta verilerini ve özelliklerini döndürür. Örnek aşağıda verilmiştir:
+Ayrıca, SDK 'da bulunan serileştirme Yardımcısı sınıfını da kullanabilirsiniz `BasicDigitalTwin` ; Bu, önceden ayrıştırılmış form içindeki Core ikizi meta verilerini ve özelliklerini döndürür. Aşağıda bir örnek verilmiştir:
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);
@@ -168,7 +168,7 @@ foreach (string prop in twin.CustomProperties.Keys)
 }
 ```
 
-Serileştirme yardımcı sınıfları hakkında daha fazla bilgi [Için bkz. nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma](how-to-use-apis-sdks.md).
+Serileştirme yardımcı sınıfları hakkında daha fazla bilgi [*Için bkz. nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md).
 
 ## <a name="update-a-digital-twin"></a>Dijital ikizi güncelleştirme
 
@@ -337,13 +337,13 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 ### <a name="delete-all-digital-twins"></a>Tüm dijital TWINS 'i Sil
 
-Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllTwins` işlevde yapar.
+Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [*: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllTwins` işlevde yapar.
 
 ## <a name="manage-twins-with-cli"></a>CLı ile TWINS 'i yönetme
 
-TWINS, Azure Digital TWINS CLı kullanılarak da yönetilebilir. Komutları [nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma](how-to-use-cli.md)bölümünde bulabilirsiniz.
+TWINS, Azure Digital TWINS CLı kullanılarak da yönetilebilir. Komutları [*nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma*](how-to-use-cli.md)bölümünde bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. dijital TWINS 'niz arasında ilişkiler oluşturma ve yönetme:
-* [Nasıl yapılır: ikizi grafiğini ilişkilerle yönetme](how-to-manage-graph.md)
+* [*Nasıl yapılır: ikizi grafiğini ilişkilerle yönetme*](how-to-manage-graph.md)

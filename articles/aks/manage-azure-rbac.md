@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244269"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056738"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
@@ -35,14 +35,14 @@ Azure 'dan Kubernetes kaynakları için RBAC 'yi yönetme özelliği, Azure veya
 - Önizleme için kaydolun <https://aka.ms/aad-rbac-sign-up-form> .
 - `EnableAzureRBACPreview`Özellik bayrağının etkinleştirildiğinden emin olun.
 - `AAD-V2`Özellik bayrağının etkinleştirildiğinden emin olun.
-- `aks-preview`CLI uzantısının v 0.4.55 veya üzeri yüklü olduğundan emin olun
+- `aks-preview` [CLI uzantısının][az-extension-add] v 0.4.55 veya üzeri yüklü olduğundan emin olun
 - [Kubectl v 1.18.3 +][az-aks-install-cli]' i yüklediğinizden emin olun.
 
 #### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>Kaydetme `EnableAzureRBACPreview` ve `AAD-V2` Önizleme özellikleri
 
 Kubernetes yetkilendirmesi için Azure RBAC kullanan bir AKS kümesi oluşturmak için `EnableAzureRBACPreview` `AAD-V2` aboneliğinizdeki ve özellik bayraklarını etkinleştirmeniz gerekir.
 
-`EnableAzureRBACPreview`Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
+`EnableAzureRBACPreview` `AAD-V2` Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak ve özellik bayraklarını kaydedin:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
@@ -64,9 +64,9 @@ Hazırlandığınızda, [az Provider Register] [az-Provider-Register] komutunu k
 az provider register --namespace Microsoft.ContainerService
 ```
 
-#### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
+#### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI uzantısını yükleme
 
-Azure RBAC kullanan bir AKS kümesi oluşturmak için, *aks-Preview* CLI uzantısı sürüm 0.4.55 veya üzeri gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
+Azure RBAC kullanan bir AKS kümesi oluşturmak için, *aks-Preview* CLI uzantısı sürüm 0.4.55 veya üzeri gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını veya [az Extension Update][az-extension-update] komutunu kullanarak tüm kullanılabilir güncelleştirmeleri yüklemeyi kullanın:
 
 ```azurecli-interactive
 # Install the aks-preview extension

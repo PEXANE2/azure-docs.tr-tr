@@ -4,11 +4,12 @@ description: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3fb05b054ea682c315654e6df262e49d592597
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248592"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054744"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
@@ -53,6 +54,17 @@ Kasa panosunda VM 'Leri görüntülemek için:
 
 ## <a name="manage-backup-policy-for-a-vm"></a>VM için yedekleme ilkesini yönetme
 
+### <a name="modify-backup-policy"></a>Yedekleme ilkesini değiştirme
+
+Var olan bir yedekleme ilkesini değiştirmek için:
+
+1. [Azure portalında](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
+2. **> yedekleme Ilkelerini Yönet**' den Azure sanal makinesi türü için yedekleme ilkesini seçin.
+3.  Değiştir ' e tıklayın ve ayarları değiştirin.
+
+
+### <a name="switch-backup-policy"></a>Yedekleme ilkesini Değiştir 
+
 Bir yedekleme ilkesini yönetmek için:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
@@ -77,6 +89,9 @@ Korumasını ayarladıktan sonra bir VM 'nin isteğe bağlı yedeklemesini çal�
 * İlk yedekleme beklendiğinde, isteğe bağlı yedekleme, kurtarma hizmetleri kasasında sanal makinenin tam bir kopyasını oluşturur.
 * İlk yedekleme işlemi tamamlandıktan sonra, bir isteğe bağlı yedekleme, değişiklikleri yalnızca önceki anlık görüntüden kurtarma hizmetleri kasasına gönderir. Diğer bir deyişle, sonraki yedeklemeler her zaman artımlıdır.
 * İsteğe bağlı yedekleme için bekletme aralığı, yedeklemeyi tetiklemeniz durumunda belirttiğiniz saklama değeridir.
+
+> [!NOTE]
+> Azure Backup hizmeti günde en fazla dokuz isteğe bağlı yedeklemeyi destekler, ancak Microsoft en iyi performansı sağlamak için dörtten fazla günlük isteğe bağlı yedeklemeyi önermez.
 
 İsteğe bağlı yedekleme tetiklemesi için:
 
@@ -125,6 +140,9 @@ Korumayı durdurmak ve bir VM 'nin verilerini silmek için:
 
     ![Yedekleme verilerini silme](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
+> [!NOTE]
+> Silme işlemini tamamladıktan sonra, yedeklenen veriler [geçici olarak silinen durumunda](./soft-delete-virtual-machines.md)14 gün boyunca saklanacaktır. <br>Ayrıca, [geçici silme özelliğini etkinleştirebilir veya devre dışı](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)bırakabilirsiniz.
+
 ## <a name="resume-protection-of-a-vm"></a>VM korumasını sürdürür
 
 VM korumasını durdurma sırasında [Korumayı Durdur ve yedek verileri sakla](#stop-protection-and-retain-backup-data) seçeneğini belirlediyseniz **yedeklemeyi devam ettirmeyi**kullanabilirsiniz. [Korumayı Durdur ve yedekleme verilerini sil](#stop-protection-and-delete-backup-data) seçeneğini belirlerseniz veya [yedekleme verilerini silerseniz](#delete-backup-data)Bu seçenek kullanılamaz.
@@ -157,7 +175,7 @@ Bir sanal makinenin yedekleme verilerini silmenin iki yolu vardır:
 
   * Öğe için yedekleme verilerini silmek için **Sil**' i seçin. Bir bildirim iletisi, yedekleme verilerinin silindiğini bilmenizi sağlar.
 
-Verilerinizi korumak için Azure Backup, geçici silme özelliğini içerir. Bir VM 'nin yedekleme (tüm kurtarma noktaları) silindikten sonra bile, geçici silme ile, yedekleme verileri 14 ek gün boyunca tutulur. Daha fazla bilgi için bkz. [geçici silme belgeleri](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
+Verilerinizi korumak için Azure Backup, geçici silme özelliğini içerir. Bir VM 'nin yedekleme (tüm kurtarma noktaları) silindikten sonra bile, geçici silme ile, yedekleme verileri 14 ek gün boyunca tutulur. Daha fazla bilgi için bkz. [geçici silme belgeleri](./backup-azure-security-feature-cloud.md).
 
   > [!NOTE]
   > Yedekleme verilerini sildiğinizde, ilişkili tüm kurtarma noktalarını silersiniz. Silmek için belirli kurtarma noktaları seçemezsiniz.
@@ -172,4 +190,4 @@ Verilerinizi korumak için Azure Backup, geçici silme özelliğini içerir. Bir
 
 * Azure VM 'lerini [VM ayarlarından nasıl yedekleyeceğinizi](backup-azure-vms-first-look-arm.md)öğrenin.
 * [VM 'leri geri yüklemeyi](backup-azure-arm-restore-vms.md)öğrenin.
-* [Azure VM yedeklemelerini izlemeyi](backup-azure-monitor-vms.md)öğrenin.
+* [Azure VM yedeklemelerini izlemeyi](./backup-azure-monitoring-built-in-monitor.md)öğrenin.

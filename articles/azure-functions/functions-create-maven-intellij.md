@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1eb430f94ef545fa74ed225c427a121a47f7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556765"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055794"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java ve IntelliJ ile ilk Azure işlevinizi oluşturma
 
@@ -44,7 +44,7 @@ Java ve IntelliJ ile bir işlev geliştirmek için aşağıdaki yazılımı yük
 2. Azure hesabınızda oturum açmak için kenar çubuğunda **Azure Gezgini**’ni açın ve sonra üstteki çubukta **Azure Oturum Açma** simgesine (veya IDEA menüsünden **Araçlar/Azure/Azure Oturum Açma**) tıklayın.
     ![IntelliJ Azure Oturum Açma komutu][intellij-azure-login]
 
-3. **Azure Oturum Açma** penceresinde **Cihaz Oturumu**’nu seçin ve ardından **Oturum aç**’a tıklayın ([diğer oturum açma seçenekleri](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
+3. **Azure Oturum Açma** penceresinde **Cihaz Oturumu**’nu seçin ve ardından **Oturum aç**’a tıklayın ([diğer oturum açma seçenekleri](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
 
    ![Cihaz oturumu’nun seçili olduğu Azure Oturum Açma penceresi][intellij-azure-popup]
 
@@ -156,7 +156,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit
 HTTP ile tetiklenen bir işlev içeren bir Java işlevleri projesi oluşturdunuz, yerel makinenizde çalıştırın ve Azure 'a dağıttınız. Şimdi, işlevinizi genişletin...
 
 > [!div class="nextstepaction"]
-> [Azure depolama kuyruğu çıkış bağlaması ekleme](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [Azure depolama kuyruğu çıkış bağlaması ekleme](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

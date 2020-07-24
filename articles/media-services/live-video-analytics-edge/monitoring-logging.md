@@ -3,11 +3,12 @@ title: İzleme ve günlüğe kaydetme-Azure
 description: Bu makalede, IoT Edge izleme ve günlüğe kaydetme hakkında canlı video analizine genel bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261215"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060461"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -97,7 +98,7 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
      }
    }
    ```
-Modül tarafından yayılan olaylar [IoT Edge hub 'ına](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)gönderilir ve oradan başka hedeflere yönlendirilebilir. 
+Modül tarafından yayılan olaylar [IoT Edge hub 'ına](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)gönderilir ve oradan başka hedeflere yönlendirilebilir. 
 
 ## <a name="controlling-events"></a>Olayları denetleme
 
@@ -109,7 +110,7 @@ IoT Edge modülündeki canlı video analizi tarafından yayımlanan işletimsel 
    
 Analiz olayları, hareket algılama işlemcisi veya HTTP uzantısı işlemcisi gibi düğümler tarafından oluşturulur ve bunları IoT Edge hub 'ına göndermek için IoT Hub havuzu kullanılır. 
 
-[Yukarıdaki tüm olayların](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) ikizi $edgeHub modülünün istenen özelliği aracılığıyla yönlendirilmesini denetleyebilirsiniz (dağıtım bildiriminde):
+[Yukarıdaki tüm olayların](../../iot-edge/module-composition.md#declare-routes) ikizi $edgeHub modülünün istenen özelliği aracılığıyla yönlendirilmesini denetleyebilirsiniz (dağıtım bildiriminde):
 
 ```
  "$edgeHub": {
@@ -125,14 +126,14 @@ Analiz olayları, hareket algılama işlemcisi veya HTTP uzantısı işlemcisi g
  }
 ```
 
-Yukarıdaki, lvaEdge, IoT Edge Module üzerindeki canlı video analizinin adıdır ve yönlendirme kuralı, [yolları bildir](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)bölümünde tanımlanan şemayı izler.
+Yukarıdaki, lvaEdge, IoT Edge Module üzerindeki canlı video analizinin adıdır ve yönlendirme kuralı, [yolları bildir](../../iot-edge/module-composition.md#declare-routes)bölümünde tanımlanan şemayı izler.
 
 > [!NOTE]
 > Analiz olaylarının IoT Edge hub 'ına ulaşmasını sağlamak için, herhangi bir hareket algılama işlemcisi düğümü ve/veya herhangi bir HTTP uzantısı işlemci düğümünün bir IoT Hub havuz düğümü aşağı akış olması gerekir.
 
 ## <a name="event-schema"></a>Olay şeması
 
-Olaylar Edge cihazında olur ve kenarda veya bulutta tüketilebilir. IoT Edge üzerinde canlı video analizi tarafından oluşturulan olaylar, Azure IoT Hub tarafından oluşturulan ve sistem özellikleri, uygulama özellikleri ve bir gövdedeki [akış mesajlaşma düzenine](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) uygundur.
+Olaylar Edge cihazında olur ve kenarda veya bulutta tüketilebilir. IoT Edge üzerinde canlı video analizi tarafından oluşturulan olaylar, Azure IoT Hub tarafından oluşturulan ve sistem özellikleri, uygulama özellikleri ve bir gövdedeki [akış mesajlaşma düzenine](../../iot-hub/iot-hub-devguide-messages-construct.md) uygundur.
 
 ### <a name="summary"></a>Özet
 
@@ -142,10 +143,10 @@ IoT Hub üzerinden gözlemlendiği her olayın, aşağıda açıklandığı gibi
 |---|---|---|---|
 |ileti kimliği |sistemin |guid|  Benzersiz olay KIMLIĞI.|
 |konu başlığı| applicationProperty |string|    Media Services hesabının yolunu Azure Resource Manager.|
-|Konu|   applicationProperty |string|    Olayı yayan varlığın alt yolu.|
+|subject|   applicationProperty |string|    Olayı yayan varlığın alt yolu.|
 |eventTime| applicationProperty|    string| Olayın oluşturulduğu zaman.|
-|Türü| applicationProperty |string|    Olay türü tanımlayıcısı (aşağıya bakın).|
-|body|body  |nesne|    Belirli olay verileri.|
+|eventType| applicationProperty |string|    Olay türü tanımlayıcısı (aşağıya bakın).|
+|body|body  |object|    Belirli olay verileri.|
 |dataVersion    |applicationProperty|   string  |{Birincil}. Bazı|
 
 ### <a name="properties"></a>Özellikler
@@ -160,7 +161,7 @@ Grafikle ilişkili Azure Medya hizmeti hesabını temsil eder.
 
 `/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Media/mediaServices/{accountName}`
 
-#### <a name="subject"></a>Konu
+#### <a name="subject"></a>subject
 
 Olayı yayan varlık:
 
@@ -199,7 +200,7 @@ Olay saati, ıSO8601 dizesinde ve olayın gerçekleştiği zaman ile açıklanı
 
 ## <a name="logging"></a>Günlüğe Kaydetme
 
-Diğer IoT Edge modülleriyle benzer şekilde, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues) . Günlüklere yazılan bilgiler [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özellikleri tarafından denetlenebilir:
+Diğer IoT Edge modülleriyle benzer şekilde, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . Günlüklere yazılan bilgiler [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özellikleri tarafından denetlenebilir:
 
 * logLevel
 
@@ -221,7 +222,7 @@ Diğer IoT Edge modülleriyle benzer şekilde, uç cihazdaki [kapsayıcı günl�
 
 Belirli durumlarda, Azure desteği 'nin bir sorunu çözümlemesine yardımcı olması için yukarıda açıklananlardan daha ayrıntılı Günlükler oluşturmanız gerekebilir. Bunu yapmanın iki adımı vardır.
 
-İlk olarak, createOptions aracılığıyla [Modül depolamayı cihaz depolamasına bağlarsınız](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module#link-module-storage-to-device-storage) . Hızlı başlayan bir [dağıtım bildirimi şablonunu](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) incelerseniz şunları görürsünüz:
+İlk olarak, createOptions aracılığıyla [Modül depolamayı cihaz depolamasına bağlarsınız](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) . Hızlı başlayan bir [dağıtım bildirimi şablonunu](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) incelerseniz şunları görürsünüz:
 
 ```
 "createOptions": {

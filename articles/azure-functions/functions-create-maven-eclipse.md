@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6f521cccdc8814fad8605460bf87c0d0fca20378
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054738"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055617"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java ve tutulma ile ilk işlevinizi oluşturma 
 
@@ -28,7 +28,7 @@ Java ve tutulma ile bir işlevler uygulaması geliştirmek için aşağıdakiler
 -  [Java geliştirici seti](https://www.azul.com/downloads/zulu/), sürüm 8.
 -  [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
 -  Java ve Maven desteğiyle [Çakışan Küreler](https://www.eclipse.org/downloads/packages/).
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+-  [Azure CLI](/cli/azure)
 
 > [!IMPORTANT] 
 > Bu hızlı başlangıcın tamamlanabilmesi için JAVA_HOME ortam değişkeni JDK’nin yükleme konumu olarak ayarlanmalıdır.
@@ -43,7 +43,7 @@ Azure Işlevleri 'ni çalıştırmaya ve hata ayıklamaya yönelik yerel bir ort
 1. , Ve dahil tüm alanların değerlerini doldurduğunuzdan emin olun `resourceGroup` `appName` `appRegion` (lütfen **fabrikam-Function-20170920120101928**dışında farklı bir AppName kullanın) ve sonunda **son**' u kullanın.
     ![Tutulma Maven Create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. Projedeki oluşturulan kod, tetikleme HTTP isteğinin gövdesini yansıtan basit bir [http ile tetiklenen](/azure/azure-functions/functions-bindings-http-webhook) bir işlevdir.
+Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. Projedeki oluşturulan kod, tetikleme HTTP isteğinin gövdesini yansıtan basit bir [http ile tetiklenen](./functions-bindings-http-webhook.md) bir işlevdir.
 
 ## <a name="run-functions-locally-in-the-ide"></a>İşlevleri IDE 'de yerel olarak çalıştırma
 

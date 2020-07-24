@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 041300efd9d756f2ef8145adb23d745b2345c7eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058778"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Yüksek performanslı bilgi işlem VM boyutları
 
@@ -33,7 +33,7 @@ Azure H serisi sanal makineler (VM 'Ler), çeşitli gerçek dünyada HPC iş yü
 
 ## <a name="rdma-capable-instances"></a>RDMA özellikli örnekler
 
-HPC VM boyutlarının çoğu (HBv2, HB, HC, H16r, H16mr, A8 ve A9), uzak doğrudan bellek erişimi (RDMA) bağlantısı için bir ağ arabirimi özelliğidir. ' R ' ile ayrılmış, NC24rs konfigürasyonları (NC24rs_v3, NC24rs_v2 ve NC24r) gibi seçili [N serisi](https://docs.microsoft.com/azure/virtual-machines/nc-series) boyutlar da RDMA özellikli. Bu arabirim, diğer VM boyutlarında bulunan standart Azure ağ arabirimine ek niteliğindedir.
+HPC VM boyutlarının çoğu (HBv2, HB, HC, H16r, H16mr, A8 ve A9), uzak doğrudan bellek erişimi (RDMA) bağlantısı için bir ağ arabirimi özelliğidir. ' R ' ile ayrılmış, NC24rs konfigürasyonları (NC24rs_v3, NC24rs_v2 ve NC24r) gibi seçili [N serisi](./nc-series.md) boyutlar da RDMA özellikli. Bu arabirim, diğer VM boyutlarında bulunan standart Azure ağ arabirimine ek niteliğindedir.
 
 Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden iletişim kurmasını, HBv2 için HDR ücretlerden, HB, HC, H16r, H16mr ve RDMA özellikli N serisi sanal makineler için tarifelerinin ve A8 ve A9 VM 'Ler için QDR ücretlerden başlayarak iletişim kurmasını sağlar. Bu RDMA özellikleri, bazı Ileti geçirme arabirimi (MPı) uygulamalarının ölçeklenebilirliğini ve performansını artırabilir. Hız hakkında daha fazla bilgi için bu sayfadaki tablolardaki ayrıntılara bakın.
 
@@ -42,14 +42,14 @@ Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden i
 > RDMA üzerinden RDMA, tüm RDMA özellikli VM 'Ler için desteklenir.
 > IB üzerinden IP yalnızca SR-ıOV etkinleştirilmiş VM 'lerde desteklenir.
 
-- **İşletim sistemi** -LINUX, HPC VM 'leri için çok iyi desteklenir; CentOS, RHEL, Ubuntu, SUSE gibi kaldırmalar yaygın olarak kullanılır. Windows desteği ile ilgili Windows Server 2016 ve daha yeni sürümler, tüm HPC serisi VM 'lerinde desteklenir. Windows Server 2012 R2, Windows Server 2012, SR-ıOV olmayan VM 'Ler (H16r, H16mr, A8 ve A9) üzerinde de desteklenir. [Windows Server 2012 R2 'Nin HBv2 'de ve 64 ' den fazla (sanal veya fiziksel) çekirdeğe sahip diğer VM 'lerde desteklenmediğini](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)unutmayın.
+- **İşletim sistemi** -LINUX, HPC VM 'leri için çok iyi desteklenir; CentOS, RHEL, Ubuntu, SUSE gibi kaldırmalar yaygın olarak kullanılır. Windows desteği ile ilgili Windows Server 2016 ve daha yeni sürümler, tüm HPC serisi VM 'lerinde desteklenir. Windows Server 2012 R2, Windows Server 2012, SR-ıOV olmayan VM 'Ler (H16r, H16mr, A8 ve A9) üzerinde de desteklenir. [Windows Server 2012 R2 'Nin HBv2 'de ve 64 ' den fazla (sanal veya fiziksel) çekirdeğe sahip diğer VM 'lerde desteklenmediğini](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)unutmayın.
 
 - **MPI** -Azure 'daki SR-ıOV etkin VM boyutları (HBv2, HB, HC, NCv3, NDv2), her türlü MPI 'ın Mellanox ile kullanılmasına izin verir.
 SR-ıOV olmayan VM 'lerde desteklenen MPı uygulamaları, VM 'Ler arasında iletişim kurmak için Microsoft ağ doğrudan (ND) arabirimini kullanır. Bu nedenle, yalnızca Microsoft MPı (MS-MPı) 2012 R2 veya üzeri ve Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir.
 
 - **Infinibanddriver<Linux | Windows> VM Uzantısı** -RDMA özellikli sanal makinelerde, ınfinibanddriver<Linux ekleyin | InfiniBand 'i etkinleştirmek için Windows> uzantısı. Linux 'ta, ınfinibanddriverlinux sanal makine uzantısı, RDMA bağlantısı için (SR-ıOV VM 'lerde), Mellanox Ed sürücüleri (SR-ıOV). Windows 'da, ınfinibanddriverwindows VM uzantısı, RDMA bağlantısı için Windows ağ doğrudan sürücülerini (SR-ıOV olmayan VM 'lerde) veya (SR-ıOV VM 'lerinde)
 A8 ve A9 örneklerinin bazı dağıtımlarında, HpcVmDrivers uzantısı otomatik olarak eklenir. HpcVmDrivers VM uzantısının kullanım dışı olduğunu unutmayın; güncellenmeyecektir.
-VM uzantısını bir VM 'ye eklemek için [Azure PowerShell](/powershell/azure/overview) cmdlet 'lerini kullanabilirsiniz. 
+VM uzantısını bir VM 'ye eklemek için [Azure PowerShell](/powershell/azure/) cmdlet 'lerini kullanabilirsiniz. 
 
   Aşağıdaki komut, *Batı ABD* bölgesinde *myresourcegroup* adlı kaynak grubunda dağıtılan *MYVM* adlı mevcut bir RDMA özellikli sanal makineye en son 1,0 ınfinibanddriverwindows uzantısını yükleme:
 
@@ -76,7 +76,7 @@ VM uzantısını bir VM 'ye eklemek için [Azure PowerShell](/powershell/azure/o
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  Daha fazla bilgi için bkz. [sanal makine uzantıları ve özellikleri](./extensions/overview.md). [Klasik dağıtım modelinde](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)dağıtılan VM 'ler için uzantılara de çalışabilirsiniz.
+  Daha fazla bilgi için bkz. [sanal makine uzantıları ve özellikleri](./extensions/overview.md). [Klasik dağıtım modelinde](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)dağıtılan VM 'ler için uzantılara de çalışabilirsiniz.
 
 - **RDMA ağ adresi alanı** -Azure 'daki RDMA ağı, 172.16.0.0/16 adres alanını ayırır. MPı uygulamalarını bir Azure sanal ağında dağıtılan örneklerde çalıştırmak için, sanal ağ adres alanının RDMA ağıyla çakışmadığından emin olun.
 
@@ -86,23 +86,23 @@ Azure, RDMA ağını kullanarak iletişim kurabilen Windows HPC VM kümeleri olu
 
 - **Sanal makineler** -RDMA özellikli HPC VM 'lerini aynı ölçek kümesine veya kullanılabilirlik kümesine dağıtın (Azure Resource Manager dağıtım modelini kullandığınızda). Klasik dağıtım modelini kullanıyorsanız, VM 'Leri aynı bulut hizmetinde dağıtın.
 
-- **Sanal Makine Ölçek Kümeleri** -bir sanal makine ölçek kümesinde (VMSS), VMSS içindeki InfiniBand iletişimi için dağıtımı tek bir yerleştirme grubuyla sınırlandırtığınızdan emin olun. Örneğin, bir Kaynak Yöneticisi şablonunda, `singlePlacementGroup` özelliğini olarak ayarlayın `true` . Özelliği ile birlikte kullanılabilecek en fazla VMSS boyutunun, `singlePlacementGroup` `true` varsayılan olarak 100 sanal makinelerde olduğunu unutmayın. HPC iş ölçeklendirmeniz, tek bir VMSS kiracısındaki 100 VM 'den yüksekse, bir artış isteyebilir, [çevrimiçi müşteri destek talebi](../azure-supportability/how-to-create-azure-support-request.md) ücretsiz olarak açabilirsiniz. Tek bir VMSS içindeki VM sayısı sınırı 300 ' e artırılabilir. Kullanılabilirlik kümeleri kullanarak VM 'Leri dağıttığınızda, en fazla sınır kullanılabilirlik kümesi başına 200 VM 'dir.
+- **Sanal Makine Ölçek Kümeleri** -bir sanal makine ölçek kümesinde (VMSS), VMSS içindeki InfiniBand iletişimi için dağıtımı tek bir yerleştirme grubuyla sınırlandırtığınızdan emin olun. Örneğin, bir Kaynak Yöneticisi şablonunda, `singlePlacementGroup` özelliğini olarak ayarlayın `true` . Özelliği ile birlikte kullanılabilecek en fazla VMSS boyutunun, `singlePlacementGroup` `true` varsayılan olarak 100 sanal makinelerde olduğunu unutmayın. HPC iş ölçeklendirmeniz, tek bir VMSS kiracısındaki 100 VM 'den yüksekse, bir artış isteyebilir, [çevrimiçi müşteri destek talebi](../azure-portal/supportability/how-to-create-azure-support-request.md) ücretsiz olarak açabilirsiniz. Tek bir VMSS içindeki VM sayısı sınırı 300 ' e artırılabilir. Kullanılabilirlik kümeleri kullanarak VM 'Leri dağıttığınızda, en fazla sınır kullanılabilirlik kümesi başına 200 VM 'dir.
 
 - **Sanal makineler arasında MPI** -sanal makineler (VM 'ler) arasında RDMA (ör. MPI iletişimi kullanma) gerekiyorsa, VM 'lerin aynı sanal makine ölçek kümesi veya kullanılabilirlik kümesi içinde olduğundan emin olun.
 
 - **Azure CycleCloud** -MPI işlerini çalıştırmak Için [Azure CYCLECLOUD](/azure/cyclecloud/) 'te bir HPC kümesi oluşturun.
 
-- **Azure Batch** MPI iş yüklerini çalıştırmak için bir [Azure Batch](/azure/batch/) havuzu oluşturun. MPı uygulamalarını Azure Batch ile çalıştırırken yoğun işlem yoğunluklu örnekler kullanmak için bkz. [Azure Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma](../batch/batch-mpi.md).
+- **Azure Batch** MPI iş yüklerini çalıştırmak için bir [Azure Batch](../batch/index.yml) havuzu oluşturun. MPı uygulamalarını Azure Batch ile çalıştırırken yoğun işlem yoğunluklu örnekler kullanmak için bkz. [Azure Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma](../batch/batch-mpi.md).
 
-- **MICROSOFT HPC Pack**  -  [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) , RDMA özellikli Linux sanal makinelerinde DAĞıTıLDıĞıNDA Azure RDMA AĞıNı kullanan MS-MPI için bir çalışma zamanı ortamı içerir. Örneğin, dağıtımlar için bkz. [MPI uygulamalarını çalıştırmak IÇIN HPC Pack Ile LINUX RDMA kümesi ayarlama](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+- **MICROSOFT HPC Pack**  -  [HPC Pack](/powershell/high-performance-computing/overview) , RDMA özellikli Linux sanal makinelerinde DAĞıTıLDıĞıNDA Azure RDMA AĞıNı kullanan MS-MPI için bir çalışma zamanı ortamı içerir. Örneğin, dağıtımlar için bkz. [MPI uygulamalarını çalıştırmak IÇIN HPC Pack Ile LINUX RDMA kümesi ayarlama](/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
-## <a name="deployment-considerations"></a>Dağıtma konuları
+## <a name="deployment-considerations"></a>Dağıtım konuları
 
 - **Azure aboneliği** : birkaç işlem yoğunluğu yoğun örneği dağıtmak için, Kullandıkça Öde aboneliğine veya diğer satın alma seçeneklerine göz önünde bulundurun. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/) kullanıyorsanız, yalnızca sınırlı sayıda Azure işlem çekirdeği kullanabilirsiniz.
 
 - **Fiyatlandırma ve kullanılabilirlik** -bu VM boyutları yalnızca standart fiyatlandırma katmanında sunulur. Azure bölgelerinde kullanılabilirlik için [bölgeye göre kullanılabilir ürünleri](https://azure.microsoft.com/global-infrastructure/services/) denetleyin.
 
-- **Çekirdek kotası** – Azure aboneliğinizdeki çekirdek kotasını varsayılan değerden artırmanız gerekebilir. Aboneliğiniz Ayrıca, H serisi de dahil olmak üzere belirli VM boyutu ailelerinde dağıtabileceğiniz çekirdek sayısını sınırlayabilir. Kota artışı istemek için, ücretsiz [bir çevrimiçi müşteri destek isteği açın](../azure-supportability/how-to-create-azure-support-request.md) . (Varsayılan sınırlar, abonelik kategorime bağlı olarak değişebilir.)
+- **Çekirdek kotası** – Azure aboneliğinizdeki çekirdek kotasını varsayılan değerden artırmanız gerekebilir. Aboneliğiniz Ayrıca, H serisi de dahil olmak üzere belirli VM boyutu ailelerinde dağıtabileceğiniz çekirdek sayısını sınırlayabilir. Kota artışı istemek için, ücretsiz [bir çevrimiçi müşteri destek isteği açın](../azure-portal/supportability/how-to-create-azure-support-request.md) . (Varsayılan sınırlar, abonelik kategorime bağlı olarak değişebilir.)
 
   > [!NOTE]
   > Büyük ölçekli kapasite gereksinimleriniz varsa Azure desteği 'ne başvurun. Azure kotaları, kapasite garantisi değil kredi limitlerdir. Kotasından bağımsız olarak yalnızca kullandığınız çekirdekler için ücretlendirilirsiniz.
@@ -123,6 +123,6 @@ Azure, RDMA ağını kullanarak iletişim kurabilen Windows HPC VM kümeleri olu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- HPC uygulamanızı Azure için iyileştirme ve [HPC Iş yüklerinde](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) bazı örnekler hakkında daha fazla bilgi edinin 
+- HPC uygulamanızı Azure için iyileştirme ve [HPC Iş yüklerinde](./workloads/hpc/overview.md) bazı örnekler hakkında daha fazla bilgi edinin 
 
 - Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

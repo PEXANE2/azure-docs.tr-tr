@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4bc7fe4e464b07c77d5a857fb793faa4262f97e4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8ab8a3ce0718cac3135bfdac67088d36fcd4f184
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206841"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060609"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Öğretici: DRM dinamik şifrelemesini ve lisans teslim hizmetini kullanın
 
 > [!NOTE]
-> Bu öğretici [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
+> Bu öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
 
 Azure Media Services'ı kullanarak Microsoft PlayReady, Google Widevine veya Apple FairPlay lisansları ile şifrelenmiş akışlarınızı sunabilirsiniz. Ayrıntılı açıklama için bkz. [dinamik şifreleme Ile içerik koruma](content-protection-overview.md).
 
@@ -55,8 +55,8 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 * [İçerik korumaya genel bakış](content-protection-overview.md) makalesini gözden geçirin.
 * [Tasarım çoklu DRM içerik koruma sistemini Access Control ile](design-multi-drm-system-with-access-control.md)inceleyin.
 * Visual Studio Code veya Visual Studio 'Yu yükler.
-* [Bu hızlı başlangıçta](create-account-cli-quickstart.md) açıklandığı gibi yeni bir Azure Media Services hesabı oluşturun.
-* [Erişim API'lerini](access-api-cli-how-to.md) kullanarak Media Services API'lerini kullanmak için gerekli kimlik bilgilerini edinin.
+* [Bu hızlı başlangıçta](./create-account-howto.md) açıklandığı gibi yeni bir Azure Media Services hesabı oluşturun.
+* [Erişim API'lerini](./access-api-howto.md) kullanarak Media Services API'lerini kullanmak için gerekli kimlik bilgilerini edinin.
 * Uygulama yapılandırma dosyasında (appsettings.jsüzerinde) uygun değerleri ayarlayın.
 
 ## <a name="download-code"></a>Kodu indirin
@@ -144,7 +144,7 @@ Bir **akış Bulucu**oluştururken, istenen ' i belirtmeniz gerekir `StreamingPo
 
 ## <a name="get-a-test-token"></a>Test belirteci alma
 
-Bu öğreticide içerik anahtarı ilkesi için belirteç sınırlaması getirilmektedir. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services, [JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) biçimlerindeki belirteçleri destekler ve örnekte yapılandırdığımız şeydir.
+Bu öğreticide içerik anahtarı ilkesi için belirteç sınırlaması getirilmektedir. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services, [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) biçimlerindeki belirteçleri destekler ve örnekte yapılandırdığımız şeydir.
 
 ContentKeyPolicy içinde kullanılan ContentKeyIdentifierClaim, anahtar teslim hizmetine sunulan belirtecin içinde ContentKey tanımlayıcısına sahip olması gerektiğini belirtir. Örnek olarak, akış bulucuyu oluştururken bir içerik anahtarı belirtmedik, sistem bizim için rastgele bir tane oluşturur. Test belirtecini oluşturmak için Contentkeyıd öğesini Contentkeyıdentifierclaim talebine koymak üzere almalısınız.
 
@@ -152,7 +152,7 @@ ContentKeyPolicy içinde kullanılan ContentKeyIdentifierClaim, anahtar teslim h
 
 ## <a name="build-a-streaming-url"></a>Akış URL 'SI oluşturma
 
-[Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturuldığına göre, akış URL 'lerini alabilirsiniz. URL oluşturmak için, [Streamingendpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
+[Streaminglocator](/rest/api/media/streaminglocators) oluşturuldığına göre, akış URL 'lerini alabilirsiniz. URL oluşturmak için, [Streamingendpoint](/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 

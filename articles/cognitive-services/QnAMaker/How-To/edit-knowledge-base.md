@@ -2,13 +2,13 @@
 title: Bilgi Bankası Soru-Cevap Oluşturma Düzenleme-
 description: Soru-Cevap Oluşturma, kullanımı kolay bir düzen deneyimi sağlayarak bilgi Bankalarınızın içeriğini yönetmenizi sağlar.
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054012"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bilgi bankasındaki QnA çiftlerini düzenleme
 
@@ -57,7 +57,7 @@ Yanıt metninizi zengin metin düzenlemesi, basit bir araç çubuğundan Markin 
     |Zengin metin düzenleyici özellikleri|Klavye kısayolu|
     |--|--|
     |Zengin metin düzenleyici ve markaşağı arasında geçiş yapın. `</>`|CTRL+M|
-    |Kalın. **B**|MRK + LB|
+    |Kalın. **Kenarı**|MRK + LB|
     |İtalik, italik ı ile gösterilir ** _I_**|CTRL + ı|
     |Sırasız liste||
     |Sıralı liste||
@@ -111,6 +111,10 @@ Yanıtın meta verilerinde QnA çiftlerini bağlayamazsınız.
 ## <a name="add-metadata"></a>Meta veri Ekle
 
 Önce **Görünüm seçeneklerini**belirleyip **meta verileri göster**' i seçerek meta veri çiftleri ekleyin. Bu, meta veri sütununu görüntüler. Sonra, **+** bir meta veri çifti eklemek için imzala ' yı seçin. Bu çift bir anahtar ve bir değer içerir.
+
+Meta veriler hakkında daha fazla bilgi için Soru-Cevap Oluşturma Portal Hızlı başlangıcı:
+* [Yazma-meta verileri QnA çiftine ekleyin](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [Sorgu tahmini-meta verilere göre filtre yanıtları](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 ## <a name="save-changes-to-the-qna-pairs"></a>Değişiklikleri QnA çiftlerine Kaydet
 

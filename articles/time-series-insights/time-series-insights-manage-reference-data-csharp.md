@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059213"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>C kullanarak Azure Time Series Insights ortamı için GA başvuru verilerini yönetme #
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>C kullanarak Azure Time Series Insights Gen 1 ortamı için başvuru verilerini yönetme #
 
-Bu makalede, Azure Time Series Insights GA [başvuru VERI YÖNETIMI API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)'SINE programlı API istekleri yapmak Için C#, [msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory nasıl birleştirileceğini gösterilmektedir.
+Bu makalede, MSAL.NET Gen 1 [başvuru VERI YÖNETIMI apı](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)Azure Time Series Insights 'SINE programlı API istekleri yapmak Için C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory nasıl birleştirileceğini gösterilmektedir.
 
 > [!TIP]
 > ' Deki GA C# kod örneklerini görüntüleyin [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
@@ -30,7 +30,7 @@ Bu makalede, Azure Time Series Insights GA [başvuru VERI YÖNETIMI API](https:/
 Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 * [Msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **publicclientapplication**kullanarak bir erişim belirteci alınıyor.
-* GA [başvuru veri yönetimi API 'sine](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)KARŞı sıralı oluşturma, okuma, GÜNCELLEŞTIRME ve silme işlemleri.
+* Gen 1 [başvuru veri yönetimi API 'sine](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)KARŞı sıralı oluşturma, okuma, GÜNCELLEŞTIRME ve silme işlemleri.
 * [Ortak hata kodları](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)dahil ortak yanıt kodları.
     
     Başvuru Veri Yönetimi API 'SI her öğeyi ayrı ayrı işler ve bir öğe ile bir hata, diğerlerinin başarıyla tamamlanmasını engellemez. Örneğin, isteğiniz 100 öğe içeriyorsa ve bir öğede hata varsa, 99 öğe yazılır ve bir öğe reddedilir.
@@ -39,7 +39,7 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
-1. [BIR GA Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. [Bir gen 1 Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
 ) .
 
 1. Ortamınızda [bir başvuru veri kümesi oluşturun](time-series-insights-add-reference-data-set.md) . Aşağıdaki başvuru veri şemasını kullanın:
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- GA [başvurusu VERI YÖNETIMI API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) başvurusu belgelerini okuyun.
+- [VERI YÖNETIMI API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) başvurusu belgelerini Gen 1 başvurusu ile okuyun.

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Azure Key Vault bir anahtar ayarlama ve alma'
+title: Azure Key Vault-Azure CLı içindeki bir anahtarın özniteliklerini oluşturma ve alma
 description: Azure CLı kullanarak Azure Key Vault bir anahtarın nasıl ayarlanacağını ve alınacağını gösteren hızlı başlangıç
 services: key-vault
 author: msmbaldwin
@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: defc5317c127d771786989748e404285ca0c0584
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e9d56f0ad2da696eb683ea393ad75254ba3ce954
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424212"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061317"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Key Vault bir anahtar ayarlama ve alma
 
@@ -73,7 +73,7 @@ Kasaya bir anahtar eklemek için, birkaç ek adım yapmanız yeterlidir. Bu anah
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software
 ```
 
-Artık Azure Key Vault ' a eklediğiniz anahtara, URI 'sini kullanarak başvurabilirsiniz. Geçerli **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** sürümü almak için kullanın. 
+Artık Azure Key Vault ' a eklediğiniz anahtara, URI 'sini kullanarak başvurabilirsiniz. **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey**Geçerli sürümü almak için kullanın. 
 
 Daha önce depolanan anahtarı görüntülemek için:
 

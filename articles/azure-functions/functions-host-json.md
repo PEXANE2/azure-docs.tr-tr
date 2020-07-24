@@ -3,14 +3,14 @@ title: Azure Işlevleri 2. x için başvuru host.js
 description: Azure Işlevleri için başvuru belgeleri v2 çalışma zamanı ile dosyada host.js.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055287"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için başvuru host.js 
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure İşlevleri 2.x ve üzeri için host.json başvurusu 
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Işlevleri çalışma zamanının sürümünü seçin: "]
 > * [Sürüm 1](functions-host-json-v1.md)
@@ -162,12 +162,12 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 | IsEnabled | true | Örneklemeyi etkinleştirilir veya devre dışı bırakır. | 
 | maxTelemetryItemsPerSecond | 20 | Her bir sunucu konağında saniyede günlüğe kaydedilen telemetri öğelerinin hedef sayısı. Uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, genel hedef trafik hızında kalacak şekilde küçültün. | 
 | evaluationInterval | 01:00:00 | Geçerli telemetri hızının yeniden değerlendirilme aralığı. Değerlendirme, hareketli ortalama olarak gerçekleştirilir. Telemetriyi ani bursts 'e tabi olursa bu aralığı kısaltmak isteyebilirsiniz. |
-| ınitialörneklingpercentage| 1.0 | Örnekleme işleminin başlangıcında uygulanan ilk örnekleme yüzdesi, yüzdeyi dinamik olarak farklılık gösterir. Hata ayıklarken değeri küçültmeyin. |
+| ınitialörneklingpercentage| 1,0 | Örnekleme işleminin başlangıcında uygulanan ilk örnekleme yüzdesi, yüzdeyi dinamik olarak farklılık gösterir. Hata ayıklarken değeri küçültmeyin. |
 | samplingPercentageIncreaseTimeout | 00:00:01 | Örnekleme yüzdesi değeri değiştiğinde, bu özellik daha sonra Application Insights daha sonra örnekleme yüzdesini daha fazla veri yakalamaya ne kadar süre sonra yeniden tetiklemesine izin verileceğini belirler. |
 | samplingPercentageDecreaseTimeout | 00:00:01 | Örnekleme yüzdesi değeri değiştiğinde, bu özellik daha sonra daha az veri yakalamak için örnekleme yüzdesini yeniden ne kadar küçük bir süre sonra Application Insights izin verileceğini belirler. |
 | Minörneklingpercentage | 0.1 | Örnekleme yüzdesi farklılık gösterdiğinden, bu özellik izin verilen minimum örnekleme yüzdesini belirler. |
 | maxSamplingPercentage | 0.1 | Örnekleme yüzdesi farklılık gösterdiğinden, bu özellik izin verilen en fazla örnekleme yüzdesini belirler. |
-| movingAverageRatio | 1.0 | Hareketli ortalama hesaplamasında, en son değere atanan ağırlık. 1 ' den küçük veya buna eşit bir değer kullanın. Daha küçük değerler, algoritmayı ani değişikliklere karşı daha az reaktif hale getirir. |
+| movingAverageRatio | 1,0 | Hareketli ortalama hesaplamasında, en son değere atanan ağırlık. 1 ' den küçük veya buna eşit bir değer kullanın. Daha küçük değerler, algoritmayı ani değişikliklere karşı daha az reaktif hale getirir. |
 | excludedTypes | null | Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: `Dependency` , `Event` , `Exception` , `PageView` , `Request` , ve `Trace` . Belirtilen türlerin tüm örnekleri iletilir; belirtilmeyen türler örneklenir. |
 | ıncludedtypes | null | Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi; boş liste tüm türleri gösterir. `excludedTypes`Burada listelenen geçersiz kılma türlerinde listelenen tür. Tanınan türler şunlardır: `Dependency` , `Event` , `Exception` , `PageView` , `Request` , ve `Trace` . Belirtilen türlerin örnekleri örneklenir; belirtilmemiş veya zımni türler, örnekleme olmadan iletilir. |
 
@@ -181,7 +181,7 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 
 ### <a name="applicationinsightssnapshotconfiguration"></a>ApplicationInsights. snapshotConfiguration
 
-Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarında özel durumlarla Ilgili hata ayıklama anlık görüntüleri](/azure/azure-monitor/app/snapshot-debugger) ve [Application Insights Snapshot Debugger veya anlık görüntüleri görüntüleme sorunlarını giderme](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
+Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarında özel durumlarla Ilgili hata ayıklama anlık görüntüleri](../azure-monitor/app/snapshot-debugger.md) ve [Application Insights Snapshot Debugger veya anlık görüntüleri görüntüleme sorunlarını giderme](../azure-monitor/app/snapshot-debugger-troubleshoot.md).
 
 |Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
@@ -310,7 +310,7 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never` , `always` , `debugOnly` . |
-|logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x ve üzeri, günlük kategorisi filtrelemesi için ASP.NET Core düzeni izler. Bu ayar, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
+|logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x ve üzeri, günlük kategorisi filtrelemesi için ASP.NET Core düzeni izler. Bu ayar, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
 |console|yok| [Konsol](#console) günlüğü ayarı. |
 |ApplicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
 

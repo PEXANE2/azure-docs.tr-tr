@@ -4,12 +4,12 @@ description: Bu makalede Azure Backup aracısının yüklenmesi ve kaydettirilme
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: ddff3ca8a89d8d5674be00fdebc70b0232cdbd13
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b810b5abfb15a39d19a0571b6ac36a6c86bf0b4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539066"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054647"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı sorunlarını giderme
 
@@ -75,6 +75,12 @@ Microsoft Azure kurtarma hizmetleri (MARS) Aracısı ile ilgili sorun gidermeye 
 | Hata  | Olası nedeni | Önerilen Eylemler |
 | ---     | ---     | ---    |
 | <br /><ul><li>Microsoft Azure kurtarma hizmeti Aracısı Microsoft Azure Backup bağlantı kuramadı. (KIMLIK: 100050) Ağ ayarlarınızı denetleyin ve internet 'e bağlanabildiğinizden emin olun.<li>(407) proxy kimlik doğrulaması gerekiyor. |Ara sunucu bağlantıyı engelliyor. |  <ul><li>Internet Explorer 'da **Araçlar**  >  **Internet seçenekleri**  >  **güvenlik**  >  **İnternet**'e gidin. **Özel düzey** ' i seçin ve **dosya indirme** bölümüne gidin. **Etkinleştir**’i seçin.<p>Ayrıca, Internet Explorer 'daki güvenilen sitelerinize [URL 'ler ve IP adresleri](install-mars-agent.md#verify-internet-access) eklemeniz gerekebilir.<li>Ayarları bir proxy sunucu kullanacak şekilde değiştirin. Ardından proxy sunucusu ayrıntılarını sağlayın.<li> Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının bu [URL 'lere ve IP adreslerine](install-mars-agent.md#verify-internet-access)izin verildiğinden emin olun. <li>Sunucuda yüklü bir virüsten koruma yazılımınız varsa, bu dosyaları virüsten koruma taramasından çıkarın: <ul><li>CBEngine.exe (dpmra.exe yerine).<li>CSC.exe (.NET Framework ile ilgili). Sunucuda yüklü her .NET Framework sürümü için bir CSC.exe vardır. Etkilenen sunucudaki tüm .NET Framework sürümleri için CSC.exe dosyalarını dışlayın. <li>Karalama klasörü veya önbellek konumu. <br>Karalama klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Recovery Services.<li>C:\Program Files\Microsoft Azure kurtarma hizmetleri \ bin klasöründe bin klasörü.
+
+## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>Belirtilen kasa kimlik bilgileri dosyası, bu sunucuyla ilişkili kasadan indirilmediğinden kullanılamıyor
+
+| Hata  | Olası nedeni | Önerilen Eylemler |
+| ---     | ---     | ---    |
+| Belirtilen kasa kimlik bilgileri dosyası, bu sunucuyla ilişkili kasadan indirilmediğinden kullanılamıyor. (KIMLIK: 100110) Lütfen uygun kasa kimlik bilgilerini belirtin. | Kasa kimlik bilgileri dosyası, bu sunucunun zaten kayıtlı olduğu bir kasadan farklı. | Hedef makinenin ve kaynak makinenin aynı kurtarma hizmetleri kasasında kayıtlı olduğundan emin olun. Hedef sunucu zaten farklı bir kasaya kaydedilmişse, doğru kasaya kaydolmak için **sunucuyu kaydet** seçeneğini kullanın.  
 
 ## <a name="backup-jobs-completed-with-warning"></a>Yedekleme işleri uyarıyla tamamlandı
 

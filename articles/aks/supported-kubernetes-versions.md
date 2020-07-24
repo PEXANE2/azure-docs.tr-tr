@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507072"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056559"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -162,13 +162,13 @@ Bir kümenin üçten fazla (3) alt sürümü desteği tükenmiştir ve güvenlik
 
 Denetim düzlemi tüm düğüm havuzlarındaki sürümlerin bir penceresi içinde olmalıdır. Denetim düzlemi veya düğüm havuzlarını yükseltme hakkında daha fazla bilgi için, [düğüm havuzlarını yükseltme](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools)hakkındaki belgeleri ziyaret edin.
 
-**Yükseltme sırasında bir sürümü atlayabilir miyim?**
+**Küme yükseltmesi sırasında birden çok AKS sürümünü atlayabilir miyim?**
 
-Hayır, Kubernetes en iyi yöntemlerini takip eden AKS yalnızca sonraki düzeltme ekine veya alt sürüme yönelik yükseltmelere izin verir. Azure portal, yalnızca ' a yükselteceğiniz sürümleri gösterir ve `az aks get-upgrades -n MyAKSCluster -g MyResourceGroup` geçerli sürüminizden kullanılabilir yükseltmeleri görmek için ÇALıŞTıRABILECEĞINIZ CLI ' yi kullanabilirsiniz.
+Desteklenen bir AKS kümesini yükselttiğinizde, Kubernetes ikincil sürümleri atlanamaz. Örneğin, *1.12. x*  ->  *1.13. x* veya *1.13. x*  ->  *1.14. x* arasındaki yükseltmelere izin verilir, ancak *1.12. x*  ->  *1.14. x* değildir.
 
-**Desteklenen sürüme en son desteklenen sürümün arkasında birden fazla sürümsem, desteklenen bir sürüme nasıl yükseltebilirim?**
+Yükseltmek için, *1.12. x*  ->  *1.14. x*sürümünden önce *1.12. x*  ->  *1.13. x*sürümünden yükseltme yapın ve ardından *1.13. x*  ->  *1.14. x*'den yükseltme yapın.
 
-Destek içinde kalmak için, şu anda desteklenen listeden birden çok sürümün gerisinde kalmaktan kaçınmanız gerekir, ancak bu durumda AKS en düşük desteklenen sürüme yükseltmeye her zaman izin verir.
+Birden çok sürüm atlanması yalnızca desteklenmeyen bir sürümden desteklenen bir sürüme yükseltilirken yapılabilir. Örneğin, desteklenmeyen bir *1,10. x* sürümünden yükseltme > desteklenen bir *1.15. x* tamamlanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE 'de uygulamalarda hata ayıklamak için genişletilmiş Spark geçmiş sunucusunu kullanma-Apache Spark
+title: Uygulamalarda hata ayıklamak için genişletilmiş Spark geçmiş sunucusunu kullanma
 description: Azure SYNAPSE Analytics 'te Spark uygulamalarında hata ayıklamak ve tanılamak için genişletilmiş Spark geçmiş sunucusunu kullanın.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85195003"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059988"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark uygulamalarda hata ayıklamak ve tanılamak için genişletilmiş Apache Spark geçmiş sunucusunu kullanma
 
@@ -120,13 +120,13 @@ Grafik düğümü, ısı haritasını göstergesinde gösterilen renkleri görü
 
 İşi kayıttan yürütmek için **kayıttan yürütme**' yi seçin. Durdurmak için dilediğiniz zaman **Durdur** seçeneğini belirleyebilirsiniz. Görev renkleri kayıttan yürütülürken farklı durumlar gösterir:
 
-|Renk|Anlamı|
+|Color (Renk)|Anlamı|
 |-|-|
 |Yeşil|Başarılı: iş başarıyla tamamlandı.|
 |Orange|Yeniden denendi: başarısız olan ancak işin nihai sonucunu etkilemeyen görev örnekleri. Bu görevler daha sonra başarılı olabilecek örnekleri tekrarlamıştır veya yeniden dener.|
 |Mavi|Çalışıyor: görev çalışıyor.|
 |Beyaz|Bekliyor veya atlandı: görev çalışmayı bekliyor veya aşama atlandı.|
-|Red|Başarısız oldu: görev başarısız oldu.|
+|Kırmızı|Başarısız oldu: görev başarısız oldu.|
 
 Aşağıdaki görüntüde yeşil, turuncu ve mavi durum renkleri gösterilmektedir.
 

@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056387"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Şirket içinde barındırılan ağ geçidini Kubernetes'e dağıtma
 
@@ -33,9 +33,9 @@ Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bi
 1. **Dağıtım ve altyapı**altında **ağ geçitleri** ' ni seçin.
 2. Dağıtmak istediğiniz şirket içinde barındırılan ağ geçidi kaynağını seçin.
 3. **Dağıtım**' ı seçin.
-4. **Belirteç** metin kutusundaki bir erişim belirteci, varsayılan **süre sonu** ve **gizli anahtar** değerlerine göre sizin için otomatik olarak oluşturulur. Gerekirse, yeni bir belirteç oluşturmak için ya da her iki denetim içindeki değerleri seçin.
+4. Varsayılan **süre sonu** ve **gizli anahtar** değerlerine bağlı olarak, **belirteç** metin kutusundaki bir erişim belirteci sizin için otomatik olarak oluşturulmuştur. Gerekirse, yeni bir belirteç oluşturmak için ya da her iki denetim içindeki değerleri seçin.
 5. **Dağıtım betikleri**altında **Kubernetes** sekmesini seçin.
-6. **<ağ geçidi-adı>. yıml** dosyası bağlantısını SEÇIN ve YAML dosyasını indirin.
+6. ** \<gateway-name\> . Yıml** dosyası bağlantısını seçin ve YAML dosyasını indirin.
 7. Komutları panoya kaydetmek için **Dağıt** metin kutusunun sağ alt köşesindeki **Kopyala** simgesini seçin `kubectl` .
 8. Komutları Terminal (veya komut) penceresine yapıştırın. İlk komut, 4. adımda oluşturulan erişim belirtecini içeren bir Kubernetes gizli anahtarı oluşturur. İkinci komut, adım 6 ' da indirilen yapılandırma dosyasını Kubernetes kümesine uygular ve dosyanın geçerli dizinde olmasını bekler.
 9. [Varsayılan ad](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) alanında gerekli Kubernetes nesnelerini oluşturmak ve Microsoft Container Registry indirilen [kapsayıcı görüntüsünden](https://aka.ms/apim/sputnik/dhub) şirket içinde barındırılan ağ geçidi Pod 'yi başlatmak için komutları çalıştırın.
@@ -106,6 +106,12 @@ DNS ad çözümlemesi, şirket içinde barındırılan bir ağ geçidinin Azure 
 Azure portal belirtilen YAML dosyası varsayılan [Clusterfirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) ilkesini uygular. Bu ilke, düğüm tarafından devralınan yukarı akış DNS sunucusuna iletilmek üzere küme DNS tarafından çözümlenemeyen ad çözümleme isteklerinin oluşmasına neden olur.
 
 Kubernetes 'de ad çözümleme hakkında bilgi edinmek için bkz. [Kubernetes Web sitesi](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service). [DNS ilkesi](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) veya [DNS yapılandırmasını](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) , kuruluma uygun şekilde özelleştirmeyi düşünün.
+
+### <a name="custom-domain-names-and-ssl-certificates"></a>Özel etki alanı adları ve SSL sertifikaları
+
+API Management uç noktaları için özel etki alanı adları kullanıyorsanız, özellikle yönetim uç noktası için özel bir etki alanı adı kullanırsanız, `config.service.endpoint` varsayılan etki alanı adını özel etki alanı adıyla değiştirmek için ** \<gateway-name\> . YAML** dosyasındaki değerini güncelleştirmeniz gerekebilir. Yönetim uç noktasına, Kubernetes kümesindeki şirket içinde barındırılan ağ geçidinin Pod değerinden erişilebildiğinden emin olun.
+
+Bu senaryoda, yönetim uç noktası tarafından kullanılan SSL sertifikası iyi bilinen bir CA sertifikası tarafından imzalanmadıysa, CA sertifikasına şirket içinde barındırılan ağ geçidinin Pod 'u tarafından güvenildiğinden emin olmanız gerekir.
 
 ### <a name="configuration-backup"></a>Yapılandırma yedeklemesi
 Geçici bir Azure bağlantı kesintisi olması halinde şirket içinde barındırılan ağ geçidi davranışı hakkında bilgi edinmek için, bkz. [Şirket içinde barındırılan ağ geçidine genel bakış](self-hosted-gateway-overview.md#connectivity-to-azure).

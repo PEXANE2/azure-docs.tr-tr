@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9e4c3615d16834a0517b46f1be7221eef28c602c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058741"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure sanal WAN hakkında
 
@@ -110,7 +110,7 @@ Sanal WAN, gelişmiş yönlendirme iyileştirmeleri sağlar. Özel yol tablolar�
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>Küresel VNet eşlemesi
 
-Küresel VNet eşlemesi, farklı bölgelerde iki sanal ağı birbirine bağlamak için bir mekanizma sağlar. Sanal WAN 'da sanal ağ bağlantıları sanal ağları sanal hub 'lara bağlanır. Kullanıcının genel VNet eşlemesini açıkça ayarlaması gerekmez. Sanal hub 'a bağlı sanal ağlar, VNet eşleme ücretlerine aynı bölgedir. Farklı bir bölgedeki sanal hub 'a bağlı sanal ağlar küresel VNet eşleme ücretlerine tabi değildir.
+Küresel VNet eşlemesi, farklı bölgelerde iki sanal ağı birbirine bağlamak için bir mekanizma sağlar. Sanal WAN 'da sanal ağ bağlantıları sanal ağları sanal hub 'lara bağlanır. Kullanıcının genel VNet eşlemesini açıkça ayarlaması gerekmez. Aynı bölgedeki sanal hub 'a bağlı sanal ağlar VNet eşleme ücretlerine tabi. Farklı bir bölgedeki sanal hub 'a bağlı sanal ağlar küresel VNet eşleme ücretlerine tabi değildir.
 
 ### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute trafik şifrelemesi
 

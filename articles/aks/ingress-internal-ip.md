@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) kümesinde iç, özel ağ için bir NGıNX giriş denetleyicisi yüklemeyi ve yapılandırmayı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: a20ef3155e41a438aed7cea7e7d9814b3add4d14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056978"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde iç sanal ağa giriş denetleyicisi oluşturma
 
@@ -35,7 +35,7 @@ Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olman
 
 Varsayılan olarak, bir NGıNX giriş denetleyicisi, dinamik bir genel IP adresi atamasıyla oluşturulur. Ortak bir yapılandırma gereksinimi, iç, özel ağ ve IP adresi kullanmaktır. Bu yaklaşım, hizmetlere erişimi dış erişim olmadan, iç kullanıcılarla kısıtlamanıza olanak sağlar.
 
-Aşağıdaki örnek bildirim dosyasını kullanarak *iç ıningress. YAML* adlı bir dosya oluşturun. Bu örnek, *Loadbalancerıp* kaynağına *10.240.0.42* atar. Giriş denetleyicisi ile kullanmak için kendi iç IP adresinizi sağlayın. Bu IP adresinin sanal ağınızda zaten kullanımda olmadığından emin olun.
+Aşağıdaki örnek bildirim dosyasını kullanarak *iç ıningress. YAML* adlı bir dosya oluşturun. Bu örnek, *Loadbalancerıp* kaynağına *10.240.0.42* atar. Giriş denetleyicisi ile kullanmak için kendi iç IP adresinizi sağlayın. Bu IP adresinin sanal ağınızda zaten kullanımda olmadığından emin olun. Ayrıca, var olan bir sanal ağ ve alt ağ kullanıyorsanız, sanal ağı ve alt ağı yönetmek için AKS kümenizi doğru izinlerle yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) IÇINDEKI IP adresi aralıklarınız ile Kubernetes kullanan ağı kullanma][aks-configure-kubenet-networking] veya Azure [Kubernetes HIZMETI (aks) içindeki Azure CNI ağını yapılandırma][aks-configure-advanced-networking] .
 
 ```yaml
 controller:
@@ -185,7 +185,7 @@ Aşağıdaki örnekte, adrese `http://10.240.0.42/` olan trafik adlı hizmete y�
 Adlı bir dosya oluşturun `hello-world-ingress.yaml` ve aşağıdaki örnekteki YAML 'yi kopyalayın.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -358,3 +358,5 @@ Aşağıdakileri de yapabilirsiniz:
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md

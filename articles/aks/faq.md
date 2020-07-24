@@ -2,13 +2,13 @@
 title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 07/21/2020
+ms.openlocfilehash: 4d93a4f3b58fc38710184f345fd467b2beb32b1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057196"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -79,7 +79,7 @@ Düğüm kaynak grubuyla çalışırken şunları yapmanız gerektiğini aklın�
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Düğüm kaynak grubundaki AKS kaynaklarının etiketlerini ve diğer özelliklerini değiştirebilir miyim?
 
-Düğüm kaynak grubundaki Azure tarafından oluşturulan etiketleri ve diğer kaynak özelliklerini değiştirir veya silerseniz, hataları ölçekleme ve yükseltme gibi beklenmedik sonuçlara ulaşabilirsiniz. AKS, son kullanıcılar tarafından oluşturulan özel etiketler oluşturup değiştirmenize olanak sağlar. Örneğin, bir iş birimi veya maliyet merkezi atamak için özel etiketler oluşturmak veya değiştirmek isteyebilirsiniz. Bu, yönetilen kaynak grubundaki bir kapsamla Azure Ilkeleri oluşturularak elde edilebilir.
+Düğüm kaynak grubundaki Azure tarafından oluşturulan etiketleri ve diğer kaynak özelliklerini değiştirir veya silerseniz, hataları ölçekleme ve yükseltme gibi beklenmedik sonuçlara ulaşabilirsiniz. AKS, son kullanıcılar tarafından oluşturulan özel etiketler oluşturup değiştirmenize olanak sağlar ve [düğüm havuzu oluştururken](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)bu etiketleri ekleyebilirsiniz. Örneğin, bir iş birimi veya maliyet merkezi atamak için özel etiketler oluşturmak veya değiştirmek isteyebilirsiniz. Bu Ayrıca, yönetilen kaynak grubundaki bir kapsamla Azure Ilkeleri oluşturularak elde edilebilir.
 
 Ancak, AKS kümesindeki düğüm kaynak grubu altındaki kaynaklarda bulunan **Azure tarafından oluşturulan etiketlerin** değiştirilmesi, hizmet düzeyi HEDEFINI (SLO) kesen desteklenmeyen bir eylemdir. Daha fazla bilgi için bkz. [AKS bir hizmet düzeyi sözleşmesi sunuyor mu?](#does-aks-offer-a-service-level-agreement)
 
@@ -137,7 +137,7 @@ AKS aracı düğümleri standart Azure sanal makineleri olarak faturalandırıl�
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kümemi Azure kiracılar arasında taşıyabilir/geçirebilir miyim?
 
-Bu `az aks update-credentials` komut, BIR AKS kümesini Azure kiracılar arasında taşımak için kullanılabilir. [Hizmet sorumlusunu güncelleştirmek veya oluşturmak Için seçin](./update-credentials.md) ' deki yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
+AKS kümenizi kiracılar arasında taşımak Şu anda desteklenmiyor.
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Abonelikler arasında kümemi taşıyabilir/geçirebilir miyim?
 

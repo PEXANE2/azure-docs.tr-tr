@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 079094965775c140c0343da98e40fd008995d45a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c4654ce175e64c375c96164aed274bf8078d196
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901182"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060114"
 ---
 # <a name="dynamic-packaging"></a>Dinamik paketleme
 
@@ -26,7 +27,7 @@ ms.locfileid: "74901182"
 > * [Sürüm 2](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services birçok medya kaynak dosya biçimini, medya akış biçimlerini ve içerik koruma biçimlerini çeşitli istemci teknolojilerine (örneğin, iOS, XBOX, Silverlight, Windows 8) dağıtmak için kullanılabilir. Bu istemciler farklı protokolleri anlamış, örneğin iOS için bir HTTP Canlı Akışı (HLS) V4 biçimi ve Silverlight ve Xbox için Kesintisiz Akış gerekir. MPEG DASH, HLS veya Kesintisiz Akış anlayan istemcilere sağlamak istediğiniz bir uyarlamalı bit hızı (çoklu bit hızı) MP4 (ISO tabanlı medya 14496-12) dosyası veya bir dizi Uyarlamalı bit hızı Kesintisiz Akış, Media Services dinamik paketlemeden yararlanabilirsiniz.
 
@@ -69,4 +70,3 @@ Dinamik paketleme, [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (A
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

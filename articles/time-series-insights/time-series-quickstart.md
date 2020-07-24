@@ -5,38 +5,38 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/13/2020
-ms.openlocfilehash: 5bc160076e6a06c7ddcc99d989eb6d9c7fb3fe0f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 06/30/2020
+ms.openlocfilehash: 2140cbbc43af7f80c0c5fc2d7cea85cb31bd7bfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059363"
 ---
-# <a name="quickstart-explore-azure-time-series-insights"></a>Hızlı Başlangıç: Azure Time Series Insights’ı Keşfedin
+# <a name="quickstart-explore-azure-time-series-insights-gen1"></a>Hızlı başlangıç: araştırma Azure Time Series Insights Gen1
 
-Bu Azure Time Series Insights gezgin hızlı başlangıcı, ücretsiz bir tanıtım ortamında Time Series Insights kullanmaya başlamanıza yardımcı olur. Bu hızlı başlangıçta, Web tarayıcınızı kullanarak büyük hacimlerinizde çok sayıda IoT verisi ve genel kullanıma sunulan turu temel özellikleri görselleştirme hakkında bilgi edineceksiniz.
+Bu Azure Time Series Insights gezgin hızlı başlangıcı, ücretsiz bir tanıtım ortamında Azure Time Series Insights kullanmaya başlamanıza yardımcı olur. Bu hızlı başlangıçta, Web tarayıcınızı kullanarak büyük hacimlerinizde çok sayıda IoT verisi ve genel kullanıma sunulan turu temel özellikleri görselleştirme hakkında bilgi edineceksiniz.
 
 Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. IoT çözümünüzü hızla doğrulayabilmeniz ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi oluşmasını önlemek için verilerinizin genel bir görünümünü sunar. Azure Time Series Insights, gizli eğilimleri keşfetmenize, anormallikleri belirlemenize ve neredeyse gerçek zamanlı olarak kök neden analizleri yürütmenize yardımcı olur.
 
 Daha fazla esneklik için, güçlü [REST API 'leri](./concepts-query-overview.md) ve [istemci SDK 'sı](https://github.com/microsoft/tsiclient)aracılığıyla önceden var olan bir uygulamaya Azure Time Series Insights ekleyebilirsiniz. API 'Leri, zaman serisi verilerini depolamak, sorgulamak ve tercih ettiğiniz bir istemci uygulamasında kullanmak için kullanabilirsiniz. Ayrıca, mevcut uygulamanıza Kullanıcı arabirimi bileşenleri eklemek için istemci SDK 'sını de kullanabilirsiniz.
 
-Bu Time Series Insights gezgin hızlı başlangıcı, genel kullanıma sunulan özelliklerin Kılavuzlu turuna sahiptir.
+Bu Azure Time Series Insights gezgin hızlı başlangıcı, özelliklerin kılavuzlu bir gezintisini sunmaktadır.
 
 > [!IMPORTANT]
 > Henüz bir tane oluşturmadıysanız, [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 ## <a name="prepare-the-demo-environment"></a>Tanıtım ortamını hazırlama
 
-1. Tarayıcınızda [genel kullanılabilirlik tanıtımı](https://insights.timeseries.azure.com/demo)' na gidin.
+1. Tarayıcınızda [Gen1 demo](https://insights.timeseries.azure.com/demo)sayfasına gidin.
 
-1. İstenirse, Azure hesabı kimlik bilgilerinizi kullanarak Time Series Insights Gezgininde oturum açın.
+1. İstenirse, Azure hesabı kimlik bilgilerinizi kullanarak Azure Time Series Insights Gezgininde oturum açın.
 
-1. Time Series Insights hızlı tur sayfası görüntülenir. Hızlı tura başlamak için **İleri ' yi** seçin.
+1. Azure Time Series Insights hızlı tur sayfası görüntülenir. Hızlı tura başlamak için **İleri ' yi** seçin.
 
    [![Hızlı başlangıç hoş geldiniz-Ileri Seç](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
@@ -50,7 +50,7 @@ Bu Time Series Insights gezgin hızlı başlangıcı, genel kullanıma sunulan �
 
    [![Zaman aralığı seçin](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
-   Time Series Insights, belirttiğiniz zaman aralığı için bir grafik görselleştirmesi görüntüler. Çizgi grafik içinde çeşitli eylemler gerçekleştirebilirsiniz. Örneğin, filtreleyebilir, sabitleyebilir, sıralayabilir ve yığın oluşturabilirsiniz.
+   Azure Time Series Insights belirttiğiniz zaman dilimi için bir grafik görselleştirmesi görüntüler. Çizgi grafik içinde çeşitli eylemler gerçekleştirebilirsiniz. Örneğin, filtreleyebilir, sabitleyebilir, sıralayabilir ve yığın oluşturabilirsiniz.
 
    **Zaman seçimi paneline**dönmek için gösterilen aşağı oku seçin:
 
@@ -91,6 +91,4 @@ Hızlı başlangıcı bitirdikten sonra örnek veri kümesiyle deneme yaparak fa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kendi Time Series Insights ortamınızı oluşturmaya hazırsınız:
-> [!div class="nextstepaction"]
-> [Time Series Insights ortamınızı planlayın](time-series-insights-environment-planning.md)
+* Kendi Azure Time Series Insights ortamınızı oluşturmaya hazırsınız. [Azure Time Series Insights ortamınızın planını](time-series-insights-environment-planning.md)okuyun.

@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 2eb1a016e04a4150a76112c68683926810f5c66d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80674100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055447"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Hızlı başlangıç: Kotlin ve IntelliJ ile ilk HTTP tetiklenen işlevinizi oluşturma
 
@@ -26,7 +26,7 @@ Kotlin ve IntelliJ ile bir işlev geliştirmek için aşağıdaki yazılımı y�
 - [Java geliştirici seti](https://aka.ms/azure-jdks) (JDK), sürüm 8
 - [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri
 - [IntelliJ fikir](https://www.jetbrains.com/idea/download), Maven ile topluluk veya Ultimate sürümleri
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - Azure Functions Core Tools [sürüm 2. x](functions-run-local.md#v2) . Azure Işlevleri yazmak, çalıştırmak ve hata ayıklamak için yerel bir geliştirme ortamı sağlar.
 
 > [!IMPORTANT]
@@ -40,12 +40,12 @@ Kotlin ve IntelliJ ile bir işlev geliştirmek için aşağıdaki yazılımı y�
 1. Arşiv **Ekle** penceresinde, alanları aşağıdaki gibi doldurun:
     - _GroupID_: com. Microsoft. Azure
     - _ArtifactId_: Azure-Functions-Kotlin-arşiv Etype
-    - _Sürüm_: [Orta depodan](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)
-    ![en son sürümü kullanın IntelliJ IDEA bir Maven projesi oluşturun](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
+    - _Sürüm_: [Orta depodan](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)en son sürümü kullanın 
+     ![ IntelliJ IDEA bir Maven projesi oluşturun](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
 1. **Tamam**' ı ve ardından **İleri**' yi seçin.
 1. Geçerli proje için ayrıntılarınızı girin ve **son**' u seçin.
 
-Maven, proje dosyalarını _ArtifactId_ değeriyle aynı ada sahip yeni bir klasörde oluşturur. Projenin oluşturulan kodu, tetikleme HTTP isteğinin gövdesini yansıtan basit bir [http ile tetiklenen](/azure/azure-functions/functions-bindings-http-webhook) bir işlevdir.
+Maven, proje dosyalarını _ArtifactId_ değeriyle aynı ada sahip yeni bir klasörde oluşturur. Projenin oluşturulan kodu, tetikleme HTTP isteğinin gövdesini yansıtan basit bir [http ile tetiklenen](./functions-bindings-http-webhook.md) bir işlevdir.
 
 ## <a name="run-functions-locally-in-the-ide"></a>İşlevleri IDE 'de yerel olarak çalıştırma
 
@@ -55,7 +55,7 @@ Maven, proje dosyalarını _ArtifactId_ değeriyle aynı ada sahip yeni bir klas
 1. Değişiklikleri el ile içeri aktarın veya [otomatik içeri aktarmayı](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)etkinleştirin.
 1. **Maven projeleri** araç çubuğunu açın.
 1. **Yaşam döngüsü**' ni genişletin ve ardından **paketi**açın. Çözüm yeni oluşturulan bir hedef dizinde oluşturulup paketlenmiştir.
-1. **Eklentiler** > **Azure-Functions** ' i genişletin ve Azure işlevleri 'ni açın. Azure işlevleri yerel çalışma zamanına başlamak için **çalıştırın** .  
+1. **Eklentiler**  >  **Azure-Functions** ' i genişletin ve Azure işlevleri 'ni açın. Azure işlevleri yerel çalışma zamanına başlamak için **çalıştırın** .  
   ![Azure Işlevleri için Maven araç çubuğu](media/functions-create-first-kotlin-intellij/functions-intellij-kotlin-maven-toolbar.png)  
 
 1. İşlevinizi test etmeyi bitirdiğinizde Çalıştır iletişim kutusunu kapatın. Tek seferde yalnızca bir işlev Konağı etkin ve yerel olarak çalıştırılabilir.
@@ -87,7 +87,7 @@ Maven, proje dosyalarını _ArtifactId_ değeriyle aynı ada sahip yeni bir klas
    az login
    ```
 
-1. `azure-functions:deploy` Maven hedefini kullanarak kodunuzu yeni bir işleve dağıtın. Ayrıca Maven projeleri penceresinde **Azure-Functions: dağıt** seçeneğini de belirleyebilirsiniz.
+1. Maven hedefini kullanarak kodunuzu yeni bir işleve dağıtın `azure-functions:deploy` . Ayrıca Maven projeleri penceresinde **Azure-Functions: dağıt** seçeneğini de belirleyebilirsiniz.
 
    ```
    mvn azure-functions:deploy
@@ -106,4 +106,4 @@ Maven, proje dosyalarını _ArtifactId_ değeriyle aynı ada sahip yeni bir klas
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İlk Kotlin işlevinizi Azure 'a dağıttığınıza göre, Java ve Kotlin işlevleri geliştirme hakkında daha fazla bilgi için [Java işlevleri Geliştirici Kılavuzu](functions-reference-java.md) ' nu gözden geçirin.
-- `azure-functions:add` Maven hedefini kullanarak projenize farklı tetikleyicilerle ek işlevler ekleyin.
+- Maven hedefini kullanarak projenize farklı tetikleyicilerle ek işlevler ekleyin `azure-functions:add` .

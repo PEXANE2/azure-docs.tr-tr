@@ -4,11 +4,12 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054546"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
@@ -27,7 +28,7 @@ Aşağıdaki Azure Backup çözümlerinden gerçekleştirilen işler aşağıda 
 - Azure VM yedeklemesi
 - Azure dosya yedeklemesi
 - SQL ve SAP HANA gibi Azure iş yükü yedekleme
-- Azure Backup aracısı (MAB)
+- Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
 System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) işleri gösterilmez.
 
@@ -43,7 +44,7 @@ Uyarılar, kullanıcıların ilgili eylemi yapabilmesi için bilgilendirildikler
 Aşağıdaki senaryolar, hizmet tarafından alertable senaryoları olarak tanımlanmıştır.
 
 - Yedekleme/Geri Yükleme hataları
-- Azure Backup Aracısı (MAB) için yedekleme uyarılarla başarılı oldu
+- Yedekleme, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı için uyarılarla başarılı oldu
 - Verileri sakla/silme ile korumayı durdur
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Aşağıdaki Azure Backup çözümlerinin uyarıları burada gösterilmektedir
@@ -51,7 +52,7 @@ Aşağıdaki senaryolar, hizmet tarafından alertable senaryoları olarak tanım
 - Azure VM yedeklemeleri
 - Azure Dosya yedeklemeleri
 - SQL, SAP HANA gibi Azure iş yükü yedeklemeleri
-- Azure Backup aracısı (MAB)
+- Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 
 
 > [!NOTE]
 > System Center Data Protection Manager (SC-DPM) ve Microsoft Azure Backup sunucusu (MABS) uyarıları burada gösterilmez.

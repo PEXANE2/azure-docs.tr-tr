@@ -5,26 +5,26 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81380684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059426"
 ---
-# <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights veri saklama süresini anlama
+# <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 'da veri bekletmeyi anlama
 
 Bu makalede, Azure Time Series Insights ortamınızda veri bekletmeyi etkileyen iki birincil ayar açıklanmaktadır.
 
 ## <a name="video"></a>Video
 
-### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Aşağıdaki videoda, veri saklama Time Series Insights ve bunun nasıl planlanacağı özetlenmektedir.</br>
+### <a name="the-following-video-summarizes-azure-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Aşağıdaki videoda, veri saklama Azure Time Series Insights ve bunun nasıl planlanacağı özetlenmektedir.</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -36,15 +36,15 @@ Ayrıca, Azure Time Series Insights ortamınızda bir **depolama sınırı aşı
 - **Girişi Duraklat**
 
 > [!NOTE]
-> Varsayılan olarak, yeni bir ortam oluştururken bekletme **eski verileri temizlemek**üzere yapılandırılır. Bu ayar, Time Series Insights ortamının **yapılandırma** sayfasında Azure Portal kullanılarak oluşturulma zamanından sonra gerektiği şekilde değiştirilebilir.
-> * Bekletme ilkelerini yapılandırma hakkında daha fazla bilgi için [Time Series Insights ' de bekletme yapılandırması](time-series-insights-how-to-configure-retention.md)' nı okuyun.
+> Varsayılan olarak, yeni bir ortam oluştururken bekletme **eski verileri temizlemek**üzere yapılandırılır. Bu ayar, Azure Time Series Insights ortamının **yapılandırma** sayfasında Azure Portal kullanılarak oluşturulma zamanından sonra gerektiği şekilde değiştirilebilir.
+> * Bekletme ilkelerini yapılandırma hakkında daha fazla bilgi için [Azure Time Series Insights ' de bekletme yapılandırması](time-series-insights-how-to-configure-retention.md)' nı okuyun.
 
 Her iki veri saklama ilkesi de aşağıda daha ayrıntılı olarak açıklanmıştır.
 
 ## <a name="purge-old-data"></a>Eski verileri temizle
 
 - **Eski verileri temizle** Azure Time Series Insights ortamları için varsayılan ayardır.  
-- Kullanıcılar Time Series Insights ortamlarında *en son verileri* her zaman sahip olmak istedikleri zaman, **eski verileri temizle** tercih edilir.
+- Kullanıcılar Azure Time Series Insights ortamlarında *en son verileri* her zaman sahip olmak istedikleri zaman, **eski verileri temizle** tercih edilir.
 - **Eski verileri temizle** ayarı, ortamın sınırlarına (saklama süresi, boyutu veya sayısı, hangisi önce gelirse) ulaşıldığında verileri *temizler* . Bekletme varsayılan olarak 30 güne ayarlanır.
 - En eski veriler önce temizlenir ("ilk Ilk çıkar" yaklaşımı).
 
@@ -69,7 +69,7 @@ Bu ortamın günlük giriş oranı günde 0,166 GB 'ı aştığında, bazı veri
 - Veri kaybından korunmanıza yardımcı olur ancak giriş, olay kaynağınızın bekletme döneminin ötesinde durakladığında en son verilerinizin kaybedilmesi için bir fırsat oluşturabilir.
 - Ancak, bir ortama en fazla kapasiteye ulaşıldığında, aşağıdaki ek eylemler gerçekleşene kadar ortam veri girişini duraklatır:
 
-   - [Time Series Insights ortamınızı ölçeklendirme](time-series-insights-how-to-scale-your-environment.md)bölümünde açıklandığı gibi daha fazla ölçek birimi eklemek için ortamın maksimum kapasitesini artırabilirsiniz.
+   - [Azure Time Series Insights ortamınızı ölçeklendirme](time-series-insights-how-to-scale-your-environment.md)bölümünde açıklandığı gibi daha fazla ölçek birimi eklemek için ortamın maksimum kapasitesini artırabilirsiniz.
    - Veri saklama süresine ulaşıldı ve veriler temizlendi ve ortam en yüksek kapasitesinin altına getiriliyor.
 
 ### <a name="example-three"></a>Örnek üç
@@ -86,16 +86,16 @@ Giriş devam ettiğinde:
 > [!IMPORTANT]
 > Giriş duraklamasını önlemeye yardımcı olmak için uyarılar ayarlamanız gerekir. Varsayılan saklama, Azure olay kaynakları için 1 gün olduğundan veri kaybı mümkündür. Bu nedenle, giriş duraklatıldıktan sonra ek eylem gerçekleşmediğiniz takdirde büyük olasılıkla en son verileri kaybedersiniz. Veri kaybını önlemek için kapasiteyi artırmanız veya **eski verileri temizlemek** için davranış geçişi yapmanız gerekir.
 
-Etkilenen Event Hubs, Time Series Insights ' de duraklatma girişi gerçekleştiğinde veri kaybını en aza indirmek için **Ileti bekletme** özelliğini ayarlamayı göz önünde bulundurun.
+Etkilenen Event Hubs, Azure Time Series Insights ' de duraklatma girişi gerçekleştiğinde veri kaybını en aza indirmek için **Ileti bekletme** özelliğini ayarlamayı göz önünde bulundurun.
 
 [![Olay Hub 'ı ileti bekletme.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Olay kaynağında () bir özellik yapılandırılmamışsa `timeStampPropertyName` , Time Series Insights varsayılan olarak, Olay Hub 'ında X ekseni olarak gelen varışı zaman damgasına. , `timeStampPropertyName` Başka bir şey olacak şekilde yapılandırıldıysa, bu ortam, `timeStampPropertyName` Olaylar ayrıştırıldığında veri paketinde yapılandırılmış öğesine bakar.
+Olay kaynağında () bir özellik yapılandırılmamışsa `timeStampPropertyName` , Azure Time Series Insights varsayılan olarak, Olay Hub 'ında X ekseni olarak gelen varışı zaman damgasına. , `timeStampPropertyName` Başka bir şey olacak şekilde yapılandırıldıysa, bu ortam, `timeStampPropertyName` Olaylar ayrıştırıldığında veri paketinde yapılandırılmış öğesine bakar.
 
-Ortamınızı ek kapasiteye uyum sağlayacak şekilde ölçeklendirmek veya saklama süresini artırmak için [Time Series Insights ortamınızı nasıl ölçeklendirebileceğiniz hakkında](time-series-insights-how-to-scale-your-environment.md) bilgi edinin.
+Ortamınızı ek kapasiteye uyum sağlayacak şekilde ölçeklendirmek veya saklama süresini artırmak için [Azure Time Series Insights ortamınızı nasıl ölçeklendirebileceğiniz hakkında](time-series-insights-how-to-scale-your-environment.md) bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Veri saklama ayarlarını yapılandırma veya değiştirme hakkında daha fazla bilgi için [Time Series Insights ' de bekletme yapılandırması](time-series-insights-how-to-configure-retention.md)' nı gözden geçirin.
+- Veri saklama ayarlarını yapılandırma veya değiştirme hakkında daha fazla bilgi için [Azure Time Series Insights ' de bekletme yapılandırması](time-series-insights-how-to-configure-retention.md)' nı gözden geçirin.
 
 - Azure Time Series Insights bir [Azaltıcı gecikme](time-series-insights-environment-mitigate-latency.md)hakkında bilgi edinin.

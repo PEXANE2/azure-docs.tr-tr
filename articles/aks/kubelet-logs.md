@@ -4,11 +4,12 @@ description: Azure Kubernetes Service (AKS) düğümlerinden kubelet günlükler
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ef38aa76f4ef9152e7bc55a1d74c84ef426f0ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77595391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056757"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes Service (AKS) kümesi düğümlerinden kubelet günlüklerini alma
 
@@ -31,6 +32,12 @@ Düğüme bağlandıktan sonra *kubelet* günlüklerini çekmek için aşağıda
 ```console
 sudo journalctl -u kubelet -o cat
 ```
+
+> [!NOTE]
+> Windows düğümleri için günlük verileri ' de yer `C:\k` alabilir ve *daha fazla* komutla görüntülenebilir:
+> ```
+> more C:\k\kubelet.log
+> ```
 
 Aşağıdaki örnek çıktı, *kubelet* günlük verilerini göstermektedir:
 

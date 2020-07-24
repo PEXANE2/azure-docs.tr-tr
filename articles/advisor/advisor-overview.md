@@ -3,12 +3,12 @@ title: Azure Advisor 'a giriş
 description: Azure dağıtımlarınızı iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057684"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor 'a giriş
 
@@ -51,13 +51,13 @@ Danışman önerilerini sanal makine kaynak arabirimi aracılığıyla da görü
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Advisor 'a erişmek için hangi izinlere ihtiyacım var?
  
-Danışman önerilerine bir aboneliğin *sahibi*, *katkıda bulunan*veya *okuyucu* olarak erişebilirsiniz.
+Danışman önerilerine bir abonelik, kaynak grubu veya kaynak *sahibi*, *katkıda bulunan*veya *okuyucu* olarak erişebilirsiniz.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Danışman hangi kaynakları öneri sağlar?
 
 Danışman Application Gateway, App Services, kullanılabilirlik kümeleri, Azure önbelleği, Azure Data Factory, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı, MariaDB için Azure veritabanı, Azure ExpressRoute, Azure Cosmos DB, Azure genel IP adresleri, SQL veri ambarı, SQL sunucuları, depolama hesapları, Traffic Manager profilleri ve sanal makineler için öneriler sağlar.
 
-Azure Danışmanı, [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-recommendations) 'nin önerilerini de içerir ve bu da ek kaynak türleri için öneriler içerebilir.
+Azure Danışmanı, [Azure Güvenlik Merkezi](../security-center/security-center-recommendations.md) 'nin önerilerini de içerir ve bu da ek kaynak türleri için öneriler içerebilir.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Öneriyi erteleyebilir veya kapatabilir miyim?
 

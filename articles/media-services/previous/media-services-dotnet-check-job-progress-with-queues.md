@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060321"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>.NET ile Media Services iş bildirimlerini izlemek için Azure kuyruk depolamayı kullanma 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-Kodlama işlerini çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. Media Services [Azure kuyruk depolama](../../storage/storage-dotnet-how-to-use-queues.md)'ya bildirim sunacak şekilde yapılandırabilirsiniz. Sıra depolamadan bildirim alarak iş ilerlemesini izleyebilirsiniz. 
+Kodlama işlerini çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. Media Services [Azure kuyruk depolama](../../storage/queues/storage-dotnet-how-to-use-queues.md)'ya bildirim sunacak şekilde yapılandırabilirsiniz. Sıra depolamadan bildirim alarak iş ilerlemesini izleyebilirsiniz. 
 
 Kuyruk depolamaya gönderilen iletilere dünyanın herhangi bir yerinden erişilebilir. Kuyruk depolama mesajlaşma mimarisi güvenilir ve yüksek oranda ölçeklenebilir. İletiler için yoklama kuyruğu depolaması, diğer yöntemler kullanılarak önerilir.
 
@@ -34,13 +34,13 @@ Media Services bildirimleri dinlemek için bir yaygın senaryo, bir kodlama işi
 
 Bu makalede, kuyruk depolamadaki bildirim iletilerinin nasıl alınacağı gösterilmektedir.  
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Sıra depolamayı kullanan Media Services uygulamalar geliştirilirken aşağıdakileri göz önünde bulundurun:
 
-* Kuyruk depolama, ilk ilk çıkar (FıFO) sıralı teslimin garantisi sağlamaz. Daha fazla bilgi için bkz. [Azure kuyrukları ve Azure Service Bus kuyrukları karşılaştırması ve](https://msdn.microsoft.com/library/azure/hh767287.aspx)benzerlikler.
+* Kuyruk depolama, ilk ilk çıkar (FıFO) sıralı teslimin garantisi sağlamaz. Daha fazla bilgi için bkz. [Azure kuyrukları ve Azure Service Bus kuyrukları karşılaştırması ve](/previous-versions/azure/hh767287(v=azure.100))benzerlikler.
 * Kuyruk depolama bir gönderim hizmeti değil. Kuyruğu yoklamak için gerekir.
-* İstediğiniz sayıda sıraya sahip olabilirsiniz. Daha fazla bilgi için bkz. [kuyruk hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* Kuyruk depolamada bazı sınırlamalar ve bilgiler göz önünde bulundurulmalıdır. Bunlar [Azure kuyruklarıyla ve Azure Service Bus kuyruklarıyla karşılaştırıldığında ve](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)benzerlikler ile açıklanmıştır.
+* İstediğiniz sayıda sıraya sahip olabilirsiniz. Daha fazla bilgi için bkz. [kuyruk hizmeti REST API](/rest/api/storageservices/queue-service-rest-api).
+* Kuyruk depolamada bazı sınırlamalar ve bilgiler göz önünde bulundurulmalıdır. Bunlar [Azure kuyruklarıyla ve Azure Service Bus kuyruklarıyla karşılaştırıldığında ve](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)benzerlikler ile açıklanmıştır.
 
 ## <a name="net-code-example"></a>.NET kod örneği
 

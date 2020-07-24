@@ -3,12 +3,12 @@ title: Danışman ile operasyonel Excel 'i geliştirme
 description: Azure abonelikleriniz için işlemsel mükemmelliği iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 1cac5a3f93df8422a3896b1251857bf552731fb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c4726400134e4eec3868e155da47cb8c515b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057647"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak işlemsel mükemmellik elde edin
 
@@ -63,4 +63,4 @@ Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)
-* [Danışman REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Danışman REST API](/rest/api/advisor/)

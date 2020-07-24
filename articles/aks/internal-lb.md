@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ile hizmetlerinizi kullanıma sunmak
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58aadc4fadb93a4f6eb47214f580f7a2bebdf49c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790618"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056825"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) ile iç yük dengeleyici kullanma
 
@@ -65,7 +65,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>Bir IP adresi belirtin
 
-İç yük dengeleyiciye belirli bir IP adresi kullanmak isterseniz, *Loadbalancerıp* özelliğini yük dengeleyici YAML bildirimine ekleyin. Belirtilen IP adresi AKS kümesiyle aynı alt ağda bulunmalı ve bir kaynağa zaten atanmamalıdır.
+İç yük dengeleyiciye belirli bir IP adresi kullanmak isterseniz, *Loadbalancerıp* özelliğini yük dengeleyici YAML bildirimine ekleyin. Belirtilen IP adresi AKS kümesiyle aynı alt ağda bulunmalı ve bir kaynağa zaten atanmamalıdır. Örneğin, Kubernetes alt ağı için belirlenmiş aralıkta bir IP adresi kullanmamalısınız.
 
 ```yaml
 apiVersion: v1

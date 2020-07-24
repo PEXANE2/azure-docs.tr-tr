@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault için HSM korumalı anahtarlar oluşturma ve aktarma-Azure Key Vault | Microsoft Docs
+title: '& aktarım HSM korumalı anahtarlar oluşturma – BYOK – Azure Key Vault'
 description: Azure Key Vault ile kullanmak üzere kendi HSM korumalı anahtarlarınızı planlayıp, oluşturmanıza ve aktarmaya yardımcı olması için bu makaleyi kullanın. Kendi anahtarını getir (BYOK) olarak da bilinir.
 services: key-vault
 author: amitbapat
@@ -10,11 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 52214d42467dfa86b5e085a660a9416904b7de59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4df934f38a8fb657fa4a8de5922d96197a3d02cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061101"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM korumalı anahtarları Key Vault içeri aktar (BYOK)
 
@@ -42,7 +43,7 @@ Daha fazla bilgi ve Key Vault kullanmaya başlama öğreticisi için (HSM koruma
 * KEK, hedef anahtarın içeri aktarılacağı aynı anahtar kasasında olmalıdır.
 * BYOK dosyası Key Vault karşıya yüklendiğinde, Key Vault HSM, hedef anahtar malzemelerinin şifresini çözmek ve bir HSM anahtarı olarak içeri aktarmak için KEK özel anahtarını kullanır. Bu işlem tamamen bir Key Vault HSM içinde gerçekleşir. Hedef anahtar her zaman HSM koruma sınırında kalır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar listelenmektedir:
 

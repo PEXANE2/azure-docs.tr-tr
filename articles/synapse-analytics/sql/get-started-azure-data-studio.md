@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Studio (Önizleme): Connect ve Query SYNAPSE SQL'
+title: Azure Data Studio ile SYNAPSE SQL 'e bağlanma (Önizleme)
 description: Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgulamak için Azure Data Studio (Önizleme) kullanın.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059563"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma (Önizleme)
 
@@ -38,7 +38,7 @@ SYNAPSE SQL 'e bağlanmak için Azure Data Studio açın ve **Yeni bağlantı**'
 
 Bağlantı aşağıdaki parametreleri gerektirir:
 
-* **Sunucu:** Formdaki `<Azure Synapse workspace name>`sunucu-OnDemand.Sql.azuresynapse.net
+* **Sunucu:** Formdaki sunucu `<Azure Synapse workspace name>` -OnDemand.Sql.azuresynapse.net
 * **Veritabanı:** Veritabanı adı
 
 > [!NOTE]
@@ -69,7 +69,7 @@ Aşağıdaki ekran görüntüsünde **SQL oturum açma**kullanılarak **Bağlant
 
 ![SQL Oturum Açma](./media/get-started-azure-data-studio/2-database-details.png)
 
-Başarılı oturum açma işleminden sonra şu şekilde bir pano görmeniz gerekir: ![Pano](./media/get-started-azure-data-studio/4-dashboard.png)
+Başarılı oturum açma işleminden sonra şu şekilde bir pano görmeniz gerekir: ![ Pano](./media/get-started-azure-data-studio/4-dashboard.png)
 
 ## <a name="query"></a>Sorgu
 

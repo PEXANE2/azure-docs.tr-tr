@@ -3,17 +3,18 @@ title: REST API ile Azure dosya paylaşımlarını yedekleme
 description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yedeklemek için REST API kullanmayı öğrenin
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710618"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055013"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak Azure dosya paylaşma 'yı yedekleme
 
 Bu makalede, REST API aracılığıyla Azure Backup kullanarak bir Azure dosya paylaşımının nasıl yedekleneceği açıklanır.
 
-Bu makalede, zaten bir kurtarma hizmetleri Kasası oluşturdunuz ve dosya paylaşımınızda yedeklemeyi yapılandırmak için ilke oluşturdunuz. Yapmadıysanız, yeni kasalar ve ilkeler oluşturmak için [kasa oluşturma](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) ve [ilke oluşturma](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) REST API öğreticiler bölümüne başvurun.
+Bu makalede, zaten bir kurtarma hizmetleri Kasası oluşturdunuz ve dosya paylaşımınızda yedeklemeyi yapılandırmak için ilke oluşturdunuz. Yapmadıysanız, yeni kasalar ve ilkeler oluşturmak için [kasa oluşturma](./backup-azure-arm-userestapi-createorupdatevault.md) ve [ilke oluşturma](./backup-azure-arm-userestapi-createorupdatepolicy.md) REST API öğreticiler bölümüne başvurun.
 
 Bu makalede, aşağıdaki kaynakları kullanacağız:
 
@@ -31,7 +32,7 @@ Bu makalede, aşağıdaki kaynakları kullanacağız:
 
 ### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Korumasız Azure dosya paylaşımlarına sahip depolama hesaplarını bulma
 
-Kasanın, kurtarma hizmetleri kasasına yedeklenebilir dosya paylaşımları ile abonelikte bulunan tüm Azure depolama hesaplarını bulması gerekir. Bu, [yenileme işlemi](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)kullanılarak tetiklenir. Bu, kasasının geçerli abonelikteki tüm korumasız Azure dosya paylaşımlarının en son listesini almasını ve bu nesnelerin ' önbelleğe alınmasını sağlayan zaman uyumsuz bir *gönderi* işlemidir. Dosya paylaşımının ' önbelleğe alınması ' olduğunda, kurtarma hizmetleri dosya paylaşımında erişebilir ve koruma sağlayabilir.
+Kasanın, kurtarma hizmetleri kasasına yedeklenebilir dosya paylaşımları ile abonelikte bulunan tüm Azure depolama hesaplarını bulması gerekir. Bu, [yenileme işlemi](/rest/api/backup/protectioncontainers/refresh)kullanılarak tetiklenir. Bu, kasasının geçerli abonelikteki tüm korumasız Azure dosya paylaşımlarının en son listesini almasını ve bu nesnelerin ' önbelleğe alınmasını sağlayan zaman uyumsuz bir *gönderi* işlemidir. Dosya paylaşımının ' önbelleğe alınması ' olduğunda, kurtarma hizmetleri dosya paylaşımında erişebilir ve koruma sağlayabilir.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
@@ -55,7 +56,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Yanıtlar
 
-' Refresh ' işlemi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
+' Refresh ' işlemi [zaman uyumsuz bir işlemdir](../azure-resource-manager/management/async-operations.md). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
@@ -107,7 +108,7 @@ Date   : Mon, 27 Jan 2020 10:53:04 GMT
 
 ### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Kurtarma Hizmetleri kasası ile korunabilen depolama hesaplarının listesini al
 
-"Önbelleğe alma" işleminin yapıldığını doğrulamak için, aboneliğin altındaki tüm korunabilir depolama hesaplarını listeleyin. Ardından, yanıttaki istenen depolama hesabını bulun. Bu işlem, [korunabilir kapsayıcı al](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) işlemi kullanılarak yapılır.
+"Önbelleğe alma" işleminin yapıldığını doğrulamak için, aboneliğin altındaki tüm korunabilir depolama hesaplarını listeleyin. Ardından, yanıttaki istenen depolama hesabını bulun. Bu işlem, [korunabilir kapsayıcı al](/rest/api/backup/protectablecontainers/list) işlemi kullanılarak yapılır.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -159,7 +160,7 @@ Yanıt gövdesinde kolay ada sahip *testvault2* Storage hesabını bulabileceği
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>Depolama hesabını kurtarma hizmetleri kasasıyla kaydetme
 
-Bu adım yalnızca depolama hesabını daha önce kasaya kaydetmediyseniz gereklidir. Kasayı [Protectioncontainers-Register işlemi](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register)aracılığıyla kaydedebilirsiniz.
+Bu adım yalnızca depolama hesabını daha önce kasaya kaydetmediyseniz gereklidir. Kasayı [Protectioncontainers-Register işlemi](/rest/api/backup/protectioncontainers/register)aracılığıyla kaydedebilirsiniz.
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
@@ -208,7 +209,7 @@ Oluşturma isteği gövdesi aşağıdaki gibidir:
  }
 ```
 
-İstek gövdesinin ve diğer ayrıntıların tanımlarının tam listesi için, [Protectioncontainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)bölümüne bakın.
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tam listesi için, [Protectioncontainers-Register](/rest/api/backup/protectioncontainers/register#azurestoragecontainer)bölümüne bakın.
 
 Bu zaman uyumsuz bir işlemdir ve iki yanıt döndürür 202: işlem kabul edildiğinde "200 Tamam" ve işlem tamamlandığında "Tamam".  İşlem durumunu izlemek için, işlemin en son durumunu almak üzere konum üst bilgisini kullanın.
 
@@ -240,7 +241,7 @@ Yanıt gövdesinde, kayıt işleminin *registrationstatus* parametresinin değer
 
 ### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Bir depolama hesabı altındaki tüm korumasız dosya paylaşımlarını sorgula
 
-[Koruma kapsayıcıları-sorgulama](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) işlemini kullanarak bir depolama hesabındaki korunabilir öğeler hakkında sorgulama yapabilirsiniz. Bu, zaman uyumsuz bir işlemdir ve sonuçların konum üst bilgisi kullanılarak izlenmesi gerekir.
+[Koruma kapsayıcıları-sorgulama](/rest/api/backup/protectioncontainers/inquire) işlemini kullanarak bir depolama hesabındaki korunabilir öğeler hakkında sorgulama yapabilirsiniz. Bu, zaman uyumsuz bir işlemdir ve sonuçların konum üst bilgisi kullanılarak izlenmesi gerekir.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
@@ -275,7 +276,7 @@ Date  : Mon, 27 Jan 2020 10:53:05 GMT
 
 ### <a name="select-the-file-share-you-want-to-back-up"></a>Yedeklemek istediğiniz dosya payını seçin
 
-Abonelik kapsamındaki tüm korunabilir öğeleri listeleyebilir ve [Backupkorunabilir bir Tableıtems al](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) işlemi kullanılarak yedeklenecek istenen dosya paylaşımının yerini bulabilirsiniz.
+Abonelik kapsamındaki tüm korunabilir öğeleri listeleyebilir ve [Backupkorunabilir bir Tableıtems al](/rest/api/backup/backupprotectableitems/list) işlemi kullanılarak yedeklenecek istenen dosya paylaşımının yerini bulabilirsiniz.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
@@ -350,7 +351,7 @@ Yanıt, tüm korumasız dosya paylaşımlarının listesini içerir ve Azure kur
 
 ### <a name="enable-backup-for-the-file-share"></a>Dosya paylaşımında yedeklemeyi etkinleştir
 
-İlgili dosya paylaşımının kolay adıyla "tanımlanması" durumunda, korunacak ilkeyi seçin. Kasadaki mevcut ilkeler hakkında daha fazla bilgi edinmek için [liste ILKESI API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)'sine bakın. Ardından ilke adına başvurarak [ilgili ilkeyi](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) seçin. İlke oluşturmak için [ilke oluşturma öğreticisi](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)' ne bakın.
+İlgili dosya paylaşımının kolay adıyla "tanımlanması" durumunda, korunacak ilkeyi seçin. Kasadaki mevcut ilkeler hakkında daha fazla bilgi edinmek için [liste ILKESI API](/rest/api/backup/backuppolicies/list)'sine bakın. Ardından ilke adına başvurarak [ilgili ilkeyi](/rest/api/backup/protectionpolicies/get) seçin. İlke oluşturmak için [ilke oluşturma öğreticisi](./backup-azure-arm-userestapi-createorupdatepolicy.md)' ne bakın.
 
 Korumayı etkinleştirme, "korumalı öğe" oluşturan zaman uyumsuz bir *PUT* işlemidir.
 
@@ -466,11 +467,11 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-| Name       | Tür                       | Açıklama                       |
+| Ad       | Tür                       | Açıklama                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Özellikler | AzurefilesharebackupReques | BackupRequestResource özellikleri |
 
-İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için bkz. [korumalı öğeler için tetikleyici yedeklemeleri REST API belgesi](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için bkz. [korumalı öğeler için tetikleyici yedeklemeleri REST API belgesi](/rest/api/backup/backups/trigger#request-body).
 
 İstek gövdesi örneği
 
@@ -488,7 +489,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 ### <a name="responses"></a>Yanıtlar
 
-İsteğe bağlı yedekleme tetiklenmesi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
+İsteğe bağlı yedekleme tetiklenmesi [zaman uyumsuz bir işlemdir](../azure-resource-manager/management/async-operations.md). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Bu işlem tamamlandığında, başka bir işlem oluşturulduğunda ve 200 (Tamam) olduğunda iki yanıt döndürür: 202 (kabul edildi).
 
@@ -539,7 +540,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)açıklandığı şekilde izlenmesi gerekir.
+Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)açıklandığı şekilde izlenmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

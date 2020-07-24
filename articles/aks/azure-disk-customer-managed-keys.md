@@ -3,20 +3,17 @@ title: Azure Kubernetes Service (AKS) ' de Azure disklerini şifrelemek için m�
 description: AKS işletim sistemini ve veri disklerini şifrelemek için kendi anahtarlarınızı getirin (BYOK).
 services: container-service
 ms.topic: article
-ms.date: 01/12/2020
-ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057303"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
 Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, AKS kümeleriniz için hem işletim sistemi hem de veri diskleri için bekleyen şifreleme için kullanılmak üzere [müşteri tarafından yönetilen anahtarlar][customer-managed-keys] sağlayabilirsiniz.
-
-> [!NOTE]
-> BYOK Linux ve Windows tabanlı AKS kümeleri, Azure yönetilen disklerin sunucu tarafı şifrelemesini destekleyen [Azure bölgelerinde][supported-regions] kullanılabilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -164,7 +161,6 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* BYOK, yalnızca belirli [Azure BÖLGELERINDE][supported-regions] GA ve önizleme sürümünde kullanılabilir
 * Kubernetes sürüm 1,17 ve üzeri ile desteklenen veri diski şifrelemesi   
 * Yalnızca BYOK 'ın desteklendiği bölgelerde kullanılabilir
 * Müşteri tarafından yönetilen anahtarlarla şifreleme Şu anda yalnızca yeni AKS kümelerine yöneliktir, mevcut kümeler yükseltilemez

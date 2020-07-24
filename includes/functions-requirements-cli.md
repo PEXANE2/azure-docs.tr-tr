@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 9e9f9c71701ceb1c76bc162f22e166b4565e731b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3f5c7021461b407e90d61ed045c112aab3c1c4e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062661"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055998"
 ---
 ## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırma
 
@@ -44,10 +44,12 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 + [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8.
++ [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8. 
+
+    > [!IMPORTANT]
+    > + Java 11 için işlev desteği şu anda önizleme aşamasındadır ve Maven arşiv ETYPE varsayılan olarak bir Java 8 dağıtımı oluşturur. Bunun yerine, Java 11 ' de işlev uygulamanızı çalıştırmak istiyorsanız, pom.xml dosyasını Java 11 değerleriyle el ile güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [Java sürümleri](../articles/azure-functions/functions-reference-java.md#java-versions). 
+    > + `JAVA_HOME`Bu hızlı başlangıcı tamamlayabilmeniz için ortam değişkeni, JDK 'nin doğru sürümünün yükleneceği konum olarak ayarlanmalıdır.
 
 + [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
 
-> [!IMPORTANT]
-> Bu hızlı başlangıcın tamamlanabilmesi için JAVA_HOME ortam değişkeni JDK’nin yükleme konumu olarak ayarlanmalıdır.
 ::: zone-end
