@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522aed07d850dfdb2782ee8263f33bd3f42eb8c2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34a02de8a6789a028c776e784ea4aa9692f53d9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079156"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -54,7 +54,7 @@ Veri düzlemi API 'Lerini kullanmak için:
    - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - [SDK başvuru belgelerini](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview)görüntüleyebilirsiniz.
    - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
-* Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
+* Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [*Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
 
 [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek Tarih düzlemi API 'leri de uygulayabilirsiniz.
 
@@ -71,11 +71,11 @@ SDK 'yı kullanmak için, projenize **Azure. DigitalTwins. Core** NuGet paketini
 * .NET komut satırı aracını kullanarak şunları gerçekleştirebilirsiniz:
 
     ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
     dotnet add package Azure.identity
     ```
 
-API 'Leri uygulamada kullanma hakkında ayrıntılı bilgi için bkz. [öğretici: istemci uygulaması kodu](tutorial-code.md). 
+API 'Leri uygulamada kullanma hakkında ayrıntılı bilgi için bkz. [*öğretici: istemci uygulaması kodu*](tutorial-code.md). 
 
 ### <a name="net-sdk-usage-examples"></a>.NET SDK kullanım örnekleri
 
@@ -137,7 +137,7 @@ await foreach (string twin in result)
 }
 ```
 
-Bu örnek uygulama kodundan izlenecek yol için [öğreticiye bakın: istemci uygulamasını kodlayın](tutorial-code.md) . 
+Bu örnek uygulama kodundan izlenecek yol için [*öğreticiye bakın: istemci uygulamasını kodlayın*](tutorial-code.md) . 
 
 [.Net (C#) SDK 'sı Için GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)deposunda ek örnekler de bulabilirsiniz.
 
@@ -290,8 +290,8 @@ Buradan, örneğiniz için ölçümleri görüntüleyebilir ve özel görünüml
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. Azure dijital TWINS örneği oluşturmak için API 'Leri kullanma:
-* [Nasıl yapılır: Azure dijital TWINS örneği oluşturma](how-to-set-up-instance.md)
+Bkz. bir Azure dijital TWINS örneği ve kimlik doğrulaması kurmak için API 'Leri kullanma:
+* [*Nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-scripted.md)
 
 Ya da, bu nasıl yapılır: ile aynı şekilde kullanılan bir istemci uygulaması oluşturma adımlarını gözden geçir:
-* [Öğretici: istemci uygulamasını kodlayın](tutorial-code.md)
+* [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)

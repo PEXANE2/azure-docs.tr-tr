@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079749"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
@@ -73,7 +73,7 @@ Windows çalıştıran düğümler için aşağıdaki sürümler desteklenir:
 >[!NOTE]
 >[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) tek başına Ürün SKU 'SU bir DSC uygulamasını içermez. Bu nedenle, PowerShell DSC veya Azure Otomasyonu durum yapılandırması tarafından yönetilemez.
 
-Linux çalıştıran düğümler için DSC Linux uzantısı, [desteklenen Linux dağıtımları](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)altında listelenen tüm Linux dağıtımlarını destekler.
+Linux çalıştıran düğümler için DSC Linux uzantısı, [POWERSHELL DSC belgelerinde](/powershell/scripting/dsc/getting-started/lnxgettingstarted)listelenen tüm Linux dağıtımlarını destekler.
 
 ### <a name="dsc-requirements"></a>DSC gereksinimleri
 

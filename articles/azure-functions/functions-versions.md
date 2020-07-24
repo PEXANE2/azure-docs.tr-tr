@@ -3,11 +3,12 @@ title: Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 description: Azure Işlevleri, çalışma zamanının birden çok sürümünü destekler. Aralarındaki farkları ve sizin için doğru olanı seçme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081687"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
@@ -90,7 +91,7 @@ Bir 2. x uygulamasını 3. x ' e yükseltmeden önce dikkat edilecek değişikli
 
 #### <a name="net"></a>.NET
 
-* [Zaman uyumlu sunucu işlemleri varsayılan olarak devre dışıdır](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
+* [Zaman uyumlu sunucu işlemleri varsayılan olarak devre dışıdır](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
 
 ### <a name="changing-version-of-apps-in-azure"></a>Azure 'da uygulamaların sürümünü değiştirme
 

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: cfbd5af7063a4764820b5ce892a9a2b8a305b1b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080599"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure portal bir sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır.
@@ -48,8 +48,8 @@ Uygulamanızın talebi artarsa, ölçek kümenizdeki sanal makine örneklerinde 
     | *Zaman dilimi istatistiği* | Her seferinde toplanan ölçümlerin analiz için nasıl toplanması gerektiğini tanımlar.                             | Ortalama        |
     | *İşleç*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür   |
     | *Eşik*            | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan yüzde.                                                 | 70             |
-    | *Süre*             | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 10 dakika     |
-    | *İşlem*            | Kural geçerli olduğunda ölçek kümesinin ölçeği büyütme veya küçültme yapmanız gerekip gerekmediğini tanımlar                        | Yüzdeyi yüzde artır |
+    | *Süre*             | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre. Cool azaltma süresini içermez.                                   | 10 dakika     |
+    | *İşlem*            | Kural geçerli olduğunda ölçek kümesinin ölçeği büyütme veya küçültme yapmanız gerektiğini tanımlar.                        | Yüzdeyi yüzde artır |
     | *Örnek sayısı*       | Kural tetiklendiğinde değiştirilmesi gereken sanal makine örneklerinin yüzdesi.                                            | 20             |
     | *Soğuma (dakika)*  | Otomatik ölçeklendirme eylemlerinin geçerli olması için kural tekrar uygulanmadan önceki bekleme süresi. | 5 dakika      |
 

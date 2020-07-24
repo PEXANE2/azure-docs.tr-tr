@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aa71062c86d57cabe8579e13011956137804f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079800"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleştirme grupları
 SAP NetWeaver veya SAP S/4HANA mimarisine dayanan SAP uygulamaları, SAP uygulama katmanı ve SAP veritabanı katmanı arasındaki ağ gecikmesinden duyarlıdır. Bu duyarlılık, uygulama katmanında çalışan iş mantığının büyük bir sonucudur. SAP uygulama katmanı iş mantığını çalıştırdığı için, bir saniyede binlerce veya onlarca binlerce veya on binde bir hızda veritabanı katmanına sorgu verir. Çoğu durumda, bu sorguların doğası basittir. Bunlar, genellikle 500 mikrosaniye veya daha az bir veritabanı katmanında çalıştırılabilir.
@@ -28,7 +29,7 @@ Uygulama katmanından veritabanı katmanına bu tür bir sorgu göndermek için 
 
 Birçok Azure bölgesinde, veri merkezlerinin sayısı artmıştır. Bu büyüme Ayrıca Kullanılabilirlik Alanları tanıtımı tarafından tetiklenir. Aynı zamanda, özellikle yüksek kaliteli SAP sistemleri için müşteriler, M serisi ailesinde veya HANA büyük örneklerde daha özel VM SKU 'Ları kullanmaktır. Bu Azure sanal makine türleri, belirli bir Azure bölgesindeki tüm veri merkezlerinde kullanılamaz. Bu iki temel nedenle, müşteriler en uygun aralıkta olmayan ağ gecikme süresi yaşadı. Bazı durumlarda, bu gecikme süresi SAP sistemlerinin en iyi performans performansını elde etmez.
 
-Bu sorunları engellemek için Azure, [yakınlık yerleştirme grupları](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)sunmaktadır. Bu yeni işlevsellik, çeşitli SAP sistemlerini dağıtmak için zaten kullanıldı. Yakınlık yerleştirme gruplarındaki kısıtlamalar için, bu paragrafın başlangıcında başvurulan makaleye bakın. Bu makalede Azure yakınlık yerleşimi gruplarının kullanılabileceği veya kullanılması gereken SAP senaryoları ele alınmaktadır.
+Bu sorunları engellemek için Azure, [yakınlık yerleştirme grupları](../../linux/co-location.md)sunmaktadır. Bu yeni işlevsellik, çeşitli SAP sistemlerini dağıtmak için zaten kullanıldı. Yakınlık yerleştirme gruplarındaki kısıtlamalar için, bu paragrafın başlangıcında başvurulan makaleye bakın. Bu makalede Azure yakınlık yerleşimi gruplarının kullanılabileceği veya kullanılması gereken SAP senaryoları ele alınmaktadır.
 
 ## <a name="what-are-proximity-placement-groups"></a>Yakınlık yerleşimi grupları nelerdir? 
 Bir Azure yakınlık yerleşimi grubu, mantıksal bir yapıdır. Biri tanımlandığında bir Azure bölgesine ve bir Azure Kaynak grubuna bağlanır. VM 'Ler dağıtıldığında, bir yakınlık yerleşimi grubuna şunun tarafından başvuruluyor:
@@ -39,7 +40,7 @@ Bir Azure yakınlık yerleşimi grubu, mantıksal bir yapıdır. Biri tanımland
 > [!NOTE]
 > İlk VM 'nin yerleştirildiği veri merkezinde belirli bir VM türü çalıştıran bir konak donanımı dağıtılırsa, istenen VM türünün dağıtımı başarılı olmayacaktır. Bir hata iletisi alırsınız.
 
-Tek bir [Azure Kaynak grubuna](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) atanmış birden fazla yakınlık yerleştirme grubu olabilir. Ancak, bir yakınlık yerleşimi grubu yalnızca bir Azure Kaynak grubuna atanabilir.
+Tek bir [Azure Kaynak grubuna](../../../azure-resource-manager/management/manage-resources-portal.md) atanmış birden fazla yakınlık yerleştirme grubu olabilir. Ancak, bir yakınlık yerleşimi grubu yalnızca bir Azure Kaynak grubuna atanabilir.
 
 Yakınlık yerleştirme gruplarını kullanırken, bu noktaları göz önünde bulundurun:
 
@@ -48,9 +49,9 @@ Yakınlık yerleştirme gruplarını kullanırken, bu noktaları göz önünde b
 - Microsoft, donanım yetkisini alma nedeniyle, ilk kullandığınız bir veri merkezinde kullandığınız bir VM türü için kapasiteler oluşturabilir. Bu senaryoda, tüm yakınlık yerleşimi grubunun sanal makinelerini başka bir veri merkezine taşımanız gerekebilir.
 
 ## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>Yalnızca Azure VM 'Leri kullanan SAP sistemleri olan yakınlık yerleştirme grupları
-Azure 'da SAP NetWeaver ve S/4HANA sistem dağıtımları, [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)kullanmaz. HANA büyük örnekleri kullanmayan dağıtımlar için SAP uygulama katmanı ve DBMS katmanı arasında en iyi performansı sağlamak önemlidir. Bunu yapmak için, yalnızca sistem için bir Azure yakınlık yerleşimi grubu tanımlayın.
+Azure 'da SAP NetWeaver ve S/4HANA sistem dağıtımları, [Hana büyük örnekleri](./hana-overview-architecture.md)kullanmaz. HANA büyük örnekleri kullanmayan dağıtımlar için SAP uygulama katmanı ve DBMS katmanı arasında en iyi performansı sağlamak önemlidir. Bunu yapmak için, yalnızca sistem için bir Azure yakınlık yerleşimi grubu tanımlayın.
 
-Çoğu müşteri dağıtımında, müşteriler SAP sistemleri için tek bir [Azure Kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) oluşturur. Bu durumda, örneğin, üretim ERP sistem kaynak grubu ve yakınlık yerleşimi grubu arasında bire bir ilişki vardır. Diğer durumlarda, müşteriler kaynak gruplarını yatay olarak düzenler ve tüm üretim sistemlerini tek bir kaynak grubunda toplar. Bu durumda, üretim SAP sistemleri için kaynak grubunuz ve üretim SAP ERP, SAP BW gibi çeşitli yakınlık yerleştirme grupları arasında bire çok bir ilişkiye sahip olursunuz.
+Çoğu müşteri dağıtımında, müşteriler SAP sistemleri için tek bir [Azure Kaynak grubu](../../../azure-resource-manager/management/manage-resources-portal.md) oluşturur. Bu durumda, örneğin, üretim ERP sistem kaynak grubu ve yakınlık yerleşimi grubu arasında bire bir ilişki vardır. Diğer durumlarda, müşteriler kaynak gruplarını yatay olarak düzenler ve tüm üretim sistemlerini tek bir kaynak grubunda toplar. Bu durumda, üretim SAP sistemleri için kaynak grubunuz ve üretim SAP ERP, SAP BW gibi çeşitli yakınlık yerleştirme grupları arasında bire çok bir ilişkiye sahip olursunuz.
 
 Tek bir yakınlık yerleşimi grubunda birkaç SAP üretimi veya üretim dışı sistemler paketlemeyi önleyin. Az sayıda SAP sistemi veya SAP sistemi ve çevresindeki uygulamaların düşük gecikmeli ağ iletişimine ihtiyacı olduğunda, bu sistemleri tek bir yakınlık yerleşimi grubuna taşımayı düşünebilirsiniz. Bir yakınlık yerleşimi grubunda daha fazla sistem gruplandırdığı için sistem paketlerinin olmaması gerekir, bu da daha yüksek bir şansınız olur:
 
@@ -64,11 +65,11 @@ Aşağıda açıklandığı gibi ideal yapılandırma şöyle görünür:
 Bu durumda, tek SAP sistemleri her biri tek bir kaynak grubunda gruplandırılır ve her biri bir yakınlık yerleşimi grubuyla birlikte gruplandırılır. HANA genişleme veya DBMS genişleme yapılandırması kullanmanıza bakılmaksızın bir bağımlılık yoktur.
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>Yakınlık yerleştirme grupları ve HANA büyük örnekleri
-SAP sistemlerinizden bazıları uygulama katmanı için [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) kullanıyorsa, [Düzeltme 4 satırları veya damgaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)' nda dağıtılan Hana büyük örnekler birimleri kullanırken, Hana büyük örnekler birimi ile Azure VM 'ler arasındaki ağ gecikmesi üzerinde önemli geliştirmeler yaşayabilirsiniz. Bir iyileştirme, dağıtılan büyük örnek birimlerinin, dağıtıldığı gibi bir yakınlık yerleşimi grubuyla dağıtılması. Uygulama katmanı sanal makinelerinizi dağıtmak için bu yakınlık yerleşimi grubunu kullanabilirsiniz. Sonuç olarak, bu VM 'Ler HANA büyük örnek biriminizi barındıran veri merkezinde dağıtılır.
+SAP sistemlerinizden bazıları uygulama katmanı için [Hana büyük örnekleri](./hana-overview-architecture.md) kullanıyorsa, [Düzeltme 4 satırları veya damgaları](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)' nda dağıtılan Hana büyük örnekler birimleri kullanırken, Hana büyük örnekler birimi ile Azure VM 'ler arasındaki ağ gecikmesi üzerinde önemli geliştirmeler yaşayabilirsiniz. Bir iyileştirme, dağıtılan büyük örnek birimlerinin, dağıtıldığı gibi bir yakınlık yerleşimi grubuyla dağıtılması. Uygulama katmanı sanal makinelerinizi dağıtmak için bu yakınlık yerleşimi grubunu kullanabilirsiniz. Sonuç olarak, bu VM 'Ler HANA büyük örnek biriminizi barındıran veri merkezinde dağıtılır.
 
-HANA büyük örnek biriminizdeki bir düzeltme 4 damgasında veya satırında dağıtılıp dağıtılmadığını öğrenmek için [Azure Portal aracılığıyla Azure Hana büyük örnekler denetimi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit)makalesini kontrol edin. HANA büyük örnek biriminizdeki özniteliklere genel bakış bölümünde, HANA büyük örnekler biriminiz dağıtıldığında oluşturulduğu için yakınlık yerleşimi grubunun adını da belirleyebilirsiniz. Özniteliklerde genel bakışta görüntülenen ad, uygulama katmanı VM 'lerinizi dağıtmanız gereken yakınlık yerleşimi grubunun adıdır.
+HANA büyük örnek biriminizdeki bir düzeltme 4 damgasında veya satırında dağıtılıp dağıtılmadığını öğrenmek için [Azure Portal aracılığıyla Azure Hana büyük örnekler denetimi](./hana-li-portal.md#look-at-attributes-of-single-hli-unit)makalesini kontrol edin. HANA büyük örnek biriminizdeki özniteliklere genel bakış bölümünde, HANA büyük örnekler biriminiz dağıtıldığında oluşturulduğu için yakınlık yerleşimi grubunun adını da belirleyebilirsiniz. Özniteliklerde genel bakışta görüntülenen ad, uygulama katmanı VM 'lerinizi dağıtmanız gereken yakınlık yerleşimi grubunun adıdır.
 
-Yalnızca Azure sanal makinelerini kullanan SAP sistemleri ile karşılaştırıldığında, HANA büyük örnekleri kullandığınızda, kaç [Azure Kaynak grubunun](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) kullanılacağına karar verirken daha az esneklik elde edersiniz. Bir [Hana büyük örnek kiracının](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-know-terms) tüm Hana büyük örnek birimleri, [Bu makalede](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#display-of-hana-large-instance-units-in-the-azure-portal)açıklandığı gibi tek bir kaynak grubunda gruplandırılır. Örneğin, üretim ve üretim dışı sistemler veya diğer sistemler gibi ayrı kiracılara dağıtmadığınız takdirde, tüm HANA büyük örnek birimleriniz tek bir HANA büyük örnek kiracısında dağıtılır. Bu kiracının bir kaynak grubuyla bire bir ilişkisi vardır. Ancak tek bir birimin her biri için ayrı bir yakınlık yerleşimi grubu tanımlanacaktır.
+Yalnızca Azure sanal makinelerini kullanan SAP sistemleri ile karşılaştırıldığında, HANA büyük örnekleri kullandığınızda, kaç [Azure Kaynak grubunun](../../../azure-resource-manager/management/manage-resources-portal.md) kullanılacağına karar verirken daha az esneklik elde edersiniz. Bir [Hana büyük örnek kiracının](./hana-know-terms.md) tüm Hana büyük örnek birimleri, [Bu makalede](./hana-li-portal.md#display-of-hana-large-instance-units-in-the-azure-portal)açıklandığı gibi tek bir kaynak grubunda gruplandırılır. Örneğin, üretim ve üretim dışı sistemler veya diğer sistemler gibi ayrı kiracılara dağıtmadığınız takdirde, tüm HANA büyük örnek birimleriniz tek bir HANA büyük örnek kiracısında dağıtılır. Bu kiracının bir kaynak grubuyla bire bir ilişkisi vardır. Ancak tek bir birimin her biri için ayrı bir yakınlık yerleşimi grubu tanımlanacaktır.
 
 Sonuç olarak, Azure Kaynak grupları ve tek bir kiracının yakınlık yerleşimi grupları arasındaki ilişkiler burada gösterildiği gibi olacaktır:
 
@@ -161,8 +162,7 @@ Zaten dağıtılmış SAP sistemleri varsa, bazı kritik sistemlerinizden oluşa
 ## <a name="next-steps"></a>Sonraki adımlar
 Belgelere göz atın:
 
-- [Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-- [Önizleme: Azure CLı kullanarak yakınlık yerleşimi gruplarına VM 'Leri dağıtma](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
-- [Önizleme: PowerShell kullanarak sanal makineleri yakınlık yerleştirme gruplarına dağıtma](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
-- [SAP iş yükleri için Azure sanal makineler DBMS dağıtımına yönelik konular](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-
+- [Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi](./sap-deployment-checklist.md)
+- [Önizleme: Azure CLı kullanarak yakınlık yerleşimi gruplarına VM 'Leri dağıtma](../../linux/proximity-placement-groups.md)
+- [Önizleme: PowerShell kullanarak sanal makineleri yakınlık yerleştirme gruplarına dağıtma](../../windows/proximity-placement-groups.md)
+- [SAP iş yükleri için Azure sanal makineler DBMS dağıtımına yönelik konular](./dbms_guide_general.md)

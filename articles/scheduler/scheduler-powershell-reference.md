@@ -8,11 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b82dba923db16e96cc0884b629723c4e8496c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898491"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080939"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure Scheduler için PowerShell cmdlet 'leri başvurusu
 
@@ -21,7 +22,7 @@ ms.locfileid: "78898491"
 >
 > Zamanlayıcı artık Azure portal kullanılamıyor, ancak iş ve iş koleksiyonlarınızı yönetebilmeniz için [REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlet 'leri](scheduler-powershell-reference.md) Şu anda kullanılabilir durumda kalır.
 
-Zamanlayıcı işleri ve iş koleksiyonları oluşturmak ve yönetmek için betikler yazmak üzere PowerShell cmdlet 'lerini kullanabilirsiniz. Bu makalede, Azure Scheduler için başvuru makaleleriyle bağlantılı ana PowerShell cmdlet 'leri listelenir. Azure aboneliğiniz için Azure PowerShell yüklemek için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview). [Azure Resource Manager cmdlet 'leri](/powershell/azure/overview)hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile Azure PowerShell kullanma](../powershell-azure-resource-manager.md).
+Zamanlayıcı işleri ve iş koleksiyonları oluşturmak ve yönetmek için betikler yazmak üzere PowerShell cmdlet 'lerini kullanabilirsiniz. Bu makalede, Azure Scheduler için başvuru makaleleriyle bağlantılı ana PowerShell cmdlet 'leri listelenir. Azure aboneliğiniz için Azure PowerShell yüklemek için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/). [Azure Resource Manager cmdlet 'leri](/powershell/azure/)hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile Azure PowerShell kullanma](../powershell-azure-resource-manager.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

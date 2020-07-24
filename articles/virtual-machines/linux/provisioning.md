@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6530d05b8e1aa565e64256054e81b785572edfb0
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080157"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM sağlama
 Genelleştirilmiş görüntüden (paylaşılan görüntü Galerisi veya yönetilen görüntü) bir VM oluşturduğunuzda, denetim düzlemi VM oluşturmanıza ve parametreleri ve ayarları VM 'ye geçirmenize olanak tanır. Bu, VM *sağlama*olarak adlandırılır. Sağlama sırasında, platform VM 'nin önyüklendiği sırada gereken sanal makine oluşturma parametre değerlerini (konak adı, Kullanıcı adı, parola, SSH anahtarları, customData) sağlar. 
 
 Görüntünün içindeki bir sağlama Aracısı, platform ile arabirim oluşturacak, birden çok bağımsız sağlama arabirimine bağlanan), özellikleri ve sinyali tamamladığı platforma ayarlar. 
 
-Sağlama aracıları [Azure Linux Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)veya [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)olabilir. Bunlar Genelleştirilmiş görüntüler oluşturma [önkoşullarıdır](create-upload-generic.md) .
+Sağlama aracıları [Azure Linux Aracısı](../extensions/agent-linux.md)veya [Cloud-init](./using-cloud-init.md)olabilir. Bunlar Genelleştirilmiş görüntüler oluşturma [önkoşullarıdır](create-upload-generic.md) .
 
-Sağlama aracıları, tüm onaylı [Azure Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)için destek sağlar ve birçok durumda, hem Cloud-init hem de Linux aracısıyla birlikte gelen onaylanan görüntüleri de bulacaksınız. Bu, sağlamayı işlemek için Cloud-init ' i sağlamak için, Linux aracısının [Azure uzantılarını](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows)işlemeye yönelik destek sağlamasına olanak sağlar. Uzantılar için destek sağlanması, sanal makinenin VM parola sıfırlama, Azure Izleme, Azure Backup, Azure disk şifrelemesi vb. gibi ek Azure hizmetlerini desteklemeye uygun olacağı anlamına gelir.
+Sağlama aracıları, tüm onaylı [Azure Linux dağıtımları](./endorsed-distros.md)için destek sağlar ve birçok durumda, hem Cloud-init hem de Linux aracısıyla birlikte gelen onaylanan görüntüleri de bulacaksınız. Bu, sağlamayı işlemek için Cloud-init ' i sağlamak için, Linux aracısının [Azure uzantılarını](../extensions/features-windows.md)işlemeye yönelik destek sağlamasına olanak sağlar. Uzantılar için destek sağlanması, sanal makinenin VM parola sıfırlama, Azure Izleme, Azure Backup, Azure disk şifrelemesi vb. gibi ek Azure hizmetlerini desteklemeye uygun olacağı anlamına gelir.
 
 Sağlama tamamlandıktan sonra, Cloud-init her önyüklemede çalıştırılır. Cloud-init, ağ değişiklikleri, takma geçici diski bağlama ve biçimlendirme gibi sanal makinede yapılan değişiklikleri izler ve Linux Aracısı başlatılır. Linux Aracısı sürekli olarak sunucuda çalışır ve Azure platformundan bir ' hedef durumu ' (yeni yapılandırma) arayan, uzantıları her yüklediğinizde aracı bunları işleyebilir.
 

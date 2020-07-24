@@ -3,11 +3,12 @@ title: Azure Işlevleri için depolama konuları
 description: Azure Işlevlerinin depolama gereksinimlerini ve depolanan verileri şifreleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079613"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Işlevleri için depolama konuları
 
@@ -16,7 +17,7 @@ Bir işlev uygulaması örneği oluşturduğunuzda Azure Işlevleri bir Azure de
 
 |Depolama hizmeti  | İşlev kullanımı  |
 |---------|---------|
-| [Azure Blob Depolama](../storage/blobs/storage-blobs-introduction.md)     | Bağlama durumu ve işlev anahtarlarını koruyun.  <br/>Ayrıca [, dayanıklı işlevler görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır. |
+| [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)     | Bağlama durumu ve işlev anahtarlarını koruyun.  <br/>Ayrıca [, dayanıklı işlevler görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır. |
 | [Azure Dosyaları](../storage/files/storage-files-introduction.md)  | İşlev uygulaması kodunuzu bir [Tüketim planında](functions-scale.md#consumption-plan)depolamak ve çalıştırmak için kullanılan dosya paylaşma. |
 | [Azure kuyruk depolama](../storage/queues/storage-queues-introduction.md)     | [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.   |
 | [Azure Tablo Depolama](../storage/tables/table-storage-overview.md)  |  [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.       |
@@ -40,7 +41,7 @@ Her işlev uygulamasının çalışması için bir depolama hesabının olması 
 
 Depolama hesabı bağlantısı [AzureWebJobsStorage uygulama ayarında](./functions-app-settings.md#azurewebjobsstorage)tutulur. 
 
-Depolama anahtarlarını yeniden oluşturduğunuzda depolama hesabı bağlantı dizesinin güncellenmesi gerekir. [Depolama anahtarı yönetimi hakkında buradan daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Depolama anahtarlarını yeniden oluşturduğunuzda depolama hesabı bağlantı dizesinin güncellenmesi gerekir. [Depolama anahtarı yönetimi hakkında buradan daha fazla bilgi edinin](../storage/common/storage-account-create.md).
 
 ### <a name="shared-storage-accounts"></a>Paylaşılan depolama hesapları
 
@@ -79,5 +80,3 @@ Azure Işlevleri barındırma seçenekleri hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Azure İşlevleri’ni ölçeklendirme ve barındırma](functions-scale.md)
-
-

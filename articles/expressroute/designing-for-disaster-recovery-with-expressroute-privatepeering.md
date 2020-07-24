@@ -7,17 +7,22 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081177"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma için tasarlama
 
 ExpressRoute, Microsoft kaynaklarına yönelik taşıyıcı sınıfı özel ağ bağlantısı sağlamak için yüksek kullanılabilirlik için tasarlanmıştır. Diğer bir deyişle, Microsoft ağı içindeki ExpressRoute yolunda tek bir hata noktası yoktur. ExpressRoute devresinin kullanılabilirliğini en üst düzeye çıkarmak için tasarım konuları için bkz. [ExpressRoute ile yüksek kullanılabilirlik Için tasarlama][HA].
 
 Bununla birlikte, Murphy 'in popüler AdAge 'yi almak*için bir şey yanlış gidecekse*, bu makalede tek bir ExpressRoute bağlantı hattı kullanılarak ele alınan hatalardan çok daha fazla geçen çözümlere odaklanalım. Bu makalede, diğer bir deyişle, coğrafi olarak yedekli ExpressRoute devreleri kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakmamıza izin verir.
+
+>[!NOTE]
+>Bu makalede açıklanan kavramlar, sanal WAN veya bunun dışında bir ExpressRoute bağlantı hattı oluşturulduğunda geçerlidir.
+>
 
 ## <a name="need-for-redundant-connectivity-solution"></a>Yedekli bağlantı çözümü gerekiyor
 
@@ -109,7 +114,7 @@ Olağanüstü durum kurtarmanın nasıl mimarilerimiz, çapraz konuma çapraz ko
 
 Aşağıdaki diyagramda Senaryo 1 gösterilmektedir. Diyagramda yeşil çizgiler, VNet1 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Mavi çizgiler, VNet2 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Kesintisiz satırlarda, istenen yol kararlı durumda ve kesik çizgili satırlarda, sabit durum trafik akışını taşıyan ilgili ExpressRoute bağlantı hattının başarısız olduğu trafik yolunu gösterir. 
 
-[![7@@]][7]
+[![7]][7]
 
 Şirket içi ağa bağlı trafik için yerel eşleme konumu ExpressRoute 'a bağlantıyı tercih etmek üzere sanal ağları etkilemek için bağlantı ağırlığı kullanarak senaryoyu mimARDA dağıtabilirsiniz. Çözümü tamamlayabilmeniz için, simetrik trafik akışının tersine çevrilmiş olduğundan emin olmanız gerekir. Bir ExpressRoute devresini tercih etmek için BGP yönlendiricileriniz (Şirket içi tarafında ExpressRoute devrelerinin sonlandırıldığı) arasında IGP oturumunda yerel tercihi kullanabilirsiniz. Çözüm aşağıdaki diyagramda gösterilmiştir. 
 
@@ -123,7 +128,7 @@ Senaryo 2 aşağıdaki diyagramda gösterilmiştir. Diyagramda yeşil çizgiler,
 
 Çözüm aşağıdaki diyagramda gösterilmiştir. Gösterildiği gibi, VNET yol seçimini etkilemek için, daha belirgin yol (seçenek 1) veya as-Path önüne (seçenek 2) kullanarak senaryoyu mimARDA dağıtabilirsiniz. Azure bağlı trafiği için şirket içi ağ yolu seçimini etkilemek için, şirket içi konum arasındaki iç yönü daha az tercih edilen şekilde yapılandırmanız gerekir. Bağlı olan bağlantıyı, şirket içi ağ içinde kullanılan yönlendirme protokolüne bağlı olarak tercih ettiğiniz şekilde yapılandırırsınız. Yerel tercihi IOP veya ölçümle (OSPF veya SIS) ile birlikte kullanabilirsiniz.
 
-[![10]][10]
+[![(]][10]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

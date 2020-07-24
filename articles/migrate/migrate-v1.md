@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ea17edc61988f13df5137686d823a424f6752ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080871"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
-Bu makalede, Azure geçişi 'nin önceki sürümüyle çalışma hakkında bilgiler sağlanmaktadır.
+Bu makalede, Azure geçişi 'nin önceki sürümüyle çalışma hakkında bilgiler sağlanmaktadır. 
 
 
 Azure geçişi hizmetinin iki sürümü vardır:
 
 - **Geçerli sürüm**: bu sürümü kullanarak Azure geçişi projelerini oluşturun, şirket içi makineleri bulun ve değerlendirmeleri ve geçişleri düzenleyin. Bu sürümdeki yenilikler hakkında [daha fazla bilgi edinin](whats-new.md) .
-- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullanıyorsanız (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Yine de önceki sürümde oluşturulan Azure geçiş projelerini kullanmanız gerekiyorsa, bu sizin yapabileceğiniz ve yapameyeceğiniz bir şeydir:
+- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullanıyorsanız (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Önceki sürüm projeleri, bu makalede klasik projeler olarak adlandırılır. Yine de önceki sürümde oluşturulan Azure geçiş projelerini kullanmanız gerekiyorsa, bu sizin yapabileceğiniz ve yapameyeceğiniz bir şeydir:
     - Artık geçiş projeleri oluşturamazsınız.
     - Yeni bulmalar gerçekleştirmemenizi öneririz.
     - Mevcut projelere erişmeye devam edebilirsiniz.
@@ -31,7 +31,7 @@ Azure geçişi hizmetinin iki sürümü vardır:
 
 ## <a name="upgrade-between-versions"></a>Sürümler arasında yükseltme
 
-Önceki sürümdeki proje veya bileşenleri yeni sürüme yükseltemezsiniz. [Yeni bir Azure geçişi projesi oluşturmanız](how-to-add-tool-first-time.md)ve buna değerlendirme ve geçiş araçları eklemeniz gerekir.
+Önceki sürümdeki proje veya bileşenleri yeni sürüme yükseltemezsiniz. [Yeni bir Azure geçişi projesi oluşturmanız](create-manage-projects.md)ve buna [değerlendirme ve geçiş araçları eklemeniz](how-to-add-tool-first-time.md) gerekir. Kullanılabilir değerlendirme ve geçiş araçlarının nasıl kullanılacağını anlamak için öğreticilerini kullanın. Klasik bir projeye eklenmiş bir Log Analytics çalışma alanınız varsa, klasik projeyi sildikten sonra onu geçerli sürümün projesine ekleyebilirsiniz.
 
 ## <a name="find-projects-from-previous-version"></a>Önceki sürümden projeler bulun
 
@@ -39,7 +39,16 @@ Azure geçişi hizmetinin iki sürümü vardır:
 
 1. **Tüm hizmetleri**> Azure Portal **Azure geçişi**' ni arayıp seçin. 
 2. Azure geçişi panosunda, eski Azure geçiş projelerine erişim için bir bildirim ve bir bağlantı vardır.
-3. V1 projelerini açmak için bağlantıya tıklayın.
+3. Klasik projeleri açmak için bağlantıya tıklayın.
+
+## <a name="delete-projects-from-previous-version"></a>Önceki sürümden projeleri sil
+
+Önceki sürümden projeler bulun ve aşağıdaki gibi silin:
+
+1. **Tüm hizmetleri**> Azure Portal **Azure geçişi**' ni arayıp seçin. 
+2. Azure geçişi panosunda, eski Azure geçiş projelerine erişim için bir bildirim ve bir bağlantı vardır.
+3. Klasik projeleri açmak için bağlantıya tıklayın.
+4. Silmek istediğiniz projeyi seçin ve silin. 
 
 
 ## <a name="create-an-assessment"></a>Değerlendirme oluşturma
@@ -56,7 +65,7 @@ Aşağıdaki gibi bir değerlendirme oluşturun:
 3. Grubu oluşturun ve bir grup adı belirtin.
 4. Gruba eklemek istediğiniz makineleri seçin.
 5. Grubu ve değerlendirmeyi oluşturmak için **Değerlendirme Oluştur**’a tıklayın.
-6. Değerlendirme oluşturulduktan sonra **genel bakış**  >  **panosunda**görüntüleyin.
+6. Değerlendirme oluşturulduktan sonra **Genel Bakış** > **Pano** bölümünde görüntüleyebilirsiniz.
 7. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
 
 Var olan bir değerlendirmeyi en son performans verileriyle güncelleştirmek isterseniz, değerlendirmeyi güncelleştirmek için **Yeniden Hesapla** komutunu kullanabilirsiniz.
@@ -76,7 +85,7 @@ Bir makine, bir öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, 
 
 Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin hazır olma durumunu gösterir.
 
-**Hazırlığı** | **Durum** | **Ayrıntılar**
+**Hazır Olma** | **Durum** | **Ayrıntılar**
 --- | --- | ---
 Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da tam Azure desteğiyle önyüklenir. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
 Azure için koşullu olarak hazır | Makine Azure 'da önbaşlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, Windows Server 'ın Azure 'da desteklenmeyen eski bir sürümü olan bir makine. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
@@ -88,7 +97,7 @@ Hazır olma durumu bilinmiyor | Azure geçişi, genellikle veri kullanılamadı�
 Hazır olma durumu, VM 'nin Azure 'da çalıştırılıp çalıştırılamayacağını belirlemek için bir dizi VM özelliği hesaba girer.
 
 
-**Özellik** | **Ayrıntılar** | **Hazırlığı**
+**Özellik** | **Ayrıntılar** | **Hazır Olma**
 --- | --- | ---
 **Önyükleme türü** | BIOS desteklenir. UEFı desteklenmiyor. | Önyükleme türü UEFı ise koşullu olarak hazırlanın.
 **Çekirdekler** | Makine çekirdeği <= bir Azure VM için desteklenen en fazla çekirdek sayısı (128).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan çekirdekleri dikkate alır.<br/>Değerlendirme ayarlarında bir rahatlık faktörü belirtilmişse, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
@@ -105,7 +114,7 @@ VM özellikleriyle birlikte Azure geçişi, VM 'nin Azure 'da çalıştırıp ç
 
 Aşağıdaki mantık kullanılır.
 
-**İşletim Sistemi** | **Ayrıntılar** | **Hazırlığı**
+**İşletim Sistemi** | **Ayrıntılar** | **Hazır Olma**
 --- | --- | ---
 Windows Server 2016 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure için hazır
 Windows Server 2012 R2 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure için hazır

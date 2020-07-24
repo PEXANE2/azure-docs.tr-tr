@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659263"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078661"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidi yükleme
 
@@ -21,11 +22,11 @@ ms.locfileid: "83659263"
 * [Microsoft Power Apps şirket içi veri ağ geçidi](/powerapps/maker/canvas-apps/gateway-reference)
 * [Şirket içi veri ağ geçidini Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
-Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işlemlerinin yanı sıra Azure Logic Apps ' dan şirket içi veri kaynaklarına erişebilirsiniz. Bu konunun ilerleyen kısımlarında [Data Gateway 'in nasıl çalıştığı](#gateway-cloud-service) hakkında daha fazla bilgi edinebilirsiniz. Ağ Geçidi hakkında daha fazla bilgi için bkz. [Şirket içi ağ geçidi](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)nedir? Ağ geçidi yükleme ve yönetim görevlerini otomatikleştirmek için, [veri ağ geçidi PowerShell cmdlet 'leri](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)için PowerShell Galerisi ' ni ziyaret edin.
+Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işlemlerinin yanı sıra Azure Logic Apps ' dan şirket içi veri kaynaklarına erişebilirsiniz. Bu konunun ilerleyen kısımlarında [Data Gateway 'in nasıl çalıştığı](#gateway-cloud-service) hakkında daha fazla bilgi edinebilirsiniz. Ağ Geçidi hakkında daha fazla bilgi için bkz. [Şirket içi ağ geçidi](/data-integration/gateway/service-gateway-onprem)nedir? Ağ geçidi yükleme ve yönetim görevlerini otomatikleştirmek için, [veri ağ geçidi PowerShell cmdlet 'leri](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)için PowerShell Galerisi ' ni ziyaret edin.
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -79,7 +80,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
   * Ağ geçidinde iki mod vardır: yalnızca Power BI için geçerli olan standart mod ve kişisel mod. Aynı bilgisayarda aynı modda çalışan birden fazla ağ geçidi olamaz.
 
-  * Azure Logic Apps ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır.
+  * Azure Logic Apps ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](/data-integration/gateway/service-gateway-onprem#considerations)vardır.
 
 <a name="install-gateway"></a>
 
@@ -142,8 +143,8 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 Şirket içi veri ağ geçidi, bulut bağlantısı için [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) bağımlıdır ve ağ geçidinin ilişkili Azure bölgesine karşılık gelen giden bağlantıları kurar. İş ortamınız internet 'e erişmek için bir ara sunucu veya güvenlik duvarından geçtiğinde, bu kısıtlama şirket içi veri ağ geçidinin ağ geçidi bulut hizmetine bağlanmasını engelleyebilir ve Azure Service Bus. Ağ geçidinde, ayarlayabileceğiniz çeşitli iletişim ayarları vardır. Daha fazla bilgi için şu konulara bakın:
 
-* [Şirket içi veri ağ geçidi için iletişim ayarlarını ayarla](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Şirket içi veri ağ geçidi için ara sunucu ayarlarını yapılandırma](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Şirket içi veri ağ geçidi için iletişim ayarlarını ayarla](/data-integration/gateway/service-gateway-communication)
+* [Şirket içi veri ağ geçidi için ara sunucu ayarlarını yapılandırma](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -155,7 +156,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 * Birincil ağ geçidinizin, Kasım 2017 veya sonraki bir sürümünün ağ geçidi güncelleştirmesini çalıştırmalıdır.
 
-Birincil ağ geçidinizi ayarladıktan sonra, başka bir ağ geçidi yüklemeye gittiğinizde, **mevcut bir ağ geçidi kümesine ekle**' yi seçin, yüklediğiniz ilk ağ geçidi olan birincil ağ geçidini seçin ve bu ağ geçidi için kurtarma anahtarını sağlayın. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidi Için yüksek kullanılabilirlik kümeleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+Birincil ağ geçidinizi ayarladıktan sonra, başka bir ağ geçidi yüklemeye gittiğinizde, **mevcut bir ağ geçidi kümesine ekle**' yi seçin, yüklediğiniz ilk ağ geçidi olan birincil ağ geçidini seçin ve bu ağ geçidi için kurtarma anahtarını sağlayın. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidi Için yüksek kullanılabilirlik kümeleri](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
@@ -185,7 +186,7 @@ Ağ geçidinizin konumunu değiştirmeniz gerekiyorsa, ağ geçidi yüklemenizi 
 
 ## <a name="tenant-level-administration"></a>Kiracı düzeyinde yönetim
 
-Bir Azure AD kiracısındaki tüm şirket içi veri ağ geçitlerine ilişkin görünürlük almak için, söz konusu Kiracıdaki Genel Yöneticiler, [Power Platform Yönetim merkezinde](https://powerplatform.microsoft.com) kiracı yöneticisi olarak oturum açabilir ve **veri ağ geçitleri** seçeneğini seçebilir. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidi Için kiracı düzeyinde yönetim](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
+Bir Azure AD kiracısındaki tüm şirket içi veri ağ geçitlerine ilişkin görünürlük almak için, söz konusu Kiracıdaki Genel Yöneticiler, [Power Platform Yönetim merkezinde](https://powerplatform.microsoft.com) kiracı yöneticisi olarak oturum açabilir ve **veri ağ geçitleri** seçeneğini seçebilir. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidi Için kiracı düzeyinde yönetim](/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
@@ -196,7 +197,7 @@ Varsayılan olarak, yerel bilgisayarınızdaki ağ geçidi yüklemesi "Şirket i
 > [!NOTE]
 > Windows hizmet hesabınız, şirket içi veri kaynaklarına bağlanmak için kullanılan hesaptan ve bulut hizmetlerinde oturum açarken kullandığınız Azure hesabından farklılık gösterir.
 
-Diğer herhangi bir Windows hizmeti gibi, ağ geçidini çeşitli yollarla başlatabilir ve durdurabilirsiniz. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidini yeniden başlatma](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
+Diğer herhangi bir Windows hizmeti gibi, ağ geçidini çeşitli yollarla başlatabilir ve durdurabilirsiniz. Daha fazla bilgi için bkz. Şirket [içi veri ağ geçidini yeniden başlatma](/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
@@ -217,11 +218,11 @@ Bu adımlarda, şirket içi veri kaynağına bağlı bir öğeyle etkileşim kur
 
 1. Bulut hizmeti, veri kaynağı için şifrelenmiş kimlik bilgileriyle birlikte bir sorgu oluşturur. Hizmet daha sonra işlem için ağ geçidi kuyruğuna sorgu ve kimlik bilgilerini gönderir.
 
-1. Ağ Geçidi Bulut hizmeti sorguyu analiz eder ve isteği Azure Service Bus gönderir.
+1. Ağ geçidi bulut hizmeti sorguyu analiz eder ve isteği Azure Service Bus'a gönderir.
 
-1. Azure Service Bus bekleyen istekleri ağ geçidine gönderir.
+1. Azure Service Bus, bekleyen istekleri ağ geçidine gönderir.
 
-1. Ağ Geçidi sorguyu alır, kimlik bilgilerinin şifresini çözer ve bu kimlik bilgileriyle bir veya daha fazla veri kaynağına bağlanır.
+1. Ağ geçidi sorguyu alır, kimlik bilgilerinin şifresini çözer ve bu kimlik bilgileriyle bir veya daha fazla veri kaynağına bağlanır.
 
 1. Ağ Geçidi, çalıştırmak için sorguyu veri kaynağına gönderir.
 
@@ -260,9 +261,9 @@ Azure AD ile şirket içi Active Directory hesaplarınızı eşleşmenizin yolla
 
 ## <a name="faq-and-troubleshooting"></a>SSS ve sorun giderme
 
-* [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Şirket içi veri ağ geçidi sorunlarını giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Ağ geçidi performansını izleme ve en iyi duruma getirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Şirket içi veri ağ geçidi hakkında SSS](/data-integration/gateway/service-gateway-onprem-faq)
+* [Şirket içi veri ağ geçidi sorunlarını giderme](/data-integration/gateway/service-gateway-tshoot)
+* [Ağ geçidi performansını izleme ve en iyi duruma getirme](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

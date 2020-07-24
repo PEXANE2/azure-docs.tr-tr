@@ -6,11 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078678"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps ' de HTTPS uç noktalarını kullanarak Logic Apps 'i çağırma, tetikleme veya iç içe geçme
 
@@ -27,7 +28,7 @@ Mantıksal uygulamanızın diğer hizmetlerden gelen istekleri alabilmesi için 
 
 Logic Apps 'e yeni başladıysanız, bkz. [Azure Logic Apps nedir](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -359,7 +360,7 @@ Yanıtlar şu özelliklere sahiptir:
 | Özellik (görüntüleme) | Özellik (JSON) | Açıklama |
 |--------------------|-----------------|-------------|
 | **Durum kodu** | `statusCode` | Gelen istek için yanıtta kullanılacak HTTPS durum kodu. Bu kod, 2xx, 4xx veya 5xx ile başlayan geçerli bir durum kodu olabilir. Ancak, 3xx durum kodlarına izin verilmez. |
-| **Üst bilgiler** | `headers` | Yanıta eklenecek bir veya daha fazla üst bilgi |
+| **Üst Bilgiler** | `headers` | Yanıta eklenecek bir veya daha fazla üst bilgi |
 | **Gövde** | `body` | Bir dize, JSON nesnesi veya hatta önceki adımdan başvurulan ikili içerik olabilecek bir gövde nesnesi |
 ||||
 
@@ -387,7 +388,7 @@ Yanıt eyleminin JSON tanımını ve mantıksal uygulamanızın tamamlanmış JS
 
 #### <a name="q-what-about-url-security"></a>S: URL güvenliği hakkında ne olacak?
 
-Y **: Azure**, [paylaşılan ERIŞIM imzasını (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak mantıksal uygulama geri çağırma URL 'lerini güvenli şekilde oluşturur. Bu imza bir sorgu parametresi olarak geçirilir ve mantıksal uygulamanızın çalıştırılabilmesi için önce doğrulanması gerekir. Azure, mantıksal uygulama başına bir gizli anahtar birleşimi, tetikleyici adı ve gerçekleştirilen işlem ile imza oluşturur. Bu nedenle, gizli mantıksal uygulama anahtarına birisi erişemediği takdirde, geçerli bir imza üretemiyor.
+Y **: Azure**, [paylaşılan ERIŞIM imzasını (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak mantıksal uygulama geri çağırma URL 'lerini güvenli şekilde oluşturur. Bu imza bir sorgu parametresi olarak geçirilir ve mantıksal uygulamanızın çalıştırılabilmesi için önce doğrulanması gerekir. Azure, mantıksal uygulama başına bir gizli anahtar birleşimi, tetikleyici adı ve gerçekleştirilen işlem ile imza oluşturur. Bu nedenle, gizli mantıksal uygulama anahtarına birisi erişemediği takdirde, geçerli bir imza üretemiyor.
 
 > [!IMPORTANT]
 > Üretim ve daha yüksek güvenlik sistemleri için aşağıdaki nedenlerden dolayı mantıksal uygulamanızı doğrudan tarayıcıdan çağırmayı önemle tavsiye ederiz:

@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 0176454b38dfa88480e63fedfae175a63192eaee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081364"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure İzleyici’den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
 
 Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına inmek ve desenleri belirlemek için izleme verilerinizi çözümlemenize yardımcı olabilir. Kullandığınız araca bağlı olarak, görselleştirmeleri kuruluşunuzun içindeki ve dışındaki diğer kullanıcılarla paylaşma seçeneğiniz de olabilir.
 
-## <a name="workbooks"></a>Çalışma Kitapları
+## <a name="workbooks"></a>Çalışma kitapları
 [Çalışma kitapları](../azure-monitor/platform/workbooks-overview.md) , ekip içinde verileriniz, araştırılması ve işbirliği hakkında ayrıntılı Öngörüler sağlayan etkileşimli belgelerdir. Çalışma kitaplarının yararlı olduğu belirli örnekler, sorun giderme kılavuzlarından ve olay postmordıtem.
 
 ![Çalışma Kitabı](media/visualizations/workbook.png)
@@ -40,6 +40,8 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 [Azure panoları](../azure-portal/azure-portal-dashboards.md) , Azure için birincil kesik taslak teknolojisidir. Bunlar özellikle, önemli sorunları hızlı bir şekilde tanımanıza olanak tanıyacak şekilde, Azure altyapınız ve hizmetleriniz üzerinde tek bir cam bölmesi sağlamak için yararlıdır.
 
 ![Pano](media/visualizations/dashboard.png)
+
+Panolar oluşturmaya yönelik bir video kılavuzu aşağıda verilmiştir.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 

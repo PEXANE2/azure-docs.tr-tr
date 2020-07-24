@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 558dd152aa1c6638155ad4215dc16f08d33d2e2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601352"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080548"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -143,7 +143,7 @@ Bir işletim sistemi yükseltmesi sırasında, bir ölçek kümesindeki sanal ma
 
 Bir ölçek kümesi, isteğe bağlı olarak uygulamanın devam eden durumu hakkında doğru bilgiler sağlamak için uygulama durumu araştırmaları ile yapılandırılabilir. Uygulama durumu araştırmaları, sistem durumu sinyali olarak kullanılan özel Load Balancer araştırmalar. Ölçek kümesi VM örneğinde çalışan uygulama, sağlıklı olup olmadığını gösteren dış HTTP veya TCP isteklerine yanıt verebilir. Özel Load Balancer araştırmalarının nasıl çalıştığı hakkında daha fazla bilgi için bkz. [yük dengeleyici araştırmalarını anlamak](../load-balancer/load-balancer-custom-probe-overview.md)için. Uygulama durumu araştırmaları Service Fabric ölçek kümeleri için desteklenmez. Service Fabric olmayan ölçek kümeleri, Load Balancer uygulama durumu araştırmaları ya da [uygulama sistem durumu uzantısı](virtual-machine-scale-sets-health-extension.md)gerektirir.
 
-Ölçek kümesi birden çok yerleştirme grubu kullanacak şekilde yapılandırıldıysa, [Standart Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) kullanan yoklamaların kullanılması gerekir.
+Ölçek kümesi birden çok yerleştirme grubu kullanacak şekilde yapılandırıldıysa, [Standart Load Balancer](../load-balancer/load-balancer-overview.md) kullanan yoklamaların kullanılması gerekir.
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Ölçek kümesinde uygulama durumu araştırması olarak özel bir Load Balancer araştırması yapılandırma
 En iyi uygulama olarak, ölçek kümesi sistem durumu için açık bir yük dengeleyici araştırması oluşturun. Var olan bir HTTP araştırması veya TCP araştırması için aynı uç nokta kullanılabilir, ancak bir sistem durumu araştırması geleneksel bir yük dengeleyici araştırmasından farklı davranış gerektirebilir. Örneğin, örnekteki yükün çok yüksek olması, ancak otomatik işletim sistemi yükseltmesi sırasında örnek durumunu belirlemek için uygun olmaması durumunda geleneksel bir yük dengeleyici araştırması sağlıksız bir şekilde dönebilir. Araştırmayı iki dakikadan kısa bir süre sonra yüksek bir yoklama oranına sahip olacak şekilde yapılandırın.
@@ -161,7 +161,7 @@ Yük dengeleyici araştırmasına ölçek kümesinin *Networkprofile* öğesine 
 ```
 
 > [!NOTE]
-> Service Fabric ile otomatik işletim sistemi yükseltmeleri kullanırken, yeni işletim sistemi görüntüsü Service Fabric ' de çalışan hizmetlerin yüksek kullanılabilirliğini sürdürmek için etki alanını güncelleştirme etki alanını güncelleştir olarak almıştır. Service Fabric otomatik işletim sistemi yükseltmelerini kullanmak için, kümenizin gümüş dayanıklılık katmanını veya üstünü kullanacak şekilde yapılandırılması gerekir. Service Fabric kümelerinin dayanıklılık özellikleri hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)bakın.
+> Service Fabric ile otomatik işletim sistemi yükseltmeleri kullanırken, yeni işletim sistemi görüntüsü Service Fabric ' de çalışan hizmetlerin yüksek kullanılabilirliğini sürdürmek için etki alanını güncelleştirme etki alanını güncelleştir olarak almıştır. Service Fabric otomatik işletim sistemi yükseltmelerini kullanmak için, kümenizin gümüş dayanıklılık katmanını veya üstünü kullanacak şekilde yapılandırılması gerekir. Service Fabric kümelerinin dayanıklılık özellikleri hakkında daha fazla bilgi için lütfen [Bu belgelere](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)bakın.
 
 ### <a name="keep-credentials-up-to-date"></a>Kimlik bilgilerini güncel tut
 Ölçek ayarlandıysa, depolama hesabı için bir SAS belirteci kullanmak üzere yapılandırılmış bir VM uzantısı gibi dış kaynaklara erişmek için herhangi bir kimlik bilgisi kullanılıyorsa, kimlik bilgilerinin güncelleştirildiğinden emin olun. Sertifikalar ve belirteçler dahil olmak üzere herhangi bir kimlik bilgisi dolmuşsa, yükseltme başarısız olur ve ilk VM toplu işi başarısız durumda bırakılır.

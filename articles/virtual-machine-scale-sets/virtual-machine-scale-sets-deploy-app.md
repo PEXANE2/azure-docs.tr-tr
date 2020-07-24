@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080531"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uygulamanızı sanal makine ölçek kümelerine dağıtma
 
@@ -112,4 +113,4 @@ Uygulama önceden yüklenmiş olarak özel bir VM görüntüsü kullanıyorsanı
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ölçek kümelerinizi uygulamalar oluşturup dağıtırken, [Ölçek kümesi tasarımına genel bakış](virtual-machine-scale-sets-design-overview.md)' ı gözden geçirebilirsiniz. Ölçek kümesini yönetme hakkında daha fazla bilgi için bkz. [Ölçek kümesini yönetmek Için PowerShell 'ı kullanma](virtual-machine-scale-sets-windows-manage.md).
+Ölçek kümelerinizi uygulamalar oluşturup dağıtırken, [Ölçek kümesi tasarımına genel bakış](virtual-machine-scale-sets-design-overview.md)' ı gözden geçirebilirsiniz. Ölçek kümesini yönetme hakkında daha fazla bilgi için bkz. [Ölçek kümesini yönetmek Için PowerShell 'ı kullanma](./virtual-machine-scale-sets-manage-powershell.md).

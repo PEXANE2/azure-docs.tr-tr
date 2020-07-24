@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d43bc20c31475a00a0ea81e4abdeb5405162a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170420"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081806"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -58,7 +58,7 @@ Azure portal bir işlev uygulamasından Application Insights açmak için sol ta
 
 ![İşlev uygulamasına genel bakış sayfasından Application Insights açın](media/functions-monitoring/ai-link.png)
 
-Application Insights kullanma hakkında daha fazla bilgi için [Application Insights belgelerine](https://docs.microsoft.com/azure/application-insights/)bakın. Bu bölümde Application Insights verilerin nasıl görüntüleneceği hakkında bazı örnekler gösterilmektedir. Application Insights zaten hakkında bilginiz varsa [telemetri verilerini yapılandırma ve özelleştirme hakkındaki bölümlere](#configure-categories-and-log-levels)doğrudan gidebilirsiniz.
+Application Insights kullanma hakkında daha fazla bilgi için [Application Insights belgelerine](/azure/application-insights/)bakın. Bu bölümde Application Insights verilerin nasıl görüntüleneceği hakkında bazı örnekler gösterilmektedir. Application Insights zaten hakkında bilginiz varsa [telemetri verilerini yapılandırma ve özelleştirme hakkındaki bölümlere](#configure-categories-and-log-levels)doğrudan gidebilirsiniz.
 
 ![Application Insights Genel Bakış sekmesi](media/functions-monitoring/metrics-explorer.png)
 
@@ -68,12 +68,12 @@ Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hata
 | ---- | ----------- |
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
 | **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu veriler, işlevlerin temeldeki kaynaklarınızın gerisinde bulunduğu hata ayıklama senaryolarında yararlı olabilir. |
-| **[Ölçümler](../azure-monitor/app/metrics-explorer.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
+| **[Ölçümler](../azure-monitor/platform/metrics-charts.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
 | **[Canlı ölçümler](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
 
 ## <a name="query-telemetry-data"></a>Telemetri verilerini sorgulama
 
-[Application Insights Analytics](../azure-monitor/app/analytics.md) , bir veritabanındaki tablo biçimindeki tüm telemetri verilerine erişmenizi sağlar. Analytics verileri ayıklamak, işlemek ve görselleştirmek için bir sorgu dili sağlar. 
+[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) , bir veritabanındaki tablo biçimindeki tüm telemetri verilerine erişmenizi sağlar. Analytics verileri ayıklamak, işlemek ve görselleştirmek için bir sorgu dili sağlar. 
 
 Günlüğe kaydedilen olayları incelemek veya sorgulamak için **günlükleri** seçin.
 
@@ -143,7 +143,7 @@ Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de i
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Hiçbiri        | 6 |
+|Yok        | 6 |
 
 Günlük düzeyi `None` sonraki bölümde açıklanmaktadır. 
 
@@ -153,7 +153,7 @@ Dosya [host.js] , bir işlev uygulamasının Application Insights ne kadar günl
 
 ### <a name="version-2x-and-higher"></a>Sürüm 2. x ve üzeri
 
-Işlev çalışma zamanının Sürüm V2. x ve sonraki sürümlerinde [.NET Core günlük kaydı filtresi hiyerarşisi](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)kullanılır. 
+Işlev çalışma zamanının Sürüm V2. x ve sonraki sürümlerinde [.NET Core günlük kaydı filtresi hiyerarşisi](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)kullanılır. 
 
 ```json
 {
@@ -246,7 +246,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights)örnekleme yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -285,9 +285,9 @@ Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde 
 
 ### <a name="ilogger"></a>ILogger
 
-İşlevinizdeki bir parametre yerine bir [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) parametresi kullanın `TraceWriter` . Kullanılarak oluşturulan Günlükler `TraceWriter` Application Insights git, ancak `ILogger` [yapılandırılmış günlüğe kaydetme](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)yapmanızı sağlar.
+İşlevinizdeki bir parametre yerine bir [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) parametresi kullanın `TraceWriter` . Kullanılarak oluşturulan Günlükler `TraceWriter` Application Insights git, ancak `ILogger` [yapılandırılmış günlüğe kaydetme](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)yapmanızı sağlar.
 
-Bir `ILogger` nesnesi ile, `Log<level>` günlük oluşturmak Için [ILogger üzerinde uzantı yöntemleri](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) çağırın. Aşağıdaki kod, `Information` "function. <YOUR_FUNCTION_NAME> kategorisi ile günlükleri yazar. Kullanıcı. "
+Bir `ILogger` nesnesi ile, `Log<level>` günlük oluşturmak Için [ILogger üzerinde uzantı yöntemleri](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) çağırın. Aşağıdaki kod, `Information` "function. <YOUR_FUNCTION_NAME> kategorisi ile günlükleri yazar. Kullanıcı. "
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -553,7 +553,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -577,7 +577,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.operationId};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -679,14 +679,11 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Akış günlüklerini, [Azure PowerShell](/powershell/azure/overview)kullanarak etkinleştirebilirsiniz. PowerShell için aşağıdaki komutları kullanarak Azure hesabınızı ekleyin, aboneliğinizi seçin ve günlük dosyalarını akışla açın:
+Akış günlüklerini, [Azure PowerShell](/powershell/azure/)kullanarak etkinleştirebilirsiniz. PowerShell için, aşağıdaki kod parçacığında gösterildiği gibi, işlev uygulamasında günlüğe kaydetmeyi etkinleştirmek için [set-AzWebApp](/powershell/module/az.websites/set-azwebapp) komutunu kullanın: 
 
-```powershell
-Add-AzAccount
-Get-AzSubscription
-Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
-Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
-```
+:::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
+
+Daha fazla bilgi için, [tüm kod örneğine](../app-service/scripts/powershell-monitor.md#sample-script)bakın. 
 
 ## <a name="scale-controller-logs-preview"></a>Ölçek denetleyicisi günlükleri (Önizleme)
 

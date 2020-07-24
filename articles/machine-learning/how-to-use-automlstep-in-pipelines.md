@@ -11,19 +11,19 @@ author: lobrien
 manager: cgronlun
 ms.date: 06/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b8dfa37047113d84470f86cd67c601ebf48f793
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298251"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078093"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning otomatikleştirilmiş ML özelliği, mümkün olan her yaklaşımı yeniden uygulamadan yüksek performanslı modelleri keşfetmenize yardımcı olur. Azure Machine Learning işlem hatlarında, verileriniz için en uygun algoritmayı hızlı bir şekilde keşfedelebilecek dağıtılabilir iş akışları oluşturabilirsiniz. Bu makalede, bir veri hazırlama adımını otomatik bir ML adımına nasıl verimli bir şekilde katılacaksınız gösterilmektedir. Otomatikleştirilmiş ML, verilerinize en uygun algoritmayı hızlıca bulabilir. bu sırada, işlem hatlarıyla birlikte MLOps ve model yaşam döngüsü için yol üzerine getirme yapabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -97,6 +97,8 @@ if not compute_name in ws.compute_targets :
 
 compute_target = ws.compute_targets[compute_name]
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 Veri hazırlama ve otomatik ML adımı arasındaki ara veri, çalışma alanının varsayılan veri deposunda depolanabilir, bu nedenle nesne üzerinde çağrıdan daha fazlasını yapmak zorunda kalmazsınız `get_default_datastore()` `Workspace` . 
 
@@ -268,7 +270,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 
 İki tekniği karşılaştırma:
 
-| Teknik |  | 
+| Teknik | Avantajlar ve dezavantajları | 
 |-|-|
 |`PipelineOutputTabularDataset`| Daha yüksek performans | 
 || Doğal yol`PipelineData` | 

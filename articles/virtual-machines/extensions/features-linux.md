@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080361"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux için sanal makine uzantıları ve özellikleri
 
@@ -32,12 +32,12 @@ Bu makalede VM uzantılarına genel bakış, Azure VM uzantıları kullanma önk
 Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile kullanılabilir. Bazı örnekler:
 
 - Linux için DSC uzantısına sahip bir VM 'ye PowerShell Istenen durum yapılandırmasını uygulayın. Daha fazla bilgi için bkz. [Azure Istenen durum yapılandırması uzantısı](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- VM 'yi Microsoft Monitoring Agent VM uzantısıyla izlemeyi yapılandırın. Daha fazla bilgi için bkz. [LINUX VM izleme](../linux/tutorial-monitoring.md).
+- VM 'yi Microsoft Monitoring Agent VM uzantısıyla izlemeyi yapılandırın. Daha fazla bilgi için bkz. [LINUX VM izleme](../linux/tutorial-monitor.md).
 - Chef veya Dataköpek uzantısıyla Azure altyapınızı izlemeyi yapılandırın. Daha fazla bilgi için [Chef docs](https://docs.chef.io/azure_portal.html) veya [dataköpek bloguna](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)bakın.
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Linux için özel Betik uzantısı, bir sanal makine üzerinde herhangi bir bash komut dosyasının çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [LINUX VM özel Betik uzantısı](custom-script-linux.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SANAL makinede uzantıyı işlemek için Azure Linux aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -65,7 +65,7 @@ Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu k
 > [!IMPORTANT]
 > Konuk güvenlik duvarını kullanarak *168.63.129.16* 'e erişimi engellediyse, uzantılar yukarıdaki bağımsız olarak başarısız olur.
 
-Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama 'ya erişim gerektiren uzantılar için, [depolama](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)için Azure NSG hizmet etiketlerini kullanarak erişime izin verebilirsiniz.
+Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama 'ya erişim gerektiren uzantılar için, [depolama](../../virtual-network/security-overview.md#service-tags)için Azure NSG hizmet etiketlerini kullanarak erişime izin verebilirsiniz.
 
 Aracı trafik isteklerini yeniden yönlendirmek için, Linux aracısının proxy sunucu desteği vardır. Ancak, bu proxy sunucu desteği uzantıları uygulamaz. Her bir uzantıyı bir ara sunucu ile çalışacak şekilde yapılandırmanız gerekir.
 
@@ -105,7 +105,7 @@ info:    Executing command vm extension set
 info:    vm extension set command OK
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
@@ -259,7 +259,7 @@ Yukarıdaki örnek çıktıda, üst veya ' paket dağıtılan sürüm ', *Walın
 
 ' Hedef durum Aracısı ' otomatik güncelleştirme sürümüdür.
 
-Her zaman aracı için otomatik güncelleştirme yapmanız önerilir, Otomatik Güncelleştir [. etkin = y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Bu özelliği etkinleştirmediyseniz, aracıyı el ile güncelleştirmeniz gerekir ve hata ve güvenlik düzeltmelerini almaz.
+Her zaman aracı için otomatik güncelleştirme yapmanız önerilir, Otomatik Güncelleştir [. etkin = y](./update-linux-agent.md). Bu özelliği etkinleştirmediyseniz, aracıyı el ile güncelleştirmeniz gerekir ve hata ve güvenlik düzeltmelerini almaz.
 
 #### <a name="extension-updates"></a>Uzantı güncelleştirmeleri
 

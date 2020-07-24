@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 5588920c860de09ea1561cf5ed4b28a08085438c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081058"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell kullanarak Apache Hive sorguları çalıştırma
 
@@ -28,7 +28,7 @@ Bu belge, HDInsight kümesindeki bir Apache Hadoop Apache Hive sorguları çalı
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
-* PowerShell [az Module](https://docs.microsoft.com/powershell/azure/overview) yüklendi.
+* PowerShell [az Module](https://docs.microsoft.com/powershell/azure/) yüklendi.
 
 ## <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 

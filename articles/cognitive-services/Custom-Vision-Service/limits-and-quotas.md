@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 089d5dbb1eece2904f104dfecb3de8adec052dfc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079177"
 ---
 # <a name="limits-and-quotas"></a>Limitler ve kotalar
 
@@ -23,7 +23,7 @@ ms.locfileid: "85391749"
 
 Her proje için bir proje ve etiket için eğitim görüntülerinin sayısının, S0 projelerinin zaman içinde artması beklenmektedir.
 
-||**F0**|**S0**|
+|Faktör|**F0**|**S0**|
 |-----|-----|-----|
 |Projeler|2|100|
 |Proje başına eğitim görüntüleri |5.000|100.000|

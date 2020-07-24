@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: ee4961c6c1bb8cafe25ec2c84affdf0f1789e9f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aedf39f99ace6e1119dde7089a3c83b96ac41fb1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079715"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Service Bus tetikleyicisi
 
@@ -312,10 +312,10 @@ Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 * `string`-İleti metin ise.
 * `byte[]`-İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
-* `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
-* [`MessageReceiver`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-İleti kapsayıcısından iletileri almak ve doğrulamak için kullanılır ( [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) olarak ayarlandığında gereklidir `false` )
+* `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-İleti kapsayıcısından iletileri almak ve doğrulamak için kullanılır ( [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) olarak ayarlandığında gereklidir `false` )
 
-Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
+Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -324,9 +324,9 @@ Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 * `string`-İleti metin ise.
 * `byte[]`-İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
-* `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
 
-Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
+Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -352,7 +352,7 @@ Azure Işlevleri 'nde zehirli ileti işleme denetlenemez veya yapılandırılama
 
 Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)bir ileti alır. `Complete`İşlev başarıyla tamamlandığında iletiye çağrı yapılır veya `Abandon` işlev başarısız olursa çağırır. İşlev zaman aşımından daha uzun çalışırsa `PeekLock` , işlev çalıştığı sürece kilit otomatik olarak yenilenir. 
 
-, `maxAutoRenewDuration` [Onmessageoptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)ile eşleşen *host.jsüzerinde*yapılandırılabilir. Bu ayar için izin verilen en yüksek değer, Service Bus belgelerine göre 5 dakikadır, ancak Işlevlerin zaman sınırını varsayılan 5 dakikadan 10 dakikaya artırabilirsiniz. Service Bus yenileme sınırını aştığınız için bunu yapmak istemediğiniz Service Bus işlevleri için.
+, `maxAutoRenewDuration` [Onmessageoptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)ile eşleşen *host.jsüzerinde*yapılandırılabilir. Bu ayar için izin verilen en yüksek değer, Service Bus belgelerine göre 5 dakikadır, ancak Işlevlerin zaman sınırını varsayılan 5 dakikadan 10 dakikaya artırabilirsiniz. Service Bus yenileme sınırını aştığınız için bunu yapmak istemediğiniz Service Bus işlevleri için.
 
 ## <a name="message-metadata"></a>İleti meta verileri
 

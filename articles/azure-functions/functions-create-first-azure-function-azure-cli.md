@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acfe4695b94fe9337296d70ef4a2864794730ec4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506358"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081738"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -111,6 +111,9 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 `Y`Onaylamak için yazın veya ENTER tuşuna basın.
 
 Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_adında yeni bir klasörde oluşturur `fabrikam-functions` . 
+
+Azure 'da Java 11 ' de çalıştırmak için pom.xml dosyadaki değerleri değiştirmeniz gerekir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). 
+
 ::: zone-end  
 Proje klasörüne gidin:
 
@@ -157,6 +160,8 @@ Uygulamanızı barındırmak üzere oluşturulan Azure kaynakları için ayarlar
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 Bu ayarları, kaynakların Azure 'da nasıl oluşturulduğunu denetlemek için, `runtime.os` `windows` ilk dağıtımdan önce ' dan önce ' ye geçiş yaparak yapabilirsiniz `linux` . Maven eklentisi tarafından desteklenen ayarların tam listesi için [yapılandırma ayrıntılarına](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)bakın.
+
+İşlev uygulamanızı Java 8 yerine Java 11 ' de çalıştırmak istiyorsanız, pom.xml dosyasını Java 11 değerleriyle el ile güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). Java 11 ' de çalışırken emin olun  
 
 #### <a name="functiontestjava"></a>FunctionTest. Java
 
@@ -367,7 +372,7 @@ Bu, Azure 'da aşağıdaki kaynakları oluşturur:
 + Kaynak grubu. _Java-Functions-Group_olarak adlandırılır.
 + Depolama hesabı. Işlevleri için gereklidir. Ad, depolama hesabı adı gereksinimlerine göre rastgele oluşturulur.
 + Barındırma planı. _Westus_ bölgesindeki işlev uygulamanız için sunucusuz barındırma. Ad, _Java-Functions-App-Service-plan_' dır.
-+ İşlev uygulaması. İşlev uygulaması, işlevleriniz için dağıtım ve yürütme birimidir. Ad, rastgele oluşturulmuş bir sayı eklenerek, sizin _ArtifactId_sizin için rastgele oluşturulur. 
++ İşlev uygulaması. İşlev uygulaması, işlevleriniz için dağıtım ve yürütme birimidir. Ad, rastgele oluşturulmuş bir sayı eklenerek, _ArtifactId_temel alınarak rastgele oluşturulur. 
 
 Dağıtım proje dosyalarını paketler ve bunları [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy)kullanarak yeni işlev uygulamasına dağıtır. Kod, Azure 'daki dağıtım paketinden çalışır.
 ::: zone-end

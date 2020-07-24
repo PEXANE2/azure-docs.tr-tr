@@ -4,13 +4,14 @@ description: Kolay adlar, Etiketler, açıklamalar ve uzmanlar dahil olmak üzer
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68950255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081245"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri kaynaklarına açıklama ekleme
 

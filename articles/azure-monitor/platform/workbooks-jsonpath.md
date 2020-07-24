@@ -9,15 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081398"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Çalışma kitaplarında JSON verilerini dönüştürmek için JSONPath kullanma
 
-Çalışma kitapları birçok kaynaktaki verileri sorgulayabilir. [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) veya özel uç nokta gibi bazı uç noktalar JSON ile sonuçları döndürebilir. Sorgulanan uç nokta tarafından döndürülen JSON verileri, istediğiniz bir biçimde yapılandırılmamışsa, sonuçları dönüştürmek için JSONPath kullanılabilir.
+Çalışma kitapları birçok kaynaktaki verileri sorgulayabilir. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) veya özel uç nokta gibi bazı uç noktalar JSON ile sonuçları döndürebilir. Sorgulanan uç nokta tarafından döndürülen JSON verileri, istediğiniz bir biçimde yapılandırılmamışsa, sonuçları dönüştürmek için JSONPath kullanılabilir.
 
 JSONPath, XML için XPath 'e benzer bir JSON sorgu dilidir. XPath gibi, JSONPath, JSON yapısının ayıklanmasını ve veri ölçeğini dışarı aktarmanıza olanak tanır.
 

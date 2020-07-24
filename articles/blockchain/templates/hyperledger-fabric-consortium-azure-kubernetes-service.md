@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium ağını
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081295"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 
@@ -28,9 +28,9 @@ Bir çözüm şablonu kullanmayı seçmeden önce, senaryonuzu, kullanılabilir 
 
 Seçenek | Hizmet modeli | Yaygın kullanım durumu
 -------|---------------|-----------------
-Çözüm şablonları | IaaS | Çözüm şablonları, tam olarak yapılandırılmış bir blok zinciri ağ topolojisi sağlamak için kullanabileceğiniz Azure Resource Manager şablonlardır. Şablonlar, belirli bir blok zinciri ağ türü için Microsoft Azure işlem, ağ ve depolama hizmetleri dağıtır ve yapılandırır. Çözüm şablonları, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) kullanın.
+Çözüm şablonları | IaaS | Çözüm şablonları, tam olarak yapılandırılmış bir blok zinciri ağ topolojisi sağlamak için kullanabileceğiniz Azure Resource Manager şablonlardır. Şablonlar, belirli bir blok zinciri ağ türü için Microsoft Azure işlem, ağ ve depolama hizmetleri dağıtır ve yapılandırır. Çözüm şablonları, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Microsoft Q&soru sayfasını](/answers/topics/azure-blockchain-workbench.html) kullanın.
 [Azure Blok Zinciri Hizmeti](../service/overview.md) | PaaS | Azure blok zinciri hizmeti önizlemesi, konsorsiyum blok zinciri ağlarının yönetimini, yönetimini ve yönetimini basitleştirir. PaaS, konsorsiyum yönetimi veya sözleşme ve işlem gizliliği gerektiren çözümler için Azure blok zinciri hizmetini kullanın.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS ve PaaS | Azure blok zinciri çalışma ekranı önizlemesi, iş süreçlerini ve verileri diğer kuruluşlarla paylaşmak üzere blok zinciri uygulamaları oluşturmanıza ve dağıtmanıza yardımcı olmak üzere tasarlanmış bir Azure hizmetleri ve özellikleri koleksiyonudur. Bir blok zinciri çözümünü veya blok zinciri uygulaması kavram kanıtı 'nı prototip için Azure blok zinciri çalışma ekranı 'nı kullanın. Azure Blockchain Workbench hizmet düzeyi anlaşması olmadan sunulur. Destek için [Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) kullanın.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS ve PaaS | Azure blok zinciri çalışma ekranı önizlemesi, iş süreçlerini ve verileri diğer kuruluşlarla paylaşmak üzere blok zinciri uygulamaları oluşturmanıza ve dağıtmanıza yardımcı olmak üzere tasarlanmış bir Azure hizmetleri ve özellikleri koleksiyonudur. Bir blok zinciri çözümünü veya blok zinciri uygulaması kavram kanıtı 'nı prototip için Azure blok zinciri çalışma ekranı 'nı kullanın. Azure Blockchain Workbench hizmet düzeyi anlaşması olmadan sunulur. Destek için [Microsoft Q&soru sayfasını](/answers/topics/azure-blockchain-workbench.html) kullanın.
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hiper muhasebe Fabric Consortium mimarisi
 
@@ -113,7 +113,7 @@ HLF ağ bileşenleri dağıtımına başlamak için [Azure Portal](https://porta
     - **DNS öneki**: aks kümesi için etki alanı adı SISTEMI (DNS) adı ön eki. Kümeyi oluşturduktan sonra kapsayıcıları yönetirken Kubernetes API 'sine bağlanmak için DNS kullanırsınız.
     - **Düğüm boyutu**: Kubernetes düğümünün boyutu, Azure 'DA bulunan VM stok tutma birimi (SKU 'lar) listesinden seçim yapabilirsiniz. En iyi performansı elde etmek için standart DS3 v2 önerilir.
     - **Düğüm sayısı**: kümede dağıtılacak Kubernetes düğümlerinin sayısı. Bu düğüm sayısının doku ayarlarında belirtilen HLF düğümlerinin en az birine eşit veya daha fazla tutulması önerilir.
-    - **Hizmet sorumlusu ISTEMCI kimliği**: mevcut bir hizmet SORUMLUSUNUN istemci kimliğini girin veya aks kimlik doğrulaması için gerekli olan yeni bir oluştur. Bkz. [hizmet sorumlusu oluşturma](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)adımları.
+    - **Hizmet sorumlusu ISTEMCI kimliği**: mevcut bir hizmet SORUMLUSUNUN istemci kimliğini girin veya aks kimlik doğrulaması için gerekli olan yeni bir oluştur. Bkz. [hizmet sorumlusu oluşturma](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)adımları.
     - **Hizmet sorumlusu istemci parolası**: hizmet sorumlusu istemci kimliğinde belirtilen hizmet sorumlusunun istemci gizli anahtarını girin.
     - **İstemci parolasını onaylayın**: hizmet sorumlusu istemci gizli anahtarı 'nda belirtilen istemci gizliliğini onaylayın.
     - **Kapsayıcı Izlemeyi etkinleştir**: aks izlemesini etkinleştirmek için seçin. Bu, aks günlüklerinin belirtilen Log Analytics çalışma alanına gönderim yapmasını sağlar.
@@ -138,7 +138,7 @@ Sıralama hizmetini ve eş düğümlerini dağıtan blok zinciri Konsorsiyumu g�
 
 Azure HLF betiğini çalıştırmaya yönelik tüm komutlar Azure Bash komut satırı aracılığıyla yürütülebilir. Arabirim (CLı). Azure Shell web sürümünde oturum açabilirsiniz  ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) seçeneğinin sağ üst köşesinde bulunan seçeneğini Azure portal. Komut isteminde Bash CLı yazın.
 
-Daha fazla bilgi için bkz. [Azure kabuğu](https://docs.microsoft.com/azure/cloud-shell/overview) .
+Daha fazla bilgi için bkz. [Azure kabuğu](../../cloud-shell/overview.md) .
 
 ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
@@ -441,6 +441,6 @@ Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.micr
 
 Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
 
-- [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Blok zinciri şablonları için mühendislik desteği, dağıtım sorunlarıyla sınırlıdır.
-- [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Microsoft Q&soru sayfası](/answers/topics/azure-blockchain-workbench.html). Blok zinciri şablonları için mühendislik desteği, dağıtım sorunlarıyla sınırlıdır.
+- [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

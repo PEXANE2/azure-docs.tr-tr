@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078932"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
@@ -43,7 +44,7 @@ Telemetri verileri, işlenmek üzere Azure Event Hubs yayımlanmış olan kurall
 
 API 'Ler Swagger teknik belgelerini içerir. API 'Ler ve bunlara karşılık gelen istekler ya da yanıtları hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsSwagger).
 
-**Kimlik Doğrulaması**
+**Kimlik doğrulaması**
 
 Farmtler Microsoft Azure Active Directory kimlik doğrulamasını kullanır.Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar.
 
@@ -130,7 +131,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
 - /**Sensormodel**: sensormodel: üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçüsü gibi algılayıcı meta verilerine karşılık gelir.
 - /**Algılayıcı**: algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
 
-  **DeviceModel** |  |
+  DeviceModel | Açıklama |
   --- | ---
   Tür (düğüm, ağ geçidi)  | Cihaz düğümü veya ağ geçidi türü |
   Üretici  | Üreticinin adı |
@@ -139,7 +140,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Name  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Üreticiden ek özellikler. |
-  **Cihaz** |  |
+  **Cihaz** | **Açıklama** |
   Devicemodelıd  |İlişkili cihaz modelinin KIMLIĞI. |
   Donanım kimliği   |Cihazın MAC adresi gibi benzersiz KIMLIĞI.  |
   Reportingınterval |Saniye cinsinden raporlama aralığı. |
@@ -148,7 +149,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Name  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
   Açıklama  | Anlamlı bir açıklama sağlayın.  |
   Özellikler  |Üreticiden ek özellikler.  |
-  **SensorModel** |  |
+  **SensorModel** | **Açıklama** |
   Tür (analog, dijital)  |Analog veya dijital sensörden bahsedin.|
   Üretici  | Üretici adı. |
   ProductCode  | Ürün kodu veya model adı veya numarası. Örneğin, RS-CO2-N01.  |
@@ -162,7 +163,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Name  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın.
   Özellikler  | Üreticiden ek özellikler.
-  **Algılayıcısı**  |  |
+  **Algılayıcısı**  | **Açıklama** |
   Donanım kimliği  | Üretici tarafından ayarlanan algılayıcı için benzersiz KIMLIK.
   Sensormodelıd  | İlişkili algılayıcı modelinin KIMLIĞI.
   Konum  | Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).

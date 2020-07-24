@@ -4,12 +4,12 @@ description: Bu makalede REST API kullanarak Azure Backup yedekleme ve geri yük
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8dbd6fd7add58f8458c21fc65381a52ff3306d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079324"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API kullanarak yedekleme ve geri yükleme işlerini izleme
 
@@ -33,7 +33,7 @@ Yedeklemenin tetiklenmesi gibi bir işlem, her zaman bir iş kimliği döndürü
 }
 ```
 
-Azure VM yedekleme işi "JobId" alanı tarafından tanımlanır ve basit bir *Get* isteği kullanılarak [burada](https://docs.microsoft.com/rest/api/backup/jobdetails/) belirtildiği gibi izlenebilir.
+Azure VM yedekleme işi "JobId" alanı tarafından tanımlanır ve basit bir *Get* isteği kullanılarak [burada](/rest/api/backup/jobdetails/) belirtildiği gibi izlenebilir.
 
 ## <a name="tracking-the-job"></a>İşi izleme
 
@@ -45,9 +45,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>Yanıt
 
-|Name  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | Tamam        |
+|200 TAMAM     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | Tamam        |
 
 #### <a name="example-response"></a>Örnek yanıt
 

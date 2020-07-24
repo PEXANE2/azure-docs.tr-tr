@@ -8,11 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078217"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services uygulamalarınızı ve çözümlerinizi Azure Logic Apps geçirin
 
@@ -34,7 +35,7 @@ Bu tablo, Logic Apps BizTalk Services yeteneklerini eşler.
 | BizTalk Services   | Logic Apps            | Amaç                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Bağlayıcı          | Bağlayıcı             | Veri gönderme ve alma   |
-| Bridge             | Logic App             | Ardışık düzen işlemcisi           |
+| Köprü             | Logic App             | Ardışık düzen işlemcisi           |
 | Aşamayı doğrula     | XML doğrulama eylemi | Bir XML belgesini bir şemaya göre doğrulama | 
 | Zenginleştirme aşaması       | Veri belirteçleri           | Özellikleri iletilere veya yönlendirme kararlarına yükseltme |
 | Dönüşüm aşaması    | Dönüştürme eylemi      | XML iletilerini bir biçimden diğerine dönüştürme |
@@ -52,13 +53,13 @@ BizTalk Services çeşitli yapıt türlerine sahiptir.
 
 BizTalk Services bağlayıcılar, HTTP tabanlı istek/yanıt etkileşimlerini etkinleştiren iki yönlü köprüler de dahil olmak üzere köprüleri veri gönderme ve alma. Logic Apps aynı terminolojiyi kullanır ve çok çeşitli teknoloji ve hizmetlere bağlanarak aynı amaca hizmet eden yüzlerce bağlayıcı içerir. Örneğin, şirket Içi veri ağ geçidi aracılığıyla OneDrive, Office365, Dynamics CRM ve daha fazlası gibi bulut SaaS ve PaaS hizmetleri ve şirket içi sistemler, BizTalk Services için BizTalk bağdaştırıcı hizmeti 'nin yerini alan şirket içi sistemler için kullanılabilir. BizTalk Services kaynaklar FTP, SFTP ve Service Bus kuyruğu veya konu aboneliği ile sınırlıdır.
 
-![](media/logic-apps-move-from-mabs/sources.png)
+![BizTalk Services akışını gösteren diyagram.](media/logic-apps-move-from-mabs/sources.png)
 
 Varsayılan olarak, her köprü için, çalışma zamanı adresiyle ve köprünün göreli adres özellikleriyle yapılandırılmış bir HTTP uç noktası bulunur. Logic Apps ile aynı sonuçlara ulaşmak için, [istek ve yanıt](../connectors/connectors-native-reqres.md) eylemlerini kullanın.
 
 ## <a name="xml-processing-and-bridges"></a>XML işleme ve köprüler
 
-BizTalk Services, bir köprü işleme ardışık düzenine benzer. Köprü, bir bağlayıcıdan alınan verileri alabilir, verilerle çalışmayı gerçekleştirebilir ve sonuçları başka bir sisteme gönderebilir. Logic Apps, aynı işlem hattı tabanlı etkileşim düzenlerini BizTalk Services ile destekleyerek aynı zamanda diğer tümleştirme desenleri de sağlar. BizTalk Services içindeki [XML istek-yanıt Köprüsü](https://msdn.microsoft.com/library/azure/hh689781.aspx) , bu görevleri gerçekleştiren aşamalardan oluşan BIR veter işlem hattı olarak bilinir:
+BizTalk Services, bir köprü işleme ardışık düzenine benzer. Köprü, bir bağlayıcıdan alınan verileri alabilir, verilerle çalışmayı gerçekleştirebilir ve sonuçları başka bir sisteme gönderebilir. Logic Apps, aynı işlem hattı tabanlı etkileşim düzenlerini BizTalk Services ile destekleyerek aynı zamanda diğer tümleştirme desenleri de sağlar. BizTalk Services içindeki [XML istek-yanıt Köprüsü](/previous-versions/azure/hh689781(v=azure.100)) , bu görevleri gerçekleştiren aşamalardan oluşan BIR veter işlem hattı olarak bilinir:
 
 * (V) doğrula
 * (E) zenginleştirme
@@ -68,7 +69,7 @@ BizTalk Services, bir köprü işleme ardışık düzenine benzer. Köprü, bir 
 
 Bu görüntüde, işleme ve yanıt yolları için ayrı olarak denetim sağlayan istek ve yanıt arasında işlemenin nasıl bölündüğü gösterilmektedir; Örneğin, her yol için farklı haritalar kullanarak:
 
-![](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![İşlemin istek ve yanıt arasında nasıl bölüneceği gösteren ekran görüntüsü.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 Ayrıca, XML tek yönlü köprü, işleme ve işleme aşamasına kod çözme ve kodlama aşamalarını ekliyor. Doğrudan geçiş Köprüsü, tek bir zenginleştirme aşaması içerir.
 
@@ -90,7 +91,7 @@ BizTalk Services, dönüşüm aşaması bir XML tabanlı ileti biçimini diğeri
 
 BizTalk Services, gelen iletileri veya verileri hangi uç noktaya veya bağlayıcıya gönderebileceğine ilişkin bir yönlendirme kararı sağlar. Önceden yapılandırılmış uç noktalardan seçim yapma özelliği, yönlendirme filtresi seçeneği kullanılarak yapılabilir:
 
-![](media/logic-apps-move-from-mabs/route-filter.png)
+![Yönlendirme Filtresi seçeneğini gösteren ekran görüntüsü.](media/logic-apps-move-from-mabs/route-filter.png)
 
 BizTalk Services ' de, yalnızca iki seçenek varsa, bir *koşul* kullanmak BizTalk Services yönlendirme filtrelerini dönüştürmenin en iyi yoludur. İkiden fazla varsa, **anahtar**kullanın.
 
@@ -102,7 +103,7 @@ BizTalk Services işleme içinde, zenginleştirme aşamasında, alınan verilerl
 
 ### <a name="run-custom-code"></a>Özel kod Çalıştır
 
-BizTalk Services, kendi derlemelerinize yüklenen [özel kodu çalıştırmanızı](https://msdn.microsoft.com/library/azure/dn232389.aspx) sağlar. Bu işlev [ımessageınspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) arabirimi tarafından uygulanır. Köprü içindeki her aşama, bu arabirimi uygulayan .NET türünü sağlayan iki Özellik (Enter denetçisinde ve çıkış denetçisinde) içerir. Özel kod, veriler üzerinde daha karmaşık işleme gerçekleştirmenizi sağlar ve ortak iş mantığını gerçekleştiren derlemelerdeki mevcut kodu yeniden kullanmanıza olanak tanır. 
+BizTalk Services, kendi derlemelerinize yüklenen [özel kodu çalıştırmanızı](/previous-versions/azure/dn232389(v=azure.100)) sağlar. Bu işlev [ımessageınspector](/azure/logic-apps/logic-apps-move-from-mabs) arabirimi tarafından uygulanır. Köprü içindeki her aşama, bu arabirimi uygulayan .NET türünü sağlayan iki Özellik (Enter denetçisinde ve çıkış denetçisinde) içerir. Özel kod, veriler üzerinde daha karmaşık işleme gerçekleştirmenizi sağlar ve ortak iş mantığını gerçekleştiren derlemelerdeki mevcut kodu yeniden kullanmanıza olanak tanır. 
 
 Logic Apps özel kod yürütmeye yönelik iki temel yol sağlar: Azure Işlevleri ve API Apps. Azure Işlevleri, Logic Apps 'ten oluşturulabilir ve çağrılabilir. Bkz. [Azure işlevleri aracılığıyla mantıksal uygulamalar için özel kod ekleme ve çalıştırma](../logic-apps/logic-apps-azure-functions.md). Kendi tetikleyicilerinin ve eylemlerinizi oluşturmak için API Apps, Azure App Service bir kısmını kullanın. [Logic Apps ile kullanmak üzere özel bır API oluşturma](../logic-apps/logic-apps-create-api-app.md)hakkında daha fazla bilgi edinin. 
 

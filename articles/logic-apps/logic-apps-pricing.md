@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078155"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -77,27 +77,27 @@ Bir ıSE içinde oluşturup çalıştırdığınız Logic Apps için, bu yetenek
 
 ## <a name="connectors"></a>Bağlayıcılar
 
-Azure Logic Apps bağlayıcılar, mantıksal uygulamanızın, [Tetikleyiciler](#triggers), [Eylemler](#actions)veya her ikisini de sağlayarak bulutta veya şirket içinde uygulamalara, hizmetlere ve sistemlere erişmesine yardımcı olur. Bağlayıcılar, standart ya da kurumsal olarak sınıflandırılır. Bu bağlayıcılar hakkında genel bilgi için bkz. [bağlayıcılar Azure Logic Apps](../connectors/apis-list.md). Logic Apps 'te kullanmak istediğiniz REST API 'Leri için önceden oluşturulmuş bağlayıcılar yoksa, bu REST API 'Leri etrafında yalnızca sarmalayıcılar olan [özel bağlayıcılar](https://docs.microsoft.com/connectors/custom-connectors)oluşturabilirsiniz. Özel Bağlayıcılar standart bağlayıcı olarak faturalandırılır. Aşağıdaki bölümlerde, tetikleyicilerinin ve eylemlerin nasıl çalıştığı hakkında daha fazla bilgi sağlanmaktadır.
+Azure Logic Apps bağlayıcılar, mantıksal uygulamanızın, [Tetikleyiciler](#triggers), [Eylemler](#actions)veya her ikisini de sağlayarak bulutta veya şirket içinde uygulamalara, hizmetlere ve sistemlere erişmesine yardımcı olur. Bağlayıcılar, standart ya da kurumsal olarak sınıflandırılır. Bu bağlayıcılar hakkında genel bilgi için bkz. [bağlayıcılar Azure Logic Apps](../connectors/apis-list.md). Logic Apps 'te kullanmak istediğiniz REST API 'Leri için önceden oluşturulmuş bağlayıcılar yoksa, bu REST API 'Leri etrafında yalnızca sarmalayıcılar olan [özel bağlayıcılar](/connectors/custom-connectors)oluşturabilirsiniz. Özel Bağlayıcılar standart bağlayıcı olarak faturalandırılır. Aşağıdaki bölümlerde, tetikleyicilerinin ve eylemlerin nasıl çalıştığı hakkında daha fazla bilgi sağlanmaktadır.
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>Tetikleyiciler
 
-Tetikleyiciler, belirli bir olay gerçekleştiğinde mantıksal uygulama örneği oluşturan özel eylemlerdir. Tetikler, mantıksal uygulamanın nasıl ölçüldiğini etkileyen farklı yollarla çalışır. Azure Logic Apps var olan çeşitli tetikleyici türleri şunlardır:
+Bir tetikleyici, mantıksal uygulama iş akışındaki her zaman ilk adımdır ve belirli ölçütler karşılandığında veya belirli bir olay gerçekleştiğinde mantıksal uygulama örneği oluşturan ve çalıştıran özel bir işlemdir. Tetikler, mantıksal uygulamanın nasıl ölçüldiğini etkileyen farklı yollarla çalışır. Azure Logic Apps var olan çeşitli tetikleyici türleri şunlardır:
 
-* **Yoklama tetikleyicisi**: Bu tetikleyici, mantıksal uygulama örneği oluşturma ve iş akışını başlatma ölçütlerini karşılayan iletiler için bir uç noktayı sürekli olarak denetler. Mantıksal uygulama örneği oluşturulmasa bile, her yoklama isteğini bir yürütme olarak Logic Apps. Yoklama aralığını belirtmek için, mantıksal uygulama Tasarımcısı aracılığıyla tetikleyiciyi ayarlayın.
+* **Yinelenme tetikleyicisi**: herhangi bir hizmet veya sisteme özgü olmayan bu genel tetikleyiciyi, herhangi bir mantıksal uygulama iş akışını başlatmak ve tetikleyicide ayarladığınız yinelenme aralığına göre çalışan bir mantıksal uygulama örneği oluşturmak için kullanabilirsiniz. Örneğin, her üç günde bir veya daha karmaşık bir zamanlamaya göre çalışan bir yinelenme tetikleyicisi ayarlayabilirsiniz.
+
+* **Yoklama tetikleyicisi**: Bu daha özelleştirilmiş yinelenme tetikleyicisini, genellikle belirli bir hizmet veya sistem için yönetilen bağlayıcıyla ilişkili olan, tetikleyicide ayarladığınız yinelenme aralığına göre mantıksal uygulama örneği oluşturma ve çalıştırma ölçütlerine uyan olayları denetlemek için, bu daha özelleştirilmiş yineleme tetikleyicisini kullanabilirsiniz. Mantıksal uygulama örneği oluşturulmasa bile, örneğin Tetikleyiciler atlandığında, Logic Apps hizmeti her yoklama isteğini bir yürütme olarak ölçümler. Yoklama aralığını belirtmek için, mantıksal uygulama Tasarımcısı aracılığıyla tetikleyiciyi ayarlayın.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Web kancası tetikleyicisi**: Bu tetikleyici, bir istemcinin belirli bir uç noktaya istek göndermesini bekler. Web kancası uç noktasına gönderilen her istek bir eylem yürütmesi olarak sayılır. Örneğin, Istek ve HTTP Web kancası tetikleyicisi, Web kancası tetikleyicilerinde bulunur.
-
-* **Yinelenme tetikleyicisi**: Bu tetikleyici, tetikleyicide ayarladığınız yineleme aralığına göre bir mantıksal uygulama örneği oluşturur. Örneğin, her üç günde bir veya daha karmaşık bir zamanlamaya göre çalışan bir yinelenme tetikleyicisi ayarlayabilirsiniz.
+* **Web kancası tetikleyicisi**: bir yoklama tetikleyicisi kullanmak yerine, istemcinin belirli bir uç nokta URL 'sindeki mantıksal uygulamanıza istek göndermesini beklemek için bir Web kancası tetikleyicisi kullanabilirsiniz. Web kancası uç noktasına gönderilen her istek bir eylem yürütmesi olarak sayılır. Örneğin, Istek ve HTTP Web kancası tetikleyicisi genel Web kancası tetikleyicilerine sahiptir. Hizmetler veya sistemler için bazı bağlayıcıların Web kancası Tetikleyicileri de vardır.
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>Eylemler
 
-Yerel eylemler olarak HTTP gibi "yerleşik" eylemleri Azure Logic Apps. Örneğin, yerleşik Eylemler HTTP çağrılarını, Azure Işlevlerinden veya API Management çağrıları ve koşullar, döngüler ve Switch deyimleri gibi denetim akışı adımlarını içerir. Her eylemin kendi eylem türü vardır. Örneğin, [bağlayıcıları](https://docs.microsoft.com/connectors) çağıran eylemler "ApiConnection" türüne sahiptir. Bu bağlayıcılar, kendi [fiyatlandırmasına](https://azure.microsoft.com/pricing/details/logic-apps)göre ölçülen standart veya kurumsal bağlayıcılar olarak sınıflandırılır. *Önizlemede* kurumsal bağlayıcılar standart bağlayıcı olarak ücretlendirilir.
+Yerel eylemler olarak HTTP gibi "yerleşik" eylemleri Azure Logic Apps. Örneğin, yerleşik Eylemler HTTP çağrılarını, Azure Işlevlerinden veya API Management çağrıları ve koşullar, döngüler ve Switch deyimleri gibi denetim akışı adımlarını içerir. Her eylemin kendi eylem türü vardır. Örneğin, [bağlayıcıları](/connectors) çağıran eylemler "ApiConnection" türüne sahiptir. Bu bağlayıcılar, kendi [fiyatlandırmasına](https://azure.microsoft.com/pricing/details/logic-apps)göre ölçülen standart veya kurumsal bağlayıcılar olarak sınıflandırılır. *Önizlemede* kurumsal bağlayıcılar standart bağlayıcı olarak ücretlendirilir.
 
 Tüm başarılı ve başarısız eylemleri yürütmeler olarak Azure Logic Apps. Ancak Logic Apps bu eylemleri ölçer:
 
@@ -122,7 +122,7 @@ Azure Logic Apps, ücretsiz, temel ve standart tümleştirme hesapları sunmakta
 
 Ücretsiz, temel veya standart tümleştirme hesabı arasından seçim yapmak için bu kullanım örneği açıklamalarını gözden geçirin:
 
-* **Ücretsiz**: bir üretim senaryosu değil keşif senaryoları denemek istediğiniz zaman. Bu katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değil.
+* **Ücretsiz**: bir üretim senaryosu değil keşif senaryoları denemek istediğiniz zaman. Bu katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değil.
 
 * **Temel**: yalnızca ileti işleme yapmak veya daha büyük bir iş varlığıyla bir ticari iş ortağı ilişkisine sahip küçük bir iş ortağı olarak hareket etmek istediğinizde
 

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e47ed9b5505966973644bee0578d5b13d1659766
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080565"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLı ile özel görüntü sürümü kullanarak ölçek kümesi oluşturma
 
-Paylaşılan görüntü galerisinde depolanan [özelleştirilmiş görüntü sürümünden](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) bir ölçek kümesi oluşturun. Genelleştirilmiş görüntü sürümünü kullanarak bir ölçek kümesi oluşturmak istiyorsanız, bkz. [Genelleştirilmiş görüntüden ölçek kümesi oluşturma](instance-generalized-image-version-cli.md).
+Paylaşılan görüntü galerisinde depolanan [özelleştirilmiş görüntü sürümünden](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) bir ölçek kümesi oluşturun. Genelleştirilmiş görüntü sürümünü kullanarak bir ölçek kümesi oluşturmak istiyorsanız, bkz. [Genelleştirilmiş görüntüden ölçek kümesi oluşturma](instance-generalized-image-version-cli.md).
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.4.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
@@ -60,6 +60,3 @@ Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da olu
 - [Paylaşılan Görüntü Galerisi Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-
-
-

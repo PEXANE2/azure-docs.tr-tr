@@ -3,15 +3,16 @@ title: Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
 description: Dayanıklı İşlevler için otomatik Azure Event Grid yayımlamayı yapılandırmayı öğrenin.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081755"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
 
-Bu makalede, düzenleme yaşam döngüsü olaylarını (oluşturma, tamamlanan ve başarısız gibi) özel bir [Azure Event Grid konusuna](https://docs.microsoft.com/azure/event-grid/overview)yayımlamak için dayanıklı işlevler ayarlama işlemi gösterilmektedir.
+Bu makalede, düzenleme yaşam döngüsü olaylarını (oluşturma, tamamlanan ve başarısız gibi) özel bir [Azure Event Grid konusuna](../../event-grid/overview.md)yayımlamak için dayanıklı işlevler ayarlama işlemi gösterilmektedir.
 
 Bu özelliğin yararlı olduğu bazı senaryolar aşağıda verilmiştir:
 
@@ -21,11 +22,11 @@ Bu özelliğin yararlı olduğu bazı senaryolar aşağıda verilmiştir:
 
 * **Uzun süre çalışan arka plan etkinliği**: uzun süre çalışan bir arka plan etkinliği için dayanıklı işlevler kullanıyorsanız, bu özellik geçerli durumu bilmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Dayanıklı İşlevler projenize [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 'ı yükler.
 * [Azure depolama öykünücüsünü](../../storage/common/storage-use-emulator.md) (yalnızca Windows) veya mevcut bir Azure Depolama hesabını kullanın.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 'yı yükleyip [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın
+* [Azure CLI](/cli/azure/?view=azure-cli-latest) 'yı yükleyip [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın
 
 ## <a name="create-a-custom-event-grid-topic"></a>Özel bir Event Grid konusu oluşturma
 
@@ -167,7 +168,7 @@ Azure portal kullanarak, Dayanıklı İşlevler uygulamanız tarafından yayıml
 
 ### <a name="add-an-event-grid-subscription"></a>Event Grid aboneliği ekleme
 
-Artık oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Event Grid kavramları](https://docs.microsoft.com/azure/event-grid/concepts).
+Artık oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Event Grid kavramları](../../event-grid/concepts.md).
 
 1. Yeni işlevinizde **tümleştirme** ' i seçin ve ardından **Event Grid tetikleyicisi (eventgridevent)** öğesini seçin. 
 
@@ -181,7 +182,7 @@ Artık oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekleyebi
 
 1. Aboneliği seçin. Ardından, Event Grid konusu için oluşturduğunuz kaynak grubunu ve kaynağı seçin. 
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
     :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid aboneliği oluşturun." border="true":::
 

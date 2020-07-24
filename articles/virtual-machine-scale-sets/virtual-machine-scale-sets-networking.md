@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f63bcbb26752dc787d508260cce0b0518cdc7c38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374738"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080412"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ağ hizmeti
 
@@ -62,9 +62,9 @@ Sanal Makine Ölçek Kümeleri ve yük dengeleyici ile çalışırken aşağıda
 
 Aşağıdaki yöntemler, mevcut bir Azure yük dengeleyiciye sahip bir sanal makine ölçek kümesi dağıtmak için kullanılabilir.
 
-* [Azure Portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırın](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal).
-* [Azure PowerShell kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırın](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell).
-* [Azure CLI kullanarak mevcut bir Azure Load Balancer bir sanal makine ölçek kümesi yapılandırın](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli).
+* [Azure Portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırın](../load-balancer/configure-vm-scale-set-portal.md).
+* [Azure PowerShell kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırın](../load-balancer/configure-vm-scale-set-powershell.md).
+* [Azure CLI kullanarak mevcut bir Azure Load Balancer bir sanal makine ölçek kümesi yapılandırın](../load-balancer/configure-vm-scale-set-cli.md).
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Bir Application Gateway’e başvuran bir ölçek kümesi oluşturma
 Bir uygulama ağ geçidi kullanan bir ölçek kümesi oluşturmak için, bu ARM şablonu yapılandırmasında olduğu gibi ölçek kümenizin ipConfigurations bölümündeki uygulama ağ geçidinin arka uç adres havuzuna başvurun:

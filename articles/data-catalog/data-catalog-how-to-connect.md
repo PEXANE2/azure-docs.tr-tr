@@ -4,13 +4,14 @@ description: Nasıl yapılır makalesi Azure Veri Kataloğu ile keşfedilen veri
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a861761f819c2127228e7ef688f04d91744d25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081262"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Veri kaynaklarına bağlanma
 ## <a name="introduction"></a>Giriş

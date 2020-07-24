@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080956"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Notification Hub 'ı oluşturma
 
@@ -95,7 +95,7 @@ Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. `az
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   `--name` `az notification-hub namespace create` Komuta sağlanmışsa veya [Azure kaynakları için adlandırma kurallarını ve kısıtlamalarını](/azure/azure-resource-manager/management/resource-name-rules)karşılamıyorsa, Azure CLI aşağıdaki konsol çıkışıyla yanıt verir:
+   `--name` `az notification-hub namespace create` Komuta sağlanmışsa veya [Azure kaynakları için adlandırma kurallarını ve kısıtlamalarını](../azure-resource-manager/management/resource-name-rules.md)karşılamıyorsa, Azure CLI aşağıdaki konsol çıkışıyla yanıt verir:
 
    ```output
    #the name is not available
@@ -148,7 +148,7 @@ Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. `az
 
 1. Bir Bildirim Hub 'ı için erişim ilkelerini listeleyin.
 
-   Azure Notification Hubs, erişim ilkelerinin kullanımı ile [paylaşılan erişim imzası güvenliği](/azure/notification-hubs/notification-hubs-push-notification-security) kullanır.  Bir Bildirim Hub 'ı oluşturduğunuzda iki ilke otomatik olarak oluşturulur.  Bu ilkelerdeki bağlantı dizeleri anında iletme bildirimlerini yapılandırmak için gereklidir.  [Az Notification-Hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) komutu ilke adlarının ve bunlara ait kaynak gruplarının bir listesini sağlar.
+   Azure Notification Hubs, erişim ilkelerinin kullanımı ile [paylaşılan erişim imzası güvenliği](./notification-hubs-push-notification-security.md) kullanır.  Bir Bildirim Hub 'ı oluşturduğunuzda iki ilke otomatik olarak oluşturulur.  Bu ilkelerdeki bağlantı dizeleri anında iletme bildirimlerini yapılandırmak için gereklidir.  [Az Notification-Hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) komutu ilke adlarının ve bunlara ait kaynak gruplarının bir listesini sağlar.
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -167,7 +167,7 @@ Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. `az
 
 3. Bir Bildirim Hub 'ı erişim ilkesi için anahtarları ve bağlantı dizelerini listeleyin
 
-   Her erişim ilkesi için iki anahtar ve bağlantı dizesi kümesi vardır.  Daha sonra [bir Bildirim Hub 'ı yapılandırmak](/azure/notification-hubs/configure-notification-hub-portal-pns-settings)için bunlara ihtiyacınız olacaktır.  Bir Bildirim Hub 'ı erişim ilkesi için anahtar ve bağlantı dizelerini listelemek için, [az Notification-Hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) komutunu kullanın.
+   Her erişim ilkesi için iki anahtar ve bağlantı dizesi kümesi vardır.  Daha sonra [bir Bildirim Hub 'ı yapılandırmak](./configure-notification-hub-portal-pns-settings.md)için bunlara ihtiyacınız olacaktır.  Bir Bildirim Hub 'ı erişim ilkesi için anahtar ve bağlantı dizelerini listelemek için, [az Notification-Hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) komutunu kullanın.
 
    ```azurecli
    #query the keys and connection strings for DefaultListenSharedAccessSignature

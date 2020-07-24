@@ -6,11 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3493cc76dfb05cca3c89114b279b99ab49bac2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75409539"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081653"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Işlevlerinde ağ hakkında sık sorulan sorular
 
@@ -54,7 +55,7 @@ Ayrıca, işlev uygulamanızı bir Premium plana, App Service plana veya App Ser
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>İşlev uygulamamı sanal bir ağda nasıl dağıtabilirim?
 
-Bir App Service Ortamı dağıtım, bir sanal ağın içinde bir işlev uygulaması oluşturmanın tek yoludur. Bir App Service Ortamı iç yük dengeleyiciyi kullanma hakkında ayrıntılı bilgi için, bir [App Service ortamı ile iç yük dengeleyici oluşturma ve kullanma](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)makalesini başlatın.
+Bir App Service Ortamı dağıtım, bir sanal ağın içinde bir işlev uygulaması oluşturmanın tek yoludur. Bir App Service Ortamı iç yük dengeleyiciyi kullanma hakkında ayrıntılı bilgi için, bir [App Service ortamı ile iç yük dengeleyici oluşturma ve kullanma](../app-service/environment/create-ilb-ase.md)makalesini başlatın.
 
 Sanal ağ kaynaklarına yalnızca tek yönlü erişiminizin olması veya daha az kapsamlı ağ yalıtımı olması gereken senaryolarda, bkz. [işlevlere genel bakış](functions-networking-options.md).
 

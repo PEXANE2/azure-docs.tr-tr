@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506982"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081500"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
-Azure 'da kaynak ve uygulama dağıtırken, performans ve sistem durumu hakkında Öngörüler kazanmak için telemetri toplamaya başlamak isteyeceksiniz. Azure bazı ölçümleri sizin için kullanıma hazır hale getirir. Bu ölçümler [Standart veya platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)olarak adlandırılır. Ancak, bunlar doğası ile sınırlıdır. 
+Azure 'da kaynak ve uygulama dağıtırken, performans ve sistem durumu hakkında Öngörüler kazanmak için telemetri toplamaya başlamak isteyeceksiniz. Azure bazı ölçümleri sizin için kullanıma hazır hale getirir. Bu ölçümler [Standart veya platform](./metrics-supported.md)olarak adlandırılır. Ancak, bunlar doğası ile sınırlıdır. 
 
 Daha derin Öngörüler sağlamak için bazı özel performans göstergeleri veya işletmeye özgü ölçümler toplamak isteyebilirsiniz. Bu **özel** ölçümler, uygulama Telemetriniz, Azure kaynaklarınızda çalışan bir aracı, hatta dışarıdan bir izleme sistemi ve doğrudan Azure izleyici 'ye gönderilebilir. Azure Izleyici 'de yayımlandıktan sonra, Azure tarafından oluşturulan standart ölçümleri kullanarak Azure kaynaklarınızın ve uygulamalarınızın özel ölçümlerine gözatabilir, bunları sorgulayabilir ve uyarı verebilirsiniz.
 
@@ -37,23 +37,23 @@ Azure Izleyici özel ölçümleri genel önizlemede geçerli.
 Özel ölçümler, [Platform ölçümleriyle aynı süre](data-platform-metrics.md#retention-of-metrics)boyunca tutulur. 
 
 > [!NOTE]  
-> Azure Izleyici 'ye Application Insights SDK aracılığıyla gönderilen ölçümler, alınan günlük verileri olarak faturalandırılır. Bunlar yalnızca [özel ölçüm boyutlarında Application Insights özelliği etkinleştir ' in](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) seçili olması halinde ek ölçüm ücretlerine uygulanır. Bu onay kutusu, daha karmaşık bir uyarı sağlamak için özel ölçüm API 'sini kullanarak Azure Izleyici ölçümleri veritabanına veri gönderir.  Bölgenizdeki [Application Insights fiyatlandırma modeli](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) ve [fiyatları](https://azure.microsoft.com/pricing/details/monitor/)hakkında daha fazla bilgi edinin.
+> Azure Izleyici 'ye Application Insights SDK aracılığıyla gönderilen ölçümler, alınan günlük verileri olarak faturalandırılır. Bunlar yalnızca [özel ölçüm boyutlarında Application Insights özelliği etkinleştir ' in](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) seçili olması halinde ek ölçüm ücretlerine uygulanır. Bu onay kutusu, daha karmaşık bir uyarı sağlamak için özel ölçüm API 'sini kullanarak Azure Izleyici ölçümleri veritabanına veri gönderir.  Bölgenizdeki [Application Insights fiyatlandırma modeli](../app/pricing.md#pricing-model) ve [fiyatları](https://azure.microsoft.com/pricing/details/monitor/)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="how-to-send-custom-metrics"></a>Özel ölçümleri gönderme
 
 Azure Izleyici 'ye özel ölçümler gönderdiğinizde, bildirilen her bir veri noktası veya değer aşağıdaki bilgileri içermelidir.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 Azure Izleyici 'ye özel ölçümler göndermek için, ölçümü gönderen varlığın isteğin **taşıyıcı** üst bilgisinde geçerli bir Azure Active Directory (Azure AD) belirteci olması gerekir. Geçerli bir taşıyıcı belirteç edinmenin birkaç desteklenen yolu vardır:
-1. [Azure kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Azure kaynağına bir kimlik verir (örneğin, VM). Yönetilen Hizmet Kimliği (MSI), belirli işlemleri gerçekleştirmek için kaynak izinleri vermek üzere tasarlanmıştır. Bir örnek, bir kaynağın kendisiyle ilgili ölçümleri yaymalarına izin verir. Bir kaynağa veya MSI öğesine başka bir kaynakta **Izleme ölçümleri yayımcı** izinleri verilebilir. Bu izinle, MSI diğer kaynaklar için ölçümleri de yayabilir.
-2. [Azure AD hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Bu senaryoda, bir Azure AD uygulamasına veya hizmetine bir Azure kaynağı hakkında ölçümleri yayma izinleri atanabilir.
+1. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md). Azure kaynağına bir kimlik verir (örneğin, VM). Yönetilen Hizmet Kimliği (MSI), belirli işlemleri gerçekleştirmek için kaynak izinleri vermek üzere tasarlanmıştır. Bir örnek, bir kaynağın kendisiyle ilgili ölçümleri yaymalarına izin verir. Bir kaynağa veya MSI öğesine başka bir kaynakta **Izleme ölçümleri yayımcı** izinleri verilebilir. Bu izinle, MSI diğer kaynaklar için ölçümleri de yayabilir.
+2. [Azure AD hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md). Bu senaryoda, bir Azure AD uygulamasına veya hizmetine bir Azure kaynağı hakkında ölçümleri yayma izinleri atanabilir.
 Azure Izleyici, isteğin kimliğini doğrulamak için Azure AD ortak anahtarlarını kullanarak uygulama belirtecini doğrular. Mevcut **Izleme ölçümleri yayımcı** rolü zaten bu izne sahip. Azure portal kullanılabilir. Hizmet sorumlusu, için özel ölçümleri yaydığı kaynaklara bağlı olarak, gereken kapsamda **Izleme ölçümleri yayımcı** rolü verilebilir. Örnek olarak bir abonelik, kaynak grubu veya belirli bir kaynaktır.
 
 > [!TIP]  
 > Özel ölçümleri yayan bir Azure AD belirteci istediğinizde, belirtecin istendiği hedef kitle veya kaynak için olduğundan emin olun `https://monitoring.azure.com/` . Sondaki '/' öğesini eklediğinizden emin olun.
 
-### <a name="subject"></a>Özne
+### <a name="subject"></a>Konu
 Bu özellik, için özel ölçümün hangi Azure Kaynak KIMLIĞIYLE bildirileceğini yakalar. Bu bilgiler, yapılmakta olan API çağrısının URL 'SI ile kodlanacak. Her API yalnızca tek bir Azure kaynağı için ölçüm değerleri gönderebilir.
 
 > [!NOTE]  
@@ -92,7 +92,7 @@ Boyutlar isteğe bağlıdır, tüm ölçümler boyutlara sahip olamaz. Özel bir
 Boyutlar isteğe bağlıdır, tüm ölçümler boyutlara sahip olamaz. Ölçüm gönderisi boyut anahtarlarını tanımlıyorsa, karşılık gelen boyut değerleri zorunludur.
 
 ### <a name="metric-values"></a>Ölçüm değerleri
-Azure Izleyici, tüm ölçümleri tek dakikalık ayrıntı düzeyi aralıklarında depolar. Belirli bir dakika boyunca bir metriğin birkaç kez örnekleme yapması gerekebileceğini anladık. CPU kullanımı örnek olarak kullanılır. Ya da birçok ayrı olay için ölçülmesi gerekebilir. Bir örnek, oturum açma işlemi gecikmelerinin bir örneğidir. Azure Izleyici 'de için yaymanız ve ödediğiniz ham değer sayısını sınırlandırmak için, değerleri yerel olarak ön toplayabilir ve aktarabilirsiniz:
+Azure Izleyici, tüm ölçümleri tek dakikalık ayrıntı düzeyi aralıklarında depolar. Belirli bir dakika boyunca bir metriğin birkaç kez örnekleme yapması gerekebileceğini anladık. Bu ölçümlere örnek olarak CPU kullanımı verilebilir. Ya da birçok ayrı olay için ölçülmesi gerekebilir. Bir örnek, oturum açma işlemi gecikmelerinin bir örneğidir. Azure Izleyici 'de için yaymanız ve ödediğiniz ham değer sayısını sınırlandırmak için, değerleri yerel olarak ön toplayabilir ve aktarabilirsiniz:
 
 * **Min**: dakika boyunca tüm örnek ve ölçülerden gözlenen en düşük değer.
 * **Max**: dakika boyunca tüm örnek ve ölçülerden gözlenen maksimum değer.
@@ -176,7 +176,7 @@ Azure Izleyici 'nin yayınlanmadan önce özel bir ölçümü önceden tanımlam
 > Özel ölçümleri görüntülemek için bir okuyucu veya katkıda bulunan rolü olmanız gerekir.
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Özel ölçümlerinize Azure portal aracılığıyla gözatamazsınız
-1.    [Azure Portal](https://portal.azure.com)gidin.
+1.    [Azure portalına](https://portal.azure.com) gidin.
 2.    **İzleyici** bölmesini seçin.
 3.    **Ölçümler**’i seçin.
 4.    Özel ölçümler oluşturmuş olduğunuz bir kaynağı seçin.

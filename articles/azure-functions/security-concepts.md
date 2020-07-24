@@ -3,19 +3,20 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079698"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
-Birçok şekilde, sunucusuz işlevlerin güvenli geliştirilmesini, dağıtılmasını ve çalışmasını planlamak, Web tabanlı veya bulutta barındırılan tüm uygulamalar için çok benzer. [Azure App Service](/azure/app-service/) , işlev uygulamalarınız için barındırma altyapısı sağlar. Bu makalede, işlev kodunuzu çalıştırmaya yönelik güvenlik stratejileri ve App Service işlevlerinizin güvenliğini sağlamanıza nasıl yardımcı olabilir. 
+Birçok şekilde, sunucusuz işlevlerin güvenli geliştirilmesini, dağıtılmasını ve çalışmasını planlamak, Web tabanlı veya bulutta barındırılan tüm uygulamalar için çok benzer. [Azure App Service](../app-service/index.yml) , işlev uygulamalarınız için barındırma altyapısı sağlar. Bu makalede, işlev kodunuzu çalıştırmaya yönelik güvenlik stratejileri ve App Service işlevlerinizin güvenliğini sağlamanıza nasıl yardımcı olabilir. 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-[Azure Güvenlik kıyaslaması](/azure/security/benchmarks/overview)' nı izleyen bir dizi güvenlik önerisi için bkz. Azure [Için Azure Güvenlik temeli işlevleri](security-baseline.md).
+[Azure Güvenlik kıyaslaması](../security/benchmarks/overview.md)' nı izleyen bir dizi güvenlik önerisi için bkz. Azure [Için Azure Güvenlik temeli işlevleri](security-baseline.md).
 
 ## <a name="secure-operation"></a>Güvenli işlem 
 

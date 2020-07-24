@@ -9,11 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682485"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078117"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 'da Linux Veri Bilimi Sanal Makinesi veri bilimi
 
@@ -23,13 +24,13 @@ Bu kılavuzda gösterilen veri bilimi görevleri, [ekip veri bilimi işlemi nedi
 
 Bu izlenecek yolda, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesini çözümliyoruz. Spambase, istenmeyen veya ham (istenmeyen posta değil) olarak işaretlenmiş bir e-posta kümesidir. Spambase, e-postaların içeriğiyle ilgili bazı istatistikler de içerir. Anlatımın ilerleyen kısımlarında yer aldığı istatistikleri konuşuyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Linux DSVM kullanabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * **Azure aboneliği**. Azure aboneliği almak için, bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/free/).
 * [**Linux veri bilimi sanal makinesi**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
-* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](linux-dsvm-intro.md#x2go).
+* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](dsvm-ubuntu-intro.md#x2go).
 * Daha yumuşak bir kaydırma deneyimi için DSVM 'nin Firefox Web tarayıcısında `gfx.xrender.enabled` bayrağını değiştirin `about:config` . [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). ' İ de `mousewheel.enable_pixel_scrolling` olarak ayarlamayı düşünün `False` . [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
 * **Azure Machine Learning hesabı**. Henüz bir hesabınız yoksa, [Azure Machine Learning giriş sayfasında](https://azure.microsoft.com/free/services/machine-learning//)yeni bir hesap için kaydolun.
 
@@ -495,7 +496,7 @@ Başlamak için, **uygulamalar** menüsünde, SQUIRREL SQL ' i açın. Sürücü
 1. **PostgreSQL** öğesine sağ tıklayıp **sürücüyü değiştir**' i seçin.
 1. **Ek sınıf yolu**  >  **Ekle**' yi seçin.
 1. **Dosya adı**için **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**girin.
-1. **Aç**'ı seçin.
+1. **Aç**’ı seçin.
 1. **Liste sürücülerini**seçin. **Sınıf adı**için, **org. PostgreSQL. Driver**' ı seçin ve ardından **Tamam**' ı seçin.
 
 Yerel sunucuyla bağlantı kurmak için:

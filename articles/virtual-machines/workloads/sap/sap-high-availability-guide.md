@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makineler SAP NetWeaver için yüksek kullanılabilirlik | Microsoft Docs
+title: Azure sanal makineler SAP NetWeaver için yüksek kullanılabilirlik
 description: Azure sanal makinelerde SAP NetWeaver için yüksek kullanılabilirlik Kılavuzu
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557310"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080191"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure sanal makineler SAP NetWeaver için yüksek kullanılabilirlik
+# <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip Azure sanal makineleri
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -35,7 +36,7 @@ ms.locfileid: "84557310"
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
-[dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
+[dbms-guide]:dbms-guide.md
 
 [deployment-guide]:deployment-guide.md
 
@@ -170,7 +171,7 @@ Dağıtım ve yapılandırmayı basitleştirmek için, bu makalede SAP üç katm
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Kaynakları
 Başlamadan önce, aşağıdaki bölümlerde açıklanan önkoşulları karşıladığınızdan emin olun. Ayrıca, [kaynaklar][sap-ha-guide-2] bölümünde listelenen tüm kaynakları denetlediğinizden emin olun.
 
-Bu makalede, [yönetilen diskleri kullanarak üç KATMANLı SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/)için Azure Resource Manager şablonları kullanırız. Şablonlara faydalı bir genel bakış için bkz. [SAP Azure Resource Manager şablonları](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+Bu makalede, [yönetilen diskleri kullanarak üç KATMANLı SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/)için Azure Resource Manager şablonları kullanırız. Şablonlara faydalı bir genel bakış için bkz. [SAP Azure Resource Manager şablonları](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap).
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Kaynakların
 Bu makaleler Azure 'da SAP dağıtımlarını kapsar:
@@ -319,7 +320,7 @@ SAP uygulama sunucusu örneklerini barındıran tüm sanal makineleri aynı Azur
 * Tüm sanal makineler aynı yükseltme etki alanının bir parçasıdır. Örneğin, bir yükseltme etki alanı, planlı bakım kapalı kalma süresi boyunca sanal makinelerin aynı anda güncel olmadığından emin olur.
 * Tüm sanal makineler aynı hata etki alanının bir parçasıdır. Örneğin, bir hata etki alanı, sanal makinelerin dağıtıldığından emin olur, böylece tek bir hata noktası tüm sanal makinelerin kullanılabilirliğini etkilemektedir.
 
-[Sanal makinelerin kullanılabilirliğini yönetme][virtual-machines-manage-availability]hakkında daha fazla bilgi edinin.
+[Sanal makinelerin kullanılabilirliğini yönetme] [.. /manage-availability.md].
 
 Yalnızca yönetilmeyen disk: Azure depolama hesabı olası bir tek hata noktası olduğundan, en az iki sanal makinenin dağıtıldığı en az iki Azure depolama hesabı olması önemlidir. İdeal bir kurulumda, SAP iletişim kutusu örneği çalıştıran her sanal makinenin diskleri farklı bir depolama hesabına dağıtılır.
 
@@ -770,7 +771,7 @@ Yalnızca SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişler
 | Değişken adı |`KeepAliveTime` |
 | Değişken türü |REG_DWORD (ondalık) |
 | Değer |120000 |
-| Belge bağlantısı |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| Belge bağlantısı |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 _**Tablo 3:** İlk TCP/IP parametresini değiştirme_
 
@@ -781,7 +782,7 @@ Daha sonra, bu Windows kayıt defteri girdilerini SAP yoks/SCS için Windows kü
 | Değişken adı |`KeepAliveInterval` |
 | Değişken türü |REG_DWORD (ondalık) |
 | Değer |120000 |
-| Belge bağlantısı |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| Belge bağlantısı |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 _**Tablo 4:** İkinci TCP/IP parametresini değiştirme_
 

@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Web uygulamalarınızı ve API 'lerinizi koruyun
+title: Azure App Service web uygulamalarınızı ve API'lerinizi koruma
 description: Bu makale, Azure Güvenlik Merkezi 'nde Azure App Service Web uygulamalarınızı ve API 'lerinizi korumaya başlamanıza yardımcı olur.
 services: security-center
 documentationcenter: na
@@ -10,13 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080803"
 ---
-# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web uygulamalarınızı ve API 'lerinizi koruyun
+# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service web uygulamalarınızı ve API'lerinizi koruma
 
 Azure App Service, altyapıyı yönetmek zorunda kalmadan Web uygulamalarınızı ve API 'lerinizi oluşturmak ve barındırmak için tam olarak yönetilen bir platformdur. Kurumsal düzeyde performans, güvenlik ve uyumluluk gereksinimlerini karşılamak için yönetim, izleme ve operasyonel içgörüler sağlar. Daha fazla bilgi için bkz. [Azure App Service](https://azure.microsoft.com/services/app-service/).
 

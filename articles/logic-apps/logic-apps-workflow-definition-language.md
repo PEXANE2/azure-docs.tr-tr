@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078151"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps Iş akışı tanım dili için şema başvurusu Kılavuzu
 
@@ -37,14 +37,14 @@ Bir iş akışı tanımı her zaman mantıksal uygulamanızı başlatmak için b
 
 | Öznitelik | Gerekli | Açıklama |
 |-----------|----------|-------------|
-| `definition` | Yes | İş akışı tanımınızın başlangıç öğesi |
+| `definition` | Evet | İş akışı tanımınızın başlangıç öğesi |
 | `$schema` | Yalnızca bir iş akışı tanımına dışarıdan başvurulduklarında | Burada bulabileceğiniz Iş akışı tanımı dil sürümünü açıklayan JSON Şema dosyasının konumu: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| `actions` | No | İş akışı çalışma zamanı 'nda yürütülecek bir veya daha fazla eylemin tanımları. Daha fazla bilgi için bkz. [Tetikleyiciler ve eylemler](#triggers-actions). <p><p>En fazla eylem: 250 |
-| `contentVersion` | No | Varsayılan olarak "1.0.0.0" olan iş akışı tanımınızın sürüm numarası. Bir iş akışını dağıtmada doğru tanımlamayı belirlemek ve doğrulamak için kullanılacak bir değer belirtin. |
-| `outputs` | No | Bir iş akışı çalıştırağından döndürülecek çıktıların tanımları. Daha fazla bilgi için bkz. [çıktılar](#outputs). <p><p>Maksimum çıkış sayısı: 10 |
-| `parameters` | No | Mantıksal uygulamanızın çalışma zamanında kullanılacak değerleri geçen bir veya daha fazla parametre için tanımlar. Daha fazla bilgi için bkz. [Parametreler](#parameters). <p><p>Maksimum Parametreler: 50 |
-| `staticResults` | No | Eylemler tarafından, bir veya daha fazla statik sonucun tanımları, bu eylemlerde statik sonuçlar etkinleştirildiğinde, bir veya daha fazla statik sonuç tanımlar. Her eylem tanımında `runtimeConfiguration.staticResult.name` öznitelik, içindeki karşılık gelen tanımına başvurur `staticResults` . Daha fazla bilgi için bkz. [statik sonuçlar](#static-results). |
-| `triggers` | No | İş akışınızı örnekleyip oluşturan bir veya daha fazla tetikleyici için tanımlar. Logic Apps Tasarımcısı aracılığıyla görsel olarak değil, yalnızca Iş akışı tanımlama dili ile birden fazla tetikleyici tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Tetikleyiciler ve eylemler](#triggers-actions). <p><p>En fazla Tetikleyiciler: 10 |
+| `actions` | Hayır | İş akışı çalışma zamanı 'nda yürütülecek bir veya daha fazla eylemin tanımları. Daha fazla bilgi için bkz. [Tetikleyiciler ve eylemler](#triggers-actions). <p><p>En fazla eylem: 250 |
+| `contentVersion` | Hayır | Varsayılan olarak "1.0.0.0" olan iş akışı tanımınızın sürüm numarası. Bir iş akışını dağıtmada doğru tanımlamayı belirlemek ve doğrulamak için kullanılacak bir değer belirtin. |
+| `outputs` | Hayır | Bir iş akışı çalıştırağından döndürülecek çıktıların tanımları. Daha fazla bilgi için bkz. [çıktılar](#outputs). <p><p>Maksimum çıkış sayısı: 10 |
+| `parameters` | Hayır | Mantıksal uygulamanızın çalışma zamanında kullanılacak değerleri geçen bir veya daha fazla parametre için tanımlar. Daha fazla bilgi için bkz. [Parametreler](#parameters). <p><p>Maksimum Parametreler: 50 |
+| `staticResults` | Hayır | Eylemler tarafından, bir veya daha fazla statik sonucun tanımları, bu eylemlerde statik sonuçlar etkinleştirildiğinde, bir veya daha fazla statik sonuç tanımlar. Her eylem tanımında `runtimeConfiguration.staticResult.name` öznitelik, içindeki karşılık gelen tanımına başvurur `staticResults` . Daha fazla bilgi için bkz. [statik sonuçlar](#static-results). |
+| `triggers` | Hayır | İş akışınızı örnekleyip oluşturan bir veya daha fazla tetikleyici için tanımlar. Logic Apps Tasarımcısı aracılığıyla görsel olarak değil, yalnızca Iş akışı tanımlama dili ile birden fazla tetikleyici tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Tetikleyiciler ve eylemler](#triggers-actions). <p><p>En fazla Tetikleyiciler: 10 |
 ||||
 
 <a name="triggers-actions"></a>
@@ -79,8 +79,8 @@ Bir parametre tanımının genel yapısı aşağıda verilmiştir:
 | <*parametre-adı*> | Yes | Dize | Tanımlamak istediğiniz parametrenin adı |
 | <*parametre türü*> | Yes | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Note**: tüm parolalar, anahtarlar ve gizli diziler için, `securestring` veya türlerini kullanın `secureobject` çünkü `GET` işlem bu türleri döndürmez. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [eylem ve giriş parametreleri Için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Parametrenin türü |
 | <*Varsayılan parametre değeri*> | Yes | Aynı`type` | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. `defaultValue`Mantıksal uygulama Tasarımcısı 'nın parametreyi doğru bir şekilde gösterebilmesi için özniteliği gereklidir, ancak boş bir değer belirtebilirsiniz. |
-| <*dizi ile izin verilen-parametre değerleri*> | No | Dizi | Parametrenin kabul edebileceği değerleri içeren bir dizi |
-| <*parametre-açıklama*> | No | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
+| <*dizi ile izin verilen-parametre değerleri*> | Hayır | Dizi | Parametrenin kabul edebileceği değerleri içeren bir dizi |
+| <*parametre-açıklama*> | Hayır | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
 ||||
 
 Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/templates/overview.md) oluşturun, dağıtım sırasında istediğiniz değerleri kabul eden şablon parametrelerini tanımlayın, sabit kodlanmış değerleri şablon veya iş akışı Tanım parametrelerine başvurularla değiştirin ve ayrı bir [parametre dosyasında](../azure-resource-manager/templates/parameter-files.md)dağıtımda kullanılacak değerleri depolayın. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan parametre dosyası aracılığıyla bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adları, parolalar ve gizli bilgiler), bu değerleri Azure Key Vault saklayabilir ve parametre dosyanızın anahtar kasasından bu değerleri almasına sahip olursunuz. Şablon ve iş akışı Tanım düzeylerinde parametreleri tanımlama hakkında daha fazla bilgi ve örnekler için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
@@ -116,7 +116,7 @@ Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu]
 |-----------|----------|------|-------------|
 | <*statik-sonuç tanımı-adı*> | Yes | Dize | Bir eylem tanımının bir nesne aracılığıyla başvurabileceğinden, statik sonuç tanımının adı `runtimeConfiguration.staticResult` . Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
 | <*çıkış-öznitelikler-ve-değerler-döndürülen*> | Yes | Değişir | Bu özniteliklerin gereksinimleri farklı koşullara göre farklılık gösterir. Örneğin, olduğunda, `status` öznitelik, `Succeeded` `outputs` eylem tarafından sahte çıktılar olarak döndürülen öznitelikleri ve değerleri içerir. `status`İse öznitelik, `Failed` `outputs` `errors` hata bilgilerine sahip bir veya daha fazla hata nesnesi olan bir dizi olan özniteliği içerir `message` . |
-| <*üst bilgi-değerler*> | No | JSON | Eylem tarafından döndürülen üst bilgi değerleri |
+| <*üst bilgi-değerler*> | Hayır | JSON | Eylem tarafından döndürülen üst bilgi değerleri |
 | <*durum-kod döndürüldü*> | Yes | Dize | Eylem tarafından döndürülen durum kodu |
 | <*eylem-durum*> | Yes | Dize | Eylemin durumu, örneğin `Succeeded` veya`Failed` |
 |||||
@@ -178,7 +178,7 @@ JSON ile, tasarım zamanında mevcut olan değişmez değer değerlerine sahip o
 "rainbowColorsCount": 7
 ```
 
-Ayrıca çalışma zamanına kadar mevcut olmayan değerlere sahip olabilirsiniz. Bu değerleri temsil etmek için, çalışma zamanında değerlendirilen *ifadeleri*kullanabilirsiniz. İfade bir veya daha fazla [işlev](#functions), [işleç](#operators), [değişken](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values), açık değer veya sabitler içerebilen bir dizidir. İş akışı tanımınızda, ifadesi @ işareti () ile önek olarak ekleyerek JSON dize değerinde herhangi bir yerde bir ifadeyi kullanabilirsiniz \@ . JSON değerini temsil eden bir ifadeyi değerlendirirken, ifade gövdesi, karakter kaldırılarak ayıklanır \@ ve her zaman başka BIR JSON değeriyle sonuçlanır.
+Ayrıca çalışma zamanına kadar mevcut olmayan değerlere sahip olabilirsiniz. Bu değerleri temsil etmek için, çalışma zamanında değerlendirilen *ifadeleri*kullanabilirsiniz. İfade bir veya daha fazla [işlev](#functions), [işleç](#operators), [değişken](./logic-apps-create-variables-store-values.md), açık değer veya sabitler içerebilen bir dizidir. İş akışı tanımınızda, ifadesi @ işareti () ile önek olarak ekleyerek JSON dize değerinde herhangi bir yerde bir ifadeyi kullanabilirsiniz \@ . JSON değerini temsil eden bir ifadeyi değerlendirirken, ifade gövdesi, karakter kaldırılarak ayıklanır \@ ve her zaman başka BIR JSON değeriyle sonuçlanır.
 
 Örneğin, daha önce tanımlanmış `customerName` olan özelliği için, bir ifadede [Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) işlevini kullanarak özellik değerini alabilir ve bu değeri `accountName` özelliğine atayabilirsiniz:
 
@@ -275,14 +275,14 @@ Bir çıkış tanımının genel yapısı aşağıda verilmiştir:
 }
 ```
 
-| Öznitelik | Gerekli | Tür | Description |
+| Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
 | <*anahtar adı*> | Yes | Dize | Çıkış dönüş değeri için anahtar adı |
 | <*anahtar türü*> | Yes | int, float, String, SecureString, bool, Array, JSON nesnesi | Çıkış dönüş değeri için tür |
 | <*anahtar-değer*> | Yes | <*anahtar türüyle* aynı> | Çıkış dönüş değeri |
 |||||
 
-Bir iş akışı çalıştırmasının çıkışını almak için Azure portal mantıksal uygulamanızın çalıştırma geçmişini ve ayrıntılarını gözden geçirin veya [Iş akışı REST API](https://docs.microsoft.com/rest/api/logic/workflows)kullanın. Ayrıca, panoları oluşturabilmeniz için çıktıyı dış sistemlere geçirebilirsiniz (örneğin, Power BI).
+Bir iş akışı çalıştırmasının çıkışını almak için Azure portal mantıksal uygulamanızın çalıştırma geçmişini ve ayrıntılarını gözden geçirin veya [Iş akışı REST API](/rest/api/logic/workflows)kullanın. Ayrıca, panoları oluşturabilmeniz için çıktıyı dış sistemlere geçirebilirsiniz (örneğin, Power BI).
 
 <a name="operators"></a>
 
@@ -292,7 +292,7 @@ Bir iş akışı çalıştırmasının çıkışını almak için Azure portal m
 
 | Operatör | Görev |
 |----------|------|
-| ' | Dize sabit değerini girdi olarak veya ifadeler ve işlevler içinde kullanmak için, dizeyi yalnızca tek tırnak işaretleriyle sarın, örneğin, `'<myString>'` . Bir ifadenin tamamında JSON biçimlendirmesiyle çakışan çift tırnak işaretleri ("") kullanmayın. Örnek: <p>**Evet**: Uzunluk (' Merhaba ') </br>**Hayır**: length ("Hello") <p>Dizileri veya sayıları geçirdiğinizde, kaydırma noktalaması gerekmez. Örnek: <p>**Evet**: Uzunluk ([1, 2, 3]) </br>**Hayır**: length ("[1, 2, 3]") |
+| ' | Dize sabit değerini girdi olarak veya ifadeler ve işlevler içinde kullanmak için, dizeyi yalnızca tek tırnak işaretleriyle sarın, örneğin, `'<myString>'` . Bir ifadenin tamamında JSON biçimlendirmesiyle çakışan çift tırnak işaretleri ("") kullanmayın. Örneğin: <p>**Evet**: Uzunluk (' Merhaba ') </br>**Hayır**: length ("Hello") <p>Dizileri veya sayıları geçirdiğinizde, kaydırma noktalaması gerekmez. Örneğin: <p>**Evet**: Uzunluk ([1, 2, 3]) </br>**Hayır**: length ("[1, 2, 3]") |
 | [] | Bir dizideki belirli bir konumdaki (Dizin) bir değere başvurmak için köşeli ayraçları kullanın. Örneğin, bir dizide ikinci öğeyi almak için: <p>`myArray[1]` |
 | . | Bir nesnedeki bir özelliğe başvurmak için, nokta işlecini kullanın. Örneğin, `name` bir JSON nesnesinin özelliğini almak için `customer` : <p>`"@parameters('customer').name"` |
 | ? | Çalışma zamanı hatası olmadan bir nesnedeki null özelliklere başvurmak için soru işareti işlecini kullanın. Örneğin, bir tetikleyiciden gelen null çıkışları işlemek için şu ifadeyi kullanabilirsiniz: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
@@ -307,4 +307,4 @@ Bazı ifadeler, iş akışı tanımınız çalışmaya başladığında henüz m
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Iş akışı tanımı dil eylemleri ve Tetikleyicileri](../logic-apps/logic-apps-workflow-actions-triggers.md) hakkında bilgi edinin
-* [Iş akışı](https://docs.microsoft.com/rest/api/logic/workflows) ile programlı bir şekilde mantıksal uygulamalar oluşturma ve yönetme hakkında bilgi edinin REST API
+* [Iş akışı](/rest/api/logic/workflows) ile programlı bir şekilde mantıksal uygulamalar oluşturma ve yönetme hakkında bilgi edinin REST API

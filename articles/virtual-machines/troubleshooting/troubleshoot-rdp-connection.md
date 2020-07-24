@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: a259217280be343f383372a066d4033368c2b651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 831ce1ccb2c09a85ddfff8fa65172b1871119a61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079902"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme
 Windows tabanlı Azure sanal makinenize (VM) olan Uzak Masaüstü Protokolü (RDP) bağlantısı çeşitli sebeplerle başarısız olabilir ve VM'nize erişememenize yol açabilir. Bu sorun VM'deki Uzak Masaüstü hizmetinden, ağ bağlantısından veya ana bilgisayarınızdaki Uzak Masaüstü istemcisinden kaynaklanabilir. Bu makale RDP bağlantı sorunlarını çözmeye yönelik en yaygın yöntemlerin bazılarında size yol gösterir. 
@@ -104,7 +104,7 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
 Hala RDP sorunlarıyla karşılaşdıysanız [bir destek isteği açabilir](https://azure.microsoft.com/support/options/) veya [daha ayrıntılı RDP sorun giderme kavramlarını ve adımlarını](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)okuyabilirsiniz.
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Azure PowerShell'i kullanarak sorun giderme
-Henüz yapmadıysanız, [en son Azure PowerShell yükleyip yapılandırın](/powershell/azure/overview).
+Henüz yapmadıysanız, [en son Azure PowerShell yükleyip yapılandırın](/powershell/azure/).
 
 Aşağıdaki örnekler,, ve gibi değişkenleri `myResourceGroup` kullanır `myVM` `myVMAccessExtension` . Bu değişken adlarını ve konumlarını kendi değerlerinizle değiştirin.
 

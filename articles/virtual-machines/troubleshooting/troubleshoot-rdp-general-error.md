@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985815"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079834"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Azure VM 'de RDP genel hatasıyla ilgili sorunları giderme
 
@@ -183,7 +183,7 @@ Daha fazla bilgi için bkz. [Azure VM 'de Uzak Masaüstü bağlantısı kesiliyo
 
 #### <a name="step-1-turn-on-remote-desktop"></a>1. Adım: Uzak Masaüstü 'Nü etkinleştirme
 
-1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
+1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](./troubleshoot-recovery-disks-portal-windows.md).
 2. Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı başlatın.
 3. Diskin Disk Yönetimi konsolunda **çevrimiçi** olarak işaretlendiğinden emin olun. Bağlı işletim sistemi diskine atanan sürücü harfini unutmayın.
 4. Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı başlatın.

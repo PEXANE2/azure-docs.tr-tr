@@ -71,13 +71,13 @@
     - name: Azure Blok Zinciri geliştirme seti
       href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Blok Zinciri REST API
-      href: 'https://docs.microsoft.com/rest/api/blockchain/'
+      href: /rest/api/blockchain/
     - name: Kod örnekleri
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-service.html'
+      href: /answers/topics/azure-blockchain-service.html
     - name: Topluluk desteği
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow desteği

@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a4cb788a24252a2de7b9d669b166b25ed48be1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081602"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme
 
@@ -22,7 +22,7 @@ Bu yöntem, Azure Resource Manager otomasyonu ile yeni Application Insights kayn
 
 Akıllı algılama kuralı için aşağıdaki ayarları yapılandırabilirsiniz:
 - Kural etkinse (varsayılan değer **true**'dur.)
-- E-postaların, aboneliğin [Izleme okuyucusu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) ile ilişkili kullanıcılara gönderilmesi ve bir algılama bulunduğunda [katkıda bulunan rollerinin izlenmesi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) gerekir (varsayılan değer **true**'dur.)
+- E-postaların, aboneliğin [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) ile ilişkili kullanıcılara gönderilmesi ve bir algılama bulunduğunda [katkıda bulunan rollerinin izlenmesi](../../role-based-access-control/built-in-roles.md#monitoring-contributor) gerekir (varsayılan değer **true**'dur.)
 - Bir algılama bulunduğunda bildirim alması gereken ek e-posta alıcıları.
     -  _Önizleme_olarak Işaretlenen akıllı algılama kuralları için e-posta yapılandırması kullanılamaz.
 

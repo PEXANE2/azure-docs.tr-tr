@@ -9,15 +9,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0848d092c342b29c1839a4dd4cebd0bad62ea3ca
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 001b5d803dedad8de407480e668c9ec40a004ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023015"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080395"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Büyük sanal makine ölçek kümeleri ile çalışma
-Artık, 1000 adede kadar VM kapasiteli Azure [sanal makine ölçek kümeleri](/azure/virtual-machine-scale-sets/) oluşturabilirsiniz. Bu belgede _büyük bir sanal makine ölçek kümesi_, 100’den fazla VM'yi ölçeklendirme kapasitesine sahip bir ölçek kümesi olarak tanımlanır. Bu özellik bir ölçek kümesi özelliği ile ayarlanır (_singlePlacementGroup=False_). 
+Artık, 1000 adede kadar VM kapasiteli Azure [sanal makine ölçek kümeleri](./index.yml) oluşturabilirsiniz. Bu belgede _büyük bir sanal makine ölçek kümesi_, 100’den fazla VM'yi ölçeklendirme kapasitesine sahip bir ölçek kümesi olarak tanımlanır. Bu özellik bir ölçek kümesi özelliği ile ayarlanır (_singlePlacementGroup=False_). 
 
 Büyük ölçek kümelerinin yük dengeleme ve hata etki alanları gibi bazı özellikleri, standart bir ölçek kümesinden farklı davranır. Bu belgede büyük ölçek kümelerinin özellikleri ve bunları uygulamalarınızda başarıyla kullanabilmeniz için bilmeniz gerekenler açıklanmaktadır. 
 
@@ -34,10 +34,10 @@ Uygulamanızın büyük ölçek kümelerini etkili bir şekilde kullanıp kullan
 - Özel görüntülerden oluşturulan ölçek kümeleri (kendi oluşturduğunuz ve yüklediğiniz VM görüntüleri) şu anda en fazla 600 VM’ye kadar ölçeklendirilebilir.
 - Büyük ölçek kümeleri Azure Yönetilen Diskleri gerektirir. Yönetilen Diskler ile oluşturulmayan ölçek kümeleri birden fazla depolama hesabı (her 20 VM için bir tane) gerektirir. Büyük ölçek kümeleri, depolama yönetimi yükünüzü azaltmak ve depolama hesaplarının abonelik sınırlarını aşma riskini önlemek üzere yalnızca Yönetilen Disklerle çalışacak şekilde tasarlanmıştır. 
 - Büyük ölçek (SPG = false), InfiniBand ağını desteklemez
-- Birden fazla yerleştirme grubundan oluşan ölçek kümeleriyle Katman-4 yük dengelemesi için [Azure Load Balancer Standart SKU'su](../load-balancer/load-balancer-standard-overview.md) gerekir. Load Balancer Standart SKU'su, birden çok ölçek kümesi arasında yük dengeleme özelliği gibi ek avantajlar sağlar. Standart SKU ayrıca, ölçek kümesinin kendisiyle ilişkilendirilmiş bir Ağ Güvenlik Grubu olmasını da gerektirir; aksi takdirde NAT havuzları düzgün çalışmaz. Azure Load Balancer Temel SKU'sunu kullanmanız gerekirse, ölçek kümesinin tek bir yerleştirme grubu kullanacak şekilde (varsayılan ayar) yapılandırıldığından emin olun.
+- Birden fazla yerleştirme grubundan oluşan ölçek kümeleriyle Katman-4 yük dengelemesi için [Azure Load Balancer Standart SKU'su](../load-balancer/load-balancer-overview.md) gerekir. Load Balancer Standart SKU'su, birden çok ölçek kümesi arasında yük dengeleme özelliği gibi ek avantajlar sağlar. Standart SKU ayrıca, ölçek kümesinin kendisiyle ilişkilendirilmiş bir Ağ Güvenlik Grubu olmasını da gerektirir; aksi takdirde NAT havuzları düzgün çalışmaz. Azure Load Balancer Temel SKU'sunu kullanmanız gerekirse, ölçek kümesinin tek bir yerleştirme grubu kullanacak şekilde (varsayılan ayar) yapılandırıldığından emin olun.
 - Azure Application Gateway ile 7. katman yük dengeleme tüm ölçek kümeleri için desteklenir.
 - Ölçek kümesi tek bir alt ağ ile tanımlanır; alt ağınızın gereken tüm VM’ler için yeterince geniş bir adres alanına sahip olduğundan emin olun. Varsayılan olarak, dağıtım güvenilirliğini ve performansını artırmak için ölçek kümesi fazla sağlama yapar (dağıtım sırasında veya ölçeklendirme sırasında fazladan VM oluşturur, bunlar için ücret alınmaz). Ölçeklendirmeyi planladığınız VM sayısından %20 daha fazla adres alanı ayırın.
-- Hata etki alanları ve yükseltme etki alanları yalnızca bir yerleştirme grubu içinde tutarlıdır. VM’ler ayrı bir fiziksel donanım üzerinde dağıtıldığı için bu mimari bir ölçek kümesinin genel kullanılabilirliğini değiştirmez, ancak farklı bir donanım üzerinde iki VM’yi garanti etmeniz gerekiyorsa, bunların aynı yerleştirme grubundaki farklı hata etki alanlarında olduğundan emin olmanız gerektiği anlamına gelir. Lütfen bu bağlantı [kullanılabilirliği seçeneklerine](/azure/virtual-machines/windows/availability)bakın. 
+- Hata etki alanları ve yükseltme etki alanları yalnızca bir yerleştirme grubu içinde tutarlıdır. VM’ler ayrı bir fiziksel donanım üzerinde dağıtıldığı için bu mimari bir ölçek kümesinin genel kullanılabilirliğini değiştirmez, ancak farklı bir donanım üzerinde iki VM’yi garanti etmeniz gerekiyorsa, bunların aynı yerleştirme grubundaki farklı hata etki alanlarında olduğundan emin olmanız gerektiği anlamına gelir. Lütfen bu bağlantı [kullanılabilirliği seçeneklerine](../virtual-machines/windows/availability.md)bakın. 
 - Hata etki alanı ve yerleştirme grubu kimliği, bir ölçek kümesi sanal makinesinin _örnek görünümünde_ gösterilir. Bir ölçek kümesi sanal makinesinin örnek görünümünü [Azure Kaynak Gezgini](https://resources.azure.com/)’nde görüntüleyebilirsiniz.
 
 ## <a name="creating-a-large-scale-set"></a>Büyük ölçek kümesi oluşturma
@@ -84,5 +84,3 @@ Mevcut bir sanal makine ölçek kümesini 100’den fazla VM ölçeklendirebilec
 
 > [!NOTE]
 > Tek bir yerleştirme grubunu destekleyen bir ölçek kümesini (varsayılan davranış), birden fazla yerleştirme grubunu destekleyecek şekilde değiştirebilirsiniz, ancak zıt yönde değiştiremezsiniz. Bu nedenle, dönüştürmeden önce büyük ölçek kümelerinin özelliklerini anladığınızdan emin olun.
-
-

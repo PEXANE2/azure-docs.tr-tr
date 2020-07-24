@@ -4,11 +4,12 @@ description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin 
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247808"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079307"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -18,7 +19,7 @@ Herhangi bir geri yükleme işlemi için, bunlardan önce ilgili kurtarma noktas
 
 ## <a name="select-recovery-point"></a>Kurtarma noktası seçin
 
-Bir yedekleme öğesinin kullanılabilir kurtarma noktaları, [Liste kurtarma noktası REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list)kullanılarak listelenebilir. Tüm ilgili değerleri olan basit bir *Get* işlemidir.
+Bir yedekleme öğesinin kullanılabilir kurtarma noktaları, [Liste kurtarma noktası REST API](/rest/api/backup/recoverypoints/list)kullanılarak listelenebilir. Tüm ilgili değerleri olan basit bir *Get* işlemidir.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -30,9 +31,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Yanıtlar
 
-|Name  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       Tamam  |
+|200 TAMAM     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       Tamam  |
 
 #### <a name="example-response"></a>Örnek yanıt
 
@@ -118,7 +119,7 @@ Kurtarma noktası `{name}` Yukarıdaki yanıttaki alanla tanımlanır.
 
 Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, bunlardan biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve gereksinimlerine göre bu disklerden bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("vmconfig.json") yapılandırması, belirtilen depolama hesabında depolanır.
 
-Geri yükleme disklerinin tetiklenmesi bir *Post* isteğidir. Diskleri geri yükleme işlemi hakkında daha fazla bilgi edinmek için, ["geri yüklemeyi Tetikle" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)bakın.
+Geri yükleme disklerinin tetiklenmesi bir *Post* isteğidir. Diskleri geri yükleme işlemi hakkında daha fazla bilgi edinmek için, ["geri yüklemeyi Tetikle" REST API](/rest/api/backup/restores/trigger)bakın.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -130,11 +131,11 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Azure VM yedeğinden bir disk geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Name  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için [tetikleyici geri yükleme REST API belgesine](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için [tetikleyici geri yükleme REST API belgesine](/rest/api/backup/restores/trigger#request-body)bakın.
 
 #### <a name="example-request"></a>Örnek istek
 
@@ -160,11 +161,11 @@ Aşağıdaki istek gövdesi, disk geri yükleme tetiklenmesi için gereken özel
 
 ### <a name="response"></a>Yanıt
 
-Geri yükleme diskini tetikleme [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
+Geri yükleme diskini tetikleme [zaman uyumsuz bir işlemdir](../azure-resource-manager/management/async-operations.md). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Name  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |202 kabul edildi     |         |     Kabul edildi    |
 

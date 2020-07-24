@@ -1,29 +1,29 @@
 ---
-title: C# kodu kullanarak bir GA ortamından veri sorgulama-Azure Time Series Insights | Microsoft Docs
-description: C# dilinde yazılmış özel bir uygulama kullanarak Azure Time Series Insights ortamından veri sorgulama hakkında bilgi edinin.
+title: C# kodu kullanarak Gen1 ortamından veri sorgulama-Azure Time Series Insights Gen1 | Microsoft Docs
+description: C# dilinde yazılmış özel bir uygulama kullanarak Azure Time Series Insights Gen1 ortamından verileri sorgulamayı öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 754d1b80236d138693987cccee7a218ccd96b16b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c794cfb5f0d652e25007131d9ca39fb73e2218e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81383879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080684"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>C kullanarak Azure Time Series Insights GA ortamından veri sorgulama #
+# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>C kullanarak Azure Time Series Insights Gen1 ortamından veri sorgulama #
 
-Bu C# örneği, Azure Time Series Insights GA ortamlarından verileri sorgulamak için [ga sorgu API 'lerinin](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) nasıl kullanılacağını gösterir.
+Bu C# örneği, Azure Time Series Insights Gen1 ortamlarından verileri sorgulamak için [Gen1 sorgu API 'lerinin](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) nasıl kullanılacağını gösterir.
 
 > [!TIP]
-> ' Deki GA C# kod örneklerini görüntüleyin [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
+> Gen1 C# kod örneklerini şurada görüntüleyin: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
 ## <a name="summary"></a>Özet
 
@@ -33,14 +33,14 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 * Bu alınan erişim belirtecini `Authorization` Sonraki sorgu API 'si isteklerinin üst bilgisinde geçirme. 
 
-* Örnek, HTTP isteklerinin ' de nasıl yapıldığını gösteren bir GA sorgu API 'lerinin her birini çağırır:
+* Örnek, HTTP isteklerinin ' de nasıl yapıldığını gösteren Gen1 sorgu API 'lerinin her birini çağırır:
     * Kullanıcının erişimi olan ortamları döndürmesi için [ortamlar API 'Si al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api)
     * [Ortam kullanılabilirliği API 'sini al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
     * Ortam meta verilerini almak için [ortam meta verileri API 'Sini alma](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api)
     * [Ortam olayları API 'SI al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
     * [Ortam toplamaları API 'SI al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
     
-* WSS kullanarak GA sorgu API 'Leriyle etkileşim kurma:
+* Gen1 sorgu API 'Leriyle nasıl etkileşim kuracağınızı öğrenmek için WSS 'yi kullanarak:
 
    * [Ortam olaylarını akışlı API al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
    * [Ortam toplamlarını akışlı API al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
@@ -49,7 +49,7 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
-1. [BIR GA Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) .
+1. [Bir Gen1 Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) .
 1. [Kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md)bölümünde açıklandığı gibi, Azure Active Directory için Azure Time Series Insights ortamınızı yapılandırın. 
 1. Gerekli proje bağımlılıklarını yükler.
 1. Her **#DUMMY #** öğesini uygun ortam tanımlayıcısı ile değiştirerek aşağıdaki örnek kodu düzenleyin.

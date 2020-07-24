@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80863b56334b0d2d76cdf505dcd15c5cc4c14c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081109"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Azure 'ı genel bulutlarla bağlama
 
@@ -33,7 +34,7 @@ Layer3 sağlayıcıları genellikle IP VPN veya MPLS VPN sağlayıcıları olara
  
 Microsoft, Layer3 sağlayıcısı üzerinden bağlanılırken, müşteri VNET yollarını BGP üzerinden hizmet sağlayıcısına duyuracaktır. Sağlayıcı iki farklı uygulama içerebilir.
 
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
+![Bir Layer3 sağlayıcısı gösteren diyagram.](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
 Tüm bulut sağlayıcılarından gelen trafik müşteri yönlendiricisinde iletişime geçecektir, sağlayıcı her bir bulut sağlayıcısında ayrı bir VRF 'de iniş olabilir. Müşteri BGP 'yi hizmet sağlayıcısıyla çalıştırıyorsa, bu yollar varsayılan olarak diğer bulut sağlayıcılarına yeniden tanıtılabilir. 
 
@@ -44,7 +45,7 @@ Her genel bulutun farklı ön ek sınırı vardır, bu nedenle yollar dağıtıl
 ### <a name="layer2-provider-and-direct-connection"></a>Layer2 sağlayıcısı ve doğrudan bağlantı
 
 Her iki modelde da fiziksel bağlantı farklı olsa da, ancak Layer3 BGP 'de doğrudan MSEE ve müşteri yönlendiricisi arasında oluşturulmuştur. ExpressRoute Direct müşterisi için doğrudan MSEE 'a bağlanır. Layer2 durumda servis sağlayıcı, VLAN 'ı müşteri Şirket içinden buluta genişletir. Müşteriler, DC 'leri buluta bağlamak için Layer2 ağı üzerinde BGP çalıştırır.
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
+![Bir Layer2 sağlayıcısı ve doğrudan bağlantı gösteren diyagram.](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
 Her iki durumda da müşterinin Genel bulutların her birine noktadan noktaya bağlantıları olacaktır. Müşteri, her genel buluta ayrı BGP bağlantısı kurar. Bir bulut sağlayıcısı tarafından alınan yollar, varsayılan olarak diğer bulut sağlayıcısına tanıtılabilir. Her bulut sağlayıcısının farklı ön ek sınırı vardır. bu nedenle, rotalar müşterisi Bu limitlerin ilgilenmelidir. Müşteri, diğer Genel bulutların yollarını tanılarken Microsoft ile her zamanki BGP düğmelerini kullanabilir.
 
 ## <a name="direct-connection-with-expressroute"></a>ExpressRoute ile doğrudan bağlantı

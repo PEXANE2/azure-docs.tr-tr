@@ -10,15 +10,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373990"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080514"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ölçek Kümeleri Için tasarım konuları
-Bu makalede, sanal makine ölçek kümelerine ilişkin tasarım konuları ele alınmaktadır. Sanal makine ölçek kümelerinin ne olduğu hakkında bilgi için [sanal makine ölçek kümelerine genel bakış](virtual-machine-scale-sets-overview.md)bölümüne bakın.
+Bu makalede, sanal makine ölçek kümelerine ilişkin tasarım konuları ele alınmaktadır. Sanal makine ölçek kümelerinin ne olduğu hakkında bilgi için [sanal makine ölçek kümelerine genel bakış](./overview.md)bölümüne bakın.
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Sanal makineler yerine ölçek kümeleri ne zaman kullanılır?
 Genellikle, ölçek kümeleri, bir makine kümesinin benzer yapılandırmasına sahip olduğu yüksek oranda kullanılabilir altyapıyı dağıtmak için yararlıdır. Ancak, bazı özellikler yalnızca sanal makinelerde kullanılabilir durumdayken ölçek kümelerinde kullanılabilir. Her teknolojinin ne zaman kullanılacağı konusunda bilinçli bir karar vermek için, öncelikle VM 'Ler değil, ölçek kümelerinde kullanılabilen yaygın olarak kullanılan özelliklerden bazılarını göz atalım:
@@ -27,8 +27,8 @@ Genellikle, ölçek kümeleri, bir makine kümesinin benzer yapılandırmasına 
 
 - Ölçek kümesi yapılandırmasını belirttikten sonra, paralel olarak daha fazla VM dağıtmak için *Kapasite* özelliğini güncelleştirebilirsiniz. Bu işlem, birçok ayrı VM 'yi paralel olarak dağıtmak için bir komut dosyası yazmadan daha iyidir.
 - Azure otomatik [ölçeklendirme özelliğini kullanarak bir ölçek kümesini otomatik olarak ölçeklendirin](./virtual-machine-scale-sets-autoscale-overview.md) , tek tek VM 'leri kullanamazsınız.
-- [Ölçek kümesi sanal makinelerini yeniden görüntü](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) oluşturabilir, ancak [tek tek sanal](https://docs.microsoft.com/rest/api/compute/virtualmachines)makinelere sahip olabilirsiniz.
-- Daha fazla güvenilirlik ve daha hızlı dağıtım süreleri için ölçek kümesi sanal makinelerini [fazla temin](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) edebilirsiniz. Bu eylemi gerçekleştirmek için özel kod yazmadığınız müddetçe tek tek VM 'Leri fazla sağlayamazsınız.
+- [Ölçek kümesi sanal makinelerini yeniden görüntü](/rest/api/compute/virtualmachinescalesets/reimage) oluşturabilir, ancak [tek tek sanal](/rest/api/compute/virtualmachines)makinelere sahip olabilirsiniz.
+- Daha fazla güvenilirlik ve daha hızlı dağıtım süreleri için ölçek kümesi sanal makinelerini [fazla temin](#overprovisioning) edebilirsiniz. Bu eylemi gerçekleştirmek için özel kod yazmadığınız müddetçe tek tek VM 'Leri fazla sağlayamazsınız.
 - Ölçek kümesindeki VM 'lerde yükseltmeleri kullanıma almayı kolaylaştırmak için bir [yükseltme ilkesi](./virtual-machine-scale-sets-upgrade-scale-set.md) belirtebilirsiniz. Ayrı VM 'Ler ile güncelleştirmeleri kendiniz ayarlamalısınız.
 
 ### <a name="vm-specific-features"></a>VM 'ye özgü özellikler
@@ -68,4 +68,3 @@ Kullanıcı tarafından yönetilen depolama hesaplarıyla yapılandırılmış b
 Özel bir görüntüde oluşturulan ölçek kümesi (sizin tarafınızdan oluşturulan), Azure yönetilen disklerle yapılandırıldığında 600 sanal makineye kadar kapasiteye sahip olabilir. Ölçek kümesi Kullanıcı tarafından yönetilen depolama hesaplarıyla yapılandırıldıysa, tek bir depolama hesabında tüm işletim sistemi diski VHD 'lerini oluşturması gerekir. Sonuç olarak, özel bir görüntü ve Kullanıcı tarafından yönetilen depolama üzerinde oluşturulan bir ölçek kümesindeki en fazla önerilen sanal makine sayısı 20 ' dir. Aşırı sağlamayı kapatırsanız 40 'e kadar gidebilirsiniz.
 
 Bu limitlerin izin verenden daha fazla VM için, [Bu şablonda](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)gösterildiği gibi birden çok ölçek kümesi dağıtmanız gerekir.
-

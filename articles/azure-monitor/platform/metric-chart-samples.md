@@ -7,15 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 762264cfe7e0441671411e2c277a0796cd527399
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797439"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081534"
 ---
 # <a name="metric-chart-examples"></a>Ölçüm grafiği örnekleri 
 
-Azure platformu, çoğu boyut içeren, binlerce [ölçüm üzerinde](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)sunulur. [Boyut filtrelerini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)kullanarak, [bölme](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), grafik türünü denetleme ve grafik ayarlarını ayarlama yoluyla, altyapınızın ve uygulamalarınızın sistem durumuna ilişkin Öngörüler sağlayan güçlü tanılama görünümleri ve panolar oluşturabilirsiniz. Bu makalede, [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) kullanarak oluşturabileceğiniz grafiklerin bazı örnekleri gösterilmektedir ve bu grafiklerin her birini yapılandırmak için gereken adımları açıklar.
+Azure platformu, çoğu boyut içeren, binlerce [ölçüm üzerinde](./metrics-supported.md)sunulur. [Boyut filtrelerini](./metrics-charts.md)kullanarak, [bölme](./metrics-charts.md), grafik türünü denetleme ve grafik ayarlarını ayarlama yoluyla, altyapınızın ve uygulamalarınızın sistem durumuna ilişkin Öngörüler sağlayan güçlü tanılama görünümleri ve panolar oluşturabilirsiniz. Bu makalede, [Ölçüm Gezgini](./metrics-charts.md) kullanarak oluşturabileceğiniz grafiklerin bazı örnekleri gösterilmektedir ve bu grafiklerin her birini yapılandırmak için gereken adımları açıklar.
 
 Harika grafik örneklerinizi dünya ile paylaşmak ister misiniz? GitHub 'da bu sayfaya katkıda bulunun ve kendi grafik örneklerinizi burada paylaşabilirsiniz!
 
@@ -37,7 +38,7 @@ Hangi coğrafi konumların sorun yaşadığını belirlemek için uygulamanızı
 
 ### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılır?
 
-Önce Web siteniz için [Application Insights kullanılabilirlik](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) izlemeyi açmanız gerekir. Bundan sonra Application Insights kaynağını seçin ve kullanılabilirlik ölçümünü seçin. **Çalışma konumu** boyutunda bölme uygulayın.
+Önce Web siteniz için [Application Insights kullanılabilirlik](../app/monitor-web-app-availability.md) izlemeyi açmanız gerekir. Bundan sonra Application Insights kaynağını seçin ve kullanılabilirlik ölçümünü seçin. **Çalışma konumu** boyutunda bölme uygulayın.
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>API adına göre depolama hesabı işlemleri hacmi
 

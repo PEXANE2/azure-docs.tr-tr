@@ -6,21 +6,21 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ac1129db05c7b492e209478446f69fe48ea9fffd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff7d088a80ceaf01e9434ef62beb0e771cdf6b55
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081670"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
 > [!NOTE]
-> Bu makalede, Application Insights maliyetlerinizi nasıl anlayacağınızı ve denetleyebileceğinizi açıklamaktadır.  [Kullanımı ve tahmini maliyetleri izleyen](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) ilgili bir makale, farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği genelinde kullanım ve tahmini maliyetlerin nasıl görüntüleneceğini açıklar.
+> Bu makalede, Application Insights maliyetlerinizi nasıl anlayacağınızı ve denetleyebileceğinizi açıklamaktadır.  [Kullanımı ve tahmini maliyetleri izleyen](../platform/usage-estimated-costs.md) ilgili bir makale, farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği genelinde kullanım ve tahmini maliyetlerin nasıl görüntüleneceğini açıklar.
 
 Application Insights, Azure 'da veya şirket içinde barındırıldığından, Web uygulamalarınızın kullanılabilirliğini, performansını ve kullanımını izlemek için gereken her şeyi almak üzere tasarlanmıştır. Application Insights, .NET, Java ve Node.js gibi popüler dilleri ve çerçeveleri destekler ve Azure DevOps, Jira ve Pagerharcı gibi DevOps işlemleri ve araçları ile tümleştirilir. Uygulamalarınızı izlemenin maliyetlerinin ne olduğunu anlamak önemlidir. Bu makalede, uygulama izleme maliyetlerinizi ve bunları nasıl proaktif olarak izleyip denetleyebileceğinize ilişkin hangi sürücüleri gözden geçiyoruz.
 
-Fiyatlandırmanın Application Insights nasıl çalıştığı hakkında sorularınız varsa, [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-monitor.html)bir soru gönderebilirsiniz.
+Fiyatlandırmanın Application Insights nasıl çalıştığı hakkında sorularınız varsa, [Microsoft Q&soru sayfasında](/answers/topics/azure-monitor.html)bir soru gönderebilirsiniz.
 
 ## <a name="pricing-model"></a>Fiyatlandırma modeli
 
@@ -28,11 +28,11 @@ Fiyatlandırmanın Application Insights nasıl çalıştığı hakkında sorular
 
 [Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md) ek bir ücret doğurur. Çok adımlı Web testleri, bir dizi eylemi gerçekleştiren Web sınamalardır. Tek bir sayfanın *ping testlerine* yönelik ayrı ücret alınmaz. Ping sınamalarından ve çok adımlı testlerin telemetrisi, uygulamanızdan diğer telemetri ile aynı şekilde ücretlendirilir.
 
-[Özel ölçüm boyutlarında uyarı](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) verme seçeneğini etkinleştirmek için Application Insights seçeneği ek maliyetler halinde de oluşturulabilir, çünkü bu, ek ön toplama ölçümleri oluşturulmasına neden olabilir. Application Insights 'de günlük tabanlı ve önceden toplanmış ölçümler hakkında daha fazla bilgi edinin ve Azure Izleyici özel ölçümleri için [fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) .
+[Özel ölçüm boyutlarında uyarı](./pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) verme seçeneğini etkinleştirmek için Application Insights seçeneği ek maliyetler halinde de oluşturulabilir, çünkü bu, ek ön toplama ölçümleri oluşturulmasına neden olabilir. Application Insights 'de günlük tabanlı ve önceden toplanmış ölçümler hakkında daha fazla bilgi edinin ve Azure Izleyici özel ölçümleri için [fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) hakkında [daha fazla bilgi edinin](./pre-aggregated-metrics-log-metrics.md) .
 
 ### <a name="workspace-based-application-insights"></a>Çalışma alanı tabanlı Application Insights
 
-[Çalışma alanı tabanlı Application Insights kaynakları](create-workspace-resource.md)olarak adlandırılan verileri bir Log Analytics çalışma alanına Gönderen Application Insights kaynakları için, veri alma ve bekletme için faturalandırma, Application Insights verilerinin bulunduğu çalışma alanı tarafından yapılır. Bu, müşterilerin, Kullandıkça öde ' ye ek olarak kapasite rezervasyonları içeren Log Analytics [fiyatlandırma modelinin](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model) tüm seçeneklerini kullanmasını sağlar. Log Analytics, veri saklama için [veri türüne göre bekletme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type)de dahil olmak üzere daha fazla seçenek içerir. Çalışma alanındaki Application Insights veri türleri, ücretlendirmesiz 90 günlük bekletme alır. Web testlerinin kullanımı ve özel ölçüm boyutlarında uyarı etkinleştirme işlemi Application Insights aracılığıyla rapor edilir. [Kullanım ve tahmini maliyetler](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs), [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#viewing-log-analytics-usage-on-your-azure-bill) ve [Log Analytics sorguları](#data-volume-for-workspace-based-application-insights-resources)kullanarak Log Analytics veri alımı ve bekletme maliyetlerini nasıl izleyeceğinizi öğrenin. 
+[Çalışma alanı tabanlı Application Insights kaynakları](create-workspace-resource.md)olarak adlandırılan verileri bir Log Analytics çalışma alanına Gönderen Application Insights kaynakları için, veri alma ve bekletme için faturalandırma, Application Insights verilerinin bulunduğu çalışma alanı tarafından yapılır. Bu, müşterilerin, Kullandıkça öde ' ye ek olarak kapasite rezervasyonları içeren Log Analytics [fiyatlandırma modelinin](../platform/manage-cost-storage.md#pricing-model) tüm seçeneklerini kullanmasını sağlar. Log Analytics, veri saklama için [veri türüne göre bekletme](../platform/manage-cost-storage.md#retention-by-data-type)de dahil olmak üzere daha fazla seçenek içerir. Çalışma alanındaki Application Insights veri türleri, ücretlendirmesiz 90 günlük bekletme alır. Web testlerinin kullanımı ve özel ölçüm boyutlarında uyarı etkinleştirme işlemi Application Insights aracılığıyla rapor edilir. [Kullanım ve tahmini maliyetler](../platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Azure maliyet yönetimi + faturalandırma](../platform/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) ve [Log Analytics sorguları](#data-volume-for-workspace-based-application-insights-resources)kullanarak Log Analytics veri alımı ve bekletme maliyetlerini nasıl izleyeceğinizi öğrenin. 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Uygulamanızı yönetme maliyetlerini tahmin etme
 
@@ -44,7 +44,7 @@ Bunu ele almak için iki yaklaşım vardır: ASP.NET SDK 'sında kullanılabilen
 
 ASP.NET SDK 'nın [Uyarlamalı örneklenmesi](sampling.md#adaptive-sampling)sayesinde, veri hacmi varsayılan Application Insights izleme için belirtilen en yüksek trafik hızında tutulacak şekilde otomatik olarak ayarlanır. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim saniye başına yapılandırılan olayların altında olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Saniyede beş olay olan, yüksek hacimli bir uygulama için, uyarlamalı örnekleme, günlük olayların sayısını 432.000 olarak sınırlandırır. Genellikle 1 KB 'lik ortalama bir olay boyutunu kullanarak bu, uygulamanızı barındıran düğüm başına yaklaşık 13,4 GB telemetri (örnekleme her düğüm için yerel olarak yapıldığından) karşılık gelir. 
 
-Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak üzere [ASP.net, ASP.NET Core ve Java Web siteleri için](sampling.md#fixed-rate-sampling) , tutulacak verilerin yüzdesine göre Application Insights tarafından alındığı zaman örnekleri veren alma [örnekleme](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)kullanabilirsiniz
+Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak üzere [ASP.net, ASP.NET Core ve Java Web siteleri için](sampling.md#fixed-rate-sampling) , tutulacak verilerin yüzdesine göre Application Insights tarafından alındığı zaman örnekleri veren alma [örnekleme](./sampling.md#ingestion-sampling)kullanabilirsiniz
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Benzer müşterilerin topladıklarından öğrenin
 
@@ -66,7 +66,7 @@ E. Günlük veri hacmi ucunu ayarlayın.
 
 Application Insights kullanımınızı daha derin araştırmak için **ölçümler** sayfasını açın, "veri noktası birimi" adlı ölçümü ekleyin ve ardından verileri "Telemetri öğe türü" olarak bölmek Için *bölmeyi Uygula* seçeneğini belirleyin.
 
-Application Insights ücretleri Azure faturanızda eklenir. Azure faturanızın ayrıntılarını Azure portal veya [Azure Faturalandırma portalındaki](https://account.windowsazure.com/Subscriptions) **maliyet yönetimi + faturalandırma** bölümünde görebilirsiniz.  Bunu Application Insights için kullanmayla ilgili ayrıntılar için [aşağıya bakın](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) . 
+Application Insights ücretleri Azure faturanızda eklenir. Azure faturanızın ayrıntılarını Azure portal veya [Azure Faturalandırma portalındaki](https://account.windowsazure.com/Subscriptions) **maliyet yönetimi + faturalandırma** bölümünde görebilirsiniz.  Bunu Application Insights için kullanmayla ilgili ayrıntılar için [aşağıya bakın](#viewing-application-insights-usage-on-your-azure-bill) . 
 
 ![Sol menüde Faturalandırma ' i seçin.](./media/pricing/02-billing.png)
 
@@ -105,7 +105,7 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-Bu sorgunun, veri birimlerinde uyarı ayarlamak için bir [Azure günlük uyarısında](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) kullanılabileceğini unutmayın.  
+Bu sorgunun, veri birimlerinde uyarı ayarlamak için bir [Azure günlük uyarısında](../platform/alerts-unified-log.md) kullanılabileceğini unutmayın.  
 
 Telemetri verileri değişiklikleriniz hakkında daha fazla bilgi edinmek için, sorguyu kullanarak olay sayısını türe göre edinebilirsiniz:
 
@@ -174,10 +174,10 @@ union (AppAvailabilityResults),
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Azure faturanızda Application Insights kullanımı görüntüleme
 
-Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. Kaynak türüne göre bir filtre (Microsoft. Insights/Application Insights için) ekleme, harcamalarınızı izlemenize imkan tanır. "Grup ölçütü" için "ölçüm kategorisi" veya "ölçüm" seçeneğini belirleyin.  Geçerli fiyatlandırma planlarındaki Application Insights kaynaklar için, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, çoğu kullanım ölçüm kategorisi için Log Analytics olarak görünür. 
+Azure, [Azure maliyet yönetimi + faturalandırma](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. Kaynak türüne göre bir filtre (Microsoft. Insights/Application Insights için) ekleme, harcamalarınızı izlemenize imkan tanır. "Grup ölçütü" için "ölçüm kategorisi" veya "ölçüm" seçeneğini belirleyin.  Geçerli fiyatlandırma planlarındaki Application Insights kaynaklar için, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, çoğu kullanım ölçüm kategorisi için Log Analytics olarak görünür. 
 
-Kullanımınız [Azure Portal kullanımınıza indirilerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınız daha fazla anlama kazanılabilir.
-İndirilen elektronik tabloda günde Azure kaynağı başına kullanımı görebilirsiniz. Bu Excel elektronik tablosunda, Application Insights kaynaklarınızdan kullanım, "Application Insights" ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve sonra "Microsoft. Insights/bileşenleri içerir" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir.  Application Insights kullanımı, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, Log Analytics ölçüm kategorisiyle ölçü üzerinden raporlanır.  Yalnızca eski fiyatlandırma katmanlarında Application Insights kaynaklar ve çok adımlı Web testleri, Application Insights ölçüm kategorisiyle raporlanır.  Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz.
+Kullanımınızı daha iyi anlamak için [Azure portalından kullanım bilgilerinizi indirebilirsiniz](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal).
+İndirilen elektronik tabloda günde Azure kaynağı başına kullanımı görebilirsiniz. Bu Excel elektronik tablosunda, Application Insights kaynaklarınızdan kullanım, "Application Insights" ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve sonra "Microsoft. Insights/bileşenleri içerir" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir.  Application Insights kullanımı, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, Log Analytics ölçüm kategorisiyle ölçü üzerinden raporlanır.  Yalnızca eski fiyatlandırma katmanlarında Application Insights kaynaklar ve çok adımlı Web testleri, Application Insights ölçüm kategorisiyle raporlanır.  Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](../../cost-management-billing/understand/review-individual-bill.md) yardımcı olmak için daha fazla ayrıntı sağlanır.
 
 ## <a name="managing-your-data-volume"></a>Veri hacminin yönetilmesi
 
@@ -223,7 +223,7 @@ Günlük ucunu değiştirmek için, Application Insights kaynağınızın **Yap�
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Günlük üst sınır için uyarı oluşturma
 
-Application Insights günlük uç, alınan veri birimleri uyarı düzeyine veya günlük sınır düzeyine ulaştığında Azure etkinlik günlüğünde bir olay oluşturur.  [Bu etkinlik günlüğü olaylarına göre bir uyarı oluşturabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Bu olayların sinyal adları şunlardır:
+Application Insights günlük uç, alınan veri birimleri uyarı düzeyine veya günlük sınır düzeyine ulaştığında Azure etkinlik günlüğünde bir olay oluşturur.  [Bu etkinlik günlüğü olaylarına göre bir uyarı oluşturabilirsiniz](../platform/alerts-activity-log.md#create-with-the-azure-portal). Bu olayların sinyal adları şunlardır:
 
 * Application Insights bileşen günlük sınır uyarısı eşiğine ulaşıldı
 
@@ -247,7 +247,7 @@ Alım örneklemesini ayarlamak için **fiyatlandırma** bölmesine gidin:
 > **Veri örnekleme** bölmesi yalnızca alma örneklemenin değerini denetler. Uygulamanızda Application Insights SDK tarafından uygulanan örnekleme oranını yansıtmaz. Gelen telemetri SDK 'da zaten örneklenir, Alım örnekleme uygulanmaz.
 >
 
-Gerçek örnekleme oranını öğrenmek için, nereye uygulandığını fark etmeksizin bir [analiz sorgusu](analytics.md)kullanın. Sorgu şöyle görünür:
+Gerçek örnekleme oranını öğrenmek için, nereye uygulandığını fark etmeksizin bir [analiz sorgusu](../log-query/log-query-overview.md)kullanın. Sorgu şöyle görünür:
 
 ```kusto
 requests | where timestamp > ago(1d)
@@ -271,7 +271,7 @@ Saklama Ayrıca parametresi kullanılarak [PowerShell kullanılarak program arac
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights kullanarak veri aktarımı ücretleri
 
-Verilerin Application Insights gönderilmesi veri bant genişliği ücretlerine neden olabilirler. [Azure bant genişliği fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/bandwidth/)açıklandığı gibi, iki bölgede bulunan Azure hizmetleri arasındaki veri aktarımı, normal fiyata giden veri aktarımı olarak ücretlendirilir. Gelen veri aktarımı ücretsizdir. Ancak, bu ücret çok küçük (az%) Application Insights günlük verisi alma maliyetleriyle karşılaştırılır. Sonuç olarak, Log Analytics için maliyetleri denetlemek, verileri alınan veri hacminin üzerine odaklamalıdır ve [burada](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)bu konuda bilgi sağlanmasına yardımcı olacak rehberlik sunuyoruz.
+Verilerin Application Insights gönderilmesi veri bant genişliği ücretlerine neden olabilirler. [Azure bant genişliği fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/bandwidth/)açıklandığı gibi, iki bölgede bulunan Azure hizmetleri arasındaki veri aktarımı, normal fiyata giden veri aktarımı olarak ücretlendirilir. Gelen veri aktarımı ücretsizdir. Ancak, bu ücret çok küçük (az%) Application Insights günlük verisi alma maliyetleriyle karşılaştırılır. Sonuç olarak, Log Analytics için maliyetleri denetlemek, verileri alınan veri hacminin üzerine odaklamalıdır ve [burada](#managing-your-data-volume)bu konuda bilgi sağlanmasına yardımcı olacak rehberlik sunuyoruz.
 
 ## <a name="limits-summary"></a>Limit Özeti
 
@@ -293,11 +293,11 @@ Düğüm başına (eskiden Enterprise) katmanının düğüm başına ücreti va
 Para birimi ve bölgenizin geçerli fiyatları için bkz. [Application Insights fiyatlandırması](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
-> 2018 Nisan 'da, Azure izleme için [Yeni bir fiyatlandırma](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) modeli sunuyoruz. Bu model, izleme hizmetlerinin tam portföyüne ilişkin basit bir "Kullandıkça öde" modeli benimsemektedir. [Yeni fiyatlandırma modeli](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)hakkında daha fazla bilgi edinin, kullanım modellerinize bağlı olarak [Bu modele geçme etkisini nasıl değerlendirirsiniz](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#understanding-your-azure-monitor-costs) ve [yeni modeli nasıl kabul](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#azure-monitor-pricing-model) edebilirsiniz
+> 2018 Nisan 'da, Azure izleme için [Yeni bir fiyatlandırma](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) modeli sunuyoruz. Bu model, izleme hizmetlerinin tam portföyüne ilişkin basit bir "Kullandıkça öde" modeli benimsemektedir. [Yeni fiyatlandırma modeli](../platform/usage-estimated-costs.md)hakkında daha fazla bilgi edinin, kullanım modellerinize bağlı olarak [Bu modele geçme etkisini nasıl değerlendirirsiniz](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs) ve [yeni modeli nasıl kabul](../platform/usage-estimated-costs.md#azure-monitor-pricing-model) edebilirsiniz
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Düğüm başına katman ve Operations Management Suite abonelik yetkilendirmeleri
 
-Operations Management Suite E1 ve E2 satın alan müşteriler, düğüm başına Application Insights [daha önce duyurulan](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/)gibi ek ücret ödemeden ek bir bileşen olarak alabilir. Özellikle, her bir Operations Management Suite E1 ve E2 birimi düğüm katmanı başına Application Insights bir düğüme yönelik bir yetkilendirme içerir. Her Application Insights düğüm, hiçbir ek ücret ödemeden, 90 günlük veri saklama ile günde en fazla 200 MB veri alımı (Log Analytics veri alma işleminden ayrı) içerir. Katman, makalenin ilerleyen bölümlerinde daha ayrıntılı olarak açıklanmıştır.
+Operations Management Suite E1 ve E2 satın alan müşteriler, düğüm başına Application Insights [daha önce duyurulan](/archive/blogs/msoms/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription)gibi ek ücret ödemeden ek bir bileşen olarak alabilir. Özellikle, her bir Operations Management Suite E1 ve E2 birimi düğüm katmanı başına Application Insights bir düğüme yönelik bir yetkilendirme içerir. Her Application Insights düğüm, hiçbir ek ücret ödemeden, 90 günlük veri saklama ile günde en fazla 200 MB veri alımı (Log Analytics veri alma işleminden ayrı) içerir. Katman, makalenin ilerleyen bölümlerinde daha ayrıntılı olarak açıklanmıştır.
 
 Bu katman yalnızca Operations Management Suite aboneliği olan müşterilere uygulanabilir olduğundan, Operations Management Suite aboneliğine sahip olmayan müşteriler bu katmanı seçme seçeneği görmez.
 

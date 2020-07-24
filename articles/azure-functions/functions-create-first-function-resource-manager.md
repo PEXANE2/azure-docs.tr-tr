@@ -1,24 +1,28 @@
 ---
 title: Azure Resource Manager şablonları kullanarak ilk işlevinizi oluşturma
-description: Azure Resource Manager şablonu kullanarak basit bir HTTP ile tetiklenen sunucusuz bir işlev oluşturun ve Azure 'a dağıtın.
+description: Azure Resource Manager şablonu (ARM şablonu) kullanarak basit bir HTTP ile tetiklenen sunucusuz bir işlev oluşturun ve Azure 'a dağıtın.
 ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 403ff6407105574c78b8e600c37efbe61d2f8b79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e409b3b64ac6bc39ba4cb58397506723a67a0de2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081721"
 ---
-# <a name="quickstart-create-and-deploy-azure-functions-resources-from-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonundan Azure Işlevleri kaynaklarını oluşturma ve dağıtma
+# <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Hızlı başlangıç: ARM şablonundan Azure Işlevleri kaynaklarını oluşturma ve dağıtma
 
-Bu makalede, HTTP isteklerine yanıt veren bir işlev oluşturmak için bir Azure Resource Manager şablonu kullanırsınız. 
+Bu makalede, HTTP isteklerine yanıt veren bir işlev oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. 
 
 Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-function-app-create-dynamic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -48,13 +52,11 @@ Aşağıdaki sekmelerden birini seçin, bağlantıyı izleyin ve tercih ettiğin
 
 Projenizi yerel olarak oluşturduktan sonra, yeni işlevinizi Azure 'da çalıştırmak için gereken kaynakları oluşturursunuz. 
 
-## <a name="create-a-serverless-function-app-in-azure"></a>Azure 'da sunucusuz bir işlev uygulaması oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/) alınmıştır.
 
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic) alınmıştır.
-
-:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" range="1-140" highlight="55-136":::
 
 Aşağıdaki dört Azure kaynağı bu şablon tarafından oluşturulmuştur:
 
@@ -63,7 +65,7 @@ Aşağıdaki dört Azure kaynağı bu şablon tarafından oluşturulmuştur:
 + [**Microsoft. Web/Sites**](/azure/templates/microsoft.web/sites): işlev uygulaması oluşturma.
 + [**Microsoft. Insights/bileşenler**](/azure/templates/microsoft.insights/components): izleme için Application Insights bir örnek oluşturun.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli-interactive

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0f43d1f780f838fdc49eb055536204026edcc729
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079229"
 ---
 # <a name="text-to-speech-rest-api"></a>Metin okuma REST API'si
 
@@ -37,14 +37,14 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 ## <a name="get-a-list-of-voices"></a>Seslerin listesini alın
 
-Uç `voices/list` nokta, belirli bir bölgeye/uç noktaya ait seslerin tam listesini almanızı sağlar.
+`voices/list`Uç nokta, belirli bir bölgeye/uç noktaya ait seslerin tam listesini almanızı sağlar.
 
 ### <a name="regions-and-endpoints"></a>Bölgeler ve uç noktalar
 
-| Bölge | Uç Nokta |
+| Bölge | Uç Noktası |
 |--------|----------|
 | Doğu Avustralya | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Güney Brezilya | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brezilya Güney | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta ABD | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu Asya | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -69,11 +69,11 @@ Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstb
 
 | Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
-| `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer`. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
+| `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
 
 ### <a name="request-body"></a>İstek gövdesi
 
-Bu uç noktaya yönelik istekler `GET` için bir gövde gerekli değildir.
+`GET`Bu uç noktaya yönelik istekler için bir gövde gerekli değildir.
 
 ### <a name="sample-request"></a>Örnek istek
 
@@ -155,7 +155,7 @@ Her yanıt için HTTP durum kodu başarı veya genel hataları gösterir.
 
 ## <a name="convert-text-to-speech"></a>Metin okumayı dönüştürme
 
-Uç `v1` nokta, [konuşma birleştirme biçimlendirme dili (SSML)](speech-synthesis-markup.md)kullanarak metin okumayı dönüştürmenizi sağlar.
+`v1`Uç nokta, [konuşma birleştirme biçimlendirme DILI (SSML)](speech-synthesis-markup.md)kullanarak metin okumayı dönüştürmenizi sağlar.
 
 ### <a name="regions-and-endpoints"></a>Bölgeler ve uç noktalar
 
@@ -169,31 +169,31 @@ Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstb
 
 | Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
-| `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer`. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
-| `Content-Type` | Belirtilen metin için içerik türünü belirtir. Kabul edilen değer `application/ssml+xml`:. | Gerekli |
+| `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
+| `Content-Type` | Belirtilen metin için içerik türünü belirtir. Kabul edilen değer: `application/ssml+xml` . | Gerekli |
 | `X-Microsoft-OutputFormat` | Ses çıkış biçimini belirtir. Kabul edilen değerlerin tüm listesi için bkz. [Ses çıkışları](#audio-outputs). | Gerekli |
 | `User-Agent` | Uygulama adı. Belirtilen değer 255 karakterden az olmalıdır. | Gerekli |
 
 ### <a name="audio-outputs"></a>Ses çıkışları
 
-Bu, her istekte `X-Microsoft-OutputFormat` üst bilgi olarak gönderilen desteklenen ses biçimlerinin bir listesidir. Her biri bit hızı ve kodlama türü içerir. Konuşma hizmeti, 24 kHz, 16 kHz ve 8 kHz ses çıkışını destekler.
+Bu, her istekte üst bilgi olarak gönderilen desteklenen ses biçimlerinin bir listesidir `X-Microsoft-OutputFormat` . Her biri bit hızı ve kodlama türü içerir. Konuşma hizmeti, 24 kHz, 16 kHz ve 8 kHz ses çıkışını destekler.
 
-|||
-|-|-|
-| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
-| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
-| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
-| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
-| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
-| `audio-24khz-48kbitrate-mono-mp3` | |
+```output
+raw-16khz-16bit-mono-pcm            raw-8khz-8bit-mono-mulaw
+riff-8khz-8bit-mono-alaw            riff-8khz-8bit-mono-mulaw
+riff-16khz-16bit-mono-pcm           audio-16khz-128kbitrate-mono-mp3
+audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
+raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
+audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
+audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+```
 
 > [!NOTE]
-> Seçtiğiniz ses ve çıkış biçiminizin farklı bit ücretleri varsa, ses gerektiği şekilde yeniden örneklenir. Ancak, 24 kHz sesler, ve `audio-16khz-16kbps-mono-siren` `riff-16khz-16kbps-mono-siren` çıkış biçimlerini desteklemez.
+> Seçtiğiniz ses ve çıkış biçiminizin farklı bit ücretleri varsa, ses gerektiği şekilde yeniden örneklenir. OGG-24khz-16bit-mono-Opus, [Opus codec](https://opus-codec.org/downloads/) bileşeniyle çözülebilir
 
 ### <a name="request-body"></a>İstek gövdesi
 
-Her `POST` isteğin gövdesi, [konuşma birleştirme biçimlendirme dili (SSML)](speech-synthesis-markup.md)olarak gönderilir. SSML, metin okuma hizmeti tarafından döndürülen sentezleştirilmiş konuşmanın ses ve dilini seçmenizi sağlar. Desteklenen seslerin tüm listesi için bkz. [dil desteği](language-support.md#text-to-speech).
+Her isteğin gövdesi, `POST` [konuşma birleştirme biçimlendirme DILI (SSML)](speech-synthesis-markup.md)olarak gönderilir. SSML, metin okuma hizmeti tarafından döndürülen sentezleştirilmiş konuşmanın ses ve dilini seçmenizi sağlar. Desteklenen seslerin tüm listesi için bkz. [dil desteği](language-support.md#text-to-speech).
 
 > [!NOTE]
 > Özel bir ses kullanılıyorsa, bir isteğin gövdesi düz metin (ASCII veya UTF-8) olarak gönderilebilir.
@@ -233,11 +233,11 @@ Her yanıt için HTTP durum kodu başarı veya genel hataları gösterir.
 | 400 | Hatalı İstek | Gerekli bir parametre eksik, boş veya null. Ya da gerekli veya isteğe bağlı bir parametreye geçirilen değer geçersiz. Yaygın bir sorun çok uzun bir üst bilgi. |
 | 401 | Yetkisiz | İstek yetkili değil. Abonelik anahtarınızın veya belirtecinizin geçerli olduğundan ve doğru bölgede bulunduğundan emin olun. |
 | 413 | İstek varlığı çok büyük | SSML girişi 1024 karakterden daha uzun. |
-| 415 | Desteklenmeyen medya türü | Yanlış `Content-Type` sağlanmış olabilir. `Content-Type`olarak `application/ssml+xml`ayarlanmalıdır. |
+| 415 | Desteklenmeyen medya türü | Yanlış `Content-Type` sağlanmış olabilir. `Content-Type`olarak ayarlanmalıdır `application/ssml+xml` . |
 | 429 | Çok fazla Istek | Aboneliğiniz için izin verilen kotayı veya isteklerin oranını aştınız. |
 | 502 | Hatalı ağ geçidi    | Ağ veya sunucu tarafı sorunu. Geçersiz üst bilgileri de gösterebilir. |
 
-HTTP durumu ise `200 OK`, yanıt gövdesi istenen biçimde bir ses dosyası içerir. Bu dosya aktarıldığından, bir arabelleğe kaydedildiğinden veya bir dosyaya kaydedildiğinden çalıştırılabilir.
+HTTP durumu ise `200 OK` , yanıt gövdesi istenen biçimde bir ses dosyası içerir. Bu dosya aktarıldığından, bir arabelleğe kaydedildiğinden veya bir dosyaya kaydedildiğinden çalıştırılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079579"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure sözlüğü: Azure platformunda bulut terminolojisi sözlüğü
 
@@ -51,7 +51,7 @@ Windows, macOS ve Linux 'tan Azure hizmetlerini yönetmek için kullanılabilen 
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 Windows bilgisayarlardan bir komut satırı aracılığıyla Azure hizmetlerini yönetmek için bir komut satırı arabirimi. Bazı hizmetler veya hizmet özellikleri yalnızca PowerShell veya CLı aracılığıyla yönetilebilir.
-Bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview)
+Bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager dağıtım modeli
 Microsoft Azure içinde kaynak dağıtmak için kullanılan iki [dağıtım modelinden](resource-manager-deployment-model.md) biri (diğer klasik dağıtım modelidir). Bazı Azure hizmetleri yalnızca Kaynak Yöneticisi dağıtım modelini destekler, bazıları yalnızca klasik dağıtım modelini destekler ve her ikisini de destekler. Her Azure hizmeti için belgeler, hangi model destekler destekledikleri belirler.

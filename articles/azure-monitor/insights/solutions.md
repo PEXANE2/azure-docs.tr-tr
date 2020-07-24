@@ -6,21 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081551"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
+
 İzleme çözümleri, belirli bir uygulama veya hizmet işleminin ek analizini sağlamak için Azure 'daki hizmetlerden yararlanır. Bu makalede, Azure 'daki çözümleri izleme hakkında kısa bir genel bakış ve bunları kullanma ve yükleme hakkındaki ayrıntılar sunulmaktadır. Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme çözümleri ekleyebilirsiniz. Bunlar genellikle ücretsiz olarak kullanılabilir ancak kullanım ücretlerini çağırabilecek veri toplar.
 
 ## <a name="use-monitoring-solutions"></a>İzleme çözümlerini kullanma
 
-Çalışma alanında yüklü her bir çözümün kutucuğunu görüntülemek için Azure Izleyici 'de **genel bakış** sayfasını açın. 
+Çalışma alanında yüklü her bir çözümün kutucuğunu görüntülemek için Azure Izleyici 'de **genel bakış** sayfasını açın.
 
-1. [Azure Portal](https://ms.portal.azure.com)gidin. **İzleme**araması yapın ve seçin.
+1. [Azure portalına](https://ms.portal.azure.com) gidin. **İzleme**araması yapın ve seçin.
 1. **Öngörüler** menüsünde, **daha fazla**' yı seçin.
 1. Çalışma alanını veya kutucuklar için kullanılan zaman aralığını değiştirmek için ekranın üst kısmındaki açılan kutuları kullanın.
 1. Bir çözümün kutucuğuna tıklayarak toplanan verilerin daha ayrıntılı analizini içeren görünümünü açın.
@@ -31,12 +32,13 @@ ms.locfileid: "84906896"
 
 ## <a name="list-installed-monitoring-solutions"></a>Yüklü izleme çözümlerini Listele
 
+### <a name="portal"></a>[Portal](#tab/portal)
+
 Aboneliğinizde yüklü izleme çözümlerini listelemek için aşağıdaki yordamı kullanın.
 
-1. [Azure Portal](https://ms.portal.azure.com)gidin. **Çözümler**arayın ve seçin.
+1. [Azure portalına](https://ms.portal.azure.com) gidin. **Çözümler**arayın ve seçin.
 1. Çalışma alanlarınızın tümünde yüklü olan çözümler listelenir. Çözümün adının ardından yüklendiği çalışma alanının adı gelir.
 1. Abonelik veya kaynak grubuna göre filtrelemek için ekranın üst kısmındaki açılan kutuları kullanın.
-
 
 ![Tüm çözümleri Listele](media/solutions/list-solutions-all.png)
 
@@ -44,7 +46,26 @@ Bir çözümün adına tıklayarak Özet sayfasını açın. Bu sayfada çözüm
 
 ![Çözüm özellikleri](media/solutions/solution-properties.png)
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Aboneliğinizde yüklü izleme çözümlerini listelemek için [az Monitor Log-Analytics çözüm List](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) komutunu kullanın.   Komutu çalıştırmadan önce `list` , [Izleme çözümü yüklerken](#install-a-monitoring-solution)bulunan önkoşulları izleyin.
+
+```azurecli
+# List all log-analytics solutions in the current subscription.
+az monitor log-analytics solution list
+
+# List all log-analytics solutions for a specific subscription
+az monitor log-analytics solution list --subscription MySubscription
+
+# List all log-analytics solutions in a resource group
+az monitor log-analytics solution list --resource-group MyResourceGroup
+```
+
+* * *
+
 ## <a name="install-a-monitoring-solution"></a>İzleme çözümü yüklemesi
+
+### <a name="portal"></a>[Portal](#tab/portal)
 
 Microsoft ve iş ortaklarından izleme çözümlerini [Azure Marketi](https://azuremarketplace.microsoft.com)' nden edinebilirsiniz. Aşağıdaki yordamı kullanarak, kullanılabilir çözümleri arayabilir ve bunları yükleyebilirsiniz. Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../platform/manage-access.md) seçmeniz gerekir.
 
@@ -61,12 +82,76 @@ Microsoft ve iş ortaklarından izleme çözümlerini [Azure Marketi](https://az
 Topluluk üyeleri, yönetim çözümlerini Azure hızlı başlangıç şablonlarına gönderebilir. Bu çözümleri doğrudan yükleyebilir veya daha sonra yüklenmek üzere şablonları indirebilirsiniz.
 
 1. Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
-2. [Azure hızlı başlangıç şablonlarına](https://azure.microsoft.com/documentation/templates/)gidin. 
+2. [Azure hızlı başlangıç şablonlarına](https://azure.microsoft.com/documentation/templates/)gidin.
 3. İlgilendiğiniz bir çözüm arayın.
 4. Ayrıntılarını görüntülemek için sonuçlardan çözümü seçin.
 5. **Azure 'A dağıt** düğmesine tıklayın.
 6. Çözümdeki parametrelerin değerlerinin yanı sıra kaynak grubu ve konum gibi bilgileri sağlamanız istenir.
 7. Çözümü yüklemek için **satın al** ' a tıklayın.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="prepare-your-environment"></a>Ortamınızı hazırlama
+
+1. Azure CLI'yi yükleme
+
+   CLı başvuru komutlarını çalıştırmadan önce [Azure CLI 'yı yüklemeniz](/cli/azure/install-azure-cli) gerekir.  İsterseniz, bu makaledeki adımları tamamlayabilmeniz için Azure Cloud Shell de kullanabilirsiniz.  Azure Cloud Shell, tarayıcınız aracılığıyla kullandığınız etkileşimli bir kabuk ortamıdır.  Aşağıdaki yöntemlerden birini kullanarak Cloud Shell başlatın:
+
+   - Cloud Shell giderek açın[https://shell.azure.com](https://shell.azure.com)
+
+   - [Azure Portal](https://portal.azure.com) sağ üst köşedeki menü çubuğunda bulunan **Cloud Shell** düğmesini seçin
+
+1. Giriş yapın.
+
+   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.  Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+
+    ```azurecli
+    az login
+    ```
+
+1. Uzantıyı yükler `log-analytics`
+
+   Bu `log-analytics` komut, çekirdek Azure CLI 'nın deneysel uzantısıdır. Uzantı başvuruları hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantı kullanımı](/cli/azure/azure-cli-extensions-overview?).
+
+   ```azurecli
+   az extension add --name log-analytics
+   ```
+
+   Aşağıdaki uyarı beklenmektedir.
+
+   ```output
+   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   ```
+
+### <a name="install-a-solution-with-the-azure-cli"></a>Azure CLı ile bir çözüm yüklemesi
+
+Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](/azure/azure-monitor/platform/manage-access) seçmeniz gerekir.  Azure CLı ile, [az Monitor Log-Analytics çalışma alanı](/cli/azure/monitor/log-analytics/workspace) başvuru komutlarını kullanarak çalışma alanlarını yönetirsiniz.  Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
+
+İzleme çözümü yüklemek için [az Monitor Log-Analytics çözüm Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) ' i kullanın.  Köşeli parantezler içindeki parametreler isteğe bağlıdır.
+
+```azurecli
+az monitor log-analytics solution create --name
+                                         --plan-product
+                                         --plan-publisher
+                                         --resource-group
+                                         --workspace
+                                         [--no-wait]
+                                         [--tags]
+```
+
+Bu, OMSGallery/Container plan ürünü için bir Log Analytics çözümü oluşturan bir kod örneğidir.
+
+```azurecli
+az monitor log-analytics solution create --resource-group MyResourceGroup \
+                                         --name Containers({SolutionName}) \
+                                         --tags key=value \
+                                         --plan-publisher Microsoft  \
+                                         --plan-product "OMSGallery/Containers" \
+                                         --workspace "/subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/ \
+                                           Microsoft.OperationalInsights/workspaces/{WorkspaceName}"
+```
+
+* * *
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics çalışma alanı ve Otomasyon hesabı
 
@@ -88,9 +173,25 @@ Aşağıdaki yordamı kullanarak bir Log Analytics çalışma alanı ve Otomasyo
 
 ## <a name="remove-a-monitoring-solution"></a>İzleme çözümünü kaldırma
 
-Yüklü bir çözümü kaldırmak için, [yüklü çözümler listesinde](#list-installed-monitoring-solutions)bulun. Çözümün adına tıklayarak Özet sayfasını açın ve ardından **Sil**' e tıklayın.
+### <a name="portal"></a>[Portal](#tab/portal)
+
+Portalı kullanarak yüklü bir çözümü kaldırmak için, [yüklü çözümler listesinde](#list-installed-monitoring-solutions)bulun. Çözümün adına tıklayarak Özet sayfasını açın ve ardından **Sil**' e tıklayın.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı 'yı kullanarak yüklü bir çözümü kaldırmak için [az Monitor Log-Analytics çözüm Delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) komutunu kullanın.
+
+```azurecli
+az monitor log-analytics solution delete --name
+                                         --resource-group
+                                         [--no-wait]
+                                         [--yes]
+```
+
+* * *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Microsoft 'un izleme çözümlerinin bir listesini](solutions-inventory.md)alın.
 * İzleme çözümleri tarafından toplanan verileri analiz etmek için [sorgular oluşturmayı](../log-query/log-query-overview.md) öğrenin.
+* [Azure izleyici için tüm Azure CLI komutlarına](/cli/azure/azure-cli-reference-for-monitor)bakın.

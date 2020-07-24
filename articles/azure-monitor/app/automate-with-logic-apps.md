@@ -3,11 +3,12 @@ title: Logic Apps kullanarak Azure Application Insights süreçlerini otomatikle
 description: Mantıksal uygulamanıza Application Insights bağlayıcısını ekleyerek tekrarlanabilir işlemleri nasıl hızlı bir şekilde otomatikleştirebileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79473175"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079630"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps kullanarak Application Insights süreçlerini otomatikleştirin
 
@@ -18,7 +19,7 @@ Hizmetinizin düzgün çalışıp çalışmadığını denetlemek için telemetr
 
 Bu tümleştirmeyle, tek bir kod satırı yazmadan çok sayıda işlemi otomatikleştirebilirsiniz. Application Insights sürecini hızla otomatikleştirmek için Application Insights bağlayıcısıyla bir mantıksal uygulama oluşturabilirsiniz. 
 
-Ek eylemleri de ekleyebilirsiniz. Azure App Service Logic Apps özelliği yüzlerce eylemi kullanılabilir hale getirir. Örneğin, bir mantıksal uygulama kullanarak, otomatik olarak bir e-posta bildirimi gönderebilir veya Azure DevOps 'da bir hata oluşturabilirsiniz. Mantıksal uygulamanızı oluşturma sürecini hızlandırmaya yardımcı olması için kullanılabilen birçok [şablondan](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) birini de kullanabilirsiniz. 
+Ek eylemleri de ekleyebilirsiniz. Azure App Service Logic Apps özelliği yüzlerce eylemi kullanılabilir hale getirir. Örneğin, bir mantıksal uygulama kullanarak, otomatik olarak bir e-posta bildirimi gönderebilir veya Azure DevOps 'da bir hata oluşturabilirsiniz. Mantıksal uygulamanızı oluşturma sürecini hızlandırmaya yardımcı olması için kullanılabilen birçok [şablondan](../../logic-apps/logic-apps-create-logic-apps-from-templates.md) birini de kullanabilirsiniz. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Application Insights için bir mantıksal uygulama oluşturma
 
@@ -117,7 +118,7 @@ Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce ana
       ![Office 365 e-posta Yapılandırması ekranı](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>7. Adım: mantıksal Uygulamanızı kaydetme ve test etme
-* Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın.
+* **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
 
 Tetikleyicinin mantıksal uygulamayı çalıştırmasını bekleyebilir veya **Çalıştır**' ı seçerek mantıksal uygulamayı hemen çalıştırabilirsiniz.
 
@@ -130,13 +131,8 @@ Mantıksal uygulamanız çalıştığında, e-posta listesinde belirttiğiniz al
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Analiz sorguları](../../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
-- [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) hakkında daha fazla bilgi edinin.
+- [Logic Apps](../../logic-apps/logic-apps-overview.md) hakkında daha fazla bilgi edinin.
 
 
 
 <!--Link references-->
-
-
-
-
-

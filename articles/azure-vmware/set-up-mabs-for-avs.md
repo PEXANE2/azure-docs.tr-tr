@@ -3,12 +3,12 @@ title: Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 description: Azure Backup Sunucusu kullanarak sanal makineleri yedeklemek için Azure VMware Çözüm ortamınızı ayarlayın.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079545"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 
@@ -309,7 +309,7 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
    * **Veritabanı**: **DatabaseName** **ReportServer $ \<SQLInstanceName> **olmalıdır.
    * **Web portalı URL 'si**: **sanal dizin** **Reports_ \<SQLInstanceName> **olmalıdır.
 
-   SSRS yapılandırması hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) .
+   SSRS yapılandırması hakkında [daha fazla bilgi edinin](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) .
 
    > [!NOTE]
    > [Microsoft Online Services terms](https://www.microsoft.com/licensing/product-licensing/products) (OST), Azure Backup sunucusu veritabanı olarak kullanılan SQL Server lisansını yönetir. Azure Backup Sunucusu ile paketlenmiş SQL Server, OST 'ye göre yalnızca Azure Backup Sunucusu veritabanı olarak kullanılabilir.
@@ -319,7 +319,7 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 1. Microsoft Azure Backup Server dosyalarının yüklenmesi için bir konum belirtin ve **İleri**' yi seçin.
 
    > [!NOTE]
-   > Azure 'a yedekleme için karalama konumu gereklidir. Karalama konumunun, buluta yedeklenmek üzere planlandığı verilerin en az %5 ' i olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [depolama havuzlarını ve Disk depolamayı yapılandırma](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
+   > Azure 'a yedekleme için karalama konumu gereklidir. Karalama konumunun, buluta yedeklenmek üzere planlandığı verilerin en az %5 ' i olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [depolama havuzlarını ve Disk depolamayı yapılandırma](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
 
    ![Microsoft Azure Backup kurulum yükleme ayarları](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -393,4 +393,3 @@ Azure Backup Sunucusu kullanarak Azure VMware çözümünde çalışan VMware VM
 
 > [!div class="nextstepaction"]
 > [Azure VMware Çözüm VM 'lerinin yedeklemesini yapılandırma](backup-avs-vms-with-mabs.md)
-

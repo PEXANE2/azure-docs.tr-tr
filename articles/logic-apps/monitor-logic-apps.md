@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536261"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078202"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps için çalışma durumunu izleme, tetikleyici geçmişini gözden geçirme ve uyarı ayarlama
 
@@ -86,7 +86,7 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
      Artık bu adım için giriş ve çıkış gibi bilgileri görüntüleyebilirsiniz, örneğin:
 
    > [!NOTE]
-   > Tüm çalışma zamanı ayrıntıları ve olayları Logic Apps hizmeti içinde şifrelenir. Yalnızca bir Kullanıcı bu verileri görüntülemek istediğinde şifresi çözülür. [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)kullanarak, [çalıştırma geçmişinde girişleri ve çıkışları gizleyebilir](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) veya bu bilgilere Kullanıcı erişimini denetleyebilirsiniz.
+   > Tüm çalışma zamanı ayrıntıları ve olayları Logic Apps hizmeti içinde şifrelenir. Yalnızca bir Kullanıcı bu verileri görüntülemek istediğinde şifresi çözülür. [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../role-based-access-control/overview.md)kullanarak, [çalıştırma geçmişinde girişleri ve çıkışları gizleyebilir](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) veya bu bilgilere Kullanıcı erişimini denetleyebilirsiniz.
 
 <a name="review-trigger-history"></a>
 

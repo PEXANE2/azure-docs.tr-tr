@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 6159ea7c9e00e822019a0d6542be2e84dbbdc335
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 559198c4ecbbc86cc82ce8b286d9608170e161c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079732"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Service Bus
 
@@ -311,7 +311,7 @@ C# işlevleriyle çalışırken:
 
 * Zaman uyumsuz işlevlerin bir dönüş değeri veya `IAsyncCollector` bir parametre yerine olması gerekir `out` .
 
-* Oturum KIMLIĞINE erişmek için bir [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) türe bağlayın ve `sessionId` özelliğini kullanın.
+* Oturum KIMLIĞINE erişmek için bir [`Message`](/dotnet/api/microsoft.azure.servicebus.message) türe bağlayın ve `sessionId` özelliğini kullanın.
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -328,7 +328,7 @@ C# işlevleriyle çalışırken:
 
 * Zaman uyumsuz işlevlerin bir dönüş değeri veya `IAsyncCollector` bir parametre yerine olması gerekir `out` .
 
-* Oturum KIMLIĞINE erişmek için bir [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) türe bağlayın ve `sessionId` özelliğini kullanın.
+* Oturum KIMLIĞINE erişmek için bir [`Message`](/dotnet/api/microsoft.azure.servicebus.message) türe bağlayın ve `sessionId` özelliğini kullanın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -336,11 +336,11 @@ Kullanarak kuyruğa veya konuya erişin `context.bindings.<name from function.js
 
 # <a name="python"></a>[Python](#tab/python)
 
-Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://docs.microsoft.com/azure/service-bus-messaging) kullanın.
+Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](../service-bus-messaging/index.yml) kullanın.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://docs.microsoft.com/azure/service-bus-messaging) kullanın.
+Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](../service-bus-messaging/index.yml) kullanın.
 
 ---
 
@@ -348,8 +348,8 @@ Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://d
 
 | Bağlama | Başvuru |
 |---|---|
-| Service Bus | [Service Bus hata kodları](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| Service Bus | [Service Bus sınırları](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| Service Bus | [Service Bus hata kodları](../service-bus-messaging/service-bus-messaging-exceptions.md) |
+| Service Bus | [Service Bus sınırları](../service-bus-messaging/service-bus-quotas.md) |
 
 <a name="host-json"></a>  
 
@@ -388,7 +388,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 |---------|---------|---------|
 |prefetchCount|0|İleti alıcısının eşzamanlı olarak isteyebildiği ileti sayısını alır veya ayarlar.|
 |maxAutoRenewDuration|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.|
-|'Nın|true|Tetikleyicinin işlemden sonra otomatik olarak tamamlanmalı veya işlev kodu el ile tamamlanacaktır.<br><br>Ayarı `false` yalnızca C# dilinde desteklenir.<br><br>Olarak ayarlanırsa `true` , işlev yürütmesi başarıyla tamamlanırsa, tetikleyici iletiyi otomatik olarak tamamlar ve aksi takdirde iletiyi terk edin.<br><br>Olarak ayarlandığında `false` , iletiyi tamamlamaya, bırakmaya veya atılacak şekilde [MessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) Yöntemler çağrılmadan siz sorumlusunuz. Bir özel durum oluşturulursa (ve `MessageReceiver` yöntemlerin hiçbiri çağrılmadığında), kilit kalır. Kilidin süresi dolduktan sonra ileti, artdıktan sonra yeniden kuyruğa alınır `DeliveryCount` ve kilit otomatik olarak yenilenir.<br><br>C olmayan işlevlerde işlevlerdeki özel durumlar, arka planda çalışma zamanı çağrılarına neden olur `abandonAsync` . Özel durum oluşursa, `completeAsync` arka planda çağırılır. |
+|'Nın|true|Tetikleyicinin işlemden sonra otomatik olarak tamamlanmalı veya işlev kodu el ile tamamlanacaktır.<br><br>Ayarı `false` yalnızca C# dilinde desteklenir.<br><br>Olarak ayarlanırsa `true` , işlev yürütmesi başarıyla tamamlanırsa, tetikleyici iletiyi otomatik olarak tamamlar ve aksi takdirde iletiyi terk edin.<br><br>Olarak ayarlandığında `false` , iletiyi tamamlamaya, bırakmaya veya atılacak şekilde [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) Yöntemler çağrılmadan siz sorumlusunuz. Bir özel durum oluşturulursa (ve `MessageReceiver` yöntemlerin hiçbiri çağrılmadığında), kilit kalır. Kilidin süresi dolduktan sonra ileti, artdıktan sonra yeniden kuyruğa alınır `DeliveryCount` ve kilit otomatik olarak yenilenir.<br><br>C olmayan işlevlerde işlevlerdeki özel durumlar, arka planda çalışma zamanı çağrılarına neden olur `abandonAsync` . Özel durum oluşursa, `completeAsync` arka planda çağırılır. |
 |Maxconcurrentçağrıları|16|İleti göndericisinin ölçeklendirilmiş örnek başına başlatılması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler.|
 |maxConcurrentSessions|2000|Ölçeklendirilen örnek başına eşzamanlı olarak işlenebilecek en fazla oturum sayısı.|
 

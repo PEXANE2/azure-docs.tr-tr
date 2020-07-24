@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: a484ab2553aeefbbe8c03ae639bdd667e4d9cb8e
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "87081007"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central verilerinizi Power BI panosunda görselleştirin ve çözümleyin
 
@@ -20,7 +20,7 @@ ms.locfileid: "84661197"
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI çözümü işlem hattı":::
 
-IoT cihazlarınızın performansını izlemek üzere güçlü bir Power BI panosu oluşturmak için Azure IoT Central Power BI çözümünü kullanın. Power BI panonuzda şunları yapabilirsiniz:
+IoT cihazlarınızın performansını izlemek için güçlü bir Power BI panosu oluşturmak üzere Azure IoT Central v3 için Power BI çözümünü kullanın. Power BI panonuzda şunları yapabilirsiniz:
 
 - Cihazların zaman içinde ne kadar veri gönderdiğini izleme
 - Farklı telemetri akışları arasında veri birimlerini karşılaştırın
@@ -35,16 +35,19 @@ Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir 
 
 Çözümü ayarlamak için aşağıdaki kaynaklar gereklidir:
 
-- IoT Central uygulama. Daha fazla bilgi için bkz. [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md).
+- Sürüm 3 IoT Central uygulaması. Uygulamanızın sürümünü nasıl denetleyeceğinizi öğrenmek için, bkz. [uygulamanız hakkında](./howto-get-app-info.md). IoT Central uygulama oluşturmayı öğrenmek için bkz. [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md).
 - Telemetriyi, cihazları ve cihaz şablonlarını Azure Blob depolamaya aktarmak için sürekli veri dışa aktarma yapılandırıldı. Daha fazla bilgi edinmek için bkz. [Azure 'Da IoT verilerini hedeflere aktarma](howto-export-data.md).
   - Yalnızca IoT Central uygulamanızın blob kapsayıcısına veri dışarı aktarıldığınızdan emin olun.
   - [CIHAZLARıNıZıN JSON kodlu iletiler gönderilmesi gerekir](../../iot-hub/iot-hub-devguide-messages-d2c.md). Cihazların `contentType:application/JSON` `contentEncoding:utf-8` `contentEncoding:utf-16` `contentEncoding:utf-32` ileti sistemi özelliklerinde ve veya ya da belirtmesi gerekir.
 - Power BI Desktop (en son sürüm). Bkz. [Power BI İndirmeleri](https://powerbi.microsoft.com/downloads/).
 - Power BI Pro (panoyu başkalarıyla paylaşmak istiyorsanız).
 
+> [!NOTE]
+> Sürüm 2 IoT Central uygulaması kullanıyorsanız, bkz. Azure IoT Central verilerinizi önceki sürümler belge sitesinde [bir Power BI panosunda görselleştirme ve çözümleme](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-connect-powerbi) .
+
 ## <a name="install"></a>Yükleme
 
-İşlem hattını ayarlamak için **Microsoft AppSource** sitesindeki [Azure IoT Central Power BI çözümü](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) sayfasına gidin. **Şimdi al**' ı seçin ve yönergeleri izleyin.
+İşlem hattını ayarlamak için **Microsoft AppSource** sitesindeki [Azure IoT Central v3 için Power BI çözümü](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) sayfasına gidin. **Şimdi al**' ı seçin ve yönergeleri izleyin.
 
 PBIX dosyasını açtığınızda, sayfayı okuyun ve kapak sayfasındaki yönergeleri izleyin. Bu yönergeler, raporunuzu SQL veritabanınıza nasıl bağlayacağınız açıklanır.
 
@@ -68,7 +71,7 @@ Azure Işlevi uygulaması, BLOB depolama alanına yeni bir dosya yazdığında I
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory, SQL veritabanına bağlı hizmet olarak bağlanır. Verileri işlemek ve analiz tablolarında depolamak için saklı yordamları çalıştırır.
+Azure Data Factory, SQL veritabanı 'na bağlı hizmet olarak bağlanır. Verileri işlemek ve analiz tablolarında depolamak için saklı yordamları çalıştırır.
 
 Azure Data Factory, en son veri toplu iş kümesini SQL tablolarına (örneğin, atlayan **pencere tetikleyicisi**için en az sayı) yüklenecek şekilde dönüştürmek üzere 15 dakikada bir çalışır.
 
@@ -78,7 +81,7 @@ Azure Data Factory, Power BI için bir dizi analiz tablosu oluşturur. Bu şemal
 
 ## <a name="estimated-costs"></a>Tahmini maliyetler
 
-Microsoft AppSource sitesindeki [Azure IoT Central için Power BI çözümü](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) , dağıttığınız kaynaklar için bir maliyet tahmin aracı bağlantısı içerir.
+Microsoft AppSource sitesindeki [Azure IoT Central v3 sayfasına yönelik Power BI çözümü](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) , dağıttığınız kaynaklar için bir maliyet tahmin aracı bağlantısı içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

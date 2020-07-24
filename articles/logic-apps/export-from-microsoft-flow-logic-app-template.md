@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078738"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
 
@@ -19,11 +20,11 @@ Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [P
 > [!NOTE]
 > Azure Logic Apps ' de tüm güç otomatikleştirme bağlayıcıları kullanılamaz. Yalnızca Azure Logic Apps içindeki eşit bağlayıcılara sahip güç otomatikleştirme akışlarını geçirebilirsiniz. Örneğin, düğme tetikleyicisi, onay Bağlayıcısı ve bildirim Bağlayıcısı, Power otomatikleştirmek için özeldir. Şu anda, mantıksal uygulama şablonları olarak dışa aktarma ve dağıtım için Power otomatikleştirmede OpenAPI tabanlı akışlar desteklenmez.
 >
-> * Hangi Power otomatikleştirmek bağlayıcılarının Logic Apps eşdeğerleri olmadığını öğrenmek için bkz. [Power otomatikleştiren bağlayıcılar](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Hangi Power otomatikleştirmek bağlayıcılarının Logic Apps eşdeğerleri olmadığını öğrenmek için bkz. [Power otomatikleştiren bağlayıcılar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 >
-> * Hangi Logic Apps bağlayıcılarının güç otomatikleştirme eşdeğerleri olmadığını öğrenmek için bkz. [Logic Apps bağlayıcılar](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Hangi Logic Apps bağlayıcılarının güç otomatikleştirme eşdeğerleri olmadığını öğrenmek için bkz. [Logic Apps bağlayıcılar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

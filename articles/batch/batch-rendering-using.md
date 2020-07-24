@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079254"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch işleme kullanma
 
@@ -19,7 +19,7 @@ Azure Batch işleme kullanmanın birkaç yolu vardır:
 * API'ler:
   * Batch API 'Lerinden herhangi birini kullanarak kod yazın.  Geliştiriciler Azure Batch yeteneklerini bulut ya da şirket içinde bulunan mevcut uygulamalarına veya iş akışına tümleştirebilir.
 * Komut satırı araçları:
-  * [Azure komut satırı](/cli/azure/) veya [PowerShell](/powershell/azure/overview) , toplu kullanım betiği için kullanılabilir.
+  * [Azure komut satırı](/cli/azure/) veya [PowerShell](/powershell/azure/) , toplu kullanım betiği için kullanılabilir.
   * Özellikle, [Batch CLI şablonu desteği](./batch-cli-templates.md) havuzları oluşturmayı ve işleri göndermeyi çok daha kolay hale getirir.
 * Batch Explorer kullanıcı arabirimi:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) , Batch hesaplarının yönetilmesini ve izlenmesini sağlayan platformlar arası bir istemci aracıdır.

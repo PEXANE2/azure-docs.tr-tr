@@ -4,13 +4,14 @@ description: Bu makalede, Azure Veri Kataloğu portalının arama ve filtreleme 
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081211"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri kaynaklarını bulma
 
@@ -32,7 +33,7 @@ Arama ve filtreleme birleşimini kullanarak, ihtiyacınız olan veri kaynakları
 
 Varsayılan boş metin araması basit ve sezgisel olsa da, arama sonuçları üzerinde daha fazla denetim için veri kataloğu arama sözdizimini de kullanabilirsiniz. Veri Kataloğu arama aşağıdaki teknikleri destekler:
 
-| Teknik | Kullanım | Örnek |
+| Teknik | Kullanın | Örnek |
 | --- | --- | --- |
 | Temel arama |Bir veya daha fazla arama terimi kullanan temel arama. Sonuçlar, belirtilen koşullara bir veya daha fazlasına sahip herhangi bir özellikle eşleşen varlıklardır. |`sales data` |
 | Özellik kapsamı |Yalnızca arama teriminin belirtilen özellikle eşleştiği veri kaynaklarını döndürün. |`name:finance` |

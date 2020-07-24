@@ -3,17 +3,18 @@ title: Azure Application Insights ile güvenlik algılama paketi
 description: Azure Application Insights ve olası güvenlik sorunları için akıllı algılama ile uygulamayı izleyin.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ed304e903bb50591e61e294b6701f8268f9d8e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081636"
 ---
 # <a name="application-security-detection-pack-preview"></a>Uygulama güvenliği algılama paketi (Önizleme)
 
 Application Insights, uygulamanız tarafından oluşturulan Telemetriyi otomatik olarak analiz eder ve olası güvenlik sorunlarını algılar. Bu özellik, olası güvenlik sorunlarını tanımlamanızı ve uygulamayı düzelterek veya gerekli güvenlik önlemlerini alarak bunları işleyebilmenizi sağlar.
 
-Bu özellik, [uygulamanızı Telemetriyi gönderecek şekilde yapılandırma](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview)dışında özel bir kurulum gerektirmez.
+Bu özellik, [uygulamanızı Telemetriyi gönderecek şekilde yapılandırma](./usage-overview.md)dışında özel bir kurulum gerektirmez.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Bu tür akıllı algılama bildirimini ne zaman alabilirim?
 Algılanan üç güvenlik sorunu türü vardır:

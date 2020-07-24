@@ -7,24 +7,24 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 06/30/2020
-ms.openlocfilehash: 466b9258962c27457962ce51b72d2aeb2c029cc2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078134"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak mantıksal uygulama iş akışı oluşturma ve dağıtma
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [yüzlerce bağlayıcı](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors)arasından seçim yaparak verileri, uygulamaları, bulut tabanlı Hizmetleri ve şirket içi sistemleri tümleştiren otomatik iş akışları oluşturmanıza ve çalıştırmanıza yardımcı olan bir bulut hizmetidir. Bu hızlı başlangıç, saatlik zamanlamaya göre Azure 'un durumunu denetleyen temel bir mantıksal uygulama oluşturmak için bir Azure Resource Manager şablonu dağıtma işlemine odaklanır (ARM şablonu). 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [yüzlerce bağlayıcı](/connectors/connector-reference/connector-reference-logicapps-connectors)arasından seçim yaparak verileri, uygulamaları, bulut tabanlı Hizmetleri ve şirket içi sistemleri tümleştiren otomatik iş akışları oluşturmanıza ve çalıştırmanıza yardımcı olan bir bulut hizmetidir. Bu hızlı başlangıç, saatlik zamanlamaya göre Azure 'un durumunu denetleyen temel bir mantıksal uygulama oluşturmak için bir Azure Resource Manager şablonu dağıtma işlemine odaklanır (ARM şablonu). 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -32,11 +32,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 Bu hızlı başlangıçta, [Azure hızlı başlangıç şablonları galerisinde](https://azure.microsoft.com/resources/templates) bulabileceğiniz ancak burada gösteremeyeceği çok uzun olan [**bir mantıksal uygulama oluşturma**](https://azure.microsoft.com/resources/templates/101-logic-app-create/) şablonu kullanılmaktadır. Bunun yerine, şablonlar galerisinde hızlı başlangıç şablonunun ["dosya üzerinde azuredeploy.js"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) bölümünü inceleyebilirsiniz.
 
-Hızlı başlangıç şablonu, her saat çalışacak şekilde ayarlanan yinelenme tetikleyicisini ve Azure 'un durumunu döndüren bir URL 'YI çağıran bir HTTP [ *yerleşik* eylemini](https://docs.microsoft.com/azure/connectors/apis-list#connector-types)kullanan bir mantıksal uygulama iş akışı oluşturur. Yerleşik bir eylem Azure Logic Apps platformuna yereldir.
+Hızlı başlangıç şablonu, her saat çalışacak şekilde ayarlanan yinelenme tetikleyicisini ve Azure 'un durumunu döndüren bir URL 'YI çağıran bir HTTP [ *yerleşik* eylemini](../connectors/apis-list.md#connector-types)kullanan bir mantıksal uygulama iş akışı oluşturur. Yerleşik bir eylem Azure Logic Apps platformuna yereldir.
 
 Bu şablon aşağıdaki Azure kaynağını oluşturur:
 
-* Bir mantıksal uygulama için iş akışını oluşturan [**Microsoft. Logic/iş akışları**](https://docs.microsoft.com/azure/templates/microsoft.logic/workflows).
+* Bir mantıksal uygulama için iş akışını oluşturan [**Microsoft. Logic/iş akışları**](/azure/templates/microsoft.logic/workflows).
 
 Azure Logic Apps yönelik daha fazla hızlı başlangıç şablonu bulmak için galerideki [Microsoft. Logic](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic) Templates ' i gözden geçirin.
 
@@ -46,12 +46,12 @@ Azure Logic Apps yönelik daha fazla hızlı başlangıç şablonu bulmak için 
 
 Hızlı başlangıç şablonunu dağıtmak için kullanmak istediğiniz seçeneği izleyin:
 
-| Seçenek | Description |
+| Seçenek | Açıklama |
 |--------|-------------|
-| [Azure portalındaki](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Azure ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, bu adımlar doğrudan Azure 'da oturum açmanıza ve Azure portal hızlı başlangıç şablonunu açmanıza yardımcı olur. Daha fazla bilgi için bkz. [ARM şablonlarıyla kaynakları dağıtma ve Azure Portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azure komut satırı arabirimi (Azure CLı), Azure kaynakları oluşturmak ve yönetmek için bir komut kümesidir. Bu komutları çalıştırmak için Azure CLı sürüm 2,6 veya sonraki bir sürümü gerekir. CLı sürümünüzü denetlemek için yazın `az --version` . Daha fazla bilgi için şu konulara bakın: <p><p>- [Azure CLı nedir?](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Azure CLı ile çalışmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell, Azure kaynaklarınızı yönetmek için Azure Resource Manager modelini kullanan bir dizi cmdlet sunar. Daha fazla bilgi için şu konulara bakın: <p><p>- [Azure PowerShell genel bakış](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [Azure PowerShell az Module 'e giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Azure PowerShell kullanmaya başlayın](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
-| [Azure Kaynak Yönetimi REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure, hizmet kaynaklarına erişimi oluşturmak, almak, güncelleştirmek veya silmek için kullandığınız HTTP işlemlerini (yöntemleri) destekleyen hizmet uç noktaları olan temsili durum aktarımı (REST) API 'Leri sağlar. Daha fazla bilgi için bkz. [Azure REST API kullanmaya başlama](https://docs.microsoft.com/rest/api/azure/). |
+| [Azure Portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Azure ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, bu adımlar doğrudan Azure 'da oturum açmanıza ve Azure portal hızlı başlangıç şablonunu açmanıza yardımcı olur. Daha fazla bilgi için bkz. [ARM şablonlarıyla kaynakları dağıtma ve Azure Portal](../azure-resource-manager/templates/deploy-portal.md). |
+| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azure komut satırı arabirimi (Azure CLı), Azure kaynakları oluşturmak ve yönetmek için bir komut kümesidir. Bu komutları çalıştırmak için Azure CLı sürüm 2,6 veya sonraki bir sürümü gerekir. CLı sürümünüzü denetlemek için yazın `az --version` . Daha fazla bilgi için şu konulara bakın: <p><p>- [Azure CLı nedir?](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Azure CLı ile çalışmaya başlama](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell, Azure kaynaklarınızı yönetmek için Azure Resource Manager modelini kullanan bir dizi cmdlet sunar. Daha fazla bilgi için şu konulara bakın: <p><p>- [Azure PowerShell genel bakış](/powershell/azure/azurerm/overview) <br>- [Azure PowerShell az Module 'e giriş](/powershell/azure/new-azureps-module-az) <br>- [Azure PowerShell kullanmaya başlayın](/powershell/azure/get-started-azureps) |
+| [Azure Kaynak Yönetimi REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure, hizmet kaynaklarına erişimi oluşturmak, almak, güncelleştirmek veya silmek için kullandığınız HTTP işlemlerini (yöntemleri) destekleyen hizmet uç noktaları olan temsili durum aktarımı (REST) API 'Leri sağlar. Daha fazla bilgi için bkz. [Azure REST API kullanmaya başlama](/rest/api/azure/). |
 |||
 
 <a name="deploy-azure-portal"></a>
@@ -64,11 +64,11 @@ Hızlı başlangıç şablonunu dağıtmak için kullanmak istediğiniz seçene�
 
 1. Portalda, **bir şablon kullanarak mantıksal uygulama oluşturma** sayfasında şu değerleri girin veya seçin:
 
-   | Özellik | Değer | Description |
+   | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Abonelik** | <*Azure-abonelik-adı*> | Kullanılacak Azure aboneliğinin adı |
    | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | Yeni veya mevcut bir Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
-   | **Geli** | <*Azure-bölge*> | Mantıksal uygulamanızı kullanmak için Azure veri merkezi bölgesi. Bu örnekte, kullanılır `West US` . |
+   | **Bölge** | <*Azure-bölge*> | Mantıksal uygulamanızı kullanmak için Azure veri merkezi bölgesi. Bu örnekte, kullanılır `West US` . |
    | **Mantıksal uygulama adı** | <*Logic-App-adı*> | Mantıksal uygulamanız için kullanılacak ad. Bu örnekte, kullanılır `Check-Azure-Status-LA` . |
    | **Test URI 'Si** | <*test-URI*> | Belirli bir zamanlamaya göre çağrılacak hizmetin URI 'SI. Bu örnek `https://status.azure.com/en-us/status/` , Azure durum sayfası olan ' ı kullanır. |
    | **Konum** |  <*Azure-bölge-for-Resources*> | Varsayılan değerden farklıysa, tüm kaynaklar için kullanılacak Azure bölgesi. Bu örnek, `[resourceGroup().location]` kaynak grubu konumu olan varsayılan değeri kullanır. |
@@ -97,7 +97,7 @@ read
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Azure CLı: az Deployment Group](https://docs.microsoft.com/cli/azure/deployment/group)
+* [Azure CLı: az Deployment Group](/cli/azure/deployment/group)
 * [ARM şablonları ve Azure CLı ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md)
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -117,8 +117,8 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-* [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
+* [Azure PowerShell: New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)
+* [Azure PowerShell: New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)
 * [ARM şablonları ve Azure PowerShell kaynak dağıtma](../azure-resource-manager/templates/deploy-powershell.md)
 
 #### <a name="rest-api"></a>[REST API](#tab/rest-api)
@@ -129,7 +129,7 @@ Daha fazla bilgi için şu konulara bakın:
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}?api-version=2019-10-01
    ```
 
-   | Değer | Description |
+   | Değer | Açıklama |
    |-------|-------------|
    | `subscriptionId`| Kullanmak istediğiniz Azure aboneliğinin GUID 'ı |
    | `resourceGroupName` | Oluşturulacak Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
@@ -143,8 +143,8 @@ Daha fazla bilgi için şu konulara bakın:
 
    Daha fazla bilgi için şu konulara bakın:
 
-   * [Azure REST API başvurusu-Azure REST API 'Lerini çağırma](https://docs.microsoft.com/rest/api/azure/)
-   * [Kaynak yönetimi REST API: kaynak grupları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate).
+   * [Azure REST API başvurusu-Azure REST API 'Lerini çağırma](/rest/api/azure/)
+   * [Kaynak yönetimi REST API: kaynak grupları-oluştur veya Güncelleştir](/rest/api/resources/resourcegroups/createorupdate).
 
 1. Hızlı başlangıç şablonunu kaynak grubunuza dağıtmak için, kaynak yönetimine göndereceğiniz istek için bu sözdizimini izleyin REST API:
 
@@ -152,7 +152,7 @@ Daha fazla bilgi için şu konulara bakın:
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
 
-   | Değer | Description |
+   | Değer | Açıklama |
    |-------|-------------|
    | `subscriptionId`| Kullanmak istediğiniz Azure aboneliğinin GUID 'ı |
    | `resourceGroupName` | Kullanılacak Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
@@ -165,7 +165,7 @@ Daha fazla bilgi için şu konulara bakın:
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG/providers/Microsoft.Resources/deployments/Check-Azure-Status-LA?api-version=2019-10-01
    ```
 
-   Daha fazla bilgi için bkz. [kaynak yönetimi REST API: dağıtımlar-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate).
+   Daha fazla bilgi için bkz. [kaynak yönetimi REST API: dağıtımlar-oluştur veya Güncelleştir](/rest/api/resources/deployments/createorupdate).
 
 1. Dağıtım için kullanılacak değerleri (örneğin, Azure bölgesi) ve dağıtımda kullanılacak hızlı başlangıç şablonunun değerlerini içeren hızlı başlangıç şablonu ve [parametre dosyası](../azure-resource-manager/templates/template-parameters.md)bağlantıları sağlamak Için, kaynak yönetimine göndereceğiniz istek gövdesi için bu sözdizimini izleyin REST API:
 
@@ -186,12 +186,12 @@ Daha fazla bilgi için şu konulara bakın:
    }
    ```
 
-   | Özellik | Değer | Description |
+   | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | `location`| <*Azure-bölge*> | Dağıtım için kullanılacak Azure bölgesi. Bu örnekte, kullanılır `West US` . |
    | `templateLink` : `uri` | <*hızlı başlangıç-şablon-URL*> | Dağıtım için kullanılacak hızlı başlangıç şablonunun URL konumu: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*hızlı başlangıç-şablon-parametre-dosya-URL*> | Dağıtım için kullanılacak hızlı başlangıç şablonunun parametre dosyasının URL konumu: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>Kaynak Yöneticisi parametre dosyası hakkında daha fazla bilgi için şu konulara bakın: <p><p>- [Kaynak Yöneticisi parametre dosyası oluştur](../azure-resource-manager/templates/parameter-files.md) <br>- [Öğretici: ARM şablonunuzu dağıtmak için parametre dosyalarını kullanma](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
-   | `mode` | <*dağıtım modu*> | Artımlı bir güncelleştirme çalıştırın veya güncelleştirmeyi tamamen yapın. Bu örnek `Incremental` , varsayılan değer olan ' ı kullanır. Daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes). |
+   | `mode` | <*dağıtım modu*> | Artımlı bir güncelleştirme çalıştırın veya güncelleştirmeyi tamamen yapın. Bu örnek `Incremental` , varsayılan değer olan ' ı kullanır. Daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](../azure-resource-manager/templates/deployment-modes.md). |
    |||
 
    Örneğin:
@@ -215,7 +215,7 @@ Daha fazla bilgi için şu konulara bakın:
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Kaynak yönetimi REST API](https://docs.microsoft.com/rest/api/resources/)
+* [Kaynak yönetimi REST API](/rest/api/resources/)
 * [ARM şablonlarıyla kaynakları dağıtma ve Kaynak Yöneticisi REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ---
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Daha fazla bilgi için bkz. [Azure CLI: az Logic Workflow Show](https://docs.microsoft.com/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show).
+Daha fazla bilgi için bkz. [Azure CLI: az Logic Workflow Show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -255,7 +255,7 @@ Get-AzLogicApp -Name $logicAppName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-Daha fazla bilgi için bkz. [Azure PowerShell: Get-AzLogicApp](https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapp).
+Daha fazla bilgi için bkz. [Azure PowerShell: Get-AzLogicApp](/powershell/module/az.logicapp/get-azlogicapp).
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -263,7 +263,7 @@ Daha fazla bilgi için bkz. [Azure PowerShell: Get-AzLogicApp](https://docs.micr
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}?api-version=2016-06-01
 ```
 
-| Değer | Description |
+| Değer | Açıklama |
 |-------|-------------|
 | `subscriptionId`| Hızlı başlangıç şablonunu dağıttığınız Azure aboneliğinin GUID 'ı. |
 | `resourceGroupName` | Hızlı başlangıç şablonunu dağıttığınız Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
@@ -276,7 +276,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG/providers/Microsoft.Logic/workflows/Check-Azure-Status-LA?api-version=2016-06-01
 ```
 
-Daha fazla bilgi için bkz. [Logic Apps REST API: Iş akışları-al](https://docs.microsoft.com/rest/api/logic/workflows/get).
+Daha fazla bilgi için bkz. [Logic Apps REST API: Iş akışları-al](/rest/api/logic/workflows/get).
 
 ---
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Daha fazla bilgi için bkz. [Azure CLI: az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Daha fazla bilgi için bkz. [Azure CLI: az Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -313,7 +313,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-Daha fazla bilgi için bkz. [Azure PowerShell: Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Daha fazla bilgi için bkz. [Azure PowerShell: Remove-AzResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -321,7 +321,7 @@ Daha fazla bilgi için bkz. [Azure PowerShell: Remove-AzResourceGroup](https://d
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}?api-version=2019-10-01
 ```
 
-| Değer | Description |
+| Değer | Açıklama |
 |-------|-------------|
 | `subscriptionId`| Hızlı başlangıç şablonunu dağıttığınız Azure aboneliğinin GUID 'ı. |
 | `resourceGroupName` | Hızlı başlangıç şablonunu dağıttığınız Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
@@ -333,7 +333,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroup
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG?api-version=2019-10-01
 ```
 
-Daha fazla bilgi için bkz. [kaynak yönetimi REST API: kaynak grupları-sil](https://docs.microsoft.com/rest/api/resources/resourcegroups/delete).
+Daha fazla bilgi için bkz. [kaynak yönetimi REST API: kaynak grupları-sil](/rest/api/resources/resourcegroups/delete).
 
 ---
 

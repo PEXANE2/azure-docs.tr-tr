@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418718"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080933"
 ---
 # <a name="output-metadata"></a>Çıkış meta verileri
 
-Bir kodlama işi, üzerinde bazı kodlama görevlerini gerçekleştirmek istediğiniz bir giriş varlığı (veya varlıkları) ile ilişkilendirilir. Örneğin, bir MP4 dosyasını H. küçük resim oluşturma; yer paylaşımları oluştur. Bir görevi tamamladıktan sonra bir çıkış varlığı üretilir.  Çıktı varlığı video, ses, küçük resim ve diğer dosyaları içerir. Çıktı varlığı Ayrıca çıkış varlığı hakkında meta veriler içeren bir dosya içerir. Meta veri JSON dosyasının adı şu biçimdedir: `<source_file_name>_manifest.json` (örneğin, `BigBuckBunny_manifest.json` ).  
+Bir kodlama işi, üzerinde bazı kodlama görevlerini gerçekleştirmek istediğiniz bir giriş varlığı (veya varlıkları) ile ilişkilendirilir. Örneğin, bir MP4 dosyasını H. küçük resim oluşturma; yer paylaşımları oluştur. Bir görevi tamamladıktan sonra bir çıkış varlığı üretilir.  Çıktı varlığı video, ses, küçük resim ve diğer dosyaları içerir. Çıktı varlığı Ayrıca çıkış varlığı hakkında meta veriler içeren bir dosya içerir. Meta veri JSON dosyasının adı şu biçimdedir: `<source_file_name>_manifest.json` (örneğin, `BigBuckBunny_manifest.json` ). Üzerinde herhangi bir * _metadata.jstarama yapmanız ve kaynak dosya adını (kesilmeksizin) bulmak için içindeki FilePath dizesinde sorgu yapmanız gerekir.
 
 Media Services, meta veri oluşturmak için giriş varlıklarını tarapreemptively. Giriş meta verileri yalnızca bir iş içinde bir giriş varlığı işlendiğinde yapıt olarak üretilir. Bu nedenle, bu yapıt çıkış varlığına yazılır. Farklı araçlar, giriş varlıkları ve çıkış varlıkları için meta veriler oluşturmak için kullanılır. Bu nedenle, giriş meta verilerinin, çıkış meta verileri arasında biraz farklı bir şeması vardır.
 
@@ -33,12 +34,12 @@ Tüm şema kodunu ve JSON örneğini Bu makalenin sonunda bulabilirsiniz.
 
 Kodlama işi için Assetdosya girişlerinin toplanması.  
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | --- | --- |
 | **Ğına** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.<br />Örnek: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **Videoizler**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. <br />Bkz. [Videoiz](#videotracks). |
 | **Ses Izleri**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. Bu, tüm ses izlemelerinin koleksiyonudur.<br /> Daha fazla bilgi için bkz. [Audioiz](#audiotracks). |
-| **Adı**<br />Gerekli |Medya varlık dosya adı. <br /><br />Örnek: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Ad**<br />Gerekli |Medya varlık dosya adı. <br /><br />Örnek: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
 | **Boyut**<br />Gerekli |Varlık dosyasının bayt cinsinden boyutu. <br /><br />Örnek: `"Size": 32414631`|
 | **Süre**<br />Gerekli |İçerik kayıttan yürütme süresi. Daha fazla bilgi için bkz. [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html) biçimi. <br /><br />Örnek: `"Duration": "PT1M10.315S"`|
 
@@ -46,14 +47,14 @@ Kodlama işi için Assetdosya girişlerinin toplanması.
 
 Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. **Videoiz** öğesi tüm video izlemelerinin bir koleksiyonunu temsil eder.  
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | --- | --- |
 | **Numarasını**<br /> Gerekli |Bu video izlemenin sıfır tabanlı dizini. **Note:**  Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 1`|
 | **FourCC**<br />Gerekli | FFmpeg tarafından raporlanan video codec FourCC kodu.  <br /><br />Örnek: `"FourCC": "avc1"`|
 | **Profil** |H264 profili (yalnızca H264 codec için geçerlidir).  <br /><br />Örnek: `"Profile": "High"` |
 | **Düzeyde** |H264 düzeyi (yalnızca H264 codec için geçerlidir).  <br /><br />Örnek: `"Level": "3.2"`|
-| **Genişlik**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği.  <br /><br />Örnek: `"Width": "1280"`|
-| **Height**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.  <br /><br />Örnek: `"Height": "720"`|
+| **Width**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği.  <br /><br />Örnek: `"Width": "1280"`|
+| **Yükseklik**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.  <br /><br />Örnek: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Gerekli|Video görüntüleme en boy oranı payı.  <br /><br />Örnek: `"DisplayAspectRatioNumerator": 16.0`|
 | **Displayaspectratiopayda**<br />Gerekli |Video görüntüleme en boy oranı paydası.  <br /><br />Örnek: `"DisplayAspectRatioDenominator": 9.0`|
 | **Framerate**<br />Gerekli |.3F biçiminde ölçülen video kare hızı.  <br /><br />Örnek: `"Framerate": 29.970`|
@@ -64,7 +65,7 @@ Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili b
 
 Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. **Audioizler** öğesi tüm ses izlemelerinin bir koleksiyonunu temsil eder.  
 
-| Name  | Açıklama |
+| Ad  | Açıklama |
 | --- | --- |
 | **Numarasını**<br />Gerekli  |Bu ses parçasının sıfır tabanlı dizini. **Note:**  Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez.  <br /><br />Örnek: `"Id": 2`|
 | **Bileşeni**  |Ses izi codec bileşeni dizesi.  <br /><br />Örnek: `"Codec": "aac"`|

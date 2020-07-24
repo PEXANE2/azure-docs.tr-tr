@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560144"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081432"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Izleyici çalışma kitapları veri kaynakları
 
@@ -61,7 +61,7 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, Azure
 
 ## <a name="azure-data-explorer"></a>Azure Veri Gezgini
 
-Artık çalışma kitapları, güçlü [kusto](https://docs.microsoft.com/azure/kusto/query/index) sorgu diliyle [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/) kümelerinden sorgulama desteğine sahiptir.   
+Artık çalışma kitapları, güçlü [kusto](/azure/kusto/query/index) sorgu diliyle [Azure Veri Gezgini](/azure/data-explorer/) kümelerinden sorgulama desteğine sahiptir.   
 
 ![Kusto sorgu penceresinin ekran görüntüsü](./media/workbooks-overview/data-explorer.png)
 
@@ -90,7 +90,7 @@ JSON sağlayıcısı, statik JSON içeriğinden bir sorgu sonucu oluşturmanıza
 > [!NOTE]
 > Azure uyarı bilgilerini sorgulamak için önerilen yol, tabloyu sorgulayarak [Azure Kaynak Grafiği](#azure-resource-graph) veri kaynağını kullanmaktır `AlertsManagementResources` .
 >
-> Örnekler için bkz. [Azure Kaynak Grafiği tablosu başvurusu](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources)veya [Uyarılar şablonu](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) .
+> Örnekler için bkz. [Azure Kaynak Grafiği tablosu başvurusu](../../governance/resource-graph/reference/supported-tables-resources.md)veya [Uyarılar şablonu](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) .
 >
 > Yazarlar, bağımsız değişken kullanmaya geçiş yaparken, uyarılar veri kaynağı bir süre için kullanılabilir kalır. Bu veri kaynağının şablonlarda kullanılması önerilmez. 
 
@@ -113,5 +113,5 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri
 
 * Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
 * Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.
-* [Log Analytics sorgu iyileştirme ipuçları](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* [Log Analytics sorgu iyileştirme ipuçları](../log-query/query-optimization.md)
 * 

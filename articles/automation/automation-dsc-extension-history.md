@@ -1,20 +1,17 @@
 ---
 title: Azure Istenen durum yapılandırma uzantısı sürüm geçmişi ile çalışma
 description: Bu makalede, Azure 'da Istenen durum yapılandırması (DSC) uzantısı için sürüm geçmişiyle nasıl çalışılacağı açıklanmaktadır.
-ms.date: 06/21/2018
+ms.date: 07/22/2020
 keywords: DSC, PowerShell, Azure, uzantı
-author: mgoedtel
-ms.author: magoedte
 services: automation
-ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b45512faf09cfe745023d29d32f89a4432cc3b2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186427"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079766"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Azure Istenen durum yapılandırma uzantısı sürüm geçmişi ile çalışma
 
@@ -23,6 +20,29 @@ Azure Istenen durum yapılandırması (DSC) VM uzantısı, Azure, Windows Server
 Bu makalede, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar ve yeni özellikler ya da değişikliklerle ilgili açıklamalar ve açıklamalar hakkında bilgi sağlanır.
 
 ## <a name="latest-version"></a>En son sürüm
+
+### <a name="version-280"></a>Sürüm 2,80
+
+- **Yayın tarihi:**
+  - 26 Eylül, Eyl-2019 (Azure) | 6 Temmuz 2020 (Azure Çin Vianet 21) | 20 Temmuz 2020 (Azure Kamu)
+- **İşletim sistemi desteği:**
+  - Windows Server 2019
+  - Windows Server 2016
+  - Windows Server 2012 R2
+  - Windows Server 2012
+  - Windows Server 2008 R2 SP1
+  - Windows Istemcisi 7/8.1/10
+  - Nano Sunucu
+- **WMF desteği:**
+  - WMF 5.1
+  - WMF 5,0 RTM
+  - WMF 4,0 güncelleştirmesi
+  - WMF 4,0
+- **Ortamınızın**
+  - Azure
+  - Azure Çin Vianet 21
+  - Azure Kamu
+- **Açıklamalar:** Bu yayına yeni özellik dahil değildir.
 
 ### <a name="version-276"></a>Sürüm 2,76
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f97b4877d87acec923812fd0289d5161529dbe7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849652"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081041"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
 
@@ -268,7 +268,7 @@ Ambarı web kullanıcı arabiriminden, günlükleri görüntülemek istediğiniz
 
 Bir düğümün boyutu yalnızca küme oluşturma sırasında seçilebilir. HDInsight [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/hdinsight/)HDInsight için KULLANILABILIR farklı VM boyutlarının listesini bulabilirsiniz.
 
-Bir küme oluştururken düğümlerin boyutunu belirtebilirsiniz. Aşağıdaki bilgiler [Azure Portal](https://portal.azure.com/), [Azure PowerShell modül az](/powershell/azureps-cmdlets-docs)ve [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanarak boyutun nasıl belirtilbileceğine ilişkin yönergeler sağlar:
+Bir küme oluştururken düğümlerin boyutunu belirtebilirsiniz. Aşağıdaki bilgiler [Azure Portal](https://portal.azure.com/), [Azure PowerShell modül az](/powershell/azure/)ve [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanarak boyutun nasıl belirtilbileceğine ilişkin yönergeler sağlar:
 
 * **Azure Portal**: bir küme oluştururken, küme tarafından kullanılan düğümlerin boyutunu ayarlayabilirsiniz:
 
@@ -284,6 +284,6 @@ Bu makalede ele alınan öğeler hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Apache ambarı REST başvurusu](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Azure CLı 'yı yükleyip yapılandırma](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Azure PowerShell modülünü yükleyip yapılandırın az](/powershell/azure/overview)
+* [Azure PowerShell modülünü yükleyip yapılandırın az](/powershell/azure/)
 * [Apache ambarı kullanarak HDInsight 'ı yönetme](hdinsight-hadoop-manage-ambari.md)
 * [Linux tabanlı HDInsight kümeleri sağlama](hdinsight-hadoop-provision-linux-clusters.md)

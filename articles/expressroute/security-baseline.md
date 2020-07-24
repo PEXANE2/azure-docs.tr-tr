@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e539e2a26e53ded8a2c42491c1e1e596a2180ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269116"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079046"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute için Azure Güvenlik temeli
 
@@ -246,7 +246,7 @@ Ayrıca, ExpressRoute Iş ortağı Kaynak Yöneticisi API 'sini kullanan iş ort
 
 * [Azure 'da RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [ExpressRoute ortağında RBAC 'den yararlanın Kaynak Yöneticisi API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-developmentment)
+* [ExpressRoute ortağında RBAC 'den yararlanın Kaynak Yöneticisi API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

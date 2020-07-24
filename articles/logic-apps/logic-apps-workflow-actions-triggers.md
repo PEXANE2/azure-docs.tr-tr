@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 7c220ff2882e12f5239dbd5abc5f87b900cb3807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ded36eeecb14eeac0ce3de37c8d01d99bc31491f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609429"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078177"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
-Bu başvuru, mantıksal uygulamanızın [Iş akışı Tanım Dili](../logic-apps/logic-apps-workflow-definition-language.md)tarafından tanımlanan ve doğrulanan temel alınan iş akışı tanımındaki Tetikleyicileri ve eylemleri tanımlamak için kullanılan genel türleri açıklar. Mantıksal uygulamalarınızda kullanabileceğiniz belirli bağlayıcı tetikleyicilerini ve eylemlerini bulmak için, [Bağlayıcılar genel bakış](https://docs.microsoft.com/connectors/)altındaki listeye bakın.
+Bu başvuru, mantıksal uygulamanızın [Iş akışı Tanım Dili](../logic-apps/logic-apps-workflow-definition-language.md)tarafından tanımlanan ve doğrulanan temel alınan iş akışı tanımındaki Tetikleyicileri ve eylemleri tanımlamak için kullanılan genel türleri açıklar. Mantıksal uygulamalarınızda kullanabileceğiniz belirli bağlayıcı tetikleyicilerini ve eylemlerini bulmak için, [Bağlayıcılar genel bakış](/connectors/)altındaki listeye bakın.
 
 <a name="triggers-overview"></a>
 
@@ -54,7 +55,7 @@ Tetikleyiciler, bazı isteğe bağlı olsa da, bu en üst düzey öğelere sahip
 | <*zaman birimi sayısı*> | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -135,7 +136,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 | <*zaman birimi sayısı*> | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. |
 ||||
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -225,7 +226,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen BIR API](../connectors/apis-li
 | <*gövde-içerik*> | JSON Nesnesi | Yönetilen API 'ye yük olarak göndermek için herhangi bir ileti içeriği | 
 ||||
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama |
 |-------|------|-------------|
@@ -308,7 +309,7 @@ Bu tetikleyici belirtilen yineleme zamanlaması temelinde belirtilen HTTP veya H
 | `interval` | <*zaman birimi sayısı*> | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. |
 |||||
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Özellik | Değer | Tür | Description |
 |----------|-------|------|-------------|
@@ -337,7 +338,7 @@ Mantıksal uygulamanızla iyi bir şekilde çalışmak için uç noktanın belir
 
 | Özellik | Gerekli | Açıklama |
 |----------|----------|-------------|
-| Durum kodu | Evet | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. |
+| Durum kodu | Yes | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. |
 | Retry-After üst bilgisi | Hayır | Mantıksal uygulamanız bitiş noktasını yeniden yokladığı saniye sayısı |
 | Konum üst bilgisi | Hayır | Sonraki yoklama aralığında çağrılacak URL. Belirtilmemişse, özgün URL kullanılır. |
 |||| 
@@ -402,7 +403,7 @@ Ayrıca, bir **Httpweb kancası** tetikleyicisi üzerinde [zaman uyumsuz sınır
 | <*uç nokta-abone ol-URL*> | Dize | Abonelik isteğinin gönderileceği uç nokta URL 'SI | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -496,7 +497,7 @@ Bu tetikleyici, belirtilen yinelenme zamanlaması temelinde çalışır ve düze
 | <*zaman birimi sayısı*> | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -568,7 +569,7 @@ Daha fazla bilgi ve bu tetikleyicinin örnekleri için bkz. [düzenli olarak ça
 
 Bu tetikleyici, gelen istekleri kabul edebilecek bir uç nokta oluşturarak mantıksal uygulamanızı çağrılabilir hale getirir. Bu tetikleyici için, tetikleyicinin gelen istekten aldığı yük veya girişleri açıklayan ve doğrulayan bir JSON şeması sağlayın. Şema ayrıca tetikleyici özelliklerini iş akışındaki sonraki eylemlerden daha kolay başvuruya de olanak sağlar.
 
-Bu tetikleyiciyi çağırmak için, `listCallbackUrl` [Iş akışı hizmeti REST API](https://docs.microsoft.com/rest/api/logic/workflows)açıklanan API 'yi kullanmanız gerekir. Bu tetikleyiciyi bir HTTP uç noktası olarak kullanmayı öğrenmek için bkz. [http uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](../logic-apps/logic-apps-http-endpoint.md).
+Bu tetikleyiciyi çağırmak için, `listCallbackUrl` [Iş akışı hizmeti REST API](/rest/api/logic/workflows)açıklanan API 'yi kullanmanız gerekir. Bu tetikleyiciyi bir HTTP uç noktası olarak kullanmayı öğrenmek için bkz. [http uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](../logic-apps/logic-apps-http-endpoint.md).
 
 ```json
 "manual": {
@@ -605,7 +606,7 @@ Bu tetikleyiciyi çağırmak için, `listCallbackUrl` [Iş akışı hizmeti REST
 | <*Özellik türü*> | Dize | Özelliğin türü | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -780,7 +781,7 @@ Azure Logic Apps, her biri bir eylemin benzersiz davranışını tanımlayan far
 | <*önceki-tetikleyici-veya-eylem-durum*> | JSON Nesnesi | Bu geçerli eylem çalıştırılmadan hemen önce çalışması gereken tetikleyici veya eylemin adı ve sonuç durumu | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------|
@@ -817,19 +818,19 @@ Yaygın olarak kullanılan bazı eylem türleri şunlardır:
 
 | Eylem türü | Açıklama | 
 |-------------|-------------| 
-| [**Oluştur**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
+| [**Compose**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
 | [**JavaScript kodunu Yürüt**](#run-javascript-code) | Belirli ölçütlere uyan JavaScript kod parçacıklarını çalıştırın. Kod gereksinimleri ve daha fazla bilgi için bkz. [satır içi kod ile kod parçacıkları ekleme ve çalıştırma](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**Çalışmayacaktır**](#function-action) | Bir Azure Işlevi çağırır. | 
+| [**İşlev**](#function-action) | Bir Azure Işlevi çağırır. | 
 | [**HTTP**](#http-action) | Bir HTTP uç noktası çağırır. | 
 | [**Birleştir**](#join-action) | Dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirli bir sınırlayıcı karakterle ayırır. | 
 | [**JSON Ayrıştır**](#parse-json-action) | JSON içeriğindeki özelliklerden Kullanıcı dostu belirteçler oluşturur. Daha sonra, mantıksal uygulamanıza belirteçleri ekleyerek bu özelliklere başvurabilirsiniz. | 
 | [**Sorgu**](#query-action) | Bir koşula veya filtreye bağlı olarak başka bir dizideki öğelerden bir dizi oluşturur. | 
-| [**Yanıtıyla**](#response-action) | Gelen çağrıya veya isteğe yanıt oluşturur. | 
+| [**Yanıt**](#response-action) | Gelen çağrıya veya isteğe yanıt oluşturur. | 
 | [**Şunu seçin:**](#select-action) | Belirtilen haritaya göre başka bir diziden öğeleri dönüştürerek JSON nesneleriyle bir dizi oluşturur. | 
 | [**Tablosundan**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
-| [**Sonlandırmayı**](#terminate-action) | Etkin şekilde çalışan bir iş akışını sonlandırır. | 
+| [**Terminate**](#terminate-action) | Etkin şekilde çalışan bir iş akışını sonlandırır. | 
 | [**Wait**](#wait-action) | İş akışınızı belirtilen süre veya belirtilen tarih ve saate kadar duraklatır. | 
-| [**Akışıyla**](#workflow-action) | Bir iş akışını başka bir iş akışı içinde bir şekilde alır. | 
+| [**Workflow**](#workflow-action) | Bir iş akışını başka bir iş akışı içinde bir şekilde alır. | 
 ||| 
 
 <a name="managed-api-actions"></a>
@@ -895,7 +896,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
 | <*api-işlem*> | Dize | Çağrılacak API işlemi | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -974,7 +975,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
 | <*api-Subscribe-URL*> | Dize | API 'ye abone olmak için kullanılacak URI | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -1008,7 +1009,7 @@ Bu eylem, ifadeler de dahil olmak üzere birden çok girişin tek bir çıkış�
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
-| <*oluşturma girişleri*> | Herhangi biri | Tek bir çıkış oluşturmak için girişler | 
+| <*oluşturma girişleri*> | Herhangi bir | Tek bir çıkış oluşturmak için girişler | 
 |||| 
 
 *Örnek 1*
@@ -1150,7 +1151,7 @@ Bu eylem, önceden oluşturulmuş bir [Azure işlevini](../azure-functions/funct
 | <*Yöntem-tür*> | Dize | İşlevi çağırmak için kullanılacak HTTP yöntemi: "GET", "PUT", "POST", "PATCH" veya "DELETE" <p>Belirtilmemişse, varsayılan "POST" yöntemidir. | 
 ||||
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------|  
@@ -1228,7 +1229,7 @@ Bu eylem, belirtilen HTTP veya HTTPS uç noktasına bir istek gönderir ve iş a
 | `uri` | <*HTTP-veya-HTTPS uç noktası-URL*> | Dize | Giden isteği göndermek istediğiniz HTTP veya HTTPS uç noktası URL 'SI. En büyük dize boyutu: 2 KB <p>Bir Azure hizmeti veya kaynağı için, bu URI söz dizimi kaynak KIMLIĞI ve erişmek istediğiniz kaynağın yolunu içerir. |
 |||||
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Özellik | Değer | Tür | Açıklama |
 |----------|-------|------|-------------|
@@ -1466,7 +1467,7 @@ Bu eylem bir HTTP isteğine yanıt için yük oluşturur.
 | <*Yanıt-durum kodu*> | Tamsayı | Gelen isteğe gönderilen HTTP durum kodu. Varsayılan kod "200 Tamam" dır, ancak kod, 2xx, 4xx veya 5xx ile başlayan ancak 3xxx ile birlikte olmayan geçerli bir durum kodu olabilir. | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -1640,14 +1641,14 @@ Bu eylem bir diziden CSV veya HTML tablosu oluşturur. JSON nesnelerine sahip di
 | <*dizide*> | Dizi | Tablo için kaynak öğeleri sağlayan dizi veya ifade <p>**Note**: Kaynak dizisi boşsa, eylem boş bir tablo oluşturur. | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 Sütun üst bilgilerini ve değerlerini belirtmek veya özelleştirmek için, `columns` diziyi kullanın. `header-value`Çiftler aynı üstbilgi adına sahip olduğunda, değerleri bu üst bilgi adı altındaki aynı sütunda görünür. Aksi takdirde, benzersiz üst bilgi benzersiz bir sütun tanımlar.
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
 | <*sütun-adı*> | Dize | Bir sütunun üst bilgi adı | 
-| <*sütun-değer*> | Herhangi biri | Bu sütundaki değer | 
+| <*sütun-değer*> | Herhangi bir | Bu sütundaki değer | 
 |||| 
 
 *Örnek 1*
@@ -1752,7 +1753,7 @@ Bu eylem bir iş akışı örneği için çalışmayı durduruyor, devam eden t�
 | <*durumlarına*> | Dize | Çalıştırma için döndürülecek durum: "başarısız", "Iptal edildi" veya "başarılı" |
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 "RunStatus" nesnesinin özellikleri yalnızca "runStatus" özelliği "başarısız" durumuna ayarlandığında geçerlidir.
 
@@ -1899,7 +1900,7 @@ Logic Apps motor çağırmak istediğiniz tetikleyiciye erişimi denetler, bu ne
 | <*iç içe mantık-uygulama adı*> | Dize | Çağırmak istediğiniz mantıksal uygulamanın adı |
 ||||
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------|  
@@ -1974,7 +1975,7 @@ Bu döngü eylemi bir dizi boyunca yinelenir ve her dizi öğesinde eylemler ger
 | <*-for-ifadesi*> | Dize | Belirtilen dizideki her öğeye başvuran ifade | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -2179,7 +2180,7 @@ Bu eylem, *Switch deyimleri*olarak da bilinen, diğer eylemleri *durumlar*halind
 | <*eşleşen değer*> | Değişir | Değerlendirilen sonuçla karşılaştırılacak değer | 
 |||| 
 
-*İsteğe Bağlı*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
@@ -2394,7 +2395,7 @@ Tetikleyiciler ve eylemler için varsayılan davranışı `operationOptions` tet
 
 | İşlem seçeneği | Tür | Açıklama | Tetikleyici veya eylem | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | Dize | HTTP tabanlı eylemleri zaman uyumsuz yerine eşzamanlı olarak çalıştırın. <p><p>Bu seçeneği ayarlamak için bkz. [eylemleri zaman uyumlu olarak çalıştırma](#disable-asynchronous-pattern). | Eylem <p>[Apiconnection](#apiconnection-action), <br>[Http](#http-action), <br>[Yanıtıyla](#response-action) | 
+| `DisableAsyncPattern` | Dize | HTTP tabanlı eylemleri zaman uyumsuz yerine eşzamanlı olarak çalıştırın. <p><p>Bu seçeneği ayarlamak için bkz. [eylemleri zaman uyumlu olarak çalıştırma](#disable-asynchronous-pattern). | Eylem <p>[Apiconnection](#apiconnection-action), <br>[Http](#http-action), <br>[Response](#response-action) | 
 | `OptimizedForHighThroughput` | Dize | 5 dakika [default limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) başına eylem yürütmelerinin sayısı [üst sınırını en fazla](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)olacak şekilde değiştirin. <p><p>Bu seçeneği ayarlamak için bkz. [yüksek verimlilik modunda çalıştırma](#run-high-throughput-mode). | Tüm eylemler | 
 | `Sequential` | Dize | "Her" for each "döngüsü yinelemelerini, paralel olarak aynı anda değil, tek bir kez çalıştırın. <p>Bu seçenek özelliği olarak ayarlamayla aynı şekilde çalışmaktadır `runtimeConfiguration.concurrency.repetitions` `1` . Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p><p>Bu seçeneği ayarlamak için, bkz. ["for each" döngülerini sırayla çalıştır](#sequential-for-each).| Eylem: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | Dize | Her mantıksal uygulama örneği için tetikleyiciyi sırayla çalıştırın ve sonraki mantıksal uygulama örneğini tetiklemeden önce daha önce etkin çalıştırmanın bitmesini bekleyin. <p><p>Bu seçenek özelliği olarak ayarlamayla aynı şekilde çalışmaktadır `runtimeConfiguration.concurrency.runs` `1` . Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p>Bu seçeneği ayarlamak için bkz. [tetikleyici örnekleri ardışık](#sequential-trigger)olarak. | Tüm tetikleyiciler | 
@@ -2656,7 +2657,7 @@ Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runti
 
 ### <a name="run-actions-in-a-synchronous-operation-pattern"></a>İşlemleri zaman uyumlu bir işlem düzeninde çalıştırma
 
-Varsayılan olarak, Azure Logic Apps HTTP eylemi ve APIConnection eylemleri standart [*zaman uyumsuz işlem modelini*](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)izler, ancak yanıt eylemi *zaman uyumlu işlem modelini*izler. Zaman uyumsuz model, bir eylem belirtilen uç nokta, hizmet, sistem veya API 'ye bir istek çağırdığında veya gönderdiğinde, alıcı hemen ["202 kabul edildi"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) yanıtı döndürdüğünü belirtir. Bu kod, alıcının isteği kabul ettiğini ancak işlemeyi bitirmediğini onaylar. Yanıt, `location` alıcı işlemeyi durdurmadan ve ["200 Tamam"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) başarı yanıtını ya da 202 olmayan diğer yanıtı döndürünceye kadar, çağıranın, zaman uyumsuz isteğin durumunu sürekli yoklamak veya denetlemek için kullanabileceği, URL 'YI ve yenileme kimliğini belirten bir üst bilgi içerebilir. Daha fazla bilgi için bkz. [zaman uyumsuz mikro hizmet tümleştirmesi mikro hizmet bağımsız çalışma sınırı zorlar](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+Varsayılan olarak, Azure Logic Apps HTTP eylemi ve APIConnection eylemleri standart [*zaman uyumsuz işlem modelini*](/azure/architecture/patterns/async-request-reply)izler, ancak yanıt eylemi *zaman uyumlu işlem modelini*izler. Zaman uyumsuz model, bir eylem belirtilen uç nokta, hizmet, sistem veya API 'ye bir istek çağırdığında veya gönderdiğinde, alıcı hemen ["202 kabul edildi"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) yanıtı döndürdüğünü belirtir. Bu kod, alıcının isteği kabul ettiğini ancak işlemeyi bitirmediğini onaylar. Yanıt, `location` alıcı işlemeyi durdurmadan ve ["200 Tamam"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) başarı yanıtını ya da 202 olmayan diğer yanıtı döndürünceye kadar, çağıranın, zaman uyumsuz isteğin durumunu sürekli yoklamak veya denetlemek için kullanabileceği, URL 'YI ve yenileme kimliğini belirten bir üst bilgi içerebilir. Daha fazla bilgi için bkz. [zaman uyumsuz mikro hizmet tümleştirmesi mikro hizmet bağımsız çalışma sınırı zorlar](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
 
 * Mantıksal uygulama tasarımcısında, HTTP eylemi, APIConnection eylemleri ve yanıt eylemi **zaman uyumsuz model** ayarına sahiptir. Bu ayar etkinleştirildiğinde, çağıranın işlemin bitmesini beketmediğini ve bir sonraki eyleme geçebilir ancak işlem duraklarına kadar durumu denetlemeye devam edebilir. Devre dışı bırakılırsa, bu ayar çağıranın bir sonraki eyleme geçmeden önce işlemin tamamlanmasını beklediğini belirtir. Bu ayarı bulmak için şu adımları izleyin:
 

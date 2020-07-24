@@ -2,13 +2,13 @@
 title: Azure 'a dağıt düğmesi
 description: Bir GitHub deposundan Azure Resource Manager şablonları dağıtmak için düğmeyi kullanın.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079465"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın
 
@@ -28,7 +28,11 @@ Görüntü şöyle görünür:
 
 ## <a name="create-url-for-deploying-template"></a>Şablon dağıtmak için URL Oluştur
 
-Şablonunuzun URL 'sini oluşturmak için, deponuzdaki şablonun ham URL 'SI ile başlayın:
+Şablonunuzun URL 'sini oluşturmak için, deponuzdaki şablonun ham URL 'SI ile başlayın. Ham URL 'yi görmek için **RAW**' ı seçin.
+
+:::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="Ham Seç":::
+
+URL biçimi:
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json

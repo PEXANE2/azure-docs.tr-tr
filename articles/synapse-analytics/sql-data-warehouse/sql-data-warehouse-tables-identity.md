@@ -7,15 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2019
+ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080735"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda vekil anahtarlar oluşturmak için KIMLIK kullanma
 
@@ -23,7 +24,7 @@ Bu makalede, SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak iç
 
 ## <a name="what-is-a-surrogate-key"></a>Vekil anahtar nedir?
 
-Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. Veri ambarı modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz.  
+Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. Veri ambarı modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz. IDENTITY özelliği [Create Table (Transact-SQL) Identity (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)bölümünde ayrıntılı olarak bazı sınırlamalara sahiptir. KIMLIğIN sınırlamalarından biri, benzersiz olması garanti edilmez. KIMLIK ekleme kapalı ve yeniden temelsiz olarak ayarlandığında kimlik değeri daha benzersiz değerlere yol açabilir, ancak tüm durumlarda benzersizlik garantisi vermeyebilir. KIMLIK üzerindeki kısıtlamalar nedeniyle kimlik değerlerini kullanamadığı takdirde, geçerli bir değer tutan ayrı bir tablo oluşturun ve uygulamanızla birlikte tablo ve sayı atamaya erişimi yönetin. 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>KIMLIK sütunuyla tablo oluşturma
 
@@ -49,7 +50,7 @@ Bu bölümün geri kalanında, bunları daha fazla anlamanıza yardımcı olmak 
 
 ### <a name="allocation-of-values"></a>Değerlerin ayrılması
 
-IDENTITY özelliği, SQL Server ve Azure SQL veritabanı 'nın davranışını yansıtan vekil değerlerinin ayrıldığı sırayı garanti etmez. Ancak, SYNAPSE SQL havuzunda, garanti olmaması daha fazla önemlidir.
+IDENTITY özelliği, veri ambarının dağıtılmış mimarisi nedeniyle vekil değerlerinin ayrıldığı sırayı garanti etmez. IDENTITY özelliği, yük performansını etkilemeden SYNAPSE SQL havuzundaki tüm dağıtımların ölçeğini genişletmek için tasarlanmıştır. 
 
 Aşağıdaki örnek bir çizimde verilmiştir:
 

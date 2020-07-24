@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ca46ace5f774e288b40a969f8f7e9802e79857
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080888"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -23,7 +24,7 @@ Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda 
 > [!NOTE]
 > Bu özellik, MySQL için Azure veritabanı 'nın "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 MySQL için Azure veritabanı veri şifrelemesi aşağıdaki avantajları sağlar:
 
@@ -51,7 +52,7 @@ Bir MySQL sunucusunun, DEK ' de şifreleme için Key Vault depolanan müşteri t
 * **wrapKey**: dek ' i şifreleyebilmek için.
 * **unwrapKey**: dek ' nin şifresini çözebilmek için.
 
-Anahtar Kasası Yöneticisi ayrıca [Key Vault denetim olaylarının günlüğe kaydedilmesini etkinleştirerek](../azure-monitor/insights/azure-key-vault.md)daha sonra denetlenebilir.
+Anahtar Kasası Yöneticisi ayrıca [Key Vault denetim olaylarının günlüğe kaydedilmesini etkinleştirerek](../azure-monitor/insights/key-vault-insights-overview.md)daha sonra denetlenebilir.
 
 Sunucu, anahtar kasasında depolanan müşteri tarafından yönetilen anahtarı kullanacak şekilde yapılandırıldığında, sunucu DEK şifrelemeleri anahtar kasasına gönderir. Key Vault, Kullanıcı veritabanında depolanan şifreli DEK döndürür. Benzer şekilde, gerektiğinde sunucu, şifre çözme için korunan DEK anahtar kasasına gönderilir. Denetçiler, günlüğe kaydetme etkinse Key Vault denetim olay günlüklerini gözden geçirmek için Azure Izleyici 'yi kullanabilir.
 

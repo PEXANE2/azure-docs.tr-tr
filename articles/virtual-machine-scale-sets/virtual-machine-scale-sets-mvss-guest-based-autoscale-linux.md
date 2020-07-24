@@ -9,23 +9,24 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080429"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux ölçek kümesi şablonunda Konuk ölçümleri kullanarak otomatik ölçeklendirme
 
 Azure 'da VM 'Ler ve ölçek kümelerinden toplanan iki kapsamlı ölçüm türü vardır: konak ölçümleri ve konuk ölçümleri. Yüksek düzeyde, Standart CPU, disk ve ağ ölçümleri kullanmak isterseniz, ana bilgisayar ölçümleri iyi bir uyum sağlar. Ancak, daha büyük bir ölçüm seçimine ihtiyaç duyuyorsanız, Konuk ölçümlerinin bakımış olması gerekir.
 
-Konak ölçümleri konak VM tarafından toplandığı için ek kurulum gerektirmez, ancak Konuk ölçümler [Windows Azure tanılama uzantısını](../virtual-machines/windows/extensions-diagnostics-template.md) veya [Linux Azure tanılama uzantısını](../virtual-machines/linux/diagnostic-extension.md) Konuk VM 'ye yüklemenizi gerektirir. Konuk ölçümlerinin tek bir yaygın nedeni, ana bilgisayar ölçümlerinin yerine Konuk ölçümlerinin daha büyük bir kullanımını konak ölçümlerine göre sağlar. Bu tür bir örnek, yalnızca Konuk ölçümler aracılığıyla kullanılabilen bellek tüketim ölçümleridir. Desteklenen konak ölçümleri [burada](../azure-monitor/platform/metrics-supported.md)listelenir ve yaygın olarak kullanılan Konuk ölçümler [burada](../azure-monitor/platform/autoscale-common-metrics.md)listelenir. Bu makalede, Linux ölçek kümelerinin Konuk ölçümlerine göre otomatik ölçeklendirme kurallarını kullanmak için [temel uygun ölçek kümesi şablonunun](virtual-machine-scale-sets-mvss-start.md) nasıl değiştirileceği gösterilmektedir.
+Konak ölçümleri konak VM tarafından toplandığı için ek kurulum gerektirmez, ancak Konuk ölçümler [Windows Azure tanılama uzantısını](../virtual-machines/extensions/diagnostics-template.md) veya [Linux Azure tanılama uzantısını](../virtual-machines/extensions/diagnostics-linux.md) Konuk VM 'ye yüklemenizi gerektirir. Konuk ölçümlerinin tek bir yaygın nedeni, ana bilgisayar ölçümlerinin yerine Konuk ölçümlerinin daha büyük bir kullanımını konak ölçümlerine göre sağlar. Bu tür bir örnek, yalnızca Konuk ölçümler aracılığıyla kullanılabilen bellek tüketim ölçümleridir. Desteklenen konak ölçümleri [burada](../azure-monitor/platform/metrics-supported.md)listelenir ve yaygın olarak kullanılan Konuk ölçümler [burada](../azure-monitor/platform/autoscale-common-metrics.md)listelenir. Bu makalede, Linux ölçek kümelerinin Konuk ölçümlerine göre otomatik ölçeklendirme kurallarını kullanmak için [temel uygun ölçek kümesi şablonunun](virtual-machine-scale-sets-mvss-start.md) nasıl değiştirileceği gösterilmektedir.
 
 ## <a name="change-the-template-definition"></a>Şablon tanımını değiştirme
 
 Önceki bir [makalede](virtual-machine-scale-sets-mvss-start.md) temel bir ölçek kümesi şablonu oluşturduk. Artık bu önceki şablonu kullanacağız ve konuk ölçümü tabanlı otomatik ölçeklendirme ile Linux ölçek kümesi dağıtan bir şablon oluşturacak şekilde değiştirirsiniz.
 
-İlk olarak, ve için parametreleri ekleyin `storageAccountName` `storageAccountSasToken` . Tanılama Aracısı, ölçüm verilerini bu depolama hesabındaki bir [tabloda](../cosmos-db/table-storage-how-to-use-dotnet.md) depolar. Linux Tanılama Aracısı sürüm 3,0 itibariyle, depolama erişim anahtarı kullanmak artık desteklenmemektedir. Bunun yerine bir [SAS belirteci](../storage/common/storage-dotnet-shared-access-signature-part-1.md)kullanın.
+İlk olarak, ve için parametreleri ekleyin `storageAccountName` `storageAccountSasToken` . Tanılama Aracısı, ölçüm verilerini bu depolama hesabındaki bir [tabloda](../cosmos-db/tutorial-develop-table-dotnet.md) depolar. Linux Tanılama Aracısı sürüm 3,0 itibariyle, depolama erişim anahtarı kullanmak artık desteklenmemektedir. Bunun yerine bir [SAS belirteci](../storage/common/storage-sas-overview.md)kullanın.
 
 ```diff
      },
@@ -41,7 +42,7 @@ Konak ölçümleri konak VM tarafından toplandığı için ek kurulum gerektirm
    },
 ```
 
-Sonra, ölçek kümesini `extensionProfile` Tanılama uzantısını içerecek şekilde değiştirin. Bu yapılandırmada, ölçümlerin toplanacağı ölçek kümesinin kaynak KIMLIĞINI, Ayrıca ölçümleri depolamak için kullanılacak depolama hesabını ve SAS belirtecini belirtin. Ölçümlerin ne sıklıkta toplanduğunu (Bu durumda, her dakika) ve hangi ölçümlerin izleneceğini (Bu örnekte, kullanılan bellek yüzdesini) belirtin. Kullanılan bu yapılandırma ve ölçümler hakkında daha ayrıntılı bilgi için [Bu belgelere](../virtual-machines/linux/diagnostic-extension.md)bakın.
+Sonra, ölçek kümesini `extensionProfile` Tanılama uzantısını içerecek şekilde değiştirin. Bu yapılandırmada, ölçümlerin toplanacağı ölçek kümesinin kaynak KIMLIĞINI, Ayrıca ölçümleri depolamak için kullanılacak depolama hesabını ve SAS belirtecini belirtin. Ölçümlerin ne sıklıkta toplanduğunu (Bu durumda, her dakika) ve hangi ölçümlerin izleneceğini (Bu örnekte, kullanılan bellek yüzdesini) belirtin. Kullanılan bu yapılandırma ve ölçümler hakkında daha ayrıntılı bilgi için [Bu belgelere](../virtual-machines/extensions/diagnostics-linux.md)bakın.
 
 ```diff
                  }

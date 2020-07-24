@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükler
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079375"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS aracısını yükler
 
@@ -42,10 +42,10 @@ Yedekleme için kullanılabilen veriler, aracının yüklü olduğu yere bağlı
 
 ## <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
 
-Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)kullanır.
+Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanır.
 
 * Kasa birincil yedekleme mekanizmanız ise GRS kullanmanızı öneririz.
-* Azure depolama maliyetlerini azaltmak için [yerel olarak yedekli depolama (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kullanabilirsiniz.
+* Azure depolama maliyetlerini azaltmak için [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) kullanabilirsiniz.
 
 Depolama çoğaltma türünü değiştirmek için:
 
@@ -95,7 +95,7 @@ Microsoft eşlemesini kullanmak için aşağıdaki hizmetleri, bölgeleri ve ilg
 * Kurtarma Hizmetleri kasanızın konumuna göre Azure bölgesi
 * Azure depolama, kurtarma hizmetleri kasanızın konumuna göre
 
-Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](../expressroute/expressroute-routing.md).
 
 > [!NOTE]
 > Ortak eşleme, yeni devreler için kullanım dışıdır.
@@ -136,13 +136,13 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 ## <a name="install-and-register-the-agent"></a>Aracıyı yükleme ve kaydetme
 
 1. Yedeklemek istediğiniz makinelerde *MARSagentinstaller.exe* dosyasını çalıştırın.
-1. MARS Aracısı kurulum sihirbazında, **yükleme ayarları**' nı seçin. Burada, aracının yükleneceği yeri seçin ve önbellek için bir konum seçin. Ardından **İleri**' yi seçin.
+1. MARS Aracısı kurulum sihirbazında, **yükleme ayarları**' nı seçin. Burada, aracının yükleneceği yeri seçin ve önbellek için bir konum seçin. Sonra **İleri**’yi seçin.
    * Azure Backup, veri anlık görüntülerini Azure 'a göndermeden önce depolamak için önbelleği kullanır.
    * Önbellek konumunda, yedeklediğiniz verilerin boyutunun en az %5 ' i kadar boş alan olmalıdır.
 
     ![MARS Aracısı kurulum sihirbazında yükleme ayarlarını seçin](./media/backup-configure-vault/mars1.png)
 
-1. **Ara sunucu yapılandırması**Için, Windows makinesinde çalışan aracının internet 'e nasıl bağlanacağını belirtin. Ardından **İleri**' yi seçin.
+1. **Ara sunucu yapılandırması**Için, Windows makinesinde çalışan aracının internet 'e nasıl bağlanacağını belirtin. Sonra **İleri**’yi seçin.
 
    * Özel bir proxy kullanıyorsanız, gerekli tüm proxy ayarlarını ve kimlik bilgilerini belirtin.
    * Aracının [belirli URL 'lere](#before-you-start)erişmesi gerektiğini unutmayın.
@@ -151,7 +151,7 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 
 1. **Yükleme**için önkoşulları gözden geçirin ve **yükleme**' yi seçin.
 1. Aracı yüklendikten sonra, **kayda devam et**' i seçin.
-1. **Sunucu kaydetme Sihirbazı**  >  **kasa kimliği**' nde, indirdiğiniz kimlik bilgileri dosyasına gidin ve seçin. Ardından **İleri**' yi seçin.
+1. **Sunucu kaydetme Sihirbazı**  >  **kasa kimliği**' nde, indirdiğiniz kimlik bilgileri dosyasına gidin ve seçin. Sonra **İleri**’yi seçin.
 
     ![Sunucu kaydetme Sihirbazı 'Nı kullanarak kasa kimlik bilgileri ekleme](./media/backup-configure-vault/register1.png)
 

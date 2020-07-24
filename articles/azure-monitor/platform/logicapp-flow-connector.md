@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248745"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081568"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Logic Apps ve Flow için Azure Izleyici günlükleri Bağlayıcısı
-[Azure Logic Apps](/azure/logic-apps/) ve [Güç otomatikleştirme](https://ms.flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
+[Azure Logic Apps](../../logic-apps/index.yml) ve [Güç otomatikleştirme](https://ms.flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
 
 Örneğin, Azure Izleyici günlük verilerini Office 365 ' den bir e-posta bildiriminde kullanmak için bir mantıksal uygulama oluşturabilir, Azure DevOps 'da bir hata oluşturabilir veya bir bolluk iletisi postalayabilirsiniz.  Bir iş akışını basit bir zamanlamaya göre veya bir e-posta ya da tweet alınması gibi bağlı bir hizmette bazı bir eylemden tetikleyebilirsiniz. 
 
@@ -31,16 +32,16 @@ Verilerinizin boyutuna ve kullandığınız sorguya bağlı olarak bağlayıcı,
 Aşağıdaki tabloda, Azure Izleyici günlükleri bağlayıcısına dahil edilen eylemler açıklanmaktadır. Her ikisi de Log Analytics çalışma alanında veya Application Insights uygulamasında bir günlük sorgusu çalıştırmanızı sağlar. Fark, verilerin döndürülme yoludur.
 
 > [!NOTE]
-> Azure Izleyici günlükleri Bağlayıcısı, [azure Log Analytics bağlayıcısının](https://docs.microsoft.com/connectors/azureloganalytics/) ve [Azure Application Insights bağlayıcısının](https://docs.microsoft.com/connectors/applicationinsights/)yerini alır. Bu bağlayıcı diğerleri ile aynı işlevleri sağlar ve bir Log Analytics çalışma alanında veya Application Insights uygulamasında bir sorgu çalıştırmak için tercih edilen yöntemdir.
+> Azure Izleyici günlükleri Bağlayıcısı, [azure Log Analytics bağlayıcısının](/connectors/azureloganalytics/) ve [Azure Application Insights bağlayıcısının](/connectors/applicationinsights/)yerini alır. Bu bağlayıcı diğerleri ile aynı işlevleri sağlar ve bir Log Analytics çalışma alanında veya Application Insights uygulamasında bir sorgu çalıştırmak için tercih edilen yöntemdir.
 
 
 | Eylem | Açıklama |
 |:---|:---|
-| [Sorgu ve liste sonuçlarını Çalıştır](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Her bir satırı kendi nesnesi olarak döndürür. Bu eylemi, iş akışının geri kalanında her bir satırla ayrı olarak çalışmak istediğinizde kullanın. Eylem genellikle [her etkinlik için](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)bir olur. |
-| [Sorgu Çalıştır ve sonuçları görselleştirin](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Sonuç kümesindeki tüm satırları tek biçimli bir nesne olarak döndürür. Sonuç kümesini, sonuçları bir e-postaya göndermek gibi iş akışı geri kalanında birlikte kullanmak istediğinizde bu eylemi kullanın.  |
+| [Sorgu ve liste sonuçlarını Çalıştır](/connectors/azuremonitorlogs/#run-query-and-list-results) | Her bir satırı kendi nesnesi olarak döndürür. Bu eylemi, iş akışının geri kalanında her bir satırla ayrı olarak çalışmak istediğinizde kullanın. Eylem genellikle [her etkinlik için](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)bir olur. |
+| [Sorgu Çalıştır ve sonuçları görselleştirin](/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Sonuç kümesindeki tüm satırları tek biçimli bir nesne olarak döndürür. Sonuç kümesini, sonuçları bir e-postaya göndermek gibi iş akışı geri kalanında birlikte kullanmak istediğinizde bu eylemi kullanın.  |
 
-## <a name="walkthroughs"></a>Kılavuz
-Aşağıdaki öğreticilerde Azure Logic Apps içindeki Azure Izleyici bağlayıcılarının kullanımı gösterilmektedir. Bu aynı örneği, Power otomatikleştirmede gerçekleştirebilirsiniz, ancak ilk iş akışını oluşturma ve tamamlandığında çalıştırma gibi tek fark. İş akışı ve eylemlerin yapılandırması her ikisi arasında aynıdır. Başlamak için bkz. [Power otomatikleştirmede bir şablondan akış oluşturma](https://docs.microsoft.com/power-automate/get-started-logic-template) .
+## <a name="walkthroughs"></a>İzlenecek Yollar
+Aşağıdaki öğreticilerde Azure Logic Apps içindeki Azure Izleyici bağlayıcılarının kullanımı gösterilmektedir. Bu aynı örneği, Power otomatikleştirmede gerçekleştirebilirsiniz, ancak ilk iş akışını oluşturma ve tamamlandığında çalıştırma gibi tek fark. İş akışı ve eylemlerin yapılandırması her ikisi arasında aynıdır. Başlamak için bkz. [Power otomatikleştirmede bir şablondan akış oluşturma](/power-automate/get-started-logic-template) .
 
 
 ### <a name="create-a-logic-app"></a>Mantıksal Uygulama oluşturma
@@ -124,6 +125,5 @@ Mantıksal uygulama tamamlandığında, belirttiğiniz alıcının postasını k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure izleyici 'de günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
-- [Logic Apps](/azure/logic-apps/) hakkında daha fazla bilgi edinin
+- [Logic Apps](../../logic-apps/index.yml) hakkında daha fazla bilgi edinin
 - [Microsoft Flow](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.
-

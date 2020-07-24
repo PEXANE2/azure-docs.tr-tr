@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081619"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme
 
@@ -31,7 +31,7 @@ Birleşik BT, şunları sağlar:
 
 * Hangi ölçümleri görmek istediğinizi değiştirmek, sınırlarınız ile hizalı olan eşikleri değiştirmek veya ayarlamak ve kendi çalışma kitabınız olarak kaydetmek için **özelleştirilebilir** . Çalışma kitabındaki grafikler Azure panosuna sabitlenebilir.  
 
-Bu özellik, herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez, depolama hesaplarınızdaki depolama ölçümleri varsayılan olarak toplanır. Azure depolama 'da kullanılabilen ölçümler hakkında bilginiz varsa, Azure depolama [ölçümlerini](../../storage/common/storage-metrics-in-azure-monitor.md)Inceleyerek Azure depolama ölçümlerinde açıklama ve tanımı görüntüleyin.
+Bu özellik, herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez, depolama hesaplarınızdaki depolama ölçümleri varsayılan olarak toplanır. Azure depolama 'da kullanılabilen ölçümler hakkında bilginiz varsa, Azure depolama [ölçümlerini](../../storage/common/monitor-storage.md)Inceleyerek Azure depolama ölçümlerinde açıklama ve tanımı görüntüleyin.
 
 >[!NOTE]
 >Bu özelliğe erişmek için ücret alınmaz ve [Azure izleyici fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/monitor/) sayfasında açıklandığı gibi, yalnızca yapılandırdığınız veya etkinleştirdiğiniz Azure izleyici temel özellikleri için ücretlendirilirsiniz.
@@ -198,7 +198,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
 1. Ölçüm kılavuzunda **sütun ayarları** ' nı seçin.
 
-2. **Sütun ayarlarını Düzenle** bölmesinde, Microsoft **sütunları** bölümünde ' ı seçin **. depolama/Storageaccounts-kapasite-usedcapacity $ | Microsoft. Storage/storageaccounts/Blobservices-Capacity-blobcapacity $ | Microsoft. Storage/Storageaccounts/Fileservices-Capacity-filecapacity $ | Microsoft. Storage/storageaccounts/Queueservices-Capacity-queuecapacity $ | Microsoft. Storage/Storageaccounts/Tableservices-Capacity-tablecapacity $**. Aşağı açılan liste **renk paleti**altında **yeşil**' i seçin.
+2. **Sütun ayarlarını Düzenle** bölmesinde, Microsoft **sütunları** bölümünde ' ı seçin **. depolama/Storageaccounts-kapasite-usedcapacity $ `|` Microsoft. Storage/Storageaccounts/Blobservices-Capacity-blobcapacity $ `|` Microsoft. Storage/Storageaccounts/fileservices-Capacity-filecapacity $ `|` Microsoft. Storage/Storageaccounts/queueservices-Capacity-queuecapacity $ `|` Microsoft. Storage/Storageaccounts/tableservices-Capacity-tablecapacity $**. Aşağı açılan liste **renk paleti**altında **yeşil**' i seçin.
 
 3. Değişiklerinizi uygulamak için **Kaydet ve Kapat ' ı** seçin.
 
@@ -246,7 +246,7 @@ Kullanılabilirliği ve eşikleri kullanılabilirlik için değiştirme hakkınd
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Depolama için Azure Izleyici 'de gösterilen verileri analiz etme ve giderme
 
- Depolama için Azure Izleyici 'de gösterilen Azure depolama verilerini çözümleme ve sorun giderme hakkında bilgi için [bkz. izleyici, tanılama ve sorun giderme Microsoft Azure depolama](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting) makalesi.
+ Depolama için Azure Izleyici 'de gösterilen Azure depolama verilerini çözümleme ve sorun giderme hakkında bilgi için [bkz. izleyici, tanılama ve sorun giderme Microsoft Azure depolama](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md) makalesi.
 
 ### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Ölçümlerde neden tüm hata türlerini görmüyorum?
 
@@ -269,7 +269,7 @@ Her çalışma kitabı, bu dosyayı kaydettiğiniz depolama hesabına kaydedilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sorunları algılamaya yardımcı olmak üzere otomatik uyarı ayarlamak için [ölçüm uyarılarını](../platform/alerts-metric.md) ve [hizmet durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications.md) yapılandırın.
+* Sorunları algılamaya yardımcı olmak üzere otomatik uyarı ayarlamak için [ölçüm uyarılarını](../platform/alerts-metric.md) ve [hizmet durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications-portal.md) yapılandırın.
 
 * Çalışma kitaplarının desteklemek için tasarlandıkları senaryoları, mevcut raporların yeni nasıl yazılacağını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu gözden geçirin.
 
