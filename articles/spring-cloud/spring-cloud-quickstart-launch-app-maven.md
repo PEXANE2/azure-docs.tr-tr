@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: f374e0611b887e2a2c787569d9fe58bc1a5c84e9
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-java
+ms.openlocfilehash: 9ae6524dc1d53580d0dc7de1179ccf9db8cebc61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086141"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Hızlı başlangıç: Maven eklentisini kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -47,9 +48,9 @@ Bu hızlı başlangıcı tamamlamak için:
 1. Örnek uygulama için **proje ayrıntılarını** aşağıdaki gibi sağlayın:
 
     1. Uygulamanın ilişkilendirileceği **aboneliği** seçin.
-    1. Uygulama için bir kaynak grubu seçin veya oluşturun. Yeni bir kaynak grubu oluşturmanızı öneririz.  Aşağıdaki örnekte adlı `myspringservice`yeni bir kaynak grubu gösterilmektedir.
-    1. Yeni Azure yay bulut hizmeti için bir ad sağlayın.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir. Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.  Aşağıdaki örnekteki hizmetin adı `contosospringcloud`vardır.
-    1. Belirtilen seçeneklerden uygulamanız için bir konum seçin.  Bu örnekte, ' yi seçtik `East US`.
+    1. Uygulama için bir kaynak grubu seçin veya oluşturun. Yeni bir kaynak grubu oluşturmanızı öneririz.  Aşağıdaki örnekte adlı yeni bir kaynak grubu gösterilmektedir `myspringservice` .
+    1. Yeni Azure yay bulut hizmeti için bir ad sağlayın.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir. Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.  Aşağıdaki örnekteki hizmetin adı vardır `contosospringcloud` .
+    1. Belirtilen seçeneklerden uygulamanız için bir konum seçin.  Bu örnekte, ' yi seçtik `East US` .
     1. Yeni hizmetinizin özetini gözden geçirmek için **gözden geçir + oluştur** ' u seçin.  Her şey doğru görünüyorsa **Oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
@@ -63,7 +64,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan so
 ## <a name="set-up-your-configuration-server"></a>Yapılandırma sunucunuzu ayarlama
 
 1. Hizmete **genel bakış** sayfasında, **yapılandırma sunucusu**' nu seçin.
-1. **Varsayılan depo** bölümünde, **URI değerini** olarak **https://github.com/Azure-Samples/piggymetrics-config**ayarlayın ve ardından değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
+1. **Varsayılan depo** bölümünde, **URI değerini** olarak ayarlayın **https://github.com/Azure-Samples/piggymetrics-config** ve ardından değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Yapılandırma ayarlarını tanımlama ve uygulama](media/maven-qs-apply-config.jpg)
@@ -96,11 +97,11 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan so
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
     ```
 
-    a. , Ve `account-service`modüllerini `gateway``auth-service`seçin.
+    a. , Ve modüllerini `gateway` seçin `auth-service` `account-service` .
 
     b. Aboneliğinizi ve Azure yay bulut hizmeti kümenizi seçin.
 
-    c. Belirtilen projeler listesinde, ortak erişim sağlamak `gateway` için öğesine karşılık gelen sayıyı girin.
+    c. Belirtilen projeler listesinde, `gateway` ortak erişim sağlamak için öğesine karşılık gelen sayıyı girin.
     
     d. Yapılandırmayı onaylayın.
 
@@ -120,7 +121,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan so
 Bu hızlı başlangıçta, Maven deposundan bir yay bulutu uygulaması dağıttınız. Azure Spring Cloud hakkında daha fazla bilgi edinmek için uygulamanızı dağıtıma hazırlama hakkında öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Spring Cloud uygulamanızı dağıtıma](spring-cloud-tutorial-prepare-app-deployment.md)
-> hazırlama[Azure için Maven eklentileri hakkında daha fazla bilgi edinin](https://github.com/microsoft/azure-maven-plugins)
+> [Azure Spring Cloud uygulamanızı dağıtıma hazırlama](spring-cloud-tutorial-prepare-app-deployment.md) 
+>  [Azure Için Maven eklentileri hakkında daha fazla bilgi edinin](https://github.com/microsoft/azure-maven-plugins)
 
 GitHub 'da daha fazla örnek vardır: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

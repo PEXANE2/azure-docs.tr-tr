@@ -9,19 +9,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085699"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
 Bu belgede Linux Tanılama uzantısının sürüm 3,0 ve daha yeni bir sürümü açıklanmaktadır.
 
 > [!IMPORTANT]
-> Sürüm 2,3 ve üzeri hakkında daha fazla bilgi için [Bu belgeye](../linux/classic/diagnostic-extension-v2.md)bakın.
+> Sürüm 2,3 ve üzeri hakkında daha fazla bilgi için [Bu belgeye](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)bakın.
 
 ## <a name="introduction"></a>Giriş
 
@@ -65,10 +65,10 @@ Desteklenen dağıtımlar ve sürümler:
 - 9, 8, 7
 - RHEL 7, 6.7 +
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-* **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. `/usr/sbin/waagent -version`VM 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) izleyin.
-* **Azure CLI**. Makinenizde [Azure CLI ortamını ayarlayın](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. `/usr/sbin/waagent -version`VM 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](./update-linux-agent.md) izleyin.
+* **Azure CLI**. Makinenizde [Azure CLI ortamını ayarlayın](/cli/azure/install-azure-cli) .
 * Henüz yoksa wget komutu: komutunu çalıştırın `sudo apt-get install wget` .
 * Mevcut bir Azure aboneliği ve içindeki mevcut bir depolama hesabı, verileri depolamak için.
 
@@ -243,7 +243,7 @@ Linux Tanılama uzantısının 3,0 sürümü iki havuz türünü destekliyor: Ev
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Event Hubs için SAS belirteçleriyle ilgili bilgi oluşturma ve alma hakkında daha fazla bilgi için [Bu Web sayfasına](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)bakın.
+Event Hubs için SAS belirteçleriyle ilgili bilgi oluşturma ve alma hakkında daha fazla bilgi için [Bu Web sayfasına](/rest/api/eventhub/generate-sas-token#powershell)bakın.
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob havuzu
 
@@ -432,7 +432,7 @@ Bu isteğe bağlı bölüm, rastgele [OMI](https://github.com/Microsoft/omi) sor
 ------- | -----
 ad alanı | seçim Sorgunun yürütülmesi gereken OMı ad alanı. Belirtilmemişse, varsayılan değer, [System Center platformlar arası sağlayıcılar](https://github.com/Microsoft/SCXcore)tarafından uygulanan "root/SCX" dır.
 sorgu | Yürütülecek OMı sorgusu.
-tablo | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
+table | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
 frequency | seçim Sorgunun yürütülmesi arasındaki saniye sayısı. Varsayılan değer 300 ' dir (5 dakika); minimum değer 15 saniyedir.
 yapma | seçim Ham örnek ölçüm sonuçlarının yayımlanması gereken ek havuz adlarının virgülle ayrılmış bir listesi. Bu ham örneklerin toplaması, uzantı veya Azure ölçümleri tarafından hesaplanmadı.
 
@@ -458,7 +458,7 @@ Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve 
 Öğe | Değer
 ------- | -----
  dosyası | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez. ' Omsagent ' Kullanıcı hesabının dosya yoluna okuma erişimi olmalıdır.
-tablo | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
+table | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
 yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
 
 "Table" veya "Havuzlar" ya da her ikisi de belirtilmelidir.
@@ -580,7 +580,7 @@ Korunan ayarlarınızın dosyada ProtectedSettings.jsolduğu varsayıldığında
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Bu komut, Azure CLı 'nın Azure Kaynak Yönetimi (ARM) modunu kullandığınızı varsayar. Klasik dağıtım modeli (ASM) VM 'Leri için LAD 'yi yapılandırmak üzere, "asm" moduna geçin ( `azure config mode asm` ) ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](https://docs.microsoft.com/azure/xplat-cli-connect)bakın.
+Bu komut, Azure CLı 'nın Azure Kaynak Yönetimi (ARM) modunu kullandığınızı varsayar. Klasik dağıtım modeli (ASM) VM 'Leri için LAD 'yi yapılandırmak üzere, "asm" moduna geçin ( `azure config mode asm` ) ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](/azure/xplat-cli-connect)bakın.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -763,10 +763,10 @@ Microsoft Azure Depolama Gezgini oturumunun bu anlık görüntüsü, test sanal 
 
 ![image](./media/diagnostics-linux/stg_explorer.png)
 
-Bir EventHubs uç noktasına yayınlanan iletileri kullanmayı öğrenmek için ilgili [eventhubs belgelerine](../../event-hubs/event-hubs-what-is-event-hubs.md) bakın.
+Bir EventHubs uç noktasına yayınlanan iletileri kullanmayı öğrenmek için ilgili [eventhubs belgelerine](../../event-hubs/event-hubs-about.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Topladığınız ölçümler için [Azure izleyici](../../monitoring-and-diagnostics/insights-alerts-portal.md) 'de ölçüm uyarıları oluşturun.
-* Ölçümleriniz için [izleme grafikleri](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) oluşturun.
+* Topladığınız ölçümler için [Azure izleyici](../../azure-monitor/platform/alerts-classic-portal.md) 'de ölçüm uyarıları oluşturun.
+* Ölçümleriniz için [izleme grafikleri](../../azure-monitor/platform/data-platform.md) oluşturun.
 * Otomatik ölçeklendirmeyi denetlemek için ölçümlerinizi kullanarak [bir sanal makine ölçek kümesi oluşturmayı](../linux/tutorial-create-vmss.md) öğrenin.

@@ -4,18 +4,20 @@ description: Belirtilen teklifi yayımlamak için API.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: e3bc420a60c514e704a6caa38acee155b4981552
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086413"
 ---
 # <a name="publish-an-offer"></a>Teklif yayımlama
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Belirtilen teklif için yayımlama işlemini başlatır. Bu çağrı uzun süredir çalışan bir işlemdir.
 
@@ -24,7 +26,7 @@ Belirtilen teklif için yayımlama işlemini başlatır. Bu çağrı uzun süred
 ## <a name="uri-parameters"></a>URI parametreleri
 --------------
 
-|  **Adı**      |    **Açıklama**                               |  **Veri türü** |
+|  **Ad**      |    **Açıklama**                               |  **Veri türü** |
 |  ------------- |  ------------------------------------            |   -----------  |
 |  PublisherId   | Yayımcı tanımlayıcı, örneğin`contoso`      |   Dize       |
 |  OfferId       | Teklif tanımlayıcısı                                 |   Dize       |
@@ -34,7 +36,7 @@ Belirtilen teklif için yayımlama işlemini başlatır. Bu çağrı uzun süred
 ## <a name="header"></a>Üst bilgi
 ------
 
-|  **Adı**        |    **Değer**          |
+|  **Ad**        |    **Değer**          |
 |  --------        |    ---------          |
 |  İçerik Türü    | `application/json`    |
 |  Yetkilendirme   |  `Bearer YOUR_TOKEN`  |
@@ -57,11 +59,10 @@ Belirtilen teklif için yayımlama işlemini başlatır. Bu çağrı uzun süred
 
 ### <a name="request-body-properties"></a>İstek gövdesi özellikleri
 
-|  **Adı**               |   **Açıklama**                                                                                 |
+|  **Ad**               |   **Açıklama**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
 |  bildirim-e-postalar    | Yayımlama işleminin ilerleme durumunun bildirilmesi için, virgülle ayrılmış e-posta adresleri listesi. |
 |  |  |
-
 
 ### <a name="response"></a>Yanıt
 
@@ -73,14 +74,12 @@ Belirtilen teklif için yayımlama işlemini başlatır. Bu çağrı uzun süred
 
 `Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
-
 ### <a name="response-header"></a>Yanıt Üst Bilgisi
 
-|  **Adı**             |    **Değer**                                                                 |
+|  **Ad**             |    **Değer**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Konum    | Bu işlemin durumunu almak için göreli yol     |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 

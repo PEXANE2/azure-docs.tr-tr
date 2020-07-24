@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c1ba173f97353a5ffdd4a9b58f99f6f817f963ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67b6d77afc431e7e79cd1d4c7ad4d50c0e9eecab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74895905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086260"
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 Single Bitrate 4K
 `Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. `preset name`Medya dosyanızı kodlamak istediğiniz biçimi belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için `Media Encoder Standard` bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
@@ -28,7 +29,7 @@ ms.locfileid: "74895905"
  Bu önayar, bit hızı 18000 kbps ve stereo AAC ses içeren tek bir MP4 dosyası üretir. Bu önayar için profil, bit hızı, örnekleme oranı vb. hakkında ayrıntılı bilgi için, aşağıda tanımlanan XML veya JSON 'u inceleyin. Bu önayarlardır her öğe ve her öğe için geçerli değerler hakkında açıklamalar için [Media Encoder Standard şeması](media-services-mes-schema.md) konusuna bakın.  
   
 > [!NOTE]
->  Premium ayrılmış birim türünü 4K kodlama ile almalısınız. Daha fazla bilgi için bkz. [kodlamayı ölçeklendirme](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Premium ayrılmış birim türünü 4K kodlama ile almalısınız. Daha fazla bilgi için bkz. [kodlamayı ölçeklendirme](./media-services-scale-media-processing-overview.md).  
   
  XML  
   

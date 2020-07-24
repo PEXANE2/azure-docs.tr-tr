@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a4f7d330db9a4a0d9b435ebe7527e55e37c254e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086226"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell kullanarak Hyper-V VM 'lerini ikincil bir siteye olağanüstü durum kurtarmayı ayarlama (Kaynak Yöneticisi)
 
@@ -47,8 +47,8 @@ Virtual Machine Manager aşağıdaki şekilde hazırlayın:
 
 Başlamaya Azure PowerShell olduğunuzdan emin olun:
 
-- Zaten PowerShell kullanıyorsanız, sürüm 0.8.10 veya sonraki bir sürüme yükseltin. PowerShell 'i ayarlama hakkında [daha fazla bilgi edinin](/powershell/azureps-cmdlets-docs) .
-- PowerShell 'i ayarladıktan ve yapılandırdıktan sonra, [hizmet cmdlet 'lerini](/powershell/azure/overview)gözden geçirin.
+- Zaten PowerShell kullanıyorsanız, sürüm 0.8.10 veya sonraki bir sürüme yükseltin. PowerShell 'i ayarlama hakkında [daha fazla bilgi edinin](/powershell/azure/) .
+- PowerShell 'i ayarladıktan ve yapılandırdıktan sonra, [hizmet cmdlet 'lerini](/powershell/azure/)gözden geçirin.
 - PowerShell 'de parametre değerlerini, girişleri ve çıkışları kullanma hakkında daha fazla bilgi edinmek için [kullanmaya başlama](/powershell/azure/get-started-azureps) kılavuzunu okuyun.
 
 ## <a name="set-up-a-subscription"></a>Abonelik ayarlama

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2466edb3d14ebbe9296fad087fce432b83005437
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dace6c2e60ca5fd93be915bde98d08a606e9c876
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463693"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086328"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Multiple Bitrate 4K Audio 5.1
 `Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. `preset name`Medya dosyanızı kodlamak istediğiniz biçimi belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için `Media Encoder Standard` bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
@@ -29,7 +29,7 @@ ms.locfileid: "61463693"
  Bu önayar, 20000 kbps 'den 1000 kbps 'e ve AAC 5,1 sesten oluşan 12 GOP hizalanmış MP4 dosyası kümesi oluşturur. Bu önayar için profil, bit hızı, örnekleme oranı vb. hakkında ayrıntılı bilgi için, aşağıda tanımlanan XML veya JSON 'u inceleyin. Her öğenin anlamı ve her öğe için geçerli değerler hakkında açıklamalar için [Media Encoder Standard şemasına](media-services-mes-schema.md)bakın.  
   
 > [!NOTE]
->  Premium ayrılmış birim türünü 4K kodlama ile almalısınız. Daha fazla bilgi için bkz. [kodlamayı ölçeklendirme](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Premium ayrılmış birim türünü 4K kodlama ile almalısınız. Daha fazla bilgi için bkz. [kodlamayı ölçeklendirme](./media-services-scale-media-processing-overview.md).  
   
 > [!NOTE]
 >  `Width` `Height` Katmanlar genelinde ve değerlerini değiştirirken en boy oranının tutarlı olmaya devam ettiğinden emin olun. Örneğin: 1920x1080, 1280x720, 1080x576, 640 x 360. : 1280x720, 720x480, 640 x 360 gibi en boy oranlarından oluşan bir karışımı kullanmamalısınız.  

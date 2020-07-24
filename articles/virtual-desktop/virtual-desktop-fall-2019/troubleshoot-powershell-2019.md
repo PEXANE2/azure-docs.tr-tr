@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü PowerShell-Azure
-description: Windows sanal masaüstü kiracı ortamı ayarlarken PowerShell ile ilgili sorunları giderme.
+title: Windows sanal masaüstü PowerShell (sonbahar 2019)-Azure
+description: Windows sanal masaüstü (sonbahar 2019 sürümü) kiracı ortamını ayarlarken PowerShell ile ilgili sorunları giderme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3171cc54de57b70a18a3f1b9ee3317cf29f79d4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085818"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows Sanal Masaüstü PowerShell
+# <a name="windows-virtual-desktop-powershell-fall-2019-release"></a>Windows sanal masaüstü PowerShell (Fall 2019 sürümü)
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../troubleshoot-powershell.md)bakın.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: cbb97dd260e5aee53595afc24e577ce08334e2b2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 858e185a0e4fa406fb4645475673acc13a0d37f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027027"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086682"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB'de rol tabanlı erişim denetimi
 
@@ -41,14 +41,14 @@ Azure portal **erişim denetimi (IAM)** bölmesi Azure Cosmos kaynaklarında rol
 
 Kullanıcılar, yerleşik rollere ek olarak Azure 'da [özel roller](../role-based-access-control/custom-roles.md) de oluşturabilir ve bu rolleri, Active Directory kiracısındaki tüm aboneliklerde hizmet sorumlularına uygulayabilir. Özel roller, kullanıcılara özel bir kaynak sağlayıcısı işlemleri kümesiyle RBAC rol tanımları oluşturmak için bir yol sağlar. Azure Cosmos DB için özel roller oluşturmaya yönelik hangi işlemlerin kullanılabildiğini öğrenmek için bkz. [Azure Cosmos DB kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
-## <a name="preventing-changes-from-cosmos-sdk"></a>Cosmos SDK 'dan değişiklikler engelleniyor
+## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Azure Cosmos DB SDK 'lardan değişiklikler engelleniyor
+
+Azure Cosmos DB kaynak sağlayıcısı, hesap anahtarlarını (Azure Cosmos SDK aracılığıyla bağlanan uygulamalar) kullanarak bağlanan bir istemciden kaynaklardaki değişikliklerin oluşmasını engellemek için kilitlenebilir. Bu da Azure portal yapılan değişiklikleri içerir. Bu özellik, üretim ortamları için daha yüksek düzeyde denetim ve idare isteyen kullanıcılar için istenebilir. SDK 'daki değişikliklerin önlenmesi, denetim düzlemi işlemlerine yönelik kaynak kilitleri ve tanılama günlükleri gibi özellikleri de devre da sunar. Azure Cosmos DB SDK 'dan bağlanan istemcilerin Azure Cosmos hesapları, veritabanları, kapsayıcılar ve verimlilik için herhangi bir özelliği değiştirmesi engellenir. Verileri, Cosmos kapsayıcılarına okumayı ve yazmayı ilgilendiren işlemler etkilenmez.
+
+Bu özellik etkinleştirildiğinde, herhangi bir kaynakta yapılan değişiklikler yalnızca doğru RBAC rolüne ve yönetilen hizmet kimlikleri dahil Azure Active Directory kimlik bilgilerine sahip bir kullanıcıdan yapılabilir.
 
 > [!WARNING]
-> Bu özelliğin etkinleştirilmesi, uygulamanız üzerinde tehlikeli bir etkiye sahip olabilir. Bu özelliği etkinleştirmeden önce lütfen iyice okuyun.
-
-Azure Cosmos DB kaynak sağlayıcısı, hesap anahtarlarını kullanarak bağlanan herhangi bir istemciden (Cosmos SDK aracılığıyla bağlanan uygulamalar) yapılan herhangi bir değişikliği engellemek için kilitlenebilir. Bu, Azure portal yapılan değişikliği de içerir. Bu, üretim ortamları için daha yüksek düzeyde denetim ve idare isteyen ve kaynak kilitleri gibi özellikleri etkinleştiren ve ayrıca denetim düzlemi işlemleri için tanılama günlüklerini etkinleştiren kullanıcılar için istenebilir. Cosmos DB SDK aracılığıyla bağlanan istemciler, Cosmos hesapları, veritabanları, kapsayıcılar ve verimlilik için herhangi bir özelliği değiştirmeyecektir. Verileri, Cosmos kapsayıcılarına okumayı ve yazmayı kapsayan işlemler etkilenmez.
-
-Ayarlandığında, herhangi bir kaynakta yapılan değişiklikler yalnızca uygun RBAC rolüne ve yönetilen hizmet kimlikleri dahil Azure Active Directory kimlik bilgilerine sahip bir kullanıcıdan yapılabilir.
+> Bu özelliğin etkinleştirilmesi, uygulamanız üzerinde etkiye sahip olabilir. Etkinleştirilmeden önce etkisini anladığınızdan emin olun.
 
 ### <a name="check-list-before-enabling"></a>Etkinleştirmeden önce onay listesi
 
@@ -56,7 +56,7 @@ Bu ayar herhangi bir Cosmos kaynağında herhangi bir Cosmos DB SDK, hesap anaht
 
 - Tüm özellikler dahil olmak üzere Cosmos hesabında yapılan herhangi bir değişiklik veya bölge ekleme veya kaldırma.
 
-- Veritabanları ve kapsayıcılar gibi alt kaynakları oluşturma, silme. Bu, Cassandra, MongoDB, Gremlin ve tablo kaynakları gibi diğer API 'leri için kaynaklar içerir.
+- Veritabanları ve kapsayıcılar gibi alt kaynakları oluşturma, silme. Bu, Cassandra, MongoDB, Gremlin ve tablo kaynakları gibi diğer API 'Lerin kaynaklarını içerir.
 
 - Veritabanı veya kapsayıcı düzeyindeki kaynaklarda üretilen iş güncelleştiriliyor.
 
@@ -64,11 +64,11 @@ Bu ayar herhangi bir Cosmos kaynağında herhangi bir Cosmos DB SDK, hesap anaht
 
 - Saklı yordamları, Tetikleyicileri veya Kullanıcı tanımlı işlevleri değiştirme.
 
-Uygulamalarınız (veya Azure portal aracılığıyla kullanıcılar) bu eylemlerden herhangi birini gerçekleştirdiyse, bu eylemlerin [ARM şablonları](manage-sql-with-resource-manager.md), [POWERSHELL](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), [rest](/rest/api/cosmos-db-resource-provider/) veya [Azure Yönetim Kitaplığı](https://github.com/Azure-Samples/cosmos-management-net)aracılığıyla yürütülmesi için geçirilmesi gerekir. Azure yönetiminin [birden çok dilde](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)kullanılabilir olduğunu unutmayın.
+Uygulamalarınız (veya Azure portal aracılığıyla) bu eylemlerden herhangi birini gerçekleştirdiyse, bu eylemlerin [ARM şablonları](manage-sql-with-resource-manager.md), [POWERSHELL](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), REST veya [Azure Yönetim Kitaplığı](https://github.com/Azure-Samples/cosmos-management-net)aracılığıyla yürütülmesi için geçirilmesi gerekir. Azure yönetiminin [birden çok dilde](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)kullanılabilir olduğunu unutmayın.
 
 ### <a name="set-via-arm-template"></a>ARM şablonu aracılığıyla ayarla
 
-Bu özelliği bir ARM şablonu kullanarak ayarlamak için, mevcut şablonunuzu güncelleştirin veya geçerli dağıtımınız için yeni bir şablon verin ve ardından `"disableKeyBasedMetadataWriteAccess": true` databaseAccounts kaynakları için özellikleri ekleyin. Aşağıda, bu özellik ayarıyla Azure Resource Manager şablonun temel bir örneği verilmiştir.
+Bir ARM şablonu kullanarak bu özelliği ayarlamak için, mevcut şablonunuzu güncelleştirin veya geçerli dağıtımınız için yeni bir şablon dışarı aktarın ve ardından `"disableKeyBasedMetadataWriteAccess": true` kaynakların özelliklerine ekleyin `databaseAccounts` . Aşağıda, bu özellik ayarıyla Azure Resource Manager şablonun temel bir örneği verilmiştir.
 
 ```json
 {
@@ -93,7 +93,7 @@ Bu özelliği bir ARM şablonu kullanarak ayarlamak için, mevcut şablonunuzu g
 
 ### <a name="set-via-azure-cli"></a>Azure CLı aracılığıyla ayarlama
 
-Azure CLı kullanarak etkinleştirmek için aşağıdaki komutu kullanın:
+Azure CLı 'yı kullanmayı etkinleştirmek için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az cosmosdb update  --name [CosmosDBAccountName] --resource-group [ResourceGroupName]  --disable-key-based-metadata-write-access true
@@ -111,5 +111,5 @@ Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBA
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure rol tabanlı erişim denetimi nedir (Azure RBAC)](../role-based-access-control/overview.md)
-- [Azure kaynakları için özel roller](../role-based-access-control/custom-roles.md)
+- [Özel Azure rolleri](../role-based-access-control/custom-roles.md)
 - [Azure Cosmos DB kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)

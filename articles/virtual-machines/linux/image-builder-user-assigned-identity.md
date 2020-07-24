@@ -7,17 +7,18 @@ ms.date: 05/02/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 0c0e688c628d553c8b732081f1a8b8debff8846e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085563"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Azure Storage 'da dosyalara erişmek için bir görüntü oluşturma ve Kullanıcı tarafından atanan yönetilen kimlik kullanma 
 
 Azure Image Builder, betikleri kullanmayı veya GitHub ve Azure depolama gibi birden çok konumdan dosya kopyalamayı destekler. Bunları kullanmak için Azure Image Builder 'ın dışarıdan erişimine açık olmaları gerekir, ancak SAS belirteçlerini kullanarak Azure Storage bloblarını koruyabilirsiniz.
 
-Bu makalede, Azure VM görüntü Oluşturucu kullanılarak özelleştirilmiş bir görüntünün nasıl oluşturulduğu gösterilir. burada, hizmet, dosyaları herkese açık bir şekilde erişilebilir hale getirmek veya SAS belirteçleri ayarlamak zorunda kalmadan görüntü özelleştirmesi için Azure depolama 'daki dosyalara erişmek üzere [Kullanıcı tarafından atanan bir yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kullanır.
+Bu makalede, Azure VM görüntü Oluşturucu kullanılarak özelleştirilmiş bir görüntünün nasıl oluşturulduğu gösterilir. burada, hizmet, dosyaları herkese açık bir şekilde erişilebilir hale getirmek veya SAS belirteçleri ayarlamak zorunda kalmadan görüntü özelleştirmesi için Azure depolama 'daki dosyalara erişmek üzere [Kullanıcı tarafından atanan bir yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md) kullanır.
 
 Aşağıdaki örnekte, biri özel görüntü için kullanılacak olan iki kaynak grubu oluşturacaksınız ve diğeri bir betik dosyası içeren bir Azure depolama hesabı barındıracaktır. Bu, görüntü Oluşturucu dışında, derleme yapıtlarının veya farklı depolama hesaplarında görüntü dosyalarının bulunduğu gerçek bir yaşam senaryosuna benzetir. Kullanıcı tarafından atanan bir kimlik oluşturacak ve sonra bu okuma izinlerini betik dosyasında verirsiniz, ancak bu dosyaya hiçbir ortak erişim ayarlayamezsiniz. Daha sonra bu betiği depolama hesabından indirmek ve çalıştırmak için kabuk Özelleştirici 'yi kullanacaksınız.
 
@@ -94,7 +95,7 @@ az group create -n $strResourceGroup -l $location
 
 Kullanıcı tarafından atanan bir kimlik oluşturun ve kaynak grubunda izinleri ayarlayın.
 
-Image Builder, görüntüyü kaynak grubuna eklemek için belirtilen [Kullanıcı kimliğini](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) kullanır. Bu örnekte, görüntüyü dağıtmayı gerçekleştirmeye yönelik ayrıntılı eylemlere sahip bir Azure rol tanımı oluşturacaksınız. Rol tanımı daha sonra kullanıcı kimliğine atanır.
+Image Builder, görüntüyü kaynak grubuna eklemek için belirtilen [Kullanıcı kimliğini](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) kullanır. Bu örnekte, görüntüyü dağıtmayı gerçekleştirmeye yönelik ayrıntılı eylemlere sahip bir Azure rol tanımı oluşturacaksınız. Rol tanımı daha sonra kullanıcı kimliğine atanır.
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located

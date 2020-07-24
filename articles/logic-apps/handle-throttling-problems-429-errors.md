@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086450"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Azure Logic Apps kısıtlama sorunlarını giderme (429-"çok fazla istek" hata)
 
@@ -21,7 +22,7 @@ ms.locfileid: "81272687"
 Mantıksal uygulamanızın deneyimolabileceği bazı yaygın azaltma türleri şunlardır:
 
 * [Mantıksal uygulama](#logic-app-throttling)
-* [Bağlayıcısı](#connector-throttling)
+* [Bağlayıcı](#connector-throttling)
 * [Hedef hizmet veya sistem](#destination-throttling)
 
 <a name="logic-app-throttling"></a>
@@ -76,7 +77,7 @@ Bu düzeyde azaltmayı işlemek için şu seçeneklere sahipsiniz:
 
 ## <a name="connector-throttling"></a>Bağlayıcı azaltma
 
-Her bağlayıcının kendi azaltma sınırları vardır ve bu, bağlayıcının teknik başvuru sayfasında bulabilirsiniz. Örneğin, [Azure Service Bus Bağlayıcısı](https://docs.microsoft.com/connectors/servicebus/) , dakikada 6.000 çağrıya kadar izin veren bir azaltma sınırına sahiptir ve SQL Server bağlayıcı, [işlem türüne göre farklılık gösteren azaltma sınırlarını](https://docs.microsoft.com/connectors/sql/)içerir.
+Her bağlayıcının kendi azaltma sınırları vardır ve bu, bağlayıcının teknik başvuru sayfasında bulabilirsiniz. Örneğin, [Azure Service Bus Bağlayıcısı](/connectors/servicebus/) , dakikada 6.000 çağrıya kadar izin veren bir azaltma sınırına sahiptir ve SQL Server bağlayıcı, [işlem türüne göre farklılık gösteren azaltma sınırlarını](/connectors/sql/)içerir.
 
 HTTP gibi bazı Tetikleyiciler ve Eylemler, özel durum işlemeyi uygulamak için [yeniden deneme ilkesi sınırlarına](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits) göre özelleştirebileceğiniz bir ["yeniden deneme ilkesi"](../logic-apps/logic-apps-exception-handling.md#retry-policies) vardır. Bu ilke, bir tetikleyicinin veya eylemin, özgün istek başarısız olduğunda ya da zaman aşımına uğradığında ve 408, 429 ya da 5xx yanıtı ile sonuçlanıp bir isteği ne sıklıkta yeniden deneyeceğini belirtir. Bu nedenle, daraltma başladığında ve 429 hatası döndürdüğünde, Logic Apps yeniden deneme ilkesi desteklenir.
 

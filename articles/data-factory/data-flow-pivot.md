@@ -6,12 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086685"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Eşleme veri akışında Özet dönüştürme
 
@@ -19,6 +20,8 @@ ms.locfileid: "83683308"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tek bir sütunun benzersiz satır değerlerinden birden çok sütun oluşturmak için pivot dönüşümünü kullanın. Pivot sütunları Gruplandır ' ı seçip [toplama işlevlerini](data-flow-expression-functions.md#aggregate-functions)kullanarak Özet sütunları oluşturabileceğiniz bir toplama dönüştürmesidir.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4C4YN]
 
 ## <a name="configuration"></a>Yapılandırma
 

@@ -8,19 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: a5a9ace105e56d9db61470c35f665954812c3825
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 92543383ad530242eab59387e658e7b9d137f328
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134261"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085512"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLI kullanarak IaaS kaynaklarını klasik modelden Azure Resource Manager’a geçirme
 
 > [!IMPORTANT]
-> Bugün, IaaS VM 'lerinin yaklaşık %90 ' u [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)kullanıyor. 28 Şubat 2020 itibariyle klasik VM 'Ler kullanımdan kaldırılmıştır ve 1 Mart 2023 tarihinde tamamen kullanımdan kaldırılacaktır. Bu kullanımdan kaldırma ve [nasıl etkilediği](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)hakkında [daha fazla bilgi edinin]( https://aka.ms/classicvmretirement) .
+> Bugün, IaaS VM 'lerinin yaklaşık %90 ' u [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)kullanıyor. 28 Şubat 2020 itibariyle klasik VM 'Ler kullanımdan kaldırılmıştır ve 1 Mart 2023 tarihinde tamamen kullanımdan kaldırılacaktır. Bu kullanımdan kaldırma ve [nasıl etkilediği](../classic-vm-deprecation.md#how-does-this-affect-me)hakkında [daha fazla bilgi edinin]( https://aka.ms/classicvmretirement) .
 
-Bu adımlarda, klasik dağıtım modelinden Azure Resource Manager dağıtım modeline hizmet olarak altyapı (IaaS) kaynaklarını geçirmek için Azure komut satırı arabirimi (CLı) komutlarının nasıl kullanılacağı gösterilmektedir. Makale, [Azure klasık CLI](../../cli-install-nodejs.md)'yi gerektirir. Azure CLı yalnızca Azure Resource Manager kaynakları için geçerli olduğundan, bu geçiş için kullanılamaz.
+Bu adımlarda, klasik dağıtım modelinden Azure Resource Manager dağıtım modeline hizmet olarak altyapı (IaaS) kaynaklarını geçirmek için Azure komut satırı arabirimi (CLı) komutlarının nasıl kullanılacağı gösterilmektedir. Makale, [Azure klasık CLI](/cli/azure/install-classic-cli)'yi gerektirir. Azure CLı yalnızca Azure Resource Manager kaynakları için geçerli olduğundan, bu geçiş için kullanılamaz.
 
 > [!NOTE]
 > Burada açıklanan tüm işlemler ıdempotent. Desteklenmeyen bir özellik veya yapılandırma hatası dışında bir sorununuz varsa, hazırlama, durdurma veya işleme işlemini yeniden denemeniz önerilir. Platform daha sonra eylemi yeniden dener.
@@ -46,7 +46,7 @@ IaaS kaynaklarını klasik ' ten Kaynak Yöneticisi geçirmeyi değerlendirirken
 > 
 
 ## <a name="step-2-set-your-subscription-and-register-the-provider"></a>2. Adım: aboneliğinizi ayarlama ve sağlayıcıyı kaydetme
-Geçiş senaryolarında, ortamınızı hem klasik hem de Kaynak Yöneticisi için ayarlamanız gerekir. [Azure CLI](../../cli-install-nodejs.md) 'yı yükleyip [aboneliğinizi seçin](/cli/azure/authenticate-azure-cli).
+Geçiş senaryolarında, ortamınızı hem klasik hem de Kaynak Yöneticisi için ayarlamanız gerekir. [Azure CLI](/cli/azure/install-classic-cli) 'yı yükleyip [aboneliğinizi seçin](/cli/azure/authenticate-azure-cli).
 
 Hesabınızda oturum açın.
 

@@ -1,5 +1,5 @@
 ---
-title: İOS 'tan Windows sanal masaüstüne bağlanma-Azure
+title: İOS 'tan Windows sanal masaüstü Fall 2019 'e bağlanma-Azure
 description: İOS istemcisini kullanarak Windows sanal masaüstüne bağlanma.
 services: virtual-desktop
 author: heidilohr
@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 10ad1e3fdcccce4eb0ce97806f67486ce5cc391b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26c031710c96c42b1d5236332e445992de87616e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087144"
 ---
 # <a name="connect-with-the-ios-client"></a>iOS istemcisiyle bağlanma
 

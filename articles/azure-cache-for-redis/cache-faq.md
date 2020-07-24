@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 89a87e1658f413b0a8cd757525450de30277d943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086889"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Redis için Azure Önbelleği SSS
 Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını öğrenin.
@@ -19,7 +19,6 @@ Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi
 ## <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
 Sorunuz burada listelenmiyorsa, bize bilgi verin ve bir yanıt bulmanıza yardımcı olabiliriz.
 
-* Bu SSS sonundaki açıklamalara soru gönderebilir ve bu makaleyle ilgili olarak Azure önbellek ekibine ve diğer topluluk üyelerine da katılın.
 * Daha geniş bir hedef kitleye ulaşmak için, [Azure önbelleği Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-cache-redis.html) soru gönderebilir ve Azure önbellek ekibine ve topluluğun diğer üyelerine ulaşabilirsiniz.
 * Bir özellik isteği yapmak istiyorsanız, [Redsıs Kullanıcı seslerine yönelik](https://feedback.azure.com/forums/169382-cache)isteklerinizi ve fikirlerinizi Azure önbelleğine gönderebilirsiniz.
 * Ayrıca, [Azure Cache dış geri bildirimlerinden](mailto:azurecache@microsoft.com)bize e-posta gönderebilirsiniz.
@@ -43,7 +42,7 @@ Aşağıdaki SSS 'ler, redin için Azure önbelleği ile ilgili temel kavramlar�
 * [Hangi bölgede önbelleğinizi bulmalıyım?](#in-what-region-should-i-locate-my-cache)
 * [Önbelleğe alınan veriler nerede bulunur?](#where-do-my-cached-data-reside)
 * [Redsıs için Azure önbelleği için nasıl faturalandırılırım?](#how-am-i-billed-for-azure-cache-for-redis)
-* [Redsıs için Azure önbelleğini Azure Kamu bulutu, Azure Çin bulutu veya Microsoft Azure Almanya kullanabilir miyim?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+* [Redsıs için Azure önbelleğini Azure Kamu bulutu, Azure Çin 21Vianet bulutu veya Microsoft Azure Almanya kullanabilir miyim?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>Geliştirme SSS
 * [StackExchange. Redsıs yapılandırma seçenekleri ne olur?](#what-do-the-stackexchangeredis-configuration-options-do)
@@ -73,10 +72,10 @@ Bu bölümdeki SSS 'ler ortak izleme ve sorun giderme sorularını kapsar. Reds�
 * [İstemcimin neden önbellekten bağlantısı kesildi?](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Önceki önbellek SSS sunumu
-* [Hangi Azure önbellek teklifi bana uygun?](#which-azure-cache-offering-is-right-for-me)
+* [Hangi Azure önbellek teklifleri bana uygun?](#which-azure-cache-offerings-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Redis için Azure Cache nedir?
-Redsıs için Azure önbelleği, popüler açık kaynaklı yazılım [redin](https://redis.io/)tabanlıdır. Microsoft tarafından yönetilen ve Azure 'daki herhangi bir uygulamadan erişilebilen, redin için güvenli ve adanmış bir Azure önbelleği erişimi sağlar. Daha ayrıntılı bir genel bakış için Azure.com adresindeki [redsıs ürün Için Azure önbelleği](https://azure.microsoft.com/services/cache/) sayfasına bakın.
+[Redsıs Için Azure önbelleği](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) , popüler açık kaynaklı yazılım [redin](https://redis.io/)tabanlıdır. Microsoft tarafından yönetilen ve Azure 'daki herhangi bir uygulamadan erişilebilen, redin için güvenli ve adanmış bir Azure önbelleği erişimi sağlar. Daha ayrıntılı bir genel bakış için bkz. [redsıs ürün Için Azure önbelleği](https://azure.microsoft.com/services/cache/) sayfası.
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Redsıs için Azure önbelleği 'ni kullanmaya nasıl başlarım?
 Redsıs için Azure önbelleği 'ni kullanmaya başlamanın birkaç yolu vardır.
@@ -160,9 +159,9 @@ Bu özellikleri kullanmak için Redsıs için Azure önbelleğini açık bir şe
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için nasıl faturalandırılırım?
-Redsıs fiyatlandırması için Azure önbelleği [burada](https://azure.microsoft.com/pricing/details/cache/)yer alır. Fiyatlandırma sayfası, fiyatlandırmayı saatlik fiyat olarak listeler. Önbellekler, önbelleğin silindiği zamana kadar önbelleğin oluşturulduğu zamandan itibaren dakika başına faturalandırılır. Bir önbelleğin faturalandırmasını durdurma veya duraklatma seçeneği yoktur.
+Redsıs fiyatlandırması için Azure önbelleği [burada](https://azure.microsoft.com/pricing/details/cache/)yer alır. Fiyatlandırma sayfası, fiyatlandırmayı saatlik ve aylık bir ücret olarak listeler. Önbellekler, önbelleğin silindiği zamana kadar önbelleğin oluşturulduğu zamandan itibaren dakika başına faturalandırılır. Bir önbelleğin faturalandırmasını durdurma veya duraklatma seçeneği yoktur.
 
-### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Redsıs için Azure önbelleğini Azure Kamu bulutu, Azure Çin bulutu veya Microsoft Azure Almanya kullanabilir miyim?
+### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>Redsıs için Azure önbelleğini Azure Kamu bulutu, Azure Çin 21Vianet bulutu veya Microsoft Azure Almanya kullanabilir miyim?
 Evet, Redu için Azure önbelleği, Azure Kamu bulutu, Azure Çin 21Vianet bulutu ve Microsoft Azure Almanya kullanılabilir. Redo için Azure önbelleğine erişme ve bunları yönetmeye yönelik URL 'Ler, Azure genel bulutu ile karşılaştırıldığında bu bulutlarda farklılık açmaktadır.
 
 | Bulut   | Redsıs için DNS son eki            |
@@ -260,7 +259,7 @@ Redsıs [komutlarında listelenen](https://redis.io/commands#) komutların herha
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Redin için Azure Cache 'in diğer Azure hizmetleri gibi bir MSDN sınıf kitaplığı başvurusu neden yok?
-Redsıs için Microsoft Azure önbelleği, redin için popüler açık kaynaklı Azure önbelleğini temel alır. Birçok programlama dili için çok çeşitli [redin istemcileri](https://redis.io/clients) erişebilir. Her istemcinin [redsıs komutları](https://redis.io/commands)kullanılarak redsıs örneği Için Azure önbelleğine çağrı yapan kendi API 'si vardır.
+Redo için Microsoft Azure önbelleği, popüler açık kaynaklı bellek içi veri deposuna ve redin 'a göre belirlenir. Birçok programlama dili için çok çeşitli [redin istemcileri](https://redis.io/clients) erişebilir. Her istemcinin [redsıs komutları](https://redis.io/commands)kullanılarak redsıs örneği Için Azure önbelleğine çağrı yapan kendi API 'si vardır.
 
 Her istemci farklı olduğundan, MSDN 'de tek bir merkezi sınıf başvurusu yoktur ve her istemci kendi başvuru belgelerini korur. Başvuru belgelerine ek olarak, farklı diller ve önbellek istemcileri kullanarak redin için Azure önbelleği ile çalışmaya nasıl başladığının gösterildiği çeşitli öğreticiler vardır. Bu öğreticilere erişmek için bkz. [Azure Cache 'ı redsıs için kullanma](cache-dotnet-how-to-use-azure-redis-cache.md) ve içerik tablosundaki eşdüzey makaleler.
 
@@ -467,9 +466,9 @@ Redsıs ile konuşmak için kullandığınız istemcide zaman aşımları meydan
   * Azure, önbelleğin dağıtıldığı örneğe düzeltme eki eklendi
     * Bu, Redsıs sunucu güncelleştirmeleri veya genel VM bakımı için olabilir.
 
-### <a name="which-azure-cache-offering-is-right-for-me"></a>Hangi Azure önbellek teklifi bana uygun?
+### <a name="which-azure-cache-offerings-is-right-for-me"></a>Hangi Azure önbellek teklifleri bana uygun?
 > [!IMPORTANT]
-> Azure Yönetilen Önbellek Hizmeti ve Azure Rol İçi Önbellek Hizmeti, geçen yılın [duyurusuna](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)göre 30 Kasım 2016 tarihinde **kullanımdan kaldırılmıştır** . Önerimiz, [redsıs Için Azure önbelleğini](https://azure.microsoft.com/services/cache/)kullanmaktır. Geçiş hakkında bilgi için bkz. [redsıs Için yönetilen önbellek hizmetinden Azure önbelleğine geçiş](cache-migrate-to-redis.md).
+> Azure Yönetilen Önbellek Hizmeti ve Azure Rol İçi Önbellek Hizmeti, 2016 [duyurusu](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)uyarınca 30 Kasım 2016 tarihinde **kullanımdan kaldırılmıştır** . Önerimiz, [redsıs Için Azure önbelleğini](https://azure.microsoft.com/services/cache/)kullanmaktır. Geçiş hakkında bilgi için bkz. [redsıs Için yönetilen önbellek hizmetinden Azure önbelleğine geçiş](cache-migrate-to-redis.md).
 >
 >
 

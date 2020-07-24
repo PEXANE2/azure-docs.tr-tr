@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c6246af59172b303cebd2d3344469f88ce1966
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694717"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085750"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Bellek için iyileştirilmiş dv2 ve Dsv2 serisi
 
@@ -26,6 +27,10 @@ ACU: 210 - 250
 Premium Depolama: desteklenmiyor
 
 Premium depolama önbelleği: desteklenmiyor
+
+Dinamik Geçiş: destekleniyor
+
+Güncelleştirmeleri koruyan bellek: desteklenir
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | Maksimum veri diski/aktarım hızı: ıOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|
@@ -47,6 +52,10 @@ ACU: 210-250 <sup>1</sup>
 Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
+
+Dinamik Geçiş: destekleniyor
+
+Güncelleştirmeleri koruyan bellek: desteklenir
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

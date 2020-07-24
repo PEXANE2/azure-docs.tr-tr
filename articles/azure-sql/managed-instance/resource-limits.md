@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086838"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -128,7 +128,7 @@ SQL yönetilen örneği şu anda yalnızca aşağıdaki abonelik türlerinde da�
 ## <a name="regional-resource-limitations"></a>Bölgesel kaynak sınırlamaları
 
 > [!Note]
-> Abonelikler için bölge kullanılabilirliği hakkında en son bilgiler için, önce [RESMI COVı-19 blog gönderisini](https://aka.ms/sqlcapacity)denetleyin.
+> Abonelikler için bölge kullanılabilirliği hakkında en son bilgiler için önce [bir bölge seçin](https://aka.ms/sqlcapacity)' i işaretleyin.
 
 Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. SQL yönetilen örneği, Azure bölgesi başına iki varsayılan sınıra sahiptir (bir abonelik türü türüne göre Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturarak isteğe bağlı olarak artırılabilir:
 

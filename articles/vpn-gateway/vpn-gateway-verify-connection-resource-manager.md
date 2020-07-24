@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: 93a7c0bb15c17b6939d6d53018e4fed84b1ae020
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38015d62077350e0e6f6ed8e7a43f748db58d213
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086996"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway bağlantısını doğrulama
 
@@ -23,7 +24,7 @@ Bu makalede, hem klasik hem de Kaynak Yöneticisi dağıtım modelleriyle ilgili
 
 ## <a name="powershell"></a>PowerShell
 
-PowerShell kullanarak Kaynak Yöneticisi dağıtım modeli için bir VPN ağ geçidi bağlantısını doğrulamak için, [Azure Resource Manager PowerShell cmdlet](/powershell/azure/overview)'lerinin en son sürümünü yükler.
+PowerShell kullanarak Kaynak Yöneticisi dağıtım modeli için bir VPN ağ geçidi bağlantısını doğrulamak için, [Azure Resource Manager PowerShell cmdlet](/powershell/azure/)'lerinin en son sürümünü yükler.
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
@@ -46,4 +47,4 @@ PowerShell kullanarak klasik dağıtım modeliyle ilgili VPN Gateway bağlantın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [Sanal Makine Oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [Sanal Makine Oluşturma](../virtual-machines/windows/quick-create-portal.md).

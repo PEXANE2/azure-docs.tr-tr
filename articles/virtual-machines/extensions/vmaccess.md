@@ -15,22 +15,23 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
-ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3b6c9d5835f6d81ab8641d8a43fb7228b6b53ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707608"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085648"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Azure CLı ile VMAccess uzantısını kullanarak Linux VM 'lerinde yönetim kullanıcılarını, SSH 'yi yönetme ve diskleri denetleme veya onarma
 ## <a name="overview"></a>Genel Bakış
 Linux sanal makinenizde bulunan disk hataları gösteriyor. Linux VM 'niz için kök parolayı bir daha sıfırlayabilirsiniz veya yanlışlıkla SSH özel anahtarınızı silmiş olursunuz. Bu, veri merkezinin günlerindeki geri gerçekleştiyse, daha sonra sunucu konsoluna ulaşmak için KVM 'yi açmanız gerekir. Linux 'a erişimi sıfırlamak veya disk düzeyinde bakım gerçekleştirmek üzere konsola erişmenize izin veren bir KVM anahtarı olarak Azure VMAccess uzantısını düşünün.
 
-Bu makalede, Azure VMAccess uzantısını kullanarak bir diski denetleme veya onarma, Kullanıcı erişimini sıfırlama, yönetici kullanıcı hesaplarını yönetme veya Azure Resource Manager sanal makineler olarak çalışırken Linux üzerinde SSH yapılandırmasını güncelleştirme işlemlerinin nasıl yapılacağı gösterilir. Klasik sanal makineleri yönetmeniz gerekiyorsa, [klasık VM belgelerinde](../linux/classic/reset-access-classic.md)bulunan yönergeleri izleyebilirsiniz. 
+Bu makalede, Azure VMAccess uzantısını kullanarak bir diski denetleme veya onarma, Kullanıcı erişimini sıfırlama, yönetici kullanıcı hesaplarını yönetme veya Azure Resource Manager sanal makineler olarak çalışırken Linux üzerinde SSH yapılandırmasını güncelleştirme işlemlerinin nasıl yapılacağı gösterilir. Klasik sanal makineleri yönetmeniz gerekiyorsa, [klasık VM belgelerinde](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic)bulunan yönergeleri izleyebilirsiniz. 
  
 > [!NOTE]
 > AAD oturum açma uzantısını yükledikten sonra sanal makinenizin parolasını sıfırlamak için VMAccess uzantısını kullanırsanız, makinenizde AAD oturum açmayı yeniden etkinleştirmek için AAD oturum açma uzantısını yeniden çalıştırmanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 ### <a name="operating-system"></a>İşletim sistemi
 
 VM erişimi uzantısı şu Linux dağıtımlarına karşı çalıştırılabilir:

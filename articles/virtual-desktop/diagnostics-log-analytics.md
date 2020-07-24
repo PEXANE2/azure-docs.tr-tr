@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ceb58182b34a4eccbed0dc1cdd1c351ae7868da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209394"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085920"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
@@ -96,7 +96,7 @@ Azure portal veya Azure Izleyici üzerinde Log Analytics çalışma alanına eri
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki Log Analytics erişim
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. **Log Analytics çalışma alanı**araması yapın.
 
@@ -133,52 +133,16 @@ Bağlantı etkinlikleri için yalnızca bu ara durumdaki raporları Log Analytic
 
 ## <a name="example-queries"></a>Örnek sorgular
 
-Aşağıdaki örnek sorgularda, tanılama özelliğinin sisteminizdeki en sık etkinlikler için nasıl rapor oluşturduğu gösterilmektedir.
+Azure Izleyici Log Analytics Kullanıcı arabirimi aracılığıyla örnek sorgulara erişin:
+1. Log Analytics çalışma alanınıza gidin ve ardından **Günlükler**' i seçin. Örnek sorgu Kullanıcı arabirimi otomatik olarak gösterilir.
+1. Filtreyi **Kategori**olarak değiştirin.
+1. Kullanılabilir sorguları gözden geçirmek için **Windows sanal masaüstü 'nü** seçin.
+1. Seçili sorguyu çalıştırmak için **Çalıştır** ' ı seçin. 
 
-Kullanıcılarınız tarafından yapılan bağlantıların bir listesini almak için şu cmdlet 'i çalıştırın:
+[Azure izleyici Log Analytics kayıtlı sorgularda](../azure-monitor/log-query/saved-queries.md)örnek sorgu arabirimi hakkında daha fazla bilgi edinin.
 
-```kusto
-WVDConnections
-| project-away TenantId,SourceSystem
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
+Aşağıdaki sorgu listesi, tek bir kullanıcı için bağlantı bilgilerini veya sorunları incelemenizi sağlar. Bu sorguları [Log Analytics sorgu düzenleyicisinde](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
 
-Kullanıcılarınızın akış etkinliğini görüntülemek için:
-
-```kusto
-WVDFeeds
-| project-away TenantId,SourceSystem
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
 
 Tek bir kullanıcıya ait tüm bağlantıları bulmak için:
 
@@ -199,7 +163,6 @@ WVDConnections
 |sort by TimeGenerated asc, CorrelationId
 |summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
-
 
 Oturum süresini kullanıcıya göre bulmak için:
 
@@ -224,7 +187,7 @@ WVDErrors
 |take 100
 ```
 
-Belirli bir hatanın oluşup oluşmadığını öğrenmek için:
+Diğer kullanıcılar için belirli bir hatanın oluşup oluşmadığını öğrenmek için:
 
 ```kusto
 WVDErrors
@@ -232,27 +195,7 @@ WVDErrors
 | summarize count(UserName) by CodeSymbolic
 ```
 
-Tüm kullanıcılar genelinde bir hata oluşmasını bulmak için:
 
-```kusto
-WVDErrors
-| where ServiceError =="false"
-| summarize usercount = count(UserName) by CodeSymbolic
-| sort by usercount desc
-| render barchart
-```
-
-Kullanıcıların açtığı uygulamaları sorgulamak için şu sorguyu çalıştırın:
-
-```kusto
-WVDCheckpoints
-| where TimeGenerated > ago(7d)
-| where Name == "LaunchExecutable"
-| extend App = parse_json(Parameters).filename
-| summarize Usage=count(UserName) by tostring(App)
-| sort by Usage desc
-| render columnchart
-```
 >[!NOTE]
 >- Kullanıcı tam masaüstü açtığında, oturumdaki uygulama kullanımı WVDCheckpoints tablosunda denetim noktaları olarak izlenmez.
 >- WVDConnections tablosundaki ResourcesAlias sütunu, bir kullanıcının tam bir masaüstüne veya yayımlanmış bir uygulamaya bağlanıp bağlanmadığını gösterir. Sütun yalnızca bağlantı sırasında açıldıkları ilk uygulamayı gösterir. Kullanıcının açtığı tüm yayımlanmış uygulamalar WVDCheckpoints içinde izlenir.

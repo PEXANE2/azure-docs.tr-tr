@@ -2,13 +2,13 @@
 title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için Azure Resource Manager şablonda bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/21/2020
+ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086821"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -315,6 +315,11 @@ Bağlı bir şablona başvururken, değeri `uri` yerel bir dosya veya yerel ağ�
 > Son olarak, **http** veya **https**kullanan bir şeyi kullanarak, örneğin, şöyle bir parametre kullanarak şablonlara başvurabilirsiniz `_artifactsLocation` :`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 Kaynak Yöneticisi şablona erişebilmelidir. Bir seçenek, bağlantılı şablonunuzu bir depolama hesabına yerleştirmeli ve bu öğe için URI 'yi kullanacaktır.
+
+[Şablon Özellikleri](./template-specs.md) (Şu anda özel önizlemede), ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmanıza olanak sağlar. Şablon Özellikleri, ana şablonu ve bağlı şablonlarını paketlemek için de kullanılabilir. Daha fazla bilgi için bkz.
+
+- [Öğretici: bağlantılı şablonlarla bir şablon belirtimi oluşturun](./template-specs-create-linked.md).
+- [Öğretici: bir şablon belirtimini bağlantılı şablon olarak dağıtın](./template-specs-deploy-linked-template.md).
 
 ### <a name="parameters-for-linked-template"></a>Bağlantılı şablon parametreleri
 

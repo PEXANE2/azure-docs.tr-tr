@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: rajanaki
-ms.openlocfilehash: b9d333467864f67bc357314830ff885af4232ba0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 79c129fee6d0339eed752abe94059fa566859bc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086192"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Site Recovery veri şifreleme özelliğinin kullanımdan kaldırılması
 
@@ -22,14 +22,14 @@ Bu belge, Hyper-V sanal makinelerini Azure 'a olağanüstü durum kurtarmayı ya
 ## <a name="deprecation-information"></a>Kullanımdan kaldırma bilgileri
 
 
-Site Recovery veri şifreleme özelliği, çoğaltılan verilerin güvenlik tehditlerine karşı korunmasını sağlamak üzere Hyper-V VM 'lerini koruyan müşteriler için kullanılabilir. Bu özellik **30 aralık 2019 ' de**kullanım dışı bırakılacak. [Depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md) (SSE) kullanan Rest özelliğinde daha gelişmiş [şifreleme](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) ile değiştiriliyor. SSE ile, veriler depolama alanı kalıcı hale gelmeden ve geri alınmadan önce şifrelenir ve Azure 'a yük devretmeden VM 'niz, geliştirilmiş kurtarma süresi hedefi (RTO) için şifrelenmiş depolama hesaplarından çalıştırılır.
+Site Recovery veri şifreleme özelliği, çoğaltılan verilerin güvenlik tehditlerine karşı korunmasını sağlamak üzere Hyper-V VM 'lerini koruyan müşteriler için kullanılabilir. Bu özellik **30 nisan 2022 ' den**kullanım dışı bırakılacak. [Depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md) (SSE) kullanan Rest özelliğinde daha gelişmiş [şifreleme](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) ile değiştiriliyor. SSE ile, veriler depolama alanı kalıcı hale gelmeden ve geri alınmadan önce şifrelenir ve Azure 'a yük devretmeden VM 'niz, geliştirilmiş kurtarma süresi hedefi (RTO) için şifrelenmiş depolama hesaplarından çalıştırılır.
 
 Bu özelliği kullanan mevcut bir müşteriyseniz, kullanımdan kaldırma ayrıntıları ve düzeltme adımlarıyla iletişim aldığınızı lütfen unutmayın. 
 
 
 ## <a name="what-are-the-implications"></a>Etkileri nelerdir?
 
-**30 aralık 2019**' den sonra, kullanımdan kaldırılan şifreleme özelliğini kullanmaya devam eden tüm VM 'lerin yük devretme yapmasına izin verilmez. 
+**30 nisan 2022**' den sonra, kullanımdan kaldırılan şifreleme özelliğini kullanmaya devam eden tüm VM 'lerin yük devretme yapmasına izin verilmez. 
 
 ## <a name="required-action"></a>Gerekli eylem
 Başarılı yük devretme işlemlerine devam etmek için, çoğaltmalar aşağıda bahsedilen adımları izler:
@@ -44,4 +44,3 @@ SSE etkinken depolama hesaplarına ilk çoğaltmayı tamamladıktan sonra, VM 'n
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Düzeltme adımlarını gerçekleştirmeyi planlayın ve bunları en erken yürütün. Bu kullanımdan kaldırma ile ilgili herhangi bir sorgunuz varsa, lütfen Microsoft Desteği ulaşın. Hyper-V ' d e Azure senaryosu hakkında daha fazla bilgi edinmek için [buraya](hyper-v-vmm-architecture.md)bakın.
-

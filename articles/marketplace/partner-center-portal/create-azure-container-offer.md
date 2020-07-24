@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c659bbe3e5f5645bb42b3a9c94a5e5fb7ebe75f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086481"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketi 'nde Azure Container teklifi oluşturma
 
@@ -151,7 +151,7 @@ Teklifinizin kısa bir açıklaması. Bu, 100 karakter uzunluğunda olabilir ve 
 
 Teklifinizin daha ayrıntılı bir açıklaması. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -250,17 +250,17 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ### <a name="plan-overview"></a>Plana genel bakış
 
-Bu sekme, aynı teklif içinde farklı plan seçenekleri sağlamanıza olanak tanır. Bu planlar daha önce SKU 'Lar veya stok tutma birimleri olarak adlandırılmıştı. Planlar, genel bulutlar, kamu bulutları ve plan tarafından başvurulan görüntü gibi bulutların kullanılabildiği koşullara göre farklılık gösterebilir. Teklifinizi ticari Market 'te listelemek için en az bir plan ayarlamanız gerekir.
+Bu sekme, aynı teklif içinde farklı plan seçenekleri sağlamanıza olanak tanır. Planlar (eskiden SKU olarak adlandırılır), genel bulutlar, kamu bulutları ve plan tarafından başvurulan görüntü gibi hangi bulutların kullanılabildiği konusunda farklılık gösterebilir. Teklifinizi ticari Market 'te listelemek için en az bir plan ayarlamanız gerekir.
 
 Planlarınızı oluşturduktan sonra **plana genel bakış** sekmesi şunları gösterir:
 
 - Plan adları
 - Fiyatlandırma modeli
-- Bulut kullanılabilirliği (küresel veya kamu)
+- Azure bölgeleri (küresel veya kamu)
 - Geçerli yayımlama durumu
 - Kullanılabilir eylemler
 
-Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı olarak farklılık gösterir. Bunlara aşağıdakiler dahildir:
+Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı olarak farklılık gösterir. Bu ölçümler şunlardır:
 
 - **Taslağı Sil** – plan durumu bir tasladır.
 - **Satış planını durdur** – plan durumu canlı olarak yayımlandı.
@@ -293,7 +293,7 @@ Azure Kamu 'da [yayımlamadan](../../azure-government/documentation-government-m
 
 #### <a name="azure-government-certifications"></a>Azure Kamu sertifikaları
 
-Bu seçenek yalnızca, **bulut kullanılabilirliği**altında **Azure Kamu** seçilirse görülebilir.
+Bu seçenek, yalnızca Azure **kamu** , **Azure bölgeleri**altında seçilirse görülebilir.
 
 Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi olan verileri işler. Örneğin, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 ve CJıS.
 

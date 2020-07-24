@@ -3,12 +3,12 @@ title: Azure Site Recovery ile VMware olağanüstü durum kurtarma hakkında sı
 description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin olağanüstü durum kurtarma hakkında sık sorulan soruların yanıtlarını alın.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086158"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
 
@@ -181,6 +181,10 @@ Hayır. VMware vCenter veya geçişi değişikliği, devam eden çoğaltmayı et
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>Üzerinde yapılandırılmış bir sanal ağa (Azure Güvenlik duvarları olan) sahip bir önbellek veya hedef depolama hesabına çoğaltma yapabilir miyim?
 
 Hayır, Site Recovery sanal ağlardaki Azure depolama 'ya çoğaltmayı desteklemez.
+
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>Kilitlenme ile tutarlı kurtarma noktalarının oluşturulma sıklığı nedir?
+
+Site Recovery, 5 dakikada bir çökme ile tutarlı kurtarma noktaları oluşturur.
 
 ## <a name="component-upgrade"></a>Bileşen yükseltme
 

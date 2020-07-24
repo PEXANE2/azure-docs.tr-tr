@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 0825a29b45ea701315a57ff5248731e64e29de32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7ca47e0fbb9acbac67f2cc9af6e1e7555690046
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085614"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure üzerinde FreeBSD’ye giriş
 Bu makalede, Azure 'da FreeBSD sanal makinesini çalıştırmaya ilişkin bir genel bakış sunulmaktadır.
@@ -30,7 +31,7 @@ Aracı, FreeBSD VM 'si ile Azure yapısı arasındaki iletişimden sorumludur (K
 FreeBSD 'nin gelecekteki sürümlerinde olduğu gibi, strateji güncel kalmakta ve en son sürümlerin FreeBSD sürüm Mühendisliği ekibi tarafından yayımlandıklarında kısa bir süre içinde kullanılabilmesini sağlar.
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>FreeBSD üzerinde Azure CLı aracılığıyla FreeBSD VM 'si oluşturma
-İlk olarak, bir FreeBSD makinesinde aşağıdaki komutu izleyerek [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'yı yüklemeniz gerekir.
+İlk olarak, bir FreeBSD makinesinde aşağıdaki komutu izleyerek [Azure CLI](/cli/azure/get-started-with-azure-cli) 'yı yüklemeniz gerekir.
 
 ```bash 
 curl -L https://aka.ms/InstallAzureCli | bash

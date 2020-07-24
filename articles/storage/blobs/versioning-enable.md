@@ -6,14 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884351"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086056"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme
 
@@ -21,7 +22,7 @@ Depolama hesabı için blob sürüm oluşturma 'yı (Önizleme) Azure portal vey
 
 ## <a name="enable-blob-versioning"></a>Blob sürümü oluşturmayı etkinleştirme
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal blob sürümü oluşturmayı etkinleştirmek için:
 
@@ -67,7 +68,7 @@ Azure portal şablonlar ile kaynak dağıtma hakkında daha fazla bilgi için bk
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>Yeni bir sürüm tetiklemek için blobu değiştirme
 
-Aşağıdaki kod örneği, .NET için Azure depolama istemci kitaplığı ile yeni bir sürüm oluşturma 'nın nasıl tetikleneceğini göstermektedir. Bu örneği çalıştırmadan önce, depolama hesabınız için sürüm oluşturmayı etkinleştirdiğinizden emin olun.
+Aşağıdaki kod örneği, .NET için Azure depolama istemci kitaplığı, sürüm [12.5.0-Preview. 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) veya üzeri ile yeni bir sürüm oluşturmanın nasıl tetikleneceğini göstermektedir. Bu örneği çalıştırmadan önce, depolama hesabınız için sürüm oluşturmayı etkinleştirdiğinizden emin olun.
 
 Örnek bir Blok Blobu oluşturur ve ardından Blobun meta verilerini günceller. Blob 'un meta verilerini güncelleştirme, yeni bir sürümün oluşturulmasını tetikler. Örnek, ilk sürümü ve geçerli sürümü alır ve yalnızca geçerli sürümün meta verileri içerdiğini gösterir.
 

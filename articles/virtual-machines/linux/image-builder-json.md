@@ -3,17 +3,17 @@ title: Azure görüntü Oluşturucu şablonu oluşturma (Önizleme)
 description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğrenin.
 author: danielsollondon
 ms.author: danis
-ms.date: 06/23/2020
+ms.date: 07/09/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d48153fa747ed9757eb8467eaf1d7c17cde3630e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085597"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -24,7 +24,7 @@ Bu, temel şablon biçimidir:
 ```json
  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
-    "apiVersion": "2019-05-01-preview", 
+    "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
         "<name": "<value>",
@@ -39,9 +39,8 @@ Bu, temel şablon biçimidir:
             "vmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
-                "name": "<vnetName>",
-                "subnetName": "<subnetName>",
-                "resourceGroupName": "<vnetRgName>"
+                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+                }
             },
         "source": {}, 
         "customize": {}, 
@@ -54,14 +53,14 @@ Bu, temel şablon biçimidir:
 
 ## <a name="type-and-api-version"></a>Tür ve API sürümü
 
-, `type` Olması gereken kaynak türüdür `"Microsoft.VirtualMachineImages/imageTemplates"` . `apiVersion`API değiştiğinde zaman içinde değişir, ancak `"2019-05-01-preview"` Önizleme için olmalıdır.
+, `type` Olması gereken kaynak türüdür `"Microsoft.VirtualMachineImages/imageTemplates"` . `apiVersion`API değiştiğinde zaman içinde değişir, ancak `"2020-02-14"` Önizleme için olmalıdır.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
 ```
 
-## <a name="location"></a>Location
+## <a name="location"></a>Konum
 
 Konum, özel görüntünün oluşturulacağı bölgedir. Image Builder önizlemesi için aşağıdaki bölgeler desteklenir:
 
@@ -71,7 +70,7 @@ Konum, özel görüntünün oluşturulacağı bölgedir. Image Builder önizleme
 - Batı ABD
 - Batı ABD 2
 - Kuzey Avrupa
-- West Europe
+- Batı Avrupa
 
 
 ```json
@@ -101,9 +100,8 @@ VNET özellikleri belirtmezseniz, görüntü Oluşturucu kendi sanal ağ, genel 
 
 ```json
     "vnetConfig": {
-        "name": "<vnetName>",
-        "subnetName": "<subnetName>",
-        "resourceGroupName": "<vnetRgName>"
+        "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
     }
 ```
 ## <a name="tags"></a>Etiketler
@@ -121,9 +119,8 @@ Bu isteğe bağlı bölüm, devam etmeden önce bağımlılıkların tamamlandı
 Daha fazla bilgi için bkz. [Kaynak bağımlılıklarını tanımlama](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
 ## <a name="identity"></a>Kimlik
-Varsayılan olarak, görüntü Oluşturucu betikleri kullanmayı veya GitHub ve Azure depolama gibi birden çok konumdan dosya kopyalamayı destekler. Bunları kullanmak için herkese açık bir şekilde erişilebilir olmaları gerekir.
 
-Azure depolama hesabında, kimliğe en az ' Depolama Blobu veri okuyucu ' değeri verildiği sürece, görüntü oluşturucunun Azure Storage 'a erişmesine izin vermek için, sizin tarafınızdan tanımlanan Azure Kullanıcı tarafından atanan yönetilen bir kimliği de kullanabilirsiniz. Bu, depolama bloblarını dışarıdan erişilebilir hale getirmeniz veya SAS belirteçleri oluşturmanız gerekmediği anlamına gelir.
+Gerekli-görüntü Oluşturucu 'nun görüntü okuma/yazma izinlerine sahip olması için Azure depolama 'daki betiklerin okunduğu bir Azure Kullanıcı tarafından atanan kimlik oluşturmanız gerekir ve bu, bireysel kaynaklara yönelik izinlere sahiptir. Görüntü Oluşturucu izinlerinin nasıl çalıştığı ve ilgili adımların ayrıntıları için lütfen [belgeleri](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)gözden geçirin.
 
 
 ```json
@@ -135,9 +132,10 @@ Azure depolama hesabında, kimliğe en az ' Depolama Blobu veri okuyucu ' değer
         },
 ```
 
-Tam bir örnek için bkz. Azure [depolama 'da dosyalara erişmek Için Azure Kullanıcı tarafından atanan bir yönetilen kimlik kullanma](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
-Kullanıcı tarafından atanan bir kimlik için görüntü Oluşturucu desteği: • yalnızca tek bir kimliği destekler • özel etki alanı adlarını desteklemez
+Kullanıcı tarafından atanan bir kimlik için görüntü Oluşturucu desteği:
+* Yalnızca tek bir kimliği destekler
+* Özel etki alanı adlarını desteklemez
 
 Daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 Bu özelliği dağıtma hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
@@ -153,11 +151,6 @@ API, görüntü derlemesi için kaynağı tanımlayan bir ' SourceType ' gerekti
 
 > [!NOTE]
 > Var olan Windows özel görüntülerini kullanırken, Sysprep komutunu tek bir Windows görüntüsünde 8 kez çalıştırabilirsiniz. daha fazla bilgi için [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) belgelerine bakın.
-
-### <a name="iso-source"></a>ISO kaynağı
-Şu anda [kendi abonelik görüntülerini](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)getiren bu işlevselliği Image Builder 'dan kullanımdan kaldıracağız. lütfen aşağıdaki zaman çizelgelerini gözden geçirin:
-    * 31 Mart 2020-RHEL ISO kaynaklarıyla birlikte görüntü şablonları artık kaynak sağlayıcısı tarafından kabul edilecektir.
-    * 30 Nisan 2020-RHEL ISO kaynaklarını içeren görüntü şablonları artık işlenmeyecek.
 
 ### <a name="platformimage-source"></a>Platformımage kaynağı 
 Azure Image Builder, Windows Server ve Client ve Linux Azure Marketi görüntülerini destekler, tam liste için [buraya](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) bakın. 
@@ -181,6 +174,21 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 Sürümünde ' en son ' seçeneğini kullanabilirsiniz. sürüm, şablon gönderildiğinde değil, görüntü oluşturma işlemi gerçekleştiğinde değerlendirilir. Bu işlevi paylaşılan görüntü Galerisi hedefi ile birlikte kullanıyorsanız, şablonu yeniden göndermeyi ve görüntü oluşturmayı yeniden çalıştırmayı önleyebilirsiniz, böylece görüntüleriniz en son görüntülerden yeniden oluşturulur.
 
+#### <a name="support-for-market-place-plan-information"></a>Piyasa yeri planı bilgileri desteği
+Plan bilgilerini de belirtebilirsiniz, örneğin:
+```json
+    "source": {
+        "type": "PlatformImage",
+        "publisher": "RedHat",
+        "offer": "rhel-byos",
+        "sku": "rhel-lvm75",
+        "version": "latest",
+        "planInfo": {
+            "planName": "rhel-lvm75",
+            "planProduct": "rhel-byos",
+            "planPublisher": "redhat"
+       }
+```
 ### <a name="managedimage-source"></a>Managedımage kaynağı
 
 Kaynak görüntüyü genelleştirilmiş bir VHD veya VM 'nin mevcut bir yönetilen görüntüsü olarak ayarlar. Kaynak yönetilen görüntü desteklenen bir işletim sistemi olmalıdır ve Azure Image Builder şablonunuz ile aynı bölgede olmalıdır. 
@@ -206,6 +214,7 @@ Kaynak görüntüyü paylaşılan görüntü galerisinde var olan bir görüntü
 ```
 
 `imageVersionId`Görüntü sürümünün RESOURCEID olmalıdır. Resim sürümlerini listelemek için [az Sig Image-Version List](/cli/azure/sig/image-version#az-sig-image-version-list) kullanın.
+
 
 ## <a name="properties-buildtimeoutinminutes"></a>Özellikler: Buildtimeoutınminutes
 
@@ -254,7 +263,9 @@ Kullanırken `customize` :
 
  
 Customize bölümü bir dizidir. Azure Image Builder, özelleştiriciler aracılığıyla sıralı sırayla çalışacaktır. Herhangi bir Özelleştirici içindeki herhangi bir hata derleme işlemini başarısız olur. 
- 
+
+> [!NOTE]
+> Satır içi komutlar, görüntü şablonu tanımında ve bir destek durumuyla birlikte yardım edildiğinde Microsoft Desteği görüntülenebilir. Hassas bilgileriniz varsa, erişimin kimlik doğrulaması gerektirdiği Azure Storage 'da betiklerine taşınması gerekir.
  
 ### <a name="shell-customizer"></a>Kabuk Özelleştirici
 
@@ -293,7 +304,7 @@ Kabuk Özelleştirici, kabuk betikleri çalıştırmayı destekler, bu, ıB 'nin
 Komutların süper kullanıcı ayrıcalıklarıyla çalışması için, ön ekine sahip olmaları gerekir `sudo` .
 
 > [!NOTE]
-> RHEL ISO kaynağı ile kabuk Özelleştirici çalıştırırken, özelleştirme gerçekleşmeden önce, ilk özelleştirme kabuğunuzun bir Red Hat yetkilendirme sunucusuyla kaydolduğunu güvence altına almanız gerekir. Özelleştirme tamamlandıktan sonra betiğin, yetkilendirme sunucusuyla kaydı yapılmalıdır.
+> Satır içi komutlar görüntü şablonu tanımının bir parçası olarak depolanır, görüntü tanımını dökümünü alırken bunları görebilirsiniz ve bunlar ayrıca sorun giderme amacıyla bir destek durumu olayında Microsoft Desteği görünür. Gizli komutlarınız veya değerleriniz varsa, bunların betiklerin içine taşınması ve Azure depolama 'da kimlik doğrulaması için bir kullanıcı kimliği kullanılması önemle önerilir.
 
 ### <a name="windows-restart-customizer"></a>Windows yeniden başlatma Özelleştirici 
 Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatmanızı ve yeniden çevrimiçi hale gelmesini bekleyebilir, bu sayede yeniden başlatma gerektiren yazılımları yükleyebilirsiniz.  
@@ -485,7 +496,7 @@ runOutputName=<runOutputName>
 
 az resource show \
         --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
-        --api-version=2019-05-01-preview
+        --api-version=2020-02-14
 ```
 
 Çıktı:
@@ -569,13 +580,22 @@ Görüntü galerisine dağıtabilmeniz için önce bir galeri ve görüntü tan�
 Paylaşılan görüntü galerilerine yönelik özellikleri dağıtma:
 
 - **tür** -sharedimage  
-- **Gallerımageıd** : paylaşılan görüntü galerisinin kimliği. Biçim:/Subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.COMPUTE/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
+- **Gallerımageıd** – paylaşılan görüntü galerisinin kimliği, bu iki biçimde belirlenebilir:
+    * Otomatik sürüm oluşturma-görüntü Oluşturucu sizin için bir monoton sürüm numarası oluşturacak, aynı şablondan görüntüleri yeniden oluşturmayı sürdürmek istediğinizde bu faydalıdır: biçim: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` .
+    * Açık sürüm oluşturma-Image Builder 'ın kullanmasını istediğiniz sürüm numarasını geçirebilirsiniz. Biçim:`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+
 - **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
 - **Artifacttags** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
-- **replicationregion** -çoğaltma için bölgelerin dizisi. Bölgelerden biri, galerinin dağıtıldığı bölge olmalıdır.
- 
+- **replicationregion** -çoğaltma için bölgelerin dizisi. Bölgelerden biri, galerinin dağıtıldığı bölge olmalıdır. Çoğaltma tamamlanana kadar, oluşturma işlemi tamamlanana kadar, bölge ekleme, derleme zamanının artışını ifade eder.
+- **Excludefromlatest** (isteğe bağlı) Bu, oluşturduğunuz görüntü sürümünü SIG tanımında en son sürüm olarak işaretlemenizi sağlar, varsayılan değer ' false ' şeklindedir.
+- **Storageaccounttype** (isteğe bağlı) AIB, oluşturulacak görüntü sürümü için bu depolama türlerini belirtmeyi destekler:
+    * "Standard_LRS"
+    * "Standard_ZRS"
+
+
 > [!NOTE]
-> Azure Image Builder 'ı galeriye farklı bir bölgede kullanabilirsiniz, ancak Azure Image Builder hizmetinin görüntüyü veri merkezleri arasında aktarması gerekir ve bu daha uzun sürer. Image Builder, bir monoton tamsayıya göre otomatik olarak görüntü sürümüne sahip olur, bunu şu anda belirtemezsiniz. 
+> Görüntü şablonu ve başvurulan, `image definition` aynı konumda değilse, görüntü oluşturmak için ek zaman görürsünüz. Image Builder 'ın Şu anda `location` görüntü sürümü kaynağı için bir parametresi yok, bunu üst öğesinden aldık `image definition` . Örneğin, bir görüntü tanımı westus 'tadır ve görüntü sürümünün eastus 'e çoğaltılmasını istiyorsanız, bir blob, westus ' e kopyalanır, bu, westus içindeki bir görüntü sürümü kaynağı oluşturulur ve ardından eastus ' a çoğaltılır. Ek çoğaltma zamanından kaçınmak için, `image definition` ve görüntü şablonunun aynı konumda olduğundan emin olun.
+
 
 ### <a name="distribute-vhd"></a>Dağıtma: VHD  
 Bir VHD 'ye çıkış yapabilirsiniz. Daha sonra VHD 'yi kopyalayabilir ve Azure Market 'Te yayımlamak için kullanabilir veya Azure Stack kullanabilirsiniz.  
@@ -608,8 +628,45 @@ az resource show \
 
 > [!NOTE]
 > VHD oluşturulduktan sonra, bunu farklı bir konuma (mümkün olan en kısa sürede) kopyalayın. VHD, görüntü şablonu Azure görüntü Oluşturucu hizmetine gönderildiğinde oluşturulan geçici kaynak grubundaki bir depolama hesabında depolanır. Görüntü şablonunu silerseniz, VHD 'yi kaybedersiniz. 
- 
+
+## <a name="image-template-operations"></a>Görüntü şablonu Işlemleri
+
+### <a name="starting-an-image-build"></a>Görüntü derlemesi başlatılıyor
+Bir derlemeyi başlatmak için, görüntü şablonu kaynağında ' Çalıştır ' öğesini çağırmanız gerekir, `run` komut örnekleri:
+
+```PowerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
+```
+
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Run 
+```
+
+### <a name="cancelling-an-image-build"></a>Görüntü derlemesini iptal etme
+Yanlış olduğunu düşündüğünüz bir görüntü derlemesi çalıştırıyorsanız, Kullanıcı girişini bekliyor veya hiçbir zaman başarıyla tamamlanmayacağını düşünüyorsanız, derlemeyi iptal edebilirsiniz.
+
+Derleme herhangi bir zamanda iptal edilebilir. Dağıtım aşaması başlatılmışsa yine de iptal edebilirsiniz, ancak tamamlanmamış görüntüleri temizlemeniz gerekir. İptal komutu iptal işleminin tamamlanmasını beklemez, lütfen `lastrunstatus.runstate` Bu durum [komutlarını](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)kullanarak devam eden ilerlemeyi izleyin.
+
+
+Komut örnekleri `cancel` :
+
+```powerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force
+```
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Cancel 
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure görüntü Oluşturucu GitHub](https://github.com/danielsollondon/azvmimagebuilder)'da farklı senaryolar için Sample. JSON dosyaları vardır.
- 

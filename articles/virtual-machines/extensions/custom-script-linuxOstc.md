@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Linux VM 'lerde Özel betikler çalıştırma
+title: Azure 'da Linux VM 'lerinde özel Betik uzantısı sürüm 1 (kullanım dışı) Çalıştır
 description: Özel Betik uzantısı v1 kullanarak Linux VM yapılandırma görevlerini otomatikleştirme
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594721"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085716"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux sanal makineleri ile Azure Özel Betik uzantısı sürüm 1 ' i kullanın
 
@@ -39,7 +39,7 @@ Bu makalede, Azure CLı 'deki özel betik uzantısının nasıl kullanılacağı
 
 Lütfen yeni ve mevcut dağıtımları yeni sürümü ([Microsoft. Azure. Extensions. CustomScript](custom-script-linux.md)) kullanmak üzere değiştirin. Yeni sürümün öncekinin yerine bırakılması hedeflenmiştir. Dolayısıyla geçiş işlemi adı ve sürümü değiştirmek kadar kolaydır; uzantı yapılandırmanızı değiştirmeniz gerekmez.
 
-### <a name="operating-system"></a>İşletim Sistemi
+### <a name="operating-system"></a>Operating System
 
 Desteklenen Linux dağıtımları:
 
@@ -126,7 +126,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 | typeHandlerVersion | 1,5 | int |
 | Dosya URI 'leri (ör.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (ör.) | Python MyPythonScript.py\<my-param1\> | string |
-| Enableınternaldnscheck | true | boole |
+| Enableınternaldnscheck | true | boolean |
 | storageAccountName (ör.) | örnek storageacct | string |
 | storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
 
@@ -182,7 +182,7 @@ Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. 
 >[!NOTE]
 >Bu özellik adları büyük/küçük harfe duyarlıdır. Dağıtım sorunlarından kaçınmak için, adları burada gösterildiği gibi kullanın.
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Özel Betik uzantısı 'nı çalıştırmak için Azure CLı kullanırken, bir yapılandırma dosyası veya dosyalar oluşturun. En azından ' commandToExecute ' olmalıdır.
 
