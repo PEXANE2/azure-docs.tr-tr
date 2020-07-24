@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460112"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080106"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
@@ -57,7 +57,7 @@ Güvenlik Merkezi veri toplama aracısı tüm sanal makinelere yüklenir ve veri
 
 ## <a name="set-up-a-security-policy"></a>Güvenlik ilkesi ayarlama
 
-Güvenlik ilkeleri, Güvenlik Merkezi’nin kendisi için veriler topladığı ve önerilerde bulunduğu öğeleri tanımlamak için kullanılır. Farklı Azure kaynaklarına farklı güvenlik ilkeleri uygulayabilirsiniz. Varsayılan olarak Azure kaynakları tüm ilke öğelerine karşı değerlendirilse de, tüm Azure kaynakları için veya bir kaynak grubu için tek tek ilke öğelerini kapatabilirsiniz. Güvenlik Merkezi güvenlik ilkeleri hakkında ayrıntılı bilgi için bkz. [Azure Güvenlik Merkezi’nde güvenlik ilkelerini ayarlama](../../security-center/security-center-policies.md). 
+Güvenlik ilkeleri, Güvenlik Merkezi’nin kendisi için veriler topladığı ve önerilerde bulunduğu öğeleri tanımlamak için kullanılır. Farklı Azure kaynaklarına farklı güvenlik ilkeleri uygulayabilirsiniz. Varsayılan olarak Azure kaynakları tüm ilke öğelerine karşı değerlendirilse de, tüm Azure kaynakları için veya bir kaynak grubu için tek tek ilke öğelerini kapatabilirsiniz. Güvenlik Merkezi güvenlik ilkeleri hakkında ayrıntılı bilgi için bkz. [Azure Güvenlik Merkezi’nde güvenlik ilkelerini ayarlama](../../security-center/tutorial-security-policy.md). 
 
 Aboneliğin tümüne bir güvenlik ilkesi oluşturmak için:
 
@@ -109,7 +109,7 @@ Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının 
 Fiyatlandırma katmanını değiştirmek için:  
 
 1. Güvenlik Merkezi panosunda **Güvenlik ilkesi**’ne tıklayın ve sonra aboneliğinizi seçin.
-2. **Fiyatlandırma katmanı**'nı seçin.
+2. **Fiyatlandırma katmanını**seçin.
 3. **Standart**'ı ve dikey pencerenin en üstünden **Kaydet**'i seçin.
 
 
@@ -134,4 +134,3 @@ Jenkins, GitHub ve Docker ile bir CI/CD işlem hattı oluşturma hakkında daha 
 
 > [!div class="nextstepaction"]
 > [Jenkins, GitHub ve Docker ile CI/CD altyapısı oluşturma](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
-

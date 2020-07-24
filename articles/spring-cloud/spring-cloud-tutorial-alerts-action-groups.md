@@ -6,12 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: 0d3fcbbb317ef70687c83ff21e2ab817d89051a6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071171"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Öğretici: uyarıları ve eylem gruplarını kullanarak yay bulut kaynaklarını izleme
 
@@ -21,7 +22,7 @@ Bir uyarı ardışık düzeni kurmak için iki adım vardır:
 1. E-posta, SMS, runbook veya Web kancası gibi bir uyarı tetiklendiğinde gerçekleştirilecek eylemlerle bir eylem grubu ayarlayın. Eylem grupları, farklı uyarılar arasında yeniden kullanılabilir.
 2. Uyarı kurallarını ayarlayın. Kurallar, ölçüm düzenlerini hedef kaynağa, ölçüme, koşula, zaman toplamaya, vb. göre eylem gruplarıyla bağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Spring gereksinimlerine ek olarak, bu öğreticideki yordamlar dağıtılan bir Azure yay bulutu örneğiyle birlikte çalışır.  Başlamak için [hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcı izleyin.
 
@@ -93,7 +94,7 @@ Bir **Uyarı**yapılandırmak Için, **Uyarılar** sayfasına dönün ve **Uyar�
 
 1. **Önem derecesini**ayarlayın.
 
-1. **Uyarı kuralı oluştur**' a tıklayın.
+1. **Uyarı kuralı oluştur**’a tıklayın.
 
    ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-4.png)
 
@@ -110,7 +111,7 @@ Yeni uyarı kuralının etkinleştirildiğini doğrulayın.
 Bu öğreticide, bir Azure yay bulutu uygulaması için uyarıları ve eylem gruplarını ayarlamayı öğrendiniz. Eylem grupları hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure portal eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Azure portalında eylem gruplarını oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 
 > [!div class="nextstepaction"]
 > [Eylem gruplarında SMS uyarı davranışı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

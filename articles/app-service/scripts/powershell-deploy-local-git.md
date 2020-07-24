@@ -6,18 +6,18 @@ ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be2f066f5150c0d3a9f1cfce639c26db853e0cb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74684833"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084900"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Bir web uygulaması oluşturma ve yerel Git deposundan kod dağıtma
 
 Bu örnek betik, App Service’te ilgili kaynaklarıyla birlikte bir web uygulaması oluşturur ve sonra web uygulaması kodunuzu yerel bir Git deposundan dağıtır.
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview) bulunan yönergeyi kullanarak en son Azure PowerShell’e güncelleştirin ve sonra Azure ile bağlantı oluşturmak için `Connect-AzAccount` çalıştırın. Ayrıca uygulama kodunuzun yerel bir Git deposuna yürütülmesi gerekir.
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/) bulunan yönergeyi kullanarak en son Azure PowerShell’e güncelleştirin ve sonra Azure ile bağlantı oluşturmak için `Connect-AzAccount` çalıştırın. Ayrıca uygulama kodunuzun yerel bir Git deposuna yürütülmesi gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -43,6 +43,6 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 Azure App Service Web Apps için ek Azure PowerShell örneklerini [Azure PowerShell örnekleri](../samples-powershell.md) bölümünde bulabilirsiniz.

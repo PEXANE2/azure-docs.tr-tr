@@ -3,12 +3,12 @@ title: Azure Event Hubs-Işlem Apache Kafka olayları
 description: "Öğretici: Bu makalede Azure Stream Analytics kullanılarak Olay Hub 'ları aracılığıyla alınan Kafka olaylarının nasıl işlenmesi gösterilmektedir."
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313270"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074914"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Stream Analytics kullanarak Event Hubs olaylar için Işlem Apache Kafka 
 Bu makalede, verilerin Event Hubs ' a akışını ve Azure Stream Analytics nasıl işleyeceğini gösterir. Aşağıdaki adımlarda size yol gösterir: 
@@ -20,7 +20,7 @@ Bu makalede, verilerin Event Hubs ' a akışını ve Azure Stream Analytics nas�
 Bir olay hub 'ı tarafından kullanıma sunulan Kafka uç noktasını kullandığınızda protokol istemcilerinizi değiştirmeniz veya kendi kümelerinizi çalıştırmanız gerekmez. Azure Event Hubs [Apache Kafka sürüm 1.0](https://kafka.apache.org/10/documentation.html)’ı destekler. ve üzeri. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -90,7 +90,7 @@ Stream Analytics işteki sorgu, herhangi bir analiz yapmadan verileri geçirir. 
 2. **Azure Marketi** menüsünde **analiz** ' i seçin ve **Stream Analytics iş**' ı seçin. 
 3. **Yeni Stream Analytics** sayfasında aşağıdaki işlemleri yapın: 
     1. İş için bir **ad** girin. 
-    2. **Aboneliğinizi**seçin.
+    2. **Aboneliğinizi** seçin.
     3. **Kaynak grubu** Için **Yeni oluştur** ' u seçin ve adı girin. **Var olan bir** kaynak grubunu da kullanabilirsiniz. 
     4. İş için bir **konum** seçin.
     5. İşi oluşturmak için **Oluştur** ' u seçin. 
@@ -110,7 +110,7 @@ Stream Analytics işteki sorgu, herhangi bir analiz yapmadan verileri geçirir. 
     2. **Azure aboneliğinizi**seçin.
     3. Daha önce oluşturduğunuz **Olay Hub 'ı ad alanını** seçin. 
     4. **Olay Hub 'ı**için **Test** ' i seçin. 
-    5. **Kaydet**’i seçin. 
+    5. **Kaydet**'i seçin. 
 
         ![Olay Hub 'ı giriş yapılandırması](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
@@ -123,13 +123,13 @@ Stream Analytics işteki sorgu, herhangi bir analiz yapmadan verileri geçirir. 
     2. Azure **aboneliğinizi**seçin. 
     3. **Azure depolama hesabınızı**seçin. 
     4. Stream Analytics sorgusundan çıkış verilerini depolayan **kapsayıcı için bir ad** girin.
-    5. **Kaydet**’i seçin.
+    5. **Kaydet**'i seçin.
 
         ![BLOB depolama çıkış yapılandırması](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
 
 ### <a name="define-a-query"></a>Sorgu tanımlama
-Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan sonraki adım, verileri gerçek zamanlı olarak analiz eden bir dönüştürme oluşturmaktır. Dönüştürme sorgusunu [Stream Analytics sorgu dilini](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanarak tanımlarsınız. Bu kılavuzda, herhangi bir dönüşüm yapmadan verilerden geçen bir sorgu tanımlarsınız.
+Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan sonraki adım, verileri gerçek zamanlı olarak analiz eden bir dönüştürme oluşturmaktır. Dönüştürme sorgusunu [Stream Analytics sorgu dilini](/stream-analytics-query/stream-analytics-query-language-reference) kullanarak tanımlarsınız. Bu kılavuzda, herhangi bir dönüşüm yapmadan verilerden geçen bir sorgu tanımlarsınız.
 
 1. **Sorgu**seçin.
 2. Sorgu penceresinde, `[YourOutputAlias]` daha önce oluşturduğunuz çıktı diğer adıyla değiştirin.

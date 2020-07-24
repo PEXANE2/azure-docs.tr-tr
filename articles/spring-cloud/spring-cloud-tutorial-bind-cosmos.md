@@ -6,18 +6,19 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 083c67184c6b039303b29119261a6967306a1447
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: 881005c2597eadc3b3b0be9a01fbf9d82d35d050
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070782"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB veritabanını Azure Spring Cloud uygulamanıza bağlama
 
 Spring Boot uygulamalarınızı el ile yapılandırmak yerine Azure Spring Cloud kullanarak Azure hizmetlerini otomatik olarak uygulamalarınıza bağlayabilirsiniz. Bu makalede, uygulamanızı bir Azure Cosmos DB veritabanına nasıl bağlayacağınız gösterilmektedir.
 
-Ön koşullar:
+Önkoşullar:
 
 * Dağıtılmış bir Azure yay bulutu örneği. Kullanmaya başlamak için [Azure CLI aracılığıyla dağıtmaya yönelik hızlı başlangıç](spring-cloud-quickstart-launch-app-cli.md) Öğreticimizi izleyin.
 * En düşük izin düzeyi katkıda bulunan Azure Cosmos DB hesabı.

@@ -1,16 +1,16 @@
 ---
-title: Ticari özellikli bir Azure uzaktan Işleme uygulaması oluşturma
+title: Ticari kullanım için hazır bir Azure Remote Rendering uygulaması oluşturma
 description: Azure uzaktan Işleme kullanarak ticari özellikli bir uygulama oluşturma stratejileri ve konuları
-author: m-the-hoff
-ms.author: v-michof
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa1a49aeef8b86230dc1d5ea898832cfb1cee852
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076419"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Öğretici: ticari özellikli bir Azure uzaktan Işleme uygulaması oluşturma
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için şu adresi ziyaret edin:
 * [Windows için olay Izleme (ETW) verilerini toplama](https://docs.microsoft.com/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
 * [Windows cihaz portalını kullanma: günlüğe kaydetme](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
 
-### <a name="usage-analysis"></a>Kullanım analizi
+### <a name="usage-analysis"></a>Kullanım Analizi
 
 Azure Application Insights, kişilerin Azure uzaktan Işleme uygulamanızı nasıl kullandığını anlamanıza yardımcı olur. Uygulamanızı her güncelleştirdiğinizde, kullanıcıların ne kadar iyi çalıştığını değerlendirebilir ve çözümünüzü buna göre geliştirebilirsiniz. Bu bilgi ile, bir sonraki geliştirme döngüleriniz hakkında veri odaklı kararlar verebilirsiniz.
 
@@ -263,13 +263,13 @@ Baştan sona güvenlik için uçtan uca Azure uzaktan Işleme çözümünüzü o
 
 * Kimlik doğrulaması stratejileri
 * Erişim yönetimi – gruplar, ilkeler ve izinler
-* Çok kiracılı
+* Çoklu kiracı
 * Veri depolama ve aktarım şifreleme
 * Geçici kullanım belirteçleri
 * Dağıtılmış hizmet reddi (DDoS) saldırıları
 * Tehdit algılama
 * VPN 'Ler ve güvenli ağlar
-* Güvenlik Duvarları
+* Güvenlik duvarları
 * Sertifika ve gizli anahtar yönetimi
 * Uygulama güvenlik açığı ve yararlanma
 

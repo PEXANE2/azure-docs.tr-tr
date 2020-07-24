@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cac918f369a10a8084cdc7d0c66d5c0c4c400cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f098b866eee6fd8555cafcec0f64a0a5f261f9e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458548"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079987"
 ---
 # <a name="restart-vms"></a>VM’leri yeniden başlatma
 
@@ -86,15 +86,15 @@ Bu betik bir kaynak grubu, sanal makine, kullanılabilirlik kümesi, yük dengel
 
 | Komut | Notlar |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Sanal makineleri oluşturur.  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm) | VM’lerin yeniden başlatılmadan önce hazırlandığından emin olmak ve sonra VM’leri yeniden başlatmak için kimliklerini almak amacıyla `--query` ile birlikte kullanılır. |
-| [az resource list](https://docs.microsoft.com/cli/azure/vm) | Etiket kullanan VM’lerin kimliklerini almak için `--query` ile birlikte kullanılır. |
-| [az vm restart](https://docs.microsoft.com/cli/azure/vm) | VM’leri yeniden başlatır. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [az vm create](/cli/azure/vm/availability-set) | Sanal makineleri oluşturur.  |
+| [az vm list](/cli/azure/vm) | VM’lerin yeniden başlatılmadan önce hazırlandığından emin olmak ve sonra VM’leri yeniden başlatmak için kimliklerini almak amacıyla `--query` ile birlikte kullanılır. |
+| [az resource list](/cli/azure/vm) | Etiket kullanan VM’lerin kimliklerini almak için `--query` ile birlikte kullanılır. |
+| [az vm restart](/cli/azure/vm) | VM’leri yeniden başlatır. |
+| [az group delete](/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek sanal makine CLI betiği örnekleri, [Azure Linux VM belgeleri](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) içinde bulunabilir.

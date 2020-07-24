@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 341be30c30f7b4a2a53f70f18e1c2a3a30de1cb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478056"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034514"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Öğretici: Azure Active Directory ile F5 arasında çoklu oturum açma (SSO) yapılandırma
 
 Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. F5 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -33,7 +33,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD 'de çoklu oturum açma ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -177,9 +177,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -221,7 +221,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 1. Ayrıca, **Uygulama ana bilgisayar adı Için SSL sertifikası gerekir. System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. **Içeri aktarma türü** **PKCS 12 (IIS)** olacaktır. **Anahtar adı** belirtin (daha sonra yapılandırmadan başvurulacak) ve pfx dosyasını belirtmeniz gerekir. PFX için **parola** belirtin. **İçeri Aktar**’a tıklayın.
 
     >[!NOTE]
-    >Uygulama adı örneğinde, anahtar adının `Headerapp.superdemo.live`bir joker karakter sertifikası kullandık. `WildCard-SuperDemo.live`
+    >Uygulama adı örneğinde, `Headerapp.superdemo.live` anahtar adının bir joker karakter sertifikası kullandık `WildCard-SuperDemo.live` .
 
     ![F5 (üst bilgi tabanlı) yapılandırma](./media/headerf5-tutorial/configure13.png)
 
@@ -286,7 +286,7 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
 1. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. **Içeri aktarma türü** **PKCS 12 (IIS)** olacaktır. **Anahtar adı** belirtin (daha sonra yapılandırmadan başvurulacak) ve pfx dosyasını belirtmeniz gerekir. PFX için **parola** belirtin. **İçeri Aktar**’a tıklayın.
 
     >[!NOTE]
-    >Uygulama adı örneğinde, anahtar adının `Headerapp.superdemo.live`bir joker karakter sertifikası kullandık. `WildCard-SuperDemo.live`
+    >Uygulama adı örneğinde, `Headerapp.superdemo.live` anahtar adının bir joker karakter sertifikası kullandık `WildCard-SuperDemo.live` .
   
     ![F5 (üst bilgi tabanlı) yapılandırma](./media/headerf5-tutorial/configure17.png)
 
@@ -346,7 +346,7 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
  
     ![F5 (üst bilgi tabanlı) yapılandırma](./media/headerf5-tutorial/configure29.png)
 
-    a. Azure AD 'den indirilen Metadata. xml dosyasına gidin ve bir **kimlik sağlayıcısı adı**belirtin.
+    a. Azure AD 'den indirilen metadata.xml dosyasına gidin ve bir **kimlik sağlayıcısı adı**belirtin.
 
     b. **Tamam**' a tıklayın.
 
@@ -360,7 +360,7 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
 
     f. **Eşleşen kaynak =% {Session. Server. landinguri}** 
 
-    g. **Eşleşen değer =/***
+    örneğin: **Eşleşen değer =/***
 
     h. **Güncelleştir** 'e tıklayın
 
@@ -394,7 +394,7 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
 
     ![F5 (üst bilgi tabanlı) yapılandırma](./media/headerf5-tutorial/configure35.png)
  
-    g. **Görsel ilke Düzenleyicisi**' ne tıklayın, **profil için erişim ilkesini** düzenleyin.
+    örneğin: **Görsel ilke Düzenleyicisi**' ne tıklayın, **profil için erişim ilkesini** düzenleyin.
 
     h. Görsel Ilke düzenleyicisinde + Işaretine tıklayın ve **SAML kimlik doğrulaması**' nı seçin.
 
@@ -418,7 +418,7 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
 
 1. F5 BIG-IP APM 'nin profil ayarlarını gelen trafiğe uygulaması ve daha önce tanımlanan erişim ilkesini çalıştırması için, erişim profilini sanal sunucuya atayın.
 
-    a. **Ana** > **Yerel trafik** > **sanal sunucuları**' na tıklayın.
+    a. **Ana**  >  **Yerel trafik**  >  **sanal sunucuları**' na tıklayın.
 
     ![F5 (üst bilgi tabanlı) yapılandırma](./media/headerf5-tutorial/configure40.png)
  
@@ -438,11 +438,11 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
  
     RULE_INIT {set static::d ebug 0} ACCESS_ACL_ALLOWED {
 
-    {$static::d ebug} {log local0 ise [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameerişim:: oturum verileri al "Session.SAML.Last.attr.Name."] olarak ayarlayın AZUREAD_USERNAME. "AZUREAD_USERNAME = $AZUREAD _USERNAME"} if {! ( [HTTP:: header var "AZUREAD_USERNAME"]) } {HTTP:: header INSERT "AZUREAD_USERNAME" $AZUREAD _USERNAME}
+    http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name{$static::d ebug} {log local0 ise [erişim:: oturum verileri al "Session.SAML.Last.attr.Name."] olarak ayarlayın AZUREAD_USERNAME. "AZUREAD_USERNAME = $AZUREAD _USERNAME"} if {! ( [HTTP:: header var "AZUREAD_USERNAME"]) } {HTTP:: header INSERT "AZUREAD_USERNAME" $AZUREAD _USERNAME}
 
-    {$static::d ebug} {log local0 ise [http://schemas.microsoft.com/identity/claims/displaynameerişim:: oturum verileri al "Session.SAML.Last.attr.Name."] olarak ayarlayın AZUREAD_DISPLAYNAME. "AZUREAD_DISPLAYNAME = $AZUREAD _DISPLAYNAME"} if {! ( [HTTP:: header var "AZUREAD_DISPLAYNAME"]) } {HTTP:: header INSERT "AZUREAD_DISPLAYNAME" $AZUREAD _DISPLAYNAME}
+    http://schemas.microsoft.com/identity/claims/displayname{$static::d ebug} {log local0 ise [erişim:: oturum verileri al "Session.SAML.Last.attr.Name."] olarak ayarlayın AZUREAD_DISPLAYNAME. "AZUREAD_DISPLAYNAME = $AZUREAD _DISPLAYNAME"} if {! ( [HTTP:: header var "AZUREAD_DISPLAYNAME"]) } {HTTP:: header INSERT "AZUREAD_DISPLAYNAME" $AZUREAD _DISPLAYNAME}
 
-    {$static::d ebug} {log local0 ise [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddresserişim:: oturum verileri al "Session.SAML.Last.attr.Name."] olarak ayarlayın AZUREAD_EMAILADDRESS. "AZUREAD_EMAILADDRESS = $AZUREAD _EMAILADDRESS"} if {! ( [HTTP:: header var "AZUREAD_EMAILADDRESS"]) } {HTTP:: header INSERT "AZUREAD_EMAILADDRESS" $AZUREAD _EMAILADDRESS}}
+    http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress{$static::d ebug} {log local0 ise [erişim:: oturum verileri al "Session.SAML.Last.attr.Name."] olarak ayarlayın AZUREAD_EMAILADDRESS. "AZUREAD_EMAILADDRESS = $AZUREAD _EMAILADDRESS"} if {! ( [HTTP:: header var "AZUREAD_EMAILADDRESS"]) } {HTTP:: header INSERT "AZUREAD_EMAILADDRESS" $AZUREAD _EMAILADDRESS}}
 
     **Aşağıdaki örnek çıktı**
 

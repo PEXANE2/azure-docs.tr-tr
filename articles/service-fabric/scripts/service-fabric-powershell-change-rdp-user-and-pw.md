@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bcf619e2251f5c1b641190549da45f721835ce0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80984938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076161"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Bir kümedeki sanal makinelerin yönetici kullanıcı adını ve parolasını güncelleştirme
 
@@ -27,7 +27,7 @@ Service Fabric kümesindeki her [düğüm türü](../service-fabric-cluster-node
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview) bulunan yönergeyi kullanarak Azure PowerShell’i yükleyin. 
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/) bulunan yönergeyi kullanarak Azure PowerShell’i yükleyin. 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -49,6 +49,6 @@ Beş düğüm içeren tek düğümlü bir tür, örneğin, Kullanıcı adının 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 Azure Service Fabric için ek Azure PowerShell örneklerini [Azure PowerShell örnekleri](../service-fabric-powershell-samples.md) bölümünde bulabilirsiniz.

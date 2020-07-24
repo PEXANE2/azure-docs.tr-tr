@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006441"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Sales Insights 'ı türetmek için uçtan uca veri işlem hattı oluşturma
 
@@ -25,15 +25,15 @@ Bu veri ardışık düzeni, çeşitli depolardaki verileri birleştirir, istenme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure CLı-en az sürüm 2.2.0. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-* bir komut satırı JSON işlemcisi olan JQ.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)..
+* bir komut satırı JSON işlemcisi olan JQ.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
 
 * [Azure yerleşik rol sahibinin](../role-based-access-control/built-in-roles.md)bir üyesi.
 
-* Data Factory işlem hattını tetiklemek için PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
+* Data Factory işlem hattını tetiklemek için PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir.
 
 * Bu öğreticinin sonunda iş öngörülerini görselleştirmek [Power BI Desktop](https://aka.ms/pbiSingleInstaller) .
 
@@ -50,7 +50,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-1. Azure rolü [sahibinin](../role-based-access-control/built-in-roles.md)bir üyesi olduğunuzdan emin olun. Hesabınızla `user@contoso.com` değiştirin ve ardından şu komutu girin:
+1. Azure rolü [sahibinin](../role-based-access-control/built-in-roles.md)bir üyesi olduğunuzdan emin olun. `user@contoso.com`Hesabınızla değiştirin ve ardından şu komutu girin:
 
     ```azurecli
     az role assignment list \
@@ -67,7 +67,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     cd hdinsight-sales-insights-etl
     ```
 
-1. Oluşturulduğundan `salesdata scripts templates` emin olun. Aşağıdaki komutla doğrulayın:
+1. Oluşturulduğundan emin olun `salesdata scripts templates` . Aşağıdaki komutla doğrulayın:
 
    ```bash
    ls
@@ -81,13 +81,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     chmod +x scripts/*.sh
     ````
 
-1. Kaynak grubu için değişken ayarlayın. Var `RESOURCE_GROUP_NAME` olan veya yeni bir kaynak grubunun adıyla değiştirin, ardından şu komutu girin:
+1. Kaynak grubu için değişken ayarlayın. `RESOURCE_GROUP_NAME`Var olan veya yeni bir kaynak grubunun adıyla değiştirin, ardından şu komutu girin:
 
     ```bash
     resourceGroup="RESOURCE_GROUP_NAME"
     ```
 
-1. Betiği yürütün. İstediğiniz `LOCATION` değerle değiştirin, sonra şu komutu girin:
+1. Betiği yürütün. `LOCATION`İstediğiniz değerle değiştirin, sonra şu komutu girin:
 
     ```bash
     ./scripts/resources.sh $resourceGroup LOCATION
@@ -106,7 +106,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Küme oluşturma 20 dakika sürebilir.
 
-Kümelere SSH erişiminin varsayılan parolası `Thisisapassword1`. Parolayı değiştirmek istiyorsanız `./templates/resourcesparameters_remainder.json` , dosyaya gidin ve `sparksshPassword`, `sparkClusterLoginPassword` `llapClusterLoginPassword`,, ve `llapsshPassword` parametrelerinin parolasını değiştirin.
+Kümelere SSH erişiminin varsayılan parolası `Thisisapassword1` . Parolayı değiştirmek istiyorsanız, `./templates/resourcesparameters_remainder.json` dosyaya gidin ve,,, `sparksshPassword` `sparkClusterLoginPassword` `llapClusterLoginPassword` ve `llapsshPassword` parametrelerinin parolasını değiştirin.
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Dağıtımı doğrulama ve kaynak bilgilerini toplama
 
@@ -170,7 +170,7 @@ ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.out
 
 Bu betik aşağıdaki işlemleri yapar:
 
-1. Data Lake Storage 2. depolama hesabı üzerinde izinlere `Storage Blob Data Contributor` sahip bir hizmet sorumlusu oluşturur.
+1. `Storage Blob Data Contributor`Data Lake Storage 2. depolama hesabı üzerinde izinlere sahip bir hizmet sorumlusu oluşturur.
 1. [Data Lake Storage 2. dosya sistemine REST API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/filesystem/create)post isteklerini yetkilendirmek için bir kimlik doğrulama belirteci alır.
 1. Data Lake Storage 2. depolama hesabınızın gerçek adını `sparktransform.py` ve `query.hql` dosyalarını doldurur.
 1. Data Lake Storage 2. ve BLOB depolama hesapları için depolama anahtarlarını alır.
@@ -190,7 +190,7 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
 İşlem hattını tetiklemek için şunlardan birini yapabilirsiniz:
 
-* PowerShell 'de Data Factory işlem hattını tetikleyin. Ve `RESOURCEGROUP`değerlerini uygun `DataFactoryName` değerlerle değiştirin ve ardından aşağıdaki komutları çalıştırın:
+* PowerShell 'de Data Factory işlem hattını tetikleyin. `RESOURCEGROUP`Ve `DataFactoryName` değerlerini uygun değerlerle değiştirin ve ardından aşağıdaki komutları çalıştırın:
 
     ```powershell
     # If you have multiple subscriptions, set the one to use
@@ -210,29 +210,29 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
         -PipelineRunId $pipeline
     ```
 
-    İlerlemeyi izlemek için `Get-AzDataFactoryV2PipelineRun` gerektiğinde yeniden yürütün.
+    `Get-AzDataFactoryV2PipelineRun`İlerlemeyi izlemek için gerektiğinde yeniden yürütün.
 
     Veya
 
-* Data Factory 'yi açın ve **yazar & İzleyicisi**' ni seçin. `IngestAndTransform` Komut zinciri portalından tetikleyin. Portal aracılığıyla işlem hatlarını tetikleme hakkında daha fazla bilgi için, bkz. [HDInsight 'ta isteğe bağlı Apache Hadoop kümelerini Azure Data Factory kullanarak oluşturma](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
+* Data Factory 'yi açın ve **yazar & İzleyicisi**' ni seçin. `IngestAndTransform`Komut zinciri portalından tetikleyin. Portal aracılığıyla işlem hatlarını tetikleme hakkında daha fazla bilgi için, bkz. [HDInsight 'ta isteğe bağlı Apache Hadoop kümelerini Azure Data Factory kullanarak oluşturma](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
 
 İşlem hattının çalıştırıldığını doğrulamak için aşağıdaki adımlardan birini alabilirsiniz:
 
 * Portal aracılığıyla veri fabrikanızın **izleyici** bölümüne gidin.
-* Azure Depolama Gezgini, Data Lake Storage Gen 2 depolama hesabınıza gidin. `files` Dosya sistemine gidin ve sonra işlem hattının başarılı olup olmadığını görmek `transformed` için klasöre gidin ve içeriğini denetleyin.
+* Azure Depolama Gezgini, Data Lake Storage Gen 2 depolama hesabınıza gidin. `files`Dosya sistemine gidin ve sonra işlem `transformed` hattının başarılı olup olmadığını görmek için klasöre gidin ve içeriğini denetleyin.
 
 HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter Notebook kullanma konusunda bu makaleye](/azure/hdinsight/spark/apache-spark-load-data-run-query)bakın.
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Power BI verileri görüntülemek için etkileşimli sorgu kümesinde tablo oluşturma
 
-1. SCP 'YI `query.hql` kullanarak dosyayı LLAP kümesine kopyalayın. Şu komutu girin:
+1. `query.hql`SCP 'yi kullanarak dosyayı LLAP kümesine kopyalayın. Şu komutu girin:
 
     ```bash
     llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
     scp scripts/query.hql sshuser@$llapClusterName-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-    Anımsatıcı: varsayılan parola `Thisisapassword1`.
+    Anımsatıcı: varsayılan parola `Thisisapassword1` .
 
 1. LLAP kümesine erişmek için SSH kullanın. Şu komutu girin:
 
@@ -250,26 +250,26 @@ HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter N
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Satış verilerinden Power BI panosu oluşturma
 
-1. Power BI Desktop’ı açın.
+1. Power BI Desktop'ı açın.
 
-1. Menüden **verileri** > **daha fazla al...** ' a gidin.  >  **Azure**Azure > **HDInsight etkileşimli sorgusu**.
+1. Menüden **verileri**  >  **daha fazla al...**  >  ' a gidin. **Azure**  >  **HDInsight etkileşimli sorgusu**.
 
-1. **Bağlan**’ı seçin.
+1. **Bağlan**'ı seçin.
 
 1. **HDInsight etkileşimli sorgu** iletişim kutusundan:
-    1. **Sunucu** metin kutusunda, LLAP kümenizin adını biçiminde girin `https://LLAPCLUSTERNAME.azurehdinsight.net`.
-    1. **Veritabanı** metin kutusuna yazın `default`.
+    1. **Sunucu** metin kutusunda, LLAP kümenizin adını biçiminde girin `https://LLAPCLUSTERNAME.azurehdinsight.net` .
+    1. **Veritabanı** metin kutusuna yazın `default` .
     1. **Tamam**’ı seçin.
 
 1. **AzureHive** iletişim kutusundan:
-    1. **Kullanıcı adı** metin kutusuna girin `admin`.
-    1. **Parola** metin kutusuna girin `Thisisapassword1`.
-    1. **Bağlan**’ı seçin.
+    1. **Kullanıcı adı** metin kutusuna girin `admin` .
+    1. **Parola** metin kutusuna girin `Thisisapassword1` .
+    1. **Bağlan**'ı seçin.
 
-1. **Gezgin**'den verileri önizlemek `sales`için ve/veya `sales_raw` öğesini seçin. Veriler yüklendikten sonra, oluşturmak istediğiniz panoyu deneyebilirsiniz. Power BI panoları kullanmaya başlamak için aşağıdaki bağlantılara bakın:
+1. **Gezgin**'den `sales` verileri önizlemek için ve/veya öğesini seçin `sales_raw` . Veriler yüklendikten sonra, oluşturmak istediğiniz panoyu deneyebilirsiniz. Power BI panoları kullanmaya başlamak için aşağıdaki bağlantılara bakın:
 
 * [Power BI tasarımcıları için panolara giriş](https://docs.microsoft.com/power-bi/service-dashboards)
-* [Öğretici: Power BI hizmeti kullanmaya başlayın](https://docs.microsoft.com/power-bi/service-get-started)
+* [Öğretici: Power BI hizmeti ile çalışmaya başlama](https://docs.microsoft.com/power-bi/service-get-started)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

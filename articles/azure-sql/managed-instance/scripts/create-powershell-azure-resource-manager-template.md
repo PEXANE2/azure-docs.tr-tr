@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: f4c4c63e6461dd3aa3cabe86b871434814fb400e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 8ac742c42a32e8b864c4be71e786c292ceb1514d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073378"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Yönetilen bir örnek oluşturmak için PowerShell 'i Azure Resource Manager şablonuyla kullanma
 
@@ -41,7 +41,7 @@ Azure PowerShell komutlar, önceden tanımlanmış bir Azure Resource Manager ş
 
 Örnek adı, SQL Yöneticisi Kullanıcı adı, VNet/subnet ve harmanlama daha sonra değiştirilemez. Diğer örnek özellikleri değiştirilebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örnek, [geçerli bir ağ ortamı oluşturduğunuzu](../virtual-network-subnet-create-arm-template.md) veya yönetilen örneğiniz için [mevcut bir VNET 'i değiştirdiğinizi](../vnet-existing-add-subnet.md) varsayar. Gerekirse, ayrı bir [Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)kullanarak ağ ortamını hazırlayabilirsiniz. 
 
@@ -138,6 +138,6 @@ Betik tamamlandıktan sonra, yönetilen örneğe tüm Azure hizmetlerinden ve ya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 Azure SQL yönetilen [örnek PowerShell betikleri](../../database/powershell-script-content-guide.md)' nde, Azure SQL yönetilen örneği Için ek PowerShell betiği örnekleri bulunabilir.

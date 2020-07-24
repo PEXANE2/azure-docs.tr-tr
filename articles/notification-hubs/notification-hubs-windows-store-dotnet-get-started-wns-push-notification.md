@@ -15,12 +15,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 232bd96373f22957a88c94585f53237e05d5e5cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076704"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Evrensel Windows Platformu uygulamalara bildirimler gönderme
 
@@ -39,11 +39,11 @@ Aşağıdaki adımları uygulayın:
 > * Örnek bir Windows uygulaması oluşturma
 > * Test bildirimleri gönderme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - Microsoft Visual Studio 2017 veya üzeri. Bu öğreticideki örnek, [Visual Studio 2019](https://www.visualstudio.com/products)kullanır.
-- [UWP uygulama geliştirme araçlarının yüklü olması](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- [UWP uygulama geliştirme araçlarının yüklü olması](/windows/uwp/get-started/get-set-up)
 - Etkin bir Windows Mağazası hesabı
 - **Uygulamalardan ve diğer gönderenlerden bildirim al** ayarının etkin olduğunu onaylayın. 
     - Bilgisayarınızda başlatma **ayarları** penceresi.
@@ -108,7 +108,7 @@ Bildirim hub'ınız WNS ile birlikte çalışacak şekilde yapılandırıldı. U
     ![NuGet Paketlerini Yönet penceresi][20]
 
     Bu eylem [Microsoft.Azure.NotificationHubs NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs) kullanarak Windows için Azure Notification Hubs kitaplığına bir başvuru indirir, yükler ve ekler.
-9. `App.xaml.cs` Proje dosyasını açın ve aşağıdaki deyimleri ekleyin:
+9. `App.xaml.cs`Proje dosyasını açın ve aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -116,7 +116,7 @@ Bildirim hub'ınız WNS ile birlikte çalışacak şekilde yapılandırıldı. U
     using Windows.UI.Popups;
     ```
 
-10. Projenin `App.xaml.cs` dosyasında, `App` sınıfını bulun ve aşağıdaki `InitNotificationsAsync` yöntem tanımını ekleyin. Azure portal `<your hub name>` oluşturduğunuz Bildirim Hub 'ının adıyla değiştirin ve bunu Bildirim Hub 'ınızın **erişim ilkeleri** sayfasında bulunan `<Your DefaultListenSharedAccessSignature connection string>` `DefaultListenSharedAccessSignature` bağlantı dizesiyle değiştirin:
+10. Projenin `App.xaml.cs` dosyasında, `App` sınıfını bulun ve aşağıdaki `InitNotificationsAsync` yöntem tanımını ekleyin. `<your hub name>`Azure Portal oluşturduğunuz Bildirim Hub 'ının adıyla değiştirin ve bunu `<Your DefaultListenSharedAccessSignature connection string>` `DefaultListenSharedAccessSignature` Bildirim Hub 'ınızın **erişim ilkeleri** sayfasında bulunan bağlantı dizesiyle değiştirin:
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -139,9 +139,9 @@ Bildirim hub'ınız WNS ile birlikte çalışacak şekilde yapılandırıldı. U
     Bu kod, WNS'den uygulamanın kanal URI'sini alır ve ardından bu kanal URI'sini bildirim hub'ınıza kaydeder.
 
     >[!NOTE]
-    > Yer tutucusunu `hub name` , Azure Portal görüntülenen Notification Hub 'ının adıyla değiştirin. Ayrıca, bağlantı dizesi yer tutucusunu önceki bölümde `DefaultListenSharedAccessSignature` yer alan Notification Hub 'ınızın **erişim ilkeleri** sayfasından elde ettiğiniz bağlantı dizesiyle değiştirin.
+    > `hub name`Yer tutucusunu, Azure Portal görüntülenen Notification Hub 'ının adıyla değiştirin. Ayrıca, bağlantı dizesi yer tutucusunu `DefaultListenSharedAccessSignature` önceki bölümde yer alan Notification Hub 'ınızın **erişim ilkeleri** sayfasından elde ettiğiniz bağlantı dizesiyle değiştirin.
 
-11. İçindeki `OnLaunched` `App.xaml.cs`olay işleyicisinin üst kısmında, yeni `InitNotificationsAsync` yönteme aşağıdaki çağrıyı ekleyin:
+11. `OnLaunched`İçindeki olay işleyicisinin üst kısmında `App.xaml.cs` , yeni yönteme aşağıdaki çağrıyı ekleyin `InitNotificationsAsync` :
 
     ```csharp
     InitNotificationsAsync();
@@ -191,6 +191,6 @@ notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 <!-- URLs. -->
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[toast catalog]: https://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[tile catalog]: https://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[badge overview]: https://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: /previous-versions/windows/apps/hh761494(v=win.10)
+[tile catalog]: /previous-versions/windows/apps/hh761491(v=win.10)
+[badge overview]: /previous-versions/windows/apps/hh779719(v=win.10)

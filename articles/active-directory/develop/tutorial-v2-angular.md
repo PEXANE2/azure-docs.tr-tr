@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ee7c95cc25e911ba0ffe1e2815f219e040aaca31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058263"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
 
@@ -31,7 +31,7 @@ Bu öğreticide, angular tek sayfalı uygulamanın (SPA) nasıl kullanılabilece
 
 ## <a name="how-the-sample-app-works"></a>Örnek uygulamanın nasıl çalıştığı
 
-![Bu öğreticide oluşturulan örnek uygulamanın nasıl çalıştığını gösteren diyagram](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Bu öğreticide oluşturulan örnek uygulamanın nasıl çalıştığını gösteren diyagram](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 ### <a name="more-information"></a>Daha fazla bilgi
 
@@ -49,7 +49,7 @@ Bu öğretici aşağıdaki kitaplığı kullanır:
 
 GitHub 'da, MSAL.js kitaplığının kaynak kodunu, [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
@@ -148,7 +148,7 @@ Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılm
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
-    
+
     ngOnInit() { }
 
     login() {
@@ -264,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Bu kodda, `scopes` API için erişim belirtecinde döndürülmek istenen kapsamları içerir.
 
-Örnek:
+Örneğin:
 
 * `["user.read"]`Microsoft Graph için
 * `["<Application ID URL>/scope"]`Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örnek:
+Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örneğin:
 
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.

@@ -7,21 +7,21 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde birden çok hizmet .NET Core uygulamasında hata ayıklamak için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 073019a75f78263e9d300a82469b36268d032679
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072943"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: Azure Dev Spaces .NET Core ve Visual Studio
 
 Bu öğreticide, dev alanlarının sağladığı bazı avantajlarla birlikte Azure Dev Spaces kullanarak çok hizmet uygulamaları geliştirmeyi öğreneceksiniz.
 
 ## <a name="call-another-container"></a>Başka bir kapsayıcı çağırma
-Bu bölümde, ikinci bir hizmet `mywebapi`oluşturacak ve bunu `webfrontend` çağıracağız. Her hizmet ayrı kapsayıcılarda çalışır. Ardından her iki kapsayıcıda da hata ayıklayacaksınız.
+Bu bölümde, ikinci bir hizmet oluşturacak `mywebapi` ve `webfrontend` bunu çağıracağız. Her hizmet ayrı kapsayıcılarda çalışır. Ardından her iki kapsayıcıda da hata ayıklayacaksınız.
 
-![](media/common/multi-container.png)
+![Diyagramda, mywebapi hizmeti çağıran webön uç hizmeti (bir okla gösterildiği gibi) gösterilmektedir.](media/common/multi-container.png)
 
 ### <a name="download-sample-code-for-mywebapi"></a>*mywebapi* için örnek kod indirme
 Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://github.com/Azure/dev-spaces adresine gidip **Kopyala veya İndir**’i seçerek GitHub deposunu indirin. Bu bölümün kodu `samples/dotnetcore/getting-started/mywebapi` konumundadır.
@@ -34,10 +34,10 @@ Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://gi
 2. `mywebapi` hazır olduğunda, tarayıcınızı localhost adresine açın ve `ValuesController` için varsayılan GET API’yi çağırmak üzere URL’ye `/api/values` öğesini ekleyin. 
 3. Tüm adımları başarılı olursa, `mywebapi` hizmetinden şöyle bir yanıt görebilmelisiniz.
 
-    ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
+    ![Web sayfası iki dizenin JSON dizisini gösterir: "değer1" ve "değer2".](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend*’den *mywebapi*’ye istek gönderme
-Şimdi `webfrontend` uygulamasında `mywebapi` hizmetine istek gönderen bir kod yazalım. `webfrontend` projesinin bulunduğu Visual Studio penceresine geçin. `HomeController.cs` Dosyasında, hakkında yöntemi için kodu aşağıdaki kodla *değiştirin* :
+Şimdi `webfrontend` uygulamasında `mywebapi` hizmetine istek gönderen bir kod yazalım. `webfrontend` projesinin bulunduğu Visual Studio penceresine geçin. `HomeController.cs`Dosyasında, hakkında yöntemi için kodu aşağıdaki kodla *değiştirin* :
 
    ```csharp
    public async Task<IActionResult> About()

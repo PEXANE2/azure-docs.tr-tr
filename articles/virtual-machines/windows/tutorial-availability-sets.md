@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100456"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065249"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Öğretici: Azure PowerShell ile yüksek oranda kullanılabilir sanal makineler oluşturma ve dağıtma
 
@@ -37,17 +37,17 @@ Dört adet ön uç web sunucusuna ve iki adet arka uç sanal makineye sahip olab
 
 Azure’da güvenilir sanal makine tabanlı çözümleri dağıtmak istediğinizde Kullanılabilirlik Kümelerini kullanın.
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
 Konumdaki donanım, birden çok etki alanına ve hata etki alanına bölünmüştür. **Güncelleştirme etki alanı**, aynı anda yeniden başlatılabilen bir VM grubu ve temel alınan fiziksel donanımdır. Aynı **hata etki alanında** bulunan VM’ler, ortak güç kaynağı ve ağ anahtarıyla birlikte ortak depolama alanını paylaşır.  
 
-[New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)kullanarak bir kullanılabilirlik kümesi oluşturabilirsiniz. Bu örnekte, hem güncelleştirme hem de hata etki alanlarının sayısı *2* ' dir ve kullanılabilirlik kümesi *myAvailabilitySet*olarak adlandırılır.
+[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset)kullanarak bir kullanılabilirlik kümesi oluşturabilirsiniz. Bu örnekte, hem güncelleştirme hem de hata etki alanlarının sayısı *2* ' dir ve kullanılabilirlik kümesi *myAvailabilitySet*olarak adlandırılır.
 
 Bir kaynak grubu oluşturun.
 
@@ -57,7 +57,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-`-sku aligned` Parametresiyle [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) kullanarak yönetilen bir kullanılabilirlik kümesi oluşturun.
+Parametresiyle [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) kullanarak yönetilen bir kullanılabilirlik kümesi oluşturun `-sku aligned` .
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -73,15 +73,15 @@ New-AzAvailabilitySet `
 Donanım genelinde doğru şekilde dağıtıldığından emin olmak için VM 'Lerin kullanılabilirlik kümesi içinde oluşturulması gerekir. Mevcut bir VM oluşturulduktan sonra bir kullanılabilirlik kümesine ekleyemezsiniz. 
 
 
-[New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)Ile bir VM oluşturduğunuzda, kullanılabilirlik kümesinin adını belirtmek için `-AvailabilitySetName` parametresini kullanın.
+[New-azvm](/powershell/module/az.compute/new-azvm)Ile bir VM oluşturduğunuzda, `-AvailabilitySetName` kullanılabilirlik kümesinin adını belirtmek için parametresini kullanın.
 
-İlk olarak, VM için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+İlk olarak, VM için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Şimdi kullanılabilirlik kümesinde [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Ile iki VM oluşturun.
+Şimdi kullanılabilirlik kümesinde [New-azvm](/powershell/module/az.compute/new-azvm) Ile iki VM oluşturun.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -101,13 +101,13 @@ for ($i=1; $i -le 2; $i++)
 
 İki VM’yi de oluşturup yapılandırmak birkaç dakika sürer. Tamamlandığında, temel alınan donanım arasında dağıtılmış iki sanal makineye sahip olursunuz. 
 
- > **myResourceGroupAvailability**MyResourceGroupAvailability > **myAvailabilitySet** **kaynak gruplarına**giderek portaldaki kullanılabilirlik kümesine bakarsanız, VM 'lerin iki hata ve güncelleştirme etki alanı arasında nasıl dağıtıldığını görmeniz gerekir.
+MyResourceGroupAvailability myAvailabilitySet **kaynak gruplarına**giderek portaldaki kullanılabilirlik kümesine bakarsanız  >  **myResourceGroupAvailability**  >  **myAvailabilitySet**, VM 'lerin iki hata ve güncelleştirme etki alanı arasında nasıl dağıtıldığını görmeniz gerekir.
 
 ![Portaldaki kullanılabilirlik kümesi](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>Kullanılabilir sanal makine boyutlarını denetleme 
 
-Bir kullanılabilirlik kümesi içinde bir VM oluşturduğunuzda, donanımda hangi VM boyutlarının kullanılabilir olduğunu bilmeniz gerekir. Kullanılabilirlik kümesinde dağıtabileceğiniz sanal makineler için kullanılabilir tüm boyutları almak için [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) komutunu kullanın.
+Bir kullanılabilirlik kümesi içinde bir VM oluşturduğunuzda, donanımda hangi VM boyutlarının kullanılabilir olduğunu bilmeniz gerekir. Kullanılabilirlik kümesinde dağıtabileceğiniz sanal makineler için kullanılabilir tüm boyutları almak için [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) komutunu kullanın.
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -136,5 +136,3 @@ Sanal makine ölçek kümeleri hakkında daha fazla bilgi edinmek için sonraki 
 
 > [!div class="nextstepaction"]
 > [VM Ölçek kümesi oluşturma](tutorial-create-vmss.md)
-
-

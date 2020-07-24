@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 58c234df5babc02fdd0e69a9c806043465293ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72387411"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030292"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Windows uygulamalarına yerelleştirilmiş anında iletme bildirimleri gönderme
 
@@ -44,9 +44,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Windows uygulamasını yerel ayar bilgilerini destekleyecek şekilde güncelleştirme
 > * Arka uç uygulamasını yerelleştirilmiş bildirimler gönderecek şekilde güncelleştirme
-> * Uygulamayı test edin
+> * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Öğretici: Belirli cihazlara bildirim gönderme (Evrensel Windows Platformu)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) öğreticisini tamamlayın.
 
@@ -111,7 +111,7 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-3. `Notifications` Sınıfında, `StoreCategoriesAndSubscribe` ve `SubscribeToCategories` yöntemlerine bir yerel ayar parametresi ekleyin.
+3. Sınıfında, `Notifications` ve yöntemlerine bir yerel ayar parametresi ekleyin `StoreCategoriesAndSubscribe` `SubscribeToCategories` .
 
     ```csharp
     public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
@@ -138,7 +138,7 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
     }
     ```
 
-    `RegisterNativeAsync` Yöntemini çağırmak yerine çağırın `RegisterTemplateAsync`. Şablonun yerel ayara bağlı olduğu belirli bir bildirim biçimi kaydedin. Ayrıca, birden fazla şablon (örneğin, bir tane bildirimler, bir tane de kutucuklar için) kaydetmek istiyorsanız şablon için bir ad ("localizedWNSTemplateExample") belirtin. Şablonları güncelleştirmek veya silmek için de adlandırmanız gerekir.
+    Yöntemini çağırmak yerine `RegisterNativeAsync` çağırın `RegisterTemplateAsync` . Şablonun yerel ayara bağlı olduğu belirli bir bildirim biçimi kaydedin. Ayrıca, birden fazla şablon (örneğin, bir tane bildirimler, bir tane de kutucuklar için) kaydetmek istiyorsanız şablon için bir ad ("localizedWNSTemplateExample") belirtin. Şablonları güncelleştirmek veya silmek için de adlandırmanız gerekir.
 
     Bir cihaz aynı etiketle birden fazla şablonu kaydederse, o etiketi hedefleyen bir gelen ileti, cihaza birden fazla bildirimin (her şablon için bir tane) iletilmesiyle sonuçlanır. Bu davranış, aynı mantıksal iletinin birden fazla görsel bildirimle sonuçlanması gereken durumlarda (örneğin, Windows Mağazası uygulamasında hem bir gösterge hem de bir bildirim gösterme) yararlıdır.
 4. Depolanan yerel ayarı almak için aşağıdaki yöntemi ekleyin:
@@ -151,7 +151,7 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
     }
     ```
 
-5. `MainPage.xaml.cs` Dosyada, yerel ayar Birleşik giriş kutusunun geçerli değerini almak ve `Notifications` sınıfa yapılan çağrıya sağlamak için düğme işleyicisine tıklayın:
+5. `MainPage.xaml.cs`Dosyada, yerel ayar Birleşik giriş kutusunun geçerli değerini almak ve sınıfa yapılan çağrıya sağlamak için düğme işleyicisine tıklayın `Notifications` :
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -175,7 +175,7 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
         await dialog.ShowAsync();
     }
     ```
-6. Son olarak, `App.xaml.cs` dosyasında yerel ayarı almak ve `InitNotificationsAsync` abone olurken kullanmak için yöntemi güncelleştirin:
+6. Son olarak, `App.xaml.cs` dosyasında `InitNotificationsAsync` yerel ayarı almak ve abone olurken kullanmak için yöntemi güncelleştirin:
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -296,6 +296,6 @@ Bu öğreticide, kayıtlarıyla ilişkili etiketleri olan belirli cihazlara yere
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

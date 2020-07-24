@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d93d11f32ba5db9b0be38757d0f1456fc137a9ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77425332"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083081"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Öğretici: bir olay hub 'ı tetikleyicisi ve bir Azure Cosmos DB çıktı bağlaması ile Java 'da işlev oluşturma
 
@@ -25,7 +25,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdakilerin yüklü olması gerekir:
 
@@ -35,7 +35,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdakilerin yüklü olması gereki
 * [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) sürüm 2.6.666 veya üzeri
 
 > [!IMPORTANT]
-> Bu `JAVA_HOME` öğreticiyi tamamlayabilmeniz için ortam değişkeninin JDK 'nin Install konumuna ayarlanması gerekir.
+> `JAVA_HOME`Bu öğreticiyi tamamlayabilmeniz için ortam değişkeninin JDK 'nin Install konumuna ayarlanması gerekir.
 
 Bu öğreticide doğrudan kodu kullanmayı tercih ediyorsanız, bkz. [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) örnek deposu.
 
@@ -54,11 +54,11 @@ Aşağıdaki bölümlerde, Azure CLı kullanarak bu kaynakları nasıl oluştura
 
 ### <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-Cloud Shell kullanmıyorsanız, hesabınıza erişmek için Azure CLı 'yi yerel olarak kullanmanız gerekir. Tarayıcı tabanlı `az login` oturum açma deneyimini başlatmak Için Bash isteminde komutunu kullanın. Birden fazla Azure aboneliğine erişiminiz varsa, varsayılan değer `az account set --subscription` olarak abonelik kimliği ' ni ayarlayın.
+Cloud Shell kullanmıyorsanız, hesabınıza erişmek için Azure CLı 'yi yerel olarak kullanmanız gerekir. `az login`Tarayıcı tabanlı oturum açma deneyimini başlatmak Için Bash isteminde komutunu kullanın. Birden fazla Azure aboneliğine erişiminiz varsa, varsayılan değer olarak abonelik KIMLIĞI ' ni ayarlayın `az account set --subscription` .
 
 ### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
-Sonra, oluşturacağınız kaynakların adları ve konumu için bazı ortam değişkenleri oluşturun. Yer tutucuları seçtiğiniz `<value>` değerlerle değiştirerek aşağıdaki komutları kullanın. Değerler, [Azure kaynakları için adlandırma kurallarına ve kısıtlamalarına](/azure/architecture/best-practices/resource-naming)uymalıdır. `LOCATION` Değişkeni için, `az functionapp list-consumption-locations` komutu tarafından üretilen değerlerden birini kullanın.
+Sonra, oluşturacağınız kaynakların adları ve konumu için bazı ortam değişkenleri oluşturun. Yer tutucuları seçtiğiniz değerlerle değiştirerek aşağıdaki komutları kullanın `<value>` . Değerler, [Azure kaynakları için adlandırma kurallarına ve kısıtlamalarına](/azure/architecture/best-practices/resource-naming)uymalıdır. Değişkeni için `LOCATION` , komutu tarafından üretilen değerlerden birini kullanın `az functionapp list-consumption-locations` .
 
 ```azurecli-interactive
 RESOURCE_GROUP=<value>
@@ -128,7 +128,7 @@ az cosmosdb collection create \
     --partition-key-path '/temperatureStatus'
 ```
 
-Değer `partition-key-path` , her öğenin `temperatureStatus` değerine göre verilerinizi bölümler. Bölüm anahtarı, verilerinizi bağımsız olarak erişebileceği farklı alt kümelere ayırarak performansı artırmaya Cosmos DB olanak sağlar.
+`partition-key-path`Değer, her öğenin değerine göre verilerinizi bölümler `temperatureStatus` . Bölüm anahtarı, verilerinizi bağımsız olarak erişebileceği farklı alt kümelere ayırarak performansı artırmaya Cosmos DB olanak sağlar.
 
 ### <a name="create-a-storage-account-and-function-app"></a>Depolama hesabı ve işlev uygulaması oluşturma
 
@@ -147,7 +147,7 @@ az functionapp create \
     --runtime java
 ```
 
-`az functionapp create` Komut, işlev uygulamanızı oluşturduğunda aynı ada sahip bir Application Insights kaynağı da oluşturur. İşlev uygulaması, Application Insights ' ye bağlayan adlı `APPINSIGHTS_INSTRUMENTATIONKEY` bir ayarla otomatik olarak yapılandırılır. Bu öğreticinin ilerleyen kısımlarında açıklandığı gibi, işlevlerinizi Azure 'a dağıttıktan sonra uygulama telemetrisini görüntüleyebilirsiniz.
+Komut, `az functionapp create` işlev uygulamanızı oluşturduğunda aynı ada sahip bir Application Insights kaynağı da oluşturur. İşlev uygulaması, Application Insights ' ye bağlayan adlı bir ayarla otomatik olarak yapılandırılır `APPINSIGHTS_INSTRUMENTATIONKEY` . Bu öğreticinin ilerleyen kısımlarında açıklandığı gibi, işlevlerinizi Azure 'a dağıttıktan sonra uygulama telemetrisini görüntüleyebilirsiniz.
 
 ## <a name="configure-your-function-app"></a>İşlev uygulamanızı yapılandırma
 
@@ -183,7 +183,7 @@ COSMOS_DB_CONNECTION_STRING=$( \
 echo $COSMOS_DB_CONNECTION_STRING
 ```
 
-Bu değişkenler, Azure CLı komutlarından alınan değerlere ayarlanır. Her komut, döndürülen JSON yükünün bağlantı dizesini ayıklamak için bir JMESPath sorgusu kullanır. Bağlantı dizeleri de kullanılarak `echo` görüntülenir, böylece başarıyla alındığını doğrulayabilirsiniz.
+Bu değişkenler, Azure CLı komutlarından alınan değerlere ayarlanır. Her komut, döndürülen JSON yükünün bağlantı dizesini ayıklamak için bir JMESPath sorgusu kullanır. Bağlantı dizeleri de kullanılarak görüntülenir, `echo` böylece başarıyla alındığını doğrulayabilirsiniz.
 
 ### <a name="update-your-function-app-settings"></a>İşlev uygulaması ayarlarınızı güncelleştirme
 
@@ -205,7 +205,7 @@ Azure kaynaklarınız artık oluşturulmuştur ve birlikte düzgün çalışacak
 
 Ardından, yerel makinenizde bir proje oluşturacak, Java kodunu ekleyecek ve test edersiniz. Maven ve Azure Functions Core Tools için Azure Işlevleri eklentisi ile çalışan komutları kullanacaksınız. İşlevleriniz yerel olarak çalışır, ancak oluşturduğunuz bulut tabanlı kaynakları kullanacaktır. Yerel olarak çalışan işlevleri aldıktan sonra, Maven kullanarak bunları buluta dağıtabilir ve veri ve analiz birikmesini izleyebilirsiniz.
 
-Kaynaklarınızın oluşturulması için Cloud Shell kullandıysanız, Azure 'a yerel olarak Bağlanmayacağız. Bu durumda, tarayıcı tabanlı oturum `az login` açma işlemini başlatmak için komutunu kullanın. Gerekirse, varsayılan aboneliği, `az account set --subscription` ardından abonelik kimliği ile ayarlayın. Son olarak, yerel makinenizde bazı ortam değişkenlerini yeniden oluşturmak için aşağıdaki komutları çalıştırın. Yer tutucuları `<value>` , daha önce kullandığınız değerlerle değiştirin.
+Kaynaklarınızın oluşturulması için Cloud Shell kullandıysanız, Azure 'a yerel olarak Bağlanmayacağız. Bu durumda, `az login` tarayıcı tabanlı oturum açma işlemini başlatmak için komutunu kullanın. Gerekirse, varsayılan aboneliği, `az account set --subscription` ardından ABONELIK kimliği ile ayarlayın. Son olarak, yerel makinenizde bazı ortam değişkenlerini yeniden oluşturmak için aşağıdaki komutları çalıştırın. `<value>`Yer tutucuları, daha önce kullandığınız değerlerle değiştirin.
 
 ```bash
 RESOURCE_GROUP=<value>
@@ -226,12 +226,12 @@ mvn archetype:generate --batch-mode \
     -DartifactId=telemetry-functions
 ```
 
-Bu komut bir `telemetry-functions` klasör içinde birkaç dosya oluşturur:
+Bu komut bir klasör içinde birkaç dosya oluşturur `telemetry-functions` :
 
-* Maven ile kullanım için bir `pom.xml` dosya
-* Yerel `local.settings.json` test için uygulama ayarlarını tutacak bir dosya
-* Veri `host.json` çözümleme işlevinizdeki Cosmos DB çıkış bağlaması için gerekli olan Azure işlevleri uzantı paketini sağlayan bir dosya
-* Varsayılan `Function.java` işlev uygulamasını içeren bir dosya
+* `pom.xml`Maven ile kullanım için bir dosya
+* `local.settings.json`Yerel test için uygulama ayarlarını tutacak bir dosya
+* `host.json`Veri çözümleme işlevinizdeki Cosmos DB çıkış bağlaması için gerekli olan Azure Işlevleri uzantı paketini sağlayan bir dosya
+* `Function.java`Varsayılan işlev uygulamasını içeren bir dosya
 * Bu öğreticiye gereken birkaç test dosyası
 
 Derleme hatalarını önlemek için, test dosyalarını silmeniz gerekir. Yeni proje klasörüne gitmek ve test klasörünü silmek için aşağıdaki komutları çalıştırın:
@@ -243,7 +243,7 @@ rm -r src/test
 
 ### <a name="retrieve-your-function-app-settings-for-local-use"></a>Yerel kullanım için işlev uygulaması ayarlarınızı alma
 
-Yerel test için, işlev projenizin Bu öğreticide daha önce Azure 'daki işlev uygulamanıza eklediğiniz bağlantı dizeleri gerekir. Bulutta depolanan tüm işlev uygulaması ayarlarını alan ve bunları `local.settings.json` dosyanıza ekleyen aşağıdaki Azure Functions Core Tools komutunu kullanın:
+Yerel test için, işlev projenizin Bu öğreticide daha önce Azure 'daki işlev uygulamanıza eklediğiniz bağlantı dizeleri gerekir. Bulutta depolanan tüm işlev uygulaması ayarlarını alan ve bunları dosyanıza ekleyen aşağıdaki Azure Functions Core Tools komutunu kullanın `local.settings.json` :
 
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
@@ -251,7 +251,7 @@ func azure functionapp fetch-app-settings $FUNCTION_APP
 
 ### <a name="add-java-code"></a>Java kodu ekle
 
-Sonra, `Function.java` dosyasını açın ve içeriğini aşağıdaki kodla değiştirin.
+Sonra, dosyasını açın `Function.java` ve içeriğini aşağıdaki kodla değiştirin.
 
 ```java
 package com.example;
@@ -324,11 +324,11 @@ public class Function {
 }
 ```
 
-Görebileceğiniz gibi, bu dosya iki işlev içerir: `generateSensorData` ve. `processSensorData` İşlevi `generateSensorData` , Olay Hub 'ına sıcaklık ve basınç okumaları gönderen bir algılayıcının benzetimini yapar. Bir Zamanlayıcı tetikleyicisi, işlevi 10 saniyede bir çalıştırır ve bir olay hub 'ı çıkış bağlaması, dönüş değerini Olay Hub 'ına gönderir.
+Görebileceğiniz gibi, bu dosya iki işlev içerir: `generateSensorData` ve `processSensorData` . `generateSensorData`İşlevi, Olay Hub 'ına sıcaklık ve basınç okumaları gönderen bir algılayıcının benzetimini yapar. Bir Zamanlayıcı tetikleyicisi, işlevi 10 saniyede bir çalıştırır ve bir olay hub 'ı çıkış bağlaması, dönüş değerini Olay Hub 'ına gönderir.
 
-Olay Hub 'ı iletiyi aldığında bir olay oluşturur. `processSensorData` İşlevi olayı aldığında çalışır. Daha sonra olay verilerini işler ve sonuçları Azure Cosmos DB göndermek için bir Azure Cosmos DB çıkış bağlaması kullanır.
+Olay Hub 'ı iletiyi aldığında bir olay oluşturur. `processSensorData`İşlevi olayı aldığında çalışır. Daha sonra olay verilerini işler ve sonuçları Azure Cosmos DB göndermek için bir Azure Cosmos DB çıkış bağlaması kullanır.
 
-Bu işlevler tarafından kullanılan veriler, uygulamanız gereken adlı `TelemetryItem`bir sınıf kullanılarak saklanır. İle aynı konumda adlı `TelemetryItem.java` yeni bir dosya oluşturun `Function.java` ve aşağıdaki kodu ekleyin:
+Bu işlevler tarafından kullanılan veriler, uygulamanız gereken adlı bir sınıf kullanılarak saklanır `TelemetryItem` . İle aynı konumda adlı yeni bir dosya oluşturun `TelemetryItem.java` `Function.java` ve aşağıdaki kodu ekleyin:
 
 ```java
 package com.example;
@@ -445,9 +445,9 @@ az group delete --name $RESOURCE_GROUP
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Olay Hub 'ı olaylarını işleyen ve bir Cosmos DB güncelleştiren bir Azure Işlevi oluşturmayı öğrendiniz. Daha fazla bilgi için bkz. [Azure Işlevleri Java geliştirici kılavuzu](/azure/azure-functions/functions-reference-java). Kullanılan ek açıklamalar hakkında daha fazla bilgi için bkz. [com. Microsoft. Azure. Functions. Annotation](/java/api/com.microsoft.azure.functions.annotation) başvurusu.
+Bu öğreticide, Olay Hub 'ı olaylarını işleyen ve bir Cosmos DB güncelleştiren bir Azure Işlevi oluşturmayı öğrendiniz. Daha fazla bilgi için bkz. [Azure Işlevleri Java geliştirici kılavuzu](./functions-reference-java.md). Kullanılan ek açıklamalar hakkında daha fazla bilgi için bkz. [com. Microsoft. Azure. Functions. Annotation](/java/api/com.microsoft.azure.functions.annotation) başvurusu.
 
-Bu öğretici, bağlantı dizeleri gibi gizli dizileri depolamak için ortam değişkenlerini ve uygulama ayarlarını kullandı. Bu gizli dizileri Azure Key Vault depolama hakkında bilgi için bkz. [App Service ve Azure işlevleri için Key Vault başvurularını kullanma](/azure/app-service/app-service-key-vault-references).
+Bu öğretici, bağlantı dizeleri gibi gizli dizileri depolamak için ortam değişkenlerini ve uygulama ayarlarını kullandı. Bu gizli dizileri Azure Key Vault depolama hakkında bilgi için bkz. [App Service ve Azure işlevleri için Key Vault başvurularını kullanma](../app-service/app-service-key-vault-references.md).
 
 Sonra, otomatik dağıtım için Azure Pipelines CI/CD 'yi nasıl kullanacağınızı öğrenin:
 

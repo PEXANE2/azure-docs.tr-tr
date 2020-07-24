@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 07/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7e3659aa3044a4453574a2cd171303d00abc19
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 377499b1dd263398e1be42379f8db60e8a0477f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017525"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Öğretici: Expensewith Azure Active Directory ile tümleştirin
 
@@ -42,7 +41,10 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Expenseın, **SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. 
+* Expenseın, **SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
+* Içinde Expenseyapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
 
 ## <a name="adding-expensein-from-the-gallery"></a>Galeriden Expensefrom ekleme
 
@@ -55,20 +57,20 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 1. **Galeriden Ekle** bölümünde, arama kutusuna **expenseyazın** .
 1. Sonuçlar panelinden **expensefrom '** ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-expensein"></a>' De Expensefor Expenseazure AD SSO 'yu yapılandırın ve test edin
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu expenseile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ' de Expenseiçindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ' de Expensewith yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
-2. Uygulama tarafında SSO ayarlarını yapılandırmak için **[Expenseın ' i yapılandırın](#configure-expensein)** .
-3. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
-4. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
-5. Kullanıcının Azure AD gösterimine bağlı olan, ' de Expenseon 'da B. Simon 'a sahip olmak için, **[Test kullanıcısına Expensecreate](#create-expensein-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
+    1. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+    1. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
+1. Uygulama tarafında SSO ayarlarını yapılandırmak için **[SSO 'Da Expenseconfigure 'U yapılandırın](#configure-expensein-sso)** .
+    1. Kullanıcının Azure AD gösterimine bağlı olan, ' de Expenseon 'da B. Simon 'a sahip olmak için, **[Test kullanıcısına Expensecreate](#create-expensein-test-user)** .
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
@@ -78,14 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
-
-    **Yanıt URL** 'si metın kutusuna URL 'den birini yazın:
-
-    ```https
-    https://app.expensein.com/samlcallback
-    https://mobileapi.expensein.com/identity/samlcallback
-    ```
+4. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım gerçekleştirmesini gerektirmez.
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -99,38 +94,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-expensein"></a>Expenseın yapılandırma
-
-1. ' De Expenseın içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
-
-    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
-
-2. Tarayıcıya Uzantı eklendikten sonra, ' **ın** ' a tıklayın. Buradan, adresinden Expenseın üzerinde oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
-
-    ![Kurulum yapılandırması](common/setup-sso.png)
-
-3. Expenseas 'yi el ile ayarlamak istiyorsanız yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak şirket sitesinde Expenseoturumunuzu açın ve aşağıdaki adımları gerçekleştirin:
-
-4. Sayfanın üst kısmındaki **yönetici** ' ye tıklayın, ardından **Çoklu oturum açma** ' ya gidin ve **Sağlayıcı Ekle**' ye tıklayın.
-
-     ![Yapılandırmada Expense](./media/expenseIn-tutorial/config01.png)
-
-5. **Yeni kimlik sağlayıcısı** açılır penceresinde aşağıdaki adımları uygulayın:
-
-    ![Yapılandırmada Expense](./media/expenseIn-tutorial/config02.png)
-
-    a. **Sağlayıcı adı** metin kutusuna, Ex: Azure gibi bir ad yazın.
-
-    b. **Sağlayıcı tarafından önceden oturum açma Izni ver '** i seçerek **Evet** ' i seçin.
-
-    c. **Hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
-
-    d. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
-
-    e. Sertifika (base64) Not defteri 'nde açın, içeriğini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
-
-    f. **Oluştur**'a tıklayın.
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -141,7 +104,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -160,6 +123,31 @@ Bu bölümde, ' de Expense'e erişim izni vererek Azure çoklu oturum açma öze
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+
+## <a name="configure-expensein-sso"></a>SSO 'Da Expenseconfigure
+
+1. Yeni bir Web tarayıcı penceresi açın ve bir yönetici olarak şirket sitesinde Expenseoturumunuzu açın.
+
+1. Sayfanın üst kısmındaki **yönetici** ' ye tıklayın, ardından **Çoklu oturum açma** ' ya gidin ve **Sağlayıcı Ekle**' ye tıklayın.
+
+     ![Yapılandırmada Expense](./media/expenseIn-tutorial/config01.png)
+
+1. **Yeni kimlik sağlayıcısı** açılır penceresinde aşağıdaki adımları uygulayın:
+
+    ![Yapılandırmada Expense](./media/expenseIn-tutorial/config02.png)
+
+    a. **Sağlayıcı adı** metin kutusuna adı yazın; Örneğin, Azure.
+
+    b. **Sağlayıcının Izin verilen oturum açma izni**için **Evet** ' i seçin.
+
+    c. **Hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+
+    d. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+
+    e. Sertifika (base64) Not defteri 'nde açın, içeriğini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
+
+    f. **Oluştur**’a tıklayın.
 
 ### <a name="create-expensein-test-user"></a>Test kullanıcısına Expenseoluştur
 
@@ -183,9 +171,9 @@ Azure AD kullanıcılarının ' de Expenseöğesinde oturum açmasını sağlama
 
     c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com` .
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
 Erişim panelinde Expenseın kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Expenseın ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -196,3 +184,9 @@ Erişim panelinde Expenseın kutucuğunu seçtiğinizde, SSO 'yu ayarladığın�
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile Expense' i deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Gelişmiş görünürlük ve denetimlerle Expense' i koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: 8d04099f2835102b8fdf63b26bd19b43b206cf6a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021894"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Öğretici: telefon numaraları için özel çözümleyici oluşturma
 
@@ -29,7 +29,7 @@ Bu öğretici, Postman ve Azure Bilişsel Arama [REST API 'lerini](https://docs.
 > * Özel çözümleyici 'nin metin olarak Simgeleştir işlemini test etme
 > * Sonuçları daha fazla geliştirmek için dizin oluşturmak ve aramak üzere ayrı çözümleyiciler oluşturun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için aşağıdaki hizmetler ve araçlar gereklidir.
 
@@ -38,7 +38,7 @@ Bu öğretici için aşağıdaki hizmetler ve araçlar gereklidir.
 
 ## <a name="download-files"></a>Dosyaları indirme
 
-Bu öğreticinin kaynak kodu, [Azure-Samples/Azure-Search-Postman-Samples](https://github.com/Azure-Samples/azure-search-postman-samples) GitHub deposundaki [özel çözümleyiciler](https://github.com/Azure-Samples/azure-search-postman-samples/custom-analyzers) klasöründedir.
+Bu öğreticinin kaynak kodu, [Azure-Samples/Azure-Search-Postman-Samples](https://github.com/Azure-Samples/azure-search-postman-samples) GitHub deposundaki [özel çözümleyiciler](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/custom-analyzers) klasöründedir.
 
 ## <a name="1---create-azure-cognitive-search-service"></a>1-Azure Bilişsel Arama hizmeti oluşturma
 
@@ -160,7 +160,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
 
 Dizindeki verilerle aramaya başlamak için hazırız.
 
-### <a name="search"></a>Ara
+### <a name="search"></a>Arayın
 
 Aramayı sezgisel hale getirmek için, kullanıcıların sorguları belirli bir şekilde biçimlendirmeniz beklenmez. Bir Kullanıcı `(425) 555-0100` yukarıda gösterilen biçimlerden herhangi birinde arama yapmak için sonuçlar döndürülmeye devam edecektir. Bu adımda, nasıl çalıştığını görmek için birkaç örnek sorgu test edeceğiz.
 

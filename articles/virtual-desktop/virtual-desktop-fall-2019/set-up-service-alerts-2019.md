@@ -1,5 +1,5 @@
 ---
-title: Windows sanal masaüstü için hizmet uyarılarını ayarlama-Azure
+title: Windows sanal masaüstü için hizmet uyarılarını ayarlama – sonbahar 2019 – Azure
 description: Azure hizmet durumunu Windows sanal masaüstü için hizmet bildirimleri alacak şekilde ayarlama.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5b3a29e97fbdf2579e2ef6a86b8dadf91f679366
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085835"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Öğretici: hizmet uyarılarını ayarlama
+# <a name="tutorial-set-up-service-alerts---fall-2019"></a>Öğretici: hizmet uyarılarını ayarlama-Fall 2019
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../set-up-service-alerts.md)bakın.
@@ -52,7 +52,7 @@ Aşağıdaki sistem durumu olay türleri için hizmet uyarıları oluşturmanız
 
 Hizmet uyarılarını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Hizmet durumunu seçin.**
 3. Uyarı ve bildirimlerinizi ayarlamak için [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) ' daki yönergeleri kullanın.
 

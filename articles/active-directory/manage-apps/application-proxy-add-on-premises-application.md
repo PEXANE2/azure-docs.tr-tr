@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b225b6471dd59275b3963bc2de09607c97a21465
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 7fd1b815a56a21e502decb440806040c626c13d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019650"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -47,7 +47,7 @@ Uygulama proxy 'Sini kullanmak için, Windows Server 2012 R2 veya üstünü çal
 Üretim ortamınızda yüksek kullanılabilirlik için birden fazla Windows Server olması önerilir. Bu öğretici için, bir Windows Server yeterlidir.
 
 > [!IMPORTANT]
-> Bağlayıcıyı Windows Server 2019 ' ye yüklüyorsanız, WinHttp bileşeninde HTTP2 protokol desteğini devre dışı bırakmanız gerekir. Bu, desteklenen işletim sistemlerinin önceki sürümlerinde varsayılan olarak devre dışıdır. Aşağıdaki kayıt defteri anahtarını eklemek ve sunucuyu yeniden başlatmak Windows Server 2019 ' de devre dışı bırakır. Bunun makine genelinde bir kayıt defteri anahtarı olduğunu unutmayın.
+> Bağlayıcıyı Windows Server 2019 ' ye yüklüyorsanız, düzgün çalışması için Kerberos kısıtlanmış temsili için WinHttp bileşeninde HTTP2 protokol desteğini devre dışı bırakmanız gerekir. Bu, desteklenen işletim sistemlerinin önceki sürümlerinde varsayılan olarak devre dışıdır. Aşağıdaki kayıt defteri anahtarını eklemek ve sunucuyu yeniden başlatmak Windows Server 2019 ' de devre dışı bırakır. Bunun makine genelinde bir kayıt defteri anahtarı olduğunu unutmayın.
 >
 > ```
 > Windows Registry Editor Version 5.00
@@ -95,6 +95,9 @@ TLS 1,2 ' i etkinleştirmek için:
 
 Azure AD Uygulama Ara Sunucusu için ortamınızı hazırlamak üzere Azure veri merkezlerine iletişimi etkinleştirerek başlayın. Yolda bir güvenlik duvarı varsa, açık olduğundan emin olun. Açık bir güvenlik duvarı, bağlayıcının uygulama proxy 'sine HTTPS (TCP) istekleri yapmasına izin verir.
 
+> [!IMPORTANT]
+> Bağlayıcıyı Azure Kamu Bulutu için yüklüyorsanız, [ön](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) koşullar ve [yükleme adımlarını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)izleyin. Bu, yüklemeyi çalıştırmak için farklı bir URL kümesine ve ek parametreye erişim etkinleştirilmesini gerektirir.
+
 ### <a name="open-ports"></a>Bağlantı noktalarını açma
 
 **Giden** trafiğe aşağıdaki bağlantı noktalarını açın.
@@ -121,6 +124,7 @@ Aşağıdaki URL 'Lere erişime izin ver:
 ## <a name="install-and-register-a-connector"></a>Bağlayıcı yükleyip kaydetme
 
 Uygulama proxy 'Sini kullanmak için, uygulama proxy 'Si hizmeti ile kullandığınız her Windows sunucusuna bir bağlayıcı yüklersiniz. Bağlayıcı, şirket içi uygulama sunucularından Azure AD 'deki uygulama proxy 'sine giden bağlantıyı yöneten bir aracıdır. Ayrıca, Azure AD Connect gibi diğer kimlik doğrulama aracılarının de yüklü olduğu sunuculara bir bağlayıcı yükleyebilirsiniz.
+
 
 Bağlayıcıyı yüklemek için:
 
@@ -188,7 +192,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
 
     | Alan | Açıklama |
     | :---- | :---------- |
-    | **Adı** | Erişim panelinde ve Azure portal görünecek uygulamanın adı. |
+    | **Ad** | Erişim panelinde ve Azure portal görünecek uygulamanın adı. |
     | **İç URL** | Özel ağınızın içinden uygulamaya erişim URL 'SI. Arka uç sunucusundaki belirli bir yolun yayımlanmasını sağlayabilirsiniz. Sunucunun geri kalanı yayımlanmaz. Bu şekilde, farklı siteleri farklı uygulamalarla aynı sunucuda yayımlayabilir ve her birine kendi ad ve erişim kurallarına sahip olabilirsiniz.<br><br>Bir yol yayımlarsanız uygulamanıza ilişkin tüm gerekli görüntüleri, betikleri ve stil sayfalarını içerdiğinden emin olun. Örneğin, uygulamanız https: \/ /yourapp/App ise ve https: \/ /yourapp/Media konumunda bulunan görüntüleri kullanıyorsa, https: \/ /yourapp/yolunu olarak yayımlamanız gerekir. Bu iç URL 'nin kullanıcılarınızın göreceği giriş sayfası olması gerekmez. Daha fazla bilgi için bkz. [yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](application-proxy-configure-custom-home-page.md). |
     | **Dış URL** | Kullanıcıların uygulamaya ağınızın dışından erişebileceği adres. Varsayılan uygulama proxy 'Si etki alanını kullanmak istemiyorsanız, [Azure AD uygulama ara sunucusu özel etki alanları](application-proxy-configure-custom-domain.md)hakkında bilgi edinin.|
     | **Ön kimlik doğrulama** | Uygulama proxy 'Si, uygulamanıza erişim vermeden önce kullanıcıları nasıl doğrular.<br><br>**Azure Active Directory** -uygulama proxy 'si, kullanıcıların dizin ve uygulama için izinlerinin kimliğini doğrulayan Azure AD ile oturum açmasını yeniden yönlendirir. Koşullu erişim ve Multi-Factor Authentication gibi Azure AD güvenlik özelliklerinin avantajlarından yararlanabilmek için bu seçeneği varsayılan olarak tutmanız önerilir. Uygulamayı Microsoft Bulut uygulama güvenliği ile izlemek için **Azure Active Directory** gereklidir.<br><br>**Geçiş** -kullanıcıların uygulamaya erişmek IÇIN Azure AD 'de kimlik doğrulaması yapması gerekmez. Arka uçta kimlik doğrulama gereksinimlerini ayarlamaya devam edebilirsiniz. |
@@ -205,7 +209,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
     | **Üst bilgilerdeki URL 'Leri çevir** | Uygulamanız kimlik doğrulaması isteğindeki orijinal ana bilgisayar üst bilgisini gerektirmediğiniz sürece bu değeri **Evet** olarak tutun. |
     | **Uygulama gövdesinde URL 'Leri çevir** | Diğer şirket içi uygulamalara yönelik olarak kodlanmış HTML bağlantıları yoksa ve özel etki alanları kullanmadıkça bu değeri **Hayır** olarak tutun. Daha fazla bilgi için bkz. [uygulama proxy 'si Ile bağlantı çevirisi](application-proxy-configure-hard-coded-link-translation.md).<br><br>Bu uygulamayı Microsoft Cloud App Security (MCAS) ile izlemeyi planlıyorsanız, bu değeri **Evet** olarak ayarlayın. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi Izlemeyi yapılandırma](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. **Ekle**'yi seçin.
+7. **Ekle**’yi seçin.
 
 ## <a name="test-the-application"></a>Uygulamayı test etme
 

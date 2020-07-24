@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77021296"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001834"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: sürekli hasta izleme uygulama şablonunu dağıtma ve gözden geçirme
 
@@ -85,13 +85,16 @@ Her iki panoda da bu belgeye her zaman geri bağlanabilirsiniz.
 >[!div class="mx-imgBorder"] 
 >![Akıllı vitals düzeltme eki cihaz şablonu](media/smart-vitals-device-template.png)
 
-**Cihaz grupları** sekmesine tıklarsanız, bu cihaz şablonlarının kendileri için cihaz gruplarının otomatik olarak oluşturulduğunu da görürsünüz.
+### <a name="device-groups"></a>Device groups 
+Cihaz grupları, bir cihaz kümesini mantıksal olarak gruplandırmanıza olanak tanır. böylece, bunlar üzerinde toplu sorgular veya işlemler gerçekleştirebilirsiniz. 
+
+Cihaz grupları sekmesine tıklarsanız, uygulamadaki cihaz şablonlarının her biri için bazı varsayılan cihaz gruplarını oluşturduğumuz görürsünüz. Ayrıca, ' cihaz sağlama ' ve ' süresi geçmiş bellenime sahip cihazlar ' adlı iki ek örnek cihaz grubu oluşturduğumuz fark edeceksiniz. Bu örnek cihaz gruplarını, bazı [işleri](#jobs)çalıştırmak için giriş olarak kullanacağız.
 
 ### <a name="rules"></a>Kurallar
 
 Kurallar sekmesine atladıktan sonra, uygulama şablonunda var olan üç kural görürsünüz:
 
-* **Küme ayracı yüksek**: Bu kural, akıllı Knee ayracın cihaz sıcaklığı 5 dakikalık bir pencere üzerinde 95&deg;F 'den büyükse tetiklenir. Bu kuralı, hasta ve bakım ekibine uyarı vermek ve cihazı uzaktan yavaşlatmak için kullanabilirsiniz.
+* **Küme ayracı yüksek**: Bu kural, akıllı Knee ayracın cihaz sıcaklığı &deg; 5 dakikalık bir pencere üzerinde 95 F 'den büyükse tetiklenir. Bu kuralı, hasta ve bakım ekibine uyarı vermek ve cihazı uzaktan yavaşlatmak için kullanabilirsiniz.
 
 * **Düşüş tespit edildi**: Bu kural bir hasta olursa tetiklenir. Bu kuralı, işlem ekibinin süresi düşmüş olan hastaya yardımcı olmak üzere bir operasyonel takım dağıtmak üzere bir eylem yapılandırmak için kullanabilirsiniz.
 
@@ -99,6 +102,13 @@ Kurallar sekmesine atladıktan sonra, uygulama şablonunda var olan üç kural g
 
 >[!div class="mx-imgBorder"] 
 >![Küme ayracı sıcaklık üst kuralı](media/brace-temp-rule.png)
+
+### <a name="jobs"></a>İşler
+
+İşler, giriş olarak [cihaz gruplarını](#device-groups) kullanarak bir cihaz kümesi üzerinde toplu işlemler çalıştırmanızı sağlar. Uygulama şablonunu, bir çözüm işlecinin bir cihaz yaşam döngüsü noktasında çalışması gerekebilecek iki örnek iş ile sunuyoruz:
+* **Knee ayraç bellenimini Güncelleştir**: Bu iş cihaz grubundaki cihazların süresi geçmiş bellenime sahip cihazları bulacak ve bu cihazları Knee ayracın en son bellenim sürümüne güncelleştirmek için bir komut çalıştıracaktır. Bu örnek iş, cihazların bir ' Update ' komutu alma ve bellenim dosyalarını buluttan doğrudan getirme becerileri olduğunu varsayar.  
+
+* **Cihazları yeniden sağla**: son zamanlarda hastana döndürülen bir cihaz kümesine sahipseniz ve sonraki hastalar için yeniden sağlanması gerekiyorsa, bu işi, sağlama cihazlarınızı toplu olarak güncelleştirmek için çalıştırabilirsiniz. Bu durumda, ' cihazları sağla ' adlı bir cihaz grubundan tüm cihazları alırız ve ' ı sağlamak için bir komut yürütüyoruz. 
 
 ### <a name="devices"></a>Cihazlar
 
@@ -112,6 +122,10 @@ Kurallar sekmesine atladıktan sonra, uygulama şablonunda var olan üç kural g
 
 >[!div class="mx-imgBorder"] 
 >![Knee küme ayracı görünümleri](media/knee-brace-dashboard.png)
+
+### <a name="data-export"></a>Veri dışarı aktarma
+
+Veri dışa aktarma, IoT Central cihaz verilerinizi [FHıR Için Azure API 'si](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)de dahil olmak üzere diğer Azure hizmetlerine sürekli olarak vermenize olanak tanır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

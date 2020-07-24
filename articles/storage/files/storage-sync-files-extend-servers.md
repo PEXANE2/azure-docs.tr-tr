@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77597907"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037108"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Öğretici: Windows dosya sunucularını Azure Dosya Eşitleme ile genişletme
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
@@ -69,7 +69,7 @@ Bir Azure depolama hesabı dağıttıktan sonra bir dosya paylaşma oluşturursu
 
     ![Dosyayı karşıya yükleme](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
-1. . Txt dosyanızı oluşturduğunuz _Filestosync_ klasörüne gidin, _mytestdoc. txt_ dosyasını seçin ve **karşıya yükle**' yi seçin.
+1. . Txt dosyanızı oluşturduğunuz _Filestosync_ klasörüne giderek _mytestdoc.txt_ seçin ve **karşıya yükle**' yi seçin.
 
     ![Dosya paylaşımına göz atın](./media/storage-sync-files-extend-servers/create-file-share-portal6.png)
 
@@ -78,7 +78,7 @@ Bu noktada, bir depolama hesabı ve dosyada bir dosya paylaşma oluşturdunuz. A
 ### <a name="deploy-a-vm-and-attach-a-data-disk"></a>VM dağıtma ve veri diskini kullanıma açma
 
 1. Azure portal gidin ve soldaki menüyü genişletin. Sol üst köşedeki **kaynak oluştur ' a** tıklayın.
-1. **Azure Marketi** kaynakları listesinin üzerindeki arama kutusunda **Windows Server 2016 veri merkezini** arayın ve sonuçlarda seçin. **Oluştur**’u seçin.
+1. **Azure Marketi** kaynakları listesinin üzerindeki arama kutusunda **Windows Server 2016 veri merkezini** arayın ve sonuçlarda seçin. **Oluştur**' a tıklayın.
 1. **Temel bilgiler** sekmesine gidin. **Proje ayrıntıları**' nın altında, bu öğretici için oluşturduğunuz kaynak grubunu seçin.
 
    ![Portal dikey penceresinde VM 'niz hakkındaki temel bilgileri girin](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
@@ -102,7 +102,7 @@ Bu noktada, bir depolama hesabı ve dosyada bir dosya paylaşma oluşturdunuz. A
       ![Veri diski ayrıntıları](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
    1. **Tamam**’ı seçin.
-1. **İncele ve oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 
    **Dağıtım ilerlemesini**Izlemek için **Bildirimler** simgesini seçebilirsiniz. Yeni bir VM oluşturma işleminin tamamlanması birkaç dakika sürebilir.
@@ -119,7 +119,7 @@ Bu noktada yeni bir sanal makine oluşturdunuz ve bir veri diskini kullanıma a�
 
    ![Portaldan bir Azure sanal makinesine bağlanma](./media/storage-sync-files-extend-servers/connect-vm.png)
 
-1. **Sanal makineye bağlan** sayfasında, bağlantı noktası 3389 üzerinden **IP adresine** göre bağlanmak için varsayılan seçenekleri değiştirmeyin. **RDP dosyasını indir**'i seçin.
+1. **Sanal makineye bağlan** sayfasında, bağlantı noktası 3389 üzerinden **IP adresine** göre bağlanmak için varsayılan seçenekleri değiştirmeyin. **RDP dosyasını indir**' i seçin.
 
    ![RDP dosyasını indirme](./media/storage-sync-files-extend-servers/download-rdp.png)
 
@@ -152,21 +152,21 @@ Windows Server 2016 Datacenter VM 'de Sunucu Yöneticisi otomatik olarak açıl�
 
 ### <a name="add-the-data-disk"></a>Veri diski ekleme
 
-1. Hala **Windows Server 2016 Datacenter** VM 'de **Dosyalar ve depolama hizmetleri** > **birimleri** > **diskleri**' ni seçin.
+1. Hala **Windows Server 2016 Datacenter** VM 'de **Dosyalar ve depolama hizmetleri**  >  **birimleri**  >  **diskleri**' ni seçin.
 
     ![Veri diski](media/storage-sync-files-extend-servers/your-disk.png)
 
 1. **MSFT sanal disk** ADLı 1 GB diske sağ tıklayın ve **Yeni birim**' i seçin.
 1. Sihirbazı tamamlayın. Varsayılan ayarları kullanın ve atanan sürücü harfini aklınızda yapın.
 1. **Oluştur**’u seçin.
-1. **Kapat**'ı seçin.
+1. **Kapat**’ı seçin.
 
    Bu noktada, diski çevrimiçi duruma getirdiniz ve bir birim oluşturdunuz. Son eklenen veri diskinin varlığını onaylamak için Windows Server VM 'de dosya Gezgini 'ni açın.
 
 1. VM 'deki dosya Gezgini ' nde, **Bu bilgisayarı** genişletin ve yeni sürücüyü açın. Bu örnekte yeni sürücü F: sürücüsüdür.
-1. Sağ tıklayın ve **Yeni** > **klasör**' ü seçin. Klasörü _EşitlenecekDosyalar_ olarak adlandırın.
+1. Sağ tıklayın ve **Yeni**  >  **klasör**' ü seçin. Klasörü _EşitlenecekDosyalar_ olarak adlandırın.
 1. **Filestosync** klasörünü açın.
-1. Sağ tıklayın ve **Yeni** > **metin belgesi**' ni seçin. Metin dosyasını _TestDosyam_ olarak adlandırın.
+1. Sağ tıklayın ve **Yeni**  >  **metin belgesi**' ni seçin. Metin dosyasını _TestDosyam_ olarak adlandırın.
 
     ![Yeni metin dosyası ekleme](media/storage-sync-files-extend-servers/new-file.png)
 
@@ -217,7 +217,7 @@ Azure Dosya Eşitleme dağıtmak için, önce seçtiğiniz abonelik için bir ka
 
    | Değer | Açıklama |
    | ----- | ----- |
-   | **Adı** | Depolama Eşitleme Hizmeti için benzersiz bir ad (abonelik başına).<br><br>Bu öğretici için _afssyncservice02_ kullanın. |
+   | **Ad** | Depolama Eşitleme Hizmeti için benzersiz bir ad (abonelik başına).<br><br>Bu öğretici için _afssyncservice02_ kullanın. |
    | **Abonelik** | Bu öğretici için kullandığınız Azure aboneliği. |
    | **Kaynak grubu** | Depolama eşitleme hizmetini içeren kaynak grubu.<br><br>Bu öğretici için _afsresgroup101918_ kullanın. |
    | **Konum** | Doğu ABD |
@@ -234,15 +234,15 @@ Azure Dosya Eşitleme aracısı, Windows Server’ın bir Azure dosya paylaşım
 
    ![Eşitleme aracısını indirme](media/storage-sync-files-extend-servers/sync-agent-download.png)
 
-1. StorageSyncAgent_V3_WS2016 onay kutusunu seçin **. EXE** ve **Ileri ' yi**seçin.
+1. **StorageSyncAgent_V3_WS2016.EXE** onay kutusunu seçin ve **İleri ' yi**seçin.
 
    ![Aracı seçme](media/storage-sync-files-extend-servers/select-agent.png)
 
-1.  > **Açık****çalışmaya** >  **başladıktan sonra izin ver**' i seçin.
+1. Açık **çalışmaya başladıktan sonra izin ver**' i seçin  >  **Run**  >  **Open**.
 1. Henüz yapmadıysanız, PowerShell penceresini kapatın.
 1. **Depolama Eşitleme Aracısı Kurulum Sihirbazı**’nda varsayılan ayarları kabul edin.
 1. **Yükle**’yi seçin.
-1. **Son**' u seçin.
+1. **Son**'u seçin.
 
 Azure Eşitleme Hizmeti’ni dağıttınız ve aracıyı Windows Server 2016 Datacenter sanal makinesine yüklediniz. Şimdi VM’yi Depolama Eşitleme Hizmeti’ne kaydetmeniz gerekir.
 
@@ -259,11 +259,10 @@ Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısını yükledi
 
    ![Sunucu Kaydı kullanıcı arabiriminin ekran görüntüsü](media/storage-sync-files-extend-servers/signin.png)
 
-   | | |
-   | ----- | ----- |
    | Değer | Açıklama |
+   | ----- | ----- |
    | **Azure aboneliği** | Bu öğretici için Depolama Eşitleme Hizmetini içeren abonelik. |
-   | **Kaynak grubu** | Depolama eşitleme hizmetini içeren kaynak grubu. Bu öğretici için _afsresgroup101918_ kullanın. |
+   | **Kaynak Grubu** | Depolama eşitleme hizmetini içeren kaynak grubu. Bu öğretici için _afsresgroup101918_ kullanın. |
    | **Depolama Eşitleme Hizmeti** | Depolama eşitleme hizmeti adı. Bu öğretici için _afssyncservice02_ kullanın. |
 
 1. Sunucu kaydını gerçekleştirmek için **Kaydol** ' u seçin.
@@ -301,9 +300,8 @@ Sunucu uç noktası, kayıtlı bir sunucuda belirli bir konumu temsil eder. Örn
 
 1. Sunucu **uç noktası Ekle** bölmesinde, sunucu uç noktası oluşturmak için aşağıdaki bilgileri girin:
 
-   | | |
-   | ----- | ----- |
    | Değer | Açıklama |
+   | ----- | ----- |
    | **Kayıtlı sunucu** | Oluşturduğunuz sunucunun adı. Bu öğretici için *afsvm101918* kullanın. |
    | **Yol** | Oluşturduğunuz sürücünün Windows Server yolu. Bu öğreticide *f:\filestosync* kullanın. |
    | **Bulut katmanlama** | Bu öğretici için devre dışı bırakın. |

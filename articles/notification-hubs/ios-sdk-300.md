@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 4f34b3e7567a65dca45fd29b4e8aa9b78a6ced76
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: f43db986f70e64e55225465223b7e324450541a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084346"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme (sürüm 3.0.0-preview1 'i)
 
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdaki adımlar yer almaktadır:
 
 Bu öğreticinin tüm kodunu [GitHub 'dan](https://github.com/Azure/azure-notificationhubs-ios/tree/v3-preview2/Samples)indirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -352,7 +352,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [Kayıt yönetimi](notification-hubs-push-notification-registration-management.md)
 - [Etiketlerle çalışma](notification-hubs-tags-segment-push-message.md)
 - [Özel şablonlarla çalışma](notification-hubs-templates-cross-platform-push-messages.md)
-- [Paylaşılan erişim imzaları ile erişim denetimi Service Bus](/azure/service-bus-messaging/service-bus-sas)
+- [Paylaşılan erişim imzaları ile erişim denetimi Service Bus](../service-bus-messaging/service-bus-sas.md)
 - [Program aracılığıyla SAS belirteçleri oluşturma](/rest/api/eventhub/generate-sas-token)
 - [Apple güvenliği: ortak şifre](https://developer.apple.com/security/)
 - [UNIX dönem saati](https://en.wikipedia.org/wiki/Unix_time)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd1c41f23164d8dda2712ef2c361498cdaed6105
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032315"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Uçtan uca çözüm oluşturma
 
@@ -26,6 +26,9 @@ Bu öğreticide,...
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>Cloud Shell oturum ayarlama
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -433,7 +436,7 @@ Son olarak, yerel makinenizden indirdiğiniz proje örnek klasörünü silin.
 Bu öğreticide, canlı cihaz verileri tarafından yürütülen Azure dijital TWINS 'i gösteren bir uçtan uca senaryo oluşturdunuz.
 
 Daha sonra, öğreticide birlikte çalıştığınız öğeler hakkında daha fazla bilgi edinmek için kavram belgelerini arayarak başlayın:
-* [Kavramlar: özel modeller](concepts-models.md)
+* [*Kavramlar: özel modeller*](concepts-models.md)
 
 Veya, nasıl yapılır makalelerini başlatarak bu öğreticideki süreçler hakkında daha ayrıntılı bilgi sahibi olun:
-* [Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma](how-to-use-cli.md)
+* [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)

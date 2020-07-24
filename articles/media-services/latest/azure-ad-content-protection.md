@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001409"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Öğretici: Azure AD kullanarak uçtan uca içerik koruma
 
@@ -39,7 +39,7 @@ Azure Media Services aboneliğiniz yoksa, bir Azure [ücretsiz deneme hesabı](h
 ### <a name="duration"></a>Süre
 Önkoşul teknolojisini denemeye hazırladıktan sonra öğreticinin tamamlanması iki saat sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki en son teknoloji sürümleri ve kavramları kullanılır. Bu öğreticiye başlamadan önce bunları tanımanız önerilir.
 
@@ -48,13 +48,13 @@ Aşağıdaki en son teknoloji sürümleri ve kavramları kullanılır. Bu öğre
 Bu, isteğe bağlıdır, ancak Bu öğreticiye başlamadan önce aşağıdaki kavramları tanımanız önerilir:
 
 * Dijital Rights Management (DRM)
-* [Azure Media Services (AMS) v3](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Azure Media Services (AMS) v3](./media-services-overview.md)
 * AMS API v3, Azure portal veya [Azure Media Services Explorer (AMSE) aracını](https://github.com/Azure/Azure-Media-Services-Explorer) kullanan AMS [içerik anahtarı ilkeleri](content-key-policy-concept.md)
-* [Microsoft Identity platformunda](https://docs.microsoft.com/azure/active-directory/develop/) Azure AD v2 uç noktaları
-* [OAuth 2,0 ve OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) gibi modern bulut kimlik doğrulaması
-  * [OAuth 2,0 'de yetkilendirme kodu akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) ve PKI CE gerekli
-  * [Temsilci izni vs uygulama izni](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#permissions)
-* [JWT belirteci](https://docs.microsoft.com/azure/active-directory/develop/access-tokens), talepleri ve imzalama anahtarı geçişi (örneğe dahildir.)
+* [Microsoft Identity platformunda](../../active-directory/develop/index.yml) Azure AD v2 uç noktaları
+* [OAuth 2,0 ve OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md) gibi modern bulut kimlik doğrulaması
+  * [OAuth 2,0 'de yetkilendirme kodu akışı](../../active-directory/develop/v2-oauth2-auth-code-flow.md) ve PKI CE gerekli
+  * [Temsilci izni vs uygulama izni](../../active-directory/develop/developer-glossary.md#permissions)
+* [JWT belirteci](../../active-directory/develop/access-tokens.md), talepleri ve imzalama anahtarı geçişi (örneğe dahildir.)
 
 ### <a name="prerequisite-code-and-installations"></a>Önkoşul kodu ve yüklemeleri
 
@@ -63,7 +63,7 @@ Bu, isteğe bağlıdır, ancak Bu öğreticiye başlamadan önce aşağıdaki ka
 * Node.js yüklemesi. Node.js buradan indirin [https://nodejs.org](https://nodejs.org) . NPM, install ile birlikte gelir.
 * Bir [Azure aboneliği](https://azure.microsoft.com/free/).
 * Azure Media Services (AMS) hesabı.
-* @azure/msal-browserfarklı istemci platformları için [Microsoft kimlik doğrulama kitaplığı (msal)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) SDK ailesindeki üyelerden biri olan v 2.0
+* @azure/msal-browserfarklı istemci platformları için [Microsoft kimlik doğrulama kitaplığı (msal)](../../active-directory/develop/msal-overview.md) SDK ailesindeki üyelerden biri olan v 2.0
 * [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)en son sürümü (örneğe dahildir.)
 * FairPlay DRM 'yi ve istemci tarafı JavaScript aracılığıyla erişilebilen CORS ile barındırılan uygulama sertifikasını eklemek istiyorsanız Apple 'dan kimlik bilgileri.
 
@@ -98,7 +98,7 @@ Alt sistemin tasarımı Aşağıdaki diyagramda gösterilmiştir.  Üç katmana 
 
 ![JWT belirteçlerini ayrıştırma ekranı](media/aad-ams-content-protection/subsystem.svg)
 
-Alt sistem hakkında daha fazla bilgi için [Access Control ile bir çoklu DRM içerik koruma sisteminin tasarımını](https://docs.microsoft.com/azure/media-services/latest/design-multi-drm-system-with-access-control) okuyun.
+Alt sistem hakkında daha fazla bilgi için [Access Control ile bir çoklu DRM içerik koruma sisteminin tasarımını](./design-multi-drm-system-with-access-control.md) okuyun.
 
 ## <a name="understand-the-single-page-app"></a>Tek sayfalı uygulamayı anlayın
 
@@ -339,7 +339,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-*Gruplar* talebi, Azure AD 'de kısıtlı bir [talep kümesinin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets) üyesidir.
+*Gruplar* talebi, Azure AD 'de kısıtlı bir [talep kümesinin](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) üyesidir.
 
 #### <a name="test"></a>Test
 

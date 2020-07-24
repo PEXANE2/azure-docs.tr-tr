@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d5bd8f5e57e73fd0ff63394f119ecca678b17e60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249253"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022592"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak Android cihazlara anında Iletme bildirimleri gönderme
 
@@ -49,9 +49,9 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Google Cloud Messaging'i destekleyen bir proje oluşturma.
 > * Bildirim hub’ı oluşturma
 > * Uygulamanızı bildirim hub'ına bağlama
-> * Uygulamayı test edin
+> * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
@@ -485,7 +485,7 @@ Ayrıca, Google hesabınızı, **Ayarlar**hesaplar bölümünde çalışan öyk�
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(İsteğe bağlı) Doğrudan uygulamadan anında iletme bildirimleri gönderme
 
-Normalde bildirimleri bir arka uç sunucusu kullanarak gönderirsiniz. Bazı durumlarda, anında iletme bildirimlerini doğrudan istemci uygulamasından gönderebilmek isteyebilirsiniz. Bu bölüm, [Azure Notification Hubs REST API'si](https://msdn.microsoft.com/library/azure/dn223264.aspx) kullanarak istemciden nasıl bildirim gönderildiğini açıklamaktadır.
+Normalde bildirimleri bir arka uç sunucusu kullanarak gönderirsiniz. Bazı durumlarda, anında iletme bildirimlerini doğrudan istemci uygulamasından gönderebilmek isteyebilirsiniz. Bu bölüm, [Azure Notification Hubs REST API'si](/previous-versions/azure/reference/dn223264(v=azure.100)) kullanarak istemciden nasıl bildirim gönderildiğini açıklamaktadır.
 
 1. Android Studio projesi görünümünde, **uygulama**  >  **src**  >  **ana**  >  **res**  >  **düzeni**' ni genişletin. `activity_main.xml` düzen dosyasını açın ve dosyanın metin içeriğini güncelleştirmek için **Metin** sekmesine tıklayın. Bildirim hub'ına anında iletme bildirimi iletileri göndermek için yeni `Button` ve `EditText` denetimlerini ekleyen aşağıdaki kod ile güncelleştirin. Bu kodu en alta, `</RelativeLayout>` öğesinin hemen önüne ekleyin.
 
@@ -544,7 +544,7 @@ Normalde bildirimleri bir arka uç sunucusu kullanarak gönderirsiniz. Bazı dur
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. Bildirim hub’ınıza ileti göndermek amacıyla bir POST isteğinin kimlik doğrulamasını yapmak için bir Yazılım Erişim İmzası (SaS) belirteci oluşturun. Anahtar verilerini bağlantı dizesinden ayrıştırıp ardından [Ortak Kavramlar](https://msdn.microsoft.com/library/azure/dn495627.aspx) REST API’si başvurusunda belirtildiği gibi SaS belirtecini oluşturun. Aşağıdaki kod örnek bir uygulamadır.
+6. Bildirim hub’ınıza ileti göndermek amacıyla bir POST isteğinin kimlik doğrulamasını yapmak için bir Yazılım Erişim İmzası (SaS) belirteci oluşturun. Anahtar verilerini bağlantı dizesinden ayrıştırıp ardından [Ortak Kavramlar](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API’si başvurusunda belirtildiği gibi SaS belirtecini oluşturun. Aşağıdaki kod örnek bir uygulamadır.
 
     Bağlantı dizenizi ayrıştırmak için `MainActivity.java` öğesinde aşağıdaki yöntemi `MainActivity` sınıfına ekleyin.
 
@@ -741,7 +741,7 @@ Bu öğreticide, arka uca kayıtlı olan tüm Android cihazlarınıza yayın bil
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

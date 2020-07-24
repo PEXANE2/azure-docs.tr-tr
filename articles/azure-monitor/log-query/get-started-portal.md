@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075346"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Öğretici: Log Analytics sorguları kullanmaya başlama
 
@@ -189,9 +189,9 @@ Bir sorguyu kaydetmek için:
    
    Bir sorguyu işlev olarak kaydetmek için, diğer sorguların bu sorguyu çağırmak üzere kullanacağı kısa bir ad olan bir **Işlev diğer**adı sağlayın.
    
-1. Sorgu **Gezgini** için sorgu için kullanılacak bir **Kategori** belirtin.
+1. Bir Log Analytics çalışma alanım varsa sorgu **Gezgini** 'nin sorgu için kullanacağı bir **Kategori** belirtin. (Kategoriler, uygulamalar için Application Insights sorguları için kullanılamaz)
    
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
    
    ![İşlevi Kaydet](media/get-started-portal/save-function.png)
 
@@ -202,6 +202,10 @@ Kaydedilmiş bir sorguyu yüklemek için sağ üst köşedeki **sorgu Gezgini** 
 
 ### <a name="export-and-share-queries"></a>Sorguları dışarı ve paylaşma
 Bir sorguyu dışarı aktarmak için, üstteki çubukta **dışarı aktar** ' ı seçin ve ardından **CSV 'ye aktar-tüm sütunlar**, **CSV tarafından görüntülenmiş sütunlara**Aktar veya **Power BI (mquery) öğesine dışarı aktar** seçeneğini belirleyin.
+
+Aşağıdaki videoda Log Analytics Excel ile tümleştirme gösterilmektedir.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Asme]
 
 Bir sorguya bir bağlantı paylaşmak için üstteki çubukta **Bağlantıyı Kopyala** ' yı seçin ve ardından **sorguya bağlantıyı kopyala**, **sorgu metnini kopyala**veya **sorgu sonuçlarını** panoya kopyala ' yı seçin. Sorgu bağlantısını aynı çalışma alanına erişimi olan diğerlerine gönderebilirsiniz.
 

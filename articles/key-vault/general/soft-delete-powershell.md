@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d281b8a438710cc98307e41210c3435b26483acd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013377"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Key Vault geçici silmeyi PowerShell ile kullanma
 
@@ -23,11 +23,11 @@ Azure Key Vault geçici silme özelliği, silinen kasaların ve kasa nesnelerini
 - Bir anahtar kasasının kurtarılabilir silme desteği
 - Anahtar Kasası nesnelerinin kurtarılabilir silme desteği; Anahtarlar, gizlilikler ve, sertifikalar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Azure PowerShell 1.0.0 veya üzeri: Bu ayarı zaten yüklemediyseniz, Azure PowerShell yükleyip Azure aboneliğinizle ilişkilendiremezseniz bkz. [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/overview). 
+- Azure PowerShell 1.0.0 veya üzeri: Bu ayarı zaten yüklemediyseniz, Azure PowerShell yükleyip Azure aboneliğinizle ilişkilendiremezseniz bkz. [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/). 
 
 >[!NOTE]
 > Doğru sürüm yerine ortamınıza yüklenebilecek Key Vault PowerShell çıkış biçimlendirme dosyasının **güncel olmayan bir** sürümü var. PowerShell 'in güncelleştirilmiş bir sürümünü, çıkış biçimlendirmesi için gerekli düzeltmeyi içerecek şekilde benimsemeyi bekleme ve bu konuyu bu sırada güncellenecektir. Şu anki geçici çözüm, bu biçimlendirme sorunuyla karşılaşmanız gerekir:

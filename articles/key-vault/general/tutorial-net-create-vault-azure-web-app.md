@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 4e236be298f92506e40a7f5197b2abeb065e7eed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013275"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Öğretici: bir Azure Web uygulamasına .NET ile Key Vault bağlamak için yönetilen bir kimlik kullanma
 
@@ -22,13 +22,13 @@ Azure Key Vault, kimlik bilgilerini ve diğer gizli dizileri güvenli bir şekil
 
 Bu öğretici, bir Azure Web uygulamasının kimliğini Azure Key Vault kimlik doğrulaması için yönetilen bir kimlik kullanır. Adımlarda, .NET ve [Azure CLI](/cli/azure/get-started-with-azure-cli) [için Azure Key Vault v4 istemci kitaplığı](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) kullanılsa da, tercih ettiğiniz geliştirme dilini, Azure PowerShell ve/veya Azure Portal kullanırken aynı temel ilkeler de geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 3,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview)
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/)
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -51,7 +51,7 @@ Bir Anahtar Kasası oluşturmak için [az keykasa Create](/cli/azure/keyvault?vi
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-Döndürülen `vaultUri` "https://<-keykasasının adı>. Vault.Azure.net/" biçiminde olacak döndürülen bir kopyasını oluşturun. [Kodu Güncelleştir](#update-the-code) adımında kullanılacaktır.
+Döndürülen `vaultUri` "https:// &lt; keykasasında-name &gt; . Vault.Azure.net/" biçiminde olacak döndürülen bir örneği oluşturun. [Kodu Güncelleştir](#update-the-code) adımında kullanılacaktır.
 
 Artık [az keykasasecret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) komutuyla anahtar kasanıza bir gizli dizi yerleştirebilirsiniz. Gizli anahtar adını "MySecret" olarak ve değeri "başarılı!" olarak ayarlayın.
 
@@ -310,7 +310,7 @@ await context.Response.WriteAsync(secretValue);
 
 Sonraki adıma geçmeden önce yaptığınız değişiklikleri kaydetmek için bazı değişiklikler yapın.
 
-### <a name="redeploy-your-web-app"></a>Web uygulamanızı yeniden dağıtın
+### <a name="redeploy-your-web-app"></a>Web uygulamanızı yeniden dağıtma
 
 Kodunuzu güncelleştirdikten sonra, aşağıdaki git komutlarıyla Azure 'a yeniden dağıtabilirsiniz:
 

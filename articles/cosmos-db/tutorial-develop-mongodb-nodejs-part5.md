@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 1bed17084af39fa75fe01d68fbdd33c586d48e67
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: f77c20faa87adf28a2dda43412a59867309c7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066924"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Cosmos DB bağlanmak için Mongoose kullanın
 
@@ -30,9 +30,9 @@ Bu çok parçalı öğreticide, Express ve angular ile bir Node.js uygulamasın�
 > * Hero hizmetini, Hero verilerini almak için oluşturun.
 > * Uygulamayı yerel olarak çalıştırın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğreticiye başlamadan önce [Bölüm 4](tutorial-develop-mongodb-nodejs-part4.md)' teki adımları izleyin.
 
@@ -230,7 +230,7 @@ Sonra get, Create, Read ve DELETE isteklerinin URL 'Lerini işlemek için yollar
 
 Ardından, aşağıdaki adımları kullanarak uygulamayı çalıştırın:
 
-1. Visual Studio Code, tüm değişikliklerinizi kaydedin. Sol tarafta, Visual Studio Code **hata** Ayıkla düğmesine tıklayın ![ ](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) ve ardından hata **ayıklamayı Başlat** düğmesine ![ Visual Studio Code hata ayıkla simgesini seçin ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) .
+1. Visual Studio Code, tüm değişikliklerinizi kaydedin. Sol tarafta **Hata Ayıkla** düğmesini seçin :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png"::: ve ardından **hata ayıklamayı Başlat** düğmesini seçin :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png"::: .
 
 1. Şimdi tarayıcıya geçiş yapın. **Geliştirici araçlarını** ve **Ağ sekmesini**açın. ' A gidin `http://localhost:3000` ve uygulamamızı görürsünüz.
 

@@ -8,23 +8,23 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 41482af619ad94ee059fc11a74581fa30c2e7011
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7353366af14ca785c5635e1bde8101c1d71cd47f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079108"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturma
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Bu öğreticide, isteğe bağlı olarak Azure HDInsight 'ta Azure Data Factory kullanarak [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) kümesi oluşturmayı öğreneceksiniz. Daha sonra Azure Data Factory ' de veri işlem hatlarını kullanarak Hive işlerini çalıştırabilir ve kümeyi silebilirsiniz. Bu öğreticinin sonuna kadar, küme oluşturma, iş çalıştırma `operationalize` ve küme silme işlemlerinin zamanlamaya göre yapıldığı büyük bir veri işinin nasıl yapılacağını öğrenirsiniz.
+Bu öğreticide, isteğe bağlı olarak Azure HDInsight 'ta Azure Data Factory kullanarak [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) kümesi oluşturmayı öğreneceksiniz. Daha sonra Azure Data Factory ' de veri işlem hatlarını kullanarak Hive işlerini çalıştırabilir ve kümeyi silebilirsiniz. Bu öğreticinin sonuna kadar, `operationalize` küme oluşturma, iş çalıştırma ve küme silme işlemlerinin zamanlamaya göre yapıldığı büyük bir veri işinin nasıl yapılacağını öğrenirsiniz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Azure Storage hesabı oluşturma
+> * Azure depolama hesabı oluşturma
 > * Azure Data Factory etkinliğini anlama
 > * Azure portal kullanarak veri fabrikası oluşturma
 > * Bağlı hizmetler oluşturma
@@ -33,17 +33,17 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * İşlem hattını izleme
 > * Çıktıyı doğrulama
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* PowerShell [az Module](https://docs.microsoft.com/powershell/azure/overview) yüklendi.
+* PowerShell [az Module](https://docs.microsoft.com/powershell/azure/) yüklendi.
 
 * Bir Azure Active Directory hizmet sorumlusu. Hizmet sorumlusunu oluşturduktan sonra, bağlantılı makaledeki yönergeleri kullanarak **uygulama kimliği** ve **kimlik doğrulama anahtarını** almayı unutmayın. Bu öğreticinin ilerleyen kısımlarında bu değerlere ihtiyacınız vardır. Ayrıca, hizmet sorumlusunun aboneliğin veya kümenin oluşturulduğu kaynak grubunun *katkıda* bulunan rolünün bir üyesi olduğundan emin olun. Gerekli değerleri alma ve doğru rolleri atama yönergeleri için bkz. [Azure Active Directory hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="create-preliminary-azure-objects"></a>Ön Azure nesneleri oluşturma
 
-Bu bölümde, talep üzerine oluşturduğunuz HDInsight kümesi için kullanılacak çeşitli nesneler oluşturursunuz. Oluşturulan depolama hesabı, küme üzerinde çalışan bir örnek Apache Hive işinin benzetimini yapmak `partitionweblogs.hql`için kullandığınız örnek HiveQL betiğini içerir.
+Bu bölümde, talep üzerine oluşturduğunuz HDInsight kümesi için kullanılacak çeşitli nesneler oluşturursunuz. Oluşturulan depolama hesabı, `partitionweblogs.hql` küme üzerinde çalışan bir örnek Apache Hive işinin benzetimini yapmak için kullandığınız örnek HiveQL betiğini içerir.
 
 Bu bölümde, depolama hesabını oluşturmak ve depolama hesabı içinde gerekli dosyaların üzerine kopyalamak için bir Azure PowerShell betiği kullanılmaktadır. Bu bölümdeki Azure PowerShell örnek komut dosyası aşağıdaki görevleri yapar:
 
@@ -51,13 +51,13 @@ Bu bölümde, depolama hesabını oluşturmak ve depolama hesabı içinde gerekl
 2. Bir Azure Kaynak grubu oluşturur.
 3. Azure Depolama hesabı oluşturur.
 4. Depolama hesabında bir blob kapsayıcısı oluşturur
-5. Örnek HiveQL betiğini (**partitionweblogs. HQL**) blob kapsayıcısını kopyalar. Betiği adresinde [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql)bulabilirsiniz. Örnek betik zaten başka bir genel blob kapsayıcısında kullanılabilir. Aşağıdaki PowerShell betiği, oluşturduğu Azure depolama hesabına bu dosyaların bir kopyasını oluşturur.
+5. Örnek HiveQL betiğini (**partitionweblogs. HQL**) blob kapsayıcısını kopyalar. Betiği adresinde bulabilirsiniz [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql) . Örnek betik zaten başka bir genel blob kapsayıcısında kullanılabilir. Aşağıdaki PowerShell betiği, oluşturduğu Azure depolama hesabına bu dosyaların bir kopyasını oluşturur.
 
 ### <a name="create-storage-account-and-copy-files"></a>Depolama hesabı oluşturma ve dosyaları kopyalama
 
 > [!IMPORTANT]  
 > Azure Kaynak grubu ve komut dosyası tarafından oluşturulacak Azure depolama hesabı için ad belirtin.
-> Betik tarafından yazılan **kaynak grubu adı**, **depolama hesabı adı**ve **depolama hesabı anahtarını** yazın. Bu, sonraki bölümde gereklidir.
+> Betik tarafından yazılan **kaynak grubu adı**, **depolama hesabı adı**ve **depolama hesabı anahtarını** yazın. Sonraki bölümde bunlar gerekecektir.
 
 ```powershell
 $resourceGroupName = "<Azure Resource Group Name>"
@@ -155,11 +155,11 @@ Write-host "`nScript completed" -ForegroundColor Green
 ### <a name="verify-storage-account"></a>Depolama hesabını doğrula
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
-1. Soldan **tüm hizmetler** > **genel** > **kaynak grupları**' na gidin.
+1. Soldan **tüm hizmetler**  >  **genel**  >  **kaynak grupları**' na gidin.
 1. PowerShell betiğinizdeki oluşturduğunuz kaynak grubu adını seçin. Listelenmiş çok fazla kaynak grubunuz varsa filtreyi kullanın.
 1. **Genel bakış** görünümünden, kaynak grubunu diğer projelerle paylaşmadığınız takdirde bir kaynağı listelenmiş görürsünüz. Bu kaynak, daha önce belirttiğiniz adı taşıyan depolama hesabıdır. Depolama hesabı adını seçin.
 1. **Kapsayıcılar** kutucuğunu seçin.
-1. **Adfgetstarted** kapsayıcısını seçin. Adlı **`hivescripts`** bir klasör görürsünüz.
+1. **Adfgetstarted** kapsayıcısını seçin. Adlı bir klasör görürsünüz **`hivescripts`** .
 1. Klasörünü açın ve, **partitionweblogs. HQL**örnek betik dosyasını içerdiğinden emin olun.
 
 ## <a name="understand-the-azure-data-factory-activity"></a>Azure Data Factory etkinliğini anlayın
@@ -184,9 +184,9 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. Sol menüden **`+ Create a resource`**  >  **analiz** > **Data Factory**' a gidin.
+2. Sol menüden **`+ Create a resource`**  >  **analiz**  >  **Data Factory**' a gidin.
 
     ![Portalda Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Portalda Azure Data Factory")
 
@@ -194,7 +194,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
     |Özellik  |Değer  |
     |---------|---------|
-    |Adı | Veri Fabrikası için bir ad girin. Bu adın küresel olarak benzersiz olması gerekir.|
+    |Ad | Veri Fabrikası için bir ad girin. Bu adın genel olarak benzersiz olması gerekir.|
     |Sürüm | **V2**adresinden ayrılın. |
     |Abonelik | Azure aboneliğinizi seçin. |
     |Kaynak grubu | PowerShell betiğini kullanarak oluşturduğunuz kaynak grubunu seçin. |
@@ -236,7 +236,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     |Özellik |Değer |
     |---|---|
-    |Adı |`HDIStorageLinkedService` yazın.|
+    |Ad |Şunu girin: `HDIStorageLinkedService`.|
     |Azure aboneliği |Açılır listeden aboneliğinizi seçin.|
     |Depolama hesabı adı |PowerShell betiğinin bir parçası olarak oluşturduğunuz Azure Depolama hesabını seçin.|
 
@@ -258,7 +258,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     | Özellik | Değer |
     | --- | --- |
-    | Adı | `HDInsightLinkedService` yazın.|
+    | Ad | Şunu girin: `HDInsightLinkedService`.|
     | Tür | **İsteğe bağlı HDInsight '** ı seçin. |
     | Azure Storage Bağlı Hizmeti | `HDIStorageLinkedService` öğesini seçin. |
     | Küme türü | **Hadoop** seçin |
@@ -267,10 +267,10 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
     | Hizmet sorumlusu anahtarı | Azure Active Directory hizmet sorumlusu için kimlik doğrulama anahtarı sağlayın. |
     | Küme adı ön eki | Veri Fabrikası tarafından oluşturulan tüm küme türlerine ön eki eklenecek bir değer sağlayın. |
     |Abonelik |Açılır listeden aboneliğinizi seçin.|
-    | Kaynak grubu seçin | Daha önce kullandığınız PowerShell betiğinin bir parçası olarak oluşturduğunuz kaynak grubunu seçin.|
-    | İşletim sistemi türü/kümesi SSH Kullanıcı adı | Genellikle `sshuser`bir SSH Kullanıcı adı girin. |
+    | Kaynak grubunu seçme | Daha önce kullandığınız PowerShell betiğinin bir parçası olarak oluşturduğunuz kaynak grubunu seçin.|
+    | İşletim sistemi türü/kümesi SSH Kullanıcı adı | Genellikle bir SSH Kullanıcı adı girin `sshuser` . |
     | İşletim sistemi türü/kümesi SSH parolası | SSH kullanıcısı için bir parola belirtin |
-    | İşletim sistemi türü/küme Kullanıcı adı | Genellikle `admin`bir küme Kullanıcı adı girin. |
+    | İşletim sistemi türü/küme Kullanıcı adı | Genellikle bir küme Kullanıcı adı girin `admin` . |
     | İşletim sistemi türü/küme parolası | Küme kullanıcısı için bir parola belirtin. |
 
     Ardından **Oluştur**’u seçin.
@@ -279,7 +279,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1. **+** (Artı) düğmesini seçin ve ardından işlem **hattı**' nı seçin.
+1. **+**(Artı) düğmesini seçin ve ardından Işlem **hattı**' nı seçin.
 
     ![Azure Data Factory işlem hattı oluşturma](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Azure Data Factory işlem hattı oluşturma")
 
@@ -295,17 +295,17 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     1. **Betiğe bağlı hizmet**için, açılan listeden **HDIStorageLinkedService** öğesini seçin. Bu değer, daha önce oluşturduğunuz depolama bağlı hizmetidir.
 
-    1. **Dosya yolu**Için, **depolamayı inceleyin** ' i seçin ve örnek Hive betiğinin kullanılabildiği konuma gidin. PowerShell betiğini daha önce çalıştırdıysanız, bu konum olmalıdır `adfgetstarted/hivescripts/partitionweblogs.hql`.
+    1. **Dosya yolu**Için, **depolamayı inceleyin** ' i seçin ve örnek Hive betiğinin kullanılabildiği konuma gidin. PowerShell betiğini daha önce çalıştırdıysanız, bu konum olmalıdır `adfgetstarted/hivescripts/partitionweblogs.hql` .
 
         ![İşlem hattı için Hive betik ayrıntıları sağlayın](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "İşlem hattı için Hive betik ayrıntıları sağlayın")
 
-    1. **Gelişmiş** > **Parametreler**altında öğesini seçin **`Auto-fill from script`**. Bu seçenek, Hive betiğindeki, çalışma zamanında değer gerektiren tüm parametreleri arar.
+    1. **Gelişmiş**  >  **Parametreler**altında öğesini seçin **`Auto-fill from script`** . Bu seçenek, Hive betiğindeki, çalışma zamanında değer gerektiren tüm parametreleri arar.
 
-    1. **Değer** metin kutusunda, varolan klasörü biçiminde `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/`ekleyin. Bu yol büyük/küçük harfe duyarlıdır. Bu yol, betiğin çıktısının depolanacağı yerdir. Depolama `wasbs` hesaplarında varsayılan olarak etkinleştirilmiş güvenli aktarım gerekli olduğundan şema gereklidir.
+    1. **Değer** metin kutusunda, varolan klasörü biçiminde ekleyin `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` . Bu yol büyük/küçük harfe duyarlıdır. Bu yol, betiğin çıktısının depolanacağı yerdir. `wasbs`Depolama hesaplarında varsayılan olarak etkinleştirilmiş güvenli aktarım gerekli olduğundan şema gereklidir.
 
         ![Hive betiği için parametreler sağlama](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Hive betiği için parametreler sağlama")
 
-1. İşlem hattını doğrulamak için **Doğrula** ' yı seçin. Doğrulama penceresini **>>** kapatmak için (sağ ok) düğmesini seçin.
+1. İşlem hattını doğrulamak için **Doğrula** ' yı seçin. **>>** Doğrulama penceresini kapatmak için (sağ ok) düğmesini seçin.
 
     ![Azure Data Factory ardışık düzeni doğrulama](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "Azure Data Factory ardışık düzeni doğrulama")
 
@@ -315,7 +315,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
 ## <a name="trigger-a-pipeline"></a>İşlem hattını tetikleme
 
-1. Tasarımcı yüzeyinde araç çubuğundan şimdi **tetikleyici** > **tetikleyicisi**Ekle ' yi seçin.
+1. Tasarımcı yüzeyinde araç çubuğundan şimdi **tetikleyici tetikleyicisi Ekle**' yi seçin  >  **Trigger Now**.
 
     ![Azure Data Factory işlem hattını tetikleme](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "Azure Data Factory işlem hattını tetikleme")
 
@@ -339,7 +339,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     * İşlem hattının parçası olarak çalıştırılan Hive betiğinin çıkışını içeren bir **adfgerstarted/outputfolder** görürsünüz.
 
-    * Bir **\<adfhdidatafactory-Linked-service-name>-\<timestamp>** kapsayıcısı görürsünüz. Bu kapsayıcı, işlem hattı çalıştırmasının bir parçası olarak oluşturulan HDInsight kümesinin varsayılan depolama konumudur.
+    * Bir ** \<linked-service-name> - \<timestamp> adfhdidatafactory-** Container görürsünüz. Bu kapsayıcı, işlem hattı çalıştırmasının bir parçası olarak oluşturulan HDInsight kümesinin varsayılan depolama konumudur.
 
     * Azure Data Factory iş günlüklerine sahip bir **adfjobs** kapsayıcısı görürsünüz.  
 

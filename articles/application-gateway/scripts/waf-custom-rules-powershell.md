@@ -6,25 +6,25 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffbab992732c39054818b9b4f21871687b05dcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66743426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083149"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell ile WAF özel kuralları oluşturma
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell Web uygulaması güvenlik duvarı (WAF) özel kuralları oluşturma
 
 Bu betik, özel kurallar kullanan bir Application Gateway Web uygulaması güvenlik duvarı oluşturur. İstek üst bilgisi Kullanıcı Aracısı *evbot*içeriyorsa, özel kural trafiği engeller.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell modülü
 
 Azure PowerShell yerel olarak yükleyip kullanmayı tercih ederseniz, bu betik Azure PowerShell modülü sürüm 2.1.0 veya üstünü gerektirir.
 
 1. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps).
-2. Azure ile bağlantı oluşturmak için, çalıştırın `Connect-AzAccount`.
+2. Azure ile bağlantı oluşturmak için, çalıştırın `Connect-AzAccount` .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -70,5 +70,5 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - WAF özel kuralları hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı Için özel kurallar](../custom-waf-rules-overview.md)
-- Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+- Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 - Ek uygulama ağ geçidi PowerShell betiği örnekleri, [Azure Application Gateway belgeleri](../powershell-samples.md) içinde bulunabilir.

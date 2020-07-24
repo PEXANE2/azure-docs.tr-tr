@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 07/20/2020
 ms.author: victorh
-ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2f1501438c5fde5be401411ee51b212323427761
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74075145"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068076"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak birden çok Web sitesini barındırmak için bir uygulama ağ geçidi oluşturma ve yapılandırma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Yönlendirme kuralları oluşturma
 > * Etki alanınızda bir CNAME kaydı oluşturma
 
-![Çok siteli yönlendirme örneği](./media/create-multiple-sites-portal/scenario.png)
+:::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="Çok siteli Application Gateway":::
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -50,7 +50,7 @@ Azure portal şurada oturum açın:[https://portal.azure.com](https://portal.azu
    - **Kaynak grubu**: kaynak grubu için **myResourceGroupAG** öğesini seçin. Yoksa, oluşturmak için **Yeni oluştur** ' u seçin.
    - **Uygulama ağ geçidi adı**: uygulama ağ geçidinin adı Için *myappgateway* girin.
 
-     ![Yeni uygulama ağ geçidi oluşturma: temel bilgiler](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="Application Gateway oluştur":::
 
 2.  Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır. Yeni bir sanal ağ oluşturabilir veya var olan bir ağı kullanabilirsiniz. Bu örnekte, uygulama ağ geçidini oluşturduğunuz sırada yeni bir sanal ağ oluşturacaksınız. Application Gateway örnekleri ayrı alt ağlarda oluşturulur. Bu örnekte iki alt ağ oluşturursunuz: bir tane uygulama ağ geçidi ve arka uç sunucuları için bir diğeri.
 
@@ -66,7 +66,7 @@ Azure portal şurada oturum açın:[https://portal.azure.com](https://portal.azu
 
     **Sanal ağ oluştur** penceresini kapatmak ve sanal ağ ayarlarını kaydetmek için **Tamam ' ı** seçin.
 
-     ![Yeni uygulama ağ geçidi oluştur: sanal ağ](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="VNet oluştur":::
     
 3. **Temel bilgiler** sekmesinde, diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ileri: ön uçlar**' ı seçin.
 
@@ -78,7 +78,7 @@ Azure portal şurada oturum açın:[https://portal.azure.com](https://portal.azu
 
 2. **Genel IP** adresi Için **Yeni oluştur** ' u seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam**' ı seçin. 
 
-     ![Yeni uygulama ağ geçidi oluştur: ön uçlar](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="VNet oluştur":::
 
 3. **İleri ' yi seçin: Backenler**.
 
@@ -96,7 +96,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 3. Arka uç havuzu **Ekle** penceresinde, arka uç havuzu yapılandırmasını kaydetmek ve **backends** sekmesine dönmek için **Ekle** ' yi seçin.
 4. Şimdi *fabrikamPool*adlı bir arka uç havuzu ekleyin.
 
-     ![Yeni uygulama ağ geçidi oluştur: arka uçları](./media/create-multiple-sites-portal/backend-pools.png)
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="Arka uçlar oluşturma":::
 
 4. **Backends** sekmesinde **İleri: yapılandırma**' yı seçin.
 
@@ -117,9 +117,12 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
    - **Dinleyici türü**: birden çok site
    - **Ana bilgisayar adı**: **www.contoso.com**
 
+>[!NOTE]
+> Application Gateway veya WAF v2 SKU 'SU ile dinleyici başına 5 adede kadar ana bilgisayar adı yapılandırabilir ve ana bilgisayar adında joker karakterler kullanabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları](multiple-site-overview.md#wildcard-host-names-in-listener-preview) . Azure portal, bunları konak adı alanındaki ayrı metin kutularında tanımlayabilirsiniz.
+
    **Dinleyici** sekmesinde diğer ayarlar için varsayılan değerleri kabul edin, sonra yönlendirme kuralının geri kalanını yapılandırmak Için **arka uç hedefleri** sekmesini seçin.
 
-   ![Yeni uygulama ağ geçidi oluşturma: dinleyici](./media/create-multiple-sites-portal/routing-rule.png)
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="Yönlendirme kuralı oluştur":::
 
 4. **Arka uç** **hedefi**sekmesinde **contosopool** ' u seçin.
 
@@ -128,7 +131,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 6. Yönlendirme kuralı **Ekle** penceresinde, yönlendirme kuralını kaydetmek ve **yapılandırma** sekmesine dönmek için **Ekle** ' yi seçin.
 7. **Bir kural ekle** ' yi seçin ve benzer bir kural, dinleyici, arka uç hedefi ve FABRIKAM için http ayarını ekleyin.
 
-     ![Yeni uygulama ağ geçidi oluşturma: yönlendirme kuralı](./media/create-multiple-sites-portal/fabrikamRule.png)
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam kuralı":::
 
 7. Ileri ' yi seçin **: Etiketler** ve sonra **İleri: İnceleme + oluştur**.
 
@@ -203,7 +206,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
     ![Arka uç sunucuları ekleme](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 7. *FabrikamVM* ve arabirimini *fabrikamPool*öğesine eklemek için tekrarlayın.
 
 Sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.

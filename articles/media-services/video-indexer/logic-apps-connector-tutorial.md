@@ -1,25 +1,25 @@
 ---
 title: Mantıksal uygulama ve güç otomatikleştirme öğreticisiyle Video Indexer bağlayıcılar.
 description: Bu öğreticide, mantıksal uygulama ve güç otomatikleştirme ile bağlayıcılar Video Indexer yeni deneyimlerin ve paraya getirme fırsatlarının nasıl kilidinin yapılacağı gösterilmektedir.
-author: anikaz
+author: anzaman
 manager: johndeu
-ms.author: anzaman
+ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 932f52aa694c13fd3696d82872135304a4e41bdc
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047101"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
 Azure Media Services [video Indexer v2 REST API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) hem sunucudan sunucuya hem de istemciden sunucuya iletişimi destekler ve video Indexer kullanıcıların video ve ses öngörülerini kolayca uygulama mantığına tümleştirmesini sağlar.
 
-Tümleştirmeyi daha da kolay hale getirmek için, API 'imizde uyumlu olan [Logic Apps](https://azure.microsoft.com/services/logic-apps/) ve [Güç otomatikleştirme](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) bağlayıcılarını destekliyoruz. Tek bir kod satırı yazmadan büyük miktarda video ve ses dosyasından öngörüleri etkin bir şekilde indekslemek ve ayıklamak üzere özel iş akışları ayarlamak için bağlayıcıları kullanabilirsiniz. Ayrıca, tümleştirmenize yönelik bağlayıcılar kullanılması, iş akışınızın sistem durumu ve hata ayıklamanın kolay bir yolu hakkında daha iyi görünürlük sağlar.  
+Tümleştirmeyi daha da kolay hale getirmek için, [Logic Apps](https://azure.microsoft.com/services/logic-apps/)   API 'imizde uyumlu olan Logic Apps ve [Güç otomatikleştirme](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   bağlayıcılarını destekliyoruz. Tek bir kod satırı yazmadan büyük miktarda video ve ses dosyasından öngörüleri etkin bir şekilde indekslemek ve ayıklamak üzere özel iş akışları ayarlamak için bağlayıcıları kullanabilirsiniz. Ayrıca, tümleştirmenize yönelik bağlayıcılar kullanılması, iş akışınızın sistem durumu ve hata ayıklamanın kolay bir yolu hakkında daha iyi görünürlük sağlar.  
 
 Video Indexer bağlayıcılarıyla hızlıca çalışmaya başlamanıza yardımcı olması için, kullanabileceğiniz örnek bir mantıksal uygulama ve Power otomatikleştirmede izlenecek yol göstereceğiz. 
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İle başlamak için API anahtarı aracılığıyla API 'lere erişim ile birlikte bir Video Indexer hesabınızın olması da gerekir. 
 
@@ -64,7 +64,7 @@ Sonra, "yola göre SAS URI 'SI oluştur" eylemine gidin ve dinamik içerik seçe
 
 ![Yola göre SAS URI 'si](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-Video Indexer hesap belirtecini almak için [hesabınızın konumunu ve kimliğini](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) doldurun.
+Video Indexer hesap belirtecini almak için [hesabınızın konumunu ve kimliğini](./video-indexer-use-apis.md#account-id)doldurun   .
 
 ![Hesap erişim belirtecini al](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -90,7 +90,7 @@ Bu akışı ayarlamak için, Video Indexer API anahtarınızı ve Azure depolama
 
 Tetikleyiciniz için bir HTTP POST URL 'SI alanı görürsünüz. Akışınızı kaydettikten sonra URL oluşturulmaz; Bununla birlikte, URL sonunda gerekecektir. Buna geri dönecektir. 
 
-Video Indexer hesap belirtecini almak için [hesabınızın konumunu ve kimliğini](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) doldurun.  
+Video Indexer hesap belirtecini almak için [hesabınızın konumunu ve kimliğini](./video-indexer-use-apis.md#account-id)doldurun   .  
 
 "Video dizinini al" eylemine gidin ve gerekli parametreleri doldurun. Video KIMLIĞI için şu ifadeyi koyun: Triggerçıktılar () [' sorgular '] [' ID '] 
 

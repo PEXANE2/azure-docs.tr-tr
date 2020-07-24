@@ -17,12 +17,12 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 9151870836b1a616a79e54275ed185a425c11f0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be20cd583be7c9c87d9f3a3cebc6609764384c9a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72385613"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084237"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Öğretici: Evrensel Windows Platformu uygulamaları çalıştıran belirli cihazlara bildirimler gönderme
 
@@ -47,7 +47,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştirebilirsiniz:
 > * Etiketli bildirimler gönderme
 > * Uygulamayı çalıştırma ve bildirimler oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows Platformu uygulamalarına bildirimler gönderme][get-started] öğreticisini tamamlayın.  
 
@@ -81,7 +81,7 @@ Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanara
     </Grid>
     ```
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın,**sınıf** **Ekle** > ' yi seçin. **Yeni öğe Ekle**' de, sınıf *bildirimlerini*adlandırın ve **Ekle**' yi seçin. Gerekirse, `public` değiştiricisini sınıf tanımına ekleyin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**. **Yeni öğe Ekle**' de, sınıf *bildirimlerini*adlandırın ve **Ekle**' yi seçin. Gerekirse, `public` değiştiricisini sınıf tanımına ekleyin.
 
 1. Aşağıdaki `using` deyimlerini yeni dosyaya ekleyin:
 
@@ -134,7 +134,7 @@ Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanara
     }
     ```
 
-    Bu sınıf, bu cihazın alması gereken haber kategorilerini depolamak için yerel depolamayı kullanır. `RegisterNativeAsync` Yöntemi çağırmak yerine, bir şablon kaydı `RegisterTemplateAsync` kullanarak kategorilere kaydolmak için çağırın.
+    Bu sınıf, bu cihazın alması gereken haber kategorilerini depolamak için yerel depolamayı kullanır. Yöntemi çağırmak yerine `RegisterNativeAsync` , `RegisterTemplateAsync` bir şablon kaydı kullanarak kategorilere kaydolmak için çağırın.
 
     Birden fazla şablon kaydetmek istiyorsanız, bir şablon adı sağlayın (örneğin, *simpleWNSTemplateExample*). Şablonları güncelleştirebilmeniz veya silebilmeniz için adlandırmanız gerekir. Bildirim için bir tane ve bir kutucuk için bir tane olmak üzere birden fazla şablon kaydedebilirsiniz.
 
@@ -143,13 +143,13 @@ Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanara
 
     Daha fazla bilgi için bkz. [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md).
 
-1. *App.xaml.cs* proje dosyasında, `App` sınıfına aşağıdaki özelliği ekleyin:
+1. *App.xaml.cs* proje dosyasında, sınıfına aşağıdaki özelliği ekleyin `App` :
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
     ```
 
-    Bu özelliği kullanarak bir `Notifications` örnek oluşturup erişebilirsiniz.
+    Bu özelliği kullanarak bir örnek oluşturup erişebilirsiniz `Notifications` .
 
     Kod içindeki `<hub name>` ve `<connection string with listen access>` yer tutucularını, daha önce edindiğiniz bildirim hub'ı adınız ve **DefaultListenSharedAccessSignature** bağlantı dizeniz ile değiştirin.
 
@@ -183,7 +183,7 @@ Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanara
     }
     ```
 
-    Bu yöntem, kategorilerin bir listesini oluşturur ve listeyi yerel `Notifications` depolama alanında depolamak için sınıfını kullanır. Ayrıca ilgili etiketleri bildirim hub’ınıza kaydeder. Kategoriler değiştiğinde, kayıt yeni kategoriler ile yeniden oluşturulur.
+    Bu yöntem, kategorilerin bir listesini oluşturur ve `Notifications` Listeyi yerel depolama alanında depolamak için sınıfını kullanır. Ayrıca ilgili etiketleri bildirim hub’ınıza kaydeder. Kategoriler değiştiğinde, kayıt yeni kategoriler ile yeniden oluşturulur.
 
 Uygulamanız artık cihazın yerel depolama alanında bir kategori kümesini depolayabilir. Uygulama, kullanıcılar kategori seçimini her değiştirdiğinde bildirim hub’ına kaydolur.
 
@@ -194,7 +194,7 @@ Bu bölümde, yerel depolama alanında depoladığınız kategorileri kullanarak
 > [!NOTE]
 > Windows Bildirim Hizmeti (WNS) tarafından atanan kanal URI’si her zaman değişebileceğinden, bildirim hatalarını önlemek için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sıklıkla çalıştırdığınız uygulamalar için günde bir kereden fazla, bir günden daha az bir kez geçtiğinde bant genişliğini korumak için kayıt işlemini atlayabilirsiniz.
 
-1. Kategoriye göre abone `notifications` olmak için sınıfını kullanmak üzere, *app.xaml.cs* dosyasını açın ve sonra `InitNotificationsAsync` yöntemi güncelleştirin.
+1. `notifications`Kategoriye göre abone olmak için sınıfını kullanmak üzere, *app.xaml.cs* dosyasını açın ve sonra `InitNotificationsAsync` yöntemi güncelleştirin.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -205,8 +205,8 @@ Bu bölümde, yerel depolama alanında depoladığınız kategorileri kullanarak
     var result = await notifications.SubscribeToCategories();
     ```
 
-    Bu işlem, uygulama başlatıldığında yerel depolama alanından kategorileri alan bir zaman sağlar. Daha sonra bu kategorilerin kaydını ister. `InitNotificationsAsync` Yöntemi [Azure Notification Hubs öğreticisi kullanarak Evrensel Windows platformu uygulamalara gönderilen bildirimlerin][get-started] bir parçası olarak oluşturdunuz.
-2. *MainPage.xaml.cs* proje dosyasında `OnNavigatedTo` yöntemine aşağıdaki kodu ekleyin:
+    Bu işlem, uygulama başlatıldığında yerel depolama alanından kategorileri alan bir zaman sağlar. Daha sonra bu kategorilerin kaydını ister. `InitNotificationsAsync`Yöntemi [Azure Notification Hubs öğreticisi kullanarak Evrensel Windows platformu uygulamalara gönderilen bildirimlerin][get-started] bir parçası olarak oluşturdunuz.
+2. *MainPage.xaml.cs* proje dosyasında yöntemine aşağıdaki kodu ekleyin `OnNavigatedTo` :
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -265,8 +265,8 @@ Bu makalede, son dakika haberlerini kategoriye göre yayınlamayı öğrendiniz.
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: c4d44b1bf645132f5c2d6e863dbe0c93f024c7ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118976"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066935"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-uygulamaya CRUD işlevleri ekleme
 
@@ -27,7 +27,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticinin bu bölümüne başlamadan önce öğreticinin [5. bölümündeki](tutorial-develop-mongodb-nodejs-part5.md) adımları tamamladığınızdan emin olun.
 
@@ -36,7 +36,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Hero hizmetine bir Post işlevi ekleme
 
-1. Visual Studio Code'da **routes.js**’yi ve **hero.service.js**’yi **Bölünmüş Düzenleyici** düğmesine ![Visual Studio'daki Bölünmüş Düzenleyici düğmesi](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png) basarak yan yana açın.
+1. Visual Studio Code, **bölünmüş düzenleyici** düğmesine basarak **routes.js** açın ve yan yana **hero.service.js** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png"::: .
 
     Routes.js’de 7. satırda, **hero.service.js**’nin 5. satırındaki `getHeroes` işlevinin çağrıldığına dikkat edin.  Post, put ve delete işlevleri için de aynı eşleşmeyi oluşturmamız gerekiyor. 
 
@@ -84,7 +84,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
     });
     ```
 
-5. Uygulamayı çalıştırarak her şeyin çalıştığından emin olun. Visual Studio Code’da tüm değişikliklerinizi kaydedin, sol taraftaki **Hata ayıkla** düğmesini ![Visual Studio Code’da hata ayıkla simgesi](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) seçin, ardından **Hata Ayıklamayı Başlat** düğmesini ![ Visual Studio Code’da Hata ayıklamayı başlat simgesi](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png) seçin.
+5. Uygulamayı çalıştırarak her şeyin çalıştığından emin olun. Visual Studio Code, tüm değişikliklerinizi kaydedin, sol taraftaki **Hata Ayıkla** düğmesini seçin :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png"::: ve ardından **hata ayıklamayı Başlat** düğmesini seçin :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png"::: .
 
 6. Şimdi İnternet tarayıcınıza dönün ve çoğu makinede F12 tuşuna basarak açılan Geliştirici Araçları Ağı sekmesini açın. Ağ üzerinden yapılan çağrıları izlemek için `http://localhost:3000` adresine gidin.
 
@@ -169,7 +169,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
     };
     ```
 
-4. Kodu güncelleştirdikten sonra Visual Studio Code’da **Yeniden başlat** düğmesini ![Visual Studio Code’da Yeniden Başlat düğmesi](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png) seçin.
+4. Kodu güncelleştirdik, şimdi Visual Studio Code ' deki **Yeniden Başlat** düğmesini seçin :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png"::: .
 
 5. İnternet tarayıcınızda sayfayı yenileyin ve **Yeni Hero Ekle** düğmesini seçin. "9" kimliğine, "Starlord" adına ve "Hi" metnine sahip bir hero ekleyin. Yeni heroyu kaydetmek için **Kaydet** düğmesini seçin.
 

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e50f025ebd22cbe231dcd01e277a76b0f8e9b56d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1aa87d72bf2b73b1fa616d7ff7535dac4da9b7fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029640"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 Sanal makine ölçek kümeleri, sanal makine örneğinin işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir ölçek kümesi oluştururken ve yönetirken, beklenen iş yüküne uygun disk boyutu ve yapılandırmasını seçmek önemlidir. Bu öğretici, sanal makine disklerinin oluşturulmasını ve yönetilmesini kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -43,12 +43,12 @@ Bir ölçek kümesi oluşturulduğunda veya ölçeklendirildiğinde, her bir san
 ### <a name="temporary-disk-sizes"></a>Geçici disk boyutları
 | Tür | Ortak boyutlar | En yüksek geçici disk boyutu (GiB) |
 |----|----|----|
-| [Genel amaçlı](../virtual-machines/linux/sizes-general.md) | A, B ve D serisi | 1600 |
-| [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md) | F serisi | 576 |
-| [Bellek için iyileştirilmiş](../virtual-machines/linux/sizes-memory.md) | D, E, G ve M serisi | 6144 |
-| [Depolama için iyileştirilmiş](../virtual-machines/linux/sizes-storage.md) | L serisi | 5630 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N serisi | 1440 |
-| [Yüksek performans](../virtual-machines/linux/sizes-hpc.md) | A ve H serisi | 2000 |
+| [Genel amaçlı](../virtual-machines/sizes-general.md) | A, B ve D serisi | 1600 |
+| [İşlem için iyileştirilmiş](../virtual-machines/sizes-compute.md) | F serisi | 576 |
+| [Bellek için iyileştirilmiş](../virtual-machines/sizes-memory.md) | D, E, G ve M serisi | 6144 |
+| [Depolama için iyileştirilmiş](../virtual-machines/sizes-storage.md) | L serisi | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N serisi | 1440 |
+| [Yüksek performans](../virtual-machines/sizes-hpc.md) | A ve H serisi | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure veri diskleri
@@ -112,7 +112,7 @@ az vmss disk attach \
 ## <a name="prepare-the-data-disks"></a>Veri disklerini hazırlama
 Oluşturulan ve ölçek kümesi sanal makine örneklerinize eklenen diskler, ham disklerdir. Bunları veri ve uygulamalarınızla kullanabilmeniz için disklerin hazırlanması gerekir. Diskleri hazırlamak için bir bölüm oluşturun, bir dosya sistemi oluşturun ve bunları bağlayın.
 
-Bir ölçek kümesindeki birden çok sanal makine örneğinde işlemi otomatikleştirmek için Azure Özel Betik Uzantısı’nı kullanabilirsiniz. Bu uzantı, örneğin, eklenen veri disklerini hazırlamak için her bir sanal makine örneğinde betikleri yerel olarak yürütebilir. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/linux/extensions-customscript.md).
+Bir ölçek kümesindeki birden çok sanal makine örneğinde işlemi otomatikleştirmek için Azure Özel Betik Uzantısı’nı kullanabilirsiniz. Bu uzantı, örneğin, eklenen veri disklerini hazırlamak için her bir sanal makine örneğinde betikleri yerel olarak yürütebilir. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/extensions/custom-script-linux.md).
 
 Aşağıdaki örnek, tüm eklenen ham veri disklerini hazırlayan [az vmss extension set](/cli/azure/vmss/extension) komutuyla her bir sanal makine örneğindeki GitHub örnek deposundan bir betik yürütür:
 

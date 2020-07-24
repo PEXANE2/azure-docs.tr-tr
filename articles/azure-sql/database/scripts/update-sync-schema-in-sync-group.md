@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 1cfc6f71543787fb6e8393fe4a5162ffefb0a3a0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 44a9b0b4d609013147f799ae19f750c34e81837c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084883"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>Mevcut bir eşitleme grubunda eşitleme şemasını güncelleştirmek için PowerShell kullanma
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 Ek SQL Veritabanı PowerShell betiği örnekleri [Azure SQL Veritabanı PowerShell betikleri](../powershell-script-content-guide.md) içinde bulunabilir.
 
@@ -95,7 +95,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 - Genel Bakış-Azure ['da SQL Data Sync Ile Azure SQL veritabanı ve SQL Server arasında veri eşitleme](../sql-data-sync-data-sql-server-sql-database.md)
 - Veri eşitlemesini ayarlama
     - Azure portal- [öğretici: Azure SQL veritabanı ile verileri eşitlemek için SQL Data Sync ayarlama SQL Server](../sql-data-sync-sql-server-configure.md)
-    - PowerShell kullanma
+    - PowerShell'i kullanma
         -  [Azure SQL veritabanı 'nda birden çok veritabanı arasında veri eşitlemek için PowerShell 'i kullanma](sql-data-sync-sync-data-between-sql-databases.md)
         -  [Azure SQL veritabanı ve SQL Server arasında veri eşitlemek için PowerShell 'i kullanma](sql-data-sync-sync-data-between-azure-onprem.md)
 - Veri eşitleme Aracısı- [Azure 'da SQL Data Sync Için veri eşitleme Aracısı](../sql-data-sync-agent-overview.md)

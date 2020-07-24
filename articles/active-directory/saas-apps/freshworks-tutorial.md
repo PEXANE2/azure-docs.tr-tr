@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b73b8769b5f7360ba4ad778600b1000b8b3f7bc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2ca1e794449f41a7ab0c9b129105f2324401b3c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72376416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034236"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>Öğretici: en iyi çalışmalarla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,12 +33,15 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile en iyi çalışmaları t�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * En adet, çoklu oturum açma (SSO) özellikli aboneliği kullanılabilir.
+
+> [!NOTE]
+> Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -93,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1.  **İmzalama** seçeneklerini gereksiniminize göre değiştirmek için, **SAML imzalama sertifikası** iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+1.  **İmzalama**   seçeneklerini gereksiniminize göre değiştirmek Için, **Edit**    **SAML imzalama sertifikası**iletişim kutusunu açmak için Düzenle düğmesine tıklayın   .
 
      ![image](common/edit-certificate.png)
 
@@ -115,9 +118,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -141,7 +144,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak En Iyi şekilde 
 
 1. Yeni bir Web tarayıcı penceresi açın ve yeni bir yönetici olarak, yeni bir şirket sitesinde oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-2. Menünün sol tarafında **güvenlik** simgesine tıklayın ve ardından **Çoklu oturum açma** seçeneğini işaretleyin ve **kimlik doğrulama yöntemleri**altında **SAML SSO** 'yu seçin.
+2. Menünün sol tarafında **güvenlik**   simgesine tıklayın ve ardından **Çoklu oturum açma** seçeneğini işaretleyin ve **kimlik doğrulama yöntemleri**altında **SAML SSO** 'yu seçin.
 
     ![En iyi iş yapılandırması](./media/freshworks-tutorial/configure01.png)
 

@@ -5,23 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253eb23be03c1cc0f2abf4ad1fed734426dc287d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77154826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035069"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Öğretici: Azure Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme
 
 Multi-Factor Authentication (MFA), bir kullanıcının ek tanımlama biçimleri için oturum açma olayı sırasında istendiği bir işlemdir. Bu istem, cep telefonlarına bir kod girmek veya bir parmak izi taraması sağlamak olabilir. İkinci bir kimlik doğrulaması formu gerektirdiğinde, bu ek faktörün bir saldırganın alması veya yinelemesi kolay olmadığı için güvenlik artar.
 
 Azure Multi-Factor Authentication ve koşullu erişim ilkeleri, belirli oturum açma olayları sırasında kullanıcılara MFA 'yı etkinleştirme esnekliği sunar.
+
+> [!IMPORTANT]
+> Bu öğreticide, Azure Multi-Factor Authentication nasıl etkinleştirileceği bir yönetici gösterilmektedir.
+>
+> BT ekibiniz Azure Multi-Factor Authentication kullanma özelliğini etkinleştirmemişse veya oturum açma sırasında sorun yaşıyorsanız, ek yardım için yardım masasına ulaşın.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -30,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * MFA için istemde bulunan ilke koşullarını yapılandırın
 > * MFA işlemini Kullanıcı olarak test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -38,9 +43,9 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
 * Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Bu öğreticide bu hesabı kullanarak Son Kullanıcı Azure Multi-Factor Authentication deneyimini test edersiniz.
-    * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../add-users-azure-active-directory.md).
+    * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md).
 * Yönetici olmayan kullanıcının, *MFA-test-Group*gibi üyesi olduğu bir grup. Bu öğreticide bu grup için Azure Multi-Factor Authentication 'yi etkinleştirirsiniz.
-    * Bir grup oluşturmanız gerekiyorsa bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../active-directory-groups-create-azure-portal.md).
+    * Bir grup oluşturmanız gerekiyorsa bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md).
 
 ## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
@@ -102,7 +107,7 @@ Koşullu erişim ilkenizi ve Azure Multi-Factor Authentication işlemini göreli
 
 Şimdi Azure portal oturum açın. Azure portal, koşullu erişim ilkesinde ek doğrulama gerektirecek şekilde yapılandırıldığından, bir Azure Multi-Factor Authentication istemi alırsınız.
 
-1. InPrivate veya ınbilito modunda yeni bir tarayıcı penceresi açın ve konumuna gidin [https://portal.azure.com](https://portal.azure.com).
+1. InPrivate veya ınbilito modunda yeni bir tarayıcı penceresi açın ve konumuna gidin [https://portal.azure.com](https://portal.azure.com) .
 1. Yönetici olmayan test Kullanıcı ile, *testuser*gibi oturum açın. Azure Multi-Factor Authentication için kaydolmanız ve kullanmanız gerekir. İşlemi tamamlayıp Azure portal başarıyla oturum açabildiğinizi doğrulamak için istemleri izleyin.
 
     ![Oturum açmak için, tarayıcı istemlerini izleyin ve ardından kayıtlı Multi-Factor Authentication komut isteminde](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
@@ -113,7 +118,7 @@ Koşullu erişim ilkenizi ve Azure Multi-Factor Authentication işlemini göreli
 
 Bu öğreticinin bir parçası olarak yapılandırılmış Azure Multi-Factor Authentication etkinleştirmek için artık koşullu erişim ilkesini kullanmak istemiyorsanız, aşağıdaki adımları kullanarak ilkeyi silin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
 1. **Koşullu erişim**' i seçin ve ardından, *MFA pilot* gibi oluşturduğunuz ilkeyi seçin
 1. **Sil**' i seçin ve ilkeyi silmek istediğinizi onaylayın.

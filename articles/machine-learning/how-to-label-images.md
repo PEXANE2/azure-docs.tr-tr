@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a9c9dee94dd50462109a8864ffb413ce991c8dbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072388"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
@@ -24,7 +24,7 @@ Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](https://docs.
 > * Etiketleme Araçları
 > * Belirli etiketleme görevleri için araçları kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kuruluş ve proje için bir [Microsoft hesabı](https://account.microsoft.com/account) veya Azure Active Directory hesabı
 * Etiketleme projesini içeren çalışma alanına katkıda bulunan düzeyi erişimi.
@@ -65,6 +65,10 @@ Sayfadaki tüm görüntüleri etiketlediyseniz Azure, **Gönder** düğmesine iz
 Bir yandan veriler için Etiketler gönderdikten sonra, Azure sayfayı iş kuyruğundan yeni bir görüntü kümesiyle yeniler.
 
 ### <a name="assisted-machine-learning-preview"></a>Yardımlı makine öğrenimi (Önizleme) 
+
+> [!IMPORTANT]
+> Yardımlı makine öğrenimi Şu anda genel önizlemededir.
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Makine öğrenimi algoritmaları tetiklenebilir. Bu algoritmalar projenizde etkinleştirilirse, aşağıdakileri görebilirsiniz:
 

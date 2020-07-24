@@ -6,19 +6,20 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.openlocfilehash: ff38f923f7b33c4bc893246970c1e47d33e59269
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: devx-track-java
+ms.openlocfilehash: 426336802f55b5f68d8c3e04cdb932b984c2adc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780396"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037228"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 Dağıtılmış ad hizmeti (DNS), ağ düğümü adlarını ağ genelinde depolamanın bir tekniğidir. Bu öğretici, CNAME kaydı kullanarak www.contoso.com gibi bir etki alanını eşler. Özel etki alanının bir sertifikayla güvenliğini sağlar ve Güvenli Yuva Katmanı (SSL) olarak da bilinen Aktarım Katmanı Güvenliği 'ni (TLS) nasıl zorunlu hale kullanabileceğinizi gösterir. 
 
 Sertifikalar Web trafiğini şifreler. Bu TLS/SSL sertifikaları, Azure Key Vault depolanabilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure yay bulutuna dağıtılan bir uygulama (bkz. [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart-launch-app-portal.md)veya mevcut bir uygulamayı kullanma).
 * GoDaddy gibi etki alanı sağlayıcısı için DNS kayıt defterine erişimi olan bir etki alanı adı.
 * Bir üçüncü taraf sağlayıcıdan özel bir sertifika (otomatik olarak imzalanan sertifikanız). Sertifika, etki alanıyla aynı olmalıdır.
@@ -34,7 +35,7 @@ Sertifikanızı anahtar kasasına yüklemek için:
 1. **Sertifika oluşturma yönteminin**altında **sertifika oluştur** iletişim kutusunda öğesini seçin `Import` .
 1. **Sertifika dosyasını karşıya yükle**altında, sertifika konumuna gidin ve seçin.
 1. **Parola**altında, sertifikanız için özel anahtarı girin.
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**’a tıklayın.
 
     ![Sertifikayı içeri aktar 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
@@ -170,7 +171,7 @@ az spring-cloud app update -name <app-name> --https-only <true|false> -g <resour
 İşlem tamamlandığında, uygulamanızı işaret eden HTTPS URL 'Lerinden herhangi birine gidin. HTTP URL 'Lerinin çalışmadığına unutmayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure Anahtar Kasası nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Sertifikayı içeri aktar](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
 * [Azure CLı kullanarak Spring Cloud uygulamanızı başlatın](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
 

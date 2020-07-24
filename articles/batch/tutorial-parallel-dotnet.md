@@ -1,16 +1,16 @@
 ---
-title: Paralel iş yükü çalıştırma
+title: .NET API kullanarak paralel iş yükü çalıştırma
 description: Öğretici - Batch .NET istemci kitaplığını kullanarak Azure Batch’te ffmpeg ile paralel medya dosyaları dönüştürme
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: afa660a7138f3b69b2a6f7c478550095f357e29b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733082"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062581"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Öğretici: .NET API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -29,7 +29,7 @@ Bu öğreticide, [ffmpeg](https://ffmpeg.org/) açık kaynak aracını kullanara
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)ya da Linux, MacOS veya Windows Için [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) .
 
@@ -45,8 +45,8 @@ Bu öğreticide, [ffmpeg](https://ffmpeg.org/) açık kaynak aracını kullanara
 
 Batch hesabınıza [uygulama paketi](batch-application-packages.md) olarak ffmpeg eklemek için Azure portalını kullanın. Uygulama paketleri, görev uygulamalarını ve havuzunuzdaki işlem düğümlerine dağıtımlarını yönetmenize yardımcı olur. 
 
-1. Azure Portal, **diğer hizmetler** > **Batch hesapları**' na tıklayın ve Batch hesabınızın adına tıklayın.
-3. **Uygulamalar** > **Ekle**' ye tıklayın.
+1. Azure Portal, **diğer hizmetler**  >  **Batch hesapları**' na tıklayın ve Batch hesabınızın adına tıklayın.
+3. **Uygulamalar**  >  **Ekle**' ye tıklayın.
 4. **Uygulama kimliği** için *ffmpeg*, paket sürümü için *3.4* girin. Daha önce indirdiğiniz ffmpeg zip dosyasını seçip **Tamam**’a tıklayın. ffmpeg uygulama paketi, Batch hesabınıza eklenir.
 
 ![Uygulama paketi ekleme](./media/tutorial-parallel-dotnet/add-application.png)
@@ -118,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Havuz, işlem düğümleri, iş ve görevleri izlemek için Azure portalında Batch hesabınıza gidin. Örneğin, havuzunuzdaki işlem düğümlerinin bir ısı haritasını görmek için **havuzlar** > *WinFFmpegPool*' e tıklayın.
+Havuz, işlem düğümleri, iş ve görevleri izlemek için Azure portalında Batch hesabınıza gidin. Örneğin, havuzunuzdaki işlem düğümlerinin bir ısı haritasını görmek için **havuzlar**  >  *WinFFmpegPool*' e tıklayın.
 
 Görevler çalıştırılırken ısı haritası aşağıdakine benzer:
 
@@ -227,7 +227,7 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await pool.CommitAsync();  
 ```
 
-### <a name="create-a-job"></a>Bir iş oluşturma
+### <a name="create-a-job"></a>İş oluşturma
 
 Bir Batch işi, üzerinde görevlerin çalıştırılacağı bir havuz ve iş için öncelik ile zamanlama gibi isteğe bağlı ayarları belirtir. Örnek, `CreateJobAsync` çağrısıyla bir iş oluşturur. Bu tanımlı yöntem, havuzunuzda bir iş oluşturmak üzere [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) yöntemini kullanır.
 
@@ -245,7 +245,7 @@ await job.CommitAsync();
 
 Örnek, `AddTasksAsync` yöntemini çağırarak iş içinde görevler oluşturur ve [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) nesnelerinin bir listesini oluşturur. Her `CloudTask`, bir [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) özelliği kullanarak giriş `ResourceFile` nesnesini işlemek üzere ffmpeg çalıştırır. ffmpeg, daha önce havuz oluşturulduğunda her bir düğüme yüklenmiştir. Burada komut satırı, her bir giriş MP4 (video) dosyasını bir MP3 (ses) dosyasına dönüştürmek için ffmpeg çalıştırır.
 
-Örnek, komut satırını çalıştırdıktan sonra MP3 dosyası için bir [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) nesnesi oluşturur. Her bir görevin çıkış dosyaları (bu örnekte bir tane), görevin [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) özelliği kullanılarak bağlı depolama hesabındaki bir kapsayıcıya yüklenir. Daha önce kod örneğinde, çıkış kapsayıcısına yazma erişimi sağlamak için paylaşılan`outputContainerSasUrl`erişim imzası URL 'si () alındı. `outputFile` Nesne üzerinde ayarlanan koşullara göz önünde. Bir görevden çıkış dosyası, yalnızca görev başarıyla tamamlandıktan sonra kapsayıcıya yüklenir (`OutputFileUploadCondition.TaskSuccess`). Daha fazla uygulama ayrıntısı için GitHub 'daki tam [kod örneğine](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) bakın.
+Örnek, komut satırını çalıştırdıktan sonra MP3 dosyası için bir [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) nesnesi oluşturur. Her bir görevin çıkış dosyaları (bu örnekte bir tane), görevin [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) özelliği kullanılarak bağlı depolama hesabındaki bir kapsayıcıya yüklenir. Daha önce kod örneğinde, `outputContainerSasUrl` Çıkış kapsayıcısına yazma erişimi sağlamak için paylaşılan erişim imzası URL 'si () alındı. Nesne üzerinde ayarlanan koşullara göz önünde `outputFile` . Bir görevden çıkış dosyası, yalnızca görev başarıyla tamamlandıktan sonra kapsayıcıya yüklenir ( `OutputFileUploadCondition.TaskSuccess` ). Daha fazla uygulama ayrıntısı için GitHub 'daki tam [kod örneğine](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) bakın.
 
 Sonra örnek, [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) yöntemi ile görevleri işe ekler ve işlem düğümleri üzerinde çalışmak üzere kuyruğa alır.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c881068fa97361176e4bef2bc156ea213a79c54
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14b7e269fffaf1be4fff0b2f112a5844fd73cdbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034414"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>Öğretici: HPE SaaS ile tümleştirme Azure Active Directory
 
@@ -33,9 +33,9 @@ HPE SaaS 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini HPE SaaS ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -111,7 +111,7 @@ Azure AD çoklu oturum açmayı HPE SaaS ile yapılandırmak için aşağıdaki 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.saas.hpe.com`
 
     > [!NOTE]
-    > Tanımlayıcı değeri gerçek değil. Bu değeri gerçek tanımlayıcıyla güncelleştirin. Bu değeri almak için [HPE SaaS istemci destek ekibine](https://saas.hpe.com/en-us/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Tanımlayıcı değeri gerçek değil. Bu değeri gerçek tanımlayıcıyla güncelleştirin. Bu değeri almak için [HPE SaaS istemci destek ekibine](https://www.sas.com/en_us/contact.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açmayı HPE SaaS ile yapılandırmak için aşağıdaki 
 
 ### <a name="configure-hpe-saas-single-sign-on"></a>HPE SaaS çoklu oturum açmayı yapılandırma
 
-**HPE SaaS** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal, [HPE SaaS destek ekibine](https://saas.hpe.com/en-us/contact)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**HPE SaaS** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal, [HPE SaaS destek ekibine](https://www.sas.com/en_us/contact.html)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -149,12 +149,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -184,7 +184,7 @@ Bu bölümde, HPE SaaS 'ye erişim izni vererek Azure çoklu oturum açma özell
 
 ### <a name="create-hpe-saas-test-user"></a>HPE SaaS test kullanıcısı oluşturma
 
-Bu bölümde, HPE SaaS 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. HPE SaaS platformunda kullanıcıları eklemek için [HPE SaaS destek ekibi](https://saas.hpe.com/en-us/contact) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, HPE SaaS 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. HPE SaaS platformunda kullanıcıları eklemek için [HPE SaaS destek ekibi](https://www.sas.com/en_us/contact.html) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

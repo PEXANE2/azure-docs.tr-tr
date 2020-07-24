@@ -4,12 +4,12 @@ description: App Service uygulamanızdan iş süreçlerini çağırmayı öğren
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083251"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Öğretici: App Service e-posta gönderin ve diğer iş süreçlerini çağırın
 
@@ -17,7 +17,7 @@ Bu öğreticide, App Service uygulamanızı iş süreçlerinizle tümleştirmeyi
 
 - Bir işlem için onay e-postası gönder
 - Facebook grubuna kullanıcı ekleme
-- SAP, SalesForce vb. gibi üçüncü taraf sistemlere bağlanın.
+- SAP, Salesforce vb. gibi üçüncü taraf sistemlere bağlanın.
 - Exchange standart B2B iletileri
 
 Bu öğreticide, [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanarak App Service uygulamanızdan Gmail ile e-posta gönderirsiniz. Dil çatısı tarafından sunulan SMTP yapılandırması gibi bir Web uygulamasından e-posta göndermenin başka yolları da vardır. Ancak Logic Apps, kodunuza karmaşıklık eklemeden App Service uygulamanıza çok daha fazla güç sunar. Logic Apps en popüler iş tümleştirmeleri için basit bir yapılandırma arabirimi sağlar ve uygulamanız bunları bir HTTP isteğiyle dilediğiniz zaman çağırabilir.
@@ -28,7 +28,7 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-[Öğretici: Azure’da SQL Veritabanı ile ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md)
+[Öğretici: Azure'da SQL Veritabanı ile ASP.NET uygulaması oluşturma](app-service-web-tutorial-dotnet-sqldatabase.md)
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
@@ -36,7 +36,7 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-[Öğretici: Azure 'da bir Node. js ve MongoDB uygulaması derleme](app-service-web-tutorial-nodejs-mongodb-app.md)
+[Öğretici: Azure 'da Node.js ve MongoDB uygulaması oluşturma](app-service-web-tutorial-nodejs-mongodb-app.md)
 
 ### <a name="php"></a>[PHP](#tab/php)
 
@@ -57,10 +57,10 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 1. [Azure Portal](https://portal.azure.com), [mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)bölümündeki yönergeleri izleyerek boş bir mantıksal uygulama oluşturun. **Logic Apps tasarımcısını**gördüğünüzde Bu öğreticiye geri dönün.
 1. Logic Apps Tasarımcısı ' nın giriş sayfasında, **ortak bir tetikleyiciden başlayarak**bir **http isteği alındığında** ' ı seçin.
 
-    ![](./media/tutorial-send-email/receive-http-request.png)
+    ![Bir H T T isteği alındığında, ile Logic Apps tasarımcı için giriş sayfasını gösteren ekran görüntüsü.](./media/tutorial-send-email/receive-http-request.png)
 1. **Http isteğinin alındığı zaman**iletişim kutusunda, **şema oluşturmak Için örnek yük kullan**' ı seçin.
 
-    ![](./media/tutorial-send-email/generate-schema-with-payload.png)
+    ![Bir g/ç isteği oluştur iletişim kutusu ve seçilen şema için örnek yükü Kullan seçili olan ekran görüntüsü. ](./media/tutorial-send-email/generate-schema-with-payload.png)
 
 1. Aşağıdaki örnek JSON öğesini metin kutusuna kopyalayın ve **bitti**' yi seçin.
 
@@ -77,7 +77,7 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 
     Artık HTTP istek tetikleyicinizin URL 'sini görebilirsiniz. Daha sonra kullanılmak üzere kopyalamak için Kopyala simgesini seçin.
 
-    ![](./media/tutorial-send-email/http-request-url.png)
+    ![H T T P istek tetikleyicinizin U R L 'sini kopyalamak için Kopyala simgesini vurgulayan ekran görüntüsü.](./media/tutorial-send-email/http-request-url.png)
 
     Bu HTTP istek tanımı, bu mantıksal uygulamada yapmak istediğiniz her şeye yönelik bir tetikleyiciden, Gmail veya başka bir şey olmasını sağlar. Daha sonra bu URL 'YI App Service uygulamanızda çağıracaksınız. İstek tetikleyicisi hakkında daha fazla bilgi için bkz. [http istek/yanıt başvurusu](../connectors/connectors-native-reqres.md).
 
@@ -87,18 +87,18 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
     > SendGrid, MailChimp, Office 365 ve SalesForce gibi diğer tür Tümleştirmeler için arama yapabilirsiniz. Daha fazla bilgi için bkz. [Logic Apps belgeleri](https://docs.microsoft.com/azure/logic-apps/).
 1. **Gmail** Iletişim kutusunda **oturum aç** ' ı seçin ve e-postayı göndermek istediğiniz Gmail hesabında oturum açın.
 
-    ![](./media/tutorial-send-email/gmail-sign-in.png)
+    ![E-posta göndermek istediğiniz Gmail hesabında oturum açmak için kullandığınız Gmail iletişim kutusunu gösteren ekran görüntüsü.](./media/tutorial-send-email/gmail-sign-in.png)
 
 1. Oturum açıldıktan sonra, **to** metin kutusuna tıklayın ve dinamik içerik iletişim kutusu otomatik olarak açılır.
 
 1. **BIR http isteği alındığında** eylem ' in yanında, **daha fazla göster**' i seçin.
 
-    ![](./media/tutorial-send-email/expand-dynamic-content.png)
+    ![G/ç isteği alındığında eylem ' in yanında bulunan daha fazla göster düğmesini gösteren ekran görüntüsü.](./media/tutorial-send-email/expand-dynamic-content.png)
 
     Şimdi, daha önce kullandığınız örnek JSON verilerinden üç özelliği görmeniz gerekir. Bu adımda, HTTP isteğinden bu özellikleri kullanarak bir e-posta oluşturursunuz.
 1. **To** alanı için değeri seçerken **e-posta**' yı seçin. İsterseniz, dinamik içerik **Ekle**' ye tıklayarak dinamik içerik iletişim kutusunu kapatın.
 
-    ![](./media/tutorial-send-email/hide-dynamic-content.png)
+    ![E-posta seçeneğini gösteren ve dinamik çekişme Ekle seçeneği vurgulanmış ekran görüntüsü.](./media/tutorial-send-email/hide-dynamic-content.png)
 
 1. **Yeni parametre Ekle** açılan menüsünde **Konu** ve **gövde**' yi seçin.
 
@@ -107,17 +107,17 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 1. **Gövdeye**tıklayın ve aynı şekilde, **son**' u seçin. İmleci **süresi** sola taşı ve *Bu iş öğesinin son tarihini*yazın.
 
     > [!TIP]
-    > HTML içeriğini doğrudan e-posta gövdesinde düzenlemek istiyorsanız, Logic Apps tasarımcı penceresinin en üstündeki **kod görünümü** ' nü seçin. Yalnızca dinamik içerik kodunu koruduğunuzdan emin olun (örneğin, `@{triggerBody()?['due']}`)
+    > HTML içeriğini doğrudan e-posta gövdesinde düzenlemek istiyorsanız, Logic Apps tasarımcı penceresinin en üstündeki **kod görünümü** ' nü seçin. Yalnızca dinamik içerik kodunu koruduğunuzdan emin olun (örneğin, `@{triggerBody()?['due']}` )
     >
-    > ![](./media/tutorial-send-email/edit-rich-html-email.png) 
+    > ![E-posta gövdesinde H T M içeriğini doğrudan görüntülemek için kod görünümünü gösteren ekran görüntüsü.](./media/tutorial-send-email/edit-rich-html-email.png) 
 
 1. Ardından, HTTP tetikleyicisine zaman uyumsuz bir HTTP yanıtı ekleyin. HTTP tetikleyicisi ve Gmail eylemi arasında, **+** işaretine tıklayın ve **paralel dal Ekle**' yi seçin.
 
-    ![](./media/tutorial-send-email/add-http-response.png)
+    ![+ İşaretini gösteren ve bir paralel dal seçeneğinin vurgulandığı ekran görüntüsü.](./media/tutorial-send-email/add-http-response.png)
 
 1. Arama kutusunda, **Yanıt**' ı arayın ve ardından **Yanıt** eylemini seçin.
 
-    ![](./media/tutorial-send-email/choose-response-action.png)
+    ![Arama çubuğunu ve yanıt eylemini vurguladığını gösteren ekran görüntüsü.](./media/tutorial-send-email/choose-response-action.png)
 
     Varsayılan olarak, yanıt eylemi bir HTTP 200 gönderir. Bu öğreticide yeterince iyidir. Daha fazla bilgi için bkz. [http istek/yanıt başvurusu](../connectors/connectors-native-reqres.md).
 
@@ -127,7 +127,7 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 
 HTTP istek tetikleyicisinin URL 'sini daha önce kopyaladığınızdan emin olun. Hassas bilgiler içerdiğinden, kodu doğrudan koda yerleştirmemenizi en iyi uygulamadır. App Service, uygulama ayarlarını kullanarak bunun yerine bir ortam değişkeni olarak başvurabilirsiniz. 
 
-[Cloud Shell](https://shell.azure.com), uygulama ayarını aşağıdaki komutla oluşturun ( * \<app-name>*, * \<Resource-Group-Name>* ve * \<Logic-App-URL>* değiştirin):
+[Cloud Shell](https://shell.azure.com), uygulama ayarını aşağıdaki komutla oluşturun (değiştir *\<app-name>* , *\<resource-group-name>* ve *\<logic-app-url>* ):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings LOGIC_APP_URL="<your-logic-app-url>"
@@ -145,7 +145,7 @@ Kodunuzda, dil iskeyağınız için kullanılabilen herhangi bir HTTP istemci di
     }
     ```
 
-- İstek başlığı `Content-Type: application/json`içerir. 
+- İstek başlığı içerir `Content-Type: application/json` . 
 - Performansı iyileştirmek için, mümkünse isteği zaman uyumsuz olarak gönderin.
 
 Bir örnek görmek için aşağıdaki tercih edilen dil/çerçeve sekmesine tıklayın.
@@ -173,7 +173,7 @@ HttpResponseMessage result = await client.PostAsync(
 var statusCode = result.StatusCode.ToString();
 ```
 
-Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'DA SQL veritabanı ile bir ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md), `Todo` öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)bir e-posta onayı göndermek için kullanabilirsiniz. Yukarıdaki zaman uyumsuz kodu kullanmak için, oluşturma eylemini zaman uyumsuz olarak dönüştürün.
+Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'DA SQL veritabanı ile bir ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md), öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)bir e-posta onayı göndermek için kullanabilirsiniz `Todo` . Yukarıdaki zaman uyumsuz kodu kullanmak için, oluşturma eylemini zaman uyumsuz olarak dönüştürün.
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
@@ -199,13 +199,13 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Bu kod, tanıtım basitliği için yazılmıştır. Uygulamada, her istek için bir `HttpClient` nesne örneği oluşturmayın. Dayanıklı [http istekleri uygulamak Için ıhttpclientfactory kullanma](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)kılavuzundaki yönergeleri izleyin.
+> Bu kod, tanıtım basitliği için yazılmıştır. Uygulamada, `HttpClient` her istek için bir nesne örneği oluşturmayın. Dayanıklı [http istekleri uygulamak Için ıhttpclientfactory kullanma](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)kılavuzundaki yönergeleri izleyin.
 
-Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de bir ASP.NET Core ve SQL veritabanı uygulaması oluşturun](app-service-web-tutorial-dotnetcore-sqldb.md), `Todo` öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)bir e-posta onayı göndermek için bunu kullanabilirsiniz.
+Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de bir ASP.NET Core ve SQL veritabanı uygulaması oluşturun](app-service-web-tutorial-dotnetcore-sqldb.md), öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)bir e-posta onayı göndermek için bunu kullanabilirsiniz `Todo` .
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-Node. js ' de, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örneğin:
+Node.js, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örneğin:
 
 ```javascript
 // Requires npm install --save axios
@@ -228,7 +228,7 @@ var jsonData = {
 
 ```
 
-Bu kodu öğretici için örnek uygulamada test ediyorsanız [: Azure 'da bir Node. js ve MongoDB uygulaması oluşturun](app-service-web-tutorial-nodejs-mongodb-app.md), [Makale başarıyla kaydedildikten](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)sonra [Create işlevinde](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)bir e-posta onayı göndermek için kullanabilirsiniz.
+Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da bir Node.js ve MongoDB uygulaması oluşturun](app-service-web-tutorial-nodejs-mongodb-app.md), [Makale başarıyla kaydedildikten](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)sonra [Create işlevinde](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)bir e-posta onayı göndermek için bunu kullanabilirsiniz.
 
 ### <a name="php"></a>[PHP](#tab/php)
 
@@ -308,7 +308,7 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-[Linux üzerinde Azure App Service bir Ruby ve Postgres uygulaması oluşturmak](containers/tutorial-ruby-postgres-app.md)için örnek uygulamada bu kodu test ediyorsanız, bu işlemi [başarılı olduğunda @task.save ](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30) [oluşturma](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) eyleminde bir e-posta onayı göndermek için kullanabilirsiniz.
+[Linux üzerinde Azure App Service bir Ruby ve Postgres uygulaması oluşturmak](containers/tutorial-ruby-postgres-app.md)için örnek uygulamada bu kodu test ediyorsanız, bu işlemi [ @task.save başarılı olduğunda](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30) [oluşturma](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) eyleminde bir e-posta onayı göndermek için kullanabilirsiniz.
 
 ---
 

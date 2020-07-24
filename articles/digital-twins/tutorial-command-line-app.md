@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fcedec126c925ff218b8a0fb17b81dbf5ac1d769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391834"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044230"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Örnek bir istemci uygulamasıyla Azure dijital TWINS 'i keşfet
 
-Bu öğreticide, bir Azure dijital TWINS örneğiyle etkileşim kurmak için bir komut satırı istemci uygulaması uygulayan örnek bir uygulama tanıtılmıştır. İstemci uygulaması, [öğretici: istemci uygulaması kodu](tutorial-code.md)olarak yazılmış birine benzer.
+Bu öğreticide, bir Azure dijital TWINS örneğiyle etkileşim kurmak için bir komut satırı istemci uygulaması uygulayan örnek bir uygulama tanıtılmıştır. İstemci uygulaması, [*öğretici: istemci uygulaması kodu*](tutorial-code.md)olarak yazılmış birine benzer.
 
 Bu örneği, model yükleme, TWINS oluşturma ve değiştirme ve ilişki oluşturma gibi temel Azure dijital TWINS eylemlerini gerçekleştirmek için kullanabilirsiniz. Ayrıca, Azure dijital TWINS API 'Leri hakkında bilgi edinmek ve örnek projeyi istediğiniz gibi değiştirerek kendi komutlarınızı uygulamayı yapmak için örneğin koduna bakabilirsiniz.
 
@@ -129,7 +129,7 @@ CreateModels Room
 ```
 
 Modellerin üzerine yazılamaz, bu işlem artık bir hizmet hatası döndürüyor.
-Mevcut modellerin nasıl silineceği hakkındaki ayrıntılar için bkz. [nasıl yapılır: özel modelleri yönetme](how-to-manage-model.md).
+Mevcut modellerin nasıl silineceği hakkındaki ayrıntılar için bkz. [*nasıl yapılır: özel modelleri yönetme*](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -285,7 +285,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticideki proje, bir sonraki öğreticinin temelini oluşturur, [öğretici: uçtan uca bir çözümü bağlama](tutorial-end-to-end.md). Sonraki öğreticiye devam etmeyi planlıyorsanız, bu Azure dijital TWINS örneğini ve yapılandırılmış örnek uygulamayı kullanmaya devam etmek için ayarladığınız kaynakları koruyabilirsiniz.
+Bu öğreticideki proje, bir sonraki öğreticinin temelini oluşturur, [*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md). Sonraki öğreticiye devam etmeyi planlıyorsanız, bu Azure dijital TWINS örneğini ve yapılandırılmış örnek uygulamayı kullanmaya devam etmek için ayarladığınız kaynakları koruyabilirsiniz.
 * Bu durumda, örnek uygulama `DeleteAllTwins` ve `DeleteAllModels` komutlarını kullanarak, örneğiniz içindeki TWINS 'leri ve modelleri temizleyebilirsiniz. Bu, bir sonraki öğreticiye yönelik bir temiz kurşun işlem sağlar.
 
 Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin.
@@ -316,10 +316,10 @@ Bu öğreticide, örnekle etkileşimde bulunmak üzere bir örnek ve bir istemci
 Veri odaklı, uçtan uca bir senaryoyu tamamlamaya yönelik örnek komut satırı uygulamasını diğer Azure hizmetleriyle birlikte kullanmak için sonraki öğreticiye geçin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: uçtan uca bir çözümü bağlama](tutorial-end-to-end.md)
+> [*Öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)
 
 Ya da öğreticide çalıştığınız öğeler hakkında daha fazla bilgi edinmek için kavram belgelerini aramaya başlayın:
-* [Kavramlar: özel modeller](concepts-models.md)
+* [*Kavramlar: özel modeller*](concepts-models.md)
 
 Ayrıca, nasıl yapılır makalelerini başlatarak bu öğreticideki işlemlere daha ayrıntılı bir şekilde gidebilirsiniz:
-* [Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma](how-to-use-cli.md)
+* [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3790da8674732c50d55a85c84367f0d2fe3e08f5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: aacaec5ff632385a1f1686610370bb92eb63c349
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85256170"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017577"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Öğretici: Ekarda ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Ekarda 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -125,7 +125,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -151,12 +151,12 @@ Bu bölümde, Ekarda 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 1. **Yönetici**  ->  **hesabımı**' na tıklayın.
 
-    ![Ekarda yapılandırması](./media/ekarda-tutorial/ekarda.PNG)    
+    ![Ekarda yapılandırması](./media/ekarda-tutorial/ekarda.png)    
 
 1. Sayfanın en altında, SAML tümleştirmesini yapılandırabileceğiniz **SAML ayarları** bölümünü bulacaksınız.
 1. Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin:
 
-    ![Ekarda yapılandırması](./media/ekarda-tutorial/ekarda1.PNG)
+    ![Ekarda yapılandırması](./media/ekarda-tutorial/ekarda1.png)
 
     a. **Service Provider meta verileri** bağlantısına tıklayın ve dosyayı bilgisayarınıza kaydedin.
 
@@ -188,13 +188,14 @@ Erişim panelinde Ekarda kutucuğuna tıkladığınızda, SSO 'yu ayarladığın
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Ekarda deneyin](https://aad.portal.azure.com/)
 
+- Şirket logonuzu, istemcilerine ve iş arkadaşlarınıza markalı olarak eklemek üzere herhangi bir sayıda personeli göndermek için [Ekarda 'in kurumsal eCard çözümünü](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise) kullanın. [SSO çözümü olarak Ekarda](https://support.ekarda.com/#SSO-Implementation)sağlama hakkında daha fazla bilgi edinin.
+
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Gelişmiş görünürlük ve denetimlerle Ekarda koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

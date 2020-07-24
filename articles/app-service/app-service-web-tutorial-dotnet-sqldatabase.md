@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: a1fdc9e37084b1e8064bf642ff84646149c32ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050669"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Öğretici: Azure SQL veritabanı ile ASP.NET uygulamasını Azure 'a dağıtma
 
@@ -19,7 +19,7 @@ ms.locfileid: "84906132"
 
 ![Azure App Service yayımlanan ASP.NET uygulaması](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -32,7 +32,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -108,7 +108,7 @@ Oluşturulan web uygulaması adını koruyabilir veya başka bir benzersiz adla 
 
    | Ayar  | Önerilen değer | Daha fazla bilgi edinmek için |
    | ----------------- | ------------ | ----|
-   |**App Service planı**| myAppServicePlan | [App Service planları](../app-service/overview-hosting-plans.md) |
+   |**App Service Planı**| myAppServicePlan | [App Service planları](../app-service/overview-hosting-plans.md) |
    |**Konum**| Batı Avrupa | [Azure bölgeleri](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**Boyut**| Ücretsiz | [Fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
@@ -133,7 +133,7 @@ Bir veritabanı oluşturmadan önce, [mantıksal BIR SQL Server](../azure-sql/da
 
    ![Sunucu oluştur](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-4. **Tamam**'a tıklayın. **SQL Veritabanını Yapılandır** iletişim kutusunu henüz kapatmayın.
+4. **Tamam** düğmesine tıklayın. **SQL Veritabanını Yapılandır** iletişim kutusunu henüz kapatmayın.
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanı oluşturma
 
@@ -145,7 +145,7 @@ Bir veritabanı oluşturmadan önce, [mantıksal BIR SQL Server](../azure-sql/da
 
     ![Veritabanını yapılandır](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. **App Service Oluştur** iletişim kutusunda, yapılandırdığınız kaynaklar gösterilir. **Oluştur**'a tıklayın.
+2. **App Service Oluştur** iletişim kutusunda, yapılandırdığınız kaynaklar gösterilir. **Oluştur**’a tıklayın.
 
    ![oluşturduğunuz kaynaklar](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -415,3 +415,8 @@ Daha fazla kaynak:
 
 > [!div class="nextstepaction"]
 > [ASP.NET uygulamasını yapılandırma](configure-language-dotnet-framework.md)
+
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
+
+> [!div class="nextstepaction"]
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

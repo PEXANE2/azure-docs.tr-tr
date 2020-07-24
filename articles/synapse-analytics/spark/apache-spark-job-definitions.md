@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194493"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065624"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Öğretici: SYNAPSE Studio 'da Apache Spark iş tanımı oluşturma
 
@@ -24,11 +24,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 * PySpark (Python) için Apache Spark iş tanımı oluşturma
 * Spark (Scala) için Apache Spark iş tanımı oluşturma
-* .NET Spark için Apache Spark iş tanımı oluşturma (C#)
+* .NET Spark için Apache Spark iş tanımı oluşturma (C#/F #)
 * Apache Spark iş tanımını toplu iş olarak gönderme
 * Ardışık düzene Apache Spark iş tanımı ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığından emin olun:
 
@@ -42,7 +42,7 @@ Bu bölümde, PySpark (Python) için Apache Spark iş tanımı oluşturursunuz.
 
 1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
 
-2. **WORDCOUNT. jar** ve **shakespear.txt**indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) gidebilirsiniz. Ardından, bu dosyaları Azure depolama 'ya yükleyin: **veriler**' e tıklayın, **depolama hesapları**' nı seçin ve ilgili dosyaları ADLS 2. dosya sisteminize yükleyin. Dosyalarınız zaten Azure depolamadaki bu adımı atlayın. 
+2. **WORDCOUNT.py** ve **shakespear.txt**indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) gidebilirsiniz. Ardından, bu dosyaları Azure depolama 'ya yükleyin: **veriler**' e tıklayın, **depolama hesapları**' nı seçin ve ilgili dosyaları ADLS 2. dosya sisteminize yükleyin. Dosyalarınız zaten Azure depolamadaki bu adımı atlayın. 
 
      ![Python dosyasını karşıya yükle](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -57,9 +57,9 @@ Bu bölümde, PySpark (Python) için Apache Spark iş tanımı oluşturursunuz.
      |  Özellik   | Açıklama   |  
      | ----- | ----- |  
      |İş tanımı adı| Apache Spark iş tanımınız için bir ad girin. Bu ad, yayımlanana kadar dilediğiniz zaman güncelleştirilemeyebilir. Örnekli`job definition sample`|
-     |Ana tanım dosyası| İş için kullanılan ana dosya. Depolamadan bir Kopyala dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. Örnekli`abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
-     |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler. Örnekli`shakespeare.txt`|
-     |Başvuru dosyaları| Ana tanım dosyasında başvuru için kullanılan ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. Örnekli`abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |Ana tanım dosyası| İş için kullanılan ana dosya. Depolamadan bir Kopyala dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. Örnekli`abfss://…/path/to/wordcount.py`|
+     |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler. Örnekli`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Başvuru dosyaları| Ana tanım dosyasında başvuru için kullanılan ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. |
      |Spark havuzu| İş seçili Apache Spark havuzuna gönderilir.|
      |Spark sürümü| Apache Spark havuzunun çalıştığı Apache Spark sürümü.|
      |Yürütücüler| İş için belirtilen Apache Spark havuzunda verilecek yürüticilerinin sayısı.|
@@ -92,9 +92,9 @@ Bu bölümde, Apache Spark (Scala) için Apache Spark iş tanımı oluşturursun
      |  Özellik   | Açıklama   |  
      | ----- | ----- |  
      |İş tanımı adı| Apache Spark iş tanımınız için bir ad girin. Bu ad, yayımlanana kadar dilediğiniz zaman güncelleştirilemeyebilir. Örnekli`job definition sample`|
-     |Ana tanım dosyası| İş için kullanılan ana dosya. Depolamadan bir JAR dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. Örnekli`abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |Ana tanım dosyası| İş için kullanılan ana dosya. Depolamadan bir JAR dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. Örnekli`abfss://…/path/to/wordcount.jar`|
      |Ana sınıf adı| Tam tanımlayıcı veya ana tanım dosyasındaki ana sınıf. Örnekli`WordCount`|
-     |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler. Örnekli`abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
+     |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler. Örnekli`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |Başvuru dosyaları| Ana tanım dosyasında başvuru için kullanılan ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz.|
      |Spark havuzu| İş seçili Apache Spark havuzuna gönderilir.|
      |Spark sürümü| Apache Spark havuzunun çalıştığı Apache Spark sürümü.|
@@ -109,9 +109,9 @@ Bu bölümde, Apache Spark (Scala) için Apache Spark iş tanımı oluşturursun
      ![Scala tanımını Yayımla](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 
-## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>.NET Spark için Apache Spark iş tanımı oluşturma (C#)
+## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>.NET Spark için Apache Spark iş tanımı oluşturma (C#/F #)
 
-Bu bölümde, .NET Spark (C#) için Apache Spark iş tanımı oluşturursunuz.
+Bu bölümde, .NET Spark (C#/F #) için Apache Spark iş tanımı oluşturursunuz.
  1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
 
  2. **wordcount.zip** ve **shakespear.txt**indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) gidebilirsiniz. Ardından, bu dosyaları Azure depolama 'ya yükleyin: **veriler**' e tıklayın, **depolama hesapları**' nı seçin ve ilgili dosyaları ADLS 2. dosya sisteminize yükleyin. Dosyalarınız zaten Azure depolamadaki bu adımı atlayın. 
@@ -125,12 +125,13 @@ Bu bölümde, .NET Spark (C#) için Apache Spark iş tanımı oluşturursunuz.
  4. Apache Spark Iş tanımı ana penceresindeki dil açılan listesinden **.net Spark (C#/F #)** öğesini seçin.
 
  5. Apache Spark Iş tanımı için bilgi girin. Örnek bilgileri kopyalayabilirsiniz.
+    
      |  Özellik   | Açıklama   |  
      | ----- | ----- |  
      |İş tanımı adı| Apache Spark iş tanımınız için bir ad girin. Bu ad, yayımlanana kadar dilediğiniz zaman güncelleştirilemeyebilir. Örnekli`job definition sample`|
-     |Ana tanım dosyası| İş için kullanılan ana dosya. Apache Spark uygulamanızın .NET (yani, ana yürütülebilir dosya, Kullanıcı tanımlı işlevler ve diğer gerekli dosyaları içeren dll 'Ler) içeren bir ZIP dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. Örnekli`abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |Ana tanım dosyası| İş için kullanılan ana dosya. Apache Spark uygulamanızın .NET (yani, ana yürütülebilir dosya, Kullanıcı tanımlı işlevler ve diğer gerekli dosyaları içeren dll 'Ler) içeren bir ZIP dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. Örnekli`abfss://…/path/to/wordcount.zip`|
      |Ana yürütülebilir dosya| Ana tanım ZIP dosyasındaki ana yürütülebilir dosya. Örnekli`WordCount`|
-     |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler. Örnekli`abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
+     |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler. Örnekli`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |Başvuru dosyaları| Ana tanım ZIP dosyasına (diğer bir deyişle, bağımlı jliler, Kullanıcı tanımlı ek işlev dll 'Leri ve diğer yapılandırma dosyaları) dahil olmayan Apache Spark uygulamasını çalıştırmak için çalışan düğümleri için gereken ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz.|
      |Spark havuzu| İş seçili Apache Spark havuzuna gönderilir.|
      |Spark sürümü| Apache Spark havuzunun çalıştığı Apache Spark sürümü.|

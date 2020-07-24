@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 8c78913486610b171b7577d0bc239e0e7060038e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 32a3ec0caae303c37cad771b2bbbd1b7840512a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560386"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075433"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -35,11 +35,11 @@ Bu öğreticide şunları yapacaksınız:
 > * Sürücü zamanına göre en yakın elektrik araç doldurma istasyonuna bir yol bulun ve görselleştirin.
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. 
 
-Azure haritalar hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)bölümündeki yönergeleri izleyin. S1 fiyat katmanıyla bir Azure Maps hesap aboneliğine ihtiyacınız vardır. 
+Azure haritalar hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)bölümündeki yönergeleri izleyin. S1 fiyat katmanıyla bir Azure Maps hesap aboneliğine ihtiyacınız vardır. 
 
 Hesabınız için birincil abonelik anahtarını almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account)' daki yönergeleri izleyin.
 
@@ -62,7 +62,7 @@ Bu öğreticiyle birlikte izlemek için bir Azure Not defteri projesi oluşturma
  
     ![Yeni proje oluştur bölmesi](./media/tutorial-ev-routing/create-project-window.png)
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Projeniz oluşturulduktan sonra, bu [Jupyter Not defteri belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin.
 
@@ -82,12 +82,12 @@ Not Defteri dosyasında uygulanan işlevselliği anlamaya çalışın. Kodu Not 
 
 Kodu Not defterinde çalıştırmak için, aşağıdaki adımları uygulayarak paketleri proje düzeyine yüklersiniz:
 
-1. [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) [*requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) dosyasını indirin ve ardından projenize yükleyin.
+1. [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) dosyasını [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin ve ardından projenize yükleyin.
 1. Proje panosunda **proje ayarları**' nı seçin. 
 1. **Proje ayarları** bölmesinde **ortam** sekmesini seçin ve ardından **Ekle**' yi seçin.
 1. **Ortam kurulum adımları**altında aşağıdakileri yapın:   
-    a. İlk açılan listede, **requirements. txt**' yi seçin.  
-    b. İkinci açılan listede, *requirements. txt* dosyanızı seçin.  
+    a. İlk açılan listede **Requirements.txt**' yi seçin.  
+    b. İkinci aşağı açılan listede *requirements.txt* dosyanızı seçin.  
     c. Üçüncü açılan listede sürüm olarak **Python sürüm 3,6** ' ı seçin.
 1. **Kaydet**'i seçin.
 

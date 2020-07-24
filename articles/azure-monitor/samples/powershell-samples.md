@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055262"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Izleyici PowerShell örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek PowerShell komutları gösterilmektedir.
@@ -22,10 +22,10 @@ Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="set-up-powershell"></a>PowerShell 'i ayarlama
-Henüz yapmadıysanız, PowerShell 'i bilgisayarınızda çalışacak şekilde ayarlayın. Daha fazla bilgi için bkz. [PowerShell 'ı yüklemek ve yapılandırmak](/powershell/azure/overview).
+Henüz yapmadıysanız, PowerShell 'i bilgisayarınızda çalışacak şekilde ayarlayın. Daha fazla bilgi için bkz. [PowerShell 'ı yüklemek ve yapılandırmak](/powershell/azure/).
 
 ## <a name="examples-in-this-article"></a>Bu makaledeki örnekler
-Makalesindeki örneklerde Azure Izleyici cmdlet 'lerini nasıl kullanabileceğiniz gösterilmektedir. Ayrıca Azure izleyici [(Öngörüler) cmdlet 'Lerinde](https://docs.microsoft.com/powershell/module/az.applicationinsights)Azure izleyici PowerShell cmdlet 'lerinin tüm listesini inceleyebilirsiniz.
+Makalesindeki örneklerde Azure Izleyici cmdlet 'lerini nasıl kullanabileceğiniz gösterilmektedir. Ayrıca Azure izleyici [(Öngörüler) cmdlet 'Lerinde](/powershell/module/az.applicationinsights)Azure izleyici PowerShell cmdlet 'lerinin tüm listesini inceleyebilirsiniz.
 
 ## <a name="sign-in-and-use-subscriptions"></a>Oturum açın ve abonelikleri kullanın
 İlk olarak, Azure aboneliğinizde oturum açın.
@@ -53,7 +53,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>Etkinlik günlüğünü al
-[Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet 'ini kullanın.  Yaygın olarak kullanılan bazı örnekler aşağıda verilmiştir. Etkinlik günlüğü, son 90 gün işlem içerir. Bu saatten önceki tarihleri kullanmak bir hata mesajı elde ediyor.  
+[Get-AzLog](/powershell/module/az.monitor/get-azlog) cmdlet 'ini kullanın.  Yaygın olarak kullanılan bazı örnekler aşağıda verilmiştir. Etkinlik günlüğü, son 90 gün işlem içerir. Bu saatten önceki tarihleri kullanmak bir hata mesajı elde ediyor.  
 
 Aşağıdaki komutlarda ne zaman kullanılacağını doğrulamak için geçerli tarih/saat ne olduğunu öğrenin:
 ```powershell
@@ -116,7 +116,7 @@ Belirli bir uyarı kuralının geçmişini görüntülemek için, `Get-AzAlertHi
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-`Get-AzAlertHistory`Cmdlet 'i çeşitli parametreleri destekler. Daha fazla bilgi için bkz. [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+`Get-AzAlertHistory`Cmdlet 'i çeşitli parametreleri destekler. Daha fazla bilgi için bkz. [Get-AlertHistory](/previous-versions/azure/mt282453(v=azure.100)).
 
 ## <a name="retrieve-information-on-alert-rules"></a>Uyarı kuralları hakkında bilgi alma
 Aşağıdaki komutların tümü, "montest" adlı bir kaynak grubu üzerinde çalışır.
@@ -139,7 +139,7 @@ Hedef kaynak için ayarlanan tüm uyarı kurallarını alın. Örneğin, bir VM 
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule`diğer parametreleri destekler. Daha fazla bilgi için bkz. [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
+`Get-AzAlertRule`diğer parametreleri destekler. Daha fazla bilgi için bkz. [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
 
 ## <a name="create-metric-alerts"></a>Ölçüm uyarıları oluşturma
 `Add-AlertRule`Bir uyarı kuralı oluşturmak, güncelleştirmek veya devre dışı bırakmak için cmdlet 'ini kullanabilirsiniz.
@@ -148,9 +148,9 @@ Sırasıyla ve kullanarak e-posta ve Web kancası özellikleri oluşturabilirsin
 
 Aşağıdaki tabloda, ölçüm kullanılarak bir uyarı oluşturmak için kullanılan parametreler ve değerler açıklanmaktadır.
 
-| parametre | değer |
+| parametre | value |
 | --- | --- |
-| Adı |simpletestdiskwrite |
+| Name |simpletestdiskwrite |
 | Bu uyarı kuralının konumu |Doğu ABD |
 | ResourceGroup |montest |
 | Targetresourceıd |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -201,7 +201,7 @@ Aşağıdaki örnek, için ölçüm adı ve birim içeren bir tablo oluşturur.
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-İçin kullanılabilir seçeneklerin tam listesi `Get-AzMetricDefinition` [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)adresinde bulunabilir.
+İçin kullanılabilir seçeneklerin tam listesi `Get-AzMetricDefinition` [Get-MetricDefinitions](/previous-versions/azure/mt282458(v=azure.100))adresinde bulunabilir.
 
 ## <a name="create-and-manage-activity-log-alerts"></a>Etkinlik günlüğü uyarıları oluşturma ve yönetme
 `Set-AzActivityLogAlert`Bir etkinlik günlüğü uyarısı ayarlamak için cmdlet 'ini kullanabilirsiniz. Bir etkinlik günlüğü uyarısı, koşullarınızı öncelikle koşulların bir sözlüğü olarak tanımlamanızı ve sonra bu koşulları kullanan bir uyarı oluşturmanızı gerektirir.
@@ -272,7 +272,7 @@ Son olarak, daha önce oluşturduğunuz profili eklemek için otomatik ölçekle
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-Otomatik ölçeklendirme ayarlarını yönetme hakkında daha fazla bilgi için bkz. [Get-otomatik Scalesetting](https://msdn.microsoft.com/library/mt282461.aspx).
+Otomatik ölçeklendirme ayarlarını yönetme hakkında daha fazla bilgi için bkz. [Get-otomatik Scalesetting](/previous-versions/azure/mt282461(v=azure.100)).
 
 ## <a name="autoscale-history"></a>Otomatik ölçeklendirme geçmişi
 Aşağıdaki örnek, son otomatik ölçeklendirme ve uyarı olaylarını nasıl görüntüleyekullanabileceğinizi gösterir. Otomatik ölçeklendirme geçmişini görüntülemek için etkinlik günlüğü aramasını kullanın.
@@ -287,7 +287,7 @@ Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartT
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-Daha fazla bilgi için bkz. [Get-oto Scalehistory](https://msdn.microsoft.com/library/mt282464.aspx).
+Daha fazla bilgi için bkz. [Get-oto Scalehistory](/previous-versions/azure/mt282464(v=azure.100)).
 
 ### <a name="view-details-for-an-autoscale-setting"></a>Otomatik ölçeklendirme ayarının ayrıntılarını görüntüleme
 `Get-Autoscalesetting`Otomatik ölçeklendirme ayarı hakkında daha fazla bilgi almak için cmdlet 'ini kullanabilirsiniz.
@@ -399,4 +399,3 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 ```
 
 Bu komutlar, birden çok hedefe veri göndermek için birleştirilebilir.
-

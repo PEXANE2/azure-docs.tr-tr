@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 34cbba15f5798286be63171da0173f6214fe7822
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ac945b14091ae01cfad66c3776c84406583e491f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037126"
 ---
 # <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>CLı kullanarak SQL veritabanı denetimini ve Gelişmiş tehdit korumasını yapılandırın
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
-| | |
+| Komut | Açıklama |
 |---|---|
 | [az SQL DB Audit-Policy](/cli/azure/sql/db/audit-policy) | Bir veritabanı için denetim ilkesini ayarlar. |
 | [az SQL DB Threat-Policy](/cli/azure/sql/db/threat-policy) | Veritabanında Gelişmiş tehdit koruması ilkesini ayarlar. |

@@ -1,18 +1,18 @@
 ---
-title: 'Birden çok bağımlı hizmet çalıştırma: node. js & Visual Studio Code'
+title: 'Birden çok bağımlı hizmet çalıştırma: Node.js & Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Bu öğreticide, Azure Kubernetes hizmetinde Multi-Service Node. js uygulamasında hata ayıklamak için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
+description: Bu öğreticide Azure Dev Spaces ve Visual Studio Code Azure Kubernetes hizmetindeki çok Service Node.js uygulamasında hata ayıklama için nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c87dedda1db97a033526c809de735fe036120ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438302"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006991"
 ---
-# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: node. js ve Azure Dev Spaces ile Visual Studio Code
+# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: Azure Dev Spaces ile Node.js ve Visual Studio Code
 
 Bu öğreticide, dev alanlarının sağladığı bazı avantajlarla birlikte Azure Dev Spaces kullanarak çok hizmet uygulamaları geliştirmeyi öğreneceksiniz.
 
@@ -20,10 +20,10 @@ Bu öğreticide, dev alanlarının sağladığı bazı avantajlarla birlikte Azu
 
 Bu bölümde `mywebapi` adlı ikinci bir hizmet oluşturacak ve bu hizmetin `webfrontend` tarafından çağrılmasını sağlayacaksınız. Her hizmet ayrı kapsayıcılarda çalışır. Ardından her iki kapsayıcıda da hata ayıklayacaksınız.
 
-![](media/common/multi-container.png)
+![Diyagramda, mywebapi hizmeti çağıran webön uç hizmeti (bir okla gösterildiği gibi) gösterilmektedir.](media/common/multi-container.png)
 
 ### <a name="open-sample-code-for-mywebapi"></a>*mywebapi* için örnek kodu açma
-Bu kılavuza yönelik örnek `mywebapi` koda zaten sahip olmanız gerekir `samples` (Aksi takdirde, GitHub deposunu Indirmek için **Kopyala veya indir** ' https://github.com/Azure/dev-spaces i seçin.) Bu bölümün kodu ' de `samples/nodejs/getting-started/mywebapi`bulunur.
+Bu kılavuza yönelik örnek koda zaten sahip olmanız gerekir `mywebapi` `samples` (Aksi takdirde, https://github.com/Azure/dev-spaces GitHub deposunu indirmek Için **Kopyala veya indir** ' i seçin.) Bu bölümün kodu ' de bulunur `samples/nodejs/getting-started/mywebapi` .
 
 ### <a name="run-mywebapi"></a>*mywebapi* hizmetini çalıştırın
 1. *Ayrı bir VS Code penceresinde*`mywebapi` klasörünü açın.
@@ -62,7 +62,7 @@ Bu kılavuza yönelik örnek `mywebapi` koda zaten sahip olmanız gerekir `sampl
 
 ### <a name="debug-across-multiple-services"></a>Birden çok hizmette hata ayıklama
 1. Bu noktada, `mywebapi` hizmetinin hata ayıklayıcısı ekli bir şekilde çalışmaya devam ediyor olması gerekir. Devam etmiyorsa, `mywebapi` projesinde F5'e basın.
-1. `/` [8 `server.js`. satırdaki ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8)varsayılan Get işleyicisinin içinde bir kesme noktası ayarlayın.
+1. `/` [8 `server.js` . satırdaki ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8)varsayılan Get işleyicisinin içinde bir kesme noktası ayarlayın.
 1. `webfrontend` projesinde, `http://mywebapi` konumuna GET isteği göndermeden hemen önce bir kesme noktası ayarlayın.
 1. `webfrontend` projesinde F5'e basın.
 1. Web uygulamasını açın ve her iki hizmette de kodun üzerinden geçin. Web uygulamasında iki hizmet tarafından birleştirilmiş bir ileti görüntüleniyor olmalıdır: "Hello from webfrontend and Hello from mywebapi."

@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e4517adb0e8fb623864076b6ab2ffde9f92698d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127298"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022251"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Öğretici: Google Cloud Messaging kullanarak belirli Android cihazlarına anında iletme bildirimleri gönderin (kullanım dışı)
 
@@ -43,9 +43,9 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Mobil uygulamaya kategori seçimi ekleme.
 > * Etiketlerle bildirimler için kaydedilir.
 > * Etiketli bildirimler gönderme.
-> * Uygulamayı test edin
+> * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme][get-started] öğreticisinde oluşturduğunuz uygulamayı temel alır. Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme][get-started] öğreticisini tamamlayın.
 
@@ -53,7 +53,7 @@ Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
 
 İlk adım, mevcut ana etkinliğinize kullanıcının kaydolunacak kategorileri seçmesini sağlayan UI öğeleri eklemektir. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
 
-1. `res/layout/activity_main.xml file`Öğesini açın ve içeriği aşağıdaki ile değiştirin:
+1. Öğesini açın `res/layout/activity_main.xml file` ve içeriği aşağıdaki ile değiştirin:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -106,7 +106,7 @@ Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
             />
     </LinearLayout>
     ```
-2. `res/values/strings.xml` Dosyasını açın ve aşağıdaki satırları ekleyin:
+2. Dosyasını açın `res/values/strings.xml` ve aşağıdaki satırları ekleyin:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -118,10 +118,10 @@ Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     <string name="label_sports">Sports</string>
     ```
 
-    `main_activity.xml` Grafik düzeniniz aşağıdaki görüntüde şöyle görünmelidir:
+    `main_activity.xml`Grafik düzeniniz aşağıdaki görüntüde şöyle görünmelidir:
 
-    ![][A1]
-3. Sınıfınız ile aynı `Notifications` pakette bir sınıf oluşturun. `MainActivity`
+    ![Uygulama ekranı görünür olan bir geliştirme ortamının ekran görüntüsü. Uygulama, koda eklenen haber kategorilerini listeler.][A1]
+3. `Notifications`Sınıfınız ile aynı pakette bir sınıf oluşturun `MainActivity` .
 
     ```java
     import java.util.HashSet;
@@ -196,14 +196,14 @@ Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     ```
 
     Bu sınıf, bu cihazın alması gereken haber kategorilerini depolamak için yerel depolamayı kullanır. Ayrıca, bu kategoriler için kaydolma yöntemlerini içerir.
-4. Sınıfınıza `MainActivity` ve `NotificationHub` `GoogleCloudMessaging`için özel alanlarınızı kaldırın ve için `Notifications`bir alan ekleyin:
+4. `MainActivity`Sınıfınıza ve için özel alanlarınızı kaldırın `NotificationHub` `GoogleCloudMessaging` ve için bir alan ekleyin `Notifications` :
 
     ```java
     // private GoogleCloudMessaging gcm;
     // private NotificationHub hub;
     private Notifications notifications;
     ```
-5. Sonra `onCreate` yönteminde, `hub` alanı ve `registerWithNotificationHubs` yöntemini başlatmayı kaldırın. Ardından, `Notifications` sınıfının bir örneğini başlatmak için aşağıdaki satırları ekleyin.
+5. Sonra `onCreate` yönteminde, `hub` alanı ve yöntemini başlatmayı kaldırın `registerWithNotificationHubs` . Ardından, sınıfının bir örneğini başlatmak için aşağıdaki satırları ekleyin `Notifications` .
 
     ```java
     protected void onCreate(Bundle savedInstanceState) {
@@ -272,7 +272,7 @@ Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatm
 > [!NOTE]
 > Google Cloud Messaging (GCM) tarafından atanan registrationId değeri her zaman değişebileceğinden, bildirim hatalarını önlemek için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
 
-1. `MainActivity` Sınıfındaki `onCreate` yönteminin sonuna aşağıdaki kodu ekleyin:
+1. Sınıfındaki yönteminin sonuna aşağıdaki kodu ekleyin `onCreate` `MainActivity` :
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
@@ -313,7 +313,7 @@ Uygulama artık tamamlanmıştır ve kullanıcının kategori seçimini her değ
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="test-the-app"></a>Uygulamayı test edin
+## <a name="test-the-app"></a>Uygulamayı test etme
 
 1. Android Studio'da, Android cihazınız veya öykünücünüz üzerinde uygulamayı çalıştırın. Uygulama kullanıcı arabirimi, abone olunacak kategorileri seçmenize olanak sağlayan iki durumlu düğmeler sağlar.
 2. Bir veya daha fazla kategori iki durumlu düğmesini etkinleştirin ve **Abone ol**’a tıklayın. Uygulama, seçilen kategorileri etiketlere dönüştürür ve bildirim hub’ından seçilen etiketler için yeni bir cihaz kaydı ister. Kayıtlı kategoriler döndürülür ve bir bildirimde görüntülenir.
@@ -338,8 +338,8 @@ Bu öğreticide, kategorilere kaydolmuş belirli Android cihazlara yayın bildir
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

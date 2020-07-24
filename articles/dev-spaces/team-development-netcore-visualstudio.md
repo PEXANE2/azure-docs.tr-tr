@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde .NET Core uygulamasında takım geliştirme yapmak için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d917dc71ef02b5197ed8d20ec31c538a1af4c14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072970"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces ile .NET Core ve Visual Studio kullanarak takım geliştirme
 
@@ -36,7 +36,7 @@ Bu öğreticide, geliştiricilerin bir ekibinin geliştirme alanlarını kullana
 * Bazı geliştiriciler, hizmet bağımlılıklarının birçoğunu benzetmeye veya bu bağımlılıkların sahtelerini oluşturmaya başvurur. Bu yaklaşım yardımcı olabilir ancak bu hareketleri yönetmek, geliştirme maliyetini yakında etkileyebilir. Ayrıca, bu yaklaşım, geliştirme ortamınızın üretimden farklı olmasına yol açar ve bu da hafif hatalara neden olabilir.
 * Her türlü tümleştirme testini yapmak zor olur. Tümleştirme testi yalnızca yürütme sonrası gerçekleşebilir, bu da geliştirme döngüsünün sonraki aşamalarında sorunlarla karşılaşacağınız anlamına gelir.
 
-    ![](media/common/microservices-challenges.png)
+    ![Bir App Service ile bağımlılıkları arasındaki ilişkileri göstererek tümleştirme testinin karmaşıklığını gösteren bir görüntü.](media/common/microservices-challenges.png)
 
 ### <a name="work-in-a-shared-dev-space"></a>Paylaşılan geliştirme alanında çalışma
 Azure Dev Spaces ile, Azure’da *paylaşılan* bir geliştirme alanı ayarlayabilirsiniz. Her geliştirici, uygulamanın yalnızca kendisine ayrılan kısmıyla ilgilenebilir ve senaryolarının bağımlı olduğu diğer tüm hizmetleri ve bulut kaynaklarını barındırmakta olan bir geliştirme alanında yinelemeli olarak *yürütme öncesi kod* geliştirebilir. Bağımlılıklar her zaman günceldir ve geliştiriciler üretimi yansıtan bir şekilde çalışır.
@@ -45,7 +45,7 @@ Azure Dev Spaces ile, Azure’da *paylaşılan* bir geliştirme alanı ayarlayab
 Hizmetiniz için kod geliştirirken ve kodu iade etmeye hazır olmadan önce, kodun iyi durumda olmadığı zamanlar olacaktır. Hala yinelemeli olarak şekillendiriyor, test ediyor ve çözümlerle deney yapıyorsunuz. Azure Dev Spaces, ekip üyelerinizi bölme korkusu olmadan yalıtılmış olarak çalışmanızı sağlayan **alan** kavramını sunar.
 
 ## <a name="use-dev-spaces-for-team-development"></a>Takım geliştirmesi için geliştirme alanlarını kullanma
-*Webön uç* -> *mywebapi* örnek uygulamanızı kullanarak bu fikirleri somut bir örnekle gösterelim. Bir geliştiricinin, Scott, *mywebapi* hizmetinde değişiklik yapması gereken bir senaryo ve *yalnızca* bu hizmet. *Web ön* ucu Scott 'ın güncelleştirmesinin bir parçası olarak değişikliğe gerek kalmaz.
+*Webön uç*  ->  *mywebapi* örnek uygulamanızı kullanarak bu fikirleri somut bir örnekle gösterelim. Bir geliştiricinin, Scott, *mywebapi* hizmetinde değişiklik yapması gereken bir senaryo ve *yalnızca* bu hizmet. *Web ön* ucu Scott 'ın güncelleştirmesinin bir parçası olarak değişikliğe gerek kalmaz.
 
 Geliştirici _alanlarını kullanmadan Scott_ , bu güncelleştirmeyi geliştirmek ve test etmek için bazı yöntemlere sahiptir ve bunlardan hiçbiri idealdir:
 * Docker yüklü ve potansiyel olarak MiniKube daha güçlü bir geliştirme makinesi gerektiren tüm bileşenleri yerel olarak çalıştırın.
@@ -63,8 +63,8 @@ Geliştirici _alanlarını kullanmadan Scott_ , bu güncelleştirmeyi geliştirm
 1. **Çözüm Gezgini**’nde projeye sağ tıklayın ve **Özellikler**’i seçin.
 1. Azure Dev Spaces ayarlarını göstermek için sol tarafta bulunan **Hata ayıkla** sekmesini seçin.
 1. F5 veya CTRL + F5 tuşuna bastığınızda kullanılacak alanı oluşturmak için **Değiştir** ' i seçin.
-1. Boşluk açılan menüsünde ** \<yeni alan oluştur... öğesini seçin. \>**.
-1. Üst alanın ** \<None\>** olarak ayarlandığından emin olun ve alan adı **dev**' i girin. Tamam'a tıklayın.
+1. Boşluk açılan kutusunda öğesini seçin **\<Create New Space…\>** .
+1. Üst alanın olarak ayarlandığından emin olun **\<none\>** ve alan adı **dev**' i girin. Tamam'a tıklayın.
 1. Hata ayıklayıcı ekli olmadan _mywebapi_ çalıştırmak için CTRL + F5 tuşlarına basın.
 1. _Web ön uç_ projesiyle Visual Studio penceresine geçin ve aynı zamanda çalıştırmak için CTRL + F5 tuşlarına basın.
 
@@ -88,21 +88,21 @@ Yeni bir alan oluşturmak için aşağıdakileri yapın:
 2. **Çözüm Gezgini**’nde projeye sağ tıklayın ve **Özellikler**’i seçin.
 3. Azure Dev Spaces ayarlarını göstermek için sol tarafta bulunan **Hata ayıkla** sekmesini seçin.
 4. Buradan, F5 veya Ctrl+F5 tuşlarına basarken kullanılacak olan küme ve/veya alanı değiştirebilir ya da oluşturabilirsiniz. *Daha önce oluşturduğunuz Azure Dev Space’in seçildiğinden emin olun*.
-5. Boşluk açılan menüsünde ** \<yeni alan oluştur... öğesini seçin. \>**.
+5. Boşluk açılan kutusunda öğesini seçin **\<Create New Space…\>** .
 
-    ![](media/get-started-netcore-visualstudio/Settings.png)
+    ![Visual Studio Çözüm Gezgini hata ayıkla proje özellikleri sayfasındaki boşluk açılan menüsünde "yeni boşluk oluştur" seçimini gösteren ekran görüntüsü.](media/get-started-netcore-visualstudio/Settings.png)
 
-6. **Boşluk Ekle** iletişim kutusunda, üst alanı **dev**olarak ayarlayın ve yeni alanınız için bir ad girin. İş arkadaşlarınızın hangi alanda çalıştığınızı tanımlayabilmesi adına yeni alan için adınızı kullanabilirsiniz (örneğin, "scott"). **Tamam**'a tıklayın.
+6. **Boşluk Ekle** iletişim kutusunda, üst alanı **dev**olarak ayarlayın ve yeni alanınız için bir ad girin. İş arkadaşlarınızın hangi alanda çalıştığınızı tanımlayabilmesi adına yeni alan için adınızı kullanabilirsiniz (örneğin, "scott"). **Tamam** düğmesine tıklayın.
 
-    ![](media/get-started-netcore-visualstudio/AddSpace.png)
+    ![Takım geliştirmesi için yeni bir geliştirme alanı eklemeye yönelik boşluk Ekle iletişim kutusunu gösteren ekran görüntüsü.](media/get-started-netcore-visualstudio/AddSpace.png)
 
 7. Artık proje özellikleri sayfasında AKS kümenizi ve seçili yeni Alanı görmeniz gerekir.
 
-    ![](media/get-started-netcore-visualstudio/Settings2.png)
+    ![Visual Studio Çözüm Gezgini hata ayıkla proje özellikleri sayfasında "MyAKS" adlı AKS kümesini ve "Scott" alanını gösteren ekran görüntüsü.](media/get-started-netcore-visualstudio/Settings2.png)
 
 ### <a name="update-code-for-mywebapi"></a>*mywebapi* için güncelleştirme kodu
 
-1. *Mywebapi* projesinde, dosyadaki `string Get(int id)` `Controllers/ValuesController.cs` yöntemine aşağıdaki gibi bir kod değişikliği yapın:
+1. *Mywebapi* projesinde, `string Get(int id)` dosyadaki yöntemine aşağıdaki gibi bir kod değişikliği yapın `Controllers/ValuesController.cs` :
  
     ```csharp
     [HttpGet("{id}")]
@@ -117,14 +117,14 @@ Yeni bir alan oluşturmak için aşağıdakileri yapın:
 
 Aşağıda, farklı alanların nasıl çalıştığını anlamanıza yardımcı olacak bir diyagram verilmiştir. Mor yol, URL 'ye hiçbir boşluk yoksa kullanılan varsayılan yol olan _geliştirme_ alanı aracılığıyla bir isteği gösterir. Pembe yol, _geliştirme/Scott_ alanı aracılığıyla bir isteği gösterir.
 
-![](media/common/Space-Routing.png)
+![Yeni oluşturulan "dev/Scott" alanı ve varsayılan "dev" alanı aracılığıyla isteklerin yol adlarında ve yönlendirme içindeki farklılıkları gösteren bir diyagram.](media/common/Space-Routing.png)
 
 Azure Dev Spaces’ın bu yerleşik özelliği, her bir geliştiricinin alanlarındaki hizmetlerin tam yığınını yeniden oluşturmasına gerek kalmadan kodu paylaşılan bir ortamda uçtan uca test etmenize olanak sağlar. Bu yönlendirme, bu kılavuzun önceki adımında gösterildiği gibi yayma üst bilgilerinin uygulama kodunuzda iletilmesini gerektirir.
 
 ### <a name="test-code-running-in-the-_devscott_-space"></a>_Geliştirme/Scott_ alanında çalışan test kodu
-*Web ön*ucu ile birlikte yeni *mywebapi* sürümünüzü test etmek için tarayıcınızı *Web ön* ucu için genel erişim noktası URL 'sine (örneğin, `http://dev.webfrontend.123456abcdef.eus.azds.io`) açın ve hakkında sayfasına gidin. "Hello from webfrontend and Hello from mywebapi" özgün iletisini görmelisiniz.
+*Web ön*ucu ile birlikte yeni *mywebapi* sürümünüzü test etmek için tarayıcınızı *Web ön* ucu için genel erişim noktası URL 'sine (örneğin, `http://dev.webfrontend.123456abcdef.eus.azds.io` ) açın ve hakkında sayfasına gidin. "Hello from webfrontend and Hello from mywebapi" özgün iletisini görmelisiniz.
 
-Şimdi de http\://Scott.s.dev.webfrontend.123456abcdef.EUS.azds.io gibi bir şeyi okuyup tarayıcıyı YENILEMEK için URL 'nin bir parçası. *Mywebapi* projenizde ayarladığınız kesme noktasına isabet almalısınız. Devam etmek için F5’e tıkladığınızda tarayıcınızda yeni "Hello from webfrontend and mywebapi now says something new." iletisini artık görmeniz gerekir. Bunun nedeni, *mywebapi* içindeki güncelleştirilmiş kodunuzun yolunun _dev/Scott_ alanında çalışıyor olmasından kaynaklanır.
+Şimdi de http//scott.s.dev.webfrontend.123456abcdef.eus.azds.io gibi bir şeyi okuyup tarayıcıyı yenilemek için URL 'nin bir parçası \: . *Mywebapi* projenizde ayarladığınız kesme noktasına isabet almalısınız. Devam etmek için F5’e tıkladığınızda tarayıcınızda yeni "Hello from webfrontend and mywebapi now says something new." iletisini artık görmeniz gerekir. Bunun nedeni, *mywebapi* içindeki güncelleştirilmiş kodunuzun yolunun _dev/Scott_ alanında çalışıyor olmasından kaynaklanır.
 
 En son değişiklerinizi her zaman içeren bir _geliştirme_ alanınız olduğunda ve uygulamanızın bu öğretici bölümünde açıklandığı gibi devspace 'in alan tabanlı yönlendirmesinden yararlanmak üzere tasarlandığına ilişkin olarak, geliştirme alanlarının daha büyük uygulama bağlamında yeni özellikleri test ederken büyük ölçüde nasıl yardımcı olduğunu görmek daha kolay hale gelir. _Tüm_ Hizmetleri özel alanınıza dağıtmak zorunda kalmak yerine, _geliştirme_ve gerçekten üzerinde çalıştığınız hizmetlerden oluşan özel bir alan oluşturabilirsiniz. Geliştirme alanları yönlendirme altyapısı, bulma sırasında özel alanınızda çok sayıda hizmetten yararlanarak bu geri kalanı işleyerek, _geliştirme_ alanında çalışan en son sürüme doğru bir şekilde geri dönüş yapabilir. Daha iyi bir şekilde, _birden çok_ geliştirici, birbirini kesintiye uğratmadan kendi alanında aynı anda farklı hizmetler geliştirebilir.
 

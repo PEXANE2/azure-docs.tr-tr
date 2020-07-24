@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: BeeLine sahip Azure Active Directory Tümleştirmesi | Microsoft Docs'
-description: Azure Active Directory ve BeeLine arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Beeline sahip Azure Active Directory Tümleştirmesi | Microsoft Docs'
+description: Azure Active Directory ve Beeline arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,43 +16,43 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0e41b9578beb68f497c1a0fa7968064b6b91cee
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: cca1b4b9f27a8711d0340389359320a2f99a918a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018544"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Öğretici: BeeLine sahip Azure Active Directory tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Öğretici: Beeline sahip Azure Active Directory tümleştirme
 
-Bu öğreticide, BeeLine Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Azure AD ile BeeLine tümleştirme aşağıdaki avantajları sağlar:
+Bu öğreticide, Beeline Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Azure AD ile Beeline tümleştirme aşağıdaki avantajları sağlar:
 
-* Azure AD 'de BeeLine erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla BeeLine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Azure AD 'de Beeline erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Beeline (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini BeeLine ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini Beeline ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* BeeLine çoklu oturum açma etkin abonelik
+* Beeline çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* BeeLine, **IDP** tarafından başlatılan SSO 'yu destekler
+* Beeline yalnızca **IDP** tarafından başlatılan SSO destekleniyor
 
-## <a name="adding-beeline-from-the-gallery"></a>Galeriden BeeLine ekleme
+## <a name="adding-beeline-from-the-gallery"></a>Galeriden Beeline ekleme
 
-BeeLine 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize BeeLine eklemeniz gerekir.
+Beeline 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Beeline eklemeniz gerekir.
 
-**Galeriden BeeLine eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden Beeline eklemek için aşağıdaki adımları uygulayın:**
 
 1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
@@ -68,27 +68,27 @@ BeeLine 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden y
 
 4. Arama kutusuna **Beeline**yazın, sonuç panelinden **Beeline** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde BeeLine](common/search-new-app.png)
+     ![Sonuç listesinde Beeline](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Beeline ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve BeeLine içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve Beeline içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Azure AD çoklu oturum açma 'yı BeeLine ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD çoklu oturum açma 'yı Beeline ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[BeeLine çoklu oturum açmayı yapılandırın](#configure-beeline-single-sign-on)** .
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Beeline çoklu oturum açmayı yapılandırın](#configure-beeline-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan BeeLine 'da Britta Simon 'un bir karşılığı olacak şekilde **[Beeline test kullanıcısı oluşturun](#create-beeline-test-user)** .
+5. Kullanıcının Azure AD gösterimine bağlı olan Beeline 'da Britta Simon 'un bir karşılığı olacak şekilde **[Beeline test kullanıcısı oluşturun](#create-beeline-test-user)** .
 6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
 Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açmayı BeeLine ile yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD çoklu oturum açmayı Beeline ile yapılandırmak için aşağıdaki adımları uygulayın:
 
 1. [Azure Portal](https://portal.azure.com/), **Beeline** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
@@ -106,19 +106,18 @@ Azure AD çoklu oturum açmayı BeeLine ile yapılandırmak için aşağıdaki a
 
     ![BeeLine etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://projects.beeline.net/<instancename>`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://projects.beeline.com/<ProjInstanceName>`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
     ```https
-    https://projects.beeline.net/<instancename>/SSO_External.ashx
-    https://projects.beeline.net/<companyname>/SSO_External.ashx
+    https://projects.beeline.com/<ProjInstanceName>/SSO_External.ashx
     ```
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Beeline Client destek ekibine](https://www.beeline.com/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Beeline Client destek ekibine](https://www.beeline.com/support-beeline/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Beeline sahip uygulama, SAML onaylamalarını belirli bir biçimde bekliyor. Uygulamayla eşlenecek doğru kullanıcı tanımlayıcısını belirlemek için lütfen önce [Beeline Support ekibi](https://www.beeline.com/contact-us/) ile çalışın. Ayrıca, lütfen bu eşleme için kullanmak istedikleri öznitelik hakkında [Beeline destek ekibinin](https://www.beeline.com/contact-us/) kılavuzunu alın. Bu özniteliğin değerini uygulamanın **Kullanıcı öznitelikleri** sekmesinden yönetebilirsiniz. Aşağıdaki ekran görüntüsünde buna bir örnek gösterilmektedir. Burada, **Kullanıcı tanımlayıcısı** talebini, her başarılı SAML yanıtında Beeline uygulamaya gönderilecek BENZERSIZ Kullanıcı kimliği sağlayan **userPrincipalName** özniteliğiyle eşleştirdik.
+5. Beeline sahip uygulama, SAML onaylamalarını belirli bir biçimde bekliyor. Uygulamayla eşlenecek doğru kullanıcı tanımlayıcısını belirlemek için lütfen önce [Beeline Support ekibi](https://www.beeline.com/support-beeline/) ile çalışın. Ayrıca, lütfen bu eşleme için kullanmak istedikleri öznitelik hakkında [Beeline destek ekibinin](https://www.beeline.com/support-beeline/) kılavuzunu alın. Bu özniteliğin değerini uygulamanın **Kullanıcı öznitelikleri** sekmesinden yönetebilirsiniz. Aşağıdaki ekran görüntüsünde buna bir örnek gösterilmektedir. Burada, **Kullanıcı tanımlayıcısı** talebini, her başarılı SAML yanıtında Beeline uygulamaya gönderilecek BENZERSIZ Kullanıcı kimliği sağlayan **userPrincipalName** özniteliğiyle eşleştirdik.
 
     ![image](common/edit-attribute.png)
 
@@ -126,19 +125,14 @@ Azure AD çoklu oturum açmayı BeeLine ile yapılandırmak için aşağıdaki a
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. **BeeLine ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+7. [Azure Portal](https://portal.azure.com/), **Beeline** uygulama tümleştirmesi sayfasında, **Özellikler** ' i seçin ve Kullanıcı erişimi URL 'sini kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Kullanıcı erişim URL 'sini Kopyala](media/beeline-tutorial/client-access-url.png)
 
-    a. Oturum Açma URL’si
 
-    b. Azure AD tanımlayıcısı
+### <a name="configure-beeline-single-sign-on"></a>Beeline çoklu oturum açmayı yapılandırma
 
-    c. Oturum kapatma URL 'SI
-
-### <a name="configure-beeline-single-sign-on"></a>BeeLine çoklu oturum açmayı yapılandırma
-
-**Beeline** tarafta çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' den [Beeline destek ekibine](https://www.beeline.com/contact-us/)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Beeline** tarafta çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'ini ve kullanıcı erişim URL 'Sini Azure Portal özelliklerinden [Beeline destek ekibine](https://www.beeline.com/support-beeline/)göndermeniz gerekir. SAML SSO bağlantısı her iki tarafta da doğru şekilde yapılandırıldığından, meta veri ve Kullanıcı erişimi URL 'SI gerekir.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -163,11 +157,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, BeeLine erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Beeline erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Beeline**' yı seçin.
 
@@ -175,7 +169,7 @@ Bu bölümde, BeeLine erişimi vererek Azure çoklu oturum açma özelliğini ku
 
 2. Uygulamalar listesinde, **Beeline**' yı seçin.
 
-    ![Uygulamalar listesindeki BeeLine bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Beeline bağlantı](common/all-applications.png)
 
 3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
@@ -191,15 +185,15 @@ Bu bölümde, BeeLine erişimi vererek Azure çoklu oturum açma özelliğini ku
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-beeline-test-user"></a>BeeLine test kullanıcısı oluştur
+### <a name="create-beeline-test-user"></a>Beeline test kullanıcısı oluştur
 
-Bu bölümde, Beeline 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Beeline sahip uygulama, çoklu oturum açma yapılmadan önce uygulamada sağlanacak tüm kullanıcıları gerektirir. Bu nedenle, tüm bu kullanıcıları uygulamaya sağlamak için [Beeline destek](https://www.beeline.com/contact-us/) ekibiyle birlikte çalışın.
+Bu bölümde, Beeline içinde Britta Simon kullanıcısı oluşturacaksınız. Beeline sahip uygulamanın, çoklu oturum açma yapılmadan önce uygulamada tüm kullanıcıların sağlanması gerekir. Bu nedenle, tüm bu kullanıcıları uygulamaya sağlamak için [Beeline destek](https://www.beeline.com/support-beeline/) ekibiyle birlikte çalışın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde BeeLine Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız BeeLine 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Beeline Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız Beeline örnek için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 

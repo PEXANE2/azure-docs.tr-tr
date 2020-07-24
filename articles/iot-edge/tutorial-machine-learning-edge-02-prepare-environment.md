@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79296820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078936"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
@@ -38,11 +38,11 @@ Geliştirme sanal makinesi şu şekilde ayarlanır:
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
 * [VS Code uzantıları](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  * [, #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
   * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
@@ -52,7 +52,7 @@ Sanal makineyi oluşturmak ve yapılandırmak yaklaşık 30 dakika sürer.
 
 1. [Machine Learning ve IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) örnek deposunu yerel bilgisayarınıza kopyalayın veya indirin.
 
-1. PowerShell 'i yönetici olarak açın ve kodu indirdiğiniz kök dizin altında bulunan **\ıotedgeandmlsample\devvm** dizinine gidin. Kaynağınız için kök dizine başvuracağız `srcdir`.
+1. PowerShell 'i yönetici olarak açın ve kodu indirdiğiniz kök dizin altında bulunan **\ıotedgeandmlsample\devvm** dizinine gidin. Kaynağınız için kök dizine başvuracağız `srcdir` .
 
     ```powershell
     cd c:\srcdir\IoTEdgeAndMlSample\DevVM
@@ -66,7 +66,7 @@ Sanal makineyi oluşturmak ve yapılandırmak yaklaşık 30 dakika sürer.
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Create-AzureDevVM. ps1 ' i çalıştırın.
+1. Create-AzureDevVM.ps1 çalıştırın.
 
     ```powershell
     .\Create-AzureDevVm.ps1
@@ -114,9 +114,9 @@ Bir VM oluşturduğumuz artık öğreticiyi tamamlamaya yönelik gereken yazıl�
 
 1. VM oluşturmak için sağladığınız yönetici parolasını girip **Tamam**' a tıklayın.
 
-1. VM için sertifikayı kabul etmeniz istenir. **Evet**' i seçin.
+1. VM için sertifikayı kabul etmeniz istenir. **Evet**’i seçin.
 
-## <a name="install-visual-studio-code-extensions"></a>Visual Studio Code uzantıları 'nı yükler
+## <a name="install-visual-studio-code-extensions"></a>Visual Studio Code uzantılarını yükleme
 
 Geliştirme makinesine bağlandığınıza göre, geliştirme deneyimini kolaylaştırmak için Visual Studio Code bazı yararlı uzantılar ekleyin.
 
@@ -181,7 +181,7 @@ IoT Hub 'ı oluşturmanın bir parçası olarak, önceki bölümde çalıştık 
 
 1. [Azure Portal](https://portal.azure.com) açın ve bu öğretici için kullanmakta olduğunuz kaynak grubuna gidin.
 
-1. Kaynak listesinde, betiğin oluşturduğu IoT Hub seçin. Bu, gibi `IotEdgeAndMlHub-jrujej6de6i7w`rastgele karakterlerle biten bir ada sahip olacaktır.
+1. Kaynak listesinde, betiğin oluşturduğu IoT Hub seçin. Bu, gibi rastgele karakterlerle biten bir ada sahip olacaktır `IotEdgeAndMlHub-jrujej6de6i7w` .
 
 1. Sol bölme menüsünde, **mesajlaşma**altında **ileti yönlendirme**' yi seçin.
 

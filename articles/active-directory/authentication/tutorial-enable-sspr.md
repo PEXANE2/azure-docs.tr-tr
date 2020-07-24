@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035035"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Öğretici: kullanıcıların Self servis parola sıfırlama Azure Active Directory kullanarak hesaplarının kilidini açma veya parolaları sıfırlamalarını sağlama
 
 Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR), kullanıcılara yönetici veya yardım masası katılımı olmadan parolasını değiştirme veya sıfırlama yeteneği sağlar. Bir kullanıcının hesabı kilitliyse veya parolalarını unutduklarında, kendi kendilerini engellemeyi kaldırmak ve çalışmaya geri dönmek için istemleri izleyebilir. Bu özellik, bir Kullanıcı cihazlarındaki veya bir uygulamada oturum açarken yardım masası çağrılarını ve üretkenlik kaybını azaltır.
 
 > [!IMPORTANT]
-> Bu hızlı başlangıçta self servis parola sıfırlamayı etkinleştirme Yöneticisi gösterilir. Self servis parola sıfırlama için zaten kayıtlı bir son kullanıcı varsa ve hesabınıza geri dönmek istiyorsanız adresine gidin https://aka.ms/sspr .
+> Bu öğreticide, self servis parola sıfırlamayı etkinleştirme Yöneticisi gösterilmektedir. Self servis parola sıfırlama için zaten kayıtlı bir son kullanıcı varsa ve hesabınıza geri dönmek istiyorsanız adresine gidin https://aka.ms/sspr .
 >
 > BT ekibiniz kendi parolanızı sıfırlama özelliğini etkinleştirmediyseniz, ek yardım için yardım masasına ulaşın.
 
@@ -41,9 +41,9 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
 * Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Son Kullanıcı SSPR deneyimini Bu öğreticide bu hesabı kullanarak test edersiniz.
-    * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../add-users-azure-active-directory.md).
+    * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md).
 * Yönetici olmayan kullanıcının *SSPR-test-Group*gibi üyesi olduğu bir grup. Bu öğreticide bu grup için SSPR 'yi etkinleştirirsiniz.
-    * Bir grup oluşturmanız gerekiyorsa bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../active-directory-groups-create-azure-portal.md).
+    * Bir grup oluşturmanız gerekiyorsa bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-self-service-password-reset"></a>Kendi kendine parola sıfırlamayı etkinleştirme
 
@@ -78,8 +78,8 @@ Kullanıcıların hesaplarının kilidini açmak veya parolalarını sıfırlama
     * *Mobil uygulama kodu*
     * *E-posta*
     * *Cep telefonu*
-    * *Ofis telefonu*
-    * *Güvenlik soruları*
+
+    *Ofis telefonu* veya *güvenlik soruları*gibi ek kimlik doğrulama yöntemleri, iş gereksinimlerinize uyacak şekilde etkinleştirilebilir.
 
 1. Kimlik doğrulama yöntemlerini uygulamak için **Kaydet**' i seçin.
 
@@ -95,7 +95,7 @@ Bir yönetici bu iletişim bilgilerini el ile sağlayabilir veya kullanıcılar�
 
 ## <a name="configure-notifications-and-customizations"></a>Bildirimleri ve özelleştirmeleri yapılandırma
 
-Kullanıcılara hesap etkinlikleri hakkında bilgi sahibi olmak için, bir SSPR olayı gerçekleştiğinde e-posta bildirimleri gönderilmesini yapılandırabilirsiniz. Bu bildirimler, hem normal kullanıcı hesaplarını hem de yönetici hesaplarını kapsayabilir. Yönetici hesaplarında, bu bildirim, bir ayrıcalıklı yönetici hesabı parolası SSPR kullanılarak sıfırlandığında ek bir tanıma katmanı sağlar.
+Kullanıcılara hesap etkinlikleri hakkında bilgi sahibi olmak için, bir SSPR olayı gerçekleştiğinde e-posta bildirimleri gönderilmesini yapılandırabilirsiniz. Bu bildirimler, hem normal kullanıcı hesaplarını hem de yönetici hesaplarını kapsayabilir. Yönetici hesaplarında, bu bildirim, bir ayrıcalıklı yönetici hesabı parolası SSPR kullanılarak sıfırlandığında ek bir tanıma katmanı sağlar. Bir yönetici hesabında SSPR kullanıldığında tüm genel yöneticilere bildirim gönderilir.
 
 1. Sol taraftaki menüden **Bildirimler** sayfasında, aşağıdaki seçenekleri yapılandırın:
 
@@ -133,7 +133,7 @@ Bu serideki aşağıdaki öğreticide, parola geri yazma özelliğini yapıland�
 
 Bu öğreticinin bir parçası olarak yapılandırdığınız SSPR işlevini artık kullanmak istemiyorsanız, aşağıdaki adımları uygulayarak SSPR durumunu **none** olarak ayarlayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **parola sıfırlama** ' yı seçin.
 1. **Özellikler** sayfasında, *self servis parola sıfırlama etkin*seçeneği altında **hiçbiri**' ni seçin.
 1. SSPR değişikliğini uygulamak için **Kaydet**' i seçin.

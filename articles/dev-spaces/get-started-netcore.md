@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde bir .NET Core uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: d4078113f93159ef981a78a9917ed65bd03a304b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c73c191054c9eee183a762d0a029d6c8dc431ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013649"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturun: Azure Dev Spaces ile Visual Studio Code ve .NET Core
 
@@ -20,10 +20,10 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 - VS Code'u ve komut satırını kullanarak kapsayıcılarda yinelemeli kod geliştirin.
 - Kodunuzu bir ekip ortamında verimli bir şekilde geliştirip test edin.
 
-> [!Note]
+> [!NOTE]
 > Herhangi bir zamanda **takıldıysanız** , [sorun giderme](troubleshooting.md) bölümüne bakın.
 
-## <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
+## <a name="install-the-azure-cli"></a>Azure CLI'yi yükleme
 Azure Dev Spaces, çok az yerel makine kurulumu gerektirir. Geliştirme ortamı yapılandırmanızın büyük bölümü bulutta depolanır ve diğer kullanıcılarla paylaşılabilir. İlk olarak [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) indirip yükleyin.
 
 ### <a name="sign-in-to-azure-cli"></a>Azure CLI'da oturum açma
@@ -33,7 +33,7 @@ Azure'da oturum açın. Bir terminal penceresine aşağıdaki komutu yazın:
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Birden çok Azure aboneliğiniz varsa...
@@ -75,7 +75,7 @@ AKS kümenizi içeren kaynak grubuyla AKS kümesi adınızı kullanarak aşağı
    ```
    
 > [!IMPORTANT]
-> Azure Dev Spaces yapılandırma işlemi, varsa, kümedeki `azds` ad alanını kaldırır.
+> Azure Dev Spaces yapılandırma işlemi, varsa `azds` , kümedeki ad alanını kaldırır.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>VS Code için Kubernetes hata ayıklaması edinin
 Kubernetes hata ayıklaması gibi zengin özellikler VS Code kullanarak .NET Core ve Node.js geliştiricileri için kullanılabilir.
@@ -126,7 +126,7 @@ Komutun çıkışını gözden geçirin; ilerledikçe bazı şeyler göreceksini
 - Kapsayıcının uç noktaları hakkındaki bilgiler görüntülenir. Bizim örneğimizde, genel bir HTTP URL'si görmeyi bekleriz.
 - Yukarıdaki aşamaların başarıyla tamamlandığını varsayarsak, kapsayıcı başlatılırken `stdout` (ve `stderr`) çıkışını görmeye başlamalısınız.
 
-> [!Note]
+> [!NOTE]
 > Bu adımlar, `up` komutu ilk kez çalıştırıldığında biraz uzun sürer ama izleyen çalıştırmalar daha hızlı olacaktır.
 
 ### <a name="test-the-web-app"></a>Web uygulamasını test etme
@@ -151,15 +151,14 @@ webfrontend-5798f9dc44-99fsd: Now listening on: http://[::]:80
 webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 ```
 
-`up` Komutun çıktısındaki hizmet için genel URL 'yi belirler. İçinde `.azds.io`biter. Yukarıdaki örnekte, genel URL olur `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Komutun çıktısındaki hizmet için genel URL 'YI belirler `up` . İçinde biter `.azds.io` . Yukarıdaki örnekte, genel URL olur `http://webfrontend.1234567890abcdef1234.eus.azds.io/` .
 
-Web uygulamanızı görmek için genel URL 'YI bir tarayıcıda açın. Ayrıca, uyarı `stdout` ve `stderr` çıkış, Web uygulamanızla etkileşime geçerek *azds Trace* Terminal penceresine akışla kaydedilir. Ayrıca, sistemde ilerlediklerinde HTTP istekleri için izleme bilgilerini görürsünüz. Bu, geliştirme sırasında karmaşık çok hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen araçlar bu istek izlemeyi sağlar.
+Web uygulamanızı görmek için genel URL 'YI bir tarayıcıda açın. Ayrıca, uyarı `stdout` ve `stderr` Çıkış, Web uygulamanızla etkileşime geçerek *azds Trace* Terminal penceresine akışla kaydedilir. Ayrıca, sistemde ilerlediklerinde HTTP istekleri için izleme bilgilerini görürsünüz. Bu, geliştirme sırasında karmaşık çok hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen araçlar bu istek izlemeyi sağlar.
 
-![azds izleme Terminal penceresi](media/get-started-netcore/azds-trace.png)
+![bir z d s Trace Terminal penceresi](media/get-started-netcore/azds-trace.png)
 
-
-> [!Note]
-> Genel URL 'nin yanı sıra, konsol çıkışında görüntülenen alternatif `http://localhost:<portnumber>` URL 'yi de kullanabilirsiniz. Localhost URL'sini kullanırsanız kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte AKS'de çalışıyordur. Azure Dev Spaces, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak localhost bağlantı noktasını aks 'de çalışan kapsayıcıya eşler. Bu, yerel makinenizden hizmetle etkileşimde bulunmayı kolaylaştırır.
+> [!NOTE]
+> Genel URL 'nin yanı sıra, `http://localhost:<portnumber>` konsol çıkışında görüntülenen alternatif URL 'yi de kullanabilirsiniz. Localhost URL'sini kullanırsanız kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte AKS'de çalışıyordur. Azure Dev Spaces, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak localhost bağlantı noktasını aks 'de çalışan kapsayıcıya eşler. Bu, yerel makinenizden hizmetle etkileşimde bulunmayı kolaylaştırır.
 
 ### <a name="update-a-content-file"></a>İçerik dosyası güncelleştirme
 Azure Dev Spaces yalnızca kodu Kubernetes’te çalıştırmaya yönelik değildir; aynı zamanda kod değişikliklerinizin buluttaki bir Kubernetes ortamında uygulandığını hızlıca ve yinelenerek görmenizi sağlar.
@@ -173,7 +172,7 @@ Azure Dev Spaces yalnızca kodu Kubernetes’te çalıştırmaya yönelik değil
 1. Dosyayı kaydedin. Birkaç dakika sonra, Terminal penceresinde çalışan kapsayıcı içindeki bir dosyanın güncelleştirildiğini söyleyen bir ileti göreceksiniz.
 1. Tarayıcınıza gidip sayfayı yenileyin. Web sayfasında güncelleştirilmiş HTML’in gösterildiğini görürsünüz.
 
-Ne oldu? HTML ve CSS gibi içerik dosyalarında düzenleme yapılması için bir .NET Core web uygulamasında yeniden derleme yapılması gerekmez; bu nedenle, etkin bir `azds up` komutu değiştirilmiş içerik dosyalarını Azure’daki çalışan kapsayıcı ile otomatik olarak eşitler ve böylece içerik düzenlemelerinizi hemen görebilirsiniz.
+Neler oldu? HTML ve CSS gibi içerik dosyalarında düzenleme yapılması için bir .NET Core web uygulamasında yeniden derleme yapılması gerekmez; bu nedenle, etkin bir `azds up` komutu değiştirilmiş içerik dosyalarını Azure’daki çalışan kapsayıcı ile otomatik olarak eşitler ve böylece içerik düzenlemelerinizi hemen görebilirsiniz.
 
 ### <a name="update-a-code-file"></a>Kod dosyasını güncelleştirme
 .NET Core uygulamasının güncelleştirilmiş uygulama ikili dosyalarını yeniden derleyip oluşturması gerektiğinden, kod dosyalarının güncelleştirilmesi biraz daha fazla iş gerektirir.
@@ -191,9 +190,9 @@ Bununla birlikte, kod geliştirmek için sonraki bölümde öğreneceğiniz daha
 
 Bu bölümde, Azure'da çalıştırılan kapsayıcımızda doğrudan hata ayıklamak için VS Code kullanacaksınız. Ayrıca daha hızlı bir düzenleme-çalıştırma-test döngüsü elde etmeyi öğreneceksiniz.
 
-![](media/common/edit-refresh-see.png)
+![Diyagramda üç aşamalı bir geliştirme döngüsü gösterilmektedir: kodu düzenleme, kapsayıcıyı yenileme ve güncelleştirme.](media/common/edit-refresh-see.png)
 
-> [!Note]
+> [!NOTE]
 > Herhangi bir zamanda **kilitlenirseniz**[Sorun giderme](troubleshooting.md) bölümüne başvurun veya bu sayfada bir yorum paylaşın.
 
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Hata ayıklama varlıklarını VS Code uzantısıyla başlatma
@@ -203,16 +202,16 @@ VS Code'un Azure Dev Space'imizle iletişim kurabilmesi için önce kod projeniz
 
 Bu, `.vscode` klasörünün altında Azure Dev Spaces için hata ayıklama yapılandırması ekler. Bu komut, projeyi dağıtım için yapılandıran `azds prep` komutuyla karıştırılmamalıdır.
 
-![](media/common/command-palette.png)
+![Bu ekran görüntüsünde, komut paleti penceresinden "Azure Dev Spaces: Azure Dev Spaces için yapılandırma dosyalarını hazırla" komutunun seçimi gösterilmektedir.](media/common/command-palette.png)
 
 
 ### <a name="select-the-azds-debug-configuration"></a>AZDS hata ayıklama yapılandırmasını seçme
 1. Hata Ayıklama görünümünü açmak için VS Code’un yan tarafındaki **Etkinlik Çubuğu** içinde Hata Ayıklama simgesine tıklayın.
 1. Etkin hata ayıklama yapılandırması olarak **.NET Core Başlatma (AZDS)** öğesini seçin.
 
-![](media/get-started-netcore/debug-configuration.png)
+![Ekran görüntüsü Visual Studio Code penceresinin sol üst köşesindedir. Hata ayıklama simgesi vurgulanır, sol bölmede "hata AYıKLA" ve başlığın sağındaki bir açılan listede "nokta NET Core Launch (A Z S) gösterilmektedir.](media/get-started-netcore/debug-configuration.png)
 
-> [!Note]
+> [!NOTE]
 > Komut Paletinde herhangi bir Azure Dev Spaces komutu görmüyorsanız, Azure Dev Spaces için VS Code uzantısını yüklediğinizden emin olun. VS Code içinde açtığınız çalışma alanının azds.yaml dosyasını içeren klasör olduğundan emin olun.
 
 
@@ -221,10 +220,10 @@ Kubernetes 'te kodunuzun hatalarını ayıklamak için **F5** tuşuna basın.
 
 `up` komutunda olduğu gibi kod, geliştirme ortamıyla eşitlenir ve bir kapsayıcı derlenip Kubernetes’e dağıtılır. Elbette bu kez, hata ayıklayıcı uzak kapsayıcıya eklenir.
 
-> [!Tip]
+> [!TIP]
 > VS Code durum çubuğu, hata ayıklayıcının ekli olduğunu belirten turuncu kullanacaktır. Ayrıca, sitenizi açmak için kullanabileceğiniz tıklatılabilir bir URL görüntüler.
 
-![](media/common/vscode-status-bar-url.png)
+![Ekran görüntüsünde Visual Studio Code penceresinin en altı gösterilmektedir. Turuncu durum çubuğu son satırdır. Web sitesini açmak için bir U R L içerir.](media/common/vscode-status-bar-url.png)
 
 Sunucu tarafı kod dosyasında (örneğin `Controllers/HomeController.cs` kaynak dosyasındaki `About()` işlevi içinde) bir kesme noktası belirleyin. Tarayıcı sayfasının yenilenmesi, kesme noktasına ulaşılmasına neden olur.
 
@@ -243,7 +242,7 @@ public IActionResult About()
 
 Dosyayı kaydedin ve **Hata Ayıkla eylemleri bölmesinde** **Yeniden Başlat** düğmesine tıklayın. 
 
-![](media/common/debug-action-refresh.png)
+![Hata ayıklama eylemleri bölmesi, sayfanın üst merkezinde (sayfa başlığının hemen altında) küçük bir bölmesidir. Bir dairesel ok olan yeniden Başlat düğmesi vurgulanır. Düğmenin üzerine gelme resmi "Restart (Control + SHIFT + F 5)" ' tir.](media/common/debug-action-refresh.png)
 
 Azure Dev Spaces, her kod düzenlemesi yapıldığında yeni bir kapsayıcı görüntüsünü yeniden derleme ve yeniden dağıtmayı içeren uzun süreli işlem yerine, mevcut kapsayıcı içindeki kodu artımlı bir şekilde yeniden derleyerek daha hızlı bir düzenleme/hata ayıklama döngüsü sağlar.
 

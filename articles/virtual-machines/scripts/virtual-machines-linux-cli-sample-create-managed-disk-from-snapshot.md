@@ -1,5 +1,5 @@
 ---
-title: Snapshot-CLı örneğinden yönetilen disk oluşturma
+title: Snapshot (Linux)-CLı örneğinden yönetilen disk oluşturma
 description: Azure CLI Betik Örneği - Anlık görüntüden yönetilen disk oluşturma
 services: virtual-machines-linux
 documentationcenter: storage
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: c0c009573393a65d901634fca8de3cf03df6b874
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c5e9e16b81c0befb6524a284d63fb2e106bff7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085328"
 ---
-# <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>CLI ile anlık görüntüden yönetilen disk oluşturma
+# <a name="create-a-managed-disk-from-a-snapshot-with-cli-linux"></a>CLı (Linux) ile anlık görüntüden yönetilen disk oluşturma
 
 Bu betik bir anlık görüntüden yönetilen disk oluşturur. İşletim sistemi anlık görüntülerinden ve veri disklerinden bir sanal makineyi geri yüklemek için bu betiği kullanın. İlgili anlık görüntülerden işletim sistemi ve veri diskleri oluşturun ve sonra yönetilen diskleri ekleyerek yeni bir sanal makine oluşturun. Ayrıca, anlık görüntülerden oluşturulan veri disklerini ekleyerek mevcut bir VM'nin veri disklerini geri yükleyebilirsiniz.
 
@@ -42,13 +42,13 @@ Bu betik bir anlık görüntüden yönetilen disk oluşturmak için aşağıdaki
 
 | Komut | Notlar |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Anlık görüntünün kaynak ve grup özelliklerini kullanarak tüm özelliklerini alır. Yönetilen diski oluşturmak için kimlik özelliği kullanılır.  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk) | Yönetilen bir anlık görüntünün anlık görüntü kimliğini kullanarak yönetilen disk oluşturur |
+| [az snapshot show](/cli/azure/snapshot) | Anlık görüntünün kaynak ve grup özelliklerini kullanarak tüm özelliklerini alır. Yönetilen diski oluşturmak için kimlik özelliği kullanılır.  |
+| [az disk create](/cli/azure/disk) | Yönetilen bir anlık görüntünün anlık görüntü kimliğini kullanarak yönetilen disk oluşturur |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Yönetilen diski işletim sistemi diski olarak ekleyerek sanal makine oluşturma](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek sanal makine ve yönetilen disk CLI betiği örnekleri, [Azure Linux VM belgeleri](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) içinde bulunabilir.

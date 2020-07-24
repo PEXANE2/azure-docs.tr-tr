@@ -2,18 +2,18 @@
 title: Sipariş Azure Data Box öğretici | Microsoft Docs
 description: Dağıtım önkoşullarını ve Azure Data Box siparişi etmeyi öğrenin
 services: databox
-author: alkohli
+author: priestlg
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 04/23/2019
-ms.author: alkohli
-ms.openlocfilehash: cfb95f2fb02544197f9b2796a705844e33eca201
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.date: 07/21/2020
+ms.author: v-grpr
+ms.openlocfilehash: fd841dee5f3a845d793255f5e13b416fb1add4f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007426"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -40,7 +40,7 @@ Cihazı dağıtmadan önce Data Box hizmet ve cihaz için aşağıdaki yapıland
 
 [!INCLUDE [Prerequisites](../../includes/data-box-deploy-ordered-prerequisites.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 Azure 'da oturum açabilir ve Azure CLı komutlarını iki şekilde çalıştırabilirsiniz:
 
@@ -49,11 +49,15 @@ Azure 'da oturum açabilir ve Azure CLı komutlarını iki şekilde çalıştır
 
 Öğretici için Windows PowerShell aracılığıyla Azure CLı kullanıyoruz, ancak her iki seçenekten birini de seçebilirsiniz.
 
-### <a name="install-the-cli-locally"></a>CLI’yi yerel olarak yükleme
+### <a name="for-azure-cli"></a>Azure CLı için
+
+Başlamadan önce aşağıdakilerden emin olun:
+
+#### <a name="install-the-cli-locally"></a>CLI’yi yerel olarak yükleme
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sürüm 2.0.67 veya üstünü yükler. Alternatif olarak, [MSI kullanarak yükleyebilirsiniz](https://aka.ms/installazurecliwindows).
 
-#### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+**Azure'da oturum açma**
 
 Bir Windows PowerShell komut penceresi açın ve [az Login](/cli/azure/reference-index#az-login) komutuyla Azure 'da oturum açın:
 
@@ -83,7 +87,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 ]
 ```
 
-#### <a name="install-the-azure-data-box-cli-extension"></a>Azure Data Box CLı uzantısını yükler
+**Azure Data Box CLı uzantısını yükler**
 
 Azure Data Box CLı komutlarını kullanabilmeniz için, uzantıyı yüklemeniz gerekir. Azure CLı uzantıları, henüz çekirdek CLı 'nin bir parçası olarak gönderilmeyen deneysel ve yayın öncesi komutlara erişmenizi sağlar. Uzantılar hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
 
@@ -115,82 +119,90 @@ Uzantı başarıyla yüklenirse aşağıdaki çıktıyı görürsünüz:
         Please let us know how we are doing: https://aka.ms/clihats
 ```
 
-### <a name="use-azure-cloud-shell"></a>Azure Cloud Shell kullanma
+#### <a name="use-azure-cloud-shell"></a>Azure Cloud Shell kullanma
 
-CLı komutlarını çalıştırmak için tarayıcınız aracılığıyla Azure 'da barındırılan etkileşimli kabuk ortamı [Azure Cloud Shell](https://shell.azure.com/)kullanabilirsiniz. Azure Cloud Shell, Azure hizmetleriyle bash veya Windows PowerShell 'i destekler. Azure CLı, önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış. Azure portal sağ üst kısmındaki menüdeki Cloud Shell düğmesine tıklayın:
+CLı komutlarını çalıştırmak için tarayıcınız aracılığıyla Azure 'da barındırılan etkileşimli kabuk ortamı [Azure Cloud Shell](https://shell.azure.com/)kullanabilirsiniz. Azure Cloud Shell, Azure hizmetleriyle bash veya Windows PowerShell 'i destekler. Azure CLı, önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış. Azure portal sağ üst kısmında bulunan menüdeki Cloud Shell düğmesini seçin:
 
 ![Cloud Shell](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
 
 Düğme, bu nasıl yapılır makalesinde özetlenen adımları çalıştırmak için kullanabileceğiniz etkileşimli bir kabuk başlatır.
 
-<!-- To start Azure Cloud Shell:
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
 
-| Option | Example/Link |
-|-----------------------------------------------|---|
-| Select **Try It** in the upper-right corner of a code block. Selecting **Try It** doesn't automatically copy the code to Cloud Shell. | ![Example of Try It for Azure Cloud Shell](../../includes/media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| Go to [https://shell.azure.com](https://shell.azure.com), or select the **Launch Cloud Shell** button to open Cloud Shell in your browser. | [![Launch Cloud Shell in a new window](../../includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
-| Select the **Cloud Shell** button on the menu bar at the upper right in the [Azure portal](https://portal.azure.com). | ![Cloud Shell button in the Azure portal](../../includes/media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
+[!INCLUDE [Prerequisites](../../includes/data-box-deploy-ordered-prerequisites.md)]
 
-To run the code in this article in Azure Cloud Shell:
+### <a name="for-azure-powershell"></a>Azure PowerShell için
 
-1. Start Cloud Shell.
+Başlamadan önce şunları yaptığınızdan emin olun:
 
-2. Select the **Copy** button on a code block to copy the code.
+* Windows PowerShell 6.2.4 veya üstünü yükler.
+* Azure PowerShell (AZ) modülünü yükler.
+* Azure Data Box (az. DataBox) modülünü yükler.
+* Azure 'da oturum açın.
 
-3. Paste the code into the Cloud Shell session by selecting **Ctrl**+**Shift**+**V** on Windows and Linux or by selecting **Cmd**+**Shift**+**V** on macOS.
+#### <a name="install-azure-powershell-and-modules-locally"></a>Azure PowerShell ve modülleri yerel olarak yükler
 
-4. Select **Enter** to run the code.
+**Windows PowerShell 'i yükler veya yükseltin**
 
-For this tutorial, we use Windows PowerShell command prompt to run Azure CLI commands. -->
+Windows PowerShell sürüm 6.2.4 veya sonraki bir sürümün yüklü olması gerekir. Hangi PowerShell sürümünü yüklebileceğinizi öğrenmek için şunu çalıştırın: `$PSVersionTable` .
 
-<!-- This goes away, we'll show this later when we show how to order a Data Box. -->
-<!-- ## Change the output format type
+Şu çıkışı görürsünüz:
 
-All Azure CLI commands will use json as the output format by default unless you change it. You can change the output format by using the global parameter `--output <output-format>`. -->
-
-<!-- ```azurecli
-
-az databox job <command> --output <output-format>
-
+```azurepowershell
+    PS C:\users\gusp> $PSVersionTable
+    
+    Name                           Value
+    ----                           -----
+    PSVersion                      6.2.3
+    PSEdition                      Core
+    GitCommitId                    6.2.3
+    OS                             Microsoft Windows 10.0.18363
+    Platform                       Win32NT
+    PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
+    PSRemotingProtocolVersion      2.3
+    SerializationVersion           1.1.0.1
+    WSManStackVersion              3.0
 ```
 
-Azure Data Box CLI commands support the following output formats:
+Sürümünüz 6.2.4 'den düşükse, Windows PowerShell sürümünüzü yükseltmeniz gerekir. Windows PowerShell 'in en son sürümünü yüklemek için bkz. [ınstall Azure PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7).
 
-* json (default setting)
-* jsonc
-* table
-* tsv
-* yaml
-* yamlc
-* none
+**Azure PowerShell ve Data Box modülleri 'ni yükler**
 
-You can use the parameter `--output` with all Azure Data Box CLI commands. -->
+Azure Data Box sıralamak için Azure PowerShell kullanmak üzere Azure PowerShell modüllerini yüklemeniz gerekir. Azure PowerShell modüllerini yüklemek için:
 
-<!-- To set the output format to yaml: -->
+1. [Azure PowerShell az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)' ü yükler.
+2. Ardından komutunu kullanarak az. DataBox öğesini kullanın `Install-Module -Name Az.DataBox` .
 
-<!-- ```azurecli
-PS C:\Windows>az databox job show --resource-group "myresourcegroup" --name "mydataboxorder" --output "yaml"
+```azurepowershell
+PS C:\PowerShell\Modules> Install-Module -Name Az.DataBox
+PS C:\PowerShell\Modules> Get-InstalledModule -Name "Az.DataBox"
 
-``` -->
-<!-- 
-To set the out format to tabular form (easier to read):
+Version              Name                                Repository           Description
+-------              ----                                ----------           -----------
+0.1.1                Az.DataBox                          PSGallery            Microsoft Azure PowerShell - DataBox ser…
+```
 
-```azurecli
-PS C:\Windows>az databox job show --resource-group "myresourcegroup" --name "mydataboxorder" --output "table"
+#### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-``` -->
+Bir Windows PowerShell komut penceresi açın ve [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) komutuyla Azure 'da oturum açın:
 
-<!-- Here's the example output of `az databox job show` after changing the output format to table:
+```azurepowershell
+PS C:\Windows> Connect-AzAccount
+```
 
-```azurecli
-PS C:\WINDOWS\system32> az databox job show --resource-group "GDPTest" --name "mydataboxtest3" --output "table"
-Command group 'databox job' is experimental and not covered by customer support. Please use with discretion.
+İşte başarılı bir oturum açma çıkışı:
 
-DeliveryType    IsCancellable    IsCancellableWithoutFee    IsDeletable    IsShippingAddressEditable    Location    Name            ResourceGroup    StartTime                         Status
---------------  ---------------  -------------------------  -------------  ---------------------------  ----------  --------------  ---------------  --------------------------------  -------------
-NonScheduled    True             True                       False          True                         westus      mydataboxorder  myresourcegroup          2020-06-11T22:05:49.436622+00:00  DeviceOrdered
+```output
+WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FSBFZMBKC to authenticate.
 
-``` -->
+Account              SubscriptionName                          TenantId                             Environment
+-------              ----------------                          --------                             -----------
+gusp@contoso.com     MySubscription                            aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa AzureCloud
+
+PS C:\Windows\System32>
+```
+
+Windows PowerShell kullanarak Azure 'da oturum açma hakkında ayrıntılı bilgi için bkz. [Azure PowerShell Ile oturum açma](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 ---
 
@@ -201,61 +213,87 @@ NonScheduled    True             True                       False          True 
 Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
 1. Microsoft Azure kimlik bilgilerini kullanarak şu URL’de oturum açın: [https://portal.azure.com](https://portal.azure.com).
-2. **+ Kaynak oluştur**’a tıklayın ve *Azure Data Box* araması yapın. **Azure Data Box**'a tıklayın.
+2. **+ Kaynak oluştur**’u seçin ve *Azure Data Box* araması yapın. **Azure Data Box**’ı seçin.
 
-   [![Azure Data Box arama 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
+   ![Azure Data Box seçin](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
-3. **Oluştur**'a tıklayın.
+3. **Oluştur**’u seçin.
+
+   ![Azure Data Box seçin](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Data Box'ın bölgenizde kullanılabilir olup olmadığını kontrol edin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula**'yı seçin.
 
     |Ayar  |Değer  |
     |---------|---------|
-    |Abonelik     | Data Box hizmeti için bir EA, CSP veya Azure sponsorluk aboneliği seçin. <br> Abonelik fatura hesabınıza bağlıdır.       |
     |Aktarım türü     | **Azure’a içeri aktar**’ı seçin.        |
+    |Abonelik     | Data Box hizmeti için bir EA, CSP veya Azure sponsorluk aboneliği seçin. <br> Abonelik fatura hesabınıza bağlıdır.       |
+    |Kaynak Grubu | Var olan bir kaynak grubunu seçin. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. |
     |Kaynak ülke/bölge    |    Verilerinizin bulunduğu ülkeyi/bölgeyi seçin.         |
-    |Hedef Azure bölgesi     |     Verileri aktarmak istediğiniz Azure bölgesini seçin.        |
+    |Hedef Azure bölgesi     |     Verileri aktarmak istediğiniz Azure bölgesini seçin. <br> Daha fazla bilgi için [bölge kullanılabilirliği](data-box-overview.md#region-availability)’ne gidin.            |
+
+    [![Azure Data Box içeri aktarma sırası](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
 
 5. **Data Box**'ı seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
-      [![Data Box seçenek 1 ' i seçin](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
+    ![Data Box seçeneğini belirtin 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. **Sipariş** bölümünde **Sipariş ayrıntıları**'nı belirtin. Aşağıdaki bilgileri girin veya seçin ve sonra **İleri**'yi seçin.
+6. **Sırasıyla** **temel bilgiler** sekmesine gidin. aşağıdaki bilgileri girin veya seçin ve **Ileri ' yi seçin: veri hedefi>**.
 
     |Ayar  |Değer  |
     |---------|---------|
-    |Adı     |  Siparişi takip etmek için kullanılacak kolay bir ad girin. <br> Ad harf, rakam ve tirelerden oluşan 3-24 karakter arası uzunlukta olabilir. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir.      |
-    |Kaynak grubu     |    Var olan bir taneyi kullanın veya yenisini oluşturun. <br> Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır.         |
-    |Hedef Azure bölgesi     | Depolama hesabınız için bir bölge seçin. <br> Daha fazla bilgi için [bölge kullanılabilirliği](data-box-overview.md#region-availability)’ne gidin.        |
-    |Depolama hedefi     | Depolama hesabı veya yönetilen diskler ya da her ikisini seçin. <br> Belirtilen Azure bölgesine göre filtrelenen listeden var olan bir veya daha fazla depolama hesabı seçin. Data Box en çok 10 depolama hesabına bağlanabilir. <br> Dilerseniz yeni bir **Genel amaçlı v1**, **Genel amaçlı v2** veya **Blob depolama hesabı** da oluşturabilirsiniz. <br>Sanal ağları olan depolama hesapları desteklenir. Data Box hizmetinin güvenli depolama hesaplarıyla çalışmasına izin vermek için, depolama hesabı ağ güvenlik duvarı ayarları içinden güvenilen hizmetleri etkinleştirin. Daha fazla bilgi için bkz. [Azure Data Box güvenilir hizmet olarak ekleme](../storage/common/storage-network-security.md#exceptions).|
+    |Abonelik      | Abonelik, önceki seçiminize göre otomatik olarak doldurulur.|
+    |Kaynak grubu    | Daha önce seçtiğiniz kaynak grubu. |
+    |İçeri aktarma sırası adı | Siparişi takip etmek için kullanılacak kolay bir ad girin. <br> Ad harf, rakam ve tirelerden oluşan 3-24 karakter arası uzunlukta olabilir. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir.    |
 
-    Depolama hesabı depolama hedefi olarak kullanılıyorsa aşağıdaki ekran görüntüsünü görürsünüz:
+    ![Data Box seçeneğini belirtin 1](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
-    ![Depolama hesabı için Data Box sıralaması](media/data-box-deploy-ordered/order-storage-account.png)
+    Varsayılan olarak, cihaz kilidi açma parolası, Microsoft tarafından yönetilen bir anahtar kullanılarak şifrelenir. Siparişi tamamladıktan sonra, müşteri tarafından yönetilen anahtar ekleyebilirsiniz. Müşteri tarafından yönetilen anahtar, cihazın kilidini açma parolasını korumak için bir Azure Anahtar Kasası anahtarından kendi anahtarınızı kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure Data Box için Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](data-box-customer-managed-encryption-key-portal.md).
 
-    Şirket içi sanal sabit disklerde (VHD) yönetilen diskler oluşturmak için Data Box kullanıyorsanız, aşağıdaki bilgileri de sağlamanız gerekir:
+7. **Veri hedefi** sekmesinde **veri hedefi**' ni seçin.
+
+    Depolama **hesabı (ler)** i depolama hedefi olarak kullanılıyorsa, aşağıdaki ekran görüntüsünü görürsünüz:
+
+    ![Azure Data Box veri hedefi](media/data-box-deploy-ordered/select-data-box-import-07.png)
+
+    Belirtilen Azure bölgesine göre filtrelenen listeden var olan bir veya daha fazla depolama hesabı seçin. Data Box en çok 10 depolama hesabına bağlanabilir. Dilerseniz yeni bir **Genel amaçlı v1**, **Genel amaçlı v2** veya **Blob depolama hesabı** da oluşturabilirsiniz.
+
+    Sanal ağları olan depolama hesapları desteklenir. Data Box hizmetinin güvenli depolama hesaplarıyla çalışmasına izin vermek için, depolama hesabı ağ güvenlik duvarı ayarları içinden güvenilen hizmetleri etkinleştirin. Daha fazla bilgi için bkz. [Azure Data Box güvenilir hizmet olarak ekleme](../storage/common/storage-network-security.md#exceptions).
+
+    Şirket içi sanal sabit disklerde (VHD) **yönetilen diskler** oluşturmak için Data Box kullanıyorsanız, aşağıdaki bilgileri de sağlamanız gerekir:
 
     |Ayar  |Değer  |
     |---------|---------|
     |Kaynak grupları     | Şirket içi VHD'lerden yönetilen diskler oluşturmayı düşünüyorsanız yeni kaynak grupları oluşturun. Mevcut bir kaynak grubunu yalnızca kaynak grubu, Data Box hizmeti tarafından yönetilen disk için bir Data Box sırası oluşturulurken daha önce oluşturulduysa kullanabilirsiniz. <br> Noktalı virgülle ayrılmış birden çok kaynak grubu belirtin. En fazla 10 kaynak grubu desteklenir.|
 
-    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/order-managed-disks.png)
+    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Yönetilen diskler için belirtilen depolama hesabı, hazırlama depolama hesabı olarak kullanılır. Data Box hizmeti, VHD'leri yönetilen disklere dönüştürmeden ve kaynak gruplarına taşımadan önce hazırlama depolama hesabına sayfa blobları olarak yükler. Daha fazla bilgi için bkz. [Azure'a veri yüklemeyi doğrulama](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-7. **Teslimat adresi**’ne adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarasını girin. **Adresi doğrula**'ya tıklayın. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
+    Ileri ' yi seçin: devam etmek için **kişi ayrıntıları** .
+
+8. **Kişi ayrıntıları**' nda **+ Sevkiyat Adresi Ekle**' yi seçin.
+
+    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+
+9. **Teslimat adresi**’ne adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarasını girin. **Adresi doğrula**'yı seçin. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
+
+   ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    Kendi kendine yönetilen sevkiyat ' ı seçtiyseniz, sipariş başarıyla yerleştirildikten sonra bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [otomatik olarak yönetilen gönderi kullanma](data-box-portal-customer-managed-shipping.md).
 
-8. Gönderim ayrıntıları başarıyla doğrulandıktan sonra **İleri** ' ye tıklayın.
+10. Sevkiyat ayrıntıları başarıyla doğrulandıktan sonra **Sevkiyat Adresi Ekle** ' yi seçin. **Kişi ayrıntıları** sekmesine geri dönecaksınız.
 
-9. **Bildirim ayrıntıları** sayfasında e-posta adresi belirtin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
+11. **İletişim ayrıntılarına** geri döndüğünüzde bir veya daha fazla e-posta adresi ekleyin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
 
     Grup yöneticisinin ayrılması durumunda da bildirim almaya devam etmek için bir grup e-postası kullanmanız önerilir.
 
-10. **Özet** sayfasında sipariş, iletişim, bildirim ve gizlilik koşullarıyla ilgili bilgileri gözden geçirin. Gizlilik koşullarını kabul ettiğinizi belirten kutuyu işaretleyin.
+    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
-11. **Sipariş**'e tıklayın. Siparişin oluşturulması birkaç dakika sürer.
+12. **İnceleme** ve sipariş, iletişim, bildirim ve gizlilik koşulları ile ilgili bilgileri gözden geçirin. Gizlilik koşullarını kabul ettiğinizi belirten kutuyu işaretleyin.
+
+13. **Sipariş**'i seçin. Siparişin oluşturulması birkaç dakika sürer.
+
+    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -287,7 +325,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
    |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu<string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
-2. Tercih ettiğiniz veya terminalin komut isteminde, Azure Data Box siparişinizi oluşturmak için [az databox Job Create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) komutunu kullanın.
+2. Tercih ettiğiniz veya terminalin komut isteminde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) komutunu kullanın.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -369,6 +407,64 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
     NonScheduled    True             True                       False          True                         westus      mydataboxtest4  myresourcegroup  2020-06-18T03:48:00.905893+00:00  DeviceOrdered
 
     ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları uygulayın:
+
+1. İçeri Aktarma sırasını oluşturmadan önce depolama hesabınızı almanız ve depolama hesabı nesnesini bir değişkende kaydetmeniz gerekir.
+
+   ```azurepowershell
+    $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
+   ```
+
+2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
+
+    | Ayar (parametre) | Açıklama |  Örnek değer |
+    |---|---|---|
+    |ResourceGroupName [gerekli]| Mevcut bir kaynak grubunu kullanın. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
+    |Ad [gerekli]| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
+    |ContactName [gerekli]| Sevkiyat adresiyle ilişkilendirilen ad. | "Gus Polonya"|
+    |PhoneNumber [gerekli]| Siparişi alacak kişinin veya işletmenin telefon numarası.| "14255551234"
+    |Konum [gerekli]| Cihazınızı teslim edecek en yakın Azure bölgesi.| WestUS|
+    |DataBoxType [gerekli]| Sipariş ettiğiniz özel Data Box cihaz. Geçerli değerler şunlardır: "DataBox", "DataBoxDisk" ve "Databoxağır"| "DataBox" |
+    |Emailıd [gerekli]| Siparişle ilişkili e-posta adresleri.| "gusp@contoso.com" |
+    |StreetAddress1 [gerekli]| Siparişin sevk edileceği sokak adresi. | "15700 NE 39th" |
+    |StreetAddress2| Apartman numarası veya bina numarası gibi ikincil adres bilgileri. | "Bld 123" |
+    |StreetAddress3| Üçüncül adres bilgileri. | |
+    |Şehir [gerekli]| Cihazın sevk edileceği şehir. | Redmond |
+    |StateOrProvinceCode [gerekli]| Cihazın sevk edileceği durum.| HECESI |
+    |CountryCode [gerekli]| Cihazın sevk edileceği ülke. | "Birleşik Devletler" |
+    |PostaKodu [gerekli]| Sevkiyat adresiyle ilişkili posta kodu veya posta kodu.| "98052"|
+    |CompanyName| Çalıştığınız şirketinizin adı.| "Contoso, LTD" |
+    |Storageaccountresourceıd [gerekli]| Verileri içeri aktarmak istediğiniz Azure depolama hesabı KIMLIĞI.| <AzStorageAccount>. ID |
+
+3. Komut istemindeki veya terminalinizde, Azure Data Box siparişinizi oluşturmak için [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) ' u kullanın.
+
+   ```azurepowershell
+    PS> $storAcct = Get-AzureStorageAccount -StorageAccountName "mystorageaccount"
+    PS> New-AzDataBoxJob -Location "WestUS" \
+                         -StreetAddress1 "15700 NE 39th St" \
+                         -PostalCode "98052" \
+                         -City "Redmond" \
+                         -StateOrProvinceCode "WA" \
+                         -CountryCode "US" \
+                         -EmailId "gusp@contoso.com" \
+                         -PhoneNumber 4255551234 \
+                         -ContactName "Gus Poland" \
+                         -StorageAccount $storAcct.id \
+                         -DataBoxType DataBox \
+                         -ResourceGroupName "myresourcegroup" \
+                         -Name "myDataBoxOrderPSTest"
+   ```
+
+   Komutu çalıştırmanın çıktısı aşağıda verilmiştir:
+
+   ```output
+    jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+    ----------------     -------------------- ------------------ --------------------- -------------------- -------------
+    myDataBoxOrderPSTest DataBox              DeviceOrdered      07-06-2020 05:25:30   westus               myresourcegroup
+   ```
 
 ---
 
@@ -469,13 +565,77 @@ Aşağıdaki tabloda, için parametre bilgileri gösterilmektedir `az databox jo
    Command group 'databox job' is experimental and not covered by customer support. Please use with discretion.
    CancellationReason                                               DeliveryType    IsCancellable    IsCancellableWithoutFee    IsDeletable    IsShippingAddressEditable    Location    Name                 ResourceGroup    StartTime                         Status
    ---------------------- ----------------------------------------  --------------  ---------------  -------------------------  -------------  ---------------------------  ----------  -------------------  ---------------  --------------------------------  -------------
-   OtherReason This was a test order for documentation purposes.    NonScheduled    False            False                      True           False                        westus      gdpImportTest        GDPTest          2020-05-26T23:20:57.464075+00:00  Cancelled
-   NoLongerNeeded This order was created for documentation purposes.NonScheduled    False            False                      True           False                        westus      mydataboxExportTest  GDPTest          2020-05-27T00:04:16.640397+00:00  Cancelled
-   IncorrectOrder                                                   NonScheduled    False            False                      True           False                        westus      mydataboxtest2       GDPTest          2020-06-10T16:54:23.509181+00:00  Cancelled
-                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest3       GDPTest          2020-06-11T22:05:49.436622+00:00  DeviceOrdered
-                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest4       GDPTest          2020-06-18T03:48:00.905893+00:00  DeviceOrdered
+   OtherReason This was a test order for documentation purposes.    NonScheduled    False            False                      True           False                        westus      gdpImportTest        MyResGrp         2020-05-26T23:20:57.464075+00:00  Cancelled
+   NoLongerNeeded This order was created for documentation purposes.NonScheduled    False            False                      True           False                        westus      mydataboxExportTest  MyResGrp         2020-05-27T00:04:16.640397+00:00  Cancelled
+   IncorrectOrder                                                   NonScheduled    False            False                      True           False                        westus      mydataboxtest2       MyResGrp         2020-06-10T16:54:23.509181+00:00  Cancelled
+                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest3       MyResGrp         2020-06-11T22:05:49.436622+00:00  DeviceOrdered
+                                                                    NonScheduled    True             True                       False          True                         westus      mydataboxtest4       MyResGrp         2020-06-18T03:48:00.905893+00:00  DeviceOrdered
    PS C:\WINDOWS\system32>
    ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+### <a name="track-a-single-order"></a>Tek bir siparişi izleyin
+
+Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob)komutunu çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
+
+> [!NOTE]
+> `Get-AzDataBoxJob`hem tek hem de birden çok siparişi görüntülemek için kullanılır. Fark, tek siparişler için sipariş adını belirtmektir.
+
+   ```azurepowershell
+    Get-AzDataBoxJob -ResourceGroupName <String> -Name <String>
+   ```
+
+   Aşağıdaki tabloda, için parametre bilgileri gösterilmektedir `Get-AzDataBoxJob` :
+
+   | Parametre | Açıklama |  Örnek değer |
+   |---|---|---|
+   |ResourceGroup [gerekli]| Siparişle ilişkili kaynak grubunun adı. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
+   |Ad [gerekli]| Bilgi alınacak siparişin adı. | "mydataboxorder"|
+   |ResourceId| Siparişle ilişkili kaynağın KIMLIĞI. |  |
+
+   Çıktıyı içeren komuta bir örnek aşağıda verilmiştir:
+
+   ```azurepowershell
+    PS C:\WINDOWS\system32> Get-AzDataBoxJob -ResourceGroupName "myResourceGroup" -Name "myDataBoxOrderPSTest"
+   ```
+
+   Komutu çalıştırmanın çıktısı aşağıda verilmiştir:
+
+   ```output
+   jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+   ----------------     -------------------- ------------------ --------------------- -------------------- -------------
+   myDataBoxOrderPSTest DataBox              DeviceOrdered      7/7/2020 12:37:16 AM  WestUS               myResourceGroup
+   ```
+
+### <a name="list-all-orders"></a>Tüm siparişleri Listele
+
+Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) komutunu çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
+Komut ayrıca her bir siparişin zaman damgalarını görüntüler.
+
+```azurepowershell
+Get-AzDataBoxJob -ResourceGroupName <String>
+```
+
+Aşağıda komutun bir örneğini inceleyebilirsiniz:
+
+```azurepowershell
+PS C:\WINDOWS\system32> Get-AzDataBoxJob -ResourceGroupName "myResourceGroup"
+```
+
+Komutu çalıştırmanın çıktısı aşağıda verilmiştir:
+
+```output
+jobResource.Name     jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+----------------     -------------------- ------------------ --------------------- -------------------- -------------
+guspImportTest       DataBox              Cancelled          5/26/2020 11:20:57 PM WestUS               myResourceGroup
+mydataboxExportTest  DataBox              Cancelled          5/27/2020 12:04:16 AM WestUS               myResourceGroup
+mydataboximport1     DataBox              Cancelled          6/26/2020 11:00:34 PM WestUS               myResourceGroup
+myDataBoxOrderPSTest DataBox              Cancelled          7/07/2020 12:37:16 AM WestUS               myResourceGroup
+mydataboxtest2       DataBox              Cancelled          6/10/2020 4:54:23  PM WestUS               myResourceGroup
+mydataboxtest4       DataBox              DeviceOrdered      6/18/2020 3:48:00  AM WestUS               myResourceGroup
+PS C:\WINDOWS\system32>
+```
 
 ---
 
@@ -564,6 +724,74 @@ Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox J
    command ran in 1.142 seconds.
    PS C:\Windows>
    ```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-ps)
+
+### <a name="cancel-an-order"></a>Siparişi iptal etme
+
+Azure Data Box sırayı iptal etmek için [stop-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob)komutunu çalıştırın. Siparişi iptal etme nedeninizi belirtmeniz gerekir.
+
+```azurepowershell
+Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
+```
+
+Aşağıdaki tabloda, için parametre bilgileri gösterilmektedir `Stop-AzDataBoxJob` :
+
+| Parametre | Açıklama |  Örnek değer |
+|---|---|---|
+|ResourceGroup [gerekli]| İptal edilecek siparişle ilişkili kaynak grubunun adı. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
+|Ad [gerekli]| Silinecek siparişin adı. | "mydataboxorder"|
+|Neden [gerekli]| Siparişi iptal etme nedeni. | "Hatalı bilgiler girdim ve siparişi iptal etmek için gerekli." |
+|Force | Cmdlet 'ini Kullanıcı onayı olmadan çalışmaya zorlar. | -Force |
+
+Çıktıyı içeren komuta bir örnek aşağıda verilmiştir:
+
+```azurepowershell
+PS C:\PowerShell\Modules> Stop-AzDataBoxJob -ResourceGroupName myResourceGroup \
+                                            -Name "myDataBoxOrderPSTest" \
+                                            -Reason "I entered erroneous information and had to cancel."
+```
+
+Komutu çalıştırmanın çıktısı aşağıda verilmiştir:
+
+```output
+Confirm
+"Cancelling Databox Job "myDataBoxOrderPSTest
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+PS C:\WINDOWS\system32>
+```
+
+### <a name="delete-an-order"></a>Bir siparişi silme
+
+Azure Data Box sırayı iptal etmeniz durumunda, sırayı silmek için [Remove-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob) komutunu çalıştırabilirsiniz.
+
+```azurepowershell
+Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>
+```
+
+Aşağıdaki tabloda, için parametre bilgileri gösterilmektedir `Remove-AzDataBoxJob` :
+
+| Parametre | Açıklama |  Örnek değer |
+|---|---|---|
+|ResourceGroup [gerekli]| Silinecek siparişle ilişkili kaynak grubunun adı. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
+|Ad [gerekli]| Silinecek siparişin adı. | "mydataboxorder"|
+|Force | Cmdlet 'ini Kullanıcı onayı olmadan çalışmaya zorlar. | -Force |
+
+Çıktıyı içeren komuta bir örnek aşağıda verilmiştir:
+
+```azurepowershell
+PS C:\Windows> Remove-AzDataBoxJob -ResourceGroup "myresourcegroup" \
+                                   -Name "mydataboxtest3"
+```
+
+Komutu çalıştırmanın çıktısı aşağıda verilmiştir:
+
+```output
+Confirm
+"Removing Databox Job "mydataboxtest3
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+PS C:\Windows>
+```
 
 ---
 

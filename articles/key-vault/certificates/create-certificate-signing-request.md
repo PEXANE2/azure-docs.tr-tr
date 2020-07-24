@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849483"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043892"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
@@ -59,7 +59,7 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
 
     Sertifika isteği artık başarıyla birleştirildi.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1.  Tercih ettiğiniz CA için CSR oluşturmak üzere, sertifikayı eklemek istediğiniz anahtar kasasına gidin.
 2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
@@ -69,7 +69,7 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
     - **Sertifika adı:** ContosoManualCSRCertificate.
     - **Sertifika yetkilisinin (CA) türü:** Tümleşik olmayan bir CA tarafından verilen sertifika
     - **Konu:**`"CN=www.contosoHRApp.com"`
-    - İstediğiniz diğer değerleri seçin. **Oluştur**'a tıklayın.
+    - İstediğiniz diğer değerleri seçin. **Oluştur**’a tıklayın.
 
     ![Sertifika Özellikleri](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Sertifikanın artık sertifikalar listesine eklendiğini görürsünüz. Az önce oluşturduğunuz yeni sertifikayı seçin. Sertifikanın geçerli durumu henüz CA tarafından verilmediğinden ' devre dışı ' olur.
@@ -80,6 +80,23 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
 9.  İstek CA tarafından imzalandıktan sonra, **imzalanmış isteği** aynı sertifika işlemi ekranında birleştirmek için sertifika dosyasını geri getirin.
 
 Sertifika isteği artık başarıyla birleştirildi.
+
+## <a name="adding-more-information-to-csr"></a>CSR 'ye daha fazla bilgi ekleme
+
+CSR oluştururken daha fazla bilgi eklemek istiyorsanız, örneğin- 
+    - Ülke:
+    - Şehir/yerleşim yeri:
+    - Eyalet/bölge:
+    - Kuruluş
+    - Kuruluş birimi: Bu bilgileri subjectName ' de tanımlayarak bir CSR oluştururken ekleyebilirsiniz.
+
+Örnek
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+
+>[!Note]
+>CSR 'deki tüm bu ayrıntıları içeren bir DV sertifikası isteğinde bulunduğunuzu yapılandırırsanız CA isteği reddedebilir çünkü CA, istekteki tüm bilgileri doğrulayamayabilir. OV sertifikası isteğinde bulunduğunuzu, bu bilgileri CSR 'ye eklemek daha uygun olacaktır.
+
 
 ## <a name="troubleshoot"></a>Sorun giderme
 

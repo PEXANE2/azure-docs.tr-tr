@@ -3,17 +3,17 @@ title: Öğretici-Azure 'a genel bir Python istemci uygulaması bağlama IoT Cen
 description: Bu öğreticide, bir cihaz geliştiricisi olarak, Python istemci uygulaması çalıştıran bir cihaza Azure IoT Central uygulamanıza nasıl bağlanacağı gösterilmektedir. Cihaz yetenek modeli içeri aktararak ve bağlı bir cihazla etkileşime girebilen görünümler ekleyerek bir cihaz şablonu oluşturursunuz
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 98aa452e8b0b5cf04edd319298c2b35e6097148e
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f89a8caf5b91fb22cca020b1d146905b68c6ed96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002076"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Öğretici: Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Python)
 
@@ -38,7 +38,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
-* **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
+* **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md). Uygulamanın 07/14/2020 veya sonrasında oluşturulmuş olması gerekir.
 * [Python](https://www.python.org/) sürüm 3,7 veya sonraki bir sürümü yüklü bir geliştirme makinesi. `python3 --version`Sürümünüzü denetlemek için komut satırından çalıştırabilirsiniz. Python, çok çeşitli işletim sistemleri için kullanılabilir. Bu öğreticideki yönergeler, **python3** komutunu Windows komut isteminde kullandığınızı varsayar.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -214,18 +214,18 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
 
     Bir işleç, yanıt yükünü komut geçmişinde görüntüleyebilir.
 
-1. `main`IoT Central uygulamanızdan gönderilen Özellik güncelleştirmelerini işlemek için işlevin içine aşağıdaki işlevleri ekleyin:
+1. `main`IoT Central uygulamanızdan gönderilen Özellik güncelleştirmelerini işlemek için işlevin içine aşağıdaki işlevleri ekleyin. [Yazılabilir Özellik güncelleştirmesine](concepts-telemetry-properties-commands.md#writeable-property-types) yanıt olarak cihazın gönderdiği ileti, `av` ve `ac` alanlarını içermelidir. `ad`Alan isteğe bağlıdır:
 
     ```python
       async def name_setting(value, version):
         await asyncio.sleep(1)
         print(f'Setting name value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'name' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       async def brightness_setting(value, version):
         await asyncio.sleep(5)
         print(f'Setting brightness value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'brightness' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       settings = {
         'name': name_setting,
@@ -261,7 +261,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
 
       if device_client is not None and device_client.connected:
         print('Send reported properties on startup')
-        await device_client.patch_twin_reported_properties({'state': 'true'})
+        await device_client.patch_twin_reported_properties({'state': 'true', 'processorArchitecture': 'ARM', 'swVersion': '1.0.0'})
         tasks = asyncio.gather(
           send_telemetry(),
           command_listener(),
@@ -303,6 +303,10 @@ Cihazın Azure IoT Central uygulamanıza bağlandığını görebilir ve telemet
 Aygıtın komutlara ve özellik güncelleştirmelerine nasıl yanıt verdiğini görebilirsiniz:
 
 ![İstemci uygulamasını gözlemleyin](media/tutorial-connect-device-python/run-application-2.png)
+
+## <a name="view-raw-data"></a>Ham verileri görüntüleme
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

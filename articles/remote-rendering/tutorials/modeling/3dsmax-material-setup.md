@@ -1,18 +1,18 @@
 ---
-title: 3DSMax 'da fiziksel tabanlı işleme malzemeleri ayarlama
-description: Fiziksel olarak temel işleme malzemelerinin 3DSMax 'da nasıl ayarlanacağını ve FBX biçimine nasıl dışarı aktarılacağını açıklar.
+title: 3ds Max 'ta PBR malzemeleri ayarlama
+description: 3ds Max ile fiziksel olarak temel işleme malzemelerinin nasıl ayarlanacağını ve bunları FBX biçimine dışarı aktarmayı açıklar.
 author: muxanickms
 ms.author: misams
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: df4be8963c93199f9fad23ab3f709f691e1da768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: ac0f4ee8f06982126d2ae30bed01716b287e8993
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85880149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078049"
 ---
-# <a name="tutorial-set-up-physically-based-rendering-materials-in-3d-studio-max"></a>Öğretici: 3B Studio Max için fiziksel tabanlı işleme malzemeleri ayarlama
+# <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Öğretici: 3ds Max ile fiziksel tabanlı işleme malzemeleri ayarlama
 
 ## <a name="overview"></a>Genel Bakış
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
@@ -23,184 +23,205 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Nesnelerin ve malzemelerin örnek örneğini işleyin.
 > * Bir sahneyi FBX biçimine aktarın ve önemli seçenekleri seçin.
 
-[Fiziksel tabanlı işleme (PBR) materyalleri](../../overview/features/pbr-materials.md) Için en fazla (3dsmax), oldukça basit bir görevdir. Maya gibi diğer içerik oluşturma uygulamalarında PBR 'nin kurulumu için birçok yol benzerdir. Bu öğretici, Azure uzaktan Işleme projelerine yönelik temel bir PBR gölgelendirici kurulumu ve FBX dışa aktarma kılavuzudur.
+3ds Max 'ta [fiziksel tabanlı işleme (PBR) malzemeleri](../../overview/features/pbr-materials.md) oluşturmak, basit bir görevdir. Maya gibi diğer içerik oluşturma uygulamalarında PBR 'nin kurulumu için birçok yol benzerdir. Bu öğretici, Azure uzaktan Işleme projelerine yönelik temel bir PBR gölgelendirici kurulumu ve FBX dışa aktarma kılavuzudur.
 
 Bu öğreticideki örnek sahnenin bir dizi Çokgen kutusu nesnesi vardır. Bunlar, Wood, metal, boyanmış metal, plastik ve lastik gibi farklı malzemelere atanır. Genel anlamda, her malzeme aşağıdaki dokuların tamamını veya çoğunu içerir:
 
-* Malzemenin renk eşlemi olan ve ayrıca **dağıtma** veya **basecolor**olarak adlandırılan **Albedo**.
+* Malzemenin renk eşlemi olan **Albedo**ve ayrıca **dağıtma** ve **basecolor**olarak da adlandırılır.
 * **Metalness**, bir malzemenin metalik olup olmadığını ve hangi parçaların metalik olduğunu belirler. 
 * Bir yüzeyin ne kadar kaba olduğunu veya düzgün çalıştığını belirleyen **Kablık**.
 Ayrıca, bir yüzeydeki keskinlik ve önemli noktalara ilişkin netlik veya bulanıklaştırmalar da etkiler.
-* **Normal**, daha fazla çokgen eklemek zorunda kalmadan bir yüzeye ayrıntı ekleyen normal. Ayrıntı örnekleri, bir metal yüzey veya tahta 'daki Grenler ve kanlar olabilir.
-* Yumuşak gölgeleme eklemek ve bir modele iletişim kurmak için kullanılan **çevresel Occlusiyon**. Bu, bir modelin hangi alanlarının tam aydınlatma (beyaz) veya tam gölge (siyah) alacağını belirten gri tonlamalı bir eşlemedir.
+* **Normal**, daha fazla Çokgen eklemeden bir yüzeye ayrıntı ekler. Ayrıntı örnekleri, bir metal yüzey veya tahta 'daki greler ve kandırıcı.
+* Yumuşak gölgeleme eklemek ve bir modele iletişim kurmak için kullanılan **çevresel Occlusiyon**. Bu, modelin hangi alanlarının tam aydınlatma (beyaz) veya tam gölge (siyah) alacağını belirten gri tonlamalı bir eşlemedir.
 
 ## <a name="prepare-the-scene"></a>Sahneyi hazırlama
-**3B Studio Max**sürümünde, bir PBR malzemesini ayarlama işlemi aşağıdaki gibidir.
+3ds Max sürümünde, bir PBR malzemesini ayarlama işlemi aşağıdaki gibidir.
 
-İle başlamak için, örnek sahnede göreceğiniz gibi, her biri farklı bir tür malzemeyi temsil eden bir dizi Box nesnesi oluşturduk:
-
->[!TIP]
->Ölçü için **ölçüm kullandığından, ARR için varlıklar** oluşturmaya başlamadan önce dikkat edin.  
->Bu nedenle, sahne **sistem birimlerinizin** **ölçüm olarak ayarlanması**önerilir. Ayrıca, FBX dışa aktarma ayarlarındaki birimleri ölçü birimi olarak ayarlamak için dışa aktarma yapmanız önerilir.
-
-Aşağıdaki görüntüde, System birimlerini, 3B Studio 'Nun maks. ölçü birimi olarak ayarlama adımları gösterilmektedir. Ana menüde, **Customize**  >  **birimleri ayarla kurulum**  >  **Sistem birimleri kurulum** ' a gidin ve **Sistem birimleri ölçek** açılan menüsünde ölçümler ' i **Meters**seçin. 
-![Sistem birimleri](media/3dsmax/system-units.jpg)
-
-Sistem birimleri ölçü olarak ayarlandığında modellerimizi oluşturmaya başlayabiliriz. Örnek sahümüzde, her biri farklı bir malzeme türünü temsil eden (örneğin, metal, lastik, plastik vb.) çeşitli Box nesneleri oluşturacağız. 
+Başlamak için, her biri farklı bir tür malzemeyi temsil eden bir dizi Box nesnesi oluşturacağız.
 
 >[!TIP]
->Uygun şekilde ad vermek için Varlıklar oluştururken iyi bir uygulamadır. Bu, sahneye çok sayıda nesne varsa daha sonra bulmayı daha kolay hale getirir
+>Bu, ölçü için ölçüm kullandığından, uzak Işleme yönelik varlıklar oluşturmaya başlamadan önce dikkat etmeniz gerekir.  
+>
+>Böylece sahnenin sistem birimlerini ölçüm olarak ayarlamanız iyi bir fikirdir. Bir sahneyi dışa aktardığınızda FBX dışa aktarma ayarlarındaki **birimleri birimlere** ayarlamak da iyi bir fikirdir.
 
-![yeniden adlandırma nesneleri](media/3dsmax/rename-objects.jpg)
+Aşağıdaki ekran görüntüsünde, sistem birimlerini 3ds Max cinsinden ölçü birimlerine ayarlama adımları gösterilmektedir. 
+
+1. Ana menüde, **Customize**  >  **birimleri ayarla kurulum**  >  **Sistem birimleri kurulumu**' na gidin. **Sistem birimi ölçeğinde** **ölçüm:** ![ sistem birimlerinin nasıl ayarlanacağını gösteren ekran görüntüsü ' nü seçin.](media/3dsmax/system-units.jpg)
+
+1. Şimdi modelleri oluşturmaya başlayabiliriz. Örnek sahnede, her biri farklı bir malzeme türünü temsil eden çeşitli Box nesneleri oluşturacağız. Örneğin, metal, lastik ve plastik. 
+
+   >[!TIP]
+   >Varlıklar oluşturduğunuzda, bunları giderek uygun şekilde adlandırmak iyi bir uygulamadır. Bu, sahneye çok sayıda nesne içeriyorsa daha sonra bulmayı kolaylaştırır.
+
+1. Nesneleri aşağıdaki ekran görüntüsünde gösterildiği gibi yeniden adlandırın: 
+
+   ![Nesnelerin nasıl yeniden adlandırılacağı gösteren ekran görüntüsü.](media/3dsmax/rename-objects.jpg)
 
 ## <a name="assign-materials"></a>Malzemeleri ata
 
-Sahnemiz içinde oluşturulan bazı nesneler sayesinde, bu durumda bir dizi küp, PBR kurulumuna başlayabiliriz:
+Artık sahnede bazı nesnelerimiz olduğuna göre, bu durumda bir dizi küp, PBR kurulumuna başlayabiliriz:
 
-* Ana araç çubuğunda, aşağıdaki görüntüde gösterildiği gibi **malzeme Düzenleyicisi** simgesine tıklayın. Düzenleyiciyi açmak için klavyenizde **M** tuşuna da basabilirsiniz. Malzeme Düzenleyicisi, **modlar** açılan menüsünde seçilebilir iki moda sahiptir ( **kompakt malzeme Düzenleyicisi** modu ve **kurşun malzemeler** modu). Bu sahnenin görece basit olduğu için **kompakt modunu**kullanacağız.
+1. Ana araç çubuğunda, aşağıdaki ekran görüntüsünde gösterildiği gibi **malzeme düzenleyici** simgesini seçin. Düzenleyiciyi açmak için klavyenizde **M** 'yi de seçebilirsiniz. Malzeme Düzenleyicisi 'nde, **modlar** listesinde seçebileceğiniz iki mod vardır: **kompakt malzeme düzenleyici** modu ve **kurşun malzeme Düzenleyicisi** modu. Bu sahnenin görece basit olması nedeniyle kompakt modunu kullanacağız.
 
-* Malzeme Düzenleyicisi 'nin içinde, bir dizi şumuza sahip olursunuz. bu sımlar malzemelerimiz olacaktır. Bu malzemelerden birini, sahemizdeki her bir nesne-kutuya atayacağız. Bu atamayı yapmak için önce ana görünüm penceresinde nesnelerden birini seçin. Bu seçim yapıldıktan sonra, malzeme Düzenleyicisi penceresindeki ilk sphere öğesine tıklayın. Bir nesneye atandıktan sonra, seçili malzemeniz sonraki görüntüde gösterildiği gibi vurgulanacaktır.
+1. Malzeme düzenleyicisinde, bir dizi su görürsünüz. Bu kasalar, malzemelerdir. Bu malzemelerden birini sahnenin her bir nesnesine (her kutu) atayacağız. Malzemeleri atamak için öncelikle ana görünüm penceresinde nesnelerden birini seçin. Ardından, malzeme düzenleyicisinde ilk Sphere öğesini seçin. Bir nesneye atandıktan sonra, sonraki görüntüde gösterildiği gibi seçili malzeme vurgulanacaktır.
 
-* Gösterildiği gibi, **seçimden malzeme ata** düğmesine tıklayın. Seçilen malzeme artık seçili nesneye atandı.
-![ata-malzemeler](media/3dsmax/assign-material.jpg)
+1. Gösterildiği gibi **Seçime malzeme ata**' yı seçin. Malzeme artık seçili nesnesine atanır.
 
-Malzeme düzenleyicisinde, kullanım durumunuza bağlı olarak, geniş bir seçimden malzeme türleri seçebilirsiniz. Genellikle, malzeme türü varsayılan olarak **Standart** olarak ayarlanır. Bu malzeme, PBR kurulumu için uygun olmayan temel bir malzemedir, bu nedenle malzeme türünü bir PBR malzemesiyle değiştirmemiz gerekecektir. Azure uzaktan işleme projeleri için tercih edilen **3Dsmax** malzemesi **fiziksel malzemedir**.
+   ![Malzemelerin nasıl atanacağını gösteren ekran görüntüsü.](media/3dsmax/assign-material.jpg)
 
-* Malzeme Düzenleyicisi 'nde **Standart** sekmesine ve ardından **fiziksel malzeme**Seç ' i açan malzeme/harita tarayıcısı ' na tıklayın. Bu eylem, atanan **Standart** MALZEMEYI bir PBR **fiziksel malzemesine**dönüştürür.
-![fiziksel malzeme](media/3dsmax/physical-material.jpg)
+    Malzeme düzenleyicisinde, gereksinimlerinize bağlı olarak çok sayıda malzeme türü arasından seçim yapabilirsiniz. Genellikle, malzeme türü varsayılan olarak **Standart** olarak ayarlanır. Bu malzeme, PBR kurulumu için uygun olmayan temel bir malzemedir. Bu nedenle, malzeme türünü bir PBR malzemesiyle değiştirmemiz gerekiyor. Fiziksel malzeme, Azure uzaktan Işleme projeleri için tercih edilen 3ds en fazla malzemedir.
 
-* Malzeme düzenleyicisinde artık fiziksel malzemenin özelliklerini görürsünüz (aşağıda görebilirsiniz) ve varlığa dokular atamaya başlayabiliriz.
-![dokular-liste](media/3dsmax/textures-list.jpg)
+1. Malzeme düzenleyicisinde **Standart** sekmesini seçin. **Malzeme/harita tarayıcısında** **fiziksel malzeme**' i seçin. Bu eylem, atanan **Standart** MALZEMEYI bir PBR fiziksel malzemesine dönüştürür.
 
-Yukarıdaki görüntüden görünebileceğini de, malzemeye eklenebilen çok çeşitli haritalar ve dokular vardır. Yine de, malzemelerde yalnızca beş doku yuvası kullanacağız.
+   ![Malzemenin nasıl değiştirileceğini gösteren ekran görüntüsü.](media/3dsmax/physical-material.jpg)
+
+    Malzeme düzenleyicisinde, aşağıdaki ekran görüntüsünde gösterildiği gibi, artık fiziksel malzemenin özelliklerini görürsünüz. Şimdi, varlığa dokular atamaya başlayabilirsiniz.
+
+   ![Dokuların listesini gösteren ekran görüntüsü.](media/3dsmax/textures-list.jpg)
+
+Gördüğünüz gibi, malzemeye ekleyebileceğiniz çok çeşitli haritalar ve dokular vardır. Bu öğreticide, malzemeden yalnızca beş doku yuvası kullanıyoruz.
 
 >[!TIP]
->Yukarıdaki görüntüde gösterildiği gibi malzemelerinizi uygun şekilde adlandırmak iyi bir uygulamadır.
+>Önceki ekran görüntüsünde gösterildiği gibi, malzemelerinizi uygun şekilde adlandırmak iyi bir uygulamadır.
 
-Şimdi malzememiz için dokuların atanmasını düşünmek için başlayabiliriz. Dokularınızı nasıl oluşturabileceğiniz, tercihe göre veya kullanıma göre farklılık gösterir. Örneğin, herhangi bir varlığa uygulanabilecek döşeme dokularını kullanmanın kutlu olması veya bir proje/varlığın belirli bölümlerinin kendi özel dokularına sahip olması gerekebilir. Çevrimiçi olarak alınan genel döşeme dokularını kullanmak veya **Photoshop**, **tixel Suite** **,,** ,,,,,,,,,,,,, ve gibi uygulamalarda kendiniz oluşturmanız 
+Dokularınızı nasıl oluşturabileceğiniz tercih veya kullanıma göre değişiklik gösterebilir. Örneğin, herhangi bir varlığa uygulanabilecek döşeme dokuları kullanmak isteyebilirsiniz. Ya da bir projenin veya varlığın özel dokularına sahip olmak için kendi özel dokularına sahip olmanız gerekebilir. Çevrimiçi olarak alabileceğiniz, genel döşeme dokuları kullanmak isteyebilirsiniz. Ayrıca bunları Photoshop, Tixel Suite ve kayıt paketi gibi uygulamalarda da oluşturabilirsiniz.
 
-Dokularımıza atamaya başlamadan önce, varlıklarımızı doku koordinatlarımıza (UıETDIĞIMIZ) göz önünde bulundurmanız gerekir. Modelin sarmalanmış hale geldiğinden emin olmak için bir modele herhangi bir doku uygulanırken en iyi yöntem olsa da, modelimizde bir **çevresel Occlusiyon** Haritası kullanmayı amaçladığımızda bizim için önemlidir. **Maya**Içindeki **Stingray gölgelendiricinin** aksine, **3Dsmax** Içindeki **fiziksel malzemenin** ayrılmış bir **çevresel occlusıda** doku yuvası yoktur. Bu nedenle, başka bir yuvaya AO eşlemesini uygulayacağız ve diğer dokulardan ayrı olarak kullanılmasına izin vereceğiz (örneğin dokularını döşeme), kendisine kendi UıVW Map kanalını atayacağız. 
+Dokuları atamaya başlamadan önce varlığın doku koordinatlarını (UıVW) göz önünde bulundurmanız gerekir. Modelin sarmalanmamış olduğundan emin olmak için bir modele doku uyguladığınızda bu en iyi uygulamadır. (Dokular doğru UV sarmalama olmadan düzgün görüntülenmeyecek.) Modelimizin çevresel Occlusiyon (AO) haritasını kullanmak istiyoruz çünkü bu durum özellikle bizim için önemlidir. Maya içindeki Stingray gölgelendiricisinin aksine, 3ds Max 'daki fiziksel malzemenin ayrılmış bir AO doku yuvası yoktur. Bu nedenle, başka bir yuvaya AO eşlemesini uygulayacağız. Diğer dokulardan ayrı olarak kullanılmasına izin vermek için (örneğin dokularını döşeme), kendisine ait bir UıVW Map kanalı atayacağız. 
 
-Modelimize aşağıda gösterildiği gibi bir **Unsarmalama uıetü değiştirici** atayarak başlayacağız:
+Aşağıdaki ekran görüntüsünde gösterildiği gibi, modele bir Unwrap UVW değiştiricisi atayarak başlayacağız. 
 
-* Seçilen nesneler özellikler düzenleyicisinde, değiştirici listesine tıklayın ve açılan listede aşağı kaydırarak aşağı doğru kaydır ' ı seçin. Bu eylem, varlığımız için bir Unwrap UVW değiştiricisi uygular.
-![kaydırmayı geri al-değiştirici](media/3dsmax/unwrap-modifier.jpg)
+- Seçilen nesneler özellikler düzenleyicisinde, değiştirici listesini seçin. Görüntülenen aşağı açılan listede aşağı kaydırın ve **SARMALAMASı kaldır**' ı seçin. Bu eylem, varlığa bir Unwrap UVW değiştiricisi uygular.
+![SARMALAMASı geri alma seçimini gösteren ekran görüntüsü.](media/3dsmax/unwrap-modifier.jpg)
 
-* Eşleme kanalı bir olarak ayarlanır. Bu, ana kaydırmalarınızın genellikle yapılacağı eşleme kanalalıdır. Bu durumda, nesne, çakışan doku koordinatları (UV) olmadan sarmalanmamış.
-![sarmalanmamış-UVW](media/3dsmax/unwrapped-uvw.jpg)
+  Harita kanalı 1 olarak ayarlanır. Genellikle, eşleme kanalı 1 ' de ana kaydırmasını gerçekleştirirsiniz. Bu durumda, nesne, çakışan doku koordinatları (UV) olmadan sarmalanmamış.
+![Sarmalanmamış doku koordinatlarını (UıVW) gösteren ekran görüntüsü.](media/3dsmax/unwrapped-uvw.jpg)
 
 Sonraki adım ikinci bir UV eşleme kanalı oluşturmaktır.
 
-* Bu açık ise UV düzenleyiciyi kapatın ve **UV düzenleme** menüsünün kanal bölümünde kanal numarasını ikiye çevirin. Harita kanalı 2, çevresel Occlusiyon haritaları için beklenen kanaldır. 
+1. Açık ise UV düzenleyiciyi kapatın. **Uıvs 'Yi Düzenle** menüsünün **Kanal** bölümünde kanal numarasını **2**olarak değiştirin. Harita kanalı 2, AO haritaları için beklenen kanaldır. 
 
-* Açılan **kanal değişikliği uyarısı** iletişim kutusunda, mevcut UV ' i Kanal 1 ' in yeni kanal 2 ' ye **taşıma** veya yeni bir **UV geri SARMAYı** otomatik olarak oluşturacak mevcut UV ' i **bırakma** seçeneği sunulur. Yalnızca, harita kanalı 1 ' deki UV 'lerden farklı olan çevresel occlusiyon eşlemesi için yeni bir **UV geri sarması** oluşturmak istiyorsanız **Abandon** ' ı seçin (örneğin, Kanal 1 ' de döşeme dokuları kullanmak istiyorsanız). Yeni UV kanalını düzenlemediğimiz için, bizim amaçlarımız için UV ' ı Kanal 2 ' ye **taşıyacağız** .
+1. **Kanal değişikliği uyarısı** iletişim kutusunda, Kanal 1 ' deki mevcut UVS 'yi yeni kanal 2 ' ye **taşıyabilir** veya yeni bir UV geri sarmayı oluşturacak mevcut UVS 'yi **iptal** edebilirsiniz. Yalnızca **eşleme** kanalı 1 ' den UVS 'den farklı olan Ao eşlemesi için yenı bir UV geri sarması oluşturmayı planlıyorsanız bırak ' ı seçin. (Örneğin, Kanal 1 ' de döşeme dokuları kullanmak istiyorsanız) Bu öğreticide, yeni UV kanalını düzenlemediğimiz için kanal 2 ' ye ait UVs kanalını taşıyacağız.
 
->[!NOTE]
->Kopyalanmış ve **taşınmış** olsa da, eşleme kanalı 1 ' den eşleme kanalı 2 ' ye UV geri sarması, yenı kanal UV, özgün harita kanalını etkilemeden gerekli düzenlemeleri yapabilirsiniz.
+   >[!NOTE]
+   >Eşleme kanalı 1 ' den eşleme kanalı 2 ' ye bir UV geri sarmayı kopyaladıysanız (taşıdıysanız), özgün harita kanalını etkilemeden yeni kanal UVs 'ye gerekli düzenlemeleri yapabilirsiniz.
 
-![Kanal değişikliği](media/3dsmax/channel-change.jpg)
+   ![Kanal değişikliği uyarısını gösteren ekran görüntüsü.](media/3dsmax/channel-change.jpg)
 
-Yeni harita kanalı oluşturulduktan sonra, malzeme düzenleyicisinde fiziksel malzemeye dönebiliriz ve dokularımızı buna eklemeye başlayabilirsiniz. İlk olarak, doğru çalışmasına izin vermek için daha fazla bir adım olduğu için ortam occlusiyon (**Ao**) haritasını ekleyeceğiz. AO Haritası malzeme bağlı olduktan sonra, bunu eşleme kanalı 2 ' yi kullanmak üzere yönlendirmemiz gerekir.
+Yeni harita kanalını oluşturduğumuza göre, malzeme düzenleyicisinde fiziksel malzemeye dönebilir ve dokularımızı buna eklemeye başlayabilirsiniz. İlk olarak, doğru çalışmasına izin veren başka bir adım olduğundan AO haritasını ekleyeceğiz. AO Haritası malzemeden prize takılıyken, bunu eşleme kanalı 2 ' yi kullanacak şekilde yapılandırmamız gerekir.
 
-* Daha önce belirtildiği gibi, **3Dsmax fiziksel malzemesindeki**Ao haritaları için adanmış bir yuva yoktur. Bunun yerine, bunu, **Dağıtılmış kabalık** yuvasına Ao eşlemesini uygulayacağız.
+Daha önce belirtildiği gibi, 3ds Max fiziksel malzemesindeki AO haritaları için adanmış bir yuva yoktur. Bunun yerine, diğer bir deyişle, **Dağıtılmış kabalık** yuvasına Ao eşlemesini uygulayacağız.
 
-* Fiziksel malzemenin **genel haritalar** listesinde, **Dağıtılmış kabalığın** **eşleme** yuvası ' na tıklayın ve Ao eşlemenizi yükleyin.
+1. Fiziksel malzemenin **genel haritalar** listesinde, **kabalılığını dağıtma** ve Ao eşlemenizi yükleme ' nin yanındaki **eşleme** yuvası ' nı seçin.
 
-* AO dokuları özelliklerinde, eşleme kanalı varsayılan olarak **1** ' e ayarlanır. Bu değeri **2**olarak değiştirin. Bu eylem, çevresel occlusiyon eşlemenizi eklemek için gereken adımları tamamlar.
+1. AO dokuları özelliklerinde, eşleme kanalı varsayılan olarak **1** ' e ayarlanır. Bu değeri **2**olarak değiştirin. Bu eylem, AO eşlemenizi eklemek için gereken adımları tamamlar.
+
+   >[!IMPORTANT]
+   >Bu önemli bir adımdır, özellikle Kanal 2 ' deki UVs 'niz Kanal 1 ' de farklı ise, yanlış kanal seçilmişse AO doğru şekilde eşlenmeyeceği için önemli bir adımdır.
+
+   ![Bir AO eşlemesinin nasıl atanacağını gösteren ekran görüntüsü.](media/3dsmax/assign-ao-map.jpg)
+
+Şimdi, PBR malzemesine normal eşlemeyi atayacağız. Bu eylem, Maya 'deki işlemden biraz farklılık gösterir. Normal harita, çarpma eşleme yuvasına doğrudan uygulanmaz. (3DS maksimum fiziksel malzemelerde normal eşleme yuvası yoktur.) Bunun yerine, normal eşlemeyi normal bir harita değiştiricisine eklersiniz, bu, kendisi de normal yuvasına takılır.
+
+1. Fiziksel malzeme özelliklerinin **özel haritalar** bölümünde (malzeme Düzenleyicisi 'nde), **kabartma Haritası**' nın yanındaki **eşleme** yuvasını seçin. 
+
+1. **Malzeme/harita tarayıcısında**, **normal kabartma**' i bulun ve seçin. Bu eylem, malzemeye **normal bir kabartma** değiştiricisi ekler.
+
+1. **Normal kabartma** değiştiricide, **normal**' ın yanında **eşleme yok** ' u seçin. Normal eşlemenizi bulun ve yükleyin.
+
+1. Yöntemin **tanjant**olarak ayarlandığından emin olun. (Varsayılan olarak, olmalıdır.) Gerekirse, **yeşil çevir (Y)** seçeneğini değiştirin.
+
+   ![Normal kabartma seçimini gösteren ekran görüntüsü. ](media/3dsmax/normal-bump.jpg)
+    ![ Normal haritanın yüklenmesini gösteren ekran görüntüsü.](media/3dsmax/load-normal-map.jpg)
+
+Normal harita doğru şekilde atandığında, fiziksel malzeme kurulumunu tamamlamaya yönelik kalan dokuları atayabiliriz. Bu işlem basittir. Göz önünde bulundurmanız gereken özel bir ayar yok. Aşağıdaki ekran görüntüsünde, malzemeye atanan dokuların tam kümesi gösterilmektedir: 
+
+![Malzemeye atanan dokuların tam kümesini gösteren ekran görüntüsü.](media/3dsmax/all-textures.jpg)
+
+Artık PBR malzemeleri oluşturulup ayarlandığına göre, sahnedeki örnek oluşturma nesnelerini düşünmek de önemlidir. Sahnede, cıvatalar, screws ve yıkama gibi benzer nesneleri örnekle. Aynı olan tüm nesneler, dosya boyutu açısından önemli tasarruf elde edebilir. Bir ana nesnenin örnekleri kendi ölçek, döndürme ve dönüştürmelerine sahip olabilir, böylece bunları sahneye gereken şekilde yerleştirebilirsiniz. 3ds Max sürümünde örnek oluşturma işlemi basittir.
+
+1. Ana görünüm penceresinde, dışarı aktarmak istediğiniz nesne veya nesneleri seçin.
+
+1. **Shift** tuşunu basılı tutarak Dönüştür (taşı) aracını kullanarak varlıkları yukarı doğru sürükleyin. 
+
+1. **Kopyalama seçenekleri** iletişim kutusunda, **nesneyi** **örnek** olarak ayarlayın ve ardından **Tamam**' ı seçin:
+
+   ![Kopyalama seçenekleri iletişim kutusunun ekran görüntüsü.](media/3dsmax/instance-object.jpg)
+
+Bu eylem, kendi üst öğesinden ve bu üst öğenin diğer örneklerinden bağımsız olarak taşıyabileceğiniz, döndürebileceğiniz veya ölçekleyerek nesnenizin bir örneğini oluşturur.
 
 >[!IMPORTANT]
->Bu önemli bir adımdır, özellikle de UV, Kanal 2 ' deki UV, yanlış kanal seçiliyken doğru bir şekilde eşlenmeyecektir.
-
-![ata-Ao-Map](media/3dsmax/assign-ao-map.jpg)
-
-Şimdi, PBR malzememiz için normal haritamızın atanmasını sağlıyoruz. Bu eylem, normal haritanın çarpmaya doğrudan **bir şekilde (** Örneğin, **3Dsmax fiziksel malzemelerde** normal eşleme yuvası yoktur) değil, ancak normal eşleme değiştiricisine (Bu nedenle, buna benzer şekilde) göre farklılık gösterir. **normals**
-
-* Fiziksel malzeme özelliklerindeki **özel haritalar** bölümünde (malzeme Düzenleyicisi 'nde), **kabartma haritasının** **eşleme** yuvası ' na tıklayın. 
-
-* Malzeme/harita tarayıcısında, **normal kabartma**' i bulup tıklayın. Bu eylem, malzemeimize **normal bir kabartma** değiştiricisi ekler.
-
-* **Normal kabartma** değiştiricide, **normal** **eşleme yok** ' a tıklayın ve normal eşlemenizi bulun ve ardından yükleyin.
-
-* Yöntemin **tanjant** olarak ayarlandığından (varsayılan olarak bu değer olmalıdır) ve gerekirse **yeşil çevir (Y)** arasında geçiş yapın.
-
-![normal-kabartma ](media/3dsmax/normal-bump.jpg)
- ![ yükü-normal-eşleme](media/3dsmax/load-normal-map.jpg)
-
-Normal haritamız doğru şekilde atandığında, fiziksel malzeme kurulumumuzu tamamlamaya yönelik kalan dokuları atamaya devam edebiliriz. Bu işlem, dikkate alınması gereken özel ayarları olmayan basit bir işlemdir. Aşağıdaki görüntüde, malzemeimize atanan dokuların tam kümesi gösterilmektedir: ![ Tümü-dokular](media/3dsmax/all-textures.jpg)
-
-Ve ayarlanmış olan PBR malzemelerinize göre, sahninizdeki nesneleri örnek oluşturma hakkında düşünmeye değecektir. Sahnedeki benzer nesneleri örneklerinizi örnek, örneğin, NSU, cıvatalar, screws yıkama yapanlar gibi, temelde aynı olan her türlü nesne dosya boyutu açısından önemli tasarruf elde edebilir. Bir ana nesnenin örnekleri kendi ölçek, döndürme ve dönüşümlerinin yanı sıra, sahneye gereken şekilde yerleştirilebilecek. **3B Studio Max**sürümünde **örnek** oluşturma işlemi basittir.
-
-* Ana görünüm penceresinde, dışarı aktarmak istediğiniz nesne/nesneleri seçin.
-
-* Dönüştür (taşı) aracını kullanarak **Üst Krktr** ve varlıkları yukarı doğru sürükleyin 
-
-* Açılan **kopya seçenekleri** iletişim kutusunda, **nesneyi** **örnek** olarak ayarlayın ve **Tamam**' a tıklayın. 
-![örnek nesnesi](media/3dsmax/instance-object.jpg)
-
-Bu eylem, nesnenin üst ve diğer örneklerinden bağımsız olarak döndürülen veya ölçeklendirilmemiş bir örnek oluşturur.
-
->[!IMPORTANT]
->Ancak, alt nesne modundaki bir örnekte yaptığınız tüm değişiklikler, nesnenizin tüm örneklerine iletilir. bu nedenle, ınstanced nesneleri bileşenleriyle, çokgen yüzleriyle çalışıyorsanız ve bu örneklerin tümünü etkilemek için yaptığınız herhangi bir değişikliği istediğinizden emin olun. Herhangi bir zamanda, tüm ınstanced nesneleri için benzersiz bir nesne olarak getirilebilir olduğunu unutmayın. 
+>Alt nesne modundayken bir örnekte yaptığınız tüm değişiklikler nesnenin tüm örneklerine iletilir. Bu nedenle, köşeler ve çokgen yüzleri gibi bir nesne bileşenleri ile çalışıyorsanız, tüm örnekleri etkilemek için yaptığınız tüm değişiklikleri istediğinizden emin olun. Herhangi bir zamanda, tüm ınstanced nesneleri için benzersiz bir nesne olarak getirilebilir olduğunu unutmayın. 
 
 >[!TIP]
->Sahnedeki örnek oluşturma konusunda en iyi yöntem, ilerleyen nesneler ile **kopyaları** değiştirme son derece zordur. 
+>Sahnede örneklerinizi yaparken örnek oluşturmanız iyi bir fikirdir. Daha sonra, ınstanced nesneleriyle kopyaları değiştirme zordur. 
 
-Dışarı aktarma işlemine geçmeden önce dikkate alınması gereken bir nihai şey, sahneye/varlığınızı paylaşım için nasıl paketlemek isteyebileceğiniz bir şeydir. İdeal olarak varlığı bir istemciye veya ekip üyesine geçirirseniz, en az bir Fuss miktarı ile görülebilmesi için varlığı açabilmelerini ve görüntüleyebilmesini isteyeceksiniz. Bu nedenle, varlıkların doku yollarını sahne dosyası ile ilişkili tutmak önemlidir. Varlığınızın doku yolları yerel bir sürücüye veya mutlak yola/konuma işaret ediyor ise, **. Max** dosyası dokularla aynı klasörde otursa bile, bu, farklı bir bilgisayarda açılırsa sahneye yüklenmeyecektir. Doku yollarının 3B Studio ile göreli olarak en fazla olması bu sorunu çözer ve oldukça basittir.
+Dışa aktarma işlemine geçmeden önce göz önünde bulundurmanız gereken bir son şey, sahnın/varlığınızı paylaşım için nasıl paketlemek isteyebileceğiniz bir şeydir. İdeal olarak, varlığı istemcilere veya ekip üyelerine geçirirseniz, kıymetin en düşük miktarda Fuss görülebilmesi için varlığı açabilmelerini ve görüntüleyebilmesini isteyeceksiniz. Bu nedenle, varlıkların doku yollarını sahne dosyası ile ilişkili tutmanız önemlidir. Varlığınızın doku yolları yerel bir sürücüye veya mutlak yola/konuma işaret ettikten sonra,. max dosyası dokularla aynı klasörde olsa bile, farklı bir bilgisayarda açılırsa, sahneye yüklenmezler. Doku yollarının 3ds ile göreli olarak en fazla olması bu sorunu çözer ve oldukça basittir.
 
-* Ana araç çubuğunda **Dosya**  >  **başvurusu**  >  **varlık izleme geçişi**' ne gidin. 
+1. Ana araç çubuğunda, **Dosya**  >  **başvurusu**  >  **varlık izleme geçişi**' ne gidin. 
 
-* Açılan varlık izleme tarayıcısında, **haritalar/gölgelendiriciler** sütununun altında listelenen PBR malzemelerinize uyguladığınız dokuların tamamını veya çoğunu görürsünüz.
+1. Varlık Izleme penceresinde, **haritalar/gölgelendiriciler** sütununda listelenen PBR malzemelerinize uyguladığınız dokuların tamamını veya çoğunu görürsünüz.
 
-* **Tam yol** sütununda bunların yanında, dokularınızın konumunun, büyük olasılıkla yerel makinenizde konumlarına ait dosya yolunu görürsünüz.
+1. Bunların yanında, **tam yol** sütununda dokularınızın konumunun, büyük olasılıkla yerel makinenizde bulunduğu konumun yolunu görürsünüz.
 
-* Son olarak, **durum**adlı bir sütun görürsünüz. Bu sütun, belirli bir dokunun sahneye yüklenip uygulanmadığını ve uygulanıp uygulanmadığını ve bu dokuyu şu şartlarla birlikte işaretle **Tamam**, **bulundu**veya **dosya yok**olarak işaretlecektir. İlk iki, dosyanın bulunduğunu ve yüklendiğini gösterir, son olarak, izleyici bir dosyayı konumlandıramadığını açıkça gösterir.
-![doku yolları](media/3dsmax/texture-paths.jpg)
+1. Son olarak, **durum**adlı bir sütun görürsünüz. Bu sütun, belirli bir dokunun sahneye yüklenip uygulanmadığını gösterir. Dokuyu şu terimlerden biriyle işaretler: **Tamam**, **bulundu**veya **dosya eksik**. İlk iki, dosyanın bulunduğunu ve yüklendiğini gösterir. En son açıkça, izleyici dosyanın yerini belirleyemediği anlamına gelir.
+ 
+   ![Varlık Izleme penceresini gösteren ekran görüntüsü.](media/3dsmax/texture-paths.jpg)
 
-İlk kez açtığınızda dokularınızın tümünün varlık izleyicide listelenmediğine dikkat edin. Yol bulma işlemi ile, genellikle tüm sahne dokularını bulduğunda, bu işlem hakkında endişe edilecek bir şey yoktur. Yol bulma işlemi aşağıdaki gibidir: 
+İlk kez açtığınızda dokularınızın tümünün varlık Izleme penceresinde listelendiğini fark edebilirsiniz. Bu, ilgisi olacak hiçbir şey değildir. Yol bulma işlemi ile, genellikle bir sahnenin dokularını bir kez veya iki kez bulur. Yol bulma işlemi aşağıdaki gibidir: 
 
-* Varlık İzleyicisi **penceresinde,** + **haritalar/gölgelendiriciler** listesinde en üstteki dokuyu**tıklatın** ve Shift tuşunu basılı tutmaya devam edin, listedeki son dokuya tıklayın. Bu eylem listedeki tüm dokuları seçer. Seçili dokular artık mavi renkle vurgulanacaktır (yukarıdaki görüntüye bakın).
+1. Varlık Izleme penceresinde, **SHIFT** tuşunu basılı tutun ve **haritalar/gölgelendiriciler** listesinden en üstteki dokuyu seçin ve ardından **SHIFT**'i tutmaya devam edin, listedeki son dokuyu seçin. Bu eylem listedeki tüm dokuları seçer. Seçili dokular mavi renkle vurgulanır. (Önceki ekran görüntüsüne bakın.)
 
-* Seçime sağ tıklayın ve açılan menüden **yolu ayarla**' yı seçin.
+1. Seçimi sağ tıklatın ve **yolu ayarla**' yı seçin.
 
-* Açılan **varlık yolunu belirtin** kutusunda, gösterilen dokularınızın yerel yolunu seçin ve aşağıdaki ile değiştirin `.\` ve **Tamam**' a tıklayın. 
+1. **Varlık yolunu belirtin** kutusunda dokularınızın yerel yolunu seçin ve bunu ile değiştirin `.\` .  **Tamam**’ı seçin. 
 
-* Bir süre sonra (sahnıza kaç dokuya sahip olduğuna ve sahsitenizin ne kadar büyük olduğuna bağlı olarak değişir) varlık İzleyicisi kendisini şu şekilde çözmelidir (bkz. görüntü).
-![Çözümle-dokular](media/3dsmax/resolve-textures.jpg)
+    Varlık Izleme penceresi, aşağıdaki ekran görüntüsünde gösterildiği gibi güncelleşmeyecektir. Bu güncelleştirme, sahnede kaç dokuya sahip olduğuna ve sahnenin ne kadar büyük olduğuna bağlı olarak biraz zaman alabilir.
+![Güncelleştirilmiş varlık Izleme penceresini gösteren screensthot.](media/3dsmax/resolve-textures.jpg)
 
-**Tam yol** sütununun artık boş olduğuna dikkat edin. Bu, sahnenin artık ilgili dokuları belirli (mutlak) bir konumda bulmayı, ancak en büyük dosya veya ilgili FBX dosyası dokularla aynı klasörde olduğu sürece her zaman bulacağı anlamına gelir. 
+**Tam yol** sütununun artık boş olduğuna dikkat edin. Bu, sahnenin artık belirli (mutlak) bir konumdaki ilgili dokuları araymayacağı anlamına gelir. Bu,. max dosyası veya ilgili FBX dosyası dokularla aynı klasörde olduğu sürece her zaman onları bulur. 
 
 >[!NOTE]
->Bu işlem bazen tüm dokuların ve yolların bulunması ve çözümlenmesi için birkaç kez tekrarlamanız gerekebilir. İşbu konuyla ilgili hiçbir şey yoktur, yalnızca tüm ilgili varlıkların hesaba dahil edilene kadar yinelenir. Ayrıca, bazı dosyaların artık bulunamadığı durum da olabilir. Bu durumda, yalnızca listedeki tüm varlıkları seçin ve **eksik yolları kaldır** ' a (yukarıdaki görüntüye bakın) tıklayın
+>Tüm dokuların ve yolların bulunması ve çözümlenmesi için bu işlemi birkaç kez tekrarlamanız gerekebilir. Bu, ilgisi olacak hiçbir şey değildir. Tüm ilgili varlıklar için hesap oluşturuluncaya kadar işlemi tekrarlamanız yeterlidir. Bazı durumlarda bazı dosyalar bulunmayacaktır. Bu durumda, yalnızca listedeki tüm varlıkları seçin ve **eksik yolları kaldır**' ı seçin. (Önceki resme bakın.)
 
 ## <a name="fbx-export"></a>FBX dışa aktarma
 
-Varlık izlemenin tamamlandığına göre artık FBX dışarı aktarmaya geçebilirsiniz. Yine, işlem basittir ve birkaç yolla yapılabilir. 
+Doku yollarını göreli olarak yaptığımız için, FBX dışa aktarmaya geçiş yapabilirsiniz. Yine, işlem basittir ve birkaç yolla yapabilirsiniz. 
 
 >[!TIP]
->Tüm sahnesinizi dışarı aktarmak istemediğiniz ve yalnızca gerekli olan varlıkları dışarı aktarma seçeneğini belirlediğiniz için bu iyi bir uygulamadır. Özellikle kaynak kullanımı yoğun görünümlerde dışarı aktarma işlemi uzun sürebilir, böylelikle yalnızca ihtiyacınız olanları dışarı aktarmak mantıklı olur
+>Sahnenin tamamını dışarı aktarmak istemediğiniz müddetçe, yalnızca ihtiyacınız olan varlıkları dışa aktarma ' yı seçmeniz iyi bir fikirdir. Kaynak yoğunluklu sahneler bölümünde dışarı aktarma işlemi uzun sürebilir.
 >
->**Türbodüzgünleştir** veya **Open alt div** gibi değiştiriciler kullandıysanız dışa aktarma sırasında sorunlara neden olabileceği için bunları dışarı aktarmadan önce daraltmanız önerilir. Bunu yapmadan önce her zaman sahneyi kaydedin! 
+>Turbodüzgünleştir ya da açık alt div gibi değiştiriciler kullandıysanız dışarı aktarma sırasında sorunlara neden olabileceğinden dışarı aktarma işleminden önce bunları daraltmak iyi bir fikir olabilir. Sahnelerinizi daralmadan önce kaydettiğinizden emin olun. 
 
-* Sahnede dışarı aktarmak istediğiniz varlıkları seçin ve ana araç çubuğunda **Dosya**  >  **dışarı**aktarma  >  **Seçili** öğesine gidin
+1. Sahnede dışarı aktarmak istediğiniz varlıkları seçin. Ana araç çubuğunda **Dosya**  >  **dışarı**aktarma  >  **Seçili**öğesine gidin.
 
-* **Dışarı aktarılacak dosyayı seçin** iletişim kutusunda çıktı dosyası adı yazın veya seçin ve **farklı kaydet tür** seçeneklerinde **Autodesk (*. fbx)** öğesini seçin. Bu eylem, FBX dışa aktarma menüsünü açar. 
+1. **Dışarı aktarılacak dosyayı seçin** iletişim kutusunda bir çıkış dosyası adı yazın veya seçin. **Farklı kaydet türü** listesinde **Autodesk (*. fbx)** öğesini seçin. Bu eylem, FBX dışa aktarma penceresini açar.
 
-* Sahnede örnekler oluşturduysanız, **örnekleri** korumanın, FBX dışa aktarma ayarlarında açık bir şekilde, önemli olduğunu unutmayın. 
-![FBX-dışarı aktarma](media/3dsmax/fbx-export.jpg)
+  >[!IMPORTANT] 
+  >Sahnede örnekler oluşturduysanız, FBX dışa aktarma ayarlarındaki **örnekleri koru** ' yı seçmeniz önemlidir. 
 
-Daha önce, dosyayı dışarı aktarmanın birkaç yolu olduğunu unutmayın. Dışarı aktarma işlemi, FBX 'in bir klasör/dizinde bulunan dokularıyla birlikte paylaşılmasıyla, aşağıdaki görüntüde gösterilen ayarların uygulanması ve iyi çalışmamaları gerekir. Ayarlarınızı seçtikten sonra, **Tamam**' a tıklayın.
-![FBX ayarları](media/3dsmax/fbx-settings.jpg)
+  ![FBX 'e nasıl dışarı aktarılacağını gösteren ekran görüntüsü.](media/3dsmax/fbx-export.jpg)
 
-Bununla birlikte, büyük klasörler/dokuların dizin ve dizinlerini FBX ile **paylaşmamayı** tercih ediyorsanız, dokuları FBX içine eklemeyi seçebilirsiniz. Tüm varlık dokuları dahil, tek bir FBX 'e eklenecek anlamına gelir. Aynı şekilde, dışarı aktarmayı, FBX dosyasının sonuç olarak çok daha büyük olacağı tek bir varlığa birleştirirken göz önünde bulundurun.
+  Dosyayı dışarı aktarmanın birkaç yolu olduğunu unutmayın. Amaç, FBX 'in yanı sıra bir klasör/dizinde doku dosyalarıyla paylaşıp, aşağıdaki ekran görüntüsünde gösterilen ayarların iyi bir şekilde çalışması gerekir. 
 
->[!IMPORTANT]
->Sonuç FBX dosyanız 2,4 GB 'den büyükse, en düşük FBX dışa aktarma ayarları (yukarıya bakın) 2016 veya daha yeni bir sürüm olmalıdır. Daha yeni sürümlerde 64 bit desteği olduğundan ve bu nedenle daha büyük dosyaları destekledikleri için.
+   FBX ile birlikte büyük klasörler/dokuların dizinlerini paylaşmamayı tercih ediyorsanız, dokuları FBX içine eklemeyi seçebilirsiniz. Dokuları eklerseniz, dokular dahil olmak üzere tüm varlık tek bir FBX öğesine eklenir. Bunun yapılması, dışa aktarma işlemini tek bir varlığa birleştirir, ancak bir sonuç olarak FBX dosyası büyük ölçüde daha büyük olacaktır.
 
-* FBX dışa aktarma ayarları ' nda, * * medyayı ekleme ' yi açın ve dahil edilen dokularla dışa aktarmak için **Tamam** ' a tıklayın. 
+   >[!IMPORTANT]
+   >Elde edilen FBX dosyası 2,4 GB 'den büyükse, FBX dışa aktarma ayarlarında belirtilen en düşük sürüm 2016 veya üzeri olmalıdır. (Önceki ekran görüntüsüne bakın.) Daha yeni sürümler 64 bit desteğine sahiptir, bu nedenle daha büyük dosyaları destekler.
 
-Fiziksel malzemeyi kullanırken FBX 'e dışa aktarmada, dışarı aktarma iletişim kutusunda ' Tamam 'a tıkladıktan sonra aşağıdaki uyarı açılır penceresini görürsünüz: ![ Export-uyarılar](media/3dsmax/export-warnings.jpg)
+1. Sahneyi dahil edilen dokularla dışa aktarmak istiyorsanız, * FBX dışa aktarma penceresinde **medyayı Ekle**' yi seçin. 
 
-Bu uyarı, kullanıcıya, ihraç edilen malzemelerin diğer yazılım paketleriyle uyumlu olabileceğini bildirir. Fiziksel malzeme Azure uzaktan Işleme ile uyumlu olduğundan endişelenmek için bir şey yoktur. İşlemi tamamlayıp pencereyi kapatmak için **Tamam** ' a tıklamanız yeterlidir.
+1. Ayarlarınızı geri kalanını seçin ve ardından **Tamam**' ı seçin:
+
+    ![FBX dışa aktarma ayarlarını gösteren ekran görüntüsü.](media/3dsmax/fbx-settings.jpg)
+
+
+   Fiziksel bir malzeme kullanırken FBX 'e aktardığınızda, FBX dışa aktarma penceresinde **Tamam** ' ı seçtikten sonra aşağıdaki uyarıyı görürsünüz: 
+
+   ![Malzeme dışa aktarma başarısız uyarısını gösteren ekran görüntüsü.](media/3dsmax/export-warnings.jpg)
+
+   Bu uyarı, ihraç edilen malzemelerin diğer yazılım paketleriyle uyumlu olabileceğini bildiriyor. Fiziksel malzeme Azure uzaktan Işleme ile uyumlu olduğundan, Bu uyarıyla endişelenmeniz gerekmez. 
+
+1. İşlemi tamamlayıp pencereyi kapatmak için **Tamam** ' ı seçin.
 
 ## <a name="conclusion"></a>Sonuç
 

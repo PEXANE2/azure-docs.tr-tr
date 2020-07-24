@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f7f3e0dfd7da98cade0183825463c6b17f49dc1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100337"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077442"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Öğretici - Azure PowerShell ile Azure disklerini yönetme
 
@@ -28,11 +28,11 @@ Azure sanal makineleri, VM’lerin işletim sistemini, uygulamalarını ve veril
 > * Disk performansı
 > * Veri disklerini ekleme ve hazırlama
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="default-azure-disks"></a>Varsayılan Azure diskleri
 
@@ -63,10 +63,10 @@ Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüks
 
 Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olması gerekir. Gerekirse, aşağıdaki komutlarla bir sanal makine oluşturun.
 
-[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile sanal makinede yönetici hesabı için gereken kullanıcı adı ve parolasını ayarlayın:
+[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) ile sanal makinede yönetici hesabı için gereken kullanıcı adı ve parolasını ayarlayın:
 
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile sanal makineyi oluşturun. VM’nin yönetici hesabı için bir kullanıcı adı ve parola girmeniz istenir.
+[New-AzVM](/powershell/module/az.compute/new-azvm)ile sanal makineyi oluşturun. VM’nin yönetici hesabı için bir kullanıcı adı ve parola girmeniz istenir.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -80,7 +80,7 @@ New-AzVm `
 ```
 
 
-[Yeni-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig)ile ilk yapılandırmayı oluşturun. Aşağıdaki örnek boyutu 128 gigabayt olan bir diski yapılandırır.
+[Yeni-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig)ile ilk yapılandırmayı oluşturun. Aşağıdaki örnek boyutu 128 gigabayt olan bir diski yapılandırır.
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -89,7 +89,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) komutuyla veri diskini oluşturun.
+[New-AzDisk](/powershell/module/az.compute/new-azdisk) komutuyla veri diskini oluşturun.
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -98,13 +98,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) komutuyla veri diski eklemek istediğiniz sanal makineyi alın.
+[Get-AzVM](/powershell/module/az.compute/get-azvm) komutuyla veri diski eklemek istediğiniz sanal makineyi alın.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-Veri diskini, [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) komutuyla sanal makine yapılandırmasına ekleyin.
+Veri diskini, [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) komutuyla sanal makine yapılandırmasına ekleyin.
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -115,7 +115,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-Sanal makineyi [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) komutuyla güncelleştirin.
+Sanal makineyi [Update-AzVM](/powershell/module/az.compute/add-azvmdatadisk) komutuyla güncelleştirin.
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm

@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae4a7335394f0e2f0bd0e3ac47c36b1f61026428
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079596"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Müşterilerin uygulamanızı nasıl kullandığını anlamak için Azure Application Insights’ı kullanın
 
@@ -28,7 +28,7 @@ Azure Application Insights, kullanıcıların uygulamanızla nasıl etkileşim k
 > * Kullanıcıların uygulamanızda nasıl gezindiğini inceleme
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -38,10 +38,10 @@ Bu öğreticiyi tamamlamak için:
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)’ı indirin ve yükleyin.
 - Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../../azure-monitor/app/asp-net.md). 
 - Özel olaylar/sayfa görüntülemeleri eklemek için [uygulamanızdan telemetri gönderme](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app)
-- Kullanıcının zaman içinde gerçekleştirdiği işlevleri izlemek ve kullanım özelliklerinden tam olarak faydalanmak için [kullanıcı bağlamı](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) gönderin.
+- Kullanıcının zaman içinde gerçekleştirdiği işlevleri izlemek ve kullanım özelliklerinden tam olarak faydalanmak için [kullanıcı bağlamı](../app/usage-send-user-context.md) gönderin.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal oturum açın.
+Üzerinde Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="get-information-about-your-users"></a>Kullanıcılarınızla ilgili bilgi edinme
 **Kullanıcılar** paneli, kullanıcılarınızla ilgili önemli ayrıntıları farklı şekillerde anlamanıza yardımcı olur. Bu paneli kullanarak kullanıcılarınızın bağlandığı konum, istemcilerin ayrıntıları ve erişim sağlanan uygulama bölümleri gibi bilgileri anlayabilirsiniz. 
@@ -102,16 +102,16 @@ Bu öğreticiyi tamamlamak için:
 
 1. Menüden **Huniler**'i seçin ve **Yeni**'ye tıklayın. 
 
-    ![](media/tutorial-users/funnelsnew.png)
+    ![Yeni bir huni oluşturmayı gösteren ekran görüntüsü.](media/tutorial-users/funnelsnew.png)
 
 2. **Huni Adı** alanına bir ad yazın.
 3. Her adım için bir eylem seçerek en az iki adımdan oluşan bir huni oluşturun.  Eylemler listesi, Application Insights'tan alınan kullanım verileriyle oluşturulur.
 
-    ![](media/tutorial-users/funnelsedit.png)
+    ![Yeni bir huni içinde adımların nasıl oluşturulacağını gösteren ekran görüntüsü.](media/tutorial-users/funnelsedit.png)
 
 4. **Kaydet**'e tıklayarak huniyi kaydedin ve sonuçlarını görüntüleyin.  Huninin sağ tarafındaki pencere, ilk etkinlikten önceki ve son etkinlikten sonraki en yaygın etkinlikleri göstererek belirli bir işlem sırası etrafındaki kullanıcı eğilimlerini anlamanıza yardımcı olur.
 
-    ![](media/tutorial-users/funnelsright.png)
+    ![Yeni oluşturulan bir huninin olay sonuçlarının gösterildiği ekran görüntüsü.](media/tutorial-users/funnelsright.png)
 
 
 ## <a name="learn-which-customers-return"></a>Dönüş yapan müşterileri öğrenme
@@ -120,11 +120,11 @@ Bu öğreticiyi tamamlamak için:
 1. Menüden **Elde tutma**'yı seçin.
 2. Analiz edilen bilgiler varsayılan olarak bir eylem gerçekleştiren ve ardından herhangi bir eylem gerçekleştirmek için geri dönen kullanıcıları kapsar.  Bu filtreyi yalnızca satın alma işlemini tamamladıktan sonra geri dönen kullanıcılar gibi istediğiniz farklı bir bilgiyle değiştirebilirsiniz.
 
-    ![](media/tutorial-users/retentionquery.png)
+    ![Saklama filtresi ayarlamayı gösteren ekran görüntüsü.](media/tutorial-users/retentionquery.png)
 
 3. Ölçütlerle eşleşen geri dönen kullanıcılar farklı süreler için grafik ve tablo biçiminde gösterilir.  Tipik bir düzende, zaman içinde geri dönen kullanıcı sayısında kademeli bir düşüş olacaktır.  Bir zaman aralığından bir sonrakine geçişte ani bir düşüş olması bir sorun olduğunu gösterebilir. 
 
-    ![](media/tutorial-users/retentiongraph.png)
+    ![Bir bekletme filtresi için ayarlanan ölçütlere uyan kullanıcılar için bir grafik gösteren ekran görüntüsü.](media/tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>Kullanıcı gezintisini analiz etme
 **Kullanıcı akışı**, kullanıcıların uygulamanızın sayfaları ve özellikleri arasında nasıl gezindiğini görselleştirir.  Bu da kullanıcıların belirli bir sayfadan geçiş yaptıkları yerler, uygulamanızdan çıkış yapma şekli düzenli olarak tekrarlanan eylemler gibi sorulara yanıt bulmanıza yardımcı olur.
@@ -133,15 +133,15 @@ Bu öğreticiyi tamamlamak için:
 2.  **Yeni**'ye tıklayarak yeni bir kullanıcı akışı oluşturun ve ardından **Düzenle**'ye tıklayarak ayrıntılarını düzenleyin.
 3.  **Zaman Aralığı** değerini 7 güne çıkarın ve ardından ilk olayı seçin.  Akış, bu olayla başlayan kullanıcı oturumlarını izler.
 
-    ![](media/tutorial-users/flowsedit.png)
+    ![Yeni bir Kullanıcı akışının nasıl oluşturulacağını gösteren ekran görüntüsü.](media/tutorial-users/flowsedit.png)
 
 4.  Kullanıcı akışı görüntülenir ve farklı kullanıcı yolları ile oturum sayıları da gösterilir.  Mavi çizgiler kullanıcının geçerli eylemden sonra bir eylem gerçekleştirdiğini gösterir.  Kırmızı çizgi kullanıcı oturumunun sonlandırıldığını gösterir.
 
-    ![](media/tutorial-users/flows.png)
+    ![Bir Kullanıcı akışı için Kullanıcı yollarının ve oturum sayılarının görüntülenmesini gösteren ekran görüntüsü.](media/tutorial-users/flows.png)
 
 5.  Akıştaki bir olayı kaldırmak için eylemin köşesindeki **x** simgesine ve ardından **Grafik Oluştur**'a tıklayın.  Grafik yeniden çizilir ve olay örnekleri kaldırılır.  **Düzenle**'ye tıkladığınızda olayın **Dışlanan olaylar** alanına eklenmiş olduğunu görebilirsiniz.
 
-    ![](media/tutorial-users/flowsexclude.png)
+    ![Bir Kullanıcı akışı için dışlanan olayların listesini gösteren ekran görüntüsü.](media/tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>Kullanım verilerini birleştirme
 **Çalışma kitapları** veri görselleştirmelerini, Analytics sorgularını ve metinleri etkileşimli belgelere dönüştürür.  Çalışma kitaplarını kullanarak yaygın kullanım bilgilerini gruplandırabilir, belirli bir olayla ilgili bilgileri birleştirebilir veya uygulamanızın kullanımıyla ilgili ekibinize rapor verebilirsiniz.
@@ -150,12 +150,12 @@ Bu öğreticiyi tamamlamak için:
 2.  Yeni bir çalışma kitabı oluşturmak için **Yeni**'ye tıklayın.
 3.  Son bir gündeki tüm kullanım verilerinin çubuk grafik olarak gösterildiği bir sorgu otomatik olarak sağlanır.  Bu sorguyu kullanabilir, el ile düzenleyebilir veya **Örnek sorgular**'a tıklayarak diğer yararlı sorgulardan seçim yapabilirsiniz.
 
-    ![](media/tutorial-users/samplequeries.png)
+    ![Kullanabileceğiniz örnek sorguların listesini gösteren ekran görüntüsü.](media/tutorial-users/samplequeries.png)
 
 4.  **Düzenleme bitti**'ye tıklayın.
 5.  Çalışma kitabının en üstündeki metni düzenlemek için üst bölmeden **Düzenle**'ye tıklayın.  Bu çalışma kitabı markdown kullanılarak biçimlendirilir.
 
-    ![](media/tutorial-users/markdown.png)
+    ![Çalışma kitabının en üstünde metnin nasıl düzenleneceğini gösteren ekran görüntüsü.](media/tutorial-users/markdown.png)
 
 6.  Kullanıcı bilgilerini içeren bir grafik eklemek için **Kullanıcı ekle**'ye tıklayın.  Dilerseniz grafiğin ayrıntılarını düzenleyin ve **Düzenleme bitti**'ye tıklayarak kaydedin.
 

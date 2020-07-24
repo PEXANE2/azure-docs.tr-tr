@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 07/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25dd638c15fecbef787e4ceabea9ae7cb4359582
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d78cbb9f8ea56df6952022f5388d66a9163f714
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76120375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018536"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>Öğretici: Adobe Creative Cloud ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -34,9 +33,9 @@ Bu öğreticide, Adobe Creative Cloud Azure Active Directory (Azure AD) ile tüm
 * Kullanıcılarınızın Azure AD hesaplarıyla Adobe Creative Cloud için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -48,10 +47,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Adobe Creative Cloud **SP** tarafından başlatılan SSO 'yu destekler
-
-
-
-
+* Adobe Creative Cloud yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Galeriden Adobe Creative Cloud ekleme
 
@@ -65,7 +61,7 @@ Adobe Creative Cloud tümleştirmesini Azure AD ile yapılandırmak için, Galer
 1. Sonuçlar panelinden **Adobe Creative Cloud** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-adobe-creative-cloud"></a>Adobe Creative Cloud için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-adobe-creative-cloud"></a>Adobe Creative Cloud için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Adobe Creative Cloud ile yapılandırın ve test edin. SSO 'nun çalışması için, Adobe Creative Cloud bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
 
@@ -95,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > Tanımlayıcı değeri gerçek değil. Bu değeri gerçek tanımlayıcıyla güncelleştirin. Bu değeri almak için [Adobe Creative Cloud istemci destek ekibine](https://www.adobe.com/au/creativecloud/business/teams/plans.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Tanımlayıcı değeri gerçek değil. **Adobe Cloud SSO 'Yu yapılandırma** bölümünde 4. adım hakkında yer alan yönergeleri izleyin. Bu durumda, **Federasyon meta VERI XML dosyasını** açabilir ve bundan sonra BIR varlık kimliği değeri alabilir ve bunu Azure AD yapılandırmasında bir tanımlayıcı değeri olarak koyabilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. Adobe Creative Cloud uygulama, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -103,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki Adobe Creative Cloud uygulama, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     |----- | --------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -128,9 +124,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -170,7 +166,7 @@ Bu bölümde, Adobe Creative Cloud erişim vererek Azure çoklu oturum açma öz
 
     ![Federasyon verileri XML dosyası](https://helpx.adobe.com/content/dam/help/en/enterprise/kb/configure-microsoft-azure-with-adobe-sso/jcr_content/main-pars/procedure/proc_par/step_228106403/step_par/image_copy/saml_signinig_certificate.png "IDP meta veri XML 'i")
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 
 ### <a name="create-adobe-creative-cloud-test-user"></a>Adobe Creative Cloud test kullanıcısı oluştur
@@ -184,7 +180,7 @@ Azure AD kullanıcılarının Adobe Creative Cloud oturum açmasını sağlamak 
 2. Kullanıcıları, Adobe konsolunun içinde Federasyon KIMLIĞI olarak ekleyin ve bir ürün profiline atayın. Kullanıcı ekleme hakkında ayrıntılı bilgi için bkz. [Adobe Yönetici Konsolu 'nda Kullanıcı ekleme](https://helpx.adobe.com/enterprise/using/users.html#Addusers) 
 
 3. Bu noktada, e-posta adresinizi/UPN 'nizi Adobe oturum açma formuna yazın, sekme tuşuna basın ve Azure AD 'ye geri Federasyon oluşturmanız gerekir:
-   * Web erişimi: www\.Adobe.com > oturum açma
+   * Web erişimi: www \. adobe.com > oturum açma
    * Masaüstü uygulaması yardımcı programı içinde > oturum açma
    * Uygulama içinde > yardım > oturum açma
 
@@ -198,7 +194,7 @@ Erişim panelinde Adobe Creative Cloud kutucuğuna tıkladığınızda, SSO 'yu 
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
@@ -207,4 +203,3 @@ Erişim panelinde Adobe Creative Cloud kutucuğuna tıkladığınızda, SSO 'yu 
 - [Kimlik ayarlama (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-identity.html)
   
 - [Azure 'ı Adobe SSO ile kullanım için yapılandırma (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
-

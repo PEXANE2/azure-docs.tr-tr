@@ -4,16 +4,16 @@ description: "Öğretici: Bu öğreticide, bir olay kılavuzuyla tetiklenen bir 
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: b5f38c1a5b60dc8c8f0d9e8710c5dbc95434fe78
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322494"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039506"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Öğretici: Event Grid ve Azure Işlevlerini kullanarak yakalanan Event Hubs verilerini SQL veri ambarı 'na geçirme
 
-Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) özelliği, Event Hubs'da akışı yapılan verileri bir Azure Blob depolama alanına veya Azure Data Lake Store'a otomatik olarak iletmenin en kolay yoludur. Ardından, verileri işleyebilir ve SQL Veri Ambarı veya Cosmos DB gibi istediğiniz bir diğer depolama hedefine aktarabilirsiniz. Bu öğreticide, olay hub'ınızdaki verilerin [olay kılavuzu](https://docs.microsoft.com/azure/event-grid/overview) tarafından tetiklenen bir Azure işlevi kullanılarak SQL veri ambarında nasıl yakalandığını öğreneceksiniz.
+Event Hubs [Capture](./event-hubs-capture-overview.md) özelliği, Event Hubs'da akışı yapılan verileri bir Azure Blob depolama alanına veya Azure Data Lake Store'a otomatik olarak iletmenin en kolay yoludur. Ardından, verileri işleyebilir ve SQL Veri Ambarı veya Cosmos DB gibi istediğiniz bir diğer depolama hedefine aktarabilirsiniz. Bu öğreticide, olay hub'ınızdaki verilerin [olay kılavuzu](../event-grid/overview.md) tarafından tetiklenen bir Azure işlevi kullanılarak SQL veri ambarında nasıl yakalandığını öğreneceksiniz.
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
@@ -31,7 +31,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > - Event Hub'a örnek veri akışı yapma.
 > - Yakalanan verileri SQL Veri Ambarı'nda doğrulama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,7 +63,7 @@ Aşağıdaki bölümlerde, öğretici için gerekli altyapının dağıtılması
 - Mantıksal SQL Server
 - SQL kullanıcısı (ve parolası)
 - Azure SQL veritabanı
-- Azure Depolama 
+- Azure Storage 
 - Azure İşlevleri Uygulaması
 
 Bu betiklerin tüm Azure yapıtlarını oluşturması biraz zaman alır. Betik tamamlanana kadar başka işlem yapmayın. Dağıtım bir nedenle başarısız olursa kaynak grubunu silin, bildirilen sorunu çözün ve komutu yeniden çalıştırın. 
@@ -113,7 +113,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![İşlev uygulaması yayımlama](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. **Azure İşlev Uygulaması** ve **Var Olanı Seç**’i seçin. **Yayımla** seçeneğini belirleyin.
+1. **Azure İşlev Uygulaması** ve **Var Olanı Seç**’i seçin. **Yayımla**’yı seçin.
 
    ![Hedef işlev uygulaması](./media/store-captured-data-data-warehouse/pick-target.png)
 
@@ -130,7 +130,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>İşlevler uygulamasında bir Event Grid aboneliği oluşturma
  
-1. [Azure Portal](https://portal.azure.com/)gidin. Kaynak grubunuzu ve işlev uygulamanızı seçin.
+1. [Azure portalına](https://portal.azure.com/) gidin. Kaynak grubunuzu ve işlev uygulamanızı seçin.
 
    ![İşlev uygulamasını görüntüleme](./media/store-captured-data-data-warehouse/view-function-app.png)
 
@@ -142,7 +142,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Abonelik ekleme](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Event grid aboneliğine bir ad verin. Olay türü olarak **Event Hubs Ad Alanları**’nı kullanın. Event Hubs ad alanı örneğinizi seçmek için değerler sağlayın. Abone uç noktasını sağlanan değer olarak bırakın. **Oluştur**'u seçin.
+1. Event grid aboneliğine bir ad verin. Olay türü olarak **Event Hubs Ad Alanları**’nı kullanın. Event Hubs ad alanı örneğinizi seçmek için değerler sağlayın. Abone uç noktasını sağlanan değer olarak bırakın. **Oluştur**’u seçin.
 
    ![Abonelik oluşturma](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
@@ -178,7 +178,4 @@ Birkaç dakika sonra, SQL veri ambarınızdaki tabloyu sorgulayın. WindTurbineD
 ## <a name="next-steps"></a>Sonraki adımlar 
 Eyleme dönüştürülebilir içgörüler edinmek için veri ambarınızla güçlü veri görselleştirme araçları kullanabilirsiniz.
 
-Bu makalede [SQL Veri Ambarı ile Power BI'ın](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) nasıl kullanılacağı gösterilmektedir
-
-
-
+Bu makalede [SQL Veri Ambarı ile Power BI'ın](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) nasıl kullanılacağı gösterilmektedir

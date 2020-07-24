@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 04/15/2020
-ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 07/15/2020
+ms.openlocfilehash: 760624b06d00a873ff48c659ef65f9af62cd6454
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780564"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084033"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak otomatik tamamlama ve öneriler ekleme
 
@@ -36,13 +36,13 @@ Alternatif olarak, bu özel öğreticiye yönelik çözümü indirebilir ve çal
 
 Kullanıcıya alternatifler sağlamanın en basit durumu ile başlayalım: bir öneriler listesi açılır.
 
-1. İndex. cshtml dosyasında, **TextBoxFor** ifadesinin `@id` **azureautoöner**olarak değiştirilmesi.
+1. İndex. cshtml dosyasında, `@id` **TextBoxFor** ifadesinin **azureautoöner**olarak değiştirilmesi.
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-2. Bu bildirimin ardından, kapanış ** &lt;/div&gt;** öğesinden sonra bu betiği girin. Bu betik, önerilen sonuçların açılan listesini sunmak için açık kaynak jQuery kullanıcı arabirimi kitaplığındaki [otomatik tamamlama pencere öğesini](https://api.jqueryui.com/autocomplete/) kullanır. 
+2. Bu bildirimin ardından, kapanış ** &lt; /div &gt; **öğesinden sonra bu betiği girin. Bu betik, önerilen sonuçların açılan listesini sunmak için açık kaynak jQuery kullanıcı arabirimi kitaplığındaki [otomatik tamamlama pencere öğesini](https://api.jqueryui.com/autocomplete/) kullanır. 
 
     ```javascript
     <script>
@@ -61,7 +61,7 @@ Kullanıcıya alternatifler sağlamanın en basit durumu ile başlayalım: bir �
 
 ### <a name="add-references-to-jquery-scripts-to-the-view"></a>Görünüme jQuery betiklerine başvuru ekleme
 
-1. JQuery kitaplığına erişmek için, görünüm dosyasının &lt;baş&gt; bölümünü şu kodla değiştirin:
+1. JQuery kitaplığına erişmek için, &lt; &gt; Görünüm dosyasının baş bölümünü şu kodla değiştirin:
 
     ```cs
     <head>
@@ -308,7 +308,7 @@ Bu işlevi sunan kitaplıklar vardır-genellikle "satır içi otomatik tamamlama
 
     **Sonuçlar** listesinin en üstünde bir otomatik tamamlama seçeneği döndürülür ve tüm öneriler gelir.
 
-2. Görünümde ilk olarak, açık gri otomatik tamamlama sözcüğünün Kullanıcı tarafından girilen beski metin altında oluşturulması için bir el uyguladık. HTML, bu amaçla Göreli konumlandırmayı içerir. **TextBoxFor** deyimini (ve çevreleyen &lt;div&gt; deyimlerini) aşağıdaki şekilde değiştirin. bu arama kutusu 39 piksel olan bu arama kutusunu varsayılan konumlarından çekerek, aşağıda gösterildiği gibi bir ikinci arama kutusunun normal arama kutusumuza doğru olduğunu unutmayın! **underneath**
+2. Görünümde ilk olarak, açık gri otomatik tamamlama sözcüğünün Kullanıcı tarafından girilen beski metin altında oluşturulması için bir el uyguladık. HTML, bu amaçla Göreli konumlandırmayı içerir. **TextBoxFor** deyimini (ve çevreleyen &lt; div &gt; deyimlerini) aşağıdaki şekilde değiştirin. bu arama kutusu 39 piksel olan bu arama kutusunu varsayılan konumlarından **underneath** çekerek, aşağıda gösterildiği gibi bir ikinci arama kutusunun normal arama kutusumuza doğru olduğunu unutmayın!
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">

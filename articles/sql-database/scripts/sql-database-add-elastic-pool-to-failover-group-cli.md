@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 42cc10398fce831b6343f69df03104d428700ac3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 965e6fe3546630713f3fee2774c70aebd1ed2ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086090"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
-| | |
+| Komut | Açıklama |
 |---|---|
 | [az SQL elastik havuz](/cli/azure/sql/elastic-pool) | Elastik havuz komutları. |
 | [az SQL yük devretme-Grup](/cli/azure/sql/failover-group) | Yük devretme grubu komutları. |

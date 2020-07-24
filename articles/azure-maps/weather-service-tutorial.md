@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9d35ed0ee657e90ebc77c16ed654d32975ed9580
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560370"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024852"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
 
@@ -31,11 +31,11 @@ Bu öğreticide şunları yapacaksınız:
 > * Tahmin verilerini grafiklerde çiz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle şunları yapmanız gerekir:
 
-1. [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)konusundaki yönergeleri izleyerek S0 fiyatlandırma katmanında bir Azure Maps hesabı aboneliği oluşturun.
+1. [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)konusundaki yönergeleri izleyerek S0 fiyatlandırma katmanında bir Azure Maps hesabı aboneliği oluşturun.
 2. Hesabınız için birincil abonelik anahtarını alın, [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account)bölümündeki yönergeleri izleyin.
 
 

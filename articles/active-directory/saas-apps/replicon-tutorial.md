@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27615b0c76b5c23bbc79788431b0e909b8bf22a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 84a93d4fb8a6a3890ddd2c94b4f0a5c9114bd84d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67092761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058197"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Replicon tümleştirme
 
@@ -33,12 +33,15 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Replicon tümleştirme ha
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü edinebilirsiniz.
 * Replicon çoklu oturum açma (SSO) etkin abonelik.
+
+> [!NOTE]
+> Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -113,7 +116,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     * Aşağıda, URL 'nin tamamının şeması gösterilmektedir:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-   b. V20Configuration bölümünü **+** genişletmek için öğesine **v20Configuration** tıklayın.
+   b. **+** **V20Configuration** bölümünü genişletmek için öğesine tıklayın.
 
    c. **+** **Metadataconfiguration** bölümünü genişletmek için öğesine tıklayın.
 
@@ -129,9 +132,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -171,7 +174,7 @@ Bu bölümün amacı, Replicon 'da B. Simon adlı bir Kullanıcı oluşturmaktı
 
     ![Kullanıcı profili](./media/replicon-tutorial/ic777808.png "Kullanıcı profili")
 
-    a. **Oturum açma adı** metin kutusuna, sağlamak ISTEDIĞINIZ Azure AD KULLANıCıSıNıN Azure ad e-posta adresini yazın `B.Simon@contoso.com`.
+    a. **Oturum açma adı** metin kutusuna, sağlamak ISTEDIĞINIZ Azure AD KULLANıCıSıNıN Azure ad e-posta adresini yazın `B.Simon@contoso.com` .
 
     > [!NOTE]
     > Oturum açma adının, Azure AD 'de kullanıcının e-posta adresiyle eşleşmesi gerekir

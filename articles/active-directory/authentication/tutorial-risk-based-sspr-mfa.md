@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a38f4744b6a1f9b4ebd0112be07b2556f1c39
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035005"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Öğretici: Azure Multi-Factor Authentication veya parola değişikliklerini tetiklemek için Kullanıcı oturum açma işlemlerinin risk algılamalarını kullanın
 
-Kullanıcılarınızı korumak için, riskli davranışlara otomatik olarak yanıt veren Azure Active Directory (Azure AD) içinde risk tabanlı ilkeler yapılandırabilirsiniz. Azure AD Kimlik Koruması ilkeler, oturum açma girişimini otomatik olarak engelleyebilir veya Azure Multi-Factor Authentication için parola değişikliği veya istem gerektirme gibi ek eylemler gerektirebilir. Bu ilkeler, kuruluş kuruluşu için ek bir koruma katmanı olarak mevcut Azure AD koşullu erişim ilkeleriyle birlikte çalışır. Kullanıcılar bu ilkelerden birinde riskli bir davranışı hiçbir şekilde tetikleyemeyebilir, ancak güvenliğinizi tehlikeye atabilir, kuruluşunuz korunur.
+Kullanıcılarınızı korumak için, riskli davranışlara otomatik olarak yanıt veren Azure Active Directory (Azure AD) içinde risk tabanlı ilkeler yapılandırabilirsiniz. Azure AD Kimlik Koruması ilkeler, oturum açma girişimini otomatik olarak engelleyebilir veya Azure Multi-Factor Authentication için parola değişikliği veya istem gerektirme gibi ek eylemler gerektirebilir. Bu ilkeler, kuruluşunuz için ek bir koruma katmanı olarak mevcut Azure AD koşullu erişim ilkeleriyle birlikte çalışır. Kullanıcılar bu ilkelerden birinde riskli bir davranışı hiçbir şekilde tetikleyemeyebilir, ancak güvenliğinizi tehlikeye atabilir, kuruluşunuz korunur.
+
+> [!IMPORTANT]
+> Bu öğreticide, risk tabanlı Azure Multi-Factor Authentication nasıl etkinleştireceğinizi gösteren bir yönetici gösterilmektedir.
+>
+> BT ekibiniz Azure Multi-Factor Authentication kullanma özelliğini etkinleştirmemişse veya oturum açma sırasında sorun yaşıyorsanız, ek yardım için yardım masasına ulaşın.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -30,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Risk tabanlı Multi-Factor Authentication'ı etkinleştirme
 > * Kullanıcı oturum açma girişimleri için risk tabanlı ilkeleri test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -56,11 +61,11 @@ Aşağıdaki eylemlerden bazıları Azure AD Kimlik Koruması risk algılamayı 
 
 Kullanıcıları korumak ve kuşkulu etkinliklere yanıt vermek için Azure AD Kimlik Koruması ' de aşağıdaki üç ilke kullanılabilir. İlke zorlamayı açmak veya devre dışı bırakmak için, ilkenin uygulanacağı kullanıcıları veya grupları seçebilirsiniz ve oturum açma sırasında veya ek eylem isteminde erişimi engellemek isteyip istemediğinize karar verebilirsiniz.
 
-* Kullanıcı risk ilkesi
+* Kullanıcı riski ilkesi
     * Güvenliği aşılmış kimlik bilgilerine sahip olabilecek Kullanıcı hesaplarını tanımlar ve yanıtlar. Kullanıcıdan yeni bir parola oluşturmasını isteyebilir.
 * Oturum açma risk ilkesi
     * Şüpheli oturum açma girişimlerini tanımlar ve yanıtlar. Kullanıcıdan Azure Multi-Factor Authentication kullanarak ek doğrulama formları sağlamasını isteyebilir.
-* MFA kayıt ilkesi
+* Çok faktörlü kimlik doğrulaması kayıt ilkesi
     * Kullanıcıların Azure Multi-Factor Authentication kayıtlı olduğundan emin olur. Bir oturum açma risk ilkesi MFA isterse, kullanıcının Azure Multi-Factor Authentication için zaten kayıtlı olması gerekir.
 
 Bir ilke kullanıcısını veya bir oturum açma ilkesini etkinleştirdiğinizde, risk düzeyi için eşiği ( *düşük ve üstü*, *Orta ve üstü*ya da *yüksek*) seçebilirsiniz. Bu esneklik, şüpheli oturum açma olayları için herhangi bir denetimi zorunlu tutmanın nasıl olmasını istediğinize karar vermenize olanak tanır.

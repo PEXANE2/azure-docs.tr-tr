@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği örneği-WAF özel kuralları oluşturma
+title: WAF özel kurallarını kullanan Azure PowerShell betik örneği
 description: Azure PowerShell betik örneği-özel kurallar Application Gateway Web uygulaması güvenlik duvarı oluşturma
 author: vhorne
 ms.service: web-application-firewall
@@ -7,25 +7,25 @@ services: web-application-firewall
 ms.topic: sample
 ms.date: 09/30/2019
 ms.author: victorh
-ms.openlocfilehash: 950f71c284268a9aa2773eb57213e266622d85bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b73b15e7f174868fa4c0a9518725a4585cf3dffe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73501578"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035596"
 ---
 # <a name="create-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell ile WAF özel kuralları oluşturma
 
 Bu betik, özel kurallar kullanan bir Application Gateway Web uygulaması güvenlik duvarı oluşturur. İstek üst bilgisi Kullanıcı Aracısı *evbot*içeriyorsa, özel kural trafiği engeller.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell modülü
 
 Azure PowerShell yerel olarak yükleyip kullanmayı tercih ederseniz, bu betik Azure PowerShell modülü sürüm 2.1.0 veya üstünü gerektirir.
 
 1. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps).
-2. Azure ile bağlantı oluşturmak için, çalıştırın `Connect-AzAccount`.
+2. Azure ile bağlantı oluşturmak için, çalıştırın `Connect-AzAccount` .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,4 +71,4 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - WAF özel kuralları hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı Için özel kurallar](../ag/custom-waf-rules-overview.md)
-- Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+- Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).

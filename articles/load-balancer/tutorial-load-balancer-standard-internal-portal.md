@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: b8fcef13fbe41ac26b2a31d6871896428649eaa1
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f7f16093074b48610c1db8fec7f05ee01e7ab1ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078768"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Öğretici: Azure portal standart yük dengeleyici ile iç trafik yükünü dengeleme
 
@@ -32,25 +32,23 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu öğreticiyi kullanarak adımları uygulamak için Azure portal ' de oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
-## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>VNet, arka uç sunucuları ve test VM 'si oluşturma
+## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
 
-İlk olarak, bir sanal ağ (VNet) oluşturun. VNet 'te standart yük dengeleyicinizin arka uç havuzu için kullanılacak iki VM oluşturun ve yük dengeleyiciyi test etmek için kullanılacak üçüncü bir VM oluşturun. 
+| Parametre                   | Değer                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Doğu ABD 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0 \ 24          |
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
-
-1. Portalın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **sanal ağ**' ı seçin.
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
    
-1. **Sanal ağ oluştur** bölmesinde şu değerleri yazın veya seçin:
-   
-   - **Ad**: **myvnet**yazın.
-   - **ResourceGroup**: **Yeni oluştur**' u seçin ve **Myresourcegrouplb**girin ve **Tamam**' ı seçin. 
-   - **Alt ağ**  >  **Ad**: **Mybackendsubnet**yazın.
-   
-1. **Oluştur**'u seçin.
 
-   ![Sanal ağ oluşturma](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
+## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
 1. Portalın sol üst tarafında, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2016 Datacenter**' u seçin. 
    
@@ -76,7 +74,7 @@ Bu öğreticiyi kullanarak adımları uygulamak için Azure portal ' de oturum a
    
 1. **Yönetim** sekmesini seçin veya **İleri**  >  **Yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
    
-1. **İncele ve oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
    
 1. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin. 
 
@@ -129,7 +127,7 @@ Trafiği VM 'lere dağıtmak için, yük dengeleyici bir arka uç adres havuzu k
    1. Arka uç havuzuna **MyVM1** ve **MyVM2** ekleyin.
    2. Her makineyi ekledikten sonra, açılır ve **ağ IP yapılandırması**' nı seçin. 
      
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
    
    ![Arka uç adres havuzunu ekleme](./media/tutorial-load-balancer-standard-internal-portal/3-load-balancer-backend-02.png)
    

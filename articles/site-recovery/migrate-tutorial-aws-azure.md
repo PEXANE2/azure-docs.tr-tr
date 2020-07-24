@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1070230d968a6239a5a4aab5ac412280393d17da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: bcc0651bace15280127bb725c21b32673f8cdb6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133172"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071203"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini Azure’a geçirme
 
@@ -37,7 +37,7 @@ Bu öğreticide, Azure Site Recovery kullanarak Azure VM 'lerine Amazon Web Serv
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Geçirmek istediğiniz VM’lerin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. Desteklenen sürümlere şunlar dahildir: 
   - Windows Server 2016 
   - Windows Server 2012 R2
@@ -115,7 +115,7 @@ Azure portalda kasanızın sayfasında, **Başlarken** bölümünden **Site Reco
 
 **Koruma Hedefi** sayfasında aşağıdaki değerleri seçin:
 
-|    |  |
+| Adım | Seçim |
 |---------|-----------|
 | Makineleriniz nerede bulunuyor? |**Şirket içi**’ni seçin.|
 | Makinelerinizi nereye çoğaltmak istiyorsunuz? |**Azure’a**’yı seçin.|
@@ -181,7 +181,7 @@ Geçirmek istediğiniz her sanal makine için çoğaltmayı etkinleştirin. Ço�
 2. **Şirket içi makineler ve Azure VM’ler için** bölümünde **1. Adım: Uygulamayı Çoğaltma**’yı seçin. Aşağıdaki bilgilerle sihirbazın sonraki sayfalarını tamamlayın. İşiniz bittiğinde her sayfada **Tamam**’ı seçin:
    - 1: Kaynağı yapılandırma
 
-     |  |  |
+     | Parametre | Değer |
      |-----|-----|
      | Kaynak: | **Şirket İçi**’ni seçin.|
      | Kaynak konumu:| Yapılandırma sunucusu EC2 örneğinizin adını girin.|
@@ -190,7 +190,7 @@ Geçirmek istediğiniz her sanal makine için çoğaltmayı etkinleştirin. Ço�
 
    - 2: Hedefi yapılandırma
 
-     |  |  |
+     | Parametre | Değer |
      |-----|-----|
      | Hedef: | Varsayılanı değiştirmeyin.|
      | Abonelik: | Kullanmakta olduğunuz aboneliği seçin.|

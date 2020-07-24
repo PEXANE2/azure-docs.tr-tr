@@ -6,12 +6,13 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: ca889e48510ec20b4823c6ec5e4e0149d5aaaa62
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: edbb3c1b2ed3e696c304f72c7b40fa926cae2c54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021197"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme
 
@@ -21,7 +22,7 @@ Sanal CPU (vCPU) sayısını ve bellek miktarını değiştirerek uygulamanızı
 
 İşlemi tamamladıktan sonra, hizmetinizdeki her uygulamada hızlı bir şekilde değişiklik yapmayı öğrenirsiniz. Ölçeklendirme, saniyeler içinde etkili olur ve herhangi bir kod değişikliği veya yeniden dağıtım gerektirmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordamları izlemek için şunlar gerekir:
 
@@ -31,7 +32,7 @@ Bu yordamları izlemek için şunlar gerekir:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Azure portal ölçek sayfasına gidin
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure yay bulutuna **genel bakış** sayfasına gidin.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: F5 ile Azure AD çoklu oturum açma tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve F5 arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017457"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +33,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -282,45 +282,45 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
 Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için kullanılacak etki alanı denetleyicilerini ve kimlik bilgilerini belirtmek üzere bir Active Directory AAA sunucusu yapılandırırsınız.
 
-1.    Ana sekmede, **> aaa sunucuları > Active Directory erişim ilkesi**' ne tıklayın. Active Directory sunucuları listesi ekranı açılır.
+1. Ana sekmede, **> aaa sunucuları > Active Directory erişim ilkesi**' ne tıklayın. Active Directory sunucuları listesi ekranı açılır.
 
-2.    **Oluştur**’a tıklayın. Yeni sunucu özellikleri ekranı açılır.
+2. **Oluştur**’a tıklayın. Yeni sunucu özellikleri ekranı açılır.
 
-3.    **Ad** alanına, kimlik doğrulama sunucusu için benzersiz bir ad yazın.
+3. **Ad** alanına, kimlik doğrulama sunucusu için benzersiz bir ad yazın.
 
-4.    **Etki alanı adı** alanına Windows etki alanının adını yazın.
+4. **Etki alanı adı** alanına Windows etki alanının adını yazın.
 
-5.    **Sunucu bağlantısı** ayarı için şu seçeneklerden birini seçin:
+5. **Sunucu bağlantısı** ayarı için şu seçeneklerden birini seçin:
 
-    * AAA sunucusu için yüksek kullanılabilirlik ayarlamak üzere **havuzu kullan** ' ı seçin.
+   * AAA sunucusu için yüksek kullanılabilirlik ayarlamak üzere **havuzu kullan** ' ı seçin.
 
-    * Tek başına işlevselliği için AAA sunucusu kurmak üzere **doğrudan** ' yi seçin.
+   * Tek başına işlevselliği için AAA sunucusu kurmak üzere **doğrudan** ' yi seçin.
 
-6.    **Doğrudan**öğesini seçtiyseniz, **etki alanı denetleyicisi** alanına bir ad yazın.
+6. **Doğrudan**öğesini seçtiyseniz, **etki alanı denetleyicisi** alanına bir ad yazın.
 
-7.    **Havuz**kullan ' ı seçtiyseniz havuzu yapılandırın:
+7. **Havuz**kullan ' ı seçtiyseniz havuzu yapılandırın:
 
-    * **Etki alanı denetleyicisi havuzu adı** alanına bir ad yazın.
+   * **Etki alanı denetleyicisi havuzu adı** alanına bir ad yazın.
 
-    * Havuzdaki **etki alanı denetleyicilerini** , her bırı için IP adresini ve ana bilgisayar adını yazıp **Ekle** düğmesine tıklayarak belirtin.
+   * Havuzdaki **etki alanı denetleyicilerini** , her bırı için IP adresini ve ana bilgisayar adını yazıp **Ekle** düğmesine tıklayarak belirtin.
 
-    * AAA sunucusunun sistem durumunu izlemek için, bir sistem durumu İzleyicisi seçme seçeneğiniz vardır: Bu durumda yalnızca **gateway_icmp** İzleyicisi uygundur; Bunu, **sunucu havuzu İzleyicisi** listesinden seçebilirsiniz.
+   * AAA sunucusunun sistem durumunu izlemek için, bir sistem durumu İzleyicisi seçme seçeneğiniz vardır: Bu durumda yalnızca **gateway_icmp** İzleyicisi uygundur; Bunu, **sunucu havuzu İzleyicisi** listesinden seçebilirsiniz.
 
-8.    Yönetici **adı** alanında Active Directory yönetim izinlerine sahip bir yönetici için büyük/küçük harfe duyarlı bir ad yazın. APM, AD sorgusu için **yönetici adı** ve **yönetici parolası** alanlarındaki bilgileri kullanır. Anonim sorgular için Active Directory yapılandırıldıysa, yönetici adı sağlamanız gerekmez. Aksi takdirde APM, bir Active Directory sunucusuna bağlamak, Kullanıcı grubu bilgilerini getirmek ve parolayla ilgili işlevselliği desteklemek için Active Directory parola ilkeleri getirmek için yeterli ayrıcalığa sahip bir hesaba ihtiyaç duyuyor. (APM, bir AD sorgu eyleminde kullanıcıdan süre sonundan önce parolayı değiştirmeyi sor seçeneğini belirlerseniz parola ilkelerini almalıdır.) Bu yapılandırmada yönetici hesabı bilgileri sağlamazsanız APM, bilgileri getirmek için Kullanıcı hesabını kullanır. Bu, Kullanıcı hesabının yeterli ayrıcalığı varsa işe yarar.
+8. Yönetici **adı** alanında Active Directory yönetim izinlerine sahip bir yönetici için büyük/küçük harfe duyarlı bir ad yazın. APM, AD sorgusu için **yönetici adı** ve **yönetici parolası** alanlarındaki bilgileri kullanır. Anonim sorgular için Active Directory yapılandırıldıysa, yönetici adı sağlamanız gerekmez. Aksi takdirde APM, bir Active Directory sunucusuna bağlamak, Kullanıcı grubu bilgilerini getirmek ve parolayla ilgili işlevselliği desteklemek için Active Directory parola ilkeleri getirmek için yeterli ayrıcalığa sahip bir hesaba ihtiyaç duyuyor. (APM, bir AD sorgu eyleminde kullanıcıdan süre sonundan önce parolayı değiştirmeyi sor seçeneğini belirlerseniz parola ilkelerini almalıdır.) Bu yapılandırmada yönetici hesabı bilgileri sağlamazsanız APM, bilgileri getirmek için Kullanıcı hesabını kullanır. Bu, Kullanıcı hesabının yeterli ayrıcalığı varsa işe yarar.
 
-9.    **Yönetici parolası** alanına, etki alanı adıyla ilişkili yönetici parolasını yazın.
+9. **Yönetici parolası** alanına, etki alanı adıyla ilişkili yönetici parolasını yazın.
 
-10.    **Yönetici parolasını doğrula** alanına, **etki alanı adı** ayarıyla ilişkili yönetici parolasını yeniden yazın.
+10. **Yönetici parolasını doğrula** alanına, **etki alanı adı** ayarıyla ilişkili yönetici parolasını yeniden yazın.
 
-11.    **Grup önbelleği ömrü** alanına gün sayısını yazın. Varsayılan yaşam süresi 30 gündür.
+11. **Grup önbelleği ömrü** alanına gün sayısını yazın. Varsayılan yaşam süresi 30 gündür.
 
-12.    **Parola güvenlik nesnesi önbelleği ömrü** alanına gün sayısını yazın. Varsayılan yaşam süresi 30 gündür.
+12. **Parola güvenlik nesnesi önbelleği ömrü** alanına gün sayısını yazın. Varsayılan yaşam süresi 30 gündür.
 
-13.    **Kerberos ön kimlik doğrulaması şifreleme türü** listesinden bir şifreleme türü seçin. Varsayılan değer **none**' dır. Bir şifreleme türü belirtirseniz, büyük IP sistemi, ilk kimlik doğrulama hizmeti isteği (AS-REQ) paketi içinde Kerberos ön kimlik doğrulaması verileri içerir.
+13. **Kerberos ön kimlik doğrulaması şifreleme türü** listesinden bir şifreleme türü seçin. Varsayılan değer **none**' dır. Bir şifreleme türü belirtirseniz, büyük IP sistemi, ilk kimlik doğrulama hizmeti isteği (AS-REQ) paketi içinde Kerberos ön kimlik doğrulaması verileri içerir.
 
-14.    **Zaman aşımı** alanına aaa sunucusu için bir zaman aşımı aralığı (saniye cinsinden) yazın. (Bu ayar isteğe bağlıdır.)
+14. **Zaman aşımı** alanına aaa sunucusu için bir zaman aşımı aralığı (saniye cinsinden) yazın. (Bu ayar isteğe bağlıdır.)
 
-15.    **Bitti**' ye tıklayın. Yeni sunucu listede görüntülenir. Bu, yeni Active Directory sunucusunu Active Directory sunucuları listesine ekler.
+15. **Bitti**' ye tıklayın. Yeni sunucu listede görüntülenir. Bu, yeni Active Directory sunucusunu Active Directory sunucuları listesine ekler.
 
     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure17.png)
 
@@ -456,7 +456,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 *  **1. Adım:** Bir temsili hesabı oluşturun
 
-    **Örnek:**
+    **Örneğinde**
     * Etki alanı adı: **superdemo. canlı**
 
     * Sam hesap adı: **büyük-ipuser**
@@ -465,7 +465,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 * **2. Adım:** SPN 'YI ayarla (APM temsili hesabında)
 
-    **Örnek:**
+    **Örneğinde**
     * Setspn – A **Host/Big-ipuser. superdemo. canlı** büyük-ipuser
 
 * **Adım 3:** SPN temsili (App Service hesabı için) F5 temsili hesabı için uygun temsilciyi ayarlayın.

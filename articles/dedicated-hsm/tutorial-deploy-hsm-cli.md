@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c5484c421807f5657fe5fc460342d39d442bcda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79454321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048586"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Öğretici: CLı kullanarak mevcut bir sanal ağa HSMs dağıtma
 
@@ -36,7 +36,7 @@ Tipik, yüksek kullanılabilirlik, çok bölgeli bir dağıtım mimarisi aşağ�
 
 Bu öğretici, var olan bir sanal ağla tümleştirildiği bir dizi HSM 'ye ve gerekli ExpressRoute Gateway 'e odaklanır (yukarıdaki VM 1 ' e bakın).  Diğer tüm kaynaklar standart Azure kaynaklarıdır. Aynı tümleştirme işlemi, yukarıdaki VNET 3 ' te alt ağ 4 ' te HSM 'ler için kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure ayrılmış HSM Şu anda Azure portal kullanılamıyor. Hizmetle tüm etkileşim, komut satırı aracılığıyla veya PowerShell kullanılarak yapılır. Bu öğretici Azure Cloud Shell komut satırı (CLı) arabirimini kullanacaktır. Azure CLı 'yi yeni kullanmaya başladıysanız, başlangıç yönergelerini buradan izleyin: [Azure clı 2,0 kullanmaya](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)başlayın.
 
@@ -47,7 +47,7 @@ Varsayımlar:
 - Bu kaynaklar için bir kaynak grubu oluşturdunuz ve bu öğreticide dağıtılan yeni olanlar bu gruba katılacak.
 - Yukarıdaki diyagram uyarınca gerekli sanal ağ, alt ağ ve sanal makineleri zaten oluşturdunuz ve şimdi 2 HSM 'leri Bu dağıtıma tümleştirmek istiyorsunuz.
 
-Aşağıdaki tüm yönergeler Azure Portal zaten gezindiyseniz ve Cloud Shell açtınız (portalın sağ üst köşesinde yer alan "\>\_" seçeneğini belirleyin).
+Aşağıdaki tüm yönergeler Azure portal zaten gezindiyseniz ve Cloud Shell açtınız ( \> \_ portalın sağ üst köşesinde yer alan "" seçeneğini belirleyin).
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Adanmış bir HSM sağlama
 
@@ -63,21 +63,13 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-Aşağıdaki komut, adanmış HSM hizmeti için gereken ağ özelliklerini doğrular.
-
-```azurecli
-az feature show \
-   --namespace Microsoft.Network \
-   --name AllowBaremetalServers
-```
-
-Her iki komut de "kayıtlı" (aşağıda gösterildiği gibi) durumunu döndürmelidir. Komutlar bu hizmete kaydolmanız gereken "kayıtlı" döndürmezse, Microsoft hesabı temsilcinizle iletişime geçin.
+Komutlar "kayıtlı" (aşağıda gösterildiği gibi) durumunu döndürmelidir. Komutlar "kayıtlı" döndürmezse, Microsoft hesabı temsilcinizle iletişime geçerek bu hizmete kaydolmanız gerekir.
 
 ![Abonelik durumu](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
 ### <a name="creating-hsm-resources"></a>HSM kaynakları oluşturma
 
-Bir HSM 'nin bir müşterinin sanal ağına sağlanması için sanal ağ ve alt ağ gerekir. Sanal ağ ile fiziksel cihaz arasında iletişimi etkinleştirmek için HSM 'nin bağımlılığı bir ExpressRoute ağ geçididir ve son olarak, HSM cihazına Gemalto istemci yazılımını kullanarak erişmek için bir sanal makine gerekir. Bu kaynaklar, kullanım kolaylığı için karşılık gelen parametre dosyası ile birlikte bir şablon dosyasına toplanır. Dosyalar Microsoft ile doğrudan iletişim kurarak kullanılabilir HSMrequest@Microsoft.com.
+Bir HSM 'nin bir müşterinin sanal ağına sağlanması için sanal ağ ve alt ağ gerekir. Sanal ağ ile fiziksel cihaz arasında iletişimi etkinleştirmek için HSM 'nin bağımlılığı bir ExpressRoute ağ geçididir ve son olarak, HSM cihazına Gemalto istemci yazılımını kullanarak erişmek için bir sanal makine gerekir. Bu kaynaklar, kullanım kolaylığı için karşılık gelen parametre dosyası ile birlikte bir şablon dosyasına toplanır. Dosyalar Microsoft ile doğrudan iletişim kurarak kullanılabilir HSMrequest@Microsoft.com .
 
 Dosyalar alındıktan sonra, kaynaklar için tercih ettiğiniz adları eklemek üzere parametre dosyasını düzenlemeniz gerekir. "Değer": "" ile satırları düzenleyin.
 
@@ -126,7 +118,7 @@ Bu değişikliklere bir örnek aşağıdaki gibidir:
 - Damga 1 ' de HSM
 - Damga 2 ' de HSM
 
-Parametre değerleri ayarlandıktan sonra, dosyaların kullanım için Azure portal Cloud Shell dosya paylaşımında karşıya yüklenmesi gerekir. Azure Portal, "\>\_" Cloud Shell symbol sağ üst simgesine tıklayın ve bu, ekranın alt kısmını bir komut ortamı haline getirir. Bu seçenekler BASH ve PowerShell ' dir ve henüz ayarlanmamışsa BASH ' i seçmeniz gerekir.
+Parametre değerleri ayarlandıktan sonra, dosyaların kullanım için Azure portal Cloud Shell dosya paylaşımında karşıya yüklenmesi gerekir. Azure portal, " \> \_ " Cloud Shell symbol sağ üst simgesine tıklayın ve bu, ekranın alt kısmını bir komut ortamı haline getirir. Bu seçenekler BASH ve PowerShell ' dir ve henüz ayarlanmamışsa BASH ' i seçmeniz gerekir.
 
 Komut kabuğu, araç çubuğunda karşıya yükle/İndir seçeneğine sahiptir ve şablon ve parametre dosyalarını dosya paylaşımınıza yüklemek için bunu seçmeniz gerekir:
 

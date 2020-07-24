@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 66c62156cec79a65b856a6f4c8f2ad34aa687b05
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d5af288ea564c4118e010c8d0f0f86c5337ce170
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024065"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanları için şablon örnekleri Kaynak Yöneticisi
 Bu makalede, Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak ve yapılandırmak için örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
@@ -609,7 +609,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [özel Günlükler](../platf
 
 ### <a name="notes"></a>Notlar
 
-- Sınırlayıcılar ve Dışlamalar yapılandırması karmaşık olabilir. Yardım için, Azure portal kullanarak özel bir günlük tanımlayabilir ve [Get-Azoperationalınsightsdatasource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) ile kendi yapılandırmasını Al komutunu **CustomLog** **olarak ayarlayın.**
+- Sınırlayıcılar ve Dışlamalar yapılandırması karmaşık olabilir. Yardım için, Azure portal kullanarak özel bir günlük tanımlayabilir ve [Get-Azoperationalınsightsdatasource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) ile kendi yapılandırmasını Al komutunu **CustomLog** **olarak ayarlayın.**
 
   
 ### <a name="template-file"></a>Şablon dosyası

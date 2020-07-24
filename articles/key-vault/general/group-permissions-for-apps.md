@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 21cb7133bad27013895a5e717cb7729b71795ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078965"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -33,13 +33,13 @@ Key Vault Access Control hakkında tam Ayrıntılar için bkz. [Azure Key Vault 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Anahtar Kasası. Mevcut bir anahtar kasasını kullanabilir veya şu hızlı başlangıçlardan birindeki adımları izleyerek yeni bir tane oluşturabilirsiniz:
    - [Azure CLı ile Anahtar Kasası oluşturma](../secrets/quick-create-cli.md)
    - [Azure PowerShell ile bir Anahtar Kasası oluşturma](../secrets/quick-create-powershell.md)
    - [Azure Portal bir Anahtar Kasası oluşturun](../secrets/quick-create-portal.md).
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview). Alternatif olarak, [Azure Portal](https://portal.azure.com)de kullanabilirsiniz.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/). Alternatif olarak, [Azure Portal](https://portal.azure.com)de kullanabilirsiniz.
 
 ## <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 

@@ -9,18 +9,18 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 22f3fd44fbeb3d951d4add7b90a0e9aebd863ebf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 159ded093f278672a8251263f7bab1050a945e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085852"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümeleri için özel görüntü oluşturma ve kullanma
 Ölçek kümesi oluşturduğunuzda, sanal makine örnekleri dağıtılırken kullanılacak bir görüntü belirtirsiniz. Sanal makine örnekleri dağıtıldıktan sonraki görev sayısını azaltmak için özel bir sanal makine görüntüsünü kullanabilirsiniz. Bu özel sanal makine görüntüsü, gerekli uygulama yüklemelerini veya yapılandırmalarını içerir. Ölçek kümesinde oluşturulan tüm sanal makine örnekleri, özel sanal makine görüntüsünü kullanır ve uygulama trafiğinizi sunmaya hazır olur. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Paylaşılan görüntü galerisi oluşturma
+> * Paylaşılan Görüntü Galerisi Oluşturma
 > * Özel bir görüntü tanımı oluşturma
 > * Görüntü sürümü oluşturma
 > * Özelleştirilmiş görüntüden ölçek kümesi oluşturma
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.4.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 [Paylaşılan görüntü Galerisi](shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamaları, uygulama yapılandırmalarını ve diğer işletim sistemi yapılandırmalarını önceden yükleme gibi yapılandırmaları önyüklemek için kullanılabilir. 
 
@@ -69,7 +69,7 @@ ssh azureuser@<publicIpAddress>
 sudo apt-get install -y nginx
 ```
 
-İşiniz bittiğinde, SSH bağlantısının bağlantısını `exit` kesmek için yazın.
+İşiniz bittiğinde, `exit` SSH bağlantısının bağlantısını kesmek için yazın.
 
 ## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma 
 
@@ -90,13 +90,13 @@ Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. B
 
 Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. 
 
-Görüntü tanımınızın doğru türde olduğundan emin olun. VM 'yi genelleştirdiğinizde (Windows için Sysprep veya Linux için waagent-deprovision), kullanarak `--os-state generalized`genelleştirilmiş bir görüntü tanımı oluşturmanız gerekir. VM 'yi mevcut kullanıcı hesaplarını kaldırmadan kullanmak istiyorsanız, kullanarak `--os-state specialized`özel bir görüntü tanımı oluşturun.
+Görüntü tanımınızın doğru türde olduğundan emin olun. VM 'yi genelleştirdiğinizde (Windows için Sysprep veya Linux için waagent-deprovision), kullanarak genelleştirilmiş bir görüntü tanımı oluşturmanız gerekir `--os-state generalized` . VM 'yi mevcut kullanıcı hesaplarını kaldırmadan kullanmak istiyorsanız, kullanarak özel bir görüntü tanımı oluşturun `--os-state specialized` .
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](../virtual-machines/linux/shared-image-galleries.md#image-definitions).
 
 Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun.
 
-Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [özelleştirilmiş](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows`. 
+Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [özelleştirilmiş](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -122,7 +122,7 @@ Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir.
 
 Bu örnekte, görüntüimizin sürümü *1.0.0* ' dir ve *Orta Güney ABD* bölgesinde 1 çoğaltma ve *Doğu ABD 2* bölgesinde 1 çoğaltma oluşturacağız. Çoğaltma bölgeleri, kaynak VM 'nin bulunduğu bölgeyi içermelidir.
 
-Bu örnekteki değerini `--managed-image` , ÖNCEKI adımda sanal makinenizin kimliğiyle değiştirin.
+Bu örnekteki değerini, `--managed-image` önceki ADıMDA sanal MAKINENIZIN kimliğiyle değiştirin.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -137,18 +137,18 @@ az sig image-version create \
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Görüntü sürümünü oluştururken ekleyerek `--storage-account-type  premium_lrs` `--storage-account-type  standard_zrs` görüntünüzü bir ekleme veya [bölge yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) ile Premium depolamada da saklayabilirsiniz.
+> Görüntü `--storage-account-type  premium_lrs` sürümünü oluştururken ekleyerek görüntünüzü bir ekleme veya [bölge yedekli depolama](../storage/common/storage-redundancy.md) ile Premium depolamada da saklayabilirsiniz `--storage-account-type  standard_zrs` .
 >
 
 
 
 
 ## <a name="create-a-scale-set-from-the-image"></a>Görüntüden ölçek kümesi oluşturma
-Kullanarak [`az vmss create`](/cli/azure/vmss#az-vmss-create)özelleştirilmiş görüntüden bir ölçek kümesi oluşturun. 
+Kullanarak özelleştirilmiş görüntüden bir ölçek kümesi oluşturun [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
 
-Görüntünün özelleşmiş bir görüntü olduğunu [`az vmss create`](/cli/azure/vmss#az-vmss-create) göstermek için--özelleşmiş parametresini kullanarak ölçek kümesi oluşturun. 
+[`az vmss create`](/cli/azure/vmss#az-vmss-create)Görüntünün özelleşmiş bir görüntü olduğunu göstermek için--özelleşmiş parametresini kullanarak ölçek kümesi oluşturun. 
 
-Kullanılabilir görüntünün en son sürümünden ölçek `--image` kümesi örnekleri oluşturmak için görüntü tanımı kimliği ' ni kullanın. Ayrıca, için `--image`görüntü sürümü kimliğini sağlayarak belirli bir sürümden ölçek kümesi örnekleri de oluşturabilirsiniz. 
+`--image`Kullanılabilir görüntünün en son sürümünden ölçek kümesi örnekleri oluşturmak için görüntü tanımı kimliği ' ni kullanın. Ayrıca, için görüntü sürümü KIMLIĞINI sağlayarak belirli bir sürümden ölçek kümesi örnekleri de oluşturabilirsiniz `--image` . 
 
 Daha önce oluşturduğumuz *Myımagedefinition* resminin en son sürümünü *myScaleSet* adlı bir ölçek kümesi oluşturun.
 
@@ -208,7 +208,7 @@ az sig show \
    --query id
 ```
 
-Nesne KIMLIĞINI bir e-posta adresi ile birlikte kullanın ve bir kullanıcıya paylaşılan görüntü galerisine erişim sağlamak için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create) ' u kullanın. Ve `<email-address>` `<gallery iD>` bilgilerini kendi bilgileriniz ile değiştirin.
+Nesne KIMLIĞINI bir e-posta adresi ile birlikte kullanın ve bir kullanıcıya paylaşılan görüntü galerisine erişim sağlamak için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create) ' u kullanın. `<email-address>`Ve `<gallery iD>` bilgilerini kendi bilgileriniz ile değiştirin.
 
 ```azurecli-interactive
 az role assignment create \
@@ -217,7 +217,7 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-RBAC kullanarak kaynakları paylaşma hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+RBAC kullanarak kaynakları paylaşma hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../role-based-access-control/role-assignments-cli.md).
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -232,7 +232,7 @@ az group delete --name myResourceGroup --no-wait --yes
 Bu öğreticide, Azure CLI ile ölçek kümeleriniz için özel sanal makine görüntüsü oluşturma ve kullanma işleminin nasıl yapılacağını öğrendiniz:
 
 > [!div class="checklist"]
-> * Paylaşılan görüntü galerisi oluşturma
+> * Paylaşılan Görüntü Galerisi Oluşturma
 > * Özel bir görüntü tanımı oluşturma
 > * Görüntü sürümü oluşturma
 > * Özelleştirilmiş görüntüden ölçek kümesi oluşturma

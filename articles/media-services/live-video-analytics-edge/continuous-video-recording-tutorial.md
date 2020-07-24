@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta sürekli video kaydı ve kayıttan yürütme �
 description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 'ni kullanarak buluta sürekli olarak video kaydetme ve Azure Media Services kullanarak bu videonun herhangi bir bölümünü akışa alma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 008927d607ef2a14e30e8e2090692ccd2bb1e7eb
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 60b93aac3a0da4bbc49f83c5cbd43191693cae50
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808021"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043478"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
 
@@ -49,7 +49,7 @@ Bu adımların sonunda, Azure aboneliğinizde ilgili Azure kaynaklarınızın da
 * Azure IoT Hub
 * Azure Storage hesabı
 * Azure Media Services hesabı
-* Azure 'da [IoT Edge çalışma zamanı](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) yüklü olan Linux VM
+* Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge-linux.md) yüklü olan Linux VM
 
 ## <a name="concepts"></a>Kavramlar
 
@@ -130,7 +130,7 @@ Ardından src/buluttan cihaza-Console-App klasörüne gidin. Burada, oluşturdu�
 
 Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığını ve bu modüllerin yapılandırma ayarlarını tanımlar. Şablon dosyasından bir bildirim oluşturmak ve ardından bunu Edge cihazına dağıtmak için bu adımları izleyin.
 
-1. Visual Studio Code başlatın.
+1. Visual Studio Code’u başlatın.
 1. Sol alt köşedeki **Azure ıOT hub** bölmesinin yanındaki **daha fazla eylem** simgesini seçerek IoT Hub bağlantı dizesini ayarlayın. Dosyayı src/buluttan-cihazdan-Console-App/appsettings.jsdosyasından kopyalayın. 
 
     ![IoT Hub bağlantı dizesi ayarla](./media/quickstarts/set-iotconnection-string.png)
@@ -231,7 +231,7 @@ Canlı video akışını kaydetmek için IoT Edge modülünde canlı video anali
 
 ## <a name="interpret-the-results"></a>Sonuçları yorumlama 
 
-Medya grafiğini çalıştırdığınızda IoT Edge modülündeki canlı video analizi, IoT Edge hub 'ına belirli tanılama ve çalışma olayları gönderir. Bu olaylar, Visual Studio Code **Çıkış** penceresinde gördüğünüz iletilerdir. Bir gövde bölümü ve bir applicationProperties bölümü içerirler. Bu bölümlerin neyi temsil ettiğini anlamak için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Medya grafiğini çalıştırdığınızda IoT Edge modülündeki canlı video analizi, IoT Edge hub 'ına belirli tanılama ve çalışma olayları gönderir. Bu olaylar, Visual Studio Code **Çıkış** penceresinde gördüğünüz iletilerdir. Bir gövde bölümü ve bir applicationProperties bölümü içerirler. Bu bölümlerin neyi temsil ettiğini anlamak için bkz. [IoT Hub Iletileri oluşturma ve okuma](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 Aşağıdaki iletilerde, uygulama özellikleri ve gövdenin içeriği canlı video analizi modülü tarafından tanımlanır.
 
@@ -375,4 +375,4 @@ Diğer öğreticileri denemek istiyorsanız, oluşturduğunuz kaynaklara açık 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * RTSP simülatörü kullanmak yerine RTSP desteğiyle bir [IP kamerası](https://en.wikipedia.org/wiki/IP_camera) kullanın. Profiller G, S veya T ile uyumlu cihazlar ' ı arayarak [ONVIF uyumlu ürünler sayfasında](https://www.onvif.org/conformant-products/) , RTSP desteğiyle IP kameralarını arayabilirsiniz.
-* AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyin.
+* AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge-linux.md)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](../../iot-edge/quickstart-linux.md) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyin.

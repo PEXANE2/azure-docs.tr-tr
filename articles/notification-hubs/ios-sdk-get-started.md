@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: bf6477fed1840daa326f411862a7304018f39e3c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022438"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme
 
@@ -27,7 +27,7 @@ Bu öğreticiyi çalıştırmak, sonraki amaç C ve Swift iOS öğreticilerine y
 - Bildirim hub’ı oluşturma.
 - Bildirim Hub 'ını APNS bilgileriyle yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/).
 
@@ -185,7 +185,7 @@ Bildirim Hub 'ının **APNs**ile çalışmasını sağlamak için bir sertifika
 
    Bu, daha sonra Notification Hubs yapılandırmak için kullanılacak belirteç değeridir.
 
-Bu adımların sonunda, [Bildirim Hub 'ıNıZı APNs bilgileriyle yapılandırma](notification-hubs-ios-push-notifications-swift-apps-get-started.md#configure-your-notification-hub-with-apns-information)bölümünde daha sonra kullanmak için aşağıdaki bilgilere sahip olmanız gerekir:
+Bu adımların sonunda, [Bildirim Hub 'ıNıZı APNs bilgileriyle yapılandırma](#configure-the-notification-hub-with-apns-information)bölümünde daha sonra kullanmak için aşağıdaki bilgilere sahip olmanız gerekir:
 
 - **Takım Kimliği**   (bkz. 1. adım)
 - **Paket kimliği**   (bkz. 1. adım)
@@ -235,7 +235,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
 2. Sol taraftaki menüden **tüm hizmetler**   ' i seçin ve ardından mobil bölümünde **Notification Hubs**' yi seçin    **Mobile**   . Hizmet adının yanındaki yıldız simgesini seçerek hizmeti Sol menüdeki **Sık Kullanılanlar**   bölümüne ekleyin.  **Notification Hubs**    **Sık kullanılanlara**Notification Hubs ekledikten sonra seçin.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure portal":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
 
 3.  **Notification Hubs**   sayfasında, araç çubuğunda **Ekle**' yi seçin   .
 
@@ -264,7 +264,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Bildirim Hub 'ını APNS bilgileriyle yapılandırma
 
- **Bildirim hizmetleri**altında **Apple (APNs)** öğesini seçin ve ardından [Notification Hubs için sertifika oluşturma](notification-hubs-ios-push-notifications-swift-apps-get-started.md#creating-a-certificate-for-notification-hubs)bölümünde daha önce seçtiğiniz yaklaşıma göre uygun adımları izleyin   .
+ **Bildirim hizmetleri**altında **Apple (APNs)** öğesini seçin ve ardından [Notification Hubs için sertifika oluşturma](#create-a-certificate-for-notification-hubs)bölümünde daha önce seçtiğiniz yaklaşıma göre uygun adımları izleyin   .
 
 > [!NOTE]
 > Yalnızca uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek istiyorsanız **uygulama modu** için **üretimi** kullanın.
@@ -306,4 +306,4 @@ Artık Bildirim Hub 'ınızı APNS ile yapılandırdınız. Ayrıca, uygulamanı
 
 Bu öğreticide, Azure 'da bir Bildirim Hub 'ı oluşturup yapılandırdığınıza ve bu uygulamayı Apple Anında İletilen Bildirim Servisi (APNS) aracılığıyla uygulamanıza gönderilmesine izin verecek şekilde yapılandırmış olursunuz. Ardından, örnek bir iOS uygulaması oluşturacağız ve Azure Notifications hub SDK 'sını, Azure portal aracılığıyla gönderilen anında iletme bildirimleri alabilmesi için tümleştireceğiz. Tercih ettiğiniz dile göre aşağıdaki öğreticiye ilerleyin:
 
-- [Öğretici: Swift kullanarak bir iOS uygulamasıyla tümleştirme](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
+- [Öğretici: Swift kullanarak bir iOS uygulamasıyla tümleştirme]()

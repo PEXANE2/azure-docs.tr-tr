@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ed552bfb37f01200a4dba38ea733a1189768d56a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067156"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-kullanıcı arabirimini angular ile derleme
 
@@ -32,7 +32,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 > [!VIDEO https://www.youtube.com/embed/MnxHuqcJVoM]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticinin bu bölümüne başlamadan önce öğreticinin [2. bölümündeki](tutorial-develop-mongodb-nodejs-part2.md) adımları tamamladığınızdan emin olun.
 
@@ -41,7 +41,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 ## <a name="build-the-ui"></a>Kullanıcı Arabirimini oluşturma
 
-1. Node uygulamasını durdurmak için Visual Studio Code’da Stop (Durdur) düğmesine ![Visual Studio Code'da Stop (Durdur) düğmesi](./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png) tıklayın.
+1. Visual Studio Code, :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png"::: düğüm uygulamasını durdurmak Için Durdur düğmesine tıklayın. 
 
 2. Windows Komut İstemi veya Mac Terminal penceresinde bir heroes bileşeni oluşturmak için aşağıdaki komutu girin. Bu kodda g=oluştur, c=bileşen, heroes=bileşen adıdır ve düz dosya yapısı kullanılmıştır (--flat). Alt klasör oluşturulmamıştır.
 
@@ -474,7 +474,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 6. Visual Studio Code’daki tüm dosyaları kaydedin.
 
-## <a name="build-the-app"></a>Uygulama oluşturma
+## <a name="build-the-app"></a>Uygulamayı oluşturma
 
 1. Angular uygulamasını oluşturmak için komut isteminde aşağıdaki komutu girin. 
 
@@ -486,7 +486,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
     Şimdi uygulamayı çalıştıralım.
 
-2. Visual Studio Code’da sol taraftaki **Debug** (Hata ayıkla) düğmesine ![Visual Studio Code’da hata ayıkla simgesi](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) tıklayın, ardından **Start Debugging** (Hata Ayıklamayı Başlat) düğmesine ![Visual Studio Code’da Hata ayıklama simgesi](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png) tıklayın.
+2. Visual Studio Code ' de, sol taraftaki **Hata Ayıkla** düğmesine tıklayın :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: ve ardından **hata ayıklamayı Başlat** düğmesine tıklayın :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png"::: .
 
 3. Şimdi bir İnternet tarayıcısı açın ve **localhost:3000** adresine giderek yerel olarak çalışan uygulamayı görüntüleyin.
 

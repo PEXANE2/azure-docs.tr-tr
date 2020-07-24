@@ -4,12 +4,12 @@ description: Azure geçişi ile geçiş için şirket içi makineleri nasıl haz
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: b92a26732f59235dac4c03f4e648d36dadd6c4ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223627"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077980"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -59,7 +59,7 @@ Geçiş için desteklenen işletim sistemlerini doğrulayın:
 
 Geçiş sırasında hangi URL 'Lerin ve bağlantı noktalarına erişildiğini gözden geçirin.
 
-**Senaryo** | **Ayrıntılar** |  **URL’ler** | **Adet**
+**Senaryo** | **Ayrıntılar** |  **URL’ler** | **Bağlantı noktaları**
 --- | --- | --- | ---
 **VMware aracısız geçişi** | Geçiş için [Azure geçişi gereç](migrate-appliance-architecture.md) kullanır. VMware VM 'lerinde hiçbir şey yüklü değil. | Gereçle keşif, değerlendirme ve geçiş için gereken genel bulutu ve kamu [URL 'lerini](migrate-appliance.md#url-access) gözden geçirin. | Aracısız geçiş için bağlantı noktası gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware-migration.md#port-requirements-agentless) .
 **VMware Aracısı tabanlı geçiş** | Geçiş için [çoğaltma gereç](migrate-replication-appliance.md) kullanır. Mobility hizmeti Aracısı VM 'Lere yüklendi. | Çoğaltma gerecinin erişmesi gereken [genel bulutu](migrate-replication-appliance.md#url-access) ve [Azure Kamu](migrate-replication-appliance.md#azure-government-url-access) URL 'lerini gözden geçirin. | Aracı tabanlı geçiş sırasında kullanılan bağlantı noktalarını [gözden geçirin](migrate-replication-appliance.md#port-access) .
@@ -127,6 +127,18 @@ Diğer sürümler için, makineleri tabloda özetlenen şekilde hazırlayın.
 **Uıdev kuralını kaldır** | Arabirim adlarını ayrılmış olan tüm udev kurallarını MAC adresine göre kaldırın vb. | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile kaldırın.
 **Ağ arabirimlerini Güncelleştir** | Ağ arabirimlerini DHCP. NST tabanlı IP adresini alacak şekilde Güncelleştir | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile güncelleştirin.
 **SSH 'yi etkinleştirme** | SSH 'nin etkinleştirildiğinden ve SSHD hizmetinin yeniden başlatma sırasında otomatik olarak başlayacak şekilde ayarlandığından emin olun.<br/><br/> Gelen SSH bağlantı isteklerinin işletim sistemi güvenlik duvarı veya komut dosyası kuralları tarafından engellenmediğinden emin olun.| Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile etkinleştirin.
+
+Aşağıdaki tabloda, yukarıda listelenen işletim sistemleri için otomatik olarak gerçekleştirilen adımlar özetlenmektedir.
+
+| Eylem                                      | Aracı \- tabanlı VMware geçişi | Aracısız VMware geçişi | Hyper\-V   |
+|---------------------------------------------|-------------------------------|----------------------------|------------|
+| Hyper \- V Linux Tümleştirme Hizmetleri 'ni yükler | Yes                           | Yes                        | Gerekli değil |
+| Azure seri konsol günlüğünü etkinleştirme         | Yes                           | Evet                        | Hayır         |
+| Cihaz eşleme dosyasını güncelleştir                      | Evet                           | Hayır                         | Hayır         |
+| Fstab girdilerini Güncelleştir                        | Yes                           | Evet                        | Hayır         |
+| Uıdev kuralını kaldır                            | Yes                           | Evet                        | Hayır         |
+| Ağ arabirimlerini Güncelleştir                   | Yes                           | Evet                        | Hayır         |
+| SSH 'yi etkinleştirme                                  | Hayır                            | Hayır                         | Hayır         |
 
 [Azure 'Da LINUX VM çalıştırma](../virtual-machines/linux/create-upload-generic.md)adımları hakkında daha fazla bilgi edinin ve popüler Linux dağıtımlarından bazılarına yönelik yönergeler edinin.
 

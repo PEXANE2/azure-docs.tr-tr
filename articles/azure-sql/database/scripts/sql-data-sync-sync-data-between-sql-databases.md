@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: af45e3ea33a1997b4a75d047cc5a2ec4edb3bf12
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4f24a061f94cc61cb915d088606a61ede3fb247f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084934"
 ---
 # <a name="use-powershell-to-sync-data-between-multiple-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda birden çok veritabanı arasında veri eşitlemek için PowerShell 'i kullanma
 
@@ -35,7 +35,7 @@ SQL Data Sync genel bir bakış için bkz. [Azure 'da SQL Data Sync ile birden �
 > [!IMPORTANT]
 > SQL Data Sync Şu anda Azure SQL yönetilen örneğini desteklemez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure SQL veritabanı 'nda bir AdventureWorksLT örnek veritabanından merkez veritabanı olarak veritabanı oluşturun.
 - Azure SQL veritabanı 'nda eşitleme veritabanıyla aynı bölgedeki bir veritabanı oluşturun.
@@ -289,7 +289,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 Ek SQL Veritabanı PowerShell betiği örnekleri [Azure SQL Veritabanı PowerShell betikleri](../powershell-script-content-guide.md) içinde bulunabilir.
 

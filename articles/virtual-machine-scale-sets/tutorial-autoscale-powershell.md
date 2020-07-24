@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7ba6a059a35bee0b122659d8fc70466595112fca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011045"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 
@@ -99,7 +99,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ## <a name="create-a-rule-to-autoscale-in"></a>Otomatik ölçeklendirme ölçeğini daraltmak için kural oluşturma
 Bir akşam veya hafta sonu uygulama talebiniz azalabilir. Yük belirli bir süreye yayılarak tutarlı şekilde azalıyorsa, ölçek kümesindeki sanal makine örneği sayısını azaltmak için otomatik ölçeklendirme kuralları yapılandırabilirsiniz. Mevcut talebi karşılamak için gerekli örnek sayısını yalnızca siz çalıştırdığınızdan, bu ölçeği daraltma eylemi ölçek kümenizi çalıştırma maliyetini azaltır.
 
-[New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) ile, ortalama CPU yükü 5 dakika boyunca %30’un altına düştüğünde bir ölçek kümesindeki sanal makine örneği sayısını azaltan başka bir kural oluşturun. Kural tetiklendiğinde, sanal makine örneklerinin sayısı bir azaltılır. Aşağıdaki örnekte bu ölçek daraltma kuralını barındıran *myRuleScaleDown* adlı bir nesne oluşturulur. *-MetricResourceId*, daha önce abonelik kimliği, kaynak grubu adı ve ölçek kümesi adı için tanımlanan değişkenleri kullanır:
+[New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) ile, ortalama CPU yükü 5 dakika boyunca %30’un altına düştüğünde bir ölçek kümesindeki sanal makine örneği sayısını azaltan başka bir kural oluşturun. Kural tetiklendiğinde, sanal makine örneklerinin sayısı bir ile azaltılır. Aşağıdaki örnek, bu ölçek azaltma kuralını tutan *Myrulescaleaşağı* adlı bir nesne oluşturur. *-MetricResourceId*, daha önce abonelik kimliği, kaynak grubu adı ve ölçek kümesi adı için tanımlanan değişkenleri kullanır:
 
 ```azurepowershell-interactive
 $myRuleScaleIn = New-AzureRmAutoscaleRule `

@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 87ca8591be42e34a52f15913e0ec4058505cc0b0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74195878"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079056"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Güvenlik Duvarı test ortamı oluşturma
 
@@ -21,7 +21,7 @@ Bu betik örneği, bir güvenlik duvarı ve bir test ağ ortamı oluşturur. Ağ
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Güvenlik Duvarı AzureFirewallSubnet ' dir ve erişim izni veren tek bir kuralla bir uygulama kuralı koleksiyonu ile yapılandırılır `www.microsoft.com`.
+Güvenlik Duvarı AzureFirewallSubnet ' dir ve erişim izni veren tek bir kuralla bir uygulama kuralı koleksiyonu ile yapılandırılır `www.microsoft.com` .
 
 Güvenlik duvarı kurallarının uygulandığı güvenlik duvarı üzerinden ServersSubnet'ten gelen ağ trafiğine işaret eden, kullanıcı tanımlı bir yol oluşturulur.
 
@@ -79,5 +79,5 @@ Bu betik, bir kaynak grubu, sanal ağ ve ağ güvenliği grupları oluşturmak i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/overview).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 

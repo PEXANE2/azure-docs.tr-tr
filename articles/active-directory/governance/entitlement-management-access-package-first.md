@@ -3,7 +3,7 @@ title: Öğretici-erişim paketi oluşturma-Azure AD Yetkilendirme Yönetimi
 description: Azure Active Directory yetkilendirme yönetimi 'nde ilk erişim paketinizi oluşturma konusunda adım adım öğretici.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 03/30/2020
-ms.author: ajburnle
+ms.date: 07/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034585"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
 
@@ -42,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD Yetkilendirme Yönetimi 'ni kullanmak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
@@ -65,9 +65,9 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
 1. Aşağıdaki iki kullanıcıyı oluşturun veya yapılandırın. Bu adları veya farklı adları kullanabilirsiniz. **Admin1** Şu anda oturum açmış olduğunuz Kullanıcı olabilir.
 
-    | Adı | Dizin rolü |
+    | Name | Dizin rolü |
     | --- | --- |
-    | **Admin1** | Genel yönetici<br/>-veya-<br/>Kullanıcı Yöneticisi |
+    | **Admin1** | Genel yönetici<br/>-veya-<br/>Kullanıcı yöneticisi |
     | **Requestor1** | Kullanıcı |
 
 1. **Atanan**üyelik türü ile **Pazarlama Kaynakları** adlı bir Azure AD güvenlik grubu oluşturun.
@@ -134,7 +134,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
     ![Yeni erişim paketi-Istekler sekmesi-kullanıcıları ve grupları seçin](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-16. **Seç**' e tıklayın.
+16. **Seç**’e tıklayın.
 
 17. **Onay** ve **istekleri etkinleştir** bölümlerine aşağı doğru kaydırın.
 
@@ -264,4 +264,4 @@ Bu adımda, yaptığınız değişiklikleri kaldırır ve **pazarlama kampanyas�
 
 Yetkilendirme Yönetimi 'ndeki yaygın senaryo adımları hakkında bilgi edinmek için sonraki makaleye ilerleyin.
 > [!div class="nextstepaction"]
-> [Yaygın senaryolar](entitlement-management-scenarios.md)
+> [Genel senaryolar](entitlement-management-scenarios.md)

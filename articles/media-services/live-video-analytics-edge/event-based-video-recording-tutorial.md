@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 938bae28b1a523e23ea9f8f1ba79bbe6c487d5db
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011796"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 
@@ -32,11 +32,11 @@ Başlamadan önce şu makaleleri okuyun:
 * [IoT Edge terminolojisinde canlı video analizi](terminology.md)
 * [Medya grafiği kavramları](media-graph-concept.md) 
 * [Olay tabanlı video kaydı](event-based-video-recording-concept.md)
-* [Öğretici: IoT Edge modülünü geliştirme](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Öğretici: IoT Edge modülünü geliştirme](../../iot-edge/tutorial-develop-for-linux.md)
 * [Dağıtımı düzenleme. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
-* [IoT Edge dağıtım bildiriminde yolların nasıl bildirilemeyeceğini gösteren](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) bölüm
+* [IoT Edge dağıtım bildiriminde yolların nasıl bildirilemeyeceğini gösteren](../../iot-edge/module-composition.md#declare-routes) bölüm
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticinin önkoşulları şunlardır:
 
@@ -52,7 +52,7 @@ Bu adımların sonunda, Azure aboneliğinizde ilgili Azure kaynaklarınızın da
 * Azure IoT Hub
 * Azure Storage hesabı
 * Azure Media Services hesabı
-* Azure 'da [IoT Edge çalışma zamanı](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) yüklü olan Linux VM
+* Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge-linux.md) yüklü olan Linux VM
 
 ## <a name="concepts"></a>Kavramlar
 
@@ -135,9 +135,9 @@ Src/Edge/deployment.objectCounter.template.jsaçın. **Modüller** bölümünde,
 * **rtspsim**: Bu RTSP simülatör.
 * **Objectcounter**: yolov3 'deki sonuçlarda belirli nesneler için görünen modüldür.
 
-ObjectCounter modülü için, "görüntü" değeri için kullanılan dizeye ($ {MODULES. objectCounter}) bakın. Bu, IoT Edge modülünü geliştirmeye yönelik [öğreticiye](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux) dayanır. Visual Studio Code, objectCounter modülünün kodunun src/Edge/modules/objectCounter altında olduğunu otomatik olarak tanır. 
+ObjectCounter modülü için, "görüntü" değeri için kullanılan dizeye ($ {MODULES. objectCounter}) bakın. Bu, IoT Edge modülünü geliştirmeye yönelik [öğreticiye](../../iot-edge/tutorial-develop-for-linux.md) dayanır. Visual Studio Code, objectCounter modülünün kodunun src/Edge/modules/objectCounter altında olduğunu otomatik olarak tanır. 
 
-IoT Edge dağıtım bildiriminde yolları bildirme hakkında [Bu bölümü](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) okuyun. Ardından, şablon JSON dosyasındaki yolları inceleyin. Nasıl yapılacağını aklınızda edin:
+IoT Edge dağıtım bildiriminde yolları bildirme hakkında [Bu bölümü](../../iot-edge/module-composition.md#declare-routes) okuyun. Ardından, şablon JSON dosyasındaki yolları inceleyin. Nasıl yapılacağını aklınızda edin:
 
 * LVAToObjectCounter, belirli olayları objectCounter modülündeki belirli bir uç noktaya göndermek için kullanılır.
 * ObjectCounterToLVA, lvaEdge modülünde belirli bir uç noktaya (IoT Hub kaynak düğümü olması gerekir) bir tetikleyici olayı göndermek için kullanılır.
@@ -150,7 +150,7 @@ IoT Edge dağıtım bildiriminde yolları bildirme hakkında [Bu bölümü](http
 
 Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığını ve bu modüllerin yapılandırma ayarlarını tanımlar. Şablon dosyasından bir bildirim oluşturmak ve ardından bunu Edge cihazına dağıtmak için bu adımları izleyin.
 
-Visual Studio Code kullanarak Docker 'da oturum açmak için [Bu yönergeleri](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) izleyin. Ardından **IoT Edge çözüm oluştur ve Gönder '** i seçin. Bu adım için src/Edge/deployment.objectCounter.template.jskullanın.
+Visual Studio Code kullanarak Docker 'da oturum açmak için [Bu yönergeleri](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) izleyin. Ardından **IoT Edge çözüm oluştur ve Gönder '** i seçin. Bu adım için src/Edge/deployment.objectCounter.template.jskullanın.
 
 ![IoT Edge çözümü oluşturun ve gönderin](./media/event-based-video-recording-tutorial/build-push.png)
 
@@ -259,7 +259,7 @@ ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden ol
 
 ## <a name="interpret-the-results"></a>Sonuçları yorumlama 
 
-Medya grafiğini çalıştırdığınızda IoT Edge modülündeki canlı video analizi, IoT Edge hub 'ına belirli tanılama ve çalışma olayları gönderir. Bu olaylar, Visual Studio Code **Çıkış** penceresinde gördüğünüz iletilerdir. Bir gövde bölümü ve bir applicationProperties bölümü içerirler. Bu bölümlerin neyi temsil ettiğini anlamak için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Medya grafiğini çalıştırdığınızda IoT Edge modülündeki canlı video analizi, IoT Edge hub 'ına belirli tanılama ve çalışma olayları gönderir. Bu olaylar, Visual Studio Code **Çıkış** penceresinde gördüğünüz iletilerdir. Bir gövde bölümü ve bir applicationProperties bölümü içerirler. Bu bölümlerin neyi temsil ettiğini anlamak için bkz. [IoT Hub Iletileri oluşturma ve okuma](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 Aşağıdaki iletilerde, uygulama özellikleri ve gövdenin içeriği canlı video analizi modülü tarafından tanımlanır.
 
@@ -413,4 +413,4 @@ Diğer öğreticileri denemek istiyorsanız, oluşturduğunuz kaynaklara açık 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * RTSP simülatörü kullanmak yerine RTSP desteğiyle bir [IP kamerası](https://en.wikipedia.org/wiki/IP_camera) kullanın. Profiller G, S veya T ile uyumlu cihazlar ' ı arayarak [ONVIF uyumlu ürünler sayfasında](https://www.onvif.org/conformant-products/) , RTSP desteğiyle IP kameralarını arayabilirsiniz.
-* AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyin.
+* AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge-linux.md)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](../../iot-edge/quickstart-linux.md) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyin.

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c53194bd345c18ac582acd538f1e8f8e1e34d54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027861"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Öğretici: Azure PowerShell ile SQL, IIS, .NET Stack 'i Windows sanal makinesine yüklemeyin
 
@@ -25,15 +25,15 @@ Bu öğreticide, Azure PowerShell kullanarak bir SQL, IIS, .NET yığını yükl
 > * SQL Server çalıştıran bir sanal makine oluşturma
 > * SQL Server uzantısı yükleme
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="create-an-iis-vm"></a>IIS VM oluşturma 
 
-Bu örnekte, PowerShell Cloud Shell [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'ini hızla bir Windows Server 2016 VM oluşturmak ve ardından ııs ve .NET Framework yüklemek için kullanırız. IIS ve SQL sanal makineleri bir kaynak grubu ile sanal ağ paylaşır, dolayısıyla bu adlara yönelik değişkenler oluştururuz.
+Bu örnekte, PowerShell Cloud Shell [New-AzVM](/powershell/module/az.compute/new-azvm) cmdlet 'ini hızla bir Windows Server 2016 VM oluşturmak ve ardından ııs ve .NET Framework yüklemek için kullanırız. IIS ve SQL sanal makineleri bir kaynak grubu ile sanal ağ paylaşır, dolayısıyla bu adlara yönelik değişkenler oluştururuz.
 
 
 ```azurepowershell-interactive
@@ -52,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-[Set-Azvmexgersıon](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) cmdlet 'i ile özel Betik uzantısı 'Nı kullanarak IIS ve .NET Framework 'ü kurun.
+[Set-Azvmexgersıon](/powershell/module/az.compute/set-azvmextension) cmdlet 'i ile özel Betik uzantısı 'Nı kullanarak IIS ve .NET Framework 'ü kurun.
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -76,7 +76,7 @@ $vNet = Get-AzVirtualNetwork `
    -ResourceGroupName $resourceGroup
 ```
 
-[Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig)kullanarak alt ağ için bir yapılandırma oluşturun.
+[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)kullanarak alt ağ için bir yapılandırma oluşturun.
 
 
 ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-[Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) kullanarak sanal ağı yeni alt ağ bilgileriyle güncelleştirin
+[Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) kullanarak sanal ağı yeni alt ağ bilgileriyle güncelleştirin
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -111,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-[SQL Server UZANTıSıNı](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) SQL VM 'ye eklemek için [set-azvmsqlserverextension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) komutunu kullanın.
+[SQL Server UZANTıSıNı](../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md) SQL VM 'ye eklemek için [set-azvmsqlserverextension](/powershell/module/az.compute/set-azvmsqlserverextension) komutunu kullanın.
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -135,4 +135,3 @@ IIS Web Server 'ı TLS/SSL sertifikalarıyla güvenli hale getirme hakkında bil
 
 > [!div class="nextstepaction"]
 > [TLS/SSL sertifikaları ile güvenli IIS Web sunucusu](tutorial-secure-web-server.md)
-
