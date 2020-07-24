@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223083"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088368"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM 'de Oracle altın kapısı uygulama 
 
@@ -27,7 +27,7 @@ Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluştur
 
 Bu belgede, bir Azure VM üzerinde Oracle altın kapısı oluşturma, yüklemeyi ve yapılandırmayı adım adım gösterir. Bu öğreticide, iki sanal makine tek bir bölgedeki kullanılabilirlik kümesinde ayarlanır. Aynı öğretici, tek bir Azure bölgesindeki farklı Kullanılabilirlik Alanları veya iki farklı bölgede bulunan VM 'Ler için OracleGolden Gate 'i kurmak için kullanılabilir.
 
-Başlamadan önce Azure CLI’nin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure CLI yükleme kılavuzu](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Başlamadan önce Azure CLI’nin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure CLI yükleme kılavuzu](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
-Aşağıdaki adım isteğe bağlıdır, ancak önerilir. Daha fazla bilgi için bkz. [Azure kullanılabilirlik kümeleri Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Aşağıdaki adım isteğe bağlıdır, ancak önerilir. Daha fazla bilgi için bkz. [Azure kullanılabilirlik kümeleri Kılavuzu](../../windows/infrastructure-example.md).
 
 ```azurecli
 az vm availability-set create \

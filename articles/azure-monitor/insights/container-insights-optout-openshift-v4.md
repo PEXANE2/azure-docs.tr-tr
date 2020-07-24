@@ -3,12 +3,12 @@ title: Azure ve Red Hat OpenShift v4 kümenizi izlemeyi durdurma | Microsoft Doc
 description: Bu makalede, Azure Red Hat OpenShift ve Red Hat OpenShift sürüm 4 kümenizi kapsayıcılar için Azure Izleyici ile izlemenin nasıl durdurulabileceğinizi anlatmaktadır.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196445"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091156"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Azure ve Red Hat OpenShift v4 kümenizi izlemeyi durdurma
 
@@ -49,4 +49,4 @@ Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Held, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Log Analytics çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../../log-analytics/log-analytics-manage-del-workspace.md).
+Log Analytics çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../platform/delete-workspace.md).

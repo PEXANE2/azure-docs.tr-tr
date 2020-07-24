@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090612"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -47,6 +47,8 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
 * Şirket içi ağlarda çalışan cihazlarda, [sanal özel ağ (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](https://azure.microsoft.com/services/expressroute/) özel eşlemesini Azure VNET 'iniz ile ayarlayın.
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>IoT Hub giriş için özel bir uç nokta ayarlama
+
+Özel uç nokta, hizmet API 'Lerinin yanı sıra (cihaz oluşturma ve güncelleştirme gibi) cihaz API 'Leri (cihazdan buluta iletiler gibi) IoT Hub için de kullanılabilir.
 
 1. Azure portal ' de **ağ**, **Özel uç nokta bağlantıları**' nı seçin ve **+ Özel uç noktasına**tıklayın.
 

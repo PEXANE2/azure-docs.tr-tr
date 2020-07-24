@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091360"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de Erişim Denetimi
 
@@ -64,9 +65,9 @@ Rol ataması tarafından verilen düzeyinden daha düşük bir erişim düzeyi s
 
 Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden birine bakın:
 
-|||
+| Ortam | Makale |
 |--------|-----------|
-|Azure Depolama Gezgini |[Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için Azure Depolama Gezgini kullanın](data-lake-storage-explorer.md#managing-access)|
+|Azure Depolama Gezgini |[Azure Data Lake Storage 2. Nesil’de dizinleri, dosyaları ve ACL’leri yönetmek için Azure Depolama Gezgini’ni kullanma](data-lake-storage-explorer.md#managing-access)|
 |.NET |[Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için .NET kullanın](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için Java kullanın](data-lake-storage-directory-file-acl-java.md)|
 |Python|[Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma](data-lake-storage-directory-file-acl-python.md)|
@@ -122,7 +123,7 @@ Data Lake Storage 2. tarafından kullanılan POSIX stili modelde bir öğe için
 
 Aşağıdaki tabloda, bir depolama hesabında belirli işlemleri gerçekleştirmek için hangi izinlerin gerekli olduğunu anlamanıza yardımcı olacak bazı yaygın senaryolar listelenmektedir.
 
-|    Çalışma             |    /    | 'Daki | Portland | Data.txt     |
+|    İşlem             |    /    | 'Daki | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Data.txt oku            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Data.txt sonuna ekle       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |

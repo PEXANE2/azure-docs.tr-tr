@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü kişisel masaüstü atama türü-Azure
-description: Windows sanal masaüstü kişisel masaüstü konak havuzu için atama türünü yapılandırma.
+title: Windows sanal masaüstü kişisel masaüstü ataması (sonbahar 2019)-Azure
+description: Windows sanal masaüstü (sonbahar 2019 sürümü) kişisel masaüstü konak havuzu için atama türünü yapılandırmayı öğrenin.
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 036e144922fcb49c486813b8668d944dd771536e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259795"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087195"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Kişisel masaüstü konak havuzu atama türünü yapılandırma
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-fall-2019-release"></a>Kişisel masaüstü konak havuzu atama türünü yapılandırma (sonbahar 2019 sürümü)
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../configure-host-pool-personal-desktop-assignment-type.md)bakın.

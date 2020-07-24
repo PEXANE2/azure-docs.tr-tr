@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 479c5165c206ced9f387d7b4a475945173da8a16
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6d720eee668edf2de968f0ce6955a5a586a92419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086237"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087688"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Azure SQL yönetilen örnek çevrimiçi geçişleri SQL Server için özel roller
 
@@ -83,7 +83,7 @@ Rol tanımı JSON dizesinin Astifblescopes bölümü, portalda **rol ataması ek
 
 Yukarıdaki JSON üç metin dosyasında depolanmalıdır ve **New-AzureRmRoleDefinition (azurerd)** veya **New-AZROLEDEFINITION (az)** öğesini kullanarak rolleri oluşturmak Için Azurere, az PowerShell CMDLET 'lerini veya Azure CLI 'yi de kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)makalesi.
+Daha fazla bilgi için bkz. [Azure özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
 Bu özel rolleri oluşturduktan sonra, kullanıcılara ve uygulama KIMLIĞINE, uygun kaynaklara veya kaynak gruplarına rol atamaları eklemeniz gerekir:
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e9d995a69a4fc54d6f001ced7503a9138d737dbc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089048"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager yönetmek için PowerShell kullanma
 
@@ -38,7 +38,7 @@ Her Traffic Manager profili ' TrafficManagerProfiles ' türünde bir kaynak tara
 
 Bu yönergeler Microsoft Azure PowerShell kullanır. Aşağıdaki makalede Azure PowerShell nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır.
 
-* [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview)
+* [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/)
 
 Bu makaledeki örneklerde, var olan bir kaynak grubunuz olduğu varsayılır. Aşağıdaki komutu kullanarak bir kaynak grubu oluşturabilirsiniz:
 

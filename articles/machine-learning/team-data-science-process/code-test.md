@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722065"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090306"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Işlemi ve Azure DevOps Services Azure 'da veri bilimi kodu testi
 Bu makale, bir veri bilimi iş akışındaki kodu test etmek için ön yönergeleri sağlar. Bu tür testler, veri bilimcilerinin, kodunuzun kalitesini ve beklenen sonucunu denetlemek için sistematik ve verimli bir yol sunar. Kod testinin nasıl yapılacağını göstermek için daha önce yayımladığımız [UCI yetişkin gelir veri kümesini kullanan](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bir ekip veri bilimi IŞLEMI (TDSP) projesi kullanıyoruz. 
@@ -141,7 +142,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
 
     !["& kuyruğunu kaydet" düğmesi](./media/code-test/save_and_queue_build_definition.PNG)
 
-Artık kod deposuna her yeni bir işleme gönderildiğinde, derleme işlemi otomatik olarak başlatılır. (Burada depo olarak ana öğe kullanıyoruz, ancak herhangi bir dalı tanımlayabilirsiniz.) İşlem, kodda tanımlanan her şeyin düzgün çalıştığından emin olmak için aracı makinesinde **test1.py** dosyasını çalıştırır. 
+Artık kod deposuna her yeni bir işleme gönderildiğinde, derleme işlemi otomatik olarak başlatılır. Herhangi bir dalı tanımlayabilirsiniz. İşlem, kodda tanımlanan her şeyin düzgün çalıştığından emin olmak için aracı makinesinde **test1.py** dosyasını çalıştırır. 
 
 Uyarılar doğru ayarlandıysa, derleme bittiğinde e-posta ile bildirilir. Ayrıca, Azure DevOps 'daki yapı durumunu da denetleyebilirsiniz. Başarısız olursa, yapı ayrıntılarını denetleyebilir ve hangi parçanın bozuk olduğunu bulabilirsiniz.
 

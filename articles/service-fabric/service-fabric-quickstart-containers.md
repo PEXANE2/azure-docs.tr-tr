@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260503"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089626"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Hızlı başlangıç: Windows kapsayıcıları Service Fabric'e dağıtma
 
@@ -86,7 +86,7 @@ Ayrıca, *ApplicationManifest.xml* dosyasında, **Passwordencrypted** **değerin
 
 Aşağıdaki örnek betik, bir X. 509.440 sertifikasıyla korunan beş düğümlü bir Service Fabric kümesi oluşturur. Bu komut otomatik olarak imzalanan bir sertifika oluşturur ve bunu yeni bir anahtar kasasına yükler. Sertifika aynı zamanda bir yerel dizine de kopyalanır. Bu betiği kullanarak bir küme oluşturma hakkında daha fazla bilgi için [Service Fabric kümesi oluşturun](scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell ' yi yüklemelisiniz.
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeleri kullanarak Azure PowerShell ' yi yüklemelisiniz.
 
 Aşağıdaki betiği çalıştırmadan önce, PowerShell çalıştırmasında `Connect-AzAccount` Azure ile bir bağlantı oluşturun.
 
@@ -96,7 +96,7 @@ Aşağıdaki betiği Pano 'ya kopyalayın ve **Windows PowerShell ISE**açın.  
 
 Değişkenleri için değerlerinizi girdikten sonra, komut dosyasını çalıştırmak için **F5** tuşuna basın.
 
-Betiği çalıştıktan ve küme oluşturulduktan sonra `ClusterEndpoint` çıktıda bulun. Örnek:
+Betiği çalıştıktan ve küme oluşturulduktan sonra `ClusterEndpoint` çıktıda bulun. Örneğin:
 
 ```powershell
 ...
@@ -138,7 +138,7 @@ Yukarıdaki komutu çalıştırdığınız zaman PowerShell penceresinde **CN =*
 
 ![Yayımla İletişim Kutusu](./media/service-fabric-quickstart-containers/publish-app.png)
 
-**Yayımla**’ta tıklayın.
+**Yayımla**’ya tıklayın.
 
 Kümedeki her uygulamanın benzersiz bir adı olmalıdır. Ad çakışması varsa, Visual Studio projesini yeniden adlandırın ve yeniden dağıtın.
 

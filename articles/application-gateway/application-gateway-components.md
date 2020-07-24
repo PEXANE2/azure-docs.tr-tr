@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088096"
 ---
 # <a name="application-gateway-components"></a>Application Gateway bileşenleri
 
@@ -69,13 +69,13 @@ Daha fazla bilgi için bkz. [Application Gateway Için özel hata sayfaları](cu
 
 - **Temel**. Bu tür bir dinleyici, uygulama ağ geçidinin IP adresine tek bir DNS eşlemesinin bulunduğu tek bir etki alanı sitesini dinler. Bu dinleyici yapılandırması, bir uygulama ağ geçidinin arkasında tek bir site barındırdığınızda gereklidir.
 
-- **Çok**siteli. Aynı uygulama ağ geçidi örneğinde birden fazla Web uygulaması yapılandırdığınızda, bu dinleyici yapılandırması gerekir. Bir Application Gateway 'e en çok 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin, üç alt etki alanları, abc.contoso.com, xyz.contoso.com ve pqr.contoso.com, uygulama ağ geçidinin IP adresine işaret edin. Üç adet çok siteli dinleyici oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız.
+- **Çok**siteli. Aynı uygulama ağ geçidinde birden fazla Web uygulaması için ana bilgisayar adına veya etki alanı adına dayalı yönlendirmeyi yapılandırmak istediğinizde bu dinleyici yapılandırması gerekir. Bir Application Gateway 'e en fazla 100 + web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin, üç etki alanı, contoso.com, fabrikam.com ve adatum.com, uygulama ağ geçidinin IP adresine işaret edin. Üç adet [çok siteli dinleyici](multiple-site-overview.md) oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız. 
 
-    Daha fazla bilgi için bkz. [Çoklu site barındırma](application-gateway-web-app-overview.md).
+    Ayrıca, çok siteli bir dinleyicide joker karakter ana bilgisayar adlarını ve dinleyici başına en fazla 5 ana bilgisayar adını tanımlayabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları (Önizleme)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
-Bir dinleyici oluşturduktan sonra, bunu bir istek yönlendirme kuralıyla ilişkilendirirsiniz. Bu kural, dinleyicide alınan isteğin arka uca yönlendirilme şeklini belirler.
+    Çok siteli bir dinleyicinin nasıl yapılandırılacağı hakkında daha fazla bilgi için [Azure Portal kullanarak Application Gateway çoklu site barındırma](create-multiple-sites-portal.md)bölümüne bakın.
 
-Application Gateway, dinleyicileri [gösterildiği sırada](configuration-overview.md#order-of-processing-listeners)işler.
+Bir dinleyici oluşturduktan sonra, bunu bir istek yönlendirme kuralıyla ilişkilendirirsiniz. Bu kural, dinleyicide alınan isteğin arka uca yönlendirilme şeklini belirler. İstek yönlendirme kuralı, yönlendirilmek üzere arka uç havuzunu ve arka uç bağlantı noktası, protokol, vb. olarak bahsedilen HTTP ayarını da içerir.
 
 ## <a name="request-routing-rules"></a>İstek yönlendirme kuralları
 
@@ -99,13 +99,13 @@ Yeniden yönlendirme hedefini başka bir dinleyici olacak şekilde seçebilirsin
 
 Daha fazla bilgi için bkz. [Application Gateway uygulamanızdaki trafiği yeniden yönlendirme](redirect-overview.md).
 
-### <a name="rewrite-http-headers"></a>HTTP üst bilgilerini yeniden üretme
+### <a name="rewrite-http-headers-and-url"></a>HTTP üstbilgilerini ve URL 'YI yeniden yaz
 
-İstek yönlendirme kurallarını kullanarak, istek ve yanıt paketleri uygulama ağ geçidi aracılığıyla istemci ve arka uç havuzları arasında taşındığında, HTTP (S) istek ve yanıt üst bilgilerini ekleyebilir, kaldırabilir veya güncelleyebilirsiniz.
+Yeniden yazma kurallarını kullanarak, HTTP (S) isteği ve yanıt üst bilgilerini ekleyebilir, kaldırabilir veya güncelleştirebilir, istek ve yanıt paketleri uygulama ağ geçidi aracılığıyla istemci ile arka uç havuzları arasında hareket edebilir.
 
-Üst bilgiler statik değerlere veya diğer üst bilgilere ve sunucu değişkenlerine ayarlanabilir. Bu, istemci IP adreslerini ayıklama, arka uç hakkındaki hassas bilgileri kaldırma, daha fazla güvenlik ekleme vb. gibi önemli kullanım durumlarının sağlanmasına yardımcı olur.
+Üst bilgiler ve URL parametreleri statik değerlere veya diğer üst bilgilere ve sunucu değişkenlerine ayarlanabilir. Bu, istemci IP adreslerini ayıklama, arka uç hakkındaki hassas bilgileri kaldırma, daha fazla güvenlik ekleme vb. gibi önemli kullanım durumlarının sağlanmasına yardımcı olur.
 
-Daha fazla bilgi için bkz. [Application Gateway 'de HTTP üstbilgilerini yeniden yazma](rewrite-http-headers.md).
+Daha fazla bilgi için bkz. [Application Gateway 'de http üst bilgilerini ve URL 'Yi yeniden yazma](rewrite-http-headers-url.md).
 
 ## <a name="http-settings"></a>HTTP ayarları
 
@@ -140,7 +140,7 @@ Bir uygulama ağ geçidi, trafiğe izin veriliyorsa Azure ExpressRoute veya VPN 
 
 Farklı istek türleri için farklı arka uç havuzları oluşturabilirsiniz. Örneğin, genel istekler için bir arka uç havuzu oluşturun ve daha sonra uygulamanız için mikro hizmetlere istekler için bir arka uç havuzu oluşturun.
 
-## <a name="health-probes"></a>Sistem durumu araştırmaları
+## <a name="health-probes"></a>Durum yoklamaları
 
 Varsayılan olarak, bir uygulama ağ geçidi, arka uç havuzundaki tüm kaynakların sistem durumunu izler ve sağlıksız olanları otomatik olarak kaldırır. Ardından, sağlıksız örnekleri izler ve kullanılabilir hale geldiğinde ve sistem durumu araştırmalarına yanıt verdiklerinde yeniden sağlıklı arka uç havuzuna ekler.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970816"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089711"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
 
@@ -59,8 +59,9 @@ Yapılandırıldıktan sonra, verilerinizin depolandığı konumu değiştiremez
 
 Sunucuları güvenlik merkezi 'ne eklemek için **Azure Güvenlik Merkezi 'Ne git** ' e tıklayarak sunucuları MICROSOFT Defender ATP sunucu ekleme işleminden ekleyin.
 
-1. **Ekleme** alanında, verileri depolamak için bir çalışma alanı seçin veya oluşturun. <br>
-2. Tüm çalışma alanlarınızı göremiyorsanız, bunun nedeni izinlerin bulunmaması olabilir, çalışma alanınızın Azure Güvenlik Standart katmanı olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Gelişmiş güvenlik Için Güvenlik Merkezi 'Nin standart katmanına yükseltme](security-center-pricing.md).
+1. **Ekleme** alanında, verileri depolamak için bir çalışma alanı seçin veya oluşturun.
+
+2. Tüm çalışma alanlarınızı göremiyorsanız, bunun nedeni izin olmaması olabilir, çalışma alanınızın Azure Güvenlik Standart fiyatlandırma katmanına ayarlandığından emin olun. Daha fazla bilgi için bkz. [Gelişmiş güvenlik Için Güvenlik Merkezi 'nin standart katmanına yükseltme](security-center-pricing.md).
     
 3. Log Analytics aracısının nasıl yükleneceğine ilişkin yönergeleri görüntülemek için **Sunucu Ekle** ' yi seçin. 
 

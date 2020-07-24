@@ -1,19 +1,20 @@
 ---
-title: Azure Güvenlik kıyaslaması için SYNAPSE Analytics güvenlik temeli
+title: SYNAPSE Analytics için Azure Güvenlik temeli
 description: SYNAPSE Analytics güvenlik temeli, Azure Güvenlik kıyaslaması 'nda belirtilen güvenlik önerilerini uygulamaya yönelik yordamsal kılavuz ve kaynaklar sağlar.
 author: msmbaldwin
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4b40bdeb6f60aafea760c6c6e3e0b0f99b419614
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040665"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089337"
 ---
-# <a name="synapse-analytics-security-baseline-for-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması için SYNAPSE Analytics güvenlik temeli
+# <a name="azure-security-baseline-for-synapse-analytics"></a>SYNAPSE Analytics için Azure Güvenlik temeli
 
 SYNAPSE Analytics için Azure Güvenlik taban çizgisi, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 
@@ -27,9 +28,9 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: sanal ağlar içindeki Azure kaynaklarını koruma
 
-**Rehberlik**: Azure SQL veritabanı 'Nı özel bağlantı aracılığıyla bir sanal ağ ile güvenli hale getirin. Azure özel bağlantısı, Azure PaaS hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağını de dolaşır.
+**Rehberlik**: Azure SQL Server özel bağlantı aracılığıyla bir sanal ağ ile güvenli hale getirin. Azure özel bağlantısı, Azure PaaS hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağını de dolaşır.
 
-Alternatif olarak, SYNAPSE SQL havuzunuza bağlanırken, bir ağ güvenlik grubu kullanarak SQL veritabanı 'na giden bağlantının kapsamını daraltın. Azure hizmetlerinin kapalı çalışmasına Izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'na tüm Azure hizmet trafiğini devre dışı bırakın. Güvenlik duvarı kurallarında genel IP adreslerine izin verilmediğinden emin olun.
+Alternatif olarak, SYNAPSE SQL havuzunuza bağlanırken, bir ağ güvenlik grubu kullanarak SQL veritabanı 'na giden bağlantının kapsamını daraltın. Azure hizmetlerinin kapalı çalışmasına Izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'na yönelik tüm Azure hizmet trafiğini devre dışı bırakın. Güvenlik duvarı kurallarında genel IP adreslerine izin verilmediğinden emin olun.
 
 * [Azure özel bağlantısını anlama](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
@@ -43,7 +44,7 @@ Alternatif olarak, SYNAPSE SQL havuzunuza bağlanırken, bir ağ güvenlik grubu
 
 **Sorumluluk**: müşteri
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: sanal ağların, alt ağların ve NIC 'lerin yapılandırmasını ve trafiğini izleyin ve günlüğe kaydedin
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: sanal ağların, alt ağların ve ağ arabirimlerinin yapılandırma ve trafiğini izleme ve günlüğe kaydetme
 
 **Kılavuz**: Azure SYNAPSE SQL havuzunuza bağlanırken ve ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirdiyseniz, trafik denetimi Için günlükleri Azure depolama hesabına gönderin.
 
@@ -359,7 +360,7 @@ Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açı
 
 **Sorumluluk**: müşteri
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: Azure Active Directory çoklu oturum açma kullan (SSO)
 
 **Rehberlik**: API çağrıları aracılığıyla denetim düzleminde (Azure Portal) veri Ambarınızla etkileşim kurmak için kullanılabilecek bir belirteç almak üzere bir Azure uygulama kaydı (hizmet sorumlusu) kullanın.
 
@@ -387,7 +388,7 @@ Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açı
 
 **Sorumluluk**: müşteri
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineler (ayrıcalıklı erişim Iş Istasyonları) kullanın
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: yönetim görevleri için güvenli, Azure tarafından yönetilen iş istasyonları kullanın
 
 **Kılavuz**: Azure kaynaklarını açmak ve yapılandırmak için yapılandırılmış MULTI-Factor AUTHENTICATION (MFA) Ile ayrıcalıklı erişim iş istasyonu (Paw) kullanın.
 
@@ -475,7 +476,7 @@ SQL kimlik doğrulaması kullanırken, veritabanında kapsanan veritabanı kulla
 
 **Sorumluluk**: müşteri
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: hesap oturum açma davranışı sapmasından uyar
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: hesap oturum açma davranışı sapması üzerinde uyarı
 
 **Rehberlik**: Kullanıcı kimlikleriyle ilgili şüpheli eylemleri algılanan otomatik yanıtları yapılandırmak için Azure Active Directory (Azure AD) kimlik koruması ve risk algılama özelliklerini kullanın. Ayrıca, daha fazla araştırma için Pano ve verileri Azure Sentinel 'e aktarabilirsiniz.
 
@@ -583,7 +584,7 @@ Ayrıca, Azure portal bir dinamik veri maskeleme (DDM) ilkesi ayarlayabilirsiniz
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
 
-**Kılavuz**: SYNAPSE SQL HAVUZUNUZDAKI Azure SQL veritabanı 'na erişimi yönetmek için Azure rol tabanlı erişim denetimi 'NI (RBAC) kullanın.
+**Kılavuz**: SYNAPSE SQL HAVUZUNUZDAKI Azure SQL veritabanlarına erişimi yönetmek için Azure rol tabanlı erişim denetimi 'NI (RBAC) kullanın.
 
 Yetkilendirme, Kullanıcı hesabınızın veritabanı rolü üyelikleri ve nesne düzeyi izinleri tarafından denetlenir. En iyi uygulama olarak, kullanıcılarınıza gerekli olan en düşük ayrıcalıkları tanımanız gerekir.
 
@@ -641,9 +642,9 @@ Ayrıca, Azure portal kullanarak SQL SYNAPSE havuzunuzdaki veritabanları için 
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
 
-**Rehberlik**: Gelişmiş veri güvenliğini ETKINLEŞTIRIN ve SQL veritabanı 'nda güvenlik açığı değerlendirmelerinde Azure Güvenlik Merkezi önerilerini izleyin.
+**Rehberlik**: Gelişmiş veri güvenliğini etkinleştirin ve Azure SQL veritabanlarınızda güvenlik açığı değerlendirmelerinin gerçekleştirilmesi Için Azure Güvenlik Merkezi 'ndeki önerileri izleyin.
 
-* [Azure SQL veritabanı 'nda güvenlik açığı değerlendirmeleri nasıl çalıştırılır](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Azure SQL veritabanlarınızda güvenlik açığı değerlendirmeleri çalıştırma](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Gelişmiş veri güvenliğini etkinleştirme](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -737,7 +738,7 @@ Klasik Azure kaynakları Azure Kaynak Grafiği aracılığıyla bulunabilir, anc
 
 **Sorumluluk**: müşteri
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: onaylanan Azure kaynakları envanterini tanımlama ve sürdürme
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: onaylanan Azure kaynaklarının envanterini tanımlayın ve saklayın
 
 **Kılavuz**: SYNAPSE SQL havuzunuz ile Ilgili onaylanan Azure kaynaklarının bir listesini tanımlayın.
 
@@ -845,8 +846,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
-**Kılavuz**: SYNAPSE SQL havuzunuza ilişkin kaynakların yapılandırılmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için, "Microsoft. SQL" ad alanındaki Azure ilke diğer adlarını kullanın. Azure veritabanları için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
-
+**Kılavuz**: SYNAPSE SQL havuzunuza ilişkin kaynakların yapılandırılmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için, "Microsoft. SQL" ad alanındaki Azure ilke diğer adlarını kullanın. Azure veritabanı/sunucusu için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
 - SQL Server 'lar üzerinde tehdit algılamayı dağıtma
 - SQL Server bir sanal ağ hizmeti uç noktası kullanmalıdır
 
@@ -978,7 +978,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 *Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanma
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanın
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir. Microsoft, temel alınan platform için kötü amaçlı yazılımdan koruma uygular.
 
@@ -1010,7 +1010,7 @@ App Service, Data Lake Storage, BLOB depolama, Azure SQL Server vb. gibi işlem 
 
 *Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: düzenli Otomatik yedeklemeli UPS sağlayın
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: düzenli otomatik arka pencerelere emin olun
 
 **Kılavuz**: SYNAPSE SQL havuzunuzun anlık görüntüleri, yedi gün boyunca kullanılabilen geri yükleme noktaları oluşturma gününde otomatik olarak alınır. Bu saklama dönemi değiştirilemez. SQL havuzu sekiz saatlik bir kurtarma noktası hedefini (RPO) destekler. Son yedi gün içinde alınan anlık görüntülerden herhangi birinden, birincil bölgedeki veri Ambarınızı geri yükleyebilirsiniz. Gerekirse, anlık görüntüleri el ile de tetikleyebileceğinizi unutmayın.
 

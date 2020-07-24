@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 5d1787b5bfc2939dca23c6898d89130aa3fcb170
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088385"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure sanal ağları için ortak PowerShell komutları
 
 Bir sanal makine oluşturmak istiyorsanız [sanal bir ağ](../../virtual-network/virtual-networks-overview.md) OLUŞTURMANıZ veya VM 'nin eklenebileceği mevcut bir sanal ağ hakkında bilmeniz gerekir. Genellikle, bir VM oluşturduğunuzda, bu makalede açıklanan kaynakları da oluşturmayı göz önünde bulundurmanız gerekir.
 
-Azure PowerShell’in en son sürümünü yükleme, aboneliğinizi seçme ve hesabınızda oturum açma hakkında bilgi almak için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+Azure PowerShell’in en son sürümünü yükleme, aboneliğinizi seçme ve hesabınızda oturum açma hakkında bilgi almak için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/).
 
 Bazı değişkenler, bu makaledeki komutlardan birden fazlasını çalıştırıyorsanız sizin için yararlı olabilir:
 

@@ -3,8 +3,8 @@ title: "Bilinen sorunlar: MySQL için Azure veritabanı 'na çevrimiçi geçişl
 titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti kullanılırken MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar ve geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235286"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090714"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile MySQL için Azure DB 'ye yönelik sınırlamalar & çevrimiçi geçiş sorunları
 
@@ -135,6 +135,8 @@ AWS RDS MySQL 'ten MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçek
     ```
 
 - Azure veritabanı geçiş hizmeti 'nde, tek bir geçiş etkinliğinde geçirilecek veritabanlarının sınırı dördü olur.
+
+- Azure DMS, üst tabloda bir satır silindiğinde veya güncelleştirilirse alt tablodaki eşleşen bir satırı otomatik olarak silmeye veya güncelleştirmeye yardımcı olan CASCADE başvuru eylemini desteklemez. Daha fazla bilgi için MySQL belgelerinde [yabancı anahtar kısıtlamaları](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)makalesinin başvurusal Eylemler bölümüne bakın. Azure DMS, ilk veri yükü sırasında hedef veritabanı sunucusunda yabancı anahtar kısıtlamalarını bırakmayı gerektirir ve başvurusal eylemleri kullanamazsınız. İş yükünüz bu başvuru eylemi aracılığıyla ilişkili bir alt tablonun güncelleştirilmesine bağımlıysa bunun yerine bir [döküm ve geri yükleme](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) gerçekleştirmenizi öneririz. 
 
 - **Hata:** Satır boyutu çok büyük (> 8126). Bazı sütunların metın veya BLOBUN değiştirilmesi yardımcı olabilir. Geçerli satır biçiminde, 0 baytlık BLOB ön eki satır içi olarak depolanır.
 

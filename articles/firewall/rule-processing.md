@@ -7,13 +7,14 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087552"
 ---
-# <a name="azure-firewall-rule-processing-logic"></a>Azure Güvenlik Duvarı kural işleme mantığı
+# <a name="configure-azure-firewall-rules"></a>Azure Güvenlik duvarı kurallarını yapılandırma
 Azure Güvenlik duvarında NAT kurallarını, ağ kurallarını ve uygulama kurallarını yapılandırabilirsiniz. Kural koleksiyonları, kural türüne göre öncelik sırasına göre işlenir ve 100 ' den 65.000 ' ye kadar daha yüksek sayılara daha düşük sayılar. Bir kural koleksiyonu adı yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. Bir harf veya sayı ile başlamalı ve bir harf, sayı veya alt çizgi ile bitmelidir. En büyük ad uzunluğu 80 karakterdir.
 
 İlk olarak kural koleksiyonu öncelik numaralarınızı 100 artışlara (100, 200, 300, vb.) göre boşluk, gerekirse daha fazla kural koleksiyonu eklemek için yeriniz olması gerekir.
@@ -54,7 +55,7 @@ Eşleşen bir ağ kuralı nedeniyle google.com bağlantısına izin verilir.
 
 **Uygulama kuralı**
 
-- Eylem: reddetme
+- Eylem: Reddet
 
 |name  |Kaynak türü  |Kaynak  |Protokol: bağlantı noktası|Hedef FQDN 'Ler|
 |---------|---------|---------|---------|----------|----------|
@@ -82,7 +83,7 @@ Daha *yüksek öncelikli bir* ağ kuralı koleksiyonu ENGELLEDIĞI için SSH tra
 
 - Ad: reddetme-koleksiyon
 - Öncelik: 100
-- Eylem: reddetme
+- Eylem: Reddet
 
 |name  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
 |---------|---------|---------|---------|----------|----------|--------|

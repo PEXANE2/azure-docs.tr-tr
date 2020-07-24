@@ -3,8 +3,8 @@ title: "Öğretici: SQL Server çevrimiçi SQL yönetilen örneği 'ne geçirme"
 titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server Azure SQL yönetilen örneğine çevrimiçi geçiş gerçekleştirmeyi öğrenin.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4bd6c3dc1f3cd1ef553efc6ac3cd3c4e558afc97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087671"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL yönetilen örneği 'ne çevrimiçi SQL Server geçirme
 
@@ -50,7 +50,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu makalede, SQL Server bir SQL yönetilen örneğine çevrimiçi geçiş açıklanmaktadır. Çevrimdışı geçiş için bkz. [DMS kullanarak SQL Server SQL yönetilen örneğine çevrimdışı geçirme](tutorial-sql-server-to-managed-instance.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -88,6 +88,9 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
   > Azure veritabanı geçiş hizmeti, belirtilen uygulama KIMLIĞI için abonelikte katkıda bulunan izni gerektirir. Alternatif olarak, Azure veritabanı geçiş hizmeti 'nin gerektirdiği belirli izinleri veren özel roller de oluşturabilirsiniz. Özel rolleri kullanma hakkında adım adım yönergeler için, [SQL yönetilen örnek çevrimiçi geçişleri SQL Server Için özel roller](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)makalesine bakın.
 
 * DMS hizmetinin veritabanı yedekleme dosyalarını yükleyebileceği ve veritabanlarını geçirmek için kullanabileceği bir **Standart Performans katmanı** Azure Depolama Hesabı oluşturun veya belirtin.  Azure veritabanı geçiş hizmeti örneği oluşturulduğu bölgede Azure Storage hesabını oluşturmayı unutmayın.
+
+  > [!NOTE]
+  > [Saydam veri şifrelemesi](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview) tarafından korunan bir veritabanını çevrimiçi geçiş kullanarak yönetilen bir örneğe geçirdiğinizde, şirket Içi veya Azure VM SQL Server örneğinden karşılık gelen sertifikanın, veritabanı geri yüklemeden önce geçirilmesi gerekir. Ayrıntılı adımlar için bkz. [BIR TDE sertifikayı yönetilen örneğe geçirme](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview).
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 

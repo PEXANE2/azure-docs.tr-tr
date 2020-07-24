@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089558"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Dağıtım Planlayıcısı maliyet tahmini raporu 
 
@@ -167,16 +167,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Desteklenen para birimleri
 Site Recovery Dağıtım Planlayıcısı aşağıdaki para birimlerinin tümünde maliyet raporu oluşturabilir.
 
-|Para birimi|Name||Para birimi|Name||Para birimi|Name|
+|Para birimi|Name|Para birimi|Name|Para birimi|Name|
 |---|---|---|---|---|---|---|---|
-|ARS|Arjantin pesosu ($)||AUD|Avustralya doları ($)||BRL|Brezilya reali (R$)|
-|CAD|Kanada doları ($)||CHF|İsviçre frangı (chf)||DKK|Danimarka kronu (kr)|
-|EUR|Euro (€)||GBP|İngiliz Sterlini (£)||HKD|Hong Kong doları (HK$)|
-|IDR|Endonezya Rupisi (Rp)||INR|Hint Rupisi (₹)||JPY|Japon yen (¥)|
-|KRW|Kore Wonu (₩)||MXN|Meksika pesosu (MX$)||MYR|Malezya ringgiti (RM$)|
+|ARS|Arjantin pesosu ($)|AUD|Avustralya doları ($)|BRL|Brezilya reali (R$)|
+|CAD|Kanada doları ($)|CHF|İsviçre frangı (chf)|DKK|Danimarka kronu (kr)|
+|EUR|Euro (€)|GBP|İngiliz Sterlini (£)|HKD|Hong Kong doları (HK$)|
+|IDR|Endonezya Rupisi (Rp)|INR|Hint Rupisi (₹)|JPY|Japon yen (¥)|
+|KRW|Kore Wonu (₩)|MXN|Meksika pesosu (MX$)|MYR|Malezya ringgiti (RM$)|
 |NOK|Norveç kronu (kr)||NZD|Yeni Zelanda doları ($)||RUB|Rusça Rublesi (руб)|
-|SAR|Suudi riyali (SR)||SEK|İsveç kronu (kr)||TWD|Tayvan doları (NT$)|
-|TRY|Türk lirası (TL)||USD| ABD doları ($)||ZAR|Güney Afrika randı (R)|
+|SAR|Suudi riyali (SR)|SEK|İsveç kronu (kr)|TWD|Tayvan doları (NT$)|
+|TRY|Türk lirası (TL)|USD| ABD doları ($)|ZAR|Güney Afrika randı (R)|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Site Recovery kullanarak Hyper-V VM'lerden Azure'a dağıtımı](hyper-v-azure-tutorial.md) koruma hakkında daha fazla bilgi edinin.

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 07/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5fb992edea38c3dff9beffab1f131d3e7a6fdbf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087229"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirme
 
@@ -30,18 +30,6 @@ Desteklenen özelliklerin tam listesi ve bunların varsayılan değerleri için 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, PowerShell modülünüzü ayarlamak ve Azure 'da oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izleyin.
-
-## <a name="default-rdp-properties"></a>Varsayılan RDP özellikleri
-
-Varsayılan olarak, yayımlanan RDP dosyaları aşağıdaki özellikleri içerir:
-
-|RDP özellikleri | Masaüstü Bilgisayarlar | RemoteApp uygulamaları |
-|---|---| --- |
-| Çoklu monitör modu | Etkin | Yok |
-| Sürücü yeniden yönlendirmeleri etkin | Sürücüler, pano, yazıcılar, COM bağlantı noktaları, USB cihazları ve akıllı kartlar| Sürücüler, pano ve Yazıcılar |
-| Uzak ses modu | Yerel olarak oynat | Yerel olarak oynat |
-
-Konak havuzu için tanımladığınız tüm özel özellikler, bu Varsayılanları geçersiz kılar.
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>Azure portal RDP özelliklerini yapılandırın
 

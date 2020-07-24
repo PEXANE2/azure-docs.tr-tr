@@ -3,12 +3,12 @@ title: Hizmet durumuna genel bakış | Microsoft Docs
 description: Azure uygulamalarınızın geçerli ve gelecekteki Azure hizmet sorunlarından ve bakımda nasıl etkilendiğine ilişkin kişiselleştirilmiş bilgiler.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563396"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089609"
 ---
 # <a name="service-health-overview"></a>Hizmet durumuna genel bakış
 
@@ -68,7 +68,7 @@ Sorun çözümlendikten sonra bile kaynağınız hatalı bir durumda bırakılı
 
 ## <a name="configure-service-health-alerts"></a>Hizmet durumu uyarılarını yapılandırma
 
-Hizmet durumu, iş açısından kritik kaynaklarınız etkilendiğinde e-posta, kısa mesaj ve Web kancası bildirimleri aracılığıyla sizi uyarmak için Azure Izleyici ile tümleşir. Uygun hizmet sistem durumu olayı için bir etkinlik günlüğü uyarısı ayarlayın. Işlem gruplarını kullanarak kuruluşunuzdaki uygun kişilere uyarı yönlendirin. Daha fazla bilgi için bkz. [hizmet durumu uyarılarını yapılandırma](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
+Hizmet durumu, iş açısından kritik kaynaklarınız etkilendiğinde e-posta, kısa mesaj ve Web kancası bildirimleri aracılığıyla sizi uyarmak için Azure Izleyici ile tümleşir. Uygun hizmet sistem durumu olayı için bir etkinlik günlüğü uyarısı ayarlayın. Işlem gruplarını kullanarak kuruluşunuzdaki uygun kişilere uyarı yönlendirin. Daha fazla bilgi için bkz. [hizmet durumu uyarılarını yapılandırma](./alerts-activity-log-service-notifications-portal.md)
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 

@@ -17,12 +17,12 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2921fb2895b8e42c0564c6e815a08da1d7e9d12d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82592018"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089983"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs ve Node.js anında iletme bildirimleri gönderme
 
@@ -44,7 +44,7 @@ Kapsamındaki senaryolar aşağıdaki platformlarda uygulamalara anında iletme 
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
-Azure Notification Hubs, mobil cihazlara anında iletme bildirimleri göndermek için kullanımı kolay, çok platformlu ve ölçeklenebilir bir altyapı sağlar. Hizmet altyapısı hakkında daha fazla bilgi için bkz. [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) sayfası.
+Azure Notification Hubs, mobil cihazlara anında iletme bildirimleri göndermek için kullanımı kolay, çok platformlu ve ölçeklenebilir bir altyapı sağlar. Hizmet altyapısı hakkında daha fazla bilgi için bkz. [Azure Notification Hubs](/previous-versions/azure/azure-services/jj927170(v=azure.100)) sayfası.
 
 ## <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
 
@@ -89,7 +89,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 ![Azure portal Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> Bağlantı dizesini, [Azure PowerShell](/powershell/azureps-cmdlets-docs) tarafından sunulan **Get-AzureSbNamespace** cmdlet 'Ini veya Azure [komut satırı arabirimi (Azure CLI)](../cli-install-nodejs.md)ile **Azure SB ad alanı göster** komutunu kullanarak da alabilirsiniz.
+> Bağlantı dizesini, [Azure PowerShell](/powershell/azure/) tarafından sunulan **Get-AzureSbNamespace** cmdlet 'Ini veya Azure [komut satırı arabirimi (Azure CLI)](/cli/azure/install-classic-cli)ile **Azure SB ad alanı göster** komutunu kullanarak da alabilirsiniz.
 
 ## <a name="general-architecture"></a>Genel mimari
 
@@ -155,11 +155,11 @@ notificationHubService.apns.send(null, payload, function(error){
 - **Etiketler** -etiket tanımlayıcısı. Hiçbir etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
 - **Yük** -iletinin XML yükü.
 - **TargetName**  -  TargetName `toast` bildirim için. `token`kutucuk bildirimleri için.
-- **Notificationclass** -bildirimin önceliği. Geçerli değerler için [bir sunucu belgesinden anında iletme bildirimlerinin](https://msdn.microsoft.com/library/hh221551.aspx) **http üst bilgi öğeleri** bölümüne bakın.
+- **Notificationclass** -bildirimin önceliği. Geçerli değerler için [bir sunucu belgesinden anında iletme bildirimlerinin](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) **http üst bilgi öğeleri** bölümüne bakın.
 - **Seçenekler** -isteğe bağlı istek üst bilgileri.
 - **Geri arama** -geri çağırma işlevi.
 
-Geçerli `TargetName` `NotificationClass` ve üst bilgi seçeneklerinin bir listesi için, [bir sunucu sayfasından anında iletme bildirimlerine](https://msdn.microsoft.com/library/hh221551.aspx) göz atın.
+Geçerli `TargetName` `NotificationClass` ve üst bilgi seçeneklerinin bir listesi için, [bir sunucu sayfasından anında iletme bildirimlerine](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) göz atın.
 
 Aşağıdaki örnek kod `MpnsService` , bildirim gönderimi bildirimi göndermek için tarafından sunulan örneği kullanır `NotificationHubService` :
 
@@ -182,7 +182,7 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 - **Seçenekler** -isteğe bağlı istek üst bilgileri.
 - **Geri arama** -geri çağırma işlevi.
 
-Geçerli türlerin ve İstek üstbilgilerinin listesi için bkz. [anında iletme bildirimi hizmeti isteği ve yanıt üst bilgileri](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
+Geçerli türlerin ve İstek üstbilgilerinin listesi için bkz. [anında iletme bildirimi hizmeti isteği ve yanıt üst bilgileri](/previous-versions/windows/apps/hh465435(v=win.10)).
 
 Aşağıdaki kod `WnsService` , `NotificationHubService` UWP uygulamasına bildirim anında iletme bildirimi göndermek için tarafından sunulan örneğini kullanır:
 
@@ -199,7 +199,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 Yukarıdaki örnek kod parçacıkları, çok çeşitli cihazlara anında iletme bildirimleri iletmek için kolayca hizmet altyapısını oluşturmanızı sağlar. Artık node.js Notification Hubs kullanmanın temellerini öğrendiğinize göre, bu özellikleri daha fazla nasıl genişletebileceğinizi öğrenmek için bu bağlantıları izleyin.
 
-- Bkz. [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx)Için MSDN Başvurusu.
+- Bkz. [Azure Notification Hubs](/previous-versions/azure/azure-services/jj927170(v=azure.100))Için MSDN Başvurusu.
 - Daha fazla örnek ve uygulama ayrıntıları için GitHub 'daki [düğüm deposu Için Azure SDK 'sını] ziyaret edin.
 
 [Node için Azure SDK]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -222,14 +222,14 @@ Yukarıdaki örnek kod parçacıkları, çok çeşitli cihazlara anında iletme 
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter_sqlexpression
+[Azure Service Bus Notification Hubs]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
-[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
+[nodejswebsite]: ../app-service/app-service-web-get-started-nodejs.md
+[webmatrix]: /aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure Portalı]: https://portal.azure.com

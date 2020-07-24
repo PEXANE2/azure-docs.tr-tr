@@ -4,19 +4,20 @@ description: Yayımcı ad alanı içinde belirtilen teklifi almak için API.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: bf64645f672e54849064d86f9250a62efeac8d66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087416"
 ---
-<a name="retrieve-a-specific-offer"></a>Belirli bir teklifi alma
-=========================
+# <a name="retrieve-a-specific-offer"></a>Belirli bir teklifi alma
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Yayımcı ad alanı içinde belirtilen teklifi alır.  
 
@@ -34,12 +35,9 @@ Teklifin belirli bir sürümünü de alabilir veya teklifi taslak, görünüm ve
 
 ```
 
+## <a name="uri-parameters"></a>URI parametreleri
 
-<a name="uri-parameters"></a>URI parametreleri
---------------
-
-
-| **Adı**    | **Açıklama**                                                                          | **Veri türü** |
+| **Ad**    | **Açıklama**                                                                          | **Veri türü** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | PublisherId | publisherID. Örneğin, contoso                                                        | Dize        |
 | OfferId     | Teklifi benzersiz bir şekilde tanımlayan GUID.                                                 | Dize        |
@@ -48,19 +46,15 @@ Teklifin belirli bir sürümünü de alabilir veya teklifi taslak, görünüm ve
 | api-sürümü | En son API sürümü                                                                    | Tarih          |
 |  |  |  |
 
+## <a name="header"></a>Üst bilgi
 
-<a name="header"></a>Üst bilgi
-------
-
-|  **Adı**          |   **Değer**            |
+|  **Ad**          |   **Değer**            |
 |  ---------------   |  --------------        |
 |  İçerik Türü      | `application/json`     |
 |  Yetkilendirme     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
-
-<a name="body-example"></a>Gövde örneği
-------------
+## <a name="body-example"></a>Gövde örneği
 
 ### <a name="response"></a>Yanıt
 
@@ -175,20 +169,18 @@ Teklifin belirli bir sürümünü de alabilir veya teklifi taslak, görünüm ve
 }
 ```
 
-
 ### <a name="response-body-properties"></a>Yanıt gövdesi özellikleri
 
-|  **Adı**       |   **Açıklama**                                                                                                               |
+|  **Ad**       |   **Açıklama**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
 |  Offertypeıd    | Teklifin türünü tanımlar                                                                                                    |
 |  PublisherId    | Yayımcının benzersiz tanımlayıcısı                                                                                              |
 |  durum         | Teklifin durumu. Olası değerler listesi için bkz. [teklif durumu](#offer-status) aşağıdaki.                                  |
-|  Kimlik             | Teklifi benzersiz bir şekilde tanımlayan GUID                                                                                         |
+|  Id             | Teklifi benzersiz bir şekilde tanımlayan GUID                                                                                         |
 |  sürüm        | Teklifin geçerli sürümü. Sürüm özelliği istemci tarafından değiştirilemiyor. Her yayımladıktan sonra artırılır.    |
 |  tanım     | İş yükünün gerçek tanımı                                                                                               |
 |  changedTime    | Teklifin en son değiştirildiği UTC tarih saati                                                                                   |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
@@ -200,16 +192,15 @@ Teklifin belirli bir sürümünü de alabilir veya teklifi taslak, görünüm ve
 |  404      | `Not found`-Belirtilen varlık yok. İstemci, PublisherId, OfferId ve sürümü (belirtilmişse) denetlemelidir.      |
 |  |  |
 
-
 ### <a name="offer-status"></a>Teklif durumu
 
-|  **Adı**                   |   **Açıklama**                             |
+|  **Ad**                   |   **Açıklama**                             |
 | --------------------------- |  -------------------------------------------- |
 |  Neveryayınlandı             | Teklif hiç yayımlanmadı.               |
 |  NotStarted                 | Teklif yenidir ancak başlatılmamış.              |
 |  WaitingForPublisherReview  | Teklif, yayımcı onayını bekliyor.      |
 |  Çalışıyor                    | Teklif gönderimi işleniyor.          |
-|  Başarılı oldu                  | Teklif gönderimi işlemeyi tamamladı.    |
+|  Başarılı                  | Teklif gönderimi işlemeyi tamamladı.    |
 |  İptal edildi                   | Teklif Gönderimi iptal edildi.                |
 |  Başarısız                     | Teklif gönderimi başarısız oldu.                      |
 |  |  |

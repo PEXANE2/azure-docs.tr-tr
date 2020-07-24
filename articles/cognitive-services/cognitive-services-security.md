@@ -1,21 +1,21 @@
 ---
-title: Güvenlik
+title: Azure bilişsel hizmetler güvenliği
 titleSuffix: Azure Cognitive Services
 description: Bilişsel hizmetler kullanımıyla ilgili çeşitli güvenlik konuları hakkında bilgi edinin.
 services: cognitive-services
-author: aahill
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: aahi
+ms.date: 07/10/2020
+ms.author: erhopf
 ms.custom: tracking-python
-ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 51a9829a7ea19665e1081a48207f176b1a8e68c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090850"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
 
@@ -31,7 +31,7 @@ HTTP üzerinden sunulan bilişsel hizmetler uç noktaları, TLS 1,2 ' i zorlar. 
 
 .NET kullanıcıları için, <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aktarım Katmanı Güvenliği en iyi yöntemlerini <span class="docon docon-navigate-external x-hidden-focus"></span> </a>göz önünde bulundurun.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Kimlik doğrulaması tartışırken, yaygın olarak karşılaşılan birkaç yanlış rastlamalar vardır. Kimlik doğrulama ve yetkilendirme genellikle bir diğeri için karıştırılır. Kimlik ayrıca güvenlik ' de bir ana bileşendir. Kimlik, bir <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">sorumlu <span class="docon docon-navigate-external x-hidden-focus"></span> </a>hakkındaki bilgilerin koleksiyonudur. Kimlik sağlayıcıları (IDP) kimlik doğrulama hizmetlerine kimlikler sağlar. Kimlik doğrulaması, bir kullanıcının kimliğini doğrulama işlemidir. Yetkilendirme, belirli bir kimlik için kaynaklara yönelik erişim haklarının ve ayrıcalıkların belirtiledir. Bilişsel hizmetler tekliflerinden bazıları rol tabanlı erişim denetimi (RBAC) içerir. RBAC, sorumluları el ile yönetme ile ilgili bazı sertifika basitleştirecek şekilde kullanılabilir. Daha fazla ayrıntı için bkz. [Azure kaynakları için rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
 
@@ -203,9 +203,19 @@ Bu bilişsel hizmet için Müşteri Kasası kullanılabilir:
 
 * Translator
 
-Language Understanding için, Microsoft mühendisleri E0 SKU 'sunda hiçbir müşteri verilerine erişemez. E0 SKU 'YU kullanma yeteneği istemek için, [Lusıs hizmet Isteği formunu](https://aka.ms/cogsvc-cmk)doldurun ve bu hizmeti gönderebilirsiniz. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. E0 SKU 'SU LUIN ile kullanılması onaylandıktan sonra, Azure portal Language Understanding yeni bir kaynak oluşturmanız ve fiyatlandırma katmanı olarak E0 ' ı seçmeniz gerekir. Kullanıcılar F0 'den yeni E0 SKU 'suna yükseltemez.
+Aşağıdaki hizmetler için, Microsoft mühendisleri E0 katmanındaki herhangi bir müşteri verilerine erişmeyecektir: 
 
-Konuşma hizmeti şu anda Müşteri Kasası desteklememektedir. Ancak, müşteri verileri KCG ("kendi depolama alanınızı getir") kullanılarak depolanabilir ve [müşteri kasası](../security/fundamentals/customer-lockbox-overview.md)için benzer veri denetimleri elde etmenizi sağlar. Konuşma hizmeti verilerinin, konuşma kaynağının oluşturulduğu bölgede kaldığından ve işlendiğini aklınızda bulundurun. Bu, bekleyen veriler ve iletim verileri için geçerlidir. Özel Konuşma Tanıma ve özel ses gibi özelleştirme özellikleri kullanılırken, tüm müşteri verileri, KCG (kullanılıyorsa) ve konuşma hizmeti kaynağının bulunduğu bölgede aktarılır, depolanır ve işlenir.
+* Language Understanding
+* Yüz Tanıma
+* Content Moderator
+* Kişiselleştirme
+
+> [!IMPORTANT]
+> **Form tanıyıcı**için, Microsoft mühendisleri 10 Temmuz 2020 ' den sonra oluşturulan kaynaklardaki hiçbir müşteri verilerine erişmeyecektir.
+
+E0 SKU 'YU kullanma yeteneği istemek için bu [Istek formunu](https://aka.ms/cogsvc-cmk)doldurun ve bu formu gönderebilirsiniz. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. E0 SKU 'SU LUIN ile kullanılması onaylandıktan sonra, Azure portal yeni bir kaynak oluşturmanız ve fiyatlandırma katmanı olarak E0 ' yi seçmeniz gerekir. Kullanıcılar F0 'den yeni E0 SKU 'suna yükseltemez.
+
+Konuşma hizmeti şu anda Müşteri Kasası desteklememektedir. Ancak, müşteri verileri kendi depolama alanını getir (KCG) kullanılarak depolanabilir ve Müşteri Kasası için benzer veri denetimleri elde etmenizi sağlar. Konuşma hizmeti verilerinin, konuşma kaynağının oluşturulduğu bölgede kaldığından ve işlendiğini aklınızda bulundurun. Bu, bekleyen veriler ve iletim verileri için geçerlidir. Özel Konuşma Tanıma ve özel ses gibi özelleştirme özellikleri kullanılırken, tüm müşteri verileri, KCG (kullanılıyorsa) ve konuşma hizmeti kaynağının bulunduğu bölgede aktarılır, depolanır ve işlenir.
 
 > [!IMPORTANT]
 > Microsoft, konuşma modellerini geliştirmek için müşteri **verilerini kullanmaz.** Ayrıca, uç nokta günlüğü devre dışıysa ve hiçbir özelleştirme kullanılmazsa, hiçbir müşteri verisi depolanmaz. 

@@ -1,5 +1,5 @@
 ---
-title: Visual Studio ve SSDT ile SYNAPSE SQL 'e bağlanma ve sorgulama
+title: Visual Studio ve SSDT ile SYNAPSE SQL 'i bağlama ve sorgulama
 description: Azure SYNAPSE Analytics kullanarak SQL havuzunu sorgulamak için Visual Studio 'Yu kullanın.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f98a9d6dd79ba1da1a3be1e9e187ed4e8eca8ee
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089252"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ Azure SYNAPSE Analytics kullanarak SQL havuzunu sorgulamak için Visual Studio '
 > [!NOTE]
 > SQL isteğe bağlı (Önizleme) SSDT tarafından desteklenmiyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir:
 
 * Mevcut bir SQL Havuzu. Bir tane yoksa, bu önkoşulu gerçekleştirmek için bkz. [SQL havuzu oluşturma](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
@@ -62,7 +62,7 @@ Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir
 Artık veritabanınıza bir bağlantı kuruldığına göre bir sorgu yazacaksınız.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
-2. **Yeni Sorgu**'yu seçin. Yeni bir sorgu penceresi açılır.
+2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
    
     ![Yeni sorgu](./media/get-started-visual-studio/new-query2.png)
 3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:

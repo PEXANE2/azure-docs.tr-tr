@@ -3,11 +3,12 @@ title: Azure portalını kullanarak hizmet durumu bildirimlerini görüntüleme
 description: Hizmet durumu bildirimleri Microsoft Azure tarafından yayınlanan hizmet durumu iletilerini görüntülemenize izin verir.
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f8297ae708d3f4e7921221f2c4bacee12a7a2b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75748645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089575"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure portalını kullanarak hizmet durumu bildirimlerini görüntüleme
 
@@ -29,7 +30,7 @@ Hizmet durumu bildirimleri, sınıfa bağlı olarak bilgilendirici veya işlem y
 
     ![Uyarı seçiliyken Izleme etkinlik günlüğü ekran görüntüsü](./media/service-notifications/service-health-summary.png)
 
-1. **+ Etkinlik günlüğü uyarısı Ekle**' yi seçin ve gelecekteki hizmet bildirimleri için bildirim aldığınızdan emin olmak için bir uyarı ayarlayın. Daha fazla bilgi için bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. **+ Etkinlik günlüğü uyarısı Ekle**' yi seçin ve gelecekteki hizmet bildirimleri için bildirim aldığınızdan emin olmak için bir uyarı ayarlayın. Daha fazla bilgi için bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](./alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

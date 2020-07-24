@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 6d05c06b1d27cd9d1bc396bddad49fcc89ba3ec3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970493"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091088"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -79,7 +79,7 @@ Evet.
 
 Azure Backup, Azure Backup Sunucusu ve DPM kullanılarak korunan dosyaların, klasörlerin ve uygulamaların yedeklenmesi için şu işletim sistemlerini destekler.
 
-**İşletim Sistemi** | **SKU** | **Ayrıntılar**
+**İşletim sistemi** | **SKU** | **Ayrıntılar**
 --- | --- | ---
 İş İstasyonu | |
 Windows 10 64 bit | Enterprise, Pro, Home | Makinelerin en son hizmet paketlerini ve güncelleştirmeleri çalıştırması gerekir.
@@ -111,7 +111,7 @@ Windows 8 veya üzeri | 54.400 GB
 Windows 7 |1700 GB
 Windows Server 2012 veya üzeri | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
+Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](./backup-support-matrix-iaas.md#vm-storage-support)
 
 ### <a name="how-is-the-data-source-size-determined"></a>Veri kaynağı boyutu nasıl saptanır?
 
@@ -127,7 +127,7 @@ BMR/Sistem durumu |Yedeklenmekte olan makinenin BMR'sinin veya sistem durumunun 
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası kullanılarak yedeklenen veri miktarının bir sınırı var mı?
 
-Bir kurtarma hizmetleri Kasası kullanarak yedekleyebileceğiniz toplam veri miktarı için bir sınır yoktur. Tek tek veri kaynakları (Azure VM 'Leri dışında), en fazla 54.400 GB boyutunda olabilir. Sınırlar hakkında daha fazla bilgi için [destek matrisindeki kasa sınırları bölümüne](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)bakın.
+Bir kurtarma hizmetleri Kasası kullanarak yedekleyebileceğiniz toplam veri miktarı için bir sınır yoktur. Tek tek veri kaynakları (Azure VM 'Leri dışında), en fazla 54.400 GB boyutunda olabilir. Sınırlar hakkında daha fazla bilgi için [destek matrisindeki kasa sınırları bölümüne](./backup-support-matrix.md#vault-support)bakın.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Kurtarma Hizmetleri kasasına aktarılan verilerin büyüklüğü neden yedekleme için seçilen verilerden daha küçük?
 

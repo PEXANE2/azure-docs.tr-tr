@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77566157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091275"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Özel bulutunuzda VMware sanal makineleri oluşturma
 
@@ -24,7 +25,7 @@ ms.locfileid: "77566157"
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
 4. **Genel bakış** sayfasından **Cloudsimple portalına git** ' e tıklayarak cloudsimple Portal için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
@@ -101,7 +102,7 @@ CloudSimple, Kullanıcı adı ile varsayılan bir vCenter Kullanıcı hesabı at
 
 Özel bir bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi ataması için ad çözümlemesi ve DHCP hizmetleri gerektirir. Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir. Özel bulut ortamınızda bu hizmetleri sağlamak için vCenter 'da bir sanal makine yapılandırabilirsiniz.
 
-Ön koşullar
+Önkoşullar
 
 * VLAN yapılandırılmış bir dağıtılmış bağlantı noktası grubu
 
@@ -121,9 +122,9 @@ Linux, DNS sunucularını ayarlamak için çeşitli paketler sunar.  Bir açık 
 
 Bu Microsoft konuları, bir Windows Server 'ı bir DNS sunucusu olarak ve bir DHCP sunucusu olarak ayarlamayı açıklamaktadır.
 
-[DNS sunucusu olarak Windows Server](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[DNS sunucusu olarak Windows Server](/windows-server/networking/dns/dns-top)
 
-[DHCP sunucusu olarak Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[DHCP sunucusu olarak Windows Server](/windows-server/networking/technologies/dhcp/dhcp-top)
 
 ## <a name="customize-networking-configuration-optional"></a>Ağ yapılandırmasını özelleştirme (Isteğe bağlı)
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664788"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091190"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Izleyici 'de VMware İzleme (kullanım dışı) çözümü
 
@@ -155,7 +156,7 @@ Günlük sorgularını kaydetmek, Azure Izleyici 'de standart bir özelliktir ve
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Sorgulardan uyarı oluşturma
-Sorgularınızı oluşturduktan sonra, belirli olaylar oluştuğunda sizi uyarmak için sorguları kullanmak isteyebilirsiniz. Uyarı oluşturma hakkında bilgi için bkz. [Log Analytics Uyarıları](../platform/alerts-overview.md) . Uyarı sorgularının ve diğer sorgu örneklerinin örnekleri için bkz. Log Analytics Web günlüğü gönderisini [kullanarak VMware 'Yi izleme](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) .
+Sorgularınızı oluşturduktan sonra, belirli olaylar oluştuğunda sizi uyarmak için sorguları kullanmak isteyebilirsiniz. Uyarı oluşturma hakkında bilgi için bkz. [Log Analytics Uyarıları](../platform/alerts-overview.md) . Uyarı sorgularının ve diğer sorgu örneklerinin örnekleri için bkz. Log Analytics Web günlüğü gönderisini [kullanarak VMware 'Yi izleme](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) .
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>ESXi ana bilgisayar ayarında ne yapmam gerekir? Geçerli ortammda hangi etkileri olacaktır?

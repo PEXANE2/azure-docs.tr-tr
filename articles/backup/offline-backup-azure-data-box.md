@@ -3,12 +3,12 @@ title: Azure Data Box kullanarak çevrimdışı yedekleme
 description: MARS aracısından bir kurtarma hizmetleri kasasına çevrimdışı olan büyük ilk yedekleme verilerini temel alarak Azure Data Box nasıl kullanabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091037"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup
 
@@ -153,7 +153,7 @@ MARS Aracısı yerel sistem bağlamında çalışır, bu nedenle Azure Data Box 
 NFS protokolünü kullanarak Data Box cihazınızı yerel bir sistem olarak bağlayabilmeniz için:
 
 1. MARS aracısının yüklü olduğu Windows Server 'da NFS özelliği istemcisini etkinleştirin. Alternatif kaynak *WIM: D: \Sources\ınstall.exe: 4*' i belirtin.
-1. PSExec ' den <https://download.sysinternals.com/files/PSTools.zip> Mars aracısının yüklü olduğu sunucuya indirin.
+1. [Sysinternals](/sysinternals/downloads/psexec) sayfasından PsExec ' i Mars aracısının yüklü olduğu sunucuya indirin.
 1. Yükseltilmiş bir komut istemi açın ve geçerli dizin olarak *PSExec.exe* içeren dizin ile aşağıdaki komutu çalıştırın.
 
     ```cmd

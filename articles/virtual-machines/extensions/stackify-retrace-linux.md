@@ -14,10 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79253799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088861"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Yeniden Izleme Linux Aracısı uzantısını stackbelirt
 
@@ -36,7 +37,7 @@ Yeniden izleme özelliği, tüm ortamlarda aşağıdaki tüm özellikleri tek bi
 
 Bu uzantı, yeniden Izleme için Linux Aracısı için bir install yolu sağlar. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi 
 

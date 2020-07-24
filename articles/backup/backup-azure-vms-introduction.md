@@ -3,15 +3,16 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322918"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091054"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
-Bu makalede, [Azure Backup hizmetinin](backup-introduction-to-azure-backup.md) Azure sanal makinelerini (VM) nasıl yedeklediği açıklanır.
+Bu makalede, [Azure Backup hizmetinin](./backup-overview.md) Azure sanal makinelerini (VM) nasıl yedeklediği açıklanır.
 
 Azure Backup, sanal makinelerinizdeki verilerin istenmeden yok edilmesiyle karşı koruma sağlamak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedeklemeler, kurtarma noktalarının yerleşik yönetimi ile bir kurtarma hizmetleri kasasında depolanır. Yapılandırma ve ölçekleme basittir, yedeklemeler en iyi duruma getirilir ve gerektiğinde kolayca geri yükleyebilirsiniz.
 
@@ -25,8 +26,8 @@ Azure Backup Azure VM 'Leri için bir yedeklemeyi nasıl tamamlarsa aşağıda v
 
 1. Yedekleme için seçilen Azure VM 'Leri için Azure Backup, belirttiğiniz yedekleme zamanlaması doğrultusunda bir yedekleme işi başlatır.
 1. İlk yedekleme sırasında VM çalışıyorsa VM 'ye bir yedekleme uzantısı yüklenir.
-    - Windows VM 'Leri için [VMSnapshot uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows) yüklenir.
-    - Linux VM 'Leri için [VMSnapshotLinux uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux) yüklenir.
+    - Windows VM 'Leri için [VMSnapshot uzantısı](../virtual-machines/extensions/vmsnapshot-windows.md) yüklenir.
+    - Linux VM 'Leri için [VMSnapshotLinux uzantısı](../virtual-machines/extensions/vmsnapshot-linux.md) yüklenir.
 1. Çalıştıran Windows VM 'Leri için, VM 'nin uygulamayla tutarlı bir anlık görüntüsünü almak üzere Windows Birim Gölge Kopyası Hizmeti (VSS) ile yedekleme koordinatları.
     - Varsayılan olarak, yedekleme tam VSS yedeklemeleri alır.
     - Yedekleme uygulamayla tutarlı bir anlık görüntü alalamazsa, temeldeki depolamanın dosya ile tutarlı bir anlık görüntüsünü alır (VM durdurulduğunda hiçbir uygulama yazma işlemi gerçekleşmediğinden).
@@ -63,7 +64,7 @@ BEKs da yedeklenir. Bu nedenle, BEKs kaybolursa yetkili kullanıcılar BEKs 'yi 
 
 Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
-- **Windows VM 'leri:** Windows VM 'lerinde yedekleme hizmeti, VM disklerinin uygulamayla tutarlı bir anlık görüntüsünü almak için VSS ile eşgüdümünü sağlar.  Varsayılan olarak, Azure Backup tam bir VSS yedeklemesi alır (uygulama düzeyi tutarlı yedeklemeyi almak için yedekleme sırasında SQL Server gibi uygulamanın günlüklerini keser).  Azure VM yedeklemesi üzerinde bir SQL Server veritabanı kullanıyorsanız, bir VSS kopya yedeklemesi (günlükleri korumak için) almak için ayarı değiştirebilirsiniz. Daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)bakın.
+- **Windows VM 'leri:** Windows VM 'lerinde yedekleme hizmeti, VM disklerinin uygulamayla tutarlı bir anlık görüntüsünü almak için VSS ile eşgüdümünü sağlar.  Varsayılan olarak, Azure Backup tam bir VSS yedeklemesi alır (uygulama düzeyi tutarlı yedeklemeyi almak için yedekleme sırasında SQL Server gibi uygulamanın günlüklerini keser).  Azure VM yedeklemesi ' nde bir SQL Server veritabanı kullanıyorsanız, bir VSS kopya yedeklemesi (günlükleri korumak için) almak için ayarı değiştirebilirsiniz. Daha fazla bilgi için [Bu makaleye](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues)bakın.
 
 - **Linux VM 'leri:** Linux VM 'lerinin uygulamayla tutarlı anlık görüntülerini almak için, tutarlılık sağlamak üzere kendi özel betiklerinizi yazmak üzere Linux ön betik ve betik sonrası çerçevesini kullanın.
 
@@ -75,11 +76,14 @@ Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
 Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanmaktadır:
 
-**Anlık Görüntü** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
+**Görüntüye** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
 --- | --- | --- | ---
 **Uygulamayla tutarlı** | Uygulamayla tutarlı yedeklemeler bellek içeriğini ve bekleyen g/ç işlemlerini yakalar. Uygulamayla tutarlı anlık görüntüler, bir yedekleme gerçekleşmeden önce uygulama verilerinin tutarlılığını sağlamak için bir VSS yazıcısı (veya Linux için ön betikler öncesi) kullanır. | VM 'yi uygulamayla tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Uygulamalar tutarlı bir durumda başlar. | Windows: tüm VSS yazıcıları başarılı oldu<br/><br/> Linux: ön/son betik yapılandırma ve başarılı
 **Dosya sistemiyle tutarlı** | Dosya sistemiyle tutarlı yedeklemeler, tüm dosyaların bir anlık görüntüsünü aynı anda alarak tutarlılık sağlar.<br/><br/> | Bir sanal makineyi dosya sistemiyle tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Geri yüklenen verilerin tutarlı olduğundan emin olmak için uygulamaların kendi "düzeltilmesi" mekanizmasını uygulaması gerekir. | Windows: bazı VSS yazıcıları başarısız oldu <br/><br/> Linux: varsayılan (ön/sonrası betikler yapılandırılmamışsa veya başarısız olursa)
 **Kilitlenme ile tutarlı** | Kilitlenme tutarlı anlık görüntüler genellikle bir Azure VM yedekleme sırasında kapatılırsa oluşur. Yalnızca yedekleme sırasında diskte bulunan veriler yakalanır ve yedeklenir. | , Bozulma hatalarını gidermeye yönelik bir disk denetimi tarafından sanal makine önyükleme işlemiyle başlar. Kilitlenme kaybolmadan önce diske aktarılmayan bellek içi veriler veya yazma işlemleri kaybedilir. Uygulamalar kendi veri doğrulamasını uygular. Örneğin, bir veritabanı uygulaması doğrulama için işlem günlüğünü kullanabilir. İşlem günlüğünde veritabanında bulunmayan girişler varsa, veritabanı yazılımı veriler tutarlı olana kadar işlemleri geri kaydeder. | VM kapalı (durdurulmuş/serbest bırakıldı) durumunda.
+
+>[!NOTE]
+> Sağlama durumu **başarılı**olursa, Azure Backup dosya sistemine tutarlı yedeklemeler alır. Sağlama durumu **kullanılamıyorsa** veya **başarısız**olursa, kilitlenmeyle tutarlı yedeklemeler alınır. Sağlama durumu **oluşturuyor** veya **silinirse**, Azure Backup işlemleri yeniden deniyor demektir.
 
 ## <a name="backup-and-restore-considerations"></a>Yedekleme ve geri yükleme konusunda dikkat edilmesi gerekenler
 
@@ -107,8 +111,8 @@ Bu yaygın senaryolar toplam yedekleme süresini etkileyebilir:
 VM yedekleme yapılandırması sırasında aşağıdaki yöntemleri uygulamanız önerilir:
 
 - Bir ilkede bulunan varsayılan zamanları değiştirin. Örneğin ilkedeki varsayılan saat 00:00 ise kaynakların en uygun şekilde kullanılması için birkaç dakika ileri atın.
-- VM 'Leri tek bir kasadan geri yüklüyorsanız, hedef depolama hesabının kısıtlanmasını sağlamak için farklı [genel amaçlı v2 depolama hesapları](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) kullanmanızı önemle tavsiye ederiz. Örneğin, her sanal makinenin farklı bir depolama hesabı olmalıdır. Örneğin, 10 VM geri yüklenirse, 10 farklı depolama hesabı kullanın.
-- Hızlı geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra yapılacak yedekleme işlemleri için %50 boş alan gereksinimi yoktur
+- VM 'Leri tek bir kasadan geri yüklüyorsanız, hedef depolama hesabının kısıtlanmasını sağlamak için farklı [genel amaçlı v2 depolama hesapları](../storage/common/storage-account-upgrade.md) kullanmanızı önemle tavsiye ederiz. Örneğin, her sanal makinenin farklı bir depolama hesabı olmalıdır. Örneğin, 10 VM geri yüklenirse, 10 farklı depolama hesabı kullanın.
+- Anlık geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra %50 boş alan yedeklemeler için bir gereksinim değildir
 - Depolama hesabı başına disk sayısı sınırı, disklere hizmet olarak altyapı (IaaS) VM üzerinde çalışan uygulamalar tarafından hangi düzeyde erişim sağlandığına göre değişir. Genellikle tek bir depolama hesabında 5-10 arası veya daha fazla disk varsa bazı diskleri ayrı depolama hesaplarına taşıyarak yükü dengelemeniz önerilir.
 
 ## <a name="backup-costs"></a>Yedekleme maliyetleri

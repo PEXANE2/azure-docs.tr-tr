@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d6dd38c3d1802c3b5bec82edbda4f9d344fa28b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090527"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
@@ -64,7 +65,7 @@ Key Vault erişim ilkeleri, izinleri anahtarlar, gizlilikler veya sertifikaya g�
 > [!IMPORTANT]
 > Key Vault erişim ilkeleri, belirli bir anahtar, gizli dizi ya da sertifika gibi ayrıntılı, nesne düzeyindeki izinleri desteklemez. Bir kullanıcıya anahtar oluşturma ve silme izni verildiğinde, bu işlemleri ilgili anahtar kasasındaki tüm anahtarlar üzerinde gerçekleştirebilirler.
 
-Bir Anahtar Kasası için erişim ilkeleri ayarlamak için [Azure Portal](https://portal.azure.com/), [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azureps-cmdlets-docs)veya [Key Vault yönetimi REST API 'lerini](/rest/api/keyvault/)kullanın.
+Bir Anahtar Kasası için erişim ilkeleri ayarlamak için [Azure Portal](https://portal.azure.com/), [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/)veya [Key Vault yönetimi REST API 'lerini](/rest/api/keyvault/)kullanın.
 
 [Azure Key Vault) için sanal ağ hizmet uç noktalarını](overview-vnet-service-endpoints.md)kullanarak veri düzlemi erişimini kısıtlayabilirsiniz. Güvenlik [duvarları ve sanal ağ kurallarını](network-security.md) ek bir güvenlik katmanı için yapılandırabilirsiniz.
 

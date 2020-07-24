@@ -9,13 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6092395929f4990010e2212f28a5962cfe1c7e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087858"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -128,12 +129,12 @@ Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kaps
 
 | Özellik | Açıklama | Gerekli mi? |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği için,`Copy` | Evet |
-| girişi | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Evet |
-| çıkışı | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Evet |
-| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Evet |
-| kaynak | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
-| Ev | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
+| tür | Kopyalama etkinliği için,`Copy` | Yes |
+| girişi | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Yes |
+| çıkışı | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Yes |
+| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Yes |
+| kaynak | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
+| Ev | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
 | çevirmen | Kaynaktan havuza açık sütun eşlemeleri belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | Hayır |
 | Veri tümleştirme birimleri | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance-features.md#data-integration-units). | Hayır |
 | Paralellkopyalar | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance-features.md#parallel-copy). | Hayır |
@@ -185,7 +186,7 @@ Kopyalama etkinliğinin kaynak verilerinizi havuzunuzu nasıl eşlediğini öğr
 Kaynak veri deposundan havuza veri kopyalamanın yanı sıra, havuza kopyalamak üzere ek veri sütunları da eklemek için yapılandırabilirsiniz. Örneğin:
 
 - Dosya tabanlı kaynaktan kopyalama yapıldığında, verilerin hangi dosyadan geldiğini izlemek için göreli dosya yolunu ek bir sütun olarak depolayın.
-- İşlem hattı adı/işlem hattı kimliği gibi ADF sistem değişkenlerini eklemek için ADF ifadesi içeren bir sütun ekleyin veya yukarı akış etkinliğinin çıktısından diğer dinamik değeri saklayın.
+- İşlem hattı adı/işlem hattı KIMLIĞI gibi ADF sistem değişkenlerini eklemek için ADF ifadesi içeren bir sütun ekleyin veya yukarı akış etkinliğinin çıktısından diğer dinamik değeri saklayın.
 - Aşağı akış tüketimi gereksinimini karşılamak için statik değeri olan bir sütun ekleyin.
 
 Kopyalama etkinliği kaynağı sekmesine aşağıdaki yapılandırmayı bulabilirsiniz: 
@@ -201,7 +202,7 @@ Program aracılığıyla yapılandırmak için `additionalColumns` kopyalama etk
 | --- | --- | --- |
 | additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>Dizideki her nesne `additionalColumns` bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve `value` Bu sütunun veri değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`**-ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **İfadesini**<br>- **Statik değer** | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -239,6 +240,22 @@ Program aracılığıyla yapılandırmak için `additionalColumns` kopyalama etk
     }
 ]
 ```
+
+## <a name="auto-create-sink-tables"></a>Havuz tablolarını otomatik oluştur
+
+Verileri SQL Database/Azure SYNAPSE Analytics 'e kopyalarken, hedef tablo yoksa, kopyalama etkinliği kaynak verilere göre otomatik olarak oluşturulmasını destekler. Verileri yüklemeye ve SQL Database/Azure SYNAPSE Analytics 'i değerlendirmenize hızlı bir şekilde başlamanıza yardımcı olacak. Veri alındıktan sonra havuz tablosu şemasını gereksinimlerinize göre gözden geçirebilir ve ayarlayabilirsiniz.
+
+Bu özellik, herhangi bir kaynaktaki verileri aşağıdaki havuz veri depolarına kopyalarken desteklenir. *ADF yazma Kullanıcı arabirimi* – > *kopyalama etkinliği havuzu* – > *Tablo seçeneği* – > *otomatik olarak tablo oluştur*veya `tableOption` kopyalama etkinliği havuz yükünde özellik aracılığıyla) seçeneğini bulabilirsiniz.
+
+- [Azure SQL Veritabanı](connector-azure-sql-database.md)
+- [Azure SQL veritabanı yönetilen örneği](connector-azure-sql-managed-instance.md)
+- [Azure SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı)](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![Havuz tabloları oluşturma](media/copy-activity-overview/create-sink-table.png)
+
+> [!NOTE]
+> [Hazırlanan kopya](copy-activity-performance-features.md#staged-copy) etkinleştirildiğinde Şu anda otomatik tablo oluşturma desteklenmez.
 
 ## <a name="fault-tolerance"></a>Hataya dayanıklılık
 

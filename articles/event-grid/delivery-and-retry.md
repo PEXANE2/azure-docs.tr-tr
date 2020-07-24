@@ -3,12 +3,12 @@ title: Azure Event Grid teslimi ve yeniden dene
 description: Azure Event Grid olayların nasıl teslim edildiğini ve teslim edilmemiş iletileri nasıl işlediğini açıklar.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e565bbc8592dc2818e3573672e6e3035c3c8983a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113845"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087620"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
 
@@ -78,8 +78,12 @@ Bir uç nokta teslim hatalarıyla karşılaşıyorsa, Event Grid bu uç noktada 
 Gecikmeli teslimin işlevsel amacı, sağlıksız uç noktaların yanı sıra Event Grid sistemini de koruyasağlamaktır. Arka arkaya ve sağlıklı uç noktalara teslim olmadan, Event Grid yeniden deneme ilkesi ve birim özellikleri bir sistemi kolayca açabilir.
 
 ## <a name="dead-letter-events"></a>Atılacak mektup olayları
+Event Grid belirli bir süre içinde veya olayı belirli bir sayıda teslim etmeye çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak**olarak bilinir. **Aşağıdaki koşullardan biri** karşılandığında bir olay atılacak Event Grid. 
 
-Event Grid bir olay suntırabilmediği zaman, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, atılacak olarak bilinir. Event Grid, varsayılan olarak, atılacak bir duruma getirin. Bunu etkinleştirmek için, olay aboneliğini oluştururken teslim edilmemiş olayları barındıracak bir depolama hesabı belirtmeniz gerekir. Teslimleri çözümlemek için bu depolama hesabından olay çekebilirsiniz.
+- Etkinlik, yaşam süresi aralığında teslim edilmemiş
+- Olayı teslim etmeye yönelik denemeler sayısı sınırı aştı
+
+Koşullardan biri karşılanıyorsa, olay bırakılır veya atılacak.  Event Grid, varsayılan olarak, atılacak bir duruma getirin. Bunu etkinleştirmek için, olay aboneliğini oluştururken teslim edilmemiş olayları barındıracak bir depolama hesabı belirtmeniz gerekir. Teslimleri çözümlemek için bu depolama hesabından olay çekebilirsiniz.
 
 Event Grid, tüm yeniden deneme girişimlerini denediği zaman atılacak harf konumuna bir olay gönderir. Event Grid bir 400 (Hatalı Istek) veya 413 (varlık çok büyük Istek) yanıt kodu alırsa, olayı hemen atılacak ileti uç noktasına gönderir. Bu yanıt kodları olayın teslimini belirtir hiçbir şekilde başarısız olur.
 
@@ -111,7 +115,7 @@ Yukarıdaki küme içinde olmayan diğer tüm kodlar (200-204) başarısızlık 
 
 | Durum kodu | Yeniden deneme davranışı |
 | ------------|----------------|
-| 400 Hatalı Istek | 5 dakika veya daha uzun bir süre sonra yeniden dene (sahipsiz ayarla ayarı varsa hemen |
+| 400 Hatalı İstek | 5 dakika veya daha uzun bir süre sonra yeniden dene (sahipsiz ayarla ayarı varsa hemen |
 | 401 Yetkisiz | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
 | 403 Yasak | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
 | 404 Bulunamadı | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |

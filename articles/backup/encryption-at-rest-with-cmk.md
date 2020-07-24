@@ -3,16 +3,16 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: ee64b9f2c6d260d91763cbe2d339640a9fab9967
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c26466582cbe5a10610f6766160c2b0bc51a4828
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172616"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091105"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
-Azure Backup, varsayılan olarak etkinleştirilen platform tarafından yönetilen anahtarlar kullanmak yerine, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize olanak tanır. Yedekleme verilerini şifrelemek için kullanılan anahtarlarınızın [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)' de depolanması gerekir.
+Azure Backup, varsayılan olarak etkinleştirilen platform tarafından yönetilen anahtarlar kullanmak yerine, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize olanak tanır. Yedekleme verilerini şifrelemek için kullanılan anahtarlarınızın [Azure Key Vault](../key-vault/index.yml)' de depolanması gerekir.
 
 Yedeklemeleri şifrelemek için kullanılan şifreleme anahtarı, kaynak için kullanılan birinden farklı olabilir. Veriler, sırasıyla anahtarlarınız kullanılarak (KEK) korunan, AES 256 tabanlı bir veri şifreleme anahtarı (DEK) kullanılarak korunur. Bu sayede veriler ve anahtarlar üzerinde tam denetim elde edersiniz. Şifrelemeye izin vermek için, kurtarma hizmetleri kasasının Azure Key Vault şifreleme anahtarına erişim verilmesi gerekir. Anahtarı gerektiğinde ve olarak değiştirebilirsiniz.
 
@@ -31,7 +31,7 @@ Bu makalede aşağıdakiler ele alınmaktadır:
 
 - Bu özellik şu anda **Mars Aracısı 'nı kullanarak yedeklemeyi desteklemiyor**ve aynı şekilde CMK şifreli bir kasa kullanmayabilir. MARS Aracısı Kullanıcı parolası tabanlı bir şifreleme kullanır. Bu özellik, klasik VM 'lerin yedeklenmesini de desteklemez.
 
-- Bu özellik, bir sanal makinenin BitLocker (Windows için) ve DM-crypt (Linux için) kullanarak VM disklerinin Konuk tabanlı şifrelemesini kullanan [Azure disk şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss)ile ilgili değildir
+- Bu özellik, bir sanal makinenin BitLocker (Windows için) ve DM-crypt (Linux için) kullanarak VM disklerinin Konuk tabanlı şifrelemesini kullanan [Azure disk şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)ile ilgili değildir
 
 - Kurtarma Hizmetleri Kasası, yalnızca **aynı bölgede**bulunan bir Azure Key Vault depolanan anahtarlarla şifrelenebilir. Ayrıca anahtarlar yalnızca **RSA 2048 anahtar** olmalıdır ve **etkin** durumda olmalıdır.
 
@@ -92,7 +92,7 @@ Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure Key Vault geçici silme ve Temizleme korumasını etkinleştirme
 
-Şifreleme anahtarınızı depolayan Azure Key Vault **, geçici silme ve Temizleme korumasını etkinleştirmeniz** gerekir. Bunu aşağıda gösterildiği gibi Azure Key Vault kullanıcı arabiriminden yapabilirsiniz. (Alternatif olarak, Key Vault oluşturulurken bu özellikler ayarlanabilir). Bu [Key Vault özellikleri hakkında](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)daha fazla bilgi edinin.
+Şifreleme anahtarınızı depolayan Azure Key Vault **, geçici silme ve Temizleme korumasını etkinleştirmeniz** gerekir. Bunu aşağıda gösterildiği gibi Azure Key Vault kullanıcı arabiriminden yapabilirsiniz. (Alternatif olarak, Key Vault oluşturulurken bu özellikler ayarlanabilir). Bu [Key Vault özellikleri hakkında](../key-vault/general/overview-soft-delete.md)daha fazla bilgi edinin.
 
 ![Geçici silme ve Temizleme korumasını etkinleştir](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -193,13 +193,13 @@ Korumayı yapılandırmaya devam etmeden önce aşağıdaki denetim listesinin �
 >
 >Yukarıdaki adımların tümü onaylanırsa, yalnızca yedeklemeyi yapılandırmaya devam edin.
 
-Müşteri tarafından yönetilen anahtarlarla şifrelenen bir kurtarma hizmetleri kasasındaki yedeklemeleri yapılandırma ve gerçekleştirme işlemi, bu **deneyim üzerinde değişiklik**yapmadan, platform tarafından yönetilen anahtarlar kullanan bir kasaya benzer. Bu, [Azure VM 'lerinin yedeklenmesi](https://docs.microsoft.com/azure/backup/quick-backup-vm-portal) ve bir VM içinde çalışan iş yüklerinin yedeklenmesi için (örneğin, [SAP HANA](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db), [SQL Server](https://docs.microsoft.com/azure/backup/tutorial-sql-backup) veritabanları) doğru bir durum içerir.
+Müşteri tarafından yönetilen anahtarlarla şifrelenen bir kurtarma hizmetleri kasasındaki yedeklemeleri yapılandırma ve gerçekleştirme işlemi, bu **deneyim üzerinde değişiklik**yapmadan, platform tarafından yönetilen anahtarlar kullanan bir kasaya benzer. Bu, [Azure VM 'lerinin yedeklenmesi](./quick-backup-vm-portal.md) ve bir VM içinde çalışan iş yüklerinin yedeklenmesi için (örneğin, [SAP HANA](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) veritabanları) doğru bir durum içerir.
 
 ## <a name="restoring-data-from-backup"></a>Verileri yedeklemeden geri yükleme
 
 ### <a name="vm-backup"></a>VM yedeklemesi
 
-Kurtarma Hizmetleri kasasında depolanan veriler, [burada](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms)açıklanan adımlara göre geri yüklenebilir. Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenen bir kurtarma hizmetleri kasasından geri yükleme yaparken, geri yüklenen verileri bir disk şifreleme kümesiyle (DES) şifrelemeyi seçebilirsiniz.
+Kurtarma Hizmetleri kasasında depolanan veriler, [burada](./backup-azure-arm-restore-vms.md)açıklanan adımlara göre geri yüklenebilir. Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenen bir kurtarma hizmetleri kasasından geri yükleme yaparken, geri yüklenen verileri bir disk şifreleme kümesiyle (DES) şifrelemeyi seçebilirsiniz.
 
 #### <a name="restoring-vm--disk"></a>VM/disk geri yükleniyor
 

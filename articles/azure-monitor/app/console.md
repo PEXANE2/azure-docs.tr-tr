@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için Web uygulamaları
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: d3d1d8aafaea8dcb9e67b842acfbd493e02e4854
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 955988cd16af5269c474061cf60fb18a040909e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091241"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET konsol uygulamaları için Application Insights
 
@@ -18,9 +18,9 @@ ms.locfileid: "86086254"
 [Microsoft Azure](https://azure.com)bir aboneliğiniz olması gerekir. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için sahip olabileceğiniz bir Microsoft hesabı oturum açın. Takımınız Azure 'a yönelik bir kurumsal aboneliğe sahip olabilir: sahibinden Microsoft hesabı kullanarak sizi eklemesini isteyin.
 
 > [!NOTE]
-> Herhangi bir konsol uygulaması için [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini ve [buradaki](../../azure-monitor/app/worker-service.md) ilişkili yönergeleri kullanmanız *önemle önerilir* . Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , .NET Core 2,1 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
+> Herhangi bir konsol uygulaması için [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini ve [buradaki](../../azure-monitor/app/worker-service.md) ilişkili yönergeleri kullanmanız *önemle önerilir* . Bu paket [`NetStandard2.0`](/dotnet/standard/net-standard) , .NET Core 2,1 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 * [Azure portalında](https://portal.azure.com)[bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md). Uygulama türü için **genel**' i seçin.
 * İzleme Anahtarının bir kopyasını oluşturun. Oluşturduğunuz yeni kaynağın **temel** bileşenler açılan penceresinde anahtarı bulun.

@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE çalışma alanında yönetilen kimliğe izinler verme
+title: SYNAPSE çalışma alanındaki yönetilen kimliğe izin verme
 description: Azure SYNAPSE çalışma alanında yönetilen kimlik için izinlerin nasıl yapılandırılacağını açıklayan bir makale.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089456"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Çalışma alanı yönetilen kimliğine izin ver (Önizleme)
 
@@ -80,7 +80,7 @@ Yönetilen kimliğe *Depolama Blobu veri katılımcısı* rolünü vermek için 
 
 #### <a name="step-4-add-a-new-role-assignment"></a>4. Adım: yeni bir rol ataması ekleme
 
-**+ Ekle** öğesini seçin.
+**+ Ekle**'yi seçin.
 
 ![Yeni rol ataması Ekle](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 

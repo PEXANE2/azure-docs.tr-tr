@@ -3,12 +3,12 @@ title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4e3153ae611f368f66b045a69bab23ca0a52a033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206401"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089524"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -22,7 +22,8 @@ Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en so
 
 **Güncelleştirme** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı**
 --- | --- | --- | --- | --- | ---
-[Toplu 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
+[Toplu 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
+[Toplu 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV makineleri-2.0.9183.0 <br> VMware makineleri-2.0.9177.0
 [Toplu 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Toplu 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Toplu 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
@@ -34,6 +35,18 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 > Güncelleştirme paketi 44, Site Recovery sağlayıcıları ve aracıları için güncelleştirmeler içermediği için tabloda gösterilmez.
 
 ## <a name="updates-july-2020"></a>Güncelleştirmeler (Temmuz 2020)
+
+### <a name="update-rollup-48"></a>Güncelleştirme paketi 48
+
+[Güncelleştirme paketi 48](https://support.microsoft.com/help/4573888/update-rollup-48-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
+
+**Güncelleştirme** | **Ayrıntılar**
+--- | ---
+**Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
+**Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
+
+> [!NOTE]
+> Güncelleştirme paketi 48, ADE kullanılarak şifrelenmiş Linux makineleri için çoğaltmayı etkinleştirme konusunda bilinen bir sorun içeriyor. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors#enable-protection-failed-as-the-installer-is-unable-to-find-the--root-disk-error-code-151137).
 
 ### <a name="update-rollup-47"></a>Güncelleştirme paketi 47
 

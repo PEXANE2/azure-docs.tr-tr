@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2020
+ms.date: 07/19/2020
 ms.author: memildin
-ms.openlocfilehash: f3ef633ff0271d74eea7320faadf17685976d3b6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 2f995f3f6defd73575d9e1bf19326a828f1e6038
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970476"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089915"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Güvenlik Merkezi ile Azure Container Registry tümleştirme
 
@@ -30,6 +30,11 @@ Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı ka
 
 - Yayın durumu: **genel kullanılabilirlik**
 - Gerekli roller: **güvenlik okuyucusu** ve [Azure Container Registry okuyucu rolü](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- Desteklenen kayıt defterleri:
+    - Genel internet 'ten erişilebilen Linux ile barındırılan ACR kayıt defterlerine ✔ ve kabuk erişimi sağlayabilirsiniz.
+    - ✘ Windows tarafından barındırılan ACR kayıt defterleri.
+    - ✘ ' Private ' kayıt defterleri-Güvenlik Merkezi, kayıt defterlerinden genel İnternet 'ten erişilebilmesini gerektirir. Bir güvenlik duvarı, hizmet uç noktası veya özel uç nokta (örneğin, Azure özel bağlantı) kullanarak kayıt defterinize erişimi sınırlandırdıysanız, güvenlik merkezi şu anda kayıt defterinizi yapamıyor veya tarayamaz.
+    - [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi ✘ süper minimuz görüntüleri veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, Shell veya OS olmadan Içeren "Distrodaha az" görüntüler.
 - Larının 
     - Ticari bulutlar ✔
     - ✘ ABD kamu bulutu
@@ -40,7 +45,7 @@ Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı ka
 
 Kayıt defterinize her görüntü gönderildiğinde, güvenlik merkezi bu görüntüyü otomatik olarak tarar. Bir görüntünün taramasını tetiklemek için onu deponuza gönderin.
 
-Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra, ancak 40 dakika kadar sürebilir), bulgular aşağıdaki gibi güvenlik merkezi önerileri olarak kullanılabilir:
+Tarama tamamlandığında (genellikle yaklaşık 2 dakika sonra, ancak en fazla 15 dakika), bulgular aşağıdaki gibi güvenlik merkezi önerileri olarak kullanılabilir:
 
 [![Azure Container Registry (ACR) barındırılan görüntüde bulunan güvenlik açıkları hakkında örnek Azure Güvenlik Merkezi önerisi](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
@@ -58,11 +63,6 @@ Güvenlik Merkezi, aboneliğinizdeki ARM tabanlı ACR kayıt defterlerini tanım
 
 
 ## <a name="acr-with-security-center-faq"></a>Güvenlik Merkezi ile ACR hakkında SSS
-
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure Güvenlik Merkezi tarayabilmesi gereken görüntü türleri nelerdir?
-Güvenlik Merkezi, kabuk erişimi sağlayan Linux işletim sistemi tabanlı görüntüleri tarar. 
-
-Qualys tarayıcısı, [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca uygulamanızı ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk ya da işletim sistemi olmadan Içeren "distrouz" görüntüleri desteklemez.
 
 ### <a name="how-does-azure-security-center-scan-an-image"></a>Azure Güvenlik Merkezi bir görüntüyü nasıl tarar?
 Görüntü kayıt defterinden çekilir. Daha sonra, bilinen güvenlik açıklarının listesini ayıklayan Qualys tarayıcısı ile yalıtılmış bir korumalı alanda çalıştırılır.

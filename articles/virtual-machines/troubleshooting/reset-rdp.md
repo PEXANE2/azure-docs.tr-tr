@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c1d8e6d6b5b1d55fee964b509c1bc08537cf6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088589"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM 'de Uzak Masaüstü Hizmetleri veya yönetici parolasını sıfırlama
 Bir Windows sanal makinesine (VM) bağlanamıyorsanız, yerel yönetici parolanızı sıfırlayabilir veya Uzak Masaüstü Hizmetleri yapılandırmayı sıfırlayabilirsiniz (Windows etki alanı denetleyicilerinde desteklenmez). Parolayı sıfırlamak için Azure portalı veya Azure PowerShell'deki VM Erişimi uzantısını kullanın. VM'de oturum açtıktan sonra yerel yönetici parolasını sıfırlayın.  
-PowerShell kullanıyorsanız, [en son PowerShell modülünün yüklü ve yapılandırılmış](/powershell/azure/overview) olduğundan ve Azure aboneliğinizde oturum açmış olduğunuzdan emin olun. Ayrıca [klasik dağıtım modeliyle oluşturulmuş olan VM'lerde bu adımları da gerçekleştirebilirsiniz](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
+PowerShell kullanıyorsanız, [en son PowerShell modülünün yüklü ve yapılandırılmış](/powershell/azure/) olduğundan ve Azure aboneliğinizde oturum açmış olduğunuzdan emin olun. Ayrıca [klasik dağıtım modeliyle oluşturulmuş olan VM'lerde bu adımları da gerçekleştirebilirsiniz](/azure/virtual-machines/windows/classic/reset-rdp).
 
 Uzak Masaüstü Hizmetleri ve kimlik bilgileri sıfırlamasını gerçekleştirmek için aşağıdaki yöntemleri kullanabilirsiniz:
 
@@ -55,11 +55,11 @@ Bu işlem, sanal makinede Uzak Masaüstü hizmeti 'ni etkinleştirir ve varsayı
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>VMAccess uzantısını ve PowerShell 'i kullanarak sıfırlama
 
-İlk olarak, [en son PowerShell modülünün yüklü ve yapılandırılmış](/powershell/azure/overview) olduğundan ve [Connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini kullanarak Azure aboneliğinizde oturum açmış olduğunuzdan emin olun.
+İlk olarak, [en son PowerShell modülünün yüklü ve yapılandırılmış](/powershell/azure/) olduğundan ve [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini kullanarak Azure aboneliğinizde oturum açmış olduğunuzdan emin olun.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Yerel yönetici hesabı parolasını sıfırlayın**
 
-- Yönetici parolasını veya Kullanıcı adını [set-Azvmaccessextenma](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 'i ile sıfırlayın. `typeHandlerVersion`1 sürümü kullanım dışı olduğundan, ayar 2,0 veya daha büyük olmalıdır. 
+- Yönetici parolasını veya Kullanıcı adını [set-Azvmaccessextenma](/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 'i ile sıfırlayın. `typeHandlerVersion`1 sürümü kullanım dışı olduğundan, ayar 2,0 veya daha büyük olmalıdır. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -77,7 +77,7 @@ Bu işlem, sanal makinede Uzak Masaüstü hizmeti 'ni etkinleştirir ve varsayı
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**Uzak Masaüstü Hizmetleri yapılandırmasını sıfırlama**
 
-1. [Set-Azvmaccessextenma](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 'ı ile sanal makinenize uzaktan erişimi sıfırlayın. Aşağıdaki örnek, `myVMAccess` kaynak grubunda ADLı VM 'de adlı erişim uzantısını sıfırlar `myVM` `myResourceGroup` :
+1. [Set-Azvmaccessextenma](/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 'ı ile sanal makinenize uzaktan erişimi sıfırlayın. Aşağıdaki örnek, `myVMAccess` kaynak grubunda ADLı VM 'de adlı erişim uzantısını sıfırlar `myVM` `myResourceGroup` :
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
@@ -94,7 +94,6 @@ Bu işlem, sanal makinede Uzak Masaüstü hizmeti 'ni etkinleştirir ve varsayı
 
 - [Azure VM uzantıları ve özellikleri hakkında bilgi edinin](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-- [RDP veya SSH ile bir Azure sanal makinesine bağlanın](https://msdn.microsoft.com/library/azure/dn535788.aspx).
+- [RDP veya SSH ile bir Azure sanal makinesine bağlanın](/previous-versions/azure/dn535788(v=azure.100)).
 
 - [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-

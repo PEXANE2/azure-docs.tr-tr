@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Apache Storm Azure Event Hubs kullanarak olay alma
 description: 'Hızlı başlangıç: Bu makalede, Azure Event Hubs Apache Storm kullanarak nasıl olay alınacağı hakkında bilgi sağlanır.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315367"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087586"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Hızlı başlangıç: Event Hubs Apache Storm kullanarak olay alma
 
@@ -16,7 +16,7 @@ ms.locfileid: "85315367"
 
 Event Hubs alma desenleri hakkında daha fazla bilgi için bkz. [Event Hubs genel bakış][Event Hubs overview].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Hızlı başlangıç ile başlamadan önce **bir Event Hubs ad alanı ve bir olay hub 'ı oluşturun**. Event Hubs türünde bir ad alanı oluşturmak ve uygulamanızın Olay Hub 'ı ile iletişim kurması için gereken yönetim kimlik bilgilerini almak için [Azure Portal](https://portal.azure.com) kullanın. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. 
 
 ## <a name="create-project-and-add-code"></a>Proje oluşturma ve kod ekleme
@@ -234,11 +234,11 @@ Bu öğretici, zaten kullanılabilir Event Hubs Spout ile birlikte gelen bir [HD
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Event Hubs genel bakış][Event Hubs overview]
-* [Olay hub’ı oluşturma](event-hubs-create.md)
+* [Olay Hub 'ı oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 
 <!-- Links -->
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
 [Olay Hub 'ı ile HDInsight fırtınası örneği]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 

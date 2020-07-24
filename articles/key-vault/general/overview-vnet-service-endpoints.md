@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090493"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmeti uç noktaları
 
@@ -39,7 +39,7 @@ Hizmet uç noktalarını nasıl kullanabileceğinizi gösteren bazı örnekler �
 
 Güvenlik duvarlarını ve sanal ağları yapılandırmak için gereken adımlar aşağıda verilmiştir. Bu adımlar, PowerShell, Azure CLı veya Azure portal kullanıp kullanmayacağınızı uygular.
 
-1. Ayrıntılı erişim günlüklerini görmek için [Key Vault günlüğe kaydetmeyi](logging.md)etkinleştirin. Bu, güvenlik duvarları ve sanal ağ kuralları bir anahtar kasasının erişimini engelliyorsa tanılamada yardımcı olur. (Bu adım isteğe bağlıdır, ancak önemle önerilir.)
+1. Ayrıntılı erişim günlüklerini görmek için [Key Vault günlüğe kaydetmeyi](logging.md) etkinleştirin. Bu, güvenlik duvarları ve sanal ağ kuralları bir anahtar kasasının erişimini engelliyorsa tanılamada yardımcı olur. (Bu adım isteğe bağlıdır, ancak önemle önerilir.)
 2. Hedef sanal ağlar ve alt ağlar için **Anahtar Kasası için hizmet uç noktalarını** etkinleştirin.
 3. Belirli sanal ağlardan, alt ağlardan ve IPv4 adres aralıklarından ilgili anahtar kasasına erişimi kısıtlamak için bir Anahtar Kasası için güvenlik duvarlarını ve sanal ağ kurallarını ayarlayın.
 4. Bu anahtar kasasının herhangi bir güvenilir Microsoft hizmeti tarafından erişilebilir olması gerekiyorsa, **Güvenilen Azure hizmetlerinin** Key Vault bağlanmasına izin ver seçeneğini etkinleştirin.
@@ -80,7 +80,7 @@ Daha fazla bilgi için bkz. [Azure Key Vault güvenlik duvarlarını ve sanal a�
 |Azure Event Hubs|[Müşteri tarafından yönetilen anahtarlar senaryosu için anahtar kasasına erişime izin ver](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure Service Bus|[Müşteri tarafından yönetilen anahtarlar senaryosu için anahtar kasasına erişime izin ver](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure İçeri/Dışarı Aktarma| [Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure Container Registry|[Müşteri tarafından yönetilen anahtarları kullanarak kayıt defteri şifreleme](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Container Registry|[Müşteri tarafından yönetilen anahtarları kullanarak kayıt defteri şifreleme](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Yapıtları başka bir kayıt defterine aktar](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > İlgili hizmetlerin Key Vault erişimi almasını sağlamak için ilgili Key Vault erişim ilkelerini ayarlamanız gerekir.

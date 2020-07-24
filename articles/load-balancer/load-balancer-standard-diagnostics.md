@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090459"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
@@ -45,6 +46,9 @@ Azure Load Balancer, Azure portal Azure ölçümleri aracılığıyla çok boyut
 | Bayt sayaçları |  Genel ve iç yük dengeleyici | Standart Load Balancer, her uç noktasının işlediği veri miktarını bildirir. Baytların arka uç örneklerinde eşit olarak dağıtılmadığını görebilirsiniz. Azure 'un Load Balancer algoritması akışlara dayalı olduğu için bu beklenmektedir | Ortalama |
 | Paket sayaçları |  Genel ve iç yük dengeleyici | Standart Load Balancer, her ön ucun işlediği paket sayısını bildirir.| Ortalama |
 
+  >[!NOTE]
+  >Bir NVA veya güvenlik duvarı SYN paketi, bayt sayacı ve paket sayacı ölçümleri aracılığıyla iç yük dengeleyiciden trafik dağıtılması kullanılırken, sıfır olarak görünür. 
+  
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Yük dengeleyici ölçülerinizi Azure portal görüntüleyin
 
 Azure portal, yük dengeleyici ölçümlerini, belirli bir kaynak için hem yük dengeleyici kaynak sayfasında hem de Azure Izleyici sayfasında bulunan ölçümler sayfası aracılığıyla kullanıma sunar. 

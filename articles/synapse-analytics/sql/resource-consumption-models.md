@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE Analytics SQL kaynak tüketimi
+title: SYNAPSE SQL kaynak tüketimi
 description: Azure SYNAPSE Analytics 'te SYNAPSE SQL tüketim modelleri hakkında bilgi edinin.
 services: synapse analytics
 author: vvasic-msft
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 364f1676740106d57e61f94beaec53682656ef40
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089218"
 ---
-# <a name="azure-synapse-analytics-sql-resource-consumption"></a>Azure SYNAPSE Analytics SQL kaynak tüketimi
+# <a name="synapse-sql-resource-consumption"></a>SYNAPSE SQL kaynak tüketimi
 
 Bu makalede, SYNAPSE SQL (Önizleme) kaynak tüketim modelleri açıklanmaktadır.
 
@@ -107,7 +107,7 @@ Geçerli DWU ayarını görüntülemek için:
 
 1. Visual Studio 'da SQL Server Nesne Gezgini açın.
 2. Mantıksal SQL Server ile ilişkili ana veritabanına bağlanın.
-3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Örnek aşağıda verilmiştir:
+3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Aşağıda bir örnek verilmiştir:
 
 ```sql
 SELECT  db.name [Database]
@@ -120,7 +120,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="change-data-warehouse-units"></a>Veri ambarı birimlerini değiştirme
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 DWUs 'yi değiştirmek için:
 

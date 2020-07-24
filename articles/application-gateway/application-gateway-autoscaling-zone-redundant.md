@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a82a35f1736aa7908928cbca3397cbe9c705e5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088115"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -148,10 +148,10 @@ Ancak, yeni bir örnek oluşturmak biraz zaman alabilir (altı veya yedi dakika 
 
 Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırılır.
 
-|                                                   | V1 SKU 'SU   | v2 SKU 'SU   |
+| Özellik                                           | V1 SKU 'SU   | v2 SKU 'SU   |
 | ------------------------------------------------- | -------- | -------- |
 | Otomatik ölçeklendirme                                       |          | &#x2713; |
-| Bölge artıklığı                                   |          | &#x2713; |
+| Bölge yedekliliği                                   |          | &#x2713; |
 | Statik VIP                                        |          | &#x2713; |
 | Azure Kubernetes hizmeti (AKS) giriş denetleyicisi |          | &#x2713; |
 | Azure Anahtar Kasası tümleştirme                       |          | &#x2713; |
@@ -178,15 +178,15 @@ Bu bölümde v1 SKU 'sundan farklı v2 SKU 'sunun özellikleri ve sınırlamalar
 
 |Fark|Ayrıntılar|
 |--|--|
-|Kimlik doğrulama sertifikası|Desteklenmiyor.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca TLS 'ye genel bakış](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
-|Aynı alt ağda Standard_v2 ve standart Application Gateway karıştırma|Desteklenmiyor|
+|Kimlik doğrulama sertifikası|Desteklenmez.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca TLS 'ye genel bakış](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
+|Aynı alt ağda Standard_v2 ve standart Application Gateway karıştırma|Desteklenmez|
 |Application Gateway alt ağında Kullanıcı tanımlı yol (UDR)|Desteklenir (belirli senaryolar). Önizleme aşamasında.<br> Desteklenen senaryolar hakkında daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).|
 |Gelen bağlantı noktası aralığı için NSG| Standard_v2 SKU için-65200-65535<br>Standart SKU için-65503-65534 arası.<br>Daha fazla bilgi için bkz. [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
-|Azure tanılama 'da performans günlükleri|Desteklenmiyor.<br>Azure ölçümleri kullanılmalıdır.|
+|Azure tanılama 'da performans günlükleri|Desteklenmez.<br>Azure ölçümleri kullanılmalıdır.|
 |Faturalandırma|Faturalama 1 Temmuz 2019 tarihinde başlayacak şekilde zamanlandı.|
 |FIPS modu|Bunlar şu anda desteklenmiyor.|
 |Yalnızca ıLB modu|Bu şu anda desteklenmiyor. Ortak ve ıLB modu birlikte desteklenir.|
-|NET izleyici tümleştirmesi|Desteklenmiyor.|
+|NET izleyici tümleştirmesi|Desteklenmez.|
 |Azure Güvenlik Merkezi tümleştirmesi|Henüz kullanılamıyor.
 
 ## <a name="migrate-from-v1-to-v2"></a>v1'den v2'ye geçiş

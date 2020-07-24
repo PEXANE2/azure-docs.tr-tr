@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: ed4f2d769dbda3dec7b353fddfd1e5e0f3d00f9b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c8af1c32607e5fc7bf548b40069e18923c666303
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532175"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089660"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>Infoblox NIOS 'larınızı Azure Sentinel 'e bağlama
+
+> [!IMPORTANT]
+> Azure Sentinel 'deki Infoblox NIOS veri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, [Infoblox ağ kimliği Işletim sistemi (NIOS)](https://www.infoblox.com/glossary/network-identity-operating-system-nios/) gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Infoblox NIOS veri Bağlayıcısı, Azure Sentinel ile Naoblox günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. Infoblox NIOS ve Azure Sentinel arasındaki tümleştirme Syslog kullanımını sağlar.
 

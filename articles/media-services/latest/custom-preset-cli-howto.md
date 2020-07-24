@@ -12,18 +12,18 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b718a0a67381e2b1eb19d2397ecf86e4a9c196d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382962"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090136"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Özel bir dönüşümle kodlama-Azure CLı
 
 Azure Media Services ile kodlarken, [akış dosyaları](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) hızlı başlangıç bölümünde gösterildiği gibi, sektörde en iyi uygulamaları temel alan önerilen yerleşik ön ayarlardan biriyle hızlı bir başlangıç yapabilirsiniz. Ayrıca, belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir ön ayar oluşturabilirsiniz.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Özel ön ayarlar oluşturulurken aşağıdaki noktalar geçerlidir:
 
@@ -32,7 +32,7 @@ Azure Media Services ile kodlarken, [akış dosyaları](stream-files-cli-quickst
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Media Services hesabı oluşturun](create-account-cli-how-to.md).
+[Media Services hesabı oluşturun](./create-account-howto.md).
 
 Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun.
 

@@ -3,8 +3,8 @@ title: "Öğretici: RDS MySQL 'i MySQL için Azure veritabanı 'na geçirme"
 titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti 'ni kullanarak RDS MySQL 'ten MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirmeyi öğrenin.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/09/2020
-ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0c62cf28c9e9368e80982fa7c5badeb79d40ae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087739"
 ---
-# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Öğretici: DMS kullanarak RDS MySQL 'i MySQL için Azure veritabanı 'na geçirme
+# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Öğretici: DMS hizmetini kullanarak RDS MySQL'i MySQL için Azure Veritabanı'na çevrimiçi geçirme
 
 Azure veritabanı geçiş hizmeti 'ni, kaynak veritabanı geçiş sırasında çevrimiçi kaldığı sürece bir RDS MySQL örneğinden [MySQL Için Azure veritabanı](https://docs.microsoft.com/azure/mysql/) 'na geçirmek için kullanabilirsiniz. Diğer bir deyişle, geçişe uygulamanın en az kapalı kalma süresi ile ulaşılabilecek. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak **çalışanlar** örnek VERITABANıNı bir RDS MySQL örneğinden MySQL Için Azure veritabanı 'na geçireceğiniz.
 
@@ -41,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu makalede, bir RDS MySQL örneğinden MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirme işlemi açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -122,6 +123,10 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 4. Yabancı anahtarı bırakmak için sorgu sonucunda bırakma yabancı anahtarını (ikinci sütun) çalıştırın.
 
+> [!NOTE]
+> Azure DMS, üst tabloda bir satır silindiğinde veya güncelleştirilirse alt tablodaki eşleşen bir satırı otomatik olarak silmeye veya güncelleştirmeye yardımcı olan CASCADE başvuru eylemini desteklemez. Daha fazla bilgi için MySQL belgelerinde [yabancı anahtar kısıtlamaları](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)makalesinin başvurusal Eylemler bölümüne bakın.
+> Azure DMS, ilk veri yükü sırasında hedef veritabanı sunucusunda yabancı anahtar kısıtlamalarını bırakmayı gerektirir ve başvurusal eylemleri kullanamazsınız. İş yükünüz bu başvuru eylemi aracılığıyla ilişkili bir alt tablonun güncelleştirilmesine bağımlıysa bunun yerine bir [döküm ve geri yükleme](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) gerçekleştirmenizi öneririz. 
+
 5. Verilerde Tetikleyiciler (ekleme veya güncelleştirme tetikleyicisi) varsa, verileri kaynaktan çoğaltmadan önce hedefte veri bütünlüğünü zorunlu kılar. Bu öneri, geçiş sırasında *Hedefteki* tüm tablolardaki Tetikleyicileri devre dışı bırakmak ve geçiş tamamlandıktan sonra Tetikleyicileri etkinleştirir.
 
     Hedef veritabanında Tetikleyicileri devre dışı bırakmak için:
@@ -147,7 +152,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
     ![Kaynak sağlayıcısını kaydetme](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-register-resource-provider.png)
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti örneği oluşturma
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti'nin örneğini oluşturma
 
 1. Azure portal + **kaynak oluştur**' u seçin, Azure veritabanı geçiş hizmeti ' ni arayın ve ardından açılan listeden **Azure veritabanı geçiş hizmeti** ' ni seçin.
 

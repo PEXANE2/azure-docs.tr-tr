@@ -5,17 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47b1a3a44c494560dde9ffdab004ea576f434ffe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091309"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için Multi-Factor Authentication'ı etkinleştirme
+
+>[!IMPORTANT]
+> Bu sayfayı Fall 2019 belgelerinden ziyaret ediyorsanız, işiniz bittiğinde, [fall 2019 belgelerine döndiğinizden](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) emin olun.
 
 Windows sanal masaüstü için Windows istemcisi, Windows sanal masaüstünü yerel makineli tümleştirmeyle ilgili mükemmel bir seçenektir. Ancak, Windows sanal masaüstü hesabınızı Windows Istemcisi olarak yapılandırdığınızda, kendinizi ve kullanıcılarınızın güvenliğini sağlamak için uygulamanız gereken bazı ölçüler vardır.
 
@@ -23,7 +26,7 @@ Windows sanal masaüstü için Windows istemcisi, Windows sanal masaüstünü ye
 
 Kimlik bilgilerini hatırlarken, kurumsal senaryolarda veya kişisel cihazlarda dağıtımları daha az güvenli hale da olabilir. Kullanıcılarınızı korumak için, istemcinin Azure Multi-Factor Authentication (MFA) kimlik bilgilerini sormayı sürdürdüğünden emin olmanız gerekir. Bu makalede, Windows sanal masaüstü için koşullu erişim ilkesinin bu ayarı etkinleştirmek üzere nasıl yapılandırılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için yapmanız gerekenler şunlardır:
 
@@ -36,28 +39,39 @@ Başlamak için yapmanız gerekenler şunlardır:
 
 ## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-Bu bölümde, Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması gerektiren bir koşullu erişim ilkesinin nasıl oluşturulacağı gösterilir.
+Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması gerektiren bir koşullu erişim ilkesi oluşturmak için şu adımları uygulayın:
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 2. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 3. **Yeni ilke**' yi seçin.
 4. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 5. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
-   - **Ekle**' nin altında, **Kullanıcılar ve gruplar**  >  **Kullanıcılar ve gruplar** ' ı seçin > Önkoşullar aşamasında oluşturulan grubu seçin.
-   - **Done** (Bitti) öğesini seçin.
-6. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **Uygulama Seç**' i seçin.
-   - **Windows sanal masaüstü** (uygulama kimliği 9cdead84-a844-4324-93f2-b2e6bb768d07) öğesini seçin, sonra ve sonra **Tamam**' ı **seçin**.
+6. **Ekle**' nin altında, **Kullanıcılar ve gruplar**  >  **Kullanıcılar ve gruplar** ' ı seçin > [Önkoşullar](#prerequisites) aşamasında oluşturduğunuz grubu seçin.
+7. **Bitti**'yi seçin.
+8. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **Uygulama Seç**' i seçin.
+9. Kullanmakta olduğunuz Windows sanal masaüstü sürümüne göre aşağıdaki uygulama gruplarından birini seçin.
+   - Fall 2019 sürümünü kullanıyorsanız şu iki uygulamayı seçin:
+       - **Windows sanal masaüstü** (uygulama kimliği 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Windows sanal masaüstü istemcisi** (uygulama kimliği fa4345a4-A730-4230-84a8-7d9651b86739)
+   - Spring 2020 sürümünü kullanıyorsanız, bunun yerine şu iki uygulamayı seçin:
+       -  **Windows sanal masaüstü** (uygulama kimliği 9cdead84-a844-4324-93f2-b2e6bb768d07)
+       -  **Windows sanal masaüstü istemcisi** (uygulama kimliği a85cf173-4192-42f8-81fa-777a763e6e2c)
 
-     > [!div class="mx-imgBorder"]
-     > ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise.png)
+   >[!IMPORTANT]
+   > Web istemcisi için Windows sanal masaüstü Istemci uygulamaları kullanılır. Ancak, Windows sanal masaüstü Azure Resource Manager sağlayıcısı (50e95039-B200-4007-bc97-8d5790743a63) adlı uygulamayı seçmeyin. Bu uygulama yalnızca kullanıcı akışını almak için kullanılır ve MFA 'ya sahip olmamalıdır.
+  
+1. Uygulamanızı seçtikten sonra **Seç**' i seçin ve **bitti**' yi seçin.
 
-     >[!NOTE]
-     >Seçmek istediğiniz uygulamanın uygulama KIMLIĞINI bulmak için **Kurumsal uygulamalar** ' a gidin ve uygulama türü açılan menüsünde **Microsoft uygulamaları** ' nı seçin.
+   > [!div class="mx-imgBorder"]
+   > ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise.png)
 
-7. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
-8. **Erişim denetimleri**  >  **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri **1** ve birimi **saat**olarak ayarlayın ve ardından **Seç**' i seçin.
-9. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-10. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
+   >[!NOTE]
+   >Seçmek istediğiniz uygulamanın uygulama KIMLIĞINI bulmak için **Kurumsal uygulamalar** ' a gidin ve uygulama türü açılan menüsünde **Microsoft uygulamaları** ' nı seçin.
+
+10. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
+11. **Erişim denetimleri**  >  **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri **1** ve birimi **saat**olarak ayarlayın ve ardından **Seç**' i seçin.
+12. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+13. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

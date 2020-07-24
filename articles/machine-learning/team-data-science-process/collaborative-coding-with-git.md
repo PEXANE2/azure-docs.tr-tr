@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090221"
 ---
 # <a name="collaborative-coding-with-git"></a>Git ile işbirliği içinde kodlama
 
@@ -28,7 +29,7 @@ Bir iş öğesini yeni bir dala bağlamak için, iş öğesinin yanındaki **Eyl
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-**Dal oluştur** iletişim kutusunda yeni dal adını ve temel Azure Repos git deposu ve dalını sağlayın. Temel Depo, iş öğesiyle aynı Azure DevOps projesinde olmalıdır. Temel dal, ana dal veya var olan başka bir dal olabilir. **Dal oluştur**' u seçin. 
+**Dal oluştur** iletişim kutusunda yeni dal adını ve temel Azure Repos git deposu ve dalını sağlayın. Temel Depo, iş öğesiyle aynı Azure DevOps projesinde olmalıdır. Temel dal, var olan herhangi bir dal olabilir. **Dal oluştur**' u seçin. 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -50,7 +51,7 @@ git checkout <working branch name>
 
 Her Kullanıcı hikayesi iş öğesi için bir git dalı oluşturmak iyi bir uygulamadır. Ardından, her görev iş öğesi için Kullanıcı hikayesi dalını temel alan bir dal oluşturabilirsiniz. Aynı proje için farklı Kullanıcı hikayeleri üzerinde çalışan birden fazla kişiye veya aynı kullanıcı hikayesine yönelik farklı görevlere sahip olduğunuzda, dalları Kullanıcı hikayesi-görev ilişkisine karşılık gelen bir hiyerarşide düzenleyin. Her bir takım üyesinin farklı bir dalda veya bir dalı paylaşırken farklı bir kodda ya da diğer yapıtlarda çalışmasını sağlayarak çakışmaları en aza indirmenize neden olabilirsiniz. 
 
-Aşağıdaki diyagramda, TDSP için önerilen dallanma stratejisi gösterilmektedir. Özellikle bir proje üzerinde yalnızca bir veya iki kişi çalışırken ya da bir kullanıcı hikayesinin tüm görevlerinde yalnızca bir kişi çalıştığı zaman, burada gösterildiği gibi birçok dala gerek duymayabilir. Ancak, geliştirme dalını ana daldan ayırmak her zaman iyi bir uygulamadır ve yayın dalının geliştirme etkinlikleri tarafından kesintiye uğratılmasını önlemeye yardımcı olabilir. Git dal modelinin tamamının açıklaması için, bkz. [başarılı git dallanma modeli](https://nvie.com/posts/a-successful-git-branching-model/).
+Aşağıdaki diyagramda, TDSP için önerilen dallanma stratejisi gösterilmektedir. Özellikle bir proje üzerinde yalnızca bir veya iki kişi çalışırken ya da bir kullanıcı hikayesinin tüm görevlerinde yalnızca bir kişi çalıştığı zaman, burada gösterildiği gibi birçok dala gerek duymayabilir. Ancak, geliştirme dalını birincil daldan ayırmak her zaman iyi bir uygulamadır ve yayın dalının geliştirme etkinlikleri tarafından kesintiye uğramasını önlemeye yardımcı olabilir. Git dal modelinin tamamının açıklaması için, bkz. [başarılı git dallanma modeli](https://nvie.com/posts/a-successful-git-branching-model/).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
@@ -97,7 +98,7 @@ Gözden geçirenler değişiklikleri onayladıktan sonra, sizin veya birleştirm
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Sol gezinmede yer alan **depoya** geri döndüğünüzde, dal silindiğinden Ana dala geçtiniz görürsünüz `script` .
+Sol gezinmede yer alan **depoya** geri döndüğünüzde, dal silindiğinden Ana dala geçtiniz olduğunu görebilirsiniz `script` .
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

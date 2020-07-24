@@ -1,20 +1,20 @@
 ---
 title: Form tanıyıcı hizmeti, bekleyen verilerin şifrelenmesi
 titleSuffix: Azure Cognitive Services
-description: Bekleyen veriler için form tanıyıcı şifrelemesi.
+description: Microsoft, Microsoft tarafından yönetilen şifreleme anahtarları sunar ve ayrıca bilişsel hizmetler aboneliklerinizi, müşteri tarafından yönetilen anahtarlar (CMK) olarak adlandırılan kendi Anahtarlarınıza göre yönetmenizi sağlar. Bu makalede, form tanıyıcı için bekleyen veri şifrelemesi ve CMK 'nin nasıl etkinleştirileceği ve yönetileceği ele alınmaktadır.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: b897de94ad8cdb628520f9386b076f762a5cc230
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf2a6a96517d1c3d63989bc511957019f078cd42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537961"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090884"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Bekleyen verilerin form tanıyıcı şifrelemesini şifreleme
 
@@ -31,5 +31,3 @@ Azure form tanıyıcı, verileri buluta kalıcı hale geldiğinde otomatik olara
 
 * [Form tanıyıcı müşteri tarafından yönetilen anahtar Istek Formu](https://aka.ms/cogsvc-cmk)
 * [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-
-

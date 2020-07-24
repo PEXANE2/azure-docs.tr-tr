@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090867"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: çeviri
 
@@ -43,7 +43,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
     <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır <code>3.0</code> .</td>
   </tr>
   <tr>
-    <td>-</td>
+    <td>şöyle değiştirin:</td>
     <td><em>Gerekli parametre</em>.<br/>Çıkış metninin dilini belirtir. Hedef dil, kapsamda bulunan <a href="./v3-0-languages.md">desteklenen dillerden</a> biri olmalıdır <code>translation</code> . Örneğin, <code>to=de</code> Almanca 'ya çevirmek için kullanın.<br/>Sorgu dizesindeki parametresini tekrarlayarak birden fazla dile aynı anda çeviri yapılabilir. Örneğin, <code>to=de&to=it</code> Almanca ve İtalyanca 'e çevirmek için kullanın.</td>
   </tr>
 </table>
@@ -59,7 +59,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code> .</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -317,6 +317,7 @@ Birden çok dizeyi aynı anda çevirmek, istek gövdesinde dize dizisi belirtmen
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
+Yanıt, her metin parçasının, istekle aynı sırada tam olarak çevirisini içerir.
 Yanıt gövdesi:
 
 ```
@@ -390,7 +391,7 @@ Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almay
   </tr>
 </table> 
 
-Örnek:
+Örneğin:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

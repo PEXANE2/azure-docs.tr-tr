@@ -3,12 +3,12 @@ title: Karma Kubernetes kümenizi izlemeyi durdurma | Microsoft Docs
 description: Bu makalede, kapsayıcı için Azure Izleyici ile karma Kubernetes kümenizi izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 86a774737d5269d77c4053ad61ab870b13288aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885864"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091207"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Karma kümenizi izlemeyi durdurma
 
@@ -58,7 +58,7 @@ Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Held, 
 
 ## <a name="how-to-stop-monitoring-on-arc-enabled-kubernetes"></a>Yay etkin Kubernetes üzerinde izlemeyi durdurma
 
-### <a name="using-powershell"></a>PowerShell’i kullanma
+### <a name="using-powershell"></a>PowerShell'i kullanma
 
 1. Aşağıdaki komutları kullanarak betiği, izleme eklentisi ile kümenizi yapılandıran yerel bir klasöre yükleyin ve kaydedin:
 
@@ -120,4 +120,4 @@ Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Held, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Log Analytics çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../../log-analytics/log-analytics-manage-del-workspace.md).
+Log Analytics çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../platform/delete-workspace.md).

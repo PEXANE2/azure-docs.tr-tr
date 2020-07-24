@@ -15,11 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cbec961f6249ebd59324dca1745bfd9e77f5388
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088181"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağ bant genişliği
 
@@ -55,8 +56,8 @@ Uç noktalar arasındaki veri aktarımı, veri aktarımını gerçekleştirenler
 
 Azure ağ yığını, 8 ' den fazla CPU çekirdeği ve 100 ' den fazla CPU çekirdeği olan VM 'Ler için iyi performansa sahip olan 250K toplam ağ akışını destekler. Bu sınırı aşan ağ performansı, ek akışlar bırakıldıktan sonra 500 k gelen ve 250K giden bir sabit sınıra kadar ek akışlar için düzgün şekilde düşer.
 
-||<8 CPU çekirdeği olan VM 'Ler|8 + CPU çekirdekleri olan VM 'Ler|
-|---|---|---|
+| Performans düzeyi | <8 CPU çekirdeği olan VM 'Ler | 8 + CPU çekirdekleri olan VM 'Ler |
+| ----------------- | --------------------- | --------------------- |
 |<b>İyi performans</b>|100K akış |250K akış|
 |<b>Azaltılmış performans</b>|100.000 akış üzerine|250K akışlar üzerinde|
 |<b>Akış sınırı</b>|500 k akış|500 k akış|

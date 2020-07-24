@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81313677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087943"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow eşitleme sorunlarını el ile çözme
 
@@ -38,7 +38,7 @@ Bağlantıyı yeniden etkinleştirmek ve belirteci yenilemek için aşağıdaki 
     1. Yapılandırmak için bağlayıcı adına tıklayın
     1. Artık kullanımda olmayan bağlayıcıları Sil
 
-    1. İş ortağı türüne göre [bu tanımlara](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections) göre alanları güncelleştirin
+    1. İş ortağı türüne göre [bu tanımlara](./itsmc-connections.md) göre alanları güncelleştirin
 
     1. Eşitle 'ye tıklayın
 

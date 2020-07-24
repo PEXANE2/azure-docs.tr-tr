@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090969"
 ---
 # <a name="create-application-with-simple-commands"></a>Basit komutlarla uygulama oluşturma
 
@@ -44,11 +44,11 @@ Az önce oluşturduğunuz boş **Akıllı Oda-Lite** özel komutları uygulamas�
 
 1. Sol bölmenin en üstünde bulunan **Yeni komut** ' i seçerek yeni bir komut oluşturun. **Yeni komut** penceresi açılır.
 1. **Ad** alanı için **turnOn**olarak değer sağlayın.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Orta bölmede komutunun farklı özellikleri listelenir. Komutun aşağıdaki özelliklerini yapılandırırsınız. Bir komutun tüm yapılandırma özelliklerinin açıklaması için, [Başvurular](./custom-commands-references.md)' a gidin.
 
-| Yapılandırma            | Description                                                                                                                 |
+| Yapılandırma            | Açıklama                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Örnek cümleler** | Kullanıcının bu komutu tetikleyebilmesi için söyledikleri örnek                                                                 |
 | **Parametreler**       | Komutu tamamlaması için gereken bilgiler                                                                                |
@@ -81,9 +81,9 @@ Sonra, komutun bir tamamlama kuralına sahip olması gerekir. Bu kural kullanıc
 1. Varsayılan **tamamlama kuralını seçin** ve bunu aşağıdaki gibi düzenleyin:
 
     
-    | Ayar    | Önerilen değer                          | Description                                        |
+    | Ayar    | Önerilen değer                          | Açıklama                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
-    | **Adı**       | ConfirmationResponse                  | Kuralın amacını açıklayan bir ad          |
+    | **Ad**       | ConfirmationResponse                  | Kuralın amacını açıklayan bir ad          |
     | **Koşullar** | Yok                                     | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
     | **Eylemler**    | Ilk varyasyon > basit düzenleyici > konuşma yanıtı gönderin >`Ok, turning the tv on` | Kural koşulu true olduğunda gerçekleştirilecek eylem |
     
@@ -96,8 +96,7 @@ Sonra, komutun bir tamamlama kuralına sahip olması gerekir. Bu kural kullanıc
 1. Eylemi kaydetmek için **Kaydet** ' i seçin.
 1. **Tamamlama kuralları** bölümüne geri döndüğünüzde tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin. 
 
-
- > [!NOTE]
+    > [!NOTE]
     > Komutuyla birlikte gelen varsayılan tamamlama kuralını kullanmak gerekli değildir. Gerekirse, var olan varsayılan tamamlama kuralını silebilir ve kendi kuralınızı ekleyebilirsiniz.
 
 ### <a name="try-it-out"></a>Deneyin
@@ -145,7 +144,7 @@ Komutta yapılan tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 ## <a name="try-it-out"></a>Deneyin
 
 Test sohbeti panelini kullanarak davranışı test etme
-1. **Eğitim**' i seçin. Eğitim başarılı olduktan sonra **Test** ' i seçin ve deneyin:
+1. **Eğit**'i seçin. Eğitim başarılı olduktan sonra **Test** ' i seçin ve deneyin:
     - Şunu yazın: sıcaklığını 40 derece olarak ayarlayın
     - Beklenen yanıt: Tamam, sıcaklık 40 derece olarak ayarlanıyor
     - Şunu yazın: TV 'yi açın

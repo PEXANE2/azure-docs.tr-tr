@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089677"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
@@ -216,7 +216,7 @@ Belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izinler atamak 
 * Sınırlı kapsama sahip takımlar için **segment yönetimi grubu** (genellikle mevzuata veya diğer kuruluş sınırları nedeniyle)
 
 **En iyi yöntem**: doğrudan işletimsel sorumluluklarına sahip güvenlik ekiplerine uygun izinleri verin.
-**Ayrıntı**: uygun rol ATAMASı için RBAC yerleşik rollerini gözden geçirin. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, [Azure kaynakları için özel roller](/azure/role-based-access-control/custom-roles)oluşturabilirsiniz. Yerleşik rollerde olduğu gibi, abonelik, kaynak grubu ve kaynak kapsamları 'nda kullanıcılara, gruplara ve hizmet sorumlularına özel roller atayabilirsiniz.
+**Ayrıntı**: uygun rol ATAMASı için RBAC yerleşik rollerini gözden geçirin. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, [Azure özel rolleri](/azure/role-based-access-control/custom-roles)oluşturabilirsiniz. Yerleşik rollerde olduğu gibi, abonelik, kaynak grubu ve kaynak kapsamları 'nda kullanıcılara, gruplara ve hizmet sorumlularına özel roller atayabilirsiniz.
 
 **En iyi uygulamalar**: Azure Güvenlik Merkezi 'ne ihtiyacı olan güvenlik rollerine erişim izni verin. Güvenlik Merkezi, güvenlik ekiplerinin riskleri hızla belirlemesine ve düzeltmesine olanak tanır.
 **Ayrıntı**: bu gereksinimlere sahip güvenlik EKIPLERINI RBAC [Güvenlik Yöneticisi](/azure/role-based-access-control/built-in-roles#security-admin) rolüne ekleyerek güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, güvenlik ilkelerini düzenleyebilir, uyarıları ve önerileri görüntüleyebilir, uyarıları ve önerileri kapatabilir. Bu bunu, sorumlulukların kapsamına bağlı olarak kök yönetim grubunu veya segment yönetimi grubunu kullanarak yapabilirsiniz.

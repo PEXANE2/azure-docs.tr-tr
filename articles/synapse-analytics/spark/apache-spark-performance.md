@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics 'te performans için Spark işlerini iyileştirme
+title: Spark işlerini performans için iyileştirin
 description: Bu makalede, Azure SYNAPSE Analytics ve farklı kavramlarda Apache Spark bir giriş sunulmaktadır.
 services: synapse-analytics
 author: euangMS
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: a4d95e57e3b72f8338da5c88f4ddfd57f66014cb
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194867"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089269"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark işleri (Önizleme) iyileştirme
 
-Belirli bir iş yükünüz için [Apache Spark](https://spark.apache.org/) kümesi yapılandırmasını iyileştirmenizi öğrenin.  En yaygın zorluk, yanlış yapılandırma (özellikle yanlış boyutlu yürüticileri), uzun süreli işlemler ve Kartezyen işlemlere neden olan görevler nedeniyle bellek baskısı olur. Uygun önbelleğe alma ile işleri hızlandırabilir ve [veri eğmaya](#optimize-joins-and-shuffles)izin verebilirsiniz. En iyi performansı elde etmek için, uzun süreli ve kaynak kullanan Spark iş yürütmelerini izleyin ve gözden geçirin.
+Belirli bir iş yükünüz için [Apache Spark](https://spark.apache.org/) kümesi yapılandırmasını iyileştirmenizi öğrenin.  En yaygın zorluk hatalı yapılandırmalardan (özellikle yanlış boyutlandırılmış yürütücüler), uzun süre çalışan işlemlerden ve Kartezyen işlemlerle sonuçlanan görevlerden kaynaklanan bellek baskısıdır. Uygun önbelleğe alma ile işleri hızlandırabilir ve [veri eğmaya](#optimize-joins-and-shuffles)izin verebilirsiniz. En iyi performansı elde etmek için, uzun süreli ve kaynak kullanan Spark iş yürütmelerini izleyin ve gözden geçirin.
 
 Aşağıdaki bölümlerde ortak Spark iş iyileştirmeleri ve önerileri açıklanır.
 
@@ -26,7 +26,7 @@ Aşağıdaki bölümlerde ortak Spark iş iyileştirmeleri ve önerileri açıkl
 
 Önceki Spark sürümleri, verileri, Spark 1,3 ve 1,6 ' nin sırasıyla veri çerçeveleri ve veri kümelerini kullanıma sunmuştur. Aşağıdaki göreli birleşmenizi göz önünde bulundurun:
 
-* **Veri çerçeveleri**
+* **Veri Çerçeveleri**
   * Çoğu durumda en iyi seçim.
   * Catalyst aracılığıyla sorgu iyileştirmesi sağlar.
   * Tam aşamalı kod oluşturma.
@@ -41,14 +41,14 @@ Aşağıdaki bölümlerde ortak Spark iş iyileştirmeleri ve önerileri açıkl
   * Serileştirme/seri kaldırma ek yükü ekler.
   * Yüksek GC ek yükü.
   * Tüm kod üretimini keser.
-* **RDD**
+* **RDD'ler**
   * Yeni bir özel RDD oluşturmanız gerekmedikçe, RDDs kullanmanız gerekmez.
   * Catalyst aracılığıyla sorgu iyileştirmesi yok.
   * Tamamen aşamalı kod üretimi yok.
   * Yüksek GC ek yükü.
   * Spark 1. x eski API 'Leri kullanılmalıdır.
 
-## <a name="use-optimal-data-format"></a>En iyi veri biçimini kullan
+## <a name="use-optimal-data-format"></a>En iyi veri biçimini kullanma
 
 Spark, CSV, JSON, XML, Parquet, Orc ve avro gibi birçok biçimi destekler. Spark, dış veri kaynaklarıyla çok sayıda daha fazla biçim desteklemek için genişletilebilir. daha fazla bilgi için bkz. [Apache Spark paketleri](https://spark-packages.org).
 
@@ -58,7 +58,7 @@ Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snap
 
 Spark,, ve gibi farklı yöntemler aracılığıyla kullanılabilecek kendi yerel önbelleğe alma mekanizmalarını sağlar `.persist()` `.cache()` `CACHE TABLE` . Bu yerel önbelleğe alma, küçük veri kümeleri ve ara sonuçları önbelleğe almanız gereken ETL işlem hatları ile etkilidir. Ancak, bir önbelleğe alınmış tablo bölümleme verilerini tutduğundan Spark Native Caching Şu anda bölümlendirme ile iyi çalışmaz.
 
-## <a name="use-memory-efficiently"></a>Belleği verimli bir şekilde kullanma
+## <a name="use-memory-efficiently"></a>Belleği verimli kullanma
 
 Spark, verileri belleğe yerleştirerek çalışır, bu nedenle bellek kaynaklarını yönetmek Spark işlerinin yürütülmesini iyileştirmeye yönelik önemli bir yönüdür.  Kümenizin belleğini verimli bir şekilde kullanmak için uygulayabileceğiniz çeşitli teknikler vardır.
 
@@ -89,7 +89,7 @@ Spark işleri dağıtılır, bu nedenle en iyi performans için uygun veri seril
 * Java serileştirme varsayılandır.
 * Kronyo Serialization daha yeni bir biçimdir ve Java 'dan daha hızlı ve daha küçük seri hale getirme ile sonuçlanabilir.  Kronyo, sınıfları programınıza kaydetmenizi gerektirir ve henüz tüm serileştirilebilir türleri desteklemez.
 
-## <a name="use-bucketing"></a>Demetlenmesidir kullanma
+## <a name="use-bucketing"></a>Gruplandırmayı kullanma
 
 Demetlenmesidir, veri bölümlendirme ile benzerdir, ancak her demet yalnızca bir tane yerine bir sütun değerleri kümesi tutabilir. Demetlenmesidir, ürün tanımlayıcıları gibi büyük (milyonlarca veya daha fazla) değer üzerinde bölümlendirme için iyi sonuç verir. Bir demet, satırın demet anahtarı karma tarafından belirlenir. Bulaştırılmış tablolar, verilerin nasıl kullanıldığı ve sıralandığı hakkında meta verileri depoladıklarından benzersiz iyileştirmeler sunmaktadır.
 
@@ -101,7 +101,7 @@ Bazı gelişmiş demetlenmesidir özellikleri şunlardır:
 
 Bölümleme ve demetlenmesidir 'ı aynı anda kullanabilirsiniz.
 
-## <a name="optimize-joins-and-shuffles"></a>Birleştirmeleri ve karışık yerleri iyileştirme
+## <a name="optimize-joins-and-shuffles"></a>Birleştirmeleri ve karıştırmaları iyileştirme
 
 Bir JOIN veya karıştırma üzerinde işleriniz yavaşsa, neden büyük olasılıkla iş verilerinizde asymmetry olan *veri eğriliği*olur. Örneğin, bir harita işi 20 saniye sürebilir, ancak verilerin katıldığı veya karıştırılmış bir işi çalıştıralsa da saat sürer. Veri eğriliğini onarmak için, anahtarın tamamını tam olarak yapmanız gerekir ya da anahtarların yalnızca bir alt kümesi için *yalıtılmış bir anahtar* kullanırsınız. Yalıtılmış bir güvenlik kullanıyorsanız, eşleme birleştirmelerde sallanan anahtarların alt kümesini yalıtmak için daha fazla filtre uygulamanız gerekir. Diğer bir seçenek de demet sütunu tanıtmak ve öncelikle demetlerde ön toplama işlemi yapmak.
 

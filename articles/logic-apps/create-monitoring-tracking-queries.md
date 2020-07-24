@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76908078"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090408"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Logic Apps için Azure Izleyici günlüklerinde izleme ve izleme sorguları görüntüleyin ve oluşturun
 
-[Azure izleyici günlüklerinden](../log-analytics/log-analytics-overview.md) sonuçları üreten temel sorguları görüntüleyebilir ve belirli ölçütleriniz temelinde sonuçları filtreleyen sorgular oluşturabilirsiniz. Örneğin, belirli bir değişim denetim numarasına göre iletileri bulabilirsiniz. Sorgular, farklı sonuçları görüntülemek istiyorsanız düzenleyebileceğiniz [kusto sorgu dilini](https://aka.ms/LogAnalyticsLanguageReference)kullanır. Daha fazla bilgi için bkz. [Azure izleyici günlük sorguları](../azure-monitor/log-query/query-language.md).
+[Azure izleyici günlüklerinden](../azure-monitor/log-query/log-query-overview.md) sonuçları üreten temel sorguları görüntüleyebilir ve belirli ölçütleriniz temelinde sonuçları filtreleyen sorgular oluşturabilirsiniz. Örneğin, belirli bir değişim denetim numarasına göre iletileri bulabilirsiniz. Sorgular, farklı sonuçları görüntülemek istiyorsanız düzenleyebileceğiniz [kusto sorgu dilini](https://aka.ms/LogAnalyticsLanguageReference)kullanır. Daha fazla bilgi için bkz. [Azure izleyici günlük sorguları](../azure-monitor/log-query/query-language.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Log Analytics çalışma alanı. Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/learn/quick-create-workspace.md)öğrenin.
 

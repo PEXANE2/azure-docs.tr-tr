@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088554"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 'de BitLocker önyükleme hataları
 
@@ -28,7 +28,7 @@ ms.locfileid: "86132952"
 
 ## <a name="symptom"></a>Belirti
 
- Bir Windows VM 'si başlamıyor. [Önyükleme tanılaması](../windows/boot-diagnostics.md) penceresinde ekran görüntülerini denetlediğinizde, aşağıdaki hata iletilerinden birini görürsünüz:
+ Bir Windows VM 'si başlamıyor. [Önyükleme tanılaması](./boot-diagnostics.md) penceresinde ekran görüntülerini denetlediğinizde, aşağıdaki hata iletilerinden birini görürsünüz:
 
 - BitLocker anahtarına sahip USB sürücüsünü takın
 
@@ -48,7 +48,7 @@ Bu sorunu çözmek için VM 'yi durdurup serbest bırakın ve yeniden başlatın
 Bu yöntem sorunu çözmezse, BEK dosyasını el ile geri yüklemek için şu adımları izleyin:
 
 1. Etkilenen VM 'nin sistem diskinin bir anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
-2. [Sistem diskini bir kurtarma VM 'Sine bağlayın](troubleshoot-recovery-disks-portal-windows.md). Adım 7 ' de [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) komutunu çalıştırmak için, kurtarma VM 'sinde **BitLocker Sürücü Şifrelemesi** özelliğinin etkinleştirilmesi gerekir.
+2. [Sistem diskini bir kurtarma VM 'Sine bağlayın](troubleshoot-recovery-disks-portal-windows.md). Adım 7 ' de [manage-bde](/windows-server/administration/windows-commands/manage-bde) komutunu çalıştırmak için, kurtarma VM 'sinde **BitLocker Sürücü Şifrelemesi** özelliğinin etkinleştirilmesi gerekir.
 
     Yönetilen bir disk iliştirmeye çalıştığınızda, "şifreleme ayarlarını içerir ve bu nedenle veri diski olarak kullanılamaz" hata iletisi alabilirsiniz. Bu durumda, diski eklemeyi yeniden denemek için aşağıdaki betiği çalıştırın:
 
@@ -70,7 +70,7 @@ Bu yöntem sorunu çözmezse, BEK dosyasını el ile geri yüklemek için şu ad
     ```
      Bir blob görüntüsünden geri yüklenen bir VM 'ye yönetilen disk iliştiremezsiniz.
 
-3. Disk eklendikten sonra, bazı Azure PowerShell betikleri çalıştırabilmeniz için kurtarma VM 'sine bir Uzak Masaüstü bağlantısı oluşturun. Kurtarma VM 'sinde [Azure PowerShell en son sürümünün](https://docs.microsoft.com/powershell/azure/overview) yüklü olduğundan emin olun.
+3. Disk eklendikten sonra, bazı Azure PowerShell betikleri çalıştırabilmeniz için kurtarma VM 'sine bir Uzak Masaüstü bağlantısı oluşturun. Kurtarma VM 'sinde [Azure PowerShell en son sürümünün](/powershell/azure/) yüklü olduğundan emin olun.
 
 4. Yükseltilmiş bir Azure PowerShell oturumu açın (yönetici olarak çalıştır). Azure aboneliğinde oturum açmak için aşağıdaki komutları çalıştırın:
 

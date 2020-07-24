@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088317"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 üzerinde yüksek kullanılabilirliğe sahip ayarları SAP HANA doğrulama ve sorun giderme 
 
@@ -171,7 +172,7 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 
 Test sisteminden **Corosync. conf** içeriği bir örnektir.
 
-İlk bölüm, [küme yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), adım 11 ' de açıklandığı gibi **totıtem**' dır. **Mcastaddr**için değeri yoksayabilirsiniz. Mevcut girişi tutmanız yeterlidir. **Belirteç** ve **konsensus** girdilerinin [Microsoft Azure SAP HANA belgelerine][sles-pacemaker-ha-guide]göre ayarlanması gerekir.
+İlk bölüm, [küme yükleme](./high-availability-guide-suse-pacemaker.md#cluster-installation), adım 11 ' de açıklandığı gibi **totıtem**' dır. **Mcastaddr**için değeri yoksayabilirsiniz. Mevcut girişi tutmanız yeterlidir. **Belirteç** ve **konsensus** girdilerinin [Microsoft Azure SAP HANA belgelerine][sles-pacemaker-ha-guide]göre ayarlanması gerekir.
 
 <pre><code>
 totem {
@@ -278,7 +279,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD cihazı
 
-Bir Azure VM 'de bir SBD cihazının nasıl ayarlanacağı, [SBD balıklesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)konusunda açıklanmaktadır.
+Bir Azure VM 'de bir SBD cihazının nasıl ayarlanacağı, [SBD balıklesi](./high-availability-guide-suse-pacemaker.md#sbd-fencing)konusunda açıklanmaktadır.
 
 İlk olarak, kümedeki her düğüm için ACL girişi varsa SBD sunucu VM 'sini kontrol edin. SBD sunucu sanal makinesinde aşağıdaki komutu çalıştırın:
 
@@ -421,7 +422,7 @@ Hedef VM tarafında, **Hso-Hana-VM-S2-2** Bu örnekte, **/var/log/messages**dosy
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-**/Etc/sysconfig/SBD** ' deki girdilerin [Azure 'Daki SUSE Linux Enterprise Server paceyapıcısı ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)bölümündeki açıklamaya karşılık geldiğinden emin olun. **/Etc/IDL/SCC SID.conf** içindeki başlangıç ayarının otomatik olarak ayarlandığını doğrulayın.
+**/Etc/sysconfig/SBD** ' deki girdilerin [Azure 'Daki SUSE Linux Enterprise Server paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md#sbd-fencing)bölümündeki açıklamaya karşılık geldiğinden emin olun. **/Etc/IDL/SCC SID.conf** içindeki başlangıç ayarının otomatik olarak ayarlandığını doğrulayın.
 
 Aşağıdaki girişler **/Etc/sysconfig/SBD**içinde önemlidir. Gerekirse, **kimlik** değerini uyarlayın:
 
@@ -978,4 +979,3 @@ Bu son ekran görüntüsü, tek bir geçişin **Ayrıntılar** bölümünü gös
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu sorun giderme kılavuzunda, genişleme yapılandırmasındaki SAP HANA için yüksek kullanılabilirlik açıklanmaktadır. Veritabanına ek olarak, SAP yatay içindeki diğer önemli bir bileşen SAP NetWeaver Stack ' dir. [Suse Enterprise Linux Server kullanan Azure sanal MAKINELERINDE SAP NetWeaver için yüksek kullanılabilirlik][sap-nw-ha-guide-sles]hakkında bilgi edinin.
-

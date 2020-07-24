@@ -10,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d864230ff524f6c008f9f05c16505cd9d0e9f229
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583356"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088402"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio 'dan bir Azure VM 'de ASP.NET Web uygulaması yayımlama
 
@@ -111,7 +111,7 @@ Ayarlarınız şuna benzer görünmelidir:
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Azure VM 'ye otomatik dağıtım için CI/CD ayarlama
 
-Azure Pipelines ile sürekli teslim işlem hattı ayarlamak için bkz. [Windows sanal makinesine dağıtma](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
+Azure Pipelines ile sürekli teslim işlem hattı ayarlamak için bkz. [Windows sanal makinesine dağıtma](/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png

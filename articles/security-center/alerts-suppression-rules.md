@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848989"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089949"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gösterme
 
@@ -23,9 +23,7 @@ Bu sayfada, Azure Güvenlik Merkezi 'nde yanlış pozitifleri veya diğer istenm
 
 - Yayın durumu: **Önizleme**
 - Gerekli roller: **Güvenlik Yöneticisi** ve **sahibi** , kurallar oluşturabilir/silebilir. **Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.
-- Larının 
-    - Ticari bulutlar ✔
-    - ✔ National/Sovereign (US Gov, Çin gov, diğer gov)
+- Bulutlar: ✔ ticari bulutlar ✔ National/Sovereign (US Gov, Çin gov, diğer gov)
 
 
 ## <a name="what-are-suppression-rules"></a>Gizleme kuralları nelerdir?

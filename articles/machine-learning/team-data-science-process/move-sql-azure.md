@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 99e637099e54698e9d6eabb14920251a9d4a81f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f1120c78ef2a634c079705c85170d9742eabd1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194386"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087433"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Azure Machine Learning için Azure SQL Veritabanına veri taşıma
 
@@ -30,13 +31,13 @@ Aşağıdaki tabloda, verileri bir Azure SQL veritabanına taşıma seçenekleri
 | <b>Düz dosya (CSV veya TSV biçimli)</b> |[SQL sorgusunu toplu ekleme](#bulk-insert-sql-query) |
 | <b>Şirket içi SQL Server</b> |1.[düz dosyaya aktar](#export-flat-file)<br> 2. [SQL veritabanı geçiş Sihirbazı](#insert-tables-bcp)<br> 3. [veritabanı yedekleme ve geri yükleme](#db-migration)<br> 4. [Azure Data Factory](#adf) |
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prereqs"></a>Önkoşullar
 Burada özetlenen yordamlarda şunları yapmanız gerekir:
 
 * Bir **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * Bir **Azure depolama hesabı**. Bu öğreticide verileri depolamak için bir Azure depolama hesabı kullanın. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın. Depolama hesabını oluşturduktan sonra, depolamaya erişmek için kullanılan hesap anahtarını edinmeniz gerekir. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 * **Azure SQL veritabanına**erişim. Azure SQL veritabanı ayarlamanız gerekirse [Microsoft Azure SQL veritabanı kullanmaya başlamak](../../sql-database/sql-database-get-started.md) IÇIN Azure SQL veritabanı 'nın yeni bir örneğini sağlama hakkında bilgi sağlanır.
-* **Azure PowerShell** yerel olarak yüklendi ve yapılandırıldı. Yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
+* **Azure PowerShell** yerel olarak yüklendi ve yapılandırıldı. Yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/).
 
 **Veri**: geçiş Işlemi, [NYC TAXI veri kümesi](https://chriswhong.com/open-data/foil_nyc_taxi/)kullanılarak gösterilmiştir. NYC TAXI veri kümesi, seyahat verileri ve FAIRS hakkında bilgiler içerir ve Azure Blob depolama alanında kullanılabilir: [NYC TAXI verileri](https://www.andresmh.com/nyctaxitrips/). Bu dosyaların bir örneği ve açıklaması [NYC TAXI gezme veri kümesi açıklamasında](sql-walkthrough.md#dataset)verilmiştir.
 

@@ -3,12 +3,12 @@ title: Azure geçişi hakkında SSS
 description: Azure geçişi hizmeti hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81530326"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090017"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure geçişi: sık sorulan sorular
 
@@ -32,6 +32,10 @@ Azure geçişi 'ni kullanarak şirket içi altyapıyı, uygulamaları ve veriler
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) bir olağanüstü durum kurtarma çözümüdür. 
 
 Azure geçişi: sunucu geçiş aracı bazı şirket içi makinelerin geçiş ve geçiş geçişi için bazı arka uç Site Recovery işlevleri kullanır.
+
+## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Azure geçişi 'nin önceki klasik deneyimiyle bir projem var. Nasıl yaparım? yeni sürümü kullanmaya başlamak mı gerekiyor?
+
+Önceki sürümdeki proje veya bileşenleri yeni sürüme yükseltemezsiniz. [Yeni bir Azure geçişi projesi oluşturmanız](create-manage-projects.md)ve buna [değerlendirme ve geçiş araçları eklemeniz](how-to-add-tool-first-time.md) gerekir. Kullanılabilir değerlendirme ve geçiş araçlarının nasıl kullanılacağını anlamak için öğreticilerini kullanın. Klasik bir projeye eklenmiş bir Log Analytics çalışma alanınız varsa, klasik projeyi sildikten sonra onu geçerli sürümün projesine ekleyebilirsiniz.
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure geçişi: Sunucu değerlendirmesi ve harıta araç seti arasındaki fark nedir?
 

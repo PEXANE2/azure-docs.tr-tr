@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cec3e3ad4934ce368baa44984d252dc981d5d81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687982"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088215"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure portal kullanarak sanal makinelere birden çok IP adresi atama
 
@@ -29,7 +30,7 @@ ms.locfileid: "84687982"
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Birden çok IP adresi ile VM oluşturma
 
-Birden çok IP adresi veya statik bir özel IP adresi olan bir VM oluşturmak istiyorsanız, PowerShell veya Azure CLı kullanarak oluşturmanız gerekir. Nasıl yapılacağını öğrenmek için, bu makalenin en üstündeki PowerShell veya CLı seçeneklerine tıklayın. Tek bir dinamik özel IP adresi ve (isteğe bağlı olarak) tek bir genel IP adresi olan bir VM oluşturabilirsiniz. [WINDOWS VM oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md) veya [Linux VM oluşturma](../virtual-machines/linux/quick-create-portal.md) makalelerinde bulunan adımları izleyerek portalı kullanın. VM 'yi oluşturduktan sonra, bu makalenin [VM 'ye IP adresleri ekleme](#add) bölümündeki adımları IZLEYEREK, IP adresi türünü dinamik iken statik olarak değiştirebilir ve portalı kullanarak ek IP adresleri ekleyebilirsiniz.
+Birden çok IP adresi veya statik bir özel IP adresi olan bir VM oluşturmak istiyorsanız, PowerShell veya Azure CLı kullanarak oluşturmanız gerekir. Nasıl yapılacağını öğrenmek için, bu makalenin en üstündeki PowerShell veya CLı seçeneklerine tıklayın. Tek bir dinamik özel IP adresi ve (isteğe bağlı olarak) tek bir genel IP adresi olan bir VM oluşturabilirsiniz. [WINDOWS VM oluşturma](../virtual-machines/windows/quick-create-portal.md) veya [Linux VM oluşturma](../virtual-machines/linux/quick-create-portal.md) makalelerinde bulunan adımları izleyerek portalı kullanın. VM 'yi oluşturduktan sonra, bu makalenin [VM 'ye IP adresleri ekleme](#add) bölümündeki adımları IZLEYEREK, IP adresi türünü dinamik iken statik olarak değiştirebilir ve portalı kullanarak ek IP adresleri ekleyebilirsiniz.
 
 ## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>VM 'ye IP adresleri ekleme
 

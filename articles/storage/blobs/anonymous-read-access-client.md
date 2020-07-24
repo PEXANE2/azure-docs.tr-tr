@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/22/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f4263d372b82779fe68a6a15cc7db61a31359e14
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ac5fad935e5c37df3a8bd64189a59612eaf097aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209880"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091377"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>.NET ile ortak kapsayıcılara ve bloblara anonim erişim
 
-Azure depolama, kapsayıcılar ve BLOB 'lar için anonim, genel okuma erişimini destekler. İstemciler, Azure depolama istemci kitaplıklarını kullanarak ve Azure depolama 'ya veri erişimini destekleyen diğer araçları ve yardımcı programları kullanarak, ortak kapsayıcılara ve bloblara anonim olarak erişebilir.
+Azure depolama, kapsayıcılar ve BLOB 'lar için isteğe bağlı genel okuma erişimini destekler. İstemciler, Azure depolama istemci kitaplıklarını kullanarak ve Azure depolama 'ya veri erişimini destekleyen diğer araçları ve yardımcı programları kullanarak, ortak kapsayıcılara ve bloblara anonim olarak erişebilir.
 
-Bu makalede, .NET 'ten bir ortak kapsayıcıya veya bloba nasıl erişebileceğiniz gösterilmektedir. Kapsayıcıda anonim okuma erişimini yapılandırma hakkında daha fazla bilgi için bkz.. Bir depolama hesabına tüm anonim erişimin önlenmesi hakkında daha fazla bilgi için bkz..
+Bu makalede, .NET 'ten bir ortak kapsayıcıya veya bloba nasıl erişebileceğiniz gösterilmektedir. Kapsayıcıda anonim okuma erişimini yapılandırma hakkında daha fazla bilgi için bkz. [kapsayıcılar ve Bloblar için anonim genel okuma erişimini yapılandırma](anonymous-read-access-configure.md). Bir depolama hesabına tüm anonim erişimi önleme hakkında daha fazla bilgi için bkz. [kapsayıcılara ve bloblara anonim genel okuma erişimini engelleme](anonymous-read-access-prevent.md).
 
 Kapsayıcılara ve bloblara erişen bir istemci, kimlik bilgileri gerektirmeyen oluşturucuları kullanabilir. Aşağıdaki örneklerde, kapsayıcılara ve bloblara anonim olarak başvurmak için birkaç farklı yol gösterilmektedir.
 

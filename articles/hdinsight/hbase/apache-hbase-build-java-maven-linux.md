@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/24/2019
-ms.openlocfilehash: 6f367f7fb6201a62c7fb47e0c593d04d41e0b378
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b0d1476a6386569a09ee4b14d31403408d741ef7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087467"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase için Java uygulamaları oluşturma
 
@@ -21,7 +21,7 @@ Java 'da bir [Apache HBase](https://hbase.apache.org/) uygulaması oluşturmayı
 
 Bu belgedeki adımlarda, projeyi oluşturmak ve derlemek için [Apache Maven](https://maven.apache.org/) kullanılır. Maven, Java projelerine yönelik yazılım, belge ve raporlar oluşturmanıza olanak sağlayan bir yazılım proje yönetimi ve kavrama aracıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama](./apache-hbase-tutorial-get-started-linux.md).
 
@@ -31,7 +31,7 @@ Bu belgedeki adımlarda, projeyi oluşturmak ve derlemek için [Apache Maven](ht
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
+* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir.
 
 * Bir metin düzenleyici. Bu makalede Microsoft Notepad kullanılmaktadır.
 

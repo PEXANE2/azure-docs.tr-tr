@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: aca0d67326a5a0488d0108efa9acd0d01c7788cd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 72e199e45047e1b425b2587c6b4028efb84060df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "84820207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087450"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>FHıR için Azure API nedir &reg; ?
 
@@ -82,11 +82,31 @@ Microsoft 'un FHıR özellikleri iki yapılandırmada sunulmaktadır:
 
 FHıR sunucusunu genişletmeyi veya özelleştirmeyi gerektiren veya veritabanı gibi temel hizmetlere erişmek için gerekli olan kullanım örnekleri için, geliştiriciler, Azure için açık kaynaklı FHıR sunucusunu seçmelidir.   Kalıcı verilere yalnızca FHıR API 'SI aracılığıyla erişilmesi gereken bir çift anahtar, üretime hazır FHıR API 'SI ve arka uç hizmeti uygulanması için, geliştiriciler FHıR için Azure API 'sini seçmelidir
 
+## <a name="iot-connector-preview"></a>IoT Bağlayıcısı (Önizleme)
+
+IoT Bağlayıcısı, FHıR için Azure API 'nin, tıbbi nesnelerin Interneti (IoMT) aygıtlarından veri alma özelliğini sağlayan isteğe bağlı bir özelliktir. Tıp interneti, ağ üzerinden BT sistemleri ile veri & elde eden verileri yakalayan ve değiş tokuş eden bir IoT cihazları kategorisidir. Bazı ıomt cihazlarına örnek olarak, uygunluk ve klinik wearables, izleme algılayıcıları, etkinlik izleyicileri, bakım noktaları ve hatta akıllı bir Pill sayılabilir. IoT Bağlayıcısı özelliği, ölçeklenebilir, güvenli ve uyumlu bir şekilde, FHıR için Azure API 'ye ıomt verilerini almak üzere bir hizmeti hızla ayarlamanıza olanak sağlar.
+
+IoT Bağlayıcısı, bir ıomt cihazı tarafından gönderilen JSON tabanlı iletileri kabul edebilir. Bu veriler ilk olarak uygun FHıR tabanlı [izleme kaynaklarına dönüştürülür](https://www.hl7.org/fhir/observation.html) ve ardından fhır için Azure API 'si ile kalıcı hale getirilir. Veri dönüştürme mantığı, ileti şemanıza ve FHıR gereksinimlerinize göre yapılandırdığınız bir eşleme şablonları çifti aracılığıyla tanımlanır. Cihaz verileri doğrudan IoT bağlayıcısına itilmiş veya diğer Azure IoT çözümleriyle ([azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) ve [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/)) sorunsuz bir şekilde kullanılabilir. IoT Bağlayıcısı, Azure IoT çözümlerinin fiziksel cihazların sağlamasını ve bakımını yönetmesine izin verirken güvenli bir veri işlem hattı sağlar.
+
+### <a name="applications-of-iot-connector-preview"></a>IoT bağlayıcısının uygulamaları (Önizleme)
+
+IMT cihazlarının kullanımı, sağlık 'lerde hızlı bir şekilde genişliyor ve IoT Bağlayıcısı, birden çok cihaz verisini güvenlik ve uyumluluk ile FHıR için Azure API 'sine getirme konumunu bağlamak üzere tasarlanmıştır. IoMT verilerinin bir FHıR sunucusuna getirilmesi, bütünsel veri öngörüleri ve yenilikçi klinik iş akışları sunar. IoT Bağlayıcısı için bazı yaygın senaryolar şunlardır:
+- **Uzaktan hasta izleme/TeleHealth:** Uzaktan hasta izleme, sistem durumu verilerinin geleneksel sağlık ayarları dışında toplanbilmesini sağlar. Sağlık kurumları, uzak cihazlar tarafından oluşturulan sistem durumu verilerini FHıR için Azure API 'sine getirmek için IoT bağlayıcısını kullanabilir. Bu veriler, hastalar sistem durumunu yakından izlemek, hastaların bakım planına yönelik uygunluğunu izlemek ve kişiselleştirilmiş bir bakım sağlamak için kullanılabilir.
+- **Araştırma ve Yaşam Bilimleri:** Klinik denemeleri, deneme verilerini yakalamak için biosensörler, wearables ve mobil uygulamalar gibi ıomt cihazlarını hızla benimsemektedir. Bu denemeler, güvenli, verimli ve etkili bir şekilde cihaz verilerini FHıR için Azure API 'sine aktarmak için bir yol IoT bağlayıcısında bulunabilir. FHıR için Azure API 'sindeki bir kez deneme verileri, deneme verilerinin gerçek zamanlı analizini çalıştırmak için kullanılabilir.
+- **Gelişmiş analiz:** IoMT cihazları yüksek bir hızda büyük hacimli ve çeşitli veriler sunarak, bu sayede makine öğrenimi modelleriniz için eğitim ve test verilerini sunmaya yönelik harika bir uyum sağlayabilir. IoT Bağlayıcısı, düşük gecikme süresiyle çok çeşitli veri sıklığı, esnek veri şeması ve bulut ölçeklendirmeyle çalışacak şekilde oluşturulmuştur. Bu öznitelikler, IoT bağlayıcısını gelişmiş analiz gereksinimleriniz için cihaz verilerini yakalamaya yönelik harika bir seçenek haline getirir.
+- **Akıllı hastaneler/Klincs:** Günümüzde akıllı hastaneler ve klinikler, birbirine bağlı dijital varlıklar için bir altyapı ayarlıyor. IoT Bağlayıcısı, bu bağlı bileşenlerden verileri yakalamak ve bütünleştirmek için kullanılabilir. Bu tür veri kümesinden eyleme dönüştürülebilir Öngörüler, daha iyi hasta ve operasyonel verimliliği sağlar.
+
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 FHıR için Azure API ile çalışmaya başlamak için, FHıR için Azure API 'yi dağıtmak üzere 5 dakikalık hızlı başlangıcı izleyin.
 
 >[!div class="nextstepaction"]
 >[FHIR için Azure API'sini dağıtma](fhir-paas-portal-quickstart.md)
+
+IoT Bağlayıcısı özelliğini denemek için Azure portal kullanarak IoT bağlayıcısını dağıtmaya yönelik hızlı başlangıç adımlarını gözden geçirin.
+
+>[!div class="nextstepaction"]
+>[IoT bağlayıcısını dağıtma](iot-fhir-portal-quickstart.md)
+
 
 FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.

@@ -3,11 +3,12 @@ title: Apache Kafka için Azure Event Hubs sorunlarını giderme
 description: Bu makalede Apache Kafka için Azure Event Hubs ile ilgili sorunların nasıl giderileceği gösterilmektedir
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c2403fd51729ef8809b9a70383ad6f9fd91e52b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090578"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs için sorun giderme kılavuzu Apache Kafka
 Bu makalede, Apache Kafka için Event Hubs kullanırken çalıştırabileceğiniz sorunlar için sorun giderme ipuçları sunulmaktadır. 
@@ -48,13 +49,13 @@ Event Hubs üzerinde Kafka kullanırken sorunlarla karşılaşırsanız aşağı
 - **Güvenlik duvarı engelleme trafiği** -güvenlik duvarınız tarafından **9093** numaralı bağlantı noktasının engellenmediğinden emin olun.
 - **Topıauthorizationexception** -bu özel durumun en yaygın nedenleri şunlardır:
     - Yapılandırma dosyanızdaki bağlantı dizesinde bir yazım hatası veya
-    - Temel bir katman ad alanı üzerinde Kafka için Event Hubs kullanılmaya çalışılıyor. Kafka için Event Hubs [yalnızca standart ve adanmış katman ad alanları için desteklenir](https://azure.microsoft.com/pricing/details/event-hubs/).
+    - Temel bir katman ad alanı üzerinde Kafka için Event Hubs kullanılmaya çalışılıyor. Kafka özelliği için Event Hubs [yalnızca standart ve adanmış katman ad alanları için desteklenir](https://azure.microsoft.com/pricing/details/event-hubs/).
 - **Kafka sürüm uyuşmazlığı** -Kafka ekosistemleri Için Event Hubs Kafka 1,0 sürümlerini ve üstünü destekler. Kafka sürüm 0,10 ve üstünü kullanan bazı uygulamalar, Kafka protokolünün geriye dönük uyumluluğu nedeniyle zaman zaman çalışabilir, ancak eski API sürümlerinin kullanılması önemle önerilir. Kafka sürümleri 0,9 ve öncesi, gerekli SASL protokollerini desteklemez ve Event Hubs bağlanamaz.
 - **Kafka ile KULLANıLıRKEN AMQP üst bilgilerinde garip kodlamalar** , AMQP üzerinden olay hub 'ına olay gönderirken AMQP Encoding içinde herhangi bir AMQP yük üst bilgisi serileştirilir. Kafka tüketicileri AMQP 'deki üstbilgilerin serisini kaldıramıyor. Üst bilgi değerlerini okumak için AMQP üstbilgilerinin el ile kodunu çözün. Alternatif olarak, Kafka protokolü aracılığıyla kullanacağınızı biliyorsanız AMQP üst bilgilerini kullanmaktan kaçınabilirsiniz. Daha fazla bilgi için [Bu GitHub sorununa](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56)bakın.
 - **SASL kimlik doğrulaması** -Event Hubs için gereken SASL kimlik doğrulama protokolü ile işbirliği yapmak, bu gözle buluşmamak daha zor olabilir. SASL kimlik doğrulamasında Framework 'ün kaynaklarını kullanarak yapılandırmanın sorunlarını giderebileceğinizden bkz.. 
 
 ## <a name="limits"></a>Sınırlar
-Apache Kafka vs. Event Hubs Kafka. Çoğu bölüm için, Kafka ekosistemlerine yönelik Event Hubs aynı varsayılanlar, özellikler, hata kodları ve Apache Kafka olan genel davranışları vardır. Bu iki açıkça farklı olan örnekler (veya Event Hubs Kafka olmayan bir sınır uygular) aşağıda listelenmiştir:
+Apache Kafka vs. Event Hubs Kafka. Çoğu bölüm için, Event Hubs Kafka aynı varsayılanlara, özelliklere, hata kodlarına ve Apache Kafka genel davranışına sahiptir. Bu iki açıkça farklı olan örnekler (veya Event Hubs Kafka olmayan bir sınır uygular) aşağıda listelenmiştir:
 
 - Özelliğin uzunluk üst sınırı `group.id` 256 karakterdir
 - En büyük boyut `offset.metadata.max.bytes` 1024 bayttır
@@ -67,4 +68,4 @@ Kafka için Event Hubs ve Event Hubs hakkında daha fazla bilgi edinmek için a�
 - [Event Hubs için Apache Kafka Geliştirici Kılavuzu](apache-kafka-developer-guide.md)
 - [Event Hubs için Apache Kafka geçiş kılavuzu](apache-kafka-migration-guide.md)
 - [Sık Sorulan Sorular-Apache Kafka için Event Hubs](apache-kafka-frequently-asked-questions.md)
-- [Önerilen yapılandırma](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [Önerilen yapılandırma](apache-kafka-configurations.md)

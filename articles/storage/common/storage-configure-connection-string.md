@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 26faad0bb8aeb8dff693eea4cb9d47e0df1814b4
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027350"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087263"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage bağlantı dizelerini yapılandırma
 
 Bir bağlantı dizesi, uygulamanızın paylaşılan anahtar yetkilendirmesi kullanarak çalışma zamanında bir Azure depolama hesabındaki verilere erişmesi için gereken yetkilendirme bilgilerini içerir. Bağlantı dizelerini şu şekilde yapılandırabilirsiniz:
 
-* Azure Storage öykünücüsüne bağlanın.
+* Azurite depolama öykünücüsüne bağlanın.
 * Azure 'da bir depolama hesabına erişin.
 * Azure 'daki belirtilen kaynaklara paylaşılan erişim imzası (SAS) aracılığıyla erişin.
 
@@ -37,15 +37,15 @@ Azure depolama 'ya yapılan istekleri yetkilendirmek için uygulamanızın çal�
 * Masaüstünde veya cihazda çalışan bir uygulama, bağlantı dizesini bir **app.config** veya **web.config** dosyasında saklayabilir. Bağlantı dizesini bu dosyalardaki **appSettings** bölümüne ekleyin.
 * Azure bulut hizmetinde çalışan bir uygulama, bağlantı dizesini [Azure hizmet yapılandırma şeması (. cscfg) dosyasında](https://msdn.microsoft.com/library/ee758710.aspx)saklayabilir. Bağlantı dizesini hizmet yapılandırma dosyasının **ConfigurationSettings** bölümüne ekleyin.
 
-Bağlantı dizenizi bir yapılandırma dosyasında depolamak, depolama öykünücüsü ile buluttaki bir Azure depolama hesabı arasında geçiş yapmak için bağlantı dizesini güncelleştirmeyi kolaylaştırır. Yalnızca hedef ortamınıza işaret etmek için bağlantı dizesini düzenlemeniz gerekir.
+Bağlantı dizenizi bir yapılandırma dosyasında depolamak, bağlantı dizesinin [Azurite depolama öykünücüsü](../common/storage-use-azurite.md) ve buluttaki bir Azure depolama hesabı arasında geçiş yapmak için güncelleştirilmesini kolaylaştırır. Yalnızca hedef ortamınıza işaret etmek için bağlantı dizesini düzenlemeniz gerekir.
 
 Uygulamanızın çalıştığı yere bakılmaksızın, çalışma zamanında Bağlantı dizenizi erişmek için [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) kullanabilirsiniz.
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Depolama öykünücüsü için bir bağlantı dizesi yapılandırma
+## <a name="configure-a-connection-string-for-azurite"></a>Azurite için bir bağlantı dizesi yapılandırma
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Depolama öykünücüsü hakkında daha fazla bilgi için bkz. [geliştirme ve test Için Azure depolama öykünücüsünü kullanma](storage-use-emulator.md).
+Azurite hakkında daha fazla bilgi için bkz. [Yerel Azure depolama geliştirmesi Için Azurite öykünücüsünü kullanma](../common/storage-use-azurite.md).
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Azure depolama hesabı için bağlantı dizesi yapılandırma
 
@@ -140,6 +140,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Geliştirme ve test için Azure depolama öykünücüsünü kullanma](storage-use-emulator.md)
+* [Yerel Azure depolama geliştirmesi için Azurite öykünücüsünü kullanma](../common/storage-use-azurite.md)
 * [Azure depolama gezginleri](storage-explorers.md)
 * [Paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md)

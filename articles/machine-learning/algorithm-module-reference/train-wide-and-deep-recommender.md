@@ -1,5 +1,5 @@
 ---
-title: Görüntü Modelini Puanlama
+title: Eğitme geniş & derin öneren modülünü kullanın
 titleSuffix: Azure Machine Learning
 description: Bir öneri modelini eğmek için tren genelinde & derin öneren modülünü kullanmayı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 2ac5e5874ebb34b68cbfe8be1986852c67b97c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84740060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090187"
 ---
 # <a name="train-wide--deep-recommender"></a>Geniş kapsamlı & öneren eğitimi
 Bu makalede, bir öneri modelini eğmek için Azure Machine Learning tasarımcısında **eğitme & derin öneren** modülünün (Önizleme) nasıl kullanılacağı açıklanır. Bu modül, Google tarafından önerilen geniş & derinlemesine öğrenmeyi temel alır.

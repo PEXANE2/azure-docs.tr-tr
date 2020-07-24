@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76961133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091258"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>Şirket içi kaynakların DNS aramasını DNS sunucularınıza iletmek için CloudSimple özel bulut DNS sunucularını etkinleştirin
 
@@ -31,7 +32,7 @@ ms.locfileid: "76961133"
 DNS iletmesi 'nın çalışması için özel bulut ağınızdan şirket içi ağınıza yönelik bir ağ bağlantısı bulunmalıdır.  Kullanarak ağ bağlantısı kurabilirsiniz:
 
 * [ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma](on-premises-connection.md)
-* [Siteden siteye VPN ağ geçidi ayarlama](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [Siteden siteye VPN ağ geçidi ayarlama](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 DNS iletmesi 'nın çalışması için bu bağlantıda güvenlik duvarı bağlantı noktalarının açılması gerekir.  Kullanılan bağlantı noktaları TCP bağlantı noktası 53 veya UDP bağlantı noktası 53 ' dir.
 

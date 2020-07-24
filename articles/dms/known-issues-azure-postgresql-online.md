@@ -3,8 +3,8 @@ title: "Bilinen sorunlar: PostgreSQL 'ten PostgreSQL için Azure veritabanı 'na
 titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti 'ni kullanarak PostgreSQL için Azure veritabanı 'na PostgreSQL 'ten çevrimiçi geçişlerle ilgili bilinen sorunlar ve geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3d1bc627ccb8814ab2dfb61fb0653ef0ac644038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 564581a102ac3fab504e82db00ef54b3e45d0c19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090748"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL ile PostgreSQL için Azure DB 'ye çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -91,12 +91,12 @@ PostgreSQL 'e yönelik çevrimiçi geçişlerle ilgili bilinen sorunlar ve sın�
 
 AWS RDS PostgreSQL 'ten PostgreSQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirmeye çalıştığınızda, aşağıdaki hatalarla karşılaşabilirsiniz.
 
-- **Hata**: ' {Database} ' veritabanındaki ' {Table} ' tablosunda bulunan ' {Column} ' sütununun varsayılan değeri kaynak ve hedef sunucularda farklı. Değer kaynakta '{value on source}', hedefte ise '{value on target}'.
+- **Hata**: '{database}' veritabanının '{table}' tablosundaki '{column}' sütununun Varsayılan değeri kaynak ve hedef sunucularda farklı. Değer kaynakta '{value on source}', hedefte ise '{value on target}'.
 
   **Kısıtlama**: bir sütun şemasındaki varsayılan değer, kaynak ve hedef veritabanları arasında farklı olduğunda bu hata oluşur.
   **Geçici çözüm**: hedefteki şemanın kaynaktaki şemayla eşleştiğinden emin olun. Şemayı geçirme hakkında ayrıntılı bilgi için [Azure PostgreSQL çevrimiçi geçiş belgelerine](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)bakın.
 
-- **Hata**: ' {Database} ' hedef veritabanında ' {Database} ' kaynak veritabanının ' {tablo sayısı} ' tablosu olduğu için ' {tablo sayısı} ' tablo vardır. Kaynak ve hedef veritabanlarındaki tablo sayısı aynı olmalıdır.
+- **Hata**: '{database}' adlı hedef veritabanında '{number of tables}' tablo varken '{database}' adlı kaynak veritabanında '{number of tables}' tablo var. Kaynak ve hedef veritabanlarındaki tablo sayısı aynı olmalıdır.
 
   **Sınırlama**: Bu hata, tablo sayısı kaynak ve hedef veritabanları arasında farklıysa oluşur.
 

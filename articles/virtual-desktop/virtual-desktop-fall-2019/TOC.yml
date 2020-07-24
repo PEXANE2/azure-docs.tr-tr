@@ -70,6 +70,8 @@
           href: diagnostics-log-analytics-2019.md
     - name: Yerleşik uygulamaları yayımlama
       href: publish-apps-2019.md
+    - name: Azure Multi-Factor Authentication’ı ayarlama
+      href: ../set-up-mfa.md
 - name: Kavramlar
   items:
     - name: Windows Sanal Masaüstü ortamı

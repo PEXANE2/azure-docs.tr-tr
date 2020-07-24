@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 06/17/2020
+ms.date: 07/20/2020
 tags: connectors
-ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a277c6205dfb9dfa04565fb3ebcb3da589669764
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807743"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087892"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -23,6 +23,7 @@ ms.locfileid: "84807743"
 > SFTP-SSH Bağlayıcısı Şu anda bu SFTP sunucularını desteklememektedir:
 > 
 > * IBM veri gücü
+> * MessageWay
 > * OpenText güvenli MFT
 > * OpenText GXS
 
@@ -52,16 +53,16 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   | Eylem | Öbek oluşturma desteği | Öbek boyutu desteğini geçersiz kıl |
   |--------|------------------|-----------------------------|
   | **Dosyayı Kopyala** | Hayır | Geçerli değil |
-  | **Dosya oluştur** | Evet | Evet |
-  | **Klasör oluştur** | Uygulanamaz | Uygulanamaz |
-  | **Dosyayı Sil** | Uygulanamaz | Uygulanamaz |
-  | **Arşivi klasöre Ayıkla** | Uygulanamaz | Uygulanamaz |
-  | **Dosya içeriğini al** | Evet | Evet |
-  | **Yolu kullanarak dosya içeriğini al** | Evet | Evet |
-  | **Dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
-  | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
-  | **Klasördeki dosyaları Listele** | Uygulanamaz | Uygulanamaz |
-  | **Dosyayı yeniden adlandır** | Uygulanamaz | Uygulanamaz |
+  | **Dosya oluştur** | Yes | Yes |
+  | **Klasör oluştur** | Geçerli değil | Geçerli değil |
+  | **Dosyayı Sil** | Geçerli değil | Geçerli değil |
+  | **Arşivi klasöre Ayıkla** | Geçerli değil | Geçerli değil |
+  | **Dosya içeriğini al** | Yes | Yes |
+  | **Yolu kullanarak dosya içeriğini al** | Yes | Yes |
+  | **Dosya meta verilerini al** | Geçerli değil | Geçerli değil |
+  | **Yolu kullanarak dosya meta verilerini al** | Geçerli değil | Geçerli değil |
+  | **Klasördeki dosyaları Listele** | Geçerli değil | Geçerli değil |
+  | **Dosyayı yeniden adlandır** | Geçerli değil | Geçerli değil |
   | **Güncelleştirme dosyası** | Hayır | Geçerli değil |
   ||||
 
@@ -85,7 +86,7 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
 
 * SFTP sunucusu bağlantısını, performansı artıran ve sunucuya bağlanma girişimlerinin sayısını azaltan *1 saate kadar*önbelleğe alır. Bu önbelleğe alma davranışının süresini ayarlamak için SFTP sunucunuzdaki SSH yapılandırmasındaki [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) özelliğini düzenleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -156,7 +157,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 1. Özel anahtar dosyasını `.pem` dosya adı uzantısıyla kaydedin.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Bu bölümde, bu bağlayıcının Tetikleyiciler ve eylemleri için gözden geçirilecek noktalar açıklanmaktadır.
 

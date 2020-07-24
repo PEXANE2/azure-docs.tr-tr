@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8b19b5bbb327c55b4f4103a133e77e73f0ae4bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77591362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088266"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -56,9 +57,9 @@ ms.locfileid: "77591362"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Bu makalede, [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) [SMB](https://docs.microsoft.com/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) kullanarak, sanal makinelerin nasıl dağıtılacağı, yapılandırıldığı, küme çerçevesinin nasıl yükleneceği ve Windows VM 'lerine yüksek oranda kullanılabilir bir SAP NetWeaver 7,50 sisteminin nasıl yükleneceği açıklanır.  
+Bu makalede, [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) [SMB](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) kullanarak, sanal makinelerin nasıl dağıtılacağı, yapılandırıldığı, küme çerçevesinin nasıl yükleneceği ve Windows VM 'lerine yüksek oranda kullanılabilir bir SAP NetWeaver 7,50 sisteminin nasıl yükleneceği açıklanır.  
 
-Veritabanı katmanı Bu makalede ayrıntılı olarak ele alınmıyor. Azure [sanal ağının](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) zaten oluşturulduğunu varsayalım.  
+Veritabanı katmanı Bu makalede ayrıntılı olarak ele alınmıyor. Azure [sanal ağının](../../../virtual-network/virtual-networks-overview.md) zaten oluşturulduğunu varsayalım.  
 
 Önce aşağıdaki SAP notlarını ve kağıtları okuyun:
 
@@ -75,17 +76,17 @@ Veritabanı katmanı Bu makalede ayrıntılı olarak ele alınmıyor. Azure [san
 * SAP Note [2802770](https://launchpad.support.sap.com/#/notes/2802770) , Windows 2012 ve 2016 üzerinde yavaş çalışan SAP Transaction AL11 için sorun giderme bilgileri içerir.
 * SAP Note [1911507](https://launchpad.support.sap.com/#/notes/1911507) , Windows Server 'da SMB 3,0 protokolüyle bir dosya paylaşımının saydam yük devretme özelliği hakkında bilgi içerir.
 * SAP Note [662452](https://launchpad.support.sap.com/#/notes/662452) , veri erişimi sırasında zayıf dosya sistemi performansına/hatalarına yönelik öneriye sahiptir (8,3 ad oluşturmayı devre dışı bırakma).
-* [SAP NetWeaver yüksek kullanılabilirliği 'ni bir Windows Yük devretme kümesine ve Azure 'daki SAP Ass/SCS örnekleri için dosya paylaşımında yükler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share) 
-* [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+* [SAP NetWeaver yüksek kullanılabilirliği 'ni bir Windows Yük devretme kümesine ve Azure 'daki SAP Ass/SCS örnekleri için dosya paylaşımında yükler](./sap-high-availability-installation-wsfc-file-share.md) 
+* [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar](./sap-high-availability-architecture-scenarios.md)
 * [ASCS küme yapılandırmasında araştırma bağlantı noktası ekle](sap-high-availability-installation-wsfc-file-share.md)
 * [Bir yük devretme kümesine (A) SCS örneği yükleme](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [Azure NetApp Files için SMB birimi oluşturma](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)
+* [Azure NetApp Files için SMB birimi oluşturma](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Genel Bakış
 
 SAP, bir Windows Yük devretme kümesindeki SAP ASCS/SCS örneğini Kümelendirmek için yeni bir yaklaşım ve küme paylaşılan disklerine bir alternatifi geliştirmiştir. Küme paylaşılan disklerini kullanmak yerine, bir tane, SAP Küresel Ana bilgisayar dosyalarını dağıtmak için bir SMB dosya paylaşımının kullanılmasına olanak sağlar. Azure NetApp Files, Active Directory kullanılarak NTFS ACL 'SI ile SMBv3 (NFS ile birlikte) destekler. Azure NetApp Files, otomatik olarak yüksek oranda kullanılabilir (PaaS hizmeti gibi). Bu özellikler, SAP Global için SMB dosya paylaşımının barındırılmasına yönelik Azure NetApp Files harika bir seçenek sunar.  
-[Azure Active Directory (ad) etki alanı Hizmetleri](https://docs.microsoft.com/azure/active-directory-domain-services/overview) ve [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) desteklenir. Mevcut Active Directory etki alanı denetleyicilerini Azure NetApp Files ile birlikte kullanabilirsiniz. Etki alanı denetleyicileri, Azure 'da sanal makineler veya ExpressRoute ya da S2S VPN aracılığıyla şirket içi olabilir. Bu makalede, bir Azure VM 'de etki alanı denetleyicisi kullanacağız.  
+[Azure Active Directory (ad) etki alanı Hizmetleri](../../../active-directory-domain-services/overview.md) ve [Active Directory Domain Services (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) desteklenir. Mevcut Active Directory etki alanı denetleyicilerini Azure NetApp Files ile birlikte kullanabilirsiniz. Etki alanı denetleyicileri, Azure 'da sanal makineler veya ExpressRoute ya da S2S VPN aracılığıyla şirket içi olabilir. Bu makalede, bir Azure VM 'de etki alanı denetleyicisi kullanacağız.  
 SAP NetWeaver Merkezi Hizmetleri için yüksek kullanılabilirlik (HA), paylaşılan depolama gerektirir. Windows 'da bunu başarmak için, en çok SOFS kümesi oluşturmak veya SIOS gibi küme paylaşılan disk s/w kullanması gerekiyordu. Artık Azure NetApp Files dağıtılan paylaşılan depolamayı kullanarak SAP NetWeaver HA elde etmek mümkündür. Paylaşılan depolama için Azure NetApp Files kullanmak SOFS veya SIOS gereksinimini ortadan kaldırır.  
 
 > [!NOTE]
@@ -106,16 +107,16 @@ Bu başvuru mimarisinde SAP Merkezi Hizmetleri için olan paylaşımın Azure Ne
 
 Azure NetApp Files kullanmanın hazırlanması için aşağıdaki adımları gerçekleştirin.  
 
-1. [Azure NetApp Files kaydolmak](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register) için adımları izleyin  
-2. [NetApp hesabı oluşturma](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account) bölümünde açıklanan adımları Izleyerek Azure NetApp hesabı oluşturun  
-3. [Kapasite havuzunu ayarlama bölümündeki yönergeleri](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) izleyerek kapasite havuzunu ayarlama
-4. Azure NetApp Files kaynaklar, temsilci alt ağında bulunmalıdır. Temsilci alt ağ oluşturmak için [Azure NetApp Files için bir alt ağ Için temsilci seçme](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) bölümündeki yönergeleri izleyin.  
+1. [Azure NetApp Files kaydolmak](../../../azure-netapp-files/azure-netapp-files-register.md) için adımları izleyin  
+2. [NetApp hesabı oluşturma](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md) bölümünde açıklanan adımları Izleyerek Azure NetApp hesabı oluşturun  
+3. [Kapasite havuzunu ayarlama bölümündeki yönergeleri](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md) izleyerek kapasite havuzunu ayarlama
+4. Azure NetApp Files kaynaklar, temsilci alt ağında bulunmalıdır. Temsilci alt ağ oluşturmak için [Azure NetApp Files için bir alt ağ Için temsilci seçme](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) bölümündeki yönergeleri izleyin.  
 
 > [!IMPORTANT]
-> SMB birimi oluşturmadan önce Active Directory bağlantı oluşturmanız gerekir. [Active Directory bağlantıları için gereksinimleri](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)gözden geçirin.  
+> SMB birimi oluşturmadan önce Active Directory bağlantı oluşturmanız gerekir. [Active Directory bağlantıları için gereksinimleri](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)gözden geçirin.  
 
-5. [Active Directory bağlantısı oluşturma](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#create-an-active-directory-connection) bölümünde açıklandığı gibi Active Directory bağlantı oluştur  
-6. SMB [birimi ekleme](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#add-an-smb-volume) bölümündeki yönergeleri izleyerek SMB Azure NetApp Files SMB birimi oluşturun  
+5. [Active Directory bağlantısı oluşturma](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) bölümünde açıklandığı gibi Active Directory bağlantı oluştur  
+6. SMB [birimi ekleme](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) bölümündeki yönergeleri izleyerek SMB Azure NetApp Files SMB birimi oluşturun  
 7. SMB birimini Windows sanal makinenize bağlayın.
 
 > [!TIP]
@@ -123,15 +124,15 @@ Azure NetApp Files kullanmanın hazırlanması için aşağıdaki adımları ger
 
 ## <a name="prepare-the-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster"></a>Windows Yük devretme kümesi kullanarak SAP HA altyapısını hazırlama 
 
-1. [Gerekli DNS IP adreslerini ayarla](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#b22d7b3b-4343-40ff-a319-097e13f62f9e)  
-2. [SAP sanal makineleri için STATIK IP adresleri ayarlayın](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#84c019fe-8c58-4dac-9e54-173efd4b2c30).
-3. [Azure iç yük dengeleyici için bir STATIK IP adresi ayarlayın](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#7a8f3e9b-0624-4051-9e41-b73fff816a9e).
-4. [Azure iç yük dengeleyici için varsayılan yoks/SCS Yük Dengeleme kurallarını ayarlayın](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#f19bd997-154d-4583-a46e-7f5a69d0153c).
-5. [Azure iç yük dengeleyici IÇIN ASCS/SCS varsayılan Yük Dengeleme kurallarını değiştirin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#fe0bd8b5-2b43-45e3-8295-80bee5415716).
-6. [Windows sanal makinelerini etki alanına ekleyin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#e69e9a34-4601-47a3-a41c-d2e11c626c0c).
-7. [SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#661035b2-4d0f-4d31-86f8-dc0a50d78158)
-8. [SAP ASCS/SCS örneği için Windows Server yük devretme kümesi ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#0d67f090-7928-43e0-8772-5ccbf8f59aab)
-9. Windows Server 2016 kullanıyorsanız, [Azure bulut tanığını](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)yapılandırmanızı öneririz.
+1. [Gerekli DNS IP adreslerini ayarla](./sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e)  
+2. [SAP sanal makineleri için STATIK IP adresleri ayarlayın](./sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30).
+3. [Azure iç yük dengeleyici için bir STATIK IP adresi ayarlayın](./sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e).
+4. [Azure iç yük dengeleyici için varsayılan yoks/SCS Yük Dengeleme kurallarını ayarlayın](./sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c).
+5. [Azure iç yük dengeleyici IÇIN ASCS/SCS varsayılan Yük Dengeleme kurallarını değiştirin](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716).
+6. [Windows sanal makinelerini etki alanına ekleyin](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c).
+7. [SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
+8. [SAP ASCS/SCS örneği için Windows Server yük devretme kümesi ayarlama](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
+9. Windows Server 2016 kullanıyorsanız, [Azure bulut tanığını](/windows-server/failover-clustering/deploy-cloud-witness)yapılandırmanızı öneririz.
 
 
 ## <a name="install-sap-ascs-instance-on-both-nodes"></a>SAP ASCS örneğini her iki düğüme de yükler
@@ -139,7 +140,7 @@ Azure NetApp Files kullanmanın hazırlanması için aşağıdaki adımları ger
 SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
    * SAP yazılım sağlama Yöneticisi (SWPM) Yükleme Aracı sürüm SPS25 veya üzeri.
    * SAP Kernel 7,49 veya üzeri
-   * Kümelenmiş SAP ascs/SCS örneği için [sanal ana bilgisayar adı oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#a97ad604-9094-44fe-a364-f89cb39bf097)bölümünde açıklandığı gibi, kümelenmiş SAP ascs/SCS örneği için bir sanal ana bilgisayar adı (küme ağ adı) oluşturun.
+   * Kümelenmiş SAP ascs/SCS örneği için [sanal ana bilgisayar adı oluşturma](./sap-high-availability-installation-wsfc-shared-disk.md#a97ad604-9094-44fe-a364-f89cb39bf097)bölümünde açıklandığı gibi, kümelenmiş SAP ascs/SCS örneği için bir sanal ana bilgisayar adı (küme ağ adı) oluşturun.
 
 > [!NOTE]
 > SAP ASCS/SCS örneklerinin bir dosya paylaşımının kullanılarak kümelenmesi, SAP çekirdek 7,49 (ve üzeri) ile SAP NetWeaver 7,40 (ve üzeri) için desteklenir.  
@@ -157,7 +158,7 @@ SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
 > [!TIP]
 > Önkoşul denetleyicisi, SWPM ile sonuçlanıyorsa, takas boyutu koşulunun karşılanmadığını gösteriyorsa, değişim boyutunu Bilgisayarım>sistem özellikleri>performans ayarları> gelişmiş> sanal bellek> değiştirme ' ye giderek ayarlayabilirsiniz.  
 
-4. PowerShell kullanarak bir SAP kümesi kaynağını, `SAP-SID-IP` araştırma bağlantı noktasını yapılandırın. Bu yapılandırmayı, [araştırma bağlantı noktasını yapılandırma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761)bölümünde AÇıKLANDıĞı gıbı SAP Ass/SCS küme düğümlerinden birinde yürütün.
+4. PowerShell kullanarak bir SAP kümesi kaynağını, `SAP-SID-IP` araştırma bağlantı noktasını yapılandırın. Bu yapılandırmayı, [araştırma bağlantı noktasını yapılandırma](./sap-high-availability-installation-wsfc-shared-disk.md#10822f4f-32e7-4871-b63a-9b86c76ce761)bölümünde AÇıKLANDıĞı gıbı SAP Ass/SCS küme düğümlerinden birinde yürütün.
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>İkinci yoks/SCS küme düğümüne bir ASCS/SCS örneği yükler
 

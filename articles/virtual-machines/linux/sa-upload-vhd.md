@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc7c69809ae623606bd091821c5f2fc661f6c8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088759"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLı ile özel diskten bir Linux sanal makinesi yükleme ve oluşturma
 
@@ -78,10 +79,10 @@ Aşağıdaki adımları tamamlayabilmeniz için şunlar gerekir:
 
 * **Linux işletim sistemi bir. vhd dosyasına yüklenir** - [Azure tarafından onaylanan bir Linux dağıtımını](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (veya [onaylı olmayan dağıtımlar için bilgileri](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) VHD biçimindeki bir sanal diske yükleme. VM ve VHD oluşturmak için birden çok araç mevcuttur:
   * Kemu veya [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) [KVM](https://www.linux-kvm.org/page/RunningKVM)'yi yükleyip yapılandırarak, görüntü biçimi olarak VHD 'yi kullanmaya özen gösterin. Gerekirse, kullanarak [bir görüntüyü dönüştürebilirsiniz](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) `qemu-img convert` .
-  * Hyper-V ' d i [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) veya [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx)üzerinde de kullanabilirsiniz.
+  * Hyper-V ' d i [Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) veya [Windows Server 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))üzerinde de kullanabilirsiniz.
 
 > [!NOTE]
-> Yeni VHDX biçimi Azure 'da desteklenmez. Bir VM oluşturduğunuzda, VHD 'yi biçim olarak belirtin. Gerekirse, [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) veya PowerShell cmdlet 'ini kullanarak VHDX DISKLERINI VHD 'ye dönüştürebilirsiniz [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) . Azure, Dinamik VHD 'leri karşıya yüklemeyi desteklemez, bu nedenle karşıya yüklemeden önce bu diskleri statik VHD 'lere dönüştürmeniz gerekir. Azure 'a yükleme işlemi sırasında dinamik diskleri dönüştürmek için [Azure VHD yardımcı programları](https://github.com/Microsoft/azure-vhd-utils-for-go) gibi araçları kullanabilirsiniz.
+> Yeni VHDX biçimi Azure 'da desteklenmez. Bir VM oluşturduğunuzda, VHD 'yi biçim olarak belirtin. Gerekirse, [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) veya PowerShell cmdlet 'ini kullanarak VHDX DISKLERINI VHD 'ye dönüştürebilirsiniz [`Convert-VHD`](/powershell/module/hyper-v/convert-vhd?view=win10-ps) . Azure, Dinamik VHD 'leri karşıya yüklemeyi desteklemez, bu nedenle karşıya yüklemeden önce bu diskleri statik VHD 'lere dönüştürmeniz gerekir. Azure 'a yükleme işlemi sırasında dinamik diskleri dönüştürmek için [Azure VHD yardımcı programları](https://github.com/Microsoft/azure-vhd-utils-for-go) gibi araçları kullanabilirsiniz.
 > 
 > 
 
@@ -178,7 +179,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-## <a name="create-the-vm"></a>Sanal makine oluşturma
+## <a name="create-the-vm"></a>Sanal makineyi oluşturma
 Yönetilmeyen diskler içeren bir VM oluşturmak için `--image` [az VM Create](/cli/azure/vm)komutuyla diskinizin URI 'sini () belirtin. Aşağıdaki örnekte, `myVM` daha önce karşıya yüklenen sanal disk kullanılarak adlı BIR VM oluşturulur:
 
 `--image`Özel diskinize işaret etmek için [az VM Create](/cli/azure/vm) parametresini belirtin. `--storage-account`Özel diskinizin depolandığı depolama hesabıyla eşleştiğinden emin olun. VM 'lerinizi depolamak için özel diskle aynı kapsayıcıyı kullanmanız gerekmez. Özel diskinizi karşıya yüklemeden önce, önceki adımlarla aynı şekilde ek kapsayıcılar oluşturduğunuzdan emin olun.
@@ -236,4 +237,3 @@ az group deployment create --resource-group myNewResourceGroup \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Özel sanal diskinizi hazırladıktan ve karşıya yükledikten sonra, [Kaynak Yöneticisi ve şablonları kullanma](../../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. Ayrıca, yeni sanal makinelerinize [bir veri diski eklemek](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) isteyebilirsiniz. Sanal makinelerinize erişmeniz gereken uygulamalarınız varsa, [bağlantı noktalarını ve uç noktaları açmayı](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)unutmayın.
-

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7e59ee029b1705f6f789812b870de96bbb74a6e5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 23556d6c0d64c6b6351d09ac1a658da0e5a4dd68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088844"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Yönetilen görüntüden paylaşılan görüntü Galerisi görüntüsüne geçiş
 
@@ -54,9 +54,9 @@ Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. B
 
 Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. Yönetilen görüntüler her zaman genelleştirildiğinden, öğesini ayarlamanız gerekir `-OsState generalized` . 
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./windows/shared-image-galleries.md#image-definitions).
 
-[New-Azgallerımagedefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve genelleştirilmiş bir Windows işletim sistemi içindir. Linux işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `-OsType Linux` . 
+[New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve genelleştirilmiş bir Windows işletim sistemi içindir. Linux işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>Yönetilen görüntüyü al
 
-[Get-Azımage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage)kullanarak bir kaynak grubunda kullanılabilen görüntülerin listesini görebilirsiniz. Görüntü adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzImage` görüntü nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *MyImage* adlı bir görüntü alır ve onu *$managedImage*değişkenine atar. 
+[Get-Azımage](/powershell/module/az.compute/get-azimage)kullanarak bir kaynak grubunda kullanılabilen görüntülerin listesini görebilirsiniz. Görüntü adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzImage` görüntü nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *MyImage* adlı bir görüntü alır ve onu *$managedImage*değişkenine atar. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -84,7 +84,7 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-version"></a>Görüntü sürümü oluşturma
 
-[Yeni-Azgallerımageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak yönetilen görüntüden bir görüntü sürümü oluşturun. 
+[Yeni-Azgallerımageversion](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak yönetilen görüntüden bir görüntü sürümü oluşturun. 
 
 Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
 
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir. 
 >
-> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) tarafından Premiun depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
+> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](../storage/common/storage-redundancy.md) tarafından Premiun depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
 >
 
 ## <a name="delete-the-managed-image"></a>Yönetilen görüntüyü silme

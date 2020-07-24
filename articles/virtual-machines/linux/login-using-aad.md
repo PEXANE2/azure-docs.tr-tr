@@ -1,18 +1,18 @@
 ---
 title: Azure Active Directory kimlik bilgileriyle Linux VM 'de oturum açma
 description: Azure Active Directory kimlik doğrulaması kullanarak oturum açmak için bir Linux VM oluşturma ve yapılandırma hakkında bilgi edinin.
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: sandeo
+ms.openlocfilehash: 89b89d30de46727f4d5b52a236a4b0133e663bb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088776"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -113,7 +113,7 @@ Uzantı VM 'ye başarıyla yüklendikten sonra, *başarılı* olan *provisioning
 
 ## <a name="configure-role-assignments-for-the-vm"></a>VM için rol atamalarını yapılandırma
 
-Azure rol tabanlı Access Control (RBAC) ilkesi, VM 'de kimlerin oturum Açabili belirler. VM oturum açma yetkisini yetkilendirmek için iki RBAC rolü kullanılır:
+Azure rol tabanlı erişim denetimi (Azure RBAC) ilkesi, VM 'de kimlerin oturum Açabili belirler. VM oturum açma yetkisini yetkilendirmek için iki RBAC rolü kullanılır:
 
 - **Sanal Makine Yöneticisi oturum açma**: Bu role atanmış kullanıcılar, Windows Yöneticisi veya Linux kök kullanıcı ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
 - **Sanal makine Kullanıcı oturumu açma**: Bu role atanmış kullanıcılar, normal kullanıcı ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.

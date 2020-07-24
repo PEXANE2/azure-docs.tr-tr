@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090085"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -18,7 +18,7 @@ Kurulum adımlarını tamamladıktan sonra, bu akıştaki tüm hareketleri algı
 
 ![Hareket algılamayı temel alan canlı video analizi](./media/analyze-live-video/motion-detection.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * Geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) . [Azure IoT araçları uzantısına](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)sahip olduğunuzdan emin olun.
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 * IoT Hub
 * Depolama hesabı
 * Azure Media Services hesabı
-* Azure 'da [IoT Edge çalışma zamanı](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) yüklü bir Linux sanal makinesi
+* Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge-linux.md) yüklü bir Linux sanal makinesi
 
 Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıtmak üzere [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanızı öneririz. Bunu yapmak için şu adımları uygulayın:
 
@@ -44,7 +44,7 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
 
     ![Ortam Seçicisi](./media/quickstarts/env-selector.png)
 
-1. Şu komutu çalıştırın.
+1. Aşağıdaki komutu çalıştırın.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
@@ -561,7 +561,7 @@ Sonuçları gözlemlemek için aşağıdaki adımları izleyin.
 
 Bu ayrıntılara dikkat edin:
 
-* İleti bir `body` bölüm ve bir bölüm içerir `applicationProperties` . Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+* İleti bir `body` bölüm ve bir bölüm içerir `applicationProperties` . Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](../../iot-hub/iot-hub-devguide-messages-construct.md).
 * ' De, içindeki `applicationProperties` `subject` `MediaGraph` iletinin oluşturulduğu düğüme başvurur. Bu durumda, ileti hareket algılama işlemcisinden kaynaklanır.
 * `applicationProperties`' De, `eventType` Bu olayın bir analiz olayı olduğunu gösterir.
 * `eventTime`Değer, olayın gerçekleştiği zaman değeridir.

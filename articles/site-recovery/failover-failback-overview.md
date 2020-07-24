@@ -4,10 +4,11 @@ description: Azure Site Recovery yük devretme ve failable hakkında bilgi edini
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089541"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Şirket içi olağanüstü durum kurtarma yük devretme/yeniden çalışma hakkında
 
@@ -53,7 +54,7 @@ RDP/SSH kullanılarak yük devretmeden sonra oluşturulan Azure VM 'lerine bağl
 
 Site Recovery, farklı yük devretme seçenekleri sağlar.
 
-**Yükünü** | **Ayrıntılar** | **Kurtarma** | **Akışıyla**
+**Yükünü** | **Ayrıntılar** | **Kurtarma** | **Workflow**
 --- | --- | --- | ---
 **Yük devretme testi** | Veri kaybı veya kapalı kalma süresi olmadan BCDR stratejinizi doğrulayan bir detaya gitme çalıştırmak için kullanılır.| Azure 'da, devam eden çoğaltma üzerinde veya üretim ortamınızda bir etkisi olmadan VM 'nin bir kopyasını oluşturur. | 1. bir kurtarma planında tek bir VM 'de veya birden çok VM 'de yük devretme testi çalıştırın.<br/><br/> 2. test yük devretmesi için kullanılacak bir kurtarma noktası seçin.<br/><br/> 3. Azure VM 'nin yük devretme sonrasında oluşturulduğu sırada bulunduğu bir Azure ağı seçin. Ağ yalnızca yük devretme testi için kullanılır.<br/><br/> 4. detayın beklendiği gibi çalıştığını doğrulayın. Site Recovery, detaya gitme sırasında Azure 'da oluşturulan VM 'Leri otomatik olarak temizler.
 **Planlı Yük devretme-Hyper-V**  | Genellikle planlanan kapalı kalma süresi için kullanılır.<br/><br/> Kaynak VM 'Ler kapatılıyor. En son veriler, yük devretme başlatılmadan önce eşitlenir. | Planlı iş akışı için sıfır veri kaybı. | 1. kesinti süresi bakım penceresi planlayın ve kullanıcılara bildirin.<br/><br/> 2. kullanıcıya yönelik uygulamaları çevrimdışına alın.<br/><br/> 3. en son kurtarma noktasıyla planlanmış bir yük devretme başlatın. Makine kapanmazsa veya hatalarla karşılaşılırsa yük devretme çalışmaz.<br/><br/> 4. yük devretmeden sonra Azure 'da çoğaltma Azure VM 'sinin etkin olduğunu denetleyin.<br/><br/> 5. yük devretmeyi tamamlamak için yürütün. Kaydetme eylemi tüm kurtarma noktalarını siler.
@@ -75,7 +76,7 @@ Bazı senaryolarda, yük devretme işleminin tamamlanabilmesi için 8 ila 10 dak
 
 Yük devretme sırasında, bir dizi kurtarma noktası seçeneği belirleyebilirsiniz.
 
-**Seçeneği** | **Ayrıntılar**
+**Seçenek** | **Ayrıntılar**
 --- | ---
 **En son (en düşük RPO)** | Bu seçenek en düşük kurtarma noktası hedefini (RPO) sağlar. İlk olarak, Site Recovery hizmetine gönderilen tüm verileri, yük devretmadan önce her VM için bir kurtarma noktası oluşturmak üzere işler. Bu kurtarma noktası, yük devretme tetiklendiğinde Site Recovery tüm verilerin çoğaltılmasını sağlar.
 **En son işlenen**  | Bu seçenek, Site Recovery tarafından işlenen en son kurtarma noktasına VM 'Leri devreder. Belirli bir sanal makine için en son kurtarma noktasını görmek üzere VM ayarlarındaki **en son kurtarma noktalarını** kontrol edin. İşlenmemiş verileri işlemek için zaman harcanmadığından bu seçenekte düşük bir RTO (Kurtarma Süresi Hedefi) sağlanır.

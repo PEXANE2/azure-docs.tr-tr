@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8f668844951a2416b25d1649721fc005a0d70b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0270cebec21ca10327a86ea5efebef9a52455930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089354"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `mount` ' de bir giriş oluşturarak, komut ve önyükleme ile isteğe bağlı `/etc/fstab` .
 
 Linux 'ta bir Azure dosya paylaşımının bağlanması için önerilen yol, SMB 3,0 ' i kullanmaktır. Azure dosyaları varsayılan olarak, yalnızca SMB 3,0 tarafından desteklenen aktarım için şifreleme gerektirir. Azure dosyaları, geçiş sırasında şifrelemeyi desteklemeyen SMB 2,1 ' ı da destekler, ancak Azure dosya paylaşımlarını başka bir Azure bölgesinden veya şirket içi güvenlik nedenleriyle SMB 2,1 ile birlikte bağlayamayabilir. Uygulamanız özellikle SMB 2,1 ' i gerektirmediği için, en popüler, son yayınlanan Linux dağıtımları SMB 3,0 ' yi destekleyen en popüler, bunu kullanmanın küçük bir nedeni vardır:  
 
-| | SMB 2.1 <br>(Aynı Azure bölgesindeki VM 'lerde takar) | SMB 3.0 <br>(Şirket içi ve çapraz bölge 'den takar) |
+| Linux dağıtımı | SMB 2.1 <br>(Aynı Azure bölgesindeki VM 'lerde takar) | SMB 3.0 <br>(Şirket içi ve çapraz bölge 'den takar) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
 | Red Hat Enterprise Linux (RHEL) | 7 + | 7,5 + |
@@ -34,7 +34,7 @@ Yukarıdaki tabloda listelenmeyen bir Linux dağıtımını kullanıyorsanız Li
 uname -r
 ```
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**CIFS-utils paketinin yüklü olduğundan emin olun.**  
@@ -249,18 +249,18 @@ Linux Kernel 4,18 ' den itibaren, eski nedenler için çağrılan SMB çekirdek 
 | Dağıtım | SMB 1 devre dışı bırakabilir |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | Hayır |
-| Ubuntu 18.04 | Evet |
-| Ubuntu 19.04 + | Evet |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
 | De, 8-9 | Hayır |
-| De, 10 + | Evet |
-| Fedora 29 + | Evet |
+| De, 10 + | Yes |
+| Fedora 29 + | Yes |
 | CentOS 7 | Hayır | 
-| CentOS 8 + | Evet |
+| CentOS 8 + | Yes |
 | Red Hat Enterprise Linux 6. x-7. x | Hayır |
-| Red Hat Enterprise Linux 8 + | Evet |
+| Red Hat Enterprise Linux 8 + | Yes |
 | openSUSE artık 15,0 | Hayır |
-| openSUSE artık 15.1 + | Evet |
-| openSUSE Tpoed | Evet |
+| openSUSE artık 15.1 + | Yes |
+| openSUSE Tpoed | Yes |
 | SUSE Linux Enterprise 11. x-12. x | Hayır |
 | SUSE Linux Enterprise 15 | Hayır |
 | SUSE Linux Enterprise 15,1 | Hayır |
@@ -323,6 +323,6 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Dosyaları hakkında daha fazla bilgi edinmek için şu bağlantılara göz atın:
 
-* [Azure Dosyaları dağıtımı planlama](storage-files-planning.md)
+* [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
 * [SSS](../storage-files-faq.md)
 * [Sorun giderme](storage-troubleshoot-linux-file-connection-problems.md)

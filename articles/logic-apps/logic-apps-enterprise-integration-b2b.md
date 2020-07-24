@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090391"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack kullanarak B2B AS2 iletileri alma ve onaylama
 
@@ -20,7 +21,7 @@ Ticari iş ortakları ve anlaşmaları tanımlayan bir tümleştirme hesabınız
 
 Bu makalede, bir Istek tetikleyicisi kullanarak HTTP isteği alan ve AS2 ve x12 eylemlerini kullanarak ileti içeriğinin kodunu çözen ve yanıt eylemini kullanarak bir yanıt döndüren mantıksal uygulamanın nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -34,7 +35,7 @@ Bu makalede, bir Istek tetikleyicisi kullanarak HTTP isteği alan ve AS2 ve x12 
 
   Logic Apps 'e yeni başladıysanız, [Azure Logic Apps nedir?](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin.
 
-* Azure aboneliğinizle ilişkili ve mantıksal uygulamanıza bağlanmış bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-accounts.md) . Hem mantıksal uygulamanız hem de tümleştirme hesabınız aynı konumda veya Azure bölgesinde bulunmalıdır.
+* Azure aboneliğinizle ilişkili ve mantıksal uygulamanıza bağlanmış bir [tümleştirme hesabı](./logic-apps-enterprise-integration-create-integration-account.md) . Hem mantıksal uygulamanız hem de tümleştirme hesabınız aynı konumda veya Azure bölgesinde bulunmalıdır.
 
 * Tümleştirme hesabınızda zaten tanımlamış olduğunuz en az iki [ticari iş ortağı](../logic-apps/logic-apps-enterprise-integration-partners.md) , bu iş ortakları için [AS2 ve x12 sözleşmeleri](logic-apps-enterprise-integration-agreements.md) ile birlikte.
 
@@ -104,7 +105,7 @@ Ticaret ortağına iletinin alındığını bildirmek için, **Yanıt** EYLEMINI
 
 1. **AS2 kod çözme** eylemi altında **yeni adım**' ı seçin.
 
-1. **Eylem seçin**altında, arama kutusunda, **yerleşik**' i seçin. Arama kutusuna `condition` yazın. **Eylemler** listesinden **koşul**' ı seçin.
+1. **Eylem seçin**altında, arama kutusunda, **yerleşik**' i seçin. Arama kutusuna `condition` yazın. **Eylemler** listesinden **Koşul**'u seçin.
 
    !["Koşul" eylemini ekleyin](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
 

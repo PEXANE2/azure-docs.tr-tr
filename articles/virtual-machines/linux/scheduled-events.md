@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f91b5879922fc473ff1e46f817b3d649b1b30a9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262115"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088742"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux sanal makineleri için Zamanlanan Olaylar
 
@@ -39,7 +39,7 @@ Zamanlanan Olaylar, uygulamanız bakımın ne zaman yapılacağını bulabilir v
 
 Zamanlanan Olaylar aşağıdaki kullanım durumlarında Olaylar sağlar:
 
-- [Platform tarafından başlatılan bakım](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (ÖRNEĞIN, VM yeniden başlatma, dinamik geçiş veya konak için güncelleştirmeleri koruma)
+- [Platform tarafından başlatılan bakım](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (ÖRNEĞIN, VM yeniden başlatma, dinamik geçiş veya konak için güncelleştirmeleri koruma)
 - Sanal makine, yakında başarısız olarak tahmin edilen [düşürülmüş konak donanımında](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) çalışıyor
 - Kullanıcı tarafından başlatılan bakım (örneğin, bir Kullanıcı bir VM 'yi yeniden başlatır veya yeniden dağıtır)
 - [Spot VM](spot-vms.md) ve [spot ölçek kümesi](../../virtual-machine-scale-sets/use-spot.md) örnek çıkarmaları.
@@ -98,7 +98,7 @@ Bir VM 'yi yeniden başlatırsanız, türüne sahip bir olay `Reboot` zamanlanı
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-### <a name="headers"></a>Üst bilgiler
+### <a name="headers"></a>Üst Bilgiler
 Metadata Service sorgulayıp, `Metadata:true` isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgiyi sağlamanız gerekir. `Metadata:true`Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
 
 ### <a name="query-for-events"></a>Olayları sorgula
@@ -189,7 +189,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
 this_host = socket.gethostname()
 
 
@@ -233,4 +233,4 @@ if __name__ == '__main__':
 - Tanıtım görmek için [Azure Cuma 'daki zamanlanan olaylar](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) izleyin. 
 - [GitHub deposunda zamanlanan olaylar Azure örnek meta verileri](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)zamanlanan olaylar kod örneklerini inceleyin.
 - [Instance Metadata Service](instance-metadata-service.md)mevcut olan API 'ler hakkında daha fazla bilgi edinin.
-- [Azure 'Da Linux sanal makineleri için planlı bakım](planned-maintenance.md)hakkında bilgi edinin.
+- [Azure 'Da Linux sanal makineleri için planlı bakım](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)hakkında bilgi edinin.

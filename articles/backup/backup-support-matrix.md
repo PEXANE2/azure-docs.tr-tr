@@ -3,11 +3,13 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091020"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -31,10 +33,10 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 --- | ---
 **Abonelikte kasa** | Tek bir abonelikte en fazla 500 kurtarma hizmeti Kasası.
 **Kasadaki makineler** | Tek bir kasada en fazla 1.000 Azure VM.<br/><br/> 50 MABS sunucusuna kadar tek bir kasada kayıt yapılabilir.
-**Veri kaynakları** | Tek bir [veri kaynağının](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) en büyük boyutu 54.400 GB 'dir. Bu sınır, Azure VM yedeklemeleri için geçerlidir. Kasaya yedekleyebileceğiniz toplam veri miktarı için sınır uygulanmaz.
+**Veri kaynakları** | Tek bir [veri kaynağının](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) en büyük boyutu 54.400 GB 'dir. Bu sınır, Azure VM yedeklemeleri için geçerlidir. Kasaya yedekleyebileceğiniz toplam veri miktarı için sınır uygulanmaz.
 **Kasaya yedeklemeler** | **Azure VM 'leri:** Günde bir kez.<br/><br/>**DPM/MABS tarafından korunan makineler:** Günde iki kez.<br/><br/> **Mars Aracısı kullanılarak doğrudan yedeklenen makineler:** Günde üç kez.
 **Kasaların arasındaki yedeklemeler** | Yedekleme bir bölgede yer alan.<br/><br/> Yedeklemek istediğiniz VM 'Leri içeren her Azure bölgesinde bir kasaya ihtiyacınız vardır. Farklı bir bölgeye yedekleme yapamazsınız.
-**Kasaları taşı** | Kasalarını abonelikler arasında veya aynı abonelikteki kaynak grupları arasında [taşıyabilirsiniz](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) . Ancak, kasaların bölgeler arasında taşınması desteklenmez.
+**Kasaları taşı** | Kasalarını abonelikler arasında veya aynı abonelikteki kaynak grupları arasında [taşıyabilirsiniz](./backup-azure-move-recovery-services-vault.md) . Ancak, kasaların bölgeler arasında taşınması desteklenmez.
 **Kasaları arasında veri taşıma** | Yedeklenen verilerin kasaların arasına taşınması desteklenmez.
 **Kasa depolama türünü değiştir** | Yedeklemeler depolanmadan önce bir kasa için depolama çoğaltma türünü (coğrafi olarak yedekli depolama veya yerel olarak yedekli depolama) değiştirebilirsiniz. Yedekler kasada başladıktan sonra çoğaltma türü değiştirilemez.
 
@@ -55,7 +57,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 
 **Sınırlı** | **Ayrıntılar**
 --- | ---
-**Azure VM veri diskleri** | Bkz. [Azure VM yedeklemesi için destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
+**Azure VM veri diskleri** | Bkz. [Azure VM yedeklemesi için destek matrisi](./backup-support-matrix-iaas.md#vm-storage-support).
 **Azure VM veri diski boyutu** | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB olabilir.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM yedekleme seçenekleri
@@ -75,11 +77,11 @@ Linux makinelerini yedeklemek istiyorsanız, bu destek aşağıda verilmiştir:
 
 **Yedekleme türü** | **Linux (Azure onaysed)**
 --- | ---
-**Linux çalıştıran şirket içi makinenin doğrudan yedeklemesi** | Desteklenmiyor. MARS Aracısı yalnızca Windows makinelerine yüklenebilir.
+**Linux çalıştıran şirket içi makinenin doğrudan yedeklemesi** | Desteklenmez. MARS Aracısı yalnızca Windows makinelerine yüklenebilir.
 **Linux çalıştıran Azure VM 'yi yedeklemek için aracı uzantısı kullanma** | [Özel betikler](backup-azure-linux-app-consistent.md)kullanarak uygulamayla tutarlı yedekleme.<br/><br/> Dosya düzeyinde kurtarma.<br/><br/> Kurtarma noktasından veya diskten bir VM oluşturarak geri yükleyin.
 **Linux çalıştıran şirket içi makineleri yedeklemek için DPM 'yi kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.
 **Linux çalıştıran şirket içi makineleri yedeklemek için MABS kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.
-**Linux Azure VM 'lerini yedeklemek için MABS veya DPM kullanma** | Desteklenmiyor.
+**Linux Azure VM 'lerini yedeklemek için MABS veya DPM kullanma** | Desteklenmez.
 
 ## <a name="daylight-saving-time-support"></a>Gün ışığından yararlanma süresi desteği
 
@@ -114,10 +116,10 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
-**Azure VM’leri** | ![Evet][green] | ![Evet][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
+**Azure VM’leri** | ![Yes][green] | ![Yes][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -128,9 +130,9 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 **Makine** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
-**Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Evet][green]
+**Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Yes][green]
 **VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Evet][green] | ![Evet][green]
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
@@ -148,12 +150,12 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlendirin ve müşterilere verileri ikincil bir bölgeye geri yüklemek için tam denetim sağlayan çapraz bölge geri yükleme özelliğini ekledi. Bu özelliği yapılandırmak için [çapraz bölge geri yüklemeyi ayarla makalesini](backup-create-rs-vault.md#set-cross-region-restore)ziyaret edin. Bu özellik aşağıdaki yönetim türleri için desteklenir:
 
-| Yedekleme yönetimi türü | Destekleniyor                                                    | Desteklenen bölgeler |
+| Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| MARS Aracısı/şirket içi | Hayır                                                           | YOK               |
-| SQL/SAP HANA          | Hayır                                                           | YOK               |
-| 'Nın                    | Hayır                                                           | YOK               |
+| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
+| SQL/SAP HANA          | Hayır                                                           | Yok               |
+| 'Nın                    | Hayır                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

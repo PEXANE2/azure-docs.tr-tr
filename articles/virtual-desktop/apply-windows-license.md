@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: c60303d2306ca167a4d90b0cc27c1d265f2e2db8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53e70fbb1321f33849073bbd6b2176f5d88a1f8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089006"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Windows lisansını oturum ana bilgisayarı sanal makinelerine Uygula
 
@@ -27,7 +27,7 @@ Windows sanal masaüstü lisansını kullanmanın birkaç yolu vardır:
 - Mevcut bir oturum ana bilgisayar sanal makinesine lisans uygulayabilirsiniz. Bunu yapmak için önce [PowerShell ile konak havuzu oluşturma](./create-host-pools-powershell.md) ' daki yönergeleri izleyerek bir konak havuzu ve Ilişkili VM 'ler oluşturun ve ardından bu makaleye geri dönüp lisansın nasıl uygulanacağını öğrenin.
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Bir oturum ana bilgisayar VM 'sine bir Windows lisansı uygulama
-[En son Azure PowerShell yükleyip yapılandırdığınızdan](/powershell/azure/overview)emin olun. Windows lisansını uygulamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+[En son Azure PowerShell yükleyip yapılandırdığınızdan](/powershell/azure/)emin olun. Windows lisansını uygulamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
 $vm = Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>

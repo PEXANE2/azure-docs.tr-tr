@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107708"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090102"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Azure Geçişi ile geçiş planı oluşturma
 
@@ -151,7 +151,7 @@ Geçiş planınızı sonuçlandırmadan önce, bu anahtar geçişi konularının
 
 - Gerekirse uygulamanız için destek alın. Birçok kuruluş, bulut geçişini desteklemeye yönelik yardım dışarıdan tercih eder. Kişiselleştirilmiş yardım ile hızlı ve sorunsuz bir şekilde Azure 'a geçmek için bir [Azure Expert yönetilen hizmet sağlayıcısı](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   veya [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF)değerlendirin.  
 
-Geçirmek istediğiniz uygulama listesi/grupları, uygulamanız ve veritabanı kullanılabilirliği ve kapalı kalma kısıtlamaları ve istediğiniz geçiş kilometre taşları hakkında ayrıntılı bilgi içeren etkili bir bulut geçiş planı oluşturun. Geçiş planınız Ayrıca veri kopyasının ne kadar süreyle alınacağını ve geçiş sonrası testi ve tam geçişi etkinlikleri için bir considerate arabelleği dahil etmeyi de dikkate almalıdır. Geçiş sonrası testi, geçirilen uygulamaların beklendiği gibi çalıştığından ve tüm veritabanı nesnelerinin ve veri ilişkilerinin buluta başarıyla aktarılmasını sağlamak için işlevsel, tümleştirme, güvenlik ve performans testi kullanım örneklerini içermelidir. Geçiş sonrası testi, geçirilen uygulamaların beklendiği gibi çalıştığından ve tüm veritabanı nesnelerinin ve veri ilişkilerinin buluta başarıyla aktarılmasını sağlamak için işlevsel, tümleştirme, güvenlik ve performans testi kullanım örneklerini içermelidir.  
+Geçirmek istediğiniz uygulama listesi/grupları, uygulamanız ve veritabanı kullanılabilirliği ve kapalı kalma kısıtlamaları ve istediğiniz geçiş kilometre taşları hakkında ayrıntılı bilgi içeren etkili bir bulut geçiş planı oluşturun. Geçiş planınız Ayrıca veri kopyasının ne kadar süreyle alınacağını ve geçiş sonrası testi ve tam geçişi etkinlikleri için bir considerate arabelleği dahil etmeyi de dikkate almalıdır. Geçiş sonrası testi, geçirilen uygulamaların beklendiği gibi çalıştığından ve tüm veritabanı nesnelerinin ve veri ilişkilerinin buluta başarıyla aktarılmasını sağlamak için işlevsel, tümleştirme, güvenlik ve performans testi kullanım örneklerini içermelidir.  
 
 Bu analizi kullanarak bir geçiş yol haritası oluşturun ve uygulamalarınızı ve veritabanlarınızı minimum ve sıfır kapalı kalma süresine geçirmek için bir bakım penceresi bildirin ve geçiş sırasında olası işletimsel/iş etkisini sınırlayın.  
 

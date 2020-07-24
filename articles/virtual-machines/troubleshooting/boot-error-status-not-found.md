@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088674"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Windows Önyükleme Yöneticisi hata sorunlarını giderme-0xC0000225 "durum bulunamadı"
  
@@ -26,7 +27,7 @@ Bu makalede, bir Azure VM 'de 0xC0000225 hata kodu oluştuğunda oluşan sorunla
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde, *0xc0000225*durum koduyla bir Windows 'un hata başlatma başarısız olduğunu görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde, *0xc0000225*durum koduyla bir Windows 'un hata başlatma başarısız olduğunu görürsünüz.
 
 Bu hata koduyla ilişkili dosya, sorunu çözmek için hangi adımların ele alınacağı hakkında bilgi sağlayacaktır. Uygun eylem kursu belirlemek için **dosyanın** metin bölümünü bulun.
 
@@ -89,7 +90,7 @@ Bu durumda, **önyükleme yapılandırma verileri (BCD)** bozuk ya da **sanal sa
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
 1. Uzak Masaüstü Bağlantısı kullanarak, onarım sanal makinesine bağlanın.
 
 ### <a name="select-a-solution"></a>Bir çözüm seçin
@@ -177,7 +178,7 @@ Bu bilgi toplama, bir **\Boot\BCD** dosyası olmadığında bir hata verirse, bu
          sel disk <DISK #>
          ```
 
-         Aşağıdaki görüntüde bir diski listeleme ve seçme sonuçları gösterilmektedir. Disk 0 (127 GB | Çevrimiçi), disk 1 (32 GB | Çevrimiçi) ve disk 2 (127 GB | Çevrimiçi), komutunu kullanarak disk 2 ' nin seçilme ile listelenir `sel disk 2` .
+         Aşağıdaki görüntüde bir diski listeleme ve seçme sonuçları gösterilmektedir. Disk 0 (127 GB/çevrimiçi), disk 1 (32 GB/çevrimiçi) ve disk 2 (127 GB/çevrimiçi), komutunu kullanarak disk 2 ' nin seçilme ile listelenir `sel disk 2` .
 
          ![Disk listeleme ve sonra bir diski seçme sonuçları. Disk 0 (127 GB | Çevrimiçi), disk 1 (32 GB | Çevrimiçi) ve disk 2 (127 GB | Çevrimiçi), 2. disk seçiliyken listelenir.](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -188,7 +189,7 @@ Bu bilgi toplama, bir **\Boot\BCD** dosyası olmadığında bir hata verirse, bu
          sel partition <PARTITION #>
          ```
 
-         Aşağıdaki görüntüde bir bölümü listeleme ve seçme sonuçları gösterilmektedir. Bölüm 1 (ayrılmış | 16MB), Bölüm 2 (sistem | 100MB) ve Bölüm 3 (birincil | 126 GB) listelenir. Bu komut, Bölüm 2 ' yi kullanarak seçilir `sel part 2` .
+         Aşağıdaki görüntüde bir bölümü listeleme ve seçme sonuçları gösterilmektedir. Bölüm 1 (ayrılmış/16), Bölüm 2 (sistem/100 MB) ve Bölüm 3 (birincil/126 GB) listelenir. Bu komut, Bölüm 2 ' yi kullanarak seçilir `sel part 2` .
 
          ![Bölüm listeleme ve sonra bir bölümü seçme sonuçları. Bölüm 1 (ayrılmış | 16MB), Bölüm 2 (sistem | 100MB) ve Bölüm 3 (birincil | 126 GB), Bölüm 2 seçili olacak şekilde listelenmiştir.](./media/troubleshoot-boot-error-status-not-found/10.png)
 
@@ -302,4 +303,4 @@ Bu görev tamamlandıktan sonra [seri konsol ve bellek dökümü toplamayı etki
    
 ### <a name="rebuild-the-vm"></a>VM 'yi yeniden oluşturma
 
-VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

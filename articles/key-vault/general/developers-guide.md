@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476776"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090544"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -40,7 +40,7 @@ Anahtar kasaınızdaki anahtarlar, gizlilikler veya sertifikalarla çalışmadan
 
 - [CLı ile Anahtar Kasası oluşturma ve yönetme](../secrets/quick-create-cli.md)
 - [PowerShell ile Anahtar Kasası oluşturma ve yönetme](../secrets/quick-create-powershell.md)
-- [Azure bağlantı noktasıyla Anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-portal.md)
+- [Azure portal ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-portal.md)
 - [Python ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-python.md)
 - [Java ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-java.md)
 - [Node.jsanahtarla anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-node.md)
@@ -75,11 +75,11 @@ Key Vault kaynaklarınızın tamamına REST arabiriminden erişilebilir. Kasalar
 
 Node.js, Key Vault yönetim API 'SI ve Key Vault nesne API 'SI ayrıdır. Aşağıdaki genel bakış makalesi, her ikisine de erişmenizi sağlar. 
 
-[Node.jsiçin Azure Key Vault modüller](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Node.jsiçin Azure Key Vault modüller](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Python için Azure Key Vault kitaplıkları](/python/api/overview/azure/key-vault?view=azure-python)
+[Python için Azure Key Vault kitaplıkları](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ Uygulamalarınızla Key Vault kullanan tüm örnekler için bkz.:
 
 Aşağıdaki makaleler ve senaryolar Azure Key Vault çalışmak için göreve özgü rehberlik sağlar:
 
-- [Anahtar Kasası KIRACı kimliğini değiştirme abonelik taşıma sonrasında](subscription-move-fix.md) , Azure aboneliğinizi A Kiracısından b kiracısına taşıdığınızda mevcut anahtar kasalarınız, b kiracısındaki sorumlular (kullanıcılar ve uygulamalar) tarafından erişilemez. bu kılavuzu kullanarak bunu düzeltin.
+- [Anahtar Kasası KIRACı kimliğini değiştirme abonelik taşıma sonrasında](move-subscription.md) , Azure aboneliğinizi A Kiracısından b kiracısına taşıdığınızda mevcut anahtar kasalarınız, b kiracısındaki sorumlular (kullanıcılar ve uygulamalar) tarafından erişilemez. bu kılavuzu kullanarak bunu düzeltin.
 - [Güvenlik duvarının arkasındaki Key Vault erişme](access-behind-firewall.md) -anahtar kasasına erişmek için Anahtar Kasası istemci uygulamanızın çeşitli işlevlere ilişkin birden çok uç noktaya erişebilmesi gerekir.
 - [Azure Key Vault IÇIN HSM korumalı anahtarlar oluşturma ve aktarma](../keys/hsm-protected-keys.md) -bu, Azure Key Vault ile kullanmak IÇIN kendi HSM korumalı anahtarlarınızı planlayıp oluşturmanıza yardımcı olur.
 - [Dağıtım sırasında güvenli değerleri (parolalar](../../azure-resource-manager/templates/key-vault-parameter.md) gibi) geçirme-dağıtım sırasında bir parametre olarak güvenli bir değer (parola gibi) iletmeniz gerektiğinde, bu değeri bir Azure Key Vault gizli olarak saklayabilir ve diğer kaynak yöneticisi şablonlarındaki değere başvurabilirsiniz.

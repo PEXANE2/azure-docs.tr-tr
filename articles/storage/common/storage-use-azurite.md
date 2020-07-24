@@ -1,22 +1,22 @@
 ---
 title: Yerel Azure depolama geliştirmesi için Azurite öykünücüsünü kullanma
-description: Azurite açık kaynaklı öykünücü (Önizleme), Azure depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar.
+description: Azurite açık kaynaklı öykünücü, Azure depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/01/2020
+ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512143"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089422"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Yerel Azure depolama geliştirme ve test (Önizleme) için Azurite öykünücüsünü kullanın
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Yerel Azure depolama geliştirmesi için Azurite öykünücüsünü kullanma
 
-Azurite sürümü 3,2 açık kaynaklı öykünücü (Önizleme), Azure Blob ve kuyruk depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar. Uygulamanızın yerel olarak nasıl çalıştığı konusunda memnun olduğunuzda, bulutta bir Azure depolama hesabı kullanmaya geçiş yapın. Öykünücü, Windows, Linux ve macOS 'ta platformlar arası destek sağlar. Azurite v3, Azure Blob hizmeti tarafından uygulanan API 'Leri destekler.
+Azurite açık kaynaklı öykünücü, Azure Blob ve kuyruk depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar. Uygulamanızın yerel olarak nasıl çalıştığı konusunda memnun olduğunuzda, bulutta bir Azure depolama hesabı kullanmaya geçiş yapın. Öykünücü, Windows, Linux ve macOS 'ta platformlar arası destek sağlar.
 
 Azurite, gelecekteki depolama öykünücü platformudur. Azurite, [Azure depolama öykünücüsünün](storage-use-emulator.md)yerini almıştır. Azurite, Azure depolama API 'lerinin en son sürümlerini destekleyecek şekilde güncellenmeye devam edecektir.
 
@@ -34,8 +34,6 @@ Visual Studio Code içinde, **Uzantılar** bölmesini seçin ve **Uzantılar: ma
 ![Visual Studio Code uzantıları marketi](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 Ayrıca, tarayıcınızda [Visual Studio Code uzantısı pazarına](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) gidebilirsiniz. Visual Studio Code açmak için **Aç düğmesini seçin** ve doğrudan Azurite uzantısı sayfasına gidin.
-
-Visual Studio Code durum çubuğunda Azurite 'yi hızlıca başlatabilir veya kapatabilirsiniz. **[Azurite blob hizmeti]** veya **[Azurite kuyruğu hizmeti]** öğesine tıklayın.
 
 Uzantı aşağıdaki Visual Studio Code komutlarını destekler. Komut paletini açmak için Visual Studio Code F1 tuşuna basın. 
 
@@ -67,6 +65,7 @@ Aşağıdaki ayarlar desteklenir:
    - **Azurite: kuyruk Konağı** -dinleme uç noktası kuyruk hizmeti. Varsayılan ayar 127.0.0.1 ' dir.
    - **Azurite: kuyruk bağlantı** noktası-dinleme bağlantı noktası kuyruk hizmeti. Varsayılan bağlantı noktası 10001 ' dir.
    - **Azurite: sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false** şeklindedir.
+   - **Azurite: API sürüm denetimini atla** -Istek API 'si sürüm denetimini atla. Varsayılan değer **false** şeklindedir.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>NPM kullanarak Azurite 'i yükleyip çalıştırma
 
@@ -310,6 +309,15 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 > OAuth bir HTTPS uç noktası gerektirir. Anahtarla birlikte anahtar sağlayarak HTTPS 'nin etkinleştirildiğinden emin olun `--cert` `--oauth` .
 
 Azurite, anahtarın parametresini belirterek temel kimlik doğrulamasını destekler `basic` `--oauth` . Azurite, gelen taşıyıcı belirtecini doğrulama, verenin, izleyici ve süre sonu denetleme gibi temel kimlik doğrulaması yapar. Azurite, belirteç imzasını veya izinleri denetlemez.
+
+### <a name="skip-api-version-check"></a>API sürüm denetimini atla
+
+**Isteğe bağlı** -Başlarken, Azurite, istenen API sürümünün geçerli olduğunu denetler. Aşağıdaki komut API sürüm denetimini atlar:
+
+```console
+azurite --skipApiVersionCheck
+```
+
 
 ## <a name="authorization-for-tools-and-sdks"></a>Araçlar ve SDK 'lar için yetkilendirme
 

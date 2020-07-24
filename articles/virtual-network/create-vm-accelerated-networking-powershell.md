@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 582553675284e88e4707812b1f6b459a4e67f14a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088198"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell kullanarak hızlandırılmış ağlarla bir Windows sanal makinesi oluşturma
 
@@ -41,7 +41,7 @@ Hızlandırılmış ağ ile ağ trafiği VM 'nin ağ arabirimine (NIC) ulaşır 
 
 Hızlandırılmış ağ avantajları yalnızca etkin olduğu VM için geçerlidir. En iyi sonuçlar için, bu özelliği aynı Azure sanal ağına bağlı en az iki VM üzerinde etkinleştirin. Sanal ağlar arasında iletişim kurarken veya şirket içinde bağlantı kurarken, bu özelliğin genel gecikme süresine en az etkisi vardır.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 - **Saniye başına düşük gecikme süresi/daha yüksek paketler (PPS)**: veri yolundan sanal anahtarı ortadan kaldırmak, ilke işleme için konakta harcadıkları zaman paketlerini kaldırır. Ayrıca sanal makine içinde işlenebilecek paketlerin sayısını artırır.
 
@@ -63,7 +63,7 @@ Aşağıdaki dağıtımlar doğrudan Azure galerisinden desteklenir:
 
 Hızlandırılmış ağ, iki veya daha fazla sanal CPU (vCPU) ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir.  Bu desteklenen seriler şunlardır: dv2/DSv2 ve F/FS.
 
-Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, dört veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen Seriler: D/Dsv3, D/Dsv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
+Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, dört veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen Seriler: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
 
 VM örnekleri hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

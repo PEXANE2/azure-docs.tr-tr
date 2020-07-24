@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090255"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Visual Studio 'da Azure Logic Apps ve Azure Işlevleri 'ni kullanarak ilk sunucusuz uygulamanızı derleme
 
 Azure 'daki [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Azure işlevleri](../azure-functions/functions-overview.md)gibi sunucusuz araçları ve özellikleri kullanarak bulut uygulamalarını hızlı bir şekilde geliştirebilir ve dağıtabilirsiniz. Bu makalede, Visual Studio 'da bir Azure işlevi çağıran bir mantıksal uygulama kullanan sunucusuz bir uygulama oluşturmaya nasıl başlayabileceği gösterilmektedir. Azure 'da sunucusuz çözümler hakkında daha fazla bilgi edinmek için bkz. [Azure sunucusuz WITH Functions and Logic Apps](../logic-apps/logic-apps-serverless-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Visual Studio 'da sunucusuz bir uygulama oluşturmak için şunlar gerekir:
 
@@ -31,7 +32,7 @@ Visual Studio 'da sunucusuz bir uygulama oluşturmak için şunlar gerekir:
     > Visual Studio 2019 veya 2017 yüklediğinizde, **Azure geliştirme** iş yükünü seçtiğinizden emin olun.
 
   * [.NET için Microsoft Azure SDK (sürüm 2.9.1 veya üzeri)](https://azure.microsoft.com/downloads/). 
-  [Azure SDK for .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet) hakkında daha fazla bilgi edinin.
+  [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet) hakkında daha fazla bilgi edinin.
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation).
 
@@ -43,7 +44,7 @@ Visual Studio 'da sunucusuz bir uygulama oluşturmak için şunlar gerekir:
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. 
+    Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. 
     Yükleme işlemini tamamladıktan sonra Visual Studio’yu yeniden başlattığınızdan emin olun.
 
   * Yerel olarak hata ayıklama Işlevleri için [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) .
@@ -135,7 +136,7 @@ Mantıksal uygulamanızı dağıtımdan sonra düzenlemek için, mantıksal uygu
 
 ## <a name="create-your-azure-functions-project"></a>Azure Işlevleri projenizi oluşturma
 
-JavaScript, Python, F #, PowerShell, Batch veya Bash kullanarak Işlevler projenizi ve işlevinizi oluşturmak için [Azure Functions Core Tools çalışma](../azure-functions/functions-run-local.md)içindeki adımları izleyin. Çözümünüz Içinde c# kullanarak Azure işlevinizi geliştirmek için bir C# sınıf kitaplığı kullanın, bir [.NET sınıf kitaplığı işlev uygulaması olarak yayımlama](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/)içindeki adımları izleyin.
+JavaScript, Python, F #, PowerShell, Batch veya Bash kullanarak Işlevler projenizi ve işlevinizi oluşturmak için [Azure Functions Core Tools çalışma](../azure-functions/functions-run-local.md)içindeki adımları izleyin. Çözümünüz Içinde c# kullanarak Azure işlevinizi geliştirmek için bir C# sınıf kitaplığı kullanın, bir [.NET sınıf kitaplığı işlev uygulaması olarak yayımlama](https://azure.microsoft.com/blog/)içindeki adımları izleyin.
 
 ## <a name="deploy-functions-from-visual-studio"></a>Visual Studio 'dan işlevleri dağıtma
 

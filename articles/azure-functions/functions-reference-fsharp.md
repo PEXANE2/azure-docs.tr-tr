@@ -6,12 +6,12 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 005cb0044cb4d225c8b94602fb907fee09fb00b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088028"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Işlevleri F # geliştirici başvurusu
 
@@ -51,7 +51,7 @@ FunctionsProject
 Çalışma zamanının [sürüm 2. x ve sonraki sürümlerinde](functions-versions.md) gerekli olan bağlama uzantıları, `extensions.csproj` dosyasında, klasördeki gerçek kitaplık dosyalarıyla birlikte tanımlanmıştır `bin` . Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](./functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
 
 ## <a name="binding-to-arguments"></a>Bağımsız değişkenlere bağlama
-Her bağlama, [Azure işlevleri Tetikleyicileri ve bağlamaları geliştirici başvurusu](functions-triggers-bindings.md)bölümünde açıklandığı gibi bazı bağımsız değişkenler kümesini destekler. Örneğin, bir blob tetikleyicisinin desteklediği bağımsız değişken bağlamalarından biri bir POCO, F # kaydı kullanılarak ifade edilebilir. Örnek:
+Her bağlama, [Azure işlevleri Tetikleyicileri ve bağlamaları geliştirici başvurusu](functions-triggers-bindings.md)bölümünde açıklandığı gibi bazı bağımsız değişkenler kümesini destekler. Örneğin, bir blob tetikleyicisinin desteklediği bağımsız değişken bağlamalarından biri bir POCO, F # kaydı kullanılarak ifade edilebilir. Örneğin:
 
 ```fsharp
 type Item = { Id: string }
@@ -65,7 +65,7 @@ F # Azure işleviniz bir veya daha fazla bağımsız değişken alacak. Azure I�
 
 Yukarıdaki örnekte, `blob` bir giriş bağımsız değişkenidir ve `output` bir çıkış bağımsız değişkenidir. İçin kullandığımızda `byref<>` `output` (ek açıklama eklemeye gerek yoktur) dikkat edin `[<Out>]` . Bir `byref<>` tür kullanılması, işlevinizin, bağımsız değişkenin başvurduğu kaydı veya nesneyi değiştirmesini sağlar.
 
-Bir F # kaydı giriş türü olarak kullanıldığında, `[<CLIMutable>]` kaydı işlevinizin içine geçirmeden önce Azure işlevleri çerçevesinin alanları uygun şekilde ayarlayabilmesi için kayıt tanımının ile işaretlenmiş olması gerekir. Bu şekilde, `[<CLIMutable>]` kayıt özellikleri için ayarlayıcılar oluşturulur. Örnek:
+Bir F # kaydı giriş türü olarak kullanıldığında, `[<CLIMutable>]` kaydı işlevinizin içine geçirmeden önce Azure işlevleri çerçevesinin alanları uygun şekilde ayarlayabilmesi için kayıt tanımının ile işaretlenmiş olması gerekir. Bu şekilde, `[<CLIMutable>]` kayıt özellikleri için ayarlayıcılar oluşturulur. Örneğin:
 
 ```fsharp
 [<CLIMutable>]
@@ -77,7 +77,7 @@ let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-F # sınıfı, hem ın hem de out bağımsız değişkenlerinde kullanılabilir. Bir sınıf için, özelliklerin genellikle alıcıları ve ayarlayıcıları gerekir. Örnek:
+F # sınıfı, hem ın hem de out bağımsız değişkenlerinde kullanılabilir. Bir sınıf için, özelliklerin genellikle alıcıları ve ayarlayıcıları gerekir. Örneğin:
 
 ```fsharp
 type Item() =
@@ -89,8 +89,8 @@ let Run(input: string, item: byref<Item>) =
     item <- result
 ```
 
-## <a name="logging"></a>Günlüğe kaydetme
-Çıktıyı F # içindeki [akış günlüklerinizi](../app-service/troubleshoot-diagnostic-logs.md) günlüğe kaydetmek için Işleviniz [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken almalıdır. Tutarlılık için, bu bağımsız değişkenin adlandırılmış olmasını öneririz `log` . Örnek:
+## <a name="logging"></a>Günlüğe Kaydetme
+Çıktıyı F # içindeki [akış günlüklerinizi](../app-service/troubleshoot-diagnostic-logs.md) günlüğe kaydetmek için Işleviniz [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken almalıdır. Tutarlılık için, bu bağımsız değişkenin adlandırılmış olmasını öneririz `log` . Örneğin:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -182,7 +182,7 @@ Ayrıca, aşağıdaki derlemeler özeldir ve simpleName tarafından başvurulabi
 Özel bir derlemeye başvurmanız gerekirse, derleme dosyasını `bin` işleviniz ile ilişkili bir klasöre yükleyebilir ve dosya adını kullanarak buna başvurabilirsiniz (ör.  `#r "MyAssembly.dll"`). İşlev klasörünüze dosya yükleme hakkında daha fazla bilgi için bkz. Paket yönetimi üzerinde aşağıdaki bölüm.
 
 ## <a name="editor-prelude"></a>Düzenleyici Prelude
-F # derleyici hizmetlerini destekleyen bir düzenleyici, Azure Işlevlerinin otomatik olarak içerdiği ad alanları ve derlemeler hakkında farkında olmayacaktır. Bu nedenle, düzenleyicinin kullandığınız derlemeleri bulmasını ve ad alanlarını açıkça açmasını sağlayan bir Prelude eklemek yararlı olabilir. Örnek:
+F # derleyici hizmetlerini destekleyen bir düzenleyici, Azure Işlevlerinin otomatik olarak içerdiği ad alanları ve derlemeler hakkında farkında olmayacaktır. Bu nedenle, düzenleyicinin kullandığınız derlemeleri bulmasını ve ad alanlarını açıkça açmasını sağlayan bir Prelude eklemek yararlı olabilir. Örneğin:
 
 ```fsharp
 #if !COMPILED
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>. FSX kodunu yeniden kullanma
-`.fsx`Bir yönergesi kullanarak diğer dosyalardaki kodu kullanabilirsiniz `#load` . Örnek:
+`.fsx`Bir yönergesi kullanarak diğer dosyalardaki kodu kullanabilirsiniz `#load` . Örneğin:
 
 `run.fsx`
 
@@ -293,4 +293,3 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
 * [Azure Işlevleri testi](functions-test-a-function.md)
 * [Azure Işlevleri ölçeklendirme](functions-scale.md)
-

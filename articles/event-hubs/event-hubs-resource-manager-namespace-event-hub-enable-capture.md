@@ -3,16 +3,16 @@ title: Yakalama etkinken bir olay hub 'ı oluşturma-Azure Event Hubs | Microsof
 description: Bir olay hub'ı ile bir Azure Event Hubs ad alanı oluşturma ve Azure Resource Manager şablonu kullanarak Yakalamayı etkinleştirme
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 51b654635fa7e06901a257c930e04bff3ea86cf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7308d951cf48d8123df050bdf58772ec914aac3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087603"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Olay hub’ı ile bir ad alanı oluşturma ve şablon kullanarak Yakalamayı etkinleştirm
 
-Bu makalede, bir olay hub 'ı örneğiyle [Event Hubs](event-hubs-what-is-event-hubs.md) ad alanı oluşturan ve ayrıca olay hub 'ında [yakalama özelliğini](event-hubs-capture-overview.md) sağlayan Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir. Makalede, hangi kaynakların dağıtıldığının ve dağıtım yürütülürken belirtilen parametrelerin nasıl tanımlanacağı açıklanmaktadır. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz.
+Bu makalede, bir olay hub 'ı örneğiyle [Event Hubs](./event-hubs-about.md) ad alanı oluşturan ve ayrıca olay hub 'ında [yakalama özelliğini](event-hubs-capture-overview.md) sağlayan Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir. Makalede, hangi kaynakların dağıtıldığının ve dağıtım yürütülürken belirtilen parametrelerin nasıl tanımlanacağı açıklanmaktadır. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz.
 
 Bu makalede ayrıca seçtiğiniz hedefe göre olayları Azure Storage Bloblarında veya bir Azure Data Lake Store’da yakalamayı belirteceğiniz gösterilmektedir.
 
@@ -418,8 +418,8 @@ Event Hubs Yakalama özelliğini [Azure portalı](https://portal.azure.com) üze
 
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Event Hubs genel bakış](event-hubs-what-is-event-hubs.md)
-* [Olay hub’ı oluşturma](event-hubs-create.md)
+* [Event Hubs genel bakış](./event-hubs-about.md)
+* [Olay Hub 'ı oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md

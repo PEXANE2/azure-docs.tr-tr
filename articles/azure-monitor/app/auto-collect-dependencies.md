@@ -5,15 +5,16 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087994"
 ---
 # <a name="dependency-auto-collection"></a>Bağımlılık otomatik toplama
 
-Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan otomatik olarak otomatik olarak algılanan bağımlılık çağrılarının Şu anda desteklenen listesi aşağıda verilmiştir. Bu bağımlılıklar, Application Insights [uygulama Haritası](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) ve [işlem tanılama](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) görünümlerinde görselleştirilir. Bağımlılarınızın aşağıdaki listede olmaması durumunda bunu bir [izleme bağımlılığı çağrısıyla](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)el ile izleyebilirsiniz.
+Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan otomatik olarak otomatik olarak algılanan bağımlılık çağrılarının Şu anda desteklenen listesi aşağıda verilmiştir. Bu bağımlılıklar, Application Insights [uygulama Haritası](./app-map.md) ve [işlem tanılama](./transaction-diagnostics.md) görünümlerinde görselleştirilir. Bağımlılarınızın aşağıdaki listede olmaması durumunda bunu bir [izleme bağımlılığı çağrısıyla](./api-custom-events-metrics.md#trackdependency)el ile izleyebilirsiniz.
 
 ## <a name="net"></a>.NET
 
@@ -22,7 +23,7 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | ASP.NET WebForms | 4.5 + |
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Çekirdeği | 1.1 + |
+| ASP.NET Core | 1.1 + |
 | <b>İletişim kitaplıkları</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -43,7 +44,7 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>Uygulama çerçeveleri</b> |  |
-| [Spring](https://spring.io/) | 3.0 |
+| [Spring](https://spring.io/) | 3,0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java Servlet | 3.1 + |
 | <b>İletişim kitaplıkları</b> |  |
@@ -61,7 +62,7 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 
 > [!NOTE]
 > * Reaktif programlama desteği hariç.
-> <br>† [JVM aracısının](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java)yüklenmesini gerektirir.
+> <br>† [JVM aracısının](./java-agent.md#install-the-application-insights-agent-for-java)yüklenmesini gerektirir.
 
 ## <a name="nodejs"></a>Node.js
 

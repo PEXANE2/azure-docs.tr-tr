@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92b6d8c6cd59f82439beec24c003aac6673014e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84551984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088334"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -31,7 +32,7 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
-1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **Python geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özette, **Python 3 64-bit (3.6.0)** ' in sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak Python iş yükünü ekleyebilirsiniz.
+1. Henüz yapmadıysanız, [Visual Studio 'yu](/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **Python geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özette, **Python 3 64-bit (3.6.0)** ' in sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak Python iş yükünü ekleyebilirsiniz.
 2. Visual Studio 'yu yükleyip başlattıktan sonra **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayın.
 3. **Şablonlar**  >  **Python**  >  **Python uygulaması**' na tıklayın, projenin adı için *mypyıthonproject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
 
@@ -565,6 +566,5 @@ Azure 'da kullanılan kaynaklar için ücretlendirildiğiniz için, artık gerek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Dağıtım ile ilgili sorunlar varsa, bir sonraki adım [Azure Portal ile kaynak grubu dağıtımlarını sorun giderme](../../resource-manager-troubleshoot-deployments-portal.md) bölümüne bakmak olacaktır.
-- [Azure Python kitaplığı](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python) hakkında daha fazla bilgi edinin
-
+- Dağıtım ile ilgili sorunlar varsa, bir sonraki adım [Azure Portal ile kaynak grubu dağıtımlarını sorun giderme](../../azure-resource-manager/templates/deployment-history.md) bölümüne bakmak olacaktır.
+- [Azure Python kitaplığı](/python/api/overview/azure/?view=azure-python) hakkında daha fazla bilgi edinin

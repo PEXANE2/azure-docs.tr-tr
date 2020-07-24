@@ -14,22 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb3b319c583422b32798fce9cef4c73a4aa1f8de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090051"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 ile akış uç noktalarını yönetme
 
 Media Services hesabınız oluşturulduğunda hesabınıza **durdurulmuş** durumda bir **varsayılan** [akış uç noktası](streaming-endpoint-concept.md) eklenir. İçeriğinizi akışa almak ve [dinamik paketleme](dynamic-packaging-overview.md) ile [dinamik şifrelemeden](content-protection-overview.md)yararlanmak için içerik akışı yapmak Istediğiniz akış uç noktasının **çalışıyor** durumda olması gerekir.
 
-Bu makalede, farklı teknolojiler kullanarak akış uç noktanıza [Başlangıç](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) komutunun nasıl yürütüleceği gösterilmektedir. 
+Bu makalede, farklı teknolojiler kullanarak akış uç noktanıza [Başlangıç](/rest/api/media/streamingendpoints/start) komutunun nasıl yürütüleceği gösterilmektedir. 
  
 > [!NOTE]
 > Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
     
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İncelemeyi 
 
@@ -45,7 +46,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Daha fazla bilgi için bkz. 
 
-* [Streammingendpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) başvuru belgelerini başlatın.
+* [Streammingendpoint](/rest/api/media/streamingendpoints/start) başvuru belgelerini başlatın.
 * Akış uç noktası başlatıldığında zaman uyumsuz bir işlemdir. 
 
     Uzun süre çalışan işlemlerin nasıl izleneceği hakkında bilgi için bkz. [uzun süreli işlemler](media-services-apis-overview.md).
@@ -69,7 +70,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-Daha fazla bilgi için bkz. [az AMS streaming-Endpoint start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
+Daha fazla bilgi için bkz. [az AMS streaming-Endpoint start](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
 
 ## <a name="use-sdks"></a>SDK’ları kullanma
 
@@ -105,4 +106,4 @@ if (streamingEndpoint != null)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Media Services v3 Openapı belirtimi (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [Akış uç noktası işlemleri](https://docs.microsoft.com/rest/api/media/streamingendpoints)
+* [Akış uç noktası işlemleri](/rest/api/media/streamingendpoints)

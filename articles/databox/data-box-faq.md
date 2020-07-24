@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090765"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sık Sorulan Sorular
 
@@ -44,7 +44,9 @@ Cihaz size ulaştıktan sonra, yerel web kullanıcı arabirimini kullanarak ciha
 A. Azure 'a veya Azure 'a aktarmak istediğiniz 40-500 TB veriniz varsa Data Box kullanmaktan faydalanabilirsiniz. 40 TB < veri boyutları için Data Box Disk ve veri boyutları > 500 TB [Data Box Heavy](data-box-heavy-overview.md)için kaydolun.
 
 ### <a name="q-what-is-the-price-of-data-box"></a>S. Data Box'ın maliyeti nedir?
-A. Data Box için 10 gün boyunca nominal bir ücret tahsil edilir. Azure portalda sipariş oluştururken ürün modelini seçme aşamasında cihaz ücretleri görüntülenir. Sevkiyat da ücretsizdir ancak Azure depolama ücretleri tahsil edilecektir. Daha fazla bilgi için bkz. [Azure Data Box fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/databox/). 
+A. Data Box için 10 gün boyunca nominal bir ücret tahsil edilir. Azure portalda sipariş oluştururken ürün modelini seçme aşamasında cihaz ücretleri görüntülenir. Azure depolama için standart teslimat ücretleri ve ücretleri de geçerlidir. Dışarı aktarma siparişleri, içeri aktarma siparişleri gibi benzer bir fiyatlandırma modelini takip edebilir, ancak ek çıkış ücretleri uygulanabilir. 
+
+Daha fazla bilgi için [Azure Data Box fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/) ve [Çıkış ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/)' ne gidin. 
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-in-one-instance"></a>S. Data Box ile tek seferde en fazla ne kadar veri aktarabilirim?
 A. Data Box toplamda 100 TB, kullanılabilir alan olarak ise 80 TB kapasiteye sahiptir. Data Box en fazla 80 TB veri aktarabilirsiniz. Daha fazla veri aktarmak için daha fazla cihaz sipariş etmeniz gerekir.
@@ -250,7 +252,7 @@ A.  Koruma zinciri desteği için aşağıdaki rapor türleri sunulur:
 A.  Taşıyıcı takip günlükleri, Data Box sipariş geçmişine kaydedilir. Bu rapor cihaz Azure veri merkezine iade edildikten ve cihaz üzerindeki veriler silindikten sonra sunulur. Anında gerek için, sipariş izleme numarası ile doğrudan taşıyıcının Web sitesine gidebilir ve izleme bilgilerini alabilirsiniz.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Data Box'ı Azure veri merkezine kendim götürebilir miyim? 
-A.  Hayır. Microsoft yönetilen dağıtımını seçtiyseniz, tarihi taşıyamazsınız. Şu anda Azure veri merkezi, müşterilerin veya UPS dışındaki taşıyıcılar arasından Data Box teslimini kabul etmez.
+A.  Hayır. Microsoft yönetilen dağıtımını seçtiyseniz, verileri taşıyamazsınız. Şu anda Azure veri merkezi, müşterilerin veya UPS dışındaki taşıyıcılar arasından Data Box teslimini kabul etmez.
 
 Kendi kendine yönetilen gönderi ' ı seçtiyseniz, Azure veri merkezinde Data Box alabilir veya kapatabilirsiniz.
 
