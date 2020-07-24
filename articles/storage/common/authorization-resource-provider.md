@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 73077b6b25c09c17deb4ad468c79fe6d5ddd648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 634e1866a2c3e30e0750b9e6f4b2b3f93db2f8dc
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833264"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133121"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma
 
@@ -26,7 +26,7 @@ Bir depolama hesabı oluşturma veya silme veya bir abonelikteki depolama hesapl
 
 Microsoft, Azure depolama kaynaklarıyla çalışmaya yönelik iki REST API sağlar. Bu API 'Ler, Azure depolama 'da gerçekleştirebileceğiniz tüm eylemlerin temelini oluşturur. Azure depolama REST API, depolama hesabınızda blob, kuyruk, dosya ve tablo verileri dahil olmak üzere verilerle çalışmanıza olanak sağlar. Azure depolama kaynak sağlayıcısı REST API, depolama hesabıyla ve ilgili kaynaklarla çalışmanıza olanak sağlar.
 
-Blob verilerini okuyan veya yazan bir istek, yönetim işlemi gerçekleştiren bir istekten farklı izinler gerektirir. RBAC her iki türdeki kaynak için izinlerin üzerinde ayrıntılı denetim sağlar. Bir güvenlik sorumlusuna RBAC rolü atadığınızda, sorumlunun hangi izinlere sahip olacağını anladığınızdan emin olun. Her bir yerleşik RBAC rolüyle hangi eylemlerin ilişkilendirildiğini açıklayan ayrıntılı bir başvuru için bkz. [Azure kaynakları Için yerleşik roller](../../role-based-access-control/built-in-roles.md).
+Blob verilerini okuyan veya yazan bir istek, yönetim işlemi gerçekleştiren bir istekten farklı izinler gerektirir. RBAC her iki türdeki kaynak için izinlerin üzerinde ayrıntılı denetim sağlar. Bir güvenlik sorumlusuna RBAC rolü atadığınızda, sorumlunun hangi izinlere sahip olacağını anladığınızdan emin olun. Her bir yerleşik RBAC rolüyle hangi eylemlerin ilişkilendirildiğini açıklayan ayrıntılı bir başvuru için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
 Azure depolama, istekleri blob ve kuyruk depolamaya göre yetkilendirmek için Azure AD 'nin kullanılmasını destekler. Blob ve kuyruk verileri işlemlerine yönelik RBAC rolleri hakkında daha fazla bilgi için, bkz. [Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](storage-auth-aad.md).
 
@@ -34,7 +34,7 @@ Azure depolama, istekleri blob ve kuyruk depolamaya göre yetkilendirmek için A
 
 Her Azure aboneliğinin kullanıcıları, grupları ve uygulamaları yöneten ilişkili bir Azure Active Directory vardır. Bir Kullanıcı, Grup veya uygulama [Microsoft Identity platform](/azure/active-directory/develop/)bağlamında güvenlik sorumlusu olarak da adlandırılır. Rol tabanlı erişim denetimi (RBAC) kullanarak Active Directory tanımlı bir güvenlik sorumlusu için bir abonelikteki kaynaklara erişim izni verebilirsiniz.
 
-Bir güvenlik sorumlusuna RBAC rolü atadığınızda, rol tarafından verilen izinlerin etkin olduğu kapsamı da belirtirsiniz. Yönetim işlemleri için abonelik, kaynak grubu veya depolama hesabı düzeyinde bir rol atayabilirsiniz. [Azure Portal](https://portal.azure.com/), [Azure CLI araçları](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs)veya [Azure depolama kaynak sağlayıcısı REST API](/rest/api/storagerp)kullanarak bir güvenlik sorumlusuna RBAC rolü atayabilirsiniz.
+Bir güvenlik sorumlusuna RBAC rolü atadığınızda, rol tarafından verilen izinlerin etkin olduğu kapsamı da belirtirsiniz. Yönetim işlemleri için abonelik, kaynak grubu veya depolama hesabı düzeyinde bir rol atayabilirsiniz. [Azure Portal](https://portal.azure.com/), [Azure CLI araçları](../../cli-install-nodejs.md), [PowerShell](/powershell/azure/)veya [Azure depolama kaynak sağlayıcısı REST API](/rest/api/storagerp)kullanarak bir güvenlik sorumlusuna RBAC rolü atayabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md) [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -57,7 +57,7 @@ Tablodaki üçüncü sütun, yerleşik rolün **Microsoft. Storage/storageAccoun
 
 ### <a name="custom-roles-for-management-operations"></a>Yönetim işlemleri için özel roller
 
-Azure, yönetim kaynaklarına erişim için özel RBAC rollerinin tanımlanmasını da destekler. Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../../role-based-access-control/custom-roles.md).
+Azure, yönetim kaynaklarına erişim için Azure özel rollerinin tanımlanmasını da destekler. Özel roller hakkında daha fazla bilgi için bkz. [Azure özel rolleri](../../role-based-access-control/custom-roles.md).
 
 ## <a name="code-samples"></a>Kod örnekleri
 

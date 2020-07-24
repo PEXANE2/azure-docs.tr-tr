@@ -2,19 +2,17 @@
 title: include dosyası
 description: include dosyası
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.author: diberry
-ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673450"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133936"
 ---
 Bilişsel hizmetler, [Language Understanding](../luis/what-is-luis.md) ve [soru-cevap oluşturma](../qnamaker/overview/overview.md)her biri farklı bir amaca sahip iki doğal dil işleme hizmeti sağlar. Her bir hizmetin ne zaman kullanılacağını ve birbirini nasıl zorluk yaptığını anlayın.
 
@@ -43,7 +41,7 @@ Sohbet botunuzu metin alırsa `How do I get to the Human Resources building on t
 
 ## <a name="when-do-you-use-luis"></a>Lune zaman kullanıyorsunuz?
 
-Sohbet botu içindeki bir işlemin parçası olarak söyleyici 'yi bilmeniz gerektiğinde LUO 'u kullanın. Örnek metin ile devam etmek `How do I get to the Human Resources building on the Seattle North campus?` için, kullanıcının amacı bir konum bulmaktan haberdar olduktan sonra, yanıtı almak için bir ulaşım sunucusu gibi başka bir hizmete söylenişi (varlıklarla kullanıma hazır) hakkındaki ayrıntıları geçirebilirsiniz.
+Sohbet botundaki işlem kapsamında ifadenin amacını bilmeniz gerektiğinde LUIS kullanın. Örnek metin ile devam etmek `How do I get to the Human Resources building on the Seattle North campus?` için, kullanıcının amacı bir konum bulmaktan haberdar olduktan sonra, yanıtı almak için bir ulaşım sunucusu gibi başka bir hizmete söylenişi (varlıklarla kullanıma hazır) hakkındaki ayrıntıları geçirebilirsiniz.
 
 Amacı öğrenmek için LUO ve Soru-Cevap Oluşturma birleştirmeniz gerekmez.
 
@@ -51,7 +49,7 @@ Bu söylemeye yönelik iki hizmeti, sohbet botunuzun, belirli statik metin yanı
 
 ## <a name="when-do-you-use-qna-maker"></a>Soru-Cevap Oluşturma ne zaman kullanıyorsunuz?
 
-Yanıt statik bilgi tabanınız varsa Soru-Cevap Oluşturma kullanın. Bu Bilgi Bankası, PDF 'ler ve URL 'Ler gibi belgelerle oluşturduğunuz gereksinimlerinize göre özel olarak tasarlanmıştır.
+Yanıtlardan oluşan statik bir bilgi bankanız varsa Soru-Cevap Oluşturma'yı kullanın. PDF’ler ve URL’ler gibi belgelerle oluşturduğunuz bu bilgi bankası ihtiyaçlarınıza göre özelleştirilmiştir.
 
 Örnekle devam ederek, `How do I get to the Human Resources building on the Seattle North campus?` yayınlanmış soru-cevap oluşturma hizmetinize bir sorgu olarak metin gönderin ve en iyi yanıtı alın.
 
@@ -75,7 +73,7 @@ Sohbet botunuzun hizmetin sağladığından daha fazla bilgiye ihtiyacı varsa, 
 
 Her iki hizmet ile birlikte çalışmak üzere bir işlem oluşturmaya yardımcı olmak için bot Framework **[DISPATCH CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** aracını kullanın. Bu araç, BASıS ve Soru-Cevap Oluşturma arasında dağıtım yapan bir amaç uygulaması oluşturur. Lune, Soru-Cevap Oluşturma ve bot çerçevesiyle tümleştirme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) .
 
-Bu tür bir sohbet bot 'ı uygulamak için, {1} [veya](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)' de, bot Oluşturucu örneği **olan NLP**'yi kullanın.
+Bu tür sohbet bot 'ı uygulamak için, bot Oluşturucu örneği **olan NLP 'yi Dispatch**, [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) veya [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)ile birlikte kullanın.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

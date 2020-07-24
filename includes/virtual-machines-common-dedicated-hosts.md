@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84902783"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133935"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
 
-## <a name="benefits"></a>Yararları 
+## <a name="benefits"></a>Avantajlar 
 
 Tüm konağın rezerve etmek aşağıdaki avantajları sağlar:
 
@@ -79,7 +79,15 @@ Adanmış bir ana bilgisayar sağlandıktan sonra Azure bu uygulamayı fiziksel 
 
 ## <a name="quotas"></a>Kotalar
 
-Bölge başına adanmış konaklar için 3000 vCPU varsayılan kota sınırı vardır. Ancak dağıtabileceğiniz ana bilgisayar sayısı ayrıca konak için kullanılan VM boyutu ailesinin kotasıyla sınırlıdır. Örneğin, **Kullandıkça Öde** aboneliğine yalnızca, Doğu ABD bölgesinde Dsv3 boyut serisi için kullanılabilen 10 vCPU kotası olabilir. Bu durumda, adanmış bir konak dağıtabilmeniz için en az 64 vCPU 'ya bir kota artışı istemeniz gerekir. Gerekirse bir istek vermek için sağ üst köşedeki **artış iste** düğmesini seçin.
+Adanmış bir konak dağıtırken tüketilen iki tür kota vardır.
+
+1. Adanmış konak vCPU kotası. Varsayılan kota sınırı, bölge başına 3000 vCPU olur.
+1. VM boyutu aile kotası. Örneğin, **Kullandıkça Öde** aboneliğine yalnızca, Doğu ABD bölgesinde Dsv3 boyut serisi için kullanılabilen 10 vCPU kotası olabilir. Adanmış ana bilgisayarı dağıtabilmeniz için, Dsv3 adanmış bir konak dağıtmak üzere en az 64 vCPU 'ya bir kota artışı istemeniz gerekir. 
+
+Kota artışı istemek için [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)bir destek isteği oluşturun.
+
+Adanmış bir konağın sağlanması hem adanmış konak vCPU hem de VM ailesi vCPU kotasını kullanır, ancak bölgesel vCPU 'yu kullanmaz.
+
 
 ![Portalda kullanım ve Kotalar sayfasının ekran görüntüsü](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 

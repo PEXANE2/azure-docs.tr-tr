@@ -6,27 +6,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518733"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133172"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Kapsayıcılara ve bloblara anonim genel okuma erişimini engelleyin
 
 Azure depolama 'daki kapsayıcılara ve bloblara anonim genel okuma erişimi, verileri paylaşmanın kolay bir yoludur, ancak bir güvenlik riski de sunabilir. Anonim erişim bozacağından ' i yönetmeniz ve verilerinize anonim erişimin nasıl değerlendirileceğini anlamak önemlidir. İşlemsel karmaşıklık, insan hatası veya genel olarak erişilebilen verilere karşı kötü amaçlı saldırı maliyetli veri ihlallerine neden olabilir. Microsoft, yalnızca uygulama senaryonuz için gerektiğinde anonim erişimi etkinleştirmenizi önerir.
 
-Varsayılan olarak, uygun izinlere sahip bir kullanıcı kapsayıcılara ve bloblara genel erişimi yapılandırabilir. Depolama hesabı düzeyinde tüm genel erişimin engellenmesini sağlayabilirsiniz. Depolama hesabı için genel blob erişimine izin vermemek için, hesaptaki kapsayıcılar genel erişim için yapılandırılamaz. Ortak erişim için önceden yapılandırılmış olan tüm kapsayıcılar, anonim istekleri artık kabul etmez. Daha fazla bilgi için bkz. [kapsayıcılar ve Bloblar için anonim genel okuma erişimini yapılandırma](anonymous-read-access-configure.md).
+Varsayılan olarak, blob verilerinize genel erişim her zaman yasaktır. Ancak, bir depolama hesabının varsayılan yapılandırması, bir kullanıcının bir depolama hesabındaki kapsayıcılara ve bloblara genel erişimi yapılandırmasına izin verir. Gelişmiş güvenlik için, tek bir kapsayıcı için genel erişim ayarından bağımsız olarak, depolama hesabına genel erişime izin verebilirsiniz. Depolama hesabına genel erişime izin vermemek, bir kullanıcının hesaptaki bir kapsayıcı için ortak erişimi etkinleştirmelerini engeller. Microsoft, senaryonuz için gerekli olmadığı takdirde bir depolama hesabına genel erişim izni vermemenizi önerir. Ortak erişime izin vermemek, istenmeyen anonim erişimden kaynaklanan veri ihlallerine engel olmaya yardımcı olur.
+
+Depolama hesabı için genel blob erişimine izin vermemek için Azure depolama, bu hesaba yönelik tüm anonim istekleri reddeder. Bir hesap için genel erişime izin verildikten sonra, söz konusu hesaptaki kapsayıcılar daha sonra genel erişim için yapılandırılamaz. Ortak erişim için önceden yapılandırılmış olan tüm kapsayıcılar, anonim istekleri artık kabul etmez. Daha fazla bilgi için bkz. [kapsayıcılar ve Bloblar için anonim genel okuma erişimini yapılandırma](anonymous-read-access-configure.md).
 
 Bu makalede, bir depolama hesabına karşı anonim isteklerin nasıl çözümleneceği ve tüm depolama hesabı veya tek bir kapsayıcı için anonim erişimin nasıl engelleneceği açıklanmaktadır.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>İstemci uygulamalarından gelen Anonim istekleri Algıla
 
-Bir depolama hesabı için genel okuma erişimine izin vermemeniz durumunda, istekleri, genel erişim için yapılandırılmış olan kapsayıcılara ve bloblara reddetmeniz önerilir. Bir depolama hesabı için genel erişime izin vermemek, bu depolama hesabındaki tüm kapsayıcılar için genel erişim ayarlarını geçersiz kılar. Depolama hesabı için genel erişime izin verilse, bu hesaba yönelik ileride yapılacak anonim istekler başarısız olur.
+Bir depolama hesabı için genel okuma erişimine izin vermemeniz durumunda, istekleri, genel erişim için yapılandırılmış olan kapsayıcılara ve bloblara reddetmeniz önerilir. Bir depolama hesabı için genel erişime izin vermemek, bu depolama hesabındaki bağımsız kapsayıcılar için genel erişim ayarlarını geçersiz kılar. Depolama hesabı için genel erişime izin verilse, bu hesaba yönelik ileride yapılacak anonim istekler başarısız olur.
 
 Genel erişimin istemci uygulamalarını nasıl etkileyebileceğini anlamak için, Microsoft bu hesap için günlüğe kaydetmeyi ve ölçümleri etkinleştirmenizi ve zaman aralığı boyunca anonim isteklerin desenlerini çözümlemeyi önerir. Depolama hesabına yönelik anonim isteklerin sayısını öğrenmek için ölçümleri kullanın ve hangi kapsayıcıların adsız olarak erişildiğini öğrenmek için günlükleri kullanın.
 

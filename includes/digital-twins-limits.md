@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 21d910fb0e0992b35aa19ce65fc216734e30265c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3035bd71a91f7cad6fb951d74081b77d8445a81f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515921"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133928"
 ---
 ### <a name="functional-limits"></a>İşlevsel sınırlar
 
@@ -20,12 +20,12 @@ Aşağıdaki tabloda, geçerli önizlemede Azure dijital TWINS 'in işlevsel sı
 | --- | --- | --- | --- |
 | Azure kaynağı | Bir bölgedeki Azure dijital TWINS örneği sayısı, abonelik başına | 10 | Yes |
 | Dijital TWINS | Bir Azure dijital TWINS örneğindeki TWINS sayısı | 200,000 | Yes |
-| Yönlendirme | Tek bir Azure dijital TWINS örneği için uç nokta sayısı | 6 | No |
+| Yönlendirme | Tek bir Azure dijital TWINS örneği için uç nokta sayısı | 6 | Hayır |
 | Yönlendirme | Tek bir Azure dijital TWINS örneği için yol sayısı | 6 | Yes |
 | Modeller | Tek bir Azure dijital TWINS örneği içindeki model sayısı | 10,000 | Yes |
-| Modeller | Tek bir API çağrısında karşıya yüklenebilen model sayısı | 250 | No |
-| Modeller | Tek bir sayfada döndürülen öğelerin sayısı | 100 | No |
-| Sorgu | Tek bir sayfada döndürülen öğelerin sayısı | 100 | No |
+| Modeller | Tek bir API çağrısında karşıya yüklenebilen model sayısı | 250 | Hayır |
+| Modeller | Tek bir sayfada döndürülen öğelerin sayısı | 100 | Hayır |
+| Sorgu | Tek bir sayfada döndürülen öğelerin sayısı | 100 | Hayır |
 | Sorgu | `AND`  /  `OR` Sorgudaki ifade sayısı | 50 | Yes |
 | Sorgu | Bir `IN`  /  `NOT IN` yan tümcedeki dizi öğelerinin sayısı | 50 | Yes |
 | Sorgu | Sorgudaki karakter sayısı | 8,000 | Yes |
@@ -45,6 +45,6 @@ Bu tablo, farklı API 'lerin hız sınırlarını yansıtır.
 
 ### <a name="other-limits"></a>Diğer sınırlar
 
-Azure Digital TWINS modellerine yönelik DTDL belgelerindeki veri türleri ve alanları için sınırlamalar, GitHub: [dijital TWINS tanım dili (DTDL)-sürüm 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)' deki kendi Özellikler belgelerinde bulunabilir.
+Azure Digital TWINS modellerine yönelik DTDL belgelerindeki veri türleri ve alanları için sınırlamalar, GitHub: [*dijital TWINS tanım dili (DTDL)-sürüm 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)' deki kendi Özellikler belgelerinde bulunabilir.
  
 Sorgu gecikme ayrıntıları ve Önizleme sırasında sorgu yazmaya yönelik diğer yönergeler [*, nasıl yapılır: ikizi grafiğini sorgulama*](../articles/digital-twins/how-to-query-graph.md)bölümünde bulunabilir.

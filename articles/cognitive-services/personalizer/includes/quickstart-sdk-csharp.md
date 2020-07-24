@@ -2,24 +2,22 @@
 title: include dosyası
 description: include dosyası
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 0b09f15eb05a94bb62f4484ac362467fbdb0af8b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 94ffc22cc7e8e44e99d5eb42518030ff41267996
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188899"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133933"
 ---
-[Başvuru belge](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
@@ -42,7 +40,7 @@ Bu hızlı başlangıcı kullanmanın birkaç adımı vardır:
 
 Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun.
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), ad `new` `personalizer-quickstart`ile yeni bir konsol uygulaması oluşturmak için DotNet komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur `Program.cs`:.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `new` ad ile yeni bir konsol uygulaması oluşturmak için DotNet komutunu kullanın `personalizer-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: `Program.cs` .
 
 ```console
 dotnet new console -n personalizer-quickstart
@@ -64,7 +62,7 @@ Build succeeded.
 ...
 ```
 
-## <a name="install-the-sdk"></a>SDK yükle
+## <a name="install-the-sdk"></a>SDK Yükleme
 
 Uygulama dizini içinde, aşağıdaki komutla .NET için kişiselleştirici istemci Kitaplığı ' nı yükleyeceksiniz:
 
@@ -100,13 +98,13 @@ Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE ve
 
 ## <a name="add-personalizer-resource-information"></a>Kişiselleştirici kaynak bilgileri ekleme
 
-**Program** sınıfında, ve `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT`adlı ortam değişkenlerinden çekilen kaynak Azure anahtarı ve uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+**Program** sınıfında, ve adlı ortam değişkenlerinden çekilen kaynak Azure anahtarı ve uç nokta için değişkenler oluşturun `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT` . Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
 
 [!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Bir kişiselleştirici istemci oluşturma
 
-Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine parametresi, `PERSONALIZER_RESOURCE_ENDPOINT` ve ApiKey ' dir `PERSONALIZER_RESOURCE_KEY`.
+Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine parametresi, `PERSONALIZER_RESOURCE_ENDPOINT` ve ApiKey ' dir `PERSONALIZER_RESOURCE_KEY` .
 
 [!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
 
@@ -124,7 +122,7 @@ Komut satırından günün saati ve geçerli yiyecek tercihi için bir kullanıc
 
 [!code-csharp[Present food taste preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTastePreference)]
 
-Her iki yöntem de `GetKey` , komut satırından kullanıcının seçimini okumak için yöntemini kullanır.
+Her iki yöntem de, `GetKey` komut satırından kullanıcının seçimini okumak için yöntemini kullanır.
 
 [!code-csharp[Read user's choice from the command line](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=readCommandLine)]
 
@@ -145,7 +143,7 @@ Kod dosyasını çalıştırmadan önce [içerik seçimlerini almak](#get-food-i
 
 ## <a name="request-the-best-action"></a>En iyi eylemi isteyin
 
-Sıralama isteğini gerçekleştirmek için, program kullanıcının tercihlerini içerik seçimlerinden `currentContent` birini oluşturacak şekilde sorar. İşlem, eylemlerden hariç tutulacak içerik oluşturabilir `excludeActions`. Yanıtları almak için sıralama isteğinin eylemleri ve özellikleri, currentContext özellikleri, excludeActions ve benzersiz bir olay KIMLIĞI olması gerekir.
+Sıralama isteğini gerçekleştirmek için, program kullanıcının tercihlerini `currentContent` içerik seçimlerinden birini oluşturacak şekilde sorar. İşlem, eylemlerden hariç tutulacak içerik oluşturabilir `excludeActions` . Yanıtları almak için sıralama isteğinin eylemleri ve özellikleri, currentContext özellikleri, excludeActions ve benzersiz bir olay KIMLIĞI olması gerekir.
 
 Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](../concepts-features.md) belirlemek ve [değerlendirmek](../concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.
 
@@ -161,7 +159,7 @@ Bu hızlı başlangıç, bir sıfır veya 1 ya da bir yeniden puan olarak basit 
 
 ## <a name="run-the-program"></a>Programı çalıştırma
 
-Uygulama dizininizde DotNet `run` komutuyla uygulamayı çalıştırın.
+Uygulama dizininizde DotNet komutuyla uygulamayı çalıştırın `run` .
 
 ```console
 dotnet run

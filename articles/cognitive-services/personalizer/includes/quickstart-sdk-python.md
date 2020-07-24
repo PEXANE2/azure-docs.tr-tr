@@ -2,24 +2,22 @@
 title: include dosyası
 description: include dosyası
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: d35f11125809167c4834b33f913d9369a6402ac0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b602ab1a6aa6f9c4c153924bce63da12d872a62e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188901"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133934"
 ---
-[Başvuru belge](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
@@ -67,7 +65,7 @@ Bu kod parçacıkları, Python için kişiselleştirici istemci kitaplığı ile
 
 ## <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de adlı `sample.py`yeni bir Python uygulaması oluşturun.
+Tercih ettiğiniz düzenleyicide veya IDE 'de adlı yeni bir Python uygulaması oluşturun `sample.py` .
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
@@ -77,15 +75,15 @@ Proje dizininden, **Sample.py** dosyasını tercih ettiğiniz DÜZENLEYICIDE vey
 
 ## <a name="add-personalizer-resource-information"></a>Kişiselleştirici kaynak bilgileri ekleme
 
-Kaynak Azure anahtarı ve, ve `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT`adlı ortam değişkenlerinden çekilen uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+Kaynak Azure anahtarı ve, ve adlı ortam değişkenlerinden çekilen uç nokta için değişkenler oluşturun `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT` . Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
 
-Kaynak adı, uç nokta URL 'sinin bir parçasıdır: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
+Kaynak adı, uç nokta URL 'sinin bir parçasıdır: `https://<your-resource-name>.api.cognitive.microsoft.com/` .
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Bir kişiselleştirici istemci oluşturma
 
-Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine parametresi, `PERSONALIZER_RESOURCE_ENDPOINT` ve ApiKey ' dir `PERSONALIZER_RESOURCE_KEY`.
+Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine parametresi, `PERSONALIZER_RESOURCE_ENDPOINT` ve ApiKey ' dir `PERSONALIZER_RESOURCE_KEY` .
 
 [!code-python[Create the Personalizer client](~/samples-personalizer/quickstarts/python/sample.py?name=Client)]
 
@@ -116,7 +114,7 @@ Kod dosyasını çalıştırmadan önce [içerik seçimlerini almak](#get-conten
 ## <a name="request-the-best-action"></a>En iyi eylemi isteyin
 
 
-Sıralama isteğini gerçekleştirmek için, program kullanıcının tercihlerini içerik seçimlerinden `currentContent` birini oluşturacak şekilde sorar. İşlem, eylemlerden hariç tutulacak içerik oluşturabilir `excludeActions`. Yanıtları almak için sıralama isteğinin eylemleri ve özellikleri, currentContext özellikleri, excludeActions ve benzersiz bir olay KIMLIĞI olması gerekir.
+Sıralama isteğini gerçekleştirmek için, program kullanıcının tercihlerini `currentContent` içerik seçimlerinden birini oluşturacak şekilde sorar. İşlem, eylemlerden hariç tutulacak içerik oluşturabilir `excludeActions` . Yanıtları almak için sıralama isteğinin eylemleri ve özellikleri, currentContext özellikleri, excludeActions ve benzersiz bir olay KIMLIĞI olması gerekir.
 
 Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](../concepts-features.md) belirlemek ve [değerlendirmek](../concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.
 

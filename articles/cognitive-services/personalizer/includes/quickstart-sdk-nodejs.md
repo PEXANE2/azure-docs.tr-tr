@@ -2,27 +2,25 @@
 title: include dosyası
 description: include dosyası
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 237ba5ba390b4065a67f29611fbd43375c239578
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ddf16334830b64c57e9d09a75dfc80fc319a9ccd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188900"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133931"
 ---
-[Başvuru belge](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)  | [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Geçerli [Node. js](https://nodejs.org) ve NPM sürümü.
+* [Node.js](https://nodejs.org) ve NPM 'nin geçerli sürümü.
 
 ## <a name="using-this-quickstart"></a>Bu hızlı başlangıcı kullanma
 
@@ -47,15 +45,15 @@ Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bi
 mkdir myapp && cd myapp
 ```
 
-Bir `package.json` dosya `npm init -y` oluşturmak için komutunu çalıştırın.
+`npm init -y`Bir dosya oluşturmak için komutunu çalıştırın `package.json` .
 
 ```console
 npm init -y
 ```
 
-## <a name="install-the-nodejs-library-for-personalizer"></a>Kişiselleştirici için Node. js kitaplığını yükler
+## <a name="install-the-nodejs-library-for-personalizer"></a>Kişiselleştirici için Node.js kitaplığı 'nı yükler
 
-Aşağıdaki komutla Node. js için kişiselleştirici istemci kitaplığını yükler:
+Aşağıdaki komutla Node.js için kişiselleştirici istemci kitaplığını yükler:
 
 ```console
 npm install @azure/cognitiveservices-personalizer --save
@@ -79,7 +77,7 @@ Bu hızlı başlangıçta önemsiz bir şekilde belirlenir. Bir üretim sistemin
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, Node. js için kişiselleştirici istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını gösterir:
+Bu kod parçacıkları, Node.js için kişiselleştirici istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını gösterir:
 
 * [Bir kişiselleştirici istemci oluşturma](#create-a-personalizer-client)
 * [Derecelendirme API 'SI](#request-the-best-action)
@@ -87,23 +85,23 @@ Bu kod parçacıkları, Node. js için kişiselleştirici istemci kitaplığı i
 
 ## <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de adlı `sample.js`yeni bir Node. js uygulaması oluşturun.
+Tercih ettiğiniz düzenleyicide veya IDE 'de adlı yeni bir Node.js uygulaması oluşturun `sample.js` .
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-**Örnek. js** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. NPM paketlerini `requires` eklemek için aşağıdakileri ekleyin:
+**sample.js** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. `requires`NPM paketlerini eklemek için aşağıdakileri ekleyin:
 
 [!code-javascript[Add module dependencies](~/samples-personalizer/quickstarts/node/sample.js?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Kişiselleştirici kaynak bilgileri ekleme
 
-Kaynak Azure anahtarı ve, ve `PERSONALIZER_KEY` `PERSONALIZER_ENDPOINT`adlı ortam değişkenlerinden çekilen uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+Kaynak Azure anahtarı ve, ve adlı ortam değişkenlerinden çekilen uç nokta için değişkenler oluşturun `PERSONALIZER_KEY` `PERSONALIZER_ENDPOINT` . Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
 
 [!code-javascript[Add Personalizer resource information](~/samples-personalizer/quickstarts/node/sample.js?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Bir kişiselleştirici istemci oluşturma
 
-Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine parametresi, `PERSONALIZER_RESOURCE_ENDPOINT` ve ApiKey ' dir `PERSONALIZER_RESOURCE_KEY`.
+Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine parametresi, `PERSONALIZER_RESOURCE_ENDPOINT` ve ApiKey ' dir `PERSONALIZER_RESOURCE_KEY` .
 
 [!code-javascript[Create a Personalizer client](~/samples-personalizer/quickstarts/node/sample.js?name=Client)]
 
@@ -132,7 +130,7 @@ Kod dosyasını çalıştırmadan önce [içerik seçimlerini almak](#get-conten
 
 ## <a name="request-the-best-action"></a>En iyi eylemi isteyin
 
-Sıralama isteğini tamamlayabilmeniz için, program kullanıcının tercihlerine içerik seçenekleri oluşturmasını ister. İşlem, eylemlerden hariç tutulacak içerik oluşturabilir `excludeActions`. Sıralama isteğinin, sıralanmış yanıtı almak için [eylemleri](../concepts-features.md#actions-represent-a-list-of-options) ve özellikleri, CurrentContext özellikleri, excludeactions ve benzersiz bir sıra olay kimliği gerekir.
+Sıralama isteğini tamamlayabilmeniz için, program kullanıcının tercihlerine içerik seçenekleri oluşturmasını ister. İşlem, eylemlerden hariç tutulacak içerik oluşturabilir `excludeActions` . Sıralama isteğinin, sıralanmış yanıtı almak için [eylemleri](../concepts-features.md#actions-represent-a-list-of-options) ve özellikleri, CurrentContext özellikleri, excludeactions ve benzersiz bir sıra olay kimliği gerekir.
 
 Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](../concepts-features.md) belirlemek ve [değerlendirmek](../concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.
 
@@ -149,7 +147,7 @@ Bu hızlı başlangıç, bir sıfır veya 1 ya da bir yeniden puan olarak basit 
 
 ## <a name="run-the-program"></a>Programı çalıştırma
 
-Uygulamayı uygulama dizininizden Node. js ile çalıştırın.
+Uygulamayı uygulama dizininizdeki Node.js çalıştırın.
 
 ```console
 node sample.js
