@@ -67,6 +67,8 @@
       href: concepts-app-templates.md
     - name: Cihaz şablonları nedir?
       href: concepts-device-templates.md
+    - name: İleti yükleri
+      href: concepts-telemetry-properties-commands.md
     - name: Cihaz bağlantısı
       href: concepts-get-connected.md
     - name: IoT Edge cihazlarını bağlama

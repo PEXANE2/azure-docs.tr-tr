@@ -13,7 +13,7 @@
       items:
         - name: Service Bus kuyruğu oluşturma
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -110,6 +110,9 @@
                   href: authenticate-application.md
         - name: Yerleşik güvenlik denetimleri
           href: service-bus-messaging-security-controls.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Ağ güvenliği
           href: network-security.md
 - name: Nasıl yapılır kılavuzları

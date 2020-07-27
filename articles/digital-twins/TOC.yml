@@ -40,9 +40,11 @@
       items:
         - name: Azure Digital Twins CLI’sini kullanma
           href: how-to-use-cli.md
-        - name: Azure Digital Twins örneği oluşturma
-          href: how-to-set-up-instance.md
-        - name: Bir istemci uygulamasının kimliğini doğrulama
+        - name: Örnek ayarlama ve kimlik doğrulaması (betik ile)
+          href: how-to-set-up-instance-scripted.md
+        - name: Örnek ayarlama ve kimlik doğrulaması (el ile)
+          href: how-to-set-up-instance-manual.md
+        - name: Uygulama kimlik doğrulaması kodu yazma
           href: how-to-authenticate-client.md
     - name: Tasarım modelleri
       items:
@@ -50,6 +52,8 @@
           href: how-to-manage-model.md
         - name: Modelleri ayrıştırma ve doğrulama
           href: how-to-use-parser.md
+        - name: Etiket ekleme
+          href: how-to-use-tags.md
     - name: Canlı yürütme ortamı kullanma
       items:
         - name: Dijital ikizleri yönetme
@@ -72,10 +76,16 @@
           href: how-to-manage-routes.md
         - name: Azure Haritalar ile tümleştirme
           href: how-to-integrate-maps.md
+        - name: Azure Time Series Insights ile tümleştirme
+          href: how-to-integrate-time-series-insights.md
     - name: Sorun giderme
       items:
         - name: Bilinen sorunlar
           href: troubleshoot-known-issues.md
+        - name: Sorun çözme
+          items:
+            - name: 403 (Yasak)
+              href: troubleshoot-error-403.md
 - name: Başvuru
   items:
     - name: Digital Twins hizmet sınırları
@@ -145,7 +155,7 @@
         - name: Azure Digital Twins örnekleri
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
         - name: Azure Digital Twins gezgini (örnek)
-          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL doğrulayıcı (örnek)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
     - name: Azure araçları

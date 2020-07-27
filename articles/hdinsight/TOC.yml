@@ -939,8 +939,6 @@
           href: ./control-network-traffic.md
         - name: NSG ve UDR’ler için gereken IP adresleri
           href: ./hdinsight-management-ip-addresses.md
-        - name: Azure güvenlik duvarına yönelik hizmet etiketleri
-          href: ./hdinsight-service-tags.md
         - name: Müşteri tarafından yönetilen anahtar disk şifrelemesi
           href: ./disk-encryption.md
         - name: Ranger ve Apache Ambari’de LDAP eşitlemesi
@@ -967,8 +965,12 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: Giden trafiği kısıtlamak için güvenlik duvarı kullanma
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: Hizmet uç noktası ilkeleri oluşturma
+          href: ./service-endpoint-policies.md
         - name: Ağ sanal gereci yapılandırma
           href: ./network-virtual-appliance.md
+        - name: Azure güvenlik duvarına yönelik hizmet etiketleri
+          href: ./hdinsight-service-tags.md
         - name: Sorun giderme
           items:
             - name: ESP Kimlik doğrulaması sorunları

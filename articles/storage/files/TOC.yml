@@ -33,6 +33,8 @@
           href: storage-files-networking-overview.md
         - name: Yanlışlıkla veri silinmesini engelleme
           href: storage-files-prevent-file-share-deletion.md
+        - name: Dosya paylaşımlarını yedekleme
+          href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Bekleme sırasında şifreleme
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Müşteri tarafından yönetilen anahtarlarla bekleyen verileri şifreleme
@@ -83,6 +85,54 @@
           href: storage-files-how-to-create-large-file-share.md
         - name: Premium dosya paylaşımı oluşturma
           href: storage-how-to-create-premium-fileshare.md
+    - name: Veri koruma
+      items:
+        - name: Geçici silmeyi etkinleştirme
+          href: storage-files-enable-soft-delete.md
+        - name: Verilerin nasıl çoğaltıldığını değiştirme
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Veri yedekliğini yönetme
+          items:
+            - name: Verilerin nasıl çoğaltıldığını değiştirme
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Üst düzeyde kullanılabilir uygulamalar tasarlama
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Olağanüstü durum kurtarmayı yönetme
+          items:
+            - name: Son Eşitleme Zamanı özelliğini denetleme
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Hesap yük devretmesini başlatma
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Dosya paylaşımlarını yedekleme
+          items:
+            - name: Portal
+              href: ../../backup/backup-afs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/backup-afs-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/backup-azure-afs-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/backup-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Dosya paylaşımlarını geri yükleme
+          items:
+            - name: Portal
+              href: ../../backup/restore-afs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/restore-afs-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/restore-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/restore-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Dosya paylaşımlarını yönetme
+          items:
+            - name: Portal
+              href: ../../backup/manage-afs-backup.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/manage-afs-backup-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Dağıtma
       items:
         - name: Azure Dosyaları’nı dağıtma
@@ -125,26 +175,10 @@
           href: storage-sync-files-server-registration.md
         - name: Azure Dosya Eşitleme Sunucusu uç noktası ekleme
           href: storage-sync-files-server-endpoint.md
-        - name: Geçici silmeyi etkinleştirme
-          href: storage-files-enable-soft-delete.md
         - name: Azure bağımsız bulutlarında depolamayı yönetme
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Verilerin nasıl çoğaltıldığını değiştirme
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Hesap yük devretmesi başlatma
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Veri yedekliğini yönetme
-          items:
-            - name: Verilerin nasıl çoğaltıldığını değiştirme
-              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Üst düzeyde kullanılabilir uygulamalar tasarlama
-              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Olağanüstü durum kurtarmayı yönetme
-          items:
-            - name: Son Eşitleme Zamanı özelliğini denetleme
-              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Hesap yük devretmesini başlatma
-              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Kimlik doğrulaması
       items:
         - name: Şirket içi AD DS kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
@@ -173,7 +207,7 @@
           href: storage-files-migration-overview.md
         - name: Karma dağıtımı hedefleme
           items:
-            - name: Azure DataBox ile verileri Azure Dosya Eşitleme’ye toplu olarak geçirme
+            - name: Azure Data Box ile verileri Azure Dosya Eşitleme’ye toplu olarak geçirme
               href: storage-sync-offline-data-transfer.md
             - name: Azure Dosya Eşitleme ile Linux’tan hibrit dosya sunucusuna geçirme
               href: storage-files-migration-linux-hybrid.md
@@ -243,9 +277,11 @@
           href: storage-sync-files-troubleshoot.md
         - name: Azure Dosyalarını Silme Sorunlarını Giderme
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
+        - name: Dosya paylaşımlarını yedekleme sorunlarını giderme
+          href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure Dosya Paylaşımları depolama başvurusu
+    - name: Azure Dosyalar başvurusu
       href: ../files/reference.md
     - name: Resource Manager şablonu
       displayName: arm

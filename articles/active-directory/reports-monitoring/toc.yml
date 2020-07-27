@@ -84,6 +84,8 @@
           href: troubleshoot-missing-data-download.md
         - name: Raporlamaya ilişkin Graph API'lerine erişilemiyor
           href: troubleshoot-graph-api.md
+        - name: Doğrulanan etki alanı değişikliği olduğunda verileri denetleme
+          href: troubleshoot-audit-data-verified-domain.md
 - name: Başvuru
   expanded: true
   items:

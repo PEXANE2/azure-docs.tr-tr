@@ -89,6 +89,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: Backup mimarisi
       href: backup-architecture.md
+    - name: Rehberlik ve en iyi deneyimler
+      href: guidance-best-practices.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Kurtarma Hizmetleri kasası
@@ -375,6 +377,9 @@
           href: encryption-at-rest-with-cmk.md
         - name: Yerleşik güvenlik denetimleri
           href: backup-security-controls.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: Sorun giderme

@@ -44,6 +44,9 @@
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: En iyi uygulamalar
               href: database/security-best-practice.md
+            - name: Azure İlkesi’ne göre güvenlik denetimleri
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./database/security-controls-policy.md
             - name: Güvenlik temeli
               href: database/security-baseline.md
             - name: Güvenlik öznitelikleri
@@ -201,9 +204,11 @@
             - name: Java
               items:
                 - name: Spring Verilerini Kullanma JDBC
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
                 - name: Spring Verilerini Kullanma JPA
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Spring Data R2DBC’yi kullanma
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
 - name: SQL Veritabanı (SQL DB)
   items:
     - name: Belgeler
@@ -230,8 +235,6 @@
               href: database/service-tier-hyperscale.md
             - name: Hiper Ölçek hakkında SSS
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
-            - name: Premium RS'den geçiş
-              href: database/service-tiers-prs.md
     - name: Hızlı Başlangıçlar
       href: database/quickstart-content-reference-guide.md
       items:
@@ -392,6 +395,12 @@
                   href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
+                - name: Spring Data JDBC ile Java
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Spring Data JPA ile Java
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                - name: Spring Data R2DBC ile Java
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP
@@ -680,16 +689,20 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: Kavramlar
       items:
-        - name: İşlem çoğaltması
-          href: managed-instance/replication-transactional-overview.md
-        - name: Yönetim API'si başvurusu
-          href: managed-instance/api-references-create-manage-instance.md
         - name: Kaynak sınırları
           href: managed-instance/resource-limits.md
         - name: Bağlantı mimarisi
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL farklılıkları
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: İşlem çoğaltması
+          href: managed-instance/replication-transactional-overview.md
+        - name: Yönetim işlemleri
+          items:
+            - name: Genel Bakış
+              href: managed-instance/management-operations-overview.md
+            - name: API başvurusu
+              href: managed-instance/api-references-create-manage-instance.md
         - name: Machine Learning Services
           items:
             - name: Genel Bakış
@@ -708,6 +721,8 @@
                       href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                     - name: Modeli eğitme ve puanlama
                       href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: ONNX modellerini dağıtma
+                      href: /azure/azure-sql-edge/deploy-onnx?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current
                 - name: R
                   items:
                     - name: R betiklerini çalıştırma
@@ -866,6 +881,7 @@
             - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
             - name: ARM şablonu
+              displayName: Resource Manager
               href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: Kavramlar
           items:
@@ -952,8 +968,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: AlwaysOn kullanılabilirlik grubu
                   items:
-                    - name: Azure SQL VM CLI
-                      href: virtual-machines/windows/availability-group-az-cli-configure.md
+                    - name: PowerShell veya Az CLI
+                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure Hızlı Başlangıç şablonları
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: Birden çok bölge
@@ -995,7 +1011,7 @@
         - name: Başvuru
           items:
             - name: Azure PowerShell
-              href: /powershell/azure/overview
+              href: /powershell/azure/
             - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
@@ -1010,6 +1026,8 @@
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: Fiyatlandırma
               href: virtual-machines/windows/pricing-guidance.md
+            - name: Arşivlenmiş klasik RM belgeleri
+              href: /previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create
             - name: SQL Server Veri Araçları (SSDT)
               href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
             - name: SQL Server Management Studio (SSMS)

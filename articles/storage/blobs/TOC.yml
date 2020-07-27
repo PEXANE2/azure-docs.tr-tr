@@ -280,6 +280,8 @@
           href: storage-blob-pageblob-overview.md
         - name: Statik web siteleri
           href: storage-blob-static-website.md
+        - name: NFS 3.0 protokol desteği
+          href: network-file-system-protocol-support.md
     - name: Nasıl yapılır
       items:
         - name: Depolama hesapları oluşturma ve yönetme
@@ -469,12 +471,12 @@
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Linux’ta Blog depolama alanını dosya sistemi olarak ekleme
+            - name: NFS kullanarak Linux’dan depolama alanı bağlama
+              href: network-file-system-protocol-support-how-to.md
+            - name: Blobfuse kullanarak Linux’dan depolama alanı bağlama
               href: storage-how-to-mount-container-linux.md
             - name: Veri Taşıma kitaplığıyla veri aktarma
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Depolama geçişi ile ilgili SSS
-              href: ../common/storage-migration-faq.md
         - name: Bloblarla geliştirme
           items:
             - name: C++
@@ -662,6 +664,9 @@
               href: security-recommendations.md
             - name: Erişim denetimi (dizinler ve dosyalar)
               href: data-lake-storage-access-control.md
+            - name: Azure İlkesi’ne göre güvenlik denetimleri
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: Uyumluluk
           items:
             - name: Çoklu protokol erişimi

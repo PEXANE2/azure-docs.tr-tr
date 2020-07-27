@@ -14,6 +14,9 @@
       href: automation-quickstart-create-runbook.md
     - name: Bir makine için Desired State Configuration’ı etkinleştirme
       href: automation-quickstart-dsc-configuration.md
+    - name: Otomasyon hesabı oluşturma - ARM şablonu
+      displayName: Resource Manager
+      href: quickstart-create-automation-account-template.md
 - name: Öğreticiler
   items:
     - name: Grafik runbook'u oluşturma
@@ -58,7 +61,7 @@
         - name: Azure portalını kullanarak Otomasyon hesabı oluşturma
           href: automation-create-standalone-account.md
         - name: Resource Manager şablonu ile Otomasyon hesabı oluşturma
-          href: automation-create-account-template.md
+          href: quickstart-create-automation-account-template.md
         - name: Amazon Web Services ile kimlik doğrulamasını yapılandırma
           href: automation-config-aws-account.md
         - name: Azure AD ile kimlik doğrulamasını yapılandırma
@@ -177,6 +180,18 @@
               href: automation-dsc-extension-history.md
             - name: State Configuration sorunlarını giderme
               href: troubleshoot/desired-state-configuration.md
+            - name: Senaryolar
+              items:
+                - name: Verileri STIG’i temel alarak yapılandırma
+                  href: automation-dsc-configuration-based-on-stig.md
+                - name: Verileri uygun ölçekte yapılandırma
+                  href: automation-dsc-config-data-at-scale.md
+                - name: Mevcut sunuculardan yapılandırma oluşturma
+                  href: automation-dsc-config-from-server.md
+                - name: Yapılandırmaları bileşik kaynaklara dönüştürme
+                  href: automation-dsc-create-composite.md
+                - name: Uyumlu olmayan sunucuları düzeltme
+                  href: automation-dsc-remediate.md
         - name: Değişiklik izleme ve envanter
           items:
             - name: Genel Bakış

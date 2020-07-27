@@ -5,7 +5,6 @@
     - name: Sanal makine ölçek kümeleri nedir?
       href: overview.md
 - name: Hızlı Başlangıçlar
-  expanded: true
   items:
     - name: Azure portalda oluşturma
       href: quick-create-portal.md
@@ -21,29 +20,30 @@
         - name: Windows ölçek kümesi
           displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
+  expanded: true
 - name: Öğreticiler
   items:
     - name: 1 - Ölçek kümesi oluşturup yönetme
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: tutorial-create-and-manage-cli.md
         - name: Azure PowerShell
           href: tutorial-create-and-manage-powershell.md
     - name: 2 - Veri disklerini kullanma
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: tutorial-use-disks-cli.md
         - name: Azure PowerShell
           href: tutorial-use-disks-powershell.md
     - name: 3 - Özel VM görüntüsü kullanma
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: tutorial-use-custom-image-cli.md
         - name: Azure PowerShell
           href: tutorial-use-custom-image-powershell.md
     - name: 4 - Uygulamaları ölçek kümesine dağıtma
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: tutorial-install-apps-cli.md
         - name: Azure PowerShell
           href: tutorial-install-apps-powershell.md
@@ -102,65 +102,71 @@
       href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: Bölgeler
-      href: ../virtual-machines/windows/regions.md
+      href: ../virtual-machines/regions.md
     - name: Kullanılabilirlik ve performans
-      maintainContext: true
       items:
         - name: Kullanılabilirlik
-          href: availability.md
+          href: ../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
         - name: Birlikte bulunma
           href: co-location.md
         - name: Ağ performansı
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Ölçek kümelerinde hata etki alanlarını yönetme
           href: virtual-machine-scale-sets-manage-fault-domains.md
+      maintainContext: true
     - name: Görüntüler
       href: shared-image-galleries.md
     - name: VM türleri ve boyutları
       href: ../virtual-machines/windows/sizes.md
-      maintainContext: true
       items:
         - name: Genel amaçlı
-          href: ../virtual-machines/windows/sizes-general.md
+          href: ../virtual-machines/sizes-general.md
           maintainContext: true
           items:
             - name: B-series burstable
-              href: ../virtual-machines/windows/b-series-burstable.md
+              href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
         - name: İşlem için iyileştirilmiş
-          href: ../virtual-machines/windows/sizes-compute.md
+          href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: Bellek için iyileştirilmiş
-          href: ../virtual-machines/windows/sizes-memory.md
+          href: ../virtual-machines/sizes-memory.md
           maintainContext: true
           items:
             - name: Kısıtlanmış vCPU'lar
               href: ../virtual-machines/windows/constrained-vcpu.md
               maintainContext: true
         - name: Depolama için iyileştirilmiş
-          href: ../virtual-machines/windows/sizes-storage.md
+          href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: GPU için iyileştirilmiş
-          href: ../virtual-machines/windows/sizes-gpu.md
+          href: ../virtual-machines/sizes-gpu.md
           maintainContext: true
           items:
             - name: NVIDIA GPU sürücülerini ayarlama
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Yüksek performanslı işlem
-          href: ../virtual-machines/windows/sizes-hpc.md
+          href: ../virtual-machines/sizes-hpc.md
+          maintainContext: true
+        - name: Geçici diski olmayan Azure VM’leri
+          href: ../virtual-machines/azure-vms-no-temp-disk.md
+          maintainContext: true
+        - name: Azure VM boyutlarını adlandırma kuralları
+          href: ../virtual-machines/vm-naming-conventions.md
           maintainContext: true
         - name: Azure işlem birimleri (ACU)
-          href: ../virtual-machines/windows/acu.md
+          href: ../virtual-machines/acu.md
           maintainContext: true
         - name: Kıyaslama puanları
           href: ../virtual-machines/windows/compute-benchmark-scores.md
           maintainContext: true
+      maintainContext: true
     - name: Doğrulanan Linux distro’ları
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: Bakım ve güncelleştirmeler
-      href: ../virtual-machines/windows/maintenance-and-updates.md
+      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
     - name: Düzenleme modları
       href: orchestration-modes.md
@@ -198,11 +204,13 @@
           href: ../virtual-machines/windows/security-policy.md
         - name: Azure Disk Şifrelemesi
           href: disk-encryption-overview.md
+        - name: Azure güvenlik temeli
+          href: security-baseline.md
         - name: Yerleşik güvenlik denetimleri
           href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: İzleme
-      href: ../virtual-machines/windows/monitor.md
+      href: ../azure-monitor/insights/monitor-vm-azure.md
       maintainContext: true
     - name: Dağıtma konuları
       items:
@@ -381,9 +389,7 @@
 - name: Başvuru
   items:
     - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: Azure CLI
-      href: ../virtual-machines/azure-cli-arm-commands.md
+      href: /powershell/azure/
     - name: REST
       href: /rest/api/virtualmachinescalesets/
     - name: Azure şablonları

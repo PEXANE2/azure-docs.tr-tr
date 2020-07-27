@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: Karar Ormanı Regresyonu
           href: decision-forest-regression.md
+        - name: Hızlı Orman Dağılım Dilimi Regresyonu
+          href: fast-forest-quantile-regression.md
         - name: Çizgisel Regresyon
           href: linear-regression.md
         - name: Sinir Ağı Regresyonu
           href: neural-network-regression.md
+        - name: Poisson Regresyonu
+          href: poisson-regression.md
     - name: Kümeleme
       items:
         - name: K Ortalamaları Kümeleme

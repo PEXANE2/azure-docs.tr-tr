@@ -18,6 +18,8 @@
   items:
     - name: Özel bir Azure Red Hat OpenShift 4 kümesi oluşturma
       href: howto-create-private-cluster-4x.md
+    - name: Azure Red Hat OpenShift 4 kümesi için çekme gizli dizisini güncelleştirme
+      href: howto-add-update-pull-secret.md
     - name: Azure Red Hat OpenShift 4 kümesi için DNS iletmeyi yapılandırma
       href: dns-forwarding.md
     - name: Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma
@@ -67,6 +69,10 @@
               href: cluster-administration-cluster-admin-role.md
             - name: 2 - Azure Red Hat OpenShift 3.11’de güvenlik bağlamı kısıtlamalarını yönetme
               href: cluster-administration-security-context-constraints.md
+- name: Kavramlar
+  items:
+    - name: Azure Red Hat OpenShift 4 kümelerinde ağ oluşturma
+      href: concepts-networking.md
 - name: Başvuru
   items:
     - name: Azure Red Hat OpenShift CLI

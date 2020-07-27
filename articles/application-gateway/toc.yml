@@ -68,8 +68,8 @@
           href: url-route-overview.md
         - name: Yönlendirme
           href: redirect-overview.md
-        - name: HTTP üst bilgilerini yeniden üretme
-          href: rewrite-http-headers.md
+        - name: HTTP üst bilgilerini ve URL’sini yeniden yazma
+          href: rewrite-http-headers-url.md
     - name: SSL
       items:
         - name: SSL sonlandırması ve uçtan uca SSL
@@ -104,7 +104,7 @@
           href: tutorial-manage-web-traffic-cli.md
     - name: İç yük dengeleyicisi yapılandırma
       items:
-        - name: Azure portal
+        - name: Azure portalı
           href: configure-application-gateway-with-private-frontend-ip.md
         - name: Azure PowerShell
           href: application-gateway-ilb-arm.md
@@ -198,14 +198,20 @@
               href: redirect-internal-site-cli.md
         - name: Azure PowerShell kullanarak web trafiğini yeniden yönlendirme
           href: tutorial-url-redirect-powershell.md
-    - name: HTTP üst bilgilerini yeniden üretme
+    - name: HTTP üst bilgilerini ve URL’sini yeniden yazma
       items:
-        - name: Azure portal
-          href: rewrite-http-headers-portal.md
-        - name: Azure PowerShell
-          href: add-http-header-rewrite-rule-powershell.md
-        - name: HTTP üst bilgileri oluşturma ve yeniden yazma
-          href: tutorial-http-header-rewrite-powershell.md
+        - name: Üst bilgiyi yeniden yazma
+          items:
+            - name: Azure portalı
+              href: rewrite-http-headers-portal.md
+            - name: Azure PowerShell
+              href: add-http-header-rewrite-rule-powershell.md
+            - name: HTTP üst bilgileri oluşturma ve yeniden yazma
+              href: tutorial-http-header-rewrite-powershell.md
+        - name: URL yeniden yazma
+          items:
+            - name: Azure portal
+              href: rewrite-url-portal.md
     - name: App service web uygulamasını ve birden çok kiracı hizmetini yapılandırma
       items:
         - name: Portal
@@ -249,7 +255,7 @@
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api
     - name: Java

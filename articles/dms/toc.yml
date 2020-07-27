@@ -59,6 +59,10 @@
           href: tutorial-postgresql-azure-postgresql-online-portal.md
         - name: PostgreSQL için Azure DB’ye (Az CLI)
           href: tutorial-postgresql-azure-postgresql-online.md
+    - name: PostgreSQL için Azure DB’yi geçirme - Tek Sunucu
+      items:
+        - name: PostgreSQL için Azure DB’ye (Portal)
+          href: tutorial-azure-postgresql-to-azure-postgresql-online-portal.md
     - name: RDS PostgreSQL’i geçirme
       items:
         - name: PostgreSQL için Azure DB’ye

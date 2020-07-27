@@ -6,6 +6,24 @@
   items:
     - name: Azure Synapse Analytics nedir?
       href: overview-what-is.md
+    - name: Başlarken
+      items:
+        - name: Giriş
+          href: get-started.md
+        - name: '1. Adım: Synapse çalışma alanı oluşturma'
+          href: get-started-create-workspace.md
+        - name: '2. Adım: SQL Havuzu kullanarak analiz etme'
+          href: get-started-analyze-sql-pool.md
+        - name: '3. Adım: Spark kullanarak analiz etme'
+          href: get-started-analyze-spark.md
+        - name: '4. Adım: İsteğe bağlı SQL kullanarak analiz etme'
+          href: get-started-analyze-sql-on-demand.md
+        - name: '5. Adım: Depolama hesabındaki verileri analiz etme'
+          href: get-started-analyze-storage.md
+        - name: '6. Adım: İşlem hatları ile düzenleme'
+          href: get-started-pipelines.md
+        - name: '7. Adım: Power BI ile görselleştirme'
+          href: get-started-visualize-power-bi.md
     - name: Kopya kağıdı
       href: overview-cheat-sheet.md
     - name: SSS
@@ -46,8 +64,6 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Öğreticiler
   items:
-    - name: başlarken
-      href: get-started.md
     - name: Spark havuzları için Apache Spark uygulamalarını çalıştırma
       href: ./spark/intellij-tool-synapse.md
     - name: Spark iş tanımları
@@ -698,6 +714,8 @@
               href: ../data-factory/connector-web-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Xero
               href: ../data-factory/connector-xero.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: XML biçimi
+              href: ../data-factory/format-xml.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Zoho
               href: ../data-factory/connector-zoho.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Veri taşıma
@@ -755,9 +773,11 @@
               href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: HDInsight Akış Etkinliği
               href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ML Batch Yürütme Etkinliği
+            - name: Machine Learning İşlem Hattı Yürütme Etkinliği
+              href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine Learning Studio (klasik) Batch Yürütme Etkinliği
               href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ML Kaynak Güncelleştirme Etkinliği
+            - name: Machine Learning Studio (klasik) Kaynak Güncelleştirme Etkinliği
               href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Saklı Yordam Etkinliği
               href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -856,7 +876,7 @@
     - name: PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API'leri
-      href: ./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      href: /rest/api/synapse/
     - name: Sistem görünümleri
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: T-SQL

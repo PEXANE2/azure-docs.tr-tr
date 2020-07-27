@@ -123,8 +123,10 @@
           href: azure-stack-edge-contact-microsoft-support.md
         - name: İzleme
           href: azure-stack-edge-monitor.md
-        - name: Cihazı iade etme veya değiştirme
+        - name: Cihazın iade edilmesi
           href: azure-stack-edge-return-device.md
+        - name: Cihazı değiştirme
+          href: azure-stack-edge-replace-device.md
     - name: Sürüm notları
       items:
         - name: 2007 - Geçerli
@@ -137,6 +139,14 @@
           href: data-box-gateway-1905-release-notes.md
         - name: Genel kullanılabilirlik (GA)
           href: data-box-gateway-release-notes.md
+    - name: Başvuru
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
 - name: Kaynaklar
   items:
     - name: Azure Stack Edge C# modülü örnekleri (.NET)

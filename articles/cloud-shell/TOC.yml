@@ -1,6 +1,6 @@
 - name: Genel Bakış
   href: overview.md
-- name: Hızlı Başlangıç
+- name: Hızlı başlangıç
   items:
     - name: Bash - Hızlı Başlangıç
       href: quickstart.md
@@ -32,6 +32,8 @@
       href: msi-authorization.md
     - name: Cloud Shell’i ekleme
       href: embed-cloud-shell.md
+    - name: Azure Sanal Ağ’da Cloud Shell
+      href: private-vnet.md
 - name: Cloud Shell düzenleyicisini kullanma
   href: using-cloud-shell-editor.md
 - name: Sorun giderme ve sınırlamalar

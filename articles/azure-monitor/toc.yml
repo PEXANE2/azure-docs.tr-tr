@@ -145,7 +145,7 @@
           href: app/data-retention-privacy.md
     - name: Uyarılar
       items:
-        - name: Genel Bakış
+        - name: Genel bakış
           href: platform/alerts-overview.md
         - name: Ölçüm uyarıları
           href: platform/alerts-metric-overview.md
@@ -157,6 +157,11 @@
       href: visualizations.md
     - name: İş ortağı tümleştirmeleri
       href: platform/partners.md
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./platform/security-controls-policy.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Senaryolar
@@ -213,7 +218,7 @@
               href: faq.md#agents
             - name: Azure Tanılama uzantısı
               items:
-                - name: Genel Bakış
+                - name: Genel bakış
                   href: platform/diagnostics-extension-overview.md
                 - name: Windows
                   displayname: diagnostics extension
@@ -244,8 +249,6 @@
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: Sürüm geçmişi
                       href: platform/diagnostics-extension-versions.md
-                    - name: JSON Satırları kaynak günlüklerinin biçimi
-                      href: platform/resource-logs-append-blobs.md
                     - name: Sorun giderme
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -264,9 +267,9 @@
                 - name: Linux aracıları
                   href: platform/agent-linux.md
                 - name: Windows için VM Uzantısı
-                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
                 - name: Linux için VM Uzantısı
-                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics ağ geçidi
                   href: platform/gateway.md
                 - name: Aracı yönetimi
@@ -430,7 +433,7 @@
         - name: Özel ölçümlerle ölçeklendirme
           href: platform/autoscale-custom-metric.md
         - name: VM ölçek kümelerini ölçeklendirme
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: Resource Manager şablonlarını kullanarak VM ölçek kümelerini ölçeklendirme
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: Web kancalarını ve e-posta bildirimlerini kullanma
@@ -446,7 +449,7 @@
             - name: Kullanılabilirlik
               href: app/monitor-web-app-availability.md
             - name: Ölçüm uyarıları
-              href: app/alerts.md
+              href: ./platform/alerts-log.md
         - name: Ölçüm uyarı kuralları
           items:
             - name: Ölçüm uyarılarını yönetme
@@ -474,19 +477,20 @@
             - name: Etkinlik günlüğü olayıyla ilgili uyarı
               href: platform/alerts-activity-log.md
             - name: Yönetim olaylarını etkinlik günlüğü uyarılarına geçirme
-              href: platform/migrate-management-alerts.md
+              href: ./platform/activity-log-alerts.md
             - name: Web kancası şeması
               href: platform/activity-log-alerts-webhook.md
         - name: Hizmet durumu uyarıları
           items:
             - name: Bildirimleri görüntüleme
-              href: platform/service-notifications.md
+              href: ../service-health/service-notifications.md
             - name: Bildirim olaylarıyla ilgili uyarıları yapılandırma
               href: platform/alerts-activity-log-service-notifications.md
         - name: Bildirimler ve eylemler
           items:
             - name: Eylem kuralları (Önizleme)
               href: platform/alerts-action-rules.md
+              displayName: 'Azure CLI, az monitor action rule'
             - name: Eylem grubu oluşturma
               href: platform/action-groups.md
             - name: Ortak uyarı şeması
@@ -556,7 +560,7 @@
         - name: Application Insights'a genel bakış
           href: app/app-insights-overview.md
         - name: SSS
-          href: app/troubleshoot-faq.md
+          href: ./faq.md
         - name: Kod tabanlı izleme
           items:
             - name: ASP.NET Çekirdeği
@@ -970,7 +974,11 @@
         - name: Günlük sorgularıyla verileri çözümleme
           href: insights/container-insights-log-search.md
         - name: Uyarı
-          href: insights/container-insights-alerts.md
+          items:
+            - name: Günlük uyarı kuralları oluşturma
+              href: insights/container-insights-log-alerts.md
+            - name: Ölçüm uyarı kuralları oluşturma
+              href: insights/container-insights-metric-alerts.md
         - name: Aracı yönetimi
           href: insights/container-insights-manage-agent.md
         - name: Prometheus ölçüm veri dönüştürmeyi yapılandırma
@@ -1016,6 +1024,7 @@
       items:
         - name: Genel Bakış
           href: insights/solutions.md
+          displayName: 'Azure CLI, az monitor log-analytics'
         - name: Hedef çözümler
           href: insights/solution-targeting.md
         - name: Kullanılabilir çözümler
@@ -1028,8 +1037,6 @@
               href: insights/capacity-performance.md
             - name: Docker ve Windows Kapsayıcıları’nı izleme
               href: insights/containers.md
-            - name: Key Vault Analytics
-              href: insights/azure-key-vault.md
             - name: Ağlar
               items:
                 - name: Ağ Analizi
@@ -1173,7 +1180,7 @@
     - name: Terminoloji değişiklikleri
       href: terminology.md
     - name: Veri başvurusu
-      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
+      href: /azure/azure-monitor/reference/
     - name: Desteklenen ölçümler
       items:
         - name: Platform ölçümleri
@@ -1288,6 +1295,8 @@
         - name: Blob depolama biçimiyle değiştirme
           displayname: Diagnostic settings
           href: platform/resource-logs-blob-format.md
+        - name: Key Vault Analytics (kullanım dışı)
+          href: insights/azure-key-vault-deprecated.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

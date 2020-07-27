@@ -19,7 +19,7 @@
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: Örnekler
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -81,24 +81,44 @@
     - name: REST
       href: /rest/api/resources/
     - name: Kullanıcı arabirimi işlevleri
-      href: create-uidefinition-functions.md
+      items:
+        - name: Tüm işlevler
+          href: create-uidefinition-functions.md
+        - name: Koleksiyon işlevleri
+          href: create-ui-definition-collection-functions.md
+        - name: Dönüşüm işlevleri
+          href: create-ui-definition-conversion-functions.md
+        - name: Tarih işlevleri
+          href: create-ui-definition-date-functions.md
+        - name: Mantıksal işlevler
+          href: create-ui-definition-logical-functions.md
+        - name: Matematik işlevleri
+          href: create-ui-definition-math-functions.md
+        - name: Başvuru işlevleri
+          href: create-ui-definition-referencing-functions.md
+        - name: Dize işlevleri
+          href: create-ui-definition-string-functions.md
     - name: Kullanıcı arabirimi öğeleri
       href: create-uidefinition-elements.md
       items:
         - name: Common
           items:
+            - name: CheckBox
+              href: microsoft-common-checkbox.md
             - name: DropDown
               href: microsoft-common-dropdown.md
             - name: FileUpload
               href: microsoft-common-fileupload.md
             - name: InfoBox
               href: microsoft-common-infobox.md
-            - name: OptionsGroup
+            - name: OptionsGroup (radyo düğmesi)
               href: microsoft-common-optionsgroup.md
             - name: PasswordBox
               href: microsoft-common-passwordbox.md
             - name: Section
               href: microsoft-common-section.md
+            - name: Slider
+              href: microsoft-common-slider.md
             - name: TagsByResource
               href: microsoft-common-tagsbyresource.md
             - name: TextBlock
@@ -123,6 +143,12 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
+        - name: Çözümler
+          items:
+            - name: ArmApiControl
+              href: microsoft-solutions-armapicontrol.md
+            - name: ResourceSelector
+              href: microsoft-solutions-resourceselector.md
         - name: Depolama
           items:
             - name: MultiStorageAccountCombo

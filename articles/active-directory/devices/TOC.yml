@@ -75,6 +75,8 @@
           href: enterprise-state-roaming-faqs.md
 - name: Başvuru
   items:
+    - name: TLS 1.2’yi zorlama
+      href: reference-device-registration-tls-1-2.md
     - name: Enterprise State Roaming GPO ayarları
       href: enterprise-state-roaming-group-policy-settings.md
     - name: Enterprise State Roaming Windows ayarları

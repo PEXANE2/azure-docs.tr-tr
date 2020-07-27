@@ -53,8 +53,10 @@
       href: ../../mysql/security-baseline.md
     - name: MariaDB için Azure Veritabanı güvenlik temeli
       href: ../../mariadb/security-baseline.md
-    - name: PostgreSQL için Azure Veritabanı güvenlik temeli
+    - name: PostgreSQL için Azure Veritabanı - Tek Sunucu güvenlik temeli
       href: ../../postgresql/security-baseline.md
+    - name: PostgreSQL için Azure Veritabanı - Hiper Ölçek güvenlik temeli
+      href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks güvenlik temeli
       href: ../../azure-databricks/security-baseline.md
     - name: Azure İşlevleri güvenlik temeli
@@ -79,6 +81,8 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Müşteri Kasası güvenlik temeli
       href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: Data Lake Analytics güvenlik temeli
+      href: ../../data-lake-analytics/security-baseline.md
     - name: Event Hubs güvenlik temeli
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute güvenlik temeli
@@ -91,7 +95,15 @@
       href: ../../logic-apps/security-baseline.md
     - name: Ağ İzleyicisi güvenlik temeli
       href: ../../network-watcher/security-baseline.md
+    - name: Service Fabric temeli
+      href: ../../service-fabric/security-baseline.md
     - name: Stream Analytics temeli
       href: ../../stream-analytics/security-baseline.md
     - name: Synapse Analytics güvenlik temeli
       href: ../../synapse-analytics/security-baseline.md
+    - name: Sanal Makine Ölçek Kümeleri güvenlik temeli
+      href: ../../virtual-machine-scale-sets/security-baseline.md
+    - name: Sanal Makineler Linux güvenlik temeli
+      href: ../../virtual-machines/linux/security-baseline.md
+    - name: Sanal Makineler Windows güvenlik temeli
+      href: ../../virtual-machines/windows/security-baseline.md

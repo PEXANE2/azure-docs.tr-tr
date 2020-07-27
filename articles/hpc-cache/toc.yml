@@ -11,7 +11,7 @@
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Ön koşullar
-      href: hpc-cache-prereqs.md
+      href: hpc-cache-prerequisites.md
     - name: Önbelleği oluşturma
       href: hpc-cache-create.md
     - name: Depolama ekleme
@@ -46,6 +46,8 @@
   items:
     - name: Destek bileti açma
       href: hpc-cache-support-ticket.md
+    - name: Azure HPC Önbelleği için Azure CLI’yı ayarlama
+      href: az-cli-prerequisites.md
     - name: Blob depolama hesabı güvenlik duvarı ayarları geçici çözümü
       href: hpc-cache-blob-firewall-fix.md
     - name: NFS depolama hedefi oluşturma sorunlarını giderme

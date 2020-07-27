@@ -46,6 +46,8 @@
           href: expand-existing-host-pool.md
         - name: PowerShell ile uygulama gruplarını yönetme
           href: manage-app-groups-powershell.md
+    - name: Konak havuzunu silme
+      href: delete-host-pool.md
     - name: Profil kapsayıcısı oluşturma
       items:
         - name: VM tabanlı dosya paylaşımı kullanma
@@ -72,6 +74,8 @@
           href: set-up-customize-master-image.md
         - name: Ana VHD görüntüsü üzerinde Office yükleme
           href: install-office-on-wvd-master-image.md
+    - name: Oturum konaklarını otomatik olarak ölçeklendirme
+      href: set-up-scaling-script.md
     - name: Akışı özelleştirme
       href: customize-feed-for-virtual-desktop-users.md
     - name: Hizmet tanılamalarını kullanma
@@ -108,6 +112,8 @@
       href: store-fslogix-profile.md
     - name: İş ortağı tümleştirmeleri
       href: partners.md
+    - name: Windows Sanal Masaüstü hakkında SSS
+      href: faq.md
     - name: Windows 10 Enterprise çoklu oturum hakkında SSS
       href: windows-10-multisession-faq.md
     - name: Veri konumları

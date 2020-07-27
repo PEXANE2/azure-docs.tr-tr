@@ -83,10 +83,10 @@
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM ve Graph senaryoları
       href: scim-graph-scenarios.md
-    - name: Sağlama yöntemini seçin
-      href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Bulutta İK sağlama
       items:
+        - name: SuccessFactors tümleştirmesi
+          href: sap-successfactors-integration-reference.md
         - name: SuccessFactors öznitelik başvurusu
           href: sap-successfactors-attribute-reference.md
         - name: Workday öznitelik başvurusu

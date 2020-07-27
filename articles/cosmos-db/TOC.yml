@@ -1104,6 +1104,8 @@
       items:
         - name: Verileri bir yedeklemeden geri yükleme
           href: how-to-backup-and-restore.md
+        - name: Kota artışı isteme
+          href: create-support-request-quota-increase.md
     - name: İzleme
       items:
         - name: İzleyici Cosmos DB
@@ -1112,6 +1114,8 @@
           items:
             - name: Cosmos için Azure İzleyici (önizleme)
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: İzlenecek senaryolar
+              href: use-metrics.md
             - name: Sunucu tarafı gecikme süresini izleme
               href: monitor-server-side-latency.md
             - name: İstek birimi kullanımını izleme
@@ -1124,8 +1128,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: Kontrol düzlemi günlüklerini denetleme
               href: audit-control-plane-logs.md
-        - name: Cosmos DB hesabından ölçümleri görüntüleme
-          href: use-metrics.md
+        - name: Uyarı yapılandırma
+          href: create-alerts.md
         - name: İzleme verileri başvurusu
           href: monitor-cosmos-db-reference.md
         - name: Logic Apps ile uygulama günlüğü kaydı

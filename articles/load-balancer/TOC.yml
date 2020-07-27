@@ -18,17 +18,19 @@
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Load Balancer oluşturma - ARM şablonu
       href: quickstart-load-balancer-standard-public-template.md
-    - name: İç Load Balancer oluşturma - Portal
-      href: tutorial-load-balancer-standard-internal-portal.md
-    - name: İç Load Balancer oluşturma - Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: İç Load Balancer oluşturma - Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: İç Load Balancer oluşturma - ARM şablonu
-      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: Öğreticiler
   items:
+    - name: İç Yük Dengeleyici
+      items:
+        - name: İç Load Balancer oluşturma - Portal
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: İç Load Balancer oluşturma - Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: İç Load Balancer oluşturma - Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: İç Load Balancer oluşturma - ARM şablonu
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: Farklı kullanılabilirlik bölgelerindeki VM’lerin yükünü dengeleme
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Belirli bir kullanılabilirlik bölgesi içinde VM yükünü dengeleme
@@ -37,7 +39,7 @@
       href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Örnekler
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -73,6 +75,8 @@
       href: load-balancer-security-controls.md
     - name: Arka Uç Havuzu yönetimi
       href: backend-pool-management.md
+    - name: Standart Load Balancer ve Sanal Makine Ölçek Kümeleri
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: Nasıl yapılır
   items:
     - name: Sanal makine ölçek kümeleri
@@ -101,7 +105,7 @@
           href: configure-load-balancer-outbound-powershell.md
     - name: IPv6 ile genel Load Balancer oluşturma
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'

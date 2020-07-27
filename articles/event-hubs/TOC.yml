@@ -124,6 +124,9 @@
           href: network-security.md
         - name: Yerleşik güvenlik denetimleri
           href: event-hubs-security-controls.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: AMQP 1.0 protokol kılavuzu
@@ -196,7 +199,7 @@
         - name: Tanılama günlükleri ayarlama
           href: event-hubs-diagnostic-logs.md
         - name: Event Hubs’ı kullanarak Azure Tanılama verilerinin akışını yapma
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: İşleme birimlerini otomatik ölçeklendirme
           href: event-hubs-auto-inflate.md
         - name: Event Hubs yönetim kitaplıkları
@@ -289,6 +292,8 @@
       href: /azure/templates/microsoft.eventhub/allversions
     - name: Kotalar
       href: event-hubs-quotas.md
+    - name: Apache Kafka yapılandırmaları
+      href: apache-kafka-configurations.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

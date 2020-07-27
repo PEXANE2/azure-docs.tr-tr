@@ -10,6 +10,8 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Şablon oluşturma - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Şablon belirtimi oluşturma ve dağıtma
+      href: quickstart-create-template-specs.md
     - name: Azure hizmetleri
       items:
         - name: AI+Machine Learning
@@ -28,6 +30,8 @@
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Databricks
               href: /azure/databricks/scenarios/quickstart-create-databricks-workspace-resource-manager-template?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Data Factory
+              href: ../../data-factory/quickstart-create-data-factory-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Event Hubs
               href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: HDInsight - Hadoop
@@ -48,7 +52,7 @@
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blok zinciri
           items:
-            - name: Blok zinciri
+            - name: Blok Zinciri
               href: ../../blockchain/service/create-member-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: İşlem
           items:
@@ -114,6 +118,8 @@
           items:
             - name: Advisor
               href: ../../advisor/advisor-alerts-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Otomasyon
+              href: ../../automation/quickstart-create-automation-account-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Backup
               href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Maliyet Yönetimi+Faturalama
@@ -201,6 +207,12 @@
         - name: 3 - İşlem hattı oluşturma
           displayName: Devop
           href: deployment-tutorial-pipeline.md
+    - name: Şablon Belirtimleri
+      items:
+        - name: Bağlı şablonlar ile oluşturma
+          href: template-specs-create-linked.md
+        - name: Bağlı şablon olarak dağıtma
+          href: template-specs-deploy-linked-template.md
     - name: Gelişmiş şablonlar
       items:
         - name: Şablon başvurusu kullanma
@@ -240,6 +252,8 @@
       href: template-best-practices.md
     - name: Sık sorulan sorular
       href: frequently-asked-questions.md
+    - name: Şablon Belirtimleri
+      href: template-specs.md
     - name: Bulut tutarlılığına yönelik şablonlar
       href: templates-cloud-consistency.md
     - name: Dağıtım modları

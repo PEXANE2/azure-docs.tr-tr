@@ -1,20 +1,28 @@
 - name: Genel
   href: index.yml
 - name: Genel Bakış
-  expanded: true
   items:
     - name: Azure Key Vault hakkında
       href: overview.md
     - name: 'Anahtarlar, gizli diziler ve sertifikalar hakkında'
       href: about-keys-secrets-certificates.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: Portal
+      href: quick-create-portal.md
 - name: Öğreticiler
   items:
     - name: Azure Sanal Makinesi
       items:
-        - name: .NET’te Windows sanal makinesiyle Azure Key Vault’u kullanma
-          href: tutorial-net-windows-virtual-machine.md
-        - name: Python’da Windows sanal makinesiyle Azure Key Vault’u kullanma
-          href: tutorial-python-windows-virtual-machine.md
+        - name: .NET’te sanal makineyle Azure Key Vault’u kullanma
+          href: tutorial-net-virtual-machine.md
+        - name: Python’da sanal makineyle Azure Key Vault’u kullanma
+          href: tutorial-python-virtual-machine.md
     - name: Azure Kubernetes Service
       items:
         - name: Azure Key Vault’u Kubernetes ile tümleştirme
@@ -117,15 +125,11 @@
     - name: Key Vault’u Taşıma
       items:
         - name: Key Vault’u Başka Bir Kaynak Grubuna Taşıma
-          href: keyvault-moveresourcegroup.md
+          href: move-resourcegroup.md
         - name: Key Vault’u Başka Bir Aboneliğe Taşıma
-          href: keyvault-move-subscription.md
+          href: move-subscription.md
         - name: Key Vault’u Başka Bir Bölgeye Taşıma
-          href: keyvault-moveregion.md
-    - name: Sorun giderme
-      items:
-        - name: Abonelik taşıma işlemi sonrasında anahtar kasası kiracı kimliğini değiştirme
-          href: subscription-move-fix.md
+          href: move-region.md
 - name: Başvuru
   items:
     - name: REST API hata kodları - Azure Key Vault

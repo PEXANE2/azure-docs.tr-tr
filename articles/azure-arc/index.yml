@@ -2,19 +2,19 @@
 title: Azure Arc
 summary: Azure Arc, Azure Resource Manager'ın özelliklerini Linux ve Windows sunucularına, ayrıca tüm şirket içi, çoklu bulut ve uç altyapılarında Kubernetes kümelerine genişletir. Ayrıca Azure Arc ile müşteriler Azure veri hizmetlerine her yerde çalıştırabilir; her zaman güncel veri özellikleri, saniyeler içinde dağıtım (saatler yerine) ve her altyapıda dinamik ölçeklenebilirlik gibi bulut yeniliklerinin avantajlarından yararlanabilir.
 metadata:
-  title: Sunucular için Azure Arc
+  title: Azure Arc
   description: Azure'da şirket içi makineleri yönetmeyi öğrenin
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 8493a5d90656206c5498fafbc2b0a2743cd973a7
-  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+  ms.openlocfilehash: f9d4da85185d3a8541c165b407d276af0a25ccc6
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/27/2020
-  ms.locfileid: "85482352"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87008498"
 landingContent:
 - title: Azure Arc'a genel bakış
   linkLists:
@@ -22,11 +22,11 @@ landingContent:
     links:
     - text: Azure Arc hakkında daha fazla bilgi edinin
       url: https://aka.ms/Azure-Arc-Info
-- title: Sunucular için Azure Arc'ı kullanarak makineleri Azure'a bağlama
+- title: Azure Arc özellikli sunucuları kullanarak makineleri Azure’a bağlama
   linkLists:
   - linkListType: overview
     links:
-    - text: Sunucular için Azure Arc nedir?
+    - text: Azure Arc özellikli sunucular nedir?
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
@@ -42,19 +42,21 @@ landingContent:
     links:
     - text: Azure Arc özellikli Kubernetes nedir?
       url: ./kubernetes/overview.md
-  - linkListType: how-to-guide
+  - linkListType: quickstart
     links:
     - text: Kümeye bağlanma
       url: ./kubernetes/connect-cluster.md
-    - text: Bağlı kümede GitOps kullanma
+  - linkListType: how-to-guide
+    links:
+    - text: GitOps kullanarak yapılandırmaları dağıtma
       url: ./kubernetes/use-gitops-connected-cluster.md
-    - text: Helm ile GitOps kullanma
+    - text: GitOps kullanarak Helm chart’ları dağıtma
       url: ./kubernetes/use-gitops-with-helm.md
-    - text: Kapsayıcılar için Azure izleyici kullanma
-      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
-    - text: Azure İlkesi kullanma
+    - text: Azure İlkesi’ni kullanarak GitOps uygulama
       url: ./kubernetes/use-azure-policy.md
+    - text: Kapsayıcılar için Azure İzleyici kullanarak izleme
+      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
+    - text: Azure İlkesi kullanarak giriş denetimi ilkeleri
+      url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
     - text: Azure IoT Edge iş yüklerini dağıtma
       url: ./kubernetes/deploy-azure-iot-edge-workloads.md
-    - text: Hizmet sorumlusu ekleme
-      url: ./kubernetes/create-onboarding-service-principal.md

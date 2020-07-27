@@ -93,9 +93,14 @@
     - name: İlkeyi Kod iş akışları olarak tasarklama
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
-    - name: Kubernetes için Azure İlkesi (önizleme)
-      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
-      href: ./concepts/policy-for-kubernetes.md
+    - name: Kubernetes tümleştirmesi
+      items:
+        - name: Kubernetes için Azure İlkesi (önizleme)
+          displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+          href: ./concepts/policy-for-kubernetes.md
+        - name: Azure İlkesi ile pod güvenliğini sağlama (önizleme)
+          displayName: 'aks, psp, rego, opa'
+          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Konuk Yapılandırması ile VM’leri denetleme
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

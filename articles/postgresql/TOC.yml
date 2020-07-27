@@ -48,7 +48,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-azure-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -351,6 +351,8 @@
           items:
             - name: Ölçümler üzerinde uyarı oluşturma
               href: howto-hyperscale-alert-on-metric.md
+            - name: Veritabanı günlüklerine erişme
+              href: howto-hyperscale-logging.md
         - name: Sorun giderme
           items:
             - name: Bağlantı hatalarını giderme
