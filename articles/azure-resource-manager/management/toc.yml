@@ -25,6 +25,11 @@
       href: extension-resource-types.md
     - name: Kaynak örneği sınırı
       href: resources-without-resource-group-limit.md
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Nasıl yapılır
   items:
     - name: Taşıma - kaynak grupları/abonelikler

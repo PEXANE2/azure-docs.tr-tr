@@ -8,16 +8,17 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064922"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171877"
 ---
 # <a name="about-virtual-hub-routing"></a>Sanal merkez yönlendirmesi hakkında
 
-Bir sanal hub 'daki yönlendirme özellikleri, Sınır Ağ Geçidi Protokolü (BGP) kullanarak ağ geçitleri arasındaki tüm yönlendirmeyi yöneten bir yönlendirici tarafından sağlanır. Bir sanal hub, siteden siteye VPN ağ geçidi, ExpressRoute ağ geçidi, Noktadan siteye ağ geçidi, Azure Güvenlik Duvarı gibi birden çok ağ geçidi içerebilir. Bu yönlendirici Ayrıca, bir sanal hub 'a bağlanan sanal ağlar arasında geçiş bağlantısı sağlar ve 50 Gbps 'in toplam verimini destekleyebilir. Bu yönlendirme özellikleri standart sanal WAN müşterileri için geçerlidir.
+Bir sanal hub 'daki yönlendirme özellikleri, Sınır Ağ Geçidi Protokolü (BGP) kullanarak ağ geçitleri arasındaki tüm yönlendirmeyi yöneten bir yönlendirici tarafından sağlanır. Bir sanal hub, siteden siteye VPN ağ geçidi, ExpressRoute ağ geçidi, Noktadan siteye ağ geçidi, Azure Güvenlik Duvarı gibi birden çok ağ geçidi içerebilir. Bu yönlendirici Ayrıca, bir sanal hub 'a bağlanan sanal ağlar arasında geçiş bağlantısı sağlar ve 50 Gbps 'in toplam verimini destekleyebilir. Bu yönlendirme özellikleri standart sanal WAN müşterileri için geçerlidir. 
 
 Yönlendirmeyi yapılandırmak için bkz. [sanal hub yönlendirmeyi yapılandırma](how-to-virtual-hub-routing.md).
 
@@ -79,6 +80,15 @@ Yol tablolarında ilişkilendirme ve yayma özellikleri artık vardır. Önceden
 Yeni yol tablosu yeteneklerini kullanmak için lütfen Azure 'daki dışarı aktarmak için 3. adımda bekleyin. Azure portal Hub için yönlendirme bölümünde önceden var olan yollara sahipseniz, önce bunları silmeniz ve ardından yeni rota tabloları oluşturmayı denemeniz gerekir (Azure portal Hub için yönlendirme tabloları bölümünde kullanılabilir)
 
 * **Sanal hub 'da önceden var olan yollara sahip temel sanal WAN müşterileri**: yeni yol tablosu yeteneklerini kullanmak Için lütfen Azure 'daki dışarı aktarmak Için 3 Ağustos 'tan sonra tamamlanana kadar bekleyin. Azure portal Hub için yönlendirme bölümünde önceden mevcut olan yollar varsa öncelikle bunları silmeniz ve ardından temel sanal WAN 'ınızı standart sanal WAN 'a **yükseltmeniz** gerekir. Bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
+
+## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Sanal WAN yönlendirmesi konuları
+
+Sanal WAN yönlendirmeyi yapılandırırken lütfen aşağıdakileri göz önünde bulundurun:
+
+* Tüm dal bağlantılarının (Noktadan siteye, siteden siteye ve ExpressRoute) varsayılan yol tablosuyla ilişkilendirilmesi gerekir. Bu şekilde, tüm dallar aynı ön ekleri öğrenmeyecektir.
+* Tüm dal bağlantıları, yollarını aynı rota tabloları kümesine yaymalı. Örneğin, dalların varsayılan yol tablosuna yayılması gerektiğine karar verirseniz, bu yapılandırma tüm dallar arasında tutarlı olmalıdır. Sonuç olarak, varsayılan yol tablosuyla ilişkili tüm bağlantılar dalların tamamına erişebilecek.
+* Azure Güvenlik Duvarı aracılığıyla dal dalı Şu anda desteklenmiyor.
+* Azure Güvenlik Duvarı 'Nı birden çok bölgede kullanırken, tüm bağlı olan sanal ağların aynı yol tablosuyla ilişkilendirilmesi gerekir. Örneğin, Azure güvenlik duvarından geçiş yaparken sanal ağların bir alt kümesine sahip olma, Azure Güvenlik duvarını aynı sanal hub 'da atlayarak başka sanal ağlarda atlama mümkün değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

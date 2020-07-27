@@ -3,16 +3,16 @@ title: Onay tabanlı otomatik iş akışları oluşturun
 description: Öğretici-Azure Logic Apps kullanarak posta listesi aboneliklerini işleyen onay tabanlı bir otomatik iş akışı oluşturma
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: c1ed32a95864c20690607912bc32c01e3e597a65
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048600"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132407"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik onay tabanlı iş akışları oluşturma
 
@@ -21,6 +21,7 @@ Bu öğreticide, onay tabanlı bir iş akışını otomatikleştiren bir [mantı
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Boş bir mantıksal uygulama oluşturma.
 > * E-postalardaki abonelik isteklerini izleyen bir tetikleyici ekleme.
 > * Bu istekleri onaylamak veya reddetmek için e-posta gönderen bir eylem ekleme.
@@ -41,11 +42,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Office 365 Outlook veya Outlook.com 'de onay iş akışlarını destekleyen bir e-posta hesabı. Bu makalede Office 365 Outlook kullanılır. Farklı bir e-posta hesabı kullanırsanız genel adımlar aynı kalır, ancak kullanıcı arabiriminiz biraz farklı görünebilir.
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
-
-Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
-
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
+
+1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Ana Azure menüsünden **kaynak**  >  **tümleştirme**  >  **mantıksal uygulaması**oluştur ' u seçin.
 

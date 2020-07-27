@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, devx-track-javascript
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cd696b6aba96b06a7b84722d61eb40bbfa15c0ff
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: c8aca82567de0b564aadc355b198502450dd7a5c
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447962"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169812"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 
@@ -55,18 +55,18 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
 1. **Web**altında **URI Ekle** bağlantısını seçin, girin `http://localhost:6420` .
 1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** Için onay kutularını seçin ve ardından **Kaydet**' i seçin.
-1. **Genel Bakış**’ı seçin.
+1. **Genel bakış**'ı seçin.
 1. Tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından *WebApp1* uygulamasını seçin.
@@ -90,7 +90,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 Örneği edindiğinizden, kodu Azure AD B2C kiracı adınızla ve önceki bir adımda kaydettiğiniz uygulama KIMLIĞIYLE güncelleştirin.
 
-1. *AuthConfig. js* dosyasını *javascriptspa* klasörü içinde açın.
+1. *authConfig.js* dosyasını *javascriptspa* klasörü içinde açın.
 1. `msalConfig`Nesnede, Güncelleştir:
     * `clientId`önceki bir adımda kaydettiğiniz **uygulama (istemci) kimliğine** sahip değer ile
     * `authority`Azure AD B2C kiracı adınızla URI ve önkoşulların bir parçası olarak oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı (örneğin, *B2C_1_signupsignin1*)
@@ -119,7 +119,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-1. Bir konsol penceresi açın ve örneği içeren dizine geçin. Örneğin:
+1. Bir konsol penceresi açın ve örneği içeren dizine geçin. Örnek:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -131,7 +131,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     npm start
     ```
 
-    Konsol penceresinde yerel olarak çalışan Node. js sunucusunun bağlantı noktası numarası görüntülenir:
+    Konsol penceresinde yerel olarak çalışan Node.js sunucusunun bağlantı noktası numarası görüntülenir:
 
     ```console
     Listening on port 6420...

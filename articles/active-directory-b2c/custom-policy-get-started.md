@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65ff0ab03abdbd3b403d37700dc8df4fa5eee73a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116582"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169438"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
 
@@ -25,7 +25,7 @@ ms.locfileid: "87116582"
 
 [Özel ilkeler](custom-policy-overview.md) , Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. Bu makalede, bir e-posta adresi ve parola kullanarak yerel hesap kaydolma veya oturum açma 'yı destekleyen özel bir ilke oluşturacaksınız. Ayrıca, ortamınızı kimlik sağlayıcıları eklemek için hazırlarsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Henüz bir tane yoksa, Azure aboneliğinize bağlı [bir Azure AD B2C kiracı oluşturun](tutorial-create-tenant.md) .
 - [Uygulamanızı](tutorial-register-applications.md) , Azure AD B2C ile iletişim kurabilmesi için oluşturduğunuz kiracıya kaydedin.
@@ -87,7 +87,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için **uygulama kayıtları
 
 Ardından, bir kapsam ekleyerek API 'YI kullanıma sunun:
 
-1. **Yönet**altında **bir API 'yi kullanıma**sunma ' yı seçin.
+1. Sol taraftaki menüde, **Yönet**altında, **bir API 'yi kullanıma**sunma ' yı seçin.
 1. **Kapsam Ekle**' yi seçin, ardından **Kaydet** ' i SEÇIN ve varsayılan uygulama kimliği URI 'sini kabul edin.
 1. Azure AD B2C kiracınızda özel ilke yürütmeye izin veren bir kapsam oluşturmak için aşağıdaki değerleri girin:
     * **Kapsam adı**:`user_impersonation`
@@ -110,13 +110,13 @@ Ardından, bir kapsam ekleyerek API 'YI kullanıma sunun:
 
 Sonra, uygulamanın ortak istemci olarak değerlendirilip değerlendirilmeyeceğini belirtin:
 
-1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
+1. Sol taraftaki menüde, **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**altında, **uygulamayı ortak istemci olarak değerlendir** ' i etkinleştirin ( **Evet**' i seçin). Uygulama bildiriminde **"Allowpublicclient": true** değerinin ayarlandığından emin olun. 
 1. **Kaydet**'i seçin.
 
 Şimdi *IdentityExperienceFramework* kaydında daha önce sunulan API kapsamına izin verin:
 
-1. **Yönet**altında **API izinleri**' ni seçin.
+1. Sol taraftaki menüde, **Yönet**altında, **API izinleri**' ni seçin.
 1. **Yapılandırılan izinler**altında **izin Ekle**' yi seçin.
 1. **API 'Lerim** sekmesini seçin, sonra **IdentityExperienceFramework** uygulamasını seçin.
 1. **İzin**altında, daha önce tanımladığınız **user_impersonation** kapsamını seçin.

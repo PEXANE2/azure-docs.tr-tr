@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bd1c41f23164d8dda2712ef2c361498cdaed6105
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032315"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131761"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Uçtan uca çözüm oluşturma
 
@@ -93,7 +93,7 @@ Sonraki adımda, bu öğreticide verileri işlemek için kullanılacak bir [Azur
 * *ProcessHubToDTEvents*: gelen IoT Hub verilerini Işler ve Azure dijital TWINS 'i buna göre güncelleştirir
 * *Processdtkabteddata*: dijital TWINS 'ten gelen verileri Işler ve Azure dijital TWINS 'de üst TWINS 'i uygun şekilde güncelleştirir
 
-Bu bölümde, önceden yazılmış işlev uygulamasını yayımlayacaksınız ve işlev uygulamasının Azure dijital TWINS 'e Azure Active Directory (AAD) kimliği atayarak erişebildiğinden emin olursunuz. Bu adımları tamamlamak, öğreticinin geri kalanının işlev uygulaması içindeki işlevleri kullanmasına izin verir. 
+Bu bölümde, önceden yazılmış işlev uygulamasını yayımlayacaksınız ve işlev uygulamasının bir Azure Active Directory (Azure AD) kimliği atayarak Azure dijital TWINS 'e erişebildiğinden emin olursunuz. Bu adımları tamamlamak, öğreticinin geri kalanının işlev uygulaması içindeki işlevleri kullanmasına izin verir. 
 
 ### <a name="publish-the-app"></a>Uygulamayı yayımlama
 
@@ -141,7 +141,7 @@ Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgile
 
 ### <a name="assign-permissions-to-the-function-app"></a>İşlev uygulamasına izin atama
 
-İşlev uygulamasının Azure dijital TWINS 'e erişmesine olanak tanımak için, bir sonraki adım bir uygulama ayarı yapılandırmak, uygulamayı sistem tarafından yönetilen bir AAD kimliği atamak ve Azure dijital TWINS örneğinde bu kimlik *sahibi* izinlerini vermektir.
+İşlev uygulamasının Azure dijital TWINS 'e erişmesine olanak tanımak için bir sonraki adım bir uygulama ayarı yapılandırmak, uygulamayı sistem tarafından yönetilen bir Azure AD kimliği atamak ve Azure dijital TWINS örneğinde bu kimlik *sahibi* izinlerini vermektir.
 
 Azure Cloud Shell ' de, işlev uygulamanızın dijital TWINS örneğine başvurmak için kullanacağı bir uygulama ayarı ayarlamak için aşağıdaki komutu kullanın.
 
@@ -423,7 +423,7 @@ Azure Cloud Shell kullanarak, [az Group Delete](https://docs.microsoft.com/cli/a
 az group delete --name <your-resource-group>
 ```
 
-Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz AAD uygulama kaydını silin:
+Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azure AD uygulama kaydını silin:
 
 ```azurecli
 az ad app delete --id <your-application-ID>

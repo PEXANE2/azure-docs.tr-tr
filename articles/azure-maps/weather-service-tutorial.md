@@ -1,20 +1,20 @@
 ---
 title: 'Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme | Microsoft Azure haritaları'
 description: Bu öğreticide, Azure Notebooks (Python) kullanarak Microsoft Azure Maps Hava durumu hizmetinden gelen hava durumu tahmin verileriyle sensör verilerini nasıl katılabilmeniz gösterilmektedir.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 9d35ed0ee657e90ebc77c16ed654d32975ed9580
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a262c95328fef772c9158082f554de9f7ac5f81
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024852"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133240"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
 
@@ -31,7 +31,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Tahmin verilerini grafiklerde çiz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle şunları yapmanız gerekir:
 

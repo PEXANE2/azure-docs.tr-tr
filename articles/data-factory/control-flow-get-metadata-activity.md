@@ -10,13 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112631"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171243"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,7 +47,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob Depolama](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Azure Blob depolama](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Dosyaları](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -59,6 +60,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 - Azure Blob depolama için `lastModified` kapsayıcı ve BLOB için geçerlidir ancak sanal klasöre uygulanmaz.
 - `lastModified`Filtre Şu anda alt öğeleri filtrelemek için geçerlidir ancak belirtilen klasör/dosyanın kendisi için geçerli değildir.
 - Klasörler/dosyalar üzerinde joker karakter filtresi, meta veri Al etkinliği için desteklenmiyor.
+- `structure``columnCount`ikili, JSON veya XML dosyalarından meta veriler alınırken desteklenmez.
 
 **İlişkisel veritabanı**
 
@@ -92,7 +94,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 >[!NOTE]
 >Dosya mağazalarından meta veriler alırken ve `modifiedDatetimeStart` veya `modifiedDatetimeEnd` ' ı yapılandırdığınızda, `childItems` yalnızca belirtilen aralıktaki son değiştirme zamanına sahip olan verilen yoldaki dosyaları dahil eder. ' De alt klasörlerdeki öğeler dahil değildir.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 **Meta veri Al etkinliği**
 
@@ -138,8 +140,8 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Evet 
-veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Evet
+fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Yes 
+veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Yes
 formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 

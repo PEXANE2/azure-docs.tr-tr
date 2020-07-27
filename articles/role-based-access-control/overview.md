@@ -11,21 +11,25 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3846a4669cc2a77862e73dbb8e7743b19740e8a4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 45601e820bc03b263fbf664a43ce34266dc4a488
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996487"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171573"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?
 
 Bulut kaynakları için erişim yönetimi, bulutu kullanan tüm kuruluşlar için kritik öneme sahip bir işlevdir. Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynaklarına kimlerin erişebileceğini, bu kaynaklarla neler yapabileceğini ve hangi alanların erişebileceğini yönetmenize yardımcı olur.
 
 Azure RBAC, Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan [Azure Resource Manager](../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir.
+
+Bu videoda, Azure RBAC 'e hızlı bir genel bakış sunulmaktadır.
+
+>[!VIDEO https://www.youtube.com/embed/Dzhm-garKBM]
 
 ## <a name="what-can-i-do-with-azure-rbac"></a>Azure RBAC ile neler yapabilirim?
 
@@ -57,26 +61,30 @@ Azure RBAC kullanarak kaynaklara erişimi denetleme yönteminiz, rol atamaları 
 
 ![Rol ataması için rol tanımı](./media/overview/rbac-role-definition.png)
 
-Azure'da kullanabileceğiniz birçok [yerleşik rol](built-in-roles.md) bulunur. Dört temel yerleşik rol aşağıda listelenmiştir. İlk üçü tüm kaynak türleri için geçerlidir.
+Azure, kullanabileceğiniz çeşitli [yerleşik roller](built-in-roles.md) içerir. Dört temel yerleşik rol aşağıda listelenmiştir. İlk üçü tüm kaynak türleri için geçerlidir.
 
-- [Sahip](built-in-roles.md#owner): Erişimi başkalarına verme hakkı dahil olmak üzere tüm kaynaklara tam erişime sahiptir.
+- [Sahip](built-in-roles.md#owner) -başkalarına erişim yetkisi verme hakkı dahil tüm kaynaklara tam erişim sağlar.
 - [Katkıda bulunan](built-in-roles.md#contributor) -tüm Azure Kaynak türlerini oluşturabilir ve yönetebilir, ancak diğer kullanıcılara erişim izni veremez.
-- [Okuyucu](built-in-roles.md#reader): Var olan Azure kaynaklarını görüntüleyebilirsiniz.
-- [Kullanıcı Erişimi Yöneticisi](built-in-roles.md#user-access-administrator): Azure kaynaklarına kullanıcı erişimini yönetmenizi sağlar.
+- [Okuyucu](built-in-roles.md#reader) -mevcut Azure kaynaklarını görüntüleyebilir.
+- [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) -Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar.
 
 Yerleşik rollerin diğerleri belirli Azure kaynakları için yönetim özellikleri sunar. Örneğin [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolü, kullanıcının sanal makine oluşturmasını ve yönetmesini sağlar. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [Azure özel rollerinizi](custom-roles.md)de oluşturabilirsiniz.
+
+Bu videoda, yerleşik roller ve özel roller hakkında hızlı bir genel bakış sunulmaktadır.
+
+>[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
 Azure 'da bir nesne içindeki verilere erişim izni vermenizi sağlayan veri işlemleri vardır. Örneğin kullanıcının bir depolama hesabında verileri okuma erişimi varsa bu kullanıcı ilgili depolama hesabındaki blobları veya iletileri okuyabilir. Daha fazla bilgi için bkz. [Azure rol tanımlarını anlama](role-definitions.md).
 
 ### <a name="scope"></a>Kapsam
 
-*Kapsam* , erişimin uygulandığı kaynak kümesidir. Bir rol atadığınızda kapsam tanımlayarak izin verilen eylemleri sınırlandırabilirsiniz. Bu özellik bir kullanıcıyı yalnızca bir kaynak grubu için [Web Sitesi Katılımcısı](built-in-roles.md#website-contributor) yapmak istediğiniz durumlarda kullanışlıdır.
+*Kapsam* , erişimin uygulandığı kaynak kümesidir. Bir rol atadığınızda kapsam tanımlayarak izin verilen eylemleri sınırlandırabilirsiniz. Bu, birine bir [Web sitesi katılımcısı](built-in-roles.md#website-contributor)yapmak istiyorsanız ancak yalnızca bir kaynak grubu için yararlıdır.
 
-Azure'da [yönetim grubu](../governance/management-groups/overview.md), abonelik, kaynak grubu veya kaynak olmak üzere birden fazla seviyede kapsam belirtebilirsiniz. Kapsamlar üst-alt öğe ilişkisiyle yapılandırılmıştır.
+Azure 'da, birden çok düzeyde kapsam belirtebilirsiniz: [Yönetim grubu](../governance/management-groups/overview.md), abonelik, kaynak grubu veya kaynak. Kapsamlar üst-alt ilişkisiyle yapılandırılmıştır.
 
 ![Rol ataması kapsamı](./media/overview/rbac-scope.png)
 
-Üst kapsamda verdiğiniz erişim izinleri alt kapsamlar tarafından devralınır. Örneğin:
+Üst kapsamda verdiğiniz erişim izinleri alt kapsamlar tarafından devralınır. Örnek:
 
 - [Sahip](built-in-roles.md#owner) rolünü yönetim grubu kapsamında bir kullanıcıya atarsanız bu kullanıcı yönetim grubundaki tüm aboneliklerde bulunan nesneleri yönetebilir.
 - [Okuyucu](built-in-roles.md#reader) rolünü bir gruba abonelik kapsamında atadığınızda grubun üyeleri aboneliğin içindeki tüm kaynak gruplarını ve kaynakları görüntüleyebilir.

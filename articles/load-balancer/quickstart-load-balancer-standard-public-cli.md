@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f8da00e531a9712b7bbb459378e3c0448e3c028f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 40af7a7d3bcc4584260735ddbcbf84ac0936ce15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131527"
+ms.locfileid: "87172099"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak sanal makinelerin yük dengelemesi için genel yük dengeleyici oluşturma
 
 Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure CLı kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure CLı yerel olarak veya Azure Cloud Shell yüklendi
@@ -504,14 +504,14 @@ Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.
 #### <a name="vm1"></a>VM1
 * Arka uç adres havuzunda **Mybackendpooloutbound**.
 * Kaynak grubu **Myresourcegrouplb**.
-* Ağ arabirimi **myVMNic1** ve **ipconfig1**ile ilişkili.
+* Ağ arabirimi **myNicVM1** ve **ipconfig1**ile ilişkili.
 * Yük dengeleyici **Myloadbalancer**ile ilişkili.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic1 \
+   --nic-name myNicVM1 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```
@@ -519,14 +519,14 @@ Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.
 #### <a name="vm2"></a>VM2
 * Arka uç adres havuzunda **Mybackendpooloutbound**.
 * Kaynak grubu **Myresourcegrouplb**.
-* Ağ arabirimi **myVMNic2** ve **ipconfig1**ile ilişkili.
+* Ağ arabirimi **myNicVM2** ve **ipconfig1**ile ilişkili.
 * Yük dengeleyici **Myloadbalancer**ile ilişkili.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic2 \
+   --nic-name myNicVM2 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```
@@ -534,14 +534,14 @@ Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.
 #### <a name="vm3"></a>VM3
 * Arka uç adres havuzunda **Mybackendpooloutbound**.
 * Kaynak grubu **Myresourcegrouplb**.
-* Ağ arabirimi **myVMNic3** ve **ipconfig1**ile ilişkili.
+* Ağ arabirimi **myNicVM3** ve **ipconfig1**ile ilişkili.
 * Yük dengeleyici **Myloadbalancer**ile ilişkili.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic3 \
+   --nic-name myNicVM3 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```

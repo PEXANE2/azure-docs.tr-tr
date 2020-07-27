@@ -3,12 +3,12 @@ title: Kendi modelinizi kullanarak canlı videoyu çözümleyin-Azure
 description: Bu hızlı başlangıçta, (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için bilgisayar vizyonu uygularsınız.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ff618e275624bc46c6fc3221507c5584047c51c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043202"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170617"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Hızlı başlangıç: kendi modelinizi kullanarak canlı videoyu çözümleyin
 
@@ -16,7 +16,7 @@ Bu hızlı başlangıçta, (benzetimli) bir IP kamerasından canlı video akış
 
 Bu hızlı başlangıç, bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve sanal bir canlı video akışı kullanır. C# dilinde yazılmış örnek koda dayalıdır ve [hareket ve yayma olaylarını Algıla](detect-motion-emit-events-quickstart.md) hızlı başlangıç bölümünde oluşturulur. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin bir abonelik içeren bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/), aşağıdaki uzantılara sahip:
@@ -283,6 +283,8 @@ Aşağıdaki örnekte, farklı düzeylerde güvenle aynı video çerçevesinde i
 Diğer hızlı başlangıç yapmayı düşünüyorsanız oluşturduğunuz kaynakları saklayın. Aksi takdirde, Azure portal gidin, kaynak gruplarınıza gidin, bu hızlı başlangıcı çalıştırdığınız kaynak grubunu seçin ve tüm kaynakları silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+* [YOLOv3 modelinin güvenli bir sürümünü](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) deneyın ve IoT Edge cihazına dağıtın. 
 
 Gelişmiş kullanıcılar için ek güçlükleri gözden geçirin:
 

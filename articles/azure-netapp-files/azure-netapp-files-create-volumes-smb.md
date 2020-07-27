@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483712"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169973"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -45,7 +45,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     |    AD Web Hizmetleri    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    Icmpv4             |    YOK       |    Yankı yanıtı    |
+    |    Icmpv4             |    Yok       |    Yankı yanıtı    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -215,6 +215,12 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
         ![Birim oluşturun](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Alt ağ oluşturma](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * Birime var olan bir anlık görüntü ilkesi uygulamak istiyorsanız, genişletmek için **Gelişmiş bölümünü göster** ' e tıklayın ve açılır menüden bir anlık görüntü ilkesi seçin. 
+
+        Anlık görüntü ilkesi oluşturma hakkında daha fazla bilgi için bkz. [anlık görüntüleri yönetme](azure-netapp-files-manage-snapshots.md).
+
+        ![Gelişmiş seçimi göster](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. **Protokol** ' e tıklayın ve aşağıdaki bilgileri doldurun:  
     * Birimin protokol türü olarak **SMB** ' yi seçin. 

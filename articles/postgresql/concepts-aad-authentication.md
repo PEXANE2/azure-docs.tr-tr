@@ -5,15 +5,15 @@ author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 737587ccf46d4af292dc11d37567249c13260f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565497"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171051"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
+# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory ile PostgreSQL kimlik doğrulaması gerçekleştirme
 
 Microsoft Azure Active Directory (Azure AD) kimlik doğrulaması, Azure AD 'de tanımlanan kimlikleri kullanarak PostgreSQL için Azure veritabanı 'na bağlanma mekanizmasıdır.
 Azure AD kimlik doğrulamasıyla, veritabanı kullanıcı kimliklerini ve diğer Microsoft hizmetlerini merkezi bir konumda yönetebilirsiniz ve bu da izin yönetimini basitleştirir.

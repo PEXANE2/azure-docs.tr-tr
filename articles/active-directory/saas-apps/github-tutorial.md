@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253774"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170543"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Öğretici: GitHub ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -87,7 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://github.com/orgs/<Organization ID>`
 
-    c. **Yanıt URL 'si** textox ' de, aşağıdaki kalıbı kullanarak bir URL yazın:`https://github.com/orgs/<Organization ID>/saml/consume`
+    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://github.com/orgs/<Organization ID>/saml/consume`
 
 
     > [!NOTE]
@@ -121,7 +121,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -177,7 +177,7 @@ Bu bölümde, GitHub 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
     ![Ayarlar](./media/github-tutorial/tutorial_github_config_github_06.png)
 
-6. **Kaydet** 'e tıklayın
+6. **Kaydet**’e tıklayın
 
 > [!NOTE]
 > GitHub 'daki çoklu oturum açma, GitHub 'daki belirli bir kuruluşun kimliğini doğrular ve GitHub 'ın kimlik doğrulamasını değiştirmez. Bu nedenle, kullanıcının github.com oturumunun süresi dolmuşsa, çoklu oturum açma işlemi sırasında GitHub 'ın KIMLIĞI/parolasıyla kimlik doğrulaması yapmanız istenebilir.

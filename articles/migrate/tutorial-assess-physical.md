@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ile Azure 'a geçiş için fizikse
 description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçiş için şirket içi fiziksel sunucuların nasıl değerlendirileneceğini açıklar.
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 5b4d5241e4236d4c11f2e2a5a8feb7c73258cba0
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080769"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171392"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Azure geçişi ile fiziksel sunucuları değerlendirme: Sunucu değerlendirmesi
 
@@ -16,7 +16,7 @@ Bu makalede, şirket içi fiziksel sunucuların Azure geçişi: Sunucu değerlen
 
 [Azure geçişi](migrate-services-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
-Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir Azure geçişi projesi ayarlayın.
 > * Fiziksel sunucuları değerlendirmek için şirket içinde çalışan bir Azure geçiş gereci ayarlayın.
@@ -179,13 +179,14 @@ Gereci ilk kez ayarlayın.
 Şimdi, gerecden keşfedilecek fiziksel sunuculara bağlanın ve bulmayı başlatın.
 
 1. Gerecin sunucuları keşfetme için kullanacağı hesap kimlik bilgilerini belirtmek için **kimlik bilgileri ekle** ' ye tıklayın.  
-2. **Işletim sistemini**, kimlik bilgileri için kolay bir adı ve Kullanıcı adını ve parolayı belirtin. Daha sonra **Ekle**'ye tıklayın.
+2. Kullanıcı adı ve parolayla oturum açın. Anahtar ile oturum açma desteklenmiyor. Ayrıca kullanıcının bir kök oturum açması veya yerel yönetici grubunun bir parçası olması gerekir.
+3. **Işletim sistemini**, kimlik bilgileri için kolay bir adı ve Kullanıcı adını ve parolayı belirtin. Daha sonra **Ekle**'ye tıklayın.
 Windows ve Linux sunucuları için birden çok kimlik bilgisi ekleyebilirsiniz.
 4. Sunucuya bağlanmak için sunucu **Ekle**' ye tıklayın ve sunucu ayrıntılarını BELIRTIN-FQDN/IP adresi ve kimlik bilgilerinin kolay adı (satır başına bir giriş).
-3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, keşfedilebilir sunucu listesi gösterilir.
+5. **Doğrula**'ya tıklayın. Doğrulamadan sonra, keşfedilebilir sunucu listesi gösterilir.
     - Bir sunucu için doğrulama başarısız olursa, **durum** sütunundaki simgenin üzerine gelerek hatayı gözden geçirin. Sorunları giderin ve yeniden doğrulayın.
     - Bir sunucuyu kaldırmak için > **Sil**' i seçin.
-4. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
+6. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
 
 Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinde Azure portal görünmesi için 1,5 dakika sürer.
 
@@ -200,7 +201,7 @@ Bulmadan sonra, sunucuların Azure portal göründüğünü doğrulayabilirsiniz
 
 Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirmesini** | **Ayrıntılar** | **Veri**
+**Değerlendirme** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)**: Şirket ıçı disklerin IOPS ve aktarım hızına göre.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: şirket içi sunucu boyutuna göre<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.

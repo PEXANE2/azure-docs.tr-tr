@@ -3,15 +3,15 @@ title: Şirket içindeki veri kaynaklarına erişin
 description: Azure şirket içi veri ağ geçidi kaynağı oluşturarak Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, logicappspm
+ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: b216fa668483ef6fc30c1054dd4f65361ad17934
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/21/2020
+ms.openlocfilehash: 94fedc5dc6c9f420fbf14f80618a6daeefe908b2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065958"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172056"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps'ten şirket içi veri kaynaklarına bağlanma
 
@@ -50,15 +50,15 @@ Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirk
 
 Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](/data-integration/gateway/service-gateway-onprem#considerations)vardır. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Şirket [içi veri ağ geçidini zaten yerel bir bilgisayara yüklediniz](../logic-apps/logic-apps-gateway-install.md).
 
 * Bu veri ağ geçidini yüklerken kullanılan [Azure hesabı ve aboneliğini](../logic-apps/logic-apps-gateway-install.md#requirements) kullanıyorsunuz. Bu Azure hesabı tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır.
 
-* Ağ Geçidi yüklemeniz zaten kayıtlı değil ve başka bir Azure ağ geçidi kaynağı tarafından talep edildi.
+* Ağ Geçidi yüklemeniz zaten kayıtlı değil ve Azure portal var olan başka bir Azure Gateway kaynağı tarafından talep edildi.
 
-  Azure portal bir ağ geçidi kaynağı oluşturduğunuzda, ağ geçidi kaynağına ve yalnızca o ağ geçidi kaynağına bağlanan bir ağ geçidi yüklemesi seçersiniz. Azure Logic Apps, şirket içi Tetikleyiciler ve Eylemler ' de şirket içi veri kaynaklarına bağlanmak için ağ geçidi kaynağını kullanır. Bu Tetikleyiciler ve Eylemler ' de, kullanmak istediğiniz Azure aboneliğinizi ve ilişkili ağ geçidi kaynağını seçersiniz. Her ağ geçidi kaynağı yalnızca bir Azure hesabına bağlanan yalnızca bir ağ geçidi yüklemesine bağlanır.
+  Azure portal bir ağ geçidi kaynağı oluşturduğunuzda, ağ geçidi kaynağına ve yalnızca bu ağ geçidi kaynağına bağlanan bir ağ geçidi yüklemesi seçersiniz. Her ağ geçidi kaynağı yalnızca bir Azure hesabına bağlantı sağlayan bir ağ geçidi yüklemesine bağlanabilir. Azure Logic Apps, şirket içi Tetikleyiciler ve eylemler şirket içi veri kaynaklarına bağlanırken ağ geçidi kaynağını kullanır. Abonelik erişiminiz varsa, farklı bir ağ geçidi kaynağıyla ilişkili farklı Azure aboneliklerinden seçim yapabilirsiniz. Mantıksal uygulamanız ve ağ geçidi kaynağınız aynı Azure aboneliğini kullanmak zorunda değildir.
 
   > [!NOTE]
   > Yalnızca ağ geçidi Yöneticisi, Azure portal ağ geçidi kaynağını oluşturabilir. Şu anda hizmet sorumluları desteklenmez. 
@@ -108,6 +108,8 @@ Ağ Geçidi kaynağınızı oluşturduktan ve Azure aboneliğinizi bu kaynakla i
 
 1. **Ağ geçitleri**altında, **abonelikler** listesinden istediğiniz ağ geçidi kaynağına sahip Azure aboneliğinizi seçin.
 
+   Abonelik erişiminiz varsa, farklı bir ağ geçidi kaynağıyla ilişkili farklı Azure aboneliklerinden seçim yapabilirsiniz. Mantıksal uygulamanız ve ağ geçidi kaynağınız aynı Azure aboneliğini kullanmak zorunda değildir.
+
 1. Seçili aboneliğinizdeki kullanılabilir ağ geçidi kaynaklarını gösteren **bağlantı ağ geçidi** listesinden istediğiniz ağ geçidi kaynağını seçin. Her ağ geçidi kaynağı, tek bir ağ geçidi yüklemesine bağlanır.
 
    > [!NOTE]
@@ -153,7 +155,7 @@ Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı 
 
 1. Henüz seçili değilse, ağ geçidi kaynak menüsünde Şirket **Içi veri ağ geçidi**' ni seçin. Ağ Geçidi kaynağı araç çubuğunda **Sil**' i seçin.
 
-   Örneğin:
+   Örnek:
 
    ![Azure 'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 

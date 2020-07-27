@@ -618,6 +618,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: Kimlik doğrulaması sırasında hataları tanılama
           href: vs-active-directory-error.md
+    - name: Uygulamayı piyasaya sürme
+      items:
+        - name: Uygulama Kaynağında Yayımlama
+          href: v2-howto-get-appsource-certified.md
+        - name: Azure AD Uygulama Galerisi'nde Yayımlama
+          href: v2-howto-app-gallery-listing.md
+        - name: Office 365 Satıcı Panosu'nda Yayımlama
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
 - name: Başvuru
   items:
     - name: Uygulama bildirimi

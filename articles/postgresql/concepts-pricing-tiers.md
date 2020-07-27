@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b99e5f7d079e580ad8fcd30a311c24a55ef7fc5b
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121631"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171147"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı fiyatlandırma katmanları - Tek Sunucu
 
@@ -85,9 +85,9 @@ Depolama otomatik büyüme, sunucunuzun depolama dışı ve Salt okunabilir hale
 
 Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçeklenemediğini unutmayın.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Yedekleme depolama alanı
 
-Hizmet, sunucunuzun yedeklerini otomatik olarak alır. 7 ile 35 gün arasında bir bekletme dönemi seçebilirsiniz. Genel Amaçlı ve bellek için Iyileştirilmiş sunucular, yedeklemeler için coğrafi olarak yedekli depolamaya sahip olmak için seçim yapabilir. [Kavramlar makalesinde](concepts-backup.md)yedeklemeler hakkında daha fazla bilgi edinin.
+PostgreSQL için Azure veritabanı, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Bu miktardan fazla süre içinde kullandığınız tüm yedekleme depolama alanı aylık GB cinsinden ücretlendirilir. Örneğin, 250 GB depolama alanı olan bir sunucu sağlarsanız, sunucu yedeklemeleri için ücretsiz olarak 250 GB ek depolama alanı kullanılabilir. 250 GB 'tan fazla olan yedeklemeler için depolama, [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/postgresql/)göre ücretlendirilir. Yedekleme depolama kullanımını etkileyen faktörleri anlamak, yedekleme depolama maliyetini izlemek ve denetlemek için [yedekleme belgelerine](concepts-backup.md)başvurabilirsiniz.
 
 ## <a name="scale-resources"></a>Kaynakları ölçeklendirme
 

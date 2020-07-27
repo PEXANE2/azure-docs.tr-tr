@@ -3,16 +3,16 @@ title: Birden çok Azure hizmeti ile görevleri otomatikleştirme
 description: Öğretici-e-postaları Azure Logic Apps, Azure depolama ve Azure Işlevleri ile işlemek için otomatik iş akışları oluşturma
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/27/2020
-ms.openlocfilehash: 9835e4e65ba4bfce1b0f9f6dc74a944db4cdcb28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 925759b63d1225c720ad439f15b82632a4921cbb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048873"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132339"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme
 
@@ -47,13 +47,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * [Ücretsiz Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)’ni indirip yükleyin. Bu araç, depolama kapsayıcınızın doğru şekilde ayarlanıp ayarlanmadığını denetlemenize yardımcı olur.
 
-## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
-
-Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
-
 ## <a name="set-up-storage-to-save-attachments"></a>Ekleri kaydetmek için depolamayı ayarlama
 
 Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/common/storage-introduction.md) bloblar olarak kaydedebilirsiniz.
+
+1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Bir depolama kapsayıcısı oluşturabilmeniz için, Azure portal **temel bilgiler** sekmesinde bu ayarlarla [bir depolama hesabı oluşturun](../storage/common/storage-account-create.md) :
 
@@ -261,7 +259,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
 1. Arama kutusuna tasarımcıda `when new email arrives` filtreniz olarak yazın. E-posta sağlayıcınız için bu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde - <*e-posta-sağlayıcınız*>**
 
-   Örneğin:
+   Örnek:
 
    ![E-posta sağlayıcısı için şu tetikleyiciyi seçin: "Yeni bir e-posta geldiğinde"](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -605,7 +603,7 @@ Sonra mantıksal uygulamanızın ekleri gözden geçirmek üzere e-posta gönder
    | ------- | ----- | ----- |
    | **Hedef** | <*alıcı-e-posta adresi*> | Test için kendi e-posta adresinizi kullanabilirsiniz. |
    | **Konu**  | ```ASAP - Review applicant for position:```**Konu** | Dahil etmek istediğiniz e-posta konusu. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinin **Yeni bir e-posta geldiğinde** bölümünde **Konu** alanını seçin. |
-   | **Gövde** | ```Please review new applicant:``` <p>```Applicant name:```**Şuradan** <p>```Application file location:```**Yol** <p>```Application email content:``` **Gövde** | E-posta gövdesinin içeriği. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinden şu alanları seçin: <p>- **Yeni bir e-posta geldiğinde** bölümünde **Kimden** alanı </br>- **E-posta gövdesi için blob oluşturma** bölümünde **Yol** alanı </br>- **E-posta gövdesini temizlemek için RemoveHTMLFunction işlevini çağırma** bölümünde **Gövde** alanı |
+   | **Gövde** | ```Please review new applicant:``` <p>```Applicant name:```**Şuradan** <p>```Application file location:``` **Yol** <p>```Application email content:``` **Gövde** | E-posta gövdesinin içeriği. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinden şu alanları seçin: <p>- **Yeni bir e-posta geldiğinde** bölümünde **Kimden** alanı </br>- **E-posta gövdesi için blob oluşturma** bölümünde **Yol** alanı </br>- **E-posta gövdesini temizlemek için RemoveHTMLFunction işlevini çağırma** bölümünde **Gövde** alanı |
    ||||
 
    > [!NOTE]

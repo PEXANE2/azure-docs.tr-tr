@@ -6,11 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 803437cc45fce9ab850682cf4725c0bf0d21bed6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bb4a6c0f37ceaf1e9fc6c28f08b98bb4449e65
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414122"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171302"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda izleme
 Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. MySQL için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlayan çeşitli ölçümler sağlar.
@@ -32,12 +33,12 @@ MySQL için Azure veritabanı 'nda bu ölçümler mevcuttur:
 |serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Kullanımdaki sunucu günlüğü depolama miktarı.|
 |serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Bu sunucu için en fazla sunucu günlük depolama alanı.|
 |storage_limit|Depolama sınırı|Bayt|Bu sunucu için en fazla depolama alanı.|
-|active_connections|Etkin Bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
-|connections_failed|Başarısız Bağlantılar|Sayı|Sunucuya yönelik başarısız bağlantı sayısı.|
-|seconds_behind_master|Saniye cinsinden çoğaltma gecikmesi|Sayı|Çoğaltma sunucusunun ana sunucuya yönelik olarak geçmesi gereken saniye sayısı.|
+|active_connections|Etkin Bağlantılar|Count|Sunucuya etkin bağlantı sayısı.|
+|connections_failed|Başarısız Bağlantılar|Count|Sunucuya yönelik başarısız bağlantı sayısı.|
+|seconds_behind_master|Saniye cinsinden çoğaltma gecikmesi|Count|Çoğaltma sunucusunun ana sunucuya yönelik olarak geçmesi gereken saniye sayısı.|
 |network_bytes_egress|Ağ Çıkışı|Bayt|Etkin bağlantılar arasında ağ çıkışı.|
 |network_bytes_ingress|Ağ Girişi|Bayt|Etkin bağlantılar genelinde ağ.|
-|backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Kullanılan yedekleme depolama alanı miktarı.|
+|backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Kullanılan yedekleme depolama alanı miktarı. Bu ölçüm, tüm tam veritabanı yedeklemeleri, fark yedeklemeleri ve sunucu için ayarlanan yedekleme Bekletme dönemi temel alınarak korunan depolama alanının toplamını temsil eder. Yedeklemelerin sıklığı hizmet olarak yönetilir ve [Kavramlar makalesinde](concepts-backup.md)açıklanmıştır. Coğrafi olarak yedekli depolama için, yedekleme depolama alanı kullanımı yerel olarak yedekli depolama alanının iki katından oluşur.|
 
 ## <a name="server-logs"></a>Sunucu günlükleri
 Sunucunuzda yavaş sorgu ve denetim günlüğünü etkinleştirebilirsiniz. Bu Günlükler Azure Izleyici günlükleri, Event Hubs ve depolama hesabı 'ndaki Azure tanılama günlükleri aracılığıyla da kullanılabilir. Günlüğe kaydetme hakkında daha fazla bilgi edinmek için [Denetim günlükleri](concepts-audit-logs.md) ' ni ve [yavaş sorgu günlüğü](concepts-server-logs.md) makalelerini ziyaret edin.

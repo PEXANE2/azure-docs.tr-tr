@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ee7c95cc25e911ba0ffe1e2815f219e040aaca31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: eefc8f1e9dcf6744e276d3cd911f325a8759fa30
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058263"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129126"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
 
@@ -49,7 +49,7 @@ Bu öğretici aşağıdaki kitaplığı kullanır:
 
 GitHub 'da, MSAL.js kitaplığının kaynak kodunu, [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
@@ -264,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Bu kodda, `scopes` API için erişim belirtecinde döndürülmek istenen kapsamları içerir.
 
-Örneğin:
+Örnek:
 
 * `["user.read"]`Microsoft Graph için
 * `["<Application ID URL>/scope"]`Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örneğin:
+Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örnek:
 
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.

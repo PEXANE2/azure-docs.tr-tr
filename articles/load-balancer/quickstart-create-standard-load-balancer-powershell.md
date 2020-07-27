@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: e11113f34e7dbb9d659944bd29e101cee009668b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 33c5db061860096b0411fbe91191f6c4a513e4c2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133155"
+ms.locfileid: "87172133"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
 Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure PowerShell kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell yerel olarak veya Azure Cloud Shell yüklendi
@@ -181,8 +181,6 @@ Yük dengeleyici kuralı şunları tanımlar:
 * **80 numaralı bağlantı noktasını**kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
 * Sistem durumu araştırması **Myhealtharaştırması**kullanılıyor.
 * Protokol **TCP**.
-* Ön uç IP adresini kullanarak giden kaynak ağ adresi çevirisini (SNAT) etkinleştirin.
-
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -193,11 +191,8 @@ $port = '80'
 ## $feip and $bePool are the variables from previous steps. ##
 
 $rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool
+New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT
 ```
-> [!NOTE]
-> Yukarıdaki komut, yük dengeleyicinin arka uç havuzundaki kaynaklar için giden bağlantıyı sunar. Gelişmiş giden bağlantı yapılandırması için Azure **['Daki giden bağlantılar](load-balancer-outbound-connections.md)** ' a bakın ve **[azure CLI kullanarak standart Load Balancer yük dengelemeyi ve giden kuralları yapılandırın](configure-load-balancer-outbound-cli.md)**.
-
 
 ### <a name="create-load-balancer-resource"></a>Yük dengeleyici kaynağı oluştur
 
@@ -313,7 +308,7 @@ $ip3 = 'myVMPubIP3'
 $sku = 'Standard'
 $all = 'static'
 
-$RdpPubIP2 = 
+$RdpPubIP3 = 
 New-AzPublicIpAddress -Name $ip3 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
 ```
 
@@ -638,6 +633,191 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 ```
 
 Üç VM 'yi oluşturmak ve yapılandırmak birkaç dakika sürer.
+
+## <a name="create-outbound-rule-configuration"></a>Giden kuralı yapılandırması oluştur
+Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 'yi yapılandırır. 
+
+Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağlantılar](load-balancer-outbound-connections.md).
+
+### <a name="create-outbound-public-ip-address"></a>Giden genel IP adresi oluştur
+
+[New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu şu şekilde kullanın:
+
+* **Mypublicıpoıb Utbağlanmadı**adlı standart bölge YEDEKLI genel IP adresi oluşturun.
+* **Myresourcegrouplb**içinde.
+
+```azurepowershell-interactive
+## Variables for the command ##
+$rg = 'MyResourceGroupLB'
+$loc = 'eastus'
+$pubIP = 'myPublicIPOutbound'
+$sku = 'Standard'
+$all = 'static'
+
+$publicIp = 
+New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku
+```
+
+Bölge 1 ' de genel bir IP adresi oluşturmak için aşağıdaki komutu kullanın:
+
+```azurepowershell-interactive
+## Variables for the command ##
+$rg = 'MyResourceGroupLB'
+$loc = 'eastus'
+$pubIP = 'myPublicIPOutbound'
+$sku = 'Standard'
+$all = 'static'
+
+$publicIp = 
+New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku -zone 1
+```
+### <a name="create-outbound-frontend-ip-configuration"></a>Giden ön uç IP yapılandırması oluştur
+
+[Add-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/add-azloadbalancerfrontendipconfig)ile yeni bir ön uç IP yapılandırması oluşturun:
+
+* **MyFrontEndOutbound**adlı.
+* Genel IP adresiyle ilişkili **Mypublicıpoıb Utbağlanmadı**.
+
+```azurepowershell-interactive
+## Variables for the command ##
+$fen = 'myFrontEndOutbound'
+
+## Get the load balancer configuration  and apply the frontend config##
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerFrontendIPConfig -Name $fen -PublicIpAddress $publicIP | Set-AzLoadBalancer
+```
+
+### <a name="create-outbound-pool"></a>Giden Havuz oluştur
+
+[Add-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig)ile yeni bir giden havuz oluşturun. 
+
+[Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer)ile yük dengeleyiciye havuzu ve ön uç IP adresini uygulama::
+
+* **Mybackendpooloutbound**adlı adlandırılmış.
+
+```azurepowershell-interactive
+## Variables for the command ##
+$ben = 'myBackEndPoolOutbound'
+$lbn = 'myLoadBalancer'
+$rg = 'myResourceGroupLB'
+
+## Get the load balancer configuration and create the outbound backend address pool##
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerBackendAddressPoolConfig -Name $ben | Set-AzLoadBalancer
+```
+### <a name="create-outbound-rule-and-apply-to-load-balancer"></a>Giden kuralı oluştur ve yük dengeleyiciye Uygula
+
+[Add-AzLoadBalancerOutboundRuleConfig](/powershell/module/az.network/new-azloadbalanceroutboundruleconfig)ile giden arka uç havuzu için yeni bir giden kuralı oluşturun. 
+
+[Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer)ile kuralı yük dengeleyiciye uygulayın:
+
+* Adlandırılmış **mbir Boundrule**.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+* Ön uç **myFrontEndOutbound**ile ilişkili.
+* **Tüm**protokol.
+* **15**' in boşta kalma süresi.
+* **10000** giden bağlantı noktası.
+* Arka uç havuzuyla ilişkili **Mybackendpooloutbound**.
+* Kaynak grubu **Myresourcegrouplb**.
+
+```azurepowershell-interactive
+## Variables for the commands ##
+$rg = 'myResourceGroupLB'
+$lbn = 'myLoadBalancer'
+$brn = 'myOutboundRule'
+$pro = 'All'
+$idl = '15'
+$por = '10000'
+
+## Get the load balancer configuration ##
+$lb = 
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg 
+
+## Apply the outbound rule configuration to the load balancer. ##
+$lb | Add-AzLoadBalancerOutBoundRuleConfig -Name $brn -FrontendIPConfiguration $lb.FrontendIpConfigurations[1] -BackendAddressPool $lb.BackendAddressPools[1] -Protocol $pro -IdleTimeoutInMinutes $idl -AllocatedOutboundPort $por | Set-AzLoadBalancer
+```
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>Sanal makineleri giden havuzuna Ekle
+
+Sanal makine ağ arabirimlerini [Add-Aznetworkınterfaceipconfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)ile yük dengeleyicinin giden havuzuna ekleyin:
+
+
+#### <a name="vm1"></a>VM1
+* Arka uç adres havuzunda **Mybackendpooloutbound**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM1** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurepowershell-interactive
+## Variables for the commands ##
+$rg = 'myResourceGroupLB'
+$lbn = 'myLoadBalancer'
+$bep = 'myBackEndPoolOutbound'
+$nic1 = 'myNicVM1'
+$ipc = 'ipconfig1'
+
+## Get the load balancer configuration ##
+$lb = 
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
+
+## Get the network interface configuration ##
+$nic = 
+Get-AzNetworkInterface -Name $nic1 -ResourceGroupName $rg
+
+## Apply the backend to the network interface ##
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+```
+
+#### <a name="vm2"></a>VM2
+* Arka uç adres havuzunda **Mybackendpooloutbound**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM2** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurepowershell-interactive
+## Variables for the commands ##
+$rg = 'myResourceGroupLB'
+$lbn = 'myLoadBalancer'
+$bep = 'myBackEndPoolOutbound'
+$nic2 = 'myNicVM2'
+$ipc = 'ipconfig1'
+
+## Get the load balancer configuration ##
+$lb = 
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
+
+## Get the network interface configuration ##
+$nic = 
+Get-AzNetworkInterface -Name $nic2 -ResourceGroupName $rg
+
+## Apply the backend to the network interface ##
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+```
+
+#### <a name="vm3"></a>VM3
+* Arka uç adres havuzunda **Mybackendpooloutbound**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM3** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurepowershell-interactive
+## Variables for the commands ##
+$rg = 'myResourceGroupLB'
+$lbn = 'myLoadBalancer'
+$bep = 'myBackEndPoolOutbound'
+$nic3 = 'myNicVM3'
+$ipc = 'ipconfig1'
+
+## Get the load balancer configuration ##
+$lb = 
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
+
+## Get the network interface configuration ##
+$nic = 
+Get-AzNetworkInterface -Name $nic3 -ResourceGroupName $rg
+
+## Apply the backend to the network interface ##
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+
+```
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[2. seçenek: yük dengeleyici oluşturma (temel SKU)](#tab/option-1-create-load-balancer-basic)
 
@@ -1268,7 +1448,7 @@ IIS 'yi her iki arka uç VM 'de aşağıdaki gibi özel bir Web sayfasıyla birl
 5. **MyVM1**, **myVM2**ve **myVM3**ile RDP bağlantılarını kapatın.
 
 
-## <a name="test-load-balancer"></a>Yük dengeleyiciyi sınama
+## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 Yük dengeleyicinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)komutunu kullanın:
 
 * Adlandırılmış **Mypublicıp**

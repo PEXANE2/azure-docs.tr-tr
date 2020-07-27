@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 573aef4f0d340d0d32dc4977e0937bca9c6d3cef
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338933"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129687"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -40,9 +40,9 @@ Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Micro
 
 Bu kılavuz aşağıdaki kitaplığı kullanır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript için Microsoft kimlik doğrulama kitaplığı|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript için Microsoft kimlik doğrulama kitaplığı|
 
 ## <a name="set-up-your-web-server-or-project"></a>Web sunucunuzu veya projenizi ayarlama
 
@@ -50,17 +50,17 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 >
 > Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bu öğreticiyi çalıştırmak için [Node. js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core)veya [Visual Studio 2017](https://www.visualstudio.com/downloads/)ile IIS Express tümleştirme gibi yerel bir Web sunucusuna ihtiyacınız vardır.
+* Bu öğreticiyi çalıştırmak için [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core)veya [Visual Studio 2017](https://www.visualstudio.com/downloads/)ile IIS Express tümleştirme gibi yerel bir Web sunucusuna ihtiyacınız vardır.
 
-* Bu kılavuzdaki yönergeler Node. js ' de yerleşik bir Web sunucusunu temel alır. Tümleşik geliştirme ortamınız (IDE) olarak [Visual Studio Code](https://code.visualstudio.com/download) kullanmanızı öneririz.
+* Bu kılavuzdaki yönergeler, Node.js yerleşik bir Web sunucusunu temel alır. Tümleşik geliştirme ortamınız (IDE) olarak [Visual Studio Code](https://code.visualstudio.com/download) kullanmanızı öneririz.
 
 * Modern bir Web tarayıcısı. Bu JavaScript örneği, [ES6](http://www.ecma-international.org/ecma-262/6.0/) kurallarını kullanır ve bu nedenle **Internet Explorer**'ı **desteklemez.**
 
-## <a name="create-your-project"></a>Projenizi oluşturma
+## <a name="create-your-project"></a>Projenizi oluşturun
 
-[Node. js](https://nodejs.org/en/download/) ' nin yüklü olduğundan emin olun ve ardından uygulamanızı barındırmak için bir klasör oluşturun. Burada, dosyanıza yönelik basit bir [Express](https://expressjs.com/) Web sunucusu uygulayacağız `index.html` .
+[Node.js](https://nodejs.org/en/download/) yüklü olduğundan emin olun ve ardından uygulamanızı barındırmak için bir klasör oluşturun. Burada, dosyanıza yönelik basit bir [Express](https://expressjs.com/) Web sunucusu uygulayacağız `index.html` .
 
 1. Terminal kullanarak (Visual Studio Code tümleşik Terminal), proje klasörünüzü bulun ve şunu yazın:
 
@@ -190,7 +190,7 @@ Artık SPA 'larınızı sunacak basit bir sunucunuz var. Bu öğreticinin sonund
    ```
 
    > [!TIP]
-   > Önceki betikteki MSAL. js sürümünü [msal. js yayınları](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)altındaki en son yayınlanan sürümle değiştirebilirsiniz.
+   > Yukarıdaki betikteki MSAL.js sürümünü [MSAL.js sürümleri](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)altındaki en son yayınlanan sürümle değiştirebilirsiniz.
 
 2. Şimdi, `ui.js` Dom öğelerine erişen ve bunları güncelleştiren ve aşağıdaki kodu ekleyen adlı bir. js dosyası oluşturun:
 
@@ -274,15 +274,15 @@ Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulama
 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si** bölümünde, açılan listeden **Web** platformunu seçin ve ardından değeri Web sunucunuza bağlı olan uygulama URL 'si olarak ayarlayın.
-1. **Kaydol**’u seçin.
+1. **Kaydet**’i seçin.
 1. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 1. Bu hızlı başlangıç, [örtük izin akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
 1. **Kaydet**'i seçin.
 
-> ### <a name="set-a-redirect-url-for-nodejs"></a>Node. js için yeniden yönlendirme URL 'SI ayarlama
+> ### <a name="set-a-redirect-url-for-nodejs"></a>Node.js için yeniden yönlendirme URL 'SI ayarlama
 >
-> Node. js için, *index. js* dosyasında Web sunucusu bağlantı noktasını ayarlayabilirsiniz. Bu öğretici 3000 numaralı bağlantı noktasını kullanır, ancak kullanılabilir başka herhangi bir bağlantı noktasını kullanabilirsiniz.
+> Node.js için, *index.js* dosyasında Web sunucusu bağlantı noktasını ayarlayabilirsiniz. Bu öğretici 3000 numaralı bağlantı noktasını kullanır, ancak kullanılabilir başka herhangi bir bağlantı noktasını kullanabilirsiniz.
 >
 > Uygulama kayıt bilgilerinde bir yeniden yönlendirme URL 'SI ayarlamak için, **uygulama kayıt** bölmesine dönün ve aşağıdakilerden birini yapın:
 >
@@ -320,7 +320,7 @@ Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulama
   };
 ```
 
- Konumlar:
+ Burada:
  - *\<Enter_the_Application_Id_Here>*, kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
  - *\<Enter_the_Cloud_Instance_Id_Here>*, Azure bulutu örneğidir. Ana veya küresel Azure bulutu için yalnızca girmeniz yeterlidir *https://login.microsoftonline.com* . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
  - *\<Enter_the_Tenant_info_here>* Aşağıdaki seçeneklerden birine ayarlanır:
@@ -409,13 +409,13 @@ Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulama
 
 ### <a name="more-information"></a>Daha fazla bilgi
 
-Kullanıcı **oturum aç** düğmesini ilk kez seçtikten sonra, `signIn` yöntemi `loginPopup` kullanıcının oturum açmasını çağırır. Bu yöntem, kullanıcının kimlik bilgilerini sormak ve doğrulamak için *Microsoft Identity platform uç noktasıyla* bir açılır pencere açar. Başarılı bir oturum açma işleminden sonra, Kullanıcı özgün *index. html* sayfasına yeniden yönlendirilir. Bir belirteç alınır, tarafından işlenir `msal.js` ve belirteçte bulunan bilgiler önbelleğe alınır. Bu belirteç, *kimlik belirteci* olarak bilinir ve Kullanıcı ile ilgili Kullanıcı görünen adı gibi temel bilgileri içerir. Herhangi bir amaçla bu belirteç tarafından verilen herhangi bir veriyi kullanmayı planlıyorsanız, belirtecin uygulamanız için geçerli bir kullanıcıya verildiğini garantilemek için bu belirtecin arka uç sunucunuz tarafından doğrulanması gerekir.
+Kullanıcı **oturum aç** düğmesini ilk kez seçtikten sonra, `signIn` yöntemi `loginPopup` kullanıcının oturum açmasını çağırır. Bu yöntem, kullanıcının kimlik bilgilerini sormak ve doğrulamak için *Microsoft Identity platform uç noktasıyla* bir açılır pencere açar. Başarılı bir oturum açma işleminden sonra, Kullanıcı özgün *index.html* sayfasına yeniden yönlendirilir. Bir belirteç alınır, tarafından işlenir `msal.js` ve belirteçte bulunan bilgiler önbelleğe alınır. Bu belirteç, *kimlik belirteci* olarak bilinir ve Kullanıcı ile ilgili Kullanıcı görünen adı gibi temel bilgileri içerir. Herhangi bir amaçla bu belirteç tarafından verilen herhangi bir veriyi kullanmayı planlıyorsanız, belirtecin uygulamanız için geçerli bir kullanıcıya verildiğini garantilemek için bu belirtecin arka uç sunucunuz tarafından doğrulanması gerekir.
 
 Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopup` Kullanıcı profili bilgileri IÇIN Microsoft Graph API 'sini sorgulamak üzere kullanılan bir *erişim belirteci* almak için ve/veya çağırır. KIMLIK belirtecini doğrulayan bir örneğe ihtiyacınız varsa GitHub 'da [Bu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-JavaScript-singlepageapp-DotNet-WebApi-v2 örneği") örnek uygulamaya göz atın. Örnek, belirteç doğrulaması için bir ASP.NET Web API 'SI kullanır.
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örnekler arasında şunlar yer almaktadır:
+İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örneklere şunlar dahildir:
 
 - Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
 - Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.
@@ -436,7 +436,7 @@ Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopu
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Yeni aldığınız belirteci kullanarak Microsoft Graph API 'sini çağırın
 
-1. İlk olarak, adlı bir. js dosyası oluşturun `graphConfig.js` ve bu dosyayı REST uç noktalarınızı depolayacaksınız. Aşağıdaki kodu ekleyin:
+1. İlk olarak, adlı bir. js dosyası oluşturun `graphConfig.js` ve bu dosyayı REST uç noktalarınızı depolayacaksınız. Şu kodu ekleyin:
 
    ```JavaScript
       const graphConfig = {
@@ -445,7 +445,7 @@ Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopu
       };
    ```
 
-   Konumlar:
+   Burada:
    - *\<Enter_the_Graph_Endpoint_Here>*, MS Graph API örneğidir. Genel MS Graph API uç noktası için, bu dizeyi ile değiştirin `https://graph.microsoft.com` . Ulusal bulut dağıtımları için lütfen [Graph API belgelerine](https://docs.microsoft.com/graph/deployments)bakın.
 
 1. Ardından adlı bir. js dosyası oluşturun `graph.js` , bu, MICROSOFT Graph API 'SINE Rest çağrısı yapar ve aşağıdaki kodu ekler:
@@ -477,17 +477,17 @@ Bu kılavuz tarafından oluşturulan örnek uygulamada, `callMSGraph()` yöntemi
 
 ## <a name="test-your-code"></a>Kodunuza test etme
 
-1. Sunucuyu, *index. html* dosyanızın konumunu temel alan bir TCP bağlantı noktasını dinleyecek şekilde yapılandırın. Node. js için, uygulama klasöründen bir komut satırı isteminde aşağıdaki komutları çalıştırarak bağlantı noktasını dinlemek üzere Web sunucusunu başlatın:
+1. Sunucuyu, *index.html* dosyanızın konumunu temel alan bir TCP bağlantı noktasını dinleyecek şekilde yapılandırın. Node.js için, uygulama klasöründen bir komut satırı isteminde aşağıdaki komutları çalıştırarak bağlantı noktasını dinlemek üzere Web sunucusunu başlatın:
 
    ```bash
    npm install
    npm start
    ```
-1. Tarayıcınızda, veya yazın; **http://localhost:3000** **http://localhost:{port}** burada *bağlantı noktası* , Web sunucunuzun dinlediği bağlantı noktasıdır. *İndex. html* dosyanızın Içeriğini ve **oturum aç** düğmesini görmeniz gerekir.
+1. Tarayıcınızda, veya yazın; **http://localhost:3000** **http://localhost:{port}** burada *bağlantı noktası* , Web sunucunuzun dinlediği bağlantı noktasıdır. *index.html* dosyanızın Içeriğini ve **oturum aç** düğmesini görmeniz gerekir.
 
 ## <a name="test-your-application"></a>Uygulamanızı test etme
 
-Tarayıcı *index. html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
+Tarayıcı *index.html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
 
 ![JavaScript SPA hesabı oturum açma penceresi](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

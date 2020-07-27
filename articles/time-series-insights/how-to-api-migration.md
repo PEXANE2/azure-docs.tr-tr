@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: 6cd06c31b56ce89a13af9bae8c77dc73efd69ef7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100240"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171740"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Yeni Azure Time Series Insights Gen2 API sürümlerine geçiş
 
@@ -23,30 +23,30 @@ ms.locfileid: "87100240"
 
 Ortak Önizlemedeki bir Azure Time Series Insights Gen2 ortamı oluşturduysanız (16 Temmuz 2020 ' den önce), bu makalede açıklanan adımları izleyerek, lütfen TSI ortamınızı, API 'lerin yeni genel sürümlerini kullanacak şekilde güncelleştirin.
 
-Yeni API sürümü `2020-07-31` ve güncelleştirilmiş bir [zaman serisi ifade sözdizimi](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)kullanır. 
+Yeni API sürümü `2020-07-31` ve güncelleştirilmiş bir [zaman serisi ifade sözdizimi](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)kullanır.
 
 Kullanıcıların, API uç noktalarına çağrılar yapan ortam [zaman serisi model değişkenlerini](./concepts-variables.md), kayıtlı sorguları, Power BI sorguları ve özel araçları geçirmeli. Geçiş işlemiyle ilgili sorularınız veya endişeleriniz varsa Azure portal aracılığıyla bir destek bileti iletin ve bu belgeden bahsedin.
 
 > [!IMPORTANT]
-> Preview API sürümü `2018-11-01-preview` 31 ekim 2020 tarihine kadar desteklenmeye devam edecektir. Lütfen hizmette kesintiye uğramadan önce bu geçişin tüm ilgili adımlarını doldurun. 
+> Preview API sürümü `2018-11-01-preview` 31 ekim 2020 tarihine kadar desteklenmeye devam edecektir. Lütfen hizmette kesintiye uğramadan önce bu geçişin tüm ilgili adımlarını doldurun.
 
 ## <a name="migrate-time-series-model-and-saved-queries"></a>Zaman serisi modeli ve kaydedilen sorguları geçirme
 
-Kullanıcıların [zaman serisi modeli değişkenlerini](./concepts-variables.md) ve kayıtlı sorguları geçirmelerini sağlamak için, [Azure Time Series Insights Gezgini](https://insights.timeseries.azure.com)aracılığıyla sunulan yerleşik bir araç vardır. Geçirmek istediğiniz ortama gidin ve aşağıdaki adımları izleyin. **Geçişi kısmen tamamlayabilir ve daha sonra tamamlanacak şekilde geri dönebilirsiniz, ancak güncelleştirmelerden hiçbiri geri alınamaz.** 
+Kullanıcıların [zaman serisi modeli değişkenlerini](./concepts-variables.md) ve kayıtlı sorguları geçirmelerini sağlamak için, [Azure Time Series Insights Gezgini](https://insights.timeseries.azure.com)aracılığıyla sunulan yerleşik bir araç vardır. Geçirmek istediğiniz ortama gidin ve aşağıdaki adımları izleyin. **Geçişi kısmen tamamlayabilir ve daha sonra tamamlanacak şekilde geri dönebilirsiniz, ancak güncelleştirmelerden hiçbiri geri alınamaz.**
 
 > [!NOTE]
 > Zaman serisi modelinde ve kayıtlı sorgularda güncelleştirme yapmak için ortama katkıda bulunan olmanız gerekir. Katkıda buluna değilseniz yalnızca kişisel kaydedilmiş sorgularınızı geçirebileceksiniz. Devam etmeden önce lütfen [ortam erişim ilkelerini](./concepts-access-policies.md) ve erişim düzeyinizi gözden geçirin.
 
-1. Zaman serisi model değişkenleriniz ve kayıtlı sorgular tarafından kullanılan söz dizimini güncelleştirmek için gezgin tarafından istenir. 
-   
+1. Zaman serisi model değişkenleriniz ve kayıtlı sorgular tarafından kullanılan söz dizimini güncelleştirmek için gezgin tarafından istenir.
+
     [![İstem](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
-    
-    Bildirimi yanlışlıkla kapatırsanız, bildirim panelinde bulunabilir. 
+
+    Bildirimi yanlışlıkla kapatırsanız, bildirim panelinde bulunabilir.
 
 1. Geçiş aracını açmak için **güncelleştirmeleri göster** ' e tıklayın.
-    
-1. **Yükleme türleri**' ne tıklayın. Geçiş, değişken sözdizimini değiştirmek için geçerli türlerinizin üzerine yazacak olduğundan, geçerli türlerinizin bir kopyasını kaydetmeniz gerekir. Türler indirildiyse araç sizi bilgilendirir. 
-   
+
+1. **Yükleme türleri**' ne tıklayın. Geçiş, değişken sözdizimini değiştirmek için geçerli türlerinizin üzerine yazacak olduğundan, geçerli türlerinizin bir kopyasını kaydetmeniz gerekir. Türler indirildiyse araç sizi bilgilendirir.
+
     [![İndirme türleri](media/api-migration/ux-migration-tool.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 1. **Değişkenleri Güncelleştir**' e tıklayın. Bu araç, değişkenler güncelleştirildiği zaman sizi bilgilendirir.
@@ -56,39 +56,38 @@ Kullanıcıların [zaman serisi modeli değişkenlerini](./concepts-variables.md
 
     [![Değişkenleri Güncelleştir](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-2. **Kaydedilmiş sorguları Güncelleştir**' e tıklayın. Bu araç, değişkenler güncelleştirildiği zaman sizi bilgilendirir.
-   
+1. **Kaydedilmiş sorguları Güncelleştir**' e tıklayın. Bu araç, değişkenler güncelleştirildiği zaman sizi bilgilendirir.
+
     [![Kaydedilmiş sorguları Güncelleştir](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-3. **Bitti**’ye tıklayın.
+1. **Bitti**’ye tıklayın.
 
     [![Geçiş tamamlandı](media/api-migration/ux-migration-tool-updated-saved-queries.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-
-Yeni oluşturulan değişkenlerin ve kaydedilmiş sorguların bazılarını çizerek güncelleştirilmiş ortamınızı gözden geçirin. Grafik oluştururken beklenmedik bir davranış görürseniz lütfen gezgin 'deki geri bildirim aracını kullanarak bize geri bildirim gönderin. 
+Yeni oluşturulan değişkenlerin ve kaydedilmiş sorguların bazılarını çizerek güncelleştirilmiş ortamınızı gözden geçirin. Grafik oluştururken beklenmedik bir davranış görürseniz lütfen gezgin 'deki geri bildirim aracını kullanarak bize geri bildirim gönderin.
 
 ## <a name="migrate-power-bi-queries"></a>Power BI sorgularını geçir
 
-Power BI bağlayıcısını kullanarak sorgular oluşturduysanız, önizleme API 'SI sürümünü ve eski zaman serisi Ifadesi sözdizimini kullanarak Azure Time Series Insights çağrı yapırlar. Bu sorgular, önizleme API 'SI kullanım dışı olana kadar verileri başarıyla almaya devam edecektir. 
+Power BI bağlayıcısını kullanarak sorgular oluşturduysanız, önizleme API 'SI sürümünü ve eski zaman serisi Ifadesi sözdizimini kullanarak Azure Time Series Insights çağrı yapırlar. Bu sorgular, önizleme API 'SI kullanım dışı olana kadar verileri başarıyla almaya devam edecektir.
 
-Sorguları yeni API sürümünü ve yeni zaman serisi Ifade sözdizimini kullanacak şekilde güncelleştirmek için, sorguların Gezginden yeniden oluşturulması gerekir. [Power BI bağlayıcısını kullanarak sorgu oluşturma](./how-to-connect-power-bi.md)hakkında daha fazla bilgi edinin. 
+Sorguları yeni API sürümünü ve yeni zaman serisi Ifade sözdizimini kullanacak şekilde güncelleştirmek için, sorguların Gezginden yeniden oluşturulması gerekir. [Power BI bağlayıcısını kullanarak sorgu oluşturma](./how-to-connect-power-bi.md)hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
-> Power BI Desktop Temmuz 2020 sürümünü kullanıyor olmanız gerekir. Aksi takdirde, [geçersiz bir sorgu yük sürümü hatası](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)görebilirsiniz. 
+> Power BI Desktop Temmuz 2020 sürümünü kullanıyor olmanız gerekir. Aksi takdirde, [geçersiz bir sorgu yük sürümü hatası](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)görebilirsiniz.
 
 ## <a name="migrate-custom-applications"></a>Özel uygulamaları geçirme
 
-Özel uygulamanız aşağıdaki REST uç noktalarına çağrılar yapıyor ise, API sürümünü URI 'de ' ye güncelleştirmek yeterlidir `2020-07-31` : 
+Özel uygulamanız aşağıdaki REST uç noktalarına çağrılar yapıyor ise, API sürümünü URI 'de ' ye güncelleştirmek yeterlidir `2020-07-31` :
 
 - Zaman serisi modeli API 'Leri
   - Model ayarları API 'Leri
     - [Al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [Güncelleştirme](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
-  - Örnek API 'Leri 
+  - Örnek API 'Leri
     - [Tüm toplu Işlemler](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
     - [Liste](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
     - [Search](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
-    - [Öner](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
+    - [Önerme](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - Hiyerarşi API 'Leri
     - [Tüm toplu Işlemler](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
     - [Liste](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
@@ -96,8 +95,7 @@ Sorguları yeni API sürümünü ve yeni zaman serisi Ifade sözdizimini kullana
     - [Silme, Işlemleri al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [Liste](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-
-Aşağıdaki REST uç noktaları için, API sürümünü `2020-07-31` URI 'de olarak güncelleştirmeniz ve özelliğin tüm tekrarlarının `tsx` Güncelleştirilmiş [zaman serisi ifadesi sözdizimini](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)kullanmasını sağlamak zorundasınız. 
+Aşağıdaki REST uç noktaları için, API sürümünü `2020-07-31` URI 'de olarak güncelleştirmeniz ve özelliğin tüm tekrarlarının `tsx` Güncelleştirilmiş [zaman serisi ifadesi sözdizimini](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)kullanmasını sağlamak zorundasınız.
 
 - Türler API 'Leri
   - [Put Işlemi](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -106,12 +104,12 @@ Aşağıdaki REST uç noktaları için, API sürümünü `2020-07-31` URI 'de ol
   - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
   - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
 
-
 ### <a name="examples"></a>Örnekler
 
 #### <a name="typesbatchput"></a>TypesBatchPut
 
-Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ): 
+Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
+
 ```JSON
 {
   "put": [
@@ -139,6 +137,7 @@ Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
 ```
 
 Güncelleştirilmiş Istek gövdesi (tarafından kullanılır `2020-07-31` ):
+
 ```JSON
 {
   "put": [
@@ -169,7 +168,8 @@ Alternatif olarak, `filter` de olabilir `$event.Mode.String = 'outdoor'` . `valu
 
 #### <a name="getevents"></a>GetEvents
 
-Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ): 
+Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
+
 ```JSON
 {
   "getEvents": {
@@ -195,6 +195,7 @@ Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
 ```
 
 Güncelleştirilmiş Istek gövdesi (tarafından kullanılır `2020-07-31` ):
+
 ```JSON
 {
   "getEvents": {
@@ -219,10 +220,12 @@ Güncelleştirilmiş Istek gövdesi (tarafından kullanılır `2020-07-31` ):
 }
 ```
 
-Alternatif olarak, `filter` de olabilir `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` . 
+Alternatif olarak, `filter` de olabilir `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` .
 
 #### <a name="getseries"></a>GetSeries
-Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ): 
+
+Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
+
 ```JSON
 {
   "getSeries": {
@@ -252,6 +255,7 @@ Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
 ```
 
 Güncelleştirilmiş Istek gövdesi (tarafından kullanılır `2020-07-31` ):
+
 ```JSON
 {
   "getSeries": {
@@ -280,10 +284,12 @@ Güncelleştirilmiş Istek gövdesi (tarafından kullanılır `2020-07-31` ):
 }
 ```
 
-Alternatif olarak, `value` de olabilir `$event['Bar-Pressure-Offset'].Double` . Veri türü belirtilmemişse, veri türü her zaman çift olarak kabul edilir. Ayraç gösteriminin özel karakteri () atlamak için kullanılması gerekir `-` . 
+Alternatif olarak, `value` de olabilir `$event['Bar-Pressure-Offset'].Double` . Veri türü belirtilmemişse, veri türü her zaman çift olarak kabul edilir. Ayraç gösteriminin özel karakteri () atlamak için kullanılması gerekir `-` .
 
 #### <a name="getaggregateseries"></a>GetAggregateSeries
-Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ): 
+
+Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
+
 ```JSON
 {
   "aggregateSeries": {
@@ -314,6 +320,7 @@ Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
 ```
 
 Güncelleştirilmiş Istek gövdesi (tarafından kullanılır `2020-07-31` ):
+
 ```JSON
   "aggregateSeries": {
     "timeSeriesId": [

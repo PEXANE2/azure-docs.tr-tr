@@ -5,29 +5,31 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 0d24f5621786ce292d98ae1fc6dd8fafc5b69c55
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3e21cc7a66f09b5e759b3d3a53ab95dd9710900d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556233"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171961"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python kullanarak Azure Tablo depolamayı ve Azure Cosmos DB Tablo API’sini kullanmaya başlama
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Azure Tablo depolaması ve Azure Cosmos DB, yapısal NoSQL verilerini bulutta saklayarak bir anahtar/öznitelik deposunu şemasız bir tasarımla sunan hizmetlerdir. Tablo depolaması ve Azure Cosmos DB'si şemasız olduğu için uygulamanızın ihtiyaçları geliştikçe verilerinizi kolayca uyarlayabilirsiniz. Tablo depolamaya ve Tablo API verilerine erişim, çoğu uygulama türü için hızlı ve ekonomik olmanın yanı sıra benzer veri hacimleri için geleneksel SQL'e kıyasla genellikle daha düşük maliyetlidir.
+Azure Tablo Depolaması ve Azure Cosmos DB, yapılandırılmış NoSQL verilerini bulutta depolayan, daha az bir tasarıma sahip bir anahtar/öznitelik deposu sağlayan hizmetlerdir. Tablo depolaması ve Azure Cosmos DB'si şemasız olduğu için uygulamanızın ihtiyaçları geliştikçe verilerinizi kolayca uyarlayabilirsiniz. Tablo depolama ve tablo API 'SI verilerine erişim, birçok tür uygulama için hızlı ve ekonomik bir şekilde etkilidir ve genellikle benzer veri birimleri için geleneksel SQL 'den düşük maliyetlidir.
 
-Tablo depolamayı veya Azure Cosmos DB'yi Web uygulamaları için kullanıcı verileri, adres defterleri, cihaz bilgileri veya hizmetiniz için gerekli olan tüm diğer meta veri türleri gibi esnek veri kümelerini depolamak için kullanabilirsiniz. Bir tabloda istediğiniz kadar varlık depolayabilirsiniz ve bir depolama hesabı kapasite limitini dolduracak kadar tablo içerebilir.
+Web uygulamaları için Kullanıcı verileri, adres defterleri, cihaz bilgileri veya hizmetinizin gerektirdiği diğer meta veri türleri gibi esnek veri kümelerini depolamak için tablo depolama alanını veya Azure Cosmos DB kullanabilirsiniz. Bir tabloda istediğiniz kadar varlık depolayabilirsiniz ve bir depolama hesabı kapasite limitini dolduracak kadar tablo içerebilir.
 
 ### <a name="about-this-sample"></a>Bu örnek hakkında
+
 Bu örnek, [Python için Azure Cosmos DB Tablosu SDK'sını](https://pypi.python.org/pypi/azure-cosmosdb-table/) tipik Azure Tablo depolama senaryolarında kullanmayı göstermektedir. Adı Azure Cosmos DB ile kullanılmaya yönelik olduğunu gösterse de SDK hem Azure Cosmos DB, hem Azure Tablo depolaması ile çalışır ve her hizmetin benzersiz bir uç noktası vardır. Bu senaryolarda aşağıdakileri yapmayı gösteren Python örnekleri kullanılır:
+
 * Tablo oluşturma ve silme
 * Varlık ekleme ve sorgulama
 * Varlıkları değiştirme
@@ -38,17 +40,20 @@ Bu örnekteki senaryolarda çalışırken [Python API'si için Azure Cosmos DB S
 
 Bu örneği başarıyla tamamlamak için aşağıdakiler gerekir:
 
-- [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 ya da 3.6
-- [Python Için tablo SDK Azure Cosmos DB](https://pypi.python.org/pypi/azure-cosmosdb-table/). Bu SDK, hem Azure Tablo depolaması, hem de Azure Cosmos DB Tablo API'sine bağlanır.
-- [Azure Depolama hesabı](../storage/common/storage-account-create.md) veya [Azure Cosmos DB hesabı](https://azure.microsoft.com/try/cosmosdb/)
+* [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 ya da 3.6
+* [Python Için tablo SDK Azure Cosmos DB](https://pypi.python.org/pypi/azure-cosmosdb-table/). Bu SDK, hem Azure Tablo depolaması, hem de Azure Cosmos DB Tablo API'sine bağlanır.
+* [Azure Depolama hesabı](../storage/common/storage-account-create.md) veya [Azure Cosmos DB hesabı](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Azure hizmet hesabı oluşturma
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
+**Azure depolama hesabı oluşturma**
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Tablo API’si hesabı oluşturma
+**Azure Cosmos DB Tablo API’si hesabı oluşturma**
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="install-the-azure-cosmos-db-table-sdk-for-python"></a>Python için Azure Cosmos DB Tablosu SDK'sını yükleme

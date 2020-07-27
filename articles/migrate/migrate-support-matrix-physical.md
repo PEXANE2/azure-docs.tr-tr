@@ -3,12 +3,12 @@ title: Azure geçişi 'nde fiziksel sunucu değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 226f49dc2a1603aba5eaa2f03ead32b815ac34b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e28c1fd3dd117491360a1671955a6ec028033c01
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101699"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171616"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -24,7 +24,7 @@ Fiziksel sunucuları değerlendirmek için bir Azure geçişi projesi oluşturun
 --- | ---
 **Değerlendirme limitleri** | Tek bir [Azure geçişi projesinde](migrate-support-matrix.md#azure-migrate-projects)35.000 fiziksel sunucuyu bulabilir ve değerlendirebilirsiniz.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Fiziksel sunuculara ek olarak bir proje, VMware VM 'leri ve Hyper-V VM 'lerini, her biri için değerlendirme sınırlarına kadar içerebilir.
-**Keşfini** | Azure geçişi gereci en fazla 1000 fiziksel sunucu bulabilir.
+**Bulma** | Azure geçişi gereci en fazla 1000 fiziksel sunucu bulabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -34,7 +34,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
 | **Fiziksel sunucu dağıtımı**       | Fiziksel sunucu tek başına olabilir veya bir kümede dağıtılabilir. |
-| **İzinler**           | **Windows:** Keşfetmesini istediğiniz tüm Windows sunucularında bir etki alanı yöneticisi olmanız gerekir. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/><br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. |
+| **İzinler**           | **Windows:** Etki alanına katılmış makineler için bir etki alanı hesabı ve etki alanına katılmış makineler için yerel bir hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/><br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. |
 | **İşletim sistemi** | Windows Server 2003 ve SUSE Linux dışındaki tüm işletim sistemleri geçiş için değerlendirilenebilir. |
 
 

@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd1b815a56a21e502decb440806040c626c13d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7153200bc80f6e27a99123a1bba676d0188f607
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019650"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129041"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -87,9 +87,6 @@ TLS 1,2 ' i etkinleştirmek için:
    ```
 
 1. Sunucuyu yeniden başlatın.
-
-> [!IMPORTANT]
-> Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, uygulama proxy hizmeti yalnızca TLS 1,2 protokollerine erişimi sınırlandırır. Bu değişiklikler 31 Ağustos 2019 tarihinden itibaren kademeli olarak alındı ve geçerli. Tüm istemci sunucu ve tarayıcı-sunucu birleşimlerinizin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) için hazırlanma.
 
 ## <a name="prepare-your-on-premises-environment"></a>Şirket içi ortamınızı hazırlama
 
@@ -209,7 +206,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
     | **Üst bilgilerdeki URL 'Leri çevir** | Uygulamanız kimlik doğrulaması isteğindeki orijinal ana bilgisayar üst bilgisini gerektirmediğiniz sürece bu değeri **Evet** olarak tutun. |
     | **Uygulama gövdesinde URL 'Leri çevir** | Diğer şirket içi uygulamalara yönelik olarak kodlanmış HTML bağlantıları yoksa ve özel etki alanları kullanmadıkça bu değeri **Hayır** olarak tutun. Daha fazla bilgi için bkz. [uygulama proxy 'si Ile bağlantı çevirisi](application-proxy-configure-hard-coded-link-translation.md).<br><br>Bu uygulamayı Microsoft Cloud App Security (MCAS) ile izlemeyi planlıyorsanız, bu değeri **Evet** olarak ayarlayın. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi Izlemeyi yapılandırma](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. **Ekle**’yi seçin.
+7. **Ekle**'yi seçin.
 
 ## <a name="test-the-application"></a>Uygulamayı test etme
 

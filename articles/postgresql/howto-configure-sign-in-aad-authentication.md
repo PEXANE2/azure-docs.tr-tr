@@ -5,13 +5,13 @@ author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/04/2019
-ms.openlocfilehash: e813459ddf516b170e7f429646dad38452188335
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102387"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171648"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -54,7 +54,7 @@ Azure AD tümleştirmesini, Azure AD Aware olmayan ve yalnızca PostgreSQL 'e ba
 
 Bu adımlar, bir kullanıcı/uygulamanın, aşağıda açıklanan Azure AD ile kimlik doğrulaması yapmak için gereken adımlardır:
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure Cloud Shell, bir Azure VM veya yerel makinenizde da izleyebilirsiniz. [Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
 
@@ -155,7 +155,7 @@ PostgreSQL için Azure veritabanı veritabanınıza bir Azure AD kullanıcısı 
 3. `<user>@yourtenant.onmicrosoft.com`PostgreSQL Için Azure veritabanı 'nda rol oluştur.
 4. `<user>@yourtenant.onmicrosoft.com`Azure_ad_user rolün bir üyesini oluşturun. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -168,7 +168,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;

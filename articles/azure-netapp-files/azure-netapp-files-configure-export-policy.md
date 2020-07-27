@@ -7,21 +7,25 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 10/18/2019
-ms.openlocfilehash: e59648ee76b6715029c690329cbf8f4f1eee7243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483661"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169832"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>NFS birimine yönelik dışarı aktarma ilkesini yapılandırma
 
-İsteğe bağlı olarak Azure NetApp Files birimine erişimi denetlemek için dışarı aktarma ilkesi yapılandırabilirsiniz. Azure NetApp Files dışarı aktarma ilkesi yalnızca NFS birimlerini destekler.  Hem NFSv3 hem de NFSv4 desteklenir. 
+Azure NetApp Files birime erişimi denetlemek için, dışa aktarma ilkesini yapılandırabilirsiniz. Azure NetApp Files dışa aktarma ilkesi, NFS protokolünü (hem NFSv3 hem de NFSv 4.1) ve ikili Protokolü (NFSv3 ve SMB) kullanan birimleri destekler. 
+
+En fazla beş dışarı aktarma ilkesi kuralı oluşturabilirsiniz.
 
 ## <a name="steps"></a>Adımlar 
 
-1.  Azure NetApp Files gezinti bölmesinden **Ilkeyi dışarı aktar** ' a tıklayın. 
+1.  Birimler sayfasında, dışarı aktarma ilkesini yapılandırmak istediğiniz birimi seçin ve **Ilkeyi dışarı aktar**' a tıklayın. 
+
+    Ayrıca, birim oluşturma sırasında dışarı aktarma ilkesini yapılandırabilirsiniz.
 
 2.  İlke kuralını oluşturmak veya dışarı aktarmak için aşağıdaki alanların bilgilerini belirtin:   
     *  **İndeks**   
@@ -39,7 +43,11 @@ ms.locfileid: "85483661"
         * Okuma ve Yazma
         * Salt Okunur
 
-    ![İlkeyi dışarı aktarma](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **Kök erişim**  
+        `root`Hesabın birime erişip erişemeyeceğini belirtin.  Varsayılan olarak, kök erişim **Açık**olarak ayarlanır ve `root` hesabın birime erişimi vardır.
+
+        ![İlkeyi dışarı aktarma](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 

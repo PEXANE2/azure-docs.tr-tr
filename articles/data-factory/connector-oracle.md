@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416819"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171273"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve Oracle 'a kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -52,13 +52,13 @@ Bir Oracle veritabanından desteklenen herhangi bir havuz veri deposuna veri kop
 > [!Note]
 > Oracle proxy sunucusu desteklenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
 
 Integration Runtime, yerleşik bir Oracle sürücüsü sağlar. Bu nedenle, ve Oracle 'dan veri kopyaladığınızda sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -72,10 +72,12 @@ Oracle bağlı hizmeti aşağıdaki özellikleri destekler:
 |:--- |:--- |:--- |
 | tür | Type özelliği **Oracle**olarak ayarlanmalıdır. | Yes |
 | Dizisi | Oracle Database örneğine bağlanmak için gereken bilgileri belirtir. <br/>Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault depolayın](store-credentials-in-key-vault.md) . <br><br>**Desteklenen bağlantı türü**: veritabanınızı tanımlamak IÇIN **Oracle SID** veya **Oracle hizmet adını** kullanabilirsiniz:<br>-SID kullanıyorsanız:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Hizmet adı kullanıyorsanız:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>Gelişmiş Oracle yerel bağlantı seçenekleri için, tnsnames ' de bir giriş eklemeyi seçebilirsiniz [. ](http://www.orafaq.com/wiki/Tnsnames.ora), Oracle sunucusunda ora dosyası ve ADF Oracle bağlantılı hizmetinde, Oracle hizmet adı bağlantı türünü kullanmayı ve ilgili hizmet adını yapılandırmayı seçin. | Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |Hayır |
 
 >[!TIP]
 >Bir hata alırsanız, "ORA-01025: UPı parametresi aralık dışında" ve Oracle sürümünüz 8i ise, `WireProtocolMode=1` Bağlantı dizenizi ekleyin. Sonra yeniden deneyin.
+
+Yük devretme senaryosu için birden çok Oracle örneğinize sahipseniz, Oracle bağlı hizmeti oluşturabilir, birincil ana bilgisayar, bağlantı noktası, Kullanıcı adı, parola vb. gibi yeni bir "**ek bağlantı özellikleri**" ekleyebilirsiniz ve bu `AlternateServers` değer, `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` ayraçları kaçırmayın ve iki nokta üst üste ( `:` ) ayırıcı olarak dikkat edin. Örnek olarak, diğer sunucuların aşağıdaki değeri bağlantı yük devretmesi için iki alternatif veritabanı sunucusu tanımlar: `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)` .
 
 Büyük/küçük harf olarak bağlantı dizesinde ayarlayabileceğiniz daha fazla bağlantı özelliği:
 
@@ -124,7 +126,7 @@ Oracle bağlantısı üzerinde şifrelemeyi etkinleştirmek için iki seçeneği
     3.  `truststore`Dosyayı kendi kendine BARıNDıRıLAN IR makinesine yerleştirin. Örneğin, dosyayı C:\mytruststorefilekonumundaki yere yerleştirin.
     4.  Azure Data Factory ' de Oracle bağlantı dizesini `EncryptionMethod=1` ve karşılık gelen `TrustStore` / `TrustStorePassword` değeri yapılandırın. Örneğin, `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -176,11 +178,11 @@ Ve Oracle 'dan verileri kopyalamak için, veri kümesinin Type özelliğini olar
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Veri kümesinin Type özelliği olarak ayarlanmalıdır `OracleTable` . | Yes |
-| manızı | Şemanın adı. |Kaynak için Hayır, havuz için Evet  |
-| tablo | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
+| schema | Şemanın adı. |Kaynak için Hayır, havuz için Evet  |
+| table | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
 | tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve kullanın `table` . | Kaynak için Hayır, havuz için Evet |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -215,13 +217,13 @@ Oracle 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü ola
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının Type özelliği olarak ayarlanmalıdır `OracleSource` . | Yes |
-| oracleReaderQuery | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuza karşılık gelen yerleşik bölüm parametrelerini de eklemeniz gerekir. Örnekler için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | No |
-| partitionOptions | Oracle 'dan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani, `None` ), bir Oracle veritabanından eşzamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayarla birlikte denetlenir. | No |
-| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | No |
-| partitionNames | Kopyalanması gereken fiziksel bölümlerin listesi. <br>Bölüm seçeneği olduğunda uygulayın `PhysicalPartitionsOfTable` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfTabularPartitionName` WHERE yan tümcesinde kanca. Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | No |
-| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak, **tamsayı türünde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionColumnName` WHERE yan tümcesinde kanca. Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | No |
-| Partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionUpbound` WHERE yan tümcesinde kanca. Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | No |
-| Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionLowbound` WHERE yan tümcesinde kanca. Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | No |
+| oracleReaderQuery | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuza karşılık gelen yerleşik bölüm parametrelerini de eklemeniz gerekir. Örnekler için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
+| partitionOptions | Oracle 'dan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani, `None` ), bir Oracle veritabanından eşzamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayarla birlikte denetlenir. | Hayır |
+| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | Hayır |
+| partitionNames | Kopyalanması gereken fiziksel bölümlerin listesi. <br>Bölüm seçeneği olduğunda uygulayın `PhysicalPartitionsOfTable` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfTabularPartitionName` WHERE yan tümcesinde kanca. Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
+| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak, **tamsayı türünde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionColumnName` WHERE yan tümcesinde kanca. Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
+| Partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionUpbound` WHERE yan tümcesinde kanca. Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
+| Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionLowbound` WHERE yan tümcesinde kanca. Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
 
 **Örnek: bölüm olmadan temel sorgu kullanarak veri kopyalama**
 
@@ -263,10 +265,10 @@ Verileri Oracle 'a kopyalamak için kopyalama etkinliğindeki havuz türünü ol
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği havuzunun Type özelliği olarak ayarlanmalıdır `OracleSink` . | Yes |
 | writeBatchSize | Arabellek boyutu ulaştığında SQL tablosuna veri ekler `writeBatchSize` .<br/>İzin verilen değerler Integer (satır sayısı). |Hayır (varsayılan değer 10.000) |
-| writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler TimeSpan. Örnek olarak 00:30:00 (30 dakika). | No |
-| Ön Copyscrıpt | Kopyalama etkinliği için, her çalıştırmada verileri Oracle 'a yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. | No |
+| writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler TimeSpan. Örnek olarak 00:30:00 (30 dakika). | Hayır |
+| Ön Copyscrıpt | Kopyalama etkinliği için, her çalıştırmada verileri Oracle 'a yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

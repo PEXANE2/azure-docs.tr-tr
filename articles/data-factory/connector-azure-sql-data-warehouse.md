@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 5810f9b08d914522f1304e238567c06e87872715
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8d7171bafb292b0520b8873bad0ce8f55ab4040d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537740"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171498"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te (eski adıyla Azure SQL veri ambarı) veri kopyalama ve dönüştürme
 
@@ -48,7 +48,7 @@ Kopyalama etkinliği için bu Azure SYNAPSE Analytics Bağlayıcısı şu işlev
 > Azure Data Factory Integration Runtime kullanarak verileri kopyalarsanız, Azure hizmetlerinin [MANTıKSAL SQL Server](../azure-sql/database/logical-servers.md)'a erişebilmesi için [sunucu düzeyinde bir güvenlik duvarı kuralı](../azure-sql/database/firewall-configure.md) yapılandırın.
 > Şirket içinde barındırılan tümleştirme çalışma zamanı kullanarak verileri kopyalarsanız, güvenlik duvarını uygun IP aralığına izin verecek şekilde yapılandırın. Bu Aralık, Azure SYNAPSE Analytics 'e bağlanmak için kullanılan makinenin IP 'sini içerir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 > [!TIP]
 > En iyi performansı elde etmek için PolyBase 'i kullanarak Azure SYNAPSE Analytics 'e veri yükleyin. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](#use-polybase-to-load-data-into-azure-sql-data-warehouse) bölümünde ayrıntılar bulunur. Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleme](load-azure-sql-data-warehouse.md)bölümüne bakın.
@@ -68,7 +68,7 @@ Aşağıdaki özellikler bir Azure SYNAPSE Analytics bağlı hizmeti için deste
 | Serviceprincipalıd  | Uygulamanın istemci KIMLIĞINI belirtin.                         | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
 | Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
 | Kiracı              | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
-| connectVia          | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No                                                           |
+| connectVia          | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır                                                           |
 
 Farklı kimlik doğrulama türleri için sırasıyla Önkoşullar ve JSON örnekleri hakkında aşağıdaki bölümlere bakın:
 
@@ -260,10 +260,10 @@ Azure SYNAPSE Analytics 'ten veri kopyalamak için kopyalama etkinliği kaynağ�
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | tür                         | Kopyalama etkinliği kaynağının **Type** özelliği **sqldwsource**olarak ayarlanmalıdır. | Yes      |
-| sqlReaderQuery               | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `select * from MyTable`. | No       |
-| sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | No       |
-| storedProcedureParameters    | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | No       |
-| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted** (varsayılan), **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | No |
+| sqlReaderQuery               | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `select * from MyTable`. | Hayır       |
+| sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | Hayır       |
+| storedProcedureParameters    | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | Hayır       |
+| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | Hayır |
 
 **Örnek: SQL sorgusu kullanma**
 
@@ -375,8 +375,8 @@ Azure SQL veri ambarı 'na veri kopyalamak için kopyalama etkinliğindeki havuz
 | copyCommandSettings | Özelliği TRUE olarak ayarlandığında belirtilenebilir bir özellik grubu `allowCopyCommand` . | Hayır.<br/>KOPYALAMA kullanırken uygulayın. |
 | writeBatchSize    | **Toplu iş BAŞıNA**SQL tablosuna eklenecek satır sayısı.<br/><br/>İzin verilen değer **Integer** (satır sayısı). Varsayılan olarak, Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | Hayır.<br/>Toplu ekleme kullanırken uygulayın.     |
 | writeBatchTimeout | Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/><br/>İzin verilen değer **TimeSpan**değeridir. Örnek: "00:30:00" (30 dakika). | Hayır.<br/>Toplu ekleme kullanırken uygulayın.        |
-| Ön Copyscrıpt     | Her çalıştırmada Azure SQL veri ambarı 'na veri yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | No                                            |
-| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. Hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |No |
+| Ön Copyscrıpt     | Her çalıştırmada Azure SQL veri ambarı 'na veri yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | Hayır                                            |
+| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. Hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |Hayır |
 | disableMetricsCollection | Data Factory, kopyalama performansı iyileştirmesi ve önerileri için SQL veri ambarı DWUs gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, `true` devre dışı bırakmak için belirtin. | Hayır (varsayılan değer `false` ) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL veri ambarı havuz örneği
@@ -409,10 +409,10 @@ Kopyalama etkinliğinde aşağıdaki PolyBase ayarları desteklenir `polyBaseSet
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir.<br/><br/>[Dış tablo oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)öğesinin bağımsız değişkenler bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. <br/><br/>İzin verilen değerler 0 (varsayılan), 1, 2, vb. olabilir. | No                                            |
-| rejectType        | **RejectValue** seçeneğinin sabit değer veya yüzde değeri olup olmadığını belirtir.<br/><br/>İzin verilen değerler **değer** (varsayılan) ve **yüzde**değeridir. | No                                            |
+| rejectValue       | Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir.<br/><br/>[Dış tablo oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)öğesinin bağımsız değişkenler bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. <br/><br/>İzin verilen değerler 0 (varsayılan), 1, 2, vb. olabilir. | Hayır                                            |
+| rejectType        | **RejectValue** seçeneğinin sabit değer veya yüzde değeri olup olmadığını belirtir.<br/><br/>İzin verilen değerler **değer** (varsayılan) ve **yüzde**değeridir. | Hayır                                            |
 | rejectSampleValue | PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler.<br/><br/>İzin verilen değerler 1, 2, vb. olabilir. | Evet, **rejectType** **ise.** |
-| useTypeDefault    | PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin.<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br><br> | No                                            |
+| useTypeDefault    | PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin.<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br><br> | Hayır                                            |
 
 ### <a name="direct-copy-by-using-polybase"></a>PolyBase kullanarak doğrudan kopyalama
 
@@ -632,8 +632,8 @@ Kopyalama etkinliğinde aşağıdaki COPY deyimin ayarları desteklenir `allowCo
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| defaultValues | SQL DW 'de her bir hedef sütun için varsayılan değerleri belirtir.  Özelliğindeki varsayılan değerler, veri ambarında ayarlanan varsayılan kısıtlamanın üzerine yazılır ve kimlik sütunu varsayılan değere sahip olamaz. | No |
-| additionalOptions | [Copy deyimindeki](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)"with" yan TÜMCESINDE doğrudan SQL DW Copy ifadesine geçirilecek ek seçenekler. COPY deyimlerine göre hizalamak için değeri gereken şekilde tırnak içine edin. | No |
+| defaultValues | SQL DW 'de her bir hedef sütun için varsayılan değerleri belirtir.  Özelliğindeki varsayılan değerler, veri ambarında ayarlanan varsayılan kısıtlamanın üzerine yazılır ve kimlik sütunu varsayılan değere sahip olamaz. | Hayır |
+| additionalOptions | [Copy deyimindeki](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)"with" yan TÜMCESINDE doğrudan SQL DW Copy ifadesine geçirilecek ek seçenekler. COPY deyimlerine göre hizalamak için değeri gereken şekilde tırnak içine edin. | Hayır |
 
 ```json
 "activities":[

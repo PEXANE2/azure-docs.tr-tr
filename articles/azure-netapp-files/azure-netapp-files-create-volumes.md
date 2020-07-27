@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/01/2019
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f14ac279f14feb3f83490ab96965d4355bed125
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483644"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169472"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
@@ -31,7 +31,7 @@ Zaten bir kapasite havuzu ayarlamış olmalısınız.
 Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
 [Azure NetApp Files için bir alt ağı temsilci olarak belirleme](azure-netapp-files-delegate-subnet.md)
 
-## <a name="considerations"></a>Önemli noktalar 
+## <a name="considerations"></a>Dikkat edilmesi gerekenler 
 
 * Hangi NFS sürümünün kullanılacağına karar verme  
   NFSv3, çok çeşitli kullanım durumlarını işleyebilir ve genellikle çoğu kurumsal uygulamalarda dağıtılır. Uygulamanızın gerektirdiği sürümü (NFSv3 veya NFSv 4.1) doğrulamanız ve uygun sürümü kullanarak biriminiz oluşturmanız gerekir. Örneğin, [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)kullanıyorsanız, NFSv 4.1 ile dosya kilitleme NFSv3 üzerinden önerilir. 
@@ -76,7 +76,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
         **Kullanılabilir kota** alanı, yeni birimi oluştururken kullanabildiğiniz, seçilen kapasite havuzundaki kullanılmamış alan miktarını gösterir. Yeni birimin boyutu kullanılabilir kotayı aşamaz.  
 
     * **Sanal ağ**  
-        Birime hangi Azure sanal ağından (Vnet) erişmek istediğinizi belirtin.  
+        Birime erişmek istediğiniz Azure sanal ağını (VNet) belirtin.  
 
         Belirttiğiniz VNET Azure NetApp Files için bir alt ağa sahip olmalıdır. Azure NetApp Files hizmetine yalnızca aynı VNET 'ten veya VNET eşlemesi ile aynı bölgedeki bir VNET 'ten erişilebilir. Ayrıca, hızlı rota aracılığıyla şirket içi ağınızdan birime da erişebilirsiniz.   
 
@@ -89,6 +89,12 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
         ![Birim oluşturun](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Alt ağ oluşturma](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * Birime var olan bir anlık görüntü ilkesi uygulamak istiyorsanız, genişletmek için **Gelişmiş bölümünü göster** ' e tıklayın ve açılır menüden bir anlık görüntü ilkesi seçin. 
+
+        Anlık görüntü ilkesi oluşturma hakkında daha fazla bilgi için bkz. [anlık görüntüleri yönetme](azure-netapp-files-manage-snapshots.md).
+
+        ![Gelişmiş seçimi göster](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:  
     * Birimin protokol türü olarak **NFS** ' yi seçin.   

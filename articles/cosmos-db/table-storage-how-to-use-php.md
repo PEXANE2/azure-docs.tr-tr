@@ -7,31 +7,30 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
-ms.date: 04/05/2018
-ms.openlocfilehash: dcea83b9452b33baef8d563c7776aa9bd258a5f4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.date: 07/23/2020
+ms.openlocfilehash: f0a5c3df2359add9f896e05af6c8c77d9e006a2a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389692"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171972"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP’den Azure Depolama Tablo hizmeti veya Azure Cosmos DB Tablo API'sini kullanma
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Genel Bakış
-Bu kılavuz Azure Depolama Tablo hizmeti ve Azure Cosmos DB Tablo API’sini kullanarak genel senaryoları nasıl gerçekleştireceğinizi gösterir. örnekler PHP’de yazılmıştır ve [Azure Depolama Tablo PHP İstemci Kitaplığını][download] kullanır. Kapsamdaki senaryolara **tablo oluşturma ve silme**, **tablodaki varlıkları ekleme, silme ve sorgulama** dahildir. Azure Tablo hizmeti hakkında daha fazla bilgi için bkz: [Sonraki adımlar](#next-steps) bölümü.
-
+Bu makalede, tablolar oluşturma, verilerinizi depolama ve veri üzerinde CRUD işlemleri gerçekleştirme işlemleri gösterilir. Azure Tablo hizmeti 'ni veya Azure Cosmos DB Tablo API'si seçin. örnekler PHP’de yazılmıştır ve [Azure Depolama Tablo PHP İstemci Kitaplığını][download] kullanır. Kapsamdaki senaryolara **tablo oluşturma ve silme**, **tablodaki varlıkları ekleme, silme ve sorgulama** dahildir. Azure Tablo hizmeti hakkında daha fazla bilgi için bkz: [Sonraki adımlar](#next-steps) bölümü.
 
 ## <a name="create-an-azure-service-account"></a>Azure hizmet hesabı oluşturma
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
+**Azure depolama hesabı oluşturma**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Tablo API’si hesabı oluşturma
+**Azure Cosmos DB Tablo API’si hesabı oluşturma**
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
@@ -58,8 +57,8 @@ Bu kılavuzda, PHP uygulamanızda yerel olarak veya bir Azure web rolü, çalı�
    ```
    Alternatif olarak, GitHub'da kaynak kodunu kopyalamak için [Azure Depolama Tablo PHP İstemci Kitaplığına](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) gidin.
 
-
 ## <a name="add-required-references"></a>Gerekli referansları ekleme
+
 Depolama Tablo hizmetini ya da Azure Cosmos DB API'lerini kullanmak için:
 
 * [require_once][require_once] bildirimini kullanarak otomatik yükleme dosyasına başvurun ve
@@ -74,25 +73,32 @@ use MicrosoftAzure\Storage\Table\TableRestProxy;
 
 Aşağıdaki örneklerde `require_once` deyimi her zaman gösterilir, ancak yalnızca örneğin yürütülmesi için gerekli olan sınıflara başvurulur.
 
-## <a name="add-a-storage-table-service-connection"></a>Bir Depolama Tablosu hizmeti bağlantısı ekleme
+## <a name="add-your-connection-string"></a>Bağlantı dizenizi ekleyin
+
+Azure depolama hesabına veya Azure Cosmos DB Tablo API'si hesabına bağlanabilirsiniz. Bağlantı dizesini, kullanmakta olduğunuz hesap türüne göre alır.
+
+### <a name="add-a-storage-table-service-connection"></a>Bir Depolama Tablosu hizmeti bağlantısı ekleme
+
 Bir Depolama Tablosu hizmet istemcisi örneği oluşturmak için öncelikle geçerli bir bağlantı dizesi olması gerekir. Depolama Tablosu hizmeti bağlantı dizesinin biçimi şöyledir:
 
 ```php
 $connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
-Bir Azure Cosmos DB Tablo istemcisi oluşturmak için öncelikle geçerli bir bağlantı dizesi olması gerekir. Azure Cosmos DB bağlantı dizesi biçimi şöyledir:
+### <a name="add-a-storage-emulator-connection"></a>Depolama öykünücüsü bağlantısı ekleme
 
-```php
-$connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
-```
-
-## <a name="add-a-storage-emulator-connection"></a>Depolama öykünücüsü bağlantısı ekleme
 Öykünücü depolamasına erişmek için:
 
 ```php
 UseDevelopmentStorage = true
+```
+
+### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
+
+Bir Azure Cosmos DB Tablo istemcisi oluşturmak için öncelikle geçerli bir bağlantı dizesi olması gerekir. Azure Cosmos DB bağlantı dizesi biçimi şöyledir:
+
+```php
+$connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
 Bir Azure Tablo Depolama istemcisi veya Azure Cosmos DB istemcisi oluşturmak için **TableRestProxy** sınıfını kullanmanız gerekir. Seçenekleriniz şunlardır:
@@ -113,6 +119,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Bir tablo oluşturma
+
 **TableRestProxy** nesnesi, **createTable** yöntemini içeren bir tablo oluşturmanıza olanak tanır. Bir tablo oluştururken, Tablo hizmeti zaman aşımını ayarlayabilirsiniz. (Tablo hizmeti zaman aşımı hakkında daha fazla bilgi için bkz: [Tablo Hizmeti İşlemleri için Zaman Aşımlarını Ayarlama][table-service-timeouts].)
 
 ```php
@@ -140,6 +147,7 @@ catch(ServiceException $e){
 Tablo adlarındaki kısıtlamalar hakkında daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama][table-data-model].
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
+
 Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity**’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlık üzerindeki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi gerçekleştirilir.) , `RowKey` Bir bölüm içindeki bir varlığın BENZERSIZ kimliğidir.
 
 ```php
@@ -219,6 +227,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="retrieve-a-single-entity"></a>Tek bir varlık alma
+
 **TableRestProxy -> getEntity** yöntemi`PartitionKey` ve `RowKey` değerlerini sorgulayarak tek bir varlığı almanıza olanak tanır. Aşağıdaki örnekte bölüm anahtarı `tasksSeattle` ve satır anahtarı `1`, **getEntity** yöntemine geçirilir.
 
 ```php
@@ -248,6 +257,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Tüm varlıkları bir bölüme alma
+
 Varlık sorguları filtreler kullanılarak oluşturulur (daha fazla bilgi için bkz: [sorgulama tabloları ve varlıkları][filters]). Bölümdeki tüm varlıkları almak için "PartitionKey eq *bölüm_adı*" filtresini kullanın. Aşağıdaki örnekte, **queryEntities** yöntemine bir filtre geçirerek `tasksSeattle` bölümündeki tüm varlıkları alma işlemi gösterilmiştir.
 
 ```php
@@ -281,6 +291,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Bir bölümdeki varlıkların alt kümesini alma
+
 Önceki örnekte kullanılan aynı düzen, bir alt bölümdeki tüm varlıkların bir alt kümesini almak için kullanılabilir. Aldığınız varlıkların alt kümesi, kullandığınız filtre tarafından belirlenir (daha fazla bilgi için bkz. [Sorgulama Tabloları ve Varlıklar][filters]). Aşağıdaki örnekte belirli bir `Location` ve belirtilen bir tarihten önceki `DueDate` içindeki tüm varlıkları almak için bir filtre kullanmayı gösterir.
 
 ```php
@@ -314,6 +325,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Varlık özellikleri alt kümesi alma
+
 Bir sorgu, varlık özelliklerinin bir alt kümesini alabilir. *Projeksiyon*olarak adlandırılan bu teknik, bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Alınacak bir özelliği belirtmek için özelliğin adını **Query > addSelectField** yöntemine geçirin. Daha fazla özellik eklemek için bu yöntemi birden çok kez çağırabilirsiniz. **TableRestProxy -> queryEntities**’i yürüttükten sonra, döndürülen varlıklar yalnızca seçilen özelliklere sahip olur. (Tablo varlıklarının bir alt kümesini döndürmek istiyorsanız yukarıda gösterildiği gibi bir filtre sorgusu kullanın.)
 
 ```php
@@ -353,6 +365,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="update-an-entity"></a>Varlığı güncelleştirme
+
 **Entity->setProperty** ve **Entity->addProperty** yöntemlerini kullanarak ve ardından **TableRestProxy->updateEntity**.yöntemini çağırarak var olan bir varlığı güncelleştirebilirsiniz. Aşağıdaki örnekte bir varlık getirilir, bir özellik değiştirilir, bir başka özellik kaldırılır ve yeni bir özellik eklenir. Bir özelliği, değerini **null** olarak ayarlayarak kaldırabileceğini unutmayın.
 
 ```php
@@ -387,6 +400,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="delete-an-entity"></a>Bir varlığı silme
+
 Bir varlığı silmek için tablo adını ve varlığın `PartitionKey` ve `RowKey` değerlerini **TableRestProxy -> deleteEntity** yöntemine geçirin.
 
 ```php
@@ -415,6 +429,7 @@ catch(ServiceException $e){
 Eşzamanlılık denetimleri için **DeleteEntityOptions -> setEtag** yöntemini kullanıp dördüncü bir parametre olarak **DeleteEntityOptions** nesnesini ** deleteEntity**’ye geçirerek varlığın Etag değerini silinmeye ayarlayabilirsiniz.
 
 ## <a name="batch-table-operations"></a>Toplu tablo işlemleri
+
 **TableRestProxy -> Toplu** yöntemi birden çok işlemin tek bir istekte yürütülmesine olanak tanır. Buradaki örnekte **BatchRequest** nesnesne işlemler eklenir ve ardından **BatchRequest** nesnesi **TableRestProxy -> Toplu** yöntemine geçirilir. Bir **BatchRequest** nesnesine işlem eklemek için aşağıdaki yöntemlerden herhangi birini birden çok kez çağırabilirsiniz:
 
 * **addInsertEntity** (bir insertEntity işlemi ekler)
@@ -475,6 +490,7 @@ catch(ServiceException $e){
 Toplu tablo işlemleri hakkında daha fazla bilgi için bkz. [Varlık Grup işlemleri gerçekleştirme][entity-group-transactions].
 
 ## <a name="delete-a-table"></a>Bir tablo silme
+
 Son olarak, bir tabloyu silmek için tablo adını **TableRestProxy -> deleteTable** yöntemine geçirin.
 
 ```php
@@ -501,6 +517,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Artık Tablo hizmeti ve Azure Cosmos DB’ye ilişkin temel bilgileri öğrendiniz, daha fazla bilgi edinmek için aşağıdaki bağlantıları izleyin.
 
 * [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.

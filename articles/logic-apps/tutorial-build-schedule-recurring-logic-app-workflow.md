@@ -3,16 +3,16 @@ title: Zamanlama tabanlı otomatik iş akışları oluşturun
 description: Öğretici-Azure Logic Apps kullanarak zamanlamaya dayalı, yinelenen ve otomatikleştirilmiş iş akışı oluşturma
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 977f138fad1f2eb1eae95049d2bd8a730ba5687e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41f7b1309a9c7fa9a5f2abb3e2e59f08ef31382d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048739"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124859"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik, zamanlamaya dayalı ve yinelenen iş akışları oluşturma
 
@@ -43,11 +43,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Bir rotaya ilişkin seyahat süresini almak için, Bing Haritalar API’sinin erişim anahtarı gerekir. Bu anahtarı almak için [Bing Haritalar anahtarını alma](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key) adımlarını izleyin.
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
-
-Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
-
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
+
+1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Ana Azure menüsünden **kaynak**  >  **tümleştirme**  >  **mantıksal uygulaması**oluştur ' u seçin.
 

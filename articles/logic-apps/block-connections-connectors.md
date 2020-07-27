@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 0ba95969d8bb6987d2e3685f937170f97e1af68f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/23/2020
+ms.openlocfilehash: cccc45f182f3ae826440df8bc163080b82226c9f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078705"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172082"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Azure Logic Apps içinde bağlayıcılar tarafından oluşturulan bağlantıları engelle
 
@@ -35,8 +35,8 @@ Engellemek istediğiniz bağlantıya sahip bir mantıksal uygulamanız zaten var
 
 1. Engellemek istediğiniz bağlayıcının başvuru sayfasını bulun.
 
-   Örneğin, Instagram bağlayıcısını engellemek istiyorsanız bu sayfaya gidin: 
-   
+   Örneğin, kullanımdan kalktı bağlayıcı bağlayıcısını engellemek istiyorsanız bu sayfaya gidin:
+
    `https://docs.microsoft.com/connectors/instagram/`
 
 1. Sayfanın URL 'sinden bağlayıcı başvuru KIMLIĞI ' ni, eğik çizgi () olmadan sonundaki şekilde kopyalayın ve kaydedin `/` `instagram` .
@@ -47,7 +47,7 @@ Engellemek istediğiniz bağlantıya sahip bir mantıksal uygulamanız zaten var
 
 <a name="connector-ID-portal"></a>
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com), mantıksal uygulamanızı bulun ve açın.
 
@@ -364,7 +364,7 @@ Daha fazla bilgi için bkz. [hızlı başlangıç: uyumlu olmayan kaynakları be
 İleti şu bilgileri içerir:
 
 | Açıklama | İçerik |
-|---|---|
+|-------------|---------|
 | Hatanın nedeni | `"Resource 'instagram' was disallowed by policy."` |
 | Atama adı | `"Block Instagram connections"` |
 | Atama KIMLIĞI | `"/subscriptions/xxxxxXXXXXxxxxxXXXXXxxxxxXXXXX/resourceGroups/MyLogicApp-RG/providers/Microsoft.Authorization/policyAssignments/4231890fc3bd4352acb0b673"` |

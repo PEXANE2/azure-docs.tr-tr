@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: fcedec126c925ff218b8a0fb17b81dbf5ac1d769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044230"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124587"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Örnek bir istemci uygulamasıyla Azure dijital TWINS 'i keşfet
 
@@ -78,7 +78,7 @@ Taşımadan önce dosyayı kaydettiğinizden emin olun.
 > Kendi modelinizi oluşturmayı denemek istiyorsanız, *Oda* modeli kodunu *AdtSampleApp\SampleClientApp\Models* klasöründe bir *. JSON* uzantısıyla kaydedeceğiniz yeni bir dosyaya yapıştırabilirsiniz. Ardından, istediğiniz şeyi temsil etmek üzere Özellikler ve ilişkiler ekleyerek bir adım adım oynayın. Ayrıca, bu klasördeki diğer örnek modellere fikir için göz atabilirsiniz.
 
 > [!TIP] 
-> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [nasıl yapılır: modellerinizi ayrıştırma ve doğrulama](how-to-use-parser.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
+> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [*nasıl yapılır: modellerinizi ayrıştırma ve doğrulama*](how-to-use-parser.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
 
 ### <a name="get-started-with-the-command-line-app"></a>Komut satırı uygulaması ile çalışmaya başlama
 

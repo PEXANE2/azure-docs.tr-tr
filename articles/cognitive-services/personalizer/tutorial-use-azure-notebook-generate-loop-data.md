@@ -3,20 +3,18 @@ title: 'Öğretici: Azure Not defteri-kişiselleştirici'
 titleSuffix: Azure Cognitive Services
 description: Bu öğretici bir Azure not defterinde bir müşterinin sipariş etmesi gereken bir tür kahve öneren bir kişiselleştirici döngüsü _system benzetir. Kullanıcılar ve tercihleri bir kullanıcı veri kümesinde depolanır. Kahve hakkındaki bilgiler ayrıca bir kahve veri kümesinde bulunabilir ve saklanır.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
 ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 62e9140a1bab44d913e164304af13204f375f461
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608494"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131982"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Öğretici: Azure not defterinde kişiselleştirici kullanma
 
@@ -36,10 +34,10 @@ Zaman içinde kişiselleştirici öğrenimi sağlamak için, _sistem_ her bir ki
 
 |Kahve-eylem özellikleri|Sıcaklık türleri|Kaynak yerleri|Roast türleri|Organik|
 |--|--|--|--|--|
-|Cappacino|Sık Erişimli|Kenya|Koyu|Organik|
+|Cappacino|Sık erişim|Kenya|Koyu|Organik|
 |Soğuk Brew|Soğuk|Brezilya|Açık|Organik|
 |Belirtilen Mocha|Soğuk|Etiyopya|Açık|Organik değil|
-|Latte|Sık Erişimli|Brezilya|Koyu|Organik değil|
+|Latte|Sık erişim|Brezilya|Koyu|Organik değil|
 
 Kişiselleştirici döngüsünün **amacı** , mümkün olduğunca fazla Kullanıcı ve kahve arasındaki en iyi eşleşmeyi bulmalıdır.
 
@@ -65,7 +63,7 @@ Sistem isteği alır, daha sonra bu tahminle aynı gün ve hava durumu için kul
 > Bu bir simülasyonu olduğundan, ödül için algoritma basittir. Gerçek dünyada bir senaryoda, algoritma iş mantığını kullanmalıdır, bu da müşterinin deneyiminin çeşitli yönlerine yönelik ağırlıklarla birlikte, ödül puanı tespit etmelidir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir [Azure Not defteri](https://notebooks.azure.com/) hesabı.
 * Bir [Azure kişiselleştirici kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).

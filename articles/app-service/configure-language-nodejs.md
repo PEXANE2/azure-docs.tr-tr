@@ -1,15 +1,16 @@
 ---
 title: Windows Node.js uygulamalarını yapılandırma
 description: App Service yerel Windows örneklerinde Node.js uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
+ms.custom: devx-track-javascript
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 9f4ccdd04b8d57784f452dc28fa4507fb7ea94c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fc6ed5cb090653e381d82f484d355a514520c62
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908202"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170917"
 ---
 # <a name="configure-a-windows-nodejs-app-for-azure-app-service"></a>Azure App Service için bir Windows Node.js uygulaması yapılandırma
 
@@ -56,7 +57,7 @@ process.env.NODE_ENV
 
 Varsayılan olarak, App Service derleme Otomasyonu çalıştırmaları `npm install --production` Node.js bir uygulama, git (veya derleme Otomasyonu etkin olan ZIP dağıtımı) aracılığıyla dağıtılır. Uygulamanız Grsıt, Bower veya Gulp gibi popüler Otomasyon araçlarından herhangi birini gerektiriyorsa, çalıştırmak için [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) sağlamanız gerekir.
 
-Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örneğin:
+Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örnek:
 
 ```json
 "dependencies": {
@@ -135,7 +136,7 @@ fi
 
 App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini denetlemesi gerekiyorsa, `X-Forwarded-Proto` üstbilgiyi inceleyin.
 
-Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki bilgilere erişmenizi sağlar. [Express](https://expressjs.com/)'te [güven proxy 'leri](https://expressjs.com/guide/behind-proxies.html)kullanabilirsiniz. Örneğin:
+Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki bilgilere erişmenizi sağlar. [Express](https://expressjs.com/)'te [güven proxy 'leri](https://expressjs.com/guide/behind-proxies.html)kullanabilirsiniz. Örnek:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -154,7 +155,7 @@ if (req.secure) {
 Çalışan bir Node.js uygulaması App Service veya hata varsa, şunları deneyin:
 
 - [Günlük akışına erişin](#access-diagnostic-logs).
-- Uygulamayı üretim modunda yerel olarak test edin. App Service, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
+- Uygulamayı üretim modunda yerel olarak test edin. App Service, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örnek:
     - *package.js*bağlı olarak, üretim modu ( `dependencies` vs.) için farklı paketler yüklenebilir `devDependencies` .
     - Bazı Web çerçeveleri, statik dosyaları üretim modunda farklı şekilde dağıtabilir.
     - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.

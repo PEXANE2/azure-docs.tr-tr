@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7164aa71495100d7be4f1c0f6ef6de90644831b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115983"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169352"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Öğretici: bir Web uygulamasını Azure Active Directory B2C kaydetme
 
@@ -33,7 +33,7 @@ Bunun yerine yerel bir uygulama kullanıyorsanız (ör. iOS, Android, mobil & Ma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kendi [Azure AD B2C kiracınızı](tutorial-create-tenant.md)önceden oluşturmadıysanız, şimdi bir tane oluşturun. Mevcut bir Azure AD B2C kiracı kullanabilirsiniz.
 
@@ -63,7 +63,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 
 Uygulama kaydı tamamlandıktan sonra, örtük verme akışını etkinleştirin:
 
-1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
+1. Sol taraftaki menüde, **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.
 1. **Kaydet**'i seçin.
 
@@ -96,7 +96,7 @@ Uygulamanız bir erişim belirteci için bir yetkilendirme kodu alışverişi ya
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
 1. **Azure AD B2C-uygulama kayıtları** sayfasında, oluşturduğunuz uygulamayı seçin, örneğin *WebApp1*.
-1. **Yönet**altında **Sertifikalar & gizlilikler**' ı seçin.
+1. Sol taraftaki menüde, **Yönet**altında, **Sertifikalar & gizlilikler**' ı seçin.
 1. **Yeni istemci gizli dizisi**’ni seçin.
 1. **Açıklama** kutusuna istemci parolası için bir açıklama girin. Örneğin, *clientsecret1*.
 1. **Süre sonu**altında, parolasının geçerli olduğu bir süre seçin ve ardından **Ekle**' yi seçin.

@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027113"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170515"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -87,7 +87,7 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 |`ver` | Dize, 1,0 ya da 2,0 | İd_token sürümünü gösterir. |
 
 > [!NOTE]
-> V 1.0 ve v 22.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklılıklara sahiptir. Sürüm temelde, verildiği yerden Azure AD platformu uç noktasını belirtir. [Azure AD OAuth uygulama](about-microsoft-identity-platform.md) yıllardır. Şu anda Azure AD uygulamaları için iki farklı outh uç noktası vardır. V 2.0 veya v 1.0 olarak sınıflandırılan yeni uç noktalardan herhangi birini kullanabilirsiniz. Bunların her ikisi için de OAuth uç noktaları farklı. V 2.0 uç noktası daha yenidir ve v 1.0 uç noktasının özellikleri bu uç noktaya geçiriliyor. Yeni geliştiriciler v 2.0 uç noktasını kullanmalıdır.
+> V 1.0 ve v 2.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklara sahiptir. Sürüm temelde, verildiği yerden Azure AD platformu uç noktasını belirtir. [Azure AD OAuth uygulama](about-microsoft-identity-platform.md) yıllardır. Şu anda Azure AD uygulamaları için iki farklı outh uç noktası vardır. V 2.0 veya v 1.0 olarak sınıflandırılan yeni uç noktalardan herhangi birini kullanabilirsiniz. Bunların her ikisi için de OAuth uç noktaları farklı. V 2.0 uç noktası daha yenidir ve v 1.0 uç noktasının özellikleri bu uç noktaya geçiriliyor. Yeni geliştiriciler v 2.0 uç noktasını kullanmalıdır.
 >
 > - v 1.0: Azure AD uç noktaları:`https://login.microsoftonline.com/common/oauth2/authorize`
 > - v 2.0: Microsoft identitypPlatform uç noktaları:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

@@ -4,16 +4,16 @@ description: Yönetilen Önbellek hizmetini ve Rol İçi Önbellek uygulamaları
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 07/23/2020
 ms.author: yegu
-ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3f5cfccd1f85f68c619192496c62bf80ea8d4785
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184795"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170186"
 ---
-# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Yönetilen Önbellek Hizmeti’nden Redis için Azure Cache’ye Geçiş
+# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>Reddır için yönetilen önbellek hizmetinden Azure önbelleğine geçiş (kullanım dışı)
 Azure Yönetilen Önbellek Hizmeti kullanan uygulamalarınızın redin için Azure önbelleğine geçirilmesi, önbelleğe alma uygulamanız tarafından kullanılan yönetilen önbellek hizmeti özelliklerine bağlı olarak uygulamanızda en az değişiklikle gerçekleştirilebilir. API 'Ler tamamen benzer değildir ve bir önbelleğe erişmek için Yönetilen Önbellek hizmetini kullanan mevcut kodunuzun çoğu, en az değişiklikle yeniden kullanılabilir. Bu makalede, yönetilen önbellek hizmeti uygulamalarınızı Redsıs için Azure önbelleği 'ni kullanmak üzere geçirmek için gerekli yapılandırma ve uygulama değişikliklerinin nasıl yapılacağı gösterilmektedir ve Yönetilen Önbellek Hizmeti önbelleğinin işlevlerini uygulamak için redin Azure Cache 'in bazı özelliklerinin nasıl kullanılabileceği gösterilmektedir.
 
 >[!NOTE]

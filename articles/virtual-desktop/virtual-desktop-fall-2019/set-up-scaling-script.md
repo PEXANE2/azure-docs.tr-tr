@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 442dfc1667027bd39b138d59a28542138cc4a1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085981"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172064"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
 
@@ -60,12 +60,12 @@ Ancak, araç aşağıdaki sınırlamalara de sahiptir:
 
 - Bu çözüm yalnızca havuza alınmış çok oturumlu oturum ana bilgisayar VM 'Leri için geçerlidir.
 - Bu çözüm, herhangi bir bölgedeki VM 'Leri yönetir, ancak yalnızca Azure Otomasyonu hesabınız ve Azure Logic App ile aynı abonelikte kullanılabilir.
-- Runbook 'taki bir işin en fazla çalışma zamanı 3 saattir. Konak havuzundaki VM 'Leri başlatmak veya durdurmak bundan daha uzun sürer, iş başarısız olur. Daha ayrıntılı bilgi için bkz. [paylaşılan kaynaklar](../../automation/automation-runbook-execution.md#fair-share)
+- Runbook 'taki bir işin en fazla çalışma zamanı 3 saattir. Konak havuzundaki VM 'Leri başlatmak veya durdurmak bundan daha uzun sürer, iş başarısız olur. Daha fazla ayrıntı için bkz. [paylaşılan kaynaklar](../../automation/automation-runbook-execution.md#fair-share).
 
 >[!NOTE]
->Ölçeklendirme Aracı, ölçeklendirildiği konak havuzunun yük dengeleme modunu denetler. Bu, hem yoğun hem de yoğun olmayan saatlerde, ilk yük dengeleyiciyi belirler.
+>Ölçeklendirme Aracı, şu anda ölçeklendirildiği konak havuzunun yük dengeleme modunu denetler. Araç, hem yoğun hem de yoğun olmayan saatlerde, birinci düzey Yük Dengeleme modunu kullanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Ölçeklendirme aracı 'nı ayarlamaya başlamadan önce, aşağıdaki şeyleri hazırlamış olduğunuzdan emin olun:
 
@@ -140,7 +140,7 @@ Artık bir Azure Otomasyonu hesabınız olduğuna göre, henüz bir tane yoksa b
 
 Azure [Otomasyonu farklı çalıştır hesabı](../../automation/manage-runas-account.md) , Azure cmdlet 'leriyle Azure 'da kaynak yönetimine yönelik kimlik doğrulaması sağlar. Farklı Çalıştır hesabı oluşturduğunuzda, Azure Active Directory yeni bir hizmet sorumlusu kullanıcısı oluşturur ve katılımcı rolünü abonelik düzeyinde hizmet sorumlusu kullanıcısına atar. Azure farklı çalıştır hesabı, bir kimlik bilgisi nesnesinde Kullanıcı adı ve parola depolamaya gerek kalmadan sertifikalarla ve hizmet sorumlusu adıyla güvenli bir şekilde kimlik doğrulaması yapmanın harika bir yoludur. Farklı Çalıştır hesabı kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Farklı Çalıştır hesabı Izinlerini sınırlayın](../../automation/manage-runas-account.md#limit-run-as-account-permissions).
 
-Abonelik yöneticileri rolü ve aboneliğin ortak Yöneticisi üyesi olan herhangi bir Kullanıcı, sonraki bölümde yer alan yönergeleri izleyerek bir farklı çalıştır hesabı oluşturabilir.
+Abonelik yöneticileri rolünün üyesi olan bir Kullanıcı ve aboneliğin ortak Yöneticisi bir farklı çalıştır hesabı oluşturabilir.
 
 Azure Otomasyonu hesabınızda bir farklı çalıştır hesabı oluşturmak için:
 
