@@ -64,6 +64,8 @@
       href: manage-recording-policy-how-to.md
     - name: Seçtiğiniz yapay zeka ile canlı video analiz etme
       href: analyze-with-ai-your-choice-how-to.md
+    - name: Portalda doğrudan yöntem çağırma
+      href: use-azure-portal-to-invoke-direct-methods.md
     - name: Sorun giderme
       href: troubleshoot-how-to.md
 - name: Başvuru

@@ -127,11 +127,11 @@
               href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
             - name: Güvenli aktarım gerektir
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: Aktarım Katmanı Güvenliği'ni (TLS) yapılandırma
+            - name: Aktarım Katmanı Güvenliği’ni (TLS) yönetme
               items:
-                - name: Depolama hesabı için en düşük TLS sürümünü yapılandırma
+                - name: Gelen istekler için en düşük TLS sürümünü zorlama
                   href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-                - name: İstemci uygulaması için TLS'yi yapılandırma
+                - name: İstemci uygulaması için TLS sürümünü yapılandırma
                   href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Veri yedekliğini yönetme
       items:

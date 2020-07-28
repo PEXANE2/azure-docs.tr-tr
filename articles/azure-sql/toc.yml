@@ -78,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: Koşullu Erişim
                   href: database/conditional-access-configure.md
+                - name: Hizmet sorumluları (Uygulamalar)
+                  href: database/authentication-aad-service-principal.md
             - name: Saydam Veri Şifrelemesi (TDE)
               items:
                 - name: Genel Bakış
@@ -141,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: Güvenlik
           items:
+            - name: Azure AD konuk kullanıcıları oluşturma ve bir Azure AD yöneticisi olarak ayarlama
+              href: database/authentication-aad-guest-users.md
             - name: KAG ile TDE Yapılandırması
               href: database/transparent-data-encryption-byok-configure.md
             - name: Güvenlik açığı taramalarını depolama alanında depolama
@@ -277,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: TDE koruyucusunu kaldırma
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: Hizmet sorumluları kullanarak kullanıcı oluşturma
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: Veri taşıma
           items:
             - name: DMS kullanarak geçiş

@@ -72,7 +72,9 @@
           href: cache-how-to-geo-replication.md
         - name: Ayrılmış kapasite ile kaydetme
           href: cache-reserved-pricing.md
-        - name: Yönetilen Önbellek Hizmeti’nden Geçiş
+        - name: Redis için Azure Cache’e geçiş
+          href: cache-migration-guide.md
+        - name: Yönetilen Önbellek Hizmeti’nden Geçiş (kullanım dışı)
           href: cache-migrate-to-redis.md
     - name: Otomatikleştirme
       items:

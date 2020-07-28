@@ -574,6 +574,9 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Gelişmiş tehdit koruması
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: Kurumsal kullanıma hazır olma
@@ -988,7 +991,7 @@
           href: how-to-manage-indexing-policy.md
         - name: Benzersiz anahtarlar tanımlama
           href: how-to-define-unique-keys.md
-    - name: Performans ve Sorun Giderme
+    - name: Performans
       items:
         - name: Sorgu
           items:
@@ -996,28 +999,20 @@
               href: profile-sql-api-query.md
             - name: Sorgu performansını ayarlama
               href: sql-api-query-metrics.md
-            - name: Sorgu performansı sorunlarını giderme
-              href: troubleshoot-query-performance.md
         - name: .NET
           items:
             - name: .NET SDK v3 için performans ipuçları
               href: performance-tips-dotnet-sdk-v3-sql.md
             - name: .NET SDK v2 için performans ipuçları
               href: performance-tips.md
-            - name: .NET SDK’da sorun giderme
-              href: troubleshoot-dot-net-sdk.md
         - name: Java
           items:
             - name: Java SDK v4 için performans ipuçları
               href: performance-tips-java-sdk-v4-sql.md
-            - name: Java SDK v4 sorunlarını giderme
-              href: troubleshoot-java-sdk-v4-sql.md
             - name: Zaman uyumsuz Java SDK v2
               href: performance-tips-async-java.md
             - name: Zaman uyumlu Java SDK v2
               href: performance-tips-java.md
-            - name: Sorun Gidermek - Zaman uyumsuz Java SDK v2
-              href: troubleshoot-java-async-sdk.md
         - name: Performans testi - örnek uygulama
           href: performance-testing.md
         - name: Düşük maliyetli okuma ve yazmalar
@@ -1026,6 +1021,36 @@
       items:
         - name: Java V4 SDK’ya geçirme
           href: migrate-java-v4-sdk.md
+    - name: Sorun giderme
+      items:
+        - name: Sık karşılaşılan hatalar
+          items:
+            - name: Sorgu performansı sorunlarını giderme
+              href: troubleshoot-query-performance.md
+            - name: Hizmet isteği zaman aşımı sorunlarını giderme
+              href: troubleshoot-request-timeout.md
+            - name: İstek oranının fazla yüksek olması sorunlarını giderme
+              href: troubleshoot-request-rate-too-large.md
+            - name: Bulunamama sorunlarını giderme
+              href: troubleshoot-not-found.md
+            - name: Yetkisizlik sorunlarını giderme
+              href: troubleshoot-unauthorized.md
+        - name: .NET
+          items:
+            - name: Genel Sorun Giderme .NET SDK
+              href: troubleshoot-dot-net-sdk.md
+            - name: İstek üst bilgisinin çok büyük olması sorunlarını giderme
+              href: troubleshoot-dot-net-sdk-request-header-too-large.md
+            - name: İstek zaman aşımı sorunlarını giderme
+              href: troubleshoot-dot-net-sdk-request-timeout.md
+            - name: Hizmetin kullanılamaması sorunlarını giderme
+              href: troubleshoot-service-unavailable.md
+        - name: .Java
+          items:
+            - name: Java SDK v4 sorunlarını giderme
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: Sorun Gidermek - Zaman uyumsuz Java SDK v2
+              href: troubleshoot-java-async-sdk.md
     - name: Değişiklik Akışı
       items:
         - name: Azure Cosmos DB Tetikleyicisi günlükleri

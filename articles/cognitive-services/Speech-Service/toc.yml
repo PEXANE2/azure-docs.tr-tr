@@ -416,6 +416,8 @@
                   href: how-to-custom-commands-add-interaction-rules.md
                 - name: Konuşma yanıtları için dil oluşturma şablonları ekleme
                   href: how-to-custom-commands-add-language-generation-templates.md
+                - name: Özel Ses kullanma
+                  href: how-to-custom-commands-use-custom-voice.md
             - name: Tümleştirme
               items:
                 - name: Konuşma SDK’sını kullanarak bir istemci uygulamasıyla tümleştirme
@@ -452,6 +454,8 @@
               href: faq-voice-assistants.md
             - name: Konuşma SDK'sı
               href: speech-sdk.md
+            - name: Bekleyen verinin Özel Komutlarla şifrelenmesi
+              href: custom-commands-encryption-of-data-at-rest.md
     - name: Direct Line Speech
       items:
         - name: Direct Line Speech nedir?

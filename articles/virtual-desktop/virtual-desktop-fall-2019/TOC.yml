@@ -1,10 +1,10 @@
-- name: Windows Sanal Masaüstü Sonbahar 2019 Sürümü
+- name: Windows Sanal Masaüstü (klasik)
   href: ../index.yml
 - name: Genel Bakış
   items:
     - name: Windows Sanal Masaüstü nedir?
       href: ../overview.md
-    - name: İlkbahar 2020 Sürümü belgeleri
+    - name: Windows Sanal Masaüstü belgeleri
       href: ../create-host-pools-azure-marketplace.md
 - name: Öğreticiler
   items:

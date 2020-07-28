@@ -10,19 +10,19 @@
       items:
         - name: Giriş
           href: get-started.md
-        - name: '1. Adım: Synapse çalışma alanı oluşturma'
+        - name: 1 Synapse çalışma alanı oluşturma
           href: get-started-create-workspace.md
-        - name: '2. Adım: SQL Havuzu kullanarak analiz etme'
+        - name: 2 SQL Havuzu kullanarak analiz etme
           href: get-started-analyze-sql-pool.md
-        - name: '3. Adım: Spark kullanarak analiz etme'
+        - name: 3 Spark kullanarak analiz etme
           href: get-started-analyze-spark.md
-        - name: '4. Adım: İsteğe bağlı SQL kullanarak analiz etme'
+        - name: 4 İsteğe bağlı SQL kullanarak analiz etme
           href: get-started-analyze-sql-on-demand.md
-        - name: '5. Adım: Depolama hesabındaki verileri analiz etme'
+        - name: 5 Depolama hesabındaki verileri analiz etme
           href: get-started-analyze-storage.md
-        - name: '6. Adım: İşlem hatları ile düzenleme'
+        - name: 6 İşlem hatları ile düzenleme
           href: get-started-pipelines.md
-        - name: '7. Adım: Power BI ile görselleştirme'
+        - name: 7 Power BI ile görselleştirme
           href: get-started-visualize-power-bi.md
     - name: Kopya kağıdı
       href: overview-cheat-sheet.md
@@ -264,6 +264,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Sonuç kümesini önbelleğe alma
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Makine öğrenmesi tahminleri
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
             - name: Tablolar
               items:
                 - name: Genel Bakış

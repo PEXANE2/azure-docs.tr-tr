@@ -1,4 +1,4 @@
-- name: Windows Sanal Masaüstü İlkbahar 2020 Sürümü
+- name: Windows Sanal Masaüstü
   href: index.yml
 - name: Genel Bakış
   items:
@@ -6,7 +6,7 @@
       href: overview.md
     - name: Yenilikler
       href: whats-new.md
-    - name: Sonbahar 2019 Sürümü belgeleri
+    - name: Windows Sanal Masaüstü (klasik) belgeleri
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Öğreticiler
   items:

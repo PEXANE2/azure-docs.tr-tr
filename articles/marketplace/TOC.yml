@@ -121,7 +121,7 @@
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM teknik varlığı oluşturma hakkında SSS
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Azure VM görüntüsünü onaylama
+                - name: VHD’den dağıtılan Sanal Makineyi test etme
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: SAS URI’si
                   items:

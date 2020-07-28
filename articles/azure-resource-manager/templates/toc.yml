@@ -302,6 +302,8 @@
         - name: Dağıtım betiği
           displayName: custom script
           href: deployment-script-template.md
+        - name: Dağıtım betiği geliştirme ortamı oluşturma
+          href: deployment-script-template-configure-dev.md
         - name: Şablonları modüllere ayırma
           displayName: 'linked templates, nested templates'
           href: linked-templates.md

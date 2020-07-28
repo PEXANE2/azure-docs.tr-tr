@@ -31,6 +31,8 @@
       href: powershell-create-instance.md
     - name: Bir şablon kullanarak yönetilen etki alanı oluşturma
       href: template-create-instance.md
+    - name: Azure AD PowerShell kullanarak kapsamlı eşitlemeyi yapılandırma
+      href: powershell-scoped-synchronization.md
 - name: Kavramlar
   items:
     - name: Yönetim temel bilgileri
