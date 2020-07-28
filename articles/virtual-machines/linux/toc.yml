@@ -345,7 +345,7 @@
         - name: Paylaşılan diskler
           href: disks-shared.md
         - name: Kısa ömürlü işletim sistemi diskleri
-          href: ephemeral-os-disks.md
+          href: ../ephemeral-os-disks.md
     - name: Ağ
       href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Ölçek kümeleri
@@ -744,7 +744,7 @@
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure Tanılama uzantısı
               items:
-                - name: Genel Bakış
+                - name: Genel bakış
                   href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Linux tanılama uzantısı
                   displayname: diagnostics extension

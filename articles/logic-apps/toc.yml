@@ -49,8 +49,13 @@
       href: connect-virtual-network-vnet-isolated-environment-overview.md
     - name: İş sürekliliği ve olağanüstü durum kurtarma
       href: business-continuity-disaster-recovery-guidance.md
-    - name: Güvenlik temeli
-      href: security-baseline.md
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Geliştirme

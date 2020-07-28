@@ -329,7 +329,7 @@
         - name: Paylaşılan diskler
           href: disks-shared.md
         - name: Kısa ömürlü işletim sistemi diskleri
-          href: ephemeral-os-disks.md
+          href: ../ephemeral-os-disks.md
     - name: Ağ
       href: ../network-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Ölçek kümeleri

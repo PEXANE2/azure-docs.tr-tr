@@ -95,14 +95,6 @@
           href: upgrade-basicInternal-standard.md
         - name: İç Load Balancer’ı Yükseltme - Giden Bağlantı Gerekir
           href: upgrade-InternalBasic-To-PublicStandard.md
-    - name: Giden kuralları yapılandırma
-      items:
-        - name: Portal
-          href: configure-load-balancer-outbound-portal.md
-        - name: Azure CLI
-          href: configure-load-balancer-outbound-cli.md
-        - name: Azure PowerShell
-          href: configure-load-balancer-outbound-powershell.md
     - name: IPv6 ile genel Load Balancer oluşturma
       items:
         - name: Azure CLI’si
