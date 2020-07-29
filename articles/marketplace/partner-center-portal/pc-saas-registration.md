@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 52427cbaa418e0335797fe0a98c26c3fb84cf670
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109272"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304182"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
 
@@ -68,26 +70,26 @@ Gönderi<br>
 
 |  Parametre adı    |  Gerekli         |  Açıklama |
 |  ---------------   |  ---------------  | ------------ |
-|  `tenantId`        |  True      |  Kayıtlı AAD uygulamasının kiracı KIMLIĞI. |
+|  `tenantId`        |  Doğru      |  Kayıtlı AAD uygulamasının kiracı KIMLIĞI. |
 
 ##### <a name="request-header"></a>*İstek üst bilgisi*
 
 |  Üst bilgi adı       |  Gerekli         |  Açıklama |
 |  ---------------   |  ---------------  | ------------ |
-|  `content-type`    |  True      |  İstekle ilişkilendirilmiş içerik türü. Varsayılan değer: `application/x-www-form-urlencoded`. |
+|  `content-type`    |  Doğru      |  İstekle ilişkilendirilmiş içerik türü. Varsayılan değer: `application/x-www-form-urlencoded`. |
 
 ##### <a name="request-body"></a>*İstek gövdesi*
 
 |  Özellik adı     |  Gerekli         |  Açıklama |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant-type`      |  True      |  Verme türü. `"client_credentials"` adresini kullanın. |
-|  `client_id`       |  True      |  Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı. |
-|  `client_secret`   |  True      |  Azure AD uygulamasıyla ilişkili gizli dizi. |
-|  `resource`        |  True      |  Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`Bu durumda Market SaaS API 'si her zaman hedef kaynak olduğundan kullanın. |
+|  `grant-type`      |  Doğru      |  Verme türü. `"client_credentials"` adresini kullanın. |
+|  `client_id`       |  Doğru      |  Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı. |
+|  `client_secret`   |  Doğru      |  Azure AD uygulamasıyla ilişkili gizli dizi. |
+|  `resource`        |  Doğru      |  Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`Bu durumda Market SaaS API 'si her zaman hedef kaynak olduğundan kullanın. |
 
-##### <a name="response"></a>*Yanıtıyla*
+##### <a name="response"></a>*Response*
 
-|  Name     |  Tür         |  Description |
+|  Ad     |  Tür         |  Description |
 |  ------   |  ---------------  | ------------ |
 |  200 TAMAM   |  TokenResponse    |  İstek başarılı oldu. |
 

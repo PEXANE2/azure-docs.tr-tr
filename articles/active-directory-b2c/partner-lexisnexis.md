@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fa4610c925429ea59eae7399094230c1370bf2a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099950"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371201"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Lexisnexto yapılandırma öğreticisi Azure Active Directory B2C
 
@@ -147,7 +147,7 @@ Belirtilen TrustFrameworkExtensions ilkesinde, bir bul ve Değiştir seçeneğin
 
 6. Oturum açma akışına git  
 
-7. Çapraz puan bulmaca, **devam**' i girdikten sonra açılır.
+7. ThreatMetrix bulmaca, **devam**girdikten sonra açılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

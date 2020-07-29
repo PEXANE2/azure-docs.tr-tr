@@ -1,6 +1,5 @@
 ---
-title: API Management kullanarak Web hizmetlerini yönetme
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): API Management kullanarak Web hizmetlerini yönetme-Azure'
 description: API Management kullanarak AzureML Web hizmetlerini yönetmeyi gösteren kılavuz. Kullanıcı erişimi, kullanım azaltma ve Pano izlemeyi tanımlayarak REST API uç noktalarınızı yönetin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: c397c52b39cd8056122424a5bcf6736edcfdbaa5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dcbf9ba00592a9f4e25f9355549629f7eeb9b92a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086832"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318496"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management kullanarak Azure Machine Learning Studio (klasik) Web hizmetlerini yönetme
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuzda, Azure Machine Learning Studio (klasik) Web hizmetlerinizi yönetmek için API Management kullanarak nasıl hızlı bir şekilde başlacağınız gösterilmektedir.
@@ -28,7 +30,7 @@ Azure API Management, Kullanıcı erişimi, kullanım azaltma ve Pano izlemeyi t
 ## <a name="prerequisites"></a>Önkoşullar
 Bu kılavuzu gerçekleştirmek için şunlar gerekir:
 
-* Bir Azure hesabı.
+* Azure hesabı.
 * Bir AzureML hesabı.
 * Web hizmeti olarak dağıtılan bir AzureML denemesinde çalışma alanı, hizmet ve api_key. Bir AzureML denemesi oluşturma hakkında ayrıntılı bilgi için bkz. [Studio hızlı](create-experiment.md)başlangıcı. Bir Web hizmeti olarak bir Studio (klasik) denemesinin nasıl dağıtılacağı hakkında bilgi için bkz. bir Web hizmeti olarak bir AzureML denemesinin nasıl dağıtılacağı hakkında ayrıntılı bilgi için bkz. [Studio dağıtımı nasıl yapılır](deploy-a-machine-learning-web-service.md) . Alternatif olarak, ek A basit bir AzureML denemesi oluşturma ve test etme ve bir Web hizmeti olarak dağıtma yönergelerini içerir.
 
@@ -39,12 +41,12 @@ Azure Machine Learning Web hizmetinizi API Management bir örnekle yönetebilirs
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **+ Kaynak oluştur**’u seçin.
 3. Arama kutusuna "API Management" yazın, ardından "API Management" kaynağını seçin.
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 5. **Ad** değeri, BENZERSIZ bir URL oluşturmak için kullanılır (Bu örnek "demoazureml" kullanır).
 6. Hizmet örneğiniz için bir **abonelik**, **kaynak grubu**ve **konum** seçin.
 7. **Kuruluş adı** için bir değer belirtin (Bu örnekte "demoazureml" kullanılır).
 8. **Yönetici e-** postanızı girin-Bu e-posta API Management sisteminden bildirimler için kullanılacaktır.
-9. **Oluştur**'a tıklayın.
+9. **Oluştur**’a tıklayın.
 
 Yeni bir hizmetin oluşturulması 30 dakika kadar sürebilir.
 
@@ -167,7 +169,7 @@ Bir işlem çağrıldıktan sonra, geliştirici portalı, **Istenen URL** 'yi ar
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Ek A-basit bir AzureML Web hizmeti oluşturma ve test etme
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
-Aşağıda basit bir AzureML denemesi oluşturma ve bir Web hizmeti olarak dağıtma adımları verilmiştir. Web hizmeti, rastgele bir metnin sütununu alır ve tamsayılar olarak temsil edilen bir özellikler kümesi döndürür. Örneğin:
+Aşağıda basit bir AzureML denemesi oluşturma ve bir Web hizmeti olarak dağıtma adımları verilmiştir. Web hizmeti, rastgele bir metnin sütununu alır ve tamsayılar olarak temsil edilen bir özellikler kümesi döndürür. Örnek:
 
 | Metin | Karma metin |
 | --- | --- |

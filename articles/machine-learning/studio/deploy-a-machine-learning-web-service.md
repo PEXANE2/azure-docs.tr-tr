@@ -1,6 +1,5 @@
 ---
-title: Bir web hizmetini dağıtma
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): Web hizmeti dağıtma-Azure'
 description: Bir eğitim denemesini tahmine dayalı bir deneyiye dönüştürme, dağıtıma hazırlama ve Azure Machine Learning Studio (klasik) Web hizmeti olarak dağıtma.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f85ef90520049aef2cb39da9c360013d6f11aca0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696397"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318717"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasik) Web hizmeti dağıtma
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Azure Machine Learning Studio (klasik), tahmine dayalı analitik çözüm oluşturmanıza ve test etmenize olanak sağlar. Daha sonra çözümü bir Web hizmeti olarak dağıtabilirsiniz.
 
@@ -209,7 +212,7 @@ Fiyatlandırma bölgeye özeldir, bu nedenle Web hizmetini dağıtacağınız he
 6. **Kaynak grubu** açılır listesinden plan için bir kaynak grubu seçin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 7. **Plan adı** ' nda planın adını yazın.
 8. **Plan seçenekleri**altında, yeni plan için faturalandırma düzeyine tıklayın.
-9. **Oluştur**'a tıklayın.
+9. **Oluştur**’a tıklayın.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Web hizmetini başka bir bölgeye dağıtma
 

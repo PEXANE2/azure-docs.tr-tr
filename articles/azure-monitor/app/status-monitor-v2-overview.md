@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 6a51da4f4685d7d7b1c597d8a9b9dd78270f29b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499282"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318955"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Izleyici Application Insights aracısını dağıtma
 
@@ -76,13 +76,14 @@ Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-
 
 Telemetrinizi görüntüleyin:
 
-* Performansı ve kullanımı izlemek için [ölçümleri](../../azure-monitor/platform/metrics-charts.md) bulun.
-* Sorunları tanılamak için [olayları ve günlükleri arayın](../../azure-monitor/app/diagnostic-search.md) .
+* Performansı ve kullanımı izlemek için [ölçümleri](../platform/metrics-charts.md) bulun.
+* Sorunları tanılamak için [olayları ve günlükleri arayın](./diagnostic-search.md) .
 * Daha gelişmiş sorgular için [analiz kullanın](../log-query/log-query-overview.md) .
-* [Panolar oluşturun](../../azure-monitor/app/overview-dashboard.md).
+* [Panolar oluşturun](./overview-dashboard.md).
 
 Daha fazla telemetri ekleyin:
 
 * Sitenizin canlı kalması için [web testleri oluşturun](monitor-web-app-availability.md).
-* Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
-* İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
+* Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](./javascript.md) .
+* İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](./asp-net.md) .
+

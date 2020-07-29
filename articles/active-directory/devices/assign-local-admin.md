@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386377"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371184"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -67,6 +67,21 @@ Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Cihaz yöne
 >[!NOTE]
 > Yukarıdaki eylemler, ilgili cihazda daha önce oturum açmamış kullanıcılar için geçerli değildir. Bu durumda, yönetici ayrıcalıkları cihazdaki ilk oturum açtıktan hemen sonra uygulanır. 
 
+## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>Azure AD gruplarını kullanarak yönetici ayrıcalıklarını yönetme (Önizleme)
+
+>[!NOTE]
+> Bu özellik şu anda önizleme sürümündedir.
+
+Windows 10 2004 Güncelleştirmesi ile başlayarak, Azure AD 'ye katılmış cihazlarda [kısıtlamalı gruplar] (Windows/Client-Management/MDM/Policy-CSP-kısıttedgroups) MDM ilkesiyle yönetici ayrıcalıklarını yönetmek için Azure AD gruplarını kullanabilirsiniz. Bu ilke, Azure AD 'ye katılmış bir cihazdaki tek tek kullanıcıları veya Azure AD gruplarını yerel Yöneticiler grubuna atamanıza izin verir ve farklı cihaz grupları için ayrı Yöneticiler yapılandırmak için ayrıntı düzeyi sağlar. 
+
+Şu anda, bu ilkeyi yönetmek için Intune 'da Kullanıcı arabirimi yoktur ve [Custom OMA-URI ayarları] (mem/Intune/Configuration/Custom-Settings-Windows-10) kullanılarak yapılandırılması gerekir. Bu ilkeyle ilgili birkaç önemli noktalar: 
+
+- İlke aracılığıyla Azure AD grupları eklemek, gruplar API 'sini yürüterek grubun SID 'sinin elde edilebilir olmasını gerektirir. SID, `securityIdentifier` gruplar API 'sindeki özelliği tarafından tanımlanır.
+- Kısıtlanmış Gruplar ilkesi zorlandığında, grubun Üyeler listesinde olmayan geçerli üyeleri kaldırılır. Bu nedenle, bu ilkeyi yeni üyeler veya gruplarla uygulamak, cihazı, cihaz yöneticisi rolünü ve genel yönetici rolünü cihazdan katılmış olan mevcut yöneticiler olarak kaldırır. Mevcut üyeleri kaldırmayı önlemek için, onları kısıtlı gruplar ilkesindeki Üyeler listesinin bir parçası olarak yapılandırmanız gerekir. 
+- Bu ilke, yalnızca bir Windows 10 cihazında, Yöneticiler, kullanıcılar, konuklar, Power Users, uzak masaüstü kullanıcıları ve uzaktan yönetim kullanıcıları üzerinde bilinen ve bilinen gruplar için geçerlidir. 
+- Kısıtlanmış Gruplar ilkesini kullanarak yerel yöneticileri yönetmek, karma Azure AD 'ye katılmış veya Azure AD 'ye kayıtlı cihazlar için geçerli değildir.
+- Kısıtlı Gruplar ilkesi Windows 10 2004 güncelleştirmesinden önce mevcut olsa da, Azure AD gruplarını cihazın yerel Yöneticiler grubunun üyeleri olarak desteklemeiyordu. 
+
 ## <a name="manage-regular-users"></a>Normal kullanıcıları yönetme
 
 Azure AD, varsayılan olarak, Azure AD JOIN 'in cihazdaki yönetici grubuna eklediği kullanıcıyı ekler. Normal kullanıcıların yerel yönetici haline gelmesini engellemek istiyorsanız aşağıdaki seçeneklere sahipsiniz:
@@ -85,7 +100,7 @@ Ayrıca, komut istemi kullanarak da kullanıcı ekleyebilirsiniz:
 - Kiracı kullanıcılarınız şirket içi Active Directory eşitlendiğinde, kullanın `net localgroup administrators /add "Contoso\username"` .
 - Azure AD 'de kiracı kullanıcılarınız oluşturulduysa, şunu kullanın`net localgroup administrators /add "AzureAD\UserUpn"`
 
-## <a name="considerations"></a>Önemli noktalar 
+## <a name="considerations"></a>Dikkat edilmesi gerekenler 
 
 Cihaz Yöneticisi rolüne Grup atayamazsınız, yalnızca bireysel kullanıcılara izin verilir.
 

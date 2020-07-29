@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539372"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319329"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager Azure Izleyici 'ye bağlama
 Cihaz koleksiyonu verilerini eşitlemek ve Azure Izleyici ve Azure Otomasyonu 'nda bu koleksiyonlara başvurmak için Microsoft uç nokta Configuration Manager ortamınızı Azure Izleyici 'ye bağlayabilirsiniz.  
@@ -41,7 +41,7 @@ Aşağıdaki adımlarda, Azure Izleyici ile Configuration Manager Tümleştirmes
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Log Analytics izinlere sahip Configuration Manager verme
 
-Aşağıdaki yordamda, Log Analytics çalışma alanınızdaki *katkıda* bulunan rolünü Configuration Manager daha önce oluşturduğunuz ad uygulaması ve hizmet sorumlusuna verirsiniz. Henüz bir çalışma alanınız yoksa devam etmeden önce [Azure izleyici 'de çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md) bölümüne bakın. Bu, Configuration Manager kimliğinin doğrulanmasını ve Log Analytics çalışma alanınıza bağlanmasını sağlar.  
+Aşağıdaki yordamda, Log Analytics çalışma alanınızdaki *katkıda* bulunan rolünü Configuration Manager daha önce oluşturduğunuz ad uygulaması ve hizmet sorumlusuna verirsiniz. Henüz bir çalışma alanınız yoksa devam etmeden önce [Azure izleyici 'de çalışma alanı oluşturma](../learn/quick-create-workspace.md) bölümüne bakın. Bu, Configuration Manager kimliğinin doğrulanmasını ve Log Analytics çalışma alanınıza bağlanmasını sağlar.  
 
 > [!NOTE]
 > Configuration Manager için Log Analytics çalışma alanında izinleri belirtmeniz gerekir. Aksi takdirde, Configuration Manager 'de Yapılandırma Sihirbazı 'nı kullandığınızda bir hata iletisi alırsınız.
@@ -139,14 +139,15 @@ Hiyerarşinizden cihaz koleksiyonlarını içeri aktarmaya yönelik ilk yapılan
 
 ## <a name="view-data-from-configuration-manager"></a>Configuration Manager verileri görüntüleme
 
-Configuration Manager bir Log Analytics bağlantısı ekledikten ve aracıyı Configuration Manager hizmet bağlantı noktası site sistemi rolünü çalıştıran bilgisayara yükledikten sonra, aracıdaki veriler Azure Izleyici 'de Log Analytics çalışma alanına gönderilir. Azure Izleyici 'de, Configuration Manager koleksiyonlarınız [bilgisayar grupları](../../azure-monitor/platform/computer-groups.md)olarak görünür. Grupları, **Ayarları \ bilgisayar grupları**' nın altında **Configuration Manager** sayfasından görüntüleyebilirsiniz.
+Configuration Manager bir Log Analytics bağlantısı ekledikten ve aracıyı Configuration Manager hizmet bağlantı noktası site sistemi rolünü çalıştıran bilgisayara yükledikten sonra, aracıdaki veriler Azure Izleyici 'de Log Analytics çalışma alanına gönderilir. Azure Izleyici 'de, Configuration Manager koleksiyonlarınız [bilgisayar grupları](./computer-groups.md)olarak görünür. Grupları, **Ayarları \ bilgisayar grupları**' nın altında **Configuration Manager** sayfasından görüntüleyebilirsiniz.
 
 Koleksiyonlar alındıktan sonra, koleksiyon üyeliğine sahip kaç bilgisayar algılandığını görebilirsiniz. Ayrıca, içeri aktarılmış koleksiyonların sayısını da görebilirsiniz.
 
 ![Bilgisayar grupları-SCCM sekmesi](./media/collect-sccm/sccm-computer-groups02.png)
 
-Birine tıkladığınızda, herhangi bir gruba ait tüm içeri aktarılan grupları veya tüm bilgisayarları görüntüleyen günlük sorgu Düzenleyicisi açılır. [Günlük aramasını](../../azure-monitor/log-query/log-query-overview.md)kullanarak, koleksiyon üyeliği verilerini ayrıntılı olarak analiz gerçekleştirebilirsiniz.
+Birine tıkladığınızda, herhangi bir gruba ait tüm içeri aktarılan grupları veya tüm bilgisayarları görüntüleyen günlük sorgu Düzenleyicisi açılır. [Günlük aramasını](../log-query/log-query-overview.md)kullanarak, koleksiyon üyeliği verilerini ayrıntılı olarak analiz gerçekleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Configuration Manager verileriniz hakkında ayrıntılı bilgileri görüntülemek için [günlük aramasını](../../azure-monitor/log-query/log-query-overview.md) kullanın.
+Configuration Manager verileriniz hakkında ayrıntılı bilgileri görüntülemek için [günlük aramasını](../log-query/log-query-overview.md) kullanın.
+

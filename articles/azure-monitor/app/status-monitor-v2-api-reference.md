@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 32fd0da0095c34c4ef199eb703881e048473f0a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499367"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319006"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Izleyici Application Insights aracı API 'SI başvurusu
 
@@ -638,14 +638,15 @@ Timeout Reached. Stopping...
 
   Telemetrinizi görüntüleyin:
  - Performansı ve kullanımı izlemek için [ölçümleri](../platform/metrics-charts.md) bulun.
-- Sorunları tanılamak için [olayları ve günlükleri arayın](../../azure-monitor/app/diagnostic-search.md) .
+- Sorunları tanılamak için [olayları ve günlükleri arayın](./diagnostic-search.md) .
 - Daha gelişmiş sorgular için [analiz](../log-query/log-query-overview.md) kullanın.
-- [Panolar oluşturun](../../azure-monitor/app/overview-dashboard.md).
+- [Panolar oluşturun](./overview-dashboard.md).
  
  Daha fazla telemetri ekleyin:
  - Sitenizin canlı kalması için [web testleri oluşturun](monitor-web-app-availability.md).
-- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
-- İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
+- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](./javascript.md) .
+- İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](./asp-net.md) .
  
  Application Insights aracısıyla daha fazlasını yapın:
  - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+

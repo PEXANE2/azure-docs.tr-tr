@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 218a0624f7e4adc1aa188dbd62db217bf79202f8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109306"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304148"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'te SaaS 'yi karşılama API 'Leri
 
@@ -45,7 +47,7 @@ Satıcı (CSP) senaryosunda bir CSP, SaaS teklifini son müşteri adına satın 
 
 Bu senaryo için yayımcı, API çağrısı akışlarını farklı bir şekilde uygulamak için gerekli değildir.
 
-CSP hakkında daha fazla bilgi için lütfen adresine bakın https://partner.microsoft.com/en-us/licensing .
+CSP hakkında daha fazla bilgi için lütfen adresine bakın https://partner.microsoft.com/licensing .
 
 >[!Warning]
 >Bu API 'nin geçerli sürümü, tüm yeni SaaS teklifleri için kullanılması gereken sürüm 2 ' dir. API sürüm 1 kullanım dışıdır ve mevcut teklifleri desteklemek için tutulmaktadır.

@@ -3,12 +3,12 @@ title: Azure Service Bus sık sorulan sorular (SSS) | Microsoft Docs
 description: Bu makalede Azure Service Bus hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 01d7869a158a3c2b5418f38f2a5d88fc161796c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083863"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371252"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -78,7 +78,7 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
 3. Her biri için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırarak üç kullanılabilirlik alanında çalışan üç örnek için IP adreslerini alın. 
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Bir ad alanına/bir ad alanından gönderilen/alınan iletilerin IP adresini nerede bulabilirim? 
-Ad alanınızı/onlardan ileti gönderen veya alan istemcilerin IP adreslerini günlüğe almadık. Yalnızca izin verilen kullanıcıların veya uygulamaların ad alanına erişebildiğinden emin olmak için, mevcut tüm istemcilerin kimlik doğrulaması yapamaması ve rol tabanlı erişim denetimi ([RBAC](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)) ayarlarını gözden geçirebilmesi için anahtarları yeniden oluşturun. 
+Ad alanınızı/onlardan ileti gönderen veya alan istemcilerin IP adreslerini günlüğe almadık. Yalnızca izin verilen kullanıcıların veya uygulamaların ad alanına erişebildiğinden emin olmak için, mevcut tüm istemcilerin kimlik doğrulaması yapamaması ve rol tabanlı erişim denetimi ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) ayarlarını gözden geçirebilmesi için anahtarları yeniden oluşturun. 
 
 **Premium** ad alanı kullanıyorsanız, ad alanına erişimi sınırlandırmak için [IP filtrelemesi](service-bus-ip-filtering.md), [sanal ağ hizmeti uç noktaları](service-bus-service-endpoints.md)ve [Özel uç noktalar](private-link-service.md) kullanın. 
 

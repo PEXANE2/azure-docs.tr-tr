@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e39ec197b0bbce5d963650abd5dc7811647fa01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659643"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370368"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -74,6 +75,30 @@ Aktarım sırasında şifreleme hakkında daha fazla bilgi için bkz. [Azure dep
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
+
+## <a name="data-protection"></a>Veri koruma
+Azure dosyaları, verilerinizin yedeklenmesini, kurtarılabilir ve güvenlik tehditlerine karşı korunmasını sağlamaya yönelik çok katmanlı bir yaklaşıma sahiptir.
+
+### <a name="soft-delete"></a>Geçici silme
+Dosya paylaşımları için geçici silme (Önizleme), yanlışlıkla silindiğinde dosya paylaşımınızı kurtarmanıza olanak sağlayan bir depolama hesabı düzeyi ayarıdır. Bir dosya paylaşımının silindiği zaman kalıcı olarak silinmeyeceği yerine geçici olarak silinen bir duruma geçer. Geçici olarak silinen verilerin kalıcı olarak silinmeden önce kurtarılabilir kalma süresini yapılandırabilir ve bu bekletme döneminde her zaman paylaşımdan geri alma işlemini geri alabilirsiniz. 
+
+Çoğu dosya paylaşımı için geçici silme özelliğini etkinleştirmenizi öneririz. Paylaşma silmenin yaygın olduğu ve beklenildiği bir iş akışınız varsa, çok kısa bir Bekletme süresine sahip olmak veya hiç geçici silme özelliği etkinleştirilmemiş olabilir.
+
+Geçici silme hakkında daha fazla bilgi için bkz. [yanlışlıkla veri silmeyi engelleme](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion).
+
+### <a name="backup"></a>Backup
+Azure dosya paylaşımınızı, paylaşımınızın salt okunurdur, paylaşılan [anlık görüntüleri](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)aracılığıyla yedekleyebilirsiniz. Anlık görüntüler artımlı olarak değişir, yani yalnızca önceki anlık görüntüden beri değiştiği kadar veri içerirler. Dosya paylaşımında en fazla 200 anlık görüntü alabilir ve bunları 10 yıla kadar koruyabilirsiniz. Bu anlık görüntüleri, PowerShell veya komut satırı arabirimi (CLı) aracılığıyla Azure portal el ile alabilir ya da [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)kullanabilirsiniz. Anlık görüntüler dosya paylaşımınızda saklanır, yani dosya paylaşımınızı silerseniz anlık görüntülerinizin de silinmesi gerekir. Anlık görüntü yedeklemelerinizi yanlışlıkla silinmeye karşı korumak için, paylaşımınızda geçici silme özelliğinin etkinleştirildiğinden emin olun.
+
+[Azure dosya paylaşımları için Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) , anlık görüntülerin zamanlamasını ve bekletilmesini işler. Babalar ve oğul-son (GFS) özellikleri, her biri kendi ayrı saklama süresine sahip günlük, haftalık, aylık ve yıllık anlık görüntüleri gerçekleştirebileceğiniz anlamına gelir. Azure Backup Ayrıca, içindeki herhangi bir dosya paylaşımının yedekleme için yapılandırıldığı anda, geçici silme işlemini ve bir depolama hesabında silme kilidi alır. Son olarak, Azure Backup müşterilerin yedeklemelerinin birleştirilmiş bir görünümüne sahip olmasını sağlayan belirli önemli izleme ve uyarı özellikleri sağlar.
+
+Azure Backup kullanarak Azure portal hem öğe düzeyinde hem de paylaşma düzeyinde geri yüklemeler gerçekleştirebilirsiniz. Yapmanız gereken tek şey, geri yükleme noktasını (belirli bir anlık görüntü), varsa belirli bir dosyayı veya dizini ve ardından geri yüklemeyi istediğiniz konumu (orijinal veya alternatif) seçmeniz gerekir. Yedekleme hizmeti, anlık görüntü verilerinin kopyalanmasını işler ve portalda geri yükleme ilerleme durumunu gösterir.
+
+Yedekleme hakkında daha fazla bilgi için bkz. [Azure dosya paylaşma yedeklemesi hakkında](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json).
+
+### <a name="advanced-threat-protection-for-azure-files-preview"></a>Azure dosyaları için Gelişmiş tehdit koruması (Önizleme)
+Azure depolama için Gelişmiş tehdit koruması (ATP), depolama hesabınızda anormal etkinlik algıladığında uyarılar sağlayan ek bir güvenlik zekası katmanı sağlar. Örneğin, depolama hesabına erişmek için olağan dışı girişimler. ATP Ayrıca kötü amaçlı yazılım karması saygınlığı analizini çalıştırır ve bilinen kötü amaçlı yazılımlara uyar. Bir abonelik veya depolama hesabı düzeyinde ATP 'yi Azure Güvenlik Merkezi aracılığıyla yapılandırabilirsiniz. 
+
+Daha fazla bilgi için bkz. [Azure depolama Için Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection).
 
 ## <a name="storage-tiers"></a>Depolama katmanları
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]

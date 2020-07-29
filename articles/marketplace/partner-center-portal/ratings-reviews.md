@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 142e03ab8ae66e210bf572a7c640e19d17c38901
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109238"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304199"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Derecelendirmeler & Iş Ortağı Merkezi 'nde analiz panosu
 
@@ -24,7 +26,7 @@ Bu makalede, Iş Ortağı Merkezi 'ndeki derecelendirmeler & Incelemeleri panosu
 
 ## <a name="access-the-dashboard"></a>Panoya erişin
 
-Iş Ortağı Merkezi 'ndeki [ticari Market panosunda](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) , **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** bölümünü genişletin ve **Derecelendirme & değerlendirmeleri**' ni seçin.
+Iş Ortağı Merkezi 'ndeki [ticari Market panosunda](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) , **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** bölümünü genişletin ve **Derecelendirme & değerlendirmeleri**' ni seçin.
 
 Panoda aşağıdaki müşteri etkinliğinin grafik gösterimi görüntülenir:
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044524"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319363"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Kaynak günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme
 
@@ -59,7 +59,7 @@ Etkinlik günlükleri varsayılan olarak açık ve Stream Analytics işiniz tara
 
 Kaynak günlüklerini açıp Azure Izleyici günlüklerine göndermek, önemle önerilir. Varsayılan olarak **kapalıdır** . Bunları açmak için şu adımları izleyin:
 
-1.  Henüz bir tane yoksa [Log Analytics çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) . Log Analytics çalışma alanınızın Stream Analytics işiniz ile aynı bölgede olması önerilir.
+1.  Henüz bir tane yoksa Log Analytics çalışma alanı oluşturun. Log Analytics çalışma alanınızın Stream Analytics işiniz ile aynı bölgede olması önerilir.
 
 2.  Azure portal oturum açın ve Stream Analytics işinize gidin. **İzleme**altında **tanılama günlükleri**' ni seçin. Sonra **tanılamayı aç '** ı seçin.
 
@@ -94,7 +94,7 @@ Azure Stream Analytics, kaynak günlüklerinin iki kategorisini yakalar:
 
 Tüm Günlükler JSON biçiminde depolanır. Her giriş aşağıdaki ortak dize alanlarına sahiptir:
 
-Name | Açıklama
+Ad | Açıklama
 ------- | -------
 time | Günlüğün zaman damgası (UTC).
 resourceId | İşlemin üzerinde gerçekleştiği kaynağın KIMLIĞI (büyük harfle). Abonelik KIMLIĞI, kaynak grubu ve iş adını içerir. Örneğin, **/Subscriptions/6503d296-dac1-4449-9B03-609a1f4a1c87/ResourceGroups/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMMINGJOB**.
@@ -112,7 +112,7 @@ Yürütme günlükleri Stream Analytics işi yürütme sırasında gerçekleşen
 
 İş işlenirken oluşan herhangi bir hata, bu Günlükler kategorisindedir. Bu Günlükler genellikle veri okuma, serileştirme ve yazma işlemleri sırasında oluşturulur. Bu Günlükler bağlantı hatalarını içermez. Bağlantı hataları genel olaylar olarak değerlendirilir. Çeşitli farklı [giriş ve çıkış verileri hatalarının](https://docs.microsoft.com/azure/stream-analytics/data-errors)nedeni hakkında daha fazla bilgi edinebilirsiniz.
 
-Name | Açıklama
+Ad | Açıklama
 ------- | -------
 Kaynak | Hatanın oluştuğu iş girişinin veya çıktının adı.
 İleti | Hatayla ilişkili ileti.
@@ -133,17 +133,14 @@ Veriler | Hatanın kaynağını doğru bir şekilde bulmak için yararlı olan v
 
 Genel olaylar diğer her şeyi kapsar.
 
-Name | Açıklama
+Ad | Açıklama
 -------- | --------
 Hata | seçim Hata bilgileri. Genellikle, bu, varsa özel durum bilgileri olur.
 İleti| Günlük iletisi.
 Tür | İleti türü. İç hata kategorilerine eşlenir. Örneğin, **Jobvalidationerror** veya **Bloi Putadapterınitializationfailure**.
-Bağıntı Kimliği | İş yürütmesini benzersiz bir şekilde tanımlayan [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) . İş durdurulmadan önce işin başladığı zamandan itibaren tüm yürütme günlüğü girdileri aynı **BAĞıNTı kimliği** değerine sahip olamaz.
+Bağıntı Kimliği | İş yürütmesini benzersiz bir şekilde tanımlayan GUID. İş durdurulmadan önce işin başladığı zamandan itibaren tüm yürütme günlüğü girdileri aynı **BAĞıNTı kimliği** değerine sahip olamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Stream Analytics giriş](stream-analytics-introduction.md)
-* [Akış Analizi ile çalışmaya başlama](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics veri hataları](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

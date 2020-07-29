@@ -4,16 +4,16 @@ description: .NET ve .NET Core için Azure Application Insights SDK 'larda telem
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318938"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights telemetri kanalları
 
-Telemetri kanalları, [Azure Application Insights SDK](../../azure-monitor/app/app-insights-overview.md)'larının ayrılmaz bir parçasıdır. Bu kişiler Application Insights hizmetine telemetri arabelleğini ve aktarımını yönetir. SDK 'ların .NET ve .NET Core sürümlerinde iki yerleşik telemetri kanalı vardır: `InMemoryChannel` ve `ServerTelemetryChannel` . Bu makalede kanal davranışının nasıl özelleştirileceği dahil olmak üzere her bir kanal ayrıntılı olarak açıklanmaktadır.
+Telemetri kanalları, [Azure Application Insights SDK](./app-insights-overview.md)'larının ayrılmaz bir parçasıdır. Bu kişiler Application Insights hizmetine telemetri arabelleğini ve aktarımını yönetir. SDK 'ların .NET ve .NET Core sürümlerinde iki yerleşik telemetri kanalı vardır: `InMemoryChannel` ve `ServerTelemetryChannel` . Bu makalede kanal davranışının nasıl özelleştirileceği dahil olmak üzere her bir kanal ayrıntılı olarak açıklanmaktadır.
 
 ## <a name="what-are-telemetry-channels"></a>Telemetri kanalları nelerdir?
 
@@ -39,7 +39,7 @@ Application Insights .NET ve .NET Core SDK 'Ları, iki yerleşik kanala sahiptir
 
 Bir telemetri kanalını etkin telemetri yapılandırmasına ayarlayarak yapılandırırsınız. ASP.NET uygulamalar için, yapılandırma telemetri kanalı örneğinin `TelemetryConfiguration.Active` ' ı ' ya ayarlamayı ya da değiştirmesini içerir `ApplicationInsights.config` . ASP.NET Core uygulamalar için, yapılandırma kanalı bağımlılık ekleme kapsayıcısına eklemeyi içerir.
 
-Aşağıdaki bölümlerde, `StorageFolder` çeşitli uygulama türlerinde kanal için ayar yapılandırma örnekleri gösterilmektedir. `StorageFolder`, yapılandırılabilir ayarlardan yalnızca biridir. Yapılandırma ayarlarının tam listesi için, bu makalenin ilerleyen bölümlerinde bulunan [Ayarlar bölümüne](telemetry-channels.md#configurable-settings-in-channels) bakın.
+Aşağıdaki bölümlerde, `StorageFolder` çeşitli uygulama türlerinde kanal için ayar yapılandırma örnekleri gösterilmektedir. `StorageFolder`, yapılandırılabilir ayarlardan yalnızca biridir. Yapılandırma ayarlarının tam listesi için, bu makalenin ilerleyen bölümlerinde bulunan [Ayarlar bölümüne](#configurable-settings-in-channels) bakın.
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>ASP.NET uygulamaları için ApplicationInsights.config kullanarak yapılandırma
 
@@ -166,5 +166,6 @@ Application Insights için her SDK gibi kanallar açık kaynaktır. [Resmi GitHu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Örnekleme](../../azure-monitor/app/sampling.md)
-* [SDK sorunlarını giderme](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [Örnekleme](./sampling.md)
+* [SDK sorunlarını giderme](./asp-net-troubleshoot-no-data.md)
+

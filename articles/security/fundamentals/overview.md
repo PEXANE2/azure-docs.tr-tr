@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c107789fe4a88b3cd73a2f290871016b95cae19
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125677"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371405"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -60,7 +60,7 @@ Bulut hizmeti modeline bağlı olarak, uygulamanın veya hizmetin güvenliğini 
 
 Yerleşik yetenekler altı işlevsel alanda düzenlenmiştir: Işlemler, uygulamalar, depolama, ağ, Bilgi Işlem ve kimlik. Bu altı alanda Azure platformunda bulunan özellikler ve yetenekler hakkında ek ayrıntı Özet bilgiler aracılığıyla sağlanır.
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 Bu bölümde güvenlik işlemlerinde temel özelliklerle ilgili ek bilgiler ve bu yetenekler hakkında özet bilgiler sağlanmaktadır.
 
 ### <a name="security-and-audit-dashboard"></a>Güvenlik ve Denetim Panosu
@@ -88,7 +88,7 @@ Kilitlenmeler, sorunlar veya performans sorunları varsa, nedeni tanılamak içi
 
 Azure izleyici günlükleri, esnek bir sorgu yaklaşımına sahip çok sayıda güvenlikle ilgili girişi hızlı bir şekilde aramanızı sağladığından, adli ve diğer güvenlik analizinde yararlı bir araç olabilir. Ayrıca, şirket içi [güvenlik duvarı ve proxy günlükleri Azure 'a aktarılabilir ve Azure izleyici günlükleri kullanılarak analiz için kullanılabilir hale getirilebilir.](../../log-analytics/log-analytics-agent-windows.md)
 
-### <a name="azure-advisor"></a>Azure Danışmanı
+### <a name="azure-advisor"></a>Azure Advisor
 [Azure Danışmanı](../../advisor/index.yml) , Azure dağıtımlarınızı iyileştirmenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Kaynak yapılandırmanızı ve kullanım telemetrinizi çözümler. Daha sonra, [Genel Azure harcamalarınızı azaltmaya](../../advisor/advisor-cost-recommendations.md)yönelik fırsatları ararken kaynaklarınızın [performansını](../../advisor/advisor-performance-recommendations.md), [güvenliğini](../../advisor/advisor-security-recommendations.md)ve [yüksek oranda kullanılabilirliğini](../../advisor/advisor-high-availability-recommendations.md) artırmaya yardımcı olmak için çözümler önerir. Azure Danışmanı, Azure 'da dağıttığınız çözümler için genel güvenlik duruşunuzu önemli ölçüde iyileştirebilen güvenlik önerileri sağlar. Bu öneriler, [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) tarafından gerçekleştirilen güvenlik analizinden çizilir.
 
 ### <a name="azure-security-center"></a>Azure Güvenlik Merkezi
@@ -142,7 +142,7 @@ Uygulama Tanılamada, bu şekilde gruplandırılmış olayları görebilirsiniz:
 Bu bölümde, Azure Storage Security 'deki temel özelliklerle ilgili ek bilgiler ve bu yetenekler hakkında özet bilgiler sağlanmaktadır.
 
 ### <a name="role-based-access-control-rbac"></a>Rol Tabanlı Erişim Denetimi (RBAC)
-Depolama hesabınızı rol tabanlı Access Control (RBAC) ile güvenli hale getirebilirsiniz. Erişimi, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için [bilmelidir](https://en.wikipedia.org/wiki/Need_to_know) ve [en az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) güvenlik ilkelerine göre kısıtlamak zorunludur. Bu erişim hakları, belirli bir kapsamdaki gruplara ve uygulamalara uygun RBAC rolü atanarak verilir. Kullanıcılara ayrıcalık atamak için, depolama hesabı katılımcısı gibi [YERLEŞIK RBAC rollerini](../../role-based-access-control/built-in-roles.md)kullanabilirsiniz. [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modelini kullanarak bir depolama hesabı için depolama anahtarlarına erişim, rol tabanlı Access Control (RBAC) aracılığıyla denetlenebilir.
+Depolama hesabınızı rol tabanlı Access Control (RBAC) ile güvenli hale getirebilirsiniz. Erişimi, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için [bilmelidir](https://en.wikipedia.org/wiki/Need_to_know) ve [en az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) güvenlik ilkelerine göre kısıtlamak zorunludur. Bu erişim hakları, belirli bir kapsamdaki gruplara ve uygulamalara uygun RBAC rolü atanarak verilir. Kullanıcılara ayrıcalık atamak için depolama hesabı katılımcısı gibi [Azure yerleşik rollerini](../../role-based-access-control/built-in-roles.md)kullanabilirsiniz. [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modelini kullanarak bir depolama hesabı için depolama anahtarlarına erişim, rol tabanlı Access Control (RBAC) aracılığıyla denetlenebilir.
 
 ### <a name="shared-access-signature"></a>Paylaşılan erişim Imzası
 [Paylaşılan erişim imzası (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. SAS, belirli bir süre ve belirli bir izin kümesi için Depolama hesabınızdaki nesnelere sınırlı bir istemci izinleri vermeyeceğiniz anlamına gelir. Hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan bu sınırlı izinleri verebilirsiniz.

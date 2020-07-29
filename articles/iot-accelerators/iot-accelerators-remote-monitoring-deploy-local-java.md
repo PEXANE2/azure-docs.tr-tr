@@ -3,17 +3,18 @@ title: Uzaktan Izleme çözümünü yerel olarak dağıtma-IntelliJ IDE-Azure | 
 description: Bu nasıl yapılır kılavuzunda, test ve geliştirme için IntelliJ kullanarak uzaktan Izleme çözümü hızlandırıcısının yerel makinenize nasıl dağıtılacağı gösterilmektedir.
 author: v-krghan
 manager: dominicbetts
+ms.custom: devx-track-java
 ms.author: v-krghan
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187220"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319176"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Uzaktan Izleme çözüm Hızlandırıcısını yerel olarak dağıtma-IntelliJ
 
@@ -199,7 +200,7 @@ Hizmetlerin durumuna erişmek için aşağıdaki URL 'Lere gidin:
 
 Stream Analytics işini başlatmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 1. Çözümünüz için oluşturulan **kaynak grubuna** gidin. Kaynak grubunun adı, **Start. cmd** betiğini çalıştırdığınızda çözümünüz için seçtiğiniz addır.
 1. Kaynak listesinden **Stream Analytics işi** seçin.
 1. Stream Analytics iş **genel bakış** sayfasında **Başlat** düğmesini seçin ve ardından işi başlatmak için **Başlat** ' ı seçin.

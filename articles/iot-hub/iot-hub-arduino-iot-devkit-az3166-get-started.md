@@ -8,12 +8,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.custom: mqtt
-ms.openlocfilehash: 63fa7481b96f8a606893b76b66f8c414a54cdb82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- mqtt
+- 'Role: Cloud Development'
+ms.openlocfilehash: c057944e2c6c511eee20007cc01e2222b38cce1b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714823"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319227"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 'i Azure 'a bağlama IoT Hub
 
@@ -32,7 +35,7 @@ Henüz bir DevKit yok mu? [Devkit simülatörünü](https://azure-samples.github
 
 [Kod örnekleri galerisindeki](https://docs.microsoft.com/samples/browse/?term=mxchip)tüm devkit öğreticileri için kaynak kodu bulabilirsiniz.
 
-## <a name="what-you-need"></a>Ne gerekiyor
+## <a name="what-you-need"></a>Gerekenler
 
 * Mikro USB kablosuyla bir Mxyongaıot DevKit panosu. [Hemen alın](https://aka.ms/iot-devkit-purchase).
 * Windows 10, macOS 10.10 + veya Ubuntu 18.04 + çalıştıran bir bilgisayar.
@@ -51,9 +54,9 @@ Aşağıdaki donanımı bilgisayarınıza bağlayın:
 
 DevKit 'i bilgisayarınıza bağlamak için şu adımları izleyin:
 
-1. USB sonlandırnu bilgisayarınıza bağlayın.
+1. USB ucunu bilgisayarınıza bağlayın.
 
-2. Mikro USB sonunu DevKit 'e bağlayın.
+2. Mikro USB ucunu DevKit’e bağlayın.
 
 3. Güç için yeşil ışığı bağlantıyı onaylar.
 
@@ -98,7 +101,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
     ```
 
-    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
+    Aşağıdakine benzeyen cihaz bağlantı dizenizi not alın:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -124,7 +127,7 @@ DevKit, IoT Hub 'ınızdaki cihaza özgü bir uç noktaya bağlanır ve sıcakl�
 
     ![AP modunu ayarla](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/set-ap-mode.gif)
 
-1. Önceki adımda gösterildiği IoT DevKit SSID 'ye bağlanmak için farklı bir Wi-Fi etkin cihazda (bilgisayar veya cep telefonu) bir Web tarayıcısı kullanın. Parola isterse, boş bırakın.
+1. Önceki adımda gösterilen IoT DevKit SSID’ye bağlanmak için farklı bir Wi-Fi etkin cihazda (bilgisayar veya cep telefonu) bir web tarayıcısı kullanın. Parola isterse, boş bırakın.
 
     ![Bağlantı SSID 'SI](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/connect-ssid.png)
 
@@ -178,7 +181,7 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
     Veya bu URL 'YI kopyalayıp bir tarayıcı penceresine yapıştırabilirsiniz:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
-    > Azure IoT araçları uzantı paketi, çeşitli IoT devkit cihazlarında geliştirme ve hata ayıklama için kullanılan [Azure IoT cihaz çalışma ekranı](https://aka.ms/iot-workbench) 'nı içerir. Azure IoT araçları uzantı paketine dahil edilen [azure IoT Hub uzantısı](https://aka.ms/iot-toolkit), Azure IoT Hub 'larını yönetmek ve bunlarla etkileşim kurmak için kullanılır.
+    > Azure IoT araçları uzantı paketi, çeşitli IoT devkit cihazlarında geliştirme ve hata ayıklama için kullanılan [Azure IoT cihaz çalışma ekranı](https://aka.ms/iot-workbench) 'nı içerir. Azure IoT Tools uzantısıyla sunulan [Azure IoT Hub uzantısı](https://aka.ms/iot-toolkit), Azure IoT Hubs’ı yönetip bunlarla etkileşim kurmak için kullanılır.
 
 5. Arduino ayarları ile VS Code yapılandırın.
 
@@ -186,7 +189,7 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
 
     ![Azure IoT araçları 'nı yükler](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 
-    Platformunuza bağlı olarak Arduino 'yi yapılandırmak için aşağıdaki satırları ekleyin: 
+    Platformunuza bağlı olarak Arduino’yu yapılandırmak için aşağıdaki satırları ekleyin: 
 
     * **Windows**:
 
@@ -195,7 +198,7 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-    * **MacOS**:
+    * **macOS**:
 
         ```json
         "arduino.path": "/Applications",
@@ -204,7 +207,7 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
 
     * **Ubuntu**:
 
-        Aşağıdaki **{UserName}** yer tutucusunu Kullanıcı adınızla değiştirin.
+        Aşağıdaki **{username}** yer tutucusunu kullanıcı adınızla değiştirin.
 
         ```json
         "arduino.path": "/home/{username}/Downloads/arduino-1.8.8",
@@ -217,11 +220,11 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
 
 ### <a name="install-st-link-drivers"></a>ST-Link sürücülerini yükler
 
-[St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) , IoT devkit 'in geliştirme makineniz ile iletişim kurmak IÇIN kullandığı USB arabirimidir. Derlenen Cihaz kodunu DevKit 'e Flash için Windows 'a yüklemeniz gerekir. Cihaza makineye erişim sağlamak için işletim sistemine özgü adımları izleyin.
+[St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) , IoT devkit 'in geliştirme makineniz ile iletişim kurmak IÇIN kullandığı USB arabirimidir. Derlenen cihaz kodunu DevKit’e flaş yazma ile yüklemek için Windows’a yüklemeniz gerekir. Makinenin cihazınıza erişmesine izin vermek için işletme sistemine özgü adımları izleyin.
 
 * **Windows**: [stmikro elektronık Web sitesinden](https://www.st.com/en/development-tools/stsw-link009.html)USB sürücü indirin ve yükleyin.
 * **MacOS**: MacOS için sürücü gerekmez.
-* **Ubuntu**: terminalde komutları çalıştırın ve grup değişikliğinin etkili olması için oturumu açın ve oturum açın:
+* **Ubuntu**: Komutları terminalde çalıştırın ve grup değişikliğinin etkili olması için oturumunuzu kapatıp açın:
 
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
@@ -286,7 +289,7 @@ Azure portal Azure IoT Hub ve cihaz sağlamak yerine, bunu geliştirme ortamınd
 
     ![Sağlanan IoT cihazını seçin](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-device.png)
 
-1. Artık Azure IoT Hub sağlanmış ve cihaz bu cihazda oluşturulmuş. Ayrıca, IoT DevKit 'i daha sonra yapılandırmak için cihaz bağlantı dizesi VS Code kaydedilir.
+1. Artık sağlanmış bir Azure IoT Hub’ınız ve içinde oluşturulmuş bir cihazınız var. Ayrıca, IoT DevKit 'i daha sonra yapılandırmak için cihaz bağlantı dizesi VS Code kaydedilir.
 
     ![Sağlama tamamlandı](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision-done.png)
 

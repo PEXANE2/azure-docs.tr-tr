@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565904"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371422"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 
@@ -123,7 +123,7 @@ Yineleme eklerken sorgu işleme yukarı gidebilse de, hizmetinize çoğaltmalar 
 
 Çoğaltmalar eklemek daha yaygındır, ancak depolama sınırlı olduğunda daha fazla kapasite sağlamak için bölümler ekleyebilirsiniz. Hizmeti sağladığınız katman bölümlerin eklenip eklenemeyeceğini belirler. Temel katman bir bölümde kilitlidir. Standart katmanlar ve yukarıdaki ek bölümler desteklenir.
 
-Bölümler 12 katlarına eklenir (özellikle, 1, 2, 3, 4, 6 veya 12). Bu bir parça yapıtı. Hepsi 1 bölümde depolanabilen veya eşit olarak 2, 3, 4, 6 veya 12 bölüme (bölüm başına bir parça) bölünebilen 12 parçalı bir dizin oluşturulur.
+Bölümler 12 ' nin (özellikle, 1, 2, 3, 4, 6 veya 12) dallarında eklenir. Bu bir parça yapıtı. Hepsi 1 bölümde depolanabilen veya eşit olarak 2, 3, 4, 6 veya 12 bölüme (bölüm başına bir parça) bölünebilen 12 parçalı bir dizin oluşturulur.
 
 ### <a name="remove-replicas"></a>Çoğaltmaları kaldır
 

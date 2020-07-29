@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089337"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370283"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>SYNAPSE Analytics için Azure Güvenlik temeli
 
@@ -314,7 +314,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 Azure SQL 'i ilk kez dağıttığınızda, bu oturum açma için yönetici oturumu ve ilişkili bir parola belirtirsiniz. Bu yönetim hesabına Sunucu Yöneticisi adı verilir. Bir veritabanının yönetici hesaplarını, Azure portal açıp sunucunuzun veya yönetilen örneğinizin Özellikler sekmesine giderek belirleyebilirsiniz. Ayrıca, tam yönetim izinleriyle bir Azure AD yönetici hesabı da yapılandırabilirsiniz, bu, Azure Active Directory kimlik doğrulamasını etkinleştirmek istiyorsanız gereklidir.
 
-Yönetim işlemleri için, açıkça atanması gereken yerleşik Azure rol tabanlı erişim denetimi (Azure RBAC) rollerini kullanın. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
+Yönetim işlemleri için, açıkça atanması gereken Azure yerleşik rollerini kullanın. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
 
 * [SQL veritabanı için kimlik doğrulaması](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
 
@@ -328,7 +328,7 @@ Yönetim işlemleri için, açıkça atanması gereken yerleşik Azure rol taban
 
 * [Azure SQL 'de var olan oturum açma işlemlerini ve yönetici hesaplarını yönetme](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Azure RBAC yerleşik rolleri](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Yerleşik Azure rolleri](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1026,7 +1026,7 @@ App Service, Data Lake Storage, BLOB depolama, Azure SQL Server vb. gibi işlem 
 
 Veritabanı şifreleme anahtarınızı şifrelemek için müşteri tarafından yönetilen bir anahtar kullanıyorsanız, anahtarınızın yedeklendiğinden emin olun.
 
-* [Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [Azure Key Vault anahtarlarını yedekleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564419"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319057"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme
 
@@ -59,7 +59,7 @@ Yerleşik yetenekler kullanılarak derlenen bir [beceri](cognitive-search-defini
 
 Özel yetenekler, formları tanıma gibi daha karmaşık senaryoları veya özel [Beceri Web arabirimine](cognitive-search-custom-skill-interface.md)sağladığınız ve kaydırabileceğiniz bir modeli kullanarak özel varlık algılamayı destekleyebilir. Özel yeteneklerin çeşitli örnekleri, [form tanıyıcı](/azure/cognitive-services/form-recognizer/overview), [Bing varlık arama API'si](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)tümleştirmesi ve [özel varlık tanıma](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)içerir.
 
-<a name="enrichment-steps">Bir zenginleştirme ardışık düzeninde # # adım</a>
+## <a name="steps-in-an-enrichment-pipeline"></a>Bir zenginleştirme ardışık düzeninde bulunan adımlar<a name="enrichment-steps"></a>
 
 Bir zenginleştirme işlem hattı, [*Dizin oluşturucular*](search-indexer-overview.md)temel alır. Dizin oluşturucular, belge çözme için dizin ve veri kaynağınız arasındaki alan eşlemelerine göre bir dizini doldurur. Artık, Özellikleri Dizin oluşturucular, kesme ve zenginleştirmenin tanımladığınız beceri (ler) e göre belgeleri. Dizin oluşturulduktan sonra, [Azure bilişsel arama tarafından desteklenen tüm sorgu türleri](search-query-overview.md)aracılığıyla arama istekleri aracılığıyla içeriğe erişebilirsiniz.  Dizin oluşturuculardan yeni olduğunuzda, bu bölüm adımlarda size yol gösterir.
 

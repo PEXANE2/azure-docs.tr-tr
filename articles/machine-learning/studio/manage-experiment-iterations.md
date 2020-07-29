@@ -1,6 +1,5 @@
 ---
-title: Denemeleri yeniden çalıştırma & görüntüle
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): görüntüleme & yeniden çalıştırma denemeleri-Azure'
 description: Azure Machine Learning Studio (klasik) ' de deneme çalıştırmalarını yönetin. Tüm denemeleri çalıştırmalarını dilediğiniz zaman gözden geçirebilir, geri yükleyebilir ve son olarak önceki varsayımları onaylayın ya da iyileştirebilirsiniz.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 0e6d4312850dc16b76e248c9bbceacd8b5311d5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc7858010ea43f676a43f8bf16e228c8248805bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687404"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318530"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio deneme çalışmalarını yönetme (klasik)
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Tahmine dayalı analiz modelinin geliştirilmesi yinelemeli bir işlemdir. denemenizin çeşitli işlevlerini ve parametrelerini değiştirirken sonuçlar, eğitilen, etkin bir modeliniz olduğundan memnun kalana kadar yakınlardır. Bu işleme yönelik anahtar, deneme parametrelerinizin ve yapılandırmalarınızın çeşitli yinelemelerini izliyor.
 

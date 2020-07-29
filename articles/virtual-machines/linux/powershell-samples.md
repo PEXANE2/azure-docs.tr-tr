@@ -3,22 +3,22 @@ title: Azure sanal makine PowerShell örnekleri
 description: Azure sanal makine PowerShell örnekleri
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: a9d68527a44d78a702e00d3b6ce910c2e9473dac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 23dd47df33ef6571fefbf1c1964324bea5ca4488
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527022"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369943"
 ---
 # <a name="azure-virtual-machine-powershell-samples-for-creating-and-managing-linux-vms"></a>Linux VM 'Leri oluşturmak ve yönetmek için Azure sanal makine PowerShell örnekleri
 
 Aşağıdaki tabloda, Linux sanal makineleri oluşturup yöneten PowerShell betikleri örneklerinin bağlantıları yer almaktadır.
 
-| Komut Dosyası | Description |
+| Komut Dosyası | Açıklama |
 |---|---|
 |**Sanal makineler oluşturma**||
 | [Tam olarak yapılandırılmış bir sanal makine oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir kaynak grubu, sanal makine ve tüm ilgili kaynakları oluşturur.|

@@ -5,21 +5,22 @@ description: Azure Machine Learning 'de olay odaklı uygulamalar, süreçler vey
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135960"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319499"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Uygulama, işlem veya CI/CD iş akışlarını Azure Machine Learning olaylara göre tetikleyin (Önizleme)
 
-Bu makalede, [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)tarafından bazı koşullar algılandığında hata bildirimi e-POSTALARı veya ml işlem hattı çalıştırmaları gibi Azure Machine Learning olaylara dayalı olay odaklı uygulamaları, süreçler veya CI/CD iş akışlarını ayarlamayı öğreneceksiniz. 
+Bu makalede, [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)tarafından bazı koşullar algılandığında hata bildirimi e-POSTALARı veya ml işlem hattı çalıştırmaları gibi Azure Machine Learning olaylara dayalı olay odaklı uygulamaları, süreçler veya CI/CD iş akışlarını ayarlamayı öğreneceksiniz.
 
 Azure Machine Learning, model eğitimi, model dağıtımı ve izleme dahil olmak üzere makine öğrenimi işlemi yaşam döngüsünün tamamını yönetir. Eğitim çalışmalarının tamamlanması, modellerin kaydı ve dağıtımı ve modern sunucusuz mimariler kullanılarak veri kayması algılaması gibi Azure Machine Learning olaylara yanıt vermek için Event Grid kullanabilirsiniz. Daha sonra çalışma durumu değişikliği, çalıştırma tamamlama, model kaydı, model dağıtımı ve bir çalışma alanı içinde veri yük algılama gibi olaylara abone olabilir ve bunları kullanabilirsiniz.
 
@@ -47,7 +48,7 @@ Olay kaynakları ve olay işleyicileri hakkında daha fazla bilgi için bkz. [Ev
 
 Azure Machine Learning, çeşitli makine öğrenimi yaşam noktalarında Olaylar sağlar: 
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Machine Learning deneme çalıştırması tamamlandığında tetiklenir |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Bir makine öğrenimi modeli çalışma alanına kaydedildiğinde tetiklenir |

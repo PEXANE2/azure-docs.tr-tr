@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499333"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318989"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Aracısı (eski adıyla Durum İzleyicisi v2): ayrıntılı yönergeler
 
@@ -231,17 +231,18 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 
  Telemetrinizi görüntüleyin:
 
-- Performansı ve kullanımı izlemek için [ölçümleri](../../azure-monitor/platform/metrics-charts.md) bulun.
-- Sorunları tanılamak için [olayları ve günlükleri arayın](../../azure-monitor/app/diagnostic-search.md) .
+- Performansı ve kullanımı izlemek için [ölçümleri](../platform/metrics-charts.md) bulun.
+- Sorunları tanılamak için [olayları ve günlükleri arayın](./diagnostic-search.md) .
 - Daha gelişmiş sorgular için [analiz kullanın](../log-query/log-query-overview.md) .
-- [Panolar oluşturun](../../azure-monitor/app/overview-dashboard.md).
+- [Panolar oluşturun](./overview-dashboard.md).
 
  Daha fazla telemetri ekleyin:
 
 - Sitenizin canlı kalması için [web testleri oluşturun](monitor-web-app-availability.md).
-- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
-- İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
+- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](./javascript.md) .
+- İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](./asp-net.md) .
 
 Application Insights aracısıyla daha fazlasını yapın:
 
 - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 78cdf1798d9176c9d3c7b3705a11dccde5e47e67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077113"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318904"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Izleyici 'de günlük alımı için müşterinin sahip olduğu depolama hesapları
 
@@ -54,7 +54,7 @@ Bağlantıların oluşturulması ve kaldırılması için kullanılabilecek tek 
 ## <a name="command-line-and-rest-api"></a>Komut satırı ve REST API
 
 ### <a name="command-line"></a>Komut satırı
-Bağlı depolama hesapları oluşturmak ve yönetmek için [az Monitor Log Analytics Workspace Linked-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)' ı kullanın. Bu komut, depolama hesaplarının bir çalışma alanından bağlanıp bağlantısını kesebilir ve bağlı depolama hesaplarını listeleyebilir.
+Bağlı depolama hesapları oluşturmak ve yönetmek için [az Monitor Log Analytics Workspace Linked-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage)' ı kullanın. Bu komut, depolama hesaplarının bir çalışma alanından bağlanıp bağlantısını kesebilir ve bağlı depolama hesaplarını listeleyebilir.
 
 ### <a name="request-and-cli-values"></a>İstek ve CLı değerleri
 
@@ -236,3 +236,4 @@ Depolama hesapları, depolanan verilerin hacmine, depolama türlerine ve artıkl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Özel bir bağlantı ayarlama hakkında daha fazla bilgi için bkz. [Azure özel bağlantı kullanarak ağları güvenli bir şekilde Azure izleyici 'ye bağlama](private-link-security.md)
+

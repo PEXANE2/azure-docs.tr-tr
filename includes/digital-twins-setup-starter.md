@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 3f19674c0e25ebf5cddc2dfb45580a15d04fad46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcc616dd8d30bfadb751df9ba24d71d72675428a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099886"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371472"
 ---
 >[!NOTE]
 >Bu işlemlerin, Azure aboneliğinde *sahip* rolü olan bir kullanıcı tarafından tamamlanması amaçlanmıştır. Bu yükseltilmiş izin olmadan bazı parçalar tamamlanabilir, ancak kullanılabilir bir örneği tamamen ayarlamak için sahibin birlikte çalışması gerekecektir. [*Önkoşul: gerekli izinler*](#prerequisites-permission-requirements) bölümünde bunun hakkında daha fazla bilgi görüntüleyin.
@@ -38,6 +38,6 @@ Sahibiyseniz, `roleDefinitionName` çıkışdaki değer *sahipdir*:
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/owner-role.png" alt-text="Az role atama listesi komutunun çıkışını gösteren Cloud Shell pencere":::
 
-Değerin *katkıda* bulunduğunu veya *sahip*dışında bir şeyi fark ederseniz, abonelik sahibine başvurarak aşağıdaki yollarla devam edebilirsiniz:
-* Bu makaledeki adımları gerçekleştirmek için sahip iste
-* Size aboneliğin sahibine yönelik olarak sahip olmasını isteyin ve böylece kendinize devam etmek için izinleriniz olur. Bunun uygun olup olmadığı, kuruluşunuza ve onun içindeki rolünüze bağlıdır.
+Değerin *katkıda* bulunduğunu veya *sahip*dışında bir şeyi fark ederseniz aşağıdaki yollarla devam edebilirsiniz:
+* Sizin adınıza bu makaledeki adımları tamamlamaya yönelik abonelik sahibine ve sahibine yönelik isteğe başvurun
+* Abonelik sahibine veya Kullanıcı erişimi yönetici rolüne sahip birine abone olur ve devam etmek için gereken izinlere sahip olacak şekilde aboneliğinizi aboneliğe sahip olarak yükseltmenizi isteyin. Bunun uygun olup olmadığı, kuruluşunuza ve onun içindeki rolünüze bağlıdır.

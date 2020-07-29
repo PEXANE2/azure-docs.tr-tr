@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 750ad7b10969ef5f83e0b5058e350066d3f97351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062605"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319312"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -42,13 +42,17 @@ Artık verilerinizi bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kas
 
 [Azure Backup için](./private-endpoints.md)özel uç noktalar hakkında daha fazla bilgi edinin.
 
-## <a name="encryption-of-data-in-transit-and-at-rest"></a>Yoldaki ve bekleyen verilerin şifrelenmesi
+## <a name="encryption-of-data"></a>Verilerin şifrelenmesi
 
-Şifreleme, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Azure 'da, Azure depolama ile kasa arasındaki yoldaki veriler HTTPS tarafından korunur. Bu veriler, Azure omurga ağında kalır.
+Şifreleme, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Veri şifreleme Azure Backup birçok aşamada oluşur:
 
-* Yedekleme verileri Microsoft tarafından yönetilen anahtarlar kullanılarak otomatik olarak şifrelenir. Ayrıca, kurtarma hizmetleri kasasındaki yedeklenen yönetilen disk VM 'lerinizi, Azure Key Vault depolanan [müşteri tarafından yönetilen anahtarları](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) kullanarak şifreleyebilirsiniz. Bu şifrelemeyi etkinleştirmek için herhangi bir açık işlem yapmanız gerekmez. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
+* Azure 'da, Azure depolama ile kasa arasındaki yoldaki veriler [https tarafından korunur](backup-support-matrix.md#network-traffic-to-azure). Bu veriler, Azure omurga ağında kalır.
 
-* Azure Backup, işletim sistemi/veri disklerinin Azure disk şifrelemesi (ADE) ile şifrelenmiş olduğu Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. [Şifrelenmiş Azure VM 'leri ve Azure Backup hakkında daha fazla bilgi edinin](./backup-azure-vms-encryption.md).
+* Yedekleme verileri [Microsoft tarafından yönetilen anahtarlar](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)kullanılarak otomatik olarak şifrelenir ve bunu etkinleştirmek için herhangi bir açık işlem yapmanız gerekmez. Ayrıca, Azure Key Vault depolanan [müşteri tarafından yönetilen anahtarları](encryption-at-rest-with-cmk.md) kullanarak yedeklenen verilerinizi şifreleyebilirsiniz. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
+
+* Azure Backup, işletim sistemi/veri disklerinin [Azure disk şifrelemesi (ade)](backup-encryption.md#backup-of-vms-encrypted-using-ade) ve [CMK şifreli disklere sahip VM](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys)'lerle şifrelendiğinden Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. Daha fazla bilgi için, [şifrelenmiş Azure VM 'leri ve Azure Backup hakkında daha fazla bilgi edinin](./backup-azure-vms-encryption.md).
+
+* MARS aracısına sahip şirket içi sunuculardan veri yedeklendiğinde, veriler Azure Backup yüklenmeden önce bir parola ile şifrelenir ve yalnızca Azure Backup indirildikten sonra şifresi çözülür. [Karma yedeklemeleri korumaya yardımcı olmak için güvenlik özellikleri](#security-features-to-help-protect-hybrid-backups)hakkında daha fazla bilgi edinin.
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>İstemeden silme işleminden yedekleme verilerinin korunması
 

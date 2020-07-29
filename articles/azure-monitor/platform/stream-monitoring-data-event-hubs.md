@@ -7,16 +7,16 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: 4299c647a8fb454d5096eaa0444d5f4f1d2240e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081466"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318887"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>Azure izleme verilerini bir olay hub 'ına veya dış ortağa akış
 
-Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulamalar ve hizmetler için eksiksiz bir tam yığın izleme çözümü sağlar. Verileri analiz etmek ve farklı izleme senaryolarında kullanmak için Azure Izleyici kullanmanın yanı sıra, bu dosyayı ortamınızdaki diğer izleme araçlarına göndermeniz gerekebilir. Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem [Azure Event Hubs](/azure/event-hubs/)kullanmaktır. Bu makalede bunun nasıl yapılacağı hakkında kısa bir açıklama sunulmaktadır ve sonra veri gönderebileceğiniz bazı iş ortakları listelenir. Bazıları Azure Izleyici ile özel tümleştirmeye sahiptir ve Azure 'da barındırılabilir.  
+Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulamalar ve hizmetler için eksiksiz bir tam yığın izleme çözümü sağlar. Verileri analiz etmek ve farklı izleme senaryolarında kullanmak için Azure Izleyici kullanmanın yanı sıra, bu dosyayı ortamınızdaki diğer izleme araçlarına göndermeniz gerekebilir. Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem [Azure Event Hubs](../../event-hubs/index.yml)kullanmaktır. Bu makalede bunun nasıl yapılacağı hakkında kısa bir açıklama sunulmaktadır ve sonra veri gönderebileceğiniz bazı iş ortakları listelenir. Bazıları Azure Izleyici ile özel tümleştirmeye sahiptir ve Azure 'da barındırılabilir.  
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
@@ -32,13 +32,13 @@ Herhangi bir veri kaynağı için akışı yapılandırmadan önce, [bir Event H
 ## <a name="monitoring-data-available"></a>İzleme verileri kullanılabilir
 [Azure izleyici için izleme verileri kaynakları](data-sources.md) , Azure uygulamaları için farklı veri katmanlarını ve her biri için kullanılabilen izleme verileri türlerini açıklar. Aşağıdaki tabloda bu katmanların her biri ve bu verilerin bir olay hub 'ına nasıl akışa alınacağını gösteren bir açıklama listelenmektedir. Daha ayrıntılı bilgi için sağlanan bağlantıları izleyin.
 
-| Katman | Veri | Yöntem |
+| Katman | Veriler | Yöntem |
 |:---|:---|:---|
 | [Azure kiracısı](data-sources.md#azure-tenant) | Denetim günlüklerini Azure Active Directory | AAD kiracınızda kiracı tanılama ayarını yapılandırın. Ayrıntılar için bkz. [öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) . |
 | [Azure aboneliği](data-sources.md#azure-subscription) | Azure Etkinlik Günlüğü | Etkinlik günlüğü olaylarını Event Hubs dışarı aktarmak için bir günlük profili oluşturun.  Ayrıntılar için bkz. Azure [Platform günlüklerini Azure 'Da akışa almak Event Hubs](./resource-logs.md#send-to-azure-event-hubs) . |
 | [Azure kaynakları](data-sources.md#azure-resources) | Platform ölçümleri<br> Kaynak günlükleri |Her iki tür veri, bir kaynak tanılama ayarı kullanılarak bir olay hub 'ına gönderilir. Ayrıntılar için bkz. [Azure Kaynak günlüklerini bir olay hub 'ına akış](./resource-logs.md#send-to-azure-event-hubs) . |
 | [İşletim sistemi (konuk)](data-sources.md#operating-system-guest) | Azure sanal makineleri | Azure 'daki Windows ve Linux sanal makinelerine [Azure tanılama uzantısını](diagnostics-extension-overview.md) yükler. Windows VM 'Lerle ilgili ayrıntılar için [Event Hubs kullanarak bkz. Azure Tanılama verileri etkin yolda](diagnostics-extension-stream-event-hubs.md) ve Linux VM 'lerinde Ayrıntılar için [ölçümleri ve günlükleri Izlemek üzere Linux Tanılama uzantısı 'nı kullanın](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) . |
-| [Uygulama kodu](data-sources.md#application-code) | Application Insights | Application Insights, Olay Hub 'larına veri akışı için doğrudan bir yöntem sağlamaz. Application Insights verilerinin sürekli olarak bir depolama hesabına [dışarı aktarılmasını ayarlayabilir](../../azure-monitor/app/export-telemetry.md) ve ardından mantıksal uygulama [ile el ile akışta](#manual-streaming-with-logic-app)açıklanan şekilde verileri bir olay hub 'ına göndermek için bir mantıksal uygulama kullanabilirsiniz. |
+| [Uygulama kodu](data-sources.md#application-code) | Application Insights | Application Insights, Olay Hub 'larına veri akışı için doğrudan bir yöntem sağlamaz. Application Insights verilerinin sürekli olarak bir depolama hesabına [dışarı aktarılmasını ayarlayabilir](../app/export-telemetry.md) ve ardından mantıksal uygulama [ile el ile akışta](#manual-streaming-with-logic-app)açıklanan şekilde verileri bir olay hub 'ına göndermek için bir mantıksal uygulama kullanabilirsiniz. |
 
 ## <a name="manual-streaming-with-logic-app"></a>Mantıksal uygulamayla el ile akış
 Bir olay hub 'ına doğrudan akış yapamazsınız, Azure depolama 'ya yazabilir ve ardından [BLOB depolamadan veri alıp](../../connectors/connectors-create-api-azureblobstorage.md#add-action) [Olay Hub 'ına ileti olarak](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)gönderen bir zaman tetiklenen mantıksal uygulama kullanabilirsiniz. 
@@ -62,5 +62,6 @@ Diğer iş ortakları da kullanılabilir olabilir. Tüm Azure Izleyici iş ortak
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Etkinlik günlüğünü bir depolama hesabına arşivleme](./activity-log.md#legacy-collection-methods)
-* [Azure etkinlik günlüğü 'ne genel bakış konusunu okuyun](../../azure-monitor/platform/platform-logs-overview.md)
-* [Etkinlik günlüğü olayına göre uyarı ayarlama](../../azure-monitor/platform/alerts-log-webhook.md)
+* [Azure etkinlik günlüğü 'ne genel bakış konusunu okuyun](./platform-logs-overview.md)
+* [Etkinlik günlüğü olayına göre uyarı ayarlama](./alerts-log-webhook.md)
+
