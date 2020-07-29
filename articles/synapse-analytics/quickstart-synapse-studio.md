@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 8b35b281f6a70d5485004dc61563271132734a87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276065"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374159"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanma (Önizleme)
 
@@ -49,7 +49,7 @@ Dosyalarınızı düzenlemek için araç çubuğundaki bağlantıları kullanara
 ## <a name="query-files-on-storage-account"></a>Depolama hesabındaki dosyaları sorgula
 
 > [!IMPORTANT]
-> `Storage Blob Reader`Dosyaları sorgulayabilmeniz için temeldeki depolamada rolün bir üyesi olmanız gerekir. [Azure depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC izinleri atama](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)hakkında bilgi edinin.
+> `Storage Blob Reader`Dosyaları sorgulayabilmeniz için temeldeki depolamada rolün bir üyesi olmanız gerekir. [Azure depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC izinleri atama](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)hakkında bilgi edinin.
 
 1. Bazı dosyaları karşıya yükleyin `PARQUET` .
 2. Bir veya daha fazla dosya seçin ve ardından dosyaların içeriğini görmek için yeni bir SQL betiği veya Spark Not defteri oluşturun. Bir not defteri oluşturmak istiyorsanız [SYNAPSE çalışma alanlarında bir Apache Spark havuzu](quickstart-create-apache-spark-pool-studio.md)oluşturmanız gerekir.
@@ -64,7 +64,7 @@ Dosyalarınızı düzenlemek için araç çubuğundaki bağlantıları kullanara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC Izinleri ATAYARAK](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) dosyaları sorgulamak için Azure AD kullanıcıları 'nı etkinleştirin
+- Azure [depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC Izinleri ATAYARAK](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role) dosyaları sorgulamak için Azure AD kullanıcıları 'nı etkinleştirin
 - [Azure depolama 'da Isteğe bağlı SQL kullanarak dosyaları sorgulama](sql/on-demand-workspace-overview.md)
 - [Azure portalını kullanarak Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool-portal.md)
 - [Azure depolama 'da depolanan dosyalar üzerinde Power BI raporu oluşturma](sql/tutorial-connect-power-bi-desktop.md)

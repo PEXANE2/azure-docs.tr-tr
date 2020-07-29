@@ -3,16 +3,16 @@ title: Kavram kanıtı sunma-Azure DevTest Labs | Microsoft Docs
 description: Azure DevTest Labs bir kurumsal ortama başarıyla dahil edilmesi için bir kavram kanıtı sunma hakkında bilgi edinin.
 ms.topic: article
 ms.date: 06/2/2020
-ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481366"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288022"
 ---
 # <a name="deliver-a-proof-of-concept"></a>Kavram kanıtı sunun 
 
-Azure DevTest Labs yönelik temel senaryolarından biri, bulutta geliştirme ve test ortamlarını etkinleştirir. Örnekler arasında şunlar yer almaktadır:
+Azure DevTest Labs yönelik temel senaryolarından biri, bulutta geliştirme ve test ortamlarını etkinleştirir. Örneklere şunlar dahildir:
 
 * Bulutta geliştirici masaüstleri oluşturma.
 * Ortamları test için yapılandırma.
@@ -33,7 +33,7 @@ Kavram kanıtı sunmaya başlamak için. Azure ve DevTest Labs hakkında bilgi e
 * [DevTest Labs kurumsal belgeleri](devtest-lab-guidance-prescriptive-adoption.md)
 * [Azure ağa giriş](../virtual-network/virtual-networks-overview.md)
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 DevTest Labs ile pilot veya kavram kanıtı 'nı başarılı bir şekilde tamamlamaya yönelik birkaç önkoşul vardır: 
 
@@ -114,8 +114,8 @@ Kavram kanıtı oluştururken öncelikle sonuçlar üzerine odaklanıyoruz (elde
 
 Bir tam DevTest Labs çözümünü bırakmadan önce bazı önemli planlama ve tasarım kararları almanız gerekir. Kavram kanıtı üzerinde çalışma deneyimi, bu kararları almanıza yardımcı olabilir. Daha ayrıntılı bilgiler şunlardır: 
 
-* **Abonelik topolojisi**: Azure 'daki kaynaklara yönelik kurumsal düzeyde gereksinimler, [tek bir abonelik içindeki kullanılabilir kotaların](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)ötesine daha fazla genişletebilir. Bu, ilk abonelik limitlerini artırmak için birden çok Azure aboneliğine ve/veya hizmet isteğine sahiptir. Kaynakları abonelikler arasında nasıl dağıtacağınıza karar vermeniz önemlidir. Bir değerli kaynak, daha sonra kaynakları başka bir aboneliğe taşımak zor olduğundan, [abonelik karar kılavuzudur](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/) . Örneğin, bir laboratuvar oluşturulduktan sonra başka bir aboneliğe taşınamaz.  
-* **Ağ topolojisi**: DevTest Labs tarafından otomatik olarak oluşturulan [varsayılan ağ altyapısı](../app-service/networking-features.md) , kurumsal kullanıcıların gereksinimlerini ve kısıtlamalarını karşılamak için yeterli olmayabilir. [Azure ExpressRoute 'a bağlı sanal ağlar](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/), abonelikler arasında bağlantı için [hub ve bağlı bileşen](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) , hatta yalnızca şirket içi bağlantıyı sağlamak için de [zorlanacak yönlendirme](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) hakkında bilgi almak yaygındır. DevTest Labs, laboratuvarda yeni sanal makineler oluştururken kullanımını etkinleştirmek için mevcut sanal ağların laboratuvara bağlanmasını sağlar. 
+* **Abonelik topolojisi**: Azure 'daki kaynaklara yönelik kurumsal düzeyde gereksinimler, [tek bir abonelik içindeki kullanılabilir kotaların](../azure-resource-manager/management/azure-subscription-service-limits.md)ötesine daha fazla genişletebilir. Bu, ilk abonelik limitlerini artırmak için birden çok Azure aboneliğine ve/veya hizmet isteğine sahiptir. Kaynakları abonelikler arasında nasıl dağıtacağınıza karar vermeniz önemlidir. Bir değerli kaynak, daha sonra kaynakları başka bir aboneliğe taşımak zor olduğundan, [abonelik karar kılavuzudur](/azure/architecture/cloud-adoption/decision-guides/subscriptions/) . Örneğin, bir laboratuvar oluşturulduktan sonra başka bir aboneliğe taşınamaz.  
+* **Ağ topolojisi**: DevTest Labs tarafından otomatik olarak oluşturulan [varsayılan ağ altyapısı](../app-service/networking-features.md) , kurumsal kullanıcıların gereksinimlerini ve kısıtlamalarını karşılamak için yeterli olmayabilir. [Azure ExpressRoute 'a bağlı sanal ağlar](/azure/architecture/reference-architectures/hybrid-networking/), abonelikler arasında bağlantı için [hub ve bağlı bileşen](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) , hatta yalnızca şirket içi bağlantıyı sağlamak için de [zorlanacak yönlendirme](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) hakkında bilgi almak yaygındır. DevTest Labs, laboratuvarda yeni sanal makineler oluştururken kullanımını etkinleştirmek için mevcut sanal ağların laboratuvara bağlanmasını sağlar. 
 * **Sanal makinelere uzaktan erişim**: DevTest Labs 'de bulunan sanal makinelere uzaktan erişim için birçok seçenek vardır. En kolay genel IP 'Leri veya paylaşılan genel IP 'Leri kullanmaktır. Bunlar [, laboratuvarda kullanılabilir olan ayarlardır](devtest-lab-shared-ip.md). Bu seçenekler yeterli değilse, uzaktan erişim ağ geçidi kullanmak da bir seçenektir. Bu seçenek [DevTest Labs Enterprise Reference mimarisinde](devtest-lab-reference-architecture.md) gösterilir ve [DevTest Labs Uzak Masaüstü Ağ geçidi belgelerinde](configure-lab-remote-desktop-gateway.md)daha ayrıntılı olarak açıklanmıştır. Kuruluşlar, laboratuvarlarını şirket içi ağına bağlamak için ExpressRoute veya siteden siteye VPN de kullanabilir. Bu seçenek, internet 'te hiçbir etkilenmesiz özel IP adreslerini temel alarak sanal makinelere doğrudan uzak masaüstü veya SSH bağlantıları sağlar. 
 * **Izinleri işleme**: DevTest Labs 'de yaygın olarak kullanılan iki anahtar izinleri [Owner ve Lab User](devtest-lab-add-devtest-user.md). Laboratuvardaki her erişim düzeyiyle güvenilir olacak şekilde, DevTest Labs 'nin genel kullanıma sunulmadan önce karar vermeniz önemlidir. Ortak bir model, laboratuvar sahibi olarak (örneğin, ekip lideri) laboratuvar sahibi ve takım üyeleri olarak laboratuar kullanıcıları olarak bütçe sahibidir. Bu model, bütçesinden sorumlu olan kişinin (ekip lideri) ilke ayarlarını ayarlamasını ve ekibi bütçe içinde tutmasını sağlar.  
 

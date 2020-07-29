@@ -7,17 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8124afef1aa12dbf3ec51e10597cb1567fc85551
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2b3d4993406f150b2983d4d820f7d070b5de1e96
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289773"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374662"
 ---
 Java için Bing Video Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Video Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu, ek açıklamalar ve özellikler ile [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)'da bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
@@ -57,7 +58,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
 
 ## <a name="create-a-search-client"></a>Arama İstemcisi Oluşturma
 
-1. API uç `VideoSearchAPIImpl` noktanızı ve `ServiceClientCredentials` sınıfının bir örneğini gerektiren istemciyi uygulayın.
+1. `VideoSearchAPIImpl`API uç noktanızı ve sınıfının bir örneğini gerektiren istemciyi uygulayın `ServiceClientCredentials` .
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -68,9 +69,9 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
     )};
     ```
 
-    Uygulamak `ServiceClientCredentials`için aşağıdaki adımları izleyin:
+    Uygulamak için `ServiceClientCredentials` aşağıdaki adımları izleyin:
 
-    1. parametresi olarak `applyCredentialsFilter()` bir `OkHttpClient.Builder` nesnesi ile işlevi geçersiz kılın. 
+    1. `applyCredentialsFilter()`parametresi olarak bir nesnesi ile işlevi geçersiz kılın `OkHttpClient.Builder` . 
         
         ```java
         //...
@@ -82,7 +83,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         //...
         ```
     
-    2. İçinde `applyCredentialsFilter()`, çağırın `builder.addNetworkInterceptor()`. Yeni `Interceptor` bir nesne oluşturun ve `intercept()` yöntemini bir `Chain` dinleyici nesnesi alacak şekilde geçersiz kılın.
+    2. İçinde `applyCredentialsFilter()` , çağırın `builder.addNetworkInterceptor()` . Yeni bir `Interceptor` nesne oluşturun ve `intercept()` yöntemini bir dinleyici nesnesi alacak şekilde geçersiz kılın `Chain` .
 
         ```java
         //...
@@ -96,7 +97,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         ///...
         ```
 
-    3. `intercept` İşlevi içinde, isteğiniz için değişkenler oluşturun. İsteğinizi `Request.Builder()` derlemek için kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve istek nesnesine dönün `chain.proceed()` .
+    3. İşlevi içinde `intercept` , isteğiniz için değişkenler oluşturun. `Request.Builder()`İsteğinizi derlemek için kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve `chain.proceed()` istek nesnesine dönün.
             
         ```java
         //...
@@ -113,7 +114,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
 
 ## <a name="send-a-search-request-and-receive-the-response"></a>Arama isteği gönderme ve yanıtı alma 
 
-1. Abonelik anahtarınızı bir dize `VideoSearch()` olarak alan adlı bir işlev oluşturun. Daha önce oluşturulan arama istemcisinin örneğini oluşturun.
+1. `VideoSearch()`Abonelik anahtarınızı bir dize olarak alan adlı bir işlev oluşturun. Daha önce oluşturulan arama istemcisinin örneğini oluşturun.
     
     ```java
     public static void VideoSearch(String subscriptionKey){
@@ -121,7 +122,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         //...
     }
     ```
-2. İçinde `VideoSearch()`, arama terimi `SwiftKey` olarak, istemcisini kullanarak bir video arama isteği gönderin. Video Arama API 'SI bir sonuç döndürdüğünden, ilk sonucu alın ve kimliğini, adını ve URL 'sini, döndürülen toplam video sayısı ile birlikte yazdırın. 
+2. İçinde `VideoSearch()` , arama terimi olarak, istemcisini kullanarak bir video arama isteği gönderin `SwiftKey` . Video Arama API 'SI bir sonuç döndürdüğünden, ilk sonucu alın ve kimliğini, adını ve URL 'sini, döndürülen toplam video sayısı ile birlikte yazdırın. 
     
     ```java
     VideosInner videoResults = client.searchs().list("SwiftKey");

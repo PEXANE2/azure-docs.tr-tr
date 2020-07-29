@@ -6,18 +6,28 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c0af92bdec6248a38040f972734764fa1bc10226
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505099"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289102"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makalede, özel görünümleri oluşturma ve düzenlemeyle ilgili görünüm tasarımcısına ve yordamlarına ilişkin bir genel bakış sunulmaktadır.
 
 > [!IMPORTANT]
-> Azure Izleyici 'deki görünümler kullanıma alınıyor ve ek işlevsellik sağlayan [çalışma kitapları](workbooks-overview.md) ile değiştiriliyor. Mevcut görünümlerinizi çalışma kitaplarına dönüştürmeye ilişkin ayrıntılar için bkz. [Azure izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu](view-designer-conversion-overview.md) .
+> Azure Izleyici 'deki görünümler kullanıma alınıyor ve ek işlevsellik sağlayan [çalışma kitapları](workbooks-overview.md) ile değiştiriliyor. Mevcut görünümlerinizi çalışma kitaplarına dönüştürmeye ilişkin ayrıntılar için bkz. [Azure izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu](view-designer-conversion-overview.md) . Önümüzdeki birkaç ay içinde gerçekleştirilecek adımlar için aşağıdaki tabloya bakın.
+> 
+> | Değiştir | Bu anlamı | Beklenen tarih |
+> |:---|:---|:---|
+> | Görünüm Tasarımcısı aracılığıyla oluşturulan yeni görünümlerin oluşturulmasını devre dışı bırakın. | Artık Azure portal yeni özel görünümleri oluşturamayacaksınız ve kaydedemeyeceksiniz.| 2020 Kasım |
+> | Görünüm Tasarımcısı ile mevcut görünümler için düzenleme işlevini devre dışı bırakın. | Artık var olan özel görünümleriniz üzerinde değişiklik yapamayacak ve değişiklikleri kaydedemeyeceksiniz. | 2020 Kasım |
+> | Log Analytics çalışma alanlarına görünümlerin dağıtımını devre dışı bırak | Artık Log Analytics çalışma alanlarına ARM kullanarak özel görünümler dağıtameyeceksiniz. | Mart 2021 |
+> | Görünüm Tasarımcısı artık Azure portal kullanılamıyor | Portal deneyimi artık görünüm tasarımcısını desteklemiyor. | Haziran 2021 |
+> | Çalışma alanı özetinden kaldırılan özel görünümler | Özel görünüm verilerinize artık erişemeyeceksiniz. | Aralık 2021 |
+ 
+
 
 Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
@@ -32,7 +42,7 @@ Görünümler, Azure portal Azure Izleyici **genel bakış** sayfasında görün
 
 Görünüm Tasarımcısı ile oluşturduğunuz görünümler aşağıdaki tabloda açıklanan öğeleri içerir:
 
-| Bölüm | Description |
+| Bölüm | Açıklama |
 |:--- |:--- |
 | Kutucuklar | , Azure Izleyici **genel bakış** sayfasında görüntülenir. Her kutucuk, gösterdiği özel görünümün görsel özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir kutucuk seçersiniz. |
 | Özel görünüm | Bir kutucuk seçtiğinizde gösterilir. Her görünüm bir veya daha fazla görselleştirme bölümü içerir. |
@@ -101,7 +111,7 @@ Düzenleme modunda görünümlerle çalışma seçenekleri aşağıdaki tabloda 
 | İptal      | Değişikliklerinizi atar ve görünümü kapatır. |
 | Görünümü Sil | Görünümü siler. |
 | Dışarı Aktarma      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
-| İçeri Aktarma      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
+| İçeri Aktar      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
 | Kopyalama       | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

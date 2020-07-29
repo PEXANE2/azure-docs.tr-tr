@@ -3,16 +3,16 @@ title: Sanal makinelerinize bir tarayıcıdan bağlanın-Azure | Microsoft Docs
 description: Sanal makinelerinize bir tarayıcıdan nasıl bağlanacağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b1e50a15673199a4bf95956ae66e6b58d6d41d0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 352fc5fd3ff53a00d9f62966ecf21417ad898706
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288060"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Sanal makinelerinize bir tarayıcı üzerinden bağlanma 
 
-DevTest Labs, sanal makinelerinize bir tarayıcıdan bağlanmanızı sağlayan [Azure](https://docs.microsoft.com/azure/bastion/)savunma ile tümleşir. DevTest Labs 'de bu özelliği etkinleştirme hakkında daha fazla bilgi için bkz. [Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirme](enable-browser-connection-lab-virtual-machines.md).
+DevTest Labs, sanal makinelerinize bir tarayıcıdan bağlanmanızı sağlayan [Azure](../bastion/index.yml)savunma ile tümleşir. DevTest Labs 'de bu özelliği etkinleştirme hakkında daha fazla bilgi için bkz. [Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirme](enable-browser-connection-lab-virtual-machines.md).
 
 *Tarayıcı bağlantısı* etkinleştirildikten sonra, laboratuar kullanıcıları sanal makinelere bir tarayıcıdan erişebilir.  
 

@@ -4,15 +4,15 @@ description: AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğ
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142997"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289227"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -57,7 +57,7 @@ Her komut ve komut parametresine ilişkin ayrıntılı başvuru belgelerini bulm
 > [!NOTE] 
 > Azure depolama hesabınızın sahibi olarak, verilere erişim için otomatik olarak izinler atanmamıştır. AzCopy ile anlamlı bir işlem yapabilmeniz için, depolama hizmetine yetkilendirme kimlik bilgilerini nasıl sağlayacağınıza karar vermeniz gerekir. 
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Yetkilendirme kimlik bilgilerini nasıl sağlayabileceklerini seçin
+## <a name="choose-how-youll-provide-authorization-credentials"></a>Yetkilendirme kimlik bilgilerini nasıl sağlayacağınızı seçin
 
 Yetkilendirme kimlik bilgilerini Azure Active Directory (AD) kullanarak veya paylaşılan erişim Imzası (SAS) belirteci kullanarak sağlayabilirsiniz.
 
@@ -65,8 +65,8 @@ Bu tabloyu kılavuz olarak kullan:
 
 | Depolama türü | Şu anda desteklenen yetkilendirme yöntemi |
 |--|--|
-|**Blob depolama** | Azure AD & SAS |
-|**BLOB depolama (hiyerarşik ad alanı)** | Azure AD & SAS |
+|**Blob depolama** | Azure AD ve SAS |
+|**BLOB depolama (hiyerarşik ad alanı)** | Azure AD ve SAS |
 |**Dosya depolama** | Yalnızca SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Seçenek 1: Azure Active Directory kullanın
@@ -111,7 +111,7 @@ Kullanıcı kimliğinize gerekli yetkilendirme düzeyi verildiğini doğruladık
 azcopy login
 ```
 
-Birden fazla kuruluşa aitseniz, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞINI de ekleyin.
+Bir hata alırsanız, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞINI de kullanmayı deneyin.
 
 ```azcopy
 azcopy login --tenant-id=<tenant-id>
@@ -121,7 +121,7 @@ azcopy login --tenant-id=<tenant-id>
 
 Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
 
-![Kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
+![Bir kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgilerinizi kullanarak Azure hesabınızda oturum açın. Başarıyla oturum açtıktan sonra, tarayıcı penceresini kapatabilir ve AzCopy kullanmaya başlayabilirsiniz.
 

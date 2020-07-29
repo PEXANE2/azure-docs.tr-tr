@@ -7,19 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3723345b10524b2063b3ec8fe43608f49b5b279b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925195"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375224"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Java uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
 Kodu hemen görmek istiyor musunuz? [Java için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) örnekleri GitHub ' da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
@@ -121,7 +122,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-Projeyi Maven ile oluşturduysanız paketin tanımlanmış olması gerekir. Aksi takdirde paketi bu adımda tamamlayın. Örneğin:
+Projeyi Maven ile oluşturduysanız paketin tanımlanmış olması gerekir. Aksi takdirde paketi bu adımda tamamlayın. Örnek:
 
 ```java
 package com.bingwebsearch.app

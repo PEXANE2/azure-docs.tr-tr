@@ -6,14 +6,25 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 234da921b4f0d1243ca8cfdb12ba2d851db2b43f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 977dcc71fd25b19e09cfa9126bf01d380f581aca
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658702"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289107"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu
 [Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve ek işlevsellik sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, var olan görünümlerinizi çalışma kitaplarına dönüştürme sürecine genel bir bakış sunulmaktadır.
+
+## <a name="retirement-schedule"></a>Emeklilik zamanlaması
+
+| Değiştir | Bu anlamı | Beklenen tarih |
+|:---|:---|:---|
+| Görünüm Tasarımcısı aracılığıyla oluşturulan yeni görünümlerin oluşturulmasını devre dışı bırakın. | Artık Azure portal yeni özel görünümleri oluşturamayacaksınız ve kaydedemeyeceksiniz.| 2020 Kasım |
+| Görünüm Tasarımcısı ile mevcut görünümler için düzenleme işlevini devre dışı bırakın. | Artık var olan özel görünümleriniz üzerinde değişiklik yapamayacak ve değişiklikleri kaydedemeyeceksiniz. | 2020 Kasım |
+| Log Analytics çalışma alanlarına görünümlerin dağıtımını devre dışı bırak | Artık Log Analytics çalışma alanlarına ARM kullanarak özel görünümler dağıtameyeceksiniz. | Mart 2021 |
+| Görünüm Tasarımcısı artık Azure portal kullanılamıyor | Portal deneyimi artık görünüm tasarımcısını desteklemiyor. | Haziran 2021 |
+| Çalışma alanı özetinden kaldırılan özel görünümler | Özel görünüm verilerinize artık erişemeyeceksiniz. | Aralık 2021 |
 
 ## <a name="workbooks-overview"></a>Çalışma kitaplarına genel bakış
 [Çalışma kitapları](../insights/vminsights-workbooks.md) metin, [günlük sorgularını](../log-query/query-language.md), ölçümleri ve parametreleri zengin etkileşimli raporlara birleştirir. Aynı Azure kaynaklarına erişimi olan ekip üyeleri, çalışma kitaplarını da düzenleyebilir.

@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: keferna
+author: keferna
+ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102948"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287944"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
@@ -68,12 +70,12 @@ Parametreleriniz için geçerli herhangi bir ad kullanabilirsiniz; test sürüc�
 
 ### <a name="accepted-parameter-metadata-types"></a>Kabul edilen parametre meta veri türleri
 
-| Meta veri türü   | Parametre türü  | Description     | Örnek değer    |
+| Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
 |---|---|---|---|
-| **BaseUri**     | string          | Dağıtım paketinizin temel URI 'SI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
-| **nitelen**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |
+| **BaseUri**     | dize          | Dağıtım paketinizin temel URI 'SI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **username**    | dize          | Yeni rastgele Kullanıcı adı.| admin68876      |
 | **parola**    | güvenli dize    | Yeni rastgele parola | LP! ACS \^ 2kh     |
-| **oturum kimliği**   | string          | Benzersiz test sürücüsü oturum KIMLIĞI (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **oturum kimliği**   | dize          | Benzersiz test sürücüsü oturum KIMLIĞI (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="baseuri"></a>BaseUri
 
@@ -102,7 +104,7 @@ Test sürücüsü dağıtım paketinizden herhangi bir dosyanın URI 'Sini oluş
 }
 ```
 
-#### <a name="username"></a>kullanıcı adı
+#### <a name="username"></a>username
 
 Test sürücüsü bu parametreyi yeni bir rastgele Kullanıcı adı ile başlatır:
 
@@ -308,7 +310,7 @@ Tamamlanacak son bölüm, Azure aboneliğinizi ve Azure Active Directory (AD) ba
    3. Bir uygulama adı girin.
    4. **Web uygulaması/API** **türünü** seçin.
    5. Oturum açma URL 'sinde herhangi bir değer sağlayın, bu alan kullanılmaz.
-   6. **Oluştur**'u seçin.
+   6. **Oluştur**’u seçin.
    7. Uygulama oluşturulduktan sonra **Özellikler**' i,  >  **uygulamayı çok kiracılı olarak ayarla** ve sonra **Kaydet**' i seçin.
 
 4. **Kaydet**'i seçin.

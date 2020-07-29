@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: roygara
 ms.service: storage
@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0832672cc848495f3d95d308071e0a8359ae4f1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74014542"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375288"
 ---
 ## <a name="overview"></a>Genel Bakış
-Azure depolama, Blobların anlık görüntülerini alma özelliğini sağlar. Anlık görüntüler blob durumunu zaman içinde yakalar. Bu makalede, anlık görüntüleri kullanarak sanal makine disklerinin yedeklerini koruyabilmeniz için bir senaryo açıklanır. Azure Backup ve kurtarma hizmeti 'ni kullanmayı ve sanal makine diskleriniz için özel bir yedekleme stratejisi oluşturmayı tercih ettiğinizde bu yöntemi kullanabilirsiniz.
+Azure depolama, Blobların anlık görüntülerini alma özelliğini sağlar. Anlık görüntüler blob durumunu zaman içinde yakalar. Bu makalede, anlık görüntüleri kullanarak sanal makine disklerinin yedeklerini koruyabilmeniz için bir senaryo açıklanır. Azure Backup ve kurtarma hizmeti 'ni kullanmayı ve sanal makine diskleriniz için özel bir yedekleme stratejisi oluşturmayı tercih ettiğinizde bu yöntemi kullanabilirsiniz. İş veya görev açısından kritik iş yüklerini çalıştıran sanal makineler için [Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) , yedekleme stratejisinin bir parçası olarak kullanılması önerilir.  
 
 Azure sanal makine diskleri, Azure depolama 'da sayfa Blobları olarak depolanır. Bu makaledeki sanal makine diskleri için bir yedekleme stratejisi açıkladık, sayfa Blobları bağlamında anlık görüntülere başvurduk. Anlık görüntüler hakkında daha fazla bilgi edinmek için [bir Blobun anlık görüntüsünü oluşturma](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)konusuna bakın.
 
@@ -57,7 +57,8 @@ Aşağıdaki koşullar sağlandığında,
 * Blob, Oca-1-2016 veya üzeri sürümlerde oluşturulmuştur.
 * Blob, [Putpage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) veya iki anlık görüntü arasındaki [kopya blobu](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) ile üzerine yazılmadı.
 
-**Note**: Bu özellik Premium ve standart Azure sayfa Blobları için kullanılabilir.
+>[!NOTE]
+>Bu özellik Premium ve standart Azure sayfa Blobları için kullanılabilir.
 
 Anlık görüntüler kullanarak özel bir Yedekleme stratejiniz varsa, anlık görüntüleri bir depolama hesabından diğerine kopyalamak yavaş olabilir ve çok fazla depolama alanı tüketebilir. Anlık görüntünün tamamını bir yedekleme depolama hesabına kopyalamak yerine, bir yedekleme sayfası blobuna ardışık anlık görüntüler arasındaki farkı yazabilirsiniz. Bu şekilde, kopyalanacak zaman ve yedeklemelerin depolandığı alan önemli ölçüde azaltılır.
 

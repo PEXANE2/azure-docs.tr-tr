@@ -3,12 +3,12 @@ title: Sanal ağ hizmeti uç noktaları-Azure Event Hubs | Microsoft Docs
 description: Bu makalede bir sanal ağa Microsoft. EventHub hizmet uç noktası ekleme hakkında bilgi sağlanır.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066700"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288017"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Event Hubs ile sanal ağ hizmet uç noktalarını kullanma
 
@@ -25,7 +25,6 @@ Sonuç olarak, alt ağa ve ilgili Event Hubs ad alanıyla ilişkili olan iş yü
 >
 > Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
 > - Azure Stream Analytics
-> - Azure Event Grid ile tümleştirme
 > - Azure IoT Hub yolları
 > - Azure IoT Device Explorer
 >
@@ -60,7 +59,7 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 2. Sol taraftaki menüden **ağ** seçeneği ' ni seçin. **Tüm ağlar** seçeneğini belirlerseniz, Olay Hub 'ı HERHANGI bir IP adresinden gelen bağlantıları kabul eder. Bu ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
 
     ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Belirli ağlara erişimi yeniden bağlamak için sayfanın üst kısmındaki **Seçili ağlar** seçeneğini belirleyin.
+1. Belirli ağlara erişimi kısıtlamak için, sayfanın üst kısmındaki **Seçili ağlar** seçeneğini belirleyin.
 2. Sayfanın **sanal ağ** bölümünde, * * + var olan sanal ağı ekle * * * seçeneğini belirleyin. Yeni bir VNet oluşturmak istiyorsanız **+ Yeni sanal ağ oluştur** ' u seçin. 
 
     ![var olan sanal ağı ekle](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -85,9 +84,9 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bi
 
 Şablon parametreleri:
 
-* **NamespaceName**: Event Hubs ad alanı.
-* **Vnetrutaname**: oluşturulacak sanal ağ kuralının adı.
-* **Virtualnetworkingsubnetıd**: sanal ağ alt ağı için tam olarak nitelenmiş Kaynak Yöneticisi yolu; Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` bir sanal ağın varsayılan alt ağı için.
+* `namespaceName`: Event Hubs ad alanı.
+* `vnetRuleName`: Oluşturulacak sanal ağ kuralının adı.
+* `virtualNetworkingSubnetId`: Sanal ağ alt ağı için tam olarak nitelenmiş Kaynak Yöneticisi yolu; Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` bir sanal ağın varsayılan alt ağı için.
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.

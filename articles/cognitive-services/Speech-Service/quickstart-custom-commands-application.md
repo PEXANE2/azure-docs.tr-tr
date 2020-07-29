@@ -10,26 +10,36 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362151"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289420"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Özel Komutlar kullanarak ses yardımcısı oluşturma
 
 Bu hızlı başlangıçta, konuşma Studio 'Yu kullanarak temel bir özel komut uygulaması oluşturur ve test edersiniz. Ayrıca, bu uygulamaya bir Windows istemci uygulamasından de erişebileceksiniz. **Özel komutlar** , sesli ilk etkileşim deneyimleri için iyileştirilmiş zengin sesli uygulama uygulamaları oluşturmayı kolaylaştırır. Birleştirilmiş bir yazma deneyimi, otomatik barındırma modeli ve görece daha düşük karmaşıklık sağlar. böylece, sesli komutlama senaryolarınız için en iyi çözümü oluşturmaya odaklanmanıza yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="region-availability"></a>Bölge kullanılabilirliği
+Şu anda, özel komutlar şu bölgelerde oluşturulan konuşma aboneliklerini destekler:
+* Batı ABD
+* Batı ABD 2
+* Doğu ABD
+* Doğu ABD 2
+* Kuzey Avrupa
+* West Europe
+* Orta Batı ABD
+* Central India
+* Doğu Asya
+* Güneydoğu Asya
+
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Özel komutları destekleyen bir bölgede Azure konuşma kaynağı oluşturun.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Özel komutları destekleyen bir bölgede Azure konuşma kaynağı oluşturun.<span class="docon docon-navigate-external x-hidden-focus"></span></a> Desteklenen bölgelerin listesi için yukarıdaki **bölge kullanılabilirliği** bölümüne bakın.
 > * Örnek [Akıllı Oda Lite](https://aka.ms/speech/cc-quickstart) json dosyasını indirin.
 > * [Windows Voice Yardımcısı istemcisinin](https://aka.ms/speech/va-samples-wvac)en son sürümünü indirin.
-
-> [!NOTE]
-> Şu anda, özel komutlar yalnızca westus, westus2 ve northeurope bölgelerinde konuşma aboneliklerini destekler.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Özel komutlar için konuşma Studio 'ya gidin
 
@@ -93,7 +103,7 @@ Bu uygulamaya, konuşma Studio 'Nun dışından erişebilmek için, uygulamayı 
 
 1. Sol bölmedeki **Ayarlar** ' ı seçin ve orta bölmedeki **lusıs kaynakları** ' nı seçin.
 1. Bir tahmin kaynağı seçin veya **Yeni kaynak oluştur**' u seçerek bir tane oluşturun.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
     
     > [!div class="mx-imgBorder"]
     > ![LUSıS kaynaklarını ayarlama](media/custom-commands/set-luis-resources.png)
@@ -109,7 +119,7 @@ Alternatif olarak, **Ayarlar**  >  **genel** bölümünü seçerek de bu değerl
 
 ### <a name="access-application-from-client"></a>İstemciden uygulamaya erişim
 
-Bu makalenin kapsamında, önkoşulların bir parçası olarak indirdiğiniz Windows Voice Yardımcısı istemcisini kullanacağız. Klasörü sıkıştırmayı açın.
+Bu makalenin kapsamında, önkoşulların bir parçası olarak indirdiğiniz Windows Voice Yardımcısı istemcisini kullanacağız. Klasörün sıkıştırmasını açın.
 1. **VoiceAssistantClient.exe**başlatın.
 1. Yeni bir yayımlama profili oluşturun ve **bağlantı profili**için değer girin. **Genel ayarlar** bölümünde değerler **abonelik anahtarı** (Bu, uygulamayı yayımlarken kaydettiğiniz **konuşma kaynak anahtarı** değeri ile aynıdır), **ABONELIK anahtar bölgesi** ve **özel komutlar uygulama kimliği**girin.
     > [!div class="mx-imgBorder"]

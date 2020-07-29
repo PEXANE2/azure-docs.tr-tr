@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210635"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374142"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri ambarı birimleri (DWU 'Lar)
 
@@ -100,7 +100,7 @@ SQL havuzu, büyük miktarlarda işlem ve sorgu boyutlandırılabilir veri mikta
 
 Veri ambarı birimlerinin değiştirilmesi, [alter database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bölümünde açıklanan izinleri gerektirir.
 
-SQL DB katılımcısı ve SQL Server katılımcısı gibi Azure kaynakları için yerleşik roller DWU ayarlarını değiştirebilir.
+SQL DB katılımcısı ve SQL Server katılımcısı gibi Azure yerleşik rolleri, DWU ayarlarını değiştirebilir.
 
 ## <a name="view-current-dwu-settings"></a>Geçerli DWU ayarlarını görüntüle
 
@@ -108,7 +108,7 @@ Geçerli DWU ayarını görüntülemek için:
 
 1. Visual Studio 'da SQL Server Nesne Gezgini açın.
 2. Mantıksal SQL Server ile ilişkili ana veritabanına bağlanın.
-3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Örnek aşağıda verilmiştir:
+3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Aşağıda bir örnek verilmiştir:
 
 ```sql
 SELECT  db.name [Database]

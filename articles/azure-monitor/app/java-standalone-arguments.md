@@ -3,12 +3,13 @@ title: Tüm ortamlarda çalışan Java uygulamalarını izleme-Azure Izleyici Ap
 description: Uygulamayı işaretlemeden Java tek başına aracı ile herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 6499fbc62a78cb333c623dbea8269144e623921c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014250"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374312"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Azure Izleyici için JVM args Java tek başına Aracısı 'nı yapılandırma Application Insights
 

@@ -4,14 +4,15 @@ description: Azure App Service 'da aralıklı bağlantı hatalarını ve ilgili 
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 03/24/2020
+ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252449"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289143"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -37,6 +38,8 @@ Uygulamalar veya işlevler hızlı bir şekilde yeni bir bağlantı açtığınd
 
 ## <a name="avoiding-the-problem"></a>Sorunu önleme
 
+Hedef, hizmet uç noktalarını destekleyen bir Azure hizmeti ise, [VNET tümleştirmesi](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) ve hizmet uç NOKTALARıNı kullanarak SNAT bağlantı noktası tükenmesi sorunlarından kaçınabilirsiniz. VNet tümleştirmesini kullandığınızda ve hizmet uç noktalarını tümleştirme alt ağına yerleştirdiğinizde, bu hizmetlere giden trafik giden trafiği giden SNAT bağlantı noktası kısıtlamalarına sahip olmaz.
+
 SNAT bağlantı noktası sorununun önlenmeleri, yeni bağlantıların kaldı aynı konak ve bağlantı noktasına oluşturulmasını önleme anlamına gelir.
 
 SNAT bağlantı noktası tükenmesi için genel stratejiler, **Azure belgelerinin giden bağlantılarının** [sorun çözme bölümünde](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving) ele alınmıştır. Bu stratejilerin, Azure App Service 'te barındırılan uygulamalar ve işlevler için geçerlidir.
@@ -49,7 +52,7 @@ SNAT bağlantı noktası tükenmesi için genel stratejiler, **Azure belgelerini
 
 Farklı çözüm yığınına göre bağlantı havuzu uygulama bağlantılarının bir koleksiyonu aşağıda verilmiştir.
 
-#### <a name="node"></a>Node
+#### <a name="node"></a>Düğüm
 
 Varsayılan olarak, NodeJS bağlantıları etkin tutulmaz. Aşağıda, bunların nasıl uygulanacağını gösteren örnekler içeren bağlantı havuzlaması için popüler veritabanları ve paketler verilmiştir.
 

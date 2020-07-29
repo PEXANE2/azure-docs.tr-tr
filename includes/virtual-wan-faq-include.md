@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143924"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375031"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -233,9 +233,17 @@ Bir sanal hub birden fazla uzak hub 'dan aynı rotayı öğrenirse, karar verdi�
 
 ER ile er arasında geçiş, her zaman küresel erişim aracılığıyla yapılır. Sanal hub ağ geçitleri DC veya Azure bölgelerinde dağıtılır. İki ExpressRoute bağlantı hattı genel erişim aracılığıyla bağlandığında, trafiğin uç yönlendiricilerden sanal hub DC 'ye kadar tüm yollarla gelmesi gerekmez.
 
-### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-circuits-or-vpn-connections"></a>Azure sanal WAN devreleri veya VPN bağlantılarında bir ağırlık kavramı mevcuttur
+### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-expressroute-circuits-or-vpn-connections"></a>Azure sanal WAN ExpressRoute devreleri veya VPN bağlantılarında bir ağırlık kavramı bulunur
 
 Bir sanal hub 'a birden çok ExpressRoute bağlantı hattı bağlandığında, bağlantıda yönlendirme ağırlığı, sanal hub 'daki ExpressRoute için bir devreyi diğer üzerinde tercih etmek üzere bir mekanizma sağlar. VPN bağlantısında ağırlık ayarlama mekanizması yoktur. Azure, tek bir hub içindeki bir VPN bağlantısı üzerinden her zaman bir ExpressRoute bağlantısı tercih eder.
+
+### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Sanal WAN, Azure trafiği için VPN üzerinden ExpressRoute 'u tercih ediyor
+
+Yes 
+
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Bir sanal WAN hub 'ının bir ExpressRoute bağlantı hattı ve bu ağa bağlı bir VPN sitesi olduğunda, bir VPN bağlantı yolunun ExpressRoute üzerinden tercihe göre yapılmasına neden olacak?
+
+ExpressRoute bağlantı hattı sanal hub 'a bağlıyken, Microsoft Edge yönlendiricileri, şirket içi ve Azure arasındaki iletişimin ilk düğümüdür. Bu uç yönlendiriciler, sanal WAN ExpressRoute Gateway 'ler ile iletişim kurar ve sanal WAN 'daki ağ geçitleri arasındaki tüm yolları denetleyen sanal hub yönlendiricisinden yolları öğrenirsiniz. Microsoft Edge yönlendiricileri, sanal hub ExpressRoute yollarını, şirket içinde öğrendiği yollar üzerinde daha yüksek bir tercihe göre işler. VPN sitesinin yol uzunluğu daha uzun OLMASıNA neden olmadığı sürece, VPN bağlantısının, sanal hub için birincil orta hale gelmesi nedeniyle, VPN sitesi daha uzun bir yol uzunluğuna sahip değilse, sanal hub, ExpressRoute ağ geçidi ile VPN Learnt yollarını paylaşmaya devam eder ve Microsoft Edge yönlendiricilerinin şirket içi yollar üzerinden VPN yollarını tercih etmesini sağlar. 
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>İki hub (hub 1 ve 2) bağlı olduğunda ve hub 'lara bir fiyona yay olarak bağlı bir ExpressRoute bağlantı hattı varsa, Merkez 2 ' de bağlı olan VNet 'e ulaşmak için hub 1 ' e bağlı VNet 'in yolu nedir?
 
@@ -244,6 +252,10 @@ Geçerli davranış, VNet-VNet bağlantısı için hub-hub üzerinden ExpressRou
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Sanal WAN 'da IPv6 desteği var mı?
 
 IPv6, sanal WAN hub 'ında ve ağ geçitlerinde desteklenmez. IPv6 desteği olan bir VNet 'iniz varsa ve VNet 'i sanal WAN 'a bağlamak istiyorsanız, bu senaryo şu anda desteklenmemektedir.
+
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Çeşitli sanal WAN işlevlerini otomatikleştirerek betikler tarafından kullanılacak önerilen API sürümü nedir?
+
+Minimum 05-01-2020 sürümü (Mayıs 1 2020) gereklidir. 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Sanal WAN türleri (temel ve standart) arasındaki farklar nelerdir?
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a30874a14a1c2c44ec04b17b9ebddb52a9e9fb58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8433242ffe44b8deab62314af386f1a82e2e0017
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020551"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374125"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 
@@ -54,7 +54,7 @@ Kullanım örnekleri için [sorgu Parquet dosyaları](query-parquet-files.md) ma
 
 ## <a name="query-csv-files"></a>CSV dosyalarını sorgula
 
-Parquet kaynak verilerini sorgulamak için FORMAT = ' CSV ' kullanın. CSV dosyalarını Sorgulayabileceğiniz zaman, CSV dosyasının şemasını işlevin parçası olarak belirtebilirsiniz `OPENROWSET` :
+CSV kaynak verilerini sorgulamak için FORMAT = ' CSV ' kullanın. CSV dosyalarını Sorgulayabileceğiniz zaman, CSV dosyasının şemasını işlevin parçası olarak belirtebilirsiniz `OPENROWSET` :
 
 ```sql
 SELECT * FROM

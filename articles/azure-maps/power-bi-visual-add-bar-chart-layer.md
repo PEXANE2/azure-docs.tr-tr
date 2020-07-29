@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 34d2d96e28f90249ad25788f6994dac63f83b1f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262163"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288155"
 ---
-# <a name="add-a-bar-chart-layer"></a>Çubuk grafik katmanı ekleme
+# <a name="add-a-bar-chart-layer"></a>Çubuk grafiği katmanı ekleme
 
-**Çubuk grafik katmanı** , harita üzerinde 3B çubuklar veya silindir olarak konum verilerinin görselleştirmesine izin vererek bir sonraki boyuta veri almak için faydalıdır. Kabarcık katmanına benzer şekilde, çubuk grafik daha sonra renk ve göreli yükseklik kullanılarak aynı anda iki ölçümü kolayca görselleştirebilir. Çubukların yüksekliği olması için **alanlar** bölmesinin **Boyut** demetine bir ölçünün eklenmesi gerekir. Bir ölçü sağlanmazsa, **çubuk şekli** seçeneğine bağlı olarak yüksekliği düz kareler veya daireler olmayan çubuklar olamaz.
+**Çubuk grafik katmanı** , harita üzerinde 3B çubuklar veya silindir olarak konum verilerinin görselleştirmesine izin vererek bir sonraki boyuta veri almak için faydalıdır. Kabarcık katmanına benzer şekilde, çubuk grafik daha sonra renk ve göreli yükseklik kullanılarak aynı anda iki ölçümü kolayca görselleştirebilir. Çubukların yüksekliği olması için **alanlar** bölmesinin **Boyut** demetine bir ölçünün eklenmesi gerekir. Bir ölçü sağlanmazsa, yüksekliği olmayan çubuklar, **çubuk şekli** seçeneğine bağlı olarak düz kareler veya daireler olarak gösterilir.
 
 > [!div class="mx-imgBorder"]
 > ![Çubuk grafik katmanını kullanarak nokta verileri görüntüleyen bir harita](media/power-bi-visual/bar-chart-layer-styled.png)
@@ -66,7 +66,7 @@ Haritaya daha fazla bağlam ekleyin:
 > [Kutucuk katmanı ekleme](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Gerçek zamanlı trafiği göster](power-bi-visual-show-real-time-traffic.md)
+> [Gerçek zamanlı trafiği gösterme](power-bi-visual-show-real-time-traffic.md)
 
 Görseli özelleştirin:
 

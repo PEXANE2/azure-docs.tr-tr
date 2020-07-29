@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288109"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps 'de Google bağlayıcıları için veri güvenliği ve gizlilik ilkeleri
 
-**1 mayıs 2020**' den Itibaren, Google 'ın [veri güvenliği ve gizlilik ilkeleri](https://www.blog.google/technology/safety-security/project-strobe/) nedeniyle yapılan değişiklikler [Gmail bağlayıcısını](https://docs.microsoft.com/connectors/gmail/)kullanan mantıksal uygulama iş akışlarınızı etkileyebilir. Mantıksal uygulamalarınız Gmail bağlayıcısını bir Gmail tüketicisi hesabı (veya ile biten e-posta adresi) ile kullanıyorsa @gmail.com @googlemail.com , Logic Apps yalnızca belirli [Google-onaylanan Tetikleyiciler, Eylemler ve bağlayıcılar](#approved-connectors)kullanabilir.
+**1 mayıs 2020**' den Itibaren, Google 'ın [veri güvenliği ve gizlilik ilkeleri](https://www.blog.google/technology/safety-security/project-strobe/) nedeniyle yapılan değişiklikler [Gmail bağlayıcısını](/connectors/gmail/)kullanan mantıksal uygulama iş akışlarınızı etkileyebilir. Mantıksal uygulamalarınız Gmail bağlayıcısını bir Gmail tüketicisi hesabı (veya ile biten e-posta adresi) ile kullanıyorsa @gmail.com @googlemail.com , Logic Apps yalnızca belirli [Google-onaylanan Tetikleyiciler, Eylemler ve bağlayıcılar](#approved-connectors)kullanabilir.
 
 > [!NOTE]
 > Mantıksal uygulamalarınız Gmail bağlayıcısını bir G-Suite iş hesabıyla (özel bir etki alanı olan e-posta adresi) kullanıyorsa, mantıksal uygulamalarınız etkilenmez ve Gmail bağlayıcısını kullanma konusunda hiçbir kısıtlama yoktur.
@@ -62,7 +62,7 @@ Aşağıda, Google tarafından onaylanmamış yerleşik Tetikleyiciler ve eyleml
 
   ![Uyumlu olmayan mantıksal uygulama-örnek 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
-En son bilgiler için [Gmail bağlayıcısının teknik başvuru belgelerine](https://docs.microsoft.com/connectors/gmail/)bakın.
+En son bilgiler için [Gmail bağlayıcısının teknik başvuru belgelerine](/connectors/gmail/)bakın.
 
 <a name="update-affected-workflows"></a>
 
@@ -74,11 +74,11 @@ Bir mantıksal uygulamada Gmail adlı bir tüketici hesabı ve Google onaylanmam
 
 1. Gmail bağlayıcısında, Google istemci uygulamanızdan istemci KIMLIĞI ve istemci gizli değerlerini kullanın.
 
-Daha fazla bilgi için [Gmail bağlayıcısının teknik başvuru belgelerine](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)bakın.
+Daha fazla bilgi için [Gmail bağlayıcısının teknik başvuru belgelerine](/connectors/gmail/#authentication-and-bring-your-own-application)bakın.
 
 ### <a name="create-google-client-app"></a>Google istemci uygulaması oluşturma
 
-İstemci uygulamanız için bir proje kurmak üzere [Google API konsol Sihirbazı 'nı](https://console.developers.google.com/start/api?id=gmail&credential=client_key) kullanın ve yönergeleri izleyin. Ya da, ayrıntılı adımlar için [Gmail bağlayıcısının teknik başvuru belgelerindeki](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)yönergeleri gözden geçirin.
+İstemci uygulamanız için bir proje kurmak üzere [Google API konsol Sihirbazı 'nı](https://console.developers.google.com/start/api?id=gmail&credential=client_key) kullanın ve yönergeleri izleyin. Ya da, ayrıntılı adımlar için [Gmail bağlayıcısının teknik başvuru belgelerindeki](/connectors/gmail/#authentication-and-bring-your-own-application)yönergeleri gözden geçirin.
 
 İşiniz bittiğinde, ekranınızda daha sonra mantıksal uygulamanızda kullanacağınız kendi **ISTEMCI kimliğiniz** ve **istemci gizli** değerleriniz olacak şekilde bu örneğe benzer şekilde görünür.
 
@@ -117,4 +117,5 @@ Google istemci uygulamanızdan Gmail Tetikleyiciniz veya eyleminizdeki istemci K
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Gmail Bağlayıcısı](https://docs.microsoft.com/connectors/gmail/) hakkında daha fazla bilgi edinin
+[Gmail Bağlayıcısı](/connectors/gmail/) hakkında daha fazla bilgi edinin
+

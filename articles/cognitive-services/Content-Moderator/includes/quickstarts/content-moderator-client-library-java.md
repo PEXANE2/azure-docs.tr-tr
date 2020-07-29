@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: include
 ms.date: 01/27/2020
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ffbb0e4bd2eec3299b4d5b2b38477edf611db1a2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4d4e09bed1350a59848ef6853efe2a301d7357e9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375134"
 ---
 Java için Content Moderator istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Content Moderator, zararlı olabilecek, riskli veya başka türlü istenmeyen malzemeler için metin, resim ve video içeriğini denetleyen bir bilişsel hizmettir. Hizmet, böyle bir öğeyle karşılaştığında içeriğe uygun etiketler (bayraklar) ekler. Uygulamanız da bu bayraklı içeriği dikkate alarak düzenlemelere uygunluk ya da kullanıcılar için istenen ortamın oluşturulması amacıyla işlem gerçekleştirebilir.
 
@@ -23,11 +24,11 @@ Java için Content Moderator istemci kitaplığını kullanarak şunları yapın
 
 * Yetişkinlere yönelik içerik, metin veya insan yüzeyleri için orta görüntüler.
 
-[Başvuru belgesi](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [yapıtı (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
+[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Yapıt (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Örnekler](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
 * [Gradle yapı aracı](https://gradle.org/install/)veya başka bir bağımlılık Yöneticisi.
 
@@ -37,10 +38,9 @@ Java için Content Moderator istemci kitaplığını kullanarak şunları yapın
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Content moderator için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
 * [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra adlı `AZURE_CONTENTMODERATOR_KEY`anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Kaynağından bir anahtar aldıktan sonra, adlı anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `AZURE_CONTENTMODERATOR_KEY` .
 
 ### <a name="create-a-new-gradle-project"></a>Yeni bir Gradle projesi oluşturma
 
@@ -93,7 +93,7 @@ Ardından yeni klasörde *Contentmoderatorquickstart. Java* adlı bir dosya olu�
 
 Aşağıdaki sınıflar Content Moderator Java istemci kitaplığı 'nın bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Imagedenetlemesi](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
@@ -111,7 +111,7 @@ Bu kod parçacıkları, Java için Content Moderator istemci kitaplığı ile a�
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE]
-> Bu adım, adlı `AZURE_CONTENTMODERATOR_KEY`Content moderator anahtarınız için [bir ortam değişkeni oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar.
+> Bu adım, adlı Content Moderator anahtarınız için [bir ortam değişkeni oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar `AZURE_CONTENTMODERATOR_KEY` .
 
 Uygulamanın `main` yönteminde, abonelik uç noktası değerini ve abonelik anahtarı ortam değişkenini kullanarak bir [Contentmoderatorclient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) nesnesi oluşturun. 
 
@@ -124,7 +124,7 @@ Uygulamanın `main` yönteminde, abonelik uç noktası değerini ve abonelik ana
 
 ### <a name="get-images"></a>Görüntü alma
 
-Projenizin **src/Main/** klasöründe bir **kaynak** klasörü oluşturun ve bu klasöre gidin. Ardından, *ımagefiles. txt*yeni bir metin dosyası oluşturun. Bu dosyada, her satırda bir URL 'YI çözümlemek&mdash;Için görüntülerin URL 'lerini eklersiniz. Aşağıdaki örnek görüntüleri kullanabilirsiniz:
+Projenizin **src/Main/** klasöründe bir **kaynak** klasörü oluşturun ve bu klasöre gidin. Ardından *ImageFiles.txt*yeni bir metin dosyası oluşturun. Bu dosyada, &mdash; her satırda BIR URL 'yi çözümlemek için görüntülerin URL 'lerini eklersiniz. Aşağıdaki örnek görüntüleri kullanabilirsiniz:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -139,7 +139,7 @@ Ardından, *contentmoderatorquickstart. Java* dosyanızda, aşağıdaki sınıf 
 
 ### <a name="iterate-through-images"></a>Görüntüler arasında yineleme
 
-Sonra, aşağıdaki kodu `main` yönteminin altına ekleyin. Ya da, bunu öğesinden `main`çağrılan ayrı bir yönteme ekleyebilirsiniz. Bu kod, _ımagefiles. txt_ dosyasının her bir satırıyla adımları ister.
+Sonra, aşağıdaki kodu yönteminin altına ekleyin `main` . Ya da, bunu öğesinden çağrılan ayrı bir yönteme ekleyebilirsiniz `main` . Bu kod _ImageFiles.txt_ dosyasının her satırı üzerinden yapılır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
@@ -164,11 +164,11 @@ Son olarak, döndürülen bilgileri `EvaluationData` listede depolayın.
 
 ### <a name="print-results"></a>Sonuçları Yazdır
 
-`while` Döngüden sonra, sonuçları konsola ve *src/Main/Resources/moderationoutput. JSON*çıkış dosyasına yazdıran aşağıdaki kodu ekleyin.
+`while`Döngüden sonra, sonuçları konsola ve bir çıkış dosyasına ( *src/Main/resources/ModerationOutput.js*) yazdıran aşağıdaki kodu ekleyin.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
-`try` Yöntemi kapatın ve metodunu tamamlamaya yönelik bir `catch` ifade ekleyin.
+`try`Yöntemi kapatın ve `catch` metodunu tamamlamaya yönelik bir ifade ekleyin.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
@@ -186,7 +186,7 @@ Uygulamayı `gradle run` komutla çalıştırın:
 gradle run
 ```
 
-Ardından *src/Main/Resources/ModerationOutput. JSON* dosyasına gidin ve içerik denetleme sonuçlarını görüntüleyin.
+Ardından dosya *üzerinde src/Main/Resources/ModerationOutput.js* gidin ve içerik denetleme sonuçlarını görüntüleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -7,17 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 76a752bc108158c998d13a548da535d5fb1d5ee2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2edf5634b56fdfa6e1ed7dad9ee443ca588db583
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503877"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375162"
 ---
 Java için Bing Haber Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)' da bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Maven, Gradle veya başka bir bağımlılık yönetim sistemini kullanarak Bing Haber Arama istemci kitaplığı bağımlılıklarını yükler. Maven POM dosyası şu bildirimi gerektirir:
 
@@ -52,7 +53,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>Arama İstemcisi Oluşturma ve kimlik bilgilerini depolama
 
-1. Yeni `NewsSearchAPIImpl` bir arama istemcisi `getClient()` döndüren adlı bir yöntem oluşturun. Yeni`NewsSearchAPIImpl` nesnenin ilk parametresi olarak uç noktanızı ve kimlik bilgilerinizi depolamak için yeni `ServiceClientCredentials` bir nesne ekleyin. 
+1. `getClient()`Yeni bir arama istemcisi döndüren adlı bir yöntem oluşturun `NewsSearchAPIImpl` . Yeni nesnenin ilk parametresi olarak uç noktanızı `NewsSearchAPIImpl` ve `ServiceClientCredentials` kimlik bilgilerinizi depolamak için yeni bir nesne ekleyin. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -62,7 +63,7 @@ import java.io.IOException;
     }
     ```
 
-2. `ServiceClientCredentials` Nesneyi oluşturmak için `applyCredentialsFilter()` işlevini geçersiz kılın. Yöntemine bir `OkHttpClient.Builder` geçirin ve istemci kitaplığı çağrısı için kimlik bilgilerinizi oluşturmak `addNetworkInterceptor()` üzere oluşturucunun metodunu kullanın.
+2. Nesneyi oluşturmak için `ServiceClientCredentials` işlevini geçersiz kılın `applyCredentialsFilter()` . Yöntemine bir geçirin `OkHttpClient.Builder` ve `addNetworkInterceptor()` istemci kitaplığı çağrısı için kimlik bilgilerinizi oluşturmak üzere oluşturucunun metodunu kullanın.
 
     ```java
     new ServiceClientCredentials() {
@@ -87,7 +88,7 @@ import java.io.IOException;
 
 ## <a name="send-and-receive-a-search-request"></a>Arama isteği gönderme ve alma
 
-1. Bing Haber Arama hizmetine bir arama isteği `getClient()` çağıran ve gönderen bir yöntem oluşturun. Bu aramayı *Pazar* ve *sayı* parametreleriyle filtreleyin, ardından ilk haber sonucuyla ilgili bilgileri YAZDıRıN: ad, URL, Yayın tarihi, açıklama, sağlayıcı adı ve aramanızın tahmini eşleşmelerin toplam sayısı.
+1. `getClient()`Bing haber arama hizmetine bir arama isteği çağıran ve gönderen bir yöntem oluşturun. Bu aramayı *Pazar* ve *sayı* parametreleriyle filtreleyin, ardından ilk haber sonucuyla ilgili bilgileri YAZDıRıN: ad, URL, Yayın tarihi, açıklama, sağlayıcı adı ve aramanızın tahmini eşleşmelerin toplam sayısı.
 
     ```java
     public static void newsSearch(String subscriptionKey)
@@ -121,7 +122,7 @@ import java.io.IOException;
     
     ```
 
-2. Kodu yürütmek için bir `main()` yönteme arama yönteminizi ekleyin.
+2. `main()`Kodu yürütmek için bir yönteme arama yönteminizi ekleyin.
 
     ```java 
     public static void main(String[] args) {

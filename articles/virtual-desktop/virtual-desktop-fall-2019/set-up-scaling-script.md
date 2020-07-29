@@ -1,6 +1,6 @@
 ---
-title: Ölçek oturumu Azure Otomasyonu 'Nu barındırır-Azure
-description: Windows sanal masaüstü oturumu konaklarının Azure Otomasyonu ile otomatik olarak ölçeklendirilmesi.
+title: Ölçek oturumu Azure Otomasyonu Windows sanal masaüstü 'Nü (klasik) barındırır-Azure
+description: Azure Otomasyonu ile Windows sanal masaüstü (klasik) oturum Konakları otomatik olarak ölçeklendirin.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 4c09ce867a7d4dbc11c42485c39c40bd427fa451
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172064"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288639"
 ---
-# <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
+# <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak Windows sanal masaüstü (klasik) oturum konaklarına ölçeklendirme
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 Sanal makinelerinizi (VM 'Ler) ölçeklendirerek toplam Windows sanal masaüstü dağıtım maliyetinizi azaltabilirsiniz. Bu, yoğun olmayan kullanım saatlerinde oturum ana bilgisayar VM 'lerinin kapatılması ve serbest bir şekilde çıkarılması, daha sonra yeniden açılması ve yoğun saatlerde yeniden bulunması anlamına gelir.
 
@@ -65,7 +65,7 @@ Ancak, araç aşağıdaki sınırlamalara de sahiptir:
 >[!NOTE]
 >Ölçeklendirme Aracı, şu anda ölçeklendirildiği konak havuzunun yük dengeleme modunu denetler. Araç, hem yoğun hem de yoğun olmayan saatlerde, birinci düzey Yük Dengeleme modunu kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Ölçeklendirme aracı 'nı ayarlamaya başlamadan önce, aşağıdaki şeyleri hazırlamış olduğunuzdan emin olun:
 
