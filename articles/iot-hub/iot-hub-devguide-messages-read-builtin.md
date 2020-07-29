@@ -8,13 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: amqp
-ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327710"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Cihazdan buluta iletilerini yerleşik uç noktadan okuma
 
@@ -51,9 +53,9 @@ IoT Hub farkında olmayan Event Hubs SDK 'Ları veya ürün tümleştirmelerini 
 
 Portalda, Olay Hub 'ı ile uyumlu uç nokta alanı, şunun gibi görünen bir tam Event Hubs bağlantı dizesi içerir: **Endpoint = SB://abcd1234namespace.ServiceBus.Windows.net/; SharedAccessKeyName = ıothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = ıothub-eHub-abcd-1234-123456**. Kullanmakta olduğunuz SDK başka değerler gerektiriyorsa, bunlar şöyle olur:
 
-| Name | Değer |
+| Ad | Değer |
 | ---- | ----- |
-| Uç Nokta | sb://abcd1234namespace.servicebus.windows.net/ |
+| Uç Noktası | sb://abcd1234namespace.servicebus.windows.net/ |
 | Ana Bilgisayar Adı | abcd1234namespace.servicebus.windows.net |
 | Ad Alanı | abcd1234namespace |
 

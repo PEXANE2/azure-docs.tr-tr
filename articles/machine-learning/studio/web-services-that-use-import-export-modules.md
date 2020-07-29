@@ -1,6 +1,5 @@
 ---
-title: Web hizmetlerinde verileri içeri/dışarı aktarma
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): Web hizmetlerindeki verileri Içeri/dışarı aktarma-Azure'
 description: Verileri Içeri aktarma ve veri alma modüllerini bir Web hizmetinden veri göndermek ve almak için nasıl kullanacağınızı öğrenin.
 services: machine-learning
 author: likebupt
@@ -11,14 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2e1395e23ec8fa3bbd787b5b12a810f6e9720392
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076666"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326231"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Veri Içeri aktarma ve veri dışa aktarma modülleri kullanan Azure Machine Learning Studio (klasik) Web hizmetlerini dağıtma
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Tahmine dayalı bir deneme oluşturduğunuzda, genellikle bir Web hizmeti girişi ve çıkışı eklersiniz. Denemeyi dağıttığınızda, müşteriler girişler ve çıktılar aracılığıyla Web hizmetinden veri gönderebilir ve alabilir. Bazı uygulamalarda, bir tüketicinin verileri bir veri akışından bulunabilir veya Azure Blob depolama gibi bir dış veri kaynağında yer alabilir. Bu durumlarda, Web hizmeti girişleri ve çıkışları kullanılarak okuma ve yazma verilerine gerek kalmaz. Bunun yerine, veri kaynağı alma modülünü kullanarak veri kaynağından veri okumak için Batch yürütme hizmeti 'ni (BES) kullanabilir ve veri dışa aktarma modülünü kullanarak Puanlama sonuçlarını farklı bir veri konumuna yazabilir.
 

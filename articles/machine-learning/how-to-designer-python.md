@@ -5,17 +5,17 @@ description: Verileri dönüştürmek için Azure Machine Learning tasarımcıs�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer, tracking-python
-ms.openlocfilehash: 61086bf8c215a09e457e931ffed157559b339a9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer, tracking-python
+ms.openlocfilehash: c798fa3bdb6754b2d8b955efe49e208ea954f80a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326980"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında Python kodu çalıştırma
 
@@ -26,6 +26,8 @@ Basit Python mantığını hızlıca eklemek için yerleşik kod düzenleyicisin
 Varsayılan yürütme ortamı, Python 'un Anauyumluluk dağıtımını kullanır. Önceden yüklenmiş paketlerin tam listesi için bkz. [Python betik modülü başvurusunu yürütme](algorithm-module-reference/execute-python-script.md) sayfası.
 
 ![Python giriş eşlemesini Yürüt](media/how-to-designer-python/execute-python-map.png)
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="execute-python-written-in-the-designer"></a>Tasarımcıda yazılan Python yürütme
 

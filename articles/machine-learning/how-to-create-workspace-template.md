@@ -5,17 +5,17 @@ description: Yeni bir Azure Machine Learning çalışma alanı oluşturmak için
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/09/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: db0b87787e34796e9dd7c91d6e4b53738145a25a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031125"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326384"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -118,6 +118,9 @@ New-AzResourceGroupDeployment `
 ---
 
 Varsayılan olarak, şablonun bir parçası olarak oluşturulan tüm kaynaklar yenidir. Ancak, var olan kaynakları kullanma seçeneğiniz de vardır. Şablona ek parametreler sağlayarak, mevcut kaynakları kullanabilirsiniz. Örneğin, var olan bir depolama hesabını kullanmak istiyorsanız **Storageaccountoption** değerini **mevcut** olarak ayarlayın ve depolama hesabınızın adını **storageAccountName** parametresinde belirtin.
+
+> [!IMPORTANT]
+> Mevcut bir Azure Depolama hesabını kullanmak istiyorsanız, bu bir Premium hesap (Premium_LRS ve Premium_GRS) olamaz. Ayrıca hiyerarşik bir ad alanına sahip olamaz (Azure Data Lake Storage 2. ile kullanılır). Çalışma alanının varsayılan depolama hesabıyla Premium Depolama veya hiyerarşik ad alanı desteklenmez.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -374,7 +377,7 @@ Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_da
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>Çalışma alanını yalnızca özel uç nokta arkasında dağıt
 
-İlişkili kaynaklarınız bir sanal ağın arkasında değilse, **privateEndpointType** `AutoAproval` `ManualApproval` çalışma alanını özel bir uç noktanın arkasında dağıtmak için privateendpointtype parametresini veya olarak ayarlayabilirsiniz.
+İlişkili kaynaklarınız bir sanal ağın arkasında değilse, **privateEndpointType** `AutoAproval` `ManualApproval` çalışma alanını özel bir uç noktanın arkasında dağıtmak için privateendpointtype parametresini veya olarak ayarlayabilirsiniz. Bu, hem yeni hem de mevcut çalışma alanları için yapılabilir. Mevcut bir çalışma alanını güncelleştirirken, şablon parametrelerini mevcut çalışma alanındaki bilgilerle birlikte girin.
 
 > [!IMPORTANT]
 > Dağıtım yalnızca özel uç noktaları destekleyen bölgelerde geçerlidir.
@@ -753,3 +756,4 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
 * [Kaynak Yöneticisi şablonları ve Kaynak Yöneticisi REST API ile kaynakları dağıtın](../azure-resource-manager/templates/deploy-rest.md).
 * [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
+* [Azure Machine Learning ilgili diğer şablonlar için bkz. Azure hızlı başlangıç şablonları deposu](https://github.com/Azure/azure-quickstart-templates)

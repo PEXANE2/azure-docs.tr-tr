@@ -5,18 +5,19 @@ description: Azure Data Factory bir veri alma işlem hattı oluşturmayı öğre
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3e8d93c1f04dda9afbcfa0cab4e8fc9036ae7580
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 80e912cb5d4cf428c406242b06c30ccf56ccd6ca
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555670"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326333"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory ile veri alımı
 
@@ -26,7 +27,7 @@ Basit veri dönüştürme, yerel ADF etkinlikleri ve [veri akışı](https://doc
 
 Alma sırasında verileri dönüştürmek için Azure Data Factory kullanmanın birçok yaygın tekniği vardır. Her bir tekniğe, belirli bir kullanım örneğine uygun olup olmadığını belirten olumlu ve olumsuz yönleri vardır:
 
-| Teknik | Artıları | Simgeler |
+| Teknik | Avantajlar | Dezavantajlar |
 | ----- | ----- | ----- |
 | ADF + Azure Işlevleri | Düşük gecikme süresi, sunucusuz işlem</br>Durum bilgisi olan işlevler</br>Yeniden kullanılabilir işlevler | Yalnızca kısa süre çalışan işleme için iyi |
 | ADF + özel bileşen | Büyük ölçekli paralel bilgi işlem</br>Ağır algoritmalara uygun | Kodu çalıştırılabilire sarmalama</br>Bağımlılıkları ve GÇ işleme karmaşıklığı |

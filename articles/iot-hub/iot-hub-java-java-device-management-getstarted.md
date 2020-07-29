@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: mqtt
-ms.openlocfilehash: 75d89b54bae6eb8166d44e08ea020a0da67ad20c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-java
+ms.openlocfilehash: da108e5f4832b1b72f252803ca0f4bc93c011c9a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732550"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327642"
 ---
 # <a name="get-started-with-device-management-java"></a>Cihaz yönetimini kullanmaya başlama (Java)
 
@@ -51,7 +52,7 @@ Bu öğreticinin sonunda iki Java konsol uygulamanız vardır:
 > [!NOTE]
 > Cihazlarda ve çözüm arka ucunda çalıştırılacak uygulamalar oluşturmak için kullanabileceğiniz SDK 'lar hakkında bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 

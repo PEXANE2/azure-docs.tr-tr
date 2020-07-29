@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105917"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327897"
 ---
-# <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme
+# <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure İzleyici'deki günlük verilerine ve çalışma alanlarına erişimi yönetme
 
 Azure Izleyici, [günlük](data-platform-logs.md) verilerini bir Log Analytics çalışma alanında depolar. Çalışma alanı, veri ve yapılandırma bilgilerini içeren bir kapsayıcıdır. Günlük verilerine erişimi yönetmek için, çalışma alanınız ile ilgili çeşitli yönetim görevlerini gerçekleştirirsiniz.
 
@@ -300,7 +300,7 @@ Yukarıdaki örnekler, izin verilen tabloların beyaz bir listesini tanımlar. B
 
 Bazen özel Günlükler, belirli bir kaynakla doğrudan ilişkili olmayan kaynaklardan gelir. Bu durumda, yalnızca bu günlüklere erişimi yönetmek için bir kaynak grubu oluşturun. Kaynak grubu hiçbir ücret vermez, ancak özel günlüklere erişimi denetlemek için geçerli bir kaynak KIMLIĞI sağlar. Örneğin, belirli bir güvenlik duvarı özel Günlükler gönderiyorsa, "MyFireWallLogs" adlı bir kaynak grubu oluşturun ve API isteklerinin "MyFireWallLogs" kaynak KIMLIĞINI içerdiğinden emin olun. Daha sonra güvenlik duvarı günlük kayıtları, yalnızca MyFireWallLogs veya tam çalışma alanı erişimiyle erişim izni verilen kullanıcılar için erişilebilir.          
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * Bir kullanıcıya, _ \* /Read_ eylemini içeren standart okuyucu veya katkıda bulunan rollerle genel okuma izni verildiyse, tablo başına erişim denetimini geçersiz kılar ve tüm günlük verilerine erişim sağlar.
 * Bir kullanıcıya tablo başına erişim verildiyse ancak başka izinler yoksa, API 'den günlük verilerine erişebilecek ancak Azure portal. Azure portal erişim sağlamak için, temel rolü olarak Log Analytics okuyucu kullanın.
@@ -310,6 +310,7 @@ Bazen özel Günlükler, belirli bir kaynakla doğrudan ilişkili olmayan kaynak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veri merkezinizdeki veya diğer bulut Ortamınızdaki bilgisayarlardan veri toplamak için [Log Analytics aracısına genel bakış](../../azure-monitor/platform/log-analytics-agent.md) konusuna bakın.
+* Veri merkezinizdeki veya diğer bulut Ortamınızdaki bilgisayarlardan veri toplamak için [Log Analytics aracısına genel bakış](./log-analytics-agent.md) konusuna bakın.
 
-* Azure VM 'lerinden veri toplamayı yapılandırmak için bkz. [Azure sanal makineler hakkında veri toplama](../../azure-monitor/learn/quick-collect-azurevm.md) .
+* Azure VM 'lerinden veri toplamayı yapılandırmak için bkz. [Azure sanal makineler hakkında veri toplama](../learn/quick-collect-azurevm.md) .
+

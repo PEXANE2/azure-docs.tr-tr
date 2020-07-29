@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 2e50daf3d94d30e4799bf7a645f46bb70fd6750c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f82eec5979bd1642e30e52bf6325f7b8f210371c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516507"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325670"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Hızlı başlangıç: Node.js Web uygulamanızı Azure Application Insights izlemeye başlayın
 
@@ -112,11 +112,11 @@ Application Insights, şirket içinde veya bulutta çalışıp çalışmadığı
    </script>
    ```
 
-5. Sol tarafta **İzleyici**’yi seçin. Kaynağınızın sistem durumunu ve kullanımını araştırmak için ölçüm gezginini kullanın. Ek özel görünümler oluşturmak için **yeni grafik Ekle** ' yi veya var olan grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirmek için **Düzenle** ' yi seçebilirsiniz. Örneğin, ölçümler açılan penceresinden "sayfa yükleme süresi" ni ve toplamasının "Ort" öğesini seçerek ortalama tarayıcı sayfa yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçüm Gezgini hakkında daha fazla bilgi edinmek için [azure Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)kullanmaya başlama makalesini ziyaret edin.
+5. Sol tarafta **İzleyici**’yi seçin. Kaynağınızın sistem durumunu ve kullanımını araştırmak için ölçüm gezginini kullanın. Ek özel görünümler oluşturmak için **yeni grafik Ekle** ' yi veya var olan grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirmek için **Düzenle** ' yi seçebilirsiniz. Örneğin, ölçümler açılan penceresinden "sayfa yükleme süresi" ni ve toplamasının "Ort" öğesini seçerek ortalama tarayıcı sayfa yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçüm Gezgini hakkında daha fazla bilgi edinmek için [azure Ölçüm Gezgini](../platform/metrics-getting-started.md)kullanmaya başlama makalesini ziyaret edin.
 
    ![Application Insights Server ölçümleri grafiği](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-İzleme Node.js hakkında daha fazla bilgi edinmek için [ek Appınsights Node.js belgelerine](../../azure-monitor/app/nodejs.md)göz atın.
+İzleme Node.js hakkında daha fazla bilgi edinmek için [ek Appınsights Node.js belgelerine](../app/nodejs.md)göz atın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -132,3 +132,4 @@ Testi tamamladığınızda, kaynak grubunu ve tüm ilgili kaynakları silebilirs
 
 > [!div class="nextstepaction"]
 > [Performans sorunlarını bulma ve tanılama](../log-query/log-query-overview.md)
+

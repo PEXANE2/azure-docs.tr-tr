@@ -3,14 +3,14 @@ title: Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağl
 description: Visual Studio Code projenize bir çıkış bağlaması ekleyerek Azure Işlevlerini bir Azure depolama kuyruğuna bağlamayı öğrenin.
 ms.date: 02/07/2020
 ms.topic: quickstart
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 65570674f16e660c4101088cd77db433abab59a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 49f0f9f89ad22694f762b58ae5a0e44dc158cfcd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291815"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağlama
 

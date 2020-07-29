@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326180"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Izleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -96,7 +96,7 @@ Birçok hizmet, **genel bakış** sayfasına, işlem için hızlı bir bakış o
 
 
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler 
-Bazı hizmetler, Azure Izleyici 'nin standart özelliklerinden daha fazla araç sağlar. [Öngörüler](../insights/insights-overview.md) , Azure izleyici veri platformu ve standart özellikleri üzerinde oluşturulmuş özelleştirilmiş bir izleme deneyimi sağlar. [Çözümler](../insights/solutions.md) , Azure izleyici günlükleri üzerinde oluşturulmuş, önceden tanımlanmış izleme mantığı sağlar. 
+Bazı hizmetler, Azure Izleyici 'nin standart özelliklerinden daha fazla araç sağlar. [Öngörüler](./insights-overview.md) , Azure izleyici veri platformu ve standart özellikleri üzerinde oluşturulmuş özelleştirilmiş bir izleme deneyimi sağlar. [Çözümler](./solutions.md) , Azure izleyici günlükleri üzerinde oluşturulmuş, önceden tanımlanmış izleme mantığı sağlar. 
 
 Bir hizmette Azure Izleyici Insight varsa, bu kaynağa her bir kaynağın menüsündeki **izleme** 'den erişebilirsiniz. **Azure izleyici** menüsünden tüm Öngörüler ve çözümlere erişin.
 
@@ -164,3 +164,4 @@ Uyarıları görüntülemek ve bu kaynakla ilgili uyarı kurallarını yönetmek
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/resource-logs-schema.md) .  
+

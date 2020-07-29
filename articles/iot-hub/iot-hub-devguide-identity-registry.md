@@ -11,11 +11,14 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674963"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327761"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub 'ınızdaki kimlik kayıt defterini anlayın
 
@@ -109,7 +112,7 @@ IoT Hub, yaşam döngüsü bildirimleri göndererek bir kimlik oluşturulduğund
 
 Cihaz için bildirim iletisi:
 
-| Name | Değer |
+| Ad | Değer |
 | --- | --- |
 |$content türü | uygulama/json |
 |$iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -145,7 +148,7 @@ Gövde: Bu bölüm JSON biçimindedir ve oluşturulan cihaz kimliğinin ikizi te
 ```
 Modül için bildirim iletisi:
 
-| Name | Değer |
+| Ad | Değer |
 | --- | --- |
 $content türü | uygulama/json |
 $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea060ec9ba755a197e2969c0bf58050eb1d62a03
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092856"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325976"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Karma ortam için VM'ler için Azure İzleyici etkinleştirme
 
@@ -24,7 +24,7 @@ Başlamadan önce, [önkoşulları](vminsights-enable-overview.md) gözden geçi
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->VM'ler için Azure İzleyici Map bağımlılık Aracısı herhangi bir veri iletmez ve güvenlik duvarları veya bağlantı noktalarında değişiklik gerektirmez. Harita verileri her zaman doğrudan veya [Operations Management Suite ağ geçidi](../../azure-monitor/platform/gateway.md) aracılığıyla Log Analytics ARACıSıDıR ve BT güvenlik ilkeleriniz ağdaki bilgisayarların internet 'e bağlanmasına izin vermez.
+>VM'ler için Azure İzleyici Map bağımlılık Aracısı herhangi bir veri iletmez ve güvenlik duvarları veya bağlantı noktalarında değişiklik gerektirmez. Harita verileri her zaman doğrudan veya [Operations Management Suite ağ geçidi](../platform/gateway.md) aracılığıyla Log Analytics ARACıSıDıR ve BT güvenlik ilkeleriniz ağdaki bilgisayarların internet 'e bağlanmasına izin vermez.
 
 Bu görevi tamamlamaya yönelik adımlar şu şekilde özetlenmiştir:
 
@@ -145,7 +145,7 @@ configuration VMInsights {
 ## <a name="enable-performance-counters"></a>Performans sayaçlarını etkinleştir
 
 Çözüm tarafından başvurulan Log Analytics çalışma alanı, çözüm için gereken performans sayaçlarını toplamak üzere zaten yapılandırılmamışsa, bunları etkinleştirmeniz gerekir. Bunu iki şekilde yapabilirsiniz:
-* [Windows ve Linux performans verileri kaynaklarında](../../azure-monitor/platform/data-sources-performance-counters.md) açıklandığı gibi el ile Log Analytics
+* [Windows ve Linux performans verileri kaynaklarında](../platform/data-sources-performance-counters.md) açıklandığı gibi el ile Log Analytics
 * [Azure PowerShell galerisinde](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1) bulunan bir PowerShell betiğini indirip çalıştırarak
 
 ## <a name="deploy-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici dağıt
@@ -259,3 +259,4 @@ Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM'le
 - Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).
 
 - VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md).
+

@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 57cc3624a38fbec1e5bef7bb281363d34acef2b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 25604bde3afbbef0d541bc21996b59e98b3090f4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505610"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327506"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -77,8 +77,8 @@ Bu makalede, Azure portal içindeki uyarılar arabirimini kullanarak günlük uy
 1. Uyarının **Sıklık**olarak ne sıklıkta çalışacağını seçin. 
 
     **Günlük uyarıları** şunları temel alabilir:
-    - [Kayıt sayısı](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): sorgu tarafından döndürülen kayıt sayısı, belirtilen değerden büyükse veya bundan küçükse bir uyarı oluşturulur.
-    - [Ölçüm ölçümü](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): sonuçlardaki her bir *toplama değeri* , belirtilen eşik değerini aşarsa ve seçilen değere *göre gruplandırılmışsa* bir uyarı oluşturulur. Bir uyarı için ihlal sayısı, eşiğin seçilen dönemde kaç kez aşıldığını sayısıdır. Sonuçlar kümesi veya ardışık ihlallerin her türlü birleşimi için, her türlü ihlal kombinasyonu için, binlerin ardışık örneklerde oluşması gerekir.
+    - [Kayıt sayısı](./alerts-unified-log.md#number-of-results-alert-rules): sorgu tarafından döndürülen kayıt sayısı, belirtilen değerden büyükse veya bundan küçükse bir uyarı oluşturulur.
+    - [Ölçüm ölçümü](./alerts-unified-log.md#metric-measurement-alert-rules): sonuçlardaki her bir *toplama değeri* , belirtilen eşik değerini aşarsa ve seçilen değere *göre gruplandırılmışsa* bir uyarı oluşturulur. Bir uyarı için ihlal sayısı, eşiğin seçilen dönemde kaç kez aşıldığını sayısıdır. Sonuçlar kümesi veya ardışık ihlallerin her türlü birleşimi için, her türlü ihlal kombinasyonu için, binlerin ardışık örneklerde oluşması gerekir.
 
 
 1. **Bitti**’ye tıklayın. 
@@ -100,7 +100,7 @@ Bu makalede, Azure portal içindeki uyarılar arabirimini kullanarak günlük uy
     Varsayılan eylemleri geçersiz kılmak için bazı ek işlevler kullanılabilir:
 
     - **E-posta bildirimi**: eylem grubu aracılığıyla gönderilen e-postadaki *e-posta konusunu* geçersiz kılar. Postanın gövdesini değiştiremezsiniz ve bu alan e-posta adresi için **değil** .
-    - **Özel JSON yükünü dahil et**: eylem grubunun bir Web kancası türü içerdiğini varsayarak, eylem grupları tarafından kullanılan Web kancası JSON 'ı geçersiz kılar. Web kancası biçimleri hakkında daha fazla bilgi için bkz. [günlük uyarıları için Web kancası eylemi](../../azure-monitor/platform/alerts-log-webhook.md). Örnek JSON verilerini kullanarak Biçimlendirmeyi denetlemek için Web kancasını görüntüle seçeneği sağlanır.
+    - **Özel JSON yükünü dahil et**: eylem grubunun bir Web kancası türü içerdiğini varsayarak, eylem grupları tarafından kullanılan Web kancası JSON 'ı geçersiz kılar. Web kancası biçimleri hakkında daha fazla bilgi için bkz. [günlük uyarıları için Web kancası eylemi](./alerts-log-webhook.md). Örnek JSON verilerini kullanarak Biçimlendirmeyi denetlemek için Web kancasını görüntüle seçeneği sağlanır.
 
         ![Günlük uyarıları için eylem geçersiz kılmaları](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -212,7 +212,7 @@ Yukarıdaki örnek JSON (deyin), Bu izlenecek yol için sampleScheduledQueryRule
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Azure kaynak şablonu kullanarak çapraz kaynak sorgusuyla günlük uyarısı
 
-Aşağıda, değişken olarak ayarlanan örnek verilerle birlikte, [Ölçüm Ölçüm türü günlük uyarısı](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)' nın [çapraz kaynak günlük arama sorgusu](../../azure-monitor/log-query/cross-workspace-query.md) kullanılarak [zamanlanan sorgu kuralları oluşturma](/rest/api/monitor/scheduledqueryrules/createorupdate) tabanlı kaynak şablonunun yapısı verilmiştir.
+Aşağıda, değişken olarak ayarlanan örnek verilerle birlikte, [Ölçüm Ölçüm türü günlük uyarısı](./alerts-unified-log.md#metric-measurement-alert-rules)' nın [çapraz kaynak günlük arama sorgusu](../log-query/cross-workspace-query.md) kullanılarak [zamanlanan sorgu kuralları oluşturma](/rest/api/monitor/scheduledqueryrules/createorupdate) tabanlı kaynak şablonunun yapısı verilmiştir.
 
 ```json
 
@@ -319,7 +319,7 @@ Azure Izleyici- [Zamanlanmış sorgu kuralları API 'si](/rest/api/monitor/sched
 - [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) : bir günlük uyarısı için eylem parametreleri belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-azscheduledqueryrule](/powershell/module/az.monitor/new-azscheduledqueryrule) ve [set-azscheduledqueryrule](/powershell/module/az.monitor/set-azscheduledqueryrule) cmdlet 'i tarafından giriş olarak kullanılır.
 - [New-AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : bir günlük uyarısı için eylem grupları parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) cmdlet 'i tarafından giriş olarak kullanılır.
 - [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : günlük uyarısı için tetikleyici koşulu parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) cmdlet 'i tarafından giriş olarak kullanılır.
-- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : ölçüm [Ölçüm türü günlük uyarısı](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)için ölçüm tetikleyicisi koşul parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) cmdlet 'i tarafından giriş olarak kullanılır.
+- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : ölçüm [Ölçüm türü günlük uyarısı](./alerts-unified-log.md#metric-measurement-alert-rules)için ölçüm tetikleyicisi koşul parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) cmdlet 'i tarafından giriş olarak kullanılır.
 - [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) : var olan günlük uyarısı kurallarını veya belirli bir günlük uyarısı kuralını listelemek için PowerShell cmdlet 'i
 - [Update-AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) : PowerShell cmdlet 'i, günlük uyarı kuralını etkinleştirmek veya devre dışı bırakmak için
 - [Remove-AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell cmdlet 'i var olan bir günlük uyarı kuralını siler
@@ -363,7 +363,8 @@ Başarılı bir işlem olduğunda, 201 yeni uyarı kuralı oluşturma durumuna d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure uyarılarında günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md) hakkında bilgi edinin
-* [Günlük uyarıları Için Web kancası eylemlerini](../../azure-monitor/platform/alerts-log-webhook.md) anlama
+* [Azure uyarılarında günlük uyarıları](./alerts-unified-log.md) hakkında bilgi edinin
+* [Günlük uyarıları Için Web kancası eylemlerini](./alerts-log-webhook.md) anlama
 * [Application Insights](../log-query/log-query-overview.md) hakkında daha fazla bilgi edinin
 * [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
+

@@ -4,13 +4,14 @@ description: Service Fabric Java SDK’sını kullanan eski JAVA uygulamaların�
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
+ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204296"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327319"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Eski Java Service Fabric uygulamanızı Maven’dan Java kitaplıklarını alacak şekilde güncelleştirme
 Service Fabric Java ikilileri, Service Fabric Java SDK 'dan Maven barındırmaya taşınmıştır. **Mavencentral** kullanarak en son Java bağımlılıklarını Service Fabric getirebilirsiniz. Bu kılavuz, Maven tabanlı yapıyla uyumlu olacak şekilde Service Fabric Java SDK 'Sı için oluşturulan mevcut Java uygulamalarını güncelleştirmenize yardımcı olur.

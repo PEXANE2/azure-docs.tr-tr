@@ -1,6 +1,5 @@
 ---
-title: Web hizmeti parametreleri
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): Web hizmeti parametreleri-Azure'
 description: Web hizmetine erişildiğinde modelinizin davranışını değiştirmek için Azure Machine Learning Web hizmeti parametrelerini kullanma.
 services: machine-learning
 author: likebupt
@@ -12,13 +11,17 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de3fb4a0dab08a13327c910d1e09ecbf0afcec8c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705874"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326265"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasik) Web hizmeti parametrelerini kullanma
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Yapılandırılabilir parametrelere sahip modüller içeren bir deneme yayımlayarak bir Azure Machine Learning Web hizmeti oluşturulur. Bazı durumlarda, Web hizmeti çalışırken modül davranışını değiştirmek isteyebilirsiniz. *Web hizmeti parametreleri* bu görevi yapmanıza izin verir. 
 
@@ -52,7 +55,7 @@ Web hizmetine yönelik API belgeleri Web hizmetine erişirken Web hizmeti parame
    * **Lütfen kimlik doğrulama türünü belirtin**altında "hesap" seçeneğini belirleyin.
    * Azure Blob depolama alanı için hesap bilgilerini girin. 
 
-3. **Kapsayıcı parametresi ile başlayan blob yolunun**sağındaki simgeye tıklayın. Şu şekilde görünür:
+3. **Kapsayıcı parametresi ile başlayan blob yolunun**sağındaki simgeye tıklayın. Bu bölüm şuna benzer:
    
    ![Web hizmeti parametre simgesi](./media/web-service-parameters/icon.png)
    
@@ -63,7 +66,7 @@ Web hizmetine yönelik API belgeleri Web hizmetine erişirken Web hizmeti parame
 5. Web hizmeti parametresi için varsayılan bir değer sağlamak üzere, adın sağ tarafındaki simgeye tıklayın, "varsayılan değer sağla" seçeneğini belirleyin, bir değer girin (örneğin, "kapsayıcı1/output1.csv") ve **ENTER** tuşuna basın.
    
    ![Web hizmeti parametresi](./media/web-service-parameters/parameter.png)
-6. **Çalıştır**' a tıklayın. 
+6. **Çalıştır**'a tıklayın. 
 7. Web **Hizmeti Dağıt ' a** tıklayın ve Web hizmetini dağıtmak için Web Hizmeti Dağıt **[klasik]** veya Web hizmeti dağıtma [ **Yeni]** seçeneğini belirleyin.
 
 > [!NOTE] 

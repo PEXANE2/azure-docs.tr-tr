@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: 5122726cbda2145d190e3dbeb10a3c5b4ae65947
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: f16ace3e54db4d30f89da7335f00153191a7e226
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82588465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326758"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Java cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 
@@ -22,7 +22,7 @@ ms.locfileid: "82588465"
 
 Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir X. 509.952 aygıtı oluşturacaksınız. Cihaz sağlama hizmeti (DPS) ile tek bir kayıt kullanarak bu sanal cihazı IoT Hub 'ınıza bağlamak için cihaz örneği Java kodunu kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md)gözden geçirme.
 - [Azure Portal Ile cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
@@ -121,7 +121,7 @@ Bu makalede, bireysel kayıtlar gösterilmektedir.
 
 3. Kodunuzdaki sağlama hizmetini ve X.509 kimlik bilgilerini girin. Bu otomatik sağlama sırasında, cihaz kaydından önce simülasyon cihazını kanıtlamak için kullanılır:
 
-   - Daha önce belirtildiği `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java`gibi, _kimlik kapsamınızı_ ve _sağlama hizmeti genel uç noktasını_ dahil etmek için dosyayı düzenleyin. Ayrıca önceki bölümde not ettiğiniz _Client Cert_ ve _Client Cert Private Key_ değerlerini de dahil edin.
+   - `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java`Daha önce belirtildiği gibi, _kimlik kapsamınızı_ ve _sağlama hizmeti genel uç noktasını_ dahil etmek için dosyayı düzenleyin. Ayrıca önceki bölümde not ettiğiniz _Client Cert_ ve _Client Cert Private Key_ değerlerini de dahil edin.
 
       ```java
       private static final String idScope = "[Your ID scope here]";
@@ -148,7 +148,7 @@ Bu makalede, bireysel kayıtlar gösterilmektedir.
             "-----END PRIVATE KEY-----\n";
       ```
 
-4. Örneği derleyin. `target` Klasöre gidin ve oluşturulan. jar dosyasını yürütün.
+4. Örneği derleyin. `target`Klasöre gidin ve oluşturulan. jar dosyasını yürütün.
 
     ```cmd/sh
     mvn clean install

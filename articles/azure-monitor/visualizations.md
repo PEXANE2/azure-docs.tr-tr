@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081364"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325534"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure İzleyici’den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
 
 Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına inmek ve desenleri belirlemek için izleme verilerinizi çözümlemenize yardımcı olabilir. Kullandığınız araca bağlı olarak, görselleştirmeleri kuruluşunuzun içindeki ve dışındaki diğer kullanıcılarla paylaşma seçeneğiniz de olabilir.
 
-## <a name="workbooks"></a>Çalışma kitapları
-[Çalışma kitapları](../azure-monitor/platform/workbooks-overview.md) , ekip içinde verileriniz, araştırılması ve işbirliği hakkında ayrıntılı Öngörüler sağlayan etkileşimli belgelerdir. Çalışma kitaplarının yararlı olduğu belirli örnekler, sorun giderme kılavuzlarından ve olay postmordıtem.
+## <a name="workbooks"></a>Çalışma Kitapları
+[Çalışma kitapları](./platform/workbooks-overview.md) , ekip içinde verileriniz, araştırılması ve işbirliği hakkında ayrıntılı Öngörüler sağlayan etkileşimli belgelerdir. Çalışma kitaplarının yararlı olduğu belirli örnekler, sorun giderme kılavuzlarından ve olay postmordıtem.
 
 ![Çalışma Kitabı](media/visualizations/workbook.png)
 
@@ -141,7 +141,7 @@ Azure Izleyici 'deki günlük ve ölçüm verilerinde bulunan verilere, kendi ö
 - [Azure izleyici tarafından toplanan veriler](platform/data-platform.md)hakkında bilgi edinin.
 - [Azure panoları](../azure-portal/azure-portal-dashboards.md)hakkında bilgi edinin.
 - [Azure izleyici 'de görünümler](platform/view-designer.md)hakkında bilgi edinin.
-- [Çalışma kitapları](../azure-monitor/platform/workbooks-overview.md)hakkında bilgi edinin.
-- [Günlük verilerini Power BI içeri aktarma](../azure-monitor/platform/powerbi.md)hakkında bilgi edinin.
-- [Grafana Azure izleyici veri kaynağı eklentisi](../azure-monitor/platform/grafana-plugin.md)hakkında bilgi edinin.
+- [Çalışma kitapları](./platform/workbooks-overview.md)hakkında bilgi edinin.
+- [Günlük verilerini Power BI içeri aktarma](./platform/powerbi.md)hakkında bilgi edinin.
+- [Grafana Azure izleyici veri kaynağı eklentisi](./platform/grafana-plugin.md)hakkında bilgi edinin.
 

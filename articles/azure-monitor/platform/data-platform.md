@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515538"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325585"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Izleyici veri platformu
 
@@ -36,7 +36,7 @@ Azure kaynakları, önemli miktarda izleme verisi üretir. Azure Izleyici, bu ve
 
 Azure Izleyici ölçümleri, zaman damgalı verileri çözümlemek için en iyi duruma getirilmiş bir zaman serisi veritabanında depolanır. Bu, ölçümleri uyarı ve hızlı bir şekilde algılama için özellikle uygun hale getirir. Bunlar sisteminizin nasıl çalıştığını söyleyebilir, ancak genellikle sorunların temel nedenini belirlemek için günlüklerle birleştirilmesi gerekir.
 
-Ölçümler [Azure Ölçüm Gezgini](../platform/metrics-getting-started.md)ile Azure Portal etkileşimli analiz için kullanılabilir. Bunlar, başka verilerle birlikte görselleştirme için bir [Azure panosuna](../learn/tutorial-app-dashboards.md) eklenebilir ve neredeyse gerçek zamanlı [Uyarı](alerts-metric.md)için kullanılabilir.
+Ölçümler [Azure Ölçüm Gezgini](./metrics-getting-started.md)ile Azure Portal etkileşimli analiz için kullanılabilir. Bunlar, başka verilerle birlikte görselleştirme için bir [Azure panosuna](../learn/tutorial-app-dashboards.md) eklenebilir ve neredeyse gerçek zamanlı [Uyarı](alerts-metric.md)için kullanılabilir.
 
 Azure izleyici [ölçümlerinde](data-platform-metrics.md)bulunan veri kaynakları da dahil olmak üzere Azure izleyici ölçümleri hakkında daha fazla bilgi edinin.
 
@@ -90,3 +90,4 @@ Her türü dolduran farklı veri kaynaklarının listesi için bkz. Azure izleyi
 - [Azure izleyici 'de ölçümler](data-platform-metrics.md)hakkında daha fazla bilgi edinin.
 - [Azure izleyici 'de Günlükler](data-platform-logs.md)hakkında daha fazla bilgi edinin.
 - Azure 'daki farklı kaynaklar için [kullanılabilen izleme verileri](data-sources.md) hakkında bilgi edinin.
+

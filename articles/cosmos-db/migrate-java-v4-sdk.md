@@ -2,17 +2,18 @@
 title: Azure Cosmos DB Java SDK v4 (com. Azure. Cosmos) kullanmak için uygulamanızı geçirin
 description: Mevcut Java uygulamanızı Azure Cosmos DB, çekirdek (SQL) API 'SI için daha yeni Java SDK 4,0 (com. Azure. Cosmos paketi) ile birlikte kullanarak nasıl yükselteceğinizi öğrenin.
 author: anfeldma-ms
+ms.custom: devx-track-java
 ms.author: anfeldma
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 29b3ca267e22c8d1f349cb127efb7d2fd71e1477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263509"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327863"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Uygulamanızı Java SDK 'Sı v4 Azure Cosmos DB kullanmak için geçirin
 
@@ -30,7 +31,7 @@ Bu makalede, daha eski bir Java SDK 'sını kullanan mevcut Java uygulamanızın
 
 Aşağıdaki tabloda farklı Azure Cosmos DB Java SDK 'Ları, paket adı ve sürüm bilgileri listelenmektedir:
 
-| Java SDK| Yayın Tarihi | Paketlenmiş API 'Ler   | Maven jar  | Java paket adı  |API Başvurusu   | Sürüm Notları  |
+| Java SDK| Yayın Tarihi | Paketlenmiş API 'Ler   | Maven jar  | Java paket adı  |API Referansı   | Sürüm Notları  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Zaman uyumsuz 2. x. x  | Haziran 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Sürüm Notları](sql-api-sdk-async-java.md) |
 | 2. x. x eşitlemesini Eşitle     | Eyl 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Sürüm Notları](sql-api-sdk-java.md)  |
