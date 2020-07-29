@@ -3,12 +3,12 @@ title: Azure Application Insights ile canlı bir ASP.NET web uygulamasını izle
 description: Yeniden dağıtmadan web sitesinin performansını izleme. Şirket içinde veya VM 'lerde barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499537"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310455"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
 
@@ -22,7 +22,7 @@ Durum İzleyicisi, IIS 'de barındırılan bir .NET uygulamasını şirket için
 - Uygulamanız Azure VM 'ye veya Azure sanal makine ölçek kümesine dağıtılmışsa, [Bu yönergeleri](azure-vm-vmss-apps.md)izleyin.
 - Uygulamanız Azure Uygulama Hizmetleri 'ne dağıtılmışsa, [Bu yönergeleri](azure-web-apps.md)izleyin.
 - Uygulamanız bir Azure VM 'de dağıtılmışsa, Azure denetim masasından Application Insights izlemeye geçebilirsiniz.
-- ( [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)'yi işaretleme hakkında ayrı makaleler de vardır.)
+- ( [Azure Cloud Services](./cloudservices.md)'yi işaretleme hakkında ayrı makaleler de vardır.)
 
 
 ![Başarısız istekler, sunucu yanıt süresi ve sunucu istekleri hakkında bilgi içeren uygulama öngörülerine genel bakış grafiklerinin ekran görüntüsü](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -40,12 +40,12 @@ Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
 | **Özel durumları & istekleri** |Yes |Yes |
-| **[Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md)** | |Yes |
-| **[Bağımlılık tanılama](../../azure-monitor/app/asp-net-dependencies.md)** |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| **[Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md)** |Yes |Yes |
+| **[Daha ayrıntılı özel durumlar](./asp-net-exceptions.md)** | |Yes |
+| **[Bağımlılık tanılama](./asp-net-dependencies.md)** |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
+| **[Sistem performans sayaçları](./performance-counters.md)** |Yes |Yes |
 | **[Özel telemetri için API][api]** |Evet |Hayır |
-| **[İzleme günlüğü tümleştirmesi](../../azure-monitor/app/asp-net-trace-logs.md)** |Evet |Hayır |
-| **[Sayfa görüntüleme & Kullanıcı verileri](../../azure-monitor/app/javascript.md)** |Evet |Hayır |
+| **[İzleme günlüğü tümleştirmesi](./asp-net-trace-logs.md)** |Evet |Hayır |
+| **[Sayfa görüntüleme & Kullanıcı verileri](./javascript.md)** |Evet |Hayır |
 | **Kodu yeniden derlemeniz gerekir** |Evet | Hayır |
 
 
@@ -70,7 +70,7 @@ Uygulamanız bir IIS sunucusunda barındırılıyorsa, Durum İzleyici’yi kull
 
 ## <a name="customize-monitoring-options"></a>İzlemeyi özelleştirme seçenekleri
 
-Application Insights’ın etkinleştirilmesi, web uygulamanıza DLL ve ApplicationInsights.config dosyasını ekler. Bazı seçenekleri değiştirmek için [.config dosyasını düzenleyebilirsiniz](../../azure-monitor/app/configuration-with-applicationinsights-config.md).
+Application Insights’ın etkinleştirilmesi, web uygulamanıza DLL ve ApplicationInsights.config dosyasını ekler. Bazı seçenekleri değiştirmek için [.config dosyasını düzenleyebilirsiniz](./configuration-with-applicationinsights-config.md).
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Uygulamanızı yeniden yayımladığınızda, Application Insights’ı yeniden etkinleştirin
 
@@ -106,7 +106,7 @@ Bunlar, yüklemenizin başarılı olduğunu onaylamak için gerçekleştirebilec
 
 ### <a name="cant-connect-no-telemetry"></a>Bağlanamıyor musunuz? Telemetri yok mu?
 
-* Durum İzleyicisi’nin çalışmasına izin vermek için sunucunuzun güvenlik duvarında [gerekli giden bağlantı noktalarını](../../azure-monitor/app/ip-addresses.md#outgoing-ports) açın.
+* Durum İzleyicisi’nin çalışmasına izin vermek için sunucunuzun güvenlik duvarında [gerekli giden bağlantı noktalarını](./ip-addresses.md#outgoing-ports) açın.
 
 ### <a name="unable-to-login"></a>Oturum açılamıyor
 
@@ -261,7 +261,7 @@ IIS web sunucunuza yüklediğiniz bir masaüstü uygulamasıdır. Web uygulamala
 ### <a name="when-do-i-use-status-monitor"></a>Durum İzleyicisi’ni ne zaman kullanırım?
 
 * Halihazırda çalışıyor olsa bile, IIS sunucunuzda çalışan herhangi bir web uygulamasını izleme.
-* Derleme zamanında [Application Insights SDK'sı ile derlenmiş](../../azure-monitor/app/asp-net.md) web uygulamaları için ek telemetriyi etkinleştirme. 
+* Derleme zamanında [Application Insights SDK'sı ile derlenmiş](./asp-net.md) web uygulamaları için ek telemetriyi etkinleştirme. 
 
 ### <a name="can-i-close-it-after-it-runs"></a>Çalıştıktan sonra kapatabilir miyim?
 
@@ -294,7 +294,7 @@ Durum İzleyicisi'ni kullanarak yalnızca çalışma zamanında izlediğiniz uyg
 
 * HTTP istekleri
 * Bağımlılık çağrıları
-* Özel Durumlar
+* Özel durumlar
 * Performans sayaçları
 
 Derleme zamanında zaten izlenmekte olan uygulamalar için:
@@ -303,7 +303,7 @@ Derleme zamanında zaten izlenmekte olan uygulamalar için:
  * Bağımlılık çağrıları (.NET 4.5); bağımlılık çağrılarındaki dönüş değerleri (.NET 4.6).
  * Özel durum yığın izleme değerleri.
 
-[Daha fazla bilgi edinin](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
+[Daha fazla bilgi](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>Video
 
@@ -319,7 +319,7 @@ Derleme zamanında zaten izlenmekte olan uygulamalar için:
 
 Telemetrinizi görüntüleyin:
 
-* Performans ve kullanımı izlemek için [ölçümleri keşfedin](../../azure-monitor/platform/metrics-charts.md)
+* Performans ve kullanımı izlemek için [ölçümleri keşfedin](../platform/metrics-charts.md)
 * Sorunların tanımlanması için [Olayları ve günlükleri arayın][diagnostic]
 * Daha gelişmiş sorgular için [analiz](../log-query/log-query-overview.md)
 
@@ -331,11 +331,12 @@ Daha fazla telemetri ekleyin:
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
+[api]: ./api-custom-events-metrics.md
 [availability]: monitor-web-app-availability.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
-[usage]: ../../azure-monitor/app/javascript.md
+[roles]: ./resources-roles-access-control.md
+[usage]: ./javascript.md
+

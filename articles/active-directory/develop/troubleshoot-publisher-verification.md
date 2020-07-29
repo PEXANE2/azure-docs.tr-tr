@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: dcdce6ee6683c5770f97f5f3dc20e1c9b409ead0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477048"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282985"
 ---
 # <a name="troubleshoot-publisher-verification-preview"></a>Yayımcı doğrulaması ile ilgili sorunları giderme (önizleme)
 İşlem tamamlanamıyorsanız veya [yayımcı doğrulaması (Önizleme)](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen bir davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
@@ -37,7 +37,7 @@ ms.locfileid: "85477048"
     1. [MPN kayıt sayfasına](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new) gidin
     1. Kuruluşunuzun birincil Azure AD kiracısında bir kullanıcı hesabıyla oturum açın 
     1. Bir MPN hesabı zaten mevcutsa, bu tanınacaktır ve hesaba eklenirsiniz 
-    1. MPN KIMLIĞI ve birincil hesap kişisinin listeleneceği [iş ortağı profili sayfasına](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile) gidin
+    1. MPN KIMLIĞI ve birincil hesap kişisinin listeleneceği [iş ortağı profili sayfasına](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) gidin
 
 - **Azure AD Genel yöneticimin (Şirket Yöneticisi veya kiracı yöneticisi olarak da bilinir) kim olduğunu bilmiyorum, bunları nasıl bulabilirim? Uygulama Yöneticisi veya farklı bir yönetici rolü nedir?**
     1. Kuruluşunuzun birincil kiracısındaki bir kullanıcı hesabını kullanarak [Azure AD portalında](https://aad.portal.azure.com) oturum açın
@@ -45,14 +45,14 @@ ms.locfileid: "85477048"
     1. "Genel yönetici" veya istenen yönetici rolü ' ne tıklayın
     1. Bu rolün atandığı kullanıcıların listesi görüntülenir
 
-- **MPN hesabımın yöneticimin kim olduğunu bilmiyorum** [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/en-us/pcv/users) gidin ve kullanıcıların çeşitli yönetici rollerde olduğunu görmek için kullanıcı listesine filtre uygulayın.
+- **MPN hesabımın yöneticimin kim olduğunu bilmiyorum** [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/pcv/users) gidin ve kullanıcıların çeşitli yönetici rollerde olduğunu görmek için kullanıcı listesine filtre uygulayın.
 
 - **MPN KIMLIĞI 'nin geçersiz olduğunu veya erişim izni olmadığını söyleyen bir hata alıyorum.**
-    1. [İş ortağı profilinize](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile) gidin ve şunları doğrulayın: 
+    1. [İş ortağı profilinize](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) gidin ve şunları doğrulayın: 
         - MPN KIMLIĞI doğru. 
         - Bir hata veya "bekleyen eylemler" görüntülenir ve yasal iş profili ve Iş ortağı bilgileri altındaki doğrulama durumu "yetkili" veya "başarılı" deyin.
-    1. [MPN Kiracı Yönetimi sayfasına](https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement) gidin ve uygulamanın kaydolmasını ve ' den bir kullanıcı hesabı ile imzalarınızın ilişkili kiracılar listesinde olduğunu doğrulayın.
-    1. [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/en-us/pcv/users) gidin ve oturum açmak için kullandığınız kullanıcının genel yönetici, MPN Yöneticisi veya hesaplar Yöneticisi olduğunu onaylayın.
+    1. [MPN Kiracı Yönetimi sayfasına](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) gidin ve uygulamanın kaydolmasını ve ' den bir kullanıcı hesabı ile imzalarınızın ilişkili kiracılar listesinde olduğunu doğrulayın.
+    1. [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/pcv/users) gidin ve oturum açmak için kullandığınız kullanıcının genel yönetici, MPN Yöneticisi veya hesaplar Yöneticisi olduğunu onaylayın.
 
 - **Azure AD portalında oturum açarken hiçbir uygulamanın kayıtlı olmadığını görmüyorum. Kaydol?** 
     Uygulama kayıtlarınız farklı bir kullanıcı hesabı kullanılarak veya farklı bir kiracıda oluşturulmuş olabilir. Uygulama kayıtlarınızın oluşturulduğu kiracıda doğru hesapla oturum açtığınızdan emin olun.

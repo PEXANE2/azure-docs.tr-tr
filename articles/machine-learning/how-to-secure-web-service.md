@@ -5,17 +5,18 @@ description: Azure Machine Learning aracılığıyla dağıtılan bir Web hizmet
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: cb766a81cda822377eeda09cab75d19111523bef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 3e10841852b8a89b344d3bfd9311db8abe15642a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432862"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319550"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +52,7 @@ Bu, bir Web hizmetinin güvenliğini sağlamaya yönelik genel bir işlemdir:
 
 [Dağıtım hedefleri](how-to-deploy-and-where.md)genelinde güvenli hale getirilçalışırken küçük farklılıklar vardır.
 
-## <a name="get-a-domain-name"></a>Etki alanı adı Al
+## <a name="get-a-domain-name"></a>Etki alanı adı alma
 
 Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www \. contoso.com) Web hizmetinizi BARıNDıRAN IP adresine eşlemek için bu araçları kullanabilirsiniz.
 

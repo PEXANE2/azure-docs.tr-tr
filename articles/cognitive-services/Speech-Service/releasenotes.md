@@ -11,20 +11,49 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512672"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373802"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
+
+## <a name="speech-sdk-1130-2020-july-release"></a>Konuşma SDK 1.13.0:2020-Temmuz sürümü
+
+**Note**: Windows üzerinde konuşma SDK 'Sı, Visual Studio 2015, 2017 ve 2019 için paylaşılan Microsoft Visual C++ yeniden dağıtılabilir 'e bağlıdır. [Buradan](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)indirin ve yükleyin.
+
+**Yeni özellikler**
+- **C#**: zaman uyumsuz konuşma dökümü için destek eklendi. [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription).  
+- **JavaScript**: hem [tarayıcı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) hem de [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition)için konuşmacı tanıma desteği eklendi.
+- **JavaScript**: otomatik dil algılama/dil kimliği desteği eklendi. [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript).
+- **Amaç-C**: Çok cihazlı konuşma ve konuşma dökümü için destek eklendi. 
+- **Python**: Windows ve Linux 'ta Python için sıkıştırılmış ses desteği eklendi. [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
+
+**Hata düzeltmeleri**
+- **Tümü**: bir tanımadan sonra keywordtanıyıcı 'e akış ilerlememesine neden olan bir sorun düzeltildi.
+- **Tümü**: bir KeywordRecognitionResult öğesinden elde edilen akışa neden olan bir sorun düzeltildi anahtar sözcüğünü içermemelidir.
+- **Tümü**: SendMessageAsync 'in, kullanıcıların bekleme süresinden önce iletiyi bir ileti göndermediği bir sorun düzeltildi.
+- **Tümü**: kullanıcılar birden çok VoiceProfileClient:: Hoparlörkerreckayıtları Profileasync olduğunda ve bunların bitmesini beklemediğinde konuşmacı tanıma API 'lerinde çökme düzeltildi.
+- **Tümü**: sıkıştırılmış dosya günlüğü, VoiceProfileClient ve Hoparlörkertanıyıcı sınıflarında düzeltildi.
+- **JavaScript**: tarayıcı simge durumuna küçültüldüğünde azaltma ile ilgili bir [sorun](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) düzeltildi.
+- **JavaScript**: akışlarda bellek sızıntısı ile ilgili bir [sorun](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) düzeltildi.
+- **JavaScript**: NodeJS ' den OCSP yanıtları için önbelleğe alma eklendi.
+- **Java**: BigInteger alanlarının her zaman 0 döndürmesine neden olan bir sorun düzeltildi.
+- **iOS**: IOS uygulama mağazasındaki konuşma SDK 'sı tabanlı uygulamalar yayımlamayla ilgili [sorun](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) düzeltildi.
+
+**Örnekler**
+- **C++**: [buraya](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)konuşmacı tanıma için örnek kod eklendi.
+
+**Covıd-19 ortak test:** Son birkaç hafta içinde uzaktan çalışma nedeniyle, normalde yaptığımız için el ile doğrulama testi yapamadık. Herhangi bir şeyi bozduğumuz ve otomatikleştirilmiş testlerimiz geçtiğinden hiçbir değişiklik yapmadık. Bir şey kaçırdığımız olası bir olayda, lütfen [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)'da bize bildirin.<br>
+Sağlıklı olun!
 
 ## <a name="text-to-speech-2020-july-release"></a>Metinden konuşmaya 2020-Temmuz sürümü
 
 ### <a name="new-features"></a>Yeni özellikler
 
-* **Sınır TTS, 15 yeni sinir sesleri**: sinir TTS portföyüne eklenen yeni sesler `ar-EG` Arapça (Mısır), `ar-SA` Arapça (Suudi Arabistan), Arapça (Suudi Arabistan), KAG (Danimarka), (Danimarka), Danca (Danimarka), `ca-ES` `da-DK` serja, `es-IN` İngilizce (Hindistan), Noora (Hindistan), Hinduca 'daki `fi-FI` Swara (Hindistan), Hollanda Içinde `hi-IN` Colette `nl-NL` (Netherland), Zofia, `pl-PL` Lehçe (Polonya), `pt-PT` Portekizce (Portekiz), Rusça (Rusya), `ru-RU` Rusça (Rusya), İsveççe (Rusya), Tepesi `sv-SE` ), `th-TH` Tay dili (Tayland), `zh-HK` Çince (Cantoneo, geleneksel) ve Hsıaoyu `zh-TW` Çince (Taiwanese Mandarin) dilinde hiugaaı. Desteklenen tüm [dilleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)denetleyin.  
+* **Sınır TTS, 15 yeni sinir sesleri**: sinir TTS portföyüne eklenen yeni sesler `ar-EG` Arapça (Mısır), `ar-SA` Arapça (Suudi Arabistan), Arapça (Suudi Arabistan), KAG (Danimarka), (Danimarka), Danca (Danimarka), `ca-ES` `da-DK` serja, `es-IN` İngilizce (Hindistan), Noora (Hindistan), Hinduca 'daki `fi-FI` Swara (Hindistan), Felemenkçe ( `hi-IN` `nl-NL` Hollanda), Zofia, Lehçe (Polonya), Portekizce (Portekiz), Rusça 'daki `pl-PL` `pt-PT` darda (Rusya) `ru-RU` `sv-SE` ), `th-TH` Tay dili (Tayland), `zh-HK` Çince (Cantoneo, geleneksel) ve Hsıaoyu `zh-TW` Çince (Taiwanese Mandarin) dilinde hiugaaı. Desteklenen tüm [dilleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)denetleyin.  
 
 * **Kullanıcı deneyimini basitleştirmek için eğitim akışıyla özel ses, akıcı bir sesli test**: yeni test özelliği ile her ses, her bir dil için en iyi duruma getirilmiş önceden tanımlanmış bir test kümesiyle otomatik olarak test edilir ve bu da genel ve sesli yardım senaryolarını kapsar. Bu test kümeleri dikkatle seçilir ve genel kullanım durumlarını ve telefon dilini içerecek şekilde test edilir. Bunun yanı sıra, kullanıcılar bir modeli eğitmek için kendi test betiklerini karşıya yüklemeyi yine de seçebilir.
 
@@ -69,7 +98,7 @@ ms.locfileid: "86512672"
 * Para birimi okuma
     * Ve için para birimi okumada sorun düzeltildi `es-ES``es-MX`
      
-    | Dil | Giriş | İyileştirmelerden sonra yeniden okuma |
+    | Dil | Girdi | İyileştirmelerden sonra yeniden okuma |
     |---|---|---|
     | `es-MX` | $1,58 | su cincuenta y Ocho centavos kaldır |
     | `es-ES` | $1,58 | dólar cincuenta y Ocho centavos 'yı kaldır |
@@ -85,10 +114,10 @@ ms.locfileid: "86512672"
 
 ### <a name="samplessdk"></a>Örnekler/SDK
 
-* JavaScript: FireFox 'ta kayıttan yürütme sorununu ve macOS ve iOS üzerinde Safari 'yi düzeltir. 
+* JavaScript: Firefox 'ta kayıttan yürütme sorununu ve macOS ve iOS üzerinde Safari 'yi düzeltir. 
 
 ## <a name="speech-sdk-1121-2020-june-release"></a>Konuşma SDK 1.12.1:2020-Haziran sürümü
-**Konuşma CLı (aka SPX)**
+**Konuşma CLı (SPX olarak da bilinir)**
 -   CLı içi yardım arama özellikleri eklendi:
     -   `spx help find --text TEXT`
     -   `spx help find --topic NAME`
@@ -115,7 +144,7 @@ Sağlıklı olun!
 
 
 ## <a name="speech-sdk-1120-2020-may-release"></a>Konuşma SDK 1.12.0:2020-yayın Mayıs
-**Konuşma CLı (aka SPX)**
+**Konuşma CLı (Ayrıca, SPX olarak da bilinir)**
 - **SPX** , komut satırından tanıma, birleştirme, çeviri, toplu iş dökümü ve özel konuşma yönetimi gerçekleştirmenize olanak sağlayan yeni bir komut satırı aracıdır. Konuşma hizmetini test etmek veya gerçekleştirmeniz gereken konuşma hizmeti görevlerinin kodunu almak için kullanın. Aracı indirin ve belgeleri [buradan](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)okuyun.
 
 **Yeni özellikler**

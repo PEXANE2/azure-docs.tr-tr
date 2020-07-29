@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 492f44353a9a43279afa4869640193f1baddd41c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974526"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372884"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -67,9 +67,9 @@ Blob kapsayıcılarına veya kuyruklara erişmek istiyorsanız, Azure kimlik bil
 
 Diğer kaynak türleri için şu anda RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
 
-### <a name="recommended-built-in-rbac-roles"></a>Önerilen yerleşik RBAC rolleri
+### <a name="recommended-azure-built-in-roles"></a>Önerilen Azure yerleşik rolleri
 
-Depolama Gezgini kullanmak için gereken izinleri sağlayabilecek çeşitli yerleşik RBAC rolleri vardır. Bu rollerden bazıları şunlardır:
+Depolama Gezgini kullanmak için gereken izinleri sağlayabilecek çeşitli Azure yerleşik rolleri vardır. Bu rollerden bazıları şunlardır:
 - [Sahip](/azure/role-based-access-control/built-in-roles#owner): kaynaklara erişim dahil olmak üzere her şeyi yönetin. **Note**: Bu rol size anahtar erişimi verecektir.
 - [Katkıda bulunan](/azure/role-based-access-control/built-in-roles#contributor): kaynaklara erişimi hariç her şeyi yönetin. **Note**: Bu rol size anahtar erişimi verecektir.
 - [Okuyucu](/azure/role-based-access-control/built-in-roles#reader): kaynakları okuyun ve listeleyin.

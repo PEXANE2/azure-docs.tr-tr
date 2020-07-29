@@ -4,15 +4,15 @@ description: Ao ağ trafiği ve ağ güvenlik grupları ve Kullanıcı tanımlı
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6fde04be99eaa61287b486eaefdcb92d66d88bc7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517863"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280928"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamında ağ konusunda dikkat edilmesi gerekenler #
 
@@ -158,13 +158,14 @@ Bir NSG 'de bir Alto işlevi için gerekli girişler trafiğe izin versin:
 * Ao alt ağından tüm bağlantı noktalarında as alt ağına
 
 **Giden**
+* 53 numaralı bağlantı noktasındaki tüm IP 'lere UDP
 * 123 numaralı bağlantı noktasındaki tüm IP 'lere UDP
 * 80, 443 bağlantı noktasındaki tüm IP 'lere TCP
 * 1433 bağlantı noktalarında AzureSQL IP hizmet etiketine TCP
 * 12000 numaralı bağlantı noktasındaki tüm IP 'lere TCP
 * Tüm bağlantı noktalarında as alt ağına
 
-Bu bağlantı noktaları, uygulamalarınızın başarılı bir şekilde kullanılması için gereken bağlantı noktalarını içermez. Örnek olarak, uygulamanızın bağlantı noktası 3306 ' de bir MySQL sunucusu çağırması gerekebilir DNS bağlantı noktası, bağlantı noktası 53, DNS 'ye trafik, NSG kurallarından etkilenmemektedir. 123 numaralı bağlantı noktasındaki ağ zaman Protokolü (NTP), işletim sistemi tarafından kullanılan zaman eşitleme protokolüdür. NTP uç noktaları, uygulama hizmetlerine özgü değildir, işletim sistemiyle farklılık gösterebilir ve iyi tanımlanmış adresler listesinde değildir. Zaman eşitleme sorunlarını engellemek için, bağlantı noktası 123 üzerindeki tüm adreslere UDP trafiğine izin vermeniz gerekir. 12000 numaralı bağlantı noktasına giden TCP trafiği, sistem desteği ve analizine yöneliktir. Uç noktalar dinamiktir ve iyi tanımlanmış bir adres kümesinde değildir.
+Bu bağlantı noktaları, uygulamalarınızın başarılı bir şekilde kullanılması için gereken bağlantı noktalarını içermez. Örnek olarak, uygulamanızın 3306 numaralı bağlantı noktasında bir MySQL sunucusu çağırması gerekebilir. 123 numaralı bağlantı noktasındaki ağ zaman Protokolü (NTP), işletim sistemi tarafından kullanılan zaman eşitleme protokolüdür. NTP uç noktaları, uygulama hizmetlerine özgü değildir, işletim sistemiyle farklılık gösterebilir ve iyi tanımlanmış adresler listesinde değildir. Zaman eşitleme sorunlarını engellemek için, bağlantı noktası 123 üzerindeki tüm adreslere UDP trafiğine izin vermeniz gerekir. 12000 numaralı bağlantı noktasına giden TCP trafiği, sistem desteği ve analizine yöneliktir. Uç noktalar dinamiktir ve iyi tanımlanmış bir adres kümesinde değildir.
 
 Normal uygulama erişimi bağlantı noktaları şunlardır:
 
@@ -202,7 +203,7 @@ Aynı rotaları el ile oluşturmak için aşağıdaki adımları izleyin:
 
 3. Yol tablosu Kullanıcı arabiriminizden, **rotalar**  >  **Ekle**' yi seçin.
 
-4. **Sonraki atlama türünü** **Internet** olarak ve **Adres ön ekini** **0.0.0.0/0**olarak ayarlayın. **Kaydet**’i seçin.
+4. **Sonraki atlama türünü** **Internet** olarak ve **Adres ön ekini** **0.0.0.0/0**olarak ayarlayın. **Kaydet**'i seçin.
 
     Ardından aşağıdakine benzer bir şey görürsünüz:
 

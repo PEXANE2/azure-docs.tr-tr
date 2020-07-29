@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0470ab635f34291b4c92259e556329d6b2f401c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42356ec4277c8441b4833560f431740e9e2f56c8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026093"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311356"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
 
@@ -34,9 +34,11 @@ Yüksek düzeyde, bir uygulamanın tüm kimlik doğrulama akışı şuna benzer 
 
 ![OAuth kimlik doğrulama kod akışı](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
-## <a name="setup-required-for-single-page-apps"></a>Tek sayfalı uygulamalar için kurulum gerekiyor
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Tek sayfalı uygulamalar için yeniden yönlendirme URI kurulumu gerekli
 
-Tek sayfalı uygulamalar için yetkilendirme kodu akışı, bazı ek kurulum gerektirir.  [Uygulamanızı oluştururken](howto-create-service-principal-portal.md), uygulamanızın YENIDEN yönlendirme URI 'sini `spa` yeniden yönlendirme URI 'si olarak işaretlemeniz gerekir. Bu, oturum açma sunucusunun, uygulamanız için CORS 'ye (çapraz kaynak kaynak paylaşımı) izin vermesine neden olur.  Bu, XHR kullanarak kodu kullanmak için gereklidir.
+Tek sayfalı uygulamalar için yetkilendirme kodu akışı, bazı ek kurulum gerektirir.  Yeniden yönlendirme URI 'nizi CORS için etkin olarak işaretlemek üzere [tek sayfalı uygulamanızı oluşturmaya](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) yönelik yönergeleri izleyin. CORS 'yi etkinleştirmek üzere var olan bir yeniden yönlendirme URI 'sini güncelleştirmek için, bildirim düzenleyicisini açın ve `type` yeniden YÖNLENDIRME URI 'nizin alanını `spa` bölümünde olarak ayarlayın `replyUrlsWithType` . Ayrıca, kimlik doğrulama sekmesinin "Web" bölümünde yeniden yönlendirme URI 'sine tıklayıp, yetkilendirme kodu akışını kullanarak geçirmek istediğiniz URI 'Leri seçebilirsiniz.
+
+`spa`Yeniden yönlendirme türü, örtük akışla geriye dönük olarak uyumludur. Belirteçleri almak için örtük akışı kullanan uygulamalar, `spa` yeniden YÖNLENDIRME URI 'sine sorun olmadan geçebilir ve dolaylı akışı kullanmaya devam edebilir.
 
 Yetkilendirme kodu akışını kullanmaya çalışırsanız ve şu hatayı görebilirsiniz:
 
@@ -229,7 +231,7 @@ Hata yanıtları şöyle görünür:
 | `temporarily_unavailable` | Sunucu, isteği işlemek için geçici olarak çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtı geciktirildiği kullanıcıya açıklanmayabilir. |
 
 > [!NOTE]
-> Tek sayfalı uygulamalar `invalid_request` , yalnızca ' tek sayfalı uygulamanın ' istemci türü için, çıkış noktaları arası belirteç kullanımına izin verildiğini belirten bir hata alabilir.  Bu, belirteci istemek için kullanılan yeniden yönlendirme URI 'sinin `spa` yeniden yönlendirme URI 'si olarak işaretlenmediğini belirtir.  Bu akışın nasıl etkinleştirileceği hakkında [uygulama kayıt adımlarını](#setup-required-for-single-page-apps) gözden geçirin.
+> Tek sayfalı uygulamalar `invalid_request` , yalnızca ' tek sayfalı uygulamanın ' istemci türü için, çıkış noktaları arası belirteç kullanımına izin verildiğini belirten bir hata alabilir.  Bu, belirteci istemek için kullanılan yeniden yönlendirme URI 'sinin `spa` yeniden yönlendirme URI 'si olarak işaretlenmediğini belirtir.  Bu akışın nasıl etkinleştirileceği hakkında [uygulama kayıt adımlarını](#redirect-uri-setup-required-for-single-page-apps) gözden geçirin.
 
 ## <a name="use-the-access-token"></a>Erişim belirtecini kullanma
 

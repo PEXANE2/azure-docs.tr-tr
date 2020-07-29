@@ -8,20 +8,17 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4bb54db8a18baa237f1c32c223b5f609638c7523
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3fdbd0ddb33785655cada2600acdecdced4aeb2f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080633"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283444"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Web istemcisiyle Windows sanal masaüstüne bağlanma
 
 >[!IMPORTANT]
->Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/connect-web-2019.md)bakın.
->
-> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Bu içerik Azure Resource Manager Windows sanal masaüstü nesneleri ile Windows sanal masaüstü için geçerlidir. Azure Resource Manager nesneleri olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/connect-web-2019.md)bakın.
 
 Web istemcisi, Windows sanal masaüstü kaynaklarınıza, uzun yükleme işlemi olmadan bir Web tarayıcısından erişmenizi sağlar.
 
@@ -35,7 +32,7 @@ HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşa�
 | Tarayıcı           | Desteklenen işletim sistemi                     | Notlar               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
-| Internet Explorer | Windows                          |                     |
+| Internet Explorer | Windows                          | Sürüm 11 veya üzeri |
 | Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
@@ -45,7 +42,7 @@ HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşa�
 Bir tarayıcıda, üzerinde Windows sanal masaüstü web istemcisinin Azure Resource Manager tümleşik sürümüne gidin <https://rdweb.wvd.microsoft.com/arm/webclient> ve Kullanıcı hesabınızla oturum açın.
 
 >[!NOTE]
->Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager tümleştirme olmadan kullanıyorsanız, <https://rdweb.wvd.microsoft.com/webclient> bunun yerine kaynaklarınıza bağlanın.
+>Azure Resource Manager tümleştirme olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, <https://rdweb.wvd.microsoft.com/webclient> bunun yerine kaynaklarınıza bağlanın.
 
 >[!NOTE]
 >Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, oturumunuzu açmanız veya özel bir tarayıcı penceresi kullanmanız gerekir.

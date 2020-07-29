@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5a4cb788a24252a2de7b9d669b166b25ed48be1c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081602"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309350"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme
 
@@ -192,6 +192,7 @@ Bu Azure Resource Manager şablonu, önem derecesi 2 olan bir hata anomali uyar�
 
 Otomatik algılama hakkında daha fazla bilgi edinin:
 
-- [Hata anomalileri](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [Bellek sızıntıları](../../azure-monitor/app/proactive-potential-memory-leak.md)
-- [Performans anomalileri](../../azure-monitor/app/proactive-performance-diagnostics.md)
+- [Hata anomalileri](./proactive-failure-diagnostics.md)
+- [Bellek sızıntıları](./proactive-potential-memory-leak.md)
+- [Performans anomalileri](./proactive-performance-diagnostics.md)
+

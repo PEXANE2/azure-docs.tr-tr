@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127205"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372339"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -123,7 +123,7 @@ Yeni ve mevcut depolama hesaplarınızdaki Azure dosya paylaşımları için Azu
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Azure dosyaları için paylaşma düzeyi izinleri yapılandırma
 
-Azure AD DS veya şirket içi AD DS kimlik doğrulaması etkinleştirildikten sonra, yerleşik RBAC rollerini kullanabilir ya da Azure AD kimlikleri için özel rolleri yapılandırabilir ve depolama hesaplarınızdaki herhangi bir dosya paylaşımına erişim hakları atayabilirsiniz. Atanan izin, izin verilen kimliğin, kök dizin bile değil, yalnızca paylaşıma erişim almasına izin verir. Azure dosya paylaşımları için dizin veya dosya düzeyi izinlerini yine de yapılandırmanız gerekir.
+Azure AD DS veya şirket içi AD DS kimlik doğrulaması etkinleştirildikten sonra Azure yerleşik rollerini kullanabilir ya da Azure AD kimlikleri için özel rolleri yapılandırabilir ve depolama hesaplarınızdaki herhangi bir dosya paylaşımına erişim hakları atayabilirsiniz. Atanan izin, izin verilen kimliğin, kök dizin bile değil, yalnızca paylaşıma erişim almasına izin verir. Azure dosya paylaşımları için dizin veya dosya düzeyi izinlerini yine de yapılandırmanız gerekir.
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Azure dosyaları için dizin veya dosya düzeyi izinlerini yapılandırma
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
-ms.openlocfilehash: 5417ff3b53526adbaeba2b9df58694ad495475d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307954"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284192"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>Komut parametrelerine yapılandırma ekleme
 
@@ -24,7 +24,7 @@ Bu makalede, aşağıdakiler dahil olmak üzere gelişmiş parametre yapılandı
  - Parametre değerleri dışarıdan özel komutlar uygulamasına tanımlanmış bir kümesine ait olabilir
  - Parametrelerin değerine doğrulama yan tümceleri ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki makalelerde bulunan adımları tamamlamış olmanız gerekir:
 
@@ -43,7 +43,7 @@ Bunu yapmak için yeni bir Web uç noktası ekleyerek başlayın. Sol bölmedeki
 
 | Ayar | Önerilen değer |
 |----|----|
-| Name | `getDevices` |
+| Ad | `getDevices` |
 | URL | `https://aka.ms/speech/cc-sampledevices` |
 | Yöntem | GET |
 
@@ -108,11 +108,11 @@ Sonra **Kaydet**' i seçin.
 1. **Yeni doğrulama** penceresinde doğrulamayı aşağıdaki şekilde yapılandırın ve **Oluştur**' u seçin.
 
 
-    | Parametre yapılandırması | Önerilen değer | Description |
+    | Parametre yapılandırması | Önerilen değer | Açıklama |
     | ---- | ---- | ---- |
     | Minimum Değer | `60` | Sayı parametreleri için bu parametrenin varsaydığı en küçük değer |
     | Maksimum Değer | `80` | Sayı parametreleri için bu parametrenin varsaydığı en büyük değer |
-    | Hata yanıtı |  Ilk varyasyon > basit düzenleyici >`Sorry, I can only set temperature between 60 and 80 degrees` | Doğrulama başarısız olursa yeni bir değer sormak isteyip istemediğinizi sor |
+    | Hata yanıtı |  Ilk varyasyon > basit düzenleyici >`Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Doğrulama başarısız olursa yeni bir değer sormak isteyip istemediğinizi sor |
 
     > [!div class="mx-imgBorder"]
     > ![Aralık doğrulaması ekle](media/custom-commands/add-validations-temperature.png)

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 07/28/2020
 ms.author: victorh
-ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565808"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372374"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure Güvenlik Duvarı Yöneticisi dağıtımına genel bakış
 
@@ -65,6 +65,13 @@ Azure Güvenlik Duvarı Yöneticisi 'Ni dağıtmanın birden çok yolu vardır, 
 > - Her bölge için sanal WAN başına birden fazla hub 'ınız olamaz. Ancak bunu elde etmek için bölgeye birden çok sanal WAN ekleyebilirsiniz.
 > - VWAN 'da hub 'lar için çakışan IP alanları olamaz.
 > - Hub VNet bağlantılarınızın hub ile aynı bölgede olması gerekir.
+
+## <a name="convert-virtual-networks"></a>Sanal ağları dönüştürme
+
+Mevcut bir sanal ağı bir hub sanal ağına dönüştürürseniz aşağıdaki bilgiler geçerlidir:
+
+- Sanal ağda mevcut bir Azure Güvenlik duvarı varsa, mevcut güvenlik duvarıyla ilişkilendirilecek bir güvenlik duvarı Ilkesi seçersiniz. Güvenlik duvarı ilkesi güvenlik duvarı kurallarını değiştirirken güvenlik duvarı sağlama durumu güncellenebilir. Sağlama durumu sırasında güvenlik duvarı, işlem trafiğini işleme devam eder ve kapalı kalma süresi yoktur. Güvenlik Duvarı Yöneticisi veya Azure PowerShell kullanarak mevcut kuralları bir güvenlik duvarı Ilkesine aktarabilirsiniz.
+- Sanal ağın ilişkili bir Azure Güvenlik duvarı yoksa, güvenlik duvarı dağıtılır ve güvenlik duvarı Ilkesi yeni güvenlik duvarıyla ilişkilendirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

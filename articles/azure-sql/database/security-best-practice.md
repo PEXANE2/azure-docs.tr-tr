@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132951"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371796"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,7 +62,7 @@ Aksi belirtilmedikçe, ilgili hedefi veya gereksinimi elde etmek için her böl�
 
 Burada listelenen öneriler ve en iyi uygulamalar güncelleştirilmeye devam ediyor. Bu makalenin altındaki **geri bildirim** bağlantısını kullanarak bu belge için giriş veya herhangi bir düzeltme sağlayın.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı ve SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:
 
@@ -324,7 +324,7 @@ Görev ayrımı olarak da adlandırılan görevlerin ayrılması, hassas görevl
 
 - Güvenlikle ilgili eylemler için her zaman bir denetim izlemesine sahip olduğunuzdan emin olun.
 
-- Kullanılan izinleri görmek için yerleşik RBAC rollerinin tanımını alabilir ve bunları PowerShell aracılığıyla alıntıları ve birikmelerini temel alan özel bir rol oluşturabilirsiniz.
+- Kullanılan izinleri görmek için Azure yerleşik rollerinin tanımını alabilir ve bunları PowerShell aracılığıyla alıntıları ve birikmelerini temel alan özel bir rol oluşturabilirsiniz.
 
 - Db_owner veritabanı rolünün herhangi bir üyesi Saydam Veri Şifrelemesi (TDE) gibi güvenlik ayarlarını değiştirebildiğinden veya SLO 'yu değiştirebileceğinden, bu üyelikle ilgili Üyelik verilmelidir. Ancak db_owner ayrıcalıkları gerektiren çok sayıda görev vardır. DB seçeneklerini değiştirme gibi herhangi bir veritabanı ayarını değiştirme gibi görev. Denetim, herhangi bir çözümde önemli bir rol oynar.
 

@@ -6,12 +6,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: c19799265679eeead96bf95943f274aa32c75ff2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121580"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280945"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS uygulaması teklifi yayımlama kılavuzu
 
@@ -26,7 +28,7 @@ SaaS uygulamaları Microsoft AppSource ve Azure Marketi 'nde kullanılabilir.  H
 
 | SaaS uygulamaları teklifi | İş gereksinimleri | Teknik gereksinimler |  
 | --- | --- | --- |  
-| **Bizimle iletişime geçin** | Yes | Hayır |  
+| **Bize Ulaşın** | Yes | Hayır |  
 | **Power BI/Dynamics** | Yes | Evet (Azure AD tümleştirmesi) |  
 | **SaaS uygulamaları**| Yes | Evet (Azure AD tümleştirmesi) |     
 
@@ -125,7 +127,7 @@ Microsoft, ticaret hareketini barındırır. Microsoft, müşterinizin adına fa
 | Gereksinim | Ayrıntılar |  
 |:--- |:--- |  
 |Faturalandırma ve ölçüm | Teklifiniz, yayımlamadan önce seçtiğiniz fiyatlandırma modeline (sabit fiyat veya Kullanıcı başına) göre fiyatlandırılır.  Düz oran modeli kullanıyorsanız, isteğe bağlı olarak, sabit fiyata dahil edilen kullanım için müşterileri ücretlendirmeden kullanılan ek boyutları ekleyebilirsiniz. |  
-|İptal | Teklifiniz herhangi bir zamanda müşteri tarafından iptal edilir. |  
+|İptal Etme | Teklifiniz herhangi bir zamanda müşteri tarafından iptal edilir. |  
 |İşlem giriş sayfası | Kullanıcıların SaaS hizmet hesabını oluşturup yönetebilecekleri bir Azure ortak markalı işlem giriş sayfası barındırabilirsiniz. |   
 | Abonelik API 'SI | Bir kullanıcı hesabı ve hizmet planı oluşturmak, güncelleştirmek ve silmek için SaaS aboneliğiyle etkileşime girebilen bir hizmeti kullanıma sunacaksınız. Kritik API değişikliklerinin 24 saat içinde desteklenmesi gerekir. Kritik olmayan API değişiklikleri düzenli olarak serbest bırakılır. |  
 

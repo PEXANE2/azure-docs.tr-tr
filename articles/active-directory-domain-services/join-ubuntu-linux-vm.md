@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 7eaf8b6b5cddc8a01b59cda0cafc819e06a5ec7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005013"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283155"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Ubuntu Linux bir sanal makineyi Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -138,7 +139,7 @@ Gerekli paketler VM 'de yüklü olduğundan ve NTP yapılandırıldıktan sonra 
     Daha sonra, yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, adlı hesap, `contosoadmin@aaddscontoso.com` Kerberos 'u başlatmak için kullanılır. Yönetilen etki alanının bir parçası olan kendi kullanıcı hesabınızı girin:
 
     ```console
-    kinit contosoadmin@AADDSCONTOSO.COM
+    kinit -V contosoadmin@AADDSCONTOSO.COM
     ```
 
 1. Son olarak, komutunu kullanarak VM 'yi yönetilen etki alanına katın `realm join` . Önceki komutta belirttiğiniz yönetilen etki alanının bir parçası olan kullanıcı hesabını kullanın `kinit` , örneğin `contosoadmin@AADDSCONTOSO.COM` :
@@ -182,7 +183,7 @@ rdns=false
 1. Değişikliği uygulamak için SSSD hizmetini yeniden başlatın:
 
     ```console
-    sudo service sssd restart
+    sudo systemctl restart sssd
     ```
 
 ## <a name="configure-user-account-and-group-settings"></a>Kullanıcı hesabı ve grup ayarlarını yapılandırma

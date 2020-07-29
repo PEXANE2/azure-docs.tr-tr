@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090969"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284175"
 ---
 # <a name="create-application-with-simple-commands"></a>Basit komutlarla uygulama oluşturma
 
@@ -84,7 +84,7 @@ Sonra, komutun bir tamamlama kuralına sahip olması gerekir. Bu kural kullanıc
     | Ayar    | Önerilen değer                          | Açıklama                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Ad**       | ConfirmationResponse                  | Kuralın amacını açıklayan bir ad          |
-    | **Koşullar** | Yok                                     | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
+    | **Koşullar** | Hiçbiri                                     | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
     | **Eylemler**    | Ilk varyasyon > basit düzenleyici > konuşma yanıtı gönderin >`Ok, turning the tv on` | Kural koşulu true olduğunda gerçekleştirilecek eylem |
     
 
@@ -95,6 +95,7 @@ Sonra, komutun bir tamamlama kuralına sahip olması gerekir. Bu kural kullanıc
 
 1. Eylemi kaydetmek için **Kaydet** ' i seçin.
 1. **Tamamlama kuralları** bölümüne geri döndüğünüzde tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin. 
+
 
     > [!NOTE]
     > Komutuyla birlikte gelen varsayılan tamamlama kuralını kullanmak gerekli değildir. Gerekirse, var olan varsayılan tamamlama kuralını silebilir ve kendi kuralınızı ekleyebilirsiniz.
@@ -124,8 +125,8 @@ Ardından **, var olan** tamamlama kurallarını aşağıdaki gibi düzenleyin:
 
 | Ayar    | Önerilen değer                          |
 | ---------- | ---------------------------------------- |
-| Name  | ConfirmationResponse                  |
-| Koşullar | Yok                                     |
+| Ad  | ConfirmationResponse                  |
+| Koşullar | Hiçbiri                                     |
 | Eylemler    | Ilk varyasyon > basit düzenleyici > konuşma yanıtı gönderin >`Ok, setting temperature to 40 degrees` |
 
 Komutta yapılan tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin.
@@ -136,7 +137,7 @@ Komutta yapılan tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 | Ayar    | Önerilen değer                          |
 | ---------- | ---------------------------------------- |
 | Kural Adı  | ConfirmationResponse                  |
-| Koşullar | Yok                                     |
+| Koşullar | Hiçbiri                                     |
 | Eylemler    | Ilk varyasyon > basit düzenleyici > konuşma yanıtı gönderin >`Ok, setting an alarm for 9 am tomorrow` |
 
 Komutta yapılan tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin.

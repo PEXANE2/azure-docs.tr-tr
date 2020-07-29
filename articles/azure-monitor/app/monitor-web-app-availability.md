@@ -4,16 +4,16 @@ description: Application Insights’ta web testleri ayarlayın. Web sitesi kulla
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024597"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310285"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
-Web uygulamanızı/Web sitenizi dağıttıktan sonra, kullanılabilirliği ve yanıt hızını izlemek için yinelenen testler ayarlayabilirsiniz. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md), dünyanın her yerindeki noktalarından uygulamanıza düzenli aralıklarla web istekleri gönderir. Uygulamanız yanıt vermiyorsa veya çok yavaş yanıt verirse sizi uyarır.
+Web uygulamanızı/Web sitenizi dağıttıktan sonra, kullanılabilirliği ve yanıt hızını izlemek için yinelenen testler ayarlayabilirsiniz. [Azure Application Insights](./app-insights-overview.md), dünyanın her yerindeki noktalarından uygulamanıza düzenli aralıklarla web istekleri gönderir. Uygulamanız yanıt vermiyorsa veya çok yavaş yanıt verirse sizi uyarır.
 
 Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası için kullanılabilirlik testleri ayarlayabilirsiniz. Test ettiğiniz web sitesinde herhangi bir değişiklik yapmanız gerekmez. Aslında, sahip olduğunuz bir site bile olması gerekmez. Hizmetinizin bağlı olduğu REST API kullanılabilirliğini test edebilirsiniz.
 
@@ -107,9 +107,9 @@ Bir kullanılabilirlik testi sonucundan, işlem ayrıntılarını tüm bileşenl
 * Sorunu izlemek için git veya Azure Boards 'de bir sorun veya iş öğesi kaydedin. Hata, bu olayın bir bağlantısını içerir.
 * Web testi sonucunu Visual Studio’da açın.
 
-Uçtan uca işlem [Tanılama deneyimi hakkında](../../azure-monitor/app/transaction-diagnostics.md)daha fazla bilgi edinin.
+Uçtan uca işlem [Tanılama deneyimi hakkında](./transaction-diagnostics.md)daha fazla bilgi edinin.
 
-Yapay kullanılabilirlik testinin başarısız olmasına neden olan sunucu tarafı özel durumunun ayrıntılarını görmek için özel durum satırına tıklayın. Ayrıca, daha zengin kod düzeyi Tanılama için [hata ayıklama anlık görüntüsünü](../../azure-monitor/app/snapshot-debugger.md) alabilirsiniz.
+Yapay kullanılabilirlik testinin başarısız olmasına neden olan sunucu tarafı özel durumunun ayrıntılarını görmek için özel durum satırına tıklayın. Ayrıca, daha zengin kod düzeyi Tanılama için [hata ayıklama anlık görüntüsünü](./snapshot-debugger.md) alabilirsiniz.
 
 ![Sunucu tarafı tanılama](./media/monitor-web-app-availability/open-instance-4.png)
 
@@ -120,8 +120,8 @@ Ham sonuçlara ek olarak, [Ölçüm Gezgini](../platform/metrics-getting-started
 
 ## <a name="automation"></a>Otomasyon
 
-* Otomatik olarak [kullanılabilirlik testi ayarlamak için PowerShell betiklerini kullanın](../../azure-monitor/app/powershell.md#add-an-availability-test).
-* Bir uyarı ortaya çıktığında çağrılan bir [web kancası](../../azure-monitor/platform/alerts-webhooks.md) ayarlayın.
+* Otomatik olarak [kullanılabilirlik testi ayarlamak için PowerShell betiklerini kullanın](./powershell.md#add-an-availability-test).
+* Bir uyarı ortaya çıktığında çağrılan bir [web kancası](../platform/alerts-webhooks.md) ayarlayın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -131,3 +131,4 @@ Adanmış [sorun giderme makalesi](troubleshoot-availability.md).
 
 * [Kullanılabilirlik uyarıları](availability-alerts.md)
 * [Çok adımlı web testleri](availability-multistep.md)
+

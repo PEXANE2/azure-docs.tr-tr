@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132288"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281370"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -65,8 +65,11 @@ Bu model, hasta odası için bir ad ve benzersiz KIMLIĞI ve ziyaretçi sayısı
 
 Bu yöntemi izleyerek, hospstanonun için modeller, bölgeler veya hastanın kendisi için modeller tanımlama bölümüne geçebilirsiniz.
 
-> [!TIP]
-> DTDL 'yi ayrıştırmak ve doğrulamak için kullanılabilir bir istemci tarafı kitaplığı vardır. Kullanıcı arabirimi öğeleri oluşturma gibi model temelli geliştirme senaryolarında kullanılabilen DTDL içeriğinin bir C# nesne modelini oluşturur. Bu kitaplığı, modellerinizin karşıya yüklemeden önce söz dizimi hatalarına sahip olmadığından emin olmak için de kullanabilirsiniz. Bu kitaplık hakkında daha fazla bilgi ve bir DTDL doğrulayıcısı için üzerine oluşturulmuş bir örneğe erişme hakkında daha fazla bilgi için bkz. [*nasıl yapılır: modelleri ayrıştırma ve doğrulama*](how-to-use-parser.md).
+### <a name="validate-syntax"></a>Sözdizimini doğrula
+
+DTDL 'yi ayrıştırmak ve doğrulamak için kullanılabilir bir istemci tarafı kitaplığı vardır. Kullanıcı arabirimi öğeleri oluşturma gibi model temelli geliştirme senaryolarında kullanılabilen DTDL içeriğinin bir C# nesne modelini oluşturur. Bu kitaplığı, modellerinizin karşıya yüklemeden önce söz dizimi hatalarına sahip olmadığından emin olmak için de kullanabilirsiniz. 
+
+Bu kitaplık hakkında daha fazla bilgi ve bir DTDL doğrulayıcısı için üzerine oluşturulmuş bir örneğe erişme hakkında daha fazla bilgi için bkz. [*nasıl yapılır: modelleri ayrıştırma ve doğrulama*](how-to-use-parser.md).
 
 ## <a name="manage-models-with-apis"></a>Modelleri API 'lerle yönetin.
 
@@ -82,7 +85,10 @@ Aşağıdaki bölümlerde, [Azure Digital TWINS API 'leri ve SDK 'ları](how-to-
 
 Modeller oluşturulduktan sonra Azure dijital TWINS örneğine yükleyebilirsiniz.
 
-Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir:
+> [!TIP]
+> Azure dijital TWINS örneğinizi karşıya yüklemeden önce modellerinizi çevrimdışı doğrulamanız önerilir. [Modeldl istemci tarafı ayrıştırıcı kitaplığı](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ve nasıl yapılır: modellerinizi hizmete yüklemeden önce bunları denetlemek için [*modelleri denetlemek için modeller ve doğrulama*](how-to-use-parser.md) bölümünde açıklanan [dtdl doğrulayıcısı örneğini](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) kullanabilirsiniz.
+
+Bir modeli karşıya yüklemeye hazırsanız, aşağıdaki kod parçacığını kullanabilirsiniz:
 
 ```csharp
 // 'client' is an instance of DigitalTwinsClient
@@ -109,7 +115,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örneğin:
+Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örnek:
 
 ```json
 [
@@ -126,10 +132,7 @@ Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin
 ]
 ```
  
-Karşıya yükleme sırasında model dosyaları onaylanır.
-
-> [!TIP] 
-> İstemci tarafında modelleri doğrulamak için [Dtdl istemci tarafı ayrıştırıcı kitaplığını](how-to-use-parser.md) de kullanabileceğinizi unutmayın.
+Karşıya yükleme sırasında model dosyaları hizmet tarafından onaylanır.
 
 ### <a name="retrieve-models"></a>Modelleri al
 

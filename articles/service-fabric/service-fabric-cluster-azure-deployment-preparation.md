@@ -3,12 +3,12 @@ title: Azure Service Fabric küme dağıtımını planlayın
 description: Azure 'da bir üretim Service Fabric küme dağıtımını planlama ve hazırlama hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281336"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımını planlayın ve hazırlayın
 
@@ -51,7 +51,7 @@ Düğüm sayısının alt sınırı, bu düğüm türünde çalıştırmak isted
 
 Kısa ömürlü işletim sistemi diskleri, belirli bir Service Fabric özelliği değildir, ancak Azure *sanal makine ölçek kümelerinin* Service Fabric düğüm türleriyle eşlenmiş bir özelliği değildir. Service Fabric ile birlikte kullanmak, küme Azure Resource Manager şablonunuzda şunları gerektirir:
 
-1. Düğüm türlerinizin, kısa ömürlü işletim sistemi diskleri için [desteklenen Azure VM boyutlarını](../virtual-machines/windows/ephemeral-os-disks.md) BELIRTTIĞINDEN ve VM boyutunun işletim sistemi disk boyutunu desteklemeye yetecek kadar önbellek boyutuna sahip olduğundan emin olun (aşağıdaki *nota* bakın.) Örneğin:
+1. Düğüm türlerinizin, kısa ömürlü işletim sistemi diskleri için [desteklenen Azure VM boyutlarını](../virtual-machines/ephemeral-os-disks.md) BELIRTTIĞINDEN ve VM boyutunun işletim sistemi disk boyutunu desteklemeye yetecek kadar önbellek boyutuna sahip olduğundan emin olun (aşağıdaki *nota* bakın.) Örneğin:
 
     ```xml
     "vmNodeType1Size": {
@@ -97,7 +97,7 @@ Kısa ömürlü işletim sistemi diskleri, belirli bir Service Fabric özelliği
 > Geçiş yapmak için, kullanıcıların kısa ömürlü disklerle yeni bir nodeType [eklemesi](./virtual-machine-scale-set-scale-node-type-scale-out.md) gerekir, iş yüklerini yeni NodeType ile taşıyın & var olan NodeType 'yi [kaldırın](./service-fabric-how-to-remove-node-type.md) .
 >
 
-Daha fazla bilgi ve diğer yapılandırma seçenekleri için bkz. [Azure VM 'ler Için kısa ömürlü işletim sistemi diskleri](../virtual-machines/windows/ephemeral-os-disks.md) 
+Daha fazla bilgi ve diğer yapılandırma seçenekleri için bkz. [Azure VM 'ler Için kısa ömürlü işletim sistemi diskleri](../virtual-machines/ephemeral-os-disks.md) 
 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Küme için dayanıklılık ve güvenilirlik düzeylerini seçin

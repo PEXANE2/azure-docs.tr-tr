@@ -7,11 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 06/08/2020
 ms.topic: how-to
-ms.openlocfilehash: dec9abc38bc0354ef3d22994a7988bfb006f5769
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6073f71eb21ba4a6739647964d4888044d6ee59a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283731"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda iş oluşturma ve çalıştırma
 
@@ -42,7 +43,11 @@ Bu bölümde bir işi oluşturma ve çalıştırma işlemi gösterilmektedir. Bi
     > [!NOTE]
     > Daha önce çalıştırılan işleriniz için 30 günlük geçmişi görüntüleyebilirsiniz.
 
-7. İşiniz hakkında genel bilgi almak için listeden görüntülenecek işi seçin. Bu genel bakışta iş ayrıntıları, cihazlar ve cihaz durumu değerleri bulunur. Bu genel bakışta, iş ayrıntılarınızın CSV dosyasını indirmek için, cihazlar ve bunların durum değerleri de dahil olmak üzere **Iş ayrıntılarını indir** ' i de seçebilirsiniz. Bu bilgiler, sorun giderme için yararlı olabilir:
+7. Kaydedilen işe tıklayın ve Çalıştır düğmesine tıklayarak işi yürütün. Çalışan bir iş açılır penceresi görüntülenir. Işi Çalıştır düğmesine tıklayarak onaylayın. 
+
+    ![Iş çalıştırma](./media/howto-run-a-job/run-job.png)
+
+8. İş, bekleyen, çalışan ve tamamlanan farklı aşamalarda geçiyor. İş yürütme ayrıntıları, sonuç ölçümleri, süre ayrıntıları ve cihaz listesi kılavuzunu içerir. Bu genel bakışta, cihazlar ve bunların durum değerleri dahil olmak üzere iş ayrıntılarınızın CSV dosyasını indirmek için **sonuç günlüğü** ' nü de seçebilirsiniz. Bu bilgiler, sorun giderme için yararlı olabilir.
 
     ![Cihaz durumunu görüntüle](./media/howto-run-a-job/download-details.png)
 
@@ -50,13 +55,23 @@ Bu bölümde bir işi oluşturma ve çalıştırma işlemi gösterilmektedir. Bi
 
 Çalışan işlerinizin birini durdurmak için açın ve **Durdur**' u seçin. İş durumu işi yansıtacak şekilde değişir. **Özet** bölümü, hangi cihazların tamamlandığını, başarısız olduğunu veya hala beklendiğini gösterir.
 
-Şu anda durdurulmuş bir işi çalıştırmak için, seçin ve sonra **Çalıştır**' ı seçin. İş durumu işi yansıtacak şekilde değişir. **Özet** bölümü en son ilerleme ile güncelleştirilmeye devam eder.
-
 ![İşi Yönet](./media/howto-run-a-job/manage-job.png)
+
+Iş durdurulmuş durumdaysa, iş yürütmeyi sürdürmek için **devam** ' a tıklayabilirsiniz. İş durumu işi yansıtacak şekilde değişir. **Özet** bölümü en son ilerleme ile güncelleştirilmeye devam eder.
+
+![Durdurulan Iş](./media/howto-run-a-job/stopped-job.png)
 
 ## <a name="copy-a-job"></a>İşi kopyalama
 
-Mevcut işlerinizin birini kopyalamak için **işler** sayfasında bunu seçin ve **Kopyala**' yı seçin. Düzenlemeniz için iş yapılandırmasının bir kopyası açılır ve **kopyalama** işi adına eklenir. Yeni işi kaydedebilir veya çalıştırabilirsiniz:
+Mevcut işlerinizin birini kopyalamak için **işler** sayfasında bunu seçin ve **iş ayrıntıları**' nı seçin. İş ayrıntıları sayfası görüntülenir. 
+
+![İş Ayrıntıları](./media/howto-run-a-job/job-details.png)
+
+**Kopyala** öğesine tıklayın
+
+![İş Ayrıntıları](./media/howto-run-a-job/job-details-copy.png)
+
+Düzenlemeniz için iş yapılandırmasının bir kopyası açılır ve **kopyalama** işi adına eklenir. Yeni işi kaydedebilir veya çalıştırabilirsiniz:
 
 ![İşi Kopyala](./media/howto-run-a-job/copy-job.png)
 
@@ -76,7 +91,7 @@ Durum iletisinin ardından, işteki cihazlara bir genel bakış gönderilir. Aş
 
 | Durum iletisi       | Durum anlamı                                                     |
 | -------------------- | ------------------------------------------------------------------ |
-| Başarılı oldu            | İşin başarıyla yürütüldüğü cihazların sayısı.       |
+| Başarılı            | İşin başarıyla yürütüldüğü cihazların sayısı.       |
 | Başarısız               | İşin üzerinde yürütüleyemedi cihaz sayısı.       |
 
 ### <a name="view-the-device-status-values"></a>Cihaz durumu değerlerini görüntüleme

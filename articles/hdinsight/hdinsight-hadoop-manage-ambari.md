@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: f3244ec3f85d5085d3dbc2e503eab59af5572c56
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075765"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281404"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight kümelerini Apache Ambari Web arabiriminden yönetme
 
@@ -49,7 +49,7 @@ Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk
 
 ![Apache ambarı panosuna genel bakış](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Öğe |Description |
+|Öğe |Açıklama |
 |---|---|
 |Ambarı logosu|Kümeyi izlemek için kullanılabilecek panoyu açar.|
 |Küme adı # Ops|Devam eden ambarı işlemlerinin sayısını görüntüler. Küme adının seçilmesi veya **# Ops** , arka plan işlemlerinin bir listesini görüntüler.|
@@ -108,6 +108,7 @@ Küme içindeki düğümler hakkında daha fazla bilgi için **konaklar**' ı se
 
 Panodaki **Hizmetler** kenar çubuğu, kümede çalışan hizmetlerin durumuyla ilgili hızlı öngörüler sağlar. Yapılması gereken durum veya eylemleri göstermek için çeşitli simgeler kullanılır. Örneğin, bir hizmetin geri dönüştürülmesi gerekiyorsa sarı bir geri dönüşüm simgesi görüntülenir.
 
+
 ![Apache ambarı Hizmetleri yan çubuğu](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
@@ -153,7 +154,7 @@ Kullanıcılar, gruplar ve izinlerle çalışma desteklenir. Yerel Yönetim içi
 
 2. **Eylemler** menüsünü kullanarak yapmak istediğiniz eylemi seçin:
 
-    |Öğe |Description |
+    |Öğe |Açıklama |
     |---|---|
     |Tüm bileşenleri Başlat|Konaktaki tüm bileşenleri başlatın.|
     |Tüm bileşenleri durdur|Konaktaki tüm bileşenleri durdurun.|
@@ -162,7 +163,7 @@ Kullanıcılar, gruplar ve izinlerle çalışma desteklenir. Yerel Yönetim içi
     |Bakım modunu kapat|Ana bilgisayarı normal uyarı ' e döndürür.|
     |Durdur|Konakta Katanode veya Nodeyöneticileri sonlandırır.|
     |Başlangıç|Konakta Dadtanode veya Nodeyöneticileri başlatır.|
-    |Yeniden başlat|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
+    |Yeniden Başlatma|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
     |Açığa|Kümeden bir konağı kaldırır. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
     |Yeniden komisyon|Önceden yetkisi alınmış bir konağı kümeye ekler. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
 
@@ -170,10 +171,10 @@ Kullanıcılar, gruplar ve izinlerle çalışma desteklenir. Yerel Yönetim içi
 
 **Pano** veya **Hizmetler** sayfasında, tüm hizmetleri durdurmak ve başlatmak Için hizmetler listesinin altındaki **Eylemler** düğmesini kullanın.
 
-![Apache ambarı hizmet eylemleri listesi](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png" alt-text="Apache ambarı hizmet eylemleri listesi." border="true":::
 
 > [!WARNING]  
-> **Hizmet ekleme hizmeti** bu menüde listelenirken, HDInsight kümesine hizmet eklemek için kullanılmamalıdır. Küme sağlama sırasında bir betik eylemi kullanılarak yeni hizmetler eklenmelidir. Betik eylemlerini kullanma hakkında daha fazla bilgi için bkz. [betik eylemlerini kullanarak HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).
+> Küme sağlama sırasında bir betik eylemi kullanılarak yeni hizmetler eklenmelidir. Betik eylemlerini kullanma hakkında daha fazla bilgi için bkz. [betik eylemlerini kullanarak HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).
 
 **Eylemler** düğmesi tüm hizmetleri yeniden başlatabiliyor olsa da, genellikle belirli bir hizmeti başlatmak, durdurmak veya yeniden başlatmak istersiniz. Tek bir hizmette eylem yapmak için aşağıdaki adımları kullanın:
 

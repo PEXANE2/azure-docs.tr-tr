@@ -4,16 +4,16 @@ description: AzCopy 'i yapılandırın, iyileştirin ve sorun giderin.
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504364"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282441"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -23,12 +23,12 @@ AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi ger
 > AzCopy kullanmaya başlamanıza yardımcı olacak içerik arıyorsanız, aşağıdaki makalelerden birine bakın:
 > - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
 > - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
-> - [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+> - [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 > - [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>Ara sunucu ayarlarını yapılandırma
 
-AzCopy ara sunucu ayarlarını yapılandırmak için `https_proxy` ortam değişkenini ayarlayın. AzCopy 'i Windows üzerinde çalıştırırsanız AzCopy proxy ayarlarını otomatik olarak algılar, bu nedenle bu ayarı Windows 'ta kullanmanız gerekmez. Bu ayarı Windows 'ta kullanmayı seçerseniz, otomatik algılamayı geçersiz kılar.
+AzCopy ara sunucu ayarlarını yapılandırmak için `https_proxy` ortam değişkenini ayarlayın. AZCopy’yi Windows’da çalıştırıyorsanız AzCopy ara sunucu ayarlarını otomatik olarak algılar, bu nedenle bu ayarı Windows’da kullanmanız gerekmez. Bu ayarı Windows’da kullanmayı seçerseniz otomatik algılama geçersiz kılınır.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
@@ -49,7 +49,7 @@ Windows üzerinde AzCopy çalıştırıyorsanız ve bu sunucuya _hiçbir_ proxy 
 
 Diğer işletim sistemlerinde, ara sunucu kullanmak istiyorsanız HTTPS_PROXY değişkenini yok etmeniz yeterlidir.
 
-## <a name="optimize-performance"></a>Performansı en iyi hale getirme
+## <a name="optimize-performance"></a>Performansı iyileştirme
 
 Performans ve kaynak tüketimine ilişkin en iyi zorunluluğunu getirir bulmak için, performansı ve ardından komut ve ortam değişkenlerini kullanabilirsiniz.
 
@@ -63,13 +63,13 @@ Bu bölüm, bu iyileştirme görevlerini gerçekleştirmenize yardımcı olur:
 
 ### <a name="run-benchmark-tests"></a>Kıyaslama testlerini Çalıştır
 
-Genel performans istatistiklerini görüntülemek ve kimlik performans sorunlarını gidermek için, belirli blob kapsayıcıları veya dosya paylaşımlarında performans kıyaslama testini çalıştırabilirsiniz. 
+Genel performans istatistiklerini görüntülemek ve kimlik performans sorunlarını gidermek için, belirli blob kapsayıcıları veya dosya paylaşımlarında performans kıyaslama testini çalıştırabilirsiniz. Oluşturulan test verilerini karşıya yükleyerek veya indirerek testi çalıştırabilirsiniz. 
 
 Bir performans kıyaslama testi çalıştırmak için aşağıdaki komutu kullanın.
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Sözdizimi** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Örnek** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
@@ -77,9 +77,7 @@ Bir performans kıyaslama testi çalıştırmak için aşağıdaki komutu kullan
 
 Bu komut test verilerini belirtilen bir hedefe yükleyerek bir performans kıyaslaması çalıştırır. Test verileri bellekte oluşturulur, hedefe yüklenir ve ardından test tamamlandıktan sonra hedefteki silinir. İsteğe bağlı komut parametrelerini kullanarak oluşturulacak dosya sayısını ve bunların kaç boyutunu istediğinizi belirtebilirsiniz.
 
-Ayrıntılı başvuru belgeleri için bkz. [AzCopy kıyaslaması](storage-ref-azcopy-bench.md).
-
-Bu komutla ilgili ayrıntılı yardım kılavuzunu görüntülemek için yazın `azcopy benchmark -h` ve ENTER tuşuna basın.
+Bu testi verileri indirerek çalıştırmayı tercih ederseniz `mode` parametresini olarak ayarlayın `download` . Ayrıntılı başvuru belgeleri için bkz. [AzCopy kıyaslaması](storage-ref-azcopy-bench.md). 
 
 ### <a name="optimize-throughput"></a>Aktarım hızını iyileştirme
 
@@ -89,9 +87,9 @@ Bu komutla ilgili ayrıntılı yardım kılavuzunu görüntülemek için yazın 
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Küçük dosyalar aktarılırken üretilen iş azalabilir. Ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz `AZCOPY_CONCURRENCY_VALUE` . Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  
+Aktarım hızı küçük dosyalar aktarılırken düşebilir. Ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz `AZCOPY_CONCURRENCY_VALUE` . Bu değişken gerçekleşebilecek eşzamanlı istek sayısını belirtir.  
 
-Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri olarak ayarlanır `32` . Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin en büyük varsayılan değeri `3000` , ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz. 
+Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri olarak ayarlanır `32` . CPU dana fazlaysa, varsayılan değer CPU sayısının 16 katına eşittir. Bu değişkenin en büyük varsayılan değeri `3000` , ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz. 
 
 | İşletim sistemi | Komut  |
 |--------|-----------|

@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 20310c6c51a2467e9389bc77dd9ada4848c69be4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538913"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371762"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
 
@@ -47,7 +47,7 @@ Başlamadan önce aşağıdakileri yapın:
 
 1. ADE özellikli bir veya daha fazla [Windows](../virtual-machines/linux/disk-encryption-overview.md) veya [Linux](../virtual-machines/linux/disk-encryption-overview.md) sanal makinesi kullandığınızdan emin olun.
 2. Azure VM yedeklemesi için [destek matrisini gözden geçirin](backup-support-matrix-iaas.md)
-3. Bir kurtarma hizmetleri Yedekleme Kasası yoksa, [oluşturun](backup-azure-arm-vms-prepare.md#create-a-vault) .
+3. Bir kurtarma hizmetleri Yedekleme Kasası yoksa, [oluşturun](backup-create-rs-vault.md) .
 4. Yedekleme için zaten etkinleştirilmiş olan VM 'Lerde şifrelemeyi etkinleştirirseniz, yedeklemelerin kesintiye uğramadan devam edebilmesi için Key Vault erişmek için gereken izinlere sahip bir yedekleme sağlamanız gerekir. Bu izinleri atama hakkında [daha fazla bilgi edinin](#provide-permissions) .
 
 Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
@@ -56,7 +56,7 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 
 ## <a name="configure-a-backup-policy"></a>Yedekleme ilkesi yapılandırma
 
-1. Henüz bir kurtarma hizmetleri Yedekleme Kasası oluşturmadıysanız, [Bu yönergeleri](backup-azure-arm-vms-prepare.md#create-a-vault) izleyin
+1. Henüz bir kurtarma hizmetleri Yedekleme Kasası oluşturmadıysanız, [Bu yönergeleri](backup-create-rs-vault.md) izleyin
 2. Portalda kasayı açın ve **Başlarken** bölümünde **Yedekle** ' yi seçin.
 
     ![Yedekleme dikey penceresi](./media/backup-azure-vms-encryption/select-backup.png)

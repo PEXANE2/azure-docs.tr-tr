@@ -9,11 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667888"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282781"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Azure SQL Edge 'e çoğaltmayı yapılandırma (Önizleme) 
 
@@ -23,7 +24,7 @@ Azure SQL Edge 'in bir örneğini, tek yönlü işlem çoğaltması veya anlık 
   
 - Azure SQL Edge örneği, yayımcı için bir itme abonesi olmalıdır.
 - Yayımcı ve dağıtıcı şunlardan biri olabilir:
-   - Şirket içinde çalışan bir SQL Server örneği veya bir Azure sanal makinesinde çalışan bir SQL Server örneği. Daha fazla bilgi için bkz. [Azure sanal makinelerine genel bakış SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/). SQL Server örneklerin SQL Server 2016 ' den sonraki bir sürümü kullanıyor olması gerekir.
+   - Şirket içinde çalışan bir SQL Server örneği veya bir Azure sanal makinesinde çalışan bir SQL Server örneği. Daha fazla bilgi için bkz. [Azure sanal makinelerine genel bakış SQL Server](https://docs.microsoft.com/azure/azure-sql/virtual-machines/). SQL Server örneklerin SQL Server 2016 ' den sonraki bir sürümü kullanıyor olması gerekir.
    - Azure SQL yönetilen örneği örneği. SQL yönetilen örneği, Yayımcı, dağıtıcı ve abone veritabanlarını barındırabilirler. Daha fazla bilgi için bkz. [SQL veritabanı yönetilen örneği Ile çoğaltma](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
 
 - Dağıtım veritabanı ve çoğaltma aracıları bir Azure SQL Edge örneğine yerleştirilemez.  

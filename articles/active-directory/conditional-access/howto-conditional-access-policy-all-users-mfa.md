@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af1347ac57e1a5c5ae99744924ea04fe9757581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1e99556b0a0c5b7559cc03b152a19e78aeb58f6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995362"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283053"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Koşullu erişim: tüm kullanıcılar için MFA gerektir
 
@@ -49,10 +50,10 @@ Aşağıdaki adımlar, tüm kullanıcıların Multi-Factor Authentication gerçe
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Dahil et**altında **tüm kullanıcılar** ' ı seçin
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin.
    1. **Hariç tut**' un altında, Multi-Factor Authentication gerektirmeyen tüm uygulamaları seçin.
-1. **Conditions**  >  **İstemci uygulamaları (Önizleme)** koşulları altında **Yapılandır** ' ı **Evet**olarak ayarlayın. Bu ilke, tüm varsayılanları seçili bırakmak **için uygulanacak istemci uygulamalarını seçin** ' in altında, **bitti**' yi seçin.
+1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında, bu ilke tüm varsayılanları seçili bırakmak **için geçerli olur** ve **bitti**' yi seçin.
 1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
@@ -67,8 +68,8 @@ Yukarıdaki örnek ilkede, bir kuruluş, kurumsal ağından bir bulut uygulamas�
    1. **Evet 'i**yapılandırın.
    1. **Herhangi bir konum**ekleyin.
    1. **Tüm güvenilen konumları**hariç tutun.
-   1. **Done** (Bitti) öğesini seçin.
-1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
+1. **Bitti**'yi seçin.
 1. İlke değişikliklerinizi **kaydedin** .
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4ee6a3c09d24d6968227ef4215000888c5f4af05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791019"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372085"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell kullanarak Azure rol atamalarını listeleme
 
@@ -29,7 +30,7 @@ ms.locfileid: "84791019"
 > [!NOTE]
 > Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Cloud Shell](/azure/cloud-shell/overview) veya [Azure PowerShell](/powershell/azure/install-az-ps) PowerShell
 
@@ -105,7 +106,7 @@ Get-AzRoleAssignment -SignInName <email_or_userprincipalname> -ExpandPrincipalGr
 Get-AzRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
 ```
 
-## <a name="list-role-assignments-for-a-resource-group"></a>Bir kaynak grubunun rol atamalarını listeleme
+## <a name="list-role-assignments-for-a-resource-group"></a>Kaynak grubunun rol atamalarını listeleme
 
 Bir kaynak grubu kapsamındaki tüm rol atamalarını listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment)' yı kullanın.
 
@@ -139,6 +140,26 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 
 ```Example
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+## <a name="list-role-assignments-for-a-resource"></a>Bir kaynak için rol atamalarını listeleme
+
+Belirli bir kaynak için rol atamalarını listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) ve `-Scope` parametresini kullanın. Kapsam, kaynağa bağlı olarak farklı olacaktır. Kapsamı almak için, `Get-AzRoleAssignment` tüm rol atamalarını listelemek ve ardından listelemek istediğiniz kapsamı bulmak için herhangi bir parametre olmadan çalıştırabilirsiniz.
+
+```azurepowershell
+Get-AzRoleAssignment -Scope "/subscriptions/<subscription_id>/resourcegroups/<resource_group_name>/providers/<provider_name>/<resource_type>/<resource>
+```
+
+Aşağıdaki örnek, bir depolama hesabı için rol atamalarının nasıl ekleneceğini gösterir. Bu komutun Ayrıca, bu depolama hesabı için uygulanan kaynak grupları ve abonelikler gibi daha yüksek kapsamlardaki rol atamalarını da listeleceğini unutmayın.
+
+```Example
+PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"
+```
+
+Yalnızca bir kaynakta doğrudan atanan rol atamalarını listelemek isterseniz, listeyi filtrelemek için [WHERE-Object](/powershell/module/microsoft.powershell.core/where-object) komutunu kullanabilirsiniz.
+
+```Example
+PS C:\> Get-AzRoleAssignment | Where-Object {$_.Scope -eq "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"}
 ```
 
 ## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Klasik hizmet yöneticisi ve ortak yöneticiler için rol atamalarını listeleyin

@@ -3,15 +3,16 @@ title: Linux için şifreleme durumunu doğrulama-Azure disk şifrelemesi
 description: Bu makale, platform ve işletim sistemi düzeylerinden şifreleme durumunu doğrulamaya ilişkin yönergeler sağlar.
 author: kailashmsft
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58bb3f38938414f25551d0df47a50b6a8f386acc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873996"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283342"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Linux için şifreleme durumunu doğrulama 
 
@@ -179,7 +180,7 @@ az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuse
 
 Ayrıntılı durum ve şifreleme ayarları almak için aşağıdaki komutları kullanın.
 
-İşletim Sistemi diski:
+İşletim sistemi diski:
 
 ```bash
 RGNAME="RGNAME"

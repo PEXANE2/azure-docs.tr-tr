@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16537ba72eb9f11abd8de47256150818c121a140
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24db7981557cf76f9108a1dca37ea4c4c9f51951
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652651"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283087"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD parola koruması şirket içi sık sorulan sorular
 
@@ -37,7 +38,7 @@ Azure AD portalı, genel olmayan bulutlarda bile olsa, şirket içi "Windows Ser
 
 **S: Azure AD parola koruma avantajlarını şirket içi kullanıcılarınızın bir alt kümesine nasıl uygulayabilirim?**
 
-Desteklenmiyor. Dağıtım ve etkinleştirildikten sonra Azure AD parola koruması, tüm kullanıcılar eşit güvenlik avantajları elde etmez.
+Desteklenmez. Dağıtım ve etkinleştirildikten sonra Azure AD parola koruması, tüm kullanıcılar eşit güvenlik avantajları elde etmez.
 
 **S: parola değiştirme ve parola ayarlama (veya sıfırlama) arasındaki fark nedir?**
 
@@ -61,11 +62,11 @@ Evet. Birden çok kayıtlı parola filtresi dll 'leri için destek, Azure AD par
 
 **S: Azure AD parola korumasını Azure kullanmadan Active Directory ortammda nasıl dağıtırım ve yapılandırabilirim?**
 
-Desteklenmiyor. Azure AD parola koruması, şirket içi Active Directory ortamına genişletilmesini destekleyen bir Azure özelliğidir.
+Desteklenmez. Azure AD parola koruması, şirket içi Active Directory ortamına genişletilmesini destekleyen bir Azure özelliğidir.
 
 **S: Active Directory düzeyinde ilkenin içeriğini nasıl değiştirebilirim?**
 
-Desteklenmiyor. İlke yalnızca Azure AD Portalı kullanılarak yönetilebilir. Ayrıca önceki soruya bakın.
+Desteklenmez. İlke yalnızca Azure AD Portalı kullanılarak yönetilebilir. Ayrıca önceki soruya bakın.
 
 **S: SYSVOL çoğaltması için DFSR neden gereklidir?**
 
@@ -148,7 +149,7 @@ Aşağıdaki bağlantılar çekirdek Azure AD parola koruma belgelerinin bir par
 
 [Azure AD parola koruması genel kullanıma sunuldu!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[E-posta sızdırma koruma Kılavuzu – 15. Bölüm: Microsoft Azure AD parola koruma hizmetini uygulama (Şirket Içi için çok!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[E-posta sızdırma koruma Kılavuzu – 15. Bölüm: Microsoft Azure AD parola koruma hizmetini uygulama (Şirket Içi için çok!)](http://kmartins.com/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
 [Azure AD parola koruması ve akıllı kilitleme artık genel önizlemede!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 

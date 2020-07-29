@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711298"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284090"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Azure Blob depolamada Bloblar oluşturma ve yönetme
 
@@ -19,7 +20,7 @@ Bu makalede, Azure Blob depolama Bağlayıcısı ile bir mantık uygulamasının
 
 Bir Azure Web sitesinde güncelleştirilmiş bir aracınız olduğunu varsayalım. mantıksal uygulamanız için tetikleyici işlevi görür. Bu olay gerçekleştiğinde, mantıksal uygulamanızdaki bir işlem olan BLOB depolama kapsayıcısında bir dosya olan bir dosya, mantıksal uygulamanızın güncelleştirilmesini sağlayabilirsiniz.
 
-Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Blob depolama Bağlayıcısı başvurusu](https://docs.microsoft.com/connectors/azureblobconnector/).
+Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Blob depolama Bağlayıcısı başvurusu](/connectors/azureblobconnector/).
 
 > [!IMPORTANT]
 > Logic Apps, her ikisi de aynı bölgede olduklarında güvenlik duvarlarının arkasındaki depolama hesaplarına doğrudan erişemez. Geçici bir çözüm olarak, mantıksal uygulamalarınızın ve depolama hesabınızın farklı bölgelerde olmasını sağlayabilirsiniz. Güvenlik duvarlarının arkasındaki depolama hesaplarına Azure Logic Apps erişimi etkinleştirme hakkında daha fazla bilgi için, bu konunun devamındaki [güvenlik duvarları arkasındaki depolama hesaplarına erişin](#storage-firewalls) bölümüne bakın.
@@ -36,7 +37,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
   * Tam dosyayı okuyan ve örtük olarak parçalama kullanan Azure Blob depolama **BLOB Içeriğini al** eylemini kullanarak tetikleyiciyi izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -122,11 +123,11 @@ Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek iç
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı adı** | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | **Depolama Hesabı** | Evet | <*depolama hesabı*> | Listeden depolama hesabınızı seçin. |
+   | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | **Depolama hesabı** | Yes | <*depolama hesabı*> | Listeden depolama hesabınızı seçin. |
    ||||
 
-   Örneğin:
+   Örnek:
 
    ![Azure Blob depolama hesabı bağlantısı oluşturma](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
@@ -136,7 +137,7 @@ Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek iç
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/azureblobconnector/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/azureblobconnector/)bakın.
 
 > [!NOTE]
 > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
@@ -193,7 +194,7 @@ Microsoft 'a güvenilen hizmetlere bir güvenlik duvarı aracılığıyla bir de
 1. Mantıksal uygulamanızın iş akışında, depolama hesabına veya varlığına erişmek için HTTP eylemini veya tetikleyiciyi ekleyin ve ayarlayın.
 
    > [!IMPORTANT]
-   > Giden HTTP eylemi için veya Azure depolama hesaplarına yapılan çağrı tetiklemesi için, istek üstbilgisinin, `x-ms-version` depolama hesabında çalıştırmak istediğiniz işlem için özelliği ve API sürümünü içerdiğinden emin olun. Daha fazla bilgi için bkz. [Azure depolama hizmetleri için](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)yönetilen kimliğe ve sürüm oluşturmaya [erişim kimlik doğrulaması](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) .
+   > Giden HTTP eylemi için veya Azure depolama hesaplarına yapılan çağrı tetiklemesi için, istek üstbilgisinin, `x-ms-version` depolama hesabında çalıştırmak istediğiniz işlem için özelliği ve API sürümünü içerdiğinden emin olun. Daha fazla bilgi için bkz. [Azure depolama hizmetleri için](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)yönetilen kimliğe ve sürüm oluşturmaya [erişim kimlik doğrulaması](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) .
 
 1. Bu eylemde, kimlik doğrulaması için kullanılacak [yönetilen kimliği seçin](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) .
 
@@ -206,3 +207,4 @@ Microsoft 'a güvenilen hizmetlere bir güvenlik duvarı aracılığıyla bir de
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin
+

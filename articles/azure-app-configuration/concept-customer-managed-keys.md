@@ -6,18 +6,15 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023576"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371864"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Uygulama yapılandırma verilerinizi şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 Azure Uygulama yapılandırması, [bekleyen gizli bilgileri şifreler](../security/fundamentals/encryption-atrest.md). Müşteri tarafından yönetilen anahtarların kullanımı, şifreleme anahtarlarınızı yönetmenize olanak tanıyarak gelişmiş veri koruması sağlar.  Yönetilen anahtar şifrelemesi kullanıldığında, uygulama yapılandırmasındaki tüm hassas bilgiler Kullanıcı tarafından sağlanmış bir Azure Key Vault anahtarıyla şifrelenir.  Bu, şifreleme anahtarını isteğe bağlı olarak döndürme olanağı sağlar.  Ayrıca, uygulama yapılandırma örneğinin anahtara erişimini iptal ederek Azure uygulama yapılandırmasının hassas bilgilere erişimini iptal etme olanağı da sağlar.
-
-> [!NOTE]
-> Müşteri tarafından yönetilen anahtarlar artık Orta Hindistan *dışındaki* tüm bölgelerde genel kullanıma sunulmuştur. Azure Uygulama yapılandırması, **Orta Hindistan** bölgesinde, müşteri tarafından yönetilen anahtarların genel önizleme olarak kullanılmasını sağlar. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.
 
 ## <a name="overview"></a>Genel Bakış 
 Azure Uygulama yapılandırması, Microsoft tarafından sunulan 256 bitlik bir AES şifreleme anahtarı kullanarak bekleyen hassas bilgileri şifreler. Her uygulama yapılandırma örneğinin, hizmet tarafından yönetilen ve hassas bilgileri şifrelemek için kullandığı kendi şifreleme anahtarı vardır. Hassas bilgiler, anahtar-değer çiftleri içinde bulunan değerleri içerir.  Müşteri tarafından yönetilen anahtar özelliği etkinleştirildiğinde, uygulama yapılandırması Azure Active Directory kimlik doğrulaması yapmak için uygulama yapılandırma örneğine atanan yönetilen bir kimlik kullanır. Daha sonra yönetilen kimlik Azure Key Vault çağırır ve uygulama yapılandırma örneğinin şifreleme anahtarını sarmalanmış. Sarmalanan şifreleme anahtarı daha sonra saklanır ve sarmalanmamış şifreleme anahtarı bir saat için uygulama yapılandırması içinde önbelleğe alınır. Uygulama yapılandırması, uygulama yapılandırma örneğinin şifreleme anahtarının sarmalanmamış sürümünü her saat yeniler. Bu, normal işletim koşullarında kullanılabilirliği sağlar. 
@@ -81,7 +78,7 @@ Başlamak için, düzgün şekilde yapılandırılmış bir Azure uygulama yapı
     az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
-    Bu komutun çıktısı, sistem tarafından atanan kimliğin asıl KIMLIĞINI ("PrincipalId") ve kiracı KIMLIĞINI ("Tenandıd") içerir.  Bu, yönetilen anahtara kimlik erişimi vermek için kullanılacaktır.
+    Bu komutun çıktısı, sistem tarafından atanan kimliğin asıl KIMLIĞINI ("PrincipalId") ve kiracı KIMLIĞINI ("Tenandıd") içerir.  Bu kimlikler, yönetilen anahtara kimlik erişimi vermek için kullanılacaktır.
 
     ```json
     {

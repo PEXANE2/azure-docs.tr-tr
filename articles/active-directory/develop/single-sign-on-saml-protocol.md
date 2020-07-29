@@ -4,22 +4,22 @@ titleSuffix: Microsoft identity platform
 description: Bu makalede Azure Active Directory içindeki çoklu oturum açma (SSO) SAML Protokolü açıklanmaktadır
 services: active-directory
 documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.reviewer: paulgarn
+ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076955"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283002"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Çoklu oturum açma SAML Protokolü
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | ID | Gerekli | Azure AD döndürülen yanıtın özniteliğini doldurmak için bu özniteliği kullanır `InResponseTo` . KIMLIK bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji, bir GUID 'nin dize gösterimine "ID" gibi bir dizeyi eklemek için kullanılır. Örneğin, `id6c1c178c166d486687be4aaf5e482730` geçerli BIR kimliğidir. |
 | Sürüm | Gerekli | Bu parametre **2,0**olarak ayarlanmalıdır. |
@@ -101,7 +101,7 @@ Sağlanmışsa, `ProxyCount` `IDPListOption` Desteklenmeyen özniteliği veya `R
 ### <a name="signature"></a>İmza
 `Signature`Öğeleri içindeki bir öğesi `AuthnRequest` isteğe bağlıdır. İmza varsa, Azure AD imzalı kimlik doğrulama isteklerini doğrulamaz. İstek sahibi doğrulama, yalnızca kayıtlı onaylama tüketici hizmeti URL 'Lerine yanıt vererek sağlanır.
 
-### <a name="subject"></a>Özne
+### <a name="subject"></a>Konu
 Bir öğesi eklemeyin `Subject` . Azure AD, bir istek için konunun belirtilmesini desteklemez ve sağlandıysa bir hata döndürür.
 
 ## <a name="response"></a>Yanıt
@@ -212,7 +212,7 @@ Bu dijital imzayı oluşturmak için Azure AD, `IDPSSODescriptor` meta veri belg
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Özne
+#### <a name="subject"></a>Konu
 
 Bu, onay içindeki deyimlerin konusu olan sorumluyu belirtir. `NameID`Kimliği doğrulanmış kullanıcıyı temsil eden bir öğesi içerir. `NameID`Değer, yalnızca belirtecin hedef kitlesi olan hizmet sağlayıcısına yönlendirilen hedeflenen bir tanıtıcıdır. Kalıcı, iptal edilebilir, ancak hiçbir şekilde yeniden atanmaz. Ayrıca, kullanıcı hakkındaki herhangi bir şeyi açığa çıkarmadığından ve öznitelik sorguları için bir tanımlayıcı olarak kullanılamaz.
 

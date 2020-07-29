@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025855"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282951"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -208,7 +208,7 @@ Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Windows VM 'leri
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD kimlik bilgilerini kullanarak bir Windows VM 'de oturum açma
 
 > [!IMPORTANT]
-> Azure AD 'ye katılmış olan sanal makinelere uzak bağlantıya yalnızca Azure AD 'ye katılmış veya karma Azure AD olan Windows 10 bilgisayarlardan VM ile **aynı** dizine katılmış izin verilir. Ayrıca, Azure AD kimlik bilgilerini kullanarak RDP 'ye Kullanıcı, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma bilgilerinden birine ait olmalıdır. Şu anda, Azure savunma, AADLoginForWindows uzantısıyla Azure Active Directory kimlik doğrulaması kullanarak oturum açmak için kullanılamaz. Yalnızca Direct RDP desteklenir.
+> Azure AD 'ye katılmış olan sanal makinelere uzak bağlantıya yalnızca Azure AD kayıtlı (minimum gerekli derleme 20 H1) veya Azure AD 'ye katılmış ya da karma Azure AD, VM ile **aynı** dizine katılmış olan Windows 10 bilgisayarlardan izin verilir. Ayrıca, Azure AD kimlik bilgilerini kullanarak RDP 'ye Kullanıcı, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma bilgilerinden birine ait olmalıdır. Azure AD kayıtlı bir Windows 10 PC kullanıyorsanız, AzureAD\UPN biçiminde (ör.) kimlik bilgilerini girmeniz gerekir AzureAD\john@contoso.com . Şu anda, Azure savunma, AADLoginForWindows uzantısıyla Azure Active Directory kimlik doğrulaması kullanılarak oturum açmak için kullanılamaz; yalnızca Direct RDP desteklenir.
 
 Azure AD 'yi kullanarak Windows Server 2019 sanal makinenizde oturum açmak için: 
 
@@ -342,7 +342,7 @@ Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki
 Uzak Masaüstü bağlantısını başlatmak için kullandığınız Windows 10 bilgisayarının Azure AD 'ye katılmış veya karma Azure AD 'nin, sanal makinenizin katıldığı Azure AD dizinine katılmış olduğu bir bağlantı olduğunu doğrulayın. Cihaz kimliği hakkında daha fazla bilgi için, [cihaz kimliği nedir](/azure/active-directory/devices/overview)makalesine bakın.
 
 > [!NOTE]
-> Windows 10 20 H1, sanal makinenize Uzak Masaüstü bağlantısı başlatmak için Azure AD kayıtlı bılgısayar desteği ekler. Windows 10 ' un yeni özelliklerine göz atın ve yeni özellikleri araştırmak için Windows Insider programı 'na katılarak.
+> Windows 10 derleme 20H1, VM 'nize RDP bağlantısı başlatacak bir Azure AD kayıtlı BILGISAYARı için destek eklendi. VM 'nize bağlantıları başlatmak üzere RDP istemcisi olarak Azure AD 'ye kayıtlı (Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış) bilgisayar kullanırken, kimlik bilgilerini AzureAD\UPn (ör.) biçiminde girmeniz gerekir AzureAD\john@contoso.com .
 
 Ayrıca, Azure AD katılımı tamamlandıktan sonra AADLoginForWindows uzantısının kaldırılmadığından emin olun.
  
