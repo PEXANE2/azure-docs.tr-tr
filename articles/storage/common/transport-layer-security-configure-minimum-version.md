@@ -1,35 +1,37 @@
 ---
-title: Depolama hesabı için gerekli minimum Aktarım Katmanı Güvenliği (TLS) sürümünü yapılandırın
+title: Gelen istekler için en düşük gerekli Aktarım Katmanı Güvenliği (TLS) sürümünü zorla
 titleSuffix: Azure Storage
 description: Azure depolama 'ya karşı istek yapan istemciler için Aktarım Katmanı Güvenliği (TLS) için en düşük sürümü gerektirecek bir depolama hesabı yapılandırın.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 07/24/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: ab83f0ee656dfc717284c1e26d10dcb814fe1c9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: eaa00716e8f86552a077fb527993f619fc9756b5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209861"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275816"
 ---
-# <a name="configure-minimum-required-version-of-transport-layer-security-tls-for-a-storage-account"></a>Depolama hesabı için gerekli minimum Aktarım Katmanı Güvenliği (TLS) sürümünü yapılandırın
+# <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Depolama hesabına yönelik istekler için gereken en düşük Aktarım Katmanı Güvenliği (TLS) sürümünü zorla
 
 İstemci uygulaması ve bir Azure depolama hesabı arasındaki iletişim, Aktarım Katmanı Güvenliği (TLS) kullanılarak şifrelenir. TLS, Internet üzerinden istemciler ve hizmetler arasında gizlilik ve veri bütünlüğünü sağlayan standart bir şifreleme protokolüdür. TLS hakkında daha fazla bilgi için bkz. [Aktarım Katmanı Güvenliği](https://en.wikipedia.org/wiki/Transport_Layer_Security).
 
-Azure Storage Şu anda TLS protokolünün üç sürümünü desteklemektedir: 1,0, 1,1 ve 1,2. TLS 1,2, en güvenli TLS sürümüdür. Azure depolama, genel HTTPs uç noktalarında TLS 1,2 kullanır, ancak geriye dönük uyumluluk için TLS 1,0 ve TLS 1,1 desteklenmeye devam etmektedir.
+Azure Storage Şu anda TLS protokolünün üç sürümünü desteklemektedir: 1,0, 1,1 ve 1,2. Azure depolama, genel HTTPS uç noktalarında TLS 1,2 kullanır, ancak geriye dönük uyumluluk için TLS 1,0 ve TLS 1,1 desteklenmeye devam etmektedir.
 
-Varsayılan olarak, Azure depolama hesapları istemcilerin en eski TLS, TLS 1,0 ve üzeri sürümü ile veri göndermesini ve almasına izin verir. Daha sıkı güvenlik önlemleri zorlamak için depolama hesabınızı, istemcilerin daha yeni bir TLS sürümüyle veri göndermesini ve almasını gerektirecek şekilde yapılandırabilirsiniz. Depolama hesabı en az TLS sürümü gerektiriyorsa, önceki bir sürümle yapılan tüm istekler başarısız olur.
+Varsayılan olarak, Azure depolama hesapları istemcilerin en eski TLS, TLS 1,0 ve üzeri sürümü ile veri göndermesini ve almasına izin verir. Daha sıkı güvenlik önlemleri zorlamak için depolama hesabınızı, istemcilerin daha yeni bir TLS sürümüyle veri göndermesini ve almasını gerektirecek şekilde yapılandırabilirsiniz. Depolama hesabı en az TLS sürümü gerektiriyorsa, eski bir sürümle yapılan tüm istekler başarısız olur.
 
-Bu makalede, istemcilerin en düşük TLS sürümüne sahip istekleri göndermesini gerektirecek şekilde bir depolama hesabının nasıl yapılandırılacağı açıklanır. Bir istemci uygulamasından istek gönderirken belirli bir TLS sürümünü belirtme hakkında bilgi için, bkz. [bir istemci uygulaması Için Aktarım Katmanı Güvenliği (TLS) yapılandırma](transport-layer-security-configure-client-version.md).
+Bu makalede, depolama hesaplarınız için güvenli TLS 'yi sürekli olarak yönetmek üzere bir sürükleme (algılama-düzeltme-denetim-Idare) çerçevesinin nasıl kullanılacağı açıklanır.
+
+Bir istemci uygulamasından istek gönderirken belirli bir TLS sürümünü belirtme hakkında bilgi için, bkz. [bir istemci uygulaması Için Aktarım Katmanı Güvenliği (TLS) yapılandırma](transport-layer-security-configure-client-version.md).
 
 ## <a name="detect-the-tls-version-used-by-client-applications"></a>İstemci uygulamaları tarafından kullanılan TLS sürümünü Algıla
 
-Depolama hesabınız için en düşük TLS sürümünü zorlayarak, TLS 'nin önceki bir sürümüyle veri gönderen istemcilerden gelen istekleri reddetmeniz önerilir. En düşük TLS sürümünü yapılandırmanın istemci uygulamalarını nasıl etkileyebileceğini anlamak için, Microsoft, Azure depolama hesabınız için günlük kaydını etkinleştirmenizi ve TLS istemci uygulamalarının hangi sürümlerinin kullandığını belirlemek için günlükleri bir zaman aralığından sonra analiz etmenize olanak önerir.
+Depolama hesabınız için en düşük TLS sürümünü zorlayarak, daha eski bir TLS sürümü ile veri gönderen istemcilerden gelen istekleri reddetmeniz önerilir. En düşük TLS sürümünü yapılandırmanın istemci uygulamalarını nasıl etkileyebileceğini anlamak için, Microsoft, Azure depolama hesabınız için günlük kaydını etkinleştirmenizi ve TLS istemci uygulamalarının hangi sürümlerinin kullandığını tespit etmek üzere bir zaman aralığından sonra günlükleri analiz etmenize olanak önerir.
 
 Azure depolama hesabınıza yönelik istekleri günlüğe kaydetmek ve istemci tarafından kullanılan TLS sürümünü öğrenmek için Azure Izleyici 'de (Önizleme) Azure depolama günlüğü 'nü kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage 'ı izleme](monitor-storage.md).
 
@@ -57,7 +59,7 @@ Azure Izleyici 'de Azure depolama günlüklerinde bulunan alanların bir başvur
 
 Azure Izleyici 'de Azure depolama günlükleri bir depolama hesabına istek göndermek için kullanılan TLS sürümünü içerir. Günlüğe kaydedilen bir isteğin TLS sürümünü denetlemek için **TlsVersion** özelliğini kullanın.
 
-Son 7 güne ait günlükleri almak ve her TLS sürümü ile blob depolamaya göre kaç istek yapıldığını öğrenmek için Log Analytics çalışma alanınızı açın. Sonra, aşağıdaki sorguyu yeni bir günlük sorgusuna yapıştırın ve çalıştırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Son yedi gün içinde farklı TLS sürümleriyle blob depolamaya yönelik kaç istek yapıldığını öğrenmek için Log Analytics çalışma alanınızı açın. Sonra, aşağıdaki sorguyu yeni bir günlük sorgusuna yapıştırın ve çalıştırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```kusto
 StorageBlobLogs
@@ -73,7 +75,7 @@ Sonuçlar, her TLS sürümünde yapılan isteklerin sayısını gösterir:
 
 Azure Izleyici 'de Azure depolama günlükleri, depolama hesabına hangi istemci uygulamalarının eriştiğini değerlendirmenize yardımcı olmak üzere arayan IP adresini ve Kullanıcı Aracısı üst bilgisini de içerir. Bu değerleri, istemci uygulamalarının daha yeni bir TLS sürümünü kullanacak şekilde güncelleştirilip güncelleştirilmediğini veya en düşük TLS sürümü ile gönderilmemişse istemcinin isteği başarısız olarak kabul edilip edilmeyeceğini belirlemek için çözümleyebilirsiniz.
 
-Son 7 güne ait günlükleri almak ve TLS 1,2 ' den önceki bir TLS sürümü ile istek yaptığını anlamak için, aşağıdaki sorguyu yeni bir günlük sorgusuna yapıştırın ve çalıştırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Son yedi gün içinde TLS 1,2 'den daha eski bir TLS sürümü olan hangi istemcilerin istek yaptığını öğrenmek için aşağıdaki sorguyu yeni bir günlük sorgusuna yapıştırın ve çalıştırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```kusto
 StorageBlobLogs
@@ -81,9 +83,16 @@ StorageBlobLogs
 | project TlsVersion, CallerIpAddress, UserAgentHeader
 ```
 
-## <a name="configure-the-minimum-tls-version-for-an-account"></a>Bir hesabın en düşük TLS sürümünü yapılandırın
+## <a name="remediate-security-risks-with-a-minimum-version-of-tls"></a>En düşük TLS sürümü ile güvenlik risklerini düzeltin
 
-Bir depolama hesabı için en düşük TLS sürümünü yapılandırmak üzere, hesap için **Minimumtlsversion** sürümünü ayarlamak üzere Azure Portal veya Azure CLI 'yi kullanın. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Daha fazla bilgi için bkz. [depolama hesabına genel bakış](storage-account-overview.md).
+Daha eski TLS sürümlerini kullanan istemcilerden gelen trafiğin en az olduğundan veya daha eski bir TLS sürümüyle yapılan isteklerin başarısız olması için kabul edilebilir olduğundan emin olduğunuzda, depolama hesabınızda en düşük TLS sürümünü zorlamayı kullanmaya başlayabilirsiniz. İstemcilerin bir depolama hesabına karşı isteklerin olması için en düşük TLS sürümünü kullanmasını zorunlu kılmak, verilerinize yönelik güvenlik risklerini en aza indirmek için bir stratejinin bir parçasıdır.
+
+### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>Depolama hesabı için en düşük TLS sürümünü yapılandırın
+
+Bir depolama hesabı için en düşük TLS sürümünü yapılandırmak üzere hesabın **Minimumtlsversion** sürümünü ayarlayın. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Azure Resource Manager dağıtım modeli hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış](storage-account-overview.md).
+
+> [!NOTE]
+> **Minimumtlsversion** özelliği varsayılan olarak ayarlanmadı ve açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri **null**ise TLS sürüm 1,0 veya üzeri ile gönderilen isteklere izin verir.
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
@@ -95,41 +104,54 @@ Bir depolama hesabı için en düşük TLS sürümünü Azure portal yapılandı
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Azure portal en düşük TLS sürümünün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Azure CLı ile bir depolama hesabı için en düşük TLS sürümünü yapılandırmak üzere [az Resource Show](/cli/azure/resource#az-resource-show) komutunu çağırarak depolama HESABıNıZıN kaynak kimliğini alın. Daha sonra, depolama hesabı için **Minimumtlsversion** özelliğini ayarlamak üzere [az Resource Update](/cli/azure/resource#az-resource-update) komutunu çağırın. **Minimumtlsversion** için geçerli değerler `TLS1_0` `TLS1_1` ve `TLS1_2` .
+PowerShell ile bir depolama hesabı için en düşük TLS sürümünü yapılandırmak üzere [Azure PowerShell Version 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) veya üzeri sürümünü yüklemelisiniz. Ardından, yeni veya mevcut bir depolama hesabı için **Minimumtlsversion** özelliğini yapılandırın. **Minimumtlsversion** için geçerli değerler `TLS1_0` , `TLS1_1` ve ' dir `TLS1_2` .
 
-Aşağıdaki örnek, en düşük TLS sürümünü 1,2 olarak ayarlar. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek bir depolama hesabı oluşturur ve **Minimumtlsversion** 'ı TLS 1,1 olarak ayarlar, ardından hesabı güncelleştirir ve **minimumtlsversion** 'ı TLS 1,2 olarak ayarlar. Örnek, her durumda özellik değerini de alır. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
-```azurecli-interactive
-storage_account_id=$(az resource show \
-  --name <storage-account> \
-  --resource-group <resource-group> \
-  --resource-type Microsoft.Storage/storageAccounts \
-  --query id \
-  --output tsv)
+```powershell
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+$location = "<location>"
 
-az resource update \
-  --ids $storage_account_id \
-  --set properties.minimumTlsVersion="TLS1_2"
+# Create a storage account with MinimumTlsVersion set to TLS 1.1.
+New-AzStorageAccount -ResourceGroupName $rgName -AccountName $accountName -Location $location -SkuName Standard_GRS -MinimumTlsVersion TLS1_1
+# Read the MinimumTlsVersion property.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
+
+# Update the MinimumTlsVersion version for the storage account to TLS 1.2.
+Set-AzStorageAccount -ResourceGroupName $rgName -AccountName $accountName -MinimumTlsVersion TLS1_2
+# Read the MinimumTlsVersion property.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 ```
 
----
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-> [!NOTE]
-> Depolama hesabı için en düşük TLS sürümünü güncelleştirdikten sonra, değişiklik tamamen yayılmadan önce 30 saniye kadar sürebilir.
+Azure CLı ile bir depolama hesabı için en düşük TLS sürümünü yapılandırmak üzere Azure CLı sürüm 2.9.0 veya üstünü yüklemeyi yapın. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli). Ardından, yeni veya mevcut bir depolama hesabı için **Minimumtlsversion** özelliğini yapılandırın. **Minimumtlsversion** için geçerli değerler `TLS1_0` , `TLS1_1` ve ' dir `TLS1_2` .
 
-## <a name="check-the-minimum-required-tls-version-for-an-account"></a>Bir hesap için gereken en düşük TLS sürümünü denetleyin
-
-Bir depolama hesabı için yapılandırılmış gereken en düşük TLS sürümünü öğrenmek için Azure Resource Manager **Minimumtlsversion** özelliğini denetleyin. Tek seferde büyük bir depolama hesabı için bu özelliği denetlemek üzere Azure Kaynak Grafiği gezginini kullanın.
-
-**Minimumtlsversion** özelliği varsayılan olarak ayarlanmadı ve açıkça ayarlanana kadar bir değer döndürmez. Depolama hesabı, özellik değeri null ise TLS sürüm 1,0 veya üzeri ile gönderilen isteklere izin vermek için varsayılan olarak kullanılır.
-
-### <a name="check-the-minimum-required-tls-version-for-a-single-storage-account"></a>Tek bir depolama hesabı için gerekli en düşük TLS sürümünü denetleyin
-
-Azure CLı kullanarak tek bir depolama hesabı için gerekli en düşük TLS sürümünü denetlemek için, **Minimumtlsversion** özelliği için [az Resource Show](/cli/azure/resource#az-resource-show) komutunu ve sorguyu çağırın:
+Aşağıdaki örnek bir depolama hesabı oluşturur ve **Minimumtlsversion** 'ı TLS 1,1 olarak ayarlar. Daha sonra hesabı güncelleştirir ve **Minimumtlsversion** özelliğini TLS 1,2 olarak ayarlar. Örnek, her durumda özellik değerini de alır. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --kind StorageV2 \
+    --location <location> \
+    --min-tls-version TLS1_1
+
+az resource show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --resource-type Microsoft.Storage/storageAccounts \
+    --query properties.minimumTlsVersion \
+    --output tsv
+
+az storage account update \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --min-tls-version TLS1_2
+
 az resource show \
     --name <storage-account> \
     --resource-group <resource-group> \
@@ -138,7 +160,50 @@ az resource show \
     --output tsv
 ```
 
-### <a name="check-the-minimum-required-tls-version-for-a-set-of-storage-accounts"></a>Bir depolama hesabı kümesi için gereken en düşük TLS sürümünü denetleyin
+# <a name="template"></a>[Şablon](#tab/template)
+
+Bir depolama hesabı için en düşük TLS sürümünü şablon ile yapılandırmak için, **Minimumtlsversion** özelliği, veya olarak ayarlanmış bir şablon oluşturun `TLS1_0` `TLS1_1` `TLS1_2` . Aşağıdaki adımlar Azure portal bir şablonun nasıl oluşturulacağını açıklamaktadır.
+
+1. Azure portal **kaynak oluştur**' u seçin.
+1. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
+1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın)**, **Oluştur**' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
+1. Şablon Düzenleyicisi 'nde, yeni bir hesap oluşturmak için aşağıdaki JSON 'a yapıştırın ve en düşük TLS sürümünü TLS 1,2 olarak ayarlayın. Açılı ayraçlar içindeki yer tutucuları kendi değerlerinizle değiştirmeyi unutmayın.
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+        },
+        "resources": [
+            {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "<location>",
+            "properties": {
+                "minimumTlsVersion": "TLS1_2"
+            },
+            "dependsOn": [],
+            "tags": {}
+            }
+        ]
+    }
+    ```
+
+1. Şablonu kaydedin.
+1. Kaynak grubu parametresini belirtin, ardından şablonu dağıtmak ve **Minimumtlsversion** özelliği yapılandırılmış bir depolama hesabı oluşturmak Için **gözden geçir + oluştur** düğmesini seçin.
+
+---
+
+> [!NOTE]
+> Depolama hesabı için en düşük TLS sürümünü güncelleştirdikten sonra, değişiklik tamamen yayılmadan önce 30 saniye kadar sürebilir.
+
+En düşük TLS sürümünü yapılandırmak, Azure depolama kaynak sağlayıcısı 'nın 2019-04-01 veya sonraki bir sürümünü gerektirir. Daha fazla bilgi için bkz. [Azure depolama kaynak sağlayıcısı REST API](/rest/api/storagerp/).
+
+### <a name="check-the-minimum-required-tls-version-for-multiple-accounts"></a>Birden çok hesap için gereken en düşük TLS sürümünü denetleyin
 
 En iyi performansa sahip bir dizi depolama hesabı genelinde gereken en düşük TLS sürümünü denetlemek için Azure portal Azure Kaynak Grafiği Gezginini kullanabilirsiniz. Kaynak Grafiği Gezginini kullanma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak Ilk kaynak grafik sorgunuzu çalıştırma](/azure/governance/resource-graph/first-query-portal).
 
@@ -153,11 +218,118 @@ resources
 
 ---
 
-## <a name="test-the-minimum-tls-version-from-a-client"></a>Bir istemciden en düşük TLS sürümünü test etme
+### <a name="test-the-minimum-tls-version-from-a-client"></a>Bir istemciden en düşük TLS sürümünü test etme
 
-Önceki bir sürümle yapılan bir depolama hesabı yasaklıyor çağrıları için gereken en düşük TLS sürümünü sınamak için, bir istemciyi TLS 'nin önceki bir sürümünü kullanacak şekilde yapılandırabilirsiniz. Bir istemciyi belirli bir TLS sürümünü kullanacak şekilde yapılandırma hakkında daha fazla bilgi için, bkz. [bir istemci uygulaması Için Aktarım Katmanı Güvenliği 'ni (TLS) yapılandırma](transport-layer-security-configure-client-version.md).
+Daha eski bir sürümle yapılan bir depolama hesabı yasaklıyor çağrıları için gereken en düşük TLS sürümünü sınamak için, bir istemciyi daha eski bir TLS sürümünü kullanacak şekilde yapılandırabilirsiniz. Bir istemciyi belirli bir TLS sürümünü kullanacak şekilde yapılandırma hakkında daha fazla bilgi için, bkz. [bir istemci uygulaması Için Aktarım Katmanı Güvenliği 'ni (TLS) yapılandırma](transport-layer-security-configure-client-version.md).
 
 Bir istemci, hesap için yapılandırılmış en düşük TLS sürümünü karşılamayan bir TLS sürümünü kullanarak bir depolama hesabına eriştiğinde, Azure Storage hata kodu 400 hatası (Hatalı Istek) ve kullanılan TLS sürümünün bu depolama hesabında istek yapmasına izin verilmediğini belirten bir ileti döndürür.
+
+## <a name="use-azure-policy-to-audit-for-compliance"></a>Uyumluluğu denetlemek için Azure Ilkesini kullanma
+
+Çok sayıda depolama hesabınız varsa, kuruluşunuzun gerektirdiği en düşük TLS sürümü için tüm hesapların yapılandırıldığından emin olmak üzere bir denetim yapmak isteyebilirsiniz. Uyumluluğun bir depolama hesapları kümesini denetlemek için Azure Ilkesi ' ni kullanın. Azure Ilkesi, Azure kaynaklarına kurallar uygulayan ilkeler oluşturmak, atamak ve yönetmek için kullanabileceğiniz bir hizmettir. Azure Ilkesi, bu kaynakları kurumsal standartlarınızla ve hizmet düzeyi Sözleşmelerinizle uyumlu tutmanıza yardımcı olur. Daha fazla bilgi için bkz. [Azure Ilkesine genel bakış](../../governance/policy/overview.md).
+
+### <a name="create-a-policy-with-an-audit-effect"></a>Denetim efektli bir ilke oluşturma
+
+Azure Ilkesi, bir ilke kuralı bir kaynağa göre değerlendirildiğinde ne olacağını belirlemek için etkileri destekler. Denetim etkisi, bir kaynak uyumlu olmadığında, ancak isteği durdurmadığında bir uyarı oluşturur. Efektler hakkında daha fazla bilgi için bkz. [Azure ilke efektlerini anlama](../../governance/policy/concepts/effects.md).
+
+Azure portal en düşük TLS sürümüne yönelik denetim efektli bir ilke oluşturmak için aşağıdaki adımları izleyin:
+
+1. Azure portal Azure Ilke hizmeti ' ne gidin.
+1. **Yazma** bölümünde **tanımlar**' ı seçin.
+1. **İlke tanımı Ekle** ' yi seçerek yeni bir ilke tanımı oluşturun.
+1. **Tanım konumu** alanı için, denetim ilkesi kaynağının nerede olduğunu belirtmek üzere **daha fazla** düğmesini seçin.
+1. İlke için bir ad belirtin. İsteğe bağlı olarak bir açıklama ve kategori belirtebilirsiniz.
+1. **İlke kuralı**altında, **policyrule** bölümüne aşağıdaki ilke tanımını ekleyin.
+
+    ```json
+    {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field":"Microsoft.Storage/storageAccounts/minimumTlsVersion",
+              "equals": "TLS1_2"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+    ```
+
+1. İlkeyi kaydedin.
+
+### <a name="assign-the-policy"></a>İlke atama
+
+Sonra, ilkeyi bir kaynağa atayın. İlke kapsamı bu kaynağa ve altındaki kaynaklara karşılık gelir. İlke atama hakkında daha fazla bilgi için bkz. [Azure ilke atama yapısı](../../governance/policy/concepts/assignment-structure.md).
+
+İlkeyi Azure portal atamak için aşağıdaki adımları izleyin:
+
+1. Azure portal Azure Ilke hizmeti ' ne gidin.
+1. **Yazma** bölümünde **atamalar**' ı seçin.
+1. Yeni ilke ataması oluşturmak için **Ilke ata** ' yı seçin.
+1. **Kapsam** alanı için, ilke atamasının kapsamını seçin.
+1. **İlke tanımı** alanı Için, **daha fazla** düğmesini seçin ve ardından listeden önceki bölümde tanımladığınız ilkeyi seçin.
+1. İlke ataması için bir ad girin. Açıklama isteğe bağlıdır.
+1. **İlke zorlamasının** *etkin*olarak ayarlanmış kalsın. Bu ayarın denetim ilkesi üzerinde hiçbir etkisi yoktur.
+1. Atamayı oluşturmak için **gözden geçir + oluştur** ' u seçin.
+
+### <a name="view-compliance-report"></a>Uyumluluk raporunu görüntüle
+
+İlkeyi atadıktan sonra, uyumluluk raporunu görüntüleyebilirsiniz. Bir denetim ilkesi için uyumluluk raporu, ilke ile uyumlu olmayan depolama hesaplarının hakkında bilgi sağlar. Daha fazla bilgi için bkz. [ilke uyumluluk verilerini edinme](../../governance/policy/how-to/get-compliance-data.md).
+
+Uyumluluk raporunun, ilke ataması oluşturulduktan sonra kullanılabilir olması birkaç dakika sürebilir.
+
+Uyumluluk raporunu Azure portal görüntülemek için aşağıdaki adımları izleyin:
+
+1. Azure portal Azure Ilke hizmeti ' ne gidin.
+1. **Uyumluluk**' i seçin.
+1. Önceki adımda oluşturduğunuz ilke atamasının adı için sonuçları filtreleyin. Rapor, ilkeyle ilgili olarak kaç kaynağın uyumsuz olduğunu gösterir.
+1. Uyumluluğa sahip olmayan depolama hesaplarının bir listesi de dahil olmak üzere ek ayrıntılar için raporda ayrıntıya gidebilirsiniz.
+
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Minimum TLS sürümü için denetim ilkesi uyumluluk raporunu gösteren ekran görüntüsü":::
+
+## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>En düşük TLS sürümünü zorlamak için Azure Ilkesini kullanma
+
+Azure Ilkesi, Azure kaynaklarının gereksinimlere ve standartlara bağlı olmasını sağlayarak bulut idare desteği sağlar. Kuruluşunuzdaki depolama hesapları için en düşük TLS sürümü gereksinimini zorlamak için, en düşük TLS gereksinimini ilke tarafından dikte edilen eski bir TLS sürümüne ayarlayan yeni bir depolama hesabı oluşturulmasını önleyen bir ilke oluşturabilirsiniz. Bu ilke, bu hesap için en düşük TLS sürümü ayarı ilkeyle uyumlu değilse, bu ilke, var olan bir hesapta tüm yapılandırma değişikliklerini de engeller.
+
+Zorlama ilkesi, en düşük TLS sürümü kuruluşunuzun standartlarına uygun olmayacak şekilde bir depolama hesabı oluşturup değiştirecek bir isteği engellemek için reddetme efektini kullanır. Efektler hakkında daha fazla bilgi için bkz. [Azure ilke efektlerini anlama](../../governance/policy/concepts/effects.md).
+
+TLS 1,2 ' den daha az bir TLS sürümüne yönelik reddetme etkisi olan bir ilke oluşturmak için, [uyumluluğu denetlemek Için Azure Ilkesi kullanma](#use-azure-policy-to-audit-for-compliance)bölümünde açıklanan adımları izleyin, ancak Ilke tanımının **policyrule** bölümünde aşağıdaki JSON 'yı sağlayın:
+
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field":"Microsoft.Storage/storageAccounts/minimumTlsVersion",
+          "equals": "TLS1_2"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+İlkeyi reddetme etkimiyle oluşturup bir kapsama atadıktan sonra, Kullanıcı 1,2 'den eski olan en düşük TLS sürümüne sahip bir depolama hesabı oluşturamaz. Ya da bir Kullanıcı, mevcut bir depolama hesabında şu anda 1,2 'den eski olan en düşük TLS sürümünü gerektiren yapılandırma değişikliklerini yapabilir. Bunun denenmeye çalışılması bir hata ile sonuçlanır. Hesap oluşturma veya yapılandırmaya devam etmek için depolama hesabı için gereken en düşük TLS sürümü 1,2 olarak ayarlanmalıdır.
+
+Aşağıdaki görüntüde, bir reddetme etkisi olan bir ilke en düşük TLS sürümünün TLS 1,2 olarak ayarlanmasını gerektirdiğinde, en düşük TLS sürümü TLS 1,0 (yeni bir hesap için varsayılan) olarak ayarlanmış bir depolama hesabı oluşturmaya çalıştığınızda oluşan hata gösterilmektedir.
+
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="İlke ihlalinden bir depolama hesabı oluşturulurken oluşan hatayı gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

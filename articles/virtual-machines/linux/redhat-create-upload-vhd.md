@@ -5,15 +5,15 @@ author: gbowerman
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: 2e3fee3a37d22167a27b46a1fa7497ac2323eb6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc8d4458de5f3bbf1eaf111aa10f1377f3c9d46a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069400"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292301"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure'da Red Hat tabanlı bir sanal makine hazırlama
 Bu makalede, Azure 'da kullanmak üzere bir Red Hat Enterprise Linux (RHEL) sanal makinesinin nasıl hazırlanacağını öğreneceksiniz. Bu makalede ele alınan RHEL 'nin sürümleri 6.7 + ve 7.1 + ' dir. Bu makalede ele alınan hazırlıklar için hiper yönetici, Hyper-V, çekirdek tabanlı sanal makine (KVM) ve VMware ' dir. Red Hat 'in bulut erişim programına katılma uygunluk gereksinimleri hakkında daha fazla bilgi için bkz. [Red Hat 'In bulut erişimi Web sitesi](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) ve [Azure 'da RHEL çalıştırma](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). RHEL görüntülerini oluşturmayı otomatikleştirebileceğiniz yollar için bkz. [Azure görüntü Oluşturucu](./image-builder-overview.md).
@@ -195,7 +195,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -525,7 +525,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     # subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -723,7 +723,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
     # subscription-manager repos --enable=rhel-6-server-extras-rpms
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
@@ -864,7 +864,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"

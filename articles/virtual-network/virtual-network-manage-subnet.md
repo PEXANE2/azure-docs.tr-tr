@@ -1,7 +1,7 @@
 ---
 title: Azure sanal ağ alt ağını ekleme, değiştirme veya silme
 titlesuffix: Azure Virtual Network
-description: Azure 'da bir sanal ağ alt ağı ekleme, değiştirme veya silme hakkında bilgi edinin.
+description: Sanal ağlarla ilgili bilgilerin nerede bulunacağını ve Azure 'da bir sanal ağ alt ağının nasıl ekleneceğini, değiştirileceğini veya silineceğini öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15fe5d6d16948875253d65e70d9d440214a4a2e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286113"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Sanal ağ alt ağını ekleme, değiştirme veya silme
 
@@ -49,7 +50,7 @@ Hesabınız yoksa, etkin abonelikle bir Azure hesabı ayarlayın. [Ücretsiz hes
 
     | Ayar | Açıklama |
     | --- | --- |
-    | **Adı** | Ad, sanal ağ içinde benzersiz olmalıdır. Diğer Azure hizmetleriyle maksimum uyumluluk için, adın ilk karakteri olarak bir harf kullanmanızı öneririz. Örneğin, Azure Application Gateway, bir sayı ile başlayan bir alt ağa dağıtılır. |
+    | **Ad** | Ad, sanal ağ içinde benzersiz olmalıdır. Diğer Azure hizmetleriyle maksimum uyumluluk için, adın ilk karakteri olarak bir harf kullanmanızı öneririz. Örneğin, Azure Application Gateway, bir sayı ile başlayan bir alt ağa dağıtılır. |
     | **Adres aralığı** | <p>Aralık, sanal ağın adres alanı içinde benzersiz olmalıdır. Aralık, sanal ağ içindeki diğer alt ağ adres aralıklarıyla çakışamaz. Adres alanının, sınıfsız etki alanları arası yönlendirme (CıDR) gösterimi kullanılarak belirtilmesi gerekir.</p><p>Örneğin, *10.0.0.0/16*adres alanına sahip bir sanal ağda, *10.0.0.0/22*olan bir alt ağ adres alanı tanımlayabilirsiniz. Belirtebileceğiniz en küçük Aralık */29*, alt ağ IÇIN sekiz IP adresi sağlar. Azure, protokol uyumluluğu için her bir alt ağdaki ilk ve son adresi ayırır. Azure hizmeti kullanımı için üç ek adres ayrılır. Sonuç olarak, */29* adres aralığı ile bir alt ağ tanımlamak alt ağda KULLANILABILIR üç IP adresi ile sonuçlanır.</p><p>Bir sanal ağı bir VPN ağ geçidine bağlamayı planlıyorsanız, bir ağ geçidi alt ağı oluşturmanız gerekir. [Ağ geçidi alt ağları için belirli adres aralığı konuları](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)hakkında daha fazla bilgi edinin. Belirli koşullar altında alt ağ eklendikten sonra adres aralığını değiştirebilirsiniz. Bir alt ağ adres aralığını değiştirme hakkında bilgi edinmek için bkz. [alt ağ ayarlarını değiştirme](#change-subnet-settings).</p> |
     | **Ağ güvenlik grubu** | Alt ağın gelen ve giden ağ trafiğini filtrelemek için, var olan bir ağ güvenlik grubunu bir alt ağla ilişkilendirebilirsiniz. Ağ güvenlik grubu, sanal ağla aynı abonelikte ve konumda bulunmalıdır. [Ağ güvenlik grupları](security-overview.md) ve [ağ güvenlik grubu oluşturma](tutorial-filter-network-traffic.md)hakkında daha fazla bilgi edinin. |
     | **Yol tablosu** | Diğer ağlara ağ trafiği yönlendirmeyi denetlemek için, isteğe bağlı olarak mevcut bir yol tablosunu bir alt ağ ile ilişkilendirebilirsiniz. Yol tablosu, sanal ağla aynı abonelikte ve konumda bulunmalıdır. [Azure yönlendirme](virtual-networks-udr-overview.md) ve [yol tablosu oluşturma](tutorial-create-route-table-portal.md)hakkında daha fazla bilgi edinin. |
@@ -119,7 +120,7 @@ Alt ağı yalnızca alt ağda kaynak yoksa silebilirsiniz. Kaynaklar alt ağdays
 
 Alt ağlardaki görevleri yapmak için, hesabınız [ağ katılımcısı rolüne](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) veya aşağıdaki tabloda uygun eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır:
 
-|Eylem                                                                   |   Name                                       |
+|Eylem                                                                   |   Ad                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft. Network/virtualNetworks/alt ağlar/okuma                           |   Sanal ağ alt ağını oku              |
 |Microsoft. Network/virtualNetworks/alt ağlar/yazma                          |   Sanal ağ alt ağını oluşturma veya güncelleştirme  |

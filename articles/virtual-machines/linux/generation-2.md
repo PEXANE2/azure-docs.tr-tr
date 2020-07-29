@@ -4,15 +4,15 @@ description: 2. nesil sanal makineler için Azure desteğine genel bakış
 author: ju-shim
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: e84d4d147490cd3b9d136f25a3707f5a74999f3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2a40c6158b5d29f695360c04a0d4376efd4238f9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527345"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288466"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -131,7 +131,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer 
 
 Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
-#### <a name="azure-cli"></a>Azure CLI’si
+#### <a name="azure-cli"></a>Azure CLI
 
 Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
 

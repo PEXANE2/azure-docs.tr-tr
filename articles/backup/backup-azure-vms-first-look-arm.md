@@ -3,12 +3,12 @@ title: VM ayarlarından bir Azure VM 'yi yedekleme
 description: Bu makalede, Azure Backup hizmetiyle tek bir Azure VM veya birden fazla Azure VM 'yi nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538896"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286754"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM ayarlarından bir Azure VM 'yi yedekleme
 
@@ -39,15 +39,15 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
    - Zaten bir kasanız varsa, **Varolanı Seç**' e tıklayın ve bir kasa seçin.
    - Kasanız yoksa **Yeni oluştur**' a tıklayın. Kasa için bir ad belirtin. Bu, VM ile aynı bölgede ve kaynak grubunda oluşturulur. Yedeklemeyi doğrudan VM ayarlarından etkinleştirdiğinizde bu ayarları değiştiremezsiniz.
 
-   ![Yedekleme Sihirbazını Etkinleştirme](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+        ![Yedekleme Sihirbazını Etkinleştirme](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. **Yedekleme Ilkesini seçin**bölümünde şunları yapın:
+6. **Yedekleme Ilkesini seçin**bölümünde aşağıdakilerden birini yapın:
 
    - Varsayılan ilkeyi bırakın. Bu, VM 'yi belirtilen zamanda günde bir kez yedekler ve kasadaki yedeklemeleri 30 gün boyunca tutar.
    - Varsa, var olan bir yedekleme ilkesi seçin.
    - Yeni bir ilke oluşturun ve ilke ayarlarını tanımlayın.  
 
-   ![Yedekleme ilkesini seçme](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+       ![Yedekleme ilkesini seçme](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. **Yedeklemeyi etkinleştir**' e tıklayın. Bu, yedekleme ilkesini VM ile ilişkilendirir.
 

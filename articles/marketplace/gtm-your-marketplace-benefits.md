@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c305a2513a5ace241fe697766b851cd2851e8b78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536087"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287892"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -41,7 +41,7 @@ Tüm program avantajlarının ayrıntılı açıklamaları bu Market 'te yer ala
 Kullanmaya başlamak kolaydır:
 
 1. Microsoft AppSource veya Azure Marketi 'nde teklif yayımlayın.
-2. Iş Ortağı Merkezi ' nde [Market](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) 'e gidin ve **Market yeniden oluşturma programı '** nı seçin.
+2. Iş Ortağı Merkezi ' nde [Market](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) 'e gidin ve **Market yeniden oluşturma programı '** nı seçin.
 3. Satış ve pazarlama avantajlarını etkinleştirmek için bir şirket pazarlama kişisi atayın. Bu kişi Marketplace Rewards avantajınız hakkında izleme amaçlı iletişimleri alacaktır.
 4. Pazarlama iletişim bilgilerinizi eklemek veya güncelleştirmek için Market depoları sayfasında satış ve pazarlama avantajları sekmesinin en üstüne gidin ve **Ekle, Güncelleştir veya Değiştir**' i seçin.  Sonra, şunları yapın:
 

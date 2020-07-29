@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: ebbf83e1abe6140614a45bfa89570cdf19283f8f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169585"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281557"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
@@ -46,6 +46,9 @@ Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için is
 ## <a name="manage-snapshot-policies"></a>Anlık görüntü ilkelerini yönetme
 
 Anlık görüntü ilkeleri kullanarak, birim anlık görüntülerinin otomatik olarak alınmasını zamanlayabilirsiniz. Ayrıca, gerektiğinde bir anlık görüntü ilkesini değiştirebilir veya artık ihtiyacınız olmayan bir anlık görüntü ilkesini silebilirsiniz.  
+
+> [!IMPORTANT] 
+> Anlık görüntü ilkesi işlevselliğinin kullanılması için beyaz listeye almanız gerekir. anffeedback@microsoft.comBu özelliği istemek için ABONELIK Kimliğiniz ile e-posta gönderin.
 
 ### <a name="create-a-snapshot-policy"></a>Anlık görüntü ilkesi oluşturma 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5ea31217bd3088ec123281b36f8578b08ea25b2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f0a706cc51027bc503da9ee3bc637216e9e52853
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136335"
+ms.locfileid: "87171367"
 ---
 ## <a name="restrictions"></a>Kısıtlamalar
 
@@ -50,12 +50,12 @@ Konakta şifrelemeyi etkinleştirmek için yeni bir VM dağıtmanız gerekir, bu
 1. Yeni bir sanal makine oluşturun, uygun bir bölge ve desteklenen bir VM boyutu seçin.
 1. **Temel** dikey penceredeki diğer değerleri istediğiniz gibi doldurup **diskler** dikey penceresine geçin.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="örnek metin":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="Sanal makine oluşturma temelleri dikey penceresinin ekran görüntüsü, bölge ve V d boyutu vurgulanır.":::
 
 1. **Diskler** dikey penceresinde, **konakta şifreleme**için **Evet** ' i seçin.
 1. Diğer seçimleri istediğiniz gibi yapın.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="örnek metin":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Sanal makine oluşturma diskleri dikey penceresinin ekran görüntüsü, konaktaki şifreleme vurgulanır.":::
 
 1. VM dağıtım işlemini tamamlayın ortamınıza uyan seçimler yapın.
 

@@ -5,15 +5,15 @@ author: cynthn
 manager: gwallace
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 6a648fd7f2835ca23285b69d5fed7156507b2ace
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5b7e50ebe6f09de2555af03a47641ef6ca92e92a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500574"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288300"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM için şablon indirme
 Portal veya PowerShell kullanarak Azure 'da bir VM oluşturduğunuzda, sizin için otomatik olarak bir Kaynak Yöneticisi şablonu oluşturulur. Bu şablonu, bir dağıtımı hızlı bir şekilde yinelemek için kullanabilirsiniz. Şablon, bir kaynak grubundaki tüm kaynaklarla ilgili bilgiler içerir. Bu, bir sanal makine için, şablonda ağ kaynakları dahil olmak üzere o kaynak grubundaki VM 'nin desteğiyle oluşturulan her şeyi içerdiği anlamına gelir.

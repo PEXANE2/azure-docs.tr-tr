@@ -3,12 +3,12 @@ title: DevTest Labs kavramları | Microsoft Docs
 description: DevTest Labs 'in temel kavramlarını ve Azure sanal makinelerini oluşturmayı, yönetmeyi ve izlemeyi nasıl kolaylaştırabileceğinizi öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8f82f0484caf23d20092318b5bc2a32b0e6b1f1d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074967"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283852"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs kavramları
 ## <a name="overview"></a>Genel Bakış
@@ -20,7 +20,7 @@ Laboratuvar, sınırları ve kotaları belirterek bu kaynakları daha iyi yönet
 ## <a name="virtual-machine"></a>Sanal makine
 Azure VM, Azure 'un sunduğu [isteğe bağlı, ölçeklenebilir bilgi işlem kaynakları](/azure/architecture/guide/technology-choices/compute-decision-tree) türlerinden biridir. Azure VM 'Leri, kendisini çalıştıran fiziksel donanımı satın alıp sürdürmenize gerek kalmadan sanallaştırma esnekliği sağlar, ancak yine de üzerinde çalışan yazılımı yapılandırma, düzeltme eki uygulama ve yükleme gibi belirli görevleri gerçekleştirerek VM 'yi korumanız gerekir.
 
-[Azure 'Daki Windows sanal makinelerine genel bakış](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) , bir VM oluşturmadan önce göz önünde bulundurmanız gerekenler, nasıl oluşturacağınız ve nasıl yöneteceğiniz hakkında bilgi verir.
+[Azure 'Daki Windows sanal makinelerine genel bakış](../virtual-machines/windows/overview.md) , bir VM oluşturmadan önce göz önünde bulundurmanız gerekenler, nasıl oluşturacağınız ve nasıl yöneteceğiniz hakkında bilgi verir.
 
 ## <a name="claimable-vm"></a>Çakışan VM
 Azure çakışan bir VM, izinleri olan herhangi bir laboratuvar kullanıcısı tarafından kullanılabilecek bir sanal makinedir. Laboratuvar Yöneticisi, belirli temel görüntüler ve yapıtlar ile VM 'Ler hazırlayıp paylaşılan bir havuza kaydedebilir. Daha sonra bir laboratuvar kullanıcısı, belirli bir yapılandırmaya sahip olmaları gerektiğinde havuzdan çalışan bir VM 'yi talep edebilir.
@@ -28,7 +28,7 @@ Azure çakışan bir VM, izinleri olan herhangi bir laboratuvar kullanıcısı t
 İlk olarak belirli bir kullanıcıya atanmayan bir VM, ancak "çakışan sanal makineler" altındaki her kullanıcının listesinde görünür. Bir VM bir kullanıcı tarafından talep edildikten sonra, "sanal makinelerim" alanına taşınır ve başka hiçbir Kullanıcı tarafından artık çakışmaz.
 
 ## <a name="environment"></a>Ortam
-DevTest Labs 'de bir ortam, bir laboratuvardaki Azure kaynakları koleksiyonuna başvurur. [Bu blog gönderisi](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) , Azure Resource Manager şablonlarınızdaki çoklu VM ortamları oluşturmayı açıklar.
+DevTest Labs 'de bir ortam, bir laboratuvardaki Azure kaynakları koleksiyonuna başvurur. [Bu blog gönderisi](./devtest-lab-faq.md#blog-post) , Azure Resource Manager şablonlarınızdaki çoklu VM ortamları oluşturmayı açıklar.
 
 ## <a name="base-images"></a>Temel görüntüler
 Temel görüntüler, tüm araçları ve ayarları önceden yüklenmiş ve hızlı bir şekilde VM oluşturmak için yapılandırılmış olan VM görüntüleridir. Mevcut bir temeli seçerek ve Test Aracınızı yüklemek için yapıt ekleyerek bir VM sağlayabilirsiniz. Daha sonra, sağlanan VM 'yi bir temel olarak kaydedebilirsiniz, böylece taban, her VM sağlama için test aracısını yeniden yüklemek zorunda kalmadan kullanılabilir.
@@ -74,7 +74,7 @@ Kapsamlar hiyerarşik olduğundan, bir kullanıcının belirli bir kapsamda izin
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 Bu makalede ele alınan kavramların tümü, Azure çözümünüzün altyapısını/yapılandırmasını tanımlamanızı ve tutarlı bir durumda tekrar tekrar dağıtılmasını sağlayan Azure Resource Manager şablonları kullanılarak yapılandırılabilir.
 
-[Azure Resource Manager şablonlarının yapısını ve sözdizimini anlamak](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) bir Azure Resource Manager şablonunun yapısını ve bir şablonun farklı bölümlerinde kullanılabilen özellikleri açıklar.
+[Azure Resource Manager şablonlarının yapısını ve sözdizimini anlamak](../azure-resource-manager/templates/template-syntax.md#template-format) bir Azure Resource Manager şablonunun yapısını ve bir şablonun farklı bölümlerinde kullanılabilen özellikleri açıklar.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
