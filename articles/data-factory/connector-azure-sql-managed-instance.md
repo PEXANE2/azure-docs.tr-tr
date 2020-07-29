@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: d67a050ccd590e220c51e02b827013ace7707ee2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae0ab6c4279136c0a5ec86c1f8f52baa0fd69763
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523256"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171410"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL yönetilen örneğine veri kopyalama
 
@@ -49,7 +49,7 @@ SQL yönetilen örnek [genel uç noktasına](../azure-sql/managed-instance/publi
 
 SQL yönetilen örnek özel uç noktasına erişmek için, veritabanına erişebilen, [Şirket içinde barındırılan bir tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) ayarlayın. Şirket içinde barındırılan tümleştirme çalışma zamanını yönetilen örneğiniz ile aynı sanal ağda temin ediyorsanız, tümleştirme çalışma zamanı makinenizin yönetilen örnekten farklı bir alt ağda olduğundan emin olun. Şirket içinde barındırılan tümleştirme çalışma zamanını yönetilen örneğinizle farklı bir sanal ağda temin ediyorsanız, sanal ağ eşlemesi veya sanal ağ bağlantısı kullanabilirsiniz. Daha fazla bilgi için bkz. [UYGULAMANıZı SQL yönetilen örneğine bağlama](../azure-sql/managed-instance/connect-application-instance.md).
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -267,10 +267,10 @@ SQL yönetilen örneğinden veri kopyalamak için, etkinlik kaynağını kopyala
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının Type özelliği **Sqlmisource**olarak ayarlanmalıdır. | Yes |
-| sqlReaderQuery |Bu özellik, verileri okumak için özel SQL sorgusu kullanır. `select * from MyTable` bunun bir örneğidir. |No |
-| sqlReaderStoredProcedureName |Bu özellik, kaynak tablodaki verileri okuyan saklı yordamın adıdır. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |No |
-| storedProcedureParameters |Bu parametreler, saklı yordama yöneliktir.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük harfleriyle aynı olmalıdır. |No |
-| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted** (varsayılan), **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | No |
+| sqlReaderQuery |Bu özellik, verileri okumak için özel SQL sorgusu kullanır. `select * from MyTable` bunun bir örneğidir. |Hayır |
+| sqlReaderStoredProcedureName |Bu özellik, kaynak tablodaki verileri okuyan saklı yordamın adıdır. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |Hayır |
+| storedProcedureParameters |Bu parametreler, saklı yordama yöneliktir.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük harfleriyle aynı olmalıdır. |Hayır |
+| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | Hayır |
 
 **Aşağıdaki noktalara dikkat edin:**
 
@@ -374,14 +374,14 @@ Verileri SQL yönetilen örneğine kopyalamak için, kopyalama etkinlik havuzu b
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği havuzunun Type özelliği **Sqlmisink**olarak ayarlanmalıdır. | Yes |
-| Ön Copyscrıpt |Bu özellik, SQL yönetilen örneğine veri yazmadan önce, kopyalama etkinliğinin çalıştırılacağı bir SQL sorgusu belirtir. Her kopya çalıştırması için yalnızca bir kez çağrılır. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |No |
-| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. Havuz saklı yordamı belirttiğinde veya hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |No |
-| sqlWriterStoredProcedureName | Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı. <br/>Bu saklı yordam *toplu iş başına çağırılır*. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan işlemler için, örneğin, DELETE veya TRUNCATE, `preCopyScript` özelliğini kullanın.<br>[BIR SQL havuzundan saklı yordam çağırma](#invoke-a-stored-procedure-from-a-sql-sink)örneğine bakın. | No |
-| storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |No |
-| sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |No |
-| storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | No |
-| writeBatchSize |*Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/>İzin verilen değerler, satır sayısı için tamsayılardır. Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler.  |No |
-| writeBatchTimeout |Bu özellik, toplu ekleme işleminin zaman aşımına uğramadan önce tamamlaması için bekleme süresini belirtir.<br/>İzin verilen değerler TimeSpan içindir. Örneğin, 30 dakika olan "00:30:00" bir örnektir. |No |
+| Ön Copyscrıpt |Bu özellik, SQL yönetilen örneğine veri yazmadan önce, kopyalama etkinliğinin çalıştırılacağı bir SQL sorgusu belirtir. Her kopya çalıştırması için yalnızca bir kez çağrılır. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |Hayır |
+| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. Havuz saklı yordamı belirttiğinde veya hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |Hayır |
+| sqlWriterStoredProcedureName | Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı. <br/>Bu saklı yordam *toplu iş başına çağırılır*. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan işlemler için, örneğin, DELETE veya TRUNCATE, `preCopyScript` özelliğini kullanın.<br>[BIR SQL havuzundan saklı yordam çağırma](#invoke-a-stored-procedure-from-a-sql-sink)örneğine bakın. | Hayır |
+| storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |Hayır |
+| sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |Hayır |
+| storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | Hayır |
+| writeBatchSize |*Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/>İzin verilen değerler, satır sayısı için tamsayılardır. Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler.  |Hayır |
+| writeBatchTimeout |Bu özellik, toplu ekleme işleminin zaman aşımına uğramadan önce tamamlaması için bekleme süresini belirtir.<br/>İzin verilen değerler TimeSpan içindir. Örneğin, 30 dakika olan "00:30:00" bir örnektir. |Hayır |
 
 **Örnek 1: veri ekleme**
 

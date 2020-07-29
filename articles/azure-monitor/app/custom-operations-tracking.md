@@ -4,12 +4,12 @@ description: Azure Application Insights .NET SDK ile özel işlemleri izleme
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540052"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320383"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>.NET SDK Application Insights özel işlemleri izleme
 
@@ -206,14 +206,14 @@ public async Task Process(BrokeredMessage message)
 Aşağıdaki örnek, [Azure depolama kuyruğu](../../storage/queues/storage-dotnet-how-to-use-queues.md) işlemlerinin nasıl izleneceğini ve üretici, tüketici ve Azure depolama arasındaki Telemetriyi nasıl kullanabileceğinizi gösterir. 
 
 Depolama sırasının bir HTTP API 'SI vardır. Kuyruğa yapılan tüm çağrılar, HTTP istekleri için Application Insights bağımlılık toplayıcısı tarafından izlenir.
-ASP.NET ve ASP.NET Core uygulamalarında varsayılan olarak yapılandırılır, diğer uygulama türleri ile [konsol uygulamaları belgelerine](../../azure-monitor/app/console.md) başvurabilirsiniz
+ASP.NET ve ASP.NET Core uygulamalarında varsayılan olarak yapılandırılır, diğer uygulama türleri ile [konsol uygulamaları belgelerine](./console.md) başvurabilirsiniz
 
 Ayrıca, Application Insights işlem KIMLIĞINI depolama istek KIMLIĞIYLE ilişkilendirmek isteyebilirsiniz. Depolama isteği istemcisi ve sunucu istek KIMLIĞI ayarlama ve alma hakkında daha fazla bilgi için bkz. [Azure depolama 'Yı izleme, tanılama ve sorun giderme](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
 #### <a name="enqueue"></a>Alma
 Depolama kuyrukları HTTP API 'sini desteklediği için, kuyruğa sahip tüm işlemler Application Insights tarafından otomatik olarak izlenir. Çoğu durumda bu izleme yeterince olmalıdır. Ancak, müşteri tarafında bulunan izlemeleri üretici izlemelerle ilişkilendirmek için, bağıntı için HTTP protokolünde bunu yaptığımız şekilde bir bağıntı bağlamı geçirmeniz gerekir. 
 
-Bu örnek, işlemin nasıl izleneceğini gösterir `Enqueue` . Şunları yapabilirsiniz:
+Bu örnek, işlemin nasıl izleneceğini gösterir `Enqueue` . Seçenekleriniz şunlardır:
 
  - **Yeniden denemeler (varsa) bağıntılı**: hepsi, işlem olan bir ortak üst öğeye sahiptir `Enqueue` . Aksi takdirde, bunlar gelen isteğin alt öğesi olarak izlenir. Sıraya yönelik birden çok mantıksal istek varsa, hangi çağrının yeniden denenmesine neden olduğunu bulmak zor olabilir.
  - **Depolama günlüklerini ilişkilendirme (gerekiyorsa ve gerekirse)**: Bunlar Application Insights telemetri ile bağıntılı.
@@ -478,8 +478,9 @@ Her bir Application Insights işlemi (istek veya bağımlılık) `Activity` ile 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Application Insights [telemetri bağıntısı](correlation.md) hakkında temel bilgileri öğrenin.
-- Bağıntılı verilerin [Işlem tanılama deneyimini](../../azure-monitor/app/transaction-diagnostics.md) ve [uygulama haritasını](../../azure-monitor/app/app-map.md)nasıl kuvvetlerine göz atın.
-- Application Insights türleri ve veri modeli için [veri modeline](../../azure-monitor/app/data-model.md) bakın.
-- Application Insights için özel [olayları ve ölçümleri](../../azure-monitor/app/api-custom-events-metrics.md) bildirin.
+- Bağıntılı verilerin [Işlem tanılama deneyimini](./transaction-diagnostics.md) ve [uygulama haritasını](./app-map.md)nasıl kuvvetlerine göz atın.
+- Application Insights türleri ve veri modeli için [veri modeline](./data-model.md) bakın.
+- Application Insights için özel [olayları ve ölçümleri](./api-custom-events-metrics.md) bildirin.
 - Bağlam özellikleri koleksiyonu için standart [yapılandırmayı](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) inceleyin.
 - Telemetriyi nasıl ilişkilendirdiğimiz hakkında bilgi için [System. Diagnostics. Activity Kullanıcı kılavuzunu](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) denetleyin.
+

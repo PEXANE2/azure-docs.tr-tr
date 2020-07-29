@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322134"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme  
 
@@ -55,7 +55,7 @@ Bir çalışma alanının tanımlanması çeşitli yollarla gerçekleştirilebil
 
 * Azure Kaynak KIMLIĞI: çalışma alanının Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır.  Çalışma alanları için şu biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/çalışma alanları/componentName*.  
 
-    Örneğin:
+    Örnek:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -86,7 +86,7 @@ Application Insights ' de bir uygulamanın tanımlanması, *uygulama (tanımlay�
 
 * Azure Kaynak KIMLIĞI-uygulamanın Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır. Biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/bileşenler/componentName*.  
 
-    Örneğin:
+    Örnek:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -120,7 +120,7 @@ app('Contoso-app5').requests
 
 
 
-Artık [Bu işlevi](../../azure-monitor/log-query/functions.md#use-a-function) aşağıdaki gibi bir çapraz kaynak sorgusunda kullanabilirsiniz. _Applicationsscoping_ işlev diğer adı, tüm tanımlanmış uygulamalardan gelen istekler tablosunun birleşimini döndürür. Sorgu daha sonra başarısız isteklere filtre uygular ve eğilimleri uygulamaya göre görselleştirir. Bu örnekte _Parse_ işleci isteğe bağlıdır. _Sourceapp_ özelliğinden uygulama adını ayıklar.
+Artık [Bu işlevi](./functions.md#use-a-function) aşağıdaki gibi bir çapraz kaynak sorgusunda kullanabilirsiniz. _Applicationsscoping_ işlev diğer adı, tüm tanımlanmış uygulamalardan gelen istekler tablosunun birleşimini döndürür. Sorgu daha sonra başarısız isteklere filtre uygular ve eğilimleri uygulamaya göre görselleştirir. Bu örnekte _Parse_ işleci isteğe bağlıdır. _Sourceapp_ özelliğinden uygulama adını ayıklar.
 
 ```Kusto
 applicationsScoping 
@@ -141,3 +141,4 @@ applicationsScoping
 
 - Günlük sorgularına genel bakış ve Azure Izleyici günlük verilerinin nasıl yapılandırıldığı hakkında bilgi için [Azure izleyici 'de günlük verilerini çözümleme '](log-query-overview.md) ye bakın.
 - Azure izleyici günlük sorgularının tüm kaynaklarını görüntülemek için [Azure izleyici günlük sorgularını](query-language.md) gözden geçirin.
+

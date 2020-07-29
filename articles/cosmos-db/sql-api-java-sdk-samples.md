@@ -6,13 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/20/2020
+ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: 6e52cf9add10191554fb1bb5393773f316ded539
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 4f61dcfa37547fe46a582a4a7ebb28ac68fe6c74
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84666868"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308687"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: Java SDK v4 örnekleri
 
@@ -118,7 +119,7 @@ Burada *Sample. Synchronicity. MainClass* olabilir
 | [Bir koleksiyonun yapılandırılan performansını değiştirme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L115-L123) | CosmosContainer. Replaceprovisionedüretilen Iş aktarımı |
 | [KIMLIĞE göre koleksiyon al](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L126-L133) | CosmosDatabase. getContainer |
 | [Veritabanındaki tüm koleksiyonları okuma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L136-L150) | CosmosDatabase. readAllContainers |
-| [Koleksiyon silme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L153-L161) | CosmosContainer. Delete |
+| [Koleksiyonu silme](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L153-L161) | CosmosContainer. Delete |
 
 ## <a name="autoscale-collection-examples"></a>Otomatik ölçeklendirme koleksiyonu örnekleri
 

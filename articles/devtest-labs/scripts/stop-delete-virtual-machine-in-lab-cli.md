@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c4f315593da270155998c3c5bba8def2778f0d41
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 3ba2b2c3924f7fea481907b825ba5a04ab50b0bf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899513"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290315"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs’deki bir sanal makineyi durdurmak ve silmek için Azure CLI’yı kullanma
 
@@ -45,6 +45,6 @@ Bu betik şu komutları kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek Azure Lab Services CLI betik örnekleri, [Azure Lab Services CLI örnekleri](../samples-cli.md) içinde bulunabilir.

@@ -3,12 +3,12 @@ title: Logic Apps kullanarak Azure Application Insights süreçlerini otomatikle
 description: Mantıksal uygulamanıza Application Insights bağlayıcısını ekleyerek tekrarlanabilir işlemleri nasıl hızlı bir şekilde otomatikleştirebileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079630"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323205"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps kullanarak Application Insights süreçlerini otomatikleştirin
 
@@ -130,9 +130,10 @@ Mantıksal uygulamanız çalıştığında, e-posta listesinde belirttiğiniz al
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Analiz sorguları](../../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
+- [Analiz sorguları](../log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
 - [Logic Apps](../../logic-apps/logic-apps-overview.md) hakkında daha fazla bilgi edinin.
 
 
 
 <!--Link references-->
+

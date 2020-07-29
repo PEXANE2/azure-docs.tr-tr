@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a03c031f8874471794f2533285ce65b395d43c2d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242007"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280486"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET 'yi isteğe bağlı SQL ile kullanma (Önizleme)
 
@@ -30,8 +30,8 @@ SYNAPSE SQL içindeki OPENROWSET işlevi, bir veri kaynağından dosya içeriği
 
     ```sql
     SELECT *
-    FROM OPENROWSET(BULK 'http://storage..../container/folder/*.parquet',
-                    TYPE = 'PARQUET') AS file
+    FROM OPENROWSET(BULK 'http://<storage account>.dfs.core.windows.net/container/folder/*.parquet',
+                    FORMAT = 'PARQUET') AS file
     ```
 
 Bu, önceden yapılandırma olmadan dosyaların içeriğini okumak için hızlı ve kolay bir yoldur. Bu seçenek, depolama alanına erişmek için temel kimlik doğrulama seçeneğini kullanmanıza olanak sağlar (Azure AD oturum açmaları için Azure AD geçişi ve SQL oturum açma için SAS belirteci). 
@@ -42,7 +42,7 @@ Bu, önceden yapılandırma olmadan dosyaların içeriğini okumak için hızlı
     SELECT *
     FROM OPENROWSET(BULK '/folder/*.parquet',
                     DATA_SOURCE='storage', --> Root URL is in LOCATION of DATA SOURCE
-                    TYPE = 'PARQUET') AS file
+                    FORMAT = 'PARQUET') AS file
     ```
 
 

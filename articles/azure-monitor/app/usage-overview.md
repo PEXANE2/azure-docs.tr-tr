@@ -3,24 +3,24 @@ title: Azure Application Insights Kullanım Analizi | Microsoft docs
 description: Kullanıcılarınıza ve uygulamalarınızla neler olduğunu anlayın.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014074"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323562"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights ile kullanım analizi
 
-Web veya mobil uygulamanızın hangi özellikleri en popüler? Kullanıcılarınız uygulamanızla hedeflerine ulaşsın mı? Belirli noktalarda kullanıma hazır olurlar ve daha sonra geri dönesin mi?  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) kişilerin uygulamanızı nasıl kullandıkları hakkında güçlü Öngörüler elde etmenize yardımcı olur. Uygulamanızı her güncelleştirdiğinizde, kullanıcılar için ne kadar iyi çalışma olduğunu değerlendirebilirsiniz. Bu bilgi ile, sonraki geliştirme döngüleriniz hakkında veri odaklı kararlar verebilirsiniz.
+Web veya mobil uygulamanızın hangi özellikleri en popüler? Kullanıcılarınız uygulamanızla hedeflerine ulaşsın mı? Belirli noktalarda kullanıma hazır olurlar ve daha sonra geri dönesin mi?  [Azure Application Insights](./app-insights-overview.md) kişilerin uygulamanızı nasıl kullandıkları hakkında güçlü Öngörüler elde etmenize yardımcı olur. Uygulamanızı her güncelleştirdiğinizde, kullanıcılar için ne kadar iyi çalışma olduğunu değerlendirebilirsiniz. Bu bilgi ile, sonraki geliştirme döngüleriniz hakkında veri odaklı kararlar verebilirsiniz.
 
 ## <a name="send-telemetry-from-your-app"></a>Uygulamanızdan telemetri gönderin
 
 En iyi deneyim, hem App Server kodunuzda hem de Web sayfalarınızda Application Insights yüklenerek elde edilir. Uygulamanızın istemci ve sunucu bileşenleri, analiz için telemetri Azure portal geri gönderir.
 
-1. **Sunucu kodu:** [ASP.net](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md)veya [başka](../../azure-monitor/app/platforms.md) bir uygulamanız için uygun modülü yükler.
+1. **Sunucu kodu:** [ASP.net](./asp-net.md), [Azure](./app-insights-overview.md), [Java](./java-get-started.md), [Node.js](./nodejs.md)veya [başka](./platforms.md) bir uygulamanız için uygun modülü yükler.
 
-    * *Sunucu kodunu yüklemek istemiyor musunuz? Yalnızca [bir Azure Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md ).*
+    * *Sunucu kodunu yüklemek istemiyor musunuz? Yalnızca [bir Azure Application Insights kaynağı oluşturun](./create-new-resource.md).*
 
 2. **Web sayfası kodu:** Kapatmadan önce Web sayfanıza aşağıdaki betiği ekleyin ``</head>`` . İzleme anahtarını Application Insights kaynağınız için uygun değerle değiştirin:
     
@@ -36,7 +36,7 @@ En iyi deneyim, hem App Server kodunuzda hem de Web sayfalarınızda Application
 
     Web sitelerini izlemeye yönelik daha gelişmiş yapılandırma hakkında daha fazla bilgi edinmek için [JAVASCRIPT SDK başvuru makalesine](./javascript.md)göz atın.
 
-3. **Mobil uygulama kodu:** Uygulamanızdaki olayları toplamak için App Center SDK 'sını kullanın, ardından [Bu kılavuzu izleyerek](../../azure-monitor/learn/mobile-center-quickstart.md)bu olayların kopyalarını analiz için Application Insights gönderin.
+3. **Mobil uygulama kodu:** Uygulamanızdaki olayları toplamak için App Center SDK 'sını kullanın, ardından [Bu kılavuzu izleyerek](../learn/mobile-center-quickstart.md)bu olayların kopyalarını analiz için Application Insights gönderin.
 
 4. **Telemetri al:** Projenizi birkaç dakika boyunca hata ayıklama modunda çalıştırın ve ardından Application Insights genel bakış dikey penceresinde sonuçları arayın.
 
@@ -103,7 +103,7 @@ Ya da sunucu tarafında:
 
 Bu olaylara özellik değerleri iliştirebilirsiniz, böylece olayları portalda incelemenize sonra filtreleyebileceğiniz veya bölünebilmenizi sağlayabilirsiniz. Ayrıca, tek bir kullanıcının etkinliklerini izlemenize olanak sağlayan anonim kullanıcı KIMLIĞI gibi her bir olaya standart bir özellikler kümesi iliştirilir.
 
-[Özel olaylar](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) ve [Özellikler](../../azure-monitor/app/api-custom-events-metrics.md#properties)hakkında daha fazla bilgi edinin.
+[Özel olaylar](./api-custom-events-metrics.md#trackevent) ve [Özellikler](./api-custom-events-metrics.md#properties)hakkında daha fazla bilgi edinin.
 
 ### <a name="slice-and-dice-events"></a>Dilim ve zar olayları
 
@@ -121,7 +121,7 @@ Bu teknik için, uygulamanızın her bir sürümü tarafından gönderilen tüm 
 
 Application Insights portalında, farklı sürümleri karşılaştırmak için, bu verileri özellik değerlerine göre filtreleyin ve ayırın.
 
-Bunu yapmak için [bir telemetri başlatıcısı ayarlayın](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
+Bunu yapmak için [bir telemetri başlatıcısı ayarlayın](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
 
 **ASP.NET uygulamaları**
 
@@ -175,5 +175,6 @@ Tüm yeni TelemetryClients, belirttiğiniz özellik değerini otomatik olarak ek
    - [Huniler](usage-funnels.md)
    - [Bekletme](usage-retention.md)
    - [Kullanıcı Akışları](usage-flows.md)
-   - [Çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md)
+   - [Çalışma Kitapları](../platform/workbooks-overview.md)
    - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
+

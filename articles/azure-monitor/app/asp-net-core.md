@@ -3,12 +3,12 @@ title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Doc
 description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1d5ce4fe2a3ceb3235b77916aa408c681f81b0de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517238"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321403"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -103,7 +103,7 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Örneğin:
+    Örnek:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -221,7 +221,7 @@ En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılan
 
 ASP.NET Core için Application Insights SDK hem sabit hızlı hem de Uyarlamalı örneklemeyi destekler. Uyarlamalı örnekleme varsayılan olarak etkindir. 
 
-Daha fazla bilgi için bkz. [ASP.NET Core uygulamalar için uyarlamalı örnekleme yapılandırma](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
+Daha fazla bilgi için bkz. [ASP.NET Core uygulamalar için uyarlamalı örnekleme yapılandırma](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers ekleme
 
@@ -459,8 +459,9 @@ Bu SDK `HttpContext` , .NET Core 3. X çalışan hizmeti uygulamaları dahil olm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kullanıcıların uygulamanızda nasıl gezintiğini anlamak için [Kullanıcı akışlarını araştırma](../../azure-monitor/app/usage-flows.md) .
+* Kullanıcıların uygulamanızda nasıl gezintiğini anlamak için [Kullanıcı akışlarını araştırma](./usage-flows.md) .
 * Bir özel durum oluştuğunda kaynak kodu ve değişkenlerin durumunu görmek için [bir anlık görüntü koleksiyonu yapılandırın](./snapshot-debugger.md) .
-* Uygulamanızın performans ve kullanımının ayrıntılı bir görünümü için kendi olay ve ölçümlerinizi göndermek üzere [API 'Yi kullanın](../../azure-monitor/app/api-custom-events-metrics.md) .
-* Uygulamanızı dünyanın her yerindeki sürekli denetlemek için [kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) kullanın.
+* Uygulamanızın performans ve kullanımının ayrıntılı bir görünümü için kendi olay ve ölçümlerinizi göndermek üzere [API 'Yi kullanın](./api-custom-events-metrics.md) .
+* Uygulamanızı dünyanın her yerindeki sürekli denetlemek için [kullanılabilirlik testlerini](./monitor-web-app-availability.md) kullanın.
 * [ASP.NET Core bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection)
+

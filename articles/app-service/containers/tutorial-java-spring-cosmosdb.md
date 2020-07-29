@@ -6,13 +6,13 @@ ms.author: routlaw
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d77b54d5dc20725ba93df82b0a475359c4dfa2b0
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 760dcd4284ea1988f57b3f7913cbdc23c1415790
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906386"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323256"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Öğretici: Linux ve Azure Cosmos DB üzerinde Azure App Service bir Java Spring Boot Web uygulaması oluşturun
 
@@ -20,7 +20,7 @@ Bu öğretici, Azure 'da Java Web uygulamaları oluşturma, yapılandırma, dağ
 
 ![Yay önyükleme uygulaması Azure Cosmos DB verileri depolama](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Cosmos DB veritabanı oluşturun.
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kendi bilgisayarınızda yüklü olan [Azure CLI](https://docs.microsoft.com/cli/azure/overview). 
 * [Git](https://git-scm.com/)
@@ -85,7 +85,7 @@ Aboneliğinizde bir Azure Cosmos DB veritabanı oluşturmak için aşağıdaki a
 
 ## <a name="configure-the-todo-app-properties"></a>TODO uygulaması özelliklerini yapılandırma
 
-Bilgisayarınızda bir Terminal açın. Yeni oluşturduğunuz Cosmos DB veritabanınız için özelleştirebilmeniz için kopyalanmış depoya örnek betik dosyasını kopyalayın.
+Bilgisayarınızda bir terminali açın. Yeni oluşturduğunuz Cosmos DB veritabanınız için özelleştirebilmeniz için kopyalanmış depoya örnek betik dosyasını kopyalayın.
 
 ```bash
 cd initial/spring-todo-app

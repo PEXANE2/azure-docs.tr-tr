@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
-ms.date: 01/22/2019
-ms.openlocfilehash: ff5d2e5546c8b29ed486c587a555f47fa2c7e31b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: 6efe6392c32221f979a9ac319b4385b4b94b1235
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101435"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171313"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -145,7 +145,7 @@ MySQL veritabanı için Azure veritabanı 'na bir Azure AD kullanıcısı ekleme
 2. MySQL için Azure veritabanı örneğinde Azure AD Yönetici kullanıcısı olarak oturum açın.
 3. `<user>@yourtenant.onmicrosoft.com`MySQL Için Azure veritabanı 'nda kullanıcı oluşturun.
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
@@ -166,7 +166,7 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 
 Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';

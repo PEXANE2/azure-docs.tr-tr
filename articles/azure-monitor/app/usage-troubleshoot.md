@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670925"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323511"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 'de Kullanıcı davranışı analiz araçlarının sorunlarını giderme
 [Application Insights ' deki Kullanıcı davranışı analizi araçları](usage-overview.md)hakkında sorularınız var: [Kullanıcılar, oturumlar, etkinlikler](usage-segmentation.md), [funyls](usage-funnels.md), [Kullanıcı akışları](usage-flows.md), [bekletme](usage-retention.md)veya cohorts İşte bazı yanıtlar.
@@ -18,13 +19,13 @@ ms.locfileid: "77670925"
 ## <a name="counting-users"></a>Kullanıcıları sayma
 **Kullanıcı davranışı analiz araçları uygulamamın bir Kullanıcı/oturum olduğunu gösteriyor, ancak uygulamamın çok sayıda kullanıcı/oturum olduğunu biliyorum. Bu hatalı sayıları nasıl giderebilirim?**
 
-Application Insights tüm telemetri olaylarının, standart özelliklerinden ikisi olarak [anonim bir kullanıcı kimliği](../../azure-monitor/app/data-model-context.md) ve [oturum kimliği](../../azure-monitor/app/data-model-context.md) vardır. Varsayılan olarak, tüm kullanım analizi araçları, kullanıcıları ve oturumları bu kimliklere göre sayar. Bu standart özellikler, uygulamanızın her bir kullanıcısı ve oturumu için benzersiz kimliklerle doldurulmazsa, Kullanım Analizi araçlarında yanlış Kullanıcı ve oturum sayısı görürsünüz.
+Application Insights tüm telemetri olaylarının, standart özelliklerinden ikisi olarak [anonim bir kullanıcı kimliği](./data-model-context.md) ve [oturum kimliği](./data-model-context.md) vardır. Varsayılan olarak, tüm kullanım analizi araçları, kullanıcıları ve oturumları bu kimliklere göre sayar. Bu standart özellikler, uygulamanızın her bir kullanıcısı ve oturumu için benzersiz kimliklerle doldurulmazsa, Kullanım Analizi araçlarında yanlış Kullanıcı ve oturum sayısı görürsünüz.
 
-Bir Web uygulamasını izliyorsanız, en kolay çözüm [Application Insights JavaScript SDK 'sını](../../azure-monitor/app/javascript.md) uygulamanıza eklemektir ve komut dosyası parçacığının izlemek istediğiniz her sayfada yüklü olduğundan emin olun. JavaScript SDK 'Sı otomatik olarak anonim kullanıcı ve oturum kimliklerini oluşturur ve ardından, bu kimliklerle telemetri olaylarını, uygulamanızdan gönderildikleri şekilde doldurur.
+Bir Web uygulamasını izliyorsanız, en kolay çözüm [Application Insights JavaScript SDK 'sını](./javascript.md) uygulamanıza eklemektir ve komut dosyası parçacığının izlemek istediğiniz her sayfada yüklü olduğundan emin olun. JavaScript SDK 'Sı otomatik olarak anonim kullanıcı ve oturum kimliklerini oluşturur ve ardından, bu kimliklerle telemetri olaylarını, uygulamanızdan gönderildikleri şekilde doldurur.
 
 Bir Web hizmetini (Kullanıcı arabirimi olmadan) izliyorsanız, [Anonim Kullanıcı kimliği ve oturum kimliği özelliklerini](usage-send-user-context.md) hizmetinizin benzersiz kullanıcı ve oturumlarınıza göre dolduran bir telemetri başlatıcısı oluşturun.
 
-Uygulamanız [kimliği doğrulanmış kullanıcı kimlikleri](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)gönderiyorsa, kullanıcılar aracında kimliği doğrulanmış kullanıcı kimlikleri ' ne göre sayım yapabilirsiniz. "Göster" açılan menüsünde "kimliği doğrulanmış kullanıcılar" ı seçin.
+Uygulamanız [kimliği doğrulanmış kullanıcı kimlikleri](./api-custom-events-metrics.md#authenticated-users)gönderiyorsa, kullanıcılar aracında kimliği doğrulanmış kullanıcı kimlikleri ' ne göre sayım yapabilirsiniz. "Göster" açılan menüsünde "kimliği doğrulanmış kullanıcılar" ı seçin.
 
 Kullanıcı davranışı analiz araçları şu anda anonim kullanıcı KIMLIĞI, kimliği doğrulanmış kullanıcı KIMLIĞI veya oturum KIMLIĞI dışındaki özelliklere göre kullanıcıları veya oturumları saymayı desteklememektedir.
 

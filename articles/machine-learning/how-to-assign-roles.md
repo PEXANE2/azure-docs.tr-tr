@@ -5,18 +5,18 @@ description: Rol tabanlı erişim denetimi (RBAC) kullanarak bir Azure Machine L
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
-ms.reviewer: jmartens
-ms.author: larryfr
-author: Blackmist
-ms.date: 06/30/2020
-ms.custom: seodec18
-ms.openlocfilehash: ff8d532bf1c19ded9567e8c1e4b63e674c01d0d8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.topic: conceptual
+ms.reviewer: Blackmist
+ms.author: nigup
+author: nishankgu
+ms.date: 07/24/2020
+ms.custom: how-to, seodec18
+ms.openlocfilehash: 2e787bb494c1e919a235b762b4d8c5250c8cda61
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125182"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321624"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,14 +29,15 @@ Azure Machine Learning çalışma alanı bir Azure kaynağıdır. Diğer Azure k
 
 | Rol | Erişim düzeyi |
 | --- | --- |
-| **Okuyucu** | Çalışma alanındaki salt okuma eylemleri. Okuyucular bir çalışma alanında varlıkları ( [veri deposu](how-to-access-data.md) kimlik bilgileri dahil) listeleyebilir ve görüntüleyebilir, ancak bu varlıkları oluşturamaz veya güncelleştiremez. |
+| **Okuyucu** | Çalışma alanındaki salt okuma eylemleri. Okuyucular, bir çalışma alanında [veri deposu](how-to-access-data.md) kimlik bilgileri de dahil olmak üzere varlıkları listeleyebilir ve görüntüleyebilir. Okuyucular bu varlıkları oluşturamaz veya güncelleştiremez. |
 | **Katkıda Bulunan** | Çalışma alanındaki varlıkları görüntüleyin, oluşturun, düzenleyin veya silin (uygulanabilir). Örneğin katkıda bulunanlar bir deneme oluşturabilir, işlem kümesi oluşturabilir veya ekleyebilir, çalıştırma gönderebilir ve bir web hizmeti dağıtabilir. |
 | **Sahibi** | Çalışma alanına, çalışma alanındaki varlıkları görüntüleme, oluşturma, düzenleme veya silme özelliği de dahil olmak üzere tam erişim. İsterseniz rol atamalarını değiştirebilirsiniz. |
+| **Özel rol** | Çalışma alanındaki belirli denetim veya veri düzlemi işlemlerine erişimi özelleştirmenizi sağlar. Örneğin, bir çalıştırma gönderme, işlem oluşturma, model dağıtma veya bir veri kümesini kaydetme. |
 
 > [!IMPORTANT]
 > Rol erişimi, Azure 'da birden çok düzey kapsamına eklenebilir. Örneğin, bir çalışma alanına sahip olan birisi, çalışma alanını içeren kaynak grubuna sahip erişimine sahip olmayabilir. Daha fazla bilgi için bkz. [RBAC çalışma](/azure/role-based-access-control/overview#how-rbac-works).
 
-Belirli yerleşik roller hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](/azure/role-based-access-control/built-in-roles).
+Belirli yerleşik roller hakkında daha fazla bilgi için bkz. [Azure Için yerleşik roller](/azure/role-based-access-control/built-in-roles).
 
 ## <a name="manage-workspace-access"></a>Çalışma alanı erişimini yönetme
 
@@ -47,7 +48,7 @@ Bir çalışma alanının sahibiyseniz, çalışma alanı için roller ekleyebil
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
 - [Azure Resource Manager şablonları](/azure/role-based-access-control/role-assignments-template)
 
-[Clı Azure Machine Learning](reference-azure-machine-learning-cli.md)yüklediyseniz, kullanıcılara roller atamak IÇIN bir CLI komutu de kullanabilirsiniz.
+[Azure MACHINE LEARNING CLI](reference-azure-machine-learning-cli.md)'yı yüklediyseniz, kullanıcılara roller atamak için CLI komutlarını kullanabilirsiniz:
 
 ```azurecli-interactive 
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
@@ -74,17 +75,18 @@ Yerleşik rollerin yetersiz olması durumunda özel roller oluşturabilirsiniz. 
 > [!NOTE]
 > Bu kaynak içinde özel Roller oluşturmak için bu düzeyde kaynağın sahibi olmanız gerekir.
 
-Özel bir rol oluşturmak için, önce rolün iznini ve kapsamını belirten bir rol tanımı JSON dosyası oluşturun. Aşağıdaki örnek, belirli bir çalışma alanı düzeyinde "veri Bilimcst" kapsamı adlı özel bir rol tanımlar:
+Özel bir rol oluşturmak için, önce rolün iznini ve kapsamını belirten bir rol tanımı JSON dosyası oluşturun. Aşağıdaki örnek, belirli bir çalışma alanı düzeyinde "Data Bilimentist Custom" adlı özel bir rol tanımlar:
 
-`data_scientist_role.json` :
+`data_scientist_custom_role.json` :
 ```json
 {
-    "Name": "Data Scientist",
+    "Name": "Data Scientist Custom",
     "IsCustom": true,
     "Description": "Can run experiment but can't create or delete compute.",
     "Actions": ["*"],
     "NotActions": [
         "Microsoft.MachineLearningServices/workspaces/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/write",
         "Microsoft.MachineLearningServices/workspaces/computes/*/write",
         "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
         "Microsoft.Authorization/*/write"
@@ -97,6 +99,7 @@ Yerleşik rollerin yetersiz olması durumunda özel roller oluşturabilirsiniz. 
 
 > [!TIP]
 > `AssignableScopes`Bu özel rolün kapsamını abonelik düzeyinde, kaynak grubu düzeyinde veya belirli bir çalışma alanı düzeyinde ayarlamak için alanı değiştirebilirsiniz.
+> Yukarıdaki özel rol yalnızca bir örnektir. [Azure Machine Learning hizmeti için önerilen bazı özel roller](#customroles)bölümüne bakın.
 
 Bu özel rol, aşağıdaki eylemler hariç çalışma alanındaki her şeyi gerçekleştirebilir:
 
@@ -117,23 +120,233 @@ Dağıtımdan sonra, bu rol belirtilen çalışma alanında kullanılabilir hale
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-Özel roller hakkında daha fazla bilgi için bkz. [Azure özel rolleri](/azure/role-based-access-control/custom-roles).
+Özel roller hakkında daha fazla bilgi için bkz. [Azure özel rolleri](/azure/role-based-access-control/custom-roles). Özel rollerle kullanılabilen işlemler (Eylemler ve eylemler) hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 
-### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>S. Azure Machine Learning hizmetinde çeşitli işlemleri gerçekleştirmek için gereken izinler nelerdir?
+### <a name="q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service"></a>S. Azure Machine Learning hizmetinde bazı yaygın senaryoları gerçekleştirmek için gereken izinler nelerdir?
 
-Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en az kapsamda gerçekleştirmek için gereken izinler verilmiştir. Örnek olarak, bir etkinlik bir çalışma alanı kapsamıyla (sütun 4) gerçekleştirilebileceği takdirde, bu izne sahip tüm daha yüksek kapsam de otomatik olarak çalışacaktır. Bu tablodaki tüm yollar **göreli yollardır** `Microsoft.MachineLearningServices/` .
+Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en az kapsamda gerçekleştirmek için gereken izinler verilmiştir. Örneğin, bir etkinlik bir çalışma alanı kapsamıyla (sütun 4) gerçekleştirilebileceği takdirde, bu izne sahip tüm daha yüksek kapsam de otomatik olarak çalışır:
+
+> [!IMPORTANT]
+> Bu tablodaki ile başlayan tüm yollar `/` **göreli yollardır** `Microsoft.MachineLearningServices/` :
 
 | Etkinlik | Abonelik düzeyi kapsamı | Kaynak grubu düzeyi kapsamı | Çalışma alanı düzeyi kapsamı |
-|---|---|---|---|
+| ----- | ----- | ----- | ----- |
 | Yeni çalışma alanı oluştur | Gerekli değil | Sahip veya katkıda bulunan | Yok (oluşturulduktan sonra sahip olur veya daha yüksek kapsam rolünü devralır) |
-| Yeni işlem kümesi oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`workspaces/computes/write` |
-| Yeni Not defteri VM 'si oluşturma | Gerekli değil | Sahip veya katkıda bulunan | Mümkün değil |
-| Yeni işlem örneği oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`workspaces/computes/write` |
-| Çalıştırma, verilere erişme, model dağıtma veya yayımlama işlem hattı gibi veri düzlemi etkinliği | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`workspaces/*/write` <br/> Ayrıca, MSI 'ın Depolama hesabınızdaki verilere erişmesine izin vermek için çalışma alanına kayıtlı bir veri deposuna ihtiyacınız vardır. |
+| Çalışma alanının sürümünü Güncelleştir | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/write` |
+| Abonelik düzeyi Amlcompute kotası iste veya çalışma alanı düzeyi kotasını ayarla | Sahip veya katkıda bulunan veya özel rol </br>enlere`/locations/updateQuotas/action`</br> Abonelik kapsamında | Yetkilendirilmemiş | Yetkilendirilmemiş |
+| Yeni işlem kümesi oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/computes/write` |
+| Yeni işlem örneği oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/computes/write` |
+| Herhangi bir türdeki çalışma gönderiliyor | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
+| Ardışık düzen uç noktası yayımlama | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| AKS/ACI kaynağına kayıtlı model dağıtma | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
+| Dağıtılan bir AKS uç noktasına göre Puanlama | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (AAD kimlik doğrulaması kullanmadığınız zaman) veya `"/workspaces/read"` (belirteç kimlik doğrulamasını kullanırken) |
+| Etkileşimli not defterleri kullanarak depolamaya erişme | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Yeni özel rol oluştur | Sahip, katkıda bulunan veya özel rol`Microsoft.Authorization/roleDefinitions/write` | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/computes/write` |
 
+
+### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>S. Machine Learning hizmeti için Azure yerleşik rollerini yayımlıyoruz mı?
+
+Şu anda Machine Learning hizmeti için [Azure yerleşik rollerini](/azure/role-based-access-control/built-in-roles) yayımlıyoruz. Yayımlandıktan sonra yerleşik bir rol güncelleştirilemez ve müşteri senaryolarına ve geri bildirimlerine göre rol tanımlarını kesinleştiriyoruz. 
+
+<a id="customroles"></a>
+
+### <a name="q-are-there-some-custom-role-templates-for-the-most-common-scenarios-in-machine-learning-service"></a>S. Machine Learning hizmetindeki en yaygın senaryolar için bazı özel rol şablonları var mı?
+
+Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabileceğiniz özel önerilen rol tanımlarına sahip bazı yaygın senaryolar verilmiştir:
+
+* __Veri Bilimconu özel__: bir veri bilimi 'nin bir çalışma alanı içindeki tüm işlemleri gerçekleştirmesine izin verir, **ancak şunları hariç**:
+
+    * İşlem oluşturma
+    * Bir üretim AKS kümesine model dağıtma
+    * Üretimde bir işlem hattı uç noktası dağıtma
+
+    `data_scientist_custom_role.json` :
+    ```json
+    {
+        "Name": "Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can run experiment but can't create or delete compute or deploy production endpoints.",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/*/read",
+            "Microsoft.MachineLearningServices/workspaces/*/action",
+            "Microsoft.MachineLearningServices/workspaces/*/delete",
+            "Microsoft.MachineLearningServices/workspaces/*/write"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
+
+* __Data Bilimcst kısıtlı özel__: izin verilen eylemlerde joker karakter olmadan daha kısıtlı bir rol tanımı. **Aşağıdakiler dışında**, çalışma alanındaki tüm işlemleri gerçekleştirebilir:
+
+    * İşlem oluşturma
+    * Bir üretim AKS kümesine model dağıtma
+    * Üretimde bir işlem hattı uç noktası dağıtma
+
+    `data_scientist_restricted_custom_role.json` :
+    ```json
+    {
+        "Name": "Data Scientist Restricted Custom",
+        "IsCustom": true,
+        "Description": "Can run experiment but can't create or delete compute or deploy production endpoints",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/*/read",
+            "Microsoft.MachineLearningServices/workspaces/computes/start/action",
+            "Microsoft.MachineLearningServices/workspaces/computes/stop/action",
+            "Microsoft.MachineLearningServices/workspaces/computes/restart/action",
+            "Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action",
+            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/read",
+            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/write",
+            "Microsoft.MachineLearningServices/workspaces/notebooks/storage/delete",
+            "Microsoft.MachineLearningServices/workspaces/notebooks/samples/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action",
+            "Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write",
+            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write",
+            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write",
+            "Microsoft.MachineLearningServices/workspaces/environments/write",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/modules/write",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/write", 
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/delete",
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/write",
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/delete",
+            "Microsoft.MachineLearningServices/workspaces/computes/listNodes/action",
+            "Microsoft.MachineLearningServices/workspaces/environments/build/action"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/computes/write",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/delete",
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/preview/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read",    
+            "Microsoft.MachineLearningServices/workspaces/datasets/unregistered/schema/read",
+            "Microsoft.MachineLearningServices/workspaces/datastores/write",
+            "Microsoft.MachineLearningServices/workspaces/datastores/delete"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
+
+* __Mlops Custom__: bir hizmet sorumlusuna rol atamanıza ve MLOps işlem hatlarınızı otomatikleştirmek için bunu kullanmanıza olanak sağlar. Örneğin, önceden yayımlanmış bir işlem hattına karşı çalıştırmaları göndermek için:
+
+    `mlops_custom_role.json` :
+    ```json
+    {
+        "Name": "MLOps Custom",
+        "IsCustom": true,
+        "Description": "Can run pipelines against a published pipeline endpoint",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/read",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/read",
+            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/read",
+            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read",
+            "Microsoft.MachineLearningServices/workspaces/environments/read",    
+            "Microsoft.MachineLearningServices/workspaces/metadata/secrets/read",
+            "Microsoft.MachineLearningServices/workspaces/modules/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/datasets/registered/read",
+            "Microsoft.MachineLearningServices/workspaces/datastores/read",
+            "Microsoft.MachineLearningServices/workspaces/environments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write",
+            "Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write",
+            "Microsoft.MachineLearningServices/workspaces/environments/build/action",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/computes/write",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/delete",
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.Authorization/*"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
+
+* __Çalışma alanı yöneticisi__: **aşağıdakiler dışında**tüm işlemleri bir çalışma alanının kapsamında gerçekleştirmenize olanak tanır:
+
+    * Yeni bir çalışma alanı oluşturma
+    * Abonelik veya çalışma alanı düzeyinde kotalar atama
+    * Çalışma alanının sürümü yükseltiliyor
+
+    Çalışma alanı yöneticisi de yeni bir rol oluşturamaz. Yalnızca mevcut yerleşik veya özel rolleri, çalışma alanının kapsamı içinde atayabilir:
+
+    `workspace_admin_custom_role.json` :
+    ```json
+    {
+        "Name": "Workspace Admin Custom",
+        "IsCustom": true,
+        "Description": "Can perform all operations except quota management and upgrades",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/*/read",
+            "Microsoft.MachineLearningServices/workspaces/*/action",
+            "Microsoft.MachineLearningServices/workspaces/*/write",
+            "Microsoft.MachineLearningServices/workspaces/*/delete",
+            "Microsoft.Authorization/roleAssignments/*"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/write"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
+
+<a name="labeler"></a>
+* __Labeler Custom__: yalnızca verileri etiketlemeye yönelik bir rol tanımlamanızı sağlar:
+
+    `labeler_custom_role.json` :
+    ```json
+    {
+        "Name": "Labeler Custom",
+        "IsCustom": true,
+        "Description": "Can label data for Labeling",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/read",
+            "Microsoft.MachineLearningServices/workspaces/labeling/projects/read",
+            "Microsoft.MachineLearningServices/workspaces/labeling/labels/write"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read"
+        ],
+        "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>S. Aboneliğimde tüm özel rolleri listelemek Nasıl yaparım? mı?
 
@@ -142,6 +355,39 @@ Azure CLı 'de aşağıdaki komutu çalıştırın.
 ```azurecli-interactive
 az role definition list --subscription <sub-id> --custom-role-only true
 ```
+
+### <a name="q-how-do-i-find-the-operations-supported-by-the-machine-learning-service"></a>S. Machine Learning hizmeti tarafından desteklenen işlemler mi Nasıl yaparım??
+
+Azure CLı 'de aşağıdaki komutu çalıştırın.
+
+```azurecli-interactive
+az provider operation show –n Microsoft.MachineLearningServices
+```
+
+Bunlar ayrıca, [kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)listesinde bulunabilir.
+
+
+### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>S. Azure RBAC kullanırken bazı yaygın tuzakları nedir?
+
+Azure rol tabanlı erişim denetimlerini kullanırken göz önünde bulundurmanız gereken birkaç nokta vardır:
+
+- Azure 'da bir kaynak oluşturduğunuzda bir çalışma alanı söylediğinizde, doğrudan çalışma alanının sahibi değilsiniz. Rolünüz, bu abonelikte yetkilendirdiğiniz en yüksek kapsam rolünden devralınır. Örnek olarak, bir ağ yöneticisiyseniz ve bir Machine Learning çalışma alanı oluşturma izinlerine sahipseniz, bu çalışma alanına karşı ağ yöneticisi rolüne sahip olursunuz ve sahip rolü yoktur.
+- Aynı AAD kullanıcısına eylemlerin/NotActions çakışan bölümleri ile iki rol ataması olduğunda, NotActions 'de listelenen işlemleriniz, başka bir roldeki eylemler olarak listelendiklerinde etkili olmayabilir. Azure 'un rol atamalarını nasıl ayrıştırdığı hakkında daha fazla bilgi edinmek için, [kullanıcının bir kaynağa erişip erişemeyeceğini Azure RBAC 'Nin nasıl belirlediğini](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) okuyun
+- İşlem kaynaklarınızı bir sanal ağ içinde dağıtmak için bu VNet kaynağında "Microsoft. Network/virtualNetworks/JOIN/Action" izinlerine açık olarak sahip olmanız gerekir.
+- Yeni rol atamalarınızın yığın genelindeki önbellekteki izinlerle etkili olması için bazen 1 saate kadar zaman alabilir.
+
+
+### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>S. Amlcompute kümelerimde Kullanıcı tarafından atanan yönetilen kimlik kullanmak için hangi izinlere ihtiyacım var?
+
+Amlcompute kümelerinde Kullanıcı tarafından atanan bir kimlik atamak için, birinin işlem oluşturmak için yazma izinlerine sahip olması ve [yönetilen kimlik operatörü rolü](/azure/role-based-access-control/built-in-roles#managed-identity-operator)olması gerekir. Yönetilen kimliklerle RBAC hakkında daha fazla bilgi için, [Kullanıcı tarafından atanan kimliği yönetme](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) konusunu okuyun
+
+
+### <a name="q-do-we-support-role-based-access-controls-on-the-studio-portal"></a>S. Studio portalında rol tabanlı erişim denetimlerini destekliyoruz mi?
+
+Azure Machine Learning Studio rol tabanlı erişim denetimlerini destekler. 
+
+> [!IMPORTANT]
+> Çalışma alanınızda bir veri bilimcilerinin belirli izinleri olan özel bir rol atadıktan sonra, bunlara karşılık gelen eylemler (örneğin, bir işlem düğmesi ekleme), kullanıcılardan otomatik olarak gizlenir. Bu öğelerin gizlenmesi, kullanıldığında hizmetten yetkisiz erişim bildirimi döndüren denetimleri görmekten kaynaklanan karışıklıklara engel olur.
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>S. Nasıl yaparım? Aboneliğimde bir rolün rol tanımını bulamıyor musunuz?
 

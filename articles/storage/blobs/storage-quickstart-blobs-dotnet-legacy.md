@@ -3,23 +3,23 @@ title: 'Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığ�
 description: Bu hızlı başlangıçta, blob (nesne) deposunda bir kapsayıcı ve BLOB oluşturmak için .NET için Azure Blob Storage istemci kitaplığı 'nı nasıl kullanacağınızı öğreneceksiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobların listesini görüntülemeyi öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/20/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5205506e3e7a32423dd9b438b648ff4af5136caa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fa2d7f3884a30e60ce703dd45b295a85722fe67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528562"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285297"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı v11
 
 .NET için Azure Blob depolama istemci kitaplığı v11 ile çalışmaya başlayın. Azure Blob depolama, Microsoft 'un bulut için nesne depolama çözümüdür. Paketi yüklemek ve temel görevler için örnek kodu denemek için adımları izleyin. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir.
 
 > [!NOTE]
-> Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: .net Için Azure Blob depolama istemci kitaplığı](storage-quickstart-blobs-dotnet.md).
+> Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: .net Için Azure Blob depolama istemci kitaplığı V12](storage-quickstart-blobs-dotnet.md).
 
 .NET için Azure Blob depolama istemci kitaplığı 'nı kullanarak şunları yapın:
 

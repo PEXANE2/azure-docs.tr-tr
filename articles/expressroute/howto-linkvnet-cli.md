@@ -5,20 +5,21 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 07/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729251"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325262"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLı kullanarak bir ExpressRoute devresine sanal ağ bağlama
 
 Bu makale, CLı kullanarak sanal ağları (VNet) Azure ExpressRoute devrelerine bağlamanıza yardımcı olur. Azure CLı kullanarak bağlantı için, sanal ağların Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulması gerekir. Aynı abonelikte ya da başka bir aboneliğin parçası olabilir. VNet 'nizi bir ExpressRoute devresine bağlamak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden bir makale seçebilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -152,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 *Routingweight* aralığı 0 ile 32000 arasındadır. Varsayılan değer 0’dır.
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath yapılandırma 
-ExpressRoute bağlantı hattınızı [ExpressRoute Direct](expressroute-erdirect-about.md) üzerinde ise ve sanal ağ seçin ağ geçidiniz Ultra Performance veya ErGw3AZ ise [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 'i etkinleştirebilirsiniz. FastPath, şirket içi ağınız ve sanal ağınız arasında saniyedeki paket sayısı ve saniye başına bağlantı gibi veri yolu preformance geliştirir. 
+Sanal ağ geçidiniz Ultra Performance veya ErGw3AZ ise [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 'i etkinleştirebilirsiniz. FastPath, şirket içi ağınız ve sanal ağınız arasında saniyedeki paket sayısı ve saniye başına bağlantı gibi veri yolu preformance geliştirir. 
 
 **Yeni bir bağlantıda FastPath yapılandırma**
 

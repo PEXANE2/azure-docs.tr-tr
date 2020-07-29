@@ -5,18 +5,18 @@ description: Azure Application Insights kullanarak Azure Machine Learning ile da
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 06/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743523"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320230"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Uç noktanın çıkış verilerini ve yanıtını toplamaya ek olarak şunları 
 [Azure Application Insights hakkında daha fazla bilgi edinin](../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 
@@ -153,15 +153,20 @@ Ayrıca, modelinizi bu adımlarla dağıtmaya hazırsanız Azure Machine Learnin
 1. **Tanılamayı ve veri toplamayı etkinleştir Application Insights** seçin
 
     ![App Insights 'ı etkinleştir](./media/how-to-enable-app-insights/enable-app-insights.png)
-## <a name="evaluate-data"></a>Verileri değerlendir
+
+## <a name="view-metrics-and-logs"></a>Ölçümleri ve günlükleri görüntüleme
+
 Hizmetinizin verileri, Azure Application Insights hesabınızda, Azure Machine Learning ile aynı kaynak grubu içinde depolanır.
 Görüntülemek için:
 
-1. [Azure portal](https://ms.portal.azure.com/) Azure Machine Learning çalışma alanınıza gidin ve Application Insights bağlantısına tıklayın
+1. [Studio](https://ml.azure.com/)'daki Azure Machine Learning çalışma alanınıza gidin.
+1. **Uç noktaları**seçin.
+1. Dağıtılan hizmetinizi seçin.
+1. **Application Insights URL 'sini** bulmak için aşağı kaydırın ve bağlantıya tıklayın.
 
-    [![Appınsi, Sloc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![Application Insights URL 'sini bul](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Sol taraftaki listenin **genel bakış** sekmesinde veya __izleme__ bölümünde __Günlükler__' i seçin.
+1. Uygulama ve sol taraftaki listenin **genel bakış** sekmesinde veya __izleme__ bölümünde __Günlükler__' i seçin.
 
     [![İzlemenin Genel Bakış sekmesi](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -186,7 +191,7 @@ Azure Application Insights ' [sürekli dışarı aktarma](https://docs.microsoft
 
 Azure Data Factory, Azure ML işlem hatları veya diğer veri işleme araçları, verileri gerektiği şekilde dönüştürmek için kullanılabilir. Verileri dönüştürdüğünü daha sonra Azure Machine Learning çalışma alanıyla bir veri kümesi olarak kaydedebilirsiniz. Bunu yapmak için bkz. [veri kümesi oluşturma ve kaydetme](how-to-create-register-datasets.md).
 
-   [![Sürekli dışarı aktarma](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
+:::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Sürekli dışarı aktarma":::
 
 
 ## <a name="example-notebook"></a>Örnek not defteri

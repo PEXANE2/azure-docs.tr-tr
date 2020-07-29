@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652052"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131846"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Öğretici: Azure Stack Edge dağıtmaya hazırlanma  
 
@@ -22,7 +22,7 @@ Bu, Azure Stack kenarını tamamen dağıtmak için gereken dağıtım öğretic
 
 Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları gerekir. Portal hazırlığı 10 dakikadan kısa sürer.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -45,7 +45,7 @@ Azure Stack Edge dağıtmak için, önceden tanımlanmış sırada aşağıdaki 
 
 Artık Azure portalını ayarlamaya başlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge kaynağınız, Azure Stack Edge cihazınız ve veri merkezi ağı için yapılandırma önkoşulları aşağıda verilmiştir.
 
@@ -57,32 +57,35 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 * Azure Stack Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynakları için kaynak grubu düzeyinde sahip veya katkıda bulunan erişiminiz var.
 
-  * Azure Stack Edge/Data Box Gateway kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan (veya üzeri) izinlere sahip olmanız gerekir. Ayrıca, sağlayıcının kayıtlı olduğundan emin olmanız gerekir `Microsoft.DataBoxEdge` . Kaydetme hakkında daha fazla bilgi için, [kayıt kaynak sağlayıcısı](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)' na gidin.
+  * Katkıda bulunan erişimi sağlamak için abonelik düzeyinde bir **sahip** olmanız gerekir. Başka birine katkıda bulunan erişim sağlamak için, Azure Portal, **tüm hizmetler**  >  **abonelikleri**  >  **erişim denetimi (IAM)**  >  **+**  >  **Rol Ekle ataması**Ekle ' ye gidin. Daha fazla bilgi için bkz. [öğretici: Azure Portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+
+  * Azure Stack Edge/Data Box Gateway kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan (veya üzeri) izinlere sahip olmanız gerekir. Ayrıca, kaynak sağlayıcısının kayıtlı olduğundan emin olmanız gerekir `Microsoft.DataBoxEdge` . Kaynak sağlayıcısını kaydetme hakkında daha fazla bilgi için bkz. [kayıt kaynak sağlayıcısı](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Herhangi bir IoT Hub kaynağı oluşturmak için Microsoft. Devices sağlayıcısının kayıtlı olduğundan emin olun. Kaydetme hakkında daha fazla bilgi için, [kayıt kaynak sağlayıcısı](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)' na gidin.
   * Bir depolama hesabı kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan veya daha yüksek erişim kapsamına ihtiyacınız vardır. Azure depolama, varsayılan olarak kayıtlı bir kaynak sağlayıcısıdır.
 * Azure Active Directory Graph API için yönetici veya Kullanıcı erişiminiz var. Daha fazla bilgi için bkz. [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 * Erişim kimlik bilgilerine sahip bir Microsoft Azure Storage hesabınız var.
+* Sistem yöneticiniz tarafından ayarlanan herhangi bir Azure ilkesi tarafından engellenmiyor. İlkeler hakkında daha fazla bilgi için bkz. [hızlı başlangıç: uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal).
 
 ### <a name="for-the-azure-stack-edge-device"></a>Azure Stack Edge cihazı için
 
 Fiziksel cihazı dağıtmadan önce şunlardan emin olun:
 
-- Sevkiyat paketine dahil edilen güvenlik bilgilerini gözden geçirdiniz.
-- Veri merkezinizde bulunan ve cihazı bağlamak için standart 19 "rafındaki bir 1U yuvasına sahipsiniz.
-- Cihazın güvenle geri kalanında düz, kararlı ve düzeyi bir iş yüzeyine erişebilirsiniz.
-- Cihazı ayarlamayı planladığınız sitenin, bağımsız bir kaynaktan veya kesintisiz güç kaynağı (UPS) olan bir raf güç dağıtım biriminden (PDU) standart AC gücü vardır.
-- Fiziksel cihaza erişebiliyor olmanız gerekir.
+* Sevkiyat paketine dahil edilen güvenlik bilgilerini gözden geçirdiniz.
+* Veri merkezinizde bulunan ve cihazı bağlamak için standart 19 "rafındaki bir 1U yuvasına sahipsiniz.
+* Cihazın güvenle geri kalanında düz, kararlı ve düzeyi bir iş yüzeyine erişebilirsiniz.
+* Cihazı ayarlamayı planladığınız sitenin, bağımsız bir kaynaktan veya kesintisiz güç kaynağı (UPS) olan bir raf güç dağıtım biriminden (PDU) standart AC gücü vardır.
+* Fiziksel cihaza erişebiliyor olmanız gerekir.
 
 ### <a name="for-the-datacenter-network"></a>Veri merkezi ağı için
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-- Veri merkezinizdeki ağ, Azure Stack Edge cihazınız için ağ gereksinimlerine göre yapılandırılır. Daha fazla bilgi için bkz. [Azure Stack Edge sistem gereksinimleri](azure-stack-edge-system-requirements.md).
+* Veri merkezinizdeki ağ, Azure Stack Edge cihazınız için ağ gereksinimlerine göre yapılandırılır. Daha fazla bilgi için bkz. [Azure Stack Edge sistem gereksinimleri](azure-stack-edge-system-requirements.md).
 
-- Azure Stack Kenarlarınızın normal işletim koşullarında şunları yapabilirsiniz:
+* Azure Stack Kenarlarınızın normal işletim koşullarında şunları yapabilirsiniz:
 
-    - Cihazın güncel kalmasını sağlamak için en az 10 Mbps indirme bant genişliği.
-    - Dosyaları aktarmak için en az 20 Mbps adanmış karşıya yükleme ve indirme bant genişliği.
+  * Cihazın güncel kalmasını sağlamak için en az 10 Mbps indirme bant genişliği.
+  * Dosyaları aktarmak için en az 20 Mbps adanmış karşıya yükleme ve indirme bant genişliği.
 
 ## <a name="create-a-new-resource"></a>Yeni kaynak oluşturma
 
@@ -115,7 +118,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
     |Ayar  |Değer  |
     |---------|---------|
-    |Adı   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |
+    |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |
     |Bölge     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
 
     ![Proje ve örnek ayrıntıları](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
@@ -127,7 +130,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
     ![Yeni cihaz için sevkiyat adresi](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
 
-6. **İleri ' yi seçin: gözden geçir + oluştur**.
+6. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
 
 7. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları**ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim**Birleşik giriş kutusunu seçin.
 
@@ -135,7 +138,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 8. **Oluştur**’u seçin.
 
-Kaynağın oluşturulması birkaç dakika sürer. Kaynak başarıyla oluşturulup dağıtıldıktan sonra bilgilendirirsiniz. **Kaynağa Git**' i seçin.
+Kaynağın oluşturulması birkaç dakika sürer. Kaynak başarıyla oluşturulup dağıtıldıktan sonra bilgilendirirsiniz. **Kaynağa git**’i seçin.
 
 ![Azure Stack Edge kaynağına git](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
 
@@ -173,6 +176,3 @@ Azure Stack Edge 'i nasıl yükleyeceğinizi öğrenmek için bir sonraki öğre
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge 'i yükler](./azure-stack-edge-deploy-install.md)
-
-
-

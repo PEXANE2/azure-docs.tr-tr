@@ -3,12 +3,12 @@ title: Azure geçişi sunucu geçişi hakkında sık sorulan sorular
 description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanma hakkında sık sorulan sorulara yanıtlar alın.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: af40aecaa1614542074cf87ce95eb81492233bdc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224137"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321233"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
@@ -80,11 +80,11 @@ Hayır. Azure geçişi yalnızca yönetilen disklere geçişi destekler (Standar
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Aracısız geçiş kullanarak bir seferde kaç sanal makine çoğaltırım?
 
-Şu anda, her vCenter Server örneği için 100 VM 'yi aynı anda geçirebilirsiniz. 10 VM 'lerin toplu işleri halinde geçiş yapın.
+Şu anda, her vCenter Server örneği için 300 VM 'yi aynı anda geçirebilirsiniz. 10 VM 'lerin toplu işleri halinde geçiş yapın.
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltması için Azure geçişi aracı 'nı kullanarak çoğaltma Nasıl yaparım? kısıtlaması yapılsın mı?  
 
-NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örneğin:
+NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örnek:
 
 NetQosPolicy içinde kullanılacak AppNamePrefix "GatewayWindowsService.exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
  
@@ -106,7 +106,7 @@ Makineleri fiziksel sunucu olarak düşünerek, bir dizi senaryoda yararlı olac
 
 ## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>VCenter Server VM 'Leri bulmaya yönelik iki (veya daha fazla) gereç dağıttım. Ancak, VM 'Leri geçirmeye çalıştığımda yalnızca gerecden birine karşılık gelen VM 'Leri görüyorum.
 
-Bu iyi bir kullanım durumu olabilir, ancak şu anda bunu desteklemiyoruz. Aynı VM kümesini bulmaya yönelik iki (veya daha fazla) gereç dağıtımı, iki gereç arasında sanal makine sahipliğinin geçiş yapmasına devam eden bir hizmet sorununa neden olur. Bu, sanal makinelerin görünme ve görünme nedenidir. Bu gibi durumlarda, sorunu çözmek için bir gereci silmeniz ve bir sabit yenileme yapmanız gerekir.
+Birden çok gereç ayarlandıysa, belirtilen vCenter hesaplarında VM 'Ler arasında çakışma olmaması gerekir. Bu tür bir örtüşme ile bulma işlemi desteklenmeyen bir senaryodur.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>VMware VM 'lerini geçirmek için VMware vCenter 'a ihtiyacım var mı?
 VMware Aracısı tabanlı veya aracısız geçiş kullanarak [VMware VM 'lerini geçirmek](server-migrate-overview.md) Için, sanal makinelerin bulunduğu ESXi konaklarının vCenter Server tarafından yönetilmesi gerekir. VCenter Server yoksa, VMware VM 'lerini fiziksel sunucu olarak geçirerek geçirebilirsiniz. [Daha fazla bilgi edinin](migrate-support-matrix-physical-migration.md).

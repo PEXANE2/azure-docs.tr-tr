@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263752"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282492"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player eklentisi Galerisi #
 
@@ -20,7 +20,7 @@ ms.locfileid: "84263752"
 | Eklenti adı                         | Tanıtım URL 'SI                    | Kaynak kodu                | Açıklama    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | Ek özellikler                 | | | |
-| **Yeni!** AMP360Video                | [Tanıtım](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Eklenti, masaüstünüzde veya VR uyumlu cihazlarda amp 'da 360 videosunu görselleştirmenize olanak tanır. Tam belgelere [buradan](https://doc\.babylonjs\.com/extensions/amp360video)ulaşabilirsiniz: |
+| **Yeni!** AMP360Video                | [Tanıtım](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Eklenti, masaüstünüzde veya VR uyumlu cihazlarda amp 'da 360 videosunu görselleştirmenize olanak tanır. Tam belgelere [buradan](https://doc.babylonjs.com/extensions/amp360video)ulaşabilirsiniz: |
 |  Sprite Ipucu                         | [Tanıtım](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Services (AMS) Media Encoder Standard (MES) tarafından oluşturulan bir video küçük resim görüntüsü için zaman çizelgesi işlemesi için Azure Media Player (AMP) eklentisi. |
 | Tanılama yer paylaşımı                 | [Tanıtım](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Bu eklenti şunu görüntüler: tüm anahtar parametreleri, video istatistikleri, video kayıttan yürütme yaşam döngüsünün tüm olayları ve korunuyorsa anahtar KIMLIĞI, lisans alma URL 'Leri gibi DRM koruma bilgileri.                                                                                                                                                                      |
 | Kare hızı ve timecode Hesaplayıcı | Tanıtım yok | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Bu eklenti, `tfhd` / `trun` ilk MPEG-Dash video parçasının MP4 kutularına göre videonun kare hızını hesaplar, MPEG-Dash istemci bildiriminden zaman ölçeği değerini ayrıştırır ve ayrıca, Player 'dan verilen mutlak bir süre için timecode oluşturma ve aynı zamanda Player 'ın zaman koduna verilen mutlak zamanı sağlayan bir yol sağlar. |

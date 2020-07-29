@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti (AKS) kümesini aboneliğinizde zaten dağ
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 438e9cfeebc561815c5c0cdbc70123fab718fed1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 033e6e5e78d59cf4c1048ff63a6d19fee66c7841
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516660"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320349"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Azure Kubernetes Service (AKS) kümesinin izlenmesini etkinleştirme zaten dağıtıldı
 
@@ -17,7 +17,7 @@ Bu makalede, aboneliğinizde zaten dağıtılmış olan [Azure Kubernetes hizmet
 
 Desteklenen yöntemlerden birini kullanarak zaten dağıtılmış bir AKS kümesinin izlenmesini etkinleştirebilirsiniz:
 
-* Azure CLI’si
+* Azure CLI
 * Terraform
 * [Azure Izleyici 'den](#enable-from-azure-monitor-in-the-portal) veya Azure Portal [doğrudan aks kümesinden](#enable-directly-from-aks-cluster-in-the-portal)
 * [Azure Resource Manager şablonuyla](#enable-using-an-azure-resource-manager-template) , Azure PowerShell cmdlet 'Ini `New-AzResourceGroupDeployment` veya Azure CLI ile birlikte.
@@ -119,7 +119,7 @@ Azure Izleyici Azure portal AKS kümenizi izlemeyi etkinleştirmek için aşağ�
     ![AKS kapsayıcı öngörüleri izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, AKS kapsayıcısının dağıtıldığı aynı abonelikte oluşturmayı unutmayın.
+    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, AKS kapsayıcısının dağıtıldığı aynı abonelikte oluşturmayı unutmayın.
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
@@ -145,7 +145,7 @@ Azure portal doğrudan AKS kümelerinizin birinden izlemeyi etkinleştirmek içi
     ![AKS kapsayıcı durumu izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, AKS kapsayıcısının dağıtıldığı aynı abonelikte oluşturmayı unutmayın.
+    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, AKS kapsayıcısının dağıtıldığı aynı abonelikte oluşturmayı unutmayın.
 
 İzlemeyi etkinleştirdikten sonra, küme için işletimsel verileri görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
@@ -160,7 +160,7 @@ Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek içi
 >Şablonun, kümeyle aynı kaynak grubunda dağıtılması gerekir.
 >
 
-Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanını oluşturmak için [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)aracılığıyla ayarlayabilirsiniz.
+Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanını oluşturmak için [Azure Resource Manager](../platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md)aracılığıyla ayarlayabilirsiniz.
 
 Bir şablon kullanarak kaynak dağıtma kavramı hakkında bilgi sahibi değilseniz, bkz:
 
@@ -383,3 +383,4 @@ Birkaç dakika sonra komut tamamlanır ve çözüm hakkında JSON biçimli bilgi
 * Çözümü oluşturmaya çalışırken sorunlarla karşılaşırsanız, [sorun giderme kılavuzunu](container-insights-troubleshoot.md) gözden geçirin
 
 * İzleme etkinken, AKS kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplayıp, kapsayıcılar için Azure Izleyicisini [nasıl kullanacağınızı](container-insights-analyze.md) öğrenin.
+

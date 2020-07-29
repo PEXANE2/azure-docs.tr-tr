@@ -9,21 +9,23 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e26c3fc9ec420596a4ec152f7f176e44acc7b4c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770038"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321675"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Öğretici: IoT hub’ınızla bağlantıyı test etmek için bir simülasyon cihazı kullanma
 
 Bu öğreticide, cihaz bağlantısını test etmek için Azure IOT Hub'ı portal araçları ve Azure CLI komutlarını kullanırsınız. Bu öğreticide masaüstü bilgisayarınızda çalıştırdığınız bir cihaz simülatörü de kullanılır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -34,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide çalıştırdığınız CLI betikleri [Azure CLI için Microsoft Azure IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) kullanır. Bu uzantıyı yüklemek için aşağıdaki CLI komutunu çalıştırın:
 
@@ -44,7 +46,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Bu öğreticide çalıştırdığınız cihaz simülatörü uygulaması Node.js kullanarak yazılır. Geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir.
+Bu öğreticide çalıştırdığınız cihaz simülatörü uygulaması Node.js kullanarak yazılır. Geliştirme makinenizde Node.js ile v10 arasındaki. x. x veya üzeri bir sürüm gerekir.
 
 [nodejs.org](https://nodejs.org) adresinden birden fazla platform için Node.js’yi indirebilirsiniz.
 

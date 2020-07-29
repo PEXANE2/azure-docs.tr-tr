@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ccf4d68b90713212685f2583ba5a8db11bd1d050
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: c0ce166c571d54980e0703fd2891c173838a4674
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986581"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325517"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Hızlı Başlangıç: REST API ve Java kullanarak bir görüntüdeki yüzleri algılama
 
@@ -23,7 +24,7 @@ Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -157,7 +158,7 @@ public class Main {
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-Kodu derleyin ve çalıştırın. Başarılı bir yanıt, yüz verilerini konsol penceresinde kolay okunabilir JSON biçiminde görüntüler. Örneğin:
+Kodu derleyin ve çalıştırın. Başarılı bir yanıt, yüz verilerini konsol penceresinde kolay okunabilir JSON biçiminde görüntüler. Örnek:
 
 ```json
 [{

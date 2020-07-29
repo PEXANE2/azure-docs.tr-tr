@@ -4,19 +4,20 @@ description: İstek telemetrisi için veri modeli Application Insights
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807667"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320570"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>İstek telemetrisi: Application Insights veri modeli
 
-İstek telemetrisi öğesi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)), uygulamanıza yönelik bir dış istek tarafından tetiklenen mantıksal yürütme dizisini temsil eder. Her istek yürütmesi benzersiz `ID` ve `url` tüm yürütme parametrelerini içerecek şekilde tanımlanır. İstekleri mantıksal olarak gruplandırabilir `name` ve `source` Bu isteğin sayısını tanımlayabilirsiniz. Kod yürütme, `success` veya ile sonuçlanabilir `fail` `duration` . Başarılı ve başarısız yürütmeler, tarafından daha fazla gruplandırılabilir `resultCode` . Zarf düzeyinde tanımlanan istek telemetrisi için başlangıç zamanı.
+İstek telemetrisi öğesi ( [Application Insights](./app-insights-overview.md)), uygulamanıza yönelik bir dış istek tarafından tetiklenen mantıksal yürütme dizisini temsil eder. Her istek yürütmesi benzersiz `ID` ve `url` tüm yürütme parametrelerini içerecek şekilde tanımlanır. İstekleri mantıksal olarak gruplandırabilir `name` ve `source` Bu isteğin sayısını tanımlayabilirsiniz. Kod yürütme, `success` veya ile sonuçlanabilir `fail` `duration` . Başarılı ve başarısız yürütmeler, tarafından daha fazla gruplandırılabilir `resultCode` . Zarf düzeyinde tanımlanan istek telemetrisi için başlangıç zamanı.
 
 İstek telemetrisi, özel ve kullanan standart genişletilebilirlik modelini `properties` destekler `measurements` .
 
-## <a name="name"></a>Name
+## <a name="name"></a>Ad
 
 İsteğin adı, isteği işlemek için alınan kod yolunu temsil eder. İsteklerin daha iyi gruplanmasına izin vermek için düşük kardinalite değeri. HTTP istekleri için, gerçek değer olmadan gibi HTTP yöntemini ve URL yol şablonunu temsil eder `GET /values/{id}` `id` .
 
@@ -26,7 +27,7 @@ Maksimum Uzunluk: 1024 karakter
 
 ## <a name="id"></a>ID
 
-İstek çağrısı örneğinin tanımlayıcısı. İstek ve diğer telemetri öğeleri arasındaki bağıntı için kullanılır. KIMLIK, genel olarak benzersiz olmalıdır. Daha fazla bilgi için bkz. [bağıntı](../../azure-monitor/app/correlation.md) sayfası.
+İstek çağrısı örneğinin tanımlayıcısı. İstek ve diğer telemetri öğeleri arasındaki bağıntı için kullanılır. KIMLIK, genel olarak benzersiz olmalıdır. Daha fazla bilgi için bkz. [bağıntı](./correlation.md) sayfası.
 
 Maksimum Uzunluk: 128 karakter
 
@@ -38,7 +39,7 @@ Maksimum Uzunluk: 2048 karakter
 
 ## <a name="source"></a>Kaynak
 
-İsteğin kaynağı. Örnekanahtarın, arayanın veya IP adresinin izleme anahtarıdır. Daha fazla bilgi için bkz. [bağıntı](../../azure-monitor/app/correlation.md) sayfası.
+İsteğin kaynağı. Örnekanahtarın, arayanın veya IP adresinin izleme anahtarıdır. Daha fazla bilgi için bkz. [bağıntı](./correlation.md) sayfası.
 
 Maksimum Uzunluk: 1024 karakter
 
@@ -72,7 +73,8 @@ Kısmen kabul edilen içerik `206` , genel bir isteğin bir başarısızlığın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel istek telemetrisi yazma](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- [Özel istek telemetrisi yazma](./api-custom-events-metrics.md#trackrequest)
 - Application Insights türleri ve veri modeli için [veri modeli](data-model.md) 'ne bakın.
-- ASP.NET Core uygulamayı Application Insights ile [yapılandırmayı](../../azure-monitor/app/asp-net.md) öğrenin.
-- Application Insights tarafından desteklenen [platformları](../../azure-monitor/app/platforms.md) inceleyin.
+- ASP.NET Core uygulamayı Application Insights ile [yapılandırmayı](./asp-net.md) öğrenin.
+- Application Insights tarafından desteklenen [platformları](./platforms.md) inceleyin.
+

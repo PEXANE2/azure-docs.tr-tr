@@ -11,11 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b5de26afceb1127b42c937f1cb1005a660881d4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355854"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273431"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Microsoft Graph API ile SAML tabanlı SSO uygulama yapılandırmasını otomatikleştirme
 
@@ -335,7 +336,7 @@ Temel taleplere ek olarak, Azure AD 'nin SAML belirtecine yaymayı sağlamak iç
 | `https://aws.amazon.com/SAML/Attributes/Role` | atanan| 
 | `https://aws.amazon.com/SAML/Attributes/RoleSessionName` | userPrincipalName |
 | `https://aws.amazon.com/SAML/Attributes/SessionDuration` | "900" |
-| roles | atanan |
+| roller | atanan |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | userPrincipalName |
 
 Daha fazla bilgi için bkz. [belirteç içinde yayılan talepleri özelleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).
@@ -595,12 +596,12 @@ HTTP/1.1 204
 
 Hizmet sorumlusuna aşağıdaki kullanıcıyı atayın ve AWS_Role1 atayın. 
 
-| Name  | ID  |
+| Ad  | ID  |
 |---------|---------|
 | Kullanıcı KIMLIĞI (PrincipalId) | 6cad4079-4e79-4A3F-9efb-ea30a14bdb26 |
 | Tür (principalType) | Kullanıcı |
 | Uygulama rolü KIMLIĞI (Approliıd) | 454dc4c2-8176-498e-99df-8c4efcde41ef |
-| Serviceprincipalıd (RESOURCEID) | 515f62cb-d18a-4dca-BEC3-bb0bf31deeea |
+| Serviceprincipalıd (RESOURCEID) | f47a6776-bca7-4f2e-bc6c-eec59d058e3e |
 
 #### <a name="request"></a>İstek
 
@@ -617,7 +618,7 @@ Content-type: appRoleAssignments/json
   "principalId": "6cad4079-4e79-4a3f-9efb-ea30a14bdb26",
   "principalType": "User",
   "appRoleId":"454dc4c2-8176-498e-99df-8c4efcde41ef",
-  "resourceId":"515f62cb-d18a-4dca-bec3-bb0bf31deeea"
+  "resourceId":"f47a6776-bca7-4f2e-bc6c-eec59d058e3e"
 }
 ```
 #### <a name="response"></a>Yanıt
@@ -638,7 +639,7 @@ Content-type: appRoleAssignments/json
     "principalId": "6cad4079-4e79-4a3f-9efb-ea30a14bdb26",
     "principalType": "User",
     "resourceDisplayName": "AWS API Created",
-    "resourceId": "515f62cb-d18a-4dca-bec3-bb0bf31deeea"
+    "resourceId": "f47a6776-bca7-4f2e-bc6c-eec59d058e3e"
 }
 ```
 

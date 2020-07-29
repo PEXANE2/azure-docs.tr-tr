@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 6d1f47561842fa3759621d8cf372ad3ebc2d5193
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: seodec18, devx-track-java
+ms.openlocfilehash: 4b09a956f4956548a47d87d93404b8304bc287fa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987262"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322270"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Java kullanarak yazdırılan metni (OCR) Ayıkla
 
@@ -25,7 +25,7 @@ ms.locfileid: "84987262"
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Java &trade; Platform, Standard Edition geliştirme seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8)

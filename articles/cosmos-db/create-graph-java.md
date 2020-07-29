@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 25a93377c1594fd1f45229ed2d837f02e9c0a46b
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 05fc7a7a5bd7e045125cb303e1f5c29d550c58ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118304"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323681"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Hızlı başlangıç: Java SDK ve Azure Cosmos DB Gremlin API 'SI ile bir grafik veritabanı oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "85118304"
 
 Bu hızlı başlangıçta, Azure portal bir Azure Cosmos DB Gremlin (Graf) API hesabı oluşturup yönetirsiniz ve GitHub ' dan kopyalanmış bir Java uygulamasını kullanarak veri eklersiniz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). `JAVA_HOME`Ortam değişkeninizi JDK 'nin yüklü olduğu klasöre işaret edin.
 - [Maven ikili Arşivi](https://maven.apache.org/download.cgi). 
@@ -128,7 +128,7 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
     `username: /dbs/$database$/colls/$collection$`
 
-    - 
+    şöyle değiştirin: 
 
     `username: /dbs/sample-database/colls/sample-graph`
 
@@ -183,7 +183,7 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
 5. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin. Graftaki her kişi için benzersiz özellikler oluşturabileceğinizi görürsünüz. Yalnızca kimliği anahtarı gereklidir.
 
-    key|değer|Notlar
+    anahtar|değer|Notlar
     ----|----|----
     kimlik|ashley|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     cinsiyet|kadın| 
@@ -200,7 +200,7 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
 9. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin:
 
-    key|değer|Notlar
+    anahtar|değer|Notlar
     ----|----|----
     kimlik|rakesh|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     cinsiyet|erkek| 

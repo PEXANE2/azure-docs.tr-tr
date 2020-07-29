@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5036b433da39359ef61e87d9ec083056cf50a7ea
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 301bedc75d243f427120c955bda539508ff43200
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323647"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Hızlı başlangıç: Azure Cosmos DB 'de Java ve MongoDB API 'SI ile bir konsol uygulaması oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "83701691"
 
 Bu hızlı başlangıçta, Azure portal bir MongoDB API hesabı için Azure Cosmos DB oluşturup yönetirsiniz ve GitHub ' dan kopyalanmış bir Java SDK uygulamasını kullanarak veri eklersiniz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bağlantı dizesiyle de kullanabilirsiniz `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - [Java Development Kit (JDK) sürüm 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). 
 - [Maven](https://maven.apache.org/download.cgi). Veya `apt-get install maven` Maven 'yi yüklemek için ' i çalıştırın.

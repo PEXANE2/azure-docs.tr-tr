@@ -5,16 +5,16 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 97c1819d665e6964343e853249a0d22aa07c3588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93a86bc035803517ff61c79ae4b8a7fc46dd811f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045594"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322389"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Izleyici kullanarak klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme
 
-Azure Izleyici 'de klasik ölçüm uyarıları, ölçülerinizin biri eşiğe girdiğinde bildirim almanın bir yolunu sağlar. Klasik ölçüm uyarıları yalnızca boyutlu olmayan ölçümlerde uyarı vermeyi sağlayan eski bir işlevdir. Klasik ölçüm uyarıları üzerinde geliştirilmiş işlevlere sahip ölçüm uyarıları adlı yeni bir işlev vardır. [Ölçüm uyarılarına genel bakış](../../azure-monitor/platform/alerts-metric-overview.md)bölümünde yeni ölçüm uyarıları işlevselliği hakkında daha fazla bilgi edinebilirsiniz. Bu makalede, Azure portal, Azure CLı ve PowerShell aracılığıyla klasik ölçüm uyarısı kurallarını oluşturma, görüntüleme ve yönetme hakkında açıklama göndereceğiz.
+Azure Izleyici 'de klasik ölçüm uyarıları, ölçülerinizin biri eşiğe girdiğinde bildirim almanın bir yolunu sağlar. Klasik ölçüm uyarıları yalnızca boyutlu olmayan ölçümlerde uyarı vermeyi sağlayan eski bir işlevdir. Klasik ölçüm uyarıları üzerinde geliştirilmiş işlevlere sahip ölçüm uyarıları adlı yeni bir işlev vardır. [Ölçüm uyarılarına genel bakış](./alerts-metric-overview.md)bölümünde yeni ölçüm uyarıları işlevselliği hakkında daha fazla bilgi edinebilirsiniz. Bu makalede, Azure portal, Azure CLı ve PowerShell aracılığıyla klasik ölçüm uyarısı kurallarını oluşturma, görüntüleme ve yönetme hakkında açıklama göndereceğiz.
 
 ## <a name="with-azure-portal"></a>Azure portal ile
 
@@ -130,5 +130,6 @@ Bu bölümlerde, klasik ölçüm uyarılarını oluşturma, görüntüleme ve y�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kaynak Yöneticisi şablonuyla klasik bir ölçüm uyarısı oluşturun](../../azure-monitor/platform/alerts-enable-template.md).
-- [Klasik bir ölçüm uyarısına sahip bir Web kancası kullanarak Azure olmayan bir sisteme bildirme](../../azure-monitor/platform/alerts-webhooks.md).
+- [Kaynak Yöneticisi şablonuyla klasik bir ölçüm uyarısı oluşturun](./alerts-enable-template.md).
+- [Klasik bir ölçüm uyarısına sahip bir Web kancası kullanarak Azure olmayan bir sisteme bildirme](./alerts-webhooks.md).
+

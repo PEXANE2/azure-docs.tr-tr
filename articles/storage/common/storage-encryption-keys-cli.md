@@ -10,12 +10,12 @@ ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d6fa4bbaf9b37c93ef4efbe405087c39395df63d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d54a8bf9fb5a1f31a29e41ecea545b43dbe58cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086022"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276695"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Azure CLı kullanarak, müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma
 
@@ -97,7 +97,7 @@ Varsayılan olarak, Azure depolama şifrelemesi Microsoft tarafından yönetilen
 
 ### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarların otomatik olarak dönmesi için şifrelemeyi yapılandırma
 
-Müşteri tarafından yönetilen anahtarların otomatik dönüşüyle ilgili şifrelemeyi yapılandırmak için [Azure CLI sürüm 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) veya üstünü yükler. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/azure/install-azure-cli).
+Müşteri tarafından yönetilen anahtarların otomatik dönüşüyle ilgili şifrelemeyi yapılandırmak için [Azure CLI sürüm 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) veya üstünü yükler. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Müşteri tarafından yönetilen anahtarları otomatik olarak döndürmek için, depolama hesabı için müşteri tarafından yönetilen anahtarları yapılandırırken anahtar sürümünü atlayın. Aşağıdaki örnekte gösterildiği gibi, depolama hesabının şifreleme ayarlarını güncelleştirmek için [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update) ' i çağırın. Parametresi dahil edin `--encryption-key-source` ve `Microsoft.Keyvault` hesap için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere olarak ayarlayın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 

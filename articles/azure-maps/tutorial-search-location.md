@@ -1,20 +1,20 @@
 ---
 title: 'Öğretici: harita üzerinde yakındaki konumları arama | Microsoft Azure haritaları'
 description: Bu öğreticide, Microsoft Azure haritaları kullanarak bir haritada ilgi çekici noktaların nasıl aranacağını öğreneceksiniz.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 0b0cb92cd6b4918e28e143178a5cdbbbb19ac9af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333627"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281540"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak yakındaki ilgi noktalarını arama
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 <a id="createaccount"></a>
 
@@ -116,7 +116,7 @@ Harita Denetimi API 'SI uygun bir istemci kitaplığı. Bu API, haritaları Web 
     </html>
     ```
 
-   HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `GetMap` işlevini çağıracak olan `onload` olayına dikkat edin. Bu `GetMap` Işlev, Azure Maps API 'lerine erişmek için satır içi JavaScript kodunu içerecektir.
+   HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `GetMap` işlevini çağıracak olan `onload` olayına dikkat edin. `GetMap`Bu işlev, Azure Maps API 'lerine erişmek için satır Içi JavaScript kodunu içerecektir.
 
 3. HTML dosyasının `GetMap` işlevine aşağıdaki JavaScript kodunu ekleyin. Dizeyi `<Your Azure Maps Key>` haritalar hesabınızdan kopyaladığınız birincil anahtarla değiştirin.
 
@@ -133,7 +133,7 @@ Harita Denetimi API 'SI uygun bir istemci kitaplığı. Bu API, haritaları Web 
 
    Bu segment, Azure Haritalar hesap anahtarınız için Harita Denetimi API’sini başlatır. `atlas`, API ve ilgili görsel bileşenleri içeren ad alanıdır. `atlas.Map`görsel ve etkileşimli bir Web haritası için denetim sağlar.
 
-4. Değişikliklerinizi dosyaya kaydedin ve HTML sayfasını bir tarayıcıda açın. Gösterilen eşleme, hesap anahtarınızı kullanarak çağırarak `atlas.Map` yapabileceğiniz en temel eşlemedir.
+4. Değişikliklerinizi dosyaya kaydedin ve HTML sayfasını bir tarayıcıda açın. Gösterilen eşleme, hesap anahtarınızı kullanarak çağırarak yapabileceğiniz en temel eşlemedir `atlas.Map` .
 
    ![Haritayı görüntüleme](./media/tutorial-search-location/basic-map.png)
 
@@ -186,9 +186,9 @@ Bu bölümde, haritalarınızın bir ilgi noktasını bulmak için haritalar [Ar
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   , `SubscriptionKeyCredential` Azure Maps `SubscriptionKeyCredentialPolicy` 'a abonelik anahtarıyla http isteklerinin kimliğini doğrulamak için bir oluşturur. , `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` İlkeyi alır ve bir işlem [hattı](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) örneği oluşturur. , `searchURL` Azure Maps [arama](https://docs.microsoft.com/rest/api/maps/search) işlemlerine yönelik bir URL 'yi temsil eder.
+   , `SubscriptionKeyCredential` `SubscriptionKeyCredentialPolicy` Azure Maps 'a ABONELIK anahtarıyla http isteklerinin kimliğini doğrulamak için bir oluşturur. , `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` İlkeyi alır ve bir işlem [hattı](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) örneği oluşturur. , `searchURL` Azure Maps [arama](https://docs.microsoft.com/rest/api/maps/search) işlemlerine yönelik bir URL 'yi temsil eder.
 
-2. Ardından arama sorgusunu oluşturmak için aşağıdaki betik bloğunu ekleyin. Bu, Arama Hizmetinin temel arama API'si olan Belirsiz Arama Hizmetini kullanır. Belirsiz Arama Hizmeti adres, yer ve ilgi çekici nokta (POI) gibi çoğu belirsiz girişi işler. Bu kod, belirtilen enlem ve boylamın belirtilen yarıçapı içinde yakındaki Alipop Istasyonlarını arar. Yanıttan bir GeoJSON Özellik koleksiyonu daha sonra `geojson.getFeatures()` yöntemi kullanılarak ayıklanır ve veri kaynağına eklenir ve bu da otomatik olarak, sembol katmanı aracılığıyla haritada işlenen verilere neden olur. Betiğin son bölümü haritanın [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak sonuçların sınırlayıcı kutusuna göre harita kamera görünümünü ayarlar.
+2. Ardından arama sorgusunu oluşturmak için aşağıdaki betik bloğunu ekleyin. Bu, Arama Hizmetinin temel arama API'si olan Belirsiz Arama Hizmetini kullanır. Belirsiz Arama Hizmeti adres, yer ve ilgi çekici nokta (POI) gibi çoğu belirsiz girişi işler. Bu kod, belirtilen enlem ve boylamın belirtilen yarıçapı içinde yakındaki Alipop Istasyonlarını arar. Yanıttan bir GeoJSON Özellik koleksiyonu daha sonra yöntemi kullanılarak ayıklanır `geojson.getFeatures()` ve veri kaynağına eklenir ve bu da otomatik olarak, sembol katmanı aracılığıyla haritada işlenen verilere neden olur. Betiğin son bölümü haritanın [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak sonuçların sınırlayıcı kutusuna göre harita kamera görünümünü ayarlar.
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -219,7 +219,7 @@ Bu bölümde, haritalarınızın bir ilgi noktasını bulmak için haritalar [Ar
 
    ![Arama sonuçlarıyla haritayı görüntüleme](./media/tutorial-search-location/pins-map.png)
 
-4. Tarayıcınıza aşağıdaki HTTP İsteğini girerek, haritanın işlediği ham verileri görebilirsiniz. \<Azure Haritalar Anahtarınız\> değerini birincil anahtarınızla değiştirin.
+4. Tarayıcınıza aşağıdaki HTTP İsteğini girerek, haritanın işlediği ham verileri görebilirsiniz. \<Your Azure Maps Key\>Birincil anahtarınızla değiştirin.
 
    ```http
    https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000
@@ -231,7 +231,7 @@ Bu noktada MapSearch sayfası, belirsiz arama sorgusundan döndürülen ilgi çe
 
 Şu ana kadar oluşturduğumuz harita, arama sonuçları için yalnızca boylam/enlem verilerine bakar. Ancak, Haritalar arama hizmetinin döndürdüğü ham JSON, her bir gaz istasyonuyla ilgili ek bilgiler içerir. Ad ve sokak adresi dahil. Etkileşimli açılır kutularla haritada bu verilere yer verebilirsiniz.
 
-1. Benzer arama hizmetini sorgulamak için koddan sonra Map `ready` olay işleyicisine aşağıdaki kod satırlarını ekleyin. Bu kod, bir açılan pencere örneği oluşturur ve sembol katmanına bir gelme olayından olayı ekler.
+1. `ready`Benzer arama hizmetini sorgulamak için koddan sonra Map olay işleyicisine aşağıdaki kod satırlarını ekleyin. Bu kod, bir açılan pencere örneği oluşturur ve sembol katmanına bir gelme olayından olayı ekler.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -241,9 +241,9 @@ Bu noktada MapSearch sayfası, belirsiz arama sorgusundan döndürülen ilgi çe
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    API `*atlas.Popup` , haritada gereken konuma bağlanmış bir bilgi penceresi sağlar. 
+    API, `*atlas.Popup` haritada gereken konuma bağlanmış bir bilgi penceresi sağlar. 
 
-2. Açılan pencerede, üzerinde kullanılan sonuç `GetMap` bilgisini göstermek için aşağıdaki kodu işlevi içine ekleyin.
+2. Açılan pencerede, `GetMap` üzerinde kullanılan sonuç bilgisini göstermek için aşağıdaki kodu işlevi içine ekleyin.
 
     ```JavaScript
     function showPopup(e) {

@@ -12,18 +12,20 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: cf86e2b747975e18fc999949340207b618dd8864
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 02652243b3c25c0a02e325c8b7b1d7e7c226abcd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129806"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311951"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: Kullanıcı oturum açma ve kimlik doğrulama kod akışını kullanarak JavaScript SPA 'da erişim belirteci edinme
 
 Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamasının (SPA), yetkilendirme kodu akışını kullanarak kişisel hesap, iş hesabı ve okul hesaplarının kullanıcılarına nasıl oturum açıp çalıştırabileceklerini gösteren bir kod örneği çalıştırırsınız. Kod örneği Ayrıca, bir Web API 'SI çağırmak için bir erişim belirteci alma, bu durumda Microsoft Graph API 'SI de gösterir. Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılır. Örtük akışta MSAL.js 1,0 kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma kullanıcıları](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753202"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324599"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python ile gelen istekleri izleme
 
 Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanılarak toplanır. Popüler Web çerçeveleri ve üzerinde oluşturulmuş Web uygulamalarınıza gönderilen gelen istek verilerini izleyin `django` `flask` `pyramid` . Veriler daha sonra Azure Izleyici altında telemetri olarak Application Insights gönderilir `requests` .
 
-İlk olarak, Python uygulamanızı en son [Opencensus Python SDK 'sı](../../azure-monitor/app/opencensus-python.md)ile işaretleyin.
+İlk olarak, Python uygulamanızı en son [Opencensus Python SDK 'sı](./opencensus-python.md)ile işaretleyin.
 
 ## <a name="tracking-django-applications"></a>Docgo uygulamalarını izleme
 
@@ -119,8 +119,9 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Uygulama Eşlemesi](../../azure-monitor/app/app-map.md)
-* [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) sorgusu](../../azure-monitor/log-query/log-query-overview.md)
-* [İşlem tanılamaları](../../azure-monitor/app/transaction-diagnostics.md)
+* [Uygulama Eşlemesi](./app-map.md)
+* [Kullanılabilirlik](./monitor-web-app-availability.md)
+* [Search](./diagnostic-search.md)
+* [Log (Analytics) sorgusu](../log-query/log-query-overview.md)
+* [İşlem tanılamaları](./transaction-diagnostics.md)
+

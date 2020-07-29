@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 0728aa84447573bd8d335daf84c01138c627ecb5
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: b03dd9140ef49d34ba0303742aa4961a9f313cc9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848679"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323375"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Hızlı başlangıç: Bing Video Arama REST API ve Java kullanarak video arama
 
@@ -23,7 +24,7 @@ Bing Video Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı
 
 Bu örneğe ilişkin kaynak kodu, [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) ek hata işleme, Özellikler ve kod ek açıklamalarıyla kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 

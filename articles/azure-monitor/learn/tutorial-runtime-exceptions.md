@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322440"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights ile çalışma zamanı özel durumlarını bulma ve tanılama
 
@@ -36,7 +36,7 @@ Bu öğreticiyi tamamlamak için:
     - Azure geliştirme
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)’ı indirin ve yükleyin.
 - [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md)’ı etkinleştirme
-- Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../../azure-monitor/app/asp-net.md). 
+- Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../app/asp-net.md). 
 - Bu öğretici uygulamanızdaki bir özel durumun belirlenmesini izlediğinden, geliştirme veya test ortamındaki kodunuzu özel durum oluşturacak şekilde değiştirin. 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
@@ -63,7 +63,7 @@ Application Insights, uygulamanızdaki tüm hataları toplar ve bunların farkl�
 
     ![Başarısız istek örnekleri](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. Başarısız istek ayrıntılarında Gannt grafiği görüntülenir. Grafikte, bu işlemde, işlemin toplam süresinin % 50'sinden fazlasını oluşturan iki adet bağımlılık hatası olduğu gösterilmektedir. Bu deneyim, dağıtılmış bir uygulamanın bileşenleri arasında bu işlem kimliğiyle ilişkili tüm telemetrileri sunar. [Yeni deneyim hakkında daha fazla bilgi edinin](../../azure-monitor/app/transaction-diagnostics.md). Sağ tarafta, ayrıntılarını görmek istediğiniz öğelerden herhangi birini seçebilirsiniz. 
+6. Başarısız istek ayrıntılarında Gannt grafiği görüntülenir. Grafikte, bu işlemde, işlemin toplam süresinin % 50'sinden fazlasını oluşturan iki adet bağımlılık hatası olduğu gösterilmektedir. Bu deneyim, dağıtılmış bir uygulamanın bileşenleri arasında bu işlem kimliğiyle ilişkili tüm telemetrileri sunar. [Yeni deneyim hakkında daha fazla bilgi edinin](../app/transaction-diagnostics.md). Sağ tarafta, ayrıntılarını görmek istediğiniz öğelerden herhangi birini seçebilirsiniz. 
 
     ![Başarısız istek ayrıntıları](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -112,4 +112,5 @@ Application Insights’ı Azure DevOps veya GitHub gibi bir izleme sistemine ba�
 Artık çalışma zamanı özel durumlarının nasıl belirleneceğini öğrendiğinize göre, performans sorunlarını belirlemeyi ve tanılamayı öğrenmek için bir sonraki öğreticiye ilerleyebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Performans sorunlarını belirleme](../../azure-monitor/learn/tutorial-performance.md)
+> [Performans sorunlarını belirleme](./tutorial-performance.md)
+

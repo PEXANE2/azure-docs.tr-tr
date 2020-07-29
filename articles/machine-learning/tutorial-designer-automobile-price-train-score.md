@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2922b5d3aa6cee0f1222c041a0e9728936754c21
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200031"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290282"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,6 +37,8 @@ Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden 
 >Bu öğreticinin tamamlanmış sürümü örnek bir işlem hattı olarak sunulmaktadır.
 >
 >Bulmak için çalışma alanınızdaki tasarımcıya gidin. Yeni işlem **hattı** bölümünde **Örnek 1-gerileme: otomobil fiyat tahmini (temel)** öğesini seçin.
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-new-pipeline"></a>Yeni işlem hattı oluşturma
 
@@ -81,7 +83,7 @@ Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyece
 
 1. İşlem kaynağı için bir ad girin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     > [!NOTE]
     > İşlem kaynağının oluşturulması yaklaşık beş dakika sürer. Kaynak oluşturulduktan sonra yeniden kullanabilir ve gelecekteki çalıştırmalar için bu bekleme süresini atlayabilirsiniz.

@@ -3,14 +3,15 @@ title: Azure Application Insights Java SDK ile mikro ölçüm kullanma
 description: Application Insights Spring Boot ve Spring Boot uygulamaları ile mikro ölçer kullanma hakkında adım adım kılavuz.
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067634"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322576"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK ile mikro ölçüm kullanma
 Mikro ölçüm uygulama izleme, JVM tabanlı uygulama kodu için ölçümleri ölçer ve verileri en sevdiğiniz izleme sistemlerine aktarmanıza olanak tanır. Bu makale, hem Spring Boot hem de Spring Boot uygulamaları için Application Insights ile mikro ölçer 'i nasıl kullanacağınızı öğretir.
@@ -20,7 +21,7 @@ Aşağıdaki bağımlılıkları pom.xml veya Build. Gradle dosyanıza ekleyin:
 * [Application Insights Spring-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 veya üzeri
 * Mikro ölçüm Azure kayıt defteri 1.1.0 veya üzeri
 * [Mikro ölçüm yay eski](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 veya üzeri (Bu Işlem, Spring Framework içindeki otomatik yapılandırma kodunu geri barındırır).
-* [ApplicationInsights kaynağı](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights kaynağı](./create-new-resource.md)
 
 Adımlar
 
@@ -58,7 +59,7 @@ Aşağıdaki bağımlılıkları pom.xml veya Build. Gradle dosyanıza ekleyin:
 
 * Application Insights Spring-Boot-Starter 2.1.2 'yi veya üzeri
 * Azure-Spring-Boot-ölçümleri-Starters 2.0.7 veya üzeri
-* [Application Insights kaynağı](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights kaynağı](./create-new-resource.md)
 
 Adımlar:
 
@@ -117,7 +118,7 @@ Aşağıdaki bağımlılıkları pom.xml veya Build. Gradle dosyanıza ekleyin:
 
 * Application Insights Web Auto 2.5.0 veya üzeri
 * Mikro ölçüm Azure kayıt defteri 1.1.0 veya üzeri
-* [Application Insights kaynağı](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights kaynağı](./create-new-resource.md)
 
 Adımlar:
 
@@ -272,3 +273,4 @@ Aşağıdaki bağlama kodunu yapılandırma dosyasına ekleyin:
 
 * Mikro ölçüm hakkında daha fazla bilgi için bkz. resmi [mikro ölçüm belgeleri](https://micrometer.io/docs).
 * Azure 'daki Spring hakkında bilgi edinmek için bkz. [Azure 'da resmi yay belgeleri](/java/azure/spring-framework/?view=azure-java-stable).
+

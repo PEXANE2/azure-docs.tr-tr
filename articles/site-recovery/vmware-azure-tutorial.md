@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2ad06a7583789a9f4db974251e7c2e7387b72549
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076080"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290660"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Şirket içi VMware VM’leri için Azure’da olağanüstü durum kurtarmayı ayarlama
 
@@ -84,7 +84,7 @@ Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket iç
 ## <a name="import-the-template-in-vmware"></a>VMware’de şablonu içeri aktarma
 
 
-1. VMWare vSphere İstemcisi ile VMware vCenter sunucusunda veya vSphere ESXi konağında oturum açın.
+1. VMware vSphere Istemcisiyle VMware vCenter sunucusunda veya vSphere ESXi konağında oturum açın.
 2. **Dosya** menüsünde **OVF Şablonunu Dağıt** seçeneğini belirleyerek **OVF Şablonu Dağıtma Sihirbazı**’nı başlatın.
 
      ![OVF şablonu](./media/vmware-azure-tutorial/vcenter-wizard.png)
@@ -113,7 +113,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 
 Yapılandırma sunucusu kurulduktan sonra, bunu kasaya kaydedersiniz.
 
-1. VMWare vSphere Client konsolundan VM’yi açın.
+1. VMware vSphere Istemci konsolundan VM 'yi açın.
 2. VM’de Windows Server 2016 yükleme deneyimi önyüklemesi yapılır. Lisans sözleşmesini kabul edin ve bir yönetici parolası girin.
 3. Yükleme tamamlandıktan sonra VM’de yönetici olarak oturum açın.
 4. İlk oturum açma işleminizde Azure Site Recovery Yapılandırma Aracı birkaç saniye içinde başlatılır.

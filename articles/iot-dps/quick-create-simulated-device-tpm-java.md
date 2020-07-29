@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: ce67b5e254a62def5f8b024e960cea7f8780e8b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: a51799334749963a4771108857f448c5d081e7ea
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77605483"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323103"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: Azure IoT Hub cihaz sağlama hizmeti için Java cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturma ve sağlama
 
@@ -22,7 +22,7 @@ ms.locfileid: "77605483"
 
 Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir IoT cihazı oluşturacaksınız. Sanal cihaz, donanım güvenlik modülü (HSM) olarak bir TPM simülatörü içerir. Cihaz sağlama hizmeti (DPS) ile tek bir kayıt kullanarak bu sanal cihazı IoT Hub 'ınıza bağlamak için cihaz örneği Java kodunu kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md)gözden geçirme.
 - [Azure Portal Ile cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
@@ -81,7 +81,7 @@ Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir IoT cihazı oluşt
     ```
     Dosyayı kaydedin.
 
-1. Projeyi derlemek için aşağıdaki komutları kullanın, hedef klasöre gidin ve oluşturulan. jar dosyasını yürütün. `version` Yer tutucusunu Java sürümünüz ile değiştirin.
+1. Projeyi derlemek için aşağıdaki komutları kullanın, hedef klasöre gidin ve oluşturulan. jar dosyasını yürütün. `version`Yer tutucusunu Java sürümünüz ile değiştirin.
 
     ```cmd/sh
     mvn clean install

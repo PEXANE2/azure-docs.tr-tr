@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041478"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323715"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights ile etki analizi
 
@@ -28,7 +28,7 @@ Ancak performansın çözümlenmesi yalnızca bir etki alanının özellik alt k
 ![Tarayıcılar tarafından ekran görüntüsü dönüştürme](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Application Insights kaynağınız, etki aracını kullanmak için sayfa görünümleri veya özel olaylar içermelidir. [Uygulamanızı, Application Insights JavaScript SDK 'sı ile otomatik olarak sayfa görünümlerini toplamak üzere ayarlamayı öğrenin](../../azure-monitor/app/javascript.md). Ayrıca, bağıntı çözümlenirken örnek boyutu önemli olduğundan emin olmak için aklınızda bulundurun.
+> Application Insights kaynağınız, etki aracını kullanmak için sayfa görünümleri veya özel olaylar içermelidir. [Uygulamanızı, Application Insights JavaScript SDK 'sı ile otomatik olarak sayfa görünümlerini toplamak üzere ayarlamayı öğrenin](./javascript.md). Ayrıca, bağıntı çözümlenirken örnek boyutu önemli olduğundan emin olmak için aklınızda bulundurun.
 >
 >
 
@@ -85,5 +85,6 @@ Etkili bir şekilde hesaplama, ölçüm veya boyuta göre analiz edilip etmediğ
     - [Huniler](usage-funnels.md)
     - [Bekletme](usage-retention.md)
     - [Kullanıcı Akışları](usage-flows.md)
-    - [Çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md)
+    - [Çalışma Kitapları](../platform/workbooks-overview.md)
     - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
+

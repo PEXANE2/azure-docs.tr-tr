@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dba058dce09e958a2ae769d927a5569fb3e42113
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662187"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324565"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularında gelişmiş toplamalar
 
@@ -183,7 +184,8 @@ Azure Izleyici günlük verileriyle [kusto sorgu dilini](/azure/kusto/query/) ku
 - [Dize işlemleri](string-operations.md)
 - [Tarih ve saat işlemleri](datetime-operations.md)
 - [Toplama işlevleri](aggregations.md)
-- [Gelişmiş toplamalar](advanced-aggregations.md)
+- [Gelişmiş toplamalar]()
 - [JSON ve veri yapıları](json-data-structures.md)
 - [Birleştirme](joins.md)
 - [Grafikler](charts.md)
+

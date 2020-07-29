@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- 'Role: Cloud Development'
 ms.date: 03/04/2020
-ms.openlocfilehash: 560ab582102cc92689093bb0e36acf2fcbc5a30a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1b3b8382c81015e3278954dd0443ba44520e2e3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81771021"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315152"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme (.NET)
 
@@ -35,7 +36,7 @@ Hızlı başlangıçta, önceden yazılmış iki .NET uygulaması kullanılır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, C# kullanılarak yazılır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürüm olması gerekir.
 
@@ -55,7 +56,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Henüz yapmadıysanız, Azure IoT C# örneklerini adresinden https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip INDIRIN ve ZIP arşivini ayıklayın.
+Henüz yapmadıysanız, Azure IoT C# örneklerini adresinden indirin https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip ve ZIP arşivini ayıklayın.
 
 Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu hızlı başlangıçta bulunan cihaz örneği, 8883 bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -93,7 +94,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
       --output table
     ```
 
-    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
+    Aşağıdakine benzeyen cihaz bağlantı dizenizi not alın:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -121,7 +122,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 2. **SimulatedDevice.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    `s_connectionString` Değişkenin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.cs**' ye yaptığınız değişiklikleri kaydedin.
+    Değişkenin değerini, `s_connectionString` daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.cs**' ye yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli paketleri yükleyin:
 
@@ -147,7 +148,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 2. **BackEndApplication.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    `s_connectionString` Değişkenin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.cs**' ye yaptığınız değişiklikleri kaydedin.
+    Değişkenin değerini, `s_connectionString` daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.cs**' ye yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak arka uç uygulaması için gerekli kitaplıkları yükleyin:
 

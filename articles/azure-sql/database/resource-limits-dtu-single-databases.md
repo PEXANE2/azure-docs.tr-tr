@@ -4,19 +4,19 @@ description: Bu sayfada, Azure SQL veritabanı 'nda tek veritabanları için baz
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 099094338deba63f678337b7ea13dd9ce9800084
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa8901f2a219b0693cee17bc4d0ab78da615c415
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517697"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325109"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>DTU satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,14 +38,14 @@ Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir 
 | :--- | --: |
 | Maks. DTU | 5 |
 | Dahil edilen depolama alanı (GB) | 2 |
-| En fazla depolama seçimi (GB) | 2 |
+| Maksimum depolama alanı (GB) | 2 |
 | Maks. bellek içi OLTP depolama alanı (GB) |Yok |
 | Maksimum eş zamanlı çalışan (istek) | 30 |
 | Maks. eş zamanlı oturum | 300 |
 |||
 
 > [!IMPORTANT]
-> Temel hizmet katmanı, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir. 
+> Temel hizmet katmanı, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir.
 >
 >Veri depolama hakkında temel hizmet katmanı standart sayfa Bloblarına yerleştirilir. Standart sayfa Blobları, sabit disk sürücüsü (HDD) tabanlı depolama medyası kullanır ve performans çeşitliliğine daha az duyarlı olan geliştirme, test ve diğer Seyrek erişilen iş yükleri için idealdir.
 >
@@ -55,15 +55,17 @@ Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir 
 | **İşlem boyutu** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | Maks. DTU | 10 | 20 | 50 | 100 |
-| Dahil edilen depolama alanı (GB) | 250 | 250 | 250 | 250 |
-| En fazla depolama seçimi (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
+| Dahil edilen depolama alanı (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
+| Maksimum depolama alanı (GB) | 250 | 250 | 250 | 1024 |
 | Maks. bellek içi OLTP depolama alanı (GB) | Yok | Yok | Yok | Yok |
 | Maksimum eş zamanlı çalışan (istek)| 60 | 90 | 120 | 200 |
 | Maks. eş zamanlı oturum |600 | 900 | 1200 | 2400 |
 ||||||
 
+<sup>1</sup> sağlanan ek depolama alanı nedeniyle daha fazla ücret ödediğinden ilgili ayrıntılı bilgi için bkz. [SQL Veritabanı fiyatlandırma seçenekleri](https://azure.microsoft.com/pricing/details/sql-database/single/) .
+
 > [!IMPORTANT]
-> Standart S0, S1 ve S2 katmanları, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir. 
+> Standart S0, S1 ve S2 katmanları, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir.
 >
 >Veri depolama ile ilgili Standart S0 ve S1 hizmet katmanları standart sayfa Bloblarına yerleştirilir. Standart sayfa Blobları, sabit disk sürücüsü (HDD) tabanlı depolama medyası kullanır ve performans çeşitliliğine daha az duyarlı olan geliştirme, test ve diğer Seyrek erişilen iş yükleri için idealdir.
 >
@@ -73,29 +75,33 @@ Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir 
 | **İşlem boyutu** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|
 | Maks. DTU | 200 | 400 | 800 | 1600 | 3000 |
-| Dahil edilen depolama alanı (GB) | 250 | 250 | 250 | 250 | 250 |
-| En fazla depolama seçimi (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
+| Dahil edilen depolama alanı (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
+| Maksimum depolama alanı (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 | Maks. bellek içi OLTP depolama alanı (GB) | Yok | Yok | Yok | Yok |Yok |
 | Maksimum eş zamanlı çalışan (istek)| 400 | 800 | 1600 | 3200 |6000 |
 | Maks. eş zamanlı oturum |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
+
+<sup>1</sup> sağlanan ek depolama alanı nedeniyle daha fazla ücret ödediğinden ilgili ayrıntılı bilgi için bkz. [SQL Veritabanı fiyatlandırma seçenekleri](https://azure.microsoft.com/pricing/details/sql-database/single/) .
 
 ### <a name="premium-service-tier"></a>Premium hizmet katmanı
 
 | **İşlem boyutu** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maks. DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Dahil edilen depolama alanı (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
-| En fazla depolama seçimi (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
+| Dahil edilen depolama alanı (GB) <sup>1</sup> | 500 | 500 | 500 | 500 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
+| Maksimum depolama alanı (GB) | 1024 | 1024 | 1024 | 1024 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
 | Maks. bellek içi OLTP depolama alanı (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maksimum eş zamanlı çalışan (istek)| 200 | 400 | 800 | 1600 | 2800 | 6400 |
 | Maks. eş zamanlı oturum | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-\*1024 GB 'den 4096 GB 'a kadar, 256 GB 'lik artışlarla
+<sup>1</sup> sağlanan ek depolama alanı nedeniyle daha fazla ücret ödediğinden ilgili ayrıntılı bilgi için bkz. [SQL Veritabanı fiyatlandırma seçenekleri](https://azure.microsoft.com/pricing/details/sql-database/single/) .
+
+<sup>2</sup> 1024 gb 'den 4096 GB 'a kadar, 256 GB 'lik artışlarla 2.
 
 > [!IMPORTANT]
-> Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeleri ve ABD Devlet Merkezi. Bu bölgelerde, Premium katmanda en fazla depolama alanı 1 TB ile sınırlıdır.  Daha fazla bilgi için bkz. [P11-P15 geçerli sınırlamalar](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeleri ve ABD Devlet Merkezi. Bu bölgelerde, Premium katmanda en fazla depolama alanı 1 TB ile sınırlıdır.  Daha fazla bilgi için bkz. [P11-P15 geçerli sınırlamalar](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 > [!NOTE]
 > `tempdb`Sınırlar için bkz. [tempdb sınırları](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 

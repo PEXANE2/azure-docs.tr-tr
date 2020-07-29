@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0814312bb12582dd9e9ebfafc60fba470f6a9a9
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: a3995395cfd6256689bedc7a4a3c83effc65c0b4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905166"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313549"
 ---
 # <a name="samples-for-external-identities-self-service-sign-up"></a>Dış kimlikler self servis kaydolma örnekleri
 
@@ -24,7 +24,7 @@ Aşağıdaki tablolar, [API bağlayıcıları](api-connectors-overview.md)kullan
 
 ## <a name="api-connector-azure-function-quickstarts"></a>API Bağlayıcısı Azure Işlevi hızlı başlangıç
 
-| Örnek                                                                                                                          | Description                                                                                                                                               |
+| Örnek                                                                                                                          | Açıklama                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | Bu .NET Core Azure Işlevi örneği, oturum açma işlemlerinin belirli kiracı etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir. |
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Bu Node.js Azure Işlevi örneği, oturum açma işlemlerinin belirli kiracı etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir.  |
@@ -34,14 +34,13 @@ Aşağıdaki tablolar, [API bağlayıcıları](api-connectors-overview.md)kullan
 
 ## <a name="custom-approval-workflows"></a>Özel onay iş akışları
 
-| Örnek | Description |
+| Örnek | Açıklama |
 |--------| ----------- |
 | [El ile onay iş akışı](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connectors-approvals) | Bu örnek, self servis kayıt sırasında Konuk Kullanıcı hesabı oluşturmayı yönetmek için uçtan uca onay iş akışını gösterir |
 
 ## <a name="identity-verification"></a>Kimlik doğrulama
 
-| Örnek                                                                                                            | Description                                                                                                                          |
+| Örnek                                                                                                            | Açıklama                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | Bu örnek, IDology ile tümleştirme için bir API Bağlayıcısı kullanarak Self Servis kaydolma 'nın bir parçası olarak bir kullanıcı kimliğini nasıl doğrulayacağınızı gösterir. |
-
-<!-- | [Experian](https://github.com/Azure-Samples/) | This sample shows how add identity verification to your self-service sign-up user flow by using an API connector to integrate with Experian. | -->
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | Bu örnek, Experian ile tümleştirme için bir API Bağlayıcısı kullanarak Self Servis kaydolma 'nın bir parçası olarak bir kullanıcı kimliğini nasıl doğrulayacağınızı gösterir. |

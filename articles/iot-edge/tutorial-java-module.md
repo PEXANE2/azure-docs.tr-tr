@@ -11,12 +11,13 @@ ms.service: iot-edge
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: d8ea58dca8235b6dfc49c14c519dd44dabdf0592
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-java
+ms.openlocfilehash: d40ab7a7173265812483e29127e9f8fd919dc4a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81733079"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323341"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için Java IoT Edge modülü geliştirme
 
@@ -44,7 +45,7 @@ Java modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak iç
 | **Linux AMD64** | ![Linux AMD64 üzerinde Java modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 üzerinde Java modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticilerden birini tamamlayarak aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -68,7 +69,7 @@ Aşağıdaki adımlar, Azure IoT Edge Maven şablon paketini ve Azure IoT Java c
 
 Kendi yazacağınız kodla özelleştirebileceğiniz bir Java çözüm şablonu oluşturun.
 
-1. Visual Studio Code, vs Code komut paletini açmak için**komut paletini** **görüntüle** > ' yi seçin.
+1. Visual Studio Code, **View**  >  vs Code komut paletini açmak için**komut paletini** görüntüle ' yi seçin.
 
 2. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu girin ve çalıştırın. Çözümünüzü oluşturmak için komut paletindeki yönergeleri izleyin.
 
@@ -79,17 +80,17 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir Java çözüm şablonu 
    | Modül şablonunu seçin | **Java modülünü**seçin. |
    | GroupID değeri sağla | Bir grup KIMLIĞI değeri girin veya varsayılan **com. edgemodule**değerini kabul edin. |
    | Modül adı sağlayın | Modülünüzü **Javamodule**olarak adlandırın. |
-   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br>Son görüntü deposu, kayıt defteri \<adı\>. azurecr.io/javamodule gibi görünür. |
+   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br>Son görüntü deposu \<registry name\> . azurecr.io/javamodule gibi görünüyor. |
 
    ![Docker görüntü deposunu sağlama](./media/tutorial-java-module/repository.png)
 
 Java modülünü ilk kez oluşturuyorsanız, Maven paketlerinin indirilmesi birkaç dakika sürebilir. Çözüm hazırsanız, VS Code pencere IoT Edge çözüm çalışma alanınızı yükler. Çözüm çalışma alanı beş en üst düzey bileşeni içerir:
 
 * **Modüller** klasörü modülünüz için Java kodunu ve modülünüzü kapsayıcı görüntüsü olarak derlemek Için Docker dosyalarını içerir.
-* ** \.Env** dosyası, kapsayıcı kayıt defteri kimlik bilgilerinizi depolar.
+* ** \. Env** dosyası, kapsayıcı kayıt defteri kimlik bilgilerinizi depolar.
 * **deployment.template.json** dosyasında IoT Edge çalışma zamanının modülleri cihazlara dağıtmak için kullandığı bilgiler bulunur.
-* **Deployment. Debug. Template. JSON** dosyası, modüllerin hata ayıklama sürümünü kaplar.
-* Bu öğreticide ** \.vscode** klasörünü veya ** \.gitignore** dosyasını düzenleyemezsiniz.
+* Dosyadaki **deployment.debug.template.js** , modüllerin hata ayıklama sürümünü kaplar.
+* Bu öğreticide ** \. vscode** klasörünü veya ** \. gitignore** dosyasını düzenleyemezsiniz.
 
 Çözümünüzü oluştururken kapsayıcı kayıt defteri belirtmediyseniz ve varsayılan localhost:5000 değerini kabul ettiyseniz \.env dosyanız olmaz.
 
@@ -111,7 +112,7 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
 
 ### <a name="update-the-module-with-custom-code"></a>Modülü özel kodla güncelleştirme
 
-1. VS Code Gezgininde **modüller** > ' i açın**javamodule** > **src** > **Main** > **Java** > **com** > **edgemodule** > **app. Java**.
+1. VS Code Gezgininde modüller ' i açın **modules**  >  **javamodule**  >  **src**  >  **Main**  >  **Java**  >  **com**  >  **edgemodule**  >  **app. Java**.
 
 2. Yeni başvurulan sınıfları içeri aktarmak için aşağıdaki kodu dosyanın en üstüne ekleyin.
 
@@ -234,7 +235,7 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
 
 Önceki bölümde, bildirilen makine sıcaklığının kabul edilebilir sınırın altında olduğu iletileri filtrelemek için bir IoT Edge çözümü oluşturdunuz ve **Javamodule** 'e kod eklediniz. Şimdi, çözümü bir kapsayıcı görüntüsü olarak derleyin ve kapsayıcı Kayıt defterinize gönderin.
 
-1. **Görünüm** > **terminali**' i seçerek vs Code tümleşik Terminal ' i açın.
+1. **Görünüm**terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  **Terminal**.
 
 1. Terminalde aşağıdaki komutu girerek Docker 'da oturum açın. Azure Container Registry 'nizden Kullanıcı adı, parola ve oturum açma sunucusu ile oturum açın. Azure portal kayıt defterinizin **erişim tuşları** bölümünden bu değerleri alabilirsiniz.
 
@@ -242,15 +243,15 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin`. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
+   Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin` . Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
-1. VS Code Gezgini ' nde **Deployment. Template. JSON** dosyasına sağ tıklayın ve **IoT Edge çözümü oluştur ve Gönder**' i seçin.
+1. VS Code Gezgini 'nde, dosya **üzerindedeployment.template.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
 
-   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi oluşturulan tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır `docker build` . Ardından, görüntü deposunu `docker push` kapsayıcı Kayıt defterinize göndermek için çalışır.
+   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi oluşturulan tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, `docker build` hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır. Ardından, `docker push` görüntü deposunu kapsayıcı Kayıt defterinize göndermek için çalışır.
 
 ## <a name="deploy-modules-to-device"></a>Modülleri cihaza dağıt
 
-Modül projesini IoT Edge cihazınıza dağıtmak için Visual Studio Code Gezginini ve Azure IoT araçları uzantısını kullanın. Zaten senaryonuz için hazırlanan bir dağıtım bildiriminiz var, yapılandırma klasöründeki **Deployment. JSON** dosyası. Tek yapmanız gereken dağıtımı almak üzere bir cihaz seçmek.
+Modül projesini IoT Edge cihazınıza dağıtmak için Visual Studio Code Gezginini ve Azure IoT araçları uzantısını kullanın. Senaryonuz için hazırlanan bir dağıtım bildiriminiz zaten var, config klasöründeki dosya **deployment.js** . Tek yapmanız gereken dağıtımı almak üzere bir cihaz seçmek.
 
 IoT Edge cihazınızın çalışır ve çalışıyor olduğundan emin olun.
 
@@ -303,7 +304,7 @@ Bu öğreticide, IoT Edge cihazınız tarafından oluşturulan ham verileri filt
 Azure IoT Edge, kenarlardaki verileri işlemek ve analiz etmek için Azure bulut hizmetleri 'ni dağıtmanıza nasıl yardımcı olduğunu öğrenmek için sonraki öğreticilere geçin.
 
 > [!div class="nextstepaction"]
-> [İşlevler](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)Stream Analytics
-> [Machine Learning](tutorial-deploy-machine-learning.md)Machine Learning
-> [özel görüntü işleme hizmeti](tutorial-deploy-custom-vision.md)
+> [İşlevler](tutorial-deploy-function.md) 
+>  [Stream Analytics](tutorial-deploy-stream-analytics.md) 
+>  [Machine Learning](tutorial-deploy-machine-learning.md) 
+>  [Özel görüntü işleme hizmeti](tutorial-deploy-custom-vision.md)

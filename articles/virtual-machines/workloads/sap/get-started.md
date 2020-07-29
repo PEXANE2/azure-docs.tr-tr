@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03d0367b3794069908b31ee7af1250fd70f1bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525220"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171659"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -104,6 +104,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 07/23/2020: SAP HANA Büyük Örnekleri kaydetme, bir SAP HANA Büyük Örnekleri rezervasyonu satın almadan önce bilmeniz gerekenleri açıklayan [bir Azure ayırma](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) makalesiyle eklendi ve satın alma işlemi nasıl yapılır?
 - 07/16/2020: [dağıtım KıLAVUZUNDA](deployment-guide.md) SAP IÇIN yeni VM uzantısı yüklemek üzere Azure PowerShell nasıl kullanacağınızı açıkla
 - 7/04/2020: [SAP Çözümleri Için Azure izleyici sürümü (Önizleme)](./azure-monitor-overview.md)
 - 07/01/2020: Azure [sanal makine depolama yapılandırmalarını SAP HANA](./hana-vm-operations-storage.md) belgedeki Azure Premium Depolama patlaması işlevine göre daha ucuz depolama yapılandırması önerme 

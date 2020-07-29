@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008413"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320638"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
 
-Bu makalede, kendi iş mantığınızla TimerTrigger işlevinde verilen yapılandırmaya göre düzenli aralıklarla çalışacak TrackAvailability () ile bir Azure Işlevi oluşturma işlemi ele alınacaktır. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayabilir ve uyarılabileceğiniz Application Insights kaynağına gönderilir. Bu, portalda [kullanılabilirlik izleme](../../azure-monitor/app/monitor-web-app-availability.md) aracılığıyla yapabileceklerinizle benzer özelleştirilmiş testler oluşturmanıza olanak sağlar. Özelleştirilmiş testler, Portal Kullanıcı arabirimini kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET 'iniz içindeki bir uygulamayı izlemenizi, uç nokta adresini değiştirmenizi veya bu özellik bölgenizde mevcut olmasa bile bir kullanılabilirlik testi oluşturmanızı sağlar.
+Bu makalede, kendi iş mantığınızla TimerTrigger işlevinde verilen yapılandırmaya göre düzenli aralıklarla çalışacak TrackAvailability () ile bir Azure Işlevi oluşturma işlemi ele alınacaktır. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayabilir ve uyarılabileceğiniz Application Insights kaynağına gönderilir. Bu, portalda [kullanılabilirlik izleme](./monitor-web-app-availability.md) aracılığıyla yapabileceklerinizle benzer özelleştirilmiş testler oluşturmanıza olanak sağlar. Özelleştirilmiş testler, Portal Kullanıcı arabirimini kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET 'iniz içindeki bir uygulamayı izlemenizi, uç nokta adresini değiştirmenizi veya bu özellik bölgenizde mevcut olmasa bile bir kullanılabilirlik testi oluşturmanızı sağlar.
 
 > [!NOTE]
 > Bu örnek, yalnızca TrackAvailability () API çağrısının bir Azure Işlevi içinde nasıl çalıştığını gösteren bir mekanizması göstermek için tasarlanmıştır. Bunu tam işlevsel bir kullanılabilirlik testine dönüştürmek için gereken temel HTTP test kodu/iş mantığını yazma değil. Bu örnekte, varsayılan olarak, her zaman bir hata üretecek bir kullanılabilirlik testi oluşturacaksınız.
@@ -177,7 +177,7 @@ Her şeyi olduğu gibi çalıştırdıysanız (iş mantığı eklemeden), testin
 
 ## <a name="query-in-logs-analytics"></a>Günlüklerde sorgulama (Analiz)
 
-Kullanılabilirlik sonuçlarını, bağımlılıklarını ve daha fazlasını görüntülemek için günlükleri (Analiz) kullanabilirsiniz. Günlükler hakkında daha fazla bilgi edinmek için [günlük sorgusuna genel bakış](../../azure-monitor/log-query/log-query-overview.md)sayfasını ziyaret edin.
+Kullanılabilirlik sonuçlarını, bağımlılıklarını ve daha fazlasını görüntülemek için günlükleri (Analiz) kullanabilirsiniz. Günlükler hakkında daha fazla bilgi edinmek için [günlük sorgusuna genel bakış](../log-query/log-query-overview.md)sayfasını ziyaret edin.
 
 >[!div class="mx-imgBorder"]
 >![Kullanılabilirlik sonuçları](media/availability-azure-functions/availabilityresults.png)
@@ -187,5 +187,6 @@ Kullanılabilirlik sonuçlarını, bağımlılıklarını ve daha fazlasını g�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uygulama Eşlemesi](../../azure-monitor/app/app-map.md)
-- [İşlem tanılamaları](../../azure-monitor/app/transaction-diagnostics.md)
+- [Uygulama Eşlemesi](./app-map.md)
+- [İşlem tanılamaları](./transaction-diagnostics.md)
+

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515385"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322304"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarısı kuralları için Kaynak Yöneticisi şablonu örnekleri
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Izleyici 'de [ölçüm uyarısı kurallarını](../platform/a
 Ölçüm uyarı kurallarıyla kullanılabilecek kaynakların listesi için bkz. [Azure izleyici 'de ölçüm uyarıları Için desteklenen kaynaklar](../platform/alerts-metric-near-real-time.md) . Bir uyarı kuralının şema ve özelliklerinin açıklaması, [ölçüm uyarıları-oluştur veya Güncelleştir](/rest/api/monitor/metricalerts/createorupdate)' de mevcuttur.
 
 > [!NOTE]
-> Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces` , ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces` , ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 
 
@@ -3127,7 +3127,7 @@ Bu örnek, bir abonelikte bulunan bir Azure bölgesindeki sanal makinelerin bir 
 
 
 ## <a name="availability-test-with-metric-alert"></a>Ölçüm uyarısıyla kullanılabilirlik testi uyarısı
-[Application Insights kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md) , dünyanın her yerindeki çeşitli konumlardan Web sitenizin/uygulamanızın kullanılabilirliğini izlemenize yardımcı olur. Kullanılabilirlik testi uyarıları, belirli sayıda konumdan başarısız olduğunda, kullanılabilirlik testleri size bildirir. Ölçüm uyarıları (Microsoft. Insights/metricAlerts) ile aynı kaynak türünde kullanılabilirlik testi uyarıları. Aşağıdaki örnek bir basit kullanılabilirlik testi ve ilişkili uyarı oluşturur.
+[Application Insights kullanılabilirlik testleri](../app/monitor-web-app-availability.md) , dünyanın her yerindeki çeşitli konumlardan Web sitenizin/uygulamanızın kullanılabilirliğini izlemenize yardımcı olur. Kullanılabilirlik testi uyarıları, belirli sayıda konumdan başarısız olduğunda, kullanılabilirlik testleri size bildirir. Ölçüm uyarıları (Microsoft. Insights/metricAlerts) ile aynı kaynak türünde kullanılabilirlik testi uyarıları. Aşağıdaki örnek bir basit kullanılabilirlik testi ve ilişkili uyarı oluşturur.
 
 > [!NOTE]
 > `&amp`; & için HTML varlık başvurusudur. URL parametreleri hala tek bir & ayrılmıştır, ancak URL 'nin HTML 'de bahsetmeniz halinde bunu kodlamanız gerekir. Bu nedenle, pingURL parametre değerindeki "&" varsa, ";" ile kaçış yapmanız gerekir `&amp`
@@ -3266,3 +3266,4 @@ Bu örnek, bir abonelikte bulunan bir Azure bölgesindeki sanal makinelerin bir 
 - [Azure izleyici için diğer örnek şablonları alın](resource-manager-samples.md).
 - [Uyarılar hakkında daha fazla bilgi edinin](../platform/alerts-overview.md).
 - [Kaynak Yöneticisi şablonuyla bir eylem grubu oluşturmak için bir örnek alın](resource-manager-action-groups.md)
+

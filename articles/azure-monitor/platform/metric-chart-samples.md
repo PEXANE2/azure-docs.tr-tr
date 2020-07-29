@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 762264cfe7e0441671411e2c277a0796cd527399
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320264"
 ---
 # <a name="metric-chart-examples"></a>Ölçüm grafiği örnekleri 
 
@@ -52,5 +52,6 @@ Depolama hesabı kaynağınız fazla miktarda işlem hacimde yaşıyor. Fazla y�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Izleyici [çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md) hakkında bilgi edinin
+* Azure Izleyici [çalışma kitapları](./workbooks-overview.md) hakkında bilgi edinin
 * [Ölçüm Gezgini](metrics-charts.md) hakkında daha fazla bilgi edinin
+

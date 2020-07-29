@@ -3,16 +3,16 @@ title: Özel olaylar ve ölçümler için API Application Insights | Microsoft D
 description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza veya masaüstü uygulamanıza, Web sayfasına veya hizmete birkaç satır kod ekleyin.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 43951a415256577144b93c7deea168e30e7a13ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d263c99af7793acbe1f939f64c5cc2dcadd3a054
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014737"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323239"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
-Kullanıcılara neler yaptığını öğrenmek veya sorunları tanılamaya yardımcı olmak için uygulamanıza birkaç satır kod ekleyin. Cihaz ve Masaüstü uygulamalarından, Web istemcilerinden ve Web sunucularından telemetri gönderebilirsiniz. Özel olaylar ve ölçümler ve kendi standart telemetri sürümleriniz göndermek için [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) çekırdek telemetri API 'sini kullanın. Bu API, standart Application Insights veri toplayıcılarının kullandığı API 'dir.
+Kullanıcılara neler yaptığını öğrenmek veya sorunları tanılamaya yardımcı olmak için uygulamanıza birkaç satır kod ekleyin. Cihaz ve Masaüstü uygulamalarından, Web istemcilerinden ve Web sunucularından telemetri gönderebilirsiniz. Özel olaylar ve ölçümler ve kendi standart telemetri sürümleriniz göndermek için [Azure Application Insights](./app-insights-overview.md) çekırdek telemetri API 'sini kullanın. Bu API, standart Application Insights veri toplayıcılarının kullandığı API 'dir.
 
 ## <a name="api-summary"></a>API özeti
 
@@ -37,11 +37,11 @@ Application Insights SDK 'da henüz bir başvurunuz yoksa:
 
 * Application Insights SDK 'sını projenize ekleyin:
 
-  * [ASP.NET projesi](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core projesi](../../azure-monitor/app/asp-net-core.md)
-  * [Java projesi](../../azure-monitor/app/java-get-started.md)
-  * [Node.js projesi](../../azure-monitor/app/nodejs.md)
-  * [Her Web sayfasında JavaScript](../../azure-monitor/app/javascript.md) 
+  * [ASP.NET projesi](./asp-net.md)
+  * [ASP.NET Core projesi](./asp-net-core.md)
+  * [Java projesi](./java-get-started.md)
+  * [Node.js projesi](./nodejs.md)
+  * [Her Web sayfasında JavaScript](./javascript.md) 
 * Cihazınızda veya Web sunucusu kodunuzda şunları dahil edin:
 
     *C#:*`using Microsoft.ApplicationInsights;`
@@ -107,7 +107,7 @@ Node.js projelerinde, `new applicationInsights.TelemetryClient(instrumentationKe
 
 ## <a name="trackevent"></a>TrackEvent
 
-Application Insights, özel bir *olay* , toplanan bir sayı olarak [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) görüntülenebilecek ve tek tek oluşum olarak [Tanılama aramasında](../../azure-monitor/app/diagnostic-search.md) kullanabileceğiniz bir veri noktasıdır. (MVC veya diğer Framework "olayları" ile ilgili değildir.)
+Application Insights, özel bir *olay* , toplanan bir sayı olarak [Ölçüm Gezgini](../platform/metrics-charts.md) görüntülenebilecek ve tek tek oluşum olarak [Tanılama aramasında](./diagnostic-search.md) kullanabileceğiniz bir veri noktasıdır. (MVC veya diğer Framework "olayları" ile ilgili değildir.)
 
 `TrackEvent`Çeşitli olayları saymak için kodunuzda çağrı ekleyin. Kullanıcıların belirli bir özelliği ne sıklıkta seçtikleri, belirli hedeflere ne sıklıkta elde ettikleri veya ne sıklıkta belirli türde hatalar gerçekleştirdikleri.
 
@@ -147,11 +147,11 @@ telemetry.trackEvent({name: "WinGame"});
 
 Telemetri, `customEvents` [Application Insights Analytics](../log-query/log-query-overview.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackEvent(..)` .
 
-[Örnekleme](../../azure-monitor/app/sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackEvent () için 10 çağrının (), örnekleme işleminin yalnızca birini aktardığı anlamına gelir. Özel olayların doğru sayısını almak için, bu nedenle gibi bir kod kullanmanız gerekir `customEvents | summarize sum(itemCount)` .
+[Örnekleme](./sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackEvent () için 10 çağrının (), örnekleme işleminin yalnızca birini aktardığı anlamına gelir. Özel olayların doğru sayısını almak için, bu nedenle gibi bir kod kullanmanız gerekir `customEvents | summarize sum(itemCount)` .
 
 ## <a name="getmetric"></a>GetMetric
 
-.NET ve .NET Core uygulamaları için yerel olarak önceden toplanmış ölçümleri yakalamak üzere GetMetric () çağrısını etkin bir şekilde nasıl kullanacağınızı öğrenmek için [GetMetric](../../azure-monitor/app/get-metric.md) belgelerini ziyaret edin.
+.NET ve .NET Core uygulamaları için yerel olarak önceden toplanmış ölçümleri yakalamak üzere GetMetric () çağrısını etkin bir şekilde nasıl kullanacağınızı öğrenmek için [GetMetric](./get-metric.md) belgelerini ziyaret edin.
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -307,9 +307,9 @@ Ancak, istek Telemetriyi göndermek için önerilen yol, isteğin bir <a href="#
 
 ## <a name="operation-context"></a>İşlem bağlamı
 
-Telemetri öğelerini işlem bağlamıyla ilişkilendirerek ilişkilendirilebilir. Standart istek izleme modülü, bir HTTP isteği işlenirken gönderilen özel durumlar ve diğer olaylar için bunu yapar. [Arama](../../azure-monitor/app/diagnostic-search.md) ve [analiz](../log-query/log-query-overview.md)' de, istekle ILIŞKILI tüm olayları işlem kimliğini kullanarak kolayca bulabilirsiniz.
+Telemetri öğelerini işlem bağlamıyla ilişkilendirerek ilişkilendirilebilir. Standart istek izleme modülü, bir HTTP isteği işlenirken gönderilen özel durumlar ve diğer olaylar için bunu yapar. [Arama](./diagnostic-search.md) ve [analiz](../log-query/log-query-overview.md)' de, istekle ILIŞKILI tüm olayları işlem kimliğini kullanarak kolayca bulabilirsiniz.
 
-Bağıntı hakkında daha fazla bilgi için [Application Insights telemetri bağıntısını](../../azure-monitor/app/correlation.md) inceleyin.
+Bağıntı hakkında daha fazla bilgi için [Application Insights telemetri bağıntısını](./correlation.md) inceleyin.
 
 Telemetriyi el ile izlerken, bu kalıbı kullanarak telemetri bağıntısını sağlamanın en kolay yolu:
 
@@ -341,13 +341,13 @@ Aramada, işlem bağlamı **Ilgili öğeler** listesini oluşturmak için kullan
 
 ![İlgili öğeler](./media/api-custom-events-metrics/21.png)
 
-Özel işlemleri izleme hakkında daha fazla bilgi için bkz. [.NET SDK ile özel Işlemleri izleme Application Insights](../../azure-monitor/app/custom-operations-tracking.md) .
+Özel işlemleri izleme hakkında daha fazla bilgi için bkz. [.NET SDK ile özel Işlemleri izleme Application Insights](./custom-operations-tracking.md) .
 
 ### <a name="requests-in-analytics"></a>Analytics istekleri
 
 [Application Insights Analytics](../log-query/log-query-overview.md)'te, istekler `requests` tabloda gösterilir.
 
-[Örnekleme](../../azure-monitor/app/sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değer gösterir. Örneğin ItemCount = = 10, trackRequest () için 10 çağrının, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. İstek adlarına göre doğru istek sayısını ve ortalama süreyi almak için, şöyle bir kod kullanın:
+[Örnekleme](./sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değer gösterir. Örneğin ItemCount = = 10, trackRequest () için 10 çağrının, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. İstek adlarına göre doğru istek sayısını ve ortalama süreyi almak için, şöyle bir kod kullanın:
 
 ```kusto
 requests
@@ -358,8 +358,8 @@ requests
 
 Application Insights özel durum gönder:
 
-* Bunları, bir sorun sıklığının göstergesi olarak [saymak](../../azure-monitor/platform/metrics-charts.md)için.
-* [Tek tek oluşumları incelemek](../../azure-monitor/app/diagnostic-search.md)için.
+* Bunları, bir sorun sıklığının göstergesi olarak [saymak](../platform/metrics-charts.md)için.
+* [Tek tek oluşumları incelemek](./diagnostic-search.md)için.
 
 Raporlar yığın izlemelerini içerir.
 
@@ -414,8 +414,8 @@ catch (ex)
 
 SDK 'lar birçok özel durumu otomatik olarak yakalar, bu nedenle her zaman TrackException 'ı açıkça çağırmanız gerekmez.
 
-* ASP.NET: [özel durumları yakalamak için kod yazın](../../azure-monitor/app/asp-net-exceptions.md).
-* Java EE: [özel durumlar otomatik olarak yakalanır](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
+* ASP.NET: [özel durumları yakalamak için kod yazın](./asp-net-exceptions.md).
+* Java EE: [özel durumlar otomatik olarak yakalanır](./java-get-started.md#exceptions-and-request-failures).
 * JavaScript: özel durumlar otomatik olarak yakalanır. Otomatik toplamayı devre dışı bırakmak istiyorsanız, Web sayfalarınızı eklediğiniz kod parçacığına bir satır ekleyin:
 
 ```javascript
@@ -429,14 +429,14 @@ SDK 'lar birçok özel durumu otomatik olarak yakalar, bu nedenle her zaman Trac
 
 [Application Insights Analytics](../log-query/log-query-overview.md)'te özel durumlar `exceptions` tabloda gösterilir.
 
-[Örnekleme](../../azure-monitor/app/sampling.md) işlemi ise, `itemCount` özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackException () için 10 çağrının, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. Özel durum türüne göre bölünmüş özel durumların doğru sayısını almak için, şu gibi bir kod kullanın:
+[Örnekleme](./sampling.md) işlemi ise, `itemCount` özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackException () için 10 çağrının, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. Özel durum türüne göre bölünmüş özel durumların doğru sayısını almak için, şu gibi bir kod kullanın:
 
 ```kusto
 exceptions
 | summarize sum(itemCount) by type
 ```
 
-Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örneğin:
+Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örnek:
 
 ```kusto
 exceptions
@@ -452,11 +452,11 @@ exceptions
 
 ## <a name="tracktrace"></a>TrackTrace
 
-Application Insights için bir "içerik haritası izi" göndererek sorunları tanılamaya yardımcı olması için TrackTrace kullanın. Tanılama verileri parçalarını gönderebilir ve bunları [Tanılama aramasında](../../azure-monitor/app/diagnostic-search.md)inceleyebilirsiniz.
+Application Insights için bir "içerik haritası izi" göndererek sorunları tanılamaya yardımcı olması için TrackTrace kullanın. Tanılama verileri parçalarını gönderebilir ve bunları [Tanılama aramasında](./diagnostic-search.md)inceleyebilirsiniz.
 
-.NET [günlük bağdaştırıcılarında](../../azure-monitor/app/asp-net-trace-logs.md) , portala üçüncü taraf Günlükler göndermek IÇIN bu API 'yi kullanır.
+.NET [günlük bağdaştırıcılarında](./asp-net-trace-logs.md) , portala üçüncü taraf Günlükler göndermek IÇIN bu API 'yi kullanır.
 
-Java 'da [Log4J gibi standart Günlükçüler için, logback](../../azure-monitor/app/java-trace-logs.md) Application Insights Log4J veya Logback uygulamalarını kullanarak portala üçüncü taraf Günlükler gönderebilir.
+Java 'da [Log4J gibi standart Günlükçüler için, logback](./java-trace-logs.md) Application Insights Log4J veya Logback uygulamalarını kullanarak portala üçüncü taraf Günlükler gönderebilir.
 
 *C#*
 
@@ -499,7 +499,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
 Boyut sınırı, `message` özellikleri sınırından çok daha yüksek.
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.  
 
-Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örneğin:
+Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
 
 *C#*
 
@@ -518,13 +518,13 @@ properties.put("Database", db.ID);
 telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
 ```
 
-[Arama](../../azure-monitor/app/diagnostic-search.md)' da, belirli bir veritabanı ile ilgili belirli bir önem derecesindeki tüm iletileri kolayca filtreleyebilirsiniz.
+[Arama](./diagnostic-search.md)' da, belirli bir veritabanı ile ilgili belirli bir önem derecesindeki tüm iletileri kolayca filtreleyebilirsiniz.
 
 ### <a name="traces-in-analytics"></a>Analizler
 
 [Application Insights Analytics](../log-query/log-query-overview.md)'te, tabloda tracktrace çağrıları gösterilir `traces` .
 
-[Örnekleme](../../azure-monitor/app/sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, için 10 `trackTrace()` ' un, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. İzleme çağrılarının doğru sayısını almak için, bu kodu gibi bir kod kullanmanız gerekir `traces | summarize sum(itemCount)` .
+[Örnekleme](./sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, için 10 `trackTrace()` ' un, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. İzleme çağrılarının doğru sayısını almak için, bu kodu gibi bir kod kullanmanız gerekir `traces | summarize sum(itemCount)` .
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -591,19 +591,19 @@ finally
 }
 ```
 
-Sunucu SDK 'Larının, belirli bağımlılık çağrılarını tespit eden ve izleyen bir [bağımlılık modülünü](../../azure-monitor/app/asp-net-dependencies.md) (örneğin, VERITABANLARıNA ve REST API 'lerine) dahil edileceğini unutmayın. Modülün çalışmasını sağlamak için sunucunuza bir aracı yüklemelisiniz. 
+Sunucu SDK 'Larının, belirli bağımlılık çağrılarını tespit eden ve izleyen bir [bağımlılık modülünü](./asp-net-dependencies.md) (örneğin, VERITABANLARıNA ve REST API 'lerine) dahil edileceğini unutmayın. Modülün çalışmasını sağlamak için sunucunuza bir aracı yüklemelisiniz. 
 
-Java 'da, bazı bağımlılık çağrıları [Java Aracısı](../../azure-monitor/app/java-agent.md)kullanılarak otomatik olarak izlenebilir.
+Java 'da, bazı bağımlılık çağrıları [Java Aracısı](./java-agent.md)kullanılarak otomatik olarak izlenebilir.
 
 Otomatik izlemenin yakalayamediği çağrıları izlemek isterseniz veya aracıyı yüklemek istemiyorsanız bu çağrıyı kullanırsınız.
 
-C# ' de standart bağımlılık izleme modülünü devre dışı bırakmak için [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) düzenleyin ve başvurusunu silin `DependencyCollector.DependencyTrackingTelemetryModule` . Java 'da, standart bağımlılıkları otomatik olarak toplamak istemiyorsanız, lütfen Java aracısını yüklemeyin.
+C# ' de standart bağımlılık izleme modülünü devre dışı bırakmak için [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) düzenleyin ve başvurusunu silin `DependencyCollector.DependencyTrackingTelemetryModule` . Java 'da, standart bağımlılıkları otomatik olarak toplamak istemiyorsanız, lütfen Java aracısını yüklemeyin.
 
 ### <a name="dependencies-in-analytics"></a>Analytics 'teki bağımlılıklar
 
 [Application Insights Analytics](../log-query/log-query-overview.md)'te, trackdependency çağrıları `dependencies` tabloda gösterilir.
 
-[Örnekleme](../../azure-monitor/app/sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackDependency () için 10 çağrının olduğu anlamına gelir ve örnekleme işlemi bunlardan yalnızca birini iletilir. Hedef bileşene göre bölünmüş bağımlılıkların doğru sayısını almak için, şu gibi bir kod kullanın:
+[Örnekleme](./sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackDependency () için 10 çağrının olduğu anlamına gelir ve örnekleme işlemi bunlardan yalnızca birini iletilir. Hedef bileşene göre bölünmüş bağımlılıkların doğru sayısını almak için, şu gibi bir kod kullanın:
 
 ```kusto
 dependencies
@@ -649,7 +649,7 @@ telemetry.flush();
 
 ## <a name="authenticated-users"></a>Kimliği doğrulanmış kullanıcılar
 
-Bir Web uygulamasında kullanıcılar, [tanımlama bilgileri tarafından tanımlanan](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)(varsayılan olarak). Bir Kullanıcı, uygulamanıza farklı bir makineden veya tarayıcıdan erişebiliyorlarsa veya tanımlama bilgilerini sildiklerinde birden çok kez sayılır.
+Bir Web uygulamasında kullanıcılar, [tanımlama bilgileri tarafından tanımlanan](./usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)(varsayılan olarak). Bir Kullanıcı, uygulamanıza farklı bir makineden veya tarayıcıdan erişebiliyorlarsa veya tanımlama bilgilerini sildiklerinde birden çok kez sayılır.
 
 Kullanıcılar uygulamanızda oturum açtığında, tarayıcı kodunda kimliği doğrulanmış kullanıcı KIMLIĞINI ayarlayarak daha doğru bir sayı alabilirsiniz:
 
@@ -689,9 +689,9 @@ Uygulamanız kullanıcıları hesaplara gruplamadıysanız, hesap için bir tan�
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md), **kullanıcıları, kimliği doğrulanmış**ve **Kullanıcı hesaplarını**sayan bir grafik oluşturabilirsiniz.
+[Ölçüm Gezgini](../platform/metrics-charts.md), **kullanıcıları, kimliği doğrulanmış**ve **Kullanıcı hesaplarını**sayan bir grafik oluşturabilirsiniz.
 
-Ayrıca, belirli kullanıcı adları ve hesapları ile istemci veri noktalarını [arayabilirsiniz](../../azure-monitor/app/diagnostic-search.md) .
+Ayrıca, belirli kullanıcı adları ve hesapları ile istemci veri noktalarını [arayabilirsiniz](./diagnostic-search.md) .
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>Özellikleri kullanarak verilerinizi filtreleme, arama ve parçalara ayırma
 
@@ -822,7 +822,7 @@ requests
 Dikkat edin:
 
 * CustomDimensions veya Customölçüler JSON öğesinden bir değeri ayıkladığınızda, dinamik türe sahiptir ve bu nedenle veya ' i atamalısınız `tostring` `todouble` .
-* [Örnekleme](../../azure-monitor/app/sampling.md)olasılığa yönelik bir hesap almak için, kullanmanız gerekir `sum(itemCount)` `count()` .
+* [Örnekleme](./sampling.md)olasılığa yönelik bir hesap almak için, kullanmanız gerekir `sum(itemCount)` `count()` .
 
 ## <a name="timing-events"></a><a name="timed"></a>Zamanlama olayları
 
@@ -919,19 +919,19 @@ Tek tek telemetri çağrıları, özellik sözlüklerindeki varsayılan değerle
 
 *JavaScript Web Istemcileri Için*JavaScript telemetri başlatıcıları ' nı kullanın.
 
-Standart koleksiyon modüllerindeki veriler de dahil olmak üzere *Tüm telemetrisine özellikler eklemek için*, uygulamasını [uygulayın `ITelemetryInitializer` ](../../azure-monitor/app/api-filtering-sampling.md#add-properties).
+Standart koleksiyon modüllerindeki veriler de dahil olmak üzere *Tüm telemetrisine özellikler eklemek için*, uygulamasını [uygulayın `ITelemetryInitializer` ](./api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Telemetriyi örnekleme, filtreleme ve işleme
 
 SDK 'dan gönderilmeden önce Telemetriyi işlemek için kod yazabilirsiniz. İşleme, HTTP istek koleksiyonu ve bağımlılık koleksiyonu gibi standart telemetri modüllerden gönderilen verileri içerir.
 
-Uygulayarak telemetrisine [Özellikler ekleyin](../../azure-monitor/app/api-filtering-sampling.md#add-properties) `ITelemetryInitializer` . Örneğin, diğer özelliklerden hesaplanan sürüm numaralarını veya değerleri ekleyebilirsiniz.
+Uygulayarak telemetrisine [Özellikler ekleyin](./api-filtering-sampling.md#add-properties) `ITelemetryInitializer` . Örneğin, diğer özelliklerden hesaplanan sürüm numaralarını veya değerleri ekleyebilirsiniz.
 
-[Filtreleme](../../azure-monitor/app/api-filtering-sampling.md#filtering) , ' yı uygulayarak SDK 'dan gönderilmeden önce Telemetriyi değiştirebilir veya atabilir `ITelemetryProcessor` . Ne gönderildiğini ve atılacağını denetlersiniz, ancak ölçümleriniz üzerindeki etkiyi hesaba eklemek zorunda olursunuz. Öğeleri nasıl atdığınıza bağlı olarak, ilgili öğeler arasında gezinme özelliğini kaybedebilirsiniz.
+[Filtreleme](./api-filtering-sampling.md#filtering) , ' yı uygulayarak SDK 'dan gönderilmeden önce Telemetriyi değiştirebilir veya atabilir `ITelemetryProcessor` . Ne gönderildiğini ve atılacağını denetlersiniz, ancak ölçümleriniz üzerindeki etkiyi hesaba eklemek zorunda olursunuz. Öğeleri nasıl atdığınıza bağlı olarak, ilgili öğeler arasında gezinme özelliğini kaybedebilirsiniz.
 
-[Örnekleme](../../azure-monitor/app/api-filtering-sampling.md) , uygulamanızdan portala gönderilen veri hacmini azaltmak için paketlenmiş bir çözümdür. Bu, görünen ölçümleri etkilemeden bunu yapar. Ayrıca, özel durumlar, istekler ve sayfa görünümleri gibi ilgili öğeler arasında gezinerek sorunları tanılama yeteneğinizi etkilemeden bunu yapar.
+[Örnekleme](./api-filtering-sampling.md) , uygulamanızdan portala gönderilen veri hacmini azaltmak için paketlenmiş bir çözümdür. Bu, görünen ölçümleri etkilemeden bunu yapar. Ayrıca, özel durumlar, istekler ve sayfa görünümleri gibi ilgili öğeler arasında gezinerek sorunları tanılama yeteneğinizi etkilemeden bunu yapar.
 
-[Daha fazla bilgi edinin](../../azure-monitor/app/api-filtering-sampling.md).
+[Daha fazla bilgi edinin](./api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Telemetri devre dışı bırakılıyor
 
@@ -951,7 +951,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-*Seçili standart toplayıcıları devre dışı bırakmak*için--örneğin, performans SAYAÇLARı, http istekleri veya bağımlılıklar-- [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)ilgili satırları silin veya not edin. Örneğin, kendi TrackRequest verilerinizi göndermek istiyorsanız bunu yapabilirsiniz.
+*Seçili standart toplayıcıları devre dışı bırakmak*için--örneğin, performans SAYAÇLARı, http istekleri veya bağımlılıklar-- [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)ilgili satırları silin veya not edin. Örneğin, kendi TrackRequest verilerinizi göndermek istiyorsanız bunu yapabilirsiniz.
 
 *Node.js*
 
@@ -1012,7 +1012,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dinamik izleme anahtarı
 
-Geliştirme, test ve üretim ortamlarından Telemetriyi karışmamak için, ortama bağlı olarak [ayrı Application Insights kaynakları oluşturabilir](../../azure-monitor/app/create-new-resource.md ) ve anahtarlarını değiştirebilirsiniz.
+Geliştirme, test ve üretim ortamlarından Telemetriyi karışmamak için, ortama bağlı olarak [ayrı Application Insights kaynakları oluşturabilir](./create-new-resource.md) ve anahtarlarını değiştirebilirsiniz.
 
 Yapılandırma dosyasından izleme anahtarını almak yerine kodunuzda bu ayarı yapabilirsiniz. Bir ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde anahtarı ayarlayın:
 
@@ -1062,13 +1062,13 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örneğin:
+TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örnek:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
 ```
 
-Bu değerlerden herhangi birini kendiniz ayarlarsanız, değerlerinizin ve standart değerlerin karıştırımaması için [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)ilgili satırı kaldırmayı göz önünde bulundurun.
+Bu değerlerden herhangi birini kendiniz ayarlarsanız, değerlerinizin ve standart değerlerin karıştırımaması için [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)ilgili satırı kaldırmayı göz önünde bulundurun.
 
 * **Bileşen**: uygulama ve sürümü.
 * **Cihaz**: uygulamanın çalıştığı cihazla ilgili veriler. (Web Apps 'te, telemetrinin gönderildiği sunucu veya istemci aygıtıdır.)
@@ -1086,9 +1086,9 @@ Bu değerlerden herhangi birini kendiniz ayarlarsanız, değerlerinizin ve stand
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-Veri hızı sınırına ulaşmaktan kaçınmak için [örnekleme](../../azure-monitor/app/sampling.md)kullanın.
+Veri hızı sınırına ulaşmaktan kaçınmak için [örnekleme](./sampling.md)kullanın.
 
-Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama ve gizlilik](../../azure-monitor/app/data-retention-privacy.md).
+Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama ve gizlilik](./data-retention-privacy.md).
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
@@ -1112,9 +1112,10 @@ Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama 
     Yok. Bunları try-catch yan tümcelerinde sarmalısınız. SDK sorunlarla karşılaşırsa, hata ayıklama konsolu çıkışında iletileri günlüğe kaydeder ve iletiler tanılama araması ' nda ile alıyorsa.
 * *Portaldan veri almak için bir REST API var mı?*
 
-    Evet, [veri erişimi API 'si](https://dev.applicationinsights.io/). Verilerin ayıklanmasına yönelik diğer yollar [analiz 'ten Power BI](../../azure-monitor/app/export-power-bi.md ) ve [sürekli dışarı aktarmaya](../../azure-monitor/app/export-telemetry.md)aktarma içerir.
+    Evet, [veri erişimi API 'si](https://dev.applicationinsights.io/). Verilerin ayıklanmasına yönelik diğer yollar [analiz 'ten Power BI](./export-power-bi.md) ve [sürekli dışarı aktarmaya](./export-telemetry.md)aktarma içerir.
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 
-* [Olayları ve günlükleri ara](../../azure-monitor/app/diagnostic-search.md)
+* [Olayları ve günlükleri ara](./diagnostic-search.md)
 * [Sorun giderme](../faq.md)
+

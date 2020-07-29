@@ -1,6 +1,5 @@
 ---
-title: Şirket içi SQL Server
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): şirket içi SQL Server-Azure'
 description: Azure Machine Learning Studio (klasik) ile gelişmiş analizler gerçekleştirmek için bir SQL Server veritabanındaki verileri kullanın.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 49ec8916e03323bdf4263fe9ea6cfca323339dce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e654950360b7891e59f4f273efb7139a5223854a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706061"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324854"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server veritabanı kullanarak Azure Machine Learning Studio (klasik) analiz gerçekleştirme
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Genellikle şirket içi verilerle çalışan kuruluşlar, makine öğrenimi iş yükleri için bulutun ölçeklendirilmesi ve çeviklerinden yararlanmak ister. Ancak, şirket içi verilerini buluta taşıyarak geçerli iş süreçlerini ve iş akışlarını kesintiye uğramasını istemiyor. Azure Machine Learning Studio (klasik) artık SQL Server bir veritabanından veri okumayı ve sonra bu verilerle bir modeli eğitmek ve Puanlama destekler. Artık bulut ve şirket içi sunucunuz arasında verileri el ile kopyalamanız ve eşitlemeniz gerekmez. Bunun yerine, Azure Machine Learning Studio (klasik) **veri alma** modülü artık eğitim ve Puanlama işleriniz için SQL Server veritabanından doğrudan okuyabilir.
 

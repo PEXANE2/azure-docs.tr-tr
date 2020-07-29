@@ -3,19 +3,19 @@ title: Windows masaüstü uygulamaları için kullanımı ve performansı izleme
 description: Application Insights ile Windows masaüstü uygulamanızın kullanımını ve performansını analiz edin.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499197"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323426"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasik Windows Masaüstü uygulamalarında kullanımı ve performansı izleme
 
-Şirket içinde, Azure’da ve diğer bulutlarda barındırılan tüm uygulamalar Application Insights’tan faydalanabilir. Tek sınırlama Application Insights hizmetine [iletişim izni verme](../../azure-monitor/app/ip-addresses.md) gerekliliğidir. Evrensel Windows Platformu (UWP) uygulamalarını izlemek için [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md)’ı öneririz.
+Şirket içinde, Azure’da ve diğer bulutlarda barındırılan tüm uygulamalar Application Insights’tan faydalanabilir. Tek sınırlama Application Insights hizmetine [iletişim izni verme](./ip-addresses.md) gerekliliğidir. Evrensel Windows Platformu (UWP) uygulamalarını izlemek için [Visual Studio App Center](../learn/mobile-center-quickstart.md)’ı öneririz.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Bir Klasik Windows uygulamasından Application Insights’a telemetri göndermek için
-1. [Azure portalında](https://portal.azure.com)[bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md ). 
+1. [Azure portalında](https://portal.azure.com)[bir Application Insights kaynağı oluşturun](./create-new-resource.md). 
 2. İzleme Anahtarının bir kopyasını oluşturun.
 3. Visual Studio’da uygulama projenizin NuGet paketlerini düzenleyin ve şunu ekleyin: Microsoft.ApplicationInsights.WindowsServer. (Veya temel API 'yi yalnızca standart telemetri koleksiyonu modülleri olmadan istiyorsanız Microsoft. ApplicationInsights ' ı seçin.)
 4. İzleme anahtarını kodunuzda ayarlayın:
@@ -27,7 +27,7 @@ ms.locfileid: "86499197"
     `<InstrumentationKey>`*anahtarınız*`</InstrumentationKey>` 
    
     ApplicationInsights.config dosyasını kullanırsanız, bunun özelliklerinin **Build Action = Content, Copy to Output Directory = Copy** olarak ayarlandığından emin olun.
-5. Telemetri göndermek için [API’yi kullanın](../../azure-monitor/app/api-custom-events-metrics.md).
+5. Telemetri göndermek için [API’yi kullanın](./api-custom-events-metrics.md).
 6. Uygulamanızı çalıştırın ve Azure portal oluşturduğunuz kaynakta Telemetriyi görüntüleyin.
 
 ## <a name="example-code"></a><a name="telemetry"></a>Örnek kod
@@ -175,7 +175,8 @@ namespace WindowsFormsApp2
 > [Eski Kurumsal (düğüm başına) fiyatlandırma katmanında](./pricing.md#legacy-enterprise-per-node-pricing-tier)olsanız bile, daha önce açıklandığı gibi bir telemetri işlemcisi de kullanabilirsiniz. Bu, düğüm başına fiyatlandırma için düğümleri doğru bir şekilde ayırt edememe nedeniyle, yüksek faturalandırma için olası bir işlem oluşmasına neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Pano oluşturma](../../azure-monitor/app/overview-dashboard.md)
-* [Tanılama Araması](../../azure-monitor/app/diagnostic-search.md)
-* [Ölçümleri keşfetme](../../azure-monitor/platform/metrics-charts.md)
+* [Pano oluşturma](./overview-dashboard.md)
+* [Tanılama Araması](./diagnostic-search.md)
+* [Ölçümleri keşfetme](../platform/metrics-charts.md)
 * [Analytics sorguları yazma](../log-query/log-query-overview.md)
+

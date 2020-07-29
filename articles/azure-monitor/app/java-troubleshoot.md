@@ -3,11 +3,12 @@ title: Java Web projesinde Application Insights sorunlarını giderme
 description: Sorun giderme kılavuzu-Application Insights ile canlı Java uygulamalarını izleme.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484789"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324157"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java için Application Insights Sorun Giderme, Soru ve Yanıt
 [Java 'Da Azure Application Insights][java]sorular veya sorunlar var mı? Aşağıda birkaç ipucu verilmiştir.
@@ -23,7 +24,7 @@ ms.locfileid: "84484789"
 * Bir dakika bekleyip Yenile ' ye tıklayın. Grafikler düzenli aralıklarla yenilenir, ancak el ile de yenileme yapabilirsiniz. Yenileme aralığı, grafiğin zaman aralığına bağlıdır.
 * ApplicationInsights.xml dosyasında tanımlanmış bir izleme anahtarınız olup olmadığını denetleyin (Projenizdeki kaynaklar klasöründe) veya ortam değişkeni olarak yapılandırılmış.
 * `<DisableTelemetry>true</DisableTelemetry>`XML dosyasında düğüm olmadığını doğrulayın.
-* Güvenlik duvarınızdaki dc.services.visualstudio.com 'e giden trafik için 80 ve 443 TCP bağlantı noktalarını açmanız gerekebilir. [Güvenlik Duvarı özel durumlarının tam listesini](../../azure-monitor/app/ip-addresses.md) görüntüleyin
+* Güvenlik duvarınızdaki dc.services.visualstudio.com 'e giden trafik için 80 ve 443 TCP bağlantı noktalarını açmanız gerekebilir. [Güvenlik Duvarı özel durumlarının tam listesini](./ip-addresses.md) görüntüleyin
 * Microsoft Azure başlangıç panosunda, hizmet durumu haritasına bakın. Bazı uyarı göstergeleri varsa, Tamam ' a dönene kadar bekleyin ve ardından Application Insights uygulaması dikey penceresini kapatıp yeniden açın.
 * [Turn on logging](#debug-data-from-the-sdk) `<SDKLogger />` ApplicationInsights.xml dosyasındaki kök düğümün altına bir öğe ekleyerek günlüğü açın (Projenizdeki kaynaklar klasöründe) ve tüm şüpheli Günlükler için, AI: Info/warn/Error ' a ait olan girişleri kontrol edin. 
 * Doğru ApplicationInsights.xml dosyanın Java SDK 'Sı tarafından başarılı bir şekilde yüklendiğinden emin olun. Bu, konsolun "yapılandırma dosyası başarıyla bulundu" bildiriminin çıkış iletilerine bakar.
@@ -37,7 +38,7 @@ ms.locfileid: "84484789"
 * Doğru AI kaynağına mı bakıyorsunuz? Lütfen uygulamanızın Ikey değerini Telemetriyi beklediğiniz kaynakla eşleştirin. Aynı olmaları gerekir.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Beklediğiniz tüm verileri göremiyorum
-* Kullanım ve tahmini maliyet sayfasını açın ve [örnekleme](../../azure-monitor/app/sampling.md) işleminin çalışıp çalışmadığını denetleyin. (%100 iletim, örnekleme işleminin işlem içinde olmadığı anlamına gelir.) Application Insights hizmeti, yalnızca uygulamanızdan gelen telemetrinin bir bölümünü kabul edecek şekilde ayarlanabilir. Bu, aylık telemetri kotasında tutmanıza yardımcı olur.
+* Kullanım ve tahmini maliyet sayfasını açın ve [örnekleme](./sampling.md) işleminin çalışıp çalışmadığını denetleyin. (%100 iletim, örnekleme işleminin işlem içinde olmadığı anlamına gelir.) Application Insights hizmeti, yalnızca uygulamanızdan gelen telemetrinin bir bölümünü kabul edecek şekilde ayarlanabilir. Bu, aylık telemetri kotasında tutmanıza yardımcı olur.
 * SDK örneklemesi açık mı? Yanıt Evet ise, veriler tüm uygulanabilir türler için belirtilen hızda örneklenir.
 * Java SDK 'sının eski bir sürümünü çalıştırıyor musunuz? Sürüm 2.0.1 ile başlayarak, aralıklı ağ ve arka uç hatalarının yanı sıra yerel sürücülerde veri kalıcılığını işlemek için hata toleransı mekanizması sunuyoruz.
 * Aşırı telemetri nedeniyle kısıtlanıyor musunuz? BILGI günlüğünü açarsanız, "uygulama kısıtlandı" bir günlük iletisi görürsünüz. Geçerli sınırımız, 32K telemetri öğe/saniye.
@@ -192,11 +193,11 @@ Application Insights kullanır `org.apache.http` . Bu, ad alanı altındaki Appl
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

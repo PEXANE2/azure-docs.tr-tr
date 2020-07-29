@@ -7,21 +7,21 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539474"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321148"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu makalede, Azure Izleyici 'de [daha yeni ölçüm uyarılarını](../../azure-monitor/platform/alerts-metric-near-real-time.md) yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Daha yeni ölçüm uyarıları [Bu kaynak türleri kümesinde](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)Şu anda kullanılabilir.
+Bu makalede, Azure Izleyici 'de [daha yeni ölçüm uyarılarını](./alerts-metric-near-real-time.md) yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Daha yeni ölçüm uyarıları [Bu kaynak türleri kümesinde](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)Şu anda kullanılabilir.
 
 > [!IMPORTANT]
-> Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces` , ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)makalesi.
+> Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces` , ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)makalesi.
 
 Temel adımlar aşağıdaki gibidir:
 
@@ -3464,7 +3464,7 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Ölçüm uyarısıyla birlikte bir kullanılabilirlik testinin şablonu
 
-[Application Insights kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md) , dünyanın her yerindeki çeşitli konumlardan Web sitenizin/uygulamanızın kullanılabilirliğini izlemenize yardımcı olur. Kullanılabilirlik testi uyarıları, belirli sayıda konumdan başarısız olduğunda, kullanılabilirlik testleri size bildirir.
+[Application Insights kullanılabilirlik testleri](../app/monitor-web-app-availability.md) , dünyanın her yerindeki çeşitli konumlardan Web sitenizin/uygulamanızın kullanılabilirliğini izlemenize yardımcı olur. Kullanılabilirlik testi uyarıları, belirli sayıda konumdan başarısız olduğunda, kullanılabilirlik testleri size bildirir.
 Ölçüm uyarıları (Microsoft. Insights/metricAlerts) ile aynı kaynak türünde kullanılabilirlik testi uyarıları. Aşağıdaki örnek Azure Resource Manager şablonu, bir basit kullanılabilirlik testini ve ilişkili uyarıyı ayarlamak için kullanılabilir.
 
 Bu izlenecek yolun amacına uygun olarak JSON 'u availabilityalert.jsolarak kaydedin.
@@ -3628,3 +3628,4 @@ az group deployment create \
 - [Azure 'da uyarılar](alerts-overview.md) hakkında daha fazla bilgi edinin
 - [Kaynak Yöneticisi şablonlarıyla bir eylem grubu oluşturmayı](action-groups-create-resource-manager-template.md) öğrenin
 - JSON sözdizimi ve özellikleri için bkz. [Microsoft. Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) şablon başvurusu.
+

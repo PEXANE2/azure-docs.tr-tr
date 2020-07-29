@@ -7,14 +7,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
-ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 6d3661128008c13e5d4d459f6f8e7925aa18a9a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025076"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322780"
 ---
-# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portal kullanarak otomatik IoT cihazı ve modül yönetimi
+# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portalını kullanarak otomatik IoT cihazı ve modül yönetimi
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
@@ -127,7 +130,7 @@ SELECT deviceId, moduleId FROM devices.modules
   WHERE properties.reported.lastDesiredStatus.code = 200
 ```
 
-### <a name="target-devices"></a>Hedef cihazlar
+### <a name="target-devices"></a>Hedef Cihazlar
 
 Bu yapılandırmayı alması gereken belirli cihazları veya modülleri hedeflemek için ikizlerini 'nizden Tags özelliğini kullanın. Ayrıca, ikizi tarafından bildirilen özellikleri de hedefleyebilirsiniz.
 
@@ -210,7 +213,7 @@ Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın:
    * Öncelik 
    * Ölçümler
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 5. Değişiklikleri izlemek için [Yapılandırmayı İzleme](#monitor-a-configuration) bölümündeki adımları izleyin. 
 

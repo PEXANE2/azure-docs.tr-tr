@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/22/2020
-ms.openlocfilehash: 3edb8da6d535ac7817c29db254aa84efd92321b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 4ac95fa81fdbee237cacaa1541e333bb70c370fa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012986"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323307"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -154,7 +154,7 @@ Azure Machine Learning Studio 'daki çalışma alanınızda, Not defterlerinizde
 Ayrıca, bir örnek oluşturabilirsiniz
 * Doğrudan [Tümleşik Not defteri deneyiminden](tutorial-1st-experiment-sdk-setup.md#azure)
 * Azure portal
-* Azure Resource Manager şablondan
+* Azure Resource Manager şablondan. Örnek bir şablon için [Azure Machine Learning işlem örneği oluşturma şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)' na bakın.
 * [Azure MACHINE LEARNING SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb) ile
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md#computeinstance)
 

@@ -1,19 +1,19 @@
 ---
-title: Azure portalında eylem gruplarını oluşturma ve yönetme
+title: Azure portalında eylem grupları oluşturma ve yönetme
 description: Azure portal eylem grupları oluşturmayı ve yönetmeyi öğrenin.
 author: dkamstra
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516184"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321862"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
 
 E-posta veya SMS ile bir kişiye bildirimde bulunan bir eylem yapılandırdığınızda, bunlar eylem grubuna eklendiğini belirten bir onay alırlar.
@@ -26,7 +26,7 @@ Her eylem aşağıdaki özelliklerden oluşur:
 * **Eylem türü**: gerçekleştirilen eylem. Bir sesli çağrı, SMS, e-posta gönderme örnekleri aşağıda verilmiştir. veya çeşitli otomatikleştirilmiş eylem türlerini tetikleyerek. Bu makalenin ilerleyen kısımlarında bulunan türlere bakın.
 * **Ayrıntılar**: *eylem türüne*göre farklılık gösteren ilgili ayrıntılar.
 
-Eylem gruplarını yapılandırmak için Azure Resource Manager şablonlarını kullanma hakkında daha fazla bilgi için bkz. [eylem grubu Kaynak Yöneticisi şablonları](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Eylem gruplarını yapılandırmak için Azure Resource Manager şablonlarını kullanma hakkında daha fazla bilgi için bkz. [eylem grubu Kaynak Yöneticisi şablonları](./action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Azure portal kullanarak bir eylem grubu oluşturun
 
@@ -86,12 +86,12 @@ E-postalar aşağıdaki e-posta adreslerinden gönderilir. E-posta filtrelemesin
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
+Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 
 ### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager Rolüne E-posta Gönder
 Abonelik rolü üyelerine e-posta gönderin. E-posta yalnızca rolün **Azure AD Kullanıcı** üyelerine gönderilir. Azure AD gruplarına veya hizmet sorumlularına e-posta gönderilmez.
 
-Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
+Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 
 ### <a name="function"></a>İşlev
 [Azure işlevlerinde](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)var olan bir http tetikleyici uç noktasını çağırır.
@@ -99,7 +99,7 @@ Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sını
 Bir eylem grubunda sınırlı sayıda Işlev eylemine sahip olabilirsiniz.
 
 ### <a name="itsm"></a>ITSM
-ITSM eylemi bir ıTSM bağlantısı gerektiriyor. [ITSM bağlantısı](../../azure-monitor/platform/itsmc-overview.md)oluşturmayı öğrenin.
+ITSM eylemi bir ıTSM bağlantısı gerektiriyor. [ITSM bağlantısı](./itsmc-overview.md)oluşturmayı öğrenin.
 
 Bir eylem grubunda sınırlı sayıda ıSM eylemi olabilir. 
 
@@ -109,8 +109,8 @@ Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 ### <a name="secure-webhook"></a>Güvenli Web Kancası
 Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (Web kancası uç noktası) arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından yararlanmanızı sağlar. Bu işlevden yararlanmak için genel iş akışı aşağıda açıklanmıştır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](../../active-directory/develop/v2-overview.md).
 
-1. Korumalı Web API 'niz için bir Azure AD uygulaması oluşturun. Bkz. [korumalı Web API 'si: uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration).
-    - Korumalı API 'nizi [bir Daemon uygulaması tarafından çağrılacak](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)şekilde yapılandırın.
+1. Korumalı Web API 'niz için bir Azure AD uygulaması oluşturun. Bkz. [korumalı Web API 'si: uygulama kaydı](../../active-directory/develop/scenario-protected-web-api-app-registration.md).
+    - Korumalı API 'nizi [bir Daemon uygulaması tarafından çağrılacak](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)şekilde yapılandırın.
     
 2. Azure AD uygulamanızı kullanmak için eylem gruplarını etkinleştirin.
 
@@ -196,7 +196,7 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>SMS
-Ek önemli bilgiler için bkz. bilgi ve [SMS uyarı davranışını](../../azure-monitor/platform/alerts-sms-behavior.md) [sınırlandırma](./../../azure-monitor/platform/alerts-rate-limiting.md) . 
+Ek önemli bilgiler için bkz. bilgi ve [SMS uyarı davranışını](./alerts-sms-behavior.md) [sınırlandırma](./alerts-rate-limiting.md) . 
 
 Bir eylem grubunda sınırlı sayıda SMS eylemi olabilir.
 
@@ -207,7 +207,7 @@ Desteklenen ülkeler/bölgeler için fiyatlandırma, [Azure izleyici fiyatlandı
   
 
 ### <a name="voice"></a>Ses
-Daha önemli davranış için bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
+Daha önemli davranış için bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 
 Bir eylem grubunda sınırlı sayıda ses eylemi olabilir.
 
@@ -248,9 +248,10 @@ Bir eylem grubunda sınırlı sayıda Web kancası eylemi olabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [SMS uyarı davranışı](../../azure-monitor/platform/alerts-sms-behavior.md)hakkında daha fazla bilgi edinin.  
-* [Etkinlik günlüğü uyarısı Web kancası şemasının anlaşılmasını](../../azure-monitor/platform/activity-log-alerts-webhook.md)elde edin.  
-* [ITSM Bağlayıcısı](../../azure-monitor/platform/itsmc-overview.md)hakkında daha fazla bilgi edinin.
-* Uyarıların [hız sınırlaması](../../azure-monitor/platform/alerts-rate-limiting.md) hakkında daha fazla bilgi edinin.
-* [Etkinlik günlüğü uyarılarına genel bir bakış](../../azure-monitor/platform/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.  
+* [SMS uyarı davranışı](./alerts-sms-behavior.md)hakkında daha fazla bilgi edinin.  
+* [Etkinlik günlüğü uyarısı Web kancası şemasının anlaşılmasını](./activity-log-alerts-webhook.md)elde edin.  
+* [ITSM Bağlayıcısı](./itsmc-overview.md)hakkında daha fazla bilgi edinin.
+* Uyarıların [hız sınırlaması](./alerts-rate-limiting.md) hakkında daha fazla bilgi edinin.
+* [Etkinlik günlüğü uyarılarına genel bir bakış](./alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.  
 * [Bir hizmet durumu bildirimi gönderildiğinde uyarıların nasıl yapılandırılacağını](../../service-health/alerts-activity-log-service-notifications-portal.md)öğrenin.
+

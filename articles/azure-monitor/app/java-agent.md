@@ -3,11 +3,12 @@ title: Java Web Apps performans izleme-Azure Application Insights
 description: Application Insights ile Java Web sitenizin genişletilmiş performansı ve kullanımı izleniyor.
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2ce02c3ec9fbbc762b7919ee31d9b69306a008a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537551"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322627"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web uygulamalarında bağımlılıkları izleme, özel durumlar ve Yöntem yürütme süreleri
 
@@ -119,19 +120,20 @@ Application Insights kaynağında, toplanan uzak bağımlılık ve Yöntem yür�
 
 Bağımlılık, özel durum ve Yöntem raporlarının tek tek örneklerini aramak için [arama][diagnostic]' yı açın.
 
-[Bağımlılık sorunlarını tanılama-daha fazla bilgi edinin](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
+[Bağımlılık sorunlarını tanılama-daha fazla bilgi edinin](./asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Sorularınız mı var? Sorunlarınız mı var?
-* Veri yok mu? [Güvenlik Duvarı özel durumlarını ayarlama](../../azure-monitor/app/ip-addresses.md)
+* Veri yok mu? [Güvenlik Duvarı özel durumlarını ayarlama](./ip-addresses.md)
 * [Java sorun giderme](java-troubleshoot.md)
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
+

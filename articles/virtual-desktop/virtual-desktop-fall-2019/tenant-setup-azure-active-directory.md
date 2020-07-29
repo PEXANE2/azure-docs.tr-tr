@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü-Azure 'da kiracı oluşturma
-description: Azure Active Directory 'da Windows sanal masaüstü kiracılarının nasıl ayarlanacağını açıklar.
+title: Windows sanal masaüstü 'nde kiracı oluşturma (klasik)-Azure
+description: Azure Active Directory 'da Windows sanal masaüstü (klasik) kiracılarının nasıl ayarlanacağını açıklar.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a1e301b63eee348f59a1b9570c2c3ffcd78ecef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286368"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstünde kiracı oluşturma
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü 'nde kiracı oluşturma (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 Windows sanal masaüstü 'nde kiracı oluşturmak, masaüstü sanallaştırma çözümünüzü oluşturmaya yönelik ilk adımdır. Kiracı, bir veya daha fazla konak havuzu grubudur. Her konak havuzu, Azure 'da sanal makine olarak çalışan ve Windows sanal masaüstü hizmetine kaydedilen birden çok oturum ana bilgisayardan oluşur. Her konak havuzu ayrıca, uzak masaüstü ve uzak uygulama kaynaklarını kullanıcılara yayımlamak için kullanılan bir veya daha fazla uygulama grubundan oluşur. Kiracı ile, konak havuzları oluşturabilir, uygulama grupları oluşturabilir, kullanıcılar atayabilir ve hizmet üzerinden bağlantı yapabilirsiniz.
 

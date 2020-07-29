@@ -8,19 +8,19 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 530ddf7af5b95cfec948270affbd13b6d61d08ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081449"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323409"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme
 
 > [!NOTE]
 > Bu makalede, birden çok Azure izleme özelliği genelinde kullanımı ve tahmini maliyetlerin nasıl görüntüleneceği açıklanmaktadır. Azure Izleyici 'nin belirli bileşenlerine ilişkin makaleler şunlardır:
 > - [Azure Izleyici günlükleri ile kullanımı ve maliyetleri yönetme](manage-cost-storage.md) , veri saklama dönemini değiştirerek maliyetlerinizi nasıl denetleyeceğinizi ve veri kullanımınızın nasıl analiz edileceğini ve uyarılanacağını açıklar.
-> - [Kullanım ve maliyetleri yönetme Application Insights](../../azure-monitor/app/pricing.md) , Application Insights veri kullanımının nasıl analiz edileceğini açıklar.
+> - [Kullanım ve maliyetleri yönetme Application Insights](../app/pricing.md) , Application Insights veri kullanımının nasıl analiz edileceğini açıklar.
 
 ## <a name="azure-monitor-pricing-model"></a>Azure Izleyici fiyatlandırma modeli
 
@@ -96,3 +96,4 @@ Kuruluşunuzun satın aldığı paketin düğüm sayısına bağlı olarak, baz�
 > [!WARNING]
 > Kuruluşunuzun güncel Microsoft Operations Management Suite E1 ve E2 'e sahip olması durumunda, "Kurumsal" fiyatlandırma katmanındaki "düğüm başına (OMS)" fiyatlandırma katmanında ve Application Insights kaynaklarınızın Log Analytics çalışma alanınızı tutmanız genellikle en iyisidir. 
 >
+

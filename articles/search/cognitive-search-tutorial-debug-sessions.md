@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510982"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290671"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Öğretici: beceri kodunuzda tanılama, onarma ve değişiklikleri yapma
 
@@ -25,7 +25,7 @@ Bu makalede, belirtilen beceri sorunlarını gidermek için hata ayıklama oturu
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * Azure aboneliği. Ücretsiz bir [Hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun veya geçerli aboneliğinizi kullanın
@@ -73,7 +73,7 @@ Bu bölümde, arama hizmetinin veri kaynağını, Beceri, dizinini ve Dizin olu�
 1. Yeni **dosyalar**altında  >  **New**, içeri aktarılacak koleksiyonu seçin.
 1. Koleksiyon alındıktan sonra, eylemler listesini (...) genişletin.
 1. **Düzenle**’ye tıklayın.
-1. SearchService 'nizin adını girin (örneğin, uç nokta ise, https://mydemo.search.windows.net hizmet adı "mydemo").
+1. SearchService 'nizin adını girin (örneğin, uç nokta ise, `https://mydemo.search.windows.net` hizmet adı " `mydemo` ").
 1. Ara hizmetinizin birincil veya ikincil anahtarıyla apiKey değerini girin.
 1. Azure depolama hesabınızın anahtarlar sayfasından storageConnectionString öğesini girin.
 1. Depolama hesabında oluşturduğunuz kapsayıcının Kapsayıcıadı ' nı girin.
@@ -239,7 +239,7 @@ Hata ayıklama oturumu başlatıldığında, arama hizmeti beceri bir kopyasın�
 1. Hata ayıklama oturumunu kapatın ve **Dizin oluşturucular** sekmesini seçin.
 1. ' Klinik-deneme-ıdxr ' dosyanızı açın.
 1. **Sıfırla**' ya tıklayın.
-1. **Çalıştır**’a tıklayın. Onaylamak için **Tamam** ' ı tıklatın.
+1. **Çalıştır**'a tıklayın. Onaylamak için **Tamam** ' ı tıklatın.
 
 Dizin Oluşturucu çalışmayı bitirdiğinde, yürütme geçmişi sekmesinde en son çalıştırma için zaman damgasının yanında yeşil onay işareti ve başarı sözcüğü gerekir. Değişikliklerin uygulandığından emin olmak için:
 
@@ -249,7 +249,7 @@ Dizin Oluşturucu çalışmayı bitirdiğinde, yürütme geçmişi sekmesinde en
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

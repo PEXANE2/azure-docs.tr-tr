@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c9787a88cba051dcfaa58a188bf43fb03cafe70a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539763"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325177"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web Uygulamanızı İzlemeye Başlama
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıcı tamamlamak için:
 - [.NET Core 2.0 SDK yükleme](https://dotnet.microsoft.com/download)
 - Bir Azure Aboneliği ve var olan bir .NET Core web uygulaması gerekir.
 
-ASP.NET Core Web uygulamanız yoksa, [ASP.NET Core bir uygulama oluşturmak ve Application Insights eklemek](../../azure-monitor/app/asp-net-core.md) için adım adım kılavuzumuzu kullanabilirsiniz.
+ASP.NET Core Web uygulamanız yoksa, [ASP.NET Core bir uygulama oluşturmak ve Application Insights eklemek](../app/asp-net-core.md) için adım adım kılavuzumuzu kullanabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -96,7 +96,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
    ![Sistem Durumuna Genel Bakış zaman çizelgesi grafikleri](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. Sağ tarafta **ölçümler**' e tıklayın. Kaynağınızın sistem durumunu ve kullanımını araştırmak için ölçüm gezginini kullanın. **Yeni grafik ekle**’ye tıklayarak ek özel görünümler oluşturabilir veya **Düzenle**’yi seçerek mevcut grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirebilirsiniz. Örneğin, ölçümler açılan penceresinden "tarayıcı sayfa yükleme süresi" ni ve toplamasının "Ort" öğesini seçerek ortalama tarayıcı sayfa yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçüm Gezgini hakkında daha fazla bilgi edinmek için [azure Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)kullanmaya başlama makalesini ziyaret edin.
+5. Sağ tarafta **ölçümler**' e tıklayın. Kaynağınızın sistem durumunu ve kullanımını araştırmak için ölçüm gezginini kullanın. **Yeni grafik ekle**’ye tıklayarak ek özel görünümler oluşturabilir veya **Düzenle**’yi seçerek mevcut grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirebilirsiniz. Örneğin, ölçümler açılan penceresinden "tarayıcı sayfa yükleme süresi" ni ve toplamasının "Ort" öğesini seçerek ortalama tarayıcı sayfa yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçüm Gezgini hakkında daha fazla bilgi edinmek için [azure Ölçüm Gezgini](../platform/metrics-getting-started.md)kullanmaya başlama makalesini ziyaret edin.
 
      ![Ölçümler sekmesi: ortalama tarayıcı sayfa yükleme süresi grafiği](./media/dotnetcore-quick-start/8metrics.png)
 
@@ -113,3 +113,4 @@ Testi tamamladığınızda, kaynak grubunu ve tüm ilgili kaynakları silebilirs
 
 > [!div class="nextstepaction"]
 > [Çalışma zamanı özel durumlarını bulma ve tanılama](./tutorial-runtime-exceptions.md)
+

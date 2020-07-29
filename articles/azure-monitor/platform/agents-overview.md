@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202564"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325347"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
 
@@ -34,7 +34,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 | **Desteklenen ortamlar** | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
 | **Aracı gereksinimleri**  | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
 | **Toplanan veriler** | Olay Günlükleri<br>ETW olayları<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>.NET uygulama günlükleri<br>Kilitlenme bilgi dökümleri<br>Aracı tanılama günlükleri | Olay Günlükleri<br>Performans<IIS logs><br>Dosya tabanlı Günlükler<br>Öngörüler ve çözümler<br>Diğer hizmetler | İşlem ayrıntıları ve bağımlılıklar<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure Depolama<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
+| **Gönderilen veriler** | Azure Storage<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
 
 
 ### <a name="linux-agents"></a>Linux aracıları
@@ -44,7 +44,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 | **Desteklenen ortamlar** | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
 | **Aracı gereksinimleri**  | Hiçbiri | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
 | **Toplanan veriler** | Syslog<br>Performans | Performans | Syslog<br>Performans| İşlem ayrıntıları ve bağımlılıklar<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure Depolama<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
+| **Gönderilen veriler** | Azure Storage<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
 
 ## <a name="log-analytics-agent"></a>Log Analytics aracısı
 
@@ -76,7 +76,7 @@ Log Analytics aracısının sınırlamaları şunlardır:
 Şunları yapmanız gerekirse Azure tanılama uzantısı 'nı kullanın:
 
 - Arşivleme için verileri Azure depolama 'ya gönderin veya [Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md)gibi araçlarla çözümleyin.
-- Verileri, [Ölçüm Gezgini](metrics-getting-started.md) ile analiz etmek ve neredeyse gerçek zamanlı [ölçüm uyarıları](../../azure-monitor/platform/alerts-metric-overview.md) ve [Otomatik ölçeklendirme](autoscale-overview.md) (yalnızca Windows) gibi özelliklerden yararlanmak için [Azure izleyici ölçümlerine](data-platform-metrics.md) veri gönderme.
+- Verileri, [Ölçüm Gezgini](metrics-getting-started.md) ile analiz etmek ve neredeyse gerçek zamanlı [ölçüm uyarıları](./alerts-metric-overview.md) ve [Otomatik ölçeklendirme](autoscale-overview.md) (yalnızca Windows) gibi özelliklerden yararlanmak için [Azure izleyici ölçümlerine](data-platform-metrics.md) veri gönderme.
 - [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md)kullanarak üçüncü taraf araçlara veri gönderme.
 - VM önyükleme sorunlarını araştırmak için [önyükleme tanılamayı](../../virtual-machines/troubleshooting/boot-diagnostics.md) toplayın.
 
@@ -91,7 +91,7 @@ Azure tanılama uzantısı sınırlamaları şunlardır:
 
 Şunları yapmanız gerekirse telegraf aracısını kullanın:
 
-* Verileri, [Ölçüm Gezgini](metrics-getting-started.md) ile analiz etmek ve neredeyse gerçek zamanlı [ölçüm uyarıları](../../azure-monitor/platform/alerts-metric-overview.md) ve [Otomatik ölçeklendirme](autoscale-overview.md) (yalnızca Linux) gibi özelliklerden yararlanmak için [Azure izleyici ölçümlerine](data-platform-metrics.md) veri gönderme. 
+* Verileri, [Ölçüm Gezgini](metrics-getting-started.md) ile analiz etmek ve neredeyse gerçek zamanlı [ölçüm uyarıları](./alerts-metric-overview.md) ve [Otomatik ölçeklendirme](autoscale-overview.md) (yalnızca Linux) gibi özelliklerden yararlanmak için [Azure izleyici ölçümlerine](data-platform-metrics.md) veri gönderme. 
 
 
 
@@ -120,3 +120,4 @@ Aracılardan her biri hakkında daha fazla ayrıntı için aşağıdaki adresten
 - [Log Analytics aracısına genel bakış](log-analytics-agent.md)
 - [Azure Tanılama uzantıya genel bakış](diagnostics-extension-overview.md)
 - [Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı](collect-custom-metrics-linux-telegraf.md)
+

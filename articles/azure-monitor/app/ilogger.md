@@ -4,12 +4,12 @@ description: Azure Application Insights ILogger sağlayıcısını ASP.NET Core 
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 419813eba371def9eeeb43e45b51b38d1f20c607
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 171aaeb624bfedb9aa7408a736c11faca316b392
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014482"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322644"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ıllogger günlükleri için Applicationınsightsloggerprovider
 
@@ -218,7 +218,7 @@ Eski sağlayıcıyı kullanmaya devam edebilirsiniz. (Yalnızca ana sürüm 3 ' 
 ## <a name="console-application"></a>Konsol uygulaması
 
 > [!NOTE]
-> Herhangi bir konsol uygulaması için Application Insights (ILogger ve diğer Application Insights telemetri) etkinleştirmek üzere kullanılan [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yenı bir SDK Application Insights. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir.
+> Herhangi bir konsol uygulaması için Application Insights (ILogger ve diğer Application Insights telemetri) etkinleştirmek üzere kullanılan [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yenı bir SDK Application Insights. Bu paketin ve ilgili yönergelerin [burada](./worker-service.md)kullanılması önerilir.
 
 Aşağıdaki kod, Application Insights için ILogger izlemeleri gönderecek şekilde yapılandırılmış örnek bir konsol uygulamasını gösterir.
 
@@ -392,7 +392,7 @@ Visual Studio 'da hata ayıklarken çift günlüğe kaydetmeye karşılaşırsan
 
 ### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>[Microsoft. ApplicationInsights. Aspnet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.7.1 'e güncelleştirdim ve ILogger günlüklerinden Günlükler otomatik olarak yakalanır. Bu özelliği tamamen kapatmak Nasıl yaparım?.
 
-Günlükleri genel olarak filtrelemeye bakmak için [Denetim günlüğü düzeyi](../../azure-monitor/app/ilogger.md#control-logging-level) bölümüne bakın. Applicationınsightsloggerprovider 'ı kapatmak için şunu kullanın `LogLevel.None` :
+Günlükleri genel olarak filtrelemeye bakmak için [Denetim günlüğü düzeyi](#control-logging-level) bölümüne bakın. Applicationınsightsloggerprovider 'ı kapatmak için şunu kullanın `LogLevel.None` :
 
 **Kod:**
 
@@ -499,4 +499,5 @@ Bu kod yalnızca bir tek başına günlük sağlayıcısı kullandığınızda g
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 * [ASP.NET Core oturum açma](/aspnet/core/fundamentals/logging)
-* [Application Insights .NET izleme günlükleri](../../azure-monitor/app/asp-net-trace-logs.md)
+* [Application Insights .NET izleme günlükleri](./asp-net-trace-logs.md)
+

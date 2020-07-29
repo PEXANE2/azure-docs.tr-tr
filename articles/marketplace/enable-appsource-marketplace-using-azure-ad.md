@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103633"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323273"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Ticari Market listelerinizi Azure Active Directory ile tümleştirin
 
@@ -33,17 +33,18 @@ Microsoft AppSource ve Azure Market müşterileri, storefront listeleme katalogl
 
 | Teklif türü    | Benimle Iletişim kurmak için Azure AD SSO 'SU gerekiyor mu?  | Deneme için Azure AD SSO gerekiyor mu? | Test sürücüsü için Azure AD SSO 'SU gerekiyor mu?  | Transact için Azure AD SSO gerekir |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-| Sanal Makine | YOK | Hayır | Hayır | Hayır |
-| Azure uygulamaları (çözüm şablonu)  | YOK | YOK | YOK | YOK |
-| Yönetilen uygulamalar  | YOK | YOK | YOK | No |
-| SaaS  | No | Evet | Yes | Yes |
-| Kapsayıcılar  | YOK | YOK | YOK | No |
-| Danışmanlık Hizmetleri  | No | YOK | YOK | YOK |
+| Sanal Makine | Yok | Hayır | Hayır | Hayır |
+| Azure uygulamaları (çözüm şablonu)  | Yok | Yok | Yok | Yok |
+| Yönetilen uygulamalar  | Yok | Yok | Yok | Hayır |
+| SaaS  | Hayır | Evet | Yes | Yes |
+| Kapsayıcılar  | Yok | Yok | Yok | Hayır |
+| Danışmanlık Hizmetleri  | Hayır | Yok | Yok | Yok |
 
-SaaS teknik gereksinimleri hakkında daha fazla bilgi için bkz. [SaaS uygulamaları Için Yayımlama Kılavuzu](marketplace-saas-applications-technical-publishing-guide.md).
+SaaS teknik gereksinimleri hakkında daha fazla bilgi için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](./azure-ad-saas.md).
 
 ## <a name="azure-ad-integration"></a>Azure AD tümleştirmesi
 
+- Azure AD 'yi bir hizmet olarak yazılım (SaaS) teklifi için tümleştirme hakkında daha fazla bilgi için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](./azure-ad-saas.md).
 - Azure AD 'yi listeleyerek tümleştirerek çoklu oturum açmayı etkinleştirme hakkında bilgi için, bkz. [Azure Active Directory geliştiriciler](../active-directory/develop/index.yml).
 - Azure AD çoklu oturum açma hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../active-directory/manage-apps/what-is-single-sign-on.md).
 

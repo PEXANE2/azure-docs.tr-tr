@@ -3,12 +3,12 @@ title: Azure Application Insights Stream Analytics kullanarak dışarı aktarma 
 description: Stream Analytics, Application Insights dışarı aktarma yaptığınız verileri sürekli olarak dönüştürebilir, filtreleyebilir ve yönlendirebilir.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539967"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324361"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights gelen verileri işlemek için Stream Analytics kullanma
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) , [Application Insights aktarılmış](export-telemetry.md)verileri işlemeye yönelik ideal bir araçtır. Stream Analytics, çeşitli kaynaklardan veri çekebilir. Verileri dönüştürebilir ve filtreleyebilir ve sonra çeşitli alıcılara yönlendirebilir.
@@ -16,7 +16,7 @@ ms.locfileid: "86539967"
 Bu örnekte, Application Insights veri alan bir bağdaştırıcı oluşturacağız, bazı alanları yeniden adlandırdığından ve işleyerek ve Power BI yönelttireceğiz.
 
 > [!WARNING]
-> [Power BI Application Insights verileri görüntülemenin](../../azure-monitor/app/export-power-bi.md )çok daha iyi ve kolay bir yolu vardır. Burada gösterilen yol, yalnızca bir örnek olarak, aktarılmış verilerin nasıl işlenmesi gerektiğini gösterir.
+> [Power BI Application Insights verileri görüntülemenin](./export-power-bi.md)çok daha iyi ve kolay bir yolu vardır. Burada gösterilen yol, yalnızca bir örnek olarak, aktarılmış verilerin nasıl işlenmesi gerektiğini gösterir.
 > 
 > 
 
@@ -55,7 +55,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
 
     ![Olay türlerini seçin](./media/export-stream-analytics/080.png)
 
-1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](../../azure-monitor/app/diagnostic-search.md)tek tek olaylar görürsünüz. 
+1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../platform/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](./diagnostic-search.md)tek tek olaylar görürsünüz. 
    
     Ayrıca, veriler depolama verilerinize dışarı aktaracaktır. 
 2. Aktarılmış verileri inceleyin. Visual Studio 'da **Görünüm/bulut Gezgini**' ni seçin ve Azure/Storage ' ı açın. (Bu menü seçeneğine sahip değilseniz, Azure SDK 'sını yüklemeniz gerekir: yeni proje iletişim kutusunu açın ve Visual C#/Cloud/Get .NET için Microsoft Azure SDK açın.)
@@ -186,7 +186,7 @@ FROM flat
 
 ## <a name="see-results-in-power-bi"></a>Sonuçlara bakın Power BI
 > [!WARNING]
-> [Power BI Application Insights verileri görüntülemenin](../../azure-monitor/app/export-power-bi.md )çok daha iyi ve kolay bir yolu vardır. Burada gösterilen yol, yalnızca bir örnek olarak, aktarılmış verilerin nasıl işlenmesi gerektiğini gösterir.
+> [Power BI Application Insights verileri görüntülemenin](./export-power-bi.md)çok daha iyi ve kolay bir yolu vardır. Burada gösterilen yol, yalnızca bir örnek olarak, aktarılmış verilerin nasıl işlenmesi gerektiğini gösterir.
 > 
 > 
 
@@ -211,4 +211,5 @@ Nohar ben Zeev, Stream Analytics kullanarak dışarıya aktarılmış verilerin 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Sürekli dışarı aktarma](export-telemetry.md)
 * [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
-* [Uygulama Bilgileri](../../azure-monitor/app/app-insights-overview.md)
+* [Uygulama Bilgileri](./app-insights-overview.md)
+

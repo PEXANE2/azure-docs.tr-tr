@@ -1,6 +1,6 @@
 ---
 title: Azure Sanal Ağı | Microsoft Docs
-description: Azure Sanal Ağı kavramları ve özellikleri hakkında bilgi edinin.
+description: Adres alanı, alt ağlar, bölgeler ve abonelikler dahil olmak üzere Azure sanal ağ kavramları ve özellikleri hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3fd958ba1ef4ec4b8a198bcd5da497dc191be73d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 237361c6a519fea4dde7f1fe85f91d97ce0365b1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281591"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağı nedir?
 

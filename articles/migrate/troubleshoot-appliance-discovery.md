@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114066"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171864"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -98,7 +98,7 @@ Hata 60028: "bir hata nedeniyle bulma başlatılamadı. Belirtilen konaklar veya
 - Doğrulama hatası varsa, hataları onarmak için düzeltme kılavuzunu gözden geçirin ve sonra **bulmayı Kaydet ve Başlat** seçeneğini tekrar deneyin.
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>Hata 60025: Azure AD işlemi başarısız oldu 
-Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturulurken veya güncelleştirilirken oluşan hata oluştu "bulmayı başlatmak için kullanılan Azure Kullanıcı hesabı gereci kaydetmek için kullanılan hesaptan farklı olduğunda gerçekleşir. Şunlardan birini yapın:
+Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturulurken veya güncelleştirilirken oluşan hata oluştu "bulmayı başlatmak için kullanılan Azure Kullanıcı hesabı gereci kaydetmek için kullanılan hesaptan farklı olduğunda gerçekleşir. Aşağıdakilerden birini yapın:
 
 - Keşfi başlatan kullanıcı hesabının gereci kaydetmek için kullanılan ile aynı olduğundan emin olun.
 - Bulma işleminin başarısız olduğu Kullanıcı hesabına Azure Active Directory Uygulama erişim izinleri sağlayın.
@@ -164,6 +164,9 @@ Uygulama bulma her 24 saatte bir çalışır. Ayrıntıları hemen görmek ister
 
 ## <a name="unable-to-export-application-inventory"></a>Uygulama envanteri dışarı aktarılamıyor
 Portalda envanterden indirilen kullanıcının abonelik üzerinde katkıda bulunan ayrıcalıklara sahip olduğundan emin olun.
+
+## <a name="no-suitable-authentication-method-found-to-complete-authentication-publickey"></a>Kimlik doğrulamasını tamamlamaya uygun bir kimlik doğrulama yöntemi bulunamadı (PublicKey)
+Anahtar tabanlı kimlik doğrulaması çalışmayacak, parola kimlik doğrulamasını kullanacak.
 
 ## <a name="common-app-discovery-errors"></a>Ortak uygulama bulma hataları
 

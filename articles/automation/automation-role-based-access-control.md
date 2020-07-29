@@ -1,17 +1,17 @@
 ---
 title: Azure Otomasyonu 'nda rol izinlerini ve güvenliği yönetme
-description: Bu makalede, Azure kaynakları için erişim yönetimine olanak tanıyan rol tabanlı erişim denetimi (RBAC) nasıl kullanılacağı açıklanır.
+description: Bu makalede, Azure kaynakları için erişim yönetimine olanak tanıyan rol tabanlı erişim denetimi 'nin (RBAC) nasıl kullanılacağı açıklanır.
 keywords: otomasyon rbac, rol tabanlı erişim denetimi, azure rbac
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2018
+ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a970122c5f034e6215d2e829657c9eec99f14371
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186155"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279891"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
 
@@ -24,7 +24,7 @@ Azure Automation’da, otomasyon hesabı kapsamında kullanıcılara, gruplara v
 | **Role** | **Açıklama** |
 |:--- |:--- |
 | Sahip |Sahip rolü, Otomasyon hesabını yönetmek için diğer kullanıcılara, gruplara ve uygulamalara erişim sağlamak dahil olmak üzere Otomasyon hesabı içindeki tüm kaynaklara ve eylemlere erişim sağlar. |
-| Katkıda Bulunan |Katılımcı rolü, başka kullanıcının Otomasyon hesabına erişim izinlerini değiştirme dışında her şeyi yönetmenizi sağlar. |
+| Katılımcı |Katılımcı rolü, başka kullanıcının Otomasyon hesabına erişim izinlerini değiştirme dışında her şeyi yönetmenizi sağlar. |
 | Okuyucu |Okuyucu rolü, Otomasyon hesabında tüm kaynakları görmenizi sağlar; ancak değişiklik yapamazsınız. |
 | Otomasyon Operatörü |Otomasyon Işletmeni rolü, runbook adını ve özelliklerini görüntülemenize ve bir Otomasyon hesabındaki tüm runbook 'lar için iş oluşturmanıza ve yönetmenize olanak sağlar. Bu rol, kimlik bilgileri varlıkları ve Runbook 'ları gibi Otomasyon hesabı kaynaklarınızı görüntülenmesini veya değiştirilmesini, ancak kuruluşunuzun üyelerinin bu runbook 'ları yürütmesine izin vermeyi hala sağlamak istiyorsanız yararlıdır. |
 |Automation Iş Işleci|Otomasyon Iş Işletmeni rolü, bir Otomasyon hesabındaki tüm runbook 'lar için iş oluşturmanıza ve yönetmenize olanak sağlar.|
@@ -47,7 +47,7 @@ Bir sahip, erişim dahil her şeyi yönetebilir. Aşağıdaki tabloda rol için 
 |---|---|
 |Microsoft. Automation/automationAccounts/|Tüm türlerin kaynaklarını oluşturun ve yönetin.|
 
-### <a name="contributor"></a>Katkıda Bulunan
+### <a name="contributor"></a>Katılımcı
 
 Katkıda bulunan, erişim dışında her şeyi yönetebilir. Aşağıdaki tabloda rol için verilen ve Reddedilen izinler gösterilmektedir:
 
@@ -69,7 +69,12 @@ Okuyucu bir Otomasyon hesabındaki tüm kaynakları görüntüleyebilir, ancak h
 
 ### <a name="automation-operator"></a>Otomasyon Operatörü
 
-Otomasyon operatörü işleri oluşturabilir ve yönetebilir ve bir Otomasyon hesabındaki tüm runbook 'lar için Runbook adlarını ve özellikleri okuyabilir.  Note: tek tek runbook 'lara yönelik operatör erişimini denetlemek istiyorsanız bu rolü ayarlamazsanız ve bunun yerine ' Automation Iş Işleci ' ve ' Otomasyon Runbook Işleci ' rollerini birlikte kullanın. Aşağıdaki tabloda rol için verilen izinler gösterilmektedir:
+Otomasyon operatörü işleri oluşturabilir ve yönetebilir ve bir Otomasyon hesabındaki tüm runbook 'lar için Runbook adlarını ve özellikleri okuyabilir.
+
+>[!NOTE]
+>Tek tek runbook 'lara İşletmen erişimini denetlemek istiyorsanız bu rolü ayarlayın. Bunun yerine, **Otomasyon Işi operatörü** ve **Otomasyon Runbook işleci** rollerini birlikte kullanın.
+
+Aşağıdaki tabloda rol için verilen izinler gösterilmektedir:
 
 |**Eylemler**  |**Açıklama**  |
 |---------|---------|
@@ -96,7 +101,9 @@ Otomasyon operatörü işleri oluşturabilir ve yönetebilir ve bir Otomasyon he
 
 ### <a name="automation-job-operator"></a>Automation Iş Işleci
 
-Otomasyon hesabı kapsamında bir Otomasyon Işi operatörü rolü verilir.Bu, İşletmen izinlerinin hesaptaki tüm runbook 'lar için iş oluşturmasına ve yönetmesine izin verir. Aşağıdaki tabloda rol için verilen izinler gösterilmektedir:
+Otomasyon hesabı kapsamında bir Otomasyon Işi operatörü rolü verilir.Bu, İşletmen izinlerinin hesaptaki tüm runbook 'lar için iş oluşturmasına ve yönetmesine izin verir. Iş Işleci rolüne Otomasyon hesabını içeren kaynak grubunda okuma izinleri verildiyse, rolün üyeleri runbook 'ları başlatma yeteneğine sahiptir. Ancak, bunları oluşturma, düzenleme veya silme yeteneğine sahip değildir.
+
+Aşağıdaki tabloda rol için verilen izinler gösterilmektedir:
 
 |**Eylemler**  |**Açıklama**  |
 |---------|---------|
@@ -114,7 +121,7 @@ Otomasyon hesabı kapsamında bir Otomasyon Işi operatörü rolü verilir.Bu, �
 
 ### <a name="automation-runbook-operator"></a>Otomasyon Runbook Işleci
 
-Runbook kapsamında bir Otomasyon Runbook Işleç rolü verilir. Bir Automation runbook Işleci, runbook 'un adını ve özelliklerini görüntüleyebilir.' Automation Iş Işleci ' rolüyle birleştirilmiş bu rol, işlecin runbook için işler oluşturmasına ve yönetmesine olanak sağlar. Aşağıdaki tabloda rol için verilen izinler gösterilmektedir:
+Runbook kapsamında bir Otomasyon Runbook Işleç rolü verilir. Bir Automation runbook Işleci, runbook 'un adını ve özelliklerini görüntüleyebilir.**Otomasyon Işi operatörü** rolüyle birlikte bu rol, işlecin runbook için iş oluşturmasını ve yönetmesini sağlar. Aşağıdaki tabloda rol için verilen izinler gösterilmektedir:
 
 |**Eylemler**  |**Açıklama**  |
 |---------|---------|
@@ -283,13 +290,14 @@ Aşağıdaki bölümde, Otomasyon hesabınızda [Azure Portal](#configure-rbac-u
 
 3. **Seçim** alanında izinleri vermek istediğiniz kullanıcının adını yazın. Listeden kullanıcıyı seçin ve **Kaydet**' e tıklayın.
 
-   ![Kullanıcı ekleme](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Kullanıcı ekle](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Şimdi, seçilen rolün atandığı kullanıcılar sayfasına eklenen kullanıcıyı görmeniz gerekir.
 
    ![Kullanıcıları listele](media/automation-role-based-access-control/automation-05-list-users.png)
 
    Kullanıcıya Roller sayfasından rol atayabilirsiniz.
+
 4. Roller sayfasını açmak için erişim denetimi (ıAM) sayfasındaki **Roller** ' e tıklayın. Rolün adını ve bu role atanan kullanıcı ve grup sayısını görüntüleyebilirsiniz.
 
     ![Kullanıcılar sayfasından rol atama](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
@@ -353,7 +361,7 @@ ObjectType         : User
 ```
 
 Kullanıcılara, gruplara ve uygulamalara belirli bir kapsama erişim atamak için [New-Azroleatama](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) kullanın.
-    
+
 **Örnek:** Otomasyon hesabı kapsamındaki bir kullanıcı için "Otomasyon Işleci" rolünü atamak için aşağıdaki komutu kullanın.
 
 ```azurepowershell-interactive

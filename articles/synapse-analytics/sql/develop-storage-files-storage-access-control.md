@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 5f3b5c60907260a0e868d491a4d55ea3624c2bce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046791"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283461"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -49,7 +49,7 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -81,7 +81,7 @@ Aşağıdaki tabloda kullanılabilir yetkilendirme türlerini bulabilirsiniz:
 
 Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabilirsiniz:
 
-|                     | Blob Depolama   | ADLS 1.        | ADLS 2.     |
+|                     | Blob Depolama   | ADLS 1.        | ADLS 2. Nesil     |
 | ------------------- | ------------   | --------------   | -----------   |
 | *'LARıNıN*               | Desteklenir      | Desteklenmiyor   | Desteklenir     |
 | *Yönetilen kimlik* | Desteklenir      | Desteklenir        | Desteklenir     |
@@ -244,7 +244,7 @@ SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
                                 DATA_SOURCE = [mysample],
-                                FORMAT=PARQUET) as rows;
+                                FORMAT='PARQUET') as rows;
 GO
 ```
 
@@ -289,7 +289,7 @@ Veritabanı kullanıcısı, veri kaynağına başvuran [dış tablo](develop-tab
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
 GO
 ```
 

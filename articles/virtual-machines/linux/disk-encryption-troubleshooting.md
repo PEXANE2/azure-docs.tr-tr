@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0e83d53122b3f80d73a573f0eff8c13888cbee11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510489"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325211"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Linux VM 'Leri için Azure disk şifrelemesi sorun giderme kılavuzu
 
@@ -70,30 +70,54 @@ Bazı durumlarda, Linux disk şifrelemesi "işletim sistemi disk şifrelemesi ba
 
 Linux işletim sistemi disk şifreleme sırası, işletim sistemi sürücüsünü geçici olarak kaldırır. Daha sonra, tüm işletim sistemi diskinin, şifreli durumunda yeniden bağlanmadan önce blok blok şifrelemesini gerçekleştirir. Linux disk şifrelemesi, şifreleme sürerken VM 'nin eşzamanlı kullanımına izin vermez. VM 'nin performans özellikleri, şifrelemeyi tamamlaması için gereken sürede önemli bir farklılık yapabilir. Bu özellikler, diskin boyutunu ve depolama hesabının standart veya Premium (SSD) depolama alanı olup olmadığını içerir.
 
-Şifreleme durumunu denetlemek için [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) komutundan döndürülen **ilerlemedurumuiletisi** alanını yoklayın. İşletim sistemi sürücüsü şifrelenirken, sanal makine bir bakım durumuna girer ve devam eden işlemde kesintiye uğramasını önlemek için SSH 'yi devre dışı bırakır. **Encryptionınprogress** iletisi, şifrelemenin devam ettiği sürenin büyük bölümü için rapor bildiriyor. Birkaç saat sonra, bir **VMRestartPending** iletisi VM 'yi yeniden başlatmanızı ister. Örneğin:
-
+İşletim sistemi sürücüsü şifrelenirken, sanal makine bir bakım durumuna girer ve devam eden işlemde kesintiye uğramasını önlemek için SSH 'yi devre dışı bırakır.  Şifreleme durumunu denetlemek için Azure PowerShell [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) komutunu kullanın ve **ilerlemedurumuiletisi** alanını denetleyin. **İlerlemedurumuiletisi** , veri ve işletim sistemi diskleri şifreli olarak bir dizi durum bildirir:
 
 ```azurepowershell
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings :
+ProgressMessage            : Transitioning
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for data volumes
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Provisioning succeeded
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
-
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
-OsVolumeEncrypted          : VMRestartPending
-DataVolumesEncrypted       : Encrypted
-OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
-ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-VM 'yi yeniden başlattıktan sonra ve VM yeniden başlatıldıktan sonra, yeniden başlatma için 2-3 dakika beklemeniz ve hedef üzerinde son adımların gerçekleştirilmesi gerekir. Şifreleme son tamamlandığında durum iletisi değişir. Bu ileti kullanılabilir olduktan sonra, şifrelenmiş işletim sistemi sürücüsünün kullanıma hazır olması beklenir ve VM yeniden kullanılabilir hale gelir.
+**İlerlemedurumuiletisi** , şifreleme Işlemi Için **işletim sistemi disk şifrelemesi başlatıldığında** kalacaktır.  Şifreleme tamamlandığında ve başarılı olduğunda, **ilerlemedurumuiletisi** döndürülür:
 
-Aşağıdaki durumlarda, VM 'yi şifrelemeden hemen önce geri görüntüye veya yedeklemeye geri yüklemeniz önerilir:
-   - Daha önce açıklanan yeniden başlatma sırası gerçekleşmezse.
-   - Önyükleme bilgileri, ilerleme iletisi veya diğer hata göstergeleri bu işlemin ortasında işletim sistemi şifrelemesini bildirir. Bu kılavuzda açıklanan "çıkaramadı" hatası, bir ileti örneğidir.
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
 
-Bir sonraki denemeden önce, VM 'nin özelliklerini yeniden değerlendirin ve tüm önkoşulların karşılanmasını sağlayın.
+OsVolumeEncrypted          : Encrypted
+DataVolumesEncrypted       : NotMounted
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for all volumes
+```
+
+Bu ileti kullanılabilir olduktan sonra, şifrelenmiş işletim sistemi sürücüsünün kullanıma hazır olması beklenir ve VM yeniden kullanılabilir hale gelir.
+
+Önyükleme bilgileri, ilerleme iletisi veya bir hata, işletim sistemi şifrelemesini bu işlemin ortasında başarısız bildirirse, VM 'yi şifrelemeden önce anlık görüntüye veya yedeklemeye geri yükleyin. Bu kılavuzda açıklanan "çıkaramadı" hatası, bir ileti örneğidir.
+
+Şifrelemeyi yeniden denemeden önce, sanal makinenin özelliklerini yeniden değerlendirerek, tüm önkoşulların karşılanmasını sağlayın.
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Güvenlik duvarının arkasında Azure disk şifrelemesi sorunlarını giderme
 
@@ -101,11 +125,11 @@ Bir sonraki denemeden önce, VM 'nin özelliklerini yeniden değerlendirin ve t�
 
 ## <a name="troubleshooting-encryption-status"></a>Şifreleme durumu sorunlarını giderme 
 
-Portal, sanal makine içinde şifrelenmemiş olduktan sonra bile bir disk şifreli olarak görüntülenebilir.  Bu durum, daha yüksek düzeyde Azure disk şifrelemesi yönetim komutları kullanmak yerine, diskin VM içinden doğrudan şifresini kaldırmak için düşük düzey komutlar kullanıldığında meydana gelebilir.  Üst düzey komutlar yalnızca VM 'nin içinden diskin şifresini kaldıramaz, ancak VM 'nin dışında, önemli platform düzeyi şifreleme ayarlarını ve VM ile ilişkili uzantı ayarlarını da güncelleştirir.  Bunlar hizalamayla tutulmazsa, Platform şifreleme durumunu bildiremez veya VM 'yi düzgün şekilde sağlayamaz.   
+Portal, sanal makine içinde şifrelenmemiş olduktan sonra bile bir disk şifreli olarak görüntülenebilir.  Bu durum, daha yüksek düzeyde Azure disk şifrelemesi yönetim komutları kullanmak yerine, diskin VM içinden doğrudan şifresini kaldırmak için düşük düzey komutlar kullanıldığında meydana gelebilir.  Üst düzey komutlar yalnızca VM 'nin içinden diskin şifresini kaldıramaz, ancak VM 'nin dışında, önemli platform düzeyi şifreleme ayarlarını ve VM ile ilişkili uzantı ayarlarını da güncelleştirir.  Bunlar hizalamayla tutulmazsa, Platform şifreleme durumunu bildiremez veya VM 'yi düzgün şekilde sağlayamaz.
 
 Azure disk şifrelemesini PowerShell ile devre dışı bırakmak için [Disable-azvmdiskencryption](/powershell/module/az.compute/disable-azvmdiskencryption) ' ı ve ardından [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)' i kullanın. Şifreleme devre dışı olmadan önce Remove-AzVMDiskEncryptionExtension çalıştırma başarısız olur.
 
-CLı ile Azure disk şifrelemesini devre dışı bırakmak için [az VM Encryption Disable](/cli/azure/vm/encryption)seçeneğini kullanın. 
+CLı ile Azure disk şifrelemesini devre dışı bırakmak için [az VM Encryption Disable](/cli/azure/vm/encryption)seçeneğini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

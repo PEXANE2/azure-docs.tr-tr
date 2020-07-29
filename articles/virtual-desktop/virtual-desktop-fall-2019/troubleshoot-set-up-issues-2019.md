@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü kiracı konak havuzu oluşturma-Azure
-description: Windows sanal masaüstü kiracı ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
+title: Windows sanal masaüstü (klasik) kiracı konak havuzu oluşturma-Azure
+description: Windows sanal masaüstü (klasik) kiracı ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026704"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269606"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstünde kiracı ve konak havuzu oluşturma (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../troubleshoot-set-up-issues.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../troubleshoot-set-up-issues.md)bakın.
 
 Bu makalede, Windows sanal masaüstü kiracısı ve ilgili oturum ana bilgisayar havuzu altyapısının ilk kurulumu sırasında sorunlar ele alınmaktadır.
 

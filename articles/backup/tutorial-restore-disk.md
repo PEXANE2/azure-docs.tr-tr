@@ -4,12 +4,12 @@ description: Yedekleme ve Kurtarma Hizmetleri ile Azure’da bir diskin nasıl g
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 75aa06d4c99c2b9c99015acfae98c30e75209f64
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503532"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289474"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure’da bir diski geri yükleme ve kurtarılan bir VM oluşturma
 
@@ -83,7 +83,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
         --container-name myVM \
         --item-name myVM \
         --storage-account mystorageaccount \
-        --rp-name myRecoveryPointName
+        --rp-name myRecoveryPointName \
         --target-resource-group targetRG
     ```
 
@@ -97,7 +97,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
     --container-name myVM \
     --item-name myVM \
     --storage-account mystorageaccount \
-    --rp-name myRecoveryPointName
+    --rp-name myRecoveryPointName \
     --restore-as-unmanaged-disk
     ```
 
@@ -139,7 +139,7 @@ Yukarıda belirtildiği gibi, yönetilmeyen diskler özgün depolama hesapların
         --container-name myVM \
         --item-name myVM \
         --storage-account mystorageaccount \
-        --rp-name myRecoveryPointName
+        --rp-name myRecoveryPointName \
         --restore-to-staging-storage-account
     ```
 

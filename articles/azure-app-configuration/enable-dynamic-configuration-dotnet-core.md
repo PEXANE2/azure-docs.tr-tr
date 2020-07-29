@@ -14,16 +14,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fb55b5669c1be43b208a8d86b1676f163015f76f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856496"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278361"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Öğretici: .NET Core uygulamasında dinamik yapılandırma kullanma
 
-Uygulama yapılandırması .NET Core istemci kitaplığı, bir uygulamanın yeniden başlatılmasına yol açmadan bir yapılandırma ayarları kümesinin güncelleştirilmesini destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği alarak `IConfigurationRefresher` ve sonra `Refresh` Bu örneğe kodunuzda herhangi bir yere çağrı yaparak uygulanabilir.
+Uygulama yapılandırması .NET Core istemci kitaplığı, bir uygulamanın yeniden başlatılmasına yol açmadan bir yapılandırma ayarları kümesinin güncelleştirilmesini destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği alarak `IConfigurationRefresher` ve sonra `TryRefreshAsync` Bu örneğe kodunuzda herhangi bir yere çağrı yaparak uygulanabilir.
 
 Ayarları güncel tutmak ve yapılandırma deposuna çok fazla çağrı önlemek için, her bir ayar için bir önbellek kullanılır. Bir ayarın önbelleğe alınmış değeri sona erene kadar, yenileme işlemi değeri, değer yapılandırma deposunda değiştiği zaman bile güncelleştirmez. Her istek için varsayılan kullanım süresi 30 saniyedir, ancak gerekirse geçersiz kılınabilir.
 
@@ -45,7 +45,7 @@ Bu öğreticiyi yapmak için [.NET Core SDK](https://dotnet.microsoft.com/downlo
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
-*Program.cs* ' i açın ve ad alanına bir başvuru eklemek `System.Threading.Tasks` , yöntemde yenileme yapılandırmasını belirtmek `AddAzureAppConfiguration` ve yöntemi kullanarak el ile yenilemeyi tetiklemek için dosyayı güncelleştirin `Refresh` .
+*Program.cs* ' i açın ve ad alanına bir başvuru eklemek `System.Threading.Tasks` , yöntemde yenileme yapılandırmasını belirtmek `AddAzureAppConfiguration` ve yöntemi kullanarak el ile yenilemeyi tetiklemek için dosyayı güncelleştirin `TryRefreshAsync` .
 
 ```csharp
 using System;
@@ -84,14 +84,14 @@ class Program
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
 }
 ```
 
-`ConfigureRefresh`Yöntemi, bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini uygulama yapılandırma deposu ile güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. Bir örneği `IConfigurationRefresher` `GetRefresher` yöntemine sunulan seçeneklere çağrı yöntemiyle alınabilir `AddAzureAppConfiguration` ve `Refresh` Bu örnekteki yöntem kodunuzda herhangi bir yerde yenileme işlemini tetiklemek için kullanılabilir.
+`ConfigureRefresh`Yöntemi, bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini uygulama yapılandırma deposu ile güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. Bir örneği `IConfigurationRefresher` `GetRefresher` yöntemine sunulan seçeneklere çağrı yöntemiyle alınabilir `AddAzureAppConfiguration` ve `TryRefreshAsync` Bu örnekteki yöntem kodunuzda herhangi bir yerde yenileme işlemini tetiklemek için kullanılabilir.
     
 > [!NOTE]
 > Yapılandırma ayarı için varsayılan önbellek süre sonu zamanı 30 saniyedir, ancak yöntem `SetCacheExpiration` için bağımsız değişken olarak geçirilen seçenek başlatıcısında yöntemi çağırarak geçersiz kılınabilir `ConfigureRefresh` .
@@ -130,7 +130,7 @@ class Program
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/dotnet-core-app-run.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 

@@ -3,19 +3,20 @@ title: Azure Application Insights Power BI dışa aktarma | Microsoft Docs
 description: Analiz sorguları Power BI ' de görüntülenebilir.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664006"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324378"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights akış Power BI
-[Power BI](https://www.powerbi.com/) , verileri çözümlemenize ve öngörüleri paylaşmanıza yardımcı olan bir iş araçları paketidir. Her cihazda zengin panolar bulunur. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)Analytics sorguları dahil olmak üzere birçok kaynaktaki verileri birleştirebilirsiniz.
+[Power BI](https://www.powerbi.com/) , verileri çözümlemenize ve öngörüleri paylaşmanıza yardımcı olan bir iş araçları paketidir. Her cihazda zengin panolar bulunur. [Azure Application Insights](./app-insights-overview.md)Analytics sorguları dahil olmak üzere birçok kaynaktaki verileri birleştirebilirsiniz.
 
 Power BI Application Insights verileri vermenin üç yöntemi vardır:
 
 * [**Analiz sorgularını dışarı aktarın**](#export-analytics-queries). Bu tercih edilen yöntemdir. İstediğiniz herhangi bir sorguyu yazın ve Power BI dışarı aktarın. Bu sorguyu, diğer tüm verilerle birlikte bir panoya yerleştirebilirsiniz.
-* [**Sürekli dışarı aktarma ve Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Bu yöntem, verilerinizi uzun süreler boyunca depolamak istiyorsanız yararlıdır. Genişletilmiş bir veri saklama gereksinimi yoksa, analiz sorgusunu dışarı aktar yöntemini kullanın. Sürekli dışa aktarma ve Stream Analytics daha fazla çalışma ve ek depolama ek yükü içerir.
+* [**Sürekli dışarı aktarma ve Azure Stream Analytics**](./export-stream-analytics.md). Bu yöntem, verilerinizi uzun süreler boyunca depolamak istiyorsanız yararlıdır. Genişletilmiş bir veri saklama gereksinimi yoksa, analiz sorgusunu dışarı aktar yöntemini kullanın. Sürekli dışa aktarma ve Stream Analytics daha fazla çalışma ve ek depolama ek yükü içerir.
 * **Power BI bağdaştırıcısı**. Grafik kümesi önceden tanımlanmıştır, ancak diğer kaynaklardan kendi sorgularınızı ekleyebilirsiniz.
 
 > [!NOTE]
@@ -30,7 +31,7 @@ Application Insights sorgunuzu içeri aktarmak için, Power BI Masaüstü sürü
 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)'i yükler.
 
 ### <a name="export-an-analytics-query"></a>Analiz sorgusunu dışarı aktarma
-1. [Analizi açın ve sorgunuzu yazın](../../azure-monitor/log-query/get-started-portal.md).
+1. [Analizi açın ve sorgunuzu yazın](../log-query/get-started-portal.md).
 2. Sonuçlardan memnun olana kadar sorguyu test edin ve daraltın. Dışarı aktarmadan önce sorgunun Analize doğru çalıştığından emin olun.
 3. **Dışarı aktar** menüsünde **Power BI (d)** öğesini seçin. Metin dosyasını kaydedin.
    
@@ -55,7 +56,7 @@ Application Insights sorgunuzu içeri aktarmak için, Power BI Masaüstü sürü
 8. Raporu aralıklarla el ile yenileyin veya Seçenekler sayfasında zamanlanmış yenileme ayarlayın.
 
 ### <a name="export-a-funnel"></a>Huni dışarı aktarma
-1. [Huni yapın](../../azure-monitor/app/usage-funnels.md).
+1. [Huni yapın](./usage-funnels.md).
 2. **Power BI**seçin.
 
    ![Power BI düğmesinin ekran görüntüsü](./media/export-power-bi/button.png)
@@ -111,7 +112,7 @@ Analiz sorgusundan gelen veri kümesini azaltmak gereksinimlerinizi karşılamı
  ```
 
 ## <a name="about-sampling"></a>Örnekleme hakkında
-Uygulamanız tarafından gönderilen veri miktarına bağlı olarak, yalnızca telemetriizin yüzdesini gönderen Uyarlamalı örnekleme özelliğini kullanmak isteyebilirsiniz. Örnekleme, SDK veya alma sırasında el ile ayarlamanız durumunda da geçerlidir. [Örnekleme hakkında daha fazla bilgi edinin](../../azure-monitor/app/sampling.md).
+Uygulamanız tarafından gönderilen veri miktarına bağlı olarak, yalnızca telemetriizin yüzdesini gönderen Uyarlamalı örnekleme özelliğini kullanmak isteyebilirsiniz. Örnekleme, SDK veya alma sırasında el ile ayarlamanız durumunda da geçerlidir. [Örnekleme hakkında daha fazla bilgi edinin](./sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Power BI bağdaştırıcısı (kullanım dışı)
 Bu yöntem, sizin için telemetri için tamamen bir pano oluşturur. İlk veri kümesi önceden tanımlanmıştır, ancak buna daha fazla veri ekleyebilirsiniz.
@@ -145,5 +146,5 @@ Panoyu düzenleyebilir, Application Insights grafiklerini diğer kaynaklardaki v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Power BI-öğrenme](https://www.powerbi.com/learning/)
-* [Analiz öğreticisi](../../azure-monitor/log-query/get-started-portal.md)
+* [Analiz öğreticisi](../log-query/get-started-portal.md)
 

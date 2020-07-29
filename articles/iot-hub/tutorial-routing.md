@@ -8,13 +8,16 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom:
+- mvc
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 4af3d00c4f0096199cf914f57b51b04036cec7cf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084379"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317901"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure CLı ve Azure portal kullanma
 
@@ -31,7 +34,7 @@ Aşağıdaki betiği kopyalayıp Cloud Shell yapıştırın ve ENTER tuşuna bas
 IoT Hub adı ve depolama hesabı adı gibi genel olarak benzersiz olması gereken birkaç kaynak adı vardır. Bunun daha kolay olması için, bu kaynak adlarına *rasgelevalue*adlı rastgele bir alfasayısal değer eklenir. Rasgeledeğeri, komut dosyasının en üstünde bir kez oluşturulur ve komut dosyası boyunca gerektiğinde kaynak adlarına eklenir. Rastgele olmasını istemiyorsanız, bunu boş bir dizeye veya belirli bir değere ayarlayabilirsiniz.
 
 > [!TIP]
-> Hata ayıklama hakkında ipucu: Bu betik, betiği daha okunabilir hale getirmek için `\`devamlılık simgesini (ters eğik çizgi) kullanır. Betiği çalıştırırken bir sorun yaşıyorsanız Cloud Shell oturumunuzun çalıştığından `bash` ve ters eğik çizgi dışında boşluk olmadığından emin olun.
+> Hata ayıklama hakkında ipucu: Bu betik, `\` betiği daha okunabilir hale getirmek için devamlılık simgesini (ters eğik çizgi) kullanır. Betiği çalıştırırken bir sorun yaşıyorsanız Cloud Shell oturumunuzun çalıştığından `bash` ve ters eğik çizgi dışında boşluk olmadığından emin olun.
 >
 
 ```azurecli-interactive
@@ -168,13 +171,13 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
    **Veri kaynağı**: Açılan listeden **Cihaz Telemetri İletileri**'ni seçin.
 
-   **Rotayı etkinleştir**: Bu alanın olarak `enabled`ayarlandığından emin olun.
+   **Rotayı etkinleştir**: Bu alanın olarak ayarlandığından emin olun `enabled` .
    
    **Yönlendirme sorgusu**: Sorgu dizesi olarak `level="storage"` girin.
 
    ![Depolama hesabı için yönlendirme sorgusu oluşturma](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
-   **Kaydet**’i seçin. İşlem bittiğinde İleti Yönlendirme bölmesine döner ve burada depolama için yeni yönlendirme sorgunuzu görebilirsiniz. Yollar bölmesini kapatın; Kaynak grubu sayfasına dönersiniz.
+   **Kaydet**'i seçin. İşlem bittiğinde İleti Yönlendirme bölmesine döner ve burada depolama için yeni yönlendirme sorgunuzu görebilirsiniz. Yollar bölmesini kapatın; Kaynak grubu sayfasına dönersiniz.
 
 ### <a name="route-to-a-service-bus-queue"></a>Service Bus kuyruğuna yönlendirme
 
@@ -210,7 +213,7 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
    ![Service Bus kuyruğu için bir yönlendirme sorgusu oluşturma](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
-7. **Kaydet**’i seçin. Yollar bölmesine dönüldüğünde, burada gösterildiği gibi yeni yönlendirme yollarınızın ikisini de görürsünüz.
+7. **Kaydet**'i seçin. Yollar bölmesine dönüldüğünde, burada gösterildiği gibi yeni yönlendirme yollarınızın ikisini de görürsünüz.
 
    ![Az önce ayarladığınız rotalar](./media/tutorial-routing/message-routing-show-both-routes.png)
 

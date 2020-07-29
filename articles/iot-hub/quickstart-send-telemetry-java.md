@@ -13,13 +13,14 @@ ms.custom:
 - seo-java-august2019
 - seo-java-september2019
 - mqtt
+- devx-track-java
 ms.date: 05/26/2020
-ms.openlocfilehash: 225b9407bff4294288bb4834cbb0d919698b78c6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 757e0892469e52b1f2716d837d8423c5940322e2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317935"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Hızlı başlangıç: Azure IoT Hub 'ına telemetri gönderin ve Java uygulamasıyla okuyun
 
@@ -27,7 +28,7 @@ ms.locfileid: "83873144"
 
 Bu hızlı başlangıçta, Azure IoT Hub telemetri gönderirsiniz ve Java uygulamasıyla okuyabilirsiniz. IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlangıç, önceden yazılmış iki Java uygulaması kullanır: bir tane, Telemetriyi ve bir hub 'dan Telemetriyi okumak üzere bir tane. Bu iki uygulamayı çalıştırmadan önce bir IoT hub oluşturur ve hub’a bir cihaz kaydedersiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -55,7 +56,7 @@ mvn --version
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT uzantısı ekleme
 
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IoT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
+Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IoT Uzantısı belirli IoT Hub, IoT Edge ve IoT Cihaz Sağlama Hizmeti (DPS) komutlarını Azure CLI’ya ekler.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -89,7 +90,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
     ```
 
-    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
+    Aşağıdakine benzeyen cihaz bağlantı dizenizi not alın:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyJavaDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -109,7 +110,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
     Bu üç değeri bir yere, daha sonra hızlı başlangıçta kullanacaksınız.
 
-## <a name="send-simulated-telemetry"></a>Sanal telemetri gönderme
+## <a name="send-simulated-telemetry"></a>Simülasyon telemetrisi gönderme
 
 Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir uç noktaya bağlanır ve sanal sıcaklık ve nem telemetrisi gönderir.
 

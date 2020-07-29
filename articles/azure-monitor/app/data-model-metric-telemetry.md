@@ -4,16 +4,16 @@ description: Ölçüm telemetrisi için Application Insights veri modeli
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540018"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320587"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Ölçüm telemetrisi: Application Insights veri modeli
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından desteklenen iki tür ölçüm telemetrisi vardır: tek ölçüm ve önceden toplanmış ölçüm. Tek ölçüm yalnızca bir ad ve değerdir. Ön toplanmış ölçüm, ölçüm aralığı ve standart sapması içindeki ölçümün en küçük ve en büyük değerini belirtir.
+[Application Insights](./app-insights-overview.md)tarafından desteklenen iki tür ölçüm telemetrisi vardır: tek ölçüm ve önceden toplanmış ölçüm. Tek ölçüm yalnızca bir ad ve değerdir. Ön toplanmış ölçüm, ölçüm aralığı ve standart sapması içindeki ölçümün en küçük ve en büyük değerini belirtir.
 
 Ön toplanmış ölçüm telemetrisi, toplama döneminin bir dakika olduğunu varsayar.
 
@@ -33,7 +33,7 @@ Sistem ve işlem sayaçlarını temsil eden ölçüm:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | İş devam ediyor... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | ortalama istek yürütme süresi
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | İş devam ediyor... | [Requestsınqueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | Kuyruktaki işlemeyi bekleyen istek sayısı
 
-## <a name="name"></a>Name
+## <a name="name"></a>Ad
 
 Application Insights portalında ve Kullanıcı arabiriminde görmek istediğiniz ölçümün adı. 
 
@@ -65,6 +65,7 @@ Toplu ölçümün standart sapması. Ölçüm için ayarlanmamalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel olaylar ve ölçümler için Application Insights API 'sini](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)kullanmayı öğrenin.
+- [Özel olaylar ve ölçümler için Application Insights API 'sini](./api-custom-events-metrics.md#trackmetric)kullanmayı öğrenin.
 - Application Insights türleri ve veri modeli için [veri modeli](data-model.md) 'ne bakın.
-- Application Insights tarafından desteklenen [platformları](../../azure-monitor/app/platforms.md) inceleyin.
+- Application Insights tarafından desteklenen [platformları](./platforms.md) inceleyin.
+

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 26be41361a861795a9897442d9a0cc8bb14c1450
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248620"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292584"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -132,20 +132,20 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Evet|Hayır|Hayır|
+|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|
 |Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise, sürüm 1809|Yes|Evet|Hayır|Hayır|
-|Windows 7 Enterprise|Yes|Evet|Hayır|Hayır|
-|Windows Server 2019|Yes|Evet|Hayır|Hayır|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|
+|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|
+|Windows Server 2019|Yes|Yes|Hayır|Hayır|
 |Windows Server 2016|Yes|Yes|Yes|Yes|
-|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|
+|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows sanal masaüstü Fall 2019 sürümünü kullanıyorsanız, [Windows sanal masaüstü 'nde kiracı oluşturma bölümünde](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)öğreticimize başlamanızı sağlayabilirsiniz.
+Windows sanal masaüstü 'Nü (klasik) kullanıyorsanız, [Windows sanal masaüstü 'nde kiracı oluşturma bölümünde](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)öğreticimize başlamanızı sağlayabilirsiniz.
 
-Windows sanal masaüstü Spring 2020 sürümünü kullanıyorsanız bunun yerine bir konak havuzu oluşturmanız gerekir. Kullanmaya başlamak için aşağıdaki Öğreticiye gidin.
+Windows sanal masaüstünü Azure Resource Manager tümleştirmede kullanıyorsanız, bunun yerine bir konak havuzu oluşturmanız gerekir. Kullanmaya başlamak için aşağıdaki Öğreticiye gidin.
 
 > [!div class="nextstepaction"]
 > [Azure portalıyla yeni bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md)

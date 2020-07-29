@@ -4,16 +4,16 @@ description: Özel ölçümler sayesinde web uygulamanızı gerçek zamanlı ola
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166493"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321947"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçüm Akışı: Izleme & Tanıla, 1 saniyelik gecikme
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md)canlı ölçüm akışı kullanarak canlı, üretim içi Web uygulamanızı izleyin. Hizmetinize herhangi bir olumsuz bakış olmadan, ölçümleri ve performans sayaçlarını gerçek zamanlı olarak izlemek için seçin ve filtreleyin. Örnek başarısız isteklerin ve özel durumların yığın izlemelerini inceleyin. [Profil Oluşturucu](../../azure-monitor/app/profiler.md) ve [anlık görüntü hata ayıklayıcısı](../../azure-monitor/app/snapshot-debugger.md)ile birlikte canlı ölçüm akışı, Canlı Web siteniz için güçlü ve olmayan bir tanılama aracı sağlar.
+[Application Insights](./app-insights-overview.md)canlı ölçüm akışı kullanarak canlı, üretim içi Web uygulamanızı izleyin. Hizmetinize herhangi bir olumsuz bakış olmadan, ölçümleri ve performans sayaçlarını gerçek zamanlı olarak izlemek için seçin ve filtreleyin. Örnek başarısız isteklerin ve özel durumların yığın izlemelerini inceleyin. [Profil Oluşturucu](./profiler.md) ve [anlık görüntü hata ayıklayıcısı](./snapshot-debugger.md)ile birlikte canlı ölçüm akışı, Canlı Web siteniz için güçlü ve olmayan bir tanılama aracı sağlar.
 
 Canlı Ölçüm Akışı, şunları yapabilirsiniz:
 
@@ -31,7 +31,7 @@ Canlı ölçümler Şu anda ASP.NET, ASP.NET Core, Azure Işlevleri, Java ve Nod
 
 ## <a name="get-started"></a>başlarken
 
-1. Uygulamanıza [Application Insights 'Yi yükler](../../azure-monitor/azure-monitor-app-hub.yml) .
+1. Uygulamanıza [Application Insights 'Yi yükler](../azure-monitor-app-hub.yml) .
 2. Standart Application Insights paketlerine ek olarak, canlı ölçüm akışını etkinleştirmek için [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) gereklidir.
 3. Application Insights paketinin **en son sürümüne güncelleştirin** . Visual Studio 'da projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Güncelleştirmeler** sekmesini açın ve tüm Microsoft. ApplicationInsights. * paketlerini seçin.
 
@@ -43,17 +43,17 @@ Canlı ölçümler Şu anda ASP.NET, ASP.NET Core, Azure Işlevleri, Java ve Nod
 
 ### <a name="no-data-check-your-server-firewall"></a>Veri yok mu? Sunucu güvenlik duvarınızı denetleyin
 
-[Canlı ölçüm akışı giden bağlantı noktalarını](../../azure-monitor/app/ip-addresses.md#outgoing-ports) , sunucularınızın güvenlik duvarında açık olduğunu kontrol edin.
+[Canlı ölçüm akışı giden bağlantı noktalarını](./ip-addresses.md#outgoing-ports) , sunucularınızın güvenlik duvarında açık olduğunu kontrol edin.
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Canlı Ölçüm Akışı Ölçüm Gezgini ve analiz 'den farklı midir?
 
 | |Canlı Akış | Ölçüm Gezgini ve analiz |
 |---|---|---|
-|**Gecikme Süresi**|Bir saniye içinde görünen veriler|Dakikada toplanan|
-|**Saklama yok**|Veriler grafikte olduğu sırada devam ettirir ve sonra atılır|[90 gün boyunca tutulan veriler](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**Gecikme süresi**|Bir saniye içinde görünen veriler|Dakikada toplanan|
+|**Saklama yok**|Veriler grafikte olduğu sırada devam ettirir ve sonra atılır|[90 gün boyunca tutulan veriler](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**İsteğe bağlı**|Veriler yalnızca canlı ölçümler bölmesi açıkken akışlıdır |SDK her yüklendiğinde ve etkinleştirildiğinde veriler gönderilir|
-|**Ücretsiz**|Canlı Akış verileri için ücret alınmaz|[Fiyatlandırmaya](../../azure-monitor/app/pricing.md) tabi
-|**Örnekleme**|Tüm seçili ölçümler ve sayaçlar iletilir. Arızalar ve yığın izlemeleri örneklenir. TelemetryProcessors uygulanmıyor.|Olaylar [örneklenebilir](../../azure-monitor/app/api-filtering-sampling.md)|
+|**Ücretsiz**|Canlı Akış verileri için ücret alınmaz|[Fiyatlandırmaya](./pricing.md) tabi
+|**Örnekleme**|Tüm seçili ölçümler ve sayaçlar iletilir. Arızalar ve yığın izlemeleri örneklenir. TelemetryProcessors uygulanmıyor.|Olaylar [örneklenebilir](./api-filtering-sampling.md)|
 |**Denetim kanalı**|Filtre denetim sinyalleri SDK 'ya gönderilir. Bu kanalın güvenli olmasını öneririz.|İletişim, portala tek bir yoldur|
 
 ## <a name="select-and-filter-your-metrics"></a>Ölçümlerinizi seçme ve filtreleme
@@ -64,7 +64,7 @@ Portaldan herhangi bir Application Insights telemetrisine rastgele filtreler uyg
 
 ![Filtre isteği hızı](./media/live-stream/filter-request.png)
 
-Count 'tan farklı bir değeri izleyebilirsiniz. Seçenekler, hiçbir Application Insights telemetri olabilecek akış türüne bağlıdır: istekler, bağımlılıklar, özel durumlar, izlemeler, olaylar veya ölçümler. Kendi [özel ölçümünüzün](../../azure-monitor/app/api-custom-events-metrics.md#properties)olabilir:
+Count 'tan farklı bir değeri izleyebilirsiniz. Seçenekler, hiçbir Application Insights telemetri olabilecek akış türüne bağlıdır: istekler, bağımlılıklar, özel durumlar, izlemeler, olaylar veya ölçümler. Kendi [özel ölçümünüzün](./api-custom-events-metrics.md#properties)olabilir:
 
 ![Özel ölçüm ile istek hızında Sorgu Oluşturucu](./media/live-stream/query-builder-request.png)
 
@@ -206,10 +206,11 @@ Canlı ölçümler, Node.js SDK 'da varsayılan olarak devre dışıdır. Canlı
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Veri yok mu? Uygulamanız korumalı bir ağda ise: Canlı Ölçüm Akışı diğer Application Insights telemetrisinden farklı IP adresleri kullanır. [Bu IP adreslerinin](../../azure-monitor/app/ip-addresses.md) güvenlik duvarınızdaki açık olduğundan emin olun.
+Veri yok mu? Uygulamanız korumalı bir ağda ise: Canlı Ölçüm Akışı diğer Application Insights telemetrisinden farklı IP adresleri kullanır. [Bu IP adreslerinin](./ip-addresses.md) güvenlik duvarınızdaki açık olduğundan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Application Insights ile kullanımı izleme](../../azure-monitor/app/usage-overview.md)
-* [Tanılama aramasını kullanma](../../azure-monitor/app/diagnostic-search.md)
-* [Profil Oluşturucu](../../azure-monitor/app/profiler.md)
-* [Anlık görüntü hata ayıklayıcısı](../../azure-monitor/app/snapshot-debugger.md)
+* [Application Insights ile kullanımı izleme](./usage-overview.md)
+* [Tanılama aramasını kullanma](./diagnostic-search.md)
+* [Profil Oluşturucu](./profiler.md)
+* [Anlık görüntü hata ayıklayıcısı](./snapshot-debugger.md)
+

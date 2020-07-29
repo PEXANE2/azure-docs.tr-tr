@@ -8,20 +8,17 @@ ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b74b7f0b79ad4064d7133a19316d6aec6bd5ba3a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 177763e7939de082faa0c83d2ab661292f0758b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611577"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292656"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Öğretici: hizmet güncelleştirmelerini doğrulamak için bir konak havuzu oluşturma
 
 >[!IMPORTANT]
->Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)bakın.
->
-> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Bu içerik Azure Resource Manager Windows sanal masaüstü nesneleri ile Windows sanal masaüstü için geçerlidir. Azure Resource Manager nesneleri olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)bakın.
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Ana bilgisayar havuzlarını üretim ortamınıza dağıtılmadan önce, bir doğrulama ana bilgisayar havuzu oluşturmanızı kesinlikle öneririz. Güncelleştirmeler önce doğrulama ana bilgisayar havuzlarına uygulanır, böylece üretim ortamınıza göndermeden önce hizmet güncelleştirmelerini izlemenizi sağlar. Doğrulama ana bilgisayar havuzu olmadan, hata oluşturan değişiklikleri bulamamanıza neden olabilir ve bu da üretim ortamınızdaki kullanıcılar için kapalı kalma süresine yol açabilir.
 
@@ -33,9 +30,9 @@ Uygulamalarınızın en son güncelleştirmelerle çalışmasını sağlamak iç
 > Sonraki tüm güncelleştirmeleri test etmek için doğrulama ana bilgisayar havuzunu yerinde bırakmanız önerilir.
 
 >[!IMPORTANT]
->Windows sanal masaüstü Spring 2020 sürümü şu anda doğrulama ortamını etkinleştirme ve devre dışı bırakma konusunda sorun yaşıyor. Sorunu çöztiğimiz zaman bu makaleyi güncelleştireceğiz.
+>Azure Kaynak Yönetimi tümleştirmesiyle Windows sanal masaüstü Şu anda doğrulama ortamlarını etkinleştirme ve devre dışı bırakma konusunda sorun yaşıyor. Sorunu çöztiğimiz zaman bu makaleyi güncelleştireceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, PowerShell modülünüzü ayarlamak ve Azure 'da oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izleyin.
 

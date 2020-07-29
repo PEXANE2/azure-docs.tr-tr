@@ -3,12 +3,12 @@ title: Application Insights 'de olay sayaçları | Microsoft Docs
 description: Application Insights 'de sistem ve özel .NET/.NET Core EventCounters ' i izleyin.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539950"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324412"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters giriş
 
@@ -124,7 +124,7 @@ customMetrics
 Diğer telemetri gibi, **Customölçümleri** de `cloud_RoleInstance` uygulamanızın çalıştırıldığı ana bilgisayar sunucusu örneğinin kimliğini belirten bir sütun içerir. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
 
 ## <a name="alerts"></a>Uyarılar
-Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../../azure-monitor/platform/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
+Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../platform/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -148,4 +148,5 @@ EventCounter herhangi bir özel izin gerektirmez ve tüm platformlarda desteklen
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 
-* [Bağımlılık izleme](../../azure-monitor/app/asp-net-dependencies.md)
+* [Bağımlılık izleme](./asp-net-dependencies.md)
+

@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılı
 description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321216"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
@@ -31,7 +31,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlı
     - Bir çalışma alanını yalnızca Azure geçiş gereci ayarladıktan sonra ve Azure geçişi projesindeki makineleri keşfetmek için ekleyebilirsiniz.
     - Abonelikte Azure geçişi projesini içeren bir çalışma alanı olduğundan emin olun.
     - Çalışma alanı Doğu ABD, Güneydoğu Asya veya Batı Avrupa bölgelerinde bulunmalıdır. Diğer bölgelerdeki çalışma alanları bir projeyle ilişkilendirilemez.
-    - Çalışma alanının [hizmet eşlemesi desteklendiği](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)bir bölgede olması gerekir.
+    - Çalışma alanının [hizmet eşlemesi desteklendiği](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)bir bölgede olması gerekir.
     - Yeni veya mevcut bir Log Analytics çalışma alanını Azure geçişi projesiyle ilişkilendirebilirsiniz.
     - Bir makine için bağımlılık görselleştirmesini ilk kez ayarladığınızda çalışma alanını iliştirebilirsiniz. Bir Azure geçişi projesi çalışma alanı eklendikten sonra değiştirilemez.
     - Log Analytics, Azure geçişi ile ilişkili çalışma alanı, geçiş projesi anahtarıyla ve proje adıyla etiketlenir.

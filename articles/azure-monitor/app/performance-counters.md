@@ -3,12 +3,12 @@ title: Application Insights 'da performans sayaçları | Microsoft Docs
 description: Application Insights 'de sistem ve özel .NET performans sayaçlarını izleyin.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024427"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322525"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 'de sistem performans sayaçları
 
@@ -131,7 +131,7 @@ Diğer telemetri gibi, **PerformanceCounters** da `cloud_RoleInstance` Uygulaman
 
 * *Özel durum oranı* bir sistem performans sayacıdır. CLR, oluşturulan tüm işlenmiş ve işlenmemiş özel durumları sayar ve bir örnekleme aralığındaki toplamı aralığın uzunluğuna böler. Application Insights SDK bu sonucu toplayıp portala gönderir.
 
-* *Özel durumlar* , grafiğin örnekleme aralığı içinde Portal tarafından alınan trackexception raporlarının sayılarıdır. Yalnızca kodunuzda TrackException çağrılarını yazdığınız ve [işlenmemiş özel durumları](../../azure-monitor/app/asp-net-exceptions.md)içermeyen işlenmiş özel durumları içerir. 
+* *Özel durumlar* , grafiğin örnekleme aralığı içinde Portal tarafından alınan trackexception raporlarının sayılarıdır. Yalnızca kodunuzda TrackException çağrılarını yazdığınız ve [işlenmemiş özel durumları](./asp-net-exceptions.md)içermeyen işlenmiş özel durumları içerir. 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Azure Web Apps çalışan uygulamalar için performans sayaçları
 
@@ -147,9 +147,10 @@ ASP.NET Core performans sayaçları için destek sınırlıdır:
 * SDK sürümleri 2.8.0 ve üzeri, Linux 'ta CPU/bellek sayacını destekler. Linux 'ta başka bir sayaç desteklenmez. Linux 'ta (ve diğer Windows dışı ortamlarda) sistem sayaçlarını almanın önerilen yolu [Eventcounters](eventcounters.md) kullanmaktır
 
 ## <a name="alerts"></a>Uyarılar
-Diğer ölçümler gibi, bir performans sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../../azure-monitor/platform/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
+Diğer ölçümler gibi, bir performans sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../platform/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 
-* [Bağımlılık izleme](../../azure-monitor/app/asp-net-dependencies.md)
-* [Özel durum izleme](../../azure-monitor/app/asp-net-exceptions.md)
+* [Bağımlılık izleme](./asp-net-dependencies.md)
+* [Özel durum izleme](./asp-net-exceptions.md)
+

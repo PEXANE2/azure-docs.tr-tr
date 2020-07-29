@@ -9,24 +9,24 @@ editor: ''
 ms.service: media-services
 ms.subservice: ''
 ms.workload: ''
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: ''
-ms.date: 07/21/2020
+ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1fa25210bc8e4dc9f20e49e90b8e71082edb12c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172743"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279296"
 ---
-# <a name="tutorial-use-azure-portal-to-invoke-direct-methods"></a>Öğretici: doğrudan yöntemleri çağırmak için Azure portal kullanma
+# <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Doğrudan yöntemleri çağırmak için Azure portal kullanma
 
 IoT Hub, uç cihazlarda buluttan [doğrudan Yöntemler](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules) çağırma olanağı sağlar. IoT Edge (LVA) modülündeki canlı video analizi, canlı videoyu çözümlemek üzere farklı iş akışlarını tanımlamak, dağıtmak ve örneklemek için kullanılabilecek çeşitli [doğrudan Yöntemler](/azure/media-services/live-video-analytics-edge/direct-methods) sunar.
 
-Bu öğreticide, Azure portal aracılığıyla bir IoT Edge modülü için canlı video analiziyle doğrudan Yöntem çağrılarını çağırmayı öğreneceksiniz.
+Bu makalede, Azure portal aracılığıyla bir IoT Edge modülü için canlı video analizinden doğrudan Yöntem çağrılarını çağırmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Uç cihazınızda çalışan IoT Edge modülde canlı video analizinden yararlanarak [hızlı başlangıç: canlı video analizi IoT Edge](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) veya portalı kullanma ' da açıklanan yöntemleri kullanabilirsiniz [.](/azure/media-services/live-video-analytics-edge/deploy-iot-edge-device)
 

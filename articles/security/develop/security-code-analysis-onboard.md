@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362066"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323596"
 ---
 # <a name="onboarding-and-installing"></a>Ekleme ve yükleme
 
@@ -42,7 +42,7 @@ Aşağıdaki destek tekliflerinden birine sahipseniz, uzantıya erişim sağlama
 
 Yukarıda belirtilen destek anlaşmalarından birine sahip değilseniz, bu uzantıyı Iş ortaklarımızın birinden satın alabilirsiniz.
 
-**Sonraki adımlar:**
+**Sonraki Adımlar:**
 
 Yukarıdaki nitelikleri karşıladıysanız, Microsoft Güvenlik kodu analizi uzantısını satın almak için aşağıdaki listeden bir iş ortağıyla iletişim kurun. Aksi takdirde, [Microsoft Güvenlik kodu çözümleme desteği](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)'ne başvurun.
 
@@ -50,9 +50,9 @@ Yukarıdaki nitelikleri karşıladıysanız, Microsoft Güvenlik kodu analizi uz
 
 - Bölgeler – Iletişim ayrıntıları:cloudsupport@zones.com
 - Worsöyleyin – Iletişim ayrıntıları:info@wortell.nl
-- Logicalsıs – Iletişim ayrıntıları:Matthew.Curtis@us.logicalis.com 
+- Logicalsıs – Iletişim ayrıntıları:logicalisleads@us.logicalis.com
 
-### <a name="become-a-partner"></a>Iş ortağı olun
+### <a name="become-a-partner"></a>İş Ortağı Olun
 
 Microsoft Güvenlik kodu çözümleme ekibi, iş ortakları için bir Premier Destek iş ortağı sözleşmesi eklemek istiyor. İş ortakları, uzantıyı satın almak isteyen müşterilere satarak Azure DevOps müşterilerinin daha güvenli bir şekilde geliştirilebilme sağlanmasına yardımcı olur, ancak Microsoft ile kurumsal destek sözleşmenize gerek kalmaz. İlgilendiğiniz iş ortakları [buradan](http://www.microsoftpartnersupport.com/msrd/opin)kayıt yapabilir.
 
@@ -63,7 +63,7 @@ Microsoft Güvenlik kodu çözümleme ekibi, iş ortakları için bir Premier De
 1. **Paylaşılan**' ı seçin.
 1. Microsoft Güvenlik kodu analiz uzantısı ' nı seçin, ardından **Install**' ı seçin.
 1. Açılan listeden, uzantıyı yüklemek için Azure DevOps organizasyonunu seçin.
-1. **Yükle**'yi seçin. Yükleme tamamlandıktan sonra, uzantısını kullanmaya başlayabilirsiniz.
+1. **Yükle**’yi seçin. Yükleme tamamlandıktan sonra, uzantısını kullanmaya başlayabilirsiniz.
 
 >[!NOTE]
 > Uzantıyı yükleme erişiminiz olmasa bile, yükleme adımlarıyla devam edin. Yükleme işlemi sırasında Azure DevOps kuruluş yöneticinizden erişim isteğinde bulabilirsiniz.

@@ -1,25 +1,25 @@
 ---
-title: 'Öğretici 3: Kredi risk modelini dağıtma'
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 'ML Studio (klasik) öğretici 3: Kredi risk modellerini dağıtma-Azure'
 description: Azure Machine Learning Studio (klasik) ' de kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin üçüncü bölümüdür. Bir modelin Web hizmeti olarak nasıl dağıtılacağını gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi, dağıtma, Web hizmeti
-author: sdgilley
-ms.author: sgilley
+author: likebupt
+ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fb0b59374edf322e5e2221b90e912ee2c665bac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/27/2020
+ms.openlocfilehash: 21b2308fb931d1c0932184dcc7946e99d3551b13
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79204162"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324871"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Öğretici 3: Kredi risk modelini dağıtma-Azure Machine Learning Studio (klasik)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde genişletilmiş bir görünüm elde edersiniz. Machine Learning Studio (klasik) içinde basit bir model geliştirirsiniz.  Daha sonra modeli bir Azure Machine Learning Web hizmeti olarak dağıtabilirsiniz.  Bu dağıtılan model yeni verileri kullanarak tahminleri yapabilir. Bu öğretici, **üç bölümden oluşan bir öğretici serisinin üçüncü bölümüdür**.
 
@@ -42,7 +42,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 > * Web hizmetini yönetme
 > * Web hizmetine erişme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Öğreticinin ikinci bölümünü](tutorial-part2-credit-risk-train.md)doldurun.
 
@@ -153,7 +153,7 @@ Denediğimiz yeni bir Web hizmetini dağıtmak için:
 
 1. **Fiyat planı**için, mevcut bir fiyatlandırma planı seçebilir veya "Yeni oluştur" seçeneğini belirleyip yeni plana bir ad verebilir ve aylık plan seçeneğini belirleyebilirsiniz. Varsayılan bölgeniz ve Web hizmetiniz için plan katmanları varsayılan olarak bu bölgeye dağıtılır.
 
-1. **Dağıt**' a tıklayın.
+1. **Dağıt**’a tıklayın.
 
 Birkaç dakika sonra, Web hizmetiniz için **hızlı başlangıç** sayfası açılır.
 
@@ -227,7 +227,10 @@ Bu öğreticinin önceki adımında, kredi riski tahmin modelini kullanan bir We
 Web hizmeti, REST API 'Leri kullanarak verileri alabilen ve döndürebili bir Azure Web hizmetidir:  
 
 * **İstek/yanıt** -Kullanıcı http protokolünü kullanarak hizmete bir veya daha fazla kredi verileri satırı gönderir ve hizmet bir veya daha fazla sonuç kümesiyle yanıt verir.
-* **Toplu yürütme** -Kullanıcı bir veya daha fazla kredi verileri satırını bir Azure blobuna depolar ve sonra blob konumunu hizmete gönderir. Hizmet, giriş blobundaki tüm veri satırlarını alır, sonuçları başka bir bloba depolar ve bu kapsayıcının URL 'sini döndürür.  
+* **Toplu yürütme** -Kullanıcı bir veya daha fazla kredi verileri satırını bir Azure blobuna depolar ve sonra blob konumunu hizmete gönderir. Hizmet, giriş blobundaki tüm veri satırlarını alır, sonuçları başka bir bloba depolar ve bu kapsayıcının URL 'sini döndürür. 
+
+> [!NOTE]
+> Studio 'daki (klasik) özellik sütunu adları **büyük/küçük harfe duyarlıdır**. Web hizmetini çağırmak için girilen verilerinizin eğitim veri kümesiyle aynı sütun adlarına sahip olduğundan emin olun.
 
 Web hizmetine erişme ve kullanma hakkında daha fazla bilgi için bkz. [Web uygulaması şablonuyla Azure Machine Learning Web hizmeti](/azure/machine-learning/studio/consume-web-services)kullanma.
 

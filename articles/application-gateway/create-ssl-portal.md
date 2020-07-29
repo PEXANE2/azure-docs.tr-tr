@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 04/22/2019
+ms.date: 07/24/2020
 ms.author: victorh
-ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: baadd52a931a28e1502fe0da2286d541db9face4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024502"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290138"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir uygulama ağ geçidini TLS sonlandırmasıyla yapılandırma
 
@@ -158,7 +158,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 5. **Http ayarı**Için yeni **Oluştur** ' u seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. Açılan **http ayarı Ekle** penceresinde **http ayar adı**için *myhttpsetting* girin. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün. 
 
-   ![Yeni uygulama ağ geçidi oluştur: HTTP ayarı](./media/create-ssl-portal/application-gateway-create-httpsetting.png)
+   :::image type="content" source="./media/create-ssl-portal/application-gateway-create-httpsetting.png" alt-text="Yeni uygulama ağ geçidi oluştur: HTTP ayarı":::
 
 6. Yönlendirme kuralı **Ekle** penceresinde, yönlendirme kuralını kaydetmek ve **yapılandırma** sekmesine dönmek için **Ekle** ' yi seçin.
 
@@ -240,7 +240,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
     ![Arka uç sunucuları ekleme](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 7. Sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
 
@@ -250,7 +250,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
     ![Uygulama ağ geçidi genel IP adresini kaydetme](./media/create-ssl-portal/application-gateway-ag-address.png)
 
-2. Tarayıcınızın adres çubuğuna *https://\<yazın ve uygulama ağ geçidi IP\>adresinizi*yazın.
+2. Tarayıcınızın adres çubuğuna *https:// \<your application gateway ip address\> *yazın.
 
    Otomatik olarak imzalanan bir sertifika kullandıysanız güvenlik uyarısını kabul etmek için **Ayrıntılar** (veya Chrome üzerinde **Gelişmiş** ) seçeneğini belirleyin ve ardından Web sayfasına gidin:
 

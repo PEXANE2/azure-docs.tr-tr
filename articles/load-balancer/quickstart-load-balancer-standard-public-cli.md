@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 40af7a7d3bcc4584260735ddbcbf84ac0936ce15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: aa0d29c5c2a4cf8eebbf530b42a25d8924e031bc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172099"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290263"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak sanal makinelerin yük dengelemesi için genel yük dengeleyici oluşturma
 
 Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure CLı kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure CLı yerel olarak veya Azure Cloud Shell yüklendi
@@ -418,11 +418,17 @@ Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 
 
 Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağlantılar](load-balancer-outbound-connections.md).
 
-### <a name="create-outbound-public-ip-address"></a>Giden genel IP adresi oluştur
+### <a name="create-outbound-public-ip-address-or-public-ip-prefix"></a>Giden genel IP adresi veya genel IP öneki oluşturun.
 
-[Az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
+Giden bağlantı için tek bir IP oluşturmak için [az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) kullanın.  
 
-* **Mypublicıpoıb Utbağlanmadı**adlı standart bölge YEDEKLI genel IP adresi oluşturun.
+Giden bağlantı için genel bir IP öneki oluşturmak için [az Network public-ip Create oluştur](https://docs.microsoft.com/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) kullanın.
+
+Giden NAT ve giden bağlantıların ölçeklendirilmesi hakkında daha fazla bilgi için bkz. [birden çok IP adresi Ile genişleme gıden NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scale).
+
+#### <a name="public-ip"></a>Genel IP
+
+* Adlandırılmış **Mypublicıpoıb Utbağlanmadı**.
 * **Myresourcegrouplb**içinde.
 
 ```azurecli-interactive
@@ -441,9 +447,35 @@ Bölge 1 ' de gereksiz bir genel IP adresi oluşturmak için:
     --sku Standard \
     --zone 1
 ```
+#### <a name="public-ip-prefix"></a>Genel IP ön eki
+
+* **MyPublicIPPrefixOutbound**adlı.
+* **Myresourcegrouplb**içinde.
+* **28**önek uzunluğu.
+
+```azurecli-interactive
+  az network public-ip prefix create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIPPrefixOutbound \
+    --length 28
+```
+Bölge 1 ' de gereksiz bir genel IP öneki oluşturmak için:
+
+```azurecli-interactive
+  az network public-ip prefix create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIPPrefixOutbound \
+    --length 28 \
+    --zone 1
+```
+
 ### <a name="create-outbound-frontend-ip-configuration"></a>Giden ön uç IP yapılandırması oluştur
 
 [Az Network lb ön uç-IP Create ](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)ile yeni bir ön uç IP yapılandırması oluşturun:
+
+Önceki adımdaki kararı temel alarak genel IP veya genel IP öneki komutlarını seçin.
+
+#### <a name="public-ip"></a>Genel IP
 
 * **MyFrontEndOutbound**adlı.
 * Kaynak grubu **Myresourcegrouplb**.
@@ -456,6 +488,21 @@ Bölge 1 ' de gereksiz bir genel IP adresi oluşturmak için:
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-address myPublicIPOutbound 
+```
+
+#### <a name="public-ip-prefix"></a>Genel IP ön eki
+
+* **MyFrontEndOutbound**adlı.
+* Kaynak grubu **Myresourcegrouplb**.
+* Genel IP önekiyle ilişkili **myPublicIPPrefixOutbound**.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurecli-interactive
+  az network lb frontend-ip create \
+    --resource-group myResourceGroupLB \
+    --name myFrontEndOutbound \
+    --lb-name myLoadBalancer \
+    --public-ip-prefix myPublicIPPrefixOutbound 
 ```
 
 ### <a name="create-outbound-pool"></a>Giden Havuz oluştur
@@ -498,7 +545,7 @@ Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.
 ```
 ### <a name="add-virtual-machines-to-outbound-pool"></a>Sanal makineleri giden havuzuna Ekle
 
-[Az Network Nic IP-Config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makine ağ arabirimlerini yük dengeleyicinin giden havuzuna ekleyin:
+[Az Network Nic IP-Config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri giden havuza ekleyin:
 
 
 #### <a name="vm1"></a>VM1

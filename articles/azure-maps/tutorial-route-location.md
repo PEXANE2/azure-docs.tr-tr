@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 3a9304b5135ca682008cb3ff045b43ae297dc950
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: d6a526e23be47c9e05de0c9064bdb4095a49d132
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133274"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287413"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bir ilgi noktasına yönlendirme
 
@@ -25,7 +25,7 @@ Bu öğreticide, Azure Haritalar hesabınız ile Yönlendirme Hizmeti SDK’nız
 > * Adres koordinatlarını ayarlama
 > * İstenen konuma yol tarifi almak için Sorgu Yönlendirme Hizmeti
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)' daki yönergeleri Izleyin, S1 fiyatlandırma katmanı ile bir abonelik gerekir. Hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 

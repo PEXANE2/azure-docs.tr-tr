@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77668392"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322406"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics Uyarı Yönetimi çözümü
 
@@ -21,24 +22,24 @@ ms.locfileid: "77668392"
 >  
 
 
-Uyarı Yönetimi çözümü, Log Analytics Deponuzdaki tüm uyarıları çözümlemenize yardımcı olur.  Bu uyarılar, [Log Analytics tarafından oluşturulan](../../azure-monitor/platform/alerts-overview.md) veya [Nagios ya da Zabbix 'ten içeri aktarılan](../../azure-monitor/learn/quick-collect-linux-computer.md)kaynaklar dahil olmak üzere çeşitli kaynaklardan gelmiş olabilir. Çözüm Ayrıca, [bağlı System Center Operations Manager yönetim gruplarından](../../azure-monitor/platform/om-agents.md)gelen uyarıları içeri aktarır.
+Uyarı Yönetimi çözümü, Log Analytics Deponuzdaki tüm uyarıları çözümlemenize yardımcı olur.  Bu uyarılar, [Log Analytics tarafından oluşturulan](./alerts-overview.md) veya [Nagios ya da Zabbix 'ten içeri aktarılan](../learn/quick-collect-linux-computer.md)kaynaklar dahil olmak üzere çeşitli kaynaklardan gelmiş olabilir. Çözüm Ayrıca, [bağlı System Center Operations Manager yönetim gruplarından](./om-agents.md)gelen uyarıları içeri aktarır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Çözüm, Log Analytics deposundaki kayıtlarla birlikte **çalışarak, bu**kayıtları toplamak için hangi yapılandırmanın gerekli olduğunu yapmanız gerekir.
 
-- Log Analytics uyarılar için, doğrudan depoda uyarı kayıtları oluşturmak üzere [Uyarı kuralları oluşturun](../../azure-monitor/platform/alerts-overview.md) .
-- Nagios ve Zabbix uyarıları için, [Bu sunucuları](../../azure-monitor/learn/quick-collect-linux-computer.md) Log Analytics Uyarıları gönderecek şekilde yapılandırın.
-- System Center Operations Manager uyarılar için [Operations Manager yönetim grubunuzu Log Analytics çalışma alanınıza bağlayın](../../azure-monitor/platform/om-agents.md).  System Center Operations Manager oluşturulan tüm uyarılar Log Analytics içine aktarılır.  
+- Log Analytics uyarılar için, doğrudan depoda uyarı kayıtları oluşturmak üzere [Uyarı kuralları oluşturun](./alerts-overview.md) .
+- Nagios ve Zabbix uyarıları için, [Bu sunucuları](../learn/quick-collect-linux-computer.md) Log Analytics Uyarıları gönderecek şekilde yapılandırın.
+- System Center Operations Manager uyarılar için [Operations Manager yönetim grubunuzu Log Analytics çalışma alanınıza bağlayın](./om-agents.md).  System Center Operations Manager oluşturulan tüm uyarılar Log Analytics içine aktarılır.  
 
 ## <a name="configuration"></a>Yapılandırma
-Çözüm [ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan işlemi kullanarak Log Analytics çalışma alanınıza uyarı yönetimi çözümünü ekleyin. Başka bir yapılandırma işlemi gerekmez.
+Çözüm [ekleme](../insights/solutions.md)bölümünde açıklanan işlemi kullanarak Log Analytics çalışma alanınıza uyarı yönetimi çözümünü ekleyin. Başka bir yapılandırma işlemi gerekmez.
 
 ## <a name="management-packs"></a>Yönetim paketleri
 System Center Operations Manager yönetim grubunuz Log Analytics çalışma alanınıza bağlıysa, bu çözümü eklediğinizde aşağıdaki yönetim paketleri System Center Operations Manager yüklenir.  Gerekli yönetim paketlerinin yapılandırması veya bakımı yok.
 
 * Microsoft System Center Advisor Uyarı Yönetimi (Microsoft. ıntelligencepacks. AlertManagement)
 
-Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../../azure-monitor/platform/om-agents.md).
+Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](./om-agents.md).
 
 ## <a name="data-collection"></a>Veri toplama
 ### <a name="agents"></a>Aracılar
@@ -47,8 +48,8 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 | Bağlı Kaynak | Destek | Açıklama |
 |:--- |:--- |:--- |
 | [Windows aracıları](agent-windows.md) | Hayır |Doğrudan Windows aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Windows aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir. |
-| [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır |Doğrudan Linux aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Linux aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir.  Nagios ve Zabbix uyarıları, Linux Aracısı gerektiren sunuculardan toplanır. |
-| [System Center Operations Manager yönetim grubu](../../azure-monitor/platform/om-agents.md) |Evet |Operations Manager aracılarında oluşturulan uyarılar yönetim grubuna teslim edilir ve sonra Log Analytics iletilir.<br><br>Operations Manager aracılarından Log Analytics doğrudan bir bağlantı gerekli değildir. Uyarı verileri yönetim grubundan Log Analytics deposuna iletilir. |
+| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır |Doğrudan Linux aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Linux aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir.  Nagios ve Zabbix uyarıları, Linux Aracısı gerektiren sunuculardan toplanır. |
+| [System Center Operations Manager yönetim grubu](./om-agents.md) |Yes |Operations Manager aracılarında oluşturulan uyarılar yönetim grubuna teslim edilir ve sonra Log Analytics iletilir.<br><br>Operations Manager aracılarından Log Analytics doğrudan bir bağlantı gerekli değildir. Uyarı verileri yönetim grubundan Log Analytics deposuna iletilir. |
 
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
@@ -69,7 +70,7 @@ Uyarı Yönetimi çözümünü Log Analytics çalışma alanınıza eklediğiniz
 | Etkin System Center Operations Manager uyarıları |Uyarıyı oluşturan kaynağa *kapalı* olarak gruplandırılmış dışında bir durum ile Operations Manager toplanan tüm uyarılar. |
 | Tüm etkin uyarılar |Uyarı adına göre gruplandırılan tüm önem derecesine sahip tüm uyarılar. Yalnızca *kapalı*dışında bir durum Operations Manager uyarıları içerir. |
 
-Sağa kaydırırsanız panoda, uyarı verileri için [günlük araması](../../azure-monitor/log-query/log-query-overview.md) gerçekleştirmek üzere tıkladığınız birkaç ortak sorgu listelenir.
+Sağa kaydırırsanız panoda, uyarı verileri için [günlük araması](../log-query/log-query-overview.md) gerçekleştirmek üzere tıkladığınız birkaç ortak sorgu listelenir.
 
 ![Uyarı Yönetimi panosu](media/alert-management-solution/dashboard.png)
 
@@ -118,4 +119,5 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan uyarı kayıtları için 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Log Analytics’ten uyarı oluşturma hakkında daha ayrıntılı bilgi edinmek için bkz. [Log Analytics’teki Uyarılar](../../azure-monitor/platform/alerts-overview.md) .
+* Log Analytics’ten uyarı oluşturma hakkında daha ayrıntılı bilgi edinmek için bkz. [Log Analytics’teki Uyarılar](./alerts-overview.md) .
+

@@ -3,11 +3,12 @@ title: Azure Application Insights Java izleme günlüklerini keşfet
 description: Application Insights 'de Log4J veya Logback izlemeleri ara
 ms.topic: conceptual
 ms.date: 05/18/2019
-ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 417462da431d8fe2ba878c93c6f4b467bdde2670
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657223"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324174"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights Java izleme günlüklerini keşfet
 İzleme için Logback veya Log4J (v 1.2 veya v 2.0) kullanıyorsanız, izleme günlüklerinizin otomatik olarak gönderilmesini ve bunları araştırıp araygeçirebileceğiniz Application Insights sağlayabilirsiniz.
@@ -192,7 +193,6 @@ Günlükçüler aracılığıyla gönderilen özel durumlar portalda özel durum
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[diagnostic]: ./diagnostic-search.md
 [java]: java-get-started.md
-
 

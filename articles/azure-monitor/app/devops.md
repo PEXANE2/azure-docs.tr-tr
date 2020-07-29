@@ -3,12 +3,12 @@ title: Web uygulaması performans izleme-Azure Application Insights
 description: Application Insights devOps döngüsüne nasıl uyar
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324497"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights ile ayrıntılı web uygulaması ve hizmet tanılama
 ## <a name="why-do-i-need-application-insights"></a>Neden Application Insights gerekir?
@@ -85,7 +85,7 @@ Gerçek Madrid, telemetrisini görüntülemek için Power BI modülünü kullan�
 ![Application Insights telemetrinin Power BI görünümü](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>Akıllı algılama
-[Proaktif Tanılamalar](../../azure-monitor/app/proactive-diagnostics.md) son bir özelliktir. Sizin tarafınızdan özel bir yapılandırma olmadan, Application Insights uygulamanızdaki hata tarifelerinde olağan dışı bir şekilde otomatik olarak algılanır ve sizi uyarır. Zaman zaman oluşan hataların bir arka planını yok saymaya ve ayrıca yalnızca müşterinizin istekleriyle orantılı istekleri için de tek bir deyişle bu kadar akıllı bir değer. Örneğin, bağlı olduğunuz hizmetlerden birinde bir hata varsa veya yeni dağıttığınız derleme bu şekilde çalışmıyorsa, e-postanıza baktığımızda onu öğrenirsiniz. (Ve diğer uygulamaları tetikleyebilmeniz için Web kancaları vardır.)
+[Proaktif Tanılamalar](./proactive-diagnostics.md) son bir özelliktir. Sizin tarafınızdan özel bir yapılandırma olmadan, Application Insights uygulamanızdaki hata tarifelerinde olağan dışı bir şekilde otomatik olarak algılanır ve sizi uyarır. Zaman zaman oluşan hataların bir arka planını yok saymaya ve ayrıca yalnızca müşterinizin istekleriyle orantılı istekleri için de tek bir deyişle bu kadar akıllı bir değer. Örneğin, bağlı olduğunuz hizmetlerden birinde bir hata varsa veya yeni dağıttığınız derleme bu şekilde çalışmıyorsa, e-postanıza baktığımızda onu öğrenirsiniz. (Ve diğer uygulamaları tetikleyebilmeniz için Web kancaları vardır.)
 
 Bu özelliğin başka bir yönü, telemetrinizin günlük derinlemesine bir analizini gerçekleştirerek keşfedilecek olağan dışı bir performans düzeni sağlar. Örneğin, belirli bir coğrafi alanla veya belirli bir tarayıcı sürümüyle ilişkili yavaş performansı bulabilir.
 
@@ -145,9 +145,9 @@ Hata ayıklama sırasında, Telemetriyi geliştirme makinenizde tutma, Visual St
 Bir uyarı ortaya çıktığında Application Insights, iş izleme sisteminizde otomatik olarak bir iş öğesi oluşturabilir.
 
 ## <a name="but-what-about"></a>Ancak...?
-* [Gizlilik ve depolama](../../azure-monitor/app/data-retention-privacy.md) -Azure güvenli sunucularında telemetri tutulur.
+* [Gizlilik ve depolama](./data-retention-privacy.md) -Azure güvenli sunucularında telemetri tutulur.
 * Performans-etki çok düşüktür. Telemetri toplu olarak oluşturulur.
-* [Fiyatlandırma](../../azure-monitor/app/pricing.md) -ücretsiz olarak kullanmaya başlayabilir ve düşük hacimde devam edersiniz.
+* [Fiyatlandırma](./pricing.md) -ücretsiz olarak kullanmaya başlayabilir ve düşük hacimde devam edersiniz.
 
 
 ## <a name="video"></a>Video
@@ -157,6 +157,7 @@ Bir uyarı ortaya çıktığında Application Insights, iş izleme sisteminizde 
 ## <a name="next-steps"></a>Sonraki adımlar
 Application Insights kullanmaya başlamak kolaydır. Ana Seçenekler şunlardır:
 
-* [Azure App Service](../../azure-monitor/app/app-insights-overview.md)Için de [IIS sunucuları](../../azure-monitor/app/monitor-performance-live-website-now.md).
-* Geliştirme sırasında projenizi işaretleyin. Bunu [ASP.net](../../azure-monitor/app/asp-net.md) veya [Java](../../azure-monitor/app/java-get-started.md) uygulamaları için, [Node.js](../../azure-monitor/app/nodejs.md) ve [diğer türlerde](../../azure-monitor/app/platforms.md)bir konak için yapabilirsiniz. 
-* Kısa bir kod parçacığı ekleyerek [herhangi bir Web sayfasını](../../azure-monitor/app/javascript.md) işaretleyin.
+* [Azure App Service](./app-insights-overview.md)Için de [IIS sunucuları](./monitor-performance-live-website-now.md).
+* Geliştirme sırasında projenizi işaretleyin. Bunu [ASP.net](./asp-net.md) veya [Java](./java-get-started.md) uygulamaları için, [Node.js](./nodejs.md) ve [diğer türlerde](./platforms.md)bir konak için yapabilirsiniz. 
+* Kısa bir kod parçacığı ekleyerek [herhangi bir Web sayfasını](./javascript.md) işaretleyin.
+

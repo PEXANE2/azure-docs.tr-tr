@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.custom: mqtt
-ms.openlocfilehash: 5e3f4f4aedb0bc3fb1f8ea11001b08daa57aafc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-java
+ms.openlocfilehash: c1cac67d79363ce25fb55d73cc3d8c42ea901fb1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732479"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325092"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>İşleri zamanlama ve yayınlama (Java)
 
@@ -51,7 +52,7 @@ IoT Hub 'ınıza bağlanan, **Lockkapısı** doğrudan yöntemini uygulayan ve i
 > [!NOTE]
 > [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesi, hem cihaz hem de arka uç uygulamaları oluşturmak Için kullanabileceğiniz Azure IoT SDK 'ları hakkında bilgi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 

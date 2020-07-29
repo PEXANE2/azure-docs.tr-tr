@@ -7,12 +7,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: b9f41a99f6cf21574c3c26950d5c9f048d85a468
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 40ce2844e33c9a71f87e434a6a3e9f8e0f7e3cc6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539525"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322117"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Birden çok Azure Izleyici Application Insights kaynağını bütünleştirme 
 Bu makalede, Application Insights Bağlayıcısı kullanım dışı bırakma işleminin yerine, farklı Azure aboneliklerinde olsalar bile, tüm Application Insights günlük verilerinizi tek bir yerde sorgulama ve görüntüleme açıklanmaktadır. Tek bir sorguya dahil edebilirsiniz Application Insights kaynak sayısı 100 ile sınırlıdır.
@@ -57,7 +57,7 @@ Sorgu Application Insights şeması kullanır, ancak applicationsScoping işlevi
 ![Çapraz sorgu sonuçları örneği](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->Log uyarılarındaki [çapraz kaynak sorgusu](../log-query/cross-workspace-query.md) , yeni [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)'sinde desteklenir. Azure Izleyici, [eski günlük uyarıları API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)'sinden geçiş yapmadığınız takdirde, varsayılan olarak, Azure Portal ' dan yeni günlük uyarı kuralları oluşturmak için [eskı Log Analytics uyarı API](../platform/api-alerts.md) 'sini kullanır. Anahtar sonrasında, yeni API Azure portal yeni uyarı kuralları için varsayılan olur ve çapraz kaynak sorgu günlüğü uyarı kuralları oluşturmanıza olanak sağlar. [Scheduledqueryrules API 'si Için ARM şablonunu](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) kullanarak anahtarı yapmadan [çapraz kaynak sorgu](../log-query/cross-workspace-query.md) günlüğü uyarı kuralları oluşturabilirsiniz, ancak bu uyarı kuralı Azure Portal değil, [scheduledqueryrules API 'si](/rest/api/monitor/scheduledqueryrules) ile yönetilebilir.
+>Log uyarılarındaki [çapraz kaynak sorgusu](./cross-workspace-query.md) , yeni [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)'sinde desteklenir. Azure Izleyici, [eski günlük uyarıları API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)'sinden geçiş yapmadığınız takdirde, varsayılan olarak, Azure Portal ' dan yeni günlük uyarı kuralları oluşturmak için [eskı Log Analytics uyarı API](../platform/api-alerts.md) 'sini kullanır. Anahtar sonrasında, yeni API Azure portal yeni uyarı kuralları için varsayılan olur ve çapraz kaynak sorgu günlüğü uyarı kuralları oluşturmanıza olanak sağlar. [Scheduledqueryrules API 'si Için ARM şablonunu](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) kullanarak anahtarı yapmadan [çapraz kaynak sorgu](./cross-workspace-query.md) günlüğü uyarı kuralları oluşturabilirsiniz, ancak bu uyarı kuralı Azure Portal değil, [scheduledqueryrules API 'si](/rest/api/monitor/scheduledqueryrules) ile yönetilebilir.
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights ve Log Analytics çalışma alanı şema farklılıkları
 Aşağıdaki tabloda Log Analytics ve Application Insights arasındaki şema farklılıkları gösterilmektedir.  
@@ -76,7 +76,7 @@ Aşağıdaki tabloda Log Analytics ve Application Insights arasındaki şema far
 | Kullanılabilirliği olan Bilitytestname | name |
 | Kullanılabilirlik zaman damgası | timestamp |
 | Tarayıcı | client_browser |
-| City | client_city |
+| Şehir | client_city |
 | ClientIP | client_IP |
 | Bilgisayar | cloud_RoleInstance | 
 | Ülke | client_CountryOrRegion | 
@@ -112,4 +112,5 @@ Aşağıdaki tabloda Log Analytics ve Application Insights arasındaki şema far
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Application Insights uygulamalarınızın ayrıntılı bilgilerini görüntülemek için [günlük araması](../../azure-monitor/log-query/log-query-overview.md) 'nı kullanın.
+Application Insights uygulamalarınızın ayrıntılı bilgilerini görüntülemek için [günlük araması](./log-query-overview.md) 'nı kullanın.
+

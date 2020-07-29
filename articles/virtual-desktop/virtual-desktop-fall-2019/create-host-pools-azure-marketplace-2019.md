@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü konak havuzu Azure Marketi-Azure
-description: Azure Marketi 'ni kullanarak Windows sanal masaüstü konak havuzu oluşturma.
+title: Windows sanal masaüstü (klasik) konak havuzu Azure Marketi-Azure
+description: Azure Marketi 'ni kullanarak Windows sanal masaüstü (klasik) konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256858"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291313"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
+# <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü 'nde bir konak havuzu oluşturma (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../create-host-pools-azure-marketplace.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../create-host-pools-azure-marketplace.md)bakın.
 
 Bu öğreticide, bir Microsoft Azure Market teklifi kullanarak Windows sanal masaüstü kiracısı içinde bir konak havuzu oluşturmayı öğreneceksiniz.
 
@@ -46,19 +46,19 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırın
 
 Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin.
 1. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
 1. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
 
 Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer alan yönergeleri izleyin.
 
-### <a name="basics"></a>Temel bilgiler
+### <a name="basics"></a>Temel Bilgiler
 
 **Temel kavramlar** sekmesi için şunları yapın:
 
@@ -115,7 +115,7 @@ Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer al
    [PowerShell öğreticisi ile hizmet sorumluları ve rol atamaları oluştur](create-service-principal-role-powershell.md)' u tamamladıysanız **hizmet sorumlusu**' nı seçin.
 
 1. **Hizmet sorumlusu**Için, **Azure AD Kiracı kimliği**Için HIZMET sorumlusunu içeren Azure AD örneği için kiracı yönetici hesabını girin. Yalnızca parola kimlik bilgilerine sahip hizmet sorumluları desteklenir.
-1. Yolunuzu tanımlamak için **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
+1. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>Kurulumu tamamladıktan sonra sanal makineyi oluşturun
 

@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyicisini etkinleştirme | Microsoft Docs
 description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunları nasıl tanımladığınızı anlayabilmeniz için kapsayıcılar için Azure Izleyicisini etkinleştirme ve yapılandırma açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499044"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320315"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
@@ -28,7 +28,7 @@ Aşağıdaki desteklenen yöntemlerden birini kullanarak yeni bir dağıtım vey
 - Azure portal
 - Azure PowerShell
 - Azure CLI
-- [Terrayform ve AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+- [Terrayform ve AKS](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -80,7 +80,7 @@ Aşağıdaki tabloda Kapsayıcılı aracının kapsayıcılar için Azure Izleyi
 
 Aşağıdaki tabloda, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir:
 
-|Aracı kaynağı|Bağlantı noktası |Description | 
+|Aracı kaynağı|Bağlantı noktası |Açıklama | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.cn` | 443 | OMS ekleme |
@@ -88,7 +88,7 @@ Aşağıdaki tabloda, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapı
 
 Aşağıdaki tabloda, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir:
 
-|Aracı kaynağı|Bağlantı noktası |Description | 
+|Aracı kaynağı|Bağlantı noktası |Açıklama | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.us` | 443 | OMS ekleme |
@@ -131,3 +131,4 @@ Kapsayıcılar için Azure Izleyicisini etkinleştirmek üzere aşağıdaki tabl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İzlemeyi etkinleştirmiş olduğunuza göre, Azure Kubernetes Service (AKS), Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerinin performansını çözümlemeye başlayabilirsiniz. Kapsayıcılar için Azure Izleyici 'yi nasıl kullanacağınızı öğrenmek için bkz. [Kubernetes küme performansını görüntüleme](container-insights-analyze.md).
+

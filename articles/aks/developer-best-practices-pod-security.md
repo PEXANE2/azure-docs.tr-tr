@@ -2,16 +2,15 @@
 title: Geliştirici en iyi uygulamalar-Azure Kubernetes Hizmetleri 'nde (AKS) Pod güvenliği
 description: Azure Kubernetes Service 'te (aks) Pod 'nin güvenliğini sağlama hakkında geliştirici için en iyi uygulamaları öğrenin
 services: container-service
-author: zr-msft
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 21ee65e6a4e51e91b23d9634917ec3f0267f1771
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115603"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320689"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Pod güvenliği için en iyi uygulamalar
 
@@ -52,15 +51,16 @@ kind: Pod
 metadata:
   name: security-context-demo
 spec:
+  securityContext:
+    fsGroup: 2000
   containers:
     - name: security-context-demo
       image: nginx:1.15.5
-    securityContext:
-      runAsUser: 1000
-      fsGroup: 2000
-      allowPrivilegeEscalation: false
-      capabilities:
-        add: ["NET_ADMIN", "SYS_TIME"]
+      securityContext:
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
 Hangi güvenlik bağlamı ayarlarına ihtiyacınız olduğunu belirlemek için küme işleçle çalışın. Diğer izinleri en aza indirmek için uygulamalarınızı tasarlamayı deneyin ve pod 'un gerektirdiği erişimi yapın. AppArmor ve seccomp (güvenli bilgi işlem) kullanarak erişimi, küme işleçleri tarafından uygulanabilecek şekilde sınırlamak için ek güvenlik özellikleri vardır. Daha fazla bilgi için bkz. [kaynaklara yönelik güvenli kapsayıcı erişimi][apparmor-seccomp].

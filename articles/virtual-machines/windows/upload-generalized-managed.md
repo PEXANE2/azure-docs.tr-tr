@@ -4,15 +4,15 @@ description: Genelleştirilmiş bir VHD 'yi Azure 'a yükleyin ve Kaynak Yöneti
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: e9d8e48e393f006c05e0a17b80e6f8cfe7e1d6ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9d5add1349650663b226023b9f46868f242ac4f9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500285"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265220"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Genelleştirilmiş bir VHD'yi karşıya yükleme ve Azure’da yeni VM’ler oluştururken kullanma
 

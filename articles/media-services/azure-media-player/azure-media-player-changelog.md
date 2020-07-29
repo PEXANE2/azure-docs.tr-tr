@@ -5,15 +5,127 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: fc8304fb068152c800d7b71f77fb601956fb6510
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023408"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281353"
 ---
 # <a name="changelog"></a>Değişiklik günlüğü #
+
+## <a name="235-official-update-june-1-2020"></a>2.3.5 (resmi güncelleştirme Haziran 1 2020)
+
+### <a name="bug-fixes-235"></a>Hata düzeltmeleri 2.3.5
+
+- Larınızdaki Seçenekler bölmesindeki ESC tuşu dinleyicisi belgeye iliştirilir
+- Larınızdaki Denetim çubuğu veya Seçenekler menüsü odak içeriyorsa oynatıcı Kullanıcı arabiriminin görüntülenmesini engelleyin
+- Duvar saati zaman görüntüleme ayarları etkinleştirildiğinde denetim çubuğu yanlış bir duvar saati saati gösterir
+
+### <a name="changes-235"></a>2.3.5 değişiklikleri
+
+- 0x00400005 hata kodu için hata iletisi eklendi ve belgelendirilmiş
+
+## <a name="234-official-update-march-4-2020"></a>2.3.4 (resmi güncelleştirme 4 2020 Mart)
+
+### <a name="bug-fixes-234"></a>Hata düzeltmeleri 2.3.4
+
+- PlayReady Overridelicensetanışıtionurl ayarlanamıyor
+- Bazı içerikler, süreksizlik ile çalınamadı
+- Larınızdaki Ekran okuyucusu uyarısı için ID öznitelik değeri benzersiz olmalıdır
+- Larınızdaki Kapalı açıklamalı altyazı ayarları iletişim kutusunda odak, iletişim kutusu dışına taşınır
+
+### <a name="changes-234"></a>2.3.4 değişiklikleri
+
+- Hatalı bir indirmeden sonra günlük kaydı-2.3.3 şifre çözme hatalarını çözümlemeye yardımcı olur (resmi güncelleştirme Kasım 12 2019)
+
+### <a name="features-234"></a>Özellikler 2.3.4
+
+- Bir videonun duvar saati zamanını bir kaplama olarak ve Denetim çubuğunda görüntüleme desteği eklendi
+
+### <a name="bug-fixes-234"></a>Hata düzeltmeleri 2.3.4
+
+- Ses izleme anahtarı çalışma, ancak ıE11 ve Windows7 ' nesnesinde çıkış hatası, ' Enabled ' özelliğini veya metodunu desteklemiyor
+- Arabellek tam olarak yüklendiğinde ses izleme anahtarı başarısız olur
+- Kullanıcı videoyu durakladığında ses izleme anahtarı başarısız olur ve çok hızlı ses parçaları arasında geçiş yapar
+- Larınızdaki Video oynatıcı altında video denetimi için tanımsız araç ipuçları
+- ' Loadstart ' ne zaman alındığını bağlı olarak HTML5 üzerinde eksik birim düğmeleri
+- Larınızdaki Poster görüntüsü için alternatif metin ayarlama yolu yoktur
+- Larınızdaki Açıklamalı altyazı ayarları iletişim kutusunda ' bitti ' seçildikten sonra uygulama odağı kayboldu
+- Larınızdaki ' Segment Önizlemesi ' altında ' video ' için yanlış ARıA öznitelikleri tanımlandı
+
+### <a name="changes-234"></a>2.3.4 değişiklikleri
+
+- İOS ve MacOS Safari 'de HLS oynatılırken boş açıklamalı altyazı etiketi/izleme kaldırıldı
+- IMSC1 açıklamalı alt yazıları için 412s sayısını azalttı
+- Canlı hata ayıklamaya yardımcı olmak için 10 ardışık boş IMSC1 açıklamalı alt yazı yanıtları için konsolda çıkış uyarısı
+
+## <a name="232-official-update-october-9-2019"></a>2.3.2 (resmi güncelleştirme 9 2019 Ekim)
+
+### <a name="features"></a>Özellikler
+
+-Berkum Edge tarayıcısı için kısa çizgi yürütmeye yönelik PlayReady desteği eklendi
+
+### <a name="bug-fixes-232"></a>Hata düzeltmeleri 2.3.2
+
+- Kullanıcı tarafından el ile ayarlanmadığı takdirde, geçerli kayıttan yürütme hızı, kayıttan yürütme hızı menüsünde görsel olarak gösterilmez
+- Larınızdaki ' Ayarlar ' Bölmesi ' Esc ' anahtarıyla daraltılamaz
+- Larınızdaki Ekran okuyucusu açık olduğunda AMP kısayol tuşu 'M ' çalışmıyor
+
+### <a name="changes-232"></a>2.3.2 değişiklikleri
+
+- E-AC3 ses codec bileşenini desteklemeyen tarayıcılarda, E-AC3 ses parçaları ses izleme menüsünde gizlenir
+- E-AC3 ses codec bileşenini destekleyen tarayıcılar için, varsayılan olarak bir E-AC3 ses parçası seçilidir
+- Ses codec geçişini desteklemeyen tarayıcılarda, seçili parçada farklı bir codec ile ses parçaları ses izleme menüsünde gizlenir
+
+## <a name="231-official-update-august-12-2019"></a>2.3.1 (resmi güncelleştirme Ağustos 12 2019)
+
+### <a name="features-231"></a>Özellikler 2.3.1
+
+- EC-3 ' ü destekleyen tarayıcılarda Ses menüsünde EC-3 ses izlerini göstermek ve yalnızca kımen en büyük tabanlı Edge tarayıcısında EC3 ' dan ses izlemeyi değiştirmeye izin vermek için, kısa bir kayıttan yürütme için EMSG kutuları alındığında bir olaya işaret edin.
+
+### <a name="bug-fixes-231"></a>Hata düzeltmeleri 2.3.1
+
+- EC-3 parçaları kaldırıldıktan sonra ses izleme menüsü bozuk
+- Geçerli saat, video süresinden çok büyük olabilir
+- Yürütme hızını ınitialspeed aracılığıyla ayarlama işe yaramazsa
+- Bazen bir arama sonrasında oyuncu takılmış görünüyor
+- Dokunmatik ekranda kenar ve IE bir sayfaya yakınlaştırdıktan sonra, SeekBar 'e basmak veya üzerine gelindiğinde videonun doğru segmentini doğru şekilde almaz
+- Larınızdaki Oynat/Duraklat için Aria etiketi, flashSS 'nin doğru amp hatası ile hata olmayan canlı kesim bulunamadı hatasıyla ilgili tanımlayıcı değil
+- Larınızdaki Oynat/Duraklat için kullanılan Aria rollerinin geçerli değerlere uygun olması gerekir (. VJS-metin-izleme-görüntüleme)
+- Larınızdaki Belirli ARIA rollerinin belirli ebeveynler tarafından yer almalıdır
+- Larınızdaki Video yürütücüsünün Oynat/Duraklat düğmesi için tanımlı araç ipucu yok IMSC1 açıklamalı alt yazılar geçerli video/ses arabelleği içinde arama yapıldıktan sonra kaybolabilir
+
+### <a name="changes-231"></a>2.3.1 değişiklikleri
+
+- Bir segmentDecryptError ve oynatıcı zaten canlı bir kenar üzerinde olduğunda, Player şimdi bir sonraki segmenti denemek yerine bildirimi yeniler
+- Tanılama için daha fazla günlüğe kaydetme eklendi
+- İOS Safari için Inlcude FairPlay desteğine güncelleştirilmiş belgeler
+- IMSC1 seçeneğinin "srclang" için bir örnek eklendi
+- Metin parçaları için doldurma, textPadding, boxShadow geçersiz kılmaları eklendi.
+- Yalnızca 0x00200259 ' un ayrılması yerine internet olmaması nedeniyle kesim indirmenin başarısız olması için bir hata kodu (0x0020025B) eklendi
+
+## <a name="230-official-release-april-30-2019"></a>2.3.0 (resmi yayın 30 2019 Nisan)
+
+### <a name="features-230"></a>Özellikler 2.3.0
+
+- DASH için IMSC1 açıklamalı alt yazıları desteği eklendi
+- DASH için yalnızca video varlıkları için destek eklendi
+- API presentationTimeOffsetInSec eklendi
+
+### <a name="bug-fixes-230"></a>Hata düzeltmeleri 2.3.0
+
+- AMP LowLatency buluşsal yöntemler profili, bazı dillerin yanlış çevirileri olması için iOS video kayıttan yürütme "sessiz" ve "Aç" ile kesintiye uğratır
+- İlerleme çubuğu kaydırıcısının Aria-valuenow değeri bazen yanlış
+- Metin izleme görüntüsüne ait Aria rol değeri hatalı
+
+### <a name="changes-230"></a>2.3.0 değişiklikleri
+
+- Günlükler artık indirilen medya parçalarının boyutunu içerir
+- IE 9 ve IE 10 desteği kaldırıldı
+- Sol hizalı açıklamalı alt yazıları göstermek için CEA708 örneği güncelleştirildi
+- Kayıttan yürütme hataları için günlüklere MediaError. Message ekleyin
 
 ## <a name="224-official-update-february-22-2019"></a>2.2.4 (resmi güncelleştirme Şubat 22 2019) ##
 
@@ -31,7 +143,7 @@ ms.locfileid: "87023408"
 
 ## <a name="223-official-update-january-9-2019"></a>2.2.3 (resmi güncelleştirme Ocak 9 2019) ##
 
-### <a name="features"></a>Özellikler ###
+### <a name="features-223"></a>Özellikler 2.2.3 ###
 
 - Özellik HLS Safari HLS yürütmesi için ses izleme menüsü eklendi
 

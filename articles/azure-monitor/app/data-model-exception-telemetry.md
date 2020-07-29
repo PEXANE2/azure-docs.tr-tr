@@ -4,15 +4,16 @@ description: Özel durum telemetrisi için Application Insights veri modeli
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6732fb3dde79abd5c69e2b0a91710bdd2356d6aa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671945"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320604"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Özel durum telemetrisi: Application Insights veri modeli
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md)bir özel durum örneği, izlenen uygulamanın yürütülmesi sırasında oluşan işlenmiş veya işlenmemiş bir özel durumu temsil eder.
+[Application Insights](./app-insights-overview.md)bir özel durum örneği, izlenen uygulamanın yürütülmesi sırasında oluşan işlenmiş veya işlenmemiş bir özel durumu temsil eder.
 
 ## <a name="problem-id"></a>Sorun kimliği
 
@@ -39,5 +40,6 @@ Maksimum Uzunluk: 1024 karakter
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Application Insights türleri ve veri modeli için [veri modeli](data-model.md) 'ne bakın.
-- [Web uygulamalarınızda Application Insights özel durumları tanılamayı](../../azure-monitor/app/asp-net-exceptions.md)öğrenin.
-- Application Insights tarafından desteklenen [platformları](../../azure-monitor/app/platforms.md) inceleyin.
+- [Web uygulamalarınızda Application Insights özel durumları tanılamayı](./asp-net-exceptions.md)öğrenin.
+- Application Insights tarafından desteklenen [platformları](./platforms.md) inceleyin.
+

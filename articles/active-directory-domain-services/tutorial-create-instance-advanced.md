@@ -1,6 +1,6 @@
 ---
-title: Öğretici-gelişmiş yapılandırma ile Azure AD DS yönetilen etki alanı oluşturma
-description: Bu öğreticide, Azure Active Directory Domain Services yönetilen bir etki alanı oluşturma ve yapılandırma ve Azure portal kullanarak gelişmiş yapılandırma seçeneklerini belirtme hakkında bilgi edineceksiniz.
+title: Öğretici-özelleştirilmiş Azure Active Directory Domain Services yönetilen etki alanı oluşturma | Microsoft Docs
+description: Bu öğreticide, özelleştirilmiş Azure Active Directory Domain Services yönetilen bir etki alanı oluşturma ve yapılandırma ve Azure portal kullanarak gelişmiş yapılandırma seçeneklerini belirtme hakkında bilgi edineceksiniz.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518530"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278565"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Öğretici: Gelişmiş yapılandırma seçenekleriyle Azure Active Directory Domain Services yönetilen bir etki alanı oluşturma ve yapılandırma
 
@@ -56,7 +56,7 @@ Bu öğreticide, Azure portal kullanarak yönetilen etki alanını oluşturup ya
 
 **Etkinleştirme Azure AD Domain Services** Sihirbazı 'nı başlatmak için aşağıdaki adımları izleyin:
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin.
 1. Arama çubuğuna *etki alanı Hizmetleri* girin, sonra arama önerilerindeki *Azure AD Domain Services* seçin.
 1. Azure AD Domain Services sayfasında **Oluştur**' u seçin. **Etkinleştirme Azure AD Domain Services** Sihirbazı başlatılır.
 1. Yönetilen etki alanını oluşturmak istediğiniz Azure **aboneliğini** seçin.
@@ -131,7 +131,7 @@ Sanal ağın nasıl planlanacağı ve yapılandırılacağı hakkında daha fazl
     1. Bir sanal ağ oluşturmayı seçerseniz, sanal ağ için *Myvnet*gibi bir ad girin ve ardından *10.0.1.0/24*gibi bir adres aralığı belirtin.
     1. *DomainServices*gibi açık bir ada sahip ayrılmış bir alt ağ oluşturun. *10.0.1.0/24*gibi bir adres aralığı belirtin.
 
-    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
+    [![Azure AD Domain Services ile kullanmak için bir sanal ağ ve alt ağ oluşturun](./media/tutorial-create-instance-advanced/create-vnet.png)](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     Özel IP adresi aralığınızı içinde olan bir adres aralığı seçtiğinizden emin olun. Ortak adres alanındaki sahip olmadığınız IP adresi aralıkları, Azure AD DS içinde hatalara neden olur.
 
@@ -159,7 +159,7 @@ Sihirbaz, Azure AD dizininizde *AAD DC yöneticileri* grubunu otomatik olarak ol
 
 ## <a name="configure-synchronization"></a>Eşitlemeyi yapılandırma
 
-Azure AD DS, Azure AD 'de bulunan *Tüm* kullanıcıları ve grupları ya da yalnızca belirli grupların *kapsamlı* bir eşitlemesini eşitlemenize olanak tanır. *Tüm* kullanıcıları ve grupları eşitlemeyi seçerseniz, daha sonra yalnızca kapsamlı bir eşitleme gerçekleştirmeyi tercih edebilirsiniz. Kapsamlı eşitleme hakkında daha fazla bilgi için bkz. [Azure AD Domain Services kapsamlı eşitleme][scoped-sync].
+Azure AD DS, Azure AD 'de bulunan *Tüm* kullanıcıları ve grupları ya da yalnızca belirli grupların *kapsamlı* bir eşitlemesini eşitlemenize olanak tanır. Synchronize kapsamını şimdi veya yönetilen etki alanı dağıtıldıktan sonra değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure AD Domain Services kapsamlı eşitleme][scoped-sync].
 
 1. Bu öğreticide **Tüm** kullanıcıları ve grupları eşitlemeyi seçin. Bu eşitleme seçeneği varsayılan seçenektir.
 

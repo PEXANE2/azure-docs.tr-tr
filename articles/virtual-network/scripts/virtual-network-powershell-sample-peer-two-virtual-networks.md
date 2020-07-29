@@ -1,6 +1,6 @@
 ---
 title: Eş iki sanal ağ-Azure PowerShell betik örneği
-description: Azure PowerShell betiği örneği - İki sanal ağı eşleme
+description: Aynı bölgede iki sanal ağ oluşturun ve bağlayın. Ağları Azure ağı üzerinden bağlamak için iki eş sanal ağ için Azure betiğini kullanın.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 6efc96565714021b15eb0a44cb69f71fe78e817a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cbcae51228e5bf722f3ea802a322483aed6c225
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068716"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286130"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>İki sanal ağı eşleme betiği örneği
 

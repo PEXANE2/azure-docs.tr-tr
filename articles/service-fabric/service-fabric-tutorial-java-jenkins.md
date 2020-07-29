@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594772"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320723"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Öğretici: Service Fabric üzerindeki bir Java uygulamasında CI/CD etkinleştirmek için bir Jenkins ortamı yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-java-elk.md)
 > * CI/CD ayarlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Git indirmeleri sayfasından](https://git-scm.com/downloads) Git’i yerel bilgisayarınıza yükleyin. Git hakkında daha fazla bilgi için [Git belgelerini](https://git-scm.com/docs) okuyun.
 * [Jenkins](https://jenkins.io/) ile çalışma hakkında bilgi sahibi olun.
@@ -85,11 +85,11 @@ Jenkins’i bir Service Fabric kümesinin içinde veya dışında ayarlayabilirs
 
    a. Genel bölümünde, **GitHub projesi**’nin onay kutusunu seçin ve GitHub projesi URL’nizi belirtin. Bu URL, Jenkins sürekli tümleştirme, sürekli dağıtım (CI/CD) akışı ile tümleştirmek istediğiniz Service Fabric Java uygulamasını barındırır (örneğin, ``https://github.com/testaccount/dev_test``).
 
-   b. **Kaynak Kodu Yönetimi** bölümünde **Git**’i seçin. Jenkins CI/CD akışıyla tümleştirmek istediğiniz Service Fabric Java uygulamasını barındıran depo URL 'sini belirtin (örneğin, *`https://github.com/testaccount/dev_test.git`*). Ayrıca, burada hangi dalın derleneceğini belirtebilirsiniz (örneğin, **/master**).
+   b. **Kaynak Kodu Yönetimi** bölümünde **Git**’i seçin. Jenkins CI/CD akışıyla tümleştirmek istediğiniz Service Fabric Java uygulamasını barındıran depo URL 'sini belirtin (örneğin, *`https://github.com/testaccount/dev_test.git`* ). Ayrıca, burada hangi dalın derleneceğini belirtebilirsiniz (örneğin, **/master**).
 
 1. *GitHub*’ınızı (depoyu barındıran) Jenkins ile konuşabilecek şekilde yapılandırın. Aşağıdaki adımları kullanın:
 
-   a. GitHub depo sayfanıza gidin. **Ayarlar** > **tümleştirmeleri ve Hizmetleri '** ne gidin.
+   a. GitHub depo sayfanıza gidin. **Ayarlar**  >  **tümleştirmeleri ve Hizmetleri '** ne gidin.
 
    b. **Hizmet Ekle**’yi seçin, **Jenkins** yazın ve **Jenkins-GitHub eklentisi**’ni seçin.
 
@@ -178,7 +178,7 @@ Jenkins’i bir Service Fabric kümesinin içinde veya dışında ayarlayabilirs
 
     ![Devam eden yükseltme](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-1. **http://\<Host-IP>:8080** adresine erişirseniz Oylama uygulaması tüm işlevselliğiyle çalışır durumda olur.
+1. **Http:// \<Host-IP> : 8080** ' a eriştiğinizde, tam işlevli oylama uygulaması artık çalışır durumdadır.
 
     ![Yerel Oylama Uygulaması](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 

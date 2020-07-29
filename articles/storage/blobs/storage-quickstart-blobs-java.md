@@ -2,17 +2,18 @@
 title: 'Hızlı başlangıç: Azure Blob depolama kitaplığı V12-Java'
 description: Bu hızlı başlangıçta, blob (nesne) deposunda bir kapsayıcı ve BLOB oluşturmak için Java için Azure Blob depolama istemci kitaplığı sürüm 12 ' yi nasıl kullanacağınızı öğrenirsiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobların listesini görüntülemeyi öğreneceksiniz.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 01/27/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 41d6457986ac3c97b3e7a19d089e7ce6a15d1f5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c0b8d6ea772d3d655eb6fbe39afa5ef9edafc11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011286"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319822"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Hızlı başlangıç: Java V12 SDK ile Blobları yönetme
 
@@ -31,9 +32,6 @@ Ek kaynaklar:
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üzeri.
 - [Apache Maven](https://maven.apache.org/download.cgi).
-
-> [!NOTE]
-> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: Java V8 SDK ile Blobları yönetme](storage-quickstart-blobs-java-legacy.md).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

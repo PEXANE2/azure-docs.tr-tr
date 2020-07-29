@@ -4,12 +4,12 @@ description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516065"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322423"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
 
@@ -92,7 +92,7 @@ Aşağıdaki yordamı kullanın.
     - **Açıklama**: yeni uyarı kuralının açıklaması.
     - **Uyarıyı kaynak grubuna kaydet**: Bu yeni kuralı kaydetmek istediğiniz kaynak grubunu seçin.
 
-5. **Eylem grubu**altında, açılan menüden, bu yeni uyarı kuralına atamak istediğiniz eylem grubunu belirtin. Ya da [Yeni bir eylem grubu oluşturun](../../azure-monitor/platform/action-groups.md) ve yeni kurala atayın. Yeni bir grup oluşturmak için **+ Yeni Grup**' u seçin.
+5. **Eylem grubu**altında, açılan menüden, bu yeni uyarı kuralına atamak istediğiniz eylem grubunu belirtin. Ya da [Yeni bir eylem grubu oluşturun](./action-groups.md) ve yeni kurala atayın. Yeni bir grup oluşturmak için **+ Yeni Grup**' u seçin.
 
 6. Kuralları oluşturduktan sonra etkinleştirmek için, **oluşturma sırasında kuralı etkinleştir** **seçeneğini belirleyin.**
 7. **Uyarı kuralı oluştur**’u seçin.
@@ -219,7 +219,7 @@ Aşağıdaki alanlar, koşullar alanları için Azure Resource Manager şablonun
 9. alt durum: genellikle karşılık gelen REST çağrısının HTTP durum kodudur, ancak alt durumu tanımlayan diğer dizeleri de içerebilir.   Örneğin: Tamam (HTTP durum kodu: 200), oluşturulan (HTTP durum kodu: 201), kabul edildi (HTTP durum kodu: 202), Içerik yok (HTTP durum kodu: 204), hatalı Istek (http durum kodu: 400), bulunamadı (http durum kodu: 404), çakışma (HTTP durum kodu: 409), Iç sunucu hatası (http durum kodu: 500), hizmet kullanılamıyor (http durum kodu: 503), ağ geçidi zaman aşımı (http durum kodu: 504).
 10. resourceType: olaydan etkilenen kaynağın türü. Örneğin: Microsoft. resources/dağıtımlar
 
-Örneğin:
+Örnek:
 
 ```json
 "condition": {
@@ -269,7 +269,7 @@ Etkinlik günlüğü uyarıları için kullanılabilir adanmış PowerShell cmdl
 - [Disable-AzActivityLogAlert](/powershell/module/az.monitor/disable-azactivitylogalert): var olan bir etkinlik günlüğü uyarısını devre dışı bırakır ve etiketlerini ayarlar.
 - [Remove-AzActivityLogAlert](/powershell/module/az.monitor/remove-azactivitylogalert): bir etkinlik günlüğü uyarısını kaldırır.
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Ayarla [az Monitor Activity-Log Alert](/cli/azure/monitor/activity-log/alert) altında ADANMıŞ Azure CLI komutları, etkinlik günlüğü uyarı kurallarını yönetmek için kullanılabilir.
 
@@ -285,7 +285,8 @@ Etkinlik günlüğü uyarı kuralı kaynakları Azure CLı komutu kullanılarak 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Etkinlik günlükleri için Web kancası şeması](../../azure-monitor/platform/activity-log-alerts-webhook.md)hakkında bilgi edinin.
-- [Etkinlik günlüklerine genel bakış](../../azure-monitor/platform/activity-log-alerts.md)konusunu okuyun.
-- [Eylem grupları](../../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.  
+- [Etkinlik günlükleri için Web kancası şeması](./activity-log-alerts-webhook.md)hakkında bilgi edinin.
+- [Etkinlik günlüklerine genel bakış](./activity-log-alerts.md)konusunu okuyun.
+- [Eylem grupları](./action-groups.md)hakkında daha fazla bilgi edinin.  
 - [Hizmet durumu bildirimleri](../../service-health/service-notifications.md)hakkında bilgi edinin.
+

@@ -7,15 +7,15 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 5354379b73eca46e35c41cc0cf580b113dae7e8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2a562378ae626351922e43d33f38e62331ab58de
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499265"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323494"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens’te Application Insights telemetrisi
-Web uygulamanızın kodundaki yöntemlere, çalışma zamanı özel durumları ve istek yanıt süreleri hakkında telemetri ile açıklama eklenebilir. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)’ı uygulamanıza yüklerseniz telemetri Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) içinde (işlevin başvurulduğu yer sayısı veya düzenleyen kişi gibi yararlı bilgileri görmeye alışkın olduğunuz her bir işlevin üst kısmında) görünür.
+Web uygulamanızın kodundaki yöntemlere, çalışma zamanı özel durumları ve istek yanıt süreleri hakkında telemetri ile açıklama eklenebilir. [Azure Application Insights](./app-insights-overview.md)’ı uygulamanıza yüklerseniz telemetri Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) içinde (işlevin başvurulduğu yer sayısı veya düzenleyen kişi gibi yararlı bilgileri görmeye alışkın olduğunuz her bir işlevin üst kısmında) görünür.
 
 ![CodeLens](./media/visual-studio-codelens/codelens-overview.png)
 
@@ -70,6 +70,7 @@ Daha fazla ayrıntı için CodeLens istek göstergesine tıklayın:
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 |  |  |
 | --- | --- |
-| **[Visual Studio’da Application Insights ile çalışma](../../azure-monitor/app/visual-studio.md)**<br/>Telemetri arayın, CodeLens içindeki verilere bakın ve Application Insights’ı yapılandırın. Hepsi Visual Studio’da. |![Projeye sağ tıklayın ve Application Insights, Ara’yı seçin](./media/visual-studio-codelens/34.png) |
-| **[Daha fazla veri ekleme](../../azure-monitor/app/asp-net-more.md)**<br/>Kullanımı, kullanılabilirliği, bağımlılıkları, özel durumları izleyin. Günlük altyapılarından izlemeleri tümleştirin. Özel telemetri yazın. |![Visual studio](./media/visual-studio-codelens/64.png) |
-| **[Application Insights portalıyla çalışma](../../azure-monitor/app/overview-dashboard.md)**<br/>Panolar, güçlü tanılama ve analiz araçları, uyarılar, uygulamanızın canlı bağımlılık haritası ve telemetriyi dışarı aktarma. |![Visual studio](./media/visual-studio-codelens/62.png) |
+| **[Visual Studio’da Application Insights ile çalışma](./visual-studio.md)**<br/>Telemetri arayın, CodeLens içindeki verilere bakın ve Application Insights’ı yapılandırın. Hepsi Visual Studio’da. |![Projeye sağ tıklayın ve Application Insights, Ara’yı seçin](./media/visual-studio-codelens/34.png) |
+| **[Daha fazla veri ekleme](./asp-net-more.md)**<br/>Kullanımı, kullanılabilirliği, bağımlılıkları, özel durumları izleyin. Günlük altyapılarından izlemeleri tümleştirin. Özel telemetri yazın. |![Visual studio](./media/visual-studio-codelens/64.png) |
+| **[Application Insights portalıyla çalışma](./overview-dashboard.md)**<br/>Panolar, güçlü tanılama ve analiz araçları, uyarılar, uygulamanızın canlı bağımlılık haritası ve telemetriyi dışarı aktarma. |![Visual studio](./media/visual-studio-codelens/62.png) |
+

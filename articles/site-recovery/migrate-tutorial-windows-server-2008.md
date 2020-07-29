@@ -5,38 +5,43 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73936132"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281285"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 çalıştıran sunucuları Azure'a geçirme
 
-Bu öğreticide Azure Site Recovery'yi kullanarak Windows Server 2008 veya 2008 R2 çalıştıran sunucuları Azure'a geçirme adımları gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide, Azure Site Recovery kullanarak Windows Server 2008 veya 2008 R2 çalıştıran şirket içi sunucuları Azure 'a nasıl geçirebileceğiniz gösterilmektedir. 
+
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Ortamınızı geçiş için hazırlama
-> * Hedef ortamı ayarlama
-> * Çoğaltma ilkesi ayarlama
-> * Çoğaltmayı etkinleştirme
-> * Her şeyin beklendiği gibi çalıştığından emin olmak için bir geçiş testi çalıştırma
-> * Azure'a yük devretme ve geçişi tamamlama
+> * Şirket içi ortamınızı geçiş için hazırlayın.
+> * Hedef ortamı ayarlayın.
+> * Çoğaltma ilkesi ayarlayın.
+> * Çoğaltmayı etkinleştirin.
+> * Her şeyin beklendiği gibi çalıştığından emin olmak için bir test geçişi çalıştırın.
+> * Azure 'a yük devretmek ve geçişi tamamladıktan sonra.
 
-Sınırlamalar ve bilinen sorunlar bölümünde bazı sınırlamalar Windows Server 2008 makineleri Azure'a geçirirken karşılaşabileceğiniz bilinen sorunların geçici çözümlerine yer verilmiştir. 
+## <a name="migrate-with-azure-migrate"></a>Azure geçişi ile geçiş
 
-> [!NOTE]
-> Artık Azure geçişi hizmetini kullanarak şirket içinden Azure 'a geçiş yapabilirsiniz. [Daha fazla bilgi edinin](../migrate/migrate-services-overview.md).
+[Azure geçişi](../migrate/migrate-services-overview.md) hizmetini kullanarak makineleri Azure 'a geçirmeniz önerilir. Azure geçişi, Azure geçişi, diğer Azure hizmetleri ve üçüncü taraf araçları kullanarak şirket içi makinelerin Azure 'a değerlendirilmesi ve geçirilmesi için merkezi bir merkez sağlar. Azure Site Recovery, yalnızca olağanüstü durum kurtarma için kullanılmalıdır, geçiş değildir.
 
-
-## <a name="supported-operating-systems-and-environments"></a>Desteklenen işletim sistemleri ve ortamlar
+Azure geçişi, Windows Server 2008 çalıştıran sunucuların geçirilmesini destekler.
 
 
-|İşletim Sistemi  | Şirket içi ortam  |
+## <a name="migrate-with-site-recovery"></a>Site Recovery ile geçir
+
+### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+
+
+|İşletim Sistemi  | Ortam  |
 |---------|---------|
 |Windows Server 2008 SP2 - 32 bit ve 64 bit (IA-32 ve x86-64)</br>- Standard</br>- Enterprise</br>- Datacenter   |     VMware VM'leri, Hyper-V VM'leri ve Fiziksel Sunucular    |
 |Windows Server 2008 R2 SP1 - 64 bit</br>- Standard</br>- Enterprise</br>- Datacenter     |     VMware VM'leri, Hyper-V VM'leri ve Fiziksel Sunucular|
@@ -46,9 +51,9 @@ Sınırlamalar ve bilinen sorunlar bölümünde bazı sınırlamalar Windows Ser
 > - Geçiş öncesinde en son hizmet paketini ve Windows güncelleştirmelerini yüklediğinizden emin olun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce [VMware ve Fiziksel sunucu geçişi](vmware-azure-architecture.md) veya [Hyper-V sanal makinesi geçişi](hyper-v-azure-architecture.md) için Azure Site Recovery mimarisini gözden geçirmeniz faydalı olabilir. 
+Başlamadan önce, [VMware ve fiziksel sunucu geçişi](vmware-azure-architecture.md) veya [Hyper-V sanal makine geçişi](hyper-v-azure-architecture.md) Azure Site Recovery mimarisini gözden geçirmeniz yararlı olabilir. 
 
 Windows Server 2008 veya Windows Server 2008 R2 çalıştıran Hyper-V sanal makinelerini geçirmek için [şirket içi makineleri Azure'a geçirme](migrate-tutorial-on-premises-azure.md) öğreticisindeki adımları izleyin.
 
@@ -57,7 +62,7 @@ Bu öğreticinin geri kalan bölümünde Windows Server 2008 veya 2008 R2 çalı
 > VMware VM 'lerini Azure 'a geçirmeyi daha az bir şekilde mi arıyorsunuz? [Buraya tıklayın](https://aka.ms/migrateVMs-signup)
 
 
-## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
+### <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 
 - Windows Server 2008 SP2 sunucuları geçirmek için kullanılan Yapılandırma Sunucusu, ek işlem sunucuları ve mobility hizmetinin Azure Site Recovery yazılımının 9.19.0.0 veya üzeri sürümünü kullanıyor olması gerekir.
 
@@ -79,10 +84,10 @@ Bu öğreticinin geri kalan bölümünde Windows Server 2008 veya 2008 R2 çalı
   >
   >Yük devretme testi işlemi kesintiye neden olmaz ve kendi seçtiğiniz yalıtılmış bir ağda sanal makine oluşturarak geçiş testi yapmanıza yardımcı olur. Yük devretme işleminden farklı olarak yük devretme testi sırasında veri çoğaltma devam eder. Geçişe hazır olduğunuzdan emin olana kadar istediğiniz sayıda yük devretme testi gerçekleştirebilirsiniz. 
   >
-  >
+  
 
 
-## <a name="getting-started"></a>Başlarken
+### <a name="get-started"></a>başlarken
 
 Azure aboneliğini ve şirket içi VMware/Fiziksel ortamı hazırlamak için aşağıdaki görevleri gerçekleştirin:
 
@@ -90,10 +95,10 @@ Azure aboneliğini ve şirket içi VMware/Fiziksel ortamı hazırlamak için aş
 2. Şirket içi [VMware](vmware-azure-tutorial-prepare-on-premises.md) 'yi hazırlama
 
 
-## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
+### <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-1. [Azure Portal](https://portal.azure.com) > **Kurtarma hizmetlerinde**oturum açın.
-2. **Kaynak** > **yönetimi araçları** > **yedeklemesi ve Site Recovery**oluştur ' a tıklayın.
+1. [Azure Portal](https://portal.azure.com)  >  **Kurtarma hizmetlerinde**oturum açın.
+2. **Kaynak**  >  **yönetimi araçları**  >  **yedeklemesi ve Site Recovery**oluştur ' a tıklayın.
 3. **Ad** bölümünde **W2K8-migration** kolay adını belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 4. **w2k8migrate** adlı bir kaynak grubu oluşturun.
 5. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
@@ -104,23 +109,23 @@ Azure aboneliğini ve şirket içi VMware/Fiziksel ortamı hazırlamak için aş
 Yeni kasa, **Pano**’da **Tüm kaynaklar** bölümüne ve ana **Kurtarma Hizmetleri kasaları** sayfasına eklenir.
 
 
-## <a name="prepare-your-on-premises-environment-for-migration"></a>Ortamınızı geçiş için hazırlama
+### <a name="prepare-your-on-premises-environment-for-migration"></a>Ortamınızı geçiş için hazırlama
 
 - VMware üzerinde çalışan Windows Server 2008 sanal makinelerini geçirmek için [VMware'de şirket içi Yapılandırma Sunucusu'nu kurun](vmware-azure-tutorial.md#set-up-the-source-environment).
 - Yapılandırma Sunucusu bir VMware sanal makinesi olarak kurulamıyorsa [Yapılandırma Sunucusu'nu şirket içindeki bir fiziksel sunucuya veya sanal makineye kurun](physical-azure-disaster-recovery.md#set-up-the-source-environment).
 
-## <a name="set-up-the-target-environment"></a>Hedef ortamı ayarlama
+### <a name="set-up-the-target-environment"></a>Hedef ortamı ayarlama
 
 Hedef kaynaklarını seçin ve doğrulayın.
 
-1. **Altyapı** > **hedefini**hazırla ' ya tıklayın ve kullanmak istediğiniz Azure aboneliğini seçin.
+1. **Altyapı hedefini hazırla**' ya tıklayın  >  **Target**ve kullanmak istediğiniz Azure aboneliğini seçin.
 2. Kaynak Yöneticisi dağıtım modelini belirtin.
 3. Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağınızın olup olmadığını denetler.
 
 
-## <a name="set-up-a-replication-policy"></a>Çoğaltma ilkesi ayarlama
+### <a name="set-up-a-replication-policy"></a>Çoğaltma ilkesi ayarlama
 
-1. Yeni bir çoğaltma ilkesi oluşturmak için, **Site Recovery altyapı** > **çoğaltma ilkeleri** > **+ Çoğaltma İlkesi**' ne tıklayın.
+1. Yeni bir çoğaltma ilkesi oluşturmak için, **Site Recovery altyapı**  >  **çoğaltma ilkeleri**  >  **+ Çoğaltma İlkesi**' ne tıklayın.
 2. **Çoğaltma ilkesi oluştur** bölümünde bir ilke adı belirtin.
 3. **RPO eşiği** bölümünde kurtarma noktası hedefi (RPO) sınırını belirtin. Çoğaltma RPO değeri bu sınırı aştığında bir uyarı oluşturulur.
 4. **Kurtarma noktası bekletme** bölümünde, her kurtarma noktası için bekletme süresinin ne kadar olacağını (saat) belirtin. Çoğaltılan sunucular, Bu penceredeki herhangi bir noktaya kurtarılabilir. Premium depolama alanına çoğaltılan makineler için 24 saate, standart depolama için de 72 saate kadar bekletme desteklenir.
@@ -133,7 +138,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 
    ![Çoğaltma ilkesi oluşturma](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
-## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
+### <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 
 Geçirilen Windows Server 2008 SP2/Windows Server 2008 R2 SP1 sunucusu için [çoğaltmayı etkinleştirin](physical-azure-disaster-recovery.md#enable-replication).
    
@@ -141,7 +146,7 @@ Geçirilen Windows Server 2008 SP2/Windows Server 2008 R2 SP1 sunucusu için [ç
 
    ![Çoğaltmayı etkinleştirme](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
-## <a name="run-a-test-migration"></a>Geçiş testi çalıştırma
+### <a name="run-a-test-migration"></a>Geçiş testi çalıştırma
 
 İlk çoğaltma tamamlandıktan ve sunucu durumu **Korumalı** olduktan sonra çoğaltılan sunucularda yük devretme testi gerçekleştirebilirsiniz.
 
@@ -150,13 +155,13 @@ Her şeyin beklendiği gibi çalıştığından emin olmak için bir Azure’a [
    ![Yük devretme testi](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
-## <a name="migrate-to-azure"></a>Azure’a geçiş
+### <a name="migrate-to-azure"></a>Azure’a geçiş
 
 Geçirmek istediğiniz makineler için yük devretmeyi çalıştırın.
 
-1. **Ayarlar** > **çoğaltılan öğeler** ' de **Yük devretme**> makine ' ye tıklayın.
+1. **Ayarlar**  >  **çoğaltılan öğeler** ' de **Yük devretme**> makine ' ye tıklayın.
 2. **Yük devretme**’de yük devretmenin yapılacağı bir **Kurtarma Noktası** seçin. En son kurtarma noktasını seçin.
-3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce sunucuyu kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce sunucuyu kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 4. Azure VM’nin Azure’da beklendiği gibi görüntülenip görüntülenmediğini kontrol edin.
 5. **Çoğaltılan öğeler**' de, sunucuyu sağ tıklatın > **geçişi Tamam**' ı seçin. Bu, şunları yapar:
 
@@ -168,3 +173,7 @@ Geçirmek istediğiniz makineler için yük devretmeyi çalıştırın.
 
 > [!WARNING]
 > **Devam eden bir yük devretme işlemini Iptal etmeyin**: yük devretme başlatılmadan önce sunucu çoğaltması durdurulur. Devam eden bir yük devretme işlemini iptal ederseniz, yük devretme işlemi duraklar, ancak sunucu çoğaltılmaya devam eder.
+
+## <a name="next-steps"></a>Sonraki adımlar
+> [!div class="nextstepaction"]
+> Azure geçişi ile ilgili [sık sorulan soruları gözden geçirin](../migrate/resources-faq.md) .

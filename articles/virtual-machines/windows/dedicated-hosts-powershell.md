@@ -3,17 +3,17 @@ title: Azure adanmış Konakları Azure PowerShell kullanarak dağıtma
 description: Azure PowerShell kullanarak VM 'Leri adanmış ana bilgisayarlara dağıtın.
 author: cynthn
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: d8ac13c612840b930eb374971f3419af64cb48a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 599d13daac2e062c8f71f5f7d7133646a1447123
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500727"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87266597"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
 

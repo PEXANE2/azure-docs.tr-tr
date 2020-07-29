@@ -1,7 +1,7 @@
 ---
 title: Sanal ağ oluşturma-hızlı başlangıç-Azure CLı
 titlesuffix: Azure Virtual Network
-description: Bu hızlı başlangıçta, Azure CLı kullanarak bir sanal ağ oluşturmayı öğreneceksiniz. Sanal ağ, sanal makineler gibi Azure kaynaklarının birbiriyle ve internet ile özel olarak iletişim kurmasına olanak tanır.
+description: Bu hızlı başlangıçta, Azure CLı kullanarak bir sanal ağ oluşturmayı öğrenin. Bir sanal ağ, Azure kaynaklarının birbirleriyle ve internet ile iletişim kurmasına olanak tanır.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 2a4c63aeaa303692fa0f2d115a3df0d80cfab0b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed535c76ae3c456c8aa7d2e14301b9cb9cb288be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235190"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283189"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak sanal ağ oluşturma
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.c
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Kaynak grubu ve sanal ağ oluşturma
 
@@ -66,7 +66,7 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>İkinci sanal makineyi oluşturma
 
-Önceki adımda bu `--no-wait` seçeneği kullandıysanız, devam edebilir ve *myVm2*adlı ikinci VM 'yi oluşturabilirsiniz.
+`--no-wait`Önceki adımda bu seçeneği kullandıysanız, devam edebilir ve *myVm2*adlı ikinci VM 'yi oluşturabilirsiniz.
 
 ```azurecli-interactive
 az vm create \
@@ -98,7 +98,7 @@ Sanal makinelerin oluşturulması birkaç dakika sürebilir. Azure VM 'Leri olu�
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
-Bu komutta, *myVm2* sanal `<publicIpAddress>` makinenizin genel IP adresiyle değiştirin:
+Bu komutta, `<publicIpAddress>` *myVm2* sanal makinenizin genel IP adresiyle değiştirin:
 
 ```bash
 ssh <publicIpAddress>

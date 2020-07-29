@@ -3,20 +3,20 @@ title: Application Insights uyarıları ayarlamak için PowerShell 'i kullanma |
 description: Ölçüm değişiklikleriyle ilgili e-posta almak için Application Insights yapılandırmasını otomatikleştirin.
 ms.topic: conceptual
 ms.date: 07/23/2016
-ms.openlocfilehash: 00212aa8783a6bfc8e46d325a882781e33b7de51
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117173"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322474"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Application Insights uyarıları ayarlamak için PowerShell kullanma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) [Uyarı](../../azure-monitor/platform/alerts-log.md) yapılandırmasını otomatikleştirebilir.
+[Application Insights](./app-insights-overview.md) [Uyarı](../platform/alerts-log.md) yapılandırmasını otomatikleştirebilir.
 
-Ayrıca, [Web kancalarını bir uyarıya yönelik yanıtınızı otomatikleştirmek için ayarlayabilirsiniz](../../azure-monitor/platform/alerts-webhooks.md).
+Ayrıca, [Web kancalarını bir uyarıya yönelik yanıtınızı otomatikleştirmek için ayarlayabilirsiniz](../platform/alerts-webhooks.md).
 
 > [!NOTE]
 > Aynı anda kaynak ve uyarı oluşturmak istiyorsanız, [bir Azure Resource Manager şablonu](powershell.md)kullanmayı göz önünde bulundurun.
@@ -82,7 +82,7 @@ Add-AzMetricAlertRule -Name "slow responses" `
 ```
 
 ## <a name="example-2"></a>Örnek 2
-"SalesPerHour" adlı bir ölçümü raporlamak için [Trackmetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) kullandığım bir uygulamam var. "SalesPerHour", 24 saatten fazla ortalama olan 100 altına düşerse iş arkadaşlarınıza e-posta gönderin.
+"SalesPerHour" adlı bir ölçümü raporlamak için [Trackmetric ()](./api-custom-events-metrics.md#trackmetric) kullandığım bir uygulamam var. "SalesPerHour", 24 saatten fazla ortalama olan 100 altına düşerse iş arkadaşlarınıza e-posta gönderin.
 
 ```azurepowershell
 Add-AzMetricAlertRule -Name "poor sales" `
@@ -98,7 +98,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
   -RuleType Metric
 ```
 
-Aynı kural, TrackEvent veya trackPageView gibi başka bir izleme çağrısının [ölçüm parametresi](../../azure-monitor/app/api-custom-events-metrics.md#properties) kullanılarak bildirilen ölçüm için de kullanılabilir.
+Aynı kural, TrackEvent veya trackPageView gibi başka bir izleme çağrısının [ölçüm parametresi](./api-custom-events-metrics.md#properties) kullanılarak bildirilen ölçüm için de kullanılabilir.
 
 ## <a name="metric-names"></a>Ölçüm adları
 | Ölçüm adı | Ekran adı | Açıklama |
@@ -124,22 +124,23 @@ Aynı kural, TrackEvent veya trackPageView gibi başka bir izleme çağrısını
 | `request.rate` |İstek hızı |Uygulamaya saniye başına yapılan tüm isteklerin oranı. |
 | `requestFailed.count` |Başarısız istekler |Yanıt koduyla sonuçlanan HTTP isteklerinin sayısı >= 400 |
 | `view.count` |Sayfa görünümleri |Bir Web sayfasına yönelik istemci kullanıcı isteklerinin sayısı. Yapay trafik filtrelendi. |
-| {Özel Ölçüm adınız} |{Ölçüm adınız} |Ölçüm değeri, [trackmetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) tarafından veya [bir izleme çağrısının ölçümler parametresinde](../../azure-monitor/app/api-custom-events-metrics.md#properties)raporlanır. |
+| {Özel Ölçüm adınız} |{Ölçüm adınız} |Ölçüm değeri, [trackmetric](./api-custom-events-metrics.md#trackmetric) tarafından veya [bir izleme çağrısının ölçümler parametresinde](./api-custom-events-metrics.md#properties)raporlanır. |
 
 Ölçümler farklı telemetri modülleri tarafından gönderilir:
 
 | Ölçüm grubu | Toplayıcı modülü |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>görüntüle |[Tarayıcı JavaScript 'ı](../../azure-monitor/app/javascript.md) |
-| performanceCounter |[Performans](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[Bağımlılık](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| isteyen<br/>requestFailed |[Sunucu isteği](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>görüntüle |[Tarayıcı JavaScript 'ı](./javascript.md) |
+| performanceCounter |[Performans](./configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[Bağımlılık](./configuration-with-applicationinsights-config.md) |
+| isteyen<br/>requestFailed |[Sunucu isteği](./configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Web Kancaları
-[Bir uyarıya yanıtınızı otomatikleştirebilir](../../azure-monitor/platform/alerts-webhooks.md). Bir uyarı ortaya çıktığında Azure, seçtiğiniz bir Web adresini çağırır.
+[Bir uyarıya yanıtınızı otomatikleştirebilir](../platform/alerts-webhooks.md). Bir uyarı ortaya çıktığında Azure, seçtiğiniz bir Web adresini çağırır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Application Insights yapılandırılacak komut dosyası](./create-new-resource.md#creating-a-resource-automatically)
 * [Şablonlardan Application Insights ve Web testi kaynakları oluşturma](powershell.md)
 * [Application Insights için kupMicrosoft Azure tanılama otomatikleştirin](powershell-azure-diagnostics.md)
-* [Bir uyarıya yanıtınızı otomatikleştirin](../../azure-monitor/platform/alerts-webhooks.md)
+* [bir uyarıya yanıtınızı otomatikleştirin](../platform/alerts-webhooks.md)
+

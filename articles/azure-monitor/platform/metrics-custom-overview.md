@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081500"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321284"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
@@ -28,7 +28,7 @@ Azure Izleyici özel ölçümleri genel önizlemede geçerli.
 - Azure Application Insights SDK 'sını kullanarak uygulamanızı işaretleyin ve Azure Izleyici 'ye özel telemetri gönderin. 
 - [Azure](collect-custom-metrics-guestos-resource-manager-vm.md)sanal makinenize, [sanal makine ölçek KÜMESINE](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasik VM](collect-custom-metrics-guestos-vm-classic.md)'ye veya [Klasik Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) Windows Azure tanılama (wad) uzantısını yükleyip performans sayaçlarını Azure izleyici 'ye gönderin. 
 - Azure Izleme çıkış eklentisini kullanarak Azure Linux sanal makinenize etkileyen bir Azure [Data telegraf Aracısı](collect-custom-metrics-linux-telegraf.md) 'nı yükleyip ölçümleri gönderin.
-- Özel ölçümleri [doğrudan Azure izleyici REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)gönderin `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
+- Özel ölçümleri [doğrudan Azure izleyici REST API](./metrics-store-custom-rest-api.md)gönderin `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
 ## <a name="pricing-model-and-retention"></a>Fiyatlandırma modeli ve bekletme
 
@@ -44,7 +44,7 @@ Azure Izleyici özel ölçümleri genel önizlemede geçerli.
 
 Azure Izleyici 'ye özel ölçümler gönderdiğinizde, bildirilen her bir veri noktası veya değer aşağıdaki bilgileri içermelidir.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 Azure Izleyici 'ye özel ölçümler göndermek için, ölçümü gönderen varlığın isteğin **taşıyıcı** üst bilgisinde geçerli bir Azure Active Directory (Azure AD) belirteci olması gerekir. Geçerli bir taşıyıcı belirteç edinmenin birkaç desteklenen yolu vardır:
 1. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md). Azure kaynağına bir kimlik verir (örneğin, VM). Yönetilen Hizmet Kimliği (MSI), belirli işlemleri gerçekleştirmek için kaynak izinleri vermek üzere tasarlanmıştır. Bir örnek, bir kaynağın kendisiyle ilgili ölçümleri yaymalarına izin verir. Bir kaynağa veya MSI öğesine başka bir kaynakta **Izleme ölçümleri yayımcı** izinleri verilebilir. Bu izinle, MSI diğer kaynaklar için ölçümleri de yayabilir.
 2. [Azure AD hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md). Bu senaryoda, bir Azure AD uygulamasına veya hizmetine bir Azure kaynağı hakkında ölçümleri yayma izinleri atanabilir.
@@ -74,7 +74,7 @@ Azure Izleyici 'ye gönderilen her veri noktasının bir zaman damgasıyla işar
 ### <a name="namespace"></a>Ad Alanı
 Ad alanları, benzer ölçümleri birlikte sınıflandırmanız veya gruplandırmanız için bir yoldur. Ad alanlarını kullanarak, farklı Öngörüler veya performans göstergeleri toplayabilecek ölçüm grupları arasında yalıtım elde edebilirsiniz. Örneğin, uygulamanızı profilini oluşturan bellek kullanım ölçümlerini izleyen **contosomemoryölçümler** adlı bir ad alanı olabilir. **Contosoapptransaction** adlı başka bir ad alanı, uygulamanızdaki Kullanıcı işlemleri hakkında tüm ölçümleri izleyebilir.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Ad
 **Ad** , bildirilen ölçümün adıdır. Genellikle, ne ölçülerin tanımlanmasına yardımcı olmak için ad açıklayıcı bir yoldur. Bir örnek, belirli bir VM 'de kullanılan bellek baytlarının sayısını ölçen bir ölçümdür. **Kullanılmakta olan bellek baytları**gibi bir ölçüm adı olabilir.
 
 ### <a name="dimension-keys"></a>Boyut anahtarları
@@ -193,19 +193,19 @@ Genel Önizleme sırasında, özel ölçümleri yayımlama özelliği yalnızca 
 |Batı ABD 2       | https: \/ /westus2.Monitoring.Azure.com |
 |Orta Kuzey ABD | https: \/ /northcentralus.Monitoring.Azure.com
 |Orta Güney ABD| https: \/ /southcentralus.Monitoring.Azure.com |
-|Orta ABD      | https: \/ /centralus.Monitoring.Azure.com |
+|Central US      | https: \/ /centralus.Monitoring.Azure.com |
 |Orta Kanada | https: \/ /canadacentral.Monitoring.Azure.com |
 |Doğu ABD| https: \/ /eastus.Monitoring.Azure.com |
 |Doğu ABD 2 | https: \/ /eastus2.Monitoring.Azure.com |
 | **Avrupa** | |
 |Kuzey Avrupa    | https: \/ /northeurope.Monitoring.Azure.com |
-|Batı Avrupa     | https: \/ /westeurope.Monitoring.Azure.com |
+|West Europe     | https: \/ /westeurope.Monitoring.Azure.com |
 |Güney Birleşik Krallık | https: \/ /uksouth.Monitoring.Azure.com
 |Orta Fransa | https: \/ /francecentral.Monitoring.Azure.com |
 | **Afrika** | |
 |Güney Afrika Kuzey | https: \/ /southafricanorth.Monitoring.Azure.com |
 | **Asya** | |
-|Orta Hindistan | https: \/ /centralindia.Monitoring.Azure.com |
+|Central India | https: \/ /centralindia.Monitoring.Azure.com |
 |Doğu Avustralya | https: \/ /australiaeast.Monitoring.Azure.com |
 |Doğu Japonya | https: \/ /japaneast.Monitoring.Azure.com |
 |Güneydoğu Asya  | https: \/ /SoutheastAsia.Monitoring.Azure.com |
@@ -231,10 +231,11 @@ Etkin bir zaman serisi, son 12 saat içinde yayımlanmış ölçüm değerleri o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Farklı hizmetlerden özel ölçümler kullanın: 
- - [Sanal Makineler](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Sanal makineler](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Sanal makine ölçek kümesi](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure sanal makineleri (klasik)](collect-custom-metrics-guestos-vm-classic.md)
  - [Telegraf aracısını kullanan Linux sanal makinesi](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST API](./metrics-store-custom-rest-api.md)
  - [Klasik Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  
+

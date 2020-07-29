@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4680d989cc1befe50955af408aec79a14031481e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416390"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321250"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory’de Silme Etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,16 +46,13 @@ Silme etkinliğini kullanmaya yönelik bazı öneriler aşağıda verilmiştir:
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md)
 -   [Azure Dosya Depolama](connector-azure-file-storage.md)
-
-### <a name="file-system-data-stores"></a>Dosya sistemi veri depoları
-
--   [Dosya sistemi](connector-file-system.md)
+-   [Dosya Sistemi](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 ```json
 {
@@ -87,10 +84,10 @@ Silme etkinliğini kullanmaya yönelik bazı öneriler aşağıda verilmiştir:
 | veri kümesi | Hangi dosya veya klasörün silineceğini belirleyen veri kümesi başvurusunu sağlar | Yes |
 | öz | Dosyaların alt klasörlerden veya yalnızca belirtilen klasörden yinelemeli olarak silinip silinmediğini belirtir.  | Hayır. Varsayılan değer: `false`. |
 | maxConcurrentConnections | Klasör veya dosyaları silmek için aynı anda depolama deposuna bağlanacak bağlantı sayısı.   |  Hayır. Varsayılan değer: `1`. |
-| enablelogging | Silinmiş olan klasörü veya dosya adlarını kaydetmeniz gerekip gerekmediğini belirtir. Doğru ise, günlük dosyasını okuyarak silme etkinliğinin davranışlarını izleyebilmeniz için günlük dosyasını kaydetmek üzere bir depolama hesabı sağlamanız gerekir. | No |
-| logStorageSettings | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Silme etkinliği tarafından silinmiş klasörü veya dosya adlarını içeren günlük dosyasını kaydetmek istediğiniz yerde belirtilebileceği bir depolama özellikleri grubu. | No |
-| linkedServiceName | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Silme etkinliği tarafından silinmiş klasörü veya dosya adlarını içeren günlük dosyasını depolamak için [Azure depolama](connector-azure-blob-storage.md#linked-service-properties)'nın bağlı hizmeti, [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#linked-service-properties)veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . Dosya silmek için silme etkinliği tarafından kullanılan Integration Runtime aynı türde bir yapılandırılmalıdır. | No |
-| yol | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Günlük dosyasını depolama hesabınıza kaydetme yolu. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | No |
+| enablelogging | Silinmiş olan klasörü veya dosya adlarını kaydetmeniz gerekip gerekmediğini belirtir. Doğru ise, günlük dosyasını okuyarak silme etkinliğinin davranışlarını izleyebilmeniz için günlük dosyasını kaydetmek üzere bir depolama hesabı sağlamanız gerekir. | Hayır |
+| logStorageSettings | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Silme etkinliği tarafından silinmiş klasörü veya dosya adlarını içeren günlük dosyasını kaydetmek istediğiniz yerde belirtilebileceği bir depolama özellikleri grubu. | Hayır |
+| linkedServiceName | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Silme etkinliği tarafından silinmiş klasörü veya dosya adlarını içeren günlük dosyasını depolamak için [Azure depolama](connector-azure-blob-storage.md#linked-service-properties)'nın bağlı hizmeti, [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#linked-service-properties)veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . Dosya silmek için silme etkinliği tarafından kullanılan Integration Runtime aynı türde bir yapılandırılmalıdır. | Hayır |
+| path | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Günlük dosyasını depolama hesabınıza kaydetme yolu. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır |
 
 ## <a name="monitoring"></a>İzleme
 
@@ -118,7 +115,7 @@ Silme etkinliğinin sonuçlarını görebileceğiniz ve izleyebileceğiniz iki y
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete etkinliğinin örnek günlük dosyası
 
-| Name | Kategori | Durum | Hata |
+| Ad | Category | Durum | Hata |
 |:--- |:--- |:--- |:--- |
 | Test1/yyy.json | Dosya | Silindi |  |
 | Test2/hello789.txt | Dosya | Silindi |  |
@@ -137,10 +134,10 @@ Artık, klasörü veya dosyaları veri kümesinden ve silme etkinliğinden farkl
 
 | folderPath (veri kümesi) | Dosya adı (veri kümesi) | özyinelemeli (silme etkinliğinden) | Çıktı |
 |:--- |:--- |:--- |:--- |
-| Kök/Folder_A_2 | NULL | False | Asıl<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Kök/Folder_A_2 | NULL | True | Asıl<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
-| Kök/Folder_A_2 | *. txt | False | Asıl<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Kök/Folder_A_2 | *. txt | True | Asıl<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
+| Kök/Folder_A_2 | NULL | Yanlış | Asıl<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
+| Kök/Folder_A_2 | NULL | Doğru | Asıl<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
+| Kök/Folder_A_2 | *. txt | Yanlış | Asıl<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
+| Kök/Folder_A_2 | *. txt | Doğru | Asıl<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
 
 ### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Zaman bölümlenmiş klasörü veya dosyaları düzenli aralıklarla Temizleme
 

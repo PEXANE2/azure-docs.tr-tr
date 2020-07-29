@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2020
-ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539627"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323953"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
@@ -47,14 +47,14 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 - Orta Güney ABD
 - Doğu ABD
 - Doğu ABD 2
-- Orta ABD
+- Central US
 - Orta Kuzey ABD
 - US Gov az
 - US Gov VA
 - Orta Kanada
 - Güney Birleşik Krallık
 - Kuzey Avrupa
-- Batı Avrupa
+- West Europe
 - Doğu Asya
 - Güneydoğu Asya
 - Central India
@@ -67,22 +67,16 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 >
 
 Log Analytics bir çalışma alanınız yoksa, kaynaklardan birini kullanarak bir tane oluşturabilirsiniz:
-* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Azure CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
-* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
+* [Azure Portal](../learn/quick-create-workspace.md)
+* [Azure Resource Manager](../platform/template-workspace-configuration.md)
 
-Ayrıca, Azure portal tek bir Azure VM veya sanal makine ölçek kümesi için izlemeyi etkinleştirirken bir çalışma alanı oluşturabilirsiniz.
+- Azure sanal makine
+- Azure sanal makine ölçek kümesi
+- Azure Arc ile bağlantılı karma sanal makine
 
-Azure Ilkesi, Azure PowerShell veya Azure Resource Manager şablonları kullanan ölçekli bir senaryo ayarlamak için, *Vminsıghts* çözümünü yüklemelisiniz. Bunu aşağıdaki yöntemlerden biriyle yapabilirsiniz:
-
-* [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace)kullanın.
-* VM'ler için Azure İzleyici [**Ilkesi kapsamı**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) sayfasında, **çalışma alanını Yapılandır**' ı seçin. 
-
-### <a name="azure-arc-machines"></a>Azure yay makineleri
-VM'ler için Azure İzleyici, Arc uzantı hizmetinin kullanılabildiği bölgelerde Azure Arc etkin sunucuları için kullanılabilir. Kullanıcıların, Arc özellikli sunucularında VM'ler için Azure İzleyici etkinleştirmek için Arc aracısının sürüm 0,9 veya üzeri bir sürümü çalıştırması gerekir.
-
-### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 Aşağıdaki tabloda VM'ler için Azure İzleyici desteklediği Windows ve Linux işletim sistemleri listelenmektedir. Bu bölümde daha sonra, birincil ve ikincil Linux işletim sistemi sürümünün ve desteklenen çekirdek sürümlerinin ayrıntılarını içeren tam bir liste bulacaksınız.
 
@@ -158,54 +152,40 @@ Aşağıdaki tabloda VM'ler için Azure İzleyici desteklediği Windows ve Linux
 |:--|:--|
 | 9 | 4,9 | 
 
-### <a name="the-microsoft-dependency-agent"></a>Microsoft bağımlılık Aracısı
+## <a name="supported-azure-arc-machines"></a>Desteklenen Azure yay makineleri
+VM'ler için Azure İzleyici, Arc uzantı hizmetinin kullanılabildiği bölgelerde Azure Arc etkin sunucuları için kullanılabilir. Arc aracısının 0,9 veya sonraki bir sürümünü çalıştırıyor olmanız gerekir.
 
-VM'ler için Azure İzleyici harita özelliği, verileri Microsoft bağımlılık Aracısı 'ndan alır. Bağımlılık Aracısı, Log Analytics bağlantısı için Log Analytics aracısına bağımlıdır. Bu nedenle, sisteminizde Log Analytics aracısının yüklü olması ve bağımlılık aracısıyla yapılandırılmış olması gerekir.
-
-Tek bir Azure VM için VM'ler için Azure İzleyici etkinleştirmenize veya genişleme dağıtım yöntemini kullanmanıza bakılmaksızın, aracıyı deneyimin bir parçası olarak yüklemek için [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) veya [LINUX](../../virtual-machines/extensions/agent-dependency-linux.md) için Azure VM bağımlılık Aracısı uzantısı ' nı kullanın.
-
->[!NOTE]
->Bu bölümde açıklanan aşağıdaki bilgiler [hizmet eşlemesi çözümü](service-map.md)için de geçerlidir.  
-
-Karma bir ortamda, bağımlılık aracısını el ile indirip yükleyebilir veya otomatikleştirilmiş bir yöntemi kullanabilirsiniz.
-
-Aşağıdaki tabloda, bir karma ortamda harita özelliğinin desteklediği bağlı kaynaklar açıklanmaktadır.
-
-| Bağlı kaynak | Desteklenir | Description |
+| Bağlı kaynak | Desteklenir | Açıklama |
 |:--|:--|:--|
-| Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| System Center Operations Manager yönetim grubu | No | |
+| Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| System Center Operations Manager yönetim grubu | Hayır | |
 
-Bağımlılık aracısını şu konumlardan indirebilirsiniz:
+## <a name="agents"></a>Aracılar
+VM'ler için Azure İzleyici, her bir sanal makinede veya sanal makine ölçek kümesi 'nin izlenmesi için aşağıdaki iki aracısının yüklü olmasını gerektirir. Bu aracıları yüklemek ve bu aracıları çalışma alanına bağlamak, kaynağı eklemek için tek gereksinimdir.
 
-| Dosya | İşletim Sistemi | Sürüm | SHA-256 |
-|:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
+- [Log Analytics Aracısı](../platform/log-analytics-agent.md). Sanal makineden veya sanal makine ölçek kümesinden olayları ve performans verilerini toplar ve Log Analytics çalışma alanına gönderir. Azure kaynaklarında Log Analytics aracısına yönelik dağıtım yöntemleri [Windows](../../virtual-machines/extensions/oms-windows.md) ve [Linux](../../virtual-machines/extensions/oms-linux.md)için VM uzantısını kullanır.
+- Bağımlılık Aracısı. Sanal makinede çalışan işlemler ve [VM'ler için Azure izleyici Içindeki eşleme özelliği](vminsights-maps.md)tarafından kullanılan dış işlem bağımlılıkları hakkında bulunan verileri toplar. Bağımlılık Aracısı, verilerini Azure Izleyici 'ye teslim etmek için Log Analytics aracısına bağımlıdır. Azure kaynaklarında bağımlılık aracısının dağıtım yöntemleri [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) ve [Linux](../../virtual-machines/extensions/agent-dependency-linux.md)için VM uzantısını kullanır.
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+> [!NOTE]
+> Log Analytics Aracısı, System Center Operations Manager tarafından kullanılan aracıdır. VM'ler için Azure İzleyici, doğrudan bağlı olmaları durumunda Operations Manager tarafından izlenen aracıları izleyebilir ve bunlara bağımlılık aracısını yüklersiniz. Bir [Yönetim grubu bağlantısı](../tform/../platform/om-agents.md) aracılığıyla Azure izleyici 'ye bağlı aracılar VM'ler için Azure izleyici tarafından izlenemez.
 
-VM'ler için Azure İzleyici özellikleri etkinleştirmek ve erişmek için, *Log Analytics katkıda* bulunan rolüne sahip olmanız gerekir. Performansı, sistem durumunu ve eşleme verilerini görüntülemek için, Azure VM için *izleme okuyucu* rolüne sahip olmanız gerekir. Log Analytics çalışma alanı VM'ler için Azure İzleyici için yapılandırılmış olmalıdır.
+Aşağıda, bu aracıları dağıtmaya yönelik birden çok yöntem verilmiştir. 
 
-Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanlarını yönetme](../../azure-monitor/platform/manage-access.md).
+| Yöntem | Açıklama |
+|:---|:---|
+| [Azure Portal](vminsights-enable-single-vm.md) | Her iki aracıyı tek bir sanal makineye, sanal makine ölçek kümesine veya Azure Arc ile bağlantılı karma sanal makinelere kurun. |
+| [Resource Manager şablonları](vminsights-enable-powershell.md) | CLı ve PowerShell dahil Kaynak Yöneticisi şablonu dağıtmak için desteklenen yöntemlerden herhangi birini kullanarak her iki aracıyı de yükler. |
+| [Azure İlkesi](vminsights-enable-at-scale-policy.md) | Bir sanal makine veya sanal makine ölçek kümesi oluşturulduğunda aracıları otomatik olarak yüklemek için Azure Ilke girişimi atayın. |
+| [El ile yüklemesi](vminsights-enable-hybrid-cloud.md) | Veri merkezinize veya diğer bulut ortamlarınıza dahil olmak üzere Azure dışında barındırılan bilgisayarlarda, aracıları Konuk işletim sistemine yükler. |
 
-## <a name="how-to-enable-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici etkinleştirme
 
-Bu tabloda açıklanan yöntemlerden birini kullanarak VM'ler için Azure İzleyici etkinleştirin:
 
-| Dağıtım durumu | Yöntem | Açıklama |
-|------------------|--------|-------------|
-| Tek Azure VM, Azure VMSS veya Azure Arc makinesi | [Portaldan etkinleştir](vminsights-enable-single-vm.md) | Azure portal menüden doğrudan **Öngörüler** ' i seçin. |
-| Birden çok Azure VM, Azure VMSS veya Azure Arc makinesi | [Azure Ilkesi aracılığıyla etkinleştir](vminsights-enable-at-scale-policy.md) | Bir VM veya VMSS oluşturulduğunda otomatik olarak etkinleştirmek için Azure Ilkesini kullanın. |
-| | [Azure PowerShell veya Azure Resource Manager şablonları aracılığıyla etkinleştir](vminsights-enable-at-scale-powershell.md) | Belirtilen bir abonelik veya kaynak grubu genelinde birden çok Azure VM, Azure Arc VM veya Azure VMSS 'yi etkinleştirmek için Azure PowerShell veya Azure Resource Manager şablonlarını kullanın. |
-| Hibrit bulut | [Karma ortam için etkinleştir](vminsights-enable-hybrid-cloud.md) | Veri merkezinizde veya diğer bulut ortamlarında barındırılan VM 'lere veya fiziksel bilgisayarlara dağıtın. |
 
 ## <a name="management-packs"></a>Yönetim paketleri
+VM'ler için Azure İzleyici için bir Log Analytics çalışma alanı yapılandırıldığında, bu çalışma alanına bağlı tüm Windows bilgisayarlarına iki yönetim paketi iletilir. Yönetim paketleri *Microsoft. ıntelligencepacks. ApplicationDependencyMonitor* ve *Microsoft. ıntelligencepacks. Vminsıghts* olarak adlandırılır ve *%ProgramFiles%\Microsoft Monitoring Fılest\sistem sağlığı hizmeti State\Management paketlerine yazılır \* . 
 
-VM'ler için Azure İzleyici etkinleştirildiğinde ve bir Log Analytics çalışma alanıyla yapılandırıldığında, bir yönetim paketi, bu çalışma alanına rapor veren tüm Windows bilgisayarlarına iletilir. [System Center Operations Manager yönetim grubunuzu](../../azure-monitor/platform/om-agents.md) Log Analytics çalışma alanıyla tümleştirdiyseniz, hizmet eşlemesi yönetim paketi Yönetim grubundan yönetim grubuna rapor veren Windows bilgisayarlarına dağıtılır.  
-
-Yönetim Paketi *Microsoft. ıntelligencepacks. ApplicationDependencyMonitor*olarak adlandırılır. Yazılmış `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` klasörü. Yönetim paketinin kullandığı veri kaynağı `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll` .
+*Applicationdependencymonitor* yönetim paketi tarafından kullanılan veri kaynağı **% Program Files%\Microsoft Monitoring Fılest\sistem sağlığı hizmeti state\resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*. *Vminsıghts* yönetim paketi tarafından kullanılan veri kaynağı *% Program Files%\Microsoft Monitoring Fılest\sistem sağlığı hizmeti state\resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll*.
 
 ## <a name="diagnostic-and-usage-data"></a>Tanılama ve kullanım verileri
 
@@ -217,8 +197,7 @@ Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Ser
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-VM 'niz için izlemeyi etkinleştirmiş olduğunuza göre, izleme bilgileri VM'ler için Azure İzleyici analiz için kullanılabilir.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Performans izleme özelliğini nasıl kullanacağınızı öğrenmek için bkz. [VM'ler için Azure izleyici performansını görüntüleme](vminsights-performance.md). Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).
+

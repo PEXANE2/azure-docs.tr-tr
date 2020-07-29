@@ -5,17 +5,18 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 061c7f6a45b8667b7fd03d62bee67c695bec5e68
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83675913"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276797"
 ---
-# <a name="azure-storage-analytics-logging"></a>Azure Depolama analizini günlüğe kaydetme
+# <a name="azure-storage-analytics-logging"></a>Azure depolama Analizi günlüğü
 
 Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri günlüğe kaydeder. Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir.
 
@@ -63,7 +64,7 @@ Her saat için birden çok dosya içeren yüksek miktarda günlük veriniz varsa
 Çoğu depolama gözatma araçları, Blobların meta verilerini görüntülemenizi sağlar; Ayrıca, bu bilgileri PowerShell veya programlı olarak kullanarak da okuyabilirsiniz. Aşağıdaki PowerShell kod parçacığı, bir zaman belirtmek için günlük bloblarının listesini ada göre filtreleme ve yalnızca **yazma** işlemleri içeren günlükleri tanımlamak için meta veriler ile ilgili bir örnektir.  
 
  ```powershell
- Get-AzureStorageBlob -Container '$logs' |  
+ Get-AzStorageBlob -Container '$logs' |  
  Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
@@ -89,12 +90,12 @@ Blob 'ları program aracılığıyla listeleme hakkında bilgi için bkz. blob [
 |Öznitelik|Açıklama|
 |---------------|-----------------|
 |`<service-name>`|Depolama hizmetinin adı. Örneğin: `blob` , `table` , veya`queue`|
-|`YYYY`|Günlük için dört basamaklı yıl. Örneğin, `2011`|
-|`MM`|Günlüğün iki basamaklı ayı. Örneğin, `07`|
-|`DD`|Günlüğün iki basamaklı günü. Örneğin, `31`|
-|`hh`|24 saat UTC biçiminde Günlükler için başlangıç saatini gösteren iki basamaklı saat. Örneğin, `18`|
+|`YYYY`|Günlük için dört basamaklı yıl. Örnek: `2011`|
+|`MM`|Günlüğün iki basamaklı ayı. Örnek: `07`|
+|`DD`|Günlüğün iki basamaklı günü. Örnek: `31`|
+|`hh`|24 saat UTC biçiminde Günlükler için başlangıç saatini gösteren iki basamaklı saat. Örnek: `18`|
 |`mm`|Günlükler için başlangıç dakikasını gösteren iki basamaklı sayı. **Note:**  Bu değer, geçerli Depolama Analizi sürümünde desteklenmez ve değeri her zaman olur `00` .|
-|`<counter>`|Bir saatlik zaman diliminde depolama hizmeti için oluşturulan günlük bloblarının sayısını belirten altı basamaklı sıfır tabanlı bir sayaç. Bu sayaç tarihinde başlar `000000` . Örneğin, `000001`|
+|`<counter>`|Bir saatlik zaman diliminde depolama hizmeti için oluşturulan günlük bloblarının sayısını belirten altı basamaklı sıfır tabanlı bir sayaç. Bu sayaç tarihinde başlar `000000` . Örnek: `000001`|
 
  Aşağıda, Yukarıdaki örnekleri birleştiren bir örnek günlük adı verilmiştir:
 
@@ -113,8 +114,8 @@ Blob 'ları program aracılığıyla listeleme hakkında bilgi için bkz. blob [
 |Öznitelik|Açıklama|
 |---------------|-----------------|
 |`LogType`|Günlük okuma, yazma veya silme işlemleriyle ilgili bilgiler içerip içermediğini açıklar. Bu değer, virgülle ayrılmış olarak bir tür ya da üç tane birleşimi içerebilir.<br /><br /> Örnek 1:`write`<br /><br /> Örnek 2:`read,write`<br /><br /> Örnek 3:`read,write,delete`|
-|`StartTime`|Günlükteki girdinin en erken saati, biçiminde `YYYY-MM-DDThh:mm:ssZ` . Örneğin, `2011-07-31T18:21:46Z`|
-|`EndTime`|Günlükteki bir girişin en son saati, biçiminde `YYYY-MM-DDThh:mm:ssZ` . Örneğin, `2011-07-31T18:22:09Z`|
+|`StartTime`|Günlükteki girdinin en erken saati, biçiminde `YYYY-MM-DDThh:mm:ssZ` . Örnek: `2011-07-31T18:21:46Z`|
+|`EndTime`|Günlükteki bir girişin en son saati, biçiminde `YYYY-MM-DDThh:mm:ssZ` . Örnek: `2011-07-31T18:22:09Z`|
 |`LogVersion`|Günlük biçiminin sürümü.|
 
  Aşağıdaki liste Yukarıdaki örnekleri kullanarak tüm örnek meta verileri görüntüler:
@@ -136,20 +137,20 @@ Günlüğe kaydetmek istediğiniz depolama hizmetlerini ve günlüğe kaydedilen
 
 ### <a name="enable-storage-logging-using-powershell"></a>PowerShell kullanarak depolama günlüğünü etkinleştirme  
 
- Geçerli ayarları almak için **Get-AzureStorageServiceLoggingProperty** cmdlet 'ini ve geçerli ayarları değiştirmek için **set-AzureStorageServiceLoggingProperty** cmdlet 'ini Azure PowerShell kullanarak depolama hesabınızda depolama günlüğü yapılandırmak için yerel makinenizde PowerShell kullanabilirsiniz.  
+ Geçerli ayarları almak için **Get-AzStorageServiceLoggingProperty** cmdlet 'ini ve geçerli ayarları değiştirmek için **set-AzStorageServiceLoggingProperty** cmdlet 'ini Azure PowerShell kullanarak depolama hesabınızda depolama günlüğü yapılandırmak için yerel makinenizde PowerShell kullanabilirsiniz.  
 
  Depolama günlüğünü denetleyen cmdlet 'ler, günlüğe kaydedilecek istek türleri için virgülle ayrılmış bir liste içeren bir **Loggingoperations** parametresi kullanır. Olası üç istek türü **okuma**, **yazma**ve **silme**. Günlüğe kaydetmeyi devre dışı bırakmak için, **Loggingoperations** parametresi için **none** değerini kullanın.  
 
  Aşağıdaki komut, bekletme için beş güne ayarlanmış varsayılan depolama hesabınızdaki Kuyruk hizmeti okuma, yazma ve silme istekleri için günlüğe kaydetme yapar:  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
+Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  Aşağıdaki komut, varsayılan depolama hesabınızda tablo hizmeti için günlüğe kaydetmeyi kapatır:  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
+Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Azure PowerShell cmdlet 'lerinin Azure aboneliğinizle çalışacak şekilde nasıl yapılandırılacağı ve kullanılacak varsayılan depolama hesabını nasıl seçeceksiniz hakkında bilgi için bkz.: [Azure PowerShell nasıl yüklenir ve yapılandırılır](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  

@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cf1ede2db8dbdc7557775cf7b22dde53b69280da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 0e1723854d18172f28a43aacb86ab9c29656cf0d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81314232"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322253"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Öğretici: Azure Service Fabric bir Java API ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma
 
@@ -36,11 +36,11 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 > * Durum bilgisi olan hizmetle iletişim kurmak için hizmet uzaktan iletişimini kullanma
 > * Yerel bir Service Fabric kümesinde uygulamayı dağıtma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * [Mac](service-fabric-get-started-mac.md) veya [Linux](service-fabric-get-started-linux.md) için geliştirme ortamınızı ayarlayın. Eclipse eklentisini, Gradle’ı, Service Fabric SDK’yı ve Service Fabric CLI’yı (sfctl) yükleme yönergelerini izleyin.
 
 ## <a name="create-the-front-end-java-stateless-service"></a>Ön uç durum bilgisi olmayan Java hizmeti oluşturma
@@ -49,7 +49,7 @@ Bu öğreticiye başlamadan önce:
 
 1. Eclipse’i açın.
 
-2. **Other** **Dosya** > **Yeni** > **Service Fabric Project****Service Fabric**Service Fabric Service Fabric projesi ile bir proje oluşturun. >  > 
+2. **Dosya**  >  **Yeni**  >  **Other**  >  **Service Fabric**  >  **Service Fabric projesi**ile bir proje oluşturun.
 
     ![Çakışan Küreler yeni Service Fabric projesi](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
@@ -82,7 +82,7 @@ Durum bilgisi olmayan hizmet tarafından işlenebilen bir kullanıcı arabirimi 
 
 1. *VotingApplication/VotingWebPkg/Code* dizinine ulaşmak için *VotingApplication* dizinini genişletin.
 
-2. *Kod* dizinine sağ tıklayın ve **Yeni** > **klasör**' ü seçin.
+2. *Kod* dizinine sağ tıklayın ve **Yeni**  >  **klasör**' ü seçin.
 
 3. Klasörü *Wwwroot* olarak adlandırın ve **son**' u seçin.
 
@@ -219,7 +219,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>HTTPCommunicationListener.java dosyası ekleme
 
-HTTP iletişim dinleyicisi, HTTP sunucusunu ayarlayan bir denetleyici olarak hareket eder ve oylama eylemlerini tanımlayan API’leri gösterir. *Votingweb/src/statelessservice* klasöründeki *statelessservice* paketine sağ tıklayın ve ardından **Yeni** > **Dosya**' yı seçin.  *Httpcommunicationlistener. Java* dosyasını adlandırın ve **son**' u seçin.
+HTTP iletişim dinleyicisi, HTTP sunucusunu ayarlayan bir denetleyici olarak hareket eder ve oylama eylemlerini tanımlayan API’leri gösterir. *Votingweb/src/statelessservice* klasöründeki *statelessservice* paketine sağ tıklayın ve ardından **Yeni**  >  **Dosya**' yı seçin.  *Httpcommunicationlistener. Java* dosyasını adlandırın ve **son**' u seçin.
 
 Dosyanın içeriğini aşağıdakilerle değiştirin, sonra değişikliklerinizi kaydedin.  Daha sonra, HttpCommunicationListener.java dosyasını güncelleştirme bölümünde bu dosya, arka uç hizmetinden oylama verilerini işleyecek, okuyacak ve yazacak şekilde değiştirilir.  Şimdilik dinleyici yalnızca Oylama uygulaması için statik HTML'i döndürür.
 
@@ -399,7 +399,7 @@ Java Web API hizmetinin çatısı tamamlandığına göre devam edelim ve durum 
 
 Service Fabric, güvenilir koleksiyonlar kullanarak verileri doğrudan hizmetinizin içinden tutarlı ve güvenilir bir şekilde depolamanıza olanak tanır. Güvenilir koleksiyonlar, yüksek düzeyde kullanılabilir ve güvenilir koleksiyon sınıfları kümesidir. Bu sınıfların kullanımı, Java koleksiyonları kullanan herkese tanıdık gelir.
 
-1. Paket Gezgini 'nde, uygulama projesi içinde **Oylama** ' ye sağ tıklayın ve **Service Fabric** > **Service Fabric hizmeti Ekle**' yi seçin.
+1. Paket Gezgini 'nde, uygulama projesi içinde **Oylama** ' ye sağ tıklayın ve **Service Fabric**  >  **Service Fabric hizmeti Ekle**' yi seçin.
 
 2. **Hizmet Ekle** Iletişim kutusunda **durum bilgisi olan hizmet** ' i seçin ve hizmeti **votingdataservice** olarak adlandırın ve **Hizmet Ekle**' yi seçin.
 
@@ -546,7 +546,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
  Sonraki adımda ön uç durum bilgisi olmayan hizmet ve arka uç hizmeti bağlanıyor. Her iki hizmet de, oylama uygulamasının işlemlerini tanımlayan VotingRPC adlı bir arabirim kullanır. Bu arabirim, iki hizmet arasında uzak yordam çağrılarını (RPC) etkinleştirmek için hem ön uç hem de arka uç hizmetleri tarafından uygulanır. Ne yazık ki, tutulma, Gradle alt projelerin eklenmesini desteklemez, bu nedenle bu arabirimi içeren paketin el ile eklenmesi gerekir.
 
-1. Paket Gezgini 'nde **Oylama** projesine sağ tıklayın ve **Yeni** > **klasör**' ü seçin. Klasöre **VotingRPC/src/rpcmethods** adını verin.
+1. Paket Gezgini 'nde **Oylama** projesine sağ tıklayın ve **Yeni**  >  **klasör**' ü seçin. Klasöre **VotingRPC/src/rpcmethods** adını verin.
 
     ![Çakışan Küreler Paket Gezgini 'nde VotingRPC paketi oluşturma](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
@@ -882,7 +882,7 @@ Bu bölümde, proje için Gradle betikleri yapılandırılır.
 
 Bu noktada uygulama, yerel Service Fabric kümesinde dağıtılmaya hazırdır.
 
-1. Paket Gezgini 'nde **Oylama** projesine sağ tıklayın ve uygulamanızı derlemek için **Service Fabric** > **Build Application** ' ı seçin.
+1. Paket Gezgini 'nde **Oylama** projesine sağ tıklayın ve uygulamanızı derlemek için **Service Fabric**  >  **Build Application** ' ı seçin.
 
 2. Yerel Service Fabric kümenizi çalıştırın. Bu adım, geliştirme ortamınıza (Mac veya Linux) bağlıdır.
 
@@ -900,9 +900,9 @@ Bu noktada uygulama, yerel Service Fabric kümesinde dağıtılmaya hazırdır.
     ```
     Daha ayrıntılı bilgi için bkz [. Linux kurulum kılavuzu.](service-fabric-get-started-linux.md)
 
-4. Çakışan Küreler için paket Gezgini ' nde, **Oylama** projesine sağ tıklayın ve **Service Fabric** > **uygulamayı Yayımla** ' yı seçin. 
-5. **Uygulamayı Yayımla** penceresinde, açılan listeden **Local. JSON** ' ı seçin ve **Yayımla**' yı seçin.
-6. Yerel Service Fabric kümesinde çalışan uygulamanızı görüntülemek için Web tarayıcınıza\/gidin ve http:/localhost: 8080 adresine erişin. 
+4. Çakışan Küreler için paket Gezgini ' nde, **Oylama** projesine sağ tıklayın ve **Service Fabric**  >  **uygulamayı Yayımla** ' yı seçin. 
+5. **Uygulamayı Yayımla** penceresinde, açılır listeden **Local.js** ' yi seçin ve **Yayımla**' yı seçin.
+6. \/Yerel Service Fabric kümesinde çalışan uygulamanızı görüntülemek için Web tarayıcınıza gidin ve http:/localhost: 8080 adresine erişin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

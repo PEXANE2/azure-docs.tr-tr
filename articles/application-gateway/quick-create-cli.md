@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: b36b5b1700df1767ad4323fed72ee05fdb05321f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239521"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290966"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure CLI
 
@@ -26,14 +26,14 @@ Bu hızlı başlangıcı [Azure PowerShell](quick-create-powershell.md) veya [Az
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure CLI sürüm 2.0.4 veya üzeri](/cli/azure/install-azure-cli) (Azure CLI 'yi yerel olarak çalıştırırsanız).
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. Kullanarak `az group create`bir kaynak grubu oluşturun. 
+Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. Kullanarak bir kaynak grubu oluşturun `az group create` . 
 
 Aşağıdaki örnek *eastus* konumunda *myResourceGroupAG* adlı bir kaynak grubu oluşturur.
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır.  Application Gateway alt ağı yalnızca uygulama ağ geçitleri içerebilir. Başka hiçbir kaynağa izin verilmez.  Application Gateway için yeni bir alt ağ oluşturabilir veya var olan bir alt ağı kullanabilirsiniz. Bu örnekte, iki alt ağ oluşturursunuz: biri uygulama ağ geçidi için ve arka uç sunucuları için bir diğeri. Application Gateway ön uç IP 'sini kullanım çalışmanıza göre genel veya özel olacak şekilde yapılandırabilirsiniz. Bu örnekte, genel ön uç IP adresi seçersiniz.
 
-Sanal ağ ve alt ağ oluşturmak için kullanın `az network vnet create`. Genel `az network public-ip create` IP adresini oluşturmak için ' i çalıştırın.
+Sanal ağ ve alt ağ oluşturmak için kullanın `az network vnet create` . `az network public-ip create`Genel IP adresini oluşturmak için ' i çalıştırın.
 
 ```azurecli-interactive
 az network vnet create \
@@ -73,9 +73,9 @@ Arka uçta NIC 'Ler, sanal makine ölçek kümeleri, genel IP 'Ler, iç IP 'Ler,
 
 #### <a name="create-two-virtual-machines"></a>İki sanal makine oluşturma
 
-Uygulama ağ geçidinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere NGıNX Web sunucusunu yükler. Bir Cloud-init yapılandırma dosyasını kullanarak NGıNX 'i yükleyebilir ve bir Linux sanal makinesinde bir "Merhaba Dünya" Node. js uygulaması çalıştırabilirsiniz. Cloud-init hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için Cloud-init desteği](../virtual-machines/linux/using-cloud-init.md).
+Uygulama ağ geçidinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere NGıNX Web sunucusunu yükler. Bir Cloud-init yapılandırma dosyasını kullanarak NGıNX 'i yükleyebilir ve bir Linux sanal makinesinde bir "Merhaba Dünya" Node.js uygulaması çalıştırabilirsiniz. Cloud-init hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için Cloud-init desteği](../virtual-machines/linux/using-cloud-init.md).
 
-Azure Cloud Shell, aşağıdaki yapılandırmayı kopyalayın ve *kabuğunuzda Cloud-init. txt*adlı bir dosyaya yapıştırın. Dosyayı oluşturmak için *Editor kabuğunuzda Cloud-init. txt* yazın.
+Azure Cloud Shell aşağıdaki yapılandırmayı kopyalayıp *cloud-init.txt*adlı bir dosyaya yapıştırın. Dosyayı oluşturmak için *düzenleyici cloud-init.txt* girin.
 
 ```yaml
 #cloud-config
@@ -119,7 +119,7 @@ runcmd:
   - nodejs index.js
 ```
 
-İle `az network nic create`ağ arabirimlerini oluşturun. Sanal makineleri oluşturmak için kullanırsınız `az vm create`.
+İle ağ arabirimlerini oluşturun `az network nic create` . Sanal makineleri oluşturmak için kullanırsınız `az vm create` .
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -141,7 +141,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Kullanarak `az network application-gateway create`bir uygulama ağ geçidi oluşturun. Azure CLı ile bir uygulama ağ geçidi oluşturduğunuzda, kapasite, SKU ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Daha sonra Azure, ağ arabirimlerinin özel IP adreslerini uygulama ağ geçidinin arka uç havuzunda sunucu olarak ekler.
+Kullanarak bir uygulama ağ geçidi oluşturun `az network application-gateway create` . Azure CLı ile bir uygulama ağ geçidi oluşturduğunuzda, kapasite, SKU ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Daha sonra Azure, ağ arabirimlerinin özel IP adreslerini uygulama ağ geçidinin arka uç havuzunda sunucu olarak ekler.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -169,7 +169,7 @@ Azure 'un uygulama ağ geçidini oluşturması 30 dakika kadar sürebilir. Oluş
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Azure, uygulama ağ geçidini oluşturmak için bir NGıNX Web sunucusu gerektirmese de, Azure 'un uygulama ağ geçidini başarıyla oluşturup oluşturmadığını doğrulamak için bu hızlı başlangıç hızlı yüklüdür. Yeni uygulama ağ geçidinin genel IP adresini almak için kullanın `az network public-ip show`. 
+Azure, uygulama ağ geçidini oluşturmak için bir NGıNX Web sunucusu gerektirmese de, Azure 'un uygulama ağ geçidini başarıyla oluşturup oluşturmadığını doğrulamak için bu hızlı başlangıç hızlı yüklüdür. Yeni uygulama ağ geçidinin genel IP adresini almak için kullanın `az network public-ip show` . 
 
 ```azurecli-interactive
 az network public-ip show \
@@ -187,7 +187,7 @@ Tarayıcıyı yenilediğinizde ikinci VM 'nin adını görmeniz gerekir. Bu, uyg
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Uygulama ağ geçidiyle oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, kaynak grubunu silmek için `az group delete` komutunu kullanın. Kaynak grubunu sildiğinizde, uygulama ağ geçidini ve ilgili tüm kaynakları da silersiniz.
+Uygulama ağ geçidiyle oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, `az group delete` kaynak grubunu silmek için komutunu kullanın. Kaynak grubunu sildiğinizde, uygulama ağ geçidini ve ilgili tüm kaynakları da silersiniz.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG

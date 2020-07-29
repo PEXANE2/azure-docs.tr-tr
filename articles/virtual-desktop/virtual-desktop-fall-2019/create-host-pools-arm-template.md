@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü konak havuzu Azure Resource Manager-Azure
-description: Windows sanal masaüstü 'nde bir Azure Resource Manager şablonuyla konak havuzu oluşturma.
+title: Windows sanal masaüstü (klasik) konak havuzu Azure Resource Manager-Azure
+description: Bir Azure Resource Manager şablonuyla Windows sanal masaüstü 'nde (klasik) bir konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88027db54f9b7d4a7ef2ef32d4ea0434d8a26a10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204770"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270269"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla ana bilgisayar havuzu oluşturma
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla Windows sanal masaüstü 'nde (klasik) bir konak havuzu oluşturma
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
 
@@ -38,7 +38,7 @@ Azure Resource Manager şablonuyla bir Windows sanal masaüstü konak havuzu olu
 
 Başlamak için [Bu GITHUB URL](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool)'sine gidin.
 
-### <a name="deploy-the-template-to-azure"></a>Şablonu Azure 'a dağıtma
+### <a name="deploy-the-template-to-azure"></a>Şablonu Azure’a dağıtma
 
 Kurumsal abonelikte dağıtım yapıyorsanız, aşağı kaydırın ve **Azure 'A dağıt**' ı seçin, sonra da görüntü kaynağınıza göre parametreleri doldurun.
 

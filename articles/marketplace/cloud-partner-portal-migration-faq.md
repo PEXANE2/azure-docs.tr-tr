@@ -4,15 +4,15 @@ description: Bulut İş Ortağı Portalı tekliflerini Iş ortağı merkezine ge
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: eafa6c4911e934d391a380e5eb494ca8f7766959
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 59f66b88c998a78f5bd3ccf3757cb791aea2521b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012068"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279313"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -107,19 +107,19 @@ Bulut İş Ortağı Portalı ' da oluşturduğunuz teklifler, **ticari Market** 
 
     Soldaki gezinti bölmesinde bulunan ticari Market programını görmüyorsanız yanlış hesapta olabilirsiniz. Doğru hesaba erişmek için sonraki bölümdeki adımları izleyin.
 
-    [![](media/cpp-pc-faq/overview-menu.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/overview-menu.png#lightbox)
+    [![Iş ortağı merkezi genel bakış menüsünü gösteren ekran görüntüsü](media/cpp-pc-faq/overview-menu.png "Iş Ortağı Merkezi 'Ne genel bakış menüsünü gösterir")](media/cpp-pc-faq/overview-menu.png#lightbox)
 
 ### <a name="access-the-right-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde doğru hesaba erişin
 
 Birden çok hesabın parçasıysa, Iş Ortağı Merkezi ' nde, sol taraftaki gezinti menüsünde iki ok ile işaretlenmiş bir hesap seçici düğmesi görürsünüz. Ait olduğunuz tüm hesapların bir listesini görüntülemek için hesap Seçicisi düğmesini seçin. Listede geçiş yapmak ve bu hesapla ilgili tüm programları ve bilgileri görmek için listedeki herhangi bir hesabı seçin. Gezinti menüsünde bir hesap seçici düğmesi görmüyorsanız, tek bir hesaba üye olursunuz.
 
-[![](media/cpp-pc-faq/picker-button.png "Shows the Partner Center account picker button")](media/cpp-pc-faq/picker-button.png#lightbox)
+[![Ekran görüntüsü Iş ortağı merkezi hesap Seçicisi düğmesini gösterir.](media/cpp-pc-faq/picker-button.png "Iş ortağı merkezi hesap Seçicisi düğmesini gösterir")](media/cpp-pc-faq/picker-button.png#lightbox)
 
 ## <a name="how-do-i-create-new-offers"></a>Nasıl yaparım? yeni teklifler mi oluşturulsun?
 
 Yeni teklifler oluşturmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ' nde ticari Market programına erişin. Genel Bakış sayfasında **+ yeni teklif**' i seçin.
 
-[![](media/cpp-pc-faq/new-offer.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/new-offer.png#lightbox)
+[![Ekran görüntüsü Iş Ortağı Merkezi 'Ne genel bakış menüsünü gösterir.](media/cpp-pc-faq/new-offer.png "Iş Ortağı Merkezi 'Ne genel bakış menüsünü gösterir")](media/cpp-pc-faq/new-offer.png#lightbox)
 
 ## <a name="i-cant-sign-in-and-need-to-open-a-support-ticket"></a>Oturum açamıyorum ve bir destek bileti açmanız gerekiyor
 
@@ -127,7 +127,7 @@ Hesabınızda oturum açamazsınız, burada bir [destek bileti](https://partner.
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>Iş ortağı merkezi kullanımı için yönergeler nerede?
 
-[Ticari Market belgelerine](index.yml)gidip **iş ortağı Merkezi ' nde ticari Market portalı**' nı genişletin. Iş Ortağı Merkezi 'nde teklif oluşturmaya yönelik yardım makalelerini görmek için **yeni teklif oluştur**' u genişletin.
+[Ticari Market belgelerine](index.yml)gidin ve ardından **iş ortağı Merkezi ' nde ticari Market portalı**' nı genişletin. Iş Ortağı Merkezi 'nde teklif oluşturmaya yönelik yardım makalelerini görmek için **yeni teklif oluştur**' u genişletin.
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>Yayımlama ve teklif yönetimi farkları nelerdir?
 
@@ -137,7 +137,7 @@ Bulut İş Ortağı Portalı ve Iş ortağı merkezi arasındaki bazı farklıl�
 
 İş Ortağı Merkezi, tüm güncelleştirmeleri her zaman tek seferde yayımlamak yerine yayımlamak istediğiniz değişiklikleri seçmenizi sağlayan modüler bir yayımlama seçeneği sunar. Örneğin, aşağıdaki ekranda yalnızca yayımlanacak değişikliklerin **Özellikler** ve **teklif listesi**değişiklikleri olduğunu gösterilmektedir. Önizleme sayfasında yaptığınız değişiklikler yayımlanmaz.
 
-[![](media/cpp-pc-faq/review-page.png "Shows the Partner Center Review and publish page")](media/cpp-pc-faq/review-page.png#lightbox)
+[![Ekran görüntüsü Iş Ortağı Merkezi Inceleme ve yayımlama sayfasını gösterir.](media/cpp-pc-faq/review-page.png "Iş Ortağı Merkezi Inceleme ve yayımlama sayfasını gösterir")](media/cpp-pc-faq/review-page.png#lightbox)
 
 Yayımlayacağınız güncelleştirmeler taslak olarak kaydedilir. Teklifinizi herkese açık hale getirmeden önce teklifinizin doğrulanması için size devam edin.
 
@@ -145,24 +145,24 @@ Yayımlayacağınız güncelleştirmeler taslak olarak kaydedilir. Teklifinizi h
 
 İş Ortağı Merkezi, Gelişmiş filtreleme seçenekleriyle bir [karşılaştırma özelliği](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) içerir. Bu, teklifin önizleme ve canlı sürümleriyle karşılaştırmanıza olanak sağlar.
 
-[![](media/cpp-pc-faq/compare.png "Shows the Partner Center compare feature")](media/cpp-pc-faq/compare.png#lightbox)
+[![Ekran görüntüsü Iş Ortağı Merkezi karşılaştırma özelliğini gösterir.](media/cpp-pc-faq/compare.png "Iş Ortağı Merkezi karşılaştırma özelliğini gösterir")](media/cpp-pc-faq/compare.png#lightbox)
 
 ### <a name="branding-and-navigation-changes"></a>Marka ve gezinti değişiklikleri
 
 Bazı marka değişiklikleri olduğunu fark edeceksiniz. Örneğin, *SKU 'Lar* Iş Ortağı Merkezi 'nde *plan* olarak markalı değildir:
 
-[![](media/cpp-pc-faq/plans.png "Shows the Partner Center Plans page")](media/cpp-pc-faq/plans.png#lightbox)
+[![Ekran görüntüsü Iş Ortağı Merkezi planları sayfasını gösterir.](media/cpp-pc-faq/plans.png "Iş Ortağı Merkezi planları sayfasını gösterir")](media/cpp-pc-faq/plans.png#lightbox)
 
 Ayrıca, daha önce **Market** veya **storefront details** (danışmanlık hizmeti, Power BI uygulaması) bulut iş ortağı portalı sayfalarında önceden verdiğiniz bilgiler artık Iş Ortağı Merkezi 'nde **teklif listesi** sayfasında toplanır:
 
-[![](media/cpp-pc-faq/offer-listing.png "Shows the Partner Center Offer listing page")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[![Ekran görüntüsü Iş Ortağı Merkezi teklif listesi sayfasını gösterir.](media/cpp-pc-faq/offer-listing.png "Iş Ortağı Merkezi teklif listesi sayfasını gösterir")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 SKU 'Lar için daha önce Bulut İş Ortağı Portalı tek bir sayfada verdiğiniz bilgiler artık Iş Ortağı Merkezi 'nin çeşitli sayfalarında toplanabilecek:
 
 - Plan ayarlama sayfası
 - Plan listeleme sayfası
 - Plan kullanılabilirlik sayfası
-- Teknik yapılandırma sayfasını burada gösterildiği gibi planlayın: ![ ! [] (Media/cpp-PC-SSS/technical-configuration.png "Iş ortağı merkezi teknik yapılandırma sayfasını gösterir")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- Teknik yapılandırma sayfasını burada gösterildiği gibi planlayın: ![ ! [ Ekran görüntüsü Iş ortağı merkezi teknik yapılandırma sayfasını gösterir.] (Media/cpp-PC-SSS/technical-configuration.png "Iş ortağı merkezi teknik yapılandırma sayfasını gösterir")](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 Teklif KIMLIĞINIZ artık teklifin sol gezinti çubuğunda gösteriliyor:
 
@@ -172,7 +172,7 @@ Teklif KIMLIĞINIZ artık teklifin sol gezinti çubuğunda gösteriliyor:
 
 Market 'teki bir teklifi doğrudan Iş Ortağı Merkezi portalından [satmaya](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan) yönelik istek yapabilirsiniz. Bu seçenek, teklifiniz için **teklif genel bakış** sayfasında bulunur.
 
-[![](media/cpp-pc-faq/stop-sell.png "Shows the Partner Center page to stop selling an offer")](media/cpp-pc-faq/stop-sell.png#lightbox)
+[![Ekran görüntüsü, bir teklifi satmaya yönelik Iş Ortağı Merkezi sayfasını gösterir.](media/cpp-pc-faq/stop-sell.png "Bir teklifin satılmasına izin vermek için Iş Ortağı Merkezi sayfasını gösterir")](media/cpp-pc-faq/stop-sell.png#lightbox)
 <br><br>
 
 ## <a name="are-the-cloud-partner-portal-rest-apis-still-supported"></a>Bulut İş Ortağı Portalı REST API 'Leri hala destekleniyor mu?

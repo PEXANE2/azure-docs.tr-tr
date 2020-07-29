@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672386"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274094"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Ayarlar ve veri dolaşımı hakkında SSS
 
@@ -25,18 +26,18 @@ Bu makalede, yöneticilerin ayarlar ve uygulama verilerinin eşitlenmesi hakkın
 
 **Windows ayarları**: Windows işletim sisteminde yerleşik olarak bulunan bilgisayar ayarları. Genellikle, bunlar BILGISAYARıNıZı kişiselleştirebileceğiniz ve aşağıdaki geniş kategorileri içeren ayarlardır:
 
-* *Tema*, masaüstü teması ve görev çubuğu ayarları gibi özellikleri içerir.
-* Son açılan sekmeler ve sık kullanılanlar dahil *Internet Explorer ayarları*.
+* *Tema*, masaüstü teması ve görev çubuğu ayarları gibi özellikler içerir.
+* *Internet Explorer ayarları*, en son açılan sekmeleri ve sık kullanılanları içerir.
 * Sık Kullanılanlar ve okuma listesi gibi *Microsoft Edge tarayıcı ayarları*.
 * Internet parolaları, Wi-Fi profilleri ve diğerleri dahil olmak üzere *parolalar*.
-* Klavye düzenleri, sistem dili, tarih ve saat ve daha fazlası için ayarları içeren *Dil tercihleri*.
-* Yüksek karşıtlık teması, ekran okuyucusu ve büyüteç gibi *erişim kolaylığı özellikleri*.
+* *Dil tercihleri*, düzenleri, sistem dili, tarih ve saat ayarları ile daha fazlasını içerir.
+* Yüksek karşıtlık teması, Ekran Okuyucusu ve Büyüteç gibi *kolay erişim özellikleri*.
 * Fare ayarları gibi *diğer Windows ayarları*.
 
 > [!NOTE]
 > Bu makale, 2015 Temmuz sürümünde Windows 10 ile başlatılan Microsoft Edge eski HTML tabanlı tarayıcı için geçerlidir. Makale, 15 Ocak 2020 ' de yayınlanan yeni Microsoft Edge Bermıum tabanlı tarayıcı için de geçerlidir. Yeni Microsoft Edge için eşitleme davranışı hakkında daha fazla bilgi için [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)makalesine bakın.
 
-**Uygulama verileri**: Evrensel Windows uygulamaları, ayarlar verilerini bir dolaşım klasörüne yazabilir ve bu klasöre yazılan tüm veriler otomatik olarak eşitlenir. Bu özellikten yararlanmak için tek bir uygulama geliştiricisinin bir uygulama tasarlaması vardır. Dolaşım kullanan bir Evrensel Windows uygulaması geliştirme hakkında daha fazla bilgi için bkz. [AppData Storage API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) ve [Windows 8 AppData gezici geliştirici blogu](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Uygulama verileri**: Evrensel Windows uygulamaları, ayarlar verilerini bir dolaşım klasörüne yazabilir ve bu klasöre yazılan tüm veriler otomatik olarak eşitlenir. Bu özellikten yararlanmak için tek bir uygulama geliştiricisinin bir uygulama tasarlaması vardır. Dolaşım kullanan bir Evrensel Windows uygulaması geliştirme hakkında daha fazla bilgi için bkz. [AppData Storage API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) ve [Windows 8 AppData gezici geliştirici blogu](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Ayarların eşitlenmesi için kullanılacak hesap nedir?
 

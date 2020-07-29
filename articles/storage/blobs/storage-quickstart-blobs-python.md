@@ -3,17 +3,17 @@ title: 'Hızlı başlangıç: Azure Blob depolama kitaplığı V12-Python'
 description: Bu hızlı başlangıçta, blob (nesne) deposunda bir kapsayıcı ve BLOB oluşturmak için Python için Azure Blob depolama istemci kitaplığı sürüm 12 ' yi nasıl kullanacağınızı öğreneceksiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobların listesini görüntülemeyi öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 3bdf8655236aee0b6a9f7d40fbd8694b819876b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3df76d2ba4f091c1c9f7ac737c2830225b85649c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021129"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287159"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Hızlı başlangıç: Python V12 SDK ile Blobları yönetme
 
@@ -31,9 +31,6 @@ Ek kaynaklar:
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
 - [Python](https://www.python.org/downloads/) 2,7, 3,5 veya üzeri.
-
-> [!NOTE]
-> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme](storage-quickstart-blobs-python-legacy.md).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

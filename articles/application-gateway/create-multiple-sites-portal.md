@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: victorh
-ms.openlocfilehash: 2f1501438c5fde5be401411ee51b212323427761
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068076"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290151"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak birden çok Web sitesini barındırmak için bir uygulama ağ geçidi oluşturma ve yapılandırma
 
@@ -116,9 +116,6 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
    **Ek ayarlar**altında:
    - **Dinleyici türü**: birden çok site
    - **Ana bilgisayar adı**: **www.contoso.com**
-
->[!NOTE]
-> Application Gateway veya WAF v2 SKU 'SU ile dinleyici başına 5 adede kadar ana bilgisayar adı yapılandırabilir ve ana bilgisayar adında joker karakterler kullanabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları](multiple-site-overview.md#wildcard-host-names-in-listener-preview) . Azure portal, bunları konak adı alanındaki ayrı metin kutularında tanımlayabilirsiniz.
 
    **Dinleyici** sekmesinde diğer ayarlar için varsayılan değerleri kabul edin, sonra yönlendirme kuralının geri kalanını yapılandırmak Için **arka uç hedefleri** sekmesini seçin.
 

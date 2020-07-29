@@ -2,21 +2,25 @@
 title: 'Hızlı başlangıç: Java için Azure Blob depolama istemci kitaplığı V8'
 description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Azure depolama istemci kitaplığı v8 ' nı kullanın.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: e7986add466bc42b092763acfeceebc8a6523bbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ab45495283f8751912d93e9799958a8effc887a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80473993"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323749"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Hızlı başlangıç: Java V8 SDK ile Blobları yönetme
 
 Bu hızlı başlangıçta, Java kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listeleyebilir. Ayrıca kapsayıcıları oluşturur, izinleri ayarlar ve siler.
+
+> [!NOTE]
+> Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: Java V12 SDK ile Blobları yönetme](storage-quickstart-blobs-java.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

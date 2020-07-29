@@ -4,13 +4,13 @@ description: Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti gönd
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: fb8e5196077e60c20d9354459cafe85302ad0e45
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 7b26a15ba729d262bf7eae298bc1810fed595474
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314671"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Hızlı başlangıç: Java ile Service Bus konuları ve abonelikleri kullanma
 
@@ -18,7 +18,7 @@ ms.locfileid: "85341426"
 
 Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ardından aboneliklerden ilgili konuya ileti almak için Java kodu yazın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 2. Hızlı Başlangıç bölümündeki adımları uygulayın: Azure portal kullanarak aşağıdaki görevleri yapmak için [Service Bus konu başlığı ve konuya yönelik abonelikler oluşturun](service-bus-quickstart-topics-subscriptions-portal.md) :

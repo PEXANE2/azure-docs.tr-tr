@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 877d1442c346b321562cb396a77224a6b40c7df2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087246"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276406"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure İçeri/Dışarı Aktarma için sistem gereksinimleri
 
@@ -50,7 +50,7 @@ Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Storage hesapla
 Her iş, yalnızca bir depolama hesabından veri aktarmak için kullanılabilir. Diğer bir deyişle, tek bir içeri/dışarı aktarma işi birden çok depolama hesabı arasında yayılamaz. Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
 
 > [!IMPORTANT]
-> [Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)   özelliğinin etkinleştirildiği depolama hesapları için, [içeri/dışarı aktarma](/storage-network-security.md) hizmetinin Azure 'dan/dışarı/dışarı aktarma Işlemini gerçekleştirmesini sağlamak Için **güvenilir Microsoft hizmetlerine izin ver...** ayarını kullanın.
+> [Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)   özelliğinin etkinleştirildiği depolama hesapları için, [içeri/dışarı aktarma](/azure/storage/common/storage-network-security) hizmetinin Azure 'dan/dışarı/dışarı aktarma Işlemini gerçekleştirmesini sağlamak Için **güvenilir Microsoft hizmetlerine izin ver...** ayarını kullanın.
 
 ## <a name="supported-storage-types"></a>Desteklenen depolama türleri
 

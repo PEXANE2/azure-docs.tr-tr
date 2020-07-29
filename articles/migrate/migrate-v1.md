@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5ea17edc61988f13df5137686d823a424f6752ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306120"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -127,7 +127,7 @@ Windows Istemcisi 7, 8 ve 10 | Azure [yalnızca Visual Studio aboneliği](../vir
 Windows 10 Pro masaüstü | Azure, [çok kiracılı barındırma haklarıyla](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) destek sağlar. | Azure için koşullu olarak hazır
 Windows Vista, XP Professional | Destek dışı. Makine Azure 'da önbaşlatılabilir, ancak Azure tarafından bir işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz önerilir.
 Linux | Azure bu [Linux işletim sistemlerini](../virtual-machines/linux/endorsed-distros.md)doğrubir şekilde algılar. Diğer Linux işletim sistemleri Azure 'da önbaşlatılabilir, ancak Azure 'a geçiş yapmadan önce işletim sistemini onaylı bir sürüme yükseltmeniz önerilir. | Sürüm onaylanmış ise Azure için hazırlanın.<br/><br/>Sürüm henüz hazırlanmadığından koşullu olarak kabul edilebilir.
-Diğer işletim sistemleri<br/><br/> Örneğin, Oracle Solaris, Apple Mac OS vb., FreeBSD vb. | Azure, bu işletim sistemlerini onaylamaz. Makine Azure 'da başlatılabilir, ancak Azure tarafından bir işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce desteklenen bir işletim sistemi yüklenmesi önerilir.  
+Diğer işletim sistemleri<br/><br/> Örneğin, Oracle Solaris, Apple macOS vb., FreeBSD vb. | Azure, bu işletim sistemlerini onaylamaz. Makine Azure 'da başlatılabilir, ancak Azure tarafından bir işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce desteklenen bir işletim sistemi yüklenmesi önerilir.  
 VCenter Server içinde **diğeri** olarak belirtilen işletim sistemi | Azure geçişi bu durumda işletim sistemini tanımlayamıyor. | Bilinmeyen hazırlık. VM içinde çalışan işletim sisteminin Azure 'da desteklendiğinden emin olun.
 32 bit işletim sistemleri | Makine Azure 'da önbaşlatılabilir, ancak Azure tam destek sunmayabilir. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce makinenin işletim sistemini 32 bitlik IŞLETIM sisteminden 64 bit işletim sistemine yükseltmeyi düşünün.
 
@@ -210,7 +210,7 @@ Bağımlılık görselleştirmesini kullanmak için bir Log Analytics çalışma
 1. Bir projeye Log Analytics çalışma alanı iliştirmek için, **genel bakış**' a, **temelleri**>, **yapılandırma gerekiyor**' a tıklayın.
 2. Yeni bir çalışma alanı oluşturabilir veya var olan bir çalışma alanı ekleyebilirsiniz:
   - Yeni bir çalışma alanı oluşturmak için bir ad belirtin. Çalışma alanı, geçiş projesiyle aynı [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) içindeki bir bölgede oluşturulur.
-  - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz. Yalnızca, [desteklenen bir hizmet eşlemesi bölgesinde](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)oluşturulan çalışma alanları listelenir. Bir çalışma alanı eklemek için çalışma alanına ' okuyucu ' erişiminizin olduğundan emin olun.
+  - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz. Yalnızca, [desteklenen bir hizmet eşlemesi bölgesinde](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)oluşturulan çalışma alanları listelenir. Bir çalışma alanı eklemek için çalışma alanına ' okuyucu ' erişiminizin olduğundan emin olun.
 
 > [!NOTE]
 > Bir geçiş projesiyle ilişkili çalışma alanını değiştiremezsiniz.

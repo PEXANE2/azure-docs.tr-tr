@@ -5,16 +5,18 @@ description: Otomatik makine öğrenimi için çapraz doğrulamayı ve veri küm
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 9f8c45b39c0a027735643464d8e936f3039bdeff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 900d5cd435a913c0859c862d176fd30130e0a079
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100829"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321505"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri bölmelerini ve çapraz doğrulamayı yapılandırma
 
@@ -29,7 +31,7 @@ Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studi
 > [!NOTE]
 > Studio şu anda eğitim/doğrulama veri bölmelerini ve çapraz doğrulama seçeneklerini desteklemektedir, ancak doğrulama kümesi için bireysel veri dosyalarının belirtilmesini desteklemez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede,
 

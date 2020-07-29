@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- 'Role: Cloud Development'
 ms.date: 06/01/2020
-ms.openlocfilehash: 2efd2c982fcd4c799a6c9daa1d89fde25e7f2c64
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 98b50649b5a788270fa2b4cd8b62ca5598daa25f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307680"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320485"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla okuma (.NET)
 
@@ -84,7 +85,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
     ```
 
-    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
+    Aşağıdakine benzeyen cihaz bağlantı dizenizi not alın:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -104,7 +105,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
     Bu üç değeri bir yere, daha sonra hızlı başlangıçta kullanacaksınız.
 
-## <a name="send-simulated-telemetry"></a>Sanal telemetri gönderme
+## <a name="send-simulated-telemetry"></a>Simülasyon telemetrisi gönderme
 
 Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir uç noktaya bağlanır ve sanal sıcaklık ve nem telemetrisi gönderir.
 

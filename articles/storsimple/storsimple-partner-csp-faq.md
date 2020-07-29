@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77116155"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279228"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>Cloud Solutions sağlayıcı programı için StorSimple: sık sorulan sorular
 
@@ -62,7 +63,7 @@ Birden çok çözüm vardır:
 - Ayrıca, yönetilen Hizmetleri sunarak yeni iş modellerini keşfedebilir.
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>StorSimple CSP iş ortakları için kullanılabilen teşvikleri nedir? Herhangi bir CSP programı teşvikleri için uygun mu?
-Teşvikleri hakkında bilgi için, [CSP program teşvikleri](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details)sayfasına gidin.
+Teşvikleri hakkında bilgi için, [CSP program teşvikleri](https://partner.microsoft.com/cloud-solution-provider/program-details)sayfasına gidin.
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>StorSimple 'ı iş ortağı olarak dağıtın ve yönetin

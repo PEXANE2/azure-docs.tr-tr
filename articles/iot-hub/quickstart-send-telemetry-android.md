@@ -10,13 +10,15 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- devx-track-java
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: 3a7d6f08870495044c4aef0dc21181feda7eb7ab
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1e5e11d5d04c31fa77adcb0488447c91b0d05254
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041294"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317969"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Hızlı başlangıç: Android cihazından IoT telemetrisi gönderme
 
@@ -24,7 +26,7 @@ ms.locfileid: "86041294"
 
 Bu hızlı başlangıçta, fiziksel veya sanal cihaz üzerinde çalışan bir Android uygulamasından Azure IoT Hub telemetri gönderirsiniz. IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta Telemetriyi göndermek için önceden yazılmış bir Android uygulaması kullanılmaktadır. Telemetri, Azure Cloud Shell kullanılarak IoT Hub okunacak. Uygulamayı çalıştırmadan önce bir IoT Hub oluşturun ve bir cihazı hub 'a kaydedersiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -72,13 +74,13 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyAndroidDevice --output table
     ```
 
-    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
+    Aşağıdakine benzeyen cihaz bağlantı dizenizi not alın:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}`
 
     Bu değeri daha sonra Telemetriyi göndermek için bu hızlı başlangıçta kullanacaksınız.
 
-## <a name="send-simulated-telemetry"></a>Sanal telemetri gönderme
+## <a name="send-simulated-telemetry"></a>Simülasyon telemetrisi gönderme
 
 1. Android Studio 'de GitHub örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun şu dizininde bulunur: *\azure-iot-Samples-java\iot-hub\Samples\device\AndroidSample*.
 

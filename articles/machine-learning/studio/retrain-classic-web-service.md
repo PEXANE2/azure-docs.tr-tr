@@ -1,6 +1,5 @@
 ---
-title: Klasik Web hizmetini yeniden eğitme
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): klasik Web hizmetini yeniden eğitme-Azure'
 description: Bir modeli yeniden eğitme ve klasik Web hizmetini Azure Machine Learning Studio (klasik) ' de yeni eğitilen modeli kullanacak şekilde güncelleştirme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +9,21 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: c1dd91a800c8e807d527f24a381262bde97d792c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d24449f942a8c0da6774ebb2aa85f94a3088b36c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080321"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324956"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasik bir Studio (klasik) Web hizmetini yeniden eğitme ve dağıtma
 
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
+
 Makine öğrenimi modellerini yeniden eğitmek, uygun olan en uygun verilere göre ve bunların doğru kalmasını sağlamanın bir yoludur. Bu makalede, klasik bir Studio (klasik) Web hizmetini yeniden eğitme konusu gösterilmektedir. Yeni bir Studio (klasik) Web hizmetini yeniden eğitme hakkında bir kılavuz için, [Bu nasıl yapılır makalesini görüntüleyin.](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, hem yeniden eğitim denemenize hem de tahmine dayalı denemenize sahip olduğunuz varsayılır. Bu adımlar, [makine öğrenimi modelini yeniden eğitme ve dağıtma](/azure/machine-learning/studio/retrain-machine-learning-model) bölümünde açıklanmaktadır. Ancak, makine öğrenimi modelinizi yeni bir Web hizmeti olarak dağıtmak yerine, tahmine dayalı denemenizi klasik bir Web hizmeti olarak dağıtacaksınız.
      

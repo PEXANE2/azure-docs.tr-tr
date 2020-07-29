@@ -8,20 +8,17 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f072ed8a758173645c886cabf0b20f9e123cbbab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612219"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283410"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Öğretici: Azure portal ile uygulama gruplarını yönetme
 
 >[!IMPORTANT]
->Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/manage-app-groups-2019.md)bakın.
->
-> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Bu içerik Azure Resource Manager Windows sanal masaüstü nesneleri ile Windows sanal masaüstü için geçerlidir. Azure Resource Manager nesneleri olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/manage-app-groups-2019.md)bakın.
 
 Yeni bir Windows sanal masaüstü konak havuzu için oluşturulan varsayılan uygulama grubu, tam masaüstünü de yayımlar. Ayrıca, konak havuzu için bir veya daha fazla RemoteApp uygulama grubu oluşturabilirsiniz. Bir RemoteApp uygulama grubu oluşturmak ve tek tek Başlat menüsü uygulamalarını yayımlamak için bu öğreticiyi izleyin.
 
@@ -35,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgisayar VM 'Leri zaten oluşturduysanız, Azure portal uygulama gruplarını aşağıdaki işlemle ekleyebilirsiniz:
 
-1.  [Azure Portal](https://portal.azure.com/) oturum açın.
+1.  [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2.  **Windows sanal masaüstü**araması yapın ve seçin.
 
@@ -102,7 +99,7 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
 
       - Uygulama **adı**, **görünen ad**, **simge yolu**ve **simge dizini** alanlarında uygulamanın ayrıntılarını girin.
 
-      - **Kaydet**’i seçin.
+      - **Kaydet**'i seçin.
 
      > [!div class="mx-imgBorder"]
      > ![Dosya yolu seçiliyken uygulama ekle sayfasının ekran görüntüsü.](media/add-app-file.png)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253384"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275437"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 'de koşullu erişim için en iyi yöntemler
 
@@ -33,13 +33,13 @@ Yeni bir ilke oluşturduğunuzda, hiçbir Kullanıcı, Grup, uygulama veya eriş
 
 ![Bulut uygulamaları](./media/best-practices/02.png)
 
-İlkenizi çalışır hale getirmek için şunları yapılandırmanız gerekir:
+İlkenizi çalışır hale getirmek için şunları yapılandırmalısınız:
 
-| Nesne           | Nasıl                                  | Kaydol |
+| Ne?           | Nasıl?                                  | Neden? |
 | :--            | :--                                  | :-- |
 | **Bulut uygulamaları** |Bir veya daha fazla uygulama seçin.  | Koşullu erişim ilkesinin hedefi, yetkili kullanıcıların bulut uygulamalarına nasıl erişebileceğini denetlemenize olanak sağlamaktır.|
-| **Kullanıcılar ve gruplar** | Seçtiğiniz bulut uygulamalarınıza erişim yetkisi olan en az bir kullanıcı veya grup seçin. | Hiçbir Kullanıcı ve grup atanmamış koşullu erişim ilkesi hiçbir şekilde tetiklenmez. |
-| **Erişim denetimleri** | En az bir erişim denetimi seçin. | Koşullarınız karşılandıysanız, ilke işlemcinizin ne yapılacağını bilmeleri gerekir. |
+| **Kullanıcılar ve gruplar** | Seçili bulut uygulamalarınıza erişim yetkisi olan en az bir kullanıcı veya grup seçin. | Hiçbir Kullanıcı ve grup atanmamış koşullu erişim ilkesi hiçbir şekilde tetiklenmez. |
+| **Erişim denetimleri** | En az bir erişim denetimi seçin. | Koşullarınızdan memnunsanız ilke işlemcinizin ne yapması gerektiğini bilmesi gerekir. |
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
@@ -49,14 +49,21 @@ Bir bulut uygulamasına eriştiğinizde, birden fazla koşullu erişim ilkesi uy
 
 Tüm ilkeler iki aşamada zorlanır:
 
-- 1. Aşama: 
-   - Ayrıntı koleksiyonu: zaten karşılanması gereken ilkeleri belirlemek için ayrıntıları toplayın.
-   - Bu aşamada, cihaz uyumluluğu koşullu erişim ilkelerinizin parçasıysa kullanıcılar bir sertifika istemi görebilir. Bu istem, cihaz işletim sistemi Windows 10 olmadığında tarayıcı uygulamalarında meydana gelebilir.
-   - İlke değerlendirmesinin 1. aşaması, [yalnızca rapor modundaki](concept-conditional-access-report-only.md)tüm etkin ilkeler ve ilkeler için gerçekleşir.
-- 2. Aşama:
-   - Zorlama: 1. aşamada toplanan ayrıntıları hesaba katılarak, kullanıcıyı karşılanmamış ek gereksinimleri karşılayacak şekilde isteyin.
-   - Sonuçları oturuma uygulayın. 
-   - İlke değerlendirmesinin 2. aşaması, etkinleştirilmiş tüm ilkeler için gerçekleşir.
+- 1. Aşama: oturum ayrıntılarını toplama 
+   - İlke değerlendirmesi için gerekli olacak Kullanıcı konumu ve cihaz kimliği gibi oturum ayrıntılarını toplayın. 
+   - Bu aşamada, cihaz uyumluluğu koşullu erişim ilkelerinizin parçasıysa kullanıcılar bir sertifika istemi görebilir. Bu istem, cihaz işletim sistemi Windows 10 olmadığında tarayıcı uygulamalarında meydana gelebilir. 
+   - İlke değerlendirmesinin 1. aşaması, [yalnızca rapor modundaki](concept-conditional-access-report-only.md)etkin ilkeler ve ilkeler için oluşur.
+- 2. Aşama: zorlama 
+   - Karşılanmamış tüm gereksinimleri belirlemek için 1. aşamada toplanan oturum ayrıntılarını kullanın. 
+   - Erişimi engelleyecek şekilde yapılandırılan bir ilke varsa, blok atama denetimiyle, zorlama burada durdurulur ve Kullanıcı engellenir. 
+   - Daha sonra Kullanıcı, ilke karşılanana kadar, 1. aşama sırasında memnun olmayan ek izin denetimi gereksinimlerini tamamlamayla istenir:  
+      - Çok faktörlü kimlik doğrulaması 
+      - Onaylanan istemci uygulaması/uygulama koruma ilkesi 
+      - Yönetilen cihaz (uyumlu veya hibrit Azure AD katılımı) 
+      - Kullanım koşulları 
+      - Özel denetimler  
+      - Denetimlerin karşılanmasını sağlamak için, oturum denetimlerini uygulama (uygulama zorlandı, Microsoft Cloud App Security ve belirteç ömrü) 
+   - İlke değerlendirmesinin 2. aşaması, etkinleştirilmiş tüm ilkeler için gerçekleşir. 
 
 ### <a name="how-are-assignments-evaluated"></a>Atamalar nasıl değerlendirilir?
 

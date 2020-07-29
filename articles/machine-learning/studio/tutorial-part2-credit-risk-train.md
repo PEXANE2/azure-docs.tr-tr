@@ -1,6 +1,5 @@
 ---
-title: 'Öğretici 2: Kredi risk modellerini eğitme'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik) öğretici 2: Kredi risk modellerini eğitme-Azure'
 description: Azure Machine Learning Studio (klasik) ' de kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür. Modellerin nasıl eğiteleceğini ve değerlendirileceğini gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi
 author: sdgilley
@@ -10,16 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c88a7e2a74d4ad7b9ee353b24c46e36d4365db5e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79217866"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324888"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Öğretici 2: Kredi risk modellerini eğitme-Azure Machine Learning Studio (klasik)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde genişletilmiş bir görünüm elde edersiniz. Machine Learning Studio (klasik) içinde basit bir model geliştirirsiniz.  Daha sonra modeli bir Azure Machine Learning Web hizmeti olarak dağıtabilirsiniz.  Bu dağıtılan model yeni verileri kullanarak tahminleri yapabilir. Bu öğretici, **üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür**.
 
@@ -40,7 +40,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 
 [Öğreticinin üçüncü kısmında](tutorial-part3-credit-risk-deploy.md), modeli bir Web hizmeti olarak dağıtacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Öğreticiden birinin bir kısmını](tutorial-part1-credit-risk.md)doldurun.
 
@@ -84,7 +84,7 @@ Denemenin bu bölümü artık şuna benzer:
 
 1. [Model eğitme][train-model] modülünü seçin. **Özellikler** bölmesinde, **sütun seçiciyi Başlat**' ı tıklatın.
 
-1. **Tek bir sütun seçin** iletişim kutusunda, **kullanılabilir sütunlar**altındaki ara alanına "kredi riski" yazın, aşağıdaki "kredi riski" ni seçin ve sağ ok düğmesine (**>**) tıklayarak "kredi riski" nu **Seçili sütunlara**taşıyın. 
+1. **Tek bir sütun seçin** iletişim kutusunda, **kullanılabilir sütunlar**altındaki ara alanına "kredi riski" yazın, aşağıdaki "kredi riski" ni seçin ve sağ ok düğmesine ( **>** ) tıklayarak "kredi riski" nu **Seçili sütunlara**taşıyın. 
 
     ![Model eğitme modülü için kredi risk sütununu seçin](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
