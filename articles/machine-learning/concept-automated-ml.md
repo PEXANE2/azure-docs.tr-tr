@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8a951a4920f2f80a4b9738317bdb2da96c613d53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013054"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290025"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -136,7 +136,7 @@ Bu ayarı şu şekilde etkinleştirin:
 
 + Azure Machine Learning Studio: [Bu adımlarla](how-to-use-automated-ml-for-ml-models.md#customize-featurization) **ek yapılandırmayı görüntüle** bölümünde **Otomatik** özelliği etkinleştirin.
 
-+ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` , [oto mlconfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) nesneniz içinde belirtin. [Fealeştirme] ((nasıl yapılır-yapılandırma-Auto-features.md) hakkında daha fazla bilgi edinin. 
++ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` , [oto mlconfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) nesneniz içinde belirtin. [Korleştirme etkinleştirme](how-to-configure-auto-features.md)hakkında daha fazla bilgi edinin. 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a>Ensesıme modelleri
 

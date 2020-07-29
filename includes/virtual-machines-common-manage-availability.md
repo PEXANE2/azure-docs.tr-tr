@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 04a25b6b0b243744cc81c8b71a1f03e7c7375a68
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87103071"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292415"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -32,7 +32,7 @@ Bu olayların bir veya daha fazlası nedeniyle kapalı kalma süresinin etkisini
 
 * [Bir kullanılabilirlik kümesindeki birden fazla sanal makineyi yedeklilik için yapılandırma]
 * [Bir kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma]
-* [VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma](../articles/virtual-machines/linux/scheduled-events.md)
 * [Her uygulama katmanını ayrı kullanılabilirlik kümelerine yapılandırma]
 * [Yük Dengeleyiciyi kullanılabilirlik kümeleri ile birleştirme]
 * [Veri merkezi düzeyindeki hatalardan korumak için kullanılabilirlik bölgelerini kullanma]
@@ -95,7 +95,7 @@ VM 'Leri yönetilmeyen disklerle kullanmayı planlıyorsanız, VM 'lerin sanal s
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma
 
-[Zamanlanan olaylara](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)abone olduğunuzda, VM 'NIZ, VM 'nizi etkileyebilecek yaklaşan bakım olayları hakkında bilgilendirilir. Zamanlanan olaylar etkinleştirildiğinde, bakım etkinliği gerçekleştirilmeden önce sanal makinenize en az bir süre verilir. Örneğin, VM 'nizi etkileyebilecek ana bilgisayar işletim sistemi güncelleştirmeleri, etkiyi belirten olaylar olarak, aynı zamanda hiçbir işlem gerçekleştirilmediği zaman bakımın gerçekleştirileceği bir süre kadar sıraya alınır. Zamanlama olayları, Azure, VM 'nizi etkileyebilecek mini donanım hatası algıladığında de sıraya alınır ve bu durum, iyileştirmenin ne zaman gerçekleştirilmesi gerektiğine karar vermenize olanak tanır. Müşteriler, durumu kaydetme, ikinciye yük devretme, vb. gibi bakım öncesinde görev gerçekleştirmek için olayını kullanabilir. Bakım olayını düzgün bir şekilde işleme için mantığınızı tamamladıktan sonra, platformun bakım ile devam etmesini sağlamak için bekleyen zamanlanmış olayını onaylayabilirsiniz.
+[Zamanlanan olaylara](../articles/virtual-machines/linux/scheduled-events.md)abone olduğunuzda, VM 'NIZ, VM 'nizi etkileyebilecek yaklaşan bakım olayları hakkında bilgilendirilir. Zamanlanan olaylar etkinleştirildiğinde, bakım etkinliği gerçekleştirilmeden önce sanal makinenize en az bir süre verilir. Örneğin, VM 'nizi etkileyebilecek ana bilgisayar işletim sistemi güncelleştirmeleri, etkiyi belirten olaylar olarak, aynı zamanda hiçbir işlem gerçekleştirilmediği zaman bakımın gerçekleştirileceği bir süre kadar sıraya alınır. Zamanlama olayları, Azure, VM 'nizi etkileyebilecek mini donanım hatası algıladığında de sıraya alınır ve bu durum, iyileştirmenin ne zaman gerçekleştirilmesi gerektiğine karar vermenize olanak tanır. Müşteriler, durumu kaydetme, ikinciye yük devretme, vb. gibi bakım öncesinde görev gerçekleştirmek için olayını kullanabilir. Bakım olayını düzgün bir şekilde işleme için mantığınızı tamamladıktan sonra, platformun bakım ile devam etmesini sağlamak için bekleyen zamanlanmış olayını onaylayabilirsiniz.
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Bir yük dengeleyiciyi kullanılabilirlik alanları veya kümeleriyle birleştirme

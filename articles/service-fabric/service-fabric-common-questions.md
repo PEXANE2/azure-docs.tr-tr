@@ -4,12 +4,12 @@ description: Yetenekler, kullanım örnekleri ve yaygın senaryolar da dahil olm
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258944"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292846"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric soruları
 
@@ -36,7 +36,7 @@ Bu senaryoyla ilgileniyorsanız, ek rehberlik elde etmek için [Service Fabric G
 
 Göz önünde bulundurulması gereken bazı noktalar: 
 
-1. Azure 'daki Service Fabric küme kaynağı, kümenin üzerinde oluşturulduğu sanal makine ölçek kümeleri olduğundan, bugün bölgesel olarak bölgedir. Bu durum, bölgesel bir hata durumunda Azure Resource Manager veya Azure portal aracılığıyla kümeyi yönetme özelliğini kaybedebileceğinizi gösterir. Bu durum, küme çalışır durumda kalmaya devam edebilir ve doğrudan etkileşime girebileceksiniz. Ayrıca, Azure bugün bölgeler arasında kullanılabilen tek bir sanal ağa sahip olmanın yanı sıra bu özelliği de sunar. Bu, Azure 'daki çok bölgeli bir kümenin, VM Ölçek kümelerinde veya [Azure VPN ağ geçitlerinde](../vpn-gateway/vpn-gateway-about-vpngateways.md) [her VM için genel IP adresleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) gerektirdiği anlamına gelir. Bu ağ seçimleri, maliyet, performans ve bazı derece uygulama tasarımında farklı etkileri vardır. bu nedenle, bu tür bir ortam olmadan önce dikkatli bir analiz ve planlama gereklidir.
+1. Azure 'daki Service Fabric küme kaynağı, kümenin üzerinde oluşturulduğu sanal makine ölçek kümeleri olduğundan, bugün bölgesel olarak bölgedir. Bu durum, bölgesel bir hata durumunda Azure Resource Manager veya Azure portal aracılığıyla kümeyi yönetme özelliğini kaybedebileceğinizi gösterir. Bu durum, küme çalışır durumda kalmaya devam edebilir ve doğrudan etkileşime girebileceksiniz. Ayrıca, Azure bugün bölgeler arasında kullanılabilen tek bir sanal ağa sahip olmanın yanı sıra bu özelliği de sunar. Bu, Azure 'daki çok bölgeli bir kümenin [, sanal makine ölçek kümeleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) veya [Azure VPN ağ GEÇITLERINDE](../vpn-gateway/vpn-gateway-about-vpngateways.md)her VM için genel IP adresleri gerektirdiği anlamına gelir. Bu ağ seçimleri, maliyet, performans ve bazı derece uygulama tasarımında farklı etkileri vardır. bu nedenle, bu tür bir ortam olmadan önce dikkatli bir analiz ve planlama gereklidir.
 2. Bu makinelerin bakımı, yönetimi ve izlenmesi, özellikle farklı bulut sağlayıcıları veya şirket içi kaynaklar ile Azure arasında gibi ortam _türlerine_ yayıldığınızda karmaşık hale gelebilir. Yükseltmeler, izleme, yönetim ve tanılamayı, bu tür bir ortamda üretim iş yüklerini çalıştırmadan önce hem küme hem de uygulamalar için anlaşılabilmesini sağlamak için dikkatli olunması gerekir. Bu sorunları Azure 'da veya kendi veri merkezlerinizde çözmenizde deneyimleriniz zaten varsa, Service Fabric kümenizi oluştururken veya çalıştırırken aynı çözümlerin uygulanması olasıdır. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric düğümleri işletim sistemi güncelleştirmelerini otomatik olarak alır mi?
@@ -59,7 +59,7 @@ Azure 'da çalıştırılmayan kümeler için, Service Fabric düğümlerinizin 
 
 Üretim iş yüklerini çalıştıran bir Service Fabric kümesi için desteklenen minimum boyut beş düğümünüz. Geliştirme senaryolarında, tek bir düğüm (Visual Studio 'da hızlı geliştirme deneyimi için iyileştirilmiş) ve beş düğüm kümesi destekliyoruz.
 
-Aşağıdaki üç nedenden dolayı bir üretim kümesinin en az 5 düğüme sahip olması gerekir:
+Aşağıdaki üç nedenden dolayı bir üretim kümesinin en az beş düğümü olması gerekir:
 1. Hiçbir Kullanıcı Hizmeti çalıştırılmasa bile, Service Fabric küme, adlandırma hizmeti ve yük devretme Yöneticisi hizmeti de dahil olmak üzere durum bilgisi olan bir sistem hizmetleri kümesi çalıştırır. Bu sistem hizmetleri, kümenin çalışır durumda kalması için gereklidir.
 2. Her zaman düğüm başına bir hizmetin çoğaltmasını yerleştirdik, bu nedenle küme boyutu bir hizmetin (gerçekte bir bölümün) sahip olduğu kopyaların sayısı için üst sınırdır.
 3. Bir küme yükseltmesi en az bir düğüm getirecek olduğundan, en az bir düğüm için bir arabelleğe sahip olmak istiyoruz, bu nedenle bir üretim kümesinin en düşük düzeyde *ek* olarak en az iki düğüme sahip olmasını istiyoruz. En az, aşağıda açıklandığı gibi bir sistem hizmetinin çekirdek boyutudur.  
@@ -84,7 +84,7 @@ Tek **düğüm**: Bu seçenek, herhangi bir nedenden dolayı tek bir düğümün
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Maliyetleri kaydetmek için kümi gece/hafta sonları üzerinden kapatabilir miyim?
 
-Genellikle yapamazsınız. Service Fabric durumu yerel, kısa ömürlü disklerde depolar, yani sanal makine farklı bir konağa taşınırsa, verilerin onunla birlikte hareket etmez. Normal işlemde, yeni düğüm diğer düğümlere göre güncel hale getirilmediğinden bu bir sorun değildir. Ancak, tüm düğümleri durdurup daha sonra yeniden başlatırsanız, düğümlerin çoğunun yeni konaklarda başlaması ve sistemin kurtulamadığında önemli bir olasılık vardır.
+Genellikle yapamazsınız. Service Fabric durumu yerel, kısa ömürlü disklerde depolar, yani sanal makine farklı bir konağa taşınırsa, verilerin onunla birlikte hareket etmez. Normal işlemde, yeni düğüm diğer düğümler tarafından güncel olarak getirilmediğinden bu bir sorun değildir. Ancak, tüm düğümleri durdurup daha sonra yeniden başlatırsanız, düğümlerin çoğunun yeni konaklarda başlaması ve sistemin kurtulamadığında önemli bir olasılık vardır.
 
 Uygulamanızı dağıtılmadan önce test etmek üzere kümeler oluşturmak isterseniz, bu kümeleri [sürekli tümleştirme/sürekli dağıtım işlem hattının](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)bir parçası olarak dinamik olarak oluşturmanızı öneririz.
 
@@ -122,11 +122,11 @@ Hayır. Düşük öncelikli VM 'Ler desteklenmez.
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Uygulamamın gizli dizileri almak için Keykasada kimlik doğrulaması nasıl yapılır?
-Aşağıdakiler, uygulamanızın Keykasada kimlik doğrulaması için kimlik bilgilerini alması anlamına gelir:
+### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>Uygulamamın parolaları almak için Key Vault kimlik doğrulaması nasıl yapılır?
+Aşağıdakiler, uygulamanızın Key Vault kimlik doğrulaması için kimlik bilgilerini alması anlamına gelir:
 
-A. Uygulamalarınızın derleme/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu anahtar kasasında kimlik doğrulaması yapmak için kullanabilirsiniz.
-B. Sanal makine ölçek kümesi MSI etkin konaklar için, [MSI uç noktasından bir erişim belirteci](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)almak üzere SF uygulamanız için basit bir PowerShell setupentrypoint geliştirebilir ve sonra [gizli dizileri keykasasından alabilirsiniz](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+A. Uygulamalarınızın derleme/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu Key Vault kimlik doğrulaması yapmak için kullanabilirsiniz.
+B. Sanal makine ölçek kümesi MSI etkin konaklar için, [MSI uç noktasından bir erişim belirteci](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)almak üzere SF uygulamanız için basit bir PowerShell setupentrypoint geliştirebilir ve sonra [Key Vault gizli](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)dizileri elde edebilirsiniz.
 
 ## <a name="application-design"></a>Uygulama tasarımı
 
@@ -155,7 +155,7 @@ Güvenilir hizmetler genellikle bölümlenebilir, bu nedenle depoladığınız m
 
 Her bir nesnenin üç kez depolanması gerektiğini aklınızda bulundurun (bir birincil ve iki çoğaltma), tam kapasiteyle çalışırken koleksiyonunuzda yaklaşık 35.000.000 nesne için yeterli belleğe sahip olursunuz. Bununla birlikte, bir hata etki alanının ve yükseltme etki alanının eş zamanlı kaybını dayanıklı bir şekilde kullanmanızı öneririz. Bu, 1/3 kapasitesini temsil eder ve sayıyı kabaca 23.000.000 olarak azaltır.
 
-Bu hesaplamanın ayrıca şunları varsaydığını unutmayın:
+Bu hesaplama ayrıca şunları varsayar:
 
 - Verilerin bölümler arasında dağıtılması kabaca Tekdüzen olur veya yük ölçümlerini Küme Kaynak Yöneticisi olarak raporlıyoruz. Varsayılan olarak, Service Fabric çoğaltma sayısına göre dengeyi yükler. Yukarıdaki örnekte, kümedeki her düğüme 10 birincil çoğaltma ve 20 ikincil çoğaltma yerleştirdi. Bu, bölümler arasında eşit olarak dağıtılan yük için iyi bir sonuç verir. Yük bile olmasa da, Kaynak Yöneticisi daha küçük çoğaltmaları paket, daha büyük çoğaltmaların tek bir düğümde daha fazla bellek kullanmasına izin vermek için yükleme rapor etmeniz gerekir.
 
@@ -167,6 +167,12 @@ Bu hesaplamanın ayrıca şunları varsaydığını unutmayın:
 
 Güvenilir hizmetlerde olduğu gibi, bir aktör hizmetinde depolayabilmeniz gereken veri miktarı yalnızca kümenizdeki düğümlerde bulunan toplam disk alanı ve bellekle sınırlıdır. Ancak, tek tek aktörler, az miktarda durum ve ilişkili iş mantığını kapsüllemek için kullanıldıkları zaman en etkilidir. Genel bir kural olarak, tek bir aktör, kilobayt cinsinden ölçülen bir duruma sahip olmalıdır.
 
+
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Azure Service Fabric kaynak sağlayıcısı müşteri verilerini nerede depolar?
+
+Azure Service Fabric kaynak sağlayıcısı, müşteri verilerini dağıtıldığı bölgenin dışına taşımaz veya depolamaz.
+
+
 ## <a name="other-questions"></a>Diğer sorular
 
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Service Fabric kapsayıcılarla nasıl ilişkilidir?
@@ -177,7 +183,7 @@ Kapsayıcılar Hizmetleri ve bağımlılıklarını, her türlü ortamda tutarl�
 
 GitHub 'da Service Fabric ([güvenilir hizmetler çerçevesi](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [güvenilir aktör çerçevesi](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core tümleştirme KITAPLıKLARı](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)ve [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) açık kaynaklı parçaları vardır ve bu projelere yönelik topluluk katkılarını kabul etmiş bulunuyoruz. 
 
-[Kısa süre önce](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) Service Fabric çalışma zamanını açık kaynak olarak planladığımızda duyuruyoruz. Bu noktada, Linux derleme ve test araçlarıyla GitHub 'da [Service Fabric](https://github.com/Microsoft/service-fabric/) , depoyu kopyalayabilir, Linux için Service Fabric derleyebilir, temel testleri çalıştırabilir, sorunları açabilir ve çekme istekleri gönderebilirsiniz. Windows Build ortamını, tüm CI ortamıyla birlikte geçiş yapmak için çok çalıştık.
+[Kısa süre önce](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) Service Fabric çalışma zamanını açık kaynak olarak planladığımızda duyuruyoruz. Bu noktada, Linux derleme ve test araçlarıyla GitHub üzerinde [Service Fabric](https://github.com/Microsoft/service-fabric/) , depoyu kopyalayabilir, linux için Service Fabric derleyebilir, temel testleri çalıştırabilir, sorunları açabilir ve çekme istekleri gönderebilirsiniz. Windows Build ortamını, tüm CI ortamıyla birlikte geçiş yapmak için çok çalıştık.
 
 Duyurulduğu gibi daha fazla ayrıntı için [Service Fabric blogunu](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) izleyin.
 

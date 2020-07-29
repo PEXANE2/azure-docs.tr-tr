@@ -3,12 +3,12 @@ title: Laboratuvar ilkelerini Azure DevTest Labs yönetme | Microsoft Docs
 description: VM boyutları, Kullanıcı başına en fazla VM ve kapalı otomasyon gibi Laboratuvar ilkeleri tanımlama hakkında bilgi edinin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 95d91cfc70d603187543e308d2b1355c549c88f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483406"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290418"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuvar için tüm ilkeleri yönetme
 
@@ -70,7 +70,7 @@ Otomatik kapatma ilkesi, bu laboratuvarın VM 'lerinin kapandığı saati belirt
 
 1. Belirtilen otomatik kapatılma zamanından 15 dakika önce bildirim gönderme seçeneği için Evet veya **Hayır** **değerini** belirtin. **Evet**' i seçerseniz, bir Web kancası URL uç noktası veya bildirimin nakledilmesini veya gönderilmesini istediğinizi belirten bir e-posta adresi girin. Kullanıcı bildirimi alır ve kapanışı erteleme seçeneği verilir.
 
-   Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+   Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-bindings-http-webhook.md). 
 
 1. **Kaydet**'i seçin.
 
@@ -129,4 +129,3 @@ Laboratuvarınız için çeşitli VM ilkesi ayarlarını tanımladıktan ve uygu
 * [Özel görüntü oluşturma](devtest-lab-create-template.md) -bir VM oluşturduğunuzda, özel bir görüntü veya Market görüntüsü olabilen bir temel belirlersiniz. Bu makalede, bir VHD dosyasından nasıl özel bir görüntü oluşturacağınız gösterilmektedir.
 * [Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) -Azure DevTest Labs Azure Market görüntülerine göre VM oluşturmayı destekler. Bu makalede, bir laboratuvarda VM oluştururken Azure Market görüntülerinin kullanılabileceği, hangilerinin kullanılacağı gösterilmektedir.
 * [Laboratuvarda sanal makine oluşturma](devtest-lab-add-vm.md) -bir temel görüntüden (özel veya Market) sanal makine OLUŞTURMAYı ve sanal makinenizde yapıtlarla çalışmayı gösterir.
-

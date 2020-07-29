@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60461026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292833"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Bulut çözümü sağlayıcısı (CSP) programıyla çok kiracılı bir ortamda VMware olağanüstü durum kurtarmayı ayarlama
 
-[CSP programı](https://partner.microsoft.com/en-US/cloud-solution-provider) , Office 365, Enterprise Mobility Suite ve Microsoft Azure dahil olmak üzere Microsoft bulut hizmetleri için daha iyi bir hikaye bulmasıdır. CSP ile iş ortakları müşterilerle uçtan uca ilişkiye sahiptir ve birincil ilişki iletişim noktası olur. İş ortakları, müşteriler için Azure abonelikleri dağıtabilir ve abonelikleri kendi değer eklenmiş, özelleştirilmiş tekliflerle birleştirebilir.
+[CSP programı](https://partner.microsoft.com/cloud-solution-provider) , Office 365, Enterprise Mobility Suite ve Microsoft Azure dahil olmak üzere Microsoft bulut hizmetleri için daha iyi bir hikaye bulmasıdır. CSP ile iş ortakları müşterilerle uçtan uca ilişkiye sahiptir ve birincil ilişki iletişim noktası olur. İş ortakları, müşteriler için Azure abonelikleri dağıtabilir ve abonelikleri kendi değer eklenmiş, özelleştirilmiş tekliflerle birleştirebilir.
 
 [Azure Site Recovery](site-recovery-overview.md), iş ortakları olarak müşteriler için olağanüstü durum KURTARMAYı doğrudan CSP aracılığıyla yönetebilirsiniz. Alternatif olarak, Site Recovery ortamları ayarlamak ve müşterilerin kendi olağanüstü durum kurtarma ihtiyaçlarını self servis bir şekilde yönetmesine izin vermek için CSP 'yi kullanabilirsiniz. Her iki senaryoda de iş ortakları Site Recovery ve müşterileri arasında Liaison. İş ortakları müşteri ilişkisine hizmet ve Site Recovery kullanım için fatura müşterileri.
 

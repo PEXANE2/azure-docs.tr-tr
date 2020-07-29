@@ -6,18 +6,18 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d819eaa5c90e304a642efd3a6f2458cab4eefe7f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7572e5c5621b514c375e44ca44ddfc4102f5d714
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421766"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298731"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?pivots=programming-language-python" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükleyip boş bir örnek proje<span class="docon docon-navigate-external x-hidden-focus"></span>oluşturun</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?pivots=programming-language-python" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükleyip boş bir örnek proje <span class="docon docon-navigate-external x-hidden-focus"></span> oluşturun</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Amaç tanıma için bir LUSıS uygulaması oluşturma
 
@@ -26,7 +26,7 @@ Başlamadan önce:
 ## <a name="open-your-project"></a>Projenizi açın
 
 1. Tercih ettiğiniz IDE 'yi açın.
-2. Yeni bir proje oluşturun ve adlı `quickstart.py`dosyayı oluşturun, ardından açın.
+2. Yeni bir proje oluşturun ve adlı dosyayı oluşturun `quickstart.py` , ardından açın.
 
 ## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
@@ -36,12 +36,12 @@ Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Bir `IntentRecognizer` nesneyi başlatabilmeniz IÇIN, lusıs tahmin kaynağınız için anahtar ve konum kullanan bir yapılandırma oluşturmanız gerekir.
+Bir nesneyi başlatabilmeniz için `IntentRecognizer` , lusıs tahmin kaynağınız için anahtar ve konum kullanan bir yapılandırma oluşturmanız gerekir.
 
-Bu kodu içine `quickstart.py`ekleyin. Bu değerleri güncelleştirdiğinizden emin olun:
+Bu kodu içine ekleyin `quickstart.py` . Bu değerleri güncelleştirdiğinizden emin olun:
 
-* LUSıS tahmin anahtarınızla değiştirin `"YourLanguageUnderstandingSubscriptionKey"` .
-* LUSıS konumunuz ile değiştirin `"YourLanguageUnderstandingServiceRegion"` . Bölgeden **bölge tanımlayıcısı** kullan [region](https://aka.ms/speech/sdkregion)
+* `"YourLanguageUnderstandingSubscriptionKey"`Lusıs tahmin anahtarınızla değiştirin.
+* `"YourLanguageUnderstandingServiceRegion"`Lusıs konumunuz ile değiştirin. Bölgeden **bölge tanımlayıcısı** kullan [region](https://aka.ms/speech/sdkregion)
 
 >[!TIP]
 > Bu değerleri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
@@ -54,7 +54,7 @@ Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapıl�
 
 ## <a name="initialize-an-intentrecognizer"></a>Bir Yoğunlumtanıyıcıyı başlatma
 
-Şimdi bir `IntentRecognizer`oluşturalım. Konuşma yapılandırmanızın hemen altına bu kodu ekleyin.
+Şimdi bir oluşturalım `IntentRecognizer` . Konuşma yapılandırmanızın hemen altına bu kodu ekleyin.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
 
@@ -62,16 +62,18 @@ Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapıl�
 
 Bir `LanguageUnderstandingModel` ' i amaç tanıyıcı ile ilişkilendirmeli ve tanınan hedefleri eklemelisiniz. Ana otomasyon için önceden oluşturulmuş etki alanındaki amaçları kullanacağız.
 
-Buraya bu kodu ekleyin `IntentRecognizer`. LUSıS uygulama KIMLIĞINIZ ile `"YourLanguageUnderstandingAppId"` değiştirdiğinizden emin olun. 
+Buraya bu kodu ekleyin `IntentRecognizer` . `"YourLanguageUnderstandingAppId"`Lusıs uygulama kimliğiniz ile değiştirdiğinizden emin olun. 
 
 >[!TIP]
 > Bu değeri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
+Bu örnek, `add_intents()` açıkça tanımlanmış bir amaç listesi eklemek için işlevini kullanır. Bir modelden tüm amaçları eklemek istiyorsanız `add_all_intents(model)` modeli kullanın ve geçirin.
+
 ## <a name="recognize-an-intent"></a>Amacı tanıma
 
-`IntentRecognizer` Nesnesinden `recognize_once()` yöntemi çağıracağız. Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.
+`IntentRecognizer`Nesnesinden yöntemi çağıracağız `recognize_once()` . Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.
 
 Bu kodu modelinizin altına ekleyin.
 
@@ -81,7 +83,7 @@ Bu kodu modelinizin altına ekleyin.
 
 Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgili bir şey yapmak isteyeceksiniz. Bu uygulamayı basit tutmaya ve sonucu konsola yazdıracağız.
 
-Çağrın `recognize_once()`altına bu kodu ekleyin.
+Çağrın altına `recognize_once()` Bu kodu ekleyin.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 

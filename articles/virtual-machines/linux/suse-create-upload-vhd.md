@@ -5,15 +5,15 @@ author: gbowerman
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: ed14aee756456e35198a501df309fc9eb032898e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080089"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292123"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure'da SLES veya openSUSE sanal makinesi hazırlama
 
@@ -133,7 +133,7 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
 2. Sanal makine penceresini açmak için **Bağlan** ' a tıklayın.
 3. Kabukta ' ' komutunu çalıştırın `zypper lr` . Bu komut aşağıdakine benzer bir çıktı döndürürse, depolar beklenen şekilde yapılandırılır; hiçbir ayarlama gerekmez (sürüm numaralarının değişebileceğini unutmayın):
 
-   | # | Diğer ad                 | Name                  | Etkin | Yenile
+   | # | Diğer ad                 | Ad                  | Etkin | Yenile
    | - | :-------------------- | :-------------------- | :------ | :------
    | 1 | Bulut: Tools_13.1      | Bulut: Tools_13.1      | Yes     | Yes
    | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes

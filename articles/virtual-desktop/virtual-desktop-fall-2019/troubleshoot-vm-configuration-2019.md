@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü oturumu ana bilgisayarı 2019-Azure sorunlarını giderme
-description: Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini yapılandırırken sorunları çözme.
+title: Windows sanal masaüstü (klasik) oturum ana bilgisayarı-Azure sorunlarını giderme
+description: Windows sanal masaüstü (klasik) oturum ana bilgisayarı sanal makinelerini yapılandırırken sorunları çözme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527668"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291250"
 ---
-# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>Oturum Ana bilgisayarı sanal makine yapılandırması sorunlarını giderme
+# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows sanal masaüstü (klasik) oturum ana bilgisayarı sanal makine yapılandırması
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../troubleshoot-vm-configuration.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../troubleshoot-vm-configuration.md)bakın.
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 

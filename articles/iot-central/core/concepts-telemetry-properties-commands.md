@@ -7,12 +7,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 108a7940084e99348dc8fdfa0143d5c6855599df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100312"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291615"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, özellik ve komut yükleri
 
@@ -30,6 +30,9 @@ Makale, olası telemetri, özellik ve komut yükünün her türünü tanımlamaz
 
 Her örnek, cihazın IoT Central uygulamayla nasıl etkileşime gireceğini göstermek için türü ve örnek JSON yüklerini tanımlayan cihaz yetenek modeli 'nden (DCM) bir kod parçacığı gösterir.
 
+> [!NOTE]
+> IoT Central geçerli bir JSON kabul eder, ancak yalnızca DCM içindeki bir tanımla eşleşiyorsa görselleştirmeler için kullanılabilir. Tanımıyla eşleşmeyen verileri dışarı aktarabilirsiniz, bkz. [Azure 'Da IoT verilerini hedeflere aktarma](howto-export-data.md).
+
 DCM 'yi tanımlayan JSON dosyası [Digital Ikizi tanım dili (DTDL) v1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)kullanır. Bu belirtim `@id` özellik biçiminin tanımını içerir.
 
 Kullanımda olan bu yüklerden bazılarını gösteren örnek cihaz kodu için bkz. [azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Node.js)](tutorial-connect-device-nodejs.md) ve [bir Istemci uygulamasını oluşturup Azure IoT Central uygulamanız (Python)](tutorial-connect-device-python.md) öğreticilerimize bağlama.
@@ -43,9 +46,8 @@ IoT Central, bir cihazın bir uygulamaya gönderdiği ham verileri görüntülem
 1. **Ham veri** sekmesini seçin:
 
     :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="Ham veri görünümü":::
-    
-    Bu görünümde, görüntülenecek sütunları seçebilir ve görüntülenecek zaman aralığını ayarlayabilirsiniz. **Modellenmemiş veriler** sütunu, cihazdaki herhangi bir özellik veya telemetri tanımından hiçbiriyle eşleşmeyen verileri gösterir.
 
+    Bu görünümde, görüntülenecek sütunları seçebilir ve görüntülenecek zaman aralığını ayarlayabilirsiniz. **Modellenmemiş veriler** sütunu, cihazdaki herhangi bir özellik veya telemetri tanımından hiçbiriyle eşleşmeyen verileri gösterir.
 
 ## <a name="telemetry"></a>Telemetri
 

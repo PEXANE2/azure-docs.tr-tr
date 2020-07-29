@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 01c9c4389e2c950fe68c8be171b4c50d3d6271c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4ebf433237193c0db7859b029bb224c72c92eae
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052023"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291025"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 'da bulunan Red Hat Enterprise Linux (RHEL) görüntüleri
 Azure, farklı kullanım durumları için çeşitli RHEL görüntüleri sunmaktadır.
@@ -88,9 +88,17 @@ RHEL-SAP-HA   | 7.4          | LVM    | Linux Aracısı | HA ve Update Services 
 RHEL-byos     |RHEL-lvm74| LVM    | Linux Aracısı | RHEL 7,4 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 |             |RHEL-lvm75| LVM    | Linux Aracısı | RHEL 7,5 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 |             |RHEL-lvm76| LVM    | Linux Aracısı | RHEL 7,6 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm76-Gen2| LVM    | Linux Aracısı | RHEL 7,6 2. nesil KCG görüntüleri, hiçbir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 |             |RHEL-lvm77| LVM    | Linux Aracısı | RHEL 7,7 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm77-Gen2| LVM    | Linux Aracısı | RHEL 7,7 2. nesil KCG görüntüleri, hiçbir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm78| LVM    | Linux Aracısı | RHEL 7,8 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm78-Gen2| LVM    | Linux Aracısı | RHEL 7,8 2. nesil KCG görüntüleri, hiçbir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 |             |RHEL-lvm8 | LVM    | Linux Aracısı | RHEL 8,0 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm8-Gen2 | LVM    | Linux Aracısı | RHEL 8,0 2. nesil KCG görüntüleri, hiçbir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 |             |RHEL-lvm81 | LVM    | Linux Aracısı | RHEL 8,1 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm81-Gen2 | LVM    | Linux Aracısı | RHEL 8,1 2. nesil KCG görüntüleri, hiçbir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm82 | LVM    | Linux Aracısı | RHEL 8,2 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm82-Gen2 | LVM    | Linux Aracısı | RHEL 8,2 2. nesil KCG görüntüleri, hiçbir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 
 > [!NOTE]
 > RHEL-SAP-HANA ürün teklifi, Red Hat ile yaşam sonu olarak değerlendirilir. Mevcut dağıtımlar normal şekilde çalışmaya devam eder, ancak Red Hat müşterilerin RHEL-SAP-HANA görüntülerinden, SAP HANA depoları ve HA eklentisi de içeren RHEL-SAP-HA yansımalarına geçiş gerçekleştirmesini önerir. Red Hat 'in SAP bulut teklifleri hakkında daha fazla ayrıntıya [buradan](https://access.redhat.com/articles/3751271)ulaşabilirsiniz.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067923"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290983"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway birden çok site barındırma
 
@@ -40,12 +40,8 @@ Ana bilgisayar adında bir joker karakter kullanarak, tek bir dinleyicide birden
 >[!NOTE]
 > Bu özellik önizleme aşamasındadır ve yalnızca Application Gateway Standard_v2 ve WAF_v2 SKU 'SU için kullanılabilir. Önizlemeler hakkında daha fazla bilgi edinmek için [buradaki kullanım koşullarına](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-[Azure Portal](create-multiple-sites-portal.md), bunları aşağıdaki ekran görüntüsünde gösterildiği gibi ayrı metin kutularında tanımlayabilirsiniz.
-
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="Joker karakter dinleyicisi örnek yapılandırması":::
-
 >[!NOTE]
->Yeni bir çok siteli dinleyici oluşturuyorsanız veya Azure portal var olan çok siteli dinleyiciye birden fazla konak adı ekliyorsanız, varsayılan olarak, `HostNames` yapılandırmada varolan parametreye daha fazla özellik ekleyen dinleyici yapılandırmasının parametresine eklenir `HostName` .
+>Bu özellik şu anda yalnızca [Azure PowerShell](tutorial-multiple-sites-powershell.md) ve [Azure CLI](tutorial-multiple-sites-cli.md)üzerinden kullanılabilir. Portal desteği yakında geliyor.
 
 [Azure PowerShell](tutorial-multiple-sites-powershell.md), yerine kullanmanız gerekir `-HostNames` `-HostName` . Ana bilgisayar adları ile, virgülle ayrılmış değerler olarak 5 adede kadar konak adı belirtebilir ve joker karakterler kullanabilirsiniz. Örneğin, `-HostNames "*.contoso.com,*.fabrikam.com"`
 
@@ -77,7 +73,7 @@ Ana bilgisayar adında bir joker karakter kullanarak, tek bir dinleyicide birden
 *   "Hostname" özellikleri bir dizeyi giriş olarak alır; burada yalnızca bir joker karakter olmayan etki alanı adından bahsetmeniz ve "ana bilgisayar adları" girdi olarak bir dize dizisi alır, burada 5 joker karakter etki alanı adlarından bahsetmeniz yeterlidir. Ancak her iki özellik de aynı anda kullanılamaz.
 *   Joker karakter veya birden çok konak adı kullanan bir hedef dinleyicisi ile [yeniden yönlendirme](redirect-overview.md) kuralı oluşturamazsınız.
 
-Çok siteli bir dinleyicide joker ana bilgisayar adlarının nasıl yapılandırılacağı hakkında adım adım kılavuz için bkz. Azure portal kullanarak veya [Azure PowerShell kullanarak](tutorial-multiple-sites-powershell.md) veya [Azure CLI kullanarak](tutorial-multiple-sites-cli.md) [birden çok site oluşturma](create-multiple-sites-portal.md) .
+Çok siteli bir dinleyicide joker ana bilgisayar adlarını yapılandırma hakkında adım adım kılavuz için bkz. [Azure PowerShell kullanarak birden çok site oluşturma](tutorial-multiple-sites-powershell.md) veya [Azure CLI 'yi kullanma](tutorial-multiple-sites-cli.md) .
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Barındırma üstbilgileri ve Sunucu Adı Belirtme (SNI)
 
@@ -95,6 +91,9 @@ Application Gateway, aynı genel IP adresinde ve bağlantı noktasında birden �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Birden çok site barındırma hakkında bilgi aldıktan sonra, birden çok Web sitesini barındırmak üzere bir Application Gateway oluşturma hakkında adım adım kılavuz için [Azure Portal kullanarak](create-multiple-sites-portal.md) veya [Azure PowerShell kullanarak](tutorial-multiple-sites-powershell.md) veya [Azure CLI kullanarak](tutorial-multiple-sites-cli.md) çok siteli oluşturma bölümüne gidin.
+Application Gateway 'de birden çok site barındırmayı yapılandırma hakkında bilgi edinin
+* [Azure portalını kullanma](create-multiple-sites-portal.md)
+* [Azure PowerShell’i kullanma](tutorial-multiple-sites-powershell.md) 
+* [Azure CLI’yı kullanma](tutorial-multiple-sites-cli.md)
 
 Uçtan uca şablon tabanlı dağıtım için [birden çok site barındırma kullanan Resource Manager şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) ziyaret edebilirsiniz.

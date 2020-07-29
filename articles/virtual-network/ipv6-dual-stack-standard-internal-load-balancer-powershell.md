@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c224332eec31b343bdc53564ef4075a0620ac340
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707523"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289580"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Azure-PowerShell (Önizleme) ile standart Iç Load Balancer kullanarak IPv6 ikili yığın uygulaması dağıtma
 
 Bu makalede, çift yığın sanal ağı ve alt ağı içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip standart dahili Load Balancer, çift IP yapılandırması, ağ güvenlik grubu ve genel IP 'leri olan NIC 'Ler içeren sanal makineler de gösterilmektedir.
-
-> [!Important]
-> Azure sanal ağ için IPv6 desteği şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 IPv6 özellikli bir dahili Load Balancer oluşturma yordamı, [burada](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)açıklanan Internet 'e yönelik IPv6 Load Balancer oluşturma işlemiyle neredeyse aynıdır. Yalnızca bir iç yük dengeleyici oluşturmak için aşağıdaki PowerShell örneğinde gösterildiği gibi, ön uç yapılandırmasında tek fark vardır:
 
@@ -45,7 +43,7 @@ Yukarıdaki bir iç yük dengeleyici ön uç yapılandırmasını yapan değişi
 
 PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell modülü sürümü 6.9.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure 'da bir çift yığın uygulamasını dağıtmadan önce, aşağıdaki Azure PowerShell kullanarak aboneliğinizi bu önizleme özelliği için yapılandırmanız gerekir:
 
 Aşağıdaki gibi kaydolun:

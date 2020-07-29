@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791740"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290082"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL geçişi ve uygulama geliştirme iş ortakları
 
@@ -21,43 +21,41 @@ NoSQL geçişinden uygulama geliştirmeye kadar, Azure Cosmos DB çözümleriniz
 
 |**İş Ortağı**  |**Yetenekler & deneyim**  |**Desteklenen ülkeler/bölgeler**  |
 |---------|---------|---------|
-|[Anlık ileti](https://www.striim.com/)    |  Sürekli, gerçek zamanlı veri taşıma, veri taşıma|   ABD   |
-| [10 veya daha fazla büyüklük](https://www.10thmagnitude.com/) | IoT, perakende (envanter), operasyonel analiz (Spark), sunucusuz mimari, uygulama geliştirme | ABD |
-|[Altoros geliştirme LLC](https://www.altoros.com/)  |  IoT, kişiselleştirme satışı (envanter), sunucusuz mimariler NoSQL geçişi, uygulama geliştirme|   ABD |
+|[Anlık ileti](https://www.striim.com/)    |  Sürekli, gerçek zamanlı veri taşıma, veri taşıma|   USA   |
+| [10 veya daha fazla büyüklük](https://www.10thmagnitude.com/) | IoT, perakende (envanter), operasyonel analiz (Spark), sunucusuz mimari, uygulama geliştirme | USA |
+|[Altoros geliştirme LLC](https://www.altoros.com/)  |  IoT, kişiselleştirme satışı (envanter), sunucusuz mimariler NoSQL geçişi, uygulama geliştirme|   USA |
 |[Avanade](https://www.avanade.com/) | IoT, perakende (envanter), sunucusuz mimari, uygulama geliştirme | Avusturya, Almanya, Isviçre, Italya, Norveç, Ispanya, UK, Kanada |
 |[Accenture](https://www.accenture.com/) | IoT, perakende (envanter), sunucusuz mimari, uygulama geliştirme |Genel|
-|[BlueMetal](https://www.bluemetal.com/)     |  IoT, kişiselleştirme satışı (envanter), kurumsal & SMC, AI görüntü ek açıklaması, varlık denetimi, NoSQL geçişi, uygulama geliştirme için operasyonel analiz     |    Kuzey Amerika, Asya Pasifik     |
-|[Capax Global LLC](https://www.capaxglobal.com/) | IoT, kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), sunucusuz mimari, uygulama geliştirme|    ABD     |  
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT, kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), sunucusuz mimari, uygulama geliştirme|    USA     |  
 | [Capgemini](https://www.capgemini.com/) | Perakende (Inventory), IoT, operasyonel analiz (Spark), uygulama geliştirme | ABD, Fransa, UK, Hollanda, Finlandiya  |
 | [Cognizant](https://www.cognizant.com/) | IoT, kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), uygulama geliştirme |ABD, Kanada, UK, Danimarka, Hollanda, Isviçre, Avustralya, Japonya |
-|[Bilgi sys](https://www.infosys.com/)     | Uygulama geliştirme      |    ABD    |  
+|[Bilgi sys](https://www.infosys.com/)     | Uygulama geliştirme      |    USA    |  
 | [Lagash sistemleri](https://www.lagash.com/) | IoT, sunucusuz mimari, uygulama geliştirme | Arjantin, Şili, Kolombiya, Meksika|
 | [Lambda3 Me](https://www.lambda3.com.br/) | Gerçek zamanlı kişiselleştirme, perakende envanteri, uygulama geliştirme | Brezilya|
-|[Neal Analizi](https://www.nealanalytics.com/)    |     Kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), uygulama geliştirme  |    ABD     |  
-|[Kolay çalışmalar Software Inc](https://www.pragmaticworks.com/)    |   NoSQL geçişi      |   ABD      |
+|[Neal Analizi](https://www.nealanalytics.com/)    |     Kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), uygulama geliştirme  |    USA     |  
+|[Kolay çalışmalar Software Inc](https://www.pragmaticworks.com/)    |   NoSQL geçişi      |   USA      |
 | [Ricoh Digital Services](https://www.ricoh.com/) | IoT, gerçek zamanlı kişiselleştirme, perakende envanteri, NoSQL geçişi | Birleşik Krallık  |
-|[SNP teknolojileri](https://www.snp.com/) | NoSQL geçişi| ABD |
+|[SNP teknolojileri](https://www.snp.com/) | NoSQL geçişi| USA |
 | [Solidsoft yanıtı](https://www.reply.com/solidsoft-reply/) | NoSQL geçişi | Hırvatistan, Isveç, Danimarka, Irlanda, Bulgaristan, Slovenya, Kıbrıs, Malta, Litvanya, Çek Cumhuriyeti, Izlanda ve Isviçre ve Liechtenstein|
 | [İspanyolca nokta teknolojileri](https://www.spanishpoint.ie/) | NoSQL geçişi| İrlanda|
 | [Syone](https://www.syone.com/) | NoSQL geçişi| Portekiz|
-|[Tallan](https://www.tallan.com/)    |  Uygulama geliştirme      |    ABD     |
+|[Tallan](https://www.tallan.com/)    |  Uygulama geliştirme      |    USA     |
 | [TCS](https://www.tcs.com/) | Uygulama geliştirme | ABD, UK, Fransa, Malezya, Danimarka, Norveç, Isveç|
-|[Sanal ekip laboratuvarları](https://www.vteamlabs.com/)    | Kişiselleştirme, perakende (envanter), IoT, oyun, operasyonel analiz (Spark), sunucusuz mimari, NoSQL geçişi, uygulama geliştirme       |  ABD      |  
+|[Sanal ekip laboratuvarları](https://www.vteamlabs.com/)    | Kişiselleştirme, perakende (envanter), IoT, oyun, operasyonel analiz (Spark), sunucusuz mimari, NoSQL geçişi, uygulama geliştirme       |  USA      |  
 | [Beyaz Duck GmbH](https://whiteducksoftware.com/) |Yeni uygulama geliştirme, uygulama arka ucu, belge tabanlı veriler için depolama| Almanya |
 | [Xpit](https://www.xpand-it.com/) | Yeni uygulama geliştirme | Portekiz, UK|
-| [Hanu](https://hanu.com/) | IoT, uygulama geliştirme | ABD|
-| [Incycle yazılımı](https://www.incyclesoftware.com/) | NoSQL geçişi, sunucusuz mimari, uygulama geliştirme| ABD|
+| [Hanu](https://hanu.com/) | IoT, uygulama geliştirme | USA|
+| [Incycle yazılımı](https://www.incyclesoftware.com/) | NoSQL geçişi, sunucusuz mimari, uygulama geliştirme| USA|
 | [Orion](https://www.orioninc.com/) | Kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), IoT, uygulama geliştirme| ABD, Kanada|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Microsoft 'un diğer iş ortaklarının bazıları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Iş ortağı sitesi](https://partner.microsoft.com/en-US/).
+Microsoft 'un diğer iş ortaklarının bazıları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Iş ortağı sitesi](https://partner.microsoft.com/).
 
 <!--Image references-->
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png
-[5]: ./media/partners-migration-cosmosdb/bluemetal_logo.png
 [6]: ./media/partners-migration-cosmosdb/capaxglobal_logo.png
 [7]: ./media/partners-migration-cosmosdb/coeo_logo.png
 [8]: ./media/partners-migration-cosmosdb/infosys_logo.png

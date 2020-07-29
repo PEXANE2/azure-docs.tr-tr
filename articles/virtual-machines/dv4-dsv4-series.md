@@ -9,11 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 68cd6673283362380fc5a1f4b780f0a22aa53402
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32520a458a797ee9945603dd86c9efe359e4d1f6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783592"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291175"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 ve Dsv4 serisi
 
@@ -42,15 +43,15 @@ Dinamik Geçiş: destekleniyor
 
 Güncelleştirmeleri koruyan bellek: desteklenir
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
-|---|---|---|---|---|---|
-| Standard_D2_v4 | 2 | 8 | Yalnızca uzak depolama | 4 | 2/1000 |
-| Standard_D4_v4 | 4 | 16  | Yalnızca uzak depolama | 8 | 2/2000 |
-| Standard_D8_v4 | 8 | 32 | Yalnızca uzak depolama | 16 | 4/4000 |
-| Standard_D16_v4 | 16 | 64 | Yalnızca uzak depolama | 32 | 8/8000 |
-| Standard_D32_v4 | 32 | 128 | Yalnızca uzak depolama | 32 | 8/16000 |
-| Standard_D48_v4 | 48 | 192 | Yalnızca uzak depolama | 32 | 8/24000 |
-| Standard_D64_v4 | 64 | 256 | Yalnızca uzak depolama | 32 | 8/30000 |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
+|---|---|---|---|---|---|---|
+| Standard_D2_v4 | 2 | 8 | Yalnızca uzak depolama | 4 | 2|1000 |
+| Standard_D4_v4 | 4 | 16  | Yalnızca uzak depolama | 8 | 2|2000 |
+| Standard_D8_v4 | 8 | 32 | Yalnızca uzak depolama | 16 | 4|4000 |
+| Standard_D16_v4 | 16 | 64 | Yalnızca uzak depolama | 32 | 8|8000 |
+| Standard_D32_v4 | 32 | 128 | Yalnızca uzak depolama | 32 | 8|16000 |
+| Standard_D48_v4 | 48 | 192 | Yalnızca uzak depolama | 32 | 8|24000 |
+| Standard_D64_v4 | 64 | 256 | Yalnızca uzak depolama | 32 | 8|30000 |
 
 ## <a name="dsv4-series"></a>Dsv4 serisi
 
@@ -69,12 +70,12 @@ Dinamik Geçiş: destekleniyor
 
 Güncelleştirmeleri koruyan bellek: desteklenir
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Önbelleğe alınan en fazla aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
-|---|---|---|---|---|---|---|---|
-| Standard_D2s_v4 | 2 | 8  | Yalnızca uzak depolama | 4 | 19000/120 (50) | 3000/48 | 2/1000 |
-| Standard_D4s_v4 | 4 | 16 | Yalnızca uzak depolama | 8 | 38500/242 (100) | 6400/96 | 2/2000 |
-| Standard_D8s_v4 | 8 | 32 | Yalnızca uzak depolama | 16 | 77000/485 (200) | 12800/192 | 4/4000 |
-| Standard_D16s_v4 | 16 | 64  | Yalnızca uzak depolama | 32 | 154000/968 (400) | 25600/384 | 8/8000 |
-| Standard_D32s_v4 | 32 | 128 | Yalnızca uzak depolama | 32 | 308000/1936 (800) | 51200/768 | 8/16000 |
-| Standard_D48s_v4 | 48 | 192 | Yalnızca uzak depolama | 32 | 462000/2904 (1200) | 76800/1152 | 8/24000 |
-| Standard_D64s_v4 | 64 | 256 | Yalnızca uzak depolama | 32 | 615000/3872 (1600) | 80000/1200 | 8/30000 |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Önbelleğe alınan en fazla aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_D2s_v4 | 2 | 8  | Yalnızca uzak depolama | 4 | 19000/120 (50) | 3000/48 | 2|1000 |
+| Standard_D4s_v4 | 4 | 16 | Yalnızca uzak depolama | 8 | 38500/242 (100) | 6400/96 | 2|2000 |
+| Standard_D8s_v4 | 8 | 32 | Yalnızca uzak depolama | 16 | 77000/485 (200) | 12800/192 | 4|4000 |
+| Standard_D16s_v4 | 16 | 64  | Yalnızca uzak depolama | 32 | 154000/968 (400) | 25600/384 | 8|8000 |
+| Standard_D32s_v4 | 32 | 128 | Yalnızca uzak depolama | 32 | 308000/1936 (800) | 51200/768 | 8|16000 |
+| Standard_D48s_v4 | 48 | 192 | Yalnızca uzak depolama | 32 | 462000/2904 (1200) | 76800/1152 | 8|24000 |
+| Standard_D64s_v4 | 64 | 256 | Yalnızca uzak depolama | 32 | 615000/3872 (1600) | 80000/1200 | 8|30000 |

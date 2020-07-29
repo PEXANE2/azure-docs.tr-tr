@@ -6,21 +6,21 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049808"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315844"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler kullanarak bir Azure sanal makinesinde veya bir sanal makine ölçek kümesinde çalışan Web uygulamaları profili oluşturma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Ayrıca, bu hizmetlerde Azure Application Insights Profiler dağıtabilirsiniz:
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](./profiler.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Bir sanal makine veya sanal makine ölçek kümesi üzerinde profil oluşturucu dağıtma
 Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçek kümesinde çalışan Application Insights Profiler nasıl alınacağı gösterilmektedir. Profiler, VM 'Ler için Azure Tanılama Uzantısı ile yüklenir. Uzantıyı profil oluşturucu çalıştıracak şekilde yapılandırın ve uygulamanızda Application Insights SDK 'Yı derleyin.
@@ -67,7 +67,7 @@ Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçek kümes
 
 1. Hedeflenen uygulama [IIS](https://www.microsoft.com/web/downloads/platform.aspx)aracılığıyla çalışıyorsa, `IIS Http Tracing` Windows özelliğini etkinleştirin.
 
-   a. Ortama uzaktan erişim oluşturun ve ardından [Windows Özellikleri Ekle]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) penceresini kullanın. Veya PowerShell (yönetici olarak) içinde aşağıdaki komutu çalıştırın:  
+   a. Ortama uzaktan erişim oluşturun ve ardından [Windows Özellikleri Ekle](/iis/configuration/system.webserver/tracing/) penceresini kullanın. Veya PowerShell (yönetici olarak) içinde aşağıdaki komutu çalıştırın:  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -117,3 +117,4 @@ Application Insights Profiler havuzunu portaldan ayarlamak için henüz bir yol 
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png
 [resourceexplorersinksconfig]: ./media/profiler-vm/resource-explorer-sinks-config.png
 [wadextension]: ./media/profiler-vm/wad-extension.png
+

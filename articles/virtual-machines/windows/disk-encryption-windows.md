@@ -4,16 +4,16 @@ description: Bu makalede çeşitli senaryolar için Windows VM 'Leri için Micro
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036140"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291965"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -140,6 +140,33 @@ Aşağıdaki tabloda mevcut veya çalışan VM 'Ler için Kaynak Yöneticisi şa
 | resizeOSDisk | Sistem birimini bölmeden önce IŞLETIM sistemi bölümünün tam işletim sistemi VHD 'SI kaplamaya yeniden boyutlandırılması gerekir. |
 | location | Tüm kaynakların konumu. |
 
+## <a name="enable-encryption-on-nvme-disks-for-lsv2-vms"></a>Lsv2 VM 'Leri için NVMe disklerinde şifrelemeyi etkinleştirme
+
+Bu senaryo, Lsv2 serisi VM 'Ler için NVMe disklerinde Azure disk şifrelemesini etkinleştirmeyi açıklar.  Lsv2-Series, yerel NVMe Storage ' a sahiptir. Yerel NVMe diskleri geçicidir ve VM 'nizi durdurup serbest bırakırsanız (bkz.: [Lsv2-Series](../lsv2-series.md)) bu disklerde veriler kaybedilir.
+
+NVMe disklerinde şifrelemeyi etkinleştirmek için:
+
+1. NVMe disklerini başlatın ve NTFS birimleri oluşturun.
+1. VolumeType parametresi All olarak ayarlanmış VM 'de şifrelemeyi etkinleştirin. Bu, NVMe diskleri tarafından desteklenen birimler dahil tüm işletim sistemi ve veri diskleri için şifrelemeyi etkinleştirir. Daha fazla bilgi için bkz. [var olan veya çalışan bir WINDOWS VM 'de şifrelemeyi etkinleştirme](#enable-encryption-on-an-existing-or-running-windows-vm).
+
+Şifreleme, aşağıdaki senaryolarda NVMe disklerinde kalır:
+- VM yeniden başlatma
+- VMSS ReImage
+- İşletim sistemini takas et
+
+NVMe diskleri aşağıdaki senaryolar için başlatılmamış olur:
+
+- Ayırmayı kaldırdıktan sonra sanal makineyi Başlat
+- Hizmet onarma
+- Backup
+
+Bu senaryolarda, sanal makine başladıktan sonra NVMe disklerinin başlatılması gerekir. NVMe disklerinde şifrelemeyi etkinleştirmek için, NVMe diskleri başlatıldıktan sonra Azure disk şifrelemeyi etkinleştirmek için komutunu çalıştırın.
+
+[Desteklenmeyen senaryolar](#unsupported-scenarios) bölümünde listelenen senaryolara ek olarak, NVMe disklerinin şifrelenmesi için desteklenmez:
+
+- AAD ile Azure disk şifrelemesi ile şifrelenen sanal makineler (önceki sürüm)
+- Depolama alanları ile NVMe diskleri
+- NVMe disklerini içeren SKU 'ların Azure Site Recovery (bkz. [Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma Için destek matrisi: çoğaltılan makineler-depolama](../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)).
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Müşteri tarafından şifrelenen VHD ve şifreleme anahtarlarından oluşturulan yeni IaaS VM 'Leri
 
@@ -236,7 +263,6 @@ Azure disk şifrelemesi, aşağıdaki senaryolar, Özellikler ve teknolojiler i�
 - Şifrelenmiş bir sanal makineyi başka bir aboneliğe veya bölgeye taşıma.
 - Şifrelenmiş bir sanal makinenin görüntüsünü veya anlık görüntüsünü oluşturma ve ek VM 'Leri dağıtmak için kullanma.
 - Gen2 VM 'Ler (bkz. [Azure 'da 2. nesil VM 'ler Için destek](generation-2.md#generation-1-vs-generation-2-capabilities))
-- Lsv2 serisi VM 'Ler (bkz: [Lsv2-Series](../lsv2-series.md))
 - Yazma Hızlandırıcısı disklere sahip, d serisi VM 'Ler.
 - Bir veri diski, müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](disk-encryption.md) şifrelenen bir VM 'ye veya Ade ile ŞIFRELENEN bir VM 'deki bir VERI diskine SSE + CMK uygulayarak bir sanal makineye uygulanıyor.
 - [Müşteri tarafından yönetilen ANAHTARLARLA](disk-encryption.md)Ade ile ŞIFRELENEN bir VM 'yi sunucu tarafı şifrelemeye geçirme.

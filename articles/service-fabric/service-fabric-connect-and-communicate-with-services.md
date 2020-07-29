@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5081ad813d871db0f60284bca4a0c53ee5bbf6b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257766"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287751"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric ile bağlanma ve hizmetlerle iletişim kurma
 Service Fabric, bir hizmet, genellikle birden çok VM arasında dağıtılan bir Service Fabric kümesinde bir yerde çalışır. Hizmet sahibine veya Service Fabric göre otomatik olarak bir yerden diğerine taşınabilir. Hizmetler, belirli bir makineye veya adrese statik olarak bağlı değildir.
@@ -58,7 +58,7 @@ Ters proxy, HTTPS de dahil olmak üzere HTTP uç noktalarını kullanıma sunan 
 Ters proxy hizmetini kullanma hakkında daha fazla bilgi için bkz. [Azure 'Da ters proxy Service Fabric](service-fabric-reverseproxy.md) makalesi.
 
 ## <a name="connections-from-external-clients"></a>Dış istemcilerden gelen bağlantılar
-Bir kümedeki düğümler aynı yerel ağda olduğundan, bir küme içindeki birbirlerine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına erişebilir. Ancak bazı ortamlarda, küme, dış giriş trafiğini sınırlı bir bağlantı noktası kümesiyle yönlendiren bir yük dengeleyicinin arkasında olabilir. Bu durumlarda, hizmetler hala birbirleriyle iletişim kurabilir ve Adlandırma Hizmeti kullanarak adresleri çözümleyebilir, ancak dış istemcilerin hizmetlere bağlanmasına izin vermek için ek adımların alınması gerekir.
+Bir kümedeki düğümler aynı yerel ağda olduğundan, bir küme içindeki birbirlerine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına erişebilir. Ancak, bazı ortamlarda, giriş trafiğini sınırlı bir bağlantı noktası kümesiyle yönlendiren bir yük dengeleyicinin arkasında bir küme olabilir. Bu durumlarda, hizmetler hala birbirleriyle iletişim kurabilir ve Adlandırma Hizmeti kullanarak adresleri çözümleyebilir, ancak dış istemcilerin hizmetlere bağlanmasına izin vermek için ek adımların alınması gerekir.
 
 ## <a name="service-fabric-in-azure"></a>Azure 'da Service Fabric
 Azure 'daki bir Service Fabric kümesi bir Azure Load Balancer arkasına yerleştirilir. Kümenin tüm dış trafiği yük dengeleyiciden geçmelidir. Yük dengeleyici, belirli bir bağlantı noktası üzerinden gelen trafiği, aynı bağlantı noktası açık olan rastgele bir *düğüme* otomatik olarak iletecektir. Azure Load Balancer yalnızca *düğümlerde*açık olan bağlantı noktalarını bilir, bireysel *Hizmetler*tarafından açık olan bağlantı noktalarını bilmez.

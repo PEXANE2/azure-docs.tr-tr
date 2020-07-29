@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204482"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291512"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -29,7 +29,7 @@ Bu konu başlığı altında, bir Windows sanal masaüstü ortamında MSIX uygul
 Başlamadan önce, MSIX uygulama iliştirme 'yi yapılandırmak için gerekenler şunlardır:
 
 - MSIX uygulama iliştirme API 'Leri desteğiyle Windows 10 sürümünü edinmek için Windows Insider portalına erişim.
-- Çalışan bir Windows sanal masaüstü dağıtımı. Windows sanal masaüstü Fall 2019 sürümünün nasıl dağıtılacağını öğrenmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Windows sanal masaüstü Spring 2020 sürümünün nasıl dağıtılacağını öğrenmek için, bkz. [Azure Portal bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md).
+- Çalışan bir Windows sanal masaüstü dağıtımı. Windows sanal masaüstü 'Nü (klasik) dağıtmayı öğrenmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Windows sanal masaüstü Azure Resource Manager tümleştirme ile nasıl dağıtılacağını öğrenmek için, bkz. [Azure Portal bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md).
 - MSIX paketleme aracı.
 - Windows sanal masaüstü dağıtımınızda MSIX paketinin depolanacağı bir ağ paylaşımıdır.
 
@@ -207,14 +207,14 @@ Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kull
 5. Yükleyici, uygulamanın cihazınızda değişiklik yapmasına izin vermek isteyip istemediğinizi isterse, **Evet**' i seçin.
 6. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından da **Araştır**' ı seçin.
 7. Sertifika deposu Seç penceresi göründüğünde, **Güvenilen Kişiler**' i seçin ve ardından **Tamam**' ı seçin.
-8. **Son**'u seçin.
+8. **Son**’u seçin.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>MSIX uygulama iliştirme için PowerShell betikleri hazırlama
 
 MSIX uygulama iliştirme, aşağıdaki sırayla gerçekleştirilmesi gereken dört farklı aşamaya sahiptir:
 
 1. Aşama
-2. Kaydol
+2. Kaydettir
 3. Kaydını silmek
 4. Gerçekleştirilen
 

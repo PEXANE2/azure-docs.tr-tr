@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039992"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290617"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database bağlayıcısını kullanmaya başlama
 
@@ -122,10 +122,11 @@ Swagger 'da tanımlanan Tetikleyicileri ve eylemleri görüntüleyin ve ayrıca 
 
 ## <a name="get-some-help"></a>Yardım alın
 
-[Azure Logic Apps Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) , sorularınızı sormak, soruları yanıtlamak ve diğer Logic Apps kullanıcıların ne yaptığını görmek için harika bir yerdir. 
+[Azure Logic Apps Için Microsoft Q&soru sayfası](/answers/topics/azure-logic-apps.html) , sorularınızı sormak, soruları yanıtlamak ve diğer Logic Apps kullanıcıların ne yaptığını görmek için harika bir yerdir. 
 
 Fikirlerinizi oylama ve göndererek Logic Apps ve bağlayıcıların artırılmasına yardımcı olabilirsiniz [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md)ve [apı 'ler listesinde](apis-list.md)Logic Apps ' de kullanılabilir bağlayıcıları keşfedebilirsiniz.
+
