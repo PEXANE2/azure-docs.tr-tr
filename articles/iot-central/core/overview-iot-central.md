@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 5fe8d261cb6804ffdf2cbe4f543db29336c4c78b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656410"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337186"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -63,11 +63,8 @@ Bu cihaz şablonu şunları içerir:
 
 ### <a name="create-device-templates"></a>Cihaz şablonları oluşturma
 
-[Iot Tak ve kullan (Önizleme)](../../iot-pnp/overview-iot-plug-and-play.md) , herhangi bir katıştırılmış cihaz kodu yazmadan IoT Central cihazları tümleştirmenize olanak sağlar. IoT Tak ve Kullan (Önizleme) 'nin çekirdeğinden, cihaz yeteneklerini açıklayan bir cihaz yetenek modeli şeması bulunur. IoT Central bir uygulamada, cihaz şablonları bu IoT Tak ve Kullan (Önizleme) cihaz yeteneği modellerini kullanır.
-
 Bir çözüm Oluşturucusu olarak, cihaz şablonları oluşturmak için çeşitli seçenekleriniz vardır:
 
-- [IoT cihaz kataloğu Için Azure Sertifikalı](https://aka.ms/iotdevcat) bir cihaz yetenek modeli içeri aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
 - IoT Central cihaz şablonunu tasarlayın ve cihaz kodunuzda cihaz yetenek modelini uygulayın.
 - Visual Studio Code 'u kullanarak bir cihaz yetenek modeli oluşturun ve modeli bir depoya yayımlayın. Modelden cihaz kodunuzu uygulayın ve cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, depodan cihaz yetenek modelini bulur ve sizin için basit bir cihaz şablonu oluşturur.
 - Visual Studio Code 'u kullanarak bir cihaz yetenek modeli oluşturun. Modelden cihaz kodunuzu uygulayın. Cihaz yetenek modelini IoT Central uygulamanıza el ile aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
@@ -145,11 +142,10 @@ Her Azure aboneliğinin, IoT çözümünüzün kapsamını etkileyebilecek varsa
 - GeoJSON Şu anda desteklenmiyor.
 - Harita kutucuğu Şu anda desteklenmiyor.
 - Dizi şeması türleri desteklenmez.
-- Yalnızca C cihaz SDK 'Sı ve Node. js cihaz ve hizmet SDK 'Ları desteklenir.
+- Yalnızca C cihaz SDK 'Sı ve Node.js cihaz ve hizmet SDK 'Ları desteklenir.
 - IoT Central Şu anda Birleşik Devletler, Avrupa, Asya Pasifik, Avustralya, Birleşik Krallık ve Japonya konumlarında sunulmaktadır.
 - Birleşik Krallık ve Japonya konumlarında **özel uygulama (eski)** uygulama şablonunu kullanamazsınız.
 - Cihaz yetenek modelleri aynı dosyada satır içi tanımlanmış tüm arabirimlere sahip olmalıdır.
-- [Iot Tak ve kullan](../../iot-pnp/overview-iot-plug-and-play.md) için destek önizleme aşamasındadır ve yalnızca seçili bölgelerde desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -158,7 +154,6 @@ Artık IoT Central bir genel bakışın olduğuna göre, aşağıda önerilen ba
 - [IoT çözümleri oluşturmak için kullanılabilir Azure teknolojilerini ve hizmetlerini](../../iot-fundamentals/iot-services-and-technologies.md)anlayın.
 - [Azure IoT Central Kullanıcı Arabirimi](overview-iot-central-tour.md)’ni tanıma.
 - [Azure IoT Central uygulaması oluşturmaya](quick-deploy-iot-central.md) bağlama.
-- [Iot Tak ve kullan (Önizleme)](../../iot-pnp/overview-iot-plug-and-play.md)hakkında daha fazla bilgi edinin.
 - [Azure IoT Edge cihazı bağlamayı](./tutorial-add-edge-as-leaf-device.md)öğrenin.
 - [Azure IoT teknolojileri ve Hizmetleri](../../iot-fundamentals/iot-services-and-technologies.md)hakkında daha fazla bilgi edinin.
 

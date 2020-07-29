@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539185"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281506"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 
 İşlem boyutları, tek veritabanları için veritabanı Işlem birimleri (DTU 'Lar) ve elastik havuzlar için elastik veritabanı Işlem birimleri (eDTU 'lar) bakımından ifade edilir. DTU 'Lar ve eDTU 'lar hakkında daha fazla bilgi için bkz. [DTU tabanlı satın alma modeli](purchasing-models.md#dtu-based-purchasing-model).
 
-|Temel|Standart|Premium|
+||Temel|Standart|Premium|
 | :-- | --: | --: | --: |
 | Maksimum depolama boyutu | 2 GB | 1 TB | 4 TB  |
 | En fazla DTU | 5 | 3000 | 4000 | 
@@ -70,7 +70,7 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Elastik havuz eDTU, depolama ve havuza alınmış veritabanı limitleri
 
-| **Temel** | **Standart** | **Premium** |
+|| **Temel** | **Standart** | **Premium** |
 | :-- | --: | --: | --: |
 | Veritabanı başına en fazla depolama boyutu  | 2 GB | 1 TB | 1 TB |
 | Havuz başına en fazla depolama boyutu | 156 GB | 4 TB | 4 TB |
@@ -112,7 +112,7 @@ Veritabanı "ölçek faktörü" temelinde boyutlandırılır. Ölçek faktörü 
 
 İş yükü, aşağıdaki tabloda gösterildiği gibi dokuz işlem türünden oluşur. Her işlem, veritabanı altyapısı ve sistem donanımında belirli bir sistem özellikleri kümesini, diğer işlemlerden yüksek karşıtlığa göre vurgulamak için tasarlanmıştır. Bu yaklaşım, farklı bileşenlerin genel performansa etkilerini değerlendirmeyi kolaylaştırır. Örneğin, "okuma ağır" işlemi diskten önemli sayıda okuma işlemi üretir.
 
-| İşlem Türü | Description |
+| İşlem Türü | Açıklama |
 | --- | --- |
 | Lite 'ı oku |SEÇIN bellek içi; salt okunurdur |
 | Ortamı oku |SEÇIN genellikle bellek içi; salt okunurdur |

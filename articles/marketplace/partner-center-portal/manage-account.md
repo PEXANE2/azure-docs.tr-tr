@@ -4,15 +4,15 @@ description: Microsoft Iş Ortağı Merkezi 'nde ticari Market hesabını yönet
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 04/27/2020
-ms.openlocfilehash: 90ce9e48515213460fdb3db4fed57fd6f5d2688a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8362019365aab002929cc3414e6ca742952fc8ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112859"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320026"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
 
@@ -316,7 +316,7 @@ Başka bir Azure AD kiracısını Iş Ortağı Merkezi hesabınızla ilişkilend
 
 İlişkilendirme başarılı olursa, Iş Ortağı Merkezi 'ndeki **Kullanıcılar** bölümünde Hesap kullanıcılarını eklemek ve yönetmek için bu işlemi gerçekleştirebilirsiniz.
 
-### <a name="create-a-new-tenant"></a>Yeni bir kiracı oluşturun
+### <a name="create-a-new-tenant"></a>Yeni kiracı oluşturma
 
 Iş Ortağı Merkezi hesabınızla yeni bir Azure AD kiracısı oluşturmak için:
 

@@ -4,16 +4,16 @@ description: Bu makale, AzCopy login komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 754baa66d79d169f830332f3c39660f1d71f608a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527923"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285280"
 ---
 # <a name="azcopy-login"></a>azcopy oturum açma
 
@@ -26,8 +26,6 @@ Azure depolama kaynaklarına erişmek için Azure Active Directory oturum açın
 Azure depolama hesabınıza yetki vermek için, depolama alanı, üst kaynak grubu veya üst abonelik bağlamında, Kullanıcı hesabınıza **Depolama Blobu veri katılımcısı** rolünü atamanız gerekir.
 
 Bu komut, işletim sistemi yerleşik mekanizmalarını kullanarak geçerli kullanıcı için şifrelenmiş oturum açma bilgilerini önbelleğe alacak.
-
-Daha fazla bilgi için lütfen örneklere bakın.
 
 > [!IMPORTANT]
 > Bir ortam değişkenini komut satırını kullanarak ayarlarsanız, bu değişken komut satırı geçmişinizde okunabilir olacaktır. Komut satırı geçmişinizden kimlik bilgilerini içeren değişkenleri temizlemeyi göz önünde bulundurun. Değişkenlerin geçmişinizde görünmesini önlemek için, kullanıcıya kimlik bilgilerini istemek ve ortam değişkenini ayarlamak için bir komut dosyası kullanabilirsiniz.
@@ -64,11 +62,11 @@ azcopy login --identity
 ```
 
 Bir VM 'nin Kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin Istemci KIMLIĞINI kullanarak oturum açın:
-
+  
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
-
+ 
 Bir VM 'nin Kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin nesne KIMLIĞINI kullanarak oturum açın:
 
 ```azcopy
@@ -76,51 +74,59 @@ azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
 Bir VM 'nin Kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin kaynak KIMLIĞINI kullanarak oturum açın:
-
+ 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-İstemci parolasını kullanarak hizmet sorumlusu olarak oturum açın. Ortam değişkenini gizli tabanlı hizmet sorumlusu kimlik doğrulaması için istemci parolası AZCOPY_SPA_CLIENT_SECRET ayarlayın.
+Bir istemci parolası kullanarak hizmet sorumlusu olarak oturum açın: ortam AZCOPY_SPA_CLIENT_SECRET değişkenini, gizli tabanlı hizmet sorumlusu kimlik doğrulaması için istemci parolası olarak ayarlayın.
 
 ```azcopy
-azcopy login --service-principal --application-id "YOUR_APP_ID" --tenant-id "YOUR_TENANT_ID"
+azcopy login --service-principal --application-id <your service principal's application ID>
 ```
 
-Bir sertifika ve parola kullanarak hizmet sorumlusu olarak oturum açın. Ortam değişkenini sertifika tabanlı hizmet sorumlusu yetkilendirmesi için sertifikanın parolasıyla AZCOPY_SPA_CERT_PASSWORD ayarlayın.
+Bir sertifika ve parola kullanarak bir hizmet sorumlusu olarak oturum açın:
+
+Ortam değişkenini sertifika tabanlı hizmet sorumlusu kimlik doğrulaması için sertifikanın parolasına AZCOPY_SPA_CERT_PASSWORD ayarlayın:
 
 ```azcopy
-azcopy login --service-principal --certificate-path /path/to/my/cert
+azcopy login --service-principal --certificate-path /path/to/my/cert --application-id <your service principal's application ID>
 ```
 
-/Path/to/My/CERT ' i bir PEM veya PKCS12 dosyasının yolu olarak kabul ettiğinizden emin olun. AzCopy, sertifikanızı almak için sistem sertifika deposuna ulaşmıyor.
+`/path/to/my/cert`Pek veya Pkcs12 dosyasının yolunu olarak değerlendirin. AzCopy, sertifikanızı almak için sistem sertifika deposuna ulaşmıyor.
 
-Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması yapılırken sertifika-yol zorunludur.
+`--certificate-path`, sertifika tabanlı hizmet sorumlusu kimlik doğrulaması yapılırken zorunludur.
 
 ## <a name="options"></a>Seçenekler
 
-|Seçenek|Açıklama|
-|--|--|
-|--aad-uç nokta|Kullanılacak Azure Active Directory uç noktası. Varsayılan ( `https://login.microsoftonline.com` ), genel Azure bulutu için doğrudur. Ulusal bir bulutta kimlik doğrulanırken bu parametreyi ayarlayın. Bkz. [Azure AD kimlik doğrulaması uç noktaları](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
-Yönetilen Hizmet Kimliği için bu bayrak gerekli değildir.|
-|--Uygulama kimliği dizesi|Kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI. Hizmet sorumlusu kimlik doğrulaması için gereklidir.|
-|--Sertifika-yol dizesi|SPN kimlik doğrulaması için sertifika yolu. Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması için gereklidir.|
-|-h,--yardım|Oturum açma komutu için yardım içeriğini göster.|
-|--kimlik|yönetilen hizmet kimliği (MSI) olarak da bilinen sanal makinenin kimliğini kullanarak oturum açın.|
-|--Identity-Client-id dizesi|Kullanıcı tarafından atanan kimliğin istemci KIMLIĞI.|
-|--Identity-Object-id dizesi|Kullanıcı tarafından atanan kimliğin nesne KIMLIĞI.|
-|--Identity-Resource-id dizesi|Kullanıcı tarafından atanan kimliğin kaynak KIMLIĞI.|
-|--hizmet-asıl|Bir sertifika veya gizli dizi kullanarak SPN (hizmet sorumlusu adı) aracılığıyla oturum açın. İstemci parolası veya sertifika parolasının uygun ortam değişkenine yerleştirilmesi gerekir. `AzCopy env`Ortam değişkenlerinin adlarını ve açıklamalarını görmek için yazın.|
-|--Kiracı kimliği dizesi| OAuth cihaz etkileşimli oturum açma için kullanılacak Azure Active Directory kiracı KIMLIĞI.|
+**--AAD-bitiş noktası** dizesi kullanılacak Azure Active Directory uç noktası. Varsayılan değer ( https://login.microsoftonline.com) Genel Azure bulutu için doğrudur.) Ulusal bir bulutta kimlik doğrulanırken bu parametreyi ayarlayın. Yönetilen Hizmet Kimliği için gerekli değildir.
+
+**--uygulama kimliği** DIZE uygulama kimliği kullanıcı tarafından atanan kimlik. Hizmet sorumlusu kimlik doğrulaması için gereklidir.
+
+**--** SPN kimlik doğrulaması için sertifika yolu dize yolu. Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması için gereklidir.
+
+**--** komut yardımı Yardımı `azcopy login` .
+
+**--kimlik**   Yönetilen hizmet kimliği (MSI) olarak da bilinen sanal makinenin kimliğini kullanarak oturum açın.
+
+**--Identity-Client-id** DIZE istemci kimliği kullanıcı tarafından atanan kimlik.
+
+**--Identity-Object-id** DIZE nesne kimliği kullanıcı tarafından atanan kimlik.
+
+**--Identity-Resource-id** DIZE kaynak kimliği kullanıcı tarafından atanan kimlik.
+
+**--hizmet-asıl**   Bir sertifika veya gizli dizi kullanarak hizmet asıl adı (SPN) aracılığıyla oturum açın. İstemci parolası veya sertifika parolasının uygun ortam değişkenine yerleştirilmesi gerekir. Ortam değişkenlerinin adlarını ve açıklamalarını görmek için AzCopy env yazın.
+
+**--Kiracı kimliği** dizesi OAuth cihaz etkileşimli oturum açma için kullanılacak Azure ACTIVE DIRECTORY Kiracı kimliği.
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
 |Seçenek|Açıklama|
 |---|---|
-|--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
+|--Cap-Mbps float|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
 |--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
 |--Güvenilen-Microsoft-sonekler dizesi   |Azure Active Directory oturum açma belirteçlerinin gönderilebileceği ek etki alanı soneklerini belirtir.  Varsayılan değer '*. Core.Windows.net;*' dir. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Burada listelenenler varsayılan olarak eklenir. Güvenlik için yalnızca Microsoft Azure etki alanlarını Buraya yerleştirmeniz gerekir. Birden çok girişi noktalı virgülle ayırın.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

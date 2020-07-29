@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 550b4fb7ba17d911618e0b60d16c0a9f9d1f2cfa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077279"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305219"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -89,7 +89,7 @@ Log Analytics ağ geçidi şu dillerde kullanılabilir:
 
 Log Analytics ağ geçidi yalnızca Aktarım katmanı güvenliğini destekler (TLS) 1,0, 1,1 ve 1,2.  Güvenli Yuva Katmanı (SSL) desteklemez.  Log Analytics yoldaki verilerin güvenliğini sağlamak için, ağ geçidini en az TLS 1,2 kullanacak şekilde yapılandırın. TLS veya SSL 'nin eski sürümleri savunmasızdır. Bunlar şu anda geriye dönük uyumlulukla izin verse de kullanmaktan kaçının.  
 
-Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)inceleyin. 
+Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](./data-security.md#sending-data-securely-using-tls-12)inceleyin. 
 
 ### <a name="supported-number-of-agent-connections"></a>Desteklenen aracı bağlantısı sayısı
 
@@ -270,7 +270,7 @@ Log Analytics ile tümleştirmeyi tamamladıktan sonra, çalışırken değişik
 
    ![Proxy sunucu adresini gösteren Operations Manager ekran görüntüsü](./media/gateway/scom02.png)
 
-1. **Son**'u seçin. Operations Manager yönetim grubunuz artık ağ geçidi sunucusu üzerinden Log Analytics hizmetine iletişim kuracak şekilde yapılandırılmıştır.
+1. **Son**’u seçin. Operations Manager yönetim grubunuz artık ağ geçidi sunucusu üzerinden Log Analytics hizmetine iletişim kuracak şekilde yapılandırılmıştır.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Belirli aracıların bir ara sunucu kullanacağı Operations Manager yapılandırın
 
@@ -350,7 +350,7 @@ Ağ Geçidi tarafından günlüğe kaydedilen olayları toplamak için Log Analy
 
 Aşağıdaki tabloda Log Analytics ağ geçidi günlük olaylarının olay kimlikleri ve açıklamaları gösterilmektedir.
 
-| **NUMARASıNı** | **Açıklama** |
+| **ID** | **Açıklama** |
 | --- | --- |
 | 400 |Özel KIMLIĞI olmayan herhangi bir uygulama hatası. |
 | 401 |Yanlış yapılandırma. Örneğin, listenPort = bir tamsayı yerine "metin". |
@@ -388,4 +388,5 @@ Yardım almak için portalın sağ üst köşesindeki soru işareti simgesini se
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlı kaynaklardan veri toplamak için [veri kaynakları ekleyin](../../azure-monitor/platform/agent-data-sources.md) ve verileri Log Analytics çalışma alanınızda depolayın.
+Bağlı kaynaklardan veri toplamak için [veri kaynakları ekleyin](./agent-data-sources.md) ve verileri Log Analytics çalışma alanınızda depolayın.
+

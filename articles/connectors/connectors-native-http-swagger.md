@@ -7,17 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831934"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281472"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak REST uç noktalarını çağırma
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik http + Swagger bağlayıcısıyla mantıksal uygulamalar oluşturarak bir [Swagger dosyası](https://swagger.io) aracılığıyla düzenlı olarak herhangi bir REST uç noktasını çağıran iş akışlarını otomatikleştirebilirsiniz. HTTP + Swagger tetikleyicisi ve eylemi, [http tetikleyicisi ve eylemiyle](connectors-native-http.md) aynı şekilde çalışır, ancak Swagger dosyası tarafından tanımlanan API yapısını ve çıkışları açığa çıkararak mantıksal uygulama tasarımcısında daha iyi bir deneyim sağlar. Bir yoklama tetikleyicisi uygulamak için, [mantıksal uygulamalardan diğer API 'leri, hizmetleri ve sistemleri çağırmak üzere özel API 'Ler oluşturma](../logic-apps/logic-apps-create-api-app.md#polling-triggers)bölümünde açıklanan yoklama modelini izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -27,11 +28,11 @@ ms.locfileid: "83831934"
 
   * Swagger dosyası herkese açık olarak erişilebilen bir HTTPS URL 'SI üzerinde barındırılmalıdır.
 
-  * Swagger dosyasında, çıkış noktaları [arası kaynak paylaşımı (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) etkin olmalıdır.
+  * Swagger dosyasında, çıkış noktaları [arası kaynak paylaşımı (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) etkin olmalıdır.
 
   Barındırılmayan veya güvenlik ve çapraz kaynak gereksinimlerini karşılamayan bir Swagger dosyasına başvurmak için, [Swagger dosyasını bir Azure depolama hesabındaki blob kapsayıcısına yükleyebilir](#host-swagger)ve bu depolama hesabında CORS 'yi etkinleştirerek dosyaya başvurabilirsiniz.
 
-  Bu konudaki örneklerde bilişsel Hizmetler [hesabı ve erişim anahtarı](../cognitive-services/cognitive-services-apis-create-account.md)gerektiren bilişsel [Hizmetler Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview)kullanılır.
+  Bu konudaki örneklerde bilişsel Hizmetler [hesabı ve erişim anahtarı](../cognitive-services/cognitive-services-apis-create-account.md)gerektiren bilişsel [Hizmetler Yüz Tanıma API'si](../cognitive-services/face/overview.md)kullanılır.
 
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)hakkında temel bilgi. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
@@ -117,7 +118,7 @@ Bu yerleşik eylem, bir REST API açıklayan ve bu dosyanın içeriğini içeren
 
 Bu dosyayı bir Azure depolama hesabındaki blob kapsayıcısına yükleyerek ve bu depolama hesabında CORS 'yi etkinleştirerek, barındırılmayan veya güvenlik ve çapraz kaynak gereksinimlerini karşılamayan bir Swagger dosyasına başvurabilirsiniz. Azure depolama 'da Swagger dosyalarını oluşturmak, ayarlamak ve depolamak için şu adımları izleyin:
 
-1. [Bir Azure depolama hesabı oluşturun](../storage/common/storage-create-storage-account.md).
+1. [Bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).
 
 1. Şimdi blob için CORS 'yi etkinleştirin. Depolama hesabınızın menüsünde **CORS**' yi seçin. **BLOB hizmeti** sekmesinde, bu değerleri belirtin ve ardından **Kaydet**' i seçin.
 
@@ -146,8 +147,8 @@ HTTP + Swagger tetikleyicisinden veya eylemden gelen çıktılar hakkında daha 
 
 | Özellik adı | Tür | Açıklama |
 |---------------|------|-------------|
-| bilgisinde | nesne | İstekten gelen üstbilgiler |
-| body | nesne | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
+| bilgisinde | object | İstekten gelen üstbilgiler |
+| body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
 | durum kodu | int | İstekteki durum kodu |
 |||
 
@@ -165,3 +166,4 @@ HTTP + Swagger tetikleyicisinden veya eylemden gelen çıktılar hakkında daha 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin
+

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524310"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284158"
 ---
 # <a name="add-parameters-to-commands"></a>Komutlara parametre ekleme
 
@@ -47,7 +47,7 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
        > [!div class="mx-imgBorder"]
        > ![Gerekli parametre yanıtı oluştur](media/custom-commands/add-required-on-off-parameter-response.png)
    
-   1. Şimdi parametre özelliklerini yapılandıracağız. Bir komutun tüm yapılandırma özelliklerinin açıklaması için, [Başvurular](./custom-commands-references.md)' a gidin. Parametresinin geri kalanını aşağıdaki şekilde yapılandırın:
+   1. Şimdi parametre özelliklerini yapılandıracağız. Bir komutun tüm yapılandırma özelliklerinin açıklaması için, [Başvurular](./custom-commands-references.md)' a gidin. Parametresinin özelliklerini şu şekilde yapılandırın:
       
 
        | Yapılandırma      | Önerilen değer     | Açıklama                                                      |
@@ -61,11 +61,10 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
        | Önceden tanımlanmış giriş değerleri     | `on`, `off`           | Olası değerler ve bunların diğer adları kümesi         |
        
         
-   1. Önceden tanımlanmış giriş değerlerini eklemek için, **önceden tanımlanmış bir giriş Ekle** ve **Yeni öğe** penceresinde, yukarıdaki tabloda belirtilen **adı** yazın. Bu durumda, diğer adları kullanmıyoruz, bu nedenle boş bırakabilirsiniz. 
-
-    > [!div class="mx-imgBorder"]
-
-    > ![Parametre oluştur](media/custom-commands/create-on-off-parameter.png)
+   1. Önceden tanımlanmış giriş değerlerini eklemek için, **önceden tanımlanmış bir giriş Ekle** ve **Yeni öğe** penceresinde, yukarıdaki tabloda belirtilen **adı** yazın. Bu durumda, diğer adları kullanmıyoruz, bu nedenle boş bırakabilirsiniz.
+   
+      > [!div class="mx-imgBorder"]
+      > ![Parametre oluştur](media/custom-commands/create-on-off-parameter.png)
 
    1. Parametrenin tüm yapılandırmasını kaydetmek için **Kaydet** ' i seçin.
  
@@ -76,7 +75,7 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
 
        | Ayar            | Önerilen değer       |
        | ------------------ | --------------------- |
-       | Name               | `SubjectDevice`         |
+       | Ad               | `SubjectDevice`         |
        | Geneldir          | unchecked             |
        | Gerekli           | checked               |
        | Gerekli parametre için yanıt     | Basit düzenleyici >`Which device do you want to control?`    | 
@@ -89,7 +88,7 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
 
 ### <a name="modify-example-sentences"></a>Örnek cümleleri değiştirme
 
-Parametreleri olan komutlar için, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örneğin:
+Parametreleri olan komutlar için, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örnek:
 
 * Tam parametre bilgileri-`turn {OnOff} the {SubjectDevice}`
 * Kısmi parametre bilgileri-`turn it {OnOff}`
@@ -107,7 +106,7 @@ turn something {OnOff}
 turn something
 ```
 
-**Kaydet**’i seçin.
+**Kaydet**'i seçin.
 
 > [!TIP]
 > Örnek cümleler düzenleyicisinde parametrelerinizi belirtmek için küme ayraçları kullanın. - `turn {OnOff} the {SubjectDevice}`Daha önce oluşturulan parametreler tarafından desteklenen otomatik tamamlama sekmesini kullanın.
@@ -118,16 +117,17 @@ Mevcut tamamlama kuralını **ConfirmationResponse**değiştirin.
 
 1. **Koşullar** bölümünde **Koşul Ekle**' yi seçin.
 1. **Yeni koşul** penceresinde, **tür** listesinde, **gerekli parametreler**' i seçin. Aşağıdaki denetim listesinde, hem **OnOff** hem de **subjectdevice**' ı işaretleyin.
+1. **Iglobali** işaretlenmemiş olarak bırakın.
 1. **Oluştur**’u seçin.
 1. **Eylemler** bölümünde, mevcut **konuşma yanıtı gönder** eylemini, eylemin üzerine gelerek ve Düzenle düğmesini seçerek düzenleyin. Bu kez, yeni oluşturulan **OnOff** ve **subjectdevice** parametrelerini kullanın
 
     ```
     Ok, turning the {SubjectDevice} {OnOff}
     ```
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="try-it-out"></a>Deneyin
-1. Sağ bölmenin en üstünde bulunan **eğitme** simgesini seçin.
+1. Sağ bölmenin üstünde **eğitme** simgesini seçin.
 
 1. Eğitim tamamlandığında **Test**' i seçin. Uygulama pencerenizin bir **testi** görüntülenir.
  Birkaç etkileşimi deneyin.
@@ -149,7 +149,7 @@ Aşağıdaki yapılandırmayla yeni parametre **sıcaklığı** ekleyin
 
 | Yapılandırma      | Önerilen değer     |
 | ------------------ | ----------------|
-| Name               | `Temperature`           |
+| Ad               | `Temperature`           |
 | Gerekli           | checked         |
 | Gerekli parametre için yanıt      | Basit düzenleyici >`What temperature would you like?`
 | Tür               | Sayı          |
@@ -186,7 +186,7 @@ Aşağıdaki yapılandırmaya sahip **DateTime** adlı bir parametre ekleyin.
 
    | Ayar                           | Önerilen değer                     | 
    | --------------------------------- | ----------------------------------------|
-   | Name                              | `DateTime`                               |
+   | Ad                              | `DateTime`                               |
    | Gerekli                          | checked                                 |
    | Gerekli parametre için yanıt   | Basit düzenleyici >`For what time?`            | 
    | Tür                              | DateTime                                |

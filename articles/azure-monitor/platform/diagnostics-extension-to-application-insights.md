@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 39f564bea8d300d2966afe27ff0239c527f038cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092822"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305814"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Bulut hizmeti, sanal makine veya Service Fabric tanılama verilerini Application Insights gönderin
 Bulut Hizmetleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric tümü, veri toplamak için Azure Tanılama uzantısını kullanır.  Azure tanılama, verileri Azure depolama tablolarına gönderir.  Ancak, Azure Tanılama uzantısı 1,5 veya sonraki bir sürümü kullanarak, verilerin tamamını veya bir alt kümesini diğer konumlara de kanal oluşturarak aktarabilirsiniz.
@@ -59,8 +59,8 @@ Application Insights için bir havuzun örnek yapılandırması:
 - **Havuz** *adı* özniteliği, havuzu benzersiz bir şekilde tanımlayan bir dize değeridir.
 
 - **ApplicationInsights** öğesi, Azure tanılama verilerinin gönderildiği Application Insights kaynağının izleme anahtarını belirtir.
-    - Mevcut bir Application Insights kaynağınız yoksa, kaynak oluşturma ve izleme anahtarını alma hakkında daha fazla bilgi için bkz. [Yeni bir Application Insights kaynağı oluşturma](../../azure-monitor/app/create-new-resource.md ) .
-    - Azure SDK 2,8 ve üzeri bir bulut hizmeti geliştiriyorsanız, bu izleme anahtarı otomatik olarak doldurulur. Değer, bulut hizmeti projesi paketlerken **APPINSIGHTS_INSTRUMENTATIONKEY** hizmeti yapılandırma ayarını temel alır. Bkz. [Cloud Services ile Application Insights kullanma](../../azure-monitor/app/cloudservices.md).
+    - Mevcut bir Application Insights kaynağınız yoksa, kaynak oluşturma ve izleme anahtarını alma hakkında daha fazla bilgi için bkz. [Yeni bir Application Insights kaynağı oluşturma](../app/create-new-resource.md) .
+    - Azure SDK 2,8 ve üzeri bir bulut hizmeti geliştiriyorsanız, bu izleme anahtarı otomatik olarak doldurulur. Değer, bulut hizmeti projesi paketlerken **APPINSIGHTS_INSTRUMENTATIONKEY** hizmeti yapılandırma ayarını temel alır. Bkz. [Cloud Services ile Application Insights kullanma](../app/cloudservices.md).
 
 - **Channels** öğesi bir veya daha fazla **Kanal** öğesi içeriyor.
     - *Name* özniteliği bu kanala benzersiz bir şekilde başvurur.
@@ -216,3 +216,4 @@ Ortak yapılandırma dosyasının bir örneği aşağıda verilmiştir
 * Application Insights [Azure tanılama bilgilerinizi görüntülemeyi](../app/cloudservices.md) öğrenin.
 * Uygulamanızın Azure tanılama uzantısını etkinleştirmek için [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) 'i kullanın.
 * Uygulamanız için Azure tanılama uzantısını etkinleştirmek üzere [Visual Studio 'yu](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) kullanma
+

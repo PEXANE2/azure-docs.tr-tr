@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü Tanılama sorunları – sonbahar 2019 – Azure
-description: Sorunları tanılamak için Windows sanal masaüstü Tanılama özelliğini kullanma.
+title: Windows sanal masaüstü (klasik) sorunları tanılama-Azure
+description: Sorunları tanılamak için Windows sanal masaüstü (klasik) Tanılama özelliğini kullanma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0aad1c780c6695c771d3cfea04509acde65c051e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085869"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285059"
 ---
-# <a name="identify-and-diagnose-issues"></a>Sorunları belirleme ve tanılama
+# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstündeki sorunları tanımla ve Tanıla (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../diagnostics-role-service.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../diagnostics-role-service.md)bakın.
 
 Windows sanal masaüstü, yöneticinin sorunları tek bir arabirim üzerinden belirlemesine izin veren bir tanılama özelliği sunar. Windows sanal masaüstü rolleri, bir Kullanıcı sistemle her etkileşime geçtiğinde bir tanılama etkinliğini günlüğe kaydeder. Her günlük, işlem, hata iletileri, kiracı bilgileri ve Kullanıcı bilgilerine dahil olan Windows sanal masaüstü rolleri gibi ilgili bilgileri içerir. Tanılama etkinlikleri hem son kullanıcı hem de yönetim eylemleri tarafından oluşturulur ve üç ana demet halinde kategorilere ayrılabilir:
 

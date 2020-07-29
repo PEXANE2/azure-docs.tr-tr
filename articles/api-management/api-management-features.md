@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 7ec89d985c025814d903ae9a16f9b0f5123b3571
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef16339d9a584eb12c611a25d636a9287265953a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284345"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Management katmanlarının Özellik tabanlı karşılaştırması
 
@@ -31,7 +31,7 @@ Her API Management [fiyatlandırma katmanı](https://aka.ms/apimpricing) , ayrı
 | Azure AD tümleştirmesi<sup>1</sup>                                                             | Hayır          | Evet       | Hayır    | Yes      | Yes     |
 | Sanal ağ (VNet) desteği                                                               | Hayır          | Evet       | Hayır    | Hayır       | Evet     |
 | Çok bölgeli dağıtım                                                                      | Hayır          | Hayır        | Hayır    | Hayır       | Evet     |
-| Birden çok özel etki alanı adı                                                                 | Hayır          | Hayır        | Hayır    | Hayır       | Evet     |
+| Birden çok özel etki alanı adı                                                                 | Hayır          | Evet        | Hayır    | Hayır       | Evet     |
 | Geliştirici portalı<sup>2</sup>                                                                 | Hayır          | Yes       | Yes   | Yes      | Yes     |
 | Yerleşik önbellek                                                                               | Hayır          | Yes       | Yes   | Yes      | Yes     |
 | Yerleşik analiz                                                                           | Hayır          | Yes       | Yes   | Yes      | Yes     |

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9c927015114bb0e7230dcb96cd16a81e7763f64d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325891"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372119"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,6 +34,8 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 
 * Azure Machine Learning SDK, Machine Learning CLı veya [Azure Machine Learning Studio 'yu](https://ml.azure.com)kullanarak aks kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
 * Azure Machine Learning çalışma alanınıza mevcut bir AKS kümesi iliştirin. Bir küme Azure Machine Learning SDK, Machine Learning CLı veya Azure Machine Learning Studio kullanılarak iliştirilebilir.
+
+AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
 
 > [!IMPORTANT]
 > Oluşturma veya ekleme işlemi bir kerelik görevdir. Bir AKS kümesi çalışma alanına bağlandıktan sonra dağıtım için kullanabilirsiniz. Artık gerekmiyorsa AKS kümesini ayırabilirsiniz veya silebilirsiniz. Ayrıldıktan veya silindikten sonra artık kümeye dağıtım yapamayacaktır.
@@ -61,11 +63,28 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 
 - Bu makaledeki __CLI__ kod parçacıkları bir belge oluşturduğunuzu varsayar `inferenceconfig.json` . Bu belgeyi oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
+- [API sunucusuna erişim için yetkilendirilmiş BIR IP aralığı etkin](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)olan bir aks kümesi eklerseniz, aks kümesi için AML CONTOL düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde ınleþlek kapsayan Pod dağıtır. API sunucusuna erişim olmadan, ıncallpods dağıtılamıyor. AKS kümesinde IP aralıklarını etkinleştirirken hem [eşleştirilmiş bölgeler]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) için [IP aralıklarını](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) kullanın
+ 
+ - İşlem adı bir çalışma alanı içinde benzersiz OLMALıDıR
+   - Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.
+   - Geçerli karakterler büyük ve küçük harf, rakam ve-karakter.
+   - Ad bir harfle başlamalıdır
+   - Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz
+   
+ - Modelleri GPU düğümlerine veya FPGA düğümlerine (ya da belirli bir SKU) dağıtmak istiyorsanız, belirli SKU 'ya sahip bir küme oluşturmanız gerekir. Mevcut bir kümede ikincil düğüm havuzu oluşturma ve ikincil düğüm havuzunda modelleri dağıtma desteği yoktur.
+ 
+ - Temel Load Balancer (BLB) yerine kümenizde dağıtılan bir Standart Load Balancer (SLB) varsa, lütfen AKS portalında/CLı/SDK ' da bir küme oluşturun ve ardından AML çalışma alanına ekleyin. 
+
+
+
 ## <a name="create-a-new-aks-cluster"></a>Yeni bir AKS kümesi oluşturma
 
-**Tahmini süre**: yaklaşık 20 dakika.
+**Tahmini süre**: yaklaşık 10 dakika.
 
 AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik bir işlemdir. Bu kümeyi birden çok dağıtım için yeniden kullanabilirsiniz. Kümeyi veya onu içeren kaynak grubunu silerseniz, bir dahaki sefer dağıtmanız gerektiğinde yeni bir küme oluşturmanız gerekir. Çalışma alanınıza eklenmiş birden çok AKS kümeniz olabilir.
+ 
+Azure Machine Learning artık özel bağlantısı etkin olan bir Azure Kubernetes hizmetini kullanmayı desteklemektedir.
+Özel bir AKS kümesi oluşturmak için belgeleri [burada](https://docs.microsoft.com/azure/aks/private-clusters) izleyin
 
 > [!TIP]
 > Azure sanal ağını kullanarak AKS kümenizi güvenli hale getirmek istiyorsanız, önce sanal ağı oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure sanal ağ Ile güvenli deneme ve çıkarım](how-to-enable-virtual-network.md#aksvnet).

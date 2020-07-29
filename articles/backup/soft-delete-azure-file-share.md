@@ -4,18 +4,16 @@ description: Geçici silme işleminin, Azure dosya paylaşımlarınızı yanlı�
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7070cb1ee3881fbec2c6f44eae18f3bc51f8051d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282713"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Azure Backup kullanarak Azure dosya paylaşımları için korumayı yanlışlıkla silme
 
-Cybersaldýra veya yanlışlıkla silinmeye karşı koruma sağlamak için, ilgili depolama hesabındaki herhangi bir dosya paylaşımı için yedeklemeyi yapılandırdığınızda bir depolama hesabındaki tüm dosya paylaşımları için [geçici silme](../storage/files/storage-files-prevent-file-share-deletion.md) etkinleştirilir. Geçici silme sayesinde, kötü bir aktör dosya paylaşımını silerse bile dosya paylaşımının içeriği ve kurtarma noktaları (anlık görüntüler) en az 14 ek gün boyunca tutulur ve veri kaybı olmadan dosya paylaşımlarının kurtarılmasına olanak tanır.  
-
-Geçici silme yalnızca standart ve Premium Depolama hesapları için desteklenir ve şu anda [Bu bölgelerdeki](azure-file-share-support-matrix.md)Azure Backup tarafında etkinleştirilir.
+Cybersaldýra veya yanlışlıkla silinmeye karşı koruma sağlamak için, ilgili depolama hesabındaki herhangi bir dosya paylaşımı için yedeklemeyi yapılandırdığınızda bir depolama hesabındaki tüm dosya paylaşımları için [geçici silme](../storage/files/storage-files-prevent-file-share-deletion.md) etkinleştirilir. Geçici silme sayesinde, kötü bir aktör dosya paylaşımını silerse bile dosya paylaşımının içeriği ve kurtarma noktaları (anlık görüntüler) en az 14 ek gün boyunca tutulur ve veri kaybı olmadan dosya paylaşımlarının kurtarılmasına olanak tanır.  Geçici silme, standart ve Premium Depolama hesapları için desteklenir ve yedeklenen dosya paylaşımlarını barındıran tüm depolama hesapları için Azure Backup ayar tarafından etkinleştirilir.
 
 Aşağıdaki akış grafiğinde, bir depolama hesabındaki dosya paylaşımları için geçici silme etkinleştirildiğinde bir yedekleme öğesinin farklı adımları ve durumları gösterilmektedir:
 

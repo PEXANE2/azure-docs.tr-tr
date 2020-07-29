@@ -3,16 +3,17 @@ title: Node.js hizmetlerini Azure Application Insights ile izleme | Microsoft Do
 description: Application Insights ile Node.js hizmetlerindeki performansı izleyin ve sorunları tanılayın.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 80b4c4336a3e253e38790520a7eb4458ca36ff30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024393"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371626"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) , performansı ve diğer sorunları keşfetmenize ve hızlı bir şekilde tanılamanıza yardımcı olması için arka uç hizmetlerinizi ve bileşenlerinizi dağıtımdan sonra izler. Veri merkezinizde, Azure VM 'lerinde ve Web uygulamalarınızda ve hatta diğer genel bulutlarda barındırılan Node.js Hizmetleri için Application Insights kullanabilirsiniz.
+[Application Insights](./app-insights-overview.md) , performansı ve diğer sorunları keşfetmenize ve hızlı bir şekilde tanılamanıza yardımcı olması için arka uç hizmetlerinizi ve bileşenlerinizi dağıtımdan sonra izler. Veri merkezinizde, Azure VM 'lerinde ve Web uygulamalarınızda ve hatta diğer genel bulutlarda barındırılan Node.js Hizmetleri için Application Insights kullanabilirsiniz.
 
 İzleme verilerinizi almak, depolamak ve araştırmak için SDK'yı kodunuza ekleyin ve Azure'da karşılık gelen Application Insights kaynağını ayarlayın. SDK daha fazla analiz ve araştırma için verileri bu kaynağa gönderir.
 
@@ -80,8 +81,8 @@ SDK gönderilecek verileri toplu hale getirdiği için öğelerin portalde göst
 
 * Uygulamayı kullanmaya devam edin. Daha fazla telemetri oluşturmak için daha fazla eylem gerçekleştirin.
 * Portal kaynak görünümünde **Yenile**’ye tıklayın. Grafikler belirli aralıklarla otomatik olarak yenilenir ancak el ile yenilerseniz anında yenilenir.
-* [Gerekli giden bağlantı noktalarının](../../azure-monitor/app/ip-addresses.md) açık olduğunu doğrulayın.
-* Belirli olayları aramak için [Arama](../../azure-monitor/app/diagnostic-search.md) sekmesini kullanın.
+* [Gerekli giden bağlantı noktalarının](./ip-addresses.md) açık olduğunu doğrulayın.
+* Belirli olayları aramak için [Arama](./diagnostic-search.md) sekmesini kullanın.
 * [SSS][FAQ]'yi denetleyin.
 
 ## <a name="basic-usage"></a>Temel kullanım
@@ -216,7 +217,7 @@ appInsights
 
 ## <a name="telemetryclient-api"></a>TelemetryClient API'si
 
-TelemetryClient API'sinin tam açıklaması için bkz. [Özel olaylar ve ölçümler için Application Insights API'si](../../azure-monitor/app/api-custom-events-metrics.md).
+TelemetryClient API'sinin tam açıklaması için bkz. [Özel olaylar ve ölçümler için Application Insights API'si](./api-custom-events-metrics.md).
 
 Application Insights Node.js SDK'sını kullanarak herhangi bir istek, olay, ölçüm veya özel durumu izleyebilirsiniz. Aşağıdaki kod örneği, kullanabileceğiniz API'lerden bazılarını göstermektedir:
 
@@ -373,7 +374,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Birden çok Application Insights kaynağı oluşturabilir ve bunların her birine, ilgili izleme anahtarlarını ("Ikey") kullanarak farklı veriler gönderebilirsiniz.
 
- Örneğin:
+ Örnek:
 
 ```javascript
 let appInsights = require("applicationinsights");
@@ -414,10 +415,11 @@ Bu özellikler istemciye özeldir, bu sayede `appInsights.defaultClient` ile olu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Portalda telemetrinizi izleyin](../../azure-monitor/app/overview-dashboard.md)
-* [Telemetriniz üzerinden Analiz sorguları yazma](../../azure-monitor/log-query/get-started-portal.md)
+* [Portalda telemetrinizi izleyin](./overview-dashboard.md)
+* [Telemetriniz üzerinden Analiz sorguları yazma](../log-query/get-started-portal.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
+

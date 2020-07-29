@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900367"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284413"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
 
@@ -40,21 +41,21 @@ Bu makalede, Microsoft 'un cihaz kimliği ve VDı desteğiyle ilgili yöneticile
 
 VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, desteklenen senaryolar hakkında bilgi edinin. Aşağıdaki tabloda hangi sağlama senaryolarının desteklendiği gösterilmektedir. Bu bağlamda sağlama, bir yöneticinin herhangi bir son kullanıcı etkileşimi gerektirmeden cihaz kimliklerini ölçeklendirerek yapılandırabilmesini gerektirir.
 
-| Cihaz kimliği türü | Kimlik altyapısı | Windows cihazları | VDı platformu sürümü | Destekleniyor |
+| Cihaz kimliği türü | Kimlik altyapısı | Windows cihazları | VDı platformu sürümü | Desteklenir |
 | --- | --- | --- | --- | --- |
-| Hibrit Azure AD'ye katılmış | Federasyon | Windows geçerli * * * ve Windows alt düzey * * * * | Kalıcı | Evet |
+| Hibrit Azure AD'ye katılmış | Federasyon | Windows geçerli * * * ve Windows alt düzey * * * * | Kalıcı | Yes |
 |   |   | Windows geçerli | Kalıcı olmayan | Hayır |
-|   |   | Windows alt düzey | Kalıcı olmayan | Evet |
-|   | Yönetilen * * | Windows geçerli ve Windows alt düzeyi | Kalıcı | Evet |
+|   |   | Windows alt düzey | Kalıcı olmayan | Yes |
+|   | Yönetilen * * | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
 |   |   | Windows geçerli | Kalıcı olmayan | Hayır |
-|   |   | Windows alt düzey | Kalıcı olmayan | Evet |
+|   |   | Windows alt düzey | Kalıcı olmayan | Yes |
 | Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | Hayır |
 |   |   |   | Kalıcı olmayan | Hayır |
 |   | Yönetilen | Windows geçerli | Kalıcı | Hayır |
 |   |   |   | Kalıcı olmayan | Hayır |
-| Azure AD kayıtlı | Federe | Windows geçerli | Kalıcı | Hayır |
+| Azure AD kayıtlı | Federe | Windows geçerli | Kalıcı | Geçerli değil |
 |   |   |   | Kalıcı olmayan | Hayır |
-|   | Yönetilen | Windows geçerli | Kalıcı | Hayır |
+|   | Yönetilen | Windows geçerli | Kalıcı | Geçerli değil |
 |   |   |   | Kalıcı olmayan | Hayır |
 
 \***Federal** kimlik altyapısı ortamı, AD FS veya diğer üçüncü taraf IDP gibi bir kimlik sağlayıcısı olan bir ortamı temsil eder.

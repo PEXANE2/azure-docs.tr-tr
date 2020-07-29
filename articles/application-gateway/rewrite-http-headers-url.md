@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 46cb4d0d099cd21db3ce51c337d3b059206bb425
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100363"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281200"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP üstbilgilerini ve URL 'YI Application Gateway yeniden yazın
 
@@ -109,25 +109,25 @@ Application Gateway aşağıdaki sunucu değişkenlerini destekler:
 | add_x_forwarded_for_proxy | `client_ip`IP1, IP2, IP3, vb. biçiminde bu değişkene eklenen (Bu tablodaki açıklamaya bakın) X-iletilmiş istemci isteği üst bilgisi alanı. X-Iletilmiş-for alanı istemci isteği üstbilgisinde yoksa, `add_x_forwarded_for_proxy` değişken `$client_ip` değişkenine eşittir.   Bu değişken özellikle, üstbilginin yalnızca bağlantı noktası bilgisi olmadan yalnızca IP adresini içermesi için, Application Gateway tarafından ayarlanmış X-Iletilmiş-for üst bilgisini yeniden yazmak istediğinizde yararlıdır. |
 | ciphers_supported         | İstemci tarafından desteklenen şifrelemelerin listesi.               |
 | ciphers_used              | Kurulan bir TLS bağlantısı için kullanılan şifre dizeleri. |
-| client_ip                 | Uygulama ağ geçidinin isteği aldığı istemcinin IP adresi. Uygulama ağ geçidi ve kaynak istemciden önce ters bir ara sunucu varsa, *client_ip* ters proxy 'nin IP adresini döndürür. |
+| client_ip                 | Uygulama ağ geçidinin isteği aldığı istemcinin IP adresi. Uygulama ağ geçidi ve kaynak istemci öncesinde ters bir ara sunucu varsa, `client_ip` ters proxy 'nın IP adresini döndürür. |
 | client_port               | İstemci bağlantı noktası.                                             |
 | client_tcp_rtt            | İstemci TCP bağlantısıyla ilgili bilgiler. TCP_INFO yuva seçeneğini destekleyen sistemlerde kullanılabilir. |
 | client_user               | HTTP kimlik doğrulaması kullanıldığında, kimlik doğrulaması için sağlanan Kullanıcı adı. |
-| konak                      | Öncelik sırasına göre: istek satırından ana bilgisayar adı, konak istek üst bilgisi alanından ana bilgisayar adı veya bir istekle eşleşen sunucu adı. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ana bilgisayar değeri *contoso.com* olacaktır |
+| konak                      | Öncelik sırasına göre: istek satırından ana bilgisayar adı, konak istek üst bilgisi alanından ana bilgisayar adı veya bir istekle eşleşen sunucu adı. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ana bilgisayar değeri şu şekilde olacaktır:`contoso.com` |
 | cookie_*adı*             | *Ad* tanımlama bilgisi.                                           |
 | http_method               | URL isteğini yapmak için kullanılan yöntem. Örneğin, GET veya POST. |
 | http_status               | Oturum durumu. Örneğin, 200, 400 veya 403.           |
 | http_version              | İstek Protokolü. Genellikle HTTP/1.0, HTTP/1.1 veya HTTP/2.0. |
-| query_string              | İstenen URL 'de "?" öğesini izleyen değişken/değer çiftleri listesi. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* query_string değer *ID = 123&title = fabrikam* olacaktır |
+| query_string              | İstenen URL 'de "?" öğesini izleyen değişken/değer çiftleri listesi. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` query_string değer olacaktır`id=123&title=fabrikam` |
 | received_bytes            | İsteğin uzunluğu (istek satırı, üst bilgi ve istek gövdesi dahil). |
 | request_query             | İstek satırındaki bağımsız değişkenler.                           |
 | request_scheme            | İstek düzeni: http veya https.                           |
-| request_uri               | Tüm özgün istek URI 'SI (bağımsız değişkenlerle). Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* request_uri değeri */article.aspx olacak mı? ID = 123&title = fabrikam* |
+| request_uri               | Tüm özgün istek URI 'SI (bağımsız değişkenlerle). Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` request_uri değer olacaktır`/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | Bir istemciye gönderilen bayt sayısı.                        |
 | server_port               | Bir isteği kabul eden sunucunun bağlantı noktası.              |
 | ssl_connection_protocol   | Kurulan bir TLS bağlantısının protokolü.               |
 | ssl_enabled               | Bağlantı, TLS modunda çalışıyorsa "açık". Aksi takdirde, boş bir dize. |
-| uri_path                  | Web istemcisinin erişmek istediği konaktaki belirli kaynağı tanımlar. Bu, istek URI 'sinin bağımsız değişkenler olmadan bölümüdür. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* uri_path değer */article.aspx* olacaktır |
+| uri_path                  | Web istemcisinin erişmek istediği konaktaki belirli kaynağı tanımlar. Bu, istek URI 'sinin bağımsız değişkenler olmadan bölümüdür. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path değer olacaktır`/article.aspx` |
 
  
 
@@ -230,7 +230,7 @@ Artık Kullanıcı *contoso.com/Listing?category=any*isterse, yol haritadaki yol
 
 Kullanıcı görünür bağlantısının basit ve okunabilir olması gereken bir alışveriş web sitesinin senaryosunu göz önünde bulundurun, ancak arka uç sunucusunun doğru içeriği göstermesi için sorgu dizesi parametrelerine ihtiyacı vardır.
 
-Bu durumda Application Gateway URL 'den parametreleri yakalayabilir ve URL 'lerden sorgu dizesi anahtar-değer çiftleri ekleyebilir. Örneğin, kullanıcının için yeniden yazmak istediğini varsayalım, https://www.contoso.com/fashion/shirts https://www.contoso.com/buy.aspx?category=fashion&product=shirts Bu, aşağıdaki URL yeniden yazma yapılandırması aracılığıyla elde edilebilir.
+Bu durumda Application Gateway URL 'den parametreleri yakalayabilir ve URL 'lerden sorgu dizesi anahtar-değer çiftleri ekleyebilir. Örneğin, kullanıcının için yeniden yazmak istediğini varsayalım, `https://www.contoso.com/fashion/shirts` `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` Bu, aşağıdaki URL yeniden yazma yapılandırması aracılığıyla elde edilebilir.
 
 **Koşul** -sunucu değişkeni `uri_path` , modele eşitse`/(.+)/(.+)`
 

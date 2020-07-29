@@ -1,6 +1,6 @@
 ---
-title: Mevcut konak havuzunu yeni oturum Konakları ile Genişlet 2019-Azure
-description: Mevcut bir konak havuzunu Windows sanal masaüstündeki yeni oturum Konakları ile genişletme.
+title: Mevcut Windows sanal masaüstü (klasik) konak havuzunu yeni oturum Konakları ile genişletin-Azure
+description: Mevcut bir konak havuzunu Windows sanal masaüstündeki (klasik) yeni oturum Konakları ile genişletme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 291dc32453001dd1e188bacae8be372bb3645ece
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ecdd63b054fda7f973898b0b3a42a29fc94c03bb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527549"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285042"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts-fall-2019"></a>Yeni oturum Konakları ile var olan bir konak havuzunu genişletme (sonbahar 2019)
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstündeki yeni oturum Konakları ile mevcut bir konak havuzunu genişletme (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../expand-existing-host-pool.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../expand-existing-host-pool.md)bakın.
 
 Konak havuzunuzdaki kullanımı artırın, yeni yükü işlemek için mevcut konak havuzunuzu yeni oturum konaklarıyla genişletmeniz gerekebilir.
 
@@ -76,7 +76,7 @@ Bir konak havuzunu genişletmek için Azure Resource Manager şablonunu yeniden 
 
 [Yeni bir konak havuzu sağlamak Için Azure](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)marketi teklifini çalıştırmaya ulaşıncaya kadar [Azure Marketi 'ni kullanarak bir konak havuzu oluşturma](create-host-pools-azure-marketplace-2019.md) bölümündeki yönergeleri izleyin. Bu noktaya geldiğinizde, her sekme için aşağıdaki bilgileri girmeniz gerekir:
 
-### <a name="basics"></a>Temel bilgiler
+### <a name="basics"></a>Temel Bilgiler
 
 Bu bölümdeki tüm değerler, *varsayılan masaüstü kullanıcıları*dışında, ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda sağladıklarınızla eşleşmelidir:
 

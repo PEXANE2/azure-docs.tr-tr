@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536632"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281030"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Hava durumu ortaklarından Hava durumu verileri alın
 
@@ -26,7 +26,7 @@ Hava durumu verilerini almak için, [Farmtts 'yi yüklediğinizden](https://aka.
 
 Farmrets veri hub 'ında Hava durumu verilerini almaya başlamak için:
 
-1. Farmrets veri hub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger)'nize gidin.
+1. Farmrets veri hub Swagger 'nize gidin `https://farmbeatswebsite-api.azurewebsites.net/swagger` .
 
 2. /Partner API 'sine gidin ve sonra bir POST isteği yapın. Aşağıdaki giriş yükünü kullanın:
 
@@ -147,7 +147,7 @@ Bir Farmtts REST API kullanarak hava durumu verilerini sorgulamak için:
 
 1. Farmrets Datahub [Swagger](https://yourdatahub.azurewebsites.net/swagger)' de,/dalgalı Iş datalocation API 'sine gidin ve bir get isteği yapın. Yanıt, işin çalıştırıldığı konum (Enlem ve Boylam) için oluşturulan/dalgalı therdatalocation nesnelerini içerir. Nesnelerin **kimliği** ve **dalgalı veri modukapağını** bir yere dikkat edin.
 
-2. Daha önce yaptığınız gibi **dalgalı veri ModelId** için/dalgalı therdatamodel API 'SINDE bir get/{ID} isteği yapın. Hava durumu veri modeli, alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları gösterir. Örneğin, hava durumu veri modeli nesnesinde, hava durumu ölçüsü, hava durumu bilgilerinin hangi türlerde ve birimlerde desteklenmekte olduğunu ayrıntılarıyla ayrıntılardır. Örneğin:
+2. Daha önce yaptığınız gibi **dalgalı veri ModelId** için/dalgalı therdatamodel API 'SINDE bir get/{ID} isteği yapın. Hava durumu veri modeli, alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları gösterir. Örneğin, hava durumu veri modeli nesnesinde, hava durumu ölçüsü, hava durumu bilgilerinin hangi türlerde ve birimlerde desteklenmekte olduğunu ayrıntılarıyla ayrıntılardır. Örnek:
 
    ```json
    {

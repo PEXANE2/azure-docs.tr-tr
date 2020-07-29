@@ -3,15 +3,15 @@ title: Azure Application Insights 'de akıllı algılama | Microsoft Docs
 description: Application Insights, uygulama telemetrinizin otomatik derin analizini yapar ve olası sorunlar hakkında sizi uyarır.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516881"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305882"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights'da Akıllı Algılama
- Akıllı algılama, Web uygulamanızdaki olası performans sorunlarını ve hata bozuklumlarını otomatik olarak uyarır. Uygulamanızın [Application Insights](../../azure-monitor/app/app-insights-overview.md)için gönderdiği Telemetriyi proaktif analizini gerçekleştirir. Hata hızlarındaki ani bir artış veya istemci ya da sunucu performansındaki anormal desenler varsa, bir uyarı alırsınız. Bu özelliğin yapılandırması yok. Uygulamanız yeterli telemetri gönderdiğinde çalışır.
+ Akıllı algılama, Web uygulamanızdaki olası performans sorunlarını ve hata bozuklumlarını otomatik olarak uyarır. Uygulamanızın [Application Insights](./app-insights-overview.md)için gönderdiği Telemetriyi proaktif analizini gerçekleştirir. Hata hızlarındaki ani bir artış veya istemci ya da sunucu performansındaki anormal desenler varsa, bir uyarı alırsınız. Bu özelliğin yapılandırması yok. Uygulamanız yeterli telemetri gönderdiğinde çalışır.
 
 Akıllı algılama tarafından verilen Algılamalarda hem aldığınız e-postalardan hem de akıllı algılama dikey penceresinden erişebilirsiniz.
 
@@ -32,8 +32,8 @@ Ayrıntılarını görmek için bir algılama seçin.
 ## <a name="what-problems-are-detected"></a>Hangi sorunlar algılanır?
 Akıllı algılama, şu gibi çeşitli sorunları algılar ve bildirir:
 
-* [Akıllı algılama-hata bozuklukları](../../azure-monitor/app/proactive-failure-diagnostics.md). Makinenizde, yük ve diğer faktörlerle ilişkili, başarısız isteklerin beklenen oranını ayarlamak için makine öğrenimi kullanıyoruz. Hata oranı beklenen zarfın dışında kaldığında bir uyarı göndereceğiz.
-* [Akıllı algılama-performans Bozuklulıkları](../../azure-monitor/app/proactive-performance-diagnostics.md). Bir işlemin veya bağımlılık süresinin yanıt süresinin geçmiş taban çizgisine kıyasla veya yanıt süresi ya da sayfa yükleme sırasında anormal bir model tanımlıyoruz bildirimleri alırsınız.   
+* [Akıllı algılama-hata bozuklukları](./proactive-failure-diagnostics.md). Makinenizde, yük ve diğer faktörlerle ilişkili, başarısız isteklerin beklenen oranını ayarlamak için makine öğrenimi kullanıyoruz. Hata oranı beklenen zarfın dışında kaldığında bir uyarı göndereceğiz.
+* [Akıllı algılama-performans Bozuklulıkları](./proactive-performance-diagnostics.md). Bir işlemin veya bağımlılık süresinin yanıt süresinin geçmiş taban çizgisine kıyasla veya yanıt süresi ya da sayfa yükleme sırasında anormal bir model tanımlıyoruz bildirimleri alırsınız.   
 * Genel azalmaları ve sorunlar, [izleme performansında azalma](./proactive-trace-severity.md), [bellek sızıntısı](./proactive-potential-memory-leak.md), [olağandışı artış, özel durum hacminde](./proactive-exception-volume.md) ve [güvenlik önleme desenlerinde](./proactive-application-security-detection-pack.md).
 
 (Her bildirimdeki yardım bağlantıları sizi ilgili makalelere götürür.)
@@ -53,11 +53,12 @@ Alternatif olarak, Azure Resource Manager şablonları kullanarak yapılandırma
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu tanılama araçları uygulamanızdan Telemetriyi incelemenize yardımcı olur:
 
-* [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md)
-* [Arama Gezgini](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics-güçlü sorgu dili](../../azure-monitor/log-query/get-started-portal.md)
+* [Ölçüm Gezgini](../platform/metrics-charts.md)
+* [Arama Gezgini](./diagnostic-search.md)
+* [Analytics-güçlü sorgu dili](../log-query/get-started-portal.md)
 
 Akıllı algılama tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
-* [El ile yapılandırılmış ölçüm uyarıları](../../azure-monitor/platform/alerts-log.md)
-* [Kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md) 
+* [El ile yapılandırılmış ölçüm uyarıları](../platform/alerts-log.md)
+* [Kullanılabilirlik web testleri](./monitor-web-app-availability.md) 
+

@@ -7,26 +7,27 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997106"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284124"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Common Data Service kayıtları oluşturma ve yönetme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Common Data Service Bağlayıcısı](https://docs.microsoft.com/connectors/commondataservice/)ile [Common Data Service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro) veritabanınızdaki kayıtları yöneten otomatik iş akışları oluşturabilirsiniz. Bu iş akışları kayıt oluşturabilir, kayıtları güncelleştirebilir ve diğer işlemleri gerçekleştirebilir. Ayrıca, Common Data Service veritabanından bilgi alabilir ve bu çıktıyı mantıksal uygulamanızda kullanmak üzere diğer eylemler için kullanılabilir hale getirebilirsiniz. Örneğin, Common Data Service veritabanınızda bir kayıt güncelleştirilirse, Office 365 Outlook bağlayıcısını kullanarak e-posta gönderebilirsiniz.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Common Data Service Bağlayıcısı](/connectors/commondataservice/)ile [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) veritabanınızdaki kayıtları yöneten otomatik iş akışları oluşturabilirsiniz. Bu iş akışları kayıt oluşturabilir, kayıtları güncelleştirebilir ve diğer işlemleri gerçekleştirebilir. Ayrıca, Common Data Service veritabanından bilgi alabilir ve bu çıktıyı mantıksal uygulamanızda kullanmak üzere diğer eylemler için kullanılabilir hale getirebilirsiniz. Örneğin, Common Data Service veritabanınızda bir kayıt güncelleştirilirse, Office 365 Outlook bağlayıcısını kullanarak e-posta gönderebilirsiniz.
 
 Bu makalede, her yeni bir müşteri adayı kaydı oluşturulduğunda görev kaydı oluşturan bir mantıksal uygulamayı nasıl oluşturabileceğiniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Kuruluşunuzun iş verilerini ve bir Common Data Service veritabanını depoladığı, yönettiği ve paylaştığı bir alan olan [Common Data Service ortamı](https://docs.microsoft.com/power-platform/admin/environments-overview). Daha fazla bilgi için şu kaynaklara bakın:<p>
+* Kuruluşunuzun iş verilerini ve bir Common Data Service veritabanını depoladığı, yönettiği ve paylaştığı bir alan olan [Common Data Service ortamı](/power-platform/admin/environments-overview). Daha fazla bilgi için şu kaynaklara bakın:<p>
 
-  * [Öğrenin: Common Data Service kullanmaya başlayın](https://docs.microsoft.com/learn/modules/get-started-with-powerapps-common-data-service/)
-  * [Power platform-ortamlara genel bakış](https://docs.microsoft.com/power-platform/admin/environments-overview)
+  * [Öğrenin: Common Data Service kullanmaya başlayın](/learn/modules/get-started-with-powerapps-common-data-service/)
+  * [Power platform-ortamlara genel bakış](/power-platform/admin/environments-overview)
 
 * Common Data Service veritabanınızdaki kayıtlara erişmek istediğiniz [mantıksal uygulamaları](../logic-apps/quickstart-create-first-logic-app-workflow.md) ve mantıksal uygulamayı oluşturma hakkında temel bilgi. Mantıksal uygulamanızı bir Common Data Service tetikleyicisi ile başlatmak için boş bir mantıksal uygulama gerekir. Azure Logic Apps yeni başladıysanız hızlı başlangıç ' i inceleyin [: Azure Logic Apps kullanarak ilk iş akışınızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -50,9 +51,9 @@ Bu örnek için yeni bir kayıt oluşturulduğunda harekete gelen Common Data Se
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ortam** | Evet | İzlenecek ortam, örneğin, "Fabrikam Sales Production". Daha fazla bilgi için bkz. [Power platform-ortamlara genel bakış](https://docs.microsoft.com/power-platform/admin/environments-overview). |
-   | **Varlık adı** | Evet | İzlenecek varlık, örneğin "müşteri adayları" |
-   | **Kapsam** | Evet | Yeni kaydı oluşturan kaynak (örneğin, iş biriminizdeki bir kullanıcı veya kuruluşunuzdaki herhangi bir Kullanıcı). Bu örnekte "Iş birimi" kullanılmaktadır. |
+   | **Ortam** | Yes | İzlenecek ortam, örneğin, "Fabrikam Sales Production". Daha fazla bilgi için bkz. [Power platform-ortamlara genel bakış](/power-platform/admin/environments-overview). |
+   | **Varlık adı** | Yes | İzlenecek varlık, örneğin "müşteri adayları" |
+   | **Kapsam** | Yes | Yeni kaydı oluşturan kaynak (örneğin, iş biriminizdeki bir kullanıcı veya kuruluşunuzdaki herhangi bir Kullanıcı). Bu örnekte "Iş birimi" kullanılmaktadır. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service eylem Ekle
@@ -71,8 +72,8 @@ Bu örnek için yeni bir kayıt oluşturulduğunda harekete gelen Common Data Se
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Kuruluş adı** | Evet | Kayıt oluşturmak istediğiniz, tetikleyicinizdeki aynı ortam olması gereken ancak bu örnekte "Fabrikam Sales Production" olması gereken ortam |
-   | **Varlık adı** | Evet | Kaydı oluşturmak istediğiniz varlık (örneğin, "görevler" |
+   | **Kuruluş Adı** | Yes | Kayıt oluşturmak istediğiniz, tetikleyicinizdeki aynı ortam olması gereken ancak bu örnekte "Fabrikam Sales Production" olması gereken ortam |
+   | **Varlık adı** | Yes | Kaydı oluşturmak istediğiniz varlık (örneğin, "görevler" |
    | **Konu** | Evet, bu örnekte seçilen varlığa göre | Bu görevin hedefi hakkında kısa bir açıklama |
    ||||
 
@@ -125,7 +126,7 @@ Kayıtları **Listele** eylemi gibi kayıtları döndüren eylemler için, belir
 
    ![Kayıtları filtrelemek için ODATA filtre sorgusu girin](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-Sistem sorgu seçenekleri hakkında daha fazla bilgi için `$filter` bkz. [Common Data Service-filtre sonuçları](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
+Sistem sorgu seçenekleri hakkında daha fazla bilgi için `$filter` bkz. [Common Data Service-filtre sonuçları](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
 
 ## <a name="list-records-based-on-an-order"></a>Kayıtları bir sıraya göre listeleme
 
@@ -139,7 +140,7 @@ Kayıtları **Listele** eylemi gibi kayıtları döndüren eylemler için, belir
 
    ![Kayıtları sıralamak için ODATA filtre sorgusu girin](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-Sistem sorgu seçenekleri hakkında daha fazla bilgi için `$orderby` bkz. [Common Data Service-Order results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
+Sistem sorgu seçenekleri hakkında daha fazla bilgi için `$orderby` bkz. [Common Data Service-Order results](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
 
 ## <a name="field-data-types"></a>Alan veri türleri
 
@@ -165,7 +166,7 @@ Bu örnek, yeni bir **kayıt oluşturma** eyleminin diğer varlık kayıtlarıyl
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcı, Eylemler, sınırlar ve diğer ayrıntılar gibi bağlayıcının Swagger açıklamasına dayalı teknik bilgiler için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/commondataservice/)bakın.
+Bağlayıcı, Eylemler, sınırlar ve diğer ayrıntılar gibi bağlayıcının Swagger açıklamasına dayalı teknik bilgiler için [bağlayıcının başvuru sayfasına](/connectors/commondataservice/)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

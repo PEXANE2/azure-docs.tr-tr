@@ -7,17 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656995"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283954"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps ile SMTP hesabınızdan e-posta gönderin
 
 Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısıyla, SMTP hesabınızdan e-posta gönderen otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Ayrıca, diğer eylemlerdeki çıktıyı SMTP eylemleriyle kullanmasını sağlayabilirsiniz. Örneğin, SMTP 'niz bir e-posta gönderdikten sonra, bolluk bağlayıcısıyla ekibinize bolluk içinde bildirimde bulunabilir. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
@@ -50,10 +51,10 @@ Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısıyla, S
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Bağlantı adı** | Evet | SMTP sunucunuza bağlantı için bir ad | 
-   | **SMTP sunucu adresi** | Evet | SMTP sunucunuzun adresi | 
-   | **Kullanıcı adı** | Evet | SMTP hesabınız için Kullanıcı adınız | 
-   | **Parola** | Evet | SMTP hesabınız için parolanız | 
+   | **Bağlantı adı** | Yes | SMTP sunucunuza bağlantı için bir ad | 
+   | **SMTP sunucu adresi** | Yes | SMTP sunucunuzun adresi | 
+   | **Kullanıcı Adı** | Yes | SMTP hesabınız için Kullanıcı adınız | 
+   | **Parola** | Yes | SMTP hesabınız için parolanız | 
    | **SMTP sunucusu bağlantı noktası** | Hayır | SMTP sunucunuzda kullanmak istediğiniz belirli bir bağlantı noktası | 
    | **SSL etkinleştirilsin mi?** | Hayır | TLS/SSL şifrelemesini açın veya kapatın. | 
    |||| 
@@ -64,7 +65,7 @@ Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısıyla, S
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/smtpconnector/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/smtpconnector/)bakın.
 
 > [!NOTE]
 > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.

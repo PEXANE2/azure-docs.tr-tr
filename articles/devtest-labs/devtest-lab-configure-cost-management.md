@@ -3,12 +3,12 @@ title: Azure DevTest Labs ' de aylık tahmini laboratuvar maliyeti eğilimini g�
 description: Bu makalede, Azure DevTest Labs ' de laboratuvarınızın maliyetinin (aylık tahmini maliyet eğilimi grafiğinin) nasıl izleneceği hakkında bilgi verilmektedir.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482777"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283835"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda ilişkili maliyetleri izleyin
 Bu makalede, laboratuvarınızın maliyetinin nasıl izleneceği hakkında bilgi verilmektedir. Laboratuvar için geçerli takvim ayı için tahmini maliyet eğilimini nasıl görüntüleyekullanabileceğinizi gösterir. Makalede ayrıca laboratuvarda kaynak başına aylık maliyet görüntüleme gösterilmektedir.
@@ -28,7 +28,7 @@ Aylık tahmini maliyet eğilimi grafiğini görüntülemek için aşağıdaki ad
 
     **Tahmini maliyet** değeri, geçerli takvim ayının tahmini maliyetlidir. **Öngörülen maliyet** , geçerli takvim ayının tamamı için, önceki beş güne ait laboratuvar maliyeti kullanılarak hesaplanan tahmini maliyettir.
 
-    Maliyet miktarları bir sonraki tam sayıya yuvarlanır. Örneğin: 
+    Maliyet miktarları bir sonraki tam sayıya yuvarlanır. Örnek: 
 
    * 5,01, 6 ' ya kadar yuvarlar 
    * 5,50, 6 ' ya kadar yuvarlar
@@ -69,7 +69,7 @@ DevTest Labs, aylık tahmini maliyet eğilimi grafiğinde görüntüleyebilmeniz
      - Benzer şekilde, bir Web kancası URL 'SI tanımlarsanız, maliyet eşiği **Notification** bölmesinde bildirimini **Açık** olarak ayarlamanız gerekir.
      - Buraya girmeden önce bir Web kancası oluşturmanız gerekir.  
 
-       Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+       Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-bindings-http-webhook.md). 
 
 ## <a name="view-cost-by-resource"></a>Kaynağa göre maliyeti görüntüle 
 Laboratuvardaki aylık maliyet eğilimi özelliği, geçerli takvim ayında ne kadar harcandığını görmenizi sağlar. Ayrıca, son yedi gün içinde harcamalarınızı temel alarak, ayın sonuna kadar harcama projeksiyonunu gösterir. Laboratuvardaki harcamanın neden erken bir şekilde toplantı yaptığını anlamanıza yardımcı olmak için, tablodaki **kaynak başına** aylık maliyeti gösteren **kaynak maliyeti** özelliğini kullanabilirsiniz.
@@ -93,4 +93,3 @@ Daha sonra deneyebileceğiniz bazı şeyler aşağıda verilmiştir:
 * [Özel görüntü oluşturma](devtest-lab-create-template.md) -bir VM oluşturduğunuzda, özel bir görüntü veya Market görüntüsü olabilen bir temel belirlersiniz. Bu makalede, bir VHD dosyasından nasıl özel bir görüntü oluşturacağınız gösterilmektedir.
 * [Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) -DevTest Labs, Azure Marketi görüntülerini temel alan sanal makineler oluşturmayı destekler. Bu makalede, bir laboratuvarda VM oluştururken Azure Market görüntülerinin kullanılabileceği, hangilerinin kullanılacağı gösterilmektedir.
 * [Laboratuvarda sanal makine oluşturma](devtest-lab-add-vm.md) -bir temel görüntüden (özel veya Market) sanal makine OLUŞTURMAYı ve sanal makinenizde yapıtlarla çalışmayı gösterir.
-

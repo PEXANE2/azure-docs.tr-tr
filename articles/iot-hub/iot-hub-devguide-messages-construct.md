@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 07/22/2019
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 4d33a47e0498c82dff967242cfbc12a89c94a3b5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327744"
+ms.locfileid: "87336727"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub iletilerini oluşturma ve okuma
 
@@ -61,6 +61,8 @@ Farklı protokoller kullanılarak gönderilen iletilerin kodlanması ve kodunun 
 | ıothub-Connection-Module-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **ModuleID** 'sini içerir. | Hayır | Connectionmoduleıd |
 | ıothub-bağlantı-auth-Generation-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **Connectiondevicegenerationıd** 'Sini ( [cihaz kimliği başına kimlik özellikleri](iot-hub-devguide-identity-registry.md#device-identity-properties)) içerir. | Hayır |Connectiondevicegenerationıd |
 | ıothub-Connection-auth-yöntemi |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir kimlik doğrulama yöntemi. Bu özellik, iletiyi gönderen cihazın kimliğini doğrulamak için kullanılan kimlik doğrulama yöntemi hakkındaki bilgileri içerir.| Hayır | connectionAuthMethod |
+| DT-DataSchema | Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. | Hayır | Yok |
+| DT-konu | Cihazdan buluta iletileri gönderen bileşenin adı. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. | Yes | Yok |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub Iletilerinin sistem özellikleri
 
@@ -89,8 +91,9 @@ Sistem özelliği adları, iletilerin yönlendirildiği uç noktaya göre farkl�
 |contentType|içerik türü|contentType|ContentType|ıothub-Content-Type|
 |Contentenkodlamaya|İçerik kodlama|Contentenkodlamaya|Contentenkodlamaya|ıothub-Content-Encoding|
 |ıothub-enqueuedtime|ıothub-enqueuedtime|enqueuedTime| Yok |ıothub-enqueuedtime|
-|ıothub-arabirim-adı|ıothub-arabirim-adı|'Nün|Iothub-arabirim-adı|ıothub-arabirim-adı|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
+|DT-DataSchema|DT-DataSchema|DT-DataSchema|DT-DataSchema|DT-DataSchema|
+|DT-konu|DT-konu|DT-konu|DT-konu|DT-konu|
 
 ## <a name="message-size"></a>İleti boyutu
 

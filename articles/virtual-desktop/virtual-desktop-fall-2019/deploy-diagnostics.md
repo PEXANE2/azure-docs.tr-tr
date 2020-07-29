@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü için Tanılama aracını dağıtma-Azure
-description: Windows sanal masaüstü için tanılama UX aracı 'nı dağıtma.
+title: Windows sanal masaüstü (klasik) için Tanılama aracını dağıtma-Azure
+description: Windows sanal masaüstü (klasik) için tanılama UX aracı 'nı dağıtma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285110"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows sanal masaüstü (klasik) Tanılama aracını dağıtma
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 >[!IMPORTANT]
 >16 Mart 2020 itibariyle, hizmet üzerindeki talep artmasından dolayı kullanıcı deneyiminin etkilediği tanılama sorgularını geçici olarak devre dışı bırakmış. Bu, işlevin çalışmayı durdurmasına neden olur çünkü bu sorguları işlevine kullanır. Tanılama sorguları yeniden kullanılabilir olduğunda bu makaleyi güncelleştireceğiz.
@@ -34,7 +34,7 @@ Windows sanal masaüstü için tanılama aracı sizin için şunları yapabilir:
 - Belirli bir oturum ana bilgisayarındaki etkin kullanıcılara ileti gönderin.
 - Kullanıcıları oturum ana bilgisayarında imzalayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir Azure Active Directory uygulama kaydı ve Log Analytics çalışma alanı oluşturmanız gerekir. Bunun için yönetici bu izinlere gerek duyar:
 

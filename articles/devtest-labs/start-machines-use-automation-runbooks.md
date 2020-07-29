@@ -3,12 +3,12 @@ title: Azure DevTest Labs 'de Automation runbook 'ları kullanarak makineler ba�
 description: Azure Otomasyonu runbook 'ları kullanarak Azure DevTest Labs laboratuvarda sanal makineleri başlatmayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 72ce964b451fb6bcd1e93d75e6ae674c7608d63a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481910"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282271"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Azure Otomasyonu runbook 'larını kullanarak bir laboratuvarda sanal makine başlatma
 DevTest Labs 'in [autostart](devtest-lab-set-lab-policy.md#set-autostart) özelliği, VM 'leri belirli bir zamanda otomatik olarak başlayacak şekilde yapılandırmanıza olanak tanır. Ancak, bu özellik makineleri belirli bir sırada başlatılacak şekilde desteklemez. Bu tür bir Otomasyon yararlı olacağı birçok senaryo vardır.  Bir senaryo, diğer VM 'lere erişim noktası olarak, diğer VM 'lerden önce, bir laboratuar içindeki bir sıçrama kutusu VM 'sinin ilk başlatılmalıdır.  Bu makalede, bir betiği yürüten PowerShell runbook 'u ile bir Azure Otomasyonu hesabının nasıl ayarlanacağı gösterilmektedir. Betiği, betiği değiştirmek zorunda kalmadan başlangıç sırasını denetlemenize olanak tanımak için laboratuvardaki VM 'lerde Etiketler kullanır.
@@ -20,7 +20,7 @@ Bu örnekte, laboratuvardaki VM 'Lerin, uygun değer (0, 1, 2, vb.) **ile eklenm
 [Bu makaledeki](../automation/automation-create-standalone-account.md)yönergeleri Izleyerek bir Azure Otomasyonu hesabı oluşturun. Hesabı oluştururken **Farklı Çalıştır hesapları** seçeneğini belirleyin. Otomasyon hesabı oluşturulduktan sonra, **modüller** sayfasını açın ve menü çubuğunda **Azure modüllerini Güncelleştir** ' i seçin. Varsayılan modüller, bazı sürümlerdir ve güncelleştirme olmadan betiği çalışmayabilir.
 
 ## <a name="add-a-runbook"></a>Runbook ekleme
-Şimdi Otomasyon hesabına bir runbook eklemek için soldaki menüden **runbook 'lar** ' ı seçin. Menüdeki **runbook Ekle** ' yi seçin ve [PowerShell runbook 'u oluşturmak](../automation/automation-first-runbook-textual-powershell.md)için yönergeleri izleyin.
+Şimdi Otomasyon hesabına bir runbook eklemek için soldaki menüden **runbook 'lar** ' ı seçin. Menüdeki **runbook Ekle** ' yi seçin ve [PowerShell runbook 'u oluşturmak](../automation/learn/automation-tutorial-runbook-textual-powershell.md)için yönergeleri izleyin.
 
 ## <a name="powershell-script"></a>PowerShell betiği
 Aşağıdaki betik, abonelik adını, laboratuvar adını parametreler olarak alır. Betiğin akışı, laboratuvardaki tüm VM 'Leri almak ve ardından, VM adlarının ve başlangıç sırasının bir listesini oluşturmak için etiket bilgilerini ayrıştırmaktır. Betik VM 'leri sırayla gösterir ve VM 'Leri başlatır. Belirli bir sıra numarasında birden fazla VM varsa, PowerShell işleri kullanılarak zaman uyumsuz olarak başlatılır. Etiketi olmayan bu VM 'Ler için, başlangıç değerini en son (10) olarak ayarlayın, varsayılan olarak en son başlatılır.  Laboratuvar, VM 'nin otomatik olarak başlatılmasını istemiyorsanız, etiket değerini 11 olarak ayarlayın ve yok sayılır.

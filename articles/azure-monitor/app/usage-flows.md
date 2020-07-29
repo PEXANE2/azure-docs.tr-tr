@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963458"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309278"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights Kullanıcı Akışları Kullanıcı gezinti desenlerini analiz etme
 
@@ -27,7 +27,7 @@ Kullanıcı Akışları Araç, kullanıcıların sitenizin sayfaları ve özelli
 Kullanıcı Akışları Aracı, belirttiğiniz ilk sayfa görünümü, özel olay veya özel durumdan başlar. Bu ilk olay verildiğinde, Kullanıcı Akışları Kullanıcı oturumları sırasında ve daha sonra gerçekleşen olayları gösterir. Değişen kalınlıkta çizgiler, her bir yolun Kullanıcı tarafından kaç kez izlendiði gösterilmektedir. Özel **oturum başlatma** düğümleri sonraki düğümlerin bir oturumu başladığını gösterir. **Oturum sona ermiş** düğümler, önceki düğümden sonra kullanıcıların büyük olasılıkla sitenizi nerede kapatmış olduğunu vurgulamada kaç kullanıcının sayfa görünümü veya özel olay gönderdiğini gösterir.
 
 > [!NOTE]
-> Application Insights kaynağınız Kullanıcı Akışları aracını kullanmak için sayfa görünümleri veya özel olaylar içermelidir. [Uygulamanızı, Application Insights JavaScript SDK 'sı ile otomatik olarak sayfa görünümlerini toplamak üzere ayarlamayı öğrenin](../../azure-monitor/app/javascript.md).
+> Application Insights kaynağınız Kullanıcı Akışları aracını kullanmak için sayfa görünümleri veya özel olaylar içermelidir. [Uygulamanızı, Application Insights JavaScript SDK 'sı ile otomatik olarak sayfa görünümlerini toplamak üzere ayarlamayı öğrenin](./javascript.md).
 >
 >
 
@@ -52,7 +52,7 @@ Görselleştirme üzerinde görmeyi beklediğinizi sayfa görünümleri veya öz
 * **Düzenleme** menüsündeki **Dışlanan olaylar** bölümünü denetleyin.
 * Görselleştirmelere daha az sık olaylar eklemek için **diğer** düğümlerdeki artı düğmelerini kullanın.
 * Beklenen sayfa görünümü veya özel olay, kullanıcılar tarafından nadiren gönderiliyorsa, **düzenleme** menüsünde görselleştirmenin zaman aralığını artırmayı deneyin.
-* İstediğiniz sayfa görünümü, özel olay veya özel durumun, sitenizin kaynak kodunda Application Insights SDK tarafından toplanmaya ayarlandığından emin olun. [Özel olayları toplama hakkında daha fazla bilgi edinin.](../../azure-monitor/app/api-custom-events-metrics.md)
+* İstediğiniz sayfa görünümü, özel olay veya özel durumun, sitenizin kaynak kodunda Application Insights SDK tarafından toplanmaya ayarlandığından emin olun. [Özel olayları toplama hakkında daha fazla bilgi edinin.](./api-custom-events-metrics.md)
 
 Görselleştirmede daha fazla adım görmek isterseniz, **önceki adımları** ve görselleştirmenin üstündeki **sonraki adımlar açılan adımlarını** kullanın.
 
@@ -92,4 +92,5 @@ Görselleştirmedeki ilk olay, bir Kullanıcı bir oturum sırasında Bu sayfa g
 * [Kullanıma genel bakış](usage-overview.md)
 * [Kullanıcılar, Oturumlar ve Etkinlikler](usage-segmentation.md)
 * [Bekletme](usage-retention.md)
-* [Uygulamanıza özel olaylar ekleme](../../azure-monitor/app/api-custom-events-metrics.md)
+* [Uygulamanıza özel olaylar ekleme](./api-custom-events-metrics.md)
+

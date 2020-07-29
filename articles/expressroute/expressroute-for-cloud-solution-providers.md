@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bf7a1e3cc2bfa8ccf42d05e199c58b8c9314fce
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67849254"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281710"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Bulut Çözüm Sağlayıcıları (CSP) için ExpressRoute
 Microsoft, geleneksel satıcılar veya dağıtımcıların (CSP), yeni hizmetler geliştirmeye yatırım yapmaya gerek kalmadan müşterileriniz için hızlı bir şekilde yeni hizmetler ve çözümler sağlayabilmesi amacıyla hiper ölçekli hizmetler sağlar. Bulut Çözüm Sağlayıcısının (CSP) bu hizmetleri doğrudan yönetebilmesini sağlamak için Microsoft, CSP’nin Microsoft Azure kaynaklarını müşterilerinizin adına yönetebilmesine olanak sağlayan programlar ve API’ler sunar. Bu kaynaklardan biri de ExpressRoute’dur. ExpressRoute, CSP’nin var olan Azure hizmetlerine bağlanmasına olanak sağlar. ExpressRoute, Azure’daki hizmetlere yüksek hızlı özel iletişim bağlantısıdır. 
@@ -130,5 +130,5 @@ Bulut Çözümü Sağlayıcısı hizmeti, sizlere pahalı altyapı ve özellikle
 Aşağıdaki bağlantılarda ek bilgiler bulunabilir:
 
 [Azure Bulut Çözümü Sağlayıcısı programı](https://docs.microsoft.com/azure/cloud-solution-provider).  
-[Bir Bulut Çözümü Sağlayıcısı olmaya hazırlanma](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch).  
-[Microsoft Bulut Çözümü Sağlayıcısı kaynakları](https://partner.microsoft.com/en-us/solutions/cloud-reseller-resources).
+[Bir Bulut Çözümü Sağlayıcısı olmaya hazırlanma](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch).  
+[Microsoft Bulut Çözümü Sağlayıcısı kaynakları](https://partner.microsoft.com/solutions/cloud-reseller-resources).

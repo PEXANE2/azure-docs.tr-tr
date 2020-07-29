@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 59d5c6c4a9c3af70eb08e9d5a05d516f4b8b8bdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100582"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337271"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure özel bağlantısı ile Redsıs için Azure önbelleği (Önizleme)
 Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen, özel olarak ve güvenli bir şekilde Azure önbelleğine bağlayan bir ağ arabirimidir. 
@@ -73,7 +73,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Abonelik     | Açılır ve aboneliğinizi seçin.                                  |
     | Kaynak Grubu   | Açılır ve bir kaynak grubu seçin. |
     | **Örnek ayrıntıları** |                                                                 |
-    | Name             | Girmesini**\<virtual-network-name>**                                    |
+    | Ad             | Girmesini**\<virtual-network-name>**                                    |
     | Bölge           | Seçin**\<region-name>** |
 
 4. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
@@ -124,7 +124,7 @@ Bu bölümde, özel bir uç nokta oluşturacak ve daha önce oluşturduğunuz ö
     | Abonelik | Açılır ve aboneliğinizi seçin. |
     | Kaynak grubu | Açılır ve bir kaynak grubu seçin. |
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Name |Özel uç noktanız için bir ad girin.  |
+    | Ad |Özel uç noktanız için bir ad girin.  |
     | Bölge |Açılır ve bir konum seçin. |
     |||
 
@@ -149,3 +149,9 @@ Bu bölümde, özel bir uç nokta oluşturacak ve daha önce oluşturduğunuz ö
 11.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur**sekmesine götürülürsünüz   .
 
 12. Yeşil **doğrulama başarılı** Iletisi göründüğünde **Oluştur**' u seçin.
+
+
+## <a name="next-steps"></a>Sonraki Adımlar
+
+Özel bağlantı hakkında daha fazla bilgi edinmek için bkz. [Azure özel bağlantı belgeleri](https://docs.microsoft.com/azure/private-link/private-link-overview). 
+

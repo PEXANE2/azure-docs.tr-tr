@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026518"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311577"
 ---
 # <a name="single-page-application-app-registration"></a>Tek sayfalı uygulama: uygulama kaydı
 
 Microsoft Identity platformunda tek sayfalı uygulama (SPA) kaydetmek için aşağıdaki adımları izleyin. Kayıt adımları, örtük verme akışını destekleyen MSAL.js 1,0 arasında farklılık gösterir ve PKCE ile yetkilendirme kodu akışını destekleyen MSAL.js 2,0 ' dir.
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="create-the-app-registration"></a>Uygulama kaydını oluşturma
 
@@ -67,7 +69,7 @@ MSAL.js 1,3 veya önceki bir sürümü ve örtük izin akışını kullanan tek 
 
 Artık tek sayfalı uygulamanızın (SPA) kaydını tamamladınız ve istemcinin yeniden yönlendirileceği ve herhangi bir güvenlik belirtecinin gönderileceği bir yeniden yönlendirme URI 'SI yapılandırdınız. **Kimlik belirteçlerinin** ve **erişim belirteçlerinin**birini veya her ikisini belirleyerek örtük verme akışını etkinleştirdiniz.
 
-Daha fazla rehberlik için [öğreticiyi](tutorial-v2-javascript-spa.md) izleyin. 
+Daha fazla rehberlik için [öğreticiyi](tutorial-v2-javascript-spa.md) izleyin.
 
 ## <a name="note-about-authorization-flows"></a>Yetkilendirme akışları hakkında
 

@@ -6,11 +6,12 @@ ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 7f922275e5541baabc77a1efb19e48fa8be4c5ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f325280cb4b18def603410464a06fddaed09c78a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289433"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285416"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>MySQL için Azure veritabanı geçiş iş ortakları
 MySQL için Azure veritabanınızı çözümünüzü büyük ölçüde desteklemek için sektör lideri çok çeşitli iş ortakları ve araçları arasından seçim yapabilirsiniz. Bu makalede, MySQL için Azure veritabanı 'nı destekleyen geçiş çözümleriyle Microsoft iş ortakları vurgulanmaktadır.
@@ -26,7 +27,7 @@ MySQL için Azure veritabanınızı çözümünüzü büyük ölçüde desteklem
 | ![Pactera][6] |**Pactera**<br>Pactera, dünyanın önde gelen kuruluşlara danışmanlık, dijital, teknoloji ve operasyon hizmetleri sunan küresel bir şirkettir. Mühendislerin üzerinde bulunan köklerinden en son dijital dönüşümde müşterilere rekabet eden bir kenar verirler. Kendini kanıtlamış Yöntemler ve araçlar verilerinizin güvenli, gerçek ve doğru olmasını güvence altına alırlar.|[Web sitesi][pactera_website]<br>[Twitter][pactera_twitter]<br>[İrtibata][pactera_contact] | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Microsoft 'un diğer iş ortaklarının bazıları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Iş ortağı sitesi](https://partner.microsoft.com/en-US/).
+Microsoft 'un diğer iş ortaklarının bazıları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Iş ortağı sitesi](https://partner.microsoft.com/).
 
 <!--Image references-->
 [1]: ./media/partner-migration-mysql/SNP_Logo.png

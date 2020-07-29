@@ -1,6 +1,6 @@
 ---
-title: Hizmet sorumlusu kullanarak Windows sanal masaüstü için bir Yönetim Aracı dağıtma-Azure
-description: PowerShell kullanarak Windows sanal masaüstü için yönetim aracı 'nı dağıtma.
+title: Hizmet sorumlusu kullanarak Windows sanal masaüstü (klasik) için bir Yönetim Aracı dağıtma-Azure
+description: PowerShell kullanarak Windows sanal masaüstü (klasik) için yönetim aracı 'nı dağıtma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,16 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6947e5ebf91ee65145c7a5042fb1ee6968c19c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513397"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284974"
 ---
-# <a name="deploy-a-management-tool-with-powershell"></a>PowerShell ile bir Yönetim Aracı dağıtma
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>PowerShell ile Windows sanal masaüstü (klasik) Yönetim Aracı dağıtma
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 Bu makalede, PowerShell kullanarak yönetim aracının nasıl dağıtılacağı gösterilir.
 

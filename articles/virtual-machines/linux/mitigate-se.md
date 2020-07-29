@@ -7,14 +7,15 @@ keywords: SPECTRE, meltters, Specter
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 17b7470ea2d4c0051d76ca899b174fd5fb5a1e63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bd80ecdb4496f26c2138ac7dfe71500207f57b5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944640"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284906"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Azure 'da kurgusal yürütme yan kanallı güvenlik açıklarını azaltmaya yönelik kılavuz
 

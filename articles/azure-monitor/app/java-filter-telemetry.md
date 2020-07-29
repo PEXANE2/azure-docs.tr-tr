@@ -3,12 +3,13 @@ title: Java Web uygulamanızda Azure Application Insights telemetrisini filtrele
 description: İzlemeniz gerekmeyen olayları filtreleyerek telemetri trafiğini azaltın.
 ms.topic: conceptual
 ms.date: 3/14/2019
-ms.openlocfilehash: cd53a0e02eb43bdf7cde4952ed4835c6d1cdd126
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java
+ms.openlocfilehash: 825c807d9af542e8776e3b6361b8f6b6dd08f164
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322593"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372187"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web uygulamanızda telemetri filtreleme
 

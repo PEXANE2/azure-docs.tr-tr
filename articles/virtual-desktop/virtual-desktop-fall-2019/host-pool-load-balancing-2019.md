@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü konak havuzu Yük Dengelemesi (sonbahar 2019)-Azure
-description: Windows sanal masaüstü (sonbahar 2019 sürümü) ortamı için konak havuzu Yük Dengeleme yöntemleri hakkında bilgi edinin.
+title: Windows sanal masaüstü (klasik) konak havuzu yük dengelemesi-Azure
+description: Windows sanal masaüstü ortamı için konak havuzu Yük Dengeleme yöntemleri.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3854471b2e74bd7c3315ae622a36588af0270d8c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046270"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285008"
 ---
-# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>Konak havuzu Yük Dengeleme Yöntemleri (sonbahar 2019 sürümü)
+# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstündeki (klasik) konak havuzu Yük Dengeleme yöntemleri
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../host-pool-load-balancing.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../host-pool-load-balancing.md)bakın.
 
 Windows sanal masaüstü iki yük dengeleme yöntemini destekler. Her yöntem, bir konak havuzundaki bir kaynağa bağlandıklarında bir kullanıcının oturumunu hangi oturum konağının barındıracağını belirler.
 

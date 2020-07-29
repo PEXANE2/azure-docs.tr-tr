@@ -5,15 +5,17 @@ author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
-ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 3a1aa004f47ba700ef4b96004dfe5b835788dcc7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75459011"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372476"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric ağı için Maven eklentisi
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Java SDK
 - Maven

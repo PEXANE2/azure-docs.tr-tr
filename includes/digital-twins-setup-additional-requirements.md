@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: b490b4304dd74d8266b24d0ea5af58726b14d747
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 57be62d0f74f19e35eedf8720e2a6f5cbd3b45d4
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125826"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87335809"
 ---
 Kuruluşunuzun, bir uygulama kaydını başarıyla ayarlaması için (ve sonuç olarak, kullanılabilir bir Azure dijital TWINS örneği ayarlamayı tamamlaması) abonelik sahiplerinden ek eylemler gerektirmesi olasıdır. Gerekli adımlar kuruluşunuzun belirli ayarlarına bağlı olarak değişiklik gösterebilir.
 
@@ -21,7 +21,6 @@ Bir sahibin gerçekleştirmesi gerekebilecek bazı yaygın etkinlikler aşağıd
   - Onay başarıyla verildiyse, Azure Digital TWINS girişi için bir *durum* değeri belirtilmelidir _ **(şirketiniz)** _
    
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/granted-admin-consent.png" alt-text="Şirket için API izinleri kapsamında verilen yönetici izninin Portal görünümü":::
-  - Sahip, bu işlemi oluşturulan her uygulama kaydı için yinelemeyi veya bir kez yapmayı tercih edebilir ve abonelikteki tüm Azure dijital TWINS örnekleri için tek bir paylaşılan uygulama kaydı oluşturabilir. İkinci senaryoda, sahip, uygulama kaydını kullanması gereken geliştiriciler ile uygulama kaydı için *ISTEMCI kimliğini* ve *Kiracı kimliğini* paylaşmalıdır. (Microsoft 'un kendi kiracısında bu şekilde yapılır).
 * Ortak istemci erişimini etkinleştir
 * Web ve masaüstü erişimi için belirli yanıt URL 'Lerini ayarlayın
 * Örtük OAuth2 kimlik doğrulama akışları için izin ver

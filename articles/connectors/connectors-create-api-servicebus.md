@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84142002"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284005"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -28,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -155,7 +156,7 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
 ## <a name="send-correlated-messages-in-order"></a>Bağıntılı iletileri sırayla gönderin
 
-İlgili iletileri belirli bir sırada göndermeniz gerektiğinde, [Azure Service Bus bağlayıcısını](../connectors/connectors-create-api-servicebus.md)kullanarak [ *sıralı konvoy* düzenini](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) kullanabilirsiniz. Bağıntılı iletiler, Service Bus [oturum](../service-bus-messaging/message-sessions.md) kimliği gibi bu iletiler arasındaki ilişkiyi tanımlayan bir özelliğe sahiptir.
+İlgili iletileri belirli bir sırada göndermeniz gerektiğinde, [Azure Service Bus bağlayıcısını](../connectors/connectors-create-api-servicebus.md)kullanarak [ *sıralı konvoy* düzenini](/azure/architecture/patterns/sequential-convoy) kullanabilirsiniz. Bağıntılı iletiler, Service Bus [oturum](../service-bus-messaging/message-sessions.md) kimliği gibi bu iletiler arasındaki ilişkiyi tanımlayan bir özelliğe sahiptir.
 
 Bir mantıksal uygulama oluşturduğunuzda, sıralı konvoy düzenini uygulayan **Service Bus oturumları şablonunu kullanarak bağıntılı sıralı teslimi** seçebilirsiniz. Daha fazla bilgi için bkz. [ilgili iletileri sırayla gönderme](../logic-apps/send-related-messages-sequential-convoy.md).
 
@@ -170,3 +171,4 @@ Bağlayıcının Swagger açıklaması tarafından tanımlanan Tetikleyiciler, E
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin
+
