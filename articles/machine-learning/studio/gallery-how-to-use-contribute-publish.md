@@ -1,6 +1,5 @@
 ---
-title: Azure Yapay Zeka Galerisi
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): Azure Yapay Zeka Galerisi-Azure'
 description: Azure Yapay Zeka Galerisi analiz kaynaklarını ve daha fazlasını paylaşma ve keşfetme. Diğerlerinden öğrenin ve topluluğa kendi katkılarınızı yapın.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bbece33d443139c9f1b1384c1a9e0b3c4da0d08
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709037"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318564"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -25,7 +28,7 @@ Galerinin kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz �
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Galeride neleri bulabilirim?
 
-Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bu modüller şunlardır:
+Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bunlara
 
 * **Denemeleri** -Galeri Azure Machine Learning Studio (klasik) ' de geliştirilmiş çok çeşitli denemeleri içerir. Bu, belirli bir makine öğrenimi tekniğinin yanı sıra karmaşık makine öğrenimi sorunları için tam olarak geliştirilen çözümlere yönelik olan hızlı prototip denemeleri tarafından görülebilir.
 * **Öğreticiler** -Machine Learning teknolojileri ve kavramları konusunda size yol gösterecek veya çeşitli makine öğrenimi sorunlarını çözmeye yönelik gelişmiş yöntemleri açıklayan birçok öğretici vardır.
@@ -159,7 +162,7 @@ Bir **öğreticiye** , makine öğrenimi kavramlarını açıklayan bir öğreti
    > [!TIP]
    > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Katkılarınız artık Azure Yapay Zeka Galerisi. Katkılarınız, **öğeler** sekmesindeki hesap sayfanızda listelenir.
 

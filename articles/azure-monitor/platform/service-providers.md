@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: e49f9caaeb1b16daa49fabb217b6fc40fff17f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081483"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315454"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Hizmet sağlayıcıları için Azure Izleyici günlükleri
 
@@ -19,7 +19,7 @@ Azure Izleyici 'deki Log Analytics çalışma alanları, yönetilen hizmet sağl
 
 Büyük kuruluşlar, özellikle birçok farklı iş birimi için yönetmekten sorumlu bir merkezi BT ekibi olduğunda, servis sağlayıcılarıyla birçok benzerlik paylaşır. Kolaylık olması için, bu belge *hizmet sağlayıcısını* kullanır, ancak kuruluşlar ve diğer müşteriler için aynı işlevsellik de mevcuttur.
 
-[Bulut çözümü sağlayıcısı (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) programının parçası olan iş ortakları ve hizmet sağlayıcıları Için Azure izleyici 'de log ANALYTICS Azure CSP aboneliklerinde bulunan Azure hizmetlerinden biridir.
+[Bulut çözümü sağlayıcısı (CSP)](https://partner.microsoft.com/membership/cloud-solution-provider) programının parçası olan iş ortakları ve hizmet sağlayıcıları Için Azure izleyici 'de log ANALYTICS Azure CSP aboneliklerinde bulunan Azure hizmetlerinden biridir.
 
 Azure Izleyici 'de Log Analytics Ayrıca, Azure açık [Thouse](../../lighthouse/overview.md)'daki Azure Temsilcili kaynak yönetimi özelliği aracılığıyla müşteri kaynaklarını yöneten bir hizmet sağlayıcısı tarafından da kullanılabilir.
 
@@ -36,7 +36,7 @@ Bu mimaride, müşterinin kiracısında müşterinin tüm günlükleri için kul
 Hizmet sağlayıcı yöneticilerinin bir müşteri kiracısında bir Log Analytics çalışma alanına erişim sağlayabilmenin iki yolu vardır:
 
 - Müşteri, hizmet sağlayıcısından [Azure Active Directory Konuk Kullanıcı (B2B)](../../active-directory/b2b/what-is-b2b.md)olarak bireysel kullanıcılar ekleyebilir. Hizmet sağlayıcı yöneticilerinin, bu çalışma alanlarına erişebilmek için Azure portal her bir müşterinin dizininde oturum açması gerekir. Bu, müşterilerin her bir hizmet sağlayıcı Yöneticisi için bireysel erişimi yönetmesini de gerektirir.
-- Hizmet sağlayıcılar, daha fazla ölçeklenebilirlik ve esneklik sağlamak için [Azure](../../lighthouse/overview.md) açık [kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md) özelliğini kullanarak müşterinin kiracısına erişim sağlayabilir. Bu yöntemde, hizmet sağlayıcı yöneticileri hizmet sağlayıcısının kiracısındaki bir Azure AD kullanıcı grubuna dahil edilir ve bu gruba her müşteri için ekleme işlemi sırasında erişim verilir. Bu Yöneticiler daha sonra her bir müşterinin kiracısında tek tek oturum açmasını sağlamak yerine, her bir müşterinin çalışma alanına kendi hizmet sağlayıcısı kiracının içinden erişmesini sağlayabilir. Müşterilerinizin Log Analytics çalışma alanları kaynaklarına bu şekilde erişmek, müşteri tarafında gereken işi azaltır ve [Azure Izleyici çalışma kitapları](../..//azure-monitor/platform/workbooks-overview.md)gibi araçlarla aynı hizmet sağlayıcısı tarafından yönetilen birden fazla müşteriye veri toplayıp analiz etmeyi kolaylaştırır. Daha fazla bilgi için bkz. [Müşteri kaynaklarını ölçeklendirerek izleme](../../lighthouse/how-to/monitor-at-scale.md).
+- Hizmet sağlayıcılar, daha fazla ölçeklenebilirlik ve esneklik sağlamak için [Azure](../../lighthouse/overview.md) açık [kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md) özelliğini kullanarak müşterinin kiracısına erişim sağlayabilir. Bu yöntemde, hizmet sağlayıcı yöneticileri hizmet sağlayıcısının kiracısındaki bir Azure AD kullanıcı grubuna dahil edilir ve bu gruba her müşteri için ekleme işlemi sırasında erişim verilir. Bu Yöneticiler daha sonra her bir müşterinin kiracısında tek tek oturum açmasını sağlamak yerine, her bir müşterinin çalışma alanına kendi hizmet sağlayıcısı kiracının içinden erişmesini sağlayabilir. Müşterilerinizin Log Analytics çalışma alanları kaynaklarına bu şekilde erişmek, müşteri tarafında gereken işi azaltır ve [Azure Izleyici çalışma kitapları](./workbooks-overview.md)gibi araçlarla aynı hizmet sağlayıcısı tarafından yönetilen birden fazla müşteriye veri toplayıp analiz etmeyi kolaylaştırır. Daha fazla bilgi için bkz. [Müşteri kaynaklarını ölçeklendirerek izleme](../../lighthouse/how-to/monitor-at-scale.md).
 
 Dağıtılmış mimarinin avantajları şunlardır:
 
@@ -75,18 +75,19 @@ Merkezi mimarinin dezavantajları şunlardır:
 
 Günlükleri merkezi bir konumda uygulamak için iki seçenek vardır:
 
-1. Merkezi çalışma alanı: hizmet sağlayıcı kiracısında bir çalışma alanı oluşturabilir ve verileri çeşitli çalışma alanlarından bu merkezi konuma getirmek için [veri toplama API](../../azure-monitor/platform/data-collector-api.md) 'Siyle bırlıkte [sorgu API](https://dev.loganalytics.io/) 'sini kullanan bir komut dosyası kullanabilir. Bir komut dosyası dışında başka bir seçenek [Azure Logic Apps](../../logic-apps/logic-apps-overview.md)kullanmaktır.
+1. Merkezi çalışma alanı: hizmet sağlayıcı kiracısında bir çalışma alanı oluşturabilir ve verileri çeşitli çalışma alanlarından bu merkezi konuma getirmek için [veri toplama API](./data-collector-api.md) 'Siyle bırlıkte [sorgu API](https://dev.loganalytics.io/) 'sini kullanan bir komut dosyası kullanabilir. Bir komut dosyası dışında başka bir seçenek [Azure Logic Apps](../../logic-apps/logic-apps-overview.md)kullanmaktır.
 
-2. Merkezi bir konum olarak Power BI: Power BI, Log Analytics çalışma alanı ve [Power BI](../../azure-monitor/platform/powerbi.md)arasındaki tümleştirmeyi kullanarak verileri dışa aktardığınızda merkezi konum olarak görev yapabilir.
+2. Merkezi bir konum olarak Power BI: Power BI, Log Analytics çalışma alanı ve [Power BI](./powerbi.md)arasındaki tümleştirmeyi kullanarak verileri dışa aktardığınızda merkezi konum olarak görev yapabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Kaynak Yöneticisi şablonlarını](template-workspace-configuration.md) kullanarak çalışma alanlarının oluşturulmasını ve yapılandırılmasını otomatikleştirin
 
-* [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) kullanarak çalışma alanlarının oluşturulmasını otomatikleştirme
+* [PowerShell](./powershell-workspace-configuration.md) kullanarak çalışma alanlarının oluşturulmasını otomatikleştirme
 
-* Mevcut sistemlerle tümleştirme için [uyarıları](../../azure-monitor/platform/alerts-overview.md) kullanma
+* Mevcut sistemlerle tümleştirme için [uyarıları](./alerts-overview.md) kullanma
 
-* [Power BI](../../azure-monitor/platform/powerbi.md) kullanarak özet raporlar oluşturma
+* [Power BI](./powerbi.md) kullanarak özet raporlar oluşturma
 
 * [Azure tarafından atanan kaynak yönetimine](../../lighthouse/concepts/azure-delegated-resource-management.md)müşteri ekleme.
+

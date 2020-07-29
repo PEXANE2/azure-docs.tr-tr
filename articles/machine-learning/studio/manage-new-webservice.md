@@ -1,6 +1,5 @@
 ---
-title: Web hizmetlerini yönetme
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): Web hizmetlerini yönetme-Azure'
 description: Machine Learning yeni ve klasik Web hizmetlerinizi Microsoft Azure Machine Learning Web Hizmetleri portalını kullanarak yönetin. Klasik Web Hizmetleri ve yeni Web Hizmetleri, farklı temel teknolojileri temel alarak, bunların her biri için biraz farklı yönetim yeteneğiniz vardır.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 893bb1ab7b3fd9d6b3416e0fa4bad29a3d6d518d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 246041d1a5f4826344c03b889c26dc381cd6db29
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709020"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318513"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Machine Learning yeni ve klasik Web hizmetlerinizi Microsoft Azure Machine Learning Web Hizmetleri portalını kullanarak yönetebilirsiniz. Klasik Web Hizmetleri ve yeni Web Hizmetleri, farklı temel teknolojileri temel alarak, bunların her biri için biraz farklı yönetim yeteneğiniz vardır.
 

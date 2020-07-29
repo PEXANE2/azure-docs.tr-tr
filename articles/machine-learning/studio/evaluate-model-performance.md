@@ -1,6 +1,5 @@
 ---
-title: Çapraz doğrulama modellerini & değerlendirin
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): & çapraz Validate modellerini değerlendir-Azure'
 description: Azure Machine Learning Studio (klasik) ' de model performansını izlemek için kullanabileceğiniz ölçümler hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2308b57859a7f8eb0aa6519246fbb52ffdf9e81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945112"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318649"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model performansını değerlendir (klasik)
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Bu makalede, Azure Machine Learning Studio (klasik) ' de model performansını izlemek için kullanabileceğiniz ölçümler hakkında bilgi edinebilirsiniz.  Bir modelin performansını değerlendirmek, veri bilimi işlemindeki temel aşamalardan biridir. Bir veri kümesinin Puanlama (tahminleri), eğitilen bir model tarafından ne kadar başarılı olduğunu gösterir. Azure Machine Learning Studio (klasik), ana makine öğrenimi modüllerinin ikisi aracılığıyla model değerlendirmesini destekler: 
 + [Modeli Değerlendirme][evaluate-model] 

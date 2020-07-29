@@ -4,21 +4,21 @@ description: Azure Izleyici başvurusu, Azure Kaynak günlükleri için destekle
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515402"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318309"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen Kategoriler
 
 > [!NOTE]
 > Kaynak günlükleri daha önce tanılama günlükleri olarak bilinirdi. Azure Izleyici tarafından toplanan günlüklerin türleri yalnızca Azure kaynağına eşit olacak şekilde kaydırılacağı için ad Ekim 2019 ' de değiştirilmiştir.
 
-Azure [izleyici kaynak günlükleri](../../azure-monitor/platform/platform-logs-overview.md) , bu hizmet veya kaynakların çalışmasını tanımlayan Azure hizmetleri tarafından oluşturulan günlüklerdir. Azure Izleyici aracılığıyla kullanılabilen tüm kaynak günlükleri, her bir hizmetin kendi olayları için benzersiz özellikler yaymasını sağlayan ortak bir üst düzey şemayı paylaşır.
+Azure [izleyici kaynak günlükleri](./platform-logs-overview.md) , bu hizmet veya kaynakların çalışmasını tanımlayan Azure hizmetleri tarafından oluşturulan günlüklerdir. Azure Izleyici aracılığıyla kullanılabilen tüm kaynak günlükleri, her bir hizmetin kendi olayları için benzersiz özellikler yaymasını sağlayan ortak bir üst düzey şemayı paylaşır.
 
-Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `category` bir şemayı benzersiz bir şekilde tanımlar. Daha sonra farklı günlük kategorileri için eklenen hizmete özgü alanları olan tüm kaynak günlüklerine ortak bir şema vardır. Daha fazla bilgi için bkz. [Azure Kaynak günlükleri Için ortak ve hizmete özel şema](resource-logs-categories.md)
+Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `category` bir şemayı benzersiz bir şekilde tanımlar. Daha sonra farklı günlük kategorileri için eklenen hizmete özgü alanları olan tüm kaynak günlüklerine ortak bir şema vardır. Daha fazla bilgi için bkz. [Azure Kaynak günlükleri Için ortak ve hizmete özel şema]()
 
 ## <a name="supported-log-categories-per-resource-type"></a>Kaynak türü başına desteklenen günlük kategorileri
 
@@ -377,7 +377,7 @@ Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açab
 |Appbrowserzamanlamalar|Tarayıcı zamanlamaları|
 |AppDependencies|Bağımlılıklar|
 |AppEvents|Olaylar|
-|AppExceptions|Özel Durumlar|
+|AppExceptions|Özel durumlar|
 |Appölçümler|Ölçümler|
 |AppPageViews|Sayfa görünümleri|
 |AppPerformanceCounters|Performans sayaçları|
@@ -711,7 +711,8 @@ Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açab
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [Kaynak günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/platform/platform-logs-overview.md)
+* [Kaynak günlükleri hakkında daha fazla bilgi edinin](./platform-logs-overview.md)
 * [**Event Hubs** için kaynak kaynağı günlüklerini akışla](./resource-logs.md#send-to-azure-event-hubs)
 * [Azure Izleyici REST API kullanarak kaynak günlüğü tanılama ayarlarını değiştirme](/rest/api/monitor/diagnosticsettings)
 * [Azure depolama 'daki günlükleri Log Analytics ile analiz etme](./resource-logs.md#send-to-log-analytics-workspace)
+

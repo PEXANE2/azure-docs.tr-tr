@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
-ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497865"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292823"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Yük devretme ve geri dönme fiziksel sunucuları Azure 'a çoğaltma
 
@@ -83,7 +84,7 @@ Azure 'a yük devrettikten sonra, Azure VM 'lerini şirket içi siteye çoğalta
 10. Geri gerçekleştiremeyecek aşağıdaki senaryoları doğrulayın:
     - ESXi 5,5 Free Edition ya da vSphere 6 hiper yönetici ücretsiz sürümü kullanıyorsanız. Farklı bir sürüme yükseltin.
     - Windows Server 2008 R2 SP1 fiziksel sunucunuz varsa.
-    - [Geçirilen](migrate-overview.md#what-do-we-mean-by-migration)VM 'ler.
+    - Geçirilen VM 'Ler.
     - Başka bir kaynak grubuna taşınan bir VM.
     - Silinen bir çoğaltma Azure VM 'si.
     - Korunmayan bir çoğaltma Azure VM 'si (Şirket içi siteye çoğaltma).

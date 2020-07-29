@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 47b1a3a44c494560dde9ffdab004ea576f434ffe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091309"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291367"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için Multi-Factor Authentication'ı etkinleştirme
 
 >[!IMPORTANT]
-> Bu sayfayı Fall 2019 belgelerinden ziyaret ediyorsanız, işiniz bittiğinde, [fall 2019 belgelerine döndiğinizden](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) emin olun.
+> Bu sayfayı Windows sanal masaüstü (klasik) belgelerinden ziyaret ediyorsanız, işiniz bittiğinde [Windows sanal masaüstü (klasik) belgelerine döntığınızdan](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) emin olun.
 
 Windows sanal masaüstü için Windows istemcisi, Windows sanal masaüstünü yerel makineli tümleştirmeyle ilgili mükemmel bir seçenektir. Ancak, Windows sanal masaüstü hesabınızı Windows Istemcisi olarak yapılandırdığınızda, kendinizi ve kullanıcılarınızın güvenliğini sağlamak için uygulamanız gereken bazı ölçüler vardır.
 
@@ -50,10 +50,10 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
 7. **Bitti**'yi seçin.
 8. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **Uygulama Seç**' i seçin.
 9. Kullanmakta olduğunuz Windows sanal masaüstü sürümüne göre aşağıdaki uygulama gruplarından birini seçin.
-   - Fall 2019 sürümünü kullanıyorsanız şu iki uygulamayı seçin:
+   - Windows sanal masaüstü 'Nü (klasik) kullanıyorsanız şu iki uygulamayı seçin:
        - **Windows sanal masaüstü** (uygulama kimliği 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
        - **Windows sanal masaüstü istemcisi** (uygulama kimliği fa4345a4-A730-4230-84a8-7d9651b86739)
-   - Spring 2020 sürümünü kullanıyorsanız, bunun yerine şu iki uygulamayı seçin:
+   - Windows sanal masaüstü kullanıyorsanız, bunun yerine şu iki uygulamayı seçin:
        -  **Windows sanal masaüstü** (uygulama kimliği 9cdead84-a844-4324-93f2-b2e6bb768d07)
        -  **Windows sanal masaüstü istemcisi** (uygulama kimliği a85cf173-4192-42f8-81fa-777a763e6e2c)
 

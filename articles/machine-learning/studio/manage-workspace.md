@@ -1,6 +1,5 @@
 ---
-title: Çalışma alanlarını yönetme
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): çalışma alanlarını yönetme-Azure'
 description: Azure Machine Learning Studio (klasik) çalışma alanlarına erişimi yönetin ve Machine Learning API Web hizmetlerini dağıtın ve yönetin
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: 4d12b5fbfb934106f7c18edb2996b51e8f6a57f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c501d7d93973338273246d803df86e4d723ae542
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705143"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318462"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasik) çalışma alanını yönetme
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 > [!NOTE]
 > Web hizmetlerini Machine Learning Web Hizmetleri portalında yönetme hakkında bilgi için, bkz. [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme](manage-new-webservice.md).

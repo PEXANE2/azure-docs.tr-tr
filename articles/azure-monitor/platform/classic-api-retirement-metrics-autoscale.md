@@ -4,12 +4,12 @@ description: Azure hizmet yönetimi (ASM) veya RDFE dağıtım modelinin Kullan�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317391"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Izleyici, ölçümler ve otomatik ölçeklendirme için klasik dağıtım modeli API 'Lerinin kullanımdan kaldırılması
 
@@ -21,7 +21,7 @@ Aynı işlemler, yıl boyunca bir dizi Azure Resource Manager tabanlı API arac�
 
 Otomatik ölçeklendirmeyi Azure portal, [yeni Azure izleyici SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), POWERSHELL, clı veya Kaynak Yöneticisi şablonları aracılığıyla yönetiyorsanız, hiçbir eylem gerekmez.  
 
-Azure portal veya çeşitli [izleme iş ortağı hizmetleri](../../azure-monitor/platform/partners.md)aracılığıyla ölçümleri tüketerek, herhangi bir işlem yapmanız gerekmez. Microsoft, yeni API 'lere geçiş yapmak için izleme iş ortaklarıyla birlikte çalışmaktadır.
+Azure portal veya çeşitli [izleme iş ortağı hizmetleri](./partners.md)aracılığıyla ölçümleri tüketerek, herhangi bir işlem yapmanız gerekmez. Microsoft, yeni API 'lere geçiş yapmak için izleme iş ortaklarıyla birlikte çalışmaktadır.
 
 ## <a name="who-is-affected"></a>Kim etkilendi
 
@@ -89,3 +89,4 @@ Sorularınız varsa bizimle iletişime geçin MonitorClassicAPIhelp@microsoft.co
 
 - [Azure Izleyici için daha yeni REST API 'Leri](/rest/api/monitor/) 
 - [Daha yeni Azure Izleyici SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+

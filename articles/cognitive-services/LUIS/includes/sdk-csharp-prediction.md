@@ -6,77 +6,37 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4bf86c616420bb049e1d7a82ad0e942e6eb7b36f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732050"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369293"
 ---
 .NET için Language Understanding (LUSıS) tahmin istemci kitaplığını kullanın:
 
 * Yuvaya göre tahmin al
 * Sürüme göre tahmin
 
-[Başvuru belge](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [tahmin çalışma zamanı paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C# örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
+[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime)  |  [Tahmin çalışma zamanı paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)  |  [C# örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Language Understanding (LUSıS) portal hesabı- [ücretsiz olarak bir tane oluşturun](https://www.luis.ai)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
-* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
+* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
 
 ## <a name="setting-up"></a>Ayarlanıyor
-
-### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
-
-Anahtarınızı ve kaynağınızın adını kullanarak kimlik doğrulaması için iki ortam değişkeni oluşturun:
-
-* `LUIS_PREDICTION_KEY`-İsteklerinizin kimliğini doğrulamak için kaynak anahtarı.
-* `LUIS_ENDPOINT_NAME`-Anahtarınızla ilişkili kaynak adı.
-
-İşletim sisteminiz için yönergeleri kullanın.
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_PREDICTION_KEY <replace-with-your-resource-key>
-setx LUIS_ENDPOINT_NAME <replace-with-your-resource-name>
-```
-
-Ortam değişkenini ekledikten sonra konsol penceresini yeniden başlatın.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Hesabınızı `.bash_profile`düzenleyin ve ortam değişkenini ekleyin:
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source .bash_profile` çalıştırın.
-
----
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
 Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), ad `new` `language-understanding-quickstart`ile yeni bir konsol uygulaması oluşturmak için DotNet komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur `Program.cs`:.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `new` ad ile yeni bir konsol uygulaması oluşturmak için DotNet komutunu kullanın `language-understanding-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: `Program.cs` .
 
     ```dotnetcli
     dotnet new console -n language-understanding-quickstart
@@ -100,7 +60,7 @@ Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması olu
     ...
     ```
 
-### <a name="install-the-sdk"></a>SDK yükle
+### <a name="install-the-sdk"></a>SDK Yükleme
 
 Uygulama dizini içinde, aşağıdaki komutla .NET için Language Understanding (LUSıS) tahmin çalışma zamanı istemci Kitaplığı ' nı yüklemelisiniz:
 
@@ -134,13 +94,7 @@ Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-1. Anahtar, ad ve uygulama KIMLIĞI için değişkenler oluşturun:
-
-    Tahmin anahtarınızı yönetmek için bir değişkenler adlı `LUIS_PREDICTION_KEY`bir ortam değişkeninden çekilir. Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, bu değişkeni çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacak.
-
-    Kaynak adınızı `LUIS_ENDPOINT_NAME`tutacak bir değişken oluşturun.
-
-    Uygulama KIMLIĞI için adlı `LUIS_APP_ID`bir ortam değişkeni olarak bir değişken oluşturun. Ortam değişkenini genel IoT uygulamasına ayarlayın:
+1. Anahtar, kaynak adı, uygulama KIMLIĞI ve yayımlama yuvası için değişkenler oluşturun. Uygulama KIMLIĞINI genel IoT uygulamasına ayarlayın:
 
     **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`**
 
@@ -168,7 +122,7 @@ Tahmin sağlamak için değişkenleri ve yöntemleri birbirine bağlamak üzere 
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı uygulama dizininizdeki `dotnet run` komutla çalıştırın.
+Uygulamayı `dotnet run` uygulama dizininizdeki komutla çalıştırın.
 
 ```dotnetcli
 dotnet run

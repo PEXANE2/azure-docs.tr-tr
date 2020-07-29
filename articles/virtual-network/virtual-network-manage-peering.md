@@ -1,6 +1,6 @@
 ---
 title: Azure sanal ağ eşlemesi oluşturma, değiştirme veya silme | Microsoft Docs
-description: Sanal ağ eşlemesi oluşturmayı, değiştirmeyi veya silmeyi öğrenin.
+description: Sanal ağ eşlemesi oluşturun, değiştirin veya silin. Sanal ağ eşlemesi ile, sanal ağları aynı bölgedeki ve bölgeler arasında bağlanırsınız.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: d38b164e95b1791971f88f62e7eccfee8a59bd71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711111"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291866"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Sanal ağ eşlemesi oluşturma, değiştirme veya silme
 
@@ -45,7 +46,7 @@ Eşleme oluşturmadan önce, gereksinimler ve kısıtlamalar ve [gerekli izinler
 1. Azure portal üst kısmındaki arama kutusuna, arama kutusuna *sanal ağlar* girin. Arama sonuçlarında **sanal ağlar** görüntülendiğinde, bunu seçin. Listede görünürse **sanal ağları (klasik)** seçmeyin, ancak klasik dağıtım modeliyle dağıtılan bir sanal ağdan eşleme oluşturamazsınız.
 2. Eşleme oluşturmak istediğiniz sanal ağı listeden seçin.
 3. **Ayarlar**altında, eşlemeler ' **i seçin.**
-4. **+ Ekle** öğesini seçin. 
+4. **+ Ekle**'yi seçin. 
 5. <a name="add-peering"></a>Aşağıdaki ayarlar için değerleri girin veya seçin:
     - **Ad:** Eşleme adı, sanal ağ içinde benzersiz olmalıdır.
     - **Sanal ağ dağıtım modeli:** Sahip olduğunuz sanal ağın hangi dağıtım modeline dağıtıldığını seçin.
@@ -145,7 +146,7 @@ Sanal ağ eşlemesi ile çalışmak için kullandığınız hesapların aşağı
 
 Hesabınız önceki rollerden birine atanmamışsa, aşağıdaki tablodan gerekli eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
 
-| Eylem                                                          | Name |
+| Eylem                                                          | Ad |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | A ile sanal ağ B 'ye bir eşleme oluşturmak için gereklidir. sanal ağ A 'nın sanal ağ olması gerekir (Kaynak Yöneticisi)          |
 | Microsoft. Network/virtualNetworks/eş/eylem                   | B (Kaynak Yöneticisi) sanal ağından A sanal ağına eşleme oluşturmak için gereklidir                                                       |

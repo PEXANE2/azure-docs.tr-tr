@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539338"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318326"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights depolanan kişisel verilere yönelik kılavuz
 
@@ -48,7 +48,7 @@ Log Analytics, verilerinize bir şemayı etkilemeden, her alanı özel değerler
     ```
   Yalnızca insan tarafından okunabilen kullanıcı adlarına değil, ayrıca doğrudan belirli bir kullanıcıya geri görünebilirler.
 * *Cihaz kimlikleri*: Kullanıcı kimlikleri gibi, cihaz kimlikleri bazen "özel" olarak kabul edilir. Bunun sorun olabileceği tabloları belirlemek için Kullanıcı kimlikleri için yukarıda listelenen yaklaşımı kullanın. 
-* *Özel veriler*: Log Analytics, koleksiyonu çeşitli yöntemlerle sağlar: özel Günlükler ve özel alanlar, [http veri toplayıcı API 'si](../../azure-monitor/platform/data-collector-api.md) ve sistem olay günlüklerinin bir parçası olarak toplanan özel veriler. Bunların tümü özel verileri içerecek şekilde açıktır ve bu tür verilerin mevcut olup olmadığını doğrulamak için incelenmelidir.
+* *Özel veriler*: Log Analytics, koleksiyonu çeşitli yöntemlerle sağlar: özel Günlükler ve özel alanlar, [http veri toplayıcı API 'si](./data-collector-api.md) ve sistem olay günlüklerinin bir parçası olarak toplanan özel veriler. Bunların tümü özel verileri içerecek şekilde açıktır ve bu tür verilerin mevcut olup olmadığını doğrulamak için incelenmelidir.
 * *Çözüm-yakalanan veriler*: çözüm mekanizması bir açık sonlandırdığı için, uyumluluk sağlamak için çözümler tarafından oluşturulan tüm tabloları gözden geçirmeyi öneririz.
 
 ### <a name="application-data"></a>Uygulama verileri
@@ -102,7 +102,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="log-data"></a>Günlük verileri
 
 * [Temizleme sonrası](/rest/api/loganalytics/workspacepurge/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür 
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -114,7 +114,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="application-data"></a>Uygulama verileri
 
 * [Temizleme sonrası](/rest/api/application-insights/components/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01
@@ -124,5 +124,6 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 >  Temizleme işlemlerinin büyük çoğunluğu SLA 'dan çok daha hızlı tamamlanabilir, çünkü Application Insights tarafından kullanılan veri platformunda ağır etkileri nedeniyle, **Temizleme işlemlerinin tamamlanmasına yönelik resmi SLA 'sı 30 gün olarak ayarlanır**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Log Analytics verilerinin nasıl toplandığı, işlendiği ve güvenliğinin sağlandığı hakkında daha fazla bilgi edinmek için bkz. [Log Analytics veri güvenliği](../../azure-monitor/platform/data-security.md).
-- Application Insights verilerinin nasıl toplandığı, işlendiği ve güvenliğinin sağlandığı hakkında daha fazla bilgi edinmek için bkz. [Application Insights veri güvenliği](../../azure-monitor/app/data-retention-privacy.md).
+- Log Analytics verilerinin nasıl toplandığı, işlendiği ve güvenliğinin sağlandığı hakkında daha fazla bilgi edinmek için bkz. [Log Analytics veri güvenliği](./data-security.md).
+- Application Insights verilerinin nasıl toplandığı, işlendiği ve güvenliğinin sağlandığı hakkında daha fazla bilgi edinmek için bkz. [Application Insights veri güvenliği](../app/data-retention-privacy.md).
+

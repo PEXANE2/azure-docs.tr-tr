@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcd73a5bb6de162fc258d93398b7d00044429588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100522"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289934"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamını tanılama ve sorun giderme
 
@@ -121,7 +121,7 @@ Zaman damgası özelliği açıkça belirtilmemişse, varsayılan zaman damgası
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>Sorun: Gen2 Explorer 'daki tüm örneklerim üst öğeye sahip değil
 
-Ortamınızda tanımlı bir zaman serisi model hiyerarşisi yoksa bu sorun oluşabilir. Daha fazla bilgi için [zaman serisi modelleriyle çalışma](./time-series-insights-update-how-to-tsm.md)hakkında bilgi edinin.
+Ortamınızda tanımlı bir zaman serisi model hiyerarşisi yoksa bu sorun oluşabilir. Daha fazla bilgi için [zaman serisi modelleriyle çalışma](/azure/time-series-insights/time-series-insights-overview)hakkında bilgi edinin.
 
   [![Üst öğe olmayan örnekler bir uyarı görüntüler.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,7 +135,7 @@ Power BI Desktop içinde Power BI bağlayıcısının en son sürümünü kullan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Zaman serisi modelleriyle çalışma](./time-series-insights-update-how-to-tsm.md)hakkında bilgi edinin.
+- [Zaman serisi modelleriyle çalışma](/azure/time-series-insights/time-series-insights-overview)hakkında bilgi edinin.
 
 - [Desteklenen JSON şekilleri](./how-to-shape-query-json.md)hakkında bilgi edinin.
 

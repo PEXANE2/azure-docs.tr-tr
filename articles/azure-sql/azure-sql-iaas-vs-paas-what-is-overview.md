@@ -12,13 +12,13 @@ keywords: SQL Server bulut, bulutta SQL Server, PaaS veritabanı, bulut SQL Serv
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/27/2020
-ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/27/2020
+ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080185"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280860"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL nedir? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -110,7 +110,7 @@ Genel olarak, SQL veritabanı ve SQL yönetilen örneği, tek bir BT veya geliş
 | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
 | :--- | :--- | :--- |
 |, Çoğu şirket içi veritabanı düzeyi özelliği destekler. En yaygın olarak kullanılan SQL Server özellikleri mevcuttur.<br/>% 99,995 kullanılabilirlik garanti edilir.<br/>Yerleşik yedeklemeler, düzeltme eki uygulama.<br/>En son kararlı veritabanı altyapısı sürümü.<br/>Gerekli kaynakları (CPU/depolama) ayrı veritabanlarına atama özelliği.<br/>Yerleşik Gelişmiş zeka ve güvenlik.<br/>Kaynakların çevrimiçi değişikliği (CPU/depolama).| Neredeyse tüm şirket içi örnek düzeyinde ve veritabanı düzeyinde özellikleri destekler. SQL Server ile yüksek uyumluluk.<br/>% 99,99 kullanılabilirlik garanti edilir.<br/>Yerleşik yedeklemeler, düzeltme eki uygulama.<br/>En son kararlı veritabanı altyapısı sürümü.<br/>SQL Server 'den kolay geçiş.<br/>Azure sanal ağı içindeki özel IP adresi.<br/>Yerleşik Gelişmiş zeka ve güvenlik.<br/>Kaynakların çevrimiçi değişikliği (CPU/depolama).| SQL Server altyapısı üzerinde tam denetiminiz vardır. Tüm şirket içi özellikleri destekler.<br/>% 99,99 ' e kadar kullanılabilirlik.<br/>Şirket içi SQL Server eşleşen sürümüyle tam eşlik.<br/>Sabit, iyi bilinen Veritabanı Altyapısı sürümü.<br/>SQL Server 'den kolay geçiş.<br/>Azure sanal ağı içindeki özel IP adresi.<br/>SQL Server yerleştirildiği konakta uygulama veya hizmet dağıtma olanağınız vardır.|
-|SQL Server geçiş zor olabilir.<br/>Bazı SQL Server özellikleri kullanılamaz.<br/>Garanti eden tam bakım süresi (ancak neredeyse saydam).<br/>SQL Server sürümle uyumluluk, yalnızca veritabanı uyumluluk düzeyleri kullanılarak sağlanabilir.<br/>Özel IP adresi atanamıyor (güvenlik duvarı kurallarını kullanarak erişimi sınırlayabilirsiniz).|Kullanılabilir olmayan en az sayıda SQL Server özelliği hala vardır.<br/>Garanti eden tam bakım süresi (ancak neredeyse saydam).<br/>SQL Server sürümle uyumluluk, yalnızca veritabanı uyumluluk düzeyleri kullanılarak sağlanabilir.|Yedeklemelerinizi ve düzeltme eklerini yönetmeniz gerekir.<br>Kendi yüksek kullanılabilirlik çözümünüzü uygulamanız gerekir.<br/>Kaynakları değiştirirken kapalı kalma süresi var (CPU/depolama)|
+|SQL Server geçiş zor olabilir.<br/>Bazı SQL Server özellikleri kullanılamaz.<br/>Garanti eden tam bakım süresi (ancak neredeyse saydam).<br/>SQL Server sürümle uyumluluk, yalnızca veritabanı uyumluluk düzeyleri kullanılarak sağlanabilir.<br/>[Azure özel bağlantısı](database/private-endpoint-overview.md)Ile özel IP adresi desteği.|Kullanılabilir olmayan en az sayıda SQL Server özelliği hala vardır.<br/>Garanti eden tam bakım süresi (ancak neredeyse saydam).<br/>SQL Server sürümle uyumluluk, yalnızca veritabanı uyumluluk düzeyleri kullanılarak sağlanabilir.|Yedeklemelerinizi ve düzeltme eklerini yönetmeniz gerekir.<br>Kendi yüksek kullanılabilirlik çözümünüzü uygulamanız gerekir.<br/>Kaynakları değiştirirken kapalı kalma süresi var (CPU/depolama)|
 | 100 TB 'a kadar veritabanları. | 8 TB 'a kadar. | 256 TB depolama alanına kadar örnek SQL Server. Örnek gereken sayıda veritabanını destekleyebilir. |
 | Şirket içi uygulama, Azure SQL veritabanı 'ndaki verilere erişebilir. | Azure Express Route veya VPN Gateway kullanarak şirket içi ortamınıza [yerel sanal ağ uygulama](managed-instance/vnet-existing-add-subnet.md) ve bağlantı. | SQL sanal makineler ile kısmen bulutta ve kısmen şirket içinde çalışan uygulamalarınız olabilir. Örneğin, şirket içi ağınızı ve Active Directory Etki Alanı'nı [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) üzerinden buluta genişletebilirsiniz. Karma bulut çözümleri hakkında daha fazla bilgi için bkz. [Şirket içi veri çözümlerini buluta genişletme](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 

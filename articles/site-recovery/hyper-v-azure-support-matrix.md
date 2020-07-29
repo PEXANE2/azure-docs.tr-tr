@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 465b0ca3fdc5dd96b03ec7ab53bf453c4cdc083d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 268d8f3b43809e02476757cfe36b1ee52d4eaef1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086175"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317493"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -32,13 +32,11 @@ Virtual Machine Manager olmadan Hyper-V | Virtual Machine Manager tarafından y�
 
 **Sunucu** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager olmadan çalışıyor) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 en son güncelleştirmeleri (Bu işletim sistemlerinin sunucu çekirdeği yüklemesi dahil, Windows Server 2019 hariç) | Azure Site Recovery ile Windows Server 2012 R2 'yi/veya SCVMM 2012 R2 'yi zaten yapılandırdıysanız ve işletim sistemini yükseltmeyi planlarsanız, lütfen rehberlik [belgelerini izleyin.](upgrade-2012R2-to-2016.md)
+Hyper-V (Virtual Machine Manager olmadan çalışıyor) |  Windows Server 2019, Windows Server 2016, en son güncelleştirmeleri olan Windows Server 2012 R2 (Bu işletim sistemlerinin sunucu çekirdeği yüklemesi dahil) | Azure Site Recovery ile Windows Server 2012 R2 'yi/veya SCVMM 2012 R2 'yi zaten yapılandırdıysanız ve işletim sistemini yükseltmeyi planlarsanız, lütfen rehberlik [belgelerini izleyin.](upgrade-2012R2-to-2016.md)
 Hyper-V (Virtual Machine Manager ile çalışıyor) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (Bu işletim sistemlerinin sunucu çekirdeği yüklemesi dahil, Virtual Machine Manager 2019 dışında) | Virtual Machine Manager kullanılırsa, Windows Server 2019 Konakları Virtual Machine Manager 2019 ' de yönetilmelidir. Benzer şekilde, Windows Server 2016 Konakları Virtual Machine Manager 2016 ' de yönetilmelidir.
 
 > [!NOTE]
->
-> - Şirket içi sunucuda .NET Framework 4.6.2 veya üzeri bulunduğundan emin olun.
-> - Windows Server 2019 Server Core sürümünde veya Virtual Machine Manager olmadan çalışan alternatif konuma veya özgün konuma yük devretme ve yeniden çalışma desteklenmez.
+> Şirket içi sunucuda .NET Framework 4.6.2 veya üzeri bulunduğundan emin olun.
 
 ## <a name="replicated-vms"></a>Çoğaltılan VM 'Ler
 

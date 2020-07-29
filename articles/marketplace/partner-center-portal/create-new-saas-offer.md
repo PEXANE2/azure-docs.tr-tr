@@ -5,16 +5,21 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2c5394dce503a6fa00e2a3e6ff73a683d3d2e76f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 61592ee8ad5991c9540f5b418cafe2441ab4d3ea
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012102"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317748"
 ---
 # <a name="create-a-saas-offer"></a>SaaS teklifi oluşturma
 
 Ticari Market 'te hizmet olarak yazılım (SaaS) teklifi oluşturmaya başlamak için, önce [bir Iş Ortağı Merkezi hesabı](./create-account.md) oluşturduğunuzdan ve **genel bakış** sekmesi seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açın.
+
+> [!NOTE]
+> Transactable SaaS teklifi oluşturuyorsanız lütfen [SaaS sağlama API 'leri](./pc-saas-fulfillment-apis.md)ile tümleştirmeyi uyguladığınızdan emin olun.  Bu API 'lerle tümleştirme, Market 'teki transactability 'ın düzgün şekilde çalışması için tek yoldur. Ayrıca, uygulamanızın çoklu oturum açma (SSO) ile Azure AD kimlik doğrulaması kullandığından emin olmanız gerekir. Bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](../azure-ad-saas.md).
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
@@ -40,10 +45,6 @@ Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kull
 - Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
 - Teklif diğer adı, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-<!---
-![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
--->
-
 Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 ## <a name="offer-overview"></a>Teklifin genel bakış
@@ -62,8 +63,8 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 Bu sayfa aşağıdaki bilgileri ister.
 
 - **Microsoft üzerinden satımek istiyor musunuz?** (Evet/Hayır)
-    - **Evet**, Microsoft 'tan satış yapmak ve Microsoft ana bilgisayar işlemlerini benim yerime almak istiyorum
-    - **Hayır**, yalnızca Pazar yerleri aracılığıyla teklifimi listelemek ve işlemleri bağımsız olarak işlemek tercih ediyorum.
+  - **Evet**, Microsoft 'tan satış yapmak ve Microsoft ana bilgisayar işlemlerini benim yerime almak istiyorum
+  - **Hayır**, yalnızca Pazar yerleri aracılığıyla teklifimi listelemek ve işlemleri bağımsız olarak işlemek tercih ediyorum.
 
 ### <a name="sell-through-microsoft"></a>Microsoft ile satış
 
@@ -102,8 +103,6 @@ Bu, bir ücret modelini (listelenen tüm fiyatlar yalnızca örnek amaçlıdır 
 
 Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un doğrudan yazılım lisans işlemlerine katılmayacağı, teklifinizi yalnızca bir şekilde listelemek için seçin. İlişkili bir işlem ücreti yoktur ve Yayımcı, müşteriden toplanan tüm yazılım lisanslama ücretlerine %100 oranında devam eder. Ancak yayımcı, yazılım lisans işleminin, bunlarla sınırlı olmamak üzere tüm yönlerini desteklemekten sorumludur: sipariş karşılama, ölçüm, faturalandırma, faturalama, ödeme ve koleksiyon.
 
-<!-- - **How do you want potential customers to interact with this listing offer?** -->
-
 #### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
 
 [Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)aracılığıyla deneme süresi sunabileceği geçerli bir adres ( *http* veya *https*ile başlayarak) sunmak için müşterilerinizin teklifinizi ücretsiz olarak listeleyin. Örneğin, `https://contoso.com/saas-app`.
@@ -120,8 +119,6 @@ Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un
 Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [müşteri adayları](#customer-leads).
 
 #### <a name="example-marketplace-offer-listing"></a>Örnek market teklifi listesi
-
-<!-- ![Example marketplace offer listing with notes](./media/marketplace-offer.svg) -->
 
 Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
@@ -278,19 +275,19 @@ Bu alan gereklidir.
 
 - **Kişiler** – her müşteri kişisi için, bir çalışan **adı**, **telefon numarası**ve **e-posta** adresi sağlayın ( *bunlar genel olarak gösterilmez* ). **Destek kişi** grubu Için bir **Destek URL 'si** gereklidir (Bu, herkese açık *şekilde görüntülenecektir)* .
 
-    - **Destek kişisi** (gerekli) – genel destek soruları için.
-    - **Mühendislik ilgili kişisi** (gerekli) – Teknik sorular için.
-    - CSP programıyla ilgili satıcı soruları Için **Channel Manager ile iletişim** (gerekli).
+  - **Destek kişisi** (gerekli) – genel destek soruları için.
+  - **Mühendislik ilgili kişisi** (gerekli) – Teknik sorular için.
+  - CSP programıyla ilgili satıcı soruları Için **Channel Manager ile iletişim** (gerekli).
 
 #### <a name="files-and-images"></a>Dosyalar ve görüntüler
 
 - **Belgeler** (gerekli) – Teklifinizle ilgili pazarlama belgelerini, en az bir ve teklif başına üç adede kadar belgeyi PDF biçiminde ekleyin.
 - **Görüntüler** (isteğe bağlı): teklifinizin logo görüntülerinin Market genelinde GÖRÜNEBILECEĞI, PNG biçiminde aşağıdaki piksel boyutlarını gerektiren birden çok yer vardır:
 
-    - **Küçük** (48 x 48, gereklidir)
-    - **Orta** (90 x 90, gereklidir)
-    - **Büyük** (216 x 216, gereklidir)
-    - **Geniş** (255 x 115)
+  - **Küçük** (48 x 48, gereklidir)
+  - **Orta** (90 x 90, gereklidir)
+  - **Büyük** (216 x 216, gereklidir)
+  - **Geniş** (255 x 115)
 
 - **Ekran görüntüleri** (gerekli) – teklifinizi gösteren en fazla beş ekran görüntüsü ekleyin, 1280 x 720 piksel boyutunda. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
 - **Videolar** (isteğe bağlı) – teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.
@@ -322,32 +319,32 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="technical-configuration"></a>Teknik yapılandırma
 
-**Teknik yapılandırma** sekmesi, Market tarafından SaaS hizmetinize iletişim kurmak için kullanılan teknik ayrıntıları tanımlar. Bu bağlantı, teklifi edinmeyi ve yönetmeyi tercih ettiklerinde, son müşteri için teklifinizi sağlamamızı sağlar. 
+**Teknik yapılandırma** sekmesi, Market tarafından SaaS hizmetinize iletişim kurmak için kullanılan teknik ayrıntıları tanımlar. Bu bağlantı, teklifi edinmeyi ve yönetmeyi tercih ettiklerinde, son müşteri için teklifinizi sağlamamızı sağlar.
 
->[!Note]
->Teklif ayrıntılarında bu ayrıntıları yapılandırmadan önce [SaaS API 'leri](./pc-saas-fulfillment-api-v2.md) ile tümleştirme uygulamanız gerekir.
+>[!NOTE]
+>Teklif ayrıntılarında bu ayrıntıları yapılandırmadan önce [SaaS API 'leri](./pc-saas-fulfillment-api-v2.md) ile tümleştirme uygulamanız gerekir. Ayrıca, bir giriş sayfası oluşturmanız gerekir ve uygulamanızın çoklu oturum açma (SSO) ile Azure AD kimlik doğrulaması kullanması gerekir. Daha fazla bilgi için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](../azure-ad-saas.md).
 
 Toplanan alanların kullanımını açıklayan diyagramlar ve ayrıntılı açıklamalar [API 'ler](./pc-saas-fulfillment-api-v2.md)için belgelerde bulunur.
 
 - **Giriş sayfası URL 'si** (gerekli) – `https://contoso.com/signup` son müşterilerin, marketten teklifinizi aldıktan sonra ve yeni oluşturulan SaaS aboneliğinden yapılandırma işlemini tetikleyerek, SaaS site URL 'sini (örneğin:) tanımlayın.  Bu URL, belirli bir son müşterinin SaaS satın alımını benzersiz bir şekilde tanımlayan Market satın alma tanımlama belirteci parametresi ile çağırılır.  Bu belirteci, [Çözümle](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) API 'sini kullanarak ilgili SaaS aboneliği ayrıntıları için değiş tokuş etmeniz gerekir.  Bu ayrıntılar ve toplamak istediğiniz tüm diğerleri, son müşteri kaydını tamamlamaya ve satın alımlarını etkinleştirmeye yönelik deneyiminizle oluşturulmuş bir müşteri etkileşimli Web sayfasının bir parçası olarak kullanılmalıdır.  Bu sayfada, Kullanıcı Azure Active Directory (Azure AD) kullanarak tek tıklamalı kimlik doğrulama aracılığıyla kaydolmalıdır. <br> <br> Market satın alma tanımlama belirteci parametresi ile bu URL, son müşteri Azure portal veya M365 yönetim merkezinden yönetilen SaaS deneyimini başlattığında de çağrılır. Belirtecin yeni müşteriler için satın alındıktan sonra ilk kez sağlandığı ve SaaS 'yi yöneten mevcut müşteri için sağlanışında her iki akışı da işlemeniz gerekir. <br> <br> Burada yapılandırdığınız giriş sayfası, 24/7 olmalıdır ve çalışıyor olmalıdır. Bu, Market 'te yapılan SaaS tekliflerinizin yeni satınalmaları veya bir teklifin etkin bir aboneliğinin yapılandırma istekleri hakkında size bildirilecek tek yoldur.
 
-- **Bağlantı Web kancası** (gerekli) – Microsoft 'un size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örneğin, SaaS aboneliği iptal edildi), bir bağlantı Web kancası URL 'si sağlamanızı istiyoruz. Bu URL 'YI olay üzerinde bilgilendirmek için çağıracağız. <br> <br> Sağladığınız Web kancası, Market aracılığıyla satın alınan müşterilerinizin SaaS abonelik24/7 leriyle ilgili güncelleştirmeler hakkında bildirim almanız gereken tek yoldur. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde (örneğin,) işleymeyecektir `https://prod-1westus.logic.azure.com:443/work` . Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](../../logic-apps/logic-apps-http-endpoint.md).
+- **Bağlantı Web kancası** (gerekli) – Microsoft 'un size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örneğin, SaaS aboneliği iptal edildi), bir bağlantı Web kancası URL 'si sağlamanızı istiyoruz. Bu URL 'YI olay üzerinde bilgilendirmek için çağıracağız. <br> <br> Sağladığınız Web kancası, Market aracılığıyla satın alınan müşterilerinizin SaaS abonelik24/7 leriyle ilgili güncelleştirmeler hakkında bildirim almanız gereken tek yoldur.  Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde (örneğin,) işleymeyecektir `https://prod-1westus.logic.azure.com:443/work` . Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](../../logic-apps/logic-apps-http-endpoint.md).
 
 - **Azure AD KIRACı kimliği** (gerekli) – Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](../../active-directory/develop/howto-create-service-principal-portal.md) gerekir. [KIRACı kimliğini](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)bulmak için) Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
 
 - **Azure AD uygulama kimliği** (gerekli) – Ayrıca [Uygulama Kimliğiniz](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)gerekir). Değerini almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, sonra LISTELENEN **uygulama kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
 
->[!Note]
->Azure AD uygulama KIMLIĞI, Iş Ortağı Merkezi hesabınızdaki yayımcı KIMLIĞINIZLE ilişkilidir. Tüm tekliflerinizin içindeki aynı uygulama KIMLIĞINI kullandığınızdan emin olun.
+>[!NOTE]
+>Azure AD uygulama KIMLIĞI, Iş Ortağı Merkezi hesabınızdaki yayımcı KIMLIĞINIZLE ilişkilidir.  Tüm tekliflerinizi aynı uygulama KIMLIĞININ kullanıldığından emin olun.
 
->[!Note]
+>[!NOTE]
 >Yayımcının Iş Ortağı Merkezi 'nde iki veya daha fazla farklı hesabı varsa, her biri hesaplarından biri için iki veya daha fazla farklı Azure AD uygulama kimliği kullanılmalıdır. Iş Ortağı Merkezi 'ndeki her iş ortağı hesabı, bu hesap aracılığıyla yayınlanan tüm SaaS teklifleri için benzersiz Azure AD uygulama KIMLIĞI kullanmalıdır.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="plan-overview"></a>Plana genel bakış
 
-Bu sayfa, aynı teklif dahilinde çeşitli plan seçenekleri sağlamanıza olanak tanır. Bu planlar (eski adıyla SKU 'Lar) sürüm, para veya hizmet katmanları bakımından farklılık gösterebilir. Teklifinizi Market 'te satmak için en az bir plan ayarlamanız gerekir.
+Bu sayfa, aynı teklif dahilinde çeşitli plan seçenekleri sağlamanıza olanak tanır. Bu planlar (bazen SKU 'Lar olarak adlandırılır) sürüm, para veya hizmet katmanları bakımından farklılık gösterebilir. Teklifinizin Market 'te satılabilir olması için en az bir plan ayarlamanız gerekir.
 
 Oluşturulduktan sonra plan adlarınızı, kimlikleri, fiyatlandırma modellerini, kullanılabilirliği (genel veya özel), geçerli yayımlama durumunu ve kullanılabilir eylemleri görürsünüz.
 
@@ -380,7 +377,7 @@ Bu sayfa, bu planın kullanılabileceği pazarları, istenen ödeme modeli, Fiya
 
 #### <a name="markets-optional"></a>Pazarlar (isteğe bağlı)
 
-Her plan en az bir pazarda kullanılabilir olmalıdır. **Pazarları Düzenle** ' yi seçin ve bu planı kullanılabilir yapmak istediğiniz herhangi bir pazar konumunun onay kutusunu seçin. Bu sayfa, Microsoft remits Sales ve sizin adınıza kullanım vergisini sunan ["vergi havalesi" ülkeleri/bölgeleri](tax-details-paid-transactions.md)seçmek için bir arama kutusu ve seçeneği içerir.
+Her plan en az bir pazarda kullanılabilir olmalıdır. **Pazarları Düzenle** ' yi seçin ve bu planı kullanılabilir yapmak istediğiniz herhangi bir pazar konumunun onay kutusunu seçin. Bu sayfa, Microsoft remits Sales ve sizin adınıza kullanım vergisini sunan "vergi havalesi" ülkeleri/bölgeleri seçmek için bir arama kutusu ve seçeneği içerir.
 
 Planınız için Birleşik Devletler dolar (USD) cinsinden zaten fiyatlar ayarladıysanız ve başka bir pazar konumu eklerseniz, yeni pazar fiyatı geçerli döviz kurlarına göre hesaplanır. Yayımlamadan önce her bir pazar için fiyatı gözden geçirin. Değişikliklerinizi kaydettikten sonra "fiyatları dışarı aktar (xlsx)" bağlantısını kullanarak fiyatlandırmayı görüntüleyin.
 
@@ -462,8 +459,6 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 1. Plan adı
 2. Plan açıklaması
 
-<br>
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Bulut çözümü sağlayıcısı (CSP) satıcı hedef kitlesi
 
 , Teklifinizin CSP programında kullanılabilmesini sağlamak için, bulut çözümü sağlayıcılarının, müşterilerine paketlenmiş bir çözümün parçası olarak ürününüzü satmasına olanak sağlar. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcıları](https://go.microsoft.com/fwlink/?linkid=2111109).
@@ -477,12 +472,12 @@ Teklifin tüm gerekli bölümlerini tamamladıktan sonra, portalın sağ üst k�
 Bu teklifi ilk kez yayınlıyorsanız, şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
-    - **Başlatılmamış** – bölüm dokunulmamış ve tamamlanması gerekiyor.
-    - **Tamamlanmamış** – bölümde düzeltilmesi gereken hatalar var veya daha fazla bilgi sağlanması gerekiyor. Bölümüne dönüp güncelleştirmeniz gerekir.
-    - **Tamamlandı** – bölüm tamamlandı, tüm gerekli veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
+  - **Başlatılmamış** – bölüm dokunulmamış ve tamamlanması gerekiyor.
+  - **Tamamlanmamış** – bölümde düzeltilmesi gereken hatalar var veya daha fazla bilgi sağlanması gerekiyor. Bölümüne dönüp güncelleştirmeniz gerekir.
+  - **Tamamlandı** – bölüm tamamlandı, tüm gerekli veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - Uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
 - **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Iş Ortağı Merkezi ' ne dönün ve teklifinizi herkese açık (veya özel bir teklif olarak özel hedef kitleye) yayımlamak için **Go-Live** ' ı seçin.
 
-## <a name="next-step"></a>Sonraki adım
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ticari Market'te bulunan bir teklifi güncelleştirme](./update-existing-offer.md)

@@ -1,6 +1,5 @@
 ---
-title: Not defterlerini indirme (Önizleme) verileri
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): not defterlerini indirme (Önizleme) verileri-Azure'
 description: ML Studio (klasik) içinde Not defteri (Önizleme) verileri nasıl indirilir.
 ms.service: machine-learning
 ms.subservice: studio
@@ -8,14 +7,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc12204c5eabf857fd1143e71df9b2b505d88a23
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208474"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318666"
 ---
 # <a name="download-notebookspreview-data"></a>Not defterlerini indir (Önizleme) verileri
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
 
 Not defterleri (Önizleme) özelliği *13 2020 Nisan*'da kaldırılmıştır. Not defterleri (Önizleme) sekmesini ve Kullanıcı Not defteri dosyalarını kaldırma işlemi şu anda dünya çapındaki Azure bölgelerine kullanıma sunuldu.
 

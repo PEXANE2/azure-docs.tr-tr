@@ -1,6 +1,6 @@
 ---
 title: Azure sanal ağ kapsayıcı ağı dağıtma | Microsoft Docs
-description: Kendi dağıttığınız ve ACS-Engine kullanarak dağıttığınız Kubernetes kümelerine ek olarak Docker kapsayıcıları için Azure Sanal Ağ kapsayıcı ağı arabirimi (CNI) eklentisini dağıtmayı öğrenin.
+description: Kubernetes kümeleri için Azure sanal ağ kapsayıcısı ağ arabirimi (CNı) eklentisini dağıtmayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710023"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289598"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Sanal Ağ kapsayıcı ağı arabirimi eklentisini dağıtma
 

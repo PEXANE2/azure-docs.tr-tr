@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c86b21c5e0533ab6a1a3c64dc601eb8bb573547
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83651848"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318105"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure İzleyici'de Active Directory Sistem Durumu Denetimi çözümüyle Active Directory ortamınızı iyileştirme
 
@@ -32,7 +33,7 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 ![AD sistem durumu denetimi panosunun görüntüsü](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Active Directory sistem durumu denetimi çözümü, Windows için Log Analytics aracısına sahip olan (Microsoft Monitoring Agent (MMA) olarak da bilinir) yüklü .NET Framework 4.6.2 veya üzeri bir sürümü gerektirir.  Aracı System Center 2016-Operations Manager, Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.
 * Bu çözüm, Windows Server 2008 ve 2008 R2, Windows Server 2012 ve 2012 R2, Windows Server 2016 ve Windows Server 2019 çalıştıran etki alanı denetleyicilerini destekler.
@@ -45,9 +46,9 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 Değerlendirilecek etki alanının üyesi olan etki alanı denetleyicileriniz için sistem durumu denetimini gerçekleştirmek üzere, bu etki alanındaki her etki alanı denetleyicisi, aşağıdaki desteklenen yöntemlerden birini kullanarak bir aracı ve Azure Izleyici bağlantısı gerektirir:
 
-1. Etki alanı denetleyicisi System Center 2016-Operations Manager veya Operations Manager 2012 R2 tarafından zaten izlenmediği takdirde [Windows için Log Analytics aracısını](../../azure-monitor/platform/agent-windows.md) yükler.
+1. Etki alanı denetleyicisi System Center 2016-Operations Manager veya Operations Manager 2012 R2 tarafından zaten izlenmediği takdirde [Windows için Log Analytics aracısını](../platform/agent-windows.md) yükler.
 2. System Center 2016-Operations Manager veya Operations Manager 2012 R2 ile izleniyorsa ve yönetim grubu Azure Izleyici ile tümleşikse, etki alanı denetleyicisi, verileri toplamak ve hizmete iletmek için Azure Izleyici ile çok daha fazla erişilebilir olabilir ve yine de Operations Manager tarafından izlenebilir.  
-3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çalışma alanınızda çözümü etkinleştirdikten sonra [aracıyla yönetilen bilgisayarlar ekleme](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) bölümündeki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir.  
+3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çalışma alanınızda çözümü etkinleştirdikten sonra [aracıyla yönetilen bilgisayarlar ekleme](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) bölümündeki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir.  
 
 Etki alanı denetleyicinizde bir Operations Manager yönetim grubuna rapor veren, verileri toplayan, atanan yönetim sunucusuna ileten ve sonra doğrudan bir yönetim sunucusundan Azure Izleyici 'ye gönderilen aracı.  Veriler Operations Manager veritabanlarına yazılmaz.  
 
@@ -215,3 +216,4 @@ Daha sonra sonuçlar daha fazla gözden geçirilmek üzere Excel 'e aktarılabil
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ayrıntılı AD sistem durumu denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [Azure izleyici günlük sorgularını](../log-query/log-query-overview.md) kullanın.
+

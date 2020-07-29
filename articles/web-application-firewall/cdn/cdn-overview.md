@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d56c57a12995e0ea94c10f371bf09a3b3f9733ba
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80754287"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278633"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Content Delivery Network Azure Web uygulaması güvenlik duvarı
 
@@ -45,7 +45,7 @@ Azure CDN barındırılan bir Web uygulamasının aynı anda kendisiyle ilişkil
 
 WAF ilkesi aşağıdaki iki modda çalışacak şekilde yapılandırılabilir:
 
-- *Algılama modu*: algılama modunda çalıştırıldığında WAF, izleyicileri dışında başka bir eylem almaz ve isteği ve eşleşen WAF KURALıNı WAF günlüklerine kaydeder. Ön kapı için günlüğü tanılamayı açabilirsiniz. Portalı kullandığınızda **Tanılama** bölümüne gidin.
+- *Algılama modu*: algılama modunda çalıştırıldığında WAF, izleyicileri dışında başka bir eylem almaz ve isteği ve eşleşen WAF KURALıNı WAF günlüklerine kaydeder. CDN için günlük tanılamayı açabilir. Portalı kullandığınızda **Tanılama** bölümüne gidin.
 
 - *Önleme modu*: önleme modunda, bir istek bir kuralla eşleşiyorsa, WAF belirtilen eylemi alır. Bir eşleşme bulunursa, daha düşük önceliğe sahip başka hiçbir kural değerlendirilmez. Tüm eşleşen istekler de WAF günlüklerine kaydedilir.
 

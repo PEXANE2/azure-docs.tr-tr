@@ -1,6 +1,5 @@
 ---
-title: Verilerinizi dışarı ve silme
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): verilerinizi dışarı aktarma & silme-Azure'
 description: Azure Machine Learning Studio (klasik) tarafından depolanan ürün içi veriler, Azure portal ve ayrıca kimliği doğrulanmış REST API 'Leri aracılığıyla dışarı ve silme için kullanılabilir. Telemetri verilerine Azure Gizlilik portalı üzerinden erişilebilir. Bu makalede nasıl yapılacağı gösterilir.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 9f623357dfbc8fab8a2967df65cc53abc4bc9d57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fd0fb62b2a94667620904a070e386256b8e321c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696142"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318581"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio ürün içi kullanıcı verilerini dışa aktarma ve silme (klasik)
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 

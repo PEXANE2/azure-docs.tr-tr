@@ -3,12 +3,12 @@ title: Azure Cloud Services için Application Insights | Microsoft Docs
 description: Application Insights ile web ve çalışan rollerinizi etkili bir şekilde izleyin
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2adcdcdc36fdd41b1f871acbea386beb1d7a9451
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075424"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318445"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../platform/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
@@ -31,9 +31,9 @@ Bu seçenek, uygulamanızı çalışma zamanında gererken, Web rolünüzde iste
 
 İhtiyacınız olan bu seçenek varsa, işiniz bitti demektir. 
 
-Sonraki adımlarınız, [verileri analiz ile sorgulayarak](../log-query/log-query-overview.md) [uygulamanızdaki ölçümleri görüntülüyor](../../azure-monitor/platform/metrics-charts.md). 
+Sonraki adımlarınız, [verileri analiz ile sorgulayarak](../log-query/log-query-overview.md) [uygulamanızdaki ölçümleri görüntülüyor](../platform/metrics-charts.md). 
 
-Tarayıcıdaki performansı izlemek için, [kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) ayarlamak ve [Web tarayıcınıza kod eklemek](../../azure-monitor/app/javascript.md)isteyebilirsiniz.
+Tarayıcıdaki performansı izlemek için, [kullanılabilirlik testlerini](./monitor-web-app-availability.md) ayarlamak ve [Web tarayıcınıza kod eklemek](./javascript.md)isteyebilirsiniz.
 
 Sonraki bölümlerde aşağıdaki ek seçenekler ele alınmaktadır:
 
@@ -51,9 +51,9 @@ Uygulamanızdaki telemetri, Application Insights türünde bir Azure kaynağınd
 Her kaynak bir kaynak grubuna aittir. Kaynak grupları, maliyetleri yönetmek, takım üyelerine erişim vermek ve güncelleştirmeleri tek bir koordine işleminde dağıtmak için kullanılır. Örneğin, bir Azure bulut hizmetini ve Application Insights izleme kaynaklarını tek bir işlemde [dağıtmak için bir komut dosyası yazabilirsiniz](../../azure-resource-manager/templates/deploy-powershell.md) .
 
 ### <a name="resources-for-components"></a>Bileşenler için kaynaklar
-Uygulamanızın her bileşeni için ayrı bir kaynak oluşturmanız önerilir. Diğer bir deyişle, her bir Web rolü ve çalışan rolü için bir kaynak oluşturursunuz. Her bileşeni ayrı ayrı çözümleyebilirsiniz, ancak her bileşenden anahtar grafikleri bir araya getiren bir [Pano](../../azure-monitor/app/overview-dashboard.md) oluşturabilirsiniz, böylece bunları tek bir görünümde karşılaştırabilir ve izleyebilirsiniz. 
+Uygulamanızın her bileşeni için ayrı bir kaynak oluşturmanız önerilir. Diğer bir deyişle, her bir Web rolü ve çalışan rolü için bir kaynak oluşturursunuz. Her bileşeni ayrı ayrı çözümleyebilirsiniz, ancak her bileşenden anahtar grafikleri bir araya getiren bir [Pano](./overview-dashboard.md) oluşturabilirsiniz, böylece bunları tek bir görünümde karşılaştırabilir ve izleyebilirsiniz. 
 
-Alternatif bir yaklaşım, telemetrinin birden fazla rolden aynı kaynağa gönderilmesi, ancak kaynak rolünü tanımlayan [her bir telemetri öğesine bir boyut özelliği eklemektir](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) . Bu yaklaşımda, özel durumlar gibi ölçüm grafikleri, normalde çeşitli rollerden sayımların toplamını gösterir, ancak gerekli olduğu gibi, grafiği rol tanımlayıcısına göre segmentleyebilirsiniz. Aramaları aynı boyuta göre de filtreleyebilirsiniz. Bu alternatif, her şeyi aynı anda görüntülemeyi daha kolay hale getirir, ancak roller arasında bazı karışıklıklara de yol açabilir.
+Alternatif bir yaklaşım, telemetrinin birden fazla rolden aynı kaynağa gönderilmesi, ancak kaynak rolünü tanımlayan [her bir telemetri öğesine bir boyut özelliği eklemektir](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) . Bu yaklaşımda, özel durumlar gibi ölçüm grafikleri, normalde çeşitli rollerden sayımların toplamını gösterir, ancak gerekli olduğu gibi, grafiği rol tanımlayıcısına göre segmentleyebilirsiniz. Aramaları aynı boyuta göre de filtreleyebilirsiniz. Bu alternatif, her şeyi aynı anda görüntülemeyi daha kolay hale getirir, ancak roller arasında bazı karışıklıklara de yol açabilir.
 
 Tarayıcı telemetrisi genellikle ait olduğu sunucu tarafı web rolüyle aynı kaynağa dahil edilir.
 
@@ -68,7 +68,7 @@ Telemetriyi uygun kaynaklara göndermek için, yapı yapılandırmasına bağlı
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Her rol için bir Application Insights kaynağı oluşturma
 
-Her rol için ayrı bir kaynak oluşturmaya karar verdiyseniz ve her derleme yapılandırması için ayrı bir küme oluşturmak isterseniz, bunların Application Insights portalında oluşturulması en kolay yoldur. Kaynakları çok büyük bir şekilde oluşturursanız, [işlemi otomatikleştirebilirsiniz](../../azure-monitor/app/powershell.md).
+Her rol için ayrı bir kaynak oluşturmaya karar verdiyseniz ve her derleme yapılandırması için ayrı bir küme oluşturmak isterseniz, bunların Application Insights portalında oluşturulması en kolay yoldur. Kaynakları çok büyük bir şekilde oluşturursanız, [işlemi otomatikleştirebilirsiniz](./powershell.md).
 
 1. [Azure Portal][portal] **Yeni**  >  **Geliştirici Hizmetleri**  >  **Application Insights**' ni seçin.  
 
@@ -92,7 +92,7 @@ Her derleme yapılandırması için ayrı bir Application Insights kaynağı kul
 
 Bu, Application Insights izleme anahtarlarınızın ServiceConfiguration adlı dosyalara eklenmesi etkisine sahiptir *. \* cscfg*. [Örnek kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)aşağıda verilmiştir.
 
-Application Insights gönderilen tanılama bilgileri düzeyini değiştirmek istiyorsanız, [ *. cscfg* dosyalarını doğrudan düzenleyerek](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)bunu yapabilirsiniz.
+Application Insights gönderilen tanılama bilgileri düzeyini değiştirmek istiyorsanız, [ *. cscfg* dosyalarını doğrudan düzenleyerek](../platform/diagnostics-extension-to-application-insights.md)bunu yapabilirsiniz.
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>Her projede SDK’yı yükleyin
 Bu seçenekle, herhangi bir role özel iş telemetrisi ekleyebilirsiniz. Bu seçenek, uygulamanızın nasıl kullanıldığı ve gerçekleştirdiği hakkında daha yakından bir analiz sağlar.
@@ -165,7 +165,7 @@ Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyor
 
 1. Oluşturduğunuz Application Insights kaynaklarını açın.
 
-   Tek tek veri noktaları [arama][diagnostic]bölümünde görüntülenir ve toplu veriler [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md)' nde görüntülenir.
+   Tek tek veri noktaları [arama][diagnostic]bölümünde görüntülenir ve toplu veriler [Ölçüm Gezgini](../platform/metrics-charts.md)' nde görüntülenir.
 
 1. Daha fazla telemetri ekleyin (sonraki bölümlere bakın) ve ardından canlı tanılama ve kullanım geri bildirimi almak için uygulamanızı yayımlayın. 
 
@@ -184,11 +184,11 @@ Daha fazla bilgi için bkz. [Sorun giderme][qna].
 * Windows olay günlükleri izlemeler ve özel olaylar olarak gösterilir.
 * Uygulama günlükleri, ETW günlükleri ve varsa tanılama altyapısı günlükleri izlemeler olarak görünür.
 
-Performans sayaçlarını ve olay sayılarını görüntülemek için [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) açın ve aşağıdaki grafiği ekleyin:
+Performans sayaçlarını ve olay sayılarını görüntülemek için [Ölçüm Gezgini](../platform/metrics-charts.md) açın ve aşağıdaki grafiği ekleyin:
 
 ![Azure Tanılama verileri](./media/cloudservices/23-wad.png)
 
-Azure Tanılama tarafından gönderilen çeşitli izleme günlüklerinde arama yapmak için [arama](../../azure-monitor/app/diagnostic-search.md) veya [analiz sorgusu](../../azure-monitor/log-query/get-started-portal.md)kullanın. Örneğin, bir rolün kilitlenmesine ve geri dönüştürülmesine neden olan işlenmeyen bir özel durum olduğunu varsayalım. Bu bilgi, Windows Olay Günlüğü’nün Uygulama kanalında görünür. Windows olay günlüğü hatasını görüntülemek ve özel durum için tam yığın izlemesini almak üzere ara ' yı kullanabilirsiniz. Bunun yapılması, sorunun asıl nedenini bulmanıza yardımcı olur.
+Azure Tanılama tarafından gönderilen çeşitli izleme günlüklerinde arama yapmak için [arama](./diagnostic-search.md) veya [analiz sorgusu](../log-query/get-started-portal.md)kullanın. Örneğin, bir rolün kilitlenmesine ve geri dönüştürülmesine neden olan işlenmeyen bir özel durum olduğunu varsayalım. Bu bilgi, Windows Olay Günlüğü’nün Uygulama kanalında görünür. Windows olay günlüğü hatasını görüntülemek ve özel durum için tam yığın izlemesini almak üzere ara ' yı kullanabilirsiniz. Bunun yapılması, sorunun asıl nedenini bulmanıza yardımcı olur.
 
 ![Azure Tanılama arama](./media/cloudservices/25-wad.png)
 
@@ -205,7 +205,7 @@ Web rollerinde, istek modülü otomatik olarak HTTP istekleriyle ilgili verileri
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Özel durumlar
-Çeşitli Web uygulaması türlerinden işlenmeyen özel durumları toplama hakkında daha fazla bilgi için bkz. [Application Insights özel durumları izleme](../../azure-monitor/app/asp-net-exceptions.md).
+Çeşitli Web uygulaması türlerinden işlenmeyen özel durumları toplama hakkında daha fazla bilgi için bkz. [Application Insights özel durumları izleme](./asp-net-exceptions.md).
 
 Örnek web rolü, MVC5 ve Web API 2 denetleyicilerine sahiptir. Bu ikisinden toplanan işlenmemiş özel durumlar aşağıdaki işleyicilerle yakalanır:
 
@@ -255,11 +255,11 @@ Sayfa görüntüleme sayısı, sayfa yükleme süreleri veya betik özel durumla
 Uygulamanızın canlı ve yanıt verdiğini cağından emin olmak için [Web testleri ayarlayın][availability].
 
 ## <a name="display-everything-together"></a>Her şeyi birlikte görüntüleme
-Sisteminizin genel bir resmi için, anahtar izleme grafiklerini bir [panoda](../../azure-monitor/app/overview-dashboard.md)birlikte görüntüleyebilirsiniz. Örneğin, her rolün istek ve hata sayılarını sabitleyebilirsiniz. 
+Sisteminizin genel bir resmi için, anahtar izleme grafiklerini bir [panoda](./overview-dashboard.md)birlikte görüntüleyebilirsiniz. Örneğin, her rolün istek ve hata sayılarını sabitleyebilirsiniz. 
 
 Sisteminiz Stream Analytics gibi diğer Azure hizmetlerini kullanıyorsa, bunların izleme grafiklerini de dahil edin. 
 
-İstemci mobil uygulamanız varsa, [App Center](../../azure-monitor/learn/mobile-center-quickstart.md) kullanın. [Analiz](../log-query/log-query-overview.md)’de olay sayılarını görüntüleyecek sorgular oluşturun ve bunları panoya sabitleyin.
+İstemci mobil uygulamanız varsa, [App Center](../learn/mobile-center-quickstart.md) kullanın. [Analiz](../log-query/log-query-overview.md)’de olay sayılarını görüntüleyecek sorgular oluşturun ve bunları panoya sabitleyin.
 
 ## <a name="example"></a>Örnek
 [Örnek](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService), bir web rolü ve iki çalışan rolüne sahip bir hizmeti izler.
@@ -272,18 +272,19 @@ Sisteminiz Stream Analytics gibi diğer Azure hizmetlerini kullanıyorsa, bunlar
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Tanılama verilerinin Application Insights’a gönderimini yapılandırma](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Application Insights kaynaklarını otomatik olarak oluştur](../../azure-monitor/app/powershell.md)
-* [Azure Tanılama Otomatikleştir](../../azure-monitor/app/powershell-azure-diagnostics.md)
+* [Azure Tanılama verilerinin Application Insights’a gönderimini yapılandırma](../platform/diagnostics-extension-to-application-insights.md)
+* [Application Insights kaynaklarını otomatik olarak oluştur](./powershell.md)
+* [Azure Tanılama Otomatikleştir](./powershell-azure-diagnostics.md)
 * [Azure İşlevleri](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[azure]: ../../azure-monitor/app/app-insights-overview.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
+[api]: ./api-custom-events-metrics.md
+[availability]: ./monitor-web-app-availability.md
+[azure]: ./app-insights-overview.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[netlogs]: ./asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

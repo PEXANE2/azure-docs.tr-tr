@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499231"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318122"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -655,7 +655,7 @@ Azure, Azure ABD kamu ve Azure Çin 21Vianet bulutları ile Kapsayıcılı arac�
 Bu Microsoft SSS, VM'ler için Azure İzleyici hakkında sık sorulan soruların bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Mevcut bir çalışma alanına ekleyebilir miyim?
-Sanal makineleriniz zaten bir Log Analytics çalışma alanına bağlıysa, [burada](insights/vminsights-enable-overview.md#prerequisites)listelenen desteklenen bölgelerden birinde olması kaydıyla, VM'ler için Azure izleyici ekleme sırasında bu çalışma alanını kullanmaya devam edebilirsiniz.
+Sanal makineleriniz zaten bir Log Analytics çalışma alanına bağlıysa, VM'ler için Azure İzleyici ekleme sırasında bu çalışma alanını kullanmaya devam edebilirsiniz, ancak [desteklenen bölgelerden](insights/vminsights-configure-workspace.md#supported-regions)birinde bulunur.
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Yeni bir çalışma alanına ekleyebilir miyim? 

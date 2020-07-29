@@ -5,26 +5,29 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445124"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318275"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de sorgu maliyetini iyileştirme
 
-Azure Cosmos DB, kapsayıcının içindeki öğeler üzerinde çalışan ilişkisel ve hiyerarşik sorgular da dahil olmak üzere zengin bir veritabanı işlemleri kümesi sunar. Bu işlemlerden her biriyle ilişkilendirilmiş maliyet, işlemi tamamlamak için gereken CPU, GÇ ve belleğe göre değişiklik gösterir. Donanım kaynakları hakkında düşünmek ve bunları yönetmek yerine, bir isteğe hizmet sağlamak üzere çeşitli veritabanı işlemlerini gerçekleştirmek için gereken kaynaklar için istek birini (RU) tek ölçü olarak düşünebilirsiniz. Bu makalede sorgu için istek birimi ücretlerinin değerlendirilmesi, ayrıca performans ve maliyet açısından sorgunun iyileştirilmesi açıklanır. 
+Azure Cosmos DB, kapsayıcının içindeki öğeler üzerinde çalışan ilişkisel ve hiyerarşik sorgular da dahil olmak üzere zengin bir veritabanı işlemleri kümesi sunar. Bu işlemlerden her biriyle ilişkilendirilmiş maliyet, işlemi tamamlamak için gereken CPU, GÇ ve belleğe göre değişiklik gösterir. Donanım kaynakları hakkında düşünmek ve bunları yönetmek yerine, bir isteğe hizmet sağlamak üzere çeşitli veritabanı işlemlerini gerçekleştirmek için gereken kaynaklar için istek birini (RU) tek ölçü olarak düşünebilirsiniz. Bu makalede sorgu için istek birimi ücretlerinin değerlendirilmesi, ayrıca performans ve maliyet açısından sorgunun iyileştirilmesi açıklanır.
 
-Azure Cosmos DB sorguları genellikle aktarım açısından en hızlı/en etkili ve daha az verimlidir  
+Azure Cosmos DB okuma, genellikle aktarım açısından en hızlı/en verimli ve daha az verimlidir ve verimlilik bakımından aşağıdaki şekilde sıralanır:  
 
-* Tek bir bölüm anahtarında ve öğe anahtarında işlem al.
+* Nokta okuma (tek öğe KIMLIĞINDE ve bölüm anahtarında anahtar/değer araması).
 
 * Tek bir bölüm anahtarı içinde bir filtre yan tümcesi ile sorgulayın.
 
 * Herhangi bir özellikte eşitlik veya Aralık filtresi yan tümcesi olmadan sorgu.
 
 * Filtre olmadan sorgulayın.
+
+Öğe KIMLIĞINDE anahtar/değer aramaları en etkili okuma türü olduğundan, öğe KIMLIĞININ anlamlı bir değere sahip olduğundan emin olun.
 
 Bir veya daha fazla bölümden verileri okuyan sorgular, daha yüksek gecikme süresine ve daha yüksek sayıda istek birimi tüketir. Her bölümde tüm özellikler için otomatik dizin oluşturma olduğundan, sorgu dizinden verimli bir şekilde sunulabilir. Paralellik seçeneklerini kullanarak birden çok bölüm kullanan sorguları daha hızlı yapabilirsiniz. Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB bölümlendirme](partitioning-overview.md).
 
@@ -35,7 +38,7 @@ Azure Cosmos kapsayıcılarınızda bazı verileri depoladıktan sonra, sorgular
 SDK 'Ları kullanarak, programlı bir şekilde sorgu maliyeti de alabilirsiniz. Oluşturma, güncelleştirme veya silme gibi herhangi bir işlemin ek yükünü ölçmek için `x-ms-request-charge` REST API kullanırken üstbilgiyi inceleyin. .NET veya Java SDK kullanıyorsanız, `RequestCharge` özellik istek Ücretlendirisini almak için eşdeğer özelliktir ve bu özellik Resourceres, feedresponse içinde bulunur.
 
 ```csharp
-// Measure the performance (request units) of writes 
+// Measure the performance (request units) of writes
 ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument); 
 
 Console.WriteLine("Insert of an item consumed {0} request units", response.RequestCharge); 

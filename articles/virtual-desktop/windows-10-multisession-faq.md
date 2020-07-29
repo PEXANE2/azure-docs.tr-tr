@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adc0d63a51535b27b42abbe0115ff25594eb2b4f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086934"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292486"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
@@ -102,6 +102,6 @@ Mağaza uygulamasını devre dışı bırakmak için:
 
 Windows sanal masaüstü ve Windows 10 Enterprise çoklu oturum hakkında daha fazla bilgi edinmek için:
 
-- [Windows sanal masaüstü önizleme belgelerimizi](overview.md) okuyun
+- [Windows sanal masaüstü belgelerimizi](overview.md) okuyun
 - [Windows sanal masaüstü teknik topluluğumuzu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) ziyaret edin
 - Windows sanal masaüstü [öğreticileri](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) ile Windows sanal masaüstü dağıtımınızı ayarlama

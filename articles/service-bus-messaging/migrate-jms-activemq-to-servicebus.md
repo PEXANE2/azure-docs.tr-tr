@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
-ms.openlocfilehash: 7926e3b8aedde63c3a1a5a57c42b3d4f29cb9797
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076223"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369042"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Mevcut Java Ileti hizmeti (JMS) 2,0 uygulamalarını Apache ActiveMQ ' den Azure Service Bus geçirin
 
@@ -59,7 +60,7 @@ Service Bus yükseltmeleri ve yeniden başlatmalar söz konusu olduğunda geçic
 
 İstemci uygulamalarınızı Azure Service Bus etkileşimde bulunmak üzere geçirme ve değiştirme işleminin bir parçası olarak, ActiveMQ ' de tutulan veriler Service Bus öğesine geçirilmez. ActiveMQ kuyruklarını, konularını ve aboneliklerini boşaltmak için özel bir uygulamaya ihtiyacınız vardır ve ardından iletileri Service Bus kuyruklara, konularına ve aboneliklerine yeniden çalabilirsiniz.
 
-#### <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+#### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
 Azure Active Directory tarafından desteklenen rol tabanlı erişim denetimi (RBAC), Service Bus için tercih edilen kimlik doğrulama mekanizmasıdır. RBAC veya talep tabanlı kimlik doğrulaması, Apache QPID JMS tarafından şu anda desteklenmediğinden, kimlik doğrulaması için SAS anahtarlarını kullanmanız gerekir.
 
@@ -86,10 +87,10 @@ Service Bus AMQP protokolü üzerinden iletişimi destekler. Bu amaçla 5671 (AM
 Service Bus, çeşitli kurumsal güvenlik ve yüksek kullanılabilirlik özelliklerine izin verebilir. Daha fazla bilgi için bkz. 
 
   * [Sanal ağ hizmet uç noktaları](service-bus-service-endpoints.md)
-  * [Güvenlik Duvarı](service-bus-ip-filtering.md)
+  * [Güvenlik duvarı](service-bus-ip-filtering.md)
   * [Müşterinin yönettiği anahtarla hizmet tarafı şifreleme (BYOK)](configure-customer-managed-key.md)
   * [Özel uç noktalar](private-link-service.md)
-  * [Kimlik doğrulama ve yetkilendirme](service-bus-authentication-and-authorization.md)
+  * [Kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>İzleme, uyarılar ve izleme
 

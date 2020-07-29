@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: cd6ea6d4967e024ddf88fb9572d5efae8b7a7815
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48080bb4d1e24f7f98d3dfe1fd63b65ba46df35e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495354"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289921"
 ---
 ### <a name="property-limits"></a>Özellik sınırları
 
@@ -33,7 +33,7 @@ Azure Time Series Insights Özellik sınırları, Gen1 içinde en fazla 800 ' de
 * [Bir olay hub 'ı kaynağı eklemeyi](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)öğrenin.
 * [IoT Hub 'ı kaynağı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)yapılandırın.
 
-Varsayılan olarak, [Gen2 ortamları](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-throughput-limitations) , **ortam başına en fazla 1 megabayt (MB/sn) saniye başına**giriş hızını destekler. Müşteriler, gerekirse ortamlarını **16 MB/sn** 'ye kadar ölçeklendirebilir. Bölüm başına **0,5 MB/sn**sınırı da vardır.
+Varsayılan olarak, [Gen2 ortamları](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingress-throughput-limits) , **ortam başına en fazla 1 megabayt (MB/sn) saniye başına**giriş hızını destekler. Müşteriler, gerekirse ortamlarını **16 MB/sn** 'ye kadar ölçeklendirebilir. Bölüm başına **0,5 MB/sn**sınırı da vardır.
 
 ### <a name="api-limits"></a>API sınırları
 
