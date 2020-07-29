@@ -8,14 +8,15 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601471"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319601"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +30,7 @@ Nasıl kullanabileceğinizi öğrenin:
 * Not defteri ortamını değiştirme
 * Not defterlerinizi çalıştırmak için kullanılan işlem örneklerinin ayrıntılarını bulun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 * Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -49,7 +50,7 @@ Yeni bir not defteri oluşturmak için:
 1. Dosyayı adlandırın. 
 1. Jupyter Notebook dosyaları için dosya türü olarak **Python Not defteri** ' ni seçin.
 1. Bir dosya dizini seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Metin dosyaları da oluşturabilirsiniz.  Dosya türü olarak **metin** ' i seçin ve uzantıyı ada ekleyin (örneğin, myfile.py veya myfile.txt)  
 
@@ -149,7 +150,7 @@ Bir not defterinden deneme çalıştırmak için önce çalışan bir [işlem ö
 
 1. **+** Not defteri araç çubuğundan öğesini seçin. 
 2. Işlem adını adlandırın ve bir **sanal makine boyutu**seçin. 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 4. İşlem örneği not defterine otomatik olarak bağlanır ve artık hücrelerden çalıştırabilirsiniz.
 
 Yalnızca sizin oluşturduğunuz işlem örneklerini görebilir ve kullanabilirsiniz.  **Kullanıcı DOSYALARıNıZ** VM 'den ayrı olarak depolanır ve çalışma alanındaki tüm işlem örnekleri arasında paylaşılır.
@@ -198,17 +199,17 @@ Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler '
 
 **İşlem** açılan listesinin yanındaki gösterge durumunu gösterir.  Durum, açılan listede de gösterilir.  
 
-|Renk |İşlem durumu |
+|Color (Renk) |İşlem durumu |
 |---------|---------| 
 | Yeşil | İşlem çalışıyor |
-| Red |İşlem başarısız oldu | 
-| Siyah | İşlem durduruldu |
+| Kırmızı |İşlem başarısız oldu | 
+| Siyahi | İşlem durduruldu |
 |  Açık mavi |İşlem oluşturma, başlatma, yeniden başlatma, kurulum |
 |  Tonlamalı |İşlem silme, durdurma |
 
 **Çekirdek** açılan listesinin yanındaki gösterge durumunu gösterir.
 
-|Renk |Çekirdek durumu |
+|Color (Renk) |Çekirdek durumu |
 |---------|---------|
 |  Yeşil |Çekirdek bağlı, boşta, meşgul|
 |  Tonlamalı |Çekirdek bağlı değil |

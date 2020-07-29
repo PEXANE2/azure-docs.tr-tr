@@ -7,15 +7,15 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 01/31/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 8aebcfc2a46de3922dbc41942e63e71844de6e83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072216"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319754"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
 
@@ -204,8 +204,8 @@ Yolun, `history/v1.0` modelleri listelemeye çalışırken denemeleri listelendi
 
 |Alan|Yol|
 |-|-|
-|Artifacts|yapıt/v 2.0/|
-|Veri depolama alanları|veri deposu/v 1.0/|
+|Artifacts|/Rest/api/azureml|
+|Veri depolama alanları|/azure/machine-learning/how-to-access-data|
 |Hiper parametre ayarı|Hiper sürücü/v 1.0/|
 |Modeller|modelmanagement/v 1.0/|
 |Çalıştırma geçmişi|yürütme/v 1.0/ve History/v 1.0/|

@@ -3,12 +3,12 @@ title: Azure 'dan SQL 'e aktarma Application Insights | Microsoft Docs
 description: Application Insights verileri sürekli olarak SQL 'e Stream Analytics kullanarak dışarı aktarın.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540103"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311237"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>İzlenecek yol: Application Insights Stream Analytics kullanarak SQL 'e aktarma
 Bu makalede, [azure Application Insights][start] [sürekli dışa aktarma][export] ve [Azure Stream ANALYTICS](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri verilerinizi Azure SQL veritabanı 'na nasıl taşıyacağınız gösterilmektedir. 
@@ -24,9 +24,9 @@ Bu örnekte, sayfa görünümü verilerini kullanacağız, ancak aynı model öz
 ## <a name="add-application-insights-to-your-application"></a>Uygulamanıza Application Insights ekleyin
 Başlamak için:
 
-1. [Web sayfalarınız için Application Insights ayarlayın](../../azure-monitor/app/javascript.md). 
+1. [Web sayfalarınız için Application Insights ayarlayın](./javascript.md). 
    
-    (Bu örnekte, istemci tarayıcılarından sayfa görünümü verilerini işlemeye odaklanacağız, ancak [Java](../../azure-monitor/app/java-get-started.md) veya [ASP.net](../../azure-monitor/app/asp-net.md) uygulamanızın sunucu tarafı ve işlem isteğiniz, bağımlılığı ve diğer sunucu telemetrisi için Application Insights de ayarlayabilirsiniz.)
+    (Bu örnekte, istemci tarayıcılarından sayfa görünümü verilerini işlemeye odaklanacağız, ancak [Java](./java-get-started.md) veya [ASP.net](./asp-net.md) uygulamanızın sunucu tarafı ve işlem isteğiniz, bağımlılığı ve diğer sunucu telemetrisi için Application Insights de ayarlayabilirsiniz.)
 2. Uygulamanızı yayımlayın ve Application Insights kaynağınız içinde görüntülenen telemetri verilerini izleyin.
 
 ## <a name="create-storage-in-azure"></a>Azure 'da depolama oluşturma
@@ -61,7 +61,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
     ![Olay türlerini seçin](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](../../azure-monitor/app/diagnostic-search.md)tek tek olaylar görürsünüz. 
+1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../platform/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](./diagnostic-search.md)tek tek olaylar görürsünüz. 
    
     Ayrıca, veriler depolama verilerinize dışarı aktaracaktır. 
 2. , Portalda, bu verileri inceleyin; **tarayıcı**' yı seçin, depolama hesabınızı seçin ve ardından veya Visual Studio 'da **kapsayıcılar** ' ı seçin. Visual Studio 'da **Görünüm/bulut Gezgini**' ni seçin ve Azure/Storage ' ı açın. (Bu menü seçeneğine sahip değilseniz, Azure SDK 'sını yüklemeniz gerekir: yeni proje iletişim kutusunu açın ve Visual C#/Cloud/Get .NET için Microsoft Azure SDK açın.)
@@ -128,7 +128,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![PageViewsTable oluşturma](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-Bu örnekte, sayfa görünümlerindeki verileri kullanıyoruz. Mevcut diğer verileri görmek için JSON çıktlarınızı inceleyin ve [dışarı aktarma veri modelini](../../azure-monitor/app/export-data-model.md)görüntüleyin.
+Bu örnekte, sayfa görünümlerindeki verileri kullanıyoruz. Mevcut diğer verileri görmek için JSON çıktlarınızı inceleyin ve [dışarı aktarma veri modelini](./export-data-model.md)görüntüleyin.
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics örneği oluşturma
 [Azure Portal](https://portal.azure.com/), Azure Stream Analytics hizmetini seçin ve yeni bir Stream Analytics işi oluşturun:
@@ -165,7 +165,7 @@ Bu örnekte:
 
 * `webapplication27`Application Insights kaynağın adı, **hepsi küçük bir durumdur**. 
 * `1234...`, Application Insights kaynağın ana **çizgiler kaldırılmış olan**izleme anahtarıdır. 
-* `PageViews`analiz etmek istediğimiz veri türüdür. Kullanılabilir türler, sürekli dışarı aktarma sırasında ayarladığınız filtreye bağlıdır. Dışarı aktarılmış verileri inceleyerek diğer kullanılabilir türleri görüntüleyin ve [veri aktarma modelini](../../azure-monitor/app/export-data-model.md)görüntüleyin.
+* `PageViews`analiz etmek istediğimiz veri türüdür. Kullanılabilir türler, sürekli dışarı aktarma sırasında ayarladığınız filtreye bağlıdır. Dışarı aktarılmış verileri inceleyerek diğer kullanılabilir türleri görüntüleyin ve [veri aktarma modelini](./export-data-model.md)görüntüleyin.
 * `/{date}/{time}`, harfine yazılmış bir örüntü.
 
 Application Insights kaynağınızın adını ve Ikey değerini almak için, Genel Bakış sayfasında temel bilgiler ' i açın veya ayarları açın.
@@ -215,7 +215,7 @@ Varsayılan sorguyu ile değiştirin:
 
 ```
 
-İlk birkaç özellik sayfa görüntüleme verilerine özgü olduğuna dikkat edin. Diğer telemetri türlerinin dışarı aktarmaları farklı özelliklere sahip olur. [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusuna bakın.](../../azure-monitor/app/export-data-model.md)
+İlk birkaç özellik sayfa görüntüleme verilerine özgü olduğuna dikkat edin. Diğer telemetri türlerinin dışarı aktarmaları farklı özelliklere sahip olur. [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusuna bakın.](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>Çıktıyı veritabanına ayarla
 Çıkış olarak SQL ' i seçin.
@@ -243,15 +243,16 @@ FROM [dbo].[PageViewsTable]
 ```
 
 ## <a name="related-articles"></a>İlgili makaleler:
-* [Stream Analytics kullanarak Power BI dışa aktarma](../../azure-monitor/app/export-power-bi.md )
-* [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](../../azure-monitor/app/export-data-model.md)
-* [Application Insights 'da sürekli dışarı aktarma](../../azure-monitor/app/export-telemetry.md)
+* [Stream Analytics kullanarak Power BI dışa aktarma](./export-power-bi.md)
+* [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](./export-data-model.md)
+* [Application Insights 'da sürekli dışarı aktarma](./export-telemetry.md)
 * [Uygulama Bilgileri](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

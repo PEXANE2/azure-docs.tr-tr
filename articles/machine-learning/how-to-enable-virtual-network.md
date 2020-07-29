@@ -5,18 +5,18 @@ description: Deneme/eğitimin yanı sıra çıkarım/Puanlama işlerinin güvenl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: fa99a5c78fb533d17cb7f70b3545aa9ef6439b32
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072610"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320179"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -304,8 +304,8 @@ Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın 
 - NSG kurallarını kullanarak giden internet bağlantısını reddedin.
 
 - Bir __işlem örneği__ veya bir __işlem kümesi__için, giden trafiği aşağıdaki öğelerle sınırlayın:
-   - Azure depolama, __depolama__ __hizmet etiketi__ kullanılarak.
-   - Azure Container Registry, __AzureContainerRegistry__ __hizmet etiketi__ kullanılarak.
+   - __Depolama. RegionName__ __hizmet etiketi__ kullanılarak Azure Storage. Burada `{RegionName}` bir Azure bölgesinin adıdır.
+   - Azure Container Registry, __AzureContainerRegistry. RegionName__ __hizmet etiketi__ kullanılarak. Burada `{RegionName}` bir Azure bölgesinin adıdır.
    - __AzureMachineLearning__ __hizmet etiketi__ kullanılarak Azure Machine Learning
    - __AzureResourceManager__ __hizmet etiketi__ kullanılarak Azure Resource Manager
    - __AzureActiveDirectory__ __hizmet etiketi__ kullanılarak Azure Active Directory

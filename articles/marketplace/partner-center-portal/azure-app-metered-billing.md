@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118945"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320060"
 ---
 # <a name="managed-application-metered-billing"></a>Yönetilen uygulama ölçümlü faturalandırma 
 
@@ -65,7 +67,7 @@ Fatura boyutları, bir teklif için tüm planlar arasında paylaşılır. Bazı 
 Boyutun kendisini tanımlayan öznitelikler, bir teklif için tüm planlar arasında paylaşılır. Teklifi yayımlamadan önce, herhangi bir planın bağlamından bu özniteliklerde yapılan bir değişiklik, tüm planlar genelinde boyut tanımını etkiler. Teklifi yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir. Öznitelikler şunlardır:
 
 * Tanımlayıcı
-* Name
+* Ad
 * Ölçü birimi
 
 Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre farklı değerlere sahip olabilir.  Planı yayımlamadan önce, bu değerleri düzenleyebilirsiniz ve yalnızca bu plan etkilenecektir. Planı yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir. Öznitelikler şunlardır:
@@ -91,7 +93,7 @@ Market ölçüm hizmeti ile kullanılan bir boyut, müşterinin hizmet için nas
 Bir teklif bir boyutla yayımlandıktan sonra, bu boyut için teklif düzeyi ayrıntıları artık değiştirilemez:
 
 * Tanımlayıcı
-* Name
+* Ad
 * Ölçü birimi
 
 Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirilemez:
@@ -109,21 +111,13 @@ Tek bir teklif için yapılandırılabilecek maksimum boyut sayısı 18 benzersi
 
 ## <a name="get-support"></a>Destek alma
 
-Aşağıdaki durumlardan biri geçerliyse, bir destek bileti açabilirsiniz.
+Aşağıdaki sorunlardan birine sahipseniz bir destek bileti açabilirsiniz.
 
 * Market ölçüm hizmeti API 'SI ile ilgili teknik sorunlar.
 * Arka taraftaki bir hata veya hata nedeniyle ilerletilen bir sorun (örn. yanlış kullanım olayı).
 * Ölçümlenen faturalandırmayla ilgili diğer sorunlar.
 
-Destek biletinizi göndermek için aşağıdaki adımları izleyin:
-
-1. [Destek sayfasına](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur. Market desteği için ürün ailesini **bulut ve çevrimiçi hizmetler**olarak, **Market yayımcısı**olarak da belirleyebilirsiniz. Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.
-2. "Ürün sürümünü seçin" altında, **canlı teklif yönetimi**' ni seçin.
-3. "Sorunu en iyi tanımlayan bir kategori seçin" altında, **Azure uygulamaları teklifi**' ni seçin.
-4. "Sorunu en iyi açıklayan bir sorun seçin" bölümünde **ölçülen faturalandırma**' i seçin.
-5. **İleri** düğmesini seçerek sorun **ayrıntıları** sayfasına yönlendirilirsiniz. burada sorun hakkında daha fazla ayrıntı girebilirsiniz.
-
-Daha fazla yayımcı desteği seçeneği için bkz. [Iş Ortağı Merkezi 'nde ticari Market programı desteği](support.md).
+Yayımcı desteği seçeneklerini anlamak ve Microsoft ile destek bileti açmak için [Iş Ortağı Merkezi 'ndeki ticari Market programına yönelik destek](./support.md) bölümündeki yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

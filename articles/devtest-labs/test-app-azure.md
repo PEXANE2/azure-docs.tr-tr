@@ -3,22 +3,22 @@ title: Uygulamanızı Azure 'da test etme | Microsoft Docs
 description: Laboratuvara bir dosya paylaşımının nasıl oluşturulduğunu ve bunu yerel makinenize ve bir sanal makineye nasıl bağlayacağınızı öğrenin ve ardından Masaüstü/Web uygulamalarını dosya paylaşımında dağıtıp test edin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476504"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282254"
 ---
 # <a name="test-your-app-in-azure"></a>Uygulamanızı Azure’da test edin 
 Bu makalede, DevTest Labs kullanarak Azure 'da uygulamanızı test etme adımları sağlanmaktadır. İlk olarak, bir laboratuvarda bir dosya paylaşma ayarlarsınız ve bunu yerel geliştirme makinenizde ve bir laboratuvardaki VM 'de bir sürücü olarak bağlarsınız. Daha sonra, uygulamayı laboratuvardaki VM üzerinde çalıştırabilmeniz için uygulamanızı dosya paylaşımında dağıtmak üzere Visual Studio 2019 ' i kullanırsınız.  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 1. Henüz bir hesabınız yoksa [Azure aboneliği oluşturun](https://azure.microsoft.com/free/) ve [Azure Portal](https://portal.azure.com)oturum açın.
 2. Azure DevTest Labs kullanarak bir laboratuvar oluşturmak için [Bu makaledeki](devtest-lab-create-lab.md) yönergeleri izleyin. Bir sonraki oturum açışınızda kolayca bulabilmeniz için Laboratuvarı panonuza sabitleyin. Azure DevTest Labs, atık ve denetim maliyetini en aza indirerek Azure 'da hızlı bir şekilde kaynak oluşturmanızı sağlar. DevTest Labs hakkında daha fazla bilgi edinmek için bkz. [genel bakış](devtest-lab-overview.md). 
-3. [Depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md) makalesindeki yönergeleri izleyerek laboratuvarın kaynak grubunda bir Azure depolama hesabı oluşturun. **Depolama hesabı oluştur** sayfasında, **var olan** **kaynak grubunu**kullan ' ı seçin ve **laboratuvarın kaynak grubunu**seçin. 
+3. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesindeki yönergeleri izleyerek laboratuvarın kaynak grubunda bir Azure depolama hesabı oluşturun. **Depolama hesabı oluştur** sayfasında, **var olan** **kaynak grubunu**kullan ' ı seçin ve **laboratuvarın kaynak grubunu**seçin. 
 4. Azure [dosyalarında dosya paylaşma oluşturma](../storage/files/storage-how-to-create-file-share.md) makalesindeki yönergeleri izleyerek Azure depolamada bir dosya paylaşma oluşturun. 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>Dosya paylaşımından yerel makinenize bağlama

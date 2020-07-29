@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ff7d088a80ceaf01e9434ef62beb0e771cdf6b55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081670"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309690"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -24,9 +24,9 @@ Fiyatlandırmanın Application Insights nasıl çalıştığı hakkında sorular
 
 ## <a name="pricing-model"></a>Fiyatlandırma modeli
 
-[Azure Application Insights][start] fiyatlandırması, veri hacmine dayalı ve isteğe bağlı olarak daha uzun veri saklama Için bir **Kullandıkça Öde** modelidir. Her Application Insights kaynak ayrı bir hizmet olarak ücretlendirilir ve Azure aboneliğiniz için faturaya katkıda bulunur. Veri hacmi, uygulamanızdan Application Insights tarafından alınan sıkıştırılmamış JSON veri paketinin boyutu olarak ölçülür. [Canlı ölçüm akışı](../../azure-monitor/app/live-stream.md)kullanımı için veri hacmi ücretsizdir.
+[Azure Application Insights][start] fiyatlandırması, veri hacmine dayalı ve isteğe bağlı olarak daha uzun veri saklama Için bir **Kullandıkça Öde** modelidir. Her Application Insights kaynak ayrı bir hizmet olarak ücretlendirilir ve Azure aboneliğiniz için faturaya katkıda bulunur. Veri hacmi, uygulamanızdan Application Insights tarafından alınan sıkıştırılmamış JSON veri paketinin boyutu olarak ölçülür. [Canlı ölçüm akışı](./live-stream.md)kullanımı için veri hacmi ücretsizdir.
 
-[Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md) ek bir ücret doğurur. Çok adımlı Web testleri, bir dizi eylemi gerçekleştiren Web sınamalardır. Tek bir sayfanın *ping testlerine* yönelik ayrı ücret alınmaz. Ping sınamalarından ve çok adımlı testlerin telemetrisi, uygulamanızdan diğer telemetri ile aynı şekilde ücretlendirilir.
+[Çok adımlı Web testleri](./availability-multistep.md) ek bir ücret doğurur. Çok adımlı Web testleri, bir dizi eylemi gerçekleştiren Web sınamalardır. Tek bir sayfanın *ping testlerine* yönelik ayrı ücret alınmaz. Ping sınamalarından ve çok adımlı testlerin telemetrisi, uygulamanızdan diğer telemetri ile aynı şekilde ücretlendirilir.
 
 [Özel ölçüm boyutlarında uyarı](./pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) verme seçeneğini etkinleştirmek için Application Insights seçeneği ek maliyetler halinde de oluşturulabilir, çünkü bu, ek ön toplama ölçümleri oluşturulmasına neden olabilir. Application Insights 'de günlük tabanlı ve önceden toplanmış ölçümler hakkında daha fazla bilgi edinin ve Azure Izleyici özel ölçümleri için [fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) hakkında [daha fazla bilgi edinin](./pre-aggregated-metrics-log-metrics.md) .
 
@@ -48,7 +48,7 @@ Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, Web sunucunuz ve Web tara
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Benzer müşterilerin topladıklarından öğrenin
 
-Application Insights için Azure Izleme Fiyatlandırma Hesaplayıcı ' da, "uygulama etkinliğine göre veri hacmi tahmin etme" işlevini etkinleştirirseniz, uygulamanız hakkında (istemci tarafı Telemetriyi toplayabilmeniz için ayda aylık istek ve sayfa görüntüleme istekleri) ve ardından hesaplayıcı, benzer uygulamalar tarafından toplanan ortanca ve 90. yüzdebirlik veri miktarını size bildirir. Bu uygulamalar Application Insights yapılandırma aralığını yaymıştır (bazıları varsayılan [örneklemeye](../../azure-monitor/app/sampling.md)sahiptir, bazıları örnekleme içermez vb.), bu nedenle, örnekleme kullanarak ortanca düzeyin altında aldığınız verilerin hacmini azaltmak için denetime sahip olursunuz. Ancak bu, benzer müşterilerin gördüğünü anlamak için bir başlangıç noktasıdır.
+Application Insights için Azure Izleme Fiyatlandırma Hesaplayıcı ' da, "uygulama etkinliğine göre veri hacmi tahmin etme" işlevini etkinleştirirseniz, uygulamanız hakkında (istemci tarafı Telemetriyi toplayabilmeniz için ayda aylık istek ve sayfa görüntüleme istekleri) ve ardından hesaplayıcı, benzer uygulamalar tarafından toplanan ortanca ve 90. yüzdebirlik veri miktarını size bildirir. Bu uygulamalar Application Insights yapılandırma aralığını yaymıştır (bazıları varsayılan [örneklemeye](./sampling.md)sahiptir, bazıları örnekleme içermez vb.), bu nedenle, örnekleme kullanarak ortanca düzeyin altında aldığınız verilerin hacmini azaltmak için denetime sahip olursunuz. Ancak bu, benzer müşterilerin gördüğünü anlamak için bir başlangıç noktasıdır.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Kullanımınız ve Tahmini maliyetlerinizi anlayın
 
@@ -56,10 +56,10 @@ Application Insights, en son kullanım desenlerine göre maliyetlerinizin ne kad
 
 ![Fiyatlandırma seçin](./media/pricing/pricing-001.png)
 
-A. Veri hacminin ayı için gözden geçirin. Bu, sunucunuza ve istemci uygulamalarınıza ve kullanılabilirlik testlerinden alınan ve saklanan tüm verileri (herhangi bir [örnekleme](../../azure-monitor/app/sampling.md)sonrasında) içerir.  
-B. [Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md)için ayrı bir ücret yapılır. (Bu, veri hacmi ücretine dahil olan basit kullanılabilirlik testlerini içermez.)  
+A. Veri hacminin ayı için gözden geçirin. Bu, sunucunuza ve istemci uygulamalarınıza ve kullanılabilirlik testlerinden alınan ve saklanan tüm verileri (herhangi bir [örnekleme](./sampling.md)sonrasında) içerir.  
+B. [Çok adımlı Web testleri](./availability-multistep.md)için ayrı bir ücret yapılır. (Bu, veri hacmi ücretine dahil olan basit kullanılabilirlik testlerini içermez.)  
 C. Son ay için veri hacmi eğilimlerini görüntüleyin.  
-D. Veri alımı [örneklemesi](../../azure-monitor/app/sampling.md)etkinleştirin.
+D. Veri alımı [örneklemesi](./sampling.md)etkinleştirin.
 E. Günlük veri hacmi ucunu ayarlayın.  
 
 (Bu makaledeki ekran görüntülerinde görüntülenen tüm fiyatların yalnızca örnek amaçlıdır. Para birimi ve bölgenizin geçerli fiyatları için bkz. [Application Insights fiyatlandırması][pricing].)
@@ -183,11 +183,11 @@ Kullanımınızı daha iyi anlamak için [Azure portalından kullanım bilgileri
 
 Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetilebilir:
 
-* **Örnekleme**:, ölçümlerde en az deformasyon ile sunucu ve istemci uygulamalarından gönderilen telemetri miktarını azaltmak için örnekleme kullanabilirsiniz. Örnekleme, göndereceğiniz veri miktarını ayarlamak için kullanabileceğiniz birincil araçtır. [Örnekleme özellikleri](../../azure-monitor/app/sampling.md)hakkında daha fazla bilgi edinin.
+* **Örnekleme**:, ölçümlerde en az deformasyon ile sunucu ve istemci uygulamalarından gönderilen telemetri miktarını azaltmak için örnekleme kullanabilirsiniz. Örnekleme, göndereceğiniz veri miktarını ayarlamak için kullanabileceğiniz birincil araçtır. [Örnekleme özellikleri](./sampling.md)hakkında daha fazla bilgi edinin.
 
-* **Ajax çağrılarını sınırlandırma**: her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayabilir](../../azure-monitor/app/javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
+* **Ajax çağrılarını sınırlandırma**: her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayabilir](./javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
 
-* **Gereksiz modülleri devre dışı bırak**: ihtiyacınız olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights.configdüzenleyin](../../azure-monitor/app/configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
+* **Gereksiz modülleri devre dışı bırak**: ihtiyacınız olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights.configdüzenleyin](./configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
 
 * **Ön toplama ölçümleri**: uygulamanızda trackmetric çağrıları yerleştirirseniz, bir ölçüm toplu işinin ortalama ve standart sapması hesaplamasını kabul eden aşırı yüklemeyi kullanarak trafiği azaltabilirsiniz. Ya da, [önceden toplama paketi](https://www.myget.org/gallery/applicationinsights-sdk-labs)de kullanabilirsiniz.
  
@@ -207,7 +207,7 @@ Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetile
 
 Toplanan verileri sınırlandırmak için günlük hacim ucunu kullanabilirsiniz. Ancak, sınır karşılanıyorsa günün geri kalanı için uygulamanızdan gönderilen tüm Telemetriyi bir kayıp olur. Uygulamanızın günlük tepesine isabet etmek *önerilmez* . Günlük üst sınıra ulaştıktan sonra uygulamanızın sistem durumunu ve performansını izleyemezsiniz.
 
-Günlük birim Cap 'i kullanmak yerine, veri hacmi istediğiniz düzeye ayarlamak için [örnekleme](../../azure-monitor/app/sampling.md) 'yı kullanın. Daha sonra, uygulamanızın çok daha yüksek sayıda telemetri göndermek için beklenmedik şekilde başlaması durumunda günlük ucunu yalnızca "son çare" olarak kullanın.
+Günlük birim Cap 'i kullanmak yerine, veri hacmi istediğiniz düzeye ayarlamak için [örnekleme](./sampling.md) 'yı kullanın. Daha sonra, uygulamanızın çok daha yüksek sayıda telemetri göndermek için beklenmedik şekilde başlaması durumunda günlük ucunu yalnızca "son çare" olarak kullanın.
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Hangi günlük veri sınırının tanımlanacağını belirleyin
 
@@ -219,7 +219,7 @@ Günlük ucunu değiştirmek için, Application Insights kaynağınızın **Yap�
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-003.png)
 
-[Günlük ucunu Azure Resource Manager ile değiştirmek](../../azure-monitor/app/powershell.md)için, değiştirilecek özellik olur `dailyQuota` .  Azure Resource Manager aracılığıyla, `dailyQuotaResetTime` ve günlük Cap 'leri de ayarlayabilirsiniz `warningThreshold` .
+[Günlük ucunu Azure Resource Manager ile değiştirmek](./powershell.md)için, değiştirilecek özellik olur `dailyQuota` .  Azure Resource Manager aracılığıyla, `dailyQuotaResetTime` ve günlük Cap 'leri de ayarlayabilirsiniz `warningThreshold` .
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Günlük üst sınır için uyarı oluşturma
 
@@ -230,13 +230,13 @@ Application Insights günlük uç, alınan veri birimleri uyarı düzeyine veya 
 * Application Insights bileşene günlük sınıra ulaşıldı
 
 ## <a name="sampling"></a>Örnekleme
-[Örnekleme](../../azure-monitor/app/sampling.md) , tanılama aramaları sırasında ilgili olayları bulma özelliğini korurken, telemetrinin uygulamanıza gönderilme hızını azaltma yöntemidir. Ayrıca, doğru olay sayılarını da koruyabilirsiniz.
+[örnekleme](./sampling.md) , tanılama aramaları sırasında ilgili olayları bulma özelliğini korurken, telemetrinin uygulamanıza gönderilme hızını azaltma yöntemidir. Ayrıca, doğru olay sayılarını da koruyabilirsiniz.
 
 Örnekleme, ücretleri azaltmak ve aylık kotasında kalmak için etkili bir yoldur. Örnekleme algoritması ilgili telemetri öğelerini korur, örneğin, ara 'yı kullandığınızda belirli bir özel durumla ilgili isteği bulabilirsiniz. Algoritma Ayrıca, istek hızları, özel durum ücretleri ve diğer sayımlar için ölçüm Gezgininde doğru değerleri görmeniz için doğru sayıları de korur.
 
 Birçok örnekleme biçimi vardır.
 
-* [Uyarlamalı örnekleme](../../azure-monitor/app/sampling.md) , ASP.NET SDK için varsayılandır. Uyarlamalı örnekleme, uygulamanızın gönderdiği telemetri hacmine otomatik olarak ayarlanır. Ağ üzerindeki telemetri trafiğinin azaltılabilmesi için Web uygulamanızdaki SDK 'da otomatik olarak çalışır. 
+* [Uyarlamalı örnekleme](./sampling.md) , ASP.NET SDK için varsayılandır. Uyarlamalı örnekleme, uygulamanızın gönderdiği telemetri hacmine otomatik olarak ayarlanır. Ağ üzerindeki telemetri trafiğinin azaltılabilmesi için Web uygulamanızdaki SDK 'da otomatik olarak çalışır. 
 * Alım *örnekleme* , uygulamanızdaki Telemetriyi Application Insights hizmetine girdiği noktada çalışan bir alternatiftir. Alım örnekleme, uygulamanızdan gönderilen telemetri hacmini etkilemez, ancak hizmet tarafından tutulan hacmi azaltır. Tarayıcıların ve diğer SDK 'lardan telemetri tarafından kullanılan kotayı azaltmak için alma örneklemesini kullanabilirsiniz.
 
 Alım örneklemesini ayarlamak için **fiyatlandırma** bölmesine gidin:
@@ -310,7 +310,7 @@ Bu katman yalnızca Operations Management Suite aboneliği olan müşterilere uy
   * *Düğüm* , uygulamanızı barındıran bir fiziksel veya sanal sunucu makinesi veya hizmet olarak platform bir rol örneğidir.
   * Geliştirme makineleri, istemci tarayıcıları ve mobil cihazlar düğüm olarak sayılmaz.
   * Uygulamanızda, Web hizmeti ve arka uç çalışanı gibi telemetri gönderen birkaç bileşen varsa, bileşenler ayrı olarak sayılır.
-  * [Canlı ölçüm akışı](../../azure-monitor/app/live-stream.md) veriler fiyatlandırma amacıyla sayılmaz. Bir abonelikte, ücretleriniz uygulama başına değil düğüm başına alınır. 12 uygulama için telemetri gönderen beş düğümünüz varsa, ücret beş düğüm için yapılır.
+  * [Canlı ölçüm akışı](./live-stream.md) veriler fiyatlandırma amacıyla sayılmaz. Bir abonelikte, ücretleriniz uygulama başına değil düğüm başına alınır. 12 uygulama için telemetri gönderen beş düğümünüz varsa, ücret beş düğüm için yapılır.
 * Ücretler ayda tırnak içine alınmış olsa da, yalnızca bir düğümün bir uygulamadan telemetri gönderdiği saatler için ücretlendirilirsiniz. Saatlik ücret, 744 ile bölünmüş, saatlik olarak aylık ücretlendirilir (31 günlük aydaki saat sayısı).
 * Algılanan her düğüm için günde 200 MB 'lık bir veri birimi ayırması verilir (saatlik ayrıntı düzeyi ile). Kullanılmayan veri ayırma bir günden sonrakine taşınmaz.
   * Düğüm başına fiyatlandırma katmanını seçerseniz, her abonelik, Bu abonelikteki Application Insights kaynaklarına telemetri gönderen düğüm sayısına bağlı olarak günlük bir veri tahsisatı alır. Bu nedenle, her gün veri gönderen beş düğümünüz varsa, Bu abonelikteki tüm Application Insights kaynaklarına 1 GB 'lik bir havuz uygulanmış olması gerekir. Dahil edilen veriler tüm düğümlerde paylaşıldığından, bazı düğümlerin diğer düğümlere kıyasla daha fazla veri gönderemediği kesin değildir. Belirli bir gün içinde Application Insights kaynakları, bu abonelik için günlük veri ayırmaya dahil olandan daha fazla veri alır, GB başına fazla kullanım ücreti uygulanır. 
@@ -339,10 +339,11 @@ Fiyatlandırma katmanını Azure Kaynak Yönetimi 'ni kullanarak ayarlamak için
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Örnekleme](../../azure-monitor/app/sampling.md)
+* [aşağıdakine](./sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
+

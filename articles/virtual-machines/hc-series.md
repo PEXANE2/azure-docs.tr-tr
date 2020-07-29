@@ -4,14 +4,15 @@ description: HC Serisi VM 'Ler için belirtim.
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 08496068ac00de26a057e65fd758eb1cf8870a72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebdb88b8375fbb22c6148f94b16a2e649b4ba54b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673726"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283359"
 ---
 # <a name="hc-series"></a>HC serisi
 

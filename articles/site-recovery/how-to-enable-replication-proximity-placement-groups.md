@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: ec516ac1cd9c2a6201bfc77bd1169bcd8ea83e44
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f64c7aa45b748bdb8174bd69dbfc25f43329c10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091513"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285348"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Yakınlık yerleştirme gruplarında çalışan Azure sanal makinelerini başka bir bölgeye çoğaltma
 
@@ -28,14 +28,21 @@ Tipik bir senaryoda, uygulamanızın çeşitli katmanları arasındaki ağ gecik
 -  Bir kullanılabilirlik kümesi bir yakınlık yerleşimi grubuna sabitlenmiştir ve kullanılabilirlik kümesindeki yük devretme/yeniden çalışma VM 'Leri için bir ayırma kısıtlaması varsa, sanal makineler hem kullanılabilirlik kümesi hem de yakınlık yerleşimi grubu dışında oluşturulur.
 -  Yönetilmeyen diskler için Site Recovery yakınlık yerleştirme grupları desteklenmez.
 
-> [!Note]
+> [!NOTE]
 > Azure Site Recovery, Hyper-V ' d e Azure senaryolarına yönelik yönetilen disklerden yeniden çalışmayı desteklemez. Bu nedenle, Azure 'daki yakınlık yerleşimi grubundan Hyper-V ' d e yeniden çalışma desteklenmez.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure PowerShell az modüle sahip olduğunuzdan emin olun. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps)izleyin.
+2. En az Azure PowerShell az sürüm 4.1.0 olmalıdır. Geçerli sürümü denetlemek için aşağıdaki komutu kullanın-
+    ```
+    Get-InstalledModule -Name Az
+    ```
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Yakınlık yerleştirme grubundaki sanal makineler için Site Recovery ayarlama
+
+> [!NOTE]
+> Hedef yakınlık yerleşimi grubunun benzersiz KIMLIĞINE sahip olduğunuzdan emin olun. Yeni bir yakınlık yerleşimi grubu oluşturuyorsanız, [burada](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group) komutu kontrol edin ve var olan bir yakınlık yerleşimi grubunu kullanıyorsanız [buradaki](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)komutu kullanın.
 
 ### <a name="azure-to-azure"></a>Azure-Azure arası
 
@@ -48,7 +55,7 @@ Tipik bir senaryoda, uygulamanızın çeşitli katmanları arasındaki ağ gecik
 7. [Bu](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) adımları ve [burada](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)belirtildiği gibi yeniden çalışma için bir koruma kapsayıcısı eşlemesini kullanarak birincil ve kurtarma koruma kapsayıcısı arasında bir koruma kapsayıcısı eşlemesi oluşturun.
 8. [Aşağıdaki adımları izleyerek](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account) önbellek depolama hesabı oluşturun.
 9. [Burada](./azure-to-azure-powershell.md#create-network-mappings)belirtildiği gibi gerekli ağ eşlemelerini oluşturun.
-10. Azure sanal makinesini yönetilen disklerle çoğaltmak için aşağıdaki PowerShell cmdlet 'ini kullanın: 
+10. Azure sanal makinesini yönetilen disklerle çoğaltmak için aşağıdaki PowerShell cmdlet 'ini kullanın-
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
@@ -77,7 +84,7 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 #Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
 
-$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $recPpg.Id
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 Çoğaltma başlatma işlemi başarılı olduktan sonra, sanal makine verileri kurtarma bölgesine çoğaltılır.
 
@@ -85,7 +92,7 @@ $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -A
 
 İlk çoğaltma tamamlandıktan sonra çoğaltma, fark eşitleme aşamasına gider. Bu noktada, sanal makine korunur ve üzerinde bir test yük devretmesi işlemi gerçekleştirilebilir. İlk çoğaltma tamamlandıktan sonra, sanal makineyi temsil eden çoğaltılan öğenin çoğaltma durumu korunan duruma geçer.
 
-Kendisine karşılık gelen çoğaltma korumalı öğenin ayrıntılarını alarak sanal makinenin çoğaltma durumunu ve çoğaltma durumunu izleyin. 
+Kendisine karşılık gelen çoğaltma korumalı öğenin ayrıntılarını alarak sanal makinenin çoğaltma durumunu ve çoğaltma durumunu izleyin.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
@@ -130,7 +137,7 @@ $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Protection
 
 # Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
-$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $recPpg.Id
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 8. Get-Asrreplicationkorunabilir Dıdıtem cmdlet 'ini kullanarak sanal makinenin çoğaltma durumunu ve çoğaltma durumunu kontrol edebilirsiniz.
 
@@ -161,7 +168,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
     
     ```azurepowershell
     $OSType = "Windows"          # "Windows" or "Linux"
-    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $recPpg.Id
+    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $targetPpg.Id
     ```
     c. İlk çoğaltmadan sonra VM 'Lerin korumalı duruma ulaşmasını bekleyin. Bu işlem, çoğaltılacak veri miktarı ve Azure için kullanılabilir yukarı akış bant genişliği gibi etkenlere bağlı olarak biraz zaman alabilir. Korunan bir durum olduğunda, iş durumu ve StateDescription aşağıdaki gibi güncelleştirilir: 
     

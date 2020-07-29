@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 42924b4ac5493fc910079ca1f89a6195ccba55e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007920"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305100"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Tanılama uzantısı (WAD) yapılandırma şeması sürümleri ve geçmişi
 Bu makalede, Microsoft Azure SDK 'sının bir parçası olarak gönderilen [Windows (WAD) şema sürümlerinin Azure tanılama uzantısının](diagnostics-extension-overview.md) sürüm geçmişi sağlanmaktadır.  
@@ -19,7 +19,7 @@ Bu makalede, Microsoft Azure SDK 'sının bir parçası olarak gönderilen [Wind
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK ve tanılama sürümleri sevkiyat grafiği  
 
-|Azure SDK sürümü | Tanılama uzantısı sürümü | Modelleme|  
+|Azure SDK sürümü | Tanılama uzantısı sürümü | Model|  
 |------------------|-------------------------------|------|  
 |'in               |1,0                            |eklenti|  
 |2,0-2,4         |1,0                            |eklenti|  
@@ -47,7 +47,7 @@ Farklı Azure tanılama sürümleri farklı yapılandırma şemaları kullanır.
 ### <a name="diagnostics-extension-111"></a>Tanılama uzantısı 1,11
 Azure Izleyici havuzu için destek eklendi. Bu havuz yalnızca performans sayaçları için geçerlidir. VM, VMSS veya bulut hizmetinizde toplanan performans sayaçlarının özel ölçümler olarak Azure Izleyicisine gönderilmesini sağlar. Azure Izleyici havuzu şunları destekler:
 * Azure izleyici [ölçümleri API 'leri](/rest/api/monitor/metrics/list) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarını alma.
-* Azure izleyici 'de yeni [birleşik uyarılar deneyimi](../../azure-monitor/platform/alerts-overview.md) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarında uyarı verme
+* Azure izleyici 'de yeni [birleşik uyarılar deneyimi](./alerts-overview.md) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarında uyarı verme
 * Performans sayaçlarındaki joker karakter operatörü, ölçümünüzün "örnek" boyutu olarak değerlendiriliyor. Örneğin, "MantıksalDisk ( \* )/Diskwrites/SEC" sayacını topladıysanız, her mantıksal disk için (C:, D:, vb.) disk yazma/sn üzerinde çizim yapmak veya uyarı vermek üzere "örnek" boyutunda filtre uygulayabilir ve bölebilirsiniz.
 
 Azure Izleyici 'yi tanılama uzantısı yapılandırmanızda yeni bir havuz olarak tanımlama
@@ -155,7 +155,7 @@ PublicConfig 'e depolama türü eklendi. StorageType *tablo*, *BLOB*, *tableandb
 EventHub 'e yönlendirme özelliği eklendi.
 
 ### <a name="diagnostics-extension-15"></a>Tanılama uzantısı 1,5
-Uygulama ve altyapı düzeyinin yanı sıra uygulamanızdaki sorunları tanılamaya daha kolay hale getirmek [Application Insights](../../azure-monitor/app/cloudservices.md) ' ye Tanılama verileri gönderme özelliği eklendi.
+Uygulama ve altyapı düzeyinin yanı sıra uygulamanızdaki sorunları tanılamaya daha kolay hale getirmek [Application Insights](../app/cloudservices.md) ' ye Tanılama verileri gönderme özelliği eklendi.
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2,6 ve tanılama uzantısı 1,3
 Visual Studio 'da bulut hizmeti projeleri için aşağıdaki değişiklikler yapılmıştır. (Bu değişiklikler Azure SDK 'nın sonraki sürümleri için de geçerlidir.)
@@ -190,3 +190,4 @@ Projenizi Azure SDK 2,5 2,4 veya sonraki bir sürüme yükseltiyorsanız, aşağ
 * **Bulut hizmeti uygulamalarına yönelik Tanılamalar, örnek düzeyinde değil yalnızca rol düzeyinde yapılandırılabilir.**
 * **Uygulamanızı her dağıttığınızda tanılama yapılandırması güncelleştirilir** . Bu, tanılama yapılandırmanızı Sunucu Gezgini değiştirirseniz ve sonra uygulamanızı yeniden dağıtmanız durumunda eşlik sorunlarına neden olabilir.
 * **Azure sdk 2,5 ve sonraki sürümlerinde kilitlenme dökümleri tanılama yapılandırma dosyasında, kodda değil, yapılandırılır** . kodda yapılandırılmış kilitlenme dökümlerinin varsa, azure SDK 2,6 ' e geçiş sırasında kilitlenme dökümleri aktarılmadığı için yapılandırmayı koddan yapılandırma dosyasına el ile aktarmanız gerekir.
+

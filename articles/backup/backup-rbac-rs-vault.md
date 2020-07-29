@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasındaki yedekleme yönetimi işlemlerine e
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: dd6930a0228829f376140d515a3035afebad0f27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 89e5cf7c6b46d63b10bd358fc078f8f87db689c8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032434"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371711"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarını yönetmek için rol tabanlı Access Control kullanma
 
@@ -18,7 +18,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı eriş
 > [!IMPORTANT]
 > Azure Backup tarafından sunulan roller Azure portal veya REST API ya da kurtarma hizmetleri Kasası PowerShell veya CLı cmdlet 'leri aracılığıyla gerçekleştirilebilecek eylemlerle sınırlıdır. Azure Backup Aracısı Istemci kullanıcı arabirimi veya System Center Data Protection Manager Kullanıcı arabirimi veya Azure Backup Sunucusu Kullanıcı arabirimi ' nde gerçekleştirilen eylemler bu rollerin denetimini dışındadır.
 
-Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç yerleşik rol sağlar. [Azure RBAC yerleşik rolleri](../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi edinin
+Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç yerleşik rol sağlar. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi edinin
 
 * [Yedek katılımcısı](../role-based-access-control/built-in-roles.md#backup-contributor) -bu rolün, kurtarma hizmetleri kasasını silme ve başkalarına erişim verme dışında yedekleme oluşturma ve yönetme izinleri vardır. Bu rolü, her yedekleme yönetimi işlemini yapan yedekleme yönetiminin Yöneticisi olarak düşünün.
 * [Yedekleme işletmeni](../role-based-access-control/built-in-roles.md#backup-operator) -bu rolün, yedeklemenin kaldırılması ve yedekleme ilkelerinin yönetilmesi dışında, katkıda bulunan her şeye yönelik izinleri vardır. Bu rol katkıda bulunan, verileri silme veya şirket içi kaynakların kaydını kaldırma gibi bozucu işlemler gerçekleştiremedikçe, katkıda buluna eşdeğerdir.

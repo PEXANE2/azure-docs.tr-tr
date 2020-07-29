@@ -2,19 +2,16 @@
 title: Azure Otomasyonu runbook sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu runbook 'larında sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/24/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bf04ae6985ac2ce0e20bf70b3d7c003bbddca69
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187192"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337305"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
 
@@ -511,6 +508,24 @@ Ayda 500 dakikadan fazla işlem kullanmak istiyorsanız aboneliğinizi ücretsiz
 1. **Ayarlar**' ı seçin ve **fiyatlandırma**' yı seçin.
 1. Hesabınızı temel katmana yükseltmek için en alttaki sayfada **Etkinleştir** ' i seçin.
 
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Senaryo: runbook çıkış akışı 1 MB 'den büyük
+
+### <a name="issue"></a>Sorun
+
+Azure korumalı alanında çalışan runbook 'larınız aşağıdaki hatayla başarısız olur:
+
+```error
+The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
+```
+
+### <a name="cause"></a>Nedeni
+
+Bu hata, runbook 'larınızın çıkış akışına çok fazla özel durum verisi yazmayı denemesinden kaynaklanır.
+
+### <a name="resolution"></a>Çözüm
+
+İş çıktı akışında 1 MB 'lik bir sınır vardır. Runbook 'larınızın, ve blokları kullanarak bir çalıştırılabilir veya alt işleme çağrıları barındıraldığından emin olun `try` `catch` . İşlemler bir özel durum oluştura, kodun özel durumdan bir Otomasyon değişkenine ileti yazmasını sağlayabilirsiniz. Bu teknik, iletinin iş çıkış akışına yazılmasını engeller. Yürütülen karma Runbook Worker işleri için, çıkış akışı 1 MB 'a kesildi ve hata iletisi olmadan görüntülenir.
+
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>Senaryo: runbook işi üç kez denendi, ancak her seferinde başlatılamaz
 
 ### <a name="issue"></a>Sorun
@@ -526,20 +541,22 @@ The job was tried three times but it failed
 Bu hata, aşağıdaki sorunlardan biri nedeniyle oluşur:
 
 * **Bellek sınırı.** Bir iş 400 MB 'tan fazla bellek kullanıyorsa başarısız olabilir. Bir korumalı alana ayrılan bellek üzerinde belgelenen sınırlar [Automation hizmeti sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)' nde bulunur. 
+
 * **Ağ yuvaları.** Azure korumalı alanlar 1.000 eşzamanlı ağ yuvası ile sınırlıdır. Daha fazla bilgi için bkz. [Otomasyon Hizmeti sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
+
 * **Modül uyumsuz.** Modül bağımlılıkları doğru olmayabilir. Bu durumda, runbook genellikle bir `Command not found` veya `Cannot bind parameter` iletisi döndürür.
+
 * **Korumalı alan için Active Directory kimlik doğrulaması yok.** Runbook 'iniz, bir Azure korumalı alanında çalışan bir yürütülebilir dosyayı veya alt işlemi çağırmayı denedi. Azure Active Directory kimlik doğrulama kitaplığı 'nı (ADAL) kullanarak Azure AD ile kimlik doğrulaması yapmak için Runbook 'ları yapılandırma desteklenmez.
-* **Çok fazla özel durum verisi.** Runbook, çıkış akışına çok fazla özel durum verisi yazmayı denedi.
 
 ### <a name="resolution"></a>Çözüm
 
 * **Bellek sınırı, ağ yuvaları.** Bellek sınırları içinde çalışma için önerilen yollar, iş yükünü birden çok runbook arasında bölmek, bellekte daha az veri işlemek, runbook 'lerinizden gereksiz çıkış yazmaktan kaçınmamak ve PowerShell iş akışı runbook 'larınıza kaç denetim noktası yazılacağını göz önünde bulundurmaktır. `$myVar.clear`Değişkenleri temizlemek ve `[GC]::Collect` çöp toplamayı hemen çalıştırmak için kullanmak gibi Clear metodunu kullanın. Bu eylemler çalışma zamanı sırasında runbook 'larınızın bellek parmak izini azaltır.
+
 * **Modül uyumsuz.** Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)bölümündeki adımları izleyerek Azure modüllerinizi güncelleştirin.
+
 * **Korumalı alan için Active Directory kimlik doğrulaması yok.** Azure AD 'de bir runbook ile kimlik doğrulaması yaptığınızda, Azure AD modülünün Otomasyon hesabınızda kullanılabilir olduğundan emin olun. Farklı Çalıştır hesabına runbook 'un otomatikleştiren görevleri gerçekleştirmek için gerekli izinleri verdiğinizden emin olun.
 
   Runbook 'iniz bir Azure korumalı alanında çalışan bir yürütülebilir dosyayı veya alt işlemi çağıramıyorum, bir [karma runbook çalışanında](../automation-hrw-run-runbooks.md)runbook 'u kullanın. Hibrit çalışanlar, Azure sanal ağı 'nın sahip olduğu bellek ve ağ limitleriyle sınırlı değildir.
-
-* **Çok fazla özel durum verisi.** İş çıktı akışında 1 MB 'lik bir sınır vardır. Runbook 'larınızın, ve blokları kullanarak bir çalıştırılabilir veya alt işleme çağrıları barındıraldığından emin olun `try` `catch` . İşlemler bir özel durum oluştura, kodun özel durumdan bir Otomasyon değişkenine ileti yazmasını sağlayabilirsiniz. Bu teknik, iletinin iş çıkış akışına yazılmasını engeller.
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>Senaryo: PowerShell işi "yöntem çağrılamaz" hata iletisiyle başarısız oluyor
 

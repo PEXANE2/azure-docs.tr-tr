@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202533"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372047"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
@@ -35,7 +35,7 @@ Bu makale aşağıdaki öğreticileri içerir:
 
 Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluşturabilirsiniz. Microsoft Destek sorunu gidermek için bu paketi kullanır. Bir destek paketi oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Yerel web kullanıcı arabiriminde **Desteğe Başvur**'a gidin ve **Destek paketi oluştur**'a tıklayın.
+1. Yerel Web Kullanıcı arabiriminde, desteğe **başvurun** ' e gidin ve **destek paketi oluştur**' u seçin.
 
     ![Destek paketi oluşturma 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,14 +43,13 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluştu
 
     ![Destek paketi oluşturma 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. Destek paketi oluşturma işlemi tamamlandıktan sonra **Destek paketini indir**'e tıklayın. 
+3. Destek paketi oluşturma işlemi tamamlandıktan sonra **destek paketini indir**' i seçin.
 
     ![Destek paketi oluşturma 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. İndirme konumuna göz atıp konumu seçin. İçeriği görüntülemek için klasörü açın.
 
     ![Destek paketi oluşturma 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>Cihazınızı kapatma ya da yeniden başlatma
 
@@ -59,7 +58,7 @@ Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeni
 Cihazınızı kapatmak için aşağıdaki adımları uygulayın.
 
 1. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
-2. **Kapat**'a tıklayın.
+2. **Kapat ' ı**seçin.
 
     ![Data Box'ı kapatma 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -72,11 +71,11 @@ Cihaz kapatıldıktan sonra cihazı açmak için ön paneldeki güç düğmesini
 Data Box'ınızı yeniden başlatmak için aşağıdaki adımları gerçekleştirin.
 
 1. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
-2. **Yeniden Başlat**'a tıklayın.
+2. **Yeniden Başlat**' ı seçin.
 
     ![Data Box'ı yeniden başlatma 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. Onayınız istendiğinde devam etmek için **Tamam**'a tıklayın.
+3. Onay istendiğinde, devam etmek için **Tamam** ' ı seçin.
 
    Cihaz kapatılır ve sonra yeniden başlatır.
 
@@ -90,9 +89,9 @@ Başlamadan önce, cihazınızın **göndermeye hazırlama** adımını tamamlad
 
     ![Cihaz sevk etmeye hazırlanıyor](media/data-box-portal-admin/ready-to-ship.png)
 
-2. Data Box kopyalanan dosyaların listesini indirmek için **dosya listesini indir** ' e tıklayın.
+2. Data Box kopyalanan dosyaların listesini indirmek için **dosya listesini indir** ' i seçin.
 
-    ![Dosya listesini Indir ' e tıklayın](media/data-box-portal-admin/download-list-of-files.png)
+    ![Dosya listesini Indir ' i seçin](media/data-box-portal-admin/download-list-of-files.png)
 
 3. Dosya Gezgini 'nde, cihaza bağlanmak için kullanılan protokole ve kullanılan Azure depolama türüne bağlı olarak ayrı dosya listesinin oluşturulduğunu görürsünüz.
 
@@ -104,7 +103,7 @@ Başlamadan önce, cihazınızın **göndermeye hazırlama** adımını tamamlad
     |---------|---------|---------|
     |databoxe2etest_BlockBlob.txt     |Blok blobları         |SMB/NFS         |
     |databoxe2etest_PageBlob.txt     |Sayfa blobları         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure Dosyalar         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Azure Dosyaları         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Sayfa blobları         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blok blobları         |REST         |
     |mydbmdrg1_MDisk-BOM.txt    |Yönetilen Disk         |SMB/NFS         |
@@ -179,10 +178,51 @@ Performans ciddi şekilde etkilenmedikçe sağlama toplamını kesinlikle atlama
     ![Sağlama toplamını devre dışı bırakma](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. Sağlama toplamı doğrulamasını **Devre dışı bırakma**
-3. **Uygula**'ya tıklayın.
+3. **Uygula**’yı seçin.
 
 > [!NOTE]
 > Sağlama toplamı hesaplamayı Atla seçeneği yalnızca Azure Data Box kilidi açıldığında kullanılabilir. Cihaz kilitlendiğinde bu seçeneği görmezsiniz.
 
-- [Azure Portal aracılığıyla Data Box ve Data Box Heavy yönetmeyi](data-box-portal-admin.md)öğrenin.
+## <a name="enable-smb-signing"></a>SMB imzalamayı etkinleştir
 
+Sunucu ileti bloğu (SMB) imzalama, SMB kullanan iletişimin paket düzeyinde dijital olarak imzalanmasına yönelik bir özelliktir. Bu imzalama, geçiş sırasında SMB paketlerini değiştiren saldırıları engeller.
+
+SMB imzalama ile ilgili daha fazla bilgi için bkz. [sunucu Ileti bloğu Imzalamaya genel bakış](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing).
+
+Azure cihazınızda SMB imzalamayı etkinleştirmek için:
+
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
+
+    ![Ayarlar'ı açma](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Etkinleştir** SMB Imzalama.
+
+    ![SMB imzalamayı etkinleştir](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. **Uygula**’yı seçin.
+4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+5. **Yeniden Başlat**' ı seçin.
+
+## <a name="enable-tls-11"></a>TLS 1,1 'yi etkinleştirme
+
+Varsayılan olarak, Azure Data Box, TSL 1,1 ' den daha güvenli olduğu için şifreleme için Aktarım Katmanı Güvenliği (TLS) 1,2 kullanır. Ancak, veya istemcileriniz TLS 1,2 desteklemeyen verilere erişmek için bir tarayıcı kullanıyorsa, TLS 1,1 ' i etkinleştirebilirsiniz.
+
+TLS ile ilgili daha fazla bilgi için bkz. [Azure Data Box Gateway Security](../databox-online/data-box-gateway-security.md).
+
+Azure cihazınızda TLS 1,1 ' i etkinleştirmek için:
+
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
+
+    ![Ayarlar'ı açma](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Etkinleştir** TLS 1,1.
+
+    ![TLS 1,1 'yi etkinleştirme](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. **Uygula**’yı seçin.
+4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+5. **Yeniden Başlat**' ı seçin.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure Portal aracılığıyla Data Box ve Data Box Heavy yönetmeyi](data-box-portal-admin.md)öğrenin.

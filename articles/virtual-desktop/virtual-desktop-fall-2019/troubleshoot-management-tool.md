@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü yönetim aracı-Azure
-description: Windows sanal masaüstü yönetim aracı ile ilgili sorunları giderme.
+title: Windows sanal masaüstü (klasik) yönetim aracı-Azure
+description: Windows sanal masaüstü (klasik) yönetim aracı ile ilgili sorunları giderme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb9206d2c2c15c036b0cf1184b79ed126966eb3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 442cdce2ebb6c1a3e38932411dfa2b081a44ef9f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614804"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283376"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Windows Sanal Masaüstü yönetim aracı sorunlarını giderme
+# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Windows sanal masaüstü (klasik) yönetim aracında sorun giderme
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 Bu makalede, Windows sanal masaüstü yönetim aracı dağıtıldığında oluşabilecek sorunlar ve bunları nasıl gidereceğiniz anlatılmaktadır.
 

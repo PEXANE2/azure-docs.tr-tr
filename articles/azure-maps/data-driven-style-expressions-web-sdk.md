@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242619"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285722"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Veri tabanlı stil Ifadeleri (Web SDK)
 
@@ -81,18 +81,18 @@ Bu belgedeki tüm örnekler, farklı ifade türlerinin kullanılabileceği farkl
 
 Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar. 
 
-| İfade | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
-| `['at', number, array]` | nesne | Diziden bir öğe alır. |
-| `['geometry-type']` | string | Özelliğin geometri türünü alır: Point, MultiPoint, LineString, MultiLineString, Çokgen, MultiPolygon. |
+| `['at', number, array]` | object | Diziden bir öğe alır. |
+| `['geometry-type']` | dize | Özelliğin geometri türünü alır: Point, MultiPoint, LineString, MultiLineString, Çokgen, MultiPolygon. |
 | `['get', string]` | değer | Geçerli özelliğin özelliklerinden özellik değerini alır. İstenen özellik eksikse null değerini döndürür. |
 | `['get', string, object]` | değer | Belirtilen nesnenin özelliklerinden özellik değerini alır. İstenen özellik eksikse null değerini döndürür. |
-| `['has', string]` | boole | Özelliğin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
-| `['has', string, object]` | boole | Nesnenin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
+| `['has', string]` | boolean | Özelliğin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
+| `['has', string, object]` | boolean | Nesnenin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
 | `['id']` | değer | Özelliği varsa özelliğin KIMLIĞINI alır. |
 | `['length', string | array]` | sayı | Bir dizenin veya dizinin uzunluğunu alır. |
-| `['in', boolean | string | number, array]` | boole | Dizide bir öğe olup olmadığını belirler |
-| `['in', substring, string]` | boole | Bir dizedeki alt dizenin mevcut olup olmadığını belirler |
+| `['in', boolean | string | number, array]` | boolean | Dizide bir öğe olup olmadığını belirler |
+| `['in', substring, string]` | boolean | Bir dizedeki alt dizenin mevcut olup olmadığını belirler |
 
 **Örnekler**
 
@@ -141,7 +141,7 @@ Benzer şekilde, çokgenler ana hattı çizgi katmanlarında işlenir. Bir çizg
 
 Matematik ifadeleri, ifade çerçevesi içinde veri odaklı hesaplamalar gerçekleştirmek için matematik işleçleri sağlar.
 
-| İfade | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | sayı | Belirtilen sayıların toplamını hesaplar. |
 | `['-', number]` | sayı | Belirtilen sayı ile 0 çıkartır. |
@@ -196,17 +196,17 @@ Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi B
 
 Değerler karşılaştırılırken karşılaştırma kesin olarak yazılır. Farklı türlerin değerleri her zaman eşit kabul edilir. Türlerin ayrıştırma zamanında farklı olduğu bilinen durumlar geçersiz olarak değerlendirilir ve bir ayrıştırma hatası oluşturur. 
 
-| İfade | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boole | Mantıksal değilleme. `true`Girişin olup olmadığını ve girişin olup olmadığını döndürür `false` `false` `true` . |
-| `['!= ', value, value]` | boole | `true`Giriş değerleri eşit değilse döndürür, `false` Aksi takdirde. |
-| `['<', value, value]` | boole | `true`İlk giriş ikinciden kesinlikle küçükse döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
-| `['<=', value, value]` | boole | `true`İlk girişin ikinciden küçük veya ona eşit olup olmadığını döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
-| `['==', value, value]` | boole | `true`Giriş değerlerinin eşitse, `false` Aksi takdirde döndürür. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
-| `['>', value, value]` | boole | `true`İlk girişin ikinciden kesinlikle büyük olup olmadığını döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
-| `['>=' value, value]` | boole | `true`İlk girişin ikinciden büyük veya ona eşit olup olmadığını döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
-| `['all', boolean, boolean, …]` | boole | `true`Tüm girdilerin `true` , yoksa, döndürür `false` . |
-| `['any', boolean, boolean, …]` | boole | Girdilerden `true` herhangi biri ise `true` , `false` Aksi takdirde döndürür. |
+| `['! ', boolean]` | boolean | Mantıksal değilleme. `true`Girişin olup olmadığını ve girişin olup olmadığını döndürür `false` `false` `true` . |
+| `['!= ', value, value]` | boolean | `true`Giriş değerleri eşit değilse döndürür, `false` Aksi takdirde. |
+| `['<', value, value]` | boolean | `true`İlk giriş ikinciden kesinlikle küçükse döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
+| `['<=', value, value]` | boolean | `true`İlk girişin ikinciden küçük veya ona eşit olup olmadığını döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
+| `['==', value, value]` | boolean | `true`Giriş değerlerinin eşitse, `false` Aksi takdirde döndürür. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
+| `['>', value, value]` | boolean | `true`İlk girişin ikinciden kesinlikle büyük olup olmadığını döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
+| `['>=' value, value]` | boolean | `true`İlk girişin ikinciden büyük veya ona eşit olup olmadığını döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
+| `['all', boolean, boolean, …]` | boolean | `true`Tüm girdilerin `true` , yoksa, döndürür `false` . |
+| `['any', boolean, boolean, …]` | boolean | Girdilerden `true` herhangi biri ise `true` , `false` Aksi takdirde döndürür. |
 
 ## <a name="conditional-expressions"></a>Koşullu ifadeler
 
@@ -399,15 +399,15 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türlerini test etmek ve dönüştürmek için araçlar sağlar.
 
-| İfade | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | dizi \| nesnesi | Sabit bir dizi veya nesne değeri döndürür. Bir dizi ya da nesnenin bir ifade olarak değerlendirilmesini engellemek için bu ifadeyi kullanın. Bir dizi ya da nesnenin bir ifade tarafından döndürülmesi gerektiğinde bu gereklidir. |
-| `['image', string]` | string | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
-| `['to-boolean', value]` | boole | Giriş değerini bir Boole değerine dönüştürür. Sonuç, `false` girişin boş bir dize,,, veya, `0` `false` `null` `NaN` Aksi durumda `true` . |
+| `['image', string]` | dize | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
+| `['to-boolean', value]` | boolean | Giriş değerini bir Boole değerine dönüştürür. Sonuç, `false` girişin boş bir dize,,, veya, `0` `false` `null` `NaN` Aksi durumda `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Giriş değerini bir renge dönüştürür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | sayı | Mümkünse, giriş değerini bir sayıya dönüştürür. Giriş `null` veya ise `false` , sonuç 0 ' dır. Giriş ise, `true` Sonuç 1 ' dir. Giriş bir dizeyse, ECMAScript dil belirtiminin [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) dize işlevini kullanarak bir sayıya dönüştürülür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
-| `['to-string', value]` | string | Giriş değerini bir dizeye dönüştürür. Giriş ise, `null` sonuç olur `""` . Giriş bir Boole ise, sonuç `"true"` veya olur `"false"` . Giriş bir sayı ise, ECMAScript dil belirtiminin [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number işlevi kullanılarak bir dizeye dönüştürülür. Giriş bir renkeyse CSS RGBA Color dizesine dönüştürülür `"rgba(r,g,b,a)"` . Aksi takdirde, giriş, ECMAScript dil belirtiminin [JSON. stringbelirt](https://tc39.github.io/ecma262/#sec-json.stringify) işlevi kullanılarak bir dizeye dönüştürülür. |
-| `['typeof', value]` | string | Verilen değerin türünü tanımlayan bir dize döndürür. |
+| `['to-string', value]` | dize | Giriş değerini bir dizeye dönüştürür. Giriş ise, `null` sonuç olur `""` . Giriş bir Boole ise, sonuç `"true"` veya olur `"false"` . Giriş bir sayı ise, ECMAScript dil belirtiminin [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number işlevi kullanılarak bir dizeye dönüştürülür. Giriş bir renkeyse CSS RGBA Color dizesine dönüştürülür `"rgba(r,g,b,a)"` . Aksi takdirde, giriş, ECMAScript dil belirtiminin [JSON. stringbelirt](https://tc39.github.io/ecma262/#sec-json.stringify) işlevi kullanılarak bir dizeye dönüştürülür. |
+| `['typeof', value]` | dize | Verilen değerin türünü tanımlayan bir dize döndürür. |
 
 > [!TIP]
 > Tarayıcı konsolunda aşağıdakine benzer bir hata iletisi varsa `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` , kodunuzda ilk değeri için bir dize olmayan bir dizi içeren bir ifade olduğu anlamına gelir. İfadenin bir dizi döndürmesini istiyorsanız, diziyi ifadesiyle sarın `literal` . Aşağıdaki örnek, `offset` `match` nokta özelliğinin özelliğinin değerine bağlı olarak iki sayı değeri arasında seçim yapmak için bir ifade kullanarak bir sembol katmanının simge seçeneğini ayarlar `entityType` .
@@ -435,7 +435,7 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 
 Renk ifadeleri renk değerleri oluşturmayı ve işlemeyi kolaylaştırır.
 
-| İfade | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*ve *mavi* bileşenlerden bir renk değeri oluşturur `0` `255` ve bir alfa bileşeni `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
 | `['rgba', number, number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*, *mavi* bileşenlerden `0` `255` ve bir ve aralığı içindeki bir Alfa bileşeninden bir renk değeri oluşturur `0` `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
@@ -463,11 +463,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Dize operatörü ifadeleri, büyük/küçük harfe dönüştürme ve dönüştürme gibi dizeler üzerinde dönüştürme işlemleri gerçekleştirir. 
 
-| İfade | Dönüş türü | Description |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | dize | Birden çok dizeyi birlikte birleştirir. Her değer bir dize olmalıdır. `to-string`Gerekirse, diğer değer türlerini dizeye dönüştürmek için tür ifadesini kullanın. |
-| `['downcase', string]` | string | Belirtilen dizeyi küçük harfe dönüştürür. |
-| `['upcase', string]` | string | Belirtilen dizeyi büyük harfe dönüştürür. |
+| `['downcase', string]` | dize | Belirtilen dizeyi küçük harfe dönüştürür. |
+| `['upcase', string]` | dize | Belirtilen dizeyi büyük harfe dönüştürür. |
 
 **Örnek**
 
@@ -861,7 +861,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Değişken bağlama ifadeleri, bir hesaplamanın sonuçlarını bir değişkende depolar. Bu nedenle, hesaplama sonuçlarının bir ifadenin başka bir yerinde birden çok kez başvurulabilmesini sağlayabilirsiniz. Birçok hesaplamayı içeren ifadeler için yararlı bir iyileştirmedir.
 
-| İfade | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Açıklama |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Let ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Değer1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;AD2: dize,<br/>&nbsp;&nbsp;&nbsp;&nbsp;değer2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Bir veya daha fazla değeri `var` , sonucu döndüren alt ifadede ifadesi tarafından kullanılmak üzere değişkenler olarak depolar. |
 | `['var', name: string]` | herhangi biri | İfadesi kullanılarak oluşturulan bir değişkene başvurur `let` . |

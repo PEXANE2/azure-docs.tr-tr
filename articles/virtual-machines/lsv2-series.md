@@ -4,14 +4,15 @@ description: Lsv2 serisi VM 'Ler için Özellikler.
 author: sasha-melamed
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9db5f391635505c18c7fe7c868431a0abc943730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675987"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284821"
 ---
 # <a name="lsv2-series"></a>Lsv2 serisi
 
@@ -36,14 +37,14 @@ Dinamik Geçiş: desteklenmiyor
 
 Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
-| Boyut | Sanal işlemci | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış veri diski verimlilik (IOPS/MBps)<sup>4</sup> | Önbelleğe alınmamış veri diski performansı üst sınırı (IOPS/MBps)<sup>5</sup>| En fazla veri diski | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 / 3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4X 1.92 TB  | 1,5 milyon/8000    | 32000/640  | 32000/1280 | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 d/14000   | 48000/960  | 48000/2000 | 32 | 8/16000 + |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8X 1.92 TB  | 2.9 a/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000 + |
-| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8 d/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000 + |
+| Boyut | Sanal işlemci | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış veri diski verimlilik (IOPS/MBps)<sup>4</sup> | Önbelleğe alınmamış veri diski performansı üst sınırı (IOPS/MBps)<sup>5</sup>| En fazla veri diski | En fazla NIC | Beklenen ağ bant genişliği (MB/sn) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 | 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 | 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4X 1.92 TB  | 1,5 milyon/8000    | 32000/640  | 32000/1280 | 32 | 8 | 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 d/14000   | 48000/960  | 48000/2000 | 32 | 8 | 16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8X 1.92 TB  | 2.9 a/16000   | 64000/1280 | 64000/2000 | 32 | 8 | 16000 + |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8 d/20000 | 80000/1400 | 80000/2000 | 32 | 8 | 16000 + |
 
 <sup>1</sup> Lsv2 serisi VM 'ler, işletim sistemi disk belleği/takas dosyası kullanımı için standart bir SCSI tabanlı geçici kaynak diskine sahiptir (D: Windows 'Ta, Linux üzerinde/dev/sdb). Bu disk, her 8 vCPU için 80 GiB depolama, 4.000 ıOPS ve 80 MBps aktarım hızı sağlar (örneğin, Standard_L80s_v2 40.000 ıOPS ve 800 MBPS ' te 800 GiB sağlar). Bu, NVMe sürücülerinin uygulama kullanımına tamamen ayrılmasını sağlar. Bu disk geçici bir işlemdir ve tüm veriler durdurma/serbest bırakma durumunda kaybedilir.
 
@@ -73,6 +74,21 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 - Disk aktarım hızı, saniye başına giriş/çıkış işlemi sayısı (IOPS) ve MB/sn (MB/sn = 10^6 bayt/sn) üzerinden ölçülür.
 - Sanal makinelerinize en iyi performansı elde etmek istiyorsanız, vCPU başına veri disklerinin sayısını 2 disk ile sınırlamanız gerekir.
 - **Beklenen ağ bant** genişliği tüm ormanlarda tüm NIC 'lerde [sanal makine türü başına ayrılan en yüksek bant genişliğine sahip](../virtual-network/virtual-machine-network-throughput.md) olur. Üst sınırlar garanti edilmez, ancak hedeflenen uygulama için doğru VM türünün seçilmesine ilişkin kılavuzluk sağlamak için tasarlanmıştır. Gerçek ağ performansı, ağ tıkanıklığı, uygulama yükleri ve ağ ayarları gibi çeşitli faktörlere bağlıdır. Ağ aktarım hızını iyileştirme hakkında bilgi için bkz. [Windows ve Linux için ağ aktarım hızını iyileştirme](../virtual-network/virtual-network-optimize-network-bandwidth.md). Linux veya Windows üzerinde beklenen ağ performansını gerçekleştirmek için belirli bir sürümü seçmeniz veya VM’nizi en iyi duruma getirmeniz gerekebilir. Daha fazla bilgi için bkz. [Sanal makine aktarım hızını güvenilir bir şekilde test etme](../virtual-network/virtual-network-bandwidth-testing.md).
+
+
+## <a name="other-sizes-and-information"></a>Diğer boyutlar ve bilgiler
+
+- [Genel amaçlı](sizes-general.md)
+- [Bellek için iyileştirilmiş](sizes-memory.md)
+- [Depolama için iyileştirilmiş](sizes-storage.md)
+- [GPU için iyileştirilmiş](sizes-gpu.md)
+- [Yüksek performanslı işlem](sizes-hpc.md)
+- [Önceki nesiller](sizes-previous-gen.md)
+
+Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
+
+Disk türleri hakkında daha fazla bilgi: [disk türleri](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

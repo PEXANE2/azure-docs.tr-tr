@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: LUO portalı ile uygulama dağıtma'
 description: Bu hızlı başlangıçta, bir tahmin uç noktası kaynağı oluşturarak, kaynak, eğitim ve uygulamayı yayımlamaya göre bir uygulamanın nasıl dağıtılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653235"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336389"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı başlangıç: Lua portalında uygulama dağıtma
 
@@ -16,10 +16,10 @@ Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin
 
 Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir tahmin uç noktası kaynağı oluşturur, uygulamayı uygulamaya atayabilir, uygulamayı eğitme ve uygulamayı yayımlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [Azure aboneliği](https://azure.microsoft.com/free)alın.
-* [Önceki Portal Hızlı](get-started-portal-build-app.md) başlangıcını tamamlayıp [uygulamayı indirip içeri aktarın](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* [Önceki Portal Hızlı](get-started-portal-build-app.md) başlangıcını tamamlayıp [uygulamayı indirip içeri aktarın](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/portal-build-app.json).
 * Azure Kaynak kimlik doğrulamasının önceden güncel olduğu uygulamalarınız varsa, [bir Azure kaynağına geçiş](luis-migration-authoring.md)yapın. E-posta kimlik doğrulaması etkin olduğunda bazı portal sayfaları farklı görünür.
 
 <a name="create-the-endpoint-resource"></a>

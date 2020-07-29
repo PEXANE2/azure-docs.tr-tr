@@ -3,15 +3,15 @@ title: CentOS tabanlı bir Linux VHD oluşturma ve karşıya yükleme
 description: CentOS tabanlı bir Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: f537f9e3315ab9d6e0b7f1c6341e94196f9aaa5b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9097fb4aefe168ce36793d13f892fbbeab10ad56
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510948"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372748"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure'da CentOS tabanlı bir sanal makine hazırlama
 

@@ -1,7 +1,7 @@
 ---
 title: Azure ağ güvenlik grubu oluşturma, değiştirme veya silme
 titlesuffix: Azure Virtual Network
-description: Ağ güvenlik grubu oluşturmayı, değiştirmeyi veya silmeyi öğrenin.
+description: Güvenlik kuralları ve bir ağ güvenlik grubu oluşturma, değiştirme veya silme hakkındaki bilgileri nerede bulacağınızı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb6426ec4e75f6484df37008522b966ebc3af6f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708289"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281268"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Ağ güvenlik grubu oluşturma, değiştirme veya silme
 
@@ -45,7 +46,7 @@ Bir ağ güvenlik grubu oluşturabilir, bunları [görüntüleyebilir](#view-all
 
 Her bir Azure konumu ve aboneliği için kaç ağ güvenlik grubunun oluşturabileceğiniz bir sınır vardır. Daha fazla bilgi edinmek için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 2. Ağ **' ı**ve ardından **ağ güvenlik grubu**' nu seçin.
 
@@ -55,10 +56,10 @@ Her bir Azure konumu ve aboneliği için kaç ağ güvenlik grubunun oluşturabi
     | --- | --- |
     | **Abonelik** | Aboneliğinizi seçin. |
     | **Kaynak grubu** | Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. |
-    | **Adı** | Kaynak grubu içinde benzersiz bir metin dizesi girin. |
-    | **Geli** | İstediğiniz konumu seçin. |
+    | **Ad** | Kaynak grubu içinde benzersiz bir metin dizesi girin. |
+    | **Bölge** | İstediğiniz konumu seçin. |
 
-4. **İncele ve oluştur**’u seçin.
+4. **Gözden geçir ve oluştur**’u seçin.
 
 5. **Doğrulama başarılı** iletisini gördüğünüzde, **Oluştur**' u seçin.
 
@@ -174,7 +175,7 @@ Her bir Azure konumu ve aboneliği için ağ güvenlik grubu başına kaç kural
     | **Protokol** | **Any**, **TCP**, **UDP**veya **ICMP** | Kuralı Iletim Denetim Protokolü (TCP), Kullanıcı Datagram Protokolü (UDP) veya Internet Denetim Iletisi Protokolü (ıCMP) ile kısıtlayabilirsiniz. Kuralın tüm protokollere uygulanması için varsayılan değer varsayılandır. |
     | **Eylem** | **Izin ver** veya **Reddet** | Bu ayar, bu kuralın sağlanan kaynak ve hedef yapılandırma için erişim izni verip vermemeyeceğini belirtir. |
     | **Priority** | Ağ güvenlik grubundaki tüm güvenlik kuralları için benzersiz olan 100 ve 4096 arasında bir değer | Azure Güvenlik kurallarını öncelik sırasına göre işler. Sayı ne kadar düşükse öncelik o kadar yüksektir. 100, 200 ve 300 gibi kurallar oluştururken, öncelik numaraları arasında bir boşluk bırakmanız önerilir. Boşlukları bırakmak, daha sonra kuralların daha kolay veya daha düşük öncelikli olmasını sağlamak için daha kolay kurallar eklemenizi sağlar. |
-    | **Adı** | Ağ güvenlik grubu içindeki kural için benzersiz bir ad | Ad en fazla 80 karakter olabilir. Bir harf veya sayı ile başlamalı ve bir harf, sayı veya alt çizgi ile bitmelidir. Ad yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. |
+    | **Ad** | Ağ güvenlik grubu içindeki kural için benzersiz bir ad | Ad en fazla 80 karakter olabilir. Bir harf veya sayı ile başlamalı ve bir harf, sayı veya alt çizgi ile bitmelidir. Ad yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. |
     | **Açıklama** | Metin açıklaması | İsteğe bağlı olarak güvenlik kuralı için bir metin açıklaması belirtebilirsiniz. |
 
 #### <a name="commands"></a>Komutlar
@@ -261,7 +262,7 @@ Bir uygulama güvenlik grubu sıfır veya daha fazla ağ arabirimi içerir. Daha
 
 ### <a name="create-an-application-security-group"></a>Uygulama güvenlik grubu oluşturma
 
-1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 2. Arama kutusuna *uygulama güvenlik grubu*' nu girin.
 
@@ -273,10 +274,10 @@ Bir uygulama güvenlik grubu sıfır veya daha fazla ağ arabirimi içerir. Daha
     | --- | --- |
     | **Abonelik** | Aboneliğinizi seçin. |
     | **Kaynak grubu** | Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. |
-    | **Adı** | Kaynak grubu içinde benzersiz bir metin dizesi girin. |
-    | **Geli** | İstediğiniz konumu seçin. |
+    | **Ad** | Kaynak grubu içinde benzersiz bir metin dizesi girin. |
+    | **Bölge** | İstediğiniz konumu seçin. |
 
-5. **İncele ve oluştur**’u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
 
 6. **Gözden geçir + oluştur** sekmesinin altında, **doğrulama başarılı** Iletisini görbaşladıktan sonra **Oluştur**' u seçin.
 
@@ -354,7 +355,7 @@ Ağ güvenlik grupları, güvenlik kuralları ve uygulama güvenlik grupları ü
 
 ### <a name="network-security-group"></a>Ağ güvenlik grubu
 
-| Eylem                                                        |   Name                                                                |
+| Eylem                                                        |   Ad                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/Read                  |   Ağ güvenlik grubunu al                                          |
 | Microsoft. Network/networkSecurityGroups/Write                 |   Ağ güvenlik grubu oluştur veya güncelleştir                             |
@@ -363,7 +364,7 @@ Ağ güvenlik grupları, güvenlik kuralları ve uygulama güvenlik grupları ü
 
 ### <a name="network-security-group-rule"></a>Ağ güvenlik grubu kuralı
 
-| Eylem                                                        |   Name                                                                |
+| Eylem                                                        |   Ad                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/securityRules/Read            |   Kural al                                                            |
 | Microsoft. Network/networkSecurityGroups/securityRules/Write           |   Kural oluştur veya güncelleştir                                               |
@@ -371,7 +372,7 @@ Ağ güvenlik grupları, güvenlik kuralları ve uygulama güvenlik grupları ü
 
 ### <a name="application-security-group"></a>Uygulama güvenlik grubu
 
-| Eylem                                                                     | Name                                                     |
+| Eylem                                                                     | Ad                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft. Network/applicationSecurityGroups/Joinıp/Action     | Bir IP yapılandırmasını bir uygulama güvenlik grubuna katma|
 | Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Bir güvenlik kuralına uygulama güvenlik grubuna ekleme    |
