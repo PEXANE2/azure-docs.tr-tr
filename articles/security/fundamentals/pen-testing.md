@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6e25b6304ee9ac41ca95d5a3a6eac0e91eb41b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80549262"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287779"
 ---
 # <a name="penetration-testing"></a>Sızma testi
 Uygulama testi ve dağıtımı için Azure kullanmanın avantajlarından biri, oluşturulan ortamları hızlıca almanızı sağlar. Kendi şirket içi donanımlarınızı talep eden, alma ve "izleme ve yığınlama" konusunda endişelenmeniz gerekmez.
@@ -41,8 +41,6 @@ Gerçekleştirebileceğiniz standart testler şunlardır:
 * [Açık Web uygulaması güvenlik projesini (OWASP) ilk 10 güvenlik açığını açmak](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) için uç noktalarınızda test edin
 * Uç noktalarınızın [belirsizlik testi](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
 * Uç noktalarınız için [bağlantı noktası taraması](https://en.wikipedia.org/wiki/Port_scanner)
-
-Gerçekleştirmeniz gereken bir test türü, herhangi bir [hizmet reddi (DOS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) saldırısı türüdür. Bu, bir DoS saldırının kendisini başlatmayı veya herhangi bir DoS saldırısı türünü tespit edebilir, gösterebilir veya benzetim yaparak ilgili testlerin gerçekleştirilmesini içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

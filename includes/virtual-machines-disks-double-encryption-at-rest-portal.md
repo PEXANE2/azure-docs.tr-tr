@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f96bc753d14d53584aec6d9661e52adcd21ab764
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
-ms.translationtype: HT
+ms.openlocfilehash: 8313259d5375bb19e7caa08a01a658707453d133
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136298"
+ms.locfileid: "87177067"
 ---
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
@@ -28,11 +28,11 @@ ms.locfileid: "87136298"
 
 1. **Disk şifreleme kümelerini**arayın ve seçin.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-encryption-sets-search.png" alt-text="örnek metin":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-encryption-sets-search.png" alt-text="Ana Azure portal ekran görüntüsü, disk şifreleme kümeleri arama çubuğunda vurgulanır.":::
 
 1. **+ Ekle**'yi seçin.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-add-disk-encryption-set.png" alt-text="örnek metin":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-add-disk-encryption-set.png" alt-text="Disk şifreleme kümesi dikey penceresinin ekran görüntüsü, + Ekle vurgulanır.":::
 
 1. Desteklenen bölgelerden birini seçin.
 1. **Şifreleme türü**için, **platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla çift şifrelemeyi**seçin.
@@ -42,19 +42,19 @@ ms.locfileid: "87136298"
 
 1. Kalan bilgileri girin.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-create-disk-encryption-set-blade.png" alt-text="örnek metin":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-create-disk-encryption-set-blade.png" alt-text="Platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla disk şifreleme kümesi oluşturma dikey penceresinin, bölgelerin ve çift şifrelemenin ekran görüntüsü vurgulanır.":::
 
 1. Bir Azure Key Vault ve anahtar seçin ya da gerekirse yeni bir tane oluşturun.
 
     > [!NOTE]
     > Key Vault bir örnek oluşturursanız, geçici silme ve Temizleme korumasını etkinleştirmeniz gerekir. Bu ayarlar, yönetilen diskleri şifrelemek için bir Key Vault kullanılırken zorunludur ve yanlışlıkla silme nedeniyle veri kaybını korumanıza karşı koruma sağlar.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="örnek metin":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="Key Vault oluşturma dikey penceresinin ekran görüntüsü.":::
 
 1. **Oluştur**’u seçin.
 1. Oluşturduğunuz disk şifreleme kümesine gidin ve görüntülenen hatayı seçin. Bu işlem, disk şifreleme kümesini çalışacak şekilde yapılandırır.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-set-error.png" alt-text="örnek metin":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-set-error.png" alt-text="Disk şifreleme kümesi görüntülenirken hata, hata metni: bir disk, resim veya anlık görüntüyü bu disk şifrelemesi kümesiyle ilişkilendirmek Için, Anahtar Kasası 'na izin vermeniz gerekir.":::
 
     Bir bildirim açılır ve başarılı olmalıdır. Bunun yapılması, anahtar kasanızın bulunduğu disk şifreleme kümesini kullanmanıza olanak sağlar.
     
@@ -66,6 +66,6 @@ ms.locfileid: "87136298"
 1. Disk şifreleme kümesini seçin.
 1. **Kaydet**' i seçin.
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-enable-disk-blade.png" alt-text="örnek metin":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-enable-disk-blade.png" alt-text="Yönetilen diskinizin şifreleme dikey penceresinin ekran görüntüsü, belirtilen şifreleme türü vurgulanır.":::
 
 Artık yönetilen diskinizde bekleyen ' de çift şifrelemeyi etkinleştirdiniz.

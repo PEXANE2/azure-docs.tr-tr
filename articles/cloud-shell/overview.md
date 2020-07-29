@@ -12,35 +12,51 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: d0cfd428e1bd380d17049cbc229bb8850793056e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073027"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286691"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell'e Genel Bakış
-Azure Cloud Shell, Azure kaynaklarını yönetmek için kullanabileceğiniz etkileşimli, kimliği doğrulanmış ve tarayıcı ile erişilebilen bir kabuktur.
-Bu hizmet, Bash veya PowerShell ile çalışma şeklinize en uygun kabuk deneyimini seçme esnekliği getirir.
 
-Aşağıya tıklayarak shell.azure.com 'tan deneyin.
+Azure Cloud Shell, Azure kaynaklarını yönetmek için kullanabileceğiniz etkileşimli, kimliği doğrulanmış ve tarayıcı ile erişilebilen bir kabuktur. Bu hizmet, Bash veya PowerShell ile çalışma şeklinize en uygun kabuk deneyimini seçme esnekliği getirir.
 
-[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell’i başlatma")](https://shell.azure.com)
+Cloud Shell üç yolla erişebilirsiniz:
 
-Cloud Shell simgesini kullanarak Azure portal deneyin.
+- **Doğrudan bağlantı**: ' a bir tarayıcı açın [https://shell.azure.com](https://shell.azure.com) .
 
-![Portal başlatma](media/overview/portal-launch-icon.png)
+- **Azure Portal**: [Azure Portal](https://portal.azure.com)Cloud Shell simgesini seçin:
+
+    ![Azure portal Cloud Shell başlatılacak simge](media/overview/portal-launch-icon.png)
+
+- **Kod parçacıkları**: [docs.Microsoft.com](https://docs.microsoft.com) ve [Microsoft Learn](https://docs.microsoft.com/learn/)üzerinde, Azure CLI ve Azure PowerShell kod parçacıkları ile görüntülenen **TRY It** düğmesini seçin:
+
+    ```azurecli-interactive
+    az account show
+    ```
+
+    ```azurepowershell-interactive
+    Get-AzSubscription
+    ```
+
+    **Deneyin** düğmesine Bash (Azure CLI kod parçacıkları için) veya PowerShell (Azure PowerShell parçacıkları için) ile birlikte Cloud Shell doğrudan açılır.
+
+    Komutu çalıştırmak için kod parçacığında **kopyayı** kullanın, **Ctrl** + **Shift** + komutu yapıştırmak için CTRL SHIFT**v** (Windows/Linux) veya **cmd** + **SHIFT** + **v** (MacOS) kullanın ve ardından **ENTER**tuşuna basın.
 
 ## <a name="features"></a>Özellikler
 
 ### <a name="browser-based-shell-experience"></a>Tarayıcı tabanlı kabuk deneyimi
-Cloud Shell, Azure yönetim görevleriyle birlikte oluşturulan tarayıcı tabanlı bir komut satırı deneyimine erişim sağlar.
-Cloud Shell, yerel bir makineden yalnızca bulutun sağlayabilebir şekilde Untethered işe faydalanır.
+
+Cloud Shell, Azure yönetim görevleriyle birlikte oluşturulan tarayıcı tabanlı bir komut satırı deneyimine erişim sağlar. Cloud Shell, yerel bir makineden yalnızca bulutun sağlayabilebir şekilde Untethered işe faydalanır.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Tercih edilen kabuk deneyimi seçimi
+
 Kullanıcılar bash veya PowerShell arasında seçim yapabilir.
+
 1. **Cloud Shell**seçin.
 
     ![Cloud Shell simgesi](media/overview/overview-cloudshell-icon.png)
@@ -49,22 +65,26 @@ Kullanıcılar bash veya PowerShell arasında seçim yapabilir.
 
     ![Bash veya PowerShell seçin](media/overview/overview-choices.png)
 
+    İlk başlatıldıktan sonra, bash ve PowerShell arasında geçiş yapmak için kabuk türü açılan denetimini kullanabilirsiniz:
+
+    ![Bash veya PowerShell seçmek için açılan denetim](media/overview/select-shell-drop-down.png)
+
 ### <a name="authenticated-and-configured-azure-workstation"></a>Kimliği doğrulanmış ve yapılandırılmış Azure iş istasyonu
+
 Cloud Shell, Microsoft tarafından yönetiliyor ve bu nedenle popüler komut satırı araçları ve dil desteğiyle birlikte geldi. Cloud Shell Ayrıca, Azure CLı veya Azure PowerShell cmdlet 'leri aracılığıyla kaynaklarınıza anında erişim için otomatik olarak kimlik doğrulaması gerçekleştirir.
 
 [Cloud Shell yüklü araçların tam listesini görüntüleyin.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Tümleşik Cloud Shell Düzenleyicisi
+
 Cloud Shell, açık kaynak Monako düzenleyicisine bağlı olarak tümleşik bir grafik metin düzenleyicisi sunar. `code .`Azure CLI veya Azure PowerShell ile sorunsuz dağıtım için çalıştırarak yapılandırma dosyalarını oluşturmanız ve düzenlemeniz yeterlidir.
 
 [Cloud Shell Düzenleyicisi hakkında daha fazla bilgi edinin](using-cloud-shell-editor.md).
 
-### <a name="integrated-with-docsmicrosoftcom"></a>Docs.microsoft.com ile tümleşik
-
-[Docs.Microsoft.com](https://docs.microsoft.com)üzerinde barındırılan belgelerden doğrudan Cloud Shell kullanabilirsiniz. [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/) ve [Azure CLI belgelerinde](https://docs.microsoft.com/cli/azure) tümleşiktir-tam kapsamlı kabuk deneyimini açmak için bir kod parçacığında "dene" düğmesine tıklayın. 
-
 ### <a name="multiple-access-points"></a>Birden çok erişim noktası
+
 Cloud Shell, tarafından kullanılabilen esnek bir araçtır:
+
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
 * [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure)
@@ -73,7 +93,8 @@ Cloud Shell, tarafından kullanılabilen esnek bir araçtır:
 * [Visual Studio Code Azure Hesap uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure dosyaları depolama alanınızı bağlama
-Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hale getirilir: bir disk görüntüsü ile ve adlı bağlı dosya paylaşımından `clouddrive` .  Cloud Shell ilk kez çalıştırıldığında sizin adınıza bir kaynak grubu, depolama hesabı ve Azure Dosyaları paylaşımı oluşturur. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir. Tek bir dosya paylaşma eşleştirilebilir ve Cloud Shell hem Bash hem de PowerShell tarafından kullanılır.
+
+Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hale getirilir: bir disk görüntüsü ile ve adlı bağlı dosya paylaşımından `clouddrive` . Cloud Shell ilk kez çalıştırıldığında sizin adınıza bir kaynak grubu, depolama hesabı ve Azure Dosyaları paylaşımı oluşturur. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir. Tek bir dosya paylaşma eşleştirilebilir ve Cloud Shell hem Bash hem de PowerShell tarafından kullanılır.
 
 [Yeni veya mevcut bir depolama hesabını](persisting-shell-storage.md) nasıl bağlayacağınızı veya [Cloud Shell ' de kullanılan Kalıcılık mekanizmaları](persisting-shell-storage.md#how-cloud-shell-storage-works)hakkında bilgi edinmek için daha fazla bilgi edinin.
 
@@ -81,6 +102,7 @@ Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hal
 > Azure Storage güvenlik duvarı, Cloud Shell depolama hesapları için desteklenmez.
 
 ## <a name="concepts"></a>Kavramlar
+
 * Cloud Shell, oturum başına ve kullanıcı bazında belirtilen geçici bir konakta çalıştırılır
 * Etkileşimli etkinlik olmadan 20 dakika sonra zaman aşımı Cloud Shell
 * Cloud Shell, bir Azure dosya paylaşımının bağlanmasını gerektirir
@@ -92,8 +114,10 @@ Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hal
 Cloud Shell ve PowerShell 'deki [Bash](features.md) özellikleri hakkında daha fazla bilgi edinin [Cloud Shell](features-powershell.md).
 
 ## <a name="pricing"></a>Fiyatlandırma
+
 Cloud Shell barındıran makine, bağlı bir Azure dosyaları paylaşımının önkoşul olarak ücretsizdir. Normal depolama ücretleri uygulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 [Bash Cloud Shell hızlı başlangıç](quickstart.md) <br>
 [PowerShell Cloud Shell hızlı başlangıç](quickstart-powershell.md)

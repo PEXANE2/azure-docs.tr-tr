@@ -3,12 +3,12 @@ title: Azure DevTest Labs bir sanal ağ yapılandırma | Microsoft Docs
 description: Var olan bir sanal ağı ve alt ağı yapılandırmayı ve Azure DevTest Labs bir VM 'de kullanmayı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0819527cfc2a9dfd4e93226542acb7cb0c6d7273
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482658"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283563"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs bir sanal ağ yapılandırma
 [LABORATUVARA VM ekleme](devtest-lab-add-vm.md)makalesinde açıklandığı gibi, laboratuvarda bir VM oluşturduğunuzda, yapılandırılmış bir sanal ağ belirtebilirsiniz. Örneğin, ExpressRoute veya siteden siteye VPN ile yapılandırılmış sanal ağı kullanarak, VM 'lerinize Corpnet kaynaklarınıza erişmeniz gerekebilir.
@@ -28,7 +28,7 @@ Aşağıdaki adımlar, aynı laboratuvarda bir VM oluştururken kullanılabilmes
 
     ![Laboratuvarın yapılandırmasına ve ilkelerine erişin](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. **Dış kaynaklar** bölümünde, **sanal ağlar**' ı seçin. Geçerli laboratuvar için yapılandırılmış sanal ağların bir listesi, laboratuvarınız için oluşturulan varsayılan sanal ağ ile birlikte görüntülenir. 
-1. **+ Ekle** öğesini seçin.
+1. **+ Ekle**'yi seçin.
    
     ![Laboratuvarınızda var olan bir sanal ağ ekleyin](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
 1. **Sanal ağ** bölmesinde **[sanal ağ seçin]** öğesini seçin.
@@ -53,10 +53,9 @@ Aşağıdaki adımlar, aynı laboratuvarda bir VM oluştururken kullanılabilmes
 
 Sanal ağ yapılandırıldığına göre, VM oluşturulurken seçilebilir. VM oluşturma ve sanal ağ belirtme hakkında bilgi için bkz. bir [LABORATUVARA VM ekleme](devtest-lab-add-vm.md). 
 
-Azure 'un [sanal ağ belgeleri](https://docs.microsoft.com/azure/virtual-network) , VNET 'i ayarlama ve yönetme ve şirket içi ağınıza bağlama dahil olmak üzere sanal ağları kullanma hakkında daha fazla bilgi sağlar.
+Azure 'un [sanal ağ belgeleri](../virtual-network/index.yml) , VNET 'i ayarlama ve yönetme ve şirket içi ağınıza bağlama dahil olmak üzere sanal ağları kullanma hakkında daha fazla bilgi sağlar.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 İstediğiniz sanal ağı laboratuvara ekledikten sonra, bir sonraki adım [laboratuvara BIR VM eklemektir](devtest-lab-add-vm.md).
-

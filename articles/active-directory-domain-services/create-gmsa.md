@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 19b7962462e5cdb03bad0c6004b8c19f781ccc69
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005285"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281863"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services içinde bir grup yönetilen hizmet hesabı (gMSA) oluşturun
 
@@ -76,7 +76,7 @@ New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 * **-Ad** *WebFarmSvc* olarak ayarlandı
 * **-Path** parametresi, önceki adımda oluşturulan gMSA için özel OU 'yu belirtir.
 * DNS girdileri ve hizmet sorumlusu adları *WebFarmSvc.aaddscontoso.com* için ayarlanır
-* *Aaddscontoso-Server $* içindeki sorumluların, parolayı almasına izin verilir.
+* *Aaddscontoso-Server $* içindeki sorumlular, parolayı almasına ve kimliğini kullanmasına izin verilir.
 
 Kendi adlarınızı ve etki alanı adlarınızı belirtin.
 

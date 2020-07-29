@@ -3,23 +3,23 @@ title: Azure CLı örnekleri Windows
 description: Azure CLı örnekleri Windows
 author: cynthn
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11d0af0133a113382ea9ed03eeeb8686ebe0c73b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3d91197b72071c6379ea74d212aa7fdc550f4780
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203681"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288326"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>Windows sanal makineleri için Azure CLI Örnekleri
 
 Aşağıdaki tabloda, Windows sanal makinelerini dağıtan Azure CLı kullanılarak oluşturulan Bash betiklerinin bağlantıları yer almaktadır.
 
-| Script | Açıklama |
+| Komut Dosyası | Açıklama |
 |---|---|
 |**Sanal makineler oluşturma**||
 | [Sanal makine oluşturma](./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | En az yapılandırmaya sahip bir Windows sanal makinesi oluşturur. |

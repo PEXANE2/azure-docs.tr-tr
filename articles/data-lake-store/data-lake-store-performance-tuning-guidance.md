@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6b6dba101c7793198fe9d1e2bef1bcd99ddac618
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855910"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281744"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Performans için Azure Data Lake Storage 1. ayarlama
 
@@ -47,7 +47,7 @@ Kaynak donanım ve ağ bağlantısı performans sorunlarını giderdikten sonra,
 | AdlCopy    | Azure Data Lake Analytics birimleri | [Bağlantı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
 | DistCp            | -a (Eşleyici) | [Bağlantı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| Paralellkopyalar | [Bağlantı](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantı](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper) | [Bağlantı](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 
@@ -124,7 +124,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 Yukarıdaki genel yönergelere ek olarak, her uygulamanın belirli bir uygulama için ayarlanacak farklı parametreleri vardır. Aşağıdaki tabloda, her bir uygulama için performans ayarlama ile çalışmaya başlamak için bazı parametreler ve bağlantılar listelenmektedir.
 
-| İş yükü               | Görevleri ayarlanacak parametre                                                         |
+| İş Yükü               | Görevleri ayarlanacak parametre                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
 | [HDInsight’ta Spark](data-lake-store-performance-tuning-spark.md)  | <ul><li>Sayı yürüticileri</li><li>Yürütücü-bellek</li><li>Yürütücü-çekirdekler</li></ul> |
 | [HDInsight üzerinde Hive](data-lake-store-performance-tuning-hive.md)    | <ul><li>Hive. tez. Container. size</li></ul>         |

@@ -1,6 +1,5 @@
 ---
-title: Veri değerlendirmesi
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): veri değerlendirmesi-Azure'
 description: Veri bilimi için hazırlamak için verilerinizin karşılaması gereken dört ölçüt. Bu videoda, temel veri değerlendirmesinin sağlanmasına yardımcı olacak somut örnekler vardır.
 services: machine-learning
 ms.service: machine-learning
@@ -10,11 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 8eb9c5a182c17815d4efcf171cc99b1e9f5bc89e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12e939b8fb66b3cffbee49a4b3bedd74b71d7232
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930174"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318768"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Verileriniz veri bilimi için hazır mı?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: yeni başlayanlar için veri bilimi serisi

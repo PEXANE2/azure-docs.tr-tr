@@ -6,25 +6,26 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/25/2018
+ms.date: 07/25/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14f9ab0b1c3b8b437e46a7b6a2d8b87f03442a02
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84113697"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290565"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
   
-**Integration Runtime** , farklı ağ ortamlarında çeşitli veri tümleştirme özellikleri sağlamak için Azure Data Factory tarafından kullanılan işlem altyapısıdır. Data Factory tarafından sunulan üç tür tümleştirme çalışma zamanı vardır:
+**Integration Runtime** , farklı ağ ortamlarında çeşitli veri tümleştirme özellikleri sağlamak için Azure Data Factory (ADF) tarafından kullanılan işlem altyapısıdır. Data Factory tarafından sunulan üç tür tümleştirme çalışma zamanı vardır:
 
 - Azure tümleştirme çalışma zamanı
 - Kendinden konak tümleştirme çalışma zamanı
-- Azure SSIS tümleştirmesi çalışma zamanı
+- Azure-SQL Server Integration Services (SSIS) tümleştirme çalışma zamanı
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,14 +38,16 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 Cmdlet 'i farklı tümleştirme çalışma zamanı türleri için farklı bilgiler döndürür. Bu makalede, her bir tümleştirme çalışma zamanı türünün özellikleri ve durumları açıklanmaktadır.  
 
 ## <a name="azure-integration-runtime"></a>Azure tümleştirme çalışma zamanı
+
 Azure tümleştirme çalışma zamanı için işlem kaynağı, Azure 'da tam olarak yönetilen esnek. Aşağıdaki tabloda **Get-AzDataFactoryV2IntegrationRuntime** komutu tarafından döndürülen özellikler için açıklamalar verilmiştir:
 
 ### <a name="properties"></a>Özellikler
+
 Aşağıdaki tabloda, bir Azure tümleştirme çalışma zamanı için cmdlet tarafından döndürülen özelliklerin açıklamaları verilmiştir:
 
 | Özellik | Açıklama |
 -------- | ------------- | 
-| Name | Azure tümleştirme çalışma zamanının adı. |  
+| Ad | Azure tümleştirme çalışma zamanının adı. |  
 | Durum | Azure tümleştirme çalışma zamanının durumu. | 
 | Konum | Azure tümleştirme çalışma zamanının konumu. Bir Azure tümleştirme çalışma zamanının konumu hakkındaki ayrıntılar için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md). |
 | DataFactoryName | Azure tümleştirme çalışma zamanının ait olduğu veri fabrikasının adı. | 
@@ -52,6 +55,7 @@ Aşağıdaki tabloda, bir Azure tümleştirme çalışma zamanı için cmdlet ta
 | Açıklama | Tümleştirme çalışma zamanının açıklaması.  |
 
 ### <a name="status"></a>Durum
+
 Aşağıdaki tabloda bir Azure tümleştirme çalışma zamanının olası durumları verilmiştir:
 
 | Durum | Açıklamalar/senaryolar | 
@@ -60,6 +64,7 @@ Aşağıdaki tabloda bir Azure tümleştirme çalışma zamanının olası durum
 | Çevrimdışı | Azure Integration Runtime bir iç hata nedeniyle çevrimdışı. |
 
 ## <a name="self-hosted-integration-runtime"></a>Kendinden konak tümleştirme çalışma zamanı
+
 Bu bölüm Get-AzDataFactoryV2IntegrationRuntime cmdlet 'i tarafından döndürülen özelliklerle ilgili açıklamalar sağlar. 
 
 > [!NOTE] 
@@ -71,7 +76,7 @@ Aşağıdaki tabloda **her düğüm**Için izleme özelliklerinin açıklamalar�
 
 | Özellik | Açıklama | 
 | -------- | ----------- | 
-| Name | Şirket içinde barındırılan tümleştirme çalışma zamanının ve onunla ilişkili düğümlerin adı. Düğüm, şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu şirket içi bir Windows makinedir. |  
+| Ad | Şirket içinde barındırılan tümleştirme çalışma zamanının ve onunla ilişkili düğümlerin adı. Düğüm, şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu şirket içi bir Windows makinedir. |  
 | Durum | Genel olarak barındırılan tümleştirme çalışma zamanının ve her düğümün durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için sonraki bölüme bakın. | 
 | Sürüm | Şirket içinde barındırılan tümleştirme çalışma zamanının ve her düğümün sürümü. Şirket içinde barındırılan tümleştirme çalışma zamanının sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Şirket içinde barındırılan tümleştirme çalışma zamanı kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal şirket içinde barındırılan tümleştirme çalışma zamanı ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur). | 
 | Kullanılabilir bellek | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünde kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
@@ -91,6 +96,7 @@ Düğüm sayısını artırarak ölçeklendirebilirsiniz. Düğüm sayısını a
 Azure portal hesaplanan varsayılan değeri geçersiz kılabilirsiniz. > bağlantıları > tümleştirme çalışma zamanları > > düğümlerini Düzenle > düğüm başına eşzamanlı iş değerini değiştir ' i seçin. PowerShell [Update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) komutunu da kullanabilirsiniz.
   
 ### <a name="status-per-node"></a>Durum (düğüm başına)
+
 Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün olası durumları verilmiştir:
 
 | Durum | Açıklama |
@@ -104,6 +110,7 @@ Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma z
 Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
 
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Durum (genel olarak barındırılan tümleştirme çalışma zamanı)
+
 Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma zamanının olası durumları verilmiştir. Bu durum, çalışma zamanına ait tüm düğümlerin durumlarına bağlıdır. 
 
 | Durum | Açıklama |
@@ -152,71 +159,104 @@ Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -Resou
 } 
 ```
 
-
 ## <a name="azure-ssis-integration-runtime"></a>Azure SSIS tümleştirmesi çalışma zamanı
-Azure-SSIS Integration Runtime, SSIS paketlerinizi çalıştırmak için adanmış, tam olarak yönetilen bir Azure sanal makine (veya düğümleri) kümesidir. Azure Data Factory başka hiçbir etkinlik çalıştırmaz. Sağlandıktan sonra, özelliklerini sorgulayabilir ve genel/düğüme özel durumlarını izleyebilirsiniz.
 
-### <a name="properties"></a>Özellikler
+Azure-SSIS IR, SSIS paketlerinizi çalıştırmak için adanmış, tam olarak yönetilen bir Azure sanal makine (veya düğümleri) kümesidir. Örneğin, Azure etkin SQL Server Veri Araçları (SSDT), AzureDTExec komut satırı yardımcı programı, T-SQL on SQL Server Management Studio (SSMS)/SQL Server Agent aracılığıyla ve SSIS paket etkinliklerini ADF işlem hatlarında yürütmek üzere çeşitli yöntemleri kullanarak Azure-SSIS IR SSIS paket yürütmelerini çağırabilirsiniz. Azure-SSIS IR diğer ADF etkinliklerini çalıştırmaz. Sağlandıktan sonra, Azure PowerShell, Azure portal ve Azure Izleyici aracılığıyla genel/düğüme özgü özellikleri ve durumları izleyebilirsiniz.
 
-| Özellik/durum | Açıklama |
-| --------------- | ----------- |
-| CreateTime | Azure-SSIS tümleştirme çalışma zamanının oluşturulduğu UTC saati. |
-| Düğümler | Azure-SSIS tümleştirme çalışma zamanının ayrılan/kullanılabilir düğümleri, düğüme özgü durumlar (başlangıç/kullanılabilir/geri dönüştürme/kullanılamaz) ve eylem yapılabilir hatalar ile. |
-| Diğer hatalar | Azure-SSIS tümleştirme çalışma zamanı 'nda düğüme özgü olmayan işlem yapılabilir hatalar. |
-| LastOperation | Azure-SSIS tümleştirme çalışma zamanmağınızda son başlatma/durdurma işleminin sonucu başarısız olursa, işlem yapılabilir hata (ler). |
-| Durum | Azure-SSIS tümleştirme çalışma zamanının genel durumu (ilk/başlangıç/başlatma/durdurma/durdurma). |
-| Konum | Azure-SSIS tümleştirme çalışma zamanının konumu. |
-| NodeSize | Azure-SSIS tümleştirme çalışma zamanının her bir düğümünün boyutu. |
-| NodeCount | Azure-SSIS tümleştirme çalışma zamanının düğüm sayısı. |
-| MaxParallelExecutionsPerNode | Azure-SSIS tümleştirme çalışma zamanının düğüm başına paralel yürütmelerinin sayısı. |
-| CatalogServerEndpoint | SSıSDB barındırmak için var olan SQL veritabanı/SQL yönetilen örneğinizin uç noktası. |
-| CatalogAdminUserName | Mevcut SQL veritabanı/SQL yönetilen örneğinizin Yönetici Kullanıcı adı. Data Factory hizmet bu bilgileri, sizin adınıza SSıSDB hazırlamak ve yönetmek için kullanır. |
-| CatalogAdminPassword | Mevcut SQL veritabanı/SQL yönetilen örneğinizin yönetici parolası. |
-| CatalogPricingTier | SQL veritabanı tarafından barındırılan SSSıSDB fiyatlandırma katmanı.  SSıSDB barındıran SQL yönetilen örneği için geçerli değildir. |
-| Vnetıd | Azure-SSIS tümleştirme çalışma zamanının katılması için sanal ağ kaynak KIMLIĞI. |
-| Alt ağ | Azure-SSIS tümleştirme çalışma zamanının katılması için alt ağ adı. |
-| ID | Azure-SSIS tümleştirme çalışma zamanının kaynak KIMLIĞI. |
-| Tür | Azure-SSIS tümleştirme çalışma zamanının türü (yönetilen/kendiliğinden konak). |
-| ResourceGroupName | Veri Fabrikanızın ve Azure-SSIS tümleştirme çalışma zamanının oluşturulduğu Azure Kaynak grubunuzun adı. |
-| DataFactoryName | Azure Data Factory 'nizin adı. |
-| Name | Azure-SSIS tümleştirme çalışma zamanının adı. |
-| Açıklama | Azure-SSIS tümleştirme çalışma zamanının açıklaması. |
+### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-powershell"></a>Azure-SSIS tümleştirme çalışma zamanını Azure PowerShell ile izleme
 
-  
-### <a name="status-per-node"></a>Durum (düğüm başına)
-
-| Durum | Açıklama |
-| ------ | ----------- | 
-| Başlatılıyor | Bu düğüm hazırlanıyor. |
-| Kullanılabilir | Bu düğüm, SSIS paketlerini dağıtmanız/yürütmeniz için hazırlayın. |
-| 2 | Bu düğüm onarılıyor/yeniden başlatılıyor. |
-| Kullanılamaz | Bu düğüm, SSIS paketlerini dağıtmanıza/yürütmeye yönelik değil ve giderebileceğiniz hata/sorunlar oluştu. |
-
-### <a name="status-overall-azure-ssis-integration-runtime"></a>Durum (Genel Azure-SSIS tümleştirme çalışma zamanı)
-
-| Genel durum | Açıklama | 
-| -------------- | ----------- | 
-| Başlangıç | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrılmadı/hazırlandı. | 
-| Başlatılıyor | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrılmakta/hazırlanmakta ve faturalandırma başladı. |
-| Başlarken | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrıldı/hazırlandı ve SSIS paketlerini dağıtmanıza/yürütmeniz için hazır. |
-| Durduruluyor  | Azure-SSIS tümleştirme çalışma zamanının düğümleri serbest bırakılıyor. |
-| Durduruldu | Azure-SSIS tümleştirme çalışma zamanının düğümleri yayımlanmıştır ve faturalandırma durdurulur. |
-
-### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>Azure portal Azure-SSIS tümleştirme çalışma zamanını izleme
-
-Aşağıdaki ekran görüntüleri izlenecek Azure-SSIS IR seçme ve görüntülenen bilgilere bir örnek sağlama işlemlerinin nasıl yapılacağını gösterir.
-
-![İzlenecek Azure-SSIS tümleştirme çalışma zamanını seçin](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
-
-![Azure-SSIS tümleştirme çalışma zamanı hakkındaki bilgileri görüntüleme](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
-
-### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>PowerShell ile Azure-SSIS tümleştirme çalışma zamanını izleme
-
-Azure-SSIS IR durumunu denetlemek için aşağıdaki örnekte olduğu gibi bir komut dosyası kullanın.
+Aşağıdaki Azure PowerShell cmdlet 'ini kullanarak genel/düğüm özgü özellikleri ve Azure-SSIS IR durumlarını izleyin.
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
+
+#### <a name="properties"></a>Özellikler
+
+Aşağıdaki tabloda, bir Azure-SSIS IR için yukarıdaki cmdlet tarafından döndürülen özelliklerin açıklamaları verilmiştir.
+
+| Özellik/durum              | Açıklama                  |
+| ---------------------------- | ---------------------------- |
+| CreateTime                   | Azure-SSIS IR oluşturulduğu UTC saati. |
+| Düğümler                        | Azure-SSIS IR düğüme özgü durumlar (başlangıç/kullanılabilir/geri dönüştürme/kullanılamaz) ve eyleme dönüştürülebilir hatalar içeren ayrılmış/kullanılabilir düğümler. |
+| Diğer hatalar                  | Azure-SSIS IR düğüme özgü olmayan işlem yapılabilir hatalar. |
+| LastOperation                | Başarısız olduysa hata (lar) ile Azure-SSIS IR en son başlatma/durdurma işleminin sonucu. |
+| Durum                        | Azure-SSIS IR genel durumu (ilk/başlangıç/başlatma/durdurma/durdurulma). |
+| Konum                     | Azure-SSIS IR konumu. |
+| NodeSize                     | Azure-SSIS IR her bir düğümün boyutu. |
+| NodeCount                    | Azure-SSIS IR düğümlerin sayısı. |
+| MaxParallelExecutionsPerNode | Azure-SSIS IR düğüm başına en fazla paralel yürütme sayısı. |
+| CatalogServerEndpoint        | SSIS kataloğunu (SSSıSDB) barındırmak için mevcut Azure SQL veritabanı sunucunuzun veya yönetilen örneğinizin uç noktası. |
+| CatalogAdminUserName         | Mevcut Azure SQL veritabanı sunucunuz veya yönetilen örnek için Yönetici Kullanıcı adı. ADF, bu bilgileri, sizin adınıza SSıSDB hazırlamak ve yönetmek için kullanır. |
+| CatalogAdminPassword         | Mevcut Azure SQL veritabanı sunucunuz veya yönetilen örnek için yönetici parolası. |
+| CatalogPricingTier           | Azure SQL veritabanı sunucusu tarafından barındırılan SSSıSDB fiyatlandırma katmanı.  SSıSDB barındıran Azure SQL yönetilen örneği için geçerli değildir. |
+| Vnetıd                       | Azure-SSIS IR katılacak sanal ağ kaynak KIMLIĞI. |
+| Alt ağ                       | Azure-SSIS IR katılacak alt ağ adı. |
+| ID                           | Azure-SSIS IR kaynak KIMLIĞI. |
+| Tür                         | Azure-SSIS IR IR türü (yönetilen/kendiliğinden konak). |
+| ResourceGroupName            | ADF ve Azure-SSIS IR oluşturulduğu Azure Kaynak grubunuzun adı. |
+| DataFactoryName              | ADF 'nizin adı. |
+| Ad                         | Azure-SSIS IR adı. |
+| Açıklama                  | Azure-SSIS IR açıklaması. |
+  
+#### <a name="status-per-azure-ssis-ir-node"></a>Durum (Azure-SSIS IR düğüm başına)
+
+Aşağıdaki tabloda bir Azure-SSIS IR düğümünün olası durumları verilmiştir:
+
+| Düğüme özgü durum | Açıklama |
+| -------------------- | ----------- | 
+| Başlatılıyor             | Bu düğüm hazırlanıyor. |
+| Kullanılabilir            | Bu düğüm, SSIS paketlerini dağıtmanız/yürütmeniz için hazırlayın. |
+| 2            | Bu düğüm onarılıyor/yeniden başlatılıyor. |
+| Kullanılamaz          | Bu düğüm, SSIS paketlerini dağıtmanıza/yürütmeye yönelik değil ve giderebileceğiniz hata/sorunlar oluştu. |
+
+#### <a name="status-overall-azure-ssis-ir"></a>Durum (Genel Azure-SSIS IR)
+
+Aşağıdaki tabloda Azure-SSIS IR genel durumları verilmiştir. İçindeki genel durum, Azure-SSIS IR ait olan tüm düğümlerin Birleşik durumlarına bağlıdır. 
+
+| Genel durum | Açıklama | 
+| -------------- | ----------- | 
+| Başlangıç        | Azure-SSIS IR düğümleri ayrılmadı/hazırlandı. | 
+| Başlatılıyor       | Azure-SSIS IR düğümleri ayrılmakta/hazırlanmakta ve faturalandırma başladı. |
+| Başlarken        | Azure-SSIS IR düğümleri ayrıldı/hazırlandı ve SSIS paketlerini dağıtmanıza/yürütmeniz için hazır. |
+| Durduruluyor       | Azure-SSIS IR düğümleri serbest bırakılıyor. |
+| Durduruldu        | Azure-SSIS IR düğümleri yayımlanmıştır ve faturalandırma durdurulur. |
+
+### <a name="monitor-the-azure-ssis-integration-runtime-in-azure-portal"></a>Azure portal 'de Azure-SSIS tümleştirme çalışma zamanını izleme
+
+Azure-SSIS IR Azure portal izlemek için, ADF Kullanıcı arabirimindeki **izleyici** hub 'ının **tümleştirme çalışma zamanları** sayfasına gidin; burada tüm tümleştirme çalışma zamanlarını görebilirsiniz.
+
+![Tüm tümleştirme çalışma zamanlarını izle](media/monitor-integration-runtime/monitor-integration-runtimes.png)
+
+Sonra, izleme sayfasını açmak için Azure-SSIS IR adını seçin; burada, genel/düğüme özgü özellikleri ve durumlarını görebilirsiniz.
+
+![Azure-SSIS IR izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
+
+Azure-SSIS IR izleme sayfanızın **durum** kutucuğunda, genel durumunu (örneğin, **çalışıyor** veya **durduruldu**) görebilirsiniz. **Çalışma** durumunun seçilmesi, Azure-SSIS IR durdurmak Için canlı **durdurma** düğmesine sahip bir pencere açılır. **Durdurulmuş** durum seçildiğinde Azure-SSIS IR başlatmak Için canlı **Başlat** düğmesini içeren bir pencere açılır. Açılır pencerede, Azure-SSIS IR üzerinde çalışan SSIS paketi yürütme etkinliği ile bir ADF işlem hattını otomatik olarak oluşturmak için bir **SSIS paketi yürütme** düğmesi vardır (bkz. [SSIS paketlerini ADF Işlem hatları 'Nda SSIS paketi etkinliklerini yürütme](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) ve bir **kaynak kimliği** metin kutusu `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` ' den bağımsız yazılım satıcıları (ISV 'ler) için ek Premium/lisanslı ssıs BILEŞENLERI satın almak üzere kullanılabilecek Azure-SSIS IR kaynak kimliğinizi () kopyalayabilir ve bunları Azure-SSIS IR bağlayabilirsiniz (bkz. [Azure-SSIS IR Premium/lisanslı bileşenleri yükleme](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
+
+![Azure-SSIS IR durumu Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
+
+Paketlerin Azure SQL veritabanı sunucunuz veya yönetilen örneğiniz tarafından barındırılan SSSıSDB 'de depolandığı proje dağıtım modelini kullanıyorsanız, Azure-SSIS IR izleme sayfanızda **SSıSDB sunucu uç noktası** kutucuğunu görürsünüz (bkz. [Azure-SSIS IR dağıtım ayarlarınızı yapılandırma](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Bu kutucukta, bir pencere açmak için Azure SQL veritabanı sunucunuzu veya yönetilen örneğinizi tanımlayarak bir bağlantı seçebilirsiniz. buradan, sunucu uç noktasını bir metin kutusundan kopyalayabilir ve SMS 'den bağlanırken, paketlerinizi dağıtmak, yapılandırmak, çalıştırmak ve yönetmek için kullanabilirsiniz. Açılır pencerede, Azure portal SSıSDB 'nizi yeniden yapılandırmak/yeniden boyutlandırmak için **Azure SQL veritabanınızı veya yönetilen örnek ayarlarını görüntüleyin** bağlantısını da seçebilirsiniz.
+
+![Azure-SSIS IR-SSıSDB Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
+
+Azure-SSIS IR bir sanal ağa katılırsanız, Azure-SSIS IR izleme sayfanızda **VNET/subnet 'ı doğrula** kutucuğunu görürsünüz (bkz. [Azure-SSIS IR VNET 'e katılma](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)). Bu kutucukta, VNET ve alt ağınızı tanımlayarak bir pencere açmaya yönelik bir bağlantı seçebilirsiniz. burada, sanal ağ veya alt ağ `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet` adınızı metin kutularından kopyalayabilir ve ayrıca, gerekli gelen/giden ağ traffics ve yönetiminin Azure-SSIS IR olmamasını sağlamak Için VNET ve alt ağ yapılandırmalarından kimlik doğrulaması yapabilirsiniz.
+
+![Azure-SSIS IR-doğrulama Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
+
+Azure-SSIS IR izleme sayfanızın **bağlantıyı Tanıla** kutucuğunda, bir pencere açmak Için bağlantıyı **Test** et bağlantısını seçebilirsiniz. buradan, Azure-SSIS IR ve ilgili paket/yapılandırma/veri depoları ile Yönetim Hizmetleri arasındaki bağlantıları, tam etkı alanı adı (FQDN)/IP adresi ve belirlenmiş bağlantı noktası aracılığıyla kontrol edebilirsiniz (bkz. [Azure-SSIS IR bağlantıları test](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)edin).
+
+![Azure-SSIS IR tanılama Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+
+Paketlerin Azure SQL yönetilen örneğiniz tarafından barındırılan ve Azure-SSIS IR paket depoları aracılığıyla yönetilen dosya sistemi/Azure dosyaları/SQL Server veritabanı 'nda (MSDB) depolandığı paket dağıtım modelini kullanıyorsanız, **paket depoları** kutucuğunu Azure-SSIS IR izleme sayfanızda görürsünüz (bkz. [Azure-SSIS IR dağıtım ayarlarınızı yapılandırma](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Bu kutucukta, Azure SQL yönetilen örneğiniz tarafından barındırılan dosya sistemi/Azure dosyaları/MSDB 'nin en üstünde yer alan Azure-SSIS IR paket depolarınız için ilgili bağlı hizmetleri yeniden yapılandırabileceğiniz bir pencere açmak için Azure-SSIS IR bağlı paket deposunun sayısını tanımlayarak bir bağlantı seçebilirsiniz.
+
+![Azure-SSIS IR PAKETI Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
+
+Azure-SSIS IR başlatma/durdurma/bakım/yükseltme ile ilgili sorunlar varsa, Azure-SSIS IR izleme sayfanızda ek bir **hata (ler)** kutucuğu görürsünüz. Bu kutucukta, bir pencere açmak için Azure-SSIS IR tarafından üretilen hataların sayısını tanımlayarak bir bağlantı seçebilirsiniz. burada bu hataları daha ayrıntılı olarak görebileceğiniz ve sorun giderme kılavuzumuzdaki önerilen çözümleri bulmak üzere kopyalayabilir (bkz. [Azure-SSIS IR sorunlarını giderme](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)).
+
+### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Azure Izleyici ile Azure-SSIS tümleştirme çalışma zamanını izleme
+
+Azure Izleyici ile Azure-SSIS IR izlemek için bkz. [Azure izleyici Ile SSIS Işlemlerini izleme](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor).
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime hakkında daha fazla bilgi
 

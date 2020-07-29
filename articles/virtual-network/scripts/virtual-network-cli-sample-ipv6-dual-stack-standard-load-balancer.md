@@ -1,7 +1,7 @@
 ---
 title: Azure CLı betik örneği-IPv6 ön uç Standart Load Balancer yapılandırma
 titlesuffix: Azure Virtual Network
-description: Azure sanal ağ 'da Azure CLı kullanarak IPv6 uç noktalarını etkinleştirme
+description: Standart Load Balancer kullanarak bir sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırmayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2509034abb37c7dc90b65569d14f228eadb746c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235045"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281625"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Standart Load Balancer kullanarak sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma (Önizleme)
 

@@ -4,14 +4,15 @@ description: Docker makinesinin Azure 'da Docker konakları oluşturmak için na
 author: cynthn
 ms.service: virtual-machines-linux
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83799940f8c98952a435f582a9160585e9dbdfd4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78968813"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289796"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Azure 'da ana bilgisayar oluşturmak için Docker makinesi kullanma
 Bu makalede, Azure 'da ana bilgisayar oluşturmak için [Docker makinesi](https://docs.docker.com/machine/) 'nin nasıl kullanılacağı açıklanır. `docker-machine`Komut Azure 'da bir Linux sanal makinesi (VM) oluşturur ve Docker 'ı kurar. Daha sonra, aynı yerel araçları ve iş akışlarını kullanarak Docker konaklarınızı Azure 'da yönetebilirsiniz. Windows 10 ' da Docker-Machine ' i kullanmak için Linux Bash kullanmanız gerekir.
