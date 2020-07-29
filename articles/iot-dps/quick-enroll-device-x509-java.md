@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: 594e6092483e86f579ae980e56f42c1a4bad7cbd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 1d1b4e2573519fbd033121763d3e7fe6b071f075
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044643"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327030"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Hızlı başlangıç: Java kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
@@ -22,7 +22,7 @@ ms.locfileid: "86044643"
 
 Bu hızlı başlangıçta, bir X. 509.952 sanal cihaz grubunu Azure IoT Hub cihaz sağlama hizmeti 'ne programlı bir şekilde kaydetmek için Java 'Yı kullanırsınız. Cihazlar bir kayıt grubu veya bireysel kayıt oluşturarak bir sağlama hizmeti örneğine kaydedilir. Bu hızlı başlangıçta, Java hizmeti SDK 'sını ve örnek bir Java uygulamasını kullanarak her iki tür kaydı nasıl oluşturacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [IoT Hub cihaz sağlama hizmetini Azure Portal Ile ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).

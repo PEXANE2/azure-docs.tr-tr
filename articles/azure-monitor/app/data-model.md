@@ -9,15 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69ed934e97d2726995a7a5cd122fadbd4a791942
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671891"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320536"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetri veri modeli
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) , uygulamanızın performansını ve kullanımını çözümleyebilmeniz için web uygulamanızdan Azure Portal telemetri gönderir. Telemetri modeli, platform ve dilden bağımsız izleme oluşturmak mümkün olacak şekilde standartlaştırılmış hale gelir. 
+[Azure Application Insights](./app-insights-overview.md) , uygulamanızın performansını ve kullanımını çözümleyebilmeniz için web uygulamanızdan Azure Portal telemetri gönderir. Telemetri modeli, platform ve dilden bağımsız izleme oluşturmak mümkün olacak şekilde standartlaştırılmış hale gelir. 
 
 Application Insights tarafından toplanan veriler bu tipik uygulama yürütme modeli:
 
@@ -27,7 +28,7 @@ Aşağıdaki telemetri türleri uygulamanızın yürütülmesini izlemek için k
 
 * Uygulamanız tarafından alınan bir isteği günlüğe kaydetmek için [**istek**](data-model-request-telemetry.md) oluşturuldu. Örneğin, Application Insights Web SDK, Web uygulamanızın aldığı her HTTP isteği için otomatik olarak bir Istek telemetrisi öğesi oluşturur. 
 
-    **İşlem** , bir isteği işleyen yürütmenin iş parçacıklarından oluşur. Ayrıca, verileri düzenli aralıklarla işleyen bir Web işinde "uyandırma" gibi diğer işlem türlerini izlemek için de [kod yazabilirsiniz](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) .  Her işlemin bir KIMLIĞI vardır. Bu KIMLIK, uygulamanız isteği işlerken oluşturulan tüm Telemetriyi [gruplandırmak](../../azure-monitor/app/correlation.md) için kullanılabilir. Her işlem başarılı olur ya da başarısız olur ve bir süre süresi vardır.
+    **İşlem** , bir isteği işleyen yürütmenin iş parçacıklarından oluşur. Ayrıca, verileri düzenli aralıklarla işleyen bir Web işinde "uyandırma" gibi diğer işlem türlerini izlemek için de [kod yazabilirsiniz](./api-custom-events-metrics.md#trackrequest) .  Her işlemin bir KIMLIĞI vardır. Bu KIMLIK, uygulamanız isteği işlerken oluşturulan tüm Telemetriyi [gruplandırmak](./correlation.md) için kullanılabilir. Her işlem başarılı olur ya da başarısız olur ve bir süre süresi vardır.
 * [**Özel durum**](data-model-exception-telemetry.md) -genellikle bir işlemin başarısız olmasına neden olan bir özel durumu temsil eder.
 * [**Bağımlılık**](data-model-dependency-telemetry.md) -uygulamanızdan bir REST API veya SQL gibi bir dış hizmete veya depoya olan çağrıyı temsil eder. ASP.NET ' de, SQL 'e bağımlılık çağrıları tarafından tanımlanır `System.Data` . HTTP uç noktalarına yapılan çağrılar tarafından tanımlanır `System.Net` . 
 
@@ -39,7 +40,7 @@ Application Insights özel telemetri için üç ek veri türü sağlar:
 
 Her telemetri öğesi, uygulama sürümü veya Kullanıcı oturum kimliği gibi [bağlam bilgilerini](data-model-context.md) tanımlayabilir. Bağlam, belirli senaryoları engelleyen bir türü kesin belirlenmiş alanlar kümesidir. Uygulama sürümü düzgün şekilde başlatıldığında Application Insights, yeniden dağıtım ile bağıntılı uygulama davranışında yeni desenleri algılayabilir. Oturum kimliği, kullanıcılar üzerinde kesinti veya bir sorun etkisi hesaplamak için kullanılabilir. Bazı başarısız bağımlılık için farklı oturum kimliği sayısını hesaplama, hata izleme veya kritik özel durum, bir etkiyi daha iyi anlamak için sağlar.
 
-Application Insights telemetri modeli, telemetrinin bir parçası olan işlem ile [ilişkilendirilmesi](../../azure-monitor/app/correlation.md) için bir yol tanımlar. Örneğin, bir istek bir SQL veritabanı çağrısı ve kayıtlı tanılama bilgileri yapabilir. İstek telemetrisine geri bağlayan telemetri öğeleri için bağıntı bağlamını ayarlayabilirsiniz.
+Application Insights telemetri modeli, telemetrinin bir parçası olan işlem ile [ilişkilendirilmesi](./correlation.md) için bir yol tanımlar. Örneğin, bir istek bir SQL veritabanı çağrısı ve kayıtlı tanılama bilgileri yapabilir. İstek telemetrisine geri bağlayan telemetri öğeleri için bağıntı bağlamını ayarlayabilirsiniz.
 
 ## <a name="schema-improvements"></a>Şema geliştirmeleri
 
@@ -49,7 +50,8 @@ Veri modeli veya şema sorunlarını ve önerilerini raporlamak için GitHub [Ap
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel telemetri yazma](../../azure-monitor/app/api-custom-events-metrics.md)
-- [Telemetrinin nasıl genişletileceğini ve filtreleneceğini](../../azure-monitor/app/api-filtering-sampling.md)öğrenin.
-- Veri modeli tabanlı telemetri miktarını en aza indirmek için [örnekleme](../../azure-monitor/app/sampling.md) kullanın.
-- Application Insights tarafından desteklenen [platformları](../../azure-monitor/app/platforms.md) inceleyin.
+- [Özel telemetri yazma](./api-custom-events-metrics.md)
+- [Telemetrinin nasıl genişletileceğini ve filtreleneceğini](./api-filtering-sampling.md)öğrenin.
+- Veri modeli tabanlı telemetri miktarını en aza indirmek için [örnekleme](./sampling.md) kullanın.
+- Application Insights tarafından desteklenen [platformları](./platforms.md) inceleyin.
+

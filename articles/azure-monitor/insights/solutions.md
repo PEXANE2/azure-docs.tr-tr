@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081551"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326010"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 
@@ -125,7 +125,7 @@ Topluluk üyeleri, yönetim çözümlerini Azure hızlı başlangıç şablonlar
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Azure CLı ile bir çözüm yüklemesi
 
-Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](/azure/azure-monitor/platform/manage-access) seçmeniz gerekir.  Azure CLı ile, [az Monitor Log-Analytics çalışma alanı](/cli/azure/monitor/log-analytics/workspace) başvuru komutlarını kullanarak çalışma alanlarını yönetirsiniz.  Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
+Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../platform/manage-access.md) seçmeniz gerekir.  Azure CLı ile, [az Monitor Log-Analytics çalışma alanı](/cli/azure/monitor/log-analytics/workspace) başvuru komutlarını kullanarak çalışma alanlarını yönetirsiniz.  Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
 
 İzleme çözümü yüklemek için [az Monitor Log-Analytics çözüm Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) ' i kullanın.  Köşeli parantezler içindeki parametreler isteğe bağlıdır.
 
@@ -192,6 +192,7 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Microsoft 'un izleme çözümlerinin bir listesini](solutions-inventory.md)alın.
+* [Microsoft 'un izleme çözümlerinin bir listesini](/azure/azure-monitor/monitor-reference)alın.
 * İzleme çözümleri tarafından toplanan verileri analiz etmek için [sorgular oluşturmayı](../log-query/log-query-overview.md) öğrenin.
 * [Azure izleyici için tüm Azure CLI komutlarına](/cli/azure/azure-cli-reference-for-monitor)bakın.
+

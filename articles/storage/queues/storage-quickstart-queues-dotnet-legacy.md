@@ -3,23 +3,26 @@ title: 'Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure Stor
 description: Bu hızlı başlangıçta, bir kuyruk oluşturmak ve bu iletiye ileti eklemek için .NET için Azure depolama istemci kitaplığı 'nı nasıl kullanacağınızı öğreneceksiniz. Ardından, sıradaki iletileri okumayı ve işlemeyi öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 807765aea66561abb5a8764f119d2be4632a56d5
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71700efecfc173392562327f6d150d79d1a9c84f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807554"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292683"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın
 
 Bu hızlı başlangıçta, bir kuyruk oluşturmak ve buna ileti eklemek için .NET için Azure depolama istemci kitaplığı sürüm 11 ' i nasıl kullanacağınızı öğrenirsiniz. Ardından, sıradaki iletileri okumayı ve işlemeyi öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!NOTE]
+> Bu hızlı başlangıç, Azure kuyruk depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: .net Için Azure kuyruk depolama istemci kitaplığı V12](storage-quickstart-queues-dotnet.md).
+
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -37,7 +40,7 @@ Ardından, işletim sisteminiz için .NET Core 2.0’ı indirip yükleyin. Windo
 - [Linux için .NET Core](https://www.microsoft.com/net/download/linux) yükleyin
 - İsteğe bağlı olarak [Visual Studio Code](https://www.visualstudio.com/) ve [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) yükleyin
 
-### <a name="macos"></a>Mac OS
+### <a name="macos"></a>macOS
 
 - [macOS için .NET Core](https://www.microsoft.com/net/download/macos) yükleyin.
 - İsteğe bağlı olarak [Mac için Visual Studio](https://www.visualstudio.com/vs/visual-studio-mac/) yükleyin
@@ -78,7 +81,7 @@ export storageconnectionstring=<yourconnectionstring>
 
 Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
 
-### <a name="macos"></a>Mac OS
+### <a name="macos"></a>macOS
 
 .bash_profile dosyanızı düzenleyin ve ortam değişkenini ekleyin:
 
@@ -110,7 +113,7 @@ Uygulama dizininize gidip `dotnet run` komutuyla uygulamayı çalıştırın.
 dotnet run
 ```
 
-### <a name="macos"></a>Mac OS
+### <a name="macos"></a>macOS
 
 Uygulama dizininize gidip `dotnet run` komutuyla uygulamayı çalıştırın.
 
@@ -277,6 +280,6 @@ Azure kuyrukları ile .NET geliştirme için şu ek kaynaklara bakın:
 Bu hızlı başlangıçta, bir kuyruğa ileti eklemeyi, sıradaki iletilere göz atmayı ve .NET kullanarak iletileri sıradan çıkarmayı ve işlemeyi öğrendiniz. 
 
 > [!div class="nextstepaction"]
-> [Azure kuyruk depolama ile uygulamalar arasında iletişim kurma](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Azure Kuyruk depolamayla uygulamalar arasında iletişim kurma](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://www.microsoft.com/net/learn/get-started/).

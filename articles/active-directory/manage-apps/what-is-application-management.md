@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 53c4e3e3e3b6aaca2f861a8c5aba528541dc4854
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055214"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322202"
 ---
 # <a name="what-is-application-management"></a>Uygulama yönetimi nedir?
 
@@ -93,8 +93,6 @@ Insan kaynakları odaklı uygulamalar veya büyük bir kullanıcı kümesine sah
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD kiracınızda zaten yapılandırılmış olan uygulamaları görüntüleme](view-applications-portal.md)
-- [Hızlı başlangıç: Azure AD kiracınıza Galeri uygulaması ekleme](add-application-portal.md)
-- [Azure AD kuruluşunuza Galeri uygulaması ekleme](add-gallery-app.md)
+- [Azure AD 'de uygulama yönetimi için hızlı başlangıç serisi](view-applications-portal.md)
 - [Uygulama tümleştirmesini kullanmaya başlayın](plan-an-application-integration.md)
 - [Sağlamayı otomatikleştirmeyi öğrenin](../app-provisioning/user-provisioning.md)

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 5e7fcde86c9bbf017ac3fca6025a025104b0d864
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f14f006283b7430458d67d2bd3bee787c08411d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081585"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326027"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Izleyici 'de Aracı Durumu çözümü
 Azure 'daki Aracı Durumu çözümü, doğrudan Azure Izleyici 'de Log Analytics çalışma alanına raporlama veya Azure Izleyicisine bağlı bir System Center Operations Manager yönetim grubu için, yanıt vermeyen ve işletimsel verileri gönderen tüm aracıları anlamanıza yardımcı olur.  Ayrıca, kaç aracının dağıtıldığını, bunların coğrafi olarak nerelere dağıtıldığını da izleyebilir ve Azure’da, diğer bulut ortamlarında ya da şirket içinde dağıtılmış aracıların dağılımından her zaman haberdar olmaya yönelik diğer sorguları gerçekleştirebilirsiniz.    
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu çözümü dağıtmadan önce, Log Analytics çalışma alanına rapor veren veya çalışma alanınız ile tümleştirilmiş bir [Operations Manager yönetim grubuna](../../azure-monitor/platform/om-agents.md) raporlama için şu anda desteklenen [Windows aracılarını](../platform/agent-windows.md) doğrulayın.
+Bu çözümü dağıtmadan önce, Log Analytics çalışma alanına rapor veren veya çalışma alanınız ile tümleştirilmiş bir [Operations Manager yönetim grubuna](../platform/om-agents.md) raporlama için şu anda desteklenen [Windows aracılarını](../platform/agent-windows.md) doğrulayın.
 
 ## <a name="solution-components"></a>Çözüm bileşenleri
 Bu çözüm, çalışma alanınıza eklenen aşağıdaki kaynaklardan ve doğrudan bağlanılan aracılardan veya Operations Manager bağlantılı yönetim grubundan oluşur.
@@ -28,7 +28,7 @@ System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma 
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack  (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
 
-Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../../azure-monitor/platform/om-agents.md).
+Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../platform/om-agents.md).
 
 ## <a name="configuration"></a>Yapılandırma
 Çözüm [ekleme](solutions.md)bölümünde açıklanan işlemi kullanarak Log Analytics çalışma alanınıza Aracı durumu çözümünü ekleyin. Başka bir yapılandırma işlemi gerekmez.
@@ -111,3 +111,4 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan kayıtlara ilişkin örne
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Günlük sorgularından uyarı oluşturma hakkında ayrıntılı bilgi için [Azure izleyici 'Deki uyarılar](../platform/alerts-overview.md) hakkında bilgi edinin. 
+

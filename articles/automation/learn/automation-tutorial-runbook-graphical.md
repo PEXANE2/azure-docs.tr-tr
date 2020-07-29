@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185543"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290942"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Öğretici: grafik runbook 'u oluşturma
 
@@ -25,13 +25,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Runbook işinin durumunu çalıştırma ve izleme
 > * Runbook parametreleri ve koşullu bağlantılar içeren bir Azure sanal makinesini başlatmak için Runbook 'u güncelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](../index.yml). Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
 * Azure sanal makinesi. Bu makineyi durdurup başlatabileceğinizden bu, bir üretim sanal makinesi olmamalıdır.
+* Gerekirse, [Azure modüllerini içeri aktarın](../shared-resources/modules.md) veya kullandığınız cmdlet 'lere göre [modülleri güncelleştirin](../automation-update-azure-modules.md) .
 
 ## <a name="step-1---create-runbook"></a>1. Adım - Runbook oluşturma
 

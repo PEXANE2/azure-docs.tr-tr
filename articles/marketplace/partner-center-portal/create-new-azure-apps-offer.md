@@ -4,15 +4,15 @@ description: Iş Ortağı Merkezi 'nde ticari Market portalında yeni bir Azure 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: qianw211
-ms.author: dsindona
+author: AarathiN
+ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127443"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326690"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -38,7 +38,7 @@ Ticari Market için Azure uygulama teklifinizi hazırlarken aşağıdaki kaynakl
 
 * Hızlı Başlangıçlar:
 
-    * [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
+    * [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
     * [Azure şablonları en iyi yöntemler Kılavuzu](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Uygulama tanımını yayımlama](../../managed-applications/publish-service-catalog-app.md)
     * [Hizmet kataloğu uygulaması dağıtma](../../managed-applications/deploy-service-catalog-quickstart.md)
@@ -202,7 +202,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 

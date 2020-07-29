@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073634"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327115"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
 
 ![Application Insights simgesi](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> [Çapraz kaynak sorguları](../../azure-monitor/log-query/cross-workspace-query.md)desteğiyle Application Insights Bağlayıcısı yönetim çözümü artık gerekli değildir. Azure ticari bulut için 15 Ocak 2019 tarihinde kullanımdan kaldırılan OMS portalı ile birlikte kullanımdan kaldırılmıştır ve Azure Marketi 'nden kaldırılmıştır. Azure ABD Kamu Bulutu için 30 Mart 2019 ' de kullanımdan kaldırılacaktır.
+> [Çapraz kaynak sorguları](../log-query/cross-workspace-query.md)desteğiyle Application Insights Bağlayıcısı yönetim çözümü artık gerekli değildir. Azure ticari bulut için 15 Ocak 2019 tarihinde kullanımdan kaldırılan OMS portalı ile birlikte kullanımdan kaldırılmıştır ve Azure Marketi 'nden kaldırılmıştır. Azure ABD Kamu Bulutu için 30 Mart 2019 ' de kullanımdan kaldırılacaktır.
 >
 >Mevcut bağlantılar 30 Haziran 2019 ' e kadar çalışmaya devam edecektir.  OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Mevcut bağlantıları kaldırmak için PowerShell 'i kullanma konusunda bir betik için aşağıdaki [PowerShell ile bağlayıcıyı kaldırma](#removing-the-connector-with-powershell) bölümüne bakın.
 >
->Birden çok uygulama için Application Insights günlük verilerini sorgulama konusunda rehberlik için bkz. [birden çok Azure izleyicisini Application Insights kaynağı](../log-query/unify-app-resource-data.md)birleştirme. OMS portalının kullanımdan kaldırılması hakkında daha fazla bilgi için bkz. [OMS portalı Azure 'a taşınıyor](../../azure-monitor/platform/oms-portal-transition.md).
+>Birden çok uygulama için Application Insights günlük verilerini sorgulama konusunda rehberlik için bkz. [birden çok Azure izleyicisini Application Insights kaynağı](../log-query/unify-app-resource-data.md)birleştirme. OMS portalının kullanımdan kaldırılması hakkında daha fazla bilgi için bkz. [OMS portalı Azure 'a taşınıyor](./oms-portal-transition.md).
 >
 > 
 
-Uygulama öngörüleri Bağlayıcısı çözümü, performans sorunlarını tanılamanıza ve [Application Insights](../../azure-monitor/app/app-insights-overview.md)ile izlendiğinde hangi kullanıcıların uygulamanızla ne yaptığını anlamanıza yardımcı olur. Application Insights ' de geliştiricilerin göreceği aynı uygulama telemetrisine ilişkin Görünümler Log Analytics sunulmaktadır. Ancak, Application Insights uygulamalarınızı Log Analytics tümleştirdiğinizde, uygulamalarınızın görünürlüğü işlem ve uygulama verileri tek bir yerde bulundurarak artar. Aynı görünümlerin olması, uygulama geliştiricilerinizle işbirliği yapmanıza yardımcı olur. Ortak görünümler, hem uygulama hem de platform sorunlarını tespit etmek ve çözümlemek için süreyi azaltmaya yardımcı olabilir.
+Uygulama öngörüleri Bağlayıcısı çözümü, performans sorunlarını tanılamanıza ve [Application Insights](../app/app-insights-overview.md)ile izlendiğinde hangi kullanıcıların uygulamanızla ne yaptığını anlamanıza yardımcı olur. Application Insights ' de geliştiricilerin göreceği aynı uygulama telemetrisine ilişkin Görünümler Log Analytics sunulmaktadır. Ancak, Application Insights uygulamalarınızı Log Analytics tümleştirdiğinizde, uygulamalarınızın görünürlüğü işlem ve uygulama verileri tek bir yerde bulundurarak artar. Aynı görünümlerin olması, uygulama geliştiricilerinizle işbirliği yapmanıza yardımcı olur. Ortak görünümler, hem uygulama hem de platform sorunlarını tespit etmek ve çözümlemek için süreyi azaltmaya yardımcı olabilir.
 
 Çözümü kullandığınızda şunları yapabilirsiniz:
 
@@ -44,9 +44,9 @@ Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından App
 
 | Bağlı Kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
-| [Windows aracıları](../../azure-monitor/platform/agent-windows.md) | Hayır | Çözüm Windows aracılarından bilgi toplamaz. |
-| [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır | Çözüm, Linux aracılarından bilgi toplamaz. |
-| [SCOM yönetim grubu](../../azure-monitor/platform/om-agents.md) | Hayır | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
+| [Windows aracıları](./agent-windows.md) | Hayır | Çözüm Windows aracılarından bilgi toplamaz. |
+| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, Linux aracılarından bilgi toplamaz. |
+| [SCOM yönetim grubu](./om-agents.md) | Hayır | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
 | [Azure depolama hesabı](./resource-logs.md#send-to-log-analytics-workspace) | Hayır | Çözüm, Azure Storage 'dan bilgi toplamaz. |
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -57,7 +57,7 @@ Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından App
 
 ## <a name="configuration"></a>Yapılandırma
 
-1. Azure Web Apps Analytics çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 'nden veya [Çözüm Galerisi Log Analytics çözümleri ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
+1. Azure Web Apps Analytics çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 'nden veya [Çözüm Galerisi Log Analytics çözümleri ekleme](../insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
 2. [Azure Portal](https://portal.azure.com)gidin. Application Insights açmak için **tüm hizmetler** ' i seçin. Sonra, Application Insights için arama yapın. 
 3. **Abonelikler**' in altında Application Insights kaynaklara sahip bir abonelik seçin ve ardından **ad**' ın altında bir veya daha fazla uygulama seçin.
 4. **Kaydet**’e tıklayın.
@@ -144,7 +144,7 @@ Application Insights Bağlayıcısı Blade *, Azure Portal kullandığınızda*s
 
 ### <a name="sample-corrected-data"></a>Örnek düzeltilmiş veriler
 
-Application Insights telemetri trafiğini azaltmaya yardımcı olmak için *[örnekleme düzeltmesi](../../azure-monitor/app/sampling.md)* sağlar. Application Insights uygulamanızda örnekleme etkinleştirdiğinizde, hem Application Insights hem de Log Analytics içinde depolanan daha az sayıda giriş alırsınız. **Application Insights Bağlayıcısı** sayfasında ve perspektiflerde veri tutarlılığı korunurken, özel sorgularınız için örneklenmiş verileri el ile düzeltmeniz gerekir.
+Application Insights telemetri trafiğini azaltmaya yardımcı olmak için *[örnekleme düzeltmesi](../app/sampling.md)* sağlar. Application Insights uygulamanızda örnekleme etkinleştirdiğinizde, hem Application Insights hem de Log Analytics içinde depolanan daha az sayıda giriş alırsınız. **Application Insights Bağlayıcısı** sayfasında ve perspektiflerde veri tutarlılığı korunurken, özel sorgularınız için örneklenmiş verileri el ile düzeltmeniz gerekir.
 
 Günlük arama sorgusunda örnekleme düzeltmesinin bir örneği aşağıda verilmiştir:
 
@@ -163,8 +163,8 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 - Kullanılabilirlik
 - Özel durumlar
 - İstekler
-- Sayfa görünümleri: çalışma alanınızın sayfa görünümlerini alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Özel olaylar: çalışma alanınızın özel olayları alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Trackevent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+- Sayfa görünümleri: çalışma alanınızın sayfa görünümlerini alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [PageViews](../app/api-custom-events-metrics.md#page-views).
+- Özel olaylar: çalışma alanınızın özel olayları alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Trackevent](../app/api-custom-events-metrics.md#trackevent).
 
 Veriler, kullanılabilir hale geldiği için Application Insights Log Analytics tarafından alınır.
 
@@ -318,4 +318,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Application Insights uygulamalarınızın ayrıntılı bilgilerini görüntülemek için [günlük araması](../../azure-monitor/log-query/log-query-overview.md) 'nı kullanın.
+- Application Insights uygulamalarınızın ayrıntılı bilgilerini görüntülemek için [günlük araması](../log-query/log-query-overview.md) 'nı kullanın.
+

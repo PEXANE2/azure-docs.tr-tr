@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539780"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326078"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
 
 Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Hizmet Eşlemesi ile, sunucularınızı planladığınız şekilde kullanabilirsiniz: kritik hizmetler sunabilen birbirine bağlı sistemler. Hizmet Eşlemesi, aracının yüklenmesi dışında herhangi bir yapılandırma gerektirmeden sunucular, işlemler, gelen ve giden bağlantıların gecikme süresi ile TCP aracılığıyla bağlı mimarilerdeki bağlantı noktaları arasındaki bağlantıları gösterir.
 
-Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadır. Bu çözüme yönelik önkoşulları yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakışı etkinleştirme](vminsights-enable-overview.md#prerequisites). Özetlemek gerekirse, şunlar gerekir:
+Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadır. Çözümün önkoşulları şunlardır:
 
-* Bu çözümü etkinleştirmek için bir Log Analytics çalışma alanı.
+* [Desteklenen bir bölgedeki](vminsights-configure-workspace.md#supported-regions)Log Analytics çalışma alanı.
 
-* Çözümü etkinleştirdiğiniz aynı çalışma alanını raporlamak üzere yapılandırılmış Windows bilgisayarına veya Linux sunucusuna yüklenmiş Log Analytics Aracısı.
+* İle çözümü etkinleştirdiğiniz aynı çalışma alanına bağlı Windows bilgisayarına veya Linux sunucusuna yüklenmiş [Log Analytics Aracısı](vminsights-enable-overview.md#agents) .
 
-* Windows bilgisayara veya Linux sunucusuna yüklenmiş bağımlılık Aracısı.
+* Windows bilgisayara veya Linux sunucusuna yüklenmiş [bağımlılık Aracısı](vminsights-enable-overview.md#agents) .
 
 >[!NOTE]
->Zaten Hizmet Eşlemesi dağıttıysanız, Ayrıca, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](../../azure-monitor/insights/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM'ler için Azure İzleyici eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#azure-monitor-for-vms)bölümüne bakın.
+>Zaten Hizmet Eşlemesi dağıttıysanız, Ayrıca, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](./vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM'ler için Azure İzleyici eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#azure-monitor-for-vms)bölümüne bakın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -154,7 +154,7 @@ Grup listesindeki Grup adının yanındaki üç nokta menüsüne tıklayın.
 
 Bazı süreçler makinelerde belirli rollere sahiptir: Web sunucuları, uygulama sunucuları, veritabanı vb. Bir işlemin veya sunucunun oynadığı rolü bir bakışta belirlemesine yardımcı olmak için rol simgeleriyle birlikte hizmet eşlemesi açıklıyor süreci ve makine kutuları.
 
-| Rol simgesi | Description |
+| Rol simgesi | Açıklama |
 |:--|:--|
 | ![Web sunucusu](media/service-map/role-web-server.png) | Web sunucusu |
 | ![Uygulama Sunucusu](media/service-map/role-application-server.png) | Uygulama sunucusu |
@@ -304,7 +304,7 @@ Hizmet Eşlemesi tümleştirme, her iki çözüm de Log Analytics çalışma ala
 
 ## <a name="log-analytics-records"></a>Log Analytics kayıtları
 
-Hizmet Eşlemesi bilgisayar ve işlem envanter verileri Log Analytics [arama](../../azure-monitor/log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
+Hizmet Eşlemesi bilgisayar ve işlem envanter verileri Log Analytics [arama](../log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
 
 Her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur; bir işlem veya bilgisayar başlatıldığında ya da Hizmet Eşlemesi eklenmediyse üzerinde olduğunda oluşturulan kayıtlara ek olarak. Bu kayıtlar aşağıdaki tablolardaki özelliklere sahiptir. ServiceMapComputer_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki makine kaynağının alanlarıyla eşlenir. ServiceMapProcess_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki Işlem kaynağının alanlarıyla eşlenir. ResourceName_s alanı, karşılık gelen Kaynak Yöneticisi kaynağındaki ad alanıyla eşleşir. 
 
@@ -550,7 +550,7 @@ Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Ser
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hizmet Eşlemesi tarafından toplanan verileri almak için Log Analytics 'de [günlük aramaları](../../azure-monitor/log-query/log-query-overview.md) hakkında daha fazla bilgi edinin.
+Hizmet Eşlemesi tarafından toplanan verileri almak için Log Analytics 'de [günlük aramaları](../log-query/log-query-overview.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -571,7 +571,7 @@ Microsoft Bağımlılık aracısı, Microsoft Visual Studio çalışma zamanı k
 
 Aşağıdaki tabloda kod numaraları ve önerilen çözümler listelenmektedir.
 
-| Kod | Description | Çözüm |
+| Kod | Açıklama | Çözüm |
 |:--|:--|:--|
 | 0x17 | Kitaplık yükleyicisi, henüz yüklenmemiş bir Windows güncelleştirmesine ihtiyaç duyuyor. | En son kitaplık yükleyicisi günlüğüne bakın.<br><br>Bir başvurunun `Windows8.1-KB2999226-x64.msu` ardından bir satır gelmesi, `Error 0x80240017: Failed to execute MSU package,` KB2999226 yüklemek için önkoşullara sahip değilsiniz. [Windows'da Evrensel C Çalışma Zamanı](https://support.microsoft.com/kb/2999226) makalesinin önkoşullar bölümündeki yönergeleri izleyin. Önkoşulları yüklemek için Windows Update'i çalıştırmanız ve sistemi birden çok kez yeniden başlatmanız gerekebilir.<br><br>Microsoft Bağımlılık aracısı yükleyicisini yeniden çalıştırın. |
 
@@ -603,3 +603,4 @@ Makinenizde Hizmet Eşlemesi görürseniz, ancak işlem veya bağlantı verisi y
 ## <a name="suggestions"></a>Öneriler
 
 Hizmet Eşlemesi veya bu belgeler hakkında bizimle ilgili geri bildiriminiz var mı?  Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.
+

@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5f78535a3bd5ab93d3020d14a6242257c492297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499469"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321301"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python ile bağımlılıkları izleme
 
 Bağımlılık, uygulamanız tarafından çağrılan bir dış bileşendir. Bağımlılık verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanılarak toplanır. Veriler daha sonra Azure Izleyici altında telemetri olarak Application Insights gönderilir `dependencies` .
 
-İlk olarak, Python uygulamanızı en son [Opencensus Python SDK 'sı](../../azure-monitor/app/opencensus-python.md)ile işaretleyin.
+İlk olarak, Python uygulamanızı en son [Opencensus Python SDK 'sı](./opencensus-python.md)ile işaretleyin.
 
 ## <a name="in-process-dependencies"></a>İşlem içi bağımlılıklar
 
@@ -170,8 +170,9 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Uygulama Eşlemesi](../../azure-monitor/app/app-map.md)
-* [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) sorgusu](../../azure-monitor/log-query/log-query-overview.md)
-* [İşlem tanılamaları](../../azure-monitor/app/transaction-diagnostics.md)
+* [Uygulama Eşlemesi](./app-map.md)
+* [Kullanılabilirlik](./monitor-web-app-availability.md)
+* [Search](./diagnostic-search.md)
+* [Log (Analytics) sorgusu](../log-query/log-query-overview.md)
+* [İşlem tanılamaları](./transaction-diagnostics.md)
+

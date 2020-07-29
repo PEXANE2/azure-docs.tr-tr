@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8db3a5292af2d53945c60a7b4ec1eb3c78381b9b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83cf8ca47774713ca8dbfd493d7aa16bf65fb6b7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101856"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286470"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Öğretici: bir Azure Time Series Insights Gen2 ortamı ayarlama
 
@@ -48,7 +48,7 @@ Bu bölümde, bir Azure IoT Hub örneğine veri gönderen üç sanal cihaz oluş
 
    [![Azure IoT Çözüm Hızlandırıcıları sayfası.](media/v2-update-provision/iot-solution-accelerators-landing-page.png)](media/v2-update-provision/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. Sonraki sayfada **Şimdi dene**' yi seçin. Ardından, **cihaz simülasyonu çözümü oluştur** sayfasında gerekli parametreleri girin.
+1. Cihaz simülasyonu oluşturmak istediğiniz aboneliği girin.
 
    Parametre|Açıklama
    ---|---
@@ -61,7 +61,7 @@ Bu bölümde, bir Azure IoT Hub örneğine veri gönderen üç sanal cihaz oluş
 
    [![Cihaz benzetimi çözümünü sağlayın.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya**taşındığını bildiren iki bildirim görüntülenir. 
+1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya**taşındığını bildiren iki bildirim görüntülenir.
 
    >[!IMPORTANT]
    > Çözüm hızlandırıcıyı henüz girmeyin! Daha sonra geri döneceksiniz, bu Web sayfasını açık tutun.
@@ -76,9 +76,9 @@ Bu bölümde, bir Azure IoT Hub örneğine veri gönderen üç sanal cihaz oluş
 
 Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturulacağı ve [Azure Portal](https://portal.azure.com/)kullanılarak IoT Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ına nasıl bağlanacağı açıklanır.
 
-1. Azure abonelik hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. 
-1. Üstteki menüden **+ Kaynak oluştur**'u seçin. 
-1. **Nesnelerin interneti** kategorisini seçin ve ardından **Time Series Insights**' ı seçin. 
+1. Azure abonelik hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Üstteki menüden **+ Kaynak oluştur**'u seçin.
+1. **Nesnelerin interneti** kategorisini seçin ve ardından **Time Series Insights**' ı seçin.
 
    [![Time Series Insights ortamı kaynağını seçin.](media/v2-update-provision/tsi-create-new-environment.png)](media/v2-update-provision/tsi-create-new-environment.png#lightbox)
 
@@ -91,14 +91,14 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
     | **Kaynak grubu** | Var olan bir kaynak grubunu seçin veya Azure Time Series Insights Gen2 ortam kaynağı için yeni bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. En iyi uygulama, cihaz simülatörü tarafından oluşturulan diğer IoT kaynaklarıyla aynı kaynak grubunu kullanmaktır. |
     | **Konum** | Azure Time Series Insights Gen2 ortamınız için bir veri merkezi bölgesi seçin. Ek gecikme süresini önlemek için, Azure Time Series Insights Gen2 ortamınızı cihaz simülatörü tarafından oluşturulan IoT Hub 'ınız ile aynı bölgede oluşturmak en iyisidir. |
     | **Katman** |  **Gen2 (L1)** seçeneğini belirleyin. Bu, Azure Time Series Insights Gen2 ürünü için SKU 'dır. |
-    | **Özellik adı** | Zaman serisi örneğinizi benzersiz bir şekilde tanımlayan bir değer girin. **ÖZELLIK kimliği** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için ***ıothub-Connection-Device-ID***girin. Zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md)okuyun. |
+    | **Zaman serisi KIMLIĞI Özellik adı** | Zaman serisi örneklerinizi benzersiz bir şekilde tanımlayan değerleri içeren bir özelliğin adını girin. Zaman serisi KIMLIĞI olarak **özellik adı** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için ***ıothub-Connection-Device-ID***girin. Birleşik zaman serisi kimliği gibi zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md)okuyun. |
     | **Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
     | **Depolama hesabı türü** | Yeni bir depolama hesabı için depolama türünü seçin. StorageV2 önerilir|
-    | **Depolama hesabı çoğaltma** | Yeni bir depolama hesabı için depolama türünü seçin. Konum seçiminize bağlı olarak, LRS, GRS ve ZRS arasından seçim yapabilirsiniz. Bu tuorial için LRS 'yi seçebilirsiniz|
+    | **Depolama hesabı çoğaltma** | Yeni bir depolama hesabı için depolama türünü seçin. Konum seçiminize bağlı olarak, LRS, GRS ve ZRS arasından seçim yapabilirsiniz. Bu öğretici için LRS 'yi seçebilirsiniz|
     | **Hiyerarşik ad alanı** |Bu seçenek, StorageV2 olacak depolama türünü seçtiğinizde seçilebilir. Varsayılan olarak devre dışıdır. Bu öğreticide, varsayılan *devre dışı* durumunda bırakabilirsiniz|
-    |**Isınma deposunu etkinleştir**|Isınma mağazasını etkinleştirmek için **Evet** ' i seçin. Daha sonra geri dönüp bu ayarı etkinleştirebilir veya devre dışı bırakabilirsiniz. |
+    |**Isınma deposunu etkinleştir**|Isınma mağazasını etkinleştirmek için **Evet** ' i seçin. Bu ayar, ortam oluşturulduktan sonra devre dışı bırakılabilir ve yeniden etkinleştirilebilir. |
     |**Veri bekletme (gün)**|Varsayılan 7 gün seçeneğini belirleyin. |
-    
+
     [![Yeni Time Series Insights ortamı yapılandırması.](media/v2-update-provision/tsi-environment-configuration.png)](media/v2-update-provision/tsi-environment-configuration.png#lightbox)
 
 1. **İleri ' yi seçin: olay kaynağı**.
@@ -133,7 +133,7 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
 
 1. Azure aboneliğinin sahibiyseniz, varsayılan olarak Azure Time Series Insights Gen2 ortamınıza erişebilirsiniz. Erişiminizin olduğunu doğrulayın:
 
-   1. Kaynak grubunuzu arayın ve ardından yeni oluşturulan Azure Time Series Insights Gen2 ortamınızı seçin. 
+   1. Kaynak grubunuzu arayın ve ardından yeni oluşturulan Azure Time Series Insights Gen2 ortamınızı seçin.
 
       [![Ortamınızı seçin ve görüntüleyin.](media/v2-update-provision/verify-tsi-resource-in-group.png)](media/v2-update-provision/verify-tsi-resource-in-group.png#lightbox)
 
@@ -157,7 +157,7 @@ Artık Azure Time Series Insights Gen2 ortamınızı dağıttığınıza göre, 
 
    [![Cihaz benzetimi Web uygulaması onayı.](media/v2-update-provision/sawa-signin-consent.png)](media/v2-update-provision/sawa-signin-consent.png#lightbox)
 
-1. **+ Yeni benzetim**' i seçin. 
+1. **+ Yeni benzetim**' i seçin.
 
     1. **Simülasyon kurulum** sayfası yüklendikten sonra gerekli parametreleri girin.
 
@@ -222,7 +222,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | **Ad** | **Asansör** girin |
     | **Açıklama** | **Bu, Asansör için bir tür tanımı** girin |
 
-1. Sonra, **değişkenler** sekmesini seçin. 
+1. Sonra, **değişkenler** sekmesini seçin.
 
     1. **+ Değişken Ekle** ' yi seçin ve Asansör türünün ilk değişkeni için aşağıdaki değerleri girin. Toplam olarak üç değişken yazardan olursunuz.
 
@@ -260,19 +260,19 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         [![Tür eklendikten sonra Model görünümünde gözden geçirin.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
 1. **Hiyerarşiler** sekmesini seçin. Ardından **+ Ekle**' yi seçin.
-   
+
    1. **Hiyerarşiyi Düzenle** bölmesinde aşağıdaki parametreleri ayarlayın:
 
         | Parametre | Eylem |
         | --- | ---|
         | **Ad** | **Konum hiyerarşisini**girin. |
-        |**Düzeyler**| **Ülkeyi** ilk düzeyin adı olarak girin <br> **+ Düzey Ekle** seçeneğini belirleyin <br> İkinci düzey için **şehir** girin ve ardından **+ düzey Ekle** ' yi seçin. <br> Üçüncü ve son düzeyin adı olarak **oluşturma** girin |
+        |**Düzeyler**| **Ülkeyi** ilk düzeyin adı olarak girin <br /> **+ Düzey Ekle** seçeneğini belirleyin <br /> İkinci düzey için **şehir** girin ve ardından **+ düzey Ekle** ' yi seçin. <br /> Üçüncü ve son düzeyin adı olarak **oluşturma** girin |
 
-    1. **Kaydet**'i seçin.
+   1. **Kaydet**'i seçin.
 
         [![Yeni hiyerarşinizi Model görünümünde görüntüleyin.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
-1. **Örneklere**gidin. 
+1. **Örneklere**gidin.
 
     1. En sağdaki **Eylemler** altında, ilk örneği aşağıdaki değerlerle düzenlemek için kurşun kalem simgesini seçin:
 

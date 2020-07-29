@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80283863"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320519"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Uygulama bileşenlerini anlamak için VM'ler için Azure İzleyici Map özelliğini kullanın
 VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. VM 'Leri iki şekilde gözlemleyebilirsiniz. VM grupları arasında bileşenleri görmek için bir eşlemeyi doğrudan bir VM 'den veya Azure Izleyici 'den görüntüleyin. Bu makale, bu iki görüntüleme yöntemini ve Map özelliğinin nasıl kullanılacağını anlamanıza yardımcı olur. 
@@ -19,7 +19,7 @@ VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve
 VM'ler için Azure İzleyici yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici etkinleştirme](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="introduction-to-the-map-experience"></a>Harita deneyimine giriş
 Harita deneyimine girmeden önce, bilgileri nasıl sunduklarını ve görselleştirir. Eşleme özelliğini doğrudan bir VM 'den veya Azure Izleyici 'den seçip harita özelliği tutarlı bir deneyim sunar. Tek fark Azure Izleyici 'den, bir haritanın çok katmanlı bir uygulamanın veya kümenin tüm üyelerini gösterdiği.
@@ -49,7 +49,7 @@ Harita özelliğinin ilgili uyarıları görüntülemesini sağlamak için, beli
 - Uyarıları bilgisayara (örneğin, **bilgisayar aralığı 1 dakikaya göre**) gruplandırmak için bir yan tümce ekleyin.
 - Uyarının bir ölçümde temelini oluşturma.
 
-Azure uyarıları ve uyarı kuralları oluşturma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de birleştirilmiş uyarılar](../../azure-monitor/platform/alerts-overview.md).
+Azure uyarıları ve uyarı kuralları oluşturma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de birleştirilmiş uyarılar](../platform/alerts-overview.md).
 
 Sağ üst köşede, **gösterge** seçeneği haritadaki sembolleri ve rolleri tanımlar. Haritalarınızı daha yakından gözden geçirin ve etrafında hareket ettirmek için sağ alt köşedeki yakınlaştırma denetimlerini kullanın. Yakınlaştırma düzeyini ayarlayabilir ve haritanın boyutunu sayfanın boyutuna uydurtırabilirsiniz.  
 
@@ -128,10 +128,11 @@ Azure Izleyici 'de, eşleme özelliği sanal makinelerinizin ve bağımlılıkla
 
 Sayfanın üst kısmındaki **çalışma alanı** seçicisini kullanarak bir çalışma alanı seçin. Birden fazla Log Analytics çalışma alanınız varsa, Çözümle etkinleştirilmiş ve VM 'Leri raporlayan çalışma alanını seçin. 
 
-**Grup** Seçicisi, seçili çalışma alanıyla ilgili olan abonelikleri, kaynak gruplarını, [bilgisayar gruplarını](../../azure-monitor/platform/computer-groups.md)ve sanal makine ölçek kümelerini döndürür. Seçiminiz yalnızca eşleme özelliği için geçerlidir ve performans ya da sistem durumunu etkilemez.
+**Grup** Seçicisi, seçili çalışma alanıyla ilgili olan abonelikleri, kaynak gruplarını, [bilgisayar gruplarını](../platform/computer-groups.md)ve sanal makine ölçek kümelerini döndürür. Seçiminiz yalnızca eşleme özelliği için geçerlidir ve performans ya da sistem durumunu etkilemez.
 
 Varsayılan olarak, haritada son 30 dakika gösterilir. Bağımlılıkların geçmişte nasıl arandığı hakkında daha fazla bilgi almak istiyorsanız, geçmiş zaman aralıklarını bir saate kadar sorgulayabilirsiniz. Sorguyu çalıştırmak için **Timerange** seçiciyi kullanın. Örneğin, bir olay sırasında veya bir değişiklikten önceki durumu görmek için bir sorgu çalıştırabilirsiniz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Performans sorunlarını belirlemek, performansı denetlemek ve sanal makinelerinizin genel kullanımını anlamak için bkz. [VM'ler için Azure izleyici için performans durumunu görüntüleme](vminsights-performance.md). 
+

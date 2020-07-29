@@ -4,16 +4,17 @@ description: Java 'da Azure uzamsal bağlayıcılarını kullanarak bağlantıla
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
+ms.custom: devx-track-java
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e03fb8bfc221edf209fd2480eedad822983d59a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 59cd363482674fc62cb5c94712d3902871a940be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74270184"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321199"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Java 'da Azure uzamsal bağlayıcılarını kullanarak Tutturucular oluşturma ve bulma
 
@@ -32,7 +33,7 @@ Azure uzamsal bağlantıları, dünyanın farklı cihazları arasında bağlant�
 - Bunları buluta yükleyin.
 - Bulut uzamsal bağlayıcılarını bulun ve silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 

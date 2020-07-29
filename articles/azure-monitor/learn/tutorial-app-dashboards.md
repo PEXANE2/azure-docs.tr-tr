@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661643"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318428"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights’ı kullanarak özel KPI panoları oluşturma
 
@@ -27,11 +27,11 @@ Azure portalında, her biri farklı kaynak gruplarında ve aboneliklerde yer ala
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
-- Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../../azure-monitor/app/asp-net.md).
+- Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../app/asp-net.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
@@ -57,7 +57,7 @@ Statik metin içeren bir pano çok ilginç değildir, bu nedenle artık Applicat
 
 
 1. Giriş ekranında **Application Insights** kaynağını seçin.
-2. **Genel bakış** bölmesinde, görüntülemekte olduğunuz son panoya kutucuk ![eklemek için](media/tutorial-app-dashboards/pushpin.png) sabitle simgesine sabitle simgesine tıklayın.  
+2. **Genel bakış** bölmesinde, ![ ](media/tutorial-app-dashboards/pushpin.png) görüntülemekte olduğunuz son panoya kutucuk eklemek için Sabitle simgesine sabitle simgesine tıklayın.  
  
 3. Sağ üst köşede, Kutucuğunuz panonuza sabitlendiğini belirten bir bildirim görüntülenir. Panonuza geri dönmek veya Pano bölmesini kullanmak için bildirimde **sabitlenmiş ' e** tıklayın.
 4. Bu kutucuk artık panonuza eklenir. Kutucuğun konumunu değiştirmek için **Düzenle** ' yi seçin. Tıklayın ve konuma sürükleyin ve ardından **özelleştirmeyi bitti**' ye tıklayın. Artık panonuz yararlı bilgiler içeren bir kutucuğa sahip olur.
@@ -88,7 +88,7 @@ Azure Applications Insights günlükleri (Analiz) ayrı bir hizmet olduğundan, 
 
     ![Panoyu yayımlama](media/tutorial-app-dashboards/8dashboard-share.png)
 
-2. Panoyu paylaşmak için **Pano adını** aynı tutun ve **Abonelik Adı**’nı.  **Yayımla**’ta tıklayın.  Pano artık diğer hizmetler ve abonelikler tarafından kullanılabilir.  İsteğe bağlı olarak panoya erişebilecek belirli kullanıcıları tanımlayabilirsiniz.
+2. Panoyu paylaşmak için **Pano adını** aynı tutun ve **Abonelik Adı**’nı.  **Yayımla**’ya tıklayın.  Pano artık diğer hizmetler ve abonelikler tarafından kullanılabilir.  İsteğe bağlı olarak panoya erişebilecek belirli kullanıcıları tanımlayabilirsiniz.
 1. Giriş ekranında **Application Insights** kaynağını seçin.
 2. İzleme altında sol taraftaki **Günlükler (Analiz)** öğesine tıklayarak Günlükler (Analiz) portalını açın.
 3. En çok istekte bulunulan 10 sayfayı ve bunlara ait istek sayılarını döndüren şu sorguyu yazın:
@@ -101,7 +101,7 @@ Azure Applications Insights günlükleri (Analiz) ayrı bir hizmet olduğundan, 
     ```
 
 4. Sorgunun sonuçlarını doğrulamak için **Çalıştır** ' a tıklayın.
-5. Sabitleme simgesine tıklayın ![raptiye](media/tutorial-app-dashboards/pushpin.png) ve panonun adını seçin. Bu seçeneğin, son panonun kullanıldığı önceki adımların aksine bir panoyu seçtiğinizde, Günlükler (Analiz) konsolunun ayrı bir hizmet olması ve kullanılabilir tüm paylaşılan panolardan seçim yapması gerekir.
+5. Sabitleme simgesine tıklayın ![Raptiye simgesi](media/tutorial-app-dashboards/pushpin.png) ve panonun adını seçin. Bu seçeneğin, son panonun kullanıldığı önceki adımların aksine bir panoyu seçtiğinizde, Günlükler (Analiz) konsolunun ayrı bir hizmet olması ve kullanılabilir tüm paylaşılan panolardan seçim yapması gerekir.
 
 5. Panoya geri geçmeden önce başka bir sorgu ekleyin, ancak bu kez bir pano olarak işlenir, böylece bir panodaki günlük sorgusunu görselleştirmek için farklı yollar görürsünüz. En çok istisnayı içeren ilk 10 işlemi özetleyen aşağıdaki sorguyu kullanın.
 
@@ -116,7 +116,7 @@ Azure Applications Insights günlükleri (Analiz) ayrı bir hizmet olduğundan, 
 
     ![Günlükler (Analiz) grafiği](media/tutorial-app-dashboards/11querychart.png)
 
-6. Sabitleme simgesine tıklayın ![raptiye](media/tutorial-app-dashboards/pushpin.png) grafiği panonuza sabitlemek için sağ üst köşede, bu kez panonuza geri dönmek için bağlantıyı seçin.
+6. Sabitleme simgesine tıklayın ![Raptiye simgesi](media/tutorial-app-dashboards/pushpin.png) grafiği panonuza sabitlemek için sağ üst köşede, bu kez panonuza geri dönmek için bağlantıyı seçin.
 4. Sorguların sonuçları seçtiğini biçimde panonuza eklenir.  Tıklayın ve her bir konuma sürükleyin ve ardından **özelleştirmeyi bitti**' ye tıklayın.
 5. Kalem simgesini seçin ![Kalem simgesi](media/tutorial-app-dashboards/pencil.png) Her başlıkta açıklayıcı bir başlık verin.
 
@@ -127,4 +127,5 @@ Azure Applications Insights günlükleri (Analiz) ayrı bir hizmet olduğundan, 
 Artık nasıl özel pano oluşturulacağını öğrendiniz. Bir örnek olay içeren diğer Application Insights belgelerine de göz atabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Derin tanılama](../../azure-monitor/app/devops.md)
+> [Derin tanılama](../app/devops.md)
+

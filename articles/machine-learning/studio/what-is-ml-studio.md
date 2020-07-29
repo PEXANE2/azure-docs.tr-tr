@@ -1,6 +1,5 @@
 ---
-title: ML Studio nedir (klasik)
-titleSuffix: Azure
+title: ML Studio (klasik)-Azure
 description: Azure Machine Learning Studio (klasik), bir dizi algoritmaların ve modüllerden kullanıma hazırlama kitaplığından hızlı bir şekilde model oluşturmaya yönelik bir sürükle ve bırak aracıdır.
 services: machine-learning
 author: likebupt
@@ -11,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: c1772ceb514e46542129759711f2d45db39abf82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b0e09cfe855e017c297cbad1667eef81726d3da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371961"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326214"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Machine Learning Studio (klasik) nedir?
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -41,8 +42,8 @@ Programlama gerekmez, tahmine dayalı analiz modelinizi oluşturmak için veri k
 ## <a name="download-the-machine-learning-studio-classic-overview-diagram"></a>Machine Learning Studio (klasik) genel bakış diyagramını indirin
 **Microsoft Azure Machine Learning Studio (klasik) özelliklerine genel bakış** diyagramını indirin ve Machine Learning Studio (klasik) özelliklerine ilişkin üst düzey bir görünüm alın. Diyagramı yakınınızda tutmak için tabloid boyutunda (11 x 17 inç) yazdırabilirsiniz.
 
-**Diyagramı buraya indirin: [Microsoft Azure Machine Learning Studio (klasik) yeteneklere genel bakış](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
-![Microsoft Azure Machine Learning Studio (klasik) özelliklerine genel bakış](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
+**Diyagramı buraya indirin: [Microsoft Azure Machine Learning Studio (klasik) özelliklerine genel bakış](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf) ** 
+ ![ Microsoft Azure Machine Learning Studio (klasik) özelliklerine genel bakış](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 
 ## <a name="components-of-a-studio-classic--experiment"></a>Studio (klasik) deneme bileşenleri
@@ -71,7 +72,7 @@ Bir deneme oluştururken, tuvalin solunda kullanılabilen veri kümeleri listesi
 
 Machine Learning Studio (klasik) eklenen örnek veri kümelerinin bir listesi için bkz. [Azure Machine Learning Studio (klasik) örnek veri kümelerini kullanma](use-sample-datasets.md).
 
-### <a name="modules"></a>Modüller
+### <a name="modules"></a>Modül
 Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Azure Machine Learning Studio (klasik), veri giriş işlevlerinden eğitim, Puanlama ve doğrulama işlemlerine kadar birçok modül içerir. Dahil olan modüllere aşağıda birkaç örnek verilmiştir:
 
 * [ARFF'ye Dönüştürme][convert-to-arff] - Seri hale getirilmiş .NET veri kümesini Öznitelik-İlişki Dosyası Biçimi'ne (ARFF) dönüştürür.

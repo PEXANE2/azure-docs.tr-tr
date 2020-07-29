@@ -3,16 +3,16 @@ title: 'Hızlı başlangıç: Azure Blob depolama kitaplığı V12-bir tarayıc�
 description: Bu hızlı başlangıçta, bir tarayıcıda JavaScript için Azure Blob depolama istemci kitaplığı sürüm 12 ' yi nasıl kullanacağınızı öğreneceksiniz. Blob depolamada bir kapsayıcı ve bir nesne oluşturursunuz. Sonra, bir kapsayıcıdaki tüm Blobları listeleyeceğinizi öğrenirsiniz. Son olarak, Blobları silmeyi ve bir kapsayıcıyı silmeyi öğrenirsiniz.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/18/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f884e6d3cbc2e1f3127b251818f4617fccb6a999
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 039aea76e5e59d43078c2fa884e192922ec50035
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011337"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277001"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,9 +26,6 @@ Ek kaynaklar:
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob)
 * [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
-
-> [!NOTE]
-> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: JavaScript Ile v10 ARASıNDAKI SDK ile Blobları yönetme Node.js](storage-quickstart-blobs-nodejs-legacy.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

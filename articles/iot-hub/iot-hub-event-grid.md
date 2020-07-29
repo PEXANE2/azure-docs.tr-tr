@@ -11,15 +11,17 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327659"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
-Azure IoT Hub, diğer hizmetlere olay bildirimleri gönderebilmek ve aşağı akış süreçlerini tetikleyebilmeniz için Azure Event Grid tümleştirilir. Kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde yanıt vermek için, iş uygulamalarınızı IoT Hub olaylarını dinleyecek şekilde yapılandırın.Örneğin, bir veritabanını güncelleştiren, bir iş bileti oluşturan ve IoT Hub 'ınıza yeni bir IoT cihazı her kaydedildiğinde bir e-posta bildirimi sunan bir uygulama oluşturun.
+Azure IoT Hub, Azure Event Grid ile tümleştirilerek diğer hizmetlere olay bildirimleri göndermenizi ve aşağı akış işlemleri tetiklemenizi sağlar. Kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde yanıt vermek için, iş uygulamalarınızı IoT Hub olaylarını dinleyecek şekilde yapılandırın.Örneğin, bir veritabanını güncelleştiren, bir iş bileti oluşturan ve IoT Hub’ınıza yeni bir IoT cihazı her kaydedildiğinde bir e-posta bildirimi gönderen bir uygulama oluşturun.
 
 [Azure Event Grid](../event-grid/overview.md) , yayımlama-abonelik modeli kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid Azure [işlevleri](../azure-functions/functions-overview.md) ve [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)gibi Azure hizmetleri için yerleşik desteğe sahiptir ve Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](../event-grid/overview.md).
 
@@ -35,17 +37,17 @@ IoT Hub aşağıdaki olay türlerini yayınlar:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. Devices. DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
-| Microsoft. Devices. DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. |
-| Microsoft. Devices. DeviceConnected | Bir cihaz IoT Hub 'ına bağlandığında yayımlandı. |
-| Microsoft. Devices. DeviceConnected bağlantısı kesildi | Bir cihazın IoT Hub 'ından bağlantısı kesildiğinde yayımlandı. |
-| Microsoft. Devices. Devicetelemetri | Bir IoT Hub 'ına cihaz telemetri iletisi gönderildiğinde yayımlandı |
+| Microsoft.Devices.DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
+| Microsoft.Devices.DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. |
+| Microsoft.Devices.DeviceConnected | Bir cihaz IoT Hub 'ına bağlandığında yayımlandı. |
+| Microsoft.Devices.DeviceDisconnected | Bir cihazın IoT Hub 'ından bağlantısı kesildiğinde yayımlandı. |
+| Microsoft.Devices.DeviceTelemetry | Bir IoT Hub’ına cihaz telemetri iletisi gönderildiğinde yayımlanır |
 
 Her bir IoT Hub 'ından yayımlanacak olayları yapılandırmak için Azure portal ya da Azure CLı kullanın. Bir örnek için, [Logic Apps kullanarak öğreticiyi Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme](../event-grid/publish-iot-hub-events-to-logic-apps.md)öğreticisini deneyin.
 
 ## <a name="event-schema"></a>Olay şeması
 
-IoT Hub olaylar, cihaz yaşam döngünüzün değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliğinin **Microsoft. Devices**ile başlayacağını denetleyerek bir IoT Hub olayı tanımlayabilirsiniz. Event Grid olay özelliklerinin nasıl kullanılacağı hakkında daha fazla bilgi için, bkz. [Event Grid olay şeması](../event-grid/event-schema.md).
+IoT Hub olaylar, cihaz yaşam döngünüzün değişikliklere yanıt vermek için gereken tüm bilgileri içerir. eventType özelliğinin **Microsoft.Devices** ile başladığını denetleyerek IoT Hub olayını belirleyebilirsiniz. Event Grid olay özelliklerinin nasıl kullanılacağı hakkında daha fazla bilgi için, bkz. [Event Grid olay şeması](../event-grid/event-schema.md).
 
 ### <a name="device-connected-schema"></a>Cihaza bağlı şema
 
@@ -192,15 +194,15 @@ Telemetri gönderiyorsanız D2C bağlantısı açıktır.
 
 Cihaz bağlantısı titreşiyorsa, bu, cihazın en sık bağlandığı ve bağlantılarının kesilmediği anlamına gelir, ancak her bir bağlantı durumunu gönderemeyecektir, ancak titreşme devam ettiğinde, düzenli bir anlık görüntüde alınan geçerli bağlantı durumunu yayımlayacağız. Aynı bağlantı durumu olayını farklı sıra numaralarıyla veya farklı bağlantı durumu olaylarıyla alma, cihaz bağlantı durumunda bir değişiklik olduğu anlamına gelir.
 
-## <a name="tips-for-consuming-events"></a>Olayları tüketme ipuçları
+## <a name="tips-for-consuming-events"></a>Olayları kullanma ipuçları
 
 IoT Hub olaylarını işleyen uygulamalar aşağıdaki önerilen yöntemleri izlemelidir:
 
-* Birden çok abonelik olayları aynı olay işleyicisine yönlendirmek üzere yapılandırılabilir, bu nedenle olayların belirli bir kaynaktan olduğunu varsaymayın. Beklenen IoT Hub 'ından geldiğinden emin olmak için ileti konusunu her zaman denetleyin.
+* Birden çok abonelik, olayları aynı olay işleyicisine yönlendirmek üzere yapılandırılabilir, bu nedenle olayların belirli bir kaynaktan olduğunu varsaymayın. Beklediğiniz IoT Hub’ından geldiğinden emin olmak için ileti konusunu her zaman denetleyin.
 
-* Aldığınız tüm olayların, beklediği türler olduğunu varsaymayın. İletiyi işlemeden önce her zaman eventType ' i kontrol edin.
+* Aldığınız tüm olayların beklediğiniz türler olduğunu varsaymayın. İletiyi işlemeden önce her zaman eventType ' i kontrol edin.
 
-* İletiler bir gecikmeden veya bir gecikmeden sonra gelebilir. Nesneler hakkındaki bilgilerinizin, cihaz oluşturma veya cihaz silinen olayları için güncel olup olmadığını anlamak için ETag alanını kullanın.
+* İletiler karışık sırayla veya bir gecikmeden sonra gelebilir. Nesneler hakkındaki bilgilerinizin, cihaz oluşturma veya cihaz silinen olayları için güncel olup olmadığını anlamak için ETag alanını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

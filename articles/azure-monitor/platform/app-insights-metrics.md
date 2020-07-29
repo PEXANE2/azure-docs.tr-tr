@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073578"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327081"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
 Application Insights günlük tabanlı ölçümler, izlenen uygulamalarınızın durumunu analiz etmenize, güçlü panolar oluşturmanıza ve uyarıları yapılandırmanıza olanak tanır. İki çeşit ölçüm vardır:
 
-* Sahnenin arkasındaki [günlük tabanlı ölçümler](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) , depolanan olaylardaki [kusto sorgularına](/azure/kusto/query/) çevrilir.
-* [Standart ölçümler](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) önceden toplanmış zaman serisi olarak depolanır.
+* Sahnenin arkasındaki [günlük tabanlı ölçümler](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) , depolanan olaylardaki [kusto sorgularına](/azure/kusto/query/) çevrilir.
+* [Standart ölçümler](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) önceden toplanmış zaman serisi olarak depolanır.
 
 Koleksiyon sırasında *Standart ölçümler* önceden toplanmış olduğundan, sorgu zamanında daha iyi performansa sahip olurlar. Bu, dinamik olarak ve gerçek zamanlı uyarı oluşturma için daha iyi bir seçenek sunar. *Günlük tabanlı ölçümler* daha fazla boyuta sahiptir. Bu, veri analizi ve geçici Tanılamalar için üst seçenek sağlar. [Ölçüm Gezgini](metrics-getting-started.md)'nde günlük tabanlı ve standart ölçümler arasında geçiş yapmak için [ad alanı seçiciyi](metrics-getting-started.md#create-your-first-metric-chart) kullanın.
 
@@ -38,11 +38,11 @@ Bu makalede, desteklenen toplamalar ve boyutlarla ölçümler listelenir. Günl�
 - Seçili **bölünmüş grafik** boyutu fazladan bir özetleme özelliğine çevrilir. Örneğin, grafiğinizi *konuma*göre bölüerseniz ve 5 dakikalık bir zaman ayrıntı düzeyi kullanarak çizim yaparsanız, *özetleme* yan tümcesi özetlenir *... bin (zaman damgası, 5 milyon), konum*.
 
 > [!NOTE]
-> Kusto sorgu diline yeni başladıysanız, kusto deyimlerini kopyalayıp Log Analytics sorgu bölmesine hiçbir değişiklik yapmadan başlayabilirsiniz. Temel grafiği görmek için **Çalıştır** ' a tıklayın. Sorgu dilinin söz dizimini anlamaya başladığınızda, küçük değişiklikler yapmaya başlayabilir ve yaptığınız değişikliğin etkisini görebilirsiniz. Kendi verilerinizi keşfetmek, [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) ve [Azure izleyici](../../azure-monitor/overview.md)'nin tam gücünü yapmaya başlamak için harika bir yoldur.
+> Kusto sorgu diline yeni başladıysanız, kusto deyimlerini kopyalayıp Log Analytics sorgu bölmesine hiçbir değişiklik yapmadan başlayabilirsiniz. Temel grafiği görmek için **Çalıştır** ' a tıklayın. Sorgu dilinin söz dizimini anlamaya başladığınızda, küçük değişiklikler yapmaya başlayabilir ve yaptığınız değişikliğin etkisini görebilirsiniz. Kendi verilerinizi keşfetmek, [Log Analytics](../log-query/get-started-portal.md) ve [Azure izleyici](../overview.md)'nin tam gücünü yapmaya başlamak için harika bir yoldur.
 
 ## <a name="availability-metrics"></a>Kullanılabilirlik ölçümleri
 
-Kullanılabilirlik kategorisindeki ölçümler, Web uygulamanızın durumunu dünyanın dört bir yanındaki noktalarda gözlemleyerek görmenizi sağlar. [Kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) bu kategorideki herhangi bir ölçümü kullanmaya başlamak üzere yapılandırın.
+Kullanılabilirlik kategorisindeki ölçümler, Web uygulamanızın durumunu dünyanın dört bir yanındaki noktalarda gözlemleyerek görmenizi sağlar. [Kullanılabilirlik testlerini](../app/monitor-web-app-availability.md) bu kategorideki herhangi bir ölçümü kullanmaya başlamak üzere yapılandırın.
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>Kullanılabilirlik (Kullanılabilirbilityresults/Kullanılabilirbilitypercentage)
 *Kullanılabilirlik* ölçümü, herhangi bir sorunu algılamadığınız Web testi çalışmalarının yüzdesini gösterir. Olası en düşük değer 0 ' dır. Bu, tüm Web testinin çalıştığını gösterir. 100 değeri, tüm Web testinin doğrulama ölçütlerini geçirdiğini gösterir.
@@ -59,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>Kullanılabilirlik testi süresi (Kullanılabilirbilityresults/Duration)
 
-*Kullanılabilirlik testi süresi* ölçümü, Web testinin çalışması için ne kadar zaman sürdüğünü gösterir. [Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md)için, ölçüm tüm adımların toplam yürütme süresini yansıtır.
+*Kullanılabilirlik testi süresi* ölçümü, Web testinin çalışması için ne kadar zaman sürdüğünü gösterir. [Çok adımlı Web testleri](../app/availability-multistep.md)için, ölçüm tüm adımların toplam yürütme süresini yansıtır.
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
@@ -92,13 +92,13 @@ availabilityResults
 Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application Insights JavaScript SDK 'Sı tarafından toplanır. Kullanıcılarınızın web uygulamanızla ilgili deneyimi hakkında harika öngörüler sağlar. Tarayıcı ölçümleri genellikle örneklenir, yani örnekleme tarafından çarpıtılmış olan sunucu tarafı ölçümleriyle karşılaştırıldığında kullanım numaralarının daha yüksek hassasiyetini sağlar.
 
 > [!NOTE]
-> Tarayıcı ölçümlerini toplamak için uygulamanızın [Application Insights JavaScript SDK 'sı](../../azure-monitor/app/javascript.md)ile işaretlenmiş olması gerekir.
+> Tarayıcı ölçümlerini toplamak için uygulamanızın [Application Insights JavaScript SDK 'sı](../app/javascript.md)ile işaretlenmiş olması gerekir.
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Tarayıcı sayfa yükleme süresi (Browserzamanlamalar/totalDuration)
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Yok|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -114,7 +114,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Yok|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -130,7 +130,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Yok|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -146,7 +146,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Yok|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -162,7 +162,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Yok|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -184,7 +184,7 @@ Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum say�
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Hiçbiri|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -199,7 +199,7 @@ Başarısız bağımlılık çağrılarının sayısı.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Hiçbiri|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 dependencies
@@ -210,7 +210,7 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>Özel durumlar (özel durumlar/sayı)
 
-Application Insights için bir özel durum kaydettiğinizde, SDK 'nın [trackexception () yöntemine](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) bir çağrı vardır. Özel durumlar ölçümü, günlüğe kaydedilen özel durumların sayısını gösterir.
+Application Insights için bir özel durum kaydettiğinizde, SDK 'nın [trackexception () yöntemine](../app/api-custom-events-metrics.md#trackexception) bir çağrı vardır. Özel durumlar ölçümü, günlüğe kaydedilen özel durumların sayısını gösterir.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
@@ -224,7 +224,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Başarısız istekler (istek/başarısız)
 
-*Başarısız*olarak işaretlenen izlenen sunucu isteklerinin sayısı. Varsayılan olarak, Application Insights SDK, HTTP yanıt kodu 5 xx veya 4xx döndüren her sunucu isteğini başarısız bir istek olarak otomatik olarak işaretler. [Özel bir telemetri başlatıcısında](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)istek telemetri öğesinin *başarı* özelliğini değiştirerek bu mantığı özelleştirebilirsiniz.
+*Başarısız*olarak işaretlenen izlenen sunucu isteklerinin sayısı. Varsayılan olarak, Application Insights SDK, HTTP yanıt kodu 5 xx veya 4xx döndüren her sunucu isteğini başarısız bir istek olarak otomatik olarak işaretler. [Özel bir telemetri başlatıcısında](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)istek telemetri öğesinin *başarı* özelliğini değiştirerek bu mantığı özelleştirebilirsiniz.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
@@ -254,7 +254,7 @@ exceptions
 
 ## <a name="performance-counters"></a>Performans sayaçları
 
-[Application Insights tarafından toplanan sistem performans sayaçlarına](../../azure-monitor/app/performance-counters.md)erişmek için **performans sayaçları** kategorisindeki ölçümleri kullanın.
+[Application Insights tarafından toplanan sistem performans sayaçlarına](../app/performance-counters.md)erişmek için **performans sayaçları** kategorisindeki ölçümleri kullanın.
 
 ### <a name="available-memory-performancecountersavailablememory"></a>Kullanılabilir bellek (performanceCounters/kullanılabilirliği Blememory)
 
@@ -492,3 +492,4 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
+

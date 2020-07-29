@@ -4,12 +4,12 @@ description: Kapsayıcılar için Azure Izleyici aboneliğine sahip yeni bir Azu
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516643"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320332"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Yeni bir Azure Kubernetes hizmeti (AKS) kümesini izlemeyi etkinleştir
 
@@ -17,7 +17,7 @@ Bu makalede, aboneliğinizden dağıtmaya hazırlanmakta olduğunuz [Azure Kuber
 
 Desteklenen yöntemlerden birini kullanarak bir AKS kümesinin izlenmesini etkinleştirebilirsiniz:
 
-* Azure CLI’si
+* Azure CLI
 * Terraform
 
 ## <a name="enable-using-azure-cli"></a>Azure CLı kullanarak etkinleştirme
@@ -29,7 +29,7 @@ Azure CLı ile oluşturulan yeni bir AKS kümesinin izlenmesini etkinleştirmek 
 
 ## <a name="enable-using-terraform"></a>Terrayform kullanarak etkinleştir
 
-[Teresform kullanarak yeni bir AKS kümesi dağıtıyorsanız](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), mevcut bir tane belirtmeyi seçmediyseniz [Log Analytics bir çalışma alanı oluşturmak için](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) profilde gereken bağımsız değişkenleri belirtirsiniz. 
+[Teresform kullanarak yeni bir AKS kümesi dağıtıyorsanız](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks), mevcut bir tane belirtmeyi seçmediyseniz [Log Analytics bir çalışma alanı oluşturmak için](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) profilde gereken bağımsız değişkenleri belirtirsiniz. 
 
 >[!NOTE]
 >Terrayform kullanmayı seçerseniz, Teraform Azure RM Provider sürüm 1.17.0 veya üstünü çalıştırıyor olmanız gerekir.
@@ -118,3 +118,4 @@ Birkaç dakika sonra komut tamamlanır ve çözüm hakkında JSON biçimli bilgi
 * Çözümü oluşturmaya çalışırken sorunlarla karşılaşırsanız, [sorun giderme kılavuzunu](container-insights-troubleshoot.md) gözden geçirin
 
 * İzleme etkinken, AKS kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplayıp, kapsayıcılar için Azure Izleyicisini [nasıl kullanacağınızı](container-insights-analyze.md) öğrenin.
+

@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracı tabanlı geçişini ç
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: ca06dc9d5de9853915e2aaa0d86c1a444dab415a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 707a74d0e993625d32c60f7120bf69055dc9e885
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119268"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290196"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
 
@@ -159,8 +159,8 @@ Bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
     ![Azure geçişi projesi oluşturma](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
 
-4. **Değerlendirme aracı Seç**bölümünde **Şimdi bir değerlendirme aracı eklemeyi atla**' yı seçin  >  **Next**.
-5. **Geçiş aracı Seç**bölümünde **Azure geçişi: sunucu geçişi**  >  **İleri**' yi seçin.
+4. **Değerlendirme seçme aracı**’nda **Değerlendirme aracı eklemeyi şimdilik atla** > **İleri**’yi seçin.
+5. **Geçiş aracı seçin** bölümünde **Azure Geçişi: Sunucu Geçişi** > **İleri**.
 6. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın
 7. Araç eklendikten sonra, Azure geçişi proje > **sunucuları**  >  **geçiş araçları**' nda görüntülenir.
 
@@ -177,7 +177,7 @@ Bu yordamda, gerecin indirilen bir açık sanallaştırma uygulaması (OVA) şab
 
     ![VM'leri bulma](./media/tutorial-migrate-vmware-agent/migrate-discover.png)
 
-3. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet 'e**tıklayın.
+3. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet**' e tıklayın.
 4. **Nasıl geçiş**yapmak istiyorsunuz? bölümünde, **aracı tabanlı çoğaltmayı kullanma**' yı seçin.
 5. **Hedef bölge**' de, makineleri geçirmek istediğiniz Azure bölgesini seçin.
 6. **Geçiş için hedef bölgenin bölge adı olduğunu onaylayın**' i seçin.
@@ -195,7 +195,7 @@ Bu yordamda, gerecin indirilen bir açık sanallaştırma uygulaması (OVA) şab
 
 OVF şablonunu indirdikten sonra, Windows Server 2016 çalıştıran bir VMware VM 'de çoğaltma uygulaması oluşturmak için onu VMware 'e içeri aktarırsınız.
 
-1. VMWare vSphere İstemcisi ile VMware vCenter sunucusunda veya vSphere ESXi konağında oturum açın.
+1. VMware vSphere Istemcisiyle VMware vCenter sunucusunda veya vSphere ESXi konağında oturum açın.
 2. **Dosya** menüsünde **OVF Şablonunu Dağıt** seçeneğini belirleyerek **OVF Şablonu Dağıtma Sihirbazı**’nı başlatın. 
 3. **Kaynak Seç**' de indirilen ovf 'nin konumunu girin.
 4. **Ayrıntıları gözden geçirin**' de **İleri**' yi seçin.
@@ -209,7 +209,7 @@ OVF şablonunu indirdikten sonra, Windows Server 2016 çalıştıran bir VMware 
 
 ### <a name="start-appliance-setup"></a>Gereç kurulumunu Başlat
 
-1. VMWare vSphere Istemci konsolunda VM 'yi açın. VM’de Windows Server 2016 yükleme deneyimi önyüklemesi yapılır.
+1. VMware vSphere Istemci konsolunda VM 'yi açın. VM’de Windows Server 2016 yükleme deneyimi önyüklemesi yapılır.
 2. Lisans sözleşmesini kabul edin ve bir yönetici parolası girin.
 3. Yükleme tamamlandıktan sonra, yönetici parolasını kullanarak VM 'de yönetici olarak oturum açın. İlk kez oturum açtığınızda, çoğaltma gereç Kurulum Aracı (Azure Site Recovery yapılandırma aracı) birkaç saniye içinde başlar.
 5. Gereci sunucu geçişine kaydetmek için kullanılacak bir ad girin. Ardından **İleri**'ye tıklayın.
@@ -223,7 +223,7 @@ OVF şablonunu indirdikten sonra, Windows Server 2016 çalıştıran bir VMware 
 
 1. Gereç kurulumunda, **Kurulum bağlantısı**' nı seçin.
 2. Çoğaltma gerecinin VM keşfi için kullandığı NIC 'yi (varsayılan olarak yalnızca bir NIC) seçin ve Mobility hizmetinin kaynak makinelerde anında yüklemesini yapın.
-3. Çoğaltma gerecinin Azure ile bağlantı için kullandığı NIC 'ı seçin. Sonra **Kaydet**'i seçin. Yapılandırıldıktan sonra bu ayarı değiştiremezsiniz.
+3. Çoğaltma gerecinin Azure ile bağlantı için kullandığı NIC 'ı seçin. Ardından **Kaydet**’i seçin. Yapılandırıldıktan sonra bu ayarı değiştiremezsiniz.
 4. Gereç bir proxy sunucusunun arkasında bulunuyorsa, proxy ayarlarını belirtmeniz gerekir.
     - Proxy adını veya olarak belirtin **http://ip-address** **http://FQDN** . HTTPS proxy sunucuları desteklenmez.
 5. Abonelik, kaynak grupları ve kasa ayrıntıları istendiğinde, Gereç şablonunu indirdiğinizde not ettiğiniz ayrıntıları ekleyin.

@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008396"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321896"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Izleyici uyarıları ile karmaşık eylemleri tetikleme
 
@@ -19,7 +19,7 @@ Bu makalede, bir mantıksal uygulamayı bir uyarı tetiklendiğinde Microsoft ek
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir Azure Izleyici uyarısı tetiklendiğinde, bir [eylem grubu](../../azure-monitor/platform/action-groups.md)çağırır. Eylem grupları bir veya daha fazla eylemi bir uyarı hakkında bilgilendirmek ve ayrıca düzeltmek için tetiklemeniz sağlar.
+Bir Azure Izleyici uyarısı tetiklendiğinde, bir [eylem grubu](./action-groups.md)çağırır. Eylem grupları bir veya daha fazla eylemi bir uyarı hakkında bilgilendirmek ve ayrıca düzeltmek için tetiklemeniz sağlar.
 
 Genel işlem şu şekilde yapılır:
 
@@ -294,6 +294,7 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 Logic Apps, çok sayıda uygulama ve veritabanında eylemleri tetikleyesağlayan farklı bağlayıcılara sahiptir. Bolluk, SQL Server, Oracle, Salesforce yalnızca bazı örneklerdir. Bağlayıcılar hakkında daha fazla bilgi için bkz. [Logic App bağlayıcıları](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure etkinlik günlüğü uyarılarına genel bir bakış](../../azure-monitor/platform/alerts-overview.md) elde edin ve uyarı alma hakkında bilgi edinin.  
+* [Azure etkinlik günlüğü uyarılarına genel bir bakış](./alerts-overview.md) elde edin ve uyarı alma hakkında bilgi edinin.  
 * [Bir Azure hizmet durumu bildirimi gönderildiğinde uyarıların nasıl yapılandırılacağını](../../service-health/alerts-activity-log-service-notifications-portal.md)öğrenin.
-* [Eylem grupları](../../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
+* [Eylem grupları](./action-groups.md)hakkında daha fazla bilgi edinin.
+

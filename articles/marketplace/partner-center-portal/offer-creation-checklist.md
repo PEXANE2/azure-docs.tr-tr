@@ -5,21 +5,23 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101717"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327404"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Iş Ortağı Merkezi 'nde SaaS teklifi oluşturma denetim listesi
 
-SaaS teklifi oluşturma işlemi sizi birden çok sayfaya götürür.  Her bir sayfada sağladığınız ayrıntılar, her bir öğe hakkında daha fazla bilgi edinmek için bağlantılarla birlikte verilmiştir.
+SaaS teklifi oluşturma işlemi sizi birden çok sayfaya götürür.  Bu makalede, her bir sayfada sağladığınız ayrıntılar, her öğe hakkında daha fazla bilgi edinmek için bağlantılarla birlikte açıklanır.
+
+> [!NOTE]
+> Transactable SaaS teklifi oluşturuyorsanız lütfen [SaaS sağlama API 'leri](./pc-saas-fulfillment-apis.md)ile tümleştirmeyi uyguladığınızdan emin olun.  Bu API 'lerle tümleştirme, Market 'teki transactability 'ın düzgün şekilde çalışması için tek yoldur. Ayrıca, uygulamanızın çoklu oturum açma (SSO) ile Azure AD kimlik doğrulaması kullandığından emin olmanız gerekir. Bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](../azure-ad-saas.md).
 
 Sağlamanız veya belirtmeniz gereken öğeler aşağıda belirtilmiştir.  Bazı alanların isteğe bağlı olması veya varsayılan değerlere sahip olması, istediğiniz gibi değiştirebilmeniz gerekir.  Burada listelenen sırayla bu bölümler üzerinde çalışmanız gerekmez.
-
->[!Note]
->Transactable SaaS teklifi oluşturuyorsanız lütfen [SaaS sağlama API 'leri](./pc-saas-fulfillment-apis.md)ile tümleştirmeyi uyguladığınızdan emin olun.  Bu API 'lerle tümleştirme, Market 'teki transactability 'ın düzgün şekilde çalışması için tek yoldur.
 
 | **Öğe**    | **Amaç**  |
 | :---------- | :-------------------|
@@ -28,7 +30,7 @@ Sağlamanız veya belirtmeniz gereken öğeler aşağıda belirtilmiştir.  Baz�
 | [Özellikler sayfası](#properties-page) | Teklifinizi Pazar konumlarına, teklifinizi destekleyen yasal sözleşmeleri ve uygulama sürümünüzü gruplamak için kullanılan kategorileri ve endüstrileri tanımlayın. |
 | [Teklif listesi sayfası](#offer-listing-page) | Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Market 'te görüntülenecek teklif ayrıntılarını tanımlayın.|
 | [Önizleme sayfası](#preview-page) | Teklifinizi daha geniş Market hedef kitlelerine yayımlamadan önce teklifinizi serbest bırakmak için sınırlı bir önizleme hedef kitlesi tanımlayın.|
-| [Teklif teknik yapılandırma sayfası](#technical-configuration-page)  |  Yalnızca teklifi Microsoft üzerinden satmayı seçerseniz kullanılabilir.  Market tarafından teklifinizi bağlamak için kullanılan teknik ayrıntıları (giriş sayfası URL 'SI, bağlantı Web kancası URL 'SI, Azure AD kiracı KIMLIĞI ve Azure AD uygulama KIMLIĞI) tanımlayın.  Bu parametrelerin SaaS karşılama ve Market ölçülen faturalandırma API 'Leri ile doğru bir şekilde tümleştirileceği için gereklidir.|
+| [Teknik yapılandırma sayfası](#technical-configuration-page)  |  Yalnızca teklifi Microsoft üzerinden satmayı seçerseniz kullanılabilir.  Market tarafından teklifinizi bağlamak için kullanılan teknik ayrıntıları (giriş sayfası URL 'SI, bağlantı Web kancası URL 'SI, Azure AD kiracı KIMLIĞI ve Azure AD uygulama KIMLIĞI) tanımlayın.  Bu parametrelerin SaaS karşılama ve Market ölçülen faturalandırma API 'Leri ile doğru bir şekilde tümleştirileceği için gereklidir.|
 | [**Yeni plan kalıcı**](#plan-identity-modal) | Plan kimlik bilgilerini toplar.  |
 | [Plan listeleme sayfası](#plan-listing-page)  | Yalnızca teklifi Microsoft üzerinden satmayı seçerseniz kullanılabilir. Planı Market 'te listelemek için kullanılan ayrıntıları tanımlayın.  |
 | [Fiyatlandırma & kullanılabilirliği sayfasını planlayın](#plan-pricing--availability-page)  | Yalnızca teklifi Microsoft üzerinden satmayı seçerseniz kullanılabilir.  Teklifinizin her bir planı (sürümü) için iş özelliklerini (fiyatlandırma modeli), hedef kitleyi ve Pazar kullanılabilirliğini toplar.  |
@@ -36,10 +38,9 @@ Sağlamanız veya belirtmeniz gereken öğeler aşağıda belirtilmiştir.  Baz�
 | Sınama sürücüsü teknik yapılandırma sayfası  | Yalnızca teklifiniz için bir test sürücüsü sunmayı seçerseniz kullanılabilir. Müşterilerin satın alma işlemine geçmeden önce teklifinizi denemesini sağlayacak tanıtım (veya "test sürücüsü") için teknik ayrıntıları tanımlayın.  |
 | [İnceleme ve yayımlama sayfası](#review-and-publish-page)  | Yayımlamak istediğiniz değişiklikleri seçin, her sayfanın durumuna bakın ve sertifika ekibine not sağlayın.  |
 
+## <a name="new-offer-modal"></a>Yeni teklif kalıcı
 
-## <a name="new-offer-modal"></a>Yeni teklif kalıcı 
-
-Sunabileceğiniz bilgilerin ilk parçaları teklifiniz için bir KIMLIK ve diğer addır. 
+Sunabileceğiniz bilgilerin ilk parçaları teklifiniz için bir KIMLIK ve diğer addır.
 
 | **Alan adı**    | **Notlar**   |  
 | :---------------- | :-----------| 
@@ -79,9 +80,9 @@ Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerke
 
 | **Alan adı**    | **Notlar**   |
 | :---------------- | :-----------| 
-| Name  | Gerekli, en fazla 50 karakter. |
+| Ad  | Gerekli, en fazla 50 karakter. |
 | Özet  | Gerekli, en fazla 100 karakter. | 
-| Description  | Gerekli, en fazla 3000 karakter. |
+| Açıklama  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Anahtar sözcükleri ara  | İsteğe bağlı, önerilen, en fazla 3 anahtar sözcük. |
@@ -106,6 +107,9 @@ Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerke
 ## <a name="technical-configuration-page"></a>Teknik yapılandırma sayfası 
 
 Teknik yapılandırma sayfası, Microsoft tarafından teklifinizi bağlamak için kullanılan teknik ayrıntıları belirlediğiniz yerdir. Microsoft ile satımamaya karar verdiyseniz Bu sayfa sizin için görünür değildir.
+
+> [!NOTE]
+> Transactable teklifleri için bir giriş sayfası oluşturmanız gerekir ve uygulamanızın çoklu oturum açma (SSO) ile Azure AD kimlik doğrulamasını kullanması gerekir. Daha fazla bilgi için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](../azure-ad-saas.md).
 
 | **Alan adı**    | **Notlar**   |  
 | :---------------- | :-----------| 
@@ -151,7 +155,7 @@ Yalnızca teklifiniz için bir test sürücüsü sunmayı seçerseniz kullanıla
 
 | **Alan adı**    | **Notlar**   | 
 | :---------------- | :-----------| 
-| Description  | Gereklidir. |
+| Açıklama  | Gereklidir. |
 | Kullanıcı El Ile adı + dosyası  | Gerekli, en fazla 1 belge. PDF biçiminde olmalıdır. |
 | Video adı, URL + küçük resim  | İsteğe bağlı, önerilir. Küçük resim, JPGP veya PNG biçiminde 533 x 324 olmalıdır. Videonun YouTube veya Vimeo 'da barındırılması gerekir. |
 

@@ -7,11 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff3d055840d69623234a799c62b1d8a6efd96ec5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665315"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327098"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Eylem gruplarında SMS uyarı davranışı
 
@@ -43,5 +44,5 @@ Bir eylem grubunun parçası olarak yapılandırılmış bir SMS alıcısı, bir
 ## <a name="next-steps"></a>Sonraki Adımlar
 [Etkinlik günlüğü uyarılarına genel bir bakış](alerts-overview.md) edinin ve nasıl uyarı alabileceğinizi öğrenin  
 [SMS hız sınırlaması](alerts-rate-limiting.md) hakkında daha fazla bilgi edinin  
-[Eylem grupları](../../azure-monitor/platform/action-groups.md) hakkında daha fazla bilgi edinin
+[Eylem grupları](./action-groups.md) hakkında daha fazla bilgi edinin
 

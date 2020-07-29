@@ -3,12 +3,12 @@ title: Bir sanal makinenin Azure Resource Manager şablonunu görüntüleyin ve 
 description: Diğer VM 'Ler oluşturmak için bir sanal makineden Azure Resource Manager şablonunu nasıl kullanacağınızı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a53a6ad44cac59bd925e6d200ca50074a2fcd963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476623"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272700"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak sanal makineler oluşturma 
 
@@ -35,7 +35,7 @@ Kaynak Yöneticisi şablonu kullanarak DevTest Labs 'de sanal makine oluşturman
 
 Bu makalenin geri kalanında, Microsoft. DevTestLab/Labs/virtualmachines kullanan Kaynak Yöneticisi şablonlar ele alınmaktadır. Bunlar, laboratuvar VM 'Leri oluşturmayı (örneğin, çakışan VM 'Ler) veya altın görüntü üretimini (örneğin, görüntü fabrikası) otomatik hale getirmek için laboratuar yöneticileri tarafından kullanılır.
 
-[Azure Resource Manager şablonları oluşturmak Için en iyi uygulamalar](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) , güvenilir ve kullanımı kolay Azure Resource Manager şablonlar oluşturmanıza yardımcı olacak birçok yönerge ve öneri sunar.
+[Azure Resource Manager şablonları oluşturmak Için en iyi uygulamalar](../azure-resource-manager/templates/template-best-practices.md) , güvenilir ve kullanımı kolay Azure Resource Manager şablonlar oluşturmanıza yardımcı olacak birçok yönerge ve öneri sunar.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Bir sanal makinenin Kaynak Yöneticisi şablonunu görüntüleyin ve kaydedin
 1. Sanal makine oluşturmaya başlamak için [laboratuvara Ilk VM 'Nizi oluşturma bölümündeki](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) adımları izleyin.

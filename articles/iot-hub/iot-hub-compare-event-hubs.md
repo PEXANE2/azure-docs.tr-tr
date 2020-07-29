@@ -11,11 +11,14 @@ ms.author: kgremban
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7aa59f8181ad60b3d43846a3f4f1f471a050b238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: System Architecture'
+ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733431"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322763"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT cihazlarını Azure 'a bağlama: IoT Hub ve Event Hubs
 
@@ -36,7 +39,7 @@ Aşağıdaki tabloda, IoT Hub iki katmanının IoT özelliklerine göre değerle
 | Protokoller: MQTT, webSockets üzerinden MQTT | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
 | Cihaz başına kimlik | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
 | Cihazlardan karşıya dosya yükleme | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
-| Cihaz sağlama hizmeti | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
+| Cihaz Sağlama Hizmeti | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
 | Buluttan cihaza mesajlaşma | ![İşaretli][checkmark] |  |  |
 | Cihaz ikizi ve cihaz yönetimi | ![İşaretli][checkmark] |  |  |
 | Cihaz akışları (Önizleme) | ![İşaretli][checkmark] |  |  |

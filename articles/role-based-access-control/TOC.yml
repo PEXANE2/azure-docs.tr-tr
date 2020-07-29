@@ -37,6 +37,11 @@
       href: best-practices.md
     - name: Azure yönetimi için Koşullu Erişim
       href: conditional-access-azure-management.md
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Rol tanımlarını listeleme

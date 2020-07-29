@@ -7,27 +7,28 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 3/5/2020
+ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2864d610d71c6b3a86c131dabb3c0b9ed138bec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79216751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327931"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Öğretici: bir Java Spring uygulamasında dinamik yapılandırma kullanma
 
 Uygulama yapılandırması Spring Boot istemci kitaplığı, bir uygulamanın yeniden başlatılmasına neden olmadan, bir yapılandırma ayarları kümesinin isteğe bağlı olarak güncelleştirilmesini destekler. Yapılandırma deposuna çok fazla çağrı yapmaktan kaçınmak için istemci kitaplığı her ayarı önbelleğe alır. Yenileme işlemi, değeri yapılandırma deposunda değiştiği zaman, önbelleğe alınan değerin süresi doluncaya kadar değeri güncelleştirmez. Her istek için varsayılan sona erme saati 30 saniyedir. Gerekirse, geçersiz kılınabilir.
 
-' In `AppConfigurationRefresh` `refreshConfigurations()` metodunu çağırarak, güncelleştirilmiş ayarları isteğe bağlı olarak denetleyebilirsiniz.
+' In metodunu çağırarak, güncelleştirilmiş ayarları isteğe bağlı olarak `AppConfigurationRefresh` denetleyebilirsiniz `refreshConfigurations()` .
 
-Alternatif olarak, otomatik yenilemeyi işlemek `spring-cloud-azure-appconfiguration-config-web` `spring-web` için bir bağımlılığı alan paketi kullanabilirsiniz.
+Alternatif olarak, `spring-cloud-azure-appconfiguration-config-web` `spring-web` otomatik yenilemeyi işlemek için bir bağımlılığı alan paketi kullanabilirsiniz.
 
 ## <a name="use-automated-refresh"></a>Otomatik yenilemeyi kullan
 
 Otomatik yenilemeyi kullanmak için, uygulama [yapılandırması Için Spring Boot hızlı](quickstart-java-spring-app.md)başlangıcını izleyerek oluşturduğunuz uygulama gibi uygulama yapılandırması kullanan bir Spring Boot uygulamasıyla başlayın.
 
-Ardından, *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve için `<dependency>` `spring-cloud-azure-appconfiguration-config-web`bir ekleyin.
+Sonra, *pom.xml* dosyasını bir metin düzenleyicisinde açın ve için bir ekleyin `<dependency>` `spring-cloud-azure-appconfiguration-config-web` .
 
 **Yay bulutu 1.1. x**
 

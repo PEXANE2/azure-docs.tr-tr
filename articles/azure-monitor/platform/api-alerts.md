@@ -4,24 +4,24 @@ description: Log Analytics uyarı REST API, Log Analytics bir parçası olan Log
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: 38f2f671ecf426f6544f6faf934aec7071451b0d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eec7aeab32aa071ce9d4476b15740c89210f0606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515759"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322338"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API ile Log Analytics uyarı kuralları oluşturma ve yönetme 
 
 Log Analytics uyarı REST API Log Analytics uyarı oluşturmanıza ve yönetmenize olanak sağlar.  Bu makalede API ayrıntıları ve farklı işlemler gerçekleştirmeye yönelik birkaç örnek sağlanmaktadır.
 
 > [!IMPORTANT]
-> [Daha önce duyurulduğu](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)gibi, *1 Haziran 2019* tarihinden sonra oluşturulan Log Analytics çalışma alanı (ler), **yalnızca** Azure Scheduledqueryrules [REST API](/rest/api/monitor/scheduledqueryrules/), [Azure Resource mananger şablonu](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell cmdlet 'ini](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)kullanarak uyarı kurallarını yönetebilecektir. Müşteriler, daha eski çalışma alanları için [tercih edilen uyarı kuralı yönetimi kullanımını](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) kolayca değiştirebilir ve yerel PowerShell cmdlet 'lerini kullanma yeteneği, kurallarda daha fazla geçiş süresi dönemi ve ayrı kaynak grubunda veya abonelikte kural oluşturma gibi birçok [yeni avantaj](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) elde edebilir.
+> [Daha önce duyurulduğu](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)gibi, *1 Haziran 2019* tarihinden sonra oluşturulan Log Analytics çalışma alanı (ler), **yalnızca** Azure Scheduledqueryrules [REST API](/rest/api/monitor/scheduledqueryrules/), [Azure Resource mananger şablonu](./alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell cmdlet 'ini](./alerts-log.md#managing-log-alerts-using-powershell)kullanarak uyarı kurallarını yönetebilecektir. Müşteriler, daha eski çalışma alanları için [tercih edilen uyarı kuralı yönetimi kullanımını](./alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) kolayca değiştirebilir ve yerel PowerShell cmdlet 'lerini kullanma yeteneği, kurallarda daha fazla geçiş süresi dönemi ve ayrı kaynak grubunda veya abonelikte kural oluşturma gibi birçok [yeni avantaj](./alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) elde edebilir.
 
 Log Analytics arama REST API yeniden yapılır ve Azure Resource Manager REST API aracılığıyla erişilebilir. Bu belgede, API 'nin, Azure Resource Manager API 'yi çağırmayı kolaylaştıran açık kaynaklı bir komut satırı aracı olan [Armclient](https://github.com/projectkudu/ARMClient)kullanarak bir PowerShell komut satırından erişildiği örnekleri bulacaksınız. ARMClient ve PowerShell kullanımı, Log Analytics arama API 'sine erişmek için birçok seçenekten biridir. Bu araçlarla, Log Analytics çalışma alanlarına çağrılar yapmak ve bunlar içinde arama komutları gerçekleştirmek için RestleAzure Resource Manager API 'sinden yararlanabilirsiniz. API, arama sonuçlarını size JSON biçiminde çıktı olarak, arama sonuçlarını programlama yoluyla birçok farklı şekilde kullanmanıza olanak sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Şu anda, uyarılar yalnızca Log Analytics bir kayıtlı aramayla oluşturulabilir.  Daha fazla bilgi için [günlük aramasına REST API](../../azure-monitor/log-query/log-query-overview.md) bakabilirsiniz.
+Şu anda, uyarılar yalnızca Log Analytics bir kayıtlı aramayla oluşturulabilir.  Daha fazla bilgi için [günlük aramasına REST API](../log-query/log-query-overview.md) bakabilirsiniz.
 
 ## <a name="schedules"></a>Zamanlamalar
 Kayıtlı aramada bir veya daha fazla zamanlama olabilir. Zamanlama, aramanın ne sıklıkla çalıştırılacağını ve ölçütlerin tanımlandığı zaman aralığını tanımlar.
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Uyarı eylemleri
 Zamanlamanın bir ve yalnızca bir uyarı eylemi olması gerekir.  Uyarı eylemleri aşağıdaki tabloda yer aldığı bir veya daha fazla bölümden oluşur.  Her biri aşağıda daha ayrıntılı olarak açıklanmıştır.
 
-| Section | Description | Kullanım |
+| Section | Açıklama | Kullanım |
 |:--- |:--- |:--- |
 | Eşik |Eylemin çalıştırılacağı ölçüt.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
 | Severity |Tetiklendikten sonra uyarıyı sınıflandırmak için kullanılan etiket.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
@@ -265,7 +265,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 #### <a name="action-groups"></a>Eylem Grupları
 Tüm uyarılar Azure 'da, eylemleri işlemek için varsayılan mekanizma olarak eylem grubunu kullanın. Eylem grubuyla, eylemlerinizi bir kez belirtebilir ve ardından Eylem grubunu Azure 'da birden çok uyarı ile ilişkilendirebilirsiniz. Gerek olmadan, aynı eylemleri tekrar tekrar tekrar bildirmek için. Eylem grupları e-posta, SMS, sesli çağrı, ıTSM bağlantısı, Otomasyon Runbook 'u, Web kancası URI ve daha fazlasını içeren birden çok eylemi destekler 
 
-Uyarıları Azure 'a genişletmiş olan kullanıcılar için bir zamanlama, bir uyarı oluşturabilmek için artık bir zamanlayıcı ile birlikte Işlem grubu ayrıntılarının geçirilmesini sağlamalıdır. E-posta ayrıntıları, Web kancası URL 'Leri, runbook Otomasyon ayrıntıları ve diğer eylemler, bir uyarı oluşturmadan önce bir eylem grubu içinde tanımlanmalıdır. Portal 'da [Azure izleyici 'den bir eylem grubu](../../azure-monitor/platform/action-groups.md) oluşturabilir veya [eylem grubu API 'sini](/rest/api/monitor/actiongroups)kullanabilirsiniz.
+Uyarıları Azure 'a genişletmiş olan kullanıcılar için bir zamanlama, bir uyarı oluşturabilmek için artık bir zamanlayıcı ile birlikte Işlem grubu ayrıntılarının geçirilmesini sağlamalıdır. E-posta ayrıntıları, Web kancası URL 'Leri, runbook Otomasyon ayrıntıları ve diğer eylemler, bir uyarı oluşturmadan önce bir eylem grubu içinde tanımlanmalıdır. Portal 'da [Azure izleyici 'den bir eylem grubu](./action-groups.md) oluşturabilir veya [eylem grubu API 'sini](/rest/api/monitor/actiongroups)kullanabilirsiniz.
 
 Eylem grubunun bir uyarıya ilişkilendirmesini eklemek için, uyarı tanımındaki eylem grubunun benzersiz Azure Resource Manager KIMLIĞINI belirtin. Örnek bir çizim aşağıda verilmiştir:
 
@@ -345,7 +345,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 ```
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Eylem grubu için Web kancası yükünü özelleştirme
-Varsayılan olarak, Log Analytics için eylem grubu aracılığıyla gönderilen Web kancasının sabit bir yapısı vardır. Ancak bir tane, Web kancası uç noktasının gereksinimlerini karşılamak için desteklenen belirli değişkenleri kullanarak JSON yükünü özelleştirebilir. Daha fazla bilgi için bkz. [günlük uyarısı kuralları Için Web kancası eylemi](../../azure-monitor/platform/alerts-log-webhook.md). 
+Varsayılan olarak, Log Analytics için eylem grubu aracılığıyla gönderilen Web kancasının sabit bir yapısı vardır. Ancak bir tane, Web kancası uç noktasının gereksinimlerini karşılamak için desteklenen belirli değişkenleri kullanarak JSON yükünü özelleştirebilir. Daha fazla bilgi için bkz. [günlük uyarısı kuralları Için Web kancası eylemi](./alerts-log-webhook.md). 
 
 Web kancası ayrıntılarının özelleştirilmesi, ActionGroup ayrıntıları ile birlikte gönderilmesi gerekir ve eylem grubu içinde belirtilen tüm Web kancası URI 'sine uygulanır; Aşağıdaki örnekte olduğu gibi.
 
@@ -387,6 +387,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Log Analytics ' de [günlük aramalarını gerçekleştirmek için REST API](../../azure-monitor/log-query/log-query-overview.md) kullanın.
-* [Azure izleyici 'de günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md) hakkında bilgi edinin
-* [Azure izleyici 'de günlük uyarı kuralları oluşturma, düzenleme veya yönetme](../../azure-monitor/platform/alerts-log.md)
+* Log Analytics ' de [günlük aramalarını gerçekleştirmek için REST API](../log-query/log-query-overview.md) kullanın.
+* [Azure izleyici 'de günlük uyarıları](./alerts-unified-log.md) hakkında bilgi edinin
+* [Azure izleyici 'de günlük uyarı kuralları oluşturma, düzenleme veya yönetme](./alerts-log.md)
+

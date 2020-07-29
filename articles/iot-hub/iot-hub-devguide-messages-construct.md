@@ -8,11 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 3b32468c9795f603ac38854415bca9d653d7c101
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 4d33a47e0498c82dff967242cfbc12a89c94a3b5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674986"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327744"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub iletilerini oluşturma ve okuma
 
@@ -50,9 +54,9 @@ Farklı protokoller kullanılarak gönderilen iletilerin kodlanması ve kodunun 
 
 | Özellik | Açıklama  |Kullanıcı ayarlanabilir mi?|İçin anahtar sözcük </br>Yönlendirme sorgusu|
 | --- | --- | --- | --- |
-| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Evet | Ileti |
+| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Yes | Ileti |
 | ıothub-enqueuedtime |[Cihazdan buluta](iot-hub-devguide-d2c-guidance.md) mesajın IoT Hub tarafından alındığı tarih ve saat. | Hayır | enqueuedTime |
-| user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . | Evet | userId |
+| user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . | Yes | userId |
 | ıothub-bağlantı-cihaz kimliği |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **DeviceID** 'sini içerir. | Hayır | Connectiondeviceıd |
 | ıothub-Connection-Module-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **ModuleID** 'sini içerir. | Hayır | Connectionmoduleıd |
 | ıothub-bağlantı-auth-Generation-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **Connectiondevicegenerationıd** 'Sini ( [cihaz kimliği başına kimlik özellikleri](iot-hub-devguide-identity-registry.md#device-identity-properties)) içerir. | Hayır |Connectiondevicegenerationıd |
@@ -62,13 +66,13 @@ Farklı protokoller kullanılarak gönderilen iletilerin kodlanması ve kodunun 
 
 | Özellik | Açıklama  |Kullanıcı ayarlanabilir mi?|
 | --- | --- | --- |
-| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Evet|
+| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Yes|
 | sıra numarası |Her buluttan cihaza ileti için IoT Hub tarafından atanan bir sayı (cihaz kuyruğu başına benzersiz). |Hayır|
-| - |[Buluttan cihaza](iot-hub-devguide-c2d-guidance.md) iletilerde belirtilen hedef. |Hayır|
+| şöyle değiştirin: |[Buluttan cihaza](iot-hub-devguide-c2d-guidance.md) iletilerde belirtilen hedef. |Hayır|
 | mutlak-süre sonu |İleti süresinin dolma tarihi ve saati. |Hayır|   |
-| correlation-id |İstek-yanıt desenlerinde, genellikle isteğin MessageID ' i içeren bir yanıt iletisindeki dize özelliği. |Evet|
-| user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . |Evet|
-| ıothub-ACK |Geri bildirim iletisi Oluşturucu. Bu özellik, cihaz tarafından ileti tüketimine yol açacak şekilde geri bildirim iletileri oluşturmak için IoT Hub istemek üzere buluttan cihaza iletimekte kullanılır. Olası değerler: **hiçbiri** (varsayılan): hiçbir geri bildirim iletisi oluşturulmaz, **pozitif**: ileti tamamlandığında bir geri bildirim iletisi alın (veya en fazla teslim sayısına ulaşıldığında), ya da **tam** **olarak pozitif**ve negatif olur. |Evet|
+| correlation-id |İstek-yanıt desenlerinde, genellikle isteğin MessageID ' i içeren bir yanıt iletisindeki dize özelliği. |Yes|
+| user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . |Yes|
+| ıothub-ACK |Geri bildirim iletisi Oluşturucu. Bu özellik, cihaz tarafından ileti tüketimine yol açacak şekilde geri bildirim iletileri oluşturmak için IoT Hub istemek üzere buluttan cihaza iletimekte kullanılır. Olası değerler: **hiçbiri** (varsayılan): hiçbir geri bildirim iletisi oluşturulmaz, **pozitif**: ileti tamamlandığında bir geri bildirim iletisi alın (veya en fazla teslim sayısına ulaşıldığında), ya da **tam** **olarak pozitif**ve negatif olur. |Yes|
 
 ### <a name="system-property-names"></a>Sistem özelliği adları
 
@@ -84,7 +88,7 @@ Sistem özelliği adları, iletilerin yönlendirildiği uç noktaya göre farkl�
 |Bağlantı kimlik doğrulama yöntemi|ıothub-Connection-auth-yöntemi|connectionAuthMethod|ıothub-Connection-auth-yöntemi|ıothub-Connection-auth-yöntemi|
 |contentType|içerik türü|contentType|ContentType|ıothub-Content-Type|
 |Contentenkodlamaya|İçerik kodlama|Contentenkodlamaya|Contentenkodlamaya|ıothub-Content-Encoding|
-|ıothub-enqueuedtime|ıothub-enqueuedtime|enqueuedTime| YOK |ıothub-enqueuedtime|
+|ıothub-enqueuedtime|ıothub-enqueuedtime|enqueuedTime| Yok |ıothub-enqueuedtime|
 |ıothub-arabirim-adı|ıothub-arabirim-adı|'Nün|Iothub-arabirim-adı|ıothub-arabirim-adı|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 

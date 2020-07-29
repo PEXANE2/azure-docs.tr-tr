@@ -4,13 +4,14 @@ description: Durum bilgisiz ve durum bilgisi olan hizmetlerle Microsoft Azure Se
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
+ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: f4cab376318bec471fa59614e5bcc716a31dc333
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 30797e68081e346ee0f31f77da15f820776337a0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260931"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324514"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java 'da Reliable Services kullanmaya başlama
 > [!div class="op_single_selector"]
@@ -119,7 +120,7 @@ Bu düzenleme, hizmetinizi yüksek oranda kullanılabilir ve düzgün şekilde d
 
 `runAsync()`zaman uyumlu olarak engellenmemelidir. RunAsync uygulamanız, çalışma zamanının devam etmesine izin vermek için bir tamamlayıcı Tablefuture döndürmelidir. İş yükünüzün, bir uzun süre çalışan bir görevi, tamamlanmalı ve bu görevin tamamlanması gerekir.
 
-#### <a name="cancellation"></a>İptal
+#### <a name="cancellation"></a>İptal Etme
 İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve `runAsync()` sistem iptali istediğinde mümkün olduğunca hızlı bir şekilde çıkmak önemlidir. Aşağıdaki örnek, bir iptal olayının nasıl işleneceğini göstermektedir:
 
 ```java

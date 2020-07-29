@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: a9c9dee94dd50462109a8864ffb413ce991c8dbd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072388"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307208"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
@@ -37,11 +37,9 @@ Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](https://docs.
 
 1. Projeyi bulmak için sol taraftaki **veri etiketleme** ' yi seçin.  
 
-1. Listeden proje adını seçin.
-
 ## <a name="understand-the-labeling-task"></a>Etiketleme görevini anlayın
 
-Projeyi seçtikten sonra, sayfanın üst kısmında, **etiket verileri**' ni seçin.
+Veri etiketleme projeleri tablosunda, projeniz için **etiket bağlantısı** ' nı seçin.
 
 Projenize özel yönergeler görürsünüz. Bunlar, söz konusu verilerin türünü, kararlarınızı nasıl yapmanız gerektiğini ve diğer ilgili bilgileri açıklar. Bu bilgileri okuduktan sonra, sayfanın üst kısmında **Görevler**' i seçin.  Ya da sayfanın en altında **etiketlemeyi Başlat**' ı seçin.
 

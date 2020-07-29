@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081619"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327353"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme
 
@@ -242,7 +242,7 @@ Seçilen depolama hesaplarının sayısı, seçilen aboneliklerin sayısından b
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Kullanılabilirlik için renklendirme ve eşik nasıl değiştirilir?
 
-Kullanılabilirliği ve eşikleri kullanılabilirlik için değiştirme hakkında ayrıntılı adımlar için [kullanılabilirlik eşiğini değiştirme](storage-insights-overview.md#modify-the-availability-threshold) bölümüne bakın.
+Kullanılabilirliği ve eşikleri kullanılabilirlik için değiştirme hakkında ayrıntılı adımlar için [kullanılabilirlik eşiğini değiştirme](#modify-the-availability-threshold) bölümüne bakın.
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Depolama için Azure Izleyici 'de gösterilen verileri analiz etme ve giderme
 
@@ -274,3 +274,4 @@ Her çalışma kitabı, bu dosyayı kaydettiğiniz depolama hesabına kaydedilir
 * Çalışma kitaplarının desteklemek için tasarlandıkları senaryoları, mevcut raporların yeni nasıl yazılacağını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu gözden geçirin.
 
 * Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve sorunlarını gidermek için Depolama Analizi ve diğer araçları kullanma hakkında ayrıntılı bir kılavuz için bkz. [izleme, tanılama ve sorun giderme Microsoft Azure depolama](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
+

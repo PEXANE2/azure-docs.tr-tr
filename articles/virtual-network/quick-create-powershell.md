@@ -1,7 +1,7 @@
 ---
 title: Sanal ağ oluşturma-hızlı başlangıç-Azure PowerShell
 titlesuffix: Azure Virtual Network
-description: Bu hızlı başlangıçta, Azure portalını kullanarak sanal ağ oluşturmayı öğreneceksiniz. Sanal ağ, sanal makineler gibi Azure kaynaklarının birbiriyle ve internet ile özel olarak iletişim kurmasına olanak tanır.
+description: Bu hızlı başlangıçta, Azure portal kullanarak bir sanal ağ oluşturacaksınız. Bir sanal ağ, Azure kaynaklarının birbirleriyle ve internet ile iletişim kurmasına olanak tanır.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e547da3d1a26a7dcc110a8349dbae3c7e3f29e0b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707472"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291930"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak sanal ağ oluşturma
 
@@ -155,7 +155,7 @@ mstsc /v:<publicIpAddress>
 
 1. *MyVm1*uzak masaüstünde PowerShell ' i açın.
 
-1. `ping myVm2` yazın.
+1. Şunu girin: `ping myVm2`.
 
     Aşağıdakine benzer bir şey alacaksınız:
 

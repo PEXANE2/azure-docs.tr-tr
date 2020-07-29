@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü kişisel masaüstü ataması (sonbahar 2019)-Azure
-description: Windows sanal masaüstü (sonbahar 2019 sürümü) kişisel masaüstü konak havuzu için atama türünü yapılandırmayı öğrenin.
+title: Windows sanal masaüstü (klasik) kişisel masaüstü atama türü-Azure
+description: Windows sanal masaüstü (klasik) kişisel masaüstü konak havuzu için atama türünü yapılandırma.
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 036e144922fcb49c486813b8668d944dd771536e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76b68ba0a51d250e4ce143314c9126597133e97f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087195"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271051"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type-fall-2019-release"></a>Kişisel masaüstü konak havuzu atama türünü yapılandırma (sonbahar 2019 sürümü)
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>Windows sanal masaüstü için kişisel masaüstü konak havuzu atama türünü yapılandırma (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../configure-host-pool-personal-desktop-assignment-type.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../configure-host-pool-personal-desktop-assignment-type.md)bakın.
 
 Windows sanal masaüstü ortamınızı gereksinimlerinize daha uygun olacak şekilde ayarlamak için kişisel masaüstü ana bilgisayar havuzunuzun atama türünü yapılandırabilirsiniz. Bu konu başlığında, kullanıcılarınız için otomatik veya doğrudan atamayı nasıl yapılandıracağınızı göstereceğiz.
 

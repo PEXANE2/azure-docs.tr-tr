@@ -7,11 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 34ffa7a9fe9bd129fa3fd572bc8ef4d80b43ab9b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688968"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322984"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu söz dizimi
 
@@ -51,11 +55,11 @@ Sistem Özellikleri, iletilerin içeriğini ve kaynağını belirlemesine yardı
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| contentType | string | Kullanıcı iletinin içerik türünü belirtir. İleti gövdesinde sorguya izin vermek için bu değer Application/JSON olarak ayarlanmalıdır. |
-| Contentenkodlamaya | string | Kullanıcı iletinin kodlama türünü belirtir. ContentType Application/JSON olarak ayarlandıysa, izin verilen değerler UTF-8, UTF-16, UTF-32 olur. |
-| ıothub-bağlantı-cihaz kimliği | string | Bu değer IoT Hub olarak ayarlanır ve cihazın KIMLIĞINI tanımlar. Sorgulamak için kullanın `$connectionDeviceId` . |
-| ıothub-enqueuedtime | string | Bu değer, IoT Hub tarafından ayarlanır ve UTC 'de iletiyi sıraya alma gerçek süresini temsil eder. Sorgulamak için kullanın `enqueuedTime` . |
-| ıothub-arabirim-adı | string | Bu değer Kullanıcı tarafından ayarlanır ve telemetri iletisini uygulayan dijital ikizi arabiriminin adını temsil eder. Sorgulamak için kullanın `$interfaceName` . Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. |
+| contentType | dize | Kullanıcı iletinin içerik türünü belirtir. İleti gövdesinde sorguya izin vermek için bu değer Application/JSON olarak ayarlanmalıdır. |
+| Contentenkodlamaya | dize | Kullanıcı iletinin kodlama türünü belirtir. ContentType Application/JSON olarak ayarlandıysa, izin verilen değerler UTF-8, UTF-16, UTF-32 olur. |
+| ıothub-bağlantı-cihaz kimliği | dize | Bu değer IoT Hub olarak ayarlanır ve cihazın KIMLIĞINI tanımlar. Sorgulamak için kullanın `$connectionDeviceId` . |
+| ıothub-enqueuedtime | dize | Bu değer, IoT Hub tarafından ayarlanır ve UTC 'de iletiyi sıraya alma gerçek süresini temsil eder. Sorgulamak için kullanın `enqueuedTime` . |
+| ıothub-arabirim-adı | dize | Bu değer Kullanıcı tarafından ayarlanır ve telemetri iletisini uygulayan dijital ikizi arabiriminin adını temsil eder. Sorgulamak için kullanın `$interfaceName` . Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. |
 
 [IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. **ContentType**, **Contentenkodlamaya**ve **Enqueuedtime**'A ek olarak **connectiondeviceıd** ve **connectionmoduleıd** de sorgulanabilir.
 
@@ -65,7 +69,7 @@ Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu 
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti sistemi özelliklerindeki bir sorgunun, simgeye ön eki eklenmiş olması gerekir `$` . Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve sembol önüne kullanılmamalıdır `$` . Bir uygulama özelliği adı ile başlıyorsa `$` , IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örneğin: 
+İleti sistemi özelliklerindeki bir sorgunun, simgeye ön eki eklenmiş olması gerekir `$` . Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve sembol önüne kullanılmamalıdır `$` . Bir uygulama özelliği adı ile başlıyorsa `$` , IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örnek: 
 
 Sistem özelliği Çekiştenkodlamaya göre sorgulamak için 
 

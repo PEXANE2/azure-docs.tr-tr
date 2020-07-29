@@ -2,13 +2,13 @@
 title: Mantıksal kuruluş için kaynakları, kaynak grupları ve abonelikleri etiketleme
 description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/27/2020
+ms.openlocfilehash: fa56fac79855b438a0cd1c10ed1008d69ca3e2fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056931"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323885"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -438,7 +438,7 @@ Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi et
 
 ### <a name="apply-tags-from-resource-group"></a>Kaynak grubundan Etiketler uygulama
 
-Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup](../templates/template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken `tags[tag-name]` sözdizimi yerine sözdizimini kullanın `tags.tag-name` , çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
+Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup ()](../templates/template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken `tags[tag-name]` sözdizimi yerine sözdizimini kullanın `tags.tag-name` , çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
 
 ```json
 {
@@ -578,7 +578,7 @@ Kaynak grubuna veya aboneliğe uygulanan Etiketler kaynaklar tarafından devral�
 
 Etiketleri kullanarak faturalama verilerinizi gruplandırabilirsiniz. Örneğin, farklı organizasyonlar için birden çok sanal makine çalıştırıyorsanız, maliyet merkezine göre kullanımı gruplandırmak için etiketleri kullanın. Ayrıca etiketleri kullanarak, üretim ortamında çalışan sanal makineler için faturalama kullanımı gibi, maliyetleri çalışma zamanı ortamına göre kategorilere ayırabilirsiniz.
 
-[Azure Kaynak kullanımı ve RateCard API 'leri](../../cost-management-billing/manage/usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
+[Azure Kaynak kullanımı ve ücret kartı API 'leri](../../cost-management-billing/manage/usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
 
 REST API işlemler için bkz. [Azure faturalandırma REST API başvurusu](/rest/api/billing/).
 
@@ -596,6 +596,8 @@ Etiketler için aşağıdaki sınırlamalar geçerlidir:
    > Şu anda Azure DNS bölgeleri ve Traffic Manager hizmetleri etiketinde boşluk kullanılmasına da izin vermez.
    >
    > Azure ön kapısının etiket adında kullanılması desteklenmez `#` .
+   >
+   > Azure Otomasyonu ve Azure CDN yalnızca kaynaklardaki 15 etiketi destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

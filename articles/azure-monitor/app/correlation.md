@@ -7,26 +7,26 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b4facaee44a0bc5c7d64376ca80e5aaf8d0768d0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092992"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323171"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
-Mikro hizmetler dünyasında, her mantıksal işlem, hizmetin çeşitli bileşenlerinde iş yapılmasını gerektirir. [Application Insights](../../azure-monitor/app/app-insights-overview.md)kullanarak, bu bileşenlerin her birini ayrı ayrı izleyebilirsiniz. Application Insights, hangi bileşenin hatalardan veya performans düşüşüne karşı sorumlu olduğunu saptamak için kullandığınız dağıtılmış telemetri bağıntısını destekler.
+Mikro hizmetler dünyasında, her mantıksal işlem, hizmetin çeşitli bileşenlerinde iş yapılmasını gerektirir. [Application Insights](./app-insights-overview.md)kullanarak, bu bileşenlerin her birini ayrı ayrı izleyebilirsiniz. Application Insights, hangi bileşenin hatalardan veya performans düşüşüne karşı sorumlu olduğunu saptamak için kullandığınız dağıtılmış telemetri bağıntısını destekler.
 
 Bu makalede, birden çok bileşen tarafından gönderilen telemetrinin ilişkilendirilmesi için Application Insights tarafından kullanılan veri modeli açıklanmaktadır. Bağlam yayma tekniklerini ve protokollerini içerir. Ayrıca, farklı diller ve platformlarda bağıntı taclerin uygulanmasını da ele alır.
 
 ## <a name="data-model-for-telemetry-correlation"></a>Telemetri bağıntısı için veri modeli
 
-Application Insights, dağıtılmış telemetri bağıntısı için bir [veri modeli](../../azure-monitor/app/data-model.md) tanımlar. Telemetrinin bir mantıksal işlemle ilişkilendirilmesi için, her telemetri öğesinin adında bir bağlam alanı vardır `operation_Id` . Bu tanımlayıcı, dağıtılmış izlemede her telemetri öğesi tarafından paylaşılır. Bu nedenle, tek bir katmanda telemetri kaybetseniz bile, diğer bileşenler tarafından raporlanan Telemetriyi yine de ilişkilendirebilirsiniz.
+Application Insights, dağıtılmış telemetri bağıntısı için bir [veri modeli](./data-model.md) tanımlar. Telemetrinin bir mantıksal işlemle ilişkilendirilmesi için, her telemetri öğesinin adında bir bağlam alanı vardır `operation_Id` . Bu tanımlayıcı, dağıtılmış izlemede her telemetri öğesi tarafından paylaşılır. Bu nedenle, tek bir katmanda telemetri kaybetseniz bile, diğer bileşenler tarafından raporlanan Telemetriyi yine de ilişkilendirebilirsiniz.
 
-Dağıtılmış bir mantıksal işlem, genellikle bileşenlerinden biri tarafından işlenen istekler olan daha küçük bir işlem kümesinden oluşur. Bu işlemler [istek telemetrisi](../../azure-monitor/app/data-model-request-telemetry.md)tarafından tanımlanır. Her istek telemetri öğesi `id` kendisini benzersiz ve küresel olarak tanımlayan kendi kendine sahiptir. Ve istekle ilişkili tüm telemetri öğeleri (izlemeler ve özel durumlar gibi) `operation_parentId` isteğin değerine ayarlanmalıdır `id` .
+Dağıtılmış bir mantıksal işlem, genellikle bileşenlerinden biri tarafından işlenen istekler olan daha küçük bir işlem kümesinden oluşur. Bu işlemler [istek telemetrisi](./data-model-request-telemetry.md)tarafından tanımlanır. Her istek telemetri öğesi `id` kendisini benzersiz ve küresel olarak tanımlayan kendi kendine sahiptir. Ve istekle ilişkili tüm telemetri öğeleri (izlemeler ve özel durumlar gibi) `operation_parentId` isteğin değerine ayarlanmalıdır `id` .
 
-Başka bir bileşene yönelik HTTP çağrısı gibi her giden işlem, [bağımlılık telemetrisi](../../azure-monitor/app/data-model-dependency-telemetry.md)tarafından temsil edilir. Bağımlılık telemetrisi, `id` genel olarak benzersiz olan kendisini de tanımlar. Bu bağımlılık çağrısıyla başlatılan istek telemetrisi, bunu `id` olarak kullanır `operation_parentId` .
+Başka bir bileşene yönelik HTTP çağrısı gibi her giden işlem, [bağımlılık telemetrisi](./data-model-dependency-telemetry.md)tarafından temsil edilir. Bağımlılık telemetrisi, `id` genel olarak benzersiz olan kendisini de tanımlar. Bu bağımlılık çağrısıyla başlatılan istek telemetrisi, bunu `id` olarak kullanır `operation_parentId` .
 
 `operation_Id`, Ve ile kullanarak dağıtılmış mantıksal işlemin bir görünümünü oluşturabilirsiniz `operation_parentId` `request.id` `dependency.id` . Bu alanlar telemetri çağrılarının önem derecesine göre de tanımlar.
 
@@ -216,7 +216,7 @@ Bu özellik ' de bulunur `Microsoft.ApplicationInsights.JavaScript` . Varsayıla
 | `Operation_Id`                         | `TraceId`                                           |
 | `Operation_ParentId`                   | `Reference`türündeki `ChildOf` (üst yayılma)     |
 
-Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](../../azure-monitor/app/data-model.md).
+Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](./data-model.md).
 
 OpenTracing kavramlarının tanımları için bkz. OpenTracing [belirtimi](https://github.com/opentracing/specification/blob/master/specification.md) ve [anlam kuralları](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
 
@@ -372,10 +372,11 @@ Java [aracısının](./java-in-process-agent.md) yanı sıra [Java SDK](../../az
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel telemetri](../../azure-monitor/app/api-custom-events-metrics.md)yazın.
+- [Özel telemetri](./api-custom-events-metrics.md)yazın.
 - ASP.NET Core ve ASP.NET ' deki gelişmiş bağıntı senaryoları için bkz. [özel Işlemleri izleme](custom-operations-tracking.md).
-- Diğer SDK 'lar için [cloud_RoleName ayarlama](../../azure-monitor/app/app-map.md#set-cloud-role-name) hakkında daha fazla bilgi edinin.
-- Mikro hizmetinizin tüm bileşenlerini Application Insights ekleyin. [Desteklenen platformları](../../azure-monitor/app/platforms.md)inceleyin.
-- Application Insights türleri için [veri modeline](../../azure-monitor/app/data-model.md) bakın.
-- [Telemetrinin nasıl genişletileceğini ve filtreleneceğini](../../azure-monitor/app/api-filtering-sampling.md)öğrenin.
+- Diğer SDK 'lar için [cloud_RoleName ayarlama](./app-map.md#set-cloud-role-name) hakkında daha fazla bilgi edinin.
+- Mikro hizmetinizin tüm bileşenlerini Application Insights ekleyin. [Desteklenen platformları](./platforms.md)inceleyin.
+- Application Insights türleri için [veri modeline](./data-model.md) bakın.
+- [Telemetrinin nasıl genişletileceğini ve filtreleneceğini](./api-filtering-sampling.md)öğrenin.
 - [Application Insights config başvurusunu](configuration-with-applicationinsights-config.md)gözden geçirin.
+

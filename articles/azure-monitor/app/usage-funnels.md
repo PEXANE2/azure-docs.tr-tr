@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797827"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323732"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights Funlarla müşterilerin uygulamanızı nasıl kullandığını öğrenin
 
@@ -36,7 +37,7 @@ Aşağıdaki ekran görüntüsünde, funnels aracının oluşturduğu veri tür�
 ### <a name="funnels-features"></a>Funnels özellikleri
 Önceki ekran görüntüsünde beş Vurgulanan alan bulunur. Bunlar, Nednels özellikleridir. Aşağıdaki listede, ekran görüntüsünde karşılık gelen her alan hakkında daha fazla bilgi verilmektedir:
 1. Uygulamanız örneklenir ise, bir örnekleme başlığı görürsünüz. Başlığın seçilmesi, örnekleme 'nın nasıl açılacağını açıklayan bir bağlam bölmesi açar. 
-2. [Power BI](../../azure-monitor/app/export-power-bi.md ), huni 'nizi dışarı aktarabilirsiniz.
+2. [Power BI](./export-power-bi.md), huni 'nizi dışarı aktarabilirsiniz.
 3. Sağ tarafta daha fazla ayrıntı görmek için bir adım seçin. 
 4. Geçmiş dönüştürme grafiğinde, son 90 güne ait dönüştürme ücretleri gösterilmektedir. 
 5. Kullanıcılar aracına erişerek kullanıcılarınızı daha iyi anlayın. Her adımda filtre kullanabilirsiniz. 
@@ -45,7 +46,7 @@ Aşağıdaki ekran görüntüsünde, funnels aracının oluşturduğu veri tür�
   * [Kullanıma genel bakış](usage-overview.md)
   * [Kullanıcılar, Oturumlar ve Etkinlikler](usage-segmentation.md)
   * [Bekletme](usage-retention.md)
-  * [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
+  * [Çalışma Kitapları](../platform/workbooks-overview.md)
   * [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
-  * [Power BI’a aktarma](../../azure-monitor/app/export-power-bi.md )
+  * [Power BI’a aktarma](./export-power-bi.md)
 

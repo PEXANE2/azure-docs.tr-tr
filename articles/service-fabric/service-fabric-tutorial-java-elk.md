@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376672"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327183"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Öğretici: ELK kullanarak Service Fabric uygulamalarınızı izleme
 
@@ -31,7 +31,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * Uygulama için izleme ve tanılamayı ayarlama
 > * [CI/CD ayarlama](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -140,7 +140,7 @@ Bu öğretici için önceden yapılandırılmış bir ELK ortamı kullanabilirsi
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. **Http:\//Server-IP** adresinden kibana panonuza erişin ve kibana için Kullanıcı adını ve parolayı girin. Azure’da ELK görüntüsünü kullandıysanız varsayılan kullanıcı adı 'user' ve parola da **Önyükleme Tanılaması**’ndan alınan paroladır.
+8. **Http: \/ /Server-IP** adresinden kibana panonuza erişin ve kibana için Kullanıcı adını ve parolayı girin. Azure’da ELK görüntüsünü kullandıysanız varsayılan kullanıcı adı 'user' ve parola da **Önyükleme Tanılaması**’ndan alınan paroladır.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

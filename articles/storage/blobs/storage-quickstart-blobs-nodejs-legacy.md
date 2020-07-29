@@ -1,28 +1,31 @@
 ---
 title: 'Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı ile v10 arasındaki'
-description: JavaScript için Azure Storage istemci kitaplığı ile v10 arasındaki ile Node. js ' de blob ve kapsayıcılar oluşturma, karşıya yükleme ve silme
+description: JavaScript için Azure Storage istemci kitaplığı ile v10 arasındaki ile Node.js blob ve kapsayıcılar oluşturun, karşıya yükleyin ve silin
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01d9c2e2b822af607d7473206461b97dfa627c17
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269496"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282033"
 ---
-# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Hızlı başlangıç: node. js ' de JavaScript ile v10 arasındaki SDK ile Blobları yönetme
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Hızlı başlangıç: Node.js içindeki JavaScript ile v10 arasındaki SDK ile Blobları yönetme
 
-Bu hızlı başlangıçta, Node. js kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir, listeler ve siler ve kapsayıcıları yönetirsiniz.
+Bu hızlı başlangıçta, Node.js kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir, listeler ve siler ve kapsayıcıları yönetirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!NOTE]
+> Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: JavaScript V12 SDK ile Blobları yönetme Node.js](storage-quickstart-blobs-nodejs.md).
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
-- [Node. js](https://nodejs.org/en/download/).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
@@ -353,7 +356,7 @@ async function showBlobNames(aborter, containerURL) {
 }
 ```
 
-### <a name="download-a-blob"></a>Blob indirme
+### <a name="download-a-blob"></a>Blobu indirme
 
 Blob oluşturulduktan sonra içeriği *download* metodu kullanılarak indirilebilir.
 
@@ -381,7 +384,7 @@ async function streamToString(readableStream) {
 }
 ```
 
-### <a name="delete-a-blob"></a>Blob silme
+### <a name="delete-a-blob"></a>Blobu silme
 
 *BlockBlobURL* örneğinden gelen *delete* metodu, kapsayıcıdaki bir blobu siler.
 
@@ -408,5 +411,5 @@ Depolama hesabına yazılan tüm veriler kod örneğinin sonunda otomatik olarak
 Bu hızlı başlangıçta Node.js kullanarak Azure Blob depolamadaki blobları ve kapsayıcıları yönetme adımları gösterilmektedir. Bu SDK ile çalışma hakkında daha fazla bilgi edinmek için, GitHub deposunu inceleyin.
 
 > [!div class="nextstepaction"]
-> [JavaScript için Azure Storage ile v10 arasındaki SDK deposu](https://github.com/Azure/azure-storage-js)
-> [Azure Storage JavaScript API başvurusu](/javascript/api/overview/azure/storage-overview)
+> [JavaScript deposu](https://github.com/Azure/azure-storage-js) 
+>  için Azure Storage ile v10 arasındaki SDK [Azure Storage JAVASCRIPT API başvurusu](/javascript/api/overview/azure/storage-overview)

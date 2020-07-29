@@ -10,16 +10,28 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 75d191c9d65cc639522c3fbba5b8c438b8b83448
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ceb9e731b1052d47131dfbc6754e1cb921a8f585
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560117"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280843"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmette güncel kalmak için bu sayfaya yer işareti ekleyin.
+
+## <a name="july-2020"></a>Temmuz 2020
+
+### <a name="read-api-v31-preview1-adds-support-for-simplified-chinese"></a>API v 3.1-Önizleme ' i okuyun. 1 Basitleştirilmiş Çince desteği ekler
+Görüntü İşleme Read API v 3.1-Preview. 1 Basitleştirilmiş Çince desteği ekler.
+
+* Okuma API 'sinin bu önizleme sürümü Ingilizce, Felemenkçe, Fransızca, Almanca, Italyanca, Portekizce, Basitleştirilmiş Çince ve Ispanyolca dilleri destekler.
+
+Daha fazla bilgi için [okuma API 'sine genel bakış](concept-recognizing-text.md) bölümüne bakın.
+
+> [!div class="nextstepaction"]
+> [Okuma API v 3.1-önizleme hakkında daha fazla bilgi edinin. 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Mayıs 2020
 Görüntü İşleme API'si v 3.0 genel kullanılabilirliği ve [API 'Yi okumak](concept-recognizing-text.md)için güncelleştirmeler ile girilmiş:
@@ -35,7 +47,7 @@ Görüntü İşleme API'si v 3.0 genel kullanılabilirliği ve [API 'Yi okumak](
 
 ## <a name="january-2020"></a>Ocak 2020
 
-### <a name="read-api-30-preview"></a>API 3,0 Preview 'ı okuyun
+### <a name="read-api-30-public-preview"></a>API 3,0 genel önizlemeyi okuyun
 
 Artık görüntülerden yazdırılmış veya el yazısı metin ayıklamak için Read API 'sinin 3,0 sürümünü kullanma seçeneğiniz vardır. Önceki sürümlere kıyasla 3,0 şunları sağlar:
 * İyileştirilmiş doğruluk

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516354"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321879"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure etkinlik günlüklerini Azure Active Directory kiracılar genelinde Azure Izleyici 'ye toplayın (eski)
 
@@ -340,4 +340,5 @@ Son adım Log Analytics çalışma alanını denetleyip verilerin beklendiği gi
 Bu makalede, bir olay hub 'ından Azure etkinlik günlüklerini okumak ve bunları analiz için Log Analytics çalışma alanına göndermek üzere bir mantıksal uygulama oluşturdunuz. Panolar oluşturma da dahil olmak üzere bir çalışma alanındaki verileri görselleştirme hakkında daha fazla bilgi edinmek için verileri görselleştirmeye yönelik öğreticiyi inceleyin.
 
 > [!div class="nextstepaction"]
-> [Günlük Araması verilerini görselleştirme öğreticisi](./../../azure-monitor/learn/tutorial-logs-dashboards.md)
+> [Günlük Araması verilerini görselleştirme öğreticisi](../learn/tutorial-logs-dashboards.md)
+

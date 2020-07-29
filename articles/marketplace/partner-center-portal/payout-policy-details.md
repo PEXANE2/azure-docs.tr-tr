@@ -4,15 +4,15 @@ description: Zamanlamalar ve engel dahil olmak üzere, ödeme ilkelerine ilişki
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: f26e006998b0818ba84fa23ee1941a1033ef205b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d72a80298be96d32547737a98e5279da0c5d8ef0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118299"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324837"
 ---
 # <a name="payout-policy-details"></a>Ödeme ilkesi ayrıntıları
 
@@ -42,9 +42,9 @@ Aşağıdaki bölümlerde, ödeme sürecimiz açıklanır.
 
 | Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\* |
 | --- | --- | --- | --- |
-| İşlem veya kullanım ayı | 8/1/2020 – 8/31/2020 | YOK | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
-| Dönem sonu (ay) | 8/31/2020 | YOK | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
-| Sıra oluşturuldu | 9/3/2020 – 9/7/2020 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| İşlem veya kullanım ayı | 8/1/2020 – 8/31/2020 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
+| Dönem sonu (ay) | 8/31/2020 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
+| Sıra oluşturuldu | 9/3/2020 – 9/7/2020 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme kazanmakta hesaplama | 9/4/2020 – 9/10/2020 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 10/5/2020 | Ödeme panosundaki işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme tarihi | 10/15/2020 | Işlem geçmişinde ve ödeme panosunun ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
@@ -59,10 +59,10 @@ Kredi kartı veya aylık fatura içeren tüm satın almalarda, fonların temizle
 
 | Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\*  |
 | --- | --- | --- | --- |
-| İşlem veya kullanım ayı | 8/1/2019 - 8/31/2019 | YOK | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
-| Dönem sonu (ay) | 8/31/2019 | YOK | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
-| Sıra oluşturuldu | 9/3/2019 – 9/7/2019 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
-| Müşteri faturası toplandı | 9/7/2019 – 9/10/2019 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| İşlem veya kullanım ayı | 8/1/2019 - 8/31/2019 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
+| Dönem sonu (ay) | 8/31/2019 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
+| Sıra oluşturuldu | 9/3/2019 – 9/7/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| Müşteri faturası toplandı | 9/7/2019 – 9/10/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme 'yi hesapla | 9/8/2019 -9/12/2019 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 11/5/2019\* | Ödeme panosundaki Işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme tarihi | 11/15/2019 | Işlem geçmişinde ve ödeme panosundaki ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
@@ -76,10 +76,10 @@ Bu tarihten önce oluşan tüm satın alımlar, Microsoft 'un müşterilerden ö
 
 | Olay  | Tarih  | İş ortağı görünürlüğü: Iş Ortağı Merkezi ödeme raporu  |  İş ortağı görünürlüğü: Iş ortağı merkezi analizi\*  |
 | --- | --- | --- | --- |
-| İşlem veya kullanım ayı | 8/1/2019 – 8/31/2019 | YOK | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
-| Dönem sonu (ay) | 8/31/2019 | YOK | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
-| Sıra oluşturuldu | 9/3/2019 – 9/7/2019 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
-| Müşteri faturası toplandı | 12/1/2019 | YOK | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| İşlem veya kullanım ayı | 8/1/2019 – 8/31/2019 | Yok | **Kullanım raporu**: yeni tüketim gösteriliyor (her dört saatte bir yenilenir)<br>**Sipariş raporu**: yok |
+| Dönem sonu (ay) | 8/31/2019 | Yok | **Kullanım raporu**: aylık son tüketim gösteriliyor<br>**Sipariş raporu**: yok |
+| Sıra oluşturuldu | 9/3/2019 – 9/7/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
+| Müşteri faturası toplandı | 12/1/2019 | Yok | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme 'yi hesapla | 12/5/2019 – 12/7/2019 | Ödeme panosundaki Işlem geçmişinde **işlenmemiş** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Aylık ödeme | 1/5/2019 | Ödeme panosundaki işlem geçmişinde **yakında çıkacak** şekilde işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |
 | Ödeme tarihi | 1/15/2019 | Işlem geçmişinde ve ödeme panosundaki ödemeler bölümünde **gönderildi** olarak işaretlendi | **Kullanım raporu**: OrderID/Orderlineıtemıd ile gösterilen tüketim<br>**Sipariş raporu**: MÜŞTERI siparişlerinin etkin olarak gösterilmesi |

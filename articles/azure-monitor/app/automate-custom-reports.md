@@ -4,12 +4,12 @@ description: Azure Application Insights verileriyle özel günlük/haftalık/ayl
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540086"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320417"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
 
@@ -95,7 +95,7 @@ availabilityResults
 
     ![Azure Işlevi uygulama ayarları ekran görüntüsü](./media/automate-custom-reports/config.png)
 
-7. Karşılık gelen uygun değerlerle üç yeni uygulama ayarı oluşturun ``AI_APP_ID`` , ``AI_APP_KEY`` ve ``SendGridAPI`` . **Kaydet**’i seçin.
+7. Karşılık gelen uygun değerlerle üç yeni uygulama ayarı oluşturun ``AI_APP_ID`` , ``AI_APP_KEY`` ve ``SendGridAPI`` . **Kaydet**'i seçin.
 
      ![İşlev tümleştirme arabirimi ekran görüntüsü](./media/automate-custom-reports/app-settings.png)
     
@@ -150,7 +150,8 @@ Bu adımlar yalnızca önceden yapılandırılmış bir SendGrid hesabınız yok
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Analiz sorguları](../../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
+* [Analiz sorguları](../log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
 * [Application Insights verileri programlı](https://dev.applicationinsights.io/) bir şekilde sorgulama hakkında daha fazla bilgi edinin
 * [Logic Apps](../../logic-apps/logic-apps-overview.md) hakkında daha fazla bilgi edinin.
 * [Microsoft Flow](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.
+

@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: d6cb3af134ff272d79cfc440047a3d90733ee9e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 43ae9bd0e844a23adabf52e7fbb4b8cd077d23bd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976817"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326724"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Öğretici: IoT Hub cihaz sağlama hizmeti için Java cihaz ve hizmet SDK 'Sı ve grup kayıtlarını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
 
@@ -52,7 +52,7 @@ Devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarla
 
         1. Yeni oluşturulan sertifikayı seçin:
             - **Doğrulama Kodu Oluştur**'a tıklayın. Oluşturulan kodu kopyalayın.
-            - Doğrulama adımını çalıştırın. Çalışan PowerShell pencerenize _doğrulama kodunu_ girin veya sağ tıklayarak yapıştırın.  **Enter**'a basın.
+            - Doğrulama adımını çalıştırın. Çalışan PowerShell pencerenize _doğrulama kodunu_ girin veya sağ tıklayarak yapıştırın.   **Enter** tuşuna basın.
             - Azure portalında yeni oluşturulmuş **_verifyCert4.pem_** dosyasını seçin. **Doğrula**’ya tıklayın.
 
               ![Sertifika doğrulama](./media/tutorial-group-enrollments/validate-certificate.png)
@@ -90,7 +90,7 @@ Devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarla
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    1. Ara imza sertifika dosyanızı bir metin düzenleyicisinde açın. `PUBLIC_KEY_CERTIFICATE_STRING` Değeri ara imzalama sertifikanızın değeriyle güncelleştirin.
+    1. Ara imza sertifika dosyanızı bir metin düzenleyicisinde açın. `PUBLIC_KEY_CERTIFICATE_STRING`Değeri ara imzalama sertifikanızın değeriyle güncelleştirin.
 
         Cihaz sertifikalarınızı Bash Shell ile oluşturduysanız, *./certs/Azure-iot-test-only.intermediate.cert.pem* ara sertifika anahtarını içerir. Sertifikalarınız PowerShell ile oluşturulduysa, *./Intermediate1.pem* ara sertifika dosyanız olacaktır.
 
@@ -159,7 +159,7 @@ Devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarla
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-X509-sample
     ```
 
-1. Daha `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` önce not ettiğiniz _kimlik kapsamınızı_ ve _sağlama hizmeti genel uç noktasını_ içerecek şekilde düzenleyin.
+1. `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java`Daha önce not ettiğiniz _kimlik kapsamınızı_ ve _sağlama hizmeti genel uç noktasını_ içerecek şekilde düzenleyin.
 
     ```java
     private static final String idScope = "[Your ID scope here]";
@@ -170,7 +170,7 @@ Devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarla
     private static final String leafPrivateKey = "<Your Private PEM Key here>";
     ```
 
-1. `leafPublicPem` Ve `leafPrivateKey` değişkenlerini ortak ve özel cihaz sertifikalarınız ile güncelleştirin.
+1. `leafPublicPem`Ve `leafPrivateKey` değişkenlerini ortak ve özel cihaz sertifikalarınız ile güncelleştirin.
 
     Cihaz sertifikalarınızı PowerShell ile oluşturduysanız, mydevice * dosyaları cihaz için ortak anahtar, özel anahtar ve PFX 'yi içerir.
 
@@ -200,7 +200,7 @@ Devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarla
         "-----END RSA PRIVATE KEY-----\n";
     ```
 
-1. Ara sertifikanız için hemen altına `leafPrivateKey` yeni bir değişken ekleyin. Bu yeni değişkeni `intermediateKey`adlandırın. Ara imzalama sertifikanızın değerini verin.
+1. Ara sertifikanız için hemen altına yeni bir değişken ekleyin `leafPrivateKey` . Bu yeni değişkeni adlandırın `intermediateKey` . Ara imzalama sertifikanızın değerini verin.
 
     Cihaz sertifikalarınızı Bash Shell ile oluşturduysanız, *./certs/Azure-iot-test-only.intermediate.cert.pem* ara sertifika anahtarını içerir. Sertifikalarınız PowerShell ile oluşturulduysa, *./Intermediate1.pem* ara sertifika dosyanız olacaktır.
 
@@ -214,7 +214,7 @@ Devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarla
         "-----END CERTIFICATE-----\n";
     ```
 
-1. `main` İşlevinde, öğesini başlatmadan önce `signerCertificates` koleksiyonuna `intermediateKey` ekleyin `securityProviderX509`.
+1. İşlevinde, `main` öğesini `intermediateKey` `signerCertificates` başlatmadan önce koleksiyonuna ekleyin `securityProviderX509` .
 
     ```java
     public static void main(String[] args) throws Exception

@@ -3,18 +3,18 @@ title: Application Insights dağıtımınızı tasarlama-bir çok kaynak karşı
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 159a1c5554c0ac017bc9eeb2e9df65fddba334ba
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326554"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
 
-Bir Web uygulamasının sonraki sürümünü geliştirirken, yeni sürümden ve önceden yayınlanan sürümden [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrisini karıştırmak istemezsiniz. Karışıklığın önüne geçmek için, farklı geliştirme aşamalarından Telemetriyi ayrı Application Insights kaynaklarına (ıkeys 'ler) göre ayrı olarak gönderin. Bir sürüm bir aşamadan diğerine geçiş yaparken izleme anahtarının değiştirilmesini kolaylaştırmak için, yapılandırma dosyası yerine koddaki Ikey ' i ayarlamak yararlı olabilir.
+Bir Web uygulamasının sonraki sürümünü geliştirirken, yeni sürümden ve önceden yayınlanan sürümden [Application Insights](./app-insights-overview.md) telemetrisini karıştırmak istemezsiniz. Karışıklığın önüne geçmek için, farklı geliştirme aşamalarından Telemetriyi ayrı Application Insights kaynaklarına (ıkeys 'ler) göre ayrı olarak gönderin. Bir sürüm bir aşamadan diğerine geçiş yaparken izleme anahtarının değiştirilmesini kolaylaştırmak için, yapılandırma dosyası yerine koddaki Ikey ' i ayarlamak yararlı olabilir.
 
-(Sisteminiz bir Azure bulut hizmeti ise [ayrı ıkeys 'leri ayarlamaya yönelik başka bir yöntem](../../azure-monitor/app/cloudservices.md)vardır.)
+(Sisteminiz bir Azure bulut hizmeti ise [ayrı ıkeys 'leri ayarlamaya yönelik başka bir yöntem](./cloudservices.md)vardır.)
 
 ## <a name="about-resources-and-instrumentation-keys"></a>Kaynaklar ve izleme anahtarları hakkında
 
@@ -58,7 +58,7 @@ protected void Application_Start()
 Bu örnekte, farklı kaynaklar için ıkeys 'ler Web yapılandırma dosyasının farklı sürümlerine yerleştirilir. Yayın betiğinin bir parçası olarak yapabileceğiniz Web yapılandırma dosyasını değiştirme-hedef kaynağı takas eder.
 
 ### <a name="web-pages"></a>Web sayfaları
-Ikey, uygulamanızın Web sayfalarında [hızlı başlangıç bölmesinden aldığınız betikte](../../azure-monitor/app/javascript.md)de kullanılır. Komut dosyasına tam olarak kodlamak yerine sunucu durumundan oluşturun. Örneğin, bir ASP.NET uygulamasında:
+Ikey, uygulamanızın Web sayfalarında [hızlı başlangıç bölmesinden aldığınız betikte](./javascript.md)de kullanılır. Komut dosyasına tam olarak kodlamak yerine sunucu durumundan oluşturun. Örneğin, bir ASP.NET uygulamasında:
 
 ```javascript
 <script type="text/javascript">
@@ -86,14 +86,14 @@ Uygulamanızın veri göndereceği tüm kaynakların izleme anahtarlarına ihtiy
 ## <a name="filter-on-build-number"></a>Derleme numarasını filtrele
 Uygulamanızın yeni bir sürümünü yayımladığınızda, farklı yapılardan Telemetriyi ayırabilmek isteyeceksiniz.
 
-Uygulama sürümü özelliğini, [arama](../../azure-monitor/app/diagnostic-search.md) ve [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) sonuçlarını filtreleyebilmeniz için ayarlayabilirsiniz.
+Uygulama sürümü özelliğini, [arama](./diagnostic-search.md) ve [Ölçüm Gezgini](../platform/metrics-charts.md) sonuçlarını filtreleyebilmeniz için ayarlayabilirsiniz.
 
 Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
 
 * Doğrudan ayarla:
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* Tüm TelemetryClient örneklerinin tutarlı şekilde ayarlandığından emin olmak için bu satırı bir [telemetri başlatıcısında](../../azure-monitor/app/api-custom-events-metrics.md#defaults) sarın.
+* Tüm TelemetryClient örneklerinin tutarlı şekilde ayarlandığından emin olmak için bu satırı bir [telemetri başlatıcısında](./api-custom-events-metrics.md#defaults) sarın.
 * [ASP.NET] Sürümünü ' de ayarlayın `BuildInfo.config` . Web modülü, BuildLabel düğümünden sürümü alacak. Bu dosyayı projenize ekleyin ve Çözüm Gezgini her zaman Kopyala özelliğini ayarlamayı unutmayın.
 
     ```XML
@@ -132,14 +132,15 @@ Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Bu
 </PropertyGroup>
 ```
 
-Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sürümünü** telemetrinin her bir öğesine bir özellik olarak ekler. Bu sayede, [tanılama aramaları](../../azure-monitor/app/diagnostic-search.md) gerçekleştirirken veya [ölçümleri keşfederken](../../azure-monitor/platform/metrics-charts.md) sürüme göre filtreleyebilirsiniz.
+Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sürümünü** telemetrinin her bir öğesine bir özellik olarak ekler. Bu sayede, [tanılama aramaları](./diagnostic-search.md) gerçekleştirirken veya [ölçümleri keşfederken](../platform/metrics-charts.md) sürüme göre filtreleyebilirsiniz.
 
 Ancak, derleme sürüm numarasının Visual Studio 'daki geliştirici derlemesi tarafından değil, yalnızca Microsoft Build Engine tarafından oluşturulup oluşturulduğuna dikkat edin.
 
 ### <a name="release-annotations"></a>Sürüm ek açıklamaları
-Azure DevOps kullanıyorsanız, yeni bir sürüm yayınlayışınızda grafiklerinize [ek açıklama işaretleyicisi](../../azure-monitor/app/annotations.md) ekleyebilirsiniz. 
+Azure DevOps kullanıyorsanız, yeni bir sürüm yayınlayışınızda grafiklerinize [ek açıklama işaretleyicisi](./annotations.md) ekleyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Birden çok rol için paylaşılan kaynaklar](../../azure-monitor/app/app-map.md)
-* [Ayırt etmek için telemetri başlatıcısı oluşturma | B çeşitleri](../../azure-monitor/app/api-filtering-sampling.md#add-properties)
+* [Birden çok rol için paylaşılan kaynaklar](./app-map.md)
+* [Ayırt etmek için telemetri başlatıcısı oluşturma | B çeşitleri](./api-filtering-sampling.md#add-properties)
+

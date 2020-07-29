@@ -1,6 +1,5 @@
 ---
-title: 'Hızlı başlangıç: veri bilimi denemesi oluşturma'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): hızlı başlangıç: veri bilimi denemesi oluşturma-Azure'
 description: Bu Machine Learning hızlı başlangıcı size kolay bir veri bilimi denemesinin nasıl olduğunu gösterir. Regresyon algoritması kullanarak bir arabanın fiyatını tahmin edeceğiz.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f8984b3b712d591b64c383dabb723ba5afc61efc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 99332a8716ae137b8ea5fe69a53c7f8e4c46f095
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282560"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Hızlı başlangıç: Azure Machine Learning Studio (klasik) ilk veri bilimi denemenizi oluşturma
+# <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Hızlı başlangıç: Machine Learning Studio (klasik) ilk veri bilimi denemenizi oluşturma
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 

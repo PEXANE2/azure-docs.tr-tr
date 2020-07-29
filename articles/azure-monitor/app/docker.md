@@ -3,12 +3,12 @@ title: Azure Application Insights Docker uygulamalarını izleme | Microsoft Doc
 description: Docker performans sayaçları, olaylar ve özel durumlar, Kapsayıcılı uygulamalardaki telemetri ile birlikte Application Insights ' de görüntülenebilir.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539933"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324429"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights (kullanım dışı) Docker uygulamalarını izleme
 
@@ -23,15 +23,15 @@ Docker ana bilgisayarınızda [Application Insights görüntüsünü](https://hu
 
 * Konakta çalışan tüm kapsayıcılar hakkında yaşam döngüsü telemetrisi-başlatma, durdurma vb.
 * Tüm kapsayıcılar için performans sayaçları. CPU, bellek, ağ kullanımı ve daha fazlası.
-* Kapsayıcıda çalışan uygulamalarda [Java için APPLICATION INSIGHTS SDK 'yı yüklediyseniz](../../azure-monitor/app/java-get-started.md) , bu uygulamaların tüm telemetrisi, kapsayıcıyı ve ana makineyi tanımlayan ek özelliklere sahip olur. Örneğin, birden fazla konakta çalışan bir uygulamanın örneklerine sahipseniz, uygulama telemetrinizi ana bilgisayara göre kolayca filtreleyebilirsiniz.
+* Kapsayıcıda çalışan uygulamalarda [Java için APPLICATION INSIGHTS SDK 'yı yüklediyseniz](./java-get-started.md) , bu uygulamaların tüm telemetrisi, kapsayıcıyı ve ana makineyi tanımlayan ek özelliklere sahip olur. Örneğin, birden fazla konakta çalışan bir uygulamanın örneklerine sahipseniz, uygulama telemetrinizi ana bilgisayara göre kolayca filtreleyebilirsiniz.
 
 ## <a name="set-up-your-application-insights-resource"></a>Application Insights kaynağınızı ayarlama
 
-1. [Microsoft Azure Portal](https://azure.com) oturum açın ve uygulamanız için Application Insights kaynağını açın; veya [Yeni bir tane oluşturun](../../azure-monitor/app/create-new-resource.md ). 
+1. [Microsoft Azure Portal](https://azure.com) oturum açın ve uygulamanız için Application Insights kaynağını açın; veya [Yeni bir tane oluşturun](./create-new-resource.md). 
    
-    *Hangi kaynağı kullanmalıyım?* Ana bilgisayarınızda çalıştırdığınız uygulamalar başkası tarafından geliştirilmişse, [Yeni bir Application Insights kaynağı oluşturmanız](../../azure-monitor/app/create-new-resource.md )gerekir. Telemetriyi görüntülediğiniz ve analiz ettiğiniz yerdir. (Uygulama türü için ' genel ' seçeneğini belirleyin.)
+    *Hangi kaynağı kullanmalıyım?* Ana bilgisayarınızda çalıştırdığınız uygulamalar başkası tarafından geliştirilmişse, [Yeni bir Application Insights kaynağı oluşturmanız](./create-new-resource.md)gerekir. Telemetriyi görüntülediğiniz ve analiz ettiğiniz yerdir. (Uygulama türü için ' genel ' seçeneğini belirleyin.)
    
-    Ancak uygulamaların geliştiricisiyseniz, her birine [Application Insights SDK 'sı eklemiş](../../azure-monitor/app/java-get-started.md) olduğunuzu umuyoruz. Tek bir iş uygulamasının tüm gerçekten bileşenleri varsa, bunların tümünü tek bir kaynağa telemetri gönderecek şekilde yapılandırabilir ve aynı kaynağı kullanarak Docker yaşam döngüsünü ve performans verilerini görüntüleyebilirsiniz. 
+    Ancak uygulamaların geliştiricisiyseniz, her birine [Application Insights SDK 'sı eklemiş](./java-get-started.md) olduğunuzu umuyoruz. Tek bir iş uygulamasının tüm gerçekten bileşenleri varsa, bunların tümünü tek bir kaynağa telemetri gönderecek şekilde yapılandırabilir ve aynı kaynağı kullanarak Docker yaşam döngüsünü ve performans verilerini görüntüleyebilirsiniz. 
    
     Üçüncü senaryo birçok uygulamayı geliştirdik, ancak Telemetriyi göstermek için ayrı kaynaklar kullanıyorsunuz. Bu durumda muhtemelen Docker verileri için ayrı bir kaynak oluşturmak da isteyebilirsiniz.
 
@@ -54,7 +54,7 @@ Telemetriyi görüntülemenin bir yere sahip olduğunuza göre, onu toplayıp g�
 Docker Konağı başına yalnızca bir Application Insights görüntüsü gerekir. Uygulamanız birden çok Docker konağında dağıtılmışsa, komutu her konakta yineleyin.
 
 ## <a name="update-your-app"></a>Uygulamanızı güncelleştirme
-Uygulamanız [Java için Application Insights SDK 'sı](../../azure-monitor/app/java-get-started.md)ile birlikte işaretlenmiş ise, aşağıdaki satırı projenizdeki ApplicationInsights.xml dosyasına ekleyin `<TelemetryInitializers>` :
+Uygulamanız [Java için Application Insights SDK 'sı](./java-get-started.md)ile birlikte işaretlenmiş ise, aşağıdaki satırı projenizdeki ApplicationInsights.xml dosyasına ekleyin `<TelemetryInitializers>` :
 
 ```xml
 
@@ -73,7 +73,7 @@ Docker kutucuğuna tıklayın.
 ### <a name="docker-container-events"></a>Docker kapsayıcı olayları
 ![örnek](./media/docker/13.png)
 
-Ayrı olayları araştırmak için [Ara](../../azure-monitor/app/diagnostic-search.md)' ya tıklayın. İstediğiniz olayları bulmak için arama yapın ve filtre uygulayın. Daha ayrıntılı bilgi almak için herhangi bir olaya tıklayın.
+Ayrı olayları araştırmak için [Ara](./diagnostic-search.md)' ya tıklayın. İstediğiniz olayları bulmak için arama yapın ve filtre uygulayın. Daha ayrıntılı bilgi almak için herhangi bir olaya tıklayın.
 
 ### <a name="exceptions-by-container-name"></a>Kapsayıcı adına göre özel durumlar
 ![örnek](./media/docker/14.png)
@@ -90,7 +90,7 @@ AI SDK ile işaretlenmiş uygulamadan gönderilen istek telemetrisi, Docker bağ
 
 *Nasıl yaparım? uygulamadan telemetri almak mı istiyorsunuz?*
 
-* Application Insights SDK 'sını uygulamaya yükler. Şunları öğrenin: [Java Web Apps](../../azure-monitor/app/java-get-started.md), [Windows Web Apps](../../azure-monitor/app/asp-net.md).
+* Application Insights SDK 'sını uygulamaya yükler. Şunları öğrenin: [Java Web Apps](./java-get-started.md), [Windows Web Apps](./asp-net.md).
 
 ## <a name="video"></a>Video
 
@@ -98,6 +98,7 @@ AI SDK ile işaretlenmiş uygulamadan gönderilen istek telemetrisi, Docker bağ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Java için Application Insights](../../azure-monitor/app/java-get-started.md)
-* [Node.js için Application Insights](../../azure-monitor/app/nodejs.md)
-* [ASP.NET için Application Insights](../../azure-monitor/app/asp-net.md)
+* [Java için Application Insights](./java-get-started.md)
+* [Node.js için Application Insights](./nodejs.md)
+* [ASP.NET için Application Insights](./asp-net.md)
+

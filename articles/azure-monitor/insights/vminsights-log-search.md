@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803978"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325194"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici günlüklerini sorgulama
 
-VM'ler için Azure İzleyici performans ve bağlantı ölçümlerini, bilgisayar ve işlem envanter verilerini ve sistem durumu bilgilerini toplayıp Azure Izleyici 'de Log Analytics çalışma alanına iletir.  Bu veriler Azure Izleyici 'de [sorgu](../../azure-monitor/log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
+VM'ler için Azure İzleyici performans ve bağlantı ölçümlerini, bilgisayar ve işlem envanter verilerini ve sistem durumu bilgilerini toplayıp Azure Izleyici 'de Log Analytics çalışma alanına iletir.  Bu veriler Azure Izleyici 'de [sorgu](../log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
 
 ## <a name="map-records"></a>Kayıtları eşleme
 
@@ -159,14 +159,14 @@ Bir *Vmcomputer* türü olan kayıtlar, bağımlılık aracısına sahip sunucul
 | Özellik | Açıklama |
 |:--|:--|
 |TenantId | Çalışma alanı için benzersiz tanımlayıcı |
-|SourceSystem | *Insights* | 
+|SourceSystem | *İçgörüler* | 
 |TimeGenerated | Kaydın zaman damgası (UTC) |
 |Bilgisayar | Bilgisayar FQDN 'SI | 
 |AgentId | Log Analytics aracısının benzersiz KIMLIĞI |
 |Makine | ServiceMap tarafından sunulan makinenin Azure Resource Manager kaynağının adı. Bu, *Guid* ,, It TID Ile aynı GUID olan *z-{GUID}* biçimindedir. | 
 |DisplayName | Görünen ad | 
 |FullDisplayName | Tam ekran adı | 
-|Ana bilgisayar adı | Etki alanı adı olmayan makinenin adı |
+|HostName | Etki alanı adı olmayan makinenin adı |
 |BootTime | Makinenin önyükleme saati (UTC) |
 |TimeZone | Normalleştirilmiş Saat dilimi |
 |VirtualizationState | *sanal*, *hiper yönetici*, *fiziksel* |
@@ -221,7 +221,7 @@ Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunu
 | Özellik | Açıklama |
 |:--|:--|
 |TenantId | Çalışma alanı için benzersiz tanımlayıcı |
-|SourceSystem | *Insights* | 
+|SourceSystem | *İçgörüler* | 
 |TimeGenerated | Kaydın zaman damgası (UTC) |
 |Bilgisayar | Bilgisayar FQDN 'SI | 
 |AgentId | Log Analytics aracısının benzersiz KIMLIĞI |
@@ -437,12 +437,12 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 | Özellik | Açıklama |
 |:--|:--|
 |TenantId | Çalışma alanı için benzersiz tanımlayıcı |
-|SourceSystem | *Insights* | 
+|SourceSystem | *İçgörüler* | 
 |TimeGenerated | Değerin toplandığı saat (UTC) |
 |Bilgisayar | Bilgisayar FQDN 'SI | 
 |Kaynak | *vm.azm.ms* |
 |Ad Alanı | Performans sayacının kategorisi | 
-|Name | Performans sayacının adı |
+|Ad | Performans sayacının adı |
 |Acil | Toplanan değer | 
 |Etiketler | Kayıtla ilgili ayrıntılar. Farklı kayıt türleriyle kullanılan etiketler için aşağıdaki tabloya bakın.  |
 |AgentId | Her bilgisayar aracısının benzersiz tanımlayıcısı |
@@ -451,7 +451,7 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 
 Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan performans sayaçları listelenmiştir:
 
-| Ad Alanı | Name | Açıklama | Birim | Etiketler |
+| Ad Alanı | Ad | Açıklama | Birim | Etiketler |
 |:---|:---|:---|:---|:---|
 | Bilgisayar    | Sinyal             | Bilgisayar sinyali                        | | |
 | Bellek      | AvailableMB           | Kullanılabilir bellek baytları                    | TI      | memorySizeMB-toplam bellek boyutu|
@@ -473,6 +473,7 @@ Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan per
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Izleyici 'de günlük sorguları yazmaya yeni çalışıyorsanız, günlük sorgularını yazmak için Azure portal [Log Analytics nasıl kullanacağınızı](../../azure-monitor/log-query/get-started-portal.md) inceleyin.
+* Azure Izleyici 'de günlük sorguları yazmaya yeni çalışıyorsanız, günlük sorgularını yazmak için Azure portal [Log Analytics nasıl kullanacağınızı](../log-query/get-started-portal.md) inceleyin.
 
-* [Arama sorguları yazma](../../azure-monitor/log-query/search-queries.md)hakkında bilgi edinin.
+* [Arama sorguları yazma](../log-query/search-queries.md)hakkında bilgi edinin.
+

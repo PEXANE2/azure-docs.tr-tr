@@ -7,12 +7,12 @@ ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 35d56c5318046a0f9ffc52f61fac886c473cf0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eec4a46596b9cd39a43b6bb1f8969d41e99916b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024376"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322559"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
@@ -474,13 +474,14 @@ Sorguları ve günlükleri kullanma hakkında daha ayrıntılı bilgi için bkz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Gelen istekleri izleme](./../../azure-monitor/app/opencensus-python-dependency.md)
-* [Devam eden istekleri izleme](./../../azure-monitor/app/opencensus-python-request.md)
-* [Uygulama eşlemesi](./../../azure-monitor/app/app-map.md)
-* [Uçtan uca performans izleme](./../../azure-monitor/learn/tutorial-performance.md)
+* [Gelen istekleri izleme](./opencensus-python-dependency.md)
+* [Devam eden istekleri izleme](./opencensus-python-request.md)
+* [Uygulama eşlemesi](./app-map.md)
+* [Uçtan uca performans izleme](../learn/tutorial-performance.md)
 
 ### <a name="alerts"></a>Uyarılar
 
-* [Kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md): Sitenizin web’de görünür olduğundan emin olmaya yönelik testler oluşturun.
-* [Akıllı tanılama](../../azure-monitor/app/proactive-diagnostics.md): Bu testler otomatik olarak çalıştığından, bunları ayarlamak için herhangi bir şey yapmanız gerekmez. Uygulamanızda olağan dışı oranda başarısız istek olup olmadığını bildirirler.
-* [Ölçüm uyarıları](../../azure-monitor/platform/alerts-log.md): bir ölçüm bir eşiği kesiştyolursa sizi uyarmak için Uyarılar ayarlayın. Bunları, uygulamanıza kodladığınız özel ölçümlerde ayarlayabilirsiniz.
+* [Kullanılabilirlik testleri](./monitor-web-app-availability.md): Sitenizin web’de görünür olduğundan emin olmaya yönelik testler oluşturun.
+* [Akıllı tanılama](./proactive-diagnostics.md): Bu testler otomatik olarak çalıştığından, bunları ayarlamak için herhangi bir şey yapmanız gerekmez. Uygulamanızda olağan dışı oranda başarısız istek olup olmadığını bildirirler.
+* [Ölçüm uyarıları](../platform/alerts-log.md): bir ölçüm bir eşiği kesiştyolursa sizi uyarmak için Uyarılar ayarlayın. Bunları, uygulamanıza kodladığınız özel ölçümlerde ayarlayabilirsiniz.
+

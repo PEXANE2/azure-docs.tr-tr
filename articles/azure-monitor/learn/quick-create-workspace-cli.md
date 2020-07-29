@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d7c3613a0ddce217e9d07c3fc2eba55b78c53a1b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7421162ed68a879d9f935a3efd5c6267e159a648
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516575"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324310"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLı 2,0 ile Log Analytics çalışma alanı oluşturma
 
@@ -24,8 +24,8 @@ Azure CLI 2.0, komut satırından veya betik içindeki Azure kaynaklarını olu�
 
 Ortamınızdaki Azure VM 'Leri ve Windows veya Linux VM 'Leri gibi diğer kaynaklar için aşağıdaki konulara bakın:
 
-* [Azure sanal makinelerinden veri toplama](../learn/quick-collect-azurevm.md)
-* [Karma Linux bilgisayarından veri topla](../learn/quick-collect-linux-computer.md)
+* [Azure sanal makinelerinden veri toplama](./quick-collect-azurevm.md)
+* [Karma Linux bilgisayarından veri topla](./quick-collect-linux-computer.md)
 * [Karma Windows bilgisayarından veri topla](quick-collect-windows-computer.md)
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -133,3 +133,4 @@ Artık kullanılabilir bir çalışma alanınız olduğuna göre, izleme telemet
 * Operations Manager yönetim grubunuzu raporlayan aracılardan veri toplamak ve Log Analytics çalışma alanınızda depolamak için [veri kaynağı olarak System Center Operations Manager](../platform/om-agents.md) ekleyin.  
 * Hiyerarşideki koleksiyonların üyesi olan bilgisayarları içeri aktarmak için [Configuration Manager](../platform/collect-sccm.md) bağlanın.  
 * Kullanılabilir [izleme çözümlerini](../insights/solutions.md) ve çalışma alanınızdan bir çözümün nasıl ekleneceğini ve kaldırılacağını gözden geçirin.
+

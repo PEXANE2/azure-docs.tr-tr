@@ -4,16 +4,16 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327149"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
-Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine çalışır. Bu ölçümler, [Platform ölçümleri](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [özel ölçümler](../../azure-monitor/platform/metrics-custom-overview.md), [Azure izleyici 'deki popüler Günlükler ölçüm](../../azure-monitor/platform/alerts-metric-logs.md) ve Application Insights ölçümlerine dönüştürülebilir. Ölçüm uyarıları, bir veya daha fazla ölçüm zaman serisinde koşulların doğru olup olmadığını denetlemek için düzenli aralıklarla değerlendirilir ve değerlendirmelere uyulduğunda bildirim alın. Ölçüm uyarıları durum bilgisi olur, diğer bir deyişle, yalnızca durum değiştiğinde bildirimleri gönderir.
+Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine çalışır. Bu ölçümler, [Platform ölçümleri](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [özel ölçümler](./metrics-custom-overview.md), [Azure izleyici 'deki popüler Günlükler ölçüm](./alerts-metric-logs.md) ve Application Insights ölçümlerine dönüştürülebilir. Ölçüm uyarıları, bir veya daha fazla ölçüm zaman serisinde koşulların doğru olup olmadığını denetlemek için düzenli aralıklarla değerlendirilir ve değerlendirmelere uyulduğunda bildirim alın. Ölçüm uyarıları durum bilgisi olur, diğer bir deyişle, yalnızca durum değiştiğinde bildirimleri gönderir.
 
 ## <a name="how-do-metric-alerts-work"></a>Ölçüm uyarıları nasıl çalışır?
 
@@ -135,12 +135,12 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler için platform ölçümleri (özel ölçümler değil) için desteklenir:
 
-| Hizmet | Genel Azure | Kamu | Çin |
+| Hizmet | Genel Azure | Devlet | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler  | **Evet** | Hayır | Hayır |
-| SQL Server veritabanları | **Evet** | **Evet** | No |
-| SQL Server elastik havuzlar | **Evet** | **Evet** | No |
-| Veri kutusu uç cihazları | **Evet** | **Evet** | No |
+| SQL Server veritabanları | **Evet** | **Evet** | Hayır |
+| SQL Server elastik havuzlar | **Evet** | **Evet** | Hayır |
+| Veri kutusu uç cihazları | **Evet** | **Evet** | Hayır |
 
 Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde belirtebilirsiniz. Örneğin, sanal makineler ile kapsamı şu şekilde belirtebilirsiniz:  
 
@@ -152,7 +152,7 @@ Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde b
 >
 > Birden çok kaynak ölçümü uyarı kuralının kapsamı, seçili kaynak türünde en az bir kaynak içermelidir.
 
-Birden çok kaynağı izleyen ölçüm uyarısı kuralları oluşturmak, tek bir kaynağı izleyen [başka bir ölçüm uyarısı oluşturmak](alerts-metric.md) gibidir. Yalnızca fark, izlemek istediğiniz tüm kaynakları seçecekti. Ayrıca, bu kuralları [Azure Resource Manager şablonları](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)aracılığıyla da oluşturabilirsiniz. İzlenen her kaynak için bireysel bildirimler alacaksınız.
+Birden çok kaynağı izleyen ölçüm uyarısı kuralları oluşturmak, tek bir kaynağı izleyen [başka bir ölçüm uyarısı oluşturmak](alerts-metric.md) gibidir. Yalnızca fark, izlemek istediğiniz tüm kaynakları seçecekti. Ayrıca, bu kuralları [Azure Resource Manager şablonları](./alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)aracılığıyla da oluşturabilirsiniz. İzlenen her kaynak için bireysel bildirimler alacaksınız.
 
 > [!NOTE]
 >
@@ -164,12 +164,13 @@ Birden çok kaynağı izleyen ölçüm uyarısı kuralları oluşturmak, tek bir
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Ölçüm uyarıları için desteklenen kaynak türleri
 
-Desteklenen kaynak türlerinin tam listesini bu [makalede](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)bulabilirsiniz.
+Desteklenen kaynak türlerinin tam listesini bu [makalede](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)bulabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'da ölçüm uyarılarını oluşturma, görüntüleme ve yönetme hakkında bilgi edinin](alerts-metric.md)
-- [Azure Resource Manager şablonlarını kullanarak ölçüm uyarılarını dağıtmayı öğrenin](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Azure Resource Manager şablonlarını kullanarak ölçüm uyarılarını dağıtmayı öğrenin](./alerts-metric-create-templates.md)
 - [Eylem grupları hakkında daha fazla bilgi edinin](action-groups.md)
 - [Dinamik eşikler durum türü hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md)
+

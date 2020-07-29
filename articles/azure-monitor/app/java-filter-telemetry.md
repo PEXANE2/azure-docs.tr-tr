@@ -3,11 +3,12 @@ title: Java Web uygulamanızda Azure Application Insights telemetrisini filtrele
 description: İzlemeniz gerekmeyen olayları filtreleyerek telemetri trafiğini azaltın.
 ms.topic: conceptual
 ms.date: 3/14/2019
-ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd53a0e02eb43bdf7cde4952ed4835c6d1cdd126
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659926"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322593"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web uygulamanızda telemetri filtreleme
 
@@ -22,7 +23,7 @@ Kullanıma hazır filtreler şunları içerir:
 
 > [!NOTE]
 > Filtreler uygulamanızın ölçümlerini eğriltin. Örneğin, yavaş yanıtları tanılamak için hızlı yanıt sürelerini atmak üzere bir filtre ayarlayacağınıza karar verebilirsiniz. Ancak, Application Insights tarafından raporlanan ortalama yanıt sürelerinin gerçek hızından daha yavaş olacağını ve istek sayısının gerçek sayıdan küçük olacağını bilmeniz gerekir.
-> Bu sorun olursa bunun yerine [örnekleme](../../azure-monitor/app/sampling.md) kullanın.
+> Bu sorun olursa bunun yerine [örnekleme](./sampling.md) kullanın.
 
 ## <a name="setting-filters"></a>Filtre ayarlama
 
@@ -151,7 +152,7 @@ Belirli yapay kaynaklar için telemetri filtreleme:
 
 ### <a name="telemetry-event-filter"></a>Telemetri olay filtresi
 
-Özel olayları filtreler ( [Trackevent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)kullanılarak günlüğe kaydedilir).
+Özel olayları filtreler ( [Trackevent ()](./api-custom-events-metrics.md#trackevent)kullanılarak günlüğe kaydedilir).
 
 
 ```XML
@@ -167,7 +168,7 @@ Belirli yapay kaynaklar için telemetri filtreleme:
 
 ### <a name="trace-telemetry-filter"></a>Telemetri filtresini izleme
 
-Günlük izlemelerini filtreler ( [Tracktrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) veya bir [günlük çerçevesi toplayıcısı](java-trace-logs.md)kullanılarak günlüğe kaydedilir).
+Günlük izlemelerini filtreler ( [Tracktrace ()](./api-custom-events-metrics.md#tracktrace) veya bir [günlük çerçevesi toplayıcısı](java-trace-logs.md)kullanılarak günlüğe kaydedilir).
 
 ```XML
 
@@ -267,4 +268,5 @@ public TelemetryProcessor successFilter() {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Örnekleme](../../azure-monitor/app/sampling.md) -örneklerinizi eğmez bir alternatif olarak örnekleme yapmayı düşünün.
+* [Örnekleme](./sampling.md) -örneklerinizi eğmez bir alternatif olarak örnekleme yapmayı düşünün.
+

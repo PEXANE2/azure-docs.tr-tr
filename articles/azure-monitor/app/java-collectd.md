@@ -3,21 +3,22 @@ title: Linux 'ta Java Web uygulaması performansını izleme-Azure | Microsoft D
 description: Application Insights için CollectD eklentisi ile Java Web sitenizin genişletilmiş uygulama performansı izlemesi.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322610"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Application Insights Linux performans ölçümleri
 
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md)'deki Linux sistem performans ölçümlerini araştırmak için, Application Insights eklentisiyle [toplanan](https://collectd.org/)'yi birlikte yüklemelisiniz. Bu açık kaynaklı çözüm çeşitli sistem ve ağ istatistiklerini toplar.
+[Application Insights](./app-insights-overview.md)'deki Linux sistem performans ölçümlerini araştırmak için, Application Insights eklentisiyle [toplanan](https://collectd.org/)'yi birlikte yüklemelisiniz. Bu açık kaynaklı çözüm çeşitli sistem ve ağ istatistiklerini toplar.
 
 Genellikle, [Java Web hizmetinizi Application Insights][java]zaten belirlediyseniz toplanan kullanırsınız. Uygulamanızın performansını geliştirmenize veya sorunları tanılamanıza yardımcı olacak daha fazla veri sunar. 
 
 ## <a name="get-your-instrumentation-key"></a>İzleme anahtarınızı alın
-[Microsoft Azure Portal](https://portal.azure.com), verilerin görünmesini istediğiniz [Application Insights](../../azure-monitor/app/app-insights-overview.md) kaynağını açın. (Veya [Yeni bir kaynak oluşturun](../../azure-monitor/app/create-new-resource.md ).)
+[Microsoft Azure Portal](https://portal.azure.com), verilerin görünmesini istediğiniz [Application Insights](./app-insights-overview.md) kaynağını açın. (Veya [Yeni bir kaynak oluşturun](./create-new-resource.md).)
 
 Kaynak tanımlayan izleme anahtarının bir kopyasını alın.
 
@@ -93,7 +94,7 @@ Belirli eklentilerden veya veri kaynaklarından veri dışlamak için:
 * Yapılandırma dosyasını düzenleyin. 
 * İçinde `<Plugin ApplicationInsightsWriter>` , aşağıdaki gibi yönerge satırları ekleyin:
 
-| Deki | Efekt |
+| Deki | Etki |
 | --- | --- |
 | `Exclude disk` |Eklenti tarafından toplanan tüm verileri Dışla `disk` |
 | `Exclude disk:read,write` |Ve adlı kaynakları eklentiden hariç tutun `read` `write` `disk` . |
@@ -104,7 +105,7 @@ Yönergeleri bir yeni satır ile ayırın.
 *Portalda veri görmüyorum*
 
 * Ham olayların ulaşıp ulaşmadığını görmek için [arama][diagnostic] ' yı açın. Bazen Ölçüm Gezgini 'nde görünmesi daha uzun sürer.
-* [Giden veriler için güvenlik duvarı özel durumları ayarlamanız](../../azure-monitor/app/ip-addresses.md) gerekebilir
+* [Giden veriler için güvenlik duvarı özel durumları ayarlamanız](./ip-addresses.md) gerekebilir
 * Application Insights eklentisinde izlemeyi etkinleştirin. Bu satırı içine ekleyin `<Plugin ApplicationInsightsWriter>` :
   * `SDKLogger true`
 * Raporlama yaptığı sorunları görmek için bir Terminal açın ve toplanan 'yi ayrıntılı modda başlatın:
@@ -120,13 +121,12 @@ Geçici çözüm: sorun yazma eklentileri tarafından toplanan verileri dışlay
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-
+[metrics]: ../platform/metrics-charts.md
 

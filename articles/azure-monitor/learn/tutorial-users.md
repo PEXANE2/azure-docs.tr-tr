@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: ae4a7335394f0e2f0bd0e3ac47c36b1f61026428
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079596"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318411"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Müşterilerin uygulamanızı nasıl kullandığını anlamak için Azure Application Insights’ı kullanın
 
@@ -36,8 +36,8 @@ Bu öğreticiyi tamamlamak için:
     - ASP.NET ve web geliştirme
     - Azure geliştirme
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)’ı indirin ve yükleyin.
-- Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../../azure-monitor/app/asp-net.md). 
-- Özel olaylar/sayfa görüntülemeleri eklemek için [uygulamanızdan telemetri gönderme](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app)
+- Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../app/asp-net.md). 
+- Özel olaylar/sayfa görüntülemeleri eklemek için [uygulamanızdan telemetri gönderme](../app/usage-overview.md#send-telemetry-from-your-app)
 - Kullanıcının zaman içinde gerçekleştirdiği işlevleri izlemek ve kullanım özelliklerinden tam olarak faydalanmak için [kullanıcı bağlamı](../app/usage-send-user-context.md) gönderin.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
@@ -164,4 +164,5 @@ Bu öğreticiyi tamamlamak için:
 Kullanıcılarınızı analiz etmeyi öğrendiğinize göre bir sonraki öğreticiye geçerek bu bilgileri uygulamanızla ilgili diğer faydalı bilgilerle birleştirmek için özel panolar oluşturmayı öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Özel panolar oluşturma](../../azure-monitor/learn/tutorial-app-dashboards.md)
+> [Özel panolar oluşturma](./tutorial-app-dashboards.md)
+

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536173"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319278"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi oluşturma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,9 +146,7 @@ Azure kaynaklarınızı ayarlamış ve bir veri etiketleme projesi yapılandırm
 
 1. Projeyi bulmak için [Machine Learning Studio](https://ml.azure.com)'da sol taraftaki **veri etiketleme** ' yi seçin.  
 
-1. Listeden proje adını seçin.
-
-1. Proje adının altında **etiket verileri**' ni seçin.
+1. Proje için **etiket bağlantısı** ' nı seçin.
 
 1. Yönergeleri okuyun ve **Görevler**' i seçin.
 

@@ -10,12 +10,13 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: d6278452eda0a6a043654d90519374a741caf76a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
+ms.openlocfilehash: f8f9d76e5f1584ce54897950d7e35e2b22ba958e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027980"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319788"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Hızlı başlangıç: Azure Metin Analizi bilişsel hizmetini çağırmak için Java kullanma
 <a name="HOLTop"></a>
@@ -24,7 +25,7 @@ Bu makalede, Java ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?Link
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 

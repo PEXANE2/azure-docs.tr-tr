@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134441"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289301"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure bölgeleri arasında Azure VM geri dönme
 
@@ -58,7 +58,7 @@ VM 'Ler yeniden korunduktan sonra, gerekirse birincil bölgeye yeniden yük devr
     ![Birincil ve ikincil bölgelerde VM](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Site Recovery uzantısı sürümü 9.28. x. x onler [güncelleştirme paketi 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery çalıştıran makinelerde, yeniden çalışma tamamlandıktan ve VM 'ler yeniden korunduktan sonra ikincil olağanüstü durum kurtarma bölgesindeki makineleri temizler. İkincil bölgedeki VM 'Leri ve NIC 'leri el ile silmeniz gerekmez. Çoğaltmayı geri aldıktan sonra tamamen devre dışı bırakırsanız, Site Recovery VM 'Ler ve NIC 'Lerin yanı sıra olağanüstü durum kurtarma bölgesindeki diskleri temizler.
+> Yönetilen diskleri kullanan makinelerde ve Site Recovery uzantısı sürümü 9.28. x. x onler [güncelleştirme paketi 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery, yeniden çalışma tamamlandıktan ve VM 'ler yeniden korunduktan sonra ikincil olağanüstü durum kurtarma bölgesindeki makineleri temizler. İkincil bölgedeki VM 'Leri ve NIC 'leri el ile silmeniz gerekmez. Yönetilmeyen disklere sahip VM 'Lerin temizlenmediğini lütfen unutmayın. Çoğaltmayı geri aldıktan sonra tamamen devre dışı bırakırsanız, Site Recovery VM 'Ler ve NIC 'Lerin yanı sıra olağanüstü durum kurtarma bölgesindeki diskleri temizler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

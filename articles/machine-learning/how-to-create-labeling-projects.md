@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: 277e478ca1cbb63200bdea14b1c02ea016af78ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 1ba293890f6a6fd165e03486d7da375f2ac53ab1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031210"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326474"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -21,11 +21,11 @@ ms.locfileid: "87031210"
 
 Machine Learning projelerinde Voluminous verilerinin etiketlenmesi genellikle bir headache 'dir. Görüntü sınıflandırması veya nesne algılama gibi bir bilgisayar vizyonu bileşeni olan projeler genellikle binlerce görüntü için Etiketler gerektirir.
  
-[Azure Machine Learning](https://ml.azure.com/) , etiketleme projelerini (Genel Önizleme) oluşturmak, yönetmek ve izlemek için size merkezi bir yer sunar. Etiketleme görevlerini verimli bir şekilde yönetmek için verileri, etiketleri ve ekip üyelerini koordine etmek üzere kullanın. Machine Learning, çok etiketli veya çok sınıflı, sınırlı kutular ile nesne tanımlama gibi görüntü sınıflandırmasını destekler.
+[Azure Machine Learning](https://ml.azure.com/) veri etiketleme, etiketleme projelerini oluşturmak, yönetmek ve izlemek için size merkezi bir yer sunar. Etiketleme görevlerini verimli bir şekilde yönetmek için verileri, etiketleri ve ekip üyelerini koordine etmek üzere kullanın. Machine Learning, çok etiketli veya çok sınıflı, sınırlı kutular ile nesne tanımlama gibi görüntü sınıflandırmasını destekler.
 
-Azure Machine Learning ilerleme durumunu izler ve tamamlanmamış etiketleme görevlerinin kuyruğunu korur.
+Veri etiketleme ilerlemeyi izler ve tamamlanmamış etiketleme görevlerinin kuyruğunu korur.
 
-Projeyi başlatıp durdurabilir ve etiketleme ilerlemesini izleyebilirsiniz. Etiketli verileri COCO formatında veya Azure Machine Learning veri kümesi olarak dışarı aktarabilirsiniz.
+Projeyi başlatıp durdurabilir ve etiketleme ilerlemesini denetleyebilirsiniz. Etiketli verileri gözden geçirebilir ve COCO biçiminde etiketlenmiş veya bir Azure Machine Learning veri kümesi olarak dışarı aktarabilirsiniz.
 
 > [!Important]
 > Şu anda yalnızca görüntü sınıflandırması ve nesne kimliği etiketleme projeleri desteklenir. Ayrıca, veri görüntülerinin bir Azure blob veri deposunda bulunması gerekir. (Mevcut bir veri deposu yoksa, proje oluşturma sırasında görüntüleri karşıya yükleyebilirsiniz.)
@@ -57,9 +57,9 @@ Proje oluşturmak için **Proje Ekle**' yi seçin. Projeye uygun bir ad verin ve
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Proje oluşturma Sihirbazı etiketleme":::
 
-* Bir sınıf kümesinden bir görüntüye yalnızca *tek bir sınıf* uygulamak istediğinizde, projeler Için **görüntü sınıflandırması çoklu sınıfı** ' nı seçin.
-* Bir sınıf kümesinden bir görüntüye bir *veya daha fazla* etiket uygulamak istediğinizde, projeler Için **görüntü sınıflandırması çoklu etiketi** ' ni seçin. Örneğin, bir köpek fotoğrafı hem *köpek* hem de *Daytime*ile etiketlenebilir.
-* Bir görüntü içindeki her nesneye bir sınıf ve sınırlayıcı kutu atamak istediğinizde projeler için **nesne tanımlama (sınırlayıcı kutu)** seçeneğini belirleyin.
+* Bir etiket kümesinden bir resme yalnızca *tek bir etiket* uygulamak istediğinizde, projeler Için **görüntü sınıflandırması çoklu sınıfı** ' nı seçin.
+* Bir etiket kümesinden bir resme bir *veya daha fazla* etiket uygulamak istediğinizde, projeler Için **görüntü sınıflandırması çoklu etiketi** ' ni seçin. Örneğin, bir köpek fotoğrafı hem *köpek* hem de *Daytime*ile etiketlenebilir.
+* Bir resim içindeki her nesneye bir etiket ve bir sınırlayıcı kutu atamak istediğinizde, projeler için **nesne tanımlama (sınırlama kutusu)** seçeneğini belirleyin.
 
 Devam etmeye hazırsanız **İleri ' yi** seçin.
 
@@ -155,14 +155,14 @@ Sınırlayıcı kutular için, önemli sorular şunlardır:
 **Ml yardımlı etiketleme** sayfası etiketleme görevini hızlandırmak için otomatik makine öğrenimi modellerini tetiklemenizi sağlar. Etiketleme projenizin başlangıcında, görüntüler potansiyel bir farkı azaltmak için rastgele bir sıraya bölünür. Ancak, veri kümesinde bulunan herhangi bir sapmaları eğitilen modele yansıtılır. Örneğin, görüntülerinizin %80 ' u tek bir sınıfta ise, modeli eğitmek için kullanılan verilerin yaklaşık %80 ' i o sınıfa ait olacaktır. Bu eğitim, etkin öğrenimi içermez.
 
 *Ml yardımlı etiketlemeyi etkinleştir* ' i seçin ve iki aşamadan oluşan yardımlı etiketlemeyi etkinleştirmek IÇIN bir GPU belirtin:
-* Kümeleniyor
+* Kümeleme
 * Önceden etiketleme
 
 Yardımlı etiketleme başlatmak için gereken etiketli görüntülerin tam sayısı sabit bir sayı değil.  Bu, bir etiketleme projesinden diğerine önemli ölçüde farklılık gösterebilir. Bazı projelerde, 300 görüntü el ile etiketlendikten sonra önceden etiket veya küme görevlerini görmek bazen mümkündür. ML yardımlı etiketleme, eğitim işlemini başlatmak için önceden eğitilen bir model kullanan *Aktarım öğrenimi*adlı bir teknik kullanır. Veri kümenizin sınıfları, önceden eğitilen modelindekilerle benzerdir ise, ön Etiketler yalnızca birkaç yüz el ile etiketlenmiş görüntüler ile kullanılabilir. Veri kümeniz, modeli önceden eğitmek için kullanılan verilerden önemli ölçüde farklıysa, çok daha uzun sürebilir.
 
 Son Etiketler etiketleyici 'den girişe hala dayandığından, bu teknoloji bazen *döngü* etiketlenmesi olarak adlandırılır.
 
-### <a name="clustering"></a>Kümeleniyor
+### <a name="clustering"></a>Kümeleme
 
 Belirli sayıda etiket gönderildikten sonra, görüntü sınıflandırması için makine öğrenimi modeli benzer görüntüleri birlikte gruplamak için başlar.  Bu benzer görüntüler, el ile etiketlemesini hızlandırmak için aynı ekranda Etiketleyiciler tarafından sunulur. Kümeleme, özellikle etiketleyici 4, 6 veya 9 ' un bir kılavuzunu görüntülerken yararlıdır. 
 
@@ -187,14 +187,54 @@ Etiketleme projesi başlatıldıktan sonra, projenin bazı yönleri sabittir. G�
 > Bu sayfa otomatik olarak Yenilemeyebilir. Bu nedenle, bir duraklama sonrasında, projenin durumunu **oluşturulduğu**şekilde görmek için sayfayı el ile yenileyin.
 
 ## <a name="run-and-monitor-the-project"></a>Projeyi çalıştırma ve izleme
+Projeyi başlattıktan sonra Azure bu uygulamayı çalıştırmaya başlayacaktır. Projenin ayrıntılarını görmek için ana **veri etiketleme** sayfasında projeyi seçin
 
-Projeyi başlattıktan sonra Azure bu uygulamayı çalıştırmaya başlayacaktır. **Proje ayrıntılarına**gitmek Için ana **veri etiketleme** sayfasında projeyi seçin. **Pano** sekmesi etiketleme görevinin ilerlemesini gösterir.
+Projeyi duraklatmak veya yeniden başlatmak için sağ üst köşedeki **çalışma** durumunu değiştirin. Yalnızca proje çalışırken verileri etiketleyebilir.
+
+### <a name="dashboard"></a>Pano
+
+**Pano** sekmesi etiketleme görevinin ilerlemesini gösterir.
+
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Veri etiketleme panosu":::
+
+İlerleme grafiği kaç öğe etiketlendiği ve ne kadar çok işlem yapılmadığından gösterir.  Bekleyen öğeler şu olabilir:
+
+* Henüz bir göreve eklenmemiş
+* Etiketleyici 'ye atanan ancak henüz tamamlanmamış bir göreve dahil edildi 
+* Henüz atanmayan görev kuyruğunda
+
+Orta bölümde, henüz atanmak üzere görevlerin kuyruğu gösterilmektedir. ML yardımlı etiketleme devre dışı bırakıldığında, bu bölümde atanacak el ile görevlerin sayısı gösterilmektedir. ML yardımlı etiketleme açık olduğunda, bu da şu şekilde görünür:
+
+* Kuyruktaki kümelenmiş öğeleri içeren görevler
+* Kuyruktaki önceden etiketlenmiş öğeleri içeren görevler
+
+Buna ek olarak, ML yardımlı etiketleme etkinleştirildiğinde, bir sonraki eğitimin ne zaman gerçekleşeceğini gösteren küçük bir ilerleme çubuğu görüntülenir.  Denemeleri bölümleri, makine öğrenimi çalıştırmaları her biri için bağlantılar sağlar.
+
+* Eğitim-etiketleri tahmin etmek için bir model yapın
+* Doğrulama-bu modelin tahmini öğelerin önceden etiketlenmesi için kullanılıp kullanılmayacağını belirler 
+* Yeni öğeler için çıkarım tahmini çalıştırması
+* Korlaleştirme-kümeler öğeleri (yalnızca görüntü sınıflandırma projeleri için)
+
+Sağ tarafta, tamamlanmış görevlere ait etiketlerin bir dağılımı vardır.  Bazı proje türlerinde bir öğe birden çok etikete sahip olabileceğini unutmayın. Bu durumda, toplam etiket sayısı toplam sayı öğelerinden daha büyük olabilir.
+
+### <a name="data-tab"></a>Veri sekmesi
 
 **Veri** sekmesinde, veri kümenizi görebilir ve etiketli verileri gözden geçirebilirsiniz. Hatalı etiketlenmiş verileri görürseniz, bunu seçin ve **Reddet**' i seçin. Bu, etiketleri kaldırır ve verileri etiketsiz kuyruğa geri koyar.
 
-Projeyi duraklatmak veya yeniden başlatmak için **Duraklat** / **Başlat** düğmesini seçin. Yalnızca proje çalışırken verileri etiketleyebilir.
+### <a name="details-tab"></a>Ayrıntılar sekmesi
 
-**Etiket verileri**' ni seçerek doğrudan **proje ayrıntıları** sayfasından verileri etiketleyebilir.
+Projenizin ayrıntılarını görüntüleyin.  Bu sekmede şunları yapabilirsiniz:
+
+* Proje ayrıntılarını ve giriş veri kümelerini görüntüleme
+* Artımlı yenilemeyi etkinleştir
+* Projenizde etiketlenmiş çıkışları depolamak için kullanılan depolama kapsayıcısının ayrıntılarını görüntüleme
+* Projenize Etiketler ekleyin
+* Etiketlerinize verdiğiniz yönergeleri düzenleyin
+* Enable/Disable dahil olmak üzere ML yardımlı etiketlemenin ayrıntılarını düzenleme
+
+### <a name="access-for-labelers"></a>Etiketleyiciler için erişim
+
+Çalışma alanınıza erişimi olan herkes projenizdeki verileri etiketleyebilir.  Etiketleyiclarınız için izinleri özelleştirerek çalışma alanının diğer bölümlerine veya etiketleme projenize erişemez.  Daha fazla ayrıntı için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md)ve [Labeler özel rolünü](how-to-assign-roles.md#labeler)oluşturmayı öğrenme.
 
 ## <a name="add-new-label-class-to-a-project"></a>Projeye yeni Label sınıfı ekleme
 
@@ -203,7 +243,7 @@ Etiketleme işlemi sırasında, görüntülerinizi sınıflandırmak için ek et
 Bir projeye bir veya daha fazla etiket eklemek için bu adımları kullanın:
 
 1. Ana **veri etiketleme** sayfasında projeyi seçin.
-1. Sayfanın en üstünde bulunan etiketleyicilerinin etkinliğini durdurmak için **Duraklat** ' ı seçin.
+1. Sayfanın sağ üst köşesinde, etiketleyicilerinin etkinliklerinden durdurulması için **çalışmayı** **duraklatıldı** olarak değiştirin.
 1. **Ayrıntılar** sekmesini seçin.
 1. Sol taraftaki listede **etiket sınıfları**' nı seçin.
 1. Listenin üst kısmında **+** etiket ekle ![ etiket ekle ' yi seçin](media/how-to-create-labeling-projects/add-label.png)
@@ -212,7 +252,7 @@ Bir projeye bir veya daha fazla etiket eklemek için bu adımları kullanın:
     * Tüm mevcut etiketleri koruyarak, baştan başlayın.  Tüm verileri etiketsiz olarak işaretlemek için bu seçeneği belirleyin, ancak önceden etiketlenmiş görüntüler için mevcut etiketleri varsayılan etiket olarak tutun.
     * Tüm mevcut etiketleri koruyarak devam edin. Tüm verilerin zaten olduğu şekilde etiketlendiği ve henüz etiketsiz veriler için yeni etiketi kullanmaya başlamış olan bu seçeneği belirleyin.
 1. Yönergeler sayfanızı yeni etiketler için gereken şekilde değiştirin.
-1. Tüm yeni etiketleri ekledikten sonra, sayfanın üst kısmında, projeyi yeniden başlatmak için **Başlat** ' ı seçin.  
+1. Tüm yeni etiketleri ekledikten sonra, sayfanın sağ üst köşesinde, projeyi yeniden **başlatmak Için** **duraklatıldıktan sonra duraklatıldı** .  
 
 ## <a name="export-the-labels"></a>Etiketleri dışarı aktarma
 

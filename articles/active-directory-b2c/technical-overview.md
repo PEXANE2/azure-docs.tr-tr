@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08c7a5b977534e6c2852f8095ce14c44bda71bf1
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331544"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281931"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
@@ -75,7 +75,7 @@ Azure AD B2C, kullanıcıların uygulamanızda dış sosyal veya kurumsal kimlik
 
 Dış kimlik sağlayıcısı Federasyonu sayesinde, tüketicilere yalnızca uygulamanız için yeni bir hesap oluşturmak zorunda kalmadan mevcut sosyal veya kurumsal hesaplarıyla oturum açma olanağı sunabilirsiniz.
 
-Kaydolma veya oturum açma sayfasında, kullanıcının oturum açma için seçecan dış kimlik sağlayıcılarının bir listesini Azure AD B2C gösterir. Dış kimlik sağlayıcılarından birini seçtikten sonra, oturum açma işlemini tamamlaması için seçili sağlayıcının web sitesine alınır (yeniden yönlendirilir). Kullanıcı başarıyla oturum açtıktan sonra, uygulamanızdaki hesabın kimlik doğrulaması için Azure AD B2C geri döndürülürsünüz.
+Kaydolma veya oturum açma sayfasında, kullanıcının oturum açma için seçecan dış kimlik sağlayıcılarının bir listesini Azure AD B2C gösterir. Dış kimlik sağlayıcılarından birini seçtikten sonra, oturum açma işlemini tamamlaması için seçili sağlayıcının web sitesine alınır (yeniden yönlendirilir). Kullanıcı başarıyla oturum açtıktan sonra, uygulamanızdaki hesabın kimlik doğrulaması için Azure AD B2C olarak döndürülür.
 
 ![Sosyal hesap (Facebook) ile mobil oturum açma örneği](media/technical-overview/external-idp.png)
 
@@ -164,7 +164,7 @@ Azure AD B2C, kullanıcılarınızın kimlik deneyimlerini, gösterilen sayfalar
 
 UI özelleştirmesi hakkında daha fazla bilgi için, [Azure Active Directory B2C içindeki kullanıcı arabirimi özelleştirmesi hakkında](customize-ui-overview.md)bölümüne bakın.
 
-## <a name="localization"></a>Localization (Yerelleştirme)
+## <a name="localization"></a>Yerelleştirme
 
 Azure AD B2C dil özelleştirmesi, müşteri gereksinimlerinize uyacak farklı dillere sahip etmenize olanak tanır. Microsoft, 36 dil için Çeviriler sağlar, ancak herhangi bir dil için kendi çevirilerinizi de sağlayabilirsiniz. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile, sayfalardaki tüm metinleri özelleştirebilirsiniz.
 
