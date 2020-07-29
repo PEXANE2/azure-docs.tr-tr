@@ -3,12 +3,12 @@ title: Azure Application Insights veri saklama ve depolama | Microsoft Docs
 description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 039e86f964649441967dff82270a3a6c460612f0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540069"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324480"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights veri toplama, bekletme ve depolama
 
@@ -38,24 +38,24 @@ Application Insights SDK 'lar bir dizi uygulama türü için kullanılabilir: ke
 ## <a name="what-data-does-it-collect"></a>Hangi verileri toplar?
 Üç veri kaynağı vardır:
 
-* [Geliştirme](../../azure-monitor/app/asp-net.md) aşamasında veya [çalışma](../../azure-monitor/app/monitor-performance-live-website-now.md)ZAMANıNDA uygulamanızla tümleştirilen SDK. Farklı uygulama türleri için farklı SDK 'lar vardır. Ayrıca, sayfa ile birlikte son kullanıcının tarayıcısına yüklenen [Web sayfaları için bir SDK](../../azure-monitor/app/javascript.md)da vardır.
+* [Geliştirme](./asp-net.md) aşamasında veya [çalışma](./monitor-performance-live-website-now.md)ZAMANıNDA uygulamanızla tümleştirilen SDK. Farklı uygulama türleri için farklı SDK 'lar vardır. Ayrıca, sayfa ile birlikte son kullanıcının tarayıcısına yüklenen [Web sayfaları için bir SDK](./javascript.md)da vardır.
   
-  * Her SDK, farklı telemetri türlerini toplamak için farklı teknikler kullanan birkaç [Modül](../../azure-monitor/app/configuration-with-applicationinsights-config.md)içerir.
+  * Her SDK, farklı telemetri türlerini toplamak için farklı teknikler kullanan birkaç [Modül](./configuration-with-applicationinsights-config.md)içerir.
   * SDK 'Yı geliştirmeye yüklerseniz, standart modüllere ek olarak kendi telemetrinizi göndermek için API 'sini kullanabilirsiniz. Bu özel telemetri, göndermek istediğiniz tüm verileri içerebilir.
-* Bazı Web sunucularında, uygulama ile birlikte çalışan ve CPU, bellek ve ağ doluluk hakkında telemetri gönderen aracılar da vardır. Örneğin, Azure VM 'Leri, Docker konakları ve [Java EE sunucularının](../../azure-monitor/app/java-agent.md) böyle aracıları olabilir.
-* [Kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md) , Microsoft tarafından çalıştırılan ve istekleri düzenli aralıklarla Web uygulamanıza gönderen işlemlerdir. Sonuçlar Application Insights hizmetine gönderilir.
+* Bazı Web sunucularında, uygulama ile birlikte çalışan ve CPU, bellek ve ağ doluluk hakkında telemetri gönderen aracılar da vardır. Örneğin, Azure VM 'Leri, Docker konakları ve [Java EE sunucularının](./java-agent.md) böyle aracıları olabilir.
+* [Kullanılabilirlik testleri](./monitor-web-app-availability.md) , Microsoft tarafından çalıştırılan ve istekleri düzenli aralıklarla Web uygulamanıza gönderen işlemlerdir. Sonuçlar Application Insights hizmetine gönderilir.
 
 ### <a name="what-kinds-of-data-are-collected"></a>Ne tür veriler toplanır?
 Ana Kategoriler şunlardır:
 
-* [Web sunucusu telemetrisi](../../azure-monitor/app/asp-net.md) -http istekleri.  URI, istek, yanıt kodu, istemci IP adresi işlemek için geçen süre. `Session id`.
-* [Web sayfaları](../../azure-monitor/app/javascript.md) -sayfa, Kullanıcı ve oturum sayıları. Sayfa yükleme süreleri. Larý. Ajax çağrıları.
+* [Web sunucusu telemetrisi](./asp-net.md) -http istekleri.  URI, istek, yanıt kodu, istemci IP adresi işlemek için geçen süre. `Session id`.
+* [Web sayfaları](./javascript.md) -sayfa, Kullanıcı ve oturum sayıları. Sayfa yükleme süreleri. Larý. Ajax çağrıları.
 * Performans sayaçları-bellek, CPU, GÇ, ağ doluluk.
 * İstemci ve sunucu bağlamı-işletim sistemi, yerel ayar, cihaz türü, tarayıcı, ekran çözünürlüğü.
-* [Özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) ve kilitlenmeler- **yığın dökümleri**, `build id` , CPU türü. 
-* [Bağımlılıklar](../../azure-monitor/app/asp-net-dependencies.md) -Rest, SQL, AJAX gibi harici hizmetlere yapılan çağrılar. URI veya bağlantı dizesi, süre, başarı, komut.
-* [Kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md) -test ve adımların süresi, yanıtlar.
-* [Trace logs](../../azure-monitor/app/asp-net-trace-logs.md) [custom telemetry](../../azure-monitor/app/api-custom-events-metrics.md)  -  **Günlüklere veya telemetrinize kodlarınızın her şeyi**izlemek için izleme günlükleri ve özel telemetri.
+* [Özel durumlar](./asp-net-exceptions.md) ve kilitlenmeler- **yığın dökümleri**, `build id` , CPU türü. 
+* [Bağımlılıklar](./asp-net-dependencies.md) -Rest, SQL, AJAX gibi harici hizmetlere yapılan çağrılar. URI veya bağlantı dizesi, süre, başarı, komut.
+* [Kullanılabilirlik testleri](./monitor-web-app-availability.md) -test ve adımların süresi, yanıtlar.
+* [Trace logs](./asp-net-trace-logs.md) [custom telemetry](./api-custom-events-metrics.md)  -  **Günlüklere veya telemetrinize kodlarınızın her şeyi**izlemek için izleme günlükleri ve özel telemetri.
 
 [Daha fazla ayrıntı](#data-sent-by-application-insights).
 
@@ -71,16 +71,16 @@ Web sayfaları için tarayıcınızın hata ayıklama penceresini açın.
 ![F12 tuşuna basın ve ağ sekmesini açın.](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Telemetriyi gönderilmeden önce filtrelemek için kod yazabilir miyim?
-Bu, bir [telemetri işlemcisi eklentisi](../../azure-monitor/app/api-filtering-sampling.md)yazarak mümkün olacaktır.
+Bu, bir [telemetri işlemcisi eklentisi](./api-filtering-sampling.md)yazarak mümkün olacaktır.
 
 ## <a name="how-long-is-the-data-kept"></a>Veriler ne kadar süreyle tutuluyor?
-Ham veri noktaları (diğer bir deyişle, analiz bölümünde sorgulama yapabilir ve aramada araştırma yapabilirsiniz) 730 güne kadar tutulur. 30, 60, 90, 120, 180, 270, 365, 550 veya 730 Days [bir saklama süresi seçebilirsiniz](./pricing.md#change-the-data-retention-period) . Verileri 730 günden daha uzun tutmanız gerekiyorsa, veri alımı sırasında depolama hesabına kopyalamak için [sürekli dışarı aktarma](../../azure-monitor/app/export-telemetry.md) kullanabilirsiniz. 
+Ham veri noktaları (diğer bir deyişle, analiz bölümünde sorgulama yapabilir ve aramada araştırma yapabilirsiniz) 730 güne kadar tutulur. 30, 60, 90, 120, 180, 270, 365, 550 veya 730 Days [bir saklama süresi seçebilirsiniz](./pricing.md#change-the-data-retention-period) . Verileri 730 günden daha uzun tutmanız gerekiyorsa, veri alımı sırasında depolama hesabına kopyalamak için [sürekli dışarı aktarma](./export-telemetry.md) kullanabilirsiniz. 
 
 90 günden daha uzun süre tutulan veriler de ek ücret uygulanır. [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)Application Insights fiyatlandırması hakkında daha fazla bilgi edinin.
 
 Toplanan veriler (diğer bir deyişle, sayımlar, ortalamalar ve Ölçüm Gezgini 'nde gördüğünüz diğer istatistiksel veriler) 90 gün boyunca 1 dakikalık bir zaman içinde tutulur.
 
-[Hata ayıklama anlık görüntüleri](../../azure-monitor/app/snapshot-debugger.md) 15 gün boyunca depolanır. Bu bekletme ilkesi, uygulama başına temelinde ayarlanır. Bu değeri artırmanız gerekiyorsa Azure portal bir destek talebi açarak artış isteyebilirsiniz.
+[Hata ayıklama anlık görüntüleri](./snapshot-debugger.md) 15 gün boyunca depolanır. Bu bekletme ilkesi, uygulama başına temelinde ayarlanır. Bu değeri artırmanız gerekiyorsa Azure portal bir destek talebi açarak artış isteyebilirsiniz.
 
 ## <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 Veriler sizin için görünür ve bir kuruluş hesabınız varsa, ekip üyeleriniz olur. 
@@ -233,7 +233,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights depolanan kişisel veriler
 
-[Application Insights kişisel veri makalemiz](../../azure-monitor/platform/personal-data-mgmt.md) bu sorunu ayrıntılı bir şekilde ele almaktadır.
+[Application Insights kişisel veri makalemiz](../platform/personal-data-mgmt.md) bu sorunu ayrıntılı bir şekilde ele almaktadır.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kullanıcılarım Application Insights kapatabilir mi?
 Doğrudan değil. Kullanıcılarınızın Application Insights kapatmak için çalıştırabilmesini sağlayacak bir anahtar sağlamayız.
@@ -247,15 +247,15 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 | Eyleminizi | Toplanan veri sınıfları (sonraki tabloya bakın) |
 | --- | --- |
-| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel Durumlar**<br/>Oturum<br/>kullanıcılar |
+| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel durumlar**<br/>Oturum<br/>kullanıcılar |
 | [Durum İzleyicisi IIS 'ye yükler][redfield] |Bağımlılıklar<br/>Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları |
 | [Java Web uygulamasına Application Insights SDK 'Sı ekleme][java] |Sunucubağlamı<br/>Temsilc<br/>İstek<br/>Oturum<br/>kullanıcılar |
 | [Web sayfasına JavaScript SDK 'Sı ekleme][client] |ClientContext <br/>Temsilc<br/>Sayfa<br/>ClientPerf<br/>Ajax |
 | [Varsayılan özellikleri tanımlama][apiproperties] |Tüm standart ve özel olaylardaki **Özellikler** |
 | [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özellikler** |
 | [Çağrıyı Izle *][api] |Olay adı<br/>**Özellikler** |
-| [TrackException çağrısı][api] |**Özel Durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
-| SDK veri toplayamıyor. Örneğin: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
+| [TrackException çağrısı][api] |**Özel durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
+| SDK veri toplayamıyor. Örnek: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
 
 [Diğer platformların SDK 'ları][platforms]için belgelerine bakın.
 
@@ -276,7 +276,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | Ajax |Web sayfasından sunucusuna HTTP çağrıları |
 | İstekler |URL, süre, yanıt kodu |
 | Bağımlılıklar |Tür (SQL, HTTP,...), bağlantı dizesi veya URI, Sync/Async, Duration, Success, SQL deyimleri (Durum İzleyicisi ile) |
-| **Özel Durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası,`thread id` |
+| **Özel durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası,`thread id` |
 | Çökme |`Process id`, `parent process id` ,, `crash thread id` Uygulama Düzeltme Eki, `id` , derleme;  özel durum türü, adres, neden; karıştırılmış semboller ve Yazmaçları, ikili başlangıç ve bitiş adresleri, ikili ad ve yol, CPU türü |
 | İzleme |**İleti** ve önem düzeyi |
 | Performans sayaçları |İşlemci süresi, kullanılabilir bellek, istek hızı, özel durum oranı, işlem özel baytları, GÇ oranı, istek süresi, istek kuyruğu uzunluğu |
@@ -286,7 +286,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 [Bazı verileri düzenleyerek ApplicationInsights.config][config] yapabilirsiniz
 
 > [!NOTE]
-> İstemci IP 'si coğrafi konumu çıkarmakta kullanılır, ancak varsayılan olarak IP verileri artık depolanmaz ve tüm sıfırlardan ilişkili alana yazılır. Kişisel veri işleme hakkında daha fazla bilgi edinmek için bu [makaleyi](../../azure-monitor/platform/personal-data-mgmt.md#application-data)öneririz. IP adresi verilerini depolamanız gerekirse, [IP adresi toplama makalemiz](./ip-collection.md) , seçenekleriniz boyunca size yol gösterir.
+> İstemci IP 'si coğrafi konumu çıkarmakta kullanılır, ancak varsayılan olarak IP verileri artık depolanmaz ve tüm sıfırlardan ilişkili alana yazılır. Kişisel veri işleme hakkında daha fazla bilgi edinmek için bu [makaleyi](../platform/personal-data-mgmt.md#application-data)öneririz. IP adresi verilerini depolamanız gerekirse, [IP adresi toplama makalemiz](./ip-collection.md) , seçenekleriniz boyunca size yol gösterir.
 
 ## <a name="credits"></a>Krediler
 Bu ürün, tarafından sağlanan, Maxakılda tarafından oluşturulan GeoLite2 verilerini içerir [https://www.maxmind.com](https://www.maxmind.com) .
@@ -295,13 +295,14 @@ Bu ürün, tarafından sağlanan, Maxakılda tarafından oluşturulan GeoLite2 v
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiproperties]: ../../azure-monitor/app/api-custom-events-metrics.md#properties
-[client]: ../../azure-monitor/app/javascript.md
-[config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[api]: ./api-custom-events-metrics.md
+[apiproperties]: ./api-custom-events-metrics.md#properties
+[client]: ./javascript.md
+[config]: ./configuration-with-applicationinsights-config.md
+[greenbrown]: ./asp-net.md
+[java]: ./java-get-started.md
+[platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

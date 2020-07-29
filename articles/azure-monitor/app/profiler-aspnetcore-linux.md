@@ -6,18 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539916"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324123"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler ile Azure Linux Web Apps ASP.NET Core profili
 
 Bu özellik şu anda önizleme sürümündedir.
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md)kullanırken canlı Web uygulamanızın her yönteminde ne kadar zaman harcandığını öğrenin. Application Insights Profiler artık Azure App Service Linux 'ta barındırılan ASP.NET Core Web uygulamaları için kullanılabilir. Bu kılavuz, ASP.NET Core Linux Web Apps için profil oluşturucu izlemelerinin nasıl toplanabilecek hakkında adım adım yönergeler sağlar.
+[Application Insights](./app-insights-overview.md)kullanırken canlı Web uygulamanızın her yönteminde ne kadar zaman harcandığını öğrenin. Application Insights Profiler artık Azure App Service Linux 'ta barındırılan ASP.NET Core Web uygulamaları için kullanılabilir. Bu kılavuz, ASP.NET Core Linux Web Apps için profil oluşturucu izlemelerinin nasıl toplanabilecek hakkında adım adım yönergeler sağlar.
 
 Bu yönergeyi tamamladıktan sonra, uygulamanız görüntüde gösterilen izlemeler gibi profil oluşturucu izlemeleri toplayabilir. Bu örnekte, profil oluşturucu izlemesi belirli bir Web isteğinin, beklerken geçen süre nedeniyle yavaş olduğunu gösterir. Uygulamanın yavaştığı koddaki *etkin yol* bir alev simgesiyle işaretlenir. **HomeController** bölümündeki **hakkında** yöntemi, yöntemi **Thread. Sleep** işlevini çağırırken Web uygulamasını yavaşlatmakta.
 
@@ -149,7 +149,7 @@ Daha fazla dağıtım seçeneği için [Bu makaleye](../../app-service/container
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Web uygulamalarınızı izlemek için Application Insights ekleyin
 
-1. [Application Insights kaynağı oluşturun](./../../azure-monitor/app/create-new-resource.md ).
+1. [Application Insights kaynağı oluşturun](./create-new-resource.md).
 
 2. Application Insights kaynağın **Ikey** değerini kopyalayın ve Web uygulamalarınızda aşağıdaki ayarları ayarlayın:
 
@@ -171,3 +171,4 @@ Daha fazla dağıtım seçeneği için [Bu makaleye](../../app-service/container
 Azure App Service tarafından barındırılan özel kapsayıcılar kullanıyorsanız, [kapsayıcılı bir ASP.NET Core uygulaması için](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) Application Insights Profiler etkinleştirmek üzere Service Profiler etkinleştir bölümündeki yönergeleri izleyin.
 
 Application Insights GitHub deposuna tüm sorunları veya önerileri bildirin: [ApplicationInsights-Profiler-AspNetCore: sorunlar](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+

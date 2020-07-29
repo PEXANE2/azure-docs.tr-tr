@@ -3,20 +3,20 @@ title: Veri bulunmama sorunlarını giderme - .NET için Application Insights
 description: Azure Application Insights verileri görmüyor musunuz? Buradan deneyin.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d0141b29a3ce4b6739f8a8aab078573c7c00ad0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517179"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324208"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
 ## <a name="some-of-my-telemetry-is-missing"></a>Telemetrimin bazıları eksik
 *Application Insights, yalnızca Uygulamam tarafından oluşturulan olayların bir bölümünü görüyorum.*
 
-* Aynı kesri sürekli görüyorsanız, büyük olasılıkla Uyarlamalı [örnekleme](../../azure-monitor/app/sampling.md)nedeniyle olur. Bunu onaylamak için, ara ' yı açın (genel bakış dikey penceresinden) ve bir Isteğin örneğine veya başka bir olaya bakın. Özellikler bölümünün en altında "..." seçeneğine tıklayın. Tam özellik ayrıntılarını almak için. Istek sayısı > 1 ise örnekleme işlemi sürüyor.
-* Aksi takdirde, fiyatlandırma planınız için bir [veri hızı sınırına](../../azure-monitor/app/pricing.md#limits-summary) ulaşalım olanağınız vardır. Bu sınırlar dakika başına uygulanır.
+* Aynı kesri sürekli görüyorsanız, büyük olasılıkla Uyarlamalı [örnekleme](./sampling.md)nedeniyle olur. Bunu onaylamak için, ara ' yı açın (genel bakış dikey penceresinden) ve bir Isteğin örneğine veya başka bir olaya bakın. Özellikler bölümünün en altında "..." seçeneğine tıklayın. Tam özellik ayrıntılarını almak için. Istek sayısı > 1 ise örnekleme işlemi sürüyor.
+* Aksi takdirde, fiyatlandırma planınız için bir [veri hızı sınırına](./pricing.md#limits-summary) ulaşalım olanağınız vardır. Bu sınırlar dakika başına uygulanır.
 
 *Veri kaybı rastgele yaşıyor.*
 
@@ -31,17 +31,17 @@ ms.locfileid: "86517179"
 ## <a name="no-data-from-my-server"></a>Sunucuma veri yok
 *Uygulamamı Web sunucuma yükledim ve bundan sonra herhangi bir telemetri görmüyorum. Geliştirici makinmda Tamam 'a çalıştı.*
 
-* Büyük olasılıkla bir güvenlik duvarı sorunu. [Application Insights veri göndermek için güvenlik duvarı özel durumlarını ayarlayın](../../azure-monitor/app/ip-addresses.md).
+* Büyük olasılıkla bir güvenlik duvarı sorunu. [Application Insights veri göndermek için güvenlik duvarı özel durumlarını ayarlayın](./ip-addresses.md).
 * IIS sunucusunda bazı Önkoşullar eksik olabilir: .NET Genişletilebilirliği 4,5 ve ASP.NET 4,5.
 
-*Mevcut uygulamaları izlemek için Web sunucuma [durum İzleyicisi yükledim](../../azure-monitor/app/monitor-performance-live-website-now.md) . Hiç sonuç görmüyorum.*
+*Mevcut uygulamaları izlemek için Web sunucuma [durum İzleyicisi yükledim](./monitor-performance-live-website-now.md) . Hiç sonuç görmüyorum.*
 
-* Bkz. [sorun giderme durum İzleyicisi](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot).
+* Bkz. [sorun giderme durum İzleyicisi](./monitor-performance-live-website-now.md#troubleshoot).
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 'da ' Add Application Insights ' seçeneği yok
 *Çözüm Gezgini var olan bir projeye sağ tıkladığımda, hiçbir Application Insights seçeneği görmüyorum.*
 
-* Tüm .NET projesi türleri araçlar tarafından desteklenmez. Web ve WCF projeleri desteklenir. Masaüstü veya hizmet uygulamaları gibi diğer proje türleri için de [projenize el ile bir APPLICATION INSIGHTS SDK ekleyebilirsiniz](../../azure-monitor/app/windows-desktop.md).
+* Tüm .NET projesi türleri araçlar tarafından desteklenmez. Web ve WCF projeleri desteklenir. Masaüstü veya hizmet uygulamaları gibi diğer proje türleri için de [projenize el ile bir APPLICATION INSIGHTS SDK ekleyebilirsiniz](./windows-desktop.md).
 * [Visual Studio 2013 güncelleştirme 3 veya sonraki bir sürüme](/visualstudio/releasenotes/vs2013-update3-rtm-vs)sahip olduğunuzdan emin olun. Application Insights SDK 'sını sağlayan geliştirici Analizi araçlarıyla önceden yüklenmiş olarak gelir.
 * **Araçlar**, **Uzantılar ve güncelleştirmeler** ' i seçin ve **Developer Analytics Tools** yüklendiğini ve etkinleştirildiğini denetleyin. Bu durumda, kullanılabilir bir güncelleştirme olup olmadığını görmek için **güncelleştirmeler** ' e tıklayın.
 * Yeni proje iletişim kutusunu açın ve ASP.NET Web uygulaması ' nı seçin. Burada Application Insights seçeneği görürseniz araçlar yüklenir. Aksi takdirde, Developer Analytics Tools kaldırıp yeniden yüklemeyi deneyin.
@@ -53,13 +53,13 @@ Olası nedenler:
 
 * Application Insights portalı ile iletişim kurulamadı; veya
 * Azure hesabınızla ilgili bazı sorunlar var;
-* Yalnızca [yeni kaynağı oluşturmaya çalıştığınız abonelik veya gruba okuma erişiminizin](../../azure-monitor/app/resources-roles-access-control.md)olması gerekir.
+* Yalnızca [yeni kaynağı oluşturmaya çalıştığınız abonelik veya gruba okuma erişiminizin](./resources-roles-access-control.md)olması gerekir.
 
 Onar
 
 * Doğru Azure hesabı için oturum açma kimlik bilgileri sağladıysanız emin olun.
 * Tarayıcınızda [Azure Portal](https://portal.azure.com)erişiminiz olup olmadığını kontrol edin. Ayarları açın ve herhangi bir kısıtlama olup olmadığını görün.
-* [Mevcut projenize Application Insights ekleyin](../../azure-monitor/app/asp-net.md): Çözüm Gezgini, projenize sağ tıklayıp "Application Insights Ekle" seçeneğini belirleyin.
+* [Mevcut projenize Application Insights ekleyin](./asp-net.md): Çözüm Gezgini, projenize sağ tıklayıp "Application Insights Ekle" seçeneğini belirleyin.
 
 ## <a name="i-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>"Izleme anahtarı boş olamaz" hatası alıyorum
 Application Insights yüklerken bir sorun oluştu veya belki de günlüğe kaydetme bağdaştırıcısı.
@@ -91,11 +91,11 @@ Aksi halde, proje türü geliştirici analizi araçları tarafından doğrudan d
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>Visual Studio 'dan açma Application Insights ' erişim engellendi '
 *' Aç Application Insights ' menü komutu beni Azure portal alıyor, ancak ' erişim engellendi ' hatası alıyorum.*
 
-Varsayılan tarayıcınızda en son kullandığınız Microsoft oturum açma [işlemi, Application Insights bu uygulamaya eklendiğinde oluşturulan kaynağa](../../azure-monitor/app/asp-net.md)erişemez. Olası iki neden vardır:
+Varsayılan tarayıcınızda en son kullandığınız Microsoft oturum açma [işlemi, Application Insights bu uygulamaya eklendiğinde oluşturulan kaynağa](./asp-net.md)erişemez. Olası iki neden vardır:
 
-* Birden fazla Microsoft hesabı (Belki de bir iş ve kişisel Microsoft hesabı var mı? Varsayılan tarayıcınızda en son kullandığınız oturum açma işlemi, [projeye Application Insights ekleme](../../azure-monitor/app/asp-net.md)erişimine sahip olandan farklı bir hesaptır.
+* Birden fazla Microsoft hesabı (Belki de bir iş ve kişisel Microsoft hesabı var mı? Varsayılan tarayıcınızda en son kullandığınız oturum açma işlemi, [projeye Application Insights ekleme](./asp-net.md)erişimine sahip olandan farklı bir hesaptır.
   * Çözüm: tarayıcı penceresinin sağ üst köşesindeki adınızı tıklayın ve oturumu kapatın. Sonra erişimi olan hesapla oturum açın. Ardından sol gezinti çubuğunda Application Insights ' ye tıklayın ve uygulamanızı seçin.
-* Başka birisi projeye Application Insights ekledi ve size oluşturulduğu [kaynak grubuna erişim](../../azure-monitor/app/resources-roles-access-control.md) izni vermenizi unuttu.
+* Başka birisi projeye Application Insights ekledi ve size oluşturulduğu [kaynak grubuna erişim](./resources-roles-access-control.md) izni vermenizi unuttu.
   * Çözüm: bir kurumsal hesap kullandıklarında, takıma ekleyebilirler; ya da kaynak grubuna bireysel erişim izni verebilir.
 
 ## <a name="asset-not-found-on-opening-application-insights-from-visual-studio"></a>Visual Studio 'dan açma Application Insights ' varlık bulunamadı '
@@ -116,7 +116,7 @@ Onar
 ## <a name="where-do-i-find-my-telemetry"></a>Telemetriyi nerede bulabilirim?
 *[Microsoft Azure Portal](https://portal.azure.com)oturum açdım ve Azure giriş panosuna bakıyordum. Application Insights verilerimi nerede bulabilirim?*
 
-* Sol gezinti çubuğunda Application Insights ' a ve ardından uygulamanızın adı ' na tıklayın. Orada hiç projeniz yoksa, [Web projenize Application Insights eklemeniz veya yapılandırmanız](../../azure-monitor/app/asp-net.md)gerekir.  
+* Sol gezinti çubuğunda Application Insights ' a ve ardından uygulamanızın adı ' na tıklayın. Orada hiç projeniz yoksa, [Web projenize Application Insights eklemeniz veya yapılandırmanız](./asp-net.md)gerekir.  
   Bazı Özet grafikler görürsünüz. Daha fazla ayrıntı görmek için bunlara tıklayabilirsiniz.
 * Visual Studio 'da uygulamanızda hata ayıklaması yaparken Application Insights düğmesine tıklayın.
 
@@ -125,7 +125,7 @@ Onar
 
 * Uygulamanızı Visual Studio 'da hata ayıklama modunda çalıştırın (F5). Uygulamayı, bazı telemetri oluşturmak için kullanın. Visual Studio çıktı penceresinde günlüğe kaydedilen olayları görebilmeniz için denetleyin.  
   ![Visual Studio 'da uygulamanızı hata ayıklama modunda çalıştırmayı gösteren ekran görüntüsü.](./media/asp-net-troubleshoot-no-data/output-window.png)
-* Application Insights portalında [Tanılama araması](../../azure-monitor/app/diagnostic-search.md)' nı açın. Veriler genellikle önce burada görünür.
+* Application Insights portalında [Tanılama araması](./diagnostic-search.md)' nı açın. Veriler genellikle önce burada görünür.
 * Yenile düğmesine tıklayın. Dikey pencere kendi kendine düzenli olarak yenilenir, ancak bunu el ile de yapabilirsiniz. Yenileme aralığı daha büyük zaman aralıkları için daha uzun.
 * İzleme anahtarlarının eşleştiğinden emin olun. Application Insights portalındaki uygulamanızın ana dikey penceresinde, **Essentials** açılan penceresinde, **izleme anahtarı**' na bakın. Ardından, Visual Studio 'daki projenizdeki ApplicationInsights.config açın ve bulun `<instrumentationkey>` . İki anahtarın eşit olup olmadığını denetleyin. Aksi takdirde:  
   * Portalda Application Insights ' a tıklayın ve doğru anahtarla uygulama kaynağını arayın; veya
@@ -133,27 +133,27 @@ Onar
   * Eşleşen anahtarları bulamıyorsanız, portalda ' de olduğu gibi Visual Studio 'da aynı oturum açma kimlik bilgilerini kullanıp kullanınızdan emin olun.
 * [Microsoft Azure giriş panosunda](https://portal.azure.com), hizmet durumu haritasına bakın. Bazı uyarı göstergeleri varsa, Tamam ' a dönene kadar bekleyin ve ardından Application Insights uygulaması dikey penceresini kapatıp yeniden açın.
 * Ayrıca [durum blogumuzu](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog)inceleyin.
-* [Sunucu tarafı SDK](../../azure-monitor/app/api-custom-events-metrics.md) için, örneklerdeki veya içindeki izleme anahtarını değiştirebilen herhangi bir kod yazdınız `TelemetryClient` `TelemetryContext` mı? Ya da çok fazla filtreleme olabilecek bir [filtre veya örnekleme yapılandırması](../../azure-monitor/app/api-filtering-sampling.md) mı yazdınız?
-* ApplicationInsights.config düzenlediyseniz, [TelemetryInitializers ve TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)yapılandırmasını dikkatle kontrol edin. Yanlış adlı bir tür veya parametre SDK 'nın veri gönderememesine neden olabilir.
+* [Sunucu tarafı SDK](./api-custom-events-metrics.md) için, örneklerdeki veya içindeki izleme anahtarını değiştirebilen herhangi bir kod yazdınız `TelemetryClient` `TelemetryContext` mı? Ya da çok fazla filtreleme olabilecek bir [filtre veya örnekleme yapılandırması](./api-filtering-sampling.md) mı yazdınız?
+* ApplicationInsights.config düzenlediyseniz, [TelemetryInitializers ve TelemetryProcessors](./api-filtering-sampling.md)yapılandırmasını dikkatle kontrol edin. Yanlış adlı bir tür veya parametre SDK 'nın veri gönderememesine neden olabilir.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Sayfa görünümlerinde, tarayıcılarda, kullanımında veri yok
 *Sunucu yanıt süresi ve sunucu Isteği grafiklerde veri görüyorum, ancak sayfa görünümü yükleme sırasında veya tarayıcıda veya kullanım dikey penceresinde veri yok.*
 
 Veriler Web sayfalarındaki betiklerden gelir. 
 
-* Mevcut bir web projesine Application Insights eklediyseniz, [betikleri el ile eklemeniz gerekir](../../azure-monitor/app/javascript.md).
+* Mevcut bir web projesine Application Insights eklediyseniz, [betikleri el ile eklemeniz gerekir](./javascript.md).
 * Internet Explorer 'ın sitenizin uyumluluk modunda görüntülenmediğinden emin olun.
 * Verilerin gönderildiğini doğrulamak için tarayıcının hata ayıklama özelliğini (bazı tarayıcılarda F12 ' i seçin, sonra da ağ ' ı seçin) kullanın `dc.services.visualstudio.com` .
 
 ## <a name="no-dependency-or-exception-data"></a>Bağımlılık veya özel durum verisi yok
-Bkz. [bağımlılık telemetrisi](../../azure-monitor/app/asp-net-dependencies.md) ve [özel durum telemetrisi](asp-net-exceptions.md).
+Bkz. [bağımlılık telemetrisi](./asp-net-dependencies.md) ve [özel durum telemetrisi](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Performans verisi yok
-Durum İzleyicisi 'ni ve [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md)'yi yüklüyorsanız, [Java Web Hizmetleri](../../azure-monitor/app/java-collectd.md), [Windows Masaüstü uygulamaları](../../azure-monitor/app/windows-desktop.md), [IIS Web UYGULAMALARı ve HIZMETLERI](../../azure-monitor/app/monitor-performance-live-website-now.md)için performans verileri (CPU, GÇ oranı vb.) kullanılabilir. Bunu ayarlar, sunucular bölümünde bulabilirsiniz.
+Durum İzleyicisi 'ni ve [Azure Cloud Services](./app-insights-overview.md)'yi yüklüyorsanız, [Java Web Hizmetleri](./java-collectd.md), [Windows Masaüstü uygulamaları](./windows-desktop.md), [IIS Web UYGULAMALARı ve HIZMETLERI](./monitor-performance-live-website-now.md)için performans verileri (CPU, GÇ oranı vb.) kullanılabilir. Bunu ayarlar, sunucular bölümünde bulabilirsiniz.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Uygulamayı sunucuma yayımladığım için hiçbir (sunucu) veri yok
 * Tüm Microsoft 'un gerçekten kopyalamadığını denetleyin. Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ile birlikte sunucuda ApplicationInsights dll 'Leri
-* Güvenlik duvarınızdaki [bazı TCP bağlantı noktalarını açmanız](../../azure-monitor/app/ip-addresses.md)gerekebilir.
+* Güvenlik duvarınızdaki [bazı TCP bağlantı noktalarını açmanız](./ip-addresses.md)gerekebilir.
 * Şirket ağınızı göndermek için bir proxy kullanmanız gerekiyorsa, Web.config [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) 'yi ayarlayın
 * Windows Server 2008: şu güncelleştirmeleri yüklediğinizden emin olun: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
@@ -161,7 +161,7 @@ Durum İzleyicisi 'ni ve [Azure Cloud Services](../../azure-monitor/app/app-insi
 * Aylık veri noktaları kotasına ulaştınız misiniz? Bulmak için ayarları/kotayı ve fiyatlandırmayı açın. Bu durumda, planınızı yükseltebilir veya ek kapasite için ödeme yapabilirsiniz. [Fiyatlandırma şemasına](https://azure.microsoft.com/pricing/details/application-insights/)bakın.
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Beklediğiniz tüm verileri göremiyorum
-Uygulamanız çok miktarda veri gönderirse ve ASP.NET Version 2.0.0-Beta3 veya üzeri için Application Insights SDK kullanıyorsanız, [Uyarlamalı örnekleme](../../azure-monitor/app/sampling.md) özelliği yalnızca telemetrinizin yüzdesini işleyebilir ve gönderebilir.
+Uygulamanız çok miktarda veri gönderirse ve ASP.NET Version 2.0.0-Beta3 veya üzeri için Application Insights SDK kullanıyorsanız, [Uyarlamalı örnekleme](./sampling.md) özelliği yalnızca telemetrinizin yüzdesini işleyebilir ve gönderebilir.
 
 Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amacıyla ilgili telemetri doğru şekilde iletilebilecek şekilde tasarlanmıştır.
 
@@ -257,7 +257,8 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 
 ## <a name="how-to-remove-application-insights"></a>Application Insights kaldırma
 
-Kaldırma [makalesinde](../../azure-monitor/app/remove-application-insights.md)sağladığı adımları Izleyerek Visual Studio 'da Application Insights kaldırmayı öğrenin.
+Kaldırma [makalesinde](./remove-application-insights.md)sağladığı adımları Izleyerek Visual Studio 'da Application Insights kaldırmayı öğrenin.
 
 ## <a name="still-not-working"></a>Hala çalışmıyor...
 * [Microsoft Q&Application Insights için soru sayfası](/answers/topics/azure-monitor.html)
+

@@ -1,6 +1,6 @@
 ---
-title: Android 'den Windows sanal masaüstü Fall 2019 'e bağlanma-Azure
-description: Android istemcisini kullanarak Windows sanal masaüstüne bağlanma.
+title: Android-Azure ' a Windows sanal masaüstüne (klasik) bağlanma
+description: Android istemcisini kullanarak Windows sanal masaüstüne (klasik) bağlanma.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ccea4e39146500cb9d3796c4ca99725e2e2ac429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd319c7a6b356052f91e779e2f2a67eff4c4b6de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087161"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270762"
 ---
-# <a name="connect-with-the-android-client"></a>Android istemcisiyle bağlanma
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Android istemcisiyle Windows sanal masaüstüne (klasik) bağlanma
 
 > İçin geçerlidir: Android 4,1 ve üzeri, Kmeos 53 ve üzeri ile Kmebooks.
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../connect-android.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../connect-android.md)bakın.
 
 >[!NOTE]
 > Android istemcisinden Windows sanal masaüstü kaynaklarına erişme özelliği şu anda önizleme aşamasındadır.

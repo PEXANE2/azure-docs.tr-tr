@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 05/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 950f258e7380d7fbd25e1a5fe2dd4673ba122c52
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205699"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321601"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
 
@@ -64,7 +64,7 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 | ------------- | ------------- |
 |**Yüksek önem düzeyi bırakma veya fark özelliği yok*** |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
 |**Impute eksik değerler*** |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|
-|**Ek özellikler oluştur*** |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı.|
+|**Ek özellikler oluştur*** |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
 |**Dönüştür ve kodla***|Çok sayıda benzersiz değere sahip sayısal özellikleri kategorik Özellikler halinde dönüştürün.<br/><br/>Tek yönlü kodlama, düşük önemlilik kategorik özellikleri için kullanılır. Yüksek kardinalite kategorik özellikler için tek bir Hot-Hash kodlaması kullanılır.|
 |**Sözcük katıştırlamaları**|Bir metin özelliği, önceden eğitilen bir model kullanarak metin belirteçlerinin vektörlerini tümce vektörlerine dönüştürür. Belgedeki her bir sözcüğün katıştırma vektörü, bir belge özelliği vektörü oluşturmak için geri kalan ile toplanır.|
 |**Hedef kodlamalar**|Kategorik özellikler için, bu adım her bir kategoriyi gerileme sorunları için Ortalama bir hedef değerle ve sınıflandırma sorunları için her sınıf için sınıf olasılığa eşler. Sıklık tabanlı ağırlığa ve k katlamalı çapraz doğrulama, seyrek veri kategorilerinin neden olduğu eşlemenin ve gürültü üzerine fazla sığdırmayı azaltmak için uygulanır.|
@@ -138,6 +138,50 @@ featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strate
 featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
 featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
+```
+
+## <a name="bert-integration"></a>BERT tümleştirmesi 
+[Bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) , otomatik ml 'nin korleştirme katmanında kullanılır. Bu katmanda, bir sütunun zaman damgaları veya basit sayılar gibi boş metin veya diğer tür verileri içerip içermediğinizi tespit ettik ve buna uygun şekilde koruyoruz. BERT için Kullanıcı tarafından sağlanmış etiketlerin kullanılmasıyla model üzerinde ince ayar yapın/eğeceğiz, sonra zaman damgası tabanlı Özellikler (örneğin, haftanın günü) veya birçok tipik veri kümesinin bulunduğu sayılar gibi diğer özelliklerle ilgili özellikler olarak, belge katıştırılamaları (yani, özel [CLS] belirteciyle ilişkili son gizli durum). 
+
+BERT 'yi etkinleştirmek için, eğitim için GPU işlem kullanmanız gerekir. Bir CPU işlemi kullanılıyorsa, BERT 'in yerine, tabtdnn featurizer 'ı etkinleştirir. BERT 'yi çağırmak için automl_settings içinde "enable_dnn: true" ayarlamanız ve GPU işlem (örn. vm_size = "STANDARD_NC6" veya daha yüksek bir GPU) kullanmanız gerekir. Lütfen [bir örnek için bu not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)bakın.
+
+Aşağıdaki adımlar, BERT için aşağıdaki adımları alır (lütfen bu öğelerin gerçekleşmesi için automl_settings "enable_dnn: true" ayarlamanız gerektiğini unutmayın):
+
+1. Tüm metin sütunlarının simgeleştirme özelliği de dahil olmak üzere ön işleme (son modelin korleştirme özetinde "StringCast" transformatörü görürsünüz. Bu şekilde, model oluşturma özetinin yöntemi kullanılarak nasıl oluşturulacağı hakkında bir örnek görmek için lütfen [Bu Not defterini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) ziyaret edin `get_featurization_summary()` .
+
+```python
+text_transformations_used = []
+for column_group in fitted_model.named_steps['datatransformer'].get_featurization_summary():
+    text_transformations_used.extend(column_group['Transformations'])
+text_transformations_used
+```
+
+2. Tüm metin sütunlarını tek bir metin sütununda birleştirir, bu nedenle son modelde "StringConcatTransformer" görüntülenir. 
+
+> [!NOTE]
+> BERT uygulamamız, bir eğitim örneğinin toplam metin uzunluğunu 128 belirteç olarak sınırlandırır. Yani, art arda tüm metin sütunlarının en çok 128 belirteç uzunluğunda olması gerekir. İdeal olarak, birden çok sütun varsa, bu koşulun karşılanması için her sütun ayıklanmalıdır. Örneğin, verilerde iki metin sütunu varsa, verileri oto ml 'ye yazdırmadan önce her iki metin sütununun de her biri 64 belirtece (her iki sütunun de en son birleştirilmiş metin sütununda aynı şekilde temsil olmasını istediğinizi varsayarak) ayıklanmalıdır. >128 belirteçlerinin bir birleştirilmiş sütunları için, Bert 'in belirteç ayırıcı katmanı bu girişi 128 belirteçlere keser.
+
+3. Özellik üst kısmında, oto ml, verilerin bir örneği üzerinde BERT 'yi (kelimeler özelliği ve önceden eğitilen kelime eklenebilir) ile karşılaştırır ve BERT 'in doğruluk iyileştirmeleri verip veremeyeceğini belirler. BERT 'in temelden daha iyi çalıştığını belirlerse, oto ve en iyi performans stratejisi olarak metin kullanımı için BERT 'yi kullanır ve verilerin tamamını kordoğru bir şekilde devam eder. Bu durumda, son modelde "Pretraınedtextdnntransformer" metnini görürsünüz.
+
+JML Şu anda 100 dil etrafında destek ve veri kümesinin diline bağlı olarak, oto ml uygun BERT modelini seçer. Almanya verileri için Almanca BERT modelini kullanıyoruz. Ingilizce için, Ingilizce BERT modelini kullanıyoruz. Diğer tüm diller için, çok dilli BERT modelini kullanırız.
+
+Aşağıdaki kodda, veri kümesi dili ' DEU ' olarak belirtildiğinden ve [ISO sınıflandırmasına](https://iso639-3.sil.org/code/hbs)göre Almanca için 3 harfli dil kodu olan, Almanya Bert modeli tetiklenir:
+
+```python
+from azureml.automl.core.featurization import FeaturizationConfig
+
+featurization_config = FeaturizationConfig(dataset_language='deu')
+
+automl_settings = {
+    "experiment_timeout_minutes": 120,
+    "primary_metric": 'accuracy', 
+# All other settings you want to use 
+    "featurization": featurization_config,
+    
+  "enable_dnn": True, # This enables BERT DNN featurizer
+    "enable_voting_ensemble": False,
+    "enable_stack_ensemble": False
+}
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

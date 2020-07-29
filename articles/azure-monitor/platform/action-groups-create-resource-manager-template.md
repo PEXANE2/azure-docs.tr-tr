@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a97fd56f1dc3409666ad86e81a7ac74fee076fa1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c02812d4c97b94667fcddcb275243e7a9b36b29
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505695"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321913"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonuyla bir eylem grubu oluşturma
 Bu makalede, eylem gruplarını yapılandırmak için bir [Azure Resource Manager şablonunun](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanılacağı gösterilmektedir. Şablonları kullanarak, belirli uyarı türlerinde yeniden kullanılabilen eylem gruplarını otomatik olarak ayarlayabilirsiniz. Bu eylem grupları, bir uyarı tetiklendiğinde tüm doğru taraflara bildirimde bulunduğundan emin olur.
@@ -163,6 +163,7 @@ Kaynak Yöneticisi şablonu kullanarak bir eylem grubu oluşturmak için, türü
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Eylem grupları](../../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
+* [Eylem grupları](./action-groups.md)hakkında daha fazla bilgi edinin.
 * [Uyarılar](alerts-overview.md)hakkında daha fazla bilgi edinin.
-* [Kaynak Yöneticisi şablonu kullanarak uyarı](../../azure-monitor/platform/alerts-activity-log.md)eklemeyi öğrenin.
+* [Kaynak Yöneticisi şablonu kullanarak uyarı](./alerts-activity-log.md)eklemeyi öğrenin.
+

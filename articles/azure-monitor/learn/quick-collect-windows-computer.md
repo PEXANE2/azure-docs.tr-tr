@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: d13a7cf87ba22dce96992c362f8b800ba79f6976
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 12d87d6d458d6cda21ca581337012e800a3d4bce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324327"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
-[Azure izleyici](../overview.md) , ortamınızdaki fiziksel veya sanal Windows bilgisayarlarınızdan, ayrıntılı analiz ve bağıntı için bir Log Analytics çalışma alanına doğrudan veri toplayabilir. [Log Analytics aracısının](../platform/log-analytics-agent.md) yüklenmesi, Azure izleyici 'nin bir veri merkezinde veya diğer bulut ortamından veri toplamasına izin verir. Bu hızlı başlangıçta birkaç kolay adımda Windows bilgisayarınızı nasıl yapılandırabileceğiniz ve veri toplayabileceğiniz gösterilmektedir. Azure Windows VM 'Leri hakkında daha fazla bilgi için bkz. [Azure sanal makineler hakkında veri toplama](../../azure-monitor/learn/quick-collect-azurevm.md).  
+[Azure izleyici](../overview.md) , ortamınızdaki fiziksel veya sanal Windows bilgisayarlarınızdan, ayrıntılı analiz ve bağıntı için bir Log Analytics çalışma alanına doğrudan veri toplayabilir. [Log Analytics aracısının](../platform/log-analytics-agent.md) yüklenmesi, Azure izleyici 'nin bir veri merkezinde veya diğer bulut ortamından veri toplamasına izin verir. Bu hızlı başlangıçta birkaç kolay adımda Windows bilgisayarınızı nasıl yapılandırabileceğiniz ve veri toplayabileceğiniz gösterilmektedir. Azure Windows VM 'Leri hakkında daha fazla bilgi için bkz. [Azure sanal makineler hakkında veri toplama](./quick-collect-azurevm.md).  
 
-Desteklenen yapılandırmayı anlamak için bkz. [desteklenen Windows işletim sistemleri](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) ve [ağ güvenlik duvarı yapılandırması](../../azure-monitor/platform/log-analytics-agent.md#network-requirements).
+Desteklenen yapılandırmayı anlamak için bkz. [desteklenen Windows işletim sistemleri](../platform/log-analytics-agent.md#supported-windows-operating-systems) ve [ağ güvenlik duvarı yapılandırması](../platform/log-analytics-agent.md#network-requirements).
  
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -166,3 +166,4 @@ Verileri görüntüleme ve çözümleme hakkında bilgi edinmek için öğretici
 
 > [!div class="nextstepaction"]
 > [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/get-started-portal.md)
+

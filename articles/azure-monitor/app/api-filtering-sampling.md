@@ -3,12 +3,12 @@ title: Application Insights SDK 'da filtreleme ve ön işleme | Microsoft Docs
 description: Telemetri Application Insights portalına gönderilmeden önce verileri filtrelemek veya eklemek için SDK için telemetri işlemcileri ve telemetri başlatıcıları yazın.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: adaada3589fd0db1c7d47b788ad50d570defe780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a16dc7bc9f6f3c49640d320fbfbffaa7acbed6b9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014635"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323222"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 'da telemetri filtreleme ve ön işleme
 
@@ -17,7 +17,7 @@ Application Insights hizmetine gönderilmeden önce Telemetriyi nasıl zenginle�
 * [Örnekleme](sampling.md) , istatistiklerinizi etkilemeden telemetri hacmini azaltır. Bir sorunu tanılarken bunlar arasında gezinebilmeniz için ilgili veri noktalarını birlikte tutar. Portalda toplam sayımlar, örnekleme için telafi ile çarpılır.
 * Telemetri işlemcileriyle filtreleme, SDK 'da, sunucuya gönderilmeden önce Telemetriyi filtrelemenizi sağlar. Örneğin, robotlardan gelen istekleri dışlayarak telemetri hacmini azaltabilirsiniz. Filtreleme, trafiği örneklemeden azaltmak için daha temel bir yaklaşımdır. İletilen Özellikler üzerinde daha fazla denetim sağlar, ancak istatistiklerinizi etkiler. Örneğin, tüm başarılı istekleri filtreleyebilirsiniz.
 * Telemetri başlatıcıları, uygulamanız tarafından gönderilen ve standart modüllerden Telemetriyi içeren herhangi bir telemetriye [Özellikler ekler veya değiştirir](#add-properties) . Örneğin, portalda verilerin filtreleneceği Hesaplanmış değerler veya sürüm numaraları ekleyebilirsiniz.
-* [SDK API 'si](../../azure-monitor/app/api-custom-events-metrics.md) özel olayları ve ölçümleri göndermek için kullanılır.
+* [SDK API 'si](./api-custom-events-metrics.md) özel olayları ve ölçümleri göndermek için kullanılır.
 
 Başlamadan önce:
 
@@ -34,7 +34,7 @@ Telemetriyi filtrelemek için bir telemetri işlemcisi yazın ve bunu ile kayded
 > [!WARNING]
 > İşlemciler kullanılarak SDK 'dan gönderilen telemetrinin filtrelenmesi, portalda gördüğünüz istatistikleri eğebilir ve ilgili öğeleri izlemeyi zorlaştırır.
 >
-> Bunun yerine [örnekleme](../../azure-monitor/app/sampling.md)kullanmayı düşünün.
+> Bunun yerine [örnekleme](./sampling.md)kullanmayı düşünün.
 >
 >
 
@@ -352,7 +352,7 @@ Portaldan aldığınız başlatma kodundan hemen sonra bir telemetri başlatıc�
 </script>
 ```
 
-Telemetri öğesinde kullanılabilen özel olmayan özelliklerin bir özeti için bkz. [Application Insights dışa aktarma veri modeli](../../azure-monitor/app/export-data-model.md).
+Telemetri öğesinde kullanılabilen özel olmayan özelliklerin bir özeti için bkz. [Application Insights dışa aktarma veri modeli](./export-data-model.md).
 
 İstediğiniz kadar fazla sayıda Başlatıcı ekleyebilirsiniz. Bunlar eklendikleri sırayla çağırılır.
 
@@ -542,7 +542,7 @@ Telemetri işlemcileri ve telemetri başlatıcıları arasındaki fark nedir?
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [API’ye genel bakış](../../azure-monitor/app/api-custom-events-metrics.md)
+* [API’ye genel bakış](./api-custom-events-metrics.md)
 * [ASP.NET başvurusu](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK kodu
@@ -552,6 +552,7 @@ Telemetri işlemcileri ve telemetri başlatıcıları arasındaki fark nedir?
 * [JavaScript SDK'sı](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
-* [Olayları ve günlükleri ara](../../azure-monitor/app/diagnostic-search.md)
-* [Örnekleme](../../azure-monitor/app/sampling.md)
+* [Olayları ve günlükleri ara](./diagnostic-search.md)
+* [aşağıdakine](./sampling.md)
 * [Sorun giderme](../faq.md)
+

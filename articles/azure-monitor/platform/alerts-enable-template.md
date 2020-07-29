@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505457"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324106"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu ile klasik ölçüm uyarısı oluşturma
 > [!WARNING]
 > 
-> Bu makalede Kaynak Yöneticisi şablonları kullanılarak **Klasik ölçüm uyarıları** oluşturulması açıklanmaktadır. Klasik uyarılar Ağustos 2019 ' de kullanımdan kaldırılmıştır ve 2020 Haziran 'da tam kullanım dışı olarak ayarlanmıştır. Yeni klasik uyarılar Genel Azure oluşturamazsınız. Azure 'un bazı bölgesel sürümlerinde seçeneği hala olabilir, ancak bunun yerine şablonları kullanarak [daha yeni ölçüm uyarıları](../../azure-monitor/platform/alerts-metric-near-real-time.md) oluşturmanızı öneririz. [Bu makalede](alerts-metric-create-templates.md) ayrıntılar sağlanmaktadır.
+> Bu makalede Kaynak Yöneticisi şablonları kullanılarak **Klasik ölçüm uyarıları** oluşturulması açıklanmaktadır. Klasik uyarılar Ağustos 2019 ' de kullanımdan kaldırılmıştır ve 2020 Haziran 'da tam kullanım dışı olarak ayarlanmıştır. Yeni klasik uyarılar Genel Azure oluşturamazsınız. Azure 'un bazı bölgesel sürümlerinde seçeneği hala olabilir, ancak bunun yerine şablonları kullanarak [daha yeni ölçüm uyarıları](./alerts-metric-near-real-time.md) oluşturmanızı öneririz. [Bu makalede](alerts-metric-create-templates.md) ayrıntılar sağlanmaktadır.
 >
 
 Bu makalede, Azure klasik ölçüm uyarılarını yapılandırmak için bir [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Bu, tüm kaynakların doğru şekilde izlendiğinden emin olmak için kaynaklardaki uyarıları otomatik olarak ayarlamanıza olanak sağlar.
@@ -400,5 +400,6 @@ Kaynak Yöneticisi şablonundaki bir uyarı, genellikle bir kaynak oluştururken
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Uyarılar hakkında daha fazla bilgi edinin](alerts-overview.md)
-* Kaynak Yöneticisi şablonunuza [Tanılama ayarları ekleme](../../azure-monitor/platform/diagnostic-settings-template.md)
+* Kaynak Yöneticisi şablonunuza [Tanılama ayarları ekleme](./diagnostic-settings-template.md)
 * JSON sözdizimi ve özellikleri için bkz. [Microsoft. Insights/alertrules](/azure/templates/microsoft.insights/alertrules) şablon başvurusu.
+

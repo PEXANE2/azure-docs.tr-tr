@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: d701a518dfa0bd21b33aa2f13f533ad6ef49430d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: de8b69cbe3117a3ec248cee4808b676b39c56658
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037826"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324803"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyarıları ayarlama
 
@@ -64,16 +64,8 @@ Stream Analytics işinizin performansını izlemek için aşağıdaki uyarılar 
 |Filigran gecikmesi|Büyüktür|Maksimum|Bu ölçümün son 15 dakika boyunca ortalama değeri, geç varış toleransına (saniye cinsinden) fazla olduğunda. Geç varış toleransını değiştirmediyse, varsayılan değer 5 saniyeye ayarlanır.|SUs sayısını artırmayı deneyin veya sorgunuzu paralelleştirme. SUs hakkında daha fazla bilgi için bkz. [akış birimlerini anlama ve ayarlama](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Sorgunuzu paralel hale getirme hakkında daha fazla bilgi için bkz. [Azure Stream Analytics sorgu paralelleştirme özelliğinden yararlanma](stream-analytics-parallelization.md).|
 |Giriş seri kaldırma hataları|Büyüktür|Toplam|0|Etkinlik veya kaynak günlüklerini inceleyin ve girişte uygun değişiklikleri yapın. Kaynak günlükleri hakkında daha fazla bilgi için bkz. [kaynak günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme](stream-analytics-job-diagnostic-logs.md)|
 
-## <a name="get-help"></a>Yardım alın
-
-Azure portal uyarılarını yapılandırma hakkında daha fazla ayrıntı için bkz. [uyarı bildirimleri alma](../azure-monitor/platform/alerts-overview.md).  
-
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
-
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
-* [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-get-started.md)
+
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

@@ -109,11 +109,9 @@
       href: concept-recognizing-text.md
     - name: Yetişkinlere yönelik içeriği algılama
       href: concept-detecting-adult-content.md
-- name: Nasıl yapılır kılavuzları
+- name: Kapsayıcılar
   items:
-    - name: Görüntü İşleme API’sini çağırma
-      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-    - name: Kapsayıcıları kullanma
+    - name: API kapsayıcısını okuma
       items:
         - name: Kapsayıcıları yükleme ve çalıştırma
           href: computer-vision-how-to-install-containers.md
@@ -127,6 +125,10 @@
         - name: Kapsayıcı örnekleri kullanma
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Görüntü İşleme API’sini çağırma
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Videoları gerçek zamanlı olarak analiz etme
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Başvuru
@@ -135,6 +137,8 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Görüntü İşleme API’si v3.1-preview.1
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005'
     - name: Görüntü İşleme API’si v3.0
       href: 'https://aka.ms/computer-vision-v3-ref'
     - name: Görüntü İşleme API’si v2.1

@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 33c5db061860096b0411fbe91191f6c4a513e4c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b8a95687b1567eb6e063ccc871a4a130c5f2db69
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172133"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290355"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
 Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure PowerShell kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell yerel olarak veya Azure Cloud Shell yüklendi
@@ -635,7 +635,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 Üç VM 'yi oluşturmak ve yapılandırmak birkaç dakika sürer.
 
 ## <a name="create-outbound-rule-configuration"></a>Giden kuralı yapılandırması oluştur
-Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 'yi yapılandırır. 
+Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden kaynak ağ adresi çevirisini (SNAT) yapılandırır. 
 
 Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağlantılar](load-balancer-outbound-connections.md).
 
@@ -690,7 +690,7 @@ Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerFronten
 
 [Add-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig)ile yeni bir giden havuz oluşturun. 
 
-[Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer)ile yük dengeleyiciye havuzu ve ön uç IP adresini uygulama::
+[Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer)ile yük dengeleyicisine havuzu ve ön uç IP adresini uygulayın:
 
 * **Mybackendpooloutbound**adlı adlandırılmış.
 
@@ -1409,7 +1409,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 IIS 'yi her iki arka uç VM 'de aşağıdaki gibi özel bir Web sayfasıyla birlikte yüklemelisiniz:
 
-1. [Get-Azpublicıpaddress](/powershell/module/az.compute/get-azpublicipaddress)kullanarak üç VM 'nın genel IP adreslerini alın.
+1. [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)kullanarak üç VM 'nın genel IP adreslerini alın.
 
    ```azurepowershell-interactive
    ## Variables for commands. ##

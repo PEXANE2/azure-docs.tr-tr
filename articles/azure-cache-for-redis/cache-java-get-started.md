@@ -7,19 +7,19 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
-ms.custom: mvc, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 02430e2dfa68ff0ce4bf116666d72a46e1120746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 3cd8b18358128c8566c0cde668c084a22dd261d0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848864"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320706"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Hızlı başlangıç: Java ile Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, özel bir önbelleğe erişim sağlamak için [Jedsıs](https://github.com/xetorthio/jedis) redsıs Istemcisini kullanarak redsıs Için Azure önbelleğini bir Java uygulamasına dahil edersiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Apache Maven](https://maven.apache.org/download.cgi)
@@ -59,7 +59,7 @@ Yeni *redistest* proje dizinine geçin.
     </dependency>
 ```
 
-*Pod. xml* dosyasını kaydedin.
+*pom.xml* dosyasını kaydedin.
 
 *App.java*'yı açın ve kodu aşağıdaki kodla değiştirin:
 
@@ -117,7 +117,7 @@ Bu kod, önbellek ana bilgisayar adı ve anahtar ortam değişkenlerini kullanar
 
 *App.java*'yı kaydedin.
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
 Uygulamayı derlemek ve çalıştırmak için aşağıdaki Maven komutunu yürütün:
 

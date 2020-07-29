@@ -5,12 +5,12 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087994"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324191"
 ---
 # <a name="dependency-auto-collection"></a>Bağımlılık otomatik toplama
 
@@ -23,7 +23,7 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | ASP.NET WebForms | 4.5 + |
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Core | 1.1 + |
+| ASP.NET Çekirdeği | 1.1 + |
 | <b>İletişim kitaplıkları</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -88,9 +88,10 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [.Net](../../azure-monitor/app/asp-net-dependencies.md)için özel bağımlılık izlemeyi ayarlayın.
-- [Java](../../azure-monitor/app/java-agent.md)için özel bağımlılık izlemeyi ayarlayın.
-- [Opencensus Python](../../azure-monitor/app/opencensus-python-dependency.md)için özel bağımlılık izlemeyi ayarlayın.
-- [Özel bağımlılık telemetrisi yazma](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Application Insights türleri ve veri modeli için [veri modeli](../../azure-monitor/app/data-model.md) 'ne bakın.
-- Application Insights tarafından desteklenen [platformları](../../azure-monitor/app/platforms.md) inceleyin.
+- [.Net](./asp-net-dependencies.md)için özel bağımlılık izlemeyi ayarlayın.
+- [Java](./java-agent.md)için özel bağımlılık izlemeyi ayarlayın.
+- [Opencensus Python](./opencensus-python-dependency.md)için özel bağımlılık izlemeyi ayarlayın.
+- [Özel bağımlılık telemetrisi yazma](./api-custom-events-metrics.md#trackdependency)
+- Application Insights türleri ve veri modeli için [veri modeli](./data-model.md) 'ne bakın.
+- Application Insights tarafından desteklenen [platformları](./platforms.md) inceleyin.
+

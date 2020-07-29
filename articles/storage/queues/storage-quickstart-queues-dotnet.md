@@ -3,23 +3,20 @@ title: 'Hızlı başlangıç: Azure kuyruk depolama kitaplığı v12-.NET'
 description: Bir kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure kuyruğu .NET V12 kitaplığı 'nı nasıl kullanacağınızı öğrenin. Ardından, sıradaki iletileri okumayı ve silmeyi öğreneceksiniz. Ayrıca, bir kuyruğu silmeyi de öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/22/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 69e2c118ec298ebddf16d428ea2278de42e91309
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5931311368a6389386adb689a505feeeed03b29c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036701"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289177"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure kuyruk depolama istemci kitaplığı V12
 
 .NET için Azure kuyruk depolama istemci kitaplığı sürüm 12 ' i kullanmaya başlayın. Azure kuyruk depolaması, daha sonra almak ve işlemek üzere çok sayıda ileti depolamaya yönelik bir hizmettir. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere bu adımları izleyin.
-
-> [!NOTE]
-> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: bir kuyruğu yönetmek için .net Için Azure Storage SDK v11 kullanın](storage-quickstart-queues-dotnet-legacy.md).
 
 .NET için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
 

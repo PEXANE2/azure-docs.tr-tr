@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü için hizmet uyarılarını ayarlama – sonbahar 2019 – Azure
-description: Azure hizmet durumunu Windows sanal masaüstü için hizmet bildirimleri alacak şekilde ayarlama.
+title: Windows sanal masaüstü (klasik) için hizmet uyarılarını ayarlama-Azure
+description: Azure hizmet durumunu Windows sanal masaüstü (klasik) için hizmet bildirimleri alacak şekilde ayarlama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b3a29e97fbdf2579e2ef6a86b8dadf91f679366
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3f938c6e4c9bb13794ddd01092f0e79077a89cc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085835"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283393"
 ---
-# <a name="tutorial-set-up-service-alerts---fall-2019"></a>Öğretici: hizmet uyarılarını ayarlama-Fall 2019
+# <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü için hizmet uyarılarını ayarlama (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../set-up-service-alerts.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../set-up-service-alerts.md)bakın.
 
 Windows sanal masaüstü için hizmet sorunlarını ve sistem durumu belgelerini izlemek üzere Azure hizmet durumu ' nu kullanabilirsiniz. Azure hizmet durumu, farklı Uyarı türleri (örneğin, e-posta veya SMS) ile size bildirimde bulunabilir, bir sorunun etkisini anlamanıza yardımcı olur ve sorun çözümlendiği sürece güncelleştirmiş olursunuz. Azure hizmet durumu, kapalı kalma süresini azaltmanıza ve kaynaklarınızın kullanılabilirliğini etkileyebilecek planlı bakım ve değişiklikler için hazırlık yapmanıza da yardımcı olabilir.
 

@@ -11,17 +11,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e8c19a491f836a71b26f86924fddad92adb23d42
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390542"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321471"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Öğretici: Firebase SDK sürüm 0,6 kullanarak Android cihazlarına anında iletme bildirimleri gönderme
 
@@ -40,7 +40,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Uygulamanızı hub 'a bağlayın.
 > * Uygulamayı test etme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/). 
 
@@ -61,7 +61,7 @@ Bu öğreticiyi tamamlamak, Android uygulamalarına yönelik diğer tüm Notific
 3. **Projenizi yapılandırın** sayfasında, aşağıdaki adımları uygulayın: 
     1. Uygulama için bir ad girin.
     2. Proje dosyalarının kaydedileceği bir konum belirtin. 
-    3. **Son**'u seçin. 
+    3. **Son**’u seçin. 
 
         ![Projenizi yapılandırma)](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
 
@@ -573,4 +573,4 @@ Bu öğreticide, hizmet ile kaydedilmiş tüm Android cihazlara bildirim yayıml
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[Azure portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

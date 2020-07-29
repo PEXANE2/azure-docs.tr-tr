@@ -1,6 +1,6 @@
 ---
 title: Syslog verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Bir Linux makinesinde gereç ve Sentinel arasında bir aracı kullanarak Syslog 'yi destekleyen tüm şirket içi gereçleri Azure Sentinel 'e bağlayın. 
+description: Bir Linux makinesinde gereç ve Sentinel arasında bir aracı kullanarak Syslog 'yi destekleyen herhangi bir makine veya gereci Azure Sentinel 'e bağlayın. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,66 +12,90 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 38e47469723d767561dd778b8f175780ab181fd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076249"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322848"
 ---
-# <a name="connect-your-external-solution-using-syslog"></a>Syslog kullanarak dış çözümünüzü bağlama
+# <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog kullanarak Linux tabanlı kaynaklardan veri toplama
 
-Syslog 'yi destekleyen şirket içi gereçlerden Azure Sentinel 'e bağlanabilirsiniz. Bu, Gereç ve Azure Sentinel arasında Linux makinesine dayalı bir aracı kullanılarak yapılır. Linux makineniz Azure 'da ise, cihazınızdan veya uygulamanızdan günlükleri Azure 'da oluşturduğunuz ayrılmış bir çalışma alanına akışa alabilir ve bağlayabilirsiniz. Linux makineniz Azure 'da değilse, Aracıınızdan günlükleri Linux için aracıyı yüklediğiniz bir adanmış şirket içi VM 'ye veya makineye akışını sağlayabilirsiniz. 
+Linux tabanlı, syslog destekleyen makinelerden veya gereçlerden, Linux için Log Analytics Aracısı (eski adıyla OMS Aracısı) kullanarak Azure Sentinel 'e olay akışını sağlayabilirsiniz. Bunu, Log Analytics aracısını doğrudan makineye yüklemenize izin veren herhangi bir makine için yapabilirsiniz. Makinenin yerel Syslog Daemon 'u belirtilen türlerin yerel olaylarını toplar ve onları Log Analytics çalışma alanınıza akışa alacak şekilde yerel olarak iletir.
 
 > [!NOTE]
-> Gereciniz Syslog CEF 'yi destekliyorsa, bağlantı daha tamamlanmıştır ve bu seçeneği seçmeniz ve [CEF 'deki verileri bağlama](connect-common-event-format.md)bölümündeki yönergeleri izlemeniz gerekir.
+> - Gereciniz **Syslog üzerinden ortak olay biçimini (CEF)** destekliyorsa, daha kapsamlı bir veri kümesi toplanır ve veriler koleksiyonda ayrıştırılır. Bu seçeneği seçmeniz ve [dış çözümünüzü CEF kullanarak bağlama](connect-common-event-format.md)bölümündeki yönergeleri izlemeniz gerekir.
+>
+> - Log Analytics, **rsyslog** veya **Syslog-ng** Daemon 'ları tarafından gönderilen iletilerin toplanmasını destekler; burada rsyslog varsayılandır. Red Hat Enterprise Linux (RHEL), CentOS ve Oracle Linux Version (**sysklog**) sürüm 5 ' te bulunan varsayılan Syslog Daemon, Syslog olay koleksiyonu için desteklenmez. Bu dağıtımların bu sürümünden Syslog verileri toplamak için rsyslog arka plan programı yüklenmeli ve sysklog ' ı değiştirecek şekilde yapılandırılmalıdır.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Syslog, Linux için ortak olan bir olay günlüğü protokolüdür. Uygulamalar yerel makinede depolanabilecek veya bir Syslog toplayıcısına teslim edilen iletileri gönderir. Linux için Log Analytics Aracısı yüklendiğinde, iletileri aracıya iletmek için yerel Syslog Daemon programını yapılandırır. Aracı daha sonra iletiyi ilgili kaydın oluşturulduğu Azure Izleyici 'ye gönderir.
+**Syslog** , Linux için ortak olan bir olay günlüğü protokolüdür. **Linux için Log Analytics ARACıSı** sanal makinenize veya gerecinize yüklendiğinde, yükleme yordamı, iletileri TCP bağlantı noktası 25224 ' deki aracıya iletmek Için yerel Syslog arka plan programını yapılandırır. Aracı daha sonra iletiyi HTTPS üzerinden Log Analytics çalışma alanınıza gönderir ve burada **Azure Sentinel > günlüklerinde**Syslog tablosunda bir olay günlüğü girişi olarak ayrıştırılır.
 
 Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azure-monitor/platform/data-sources-syslog.md).
 
-> [!NOTE]
-> - Aracı, birden fazla kaynaktaki günlükleri toplayabilir, ancak adanmış ara sunucu makinesine yüklenmiş olmalıdır.
-> - Aynı VM 'de hem CEF hem de Syslog için bağlayıcıları desteklemek istiyorsanız, verilerin yinelenmesinden kaçınmak için aşağıdaki adımları gerçekleştirin:
->    1. [CEF 'Nizi bağlamak](connect-common-event-format.md)için yönergeleri izleyin.
->    2. Syslog verilerini bağlamak için **Ayarlar**  >  **çalışma alanı ayarları**  >  **Gelişmiş ayarlar**  >  **veri**  >  **Syslog** ' a gidin ve tesislerini ve önceliklerini, CEF yapılandırmanızda kullandığınız tesisler ve Özellikler olmaması için ayarlayın. <br></br>**Aşağıdaki yapılandırmayı makinelerime Uygula**' yı seçerseniz, bu setler bu çalışma alanına bağlı tüm VM 'lere uygulanır.
+## <a name="configure-syslog-collection"></a>Syslog koleksiyonunu yapılandırma
 
-
-## <a name="connect-your-syslog-appliance"></a>Syslog gerecinizi bağlama
+### <a name="configure-your-linux-machine-or-appliance"></a>Linux makinenizi veya gereci yapılandırma
 
 1. Azure Sentinel 'de **veri bağlayıcıları** ' nı seçin ve **Syslog** bağlayıcısını seçin.
 
-2. **Syslog** dikey penceresinde **bağlayıcı sayfasını aç**' ı seçin.
+1. **Syslog** dikey penceresinde **bağlayıcı sayfasını aç**' ı seçin.
 
-3. Linux aracısını yükler:
+1. Linux aracısını yükler. **Aracının yükleneceği yeri seçin altında:**
     
-    - Linux sanal makineniz Azure 'de ise **indir ve aracıyı Azure Linux sanal makinesine**Yükle ' yi seçin. **Sanal makineler** dikey penceresinde, aracının yükleneceği sanal makineleri seçin ve ardından **Bağlan**' a tıklayın.
-    - Linux makineniz Azure 'da değilse, **Linux Azure olmayan makineye indir ve aracıyı**Yükle ' yi seçin. **Doğrudan aracı** DIKEY PENCERESINDE **LINUX için INDIRME ve ekleme Aracısı** için komutu kopyalayın ve bilgisayarınızda çalıştırın. 
+    **Bir Azure Linux sanal makinesi için:**
+      
+    1. **Aracıyı Azure Linux sanal makinesine yüklemeyi**seçin.
+    
+    1. **Azure Linux sanal makineleri Için indirme & yükleme aracısı >** bağlantısına tıklayın. 
+    
+    1. **Sanal makineler** dikey penceresinde, aracıyı yüklemek için bir sanal makineye tıklayın ve ardından **Bağlan**' a tıklayın. Bağlanmak istediğiniz her sanal makine için bu adımı tekrarlayın.
+    
+    **Diğer herhangi bir Linux makinesi için:**
+
+    1. **Azure olmayan bir Linux makinesine aracıyı yüklemeyi** seçin
+
+    1. **Azure dışı Linux makineler Için indirme & yükleme aracısı >** bağlantısına tıklayın. 
+
+    1. **Aracılar yönetimi** dikey penceresinde **Linux sunucuları** sekmesine tıklayın, ardından **Linux için indirme ve ekleme Aracısı** için komutu kopyalayın ve Linux makinenizde çalıştırın. 
     
    > [!NOTE]
    > Bu bilgisayarlar için güvenlik ayarlarını kuruluşunuzun güvenlik ilkesine göre yapılandırmadığınızdan emin olun. Örneğin, ağ ayarlarını kuruluşunuzun ağ güvenlik ilkesiyle hizalanacak şekilde yapılandırabilir ve güvenlik gereksinimlerine uyum sağlamak için Daemon içindeki bağlantı noktalarını ve protokolleri değiştirebilirsiniz.
 
-4. **Çalışma alanı Gelişmiş ayarları yapılandırmanızı aç**' ı seçin.
+### <a name="configure-the-log-analytics-agent"></a>Log Analytics aracısını yapılandırma
 
-5. **Gelişmiş ayarlar** dikey penceresinde **veri**  >  **Syslog**öğesini seçin. Ardından, bağlayıcının toplanacak tesisleri ekleyin.
+1. Syslog Bağlayıcısı dikey penceresinin alt kısmında, **çalışma alanınızın Gelişmiş ayarlar yapılandırma >bağlantısını aç** bağlantısına tıklayın.
+
+1. **Gelişmiş ayarlar** dikey penceresinde **veri**  >  **Syslog**öğesini seçin. Ardından, bağlayıcının toplanacak tesisleri ekleyin.
     
-    Syslog gerecinizin günlük üst bilgilerinde içerdiği tesisleri ekleyin. Bu yapılandırmayı, klasörde **Syslog-d** içindeki Syslog gerecinizde `/etc/rsyslog.d/security-config-omsagent.conf` ve **r-Syslog** içinde görebilirsiniz `/etc/syslog-ng/security-config-omsagent.conf` .
+    - Syslog gerecinizin günlük üst bilgilerinde içerdiği tesisleri ekleyin. 
     
-    Topladığımız verilerle anormal SSH oturum açma algılaması kullanmak istiyorsanız, **AUTH** ve **authprıv**ekleyin. Daha fazla bilgi için [aşağıdaki bölüme](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) bakın.
+    - Topladığımız verilerle anormal SSH oturum açma algılaması kullanmak istiyorsanız, **AUTH** ve **authprıv**ekleyin. Daha fazla bilgi için [aşağıdaki bölüme](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) bakın.
 
-6. İzlemek istediğiniz tüm özellikleri eklediğinizde ve her biri için herhangi bir önem derecesi belirlediyseniz, bu onay kutusunu **makinelerime aşağıdaki yapılandırmayı Uygula**seçeneğini belirleyin.
+1. İzlemek istediğiniz tüm özellikleri eklediğinizde ve her biri için herhangi bir önem derecesi belirlediyseniz, bu onay kutusunu **makinelerime aşağıdaki yapılandırmayı Uygula**seçeneğini belirleyin.
 
-7. **Kaydet**'i seçin. 
+1. **Kaydet**'i seçin. 
 
-8. Syslog gerecinizde belirttiğiniz olanakları gönderdiğinizden emin olun.
+1. VM 'niz veya gerecinizde belirttiğiniz olanakları gönderdiğinizden emin olun.
 
-9. Syslog günlükleri için Azure Izleyici 'de ilgili şemayı kullanmak üzere **Syslog**için arama yapın.
+1. **Günlüklerde**Syslog günlük verilerini sorgulamak için, `Syslog` sorgu penceresine yazın.
 
-10. Syslog iletilerinizi ayrıştırmak için [Azure izleyici günlük sorgularındaki Işlevleri kullanma](../azure-monitor/log-query/functions.md) bölümünde açıklanan kusto işlevini kullanabilirsiniz. Ardından, yeni bir veri türü olarak kullanmak üzere yeni bir Log Analytics işlevi olarak kaydedebilirsiniz.
+1. Syslog iletilerinizi ayrıştırmak için [Azure izleyici günlük sorgularındaki Işlevleri kullanma](../azure-monitor/log-query/functions.md) bölümünde açıklanan sorgu parametrelerini kullanabilirsiniz. Sonra sorguyu yeni bir Log Analytics işlevi olarak kaydedebilir ve yeni bir veri türü olarak kullanabilirsiniz.
+
+> [!NOTE]
+>
+> Var olan [CEF günlüğü iletici makinenizi](connect-cef-agent.md) kullanarak, günlükleri düz Syslog kaynaklarından toplayıp iletebilirsiniz. Ancak, olayların çoğaltılmasıyla sonuçlanacak şekilde Azure Sentinel 'e her iki biçimdeki olayları göndermeyi önlemek için aşağıdaki adımları gerçekleştirmeniz gerekir.
+>
+>    [CEF kaynaklarınızdan veri toplamayı](connect-common-event-format.md)zaten ayarlamış ve Log Analytics aracısını yukarıdaki gibi yapılandırmış olmanız gerekir:
+>
+> 1. CEF biçiminde günlük gönderen her makinede, CEF iletilerini göndermek için kullanılan tesisleri kaldırmak için Syslog yapılandırma dosyasını düzenlemeniz gerekir. Bu şekilde, CEF 'de gönderilen tesisler Syslog 'da da gönderilmeyecektir. Bunun nasıl yapılacağı hakkında ayrıntılı yönergeler için bkz. [Linux aracısında Syslog yapılandırma](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+>
+> 1. Aracının Azure Sentinel 'de Syslog yapılandırmasıyla eşitlenmesini devre dışı bırakmak için bu makinelerde aşağıdaki komutu çalıştırmanız gerekir. Bu, önceki adımda yaptığınız yapılandırma değişikliğinin üzerine yazılmamasını sağlar.<br>
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Anormal SSH oturum açma algılaması için Syslog bağlayıcısını yapılandırma
 
@@ -87,7 +111,7 @@ Azure Sentinel, anormal Secure Shell (SSH) oturum açma etkinliğini belirlemek 
  
 Bu algılama, syslog veri bağlayıcısının belirli bir yapılandırmasını gerektirir: 
 
-1. Önceki yordamdaki 5. adım için hem **AUTH** hem de **authprıv** 'in izlenecek tesis olarak seçildiğinden emin olun. Tüm seçili olmaları için önem derecesi seçenekleri için varsayılan ayarları koruyun. Örneğin:
+1. Önceki yordamdaki 5. adım için hem **AUTH** hem de **authprıv** 'in izlenecek tesis olarak seçildiğinden emin olun. Tüm seçili olmaları için önem derecesi seçenekleri için varsayılan ayarları koruyun. Örnek:
     
     > [!div class="mx-imgBorder"]
     > ![Anormal SSH oturum açma algılaması için gereken tesisler](./media/connect-syslog/facilities-ssh-detection.png)

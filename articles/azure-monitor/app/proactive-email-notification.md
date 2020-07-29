@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41298be1b0288f429647d8b38a1cc75dd2c40b0a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8e2bf4e451ebc3c9ebba2c01dae6703fc79aa606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516762"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324140"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Akıllı algılama e-posta bildirimi değişikliği
 
@@ -44,6 +44,7 @@ Bu değişiklik hakkında sorularınız veya endişeleriniz varsa [bizimle ileti
 
 Akıllı algılama hakkında daha fazla bilgi edinin:
 
-- [Hata anomalileri](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [Bellek sızıntıları](../../azure-monitor/app/proactive-potential-memory-leak.md)
-- [Performans anomalileri](../../azure-monitor/app/proactive-performance-diagnostics.md)
+- [Hata anomalileri](./proactive-failure-diagnostics.md)
+- [Bellek sızıntıları](./proactive-potential-memory-leak.md)
+- [Performans anomalileri](./proactive-performance-diagnostics.md)
+

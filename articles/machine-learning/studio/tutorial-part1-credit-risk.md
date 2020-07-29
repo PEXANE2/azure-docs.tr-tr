@@ -1,6 +1,5 @@
 ---
-title: 'Öğretici 1: kredi riskini tahmin etme'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik) Öğretici: kredi riskini tahmin etme-Azure'
 description: Azure Machine Learning Studio (klasik) ' de kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin bir parçasıdır.  Çalışma alanı oluşturma, verileri yükleme ve deneme oluşturma işlemlerinin nasıl yapılacağını gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi
 author: sdgilley
@@ -10,14 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59874387b6dfc23fddbd6c6eed89263a54389649
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b8e2d0cd0d9aa567cfab9e2fef66ad6363e59d53
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048002"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324905"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Öğretici 1: kredi riskini tahmin etme-Azure Machine Learning Studio (klasik)
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 

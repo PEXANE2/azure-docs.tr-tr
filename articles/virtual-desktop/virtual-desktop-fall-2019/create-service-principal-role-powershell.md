@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü hizmeti sorumlusu rol ataması-Azure
-description: Windows sanal masaüstü 'nde PowerShell kullanarak hizmet sorumluları oluşturma ve rol atama.
+title: Windows sanal masaüstü (klasik) hizmet sorumlusu rol ataması-Azure
+description: Windows sanal masaüstü 'nde (klasik) PowerShell kullanarak hizmet sorumluları oluşturma ve rol atama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 015d0e0208b83cff3db3995383ce93ed6362ee49
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117718"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270099"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Öğretici: PowerShell kullanarak hizmet sorumluları ve rol atamaları oluşturma
+# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü 'nde PowerShell ile hizmet sorumluları ve rol atamaları oluşturma (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 Hizmet sorumluları, belirli bir amaçla roller ve izinler atamak için Azure Active Directory oluşturabileceğiniz kimliklerdir. Windows sanal masaüstü 'nde, aşağıdakileri yapmak için bir hizmet sorumlusu oluşturabilirsiniz:
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Windows sanal masaüstü 'nde bir rol ataması oluşturun.
 > * Hizmet sorumlusunu kullanarak Windows sanal masaüstü 'nde oturum açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Hizmet sorumluları ve rol atamaları oluşturabilmeniz için üç şey yapmanız gerekir:
 

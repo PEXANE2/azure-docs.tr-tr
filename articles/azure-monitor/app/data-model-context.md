@@ -4,11 +4,12 @@ description: Application Insights telemetri bağlamı veri modeli
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671872"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322678"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetri bağlamı: Application Insights veri modeli
 
@@ -38,14 +39,14 @@ En fazla uzunluk: 64
 
 ## <a name="operation-id"></a>İşlem kimliği
 
-Kök işleminin benzersiz tanımlayıcısı. Bu tanımlayıcı, telemetrinin birden çok bileşen arasında gruplandırmesine izin verir. Ayrıntılar için bkz. [telemetri bağıntısı](../../azure-monitor/app/correlation.md) . İşlem kimliği bir istek ya da sayfa görünümü tarafından oluşturulur. Diğer tüm telemetri, bu alanı içeren istek veya sayfa görünümü için değer olarak ayarlar. 
+Kök işleminin benzersiz tanımlayıcısı. Bu tanımlayıcı, telemetrinin birden çok bileşen arasında gruplandırmesine izin verir. Ayrıntılar için bkz. [telemetri bağıntısı](./correlation.md) . İşlem kimliği bir istek ya da sayfa görünümü tarafından oluşturulur. Diğer tüm telemetri, bu alanı içeren istek veya sayfa görünümü için değer olarak ayarlar. 
 
 En fazla uzunluk: 128
 
 
 ## <a name="parent-operation-id"></a>Üst işlem KIMLIĞI
 
-Telemetri öğesinin anlık üst öğesinin benzersiz tanımlayıcısı. Ayrıntılar için bkz. [telemetri bağıntısı](../../azure-monitor/app/correlation.md) .
+Telemetri öğesinin anlık üst öğesinin benzersiz tanımlayıcısı. Ayrıntılar için bkz. [telemetri bağıntısı](./correlation.md) .
 
 En fazla uzunluk: 128
 
@@ -75,7 +76,7 @@ En fazla uzunluk: 64
 
 Anonim Kullanıcı kimliği. Uygulamanın son kullanıcısını temsil eder. Telemetri bir hizmetten gönderildiğinde, Kullanıcı bağlamı hizmette işlemi başlatan kullanıcı hakkında olur.
 
-[Örnekleme](../../azure-monitor/app/sampling.md) , toplanan Telemetriyi en aza indirme tekniklerinden biridir. Örnekleme algoritması, tüm bağıntılı telemetrinin içinde veya dışında örnek olarak çalışır. Örnekleme puanı oluşturma için anonim kullanıcı kimliği kullanılır. Bu nedenle anonim kullanıcı kimliği yeterince rastgele bir değer olmalıdır. 
+[Örnekleme](./sampling.md) , toplanan Telemetriyi en aza indirme tekniklerinden biridir. Örnekleme algoritması, tüm bağıntılı telemetrinin içinde veya dışında örnek olarak çalışır. Örnekleme puanı oluşturma için anonim kullanıcı kimliği kullanılır. Bu nedenle anonim kullanıcı kimliği yeterince rastgele bir değer olmalıdır. 
 
 Kullanıcı adını depolamak için anonim kullanıcı kimliği kullanılması alanın kötüye kullanılması. Kimliği doğrulanmış kullanıcı kimliği kullan.
 
@@ -126,6 +127,7 @@ En fazla uzunluk: 256
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Telemetrinin nasıl genişletileceğini ve filtreleneceğini](../../azure-monitor/app/api-filtering-sampling.md)öğrenin.
+- [Telemetrinin nasıl genişletileceğini ve filtreleneceğini](./api-filtering-sampling.md)öğrenin.
 - Application Insights türleri ve veri modeli için [veri modeli](data-model.md) 'ne bakın.
-- Standart bağlam özellikleri koleksiyonu [yapılandırmasını](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)inceleyin.
+- Standart bağlam özellikleri koleksiyonu [yapılandırmasını](./configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)inceleyin.
+

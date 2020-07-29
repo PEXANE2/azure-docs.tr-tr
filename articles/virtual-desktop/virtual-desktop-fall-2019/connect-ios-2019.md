@@ -1,6 +1,6 @@
 ---
-title: İOS 'tan Windows sanal masaüstü Fall 2019 'e bağlanma-Azure
-description: İOS istemcisini kullanarak Windows sanal masaüstüne bağlanma.
+title: İOS-Azure ' a Windows sanal masaüstüne (klasik) bağlanma
+description: İOS istemcisini kullanarak Windows sanal masaüstüne (klasik) bağlanma.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 26c031710c96c42b1d5236332e445992de87616e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 06de85e23b1d6350a48735506c8931922d40b799
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270745"
 ---
-# <a name="connect-with-the-ios-client"></a>iOS istemcisiyle bağlanma
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>İOS istemcisiyle Windows sanal masaüstüne (klasik) bağlanma
 
 > Uygulama hedefi: iOS 13,0 veya üzeri. İPhone, iPad ve iPod Touch ile uyumludur.
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../connect-ios.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../connect-ios.md)bakın.
 
 Windows sanal masaüstü kaynaklarına, indirilebilir istemcimiz ile iOS cihazınızdan erişebilirsiniz. Bu kılavuz, iOS istemcisini nasıl ayarlayacağınızı bildirir.
 

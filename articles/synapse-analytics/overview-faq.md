@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807885"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287501"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) sık sorulan sorular
 
@@ -32,6 +32,8 @@ Y: Azure SYNAPSE, BI, AI ve sürekli zeka için tümleşik bir veri platformudur
 - Dilediğiniz katmandaki çalışma alanı etkinliklerinizde oluşan olayları kolayca Izleyip hızlı bir şekilde iyileştirin, tepki verin ve hatalarını ayıklayın.
 - Altyapılarınızın tamamında meta verilerinizi yönetin. Spark tablosu oluşturun ve Azure SYNAPSE veritabanlarında otomatik olarak kullanılabilir.
 - Birleştirilmiş bir kullanıcı deneyimi aracılığıyla verilerle etkileşime geçin. SYNAPSE Studio, büyük veri geliştiricileri, veri mühendisleri, DBAs, veri analistleri ve veri bilimcilerini aynı platforma taşır.
+
+Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir?](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is).
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics 'in ana bileşenleri nelerdir?
 

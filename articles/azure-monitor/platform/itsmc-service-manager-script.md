@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: bb21bcefa0f9fb6f691ebfb578177c64543c1403
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549659"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325313"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Otomatikleştirilmiş betiği kullanarak Service Manager Web uygulaması oluşturma
 
-Service Manager örneğiniz için Web uygulaması oluşturmak üzere aşağıdaki betiği kullanın. Service Manager bağlantısı hakkında daha fazla bilgi şu şekildedir: [Service Manager Web uygulaması](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Service Manager örneğiniz için Web uygulaması oluşturmak üzere aşağıdaki betiği kullanın. Service Manager bağlantısı hakkında daha fazla bilgi şu şekildedir: [Service Manager Web uygulaması](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Aşağıdaki gerekli ayrıntıları sağlayarak betiği çalıştırın:
 
@@ -32,7 +32,7 @@ Bu değerleri kaydedin, BT Hizmet Yönetimi Bağlayıcısı bir bağlantı oluş
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
  Windows Management Framework 5,0 veya üzeri.
 Windows 10 varsayılan olarak 5,1 ' dir. Çerçeveyi [buradan](https://www.microsoft.com/download/details.aspx?id=50395)indirebilirsiniz:
@@ -318,4 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Karma bağlantıyı yapılandırın](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).
+[Karma bağlantıyı yapılandırın](./itsmc-connections.md#configure-the-hybrid-connection).
+

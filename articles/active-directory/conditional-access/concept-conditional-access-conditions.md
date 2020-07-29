@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024473"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275012"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -63,6 +63,9 @@ Konumlar hakkında daha fazla bilgi için, [Azure Active Directory Koşullu eri�
 ## <a name="client-apps-preview"></a>İstemci uygulamaları (Önizleme)
 
 Koşullu erişim ilkeleri, varsayılan olarak modern kimlik doğrulama protokollerini kullanan tarayıcı tabanlı uygulamalar ve uygulamalar için geçerlidir. Yöneticiler, bu uygulamaların yanı sıra Exchange ActiveSync istemcilerini ve eski protokolleri kullanan diğer istemcileri de dahil etmek için seçim yapabilir.
+
+> [!NOTE]
+> Hangi istemci uygulamalarının seçili olduğunu görmeyi kolaylaştırmak için istemci uygulamaları koşulunda yapılandırma Evet/Hayır geçişi kaldırılmıştır. Bu, var olan bir ilkenin hangi istemci uygulamalarına uygulanacağını etkilemez.
 
 - Tarayıcı
    - Bunlar SAML, WS-Federation, OpenID Connect gibi protokolleri kullanan Web tabanlı uygulamaları veya OAuth gizli istemci olarak kaydedilmiş hizmetleri içerir.

@@ -3,12 +3,12 @@ title: VM ve PaaS test ortamları için Azure DevTest Labs kullanın | Microsoft
 description: VM ve PaaS test ortamı senaryolarında Azure DevTest Labs nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f364c227c1b53b7887b34c8a3c92ad9045526328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484171"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272919"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>VM ve PaaS test ortamları için Azure DevTest Labs kullanma
 
@@ -48,7 +48,7 @@ Bu makalede, sınayıcı gereksinimlerini karşılamak için kullanılan çeşit
    | --- | --- |
    | [Azure Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) |Azure Marketi görüntülerini beyaz listeye eklemeyi öğrenin ve yalnızca Sınayıcılar için istediğiniz görüntüleri seçilebilir hale getirebilirsiniz.|
    | [Özel görüntü oluşturma](devtest-lab-create-template.md) |Test edicilerin özel görüntüyü kullanarak hızlı bir şekilde VM oluşturabilmesi için ihtiyacınız olan yazılımı önceden yükleyerek özel bir görüntü oluşturun.|
-   | [Image Factory hakkında bilgi edinin](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Bir görüntü fabrikası ayarlamayı ve kullanmayı açıklayan bir video izleyin.|
+   | [Image Factory hakkında bilgi edinin](./devtest-lab-faq.md#blog-post) |Bir görüntü fabrikası ayarlamayı ve kullanmayı açıklayan bir video izleyin.|
 
 3. **Test makineleri için yeniden kullanılabilir şablonlar oluşturma** 
    
@@ -139,4 +139,3 @@ Bu makalede, sınayıcı gereksinimlerini karşılamak için kullanılan çeşit
    | [Kaynak Yöneticisi şablonu kullanarak laboratuvar oluşturma](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Kaynak Yöneticisi şablonları kullanarak Azure DevTest Labs laboratuvarları oluşturun. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

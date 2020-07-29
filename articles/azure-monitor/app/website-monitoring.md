@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, Azure Izleyici Application Insights ile 
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: fa2ecd5d953ec0411a122dc7107ce23de1ae5bc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb6c0a8319257949cee8f35be6cdfac22f1fe5d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014057"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323443"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Hızlı başlangıç: Azure Izleyici Application Insights Web sitenizi izlemeye başlayın
 
@@ -105,15 +105,15 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
 
    ![Belirli bir süre içindeki kullanıcı isteklerinin analiz grafiği](./media/website-monitoring/analytics-query.png)
 
-1. **Genel Bakış** sayfasına geri gidin. **Araştır** üst bilgisi altında **tarayıcı**' yı seçin ve ardından **performans**' ı seçin.  Web sitenizin performansıyla ilgili ölçümler görüntülenir. Web sitenizde hataların ve özel durumların çözümlenmesi için karşılık gelen bir görünüm vardır. [Uçtan uca işlem ayrıntılarına](../../azure-monitor/app/transaction-diagnostics.md)erişmek için **örnekler** seçebilirsiniz.
+1. **Genel Bakış** sayfasına geri gidin. **Araştır** üst bilgisi altında **tarayıcı**' yı seçin ve ardından **performans**' ı seçin.  Web sitenizin performansıyla ilgili ölçümler görüntülenir. Web sitenizde hataların ve özel durumların çözümlenmesi için karşılık gelen bir görünüm vardır. [Uçtan uca işlem ayrıntılarına](./transaction-diagnostics.md)erişmek için **örnekler** seçebilirsiniz.
 
    ![Sunucu ölçüm grafiği](./media/website-monitoring/browser-performance.png)
 
-1. Ana Application Insights menüsünde, **kullanım** üst bilgisi altında [**Kullanıcılar**](../../azure-monitor/app/usage-segmentation.md) ' ı seçerek [Kullanıcı davranışı analizi araçlarını](../../azure-monitor/app/usage-overview.md)keşfetmeye başlayabilirsiniz. Tek bir makineden test edildiğimiz için yalnızca bir kullanıcının verilerini görebiliriz. Canlı bir Web sitesi için kullanıcıların dağıtılması şöyle görünebilir:
+1. Ana Application Insights menüsünde, **kullanım** üst bilgisi altında [**Kullanıcılar**](./usage-segmentation.md) ' ı seçerek [Kullanıcı davranışı analizi araçlarını](./usage-overview.md)keşfetmeye başlayabilirsiniz. Tek bir makineden test edildiğimiz için yalnızca bir kullanıcının verilerini görebiliriz. Canlı bir Web sitesi için kullanıcıların dağıtılması şöyle görünebilir:
 
      ![Kullanıcı grafiği](./media/website-monitoring/usage-users.png)
 
-1. Birden çok sayfa içeren daha karmaşık bir Web sitesi için, ziyaretçilerin web sitenizin çeşitli kısımlarını ele aldığı patika izlemek için [**Kullanıcı akışları**](../../azure-monitor/app/usage-flows.md) aracını kullanabilirsiniz.
+1. Birden çok sayfa içeren daha karmaşık bir Web sitesi için, ziyaretçilerin web sitenizin çeşitli kısımlarını ele aldığı patika izlemek için [**Kullanıcı akışları**](./usage-flows.md) aracını kullanabilirsiniz.
 
    ![Kullanıcı Akışları görselleştirmesi](./media/website-monitoring/user-flows.png)
 
@@ -133,3 +133,4 @@ Ek hızlı başlangıçlarla veya öğreticilerle çalışmaya devam etmeyi plan
 
 > [!div class="nextstepaction"]
 > [Performans sorunlarını bulma ve tanılama](../log-query/log-query-overview.md)
+

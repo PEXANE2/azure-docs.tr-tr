@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: ''
-ms.openlocfilehash: df23226adfa8caa86b7ad91dd28a9352381f4170
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b33c0b98a39347efeaaabbb86f6ee3e6b5f5d912
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747561"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288214"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Google Maps 'tan bir Web uygulaması geçirme
 
@@ -32,7 +32,7 @@ Tabloda, Google Maps v3 JavaScript SDK 'sindeki temel API özellikleri ve Azure 
 
 | Google Haritalar özelliği     | Azure Maps web SDK desteği |
 |-------------------------|:--------------------------:|
-| İşaretler                 | ✓                          |
+| İşaretleyiciler                 | ✓                          |
 | İşaretleyici Kümelemesi       | ✓                          |
 | Polylines & çokgenler    | ✓                          |
 | Veri katmanları             | ✓                          |
@@ -422,7 +422,7 @@ Bir haritadaki noktaları temsil etmek için özel görüntüler kullanabilirsin
 <center>
 
 ![sarı raptiye resmi](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
-YLW \_ raptiye. png</center>
+YLW \_pushpin.png</center>
 
 **Önce: Google Maps**
 
@@ -1025,10 +1025,10 @@ Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümel
 
 | Özellik adı             | Tür    | Açıklama   |
 |---------------------------|---------|---------------|
-| `cluster`                 | boole | Özelliğin bir kümeyi temsil ettiğini belirtir. |
-| `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
+| `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
+| `cluster_id`              | dize  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
 | `point_count`             | sayı  | Kümenin içerdiği noktaların sayısı.  |
-| `point_count_abbreviated` | string  | Long ise değeri abbreviates bir dize `point_count` . (örneğin, 4.000 4K olur)  |
+| `point_count_abbreviated` | dize  | Long ise değeri abbreviates bir dize `point_count` . (örneğin, 4.000 4K olur)  |
 
 `DataSource`Sınıfı, kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir `cluster_id` .
 
@@ -1703,8 +1703,8 @@ Aşağıdaki ek, Google Maps v3 ve eşdeğer Azure Maps web SDK 'sında yaygın 
 
 | Google Haritalar  | Azure Haritalar  |
 |--------------|-------------|
-| `google.maps.Marker` | [Atlas. Htmlişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)<br/>[Atlas. Data. Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)  |
-| `google.maps.MarkerOptions`  | [Atlas. HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-iot-typescript-latest)<br/>[Atlas. Layer. SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)<br/>[Atlas. SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)<br/>[Atlas. IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)<br/>[Atlas. TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Layer. BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)<br/>[Atlas. BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest) |
+| `google.maps.Marker` | [atlas.HtmLişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)<br/>[Atlas. Data. Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)  |
+| `google.maps.MarkerOptions`  | [atlas.HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-iot-typescript-latest)<br/>[Atlas. Layer. SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)<br/>[Atlas. SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)<br/>[Atlas. IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)<br/>[Atlas. TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Layer. BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)<br/>[Atlas. BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest) |
 | `google.maps.Polygon`  | [Atlas. Data. Çokgen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)               |
 | `google.maps.PolygonOptions` |[Atlas. Layer. PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)<br/> [Atlas. PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)<br/> [Atlas. Layer. LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)<br/> [Atlas. LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)|
 | `google.maps.Polyline` | [Atlas. Data. LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest)         |
@@ -1716,7 +1716,7 @@ Aşağıdaki ek, Google Maps v3 ve eşdeğer Azure Maps web SDK 'sında yaygın 
 
 ## <a name="service-classes"></a>Hizmet sınıfları
 
-Azure Haritalar Web SDK 'Sı, ayrı olarak yüklenebilen bir hizmet modülünü içerir. Bu modül, Azure Maps REST hizmetlerini bir Web API 'siyle sarmalayan ve JavaScript, TypeScript ve Node. js uygulamalarında kullanılabilir.
+Azure Haritalar Web SDK 'Sı, ayrı olarak yüklenebilen bir hizmet modülünü içerir. Bu modül, Azure Maps REST hizmetlerini bir Web API 'siyle sarmalayan ve JavaScript, TypeScript ve Node.js uygulamalarında kullanılabilir.
 
 | Google Haritalar | Azure Haritalar  |
 |-------------|-------------|

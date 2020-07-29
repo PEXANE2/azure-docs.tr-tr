@@ -7,13 +7,13 @@ ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: c85763ffb12ac93f3aff667c4660afa22ca6a99f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 6400f36c12c8c579bcd019711242dd4edb8449b7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521267"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321029"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>Hızlı başlangıç: örnek bir IoT Tak ve Kullan Preview cihaz uygulamasını IoT Hub 'a bağlama (Java)
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, örnek bir IoT Tak ve Kullan cihaz uygulamasının na
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Java, 8 gerekir. Ayrıca Maven 3 ' ü yüklemeniz gerekir.
 

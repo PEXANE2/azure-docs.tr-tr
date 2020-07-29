@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstü Web istemcisi 'ni bağlama-Azure
-description: Web istemcisini kullanarak Windows sanal masaüstüne bağlanma.
+title: Windows sanal masaüstü (klasik) Web istemcisi-Azure 'a bağlanma
+description: Web istemcisini kullanarak Windows sanal masaüstüne (klasik) bağlanma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e95498498fd15d7a6e73630e218f9bdd1b892f09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efe97c86ebfac8e130489b3105a97302866d6822
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204804"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270388"
 ---
-# <a name="connect-with-the-web-client"></a>Web istemcisiyle bağlanma
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>Web istemcisiyle Windows sanal masaüstüne (klasik) bağlanma
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../connect-web.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../connect-web.md)bakın.
 
 Web istemcisi, Windows sanal masaüstü kaynaklarınıza, uzun yükleme işlemi olmadan bir Web tarayıcısından erişmenizi sağlar.
 
@@ -42,7 +42,7 @@ HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşa�
 Bir tarayıcıda, adresindeki Windows Sanal Masaüstü Web istemcisine gidin <https://rdweb.wvd.microsoft.com/webclient> ve Kullanıcı hesabınızla oturum açın.
 
 >[!NOTE]
->Azure Resource Manager tümleştirme ile Windows sanal masaüstü Spring 2020 sürümünü kullanıyorsanız, <https://rdweb.wvd.microsoft.com/arm/webclient> bunun yerine kaynaklarınıza bağlanın.
+>Azure Resource Manager tümleştirme ile Windows sanal masaüstü kullanıyorsanız, <https://rdweb.wvd.microsoft.com/arm/webclient> bunun yerine kaynaklarınıza bağlanın.
 
 >[!NOTE]
 >Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, oturumunuzu açmanız veya özel bir tarayıcı penceresi kullanmanız gerekir.

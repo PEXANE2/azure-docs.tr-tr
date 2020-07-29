@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 7f5ad0b493f925ce34ffe19892fa432322995a9c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 45b535db9fccb41542ee74cb28845d49211e16ec
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125216"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281064"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
-**Azure dijital TWINS** , ortamların tamamına yönelik kapsamlı dijital modellerin oluşturulmasına izin veren bir IoT platformudur. Bu ortamlar binalar, oluşturucular, gruplar, enerji ağları, railler, lekeler ve daha fazlası gibi tüm şehirlerde bile olabilir. Bu dijital modeller, daha iyi ürünler, iyileştirilmiş işlemler, düşük maliyetler ve müşteri deneyimlerini ele alan Öngörüler elde etmek için kullanılabilir.
+**Azure dijital TWINS** , ortamların tamamına yönelik kapsamlı dijital modellerin oluşturulmasına izin veren bir hizmet olarak platform (PaaS) teklifiyle oluşur. Bu ortamlar binalar, oluşturucular, gruplar, enerji ağları, railler, lekeler ve daha fazlası gibi tüm şehirlerde bile olabilir. Bu dijital modeller, daha iyi ürünler, iyileştirilmiş işlemler, düşük maliyetler ve müşteri deneyimlerini ele alan Öngörüler elde etmek için kullanılabilir.
 
 Azure dijital TWINS 'in en üstündeki etki alanı uzmanlığınızdan yararlanarak özelleştirilmiş, bağlı çözümler oluşturun:
 * Tüm ortamları modelleyin ve dijital TWINS 'i ölçeklenebilir ve güvenli bir şekilde yaşam altına alın

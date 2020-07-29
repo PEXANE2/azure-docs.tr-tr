@@ -4,12 +4,12 @@ description: Application Insights kullanmaya başlayın. Şirket içi veya Micro
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014174"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323460"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web uygulamalarının performansını izleme
 
@@ -23,9 +23,9 @@ Application Insights hem Java hem de ASP.NET Web uygulamaları ve Hizmetleri, WC
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Performans izlemeyi ayarlama
 Projenize henüz Application Insights eklemediyseniz (yani, ApplicationInsights.config yoksa), başlamak için şu yollarla birini seçin:
 
-* [ASP.NET web uygulamaları](../../azure-monitor/app/asp-net.md)
-  * [Özel durum izleme ekleme](../../azure-monitor/app/asp-net-exceptions.md)
-  * [Bağımlılık izleme ekleme](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [ASP.NET web uygulamaları](./asp-net.md)
+  * [Özel durum izleme ekleme](./asp-net-exceptions.md)
+  * [Bağımlılık izleme ekleme](./monitor-performance-live-website-now.md)
 * [Java EE Web uygulamaları](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Performans ölçümlerini keşfetme
@@ -106,7 +106,7 @@ Performans sorunlarını bulmak ve tanılamak için birkaç ipucu aşağıda ver
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Performans araştırma deneyimiyle performans sorunlarını bulun ve onarın
 
-Web uygulamanızda yavaş gerçekleştirilen işlemleri gözden geçirmek için performans araştırma deneyimini kullanabilirsiniz. Hızlı bir şekilde belirli bir yavaş işlemi seçebilir ve temel işlem için [Profil Oluşturucu](../../azure-monitor/app/profiler.md) kullanarak yavaş işlemleri koda düşürür. Seçilen işlem için gösterilen yeni süre dağıtımını kullanarak hızlı bir şekilde, yalnızca bir deneyimin müşterileriniz için ne kadar kötü olduğunu değerlendirirsiniz. Her bir yavaş işlem için Kullanıcı etkileşimlerinizin kaç tane etkilendiğinin nasıl etkileneceği hakkında bilgi alabilirsiniz. Aşağıdaki örnekte, müşteriler/Ayrıntılar alma deneyiminden daha yakından göz atalım. Süre dağıtımında, üç ani artışlar olduğunu görebiliriz. En soldaki ani artış 400 MS 'den ve çok fazla yanıt veren deneyimi temsil etmektedir. Orta artış 1,2 ' in etrafında ve bir mediocre deneyimini temsil etmektedir. Son olarak 3,6 s ' de, müşterilerimizin karşılanmamasına neden olan 99. yüzdebirlik deneyimini temsil eden bir küçük ani artış vardır. Bu deneyim, aynı işlem için harika deneyimden on kat daha yavaştır. 
+Web uygulamanızda yavaş gerçekleştirilen işlemleri gözden geçirmek için performans araştırma deneyimini kullanabilirsiniz. Hızlı bir şekilde belirli bir yavaş işlemi seçebilir ve temel işlem için [Profil Oluşturucu](./profiler.md) kullanarak yavaş işlemleri koda düşürür. Seçilen işlem için gösterilen yeni süre dağıtımını kullanarak hızlı bir şekilde, yalnızca bir deneyimin müşterileriniz için ne kadar kötü olduğunu değerlendirirsiniz. Her bir yavaş işlem için Kullanıcı etkileşimlerinizin kaç tane etkilendiğinin nasıl etkileneceği hakkında bilgi alabilirsiniz. Aşağıdaki örnekte, müşteriler/Ayrıntılar alma deneyiminden daha yakından göz atalım. Süre dağıtımında, üç ani artışlar olduğunu görebiliriz. En soldaki ani artış 400 MS 'den ve çok fazla yanıt veren deneyimi temsil etmektedir. Orta artış 1,2 ' in etrafında ve bir mediocre deneyimini temsil etmektedir. Son olarak 3,6 s ' de, müşterilerimizin karşılanmamasına neden olan 99. yüzdebirlik deneyimini temsil eden bir küçük ani artış vardır. Bu deneyim, aynı işlem için harika deneyimden on kat daha yavaştır. 
 
 ![Müşterileri/ayrıntıları al üç süreli ani artışlar](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -142,12 +142,13 @@ Performans araştırma deneyimi, odaklanmaya karar verdiğiniz örnek küme üze
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
 [usage]: usage-overview.md
-[livestream]: ../../azure-monitor/app/live-stream.md
-[snapshot]: ../../azure-monitor/app/snapshot-debugger.md
+[livestream]: ./live-stream.md
+[snapshot]: ./snapshot-debugger.md
+

@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdfcda0ce466299d57f79ba1e60a96309078587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be80ff95cc03f8cf2a08e9ce92146fe5028dcb9c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014358"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275281"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -116,6 +117,7 @@ Yöneticiler, Microsoft uygulamalarına ek olarak, koşullu erişim ilkelerine h
 - [Galeriden eklenen uygulamalar](../manage-apps/add-application-portal.md)
 - [Galeride bulunmayan özel uygulamalar](../manage-apps/add-non-gallery-app.md)
 - [Uygulama teslim denetleyicileri ve ağları aracılığıyla yayınlanan eski uygulamalar](../manage-apps/secure-hybrid-access.md)
+- [Parola tabanlı tek tek Sing](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) kullanan uygulamalar
 
 > [!NOTE]
 > Koşullu erişim ilkesi bir hizmete erişim gereksinimlerini ayarladığından, bir istemci (genel/yerel) uygulamasına uygulayamazsınız. Diğer bir deyişle, ilke doğrudan istemci (ortak/yerel) uygulama üzerinde ayarlanmamış ancak istemci bir hizmet çağırdığında uygulanır. Örneğin, SharePoint hizmetinde ayarlanan bir ilke, SharePoint 'i çağıran istemciler için geçerlidir. Exchange üzerinde ayarlanan bir ilke, e-postaya Outlook istemcisi kullanılarak erişme girişimi için geçerlidir. İstemci (genel/yerel) uygulamalarının bulut uygulamaları seçicisinden seçilemediği ve koşullu erişim seçeneğinin, kiracınızda kayıtlı olan istemci (genel/yerel) uygulamanın uygulama ayarlarında kullanılamaz olması bu budur. 

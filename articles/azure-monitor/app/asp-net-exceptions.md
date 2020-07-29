@@ -3,24 +3,24 @@ title: Azure Application Insights ile ilgili sorunları ve özel durumları tan�
 description: ASP.NET uygulamalarından gelen özel durumları, istek telemetriyle birlikte yakalayın.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517221"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321369"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile Web uygulamalarınızda özel durumları tanılama
-Canlı Web uygulamanızdaki özel durumlar [Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından raporlanır. Nedenleri hızlı bir şekilde tanılamanıza olanak tanımak için hem istemci hem de sunucudaki başarısız istekleri özel durumlarla ve diğer olaylarla ilişkilendirebileceğinizi unutmayın.
+Canlı Web uygulamanızdaki özel durumlar [Application Insights](./app-insights-overview.md)tarafından raporlanır. Nedenleri hızlı bir şekilde tanılamanıza olanak tanımak için hem istemci hem de sunucudaki başarısız istekleri özel durumlarla ve diğer olaylarla ilişkilendirebileceğinizi unutmayın.
 
 ## <a name="set-up-exception-reporting"></a>Özel durum raporlamayı ayarlama
 * Sunucu uygulamanızdan bildirilen özel durumların olması için:
-  * Azure Web Apps: [Application Insights uzantısını](../../azure-monitor/app/azure-web-apps.md) ekleyin
-  * Azure VM ve Azure sanal makine ölçek kümesi IIS tarafından barındırılan uygulamalar: [uygulama Izleme uzantısını](../../azure-monitor/app/azure-vm-vmss-apps.md) ekleme
-  * Uygulama kodunuza [APPLICATION INSIGHTS SDK](../../azure-monitor/app/asp-net.md) 'yı yükleyip
-  * IIS Web sunucuları: [Application Insights aracıyı](../../azure-monitor/app/monitor-performance-live-website-now.md)Çalıştır; veya
+  * Azure Web Apps: [Application Insights uzantısını](./azure-web-apps.md) ekleyin
+  * Azure VM ve Azure sanal makine ölçek kümesi IIS tarafından barındırılan uygulamalar: [uygulama Izleme uzantısını](./azure-vm-vmss-apps.md) ekleme
+  * Uygulama kodunuza [APPLICATION INSIGHTS SDK](./asp-net.md) 'yı yükleyip
+  * IIS Web sunucuları: [Application Insights aracıyı](./monitor-performance-live-website-now.md)Çalıştır; veya
   * Java Web Apps: [Java aracısını](./java-in-process-agent.md) etkinleştirme
-* Tarayıcı özel durumlarını yakalamak için Web sayfalarınıza [JavaScript kod parçacığını](../../azure-monitor/app/javascript.md) yükler.
+* Tarayıcı özel durumlarını yakalamak için Web sayfalarınıza [JavaScript kod parçacığını](./javascript.md) yükler.
 * Bazı uygulama çerçeveleri veya bazı ayarlarla daha fazla özel durum yakalamak için bazı ek adımlar gerçekleştirmeniz gerekir:
   * [Web formları](#web-forms)
   * [MVC](#mvc)
@@ -70,31 +70,31 @@ Uygulamanıza özel tanılama verileri almak için kendi telemetri verilerinizi 
 
 Birkaç seçeneğiniz vardır:
 
-* [Trackingkevent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) genellikle kullanım düzenlerini izlemek için kullanılır, ancak gönderdiği veriler, tanılama aramasında özel olaylar altında da görünür. Olaylar adlandırılır ve [Tanılama aramalarınızı filtreleyebileceğiniz](../../azure-monitor/app/diagnostic-search.md)dize özelliklerini ve sayısal ölçümleri taşıyabilir.
-* [Tracktrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) , gönderi bilgileri gibi daha uzun veriler göndermenizi sağlar.
+* [Trackingkevent ()](./api-custom-events-metrics.md#trackevent) genellikle kullanım düzenlerini izlemek için kullanılır, ancak gönderdiği veriler, tanılama aramasında özel olaylar altında da görünür. Olaylar adlandırılır ve [Tanılama aramalarınızı filtreleyebileceğiniz](./diagnostic-search.md)dize özelliklerini ve sayısal ölçümleri taşıyabilir.
+* [Tracktrace ()](./api-custom-events-metrics.md#tracktrace) , gönderi bilgileri gibi daha uzun veriler göndermenizi sağlar.
 * [Trackexception ()](#exceptions) yığın izlemeleri gönderir. [Özel durumlar hakkında daha fazla](#exceptions)bilgi.
 * Log4Net veya NLog gibi bir günlük çerçevesini zaten kullanıyorsanız, [Bu günlükleri yakalayabilir](asp-net-trace-logs.md) ve istek ve özel durum verilerinin yanı sıra tanılama araması içinde görebilirsiniz.
 
-Bu olayları görmek için, sol menüden [Ara](../../azure-monitor/app/diagnostic-search.md) ' yı açın, açılan menü **olay türlerini**seçin ve ardından özel olay, izleme veya özel durum ' u seçin.
+Bu olayları görmek için, sol menüden [Ara](./diagnostic-search.md) ' yı açın, açılan menü **olay türlerini**seçin ve ardından özel olay, izleme veya özel durum ' u seçin.
 
 ![Detaylandırma](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
-> Uygulamanız çok sayıda telemetri oluşturuyorsa, uyarlamalı örnekleme modülü olayların yalnızca bir temsilci fraksiyonunu göndererek portala gönderilen hacmi otomatik olarak azaltır. Aynı işlemin parçası olan olaylar, ilgili olaylar arasında gezinebilmeniz için Grup olarak seçilecek veya seçimden kaldırılacak. [Örnekleme hakkında bilgi edinin.](../../azure-monitor/app/sampling.md)
+> Uygulamanız çok sayıda telemetri oluşturuyorsa, uyarlamalı örnekleme modülü olayların yalnızca bir temsilci fraksiyonunu göndererek portala gönderilen hacmi otomatik olarak azaltır. Aynı işlemin parçası olan olaylar, ilgili olaylar arasında gezinebilmeniz için Grup olarak seçilecek veya seçimden kaldırılacak. [Örnekleme hakkında bilgi edinin.](./sampling.md)
 >
 >
 
 ### <a name="how-to-see-request-post-data"></a>İstek SONRASı verileri nasıl görüntülenir
 İstek ayrıntıları, uygulamanıza gönderilen verileri bir POST çağrısıyla içermez. Bu verilerin bildirilmesi için:
 
-* [SDK 'yı](../../azure-monitor/app/asp-net.md) uygulama projenize yükler.
-* [Microsoft. ApplicationInsights. TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)öğesini çağırmak için uygulamanıza kod ekleyin. POST verilerini ileti parametresine gönderin. İzin verilen boyut sınırı vardır. bu nedenle yalnızca gerekli verileri göndermeye çalışırsınız.
+* [SDK 'yı](./asp-net.md) uygulama projenize yükler.
+* [Microsoft. ApplicationInsights. TrackTrace ()](./api-custom-events-metrics.md#tracktrace)öğesini çağırmak için uygulamanıza kod ekleyin. POST verilerini ileti parametresine gönderin. İzin verilen boyut sınırı vardır. bu nedenle yalnızca gerekli verileri göndermeye çalışırsınız.
 * Başarısız bir isteği araştırdığınızda, ilişkili izlemeleri bulun.
 
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Özel durumları ve ilgili tanılama verilerini yakalama
-İlk olarak, portalda hatalara neden olan tüm özel durumların portalda görmezsiniz. Herhangi bir tarayıcı özel durumu görürsünüz (Web sayfalarınızda [JavaScript SDK 'sını](../../azure-monitor/app/javascript.md) kullanıyorsanız). Ancak, çoğu sunucu özel durumu IIS tarafından yakalanır ve bunları görmek için bir kod yazmanız gerekir.
+İlk olarak, portalda hatalara neden olan tüm özel durumların portalda görmezsiniz. Herhangi bir tarayıcı özel durumu görürsünüz (Web sayfalarınızda [JavaScript SDK 'sını](./javascript.md) kullanıyorsanız). Ancak, çoğu sunucu özel durumu IIS tarafından yakalanır ve bunları görmek için bir kod yazmanız gerekir.
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 * Özel durumları raporlamak için özel durum işleyicilerinde kod ekleyerek **özel durumları açıkça günlüğe kaydedin** .
 * ASP.NET çerçevesini yapılandırarak **özel durumları otomatik olarak yakalayın** . Gerekli eklemeler farklı çerçeve türleri için farklıdır.
@@ -152,7 +152,7 @@ En kolay yol, bir özel durum işleyicisinde TrackException () çağrısı kulla
     End Try
 ```
 
-Özellikler ve ölçümler parametreleri isteğe bağlıdır, ancak [filtreleme ve](../../azure-monitor/app/diagnostic-search.md) ek bilgi ekleme için faydalıdır. Örneğin, birkaç oyun çalıştırabileceğinizi bir uygulamanız varsa, belirli bir oyunla ilgili tüm özel durum raporlarını bulabilirsiniz. Her bir sözlüğe dilediğiniz kadar öğe ekleyebilirsiniz.
+Özellikler ve ölçümler parametreleri isteğe bağlıdır, ancak [filtreleme ve](./diagnostic-search.md) ek bilgi ekleme için faydalıdır. Örneğin, birkaç oyun çalıştırabileceğinizi bir uygulamanız varsa, belirli bir oyunla ilgili tüm özel durum raporlarını bulabilirsiniz. Her bir sözlüğe dilediğiniz kadar öğe ekleyebilirsiniz.
 
 ## <a name="browser-exceptions"></a>Tarayıcı özel durumları
 Çoğu tarayıcı özel durumu raporlanır.
@@ -199,14 +199,14 @@ Ancak etkin yeniden yönlendirmelere sahipseniz, Global.asax.cs içindeki Applic
 ## <a name="mvc"></a>MVC
 Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden itibaren, Application Insights MVC 5 + denetleyiciler yöntemlerinde otomatik olarak oluşturulan işlenmeyen özel durumları toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift izlemesini engellemek için bunu kaldırabilirsiniz.
 
-Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örneğin:
+Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örnek:
 
-* Denetleyici oluşturucularından oluşturulan özel durumlar.
+* Denetleyici oluşturucularından gelen özel durumlar.
 * İleti işleyicilerinden oluşturulan özel durumlar.
 * Yönlendirme sırasında oluşturulan özel durumlar.
-* Yanıt içeriği serileştirme sırasında oluşturulan özel durumlar.
-* Uygulama başlatılırken özel durum oluştu.
-* Arka plan görevlerinde özel durum oluşturuldu.
+* Yanıt içeriği serileştirmesi sırasında oluşturulan özel durumlar.
+* Uygulama başlatma sırasında oluşturulan özel durum.
+* Arka plan görevlerinde oluşturulan özel durum.
 
 Uygulama tarafından *işlenen* tüm özel durumların yine de el ile izlenmesi gerekir.
 Denetleyicilerden kaynaklanan işlenmemiş özel durumlar genellikle 500 "Iç sunucu hatası" yanıtı ile sonuçlanır. Bu tür bir yanıt işlenmiş özel durumun sonucu olarak el ile oluşturulursa (veya hiç özel durum yoksa), 500 ile ilgili istek telemetrisi içinde izlenir `ResultCode` , ancak APPLICATION INSIGHTS SDK karşılık gelen özel durumu izleyemiyor.
@@ -291,14 +291,14 @@ AiHandleErrorAttribute 'ı FilterConfig.cs içinde genel bir filtre olarak Kayde
 ## <a name="web-api"></a>Web API
 Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden başlayarak, Application Insights, denetleyici yöntemlerinde otomatik olarak oluşturulan işlenmeyen özel durumları, WebAPI 2 + için otomatik olarak toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift izlemesini engellemek için bunu kaldırabilirsiniz.
 
-Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örneğin:
+Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örnek:
 
-* Denetleyici oluşturucularından oluşturulan özel durumlar.
+* Denetleyici oluşturucularından gelen özel durumlar.
 * İleti işleyicilerinden oluşturulan özel durumlar.
 * Yönlendirme sırasında oluşturulan özel durumlar.
-* Yanıt içeriği serileştirme sırasında oluşturulan özel durumlar.
-* Uygulama başlatılırken özel durum oluştu.
-* Arka plan görevlerinde özel durum oluşturuldu.
+* Yanıt içeriği serileştirmesi sırasında oluşturulan özel durumlar.
+* Uygulama başlatma sırasında oluşturulan özel durum.
+* Arka plan görevlerinde oluşturulan özel durum.
 
 Uygulama tarafından *işlenen* tüm özel durumların yine de el ile izlenmesi gerekir.
 Denetleyicilerden kaynaklanan işlenmemiş özel durumlar genellikle 500 "Iç sunucu hatası" yanıtı ile sonuçlanır. Bu tür bir yanıt işlenmiş özel durumun sonucu olarak el ile oluşturulursa (veya hiç özel durum yoksa), 500 ile ilgili bir istek telemetriyle izlenir `ResultCode` , ancak APPLICATION INSIGHTS SDK karşılık gelen özel durumu izleyemiyor.
@@ -482,7 +482,7 @@ Add the attribute to the service implementations:
 [Örnek](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Özel durum performans sayaçları
-Sunucunuza [Application Insights aracısını yüklediyseniz](../../azure-monitor/app/monitor-performance-live-website-now.md) , .NET tarafından ölçülen özel durum hızının bir grafiğini alabilirsiniz. Bu hem işlenmiş hem de işlenmemiş .NET özel durumlarını içerir.
+Sunucunuza [Application Insights aracısını yüklediyseniz](./monitor-performance-live-website-now.md) , .NET tarafından ölçülen özel durum hızının bir grafiğini alabilirsiniz. Bu hem işlenmiş hem de işlenmemiş .NET özel durumlarını içerir.
 
 Ölçüm Gezgini sekmesini açın, yeni bir grafik ekleyin ve performans sayaçları altında listelenen **özel durum oranı**' nı seçin.
 
@@ -491,6 +491,7 @@ Sunucunuza [Application Insights aracısını yüklediyseniz](../../azure-monito
 Bu, Application Insights Portal sayımı TrackException raporları tarafından hesaplanan ' Exceptions ' sayımından farklıdır. Örnekleme aralıkları farklıdır ve SDK, işlenmiş ve işlenmemiş özel durumlar için TrackException raporları göndermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [REST, SQL ve diğer bağımlılıklara yapılan çağrıları izleme](../../azure-monitor/app/asp-net-dependencies.md)
-* [Sayfa yükleme sürelerini, tarayıcı özel durumlarını ve AJAX çağrılarını izleyin](../../azure-monitor/app/javascript.md)
-* [Performans sayaçlarını izleme](../../azure-monitor/app/performance-counters.md)
+* [REST, SQL ve diğer bağımlılıklara yapılan çağrıları izleme](./asp-net-dependencies.md)
+* [Sayfa yükleme sürelerini, tarayıcı özel durumlarını ve AJAX çağrılarını izleyin](./javascript.md)
+* [Performans sayaçlarını izleme](./performance-counters.md)
+

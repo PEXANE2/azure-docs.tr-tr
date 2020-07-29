@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518054"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280231"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -23,6 +23,7 @@ Bu belge, aşağıdaki senaryoları desteklemeye yardımcı olmak için kullanı
 * [Azure Container Service (ACS)-devre dışı bırakma 31 ocak 2020,](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) aks 'e geçiriliyor
 * [Aks altyapısından](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) aks 'e geçiş
 * Azure olmayan tabanlı Kubernetes kümelerinden AKS 'e geçiş
+* Mevcut kaynakları farklı bir bölgeye taşıma
 
 Geçiş yaparken, hedef Kubernetes sürümünüzün AKS için desteklenen pencere kapsamında olduğundan emin olun. Daha eski bir sürüm kullanıyorsanız, bu desteklenen aralıkta olmayabilir ve yükseltme sürümlerinin AKS tarafından desteklenmesi gerekir. Daha fazla bilgi için bkz. [aks desteklenen Kubernetes sürümleri](./supported-kubernetes-versions.md) .
 

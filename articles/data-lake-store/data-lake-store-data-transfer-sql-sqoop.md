@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 32d17962938c9a1dc301c7a1a681801ed488c584
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985027"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323086"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop kullanarak Data Lake Storage 1. ve Azure SQL veritabanı arasında veri kopyalama
 
@@ -24,7 +24,7 @@ Büyük veri uygulamaları, Günlükler ve dosyalar gibi yapılandırılmamış 
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) , ilişkisel veritabanları ve Data Lake Storage 1. gibi büyük bir veri deposu arasında veri aktarmak için tasarlanan bir araçtır. Azure SQL veritabanı gibi bir ilişkisel veritabanı yönetim sisteminden (RDBMS) verileri Data Lake Storage 1. içine aktarmak için bu işlemi kullanabilirsiniz. Daha sonra büyük veri iş yüklerini kullanarak verileri dönüştürebilir ve analiz edebilir ve ardından verileri bir RDBMS 'ye geri aktarabilirsiniz. Bu makalede, Azure SQL veritabanı 'nda içeri/dışarı aktarılacak ilişkisel veritabanınız olarak bir veritabanı kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -102,7 +102,7 @@ An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depola
    Örneğin,
 
     ```console
-    sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
     ```
 
 1. Verilerin Data Lake Storage 1. hesabına aktarıldığını doğrulayın. Şu komutu çalıştırın:
@@ -134,7 +134,7 @@ An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depola
    Örneğin,
 
     ```console
-    sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
 1. Verilerin SQL veritabanı tablosuna yüklendiğini doğrulayın. [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) veya Visual Studio kullanarak Azure SQL veritabanına bağlanın ve ardından aşağıdaki sorguyu çalıştırın.
@@ -156,7 +156,7 @@ An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depola
 
 ## <a name="performance-considerations-while-using-sqoop"></a>Sqoop kullanılırken performans konuları
 
-Data Lake Storage 1. verileri kopyalamak için Sqoop işinizin performans ayarlaması hakkında bilgi için [Sqoop performans blog gönderisine](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)bakın.
+Data Lake Storage 1. verileri kopyalamak için Sqoop işinizin performans ayarlaması hakkında bilgi için [Sqoop performans blog gönderisine](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

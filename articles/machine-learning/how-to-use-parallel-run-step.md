@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: 23fe2704cb74a5dc1411d5556dd6f3bbbac8937a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 475c5b3073b25c79b57a2ab507af642a8af3547f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047983"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288874"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,13 +27,13 @@ ParallelRunStep sayesinde, daha fazla üretkenlik ve iyileştirilmiş maliyetle 
 
 Bu makalede, aşağıdaki görevleri öğreneceksiniz:
 
-> * Machine Learning kaynaklarını ayarlayın.
-> * Toplu çıkarım veri girişlerini ve çıkışını yapılandırın.
-> * Daha önce eğitilen görüntü sınıflandırma modelini [, veri kümesine](https://publicdataset.azurewebsites.net/dataDetail/mnist/) göre hazırlayın. 
-> * Çıkarım betiğinizi yazın.
-> * ParallelRunStep içeren bir [makine öğrenimi işlem hattı](concept-ml-pipelines.md) oluşturun ve genel test görüntülerinde Batch çıkarımı çalıştırın. 
-> * Yeni veri girişi ve parametreleriyle toplu çıkarımı çalıştırmayı yeniden gönderin. 
-> * Sonuçlara bakın.
+> 1. Machine Learning kaynaklarını ayarlayın.
+> 1. Toplu çıkarım veri girişlerini ve çıkışını yapılandırın.
+> 1. Daha önce eğitilen görüntü sınıflandırma modelini [, veri kümesine](https://publicdataset.azurewebsites.net/dataDetail/mnist/) göre hazırlayın. 
+> 1.  Çıkarım betiğinizi yazın.
+> 1. ParallelRunStep içeren bir [makine öğrenimi işlem hattı](concept-ml-pipelines.md) oluşturun ve genel test görüntülerinde Batch çıkarımı çalıştırın. 
+> 1. Yeni veri girişi ve parametreleriyle toplu çıkarımı çalıştırmayı yeniden gönderin. 
+> 1. Sonuçlara bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -205,16 +205,16 @@ model = Model.register(model_path="models/",
 Betik iki işlev *içermelidir* :
 - `init()`: Bu işlevi, daha sonraki çıkarım için pahalı veya genel hazırlık için kullanın. Örneğin, modeli genel bir nesneye yüklemek için kullanın. Bu işlev, işlem başlangıcında yalnızca bir kez çağrılır.
 -  `run(mini_batch)`: İşlev her örnek için çalışacaktır `mini_batch` .
-    -  `mini_batch`: ParallelRunStep Run metodunu çağırır ve bir liste ya da Pandas DataFrame 'i yönteme bağımsız değişken olarak geçiracaktır. Giriş bir TabularDataset ise, mini_batch içindeki her giriş bir dosya yolu olur.
-    -  `response`: Run () yöntemi bir Pandas DataFrame veya Array döndürmelidir. Append_row output_action için, döndürülen bu öğeler ortak çıkış dosyasına eklenir. Summary_only için öğelerin içeriği yok sayılır. Tüm çıkış eylemleri için, döndürülen her çıkış öğesi girdi öğesinin giriş mini Batch 'de başarılı bir şekilde çalıştırıldığını belirtir. Girişi, çıkış sonucunu çalıştırmak için eşlemek üzere, çalışma sonuçlarına yeterli miktarda veri eklendiğinden emin olun. Çalıştırma çıkışı çıkış dosyasında yazılır ve bu sırada olması garanti edilmez, çıktıda bir anahtarı, girişle eşlemek için kullanmalısınız.
+    -  `mini_batch`: `ParallelRunStep` çalıştırma yöntemini çağırır ve `DataFrame` yönteme bağımsız değişken olarak bir liste ya da Pandas geçirirsiniz. Giriş bir ise ve giriş bir ise, mini_batch içindeki her giriş bir dosya yolu olacaktır `FileDataset` `DataFrame` `TabularDataset` .
+    -  `response`: Run () yöntemi bir Pandas `DataFrame` veya dizi döndürmelidir. Append_row output_action için, döndürülen bu öğeler ortak çıkış dosyasına eklenir. Summary_only için öğelerin içeriği yok sayılır. Tüm çıkış eylemleri için, döndürülen her çıkış öğesi girdi öğesinin giriş mini Batch 'de başarılı bir şekilde çalıştırıldığını belirtir. Girişi, çıkış sonucunu çalıştırmak için eşlemek üzere, çalışma sonuçlarına yeterli miktarda veri eklendiğinden emin olun. Çalıştırma çıkışı çıkış dosyasında yazılır ve bu sırada olması garanti edilmez, çıktıda bir anahtarı, girişle eşlemek için kullanmalısınız.
 
 ```python
+%%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
-%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -289,7 +289,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 `ParallelRunConfig`, `ParallelRunStep` Azure Machine Learning işlem hattının içinde örnek için önemli bir yapılandırmadır. Komut dosyanızı kaydırmak ve aşağıdaki girdilerin tümü de dahil olmak üzere gerekli parametreleri yapılandırmak için kullanın:
 - `entry_script`: Birden çok düğümde paralel olarak çalıştırılacak yerel dosya yolu olarak bir Kullanıcı betiği. Varsa `source_directory` , göreli bir yol kullanın. Aksi takdirde, makinede erişilebilen herhangi bir yolu kullanın.
-- `mini_batch_size`: Tek bir çağrıya geçirilen mini toplu iş boyutu `run()` . (isteğe bağlı; varsayılan değer, `10` filedataset ve `1MB` TabularDataset için dosyalardır.)
+- `mini_batch_size`: Tek bir çağrıya geçirilen mini toplu iş boyutu `run()` . (isteğe bağlı; varsayılan değer `10` `FileDataset` ve `1MB` için dosyalarıdır `TabularDataset` .)
     - İçin `FileDataset` , en az değeri olan dosya sayısıdır `1` . Birden çok dosyayı tek bir mini toplu işte birleştirebilirsiniz.
     - İçin `TabularDataset` , verilerin boyutudur. Örnek değerler şunlardır,, `1024` `1024KB` `10MB` ve `1GB` . Önerilen değer `1MB` . Mini toplu iş, `TabularDataset` hiçbir zamanı çapraz dosya sınırlarına sahip olmayacaktır. Örneğin, çeşitli boyutlarda. csv dosyalarınız varsa en küçük dosya 100 KB 'tır ve en büyük değer 10 MB 'tır. Ayarlarsanız `mini_batch_size = 1MB` , boyutu 1 MB 'tan küçük olan dosyalar bir mini toplu işlem olarak kabul edilir. Boyutu 1 MB 'tan büyük olan dosyalar birden çok mini toplu iş içine bölünür.
 - `error_threshold`: `TabularDataset` `FileDataset` İşlem sırasında yok sayılacak olması gereken için kayıt hatalarının ve dosya hatalarının sayısı. Tüm girdinin hata sayısı bu değerin üzerine gittiğinde, iş iptal edilir. Hata eşiği, yönteme gönderilen tek bir mini toplu iş için değil, tüm giriş içindir `run()` . Aralık `[-1, int.max]` . `-1`Bölüm, işlem sırasında tüm hataların yoksayıyor olduğunu gösterir.
@@ -306,7 +306,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: `run()` Saniye cinsinden Yöntem çağırma zaman aşımı. (isteğe bağlı; varsayılan değer `60` )
 - `run_max_try`: `run()` Bir mini toplu iş için deneme sayısı üst sınırı. Bir `run()` özel durum oluşursa bir hata oluşur veya ulaşıldığında hiçbir şey döndürülmez `run_invocation_timeout` (isteğe bağlı; varsayılan değer `3` ). 
 
-İşlem hattı çalıştırmasını yeniden gönderdiğinizde,,,,, `mini_batch_size` `node_count` ve olarak belirtebilirsiniz, `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` Bu sayede parametre değerleri üzerinde ince ayar yapabilirsiniz. Bu örnekte, ve için Pipelineparametresini kullanırsınız `mini_batch_size` `Process_count_per_node` ve daha sonra bir çalıştırmayı yeniden gönderdiğinizde bu değerleri değiştirirsiniz. 
+İşlem hattı çalıştırmasını yeniden gönderdiğinizde,,,,, `mini_batch_size` `node_count` ve olarak belirtebilirsiniz, `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` Bu sayede parametre değerleri üzerinde ince ayar yapabilirsiniz. Bu örnekte, `PipelineParameter` ve için kullanırsınız `mini_batch_size` `Process_count_per_node` ve daha sonra bir çalıştırmayı yeniden gönderdiğinizde bu değerleri değiştirirsiniz. 
 
 Bu örnek, `digit_identification.py` daha önce ele alınan betiği kullandığınızı varsayar. Kendi komut dosyanızı kullanırsanız, `source_directory` ve `entry_script` parametrelerini uygun şekilde değiştirin.
 
@@ -396,7 +396,7 @@ pipeline_run_2.wait_for_completion(show_output=True)
 ```
 ## <a name="view-the-results"></a>Sonuçları görüntüleme
 
-Yukarıdaki çalıştırmanın sonuçları, bu örnekte *ını*olarak adlandırılan pipelinedata nesnesinde belirtilen veri deposuna yazılır. Sonuçlar varsayılan blob kapsayıcısında depolanır, depolama hesabınıza gidebilir ve Depolama Gezgini aracılığıyla görüntüleyebilirsiniz, dosya yolu azureml-BlobStore-*GUID*/azureml/*RunId* / *output_dir*olur.
+Yukarıdaki çalıştırmanın sonuçları `DataStore` nesnede belirtilen şekilde, `PipelineData` Bu durumda *ını*olarak adlandırılan çıkış verileri olarak yazılır. Sonuçlar varsayılan blob kapsayıcısında depolanır, depolama hesabınıza gidebilir ve Depolama Gezgini aracılığıyla görüntüleyebilirsiniz, dosya yolu azureml-BlobStore-*GUID*/azureml/*RunId* / *output_dir*olur.
 
 Sonuçları görüntülemek için bu verileri de indirebilirsiniz. İlk 10 satırı görüntülemek için örnek kod aşağıda verilmiştir.
 

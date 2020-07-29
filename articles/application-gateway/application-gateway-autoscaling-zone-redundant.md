@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 0a82a35f1736aa7908928cbca3397cbe9c705e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088115"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273210"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
-Application Gateway ve Web uygulaması güvenlik duvarı (WAF), bir Standard_v2 ve WAF_v2 SKU 'SU altında da mevcuttur. V2 SKU 'SU performans iyileştirmeleri sunar ve otomatik ölçeklendirme, bölge artıklığı ve statik VIP 'ler için destek gibi kritik yeni özellikler için destek ekler. Standart ve WAF SKU 'SU altındaki mevcut özellikler, yeni v2 SKU 'sunda, [karşılaştırma](#differences-from-v1-sku) bölümünde listelenen birkaç özel durum ile devam eder.
+Application Gateway, bir Standard_v2 SKU 'SU altında bulunabilir. Web uygulaması güvenlik duvarı (WAF), bir WAF_v2 SKU 'SU altında bulunabilir. V2 SKU 'SU performans iyileştirmeleri sunar ve otomatik ölçeklendirme, bölge artıklığı ve statik VIP 'ler için destek gibi kritik yeni özellikler için destek ekler. Standart ve WAF SKU 'SU altındaki mevcut özellikler, yeni v2 SKU 'sunda, [karşılaştırma](#differences-from-v1-sku) bölümünde listelenen birkaç özel durum ile devam eder.
 
 Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8abd9d7f33a07141418ad67cc2128af40ad0bd51
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505814"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324769"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics günlük aramadan Azure Izleyici günlüklerine geçiş
 Log Analytics günlük araması kısa süre önce Azure Izleyici günlüklerini çözümlemek için yeni bir deneyimle değiştirilmiştir. Günlük arama sayfasına şu anda Azure portal **Log Analytics çalışma alanları** sayfasındaki **Günlükler (klasik)** menü öğesi aracılığıyla erişilebilir ancak 15 Şubat 2019 ' de kaldırılacaktır. Bu makalede, günlük aramadan geçiş yapmanıza yardımcı olmak için iki deneyim arasındaki farklar açıklanmaktadır. 
@@ -44,7 +44,7 @@ Geçerli sorguyu Azure Izleyici günlüklerine kaydetmek için **Kaydet**' i se�
 ![Günlük sorgusunu Kaydet](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Kaydedilen sorgular
-Günlük aramasında, kaydedilmiş sorgularınızı, Eylem çubuğu öğesi **kaydedilmiş aramaları**aracılığıyla kullanılabilir. Azure Izleyici günlükleri ' nde, kaydedilmiş sorgulara [sorgu Gezgini](../log-query/get-started-portal.md#save-queries)'nden erişin.
+Günlük aramasında, kaydedilmiş sorgularınızı, Eylem çubuğu öğesi **kaydedilmiş aramaları**aracılığıyla kullanılabilir. Azure Izleyici günlükleri ' nde, kaydedilmiş sorgulara [sorgu Gezgini](./get-started-portal.md#save-queries)'nden erişin.
 
 ![Sorgu Gezgini](media/log-search-transition/query-explorer.png)
 
@@ -69,3 +69,4 @@ Azure Izleyici günlükleri ' nde [günlük sorgusundan bir uyarı oluşturun](.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Yeni [Azure izleyici günlükleri deneyimi](get-started-portal.md)hakkında daha fazla bilgi edinin.
+

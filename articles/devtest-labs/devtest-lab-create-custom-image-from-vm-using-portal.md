@@ -3,12 +3,12 @@ title: Bir VM 'den Azure DevTest Labs özel görüntü oluşturma | Microsoft Do
 description: Azure portal kullanarak sağlanan bir VM 'den Azure DevTest Labs özel görüntü oluşturmayı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 597ef49b667cf613b721c645e09f8e6dcb157011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476606"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277036"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>VM’den özel görüntü oluşturma
 
@@ -43,7 +43,7 @@ Sağlanan bir VM 'den özel bir görüntü oluşturabilir ve bu özel görüntü
 
 ## <a name="related-blog-posts"></a>İlgili blog gönderileri
 
-- [Özel görüntüler veya formüller mi?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Özel görüntüler veya formüller mi?](./devtest-lab-faq.md#blog-post)
 - [Azure DevTest Labs arasında özel görüntüleri kopyalama](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Sonraki adımlar

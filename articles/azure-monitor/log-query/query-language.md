@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 080af271870362e6e0633aaf590820f2fadb6144
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325398"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure İzleyici günlük sorguları
 
@@ -19,22 +19,22 @@ Azure Izleyici günlükleri Azure Veri Gezgini kurulmuştur ve Azure Izleyici g�
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 - [Azure izleyici 'yi kullanmaya başlama Log Analytics](get-started-portal.md) , sorgu yazma ve sonuçlarla çalışma ile ilgili bir ders olan Azure Portal.
 - [Azure izleyici günlük sorgularını kullanmaya başlama](get-started-queries.md) , Azure izleyici günlük verilerini kullanarak sorgu yazma dersi.
 
 ## <a name="concepts"></a>Kavramlar
 
-- [Azure izleyici 'de günlük verilerini analiz etmek](../../azure-monitor/log-query/log-query-overview.md) , günlük sorgularına kısa bir genel bakış sağlar ve Azure izleyici günlük verilerinin nasıl yapılandırıldığını açıklar.
+- [Azure izleyici 'de günlük verilerini analiz etmek](./log-query-overview.md) , günlük sorgularına kısa bir genel bakış sağlar ve Azure izleyici günlük verilerinin nasıl yapılandırıldığını açıklar.
 - [Azure izleyici 'de günlük verilerini görüntüleme ve çözümleme](./log-query-overview.md) , günlük sorguları oluşturup çalıştırdığınız portalları açıklar.
 
 ## <a name="reference"></a>Başvuru
 
 - [Sorgu dili başvurusu](/azure/kusto/query) , kusto sorgu dili için tüm dil başvurusudur.
 - [Azure izleyici günlük sorgusu dil farkları](data-explorer-difference.md) , kusto sorgu dilinin sürümleri arasındaki farkları açıklar.
-- [Azure İzleyici günlüğü kayıtlarında standart özellikler](../../azure-monitor/platform/log-standard-properties.md) tüm Azure izleyici günlük verileri için standart olan özellikleri açıklar.
-- [Azure izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme](../../azure-monitor/log-query/cross-workspace-query.md) birden çok Log Analytics çalışma alanından ve Application Insights uygulamadan veri kullanan günlük sorgularının nasıl yazılacağını açıklar.
+- [Azure İzleyici günlüğü kayıtlarında standart özellikler](../platform/log-standard-properties.md) tüm Azure izleyici günlük verileri için standart olan özellikleri açıklar.
+- [Azure izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme](./cross-workspace-query.md) birden çok Log Analytics çalışma alanından ve Application Insights uygulamadan veri kullanan günlük sorgularının nasıl yazılacağını açıklar.
 
 ## <a name="examples"></a>Örnekler
 
@@ -58,3 +58,4 @@ Azure Izleyici günlükleri Azure Veri Gezgini kurulmuştur ve Azure Izleyici g�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kusto sorgu dili için tüm başvuru belgelerine](/azure/kusto/query/)erişin.
+

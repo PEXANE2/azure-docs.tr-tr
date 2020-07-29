@@ -1,6 +1,6 @@
 ---
 title: Azure genel IP adresi oluşturma, değiştirme veya silme | Microsoft Docs
-description: Genel IP adresi oluşturma, değiştirme veya silme hakkında bilgi edinin.
+description: Genel bir IP adresi oluşturun, değiştirin veya silin. Ayrıca genel IP adresinin, kendi yapılandırılabilir ayarlarına sahip bir kaynak olduğunu da öğrenin.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 7da6c0f88ae68f473e57590824e675299f7d524b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c0766dc063932c5fdd41a4e21ac11befd84a0e5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068569"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265135"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Genel IP adresi oluşturma, değiştirme veya silme
 
@@ -55,7 +55,7 @@ Genel IP adreslerinin nominal bir ücreti vardır. Fiyatlandırmayı görüntül
    |---|---|---|
    |IP sürümü|Yes| IPv4 veya IPv6 veya her Ikisini birden seçin. Her Ikisinin de belirlenmesi, 2 genel IP adresi oluşturma-1 IPv4 adresi ve 1 IPv6 adresi oluşmasına neden olur. [Azure sanal ağları 'Nda IPv6](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)hakkında daha fazla bilgi edinin.|
    |SKU|Yes|SKU 'ların kullanıma sunulmasından önce oluşturulan tüm genel IP adresleri **temel** SKU ortak IP adresleridir. Genel IP adresi oluşturulduktan sonra SKU 'YU değiştiremezsiniz. Tek başına bir sanal makine, bir kullanılabilirlik kümesindeki sanal makineler veya sanal makine ölçek kümeleri, temel veya standart SKU 'Ları kullanabilir. Kullanılabilirlik kümeleri veya ölçek kümelerinde veya tek başına VM 'Lerde bulunan sanal makineler arasında SKU 'Ların karıştırılmasına izin verilmez. **Temel** SKU: kullanılabilirlik alanlarını destekleyen bir bölgede genel IP adresi oluşturuyorsanız, **kullanılabilirlik alanı** ayarı varsayılan olarak *hiçbiri* olarak ayarlanır. Temel genel IP 'Ler kullanılabilirlik bölgelerini desteklemez. **Standart** SKU: Standart SKU genel IP 'si bir sanal makine veya yük dengeleyici ön ucuna ilişkilendirilebilir. Kullanılabilirlik alanlarını destekleyen bir bölgede genel IP adresi oluşturuyorsanız, **kullanılabilirlik alanı** ayarı varsayılan olarak bölgesel olarak *yedekli* olarak ayarlanır. Kullanılabilirlik bölgeleri hakkında daha fazla bilgi için bkz. **kullanılabilirlik alanı** ayarı. Adresi standart yük dengeleyiciye ilişkilendirirseniz standart SKU gereklidir. Standart yük dengeleyiciler hakkında daha fazla bilgi edinmek için bkz. [Azure yük dengeleyici standart SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Standart bir SKU genel IP adresini bir sanal makinenin ağ arabirimine atadığınızda amaçlanan trafiğe bir [ağ güvenlik grubuyla](security-overview.md#network-security-groups) açıkça izin vermeniz gerekir. Bir ağ güvenlik grubu oluşturup ilişkilendirene ve istenen trafiğe açıkça izin verene kadar kaynakla erişim kurma girişimleri başarısız olur.|
-   |Name|Yes|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
+   |Ad|Yes|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
    |IP adresi ataması|Yes|**Dinamik:** Dinamik adresler yalnızca genel bir IP adresi bir Azure kaynağıyla ilişkilendirildikten sonra atanır ve kaynak ilk kez başlatılır. Dinamik adresler, sanal makine gibi bir kaynağa atanırsa, sanal makinenin durdurulması (serbest bırakıldığında) ve sonra yeniden başlatıldığında değişebilir. Bir sanal makine yeniden başlatıldığında veya durdurulmuşsa (ancak serbest bırakılmamışsa) adres aynı kalır. Ortak bir IP adresi kaynağı ilişkilendirildiği bir kaynaktan ilişkisi kesildiğinde dinamik adresler serbest bırakılır. **Statik:** Statik adresler, genel bir IP adresi oluşturulduğunda atanır. Statik adresler genel bir IP adresi kaynağı silinene kadar serbest bırakılır. Adres bir kaynakla ilişkili değilse, adres oluşturulduktan sonra atama yöntemini değiştirebilirsiniz. Adres bir kaynakla ilişkiliyse, atama metodunu değiştiremeyebilirsiniz. **IP sürümü**için *IPv6* ' yı seçerseniz, atama yöntemi temel SKU için *dinamik* olmalıdır.  Standart SKU adresleri hem IPv4 hem de IPv6 için *statiktir* . |
    |Boşta kalma zaman aşımı (dakika)|Hayır|Bir TCP veya HTTP bağlantısının istemcilere bağlı kalmadan açık tutulması için, etkin tut iletileri göndermek için kaç dakika sürer. **IP sürümü**için IPv6 ' yı seçerseniz bu değer değiştirilemez. |
    |DNS ad etiketi|Hayır|Ad içinde oluşturduğunuz Azure konumunda benzersiz olmalıdır (tüm abonelikler ve tüm müşteriler genelinde). Azure adı ve IP adresini DNS 'ye otomatik olarak kaydeder, böylece ada sahip bir kaynağa bağlanabilirsiniz. Azure, tam DNS adını oluşturmak için *Location.cloudapp.Azure.com* gibi bir varsayılan alt ağ (seçtiğiniz konum sizin seçtiğiniz konumdur), sağladığınız ada ekler. Her iki adres sürümünü de oluşturmayı seçerseniz, aynı DNS adı hem IPv4 hem de IPv6 adreslerine atanır. Azure 'un varsayılan DNS 'i hem IPv4 A hem de IPv6 AAAA ad kayıtlarını içerir ve DNS adı arandığında her iki kayıtla da yanıt verir. İstemci, iletişim kurmak için kullanılacak adresi (IPv4 veya IPv6) seçer. Varsayılan son ek ile DNS ad etiketini kullanmak yerine veya buna ek olarak, genel IP adresine çözümlenen bir özel son ek ile DNS adını yapılandırmak için Azure DNS hizmetini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure genel IP adresiyle Azure DNS kullanma](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
@@ -108,7 +108,7 @@ Aşağıdaki kaynaklara genel IP adresi atamayı öğrenin:
 
 Genel IP adreslerinde görevler gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                                             | Name                                                           |
+| Eylem                                                             | Ad                                                           |
 | ---------                                                          | -------------                                                  |
 | Microsoft. Network/publicIPAddresses/Read                           | Genel IP adresini oku                                          |
 | Microsoft. Network/Publicıpaddresses/Write                          | Genel IP adresi oluşturma veya güncelleştirme                           |

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 4bb1af6ca2126b7ae58a6c836624ec78a071a5a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3cd43963175594fcdc1c3c67d6b2493ce1ccd313
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075281"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321930"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Kubernetes barındırılan uygulamalar için, Istio-kullanım DıŞı olmadan sıfır izleme uygulaması izleme
 
@@ -18,10 +18,10 @@ ms.locfileid: "87075281"
 > Bu işlevsellik şu anda kullanım dışıdır ve 1 Ağustos 2020 ' den sonra desteklenecek.
 > Şu anda kodsuz kullanacaksınız izleme yalnızca [tek başına aracı aracılığıyla Java](./java-in-process-agent.md)için etkinleştirilebilir. Diğer diller için, AKS 'de uygulamalarınızı izlemek için SDK 'Ları kullanın: [ASP.NET Core](./asp-net-core.md), [ASP.net](./asp-net.md), [Node.js](./nodejs.md), [JavaScript](./javascript.md)ve [Python](./opencensus-python.md).
 
-Azure Izleyici, Kubernetes barındırılan uygulamalar için kullanıma hazır uygulama izlemeyi sağlamak üzere Kubernetes kümenizdeki hizmet ağı teknik ' i 'nden yararlanır. Bağımlılıklarınızı modellemek için [uygulama Haritası](../../azure-monitor/app/app-map.md) gibi varsayılan uygulama Insight özellikleriyle, gerçek zamanlı izleme için [canlı ölçüm akışı](../../azure-monitor/app/live-stream.md) , [varsayılan pano](../../azure-monitor/app/overview-dashboard.md), [Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)ve [çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md)ile güçlü görselleştirmeler elde edin. Bu özellik, kullanıcıların seçili bir Kubernetes ad alanı içindeki Kubernetes iş yüklerinin tamamında performans sorunlarını ve hata etkin noktalarını belirleyebilmenize yardımcı olur. Azure Izleyici, mevcut hizmet ağı yatırımlarınızı, Istio gibi teknolojilerle büyük harfle sunarak, uygulamanızın kodunda herhangi bir değişiklik yapılmadan otomatik olarak izlenen uygulama izlemeyi sağlar.
+Azure Izleyici, Kubernetes barındırılan uygulamalar için kullanıma hazır uygulama izlemeyi sağlamak üzere Kubernetes kümenizdeki hizmet ağı teknik ' i 'nden yararlanır. Bağımlılıklarınızı modellemek için [uygulama Haritası](./app-map.md) gibi varsayılan uygulama Insight özellikleriyle, gerçek zamanlı izleme için [canlı ölçüm akışı](./live-stream.md) , [varsayılan pano](./overview-dashboard.md), [Ölçüm Gezgini](../platform/metrics-getting-started.md)ve [çalışma kitapları](../platform/workbooks-overview.md)ile güçlü görselleştirmeler elde edin. Bu özellik, kullanıcıların seçili bir Kubernetes ad alanı içindeki Kubernetes iş yüklerinin tamamında performans sorunlarını ve hata etkin noktalarını belirleyebilmenize yardımcı olur. Azure Izleyici, mevcut hizmet ağı yatırımlarınızı, Istio gibi teknolojilerle büyük harfle sunarak, uygulamanızın kodunda herhangi bir değişiklik yapılmadan otomatik olarak izlenen uygulama izlemeyi sağlar.
 
 > [!NOTE]
-> Bu, Kubernetes üzerinde uygulama izleme gerçekleştirmenin birçok yöntemlerinden biridir.Ayrıca, bir hizmet ağı gerekmeden [Application Insights SDK 'yı](../../azure-monitor/azure-monitor-app-hub.yml) kullanarak Kubernetes 'te barındırılan herhangi bir uygulamayı da denetleyebilirsiniz. Bir SDK ile uygulamayı işaretlemeden Kubernetes 'i izlemek için aşağıdaki yöntemi kullanabilirsiniz.
+> Bu, Kubernetes üzerinde uygulama izleme gerçekleştirmenin birçok yöntemlerinden biridir.Ayrıca, bir hizmet ağı gerekmeden [Application Insights SDK 'yı](../azure-monitor-app-hub.yml) kullanarak Kubernetes 'te barındırılan herhangi bir uygulamayı da denetleyebilirsiniz. Bir SDK ile uygulamayı işaretlemeden Kubernetes 'i izlemek için aşağıdaki yöntemi kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -34,12 +34,12 @@ Azure Izleyici, Kubernetes barındırılan uygulamalar için kullanıma hazır u
 
 Kubernetes barındırılan uygulamalar için sıfır izleme uygulama izlemeyi kullanarak şunları kullanabilirsiniz:
 
-- [Uygulama Eşlemesi](../../azure-monitor/app/app-map.md)
-- [Canlı Akış ölçümleri](../../azure-monitor/app/live-stream.md)
-- [Panolar](../../azure-monitor/app/overview-dashboard.md)
-- [Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)
-- [Dağıtılmış izleme](../../azure-monitor/app/distributed-tracing.md)
-- [Uçtan uca işlem izleme](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
+- [Uygulama Eşlemesi](./app-map.md)
+- [Canlı Akış ölçümleri](./live-stream.md)
+- [Panolar](./overview-dashboard.md)
+- [Ölçüm Gezgini](../platform/metrics-getting-started.md)
+- [Dağıtılmış izleme](./distributed-tracing.md)
+- [Uçtan uca işlem izleme](../learn/tutorial-performance.md#identify-slow-server-operations)
 
 ## <a name="installation-steps"></a>Yükleme adımları
 
@@ -141,4 +141,5 @@ kubectl delete -f <filename.yaml>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Izleyici ve kapsayıcısının birlikte nasıl çalıştığı hakkında daha fazla bilgi edinmek için [bkz. kapsayıcılar Için Azure izleyici genel bakış](../../azure-monitor/insights/container-insights-overview.md)
+Azure Izleyici ve kapsayıcısının birlikte nasıl çalıştığı hakkında daha fazla bilgi edinmek için [bkz. kapsayıcılar Için Azure izleyici genel bakış](../insights/container-insights-overview.md)
+

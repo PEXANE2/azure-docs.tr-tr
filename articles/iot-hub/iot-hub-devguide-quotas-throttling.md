@@ -7,11 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Operations'
+- 'Role: Technical Support'
+ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322967"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -92,7 +97,7 @@ Cihaz kimliği kayıt defteri işlemleri, cihaz yönetimi ve sağlama senaryolar
 
 IoT Hub diğer işlem sınırlarını zorlar:
 
-| Çalışma | Sınır |
+| İşlem | Sınır |
 | --------- | ----- |
 | Cihazlar | Tek bir IoT Hub 'ına kaydedilenebilir cihazların toplam sayısı ve modülleri 1.000.000 adresinden alınır. Bu sınırı artırmanın tek yolu [Microsoft desteği](https://azure.microsoft.com/support/options/)ile iletişim kurmaya yönelik bir yoldur.|
 | Dosya karşıya yüklemeleri | cihaz başına 10 eşzamanlı dosya karşıya yüklemesi. |

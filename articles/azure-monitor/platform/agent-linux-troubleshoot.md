@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520735"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325381"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -43,7 +43,7 @@ Bu adımlardan hiçbiri sizin için çalışmazsa, aşağıdaki destek kanallar�
  Ek yapılandırmalar | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >Koleksiyon, veri menüsünden yapılandırılmışsa, çalışma alanınızın Azure portal [Gelişmiş ayarları Log Analytics](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) , performans sayaçları ve Syslog için yapılandırma dosyalarını düzenlemenin üzerine yazılır. Tüm aracıların yapılandırmasını devre dışı bırakmak için Log Analytics **Gelişmiş ayarlarından** koleksiyonu devre dışı bırakın ya da tek bir aracı için aşağıdakileri çalıştırın:  
+ >Koleksiyon, veri menüsünden yapılandırılmışsa, çalışma alanınızın Azure portal [Gelişmiş ayarları Log Analytics](./agent-data-sources.md#configuring-data-sources) , performans sayaçları ve Syslog için yapılandırma dosyalarını düzenlemenin üzerine yazılır. Tüm aracıların yapılandırmasını devre dışı bırakmak için Log Analytics **Gelişmiş ayarlarından** koleksiyonu devre dışı bırakın ya da tek bir aracı için aşağıdakileri çalıştırın:  
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>Yükleme hata kodları
@@ -53,7 +53,7 @@ Bu adımlardan hiçbiri sizin için çalışmazsa, aşağıdaki destek kanallar�
 | NOT_DEFINED | Gerekli bağımlılıklar yüklü olmadığından auoms auditd eklentisi yüklenmeyecek | Auoms yüklemesi başarısız oldu, paket auditd 'yi yükleme. |
 | 2 | Kabuk paketi için geçersiz seçenek belirtildi. `sudo sh ./omsagent-*.universal*.sh --help`Kullanım için Çalıştır |
 | 3 | Kabuk paketine hiçbir seçenek sağlanmaz. `sudo sh ./omsagent-*.universal*.sh --help`Kullanım için çalıştırın. |
-| 4 | Geçersiz paket türü veya geçersiz proxy ayarları; omsagent-*RPM*. sh PAKETLERI yalnızca RPM tabanlı sistemlere yüklenebilir ve omsagent-*Deb*. sh paketleri yalnızca, detem tabanlı sistemlere yüklenebilir. [En son sürümden](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)evrensel yükleyiciyi kullanmanız önerilir. Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
+| 4 | Geçersiz paket türü veya geçersiz proxy ayarları; omsagent-*RPM*. sh PAKETLERI yalnızca RPM tabanlı sistemlere yüklenebilir ve omsagent-*Deb*. sh paketleri yalnızca, detem tabanlı sistemlere yüklenebilir. [En son sürümden](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)evrensel yükleyiciyi kullanmanız önerilir. Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
 | 5 | Kabuk paketi kök olarak yürütülmelidir veya ekleme sırasında 403 hatası döndürüldü. Komutunu kullanarak komutunu çalıştırın `sudo` . |
 | 6 | Geçersiz Paket mimarisi veya ekleme sırasında 200 hatası döndürüldü. omsagent-*x64.sh paketleri yalnızca 64 bitlik sistemlere yüklenebilir ve omsagent-* x86.sh paketleri yalnızca 32 bit sistemlere yüklenebilir. [En son sürümden](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)mimariniz için doğru paketi indirin. |
 | 17 | OMS paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
@@ -228,7 +228,7 @@ Performansla ilgili hatalar her zaman gerçekleşmez ve yeniden oluşturulması 
 * Saniye başına iletilen ileti sayısı, Linux 'un işlemesi için Log Analytics aracısının temel yapılandırması için çok büyük
 
 ### <a name="resolution"></a>Çözüm
-* Syslog için Log Analytics çalışma alanındaki yapılandırmanın tüm tesisler ve doğru günlük düzeylerine sahip olduğunu doğrulayın. [Azure Portal Syslog koleksiyonunu yapılandırma '](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal) yı gözden geçirin
+* Syslog için Log Analytics çalışma alanındaki yapılandırmanın tüm tesisler ve doğru günlük düzeylerine sahip olduğunu doğrulayın. [Azure Portal Syslog koleksiyonunu yapılandırma '](./data-sources-syslog.md#configure-syslog-in-the-azure-portal) yı gözden geçirin
 * Yerel Syslog mesajlaşma Daemon 'ları ( `rsyslog` , `syslog-ng` ) tarafından iletilen iletileri alabildiğini doğrulama
 * İletilerin engellenmediğinden emin olmak için Syslog sunucusunda güvenlik duvarı ayarlarını denetleyin
 * Komut kullanarak Log Analytics Syslog iletisi benzetimi yap `logger`
@@ -422,7 +422,7 @@ Seçeneğini kullandıktan sonra yeniden eklemeye devam edebilirsiniz `--purge`
 ### <a name="resolution"></a>Çözüm 
 Sorunu gidermek için aşağıdaki adımları gerçekleştirin.
 1. Uzantıyı Azure portal kaldır.
-2. [Yönergeleri](../../azure-monitor/learn/quick-collect-linux-computer.md)izleyerek aracıyı yükler.
+2. [Yönergeleri](../learn/quick-collect-linux-computer.md)izleyerek aracıyı yükler.
 3. Şu komutu çalıştırarak aracıyı yeniden başlatın: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 * Birkaç dakika bekleyin ve sağlama durumu, **sağlama başarılı**olarak değişir.
 
@@ -444,3 +444,4 @@ Sorunu gidermek için aşağıdaki adımları gerçekleştirin.
     ```
 
 3. Çalıştırarak paketleri yükseltin `sudo sh ./omsagent-*.universal.x64.sh --upgrade` .
+

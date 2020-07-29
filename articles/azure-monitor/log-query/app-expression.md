@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cb8073d048118e704dafb0c70fe7cdb6774344a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201115"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324548"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Izleyici sorgusunda App () ifadesi
 
@@ -19,7 +20,7 @@ Bu `app` ifade, bir Azure izleyici sorgusunda aynı kaynak grubunda, başka bir 
 > [!IMPORTANT]
 > Günlük verileri bir Log Analytics çalışma alanında depolandığından, bu, bir [çalışma alanı tabanlı Application Insights kaynağı](../app/create-workspace-resource.md) kullanıyorsanız, uygulama () ifadesi kullanılmaz. Birden çok çalışma alanındaki uygulamayı içeren bir sorgu yazmak için log () ifadesini kullanın. Aynı çalışma alanındaki birden çok uygulama için, bir çapraz çalışma alanı sorgusuna gerek yoktur.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 `app(`*Tanımlayıcısını*`)`
 
@@ -72,5 +73,6 @@ union
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bkz. bir Log Analytics çalışma alanına başvurmak için [çalışma alanı ifadesi](workspace-expression.md) .
-- [Azure izleyici verilerinin](../../azure-monitor/log-query/log-query-overview.md) nasıl depolandığı hakkında bilgi edinin.
+- [Azure izleyici verilerinin](./log-query-overview.md) nasıl depolandığı hakkında bilgi edinin.
 - [Kusto sorgu dili](/azure/kusto/query/)için tam belgelere erişin.
+

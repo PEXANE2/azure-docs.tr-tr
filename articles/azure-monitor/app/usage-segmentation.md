@@ -6,20 +6,20 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539814"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323528"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights Kullanıcı, oturum ve olay Analizi
 
-Kullanıcıların Web uygulamanızı ne zaman kullandığı, en çok hangi sayfalardan ilgilendikleri, kullanıcılarınızın nerede olduğunu ve hangi tarayıcıları ve işletim sistemlerini kullandıkları hakkında bilgi edinin. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)kullanarak iş ve kullanım telemetrisini çözümleyin.
+Kullanıcıların Web uygulamanızı ne zaman kullandığı, en çok hangi sayfalardan ilgilendikleri, kullanıcılarınızın nerede olduğunu ve hangi tarayıcıları ve işletim sistemlerini kullandıkları hakkında bilgi edinin. [Azure Application Insights](./app-insights-overview.md)kullanarak iş ve kullanım telemetrisini çözümleyin.
 
 ![Application Insights kullanıcıların ekran görüntüsü](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Application Insights portalındaki kullanıcılar, oturumlar veya olaylar dikey penceresinde verileri henüz görmüyorsanız, [kullanım araçlarını kullanmaya nasıl başlaleyeceğinizi öğrenin](usage-overview.md).
 
@@ -29,9 +29,9 @@ Kullanım dikey pencerelerinin üçü, Web uygulamanızdan Telemetriyi üç pers
 
 * **Kullanıcılar aracı**: uygulamanızı ve özelliklerini kullanan kişi sayısı.  Kullanıcılar, tarayıcı tanımlama bilgilerinde depolanan anonim kimlikler kullanılarak sayılır. Farklı tarayıcıları veya makineleri kullanan tek bir kişi, birden fazla kullanıcı olarak sayılır.
 * **Oturumlar aracı**: Kullanıcı etkinliğinin kaç oturumu, uygulamanızın belirli sayfalarını ve özelliklerini içerir. Bir oturum, kullanıcının süresi dolduktan sonra veya 24 saatlik sürekli kullanım sonrasında sayılır.
-* **Olaylar aracı**: uygulamanızın belirli sayfa ve özelliklerinin ne sıklıkta kullanıldığı. Bir tarayıcı Uygulamanızdan bir sayfa yüklediğinde bir sayfa görünümü [sayılır.](../../azure-monitor/app/javascript.md) 
+* **Olaylar aracı**: uygulamanızın belirli sayfa ve özelliklerinin ne sıklıkta kullanıldığı. Bir tarayıcı Uygulamanızdan bir sayfa yüklediğinde bir sayfa görünümü [sayılır.](./javascript.md) 
 
-    Özel bir olay, uygulamanızda gerçekleşen bir şeyin bir oluşumunu temsil eder, genellikle düğme tıklamasıyla veya bir görevin tamamlanması gibi Kullanıcı etkileşimidir. [Özel olaylar oluşturmak](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)için uygulamanıza kod eklersiniz.
+    Özel bir olay, uygulamanızda gerçekleşen bir şeyin bir oluşumunu temsil eder, genellikle düğme tıklamasıyla veya bir görevin tamamlanması gibi Kullanıcı etkileşimidir. [Özel olaylar oluşturmak](./api-custom-events-metrics.md#trackevent)için uygulamanıza kod eklersiniz.
 
 ## <a name="querying-for-certain-users"></a>Belirli kullanıcıları sorgulama
 
@@ -62,5 +62,6 @@ Kullanıcılar, oturumlar veya olaylar raporundaki verilerin bir kopyasını pay
     - [Huniler](usage-funnels.md)
     - [Bekletme](usage-retention.md)
     - [Kullanıcı Akışları](usage-flows.md)
-    - [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
+    - [Çalışma Kitapları](../platform/workbooks-overview.md)
     - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
+

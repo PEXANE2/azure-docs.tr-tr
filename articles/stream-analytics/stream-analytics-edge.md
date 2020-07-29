@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5213a13539ac028d3e2bfec3bc7476ac645f615b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 136d0627e701104e9958d51b2e37256de5659f25
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271425"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge üzerinde Azure Stream Analytics
  
@@ -43,12 +43,13 @@ ASA, cihazlara Edge işleri dağıtmak için IoT Hub kullanır. IoT Edge dağıt
 
 ### <a name="installation-instructions"></a>Yükleme yönergeleri
 Üst düzey adımlar aşağıdaki tabloda açıklanmıştır. Daha fazla ayrıntı aşağıdaki bölümlerde verilmiştir.
-|Adım   | Notlar   |
-| ---   |  ---      |
-| **Depolama kapsayıcısı oluşturma**   | Depolama kapsayıcıları, iş tanımınızı, IoT cihazlarınızın erişebileceği yerlerde kaydetmek için kullanılır. <br>  Var olan herhangi bir depolama kapsayıcısını yeniden kullanabilirsiniz.     |
-| **ASA Edge işi oluşturma**   |  Yeni bir iş oluşturun, bir **barındırma ortamı**olarak **Edge** ' i seçin. <br> Bu işler buluttan oluşturulur/yönetilir ve kendi IoT Edge cihazlarınızda çalışır.     |
-| **IoT Edge ortamınızı cihazınızda ayarlayın**   | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) veya [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)için yönergeler.          |
-| **IoT Edge cihazlarınızın ASA dağıtımını yapın**   |  ASA iş tanımı daha önce oluşturulan depolama kapsayıcısına aktarılmalıdır.       |
+
+| Adım | Notlar |
+| --- | --- |
+| **Depolama kapsayıcısı oluşturma** | Depolama kapsayıcıları, iş tanımınızı, IoT cihazlarınızın erişebileceği yerlerde kaydetmek için kullanılır. <br>  Var olan herhangi bir depolama kapsayıcısını yeniden kullanabilirsiniz. |
+| **ASA Edge işi oluşturma** | Yeni bir iş oluşturun, bir **barındırma ortamı**olarak **Edge** ' i seçin. <br> Bu işler buluttan oluşturulur/yönetilir ve kendi IoT Edge cihazlarınızda çalışır. |
+| **IoT Edge ortamınızı cihazınızda ayarlayın** | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) veya [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)için yönergeler.|
+| **IoT Edge cihazlarınızın ASA dağıtımını yapın** | ASA iş tanımı daha önce oluşturulan depolama kapsayıcısına aktarılmalıdır. |
 
 İlk ASA işinizi IoT Edge dağıtmak için [Bu adım adım öğreticiyi](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) izleyebilirsiniz. Aşağıdaki videoda, bir IoT Edge cihazında Stream Analytics işi çalıştırma işlemini anlamanıza yardımcı olması gerekir:  
 

@@ -5,39 +5,41 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 1f0541cd3ae7cf2c78d3cd2bf6844fed930e7968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2abe23de5fbd2feada6ac8ff0a827b8575bcb28b
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833156"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172005"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js uygulamasından Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanma
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Genel Bakış
-Bu makalede, bir Node.js uygulamasında Azure Depolama Tablo hizmetini veya Azure Cosmos DB’yi kullanarak genel senaryoların nasıl gerçekleştirileceği gösterilmektedir.
+Bu makalede, tablolar oluşturma, verilerinizi depolama ve veri üzerinde CRUD işlemleri gerçekleştirme işlemleri gösterilir. Azure Tablo hizmeti 'ni veya Azure Cosmos DB Tablo API'si seçin. Örnekler Node.js yazılır.
 
 ## <a name="create-an-azure-service-account"></a>Azure hizmet hesabı oluşturma
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
+**Azure depolama hesabı oluşturma**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Tablo API’si hesabı oluşturma
+**Azure Cosmos DB Tablo API’si hesabı oluşturma**
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="configure-your-application-to-access-azure-storage-or-the-azure-cosmos-db-table-api"></a>Azure Depolama veya Azure Cosmos DB Tablo API’sine erişmek için uygulamanızı yapılandırma
+
 Azure Depolama veya Azure Cosmos DB’yi kullanmak için, Depolama REST hizmetleriyle iletişim kuran bir dizi kitaplık içeren Node.js için Azure Depolama SDK’sı gerekir.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Paketi yüklemek için Düğüm Paket Yöneticisi’ni (NPM) kullanma
+
 1. **PowerShell** (Windows), **Terminal** (Mac) veya **Bash** (Unix) gibi bir komut satırı arabirimi kullanın ve uygulamanızı oluşturduğunuz klasöre gidin.
 2. Komut penceresine **npm install azure-storage** yazın. Komutun çıktısı aşağıdaki örneğe benzer.
 
@@ -57,34 +59,42 @@ Azure Depolama veya Azure Cosmos DB’yi kullanmak için, Depolama REST hizmetle
 3. Bir **node_modules** klasörünün oluşturulduğunu doğrulamak için **ls** komutunu kendiniz çalıştırabilirsiniz. Bu klasörün içinde, depolama alanına erişmek için ihtiyaç duyduğunuz kitaplıkları içeren **azure-storage** paketini bulacaksınız.
 
 ### <a name="import-the-package"></a>Paketi içeri aktarma
+
 Uygulamanızda **server.js** dosyasının üst kısmına aşağıdaki kodu ekleyin:
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
-## <a name="add-an-azure-storage-connection"></a>Azure Depolama bağlantısı ekleme
-Azure modülü, Azure Depolama hesabınıza bağlanmak için gerekli bilgiler için AZURE_STORAGE_ACCOUNT ve AZURE_STORAGE_ACCESS_KEY veya AZURE_STORAGE_CONNECTION_STRING ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, **TableService** çağrılırken hesap bilgilerini belirtmeniz gerekir. Örneğin, aşağıdaki kod bir **TableService** nesnesi oluşturur:
+## <a name="add-your-connection-string"></a>Bağlantı dizenizi ekleyin
+
+Azure depolama hesabına veya Azure Cosmos DB Tablo API'si hesabına bağlanabilirsiniz. Bağlantı dizesini, kullanmakta olduğunuz hesap türüne göre alır.
+
+### <a name="add-an-azure-storage-connection"></a>Azure Depolama bağlantısı ekleme
+
+Azure modülü, Azure Depolama hesabınıza bağlanmak için gerekli bilgiler için AZURE_STORAGE_ACCOUNT ve AZURE_STORAGE_ACCESS_KEY veya AZURE_STORAGE_CONNECTION_STRING ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, çağırırken hesap bilgilerini belirtmeniz gerekir `TableService` . Örneğin, aşağıdaki kod bir `TableService` nesnesi oluşturur:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
-Azure Cosmos DB bağlantısı eklemek için bir **TableService** nesnesi oluşturun ve hesap adınızı, birincil anahtarınızı ve uç noktanızı belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örnek:
+### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
+
+Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örnek:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
 ```
 
 ## <a name="create-a-table"></a>Bir tablo oluşturma
-Aşağıdaki kod bir **TableService** nesnesi oluşturur ve yeni bir tablo oluşturmak için bu nesneyi kullanır.
+
+Aşağıdaki kod bir nesnesi oluşturur `TableService` ve yeni bir tablo oluşturmak için onu kullanır.
 
 ```javascript
 var tableSvc = azure.createTableService();
 ```
 
-**createTableIfNotExists** çağrısı, henüz yoksa, belirtilen adla yeni bir tablo oluşturur. Aşağıdaki örnek, henüz yoksa, 'mytable' adlı yeni bir tablo oluşturur:
+' A çağrı, `createTableIfNotExists` zaten mevcut değilse, belirtilen ada sahip yeni bir tablo oluşturur. Aşağıdaki örnek, henüz yoksa, 'mytable' adlı yeni bir tablo oluşturur:
 
 ```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
@@ -96,8 +106,9 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 
 `result.created`, yeni bir tablo oluşturulursa `true`, tablo zaten mevcutsa `false` olur. `response`, istekle ilgili bilgileri içerir.
 
-### <a name="filters"></a>FilTReleri
-**TableService** kullanarak gerçekleştirilen işlemlere isteğe bağlı filtreleme uygulayabilirsiniz. Filtreleme işlemleri, günlüğe kaydetme, otomatik yeniden denemeler vb. içerebilir. Filtreler imzaya sahip bir yöntemi uygulayan nesnelerdir:
+### <a name="apply-filters"></a>Filtreleri uygulama
+
+Kullanılarak gerçekleştirilen işlemlere isteğe bağlı filtre uygulayabilirsiniz `TableService` . Filtreleme işlemleri, günlüğe kaydetme, otomatik yeniden denemeler vb. içerebilir. Filtreler imzaya sahip bir yöntemi uygulayan nesnelerdir:
 
 ```javascript
 function handle (requestOptions, next)
@@ -109,9 +120,9 @@ function handle (requestOptions, next)
 function (returnObject, finalCallback, next)
 ```
 
-Bu geri çağrıda ve **returnObject** (istekten sunucuya verilen yanıt) işlendikten sonra geri çağrı, diğer filtreleri işlemeye devam etmek için varsa **next** çağrısı yapmalı veya hizmet çağrısını sonlandırmak için **finalCallback** çağrısı yapmalıdır.
+Bu geri çağırmada ve `returnObject` (istekten sunucuya olan yanıt) işlendikten sonra geri çağırma, `next` diğer filtreleri işlemeye devam etmek için varsa veya `finalCallback` hizmet çağrısını sonlandırmak için Aksi takdirde çağırmak gerekir.
 
-Yeniden deneme mantığı uygulayan iki filtre (**ExponentialRetryPolicyFilter** ve **LinearRetryPolicyFilter**), Node.js için Azure SDK’sına dahil edilir. Aşağıda, **ExponentialRetryPolicyFilter** kullanan bir **TableService** nesnesi oluşturulur:
+Yeniden deneme mantığını uygulayan iki filtre Node.js için Azure SDK ile birlikte gelir, `ExponentialRetryPolicyFilter** and ` doğrıretrypolicyfilter `. The following creates a ` tableservice ` object that uses the ` üs alretrypolicyfilter ':
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -119,6 +130,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
+
 Bir varlık eklemek için ilk olarak varlık özelliklerinizi tanımlayan bir nesne oluşturun. Tüm varlıklar, varlık için benzersiz tanımlayıcılar olan **PartitionKey** ve **RowKey** içermelidir.
 
 * **PartitionKey**: Varlığın depolandığı bölümü belirler.
@@ -126,7 +138,7 @@ Bir varlık eklemek için ilk olarak varlık özelliklerinizi tanımlayan bir ne
 
 Hem **PartitionKey** hem de **RowKey** dize değerleri olmalıdır. Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Aşağıda, bir varlığın tanımlanmasına örnek verilmiştir. **dueDate**, bir **Edm.DateTime** türü olarak tanımlanır. Tür belirtme isteğe bağlıdır ve türler belirtilmezse çıkarsanır.
+Aşağıda, bir varlığın tanımlanmasına örnek verilmiştir. **DueDate** , türü olarak tanımlanır `Edm.DateTime` . Tür belirtme isteğe bağlıdır ve türler belirtilmezse çıkarsanır.
 
 ```javascript
 var task = {
@@ -138,9 +150,9 @@ var task = {
 ```
 
 > [!NOTE]
-> Ayrıca her kayıt için bir **Timestamp** alanı vardır ve bu alan, bir varlık eklendiğinde veya güncelleştirildiğinde Azure tarafından ayarlanır.
+> Ayrıca `Timestamp` , bir varlık eklendiğinde veya güncelleştirilirken Azure tarafından ayarlanan her kayıt için bir alan de vardır.
 
-Varlıklar oluşturmak için **entityGenerator** da kullanabilirsiniz. Aşağıdaki örnek, **entityGenerator** kullanılmasıyla aynı görevi oluşturur.
+`entityGenerator`Varlıklarını oluşturmak için de kullanabilirsiniz. Aşağıdaki örnek, kullanarak aynı görev varlığını oluşturur `entityGenerator` .
 
 ```javascript
 var entGen = azure.TableUtilities.entityGenerator;
@@ -152,7 +164,7 @@ var task = {
 };
 ```
 
-Tablonuza bir varlık eklemek için, varlık nesnesini **insertEntity** yöntemine geçirin.
+Tablonuza bir varlık eklemek için, varlık nesnesini `insertEntity` metoduna geçirin.
 
 ```javascript
 tableSvc.insertEntity('mytable',task, function (error, result, response) {
@@ -171,19 +183,20 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 ```
 
 > [!NOTE]
-> Varsayılan olarak **insertEntity**, `response` bilgilerinin parçası olarak eklenen varlığı döndürmez. Bu varlık üzerinde başka işlemler gerçekleştirmeyi planlıyor veya bilgileri önbelleğe almak istiyorsanız, `result` değerinin parçası olarak bunun döndürülmesini sağlamak yararlı olabilir. Aşağıdaki gibi **echoContent** seçeneğini etkinleştirerek bunu yapabilirsiniz:
+> Varsayılan olarak, `insertEntity` ekli varlığı bilgilerin bir parçası olarak döndürmez `response` . Bu varlık üzerinde başka işlemler gerçekleştirmeyi planlıyor veya bilgileri önbelleğe almak istiyorsanız, `result` değerinin parçası olarak bunun döndürülmesini sağlamak yararlı olabilir. Bunu `echoContent` aşağıdaki gibi etkinleştirerek yapabilirsiniz:
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 
 ## <a name="update-an-entity"></a>Varlığı güncelleştirme
+
 Mevcut bir varlığı güncelleştirmenin birçok yolu vardır:
 
-* **replaceEntity**: Mevcut varlığı başkasıyla değiştirerek güncelleştirir.
-* **mergeEntity**: Yeni özellik değerlerini mevcut varlıkla birleştirerek mevcut bir varlığı güncelleştirir.
-* **insertOrReplaceEntity**: Mevcut bir varlığı başkasıyla değiştirerek güncelleştirir. Bir varlık yoksa, yenisi eklenir.
-* **insertOrMergeEntity**: Yeni özellik değerlerini mevcut varlıkla birleştirerek mevcut bir varlığı güncelleştirir. Bir varlık yoksa, yenisi eklenir.
+* `replaceEntity`-Var olan bir varlığı değiştirerek güncelleştirir.
+* `mergeEntity`-Yeni özellik değerlerini mevcut varlığa birleştirerek mevcut bir varlığı güncelleştirir.
+* `insertOrReplaceEntity`-Var olan bir varlığı değiştirerek güncelleştirir. Bir varlık yoksa, yenisi eklenir.
+* `insertOrMergeEntity`-Varolan bir varlığı yeni özellik değerlerini mevcut bir ile birleştirerek güncelleştirir. Bir varlık yoksa, yenisi eklenir.
 
-Aşağıdaki örnekte **replaceEntity** kullanılarak bir varlığın güncelleştirilmesi gösterilmektedir:
+Aşağıdaki örnek kullanarak bir varlığın güncelleştirilmesini göstermektedir `replaceEntity` :
 
 ```javascript
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
@@ -204,12 +217,13 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 >
 >
 
-**replaceEntity** ve **mergeEntity** ile, güncelleştirilmekte olan varlık mevcut değilse, güncelleştirme işlemi başarısız olur; bu nedenle önceden mevcut olup olmadığında bakılmaksızın bir varlığı depolamak istiyorsanız, **insertOrReplaceEntity** veya **insertOrMergeEntity** kullanın.
+`replaceEntity`Ve ile `mergeEntity` , güncelleştirilmekte olan varlık yoksa, güncelleştirme işlemi başarısız olur; bu nedenle, zaten mevcut olup olmadığına bakılmaksızın bir varlığı depolamak istiyorsanız, `insertOrReplaceEntity` veya kullanın `insertOrMergeEntity` .
 
 Başarılı güncelleştirme işlemleri için `result`, güncelleştirilen varlığın **Etag** değerini içerir.
 
 ## <a name="work-with-groups-of-entities"></a>Varlık gruplarıyla çalışma
-Bazen sunucu tarafından atomik işleme sağlamak için bir toplu işte birden fazla işlemin bir arada gönderilmesi mantıklıdır. Bunu yapmak için **TableBatch** sınıfını kullanarak bir toplu iş oluşturun ve sonra toplu işlemleri gerçekleştirmek için **TableService** için **executeBatch** yöntemini kullanın.
+
+Bazen sunucu tarafından atomik işleme sağlamak için bir toplu işte birden fazla işlemin bir arada gönderilmesi mantıklıdır. Bunu gerçekleştirmek için, `TableBatch` bir Batch oluşturmak üzere sınıfını kullanın ve sonra toplu `executeBatch` `TableService` işlemleri gerçekleştirmek için yöntemini kullanın.
 
  Aşağıdaki örnekte, bir toplu işte iki varlığın gönderilmesi gösterilmektedir:
 
@@ -242,6 +256,7 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 Başarılı toplu işlemler için `result`, toplu işteki her bir işlemin bilgilerini içerir.
 
 ### <a name="work-with-batched-operations"></a>Toplu işlemlerle çalışma
+
 `operations` özelliğini görüntüleyerek bir toplu işe eklenen işlemleri inceleyebilirsiniz. İşlemlerle çalışmak için aşağıdaki yöntemleri de kullanabilirsiniz:
 
 * **clear**: Bir toplu işteki tüm işlemleri temizler.
@@ -251,6 +266,7 @@ Başarılı toplu işlemler için `result`, toplu işteki her bir işlemin bilgi
 * **size**: Toplu işteki işlem sayısını döndürür.
 
 ## <a name="retrieve-an-entity-by-key"></a>Anahtara göre bir varlık alma
+
 **PartitionKey** ve **RowKey** değerine dayalı belirli bir varlık döndürmek için **retrieveEntity** yöntemini kullanın.
 
 ```javascript
@@ -264,6 +280,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 Bu işlem tamamlandıktan sonra `result`, varlığı içerir.
 
 ## <a name="query-a-set-of-entities"></a>Varlık kümesini sorgulama
+
 Bir tabloyu sorgulamak için, **TableQuery** nesnesini kullanarak aşağıdaki yan tümceleri kullanıp bir sorgu ifadesi oluşturun:
 
 * **select**: Sorgudan döndürülecek alanlar.
@@ -294,6 +311,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 Başarılı olursa `result.entries`, sorguyla eşleşen varlık dizisini içerir. Sorgu tüm varlıkları döndüremediyse `result.continuationToken`, *null* değildir ve daha fazla sonuç almak için **queryEntities** öğesinin üçüncü parametresi olarak kullanılabilir. İlk sorguda, üçüncü parametre için *null* değerini kullanın.
 
 ### <a name="query-a-subset-of-entity-properties"></a>Giriş özellikleri alt kümesi sorgulama
+
 Bir tabloya yapılan sorgu, bir varlıktan yalnızca birkaç alan alabilir.
 Bu, bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. **select** yan tümcesini kullanın ve döndürülecek alanların adlarını geçirin. Örneğin, aşağıdaki sorgu yalnızca **description** ve **dueDate** alanlarını döndürür.
 
@@ -305,6 +323,7 @@ var query = new azure.TableQuery()
 ```
 
 ## <a name="delete-an-entity"></a>Bir varlığı silme
+
 Bölüm ve satır anahtarlarını kullanarak bir varlığı silebilirsiniz. Bu örnekte **task1** nesnesi, silinecek varlığın **RowKey** ve **PartitionKey** değerlerini içerir. Daha sonra nesne, **deleteEntity** yöntemine geçirilir.
 
 ```javascript
@@ -326,6 +345,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 >
 
 ## <a name="delete-a-table"></a>Bir tablo silme
+
 Aşağıdaki kod, bir depolama hesabından tabloyu siler.
 
 ```javascript
@@ -339,6 +359,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 Tablonun mevcut olup olmadığından emin değilseniz, **deleteTableIfExists** komutunu kullanın.
 
 ## <a name="use-continuation-tokens"></a>Devamlılık belirteçlerini kullanma
+
 Büyük miktarda sonuçlar için tabloları sorguluyorsanız devamlılık belirteçlerine bakın. Bir devamlılık belirtecinin mevcut olup olmadığını belirlemek için derleme yapmıyorsanız, sorgunuz için fark etmeyebileceğiniz büyük miktarlarda veriler olabilir.
 
 Varlıkları sorgulama sırasında döndürülen **results** nesnesi, böyle bir belirteç mevcut olduğunda bir `continuationToken` özelliği ayarlar. Daha sonra bölüm ve tablo varlıkları arasında hareket etmeye devam etmek için bir sorgu gerçekleştirirken bunu kullanabilirsiniz.
@@ -367,6 +388,7 @@ dc.table.queryEntities(tableName,
 Ayrıca, `top` `continuationToken` sayfa boyutunu ayarlamak için ile birlikte kullanabilirsiniz.
 
 ## <a name="work-with-shared-access-signatures"></a>Paylaşılan erişim imzaları ile çalışma
+
 Paylaşılan erişim imzaları (SAS), Depolama hesabı adınızı veya anahtarlarınızı sağlamadan tablolara ayrıntılı erişim sağlamanın güvenli bir yoludur. SAS çoğu zaman verilerinize sınırlı erişim sağlamak (örneğin, bir mobil uygulamanın kayıtları sorgulamasına izin verme) için kullanılır.
 
 Bulut tabanlı hizmet gibi güvenilir bir uygulama, **TableService** için **generateSharedAccessSignature** öğesini kullanarak bir SAS oluşturur ve bunu mobil uygulama gibi güvenilir olmayan veya yarı güvenilir uygulamaya sağlar. SAS’ın geçerli olduğu başlangıç ve bitiş tarihlerini ve SAS sahibine verilen erişim düzeyini açıklayan bir ilke kullanılarak SAS oluşturulur.
@@ -412,6 +434,7 @@ sharedTableService.queryEntities(query, null, function(error, result, response) 
 SAS yalnızca sorgu erişimiyle oluşturulduğundan, varlıklar eklemeye, güncelleştirmeye veya silmeye çalışırsanız bir hata döndürülür.
 
 ### <a name="access-control-lists"></a>Erişim Denetim Listeleri
+
 Ayrıca SAS için erişim ilkesini ayarlamak istediğinizde de bir Erişim Denetim Listesi (ACL) kullanabilirsiniz. Birden çok istemcinin tabloya erişmesini, ancak her istemci için farklı erişim ilkeleri sağlamak istiyorsanız bu yararlıdır.
 
 Her politikayla ilişkilendirilmiş bir kimlik ile, bir erişim ilkeleri dizisi kullanılarak ACL uygulanır. Aşağıdaki örnekte, biri 'user1' için ve biri de 'user2' için olmak üzere iki ilke tanımlanmaktadır:
@@ -454,6 +477,7 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Daha fazla bilgi için aşağıdaki kaynaklara bakın.
 
 * [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.

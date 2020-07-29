@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/26/2020
-ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 07/27/2020
+ms.openlocfilehash: f8b532716e14a8a90b0be061f7d93abf43e55e38
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199820"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321998"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -50,10 +50,10 @@ Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur 
 
 Azure Machine Learning işlem örnekleri veya işlem kümeleri oluşturabilirsiniz:
 * Azure Machine Learning Studio
-* Azure portalı
+* Azure portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) ve [amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) sınıfları
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Önizleme)
-* Resource Manager şablonu
+* Kaynak Yöneticisi şablonu. Örnek bir şablon için [create Azure Machine Learning işlem şablonuna](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)bakın.
 * [Azure CLI için](reference-azure-machine-learning-cli.md#resource-management)Machine Learning uzantısı.  
 
 Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin aksine, çalışma alanınızın otomatik olarak bir parçasıdır.
@@ -82,17 +82,17 @@ Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için a
 
 | **Desteklenen VM Serisi**  | **Kısıtlamalar** |
 |------------|------------|
-| D | Yok |
-| Dv2 | Yok |  
-| DSv2 | Yok |  
-| FSv2 | Yok |  
+| D | Hiçbiri |
+| Dv2 | Hiçbiri |  
+| DSv2 | Hiçbiri |  
+| FSv2 | Hiçbiri |  
 | M | Onay gerekiyor |
-| NC | Yok |    
+| NC | Hiçbiri |    
 | NCsv2 | Onay gerekiyor |
 | NCsv3 | Onay gerekiyor |  
 | Üstündeki | Onay gerekiyor |
 | NDv2 | Onay gerekiyor |
-| NV | Yok |
+| NV | Hiçbiri |
 | NVv3 | Onay gerekiyor | 
 
 

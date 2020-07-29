@@ -3,12 +3,12 @@ title: Azure Resource Manager şablonları kullanarak Labs oluşturma veya deği
 description: Bir DevTest laboratuvarında otomatik olarak laboratuvar oluşturmak veya değiştirmek için PowerShell ile Azure Resource Manager şablonlarını nasıl kullanacağınızı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: af225e8cfade30a64aa1f4cf747e2a4d8d3f895f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645f1d0717514d2c7e7b16844513327127e4e1a8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483185"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272649"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Azure Resource Manager şablonlarını ve PowerShell 'i kullanarak laboratuvarları otomatik olarak oluşturma veya değiştirme
 
@@ -20,12 +20,12 @@ Bu makale, laboratuvarlarınızın oluşturulmasını, değiştirilmesini ve da�
 Genel [GitHub deponuzda](https://github.com/Azure/azure-devtestlab)önceden oluşturulmuş [Azure Resource Manager şablonları](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) ve [PowerShell betikleri](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts) bulabilirsiniz. Bunları olduğu gibi kullanın veya gereksinimlerinize göre özelleştirin ve kendi [özel git](devtest-lab-add-artifact-repo.md)deponuzda depolayın.
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>2. Adım: Azure Resource Manager şablonunuzu değiştirme
-Daha önce hiç şablon oluşturmadıysanız [ilk Azure Resource Manager şablonunuzu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) bölümündeki adımları izleyebilirsiniz.
+Daha önce hiç şablon oluşturmadıysanız [ilk Azure Resource Manager şablonunuzu oluşturma](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) bölümündeki adımları izleyebilirsiniz.
 
-Ayrıca, [Azure Resource Manager şablonları oluşturmak Için en iyi yöntemler](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) , güvenilir ve kullanımı kolay Azure Resource Manager şablonlar oluşturmanıza yardımcı olacak birçok yönerge ve öneri sunar. Genellikle, belirtilen yaklaşımlardan veya örneklerden birinin varyasyonunu kullanacaksınız ve gereksinimlerinize göre şablonunuzu değiştirirsiniz.
+Ayrıca, [Azure Resource Manager şablonları oluşturmak Için en iyi yöntemler](../azure-resource-manager/templates/template-best-practices.md) , güvenilir ve kullanımı kolay Azure Resource Manager şablonlar oluşturmanıza yardımcı olacak birçok yönerge ve öneri sunar. Genellikle, belirtilen yaklaşımlardan veya örneklerden birinin varyasyonunu kullanacaksınız ve gereksinimlerinize göre şablonunuzu değiştirirsiniz.
 
 ## <a name="step-3-deploy-resources-with-powershell"></a>3. Adım: PowerShell ile kaynak dağıtma
-Şablonlarınızı ve betikleri özelleştirdikten sonra, [Kaynak Yöneticisi şablonlar ve Azure PowerShell sahip kaynakları dağıtmak](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)için gereken adımları izleyin. Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager şablonlarla Azure PowerShell kullanma hakkında genel bilgiler sağlanmaktadır.
+Şablonlarınızı ve betikleri özelleştirdikten sonra, [Kaynak Yöneticisi şablonlar ve Azure PowerShell sahip kaynakları dağıtmak](../azure-resource-manager/templates/deploy-powershell.md)için gereken adımları izleyin. Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager şablonlarla Azure PowerShell kullanma hakkında genel bilgiler sağlanmaktadır.
 
 
 ## <a name="common-tasks-you-can-perform-in-devtest-labs-using-powershell"></a>PowerShell kullanarak DevTest Labs 'de gerçekleştirebileceğiniz ortak görevler

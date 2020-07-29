@@ -3,16 +3,16 @@ title: Azure Application Insights bağımlılık Izleme | Microsoft Docs
 description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağımlılık çağrılarını Application Insights ile izleyin.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 9980db352e5d2c342131e0d6a2cd1248adb10810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321386"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
-*Bağımlılık* , uygulamanız tarafından çağrılan bir bileşendir. Genellikle HTTP kullanılarak çağrılan bir hizmet ya da bir veritabanı veya dosya sistemidir. [Application Insights](../../azure-monitor/app/app-insights-overview.md) , bağımlılık çağrılarının süresini ölçer, başarısız olup olmadığı ve bağımlılık adı gibi ek bilgilerle birlikte ölçer. Belirli bağımlılık çağrılarını araştırabilir ve bunları isteklerle ve özel durumlarla ilişkilendirmenize olanak sağlayabilirsiniz.
+*Bağımlılık* , uygulamanız tarafından çağrılan bir bileşendir. Genellikle HTTP kullanılarak çağrılan bir hizmet ya da bir veritabanı veya dosya sistemidir. [Application Insights](./app-insights-overview.md) , bağımlılık çağrılarının süresini ölçer, başarısız olup olmadığı ve bağımlılık adı gibi ek bilgilerle birlikte ölçer. Belirli bağımlılık çağrılarını araştırabilir ve bunları isteklerle ve özel durumlarla ilişkilendirmenize olanak sağlayabilirsiniz.
 
 ## <a name="automatically-tracked-dependencies"></a>Otomatik olarak izlenen bağımlılıklar
 
@@ -202,6 +202,7 @@ Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel durumlar](../../azure-monitor/app/asp-net-exceptions.md)
-* [Kullanıcı & sayfası verileri](../../azure-monitor/app/javascript.md)
-* [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Özel durumlar](./asp-net-exceptions.md)
+* [Kullanıcı & sayfası verileri](./javascript.md)
+* [Kullanılabilirlik](./monitor-web-app-availability.md)
+

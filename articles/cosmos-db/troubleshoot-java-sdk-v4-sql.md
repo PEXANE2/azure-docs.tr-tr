@@ -8,11 +8,13 @@ ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: 4663839ffa85af0be1de93e2834e1c89e97e95c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 67813aa36b0e0824db3ed89c7b7dbc06c3fd46d8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718045"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321046"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API hesaplarıyla Java SDK 'Sı v4 Azure Cosmos DB kullandığınızda karşılaşılan sorunları giderme
 
@@ -51,7 +53,7 @@ En iyi performans için:
 
 ##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>Bir konak makinesinde bağlantı sınırı
 Red hat gibi bazı Linux sistemleri, Toplam açık dosya sayısı için üst sınıra sahiptir. Linux 'daki yuvalar dosya olarak uygulanır, bu nedenle bu sayı toplam bağlantı sayısını da sınırlar.
-Şu komutu çalıştırın.
+Aşağıdaki komutu çalıştırın.
 
 ```bash
 ulimit -a

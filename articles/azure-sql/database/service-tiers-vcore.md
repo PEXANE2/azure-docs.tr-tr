@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 07/21/2020
-ms.openlocfilehash: c54979efbbd164a11614b92d9a337a86e2f221fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c7e0a3c9a7d3c28823db0418e17cb94bc101ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007750"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325075"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -83,7 +83,7 @@ VCore modelindeki donanım oluşturma seçenekleri gen 4/5, M serisi ve Fsv2-Ser
 - Fsv2 serisi, iş yüküne bağlı olarak, 5. nesil 'den vCore başına daha fazla CPU performansı sunabilir ve 72 vCore boyutu 5. nesil üzerindeki 80 sanal çekirdekten daha az maliyet sağlamak için daha fazla CPU performansı sağlayabilir. 
 - Fsv2, Diğer donanımlardan sanal çekirdek başına daha az bellek ve tempdb sağlar, bu sınırlara duyarlı iş yükleri bunun yerine 5. nesil veya d serisini düşünmek isteyebilir.  
 
-Fsv2-Series yalnızca Genel Amaçlı katmanında desteklenir. Fsv2-Series 'in kullanılabildiği bölgeler için bkz. [Fsv2 serisi kullanılabilirliği](#fsv2-series).
+Fsv2-Series yalnızca Genel Amaçlı katmanında desteklenir. Fsv2-Series 'in kullanılabildiği bölgeler için bkz. [Fsv2 serisi kullanılabilirliği](#fsv2-series-1).
 
 
 ### <a name="m-series"></a>M serisi
@@ -91,7 +91,7 @@ Fsv2-Series yalnızca Genel Amaçlı katmanında desteklenir. Fsv2-Series 'in ku
 - D serisi, 5. nesil tarafından sağlanenden daha fazla bellek ve daha fazla işlem sınırı gerektiren iş yükleri için bellek için iyileştirilmiş bir donanım seçeneğidir.
 - A serisi, vCore başına 29 GB ve 128 sanal çekirdek sağlar. Bu, 5. nesil ile 8X arasındaki bellek sınırını neredeyse 4 TB 'a yükseltir.
 
-A serisi yalnızca İş Açısından Kritik katmanında desteklenir ve bölge yedekliliği desteklemez.  Abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır. D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
+A serisi yalnızca İş Açısından Kritik katmanında desteklenir ve bölge yedekliliği desteklemez.  Abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır. D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series-1).
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

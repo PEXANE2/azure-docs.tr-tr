@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 15f5ac1da6d24feceed3a9106b990ae31e3571e3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8d33756e1c28247c48d0b4c0a734e604c4e9eab0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851618"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280826"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Öğretici: SQL API 'sini kullanarak genel dağıtım Azure Cosmos DB ayarlama
 
@@ -28,34 +28,35 @@ Bu makale aşağıdaki görevleri kapsar:
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-
 ## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a>SQL API 'sini kullanarak tercih edilen bir bölgeye bağlanma
 
-[Genel dağıtımdan](distribute-data-globally.md) yararlanmak için istemci uygulamaları, belge işlemlerini gerçekleştirmek için kullanılacak bölgelerin tercihe göre sıralanmış listesini belirtebilir. Bağlantı ilkesi ayarlanarak bu yapılabilir. Azure Cosmos DB hesap yapılandırmasına, geçerli bölgesel kullanılabilirliğe ve belirtilen tercih listesine göre yazma ve okuma işlemlerini gerçekleştirmek için SQL SDK tarafından en iyi uç nokta seçilir.
+[Genel dağıtımdan](distribute-data-globally.md) yararlanmak için istemci uygulamaları, belge işlemlerini gerçekleştirmek için kullanılacak bölgelerin tercihe göre sıralanmış listesini belirtebilir. Azure Cosmos DB hesap yapılandırmasına, geçerli bölgesel kullanılabilirliğe ve belirtilen tercih listesine göre yazma ve okuma işlemlerini gerçekleştirmek için SQL SDK tarafından en iyi uç nokta seçilir.
 
-SQL SDK’ları kullanılarak bağlantı başlatırken bu tercih listesi belirtilir. SDK’lar, Azure bölgelerinin sıralı listesinde isteğe bağlı "PreferredLocations" parametresini kabul eder.
+SQL SDK’ları kullanılarak bağlantı başlatırken bu tercih listesi belirtilir. SDK 'lar, `PreferredLocations` Azure bölgelerinin sıralı listesi olan isteğe bağlı bir parametreyi kabul eder.
 
-SDK, tüm yazma işlemlerini otomatik olarak geçerli yazma bölgesine gönderir.
+SDK, tüm yazma işlemlerini otomatik olarak geçerli yazma bölgesine gönderir. Tüm okumalar, tercih edilen konumlar listesindeki ilk kullanılabilir bölgeye gönderilir. İstek başarısız olursa, istemci listeyi sonraki bölgeye devreder.
 
-Tüm yazma işlemleri, PreferredLocations listesindeki ilk kullanılabilir bölgeye gönderilir. İstek başarısız olursa, istemci listedeki sonraki bölgeyi dener ve bu şekilde devam eder.
+SDK yalnızca tercih edilen konumlarda belirtilen bölgelerden okumaya çalışır. Bu nedenle, örneğin, Azure Cosmos hesabı dört bölgede kullanılabiliyorsa ancak istemci içinde yalnızca iki okuma (yazma olmayan) bölgesi belirtiyorsa, `PreferredLocations` içinde belirtilmeyen okuma bölgesinden okuma yapılmaz `PreferredLocations` . Listede belirtilen okuma bölgeleri `PreferredLocations` kullanılamıyorsa, okuma yazma bölgesinden alınır.
 
-SDK’lar yalnızca PreferredLocations listesinde belirtilen bölgelerden okuma işlemi yapmaya çalışır. Bu nedenle, örneğin, Veritabanı Hesabı dört bölgede kullanılabiliyorsa ancak istemci, PreferredLocations için yalnızca iki okuma (yazma olmayan) bölgesi belirtiyorsa, PreferredLocations listesinde belirtilmeyen okuma bölgesinden okuma işlemi yapılmaz. PreferredLocations listesinde belirtilen okuma bölgeleri kullanılamıyorsa, okuma işlemleri yazma bölgesinden yapılır.
+Uygulama, SDK tarafından seçilen geçerli yazma uç noktasını ve okuma uç noktasını, `WriteEndpoint` `ReadEndpoint` sdk sürüm 1,8 ve üzeri sürümlerde bulunan iki özelliği denetleyerek ve kullanılabilir. `PreferredLocations`Özellik ayarlanmamışsa, tüm istekler geçerli yazma bölgesinden sunulacaktır.
 
-Uygulama, SDK 1.8 ve üzeri sürümlerde kullanılabilir olan iki WriteEndpoint ve ReadEndpoint özelliğini denetleyerek SDK tarafından seçilen geçerli yazma uç noktasını ve okuma uç noktasını doğrulayabilir.
-
-PreferredLocations özelliği ayarlanmazsa, tüm istekler geçerli yazma bölgesinden işlenir.
+Tercih edilen konumları belirtmezseniz, ancak `setCurrentLocation` yöntemini kullandıysanız, SDK, tercih edilen konumları istemcinin üzerinde çalıştığı geçerli bölgeye göre otomatik olarak doldurur. SDK, bölgeleri bir bölgenin yakınlığını geçerli bölgeye göre sıralar.
 
 ## <a name="net-sdk"></a>.NET SDK
+
 SDK herhangi bir kod değişikliği olmadan kullanılabilir. Bu durumda SDK hem okuma hem de yazma işlemlerini otomatik olarak geçerli yazma bölgesine yönlendirir.
 
-.NET SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations adlı bir özelliğe sahiptir. Bu özellik `<string>` Koleksiyonu türünde olup bölge adlarının listesini içermelidir. Dize değerleri, [Azure Bölgeleri][regions] sayfasındaki Bölge Adı sütununa göre biçimlendirilir ve ilk karakterden önce veya son karakterden sonra bir boşluk bulunmaz.
+.NET SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations adlı bir özelliğe sahiptir. Bu özellik `<string>` Koleksiyonu türünde olup bölge adlarının listesini içermelidir. Dize değerleri, [Azure bölgeleri][regions] sayfasındaki Bölge adı sütununa göre, ilk ve son karakterden önce veya sonra boşluk olmadan biçimlendirilir.
 
 Geçerli yazma ve okuma uç noktaları sırasıyla DocumentClient.WriteEndpoint ve DocumentClient.ReadEndpoint içinde kullanılabilir.
 
 > [!NOTE]
 > Uç noktaların URL’leri, uzun ömürlü sabitler olarak değerlendirilmemelidir. Bu noktada hizmet bunları güncelleştirebilir. SDK bu değişikliği otomatik olarak işler.
 >
->
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+.NET v2 SDK kullanıyorsanız, `PreferredLocations` tercih edilen bölgeyi ayarlamak için özelliğini kullanın.
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -78,6 +79,54 @@ DocumentClient docClient = new DocumentClient(
 // connect to DocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
+
+Alternatif olarak, `SetCurrentLocation` özelliğini kullanabilir ve SDK 'ya yakınlık temelinde tercih edilen konumu seçmesini sağlayabilirsiniz.
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+  
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    accountKey,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+.NET v3 SDK kullanıyorsanız, `ApplicationPreferredRegions` tercih edilen bölgeyi ayarlamak için özelliğini kullanın.
+
+```csharp
+
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
+
+CosmosClient client = new CosmosClient(connectionString, options);
+
+```
+
+Alternatif olarak, `ApplicationRegion` özelliğini kullanabilir ve SDK 'ya yakınlık temelinde tercih edilen konumu seçmesini sağlayabilirsiniz.
+
+```csharp
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+// If the application is running in West US
+options.ApplicationRegion = Regions.WestUS;
+
+CosmosClient client = new CosmosClient(connectionString, options);
+```
+
+---
 
 ## <a name="nodejsjavascript"></a>Node.js/JavaScript
 

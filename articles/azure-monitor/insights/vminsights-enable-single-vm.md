@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 4cdb9390b3146df74f2cbe8eba7b170a5d11fb2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4f14280f38a2389809477b84461eb3174909316
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507067"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323902"
 ---
 # <a name="enable-azure-monitor-for-single-vm-or-vmss-in-the-azure-portal"></a>Azure portal tek VM veya VMSS için Azure Izleyicisini etkinleştirin
 Bu makalede, Azure portal kullanılarak tek bir sanal makine veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:
@@ -34,7 +34,7 @@ Başlamadan önce [önkoşulları](vminsights-enable-overview.md) gözden geçir
 
     ![VM için VM'ler için Azure İzleyici etkinleştirme](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-1. VM zaten bir Log Analytics çalışma alanına bağlı değilse, bir tane seçmeniz istenir. Daha önce [bir çalışma alanı oluşturmadıysanız](../../azure-monitor/learn/quick-create-workspace.md), VM veya VMSS 'nin abonelikte dağıtıldığı konum için varsayılan değeri seçebilirsiniz. Bu çalışma alanı, zaten mevcut değilse oluşturulacak ve yapılandırılacaktır.
+1. VM zaten bir Log Analytics çalışma alanına bağlı değilse, bir tane seçmeniz istenir. Daha önce [bir çalışma alanı oluşturmadıysanız](../learn/quick-create-workspace.md), VM veya VMSS 'nin abonelikte dağıtıldığı konum için varsayılan değeri seçebilirsiniz. Bu çalışma alanı, zaten mevcut değilse oluşturulacak ve yapılandırılacaktır.
 
 2. Yapılandırma gerçekleştirilirken durum mesajları alacaksınız.
 
@@ -49,3 +49,4 @@ Başlamadan önce [önkoşulları](vminsights-enable-overview.md) gözden geçir
 
 * Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını kullanma](vminsights-maps.md). 
 * Performans sorunlarını, genel kullanımı ve sanal makinenizin performansını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md).
+
