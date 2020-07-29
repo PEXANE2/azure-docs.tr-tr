@@ -10,11 +10,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ce3ab92be33b378aeb6694efe181ee19da5d3f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669520"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284362"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Azure portal SQL Server çalıştıran bir Linux sanal makinesi sağlayın
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Sol bölmede **Kaynak oluştur**'u seçin.
+1. Soldaki bölmede **Kaynak oluştur**'u seçin.
 
 1. **Kaynak oluştur** bölmesinde **işlem**' ı seçin.
 
@@ -58,7 +59,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    > [!TIP]
    > Geliştirici sürümü, Enterprise Edition özellikleriyle test veya geliştirme yapmanızı sağlar, ancak SQL Server lisanslama maliyetlerine sahip olmaz. Yalnızca Linux VM çalıştırma maliyetleri için ödeme yaparsınız.
 
-1. **Oluştur**'u seçin. 
+1. **Oluştur**’u seçin. 
 
 
 ### <a name="set-up-your-linux-vm"></a>Linux VM 'nizi ayarlama
@@ -71,7 +72,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Ardından, aşağıdaki değerleri yazın veya seçin:
    * **Bölge**: sizin Için doğru Azure bölgesini seçin.
    * **Kullanılabilirlik seçenekleri**: Uygulamalarınız ve verileriniz için en iyi kullanılabilirlik ve artıklık seçeneğini belirleyin.
-   * **Boyutu Değiştir**: bir makine boyutu seçmek için bu seçeneği belirleyin ve Işiniz bittiğinde **Seç**' i seçin. VM boyutları hakkında daha fazla bilgi için bkz. [Linux VM boyutları](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
+   * **Boyutu Değiştir**: bir makine boyutu seçmek için bu seçeneği belirleyin ve Işiniz bittiğinde **Seç**' i seçin. VM makine boyutları hakkında daha fazla bilgi için bkz. [VM boyutları](../../../virtual-machines/sizes.md).
 
      ![VM boyutu seçme](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
@@ -81,7 +82,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    * **Kimlik doğrulama türü**: **SSH ortak anahtarını**seçin.
 
      > [!Note]
-     > Kimlik doğrulaması için SSH ortak anahtarı veya Parola kullanabilirsiniz. SSH daha güvenlidir. SSH anahtarı oluşturma talimatları için bkz. [Azure'daki Linux VM için Linux ve Mac üzerinde SSH anahtarı oluşturma](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
+     > Kimlik doğrulaması için SSH ortak anahtarı veya Parola kullanabilirsiniz. SSH daha güvenlidir. SSH anahtarı oluşturma talimatları için bkz. [Azure'daki Linux VM için Linux ve Mac üzerinde SSH anahtarı oluşturma](../../../virtual-machines/linux/mac-create-ssh-keys.md).
 
    * **Kullanıcı adı**: VM için yönetici adını girin.
    * **SSH ortak anahtarı**: RSA ortak anahtarınızı girin.
@@ -96,7 +97,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     * **Konuk yapılandırması**
     * **Etiketler**
 
-1. **İncele ve oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 1. **Gözden geçir + oluştur** bölmesinde **Oluştur**' u seçin.
 
 ## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> Linux VM'ye bağlanma
@@ -121,7 +122,7 @@ Windows üzerinde çalıştırıyorsanız ve BASH kabuğu yoksa, PuTTY gibi bir 
 
 1. **Aç** ' ı seçin ve istemlerin Kullanıcı adınızı ve parolanızı girin.
 
-Linux VM'lerinize bağlanma hakkında daha fazla bilgi için bkz. [Portal kullanarak Azure’da bir Linux VM oluşturma](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal).
+Linux VM'lerinize bağlanma hakkında daha fazla bilgi için bkz. [Portal kullanarak Azure’da bir Linux VM oluşturma](../../../virtual-machines/linux/quick-create-portal.md).
 
 > [!NOTE]
 > Sunucunun ana bilgisayar anahtarı hakkında kayıt defterinde önbelleğe alınmamış bir PuTTY güvenlik uyarısı görürseniz, aşağıdaki seçeneklerden birini belirleyin. Bu konağa güveniyorsanız, anahtarı PuTTy 'in önbelleğine eklemek ve bağlanmaya devam etmek için **Evet** ' i seçin. Yalnızca bir kez bağlanmak istiyorsanız, anahtarı önbelleğe eklemeden, **Hayır**' ı seçin. Bu konağa güvenmiyorsanız bağlantıyı bırakmak için **iptal** ' i seçin.

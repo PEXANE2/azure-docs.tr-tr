@@ -1,6 +1,5 @@
 ---
-title: 'NET # özel sinir ağları'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): net # özel sinir Networks-Azure'
 description: 'NET # sinir Networks belirtim dili için sözdizimi Kılavuzu. Azure Machine Learning Studio (klasik) içinde özel sinir ağ modelleri oluşturmayı öğrenin.'
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92fd68be6f2611b01be7f2b262de53597c452596
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85129526"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282577"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için net # sinir ağ belirtim diline kılavuzluk (klasik)
+# <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Machine Learning Studio için net # sinir ağ belirtim diline kılavuzluk (klasik)
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
 
 NET #, Microsoft tarafından geliştirilen ve derin sinir ağları ya da rastgele boyutlardaki evler gibi karmaşık sinir ağ mimarilerini tanımlamak için kullanılan bir dildir. Görüntü, video veya ses gibi verilerin öğrenmesini geliştirmek için karmaşık yapıları kullanabilirsiniz.
 
@@ -89,17 +90,17 @@ Sabit bir bildirim isteğe bağlıdır. Sinir ağ tanımında başka bir yerde k
 
 `Const X = 28;`
 
-İki veya daha fazla sabiti aynı anda tanımlamak için, tanımlayıcı adlarını ve değerlerini küme ayraçları içine alın ve noktalı virgül kullanarak ayırın. Örneğin:
+İki veya daha fazla sabiti aynı anda tanımlamak için, tanımlayıcı adlarını ve değerlerini küme ayraçları içine alın ve noktalı virgül kullanarak ayırın. Örnek:
 
 `Const { X = 28; Y = 4; }`
 
-Her atama ifadesinin sağ tarafı bir tamsayı, gerçek sayı, Boole değeri (true veya false) veya matematik ifadesi olabilir. Örneğin:
+Her atama ifadesinin sağ tarafı bir tamsayı, gerçek sayı, Boole değeri (true veya false) veya matematik ifadesi olabilir. Örnek:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Katman bildirimi
 
-Katman bildirimi gereklidir. Bu, bağlantı paketleri ve öznitelikleri dahil olmak üzere katmanın boyutunu ve kaynağını tanımlar. Bildirim bildirimi, katmanın (girdi, gizli veya çıktı) adı ve ardından katmanın boyutları (pozitif tamsayılar kümesi) ile başlar. Örneğin:
+Katman bildirimi gereklidir. Bu, bağlantı paketleri ve öznitelikleri dahil olmak üzere katmanın boyutunu ve kaynağını tanımlar. Bildirim bildirimi, katmanın (girdi, gizli veya çıktı) adı ve ardından katmanın boyutları (pozitif tamsayılar kümesi) ile başlar. Örnek:
 
 ```Net#
 input Data auto;

@@ -9,14 +9,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.author: ryanwi
-ms.reviewer: hirsin
+ms.author: kenwith
+ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d745ddcf7b1d5bd7976a0ca8461c13d8ae3c849
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80886186"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282390"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı
 OAuth 2,0 SAML taşıyıcı onaylama akışı, bir istemcinin var olan bir güven ilişkisini kullanması gerektiğinde bir SAML onaylama işlemi kullanarak bir OAuth erişim belirteci istemesini sağlar. SAML onaylaması 'na uygulanan imza, yetkili uygulamanın kimlik doğrulamasını sağlar. SAML onaylama, bir kimlik sağlayıcısı tarafından verilen ve bir hizmet sağlayıcısı tarafından tüketilen bir XML güvenlik belirtecidir. Hizmet sağlayıcı, güvenlikle ilgili amaçlar için onay konusunun konusunu belirlemek üzere içeriğine bağımlıdır.
@@ -34,7 +35,7 @@ OAuth SAML taşıyıcı onaylama akışı, Azure Active Directory Federal Active
 ## <a name="call-graph-using-saml-bearer-assertion"></a>SAML taşıyıcı onaylama kullanarak Graph çağırma
 Artık SAML onaylama program aracılığıyla 'ı gerçekten nasıl getirdiğimiz hakkında anladık. Bu yaklaşım, ADFS ile test edilmiştir. Ancak, bu, SAML onaylama program aracılığıyla dönüşü destekleyen herhangi bir kimlik sağlayıcısıyla birlikte kullanılır. Temel süreç: bir SAML onaylama işlemi alın, erişim belirteci alın ve Microsoft Graph erişin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Yetkilendirme sunucusu/ortam (Microsoft 365) ile kimlik sağlayıcısı ya da SAML 2,0 taşıyıcı onaylama (ADFS) veren arasında bir güven ilişkisi oluşturun. ADFS 'yi çoklu oturum açma ve kimlik sağlayıcısı olarak yapılandırmak için [Bu makaleye](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)başvurabilirsiniz.
 

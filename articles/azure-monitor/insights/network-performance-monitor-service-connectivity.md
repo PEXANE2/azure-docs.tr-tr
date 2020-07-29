@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 0ba93db3e692a34de42849b469978cea4459c6fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498874"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326112"
 ---
 # <a name="service-connectivity-monitor"></a>Hizmet Bağlantısı İzleyicisi
 
@@ -75,7 +75,7 @@ Hizmet uç noktalarına ağ bağlantısını izlemek için testlerinizi oluştur
 
 
 
-## <a name="walkthrough"></a>İzlenecek yol 
+## <a name="walkthrough"></a>Kılavuz 
 
 Ağ Performansı İzleyicisi Pano görünümüne gidin. Oluşturduğunuz farklı testlerin sistem durumunun özetini almak için **hizmet bağlantısı İzleyicisi** sayfasına bakın. 
 
@@ -133,4 +133,5 @@ ABD kamu Virginia bölgesi için yalnızca DOD URL 'Leri yerleşik NPM ' dir. GC
 | MS takımları | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../../azure-monitor/log-query/log-query-overview.md) yapın.
+Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../log-query/log-query-overview.md) yapın.
+

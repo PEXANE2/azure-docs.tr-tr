@@ -1,79 +1,117 @@
 ---
 title: IoT Tak ve Kullan önizleme modeli bulmayı uygulama | Microsoft Docs
-description: Çözüm geliştiricisi olarak, çözümünüzde IoT Tak ve Kullan modeli bulmayı nasıl uygulayabileceğinizi öğrenin.
-author: Philmea
-ms.author: philmea
-ms.date: 12/26/2019
+description: Çözüm Oluşturucu olarak, çözümünüzde IoT Tak ve Kullan modeli bulmayı nasıl uygulayabileceğinizi öğrenin.
+author: prashmo
+ms.author: prashmo
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: philmea
-ms.openlocfilehash: 74eb38269a3c7fbdc6d95554a8a8cef14eb0b787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770469"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337390"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Kullan önizleme modeli bulmayı uygulama
 
-Bu makalede, bir IoT çözümünde IoT Tak ve Kullan önizleme modeli bulmayı nasıl uygulayabileceğinizi anlatan bir çözüm geliştiricisi olarak açıklanmaktadır.  IoT Tak ve Kullan modeli bulma, IoT Tak ve Kullan cihazlarının desteklenen yetenek modellerini ve arabirimlerini nasıl tanımladığına ve bir IoT çözümünün bu yetenek modellerini ve arabirimlerini nasıl alacağını belirler.
+Bu makalede, bir IoT çözümünde IoT Tak ve Kullan önizleme modeli bulmayı nasıl uygulayabileceğinizi anlatan bir çözüm Oluşturucu olarak açıklanmaktadır. Model bulma şunları açıklar:
 
-IoT çözümünün iki geniş kategorisi vardır: bilinen bir IoT Tak ve Kullan cihazları kümesiyle çalışan ve tüm IoT Tak ve Kullan cihazlarıyla çalışan model temelli çözümler.
+- IoT Tak ve Kullan cihazları, model KIMLIKLERINI kaydeder.
+- IoT çözümü, cihaz tarafından uygulanan arabirimleri alır.
 
-Bu kavram makalesinde, model bulmanın her iki çözüm türünde nasıl uygulanacağı açıklanır.
+IoT çözümünün iki geniş kategorisi vardır:
+
+- *Amaç oluşturulmuş bir IoT çözümü* , bilinen bir IoT Tak ve kullan cihaz modeli kümesiyle birlikte çalışmaktadır.
+
+- *Model temelli bir IoT çözümü* , tüm IoT Tak ve kullan cihazlarla çalışabilir. Model temelli bir çözüm oluşturmak daha karmaşıktır, ancak çözümünüz gelecekte eklenen tüm cihazlarla birlikte çalışmıdır.
+
+    Model temelli bir IoT çözümü oluşturmak için IoT Tak ve Kullan arabirimi temel elemanlarına karşı mantık oluşturmanız gerekir: telemetri, Özellikler ve komutlar. Çözümünüzün mantığı birden çok telemetri, özellik ve komut özelliklerini birleştirerek bir cihazı temsil eder.
+
+Bu makalede her iki çözüm türünde model bulmanın nasıl uygulanacağı açıklanır.
 
 ## <a name="model-discovery"></a>Model keşfi
 
-IoT Tak ve Kullan cihazı, IoT Hub 'ınıza ilk kez bağlanırsa, bir model bilgileri telemetri iletisi gönderir. Bu ileti, cihazın uyguladığı arabirimlerin kimliklerini içerir. Çözümünüzün cihazla çalışması için, bu kimlikleri çözmesi ve her arabirim için tanımları alması gerekir.
+Bir cihazın uyguladığı modeli bulmak için, bir çözüm, olay tabanlı bulma veya ikizi tabanlı bulma kullanarak model KIMLIĞINI alabilir:
 
-Bir IoT Tak ve Kullan cihazının bir hub 'a bağlanmak üzere cihaz sağlama hizmeti 'ni (DPS) kullandığında aldığı adımlar aşağıda verilmiştir:
+### <a name="event-based-discovery"></a>Olay tabanlı bulma
 
-1. Cihaz açıldığında, DPS için genel bitiş noktasına bağlanır ve izin verilen yöntemlerden birini kullanarak kimlik doğrular.
-1. Daha sonra DPS, cihazın kimliğini doğrular ve cihazı hangi IoT Hub 'ına atayacağını söyleyen kurala bakar. DPS daha sonra cihazı bu hub 'a kaydeder.
-1. DPS cihaza bir IoT Hub bağlantı dizesi döndürür.
-1. Cihaz daha sonra IoT Hub bir bulma telemetri iletisi gönderir. Bulma telemetri iletisi, cihazın uyguladığı arabirimlerin kimliklerini içerir.
-1. IoT Tak ve Kullan cihazı artık IoT Hub 'ınızı kullanan bir çözümle çalışmaya hazırdır.
+IoT Tak ve Kullan bir cihaz IoT Hub bağlandığı zaman, onun uyguladığı modeli kaydeder. Bu kayıt, [dijital ikizi değişiklik olay](concepts-digital-twin.md#digital-twin-change-events) bildirimine neden olur. Dijital ikizi olayları için yönlendirmeyi nasıl etkinleştireceğinizi öğrenmek için bkz. [farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events).
 
-Cihaz doğrudan IoT Hub 'ınıza bağlanıyorsa, cihaz kodunda gömülü bir bağlantı dizesi kullanarak bağlanır. Cihaz daha sonra IoT Hub bir bulma telemetri iletisi gönderir.
+Çözüm, aşağıdaki kod parçacığında gösterilen olayı kullanarak bağlantı KIMLIĞINI bağlayan ve aldığı IoT Tak ve Kullan cihaz hakkında bilgi alabilir:
 
-Model bilgileri telemetri iletisi hakkında daha fazla bilgi için bkz. [ModelInformation](concepts-common-interfaces.md) arabirimi.
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
 
-### <a name="purpose-built-iot-solutions"></a>Amaç tarafından oluşturulan IoT çözümleri
+Bu olay, cihaz modeli KIMLIĞI eklendiğinde veya güncelleştirilirken tetiklenir.
 
-Amaç oluşturulmuş bir IoT çözümü, bilinen bir IoT Tak ve Kullan cihaz yeteneği modelleri ve arabirimleri kümesiyle birlikte çalışarak.
+### <a name="twin-based-discovery"></a>İkizi tabanlı bulma
 
-Çözümünüze bir süre önce bağlanacak cihazlar için yetenek modeli ve arabirimler olacaktır. Çözümünüzü hazırlamak için aşağıdaki adımları kullanın:
+Çözüm, belirli bir cihazın yeteneklerini öğrenmek isterse, bu bilgileri almak için [Get Digital ikizi](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API 'sini kullanabilir.
 
-1. Arabirim JSON dosyalarını, çözümünüzün okuyabildiği bir [model deposunda](./howto-manage-models.md) depolayın.
-1. IoT çözümünüze, beklenen IoT Tak ve Kullan yetenek modellerine ve arabirimine göre mantık yazın.
-1. Çözümünüzün kullandığı IoT Hub 'ından gelen bildirimlere abone olun.
+Aşağıdaki dijital ikizi kod parçacığında `$metadata.$model` ıot Tak ve kullan cihazının model kimliğini içerir:
 
-Yeni bir cihaz bağlantısı için bildirim aldığınızda, şu adımları izleyin:
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
 
-1. Cihaz tarafından uygulanan yetenek modeli ve arabirimlerin kimliklerini almak için bulma telemetri iletisini okuyun.
-1. Yetenek modelinin KIMLIĞINI, önceden depoladığınız yetenek modellerinin kimliklerine göre karşılaştırın.
-1. Artık ne tür bir cihaz bağlandığını öğrenmiş olursunuz. Kullanıcıların cihazla uygun şekilde etkileşime geçmesini sağlamak için, daha önce yazdığınız mantığı kullanın.
+Çözüm, aşağıdaki kod parçacığında gösterildiği gibi cihaz ikizi 'dan model KIMLIĞINI almak için **Get ikizi** de kullanabilir:
 
-### <a name="model-driven-solutions"></a>Model temelli çözümler
+```json
+{
+    "deviceId": "sample-device",
+    "etag": "AAAAAAAAAAc=",
+    "deviceEtag": "NTk0ODUyODgx",
+    "status": "enabled",
+    "statusUpdateTime": "0001-01-01T00:00:00Z",
+    "connectionState": "Disconnected",
+    "lastActivityTime": "2020-07-17T06:12:26.8402249Z",
+    "cloudToDeviceMessageCount": 0,
+    "authenticationType": "sas",
+    "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+    },
+    "modelId": "dtmi:com:example:TemperatureController;1",
+    "version": 15,
+    "properties": {...}
+    }
+}
+```
 
-Model temelli bir IoT çözümü, tüm IoT Tak ve Kullan cihazlarla çalışabilir. Model temelli bir IoT çözümünün oluşturulması daha karmaşıktır, ancak çözümünüz gelecekte eklenen tüm cihazlarla birlikte çalışmıdır.
+## <a name="model-resolution"></a>Model çözümleme
 
-Model temelli bir IoT çözümü oluşturmak için IoT Tak ve Kullan arabirimi temel elemanlarına karşı mantık oluşturmanız gerekir: telemetri, Özellikler ve komutlar. IoT çözümünüzün mantığı birden çok telemetri, özellik ve komut özelliklerini birleştirerek bir cihazı temsil eder.
+Bir çözüm model KIMLIĞINDEN model oluşturan arabirimlere erişim sağlamak için model çözümleme kullanır. 
 
-Çözümünüz Ayrıca kullandığı IoT Hub 'ından gelen bildirimlere abone olmalıdır.
-
-Çözümünüz yeni bir cihaz bağlantısı için bir bildirim aldığında, şu adımları izleyin:
-
-1. Cihaz tarafından uygulanan yetenek modeli ve arabirimlerin kimliklerini almak için bulma telemetri iletisini okuyun.
-1. Her KIMLIK için, cihazın yeteneklerini bulmak için tam JSON dosyasını okuyun.
-1. Çözümünüz tarafından daha önce alınan JSON dosyalarını depolamak için oluşturduğunuz önbellekte her arabirimin mevcut olup olmadığını denetleyin.
-1. Daha sonra, bu KIMLIĞE sahip bir arabirimin ortak model deposunda mevcut olup olmadığını denetleyin. Daha fazla bilgi için bkz. [ortak model deposu](howto-manage-models.md).
-1. Arabirim ortak model deposunda yoksa, çözümü çözümünüz tarafından bilinen tüm şirket modeli depolarında aramaya çalışın. Bir şirket modeli deposuna erişmek için bir bağlantı dizesine ihtiyacınız vardır. Daha fazla bilgi için bkz. [Şirket modeli deposu](howto-manage-models.md).
-1. Tüm arabirimleri ortak model deposunda veya bir şirket modeli deposunda bulamıyorsanız, cihazın arabirim tanımını sağlayıp sağlayabileceğinizi kontrol edebilirsiniz. Bir cihaz, arabirim dosyalarını komutla alma hakkında bilgi yayımlamak için standart [ModelDefinition](concepts-common-interfaces.md) arabirimini uygulayabilir.
-1. Cihaz tarafından uygulanan her arabirim için JSON dosyaları buldıysanız, cihazın yeteneklerini sıralayabilirsiniz. Kullanıcıların cihazla etkileşime geçmesini sağlamak için daha önce yazdığınız mantığı kullanın.
-1. İstediğiniz zaman, cihazın yetenek modeli KIMLIĞINI ve arabirim kimliklerini almak için dijital TWINS API 'sini çağırabilirsiniz.
+- Çözümler, bu arabirimleri yerel bir klasörde dosya olarak depolamayı tercih edebilir. 
+- Çözümler [model deposunu](concepts-model-repository.md)kullanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir IoT çözümünü model bulma hakkında öğrendiğinize göre, çözümünüzün diğer özelliklerinden yararlanmak için [Azure IoT Platformu](overview-iot-plug-and-play.md) hakkında daha fazla bilgi edinin.
+Artık bir IoT çözümünü model bulma hakkında öğrendiğinize göre, çözümünüz için diğer özellikleri kullanmak üzere [Azure IoT Platformu](overview-iot-plug-and-play.md) hakkında daha fazla bilgi edinin.
+
+- [Çözümünüzden bir cihazla etkileşim kurma](quickstart-service-node.md)
+- [IoT dijital Ikizi REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Azure IoT Gezgini](howto-use-iot-explorer.md)

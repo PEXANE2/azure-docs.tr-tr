@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ed9e9e4ec658fc506ad2bd449ee1a49d510503f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c1ac3c1e312704f8a0afa751d0efc6d0cef897f9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081347"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371779"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -139,7 +139,7 @@ PolyBase, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yükleme
 1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. #1 adım Azure Active Directory (AAD) ile kaydettiğiniz Azure SYNAPSE analizlerinizi barındıran sunucuya **Depolama Blobu veri katılımcısı** RBAC rolünü atayın.
 
    > [!NOTE]
-   > Yalnızca depolama hesabında sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Azure kaynakları için çeşitli yerleşik roller için bu [kılavuza](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)bakın.
+   > Yalnızca depolama hesabında sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)bakın.
   
 1. **Azure depolama hesabına PolyBase bağlantısı:**
 

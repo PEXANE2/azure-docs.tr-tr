@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 03/27/2020
-ms.openlocfilehash: d8da5bb32836ff50240bf6b781227fde8839be5c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088011"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281166"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -75,7 +75,7 @@ Coğrafi çoğaltma ile Azure Active Directory kullanırken, hem birincil hem de
 
 SQL yönetilen örneğinizin, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşturma aracılığıyla kullanıcıların kimlik doğrulaması gibi görevleri başarılı bir şekilde gerçekleştirmek için Azure AD 'yi okuma izinlerine ihtiyacı vardır. Bunun çalışması için, Azure AD 'yi okumak üzere SQL yönetilen örneği iznini vermeniz gerekir. Azure portal veya PowerShell 'i kullanarak bunu yapabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek için Azure AD 'de Genel/Şirket Yöneticisi olarak oturum açın ve şu adımları izleyin:
 
@@ -234,11 +234,9 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL mi](/cli/azure/sql
 
 Aşağıdaki iki yordam, Azure portal sunucusu için ve PowerShell kullanarak sunucunuzun Azure Active Directory yöneticisini nasıl sağlayacağınızı gösterir.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve sunucu için aynı aboneliğin kullanıldığından emin olmak üzere abonelikle ilişkili Active Directory sunucuyla bağlantılandırır.
-
-    ! [seçim-ad] 240
 
 2. **SQL Server**araması yapın ve seçin.
 
@@ -538,8 +536,11 @@ Azure AD kimlik doğrulamasıyla ilgili sorunları gidermeye yönelik yönergele
 - Veritabanı sorumluları hakkında daha fazla bilgi için bkz. [Sorumlular](https://msdn.microsoft.com/library/ms181127.aspx).
 - Veritabanı rolleri hakkında daha fazla bilgi için bkz. [Veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx).
 - SQL Veritabanındaki güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [SQL Veritabanı güvenlik duvarı kuralları](firewall-configure.md).
+- Azure AD Konuk kullanıcısını Azure AD yöneticisi olarak ayarlama hakkında daha fazla bilgi için bkz. [Azure AD Konuk kullanıcıları oluşturma ve Azure AD yöneticisi olarak ayarlama](authentication-aad-guest-users.md).
+- Azure SQL ile sorumlular hakkında daha fazla bilgi için bkz. Azure AD [uygulamaları kullanarak Azure AD kullanıcıları oluşturma](authentication-aad-service-principal-tutorial.md)
 
 <!--Image references-->
+
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png

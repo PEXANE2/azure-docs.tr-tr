@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d20ac5964ef70618d4d7dc2d4a7fe7d7d01284ce
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285637"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi uygulamaları (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,27 +42,26 @@ Teknik olarak, üç düğümlü bir küme, çekirdek kaynağı olmadan tek bir d
 
 Çekirdek kaynağı, kümeyi bu sorunlardan biriyle korur. 
 
-Çekirdek kaynağını Azure VM 'lerinde SQL Server yapılandırmak için şu tanık türlerini kullanabilirsiniz: 
+Aşağıdaki tabloda, bir Azure VM ile kullanılması önerilen sırada kullanılabilir olan çekirdek seçenekleri, disk tanığı tercih edilen seçim olarak listelenmektedir: 
 
 
 ||[Disk tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Bulut tanığı](/windows-server/failover-clustering/deploy-cloud-witness)  |[Dosya paylaşımı tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**Desteklenen işletim sistemi**| Tümü |Windows Server 2016 +| Windows Server 2012 +|
-|**Desteklenen SQL Server sürümü**|SQL Server 2019|SQL Server 2016 +|SQL Server 2016 +|
+
 
 
 
 ### <a name="disk-witness"></a>Disk tanığı
 
-Disk tanığı, küme kullanılabilir depolama grubundaki küçük bir kümelenmiş disktir. Bu disk yüksek oranda kullanılabilir ve düğümler arasında yük devredebilirler. Küme veritabanının bir kopyasını içerir ve genellikle 1 GB 'den daha az olan bir varsayılan boyuta sahiptir. 
+Disk tanığı, küme kullanılabilir depolama grubundaki küçük bir kümelenmiş disktir. Bu disk yüksek oranda kullanılabilir ve düğümler arasında yük devredebilirler. Küme veritabanının bir kopyasını içerir ve genellikle 1 GB 'den daha az olan bir varsayılan boyuta sahiptir. Disk tanığı, bulut tanığı ve dosya paylaşma tanığının aksine, bir Azure VM için tercih edilen çekirdek seçenektir. 
 
 Disk tanığı olarak bir Azure Paylaşılan diski yapılandırın. 
 
 Başlamak için bkz. [disk tanığını yapılandırma](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Desteklenen işletim sistemi**: tümü    
-**Desteklenen SQL sürümü**: SQL Server 2019   
+**Desteklenen işletim sistemi**: tümü   
 
 
 ### <a name="cloud-witness"></a>Bulut tanığı
@@ -73,21 +72,18 @@ Başlamak için bkz. [bulut tanığını yapılandırma](/windows-server/failove
 
 
 **Desteklenen işletim sistemi**: Windows Server 2016 ve üzeri   
-**Desteklenen SQL sürümü**: SQL Server 2016 ve üzeri     
 
 
 ### <a name="file-share-witness"></a>Dosya paylaşımı tanığı
 
 Dosya paylaşma tanığı, genellikle Windows Server çalıştıran bir dosya sunucusunda yapılandırılan bir SMB dosya paylaşımıdır. Kümeleme bilgilerini bir tanık. log dosyasında tutar, ancak küme veritabanının bir kopyasını depolamaz. Azure 'da, dosya paylaşma tanığı olarak kullanmak üzere bir [Azure dosya paylaşımının](../../../storage/files/storage-how-to-create-file-share.md) yapılandırılması veya ayrı bir sanal makinede bir dosya paylaşımının kullanılması olabilir.
 
-Başka bir Azure dosya paylaşımından kullanacaksanız, bu dosyayı [Premium dosya paylaşımının bağlanması](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)için kullanılan aynı işlemle bağlayabilirsiniz. 
+Azure dosya paylaşımından kullanacaksanız, [Premium dosya paylaşımının bağlanması](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)için kullanılan aynı işlemle bağlayabilirsiniz. 
 
 Başlamak için bkz. [dosya paylaşma tanığını yapılandırma](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
 **Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
-**Desteklenen SQL sürümü**: SQL Server 2016 ve üzeri   
-
 
 ## <a name="connectivity"></a>Bağlantı
 

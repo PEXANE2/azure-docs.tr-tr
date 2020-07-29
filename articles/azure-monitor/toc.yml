@@ -485,7 +485,7 @@
             - name: Bildirimleri görüntüleme
               href: ../service-health/service-notifications.md
             - name: Bildirim olaylarıyla ilgili uyarıları yapılandırma
-              href: platform/alerts-activity-log-service-notifications.md
+              href: ../service-health/alerts-activity-log-service-notifications-portal.md
         - name: Bildirimler ve eylemler
           items:
             - name: Eylem kuralları (Önizleme)
@@ -905,18 +905,24 @@
           href: insights/vminsights-ga-release-faq.md
         - name: SSS
           href: faq.md#azure-monitor-for-vms
-        - name: İzlemeyi etkinleştirme
+        - name: Çalışma alanını yapılandırma
+          href: insights/vminsights-configure-workspace.md
+        - name: Aracıları yükleme
           items:
-            - name: İzlemeyi etkinleştirmeye genel bakış
+            - name: Genel Bakış
               href: insights/vminsights-enable-overview.md
-            - name: Tek bir Azure VM için etkinleştirme
-              href: insights/vminsights-enable-single-vm.md
-            - name: Azure İlkesi’ni kullanarak etkinleştirme
-              href: insights/vminsights-enable-at-scale-policy.md
-            - name: Azure PowerShell kullanarak etkinleştirme
-              href: insights/vminsights-enable-at-scale-powershell.md
-            - name: Hibrit ortam için etkinleştirme
-              href: insights/vminsights-enable-hybrid-cloud.md
+            - name: Azure portal
+              href: insights/vminsights-enable-portal.md
+            - name: Azure PowerShell
+              href: insights/vminsights-enable-powershell.md
+            - name: ARM şablonları
+              href: insights/vminsights-enable-resource-manager.md
+            - name: Azure İlkesi
+              href: insights/vminsights-enable-policy.md
+            - name: Hibrit VM’ler
+              href: insights/vminsights-enable-hybrid.md
+            - name: Dependency Agent’ı yükseltme
+              href: insights/vminsights-dependency-agent-maintenance.md
         - name: Bağımlılıkları eşleme
           href: insights/vminsights-maps.md
         - name: Performansı izleme
@@ -927,8 +933,6 @@
           href: insights/vminsights-workbooks.md
         - name: Uyarı kuralları oluşturma
           href: insights/vminsights-alerts.md
-        - name: Dependency Agent’ı yükseltme
-          href: insights/vminsights-dependency-agent-maintenance.md
         - name: İzlemeyi devre dışı bırakma
           href: insights/vminsights-optout.md
     - name: Kapsayıcılar için Azure İzleyici

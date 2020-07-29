@@ -10,25 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 02/24/2020
-ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045301"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309282"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL veritabanı, aynı sunucuda ya da farklı bir sunucuda var olan bir [veritabanının](single-database-overview.md) işlemsel olarak tutarlı bir kopyasını oluşturmak için çeşitli yöntemler sağlar. Azure portal, PowerShell veya T-SQL ' i kullanarak bir veritabanını kopyalayabilirsiniz.
+Azure SQL veritabanı, aynı sunucuda veya farklı bir sunucuda var olan bir [veritabanının](single-database-overview.md) kopyasını oluşturmak için çeşitli yöntemler sağlar. Azure portal, PowerShell, Azure CLı veya T-SQL ' i kullanarak bir veritabanını kopyalayabilirsiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
-Veritabanı kopyası, kopyalama isteği sırasında kaynak veritabanının anlık görüntüsüdür. Aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, hizmet katmanını ve işlem boyutunu tutmayı seçebilir veya aynı hizmet katmanı (Edition) içinde farklı bir işlem boyutu kullanabilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Bu noktada, dilediğiniz sürüme yükseltebilir veya onu indirgeyede olursunuz. Oturum açmalar, kullanıcılar ve izinler bağımsız olarak yönetilebilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur ve dengeli dağıtım tamamlandığında, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmanın kullanılmasıyla ilgili tüm gereksinimler veritabanı kopyalama işlemi için geçerlidir. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md) .
-
-> [!NOTE]
-> [Otomatik veritabanı yedeklemeleri](automated-backups-overview.md) , bir veritabanı kopyası oluştururken kullanılır.
+Veritabanı kopyası, kopyalama isteği başlatıldıktan sonra zaman içindeki bir noktaya göre kaynak veritabanının işlemsel olarak tutarlı bir anlık görüntüsüdür. Kopya için aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, kaynak veritabanının hizmet katmanını ve işlem boyutunu tutmayı veya aynı veya farklı bir hizmet katmanı içinde farklı bir işlem boyutu kullanmayı seçebilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Kopyalanmış veritabanındaki oturumlar, kullanıcılar ve izinler, kaynak veritabanından bağımsız olarak yönetilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur. Çoğaltma dengeli dağıtımı tamamlandıktan sonra, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmanın kullanılmasıyla ilgili tüm gereksinimler veritabanı kopyalama işlemi için geçerlidir. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md) .
 
 ## <a name="logins-in-the-database-copy"></a>Veritabanı kopyasında oturum açma işlemleri
 
@@ -170,7 +168,7 @@ Bir veritabanını başka bir sunucuya kopyaladığınızda kullanıcıları ve 
 
 Azure SQL veritabanı 'nda bir veritabanı kopyalanırken aşağıdaki hatalarla karşılaşılabilir. Daha fazla bilgi için bkz. [Azure SQL Veritabanını kopyalama](database-copy.md).
 
-| Hata kodu | Severity | Açıklama |
+| Hata kodu | Önem Derecesi | Açıklama |
 | ---:| ---:|:--- |
 | 40635 |16 |IP adresi '%. &#x2a;ls ' olan istemci geçici olarak devre dışı. |
 | 40637 |16 |Veritabanı kopyası oluşturma şu anda devre dışı. |

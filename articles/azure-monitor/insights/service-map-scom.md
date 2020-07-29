@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: b1756bd72dc78bfafc8959c4ff1c8f95d255c931
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 049c30613c358bf22616eaa2042a7fd6e42b9f61
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067573"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326044"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
 
@@ -139,9 +139,10 @@ Geçerli tasarımda aşağıdaki sorunlar ve sınırlamalar sunulmaktadır:
 Hizmet sorumlusu oluşturma hakkında resmi Azure belgeleri için bkz.:
 
 * [PowerShell kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Azure CLı kullanarak hizmet sorumlusu oluşturma](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Azure CLı kullanarak hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 * [Azure portal kullanarak bir hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>Öneriler
 
 VM'ler için Azure İzleyici Map özelliği veya bu belgeler ile tümleştirme hakkında bizimle ilgili geri bildiriminiz var mı? Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.
+

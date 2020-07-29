@@ -10,14 +10,14 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224774"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337101"
 ---
-# <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central 'e bağlanın
+# <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanma
 
 *Bu makale işleçler ve cihaz geliştiricileri için geçerlidir.*
 
@@ -213,13 +213,13 @@ IoT Central temel özelliklerinden biri cihaz bağlantısıyla cihaz şablonlar�
 
 Aşağıdaki kod parçacıkları, otomatik ilişkilendirmenin çalışması için DPS kayıt çağrısı sırasında cihazın gönderilmesi gereken ek yükün biçimini gösterir.
 
-Bu, IoT Tak ve Kullan desteklemeyen, genel olarak kullanılabilir cihaz SDK 'sını kullanan cihazların biçimidir:
+Bu, genel olarak kullanılabilir cihaz SDK 'sını kullanan cihazların biçimidir:
 
 ```javascript
     iotcModelId: '< this is the URN for the capability model>';
 ```
 
-Bu, IoT Tak ve Kullan destekleyen genel önizleme cihazı SDK 'sını kullanan cihazların biçimidir:
+Bu, genel önizleme cihazı SDK 'sını kullanan cihazların biçimidir:
 
 ```javascript
 '__iot:interfaces': {
@@ -280,8 +280,6 @@ Aşağıdaki tabloda Azure IoT Central cihaz özelliklerinin IoT Hub özellikler
 | Özellik | Cihaz ikizi bildirilen özellikler |
 | Özellik (yazılabilir) | Cihaz ikizi istenen ve bildirilen özellikler |
 | Komut | Doğrudan yöntemler |
-
-Cihaz SDK 'larını kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Central uygulamanıza bir Mxyonga IoT DevKit cihazını bağlama](howto-connect-devkit.md) örnek kodu.
 
 ### <a name="protocols"></a>Protokoller
 

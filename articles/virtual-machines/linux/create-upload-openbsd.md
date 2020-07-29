@@ -3,15 +3,15 @@ title: OpenBSD görüntüsü oluşturma ve karşıya yükleme
 description: Azure CLı aracılığıyla bir Azure sanal makinesi oluşturmak için OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturmayı ve yüklemeyi öğrenin
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 79e2bc04a32755413625b3fb4b2b4de2ad12ad7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502716"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372731"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD disk görüntüsünü Azure 'a oluşturma ve yükleme
 Bu makalede, OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturma ve karşıya yükleme işleminin nasıl yapılacağı gösterilir. Karşıya yükledikten sonra, Azure CLı aracılığıyla Azure 'da bir sanal makine (VM) oluşturmak için kendi görüntünüz olarak kullanabilirsiniz.

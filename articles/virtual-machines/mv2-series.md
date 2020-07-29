@@ -4,15 +4,15 @@ description: Mv2 serisi VM 'Ler için Özellikler.
 author: ayshakeen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 21c28f3b6b498b162cbff276755b098c5ebba7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74d8c4dc9f6b8f1a409f5f6766bea57b23b15ba7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284804"
 ---
 # <a name="mv2-series"></a>Mv2 serisi
 
@@ -30,12 +30,12 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 Yazma Hızlandırıcısı: [destekleniyor](./windows/how-to-enable-write-accelerator.md)
 
-|Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
-|---|---|---|---|---|---|---|---|
-| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16000 |
-| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16000 |
-| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 / 32000 |
-| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 / 32000 |
+|Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC | Beklenen ağ bant genişliği (MB/sn) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 | 16000 |
+| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 | 16000 |
+| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
+| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 
 <sup>1</sup> Mv2 serisi VM 'ler yalnızca 2. nesil ve 2. nesil desteklenen görüntülerin bir alt kümesini destekler. Mv2-Series için desteklenen görüntülerin tam listesi için lütfen aşağıya bakın. Linux kullanıyorsanız, bir görüntüyü bulma ve seçme hakkında yönergeler için bkz. [Azure 'da 2. nesil sanal makineler Için destek](./linux/generation-2.md) . Windows kullanıyorsanız, bir görüntüyü bulma ve seçme hakkında yönergeler için bkz. [Azure 'da 2. nesil sanal makineler Için destek](./windows/generation-2.md) . 
 
@@ -48,7 +48,7 @@ Yazma Hızlandırıcısı: [destekleniyor](./windows/how-to-enable-write-acceler
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Diğer boyutlar
+## <a name="other-sizes-and-information"></a>Diğer boyutlar ve bilgiler
 
 - [Genel amaçlı](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
@@ -56,6 +56,11 @@ Yazma Hızlandırıcısı: [destekleniyor](./windows/how-to-enable-write-acceler
 - [GPU için iyileştirilmiş](sizes-gpu.md)
 - [Yüksek performanslı işlem](sizes-hpc.md)
 - [Önceki nesiller](sizes-previous-gen.md)
+
+Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
+
+Disk türleri hakkında daha fazla bilgi: [disk türleri](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,18 +8,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: amqp
-ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759641"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307293"
 ---
-# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT hub’ınızda X.509 güvenliğini ayarlayın
+# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT hub'ınızda X.509 güvenliğini ayarlama
 
 Bu öğreticide, *X. 509.952 sertifika kimlik doğrulamasını*kullanarak Azure IoT Hub 'ınızı güvence altına almak için gereken adımlar gösterilmektedir. Çizim amacına yönelik olarak, Windows makinenizde yerel olarak sertifika oluşturmak için OpenSSL açık kaynaklı aracını kullanırız. Bu öğreticiyi yalnızca test amacıyla kullanmanızı öneririz. Üretim ortamında, sertifikaları bir *kök sertifika yetkilisinden (CA)* satın almalısınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, aşağıdaki kaynakların size hazırlanmaya yönelik olması gerekir:
 
@@ -94,7 +98,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 cihazının benzetimini y
 
 1. Çözüm Gezgini, **SimulateX509Device** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**'yi seçin.
+1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**’yi seçin.
 
    ![Visual Studio 'da cihaz SDK 'Sı NuGet paketi ekleme](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 

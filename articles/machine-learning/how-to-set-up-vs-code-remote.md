@@ -5,16 +5,17 @@ description: Azure Machine Learning ile kodunuzda etkileşimli olarak hata ayık
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 07/09/2020
-ms.openlocfilehash: 46aefa62ab00c0b3bc2b90467a9fafd61439a10e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: dfb8dac1b9027acd01b3c13c919d9c3cd8368819
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203459"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320128"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>VS Code uzaktan Azure Machine Learning Işlem örneğinde etkileşimli olarak hata ayıklama (Önizleme)
 
@@ -91,7 +92,7 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 |Konak|İşlem örneği için istediğiniz toplu şeyi kullanın |
 |HostName|Bu, işlem örneğinin IP adresidir |
 |Bağlantı noktası|Bu, yukarıdaki SSH iletişim kutusunda gösterilen bağlantı noktasıdır |
-|User|Bunun olması gerekir `azureuser` |
+|Kullanıcı|Bunun olması gerekir `azureuser` |
 |Identityfile|Özel anahtarı kaydettiğiniz dosyaya işaret etmelidir |
 
 Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1` . 

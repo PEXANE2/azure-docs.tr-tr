@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 90ca46ace5f774e288b40a969f8f7e9802e79857
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7399bc60ffa88112fee87b429571772f634c0754
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080888"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285433"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -22,7 +22,7 @@ MySQL için Azure veritabanı 'nda müşteri tarafından yönetilen anahtarlarla
 Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda kullanılabilir ve isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen RSA şifreleme anahtarlarına yönelik ölçeklenebilir, güvenli depolama alanı sağlar. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıklara şifreleme ve şifre çözme hizmetleri sağlar. Key Vault anahtarı oluşturabilir, içeri aktarabilir veya [Şirket içi BIR HSM cihazından aktarılmasını](../key-vault/key-Vault-hsm-protected-keys.md)sağlayabilir.
 
 > [!NOTE]
-> Bu özellik, MySQL için Azure veritabanı 'nın "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Bu özellik, MySQL için Azure veritabanı 'nın "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir. Diğer sınırlamalar için [sınırlandırma](concepts-data-encryption-mysql.md#limitations) bölümüne bakın.
 
 ## <a name="benefits"></a>Avantajlar
 

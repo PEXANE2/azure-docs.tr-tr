@@ -6,12 +6,13 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: a0d3c23f8f53b8ddfbd3fbd1cb1744a47664ce08
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: devx-track-java
+ms.openlocfilehash: 2340e728933cc230fb53b9581f4b02b41a9438b6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774015"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372068"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -19,7 +20,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıkların hiçbir Azure kitaplığına **bağımlılığı yoktur.** Bunlar, Spring Boot yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
@@ -53,9 +54,9 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 ## <a name="add-feature-management"></a>Özellik Yönetimi Ekle
 
-1. Dosyaları yerel sisteminizde ayıkladıktan sonra, Spring Boot uygulamanız düzenlenmek üzere hazırlanın. *Pok. xml* ' i uygulamanızın kök dizininde bulun.
+1. Dosyaları yerel sisteminizde ayıkladıktan sonra, Spring Boot uygulamanız düzenlenmek üzere hazırlanın. Uygulamanızın kök dizininde *pom.xml* bulun.
 
-1. *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve aşağıdakileri listesine ekleyin `<dependencies>` :
+1. *pom.xml* dosyasını bir metin düzenleyicisinde açın ve aşağıdakileri listesine ekleyin `<dependencies>` :
 
     **Yay bulutu 1.1. x**
 
@@ -184,7 +185,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
     }
     ```
 
-1. Uygulamanızın şablonlar dizininde *Welcome. html* adlı yenı bir HTML dosyası oluşturun.
+1. Uygulamanızın şablonlar dizininde *welcome.html* adlı yenı bir HTML dosyası oluşturun.
 
     ```html
     <!DOCTYPE html>

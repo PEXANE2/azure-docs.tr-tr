@@ -169,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: SaaS teklifi oluşturma
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS için Azure AD ile kimlik doğrulama
+              items:
+                - name: Azure AD ve SaaS’ye genel bakış
+                  href: ./azure-ad-saas.md
+                - name: İşlem yapılabilen teklifler için giriş sayfası
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: Ücretsiz teklifler veya deneme teklifleri için giriş sayfası
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: SaaS gerçekleştirme API'leri
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:

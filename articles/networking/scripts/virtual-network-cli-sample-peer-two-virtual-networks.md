@@ -1,6 +1,6 @@
 ---
 title: Azure CLı betik örneği-eş iki sanal ağ | Microsoft Docs
-description: Azure CLı betik örneği-eşler arası iki sanal ağ
+description: Azure ağ aracılığıyla aynı bölgedeki iki sanal ağı oluşturmak ve bağlamak için bir Azure CLı betik örneği kullanın.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: c301c66c3b668ae48314c4d1eb06657d8573209c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4c3c353e87ad88d7bae10ae011bdd59e7992309
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030422"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282101"
 ---
 # <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>İki sanal ağı bağlamak için bir Azure CLı örnek betiği kullanın
 

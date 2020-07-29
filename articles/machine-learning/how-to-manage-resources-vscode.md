@@ -8,14 +8,15 @@ ms.author: luquinta
 ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 07/09/2020
-ms.openlocfilehash: 2deb939745647636cc04ae124d1e843db0bef7f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206496"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306154"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code Uzantısı ile Azure Machine Learning kaynaklarını yönetme (Önizleme)
 
@@ -376,7 +377,7 @@ Daha fazla bilgi için bkz. [Web hizmeti uç noktaları](concept-azure-machine-l
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **uç noktalar** düğümünü genişletin.
 1. Kaldırmak istediğiniz dağıtıma sağ tıklayın ve **hizmeti Kaldır**' ı seçin.
-1. Hizmeti kaldırmak istediğinizi onaylayan bir istem belirir. **Tamam ' ı**seçin.
+1. Hizmeti kaldırmak istediğinizi onaylayan bir istem belirir. **Tamam**'ı seçin.
 
 ### <a name="manage-deployments"></a>Dağıtımları yönetme
 

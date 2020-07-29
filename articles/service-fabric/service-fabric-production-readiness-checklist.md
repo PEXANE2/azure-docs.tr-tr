@@ -3,12 +3,12 @@ title: Azure Service Fabric üretim hazırlığı denetim listesi
 description: En iyi yöntemleri izleyerek Service Fabric uygulamanızı ve küme üretimini hazırlayın.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf5245b4b97706703d9f96e047ecb49786ff6266
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610039"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282067"
 ---
 # <a name="production-readiness-checklist"></a>Üretim hazırlığı denetim listesi
 
@@ -22,7 +22,7 @@ Uygulamanız ve kümeniz üretim trafiği almaya hazırlanıyor mi? Uygulamanız
 1. Birincil düğüm türü için bir D2v2 veya daha yüksek SKU kullanın. En az 50 GB sabit disk kapasitesine sahip bir SKU seçmeniz önerilir.
 1. Üretim kümeleri [güvenli](service-fabric-cluster-security.md)olmalıdır. Güvenli küme ayarlamaya ilişkin bir örnek için, bu [küme şablonuna](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)bakın. Sertifikalar için ortak adları kullanın ve kendinden imzalı sertifikaları kullanmaktan kaçının.
 1. Düğümlerde [ve hizmetlerde kaynak kısıtlamalarını](service-fabric-resource-governance.md)ekleyerek düğüm kaynaklarının %75 ' inden fazlasını tüketmez. 
-1. [Dayanıklılık düzeyini](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)anlayın ve ayarlayın. Durum bilgisi olan iş yüklerini çalıştıran düğüm türleri için gümüş veya daha yüksek dayanıklılık düzeyi önerilir. Birincil düğüm türü, gümüş veya daha yüksek bir dayanıklılık düzeyine ayarlanmış olmalıdır.
+1. [Dayanıklılık düzeyini](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)anlayın ve ayarlayın. Durum bilgisi olan iş yüklerini çalıştıran düğüm türleri için gümüş veya daha yüksek dayanıklılık düzeyi önerilir.
 1. Düğüm türünün [güvenilirlik düzeyini](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) anlayın ve seçin. Gümüş veya daha yüksek güvenilirlik önerilir.
 1. Kümenizin [kapasite gereksinimlerini](service-fabric-cluster-capacity.md) belirlemek için iş yüklerinizi test edin ve ölçeklendirin. 
 1. Hizmetleriniz ve uygulamalarınız izlenir ve uygulama günlükleri, uyarı ile oluşturulur ve depolanır. Örneğin, bkz. [Service Fabric uygulamanıza günlük ekleme](service-fabric-how-to-diagnostics-log.md) ve [Azure Izleyici günlükleriyle kapsayıcıları izleme](service-fabric-diagnostics-oms-containers.md).

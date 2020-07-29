@@ -10,12 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-ms.date: 3/14/2019
-ms.openlocfilehash: 4cc5ad575b0fbe371d9432668e8ccf43b45ae717
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/28/2020
+ms.openlocfilehash: 8cd8dda807b27bc1a83176c6a46596eccfd19073
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045721"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372102"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuz kaynaklarını ölçeklendirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +56,17 @@ Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzu
 >
 > - Hizmet katmanını değiştirme veya elastik havuz için işlem yeniden oluşturma durumunda, havuzdaki tüm veritabanları genelinde kullanılan alanın toplamı, tahmini hesaplamak için kullanılmalıdır.
 > - Bir veritabanını elastik bir havuza taşımak durumunda, elastik havuz tarafından kullanılan alana değil, yalnızca veritabanı tarafından kullanılan alan gecikmeyi etkiler.
->
+> - Standart ve Genel Amaçlı elastik havuzlar için, elastik havuzun içine/dışına veya elastik havuzlar arasında bir veritabanı taşıma gecikmesi, esnek havuz Premium dosya paylaşma ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) depolaması kullanıyorsa Veritabanı boyutuyla orantılıdır. Bir havuzun PFS depolama kullanıp kullanmadığını anlamak için, havuzdaki herhangi bir veritabanı bağlamında aşağıdaki sorguyu yürütün. AccountType sütunundaki değer ise `PremiumFileStorage` , havuz PFS depolama alanını kullanıyor demektir.
+
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
+
 > [!TIP]
 > Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525951"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284685"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM, grub kurtarma için önyüklenir
 
@@ -35,7 +35,7 @@ Aldığınız hataya bağlı olarak aşağıdaki azaltma adımlarını izleyin:
 * **Bilinmeyen**hata dosyalarını alıyorsanız, bu hata önyükleme bölümünde bir dosya sistemi Bozulması veya yanlış bir çekirdek yapılandırması elde edebilir.
 
    * Dosya sistemi sorunları için [Linux Kurtarma: dosya sistemi hataları nedeniyle LINUX VM 'ye SSH (fsck, ınomdes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes)makalesindeki adımları izleyin.
-   * Çekirdek sorunları için Linux Kurtarma makalesindeki adımları izleyin [: çekirdek sorunları ile ilgili önyükleme olmayan sorunları el ile düzeltme](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems)veya [Linux Kurtarma: chroot kullanarak çekirdek sorunlarıyla ilgili önyükleme dışı sorunları çözme](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot).
+   * Çekirdek sorunları için Linux Kurtarma makalesindeki adımları izleyin [: çekirdek sorunları ile ilgili önyükleme olmayan sorunları el ile düzeltme](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)veya [Linux Kurtarma: chroot kullanarak çekirdek sorunlarıyla ilgili önyükleme dışı sorunları çözme](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
    
 ### <a name="error---file-not-found"></a>Hata-dosya bulunamadı
 

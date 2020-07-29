@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f38dc72a45d84b549baa17c34f2c64ac35b83e3e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285399"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Performans için Azure Data Lake Storage 2. iyileştirin
 
@@ -47,7 +47,7 @@ Yukarıdaki kaynak donanım ve ağ bağlantısı sorunlarını giderdikten sonra
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -a (Eşleyici)   | [Bağlantı](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| Paralellkopyalar    | [Bağlantı](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantı](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantı](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 
@@ -131,7 +131,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 Yukarıdaki genel yönergelere ek olarak, her uygulamanın belirli bir uygulama için ayarlanacak farklı parametreleri vardır. Aşağıdaki tabloda, her bir uygulama için performans ayarlama ile çalışmaya başlamak için bazı parametreler ve bağlantılar listelenmektedir.
 
-| İş yükü | Görevleri ayarlanacak parametre |
+| İş Yükü | Görevleri ayarlanacak parametre |
 |----------|------------------------|
 | [HDInsight’ta Spark](data-lake-storage-performance-tuning-spark.md) | <ul><li>Sayı yürüticileri</li><li>Yürütücü-bellek</li><li>Yürütücü-çekirdekler</li></ul> |
 | [HDInsight üzerinde Hive](data-lake-storage-performance-tuning-hive.md) | <ul><li>Hive. tez. Container. size</li></ul> |

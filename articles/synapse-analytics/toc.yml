@@ -32,9 +32,9 @@
       href: release-notes.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Azure Synapse çalışma alanı oluşturma
+    - name: Synapse çalışma alanı oluşturma
       href: quickstart-create-workspace.md
-    - name: Azure Synapse Studio’yu kullanma
+    - name: Synapse Studio’yu kullanma
       href: quickstart-synapse-studio.md
     - name: Power BI çalışma alanına bağlanma
       href: quickstart-power-bi.md

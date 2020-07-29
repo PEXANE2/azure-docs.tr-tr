@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695343"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337152"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central mimarisi
 
@@ -29,7 +30,7 @@ Cihazlar, Azure IoT Central uygulamanızla verileri değiş tokuş. Bir cihaz ş
 - Telemetri gibi ölçümleri gönderin.
 - Ayarları uygulamanızla eşitler.
 
-Azure IoT Central, bir cihazın uygulamanızla değiş tokuş edebilir bir cihaz şablonunda belirtilir. Cihaz şablonları hakkında daha fazla bilgi için bkz. [metadata Management](#metadata-management).
+Azure IoT Central’da, bir cihazın uygulamanızla değiştirebileceği veriler bir cihaz şablonunda belirtilir. Cihaz şablonları hakkında daha fazla bilgi için bkz. [metadata Management](#metadata-management).
 
 Cihazların Azure IoT Central uygulamanıza nasıl bağlanabileceği hakkında daha fazla bilgi edinmek için bkz. [cihaz bağlantısı](concepts-get-connected.md).
 
@@ -134,7 +135,7 @@ Azure IoT Central uygulamasında cihaz şablonları cihaz türlerinin davranış
 
 Bir IoT Central uygulama cihaz şablonunda şunları içerir:
 
-- **Cihaz yetenek modelleri** , gönderdiği telemetri, cihaz durumunu tanımlayan Özellikler ve cihazın yanıt verdiği komutları gibi bir cihazın yeteneklerini belirtir. Cihaz özellikleri bir veya daha fazla arabirimde düzenlenir. Cihaz yetenek modelleri hakkında daha fazla bilgi için bkz. [ıot Tak ve kullan (Önizleme)](../../iot-pnp/overview-iot-plug-and-play.md) belgeleri.
+- **Cihaz yetenek modelleri** , gönderdiği telemetri, cihaz durumunu tanımlayan Özellikler ve cihazın yanıt verdiği komutları gibi bir cihazın yeteneklerini belirtir. Cihaz özellikleri bir veya daha fazla arabirimde düzenlenir.
 - **Bulut özellikleri** bir cihaz için IoT Central depolar özelliklerini belirtir. Bu özellikler yalnızca IoT Central depolanır ve hiçbir şekilde cihaza gönderilmez.
 - **Görünümler** , bir işlecin cihazları izlemesine ve yönetmesine izin vermek için oluşturucunun oluşturduğu panoları ve formları belirler.
 - **Özelleştirmeler** , oluşturucunun IoT Central uygulamayla daha uygun olması için cihaz yetenek modelindeki bazı tanımları geçersiz kılmasını sağlar.

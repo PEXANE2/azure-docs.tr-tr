@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 34ffa7a9fe9bd129fa3fd572bc8ef4d80b43ab9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322984"
+ms.locfileid: "87336506"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu söz dizimi
 
@@ -59,9 +59,10 @@ Sistem Özellikleri, iletilerin içeriğini ve kaynağını belirlemesine yardı
 | Contentenkodlamaya | dize | Kullanıcı iletinin kodlama türünü belirtir. ContentType Application/JSON olarak ayarlandıysa, izin verilen değerler UTF-8, UTF-16, UTF-32 olur. |
 | ıothub-bağlantı-cihaz kimliği | dize | Bu değer IoT Hub olarak ayarlanır ve cihazın KIMLIĞINI tanımlar. Sorgulamak için kullanın `$connectionDeviceId` . |
 | ıothub-enqueuedtime | dize | Bu değer, IoT Hub tarafından ayarlanır ve UTC 'de iletiyi sıraya alma gerçek süresini temsil eder. Sorgulamak için kullanın `enqueuedTime` . |
-| ıothub-arabirim-adı | dize | Bu değer Kullanıcı tarafından ayarlanır ve telemetri iletisini uygulayan dijital ikizi arabiriminin adını temsil eder. Sorgulamak için kullanın `$interfaceName` . Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. |
+| DT-DataSchema | dize |  Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. Sorgulamak için kullanın `$dt-dataschema` . |
+| DT-konu | dize | Cihazdan buluta iletileri gönderen bileşenin adı. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. Sorgulamak için kullanın `$dt-subject` . |
 
-[IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. **ContentType**, **Contentenkodlamaya**ve **Enqueuedtime**'A ek olarak **connectiondeviceıd** ve **connectionmoduleıd** de sorgulanabilir.
+[IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. Önceki tablodaki özelliklerin yanı sıra **Connectiondeviceıd**, **connectionmoduleıd**' yi de sorgulayabilirsiniz.
 
 ### <a name="application-properties"></a>Uygulama özellikleri
 

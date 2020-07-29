@@ -7,12 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002361"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337118"
 ---
 # <a name="what-are-device-templates"></a>Cihaz şablonları nedir?
 
@@ -28,6 +28,9 @@ Bir cihaz şablonu aşağıdaki bölümleri içerir:
 - _Bulut özellikleri_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin depolanacak cihaz meta verilerini belirtmesini sağlar. Bulut özellikleri hiçbir zaman cihazlarla eşitlenmez ve uygulamada mevcut değildir. Bulut özellikleri, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
 - _Özelleştirmeler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin DCM içindeki bazı tanımları geçersiz kılmasına izin verir. Çözüm geliştiricisi, uygulamanın bir özelliğin görünen adını değiştirme veya telemetri değerini göstermek için kullanılan renk gibi bir değeri nasıl işleyeceğini iyileştirmek isterse, özelleştirmeler yararlı olur. Özelleştirmeler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
 - _Görünümler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin Cihazdaki verileri görüntülemek ve bir cihazı yönetmek ve denetlemek için form görselleştirmeleri tanımlamasına olanak sağlar. Görünümler DCM, bulut özellikleri ve özelleştirmeleri kullanır. Görünümler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
+
+> [!NOTE]
+> [Iot Tak ve Kullan genel önizleme yenileme sürümü](../../iot-pnp/overview-iot-plug-and-play.md) , cihaz geliştiricileri ve OEM 'lerin, daha sonra IoT başlatma öncesinde IoT Tak ve Kullan için doğrulayabilecekleri cihazlar oluşturmaya başlamasını sağlar.
 
 ## <a name="device-capability-models"></a>Cihaz özelliği modelleri
 

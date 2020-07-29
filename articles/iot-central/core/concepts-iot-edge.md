@@ -7,13 +7,14 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759094"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337084"
 ---
-# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge cihazlarını bir Azure IoT Central uygulamasına bağlama
+# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge cihazlarını Azure IoT Central uygulamasına bağlama
 
 *Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
 
@@ -57,7 +58,7 @@ Azure IoT Central, bir cihaz şablonu oluşturmak için dağıtım bildirimini i
 
 ![Dağıtım bildirimi yaşam döngüsü akış çizelgesi](./media/concepts-iot-edge/dmflow.png)
 
-IoT Tak ve Kullan (Önizleme) IoT Edge bir cihazı aşağıdaki şekilde modeller:
+IoT Edge bir cihazı aşağıdaki şekilde modeller IoT Central:
 
 * Her IoT Edge cihaz şablonunda bir cihaz yetenek modeli vardır.
 * Dağıtım bildiriminde listelenen her özel modül için bir modül yetenek modeli oluşturulur.

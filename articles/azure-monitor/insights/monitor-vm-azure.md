@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539712"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326197"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -130,11 +130,11 @@ Bir sanal makine için izleme verileri koleksiyonunu yapılandırdıktan sonra, 
 
 ![Azure portal izleme](media/monitor-vm-azure/monitor-menu.png)
 
-| Menü seçeneği | Description |
+| Menü seçeneği | Açıklama |
 |:---|:---|
 | Genel Bakış | Sanal makine konağı için [Platform ölçümlerini](../platform/data-platform-metrics.md) görüntüler. [Ölçüm Gezgini](../platform/metrics-getting-started.md)'nde bu verilerle çalışmak için bir grafiğe tıklayın. |
 | Etkinlik günlüğü | Geçerli sanal makine için filtrelenmiş [etkinlik günlüğü](../platform/activity-log.md#view-the-activity-log) girdileri. |
-| Insights | Seçilen geçerli sanal makine için eşle [VM'ler için Azure izleyici](../insights/vminsights-overview.md) açar. |
+| Insights | Seçilen geçerli sanal makine için eşle [VM'ler için Azure izleyici](./vminsights-overview.md) açar. |
 | Uyarılar | Geçerli sanal makine için [uyarıları](../platform/alerts-overview.md) görüntüler.  |
 | Ölçümler | [Ölçüm Gezgini](../platform/metrics-getting-started.md) ' ni geçerli sanal makineye ayarlı kapsam ile açın. |
 | Tanılama ayarları | Geçerli sanal makine için [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) etkinleştirin ve yapılandırın. |
@@ -148,7 +148,7 @@ Sanal makine menüsünden **ölçümler** ' i açarak, Ölçüm Gezgini 'ni kull
 
 Ölçümler için sanal makineler tarafından kullanılan üç ad alanı vardır:
 
-| Ad Alanı | Description | Gereksinim |
+| Ad Alanı | Açıklama | Gereksinim |
 |:---|:---|:---|
 | Sanal Makine Ana Bilgisayarı | Tüm Azure sanal makineleri için otomatik olarak toplanan konak ölçümleri. [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines)'teki ayrıntılı ölçüm listesi. | Yapılandırma gerekmeden otomatik olarak toplanır. |
 | Konuk (klasik) | Sınırlı bir konuk işletim sistemi ve uygulama performansı verileri kümesi. Ölçüm uyarıları gibi diğer Azure Izleyici özellikleriyle Ölçüm Gezgini 'nde kullanılabilir.  | [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) yüklendi. Veriler Azure depolama alanından okundu.  |
@@ -242,3 +242,4 @@ Mevcut SCOM yönetim grubunuzu Log Analytics çalışma alanınıza bağlama hak
 
 * [Günlük sorgularını kullanarak Azure Izleyici günlüklerinde verileri çözümlemeyi öğrenin.](../log-query/get-started-queries.md)
 * [Azure Izleyici 'de ölçümleri ve günlükleri kullanarak uyarılar hakkında bilgi edinin.](../platform/alerts-overview.md)
+

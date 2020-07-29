@@ -7,12 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263016"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319771"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gerçek zamanlı veri analizlerini görselleştirmek için Azure Cosmos DB değişiklik akışını kullanın
 
@@ -53,7 +54,7 @@ Aşağıdaki diyagram, çözüme dahil olan veri akışını ve bileşenlerini t
 
 7. **Power BI:** Power BI, Azure Stream Analytics tarafından gönderilen verileri görselleştirmek için kullanılır. Ölçümlerin gerçek zamanlı olarak nasıl değişmediklerini görmek için bir pano oluşturabilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Microsoft .NET Framework 4.7.1 veya üzeri
 
@@ -208,7 +209,7 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
 5. Stream Analytics işi sayfasına dönün ve **çıktılar**' i seçin.  
 
-6. **+ Ekle** öğesini seçin. Sonra açılan menüden **Power BI** ' ı seçin.  
+6. **+ Ekle**'yi seçin. Sonra açılan menüden **Power BI** ' ı seçin.  
 
 7. Ortalama fiyatı görselleştirmek üzere yeni bir Power BI çıkışı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
 

@@ -7,18 +7,19 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1ba623a00c84a7b83afe778c808251e49c7008e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515352"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337356"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md) ve [bir Azure dosya eşitleme dağıtımı planlamayı](storage-sync-files-planning.md) kesinlikle öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure Dosya Eşitleme dağıtmak istediğiniz bölgedeki bir Azure dosya paylaşımıdır. Daha fazla bilgi için bkz.
     - Azure Dosya Eşitleme için [bölge kullanılabilirliği](storage-sync-files-planning.md#azure-file-sync-region-availability) .
     - Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım bir açıklama için [dosya paylaşma oluşturun](storage-how-to-create-file-share.md) .
@@ -29,7 +30,7 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
     $PSVersionTable.PSVersion
     ```
 
-    PSVersion değeri 5,1 ' den küçükse \* , Windows Server 2012 R2 'nin en yeni yüklemelerinde olduğu gibi, [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)indirip yükleyerek kolayca yükseltebilirsiniz. Windows Server 2012 R2 için indirmek ve yüklemek üzere uygun paket **Win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64. msu**' dir. 
+    **Psversion** değeri 5,1 ' den küçükse \* , Windows Server 2012 R2 'nin en yeni yüklemelerinde olduğu gibi, [WINDOWS Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)indirip yükleyerek kolayca yükseltebilirsiniz. Windows Server 2012 R2 için indirmek ve yüklemek üzere uygun paket **Win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64. msu**' dir. 
 
     PowerShell 6 + desteklenen herhangi bir sistemle birlikte kullanılabilir ve [GitHub sayfası](https://github.com/PowerShell/PowerShell#get-powershell)aracılığıyla indirilebilir. 
 
@@ -214,6 +215,8 @@ Windows Server’ı bir Depolama Eşitleme Hizmeti’ne kaydetmek, sunucunuz (ve
 
 > [!Note]
 > Sunucu kaydı, depolama eşitleme hizmeti ile Windows Server arasında bir güven ilişkisi oluşturmak için Azure kimlik bilgilerinizi kullanır, ancak bundan sonra sunucu kayıtlı olduğu ve geçerli paylaşılan erişim Imza belirteci (depolama SAS) geçerli olduğu sürece geçerli olan kendi kimliğini oluşturur ve kullanır. Sunucunun kaydı kaldırıldıktan sonra sunucuya yeni bir SAS belirteci verilemez, böylece sunucunun Azure dosya paylaşımınızla erişme özelliği kaldırılarak eşitleme durdurulur.
+
+Sunucuyu kaydeden yönetici, belirtilen depolama eşitleme hizmeti için yönetim rolleri **sahibinin** veya **katkıda bulunan** bir üyesi olmalıdır. Bu, depolama eşitleme hizmeti için Azure portal **Access Control (IAM)** altında yapılandırılabilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısının yüklenmesinden sonra otomatik olarak açılmalıdır. Açılmazsa, şu dosya konumundan kendiniz açabilirsiniz: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Sunucu kaydı kullanıcı arabirimi açıldığında başlamak için **oturum aç** ' ı seçin.

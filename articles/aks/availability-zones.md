@@ -5,11 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feea8c3cba170244be2ca3ec7a11c36a3c39f700
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195561"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281234"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik alanlarını kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
@@ -35,7 +36,7 @@ AKS kümeleri Şu anda şu bölgelerde kullanılabilirlik alanları kullanılara
 * Kuzey Avrupa
 * Güneydoğu Asya
 * Güney Birleşik Krallık
-* Batı Avrupa
+* West Europe
 * Batı ABD 2
 
 Kullanılabilirlik bölgelerini kullanarak bir AKS kümesi oluşturduğunuzda aşağıdaki sınırlamalar geçerlidir:
@@ -84,7 +85,7 @@ az aks create \
     --zones 1 2 3
 ```
 
-AKS kümesini oluşturmak birkaç dakika sürer.
+AKS kümesinin oluşturulması birkaç dakika sürer.
 
 Yeni bir düğümün hangi bölgeye ait olduğuna karar verirken, belirli bir AKS düğüm havuzu [temel alınan Azure sanal makine ölçek kümeleri tarafından sunulan en iyi efor bölge dengelemesini][vmss-zone-balancing]kullanacaktır. Belirli bir AKS düğüm havuzu, ölçek kümesinin diğer bölgelerinde aynı sayıda VM veya + 1 VM varsa "dengeli" olarak değerlendirilir \- .
 
@@ -98,7 +99,7 @@ Küme hazır olduğunda, hangi kullanılabilirlik bölgesini dağıttığımız 
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Sonra, küme içindeki düğümleri listelemek için [kubectl açıkla][kubectl-describe] komutunu kullanın. Aşağıdaki örnekte gösterildiği gibi *Failure-Domain.Beta.Kubernetes.io/Zone* değerini filtreleyin:
+Sonra, küme içindeki düğümleri listelemek ve *Failure-Domain.Beta.Kubernetes.io/Zone* değerini filtrelemek için [kubectl açıkla][kubectl-describe] komutunu kullanın. Aşağıdaki örnek bir bash kabuğu içindir.
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -130,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-Ölçek işlemi birkaç dakika sonra tamamlandığında, komut `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` Bu örneğe benzer bir çıktı vermelidir:
+Ölçek işlemi birkaç dakika sonra tamamlandığında, `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` bir bash kabuğu 'ndaki komut bu örneğe benzer bir çıktı vermelidir:
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -151,7 +152,7 @@ Artık 1 ve 2. bölgelerde iki ek düğüm vardır. Üç çoğaltmalardan oluşa
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-Yığınlarınızın çalıştığı düğümleri görüntüleyerek, üç farklı kullanılabilirlik bölgesine karşılık gelen düğümlerde Pod 'nin çalıştığını görürsünüz. Örneğin, komutuyla `kubectl describe pod | grep -e "^Name:" -e "^Node:"` Şuna benzer bir çıktı alırsınız:
+Yığınlarınızın çalıştığı düğümleri görüntüleyerek, üç farklı kullanılabilirlik bölgesine karşılık gelen düğümlerde Pod 'nin çalıştığını görürsünüz. Örneğin, `kubectl describe pod | grep -e "^Name:" -e "^Node:"` bir bash kabuğu 'ndaki komutuyla şuna benzer bir çıktı alırsınız:
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

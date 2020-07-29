@@ -2,7 +2,7 @@
 title: Azure AD belirteci & talep türleri
 description: Azure Active Directory (AAD) tarafından verilen SAML 2,0 ve JSON Web belirteçleri (JWT) belirteçlerinde talepleri anlamak ve değerlendirmek için bir kılavuz
 documentationcenter: na
-author: rwike77
+author: kenwith
 services: active-directory
 manager: CelesteDG
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.date: 06/22/2018
-ms.author: ryanwi
-ms.reviewer: hirsin
+ms.author: kenwith
+ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 27582bf7f06a659a26f67c455cb9e196a9996781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59ba97ccc0bc4a1a273873d638ef3f519b91e530
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284447"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML belirteci başvurusu
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD), her kimlik doğrulama akışının işlenmesi
 ## <a name="claims-in-saml-tokens"></a>SAML belirteçlerinde talepler
 
 > [!div class="mx-codeBreakAll"]
-> | Name | Denk JWT talebi | Açıklama | Örnek |
+> | Ad | Denk JWT talebi | Açıklama | Örnek |
 > | --- | --- | --- | ------------|
 > |Hedef kitle | `aud` |Belirtecin amaçlanan alıcısı. Belirteci alan uygulamanın, hedef kitle değerinin doğru olduğunu ve farklı bir hedef kitle için tasarlanan belirteçleri reddetmesini doğrulaması gerekir. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Kimlik Doğrulaması Anı | |Kimlik doğrulamasının gerçekleştiği tarihi ve saati kaydeder. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -39,10 +39,10 @@ Azure Active Directory (Azure AD), her kimlik doğrulama akışının işlenmesi
 > |Issuedat | `iat` |Belirtecin verildiği saati depolar. Genellikle belirtecin yeniliği ölçmek için kullanılır. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Veren | `iss` |Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) belirler. Azure AD 'nin döndürdüğü belirteçlerde veren sts.windows.net. Verenin talep değerindeki GUID, Azure AD dizininin kiracı KIMLIĞIDIR. Kiracı KIMLIĞI, dizinin sabit ve güvenilir tanıtıcısıdır. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Soyadı | `family_name` |Kullanıcının Azure AD Kullanıcı nesnesinde tanımlanan soyadı, soyadı veya aile adını sağlar. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Name | `unique_name` |Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değerin kiracı içinde benzersiz olması garanti edilmez ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Ad | `unique_name` |Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değerin kiracı içinde benzersiz olması garanti edilmez ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |Nesne Kimliği | `oid` |Azure AD 'de bir nesnenin benzersiz tanımlayıcısını içerir. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Azure AD 'de sorgulardaki bir nesneyi tanımlamak için nesne KIMLIĞINI kullanın. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Roller | `roles` |Konunun hem doğrudan hem de dolaylı olarak grup üyeliği aracılığıyla verildiğini ve rol tabanlı erişim denetimini zorlamak için kullanılabilir olan tüm uygulama rollerini temsil eder. Uygulama rolleri uygulama bildiriminin özelliği aracılığıyla uygulama başına temelinde tanımlanır `appRoles` . `value`Her uygulama rolünün özelliği, roller talebinde görüntülenen değerdir. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |Özne | `sub` |Uygulamanın kullanıcı gibi, belirtecin hangi ana öğe için onay verdiğini belirtir. Bu değer sabittir ve yeniden atanamaz veya yeniden kullanılamaz, bu nedenle yetkilendirme denetimlerini güvenli bir şekilde gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD sorunları belirteçlerinde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. <br> `SubjectConfirmation`bir talep değil. Belirtecin konusunun nasıl doğrulandığını açıklar. `Bearer`konunun belirtecin elinde olduğunu teyit eden anlamına gelir. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |Konu | `sub` |Uygulamanın kullanıcı gibi, belirtecin hangi ana öğe için onay verdiğini belirtir. Bu değer sabittir ve yeniden atanamaz veya yeniden kullanılamaz, bu nedenle yetkilendirme denetimlerini güvenli bir şekilde gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD sorunları belirteçlerinde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. <br> `SubjectConfirmation`bir talep değil. Belirtecin konusunun nasıl doğrulandığını açıklar. `Bearer`konunun belirtecin elinde olduğunu teyit eden anlamına gelir. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |Kiracı Kimliği | `tid` |Belirteci veren dizin kiracısını tanımlayan, sabit ve yeniden kullanılabilir olmayan bir tanımlayıcı. Bu değeri, çok kiracılı bir uygulamadaki kiracıya özgü dizin kaynaklarına erişmek için kullanabilirsiniz. Örneğin, Graph API çağrısında kiracıyı tanımlamak için bu değeri kullanabilirsiniz. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Belirteç Ömrü | `nbf`, `exp` |Belirtecin geçerli olduğu zaman aralığını tanımlar. Belirteci doğrulayan hizmet geçerli tarihin belirteç ömrü içinde olduğunu doğrulamalıdır, aksi takdirde belirteci reddetmelidir. Hizmet, belirteç yaşam süresi aralığının, Azure AD ile hizmet arasında saat ("zaman sapması") arasında herhangi bir farklılık hesaba göre hesap yapmasına izin verebilir. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 

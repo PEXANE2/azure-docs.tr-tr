@@ -11,11 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336874"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336931"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -48,7 +49,7 @@ Aşağıda, Azure Repos git ile yapılandırılmış bir Azure Data Factory 'dek
 
 1.  Bir çekme isteği onaylandıktan ve değişiklikler ana dalda birleştirildikten sonra, değişiklikler geliştirme fabrikasına yayımlanır.
 
-1.  Takım, değişiklikleri bir test veya UıAT fabrikasına dağıtmaya hazırsa, takım Azure Pipelines sürümüne gider ve geliştirme fabrikasının istenen sürümünü UıAT 'a dağıtır. Bu dağıtım Azure Pipelines görevin bir parçası olarak gerçekleşir ve uygun yapılandırmayı uygulamak için Kaynak Yöneticisi Şablon parametrelerini kullanır.
+1.  Takım, değişiklikleri bir test veya UAT (Kullanıcı kabul testi) fabrikasında dağıtmaya hazırsa, takım Azure Pipelines sürümüne gider ve geliştirme fabrikasının istenen sürümünü UıAT 'ya dağıtır. Bu dağıtım Azure Pipelines görevin bir parçası olarak gerçekleşir ve uygun yapılandırmayı uygulamak için Kaynak Yöneticisi Şablon parametrelerini kullanır.
 
 1.  Test fabrikasında değişiklikler doğrulandıktan sonra, işlem hattı sürümünün sonraki görevini kullanarak üretim fabrikasına dağıtın.
 
@@ -304,7 +305,7 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
 ```
 Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bölündüğü hakkında bir açıklama aşağıda verilmiştir.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>İşlem hatları
     
 * Yoldaki herhangi bir özellik `activities/typeProperties/waitTimeInSeconds` parametrelenir. Bir işlem hattındaki (örneğin, etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, `waitTimeInSeconds` `Wait` varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
 * Benzer şekilde, adlı bir özellik `headers` (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.

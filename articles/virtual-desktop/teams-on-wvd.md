@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f6185cbb871d63cfdf5a4c336944158593b63e4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129313"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372850"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
 >[!IMPORTANT]
->Microsoft ekipleri için medya iyileştirmesi Şu anda genel önizlemededir. Üretim iş yükleri için takımlar dağıtılmadan önce en iyi duruma getirilmiş takımlar Kullanıcı deneyimini değerlendirmenizi öneririz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+>Ekipler için medya iyileştirmesi Microsoft 365 Kamu ortamlarında desteklenmez.
 
 >[!NOTE]
 >Microsoft ekipleri için medya iyileştirmesi yalnızca Windows 10 makinelerinde Windows Masaüstü istemcisi için kullanılabilir. Medya iyileştirmeleri Windows Masaüstü istemcisi sürümü 1.2.1026.0 veya üstünü gerektirir.
@@ -53,15 +53,21 @@ Takımlar için medya iyileştirmesini etkinleştirmek üzere konakta aşağıda
 
 ### <a name="install-the-teams-websocket-service"></a>Takımlar WebSocket hizmetini yükler
 
-[WebSocket HIZMETINI](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) VM yansımanıza yükler. Yükleme hatasıyla karşılaşırsanız, yeniden [dağıtılabilir en son Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yükleyip yeniden deneyin.
+VM yansımanıza en son [WebSocket hizmetini](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) yükler. Yükleme hatasıyla karşılaşırsanız, yeniden [dağıtılabilir en son Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yükleyip yeniden deneyin.
 
 #### <a name="latest-websocket-service-versions"></a>En son WebSocket hizmeti sürümleri
 
-Aşağıdaki tabloda her kullanıcı grubu için kullanılabilen geçerli sürümler listelenmiştir:
+Aşağıdaki tabloda WebSocket hizmetinin en son sürümleri listelenmektedir:
 
-|Sürüm    |Sürüm tarihi  |
-|-----------|--------------|
-|0.11.0     |05/29/2020    |
+|Sürüm        |Sürüm tarihi  |
+|---------------|--------------|
+|1.0.2006.11001 |07/28/2020    |
+|0.11.0         |05/29/2020    |
+
+#### <a name="updates-for-version-10200611001"></a>Sürüm 1.0.2006.11001 için güncelleştirmeler
+
+- Bir çağrı veya toplantı sırasında ekipler uygulamasının bir şekilde çıkarılmasına neden olan bir sorun düzeltildi.
+- Birden çok Monitor Masaüstü oturumlarında paylaşılacak bir izleyici seçme desteği eklendi.
 
 ### <a name="install-microsoft-teams"></a>Microsoft ekipleri 'nı yükler
 
@@ -117,7 +123,7 @@ WebSocket hizmetini ve takımlar masaüstü uygulamasını yükledikten sonra, t
 
 3. Kullanıcı profili görüntünüzü seçin ve ardından **Ayarlar**' ı seçin.
 
-      Medya iyileştirmesi yüklüyse, yerel olarak bulunan ses cihazları ve kameralar cihaz menüsünde numaralandırılır. Menü **uzak sesi**gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin. Cihazlar hala menüde görünmüyorsa, [Microsoft ekipleri](#install-microsoft-teams) ' nı yüklemek için geri dönün ve yükleme sürecini tamamladığınızdan emin olun.
+      Medya iyileştirmesi yüklüyse, yerel olarak bulunan ses cihazları ve kameralar cihaz menüsünde numaralandırılır. Menü **uzak sesi**gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin. Cihazlar hala menüde görünmüyorsa, yerel bilgisayarınızdaki gizlilik ayarlarını kontrol edin. **Ayarlar**  >  **Gizlilik**  >  **Uygulama izinleri** altındaki **uygulamaların mikrofona erişmesine izin ver** ayarının **Açık**olduğundan emin olun. Uzak oturumla bağlantıyı kesin, sonra yeniden bağlayın ve ses ve video cihazlarını tekrar denetleyin. Aramalara ve toplantılara video ile katılabilmek için, ayrıca uygulamaların kameranıza erişmesine izin vermeniz gerekir.
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
@@ -133,9 +139,7 @@ Sanallaştırılmış bir ortamda takımlar kullanmak, sanallaştırılmamış b
 ### <a name="calls-and-meetings"></a>Çağrılar ve toplantılar
 
 - Windows sanal masaüstü ortamlarında takımlar masaüstü istemcisi canlı olayları desteklemez. Şimdilik, uzak oturumunuzda [takımlar web istemcisinden](https://teams.microsoft.com) canlı olaylara katılmanız önerilir.
-- Bir çağrı veya toplantı sırasında takımlar uygulamasının en aza indirmek, uygulamayı genişlettiğinizde gelen video akışı 'nın görünmesine neden olabilir.
 - Çağrılar veya toplantılar Şu anda uygulama paylaşımını desteklememektedir. Masaüstü oturumları masaüstü paylaşımını destekler.
-- Çoklu izleyici kurulumunda Masaüstü Paylaşımı olduğunda tüm izleyiciler paylaşılır.
 - Denetimi verme ve denetimi alma şu anda desteklenmiyor.
 - Windows sanal masaüstündeki takımlar tek seferde yalnızca bir gelen video girişini destekler. Diğer bir deyişle, her biri Ekranınızı paylaşmaya çalıştığında, Toplantı lideri ekranının yerine ekranın görünmesini sağlar.
 - WebRTC sınırlamaları nedeniyle, gelen ve giden video akış çözünürlüğü 720p ile sınırlıdır.

@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8a6636b0fc6c3e67ec171d738efb3fd8a93de30c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120781"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319992"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Market ölçülen faturalandırma API 'Leri
 
@@ -43,7 +45,7 @@ Kaynak başına bir takvim gününe ait her saat için yalnızca bir kullanım o
 
 *İstek üst bilgileri:*
 
-| İçerik türü       | `application/json` kullan  |
+| İçerik türü       | `application/json` komutunu kullanma  |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
@@ -155,7 +157,7 @@ Toplu kullanım olayı API 'SI, birden fazla satın alınan kaynağın kullanım
 
 *İstek üst bilgileri:*
 
-| İçerik türü       | `application/json` kullan       |
+| İçerik türü       | `application/json` komutunu kullanma       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanmış olur. |

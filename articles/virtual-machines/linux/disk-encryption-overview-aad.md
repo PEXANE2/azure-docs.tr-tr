@@ -4,16 +4,16 @@ description: Bu makalede, IaaS VM 'Leri için Microsoft Azure disk şifrelemesi 
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 30edd5b8e9fbfdce9fb3061c1891ff0a68a50cc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c85d362f7295e8edef1b4070a779c6aa99c3991f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080259"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372646"
 ---
 # <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Active Directory (AD) ile Azure disk şifrelemesi (önceki sürüm)
 

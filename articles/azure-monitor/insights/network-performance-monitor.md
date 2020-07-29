@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117200"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326095"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 'da Ağ Performansı İzleyicisi çözümü
 
@@ -56,7 +56,7 @@ NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki ba
 * Güney UK
 * Doğu Asya
 * Güney Kore - Orta
-* Orta Hindistan
+* Central India
 * ABD devleti Virginia
 * Çin Doğu 2
 
@@ -113,7 +113,7 @@ Ağ Performansı İzleyicisi, kaynak ve hedef aracılar arasındaki ağ performa
 
 ### <a name="configure-the-solution"></a>Çözümü yapılandırma 
 
-1. Ağ Performansı İzleyicisi çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)' nden çalışma alanınıza ekleyin. Ayrıca, [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan süreci de kullanabilirsiniz. 
+1. Ağ Performansı İzleyicisi çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)' nden çalışma alanınıza ekleyin. Ayrıca, [Çözüm Galerisi Azure izleyici çözümlerini ekleme](./solutions.md)bölümünde açıklanan süreci de kullanabilirsiniz. 
 2. Log Analytics çalışma alanınızı açın ve **genel bakış** kutucuğunu seçin. 
 3. İleti *çözümünün ek yapılandırma gerektirdiğinden* **ağ performansı İzleyicisi** kutucuğunu seçin.
 
@@ -291,3 +291,4 @@ Fiyatlandırma hakkında bilgi [çevrimiçi](network-performance-monitor-pricing
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 [Performans İzleyicisi](network-performance-monitor-performance-monitor.md), [hizmet bağlantı Izleyicisi](network-performance-monitor-performance-monitor.md)ve [ExpressRoute İzleyicisi](network-performance-monitor-expressroute.md)hakkında daha fazla bilgi edinin. 
+

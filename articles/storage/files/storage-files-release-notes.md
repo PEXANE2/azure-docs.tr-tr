@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 6/26/2020
+ms.date: 7/28/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76b55f7f50f688adb2b35a1b8ed596818cdfac19
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484069"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372867"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısı sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -25,20 +25,20 @@ Azure Dosya Eşitleme aracısı aşağıdaki sürümleri destekler:
 
 | Ina | Aracı sürüm numarası | Sürüm tarihi | Durum |
 |----|----------------------|--------------|------------------|
-| V 10.1 sürüm- [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 5 Haziran 2020 | Desteklenen-Fışıklandırma |
-| 2020 Mayıs güncelleştirme paketi- [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 19 Mayıs 2020 | Destekleniyor |
-| İle v10 arasındaki Release- [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9 Nisan 2020 | Destekleniyor |
-| Aralık 2019 güncelleştirme paketi- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 Aralık 2019 | Destekleniyor |
-| V9 Release- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 Aralık 2019 | Destekleniyor |
-| V8 Release- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 Ekim 2019 | Destekleniyor |
+| V 10.1 sürüm- [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 5 Haziran 2020 | Desteklenir |
+| 2020 Mayıs güncelleştirme paketi- [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 19 Mayıs 2020 | Desteklenir |
+| İle v10 arasındaki Release- [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9 Nisan 2020 | Desteklenir |
+| Aralık 2019 güncelleştirme paketi- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 Aralık 2019 | Desteklenir |
+| V9 Release- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 Aralık 2019 | Desteklenir |
+| V8 Release- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 Ekim 2019 | Desteklenir |
 | Temmuz 2019 güncelleştirme paketi- [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 Temmuz 2019 | Desteklenen-aracı sürümü 1 Eylül 2020 ' de dolacak |
 | Temmuz 2019 güncelleştirme paketi- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 Temmuz 2019 | Desteklenen-aracı sürümü 1 Eylül 2020 ' de dolacak |
 | V7 Release- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19 Haziran 2019 | Desteklenen-aracı sürümü 1 Eylül 2020 ' de dolacak |
-| V6 sürümü | 6.0.0.0 - 6.3.0.0 | YOK | Desteklenmez-, 21 Nisan 2020 tarihinde Aracı sürümleri zaman aşımına uğradı |
-| V5 sürümü | 5.0.2.0 - 5.2.0.0 | YOK | Desteklenmez-18 Mart 2020 tarihinde Aracı sürümleri zaman aşımına uğradı |
-| V4 sürümü | 4.0.1.0 - 4.3.0.0 | YOK | Desteklenmiyor-aracı sürümlerinin tarihi 6 Kasım 2019 ' de |
-| V3 sürümü | 3.1.0.0 - 3.4.0.0 | YOK | Desteklenmiyor-Aracı sürümleri 19 Ağustos 2019 tarihinde zaman aşımına uğradı |
-| Ön GA aracıları | 1.1.0.0-3.0.13.0 | YOK | Desteklenmez-1 Ekim 2018 ' de Aracı sürümleri zaman aşımına uğradı |
+| V6 sürümü | 6.0.0.0 - 6.3.0.0 | Yok | Desteklenmez-, 21 Nisan 2020 tarihinde Aracı sürümleri zaman aşımına uğradı |
+| V5 sürümü | 5.0.2.0 - 5.2.0.0 | Yok | Desteklenmez-18 Mart 2020 tarihinde Aracı sürümleri zaman aşımına uğradı |
+| V4 sürümü | 4.0.1.0 - 4.3.0.0 | Yok | Desteklenmiyor-aracı sürümlerinin tarihi 6 Kasım 2019 ' de |
+| V3 sürümü | 3.1.0.0 - 3.4.0.0 | Yok | Desteklenmiyor-Aracı sürümleri 19 Ağustos 2019 tarihinde zaman aşımına uğradı |
+| Ön GA aracıları | 1.1.0.0-3.0.13.0 | Yok | Desteklenmez-1 Ekim 2018 ' de Aracı sürümleri zaman aşımına uğradı |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure Dosya Eşitleme aracısı güncelleştirme ilkesi
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

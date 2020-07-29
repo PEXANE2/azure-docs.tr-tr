@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 6bc118145bec30085c2d9fbf726c40a20b312430
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 83e76cd96e09b0e136d2bfbe2e5863b289724bdd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207044"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284260"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -24,7 +24,7 @@ Microsoft Görüntü İşleme API'si, görüntülerden ve PDF belgelerinden yazd
 
 ## <a name="read-api"></a>API 'YI oku 
 
-Görüntü İşleme [okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) , Microsoft 'un yazdırılan metni (yedi dil), el yazısı metin (yalnızca İngilizce), rakamları ve görüntü ve çok sayfalı PDF belgelerinden oluşan para birimi sembollerini ayıklayan en son OCR teknolojisidir. Büyük-büyük ve çok sayfalı PDF belgelerinin karışık dillerde metin ayıklamak için en iyi duruma getirilmiştir. Aynı görüntüde veya belgede yazdırılmış ve el yazısı metinleri (Yalnızca Ingilizce) algılamanızı destekler. [OCR desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) sayfasının tam listesini inceleyin.
+Görüntü İşleme [okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) , Microsoft 'un yazdırılan metni birkaç dilde çıkaran en son OCR teknolojisidir, resim ve çok sayfalı PDF belgelerinden el yazısı metin (yalnızca İngilizce), rakamlar ve para birimi sembolleri. Büyük-büyük ve çok sayfalı PDF belgelerinin karışık dillerde metin ayıklamak için en iyi duruma getirilmiştir. Aynı görüntüde veya belgede yazdırılmış ve el yazısı metinleri (Yalnızca Ingilizce) algılamanızı destekler. [OCR desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) sayfasının tam listesini inceleyin.
 
 ### <a name="how-ocr-works"></a>OCR nasıl kullanılır?
 
@@ -123,7 +123,7 @@ Okuma işlemi şu anda yalnızca Ingilizce dilinde el ile yazılmış metinlerin
 
 ### <a name="printed-text-in-supported-languages"></a>Desteklenen dillerde yazdırılmış metin
 
-Okuma API 'SI, yazdırılan metnin Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe dillerde ayıklanmasından sonra desteklenir. Senaryonuz daha fazla dil desteklemelidir gerektiriyorsa, bu belgede OCR API 'sine genel bakış bölümüne bakın. [OCR tarafından desteklenen tüm dillerin](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) listesine bakın
+Read 3,0 API 'SI Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe dillerde yazdırılmış metnin ayıklanmasından sonra desteklenir. [3,1-Preview ' i okuyun. 1 API genel önizlemesi](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) Basitleştirilmiş Çince desteği ekler. Senaryonuz daha fazla dil desteklemelidir gerektiriyorsa, bu belgede OCR API 'sine genel bakış bölümüne bakın. [OCR tarafından desteklenen tüm dillerin](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) listesine bakın
 
 ![Döndürülmekte olan bir görüntü ve metnin okunmakta ve ayırıcılarından biri](./Images/supported-languages-example.png)
 
@@ -137,7 +137,7 @@ Okuma API 'SI, genellikle karışık dil belgeleri olarak bilinen, birden çok d
 
 Tüm bilişsel hizmetlerde olduğu gibi, okuma hizmetini kullanan geliştiriciler müşteri verilerinde Microsoft ilkeleriyle uyumlu olmalıdır. Daha fazla bilgi edinmek için [Microsoft Güven Merkezi](https://www.microsoft.com/en-us/trust-center/product-overview) ' nde bilişsel Hizmetler sayfasına bakın.
 
-### <a name="deploy-on-premises"></a>Şirket içi dağıtma
+### <a name="containers-for-on-premise-deployment"></a>Şirket içi dağıtım için kapsayıcılar
 
 Ayrıca, yeni OCR özelliklerini kendi ortamınızda dağıtmanıza olanak tanımak için bir Docker kapsayıcısı (Önizleme) olarak okuma de mevcuttur. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için harika. Bkz [. okuma kapsayıcıları nasıl yüklenir ve çalıştırılır.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
@@ -149,4 +149,5 @@ Ayrıca, yeni OCR özelliklerini kendi ortamınızda dağıtmanıza olanak tanı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Okuma 3,0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)hakkında bilgi edinin.
+- Basitleştirilmiş Çince desteğiyle ilgili [REST API okuma 3,1-Önizleme. 1 ' i](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) öğrenin.
 - REST API ile birlikte C#, Java, JavaScript veya Python kullanarak OCR uygulamak için [metin ayıklama](./QuickStarts/CSharp-hand-text.md) hızlı başlangıcını izleyin.

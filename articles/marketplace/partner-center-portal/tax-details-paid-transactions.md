@@ -4,12 +4,14 @@ Description: Fiyat seçimine, ödeme etkilerine ve vergi sorumluluğuna ilişkin
 ms.topic: conceptual
 ms.service: marketplace
 ms.date: 05/04/2020
-ms.openlocfilehash: 0949bd1234b28a9683e194d3b3f08511f7f17a26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: b0ada7047241e74095fd5b81a261c15295a08737
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120696"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319941"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Ticari Market yayımcıları için vergi ayrıntıları
 
@@ -239,7 +241,7 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Turks ve Caicos Adaları         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Tuvalu                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | ABD küçük harici Adaları      | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
-| ABD Virgin Adaları              | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
+| ABD Virjin Adaları              | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Uganda                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Ukrayna                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Publisher          |
 | Birleşik Arap Emirlikleri             | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi %5 vergi, eksi mağaza ücreti                 | Microsoft          |

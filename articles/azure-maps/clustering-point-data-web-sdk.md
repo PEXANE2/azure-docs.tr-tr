@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: codepen
-ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 05e21e63b104a21757c63b9ad8d2954ed778d4b8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804580"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285756"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
 
@@ -93,10 +94,10 @@ Kümelenmiş veri noktaları içeren bir katmanda fare olayları gerçekleştiğ
 
 | Özellik adı             | Tür    | Açıklama   |
 |---------------------------|---------|---------------|
-| `cluster`                 | boole | Özelliğin bir kümeyi temsil ettiğini belirtir. |
-| `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
+| `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
+| `cluster_id`              | dize  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
 | `point_count`             | sayı  | Kümenin içerdiği noktaların sayısı.  |
-| `point_count_abbreviated` | string  | `point_count`Long ise değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
+| `point_count_abbreviated` | dize  | `point_count`Long ise değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
 
 Bu örnek, küme noktalarını işleyen ve bir tıklama olayı ekleyen bir kabarcık katmanı alır. Click olayı tetiklendiğinde, kod, kümenin parçalama yaptığı sonraki yakınlaştırma düzeyine kadar olan eşlemeyi hesaplar ve büyütür. Bu işlev, `getClusterExpansionZoom` `DataSource` sınıfının yöntemi ve `cluster_id` tıklanan kümelenmiş veri noktasının özelliği kullanılarak uygulanır.
 

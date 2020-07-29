@@ -5,23 +5,24 @@ description: Yeni bir Azure Machine Learning çalışma alanı oluşturmak için
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 06/25/2020
-ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1cc280dc12fcb462e11a568910eef053e4bdac50
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392718"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319703"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning kaynaklarıyla çalışmaya yönelik komutlar sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -59,7 +60,13 @@ az extension add -n azure-cli-ml
 Azure Machine Learning çalışma alanı aşağıdaki Azure hizmetlerine veya varlıklara bağımlıdır:
 
 > [!IMPORTANT]
-> Mevcut bir Azure hizmeti belirtmezseniz, bir tane, çalışma alanı oluşturma sırasında otomatik olarak oluşturulur. Her zaman bir kaynak grubu belirtmeniz gerekir. Kendi depolama hesabınızı iliştirirken hem Azure Blob 'un hem de Azure dosya yeteneklerinin etkinleştirildiğinden ve bu hiyerarşik ad alanının (ADLS Gen 2) devre dışı bırakıldığından emin olun. Çalışma alanı veri depoları olarak oluşturulduktan sonra, her zaman kendi depolama hesabınızı iliştirebilirsiniz.
+> Mevcut bir Azure hizmeti belirtmezseniz, bir tane, çalışma alanı oluşturma sırasında otomatik olarak oluşturulur. Her zaman bir kaynak grubu belirtmeniz gerekir. Kendi depolama hesabınızı iliştirirken, aşağıdaki ölçütlere uyduğundan emin olun:
+>
+> * Depolama hesabı bir Premium hesap _değil_ (Premium_LRS ve Premium_GRS)
+> * Azure Blob ve Azure dosya özellikleri etkin
+> * Hiyerarşik ad alanı (ADLS Gen 2) devre dışı
+>
+> Bu gereksinimler yalnızca, çalışma alanı tarafından kullanılan _varsayılan_ depolama hesabı içindir.
 
 | Hizmet | Var olan bir örneği belirtecek parametre |
 | ---- | ---- |
@@ -147,6 +154,9 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve depolama hesabınızın KIMLIĞIDIR:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
+    > [!IMPORTANT]
+    > Mevcut bir Azure Depolama hesabını kullanmak istiyorsanız, bu bir Premium hesap (Premium_LRS ve Premium_GRS) olamaz. Ayrıca hiyerarşik bir ad alanına sahip olamaz (Azure Data Lake Storage 2. ile kullanılır). Çalışma alanının _varsayılan_ depolama hesabıyla Premium Depolama veya hiyerarşik ad alanı desteklenmez. Premium Storage veya sıradüzensel ad alanını _varsayılan olmayan_ depolama hesaplarıyla birlikte kullanabilirsiniz.
 
 + **Azure Application Insights**:
 
@@ -327,7 +337,7 @@ Anahtarları değiştirme hakkında daha fazla bilgi için bkz. [depolama erişi
 
 Daha fazla bilgi için, [az ml çalışma alanı eşitleme anahtarları](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) belgelerine bakın.
 
-## <a name="delete-a-workspace"></a>Çalışma alanını silme
+## <a name="delete-a-workspace"></a>Çalışma alanı silme
 
 Artık gerekli olmadığında bir çalışma alanını silmek için aşağıdaki komutu kullanın:
 

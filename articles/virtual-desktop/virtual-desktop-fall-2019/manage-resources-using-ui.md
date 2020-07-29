@@ -1,6 +1,6 @@
 ---
 title: Yönetim aracını bir Azure Resource Manager şablonuyla dağıtma-Azure
-description: Windows sanal masaüstü kaynaklarını yönetmek için bir Azure Resource Manager şablonuyla Kullanıcı arabirimi aracı nasıl yüklenir.
+description: Windows sanal masaüstü (klasik) kaynaklarını yönetmek için bir Azure Resource Manager şablonuyla Kullanıcı arabirimi aracı nasıl yüklenir.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514239"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284957"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla bir Yönetim Aracı dağıtma
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonuyla Windows sanal masaüstü (klasik) Yönetim Aracı dağıtma
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 Bu makaledeki yönergeler, Azure Resource Manager şablonu kullanarak Kullanıcı arabirimini nasıl dağıtacağınızı bildirir.
 
@@ -51,7 +51,7 @@ Başlamadan önce, temsil edilen Azure Active Directory (AAD) için [Windows san
 Azure Kaynak Yönetimi şablonunu dağıtmak için aşağıdaki yönergeleri izleyin:
 
 1. [GitHub Azure RDS-templates sayfasına](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)gidin.
-2. Şablonu Azure 'a dağıtın.
+2. Şablonu Azure’a dağıtın.
     - Kurumsal abonelikte dağıtım yapıyorsanız, aşağı kaydırın ve **Azure 'A dağıt**' ı seçin.
     - ' Yi bir bulut çözümü sağlayıcısı aboneliğine dağıtıyorsanız, Azure 'a dağıtmak için aşağıdaki yönergeleri izleyin:
         1. Aşağı kaydırın ve **Azure 'A dağıt**' a sağ tıkladıktan sonra **bağlantı konumunu Kopyala**' yı seçin.

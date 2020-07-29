@@ -3,19 +3,19 @@ title: Rest 'te uygulama kaynağınızı şifreleyin
 description: Azure Storage 'da uygulama verilerinizi şifreleyin ve paket dosyası olarak dağıtın.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081891"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282339"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak uygulama verilerinizi Rest 'te şifreleyin
 
 İşlev uygulamanızın uygulama verilerini bekleyen şekilde şifrelemek için bir Azure depolama hesabı ve bir Azure Key Vault gerekir. Bu hizmetler, uygulamanızı bir dağıtım paketinden çalıştırdığınızda kullanılır.
 
   - [Azure depolama, bekleyen şifreleme sağlar](../storage/common/storage-service-encryption.md). Sistem tarafından sağlanmış anahtarları veya kendi müşteri tarafından yönetilen anahtarlarını kullanabilirsiniz. Bu, uygulama verilerinizin Azure 'daki bir işlev uygulamasında çalışmadığı durumlarda depolandığı yerdir.
-  - [Bir dağıtım paketinden çalıştırma] ((run-functions-from-deployment-package.md) App Service dağıtım özelliğidir. Bir Azure depolama hesabından, paylaşılan erişim Imzası (SAS) URL 'SI kullanarak site içeriğinizi dağıtmanıza olanak tanır.
+  - [Dağıtım paketinden çalıştırmak](run-functions-from-deployment-package.md) , App Service dağıtım özelliğidir. Bir Azure depolama hesabından, paylaşılan erişim Imzası (SAS) URL 'SI kullanarak site içeriğinizi dağıtmanıza olanak tanır.
   - [Key Vault başvurular](../app-service/app-service-key-vault-references.md) App Service bir güvenlik özelliğidir. Çalışma zamanında gizli dizileri uygulama ayarları olarak içeri aktarmanıza olanak tanır. Azure depolama hesabınızın SAS URL 'sini şifrelemek için bunu kullanın.
 
 ## <a name="set-up-encryption-at-rest"></a>Bekleyen şifrelemeyi ayarla

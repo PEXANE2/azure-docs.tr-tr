@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539355"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319805"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics veri güvenliği
 Bu belge, [Azure Güven Merkezi](https://www.microsoft.com/en-us/trust-center?rtc=1)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
@@ -148,7 +148,7 @@ Operations Manager için Operations Manager yönetim grubu Log Analytics hizmeti
 
 Bağlı sistemler ve Log Analytics hizmeti arasındaki tüm iletişimler şifrelenir. Şifreleme için TLS (HTTPS) protokolü kullanılır.  Microsoft SDL süreci, şifreleme protokollerinde en son gelişmelerden Log Analytics güncel olduğundan emin olmak için izlenir.
 
-Her aracı türü Log Analytics için veri toplar. Toplanan verilerin türü, kullanılan çözüm türlerine bağlıdır. Veri toplamanın bir özetini [, Çözüm Galerisi Log Analytics çözüm Ekle](../../azure-monitor/insights/solutions.md)' de görebilirsiniz. Ayrıca, çoğu çözüm için daha ayrıntılı toplama bilgileri de mevcuttur. Bir çözüm, önceden tanımlanmış görünümler, günlük arama sorguları, veri toplama kuralları ve işlem mantığının bir paketidir. Yalnızca Yöneticiler, bir çözümü içeri aktarmak için Log Analytics kullanabilir. Çözüm alındıktan sonra, Operations Manager yönetim sunucularına (kullanılıyorsa) ve ardından seçtiğiniz aracılarla taşınır. Daha sonra, aracılar verileri toplar.
+Her aracı türü Log Analytics için veri toplar. Toplanan verilerin türü, kullanılan çözüm türlerine bağlıdır. Veri toplamanın bir özetini [, Çözüm Galerisi Log Analytics çözüm Ekle](../insights/solutions.md)' de görebilirsiniz. Ayrıca, çoğu çözüm için daha ayrıntılı toplama bilgileri de mevcuttur. Bir çözüm, önceden tanımlanmış görünümler, günlük arama sorguları, veri toplama kuralları ve işlem mantığının bir paketidir. Yalnızca Yöneticiler, bir çözümü içeri aktarmak için Log Analytics kullanabilir. Çözüm alındıktan sonra, Operations Manager yönetim sunucularına (kullanılıyorsa) ve ardından seçtiğiniz aracılarla taşınır. Daha sonra, aracılar verileri toplar.
 
 ## <a name="2-send-data-from-agents"></a>2. aracılardan veri gönderme
 Tüm aracı türlerini bir kayıt anahtarı ile kaydedersiniz ve bağlantı noktası 443 ile sertifika tabanlı kimlik doğrulaması ve TLS kullanarak aracı ve Log Analytics hizmeti arasında güvenli bir bağlantı oluşturulur. Log Analytics, anahtar oluşturmak ve sürdürmek için gizli bir depo kullanır. Özel anahtarlar her 90 günde bir döndürülür ve Azure 'da depolanır ve katı mevzuata ve uyumluluk uygulamalarını izleyen Azure işlemleri tarafından yönetilir.
@@ -172,6 +172,7 @@ Veritabanında depolanan toplanan verilerin saklama süresi, seçilen fiyatland�
 Log Analytics çalışma alanınıza erişmek için, daha önce ayarladığınız kuruluş hesabını veya Microsoft hesabı kullanarak Azure portal oturum açın. Portal ve Log Analytics hizmeti arasındaki tüm trafik güvenli bir HTTPS kanalı üzerinden gönderilir. Portalı kullanırken Kullanıcı istemcisinde (Web tarayıcısı) bir oturum KIMLIĞI oluşturulur ve veriler, oturum sonlandırılana kadar yerel önbellekte depolanır. Sonlandırıldığında, önbellek silinir. Kişisel olarak tanımlanabilen bilgiler içermeyen istemci tarafı tanımlama bilgileri otomatik olarak kaldırılmaz. Oturum tanımlama bilgileri HTTPOnly olarak işaretlenir ve güvenli hale getirilir. Önceden belirlenmiş bir boşta kalma süresinden sonra, Azure portal oturumu sonlandırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure [VM hızlı başlangıç](../../azure-monitor/learn/quick-collect-azurevm.md)adımlarını izleyerek Azure VM 'leriniz için Log Analytics verileri nasıl toplayacağınızı öğrenin.  
+* Azure [VM hızlı başlangıç](../learn/quick-collect-azurevm.md)adımlarını izleyerek Azure VM 'leriniz için Log Analytics verileri nasıl toplayacağınızı öğrenin.  
 
-*  Ortamınızdaki fiziksel veya sanal Windows veya Linux bilgisayarlardan veri toplamak istiyorsanız bkz. [Linux bilgisayarları Için hızlı başlangıç](../../azure-monitor/learn/quick-collect-linux-computer.md) veya [Windows bilgisayarları için hızlı başlangıç](../../azure-monitor/learn/quick-collect-windows-computer.md)
+*  Ortamınızdaki fiziksel veya sanal Windows veya Linux bilgisayarlardan veri toplamak istiyorsanız bkz. [Linux bilgisayarları Için hızlı başlangıç](../learn/quick-collect-linux-computer.md) veya [Windows bilgisayarları için hızlı başlangıç](../learn/quick-collect-windows-computer.md)
+

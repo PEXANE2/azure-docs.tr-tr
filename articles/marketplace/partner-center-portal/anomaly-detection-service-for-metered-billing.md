@@ -4,17 +4,17 @@ description: Anomali algılamanın nasıl çalıştığını, bildirimlerin ne z
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
 ms.author: mingshen
+author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: becd15ceea41e40b35848f46f9657c501acf659a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122039"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320094"
 ---
-# <a name="anomaly-detection-service-for-metered-billing"></a>Ölçülen faturalandırma için anomali algılama hizmeti
+# <a name="anomaly-detection-service-for-metered-billing"></a>Tarifeli faturalama için anomali algılama hizmeti
 
 [Market ölçüm hizmeti](marketplace-metering-service-apis-faq.md) , ticari Market programında standart olmayan birimlere göre ücretlendirilen teklifler oluşturmanıza imkan tanır. Tarifeli faturalandırma sayesinde, müşterinizin kullanımı için kullanım olaylarını Microsoft 'a gönderirsiniz ve bu kullanımı temel alarak faturalandırmayı hazırlarız.
 
@@ -58,9 +58,9 @@ Algılanan anormalilerin normal kullanım olduğunu onaylayıp, başka bir işle
 
 ## <a name="when-and-how-to-get-support"></a>Ne zaman ve nasıl destek alınır?
 
-Microsoft 'a yanlış kullanım yaptıysanız ve bu veya müşteri üzerinden ücretlendiriliyorsa, Microsoft, müşteri tarafından bildirilen kullanım için bir fatura başlatmaz veya size bu kullanım için ödeme yapmayacaktır. Raporlama altında olması nedeniyle gelir kaybını da bilmeniz gerekir.
+Microsoft 'a yanlış kullanım yaptıysanız ve bu veya müşteri üzerinden ücretlendiriliyorsa, Microsoft, müşteri tarafından bildirilen kullanım için bir fatura başlatmaz veya size bu kullanım için ödeme yapmayacaktır. Eksik raporlamadan kaynaklanan gelir kaybına katlanmanız gerekir.
 
-Aşağıdaki durumlardan biri geçerliyse, müşterileriniz için para iadesi veya faturalama ayarlaması istemek üzere bir destek bileti açabilirsiniz:
+Aşağıdaki durumlardan biri geçerliyse, müşterilerinizle ilgili geri ödeme veya faturalama düzeltmesi isteğinde bulunmak için bir destek bileti açabilirsiniz:
 
 - Bulduğumuz anormalilerin gerçek bir sorun olduğunu doğrulamıştır ve yanlış kullanım müşterinin **fazla ücretlendirmesinden** kaynaklanır.
 - Bizim için yanlış kullanım gönderdik ve yanlış kullanım müşterinin **fazla ödenmesine** neden olur.

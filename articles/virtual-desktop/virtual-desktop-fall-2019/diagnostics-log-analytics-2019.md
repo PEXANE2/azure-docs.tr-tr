@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü tanılama günlüğü Analizi (sonbahar 2019)-Azure
-description: Log Analytics 'i Windows sanal masaüstü (Fall 2019 sürümü) tanılama özelliği ile nasıl kullanacağınızı öğrenin.
+title: Windows sanal masaüstü (klasik) tanılama günlüğü Analizi-Azure
+description: Log Analytics 'i Windows sanal masaüstü (klasik) tanılama özelliği ile kullanma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077624"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285076"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>Tanılama özelliği için Log Analytics kullanın (Fall 2019 sürümü)
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstündeki (klasik) tanılama özelliği için Log Analytics kullanma
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../diagnostics-log-analytics.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../diagnostics-log-analytics.md)bakın.
 
 Windows sanal masaüstü, yöneticinin sorunları tek bir arabirim üzerinden belirlemesine izin veren bir tanılama özelliği sunar. Bu özellik, her biri Windows sanal masaüstü rolü atanan hizmeti kullandığında tanılama bilgilerini günlüğe kaydeder. Her günlük, etkinlikte hangi Windows sanal masaüstü rolünün söz konusu olduğunu, oturum sırasında görünen tüm hata iletilerini, kiracı bilgilerini ve Kullanıcı bilgilerini içerir. Tanılama özelliği, hem Kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü üç ana kategoride yer düşer:
 

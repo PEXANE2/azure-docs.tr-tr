@@ -3,12 +3,12 @@ title: Azure Izleyici Application Insights NuGet paketleri
 description: Azure Izleyici Application Insights ASP.NET, ASP.NET Core, Python için NuGet paket listeleri
 ms.topic: reference
 ms.date: 10/16/2018
-ms.openlocfilehash: 91b48aee64a6b6942719f7f4abfb444b894c728e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27a3d89b4a64de159535d346641c21616833e21b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807171"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309962"
 ---
 # <a name="application-insights-nuget-packages"></a>NuGet paketlerini Application Insights
 
@@ -79,7 +79,7 @@ Application Insights için güncel sürüm NuGet paketlerinin geçerli listesi a
 | Microsoft. ApplicationInsights. Agent_x64 | 2.2.1 |  X64 uygulamaları için çalışma zamanı veri toplamayı etkinleştirilir | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft. ApplicationInsights. Agent_x86 | 2.2.1 |  X86 uygulamaları için çalışma zamanı veri toplamayı etkinleştirilir. | [Paketi indir](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-Bu paketler, [durum İzleyicisi](../../azure-monitor/app/monitor-performance-live-website-now.md)çalışma zamanı izlemenin temel işlevlerinin bir parçasını yapar. Bu paketleri doğrudan indirmeniz gerekmez, Durum İzleyicisi yükleyicisini kullanmanız yeterlidir. Bu paketlerin, geliştiricilerimizden birinden bu [Web günlüğü gönderilerinden](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/) nasıl çalıştığı hakkında daha fazla bilgi edinmek istiyorsanız iyi bir başlangıç yapın.
+Bu paketler, [durum İzleyicisi](./monitor-performance-live-website-now.md)çalışma zamanı izlemenin temel işlevlerinin bir parçasını yapar. Bu paketleri doğrudan indirmeniz gerekmez, Durum İzleyicisi yükleyicisini kullanmanız yeterlidir. Bu paketlerin, geliştiricilerimizden birinden bu [Web günlüğü gönderilerinden](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/) nasıl çalıştığı hakkında daha fazla bilgi edinmek istiyorsanız iyi bir başlangıç yapın.
 
 ## <a name="additional-packages"></a>Ek paketler
 
@@ -90,6 +90,7 @@ Bu paketler, [durum İzleyicisi](../../azure-monitor/app/monitor-performance-liv
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İzleyici [ASP.NET Core](../../azure-monitor/app/asp-net-core.md).
-- [Azure Linux Web apps](../../azure-monitor/app/profiler-aspnetcore-linux.md)ASP.NET Core profil.
-- Hata ayıklama ASP.NET [anlık görüntüleri](../../azure-monitor/app/snapshot-debugger.md).
+- İzleyici [ASP.NET Core](./asp-net-core.md).
+- [Azure Linux Web apps](./profiler-aspnetcore-linux.md)ASP.NET Core profil.
+- Hata ayıklama ASP.NET [anlık görüntüleri](./snapshot-debugger.md).
+

@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6539a233fbb8038d82a8ea41da2c9e79745324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995199"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283019"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: eski kimlik doğrulamasını engelle
 
@@ -32,12 +33,12 @@ Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir k
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Hariç tut**' un altında, **Kullanıcılar ve gruplar** ' ı seçin ve eski kimlik doğrulamasını kullanma yeteneğinin korunması gereken tüm hesapları seçin. Kendinizi kilitlenmesini engellemek için en az bir hesabı dışlayın. Herhangi bir hesabı dışlayamazsınız, bu ilkeyi oluşturabileceksiniz.
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemler**altında **tüm bulut uygulamaları**' nı seçin.
-   1. **Done** (Bitti) öğesini seçin.
-1. **Conditions**  >  **İstemci uygulamaları (Önizleme)** koşulları altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
+   1. **Bitti**'yi seçin.
+1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında, **Bu ilkenin uygulanacağı istemci uygulamalarını seçin**' in altında şunları yapın:
    1. Yalnızca **mobil uygulamalar ve Masaüstü istemcileri**  >  **diğer istemcileri**onay kutularını işaretleyin.
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Erişim denetimleri**  >  **izni**' nın altında, **erişimi engelle**' yi seçin.
    1. **Seç**’i seçin.
 1. Ayarlarınızı onaylayın ve **ilkeyi** **yalnızca rapor**olarak ayarlayın.

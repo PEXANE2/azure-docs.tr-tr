@@ -11,11 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 8e1b953cd2a108e216b4f8e3889287c724f68fa0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781625"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283104"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirme
 
@@ -114,4 +115,4 @@ SAML JıT, uygulama içindeki kullanıcı bilgilerini oluşturmak ve güncelleş
 
 * Microsoft 'un sitesinde belge oluşturmak için [uygulama listelemeyi ve iş ortaklarınızı](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) Microsoft Ile birlikte gönderebilirsiniz.
 
-* [Microsoft iş ortağı ağı (ücretsiz) ekleyin ve pazara git planınızı oluşturun](https://partner.microsoft.com/en-us/explore/commercial).
+* [Microsoft iş ortağı ağı (ücretsiz) ekleyin ve pazara git planınızı oluşturun](https://partner.microsoft.com/explore/commercial).
