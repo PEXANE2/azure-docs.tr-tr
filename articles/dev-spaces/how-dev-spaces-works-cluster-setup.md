@@ -7,6 +7,7 @@ description: Azure Dev Spaces çalışması için bir Azure Kubernetes hizmet k�
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995896"
