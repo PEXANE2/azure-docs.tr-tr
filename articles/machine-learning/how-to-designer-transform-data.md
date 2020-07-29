@@ -5,17 +5,17 @@ description: Kendi veri kümelerinizi oluşturmak için Azure Machine Learning t
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
-ms.custom: designer
-ms.openlocfilehash: 68ed1b83b1e82daa9c4578a6b3bec24792a8268d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203792"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326996"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında veri dönüştürme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,6 +31,8 @@ Bu makalede şunları öğreneceksiniz:
 1. Sonuçları görüntüleyin.
 
 Bu nasıl yapılır, [Tasarımcı modellerini yeniden eğitme](how-to-retrain-designer.md) makalesi için bir önkoşuldur. Bu makalede, işlem hattı parametreleriyle birden çok modeli eğitmek için dönüştürülmüş veri kümelerini nasıl kullanacağınızı öğreneceksiniz.
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="transform-a-dataset"></a>Veri kümesini dönüştürme
 

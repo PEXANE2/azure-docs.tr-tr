@@ -4,12 +4,12 @@ description: Web Apps, sanal makine ölçek kümeleri ve Cloud Services için Az
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539552"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327064"
 ---
 # <a name="best-practices-for-autoscale"></a>Otomatik ölçeklendirme için en iyi uygulamalar
 Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](../../api-management/api-management-key-concepts.md)için geçerlidir.
@@ -22,7 +22,7 @@ Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeler
   Otomatik ölçeklendirme ayarı en yüksek, en düşük ve varsayılan örnek değerine sahiptir.
 * Otomatik ölçeklendirme işi her zaman, ölçek genişletme veya ölçek genişletme için yapılandırılan eşiği geçtiğine bakarak, ölçeklendirilmesi için ilişkili ölçümü okur. Otomatik ölçeklendirme 'nin ölçeklendiği ölçümlerin listesini, [Azure izleyici otomatik ölçeklendirme ortak ölçümleri](autoscale-common-metrics.md)' nde görüntüleyebilirsiniz.
 * Tüm eşikler bir örnek düzeyinde hesaplanır. Örneğin, "örnek sayısı 2 olduğunda ortalama CPU >% 80 oranında ölçeği bir örneğe göre ölçeklendirin, tüm örneklerde ortalama CPU %80 ' den fazla olduğunda ölçeği genişletme anlamına gelir.
-* Tüm otomatik ölçeklendirme hatalarının etkinlik günlüğüne kaydedilir. Sonra bir otomatik ölçeklendirme hatası olduğunda e-posta, SMS veya Web kancaları aracılığıyla bildirim alabilmeniz için bir [etkinlik günlüğü uyarısı](./../../azure-monitor/platform/activity-log-alerts.md) yapılandırabilirsiniz.
+* Tüm otomatik ölçeklendirme hatalarının etkinlik günlüğüne kaydedilir. Sonra bir otomatik ölçeklendirme hatası olduğunda e-posta, SMS veya Web kancaları aracılığıyla bildirim alabilmeniz için bir [etkinlik günlüğü uyarısı](./activity-log-alerts.md) yapılandırabilirsiniz.
 * Benzer şekilde, tüm başarılı ölçeklendirme eylemleri etkinlik günlüğüne gönderilir. Sonra başarılı bir otomatik ölçeklendirme eylemi olduğunda e-posta, SMS veya Web kancaları aracılığıyla bildirim alabilmeniz için bir etkinlik günlüğü uyarısı yapılandırabilirsiniz. Ayrıca, otomatik ölçeklendirme ayarında Bildirimler sekmesi aracılığıyla başarılı ölçeklendirme eylemleri hakkında bildirim almak için e-posta veya Web kancası bildirimleri de yapılandırabilirsiniz.
 
 ## <a name="autoscale-best-practices"></a>Otomatik ölçeklendirme en iyi yöntemleri
@@ -151,3 +151,4 @@ Etkinlik günlüğü uyarılarını kullanmanın yanı sıra, otomatik ölçekle
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [Aboneliğinizdeki tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Aboneliğinizdeki tüm başarısız otomatik ölçeklendirme ölçeği ölçeğini/ölçeği genişletme işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+

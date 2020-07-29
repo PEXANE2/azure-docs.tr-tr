@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
-ms.custom: mvc
-ms.openlocfilehash: d924975d852320fcddd5ae988f1d52f10d366f81
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790754"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326605"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Öğretici: bir Spring Boot uygulamasında Özellik bayraklarını kullanma
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="set-up-feature-management"></a>Özellik yönetimini ayarlama
 
-Spring Boot Feature Manager `FeatureManager` , Framework 'ün yerel yapılandırma sisteminden Özellik bayraklarını alır. Sonuç olarak, yerel *önyükleme. yıml* dosyası veya ortam değişkenleri dahil olmak üzere Spring Boot tarafından desteklenen herhangi bir yapılandırma kaynağını kullanarak uygulamanızın Özellik bayraklarını tanımlayabilirsiniz. `FeatureManager`bağımlılık ekleme işlemini kullanır. Özellik yönetimi hizmetlerini standart kuralları kullanarak kaydedebilirsiniz:
+Spring Boot Feature Manager, `FeatureManager` Framework 'ün yerel yapılandırma sisteminden Özellik bayraklarını alır. Sonuç olarak, yerel *önyükleme. yıml* dosyası veya ortam değişkenleri dahil olmak üzere Spring Boot tarafından desteklenen herhangi bir yapılandırma kaynağını kullanarak uygulamanızın Özellik bayraklarını tanımlayabilirsiniz. `FeatureManager`bağımlılık ekleme işlemini kullanır. Özellik yönetimi hizmetlerini standart kuralları kullanarak kaydedebilirsiniz:
 
 ```java
 private FeatureManager featureManager;
@@ -73,7 +73,7 @@ Spring Boot uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay y
 
 ## <a name="feature-flag-declaration"></a>Özellik bayrağı bildirimi
 
-Her özellik bayrağının iki bölümü vardır: bir özelliğin durumunun *Açık* olup olmadığını değerlendirmek için kullanılan bir veya daha fazla filtrenin adı ve listesi (yani, değeri olduğunda `True`). Bir filtre, bir özelliğin açılması gerektiğinde kullanım durumunu tanımlar.
+Her özellik bayrağının iki bölümü vardır: bir özelliğin durumunun *Açık* olup olmadığını değerlendirmek için kullanılan bir veya daha fazla filtrenin adı ve listesi (yani, değeri olduğunda `True` ). Bir filtre, bir özelliğin açılması gerektiğinde kullanım durumunu tanımlar.
 
 Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olması gerektiğini belirlerken filtre listesine bir düzen eklenir. Bu noktada, özellik bayrağı *Açık*ve kalan filtre sonuçları atlanır. Filtre yoksa, özelliğin etkinleştirilmesi gerektiğini gösteriyorsa, özellik bayrağı *kapalıdır*.
 
@@ -92,15 +92,15 @@ feature-management:
             value: 50
 ```
 
-Kurala göre, bu `feature-management` iml belgesinin bölümü Özellik bayrağı ayarları için kullanılır. Önceki örnekte, içinde `EnabledFor` kendi filtreleri tanımlanmış olan üç özellik bayrakları gösterilmektedir:
+Kurala göre, `feature-management` Bu IML belgesinin bölümü Özellik bayrağı ayarları için kullanılır. Önceki örnekte, içinde kendi filtreleri tanımlanmış olan üç özellik bayrakları gösterilmektedir `EnabledFor` :
 
 * `feature-a`*Açık*.
 * `feature-b`*kapalıdır*.
-* `feature-c``parameters` özelliği olan adlı `Percentage` bir filtre belirtir. `Percentage`, yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `feature-c` bayrağın *Açık*olması için yüzde 50 olasılık değerini belirtir.
+* `feature-c`özelliği olan adlı bir filtre belirtir `Percentage` `parameters` . `Percentage`, yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `feature-c` bayrağın *Açık*olması için yüzde 50 olasılık değerini belirtir.
 
 ## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 
-Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık*olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örneğin:
+Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık*olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örnek:
 
 ```java
 private FeatureManager featureManager;
@@ -112,7 +112,7 @@ if (featureManager.isEnabledAsync("feature-a").block()) {
 
 ## <a name="dependency-injection"></a>Bağımlılık ekleme
 
-Spring Boot 'da, bağımlılık ekleme aracılığıyla Özellik yöneticisine `FeatureManager` erişebilirsiniz:
+Spring Boot 'da, bağımlılık ekleme aracılığıyla Özellik yöneticisine erişebilirsiniz `FeatureManager` :
 
 ```java
 @Controller
@@ -128,7 +128,7 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Denetleyici eylemleri
 
-MVC denetleyicileri ' nde, belirli bir `@FeatureGate` eylemin etkin olup olmadığını denetlemek için özniteliğini kullanırsınız. Aşağıdaki `Index` eylemin çalıştırılabilmesi için `feature-a` önce *Açık* olması gerekir:
+MVC denetleyicileri ' nde, `@FeatureGate` belirli bir eylemin etkin olup olmadığını denetlemek için özniteliğini kullanırsınız. Aşağıdaki `Index` eylemin `feature-a` çalıştırılabilmesi için önce *Açık* olması gerekir:
 
 ```java
 @GetMapping("/")
@@ -138,11 +138,11 @@ public String index(Model model) {
 }
 ```
 
-Denetim özelliği bayrağı *kapalı*olduğu IÇIN bir MVC denetleyicisi veya eylemi engellendiğinde, kayıtlı `IDisabledFeaturesHandler` bir arabirim çağırılır. Varsayılan `IDisabledFeaturesHandler` arabirim, yanıt gövdesi olmayan istemciye 404 durum kodu döndürür.
+Denetim özelliği bayrağı *kapalı*olduğu IÇIN bir MVC denetleyicisi veya eylemi engellendiğinde, kayıtlı bir `IDisabledFeaturesHandler` arabirim çağırılır. Varsayılan `IDisabledFeaturesHandler` arabirim, yanıt gövdesi olmayan istemciye 404 durum kodu döndürür.
 
 ## <a name="mvc-filters"></a>MVC filtreleri
 
-MVC filtrelerini bir özellik bayrağının durumuna göre etkinleştirilecek şekilde ayarlayabilirsiniz. Aşağıdaki kod adlı `FeatureFlagFilter`bir MVC filtresi ekler. Bu filtre, yalnızca `feature-a` etkinse MVC işlem hattı içinde tetiklenir.
+MVC filtrelerini bir özellik bayrağının durumuna göre etkinleştirilecek şekilde ayarlayabilirsiniz. Aşağıdaki kod adlı bir MVC filtresi ekler `FeatureFlagFilter` . Bu filtre, yalnızca etkinse MVC işlem hattı içinde tetiklenir `feature-a` .
 
 ```java
 @Component
@@ -166,7 +166,7 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>Yollar
 
-Yolları yeniden yönlendirmek için özellik bayraklarını kullanabilirsiniz. Aşağıdaki kod bir kullanıcıyı ' dan `feature-a` yeniden yönlendirecektir:
+Yolları yeniden yönlendirmek için özellik bayraklarını kullanabilirsiniz. Aşağıdaki kod bir kullanıcıyı ' dan yeniden yönlendirecektir `feature-a` :
 
 ```java
 @GetMapping("/redirect")
@@ -183,7 +183,7 @@ public String getOldFeature() {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, `spring-cloud-azure-feature-management-web` kitaplıkları kullanarak Spring Boot uygulamanızda nasıl özellik bayrakları uygulayacağınızı öğrendiniz. Spring Boot ve App Configuration içindeki özellik yönetimi desteği hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+Bu öğreticide, kitaplıkları kullanarak Spring Boot uygulamanızda nasıl özellik bayrakları uygulayacağınızı öğrendiniz `spring-cloud-azure-feature-management-web` . Spring Boot ve App Configuration içindeki özellik yönetimi desteği hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Yay önyükleme özelliği bayrağı örnek kodu](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
 * [Özellik bayraklarını yönetme](./manage-feature-flags.md)

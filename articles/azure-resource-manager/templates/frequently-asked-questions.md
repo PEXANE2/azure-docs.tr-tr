@@ -2,15 +2,15 @@
 title: ARM şablonu sık sorulan sorular
 description: Azure Resource Manager şablonlar hakkında sık sorulan sorular (SSS).
 ms.topic: conceptual
-ms.date: 05/30/2020
+ms.date: 07/27/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296874"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327268"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM şablonları hakkında sık sorulan sorular
 
@@ -48,7 +48,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
   Yeni şablon dili hakkında bilgi edinmek için, [bildirimlere kaydolun](https://aka.ms/armLangUpdates).
 
-  Şablon özelliklerinin önizlemesi için, [bekleme listesine katın](https://aka.ms/templateSpecsWaitlist).
+  Şablon özellikleri hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonu özellikleri (Önizleme)](template-specs.md).
 
 ## <a name="creating-and-testing-templates"></a>Şablonları oluşturma ve test etme
 
@@ -64,7 +64,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 * **ARM şablonunda bir kaynak grubu oluşturabilir ve kaynakları buna dağıtabilir miyim?**
 
-  Evet, şablonu Azure aboneliğiniz düzeyinde dağıtırken bir şablonda kaynak grubu oluşturabilirsiniz. Kaynak grubu oluşturma ve kaynak dağıtma hakkında bir örnek için bkz. [kaynak grubu ve kaynaklar](deploy-to-subscription.md#resource-group-and-resources).
+  Evet, şablonu Azure aboneliğiniz düzeyinde dağıtırken bir şablonda kaynak grubu oluşturabilirsiniz. Kaynak grubu oluşturma ve kaynak dağıtma hakkında bir örnek için bkz. [kaynak grubu ve kaynaklar](deploy-to-subscription.md#resource-groups).
 
 * **ARM şablonunda bir abonelik oluşturabilir miyim?**
 
@@ -102,7 +102,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
   Evet.
 
-## <a name="template-specs"></a>Şablon Özellikleri
+## <a name="template-specs"></a>Şablon Belirtimleri
 
 * **Şablon özelliklerinin önizleme sürümüne nasıl dahil olabilirim?**
 

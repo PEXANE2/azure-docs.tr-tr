@@ -9,19 +9,20 @@ ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/08/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 292b94e56d988a1126db83e2f8ce40bbb0af6f42
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 069f3b95d76d8321ce0b1bba4ae61f35d0f14a57
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873252"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326792"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Hızlı başlangıç: Java kullanarak Bing Özel Arama uç noktanızı çağırma
 
 Bing Özel Arama örneğinden arama sonuçları isteme hakkında bilgi edinmek için bu hızlı başlangıcı kullanın. Bu uygulama Java 'da yazılsa da, Bing Özel Arama API'si çoğu programlama dili ile uyumlu olan bir yeniden yazılmış Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java)' da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md).
 

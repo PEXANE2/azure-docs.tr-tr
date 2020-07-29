@@ -10,13 +10,13 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: c3ce10b6d3acb947d3fde6e3c872a2c2a83ddb69
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, devx-track-java
+ms.openlocfilehash: a1347364066f4b36256782dd8891390a47bae020
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871131"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326775"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Java ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirme
 
@@ -26,7 +26,7 @@ Bu uygulama Java 'da yazılsa da, API birçok programlama dili ile uyumlu olan b
 
 Bu örneğe ilişkin kaynak kodu [GitHub '](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java)da kullanılabilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java Development Kit (JDK) 7 veya 8](https://aka.ms/azure-jdks).
 * [Gson kitaplığı](https://github.com/google/gson).

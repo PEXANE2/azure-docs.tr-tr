@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073673"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327285"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure etkinlik günlüğü olay şeması
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan herhangi bir abonelik düzeyindeki olay hakkında öngörüler sağlar. Bu makalede etkinlik günlüğü kategorileri ve her biri için şema açıklanmaktadır. 
@@ -796,7 +796,7 @@ Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından ger�
 Azure etkinlik günlüğü 'nü bir depolama hesabına veya Olay Hub 'ına akışta, veriler [kaynak günlüğü şemasını](./resource-logs-schema.md)izler. Aşağıdaki tabloda, yukarıdaki şemalardan kaynak günlükleri şemasına yönelik özelliklerin bir eşlemesi verilmiştir.
 
 > [!IMPORTANT]
-> Bir depolama hesabına yazılan etkinlik günlüğü verilerinin biçimi, Kasım. 1, 2018 tarihinde JSON satırları olarak değiştirildi. Bu biçim değişikliğine ilişkin ayrıntılar için bkz. [Azure izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma kaynak günlükleri bir depolama hesabına arşivlendi](./resource-logs-append-blobs.md) .
+> Bir depolama hesabına yazılan etkinlik günlüğü verilerinin biçimi, Kasım. 1, 2018 tarihinde JSON satırları olarak değiştirildi. Bu biçim değişikliğine ilişkin ayrıntılar için bkz. [Azure izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma kaynak günlükleri bir depolama hesabına arşivlendi](/azure/azure-monitor/platform/resource-logs-blob-format) .
 
 
 | Kaynak günlükleri şema özelliği | Etkinlik günlüğü REST API şeması özelliği | Notlar |
@@ -885,3 +885,4 @@ Aşağıda bu şemayı kullanan bir olay örneği verilmiştir.
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Etkinlik günlüğü hakkında daha fazla bilgi edinin](platform-logs-overview.md)
 * [Log Analytics çalışma alanına, Azure depolama 'ya veya Olay Hub 'larına etkinlik günlüğü göndermek için bir tanılama ayarı oluşturun](diagnostic-settings.md)
+

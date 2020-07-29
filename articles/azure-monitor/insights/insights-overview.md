@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3eefb97c85b3865abbf116b9912dc45f6db8ce8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836048"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326877"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Izleyici 'de Öngörüler 'e genel bakış
 Öngörüler, belirli uygulamalar ve hizmetler için özelleştirilmiş bir izleme deneyimi sağlar. Bunlar, verileri [Azure izleyici veri platformunda](../platform/data-platform.md) depolar ve analiz ve uyarı Için diğer Azure izleyici özelliklerinden yararlanır, ancak Azure Portal ek veri toplayabilir ve benzersiz bir kullanıcı deneyimi sağlayabilir. Azure portal Azure Izleyici menüsünün **Öngörüler** bölümünden Öngörüler 'e erişin.
@@ -28,14 +29,14 @@ Bkz. [Application Insights nedir?](../app/app-insights-overview.md).
 ## <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 Kapsayıcılar için Azure Izleyici, Azure Kubernetes Service (AKS) üzerinde barındırılan Azure Container Instances veya yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinin performansını izler. Kapsayıcılarınızın izlenmesi, özellikle de bir üretim kümesini birden çok uygulamayla birlikte çalışırken kritik öneme sahiptir.
 
-Bkz. [kapsayıcılara yönelik Azure izleyici 'ye genel bakış](../insights/container-insights-overview.md).
+Bkz. [kapsayıcılara yönelik Azure izleyici 'ye genel bakış](./container-insights-overview.md).
 
 ![Kapsayıcılar için Azure İzleyici](media/insights-overview/container-insights.png)
 
 ## <a name="azure-monitor-for-resource-groups-preview"></a>Kaynak grupları için Azure Izleyici (Önizleme)
 Kaynak grupları için Azure Izleyici, tek tek kaynaklarınızın karşılaştığı tüm sorunları önceliklendirmenize ve tanılamanıza yardımcı olur ve kaynak grubunun bir bütün olarak sistem durumu ve performansına göre bağlamı sunar.
 
-Bkz. [Azure izleyici (Önizleme) ile kaynak gruplarını izleme](../insights/resource-group-insights.md).
+Bkz. [Azure izleyici (Önizleme) ile kaynak gruplarını izleme](./resource-group-insights.md).
 
 ![Kaynak grupları için Azure Izleyici](media/insights-overview/resource-group-insights.png)
 
@@ -54,3 +55,4 @@ Bkz. [VM'ler için Azure izleyici nedir?](vminsights-overview.md)
 ## <a name="next-steps"></a>Sonraki adımlar
 * Öngörüler tarafından [Azure izleyici veri platformu](../platform/data-platform.md) yararlanılabilir hakkında daha fazla bilgi edinin.
 * [Azure izleyici tarafından kullanılan farklı veri kaynakları](../platform/data-sources.md) ve her bir öngörüde toplanan farklı veri türleri hakkında bilgi edinin.
+

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499248"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327914"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Azure Application Insights kullanım deneyimlerini etkinleştirmek için Kullanıcı bağlamı kimlikleri gönderin
 
@@ -30,7 +30,7 @@ Kullanıcının zaman içinde ne yaptığını izlemek için, Application Insigh
 - Oturumlar: oturum KIMLIĞINI dahil et.
 
 > [!NOTE]
-> Bu, Kullanıcı etkinliğini Application Insights ile izlemeye yönelik el ile yapılan adımların ana hattı olan gelişmiş bir makaledir. Birçok **Web uygulaması ile,** [istemci/tarayıcı tarafı JavaScript SDK 'sı](../../azure-monitor/app/website-monitoring.md )ile birlikte varsayılan sunucu tarafı SDK 'ları, Kullanıcı etkinliğini otomatik olarak izlemek için genellikle yeterlidir. Sunucu tarafı SDK 'ya ek olarak [istemci tarafı izlemeyi](../../azure-monitor/app/website-monitoring.md ) yapılandırmadıysanız, önce bunu yapın ve Kullanıcı davranışı analiz araçlarının beklendiği gibi olup olmadığını görmek için test edin.
+> Bu, Kullanıcı etkinliğini Application Insights ile izlemeye yönelik el ile yapılan adımların ana hattı olan gelişmiş bir makaledir. Birçok **Web uygulaması ile,** [istemci/tarayıcı tarafı JavaScript SDK 'sı](./website-monitoring.md)ile birlikte varsayılan sunucu tarafı SDK 'ları, Kullanıcı etkinliğini otomatik olarak izlemek için genellikle yeterlidir. Sunucu tarafı SDK 'ya ek olarak [istemci tarafı izlemeyi](./website-monitoring.md) yapılandırmadıysanız, önce bunu yapın ve Kullanıcı davranışı analiz araçlarının beklendiği gibi olup olmadığını görmek için test edin.
 
 ## <a name="choosing-user-ids"></a>Kullanıcı kimliklerini seçme
 
@@ -134,4 +134,5 @@ namespace MvcWebRole.Telemetry
     - [Kullanıcılar, Oturumlar ve Etkinlikler](usage-segmentation.md)
     - [Huniler](usage-funnels.md)
     - [Bekletme](usage-retention.md)
-    - [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
+    - [Çalışma Kitapları](../platform/workbooks-overview.md)
+

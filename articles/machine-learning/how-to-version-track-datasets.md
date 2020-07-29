@@ -5,17 +5,18 @@ description: Veri kümelerinizi en iyi şekilde nasıl yükleyeceğinizi ve maki
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: e0b2d7abb378a6717eb4444882ede54debdb5968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 58458c4a4e5ff1317ef740208a7d7ff9f6fa925c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555638"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325755"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini sürüm ve izleme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +28,7 @@ Tipik sürüm oluşturma senaryoları:
 * Yeniden eğitim için yeni veriler kullanılabilir olduğunda
 * Farklı veri hazırlama veya özellik Mühendisliği yaklaşımları uygularken
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için şunlar gerekir:
 

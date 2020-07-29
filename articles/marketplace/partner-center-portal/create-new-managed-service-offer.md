@@ -4,15 +4,15 @@ description: Iş Ortağı Merkezi 'nde ticari Market portalı 'nı kullanarak Az
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: JnHs
-ms.author: jenhayes
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086396"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326639"
 ---
 # <a name="create-a-managed-service-offer"></a>Yönetilen Hizmet teklifi oluşturma
 
@@ -42,7 +42,7 @@ Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir
 Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 * Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
-* **Oluştur**' u seçtikten sonra, teklif diğer adı değiştirilemez.
+* Teklif diğer adı, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
@@ -90,7 +90,7 @@ Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek a
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-### <a name="name"></a>Name
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 

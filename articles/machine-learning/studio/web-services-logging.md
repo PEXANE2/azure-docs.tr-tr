@@ -1,6 +1,5 @@
 ---
-title: Web hizmeti günlüğünü etkinleştir
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): Web hizmeti günlüğünü etkinleştirme-Azure'
 description: Machine Learning Studio (klasik) Web Hizmetleri için günlük kaydını etkinleştirmeyi öğrenin. Günlüğe kaydetme, API 'Lerde sorun gidermeye yardımcı olmak için ek bilgiler sağlar.
 services: machine-learning
 author: likebupt
@@ -11,13 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 71516641ab5110511d58f7e453759271aff9885a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baaad137e4a5bc5268642addb5779961b7be3b04
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705840"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326248"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri için günlüğe kaydetmeyi etkinleştirme
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+
 
 Bu belge, Machine Learning Studio (klasik) Web hizmetlerinin günlüğe kaydetme özelliği hakkında bilgi sağlar. Günlüğe kaydetme, Machine Learning Studio (klasik) API 'Lerinde yapılan çağrılarınızı gidermenize yardımcı olabilecek, yalnızca bir hata numarası ve bir ileti dışında ek bilgiler sağlar.  
 
@@ -49,9 +52,9 @@ Bu belge, Machine Learning Studio (klasik) Web hizmetlerinin günlüğe kaydetme
 
    1. [Azure Portal](https://portal.azure.com), Web hizmetiyle ilişkili depolama hesabına gidin.
 
-   2. **Blob Hizmeti**’nin altında, **Kapsayıcılar**’a tıklayın.
+   2. **BLOB hizmeti**altında **kapsayıcılar**' a tıklayın.
 
-   3. **Ml-Diagnostics** kapsayıcısı yoksa **+ kapsayıcı**' ya tıklayın, kapsayıcıya "ml-Diagnostics" adını verin ve **erişim türünü** "blob" olarak seçin. **Tamam**'a tıklayın.
+   3. **Ml-Diagnostics** kapsayıcısı yoksa **+ kapsayıcı**' ya tıklayın, kapsayıcıya "ml-Diagnostics" adını verin ve **erişim türünü** "blob" olarak seçin. **Tamam** düğmesine tıklayın.
 
       ![Tanılama günlüklerinizi depolamak için yeni bir kapsayıcı oluşturun](./media/web-services-logging/create-ml-diagnostics-container.png)
 

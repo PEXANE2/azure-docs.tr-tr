@@ -8,11 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: a8c53dd2755f239763ff572e34dbdf7f73caa8a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790526"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327727"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -52,7 +55,7 @@ Yerleşik uç noktadan (**iletiler/olaylar**) cihazdan buluta iletileri almak i�
 
 İki depolama hizmeti vardır IoT Hub-- [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md) ve [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md) (ADLS 2.) hesaplarına iletileri yönlendirebilir. Azure Data Lake Storage hesapları, BLOB depolama alanı üzerinde oluşturulmuş [hiyerarşik ad alanı](../storage/blobs/data-lake-storage-namespace.md)etkinleştirilmiş depolama hesaplarıdır. Bunların her ikisi de depolama alanı için blob 'ları kullanır.
 
-IoT Hub, verileri Azure depolama 'ya [Apache avro](https://avro.apache.org/) BIÇIMINDE ve JSON biçiminde yazmayı destekler. Varsayılan değer AVRO ' dir. Kodlama biçimi yalnızca BLOB depolama uç noktası yapılandırıldığında ayarlanabilir. Biçim varolan bir uç nokta için düzenlenemiyor. JSON kodlaması kullanılırken, ileti [sistemi özelliklerinde](iot-hub-devguide-routing-query-syntax.md#system-properties)ContentType öğesini **Application/JSON** ve Contentenencoding olarak **UTF-8** olarak ayarlamanız gerekir. Bu değerlerin her ikisi de büyük/küçük harfe duyarsızdır. İçerik kodlaması ayarlanmamışsa, IoT Hub iletileri temel 64 kodlu biçimde yazar. IoT Hub oluşturma veya güncelleştirme REST API, özellikle [Routingstoragecontainerproperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)veya [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)kullanarak kodlama biçimini seçebilirsiniz. Aşağıdaki diyagramda Azure portal kodlama biçiminin nasıl ayarlanacağı gösterilmektedir.
+IoT Hub, verileri Azure depolama 'ya [Apache avro](https://avro.apache.org/) BIÇIMINDE ve JSON biçiminde yazmayı destekler. Varsayılan değer AVRO ' dir. Kodlama biçimi yalnızca BLOB depolama uç noktası yapılandırıldığında ayarlanabilir. Biçim varolan bir uç nokta için düzenlenemiyor. JSON kodlaması kullanılırken, ileti [sistemi özelliklerinde](iot-hub-devguide-routing-query-syntax.md#system-properties)ContentType öğesini **Application/JSON** ve Contentenencoding olarak **UTF-8** olarak ayarlamanız gerekir. Bu değerlerin her ikisi de büyük/küçük harfe duyarsızdır. İçerik kodlaması ayarlanmamışsa, IoT Hub iletileri temel 64 kodlu biçimde yazar. IoT Hub oluşturma veya güncelleştirme REST API, özellikle [Routingstoragecontainerproperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)veya [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)kullanarak kodlama biçimini seçebilirsiniz. Aşağıdaki diyagramda Azure portal kodlama biçiminin nasıl ayarlanacağı gösterilmektedir.
 
 ![BLOB depolama uç noktası kodlama](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 

@@ -8,15 +8,15 @@ ms.author: larryfr
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 06/17/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: 34641e7a883f6b07fe63595cf5750df2569640f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, has-adal-ref
+ms.openlocfilehash: 653ca578e9fafd245c22bcfd7db038d5c23da016
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974696"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326962"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Genel olarak, Azure Machine Learning ile kullanabileceğiniz iki tür kimlik do�
 
 Kullanılan kimlik doğrulama türünden bağımsız olarak, kaynaklara izin verilen erişim düzeyini kapsam için rol tabanlı erişim denetimi (RBAC) kullanılır. Örneğin, dağıtılan bir modelin erişim belirtecini almak için kullanılan bir hesabın yalnızca çalışma alanına okuma erişimi olması gerekir. RBAC hakkında daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)oluşturun.
 * Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure MACHINE LEARNING Not defteri VM](concept-azure-machine-learning-architecture.md#compute-instance) 'si kullanın.
@@ -46,7 +46,7 @@ Belgelerde ve örneklerde birçok örnek etkileşimli kimlik doğrulaması kulla
     ws = Workspace.from_config()
     ```
 
-    `from_config()`İşlevi, çalışma alanı bağlantı bilgilerinizi içeren BIR JSON dosyası arar.
+    `from_config()` işlevi, çalışma alanı bağlantı bilgilerinizi içeren bir JSON dosyası arar.
 
 * `Workspace`Aboneliği, kaynak grubunu ve çalışma alanı bilgilerini sağlamak için Oluşturucuyu kullanmak etkileşimli kimlik doğrulaması için de istemde yer alacak.
 
@@ -328,7 +328,7 @@ Dağıtılan bir modele kimlik doğrulama hakkında daha fazla bilgi için bkz. 
 
 ### <a name="token-based-web-service-authentication"></a>Belirteç tabanlı Web hizmeti kimlik doğrulaması
 
-Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, kullanıcılar, Web hizmetine erişmek için bir Azure Machine Learning JSON Web Token sunmalıdır. Belirtecin, belirtilen bir zaman çerçevesinde sonra süresi dolar ve çağrı yapmaya devam etmek için yenilenmesi gerekir.
+Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, kullanıcılar, Web hizmetine erişmek için bir Azure Machine Learning JSON Web Token sunmalıdır. Belirtilen sürenin sonunda belirteç geçersiz olur ve çağrı yapmaya devam edilebilmesi için yenilenmesi gerekir.
 
 * Belirteç kimlik doğrulaması, Azure Kubernetes hizmetine dağıtırken **Varsayılan olarak devre dışıdır** .
 * Azure Container Instances ' a dağıtırken belirteç kimlik doğrulaması **desteklenmez** .
@@ -370,7 +370,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Belirtecin zamanından sonra yeni bir belirteç istemeniz gerekir `refresh_by` . Belirteçleri Python SDK 'sının dışında yenilemeniz gerekiyorsa, bir seçenek, `service.get_token()` daha önce anlatıldığı gibi, çağrıyı düzenli olarak yapmak için hizmet sorumlusu kimlik doğrulamasıyla REST API kullanmaktır.
+> Belirtecin `refresh_by` süresi dolduktan sonra yeni bir belirteç istemeniz gerekir. Belirteçleri Python SDK 'sının dışında yenilemeniz gerekiyorsa, bir seçenek, `service.get_token()` daha önce anlatıldığı gibi, çağrıyı düzenli olarak yapmak için hizmet sorumlusu kimlik doğrulamasıyla REST API kullanmaktır.
 >
 > Azure Machine Learning çalışma alanınızı Azure Kubernetes hizmet kümeniz ile aynı bölgede oluşturmanızı önemle öneririz.
 >

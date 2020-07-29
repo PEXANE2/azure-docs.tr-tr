@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4e36a21e9dbab6f9bf814cdeb86f175ded38ea8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327302"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Izleyici günlüklerinin yapısı
 [Günlük sorgusu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde Öngörüler elde etme özelliği, Azure izleyici 'nin güçlü bir özelliğidir. Etkili ve yararlı sorgular oluşturmak için, istediğiniz verilerin bulunduğu yer ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için ihtiyacınız olan temel kavramlar sağlanmaktadır.
@@ -79,7 +79,7 @@ Her tablo için şemayı, uygulama için Log Analytics **şema** sekmesinde gör
 ## <a name="standard-properties"></a>Standart özellikler
 Azure Izleyici günlüklerindeki her tablo kendi şemasına sahip olsa da, tüm tablolar tarafından paylaşılan standart özellikler vardır. Her birinin ayrıntıları için bkz. [Azure Izleyici günlüklerinde standart özellikler](../platform/log-standard-properties.md) .
 
-| Log Analytics çalışma alanı | Application Insights uygulaması | Description |
+| Log Analytics çalışma alanı | Application Insights uygulaması | Açıklama |
 |:---|:---|:---|
 | TimeGenerated | timestamp  | Kaydın oluşturulduğu tarih ve saat. |
 | Tür          | ItemType   | Kaydın alındığı tablonun adı. |
@@ -89,4 +89,5 @@ Azure Izleyici günlüklerindeki her tablo kendi şemasına sahip olsa da, tüm 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Günlük aramaları oluşturmak ve düzenlemek için Log Analytics](./log-query-overview.md)kullanma hakkında bilgi edinin.
-- Yeni sorgu dilini kullanarak [sorgu yazma hakkında öğreticiye](../log-query/get-started-queries.md) göz atın.
+- Yeni sorgu dilini kullanarak [sorgu yazma hakkında öğreticiye](./get-started-queries.md) göz atın.
+

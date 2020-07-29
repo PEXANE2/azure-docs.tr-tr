@@ -7,11 +7,16 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: Technical Support'
+ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73890465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327693"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Cihaz akışlarını IoT Hub (Önizleme)
 
@@ -21,7 +26,7 @@ Azure IoT Hub *cihaz akışları* , çok sayıda buluttan cihaza iletişim senar
 
 Cihaz akışlarını IoT Hub kullanarak, cihazlar güvenli kalır ve yalnızca IoT Hub 'ın 443 numaralı bağlantı noktası üzerinden akış uç noktasına giden TCP bağlantılarını açması gerekecektir. Bir akış kurulduktan sonra, hizmet tarafı ve cihaz tarafı uygulamaların her biri, bir WebSocket istemci nesnesine bir diğerine ham bayt gönderme ve alma için programlı erişim sağlar. Bu tünelle sunulan güvenilirlik ve sipariş garantisi TCP ile aynıdır.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 IoT Hub cihaz akışları aşağıdaki avantajları sağlar:
 
