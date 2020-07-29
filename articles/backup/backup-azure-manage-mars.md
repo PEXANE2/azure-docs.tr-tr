@@ -4,12 +4,12 @@ description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetle
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317357"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yedeklemelerini yönetme
 
@@ -112,7 +112,7 @@ Dosya ve klasör yedeklemesini korumayı durdurmanın iki yolu vardır:
 1. **Zamanlanan yedeklemeyi Duraklat**bölümünde, bilgileri gözden geçirin ve **son**' a tıklayın.
 
     ![Zamanlanmış bir yedeklemeyi değiştirin veya durdurun.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. **Yedekleme Işlemini Değiştir**bölümünde, zaman çizelgenizi yedeklemeyi Duraklat ' ın başarı durumunda olduğunu denetleyin ve sona **çıkmak için Kapat** ' a tıklayın.
+1. **Yedekleme Işlemini değiştirme**sırasında, zaman çizelgenizi yedeklemeyi Duraklat ' ın başarı durumunda olup çıkmak için **Kapat** ' a tıklayın.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Korumayı Durdur ve yedekleme verilerini sil
 

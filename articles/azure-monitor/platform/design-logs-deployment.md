@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008209"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317293"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure İzleyici Günlükleri dağıtımınızı tasarlama
 
@@ -47,12 +47,12 @@ Günümüzde BT kurumları, merkezi bir, merkezi olarak veya her iki yapının d
 
 Veri toplamak için Log Analytics aracılarını kullanırken, aracı dağıtımınızı planlamak için aşağıdakileri anlamanız gerekir:
 
-* Windows aracılarından veri toplamak için, [her aracıyı bir veya daha fazla çalışma alanına rapor verecek şekilde yapılandırabilirsiniz](../../azure-monitor/platform/agent-windows.md), bu da bir System Center Operations Manager yönetim grubuna bildirimde bulunur. Windows Aracısı en fazla dört çalışma alanı rapor edebilir.
+* Windows aracılarından veri toplamak için, [her aracıyı bir veya daha fazla çalışma alanına rapor verecek şekilde yapılandırabilirsiniz](./agent-windows.md), bu da bir System Center Operations Manager yönetim grubuna bildirimde bulunur. Windows Aracısı en fazla dört çalışma alanı rapor edebilir.
 * Linux Aracısı çoklu barındırıltı desteklemez ve yalnızca tek bir çalışma alanına rapor verebilir.
 
 System Center Operations Manager 2012 R2 veya sonraki bir sürümünü kullanıyorsanız:
 
-* Her bir Operations Manager yönetim grubu [yalnızca bir çalışma alanına bağlanabilir](../platform/om-agents.md). 
+* Her bir Operations Manager yönetim grubu [yalnızca bir çalışma alanına bağlanabilir](./om-agents.md). 
 * Bir yönetim grubuna rapor veren Linux bilgisayarların doğrudan bir Log Analytics çalışma alanına rapor verecek şekilde yapılandırılması gerekir. Linux bilgisayarlarınız zaten bir çalışma alanına doğrudan raporlama yaptıysanız ve bunları Operations Manager izlemek istiyorsanız, [bir Operations Manager yönetim grubuna raporlamak](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)için aşağıdaki adımları izleyin. 
 * Log Analytics Windows aracısını Windows bilgisayarına yükleyebilir ve hem bir çalışma alanıyla hem de bir çalışma alanı ile tümleşik Operations Manager, farklı bir çalışma alanı için rapor verebilirsiniz.
 
@@ -166,3 +166,4 @@ Bu modele geçişinizi planlarken, aşağıdakileri göz önünde bulundurun:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu kılavuzda önerilen güvenlik izinlerini ve denetimleri uygulamak için [günlüklere erişimi yönet](manage-access.md)' i gözden geçirin.
+

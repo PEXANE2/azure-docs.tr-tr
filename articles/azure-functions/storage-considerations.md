@@ -2,13 +2,13 @@
 title: Azure Işlevleri için depolama konuları
 description: Azure Işlevlerinin depolama gereksinimlerini ve depolanan verileri şifreleme hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079613"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318190"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Işlevleri için depolama konuları
 
@@ -18,12 +18,12 @@ Bir işlev uygulaması örneği oluşturduğunuzda Azure Işlevleri bir Azure de
 |Depolama hizmeti  | İşlev kullanımı  |
 |---------|---------|
 | [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)     | Bağlama durumu ve işlev anahtarlarını koruyun.  <br/>Ayrıca [, dayanıklı işlevler görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır. |
-| [Azure Dosyaları](../storage/files/storage-files-introduction.md)  | İşlev uygulaması kodunuzu bir [Tüketim planında](functions-scale.md#consumption-plan)depolamak ve çalıştırmak için kullanılan dosya paylaşma. |
+| [Azure Dosyaları](../storage/files/storage-files-introduction.md)  | İşlev uygulaması kodunuzu bir [Tüketim planı](functions-scale.md#consumption-plan) ve [Premium planda](functions-scale.md#premium-plan)depolamak ve çalıştırmak için kullanılan dosya paylaşma. |
 | [Azure kuyruk depolama](../storage/queues/storage-queues-introduction.md)     | [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.   |
 | [Azure Tablo Depolama](../storage/tables/table-storage-overview.md)  |  [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.       |
 
 > [!IMPORTANT]
-> Tüketim barındırma planı kullanılırken işlev kodunuz ve bağlama yapılandırma dosyalarınız ana depolama hesabındaki Azure Dosya depolama alanında saklanır. Ana depolama hesabını sildiğinizde bu içerik silinir ve kurtarılamaz.
+> Tüketim/Premium barındırma planını kullanırken, işlev kodunuz ve bağlama yapılandırma dosyalarınız ana depolama hesabındaki Azure dosya depolama alanında depolanır. Ana depolama hesabını sildiğinizde bu içerik silinir ve kurtarılamaz.
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 

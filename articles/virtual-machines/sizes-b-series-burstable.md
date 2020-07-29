@@ -5,14 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678554"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292077"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -57,7 +58,7 @@ Taban çizgisi: %270
 
 ![Saatlik trafik verileri grafiği](./media/b-series-burstable/office-workload.png)
 
-| Senaryo | Saat | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
+| Senaryo | Zaman | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
 | --- | --- | --- | --- | --- |
 | B16ms dağıtımı | Dağıtım | Dağıtım  | 480 (ilk krediler) | 480 |
 | Trafik yok | 0:00 | 0 | 162 | 642 |
@@ -134,7 +135,7 @@ Y **: BIR** VM "REDPLOYED" olduğunda ve sanal makine başka bir düğüme taş�
 
 Y **: B1ls** yalnızca Linux görüntülerini destekler ve başka bir işletim sistemi görüntüsünü dağıtırsanız en iyi müşteri deneyimini elde edemeyebilirsiniz.
 
-## <a name="other-sizes"></a>Diğer boyutlar
+## <a name="other-sizes-and-information"></a>Diğer boyutlar ve bilgiler
 
 - [Genel amaçlı](sizes-general.md)
 - [İşlem için iyileştirilmiş](sizes-compute.md)
@@ -142,6 +143,10 @@ Y **: B1ls** yalnızca Linux görüntülerini destekler ve başka bir işletim s
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
 - [Yüksek performanslı işlem](sizes-hpc.md)
+
+Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
+
+Disk türleri hakkında daha fazla bilgi: [disk türleri](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

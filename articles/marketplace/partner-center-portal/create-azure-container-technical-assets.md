@@ -4,15 +4,15 @@ description: Azure Marketi 'nde bir kapsayıcı teklifi yapılandırmanıza yard
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 04/09/2020
-ms.openlocfilehash: da0fa53567e5c58db8e8394ef5562255d8a7142d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46102305e99c94fc71ad0934a2c0063fdcbeec4e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104290"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317799"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container teklifi oluşturma
 

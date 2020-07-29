@@ -1,6 +1,6 @@
 ---
-title: Hizmet bağlantısı Windows sanal masaüstü Fall 2019-Azure sorunlarını giderme
-description: Windows sanal masaüstü kiracı ortamında istemci bağlantılarını ayarlarken oluşan sorunları çözme.
+title: Hizmet bağlantısı Windows sanal masaüstü (klasik) sorunlarını giderme-Azure
+description: Windows sanal masaüstü (klasik) kiracı ortamında istemci bağlantılarını ayarlarken oluşan sorunları çözme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad5e740a2874d398f3947fe755024bedc897ec73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 213f7843e4896f8c7c9234e2c94433afbed1d565
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085801"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292513"
 ---
-# <a name="troubleshoot-windows-virtual-desktop-service-connections"></a>Windows sanal masaüstü Hizmeti bağlantılarında sorun giderme
+# <a name="windows-virtual-desktop-classic-service-connections"></a>Windows sanal masaüstü (klasik) hizmet bağlantıları
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../troubleshoot-service-connection.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../troubleshoot-service-connection.md)bakın.
 
 Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bu makaleyi kullanın.
 

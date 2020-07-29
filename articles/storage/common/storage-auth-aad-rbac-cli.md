@@ -10,20 +10,20 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c7c74bc8bd92e2d210c8fe5deaff30d55a36bb5e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: afa48c07e628eaeb013c24fa38fcda1adea2555a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127222"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368990"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir RBAC rolü atamak üzere Azure CLı 'yi kullanma
 
-Azure Active Directory (Azure AD), [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen yerleşik RBAC rollerinin bir kümesini tanımlar.
+Azure Active Directory (Azure AD), [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen bir dizi Azure yerleşik rol tanımlar.
 
 Azure AD güvenlik sorumlusuna bir RBAC rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, aboneliğin düzeyi, kaynak grubu, depolama hesabı veya tek bir kapsayıcı veya kuyruk kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir Kullanıcı, Grup, uygulama hizmeti sorumlusu veya [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)olabilir.
 
-Bu makalede, yerleşik RBAC rollerini listelemek ve kullanıcılara atamak için Azure CLı 'nin nasıl kullanılacağı açıklanır. Azure CLı kullanma hakkında daha fazla bilgi için bkz. [Azure komut satırı arabirimi (CLI)](/cli/azure).
+Bu makalede, Azure CLı kullanarak Azure yerleşik rollerini listeleme ve kullanıcılara atama işlemlerinin nasıl yapılacağı açıklanır. Azure CLı kullanma hakkında daha fazla bilgi için bkz. [Azure komut satırı arabirimi (CLI)](/cli/azure).
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>Blob 'lar ve kuyruklar için RBAC rolleri
 
@@ -35,7 +35,7 @@ Bu makalede, yerleşik RBAC rollerini listelemek ve kullanıcılara atamak için
 
 ## <a name="list-available-rbac-roles"></a>Kullanılabilir RBAC rollerini listeleme
 
-Mevcut yerleşik RBAC rollerini Azure CLı ile listelemek için [az role Definition List](/cli/azure/role/definition#az-role-definition-list) komutunu kullanın:
+Azure CLı ile kullanılabilir Azure yerleşik rollerini listelemek için [az role Definition List](/cli/azure/role/definition#az-role-definition-list) komutunu kullanın:
 
 ```azurecli-interactive
 az role definition list --out table

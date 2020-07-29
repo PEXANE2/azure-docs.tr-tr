@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659671"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318394"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Ölçüm grafikleriyle ilgili sorunları giderme
 
@@ -67,7 +68,7 @@ Bazı kaynaklar ölçümlerini sürekli göstermez. Örneğin Azure durdurulan s
 
 **Konuk İşletim Sistemi** ölçümleri koleksiyonu Azure Tanılama Uzantısı'nın yapılandırılmasını veya kaynağınız için **Tanılama Ayarları** paneli kullanılarak etkinleştirilmesini gerektirir.
 
-**Çözüm:** Azure Tanılama uzantısı etkinse ancak ölçümlerinizi göremiyorsanız, [Azure tanılama uzantısı sorun giderme kılavuzunda](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)açıklanan adımları izleyin. Ayrıca bkz. sorun giderme adımları için [Konuk işletim sistemi ad alanı ve ölçümleri](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics) seçemezsiniz
+**Çözüm:** Azure Tanılama uzantısı etkinse ancak ölçümlerinizi göremiyorsanız, [Azure tanılama uzantısı sorun giderme kılavuzunda](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)açıklanan adımları izleyin. Ayrıca bkz. sorun giderme adımları için [Konuk işletim sistemi ad alanı ve ölçümleri](#cannot-pick-guest-os-namespace-and-metrics) seçemezsiniz
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Panoda "verileri alma hatası" iletisi
 
@@ -105,7 +106,7 @@ Varsayılan olarak Konuk İşletim Sistemi ölçümleri, kaynağınızın **Tan�
     > [!WARNING]
     > **Konuk İşletim Sistemi**'ni depolama hesabına göndermek için [Log Analytics aracısını](agents-overview.md#log-analytics-agent) (Microsoft İzleyici Aracısı veya "MMA" olarak da adlandırılır) kullanamazsınız.
 
-1. [Aboneliğiniz Için](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) **Microsoft. Insights** kaynak sağlayıcısının kayıtlı olduğundan emin olun.
+1. [Aboneliğiniz Için](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) **Microsoft. Insights** kaynak sağlayıcısının kayıtlı olduğundan emin olun.
 
 1. Depolama hesabının güvenlik duvarı tarafından korunmadığını doğrulayın. Azure portalının ölçüm verilerini almak ve grafikleri çizmek için depolama hesabına erişmesi gerekiyor.
 
@@ -117,3 +118,4 @@ Varsayılan olarak Konuk İşletim Sistemi ölçümleri, kaynağınızın **Tan�
 * [Ölçüm Gezgini 'nin gelişmiş özellikleri hakkında bilgi edinin](metrics-charts.md)
 * [Azure hizmetleri için kullanılabilir ölçümlerin listesine bakın](metrics-supported.md)
 * [Yapılandırılmış grafik örneklerine bakın](metric-chart-samples.md)
+

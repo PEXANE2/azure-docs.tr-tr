@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 07/28/2020
 ms.author: yushwang
-ms.openlocfilehash: 86f040ab4735276e77d537f65130ae125c4757e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a4214e89b72ba3b782a8b141203ac0f4bbca635
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086957"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367734"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Siteden Siteye VPN Gateway bağlantıları için VPN cihazları ve IPsec/IKE parametreleri hakkında
 
@@ -66,7 +66,8 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | SonicWall |TZ Series, NSA Series<br>SuperMassive Series<br>E-Class NSA Series |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Uyumlu değil |[Yapılandırma Kılavuzu](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Yeni Nesil Güvenlik Duvarı | XG v17 | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://community.sophos.com/kb/127546)<br><br>[Yapılandırma Kılavuzu-birden çok SAs](https://community.sophos.com/kb/en-us/133154) |
 | Synoloji | MR2200ac <br>RT2600ac <br>RT1900ac | SRM 1.1.5/VpnPlusServer-1.2.0 | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
-| Ubiquiti | EdgeRouter | EdgeOS v 1,10 | (sınanmamıştır) | [Ikev2/IPSec üzerinden BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[Ikev2/IPSec üzerinden VTı](https://help.ubnt.com/hc/en-us/articles/115012305347)
+| Ubiquiti | EdgeRouter | EdgeOS v 1,10 | (sınanmamıştır) | [Ikev2/IPSec üzerinden BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[Ikev2/IPSec üzerinden VTı](https://help.ubnt.com/hc/en-us/articles/115012305347) |
+| Çok | 3E-636L3 | 5.2.0. T3 derlemesi-13  | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
 | WatchGuard |Tümü |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Yapılandırma Kılavuzu](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Yapılandırma Kılavuzu](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | ZyXEL |Zyduvar USG serisi<br>Zyduvaratp serisi<br>Zyduvarvpn serisi | ZLD v 4.32 + | (sınanmamıştır) | [Ikev2/IPSec üzerinden VTı](https://businessforum.zyxel.com/discussion/2648/)<br><br>[Ikev2/IPSec üzerinden BGP](https://businessforum.zyxel.com/discussion/2650/)|
 
@@ -153,26 +154,26 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 
 #### <a name="azure-gateway-as-initiator"></a>Başlatıcı olarak Azure Gateway
 
-|-  |**Şifreleme**|**Kimlik doğrulaması**|**PFS Grubu**|
+|-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Yok         |
-| 2 |AES256        |SHA1              |Yok         |
-| 3 |3DES          |SHA1              |Yok         |
-| 4 |AES256        |SHA256            |Yok         |
-| 5 |AES128        |SHA1              |Yok         |
-| 6 |3DES          |SHA256            |Yok         |
+| 1 |GCM AES256    |GCM (AES256)      |Hiçbiri         |
+| 2 |AES256        |SHA1              |Hiçbiri         |
+| 3 |3DES          |SHA1              |Hiçbiri         |
+| 4 |AES256        |SHA256            |Hiçbiri         |
+| 5 |AES128        |SHA1              |Hiçbiri         |
+| 6 |3DES          |SHA256            |Hiçbiri         |
 
 #### <a name="azure-gateway-as-responder"></a>Yanıtlayıcı olarak Azure Gateway
 
-|-  |**Şifreleme**|**Kimlik doğrulaması**|**PFS Grubu**|
+|-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Yok         |
-| 2 |AES256        |SHA1              |Yok         |
-| 3 |3DES          |SHA1              |Yok         |
-| 4 |AES256        |SHA256            |Yok         |
-| 5 |AES128        |SHA1              |Yok         |
-| 6 |3DES          |SHA256            |Yok         |
-| 7 |DES           |SHA1              |Yok         |
+| 1 |GCM AES256    |GCM (AES256)      |Hiçbiri         |
+| 2 |AES256        |SHA1              |Hiçbiri         |
+| 3 |3DES          |SHA1              |Hiçbiri         |
+| 4 |AES256        |SHA256            |Hiçbiri         |
+| 5 |AES128        |SHA1              |Hiçbiri         |
+| 6 |3DES          |SHA256            |Hiçbiri         |
+| 7 |DES           |SHA1              |Hiçbiri         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -187,7 +188,7 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Yok         |
+| 22|AES128        |SHA256            |Hiçbiri         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e8ab6e2e62bdcb08754d011a6b576cb615371a09
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076467"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290165"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
 
@@ -22,7 +22,7 @@ PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahta
 Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda kullanılabilir ve isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen RSA şifreleme anahtarlarına yönelik ölçeklenebilir, güvenli depolama alanı sağlar. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıklara şifreleme ve şifre çözme hizmetleri sağlar. Key Vault anahtarı oluşturabilir, içeri aktarılabilir veya [Şirket içi BIR HSM cihazından aktarılmasını](../key-vault/key-Vault-hsm-protected-keys.md)sağlayabilir.
 
 > [!NOTE]
-> Bu özellik, PostgreSQL için Azure veritabanı 'nın tek sunuculu "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Bu özellik, PostgreSQL için Azure veritabanı 'nın tek sunuculu "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir. Diğer sınırlamalar için [sınırlandırma](concepts-data-encryption-postgresql.md#limitations) bölümüne bakın.
 
 ## <a name="benefits"></a>Avantajlar
 

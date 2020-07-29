@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: 026b7dd0da393faef6bdce0e37a17ac54a382aaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94abdf8735fa487f46d423f17f7e1ff7bc853eb7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099973"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289872"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman Serisi Kimliği seçmek için en iyi uygulamalar
 
@@ -75,8 +75,12 @@ Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar ö
 ```
 
 Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz:
-
+ 
 [![Ortam için zaman serisi KIMLIĞINI yapılandırın.](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
+
+  > [!NOTE]
+  > Azure portal, tek bir texbox içindeki özelliklerin virgülle ayrılmış adlarını girmeyin, aksi takdirde virgüller içeren tek bir özellik adı olarak kabul edilir.
+  > Her özellik adını kendi texbox olarak girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 7e5f7bd9ec3cc9a66adb8743ce2a56d8b2ead204
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041556"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318037"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics kullanarak Azure SQL veritabanını izleme (Önizleme)
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda, biri Azure SQL veritabanı ve diğeri de Azure SQL yöneti
 
 ## <a name="configuration"></a>Yapılandırma
 
-Log Analytics çalışma alanınıza Azure SQL Analytics (Önizleme) eklemek için [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md) bölümünde açıklanan işlemi kullanın.
+Log Analytics çalışma alanınıza Azure SQL Analytics (Önizleme) eklemek için [Çözüm Galerisi Azure izleyici çözümlerini ekleme](./solutions.md) bölümünde açıklanan işlemi kullanın.
 
 ### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Azure SQL veritabanını, tanılama telemetrisini akışa almak için yapılandırma
 
@@ -297,3 +297,4 @@ Azure SQL Analytics kullanımı ücretsizdir, her ay ayrılan boş veri alma bir
 - Ayrıntılı Azure SQL verilerini görüntülemek için Azure Izleyici 'de [günlük sorguları](../log-query/log-query-overview.md) ' nı kullanın.
 - Azure SQL verilerini gösteren [kendi panolarınızı oluşturun](../learn/tutorial-logs-dashboards.md) .
 - Belirli Azure SQL olayları gerçekleştiğinde [uyarılar oluşturun](../platform/alerts-overview.md) .
+

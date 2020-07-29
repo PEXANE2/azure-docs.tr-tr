@@ -10,11 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 949347d07fe120c6900f49499e78595b540718a7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212641"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369008"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>İstemci uygulamasından gelen istekleri yetkilendirmek için Azure AD 'den bir belirteç alın
 
@@ -26,7 +27,7 @@ OAuth 2,0 kod verme akışına genel bakış için bkz. [oauth 2,0 kod verme ak�
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Azure AD güvenlik sorumlusuna rol atama
 
-Azure depolama uygulamanızdan bir güvenlik sorumlusunun kimliğini doğrulamak için önce bu güvenlik sorumlusu için rol tabanlı erişim denetimi (RBAC) ayarlarını yapılandırın. Azure depolama, kapsayıcılar ve kuyruklar için izinleri çevreleyen yerleşik RBAC rollerini tanımlar. RBAC rolü bir güvenlik sorumlusuna atandığında, bu güvenlik sorumlusuna bu kaynağa erişim verilir. Daha fazla bilgi için bkz. [Azure Blob 'a erişim haklarını yönetme ve RBAC Ile kuyruk verileri](storage-auth-aad-rbac.md).
+Azure depolama uygulamanızdan bir güvenlik sorumlusunun kimliğini doğrulamak için önce bu güvenlik sorumlusu için rol tabanlı erişim denetimi (RBAC) ayarlarını yapılandırın. Azure depolama, kapsayıcılar ve kuyruklar için izinleri çevreleyen Azure yerleşik rollerini tanımlar. RBAC rolü bir güvenlik sorumlusuna atandığında, bu güvenlik sorumlusuna bu kaynağa erişim verilir. Daha fazla bilgi için bkz. [Azure Blob 'a erişim haklarını yönetme ve RBAC Ile kuyruk verileri](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Uygulamanızı bir Azure AD kiracısıyla kaydetme
 
@@ -280,7 +281,7 @@ CloudBlockBlob blob = new CloudBlockBlob(
 
 ### <a name="enable-implicit-grant-flow"></a>Örtük verme akışını etkinleştir
 
-Örneği çalıştırmak için, uygulama kaydınız için örtük verme akışını yapılandırmanız gerekebilir. Şu adımları uygulayın:
+Örneği çalıştırmak için, uygulama kaydınız için örtük verme akışını yapılandırmanız gerekebilir. Şu adımları izleyin:
 
 1. Azure portal uygulama kaydınız ' ne gidin.
 1. **Yönet** bölümünde **kimlik doğrulama** ayarını seçin.

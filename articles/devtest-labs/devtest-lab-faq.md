@@ -3,12 +3,12 @@ title: Azure DevTest Labs SSS | Microsoft Docs
 description: Bu makalede Azure DevTest Labs hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537515"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289363"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -36,7 +36,7 @@ Twitter tanıtıcımız:[@azlabservices](https://twitter.com/azlabservices)
 Sorunuz burada listelenmiyorsa bize bilgi verin. bu nedenle bir yanıt bulmanıza yardımcı olabiliriz.
 
 - Bu SSS sonunda bir soru gönderin.
-- Daha geniş bir hedef kitleye ulaşmak için, [Azure DevTest Labs Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html)bir soru gönderin. Azure DevTest Labs ekiple ve topluluktaki diğer üyelerle birlikte katılın.
+- Daha geniş bir hedef kitleye ulaşmak için, [Azure DevTest Labs Için Microsoft Q&soru sayfasında](/answers/topics/azure-devtestlabs.html)bir soru gönderin. Azure DevTest Labs ekiple ve topluluktaki diğer üyelerle birlikte katılın.
 - Özellik istekleri için isteklerinizi ve fikirlerinizi [Azure DevTest Labs Kullanıcı seslerine](https://feedback.azure.com/forums/320373-azure-devtest-labs)gönderebilirsiniz.
 
 ### <a name="what-is-a-microsoft-account"></a>Microsoft hesabı nedir?

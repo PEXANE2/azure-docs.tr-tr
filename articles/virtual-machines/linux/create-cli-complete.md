@@ -3,15 +3,15 @@ title: Azure CLı ile Linux ortamı oluşturma
 description: Azure CLı kullanarak sıfırdan depolama, Linux VM, sanal ağ ve alt ağ, yük dengeleyici, NIC, genel IP ve bir ağ güvenlik grubu oluşturun.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e9613cdf38eecd750eb8ca3e9f3046112c558ea2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511135"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368345"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLı ile tamamen bir Linux sanal makinesi oluşturma
 Azure 'da hızlı bir şekilde bir sanal makine (VM) oluşturmak için, gerekli destekleyici kaynakları oluşturmak üzere varsayılan değerleri kullanan tek bir Azure CLı komutu kullanabilirsiniz. Sanal ağ, genel IP adresi ve ağ güvenlik grubu kuralları gibi kaynaklar otomatik olarak oluşturulur. Üretim kullanımıyla ortamınızda daha fazla denetim için bu kaynakları daha önce oluşturabilir ve ardından sanal makinelerinizi bunlara ekleyebilirsiniz. Bu makalede, bir sanal makine oluşturma ve tek tek destekleyen kaynakların her biri için size kılavuzluk eder.

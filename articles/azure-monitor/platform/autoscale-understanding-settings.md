@@ -4,12 +4,12 @@ description: Otomatik ölçeklendirme ayarlarının ve nasıl çalıştıkları 
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 03019b35a85d8d511e3ada131eff890a60fd57f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539389"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317476"
 ---
 # <a name="understand-autoscale-settings"></a>Otomatik Ölçeklendirme ayarlarını anlama
 Otomatik ölçeklendirme ayarları, uygulamanızın dalgalanma yükünü işlemek için çalışan doğru kaynak miktarına sahip olmanızı sağlar. Otomatik ölçeklendirme ayarlarını, yük veya performansı belirten veya zamanlanan bir tarih ve saatte tetiklenen ölçümlere göre tetiklenecek şekilde yapılandırabilirsiniz. Bu makalede, bir otomatik ölçeklendirme ayarının anatomtoize ayrıntılı bir bakış ele alır. Makale, bir ayarın şeması ve özellikleriyle başlar ve yapılandırılabilecek farklı profil türlerini gösterir. Son olarak, makalede, Azure 'daki otomatik ölçeklendirme özelliğinin, belirli bir zamanda hangi profilin yürütüleceğini nasıl değerlendirdiği açıklanmaktadır.
@@ -106,7 +106,7 @@ Otomatik ölçeklendirme ayarı şemasını göstermek için aşağıdaki otomat
 | metricTrigger | timeAggregation | Örneklenmiş ölçümleri toplamak için kullanılan toplama yöntemi. Örneğin, **timeaggregate = "Average"** , ortalama değeri alarak örneklenmiş ölçümleri toplamalıdır. Önceki durumda, 1 dakikalık örnekleri alın ve bunları ortalama yapın. |
 | kurallar | scaleAction | Kuralın metricTrigger değeri tetiklendiğinde gerçekleştirilecek eylem. |
 | scaleAction | yön | Ölçeği genişletmek için "Artır" veya "azalt".|
-| scaleAction | value | Kaynağın kapasitesini ne kadar artırabilir veya azaltamazsınız. |
+| scaleAction | değer | Kaynağın kapasitesini ne kadar artırabilir veya azaltamazsınız. |
 | scaleAction | cooldown | Ölçeklendirmeden önce bir ölçek işleminden sonra beklenecek süre. Örneğin, **coolI = "PT10M"** ise otomatik ölçeklendirme, başka 10 dakika boyunca yeniden ölçeklendirmeye çalışmaz. Coolaşağı, örneklerin ekleme veya kaldırma işleminden sonra ölçümlerin sabitlerine izin vermektedir. |
 
 ## <a name="autoscale-profiles"></a>Otomatik ölçeklendirme profilleri
@@ -301,8 +301,9 @@ Otomatik ölçeklendirme, bu kuralların her birinin **ScaleAction** tarafından
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki öğesine başvurarak otomatik ölçeklendirme hakkında daha fazla bilgi edinin:
 
-* [Otomatik ölçeklendirmeye genel bakış](../../azure-monitor/platform/autoscale-overview.md)
-* [Azure Izleyici otomatik ölçeklendirme ortak ölçümleri](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [En iyi Azure İzleyici otomatik ölçeklendirme yöntemleri](../../azure-monitor/platform/autoscale-best-practices.md)
-* [E-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [Otomatik ölçeklendirmeye genel bakış](./autoscale-overview.md)
+* [Azure Izleyici otomatik ölçeklendirme ortak ölçümleri](./autoscale-common-metrics.md)
+* [En iyi Azure İzleyici otomatik ölçeklendirme yöntemleri](./autoscale-best-practices.md)
+* [E-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](./autoscale-webhook-email.md)
 * [Otomatik ölçeklendirme REST API](/rest/api/monitor/autoscalesettings)
+

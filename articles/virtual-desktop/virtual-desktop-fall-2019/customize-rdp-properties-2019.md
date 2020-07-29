@@ -1,6 +1,6 @@
 ---
-title: RDP özelliklerini PowerShell Fall 2019-Azure ile özelleştirme
-description: PowerShell cmdlet 'leriyle Windows sanal masaüstü için RDP özelliklerini özelleştirme.
+title: RDP özelliklerini PowerShell Windows sanal masaüstü (klasik) ile özelleştirme-Azure
+description: PowerShell cmdlet 'leriyle Windows sanal masaüstü (klasik) için RDP özelliklerini özelleştirme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 844c59c6e5ea6d730c64fea5fb2dee51f602c382
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3ed7e8b8348ae87e676ec4585bce42a1ac389e23
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527634"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291270"
 ---
-# <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
+# <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>Windows sanal masaüstü (klasik) konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../customize-rdp-properties.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../customize-rdp-properties.md)bakın.
 
 Çoklu izleyici deneyimi ve ses yeniden yönlendirme gibi bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirmek, kullanıcılarınız için gereksinimlerinize göre en iyi deneyimi sunmanızı sağlar. **Set-RdsHostPool** cmdlet 'inde **-customrdpproperty** parametresini kullanarak Windows sanal masaüstündeki RDP özelliklerini özelleştirebilirsiniz.
 

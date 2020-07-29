@@ -3,16 +3,16 @@ title: Altyapı Otomasyonu araçlarını kullanma
 description: Azure 'da sanal makineler oluşturmak ve yönetmek için anormal, Chef, Pupevcil hayvan, Terrampaform ve Packer gibi altyapı Otomasyonu araçlarını nasıl kullanacağınızı öğrenin.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 31a0d9d4eac731836812c438a71541885863c8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100321"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292386"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure 'daki sanal makinelerle altyapı Otomasyonu araçlarını kullanma
 

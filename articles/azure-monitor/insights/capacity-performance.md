@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499554"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318003"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Hyper-V sanal makine kapasitesini Kapasite ve Performans çözümüyle planlayın (kullanım dışı)
 
@@ -39,12 +39,12 @@ Hyper-V sunucularınızın kapasitesini anlamanıza yardımcı olması için Izl
 
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Destek | Description |
+| Bağlı Kaynak | Destek | Açıklama |
 |---|---|---|
-| [Windows aracıları](../../azure-monitor/platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
-| [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
-| [SCOM yönetim grubu](../../azure-monitor/platform/om-agents.md) | Yes |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
-| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure depolama, kapasite ve performans verilerini içermez.|
+| [Windows aracıları](../platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
+| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
+| [SCOM yönetim grubu](../platform/om-agents.md) | Yes |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
+| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, kapasite ve performans verilerini içermez.|
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -55,7 +55,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 Kapasite ve Performans çözümünü çalışma alanınıza eklemek için aşağıdaki adımı gerçekleştirin.
 
-- [Çözüm Galerisi Log Analytics çözümleri ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan işlemi kullanarak Log Analytics çalışma alanınıza kapasite ve performans çözümünü ekleyin.
+- [Çözüm Galerisi Log Analytics çözümleri ekleme](./solutions.md)bölümünde açıklanan işlemi kullanarak Log Analytics çalışma alanınıza kapasite ve performans çözümünü ekleyin.
 
 ## <a name="management-packs"></a>Yönetim paketleri
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Kapasite ve Performans çözüm güncelleştirildiği zaman, sürüm numarası değişir.
 
-Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../../azure-monitor/platform/om-agents.md).
+Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../platform/om-agents.md).
 
 ## <a name="using-the-solution"></a>Çözümü kullanma
 
@@ -88,7 +88,7 @@ Kapasite ve Performans panosunu açmak için Kapasite ve Performans kutucuğuna 
 - **Bilgisayarlarınızı**
     - **Ana BILGISAYAR CPU kullanımı** Seçilen döneme bağlı olarak konak bilgisayarların CPU kullanımının ve konaklar listesinin grafik eğilimini gösterir. Belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Konak aramasını açmak ve barındırılan VM 'Ler için CPU sayacı ayrıntılarını görüntülemek için herhangi bir ana bilgisayar adına tıklayın.
     - **Ana bilgisayar bellek kullanımı** Seçili dönem temelinde konak bilgisayarların bellek kullanımının ve bir konak listesinin grafik eğilimini gösterir. Belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Konak aramasını açmak ve barındırılan VM 'Ler için bellek sayacı ayrıntılarını görüntülemek için herhangi bir ana bilgisayar adına tıklayın.
-- **Sanal Makineler**
+- **Sanal makineler**
     - **VM CPU kullanımı** Seçilen döneme bağlı olarak, sanal makinelerin CPU kullanımının ve sanal makinelerin listesinin grafik eğilimini gösterir. İlk 3 VM için belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Günlük aramasını açmak ve VM 'nin toplu CPU sayacı ayrıntılarını görüntülemek için herhangi bir VM adına tıklayın.
     - **VM bellek kullanımı** Seçilen döneme bağlı olarak, sanal makinelerin bellek kullanımının ve sanal makinelerin listesinin grafik eğilimini gösterir. İlk 3 VM için belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Günlük aramasını açmak ve VM için toplanan bellek sayacı ayrıntılarını görüntülemek için herhangi bir VM adına tıklayın.
     - **VM toplam DISK IOPS** Seçilen dönem temelinde, sanal makineler için toplam disk ıOPS ve her biri için ıOPS olan sanal makinelerin bir listesini gösterir. İlk 3 VM için belirli bir zaman noktasına ilişkin ayrıntıları görüntülemek için çizgi grafiğinin üzerine gelin. Günlük aramasında daha fazla ayrıntı görüntülemek için grafiğe tıklayın. Günlük aramasını açmak ve VM için toplam disk ıOPS sayacı ayrıntılarını görüntülemek için herhangi bir VM adına tıklayın.
@@ -117,7 +117,7 @@ Kapasite ve Performans panosunu açmak için Kapasite ve Performans kutucuğuna 
 Aşağıdaki tabloda, bu çözüm tarafından toplanan ve hesaplanan kapasite ve performans verilerine yönelik örnek günlük aramaları sunulmaktadır.
 
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:--- |:--- |
 | Tüm konak belleği yapılandırması | &#124;, ObjectName = = "Kapasite ve Performans" ve CounterName = = "ana bilgisayar atanmış bellek MB" &#124; özetleme MB = AVG (CounterValue) InstanceName 'e göre |
 | Tüm VM belleği yapılandırması | Performans &#124;; ObjectName = = "Kapasite ve Performans" ve CounterName = = "VM atanan bellek MB" &#124;, InstanceName 'e göre MB = AVG (CounterValue) öğesini özetler |
@@ -129,4 +129,5 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan ve hesaplanan kapasite ve
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrıntılı Kapasite ve Performans verileri görüntülemek için [Log Analytics 'de günlük aramalarını](../../azure-monitor/log-query/log-query-overview.md) kullanın.
+* Ayrıntılı Kapasite ve Performans verileri görüntülemek için [Log Analytics 'de günlük aramalarını](../log-query/log-query-overview.md) kullanın.
+

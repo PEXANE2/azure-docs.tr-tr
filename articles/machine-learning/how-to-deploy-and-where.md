@@ -5,18 +5,18 @@ description: Azure Container Instances, Azure Kubernetes hizmeti, Azure IoT Edge
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
-ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536394"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317884"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,6 +31,11 @@ Machine Learning modelinizi bir Web hizmeti olarak Azure bulutu 'nda veya Azure 
 1. Web hizmeti olarak da bilinen dağıtılan modeli test edin.
 
 Dağıtım iş akışında yer alan kavramlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
+
+> [!IMPORTANT]
+> Web hizmetine dağıtılmadan önce yerel olarak hata ayıklaması önerilir, daha fazla bilgi için bkz. [yerel olarak hata ayıklama](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> Ayrıca, Azure Machine Learning- [Yerel not defterine dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) ' ya başvurabilirsiniz
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -608,11 +613,11 @@ Model dağıtımı sırasında hizmet durumu değişikliğini tam olarak dağıt
 
 Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
-| Web hizmeti durumu | Description | Son durum?
+| Web hizmeti durumu | Açıklama | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | No |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
+| Kta | Hizmet, dağıtım sürecinde. | Hayır |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
 | Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
 | Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
 
@@ -1004,7 +1009,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Bir paket oluşturduktan sonra, `package.pull()` görüntüyü yerel Docker ortamınıza çekmek için ' i kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örneğin: 
+Bir paket oluşturduktan sonra, `package.pull()` görüntüyü yerel Docker ortamınıza çekmek için ' i kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örnek: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

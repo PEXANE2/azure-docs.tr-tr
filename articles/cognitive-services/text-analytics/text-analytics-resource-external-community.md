@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251301"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291655"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Metin Analizi bilişsel hizmet için dış & topluluk içeriği
 
@@ -23,7 +23,7 @@ ms.locfileid: "78251301"
 
 ## <a name="blogs"></a>Bloglar
 
-+ [Özgün duyuruyu Metin Analizi API'si (Azure blogu)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
++ [Özgün duyuruyu Metin Analizi API'si (Azure blogu)](https://azure.microsoft.com/blog/using-text-analytics-in-call-centers/)
 
 + [PowerShell 'den Metin Analizi anahtar tümceciği bilişsel hizmetler API 'SI kullanma (AutomationNext blogu)](https://automationnext.wordpress.com/tag/text-analytics/)
 

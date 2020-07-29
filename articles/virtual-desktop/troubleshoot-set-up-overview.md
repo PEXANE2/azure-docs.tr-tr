@@ -8,26 +8,23 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1010f89057d83a11fb2e156f01509e909270b044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4622e64b585d3d4795b11d29e7bffdf9991203c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083581"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292542"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Sorun giderme genel bakış, geri bildirim ve Windows sanal masaüstü desteği
 
 >[!IMPORTANT]
->Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)bakın.
->
-> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Bu içerik Azure Resource Manager Windows sanal masaüstü nesneleri ile Windows sanal masaüstü için geçerlidir. Azure Resource Manager nesneleri olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)bakın.
 
 Bu makalede, bir Windows sanal masaüstü ortamı ayarlarken karşılaşabileceğiniz sorunlara genel bir bakış sağlanır ve sorunları çözmeye yönelik yollar sağlanır.
 
-## <a name="report-issues-during-public-preview"></a>Genel Önizleme sırasında sorunları raporla
+## <a name="report-issues"></a>Sorun bildirme
 
-Spring 2020 sürümünün genel önizlemesi sırasında sorunları bildirmek veya özellik önermek için [Windows sanal masaüstü teknik topluluğu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)' nu ziyaret edin. En iyi uygulamaları tartışmak veya yeni özellikleri önermek ve Oylamak için Tech Community 'yi kullanabilirsiniz. Genel önizleme sürümü ile ilgili bir sorun raporlerken, sorun türünü **Spring 2020 Update (Önizleme)** olarak etiketlediğinizden emin olun.
+Azure Resource Manager tümleştirme ile Windows sanal masaüstü için sorunları bildirmek veya özellikler önermek için [Windows sanal masaüstü teknik topluluğu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)' nu ziyaret edin. En iyi uygulamaları tartışmak veya yeni özellikleri önermek ve Oylamak için Tech Community 'yi kullanabilirsiniz.
 
 Yardım isteyen bir gönderi yaptığınızda veya yeni bir özellik önerdiğinde, konuyu mümkün olduğunca ayrıntılı olarak tanımladığınızdan emin olun. Ayrıntılı bilgiler, diğer kullanıcıların sorularınızı yanıtlamasını veya oy önerdiğinize ilişkin özelliği anlamanıza yardımcı olabilir.
 

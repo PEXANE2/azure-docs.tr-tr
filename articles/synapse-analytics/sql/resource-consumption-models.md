@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 364f1676740106d57e61f94beaec53682656ef40
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089218"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369025"
 ---
 # <a name="synapse-sql-resource-consumption"></a>SYNAPSE SQL kaynak tüketimi
 
@@ -99,7 +99,7 @@ SQL havuzu, büyük miktarlarda işlem ve sorgu boyutlandırılabilir veri mikta
 
 Veri ambarı birimlerinin değiştirilmesi, [alter database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)bölümünde açıklanan izinleri gerektirir.
 
-SQL DB katılımcısı ve SQL Server katılımcısı gibi Azure kaynakları için yerleşik roller DWU ayarlarını değiştirebilir.
+SQL DB katılımcısı ve SQL Server katılımcısı gibi Azure yerleşik rolleri, DWU ayarlarını değiştirebilir.
 
 #### <a name="view-current-dwu-settings"></a>Geçerli DWU ayarlarını görüntüle
 
@@ -120,7 +120,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="change-data-warehouse-units"></a>Veri ambarı birimlerini değiştirme
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 DWUs 'yi değiştirmek için:
 

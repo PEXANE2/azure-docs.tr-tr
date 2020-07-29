@@ -4,15 +4,15 @@ description: Azure Marketi 'ne bir kapsayıcı teklifi oluşturmayı ve yayımla
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: c659bbe3e5f5645bb42b3a9c94a5e5fb7ebe75f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 103a5534c143e5edf87f70570eb941dfa72bd45b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086481"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317833"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketi 'nde Azure Container teklifi oluşturma
 
@@ -50,7 +50,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
+Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örnek:
 
 - Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -133,7 +133,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 6dd485adb71bf05be6499f2fc18572e8a28357d7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0b057172c822f893e602d60f77a285f0867cf368
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209901"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367784"
 ---
 # <a name="backup-app-configuration-stores-automatically"></a>Uygulama yapılandırma depolarını otomatik olarak yedekle
 
@@ -130,7 +130,7 @@ Verilerinizin yedeklenmesini daha kolay hale getirmek için, kodda herhangi bir 
 Yukarıda belirtilen örnek kod gereksinimlerinizi karşılamıyorsa, kendi Azure Işlevlerinizi de oluşturabilirsiniz. Yedekleme işlemini tamamlamak için işleviniz aşağıdaki görevleri gerçekleştirebilmelidir:
 - Event Grid bir bildirim içerip içermediğinden, depolama kuyruğunuzun içeriğini düzenli aralıklarla okuyun. Uygulama ayrıntıları için [depolama kuyruğu SDK 'sına](/azure/storage/queues/storage-quickstart-queues-dotnet) bakın.
 - Depolama kuyruğunuz [Event Grid olay bildirimleri](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema)içeriyorsa, tüm benzersiz <anahtarı (etiket>) olay iletilerinden ayıklayın. Anahtar ve etiket birleşimi, birincil depodaki anahtar-değer değişikliklerinin benzersiz tanımlayıcısıdır.
-- Birincil depodan tüm ayarları okuyun. Yalnızca ikincil depoda, depolama kuyruğunda karşılık gelen bir olaya sahip olan ayarları güncelleştirin. İkincil depodan, depolama sırasında bulunan ancak birincil depoda bulunmayan tüm ayarları silin. Yapılandırma depolarına programlı olarak erişmek için [uygulama yapılandırma SDK 'sını](https://github.com/Azure/AppConfiguration#sdks) kullanabilirsiniz.
+- Birincil depodan tüm ayarları okuyun. Yalnızca depolama kuyruğunda karşılık gelen bir olaya sahip ikincil depodaki ayarları güncelleştirin. İkincil depodan, depolama sırasında bulunan ancak birincil depoda bulunmayan tüm ayarları silin. Yapılandırma depolarına programlı olarak erişmek için [uygulama yapılandırma SDK 'sını](https://github.com/Azure/AppConfiguration#sdks) kullanabilirsiniz.
 - İşlem sırasında özel durum yoksa, depolama kuyruğundan iletileri silin.
 - Gereksinimlerinize göre hata işlemeyi uyguladığınızdan emin olun. İşlemek isteyebileceğiniz bazı yaygın özel durumları görmek için yukarıdaki kod örneğine başvurabilirsiniz.
 

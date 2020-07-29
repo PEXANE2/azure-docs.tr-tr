@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 92f35968156e787b844d28f866a832940cc8ef64
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: d3630b631944befaf8a8c3d32e90e775dd6d63fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171599"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292878"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-tek sunucu
 
@@ -32,19 +32,15 @@ En fazla 4 TB depolama alanı destekleyen sunucular için, tam yedeklemeler her 
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>16 TB 'a kadar depolama alanı olan sunucular
 
-[Azure bölgelerinin](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular 16 TB 'a kadar depolamayı destekleyebilir. Bu büyük depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, bir sunucu oluşturulduktan hemen sonra zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca fark yedeklemelerdir. 
-
-Fark anlık görüntüsü yedeklemeleri günde en az bir kez gerçekleşir. Değişiklik anlık görüntü yedeklemeleri sabit bir zamanlamaya göre gerçekleşmez. Hareket günlüğü (MySQL içindeki binlog) son fark yedeklemesinden bu yana 50 GB aşmadığı takdirde, fark anlık görüntü yedeklemeleri 24 saatte bir gerçekleşir. Bir gün içinde, en fazla altı fark anlık görüntüye izin verilir. 
-
-İşlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir. 
+[Azure bölgelerinin](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular 16 TB 'a kadar depolamayı destekleyebilir. Bu büyük depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, bir sunucu oluşturulduktan hemen sonra zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca fark yedeklemelerdir. Değişiklik anlık görüntü yedeklemeleri sabit bir zamanlamaya göre gerçekleşmez. Bir gün içinde üç fark anlık görüntü yedeklemesi yapılır. İşlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir. 
 
 ### <a name="backup-retention"></a>Yedekleri bekletme
 
 Yedeklemeler, sunucusundaki yedekleme bekletme süresi ayarına göre tutulur. 35 gün günlük bir saklama süresi seçebilirsiniz. Varsayılan saklama süresi 7 gündür. [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration)kullanarak yedekleme yapılandırmasını güncelleştirerek sunucu oluşturma sırasında veya daha sonra saklama süresini ayarlayabilirsiniz. 
 
 Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için zaman içinde bir nokta geri yüklemesi alma süresinin ne kadar geri alınacağını yönetir. Yedekleme bekletme süresi Ayrıca bir geri yükleme perspektifinden kurtarma penceresi olarak da ele alınabilir. Yedekleme saklama süresi içinde bir zaman içindeki bir anlık geri yükleme gerçekleştirmek için gereken tüm yedeklemeler, yedekleme depolama alanında tutulur. Örneğin, yedekleme Bekletme dönemi 7 gün olarak ayarlandıysa, kurtarma penceresi son 7 gün olarak değerlendirilir. Bu senaryoda, son 7 gün içinde sunucuyu geri yüklemek için gereken tüm yedeklemeler korunur. Yedi günlük bir yedekleme bekletme penceresi ile:
-- 4 TB depolama alanı olan eski sunucular, en fazla 2 tam veritabanı yedeklemesi, tüm değişiklik yedeklemeleri ve en erken tam veritabanı yedeklemesinden bu yana gerçekleştirilen işlem günlüğü yedeklemelerini korur.
--   Büyük depolamaya sahip sunucular (16 TB), son 8 gündeki tüm fark anlık görüntülerini ve işlem günlüğü yedeklemelerini tam veritabanı anlık görüntüsünü tutar.
+- 4 TB 'a kadar depolama alanı olan sunucular en fazla 2 tam veritabanı yedeklemesi, tüm değişiklik yedeklemeleri ve en erken tam veritabanı yedeklemesinden bu yana gerçekleştirilen işlem günlüğü yedeklemelerini korur.
+-   16 TB 'a kadar depolamaya sahip sunucular, son 8 gündeki tüm fark anlık görüntülerini ve işlem günlüğü yedeklemelerini tam veritabanı anlık görüntüsünü tutar.
 
 ### <a name="backup-redundancy-options"></a>Yedekleme artıklığı seçenekleri
 

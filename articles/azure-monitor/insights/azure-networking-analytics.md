@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041612"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318071"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ izleme çözümleri
 
@@ -79,7 +79,7 @@ Uygulama ağ geçitleri için aşağıdaki ölçümler desteklenir: tekrar
 ### <a name="install-and-configure-the-solution"></a>Çözümü yükleyip yapılandırma
 Azure Application Gateway Analytics çözümünü yüklemek ve yapılandırmak için aşağıdaki yönergeleri kullanın:
 
-1. Azure Application Gateway Analytics çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) 'nden veya [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
+1. Azure Application Gateway Analytics çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) 'nden veya [Çözüm Galerisi Azure izleyici çözümlerini ekleme](./solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
 2. İzlemek istediğiniz [uygulama ağ geçitleri](../../application-gateway/application-gateway-diagnostics.md) için tanılama günlüğünü etkinleştirin.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Portalda Azure Application Gateway tanılamayı etkinleştirme
@@ -150,7 +150,7 @@ Aşağıdaki Günlükler ağ güvenlik grupları için desteklenir:
 ### <a name="install-and-configure-the-solution"></a>Çözümü yükleyip yapılandırma
 Azure ağ analizi çözümünü yüklemek ve yapılandırmak için aşağıdaki yönergeleri kullanın:
 
-1. [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan Işlemi kullanarak Azure ağ güvenlik grubu Analizi çözümünü etkinleştirin.
+1. [Çözüm Galerisi Azure izleyici çözümlerini ekleme](./solutions.md)bölümünde açıklanan Işlemi kullanarak Azure ağ güvenlik grubu Analizi çözümünü etkinleştirin.
 2. İzlemek istediğiniz [ağ güvenlik grubu](../../virtual-network/virtual-network-nsg-manage-log.md) kaynakları için tanılama günlüğünü etkinleştirin.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Portalda Azure ağ güvenlik grubu tanılamayı etkinleştirme
@@ -230,3 +230,4 @@ Değişiklik, yeni çözümde görüntülenmeden önce toplanan veriler görünm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Ayrıntılı Azure tanılama verilerini görüntülemek için [Azure izleyici 'de günlük sorguları '](../log-query/log-query-overview.md) nı kullanın.
+

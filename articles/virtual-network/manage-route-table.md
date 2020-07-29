@@ -1,7 +1,7 @@
 ---
 title: Azure yol tablosu oluşturma, değiştirme veya silme
 titlesuffix: Azure Virtual Network
-description: Yol tablosu oluşturmayı, değiştirmeyi veya silmeyi öğrenin.
+description: Sanal ağ trafiği yönlendirme hakkında bilgi bulmayı ve yol tablosu oluşturma, değiştirme veya silme hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708272"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291007"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Rota tablosu oluşturma, değiştirme veya silme
 
@@ -40,7 +41,7 @@ Oturum açmak veya Azure 'a bağlanmak için kullandığınız hesap, [ağ katı
 
 Azure konumu ve aboneliği başına oluşturabileceğiniz yol tablolarının sayısı için bir sınır vardır. Ayrıntılar için bkz. [ağ limitleri-Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 1. Arama kutusuna *yol tablosu*girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
 
@@ -332,7 +333,7 @@ Kısa bir bekleme sonrasında Azure, sonraki atlama türünü ve trafiği yönle
 
 Rota tablolarında ve rotalarındaki görevleri yapmak için, hesabınız [ağ katılımcısı rolüne](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) veya aşağıdaki tabloda listelenen uygun eylemlere atanmış özel bir [role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır:
 
-| Eylem                                                          |   Name                                                  |
+| Eylem                                                          |   Ad                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Rota tablosu okuma                                    |
 | Microsoft. Network/routeTables/Write                             |   Rota tablosu oluşturma veya güncelleştirme                        |

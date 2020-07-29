@@ -3,12 +3,12 @@ title: Azure Red Hat OpenShift v3. x ' i kapsayıcılar için Azure Izleyici ile
 description: Bu makalede, Azure Red Hat OpenShift sürüm 3 ve üzerinde barındırılan Azure Izleyici ile bir Kubernetes kümesi izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 438a0513b6aceb876df4f9e3d0f4510c7cf8235e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092907"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317986"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift v3 'i kapsayıcılar için Azure Izleyici ile yapılandırma
 
@@ -173,7 +173,7 @@ Azure 'da dağıtılan bir Azure Red Hat OpenShift kümesinin izlenmesini etkinl
     ![İzlenmeyen kümeler için izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, RedHat OpenShift kümesinin dağıtıldığı abonelikte oluşturmayı unutmayın.
+    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, RedHat OpenShift kümesinin dağıtıldığı abonelikte oluşturmayı unutmayın.
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
@@ -244,3 +244,4 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
 - Kümelediğiniz Prometheus ölçümlerini hurdaya almak ve analiz etmek için bkz. [Prometheus ölçümleri koruması](container-insights-prometheus-integration.md) 'nı inceleyin
 
 - Azure Izleyici kapsayıcılar ile kümenizi izlemeyi durdurmayı öğrenmek için bkz. [Azure Red Hat OpenShift kümenizi Izlemeyi durdurma](./container-insights-optout-openshift-v3.md).
+

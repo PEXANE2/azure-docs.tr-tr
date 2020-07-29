@@ -3,23 +3,26 @@ title: 'Hızlı başlangıç: Python için Azure Blob depolama istemci kitaplı�
 description: Bu hızlı başlangıçta, nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturursunuz. Daha sonra, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Python için depolama istemcisi kitaplığı v 2.1 kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, tracking-python
-ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 47ead1be1a81c59da148ea829b61b608a35c45ef
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292755"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme
 
 Bu hızlı başlangıçta, Python kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!NOTE]
+> Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: Python V12 SDK ile Blobları yönetme](storage-quickstart-blobs-python.md).
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).

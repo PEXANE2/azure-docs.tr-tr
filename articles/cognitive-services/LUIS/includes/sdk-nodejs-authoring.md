@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 6e240a0c5d5d77489c92862238c2e5041bdeabe3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6d805dfc15264a34abe1f177f688dae96d4a49f7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171369"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369464"
 ---
-Node. js için Language Understanding (LUSıS) yazma istemci kitaplığını kullanarak şunları yapın:
+Node.js için Language Understanding (LUSıS) yazma istemci kitaplığını kullanın:
 
 * Uygulama oluşturun.
 * Amaç, varlık ve örnek ekleme.
@@ -25,9 +25,9 @@ Node. js için Language Understanding (LUSıS) yazma istemci kitaplığını kul
 * Bir uygulamayı eğitme ve yayımlama.
 * Uygulamayı Sil
 
-[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring)  |  [Yazma paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [çalışma zamanı paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring)  |  [Yazma paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [çalışma zamanı paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Language Understanding yazma kaynağı: [Azure Portal bir tane oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
@@ -36,46 +36,7 @@ Node. js için Language Understanding (LUSıS) yazma istemci kitaplığını kul
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUSıS) başlangıç anahtarınızı alın
 
-Bir LUSıS yazma kaynağı oluşturarak [Başlangıç anahtarınızı](../luis-how-to-azure-subscription.md#starter-key) alın. Bir sonraki adımda anahtarınızı ve anahtarın uç noktasını saklayın.
-
-### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
-
-Anahtarınızı ve anahtarın bölgesini kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
-
-* `LUIS_AUTHORING_KEY`-İsteklerinizin kimliğini doğrulamak için kaynak anahtarı.
-* `LUIS_AUTHORING_ENDPOINT`-Anahtarınızla ilişkili uç nokta.
-
-İşletim sisteminiz için yönergeleri kullanın.
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_AUTHORING_ENDPOINT <replace-with-your-luis-authoring-endpoint>
-```
-
-Ortam değişkenini ekledikten sonra konsol penceresini yeniden başlatın.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Hesabınızı düzenleyin `.bash_profile` ve ortam değişkenini ekleyin:
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source .bash_profile` çalıştırın.
-***
+Bir LUSıS yazma kaynağı oluşturarak [yazma anahtarınızı](../luis-how-to-azure-subscription.md) alın. Anahtarınızı ve anahtarın uç noktasını saklayın, kod dosyasının en üstünde dizeleri eklemeniz gerekir.
 
 ### <a name="install-the-npm-library-for-luis-authoring"></a>LUSıS yazma için NPM kitaplığını yükler
 
@@ -102,7 +63,7 @@ Language Understanding (LUSıS) yazma istemcisi, yazma anahtarınızı içeren A
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, Node. js için Language Understanding (LUSıS) yazma istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
+Bu kod parçacıkları, Node.js için Language Understanding (LUSıS) yazma istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
 
 * [Uygulama oluşturma](#create-a-luis-app)
 * [Varlık ekleme](#create-entities-for-the-app)
@@ -118,8 +79,6 @@ Bu kod parçacıkları, Node. js için Language Understanding (LUSıS) yazma ist
 Tercih ettiğiniz düzenleyicide veya IDE 'de adlı yeni bir metin dosyası oluşturun `luis_authoring_quickstart.js` . Ardından aşağıdaki bağımlılıkları ekleyin.
 
 [!code-javascript[Create a new application in your preferred editor or IDE.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Dependencies)]
-
-Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 
 [!code-javascript[Create variables for your resource's Azure endpoint and key.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Variables)]
 
@@ -163,7 +122,7 @@ Bir utterance 'in amacı ve ayıklama varlıklarını tespit etmek için, uygula
 
 Her örnek için tek bir nesne olan [Examplelabelobject](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest) nesnelerinin bir listesini oluşturarak örnek bir parametre ekleyin. Her örnek, varlık adı ve varlık değerinin ad/değer çiftleri sözlüğüne sahip tüm varlıkları işaretlemelidir. Varlık değeri, örnek utterine 'nın metninde göründüğünden tam olarak olmalıdır.
 
-Örneklere çağrı yapın. uygulama KIMLIĞI, sürüm KIMLIĞI ve örnek listesi ile [Batch](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#batch-string--string--examplelabelobject----msrest-requestoptionsbase-) . Çağrı, bir sonuç listesiyle yanıt verir. Modele başarıyla eklendiğinden emin olmak için her bir örneğin sonucunu denetlemeniz gerekir.
+Uygulama KIMLIĞI, sürüm KIMLIĞI ve örneklerin listesi ile [examples.batch](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#batch-string--string--examplelabelobject----msrest-requestoptionsbase-) çağrısı yapın. Çağrı, bir sonuç listesiyle yanıt verir. Modele başarıyla eklendiğinden emin olmak için her bir örneğin sonucunu denetlemeniz gerekir.
 
 [!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=AuthoringBatchAddUtterancesForIntent&highlight=52-56)]
 
