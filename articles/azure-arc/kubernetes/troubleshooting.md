@@ -10,6 +10,7 @@ description: Arc etkin Kubernetes kümeleriyle ilgili yaygın sorunları giderme
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.openlocfilehash: 1527f8d4ca06c2deaf4ce18b73bfdb515dcadc63
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "83725593"
