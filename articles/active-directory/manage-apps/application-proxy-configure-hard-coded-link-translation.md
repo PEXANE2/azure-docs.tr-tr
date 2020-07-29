@@ -16,13 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764851"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282934"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirme
+# <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirme
 
 Azure AD Uygulama Ara Sunucusu, şirket içi uygulamalarınızı uzak veya kendi cihazlarındaki kullanıcılar için kullanılabilir hale getirir. Ancak, bazı uygulamalar HTML 'ye katıştırılmış yerel bağlantılarla geliştirilmiştir. Bu bağlantılar, uygulama uzaktan kullanıldığında düzgün çalışmaz. Birden çok şirket içi uygulamanız varsa, kullanıcılarınız ofis dışında olduklarında çalışmaya devam etmek için bağlantıları bekler. 
 
@@ -34,7 +35,7 @@ Kiracınızda özel etki alanlarını kullanmıyorsanız, bu işlevselliği sağ
 > [!NOTE]
 > JavaScript kullanılarak oluşturulan sabit kodlanmış iç URL 'Ler için bağlantı çevirisi desteklenmez.
 
-**Seçenek 1: Managed Browser veya Microsoft Edge kullanın** – bu çözüm yalnızca, kullanıcıların uygulamaya Intune Managed Browser veya Microsoft Edge tarayıcısı aracılığıyla erişmelerini önermeye veya gerektirmeye planlandıysanız geçerlidir. Yayımlanan tüm URL 'Leri işleyecek. 
+**Seçenek 1: Microsoft Edge kullanın** – bu çözüm yalnızca, kullanıcıların Microsoft Edge tarayıcısı aracılığıyla uygulamaya erişmelerini önermeye veya gerektirmeye planlandıysanız geçerlidir. Yayımlanan tüm URL 'Leri işleyecek. 
 
 **Seçenek 2: Uygulamaps uzantısını kullanın** – bu çözüm, kullanıcıların bir istemci tarafı tarayıcı uzantısı yüklemesini gerektirir, ancak yayımlanan tüm URL 'leri işleyecek ve en popüler tarayıcılarla çalışır. 
 
@@ -49,11 +50,11 @@ Bu üç özellik, kullanıcılarınızın nerede olduğuna bakılmaksızın bağ
 > Ya da bağlantı çevirisi ile yapılandırmanız gereken uygulama SharePoint ise, bağlantıları eşleştirmeye yönelik başka bir yaklaşım için bkz. [sharepoint 2013 için alternatif erişim eşlemelerini yapılandırma](https://technet.microsoft.com/library/cc263208.aspx) . 
 
  
-### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>Seçenek 1: Intune Managed Browser ve Microsoft Edge tümleştirmesi 
+### <a name="option-1-microsoft-edge-integration"></a>Seçenek 1: Microsoft Edge tümleştirmesi 
 
-Uygulamanızı ve içeriğinizi daha fazla korumak için Intune Managed Browser veya Microsoft Edge ' i kullanabilirsiniz. Bu çözümü kullanmak için, kullanıcıların Intune Managed Browser aracılığıyla uygulamaya erişmesi gerekir/önerilir. Uygulama proxy 'Si ile yayınlanan tüm iç URL 'Ler Managed Browser tarafından tanınır ve ilgili dış URL 'ye yeniden yönlendirilir. Bu, tüm sabit kodlanmış iç URL 'Lerin çalışmasını sağlar ve bir kullanıcı tarayıcıya gider ve doğrudan iç URL 'yi yazdığında, kullanıcı uzakta olsa bile çalışır.  
+Uygulamanızı ve içeriğinizi daha fazla korumak için Microsoft Edge 'i kullanabilirsiniz. Bu çözümü kullanmak için, kullanıcıların Microsoft Edge aracılığıyla uygulamaya erişmesi gerekir/önerilir. Uygulama proxy 'Si ile yayınlanan tüm iç URL 'Ler, Edge tarafından tanınır ve karşılık gelen dış URL 'ye yönlendirilir. Bu, tüm sabit kodlanmış iç URL 'Lerin çalışmasını sağlar ve bir kullanıcı tarayıcıya gider ve doğrudan iç URL 'yi yazdığında, kullanıcı uzakta olsa bile çalışır.  
 
-Bu seçeneği yapılandırma hakkında daha fazla bilgi edinmek için lütfen [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) belgelerine bakın.  
+Bu seçeneği yapılandırma hakkında daha fazla bilgi için, lütfen [iOS ve Android Için Edge kullanarak Web erişimini yönetme Microsoft Intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge) belgelerine bakın.  
 
 ### <a name="option-2-myapps-browser-extension"></a>Seçenek 2: Uygps tarayıcı uzantısı 
 
@@ -72,9 +73,9 @@ Bağlantı çevirisi etkinleştirildiğinde, uygulama proxy hizmeti yayınlanmı
 
 ## <a name="how-link-translation-works"></a>Bağlantı çevirisinin nasıl çalıştığı
 
-Kimlik doğrulamasından sonra, proxy sunucusu uygulama verilerini kullanıcıya geçirdiğinde, uygulama proxy 'si uygulamayı sabit kodlanmış bağlantılar için tarar ve bunları ilgili, yayımlanan dış URL 'lerle değiştirir.
+Kimlik doğrulamasından sonra, proxy sunucusu uygulama verilerini kullanıcıya geçirdiğinde, uygulama proxy 'Si uygulamayı sabit kodlanmış bağlantılar için tarar ve bunları ilgili, yayımlanan dış URL 'Ler ile değiştirir.
 
-Uygulama proxy 'Si, uygulamaların UTF-8 ile kodlandığını varsayar. Böyle bir durum söz konusu değilse, kodlama türünü bir http yanıt üst bilgisinde (gibi) belirtin `Content-Type:text/html;charset=utf-8` .
+Uygulama proxy 'Si, uygulamaların UTF-8 ile kodlandığını varsayar. Böyle bir durum söz konusu değilse, kodlama türünü bir HTTP yanıt üst bilgisinde (gibi) belirtin `Content-Type:text/html;charset=utf-8` .
 
 ### <a name="which-links-are-affected"></a>Hangi bağlantılar etkileniyor?
 
@@ -83,7 +84,7 @@ Bağlantı çevirisi özelliği yalnızca bir uygulamanın gövdesinde kod etike
 Şirket içi uygulamalarda iki ortak iç bağlantı türü vardır:
 
 - Paylaşılan bir kaynağa, gibi yerel bir dosya yapısında işaret eden **göreli iç bağlantılar** `/claims/claims.html` . Bu bağlantılar, uygulama proxy 'Si aracılığıyla yayımlanan uygulamalarda otomatik olarak çalışır ve bağlantı çevirisi ile veya bu olmadan çalışmaya devam eder. 
-- Gibi diğer şirket içi uygulamalara yönelik olarak **kodlanmış iç bağlantılar** `http://expenses` veya gibi yayımlanmış dosyalar `http://expenses/logo.jpg` . Bağlantı çevirisi özelliği, kodlanmış iç bağlantılar üzerinde çalışarak, uzak kullanıcıların gitmesi gereken dış URL 'lere işaret etmek üzere değişir.
+- Gibi diğer şirket içi uygulamalara yönelik olarak **sabit kodlanmış iç bağlantılar** `http://expenses` veya gibi yayımlanmış dosyalar `http://expenses/logo.jpg` . Bağlantı çevirisi özelliği, sabit kodlanmış iç bağlantılar üzerinde çalışarak, uzak kullanıcıların gitmesi gereken dış URL 'lere işaret etmek üzere değişiklik halleder.
 
 Uygulama proxy 'Sinin, şunlar için bağlantı çevirisini desteklediği HTML kodu etiketlerinin tamamı listesi:
 * a
@@ -102,7 +103,7 @@ Uygulama proxy 'Sinin, şunlar için bağlantı çevirisini desteklediği HTML k
 * bağlantı
 * MenuItem
 * bulunduruyor
-* nesne
+* object
 * betik
 * kaynak
 * izle

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751626"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371694"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -240,7 +240,7 @@ Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkin
 
 - [Log Analytics günlük verilerinde uyarı alma](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-- [Azure Depolama analizini günlüğe kaydetme](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Depolama analizi günlüğü](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -428,7 +428,7 @@ Kullanıcı hesabı erişiminin şüpheli olma riskini azaltmak için etkili bir
 
 Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluşturun, Denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına gönderir. İstenen uyarıları Log Analytics çalışma alanı içinde yapılandırabilirsiniz. Azure depolama hesaplarında kimlik doğrulama başarısızlıklarını izlemek için, depolama kaynak ölçümleri için belirli eşiklere ulaşıldığında size bildirimde bulunan uyarılar oluşturabilirsiniz. Ayrıca, anonim kimlik doğrulama koşulunu kullanarak depolama hesaplarına yönelik anonim erişim hakkında uyarı almak için Azure Izleyici 'yi kullanın.
 
-- [Azure Depolama analizini günlüğe kaydetme](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Depolama analizi günlüğü](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -534,7 +534,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: Azure Active Directory (Azure AD) rol tabanlı erişim denetımı (RBAC) aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen yerleşik RBAC rollerinin bir kümesini tanımlar. 
+**Rehberlik**: Azure Active Directory (Azure AD) rol tabanlı erişim denetımı (RBAC) aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen bir dizi Azure yerleşik rol tanımlar. 
 
 - [Azure depolama hesabı için RBAC rolleri atama](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
 
@@ -574,7 +574,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 - [Azure etkinlik günlüğü olayları için uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Azure Depolama analizini günlüğe kaydetme](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Depolama analizi günlüğü](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Azure depolama hesapları için ölçüm uyarılarını yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 

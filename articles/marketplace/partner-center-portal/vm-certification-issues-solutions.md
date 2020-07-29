@@ -4,15 +4,15 @@ description: Bu makalede VM görüntülerinin yaygın hata iletileri açıklanma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: v-miegge
-ms.author: v-krmall
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120662"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319907"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Sanal makine sertifikası sırasında sorunlar ve çözümler 
 
@@ -63,7 +63,7 @@ Teklifinizi göndermeden önce VM sağlama sürecini dikkatli bir şekilde izled
 
 Sağlama sorunları aşağıdaki başarısızlık senaryolarını içerebilir:
 
-|Senaryo|Hata|Nedeni|Çözüm|
+|Senaryo|Hata|Neden|Çözüm|
 |---|---|---|---|
 |1|Geçersiz sanal sabit disk (VHD)|VHD altbilgisinde belirtilen tanımlama bilgisi değeri yanlışsa, VHD geçersiz olarak kabul edilir.|Görüntüyü yeniden oluşturun ve isteği iletin.|
 |2|Geçersiz blob türü|Kullanılan blok, bir sayfa türü yerine bir blob türü olduğundan VM sağlama başarısız oldu.|Görüntüyü yeniden oluşturun ve isteği iletin.|
@@ -94,7 +94,7 @@ Microsoft sertifika araç seti, test çalışmalarını çalıştırmanıza ve V
 
 Aşağıdaki tablo, araç setinin çalışacağı Linux test çalışmalarını listeler. Test doğrulaması, açıklamada belirtilmiştir.
 
-|Senaryo|Test çalışması|Description|
+|Senaryo|Test çalışması|Açıklama|
 |---|---|---|
 |1|Bash geçmişi|VM görüntüsünü oluşturmadan önce bash geçmiş dosyaları temizlenmelidir.|
 |2|Linux Aracısı sürümü|Azure Linux Agent 2.2.41 veya üzeri yüklü olmalıdır.|
@@ -122,7 +122,7 @@ Aşağıdaki tabloda, önceki test çalışmaları yürütülürken bulunan yayg
 
 Aşağıdaki tabloda, test doğrulamasının bir açıklamasıyla birlikte, araç setinin çalışacağı Windows test çalışmaları listelenmektedir:
 
-|Senaryo |Test çalışmaları|Description|
+|Senaryo |Test çalışmaları|Açıklama|
 |---|---|---|---|
 |1|İşletim sistemi mimarisi|Azure yalnızca 64 bitlik işletim sistemlerini destekler.|
 |2|Kullanıcı hesabı bağımlılığı|Uygulama yürütme, yönetici hesabına bağlı olmamalıdır.|
@@ -261,7 +261,7 @@ Kendi kendine test çalışmalarının çalıştığı hesap için doğru erişi
     
 Paylaşılan erişim imzası (SAS) URL 'SI kullanarak VM görüntüsünü indirdiğinizde ortaya çıkan herhangi bir sorun için aşağıdaki tabloya bakın.
 
-|Senaryo|Hata|Nedeni|Çözüm|
+|Senaryo|Hata|Neden|Çözüm|
 |---|---|---|---|
 |1|Blob bulunamadı|VHD silinmiş ya da belirtilen konumdan taşınmış olabilir.|| 
 |2|Kullanılan blob|VHD başka bir iç işlem tarafından kullanılıyor.|Bir SAS URL 'SI kullanarak karşıdan yüklerken VHD 'nin kullanılan bir durumda olması gerekir.|
@@ -304,7 +304,7 @@ Bu araç hakkında daha fazla bilgi için bkz. [Sistem Hazırlama (Sysprep) gene
 
 Veri diskiyle ilgili hatalara yönelik çözümler için aşağıdaki tabloyu kullanın:
 
-|Hata|Nedeni|Çözüm|
+|Hata|Neden|Çözüm|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|Bu hata, teklif gönderildiğinde mantıksal birim numarası (LUN) için belirtilen geçersiz bir sayı nedeniyle meydana gelebilir.|Veri diski için LUN numarası sırasının Iş Ortağı Merkezi 'nde olduğunu doğrulayın.|
 |`DataDisk- NotFound:`|Bu hata, belirtilen bir SAS URL 'sinde bulunmayan bir veri diski nedeniyle meydana gelebilir.|Veri diskinin istekte belirtilen SAS URL 'sinde bulunduğundan emin olun.|

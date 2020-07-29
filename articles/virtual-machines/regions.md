@@ -4,15 +4,15 @@ description: Azure 'da sanal makine çalıştırmaya yönelik bölgeler hakkınd
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 5cff97e7fea2cf9ef4da87e2d2ec700678d1d39b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532156"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284736"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure’da sanal makine bölgeleri
 
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, depolama çoğaltma türleri arasındaki farkları hızlı
 
 | Çoğaltma stratejisi | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Veriler birden çok tesis arasında çoğaltılır. |No |Evet |Yes |Yes |
+| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Evet |Yes |Yes |
 | Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Evet |
 | Ayrı düğümlerde tutulan veri kopyası sayısı. |3 |3 |6 |6 |
 

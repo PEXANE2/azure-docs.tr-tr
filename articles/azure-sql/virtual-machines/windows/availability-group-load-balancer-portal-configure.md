@@ -3,7 +3,7 @@ title: Kullanılabilirlik grubu dinleyicilerini & yük dengeleyiciyi yapılandı
 description: Azure sanal makinelerinde SQL Server için her zaman açık kullanılabilirlik grubu için dinleyici oluşturmaya yönelik adım adım yönergeler
 services: virtual-machines
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921690"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284294"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu için yük dengeleyici yapılandırma
 
@@ -68,17 +69,17 @@ Görevin bu bölümünde aşağıdaki adımları uygulayın:
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
+   | **Ad** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
    | **Tür** |**İç**: çoğu uygulama, aynı sanal ağ içindeki uygulamaların kullanılabilirlik grubuna bağlanmasına izin veren bir iç yük dengeleyici kullanır.  </br> **Harici**: uygulamaların genel bir Internet bağlantısı aracılığıyla kullanılabilirlik grubuna bağlanmasına izin verir. |
    | **Sanal ağ** |SQL Server örneklerinin bulunduğu sanal ağı seçin. |
    | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. |
-   | **IP adresi ataması** |**Se** |
+   | **IP adresi ataması** |**Static** |
    | **Özel IP adresi** |Alt ağdan kullanılabilir bir IP adresi belirtin. Kümede bir dinleyici oluşturduğunuzda bu IP adresini kullanın. Bu makalenin ilerleyen kısımlarında yer aldığı bir PowerShell betiğine değişken için bu adresi kullanın `$ILBIP` . |
    | **Abonelik** |Birden çok aboneliğiniz varsa, bu alan görünebilir. Bu kaynakla ilişkilendirmek istediğiniz aboneliği seçin. Normalde kullanılabilirlik grubu için tüm kaynaklarla aynı abonelikte olur. |
    | **Kaynak grubu** |SQL Server örneklerinin bulunduğu kaynak grubunu seçin. |
    | **Konum** |SQL Server örneklerinin bulunduğu Azure konumunu seçin. |
 
-6. **Oluştur**'u seçin. 
+6. **Oluştur**’u seçin. 
 
 Azure, yük dengeleyici oluşturur. Yük dengeleyici belirli bir ağa, alt ağa, kaynak grubuna ve konuma aittir. Azure, görevi tamamladıktan sonra yük dengeleyici ayarlarını Azure 'da doğrulayın. 
 
@@ -116,11 +117,11 @@ Araştırma, Azure 'un şu anda kullanılabilirlik grubu dinleyicisine sahip SQL
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Araştırmayı temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointaraştırması**. |
+   | **Ad** |Araştırmayı temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointaraştırması**. |
    | **Protokol** |**TCP** |
-   | **Bağ** |Kullanılabilir herhangi bir bağlantı noktasını kullanabilirsiniz. Örneğin, *59999*. |
-   | **Interval** |*5* |
-   | **Sağlıksız durum eşiği** |*2* |
+   | **Bağlantı noktası** |Kullanılabilir herhangi bir bağlantı noktasını kullanabilirsiniz. Örneğin, *59999*. |
+   | **Aralık** |*5* |
+   | **İyi durumda olmayan durum eşiği** |*2* |
 
 4.  **Tamam**’ı seçin. 
 
@@ -142,12 +143,12 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Yük Dengeleme kurallarını temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointlistener**. |
+   | **Ad** |Yük Dengeleme kurallarını temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointlistener**. |
    | **Protokol** |**TCP** |
-   | **Bağ** |*1433* |
-   | **Arka Uç Bağlantı Noktası** |*1433*. Bu kural **kayan IP (doğrudan sunucu dönüşü)** kullandığından bu değer yok sayılır. |
+   | **Bağlantı noktası** |*1433* |
+   | **Arka uç bağlantı noktası** |*1433*. Bu kural **kayan IP (doğrudan sunucu dönüşü)** kullandığından bu değer yok sayılır. |
    | **Yokla** |Bu yük dengeleyici için oluşturduğunuz araştırmanın adını kullanın. |
-   | **Oturum kalıcılığı** |**Yok** |
+   | **Oturum kalıcılığı** |**Hiçbiri** |
    | **Boşta kalma zaman aşımı (dakika)** |*4* |
    | **Kayan IP (doğrudan sunucu dönüşü)** |**Etkin** |
 
@@ -234,11 +235,11 @@ Azure portal bir yük dengeleyicisine bir IP adresi eklemek için aşağıdaki a
 
    |Ayar |Değer
    |:-----|:----
-   |**Adı** |Araştırmayı tanımlayacak bir ad.
+   |**Ad** |Araştırmayı tanımlayacak bir ad.
    |**Protokol** |TCP
-   |**Bağ** |Tüm sanal makinelerde kullanılabilir olması gereken kullanılmamış bir TCP bağlantı noktası. Başka herhangi bir amaçla kullanılamaz. İki dinleyici aynı araştırma bağlantı noktasını kullanamaz. 
-   |**Interval** |Araştırma denemeleri arasındaki süre miktarı. Varsayılanı kullanın (5).
-   |**Sağlıksız durum eşiği** |Bir sanal makinenin sağlıksız olduğu kabul edilmeden önce başarısız olması gereken birbirini izleyen eşiklerin sayısı.
+   |**Bağlantı noktası** |Tüm sanal makinelerde kullanılabilir olması gereken kullanılmamış bir TCP bağlantı noktası. Başka herhangi bir amaçla kullanılamaz. İki dinleyici aynı araştırma bağlantı noktasını kullanamaz. 
+   |**Aralık** |Araştırma denemeleri arasındaki süre miktarı. Varsayılanı kullanın (5).
+   |**İyi durumda olmayan durum eşiği** |Bir sanal makinenin sağlıksız olduğu kabul edilmeden önce başarısız olması gereken birbirini izleyen eşiklerin sayısı.
 
 8. Araştırmayı kaydetmek için **Tamam ' ı** seçin. 
 
@@ -248,13 +249,13 @@ Azure portal bir yük dengeleyicisine bir IP adresi eklemek için aşağıdaki a
 
     |Ayar |Değer
     |:-----|:----
-    |**Adı** |Yük Dengeleme kuralını tanımlamak için bir ad. 
+    |**Ad** |Yük Dengeleme kuralını tanımlamak için bir ad. 
     |**Ön uç IP adresi** |Oluşturduğunuz IP adresini seçin. 
     |**Protokol** |TCP
-    |**Bağ** |SQL Server örneklerinin kullandığı bağlantı noktasını kullanın. Varsayılan bir örnek, değiştirmediğiniz müddetçe 1433 numaralı bağlantı noktasını kullanır. 
+    |**Bağlantı noktası** |SQL Server örneklerinin kullandığı bağlantı noktasını kullanın. Varsayılan bir örnek, değiştirmediğiniz müddetçe 1433 numaralı bağlantı noktasını kullanır. 
     |**Arka uç bağlantı noktası** |**Bağlantı noktası**ile aynı değeri kullanın.
     |**Arka uç havuzu** |SQL Server örneklerine sahip sanal makineleri içeren havuz. 
-    |**Durum yoklaması** |Oluşturduğunuz araştırmayı seçin.
+    |**Durumu araştırması** |Oluşturduğunuz araştırmayı seçin.
     |**Oturum kalıcılığı** |Hiçbiri
     |**Boşta kalma zaman aşımı (dakika)** |Varsayılan (4)
     |**Kayan IP (doğrudan sunucu dönüşü)** | Etkin
@@ -297,13 +298,13 @@ Bir kullanılabilirlik grubu Dağıtılmış kullanılabilirlik grubuna katılı
 
    |Ayar |Değer
    |:-----|:----
-   |**Adı** |Dağıtılmış kullanılabilirlik grubu için Yük Dengeleme kuralını tanımlamak için bir ad. 
+   |**Ad** |Dağıtılmış kullanılabilirlik grubu için Yük Dengeleme kuralını tanımlamak için bir ad. 
    |**Ön uç IP adresi** |Kullanılabilirlik grubuyla aynı ön uç IP adresini kullanın.
    |**Protokol** |TCP
-   |**Bağ** |5022- [Dağıtılmış kullanılabilirlik grubu uç nokta dinleyicisi](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)için bağlantı noktası.</br> Kullanılabilir herhangi bir bağlantı noktası olabilir.  
+   |**Bağlantı noktası** |5022- [Dağıtılmış kullanılabilirlik grubu uç nokta dinleyicisi](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)için bağlantı noktası.</br> Kullanılabilir herhangi bir bağlantı noktası olabilir.  
    |**Arka uç bağlantı noktası** | 5022- **bağlantı noktası**ile aynı değeri kullanın.
    |**Arka uç havuzu** |SQL Server örneklerine sahip sanal makineleri içeren havuz. 
-   |**Durum yoklaması** |Oluşturduğunuz araştırmayı seçin.
+   |**Durumu araştırması** |Oluşturduğunuz araştırmayı seçin.
    |**Oturum kalıcılığı** |Hiçbiri
    |**Boşta kalma zaman aşımı (dakika)** |Varsayılan (4)
    |**Kayan IP (doğrudan sunucu dönüşü)** | Etkin

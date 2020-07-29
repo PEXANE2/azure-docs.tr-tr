@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045689"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326061"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Sistem Durumu Denetimi (Önizleme) çözümü ile ortamınızı iyileştirme
 
@@ -203,7 +203,7 @@ Her öneri, neden önemli olduğuna ilişkin bir kılavuz içerir. BT hizmetleri
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Sistem durumu denetimi odak alanı önerilerini kullan
 
-Log Analytics bir sistem durumu denetimi çözümünü kullanabilmeniz için çözümün yüklü olması gerekir. Çözümleri yükleme hakkında daha fazla bilgi için bkz. [yönetim çözümü yükleme](../../azure-monitor/insights/solutions.md). Yüklendikten sonra, Azure portal çalışma alanınızın **genel bakış** sayfasında System Center Operations Manager sistem durumu denetimi kutucuğunu kullanarak önerilerin özetini görüntüleyebilirsiniz.
+Log Analytics bir sistem durumu denetimi çözümünü kullanabilmeniz için çözümün yüklü olması gerekir. Çözümleri yükleme hakkında daha fazla bilgi için bkz. [yönetim çözümü yükleme](./solutions.md). Yüklendikten sonra, Azure portal çalışma alanınızın **genel bakış** sayfasında System Center Operations Manager sistem durumu denetimi kutucuğunu kullanarak önerilerin özetini görüntüleyebilirsiniz.
 
 Altyapınız için özetlenen uyumluluk değerlendirmelerini görüntüleyin ve sonra öneriler ' e gidin.
 
@@ -229,7 +229,7 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
     ```
 
     >[!NOTE]
-    > Çalışma alanınız [yeni Log Analytics sorgu diline](../../azure-monitor/log-query/log-query-overview.md)yükseltilmişse yukarıdaki sorgu aşağıdaki gibi değişir.
+    > Çalışma alanınız [yeni Log Analytics sorgu diline](../log-query/log-query-overview.md)yükseltilmişse yukarıdaki sorgu aşağıdaki gibi değişir.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
     ```
 
     >[!NOTE]
-    > Çalışma alanınız [yeni Log Analytics sorgu diline](../../azure-monitor/log-query/log-query-overview.md)yükseltilmişse yukarıdaki sorgu aşağıdaki gibi değişir.
+    > Çalışma alanınız [yeni Log Analytics sorgu diline](../log-query/log-query-overview.md)yükseltilmişse yukarıdaki sorgu aşağıdaki gibi değişir.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,4 +295,5 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ayrıntılı System Center Operations Manager Sistem Durumu Denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [günlüklere bakın](../../azure-monitor/log-query/log-query-overview.md) .
+- Ayrıntılı System Center Operations Manager Sistem Durumu Denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [günlüklere bakın](../log-query/log-query-overview.md) .
+

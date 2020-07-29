@@ -4,12 +4,12 @@ description: Azure 'da uyarı konusuna genel bakış. Uyarılar, klasik uyarıla
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 37980f3cebdee2754a9741a8a45ec6932e7e98ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327132"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371609"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure'da uyarılara genel bakış 
 
@@ -178,7 +178,7 @@ Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Uyarı örneklerinizin rol tabanlı erişim denetimi (RBAC)
 
-Uyarı örneklerinin tüketimi ve yönetimi, kullanıcının, [katkıda](../../role-based-access-control/built-in-roles.md#monitoring-contributor) bulunan veya [izleme okuyucu](../../role-based-access-control/built-in-roles.md#monitoring-reader)için yerleşik RBAC rollerine sahip olmasını gerektirir. Bu roller her bir Azure Resource Manager kapsamında, abonelik düzeyinden kaynak düzeyindeki ayrıntılı atamalara kadar desteklenir. Örneğin, bir Kullanıcı yalnızca sanal makine için katkıda bulunan erişimi izmışsa `ContosoVM1` , bu kullanıcı yalnızca üzerinde oluşturulan uyarıları kullanabilir ve yönetebilir `ContosoVM1` .
+Uyarı örneklerinin tüketimine ve yönetimine yönelik olarak kullanıcının Azure yerleşik rollerinin, [katkıda](../../role-based-access-control/built-in-roles.md#monitoring-contributor) bulunan veya [izleme okuyucularından](../../role-based-access-control/built-in-roles.md#monitoring-reader)birine sahip olmasını gerektirir. Bu roller her bir Azure Resource Manager kapsamında, abonelik düzeyinden kaynak düzeyindeki ayrıntılı atamalara kadar desteklenir. Örneğin, bir Kullanıcı yalnızca sanal makine için katkıda bulunan erişimi izmışsa `ContosoVM1` , bu kullanıcı yalnızca üzerinde oluşturulan uyarıları kullanabilir ve yönetebilir `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Uyarı örneklerinizi programlama yoluyla yönetme
 
@@ -212,4 +212,3 @@ Uyarıları, [önemli](alerts-common-schema-definitions.md#essentials) alanları
 - [Azure 'da uyarı örneklerinizi yönetme](https://aka.ms/managing-alert-instances)
 - [Akıllı grupları yönetme](https://aka.ms/managing-smart-groups)
 - [Azure uyarıları fiyatlandırması hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/)
-

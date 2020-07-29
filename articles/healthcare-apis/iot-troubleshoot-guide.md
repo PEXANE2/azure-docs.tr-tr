@@ -8,18 +8,18 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: e74e3475256858955a5ab0dc99e7b858548e2485
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eff1272318413da7855134b0a8a44dd0a0711a6c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100420"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285586"
 ---
-# <a name="iot-connector-preview-troubleshooting-guide-and-how-to"></a>IoT Bağlayıcısı (Önizleme) sorun giderme kılavuzu ve nasıl yapılır
+# <a name="iot-connector-preview-troubleshooting-guide"></a>IoT Bağlayıcısı (Önizleme) sorun giderme kılavuzu
 
-Bu makalede, yaygın IoT Bağlayıcısı (Önizleme) hata iletileri ve koşulları sorunlarını nasıl giderebileceğinizi öğreneceksiniz.
+Bu makalede, yaygın IoT Bağlayıcısı (Önizleme) hata iletileri ve koşullarında sorun gidermeye yönelik adımlar sağlanmaktadır.  
 
-Ayrıca IoT Bağlayıcısı (Önizleme) JSON eşleme kopyalarını oluşturmayı öğreneceksiniz.
+Ayrıca, Azure portal dışında, görüntüleme ve arşivleme için IoT Bağlayıcısı (Önizleme) JSON eşleme dosyalarının kopyalarını oluşturmayı öğreneceksiniz.
 
 ## <a name="error-messages-and-fixes"></a>Hata iletileri ve düzeltmeler
 
@@ -59,11 +59,11 @@ Ayrıca IoT Bağlayıcısı (Önizleme) JSON eşleme kopyalarını oluşturmayı
 > [!NOTE]
 > Bu işlem, **"FHıR eşlemeyi yapılandırma"** JSON içeriğini kopyalamak/kaydetmek için de kullanılabilir.
 
-4. JSON içeriğini seçin ve bir kopyalama işlemi gerçekleştirin (örneğin: Ctrl + c ' yi seçin). 
+4. JSON içeriğini seçin ve bir kopyalama işlemi yapın (örneğin: Ctrl + c ' yi seçin). 
 
    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Bağlayıcısı" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
-5. Bir düzenleyici (örneğin: Visual Studio Code, Not defteri) içindeki yeni bir dosyaya bir yapıştırma işlemi gerçekleştirin ve dosyayı bir *. JSON uzantısıyla kaydedin.
+5. Bir düzenleyici içindeki yeni bir dosyaya (örneğin: Visual Studio Code, Notepad) bir yapıştırma işlemi yapın ve dosyayı bir *. JSON uzantısıyla kaydedin.
 
 > [!TIP]
 > IoT Bağlayıcısı için bir [Azure teknik destek](https://azure.microsoft.com/support/create-ticket/) bileti açarsanız, sorun giderme sürecine yardımcı olması için eşleme dosyalarınızın kopyalarını eklediğinizden emin olun.

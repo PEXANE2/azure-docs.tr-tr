@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: e24dcdc2de94fe73f6bb83dcc03bbd1139503784
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120764"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319975"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Market ölçüm hizmeti kimlik doğrulama stratejileri
 
@@ -52,29 +54,29 @@ Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory er
 
 |  **Parametre adı** |  **Gerekli**  |  **Açıklama**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `tenantId`         |   True         | Kayıtlı Azure AD uygulamasının kiracı KIMLIĞI.   |
+|  `tenantId`         |   Doğru         | Kayıtlı Azure AD uygulamasının kiracı KIMLIĞI.   |
 | | | |
 
 #### <a name="request-header"></a>*İstek üst bilgisi*
 
 |  **Üst bilgi adı**    |  **Gerekli**  |  **Açıklama**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Content-Type`     |   True         | İstekle ilişkilendirilmiş içerik türü. Varsayılan değer: `application/x-www-form-urlencoded`.  |
+|  `Content-Type`     |   Doğru         | İstekle ilişkilendirilmiş içerik türü. Varsayılan değer: `application/x-www-form-urlencoded`.  |
 | | | |
 
 #### <a name="request-body"></a>*İstek gövdesi*
 
 |  **Özellik adı**  |  **Gerekli**  |  **Açıklama**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | Verme türü. `client_credentials` adresini kullanın. |
-|  `Client_id`        |   True         | Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı.|
-|  `client_secret`    |   True         | Azure AD uygulamasıyla ilişkili gizli dizi.  |
-|  `Resource`         |   True         | Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` adresini kullanın. |
+|  `Grant_type`       |   Doğru         | Verme türü. `client_credentials` adresini kullanın. |
+|  `Client_id`        |   Doğru         | Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı.|
+|  `client_secret`    |   Doğru         | Azure AD uygulamasıyla ilişkili gizli dizi.  |
+|  `Resource`         |   Doğru         | Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` adresini kullanın. |
 | | | |
 
-#### <a name="response"></a>*Yanıtıyla*
+#### <a name="response"></a>*Response*
 
-|  **Adı**    |  **Tür**  |  **Açıklama**          |
+|  **Ad**    |  **Tür**  |  **Açıklama**          |
 |  ------------------ |--------------- | ----------------------  |
 |  `200 OK`     |   `TokenResponse`    | İstek başarılı oldu.  |
 | | | |

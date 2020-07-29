@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322967"
+ms.locfileid: "87335571"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -30,9 +30,9 @@ Her IoT hub'ı belirli bir katmanda belirli bir birim sayısıyla sağlanır. Ka
 
 Katman Ayrıca IoT Hub tüm işlemlerde zorladığı azaltma sınırlarını belirler.
 
-### <a name="iot-plug-and-play"></a>IoT Tak Çalıştır
+## <a name="iot-plug-and-play"></a>IoT Tak Çalıştır
 
-Genel Önizleme sırasında IoT Tak ve Kullan cihazları Arabirim başına ayrı mesajlar gönderir ve bu da ileti kotasından doğru olarak sayılan ileti sayısını artırabilir.
+IoT Tak ve Kullan cihazları, kök dahil olmak üzere her bir arabirim için en az bir telemetri iletisi gönderir ve bu, ileti kotasından doğru olarak sayılan ileti sayısını artırabilir.
 
 ## <a name="operation-throttles"></a>İşlem kısıtları
 
