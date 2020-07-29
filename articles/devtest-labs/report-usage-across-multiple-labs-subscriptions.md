@@ -3,16 +3,16 @@ title: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı
 description: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı rapor etme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8650244df4c8eb08d4ccc87b1e23fe1e3d047c54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287286"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Birden çok laboratuvarda ve aboneliğe ilişkin Azure DevTest Labs kullanımını raporla
 
-Çoğu büyük kuruluş, kullanımdaki eğilimleri ve aykırı değerleri görselleştirerek bu kaynaklarla daha etkili olması için kaynak kullanımını izlemek ister. Kaynak kullanımına göre laboratuvar sahipleri ve yöneticileri, [kaynak kullanımını ve maliyetlerini geliştirmek](https://docs.microsoft.com/azure/billing/billing-getting-started)için laboratuvarları özelleştirebilir. Azure DevTest Labs, kullanım desenlerine daha derin bakmak için laboratuvar başına kaynak kullanımını indirebilirsiniz. Bu kullanım desenleri, verimliliği artırmak için değişiklikleri Pinpoint 'e yardımcı olabilir. Çoğu kurum hem bireysel Laboratuvar kullanımı hem de [birden çok laboratuvarda ve aboneliğin](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)genel kullanımını ister. 
+Çoğu büyük kuruluş, kullanımdaki eğilimleri ve aykırı değerleri görselleştirerek bu kaynaklarla daha etkili olması için kaynak kullanımını izlemek ister. Kaynak kullanımına göre laboratuvar sahipleri ve yöneticileri, [kaynak kullanımını ve maliyetlerini geliştirmek](../cost-management-billing/manage/getting-started.md)için laboratuvarları özelleştirebilir. Azure DevTest Labs, kullanım desenlerine daha derin bakmak için laboratuvar başına kaynak kullanımını indirebilirsiniz. Bu kullanım desenleri, verimliliği artırmak için değişiklikleri Pinpoint 'e yardımcı olabilir. Çoğu kurum hem bireysel Laboratuvar kullanımı hem de [birden çok laboratuvarda ve aboneliğin](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)genel kullanımını ister. 
 
 Bu makalede, kaynak kullanım bilgilerinin birden çok laboratuvarda ve aboneliğe nasıl işleneceği açıklanır.
 
@@ -24,8 +24,8 @@ Bu bölümde, tek bir laboratuvarın kaynak kullanımının nasıl dışarı akt
 
 DevTest Labs kaynak kullanımını dışa aktarmaya başlamadan önce, kullanım verilerinin depolanacağı farklı dosyalara izin vermek için bir Azure depolama hesabı ayarlamanız gerekir. Verilerin dışarı aktarılmasını yürütmek için kullanılan iki yol vardır:
 
-* [DevTest Labs REST API](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell az. Resource Module WITH eylemi, laboratuvar kaynak KIMLIĞI ve gerekli parametreler ile [AzResourceAction komutunu çağırır](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) `exportResourceUsage` . 
+* [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
+* PowerShell az. Resource Module WITH eylemi, laboratuvar kaynak KIMLIĞI ve gerekli parametreler ile [AzResourceAction komutunu çağırır](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) `exportResourceUsage` . 
 
     [Kişisel verileri dışarı aktarma veya silme](personal-data-delete-export.md) makalesi, dışarı aktarılmış veriler hakkında ayrıntılı bilgi içeren bir örnek PowerShell betiği içerir. 
 
@@ -48,8 +48,8 @@ Bu dosyalar, laboratuvar adı, laboratuvar benzersiz KIMLIĞI, yürütülen tari
 
 Birden çok laboratuvarın kullanım bilgilerini dışarı aktarmak için kullanmayı düşünün 
 
-* [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/), PowerShell dahil olmak üzere birçok dilde kullanılabilir veya 
-* [Azure Otomasyonu runbook](https://docs.microsoft.com/azure/automation/)'u, dışa aktarma kodunu yazmak için PowerShell, Python veya özel bir grafik tasarlayıcı kullanın.
+* [Azure işlevleri](../azure-functions/index.yml), PowerShell dahil olmak üzere birçok dilde kullanılabilir veya 
+* [Azure Otomasyonu runbook](../automation/index.yml)'u, dışa aktarma kodunu yazmak için PowerShell, Python veya özel bir grafik tasarlayıcı kullanın.
 
 Bu teknolojileri kullanarak, belirli bir tarih ve saatte tek tek Laboratuvar dışarı aktarmaları gerçekleştirebilir. 
 
@@ -69,13 +69,13 @@ Bazı yaygın depolama çözümleri şunlardır: [SQL Server](https://azure.micr
 
 ## <a name="visualizing-data-and-gathering-insights"></a>Verileri görselleştirme ve öngörüleri toplama
 
-Kullanım verilerini göstermek ve kullanım verimliliğini doğrulamak için öngörüleri toplamak üzere uzun süreli depolamaya bağlanmak için tercih ettiğiniz bir veri görselleştirme aracını kullanın. Örneğin, kullanım verilerini düzenlemek ve göstermek için [Power BI](https://docs.microsoft.com/power-bi/power-bi-overview) kullanılabilir. 
+Kullanım verilerini göstermek ve kullanım verimliliğini doğrulamak için öngörüleri toplamak üzere uzun süreli depolamaya bağlanmak için tercih ettiğiniz bir veri görselleştirme aracını kullanın. Örneğin, kullanım verilerini düzenlemek ve göstermek için [Power BI](/power-bi/power-bi-overview) kullanılabilir. 
 
 Tek bir konum arabirimindeki kaynaklarınızı oluşturmak, bağlamak ve yönetmek için [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) kullanabilirsiniz. Daha fazla denetim gerekliyse, tek bir kaynak grubu içinde tek kaynak oluşturulabilir ve Data Factory hizmetten bağımsız olarak yönetilebilir.  
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Sistem kurulduktan ve veriler uzun süreli depolamaya taşındıktan sonra, bir sonraki adım, verilerin yanıt vermesi gereken sorularla karşılaşmaktır. Örneğin: 
+Sistem kurulduktan ve veriler uzun süreli depolamaya taşındıktan sonra, bir sonraki adım, verilerin yanıt vermesi gereken sorularla karşılaşmaktır. Örnek: 
 
 -   VM boyutu kullanımı nedir?
 

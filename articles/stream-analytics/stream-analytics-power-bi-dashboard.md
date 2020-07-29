@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/05/2019
-ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044150"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314229"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics ve Power BI: veri akışı verileri için gerçek zamanlı analiz panosu
 
@@ -23,11 +23,11 @@ Bu makale Stream Analytics [gerçek zamanlı sahtekarlık algılama](stream-anal
 Bu senaryoyu gösteren [bir video](https://www.youtube.com/watch?v=SGUpT-a99MA) izleyebilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
-* Bir Azure hesabı.
+* Azure hesabı.
 * Power BI Pro için bir hesap. Bir iş hesabı veya okul hesabı kullanabilirsiniz.
 * [Gerçek zamanlı sahtekarlık algılama](stream-analytics-real-time-fraud-detection.md) öğreticisinin tamamlanmış bir sürümü. Öğretici, kurgusal telefon araması meta verileri üreten bir uygulama içerir. Öğreticide bir olay hub 'ı oluşturur ve akış telefon araması verilerini Olay Hub 'ına gönderirsiniz. Sahte çağrıları algılayan bir sorgu (farklı konumlarda aynı anda aynı sayıdan gelen çağrılar) yazarsınız. 
 
@@ -56,7 +56,7 @@ Gerçek zamanlı sahtekarlık algılama öğreticisinde, çıkış Azure Blob de
 
 4. **Yetkilendir**'i seçtiğinizde bir açılır pencere görünür ve Power BI hesabınızda kimlik doğrulaması için sizden kimlik bilgilerini sağlamanız istenir. Yetkilendirme başarılı olduktan sonra **Kaydet** seçeneğine tıklayarak ayarları kaydedin.
 
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’a tıklayın.
 
 Veri kümesi aşağıdaki ayarlarla oluşturulur:
 
@@ -163,7 +163,7 @@ Akış Analizi işiniz, gelen akıştaki sahte çağrılar aramaya başlar. İş
 
     ![Yeni kutucuk için başlık ve alt başlık](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
-9. **Uygula**'ya tıklayın.
+9. **Uygula**’ya tıklayın.
 
     Artık bir sahtekarlık sayaçından sahipsiniz!
 
@@ -184,16 +184,6 @@ Akış Analizi işiniz, gelen akıştaki sahte çağrılar aramaya başlar. İş
 
      ![Sahte çağrılar için iki kutucuk gösteren Power BI panosu tamamlandı](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
-
-## <a name="learn-more-about-power-bi"></a>Power BI hakkında daha fazla bilgi edinin
-
-Bu öğreticide, bir veri kümesi için yalnızca birkaç görselleştirme türü oluşturma gösterilmektedir. Power BI, kuruluşunuz için diğer müşteri iş zekası araçları oluşturmanıza yardımcı olabilir. Daha fazla fikir için aşağıdaki kaynaklara bakın:
-
-* Power BI panosunun başka bir örneği için, [kullanmaya başlama Power BI](https://youtu.be/L-Z_6P56aas?t=1m58s) videosunu izleyin.
-* Akış Analizi iş çıkışını Power BI ve Power BI grupları kullanarak yapılandırma hakkında daha fazla bilgi için [Stream Analytics çıkışları](stream-analytics-define-outputs.md) makalesinin [Power BI](stream-analytics-define-outputs.md#power-bi) bölümünü gözden geçirin. 
-* Power BI kullanımı hakkında daha fazla bilgi için bkz. [Power BI panolar](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
-
-
 ## <a name="learn-about-limitations-and-best-practices"></a>Sınırlamalar ve en iyi uygulamalar hakkında bilgi edinin
 Şu anda, Power BI saniyede kabaca bir kez çağrılabilir. Akış görselleri 15 KB 'lik paketleri destekler. Bunun ötesinde, akış görselleri başarısız olur (ancak gönderim çalışmaya devam eder). Bu sınırlamalar nedeniyle, Azure Stream Analytics önemli bir veri yükleme azalmasıyla ilgili olarak en doğal olarak Power BI. Veri gönderimi 'nin saniyede en çok bir gönderim olduğundan ve sorgunuzun işleme gereksinimleri içinde yer aldığından emin olmak için, atlayan bir pencere veya Hoppıng penceresi kullanmanızı öneririz.
 
@@ -201,7 +191,7 @@ Aşağıdaki denklemi, pencerenize saniye cinsinden vermek için değeri hesapla
 
 ![Saniye cinsinden pencere sağlamak için değer hesaplama denklemi](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Örneğin:
+Örnek:
 
 * Tek saniyelik aralıklarla veri gönderen 1.000 cihazlardır.
 * Saat başına 1.000.000 satırı destekleyen Power BI Pro SKU 'SU kullanıyorsunuz.
@@ -234,12 +224,9 @@ Benzer şekilde, bir iş, belirtecin süresi dolduktan sonra başlarsa bir hata 
 
 Yetkilendirme Power BI ile yenilendikten sonra, sorunun çözümlendiğini yansıtmak için yetkilendirme alanında yeşil bir uyarı belirir.
 
-## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
-* [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
+* [Stream Analytics çıkışları](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics yönetim REST API başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)

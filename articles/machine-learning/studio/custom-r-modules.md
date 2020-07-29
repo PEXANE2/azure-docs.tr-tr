@@ -1,6 +1,5 @@
 ---
-title: Özel R modülleri oluşturun & dağıtın
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): özel R modülleri oluşturma & dağıtma-Azure'
 description: ML Studio (klasik) ' de özel R modüllerini nasıl yazıp dağıtacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4b4251a426d33c0a3b8cc7584d2bf6375dcd0f79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957333"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287237"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için özel R modülleri tanımlama (klasik)
+# <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio için özel R modülleri tanımlama (klasik)
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
 
 Bu konu başlığı altında, özel bir R Studio (klasik) yazmak ve dağıtmak açıklanmaktadır. Özel R modüllerinin ne olduğunu ve bunları tanımlamak için hangi dosyaların kullanılacağını açıklar. Modül tanımlayan dosyaların nasıl oluşturulduğunu ve bir Machine Learning çalışma alanında dağıtım için modülün nasıl kaydettirildiğini gösterir. Özel modülün tanımında kullanılan öğeler ve öznitelikler daha ayrıntılı olarak açıklanmıştır. Yardımcı işlevsellik ve dosyaları kullanma ve birden çok çıkış de ele alınmıştır. 
 

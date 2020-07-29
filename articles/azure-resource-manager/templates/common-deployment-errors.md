@@ -4,12 +4,12 @@ description: Azure 'a Azure Resource Manager kullanarak kaynak dağıtırken yay
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 652e4ec3c7f0de982b973733d75d736949b97bcc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055673"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374006"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager'la yaygın Azure dağıtım hatalarını giderme
 
@@ -78,7 +78,7 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | SubnetsNotInSameVnet | Bir sanal makine yalnızca bir sanal ağa sahip olabilir. Çeşitli NIC 'ler dağıtıldığında aynı sanal ağa ait olduklarından emin olun. | [Birden çok NIC](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotRegistered | Ağ kaynaklarını dağıttığınızda, Microsoft. Network kaynak sağlayıcısı abonelikte otomatik olarak kaydedilir. Bazen otomatik kayıt zaman içinde tamamlanmaz. Bu aralıklı hatadan kaçınmak için, dağıtımdan önce Microsoft. Network kaynak sağlayıcısını kaydedin. | [Kaydı çözümle](error-register-resource-provider.md) |
 | Templateresourcecırculardependency | Gereksiz bağımlılıkları kaldırın. | [Döngüsel bağımlılıkları çözümle](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Tek bir dağıtım için kaynak gruplarının sayısını azaltın. | [Çapraz kaynak grubu dağıtımı](cross-resource-group-deployment.md) |
+| TooManyTargetResourceGroups | Tek bir dağıtım için kaynak gruplarının sayısını azaltın. | [Çapraz kapsam dağıtımı](cross-scope-deployment.md) |
 
 ## <a name="find-error-code"></a>Hata kodunu bul
 

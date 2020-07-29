@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a40c5512da40ede84251ec16345a3957c391bb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965692"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287371"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,11 +48,11 @@ Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin da�
 
 ||[Azure paylaşılan diskleri](../../../virtual-machines/windows/disks-shared.md)|[Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Depolama Alanları Doğrudan (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**En düşük işletim sistemi sürümü**| Windows Server 2016|Windows Server 2012|Windows Server 2016|
-|**En düşük SQL Server sürümü**|SQL Server 2019|SQL Server 2012|SQL Server 2016|
+|**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
+|**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
 |**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Hayır|Hayır|Evet |
-|**Azure Blob önbelleği**|Hayır|Hayır|Evet|
+|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
+|**Azure Blob önbelleği**|Hayır|Hayır|Yes|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
 
@@ -60,18 +60,18 @@ Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabile
 
 [Azure paylaşılan diskler](../../../virtual-machines/windows/disks-shared.md) , [Azure yönetilen disklerinin](../../../virtual-machines/windows/managed-disks-overview.md)bir özelliğidir. Windows Server Yük Devretme Kümelemesi, yük devretme kümesi örneğiyle Azure Paylaşılan diskleri kullanmayı destekler. 
 
-**Desteklenen işletim sistemi**: Windows Server 2019   
-**Desteklenen SQL sürümü**: SQL Server 2019   
+**Desteklenen işletim sistemi**: tümü   
+**Desteklenen SQL sürümü**: tümü     
 
 **Avantajlar**: 
 - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) mimarisini olduğu gibi tutarken Azure 'a geçiş yapmak isteyen uygulamalar için faydalıdır. 
 - , SCSI kalıcı ayırmaları (SCSI PR) desteği nedeniyle kümelenmiş uygulamaları Azure 'a geçirebilirler. 
 - SQL Server 2019 için tüm SQL Server ve paylaşılan Azure Ultra Disk Depolama sürümleri için paylaşılan Azure Premium SSD destekler. 
 - Paylaşılan bir depolama havuzu oluşturmak için tek bir paylaşılan disk kullanabilir veya birden çok paylaşılan disk oluşturabilirsiniz. 
+- FILESTREAM 'i destekler.
 
 
 **Sınırlamalar**: 
-- Önizleme aşamasında yalnızca SQL Server 2019 ve Windows Server 2019 için kullanılabilir. 
 - Sanal makinelerin aynı Kullanılabilirlik kümesine ve yakınlık yerleşimi grubuna yerleştirilmesi gerekir.
 - Kullanılabilirlik alanları desteklenmiyor.
 - Premium SSD disk önbelleğe alma desteklenmez.

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025090"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373156"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -105,7 +105,19 @@ Yönetilen veya şirket içinde barındırılan bir sürümü kullanıyor olman�
 
 API, [GitHub deposunun wiki bölümünde][2]belgelenmiştir. Ortamlar arasında portal içeriğinin (örneğin, bir test ortamından üretim ortamına) otomatik olarak geçirilmesi için kullanılabilir. Bu işlem hakkında daha fazla bilgi için GitHub 'daki [Bu belge makalesine](https://aka.ms/apimdocs/migrateportal) daha fazla bilgi edinebilirsiniz.
 
+### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>Nasıl yaparım?, yönetilene şirket içinde barındırılan sürüme geçiş mi?
+
+[GitHub 'daki geliştirici portalı deposunun wiki bölümündeki][2]ayrıntılı makaleye bakın.
+
+### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>Tek bir API Management hizmetinde birden çok geliştirici portalı olabilir mi?
+
+Bir yönetilen portala ve birden çok şirket içinde barındırılan portala sahip olabilirsiniz. Tüm portalların içeriği aynı API Management hizmetinde depolanır, bu nedenle aynı olur. Portalların görünüm ve işlevselliğini birbirinden ayırt etmek istiyorsanız, bu dosyaları, örneğin URL 'sini temel alarak çalışma zamanında sayfaları dinamik olarak özelleştiren kendi özel pencere arkadaşlarınızla birlikte barındırabilirsiniz.
+
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Portal Azure Resource Manager şablonları destekliyor mu ve/veya API Management DevOps kaynak seti ile uyumlu mı?
+
+Hayır.
+
+### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>Portalın içeriği API Management yedekleme/geri yükleme işleviyle mi kaydedildi?
 
 Hayır.
 

@@ -6,11 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 3d86c76472580567c95d285924761e1714465d6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 390f44ffebb6531fde2f819fad0d4e9399cba218
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768750"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287524"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda Gelişmiş tehdit koruması-tek sunucu
 
@@ -19,7 +20,7 @@ PostgreSQL için Azure Veritabanı Gelişmiş Tehdit Koruması, veritabanların�
 > [!NOTE]
 > Gelişmiş tehdit koruması genel önizlemede.
 
-Tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birleşik bir paket olan Gelişmiş tehdit koruması (ATP) sunumunun bir parçasıdır. Gelişmiş tehdit korumasına [Azure Portal](https://portal.azure.com) veya [REST API](/rest/api/postgresql/serversecurityalertpolicies)aracılığıyla erişilebilir ve yönetilebilir. Özelliği, Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için kullanılabilir.
+Tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birleşik bir paket olan Gelişmiş tehdit koruması (ATP) sunumunun bir parçasıdır. Gelişmiş tehdit korumasına [Azure Portal](https://portal.azure.com) veya [REST API](/rest/api/postgresql)aracılığıyla erişilebilir ve yönetilebilir. Özelliği, Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için kullanılabilir.
 
 > [!NOTE]
 > Gelişmiş tehdit koruması özelliği şu Azure Kamu ve bağımsız bulut **bölgelerinde kullanılamaz:** US gov Teksas, US gov Arizona, US gov Iowa, US, gov Virginia, US DOD Doğu, US DOD orta, Almanya Orta, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için lütfen [bölgeye göre sunulan ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.

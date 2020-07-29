@@ -3,12 +3,13 @@ title: Azure App Services performansını izleme | Microsoft Docs
 description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 042dd67c0e1e5a0ba2f81d5678e191dbfdd60a43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067883"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373173"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -58,7 +59,7 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
  
  Her yol için toplanan verilerin bir özeti aşağıda verilmiştir:
         
-| Veri | .NET temel koleksiyonu | Önerilen .NET koleksiyonu |
+| Veriler | .NET temel koleksiyonu | Önerilen .NET koleksiyonu |
 | --- | --- | --- |
 | CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Yes |Yes |
 | Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Yes |Yes |
@@ -405,10 +406,11 @@ PHP ve WordPress siteleri desteklenmez. Şu anda bu iş yüklerinin sunucu taraf
 Kodsuz kullanacaksınız izleme kullanıldığında yalnızca bağlantı dizesi gereklidir. Bununla birlikte, el ile izleme gerçekleştirilirken SDK 'nın eski sürümleriyle geriye dönük uyumluluğu korumak için de izleme anahtarını ayarlamayı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Canlı uygulamanızda profil oluşturucuyu çalıştırın](../app/profiler.md).
+* [Canlı uygulamanızda profil oluşturucuyu çalıştırın](./profiler.md).
 * [Azure İşlevleri](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights ile Azure İşlevlerini izleyin
 * Application Insights’a gönderilmek üzere [Azure tanılamayı etkinleştirin](../platform/diagnostics-extension-to-application-insights.md).
 * Hizmetinizin kullanılabilir ve yanıt verir durumda oluğundan emin olmak için [hizmet durumu ölçümlerini izleyin](../platform/data-platform.md).
 * İşletimsel olaylar gerçekleştiğinde ya da ölçümler bir eşiği aştığında [uyarı bildirimleri alın](../platform/alerts-overview.md).
 * Bir web sayfasını ziyaret eden tarayıcılardan istemci telemetrisi toplamak istiyorsanız [JavaScript uygulamaları ve web sayfaları için Application Insights](javascript.md)’ı kullanın.
 * Sitenizin kapalı olması durumunda uyarı almak istiyorsanız [Kullanılabilirlik web testleri](monitor-web-app-availability.md) ayarlayın.
+

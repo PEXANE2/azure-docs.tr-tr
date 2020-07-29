@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 77cbd5a3c293b137f49a11263580ef45407c6c2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3dea4c0f63b6c4e76c2289e6c3d930ea32cf2880
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090476"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373224"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Depolama hesabı anahtarlarını Key Vault ve Azure PowerShell yönetme
 
@@ -99,7 +99,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Depolama hesabınıza Key Vault erişim izni verin
 
-Key Vault depolama hesabı Anahtarlarınıza erişip yönetebilmeniz için depolama hesabınıza erişim yetkisi vermelisiniz. Key Vault uygulama, depolama hesabınıza yönelik anahtarları *listelemek* ve yeniden *oluşturmak* için izinler gerektirir. Bu izinler, yerleşik RBAC rol [depolama hesabı anahtar operatörü hizmeti rolü](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)aracılığıyla etkinleştirilir. 
+Key Vault depolama hesabı Anahtarlarınıza erişip yönetebilmeniz için depolama hesabınıza erişim yetkisi vermelisiniz. Key Vault uygulama, depolama hesabınıza yönelik anahtarları *listelemek* ve yeniden *oluşturmak* için izinler gerektirir. Bu izinler, Azure yerleşik rol [depolama hesabı anahtar Işletmeni hizmeti rolü](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)aracılığıyla etkinleştirilir. 
 
 Bu rolü, Azure PowerShell [New-Azroleatama](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) cmdlet 'ini kullanarak, kapsamı depolama hesabınızla sınırlayan Key Vault hizmet sorumlusuna atayın.
 

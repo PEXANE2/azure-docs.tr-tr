@@ -3,14 +3,15 @@ title: CLı kullanarak Linux VM 'lerini adanmış konaklara dağıtma
 description: Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtın.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: dc772368de1a0f7d8a7d4f44b47ecafda70f0a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9435764d99476584680734817d55086f47e8216b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714857"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373632"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
  

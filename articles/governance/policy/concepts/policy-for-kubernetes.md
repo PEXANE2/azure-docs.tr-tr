@@ -3,12 +3,12 @@ title: Önizleme-Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin. Bu bir önizleme özelliğidir.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373633"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373768"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes kümeleri için Azure Ilkesini anlama (Önizleme)
 
@@ -20,7 +20,7 @@ Azure Ilkesi, [Açık Ilke Aracısı](https://www.openpolicyagent.org/) (Opa) i�
 
 Kubernetes için Azure Ilkesi aşağıdaki küme ortamlarını destekler:
 
-- [Azure Kubernetes Hizmeti (AKS)](../../../aks/intro-kubernetes.md)
+- [Azure Kubernetes Service (AKS)](../../../aks/intro-kubernetes.md)
 - [Azure Arc özellikli Kubernetes](../../../azure-arc/kubernetes/overview.md)
 - [AKS altyapısı](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
@@ -32,7 +32,7 @@ Kubernetes için Azure Ilkesi aşağıdaki küme ortamlarını destekler:
 Azure Ilkesini Kubernetes kümenizle etkinleştirmek ve kullanmak için aşağıdaki işlemleri gerçekleştirin:
 
 1. Kubernetes kümenizi yapılandırın ve eklentiyi yükledikten sonra:
-   - [Azure Kubernetes Hizmeti (AKS)](#install-azure-policy-add-on-for-aks)
+   - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
    - [Azure Arc özellikli Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AKS altyapısı](#install-azure-policy-add-on-for-aks-engine)
 
@@ -203,7 +203,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Eklenti için bağlantı noktalarını açın. Azure Ilke eklentisi bu etki alanlarını ve bağlantı noktalarını, ilke tanımlarını ve atamalarını getirmek ve kümenin uyumluluğunu Azure Ilkesine geri bildirmek için kullanır.
 
-   |Domain |Bağlantı noktası |
+   |Etki alanı |Bağlantı noktası |
    |---|---|
    |`gov-prod-policy-data.trafficmanager.net` |`443` |
    |`raw.githubusercontent.com` |`443` |
@@ -371,9 +371,9 @@ Kubernetes yönetimine yönelik Azure Ilke dil yapısı, mevcut ilke tanımları
 
 İlke tanımındaki _details. constraintTemplate_ ve _details. Constraint_ özelliklerinin bir parçası olarak Azure Ilkesi, bu [customresourcedefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) URI 'lerini eklentiye geçirir. Rego, Kubernetes kümesine yönelik bir isteği doğrulamak için OPA ve Gatekeeper desteğinin desteklediği dildir. Azure Ilkesi, Kubernetes yönetimi için mevcut bir standardı destekleyerek, mevcut kuralları yeniden kullanmayı ve birleştirilmiş bir bulut uyumluluk raporlama deneyimi için bunları Azure Ilkesiyle eşleştirmeye olanak tanır. Daha fazla bilgi için bkz. [rego nedir?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
-## <a name="assign-a-built-in-policy-definition"></a>Yerleşik bir ilke tanımı atama
+## <a name="assign-a-built-in-policy-definition"></a>Yerleşik ilke tanımı atama
 
-Kubernetes kümenize bir ilke tanımı atamak için, uygun rol tabanlı erişim denetimi (RBAC) ilkesi atama işlemlerine atanmalısınız. Yerleşik RBAC rolleri **kaynak Ilkesi katılımcısı** ve **sahibi** bu işlemlere sahiptir. Daha fazla bilgi için bkz. [Azure Ilkesinde RBAC izinleri](../overview.md#rbac-permissions-in-azure-policy).
+Kubernetes kümenize bir ilke tanımı atamak için, uygun rol tabanlı erişim denetimi (RBAC) ilkesi atama işlemlerine atanmalısınız. Azure yerleşik rolleri **kaynak Ilkesi katılımcısı** ve **sahibi** bu işlemlere sahiptir. Daha fazla bilgi için bkz. [Azure Ilkesinde RBAC izinleri](../overview.md#rbac-permissions-in-azure-policy).
 
 Aşağıdaki adımlarla Azure portal kullanarak kümenizi yönetmeye yönelik yerleşik ilke tanımlarını bulun:
 
@@ -405,7 +405,7 @@ Aşağıdaki adımlarla Azure portal kullanarak kümenizi yönetmeye yönelik ye
 
    - Kubernetes ad alanlarını ilke değerlendirmesinden dışlamak için, parametre **ad uzayı dışlamaları**içindeki ad alanlarının listesini belirtin. Şunları hariç tutmak önerilir: _KUVE sistem_, _Gatekeeper-System_ve _Azure-Arc_.
 
-1. **İncele ve oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
 Alternatif olarak, bir Kubernetes ilkesini bulmak ve atamak için [Ilke atama-Portal](../assign-policy-portal.md) hızlı başlangıcı ' nı kullanın. ' Denetim VM 'leri ' örneği yerine bir Kubernetes ilke tanımı arayın.
 
@@ -430,7 +430,7 @@ Her 15 dakikada bir eklenti, kümenin tam taramasını çağırır. Kümede değ
 > [!NOTE]
 > Kubernetes kümeleriniz için Azure Ilkesindeki her uyumluluk raporu, son 45 dakika içindeki tüm ihlalleri içerir. Zaman damgası, bir ihlalin ne zaman oluştuğunu gösterir.
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Bir Kubernetes denetleyicisi/kapsayıcısı olarak, _Azure-Policy_ ve _Gatekeeper_ Pod, Kubernetes kümesinde Günlükler tutar. Günlükler, Kubernetes kümesinin **Öngörüler** sayfasında gösterilebilir.
 Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici Ile Kubernetes küme Performansınızı izleme](../../../azure-monitor/insights/container-insights-analyze.md).

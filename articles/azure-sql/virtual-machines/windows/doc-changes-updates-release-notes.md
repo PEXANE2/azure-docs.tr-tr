@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a09a30bafa5bc9ef052b14cad29e000bbd09a48
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503821"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287377"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için belge değişiklikleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | Değişiklikler | Ayrıntılar |
 | --- | --- |
 | **Dağıtılmış ağ adı (DNN)** | Windows Server 2016 + üzerinde SQL Server 2019, artık Azure Load Balancer kullanmak yerine [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) kullanarak yük devretme kümesi örneğinize (FCI) yönlendirme desteğini önizleyecektir. Bu destek, Azure 'da yüksek kullanılabilirlik (HA) çözümünüze bağlanmanızı basitleştirir ve kolaylaştırır. | 
-| **Azure paylaşılan diskler ile FCı** | Windows Server 2016 + sanal makinesi üzerinde SQL Server 2019 ile [Azure Paylaşılan disklerini](failover-cluster-instance-azure-shared-disks-manually-configure.md) kullanarak [Yük devretme kümesi örneğinizi (FCI)](failover-cluster-instance-overview.md) dağıtmak mümkündür. |
+| **Azure paylaşılan diskler ile FCı** | Artık [Yük devretme kümesi örneğinizi (FCı)](failover-cluster-instance-overview.md) [Azure paylaşılan diskler](failover-cluster-instance-azure-shared-disks-manually-configure.md)' i kullanarak dağıtmak mümkündür. |
 | **FCı belgeleri yeniden düzenlendi** | [Azure VM 'lerinde SQL Server yük devretme kümesi örneklerinin](failover-cluster-instance-overview.md) etrafındaki belgeler yeniden yazıldı ve açıklık için yeniden düzenlendi. [Küme yapılandırması en iyi uygulamaları](hadr-cluster-best-practices.md), bir [SQL Server FCI için bir sanal makinenin](failover-cluster-instance-prepare-vm.md)hazırlanması ve [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md)nasıl yapılandırılacağı gibi bazı yapılandırma içeriğini ayırdık. | 
 | &nbsp; | &nbsp; |
 

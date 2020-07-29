@@ -7,11 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/09/2020
 tags: connectors
-ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609546"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286640"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps'ten HTTP veya HTTPS üzerinden hizmet uç noktalarını çağırma
 
@@ -23,7 +24,7 @@ ms.locfileid: "84609546"
 
 Bu makalede mantıksal uygulamanızın iş akışına bir HTTP tetikleyicisi veya eyleminin nasıl ekleneceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -43,7 +44,7 @@ Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrıs�
 
 1. Tasarımcı 'nın arama kutusunda **yerleşik**' i seçin. Arama kutusuna `http` filtreniz olarak yazın. **Tetikleyiciler** listesinden **http** tetikleyicisi ' ni seçin.
 
-   ![HTTP tetikleyicisi seçin](./media/connectors-native-http/select-http-trigger.png)
+   ![HTTP tetikleyicisi'ni seçin](./media/connectors-native-http/select-http-trigger.png)
 
    Bu örnek, adımın daha açıklayıcı bir ada sahip olması için tetikleyiciyi "HTTP tetikleyicisi" olarak yeniden adlandırır. Ayrıca, örnek daha sonra bir HTTP eylemi ekler ve her iki ad de benzersiz olmalıdır.
 
@@ -161,7 +162,7 @@ Aşağıda, temel alınan iş akışı tanımında HTTP eyleminin JSON tanımın
 
 ## <a name="asynchronous-request-response-behavior"></a>Zaman uyumsuz istek-yanıt davranışı
 
-Varsayılan olarak, Azure Logic Apps içindeki tüm HTTP tabanlı eylemler standart [zaman uyumsuz işlem modelini](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)izler. Bu model bir HTTP eylemi bir uç nokta, hizmet, sistem veya API 'ye bir istek çağırdıktan sonra, alıcı hemen ["202 kabul edildi"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) yanıtı döndürdüğünü belirtir. Bu kod, alıcının isteği kabul ettiğini ancak işlemeyi bitirmediğini onaylar. Yanıt, `location` çağıran işlemeyi durdurmadan ve ["200 Tamam"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) başarı yanıtını ya da 202 olmayan diğer yanıtı döndürünceye kadar, çağıranın zaman uyumsuz isteğin durumunu yoklamak veya denetlemek için kullanabileceği, URL 'YI ve yenileme kimliğini belirten bir üst bilgi içerebilir. Ancak çağıranın işlemin tamamlanmasını beklemek zorunda değildir ve sonraki eylemi çalıştırmaya devam edebilir. Daha fazla bilgi için bkz. [zaman uyumsuz mikro hizmet tümleştirmesi mikro hizmet bağımsız çalışma sınırı zorlar](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+Varsayılan olarak, Azure Logic Apps içindeki tüm HTTP tabanlı eylemler standart [zaman uyumsuz işlem modelini](/azure/architecture/patterns/async-request-reply)izler. Bu model bir HTTP eylemi bir uç nokta, hizmet, sistem veya API 'ye bir istek çağırdıktan sonra, alıcı hemen ["202 kabul edildi"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) yanıtı döndürdüğünü belirtir. Bu kod, alıcının isteği kabul ettiğini ancak işlemeyi bitirmediğini onaylar. Yanıt, `location` çağıran işlemeyi durdurmadan ve ["200 Tamam"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) başarı yanıtını ya da 202 olmayan diğer yanıtı döndürünceye kadar, çağıranın zaman uyumsuz isteğin durumunu yoklamak veya denetlemek için kullanabileceği, URL 'YI ve yenileme kimliğini belirten bir üst bilgi içerebilir. Ancak çağıranın işlemin tamamlanmasını beklemek zorunda değildir ve sonraki eylemi çalıştırmaya devam edebilir. Daha fazla bilgi için bkz. [zaman uyumsuz mikro hizmet tümleştirmesi mikro hizmet bağımsız çalışma sınırı zorlar](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
 
 * Mantıksal uygulama tasarımcısında, HTTP eyleminin, ancak tetiklemenin, varsayılan olarak etkinleştirilen bir **zaman uyumsuz model** ayarı vardır. Bu ayar, çağıranın işlemin bitmesini beketmediğini ve bir sonraki eyleme geçebilir ancak işlem duraklarına kadar durumu denetlemeye devam edebilir. Devre dışı bırakılırsa, bu ayar çağıranın bir sonraki eyleme geçmeden önce işlemin tamamlanmasını beklediğini belirtir.
 
@@ -273,3 +274,4 @@ Bu bilgileri döndüren bir HTTP tetikleyicisinden veya eylemden çıktılar hak
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin
+

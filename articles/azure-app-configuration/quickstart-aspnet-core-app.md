@@ -8,17 +8,18 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 069bce6f2f8e46679cbc82dd92c9fd73bfecde85
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027724"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373530"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
 
 Bu hızlı başlangıçta, bir ASP.NET Core uygulaması için uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek üzere Azure Uygulama yapılandırması 'nı kullanacaksınız. ASP.NET Core, bir uygulama tarafından belirtilen bir veya daha fazla veri kaynağından ayarları kullanarak tek bir anahtar-değer tabanlı yapılandırma nesnesi oluşturur. Bu veri kaynakları *yapılandırma sağlayıcıları*olarak bilinir. Uygulama yapılandırmasının .NET Core istemcisi bir yapılandırma sağlayıcısı olarak uygulandığından, hizmet başka bir veri kaynağı gibi görünür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -36,7 +37,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core uygulaması için uygulama ayarları
     |---|---|
     | TestApp: ayarlar: BackgroundColor | Beyaz |
     | TestApp: ayarlar: FontSize | 24 |
-    | TestApp: ayarlar: FontColor | Siyah |
+    | TestApp: ayarlar: FontColor | Siyahi |
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından veriler |
 
     **Etiket** ve **içerik türü** şimdilik boş bırakın. **Uygula**’yı seçin.
@@ -241,6 +242,8 @@ Azure Cloud Shell çalışıyorsanız, *Web önizleme* düğmesini ve ardından 
 ![Web önizlemesi düğmesini bulun](./media/quickstarts/cloud-shell-web-preview.png)
 
 Önizleme için bağlantı noktasını yapılandırmak isteyip istemediğiniz sorulduğunda, ' 5000 ' girin ve *Aç ve araştır*' ı seçin.  Web sayfası "Azure Uygulama yapılandırmasından verileri" okuyacaktır.
+
+![Hızlı başlangıç uygulaması başlatılıyor](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

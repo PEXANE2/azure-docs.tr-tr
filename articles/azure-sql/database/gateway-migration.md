@@ -10,15 +10,15 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084979"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373496"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure altyapısı gelişdiğinde, Microsoft, olası en iyi müşteri deneyimini sağlamamızı sağlamak için donanımı düzenli olarak yenileyecek. Önümüzdeki aylarda, daha yeni donanım oluşturma, trafiği geçirme ve son olarak bazı bölgelerde daha eski donanımlar üzerinde oluşturulmuş ağ geçitlerinin yetkisini alma planlıyoruz.  
 
@@ -26,7 +26,20 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 
 ## <a name="status-updates"></a>Durum güncelleştirmeleri
 
-# <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
+# <a name="in-progress"></a>[Devam ediyor](#tab/in-progress-ip)
+### <a name="september-2020"></a>Eylül 2020
+
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
+
+- Kuzey Avrupa: 13.74.104.113 
+- Batı ABD2:40.78.248.10 
+- Batı Avrupa: 52.236.184.163 
+- Orta Güney ABD: 20.45.121.1, 20.49.88.1 
+
+Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır:
+- Japonya Doğu: 40.79.184.8, 40.79.192.5
+
+Bu SQL ağ geçitleri, 1 Eylül 2020 ' de müşteri trafiğini kabul etmeye başlar. 
 
 ### <a name="august-2020"></a>Ağustos 2020
 
@@ -43,11 +56,11 @@ Bu SQL ağ geçitleri, 10 Ağustos 2020 ' de müşteri trafiğini kabul etmeye b
 Aşağıdaki ağ geçidi geçişleri tamamlanmıştır: 
 
 ### <a name="october-2019"></a>Ekim 2019
-- Güney Brezilya
+- Brezilya Güney
 - Batı ABD
-- Batı Avrupa
+- West Europe
 - Doğu ABD
-- Orta ABD
+- Central US
 - Güneydoğu Asya
 - Orta Güney ABD
 - Kuzey Avrupa

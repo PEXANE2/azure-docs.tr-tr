@@ -3,13 +3,13 @@ title: Azure Application Insights geçersiz kılma varsayılan SDK uç noktalar�
 description: Azure Kamu gibi bölgeler için varsayılan Azure Izleyici Application Insights SDK uç noktalarını değiştirin.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.custom: references_regions
-ms.openlocfilehash: 50a072cd7e509642c36c783e3cc0fd78e4d5adc0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: references_regions, devx-track-javascript
+ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092873"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373139"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılmak Application Insights
 

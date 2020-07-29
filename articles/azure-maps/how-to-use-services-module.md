@@ -8,11 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6e9d1f35d021c3381f9c2887dfb1c150bb720871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 69ca43021ff2c45733375e14d87d0ed65d8962e9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804665"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287064"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure haritalar Hizmetleri modülünü kullanma
 
@@ -28,7 +30,7 @@ Azure Haritalar Web SDK 'Sı bir *hizmet modülü*sağlar. Bu modül, JavaScript
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - Alternatif olarak, Azure Maps web SDK kaynak kodu için hizmetler modülünü [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM paketini kullanarak yerel olarak yükleyin ve ardından uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir. Şu komutu kullanın:
+    - Alternatif olarak, Azure Maps web SDK kaynak kodu için hizmetler modülünü [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM paketini kullanarak yerel olarak yükleyin ve ardından uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir. Şu komutu çalıştırın:
     
         > **npm install azure-maps-rest**
     

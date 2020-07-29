@@ -3,22 +3,22 @@ title: Azure DevTest Labs bir sanal makineye bir veri diski iliştirme veya ayı
 description: Azure DevTest Labs bir sanal makineye bir veri diski eklemeyi veya kullanımdan çıkarmayı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 164c2335f0aadc08a447dd61e259786d5bfb104d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5faae56307639e369130ec7443c8bceab2f794d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482981"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287571"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs bir sanal makineye bir veri diski iliştirme veya ayırma
-[Azure yönetilen diskler](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) , sanal makine veri diskleriyle ilişkili depolama hesaplarını yönetir. Bir Kullanıcı bir VM 'ye yeni bir veri diski iliştirir, gereken disk türünü ve boyutunu belirtir ve Azure, diski otomatik olarak oluşturur ve yönetir. Veri diski, VM 'den ayrılabilir ve daha sonra aynı VM 'ye yeniden eklenebilir ya da aynı kullanıcıya ait farklı bir VM 'ye iliştirilebilir.
+[Azure yönetilen diskler](../virtual-machines/windows/managed-disks-overview.md) , sanal makine veri diskleriyle ilişkili depolama hesaplarını yönetir. Bir Kullanıcı bir VM 'ye yeni bir veri diski iliştirir, gereken disk türünü ve boyutunu belirtir ve Azure, diski otomatik olarak oluşturur ve yönetir. Veri diski, VM 'den ayrılabilir ve daha sonra aynı VM 'ye yeniden eklenebilir ya da aynı kullanıcıya ait farklı bir VM 'ye iliştirilebilir.
 
 Bu işlevsellik, her bir sanal makinenin dışında depolama veya yazılım yönetimi için kullanışlıdır. Depolama veya yazılım bir veri diskinde zaten mevcutsa, bu veri diskine sahip olan kullanıcı tarafından sahip olunan herhangi bir VM 'ye kolayca eklenebilir, ayrılabilir ve yeniden eklenebilir.
 
 ## <a name="attach-a-data-disk"></a>Veri diski ekleme
 Bir sanal makineye bir veri diski iliştirmadan önce şu ipuçlarını gözden geçirin:
 
-- VM 'nin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Ayrıntılar için bkz. [sanal makineler Için boyutlar](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+- VM 'nin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Ayrıntılar için bkz. [sanal makineler Için boyutlar](../virtual-machines/sizes.md).
 - Yalnızca çalıştıran bir VM 'ye veri diski ekleyebilirsiniz. Bir veri diski eklemeyi denemeden önce VM 'nin çalıştığından emin olun.
 
 ### <a name="attach-a-new-disk"></a>Yeni Disk Ekle
@@ -90,4 +90,3 @@ Yönetilmeyen bir veri diskini yükseltmek için, bu makalede açıklanan adıml
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Çakışan [sanal makineler](devtest-lab-add-claimable-vm.md#unclaim-a-vm)için veri disklerini yönetmeyi öğrenin.
-

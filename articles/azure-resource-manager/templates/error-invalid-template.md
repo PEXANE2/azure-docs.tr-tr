@@ -3,12 +3,12 @@ title: Geçersiz şablon hataları
 description: Azure Resource Manager şablonları dağıtılırken geçersiz şablon hatalarının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118894"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373819"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Geçersiz şablon hatalarını giderme
 
@@ -130,7 +130,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Çözüm 4-çok fazla hedef kaynak grubu
 
-Tek bir dağıtımda beş hedef kaynak grubu ile sınırlı olduğunuzdan bu hatayı daha önceki dağıtımlarda görebilirsiniz. Mayıs 2020 ' de, bu sınır 800 kaynak gruplarına artmıştı. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-resource-group-deployment.md).
+Tek bir dağıtımda beş hedef kaynak grubu ile sınırlı olduğunuzdan bu hatayı daha önceki dağıtımlarda görebilirsiniz. Mayıs 2020 ' de, bu sınır 800 kaynak gruplarına artmıştı. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-scope-deployment.md).
 
 <a id="circular-dependency"></a>
 
@@ -150,7 +150,7 @@ Döngüsel bağımlılığı çözümlemek için:
 
 Bu yaklaşım dairesel bağımlılığı çözmezse, dağıtım mantığınızın bir kısmını alt kaynaklara (uzantılar veya yapılandırma ayarları gibi) taşımayı göz önünde bulundurun. Bu alt kaynakları, döngüsel bağımlılığa dahil edilen kaynaklardan sonra dağıtılacak şekilde yapılandırın. Örneğin, iki sanal makine dağıttığını, ancak birbirlerine başvuran her bir üzerinde Özellikler ayarlamanız gerektiğini varsayalım. Bunları aşağıdaki sırayla dağıtabilirsiniz:
 
-1. VM1
+1. vm1
 2. VM2
 3. VM1 üzerindeki uzantı VM1 ve VM2 'ye bağımlıdır. Uzantı, VM1 'teki VM2 'dan aldığı değerleri ayarlar.
 4. VM2 üzerindeki uzantı VM1 ve VM2 'ye bağımlıdır. Uzantı, VM2 'teki VM1 'dan aldığı değerleri ayarlar.

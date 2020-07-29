@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131625"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373292"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Rol tabanlı erişim denetimi ile Azure dijital TWINS güvenliğini sağlama
 
@@ -24,7 +24,7 @@ RBAC, Azure dijital TWINS 'e [Azure Active Directory](../active-directory/fundam
 
 Bir *güvenlik sorumlusu*için, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek izinler vermek için RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
 Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir Kullanıcı, Grup veya uygulama) Azure dijital TWINS 'e erişmeyi denediğinde, isteğin *kimliğinin doğrulanması* ve *yetkilendirilmiş*olması gerekir. 
 
@@ -45,7 +45,7 @@ Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönet
 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Yetkilendirme: Azure dijital TWINS için RBAC rolleri
 
-Azure, bir Azure dijital TWINS kaynağına erişimi yetkilendirmek için aşağıdaki yerleşik RBAC rollerini sağlar:
+Azure, bir Azure dijital TWINS kaynağına erişimi yetkilendirmek için aşağıdaki Azure yerleşik rollerini sağlar:
 * *Azure dijital TWINS sahibi (Önizleme)* – Azure dijital TWINS kaynakları üzerinden tam erişim sağlamak için bu rolü kullanın.
 * *Azure dijital TWINS okuyucu (Önizleme)* – Azure dijital TWINS kaynaklarına salt okuma erişimi sağlamak için bu rolü kullanın.
 

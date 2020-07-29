@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 34a02de8a6789a028c776e784ea4aa9692f53d9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079156"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373258"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -284,7 +284,7 @@ Hizmet yöntemleri mümkün olduğunda kesin türü belirtilmiş nesneler dönd�
 
 Portal giriş sayfasında, ayrıntılarını almak için Azure dijital TWINS örneğinizi arayın. *Ölçümler* sayfasını açmak Için Azure Digital TWINS örneğinin menüsündeki **ölçümler** seçeneğini belirleyin.
 
-:::image type="content" source="media/how-to-use-apis-sdks/metrics.png" alt-text="Azure portal bir Azure dijital TWINS örneğinin ölçümler sayfası":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Azure dijital TWINS için ölçüm sayfasını gösteren ekran görüntüsü":::
 
 Buradan, örneğiniz için ölçümleri görüntüleyebilir ve özel görünümler oluşturabilirsiniz.
 

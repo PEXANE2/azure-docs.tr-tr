@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a210098652a18959debfeabe36b390d1bdfca7fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507106"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287466"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service’teki (AKS) uygulamalar ve kümeler için güvenlik kavramları
 
@@ -50,7 +50,7 @@ Düğümler, genel IP adresleri atanmadan özel bir sanal ağ alt ağına dağı
 
 Depolama sağlamak için düğümler Azure yönetilen diskleri kullanır. Çoğu VM düğüm boyutu için bunlar, yüksek performanslı SSD 'Ler tarafından desteklenen Premium disklerdir. Yönetilen disklerde depolanan veriler, Azure platformunda Rest 'de otomatik olarak şifrelenir. Bu diskler, artıklığı artırmak için Azure veri merkezi 'nde de güvenli bir şekilde çoğaltılır.
 
-Kubernetes ortamları, AKS veya başka bir yerde, şu anda çok kiracılı olmayan kullanım için tamamen güvenli değildir. Tüm düğümler için *Pod güvenlik ilkeleri* veya daha ayrıntılı rol tabanlı erişim DENETIMLERI (RBAC) gibi ek güvenlik özellikleri, çok daha zor hale getirir. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir. İş yüklerini yalıtma yolları hakkında daha fazla bilgi için bkz. [AKS 'de küme yalıtımı Için en iyi uygulamalar][cluster-isolation].
+Kubernetes ortamları, AKS veya başka bir yerde, şu anda çok kiracılı olmayan kullanım için tamamen güvenli değildir. *Pod güvenlik ilkeleri*gibi ek güvenlik özellikleri veya düğümler için daha ayrıntılı rol tabanlı erişim DENETIMLERI (RBAC), daha çok daha zor hale getirir. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir. İş yüklerini yalıtma yolları hakkında daha fazla bilgi için bkz. [AKS 'de küme yalıtımı Için en iyi uygulamalar][cluster-isolation].
 
 ### <a name="compute-isolation"></a>İşlem yalıtımı
 

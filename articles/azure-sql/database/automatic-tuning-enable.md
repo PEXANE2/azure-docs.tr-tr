@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982807"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373513"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için Azure portal otomatik ayarlamayı etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -117,7 +117,7 @@ Otomatik ayarlama, veritabanında aldığı tüm işlemleri izliyor ve bazı dur
 
 ## <a name="permissions"></a>İzinler
 
-Otomatik ayarlama bir Azure özelliği olduğundan, bunu kullanmak için Azure 'un yerleşik RBAC rollerini kullanmanız gerekir. Yalnızca SQL kimlik doğrulaması kullanmak Azure portal özelliği kullanmak yeterli olmaz.
+Otomatik ayarlama bir Azure özelliği olduğundan, bunu kullanmak için Azure 'un yerleşik rollerini kullanmanız gerekir. Yalnızca SQL kimlik doğrulaması kullanmak Azure portal özelliği kullanmak yeterli olmaz.
 
 Otomatik ayarlamayı kullanmak için, kullanıcıya verilmesi gereken en düşük izin Azure 'un yerleşik [SQL veritabanı katılımcısı](../../role-based-access-control/built-in-roles.md#sql-db-contributor) rolüdür. SQL Server katkıda bulunan, SQL yönetilen örnek katılımcısı, katkıda bulunan ve sahip gibi daha yüksek ayrıcalıklı rolleri kullanmayı da düşünebilirsiniz.
 

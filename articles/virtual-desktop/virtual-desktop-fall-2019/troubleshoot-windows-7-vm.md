@@ -1,6 +1,6 @@
 ---
-title: Windows 7 sanal makineleri Windows sanal masaüstü-Azure
-description: Windows Sanal Masaüstü ortamındaki Windows 7 sanal makineleri (VM 'Ler) için sorunları çözme.
+title: Windows 7 sanal makineleri Windows sanal masaüstü (klasik)-Azure
+description: Windows sanal masaüstü (klasik) ortamındaki Windows 7 sanal makineleri (VM 'Ler) için sorunları çözme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615285"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286351"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesiyle ilgili sorunları giderme
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop 'ta Windows 7 sanal makinelerinin sorunlarını giderme (klasik)
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
@@ -43,7 +43,7 @@ Windows sanal masaüstü, uzak masaüstü kullanıcı grubunda sizi veya kullan�
 
 Bu hatayı onarmak için kullanıcıyı uzak masaüstü kullanıcı grubuna ekleyin:
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 2. Hata iletisini gördüğünüz sanal makineyi seçin.
 3. **Çalıştır komutunu**seçin.
 4. Aşağıdaki komutu, `<username>` eklemek istediğiniz kullanıcının adı ile değiştirilmiş şekilde çalıştırın:

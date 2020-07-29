@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9fbf7bc45ed2070570faf0d1dfdb15b5fd98ee
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132271"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373275"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure dijital TWINS 'de uç noktaları ve yolları yönetme
 
@@ -184,7 +184,7 @@ Sayı, gecikme ve hata oranı gibi yönlendirme ölçümleri [Azure Portal](http
 
 Portal giriş sayfasında, ayrıntılarını almak için Azure dijital TWINS örneğinizi arayın. *Ölçümler* sayfasını açmak Için Azure Digital TWINS örneğinin menüsündeki **ölçümler** seçeneğini belirleyin.
 
-:::image type="content" source="media/how-to-manage-routes/metrics.png" alt-text="Azure portal bir Azure dijital TWINS örneğinin ölçümler sayfası":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Azure dijital TWINS için ölçüm sayfasını gösteren ekran görüntüsü":::
 
 Buradan, örneğiniz için ölçümleri görüntüleyebilir ve özel görünümler oluşturabilirsiniz.
 

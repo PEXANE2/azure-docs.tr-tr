@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/25/2020
+ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252653"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373122"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Azure SQL Edge 'e bağlanma ve sorgulama (Önizleme)
 
@@ -29,7 +29,7 @@ Azure SQL Edge 'de, bir kapsayıcıyı dağıttıktan sonra aşağıdaki konumla
 
 Azure SQL Edge örneği örneğine, bu ortak araçlardan herhangi birinden bağlanabilirsiniz:
 
-* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd istemci araçları, Azure SQL Edge 'in kapsayıcı görüntüsüne zaten dahil edilmiştir. Etkileşimli bash kabuğu ile çalışan bir kapsayıcıya eklerseniz, araçları yerel olarak çalıştırabilirsiniz.
+* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd istemci araçları, Azure SQL Edge 'in kapsayıcı görüntüsüne zaten dahil edilmiştir. Etkileşimli bash kabuğu ile çalışan bir kapsayıcıya eklerseniz, araçları yerel olarak çalıştırabilirsiniz. SQL istemci araçları, SQL Edge kapsayıcılarının ARM64 sürümüne dahil olmadıklarından, ARM64 platformunda kullanılabilir DEĞILDIR. 
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
@@ -55,7 +55,7 @@ Bir ağ makinesinden Azure SQL Edge veritabanı altyapısına bağlanmak için �
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Kapsayıcı içinden veritabanı altyapısına bağlanma
 
-[SQL Server komut satırı araçları](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) , Azure SQL Edge 'in kapsayıcı görüntüsüne dahildir. Kapsayıcıyı etkileşimli bir komut istemiyle birlikte eklerseniz, araçları yerel olarak çalıştırabilirsiniz.
+[SQL Server komut satırı araçları](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) , Azure SQL Edge 'in kapsayıcı görüntüsüne dahildir. Kapsayıcıyı etkileşimli bir komut istemiyle birlikte eklerseniz, araçları yerel olarak çalıştırabilirsiniz. SQL istemci araçları, SQL Edge kapsayıcılarının ARM64 sürümüne dahil olmadıklarından, ARM64 platformunda kullanılabilir DEĞILDIR. 
 
 1. `docker exec -it`Çalışan kapsayıcının içinde etkileşimli bir bash kabuğu başlatmak için komutunu kullanın. Aşağıdaki örnekte, `e69e056c702d` KAPSAYıCı kimliğidir.
 

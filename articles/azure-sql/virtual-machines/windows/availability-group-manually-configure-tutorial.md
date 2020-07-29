@@ -3,7 +3,7 @@ title: 'Öğretici: SQL Server Always on kullanılabilirlik grubu yapılandırma
 description: Bu öğreticide, Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu oluşturma gösterilmektedir.
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0b98838441325245b3f4322a32eb5e2376557313
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960750"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286852"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Öğretici: Azure sanal makinelerinde el ile SQL Server kullanılabilirlik grubu yapılandırma
 
@@ -32,7 +33,7 @@ Diyagramda, öğreticide ne derledikleriniz gösterilmektedir.
 
 ![Kullanılabilirlik Grubu](./media/availability-group-manually-configure-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğretici, SQL Server her zaman açık kullanılabilirlik grupları hakkında temel bilgiler sahibi olduğunuzu varsayar. Daha fazla bilgiye ihtiyacınız varsa, bkz. [Always on kullanılabilirlik gruplarına genel bakış (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
@@ -120,7 +121,7 @@ Diğer SQL Server kümeye ekleyin.
 
 1. **İleri**’yi seçin.
 
-1. **Son**'u seçin.
+1. **Son**’u seçin.
 
    Yük Devretme Kümesi Yöneticisi, kümenizin yeni bir düğüme sahip olduğunu gösterir ve **düğümleri düğümler** kapsayıcısında listeler.
 
@@ -184,7 +185,7 @@ Sonra, küme çekirdeğini ayarlayın.
 
 1. **Onaylamada**ayarları doğrulayın. **İleri**’yi seçin.
 
-1. **Son**'u seçin.
+1. **Son**’u seçin.
 
 Küme çekirdek kaynakları, bir dosya paylaşma tanığı ile yapılandırılır.
 
@@ -366,12 +367,12 @@ Azure 'daki bir yük dengeleyici Standart Load Balancer veya temel bir Load Bala
 
    ![Yük Devretme Kümesi Yöneticisi 'de kullanılabilirlik grubu](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. Yük Dengeleyici için aşağıdaki parametreleri yapılandırın.
 
    | Ayar | Alan |
    | --- | --- |
-   | **Adı** |Yük Dengeleyici için bir metin adı kullanın, örneğin **Sqllb**. |
+   | **Ad** |Yük Dengeleyici için bir metin adı kullanın, örneğin **Sqllb**. |
    | **Tür** |İç |
    | **Sanal ağ** |Azure sanal ağının adını kullanın. |
    | **Alt ağ** |Sanal makinenin bulunduğu alt ağın adını kullanın.  |
@@ -415,11 +416,11 @@ Yük dengeleyiciyi yapılandırmak için bir arka uç havuzu, bir araştırma ol
 
    | Ayar | Açıklama | Örnek
    | --- | --- |---
-   | **Adı** | Metin | Sqlalwaysonendpointaraştırması |
+   | **Ad** | Metin | Sqlalwaysonendpointaraştırması |
    | **Protokol** | TCP’yi seçin | TCP |
-   | **Bağ** | Kullanılmayan tüm bağlantı noktaları | 59999 |
-   | **Interval**  | Saniye cinsinden yoklama denemeleri arasındaki süre miktarı |5 |
-   | **Sağlıksız durum eşiği** | Bir sanal makinenin sağlıksız olarak kabul edilmesi için oluşması gereken birbirini izleyen yoklama hatalarının sayısı  | 2 |
+   | **Bağlantı noktası** | Kullanılmayan tüm bağlantı noktaları | 59999 |
+   | **Aralık**  | Saniye cinsinden yoklama denemeleri arasındaki süre miktarı |5 |
+   | **İyi durumda olmayan durum eşiği** | Bir sanal makinenin sağlıksız olarak kabul edilmesi için oluşması gereken birbirini izleyen yoklama hatalarının sayısı  | 2 |
 
 1. Sistem durumu araştırmasını ayarlamak için **Tamam ' ı** seçin.
 
@@ -431,14 +432,14 @@ Yük dengeleyiciyi yapılandırmak için bir arka uç havuzu, bir araştırma ol
 
    | Ayar | Açıklama | Örnek
    | --- | --- |---
-   | **Adı** | Metin | SQLAlwaysOnEndPointListener |
+   | **Ad** | Metin | SQLAlwaysOnEndPointListener |
    | **Ön uç IP adresi** | Bir adres seçin |Yük dengeleyiciyi oluştururken oluşturduğunuz adresi kullanın. |
    | **Protokol** | TCP’yi seçin |TCP |
-   | **Bağ** | Kullanılabilirlik grubu dinleyicisi için bağlantı noktasını kullan | 1433 |
-   | **Arka Uç Bağlantı Noktası** | Bu alan, kayan IP doğrudan sunucu dönüşü için ayarlandığında kullanılmaz | 1433 |
+   | **Bağlantı noktası** | Kullanılabilirlik grubu dinleyicisi için bağlantı noktasını kullan | 1433 |
+   | **Arka uç bağlantı noktası** | Bu alan, kayan IP doğrudan sunucu dönüşü için ayarlandığında kullanılmaz | 1433 |
    | **Yokla** |Araştırma için belirttiğiniz ad | Sqlalwaysonendpointaraştırması |
-   | **Oturum kalıcılığı** | Açılan liste | **Yok** |
-   | **Boşta Kalma Süresi Zaman Aşımı** | TCP bağlantısının açık tutulması için dakika sayısı | 4 |
+   | **Oturum kalıcılığı** | Açılan liste | **Hiçbiri** |
+   | **Boşta kalma zaman aşımı** | TCP bağlantısının açık tutulması için dakika sayısı | 4 |
    | **Kayan IP (doğrudan sunucu dönüşü)** | |Etkin |
 
    > [!WARNING]
@@ -459,11 +460,11 @@ WSFC IP adresinin Ayrıca yük dengeleyicide olması gerekir.
 
    | Ayar | Açıklama | Örnek
    | --- | --- |---
-   | **Adı** | Metin | Wsfcendpointaraştırması |
+   | **Ad** | Metin | Wsfcendpointaraştırması |
    | **Protokol** | TCP’yi seçin | TCP |
-   | **Bağ** | Kullanılmayan tüm bağlantı noktaları | 58888 |
-   | **Interval**  | Saniye cinsinden yoklama denemeleri arasındaki süre miktarı |5 |
-   | **Sağlıksız durum eşiği** | Bir sanal makinenin sağlıksız olarak kabul edilmesi için oluşması gereken birbirini izleyen yoklama hatalarının sayısı  | 2 |
+   | **Bağlantı noktası** | Kullanılmayan tüm bağlantı noktaları | 58888 |
+   | **Aralık**  | Saniye cinsinden yoklama denemeleri arasındaki süre miktarı |5 |
+   | **İyi durumda olmayan durum eşiği** | Bir sanal makinenin sağlıksız olarak kabul edilmesi için oluşması gereken birbirini izleyen yoklama hatalarının sayısı  | 2 |
 
 1. Sistem durumu araştırmasını ayarlamak için **Tamam ' ı** seçin.
 
@@ -473,14 +474,14 @@ WSFC IP adresinin Ayrıca yük dengeleyicide olması gerekir.
 
    | Ayar | Açıklama | Örnek
    | --- | --- |---
-   | **Adı** | Metin | WSFCEndPoint |
+   | **Ad** | Metin | WSFCEndPoint |
    | **Ön uç IP adresi** | Bir adres seçin |WSFC IP adresini yapılandırdığınızda oluşturduğunuz adresi kullanın. Bu, dinleyici IP adresinden farklıdır |
    | **Protokol** | TCP’yi seçin |TCP |
-   | **Bağ** | Küme IP adresi için bağlantı noktasını kullanın. Bu, dinleyici araştırma bağlantı noktası için kullanılmayan kullanılabilir bir bağlantı noktasıdır. | 58888 |
-   | **Arka Uç Bağlantı Noktası** | Bu alan, kayan IP doğrudan sunucu dönüşü için ayarlandığında kullanılmaz | 58888 |
+   | **Bağlantı noktası** | Küme IP adresi için bağlantı noktasını kullanın. Bu, dinleyici araştırma bağlantı noktası için kullanılmayan kullanılabilir bir bağlantı noktasıdır. | 58888 |
+   | **Arka uç bağlantı noktası** | Bu alan, kayan IP doğrudan sunucu dönüşü için ayarlandığında kullanılmaz | 58888 |
    | **Yokla** |Araştırma için belirttiğiniz ad | Wsfcendpointaraştırması |
-   | **Oturum kalıcılığı** | Açılan liste | **Yok** |
-   | **Boşta Kalma Süresi Zaman Aşımı** | TCP bağlantısının açık tutulması için dakika sayısı | 4 |
+   | **Oturum kalıcılığı** | Açılan liste | **Hiçbiri** |
+   | **Boşta kalma zaman aşımı** | TCP bağlantısının açık tutulması için dakika sayısı | 4 |
    | **Kayan IP (doğrudan sunucu dönüşü)** | |Etkin |
 
    > [!WARNING]

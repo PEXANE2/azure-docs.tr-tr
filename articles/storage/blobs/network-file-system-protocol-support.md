@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b76e25b2961bf3fb268da6622cbfcce3a50a3396
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100552"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372901"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği (Önizleme)
 
@@ -87,10 +87,8 @@ Hesabınızda NFS 3,0 protokolünü etkinleştirdiğinizde aşağıdaki Azure de
 
 - NFS 3,0 desteğini bir depolama hesabında devre dışı bırakma özelliği (etkinleştirildikten sonra)
 
-- NFS 3,0 ve diğer REST API 'Leri veya SDK 'ları kullanarak bloblara yazma özelliği. 
-
-  Blob 'a yazmak için REST API 'Lerini veya SDK 'Ları kullanmak istiyorsanız, yalnızca okuma işlemleri gerçekleştirmek için NFS 3,0 ' ı kullandığınızdan emin olun, aksi takdirde Bloblar bozulabilir.
-
+- REST API 'Leri veya SDK 'ları kullanarak bloblara yazma özelliği. 
+  
 ## <a name="nfs-30-features-not-yet-supported"></a>NFS 3,0 özellikleri henüz desteklenmiyor
 
 Aşağıdaki NFS 3,0 özellikleri henüz Azure Data Lake Storage 2. desteklenmez.

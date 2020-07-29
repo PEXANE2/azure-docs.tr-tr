@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122381"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373479"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
 
@@ -23,7 +23,7 @@ ms.locfileid: "86122381"
 > Sistem durumu Metin Analizi, "olduğu gıbı" ve "tüm hatalarıyla bırlıkte" sağlanmış bir önizleme özelliğidir. Bu nedenle, **sistem durumu için metin analizi (Önizleme) herhangi bir üretim kullanımı için uygulanmamalıdır veya dağıtılmamalıdır.** Sağlık durumu için Metin Analizi, bir tıbbi cihaz, klinik destek, tanılama aracı ya da tanılama, sağlama, azaltma, işleme veya önlemeye yönelik başka bir teknoloji veya Microsoft tarafından bu amaçla kullanılması amaçlanan bir lisans ya da hak sağlanmaz. Bu özellik, profesyonel tıp önerisi veya sağlık görüşlerine, tanılama, işleme ya da sağlık uzmanı 'nın klinik yargılarına veya bu şekilde kullanılmamalıdır. Müşteri, sistem durumu için Metin Analizi herhangi bir kullanım işleminden yalnızca sorumludur. Microsoft, sağlık veya yetenek ile bağlantılı olarak belirtilen herhangi bir malzeme için Metin Analizi, herhangi bir kişinin sistem durumunu veya tıbbi gereksinimlerini karşılamasını garanti etmez. 
 
 
-Sistem durumu için Azure Metin Analizi, Doktor notları, disşarj özetleri, klinik belgeler ve elektronik sağlık kayıtları gibi yapılandırılmamış metinlerden ilgili tıbbi bilgileri çıkaran ve etiketleyen kapsayıcılı bir hizmettir.  
+Sistem durumu Metin Analizi, Doktor notları, disşarj özetleri, klinik belgeler ve elektronik sistem durumu kayıtları gibi yapılandırılmamış metinlerden ilgili tıbbi bilgileri çıkaran ve etiketleyen kapsayıcılı bir hizmettir.  
 
 ## <a name="features"></a>Özellikler
 
@@ -62,7 +62,7 @@ Tıbbi içeriğin anlamı, yanlış tanılanıyor durumunda önemli bir engel ol
 
 ---
 
-Desteklenen varlıkların tam listesi için sağlık Metin Analizi tarafından döndürülen [varlık kategorilerine](../named-entity-types.md?tabs=health) bakın.
+Desteklenen varlıkların tam listesi için sistem durumu için Metin Analizi tarafından döndürülen [varlık kategorilerine](../named-entity-types.md?tabs=health) bakın.
 
 ## <a name="supported-languages"></a>Desteklenen diller
 
@@ -80,8 +80,8 @@ Kapsayıcıya erişim istemek için bilişsel [Hizmetler kapsayıcıları istek 
 
 Kapsayıcıyı yükleyip çalıştırmak için birden çok yol vardır. 
 
-1. Bir Metin Analizi kaynağı oluşturmak için [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) kullanarak kapsayıcınızı almak Için Docker 'ı kullanın.
-2. Kaynak dağıtımı kapsayıcı yapılandırmasını otomatikleştirmek için aşağıdaki PowerShell ve [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) betikleri kullanılıyor.
+- Bir Metin Analizi kaynağı oluşturmak için [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) kullanın ve kapsayıcınızı almak Için Docker 'ı kullanın.
+- Kaynak dağıtımı kapsayıcı yapılandırmasını otomatikleştirmek için aşağıdaki PowerShell ve [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) betikleri kullanın.
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Azure Kapsayıcılar için Web App kullanarak kapsayıcıyı yüklerken
 
@@ -223,7 +223,7 @@ Daha fazla bilgi için, [NGıNX SSL sonlandırmasına](https://docs.nginx.com/ng
 
 
 ## <a name="example-api-request"></a>Örnek API isteği
-Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar.
+Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar.
 
 Değişkeni uygun değerle değiştirerek dağıttığınız kapsayıcıya bir sorgu göndermek için aşağıdaki örnek kıvrımlı isteği kullanın `serverURL` .
 

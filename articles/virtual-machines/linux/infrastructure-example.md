@@ -4,14 +4,15 @@ description: Azure 'da örnek bir altyapı dağıtmaya yönelik anahtar tasarım
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500de3f89bd041adf0b73e21762495d8c89e19c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944896"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286300"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux VM 'Leri için örnek Azure altyapı Kılavuzu
 Bu makalede, örnek bir uygulama altyapısı oluşturma işlemi adım adım açıklanmaktadır. Adlandırma kuralları, kullanılabilirlik kümeleri, sanal ağlar ve yük dengeleyiciler ve aslında sanal makinelerinizi (VM 'Ler) dağıtmak için tüm kılavuzları ve kararları bir araya getiren basit bir çevrimiçi mağaza için bir altyapı tasarlama ayrıntımız yaptık.

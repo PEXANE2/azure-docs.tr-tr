@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8f4ef046221ae50d2b05525d6cea2d268282551c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100555"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372918"
 ---
 # <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>Ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak Linux 'ta blob Storage bağlama
 
@@ -107,13 +107,13 @@ Tüm diğer ayarlar için varsayılan değerleri kabul edebilirsiniz.
 
 Şu araçlardan veya SDK 'Lardan birini kullanarak depolama hesabınızda bir kapsayıcı oluşturun:
 
-|Araçlar|SDK|
+|Araçlar|SDK’lar|
 |---|---|
 |[Azure Depolama Gezgini](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+|[Azure Portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>7. Adım: kapsayıcıyı bağlama
 
@@ -139,7 +139,6 @@ Tüm diğer ayarlar için varsayılan değerleri kabul edebilirsiniz.
 |---|---|
 |`Access denied by server while mounting`|İstemcinizin desteklenen bir alt ağ içinde çalıştığından emin olun. [Desteklenen ağ konumlarına](network-file-system-protocol-support.md#supported-network-connections)bakın.|
 |`No such file or directory`| Oluşturduğunuz kapsayıcının, özelliğin kaydedildiğini doğruladıktan sonra oluşturulduğundan emin olun. Bkz. [2. Adım: özelliğin kayıtlı olduğunu doğrulayın](#step-2-verify-that-the-feature-is-registered). Ayrıca, Mount komutunu ve bu parametrenin parametrelerini doğrudan terminaline yazdığınızdan emin olun. Bu komutun herhangi bir bölümünü kopyalayıp başka bir uygulamadan terminale yapıştırırsanız, yapıştırılan bilgilerden gizli karakterler bu hatanın görünmesine neden olabilir.|
-|NFS dışı 3,0 araçları kullanılarak karşıya yüklenen dosyalar dizinde görünmez. | Kapsayıcıyı bağlamadan kaldırın ve kapsayıcıyı yeniden bağlayın. |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

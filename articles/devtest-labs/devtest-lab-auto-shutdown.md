@@ -3,12 +3,12 @@ title: Azure DevTest Labs ' de oto kapatma ilkelerini yönetme | Microsoft Docs
 description: Sanal makinelerin kullanımda olmadıkları zaman otomatik olarak kapatılmasını sağlamak üzere bir laboratuvar için otomatik kapatma ilkesini ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482743"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287557"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Laboratuvar ve işlem sanal makinelerini Azure DevTest Labs için oto kapatma yapılandırma
 
@@ -71,7 +71,7 @@ Laboratuvar sahibi tarafından ayarlanan bir kez, bir sanal makine etkilenirse, 
 - Bu süre için oto kapatma işlemini atla
 - Sanal makine üzerinde çalışmaya devam edebilmesi için, bir saat veya 2 saat boyunca oto kapatılmasını erteler.
 
-Bildirim, yapılandırılmış Web kancası uç noktası veya otomatik kapatma ayarlarındaki laboratuvar sahipleri tarafından belirtilen bir e-posta adresi aracılığıyla gönderilir. Web kancaları, belirli olaylara abone olan tümleştirmeler oluşturmanıza veya ayarlamanıza olanak sağlar. Bu olaylardan biri tetiklendiğinde, DevTest Labs Web kancası tarafından yapılandırılan URL 'ye bir HTTP POST yükü gönderir. Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+Bildirim, yapılandırılmış Web kancası uç noktası veya otomatik kapatma ayarlarındaki laboratuvar sahipleri tarafından belirtilen bir e-posta adresi aracılığıyla gönderilir. Web kancaları, belirli olaylara abone olan tümleştirmeler oluşturmanıza veya ayarlamanıza olanak sağlar. Bu olaylardan biri tetiklendiğinde, DevTest Labs Web kancası tarafından yapılandırılan URL 'ye bir HTTP POST yükü gönderir. Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-bindings-http-webhook.md). 
 
 Birçok uygulama (örneğin, bolluk, Azure Logic Apps vb.) tarafından kapsamlı bir şekilde desteklendiğinden Web kancalarını kullanmanızı öneririz ve bildirim göndermek için kendi yolunuzu uygulamanıza olanak tanır. Örnek olarak, bu makalede Azure Logic Apps kullanarak e-postalardan oto kapatma bildirimi alma işlemi adım adım açıklanmaktadır. İlk olarak, laboratuvarınızda oto kapatma bildirimini etkinleştirmek için temel adımları hızla ilerlim.   
 
@@ -211,4 +211,3 @@ Oto kapatma ayarını güncelleştirdiğinizde, sanal makinenin etkinlik günlü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Tüm ilkeleri ayarlama hakkında bilgi edinmek için bkz. [Azure DevTest Labs laboratuvar Ilkelerini tanımlama](devtest-lab-set-lab-policy.md).
-

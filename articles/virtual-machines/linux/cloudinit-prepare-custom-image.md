@@ -4,19 +4,20 @@ description: Cloud-init ile dağıtım için önceden var olan bir Azure VM gör
 author: danis
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6785bb1f5ebde4f746dc8aa1ea9f586f406f8431
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792318"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373683"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Mevcut bir Linux Azure VM görüntüsünü Cloud-init ile kullanmak üzere hazırlama
 Bu makalede, var olan bir Azure sanal makinesini nasıl ele alacak ve onu yeniden dağıtılması ve Cloud-init kullanmaya başlamaya hazırlanma gösterilmektedir. Elde edilen görüntü, yeni bir sanal makine veya sanal makine ölçek kümeleri dağıtmak için kullanılabilir; bunlardan biri daha sonra dağıtım zamanında Cloud-init tarafından daha da özelleştirilebilir.  Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu belgede, Linux işletim sisteminin desteklenen bir sürümünü çalıştıran çalışan bir Azure sanal makinesine zaten sahip olduğunuz varsayılır. Makineyi gereksinimlerinize uyacak şekilde yapılandırdınız, gerekli tüm modülleri yüklemiş ve gerekli tüm güncelleştirmeleri karşılamış ve gereksinimlerinizi karşıladığından emin olmak için test ediyor. 
 
 ## <a name="preparing-rhel-76--centos-76"></a>RHEL 7,6/CentOS 7,6 hazırlanıyor
