@@ -7,15 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 93043874db6076b26d0fefe447db7acd83547442
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725593"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337611"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
-Bu makale, bilgi için [ikizi grafiğini](concepts-twins-graph.md) sorgulamak üzere [Azure Digital TWINS sorgu deposu dilinin](concepts-query-language.md) kullanılmasıyla ilgili ayrıntılı bilgi sağlar. Azure Digital TWINS [**sorgu API 'lerini**](how-to-use-apis-sdks.md)kullanarak grafikteki sorguları çalıştırırsınız.
+Bu makalede, bilgi için [ikizi grafiğini](concepts-twins-graph.md) sorgulamak üzere [Azure Digital TWINS sorgu deposu dilinin](concepts-query-language.md) kullanımıyla ilgili örnekler ve daha ayrıntılı bilgiler sunulmaktadır. Azure Digital TWINS [**sorgu API 'lerini**](how-to-use-apis-sdks.md)kullanarak grafikteki sorguları çalıştırırsınız.
 
 ## <a name="query-syntax"></a>Sorgu söz dizimi
 
@@ -40,6 +41,52 @@ AND T.roomSize > 50
 
 > [!TIP]
 > Dijital bir ikizi KIMLIĞI, meta veri alanı kullanılarak sorgulanır `$dtId` .
+
+### <a name="query-based-on-relationships"></a>İlişkileri temel alan sorgu
+
+Dijital TWINS ' ilişkilerine göre sorgulama yaparken, Azure Digital TWINS sorgu deposu dilinin özel bir sözdizimi vardır.
+
+İlişkiler, yan tümcesindeki sorgu kapsamına çekilir `FROM` . "Klasik" SQL-Type dillerinden önemli bir ayrım, bu `FROM` yan tümcedeki her bir ifadenin bir tablo olmaması değildir; Bunun yerine `FROM` yan tümce bir çapraz varlık ilişki geçişini ifade eder ve Azure Digital TWINS sürümü ile yazılır `JOIN` . 
+
+Azure dijital TWINS [modeli](concepts-models.md) özellikleri ile, ilişkilerin, TWINS 'den bağımsız olarak mevcut olmadığını geri çekin. Bu, Azure Digital TWINS sorgu deposu dilinin `JOIN` Genel SQL 'den biraz farklı olduğu anlamına gelir `JOIN` , burada ilişkiler bağımsız olarak sorgulanamaz ve bir ikizi bağlı olması gerekir.
+Bu farkı eklemek için, `RELATED` `JOIN` yan tümcesinde ikizi 'in ilişki kümesine başvurmak için kullanılır. 
+
+Aşağıdaki bölümde bunun nasıl göründüğü hakkında birkaç örnek verilmiştir.
+
+> [!TIP]
+> Kavramsal olarak, bu özellik, CosmosDB 'nin belge merkezli işlevselliğini taklit eder ve burada `JOIN` bir belge içindeki alt nesneler üzerinde gerçekleştirilebilir. CosmosDB, `IN` `JOIN` geçerli bağlam belgesi içindeki dizi öğelerini yinelemek için tasarlanan anahtar sözcüğünü kullanır.
+
+#### <a name="relationship-based-query-examples"></a>İlişki tabanlı sorgu örnekleri
+
+İlişkiler içeren bir veri kümesini almak için, bir deyimi ve `FROM` ardından N deyimlerini kullanın `JOIN` , burada `JOIN` deyimler bir Previous veya deyimin sonucu üzerinde ilişki alır `FROM` `JOIN` .
+
+Örnek bir ilişki tabanlı sorgu aşağıda verilmiştir. Bu kod parçacığı, ' ABC ' öğesinin *ID* özelliğine sahip tüm dijital TWINS 'leri ve bu dijital TWINS ile ilgili tüm dijital TWINS 'leri, bir *içerir* ilişki aracılığıyla seçer. 
+
+```sql
+SELECT T, CT
+FROM DIGITALTWINS T
+JOIN CT RELATED T.contains
+WHERE T.$dtId = 'ABC' 
+```
+
+>[!NOTE] 
+> Geliştiricinin `JOIN` yan tümcesindeki anahtar değeriyle ilişkilendirilmesi gerekmez `WHERE` (veya tanımıyla birlikte satır içi bir anahtar değeri belirtebilirsiniz `JOIN` ). İlişki özelliklerinin kendisi hedef varlığı tanımlarında, bu bağıntı sistem tarafından otomatik olarak hesaplanır.
+
+#### <a name="query-the-properties-of-a-relationship"></a>Bir ilişkinin özelliklerini sorgulama
+
+Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. Azure Digital TWINS sorgu deposu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` . 
+
+Örnek olarak, *Reportedcondition* özelliği olan bir *servicedBy* ilişkisini göz önünde bulundurun. Aşağıdaki sorguda, özelliğine başvurmak için bu ilişkiye ' R ' diğer adı verilir.
+
+```sql
+SELECT T, SBT, R
+FROM DIGITALTWINS T
+JOIN SBT RELATED T.servicedBy R
+WHERE T.$dtId = 'ABC' 
+AND R.reportedCondition = 'clean'
+```
+
+Yukarıdaki örnekte, *Reportedcondition* 'ın *servicedBy* ilişkisinin kendisini ( *servicedBy* ilişkisine sahip bir Digital ikizi değil) nasıl bir özelliği olduğunu not edin.
 
 ## <a name="run-queries-with-an-api-call"></a>Sorguları bir API çağrısıyla çalıştırma
 
@@ -75,53 +122,7 @@ catch (RequestFailedException e)
 }
 ```
 
-## <a name="query-based-on-relationships"></a>İlişkileri temel alan sorgu
-
-Dijital TWINS ' ilişkilerine göre sorgulama yaparken, Azure Digital TWINS sorgu deposu dilinin özel bir sözdizimi vardır.
-
-İlişkiler, yan tümcesindeki sorgu kapsamına çekilir `FROM` . "Klasik" SQL-Type dillerinden önemli bir ayrım, bu `FROM` yan tümcedeki her bir ifadenin bir tablo olmaması değildir; Bunun yerine `FROM` yan tümce bir çapraz varlık ilişki geçişini ifade eder ve Azure Digital TWINS sürümü ile yazılır `JOIN` . 
-
-Azure dijital TWINS [modeli](concepts-models.md) özellikleri ile, ilişkilerin, TWINS 'den bağımsız olarak mevcut olmadığını geri çekin. Bu, Azure Digital TWINS sorgu deposu dilinin `JOIN` Genel SQL 'den biraz farklı olduğu anlamına gelir `JOIN` , burada ilişkiler bağımsız olarak sorgulanamaz ve bir ikizi bağlı olması gerekir.
-Bu farkı eklemek için, `RELATED` `JOIN` yan tümcesinde ikizi 'in ilişki kümesine başvurmak için kullanılır. 
-
-Aşağıdaki bölümde bunun nasıl göründüğü hakkında birkaç örnek verilmiştir.
-
-> [!TIP]
-> Kavramsal olarak, bu özellik, CosmosDB 'nin belge merkezli işlevselliğini taklit eder ve burada `JOIN` bir belge içindeki alt nesneler üzerinde gerçekleştirilebilir. CosmosDB, `IN` `JOIN` geçerli bağlam belgesi içindeki dizi öğelerini yinelemek için tasarlanan anahtar sözcüğünü kullanır.
-
-### <a name="relationship-based-query-examples"></a>İlişki tabanlı sorgu örnekleri
-
-İlişkiler içeren bir veri kümesini almak için, bir deyimi ve `FROM` ardından N deyimlerini kullanın `JOIN` , burada `JOIN` deyimler bir Previous veya deyimin sonucu üzerinde ilişki alır `FROM` `JOIN` .
-
-Örnek bir ilişki tabanlı sorgu aşağıda verilmiştir. Bu kod parçacığı, ' ABC ' öğesinin *ID* özelliğine sahip tüm dijital TWINS 'leri ve bu dijital TWINS ile ilgili tüm dijital TWINS 'leri, bir *içerir* ilişki aracılığıyla seçer. 
-
-```sql
-SELECT T, CT
-FROM DIGITALTWINS T
-JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC' 
-```
-
->[!NOTE] 
-> Geliştiricinin `JOIN` yan tümcesindeki anahtar değeriyle ilişkilendirilmesi gerekmez `WHERE` (veya tanımıyla birlikte satır içi bir anahtar değeri belirtebilirsiniz `JOIN` ). İlişki özelliklerinin kendisi hedef varlığı tanımlarında, bu bağıntı sistem tarafından otomatik olarak hesaplanır.
-
-### <a name="query-the-properties-of-a-relationship"></a>Bir ilişkinin özelliklerini sorgulama
-
-Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. Azure Digital TWINS sorgu deposu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` . 
-
-Örnek olarak, *Reportedcondition* özelliği olan bir *servicedBy* ilişkisini göz önünde bulundurun. Aşağıdaki sorguda, özelliğine başvurmak için bu ilişkiye ' R ' diğer adı verilir.
-
-```sql
-SELECT T, SBT, R
-FROM DIGITALTWINS T
-JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC' 
-AND R.reportedCondition = 'clean'
-```
-
-Yukarıdaki örnekte, *Reportedcondition* 'ın *servicedBy* ilişkisinin kendisini ( *servicedBy* ilişkisine sahip bir Digital ikizi değil) nasıl bir özelliği olduğunu not edin.
-
-### <a name="query-limitations"></a>Sorgu sınırlamaları
+## <a name="query-limitations"></a>Sorgu sınırlamaları
 
 Örneğinizdeki değişiklikler sorgularda yansıtılmadan önce 10 saniyeye kadar bir gecikme olabilir. Örneğin, Digitaltwıns API 'SI ile TWINS oluşturma veya silme gibi bir işlemi tamamladıysanız, sonuç sorgu API 'si isteklerinde hemen yansıtılmayabilir. Bir kısa dönemin beklenmesi, çözülmesi için yeterli olmalıdır.
 

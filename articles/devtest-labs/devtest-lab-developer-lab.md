@@ -3,12 +3,12 @@ title: Geliştiriciler için Azure DevTest Labs kullanma | Microsoft Docs
 description: Geliştirici gereksinimlerini karşılamak için kullanılabilecek Azure DevTest Labs özellikleri ve bir laboratuvarı kurmak için izleyebileceğiniz ayrıntılı adımları öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c6bb2c4d21ee6b6cb072c550c82c380b3a380f24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481043"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293026"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Geliştiriciler için Azure DevTest Labs kullanma
 Azure DevTest Labs, çok sayıda önemli senaryoyu uygulamak için kullanılabilir ancak başlıca senaryolardan biri, geliştiriciler için geliştirme makinelerini barındırmak üzere DevTest Labs kullanmayı içerir. Bu senaryoda DevTest Labs şu avantajları sağlar:
@@ -45,7 +45,7 @@ Bu makalede, geliştirici gereksinimlerini karşılamak için kullanılabilecek 
    | --- | --- |
    | [Azure Market görüntülerini yapılandırma](devtest-lab-configure-marketplace-images.md) |Azure Marketi görüntülerini beyaz listeye ekleme hakkında bilgi edinmek için, yalnızca geliştiriciler için istediğiniz görüntüleri seçime uygun hale getirebilirsiniz.|
    | [Özel görüntü oluşturma](devtest-lab-create-template.md) |Geliştiricilerin özel görüntüyü kullanarak hızlı bir şekilde VM oluşturabilmesi için ihtiyacınız olan yazılımı önceden yükleyerek özel bir görüntü oluşturun.|
-   | [Image Factory hakkında bilgi edinin](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Bir görüntü fabrikası ayarlamayı ve kullanmayı açıklayan bir video izleyin.|
+   | [Image Factory hakkında bilgi edinin](./devtest-lab-faq.md#blog-post) |Bir görüntü fabrikası ayarlamayı ve kullanmayı açıklayan bir video izleyin.|
 
 3. **Geliştirici makineleri için yeniden kullanılabilir şablonlar oluşturma** 
    
@@ -124,4 +124,3 @@ Bu makalede, geliştirici gereksinimlerini karşılamak için kullanılabilecek 
    | [Kaynak Yöneticisi şablonu kullanarak laboratuvar oluşturma](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Kaynak Yöneticisi şablonları kullanarak Azure DevTest Labs laboratuvarları oluşturun. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

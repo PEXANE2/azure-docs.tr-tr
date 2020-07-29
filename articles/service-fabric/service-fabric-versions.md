@@ -3,16 +3,18 @@ title: Azure Service Fabric 'de desteklenen küme sürümleri
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 211197ced52ca094d375d3ae212957fa25a523fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d849b4471bf11183dc02735c7373f858f0c773be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091649"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289317"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
 Kümenizin her zaman desteklenen bir Azure Service Fabric sürümünü çalıştırdığından emin olun. Yeni bir Service Fabric sürümünün yayınlanmasıyla ilgili en az 60 gün sonra, önceki sürüm için destek sona erer. [Service Fabric ekip bloguna](https://azure.microsoft.com/updates/?product=service-fabric)yeni yayınlar hakkında duyurular bulacaksınız.
+
+Service Fabric çalışma zamanının belirli bir sürümü için SDK/NuGet paketlerinin belirtilen veya eski sürümlerini kullanabilirsiniz. Paketlerin daha yeni sürümleri desteklenmez ve bu ortamlar tarafından desteklenmeyen özellik veya protokol değişikliklerine sahip olabileceği için eski kümeleri hedefleme sorunları olabilir.
 
 Kümenizin desteklenen bir Service Fabric sürümünü çalıştırmasını sağlama hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 

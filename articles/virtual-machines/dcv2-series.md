@@ -4,15 +4,15 @@ description: DC Serisi VM 'Ler için Özellikler.
 author: susaxen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c5074a81625f38cf94d5acd9751414bad4a9c3e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292456"
 ---
 # <a name="dcsv2-series"></a>DCsv2 serisi
 
@@ -47,7 +47,7 @@ Standard_DC8_v2 hariç *
 
 
 
-## <a name="other-sizes"></a>Diğer boyutlar
+## <a name="other-sizes-and-information"></a>Diğer boyutlar ve bilgiler
 
 - [Genel amaçlı](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
@@ -55,6 +55,10 @@ Standard_DC8_v2 hariç *
 - [GPU için iyileştirilmiş](sizes-gpu.md)
 - [Yüksek performanslı işlem](sizes-hpc.md)
 - [Önceki nesiller](sizes-previous-gen.md)
+
+Fiyatlandırma Hesaplayıcı: [Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
+
+Disk türleri hakkında daha fazla bilgi: [disk türleri](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

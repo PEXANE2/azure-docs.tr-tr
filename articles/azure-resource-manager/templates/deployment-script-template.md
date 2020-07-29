@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117055"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291792"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -147,7 +147,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 
     Bağımsız değişkenler kaçış karakterleri içeriyorsa, karakterleri çift kaçış için [Jsonescaper](https://www.jsonescaper.com/) ' ı kullanın. Özgün atlanan dizeyi araca yapıştırın ve ardından **kaçış**' ı seçin.  Araç, Çift kaçan bir dize verir. Örneğin, önceki örnek şablonda bağımsız değişken ** \\ "John Dole \\ "** olur.  Kaçan dize **-adı \\ \\ \\ "John Dole \\ \\ \\ "** dir.
 
-    Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra herhangi bir ** \\ "** into ** \\ \\ \\ "** öğesini değiştirmek için [Replace ()](./template-functions-string.md#replace) işlevini kullanın. Örneğin:
+    Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra herhangi bir ** \\ "** into ** \\ \\ \\ "** öğesini değiştirmek için [Replace ()](./template-functions-string.md#replace) işlevini kullanın. Örnek:
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
@@ -203,7 +203,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örneğin:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -288,7 +288,7 @@ Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğe
 ```
 
 - **storageAccountName**: depolama hesabının adını belirtin.
-- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örneğin:
+- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örnek:
 
     ```json
     "storageAccountSettings": {
@@ -335,7 +335,7 @@ Genel Bakış sayfası kaynağı **sağlama durumu**, **depolama hesabı**, **ka
 
 Sol taraftaki menüden dağıtım betiği içeriğini, Betiğe geçirilen bağımsız değişkenleri ve çıktıyı görüntüleyebilirsiniz.  Dağıtım betiği için dağıtım betiği de dahil olmak üzere bir şablonu dışa aktarabilirsiniz.
 
-### <a name="use-powershell"></a>PowerShell'i kullanma
+### <a name="use-powershell"></a>PowerShell kullanma
 
 Azure PowerShell kullanarak, Dağıtım betiklerini abonelik veya kaynak grubu kapsamında yönetebilirsiniz:
 
@@ -556,48 +556,7 @@ Dağıtım betiği yürütmesi bir ıdempotent işlemidir. DeploymentScripts kay
 
 ## <a name="configure-development-environment"></a>Geliştirme ortamını yapılandırma
 
-Dağıtım komut dosyası geliştirme ortamınız olarak önceden yapılandırılmış bir Docker kapsayıcı görüntüsü kullanabilirsiniz. Docker 'ı yüklemek için bkz. [Docker 'ı edinme](https://docs.docker.com/get-docker/).
-Ayrıca, Dağıtım betiklerini içeren dizini Docker kapsayıcısına bağlamak için dosya paylaşımı 'nı yapılandırmanız gerekir.
-
-1. Dağıtım betiği kapsayıcı görüntüsünü yerel bilgisayara çekin:
-
-    ```command
-    docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    Örnek PowerShell 2.7.0 sürümünü kullanır.
-
-    Bir Microsoft Container Registry (MCR) CLı görüntüsünü çekmek için:
-
-    ```command
-    docker pull mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-    Bu örnekte, CLı 2.0.80 sürümü kullanılmıştır. Dağıtım betiği [burada](https://hub.docker.com/_/microsoft-azure-cli)bulunan varsayılan CLI kapsayıcıları görüntülerini kullanır.
-
-1. Docker görüntüsünü yerel olarak çalıştırın.
-
-    ```command
-    docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    ** &lt; Konak sürücü harfi>** ve ** &lt; konak dizin adı>** paylaşılan sürücüdeki mevcut bir klasörle değiştirin.  Klasörü, kapsayıcıdaki **/Data** klasörüne eşler. Örneğin, D:\docker 'ı eşlemek için:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **-** kapsayıcı görüntüsünün canlı tutulması anlamına gelir.
-
-    CLı örneği:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-1. Aşağıdaki ekran görüntüsünde, paylaşılan sürücüde bir helloworld.ps1 dosyanız olduğunda bir PowerShell betiğinin nasıl çalıştırılacağı gösterilmektedir.
-
-    ![Kaynak Yöneticisi şablonu dağıtım betiği Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+Dağıtım betiği geliştirme ortamınız olarak önceden yapılandırılmış bir kapsayıcı görüntüsü kullanabilirsiniz. Daha fazla bilgi için bkz. [şablonlarda dağıtım betikleri için geliştirme ortamını yapılandırma](./deployment-script-template-configure-dev.md).
 
 Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir dağıtım betiği olarak kullanabilirsiniz.
 
@@ -618,7 +577,7 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 | Deploymentscriptstorageaccounınvalidaccesskey | Mevcut depolama hesabı için geçersiz erişim anahtarı belirtildi. |
 | Deploymentscriptstorageaccounınvalidaccesskeyformat | Geçersiz depolama hesabı anahtar biçimi. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md). |
 | DeploymentScriptExceededMaxAllowedTime | Dağıtım betiği yürütme süresi, dağıtım betiği kaynak tanımında belirtilen zaman aşımı değerini aştı. |
-| DeploymentScriptInvalidOutputs | Dağıtım betiği çıkışları geçerli bir JSON nesnesi değil. |
+| DeploymentScriptInvalidOutputs | Dağıtım betiği çıkışı geçerli bir JSON nesnesi değil. |
 | Deploymentscriptcontainerınstancesserviceloginfailure | Kullanıcı tarafından atanan yönetilen kimlik, 1 dakikalık aralığa göre 10 denemeden sonra oturum açamayacak. |
 | DeploymentScriptContainerGroupNotFound | Dağıtım betiği hizmeti tarafından oluşturulan bir kapsayıcı grubu, dış bir araç veya işlem tarafından silindi. |
 | DeploymentScriptDownloadFailure | Destekleyici bir betik indirilemedi. Bkz. [destekleyici betiği kullanma](#use-supporting-scripts).|

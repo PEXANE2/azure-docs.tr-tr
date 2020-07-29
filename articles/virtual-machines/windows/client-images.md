@@ -4,16 +4,16 @@ description: Azure 'da geliştirme ve test senaryoları için Windows 7, Windows
 author: cynthn
 ms.subservice: imaging
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: e0853b08ced0b9ca328d5e7f506ca54299aebeee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26bfd9a65cd3e6d36b8190e87d382543cc7f0f60
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292055"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure’da geliştirme/test senaryoları için Windows istemcisini kullanma
 Azure 'da, uygun bir Visual Studio (eski adıyla MSDN) aboneliğine sahip olduğunuz geliştirme ve test senaryoları için Windows 7, Windows 8 veya Windows 10 Enterprise (x64) kullanabilirsiniz. Bu makalede, Azure 'da Windows 7, Windows 8.1, Windows 10 Enterprise ve aşağıdaki Azure Galeri görüntülerinin kullanımıyla ilgili uygunluk gereksinimleri özetlenmektedir.

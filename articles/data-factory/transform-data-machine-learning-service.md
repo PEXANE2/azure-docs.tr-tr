@@ -10,12 +10,12 @@ ms.author: daperlov
 author: djpmsft
 manager: anandsub
 ms.date: 07/16/2020
-ms.openlocfilehash: 83a7f072af64b0fe8f7f3d7c982cf3466288f63e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7239c1516c4a04b57249ea4f39bff4aec9156d72
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007206"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337696"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Data Factory Azure Machine Learning işlem hatlarını yürütme
 
@@ -27,7 +27,7 @@ Aşağıdaki videoda, bu özelliğin altı dakikalık bir giriş ve gösterimi s
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 ```json
 {
@@ -60,6 +60,9 @@ experimentName | Machine Learning işlem hattı çalıştırmasının çalışma
 mlPipelineParameters | Yayımlanan Azure Machine Learning ardışık düzen uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Machine Learning işlem hattında tanımlanan işlem hattı parametrelerinin adlarıyla eşleşmesi gerekir | Anahtar değer çiftlerine sahip nesne (veya resultType nesnesi olan Ifade) | Hayır
 mlParentRunId | Ana Azure Machine Learning işlem hattı çalıştırma KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Hayır
 Devam Onstepfailure | Bir adım başarısız olursa Machine Learning ardışık düzen çalıştırmasında diğer adımların yürütülmesine devam edilip edilmeyeceğini belirtir | boolean | Hayır
+
+> [!NOTE]
+> Machine Learning işlem hattı adı ve KIMLIĞINDE açılan öğeleri doldurmak için, kullanıcının ML işlem hatlarını listeleme izni olması gerekir. ADF UX, oturum açmış kullanıcının kimlik bilgilerini kullanarak doğrudan AzureMLService API 'Lerini çağırır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıdaki makalelere bakın:

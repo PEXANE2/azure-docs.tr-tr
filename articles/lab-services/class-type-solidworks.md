@@ -1,29 +1,30 @@
 ---
-title: Azure Lab Services Mühendislik için bir Solidçalışmalar Laboratuvarı ayarlama | Microsoft Docs
-description: Solidçalışmalar kullanarak mühendislik kursları için laboratuvar ayarlamayı öğrenin.
+title: Azure Lab Services Mühendislik için bir SOLIDÇALıŞMALAR Laboratuvarı ayarlama | Microsoft Docs
+description: SOLIDÇALıŞMALAR kullanarak mühendislik kursları için laboratuvar ayarlamayı öğrenin.
 author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: fa1b93bd71c1319bf8705c8c84cdb3e6f9da19e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443817"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290723"
 ---
-# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Solidçalışmalar kullanarak mühendislik sınıfları için laboratuvar ayarlama
+# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>SOLIDÇALıŞMALAR kullanarak mühendislik sınıfları için laboratuvar ayarlama
 
-[Solidçalışmalar](https://www.solidworks.com/) , düz nesnelerin modellenmesi Için bir 3B bilgisayar destekli TASARıM (CAD) ortamı sağlar ve çeşitli mühendislik alanlarında kullanılır.  Solidçalışmalarla mühendisler, tasarımlarını kolayca oluşturabilir, görselleştirin, benzetimini yapabilir ve belgeleyin.
+[Solidçalışmalar](https://www.solidworks.com/) , düz nesnelerin modellenmesi Için bir 3B bilgisayar destekli TASARıM (CAD) ortamı sağlar ve farklı türlerde mühendislik alanlarında kullanılır.  SOLIDÇALıŞMALARLA mühendisler, tasarımlarını kolayca oluşturabilir, görselleştirin, benzetimini yapabilir ve belgeleştirebilir.
 
-Üniversiteler tarafından yaygın olarak kullanılan bir lisanslama seçeneği, "ağ lisanslaması" olur.   Bu seçenekle, kullanıcılar bir lisanslama sunucusu tarafından yönetilen bir lisans havuzunu paylaşır.  Bu tür bir lisans bazen "kayan" lisans olarak adlandırılır çünkü yalnızca eşzamanlı kullanıcı sayısı için yeterli lisansa sahip olmanız gerekir.  Bir Kullanıcı Kesintisdledı kullanılarak yapıldığında, lisansları merkezi olarak yönetilen lisans havuzuna geri dönerek başka bir kullanıcı tarafından yeniden kullanılabilir.
+Üniversiteler tarafından yaygın olarak kullanılan bir lisanslama seçeneği, "ağ lisanslaması" olur.   Bu seçenekle, kullanıcılar bir lisanslama sunucusu tarafından yönetilen bir lisans havuzunu paylaşır.  Bu tür bir lisans bazen "kayan" lisans olarak adlandırılır çünkü yalnızca eşzamanlı kullanıcı sayısı için yeterli lisansa sahip olmanız gerekir.  Bir Kullanıcı KESINTISDLEDı kullanılarak yapıldığında, lisansları merkezi olarak yönetilen lisans havuzuna geri dönerek başka bir kullanıcı tarafından yeniden kullanılabilir.
 
-Bu makalede, Kesintisdçalışmaları 2019 ve ağ lisansı kullanan bir sınıfı nasıl ayarlayabileceğinizi göstereceğiz.
+Bu makalede, KESINTISDÇALıŞMALARı 2019 ve ağ lisansı kullanan bir sınıfı nasıl ayarlayabileceğinizi göstereceğiz.
 
 ## <a name="license-server"></a>Lisans sunucusu
 
-Solidçalışmalar ağ lisansı, lisans sunucunuzda SolidNetWork Lisans Yöneticisi 'nin yüklü ve etkinleştirilmiş olmasını gerektirir.  Bu lisans sunucusu, genellikle şirket içi ağınızda veya Azure 'daki özel bir ağda bulunur.  Sunucuda SolidNetWork Lisans yöneticisini ayarlama hakkında daha fazla bilgi için, bkz. Solidçalışmalar yükleme kılavuzunda [lisans yöneticisini yükleme ve etkinleştirme](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) .  Bu ayarı yaparken, sonraki adımlarda gereksinim duyadıklarından bu yana kullanılan **bağlantı noktası numarasını** ve [**seri numarasını**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) unutmayın.
+SOLIDÇALıŞMALAR ağ lisansı, lisans sunucunuzda SolidNetWork Lisans Yöneticisi 'nin yüklü ve etkinleştirilmiş olmasını gerektirir.  Bu lisans sunucusu, genellikle şirket içi ağınızda veya Azure 'daki özel bir ağda bulunur.  Sunucuda SolidNetWork Lisans yöneticisini ayarlama hakkında daha fazla bilgi için, bkz. SOLIDÇALıŞMALAR yükleme kılavuzunda [lisans yöneticisini yükleme ve etkinleştirme](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) .  Bu ayarı yaparken, sonraki adımlarda gereksinim duyadıklarından bu yana kullanılan **bağlantı noktası numarasını** ve [**seri numarasını**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) unutmayın.
 
-Lisans sunucunuz kurulduktan sonra, [sanal ağı (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) [Laboratuvar hesabınıza](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)eşleyebilmeniz gerekecektir.  Laboratuvar sanal makinelerinin lisans sunucusuna erişebilmesi ve tam tersi şekilde laboratuvar oluşturmadan önce ağ eşlemesinin tamamlanması gerekir.
+Lisans sunucunuz kurulduktan sonra, [sanal ağı (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) [Laboratuvar hesabınıza](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)eşetmeniz gerekir.  Laboratuvar sanal makinelerinin lisans sunucusuna ve diğer bir yönteme erişebilmeleri için laboratuvar oluşturmadan önce ağ eşlemesinin tamamlanması gerekir.
 
 > [!NOTE]
 > Laboratuvar sanal makineleri ve lisans sunucusu arasında iletişime izin vermek için güvenlik duvarınızda uygun bağlantı noktalarının açıldığını doğrulamanız gerekir.  Örneğin, lisans sunucusunun güvenlik duvarına gelen ve giden kuralların nasıl ekleneceğini gösteren [Windows Güvenlik Duvarı Için Lisans Yöneticisi bilgisayar bağlantı noktalarını değiştirme](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) yönergelerine bakın.  Ayrıca, laboratuvar sanal makinelerinin bağlantı noktalarını açmanız gerekebilir.  Laboratuvarın genel IP adresini alma da dahil olmak üzere, bu konuda daha fazla bilgi edinmek için [Labs için güvenlik duvarı ayarları](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings) makalesindeki adımları izleyin.
@@ -41,7 +42,7 @@ Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleşti
 |Market görüntüsü| Laboratuvar hesabınızda kullanılmak üzere Windows 10 Pro görüntüsünü etkinleştirin.|
 
 > [!NOTE]
-> Windows 10 ' a ek olarak, Solidçalışmalar Windows 'un diğer sürümlerini destekler.  Ayrıntılar için bkz. [Solidçalışmalar sistem gereksinimleri](https://www.solidworks.com/sw/support/SystemRequirements.html) .
+> Windows 10 ' a ek olarak, SOLIDÇALıŞMALAR Windows 'un diğer sürümlerini destekler.  Ayrıntılar için bkz. [Solidçalışmalar sistem gereksinimleri](https://www.solidworks.com/sw/support/SystemRequirements.html) .
 
 ### <a name="lab-settings"></a>Laboratuvar ayarları
 
@@ -60,24 +61,24 @@ Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.
 
 ## <a name="template-virtual-machine-configuration"></a>Şablon sanal makine yapılandırması
 
-Bu bölümdeki adımlarda, Solidçalışmalar yükleme dosyalarını indirerek ve istemci yazılımını yükleyerek şablon sanal makinenizin nasıl ayarlanacağı gösterilmektedir:
+Bu bölümdeki adımlarda, SOLIDÇALıŞMALAR yükleme dosyalarını indirerek ve istemci yazılımını yükleyerek şablon sanal makinenizin nasıl ayarlanacağı gösterilmektedir:
 
 1. Şablon sanal makinesini başlatın ve RDP kullanarak makineye bağlanın.
 
-1. Solidçalışmalar istemci yazılımı için yükleme dosyalarını indirin. İndirmek için iki seçeneğiniz vardır:
+1. SOLIDÇALıŞMALAR istemci yazılımı için yükleme dosyalarını indirin. İndirmek için iki seçeneğiniz vardır:
    - [Solidçalışmalar müşteri portalından](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F)indirin.
    - Sunucudaki bir dizinden indirin.  Bu seçeneği kullandıysanız, sunucuya şablon sanal makineden erişilebildiğinden emin olmanız gerekir.  Örneğin, bu sunucu, laboratuvar hesabınızla eşlenen sanal ağda bulunabilir.
   
     Ayrıntılar için bkz. solidçalışmalarda [tek tek bilgisayarlara yükleme](http://help.solidworks.com/2019/english/Installation/install_guide/c_installing_on_individual_computers.htm?id=fc149e8a968a422a89e2a943265758d3#Pg0) , kesintisdçalışmalar Yükleme Kılavuzu.
 
-1. Yükleme dosyaları indirildikten sonra, Kesintisdçalışmalar Yükleme Yöneticisi 'Ni kullanarak istemci yazılımını yükleme. Bkz. [bir lisans istemcisini](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm) , Solidçalışmalar yükleme kılavuzuna yükleme.
+1. Yükleme dosyaları indirildikten sonra, KESINTISDÇALıŞMALAR Yükleme Yöneticisi 'Ni kullanarak istemci yazılımını yükleme. Bkz. [bir lisans istemcisini](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm) , solidçalışmalar yükleme kılavuzuna yükleme.
 
     > [!NOTE]
     > **Sunucu Ekle** iletişim kutusunda, lisans sunucunuz için kullanılan **bağlantı noktası numarası** ve LISANS sunucusunun adı veya IP adresi sorulur.
 
 ## <a name="cost"></a>Maliyet
 
-Bu sınıf için olası bir maliyet tahminini ele alalım. Bu tahmine lisans sunucusunu çalıştırmanın maliyeti dahil değildir. 25 öğrencilerden oluşan bir sınıf kullanacağız. 20 saatlik zamanlanan sınıf zamanı vardır. Ayrıca, her öğrenci, zamanlanan sınıf zamanı dışında ev ödevleri veya atamalar için 10 saatlik kota alır. Seçtiğimiz sanal makine boyutu, 160 laboratuvar birimi olan **küçük GPU (görselleştirme)** idi.
+Bu sınıf için olası bir maliyet tahminini ele alalım. Bu tahmin, lisans sunucusunu çalıştırmanın maliyetini içermez. 25 öğrencilerden oluşan bir sınıf kullanacağız. 20 saatlik zamanlanan sınıf zamanı vardır. Ayrıca, her öğrenci, zamanlanan sınıf zamanı dışında ev ödevleri veya atamalar için 10 saatlik kota alır. Seçtiğimiz sanal makine boyutu, 160 laboratuvar birimi olan **küçük GPU (görselleştirme)** idi.
 
 25 öğrenci \* (20 zamanlanan saat + 10 kota saati) \* 160 laboratuvar birimi * 0,01 saat başına usd = 1200,00 ABD Doları
 

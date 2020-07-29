@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü sonbahar 2019 ana bilgisayar havuzu oluşturma PowerShell-Azure
-description: PowerShell cmdlet 'leriyle Windows sanal masaüstü 'nde bir konak havuzu oluşturma.
+title: Windows sanal masaüstü (klasik) konak havuzu oluşturma PowerShell-Azure
+description: PowerShell cmdlet 'leriyle Windows sanal masaüstü 'nde (klasik) bir konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 552a3fdd20d67d81fe0c6a81a965fd3231da643d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7bc1e229711ef24b07641c5767f5f60c17a3b97c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527651"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291292"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>PowerShell ile ana bilgisayar havuzu oluşturma
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>PowerShell ile Windows sanal masaüstü 'nde (klasik) bir konak havuzu oluşturma
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../create-host-pools-powershell.md)bakın.
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir. Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../create-host-pools-powershell.md)bakın.
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
 

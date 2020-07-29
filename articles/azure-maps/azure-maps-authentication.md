@@ -1,37 +1,37 @@
 ---
-title: Kimlik doğrulama yöntemleri
+title: Microsoft Azure haritaları ile kimlik doğrulama
 titleSuffix: Azure Maps
-description: Bu makalede Azure Active Directory ve paylaşılan anahtar kimlik doğrulaması hakkında bilgi edineceksiniz. Her ikisi de Microsoft Azure haritaları Hizmetleri için kullanılır. Azure Maps abonelik anahtarını almayı öğrenin.
+description: Bu makalede Azure Active Directory ve paylaşılan anahtar kimlik doğrulaması hakkında bilgi edineceksiniz.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/12/2020
+ms.date: 07/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e270a9a1a773442a4d1d28d9bbfe37639cac7c65
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133393"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285841"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 
-Azure haritalar isteklerin kimliğini doğrulamak için iki yolu destekler: paylaşılan anahtar kimlik doğrulaması ve [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) kimlik doğrulaması. Bu makalede, Azure haritalar Hizmetleri uygulamanıza kılavuzluk eden bu kimlik doğrulama yöntemleri açıklanmaktadır.
+Azure haritalar isteklerin kimliğini doğrulamak için iki yolu destekler: paylaşılan anahtar kimlik doğrulaması ve [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) kimlik doğrulaması. Bu makalede, Azure haritalar Hizmetleri uygulamanıza kılavuzluk eden kimlik doğrulama yöntemlerinin her ikisi de açıklanmaktadır.
 
 > [!NOTE]
-> Azure haritalar ile güvenli iletişim geliştirmek için artık Aktarım Katmanı Güvenliği (TLS) 1,2 ' i destekliyoruz ve TLS 1,0 ve 1,1 desteğini devre dışı sunuyoruz. Hizmet kesintilerini önlemek için, **sunucularınızı ve uygulamalarınızı 2 nisan 2020 tarihinden önce TLS 1,2 kullanacak şekilde güncelleştirin**.  Şu anda TLS 1. x kullanıyorsanız, TLS 1,2 hazırlığınızı değerlendirin ve [tls 1,0 sorununun çözümünde](https://docs.microsoft.com/security/solving-tls1-problem)açıklanan sınamayla bir geçiş planı geliştirin.
+> Azure haritalar ile güvenli iletişim geliştirmek için artık Aktarım Katmanı Güvenliği (TLS) 1,2 ' i destekliyoruz ve TLS 1,0 ve 1,1 desteğini devre dışı sunuyoruz. Şu anda TLS 1. x kullanıyorsanız, TLS 1,2 hazırlığınızı değerlendirin ve [tls 1,0 sorununun çözümünde](https://docs.microsoft.com/security/solving-tls1-problem)açıklanan sınamayla bir geçiş planı geliştirin.
 
 ## <a name="shared-key-authentication"></a>Paylaşılan anahtar kimlik doğrulaması
 
- Birincil ve ikincil anahtarlar, Azure Maps hesabı oluşturulduktan sonra oluşturulur. Paylaşılan anahtar kimlik doğrulamasını kullanarak Azure Maps 'i çağırırken birincil anahtarı abonelik anahtarı olarak kullanmanız önerilir. Paylaşılan anahtar kimlik doğrulaması, bir Azure Maps hesabı tarafından oluşturulan bir anahtarı Azure Maps hizmetine geçirir. Azure haritalar hizmetlerine yönelik her istek için, URL 'ye bir parametre olarak *abonelik anahtarını* ekleyin. İkincil anahtar, kayan anahtar değişiklikleri gibi senaryolarda kullanılabilir.  
+ Birincil ve ikincil anahtarlar, Azure Maps hesabı oluşturulduktan sonra oluşturulur. Azure haritalar 'ı paylaşılan anahtar kimlik doğrulamasıyla çağırırken abonelik anahtarı olarak birincil anahtarı kullanmanız önerilir. Paylaşılan anahtar kimlik doğrulaması, bir Azure Maps hesabı tarafından oluşturulan bir anahtarı Azure Maps hizmetine geçirir. Azure haritalar hizmetlerine yönelik her istek için, URL 'ye bir parametre olarak *abonelik anahtarını* ekleyin. İkincil anahtar, kayan anahtar değişiklikleri gibi senaryolarda kullanılabilir.  
 
 Azure portal anahtarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. [kimlik doğrulamasını yönetme](https://aka.ms/amauthdetails).
 
-> [!Tip]
-> Anahtarlarınızın düzenli olarak yeniden oluşturulması önerilir. İki anahtarla sunulmaktadır, böylece diğer bir anahtarla bağlantıları sürdürebilmeniz için, diğerini yeniden oluşturma. Anahtarlarınızı yeniden oluşturduğunuzda, yeni anahtarlarla hesabınıza erişen tüm uygulamaları güncelleştirmeniz gerekir.
+> [!TIP]
+> Güvenlik nedeniyle, birincil ve ikincil anahtarlarınız arasında döndürme yapmanız önerilir. Anahtarları döndürmek için uygulamanızı ikincil anahtarı kullanacak şekilde güncelleştirin, dağıtın ve ardından birincil anahtarın yanındaki döngüye/Yenile düğmesine basarak yeni bir birincil anahtar oluşturun. Eski birincil anahtar devre dışı bırakılacak. Anahtar döndürme hakkında daha fazla bilgi için bkz. [anahtar döndürme ve denetleme ile Azure Key Vault ayarlama](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
 
 ## <a name="azure-ad-authentication"></a>Azure AD kimlik doğrulaması
 
@@ -64,7 +64,7 @@ Uygulama bir erişim belirteci aldıktan sonra, SDK ve/veya uygulama diğer REST
 | x-MS-istemci kimliği | 30d7cc.... 9F55        |
 | Yetkilendirme  | Taşıyıcı eyJ0e.... HNIVN |
 
-> [!Note]
+> [!NOTE]
 > `x-ms-client-id`Azure haritalar kimlik doğrulaması sayfasında görüntülenen Azure Maps hesap tabanlı GUID 'dir.
 
 Azure AD OAuth taşıyıcı belirteci kullanan bir Azure Maps Route isteği örneği aşağıda verilmiştir:
@@ -100,7 +100,7 @@ Azure haritalar REST API 'Lerinde yazma veya silme eylemlerini gerçekleştirmek
 
 | Azure haritalar hizmeti | Azure haritalar rol tanımı  |
 | :----------------- | :-------------------------- |
-| Veri               | Azure haritalar veri Katılımcısı |
+| Veriler               | Azure haritalar veri Katılımcısı |
 | Oluşturucu            | Azure haritalar veri Katılımcısı |
 | Uzamsal            | Azure haritalar veri Katılımcısı |
 
@@ -108,7 +108,7 @@ RBAC ayarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. [Azure
 
 #### <a name="custom-role-definitions"></a>Özel rol tanımları
 
-Uygulama güvenliğinin bir yönü, en az ayrıcalık ilkesini uygulamaktır. Bu ilke, güvenlik sorumlusunun yalnızca gerekli olan ve ek erişim olmadan erişime izin verilmesi gerektiğini gösterir. Özel rol tanımları oluşturmak, erişim denetimine daha fazla ayrıntı düzeyi gerektiren kullanım örneklerini destekleyebilir. Özel bir rol tanımı oluşturmak için, tanım için dahil edilecek veya hariç tutulacak belirli veri eylemlerini seçebilirsiniz. 
+Uygulama güvenliğinin bir yönü, en az ayrıcalık ilkesini uygulamaktır. Bu ilke, güvenlik sorumlusu için yalnızca gerekli olan ve ek erişime sahip olmayan erişime izin verilmesi gerektiğini gösterir. Özel rol tanımları oluşturmak, erişim denetimine daha fazla ayrıntı düzeyi gerektiren kullanım örneklerini destekleyebilir. Özel bir rol tanımı oluşturmak için, tanım için dahil edilecek veya hariç tutulacak belirli veri eylemlerini seçebilirsiniz.
 
 Özel rol tanımı daha sonra herhangi bir güvenlik sorumlusu için rol atamasında kullanılabilir. Azure özel rol tanımları hakkında daha fazla bilgi için bkz. [Azure özel rolleri](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
@@ -123,16 +123,22 @@ Uygulama güvenliğinin bir yönü, en az ayrıcalık ilkesini uygulamaktır. Bu
 
 ### <a name="understanding-scope"></a>Kapsamı anlama
 
-Rol ataması oluştururken, Azure kaynak hiyerarşisi içinde tanımlanır. Hiyerarşinin en üstünde bir [Yönetim grubu](https://docs.microsoft.com/azure/governance/management-groups/overview) ve en düşük bir Azure Maps hesabı gibi bir Azure kaynağıdır.
+Rol ataması oluştururken, Azure kaynak hiyerarşisi içinde tanımlanır. Hiyerarşinin en üstünde bir [Yönetim grubu](https://docs.microsoft.com/azure/governance/management-groups/overview) ve en düşük değer Azure Maps hesabı gibi bir Azure kaynağıdır.
 Bir kaynak grubuna rol ataması atamak, gruptaki birden çok Azure harita hesabına veya kaynağına erişimi etkinleştirebilir.
 
-> [!Tip]
-> Microsoft 'un genel önerisi, aynı Azure aboneliğinde mevcut olan **diğer Azure Maps hesaplarına istenmeden erişimi** önlediği Için Azure Maps hesap kapsamına erişim atanıyor.
+> [!TIP]
+> Microsoft 'un genel önerisi, aynı Azure aboneliğinde mevcut olan **diğer Azure Maps hesaplarına istenmeden erişimi** önlediği Için Azure Maps hesap kapsamına erişim atacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* RBAC hakkında daha fazla bilgi edinmek için bkz. [rol tabanlı erişim denetimine genel bakış](https://docs.microsoft.com/azure/role-based-access-control/overview)
+RBAC hakkında daha fazla bilgi için bkz.
+> [!div class="nextstepaction"]
+> [Rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* Azure AD ve Azure Maps ile bir uygulamanın kimliğini doğrulama hakkında daha fazla bilgi edinmek için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+Azure AD ve Azure Maps ile bir uygulamanın kimliğini doğrulama hakkında daha fazla bilgi edinmek için bkz.
+> [!div class="nextstepaction"]
+> [Azure haritalar 'da kimlik doğrulamasını yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)
 
-* Azure haritalar Harita Denetimi ve Azure AD 'nin kimlik doğrulaması hakkında daha fazla bilgi edinmek için bkz. [Azure maps harita denetimi kullanma](https://aka.ms/amaadmc).
+Azure AD ile Azure Maps Harita Denetimi kimlik doğrulaması hakkında daha fazla bilgi edinmek için bkz.
+> [!div class="nextstepaction"]
+> [Azure haritalar 'ı kullanın Harita Denetimi](https://aka.ms/amaadmc)

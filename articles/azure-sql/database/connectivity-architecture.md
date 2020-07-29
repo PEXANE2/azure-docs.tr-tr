@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 3d8bf23dcb9bfc390b9e165bcf38bf8feea5135f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc96cc704533c2b4fb5dc25b41a2440c66849b53
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833681"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289075"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics bağlantı mimarisi
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,10 +80,10 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Avustralya Central2   | 20.36.113.0 |
 | Doğu Avustralya       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Avustralya Güneydoğu | 191.239.192.109, 13.73.109.251 |
-| Güney Brezilya         | 104.41.11.5, 191.233.200.14 |
+| Brezilya Güney         | 104.41.11.5, 191.233.200.14 |
 | Orta Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Doğu Kanada          | 40.86.226.166      |
-| Orta ABD           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
+| Central US           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Doğu Çin           | 139.219.130.35     |
 | Çin Doğu 2         | 40.73.82.1         |
 | Kuzey Çin          | 139.219.15.17      |
@@ -107,7 +107,7 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Norveç Batı          | 51.120.216.0       |
 | Güney Afrika Kuzey   | 102.133.152.0      |
 | Güney Afrika Batı    | 102.133.24.0       |
-| Orta Güney ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32   |
+| Orta Güney ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
 | Güneydoğu Asya      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
 | İsviçre Kuzey    | 51.107.56.0, 51.107.57.0 |
 | İsviçre Batı     | 51.107.152.0, 51.107.153.0 |
@@ -116,9 +116,9 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Güney Birleşik Krallık             | 51.140.184.11      |
 | Batı Birleşik Krallık              | 51.141.8.11        |
 | Orta Batı ABD      | 13.78.145.25       |
-| Batı Avrupa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
+| West Europe          | 40.68.37.158, 191.237.232.75, 104.40.168.105, 52.236.184.163  |
 | Batı ABD              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| Batı ABD 2            | 13.66.226.202, 40.78.240.8  |
+| Batı ABD 2            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
 |                      |                    |
 
 ## <a name="next-steps"></a>Sonraki adımlar

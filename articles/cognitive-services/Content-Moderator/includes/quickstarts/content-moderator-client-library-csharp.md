@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 3245b4d0ce164acd8fcd367597dcbddc9436c782
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: aa2663706d052619dd1f40c0154222b0dac8c790
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965928"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298867"
 ---
 .NET için Content Moderator istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Content Moderator, zararlı olabilecek, riskli veya başka türlü istenmeyen malzemeler için metin, resim ve video içeriğini denetleyen bir bilişsel hizmettir. Hizmet, böyle bir öğeyle karşılaştığında içeriğe uygun etiketler (bayraklar) ekler. Uygulamanız daha sonra bayraklı içeriği idare edebilir veya kullanıcılara yönelik hedeflenen ortamı koruyabilir.
 
@@ -29,7 +29,7 @@ ms.locfileid: "85965928"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -38,10 +38,9 @@ ms.locfileid: "85965928"
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Content moderator için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
 * [Azure Portal](https://portal.azure.com/) kaynağı görüntüleyin
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, ve sırasıyla adlı anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `CONTENT_MODERATOR_SUBSCRIPTION_KEY` `CONTENT_MODERATOR_ENDPOINT` .
+Kaynağından bir anahtar aldıktan sonra anahtar ve sırasıyla adlı uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `CONTENT_MODERATOR_SUBSCRIPTION_KEY` `CONTENT_MODERATOR_ENDPOINT` .
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
@@ -94,7 +93,7 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 Aşağıdaki sınıflar Content Moderator .NET istemci kitaplığının bazı önemli özelliklerini işler.
 
-|Name|Description|
+|Ad|Açıklama|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Imagedenetlemesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|

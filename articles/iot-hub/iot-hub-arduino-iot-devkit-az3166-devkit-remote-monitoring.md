@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81258465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337968"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Mxyongaıot DevKit 'i Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlama
 
@@ -21,7 +22,7 @@ Bu öğreticide, Azure IoT uzaktan Izleme çözüm hızlandırıcısına algıla
 
 [Mxyongaıot DevKit](https://aka.ms/iot-devkit) , zengin çevre birimleri ve sensörlerle birlikte hepsi bir arada bir uyumlu panotir. [Arduino için Visual Studio Code uzantısını](https://aka.ms/arduino)kullanarak bu BT için geliştirme yapabilirsiniz. Ayrıca, Microsoft Azure hizmetlerinden yararlanan prototip Nesnelerin İnterneti (IoT) çözümlerine kılavuzluk eden büyüyen bir [Proje kataloğu](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) ile birlikte sunulur.
 
-## <a name="what-you-need"></a>Ne gerekiyor
+## <a name="what-you-need"></a>Gerekenler
 
 [Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) şu şekilde sona erdirin:
 
@@ -133,7 +134,5 @@ Sorunlarla karşılaşırsanız [IoT Geliştirici seti SSS](https://microsoft.gi
 Artık bir DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlamayı ve algılayıcı verilerini görselleştirmeyi öğrendiğinize göre, önerilen sonraki adımlar aşağıda verilmiştir:
 
 * [Azure IoT çözüm hızlandırıcılarına genel bakış](https://docs.microsoft.com/azure/iot-suite/)
-
-* [Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama](/azure/iot-central/core/howto-connect-devkit)
 
 * [IoT Geliştirici seti](https://microsoft.github.io/azure-iot-developer-kit/) 

@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 description: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium ağını dağıtma ve yapılandırma
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081295"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286062"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 
@@ -34,7 +34,9 @@ Seçenek | Hizmet modeli | Yaygın kullanım durumu
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hiper muhasebe Fabric Consortium mimarisi
 
-Azure 'da hiper muhasebe doku ağı oluşturmak için, iş düğümleri ile sıralama hizmetini ve organizasyonu dağıtmanız gerekir. Şablon dağıtımının bir parçası olarak oluşturulan farklı temel bileşenler şunlardır:
+Azure 'da hiper muhasebe doku ağı oluşturmak için, iş düğümleri ile sıralama hizmetini ve organizasyonu dağıtmanız gerekir. Azure Kubernetes hizmet çözümü şablonunda hiper muhasebe dokusunu kullanarak, sipariş düğümleri veya eş düğümleri oluşturabilirsiniz. Oluşturmak istediğiniz her düğüm için şablonu dağıtmanız gerekir.
+
+Şablon dağıtımının bir parçası olarak oluşturulan farklı temel bileşenler şunlardır:
 
 - **Orderer düğümleri**: muhasebedeki işlem sıralamaktan sorumlu bir düğüm. Diğer düğümlerle birlikte, sıralı düğümler hiper muhasebe doku ağının sıralama hizmetini oluşturur.
 
@@ -58,22 +60,13 @@ Dağıtım üzerindeki şablon, aboneliğinizdeki çeşitli Azure kaynaklarını
 - **Azure yönetilen disk**: Azure yönetilen disk, muhasebe ve eş düğüm dünya durumu veritabanı için kalıcı mağazaya yöneliktir.
 - **Genel IP**: küme ile arabirim oluşturma için dağıtılan aks KÜMESININ genel IP uç noktası.
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hiper muhasebe doku blok zinciri ağı kurulumu
+## <a name="deploy-the-ordererpeer-organization"></a>Sipariş/eş kuruluşu dağıtma
 
 Başlamak için birkaç sanal makine ve standart depolama hesabı dağıtımı destekleyebilen bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/free/).
 
-Aşağıdaki adımları kullanarak hiper muhasebe doku blok zinciri ağını ayarlayın:
+HLF ağ bileşenleri dağıtımına başlamak için [Azure Portal](https://portal.azure.com)gidin.
 
-- [Sipariş/eş kuruluşu dağıtma](#deploy-the-ordererpeer-organization)
-- [Consortium oluşturma](#build-the-consortium)
-
-## <a name="deploy-the-ordererpeer-organization"></a>Sipariş/eş kuruluşu dağıtma
-
-HLF ağ bileşenleri dağıtımına başlamak için [Azure Portal](https://portal.azure.com)gidin. **Azure Kubernetes hizmetinde hiper muhasebe dokusunu**aramak > **blok zinciri > kaynak oluştur** ' u seçin.
-
-1. Şablon dağıtımını başlatmak için **Oluştur** ' u seçin. **Azure Kubernetes hizmetinde hiper defter oluşturma dokusu** görüntülenir.
-
-    ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+1. **Azure Kubernetes hizmeti 'nde (Önizleme) hiper muhasebe dokusunu**aramak > **blok zinciri > kaynak oluştur** ' u seçin.
 
 2. **Temel bilgiler** sayfasında proje ayrıntılarını girin.
 
@@ -103,7 +96,7 @@ HLF ağ bileşenleri dağıtımına başlamak için [Azure Portal](https://porta
     - **Kök sertifika özel anahtarı**: kök sertifikanın özel anahtarını karşıya yükleyin. Hem ortak hem de özel anahtar birleştirilmiş bir. ped sertifikanız varsa, bu sertifikayı da buraya yükleyin.
 
 
-6. Doku ağ bileşenlerinin oluşturulacağı temeldeki altyapı olan Azure Kubernetes kümesi yapılandırmasını tanımlamak için **aks küme ayarları** sekmesini seçin.
+6. Doku ağ bileşenlerinin ayarlanacağı temeldeki altyapı olan Azure Kubernetes kümesi yapılandırmasını tanımlamak için **aks küme ayarları** sekmesini seçin.
 
     ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
@@ -136,7 +129,7 @@ Sıralama hizmetini ve eş düğümlerini dağıtan blok zinciri Konsorsiyumu g�
 > Sağlanan Azure HLF (azhlf) betiği yalnızca demo/DevTest senaryolarıyla yardımcı olur. Bu betik tarafından oluşturulan kanal ve konsorsiyumun demo/DevTest senaryosunu basitleştirecek temel HLF ilkeleri vardır. Üretim Kurulumu için, yerel HLF API 'Lerini kullanarak, kuruluşunuzun uyumluluk ihtiyaçlarına uygun şekilde Channel/Consortium HLF ilkelerini güncelleştirmenizi öneririz.
 
 
-Azure HLF betiğini çalıştırmaya yönelik tüm komutlar Azure Bash komut satırı aracılığıyla yürütülebilir. Arabirim (CLı). Azure Shell web sürümünde oturum açabilirsiniz  ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) seçeneğinin sağ üst köşesinde bulunan seçeneğini Azure portal. Komut isteminde Bash CLı yazın.
+Azure HLF betiğini çalıştırmaya yönelik tüm komutlar Azure Bash komut satırı aracılığıyla yürütülebilir. Arabirim (CLı).   ![Azure Portal sağ üst köşesindeki Azure Kubernetes hizmet şablonu seçeneğinde hiper muhasebe dokusunda Azure Shell web sürümünde oturum açabilirsiniz ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) . Komut isteminde Bash CLı yazın veya kabuk araç çubuğundan *Bash* ' i seçin.
 
 Daha fazla bilgi için bkz. [Azure kabuğu](../../cloud-shell/overview.md) .
 
@@ -147,17 +140,17 @@ Aşağıdaki görüntüde, bir orderer organizasyonu ve eş kuruluş arasında k
 
 ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-İstemci uygulamasının ilk kurulumu için aşağıdaki komutları izleyin: 
+İstemci uygulamasının ilk kurulumu için bölümleri doldurun: 
 
-1.  [İstemci uygulama dosyalarını indirin](#download-client-application-files)
-2.  [Ortam değişkenlerini belirleme](#setup-environment-variables)
-3.  [Kuruluş bağlantısı profilini, yönetici kullanıcıyı ve MSP 'yi içeri aktarma](#import-organization-connection-profile-admin-user-identity-and-msp)
+1. İstemci uygulama dosyalarını indirin
+1. Ortam değişkenlerini ayarlama
+1. Kuruluş bağlantısı profilini, yönetici kullanıcıyı ve MSP 'yi içeri aktarma
 
-İlk kurulumu tamamladıktan sonra, aşağıdaki işlemleri gerçekleştirmek için istemci uygulamasını kullanabilirsiniz:  
+İlk kurulumu tamamladıktan sonra, aşağıdaki işlemleri gerçekleştirmek için istemci uygulamasını kullanın:  
 
-- [Kanal yönetimi komutları](#channel-management-commands)
-- [Konsorsiyum yönetim komutları](#consortium-management-commands)
-- [Chaincode yönetim komutları](#chaincode-management-commands)
+- Kanal yönetimi
+- Konsorsiyum yönetimi
+- Chaincode yönetimi
 
 ### <a name="download-client-application-files"></a>İstemci uygulama dosyalarını indirin
 
@@ -168,19 +161,16 @@ curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kuberne
 cd azhlfTool
 npm install
 npm run setup
-
 ```
-Bu komutlar, Azure HLF istemci uygulaması kodunu genel GitHub deposundan, ardından tüm bağımlı NPM paketlerini yükleyerek kopyalayacaktır. Komutun başarılı bir şekilde yürütülmesi tamamlandıktan sonra, geçerli dizinde bir node_modules klasörü görebilirsiniz. Gerekli tüm paketler node_modules klasörüne yüklenir.
 
+Bu komutlar, Azure HLF istemci uygulaması kodunu genel GitHub deposundan, ardından tüm bağımlı NPM paketlerini yükleyerek kopyalayacaktır. Komutun başarılı bir şekilde yürütülmesi tamamlandıktan sonra, geçerli dizinde bir node_modules klasörü görebilirsiniz. Gerekli tüm paketler node_modules klasörüne yüklenir.
 
 ### <a name="setup-environment-variables"></a>Ortam değişkenlerini belirleme
 
 > [!NOTE]
 > Tüm ortam değişkenleri Azure Kaynak adlandırma kuralını izler.
 
-
-**Orderer kuruluş istemcisi için ortam değişkenlerinin altına ayarla**
-
+#### <a name="set-environment-variables-for-orderer-organization-client"></a>Orderer kuruluş istemcisi için ortam değişkenlerini ayarlama
 
 ```bash
 ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
@@ -189,7 +179,8 @@ ORDERER_ORG_NAME=<ordererOrgName>
 ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-**Eş kuruluş istemcisi için aşağıdaki ortam değişkenlerini ayarlayın**
+
+#### <a name="set-the-environment-variables-for-peer-organization-client"></a>Eş kuruluş istemcisi için ortam değişkenlerini ayarlama
 
 ```bash
 PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
@@ -202,7 +193,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > Konsorsiyumdaki eş/çalışma sayısına bağlı olarak, eş komutlarını tekrarlamanız ve ortam değişkenini uygun şekilde ayarlamanız gerekebilir.
 
-**Azure Depolama hesabını ayarlamak için aşağıdaki ortam değişkenlerini ayarlayın**
+#### <a name="set-the-environment-variables-for-setting-up-azure-storage-account"></a>Azure Depolama hesabını ayarlamak için ortam değişkenlerini ayarlama
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -212,7 +203,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-Azure depolama hesabı oluşturma adımlarını izleyin. Zaten oluşturulmuş Azure depolama hesabınız varsa, bu adımları atlayın
+Azure depolama hesabı oluşturmak için aşağıdaki adımları kullanın. Zaten oluşturulmuş Azure depolama hesabınız varsa, bu adımları atlayın.
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -220,14 +211,14 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-Azure depolama hesabında bir dosya paylaşımının oluşturulması için aşağıdaki adımları izleyin. Zaten oluşturulmuş bir dosya paylaşımınız varsa, bu adımları atlayın
+Azure depolama hesabında bir dosya paylaşımının oluşturulması için aşağıdaki adımları kullanın. Zaten oluşturulmuş bir dosya paylaşımınız varsa, bu adımları atlayın
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
 ```
 
-Azure dosya paylaşma bağlantı dizesi oluşturmak için aşağıdaki adımları izleyin
+Azure dosya paylaşma bağlantı dizesi oluşturmak için aşağıdaki adımları kullanın.
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -256,39 +247,13 @@ Eş kuruluş için:
 ./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-### <a name="channel-management-commands"></a>Kanal yönetimi komutları
-
-> [!NOTE]
-> Herhangi bir kanal işlemine başlamadan önce, istemci uygulamasının ilk kurulumunun tamamlandığından emin olun.  
-
-Aşağıdaki iki kanal yönetim komutu verilmiştir:
-
-1. [Kanal Oluştur komutu](#create-channel-command)
-2. [Çapa eşleri ayarlanıyor komutu](#setting-anchor-peers-command)
-
-
-#### <a name="create-channel-command"></a>Kanal Oluştur komutu
+### <a name="create-channel-command"></a>Kanal Oluştur komutu
 
 Orderer kuruluş istemcisinden yeni bir kanal oluşturmak için komutunu verin. Bu komut, yalnızca içinde orderer organizasyonu olan bir kanal oluşturur.  
 
 ```bash
 ./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
-
-#### <a name="setting-anchor-peers-command"></a>Çapa eşleri ayarlanıyor komutu
-Eş kuruluş istemcisinden, belirtilen kanalda eş kuruluşa ait bağlantı eşleri ayarlamak için aşağıdaki komutu verin.
-
->[!NOTE]
-> Bu komutu yürütmeden önce, eşler arası kuruluşun, konsorsiyum yönetim komutları kullanılarak kanala eklendiğinden emin olun.
-
-```bash
-./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
-```
-
-`<anchorPeersList>`, bir çapa eşi olarak ayarlanacak eş düğümlerinin boşlukla ayrılmış bir listesidir. Örneğin,
-
-  - `<anchorPeersList>`Yalnızca peer1 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" olarak ayarlayın.
-  - `<anchorPeersList>`Hem peer1 hem de peer3 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" "peer3" olarak ayarlayın.
 
 ### <a name="consortium-management-commands"></a>Konsorsiyum yönetim komutları
 
@@ -324,6 +289,21 @@ Bir kanala ve konsorsiyuma bir eş kuruluş eklemek için aşağıdaki komutlar�
 
 Benzer şekilde, kanala daha fazla eş kurum eklemek için, eş ortam değişkenlerini gerekli eş kuruluşa göre güncelleştirin ve 1 ile 4 arasındaki adımları yürütün.
 
+### <a name="set-anchor-peers-command"></a>Tutturucu eşdüzey (ler) komutunu ayarla
+
+Eş kuruluş istemcisinde, belirtilen kanalda eş kuruluşa ait bağlantı eşleri ayarlamak için komutunu verin.
+
+>[!NOTE]
+> Bu komutu yürütmeden önce, eşler arası kuruluşun, konsorsiyum yönetim komutları kullanılarak kanala eklendiğinden emin olun.
+
+```bash
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
+```
+
+`<anchorPeersList>`, bir çapa eşi olarak ayarlanacak eş düğümlerinin boşlukla ayrılmış bir listesidir. Örneğin,
+
+  - `<anchorPeersList>`Yalnızca peer1 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" olarak ayarlayın.
+  - `<anchorPeersList>`Hem peer1 hem de peer3 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" "peer3" olarak ayarlayın.
 
 ### <a name="chaincode-management-commands"></a>Chaincode yönetim komutları
 
@@ -344,7 +324,7 @@ CC_VERSION=<chaincodeVersion>
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
 # CC_PATH contains the path where your chaincode is place.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  

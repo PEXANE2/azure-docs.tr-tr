@@ -5,11 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443409"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286011"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU sanal makinelerle laboratuvar kurma
 
@@ -31,7 +32,7 @@ Aşağıdaki tabloda açıklandığı gibi, bilgi *işlem* GPU boyutu yoğun iş
 | ---- | ----- | --- | ----------- | 
 | Küçük GPU (Işlem) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut, yapay zeka (AI) ve derin öğrenme gibi bilgisayar yoğunluklu uygulamalar için idealdir. |
 
-*Görselleştirme* GPU boyutları grafik yoğun uygulamalar için tasarlanmıştır.  Örneğin, [Solidçalışmamühendisliği sınıf türü](./class-type-solidworks.md) **küçük GPU (görselleştirme)** boyutunu kullanmayı gösterir.  Öğrenciler, düz nesnelerin modellenmesi ve görselleştirilmesi için Solidçalışıyor 3D bilgisayar destekli tasarım (CAD) ortamıyla etkileşimde bulunduğundan, bu tür bir sınıf için görselleştirme GPU 'SU uygundur.
+*Görselleştirme* GPU boyutları grafik yoğun uygulamalar için tasarlanmıştır.  Örneğin, [Solidçalışmamühendisliği sınıf türü](./class-type-solidworks.md) **küçük GPU (görselleştirme)** boyutunu kullanmayı gösterir.  Öğrenciler, düz nesnelerin modellenmesi ve görselleştirilmesi için SOLIDÇALıŞıYOR 3D bilgisayar destekli tasarım (CAD) ortamıyla etkileşimde bulunduğundan, bu tür bir sınıf için görselleştirme GPU 'SU uygundur.
 
 | Boyut | Çekirdekler | RAM | Açıklama | 
 | ---- | ----- | --- | ----------- | 
@@ -44,7 +45,7 @@ Laboratuvar sanal makinelerinizin GPU yeteneklerini avantajlarından yararlanmak
 !["GPU sürücülerini yükler" seçeneğinin gösterildiği "yeni laboratuvar" ekran görüntüsü](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
 Önceki görüntüde gösterildiği gibi, bu seçenek varsayılan olarak etkindir ve seçtiğiniz GPU ve görüntü türü için *en son* sürücülerin yüklü olmasını sağlar.
-- Bir *işlem* GPU boyutu seçtiğinizde, laboratuvar sanal makinelerinizin [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU 'su tarafından gücü vardır.  Bu durumda, yüksek performanslı bilgi işlem sağlayan en son [Işlem Birleşik cihaz mimarisi (CUDA)](https://www.nvidia.com/object/io_69526.html) sürücüleri yüklenir.
+- Bir *işlem* GPU boyutu seçtiğinizde, laboratuvar sanal makinelerinizin [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU 'su tarafından gücü vardır.  Bu durumda, yüksek performanslı bilgi işlem sağlayan en son [Işlem Birleşik cihaz mimarisi (CUDA)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) sürücüleri yüklenir.
 - *Görselleştirme* GPU boyutunu seçtiğinizde, laboratuvar sanal makineleriniz [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU ve [kılavuz teknolojisi](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)tarafından desteklenir.  Bu durumda, en son KıLAVUZ sürücüleri yüklenir ve böylece grafik yoğun uygulamaların kullanımı sağlanır.
 
 ### <a name="install-the-drivers-manually"></a>Sürücüleri el ile yükler
@@ -112,7 +113,7 @@ Bu bölümde, GPU sürücülerinizin düzgün şekilde yüklendiği nasıl doğr
 Aşağıdaki makalelere bakın:
 
 - [Sınıf laboratuvarları oluşturma ve yönetme](how-to-manage-classroom-labs.md)
-- [Solidçalışmalar bilgisayar destekli tasarım (CAD) sınıfı türü](class-type-solidworks.md)
+- [SOLIDÇALıŞMALAR bilgisayar destekli tasarım (CAD) sınıfı türü](class-type-solidworks.md)
 - [MATLAB (matris Laboratuvarı) sınıf türü](class-type-matlab.md)
 
 

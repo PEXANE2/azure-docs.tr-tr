@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251205"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285875"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar
 
@@ -57,9 +57,9 @@ Traffic Manager DNS aramalarını gerçekleştirir ve kullanıcının en uygun u
 
 Uç noktaları ve yönlendirmeyi ayarlama hakkında daha fazla bilgi için, bkz. [Traffic Manager kullanarak coğrafi trafik yönlendirme yöntemini yapılandırma](../traffic-manager/traffic-manager-configure-geographic-routing-method.md).
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Azure ön kapı hizmeti ile katman 7 uygulama yönlendirme
+### <a name="application-routing-with-azure-front-door-service"></a>Azure ön kapı hizmeti ile uygulama yönlendirme
 
-Traffic Manager trafiği şekillendirmek için DNS (katman 3) kullanır. [Azure ön kapı hizmeti](../frontdoor/front-door-overview.md) bir http/https (katman 7) yönlendirme seçeneği sağlar. Azure ön kapı hizmeti 'nin ek özellikleri TLS sonlandırma, özel etki alanı, Web uygulaması güvenlik duvarı, URL yeniden yazma ve oturum benzeşimi içerir. En uygun çözümü anlamak için uygulama trafiğinizin ihtiyaçlarını gözden geçirin.
+Bölünmüş TCP tabanlı her noktaya yayın protokolünü kullanarak [Azure ön kapı hizmeti](../frontdoor/front-door-overview.md) , son kullanıcılarınızın en yakın ön kapı pop 'Una (varlık noktası) daha önce bağlanmasını sağlar. Azure ön kapı hizmeti 'nin ek özellikleri TLS sonlandırma, özel etki alanı, Web uygulaması güvenlik duvarı, URL yeniden yazma ve oturum benzeşimi içerir. En uygun çözümü anlamak için uygulama trafiğinizin ihtiyaçlarını gözden geçirin.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Genel sanal ağ eşlemesi ile Interconnect bölgeleri
 

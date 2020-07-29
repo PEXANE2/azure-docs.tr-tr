@@ -4,19 +4,19 @@ description: Web uygulamanıza yönelik başarısız isteklerin hızında olağa
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30bb95c4c47c02fe6b3d31d6e6763656aa96fdec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045814"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315946"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Akıllı algılama-hata bozuklukları
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) , Web uygulamanız başarısız isteklerin hızında anormal bir artış yaşıyorsa sizi neredeyse gerçek zamanlı olarak uyarır. HTTP isteklerinin veya başarısız olarak bildirilen bağımlılık çağrılarının hızında olağan dışı bir artış algılar. İstekler için, başarısız olan isteklerin genellikle 400 veya üzeri yanıt kodları vardır. Sorunu önceliklendirmenize ve tanılamanıza yardımcı olması için, uyarı ayrıntılarında hataların özelliklerinin ve ilgili uygulama verilerinin bir analizi verilmiştir. Ayrıca, daha fazla tanılama için Application Insights portalına bağlantılar da vardır. Özelliğin, normal hata oranını tahmin etmek için makine öğrenimi algoritmalarını kullandığından, kurulum veya yapılandırma gerekmez.
+[Application Insights](./app-insights-overview.md) , Web uygulamanız başarısız isteklerin hızında anormal bir artış yaşıyorsa sizi neredeyse gerçek zamanlı olarak uyarır. HTTP isteklerinin veya başarısız olarak bildirilen bağımlılık çağrılarının hızında olağan dışı bir artış algılar. İstekler için, başarısız olan isteklerin genellikle 400 veya üzeri yanıt kodları vardır. Sorunu önceliklendirmenize ve tanılamanıza yardımcı olması için, uyarı ayrıntılarında hataların özelliklerinin ve ilgili uygulama verilerinin bir analizi verilmiştir. Ayrıca, daha fazla tanılama için Application Insights portalına bağlantılar da vardır. Özelliğin, normal hata oranını tahmin etmek için makine öğrenimi algoritmalarını kullandığından, kurulum veya yapılandırma gerekmez.
 
-Bu özellik, bulutta veya kendi sunucularınızda barındırılan, uygulama isteği veya bağımlılık verileri üreten tüm Web uygulamaları için geçerlidir. Örneğin, [Trackrequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) veya [trackdependency ()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)öğesini çağıran bir çalışan rolüne sahipseniz.
+Bu özellik, bulutta veya kendi sunucularınızda barındırılan, uygulama isteği veya bağımlılık verileri üreten tüm Web uygulamaları için geçerlidir. Örneğin, [Trackrequest ()](./api-custom-events-metrics.md#trackrequest) veya [trackdependency ()](./api-custom-events-metrics.md#trackdependency)öğesini çağıran bir çalışan rolüne sahipseniz.
 
-[Projeniz için Application Insights](../../azure-monitor/app/app-insights-overview.md)ayarladıktan sonra ve uygulamanız en az miktarda veri oluşturursa, hata Anaklarının akıllı algılanması, uygulamanızın normal davranışını öğrenirken ve uyarı gönderebilmeniz için 24 saat sürer.
+[Projeniz için Application Insights](./app-insights-overview.md)ayarladıktan sonra ve uygulamanız en az miktarda veri oluşturursa, hata Anaklarının akıllı algılanması, uygulamanızın normal davranışını öğrenirken ve uyarı gönderebilmeniz için 24 saat sürer.
 
 Örnek bir uyarı aşağıda verilmiştir:
 
@@ -31,10 +31,10 @@ Uyarı ayrıntılarına şu bilgileri söylersiniz:
 * Application Insights verilerde doğrudan ilgili aramalarla bağlantı sağlar.
 
 ## <a name="benefits-of-smart-detection"></a>Akıllı algılama 'nın avantajları
-Sıradan [ölçüm uyarıları](../../azure-monitor/platform/alerts-log.md) bir sorun olabileceğini bildirir. Ancak akıllı algılama, sizin için tanılama işini başlatır, aksi takdirde sizin tarafınızdan yapacağınız Analize sahip olursunuz. Düzenli olarak paketlenmiş sonuçları elde edersiniz ve bu da sorunun köküne hızlı bir şekilde ulaşmanıza yardımcı olur.
+Sıradan [ölçüm uyarıları](../platform/alerts-log.md) bir sorun olabileceğini bildirir. Ancak akıllı algılama, sizin için tanılama işini başlatır, aksi takdirde sizin tarafınızdan yapacağınız Analize sahip olursunuz. Düzenli olarak paketlenmiş sonuçları elde edersiniz ve bu da sorunun köküne hızlı bir şekilde ulaşmanıza yardımcı olur.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
-Akıllı algılama, uygulamanızdan alınan verileri ve özellikle de hata oranlarını izler. Bu kural, özelliğin yanlış olduğu istek sayısını `Successful request` ve özelliğin yanlış olduğu bağımlılık çağrılarının sayısını sayar `Successful call` . İstekler için varsayılan olarak `Successful request == (resultCode < 400)` (kendi [trackrequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) aramalarınızı [filtrelemek](../../azure-monitor/app/api-filtering-sampling.md#filtering) veya oluşturmak için özel kod yazmadığınız müddetçe). 
+Akıllı algılama, uygulamanızdan alınan verileri ve özellikle de hata oranlarını izler. Bu kural, özelliğin yanlış olduğu istek sayısını `Successful request` ve özelliğin yanlış olduğu bağımlılık çağrılarının sayısını sayar `Successful call` . İstekler için varsayılan olarak `Successful request == (resultCode < 400)` (kendi [trackrequest](./api-custom-events-metrics.md#trackrequest) aramalarınızı [filtrelemek](./api-filtering-sampling.md#filtering) veya oluşturmak için özel kod yazmadığınız müddetçe). 
 
 Uygulamanızın performansı tipik bir davranış düzenine sahiptir. Bazı istekler veya bağımlılık çağrıları başkalarından daha fazla hataya neden olur; ve genel hata oranı yük arttıkça devam edebilir. Akıllı algılama, bu anormallikleri bulmak için makine öğrenimini kullanır.
 
@@ -48,7 +48,7 @@ Hizmetiniz bu çağrılarla birlikte görüntülendiğinde, çözümleyici, tan�
 
 Sonuç analizi, bir olarak yapılandırmadığınız sürece size uyarı olarak gönderilir.
 
-[El ile ayarladığınız uyarılar](../../azure-monitor/platform/alerts-log.md)gibi, tetiklenen uyarının durumunu inceleyebilirsiniz ve sorun düzeltildiğinde çözülebilir. Application Insights kaynağınızın Uyarılar sayfasında uyarı kurallarını yapılandırın. Ancak, diğer uyarıların aksine akıllı algılama 'yı ayarlamanıza veya yapılandırmanıza gerek yoktur. İsterseniz, devre dışı bırakabilir veya hedef e-posta adreslerini değiştirebilirsiniz.
+[El ile ayarladığınız uyarılar](../platform/alerts-log.md)gibi, tetiklenen uyarının durumunu inceleyebilirsiniz ve sorun düzeltildiğinde çözülebilir. Application Insights kaynağınızın Uyarılar sayfasında uyarı kurallarını yapılandırın. Ancak, diğer uyarıların aksine akıllı algılama 'yı ayarlamanıza veya yapılandırmanıza gerek yoktur. İsterseniz, devre dışı bırakabilir veya hedef e-posta adreslerini değiştirebilirsiniz.
 
 ### <a name="alert-logic-details"></a>Uyarı mantığı ayrıntıları
 
@@ -292,7 +292,7 @@ Hata anomali uyarı kuralını devre dışı bırakabildiğinize veya silebildi�
 
 Uyarı, başarısız istek oranının anormal bir şekilde algılandığını gösterir. Uygulamanız veya ortamıyla ilgili bir sorun olabilir.
 
-Daha fazla araştırmak için ' Application Insights tüm ayrıntıları görüntüle ' seçeneğine tıklayın. bu sayfadaki bağlantılar, ilgili istekler, özel durum, bağımlılık veya izlemelerle filtrelenmiş bir [arama sayfasına](../../azure-monitor/app/diagnostic-search.md) doğrudan götürür. 
+Daha fazla araştırmak için ' Application Insights tüm ayrıntıları görüntüle ' seçeneğine tıklayın. bu sayfadaki bağlantılar, ilgili istekler, özel durum, bağımlılık veya izlemelerle filtrelenmiş bir [arama sayfasına](./diagnostic-search.md) doğrudan götürür. 
 
 Ayrıca, [Azure Portal](https://portal.azure.com)açabilir, uygulamanız için Application Insights kaynağına gidebilir ve sorunlar sayfasını açabilirsiniz.
 
@@ -317,7 +317,7 @@ En son tetiklenen uyarılara ulaşmak için Application Insights kaynak sayfası
 ## <a name="whats-the-difference-"></a>Fark nedir?..
 Hata anomali algılama, Application Insights benzer ancak farklı özellikleri tamamlar.
 
-* [Ölçüm uyarıları](../../azure-monitor/platform/alerts-log.md) sizin tarafınızdan AYARLANıR ve CPU doluluk, istek hızları, sayfa yükleme süreleri vb. gibi çok çeşitli ölçümleri izleyebilirsiniz. Bunları, örneğin daha fazla kaynak eklemeniz gerekiyorsa, sizi uyarmak için kullanabilirsiniz. Bunun aksine, hata bozuklukları akıllı algılama, Web uygulamanızın normal davranışına kıyasla Web uygulamanızın başarısız istek oranı arttıkça neredeyse gerçek zamanlı olarak bildirimde bulunan çok sayıda kritik ölçümü (Şu anda yalnızca başarısız istek hızı) ele alır. Ölçüm uyarılarından farklı olarak, akıllı algılama davranıştaki yanıt değişikliklerinde eşikleri otomatik olarak ayarlar ve güncelleştirir. Akıllı algılama, tanılama işini sizin için de başlatır ve sorunları çözmek için size zaman kazandırır.
+* [ölçüm uyarıları](../platform/alerts-log.md) sizin tarafınızdan AYARLANıR ve CPU doluluk, istek hızları, sayfa yükleme süreleri vb. gibi çok çeşitli ölçümleri izleyebilirsiniz. Bunları, örneğin daha fazla kaynak eklemeniz gerekiyorsa, sizi uyarmak için kullanabilirsiniz. Bunun aksine, hata bozuklukları akıllı algılama, Web uygulamanızın normal davranışına kıyasla Web uygulamanızın başarısız istek oranı arttıkça neredeyse gerçek zamanlı olarak bildirimde bulunan çok sayıda kritik ölçümü (Şu anda yalnızca başarısız istek hızı) ele alır. Ölçüm uyarılarından farklı olarak, akıllı algılama davranıştaki yanıt değişikliklerinde eşikleri otomatik olarak ayarlar ve güncelleştirir. Akıllı algılama, tanılama işini sizin için de başlatır ve sorunları çözmek için size zaman kazandırır.
 
 * [Performans anlılıkları akıllı algılamasında](proactive-performance-diagnostics.md) Ayrıca, ölçümlerinizin olağandışı desenlerini bulması için makine zekası kullanılır ve sizin tarafınızdan yapılandırma yapmanız gerekmez. Ancak, hata anormallerinin akıllı algılamalarından farklı olarak, performans anormallerinin akıllı algılamasında kullanılması amaç, kullanım açısından kötü olarak sunulmayan, örneğin belirli bir tarayıcı türü üzerinde belirli sayfalara yönelik olan segmentleri bulmaktan kaynaklanabilir. Analiz her gün gerçekleştirilir ve herhangi bir sonuç bulunursa, bir uyarıdan çok daha az acil olma olasılığı yüksektir. Buna karşılık, hata anormallikleri için analiz, gelen uygulama verilerinde sürekli olarak gerçekleştirilir ve sunucu hatası oranları beklenenden büyükse dakikalar içinde bilgilendirilirsiniz.
 
@@ -332,7 +332,7 @@ Hata anomali algılama, Application Insights benzer ancak farklı özellikleri t
 
 *Bu nedenle, uygulama verilerimi arıyorsunuz musunuz?*
 
-* Hayır. Hizmet tamamen otomatiktir. Yalnızca bildirimleri alırsınız. Verileriniz [özeldir](../../azure-monitor/app/data-retention-privacy.md).
+* Hayır. Hizmet tamamen otomatiktir. Yalnızca bildirimleri alırsınız. Verileriniz [özeldir](./data-retention-privacy.md).
 
 *Bu uyarıya abone olmam gerekiyor mu?*
 
@@ -353,11 +353,12 @@ Hata anomali algılama, Application Insights benzer ancak farklı özellikleri t
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu tanılama araçları uygulamanızdaki verileri incelemenize yardımcı olur:
 
-* [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md)
-* [Arama Gezgini](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics-güçlü sorgu dili](../../azure-monitor/log-query/get-started-portal.md)
+* [Ölçüm Gezgini](../platform/metrics-charts.md)
+* [Arama Gezgini](./diagnostic-search.md)
+* [Analytics-güçlü sorgu dili](../log-query/get-started-portal.md)
 
 Akıllı algılamalar otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
-* [El ile yapılandırılmış ölçüm uyarıları](../../azure-monitor/platform/alerts-log.md)
-* [Kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md)
+* [El ile yapılandırılmış ölçüm uyarıları](../platform/alerts-log.md)
+* [Kullanılabilirlik web testleri](./monitor-web-app-availability.md)
+

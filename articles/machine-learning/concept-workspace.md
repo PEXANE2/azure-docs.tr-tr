@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 118c80b27d10714703d631f0e2560540eb2d39cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012561"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287231"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -116,6 +116,9 @@ Yeni bir çalışma alanı oluşturduğunuzda, bu, çalışma alanı tarafından
 
 > [!NOTE]
 > Yeni sürümler oluşturmaya ek olarak, var olan Azure hizmetlerini de kullanabilirsiniz.
+
+> [!IMPORTANT]
+> Mevcut bir Azure Depolama hesabını kullanmak istiyorsanız, bu bir Premium hesap (Premium_LRS ve Premium_GRS) olamaz. Ayrıca hiyerarşik bir ad alanına sahip olamaz (Azure Data Lake Storage 2. ile kullanılır). Çalışma alanının _varsayılan_ depolama hesabıyla Premium Depolama veya hiyerarşik ad alanı desteklenmez. Premium Storage veya sıradüzensel ad alanını _varsayılan olmayan_ depolama hesaplarıyla birlikte kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

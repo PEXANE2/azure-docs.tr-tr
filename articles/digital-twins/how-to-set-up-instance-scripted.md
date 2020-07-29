@@ -1,5 +1,5 @@
 ---
-title: Örnek ve kimlik doğrulaması ayarlama (komut dosyası)
+title: Örnek ayarlama ve kimlik doğrulaması (betik ile)
 titleSuffix: Azure Digital Twins
 description: Doğru kimlik doğrulaması da dahil olmak üzere Azure dijital TWINS hizmeti örneğini ayarlama bölümüne bakın. Betikleştirilmiş sürüm.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c601d01589a89667b630d04ddb19dfbe190cca9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125827"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337917"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -49,7 +49,7 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
     * Örnek için: kullanılacak Azure aboneliğinizin *ABONELIK kimliği*
     * Örnek için: örneği dağıtmak istediğiniz *konum* . Azure dijital TWINS 'i destekleyen bölgeleri görmek için [*bölgeye göre kullanılabilen Azure ürünlerini*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)ziyaret edin.
     * Örnek için: bir *kaynak grubu* adı. Var olan bir kaynak grubunu kullanabilir veya oluşturmak için yeni bir ad girebilirsiniz.
-    * Örnek için: Azure dijital TWINS örneğiniz için bir *ad* . Yeni örneğin adı bölge içinde benzersiz olmalıdır (Yani bu bölgedeki başka bir Azure dijital TWINS örneği, seçtiğiniz adı zaten kullanıyorsa, farklı bir ad seçmeniz istenir).
+    * Örnek için: Azure dijital TWINS örneğiniz için bir *ad* . Yeni örneğin adı, aboneliğinizin bölgesi içinde benzersiz olmalıdır (yani, aboneliğiniz seçtiğiniz adı kullanan bölgede başka bir Azure dijital TWINS örneğine sahipse, farklı bir ad seçmeniz istenir).
     * Uygulama kaydı için: kayıt ile ilişkilendirilecek bir *Azure AD uygulama görünen adı* . Bu uygulama kaydı, [Azure dijital TWINS API 'leri](how-to-use-apis-sdks.md)için erişim izinlerini yapılandırdığınız yerdir. Daha sonra, istemci uygulaması uygulama kaydında kimlik doğrulaması yapacak ve bu nedenle API 'lere yapılandırılmış erişim izinleri verilmeyecektir.
     * Uygulama kaydı için: Azure AD uygulaması için bir *Azure AD uygulama yanıt URL 'si* . Kullanabilirsiniz `http://localhost` .
 

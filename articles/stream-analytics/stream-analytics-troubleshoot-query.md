@@ -8,11 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7c83bc55a00774966681973b95d18cdc58dba19c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037214"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337815"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics sorgularının sorunlarını giderme
 
@@ -27,9 +28,9 @@ Bu makalede, Azure Stream Analytics sorguları geliştirmeyle ilgili yaygın sor
     - Azure portal, **sorgu** sekmesinde **Test**' i seçin. [Sorguyu test](stream-analytics-test-query.md)etmek için indirilen örnek verileri kullanın. Tüm hataları inceleyin ve bunları düzeltmeye çalışın.   
     - Ayrıca, Visual Studio veya [Visual Studio Code](visual-studio-code-local-run-live-input.md)için Azure Stream Analytics araçları kullanarak [sorgunuzu yerel olarak test](stream-analytics-live-data-local-testing.md) edebilirsiniz. 
 
-2.  Visual Studio için Azure Stream Analytics Araçları ' nda [iş diyagramını kullanarak yerel olarak adım adım hata ayıklayın](debug-locally-using-job-diagram.md) . İş diyagramı, verilerin giriş kaynaklarından (Olay Hub 'ı, IoT Hub, vb.) birden çok sorgu adımı ve son olarak çıkış havuzları aracılığıyla nasıl akacağını gösterir. Her sorgu adımı, WITH ifadesiyle birlikte betikte tanımlanan geçici bir sonuç kümesiyle eşlenir. Sorunun kaynağını bulmak için her bir ara sonuç kümesindeki verileri ve ölçümleri de görüntüleyebilirsiniz.
+2.  Visual Studio Code için Azure Stream Analytics araçlarındaki [iş diyagramını kullanarak yerel olarak adım adım hata ayıklayın](debug-locally-using-job-diagram-vs-code.md) . İş diyagramı, verilerin giriş kaynaklarından (Olay Hub 'ı, IoT Hub, vb.) birden çok sorgu adımı ve son olarak çıkış havuzları aracılığıyla nasıl akacağını gösterir. Her sorgu adımı, WITH ifadesiyle birlikte betikte tanımlanan geçici bir sonuç kümesiyle eşlenir. Sorunun kaynağını bulmak için her bir ara sonuç kümesindeki verileri ve ölçümleri de görüntüleyebilirsiniz.
 
-    ![İş diyagramı önizleme sonucu](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![İş diyagramı önizleme sonucu](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  [**Zaman damgası**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)kullanıyorsanız, olayların zaman damgalarının [iş başlangıç zamanından](stream-analytics-out-of-order-and-late-events.md)daha büyük olduğunu doğrulayın.
 

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ile hizmetlerinizi kullanıma sunmak
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 58aadc4fadb93a4f6eb47214f580f7a2bebdf49c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056825"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285892"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) ile iç yük dengeleyici kullanma
 
@@ -25,7 +25,9 @@ Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ih
 
 Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
-Mevcut bir alt ağ veya kaynak grubu kullanıyorsanız AKS kümesi hizmet sorumlusu ağ kaynaklarını yönetmek için izne ihtiyaç duyuyor. Genel olarak, temsilcili kaynaklar üzerindeki hizmet sorumlusu rolüne *ağ katılımcısı* rolünü atayın. Bir hizmet sorumlusu yerine, izinler için sistem tarafından atanmış yönetilen kimliği kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md). İzinler hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına AKS erişimi verme][aks-sp].
+Mevcut bir alt ağ veya kaynak grubu kullanıyorsanız AKS kümesi hizmet sorumlusu ağ kaynaklarını yönetmek için izne ihtiyaç duyuyor. Daha fazla bilgi için bkz. Azure [Kubernetes Service (aks) içindeki kendı IP adresi aralığınızla Kubernetes kullanan ağı kullanma][use-kubenet] veya Azure [Kubernetes hizmeti 'nde (aks) Azure CNI ağı 'nı yapılandırma][advanced-networking]. Yük dengeleyiciyi [farklı bir alt ağda bir IP adresi][different-subnet]kullanacak şekilde yapılandırıyorsanız, aks küme hizmeti sorumlusunun bu alt ağa okuma erişimi olduğundan emin olun.
+
+Hizmet sorumlusu yerine, izinler için sistem tarafından atanmış yönetilen kimliği de kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md). İzinler hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına AKS erişimi verme][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>İç yük dengeleyici oluşturma
 
@@ -65,7 +67,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>Bir IP adresi belirtin
 
-İç yük dengeleyiciye belirli bir IP adresi kullanmak isterseniz, *Loadbalancerıp* özelliğini yük dengeleyici YAML bildirimine ekleyin. Belirtilen IP adresi AKS kümesiyle aynı alt ağda bulunmalı ve bir kaynağa zaten atanmamalıdır. Örneğin, Kubernetes alt ağı için belirlenmiş aralıkta bir IP adresi kullanmamalısınız.
+İç yük dengeleyiciye belirli bir IP adresi kullanmak isterseniz, *Loadbalancerıp* özelliğini yük dengeleyici YAML bildirimine ekleyin. Bu senaryoda, belirtilen IP adresi AKS kümesi ile aynı alt ağda bulunmalı ve bir kaynağa zaten atanmamalıdır. Örneğin, Kubernetes alt ağı için belirlenmiş aralıkta bir IP adresi kullanmamalısınız.
 
 ```yaml
 apiVersion: v1
@@ -91,6 +93,8 @@ $ kubectl get service internal-app
 NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
+
+Yük dengeleyiciyi farklı bir alt ağda yapılandırma hakkında daha fazla bilgi için bkz. [farklı bir alt ağ belirtme][different-subnet]
 
 ## <a name="use-private-networks"></a>Özel ağları kullanma
 
@@ -153,3 +157,4 @@ Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri h
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
+[different-subnet]: #specify-a-different-subnet

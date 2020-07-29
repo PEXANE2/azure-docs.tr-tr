@@ -4,14 +4,15 @@ description: HB Serisi VM 'Ler için Özellikler.
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: b0ffd9af8df830c1bdacbfe3809d4086346679b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fbc0683ac39429193f488f3ade289996a67fb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678571"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291154"
 ---
 # <a name="hb-series"></a>HB serisi
 
@@ -29,7 +30,7 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 | Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB60rs | 60 | AMD EPYıC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Tümü | 700 | 4 | 1 |
+| Standard_HB60rs | 60 | AMD EPYıC 7551 | 240 | 263 | 2,0 | 2.55 | 2.55 | 100 | Tümü | 700 | 4 | 1 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -4,12 +4,12 @@ description: Azure dosya paylaşımları yedeklenirken destek ayarlarının ve s
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514569"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289507"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi için destek matrisi
 
@@ -20,10 +20,6 @@ Azure dosya paylaşımlarını yedeklemek için [Azure Backup hizmetini](./backu
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure dosya paylaşımları yedeklemesi için GA bölgeleri
 
 Azure dosya paylaşımları yedeklemesi, **şunlar hariç** tüm bölgelerde kullanılabilir: Almanya Orta (Sovereign), Almanya Kuzeydoğu (Sovereign), Çin Doğu, Çin Doğu 2, Çin Kuzey, Çin Kuzey 2, US gov Iowa
-
-### <a name="supported-regions-for-accidental-delete-protection"></a>Yanlışlıkla silme koruması için desteklenen bölgeler
-
-Orta Batı ABD, Avustralya Güney Doğu, Kanada Orta, Orta Batı ABD, Hindistan Güney, Orta Kuzey ABD, Japonya Doğu, Brezilya Güney, Orta Güney ABD, Avustralya Doğu, Doğu ABD, Doğu ABD 2
 
 ## <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 80edafb9cffa43f7163c1b75c9faaaefbb97c616
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288947"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programlama kılavuzu
 
@@ -125,7 +125,7 @@ Bu konuyu daha ayrıntılı olarak ele alan [derleme kayıt yönergelerine](http
 
 
 ### <a name="use-assembly-versioning"></a>Derleme sürümü oluşturma kullan
-Şu anda U-SQL .NET Framework 4,5 sürümünü kullanıyor. Bu nedenle, kendi derlemelerinizin çalışma zamanının bu sürümü ile uyumlu olduğundan emin olun.
+Şu anda U-SQL, .NET Framework sürümünü kullanır 4.7.2. Bu nedenle, kendi derlemelerinizin çalışma zamanının bu sürümü ile uyumlu olduğundan emin olun.
 
 Daha önce belirtildiği gibi, U-SQL kodu 64 bit (x64) biçiminde çalıştırır. Bu nedenle, kodunuzun x64 üzerinde çalışacak şekilde derlendiğinden emin olun. Aksi takdirde, daha önce gösterilen yanlış biçim hatasını alırsınız.
 
@@ -941,7 +941,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 * T2: biriktirmek için Ikinci parametre
 * TResult: sonlandırma türü döndürme
 
-Örneğin:
+Örnek:
 
 ```csharp
 public class GuidAggregate : IAggregate<string, int, int>

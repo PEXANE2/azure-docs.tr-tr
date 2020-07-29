@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6640a6e807bdcc7a08476a18467745330742ee2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309960"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289281"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure’dan şirket içine yapılan yeniden çalışma işleminde sorun giderme
 
@@ -28,7 +29,7 @@ Yeniden çalışma temelde iki ana adımdan oluşur. İlk adımda, yük devretme
 - Yapılandırma sunucusuna işlem sunucusundan ulaşamadıysanız, bağlantı noktası 443 üzerindeki yapılandırma sunucusuna bağlantıyı denetlemek için Telnet kullanın. Ayrıca, işlem sunucusundan yapılandırma sunucusuna ping göndermeye da çalışırsınız. Ayrıca, bir işlem sunucusu yapılandırma sunucusuna bağlıyken sinyal içermelidir.
 - Fiziksel bir şirket içi sunucu olarak korunan bir Windows Server 2008 R2 SP1 sunucusu, Azure 'dan şirket içi bir siteye yeniden başarısız olabilir.
 - Aşağıdaki koşullarda yeniden başarısız olabilirsiniz:
-    - Makineleri Azure 'a geçirdiniz. [Daha fazla bilgi edinin](migrate-overview.md#what-do-we-mean-by-migration).
+    - Makineleri Azure 'a geçirdiniz. 
     - Bir VM 'yi başka bir kaynak grubuna taşımış olursunuz.
     - Azure VM 'yi silmiş olursunuz.
     - VM 'nin korumasını devre dışı bırakmış olursunuz.
@@ -63,7 +64,7 @@ Bu sorun, üzerinde işlem yaptığınız ana hedef sunucuda aynı ada sahip bir
 Bu sorunu çözmek için:
 
 * Farklı bir ana bilgisayar üzerinde farklı bir ana hedef sunucu seçin, böylece yeniden koruma, makineyi farklı bir konakta oluşturur, burada da adlar çakışmıyor.
-* Ayrıca, vMotion 'ı kullanarak ana hedefi ad çarpışmanın gerçekleşmeyeceği farklı bir konağa taşıyabilirsiniz. Mevcut VM bir boş makinedir, yeni VM 'nin aynı ESXi konağında oluşturulabilmesi için yeniden adlandırın.
+* Ayrıca, VMotion 'ı kullanarak ana hedefi ad çarpışmanın gerçekleşmeyeceği farklı bir konağa taşıyabilirsiniz. Mevcut VM bir boş makinedir, yeni VM 'nin aynı ESXi konağında oluşturulabilmesi için yeniden adlandırın.
 
 
 ### <a name="error-code-78093"></a>Hata kodu 78093
@@ -97,4 +98,4 @@ Bu sorun, şirket içi VM, yeterli belleğe sahip olmayan bir konağa getirildi�
 Bu sorunu çözmek için:
 
 * ESXi konağında daha fazla bellek sağlayın.
-* Ayrıca, vMotion kullanarak VM 'yi önyüklemek için yeterli belleğe sahip başka bir ESXi konağına sanal makineyi taşıyabilirsiniz.
+* Ayrıca, VMotion kullanarak VM 'yi önyüklemek için yeterli belleğe sahip başka bir ESXi konağına sanal makineyi taşıyabilirsiniz.

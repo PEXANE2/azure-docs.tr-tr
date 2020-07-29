@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
-ms.openlocfilehash: b86a38278ae345fac376958d18912a878a53872b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a140ae0f27c61959d8ebc6854c5bcb2a916a0fc6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834807"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290439"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak e-posta gönderme ve gönderme listesini SendGrid içinde yönetme
 
@@ -26,7 +27,7 @@ Bu görevleri gerçekleştirmek için, mantıksal uygulamalarınızda SendGrid e
 Bu bağlayıcı yalnızca eylemler sağlar, bu nedenle mantıksal uygulamanızı başlatmak için **yineleme** tetikleyicisi gibi ayrı bir tetikleyici kullanın. Örneğin, listelerinizi düzenli olarak listelere eklerseniz, Office 365 Outlook bağlayıcısını veya Outlook.com bağlayıcısını kullanarak alıcılar ve listeler hakkında e-posta gönderebilirsiniz.
 Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
@@ -67,7 +68,7 @@ Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanı
 
 ## <a name="get-support"></a>Destek alma
 
-* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

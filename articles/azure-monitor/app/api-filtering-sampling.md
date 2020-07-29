@@ -3,12 +3,13 @@ title: Application Insights SDK 'da filtreleme ve ön işleme | Microsoft Docs
 description: Telemetri Application Insights portalına gönderilmeden önce verileri filtrelemek veya eklemek için SDK için telemetri işlemcileri ve telemetri başlatıcıları yazın.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: a16dc7bc9f6f3c49640d320fbfbffaa7acbed6b9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-javascript
+ms.openlocfilehash: eec3cf44eb516ce20db564e1bed32e5741bfd02a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323222"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366764"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 'da telemetri filtreleme ve ön işleme
 

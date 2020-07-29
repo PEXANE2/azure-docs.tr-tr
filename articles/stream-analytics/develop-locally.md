@@ -6,11 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 736fce1d4b347e36ad5c10ca89ad0627104a0232
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70097ad02c17f8c23bd9613487a905ccd562635e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879849"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337560"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics işleri yerel olarak geliştirme ve hata ayıklama
 
@@ -24,7 +25,7 @@ Aşağıdaki tablodaki ortamlar yerel geliştirmeyi destekler:
 
 |Ortam                              |Açıklama    |
 |-----------------------------------------|------------|
-|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Visual Studio Code için [Azure Stream Analytics araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) , hem yerel olarak hem de bulutta zengin IntelliSense ve yerel kaynak denetimi ile Stream Analytics işinizi hem yerel olarak hem de bulutta yazmanıza, yönetmenize ve test etmenize olanak tanır. Linux, MacOS ve Windows üzerinde geliştirmeyi destekler. Daha fazla bilgi için bkz. [Visual Studio Code Azure Stream Analytics Iş oluşturma](quick-create-vs-code.md).|
+|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Visual Studio Code için [Azure Stream Analytics araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) , zengin IntelliSense ve yerel kaynak denetimi ile hem yerel olarak hem de bulutta bulunan Stream Analytics işinizi yazmanıza, yönetmenize, test etmenize olanak tanır. Linux, MacOS ve Windows üzerinde geliştirmeyi destekler. Daha fazla bilgi için bkz. [Visual Studio Code Azure Stream Analytics Iş oluşturma](quick-create-vs-code.md). Uzantı Ayrıca, bulut tarafından barındırılan bir geliştirme ortamı olan [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) 'ı destekler.|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |Stream Analytics araçları, Visual Studio 'da Azure geliştirme ve veri depolama ve işleme iş yüklerinin bir parçasıdır. Özel C# Kullanıcı tanımlı işlevleri ve seri hale getiriciler yazmak için Visual Studio 'Yu kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [Visual Studio kullanarak Azure Stream Analytics Işi oluşturma](stream-analytics-quick-create-vs.md).|
 |[Komut istemi veya Terminal](stream-analytics-tools-for-visual-studio-cicd.md)|Azure Stream Analytics CI/CD NuGet paketi, rastgele bir makinede Visual Studio proje derlemesi, yerel test için araçlar sağlar. Azure Stream Analytics CI/CD NPM paketi, rastgele bir makinede Visual Studio Code proje yapıları (bir Azure Resource Manager şablonu oluşturur) için araçlar sağlar.|
 

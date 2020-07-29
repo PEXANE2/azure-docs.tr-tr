@@ -9,24 +9,32 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/20/2020
 ms.author: diberry
-ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090952"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337985"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUSıS modelinizde kültür başına varlık
 
-Language Understanding (LUSıS) önceden oluşturulmuş varlıklar sağlar. Uygulamanıza önceden oluşturulmuş bir varlık dahil edildiğinde, Lud, uç nokta yanıtında karşılık gelen varlık tahminini içerir. Tüm örnek söyleymalar da varlıkla etiketlidir. Önceden **oluşturulmuş varlıkların davranışı** değiştirilemez. Aksi belirtilmediği takdirde, önceden oluşturulmuş varlıklar tüm LUıN uygulama yerel ayarları 'nda (kültürler) kullanılabilir. Aşağıdaki tabloda her kültür için desteklenen önceden oluşturulmuş varlıklar gösterilmektedir.
+Language Understanding (LUSıS) önceden oluşturulmuş varlıklar sağlar.
+
+## <a name="entity-resolution"></a>Varlık çözümleme
+Uygulamanıza önceden oluşturulmuş bir varlık dahil edildiğinde, Lud, uç nokta yanıtında karşılık gelen varlık çözünürlüğünü içerir. Tüm örnek söyleymalar da varlıkla etiketlidir.
+
+Önceden oluşturulmuş varlıkların davranışı değiştirilemez, ancak [önceden oluşturulmuş varlığı bir makine öğrenimi varlığına veya alt varlığa bir özellik olarak ekleyerek](luis-concept-entity-types.md#effective-prebuilt-entities)çözümü geliştirebilirsiniz.
+
+## <a name="availability"></a>Kullanılabilirlik
+Aksi belirtilmediği takdirde, önceden oluşturulmuş varlıklar tüm LUıN uygulama yerel ayarları 'nda (kültürler) kullanılabilir. Aşağıdaki tabloda her kültür için desteklenen önceden oluşturulmuş varlıklar gösterilmektedir.
 
 |Culture (Kültür)|Alt kültürler|Notlar|
 |--|--|--|
 |Çince|[zh-CN](#chinese-entity-support)||
 |Felemenkçe|[nl-NL](#dutch-entity-support)||
-|İngilizce|[en-US (Amerikan)](#english-american-entity-support)||
+|Türkçe|[en-US (Amerikan)](#english-american-entity-support)||
 |Fransızca|[fr-CA (Kanada)](#french-canadian-entity-support), [fr-fr (Fransa)](#french-france-entity-support), ||
 |Almanca|[de-DE](#german-entity-support)||
 |İtalyanca|[BT BT](#italian-entity-support)||

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa3faad88fb5474b34ff6855690882141b2e4843
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1057bb908e973c74b6dfb70931469e27f77512de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046299"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292664"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>C kullanarak Azure Time Series Insights Gen2 ortamından veri sorgulama #
 
@@ -39,9 +39,9 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
     * [Gen2 sorgu API 'SI](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
         * [Olayları al API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents), [seri API 'Si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)ve [toplama serisi API 'si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
     * [Zaman serisi modeli API 'Leri](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-        * [Hiyerarşilerin API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/get) ve [hiyerarşileri al Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-        * [Türleri al API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/get) ve [türler Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-        * [Örnekleri al API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/get) ve [örnekleri Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+        * [Hiyerarşilerin API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) ve [hiyerarşileri al Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+        * [Türleri al API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) ve [türler Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+        * [Örnekleri al API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) ve [örnekleri Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
 * Gelişmiş [arama](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) ve [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) özellikleri.
 
 ## <a name="prerequisites-and-setup"></a>Önkoşullar ve kurulum
@@ -65,7 +65,7 @@ Visual Studio 'nun en yeni sürümünü kullanmanız önerilir:
 
 **Build**  >  **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin. 
 
-Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örneğin:
+Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örnek:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 

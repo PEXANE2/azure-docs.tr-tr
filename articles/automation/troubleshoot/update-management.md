@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183176"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293098"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -242,7 +242,7 @@ Sorgularınızın doğru şekilde çalışıp çalışmadığını öğrenmek i�
     | project id, location, name, tags
     ```
 
-   Örnek aşağıda verilmiştir:
+   Aşağıda bir örnek verilmiştir:
 
     ```kusto
     where (subscriptionId in~ ("20780d0a-b422-4213-979b-6c919c91ace1", "af52d412-a347-4bc6-8cb7-4780fbb00490") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "Windows" and resourceGroup in~ ("testRG","withinvnet-2020-01-06-10-global-resources-southindia") and location in~ ("australiacentral","australiacentral2","brazilsouth") )
@@ -387,7 +387,7 @@ Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 * Makine kapalı ve ulaşılamaz durumda.
 * Makine bir ağ bağlantısı sorununa sahiptir ve bu nedenle makinedeki karma çalışana ulaşılamıyor.
 * MMA 'nın kaynak bilgisayar KIMLIĞINI değiştiren bir güncelleştirmesi vardı.
-* Bir Otomasyon hesabında 2000 eşzamanlı iş sınırına ulaşırsanız güncelleştirme çalışması kısıtlanıyor. Her dağıtım bir iş olarak değerlendirilir ve bir güncelleştirme dağıtımındaki her makine iş olarak sayılır. Otomasyon hesabınızda çalışmakta olan diğer herhangi bir Otomasyon işi veya güncelleştirme dağıtımı, eşzamanlı iş sınırına doğru sayılır.
+* Bir Otomasyon hesabında 200 eşzamanlı iş sınırına ulaşırsanız güncelleştirme çalışması kısıtlanıyor. Her dağıtım bir iş olarak değerlendirilir ve bir güncelleştirme dağıtımındaki her makine iş olarak sayılır. Otomasyon hesabınızda çalışmakta olan diğer herhangi bir Otomasyon işi veya güncelleştirme dağıtımı, eşzamanlı iş sınırına doğru sayılır.
 
 ### <a name="resolution"></a>Çözüm
 

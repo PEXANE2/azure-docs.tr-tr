@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495389"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289964"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 içinde zaman serisi modeli
 
@@ -24,7 +24,7 @@ Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights Gen2
 > [!TIP]
 >
 > * Canlı bir zaman serisi modeli örneği için [contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
-> * Azure Time Series Insights Gen2 gezginini kullanarak [zaman serisi modeliyle nasıl çalışacağınızı](time-series-insights-update-how-to-tsm.md) öğrenin.
+> * Azure Time Series Insights Gen2 gezginini kullanarak [zaman serisi modeliyle nasıl çalışacağınızı](/azure/time-series-insights/how-to-edit-your-model) öğrenin.
 
 ## <a name="summary"></a>Özet
 
@@ -75,7 +75,7 @@ Bu bileşenler, zaman serisi modeli belirtmek ve verilerinizi düzenlemek için 
 
 [![Zaman serisi modeline genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-[Azure Time Series Insights Gen2 Explorer](time-series-insights-update-how-to-tsm.md)aracılığıyla bir zaman serisi modeli oluşturulup yönetebilirsiniz. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)aracılığıyla yönetilebilir.
+[Azure Time Series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview)aracılığıyla bir zaman serisi modeli oluşturulup yönetebilirsiniz. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)aracılığıyla yönetilebilir.
 
 ## <a name="time-series-model-instances"></a>Zaman serisi model örnekleri
 
@@ -283,12 +283,13 @@ Türler aşağıdaki JSON örneğine uyar:
   ]
 }
 ```
+
 Zaman serisi model türlerinde, olaylar üzerinde formül ve hesaplama kurallarını belirten birçok değişken olabilir. [Zaman serisi model değişkenlerinin nasıl tanımlanacağı](./concepts-variables.md) hakkında daha fazla bilgi edinin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Modeli API 'Ler aracılığıyla düzenleme hakkında daha fazla bilgi için [zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) başvuru belgelerini okuyun.
+* Modeli API 'Ler aracılığıyla düzenleme hakkında daha fazla bilgi için [zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) başvuru belgelerini okuyun.
 
-- [Zaman serisi model değişkenleriyle](./concepts-variables.md) oluşturabileceğiniz formülleri ve hesaplamaları keşfet
+* [Zaman serisi model değişkenleriyle](./concepts-variables.md) oluşturabileceğiniz formülleri ve hesaplamaları keşfet
 
-- Azure Time Series Insights Gen2 'de [veri sorgulama](concepts-query-overview.md) hakkında bilgi edinin
+* Azure Time Series Insights Gen2 'de [veri sorgulama](concepts-query-overview.md) hakkında bilgi edinin

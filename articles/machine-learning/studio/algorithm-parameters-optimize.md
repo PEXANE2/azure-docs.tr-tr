@@ -1,6 +1,5 @@
 ---
-title: Algoritmaları iyileştirme
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasik): algoritmaları Iyileştirme-Azure'
 description: Azure Machine Learning Studio (klasik) ' de bir algoritma için en uygun parametre kümesini nasıl seçebileceğinizi açıklar.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 52853bb14b49d429100dabeffc46661289f55c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0e003e7c767fb3441e26787f5687473ac51f44
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711213"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292975"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio algoritmalarınızı iyileştirmek için parametreler seçin (klasik)
+# <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Machine Learning Studio algoritmalarınızı iyileştirmek için parametreler seçin (klasik)
+
+**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
 
 Bu konuda, Azure Machine Learning Studio (klasik) ' de bir algoritma için doğru hiper parametre kümesinin nasıl oluşturulacağı açıklanmaktadır. Çoğu makine öğrenimi algoritmalarının ayarlanması parametreleri vardır. Bir modeli eğitedığınızda, bu parametrelerin değerlerini sağlamanız gerekir. Eğitilen modelin göre etkinliğine seçtiğiniz model parametrelerine bağlıdır. En iyi parametre kümesini bulma işlemi *model seçimi*olarak bilinir.
 
