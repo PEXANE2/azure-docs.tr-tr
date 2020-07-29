@@ -7,6 +7,7 @@ description: Azure Dev Spaces etkin olan bir Azure Kubernetes hizmet kümesinde 
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 ms.openlocfilehash: 7530cde68b2ce8d06fb7b16a9a147f0f0bc8645c
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "75438356"
