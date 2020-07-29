@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/08/2020
-ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/27/2020
+ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171133"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285960"
 ---
 # <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
@@ -80,9 +80,9 @@ Aşağıdaki ölçümler, ikili sınıflandırma modelleri değerlendirilirken r
   
 -   **Doğruluk** , toplam durum sonuçlarının gerçek sonuçlarının oranı olarak bir sınıflandırma modelinin iyiyliğini ölçer.  
   
--   **Duyarlık** , tüm pozitif sonuçlar üzerinde doğru sonuçların oranındaki orandır.  
+-   **Duyarlık** , tüm pozitif sonuçlar üzerinde doğru sonuçların oranındaki orandır. Precision = TP/(TP + FP)  
   
--   **Geri çağırma** , modelin döndürdüğü tüm doğru sonuçların kesiri.  
+-   **Geri çek** , gerçekten alınan ilgili örneklerin toplam miktarının kesiri olur. Hatırlayın = TP/(TP + FN)  
   
 -   **F1 puanı** ağırlıklı duyarlık ortalaması olarak hesaplanır ve en ideal F1 puanı değerinin 1 olduğu 0 ile 1 arasında geri çağırır.  
   

@@ -3,12 +3,12 @@ title: Kaynak hiyerarşinizi koruma-Azure Idare
 description: Kaynak hiyerarşinizi, varsayılan yönetim grubunu ayarlamayı içeren hiyerarşi ayarlarıyla nasıl koruyacağınızı öğrenin.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128005"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366781"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Kaynak hiyerarşinizi koruma
 
@@ -23,7 +23,7 @@ Hiyerarşi ayarlarından herhangi birini yapılandırmak kök yönetim grubunda 
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-Bu işlemler yalnızca bir kullanıcının hiyerarşi ayarlarını okumasına ve güncelleştirmesine izin verir. İşlemler, hiyerarşideki yönetim grubu hiyerarşisine veya kaynaklarına başka bir erişim sağlamaz. Bu işlemlerin her ikisi de yerleşik RBAC rol **hiyerarşisi ayarları Yöneticisi**'nde bulunur.
+Bu işlemler yalnızca bir kullanıcının hiyerarşi ayarlarını okumasına ve güncelleştirmesine izin verir. İşlemler, hiyerarşideki yönetim grubu hiyerarşisine veya kaynaklarına başka bir erişim sağlamaz. Bu işlemlerin her ikisi de Azure yerleşik rol **hiyerarşisi ayarları Yöneticisi**' nde bulunur.
 
 ## <a name="setting---default-management-group"></a>Ayarlama-varsayılan Yönetim grubu
 

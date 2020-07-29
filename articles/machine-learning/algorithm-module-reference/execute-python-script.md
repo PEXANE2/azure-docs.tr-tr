@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 06/16/2020
-ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: d07681798cadf1d983942d681b910e26ea48d6d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147261"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285943"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -30,124 +30,16 @@ Python ile, var olan modüllerin desteklemediği görevleri gerçekleştirebilir
 + [Veri alma](./import-data.md) modülünün desteklemediği kaynaklardaki verileri okuma, yükleme ve düzenleme.
 + Kendi derin öğrenme kodunuzu çalıştırın. 
 
+## <a name="supported-python-packages"></a>Desteklenen Python paketleri
 
 Azure Machine Learning, Python 'un, veri işleme için birçok yaygın yardımcı programını içeren Anaconda dağıtımını kullanır. Anaconda sürümünü otomatik olarak güncelleştireceğiz. Geçerli sürüm:
  -  Python 3,6 için Anaconda 4.5 + dağıtımı 
 
-Önceden yüklenmiş paketler şunlardır:
--    adal = = 1.2.2
--    ApplicationInsights = = 0.11.9
--    attrs = = 19.3.0
--    Azure-ortak = = 1.1.25
--    Azure-Core = = 1.3.0
--    Azure-graphrbac = = 0.61.1
--    Azure-Identity = = 1.3.0
--    Azure-MGMT-Authorization = = 0.60.0
--    Azure-MGMT-containerregistry = = 2.8.0
--    Azure-MGMT-keykasası = = 2.2.0
--    Azure-MGMT-Resource = = 8.0.1
--    Azure-MGMT-depolama = = 8.0.0
--    Azure-Storage-blob = = 1.5.0
--    Azure-Storage-ortak = = 1.4.2
--    azureml-çekirdek = = 1.1.5.5
--    azureml-dataprep-Native = = 14.1.0
--    azureml-dataprep = = 1.3.5
--    azureml-varsayılanlar = = 1.1.5.1
--    azureml-tasarımcı-klasik-modüller = = 0.0.118
--    azureml-tasarımcı-çekirdek = = 0.0.31
--    azureml-tasarımcı-iç = = 0.0.18
--    azureml-model-Yönetim-SDK = = 1.0.1 B6. post1
--    azureml-işlem hattı-çekirdek = = 1.1.5
--    azureml-telemetri = = 1.1.5.3
--    geribağlantı noktaları. TempFile = = 1.0
--    backports. WeakRef = = 1.0. post1
--    boto3 = = 1.12.29
--    botocore = = 1.15.29
--    cachetools = = 4.0.0
--    certifi = = 2019.11.28
--    cffi = = 1.12.3
--    chardet = = 3.0.4
--    = = 7.1.1 öğesine tıklayın
--    cloudpickle = = 1.3.0
--    configparser = = 3.7.4
--    contextlib2 = = 0.6.0. post1
--    şifreleme = = 2.8
--    ok = = 0.10.0
--    Dill = = 0.3.1.1
--    disden = = 1.4.0
--    Docker = = 4.2.0
--    docutils = = 0.15.2
--    dotnetcore2 = = 2.1.13
--    Flask = = 1.0.3
--    fusekopyala = = 3.0.1
--    gensim = = 3.8.1
--    Google-api-Core = = 1.16.0
--    Google-auth = = 1.12.0
--    Google-Cloud-Core = = 1.3.0
--    Google-Cloud-Storage = = 1.26.0
--    Google-sürdürülebilir-Media = = 0.5.0
--    googleapis-ortak-prototips = = 1.51.0
--    gunic, = = 19.9.0
--    IDNA = = 2.9
--    imdengeli-öğren = = 0.4.3
--    iztarihi = = 0.6.0
--    ısdangerou = = 1.1.0
--    jeepney = = 0.4.3
--    jinja2 = = 2.11.1
--    jmespath = = 0.9.5
--    joblib = = 0.14.0
--    JSON-Logging-Kopyala = = 0.2
--    jsonpickle = = 1.3
--    jsonschema = = 3.0.1
--    kiwıolver = = 1.1.0
--    Liac-arff = = 2.4.0
--    lightgbm = = 2.2.3
--    markupsafe = = 1.1.1
--    Matplotlib = = 3.1.3
--    more-ıtertools = = 6.0.0
--    msal-Extensions = = 0.1.3
--    msal = = 1.1.0
--    msrest = = 0.6.11
--    msrestazure = = 0.6.3
--    NDG-httpsclient = = 0.5.1
--    nimbusml = = 1.6.1
--    sayısal tuş takımı = = 1.18.2
--    oauthlib = = 3.1.0
--    Pandas = = 0.25.3
--    pathSpec = = 0.7.0
--    PIP = = 20.0.2
--    portalocker = = 1.6.0
--    protoarabellek = = 3.11.3
--    pyarrow = = 0.16.0
--    pyasn1-modüller = = 0.2.8
--    pyasn1 = = 0.4.8
--    pycparser = = 2.20
--    pycryptodomex = = 3.7.3
--    pyjwt = = 1.7.1
--    pyopenssl = = 19.1.0
--    pyparsing = = 2.4.6
--    pyrsistent = = 0.16.0
--    Python-dateutil = = 2.8.1
--    pytz = = 2019.3
--    istekler-oauthlib = = 1.3.0
--    istekler = = 2.23.0
--    RSA = = 4.0
--    ruamel. YAML = = 0.15.89
--    s3transfer = = 0.3.3
--    scikit-öğren = = 0.22.2
--    SciPy = = 1.4.1
--    secretstorage = = 3.1.2
--    setuptools = = 46.1.1. post20200323
--    altı = = 1.14.0
--    Smart-Open = = 1.10.0
--    urllib3 = = 1.25.8
--    WebSocket-istemci = = 0.57.0
--    Werkzeug = = 0.16.1
--    tekerlek = = 0.34.2
+Tüm liste için bkz. [önceden yüklenmiş Python paketleri](#preinstalled-python-packages)bölümü.
 
- Önceden yüklenmiş listede olmayan paketleri yüklemek için (örneğin, *scikit-misc*), betiğe aşağıdaki kodu ekleyin: 
+Önceden yüklenmiş listede olmayan paketleri yüklemek için (örneğin, *scikit-misc*), betiğe aşağıdaki kodu ekleyin: 
 
- ```python
+```python
 import os
 os.system(f"pip install scikit-misc")
 ```
@@ -262,6 +154,117 @@ Modül iki veri kümesi döndürür:
 
 + **Sonuç veri kümesi 2**, bir Python betiğinin ikinci döndürülen Pandas veri çerçevesi tarafından tanımlanır.
 
+## <a name="preinstalled-python-packages"></a>Önceden yüklenmiş Python paketleri
+Önceden yüklenmiş paketler şunlardır:
+-    adal = = 1.2.2
+-    ApplicationInsights = = 0.11.9
+-    attrs = = 19.3.0
+-    Azure-ortak = = 1.1.25
+-    Azure-Core = = 1.3.0
+-    Azure-graphrbac = = 0.61.1
+-    Azure-Identity = = 1.3.0
+-    Azure-MGMT-Authorization = = 0.60.0
+-    Azure-MGMT-containerregistry = = 2.8.0
+-    Azure-MGMT-keykasası = = 2.2.0
+-    Azure-MGMT-Resource = = 8.0.1
+-    Azure-MGMT-depolama = = 8.0.0
+-    Azure-Storage-blob = = 1.5.0
+-    Azure-Storage-ortak = = 1.4.2
+-    azureml-çekirdek = = 1.1.5.5
+-    azureml-dataprep-Native = = 14.1.0
+-    azureml-dataprep = = 1.3.5
+-    azureml-varsayılanlar = = 1.1.5.1
+-    azureml-tasarımcı-klasik-modüller = = 0.0.118
+-    azureml-tasarımcı-çekirdek = = 0.0.31
+-    azureml-tasarımcı-iç = = 0.0.18
+-    azureml-model-Yönetim-SDK = = 1.0.1 B6. post1
+-    azureml-işlem hattı-çekirdek = = 1.1.5
+-    azureml-telemetri = = 1.1.5.3
+-    geribağlantı noktaları. TempFile = = 1.0
+-    backports. WeakRef = = 1.0. post1
+-    boto3 = = 1.12.29
+-    botocore = = 1.15.29
+-    cachetools = = 4.0.0
+-    certifi = = 2019.11.28
+-    cffi = = 1.12.3
+-    chardet = = 3.0.4
+-    = = 7.1.1 öğesine tıklayın
+-    cloudpickle = = 1.3.0
+-    configparser = = 3.7.4
+-    contextlib2 = = 0.6.0. post1
+-    şifreleme = = 2.8
+-    ok = = 0.10.0
+-    Dill = = 0.3.1.1
+-    disden = = 1.4.0
+-    Docker = = 4.2.0
+-    docutils = = 0.15.2
+-    dotnetcore2 = = 2.1.13
+-    Flask = = 1.0.3
+-    fusekopyala = = 3.0.1
+-    gensim = = 3.8.1
+-    Google-api-Core = = 1.16.0
+-    Google-auth = = 1.12.0
+-    Google-Cloud-Core = = 1.3.0
+-    Google-Cloud-Storage = = 1.26.0
+-    Google-sürdürülebilir-Media = = 0.5.0
+-    googleapis-ortak-prototips = = 1.51.0
+-    gunic, = = 19.9.0
+-    IDNA = = 2.9
+-    imdengeli-öğren = = 0.4.3
+-    iztarihi = = 0.6.0
+-    ısdangerou = = 1.1.0
+-    jeepney = = 0.4.3
+-    jinja2 = = 2.11.1
+-    jmespath = = 0.9.5
+-    joblib = = 0.14.0
+-    JSON-Logging-Kopyala = = 0.2
+-    jsonpickle = = 1.3
+-    jsonschema = = 3.0.1
+-    kiwıolver = = 1.1.0
+-    Liac-arff = = 2.4.0
+-    lightgbm = = 2.2.3
+-    markupsafe = = 1.1.1
+-    Matplotlib = = 3.1.3
+-    more-ıtertools = = 6.0.0
+-    msal-Extensions = = 0.1.3
+-    msal = = 1.1.0
+-    msrest = = 0.6.11
+-    msrestazure = = 0.6.3
+-    NDG-httpsclient = = 0.5.1
+-    nimbusml = = 1.6.1
+-    sayısal tuş takımı = = 1.18.2
+-    oauthlib = = 3.1.0
+-    Pandas = = 0.25.3
+-    pathSpec = = 0.7.0
+-    PIP = = 20.0.2
+-    portalocker = = 1.6.0
+-    protoarabellek = = 3.11.3
+-    pyarrow = = 0.16.0
+-    pyasn1-modüller = = 0.2.8
+-    pyasn1 = = 0.4.8
+-    pycparser = = 2.20
+-    pycryptodomex = = 3.7.3
+-    pyjwt = = 1.7.1
+-    pyopenssl = = 19.1.0
+-    pyparsing = = 2.4.6
+-    pyrsistent = = 0.16.0
+-    Python-dateutil = = 2.8.1
+-    pytz = = 2019.3
+-    istekler-oauthlib = = 1.3.0
+-    istekler = = 2.23.0
+-    RSA = = 4.0
+-    ruamel. YAML = = 0.15.89
+-    s3transfer = = 0.3.3
+-    scikit-öğren = = 0.22.2
+-    SciPy = = 1.4.1
+-    secretstorage = = 3.1.2
+-    setuptools = = 46.1.1. post20200323
+-    altı = = 1.14.0
+-    Smart-Open = = 1.10.0
+-    urllib3 = = 1.25.8
+-    WebSocket-istemci = = 0.57.0
+-    Werkzeug = = 0.16.1
+-    tekerlek = = 0.34.2
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

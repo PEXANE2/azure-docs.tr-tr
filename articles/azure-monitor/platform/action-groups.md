@@ -3,28 +3,26 @@ title: Azure portalında eylem grupları oluşturma ve yönetme
 description: Azure portal eylem grupları oluşturmayı ve yönetmeyi öğrenin.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321862"
+ms.locfileid: "87337790"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
-
-E-posta veya SMS ile bir kişiye bildirimde bulunan bir eylem yapılandırdığınızda, bunlar eylem grubuna eklendiğini belirten bir onay alırlar.
 
 Bu makalede Azure portal eylem gruplarının nasıl oluşturulacağı ve yönetileceği gösterilmektedir.
 
 Her eylem aşağıdaki özelliklerden oluşur:
 
-* **Ad**: eylem grubu içindeki benzersiz bir tanımlayıcı.  
-* **Eylem türü**: gerçekleştirilen eylem. Bir sesli çağrı, SMS, e-posta gönderme örnekleri aşağıda verilmiştir. veya çeşitli otomatikleştirilmiş eylem türlerini tetikleyerek. Bu makalenin ilerleyen kısımlarında bulunan türlere bakın.
-* **Ayrıntılar**: *eylem türüne*göre farklılık gösteren ilgili ayrıntılar.
+* **Yazın**: bildirim veya eylem gerçekleştirildi. Bir sesli çağrı, SMS, e-posta gönderme örnekleri aşağıda verilmiştir. veya çeşitli otomatikleştirilmiş eylem türlerini tetikleyerek. Bu makalenin ilerleyen kısımlarında bulunan türlere bakın.
+* **Ad**: eylem grubu içindeki benzersiz bir tanımlayıcı.
+* **Ayrıntılar**: *türe*göre farklılık gösteren ilgili ayrıntılar.
 
 Eylem gruplarını yapılandırmak için Azure Resource Manager şablonlarını kullanma hakkında daha fazla bilgi için bkz. [eylem grubu Kaynak Yöneticisi şablonları](./action-groups-create-resource-manager-template.md).
 
@@ -32,33 +30,75 @@ Eylem gruplarını yapılandırmak için Azure Resource Manager şablonlarını 
 
 1. [Azure Portal](https://portal.azure.com), **izleme**' yi arayıp seçin. **İzleyici** bölmesi tüm izleme ayarlarınızı ve verilerinizi tek bir görünümde birleştirir.
 
-1. **Uyarılar**'ı ve ardından **Eylemleri yönet**'i seçin.
+1. **Uyarılar**' ı seçin ve ardından **eylemleri Yönet**' i seçin.
 
     ![Eylemleri Yönet düğmesi](./media/action-groups/manage-action-groups.png)
     
-1. **Eylem grubu Ekle**' yi seçin ve alanları girin.
+1. **Eylem grubu Ekle**' yi seçin ve sihirbaz deneyiminde ilgili alanları girin.
 
-    !["Eylem grubu Ekle" komutu](./media/action-groups/add-action-group.png)
+    !["Eylem grubu Ekle" komutu](./media/action-groups/add-action-group.PNG)
+
+### <a name="configure-basic-action-group-settings"></a>Temel eylem grubu ayarlarını yapılandırma
+
+**Proje ayrıntıları**:
+
+Eylem grubunun kaydedildiği **aboneliği** ve **kaynak grubunu** seçin.
+
+**Örnek ayrıntıları**:
+
+1. Bir **eylem grubu adı**girin.
+
+1. Bir **görünen ad**girin. Görünen ad, bildirimler bu grup kullanılarak gönderildiğinde tam bir eylem grubu adı yerine kullanılır.
+
+      ![Eylem grubu Ekle "iletişim kutusu](./media/action-groups/action-group-1-basics.png)
+
+
+### <a name="configure-notifications"></a>Bildirimleri yapılandırma
+
+1. **Bildirimler** sekmesine gitmek için **ileri: bildirimler >** düğmesine tıklayın veya ekranın üst kısmındaki **Bildirimler** sekmesini seçin.
+
+1. Bir uyarı tetiklendiğinde gönderilecek bildirimlerin listesini tanımlayın. Her bildirim için aşağıdakileri sağlayın:
+
+    a. **Bildirim türü**: göndermek istediğiniz bildirim türünü seçin. Şu seçenekleri kullanabilirsiniz:
+      * E-posta Azure Resource Manager rolü-belirli bir abonelik düzeyi ARM rolüne atanan kullanıcılara bir e-posta gönderin.
+      * E-posta/SMS/Push/Voice-bu bildirim türlerini belirli alıcılara gönderir.
     
-1. **Eylem grubu adı** kutusuna bir ad girin ve **kısa ad** kutusuna bir ad girin. Bu eylem grubu kullanılarak bildirim gönderildiğinde tam grup adı yerine kısa ad kullanılır.
+    b. **Ad**: bildirim için benzersiz bir ad girin.
 
-      ![Eylem grubu Ekle "iletişim kutusu](./media/action-groups/action-group-define.png)
-
-1. **Abonelik** kutusu, geçerli aboneliğiniz ile oto doldurur. Bu abonelik, eylem grubunun kaydedildiği bir işlemdir.
-
-1. Eylem grubunun kaydedildiği **kaynak grubunu** seçin.
-
-1. Eylemlerin bir listesini tanımlayın. Her eylem için aşağıdakileri sağlayın:
-
-    1. **Ad**: Bu eylem için benzersiz bir tanımlayıcı girin.
-
-    1. **Eylem türü**: Otomasyon Runbook 'U, Azure Işlevi, e-posta Azure Resource Manager rolü, e-posta/SMS/Push/VOICE, ISM, Logic App, Secure Web kancası, Web kancası
-
-    1. **Ayrıntılar**: eylem türüne bağlı olarak bir telefon numarası, e-posta adresi, Web kancası URI 'Si, Azure UYGULAMASı, ITSM bağlantısı veya Otomasyon Runbook 'u girin. ITSM eylemi için, ayrıca ıTSM araclarınızın gerektirdiği **Iş öğesini** ve diğer alanları belirtin.
+    c. **Ayrıntılar**: seçili bildirim türüne göre bir e-posta adresi, telefon numarası vb. girin.
     
-    1. **Ortak uyarı şeması**: Azure izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](https://aka.ms/commonAlertSchemaDocs)etkinleştirmeyi seçebilirsiniz.
+    d. **Ortak uyarı şeması**: Azure izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](https://aka.ms/commonAlertSchemaDocs)etkinleştirmeyi seçebilirsiniz.
 
-1. Eylem grubunu oluşturmak için **Tamam ' ı** seçin.
+    ![Bildirimler sekmesi](./media/action-groups/action-group-2-notifications.png)
+    
+### <a name="configure-actions"></a>Eylemleri yapılandırma
+
+1. **Eylemler** sekmesine gitmek için **ileri: eylemler >** düğmesine tıklayın veya ekranın üst kısmındaki **Eylemler** sekmesini seçin.
+
+1. Bir uyarı tetiklendiğinde tetiklenecek eylemlerin listesini tanımlayın. Her eylem için aşağıdakileri sağlayın:
+
+    a. **Eylem türü**: Otomasyon Runbook 'U, Azure IşLEVI, ITSM, mantıksal uygulama, güvenli Web kancası, Web kancası 'yi seçin.
+    
+    b. **Ad**: eylem için benzersiz bir ad girin.
+
+    c. **Ayrıntılar**: eylem türüne bağlı olarak, bir Web kancası URI 'Si, Azure UYGULAMASı, ITSM bağlantısı veya Otomasyon Runbook 'u girin. ITSM eylemi için, ayrıca ıTSM araclarınızın gerektirdiği **Iş öğesini** ve diğer alanları belirtin.
+    
+    d. **Ortak uyarı şeması**: Azure izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](https://aka.ms/commonAlertSchemaDocs)etkinleştirmeyi seçebilirsiniz.
+    
+    ![Eylemler sekmesi](./media/action-groups/action-group-3-actions.png)
+
+### <a name="create-the-action-group"></a>Eylem grubunu oluşturma
+
+1. Dilerseniz **Etiketler** ayarlarını da inceleyebilirsiniz. Bu, anahtar/değer çiftlerini kategorilere ayırma için eylem grubuyla ilişkilendirmenize ve tüm Azure kaynakları için kullanılabilen bir özelliktir.
+
+    ![Etiketler sekmesi](./media/action-groups/action-group-4-tags.png)
+    
+1. Ayarları gözden geçirmek için **Gözden geçir + oluştur**'a tıklayın. Bu, tüm gerekli alanların seçili olduğundan emin olmak için girişlerinizin hızlı bir şekilde doğrulanmasını sağlar. Sorun varsa burada bildirilir. Ayarları inceledikten sonra, eylem grubunu sağlamak için **Oluştur** ' a tıklayın.
+    
+    ![Gözden geçir + Oluştur sekmesi](./media/action-groups/action-group-5-review.png)
+
+> [!NOTE]
+> E-posta veya SMS ile bir kişiye bildirimde bulunan bir eylem yapılandırdığınızda, bunlar eylem grubuna eklendiğini belirten bir onay alırlar.
 
 ## <a name="manage-your-action-groups"></a>Eylem gruplarınızı yönetin
 

@@ -10,19 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8418a45c9eba596339999c2bddf937a516d3e2d9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223355"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338053"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma
 
 Önceki hızlı başlangıçta, Azure Active Directory (Azure AD) kiracınıza bir uygulama eklediniz. Bir uygulama eklediğinizde, Azure AD kiracınıza uygulamanın kimlik sağlayıcısı olduğunu bildirmek için izin vermiş olursunuz. Artık uygulama için özelliklerden bazılarını yapılandıracaksınız.
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kiracınızdaki bir uygulamanın özelliklerini yapılandırmak için şunlar gerekir:
 
@@ -41,15 +40,15 @@ Azure AD kiracınıza bir uygulama eklemeyi bitirdiğinizde genel bakış sayfas
 Uygulama özelliklerini düzenlemek için:
 
 1. Azure AD portalında **Kurumsal uygulamalar**' ı seçin. Ardından, yapılandırmak istediğiniz uygulamayı bulun ve seçin.
-1. **Yönet** bölümünde **Özellikler** ' i seçerek, düzenlenecek **Özellikler** bölmesini açın.
+2. **Yönet** bölümünde **Özellikler** ' i seçerek, düzenlenecek **Özellikler** bölmesini açın.
 
     ![Düzenlenebilir uygulama özelliklerini gösteren Özellikler ekranının ekran görüntüsü.](media/add-application-portal/edit-properties.png)
 
-1. Yapılandırmak için kullanılabilen seçenekleri anlamak için bir dakikanızı ayırın:
+3. Yapılandırmak için kullanılabilen seçenekleri anlamak için bir dakikanızı ayırın:
     - **Kullanıcıların oturum açması Için etkinleştirildi mi?** uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcı Ataması gerekli mi?** uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların onu [erişim paneli](https://myapps.microsoft.com) ve Office 365 uygulama başlatıcısı 'nda göremeyeceğini belirler. (Office 365 veya Microsoft 365 web sitesinin sol üst köşesindeki waffle menüsüne bakın.)
-1. Gereksinimleriniz için en iyi seçenekleri seçmenize yardımcı olması için aşağıdaki tabloları kullanın.
+4. Gereksinimleriniz için en iyi seçenekleri seçmenize yardımcı olması için aşağıdaki tabloları kullanın.
 
    - *Atanan* kullanıcılar için davranış:
 
@@ -86,10 +85,10 @@ Uygulama özelliklerini düzenlemek için:
 Özel logo kullanmak için:
 
 1. 215 215 piksel olan bir logo oluşturun ve. png biçiminde kaydedin.
-1. Azure AD portalında **Kurumsal uygulamalar**' ı seçin. Ardından, yapılandırmak istediğiniz uygulamayı bulun ve seçin.
-1. **Yönet** bölümünde **Özellikler** ' i seçerek, düzenlenecek **Özellikler** bölmesini açın. 
-1. Logoyu karşıya yüklemek için simgeyi seçin.
-1. İşiniz bittiğinde **Kaydet**' i seçin.
+2. Azure AD portalında **Kurumsal uygulamalar**' ı seçin. Ardından, yapılandırmak istediğiniz uygulamayı bulun ve seçin.
+3. **Yönet** bölümünde **Özellikler** ' i seçerek, düzenlenecek **Özellikler** bölmesini açın. 
+4. Logoyu karşıya yüklemek için simgeyi seçin.
+5. İşiniz bittiğinde **Kaydet**' i seçin.
 
     ![Logo 'nin nasıl değiştirileceğini gösteren Özellikler ekranının ekran görüntüsü.](media/add-application-portal/change-logo.png)
 

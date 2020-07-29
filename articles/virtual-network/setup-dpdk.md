@@ -1,6 +1,6 @@
 ---
 title: Azure Linux VM 'de DPDK | Microsoft Docs
-description: Bir Linux sanal makinesinde DPDK ayarlamayı öğrenin.
+description: Veri düzlemi geliştirme seti 'nin (DPDK) avantajlarını ve bir Linux sanal makinesinde DPDK 'yi ayarlamayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: laxmanrb
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: ec117172a367d014f634106b5d2405892b80ffa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20f22825e6954f32d7f020dd160f36c3c1859c86
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689274"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287727"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Bir Linux sanal makinesinde DPDK 'yi ayarlama
 
@@ -55,7 +56,7 @@ Listelenmeyen tüm Linux çekirdek sürümleri için bkz. [Azure 'da ayarlanmı�
 
 Tüm Azure bölgeleri DPDK 'yi destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Linux sanal makinesinde hızlandırılmış ağ etkin olmalıdır. Sanal makine, yönetim için bir arabirim ile en az iki ağ arabirimine sahip olmalıdır. [Hızlandırılmış ağ etkin bir Linux sanal makinesi oluşturmayı](create-vm-accelerated-networking-cli.md)öğrenin.
 

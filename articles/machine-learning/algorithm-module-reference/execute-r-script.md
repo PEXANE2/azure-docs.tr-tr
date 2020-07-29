@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 3559ae5c246129aa369cb49e7749e499002f1dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048186"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337849"
 ---
 # <a name="execute-r-script-module"></a>R betik modülünü Yürüt
 
@@ -119,6 +119,22 @@ azureml_main <- function(dataframe1, dataframe2){
 > [!div class="mx-imgBorder"]
 > ![Karşıya yüklenen görüntünün önizlemesi](media/module/upload-image-in-r-script.png)
 
+## <a name="access-to-registered-dataset"></a>Kayıtlı veri kümesine erişim
+
+Çalışma alanınızdaki [kayıtlı veri kümelerine erişmek](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) için aşağıdaki örnek koda başvurabilirsiniz:
+
+```R
+        azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="how-to-configure-execute-r-script"></a>Execute R betiğini yapılandırma
 
 R betiği Yürüt modülü, başlangıç noktası olarak kullanabileceğiniz örnek kodu içerir. R betiğini Yürüt modülünü yapılandırmak için, çalıştırılacak bir giriş ve kod kümesi sağlayın.
@@ -177,6 +193,25 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
  
     > [!NOTE]
     > Varolan R kodunun bir tasarımcı işlem hattında çalıştırmak için küçük değişikliklere ihtiyacı vardır. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri, tasarımcıda kullanılan veri ve sütun türlerinden bazı yollarla da farklılık gösterir.
+
+    Betiğinizin boyutu 16KB 'tan büyükse, CommandLine gibi hataların *16597 karakter sınırını aşması*Için **betik paketi** bağlantı noktasını kullanın. 
+    
+    Betiği ve diğer özel kaynakları bir ZIP dosyasına paketleyin ve ZIP dosyasını bir **dosya veri kümesi** olarak Studio 'ya yükleyin. Ardından, veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül bölmesinde veri *kümeleri* listesinden sürükleyebilirsiniz. Veri kümesi modülünü, **R betiği yürütme** modülünün **betik paketi** bağlantı noktasına bağlayın.
+    
+    Komut dosyası paketindeki betiği tüketmek için örnek kod aşağıda verilmiştir:
+
+    ```R
+    azureml_main <- function(dataframe1, dataframe2){
+    # Source the custom R script: my_script.R
+    source("./Script Bundle/my_script.R")
+
+    # Use the function that defined in my_script.R
+    dataframe1 <- my_func(dataframe1)
+
+    sample <- readLines("./Script Bundle/my_sample.txt")
+    return (list(dataset1=dataframe1, dataset2=data.frame("Sample"=sample)))
+    }
+    ```
 
 1.  **Rastgele çekirdek**Için, R ortamının içinde rastgele çekirdek değeri olarak kullanılacak bir değer girin. Bu parametre, `set.seed(value)` R Code 'da çağırma ile eşdeğerdir.  
 

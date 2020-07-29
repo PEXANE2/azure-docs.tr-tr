@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: a153a3735bbc46dbbce7e58374e1015ac1ec0bfb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133189"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289250"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Kapsayıcılar ve BLOB 'lar için anonim genel okuma erişimini yapılandırma
 
-Azure depolama, kapsayıcılar ve BLOB 'lar için isteğe bağlı anonim genel okuma erişimini destekler. Varsayılan olarak verilerinize anonim erişime izin verilmez. Anonim erişimi açıkça etkinleştirmediğiniz takdirde, bir kapsayıcıya ve bloblarına yapılan tüm isteklere Azure Active Directory (Azure AD) ya da paylaşılan anahtar yetkilendirmesi kullanılarak yetkilendirilmelidir. Anonim erişime izin vermek için bir kapsayıcının ortak erişim düzeyi ayarını yapılandırdığınızda, istemciler bu kapsayıcıdaki verileri, isteği yetkilendirmeden okuyabilir.
+Azure depolama, kapsayıcılar ve BLOB 'lar için isteğe bağlı anonim genel okuma erişimini destekler. Varsayılan olarak verilerinize anonim erişime izin verilmez. Anonim erişimi açıkça etkinleştirmediğiniz takdirde, bir kapsayıcıya ve bloblarına yapılan tüm isteklere yetki verilmelidir. Anonim erişime izin vermek için bir kapsayıcının ortak erişim düzeyi ayarını yapılandırdığınızda, istemciler bu kapsayıcıdaki verileri, isteği yetkilendirmeden okuyabilir.
 
 > [!WARNING]
 > Bir kapsayıcı genel erişim için yapılandırıldığında, herhangi bir istemci o kapsayıcıdaki verileri okuyabilir. Genel erişim olası bir güvenlik riski sunar, bu nedenle senaryonuz bunu gerektirmiyorsa, Microsoft bu BT 'nin depolama hesabı için izin vermemenizi önerir. Daha fazla bilgi için bkz. [kapsayıcılar ve bloblara anonim genel okuma erişimini engelleme](anonymous-read-access-prevent.md).
@@ -41,7 +41,7 @@ Aşağıdaki tabloda her iki ayar da bir kapsayıcı için genel erişimi nasıl
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>Depolama hesabı için genel okuma erişimine izin ver veya izin verme
 
-Varsayılan olarak, bir depolama hesabındaki bağımsız kapsayıcılar için genel erişime izin verilir. Ortak erişime izin verildiğinde, uygun izinlere sahip bir Kullanıcı, bu kapsayıcıdaki verilere anonim genel erişimi etkinleştirmek için bir kapsayıcının ortak erişim ayarını değiştirebilir.
+Varsayılan olarak, bir depolama hesabı bir kullanıcıya bir kapsayıcıya genel erişimi etkinleştirmek için uygun izinlere sahip olacak şekilde yapılandırılır. Ortak erişime izin verildiğinde, uygun izinlere sahip bir Kullanıcı, bu kapsayıcıdaki verilere anonim genel erişimi etkinleştirmek için bir kapsayıcının ortak erişim ayarını değiştirebilir. Blob verileri, kullanıcının kapsayıcının genel erişim ayarını açıkça yapılandırması için ek bir adım kullanmadığı takdirde, genel erişim için hiçbir zaman kullanılamaz.
 
 Bir kapsayıcıya genel erişimin her zaman varsayılan olarak kapalı olduğunu ve anonim isteklere izin verecek şekilde açıkça yapılandırılması gerektiğini aklınızda bulundurun. Depolama hesabındaki ayardan bağımsız olarak, uygun izinlere sahip bir Kullanıcı, kapsayıcıda genel erişimi etkinleştirmek için bu ek adımı alırsa, verileriniz hiçbir zaman ortak erişime açık olmayacaktır.
 

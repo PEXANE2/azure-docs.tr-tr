@@ -1,234 +1,423 @@
 ---
 title: Geliştirici Kılavuzu-IoT Tak ve Kullan önizlemesi | Microsoft Docs
-description: IoT Tak ve Kullan geliştiricileri için cihaz modellemesinin açıklaması
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/26/2019
+description: Geliştiriciler için IoT Tak ve Kullan açıklaması
+author: rido-min
+ms.author: rmpablos
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef221ea068f2786a4a84f20a29e80dd7176f06c6
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77605210"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337424"
 ---
-# <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Tak ve Kullan Preview modelleme Geliştirici Kılavuzu
+# <a name="iot-plug-and-play-preview-developer-guide"></a>IoT Tak ve Kullan önizleme Geliştirici Kılavuzu
 
-IoT Tak ve Kullan önizlemesi, yeteneklerini Azure IoT uygulamalarına duyuran cihazlar oluşturmanızı sağlar. IoT Tak ve Kullan cihazları, bir müşteri bunları IoT Tak ve Kullan özellikli uygulamalara bağladığında el ile yapılandırma gerektirmez. IoT Central, IoT Tak ve Kullan özellikli bir uygulamanın örneğidir.
+IoT Tak ve Kullan önizlemesi, yeteneklerini Azure IoT uygulamalarına duyuran akıllı cihazlar oluşturmanızı sağlar. IoT Tak ve Kullan cihazları, bir müşteri bunları IoT Tak ve Kullan özellikli uygulamalara bağladığında el ile yapılandırma gerektirmez.
 
-IoT Tak ve Kullan cihazı oluşturmak için bir cihaz açıklaması oluşturmanız gerekir. Açıklama, dijital TWINS tanım dili (DTDL) adlı basit bir tanım diliyle yapılır.
+Bu kılavuzda, [ıot Tak ve kullan kurallarını](concepts-convention.md)izleyen bir cihaz oluşturmak için gereken temel adımlar ve cihazla etkileşim kurmak için KULLANABILECEĞINIZ kullanılabilir REST API 'leri açıklanmaktadır.
 
-## <a name="device-capability-model"></a>Cihaz yetenek modeli
+IoT Tak ve Kullan cihazı oluşturmak için aşağıdaki adımları izleyin:
 
-DTDL ile cihazınızın parçalarını anlatmak için bir _cihaz yetenek modeli_ oluşturursunuz. Tipik bir IoT cihazı şu şekilde yapılır:
+1. Cihazınızın Azure IoT Hub bağlanmak için MQTT veya MQTT Over WebSockets protokolünü kullandığından emin olun.
+1. Cihazınızı anlatmak için [dijital bir TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) modeli oluşturun. Daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan modellerdeki bileşenleri anlama](concepts-components.md).
+1. Cihaz bağlantısının bir parçası olarak duyurmak için cihazınızı güncelleştirin `model-id` .
+1. [Iot Tak ve kullan kurallarını](concepts-convention.md) kullanarak telemetri, özellik ve komutları uygulama
 
-- Özel parçalar, cihazınızın benzersiz hale getirme işlemleri.
-- Tüm cihazlarda ortak olan standart parçalar.
+Cihaz uygulamanız hazırsa, cihazın IoT Tak ve Kullan kurallarını izlediğini doğrulamak için [Azure IoT Gezginini](howto-use-iot-explorer.md) kullanın.
 
-Bu bölümler, cihaz yetenek modelindeki _arabirimler_ olarak adlandırılır. Arabirimler, cihazınızın uyguladığı her bir bölümün ayrıntılarını tanımlar.
+> [!Tip]
+> Bu makaledeki tüm kod parçaları C# kullanır, ancak kavramlar C, Python, Node ve Java için kullanılabilir SDK 'Lardan herhangi biri için geçerlidir.
 
-Aşağıdaki örnekte, bir termostat cihazının cihaz yetenek modeli gösterilmektedir:
+## <a name="model-id-announcement"></a>Model KIMLIĞI duyurusu
 
-```json
-{
-  "@id": "urn:example:Thermostat_T_1000:1",
-  "@type": "CapabilityModel",
-  "implements": [
-    {
-      "name": "thermostat",
-      "schema": "urn:example:Thermostat:1"
-    },
-    {
-      "name": "urn_azureiot_deviceManagement_DeviceInformation",
-      "schema": "urn:azureiot:deviceManagement:DeviceInformation:1"
-    }
-  ],
-  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
-}
+Model KIMLIĞINI duyurmak için cihazın bağlantı bilgilerine eklemesi gerekir:
+
+```csharp
+DeviceClient.CreateFromConnectionString(
+  connectionString,
+  TransportType.Mqtt,
+  new ClientOptions() { ModelId = modelId })
 ```
 
-Yetenek modelinde bazı gerekli alanlar vardır:
+Yeni `ClientOptions` aşırı yükleme, `DeviceClient` bir bağlantıyı başlatmak için kullanılan tüm yöntemlerde kullanılabilir.
 
-- `@id`: basit bir Tekdüzen Kaynak adı biçimindeki benzersiz bir KIMLIK.
-- `@type`: Bu nesnenin yetenek modeli olduğunu bildirir.
-- `@context`: yetenek modeli için kullanılan DTDL sürümünü belirtir.
-- `implements`: cihazınızın uyguladığı arabirimleri listeler.
+Model KIMLIĞI duyurusu SDK 'ların sonraki sürümlerine eklenmiştir
 
-Implements bölümündeki arabirimler listesindeki her giriş için şunu vardır:
+|SDK|Sürüm|
+|---|-------|
+|C-SDK|1.3.9|
+|.NET|1.27.0|
+|Java|1.14.0|
+|Düğüm|1.17.0|
+|Python|2.1.4|
 
-- `name`: arabirimin programlama adı.
-- `schema`: yetenek modelinin uyguladığı arabirim.
+## <a name="implement-telemetry-properties-and-commands"></a>Telemetri, özellik ve komutları uygulama
 
-Görüntü adı ve açıklama gibi yetenek modeline daha fazla ayrıntı eklemek için kullanabileceğiniz ek isteğe bağlı alanlar vardır. Yetenek modeli içinde belirtilen arabirimler, cihazın bileşenleri olarak düşünülebilir. Genel önizleme için, arabirim listesinin her şema için yalnızca bir girişi olabilir.
-
-## <a name="interface"></a>Arabirim
-
-DTDL ile, arabirimlerini kullanarak cihazınızın yeteneklerini anlayacağız. Arabirimler, cihazınızın bir parçası olan _özellikleri_, _telemetri_ve _komutları_ anlatmaktadır:
-
-- `Properties`. Özellikler, cihazınızın durumunu temsil eden veri alanlarıdır. Bir Coolant göndericisinin yerinde durumu gibi, cihazın dayanıklı durumunu göstermek için özellikleri kullanın. Özellikler Ayrıca cihazın bellenim sürümü gibi temel cihaz özelliklerini de temsil edebilir. Özellikleri salt okunurdur veya yazılabilir olarak bildirebilirsiniz.
-- `Telemetry`. Telemetri alanları sensörlerden ölçümleri temsil eder. Cihazınız her bir algılayıcı ölçümü aldığında, algılayıcı verilerini içeren bir telemetri olayı göndermelidir.
-- `Commands`. Komutlar, cihazınızın kullanıcılarının cihazda yürütebilmesi için yöntemleri temsil eder. Örneğin, bir fanı değiştirme veya kapatma için bir Reset komutu veya komutu.
-
-Aşağıdaki örnek, bir termostat cihazının arabirimini göstermektedir:
-
-```json
-{
-  "@id": "urn:example:Thermostat:1",
-  "@type": "Interface",
-  "contents": [
-    {
-      "@type": "Telemetry",
-      "name": "temperature",
-      "schema": "double"
-    }
-  ],
-  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
-}
-```
-
-Bir arabirimin bazı gerekli alanları vardır:
-
-- `@id`: basit bir Tekdüzen Kaynak adı biçimindeki benzersiz bir KIMLIK.
-- `@type`: Bu nesnenin bir arabirim olduğunu bildirir.
-- `@context`: arabirim için kullanılan DTDL sürümünü belirtir.
-- `contents`: cihazınızı oluşturan özellikleri, telemetri ve komutları listeler.
-
-Bu basit örnekte yalnızca tek bir telemetri alanı vardır. En az bir alan açıklamasında şunu vardır:
-
-- `@type`: capability türünü belirtir: `Telemetry` , `Property` , veya `Command` .
-- `name`: telemetri değerinin adını sağlar.
-- `schema`: telemetri için veri türünü belirtir. Bu değer, Double, Integer, Boolean veya String gibi bir temel tür olabilir. Karmaşık nesne türleri, diziler ve eşlemeler de desteklenir.
-
-Görünen ad ve açıklama gibi diğer isteğe bağlı alanlar, arabirime ve yeteneklere daha fazla ayrıntı eklemenizi sağlar.
-
-### <a name="properties"></a>Özellikler
-
-Varsayılan olarak, özellikler salt okunurdur. Salt okuma özellikleri, cihazın IoT Hub 'ınıza Özellik değeri güncelleştirmelerini bildirdiği anlamına gelir. IoT Hub 'ınız salt okunurdur bir özelliğin değerini ayarlayamadı.
-
-Ayrıca, bir özelliği bir arabirim üzerinde yazılabilir olarak işaretleyebilirsiniz. Bir cihaz, IoT Hub 'ınızdaki yazılabilir bir özelliğe yönelik bir güncelleştirme alabilir ve hub 'ınıza rapor özellik değeri güncelleştirmelerini alabilir.
-
-Özellik değerlerini ayarlamak için cihazların bağlı olması gerekmez. Güncelleştirilmiş değerler cihaz daha sonra hub 'a bağlanırsa aktarılır. Bu davranış hem salt okunurdur hem de yazılabilir özellikler için geçerlidir.
-
-Cihazınızdan telemetri göndermek için özellikleri kullanmayın. Örneğin, gibi bir salt okunur özelliği, `temperatureSetting=80` cihaz sıcaklığının 80 olarak ayarlandığı ve cihazın bu sıcaklığa veya bu sıcaklığın devam etmesi için çalıştığı anlamına gelir.
-
-Yazılabilir özellikler için, cihaz uygulaması, özellik değerini alınıp uygulamadığını göstermek için istenen bir durum durum kodu, sürüm ve açıklama döndürür.
+[Iot Tak ve kullan modellerdeki bileşenleri anlama](concepts-components.md)bölümünde açıklandığı gibi, cihaz oluşturucuların cihazlarını açıklamak için bileşenleri kullanmak istemeseler de karar vermelidir. Bileşenler kullanılırken, cihazların bu bölümde açıklanan kurallara uymalıdır.
 
 ### <a name="telemetry"></a>Telemetri
 
-Varsayılan olarak, IoT Hub tüm telemetri iletilerini cihazlarından, [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)uyumlu olan [yerleşik hizmete yönelik uç noktaya (**iletiler/olaylar**)](../iot-hub/iot-hub-devguide-messages-read-builtin.md) yönlendirir.
+Bileşenleri olmayan modeller özel bir özellik gerektirmez.
 
-BLOB depolama veya diğer olay hub 'ları gibi diğer hedeflere telemetri göndermek için [IoT Hub özel uç noktalarını ve yönlendirme kurallarını](../iot-hub/iot-hub-devguide-messages-d2c.md) kullanabilirsiniz. Yönlendirme kuralları iletileri seçmek için ileti özelliklerini kullanır.
+Bileşenler kullanılırken, cihazların bileşen adı ile bir ileti özelliği ayarlaması gerekir:
+
+```c#
+public async Task SendComponentTelemetryValueAsync(string componentName, string serializedTelemetry)
+{
+  var message = new Message(Encoding.UTF8.GetBytes(serializedTelemetry));
+  message.Properties.Add("$.sub", componentName);
+  message.ContentType = "application/json";
+  message.ContentEncoding = "utf-8";
+  await deviceClient.SendEventAsync(message);
+}
+```
+
+### <a name="read-only-properties"></a>Salt okunurdur özellikleri
+
+Bileşenleri olmayan modeller özel bir yapı gerektirmez:
+
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+reportedProperties["maxTemperature"] = 38.7;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+Device ikizi, sonraki bildirilen özelliği ile güncellenir:
+
+```json
+{
+  "reported": {
+      "maxTemperature" : 38.7
+  }
+}
+```
+
+Bileşenler kullanılırken, bileşen adı içinde Özellikler oluşturulmalıdır:
+
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection component = new TwinCollection();
+component["maxTemperature"] = 38.7;
+component["__t"] = "c"; // marker to identify a component
+reportedProperties["thermostat1"] = component;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+Device ikizi, sonraki bildirilen özelliği ile güncellenir:
+
+```json
+{
+  "reported": {
+    "thermostat1" : {  
+      "__t" : "c",  
+      "maxTemperature" : 38.7
+     } 
+  }
+}
+```
+
+### <a name="writable-properties"></a>Yazılabilir Özellikler
+
+Bu özellikler cihaz tarafından ayarlanabilir veya çözüm tarafından güncelleştirilir. Çözüm bir özelliği Güncelleştir, istemci içinde bir geri çağırma olarak bir bildirim alır `DeviceClient` . IoT Tak ve Kullan kurallarını izlemek için cihazın, özelliği başarıyla alınan hizmete bildirmesi gerekir.
+
+#### <a name="report-a-writable-property"></a>Yazılabilir bir özellik bildir
+
+Bir cihaz yazılabilir bir özellik bildirdiğinde, `ack` kurallar içinde tanımlanan değerleri içermelidir.
+
+Bir yazılabilir özelliği bileşenler olmadan raporlamak için:
+
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection ackProps = new TwinCollection();
+ackProps["value"] = 23.2;
+ackProps["ac"] = 200; // using HTTP status codes
+ackProps["av"] = 0; // not readed from a desired property
+ackProps["ad"] = "reported default value";
+reportedProperties["targetTemperature"] = ackProps;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+Device ikizi, sonraki bildirilen özelliği ile güncellenir:
+
+```json
+{
+  "reported": {
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+  }
+}
+```
+
+Bir bileşenden yazılabilir bir özellik raporlamak için, ikizi bir işaret içermelidir:
+
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection component = new TwinCollection();
+TwinCollection ackProps = new TwinCollection();
+component["__t"] = "c"; // marker to identify a component
+ackProps["value"] = 23.2;
+ackProps["ac"] = 200; // using HTTP status codes
+ackProps["av"] = 0; // not read from a desired property
+ackProps["ad"] = "reported default value";
+component["targetTemperature"] = ackProps;
+reportedProperties["thermostat1"] = component;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+Device ikizi, sonraki bildirilen özelliği ile güncellenir:
+
+```json
+{
+  "reported": {
+    "thermostat1": {
+      "__t" : "c",
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+    }
+  }
+}
+```
+
+#### <a name="subscribe-to-desired-property-updates"></a>İstenen özellik güncelleştirmelerine abone ol
+
+Hizmetler, bağlantılı cihazlarda bir bildirim tetikleyen istenen özellikleri güncelleştirebilir. Bu bildirim, güncelleştirmeyi tanımlayan sürüm numarası da dahil olmak üzere güncelleştirilmiş Desired özelliklerini içerir. Cihazların bildirilen özelliklerle aynı iletiyle yanıt vermesi gerekir `ack` .
+
+Bileşen olmayan modeller tek özelliğe sahiptir ve alınan sürümle bildirilen öğesini oluşturur `ack` :
+
+```csharp
+await client.SetDesiredPropertyUpdateCallbackAsync(async (desired, ctx) => 
+{
+  JValue targetTempJson = desired["targetTemperature"];
+  double targetTemperature = targetTempJson.Value<double>();
+
+  TwinCollection reportedProperties = new TwinCollection();
+  TwinCollection ackProps = new TwinCollection();
+  ackProps["value"] = targetTemperature;
+  ackProps["ac"] = 200;
+  ackProps["av"] = desired.Version; 
+  ackProps["ad"] = "desired property received";
+  reportedProperties["targetTemperature"] = ackProps;
+
+  await client.UpdateReportedPropertiesAsync(reportedProperties);
+}, null);
+```
+
+Device ikizi, özelliği istenen ve bildirilen bölümlerde gösterir:
+
+```json
+{
+  "desired" : {
+    "targetTemperature": 23.2,
+    "$version" : 3
+  },
+  "reported": {
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+  }
+}
+```
+
+Bileşenleri olan modeller, bileşen adı ile Sarmalanan istenen özellikleri alır ve bildirilen özelliği geri bildirmelidir `ack` :
+
+```csharp
+await client.SetDesiredPropertyUpdateCallbackAsync(async (desired, ctx) =>
+{
+  JObject thermostatComponent = desired["thermostat1"];
+  JToken targetTempProp = thermostatComponent["targetTemperature"];
+  double targetTemperature = targetTempProp.Value<double>();
+
+  TwinCollection reportedProperties = new TwinCollection();
+  TwinCollection component = new TwinCollection();
+  TwinCollection ackProps = new TwinCollection();
+  component["__t"] = "c"; // marker to identify a component
+  ackProps["value"] = targetTemperature;
+  ackProps["ac"] = 200; // using HTTP status codes
+  ackProps["av"] = desired.Version; // not readed from a desired property
+  ackProps["ad"] = "desired property received";
+  component["targetTemperature"] = ackProps;
+  reportedProperties["thermostat1"] = component;
+
+  await client.UpdateReportedPropertiesAsync(reportedProperties);
+}, null);
+```
+
+Bileşenler için Device ikizi, istenen ve raporlanan bölümleri şu şekilde gösterir:
+
+```json
+{
+  "desired" : {
+    "thermostat1" : {
+        "__t" : "c",
+        "targetTemperature": 23.2,
+    }
+    "$version" : 3
+  },
+  "reported": {
+    "thermostat1" : {
+        "__t" : "c",
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+    }
+  }
+}
+```
 
 ### <a name="commands"></a>Komutlar
 
-Komutlar zaman uyumlu ya da zaman uyumsuz. Zaman uyumlu bir komutun varsayılan olarak 30 saniye içinde yürütülmesi gerekir ve komut geldiğinde cihazın bağlanması gerekir. Cihaz zaman yanıt verirse veya cihaz bağlı değilse, komut başarısız olur.
+Bileşen olmayan modeller, hizmet tarafından çağrıldığı için komut adını alır.
 
-Uzun süre çalışan işlemler için zaman uyumsuz komutları kullanın. Cihaz, telemetri iletilerini kullanarak ilerleme bilgileri gönderir. Bu ilerleme iletileri aşağıdaki üst bilgi özelliklerine sahiptir:
+Bileşenleri olan modeller, bileşen ve ayırıcıya ön ek olarak kullanılacak komut adını alır `*` .
 
-- `iothub-command-name`: Örneğin, komut adı `UpdateFirmware` .
-- `iothub-command-request-id`: sunucu tarafında oluşturulan ve ilk çağrıda cihaza gönderilen istek KIMLIĞI.
-- `iothub-interface-id`: Bu komutun tanımlanmış olduğu arabirimin KIMLIĞI (örneğin,) `urn:example:AssetTracker:1` .
- `iothub-interface-name`: Örneğin, bu arabirimin örnek adı `myAssetTracker` .
-- `iothub-command-statuscode`: Örneğin, cihazdan döndürülen durum kodu `202` .
-
-## <a name="register-a-device"></a>Cihaz kaydetme
-
-IoT Tak ve Kullan, cihazınızın yeteneklerini tanıtmayı kolaylaştırır. IoT Tak ve Kullan, cihazınız IoT Hub bağlandıktan sonra cihaz yetenek modelinizi kaydetmeniz gerekir. Kayıt, müşterilerin cihazınızın IoT Tak ve Kullan yeteneklerini kullanmasına olanak sağlar.
-
-Bu kılavuzda, C için Azure IoT cihaz SDK 'sını kullanarak bir cihazın nasıl kaydedileceği gösterilmektedir.
-
-Cihazınızın uyguladığı her arabirim için bir arabirim oluşturmanız ve uygulamayı uygulamasına bağlamanız gerekir.
-
-Daha önce gösterilen Ise stat arabirimi için, C SDK kullanarak, termostat arabirimini oluşturup uygulamasına bağlayın:
-
-```c
-DIGITALTWIN_INTERFACE_HANDLE thermostatInterfaceHandle;
-
-DIGITALTWIN_CLIENT_RESULT result = DigitalTwin_InterfaceClient_Create(
-    "thermostat",
-    "urn:example:Thermostat:1",
-    null, null,
-    &thermostatInterfaceHandle);
-
-result = DigitalTwin_Interface_SetCommandsCallbacks(
-    thermostatInterfaceHandle,
-    commandsCallbackTable);
-
-result = DigitalTwin_Interface_SetPropertiesUpdatedCallbacks(
-    thermostatInterfaceHandle,
-    propertiesCallbackTable);
-
+```csharp
+await client.SetMethodHandlerAsync("themostat*reboot", (MethodRequest req, object ctx) =>
+{
+  Console.WriteLine("REBOOT");
+  return Task.FromResult(new MethodResponse(200));
+},
+null);
 ```
 
-Cihazınızın uyguladığı her arabirim için bu kodu tekrarlayın.
+#### <a name="request-and-response-payloads"></a>İstek ve yanıt yükleri
 
-Bir arabirim oluşturduktan sonra, IoT Hub 'ınız ile cihaz yetenek modelinizi ve arabirimlerini kaydedin:
+Komutları, istek ve yanıt yüklerini tanımlamak için türleri kullanır. Bir cihaz gelen giriş parametresinin serisini çıkarmalıdır ve yanıtı serileştirmelidir. Aşağıdaki örnek, yüklerde tanımlanan karmaşık türlerle bir komutun nasıl uygulanacağını gösterir:
 
-```c
-DIGITALTWIN_INTERFACE_CLIENT_HANDLE interfaces[2];
-interfaces[0] = thermostatInterfaceHandle;
-interfaces[1] = deviceInfoInterfaceHandle;
-
-result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
-    digitalTwinClientHandle, // The handle for the connection to Azure IoT
-    "urn:example:Thermostat_T_1000:1",
-    interfaces, 2,
-    null, null);
+```json
+{
+  "@type": "Command",
+  "name": "start",
+  "request": {
+    "name": "startRequest",
+    "schema": {
+      "@type": "Object",
+      "fields": [
+        {
+          "name": "startPriority",
+          "schema": "integer"
+        },
+        {
+          "name": "startMessage",
+          "schema" : "string"
+        }
+      ]
+    }
+  },
+  "response": {
+    "name": "startReponse",
+    "schema": {
+      "@type": "Object",
+      "fields": [
+        {
+            "name": "startupTime",
+            "schema": "integer" 
+        },
+        {
+          "name": "startupMessage",
+          "schema": "string"
+        }
+      ]
+    }
+  }
+}
 ```
 
-## <a name="use-a-device"></a>Cihaz kullanma
+Aşağıdaki kod parçacıkları, bir cihazın serileştirme ve serisini kaldırma için kullanılan türler dahil olmak üzere bu komut tanımını nasıl uyguladığını göstermektedir:
 
-IoT Tak ve Kullan, yeteneklerini IoT Hub 'ınız ile kaydetmiş olan cihazları kullanmanıza olanak sağlar. Örneğin, bir cihazın özelliklerine ve komutlarına doğrudan erişebilirsiniz.
+```csharp
+class startRequest
+{
+  public int startPriority { get; set; }
+  public string startMessage { get; set; }
+}
 
-IoT Hub 'ınıza bağlı bir IoT Tak ve Kullan cihazı kullanmak için, IoT Hub REST API veya IoT dil SDK 'Lardan birini kullanın. Aşağıdaki örneklerde IoT Hub REST API kullanılır. API 'nin geçerli sürümü `2019-07-01-preview` . `?api-version=2019-07-01-preview`Rest PI çağrılarınızın sonuna ekleyin.
+class startResponse
+{
+  public int startupTime { get; set; }
+  public string startupMessage { get; set; }
+}
 
-Termostat 'daki arabirimdeki bellenim sürümü () gibi bir cihaz özelliğinin değerini almak için, `fwVersion` `DeviceInformation` dijital twıns REST API kullanırsınız.
+// ... 
+
+await client.SetMethodHandlerAsync("start", (MethodRequest req, object ctx) =>
+{
+  var startRequest = JsonConvert.DeserializeObject<startRequest>(req.DataAsJson);
+  Console.WriteLine($"Received start command with priority ${startRequest.startPriority} and ${startRequest.startMessage}");
+
+  var startResponse = new startResponse
+  {
+    startupTime = 123,
+    startupMessage = "device started with message " + startRequest.startMessage
+  };
+
+  string responsePayload = JsonConvert.SerializeObject(startResponse);
+  MethodResponse response = new MethodResponse(Encoding.UTF8.GetBytes(responsePayload), 200);
+  return Task.FromResult(response);
+},null);
+```
+
+> [!Tip]
+> İstek ve yanıt adları, tel üzerinden iletilen serileştirilmiş yüklere mevcut değildir.
+
+## <a name="interact-with-the-device"></a>Cihazla etkileşim kurma 
+
+IoT Tak ve Kullan, IoT Hub 'ınız ile model KIMLIĞINI duyurduğu cihazları kullanmanıza olanak sağlar. Örneğin, bir cihazın özelliklerine ve komutlarına doğrudan erişebilirsiniz.
+
+IoT Hub 'ınıza bağlı bir IoT Tak ve Kullan cihazı kullanmak için, IoT Hub REST API veya IoT dil SDK 'Lardan birini kullanın. Aşağıdaki örneklerde IoT Hub REST API kullanılır. API 'nin geçerli sürümü `2020-05-31-preview` . `?api-version=2020-05-31`Rest PI çağrılarınızın sonuna ekleyin.
 
 Termostat cihazınız çağrılırsa `t-123` , REST API Get çağrısıyla cihazınız tarafından uygulanan tüm arabirimlerin tüm özelliklerini alırsınız:
 
 ```REST
-GET /digitalTwins/t-123/interfaces
+GET /digitalTwins/t-123
 ```
 
-Daha genel olarak, tüm arabirimlerde tüm özelliklere bu REST API şablonuyla erişilir ve bu `{device-id}` da cihazın tanımlayıcısıdır:
+Bu çağrıda, `$metadata.$model` cihaz tarafından duyurulan model kimliğiyle JSON özelliği dahil edilir.
+
+Tüm arabirimlerde tüm özelliklere, `GET /DigitalTwin/{device-id}` cihazın tanımlayıcısı olan REST API şablonuyla erişilir `{device-id}` :
 
 ```REST
-GET /digitalTwins/{device-id}/interfaces
+GET /digitalTwins/{device-id}
 ```
 
-Arabirimin adını (gibi) biliyorsanız `deviceInformation` ve söz konusu arabirimin özelliklerini almak istiyorsanız, isteği ada göre belirli bir arabirime kapsam:
+IoT Tak ve Kullan cihaz komutlarını doğrudan çağırabilirsiniz. `Thermostat` `t-123` Cihazdaki bileşen bir `restart` komuta sahipse, bunu bir REST API Post çağrısıyla çağırabilirsiniz:
 
 ```REST
-GET /digitalTwins/t-123/interfaces/deviceInformation
-```
-
-Daha genel olarak, belirli bir arabirimin özelliklerine bu REST API şablonu aracılığıyla erişilebilir `device-id` ve bu, cihazın tanımlayıcısıdır ve `{interface-name}` arabirimin adıdır:
-
-```REST
-GET /digitalTwins/{device-id}/interfaces/{interface-name}
-```
-
-IoT Tak ve Kullan cihaz komutlarını doğrudan çağırabilirsiniz. `Thermostat` `t-123` Cihazdaki arabirimin bir `restart` komutu varsa, bunu bir REST API Post çağrısıyla çağırabilirsiniz:
-
-```REST
-POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
+POST /digitalTwins/t-123/components/Thermostat/commands/restart
 ```
 
 Genel olarak, bu REST API şablonu aracılığıyla komutlar çağrılabilir:
 
 - `device-id`: cihaz için tanımlayıcı.
-- `interface-name`: cihaz yetenek modelindeki Implements bölümünde arabirimin adı.
+- `component-name`: cihaz yetenek modelindeki Implements bölümünde arabirimin adı.
 - `command-name`: komutun adı.
 
 ```REST
-/digitalTwins/{device-id}/interfaces/{interface-name}/commands/{command-name}
+/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık cihaz modelleme hakkında bilgi edindiğinize göre, bazı ek kaynaklar aşağıda verilmiştir:
 
-- [Digital Ikizi tanım dili (DTDL)](https://aka.ms/DTDL)
+- [Dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C cihaz SDK’sı](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [Model bileşenleri](./concepts-components.md)

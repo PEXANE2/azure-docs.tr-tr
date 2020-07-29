@@ -4,12 +4,12 @@ description: Bu makalede, uygulama geçişi ve tümleştirme bağlamında Azure 
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: cebc32edf78df1fa6a72876f8c8e5d23525942b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481587"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289348"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs altyapısını idare edin-uygulama geçişi ve Tümleştirme
 Geliştirme/test laboratuvarı ortamınız kurulduktan sonra, aşağıdaki soruları düşünmeniz gerekir:
@@ -50,14 +50,14 @@ Ancak, ek bir faktör yazılım paketinizdeki değişikliklerin sıklığıdır.
 Özel kurumsal görüntülerimi DevTest Labs ortamına getirmek için kolayca tekrarlanabilir bir işlem ayarlayabilirim?
 
 ### <a name="answer"></a>Yanıt
-[Bu videoya görüntü fabrikası düzenine](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)bakın. Bu senaryo gelişmiş bir senaryodur ve sunulan betikler yalnızca örnek betiklerdir. Herhangi bir değişiklik gerekliyse, ortamınızda kullanılan betikleri yönetmeniz ve korumanız gerekir.
+[Bu videoya görüntü fabrikası düzenine](./devtest-lab-faq.md#blog-post)bakın. Bu senaryo gelişmiş bir senaryodur ve sunulan betikler yalnızca örnek betiklerdir. Herhangi bir değişiklik gerekliyse, ortamınızda kullanılan betikleri yönetmeniz ve korumanız gerekir.
 
 Azure Pipelines içinde özel bir görüntü işlem hattı oluşturmak için DevTest Labs kullanma:
 
-- [Giriş: Azure DevTest Labs bir görüntü fabrikası ayarlayarak dakikalar içinde kullanıma hazırlamış VM 'Leri alın](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Görüntü fabrikası – Bölüm 2! VM oluşturmak için Azure Pipelines ve fabrika Laboratuvarı ayarlama](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Görüntü fabrikası – Bölüm 3: özel görüntüleri kaydetme ve birden çok laboratuvara dağıtma](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Video: Azure DevTest Labs ile özel görüntü fabrikası](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+- [Giriş: Azure DevTest Labs bir görüntü fabrikası ayarlayarak dakikalar içinde kullanıma hazırlamış VM 'Leri alın](./devtest-lab-faq.md#blog-post)
+- [Görüntü fabrikası – Bölüm 2! VM oluşturmak için Azure Pipelines ve fabrika Laboratuvarı ayarlama](./devtest-lab-faq.md#blog-post)
+- [Görüntü fabrikası – Bölüm 3: özel görüntüleri kaydetme ve birden çok laboratuvara dağıtma](./devtest-lab-faq.md#blog-post)
+- [Video: Azure DevTest Labs ile özel görüntü fabrikası](./devtest-lab-faq.md#blog-post)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>Ağ yapılandırmasını ayarlama desenleri
 

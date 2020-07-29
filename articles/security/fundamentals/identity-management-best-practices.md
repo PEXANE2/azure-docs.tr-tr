@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089677"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367410"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
@@ -204,7 +204,7 @@ Güvenlik takımınız, riski değerlendirmek ve düzeltmek için Azure kaynakla
 Belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izinler atamak için [RBAC](/azure/role-based-access-control/overview) kullanabilirsiniz. Rol atamasının kapsamı abonelik, kaynak grubu veya tek bir kaynak olabilir.
 
 **En iyi yöntem**: takımınızın içindeki görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmesi için gereken kullanıcılara erişim miktarını verin. Azure aboneliğinizde veya kaynaklarında herkes için sınırsız izin vermek yerine, belirli bir kapsamdaki yalnızca belirli eylemlere izin verin.
-**Ayrıntı**: kullanıcılara ayrıcalık atamak için Azure 'DAKI [yerleşik RBAC rollerini](/azure/role-based-access-control/built-in-roles) kullanın.
+**Ayrıntı**: kullanıcılara ayrıcalık atamak için Azure 'da [Azure yerleşik rollerini](/azure/role-based-access-control/built-in-roles) kullanın.
 
 > [!Note]
 > Belirli izinler gereksiz karmaşıklık ve karışıklık oluşturarak, bir şeyi bozmadan düzeltilmesi zor olan "eski" bir yapılandırmada biriktirilir. Kaynağa özgü izinlerden kaçının. Bunun yerine, abonelikler içindeki izinler için kurumsal çapta izinler ve kaynak grupları için yönetim grupları kullanın. Kullanıcıya özgü izinlerden kaçının. Bunun yerine, Azure AD’deki gruplara erişim atayın.

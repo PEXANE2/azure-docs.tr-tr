@@ -10,11 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733485"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337866"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Bir MQTT sunucusuna ileti gönderme
 
@@ -28,7 +29,7 @@ Bu projede şunları öğrenirsiniz:
 - MQTT Istemci kitaplığını kullanarak bir MQTT aracısına ileti gönderme.
 - Mxyongaıot DevKit 'i MQTT istemcisi olarak yapılandırma.
 
-## <a name="what-you-need"></a>Ne gerekiyor
+## <a name="what-you-need"></a>Gerekenler
 
 [Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) şu şekilde sona erdirin:
 
@@ -87,7 +88,4 @@ Sorunlarla karşılaşırsanız [IoT DevKit SSS](https://microsoft.github.io/azu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mxyonunuzu IoT DevKit 'i MQTT istemcisi olarak yapılandırma ve MQTT Istemci kitaplığını kullanarak bir MQTT aracısına ileti gönderme hakkında öğrendiğinize göre, önerilen sonraki adımlar aşağıda verilmiştir:
-
-* [Azure IoT uzaktan Izleme çözüm hızlandırıcısının genel bakış](https://docs.microsoft.com/azure/iot-suite/)
-* [Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama](/azure/iot-central/core/howto-connect-devkit)
+Mxyonunuzu IoT DevKit 'i MQTT istemcisi olarak yapılandırma ve MQTT Istemci kitaplığını kullanarak bir MQTT aracısına ileti gönderme hakkında bilgi edindiğinize göre, önerilen sonraki adım şu şekildedir: [Azure IoT uzaktan izleme çözüm hızlandırıcısına genel bakış](https://docs.microsoft.com/azure/iot-suite/)

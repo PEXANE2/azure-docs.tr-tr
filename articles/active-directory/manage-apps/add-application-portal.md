@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145719"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338036"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınıza uygulama ekleme
 
@@ -53,7 +53,7 @@ Azure AD kiracınıza bir uygulama eklemek için:
 6. Eklemek istediğiniz uygulamanın galerisine gözatıp, arama kutusuna adını girerek uygulamayı arayabilirsiniz. Sonra sonuçlardan uygulamayı seçin. Formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz. Bu örnekte GitHub ' ı seçtik ve adı **GitHub-test**olarak değiştirdi.
     ![Galeriden bir uygulamanın nasıl ekleneceğini gösterir](media/add-application-portal/create-application.png)
     >[!TIP]
-    >Aradığınız uygulama galeride değilse, **kendi uygulamanızı oluşturma**bağlantısına tıklayabilirsiniz. Microsoft, Azure AD ile çalışacak şekilde önceden yapılandırmak için birçok uygulama geliştiricileriyle zaten çalıştık. Galeri 'de görüntülenen uygulamalar bu uygulamalardır. Ancak eklemek istediğiniz uygulama listede yoksa, yeni, genel bir uygulama oluşturabilir ve bunu kendiniz veya onu oluşturan geliştiricinin kılavuzumuzu ile yapılandırabilirsiniz.
+    >Aradığınız uygulama Galeri 'de değilse, **kendi uygulamanızı oluşturma** bağlantısına tıklayabilir ve ardından **uygulamanızla ne yapmak istiyorsunuz?** bölümünde, uygulamanızda **bulamadıysanız diğer tüm uygulamaları tümleştirin**' ı seçin. Microsoft, Azure AD ile çalışacak şekilde önceden yapılandırmak için birçok uygulama geliştiricileriyle zaten çalıştık. Galeri 'de görüntülenen uygulamalar bu uygulamalardır. Ancak eklemek istediğiniz uygulama listede yoksa, yeni, genel bir uygulama oluşturabilir ve bunu kendiniz veya onu oluşturan geliştiricinin kılavuzumuzu ile yapılandırabilirsiniz.
 7. **Oluştur**’u seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır.
 
 Uygulama eklemeyi tamamladınız. Sonraki hızlı başlangıçta, logosunun nasıl değiştirileceği ve uygulamanızın diğer özelliklerinin nasıl düzenleneceği gösterilmektedir.

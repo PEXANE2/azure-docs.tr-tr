@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81383093"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289022"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Konuşma hizmeti kapsayıcıları hakkında sık sorulan sorular (SSS)
 
@@ -30,7 +30,7 @@ Konuşma hizmetini kapsayıcılarla birlikte kullanırken, destek 'e ilerleden �
 
 **Cevap:** Üretim kümesini ayarlarken göz önünde bulundurmanız gereken birkaç nokta vardır. Birincisi, tek dilin kurulması, aynı makinede birden çok kapsayıcı olması, büyük bir sorun olmamalıdır. Sorun yaşıyorsanız, donanımla ilgili bir sorun olabilir. bu nedenle öncelikle kaynağa bakacağız, yani CPU ve bellek belirtimleri.
 
-Bir süre, `ja-JP` kapsayıcı ve en son modeli göz önünde bulundurun. Akustik model en zorlu parça CPU temelinde, dil modeli ise en fazla bellek talep ederken. Kullanımı geliştirdiğimiz zaman, ses gerçek zamanlı olarak (mikrofondan gibi) bir kez akışa eklendiğinde tek bir konuşmaya metin isteği işlemek için 0,6 CPU çekirdeği sürer. Sesi gerçek zamanlı olarak (bir dosyadan) daha hızlı bir şekilde besuyorsanız, bu kullanım çift (1.2 x çekirdek) olabilir. Bu arada, aşağıda listelenen bellek, konuşmayı çözmek için çalışan bellektir. Dosya önbelleğinde yer alacak dil modelinin gerçek tam boyutunu *hesaba almaz.* Bunun `ja-JP` için ek 2 GB; için `en-US`, daha fazla (6-7 GB) olabilir.
+Bir süre, `ja-JP` kapsayıcı ve en son modeli göz önünde bulundurun. Akustik model en zorlu parça CPU temelinde, dil modeli ise en fazla bellek talep ederken. Kullanımı geliştirdiğimiz zaman, ses gerçek zamanlı olarak (mikrofondan gibi) bir kez akışa eklendiğinde tek bir konuşmaya metin isteği işlemek için 0,6 CPU çekirdeği sürer. Sesi gerçek zamanlı olarak (bir dosyadan) daha hızlı bir şekilde besuyorsanız, bu kullanım çift (1.2 x çekirdek) olabilir. Bu arada, aşağıda listelenen bellek, konuşmayı çözmek için çalışan bellektir. Dosya önbelleğinde yer alacak dil modelinin gerçek tam boyutunu *hesaba almaz.* `ja-JP`Bunun için ek 2 GB; `en-US` daha fazla (6-7 GB) olabilir.
 
 Belleğin scarce olduğu bir makineniz varsa ve bu makinede birden çok dil dağıtmaya çalışıyorsanız, dosya önbelleği dolu olabilir ve işletim sistemi sayfa modellerine giriş ve çıkış için zorlanır. Çalışan bir döküm için felaket olabilir ve yavaşlamalar ve diğer performans etkilerine neden olabilir.
 
@@ -42,23 +42,23 @@ Ayrıca, [Gelişmiş vektör uzantısı (AVX2)](speech-container-howto.md#advanc
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Son olarak, değişken kullanarak `DECODER MAX_COUNT` *tek* bir kapsayıcı içinde istediğiniz kod çözücülerinin sayısını ayarlayabilirsiniz. Bu nedenle, temel olarak SKU 'nızda (CPU/bellek) başlamamız gerekir ve bundan en iyi şekilde nasıl yararlanabilmeniz tavsiye ederiz. Harika bir başlangıç noktası, önerilen konak makinesi kaynak belirtimlerine işaret eder.
+Son olarak, değişken kullanarak *tek* bir kapsayıcı içinde istediğiniz kod çözücülerinin sayısını ayarlayabilirsiniz `DECODER MAX_COUNT` . Bu nedenle, temel olarak SKU 'nızda (CPU/bellek) başlamamız gerekir ve bundan en iyi şekilde nasıl yararlanabilmeniz tavsiye ederiz. Harika bir başlangıç noktası, önerilen konak makinesi kaynak belirtimlerine işaret eder.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Şirket içi konuşma kapsayıcılarının kapasite planlaması ve maliyet tahmini konusunda yardımcı olabilir mi?</b>
+<b>Şirket içi konuşmadan metin kapsayıcılarının kapasite planlaması ve maliyet tahmini konusunda yardımcı olabilir mi?</b>
 </summary>
 
 **Cevap:** Toplu işleme modundaki kapsayıcı kapasitesi için, her kod çözücü 2-3x ' i tek bir tanıma için iki CPU çekirdeği ile gerçek zamanlı olarak işleyebilir. Kapsayıcı örneği başına ikiden fazla eşzamanlı tanıma tutulması önerilmez, ancak bir yük dengeleyicinin arkasında güvenilirlik/kullanılabilirlik nedenleriyle daha fazla kapsayıcı örneği çalıştırmayı öneririz.
 
-Ancak, her kapsayıcı örneği daha fazla kod çözücüde çalışıyor olabilir. Örneğin, sekiz çekirdekli bir makinede (milyardan fazla) her kapsayıcı örneği için 7 kod çözücü ayarlayabiliriz. Bilmeniz için bir parametre `DECODER_MAX_COUNT` vardır. Olağanüstü durum için güvenilirlik ve gecikme süresi sorunları ortaya çıkar ve verimlilik önemli ölçüde artar. Bir mikrofon için, bu, 1x gerçek zamanlı olarak olacaktır. Genel kullanım, tek bir tanıma yönelik bir çekirdek hakkında olmalıdır.
+Ancak, her kapsayıcı örneği daha fazla kod çözücüde çalışıyor olabilir. Örneğin, sekiz çekirdekli bir makinede (milyardan fazla) her kapsayıcı örneği için 7 kod çözücü ayarlayabiliriz. Bilmeniz için bir parametre vardır `DECODER_MAX_COUNT` . Olağanüstü durum için güvenilirlik ve gecikme süresi sorunları ortaya çıkar ve verimlilik önemli ölçüde artar. Bir mikrofon için, bu, 1x gerçek zamanlı olarak olacaktır. Genel kullanım, tek bir tanıma yönelik bir çekirdek hakkında olmalıdır.
 
 Toplu işleme modunda 1 K saat/gün işleme senaryosu için, çok büyük bir durumda 3 VM bu süreyi 24 saat içinde işleyebilir ancak garanti edilmez. Depo, yük devretme, güncelleştirme ve en düşük yedekleme/BCP sağlamak için, küme başına 3 ve 2 + küme yerine 4-5 makine önerilir.
 
-Donanım için standart Azure VM `DS13_v2` 'yi bir başvuru olarak KULLANıYORUZ (AVX2 yönerge kümesi etkinleştirilmiş olarak her çekirdek 2,6 GHz veya daha iyi olmalıdır).
+Donanım için standart Azure VM 'yi `DS13_v2` bir başvuru olarak kullanıyoruz (AVX2 yönerge kümesi etkinleştirilmiş olarak her çekirdek 2,6 GHz veya daha iyi olmalıdır).
 
 | Örnek  | vCPU 'lar | RAM    | Geçici depolama | AHB ile Kullandıkça öde | 1 yıllık ayrılmış AHB (% tasarruf) | 3 yıllık, AHB ile ayrılmış (% tasarruf) |
 |-----------|---------|--------|--------------|------------------------|-------------------------------------|--------------------------------------|
@@ -95,9 +95,9 @@ Microsoft 'a ödenen bakım maliyeti hizmet düzeyine ve hizmetin içeriğine ba
 <b>Neden eksik noktalama işaretleri eksik?</b>
 </summary>
 
-**Cevap:** Karbon `speech_recognition_language=<YOUR_LANGUAGE>` istemci kullanılıyorsa istekte açıkça yapılandırılması gerekir.
+**Cevap:** `speech_recognition_language=<YOUR_LANGUAGE>`Karbon istemci kullanılıyorsa istekte açıkça yapılandırılması gerekir.
 
-Örneğin:
+Örnek:
 
 ```python
 if not recognize_once(
@@ -168,7 +168,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Yanıt 2:** İstek için büyük/küçük harfe duyarlı doğru bir ses adı sağlamanız gerekir. Tam hizmet adı eşleme bölümüne bakın. Artık metin okuma kapsayıcısının `en-US-JessaRUS`kapsayıcı sürümünde `en-US-JessaNeural` kullanılabilir olmadığından, kullanmanız gerekir.
+**Yanıt 2:** İstek için büyük/küçük harfe duyarlı doğru bir ses adı sağlamanız gerekir. Tam hizmet adı eşleme bölümüne bakın. `en-US-JessaRUS` `en-US-JessaNeural` Artık metin okuma kapsayıcısının kapsayıcı sürümünde kullanılabilir olmadığından, kullanmanız gerekir.
 
 **Hata 3:**
 
@@ -289,7 +289,7 @@ Bilgi, 1,8 sürümünde düzeltildi.
 
 Hangi işlevlerin test edilmesi ve SDK ve REST API 'Lerinin nasıl test edilmesi de dahil olmak üzere, şu test ölçümlerini doldurmaya yardımcı olabilirsiniz misiniz? Özellikle, var olan belge/örnekten görmeyen "Etkileşimli" ve "konuşma" farklılıkları.
 
-| Uç Nokta                                                | İşlevsel test                                                   | SDK | REST API |
+| Uç Noktası                                                | İşlevsel test                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
 | `/speech/synthesize/cognitiveservices/v1`               | Metni sentezleştirme (metinden konuşmaya)                                  |     | Yes      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | Bilişsel Hizmetler-Şirket içi dikte v1 WebSocket uç noktası        | Yes | Hayır       |
@@ -299,9 +299,9 @@ Hangi işlevlerin test edilmesi ve SDK ve REST API 'Lerinin nasıl test edilmesi
 **Cevap:** Bu bir Fusion:
 - Kapsayıcılar için dikte uç noktasını deneyen kişiler, (Bu URL 'nin bu URL 'nin nasıl bulunduğundan emin değilim)
 - 1<sup>St</sup> taraf uç noktası, kapsayıcıda bir kapsayıcıdır.
-- 1<sup>St</sup> taraf uç noktası, dikte uç noktası için 3<sup>RD</sup> bölüm `speech.hypothesis` uç noktasının döndürdüğü iletiler yerine konuşma. Fragment iletileri döndürüyor.
+- 1<sup>St</sup> taraf uç noktası, `speech.hypothesis` dikte uç noktası için 3<sup>RD</sup> bölüm uç noktasının döndürdüğü iletiler yerine konuşma. Fragment iletileri döndürüyor.
 - Karbon hızlı başlangıç `RecognizeOnce` (etkileşimli mod)
-- Bunun için, bunları gerektiren iletiler `speech.fragment` için etkileşimli modda döndürülmeyen bir onaylama.
+- Bunun için, `speech.fragment` bunları gerektiren iletiler için etkileşimli modda döndürülmeyen bir onaylama.
 - Sürüm yapılarında (işlem sonlandırılıyor) Onaylamalar ateşte.
 
 Geçici çözüm kodunuzda sürekli tanıma özelliğini kullanmaya geçiş yapar veya (daha hızlı) kapsayıcıdaki etkileşimli veya sürekli uç noktalara bağlanır.
@@ -366,7 +366,7 @@ Geçerli planım, var olan bir ses dosyasını alıp 10 saniyelik parçalara bö
 
 Belge, farklı bir bağlantı noktasını kullanıma sundum, ancak BASıS kapsayıcısı hala 5000 numaralı bağlantı noktasında dinleme yapıyor mu?
 
-**Cevap:** Deneyin `-p <outside_unique_port>:5000`. Örneğin, `-p 5001:5000`.
+**Cevap:** Deneyin `-p <outside_unique_port>:5000` . Örneğin, `-p 5001:5000`.
 
 
 <br>
@@ -376,10 +376,10 @@ Belge, farklı bir bağlantı noktasını kullanıma sundum, ancak BASıS kapsay
 
 <details>
 <summary>
-<b>Toplu işlem dışı API 'Leri, 15 saniye boyunca sesi &lt;işleyecek şekilde nasıl alabilirim?</b>
+<b>Toplu işlem dışı API 'Leri, 15 saniye boyunca sesi işleyecek şekilde nasıl alabilirim &lt; ?</b>
 </summary>
 
-**Cevap:** `RecognizeOnce()` etkileşimli modda yalnızca 15 saniyelik ses kadar işlem yapın. Bu mod, söyleyelerin kısa olması beklendiğinde konuşma komut veren için tasarlanmıştır. Dikte veya konuşma `StartContinuousRecognition()` için kullanıyorsanız, 15 saniyelik bir sınır yoktur.
+**Cevap:** `RecognizeOnce()` modu, en fazla 15 saniyelik sesi işler ve bu mod, söyleyelerin kısa olması beklenen bir konuşma verme amacına yöneliktir. `StartContinuousRecognition()`Dikte veya konuşma için kullanıyorsanız, 15 saniyelik bir sınır yoktur.
 
 
 <br>
@@ -392,7 +392,7 @@ Belge, farklı bir bağlantı noktasını kullanıma sundum, ancak BASıS kapsay
 
 Kaç tane eş zamanlı istek 4 çekirdek, 4 GB RAM işleme olacaktır? Örneğin, 50 eşzamanlı istek, kaç çekirdek ve RAM önerildiğini sunuyoruz?
 
-**Cevap:** Gerçek zamanlı 8 ' de en son `en-US`olarak, 6 eşzamanlı istek ötesinde daha fazla Docker kapsayıcısı kullanmanızı öneririz. 16 çekirdekten daha büyük bir hal alır ve Tekdüzen olmayan bellek erişimi (NUMA) düğümüne duyarlı hale gelir. Aşağıdaki tabloda, her bir konuşma kapsayıcısı için kaynakların en düşük ve önerilen ayırması açıklanmaktadır.
+**Cevap:** Gerçek zamanlı 8 ' de en son `en-US` olarak, 6 eşzamanlı istek ötesinde daha fazla Docker kapsayıcısı kullanmanızı öneririz. 16 çekirdekten daha büyük bir hal alır ve Tekdüzen olmayan bellek erişimi (NUMA) düğümüne duyarlı hale gelir. Aşağıdaki tabloda, her bir konuşma kapsayıcısı için kaynakların en düşük ve önerilen ayırması açıklanmaktadır.
 
 # <a name="speech-to-text"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
@@ -422,7 +422,7 @@ Kaç tane eş zamanlı istek 4 çekirdek, 4 GB RAM işleme olacaktır? Örneğin
 
 - Her çekirdek en az 2,6 GHz veya daha hızlı olmalıdır.
 - Dosyalar için, daraltma konuşma SDK 'sında, 2x (ilk 5 saniyelik ses azaltmaz) olacaktır.
-- Kod çözücü, yaklaşık 2-3x gerçek zamanlı zaman alabilir. Bunun için genel CPU kullanımı, tek bir tanıma için iki çekirdeğe yakın olacaktır. Bu nedenle, kapsayıcı örneği başına ikiden fazla etkin bağlantının tutulması önerilmez. Çok büyük taraf, yaklaşık sekiz gerçek zamanlı 10 kod çözücüsü ile benzer bir şekilde `DS13_V2`sekiz çekirdekli bir makineye yerleştirilmelidir. Kapsayıcı sürümü 1,3 ve üzeri için, ayarlamayı `DECODER_MAX_COUNT=20`deneyebilmeniz için bir parametre vardır.
+- Kod çözücü, yaklaşık 2-3x gerçek zamanlı zaman alabilir. Bunun için genel CPU kullanımı, tek bir tanıma için iki çekirdeğe yakın olacaktır. Bu nedenle, kapsayıcı örneği başına ikiden fazla etkin bağlantının tutulması önerilmez. Çok büyük taraf, yaklaşık sekiz gerçek zamanlı 10 kod çözücüsü ile benzer bir şekilde sekiz çekirdekli bir makineye yerleştirilmelidir `DS13_V2` . Kapsayıcı sürümü 1,3 ve üzeri için, ayarlamayı deneyebilmeniz için bir parametre vardır `DECODER_MAX_COUNT=20` .
 - Mikrofon için, 1x gerçek zamanlı olarak olacaktır. Genel kullanım, tek bir tanıma yönelik bir çekirdek hakkında olmalıdır.
 
 Sahip olduğunuz toplam ses saati sayısını göz önünde bulundurun. Sayı büyükse, güvenilirliği/kullanılabilirliği artırmak için, bir yük dengeleyicinin arkasında tek bir kutu ya da birden çok kutu üzerinde birden fazla kapsayıcı örneği çalıştırmayı öneririz. Orchestration, Kubernetes (K8S) ve Held kullanılarak veya Docker Compose ile yapılabilir.
@@ -439,7 +439,7 @@ Sahip olduğunuz toplam ses saati sayısını göz önünde bulundurun. Sayı b�
 
 **Cevap:** Şirket içi kapsayıcıda büyük küçük harfe (ıG) sahipsiniz. Noktalama, dile bağımlıdır ve Çince ve Japonca dahil bazı dillerde desteklenmez.
 
-Mevcut kapsayıcılar için örtülü ve temel noktalama desteğiniz var, ancak varsayılan *do* `off` olarak. Bunun anlamı, örneğinizdeki `.` karakteri alabileceğiniz, ancak `。` karakteri belirleyebileceğinize ilişkin bir şeydir. Bu örtük mantığı etkinleştirmek için, konuşma SDK 'sını kullanarak Python 'da nasıl yapılacağını gösteren bir örnek aşağıda verilmiştir (diğer dillerde de benzerdir):
+Mevcut kapsayıcılar için örtülü ve temel noktalama desteğiniz *var,* ancak `off` Varsayılan olarak. Bunun anlamı, `.` örneğinizdeki karakteri alabileceğiniz, ancak karakteri belirleyebileceğinize ilişkin bir şeydir `。` . Bu örtük mantığı etkinleştirmek için, konuşma SDK 'sını kullanarak Python 'da nasıl yapılacağını gösteren bir örnek aşağıda verilmiştir (diğer dillerde de benzerdir):
 
 ```python
 speech_config.set_service_property(
@@ -514,7 +514,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-Daha eski kapsayıcılar, `FromHost` API ile çalışması için gerekli uç noktaya sahip değildir. 1,3 sürümü için kullanılan kapsayıcılar, bu kodun kullanılması gerekir:
+Daha eski kapsayıcılar, API ile çalışması için gerekli uç noktaya sahip değildir `FromHost` . 1,3 sürümü için kullanılan kapsayıcılar, bu kodun kullanılması gerekir:
 
 ```cpp
 const auto host = "http://localhost:5000";
@@ -525,7 +525,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-`FromEndpoint` API kullanımı örneği aşağıda verilmiştir:
+API kullanımı örneği aşağıda verilmiştir `FromEndpoint` :
 
 ```cpp
 const auto endpoint = "http://localhost:5000/cognitiveservices/v1";
@@ -536,7 +536,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
- `SetSpeechSynthesisVoiceName` İşlev, güncelleştirilmiş bir metin okuma altyapısına sahip kapsayıcılar ses adı gerektirdiğinden çağrılır.
+ `SetSpeechSynthesisVoiceName`İşlev, güncelleştirilmiş bir metin okuma altyapısına sahip kapsayıcılar ses adı gerektirdiğinden çağrılır.
 
 <br>
 </details>
@@ -553,9 +553,9 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 Bunlar farklı amaçlara yöneliktir ve farklı şekilde kullanılır.
 
 Python [örnekleri](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py):
-- Özel bir uç nokta ile tek tanıma (etkileşimli mod) için (yani, `SpeechConfig` bir uç nokta parametresiyle), bkz `speech_recognize_once_from_file_with_custom_endpoint_parameters()`..
-- Sürekli tanıma (konuşma modu) için ve yalnızca yukarıdaki gibi özel uç nokta kullanmak üzere değiştirin, bkz `speech_recognize_continuous_from_file()`..
-- Yukarıdaki örneklerde (yalnızca gerçekten ihtiyaç duyuyorsanız) dikte etmeyi etkinleştirmek için, oluşturduktan sonra `speech_config`kodu `speech_config.enable_dictation()`ekleyin.
+- Özel bir uç nokta (yani, bir uç nokta parametresiyle) ile tek tanıma (etkileşimli mod) için `SpeechConfig` bkz `speech_recognize_once_from_file_with_custom_endpoint_parameters()` ..
+- Sürekli tanıma (konuşma modu) için ve yalnızca yukarıdaki gibi özel uç nokta kullanmak üzere değiştirin, bkz `speech_recognize_continuous_from_file()` ..
+- Yukarıdaki örneklerde (yalnızca gerçekten ihtiyaç duyuyorsanız) dikte etmeyi etkinleştirmek için, oluşturduktan sonra `speech_config` kodu ekleyin `speech_config.enable_dictation()` .
 
 Dikte etmeyi etkinleştirmek Için C# ' de `SpeechConfig.EnableDictation()` işlevi çağırın.
 
@@ -577,7 +577,7 @@ Dikte etmeyi etkinleştirmek Için C# ' de `SpeechConfig.EnableDictation()` işl
 <b>Konuşma kapsayıcısı ile konuşma SDK 'sını nasıl kullanabilirim?</b>
 </summary>
 
-**Cevap:** Yeni `FromHost` bir API var. Bu, var olan API 'Leri değiştirmez veya değiştirmez. Yalnızca özel bir ana bilgisayar kullanarak bir konuşma yapılandırması oluşturmak için alternatif bir yol ekler.
+**Cevap:** Yeni bir API var `FromHost` . Bu, var olan API 'Leri değiştirmez veya değiştirmez. Yalnızca özel bir ana bilgisayar kullanarak bir konuşma yapılandırması oluşturmak için alternatif bir yol ekler.
 
 ### <a name="fromhost-apis"></a>`FromHost`GetVersionEx
 
@@ -593,14 +593,14 @@ Dikte etmeyi etkinleştirmek Için C# ' de `SpeechConfig.EnableDictation()` işl
 > Parametreler: Konak (zorunlu), abonelik anahtarı (hizmeti olmadan kullanacaksanız, isteğe bağlı).
 
 Ana bilgisayar için biçim `protocol://hostname:port` , `:port` isteğe bağlıdır (aşağıya bakın):
-- Kapsayıcı yerel olarak çalışıyorsa, ana bilgisayar adı olur `localhost`.
+- Kapsayıcı yerel olarak çalışıyorsa, ana bilgisayar adı olur `localhost` .
 - Kapsayıcı uzak bir sunucuda çalışıyorsa, bu sunucunun ana bilgisayar adını veya IPv4 adresini kullanın.
 
 Konuşmayı metne yönelik ana bilgisayar parametresi örnekleri:
 - `ws://localhost:5000`-bağlantı noktası 5000 kullanılarak yerel bir kapsayıcıya güvenli olmayan bağlantı
 - `ws://some.host.com:5000`-uzak sunucuda çalışan bir kapsayıcıya güvenli olmayan bağlantı
 
-Yukarıdaki Python örnekleri, ancak yerine parametresini `host` kullanın `endpoint`:
+Yukarıdaki Python örnekleri, ancak `host` yerine parametresini kullanın `endpoint` :
 
 ```python
 speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")

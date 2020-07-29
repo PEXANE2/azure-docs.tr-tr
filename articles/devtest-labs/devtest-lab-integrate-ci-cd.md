@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure Pipelines tümleştirin
 description: Azure DevTest Labs Azure Pipelines sürekli tümleştirme ve teslim ardışık düzenine nasıl tümleştirileceğini öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 080577a74a1cb168453c6a027d77ae395072ccc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480584"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288935"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs Azure Pipelines CI/CD işlem hattınızla tümleştirin
 
@@ -24,7 +24,7 @@ Bu makalede, bir VM oluşturup dağıtmak, özel bir görüntü oluşturmak ve a
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure DevOps](https://dev.azure.com) kuruluşunuza kaydolun veya oturum açın ve kuruluşta [bir proje oluşturun](/vsts/organizations/projects/create-project) . 
   
@@ -109,7 +109,7 @@ Değerler için değişken eklemek için:
    
 1. Her değişken için, **Ekle** ' yi seçin ve adı ve değeri girin:
    
-   |Name|Değer|
+   |Ad|Değer|
    |---|---|
    |*vmName*|Kaynak Yöneticisi şablonunda atadığınız VM adı|
    |*Nitelen*|VM 'ye erişim için Kullanıcı adı|
@@ -150,7 +150,7 @@ Daha önce oluşturduğunuz betiği, DevTest Labs VM 'nin ayrıntılarını topl
    |Alan|Değer|
    |---|---|
    |**Azure bağlantı türü**|**Azure Resource Manager**seçin.|
-   |**Azure aboneliği**|Hizmet bağlantınızı veya aboneliğinizi seçin.| 
+   |**Azure Aboneliği**|Hizmet bağlantınızı veya aboneliğinizi seçin.| 
    |**Betik türü**|**Betik dosyası yolunu**seçin.|
    |**Betik yolu**|Kaynak kodu deponuza kaydettiğiniz PowerShell betiğinin tam yolunu ve adını girin. Yolu basitleştirmek için yerleşik özellikleri kullanabilirsiniz, örneğin:<br /><br />`$(System.DefaultWorkingDirectory/Scripts/GetLabVMParams.ps1`|
    |**Betik bağımsız değişkenleri**|Önceki görev tarafından doldurulmuş olan *Labvmıd* değişkeninin adını girin, örneğin:<br /><br />`-labVmId '$(labVMId)'`|
@@ -218,5 +218,5 @@ Yeni işlem hattını kullanarak bir yayın oluşturmak ve çalıştırmak için
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Kaynak Yöneticisi şablonlarıyla çoklu VM ortamları oluşturmayı](devtest-lab-create-environment-from-arm.md)öğrenin.
 - [Ortak DevTest Labs GitHub deposundan](https://github.com/Azure/azure-quickstart-templates)DevTest Labs otomasyonu için daha fazla hızlı başlangıç Kaynak Yöneticisi şablonları bulun.
-- Gerekirse, bkz. [Azure DevOps sorun giderme](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting) sayfası.
+- Gerekirse, bkz. [Azure DevOps sorun giderme](/azure/devops/pipelines/troubleshooting) sayfası.
  

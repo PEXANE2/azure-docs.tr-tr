@@ -1,6 +1,6 @@
 ---
 title: Azure VM 'Leri arasında bağlantı sorunlarını giderme | Microsoft Docs
-description: Azure VM 'Ler arasındaki bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
+description: Azure VM 'Ler arasında karşılaşabileceğiniz bağlantı sorunlarını giderme ve çözme hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: chadmath
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 83841349ec7563231653cd063791e19ae2af4857
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130682"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286096"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM’leri arasında bağlantı sorunlarını giderme
 

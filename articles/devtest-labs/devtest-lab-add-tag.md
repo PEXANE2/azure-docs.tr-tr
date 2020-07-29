@@ -3,12 +3,12 @@ title: Azure DevTest Labs bir laboratuvara etiket ekleme | Microsoft Docs
 description: Azure DevTest Labs laboratuvara nasıl etiket ekleneceğini öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bf835cee705012fd175a3132edde1d241311c576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483015"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287583"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuvara etiket ekleme
 
@@ -52,7 +52,7 @@ Etiketler için aşağıdaki sınırlamalar geçerlidir:
 * Etiket adı 512 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır. Depolama hesapları için etiket adı 128 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır.
 * Kaynak grubuna uygulanan etiketler, bu kaynak grubundaki kaynaklar tarafından devralınmaz.
 
-[Azure kaynaklarınızı düzenlemek için etiketleri kullanın](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) , PowerShell veya Azure CLI kullanarak etiketleri yönetme dahil olmak üzere Azure 'da etiketleri kullanma hakkında daha fazla ayrıntı sağlar.
+[Azure kaynaklarınızı düzenlemek için etiketleri kullanın](../azure-resource-manager/management/tag-resources.md) , PowerShell veya Azure CLI kullanarak etiketleri yönetme dahil olmak üzere Azure 'da etiketleri kullanma hakkında daha fazla ayrıntı sağlar.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

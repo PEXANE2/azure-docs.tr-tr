@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129738"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367454"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure dijital TWINS 'i diğer hizmetlerle tümleştirme
 
@@ -20,11 +20,11 @@ Azure dijital TWINS genellikle diğer hizmetlerle birlikte kullanılır. Azure d
 
 ## <a name="data-ingress"></a>Veri girişi
 
-Azure dijital TWINS, IoT Hub verilerle yönetilebilir. Bu sayede ortamınızdaki fiziksel cihazlardan telemetri toplayabilir ve Bulutta Azure dijital TWINS grafiğini kullanarak bu verileri işleyebilirsiniz.
+Azure dijital TWINS; IoT Hub, Logic Apps, kendi özel hizmetiniz ve daha fazlasını içeren herhangi bir hizmetten gelen verilerle ve etkinliklerle yönetilebilir. Bu sayede ortamınızdaki fiziksel cihazlardan telemetri toplayabilir ve Bulutta Azure dijital TWINS grafiğini kullanarak bu verileri işleyebilirsiniz.
 
 Azure dijital TWINS 'in yerleşik IoT Hub yok. Şu anda üretimde olan mevcut bir IoT Hub kullanabilir veya yeni bir tane dağıtabilirsiniz. Bu, IoT Hub tüm cihaz yönetimi özelliklerine tam erişim sağlar.
 
-Azure dijital TWINS 'e IoT Hub verileri almak için bir [Azure işlevi](../azure-functions/functions-overview.md)kullanın. Bu model hakkında daha fazla bilgi edinin [*IoT Hub nasıl yapılır: alma telemetriyle*](how-to-ingest-iot-hub-data.md)ilgili daha fazla bilgi edinin veya Azure dijital TWINS [*öğreticisinde kendiniz deneyin: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
+Herhangi bir kaynaktaki verileri Azure dijital TWINS 'e almak için bir [Azure işlevi](../azure-functions/functions-overview.md)kullanın. Bu model hakkında daha fazla bilgi edinin [*IoT Hub nasıl yapılır: alma telemetriyle*](how-to-ingest-iot-hub-data.md)ilgili daha fazla bilgi edinin veya Azure dijital TWINS [*öğreticisinde kendiniz deneyin: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
 
 ## <a name="data-egress-services"></a>Veri çıkış Hizmetleri
 

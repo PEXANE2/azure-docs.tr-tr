@@ -10,28 +10,28 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d6c0928196c9e8e1abf6aa7f724a58753ce3d2a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851301"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289045"
 ---
 # <a name="add-interaction-rules"></a>Etkileşim kuralları ekleme
 
-Bu makalede, *etkileşim kuralları*hakkında bilgi edineceksiniz. Bu ek kurallar, daha belirgin veya karmaşık durumları işler. Kendi özel etkileşim kurallarınızı yazabilirsiniz, ancak bu makalede, aşağıdaki hedeflenen senaryolar için etkileşim kurallarını kullanabilirsiniz:
+Bu makalede, **etkileşim kuralları**hakkında bilgi edineceksiniz. Bunlar, daha belirgin veya karmaşık durumları işlemek için ek kurallardır. Kendi özel etkileşim kurallarınızı yazmak için ücretsiz olduğunuzda, bu makalede aşağıdaki hedeflenen senaryolar için etkileşim kurallarından yararlanabilirsiniz:
 
 * Onaylama komutları
 * Komutlara tek adımlı bir düzeltme ekleme
 
 Etkileşim kuralları hakkında daha fazla bilgi edinmek için [Başvurular](./custom-commands-references.md) bölümüne gidin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki makalelerde bulunan adımları tamamlamalısınız:
 > [!div class="checklist"]
-> * [Basit komutlarla uygulama oluşturma](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [Komutlara parametre ekleme](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [Nasıl yapılır: basit komutlarla uygulama oluşturma](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [Nasıl yapılır: komutlara parametreler ekleme](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>Komuta onaylar ekleme
 
@@ -40,7 +40,7 @@ Bir onay eklemek için **Setsıcaklık** komutunu kullanın. Onay elde etmek iç
 1. Sol bölmedeki **Setsıcaklık** komutunu seçin.
 1. Orta bölmede **Ekle** ' ye tıklayarak etkileşim kuralları ekleyin. Ardından **etkileşim kuralları**  >  **Onayla komutunu**seçin.
 
-    Bu eylem üç etkileşim kuralı ekler. Bu kural, kullanıcıdan alarm tarihini ve saatini onaylamasını ve bir sonraki sırayla bir onay (Evet/Hayır) beklediğini ister.
+    Bu eylem, kullanıcıdan alarm tarih ve saatini onaylamasını ve bir sonraki sırayla bir onay (Evet/Hayır) beklediğini isteyecektir.
 
     1. Aşağıdaki yapılandırmaya göre **Onayla komut** etkileşim kuralını değiştirin:
         1. **Sıcaklığı onaylamak**için **adı** yeniden adlandırın.
@@ -75,14 +75,14 @@ Bir onay eklemek için **Setsıcaklık** komutunu kullanın. Onay elde etmek iç
 
 Eğitim **' i seçin,** eğitimin bitmesini bekleyin ve **Test**' i seçin.
 
-- **Giriş**: sıcaklığı 80 derece olarak ayarlayın.
-- **Çıkış**: Tamam 80?
-- **Giriş**: Hayır.
+- **Giriş**: sıcaklığı 80 derece olarak ayarlayın
+- **Çıkış**: sıcaklığı 80 derece olarak ayarlamak istediğinizden emin misiniz?
+- **Giriş**: Hayır
 - **Çıkış**: sorun değil. Ne daha sonra sıcaklık?
-- **Giriş**: 83 derece.
-- **Çıkış**: Tamam 83?
-- **Giriş**: Evet.
-- **Çıkış**: Tamam, sıcaklık 83 derece olarak ayarlanıyor.
+- **Giriş**: 72 derece
+- **Çıkış**: sıcaklığı 72 derece olarak ayarlamak istediğinizden emin misiniz?
+- **Giriş**: Evet
+- **Çıkış**: Tamam, sıcaklık 83 derece olarak ayarlanıyor
 
 
 ## <a name="implement-corrections-in-a-command"></a>Bir komutta düzeltmeleri uygulama

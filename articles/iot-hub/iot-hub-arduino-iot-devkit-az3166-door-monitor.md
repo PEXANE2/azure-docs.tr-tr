@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75977294"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337883"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Kapı Izleyicisi--Azure Işlevleri ve SendGrid kullanarak bir kapı açıldığında e-posta gönderin           
 
@@ -29,7 +30,7 @@ Bu projede şunları öğrenirsiniz:
 > - Kapısının kenarına bir mıknatıs bağlayın.
 > - DevKit 'i kapıya Jamb kapasitesinde takın. Kapıdan açma veya kapatma, algılayıcısı tetikler ve bu da olay için bir e-posta bildirimi almaya yol açar.
 
-## <a name="what-you-need"></a>Ne gerekiyor
+## <a name="what-you-need"></a>Gerekenler
 
 [Başlarken Kılavuzunu](iot-hub-arduino-iot-devkit-az3166-get-started.md) şu şekilde sona erdirin:
 
@@ -196,7 +197,4 @@ Sorunlarla karşılaşırsanız [IoT DevKit SSS](https://microsoft.github.io/azu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlamayı ve SendGrid hizmetini bir e-posta göndermek için nasıl kullanacağınızı öğrendiniz. Önerilen sonraki adımlar aşağıda verilmiştir:
-
-* [Azure IoT uzaktan Izleme çözüm hızlandırıcısının genel bakış](https://docs.microsoft.com/azure/iot-suite/)
-* [Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama](/azure/iot-central/core/howto-connect-devkit)
+Bir DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlamayı ve SendGrid hizmetini bir e-posta göndermek için nasıl kullanacağınızı öğrendiniz. Önerilen sonraki adım aşağıda verilmiştir:[Azure IoT uzaktan izleme çözüm hızlandırıcısının genel bakış](https://docs.microsoft.com/azure/iot-suite/)

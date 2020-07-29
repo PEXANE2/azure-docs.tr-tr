@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170515"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313345"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -27,11 +27,11 @@ ms.locfileid: "87170515"
 
 ## <a name="using-the-id_token"></a>İd_token kullanma
 
-KIMLIK belirteçleri, bir kullanıcının iddia ettikleri kim olduğunu doğrulamak ve bunlarla ilgili yararlı bilgiler almak için kullanılmalıdır; bir [erişim belirtecinin](access-tokens.md)yerine yetkilendirme için kullanılmamalıdır. Sağladığı talepler, uygulamanızın içindeki UX için, bir veritabanında anahtarlar olarak ve istemci uygulamasına erişim sağlamak için kullanılabilir.  Bir veritabanı için anahtar oluştururken, `idp` Konuk senaryolarını kullanırken kullanılmamalıdır.  Anahtar oluşturma `sub` , `tid` gerektiğinde yönlendirme için kullanılan tek başına (her zaman benzersiz) yapılmalıdır.  Hizmetler arasında veri paylaşmanız gerekiyorsa, `oid` + `sub` + `tid` birden çok hizmetin hepsi aynı olduğundan çalışacaktır `oid` .
+KIMLIK belirteçleri, bir kullanıcının iddia ettikleri kim olduğunu doğrulamak ve bunlarla ilgili yararlı bilgiler almak için kullanılmalıdır; bir [erişim belirtecinin](access-tokens.md)yerine yetkilendirme için kullanılmamalıdır. Sağladığı talepler, uygulamanızın içindeki UX için, [bir veritabanında anahtarlar](#using-claims-to-reliably-identify-a-user-subject-and-object-id)olarak ve istemci uygulamasına erişim sağlamak için kullanılabilir.  
 
 ## <a name="claims-in-an-id_token"></a>İd_token talepler
 
-`id_tokens`bir Microsoft kimliği için, [Jwts](https://tools.ietf.org/html/rfc7519) (JSON Web belirteçleri), yani bir üst bilgi, yük ve imza kısmından oluşur. Belirtecin orijinalliğini doğrulamak için üst bilgi ve imzayı, yük ise istemciniz tarafından istenen kullanıcı hakkındaki bilgileri içerdiğinde de kullanabilirsiniz. Aksi belirtilmedikçe, burada listelenen tüm JWT talepleri v 1.0 ve v 2.0 belirteçlerinde görünür.
+`id_tokens`, [Jwts](https://tools.ietf.org/html/rfc7519) (JSON Web belirteçleri), yani bir üst bilgi, yük ve imza kısmından oluşur. Belirtecin orijinalliğini doğrulamak için üst bilgi ve imzayı, yük ise istemciniz tarafından istenen kullanıcı hakkındaki bilgileri içerdiğinde de kullanabilirsiniz. Aksi belirtilmedikçe, burada listelenen tüm JWT talepleri v 1.0 ve v 2.0 belirteçlerinde görünür.
 
 ### <a name="v10"></a>v1.0
 
@@ -87,14 +87,25 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 |`ver` | Dize, 1,0 ya da 2,0 | İd_token sürümünü gösterir. |
 
 > [!NOTE]
-> V 1.0 ve v 2.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklara sahiptir. Sürüm temelde, verildiği yerden Azure AD platformu uç noktasını belirtir. [Azure AD OAuth uygulama](about-microsoft-identity-platform.md) yıllardır. Şu anda Azure AD uygulamaları için iki farklı outh uç noktası vardır. V 2.0 veya v 1.0 olarak sınıflandırılan yeni uç noktalardan herhangi birini kullanabilirsiniz. Bunların her ikisi için de OAuth uç noktaları farklı. V 2.0 uç noktası daha yenidir ve v 1.0 uç noktasının özellikleri bu uç noktaya geçiriliyor. Yeni geliştiriciler v 2.0 uç noktasını kullanmalıdır.
+> V 1.0 ve v 2.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklara sahiptir. Sürüm, istenen bitiş noktasına göre belirlenir. Mevcut uygulamalar muhtemelen Azure AD uç noktasını kullanırken, yeni uygulamalar v 2.0 "Microsoft Identity platform" uç noktasını kullanmalıdır.
 >
 > - v 1.0: Azure AD uç noktaları:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v 2.0: Microsoft identitypPlatform uç noktaları:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 2.0: Microsoft Identity platform uç noktaları:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Bir kullanıcıyı güvenilir bir şekilde tanımlamak için talepler kullanma (konu ve nesne KIMLIĞI)
+
+Bir Kullanıcı (örneğin, bir veritabanında arayarak veya sahip oldukları izinlere karar verirken) tanımlarken, zaman içinde sabit ve benzersiz kalacak bilgilerin kullanılması önemlidir.  Eski uygulamalar bazen e-posta adresi, telefon numarası veya UPN gibi alanları kullanır.  Bunların hepsi zaman içinde değişebilir ve zaman içinde, bir çalışan adını değiştirdiğinde ya da bir çalışana bir önceki, artık çalışanla ilgili bir e-posta adresi verildiğinde, bir çalışanın adı değiştiğinde yeniden kullanılabilir. Bu nedenle, uygulamanızın okunabilir bir kullanıcıyı tanımlamak için insan tarafından okunabilen verileri kullanması **önemli bir öneme** sahiptir.  Bunun yerine, OıDC standardı tarafından sunulan talepleri veya Microsoft-ve talepleri tarafından sunulan uzantı taleplerini kullanın `sub` `oid` .
+
+Kullanıcı başına bilgileri doğru bir şekilde depolamak için, `sub` `oid` gerektiğinde yönlendirme veya parçalama için kullanılan veya tek başına (GUID 'ler benzersiz olan) kullanın `tid` .  Verileri hizmetler arasında paylaşmanız gerekiyorsa, `oid` + `tid` tüm uygulamalar `oid` `tid` belirli bir kullanıcı için aynı ve talepler elde ettiği için en iyi seçenektir.  `sub`Microsoft Identity platform 'daki talep "çift yönlü", belirteç alıcısı, kiracı ve Kullanıcı birleşimine göre benzersizdir.  Bu nedenle, belirli bir kullanıcı için KIMLIK belirteçleri isteyen iki uygulama farklı talepler alır `sub` , ancak `oid` bu kullanıcı için aynı taleplerdir.
+
+>[!NOTE]
+> `idp`Kiracılar genelinde kullanıcıları ilişkilendirme girişiminde bir kullanıcı hakkındaki bilgileri depolamak için talebi kullanmayın.  `oid` `sub` Uygulamaların kiracılar genelinde kullanıcıları izleyemediğinden emin olmak için, bir kullanıcının kiracılar genelinde değişiklik yaptığı, tasarıma göre de bu çalışmaz.  
+>
+> Bir kullanıcının bir kiracıda bulunduğu ve başka bir kiracının kimliğini doğrulayan Konuk senaryolar, kullanıcıya hizmet için yepyeni bir kullanıcı gibi davranmalıdır.  Contoso kiracısındaki belgeleriniz ve ayrıcalıklarınız fabrikam kiracısında uygulanmamalıdır. Bu, kiracılar genelinde yanlışlıkla veri sızıntılarını engellemek açısından önemlidir.
 
 ## <a name="validating-an-id_token"></a>İd_token doğrulama
 
-Bir `id_token` [erişim belirtecini doğrulamaya](access-tokens.md#validating-tokens) yönelik ilk adımla benzer bir şekilde doğrulama, istemciniz doğru veren 'in belirteci geri gönderdiğini ve üzerinde oynanmadığını doğrulayabilmelidir. `id_tokens`Her zaman BIR JWT belirteci olduğundan, bu belirteçleri doğrulamak için birçok kitaplık bulunur; bunlardan birini kendi başınıza yapmak yerine kullanmanızı öneririz.
+Bir `id_token` [erişim belirtecini doğrulamaya](access-tokens.md#validating-tokens) yönelik ilk adımla benzer bir şekilde doğrulama, istemciniz doğru veren 'in belirteci geri gönderdiğini ve üzerinde oynanmadığını doğrulayabilirler. `id_tokens`Her zaman BIR JWT belirteci olduğundan, bu belirteçleri doğrulamak için birçok kitaplık bulunur; bunlardan birini kendi başınıza yapmak yerine kullanmanızı öneririz.  Yalnızca gizli istemcilerin (gizli olmayan) KIMLIK belirteçlerini doğrulaması gerektiğini unutmayın.  Ortak uygulamalar (bir cihaz veya ağ üzerinde çalışan kod; Örneğin, bir kullanıcının tarayıcısı veya ağı), kötü niyetli bir Kullanıcı belirtecin doğrulanması için kullanılan anahtarları ele geçirebilir ve düzenleyebildiğinden, kimlik belirtecinin doğrulanması avantajına sahip değildir.
 
 Belirteci el ile doğrulamak için, [erişim belirtecini doğrulama](access-tokens.md#validating-tokens)konusunda bulunan adım ayrıntılarına bakın. Belirteçteki imzayı doğruladıktan sonra, aşağıdaki JWT taleplerinin id_token doğrulanması gerekir (Bunlar ayrıca, belirteç doğrulama kitaplığınız tarafından da yapılabilir):
 

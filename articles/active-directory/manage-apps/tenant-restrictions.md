@@ -12,12 +12,12 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285909"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
 
@@ -69,6 +69,11 @@ Proxy altyapınız aracılığıyla kiracı kısıtlamalarını etkinleştirmek 
 
 Login.microsoftonline.com, login.microsoft.com ve login.windows.net için gelen her istek için iki HTTP üst bilgisi ekleyin: *Restrict-Access-to-kiracılar* ve *Restrict-Access-Context*.
 
+> [!NOTE]
+> SSL yakalanması ve üst bilgi ekleme 'yi yapılandırırken trafiğin https://device.login.microsoftonline.com dışlandığından emin olun. Bu URL, cihaz kimlik doğrulaması için kullanılır ve TLS kesme işlemini gerçekleştirerek, cihaz kaydı ve cihaz tabanlı koşullu erişim ile ilgili sorunlara neden olabilecek Istemci sertifikası kimlik doğrulaması ile karışabilir.
+
+
+
 Üst bilgiler aşağıdaki öğeleri içermelidir:
 
 - *Kısıtla-erişim-kiracılar*için, \<permitted tenant list\> kullanıcıların erişmesine izin vermek istediğiniz kiracılar için virgülle ayrılmış bir liste olan değerini kullanın. Kiracıya kayıtlı olan herhangi bir etki alanı, bu listedeki kiracıyı belirlemek için kullanılabilir. Örneğin, hem contoso hem de fabrikam kiracılarına erişime izin vermek için ad/değer çifti şöyle görünür: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
@@ -81,6 +86,9 @@ Login.microsoftonline.com, login.microsoft.com ve login.windows.net için gelen 
 Kullanıcıların, kendi HTTP üst bilgisini onaylanmamış kiracılar ile eklemesini engellemek için, gelen istekte zaten varsa, proxy 'nin *Restrict-to-to-to----kiracılar* üst bilgisini değiştirmesini gerekir.
 
 İstemciler, login.microsoftonline.com, login.microsoft.com ve login.windows.net için tüm istekler için proxy 'yi kullanmaya zorlanmalıdır. Örneğin, istemcileri ara sunucuyu kullanmak üzere yönlendirmek için PAC dosyaları kullanılıyorsa, son kullanıcılar PAC dosyalarını düzenleyemez veya devre dışı bırakamamalıdır.
+
+> [!NOTE]
+> Ara sunucu yapılandırmanızda *. login.microsoftonline.com altına alt etki alanları eklemeyin. Bunun yapılması, device.login.microsoftonline.com içerir ve cihaz kaydı ve cihaz tabanlı koşullu erişim senaryolarında kullanılan Istemci sertifikası kimlik doğrulamasını kesintiye uğratabilecek. Ara sunucuyu TLS kesme ve İnceleme ve üst bilgi ekleme ile device.login.microsoftonline.com dışında bırakacak şekilde yapılandırın.
 
 ## <a name="the-user-experience"></a>Kullanıcı deneyimi
 
@@ -136,7 +144,7 @@ Modern kimlik doğrulamasını destekleyen Outlook ve Skype Kurumsal istemcileri
 
 Müşteriler Windows üzerinde Outlook için, son kullanıcıların profillerine onaylanmamış posta hesapları eklemesini engelleyen kısıtlamalar uygulamayı seçebilirler. Örneğin, [varsayılan olmayan Exchange hesaplarını eklemeyi engelle](https://gpsearch.azurewebsites.net/default.aspx?ref=1) Grup İlkesi ayarını inceleyin.
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 Kiracı kısıtlamalarını tüm kuruluşunuz için uygulamadan önce denemek istiyorsanız, iki seçeneğiniz vardır: Fiddler gibi bir araç kullanan ana bilgisayar tabanlı bir yaklaşım veya bir ara sunucu ayarları sunumu.
 
@@ -166,7 +174,7 @@ Fiddler, http üst bilgilerini ekleme de dahil olmak üzere HTTP/HTTPS trafiğin
       }
       ```
 
-      Birden çok kiracıya izin vermeniz gerekiyorsa, kiracı adlarını ayırmak için virgül kullanın. Örneğin:
+      Birden çok kiracıya izin vermeniz gerekiyorsa, kiracı adlarını ayırmak için virgül kullanın. Örnek:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

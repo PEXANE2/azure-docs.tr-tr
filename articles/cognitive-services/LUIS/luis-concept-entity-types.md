@@ -3,12 +3,12 @@ title: Varlık türleri-LUSıS
 description: Bir varlık, tahmin çalışma zamanında bir Kullanıcı noktasından verileri ayıklar. _İsteğe bağlı_, ikincil amaç, varlığı bir özellik olarak kullanarak amaç veya diğer varlıkların tahminini de artırır.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676497"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337628"
 ---
 # <a name="extract-data-with-entities"></a>Varlıkları olan verileri ayıklama
 
@@ -32,7 +32,7 @@ Varlıkların, bir modeldeki her amaç için tüm eğitimlere sürekli olarak et
 
 |İfade|Varlık|Veriler|
 |--|--|--|
-|New York 'a 3 bilet satın alın|Önceden oluşturulmuş sayı<br>Hedef|3<br>New York|
+|New York 'a 3 bilet satın alın|Önceden oluşturulmuş sayı<br>Hedef|3<br>New Yok|
 
 
 ### <a name="entities-are-optional-but-recommended"></a>Varlıklar isteğe bağlıdır ancak önerilir
@@ -77,6 +77,12 @@ Makine tarafından öğrenilen varlıkları etkin bir şekilde derlemek için:
 * Etiketlemenin amaç genelinde tutarlı olması gerekir. Bu, bu varlığı içeren **hiçbir** amaç içinde sağladığınız diğer nedenler dahil değildir. Aksi takdirde model sıraları etkin bir şekilde belirleyemeyecektir.
 * Alt varlıklar içeren bir makine öğrenmiş varlığınız varsa, varlığın ve alt varlıkların farklı siparişlerinin ve varyantlarındaki etiketlenmiş söyleyde sunulduğundan emin olun. Etiketlenmiş örnek, tüm geçerli formları içermeli ve görüntülenen ve olmayan varlıkları ve ayrıca utterance içinde de yeniden sipariş etmelidir.
 * Varlıkların çok sabit bir küme üzerine kaçmasını önleyin. Model iyi genelleştirilmeyen ve makine öğrenimi modellerinde yaygın bir sorun olduğunda **aşırı yerleştirme** oluşur. Bu, uygulamanın yeni verilerde yeterince çalışmayacak olması anlamına gelir. Bu durumda, uygulamanın sağladığınız sınırlı örneklerden daha fazla genelleştirebilmesi için etiketlenmiş örnek çeşitlerini de beklemelisiniz. Farklı alt varlıkların yalnızca gösterilen örnekler yerine daha fazla kavram düşünmesine yetecek şekilde değişiklik göstermesi gerekir.
+
+## <a name="effective-prebuilt-entities"></a>Geçerli önceden oluşturulmuş varlıklar
+
+[Önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md)tarafından sağlananlar gibi ortak verileri çıkaran etkili varlıklar oluşturmak için aşağıdaki işlemi öneririz.
+
+Kendi verilerinizi bir özellik olarak bir varlığa taşıyarak verilerin ayıklanmasını geliştirme. Bu şekilde, tüm ek Etiketler uygulamanızdaki kişi adlarının içeriğini öğrenmeyecektir.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>

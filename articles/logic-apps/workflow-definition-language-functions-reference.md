@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1a5b5ff535b2a0ca84831e8d4c42e80a72395b02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 45ff681bdf0260b6e3c12f7e644d102a49206c9f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048256"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288918"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -82,7 +82,7 @@ Dizelerle çalışmak için, bu dize işlevlerini ve ayrıca bazı [koleksiyon i
 | [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | İki veya daha fazla dizeyi birleştirin ve Birleşik dizeyi döndürün. |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Bir dizenin belirtilen alt dizeyle bitip bitmediğini denetleyin. |
 | [formatNumber numarası](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Belirtilen biçime göre bir sayı olarak dize döndürün |
-| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Bir dize olarak bir genel benzersiz tanımlayıcı (GUID) oluşturun. |
+| ['ini](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Bir dize olarak bir genel benzersiz tanımlayıcı (GUID) oluşturun. |
 | [IndexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Bir alt dize için başlangıç konumunu döndürür. |
 | [LastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Alt dizenin son geçtiği başlangıç konumunu döndürür. |
 | [değiştirin](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Bir alt dizeyi belirtilen dizeyle değiştirin ve güncelleştirilmiş dizeyi döndürün. |
@@ -126,7 +126,7 @@ Koşullara göre çalışmak, değerleri ve ifade sonuçlarını karşılaştır
 
 | Mantıksal karşılaştırma işlevi | Görev |
 | --------------------------- | ---- |
-| [ve](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
+| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
 | [eşittir](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
@@ -139,7 +139,7 @@ Koşullara göre çalışmak, değerleri ve ifade sonuçlarını karşılaştır
 
 <a name="conversion-functions"></a>
 
-## <a name="conversion-functions"></a>Dönüştürme işlevleri
+## <a name="conversion-functions"></a>Dönüşüm işlevleri
 
 Bir değerin türünü veya biçimini değiştirmek için bu dönüştürme işlevlerini kullanabilirsiniz. Örneğin, Boole değerinden bir değeri tamsayı olarak değiştirebilirsiniz. Dönüştürme sırasında Logic Apps içerik türlerini nasıl işleyeceğinden ilgili daha fazla bilgi için bkz. [tanıtıcı içerik türleri](../logic-apps/logic-apps-content-type.md). Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
@@ -203,7 +203,7 @@ Logic Apps otomatik olarak veya dolaylı olarak Base64 kodlaması veya kod çöz
 
 <a name="math-functions"></a>
 
-## <a name="math-functions"></a>Matematik İşlevleri
+## <a name="math-functions"></a>Matematik işlevleri
 
 Tamsayılar ve float ile çalışmak için, bu matematik işlevlerini kullanabilirsiniz.
 Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
@@ -213,7 +213,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | İki sayı eklemenin sonucunu döndürür. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | İki sayının bölünme sonucunu döndürür. |
 | [Biçimlendir](../logic-apps/workflow-definition-language-functions-reference.md#max) | Sayı veya dizi kümesinden en yüksek değeri döndürün. |
-| [dk](../logic-apps/workflow-definition-language-functions-reference.md#min) | Sayı veya dizi kümesinden en düşük değeri döndürün. |
+| [Min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Sayı veya dizi kümesinden en düşük değeri döndürün. |
 | [alma](../logic-apps/workflow-definition-language-functions-reference.md#mod) | İki sayıdan ayırarak kalanı döndürün. |
 | [MUL](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Ürünü iki sayıdan çarpmadan döndürün. |
 | [ran](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Belirtilen aralıktan rastgele bir tamsayı döndürür. |
@@ -1219,7 +1219,7 @@ Ve şu sonucu döndürür:`"HelloWorld"`
 
 <a name="contains"></a>
 
-### <a name="contains"></a>contains
+### <a name="contains"></a>şunu içerir
 
 Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin.
 Öğe bulunduğunda true, bulunamazsa false döndürün.
@@ -1835,7 +1835,7 @@ Ve şu sonucu döndürür:`false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>equals
+### <a name="equals"></a>eşittir
 
 Değerlerin, ifadelerin veya nesnelerin eşit olup olmadığını denetleyin.
 Her ikisi de eşdeğer olduğunda true, eşdeğer olmadığında false döndürün.
@@ -3822,7 +3822,7 @@ Ve şu sonucu döndürür:`false`
 
 <a name="string"></a>
 
-### <a name="string"></a>string
+### <a name="string"></a>dize
 
 Bir değer için dize sürümünü döndürün.
 
@@ -4746,21 +4746,15 @@ xpath('<xml>', '<xpath>')
 
 *Örnek 1*
 
-Bu örnek `<name></name>` , belirtilen bağımsız değişkenlerdeki düğümle eşleşen düğümleri bulur ve bu düğüm değerlerini içeren bir dizi döndürür:
+Bu xml dizesine sahip olduğunuzu varsayalım `'items'` : 
+
+`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+Bu örnek, `'/produce/item/name'` XML dizesindeki düğümle eşleşen düğümleri bulmak Için XPath ifadesinde geçirilir `<name></name>` `'items'` ve bu düğüm değerlerini içeren bir dizi döndürür:
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
-Bağımsız değişkenler şunlardır:
-
-* Bu XML içeren "Items" dizesi:
-
-  `"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
-
-  Örnek, "Items" bağımsız değişkeninden XML dizesini almak için [Parameters ()](#parameters) işlevini kullanır, ancak [XML ()](#xml) işlevini kullanarak dizeyi XML biçimine de dönüştürmelidir.
-
-* Bu XPath ifadesi bir dize olarak geçirilir:
-
-  `"/produce/item/name"`
+Örnek ayrıca, XML dizesini almak için [Parameters ()](#parameters) işlevini kullanır `'items'` ve [XML ()](#xml) işlevini kullanarak dizeyi XML biçimine dönüştürür.
 
 Eşleşen düğümleri içeren sonuç dizisi aşağıda verilmiştir `<name></name` :
 
@@ -4768,17 +4762,87 @@ Eşleşen düğümleri içeren sonuç dizisi aşağıda verilmiştir `<name></na
 
 *Örnek 2*
 
-Örnek 1 ' den sonra bu örnek, düğüm ile eşleşen düğümleri bulur `<count></count>` ve bu düğüm değerlerini `sum()` işlevle ekler:
+Örnek 1 ' de aşağıdaki örnek, `'/produce/item/name[1]'` öğesinin alt öğesi olan ilk öğeyi bulmak Için XPath ifadesinde geçirilir `name` `item` .
 
-`xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
+`xpath(xml(parameters('items')), '/produce/item/name[1]')`
 
-Ve şu sonucu döndürür:`30`
+Sonuç şöyledir:`Gala`
 
 *Örnek 3*
 
-Bu örnekte her iki ifade de `<location></location>` , bir ad alanı Ile xml içeren belirtilen bağımsız değişkenlerde düğümle eşleşen düğümleri bulur. 
+Örnek 1 ' den sonra bu örnek, `'/produce/item/name[last()]'` öğesinin alt öğesi olan son öğeyi bulmak Için XPath ifadesi içinde geçer `name` `item` .
 
-> [!NOTE]
+`xpath(xml(parameters('items')), '/produce/item/name[last()]')`
+
+Sonuç şöyledir:`Honeycrisp`
+
+*Örnek 4*
+
+Bu örnekte, `items` XML dizinizin özniteliklerini de içerdiğini varsayalım `expired='true'` ve `expired='false'` :
+
+`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+Bu örnek, `'//name[@expired]'` özniteliği olan tüm öğeleri bulmak Için XPath ifadesinde geçirilir `name` `expired` :
+
+`xpath(xml(parameters('items')), '//name[@expired]')`
+
+Sonuç şöyledir:`[ Gala, Honeycrisp ]`
+
+*Örnek 5*
+
+Bu örnekte, `items` XML dizinizin yalnızca bu özniteliği içerdiğini varsayalım `expired = 'true'` :
+
+`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+Bu örnek, `'//name[@expired = 'true']'` özniteliği olan tüm öğeleri bulmak Için XPath ifadesinde geçirilir `name` `expired = 'true'` :
+
+`xpath(xml(parameters('items')), '//name[@expired = 'true']')`
+
+Sonuç şöyledir:`[ Gala ]`
+
+*Örnek 6*
+
+Bu örnekte, `items` XML dizeniz aşağıdaki öznitelikleri de içerdiğini varsayalım: 
+
+* `expired='true' price='12'`
+* `expired='false' price='40'`
+
+`"<?xml version="1.0"?> <produce> <item> <name expired='true' price='12'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false' price='40'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+Bu örnek XPath ifadesinde geçirilir, `'//name[price>35]'` ,,,, tüm öğeleri bulmak için `name` `price > 35` :
+
+`xpath(xml(parameters('items')), '//name[price>35]')`
+
+Sonuç şöyledir:`Honeycrisp`
+
+*Örnek 7*
+
+Bu örnekte, `items` XML dizinizin örnek 1 ' deki ile aynı olduğunu varsayalım:
+
+`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+Bu örnek, düğümle eşleşen düğümleri bulur `<count></count>` ve bu düğüm değerlerini işlevle birlikte ekler `sum()` :
+
+`xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
+
+Sonuç şöyledir:`30`
+
+*Örnek 8*
+
+Bu örnekte, XML belgesi ad alanını içeren bu XML dizesine sahip olduğunuzu varsayalım `xmlns="http://contoso.com"` :
+
+`"<?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>"`
+
+Bu ifadeler, `/*[name()="file"]/*[name()="location"]` `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` düğüm ile eşleşen düğümleri bulmak için ya da XPath ifadesi ya da kullanır `<location></location>` . Bu örneklerde, mantıksal uygulama tasarımcısında veya ifade düzenleyicisinde kullandığınız sözdizimi gösterilmektedir:
+
+* `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
+
+Düğüm ile eşleşen sonuç düğümü aşağıdadır `<location></location>` : 
+
+`<location xmlns="https://contoso.com">Paris</location>`
+
+> [!IMPORTANT]
 >
 > Kod görünümünde çalışıyorsanız, ters eğik çizgi karakteri () kullanarak çift tırnak işaretini (") kaçış \\ . 
 > Örneğin, bir ifadeyi JSON dizesi olarak serileştirçalıştığınızda kaçış karakterleri kullanmanız gerekir. 
@@ -4787,44 +4851,14 @@ Bu örnekte her iki ifade de `<location></location>` , bir ad alanı Ile xml iç
 > * Kod görünümü:`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
 > * İfade Düzenleyicisi:`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-> 
-> Aşağıdaki örnekler, ifade düzenleyicisine girdiğiniz ifadeler için geçerlidir.
 
-* *İfade 1*
+*Örnek 9*
 
-  `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-
-* *İfade 2*
-
-  `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
-
-Bağımsız değişkenler şunlardır:
-
-* XML belgesi ad alanını içeren bu XML `xmlns="http://contoso.com"` :
-
-  ```xml
-  <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>
-  ```
-
-* Burada XPath ifadesi:
-
-  * `/*[name()="file"]/*[name()="location"]`
-
-  * `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]`
-
-Düğüm ile eşleşen sonuç düğümü aşağıdadır `<location></location>` :
-
-```xml
-<location xmlns="https://contoso.com">Paris</location>
-```
-
-*Örnek 4*
-
-Örnek 3 ' te aşağıdaki örnekte, bu örnek düğümündeki değeri bulur `<location></location>` :
+Örnek 8 ' den sonra bu örnek, `'string(/*[name()="file"]/*[name()="location"])'` düğümündeki değeri bulmak Için XPath ifadesini kullanır `<location></location>` :
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-Ve şu sonucu döndürür:`"Paris"`
+Sonuç şöyledir:`Paris`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b3ed5d6605097b31dfaa58a2d37e71d3a6702bee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7e9a76309b4d9dcd010b85d1b55f340374be5c4
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537513"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337934"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure dijital TWINS için sorgu dili hakkında
 
@@ -28,7 +28,7 @@ Azure dijital TWINS, ikizi grafiğine karşı kapsamlı sorgu özellikleri sağl
 > Tüm Azure dijital TWINS sorgu işlemleri büyük/küçük harfe duyarlıdır.
 
 Azure Digital TWINS sorgu deposu dilinde kullanılabilen işlemler şunlardır:
-* Dijital TWINS 'in özelliklerine göre TWINS alın.
+* Dijital TWINS 'in özelliklerine göre TWINS 'leri ( [Etiketler](how-to-use-tags.md)dahil) alın.
 * Dijital TWINS 'e göre TWINS ' arabirimlerini alın.
 * İlişki özelliklerine göre TWINS 'i alın.
 * Birden çok ilişki türü (sorgular) üzerinden TWINS Al `JOIN` . `JOIN`İzin verilen (genel önizleme için bir düzey) sayısında sınırlamalar vardır.
