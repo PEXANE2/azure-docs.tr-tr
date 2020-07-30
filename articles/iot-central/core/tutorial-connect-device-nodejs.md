@@ -7,13 +7,13 @@ ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.custom: mqtt
-ms.openlocfilehash: 08df3bce9d1ecce4d4b0cdfc3034355feef6a4ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 92b28b89d181de368ef1e39eb695be2e1fad6c37
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003381"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423533"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Node.js)
 
@@ -337,7 +337,6 @@ Aygıtın komutlara ve özellik güncelleştirmelerine nasıl yanıt verdiğini 
 
 Bir cihaz geliştiricisi olarak, Node.js kullanarak bir cihazın nasıl oluşturulacağı hakkında temel bilgileri öğrendiğinize göre, önerilen bazı sonraki adımlar şunlardır:
 
-* Bir [Mxyonga IoT DevKit cihazını Azure IoT Central uygulama](./howto-connect-devkit.md) nasıl yapılır makalesine bağlama hakkında IoT Central için gerçek bir cihazı nasıl bağlayacağınızı öğrenin.
 * Cihaz kodunuzu uygularken cihaz şablonlarının rolü hakkında daha fazla bilgi edinmek için cihaz [şablonu nedir?](./concepts-device-templates.md) makalesini okuyun.
 * Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
 

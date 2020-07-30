@@ -129,4 +129,4 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --applicati
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

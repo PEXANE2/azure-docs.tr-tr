@@ -105,7 +105,7 @@ Daha önce belirtildiği gibi, bir hesabın mevcut olduğu her kiracı, hesap ha
 
 Bir hesap birden fazla kuruluşta üye veya Konuk olabileceğinden, MSAL, hesabın üyesi olduğu kiracıların bir listesini almak üzere bir hizmeti sorgulayamaz. Bunun yerine, MSAL, yapılmış olan belirteç isteklerinin bir sonucu olarak hesabın bulunduğu kiracıların bir listesini oluşturur.
 
-Hesap nesnesi üzerinde sunulan talepler her zaman bir hesap için ' ana kiracı '/{Authority} ' deki taleplerdir. Bu hesap, ana kiracının bir belirtecini istemek için kullanılmıyorsa, MSAL hesap nesnesi aracılığıyla talep sağlayamaz.  Örnek:
+Hesap nesnesi üzerinde sunulan talepler her zaman bir hesap için ' ana kiracı '/{Authority} ' deki taleplerdir. Bu hesap, ana kiracının bir belirtecini istemek için kullanılmıyorsa, MSAL hesap nesnesi aracılığıyla talep sağlayamaz.  Örneğin:
 
 ```java
 // Psuedo Code
@@ -125,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Kiracı profili taleplerine erişin
 
-Başka kiracılarda göründüğü gibi bir hesap hakkındaki taleplere erişmek için, önce hesap nesnesini ' e atamalısınız `IMultiTenantAccount` . Tüm hesaplar çok kiracılı olabilir, ancak MSAL aracılığıyla kullanılabilir kiracı profillerinin sayısı, geçerli hesabı kullanarak belirteçleri istediğiniz kiracılara göre belirlenir.  Örnek:
+Başka kiracılarda göründüğü gibi bir hesap hakkındaki taleplere erişmek için, önce hesap nesnesini ' e atamalısınız `IMultiTenantAccount` . Tüm hesaplar çok kiracılı olabilir, ancak MSAL aracılığıyla kullanılabilir kiracı profillerinin sayısı, geçerli hesabı kullanarak belirteçleri istediğiniz kiracılara göre belirlenir.  Örneğin:
 
 ```java
 // Psuedo Code

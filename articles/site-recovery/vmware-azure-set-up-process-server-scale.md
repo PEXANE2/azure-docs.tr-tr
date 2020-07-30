@@ -81,7 +81,7 @@ Burada komut satırı parametreleri aşağıdaki gibidir:
 
 [!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
 
-Örnek:
+Örneğin:
 
 ```
 MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted

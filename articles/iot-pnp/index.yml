@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: IoT Tak Çalıştır Önizleme Belgeleri
-summary: IoT Tak Çalıştır Önizlemesi herhangi bir cihaz kodu yazmadan, bulut çözümlerinin cihazınızı otomatik olarak anlamasını ve cihazınızla etkileşime girmeye başlamasını sağlayan bir cihaz modeli tanımlamanızı sağlar.
+title: IoT Tak Çalıştır Önizleme Yenilemesi Belgeleri
+summary: IoT Tak Çalıştır, bulut çözümlerinin cihazınızı otomatik olarak anlamasını ve cihazınızla etkileşime girmeye başlamasını sağlayan bir cihaz modeli tanımlamanızı sağlar.
 metadata:
-  title: IoT Tak Çalıştır Önizleme Belgeleri
-  description: IoT Tak Çalıştır Önizlemesi herhangi bir cihaz kodu yazmadan, bulut çözümlerinin cihazınızı otomatik olarak anlamasını ve cihazınızla etkileşime girmeye başlamasını sağlayan bir cihaz modeli tanımlamanızı sağlar.
+  title: IoT Tak Çalıştır mimarisi
+  description: IoT Tak Çalıştır Önizlemesi, çözüm oluşturucuların cihazları el ile yapılandırmaları gerekmeden bir çözümle tümleştirmesine olanak sağlar. Bu makale, bunu mümkün kılan ana mimari öğelerini gösterir.
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 9469adb901c2da5f814088aa8eb59121889a0b78
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998282"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337373"
 landingContent:
 - title: IoT Tak Çalıştır hakkında
   linkLists:
@@ -24,51 +24,41 @@ landingContent:
     links:
     - text: IoT Tak Çalıştır nedir?
       url: overview-iot-plug-and-play.md
-  - linkListType: video
-    links:
-    - text: IoT Tak Çalıştır'a giriş
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
-- title: Cihazları geliştirme
+    - text: Önizleme Yenilemesi güncelleştirmeleri 2020
+      url: overview-iot-plug-and-play-preview-updates.md
+- title: Cihaz oluşturma
   linkLists:
   - linkListType: quickstart
     links:
-    - text: IoT Hub’a örnek cihaz bağlama
-      url: quickstart-connect-pnp-device-c-windows.md
-    - text: IoT Central'a örnek cihaz bağlama
-      url: ../iot-central/core/tutorial-connect-pnp-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - text: Cihaz oluşturmak amacıyla cihaz yetenek modelini kullanma
-      url: quickstart-create-pnp-device-windows.md
-  - linkListType: tutorial
-    links:
-    - text: Visual Studio Code'u kullanarak cihaz yetenek modelini oluşturma ve test etme
-      url: tutorial-pnp-visual-studio-code.md
-    - text: Sertifikasyon için hazır cihaz oluşturma
-      url: tutorial-build-device-certification.md
-    - text: Cihazınız için sertifika alma
-      url: tutorial-certification-test.md
-  - linkListType: how-to-guide
-    links:
-    - text: Visual Studio Code için Azure IoT Tools’u kullanma
-      url: howto-develop-with-vs-vscode.md
-    - text: IoT için Microsoft Azure Sertifikalı portalına ekleme
-      url: howto-onboard-portal.md
+    - text: IoT Hub’a örnek cihaz bağlama (C)
+      url: quickstart-connect-device-c.md
+    - text: IoT Hub’a örnek cihaz bağlama (C#)
+      url: quickstart-connect-device-csharp.md
+    - text: IoT Hub’a örnek cihaz bağlama (Java)
+      url: quickstart-connect-device-java.md
+    - text: IoT Hub’a örnek cihaz bağlama (Node.js)
+      url: quickstart-connect-device-node.md
+    - text: IoT Hub’a örnek cihaz bağlama (Python)
+      url: quickstart-connect-device-python.md
   - linkListType: concept
     links:
-    - text: Ortak arabirimler
-      url: concepts-common-interfaces.md
+    - text: Geliştirici kılavuzu
+      url: concepts-developer-guide.md
+    - text: IoT Tak Çalıştır kuralları
+      url: concepts-convention.md
+    - text: Bileşenler
+      url: concepts-components.md
 - title: Çözüm oluşturma
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Çözümünüze bağlı bir cihazla etkileşim kurma
-      url: quickstart-connect-pnp-device-solution-node.md
+    - text: Çözümünüzden bir cihazla etkileşim kurma (Node.js)
+      url: quickstart-service-node.md
+    - text: Çözümünüzden bir cihazla etkileşim kurma (Python)
+      url: quickstart-service-python.md
   - linkListType: concept
     links:
-    - text: Model keşfi
-      url: concepts-model-discovery.md
-    - text: Ortak arabirimler
-      url: concepts-common-interfaces.md
-  - linkListType: how-to-guide
-    links:
-    - text: Çözümünüzden cihazlara bağlanma
-      url: howto-develop-solution.md
+    - text: Mimari
+      url: concepts-architecture.md
+    - text: Digital Twins
+      url: concepts-digital-twin.md

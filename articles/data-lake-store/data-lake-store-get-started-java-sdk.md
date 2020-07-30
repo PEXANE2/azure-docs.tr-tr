@@ -27,7 +27,7 @@ Klasör oluşturma, veri dosyalarını karşıya yükleme ve indirme gibi temel 
 
 Data Lake Storage 1. için Java SDK API belgelerine, [Azure Data Lake Storage 1. Java API docs](https://azure.github.io/azure-data-lake-store-java/javadoc/)' de erişebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Java Development Kit (Java sürüm 1.7 veya üzerini kullanan JDK 7 ya da üzeri)
 * Data Lake Storage 1. hesabı. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin.
 * [Maven](https://maven.apache.org/install.html). Bu eğiticide, yapı ve proje bağımlılıkları için Maven kullanılır. Maven veya Gradle gibi bir yapı sistemi olmadan derleme yapmak mümkün olsa da bu sistemler bağımlılıkların yönetilmesini çok daha kolay hale getirir.

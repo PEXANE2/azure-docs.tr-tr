@@ -31,7 +31,7 @@ Bir yeniden yönlendirme URI 'si veya yanıt URL 'SI, uygulama başarıyla yetki
 
 Aşağıdaki tabloda, uygulamanızı kaydettiğinizde ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısı gösterilmektedir.
 
-| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Açıklama |
+| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Description |
 |--------------------------|---------------------------------|-------------|
 | Herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısındaki Microsoft iş veya okul hesapları | 256 | `signInAudience`uygulama bildirimindeki alan *Azureadmyorg* ya da *Azureadmultipleorgs* olarak ayarlandı |
 | Kişisel Microsoft hesapları ve iş ve okul hesapları | 100 | `signInAudience`uygulama bildirimindeki alan *Azureadandpersonmicrosoftaccount* olarak ayarlandı |
