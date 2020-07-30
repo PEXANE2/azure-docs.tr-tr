@@ -2,18 +2,18 @@
 title: Azure Site Recovery kasasını başka bir bölgeye taşıma
 description: Kurtarma Hizmetleri kasasının (Azure Site Recovery) başka bir Azure bölgesine nasıl taşınacağını açıklar
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/31/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74090307"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422649"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Kurtarma Hizmetleri kasasını ve Azure Site Recovery yapılandırmasını başka bir Azure bölgesine taşıma
 
@@ -33,7 +33,7 @@ Bu belgede şunları yapmanız gerekir:
 > [!IMPORTANT]
 > Şu anda, kurtarma hizmetleri kasasını ve olağanüstü durum kurtarma yapılandırmasını farklı bir bölgeye taşımak için birinci sınıf bir yol yoktur. Bu makale, çoğaltmayı devre dışı bırakma ve yeni bölgede ayarlama sürecinde size rehberlik eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure VM 'lerini farklı bir bölgeye taşımayı denemeden önce olağanüstü durum kurtarma yapılandırmasını kaldırıp sildiğinizden emin olun. 
 
@@ -45,7 +45,7 @@ Bu belgede şunları yapmanız gerekir:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Azure Site Recovery tarafından kullanılan kaynakları belirler
 Bir sonraki adıma geçmeden önce bu adımı yapmanızı öneririz. VM 'Ler çoğaltılırken ilgili kaynakları belirlemek daha kolay.
 
-Çoğaltılan her bir Azure VM için, **korumalı öğeler** > **çoğaltılan öğeler** > **özelliklerine** gidin ve aşağıdaki kaynakları tanımla:
+Çoğaltılan her bir Azure VM için, **korumalı öğeler**  >  **çoğaltılan öğeler**  >  **özelliklerine** gidin ve aşağıdaki kaynakları tanımla:
 
 - Hedef kaynak grubu
 - Önbellek depolama hesabı
@@ -56,7 +56,7 @@ Bir sonraki adıma geçmeden önce bu adımı yapmanızı öneririz. VM 'Ler ço
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>Mevcut olağanüstü durum kurtarma yapılandırmasını devre dışı bırak
 
 1. Kurtarma Hizmetleri kasasına gidin.
-2. **Korunan öğeler** > **çoğaltılan öğeler**bölümünde makineye sağ tıklayın ve **çoğaltmayı devre dışı bırak**' ı seçin.
+2. **Korunan öğeler**  >  **çoğaltılan öğeler**bölümünde makineye sağ tıklayın ve **çoğaltmayı devre dışı bırak**' ı seçin.
 3. Taşımak istediğiniz tüm VM 'Ler için bu adımı tekrarlayın.
 
 > [!NOTE]

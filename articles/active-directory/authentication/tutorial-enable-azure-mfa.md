@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035069"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419555"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Öğretici: Azure Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme
 
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
-* Azure AD Premium veya deneme lisansı etkin çalışan bir Azure AD kiracısı.
+* En az bir Azure AD Premium P1 veya deneme lisansı etkin çalışan bir Azure AD kiracısı.
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
 * Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Bu öğreticide bu hesabı kullanarak Son Kullanıcı Azure Multi-Factor Authentication deneyimini test edersiniz.
@@ -65,7 +65,7 @@ Koşullu erişim ilkeleri, kullanıcıların her yerde ve her yerde üretken olm
 1. **Kullanıcılar ve gruplar**kutusunu işaretleyin, ardından mevcut Azure AD kullanıcılarına ve gruplarına göz atmayı **seçin** .
 1. *MFA-test-Group*gıbı Azure AD grubunuza gözatıp seçin ve ardından **Seç**' i seçin.
 
-    [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
+    [![Koşullu erişim ilkesiyle ](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png) kullanmak IÇIN Azure AD grubunuzu seçin](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
 1. Gruba koşullu erişim ilkesini uygulamak için **bitti**' yi seçin.
 

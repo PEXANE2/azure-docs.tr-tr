@@ -3,13 +3,13 @@ title: Öğretici-kapsayıcı görüntüsünü dağıtım için hazırlama
 description: Azure Container Instances öğreticisi Bölüm 1/3-Azure Container Instances dağıtım için bir kapsayıcı görüntüsünde uygulama hazırlama
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 3a73d68f99c7e2ec4c71e408abbdbc7eec7ee95d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533336"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407175"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Öğretici: Azure Container Instances dağıtım için bir kapsayıcı görüntüsü oluşturma
 
