@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7460a3c4a942194a66e585fed2b65be77b46b33e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 607148bcbc0078b5e430eea1fe38a56ea6663777
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034174"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420711"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından Confluence SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -68,7 +68,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 - Confluence: 5,0-5,10
 - Confluence: 6.0.1 to 6.15.9
-- Confluence: 7.0.1 to 7.4.0
+- Confluence: 7.0.1 to 7.6.1
 
 > [!NOTE]
 > Lütfen Confluence denetimimizin Ubuntu sürüm 16,04 ' de çalışıp çalışmadığını unutmayın.

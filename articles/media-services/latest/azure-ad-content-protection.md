@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001409"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422105"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Öğretici: Azure AD kullanarak uçtan uca içerik koruma
 
@@ -341,7 +342,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 
 *Gruplar* talebi, Azure AD 'de kısıtlı bir [talep kümesinin](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) üyesidir.
 
-#### <a name="test"></a>Test
+#### <a name="test"></a>Test etme
 
 1. *Premium_user* hesabıyla oturum açın. Korunan içeriği oynatabilmelisiniz.
 1. *Basic_user* hesabıyla oturum açın. Videonun şifrelendiğini belirten bir hata almalısınız, ancak şifresini çözmek için bir anahtar yok. Player tanılama alt sürümünün altındaki açılan menüde olayları, hataları ve İndirmeleri görüntülediğinizde, hata iletisi, Azure AD belirteç uç noktası tarafından verilen JWT içindeki gruplar talebi için eksik talep değeri nedeniyle lisans alma başarısızlığını göstermelidir.

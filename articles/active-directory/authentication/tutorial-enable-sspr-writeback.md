@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4687a98bfb58db8ed5e8a853fa0db2207f435e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518496"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419657"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Öğretici: şirket içi bir ortama Azure Active Directory self servis parola sıfırlama geri yazma özelliğini etkinleştirme
 
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
-* En az bir Azure AD Premium P1 deneme lisansı kullanan çalışan bir Azure AD kiracısı.
+* En az bir Azure AD Premium P1 veya deneme lisansı etkin çalışan bir Azure AD kiracısı.
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * Daha fazla bilgi için bkz. [Azure AD SSPR Için lisans gereksinimleri](concept-sspr-licensing.md).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
@@ -81,7 +81,7 @@ Parola geri yazma işleminin gerçekleşmesi için uygun izinleri ayarlamak içi
     * **Yazma lockoutTime**
     * **PwdLastSet yazma**
 
-    [![](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png "Set the appropriate permissions in Active Users and Computers for the account that is used by Azure AD Connect")](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
+    [![Azure AD Connect ](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png) tarafından kullanılan hesap Için etkin kullanıcılar ve bilgisayarlarda uygun izinleri ayarlayın](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
 
 1. Hazırsanız, değişiklikleri uygulamak ve açık iletişim kutularından çıkmak için **Uygula/Tamam** ' ı seçin.
 

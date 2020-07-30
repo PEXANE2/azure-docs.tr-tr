@@ -50,8 +50,6 @@
   items:
     - name: Cihazları bağlama
       items:
-        - name: MXChip IoT DevKit’i hazırlama ve bağlama
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Rigado Cascade 500'ü hazırlama ve bağlama
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: RuuviTag cihazını hazırlama ve bağlama
@@ -135,9 +133,9 @@
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Müşteri verisi istekleri
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Desteklenen tarayıcılar

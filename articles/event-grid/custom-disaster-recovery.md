@@ -3,12 +3,12 @@ title: Azure Event Grid özel konularda olağanüstü durum kurtarma
 description: Bu öğreticide, Event Grid hizmeti bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak için nasıl ayarlanacağı konusunda size yol gösterilir.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: da796a9ac4d03f7ad6999b8fa4530fddfb60cbfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115090"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420269"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid özel konular için kendi olağanüstü durum kurtarmayı oluşturun
 Olağanüstü durum kurtarma, uygulama işlevselliğinin önemli bir kaybından kurtarılmasına odaklanır. Bu öğretici, Event Grid hizmeti belirli bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak üzere nasıl ayarlayabileceğinizi size yol gösterecektir.
@@ -26,7 +26,7 @@ Sınamayı basitleştirmek için, olay iletilerini görüntüleyen [önceden olu
 
 1. Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. Azure portalında parametre değerlerini girin.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. Dağıtımın tamamlanması birkaç dakika sürebilir. Dağıtım başarıyla gerçekleştirildikten sonra, web uygulamanızı görüntüleyip çalıştığından emin olun. Web tarayıcısında şu adrese gidin: `https://<your-site-name>.azurewebsites.net`
 Daha sonra ihtiyacınız olacak şekilde bu URL 'YI aklınızda olduğunuzdan emin olun.

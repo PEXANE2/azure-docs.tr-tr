@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084713"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420830"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme
 
@@ -52,7 +52,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 3. **Alt ağ ekle**' yi seçin.
 4. **Iş yükü-01-sn**yazın.
 5. **Alt ağ adres aralığı**için **10.1.1.0/24**yazın.
-6. **Ekle**’yi seçin.
+6. **Ekle**'yi seçin.
 1. **Gözden geçir ve oluştur**’u seçin.
 2. **Oluştur**’u seçin.
 
@@ -108,7 +108,7 @@ Artık hub ve bağlı bileşen sanal ağlarını eşleyebilir.
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>Hub ve bağlı bileşen yönlendirmeyi yapılandırma
 
-Azure portal, bir Cloud Shell açın ve gerekli hub ve bağlı bileşen yönlendirmesini yapılandırmak için aşağıdaki Azure PowerShell çalıştırın.
+Azure portal, bir Cloud Shell açın ve gerekli hub ve bağlı bileşen yönlendirmesini yapılandırmak için aşağıdaki Azure PowerShell çalıştırın. Eşlenen bağlı bileşen/dal bağlantıları, yayılmayı **none**olarak ayarlanmalıdır. Bu, bağlı bileşenler arasındaki herhangi bir iletişimi engeller ve bunun yerine, trafiği varsayılan yolu kullanarak güvenlik duvarlarına yönlendirir.
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
@@ -182,7 +182,7 @@ Bir güvenlik duvarı ilkesi, trafiği bir veya daha fazla güvenli sanal hub ü
 10. **Protokol**için **http, https**yazın.
 11. **Hedef türün** **FQDN**olduğundan emin olun.
 12. **Hedef**için ** \* . Microsoft.com**yazın.
-13. **Ekle**’yi seçin.
+13. **Ekle**'yi seçin.
 
 Bir uzak masaüstü 'nü **SRV-Workload-01** sanal makinesine bağlayabilmeniz IÇIN BIR DNAT kuralı ekleyin.
 
@@ -199,7 +199,7 @@ Bir uzak masaüstü 'nü **SRV-Workload-01** sanal makinesine bağlayabilmeniz I
 11. **Hedef**için, daha önce not ettiğiniz güvenlik DUVARı genel IP adresini yazın.
 12. **Çevrilen adres**için, daha önce not ettiğiniz **SRV-Workload-01** özel IP adresini yazın.
 13. **Çevrilmiş bağlantı noktası** için **3389** yazın.
-14. **Ekle**’yi seçin.
+14. **Ekle**'yi seçin.
 
 Bir ağ kuralı ekleyerek, **SRV-Iş yükü-01** ' den **SRV-iş yüküne-02**' e bir uzak masaüstü bağlayabilirsiniz.
 
@@ -214,7 +214,7 @@ Bir ağ kuralı ekleyerek, **SRV-Iş yükü-01** ' den **SRV-iş yüküne-02**' 
 9. **Hedef bağlantı noktaları**için **3389**yazın.
 9. **Hedef türü**Için **IP adresi**' ni seçin.
 10. **Hedef**için, daha önce not ettiğiniz **SRV-Workload-02** özel IP adresini yazın.
-11. **Ekle**’yi seçin.
+11. **Ekle**'yi seçin.
 1. **İleri ' yi seçin: tehdit bilgileri**.
 2. Ileri 'yi seçin **: hub**.
 3. **Hub 'lar** sekmesinde **sanal hub 'ları ilişkilendir**' i seçin.

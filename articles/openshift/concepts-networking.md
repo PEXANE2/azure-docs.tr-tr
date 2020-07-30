@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fa39fe3e065c230f7e06ee443d2aa56227dc6f31
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965712"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419980"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>OpenShift 4 üzerinde Azure Red Hat 'te ağ oluşturma
 
@@ -102,7 +102,7 @@ Aşağıdaki ağ ayarları Azure Red Hat OpenShift 4 ' te kullanılabilir:
     * "Özel" yollar varsayılan olarak iç yük dengeleyiciye (bu değişebilir).
 
 ## <a name="network-security-groups"></a>Ağ güvenlik grupları
-Ağ güvenlik grupları, kilitli olan düğümlerin kaynak grubunda oluşturulacaktır. Ağ güvenlik grupları, düğümün NIC 'Leri üzerinde olmayan alt ağlara doğrudan atanır. Ağ güvenlik grupları sabittir, bu da bunları değiştirme izinlerinizin olmadığı anlamına gelir. 
+Ağ güvenlik grupları, düğümün kilitli olduğu düğümün kaynak grubunda oluşturulacaktır. Ağ güvenlik grupları, düğümün NIC 'Leri üzerinde değil, doğrudan alt ağlara atanır. Ağ güvenlik grupları sabittir, bu da bunları değiştirme izinlerinizin olmadığı anlamına gelir. 
 
 Ancak, herkese açık bir API sunucusu ile ağ güvenlik grupları oluşturamaz ve bunları NIC 'lere atayamazsınız.
 

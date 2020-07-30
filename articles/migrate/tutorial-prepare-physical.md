@@ -4,12 +4,12 @@ description: Azure geçişi ile fiziksel sunucuların değerlendirilmesi/geçiri
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113260"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420796"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Fiziksel sunucuların değerlendirmesi ve Azure 'a geçirilmesi için hazırlanma
 
@@ -138,7 +138,7 @@ Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan ön
 
 Azure geçişi 'nin şirket içi sunucuları bulması için izinleri olması gerekir.
 
-- **Windows:** Keşfetmesini istediğiniz tüm Windows sunucularında bir etki alanı yöneticisi veya yerel yönetici olmanız gerekir. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları.
+- **Windows:** Etki alanına katılmış sunucuları ve etki alanına katılmamış makineleri bulmaya yönelik yerel bir hesabı bulmaya yönelik bir etki alanı hesabına ihtiyacınız vardır. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları.
 - **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir.
 
 ## <a name="prepare-for-physical-server-migration"></a>Fiziksel sunucu geçişine hazırlanma

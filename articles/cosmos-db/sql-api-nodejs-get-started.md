@@ -8,14 +8,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
-ms.openlocfilehash: 5d41f467efafa42bd73fce258ca97e4412a7cf48
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e86f79a286c10c45b2586dd1aa4d3aed035fc450
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026857"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421867"
 ---
-# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK ile Node.js konsol uygulaması derleme
+# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK’sını kullanarak bir Node.js konsol uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -36,7 +37,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Kapsayıcıya öğe ekleyin.
 > * Öğeler, kapsayıcı ve veritabanı üzerinde temel işlemleri gerçekleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -148,7 +149,7 @@ Bir öğe, sınıfının oluşturma işlevi kullanılarak oluşturulabilir `Item
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateItem":::
 
-## <a name="update-an-item"></a><a id="ReplaceItem"></a>Öğe güncelleştirme
+## <a name="update-an-item"></a><a id="ReplaceItem"></a>Öğeyi güncelleştirme
 
 Azure Cosmos DB öğelerin içeriğini değiştirmeyi destekler. Aşağıdaki kodu kopyalayıp *app.js* dosyasına yapıştırın. Bu kod, kapsayıcıdan bir öğe alır ve *ıstamamlanma* alanını doğru olarak güncelleştirir.
 
