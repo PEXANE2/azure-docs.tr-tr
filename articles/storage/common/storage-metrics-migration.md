@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 219d2b972089f9d3b7f84caa8b527474ac241c4f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374176"
+ms.locfileid: "87422071"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Izleyici 'de ölçümlere geçiş
 
-Azure Storage artık ölçümleri Azure Izleyici platformu ile tümleştirir. **31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Klasik ölçümler kullanıyorsanız, bu tarihten önce Azure Izleyici 'de ölçümlere geçiş yaptığınızdan emin olun. Bu makale, geçişi yapmanıza yardımcı olur.
+Azure Storage artık ölçümleri Azure Izleyici platformu ile tümleştirir. Bu makale, geçişi yapmanıza yardımcı olur.
 
 ## <a name="steps-to-complete-the-transition"></a>Geçişi tamamlamaya yönelik adımlar
 

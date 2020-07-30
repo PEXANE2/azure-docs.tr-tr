@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: node. js kullanarak REST API arama isteği gönderme-Bing Varlık Arama'
+title: 'Hızlı başlangıç: Node.js REST API kullanarak bir arama isteği gönderme Bing Varlık Arama'
 titleSuffix: Azure Cognitive Services
 description: C# kullanarak Bing Varlık Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 194368acd6be65da6a800ad1394ac156a6654b50
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 82bdd8f3890f1685aa442463287fe72bde08d518
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650247"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405968"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing Varlık Arama REST API bir arama isteği gönderme
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Hızlı başlangıç: Bing Varlık Arama REST API Node.js kullanarak bir arama isteği gönderme
 
 Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js)' da kullanılabilir.
 

@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 9c245ed91d710ae4bb77e45d8b9c3cceaedc252a
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: 1e90e2bfa91a4c72ca2e2e7ae366ca1ea42020fe
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986745"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405900"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Node.js kullanarak yazdırılan metni (OCR) Ayıkla
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görünt�
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Node.js](https://nodejs.org) 4. x veya üzeri 
-* [NPM](https://www.npmjs.com/) 
+* [npm](https://www.npmjs.com/) 
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
     * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.

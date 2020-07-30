@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519723"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387379"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezinde veri toplama
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) bilgisayarların yanı sıra güvenlik açıklarını ve tehditleri izlemek için veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı.
@@ -211,15 +211,17 @@ Güvenlik Merkezi, Log Analytics aracı uzantısını mevcut Operations Manager 
     - Log Analytics aracısının istemci iş istasyonlarında yüklü olduğu bir ortamınız varsa ve var olan bir Log Analytics çalışma alanına raporlama yaptıysanız, işletim sisteminizin desteklendiğinden emin olmak için [Azure Güvenlik Merkezi tarafından desteklenen işletim sistemlerinin](security-center-os-coverage.md) listesini gözden geçirin. Daha fazla bilgi için bkz. [var olan Log Analytics müşterileri](./faq-azure-monitor-logs.md).
  
 ### <a name="turn-off-automatic-provisioning"></a>Otomatik sağlamayı devre dışı bırakma<a name="offprovisioning"></a>
-Bu ayarı güvenlik ilkesinde devre dışı bırakarak, her zaman kaynaklardan otomatik sağlamayı devre dışı bırakabilirsiniz. 
+Log Analytics aracısının otomatik hazırlanmasını devre dışı bırakmak için:
 
+1. Portalda Güvenlik Merkezi 'nin menüsünde, **fiyatlandırma & ayarları**' nı seçin.
+2. Uygun aboneliği seçin.
 
-1. Güvenlik Merkezi ana menüsüne dönüp güvenlik ilkesi ' ni seçin.
-2. Otomatik sağlamayı devre dışı bırakmak istediğiniz aboneliğin satırındaki **Ayarları Düzenle** ' ye tıklayın.
-3. **Güvenlik ilkesi – veri toplama** sayfasında, **Otomatik sağlama** altında **kapalı**' yı seçin.
-4. **Kaydet**’i seçin.
+   ![Abonelik seçme][7]
 
-   ![Otomatik sağlamayı devre dışı bırak][6]
+3. **Veri toplamayı**seçin.
+4. Otomatik sağlamayı devre dışı bırakmak için **Otomatik sağlama**altında **kapalı** ' yı seçin.
+5. **Kaydet**’i seçin. 
+
 
 Otomatik sağlama devre dışı bırakıldığında (kapalı), varsayılan çalışma alanı yapılandırma bölümü görüntülenmez.
 

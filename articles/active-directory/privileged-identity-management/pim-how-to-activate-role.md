@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024119"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421408"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM'de Azure AD rollerimi etkinleştirme
 
@@ -36,7 +36,7 @@ Bu makale, Privileged Identity Management ' de Azure AD rolünü etkinleştirmes
 1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolüyle [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
 
-    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![Azure AD > Privileged Identity Management seçin.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 # <a name="new-version"></a>[Yeni sürüm](#tab/new)
 

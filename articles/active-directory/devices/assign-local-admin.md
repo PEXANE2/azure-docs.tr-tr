@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371184"
+ms.locfileid: "87419827"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -72,9 +72,9 @@ Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Cihaz yöne
 >[!NOTE]
 > Bu özellik şu anda önizleme sürümündedir.
 
-Windows 10 2004 Güncelleştirmesi ile başlayarak, Azure AD 'ye katılmış cihazlarda [kısıtlamalı gruplar] (Windows/Client-Management/MDM/Policy-CSP-kısıttedgroups) MDM ilkesiyle yönetici ayrıcalıklarını yönetmek için Azure AD gruplarını kullanabilirsiniz. Bu ilke, Azure AD 'ye katılmış bir cihazdaki tek tek kullanıcıları veya Azure AD gruplarını yerel Yöneticiler grubuna atamanıza izin verir ve farklı cihaz grupları için ayrı Yöneticiler yapılandırmak için ayrıntı düzeyi sağlar. 
+Windows 10 2004 Güncelleştirmesi ile başlayarak, Azure AD 'ye katılmış cihazlarda [Kısıtlanmış Gruplar](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM ilkesiyle yönetici ayrıcalıklarını yönetmek IÇIN Azure AD Grupları ' nı kullanabilirsiniz. Bu ilke, Azure AD 'ye katılmış bir cihazdaki tek tek kullanıcıları veya Azure AD gruplarını yerel Yöneticiler grubuna atamanıza izin verir ve farklı cihaz grupları için ayrı Yöneticiler yapılandırmak için ayrıntı düzeyi sağlar. 
 
-Şu anda, bu ilkeyi yönetmek için Intune 'da Kullanıcı arabirimi yoktur ve [Custom OMA-URI ayarları] (mem/Intune/Configuration/Custom-Settings-Windows-10) kullanılarak yapılandırılması gerekir. Bu ilkeyle ilgili birkaç önemli noktalar: 
+Şu anda, bu ilkeyi yönetmek için Intune 'da Kullanıcı arabirimi yoktur ve [özel OMA-URI ayarları](/mem/intune/configuration/custom-settings-windows-10)kullanılarak yapılandırılması gerekir. Bu ilkeyle ilgili birkaç önemli noktalar: 
 
 - İlke aracılığıyla Azure AD grupları eklemek, gruplar API 'sini yürüterek grubun SID 'sinin elde edilebilir olmasını gerektirir. SID, `securityIdentifier` gruplar API 'sindeki özelliği tarafından tanımlanır.
 - Kısıtlanmış Gruplar ilkesi zorlandığında, grubun Üyeler listesinde olmayan geçerli üyeleri kaldırılır. Bu nedenle, bu ilkeyi yeni üyeler veya gruplarla uygulamak, cihazı, cihaz yöneticisi rolünü ve genel yönetici rolünü cihazdan katılmış olan mevcut yöneticiler olarak kaldırır. Mevcut üyeleri kaldırmayı önlemek için, onları kısıtlı gruplar ilkesindeki Üyeler listesinin bir parçası olarak yapılandırmanız gerekir. 

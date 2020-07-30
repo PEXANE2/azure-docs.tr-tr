@@ -10,12 +10,12 @@ ms.date: 12/30/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 80ca5b63a91da31a5b226a589e15fb202eabd4ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7e93f54c1aa0eaa5edf3b3fcbfbf8bd9a6442d7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805768"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417548"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Blob veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma
 
@@ -71,7 +71,7 @@ Aşağıdaki örnek, Azure AD kimlik bilgilerinizi kullanarak Azure PowerShell y
 1. Kapsayıcıyı oluşturmadan önce, [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) rolünü kendinize atayın. Hesap sahibi olsanız bile, depolama hesabında veri işlemleri gerçekleştirmek için açık izinlere sahip olmanız gerekir. RBAC rolleri atama hakkında daha fazla bilgi için bkz. [Azure Blob 'a erişim verme ve Azure Portal RBAC ile kuyruk verileri](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
-    > RBAC rol atamalarının yayılması birkaç dakika sürebilir.
+    > Azure rolü atamalarının yayılması birkaç dakika sürebilir.
 
 1. [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer)çağırarak bir kapsayıcı oluşturun. Bu çağrı önceki adımlarda oluşturulan bağlamı kullandığından, kapsayıcı Azure AD kimlik bilgileriniz kullanılarak oluşturulur.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326639"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405254"
 ---
 # <a name="create-a-managed-service-offer"></a>Yönetilen Hizmet teklifi oluşturma
 
@@ -90,7 +90,7 @@ Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek a
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -102,7 +102,7 @@ Sunabileceğiniz (en fazla 100 karakter) kısa bir açıklama sağlayın ve bu i
 
 Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 256 karakter). Bu uzun Özet, Market arama sonuçlarında da kullanılabilir.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -194,6 +194,9 @@ Sonra, planın daha ayrıntılı bir açıklamasını sağlayan bir **Açıklama
 Şu anda, yönetilen hizmet teklifi için kullanılabilecek yalnızca bir fiyatlandırma modeli vardır: **kendi lisansınızı getirin (KLG)**. Bu, müşterilerinize bu teklifle ilgili maliyetleri doğrudan faturalayeceğiniz ve Microsoft 'un size herhangi bir ücret ödemeyeceği anlamına gelir.
 
 **Plan görünürlüğü** bölümü, bu planın [özel](../../marketplace/private-offers.md)olup olmadığını belirtmenize olanak tanır. **Bu özel bir plan** kutusunu işaretsiz bırakırsanız, planınız belirli müşteriler (veya belirli bir sayıda müşteri) ile sınırlandırılır.
+
+> [!NOTE]
+> Özel planlar, bulut çözümü sağlayıcısı (CSP) programının satıcısı aracılığıyla oluşturulan aboneliklerle desteklenmez.
 
 Bu planı yalnızca belirli müşteriler için kullanılabilir hale getirmek için **Evet**' i seçin. Bunu yaptığınızda, abonelik kimliklerini sağlayarak müşterileri belirlemeniz gerekir. Bunlar tek bir (10 abonelik için) veya bir. csv dosyası karşıya yükleyerek (tüm planlar genelinde en fazla 10.000 abonelik için) girilebilir. Teklifi sınayabilmeniz ve doğrulayabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun.
 

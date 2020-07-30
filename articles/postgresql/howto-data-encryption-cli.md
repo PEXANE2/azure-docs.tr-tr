@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 64cf2568b448c74748be63901cafb51305eab713
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119591"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386376"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu
 
@@ -33,13 +33,13 @@ Azure CLı kullanarak PostgreSQL için Azure veritabanı tek sunucu için veri �
    ```
 
 * Mevcut bir anahtar kasasını kullanabilmeniz için, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliklere sahip olmalıdır:
-  * [Geçici silme](../key-vault/general/overview-soft-delete.md)
+  * [Geçici silme](../key-vault/general/soft-delete-overview.md)
 
       ```azurecli-interactive
       az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
       ```
 
-  * [Korumalı Temizleme](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [Korumalı Temizleme](../key-vault/general/soft-delete-overview.md#purge-protection)
 
       ```azurecli-interactive
       az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

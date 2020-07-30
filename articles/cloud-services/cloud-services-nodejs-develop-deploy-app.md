@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 25cde21d72de49c5a4f51121f2aa4295319899ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 33006463ed826d1efe32f8beee361eb211e9d709
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049210"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386563"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Bir Node.js uygulaması derleme ve Azure Cloud Service’e dağıtma
 
@@ -31,7 +32,7 @@ Uygulama basit bir "hello world" uygulamasıdır:
 
 ![Hello World web sayfasını gösteren bir web tarayıcısı][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 > [!NOTE]
 > Bu öğretici Windows gerektiren Azure PowerShell’i kullanır.
 

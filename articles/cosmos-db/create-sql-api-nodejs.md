@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: e40dc59cf1e8fe3302c59f1067c285bc37141465
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8ec5562af254aa1bcdb030057f61db496a17826b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115226"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423397"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabından bağlanmak ve veri sorgulamak için Node.js kullanma
 
@@ -63,11 +64,11 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
 2. **Kapsayıcı Ekle** sayfasında, yeni kapsayıcının ayarlarını girin.
 
-   | Ayar           | Önerilen değer | Description                                                                                                                                                                                                                                                                                                                                                                           |
+   | Ayar           | Önerilen değer | Açıklama                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Veritabanı Kimliği**   | Görevler           | Yeni veritabanınızın adı olarak _Görevler_ girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?` boşluk içeremez veya sonunda boşluk olamaz. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
-   | **Aktarım hızı**    | 400             | Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.                                                                                                                                                                                                                                                    |
-   | **Kapsayıcı KIMLIĞI**  | Öğeleri           | _Öğeleri_ yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.                                                                                                                                                                                                                                                               |
+   | **İşleme hızı**    | 400             | Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz.                                                                                                                                                                                                                                                    |
+   | **Kapsayıcı Kimliği**  | Öğeler           | _Öğeleri_ yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.                                                                                                                                                                                                                                                               |
    | **Bölüm anahtarı** | /kategori       | Bu makalede açıklanan örnek, bölüm anahtarı olarak _/category_ kullanır.                                                                                                                                                                                                                                                                                                           |
 
    Önceki ayarlara ek olarak, kapsayıcı için isteğe bağlı olarak **benzersiz anahtarlar** ekleyebilirsiniz. Bu örnekte bu alanı boş bırakalım. Benzersiz anahtarlar sayesinde geliştiriciler veritabanına bir veri bütünlüğü katmanı ekleyebilir. Bir kapsayıcı oluştururken benzersiz bir anahtar ilkesi oluşturarak, bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Daha fazla bilgi edinmek için [Azure Cosmos DB'de benzersiz anahtarlar](unique-keys.md) makalesine bakın.
@@ -149,7 +150,7 @@ Aşağıdaki kod parçacıklarının tamamı, _app.js_ dosyasından alınmışt�
   const { resource: createdItem } = await container.items.create(newItem);
   ```
 
-- Öğe güncelleştirme
+- Öğeyi güncelleştirme
 
   ```javascript
   const { id, category } = createdItem;

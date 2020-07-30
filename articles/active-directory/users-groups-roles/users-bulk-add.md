@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057902"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423618"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
 
@@ -60,7 +60,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
 
 1. CSV dosyasını açın ve oluşturmak istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **ad**, **Kullanıcı asıl adı**, **ilk parola** ve **blok oturum açma (Evet/Hayır)** değerleri bulunur. Ardından dosyayı kaydedin.
 
-   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+   [![CSV dosyası oluşturulacak kullanıcıların adlarını ve kimliklerini içerir](media/users-bulk-add/add-csv-file.png)](media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. **Toplu kullanıcı oluştur** SAYFASıNDA, CSV dosyanızı karşıya yükleyin bölümünde dosyaya gidin. Dosyayı seçip **Gönder**' e TıKLADıĞıNıZDA, CSV dosyasının doğrulanması başlar.
 1. Dosya içeriği doğrulandıktan sonra, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
@@ -73,7 +73,7 @@ Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında in
 
 Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları** sayfasında görebilirsiniz.
 
-   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
+   [![Toplu Işlemler sonuçları sayfasında durum oluşturmayı denetle](media/users-bulk-add/bulk-center.png)](media/users-bulk-add/bulk-center.png#lightbox)
 
 Daha sonra, oluşturduğunuz kullanıcıların Azure portal veya PowerShell kullanarak Azure AD kuruluşunda mevcut olup olmadığını kontrol edebilirsiniz.
 

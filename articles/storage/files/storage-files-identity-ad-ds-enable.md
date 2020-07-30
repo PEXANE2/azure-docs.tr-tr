@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 4c374e62c0807269d1457bfe46d3df4260acd45c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2f38daea40f89e73422ca8115f2425758be81a4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510463"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413111"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Birinci kısım: Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirme 
 
@@ -53,7 +53,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 #Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
+#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
 Connect-AzAccount
 
 #Define parameters
@@ -85,7 +85,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>Ortam denetleniyor
 
-İlk olarak, ortamınızın durumunu denetlemeniz gerekir. Özellikle, [Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) 'in yüklenip yüklenmediğini ve kabuğun yönetici ayrıcalıklarıyla yürütülüp yürütüldüğünden emin olmalısınız. Daha sonra [az. Storage 2,0 modülünün](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) yüklü olup olmadığını kontrol edin ve yoksa yükleme yapın. Bu denetimleri tamamladıktan sonra, SPN/UPN ile "CIFS/sizin-depolama hesabı-adı-burada. File. Core. Windows. net" olarak zaten oluşturulmuş bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya [hizmet oturum açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) olup olmadığını görmek için AD DS denetleyin. Hesap yoksa, aşağıdaki bölümde açıklandığı gibi bir tane oluşturun.
+İlk olarak, ortamınızın durumunu denetlemeniz gerekir. Özellikle, [Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) 'in yüklenip yüklenmediğini ve kabuğun yönetici ayrıcalıklarıyla yürütülüp yürütüldüğünden emin olmalısınız. Daha sonra [Az.Storage 2.0 modülünün](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) yüklenip yüklenmediğine bakın ve yüklü değilse yükleyin. Bu denetimleri tamamladıktan sonra, SPN/UPN ile "CIFS/sizin-depolama hesabı-adı-burada. File. Core. Windows. net" olarak zaten oluşturulmuş bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya [hizmet oturum açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) olup olmadığını görmek için AD DS denetleyin. Hesap yoksa, aşağıdaki bölümde açıklandığı gibi bir tane oluşturun.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD içinde depolama hesabını el ile temsil eden bir kimlik oluşturma
 

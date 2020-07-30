@@ -3,12 +3,12 @@ title: Azure Service Bus varlıklara erişmek için bir uygulamanın kimliğini 
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular vb.) erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3f94f17a538fc86615f4ffeb8f351beb99e0cb33
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6191534bbc7cad6815072099b8c7a847a712365d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372357"
+ms.locfileid: "87423176"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme
 Azure Service Bus, isteklere Service Bus varlıklara (kuyruklar, konular, abonelikler veya filtreler) yetki vermek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusuna izinler vermek için kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -49,7 +49,7 @@ Aşağıdaki listede, en dar kapsamdan başlayarak Service Bus kaynaklarına eri
 - **Abonelik**: rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Service Bus kaynaklara uygulanır.
 
 > [!NOTE]
-> RBAC rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 
+> Azure rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 
 
 Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. [rol tanımlarını anlama](../role-based-access-control/role-definitions.md#management-and-data-operations). Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. [Azure özel roller](../role-based-access-control/custom-roles.md).
 
@@ -151,7 +151,7 @@ Konsol uygulamasını çalıştırdığınızda, bir senaryo seçmeniz istenir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - RBAC hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)nedir?
-- Azure PowerShell, Azure CLı veya REST API ile RBAC rol atamalarını atamayı ve yönetmeyi öğrenmek için şu makalelere bakın:
+- Azure rol atamalarını Azure PowerShell, Azure CLı veya REST API ile atamayı ve yönetmeyi öğrenmek için şu makalelere bakın:
     - [Rol tabanlı erişim denetimi 'ni (RBAC) Azure PowerShell ile yönetme](../role-based-access-control/role-assignments-powershell.md)  
     - [Rol tabanlı erişim denetimi 'ni (RBAC) Azure CLı ile yönetme](../role-based-access-control/role-assignments-cli.md)
     - [Rol tabanlı erişim denetimi 'ni (RBAC) REST API ile yönetme](../role-based-access-control/role-assignments-rest.md)

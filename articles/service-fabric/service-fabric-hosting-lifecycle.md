@@ -5,12 +5,12 @@ author: tugup
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
-ms.openlocfilehash: b106061805ea5485893df292c40974d3ee9bcadb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258821"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405135"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric barındırma yaşam döngüsü
 Bu makalede, bir düğümde uygulama etkinleştirildiğinde ve davranışı denetlemek için kullanılan çeşitli küme yapılandırmaları hakkında bir genel bakış sunulmaktadır.
@@ -83,7 +83,7 @@ Service Fabric, indirme sırasında hatayla karşılaştığında her zaman doğ
 
 * CodePackage kilitlenme ve geri alma işlemlerini devam ederse, ServiceType devre dışı bırakılır. Ancak etkinleştirmeler yapılandırması hızlı bir yeniden başlatmaya sahipse CodePackage 'in, ServiceType 'nın devre dışı bırakılacağını görebilmek için birkaç kez gelebilmesi mümkündür. For Ex: CodePackage 'in geldiğini varsayın, ServiceType Service Fabric kaydeder ve sonra çöker. Bu durumda, barındırma bir tür kaydı aldığında **ServiceTypeDisableGraceInterval** dönemi iptal edilir. Bu, CodePackage **ServiceTypeDisableGraceInterval** ' den büyük bir değere sahip olana kadar yineleyebilir ve ardından düğümde serviceType devre dışı bırakılır. Bu nedenle, bu bir süre içinde, ServiceType devre dışı bırakılmadan önce bir işlem olabilir.
 
-* Etkinleştirmeler söz konusu olduğunda, Service Fabric sisteminin bir düğüme bir çoğaltma eklemesi gerektiğinde RA (ReconfigurationAgent), uygulamayı etkinleştirmek ve etkinleştirme isteğini 15 saniyede bir (**Rapmessageretryıınterval**) yeniden denemeye yönelik alt sistemi ister. Service Fabric sistem 'in ServiceType devre dışı bırakıldığını bilmesini sağlamak için, barındırma içindeki etkinleştirme işleminin yeniden deneme aralığı ve **ServiceTypeDisableGraceInterval**kıyasla daha uzun bir süre için canlı olması gerekir. Örneğin: kümede yapılandırmalarını **activationmaxfailurecount** değerinin 5 olarak ayarlanmış olması ve **activationretrybackoffınterval** değerinin 1 sn olarak ayarlanmış olmasına izin verin. Bu, etkinleştirme işleminin daha sonra (0 + 1 + 2 + 3 + 4) = 10 sn (ilk yeniden deneme anında) ve bu barındırma yeniden denemeye başladıktan sonra verdiği anlamına gelir. Bu durumda, etkinleştirme işlemi tamamlanır ve 15 saniye sonra yeniden denenmeyecektir. Service Fabric, tüm yeniden denemeler 15 saniye içinde tükendiğinden gerçekleşti. Bu nedenle, ReconfigurationAgent 'tan her yeniden deneme, barındırma alt sisteminde yeni bir etkinleştirme işlemi oluşturur ve bu model yinelenen ve ServiceType, düğüm üzerinde hiçbir durumda devre dışı bırakılmayacaktır. ServiceType, bu düğüm üzerinde devre dışı bırakılmayacak ve SF sisteminin bileşen FM (FailoverManager), çoğaltmayı farklı bir düğüme taşımayacak.
+* Etkinleştirmeler söz konusu olduğunda, Service Fabric sisteminin bir düğüme bir çoğaltma eklemesi gerektiğinde RA (ReconfigurationAgent), uygulamayı etkinleştirmek ve etkinleştirme isteğini 15 saniyede bir (**Rapmessageretryıınterval**) yeniden denemeye yönelik alt sistemi ister. Service Fabric sistem 'in ServiceType devre dışı bırakıldığını bilmesini sağlamak için, barındırma içindeki etkinleştirme işleminin yeniden deneme aralığı ve **ServiceTypeDisableGraceInterval**kıyasla daha uzun bir süre için canlı olması gerekir. Örneğin: kümede yapılandırmalarını **activationmaxfailurecount** değerinin 5 olarak ayarlanmış olması ve **activationretrybackoffınterval** değerinin 1 sn olarak ayarlanmış olmasına izin verin. Bu, etkinleştirme işleminin daha sonra (0 + 1 + 2 + 3 + 4) = 10 sn (ilk yeniden deneme anında) ve bu barındırma yeniden denemeye başladıktan sonra verdiği anlamına gelir. Bu durumda, etkinleştirme işlemi tamamlanır ve 15 saniye sonra yeniden denenmeyecektir. Service Fabric, tüm yeniden denemeler 15 saniye içinde tükendiğinden gerçekleşti. Bu nedenle, ReconfigurationAgent 'tan her yeniden deneme, barındırma alt sisteminde yeni bir etkinleştirme işlemi oluşturur ve bu model yinelenen ve ServiceType, düğüm üzerinde hiçbir durumda devre dışı bırakılmayacaktır. ServiceType düğüm üzerinde devre dışı bırakılmadığından, SF sisteminin bileşen FM (FailoverManager) çoğaltmayı farklı bir düğüme taşımayacak.
 > 
 
 ## <a name="deactivation"></a>Bırakmayı
@@ -138,7 +138,7 @@ Yapılandırma, etkinleştirme/decasyon 'yi etkileyen varsayılanlarla birlikte 
 **Activationmaxretryınterval**: hatalarda etkinleştirme için varsayılan 3600 sn. Max geri.
 **Codepackagecontinuousexitfailureresetınterval**: varsayılan 300 sn. CodePackage için sürekli çıkış hatası sayısını sıfırlama zaman aşımı.
 
-### <a name="download"></a>İndirme
+### <a name="download"></a>İndir
 **Deploymentretrybackoffınterval**: varsayılan 10. Dağıtım hatası için geri dönüş aralığı.
 **Deploymentmaxretryınterval**: hatalarda dağıtım için varsayılan 3600 sn. Max geri dönüş.
 **Deploymentmaxfailurecount**: varsayılan 20. Uygulama dağıtımı, bu uygulamanın düğümde dağıtılması başarısız olmadan önce DeploymentMaxFailureCount süreleri için yeniden denenecek.

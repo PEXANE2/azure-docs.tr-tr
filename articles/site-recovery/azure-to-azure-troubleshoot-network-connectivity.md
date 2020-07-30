@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8396ffa958e41e12e9258766483310baef0cabbe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132708"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421442"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
 
@@ -18,12 +18,12 @@ Bu makalede, Azure sanal makinelerini (VM) bir bölgeden başka bir bölgeye ço
 
 Site Recovery çoğaltmanın çalışması için, VM 'den belirli URL 'Lere veya IP aralıklarına giden bağlantı gerekir. VM 'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa, bu sorunlardan birini görebilirsiniz.
 
-| URL | Ayrıntılar |
-|---|---|
-| `*.blob.core.windows.net` | Verilerin, VM 'den kaynak bölgedeki önbellek depolama hesabına yazılabilmeleri için gereklidir. Sanal makinelerinize yönelik tüm önbellek depolama hesaplarını biliyorsanız, belirli depolama hesabı URL 'Leri için bir izin verilenler listesi kullanabilirsiniz. Örneğin, `cache1.blob.core.windows.net` ve `cache2.blob.core.windows.net` yerine `*.blob.core.windows.net` . |
-| `login.microsoftonline.com` | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve kimlik doğrulaması için gereklidir. |
-| `*.hypervrecoverymanager.windowsazure.com` | Site Recovery hizmeti iletişiminin sanal makineden gerçekleşebilmesi için gereklidir. Güvenlik Duvarı ara sunucunuz IP 'Leri destekliyorsa, karşılık gelen _SITE Recovery IP_ 'sini kullanabilirsiniz. |
-| `*.servicebus.windows.net` | Site Recovery izleme ve tanılama verilerinin VM 'den yazılabilmesini sağlamak için gereklidir. Güvenlik duvarı proxy 'si, IP 'Leri destekliyorsa, karşılık gelen _Site Recovery Izleme IP_ 'sini kullanabilirsiniz. |
+| **Ad**                  | **Ticari**                               | **Kamu**                                 | **Açıklama** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Verilerin, VM 'den kaynak bölgedeki önbellek depolama hesabına yazılabilmeleri için gereklidir. Sanal makinelerinize yönelik tüm önbellek depolama hesaplarını biliyorsanız, belirli depolama hesabı URL 'Leri için bir izin verilenler listesi kullanabilirsiniz. Örneğin, `cache1.blob.core.windows.net` ve `cache2.blob.core.windows.net` yerine `*.blob.core.windows.net` . |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve kimlik doğrulaması için gereklidir. |
+| Çoğaltma               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Site Recovery hizmeti iletişiminin sanal makineden gerçekleşebilmesi için gereklidir. Güvenlik Duvarı ara sunucunuz IP 'Leri destekliyorsa, karşılık gelen _SITE Recovery IP_ 'sini kullanabilirsiniz. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Site Recovery izleme ve tanılama verilerinin VM 'den yazılabilmesini sağlamak için gereklidir. Güvenlik duvarı proxy 'si, IP 'Leri destekliyorsa, karşılık gelen _Site Recovery Izleme IP_ 'sini kullanabilirsiniz. |
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 'Ler veya IP aralıkları için giden bağlantı (hata kodu 151037 veya 151072)
 
@@ -84,7 +84,7 @@ Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandır�
 
    | Konum | Site Recovery IP adresi | Site Recovery izleme IP adresi |
    | --- | --- | --- |
-   | Orta ABD | 40.69.144.231 | 52.165.34.144 |
+   | Central US | 40.69.144.231 | 52.165.34.144 |
 
 #### <a name="nsg-rules---central-us"></a>NSG kuralları-Orta ABD
 

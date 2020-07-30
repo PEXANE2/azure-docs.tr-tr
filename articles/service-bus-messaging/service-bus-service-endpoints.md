@@ -4,14 +4,14 @@ description: Bu makalede bir sanal ağa Microsoft. ServiceBus hizmet uç noktas�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d7f1783f197804e12a8c2d20a0c46b6efd2160
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4518f7faedb44631c76c6d8b42ff9cca0dc3e08c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071320"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422955"
 ---
-# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Azure Service Bus için sanal ağ hizmet uç noktalarını yapılandırma
+# <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Service Bus ad alanına erişime izin ver
 
 [Sanal ağ (VNet) hizmet uç noktaları][vnet-sep] ile Service Bus tümleştirmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
 
@@ -58,11 +58,20 @@ Sanal ağ kuralı, bir sanal ağ alt ağıyla Service Bus ad alanının bir ili�
 Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nasıl kullanılacağı gösterilmektedir. Erişimi sınırlandırmak için, bu Event Hubs ad alanı için sanal ağ hizmet uç noktasını tümleştirmeniz gerekir.
 
 1. [Azure portal](https://portal.azure.com) **Service Bus ad alanına** gidin.
-2. Sol taraftaki menüden **ağ** seçeneği ' ni seçin. Varsayılan olarak **tüm ağlar** seçeneği seçilidir. Ad alanınız herhangi bir IP adresinden gelen bağlantıları kabul eder. Bu varsayılan ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
+2. Sol taraftaki menüde, **Ayarlar**altında **ağ** seçeneği ' ni seçin.  
 
-    ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/service-endpoints/firewall-all-networks-selected.png)
-1. Sayfanın üst kısmındaki **Seçili ağlar** seçeneğini belirleyin.
-2. Sayfanın **sanal ağ** bölümünde **+ var olan sanal ağı ekle**' yi seçin. 
+    > [!NOTE]
+    > **Ağ** sekmesini yalnızca **Premium** ad alanları için görürsünüz.  
+    
+    Varsayılan olarak, **Seçili ağlar** seçeneği seçilidir. Bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Ağ sayfası-varsayılan" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    **Tüm ağlar** seçeneğini belirlerseniz, Service Bus ad alanınız HERHANGI bir IP adresinden gelen bağlantıları kabul eder. Bu varsayılan ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
+
+    ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+2. Belirli sanal ağlara erişimi kısıtlamak için, henüz seçili değilse **Seçili ağlar** seçeneğini belirleyin.
+1. Sayfanın **sanal ağ** bölümünde **+ var olan sanal ağı ekle**' yi seçin. 
 
     ![var olan sanal ağı ekle](./media/service-endpoints/add-vnet-menu.png)
 3. Sanal ağlar listesinden sanal ağı seçin ve ardından **alt ağı**seçin. Sanal ağı listeye eklemeden önce hizmet uç noktasını etkinleştirmeniz gerekir. Hizmet uç noktası etkinleştirilmemişse, Portal bunu etkinleştirmenizi ister.
@@ -78,6 +87,9 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 6. Ayarları kaydetmek için araç çubuğunda **Kaydet** ' i seçin. Onayın Portal bildirimlerinde gösterilmesi için birkaç dakika bekleyin. **Kaydet** düğmesi devre dışı bırakılmalıdır. 
 
     ![Ağı kaydet](./media/service-endpoints/save-vnet.png)
+
+    > [!NOTE]
+    > Belirli IP adreslerinden veya aralıklardan erişime izin verme hakkında yönergeler için bkz. [belırlı IP adreslerinden veya aralıklardan erişime Izin verme](service-bus-ip-filtering.md).
 
 ## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
 Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına bir sanal ağ kuralı eklenmesini sağlar.

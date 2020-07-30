@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536310"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387855"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Müşteri tarafından yönetilen anahtar disk şifrelemesi
 
@@ -30,7 +30,7 @@ Kümenin her bir düğümündeki kaynak disk ve yönetilen diskler, simetrik bir
 
 Anahtar Kasası güvenlik duvarı, disk şifreleme anahtarının depolandığı anahtar kasasında etkinleştirilirse, kümenin dağıtılacağı bölgenin HDInsight bölgesel kaynak sağlayıcısı IP adresleri Anahtar Kasası Güvenlik Duvarı yapılandırmasına eklenmelidir. HDInsight güvenilen bir Azure Anahtar Kasası hizmeti olmadığından, bu gereklidir.
 
-Anahtar kasasındaki anahtarları güvenle döndürmek için Azure portal veya Azure CLı kullanabilirsiniz. Bir anahtar döndürülerek HDInsight kümesi yeni anahtarı dakikalar içinde kullanmaya başlar. Fidye yazılımı senaryolarına ve yanlışlıkla silinmeye karşı koruma sağlamak için [geçici silme](../key-vault/general/overview-soft-delete.md) anahtar koruma özelliklerini etkinleştirin. Bu koruma özelliği olmadan anahtar kasaları desteklenmez.
+Anahtar kasasındaki anahtarları güvenle döndürmek için Azure portal veya Azure CLı kullanabilirsiniz. Bir anahtar döndürülerek HDInsight kümesi yeni anahtarı dakikalar içinde kullanmaya başlar. Fidye yazılımı senaryolarına ve yanlışlıkla silinmeye karşı koruma sağlamak için [geçici silme](../key-vault/general/soft-delete-overview.md) anahtar koruma özelliklerini etkinleştirin. Bu koruma özelliği olmadan anahtar kasaları desteklenmez.
 
 |Küme türü |İşletim sistemi diski (yönetilen disk) |Veri diski (yönetilen disk) |Geçici veri diski (yerel SSD) |
 |---|---|---|---|
@@ -56,7 +56,7 @@ Bkz. belirli adımlar için [Kullanıcı tarafından atanan yönetilen kimlik ol
 
 ## <a name="create-azure-key-vault"></a>Azure Key Vault oluştur
 
-Bir anahtar kasası oluşturma. Bkz. belirli adımlar için [Azure Key Vault oluşturma](../key-vault/secrets/quick-create-portal.md) .
+Anahtar kasası oluşturma. Bkz. belirli adımlar için [Azure Key Vault oluşturma](../key-vault/secrets/quick-create-portal.md) .
 
 HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseniz, anahtarlarınızı Azure Key Vault içine aktarabilirsiniz. Anahtar kasasının **geçici silme** özelliğinin etkin olması gerektiğini unutmayın. Mevcut anahtarları içeri aktarma hakkında daha fazla bilgi için [anahtarlar, gizli diziler ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md)bölümünü ziyaret edin.
 
@@ -94,9 +94,9 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
     ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     ![Azure Key Vault erişim ilkesini Kaydet](./media/disk-encryption/add-key-vault-access-policy-save.png)
 

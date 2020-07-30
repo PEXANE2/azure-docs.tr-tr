@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8433242ffe44b8deab62314af386f1a82e2e0017
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374125"
+ms.locfileid: "87386665"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 
@@ -186,7 +186,7 @@ Varsayılan olarak, `OPENROWSET` IşLEVI WITH yan tümcesinde belirtilen sütun 
 - Özellik belirtilen column_name bulunamazsa, işlev bir hata döndürür.
 - Özellik, [yol moduna](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)bağlı olarak belirtilen column_path bulunamazsa, işlev katı modda veya LAX modundayken null olduğunda bir hata döndürür.
 
-Sorgu örnekleri için, [sorgu Parquet iç içe türler](query-parquet-nested-types.md#access-elements-from-nested-columns) makalesindeki iç içe geçmiş sütunlarda bulunan erişim öğeleri bölümünü gözden geçirin.
+Sorgu örnekleri için, [sorgu Parquet iç içe türler](query-parquet-nested-types.md#read-properties-from-nested-object-columns) makalesindeki iç içe geçmiş sütunlarda bulunan erişim öğeleri bölümünü gözden geçirin.
 
 #### <a name="access-elements-from-repeated-columns"></a>Yinelenen sütunlardan öğelerine erişin
 
@@ -248,7 +248,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 - İç içe geçmiş sütunlara sahip örnek Parquet dosyaları
 - JSON biçimindeki kitaplar
 
-| Klasör yolu                                                  | Açıklama                                                  |
+| Klasör yolu                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV biçimindeki veriler için üst klasör                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Farklı CSV biçimlerinde popülasyon veri dosyaları içeren klasörler. |

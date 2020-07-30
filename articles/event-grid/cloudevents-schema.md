@@ -3,12 +3,13 @@ title: CloudEvents şemasında olaylarla Azure Event Grid kullanma
 description: Azure Event Grid olaylar için CloudEvents şemasının nasıl kullanılacağını açıklar. Hizmet, bulut olaylarının JSON uygulamasındaki olayları destekler.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 0bcd14356c4d52bb8a5b270966097d47dfc92c3c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0064fcc8da2a2aee8b4e413e697d2d8219fd09cc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113964"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419895"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid ile CloudEvents v 1.0 şeması kullanma
 Azure Event Grid, [varsayılan olay şemasına](event-schema.md)ek olarak, [cloudevents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) ve [http protokol bağlamasının](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON uygulamasındaki olayları yerel olarak destekler. [Cloudevents](https://cloudevents.io/) , olay verilerini tanımlamaya yönelik [açık bir belirtimdir](https://github.com/cloudevents/spec/blob/v1.0/spec.md) .
@@ -135,7 +136,7 @@ New-AzureRmEventGridSubscription `
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v 1.0 ile uç nokta doğrulaması
 
-Zaten Event Grid biliyorsanız, uygunsuz kullanımı önlemek için Event Grid uç nokta doğrulama elsıkışmasının farkında olabilirsiniz. CloudEvents v 1.0, HTTP SEÇENEKLERI metodunu kullanarak kendi [uygunsuz kullanım koruma semantiğini](webhook-event-delivery.md) uygular. Bunun hakkında daha fazla bilgiyi [buradan](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection) edinebilirsiniz. Çıkış için CloudEvents şeması kullanılırken, Event Grid Event Grid doğrulama olay mekanizması yerine CloudEvents v 1.0 kötüye kullanımı koruması ile birlikte kullanılır.
+Zaten Event Grid biliyorsanız, uygunsuz kullanımı önlemek için Event Grid uç nokta doğrulama elsıkışmasının farkında olabilirsiniz. CloudEvents v 1.0, HTTP SEÇENEKLERI metodunu kullanarak kendi [uygunsuz kullanım koruma semantiğini](webhook-event-delivery.md) uygular. [Buradan](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)daha fazla bilgi edinebilirsiniz. Çıkış için CloudEvents şeması kullanılırken, Event Grid Event Grid doğrulama olay mekanizması yerine CloudEvents v 1.0 kötüye kullanımı koruması ile birlikte kullanılır.
 
 <a name="azure-functions"></a>
 

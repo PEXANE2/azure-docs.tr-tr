@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: REST API ve Node. js ile yazım denetimi-Bing Yazım Denetimi'
+title: 'Hızlı başlangıç: REST API ve Node.js Bing Yazım Denetimi yazım denetimi yapın'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıç ile yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f35c2ebc4cd6e31fe59ad715d4f317e650bca52e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: aaaa571928556a6972d3136ef4cacaa3bd4cb798
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995964"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405016"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Node. js ile yazım denetimi yapma
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Node.js yazım denetimi yapın
 
 Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. 
 
@@ -25,7 +26,7 @@ Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu ol
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Node. js 6](https://nodejs.org/en/download/) veya üzeri.
+* [Node.js 6](https://nodejs.org/en/download/) veya üzeri.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 

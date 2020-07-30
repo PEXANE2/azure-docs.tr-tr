@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090187"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420898"
 ---
 # <a name="train-wide--deep-recommender"></a>Geniş kapsamlı & öneren eğitimi
 Bu makalede, bir öneri modelini eğmek için Azure Machine Learning tasarımcısında **eğitme & derin öneren** modülünün (Önizleme) nasıl kullanılacağı açıklanır. Bu modül, Google tarafından önerilen geniş & derinlemesine öğrenmeyi temel alır.
@@ -105,7 +105,7 @@ Bir örnek için, öğe özelliklerinin tipik bir kümesi şöyle görünebilir:
 
     Bu hyperparameter, en az bir kayıp işlevine hareket ederken her eğitim adımındaki adım boyutunu belirler. Çok büyük bir öğrenme hızı, çok küçük bir öğrenme oranının yakınsama sorununa neden olabileceğinden, Mini olarak öğrenmenin hızlı bir şekilde öğrenmesine neden olabilir.
 
-7.  **Çapraz özellik boyutu**: çapraz Kullanıcı kimlikleri ve öğe kimlikleri özelliğinin boyutunu yazın. 
+7.  **Çapraz özellik boyutu**: istenen kullanıcı kimliklerini ve öğe kimliği özelliklerini girerek boyutu yazın. 
 
     Geniş & derin öneren, Kullanıcı kimliği ve öğe kimliği özellikleri üzerinden varsayılan olarak ürün içi dönüştürme gerçekleştirir. Çapraz sonuç, boyutun sağlamak için bu sayıya göre karma hale getirilir.
 

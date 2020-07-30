@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de fiziksel sunucu olağanüstü durum kurtarma mima
 description: Bu makalede, şirket içi fiziksel sunucuların olağanüstü durum kurtarması sırasında Azure Site Recovery hizmetiyle Azure 'da kullanılan bileşenlere ve mimariye ilişkin bir genel bakış sunulmaktadır.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162846"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422666"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fiziksel sunucudan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -28,6 +28,25 @@ Aşağıdaki tablo ve grafik, Azure 'a fiziksel sunucu çoğaltması için kulla
 **Fiziksel sunucu-Azure arası mimari**
 
 ![Bileşenler](./media/physical-azure-architecture/arch-enhanced.png)
+
+## <a name="set-up-outbound-network-connectivity"></a>Giden ağ bağlantısını ayarlama
+
+Site Recovery beklendiği gibi çalışması için, ortamınızın çoğaltılmasını sağlamak üzere giden ağ bağlantısını değiştirmeniz gerekir.
+
+> [!NOTE]
+> Site Recovery, ağ bağlantısını denetlemek için bir kimlik doğrulama proxy 'si kullanmayı desteklemez.
+
+### <a name="outbound-connectivity-for-urls"></a>URL'ler için giden bağlantı
+
+Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, bu URL 'Lere erişim izni verin:
+
+| **Ad**                  | **Ticari**                               | **Kamu**                                 | **Açıklama** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery hizmet URL’leri için yetkilendirme ve kimlik doğrulama özellikleri sağlar. |
+| Çoğaltma               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
+
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 

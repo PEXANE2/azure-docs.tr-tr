@@ -3,12 +3,12 @@ title: Service Bus ile Azure kaynakları için Yönetilen kimlikler
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve abonelikler) erişmek için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 01fe6c59ad878276619a96666e2da82b6a1b1fe9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7fbf0ec36f54f9ba5f8593094dbb0231881cbaef
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371235"
+ms.locfileid: "87423142"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
@@ -58,7 +58,7 @@ Aşağıdaki listede, en dar kapsamdan başlayarak Service Bus kaynaklarına eri
 - **Abonelik**: rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Service Bus kaynaklara uygulanır.
 
 > [!NOTE]
-> RBAC rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 
+> Azure rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 
 
 Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. [rol tanımlarını anlama](../role-based-access-control/role-definitions.md#management-and-data-operations). Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. [Azure özel roller](../role-based-access-control/custom-roles.md).
 

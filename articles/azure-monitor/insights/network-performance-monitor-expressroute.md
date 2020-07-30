@@ -109,7 +109,7 @@ Ağ Performansı İzleyicisi, birkaç devre bağlantı sorununu tanılamanıza y
 
 Bildirim kodlarını görebilir ve **günlüğe Loganalytics**aracılığıyla uyarılar ayarlayabilirsiniz. **NPM tanılama** sayfasında, tetiklenen her tanılama iletisi için açıklamaları görebilirsiniz.
 
-| Bildirim kodu (Günlükler) | Açıklama |
+| Bildirim kodu (Günlükler) | Description |
 | --- | --- |
 | 5501 | ExpressRoute devresinin ikincil bağlantısı üzerinden geçiş yapılamıyor |
 | 5502 | ExpressRoute devresinin birincil bağlantısı üzerinden geçiş yapılamıyor |

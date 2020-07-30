@@ -81,7 +81,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
 
-Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örnek:
+Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örneğin:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -211,7 +211,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Varsayılan olarak, bir varlık güncelleştirildiğinde, güncelleştirilmekte olan verilerin önceden başka bir işlem tarafından değiştirilip değiştirilmediği denetlenmez. Eş zamanlı güncelleştirmeleri desteklemek için:
 >
 > 1. Güncelleştirilmekte olan nesnenin ETag öğesini alın. Bu, herhangi bir varlıkla ilgili işlemin `response` değerinin parçası olarak döndürülür ve `response['.metadata'].etag` aracılığıyla alınabilir.
-> 2. Bir varlık üzerinde bir güncelleştirme işlemi gerçekleştirirken, önceden alınan ETag bilgilerini yeni varlığa ekleyin. Örnek:
+> 2. Bir varlık üzerinde bir güncelleştirme işlemi gerçekleştirirken, önceden alınan ETag bilgilerini yeni varlığa ekleyin. Örneğin:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Güncelleştirme işlemini gerçekleştirin. Varlık, ETag değerini almanızın ardından değiştirildiyse, (örn. uygulamanızın başka bir örneği), istekte belirtilen güncelleştirme koşulunun karşılanmadığını belirten bir `error` döndürülür.

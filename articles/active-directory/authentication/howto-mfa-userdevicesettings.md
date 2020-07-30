@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9861e8e8be39781ad1b256b9939df3ab03e74be6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49c389170e9d586a2001009226c6542d4d152f7f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027538"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418228"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme
 
@@ -47,7 +47,7 @@ Bir kullanıcının uygulama parolalarını silmek için aşağıdaki adımları
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol tarafta **Azure Active Directory**  >  **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
-1. **Multi-Factor Authentication**'ı seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. **Multi-Factor Authentication**'ı seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin: [ ![ Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
 1. **Kullanıcı ayarlarını yönet**' i seçin, sonra aşağıdaki örnekte gösterildiği gibi **Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil**kutusunu işaretleyin. ![ var olan tüm uygulama parolalarını Sil](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. **Kaydet**' i ve ardından **Kapat**' ı seçin.

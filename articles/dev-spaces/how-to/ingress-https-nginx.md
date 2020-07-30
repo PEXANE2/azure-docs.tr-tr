@@ -5,12 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces özel bir NGıNX giriş denetleyicisi kullanmak üzere yapılandırmayı ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1b4bc686d0795767c259a3e0407393d7b6ebf486
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80155456"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420932"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Özel NGıNX giriş denetleyicisi kullanma ve HTTPS 'yi yapılandırma
 
@@ -55,7 +56,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> Yukarıdaki örnek, giriş denetleyiciniz için genel bir uç nokta oluşturur. Bunun yerine giriş denetleyicinizde özel bir uç nokta kullanmanız gerekiyorsa, *--set Controller. Service. açıklamalarını ekleyin. " Service \\ . Beta \\ . Kubernetes \\ . IO/Azure-Load-dengeleyici-Internal "= true* parametresi, *helk install* komutuna. Örnek:
+> Yukarıdaki örnek, giriş denetleyiciniz için genel bir uç nokta oluşturur. Bunun yerine giriş denetleyicinizde özel bir uç nokta kullanmanız gerekiyorsa, *--set Controller. Service. açıklamalarını ekleyin. " Service \\ . Beta \\ . Kubernetes \\ . IO/Azure-Load-dengeleyici-Internal "= true* parametresi, *helk install* komutuna. Örneğin:
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
@@ -252,7 +253,7 @@ gateway:
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-*Geliştirme/azureuser1* alt alanındaki örnek uygulamaya gıdın ve HTTPS kullanmak üzere yönlendirildiğini unutmayın. Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örnek:
+*Geliştirme/azureuser1* alt alanındaki örnek uygulamaya gıdın ve HTTPS kullanmak üzere yönlendirildiğini unutmayın. Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.

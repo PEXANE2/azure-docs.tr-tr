@@ -5,12 +5,12 @@ description: Bir Azure Kubernetes hizmeti (AKS) kümesi için hizmet sorumlusu v
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: a9cc19184cc39975cce18d17a6047bedf5915555
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a824606bc0e77ba069b6b54725645ee3f348de27
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251035"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386937"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için kimlik bilgilerini güncelleştirme veya döndürme
 
@@ -26,10 +26,12 @@ Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>AKS kümeniz için yeni bir hizmet sorumlusu güncelleştirme veya oluşturma
 
-Bir AKS kümesinin kimlik bilgilerini güncellemek istediğinizde şunları yapabilirsiniz:
+Bir AKS kümesinin kimlik bilgilerini güncellemek istediğinizde aşağıdakilerden birini seçebilirsiniz:
 
-* küme tarafından kullanılan mevcut hizmet sorumlusunun kimlik bilgilerini güncelleştirin veya
-* bir hizmet sorumlusu oluşturun ve kümeyi bu yeni kimlik bilgilerini kullanacak şekilde güncelleştirin.
+* Mevcut hizmet sorumlusu için kimlik bilgilerini güncelleştirin.
+* Yeni bir hizmet sorumlusu oluşturun ve kümeyi bu yeni kimlik bilgilerini kullanacak şekilde güncelleştirin. 
+
+> ! WARNING *Yeni* bir hizmet sorumlusu oluşturmayı seçerseniz, bu kimlik bilgilerini kullanmak için büyük bir aks kümesini güncelleştirme işleminin tamamlanması uzun zaman alabilir.
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>Hizmet sorumlunun sona erme tarihini denetleyin
 
@@ -41,7 +43,7 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
 az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 ```
 
-### <a name="reset-existing-service-principal-credential"></a>Mevcut hizmet sorumlusu kimlik bilgisini Sıfırla
+### <a name="reset-the-existing-service-principal-credential"></a>Mevcut hizmet sorumlusu kimlik bilgisini sıfırlayın
 
 Mevcut hizmet sorumlusunun kimlik bilgilerini güncelleştirmek için [az aks Show][az-aks-show] komutunu kullanarak kümenizin HIZMET sorumlusu kimliğini alın. Aşağıdaki örnek, *Myresourcegroup* kaynak grubundaki *Myakscluster* adlı kümenin kimliğini alır. Hizmet sorumlusu KIMLIĞI, ek komutta kullanılmak üzere *SP_ID* adlı bir değişken olarak ayarlanır. Bu komutlar Bash söz dizimini kullanır.
 
@@ -90,6 +92,9 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>AKS kümesini yeni hizmet sorumlusu kimlik bilgileriyle Güncelleştir
 
+> [!IMPORTANT]
+> Büyük kümeler için, AKS kümesinin yeni bir hizmet sorumlusu ile güncelleştirilmesi uzun zaman alabilir.
+
 Mevcut hizmet sorumlusu için kimlik bilgilerini güncelleştirmeyi veya bir hizmet sorumlusu oluşturmayı seçtiğinizden bağımsız olarak, [az aks Update-Credentials][az-aks-update-credentials] komutunu kullanarak aks kümesini yeni kimlik bilgilerinizle güncelleştirmeniz gerekir. *--Service-Principal* ve *--Client-Secret* değişkenleri kullanılır:
 
 ```azurecli-interactive
@@ -101,11 +106,11 @@ az aks update-credentials \
     --client-secret "$SP_SECRET"
 ```
 
-Hizmet sorumlusu kimlik bilgilerinin AKS 'te güncelleştirilebilmesi birkaç dakika sürer.
+Küçük ve orta ölçekli kümeler için hizmet sorumlusu kimlik bilgilerinin AKS 'te güncelleştirilebilmesi birkaç dakika sürer.
 
 ## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>AKS kümesini yeni AAD uygulaması kimlik bilgileriyle Güncelleştir
 
-[AAD tümleştirme adımlarını][create-aad-app]IZLEYEREK yeni AAD sunucusu ve istemci uygulamaları oluşturabilirsiniz. Veya mevcut AAD uygulamalarınızı [hizmet sorumlusu sıfırlama ile aynı yöntemi](#reset-existing-service-principal-credential)izleyerek sıfırlayın. Bundan sonra, yalnızca aynı [az aks Update-Credentials][az-aks-update-credentials] komutunu kullanarak, ancak *--Reset-AAD* değişkenlerini kullanarak kümenizin AAD uygulaması kimlik bilgilerinizi güncelleştirmeniz gerekir.
+[AAD tümleştirme adımlarını][create-aad-app]IZLEYEREK yeni AAD sunucusu ve istemci uygulamaları oluşturabilirsiniz. Veya mevcut AAD uygulamalarınızı [hizmet sorumlusu sıfırlama ile aynı yöntemi](#reset-the-existing-service-principal-credential)izleyerek sıfırlayın. Bundan sonra, yalnızca aynı [az aks Update-Credentials][az-aks-update-credentials] komutunu kullanarak, ancak *--Reset-AAD* değişkenlerini kullanarak kümenizin AAD uygulaması kimlik bilgilerinizi güncelleştirmeniz gerekir.
 
 ```azurecli-interactive
 az aks update-credentials \

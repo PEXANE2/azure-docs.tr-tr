@@ -3,19 +3,34 @@ title: .NET SDK ile Azure Cosmos DB HTTP 408 veya istek zaman aşımı sorunlar�
 description: .NET SDK isteği zaman aşımı özel durumunu tanılama ve çözme
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/13/2020
+ms.date: 07/29/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 29b0c6237ae04ea5da9ec496498fc7c20890b173
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294632"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417616"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Tanılama ve sorun giderme Azure Cosmos DB .NET SDK isteği zaman aşımı
 HTTP 408 hatası, zaman aşımı sınırı gerçekleşmeden önce SDK isteği tamamlayamadıysa oluşur.
+
+## <a name="customizing-the-timeout-on-the-azure-cosmos-net-sdk"></a>Azure Cosmos .NET SDK 'sında zaman aşımını özelleştirme
+
+SDK, her biri farklı bir kapsama sahip olan zaman aşımlarını denetlemek için iki farklı seçenek içerir.
+
+### <a name="requesttimeout"></a>RequestTimeout
+
+`CosmosClientOptions.RequestTimeout`(Veya `ConnectionPolicy.RequestTimeout` SDK v2 için) yapılandırması, her bir ağ isteğini etkileyen bir zaman aşımı ayarlamanıza olanak sağlar.  Bir kullanıcı tarafından başlatılan bir işlem birden çok ağ isteğini kapsayabilir (örneğin, azaltma olabilir) ve bu yapılandırma yeniden denemeden her bir ağ isteği için geçerlidir. Bu bir uçtan uca işlem isteği zaman aşımı değildir.
+
+### <a name="cancellationtoken"></a>CancellationToken
+
+SDK 'daki tüm zaman uyumsuz işlemlerin isteğe bağlı bir CancellationToken parametresi vardır. Bu [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) tüm ağ isteklerinde tüm işlem boyunca kullanılır. Ağ istekleri arasında, CancellationToken denetlenebilir ve ilgili belirtecin geçerliliği dolmuşsa bir işlem iptal edilir. CancellationToken, işlem kapsamında yaklaşık bir beklenen zaman aşımını tanımlamak için kullanılmalıdır.
+
+> [!NOTE]
+> CancellationToken, kitaplığın [geçersiz duruma neden](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/)olmadığı durumlarda iptal işlemini denetlebileceği bir mekanizmadır. İşlem, İptalde tanımlanan zaman varsa tam olarak iptal etmeyebilir, ancak bunun yerine, zaman geçtikten sonra bunu yapmak güvenli olduğunda iptal edilir.
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 Aşağıdaki liste, istek zaman aşımı özel durumları için bilinen nedenleri ve çözümleri içerir.

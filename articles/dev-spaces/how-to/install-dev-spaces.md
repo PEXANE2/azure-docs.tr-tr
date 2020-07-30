@@ -5,18 +5,18 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: AKS kümesinde Azure Dev Spaces etkinleştirmeyi ve istemci tarafı araçları yüklemeyi öğrenin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac010a466f7db7b829cc3d6f0687dbdbefdd7b6c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996270"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407906"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AKS kümesinde Azure Dev Spaces etkinleştirme ve istemci tarafı araçları 'nı yüklemeye
 
 Bu makalede, bir AKS kümesinde Azure Dev Spaces etkinleştirmenin yanı sıra istemci tarafı araçları yüklemek için kullanabileceğiniz çeşitli yollar gösterilmektedir.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>CLı kullanarak Azure Dev Spaces etkinleştirme veya kaldırma
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>CLı kullanarak Azure Dev Spaces etkinleştirme
 
 CLı kullanarak dev alanlarını etkinleştirebilmeniz için şunlar gerekir:
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap][az-portal-create-account] oluşturabilirsiniz.
@@ -49,7 +49,23 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 `use-dev-spaces`Komut ayrıca Azure dev Spaces CLI 'yi de yüklüyor.
 
-AKS kümenizdeki Azure Dev Spaces kaldırmak için `azds remove` komutunu kullanın. Örneğin:
+## <a name="install-the-client-side-tools"></a>İstemci tarafı araçları 'nı yükler
+
+Yerel makinenizden bir AKS kümesindeki dev Spaces ile etkileşim kurmak için Azure Dev Spaces istemci tarafı araçlarını kullanabilirsiniz. İstemci tarafı araçları yüklemek için çeşitli yollar vardır:
+
+* [Visual Studio Code][vscode], [Azure dev Spaces uzantısını][vscode-extension]yükler.
+* [Visual Studio 2019][visual-studio]' de Azure geliştirme iş yükünü yükledikten sonra.
+* [Windows][cli-win], [Mac][cli-mac]veya [Linux][cli-linux] CLI 'yı indirip yükleyin.
+
+## <a name="remove-azure-dev-spaces-using-the-cli"></a>CLı kullanarak Azure Dev Spaces kaldırma
+
+AKS kümenizdeki Azure Dev Spaces kaldırmak için `azds remove` komutunu kullanın.
+
+```azurecli
+azds remove -g MyResourceGroup -n MyAKS
+```
+
+Aşağıdaki örnek çıktıda Azure Dev Spaces *Myaks* kümesinden kaldırma gösterilmektedir.
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -58,15 +74,7 @@ Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that tar
 Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
 ```
 
-Yukarıdaki komut *Myresourcegroup*Içindeki *myaks* kümesinden Azure dev Spaces kaldırır. Azure Dev Spaces ile oluşturduğunuz herhangi bir ad alanı, iş yükleriyle birlikte kalacaktır, ancak bu ad alanlarındaki yeni iş yükleri Azure Dev Spaces birlikte görünmez. Ayrıca, Azure Dev Spaces ile işaretlenmiş mevcut tüm yığınları yeniden başlatırsanız, hatalar görebilirsiniz. Bu FID 'ler Azure Dev Spaces araçları olmadan yeniden dağıtılmalıdır. Azure Dev Spaces kümenizdeki tamamen kaldırmak için, Azure Dev Spaces etkinleştirildiği tüm ad alanlarındaki tüm kümelerinizi silin.
-
-## <a name="install-the-client-side-tools"></a>İstemci tarafı araçları 'nı yükler
-
-Yerel makinenizden bir AKS kümesindeki dev Spaces ile etkileşim kurmak için Azure Dev Spaces istemci tarafı araçlarını kullanabilirsiniz. İstemci tarafı araçları yüklemek için çeşitli yollar vardır:
-
-* [Visual Studio Code][vscode], [Azure dev Spaces uzantısını][vscode-extension]yükler.
-* [Visual Studio 2019][visual-studio]' de Azure geliştirme iş yükünü yükledikten sonra.
-* [Windows][cli-win], [Mac][cli-mac]veya [Linux][cli-linux] CLI 'yı indirip yükleyin.
+Azure Dev Spaces ile oluşturduğunuz herhangi bir ad alanı, iş yükleriyle birlikte kalacaktır, ancak bu ad alanlarındaki yeni iş yükleri Azure Dev Spaces birlikte görünmez. Ayrıca, Azure Dev Spaces ile işaretlenmiş mevcut tüm yığınları yeniden başlatırsanız, hatalar görebilirsiniz. Bu FID 'ler Azure Dev Spaces araçları olmadan yeniden dağıtılmalıdır. Azure Dev Spaces kümenizdeki tamamen kaldırmak için, Azure Dev Spaces etkinleştirildiği tüm ad alanlarındaki tüm kümelerinizi silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

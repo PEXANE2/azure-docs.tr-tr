@@ -130,7 +130,7 @@ Bir sanal makine için izleme verileri koleksiyonunu yapılandırdıktan sonra, 
 
 ![Azure portal izleme](media/monitor-vm-azure/monitor-menu.png)
 
-| Menü seçeneği | Açıklama |
+| Menü seçeneği | Description |
 |:---|:---|
 | Genel Bakış | Sanal makine konağı için [Platform ölçümlerini](../platform/data-platform-metrics.md) görüntüler. [Ölçüm Gezgini](../platform/metrics-getting-started.md)'nde bu verilerle çalışmak için bir grafiğe tıklayın. |
 | Etkinlik günlüğü | Geçerli sanal makine için filtrelenmiş [etkinlik günlüğü](../platform/activity-log.md#view-the-activity-log) girdileri. |
@@ -148,7 +148,7 @@ Sanal makine menüsünden **ölçümler** ' i açarak, Ölçüm Gezgini 'ni kull
 
 Ölçümler için sanal makineler tarafından kullanılan üç ad alanı vardır:
 
-| Ad Alanı | Açıklama | Gereksinim |
+| Ad Alanı | Description | Gereksinim |
 |:---|:---|:---|
 | Sanal Makine Ana Bilgisayarı | Tüm Azure sanal makineleri için otomatik olarak toplanan konak ölçümleri. [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines)'teki ayrıntılı ölçüm listesi. | Yapılandırma gerekmeden otomatik olarak toplanır. |
 | Konuk (klasik) | Sınırlı bir konuk işletim sistemi ve uygulama performansı verileri kümesi. Ölçüm uyarıları gibi diğer Azure Izleyici özellikleriyle Ölçüm Gezgini 'nde kullanılabilir.  | [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) yüklendi. Veriler Azure depolama alanından okundu.  |

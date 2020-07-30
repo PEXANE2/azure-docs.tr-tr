@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: af743ca56572f507091db01f11d3283294a9e3d5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974011"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382806"
 ---
 # <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda düğümler – hiper ölçek (Citus)
 
@@ -22,7 +22,9 @@ Hiper ölçek (Citus) barındırma türü, PostgreSQL için Azure veritabanı su
 
 Her sunucu grubunda bir düzenleyici düğümü ve birden çok çalışan bulunur. Uygulamalar, sorgularını ilgili çalışanlara aktaran ve sonuçlarını toplayan düzenleyici düğümüne gönderir. Uygulamalar doğrudan çalışanlara bağlanamaz.
 
-Her sorgu için, düzenleyici bunu tek bir çalışan düğümüne yönlendirir ya da gerekli verilerin tek bir düğümde veya birden çok üzerinde olmasına bağlı olarak bir kaç tane üzerinde paralelleştirme yapın. Düzenleyici, meta veri tablolarına danışarak ne yapılacağını belirler. Bu tablolar, çalışan düğümlerinin DNS adlarını ve sistem durumunu ve verilerin düğümler arasında dağıtımını izler.
+Hiper ölçek (Citus), veritabanı yöneticisinin farklı çalışan düğümlerinde farklı satırları depolayarak tabloları *dağıtmasını* sağlar. Dağıtılmış tablolar, hiper ölçek performansının anahtarıdır. Tabloların dağıtılamaması, bunları tamamen düzenleyici düğümüne bırakır ve makineler arası paralelden faydalanabilir.
+
+Dağıtılmış tablolardaki her sorgu için, düzenleyici bunu tek bir çalışan düğümüne yönlendirir ya da gerekli verilerin tek bir düğümde veya birden çok üzerinde olmasına bağlı olarak bir kaç tane üzerinde paralelleştirme yapın. Düzenleyici, meta veri tablolarına danışarak ne yapılacağını belirler. Bu tablolar, çalışan düğümlerinin DNS adlarını ve sistem durumunu ve verilerin düğümler arasında dağıtımını izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Düğümlerin [Dağıtılmış verileri](concepts-hyperscale-distributed-data.md) nasıl depoleyeceğinizi öğrenin
+- [Dağıtılmış tablolar](concepts-hyperscale-distributed-data.md) hakkında bilgi edinin

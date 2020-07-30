@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 755e59a029b0a12e51db53c6c7d3bb00358af635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742021"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421680"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini toplu olarak ekle
 
@@ -69,7 +69,7 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 
 Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları** sayfasında görebilirsiniz.
 
-[![](media/groups-bulk-import-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-import-members/bulk-center.png#lightbox)
+[![Toplu Işlemler sonuçları sayfasında durumu kontrol edin.](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
 
 Toplu işlemdeki her bir satır öğesi hakkında ayrıntılar için **# Success**, **# Failure**veya **Total Requests** sütunlarının altındaki değerleri seçin. Hatalar oluştuysa, başarısızlık nedenleri listelenecektir.
 

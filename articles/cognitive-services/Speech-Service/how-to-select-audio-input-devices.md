@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 80671a40b5933a89962fa07b267d7e99e475657f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74109965"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406699"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Nasıl yapılır: konuşma SDK 'Sı ile bir ses giriş cihazı seçme
 
-Konuşma SDK 'sının sürüm 1.3.0, ses girişini seçmek için bir API sunar. Bu makalede, bir sisteme bağlı olan ses cihazlarının kimliklerinin nasıl alınacağı açıklanır. Bunlar, ses cihazını `AudioConfig` nesne aracılığıyla yapılandırarak konuşma SDK 'sında kullanılabilir:
+Konuşma SDK 'sının sürüm 1.3.0, ses girişini seçmek için bir API sunar. Bu makalede, bir sisteme bağlı olan ses cihazlarının kimliklerinin nasıl alınacağı açıklanır. Bunlar, ses cihazını nesne aracılığıyla yapılandırarak konuşma SDK 'sında kullanılabilir `AudioConfig` :
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -46,11 +47,11 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
 > [!Note]
-> Node. js ' de çalışan JavaScript için mikrofon kullanımı kullanılamaz
+> Mikrofon kullanımı, Node.js çalışan JavaScript için kullanılamaz
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Masaüstü uygulamaları için Windows 'ta ses cihazı kimlikleri
 
-Ses cihazı [uç nokta kimliği dizeleri](/windows/desktop/CoreAudio/endpoint-id-strings) Windows 'un masaüstü uygulamaları [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) için nesnesinden alınabilir.
+Ses cihazı [uç nokta kimliği dizeleri](/windows/desktop/CoreAudio/endpoint-id-strings) [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) Windows 'un masaüstü uygulamaları için nesnesinden alınabilir.
 
 Aşağıdaki kod örneği, C++ ' da ses cihazlarını numaralandırmak için nasıl kullanılacağını göstermektedir:
 
@@ -171,11 +172,11 @@ namespace ConsoleApp
 }
 ```
 
-Örnek bir cihaz KIMLIĞI `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`.
+Örnek bir cihaz KIMLIĞI `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}` .
 
 ## <a name="audio-device-ids-on-uwp"></a>UWP 'de ses cihazı kimlikleri
 
-Evrensel Windows Platformu (UWP) üzerinde, ses giriş cihazları karşılık gelen `Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) nesnenin özelliği kullanılarak elde edilebilir.
+Evrensel Windows Platformu (UWP) üzerinde, ses giriş cihazları `Id()` karşılık gelen nesnenin özelliği kullanılarak elde edilebilir [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) .
 
 Aşağıdaki kod örnekleri, C++ ve C# ' de bunu nasıl yapılacağını göstermektedir:
 
@@ -222,22 +223,22 @@ namespace helloworld {
 }
 ```
 
-Örnek bir cihaz KIMLIĞI `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`.
+Örnek bir cihaz KIMLIĞI `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}` .
 
 ## <a name="audio-device-ids-on-linux"></a>Linux 'ta ses cihazı kimlikleri
 
 Cihaz kimlikleri standart ALSA cihaz kimlikleri kullanılarak seçilir.
 
-Sisteme bağlı girişlerin kimlikleri, komutun `arecord -L`çıktısında bulunur.
+Sisteme bağlı girişlerin kimlikleri, komutun çıktısında bulunur `arecord -L` .
 Alternatif olarak, [alsa C Kitaplığı](https://www.alsa-project.org/alsa-doc/alsa-lib/)kullanılarak elde edilebilir.
 
-Örnek kimlikler ve `hw:1,0` ' `hw:CARD=CC,DEV=0`dir.
+Örnek kimlikler `hw:1,0` ve ' dir `hw:CARD=CC,DEV=0` .
 
 ## <a name="audio-device-ids-on-macos"></a>MacOS 'ta ses cihazı kimlikleri
 
 Amaç-C ' d e uygulanan aşağıdaki işlev, bir Mac 'e bağlı olan ses cihazlarının adlarının ve kimliklerinin bir listesini oluşturur.
 
-`deviceUID` Dize, MacOS için konuşma SDK 'sında bir cihazı tanımlamak için kullanılır.
+`deviceUID`Dize, macOS Için konuşma SDK 'sında bir cihazı tanımlamak için kullanılır.
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -361,11 +362,11 @@ CFArrayRef CreateInputDeviceArray()
 }
 ```
 
-Örneğin, yerleşik mikrofonun UID 'si `BuiltInMicrophoneDevice`.
+Örneğin, yerleşik mikrofonun UID 'si `BuiltInMicrophoneDevice` .
 
 ## <a name="audio-device-ids-on-ios"></a>İOS üzerinde ses cihazı kimlikleri
 
-Konuşma SDK 'Sı ile ses cihazı seçimi, iOS üzerinde desteklenmez. Ancak, SDK 'Yı kullanan uygulamalar [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Framework aracılığıyla ses yönlendirmeyi etkileyebilir.
+Konuşma SDK 'Sı ile ses cihazı seçimi, iOS üzerinde desteklenmez. Ancak, SDK 'Yı kullanan uygulamalar Framework aracılığıyla ses yönlendirmeyi etkileyebilir [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) .
 
 Örneğin, yönerge
 
@@ -378,7 +379,7 @@ konuşma özellikli bir uygulama için Bluetooth kulaklık kullanımını etkinl
 
 ## <a name="audio-device-ids-in-javascript"></a>JavaScript 'te ses cihazı kimlikleri
 
-JavaScript 'te, Media cihazlarını numaralandırmak ve geçirilecek bir cihaz KIMLIĞI bulmak için [mediadevices. enumeratedevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) yöntemi kullanılabilir `fromMicrophone(...)`.
+JavaScript 'te, Media cihazlarını numaralandırmak ve geçirilecek bir cihaz KIMLIĞI bulmak için [mediadevices. enumeratedevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) yöntemi kullanılabilir `fromMicrophone(...)` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric için ağ düzenleri
 description: Service Fabric için ortak ağ düzenlerini ve Azure ağ özellikleri 'ni kullanarak küme oluşturmayı açıklar.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258534"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421476"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric ağ desenleri
 Azure Service Fabric kümenizi diğer Azure ağ özellikleriyle tümleştirebilirsiniz. Bu makalede, aşağıdaki özellikleri kullanan kümelerin nasıl oluşturulacağını göstereceğiz:
@@ -99,6 +99,8 @@ Bu makaledeki örneklerde Service Fabric template.jskullanırız. Bir kümeyi ol
                 "defaultValue": "10.0.0.0/24"
             },*/
     ```
+
+   Ayrıca, ' virtualNetworkName ' adlı parametreyi, Azure portal küme dağıtım dikey penceresine sanal ağ adını iki kez girmenizi istemez.
 
 2. `nicPrefixOverride` `Microsoft.Compute/virtualMachineScaleSets` Var olan alt ağı kullandığınız ve 1. adımda bu değişkeni devre dışı bıraktığınız için Açıklama özniteliği.
 

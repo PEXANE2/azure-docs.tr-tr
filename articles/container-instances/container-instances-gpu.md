@@ -2,13 +2,13 @@
 title: GPU özellikli kapsayıcı örneği dağıt
 description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygulamaları çalıştırmak için Azure Container Instances 'ı dağıtmayı öğrenin.
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076872"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387107"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
 
@@ -33,9 +33,6 @@ Destek, zaman içinde ek bölgeler için eklenecektir.
 
 ## <a name="about-gpu-resources"></a>GPU kaynakları hakkında
 
-> [!IMPORTANT]
-> GPU kaynakları yalnızca istek üzerine kullanılabilir. GPU kaynaklarına erişim istemek için lütfen bir [Azure destek isteği][azure-support]gönderebilirsiniz.
-
 ### <a name="count-and-sku"></a>Sayı ve SKU
 
 Bir kapsayıcı örneğinde GPU 'ları kullanmak için aşağıdaki bilgileri içeren bir *GPU kaynağı* belirtin:
@@ -52,6 +49,9 @@ Bir kapsayıcı örneğinde GPU 'ları kullanmak için aşağıdaki bilgileri i�
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
 GPU kaynaklarını dağıttığınızda, önceki tabloda gösterilen en fazla değere kadar iş yüküne uygun CPU ve bellek kaynakları ayarlayın. Bu değerler, GPU kaynakları olmadan kapsayıcı gruplarında kullanılabilir olan CPU ve bellek kaynaklarından daha büyüktür.  
+
+> [!IMPORTANT]
+> GPU kaynakları için varsayılan [abonelik limitleri](container-instances-quotas.md) (kotalar) SKU 'ya göre farklılık gösterir. P100 ve V100 SKU 'Larının varsayılan CPU sınırları başlangıçta 0 olarak ayarlanır. Kullanılabilir bir bölgede artış istemek için lütfen bir [Azure destek isteği][azure-support]gönderebilirsiniz.
 
 ### <a name="things-to-know"></a>Bilinmesi gerekenler
 

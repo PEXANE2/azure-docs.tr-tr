@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/15/2020
+ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4e21edd662649238b16cf7e7df9d9904f3f17752
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015910"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423635"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -30,6 +30,7 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 | Soru | Yanıt |
 | -------- | ------ |
 | Cihaza şirket veya hizmet erişimi vermek için bir cihaz kabul etmiş kaydediyor mu? | Bir cihazın kaydedilmesi, cihazınızın kuruluşunuzun hizmetlerine erişmesini sağlar ve kuruluşunuzun cihazınıza erişmesine izin vermez. |
+| Uygulama kilidi nedir ve daha güvenli tutmaya yardımcı olmak için bunu nasıl kullanabilirim? | Uygulama kilidi, tek seferlik geçiş kodlarınızın, uygulama bilgilerinizin ve uygulama ayarlarınızın daha güvenli kalmasına yardımcı olur. Uygulama Kilidi etkinleştirildiğinde, kimlik doğrulayıcı 'yı her açışınızda cihaz PIN 'inizi veya biyometri kullanarak kimlik doğrulaması yapmanız istenir. Uygulama kilidi Ayrıca, PIN 'inizi veya bir oturum açma bildirimini onayladığınızı istediğiniz zaman, bildirimleri onaylayabilecek tek bir tane olduğundan emin olmanıza yardımcı olur. Doğrulayıcı ayarları sayfasında uygulama kilidi 'ni açıp kapatabilirsiniz. Varsayılan olarak, cihazınızda bir PIN veya biyometri ayarlarken uygulama kilidi açıktır.<br><br>Ne yazık ki, uygulama kilidinin kimlik doğrulayıcısına erişimi durdurabileceğini garanti etmez. Bunun nedeni, cihaz kaydının, Android hesap ayarları veya Şirket Portalı uygulamasında olduğu gibi, kimlik doğrulayıcı dışında diğer konumlarda gerçekleşebilmesine yönelik olabilir. |
 | Windows mobil cihazım var ve Windows Mobile Microsoft Authenticator kullanım dışı bırakıldı. Uygulamayı kullanarak kimlik doğrulamaya devam edebilir miyim? | Windows Mobile Microsoft Authenticator kullanan tüm kimlik doğrulamaları 15 Temmuz 2020 ' den sonra kullanımdan kaldırılacaktır. Hesaplarınızı kilitlemeyi önlemek için alternatif bir kimlik doğrulama yöntemi kullanmanızı önemle tavsiye ederiz.<br>Kurumsal kullanıcılar için alternatif seçenekler şunlardır:<br><ul><li>[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) veya [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)için Microsoft Authenticator ayarlama.</li><li>[SMS](multi-factor-authentication-setup-phone-number.md) 'yi doğrulama kodları alacak şekilde ayarlama.</li><li>[Kimlik doğrulama için telefon görüşmesi](multi-factor-authentication-setup-office-phone.md)alacak telefon numarası ayarlama.</li></ul><br>Kişisel Microsoft hesabı kullanıcıları için alternatif seçenekler şunlardır:<br><ul><li>[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) veya [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)için Microsoft Authenticator ayarlama.</li><li>[Microsoft hesabı güvenlik sayfasından](https://account.microsoft.com/security/)güvenlik bilgilerinizi güncelleştirerek alternatif bir oturum açma YÖNTEMI (SMS veya e-posta) ayarlama.</li></ul> |
 | Android Authenticator üzerinde bir kerelik parola (OTP) kodlarından ekran görüntülerini alabilir miyim? | Varsayılan olarak, kimlik doğrulayıcı Android 'in yayın 6.2003.1704 sürümünden itibaren tüm OTP kodları her zaman bir Authenticator ekran görüntüsü alınır. OTP kodlarınızı ekran görüntülerinde görmek veya diğer uygulamaların kimlik doğrulayıcı ekranını yakalamasını sağlamak istiyorsanız, kullanabilirsiniz. Kimlik Doğrulayıcı ' da **ekran yakalama** ayarını açıp uygulamayı yeniden başlatmanız yeterlidir. |
 | Kimlik Doğrulayıcı hangi verileri kendi adınıza depolar ve nasıl silerim? | Kimlik doğrulayıcı uygulaması üç tür bilgi toplar:<ul><li>Hesabınızı eklediğinizde sağladığınız hesap bilgileri. Bu veriler, hesabınız kaldırılarak kaldırılabilir.</li><li>Yalnızca uygulamada kalan tanılama günlüğü verileri, Microsoft 'a Günlükler göndermek için uygulamanın **Yardım** **menüsünü seçin.** Bu Günlükler e-posta adresleri, sunucu adresleri veya IP adresleri gibi kişisel verileri içerebilir. Ayrıca cihaz adı ve işletim sistemi sürümü gibi cihaz verilerini de içerebilir. Toplanan tüm kişisel veriler, uygulama sorunlarını gidermeye yardımcı olmak için gereken bilgiyle sınırlıdır. Toplanmakta olan bilgileri görmek için dilediğiniz zaman uygulamadaki bu günlük dosyalarına gözatabilmeniz gerekir. Günlük dosyalarınızı gönderirseniz, kimlik doğrulama uygulama mühendisleri onları yalnızca müşteri tarafından bildirilen sorunları gidermek için kullanır.</li><li>Kişisel olarak tanımlanabilen kullanım verileri, "hesap akışı ekleme/başarıyla eklendi hesabı" veya "bildirim Onaylandı" gibi. Bu veriler, mühendislik kararlarımızın ayrılmaz bir parçasıdır. Kullanımınız, uygulamaları sizin için önemli şekillerde geliştirebileceğimizi belirlememize yardımcı olur. Uygulamayı ilk kez kullandığınızda bu veri koleksiyonunun bir bildirimini görürsünüz. Daha sonra uygulamanın **Ayarlar** sayfasında kapatılamadığını size bildirir. Dilediğiniz zaman bu ayarı açabilir veya kapatabilirsiniz.</li></ul> |

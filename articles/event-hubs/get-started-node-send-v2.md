@@ -3,12 +3,13 @@ title: JavaScript kullanarak Azure Event Hubs olay gönderme veya alma (en son)
 description: Bu makalede, Azure Event Hubs en son Azure/Olay-Hub sürümü 5 paketini kullanarak olayları gönderen/alan bir JavaScript uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ec97d07843a9844387ad1038c075ed55e304a2c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 098e9e4ff6da199c48acf8956049336049e8a58c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521896"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421221"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>JavaScript kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure/Olay-Hub sürüm 5)
 Bu hızlı başlangıçta, **Azure/Event-Hub 5** JavaScript paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 

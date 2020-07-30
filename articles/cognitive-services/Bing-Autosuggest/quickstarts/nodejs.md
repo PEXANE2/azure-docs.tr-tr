@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Bing Otomatik Öneri REST API ve Node. js ile arama sorguları önerin'
+title: 'Hızlı başlangıç: Bing Otomatik Öneri REST API ve Node.js ile arama sorguları önerin'
 titleSuffix: Azure Cognitive Services
 description: Bing Otomatik Öneri API'si ile gerçek zamanlı olarak arama terimleri önerme hakkında hızlı bir başlangıç yapmayı öğrenin.
 services: cognitive-services
@@ -10,18 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 0d63bd0fc745a3305b9d2f8906a09626668d091b
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6a78c2ae4145a65739d5db56a70dca498d7d6a82
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930276"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406495"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ve Node. js ile arama sorguları önerin
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ve Node.js ile arama sorguları önerin
 
-Bing Otomatik Öneri API'si çağrı yapmayı ve JSON yanıtını okumayı öğrenmek için bu hızlı başlangıcı izleyin. Bu basit Node. js uygulaması, API 'ye kısmi bir arama sorgusu gönderir ve aramalar için öneriler döndürür. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) 'da kullanılabilir
+Bing Otomatik Öneri API'si çağrı yapmayı ve JSON yanıtını okumayı öğrenmek için bu hızlı başlangıcı izleyin. Bu basit Node.js uygulaması, API 'ye kısmi bir arama sorgusu gönderir ve aramalar için öneriler döndürür. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) 'da kullanılabilir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js 6](https://nodejs.org/en/download/) veya üzeri
 

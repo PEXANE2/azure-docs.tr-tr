@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5b641437b7e15334d59c544b95d5be0f20f2a8df
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223899"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387549"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Çoklu oturum açma (SSO) nedir?
 
@@ -54,7 +54,7 @@ Aşağıdaki tablo, çoklu oturum açma yöntemlerini özetler ve daha fazla ayr
 
 Yeni uygulamalar geliştirirken, birden çok cihaz platformunda uygulamanız için en iyi çoklu oturum açma deneyimi elde etmek için OpenID Connect ve OAuth gibi modern protokolleri kullanın. OAuth, kullanıcıların veya yöneticilerin [Microsoft Graph](/graph/overview)gibi korumalı kaynaklara [izin vermesini](configure-user-consent.md) sağlar. Uygulamanız için [SDK 'ları](../develop/reference-v2-libraries.md) benimsemeyi ve ayrıca uygulamanız [Microsoft Graph](/graph/overview)kullanmaya hazırız.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
@@ -71,9 +71,9 @@ SAML tabanlı çoklu oturum açma, bu protokollerden herhangi birini kullanan uy
 - SAML 2.0
 - WS-Federation
 
-SAML tabanlı çoklu oturum açma için bir SaaS uygulaması yapılandırmak üzere bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md). Ayrıca, hizmet olarak yazılım (SaaS) uygulamalarında, SAML tabanlı çoklu oturum açma yapılandırmasında size adım adım kılavuzluk eden [uygulamaya özgü bir öğretici](../saas-apps/tutorial-list.md) vardır.
+SAML tabanlı çoklu oturum açma için bir SaaS uygulaması yapılandırmak üzere bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md). Ayrıca, hizmet olarak yazılım (SaaS) uygulamalarında, SAML tabanlı çoklu oturum açma yapılandırmasında size adım adım kılavuzluk eden [uygulamaya özgü bir öğretici](../saas-apps/tutorial-list.md) vardır.
 
-Bir uygulamayı WS-Federation için yapılandırmak üzere, SAML tabanlı çoklu oturum açma için uygulamayı yapılandırmak üzere aynı kılavuzu izleyin, bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md). Uygulamayı Azure AD kullanacak şekilde yapılandırma adımında, WS-Federation uç noktası için Azure AD oturum açma URL 'sini değiştirmeniz gerekir `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
+Bir uygulamayı WS-Federation için yapılandırmak üzere, uygulamayı SAML tabanlı çoklu oturum açma için yapılandırmak üzere aynı kılavuzu izleyin. Uygulamayı Azure AD kullanacak şekilde yapılandırma adımında, WS-Federation uç noktası için Azure AD oturum açma URL 'sini değiştirmeniz gerekir `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 SAML tabanlı çoklu oturum açma için şirket içi bir uygulamayı yapılandırmak için, bkz. [uygulama proxy 'si ile şirket içi uygulamalar Için SAML çoklu oturum açma](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -198,8 +198,8 @@ Bu senaryo Azure AD ve PingAccess arasındaki bir iş ortaklığı aracılığı
 Daha fazla bilgi için bkz. [Azure Active Directory sürümleri](../fundamentals/active-directory-whatis.md).
 
 ## <a name="related-articles"></a>İlgili makaleler:
+* [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)
 * [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](../saas-apps/tutorial-list.md)
-* [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md)
 * [Parola tabanlı çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
 * [Bağlı oturum açmayı yapılandırma](configure-linked-sign-on.md)
 * [Uygulamalara erişimi yönetmeye giriş](what-is-access-management.md)

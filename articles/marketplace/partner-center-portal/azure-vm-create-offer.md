@@ -1,18 +1,18 @@
 ---
 title: Azure Market 'te Azure sanal makine teklifi oluşturma
-description: Gerekli planla Azure Marketi 'nde sanal makine teklifi oluşturmayı öğrenin.
+description: Azure Marketi 'ne bir sanal makine teklifi yayımlamayı öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.date: 07/17/2020
-ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.topic: how-to
+author: emuench
+ms.author: mingshen
+ms.date: 07/28/2020
+ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324701"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386444"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -180,7 +180,7 @@ Müşterilerinize teklif hüküm ve koşullar sağlamanız gerekir. İki seçene
 
 ### <a name="marketplace-details"></a>Market ayrıntıları
 
-#### <a name="name"></a>Ad
+#### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler için teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer** adı kutusuna girdiğiniz adla birlikte doldurulur. Bu adı daha sonra değiştirebilirsiniz. Ad:
 
@@ -196,7 +196,7 @@ Azure Marketi arama sonuçlarında gösterilmek üzere teklifinizin kısa bir a�
 
 Azure Marketi arama sonuçlarında gösterilmek üzere teklifiniz için daha uzun bir açıklama sağlayın. Bu, en fazla 256 karakter içerebilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Müşterilerin destek ekibinize ulaşabilmesi için destek Web sitesini sağlay�
 
 Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş ortakları için iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Ad
+- Name
 - E-posta
 - Telefon
 
@@ -234,7 +234,7 @@ Müşterileriniz bir destek bileti açtıklarında kullanılacak Microsoft iş o
 
 Microsoft 'un, Teklifinizle ilgili sorunlar olduğunda, sertifika sorunları da dahil olmak üzere iletişim bilgilerini sağlayın. Bu bilgiler Azure Marketi 'nde listelenmez.
 
-- Ad
+- Name
 - E-posta
 - Telefon
 
@@ -352,7 +352,7 @@ Bu bölümde planın listeleme ayrıntılarını yapılandırırsınız. Bu böl
 
 #### <a name="plan-name"></a>Plan adı
 
-Bu alan, oluşturduğunuz zaman planınızı verdiğiniz adla birlikte doldurulur. Bu ad, Azure Marketi 'nde bu planın başlığı olarak görünür. 100 karakterle sınırlıdır.
+Bu alan, oluşturduğunuz zaman planınızı verdiğiniz adla otomatik olarak doldurulur. Bu ad, Azure Marketi 'nde bu planın başlığı olarak görünür. 100 karakterle sınırlıdır.
 
 #### <a name="plan-summary"></a>Plan Özeti
 
@@ -368,7 +368,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 Bu bölmede şunları yapılandırırsınız:
 
-- Bu planın kullanılabildiği pazarlar.
+- Bu planın kullanılabildiği pazarlar. Her plan en az bir [pazarda](../marketplace-geo-availability-currencies.md)kullanılabilir olmalıdır.
 - Saat başına fiyat.
 - Planın herkese veya yalnızca belirli müşterilere (özel bir hedef kitle) görünür hale yapılıp yapılmayacağını belirtir.
 
@@ -534,7 +534,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
-7. Açıklama
+7. Description
 8. Yararlı bağlantılar
 9. Ekran görüntüleri/videolar
 

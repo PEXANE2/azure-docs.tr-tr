@@ -3,13 +3,13 @@ title: Hızlı başlangıç-Docker kapsayıcısını kapsayıcı örneğine dağ
 description: Bu hızlı başlangıçta, yalıtılmış bir Azure Container örneğinde çalışan kapsayıcılı bir Web uygulamasını hızlıca dağıtmak için Azure portal kullanırsınız
 ms.topic: quickstart
 ms.date: 03/09/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 5f36c81abd462f6dfd59c42da71e096e07206cae
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79087971"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408076"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure 'da kapsayıcı örneği dağıtma
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-free-acc
 
 ## <a name="create-a-container-instance"></a>Kapsayıcı örneği oluşturma
 
-**Container Instances** **kaynak** > **kapsayıcıları** > oluştur ' u seçin.
+Container Instances **kaynak kapsayıcıları oluştur**' u seçin  >  **Containers**  >  **Container Instances**.
 
 ![Azure portalında yeni bir kapsayıcı örneği oluşturmaya başlama][aci-portal-01]
 
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-free-acc
 
 ![Azure portalında yeni bir kapsayıcı örneği için temel ayarları yapılandırma][aci-portal-03]
 
-Bu hızlı başlangıçta, genel Microsoft `aci-helloworld` görüntüsünü dağıtmak için varsayılan ayarları kullanırsınız. Bu örnek Linux görüntüsü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler. Ayrıca, Azure Container Registry, Docker Hub veya diğer kayıt defterlerinde depolanan kendi kapsayıcı görüntülerinizi de getirebilirsiniz.
+Bu hızlı başlangıçta, genel Microsoft görüntüsünü dağıtmak için varsayılan ayarları kullanırsınız `aci-helloworld` . Bu örnek Linux görüntüsü, statik bir HTML sayfasına hizmet veren Node.js yazılmış küçük bir Web uygulamasını paketler. Ayrıca, Azure Container Registry, Docker Hub veya diğer kayıt defterlerinde depolanan kendi kapsayıcı görüntülerinizi de getirebilirsiniz.
 
 **Ağ** sayfasında, Kapsayıcınız Için bir **DNS ad etiketi** belirtin. Ad, kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır. Kapsayıcınız `<dns-name-label>.<region>.azurecontainer.io` konumunda genel kullanıma sunulacaktır. "DNS ad etiketi kullanılamıyor" hata iletisiyle karşılaşırsanız farklı bir DNS ad etiketi deneyin.
 
@@ -54,7 +54,7 @@ Doğrulama tamamlandığında, kapsayıcı ayarlarının bir özeti gösterilir.
 
 Dağıtım başladığında, dağıtımın devam ettiğini belirten bir bildirim görüntülenir. Kapsayıcı grubu dağıtıldığında yeni bir bildirim daha görüntülenir.
 
-**Kaynak grupları** > **myresourcegroup** > **myContainer**' a giderek kapsayıcı grubu için genel bakışı açın. Kapsayıcı örneğinin **Durum**’u ile birlikte **FQDN**’sini (tam etki alanı adı) not edin.
+**Kaynak grupları**  >  **myresourcegroup**  >  **myContainer**' a giderek kapsayıcı grubu için genel bakışı açın. Kapsayıcı örneğinin **Durum**’u ile birlikte **FQDN**’sini (tam etki alanı adı) not edin.
 
 ![Azure portalında kapsayıcı grubuna genel bakış][aci-portal-06]
 

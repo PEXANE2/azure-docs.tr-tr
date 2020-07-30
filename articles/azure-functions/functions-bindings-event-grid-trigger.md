@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: a4d40618c5d1a7200b452268a6b36841a846c6cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8876677a9ab4470875e6a311a62ce32598465fcd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041896"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421272"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid tetikleyicisi
 
@@ -307,7 +307,7 @@ Tüm örnek için bkz. C# örneği.
 
 Aşağıdaki tabloda, dosyasında *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır. Öznitelikte ayarlanacak bir oluşturucu parametresi veya özellik yok `EventGridTrigger` .
 
-|function.jsözelliği |Açıklama|
+|function.jsözelliği |Description|
 |---------|---------|
 | **türüyle** | Gerekli-olarak ayarlanmalıdır `eventGridTrigger` . |
 | **Görünüm** | Gerekli-olarak ayarlanmalıdır `in` . |
@@ -516,7 +516,7 @@ Olay iletilerini yakalamayı basitleştirmek için, olay iletilerini görüntül
 
 Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. Azure portalında parametre değerlerini girin.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
 
 Dağıtımın tamamlanması birkaç dakika sürebilir. Dağıtım başarıyla gerçekleştirildikten sonra, web uygulamanızı görüntüleyip çalıştığından emin olun. Web tarayıcısında şu adrese gidin: `https://<your-site-name>.azurewebsites.net`
 

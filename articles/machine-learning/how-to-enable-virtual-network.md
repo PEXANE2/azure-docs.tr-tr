@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320179"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420541"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning eğitim
 
 Bir __sanal ağ__ , Azure kaynaklarınızı genel İnternet 'ten yalıtmak için bir güvenlik sınırı görevi görür. Ayrıca, bir Azure sanal ağını şirket içi ağınıza da katabilirsiniz. Ağları birleştirerek, modellerinizi güvenli bir şekilde eğitebilir ve çıkarım için dağıtılan modellerinize erişebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Azure Machine Learning [çalışma alanı](how-to-manage-workspace.md).
 
@@ -57,9 +57,6 @@ Ayrıca, özel bir uç nokta kullanarak çalışma alanınıza bağlanmak için 
 > [!WARNING]
 > 
 > Azure Machine Learning işlem örnekleri önizlemesi, özel bağlantının etkinleştirildiği bir çalışma alanında desteklenmez.
->
-> Azure Machine Learning, özel bağlantısı etkin olan bir Azure Kubernetes hizmetini kullanmayı desteklemez. Bunun yerine, bir sanal ağda Azure Kubernetes hizmeti kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal ağı Içindeki güvenli Azure ML deneme ve çıkarım işleri](how-to-enable-virtual-network.md).
-
 
 <a id="amlcompute"></a>
 
@@ -448,9 +445,6 @@ Bir sanal ağa Azure Kubernetes hizmeti (AKS) çalışma alanınıza eklemek iç
 > Aşağıdaki yordama başlamadan önce, [Azure Kubernetes Service (AKS) içindeki gelişmiş ağı yapılandırma (aks)](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites) ve kümenizin IP adreslemesini planlayın bölümündeki önkoşulları izleyin.
 >
 > AKS örneği ve Azure sanal ağı aynı bölgede olmalıdır. Bir sanal ağ içinde çalışma alanı tarafından kullanılan Azure depolama hesaplarını güvenli hale getirmek istiyorsanız, AKS örneğiyle aynı sanal ağda olmaları gerekir.
-
-> [!WARNING]
-> Azure Machine Learning, özel bağlantısı etkin olan bir Azure Kubernetes hizmetini kullanmayı desteklemez.
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/)' da oturum açın ve ardından aboneliğinizi ve çalışma alanınızı seçin.
 

@@ -3,12 +3,12 @@ title: Özel bir Linux kapsayıcısı yapılandırma
 description: Azure App Service bir özel Linux kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a3e360270ac388d0f8434a9184d39d602c98e9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008600"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422785"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service için özel bir Linux kapsayıcısı yapılandırma
 
@@ -155,10 +155,6 @@ Aşağıdaki listede desteklenen ve desteklenmeyen Docker Compose yapılandırma
 
 > [!NOTE]
 > Açıkça çağrılmayan diğer seçenekler genel önizlemede yok sayılır.
-
-## <a name="configure-vnet-integration"></a>VNet tümleştirmesini yapılandırma
-
-VNet tümleştirmeyle özel bir kapsayıcı kullanmak için ek kapsayıcı yapılandırması gerekebilir. Bkz. [uygulamanızı Azure sanal ağıyla tümleştirme](../web-sites-integrate-with-vnet.md).
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 

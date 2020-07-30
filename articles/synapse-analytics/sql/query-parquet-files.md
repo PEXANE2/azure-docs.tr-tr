@@ -9,16 +9,66 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4bab1ef4588a705f0dd6cdb34be8272868f826e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207575"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386631"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet dosyalarını sorgulama
 
 Bu makalede, Parquet dosyalarını okuyacak, isteğe bağlı SQL (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz.
+
+## <a name="quickstart-example"></a>Hızlı başlangıç örneği
+
+`OPENROWSET`işlevi, dosyanızın URL 'sini sağlayarak Parquet dosyasının içeriğini okumanızı sağlar.
+
+### <a name="reading-parquet-file"></a>Parquet dosyası okunuyor
+
+Dosyanızın içeriğini görmenin en kolay yolu, `PARQUET` işlev için dosya URL 'si sağlamaktır `OPENROWSET` ve parquet ' i belirtmektir `FORMAT` . Dosya herkese açık ise veya Azure AD kimliğiniz bu dosyaya erişebilirse, aşağıdaki örnekte gösterildiği gibi sorguyu kullanarak dosyanın içeriğini görmeniz gerekir:
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.parquet',
+    format = 'parquet') as rows
+```
+
+Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel Azure kimliğiyle korunuyorsa, [SQL oturum açma için sunucu düzeyi kimlik bilgisi](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kurulumunu yapmanız gerekir.
+
+### <a name="using-data-source"></a>Veri kaynağını kullanma
+
+Önceki örnek, dosyanın tam yolunu kullanır. Alternatif olarak, depolama alanının kök klasörünü işaret eden konum ile bir dış veri kaynağı oluşturabilir ve bu veri kaynağını ve işlevindeki dosyanın göreli yolunu kullanabilirsiniz `OPENROWSET` :
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) as rows
+```
+
+Bir veri kaynağı SAS anahtarı veya özel kimlikle korunuyorsa, [veri kaynağını veritabanı kapsamlı kimlik](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)bilgileriyle yapılandırabilirsiniz.
+
+### <a name="explicitly-specify-schema"></a>Açıkça şema belirt
+
+`OPENROWSET`dosya kullanarak dosyadan okumak istediğiniz sütunları açıkça belirtmenize olanak sağlar `WITH` :
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
+```
+
+Aşağıdaki bölümlerde, çeşitli türlerdeki PARQUET dosyalarını sorgulama hakkında bilgi alabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

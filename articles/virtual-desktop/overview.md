@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 26be41361a861795a9897442d9a0cc8bb14c1450
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292584"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386588"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
+# <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir?
 
 Windows sanal masaüstü, bulutta çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir.
 
@@ -78,7 +78,7 @@ Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere
   * Azure AD Connect (Hibrit kuruluşlar için)
   * Azure AD Domain Services (karma veya bulut kurumları için)
 * Windows Server 'a bağlı olan veya içeren bir sanal ağ içeren bir Azure aboneliği Active Directory
-  
+
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:
 
 * [Standart etki alanına katılmış](../active-directory-domain-services/active-directory-ds-comparison.md) veya [karma ad 'ye katılmış](../active-directory/devices/hybrid-azuread-join-plan.md). Sanal makineler Azure AD 'ye katılmış olamaz.
@@ -105,7 +105,7 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android (Önizleme)](connect-android.md)
+* [Android](connect-android.md)
 
 > [!IMPORTANT]
 > Windows sanal masaüstü, RemoteApp ve Masaüstü bağlantıları (ÇDC) istemcisini veya Uzak Masaüstü Bağlantısı (MSTSC) istemcisini desteklemez.
@@ -128,18 +128,18 @@ Windows sanal masaüstü aşağıdaki x64 işletim sistemi görüntülerini dest
 
 Windows sanal masaüstü, x86 (32-bit), Windows 10 Enterprise N veya Windows 10 Enterprise KN işletim sistemi görüntülerini desteklemez. Windows 7, bir sektör boyutu sınırlaması nedeniyle yönetilen Azure depolama üzerinde barındırılan VHD veya VHDX tabanlı profil çözümlerini de desteklemez.
 
-Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda gösterildiği gibi, hangi işletim sistemi ve sürümü seçdiğinize bağlıdır: 
+Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda gösterildiği gibi, hangi işletim sistemi ve sürümü seçdiğinize bağlıdır:
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|No|Hayır|
 |Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|
-|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|
-|Windows Server 2019|Yes|Yes|Hayır|Hayır|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|No|Hayır|
+|Windows 7 Enterprise|Yes|Yes|No|Hayır|
+|Windows Server 2019|Yes|Yes|No|Hayır|
 |Windows Server 2016|Yes|Yes|Yes|Yes|
-|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|
+|Windows Server 2012 R2|Yes|Yes|No|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 42c6ad7f77d1b42c02f57f161874eadb75387dc2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496018"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385543"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure SYNAPSE Analytics paylaşılan veritabanı
 
@@ -34,7 +34,7 @@ Spark tarafından oluşturulan veritabanlarını yönetmek için Spark 'ı kulla
 
 SQL isteğe bağlı SQL kullanarak Spark tarafından oluşturulan bir veritabanında nesneler oluşturursanız veya veritabanını bırakmaya çalışırsanız, işlem başarılı olur. Ancak özgün Spark veritabanı değiştirilmez.
 
-## <a name="handling-of-name-conflicts"></a>Ad çakışmalarını işleme
+## <a name="how-name-conflicts-are-handled"></a>Ad çakışmalarının işlenme şekli
 
 Spark veritabanının adı var olan bir SQL isteğe bağlı veritabanının adıyla çakışıyorsa, bir sonek SQL 'e Spark veritabanına eklenir. İsteğe bağlı SQL 'de son ek `_<workspace name>-ondemand-DefaultSparkConnector` .
 
@@ -57,7 +57,7 @@ Bir güvenlik sorumlusu bir veritabanında nesne oluşturma veya nesneleri bıra
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>Spark veritabanına bağlantı oluşturma & bağlanma-isteğe bağlı SQL
+### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>İsteğe bağlı SQL ile Spark veritabanı oluşturun ve bu veritabanına bağlanın
 
 İlk `mytestdb` olarak, çalışma alanınızda zaten oluşturmuş olduğunuz Spark kümesi kullanılarak adlı yeni bir Spark veritabanı oluşturun. Bunun için, örneğin, aşağıdaki .NET Spark ifadesiyle bir Spark C# Not defteri kullanarak bunu yapabilirsiniz:
 

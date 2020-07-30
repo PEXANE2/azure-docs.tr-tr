@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509027"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423465"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux için Azure Serial Console
 
@@ -26,13 +26,14 @@ Azure portal seri konsol, Linux sanal makineleri (VM 'Ler) ve sanal makine ölç
 
 Seri konsol, VM 'Ler ve sanal makine ölçek kümesi örnekleri için aynı şekilde çalışmaktadır. Bu belgede, aksi belirtilmediği takdirde VM 'lerdeki tüm bahsetmeler, sanal makine ölçek kümesi örneklerini örtülü olarak içerir.
 
+Seri konsol Genel Azure bölgelerinde ve Azure Kamu 'da genel önizlemede kullanılabilir. Henüz Azure Çin bulutu 'nda mevcut değildir.
+
 Windows için seri konsol belgeleri için bkz. [Windows Için seri konsol](./serial-console-windows.md).
 
 > [!NOTE]
-> Seri konsol Genel Azure bölgelerinde ve Azure Kamu 'da genel önizlemede kullanılabilir. Henüz Azure Çin bulutu 'nda mevcut değildir.
+> Seri konsol Şu anda yönetilen bir önyükleme tanılama depolama hesabıyla uyumsuz. Seri Konsolu kullanmak için özel bir depolama hesabı kullandığınızdan emin olun.
 
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - VM 'niz veya sanal makine ölçek kümesi örneğinizin kaynak yönetimi dağıtım modelini kullanması gerekir. Klasik dağıtımlar desteklenmez.
 

@@ -3,12 +3,12 @@ title: Azure Active Directory'ye erişimi yetkilendirme
 description: Bu makalede Azure Active Directory kullanarak Event Hubs kaynaklarına erişimi yetkilendirme hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: cb55a716498bc50dff72c0d98943de407a367d4a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6d1be2825ea716c72d70cd38babbb2d95083198
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371507"
+ms.locfileid: "87413400"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme
 Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir kullanıcı veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -49,7 +49,7 @@ Aşağıdaki listede, en dar kapsamdan başlayarak Event Hubs kaynaklarına eri�
 - **Abonelik**: rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Event Hubs kaynaklara uygulanır.
 
 > [!NOTE]
-> - RBAC rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 
+> - Azure rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 
 > - Bu içerik, Apache Kafka için hem Event Hubs hem de Event Hubs için geçerlidir. Kafka desteği için Event Hubs hakkında daha fazla bilgi için bkz. [Event Hubs for Kafka-Security and Authentication](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication).
 
 

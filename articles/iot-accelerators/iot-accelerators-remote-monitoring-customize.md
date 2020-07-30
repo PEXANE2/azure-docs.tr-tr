@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 412254f47a2700f77003f7db661f0ade214a1e23
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68608013"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423210"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Uzaktan Izleme çözüm Hızlandırıcısını özelleştirme
 
@@ -31,7 +32,7 @@ Aşağıdaki adımlarda, UI geliştirmesi için yerel bir ortam ayarlama işlemi
 
 1. **Bilgisayar** CLI 'sını kullanarak çözüm hızlandırıcının **temel** bir örneğini dağıtın. Dağıtımınızın adını ve sanal makine için verdiğiniz kimlik bilgilerini bir yere unutmayın. Daha fazla bilgi için bkz. [CLI kullanarak dağıtma](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Çözümünüzde mikro hizmetleri barındıran sanal makineye SSH erişimini etkinleştirmek için Azure portal veya Azure Cloud Shell kullanın. Örnek:
+1. Çözümünüzde mikro hizmetleri barındıran sanal makineye SSH erişimini etkinleştirmek için Azure portal veya Azure Cloud Shell kullanın. Örneğin:
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -39,7 +40,7 @@ Aşağıdaki adımlarda, UI geliştirmesi için yerel bir ortam ayarlama işlemi
 
     Yalnızca test ve geliştirme sırasında SSH erişimini etkinleştirin. SSH 'yi etkinleştirirseniz, [kullanmayı bitirdikten hemen sonra devre dışı bırakmanız gerekir](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
-1. Sanal makinenizin adını ve genel IP adresini bulmak için Azure portal veya Azure Cloud Shell kullanın. Örnek:
+1. Sanal makinenizin adını ve genel IP adresini bulmak için Azure portal veya Azure Cloud Shell kullanın. Örneğin:
 
     ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table

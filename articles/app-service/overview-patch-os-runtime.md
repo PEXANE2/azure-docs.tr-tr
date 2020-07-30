@@ -4,12 +4,12 @@ description: Azure App Service işletim sistemi ve çalışma zamanlarını, uyg
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78273632"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414947"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service işletim sistemi ve çalışma zamanı düzeltme eki uygulama
 
@@ -78,7 +78,7 @@ Aşağıdaki tabloda, uygulamalarınızı çalıştıran Windows ve dil çalış
 | Bilgi | Nerede bulunacak | 
 |-|-|
 | Windows sürümü | Bkz. `https://<appname>.scm.azurewebsites.net/Env.cshtml` (sistem bilgisi altında) |
-| .NET sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | .NET Core sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `dotnet --version` |
 | PHP sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `php --version` |
 | Varsayılan Node.js sürümü | [Cloud Shell](../cloud-shell/overview.md), aşağıdaki komutu çalıştırın: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497655"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407702"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı 
 
@@ -45,13 +45,10 @@ Aşağıdaki tabloda tümleştirme çalışma zamanı türlerinin her birinin su
 
 IR türü | Ortak ağ | Özel ağ
 ------- | -------------- | ---------------
-Azure | Veri Akışı<br/>Veri taşıma<br/>Etkinlik dağıtma | &nbsp;
+Azure | Veri Akışı<br/>Veri taşıma<br/>Etkinlik dağıtma | Veri Akışı<br/>Veri taşıma<br/>Etkinlik dağıtma
 Kendinden konak | Veri taşıma<br/>Etkinlik dağıtma | Veri taşıma<br/>Etkinlik dağıtma
 Azure-SSIS | SSIS paketi yürütme | SSIS paketi yürütme
 
-Aşağıdaki şemada gelişmiş veri tümleştirme özellikleri ve ağ desteği sunmak için birlikte kullanılabilecek farklı tümleştirme çalışma zamanları gösterilmiştir:
-
-![Farklı tümleştirme çalışma zamanı türleri](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure tümleştirme çalışma zamanı
 
@@ -63,7 +60,7 @@ Bir Azure tümleştirme çalışma zamanı şunları yapabilir:
 
 ### <a name="azure-ir-network-environment"></a>Azure IR ağ ortamı
 
-Azure Integration Runtime, veri depolarına bağlanmayı ve genel olarak erişilebilen uç noktalarla Hizmetleri hesaplamayı destekler. Azure Sanal Ağ ortamı için kendiliğinden konak tümleştirme çalışma zamanı kullanın.
+Azure Integration Runtime, veri depolarına bağlanmayı ve genel olarak erişilebilen uç noktalarla Hizmetleri hesaplamayı destekler. Yönetilen sanal ağı etkinleştirmek Azure Integration Runtime, özel ağ ortamında özel bağlantı hizmeti kullanılarak veri depolarına bağlanmayı destekler.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR işlem kaynağı ve ölçeklendirme
 Azure tümleştirme çalışma zamanı Azure'da tamamen yönetilebilen ve sunucusuz bir işlem sunar.  Altyapı sağlama, yazılım yükleme, düzeltme eki uygulama veya kapasite ölçekleme konusunda endişelenmenize gerek yoktur.  Ayrıca yalnızca gerçekten kullandığınız süre boyunca ödeme yaparsınız.
@@ -136,7 +133,7 @@ IR Konumu arka uç işleminin konumunu tanımlar ve bu veri taşıma, etkinlik d
 
 Azure IR belirli bir konum ayarlayabilirsiniz, bu durumda Etkinlik yürütme veya dağıtım söz konusu bölgede gerçekleşecektir.
 
-Otomatik Çözümle Azure IR kullanmayı seçerseniz, varsayılan değer olan
+Varsayılan olan genel ağda otomatik çözümle Azure IR kullanmayı seçerseniz,
 
 - Kopyalama etkinliği için ADF, havuz veri deposunun konumunu otomatik olarak algılamaya yönelik en iyi çabayı yapar, sonra da varsa aynı bölgede veya aynı coğrafi bölgede bulunan en yakın bir şekilde IR kullanır; Havuz veri deposunun bölgesi algılanamaz ise, Data Factory bölgesindeki IR alternatif olarak kullanılır.
 
@@ -154,6 +151,8 @@ Otomatik Çözümle Azure IR kullanmayı seçerseniz, varsayılan değer olan
 
   > [!TIP] 
   > Veri akışının ilgili veri depolarıyla aynı bölgede (mümkünse) çalıştığından emin olmak iyi bir uygulamadır. Bunu, Azure IR Otomatik Çözümle (veri deposu konumu Data Factory konumuyla aynı ise) veya veri depolarınız ile aynı bölgede yeni bir Azure IR örneği oluşturup veri akışını yürütüşleyerek elde edebilirsiniz. 
+
+Otomatik Çözümle Azure IR için yönetilen sanal ağı etkinleştirirseniz ADF, Data Factory bölgesindeki IR 'yi kullanır. 
 
 Kullanıcı arabirimindeki işlem hattı etkinliğini izleme görünümünde veya etkinlik izleme yükündeki etkinlik yürütme işlemi sırasında kullanıma alınan IR konumunu izleyebilirsiniz.
 

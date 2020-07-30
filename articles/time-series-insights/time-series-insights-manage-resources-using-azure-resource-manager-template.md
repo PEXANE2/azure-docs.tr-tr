@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: bb818627cb38c736804a0e88cd701fe08b23b678
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e9075014863e653a986dc4dbec7b9bc5e9f31bc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089099"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421204"
 ---
 # <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Time Series Insights Gen 1 kaynakları oluşturma
 
@@ -59,7 +59,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Azure Time Series Insights orta
 
    * Gerekli Parametreler
 
-     | Parametre | Açıklama |
+     | Parametre | Description |
      | --- | --- |
      | eventHubNamespaceName | Kaynak olay hub 'ının ad alanı. |
      | eventHubName | Kaynak olay hub 'ının adı. |
@@ -71,7 +71,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Azure Time Series Insights orta
 
    * İsteğe Bağlı Parametreler
 
-     | Parametre | Açıklama |
+     | Parametre | Description |
      | --- | --- |
      | Mevcut ınmageventhubresourceıd | Olay kaynağı aracılığıyla Azure Time Series Insights ortamına bağlanacak mevcut bir olay hub 'ının isteğe bağlı kaynak KIMLIĞI. **Note:** Şablonu dağıtmanın Kullanıcı olay hub 'ında ListKeys 'i Al işlemini gerçekleştirme ayrıcalıklarına sahip olmalıdır. Hiçbir değer geçirilmemişse, şablon tarafından yeni bir olay hub 'ı oluşturulur. |
      | environmentDisplayName | Ortam adı yerine araçları veya kullanıcı arabirimlerini göstermek için isteğe bağlı bir kolay ad. |
@@ -247,7 +247,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Azure Time Series Insights orta
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
-       <img src="https://azuredeploy.net/deploybutton.png"/>
+       <img src="https://azuredeploy.net/deploybutton.png" alt="The Deploy to Azure button."/>
     </a>
 
 ## <a name="next-steps"></a>Sonraki adımlar

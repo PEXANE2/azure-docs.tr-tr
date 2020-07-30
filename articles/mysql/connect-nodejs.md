@@ -1,25 +1,25 @@
 ---
-title: Node. js kullanarak bağlanma-MySQL için Azure veritabanı
+title: Node.js kullanarak bağlanma-MySQL için Azure veritabanı
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz birkaç Node.js kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 38ac57ca49608a528b8f810dac7967562f83d7d0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9d3e2d744c4800c06503483c6e7270ad1ca60e2c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870145"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423193"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node. js kullanma
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node.js kullanma
 
-Bu hızlı başlangıçta, Node. js kullanarak MySQL için Azure veritabanı 'na bağlanırsınız. Ardından, Mac, Ubuntu Linux ve Windows platformlarındaki veritabanındaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanın. 
+Bu hızlı başlangıçta Node.js kullanarak MySQL için Azure veritabanı 'na bağlanırsınız. Ardından, Mac, Ubuntu Linux ve Windows platformlarındaki veritabanındaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanın. 
 
-Bu konuda, Node. js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
+Bu konuda, Node.js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,7 +31,7 @@ Bu konuda, Node. js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve 
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Node.js’yi ve MySQL bağlayıcısını yükleme
 
-Platformunuza bağlı olarak, [Node. js](https://nodejs.org)' yi yüklemek için uygun bölümdeki yönergeleri izleyin. [MySQL](https://www.npmjs.com/package/mysql) paketini ve bağımlılıklarını proje klasörünüze yüklemek için NPM kullanın.
+Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun bölümdeki yönergeleri izleyin. [MySQL](https://www.npmjs.com/package/mysql) paketini ve bağımlılıklarını proje klasörünüze yüklemek için NPM kullanın.
 
 ### <a name="windows"></a>**Windows**
 

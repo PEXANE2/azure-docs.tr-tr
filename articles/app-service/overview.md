@@ -5,14 +5,14 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f4b42f2ed43da68daabb3bd334a362071202be42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 619b5f16f5a913a4ec9bb1ebe2e7060fcac28d7d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073722"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421816"
 ---
-# <a name="app-service-overview"></a>App Service’a genel bakış
+# <a name="app-service-overview"></a>App Service’e genel bakış
 
 *Azure App Service* Web UYGULAMALARıNı, REST API 'leri ve mobil arka uçları BARıNDıRMAK için HTTP tabanlı bir hizmettir. .NET, .NET Core, Java, Ruby, Node.js, PHP veya Python dahil en sevdiğiniz dilde geliştirebilirsiniz. Uygulamalar hem Windows hem de Linux tabanlı ortamlarda kolayca çalışır ve ölçeklenebilir. Linux tabanlı ortamlar için bkz. [Linux’ta App Service](containers/app-service-linux-intro.md). 
 
@@ -31,11 +31,11 @@ App Service temel özelliklerinden bazıları aşağıda verilmiştir:
 * **SaaS platformları ve şirket için veri bağlantıları** - Kurumsal sistemler (SAP gibi), SaaS hizmetleri (Salesforce gibi) ve İnternet hizmetleri (Facebook gibi) için 50’den fazla [bağlayıcı](../connectors/apis-list.md) arasından seçim yapın. [Karma Bağlantılar](app-service-hybrid-connections.md)’ı ve [Azure Sanal Ağlar](web-sites-integrate-with-vnet.md)’ı kullanarak şirket içi verilere erişin.
 * **Güvenlik ve uyumluluk** - App Service [ISO, SOC ve PCI uyumludur](https://www.microsoft.com/en-us/trustcenter). [Azure Active Directory](configure-authentication-provider-aad.md) veya sosyal oturum açma ([Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md) ve [Microsoft](configure-authentication-provider-microsoft.md)) aracılığıyla kullanıcılarınızın kimliğini doğrulayın. [IP adresi kısıtlamaları](app-service-ip-restrictions.md) oluşturun ve [hizmet kimliklerini yönetin](overview-managed-identity.md).
 * **Uygulama şablonları** - [Azure Market](https://azure.microsoft.com/marketplace/)’teki WordPress, Joomla ve Drupal’i de içeren kapsamlı uygulama şablonu listesinden seçiminizi yapın.
-* **Visual Studio tümleştirmesi** -Visual Studio’daki ayrılmış araçlar oluşturma, dağıtma ve hata ayıklama işlemlerini kolaylaştırır.
+* Visual **Studio ve Visual Studio Code tümleştirme** temelli Araçlar Visual Studio ve oluşturma, dağıtma ve hata ayıklama işini kolaylaştırır Visual Studio Code.
 * **API ve mobil Özellikler** -App Service, daha fazla API senaryosu Için, YENIDEN anahtar cors desteği sağlar ve kimlik doğrulama, çevrimdışı veri eşitleme, anında iletme bildirimleri ve daha fazlasını etkinleştirerek mobil uygulama senaryolarını basitleştirir.
 * **Sunucusuz kod** - Açıkça altyapı sağlamanıza veya yönetmenize gerek kalmadan isteğe bağlı olarak bir kod parçacığı veya betik çalıştırın ve yalnızca kodunuzun gerçekte kullandığı işlem süresi (bkz. [Azure İşlevleri](/azure/azure-functions/)) için ücret ödeyin.
 
-App Service yanı sıra Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanılabilecek başka hizmetler de sunar. Çoğu senaryo için en iyi seçenektir App Service.  Mikro hizmet mimarisi için [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)’i göz önünde bulundurun. Kodlarınızın çalıştığı sanal makineler üzerinde daha fazla denetime sahip olmanız gerekiyorsa [Azure Sanal Makineler](https://azure.microsoft.com/documentation/services/virtual-machines/)’i düşünün. Bu Azure hizmetleri arasında seçim yapma hakkında daha fazla bilgi için bkz. [Azure App Service, Virtual Machines, Service Fabric ve Cloud Services karşılaştırması](overview-compare.md).
+App Service yanı sıra Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanılabilecek başka hizmetler de sunar. Çoğu senaryo için en iyi seçenektir App Service.  Mikro hizmet mimarisi için [Azure yay-bulut hizmeti](/azure/spring-cloud/) veya [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)göz önünde bulundurun.  Kodunuzun çalıştırıldığı VM 'Ler üzerinde daha fazla denetime ihtiyacınız varsa, [Azure sanal makinelerini](https://azure.microsoft.com/documentation/services/virtual-machines/)göz önünde bulundurun. Bu Azure hizmetleri arasında seçim yapma hakkında daha fazla bilgi için bkz. [Azure App Service, Virtual Machines, Service Fabric ve Cloud Services karşılaştırması](overview-compare.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

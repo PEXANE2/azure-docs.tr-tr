@@ -6,18 +6,19 @@ ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir Node.js uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 370d49b5287a4d5beafc8c2cc5d8f48c269715db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c27718cc87a1c9401b31ff8c3c77c7b7a8c52292
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006953"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420388"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Hızlı başlangıç: Visual Studio Code ve Node.js-Azure Dev Spaces ile Kubernetes 'te hata ayıklama ve yineleme
 
 Bu hızlı başlangıçta, yönetilen bir Kubernetes kümesiyle Azure Dev Spaces ayarlarsınız ve kapsayıcılarda kodu tekrarlayarak geliştirmek ve hata ayıklamak için Visual Studio Code bir Node.js uygulaması kullanırsınız. Azure Dev Spaces, Azure Kubernetes hizmeti (AKS) içindeki uygulamanızın tüm bileşenlerini en düşük geliştirme makinesi kurulumuna göre hata ayıklamanıza ve test etmenize olanak tanır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Node.jsen son sürümü ](https://nodejs.org/download/).

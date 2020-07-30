@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fde1b80a1646a92688a0fcc1fa221cf01ba0a9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78926894"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418874"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory Azure Active Directory karşılaştırın
 
@@ -41,8 +41,8 @@ Azure AD, kuruluşların bulut ve şirket genelinde tüm uygulamalarına yöneli
 | Modern kimlik doğrulaması ile iş kolu (LOB) uygulamaları|Kuruluşlar, modern kimlik doğrulaması gerektiren LOB uygulamalarını desteklemek için Active Directory AD FS kullanabilir.| Modern kimlik doğrulaması gerektiren LOB uygulamaları, kimlik doğrulaması için Azure AD kullanacak şekilde yapılandırılabilir. |
 | Orta katman/Daemon Hizmetleri|Şirket içi ortamlarda çalışan hizmetler normalde, çalıştırılacak AD hizmet hesaplarını veya grup yönetilen hizmet hesaplarını (gMSA) kullanır. Bu uygulamalar daha sonra hizmet hesabının izinlerini devralacak.| Azure AD, bulutta diğer iş yüklerini çalıştırmak için [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) sağlar. Bu kimliklerin yaşam döngüsü Azure AD tarafından yönetilir ve kaynak sağlayıcısına bağlı olan, biriktirme listesi erişimi sağlamak için başka amaçlar için kullanılamaz.|
 | **Cihazlar**|||
-| Mobil|Active Directory, üçüncü taraf çözümler olmadan mobil cihazları yerel olarak desteklemez.| Microsoft 'un mobil cihaz yönetimi çözümü, Microsoft Intune Azure AD ile tümleşiktir. Microsoft Intune kimlik doğrulaması sırasında değerlendirilecek kimlik sistemine cihaz durum bilgilerini sağlar. |
-| Windows masaüstleri|Active Directory, Windows cihazlarını grup ilkesi, System Center Configuration Manager veya diğer üçüncü taraf çözümlerini kullanarak yönetmek için etki alanına ekleme olanağı sunar.|Windows cihazları [Azure AD 'ye katılabilir](https://docs.microsoft.com/azure/active-directory/devices/). Koşullu erişim, bir cihazın kimlik doğrulama işleminin bir parçası olarak Azure AD 'ye katılıp katılmadığını denetleyebilir. Windows cihazları, [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)ile de yönetilebilir. Bu durumda, koşullu erişim, uygulamalara erişim izni vermeden önce bir cihazın şikayetsiz (örneğin, güncel güvenlik düzeltme ekleri ve virüs imzaları) olup olmadığını göz önünde bulunduracaktır.|
+| Cep telefonu|Active Directory, üçüncü taraf çözümler olmadan mobil cihazları yerel olarak desteklemez.| Microsoft 'un mobil cihaz yönetimi çözümü, Microsoft Intune Azure AD ile tümleşiktir. Microsoft Intune kimlik doğrulaması sırasında değerlendirilecek kimlik sistemine cihaz durum bilgilerini sağlar. |
+| Windows masaüstleri|Active Directory, Windows cihazlarını grup ilkesi, System Center Configuration Manager veya diğer üçüncü taraf çözümlerini kullanarak yönetmek için etki alanına ekleme olanağı sunar.|Windows cihazları [Azure AD 'ye katılabilir](https://docs.microsoft.com/azure/active-directory/devices/). Koşullu erişim, bir cihazın kimlik doğrulama işleminin bir parçası olarak Azure AD 'ye katılıp katılmadığını denetleyebilir. Windows cihazları, [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)ile de yönetilebilir. Bu durumda, koşullu erişim, uygulamalara erişim izni vermeden önce cihazın uyumlu olup olmadığını (örneğin, güncel güvenlik düzeltme ekleri ve virüs imzaları) göz önünde bulunduracaktır.|
 | Windows sunucuları| Active Directory, şirket içi Windows Server 'lar için grup ilkesi veya diğer yönetim çözümlerini kullanarak güçlü yönetim özellikleri sağlar.| Azure 'daki Windows Server sanal makineleri, [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/)ile yönetilebilir. [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) , VM 'lerin kimlik sistemi dizinine veya kaynaklarına erişmesi gerektiğinde kullanılabilir.|
 | Linux/Unix iş yükleri|Active Directory, üçüncü taraf çözümleri olmayan Windows dışı bir şekilde desteklemez, ancak Linux makineleri Kerberos bölgesi olarak Active Directory kimlik doğrulaması yapacak şekilde yapılandırılabilirler.|Linux/UNIX VM 'Leri, kimlik sistemine veya kaynaklara erişmek için [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) kullanabilir. Bazı kuruluşlar, bu iş yüklerini bulut kapsayıcısı teknolojilerine geçirin ve bu da yönetilen kimlikleri de kullanabilir.|
 

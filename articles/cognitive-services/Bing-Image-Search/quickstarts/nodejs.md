@@ -11,13 +11,13 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 2c411a0c8ba838bdac8c0e487e5dcc54db522311
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: f9737eb42552ef102a9a970c5d5ee28a781a1fea
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603409"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406121"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Resim Arama REST API ve Node.js kullanarak görüntü arama
 
@@ -25,7 +25,7 @@ Bing Resim Arama API'si arama isteklerinin nasıl gönderileceğini öğrenmek i
 
 Bu örneğe ilişkin kaynak kodu, ek hata işleme ve ek açıklama ile [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 

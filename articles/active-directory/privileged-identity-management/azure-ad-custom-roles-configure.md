@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe72a4d45dbe40b1d75194f42cc26b2821b202d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743108"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422054"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD özel rollerini yapılandırma
 
@@ -30,7 +30,7 @@ Ayrıcalıklı bir rol yöneticisi, bir kullanıcı için bir özel rol ve özel
 > [!NOTE]
 > Azure AD özel rolleri, önizleme sırasında yerleşik Dizin rolleriyle tümleştirilmiştir. Yetenek genel kullanıma sunulduğunda, rol yönetimi yerleşik roller deneyiminde gerçekleşmeyecektir. Aşağıdaki başlığı görürseniz, bu rollerin [yerleşik roller deneyiminde](pim-how-to-activate-role.md) yönetilmesi gerekir ve bu makale uygulanmaz:
 >
-> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> [![Azure AD > seçin Privileged Identity Management](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>Rol ayarlarını aç
 

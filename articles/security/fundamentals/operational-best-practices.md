@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283478"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423159"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -55,7 +55,7 @@ Azure kayıt portalında, yönetici iletişim bilgilerinin güvenlik işlemlerin
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure aboneliklerini yönetim gruplarında düzenleme
 Kuruluşunuzun çok sayıda aboneliği varsa, söz konusu aboneliklerde erişimi, ilkeleri ve uyumluluğu yönetmek için verimli bir yönteme ihtiyacınız olabilir. [Azure Yönetim grupları](/azure/governance/management-groups/create) , aboneliklerdeki bir kapsam düzeyi sağlar. Abonelikleri yönetim grupları adlı kapsayıcılara düzenler ve idare koşullarınızı yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır.
 
-Bir dizinde yönetim gruplarının ve aboneliklerinin esnek bir yapısını oluşturabilirsiniz. Her dizine kök yönetim grubu adlı tek bir en üst düzey yönetim grubu verilir. Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu kök yönetim grubunun altındadır. Kök yönetim grubu, genel ilkelerin ve RBAC atamalarının dizin düzeyinde uygulanmasını sağlar.
+Bir dizinde yönetim gruplarının ve aboneliklerinin esnek bir yapısını oluşturabilirsiniz. Her dizine kök yönetim grubu adlı tek bir en üst düzey yönetim grubu verilir. Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu kök yönetim grubunun altındadır. Kök yönetim grubu, genel ilkelerin ve Azure rol atamalarının dizin düzeyinde uygulanmasını sağlar.
 
 Yönetim gruplarını kullanmaya yönelik bazı en iyi yöntemler aşağıda verilmiştir:
 

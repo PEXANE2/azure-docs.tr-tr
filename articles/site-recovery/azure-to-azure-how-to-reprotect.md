@@ -2,18 +2,18 @@
 title: Azure VM 'lerini Azure Site Recovery ile birincil bölgeye yeniden koruma | Microsoft Docs
 description: Azure VM 'lerinin yük devretme sonrasında, ikincil ve birincil bölge olan Azure Site Recovery kullanarak nasıl yeniden korunacağını açıklar.
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738074"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422088"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Azure VM 'lerinden birincil bölgeye yeniden koruma başarısız oldu
 
@@ -22,7 +22,7 @@ Azure VM 'lerinden [Azure Site Recovery](site-recovery-overview.md)kullanarak bi
 1. İkincil bölgedeki VM 'Leri, birincil bölgeye çoğaltılmaya başlayacak şekilde yeniden koruyun.
 1. Yeniden koruma tamamlandıktan ve VM 'Ler çoğaltıldıktan sonra ikinciden birincil bölgeye yük devretmek için yük devretme yapabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Birincil sunucudan ikincil bölgeye sanal makine yük devretmesi uygulanmalıdır.
 - Birincil hedef site kullanılabilir olmalıdır ve bu bölgedeki kaynaklara erişebiliyor veya kaynak oluşturmanız gerekir.
@@ -33,7 +33,7 @@ Azure VM 'lerinden [Azure Site Recovery](site-recovery-overview.md)kullanarak bi
 
    ![Yeniden koruma](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-1. Kaynak grubu, ağ, depolama ve kullanılabilirlik kümelerini gözden geçirin. Ardından **Tamam**'a tıklayın. Yeni olarak işaretlenmiş kaynaklar varsa, bunlar yeniden koruma sürecinin bir parçası olarak oluşturulur.
+1. Kaynak grubu, ağ, depolama ve kullanılabilirlik kümelerini gözden geçirin. Daha sonra, **Tamam**'a tıklayın. Yeni olarak işaretlenmiş kaynaklar varsa, bunlar yeniden koruma sürecinin bir parçası olarak oluşturulur.
 1. Yeniden koruma işi hedef siteye en son verileri ekler. İş bittikten sonra değişim çoğaltması gerçekleşir. Ardından, birincil siteye yük devretmek için geri dönebilirsiniz. Özelleştirme seçeneğini kullanarak, yeniden koruma sırasında kullanmak istediğiniz depolama hesabını veya ağı seçebilirsiniz.
 
    ![Özelleştirme seçeneği](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
@@ -95,10 +95,6 @@ Aşağıdaki koşullar, ne kadar veri çoğaltılacağı belirlenir:
 |Kaynak bölgesinin 1 TB Premium diski olan 1 VM 'si vardır.<br/>Yalnızca 20 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 200 MBps aktarım hızı ile Premium ' dur.<br/>Yük devretme işleminden hemen sonra diskteki ilk veriler 15 GB idi. Yük devretmeden sonra 5 GB veri değişikliği vardı. Bu nedenle toplam doldurulmuş veri sayısı 20 GB 'dir| Yaklaşık süre: 30-45 dakika.<br/>Diskte doldurulmuş veriler disk boyutunun %10 ' dan az olduğundan, bir ilk çoğaltma işlemi yaptık.<br/>Aktarım hızı, üretilen işleme yaklaşık %16 veya 32MBps. Bu nedenle, 20 GB/32 MBps ve yaklaşık 11 dakika olan 20 GB değişiklikleri uygulamak için aktarım süresi.<br/>Site Recovery otomatik olarak ölçeklendirmek için bazı ek yük süresi gerekir, yaklaşık 20-30 dakika |
 
 VM birincil bölgeye geri çağrıldıktan sonra yeniden korunuyorsa (yani, VM birincil bölgeden DR bölgesine yeniden korunuyorsa), hedef VM ve ilişkili NIC 'ler silinir.
-
-VM, DR bölgesinden birincil bölgeye yeniden korunuyorsa, Erstwhile Birincil VM ve ilişkili NIC 'leri silmedik.
-
-VM birincil bölgeye geri çağrıldıktan sonra yeniden korunuyorsa (yani, VM birincil bölgeden DR bölgesine yeniden korunuyorsa), hedef VM ve ilişkili NIC 'ler silinir. 
 
 VM, DR bölgesinden birincil bölgeye yeniden korunuyorsa, Erstwhile Birincil VM ve ilişkili NIC 'leri silmedik.
 

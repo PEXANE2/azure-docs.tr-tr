@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806841"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423329"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API bölümleniyor
 
@@ -31,7 +31,7 @@ Apache Cassandra, bir bölümde depolanabilecek verilerin boyutuyla ilgili 100 M
 
 Azure Cosmos DB, her fiziksel bölüm, bölüm başına en az 4 çoğaltmayla çoğaltma kümesi olarak da bilinen bir çoğaltmalar kümesinden oluşur. Bu, 1. çoğaltma faktörünü ayarlamanın mümkün olduğu Apache Cassandra 'ya karşılık gelen bir yerdir. Ancak, verileri içeren tek düğüm aşağı doğru olursa bu, düşük kullanılabilirliğe yol açar. Cassandra API her zaman yineleme faktörü 4 ' ün (çekirdek 3 ' ü) vardır. Azure Cosmos DB, çoğaltma kümelerini otomatik olarak yönetir, ancak Apache Cassandra 'daki çeşitli araçlar kullanılarak saklanması gerekir. 
 
-Apache Cassandra, Bölüm anahtarlarının karmaları olan bir belirteç kavramıdır. Belirteçler,-2 ^ 63 ile-2 ^ 63-1 arasındaki değerleri içeren bir murmur3 64 bayt karmasını temel alır. Bu Aralık, genellikle Apache Cassandra 'daki "Token Ring" olarak adlandırılır. Belirteç halkası, belirteç aralıklarına dağıtılır ve bu aralıklar yerel Apache Cassandra kümesinde bulunan düğümler arasında bölünür. Azure Cosmos DB için bölümleme, farklı bir karma algoritması kullandığından ve daha büyük bir belirteç halkası içerdiğinden benzer bir şekilde uygulanır. 
+Apache Cassandra, Bölüm anahtarlarının karmaları olan bir belirteç kavramıdır. Belirteçler,-2 ^ 63 ile-2 ^ 63-1 arasındaki değerleri içeren bir murmur3 64 bayt karmasını temel alır. Bu Aralık, genellikle Apache Cassandra 'daki "Token Ring" olarak adlandırılır. Belirteç halkası, belirteç aralıklarına dağıtılır ve bu aralıklar yerel Apache Cassandra kümesinde bulunan düğümler arasında bölünür. Azure Cosmos DB için bölümlendirme, farklı bir karma algoritması kullandığından ve daha büyük bir iç belirteç halkası içerdiğinden benzer bir şekilde uygulanır. Ancak harici olarak aynı belirteç aralığını Apache Cassandra ile birlikte kullanıma sunduk, yani,-2 ^ 63-2 ^ 63-1.
 
 
 ## <a name="primary-key"></a>Birincil anahtar

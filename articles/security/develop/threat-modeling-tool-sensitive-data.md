@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ab22e9843ca133274361838eeb49abbe326588dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 72d223e0a2052c8e33c12ad5c540f5f32f540a4d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502240"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420592"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Güvenlik çerçevesi: hassas veriler | Karşı 
 | Ürün/hizmet | Makale |
@@ -324,7 +325,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Depolama | 
+| **Bileşen**               | Azure Storage | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-blob |
@@ -335,7 +336,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Depolama | 
+| **Bileşen**               | Azure Storage | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 406b122fd3f4d5ab13e9747a29bb4f6e4d2a4174
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a5ec79538ef4358552405eb4357c6304c4f8a675
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294883"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388161"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Öğretici: BlogIn ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Blogın 'i tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.blogin.co/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Blogin istemci destek ekibine](mailto:support@blogin.co) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. BlogIn (**User athentication** Tab > **SSO ve Kullanıcı sağlamasını yapılandırma**) üzerindeki **Ayarlar** sayfasında bu alanlar için tam değerleri alabilirsiniz. Alternatif olarak, bu değerleri almak için [Blogin istemci destek ekibine](mailto:support@blogin.co) başvurabilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. BlogIn uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -101,7 +101,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, BlogIn uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Ad | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     | ------ | --------- |
     | başlık |User. JobTitle |
     
@@ -142,7 +142,18 @@ Bu bölümde, BlogIn 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 ## <a name="configure-blogin-sso"></a>BlogIn SSO 'yu yapılandırma
 
-**Blogin** tarafında çoklu oturum açmayı yapılandırmak Için, [Blogin destek ekibine](mailto:support@blogin.co) **uygulama Federasyon meta veri URL 'sini** göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Blogin **hesabınızda Blogin yan oturum** açmada çoklu oturum açmayı yapılandırmak için aşağıdaki adımları izleyin:
+
+1. **Ayarlar**  >  **Kullanıcı kimlik doğrulaması**' na gidin  >  **SSO 'yu & Kullanıcı sağlamayı yapılandırın**.
+2. Sonraki ekranda, çoklu oturum açma durumunu **Açık** olarak değiştirin ve oturum açma EKRANıNDA görüntülenen SSO oturumu açma düğmesine özel bir ad seçin.
+
+3. **Uygulamanın Federasyon meta veri URL 'sini** önceki bölümün son adımında kaydettiyseniz, yapılandırma yöntemi **meta veri URL 'Sini** seçin ve **uygulama Federasyon meta verileri URL** 'sini meta veri URL 'si alanına yapıştırın. Aksi takdirde, yapılandırma **yöntemini el ile olarak değiştirin,** **kimlik sağlayıcısı SSO URL 'Sini (oturum açma URL 'Si)** ve **kimlik sağlayıcısı veren 'i (varlık kimliği)** el ile doldurun ve Azure AD 'den aldığınız **sertifikayı (base64)** karşıya yükleyin   .
+
+4. SSO kullanarak BlogIn 'e katılan yeni kullanıcılar için varsayılan kullanıcı rolünü seçin.
+
+5. **Değişiklikleri kaydet**'i seçin.
+
+BlogIn üzerinde SSO ayarlama hakkında daha ayrıntılı bir açıklama için bkz. [BlogIn üzerinde Microsoft Azure AD IÇIN SSO ayarlama](https://blogin.co/blog/how-to-set-up-single-sign-on-sso-for-microsoft-azure-active-directory-azure-ad-267/). Herhangi bir sorunuz varsa veya yardıma ihtiyaç duyuyorsanız, her zaman [Blogin destek ekibine](mailto:support@blogin.co) başvurmaktan çekinmeyin.
 
 ### <a name="create-blogin-test-user"></a>BlogIn test kullanıcısı oluştur
 

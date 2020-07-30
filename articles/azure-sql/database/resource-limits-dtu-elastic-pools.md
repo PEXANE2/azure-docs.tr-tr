@@ -4,19 +4,19 @@ description: Bu sayfada Azure SQL veritabanı 'nda esnek havuzlar için bazı ya
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: references_regions
+ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
-ms.date: 04/17/2020
-ms.openlocfilehash: 4377be82dfdb66ab7186d4472c8b1f5453b47809
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/28/2020
+ms.openlocfilehash: 0fd875b2c02f5d61663339ac523fd6733732ad01
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325126"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421000"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanarak elastik havuzlar için kaynak limitleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,9 +38,11 @@ Azure SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hi
 > [!IMPORTANT]
 > Ölçeklendirme Kılavuzu ve değerlendirmeleri için bkz. [elastik havuz ölçekleme](elastic-pool-scale.md)
 
+Elastik havuzlardaki ayrı veritabanlarının kaynak sınırları, DTU 'lar ve hizmet katmanını temel alan havuzlar dışındaki tek veritabanları için genellikle aynıdır. Örneğin, bir S2 veritabanının en fazla eşzamanlı çalışanları 120 çalışandır. Bu nedenle, standart havuzdaki bir veritabanı için en fazla eş zamanlı çalışan, havuzdaki veritabanı başına maksimum DTU değeri 50 DTU ise (S2 ile eşdeğerdir) 120 çalışanlardır.
+ 
+Elastik havuz için belirtilen kaynaklar, aynı sayıda DTU için elastik havuz dışında tek bir veritabanına girilen kaynakları aşabilir. Bu, bir elastik havuzun eDTU kullanımının, iş yükü desenlerine bağlı olarak havuz içindeki veritabanları genelinde DTU kullanımının özetinden daha az olması mümkün olduğu anlamına gelir. Örneğin, veritabanı DTU kullanımının %100 olduğu elastik bir havuzda yalnızca bir veritabanı olan büyük bir durumda, belirli iş yükü desenleri için havuz eDTU kullanımının %50 olması mümkündür. Veritabanı başına açık bir en fazla DTU ayarlanmamışsa bile bu durum oluşabilir. Bu durumda, havuza alınmış veritabanı DTU tüketimi, eşleşen hizmet hedefine sahip tek bir veritabanının DTU tüketimiyle aynı şekilde sınırlandırılmıştır.
+
 > [!NOTE]
-> Elastik havuzlardaki ayrı veritabanlarının kaynak sınırları, DTU 'lar ve hizmet katmanını temel alan havuzlar dışındaki tek veritabanları için genellikle aynıdır. Örneğin, bir S2 veritabanının en fazla eşzamanlı çalışanları 120 çalışandır. Bu nedenle, standart havuzdaki bir veritabanı için en fazla eş zamanlı çalışan, havuzdaki veritabanı başına maksimum DTU değeri 50 DTU ise (S2 ile eşdeğerdir) 120 çalışanlardır.
->
 > Aşağıdaki tabloların her birinde havuz başına depolama kaynağı sınırı tempdb ve günlük depolama alanı içermez.
 
 ### <a name="basic-elastic-pool-limits"></a>Temel esnek havuz sınırları

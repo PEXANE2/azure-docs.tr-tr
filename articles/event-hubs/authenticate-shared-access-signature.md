@@ -3,12 +3,13 @@ title: Paylaşılan erişim imzaları ile Azure Event Hubs erişimi kimlik doğr
 description: Bu makalede, paylaşılan erişim imzalarını kullanarak Event Hubs kaynaklarına erişimin nasıl doğrulandığını gösterilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ed389460cf3461df060df79fb756e73711f693f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5397cd746f33fc82ee63cc7d2a1f396ba704f334
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318054"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423108"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Event Hubs kaynaklarına erişimin kimliğini doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere verdiğiniz erişim türü üzerinde ayrıntılı denetim sağlar. SAS içinde ayarlayabileceğiniz bazı denetimler aşağıda verilmiştir: 

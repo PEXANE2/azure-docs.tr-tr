@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116912"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415066"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -177,6 +177,15 @@ Site oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
 
 Tenantıd özelliği, kimliğin ait olduğu Azure AD kiracısını tanımlar. PrincipalId, uygulamanın yeni kimliği için benzersiz bir tanımlayıcıdır. Azure AD 'de hizmet sorumlusu, App Service veya Azure Işlevleri örneğine verdiğiniz aynı ada sahiptir.
 
+Bu özelliklere şablonda daha sonraki bir aşamada başvuru yapmanız gerekiyorsa, bu örnekte olduğu gibi bayrağıyla birlikte [ `reference()` şablon işlevi](../azure-resource-manager/templates/template-functions-resource.md#reference) aracılığıyla bunu yapabilirsiniz `'Full'` :
+
+```json
+{
+    "tenantId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.tenantId]",
+    "objectId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.principalId]",
+}
+```
+
 ## <a name="add-a-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik ekleme
 
 Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik oluşturmanız ve ardından kaynak tanımlayıcısını uygulama yapılandırmaya eklemeniz gerekir.
@@ -312,7 +321,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 **IDENTITY_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
 
-> | Parametre adı    | İçinde     | Açıklama                                                                                                                                                                                                                                                                                                                                |
+> | Parametre adı    | İçinde     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | kaynak          | Sorgu  | Belirtecin alınması gereken kaynağın Azure AD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.    |
 > | api-sürümü       | Sorgu  | Kullanılacak belirteç API 'sinin sürümü. Lütfen "2019-08-01" veya üstünü kullanın.                                                                                                                                                                                                                                                                 |
@@ -326,7 +335,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gövdesi içerir:
 
-> | Özellik adı | Açıklama                                                                                                                                                                                                                                        |
+> | Özellik adı | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.                                                                                                                               |
 > | client_id     | Kullanılan kimliğin istemci KIMLIĞI.                                                                                                                                                                                                       |

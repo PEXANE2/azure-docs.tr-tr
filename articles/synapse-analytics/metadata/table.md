@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9efafdbc3545bebb3b90b3f64c14f45d8be82e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28f666fe295b2b49fb6795306e9fad489c867517
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496035"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387226"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure SYNAPSE Analytics paylaşılan meta veri tabloları
 
@@ -24,7 +24,7 @@ Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, 
 
 Bir Spark işi tarafından bir veritabanı oluşturulduktan sonra, depolama biçimi olarak Parquet kullanan Spark ile birlikte tablo oluşturabilirsiniz. Bu tablolar, Azure SYNAPSE çalışma alanı Spark havuzlarından herhangi biri tarafından sorgulanarak hemen kullanılabilir hale gelir. Bunlar ayrıca, izinlerle ilgili Spark işlerinin herhangi birinden de kullanılabilir.
 
-Spark oluşturulan, yönetilen ve dış tablolar, SQL isteğe bağlı olarak karşılık gelen eşitlenmiş veritabanında aynı ada sahip dış tablolar olarak da sunulur. [SQL 'de Spark tablosunun kullanıma](#exposing-a-spark-table-in-sql) sunulması tablo eşitlemesi hakkında daha fazla ayrıntı sağlar.
+Spark oluşturulan, yönetilen ve dış tablolar, SQL isteğe bağlı olarak karşılık gelen eşitlenmiş veritabanında aynı ada sahip dış tablolar olarak da sunulur. [SQL 'de Spark tablosunun kullanıma](#expose-a-spark-table-in-sql) sunulması tablo eşitlemesi hakkında daha fazla ayrıntı sağlar.
 
 Tablolar, istek üzerine zaman uyumsuz olarak SQL ile eşitlendiğinden, görünene kadar bir gecikme olur.
 
@@ -34,9 +34,9 @@ Spark tarafından oluşturulan veritabanlarını yönetmek için Spark 'ı kulla
 
 Bu tür bir veritabanında SQL isteğe bağlı olarak nesne oluşturursanız veya veritabanını bırakmaya çalışırsanız, işlem başarılı olur ancak özgün Spark veritabanı değiştirilmez.
 
-## <a name="exposing-a-spark-table-in-sql"></a>SQL 'de Spark tablosu gösterme
+## <a name="expose-a-spark-table-in-sql"></a>SQL 'de Spark tablosu kullanıma sunma
 
-### <a name="which-spark-tables-are-shared"></a>Hangi Spark tablolarının paylaşıldığı
+### <a name="shared-spark-tables"></a>Paylaşılan Spark tabloları
 
 Spark, Azure SYNAPSE 'in SQL 'de otomatik olarak sunduğu iki tür tablo sağlar:
 
@@ -50,7 +50,7 @@ Spark, Azure SYNAPSE 'in SQL 'de otomatik olarak sunduğu iki tür tablo sağlar
 
 Azure SYNAPSE Şu anda yalnızca SQL altyapılarıyla verileri Parquet formatında depolayan yönetilen ve harici Spark tablolarını paylaşır. Diğer biçimler tarafından desteklenen tablolar otomatik olarak eşitlenmez. SQL altyapısı tablonun temel biçimini destekliyorsa, bu tür tabloları kendi SQL veritabanınızda bir dış tablo olarak doğrudan eşitleyebilirsiniz.
 
-### <a name="how-are-spark-tables-shared"></a>Spark tabloları nasıl paylaşılır
+### <a name="share-spark-tables"></a>Spark tablolarını paylaşma
 
 SQL altyapısında aşağıdaki özelliklerle dış tablolar olarak sunulan paylaşılabilir yönetilen ve dış Spark tabloları:
 
@@ -96,7 +96,7 @@ Klasörler ve dosyalar üzerinde izinlerin nasıl ayarlanacağı hakkında daha 
 
 ### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Spark ve SQL isteğe bağlı sorgu 'da Parquet tarafından desteklenen yönetilen bir tablo oluşturma
 
-Bu senaryoda adlı bir Spark veritabanınız vardır `mytestdb` . Bkz. [Spark veritabanına bağlantı oluşturma & bağlanma-isteğe bağlı SQL](database.md#create--connect-to-spark-database---sql-on-demand).
+Bu senaryoda adlı bir Spark veritabanınız vardır `mytestdb` . Bkz. [isteğe bağlı SQL Ile Spark veritabanı oluşturma ve bu veritabanına bağlanma](database.md#create-and-connect-to-spark-database-with-sql-on-demand).
 
 Aşağıdaki komutu çalıştırarak, mini bir SQL ile yönetilen Spark tablosu oluşturun:
 
@@ -153,7 +153,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="creating-an-external-table-backed-by-parquet-in-spark-and-querying-it-from-sql-on-demand"></a>Spark 'ta Parquet tarafından desteklenen bir dış tablo oluşturma ve bunları isteğe bağlı olarak sorgulama
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Spark ve SQL isteğe bağlı olarak sorgulama içinde Parquet tarafından desteklenen bir dış tablo oluşturun
 
 Bu örnekte, yönetilen tablo için önceki örnekte oluşturulan Parquet veri dosyaları üzerinde bir dış Spark tablosu oluşturun.
 

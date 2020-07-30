@@ -1,14 +1,14 @@
 ---
 title: Azure Market’teki Yönetilen Hizmet teklifleri
 description: Yönetilen hizmet, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 119ecc8d15ef93a265cb5419404840496aaa1572
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121597"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406869"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Market’teki Yönetilen Hizmet teklifleri
 
@@ -25,6 +25,9 @@ Bundan sonra kuruluşunuzdaki kullanıcılar, teklifi oluştururken tanımladı�
 Her yönetilen hizmet teklifi bir veya daha fazla plan içerir. Planlar özel veya genel olabilir.
 
 Teklifinizi belirli müşterilerle sınırlandırmak istiyorsanız, özel bir plan yayımlayabilirsiniz. Bunu yaptığınızda, plan yalnızca sağladığınız belirli abonelik kimlikleri için satın alınabilir. Daha fazla bilgi için bkz. [özel teklifler](../../marketplace/private-offers.md).
+
+> [!NOTE]
+> Özel teklifler, bulut çözümü sağlayıcısı (CSP) programının satıcısı aracılığıyla oluşturulan aboneliklerle desteklenmez.
 
 Genel planlar, hizmetlerinizi yeni müşterilere yükseltemenizi sağlar. Bunlar genellikle müşterinin kiracısına sınırlı erişim istediğinizde daha uygundur. Bir müşteriyle ilişki kurduktan sonra, kuruluşunuza ek erişim vermeye karar verirse, bu, yalnızca söz konusu müşteri için yeni bir özel plan yayımlayarak veya [Azure Resource Manager şablonları kullanarak daha fazla erişim sağlamak için bunları](../how-to/onboard-customer.md)ekleyebilirsiniz.
 

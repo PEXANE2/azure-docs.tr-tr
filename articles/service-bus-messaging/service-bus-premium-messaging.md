@@ -2,13 +2,13 @@
 title: Azure Service Bus Premium ve Standart katmanlar
 description: Bu makalede, Azure Service Bus standart ve Premium katmanları açıklanmaktadır. Bu katmanları karşılaştırır ve teknik farklılıklar sağlar.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337408"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386359"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium ve Standart Mesajlaşma katmanları
 
@@ -20,11 +20,11 @@ Aşağıdaki tabloda bazı üst düzey farklılıklar vurgulanmıştır.
 
 | Premium | Standart |
 | --- | --- |
-| Yüksek verimlilik |Değişken işleme |
+| Yüksek aktarım hızı |Değişken işleme |
 | Tahmin edilebilir performans |Değişken gecikme süresi |
 | Sabit fiyatlandırma |Kullandıkça Öde değişken fiyatlandırması |
-| İş yükünün ölçeğini artırma veya azaltma |YOK |
-| İleti boyutu 1 MB’a kadar |İleti boyutu 256 KB’a kadar |
+| İş yükünün ölçeğini artırma veya azaltma |Yok |
+| İleti boyutu 1 MB 'a kadar. Bu sınır gelecekte oluşturulabilir. Hizmette en son önemli güncelleştirmeler için bkz. [Azure blogda mesajlaşma](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |İleti boyutu 256 KB’a kadar |
 
 **Service Bus Premium Mesajlaşma Hizmeti**, CPU'da ve bellek düzeyinde kaynak yalıtımına olanak sağladığından her müşterinin iş yükü yalıtımlı şekilde çalışır. Bu kaynak kapsayıcısı *mesajlaşma birimi* olarak adlandırılır. Her premium ad alanı, en az bir mesajlaşma birimi için ayrılmıştır. Her Service Bus Premium ad alanı için 1, 2, 4 veya 8 mesajlaşma birimi satın alabilirsiniz. Tek bir iş yükü veya varlık birden çok mesajlaşma birimini kapsayabilir ve mesaj birimlerinin sayısı her zaman değiştirilebilir. Sonuç olarak, Service Bus tabanlı çözümünüz için tahmin edilebilir ve tekrarlanabilir bir performans elde edersiniz.
 
@@ -36,11 +36,11 @@ Aşağıdaki bölümlerde Premium ve Standart mesajlaşma katmanları arasındak
 
 ### <a name="partitioned-queues-and-topics"></a>Bölümlenmiş kuyruklar ve konular
 
-Bölümlenmiş kuyruk ve konular Premium Mesajlaşma’da desteklenmez. Bölümleme hakkında daha fazla bilgi için bkz. [Bölümlenmiş kuyruklar ve konular](service-bus-partitioning.md).
+Bölümlenmiş kuyruklar ve konular Premium mesajlaşmada desteklenmez. Bölümleme hakkında daha fazla bilgi için bkz. [Bölümlenmiş kuyruklar ve konular](service-bus-partitioning.md).
 
 ### <a name="express-entities"></a>İfade varlıkları
 
-Premium mesajlaşma tamamen yalıtılmış bir çalışma zamanı ortamında çalıştığından Premium ad alanlarında ifade varlıkları desteklenmez. İfade özellikleri hakkında daha fazla bilgi için [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) özelliğine bakın.
+Premium mesajlaşma, yalıtılmış bir çalışma zamanı ortamında çalıştığından, Premium ad alanlarında Express varlıkları desteklenmez. İfade özellikleri hakkında daha fazla bilgi için [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) özelliğine bakın.
 
 Standart mesajlaşma altında çalışan bir kodunuz varsa ve Premium katmanı ile bağlantı noktası oluşturmak istiyorsanız, [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) özelliğinin **false** (varsayılan değer) olarak ayarlandığından emin olun.
 
@@ -51,9 +51,9 @@ Genel olarak, bir varlıktaki herhangi bir işlem CPU ve bellek kullanımına ne
 - Çalışma zamanı işlemleri (ileti gönderme ve alma)
 - İşlemleri ve Uyarıları izleme
 
-Ek CPU ve bellek kullanımı da buna ek olarak fiyatlandırılmamalıdır. Premium mesajlaşma katmanı için, ileti birimi için tek bir fiyat vardır.
+Ek CPU ve bellek kullanımı da buna ek olarak fiyatlandırılmıyor. Premium mesajlaşma katmanı için, ileti birimi için tek bir fiyat vardır.
 
-CPU ve bellek kullanımı aşağıdaki nedenlerden dolayı izlenir ve size görüntülenir: 
+CPU ve bellek kullanımı izlenir ve aşağıdaki nedenlerden dolayı size görüntülenir: 
 
 - Sistem iç işlevleri için saydamlık sağlama
 - Satın alınan kaynakların kapasitesini anlayın.

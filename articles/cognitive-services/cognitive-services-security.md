@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: erhopf
-ms.custom: tracking-python
-ms.openlocfilehash: 51a9829a7ea19665e1081a48207f176b1a8e68c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: 48e5f6d453e69dcbafd9aefe283eb2c880d4b48e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090850"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406648"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
 
@@ -31,7 +31,7 @@ HTTP üzerinden sunulan bilişsel hizmetler uç noktaları, TLS 1,2 ' i zorlar. 
 
 .NET kullanıcıları için, <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aktarım Katmanı Güvenliği en iyi yöntemlerini <span class="docon docon-navigate-external x-hidden-focus"></span> </a>göz önünde bulundurun.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Kimlik doğrulaması tartışırken, yaygın olarak karşılaşılan birkaç yanlış rastlamalar vardır. Kimlik doğrulama ve yetkilendirme genellikle bir diğeri için karıştırılır. Kimlik ayrıca güvenlik ' de bir ana bileşendir. Kimlik, bir <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">sorumlu <span class="docon docon-navigate-external x-hidden-focus"></span> </a>hakkındaki bilgilerin koleksiyonudur. Kimlik sağlayıcıları (IDP) kimlik doğrulama hizmetlerine kimlikler sağlar. Kimlik doğrulaması, bir kullanıcının kimliğini doğrulama işlemidir. Yetkilendirme, belirli bir kimlik için kaynaklara yönelik erişim haklarının ve ayrıcalıkların belirtiledir. Bilişsel hizmetler tekliflerinden bazıları rol tabanlı erişim denetimi (RBAC) içerir. RBAC, sorumluları el ile yönetme ile ilgili bazı sertifika basitleştirecek şekilde kullanılabilir. Daha fazla ayrıntı için bkz. [Azure kaynakları için rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
 

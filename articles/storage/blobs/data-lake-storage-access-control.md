@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b52fe22e455f5b0ebce6960b40bcc80c46079c3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091360"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421357"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de Erişim Denetimi
 
@@ -34,9 +34,9 @@ Depolama hesabınızın kapsamındaki güvenlik sorumlularına roller atamayı �
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Rol atamalarının dosya ve dizin düzeyinde erişim denetim listelerindeki etkileri
 
-RBAC rol atamalarının kullanılması, erişim izinlerini denetlemek için güçlü bir mekanizmadır. Bu, ACL 'Lerle ilgili oldukça ayrıntılı bir mekanizmadır. RBAC için en küçük ayrıntı düzeyi kapsayıcı düzeyindedir ve bu, ACL 'Lere göre daha yüksek bir önceliğe göre değerlendirilir. Bu nedenle, bir kapsayıcı kapsamındaki bir güvenlik sorumlusuna bir rol atarsanız, bu güvenlik sorumlusu ACL atamalarından bağımsız olarak o kapsayıcıdaki tüm dizinler ve dosyalar için bu rolle ilişkili yetkilendirme düzeyine sahiptir.
+Azure rol atamalarının kullanılması, erişim izinlerini denetlemek için güçlü bir mekanizmadır. Bu, ACL 'Lerle ilgili oldukça ayrıntılı bir mekanizmadır. RBAC için en küçük ayrıntı düzeyi kapsayıcı düzeyindedir ve bu, ACL 'Lere göre daha yüksek bir önceliğe göre değerlendirilir. Bu nedenle, bir kapsayıcı kapsamındaki bir güvenlik sorumlusuna bir rol atarsanız, bu güvenlik sorumlusu ACL atamalarından bağımsız olarak o kapsayıcıdaki tüm dizinler ve dosyalar için bu rolle ilişkili yetkilendirme düzeyine sahiptir.
 
-Bir güvenlik sorumlusu [yerleşik bir rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)aracılığıyla veya özel bir rol aracılığıyla RBAC veri izinleri verildiğinde, bu izinler bir isteğin yetkilendirilmesine göre önce değerlendirilir. İstenen işlem güvenlik sorumlusunun RBAC atamaları tarafından yetkilendirildiyse, yetkilendirme anında çözülür ve ek ACL denetimleri gerçekleştirilmez. Alternatif olarak, güvenlik sorumlusunun bir RBAC ataması yoksa veya isteğin işlemi atanan izinle eşleşmezse, güvenlik sorumlusunun istenen işlemi gerçekleştirme yetkisine sahip olup olmadığını belirlemesi için ACL denetimleri gerçekleştirilir.
+Bir güvenlik sorumlusu [yerleşik bir rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)aracılığıyla veya özel bir rol aracılığıyla RBAC veri izinleri verildiğinde, bu izinler bir isteğin yetkilendirilmesine göre önce değerlendirilir. İstenen işlem güvenlik sorumlusunun Azure rolü atamaları tarafından yetkilendirildiyse, yetkilendirme anında çözülür ve ek ACL denetimleri gerçekleştirilmez. Alternatif olarak, güvenlik sorumlusunun bir Azure rol ataması yoksa veya isteğin işlemi atanan izinle eşleşmezse, güvenlik sorumlusunun istenen işlemi gerçekleştirme yetkisine sahip olup olmadığını belirlemesi için ACL denetimleri gerçekleştirilir.
 
 > [!NOTE]
 > Güvenlik sorumlusu, Depolama Blobu veri sahibi yerleşik rol ataması ' na atanmışsa, güvenlik sorumlusu bir *Süper Kullanıcı* olarak değerlendirilir ve bir dizin ya da dosyanın sahibini ayarlamanın yanı sıra, sahip olmadıkları dizinler ve dosyalar Için ACL 'ler dahil olmak üzere tüm değiştirici işlemlere tam erişim verilir. Süper Kullanıcı erişimi, bir kaynağın sahibini değiştirmek için tek yetkilendirilmiştir.
@@ -333,7 +333,7 @@ Hizmet sorumlusu için doğru OID 'ye sahip olduğunuzda, OID 'yi eklemek ve OID
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage 2. ACL 'Leri devralmayı destekliyor mu?
 
-Azure RBAC atamaları devralınır. Atamalar abonelik, kaynak grubu ve depolama hesabı kaynaklarından, kapsayıcı kaynağına doğru akar.
+Azure rol atamaları devralınır. Atamalar abonelik, kaynak grubu ve depolama hesabı kaynaklarından, kapsayıcı kaynağına doğru akar.
 
 ACL 'Ler aktarılmaz. Ancak, alt dizinler ve üst dizin altında oluşturulan dosyalar için ACL 'Ler ayarlamak üzere varsayılan ACL 'Ler kullanılabilir. 
 

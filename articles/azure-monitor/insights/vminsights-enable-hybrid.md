@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7a6105e8742a4cb3d2f113c6ef723f6171baf4d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328442"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417123"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Karma sanal makine için VM'ler için Azure İzleyici etkinleştirme
 Bu makalede, şirket içi ve diğer bulut ortamları dahil olmak üzere Azure dışındaki bir sanal makine için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır.
 
 > [!IMPORTANT]
-> Karma VM 'Leri etkinleştirmenin önerilen yöntemi, VM 'Lerin Azure sanal makinelerine benzer süreçler kullanılarak VM'ler için Azure İzleyici için etkinleştirilebilmesi için öncelikle [sunucular Için Azure yayı 'yi](/azure-arc/servers/overview.md) etkinleştirir. Bu makalede, Azure Arc 'ı kullanmayı tercih ediyorsanız karma VM 'Lerin nasıl ekleneceği açıklanmaktadır.
+> Karma VM 'Leri etkinleştirmenin önerilen yöntemi, VM 'Lerin Azure sanal makinelerine benzer süreçler kullanılarak VM'ler için Azure İzleyici için etkinleştirilebilmesi için öncelikle [sunucular Için Azure yayı 'yi](../../azure-arc/servers/overview.md) etkinleştirir. Bu makalede, Azure Arc 'ı kullanmayı tercih ediyorsanız karma VM 'Lerin nasıl ekleneceği açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Log Analytics çalışma alanı oluşturun ve yapılandırın](vminsights-configure-workspace.md).
 - Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
@@ -31,7 +31,7 @@ Azure dışındaki sanal makineler, Azure VM 'Leri için kullanılan aynı Log A
 Log Analytics aracısını dağıtma hakkında ayrıntılı bilgi için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../platform/agent-windows.md) veya [Linux bilgisayarlarını Azure izleyici 'ye bağlama](../platform/agent-linux.md) . Bu makalede bağımlılık aracısının ayrıntıları verilmiştir. 
 
 ## <a name="firewall-requirements"></a>Güvenlik duvarı gereksinimleri
-Log Analytics aracısına yönelik güvenlik duvarı gereksinimleri [Log Analytics aracıya genel bakış](..//platform/log-analytics-agent.md#network-requirements)bölümünde verilmiştir. VM'ler için Azure İzleyici Map bağımlılık Aracısı herhangi bir veri iletmez ve güvenlik duvarları veya bağlantı noktalarında değişiklik gerektirmez. Harita verileri her zaman doğrudan veya [Operations Management Suite ağ geçidi](../../azure-monitor/platform/gateway.md) aracılığıyla Log Analytics ARACıSıDıR ve BT güvenlik ilkeleriniz ağdaki bilgisayarların internet 'e bağlanmasına izin vermez.
+Log Analytics aracısına yönelik güvenlik duvarı gereksinimleri [Log Analytics aracıya genel bakış](../platform/log-analytics-agent.md#network-requirements)bölümünde verilmiştir. VM'ler için Azure İzleyici Map bağımlılık Aracısı herhangi bir veri iletmez ve güvenlik duvarları veya bağlantı noktalarında değişiklik gerektirmez. Harita verileri her zaman doğrudan veya [Operations Management Suite ağ geçidi](../../azure-monitor/platform/gateway.md) aracılığıyla Log Analytics ARACıSıDıR ve BT güvenlik ilkeleriniz ağdaki bilgisayarların internet 'e bağlanmasına izin vermez.
 
 
 ## <a name="dependency-agent"></a>Bağımlılık aracısı

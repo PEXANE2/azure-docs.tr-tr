@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 50398632f47d889ecb79b32faef94c9c5923789c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dfdb717a27af8dc7f3186ac7afdff4d1eb3d79f5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532506"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420847"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Tam zamanında (JıT) VM erişimini anlama
 
@@ -67,13 +67,17 @@ Güvenlik Merkezi JıT 'ten faydalanabilir bir makine bulduğunda, bu makineyi �
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>JıT 'i yapılandırmak ve kullanmak için hangi izinler gereklidir?
 
-JıT ile çalışabilebilmeniz gereken özel Roller oluşturmak istiyorsanız aşağıdaki ayrıntılara ihtiyacınız vardır:
+JıT ile çalışabilebilmeniz gereken özel Roller oluşturmak istiyorsanız aşağıdaki tablodaki ayrıntılara ihtiyacınız olacaktır.
+
+> [!TIP]
+> Bir VM 'ye JıT erişimi istemesi ve başka bir JıT işlemi gerçekleştirihtiyacı olmayan kullanıcılar için en az ayrıcalıklı bir rol oluşturmak üzere, güvenlik merkezi GitHub topluluk sayfalarından [set-Jleastprivilegedrole betiğini](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) kullanın.
 
 | Bir kullanıcıyı şu şekilde etkinleştirmek için: | Ayarlanacak izinler|
 | --- | --- |
 | VM için bir JıT ilkesi yapılandırma veya düzenleme | *Bu eylemleri role atayın:*  <ul><li>VM ile ilişkili bir abonelik veya kaynak grubu kapsamında:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> Bir abonelik veya VM kaynak grubu kapsamında: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |Bir VM 'ye JıT erişimi isteme | *Bu eylemleri kullanıcıya ata:*  <ul><li>VM ile ilişkili bir abonelik veya kaynak grubu kapsamında:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>VM ile ilişkili bir abonelik veya kaynak grubu kapsamında:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  Bir aboneliğin veya kaynak grubunun veya VM 'nin kapsamında:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  Bir aboneliğin veya kaynak grubunun veya VM 'nin kapsamında:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 |JıT ilkelerini okuma| *Bu eylemleri kullanıcıya ata:*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|
+|||
 
 
 

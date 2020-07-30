@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
-ms.custom: mvc
-ms.openlocfilehash: aa0d29c5c2a4cf8eebbf530b42a25d8924e031bc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: f3dd4280ddea076b5e9febbc36dd323c0705ef0e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290263"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423380"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak sanal makinelerin yük dengelemesi için genel yük dengeleyici oluşturma
 
 Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure CLı kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure CLı yerel olarak veya Azure Cloud Shell yüklendi

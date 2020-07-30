@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: a4dc2604dbd62da1baa4278ff3463f41337886bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5ad9e6a448747ac8f33829b1137b1af434e7a9c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052511"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385594"
 ---
 # <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>Apache Spark uygulamalarınızı izlemek için SYNAPSE Studio 'Yu (Önizleme) kullanın
 
@@ -22,7 +22,7 @@ Azure SYNAPSE Analytics ile, çalışma alanınızdaki Spark Havuzlarınızda no
 
 Bu makalede, Apache Spark uygulamalarınızın nasıl izleneceği açıklanmaktadır. Bu, en son durum, sorun ve ilerlemeyi göz önünde tutmanıza olanak sağlar.
 
-## <a name="accessing-the-list-of-apache-spark-applications"></a>Apache Spark uygulamalar listesine erişme
+## <a name="access-apache-spark-applications-list"></a>Apache Spark uygulamalar listesine erişin
 
 Çalışma alanınızdaki Apache Spark uygulamalarının listesini görmek için önce [SYNAPSE Studio 'yu açın](https://web.azuresynapse.net/) ve çalışma alanınızı seçin.
 
@@ -36,7 +36,7 @@ Apache Spark uygulamalarının listesini görüntülemek için **Apache Spark uy
 
  ![Spark uygulamalarını seçin](./media/how-to-monitor-spark-applications/monitor-hub-nav-sparkapplications.png)
 
-## <a name="filtering-your-apache-spark-applications"></a>Apache Spark uygulamalarınızın filtrelenmesi
+## <a name="filter-your-apache-spark-applications"></a>Apache Spark uygulamalarınızı filtreleyin
 
 Apache Spark uygulamalarının listesini ilgilendiğiniz olanlarla filtreleyebilirsiniz. Ekranın üst kısmındaki filtreler, filtrelemek istediğiniz bir alan belirtmenize izin verir.
 
@@ -46,7 +46,7 @@ Apache Spark uygulamalarının listesini ilgilendiğiniz olanlarla filtreleyebil
 
 ![Örnek filtre](./media/how-to-monitor-spark-applications/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-apache-spark-application"></a>Belirli bir Apache Spark uygulamayla ilgili ayrıntıları görüntüleme
+## <a name="view-details-about-a-specific-apache-spark-application"></a>Belirli bir Apache Spark uygulamayla ilgili ayrıntıları görüntüleme
 
 Apache Spark uygulamalarınızdan biri hakkındaki ayrıntıları görüntülemek için Apache Spark uygulamasını seçin ve ayrıntıları görüntüleyin. Apache Spark uygulama hala çalışıyorsa, ilerlemeyi izleyebilirsiniz. [Daha fazla bilgi edinin](apache-spark-applications.md).
 

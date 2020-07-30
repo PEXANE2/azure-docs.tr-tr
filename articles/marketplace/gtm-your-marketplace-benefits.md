@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287892"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408127"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -106,9 +106,15 @@ Bu sayfada açıklanan tüm etkinlikler [Market Yayımcı Sözleşmesi](https://
 Microsoft, Market 'in pazarlarını iptal etme ve bu avantajlardan sonlandırma hakkını saklı tutar: 
 
 * Market listesini kullanarak geçersiz bir etkinliğe katılın.
+* Sahte olarak bilinen veya inanılmaz bir satın alma işlemi alın.
 * , Ticari Market 'ten de listelenmiştir. 
 * Telif hakkı veya ticari marka yasaları ihlal eden pazarlama veya diğer içerikleri göstermek için teklifini kullanın.
 * Kendi iç işlemleri veya Bitpara madenciliği için Azure Sponsorluk funlarını kullanarak, ancak bunlarla sınırlı olmamak üzere [Azure sponsorluk programının](https://azure.microsoft.com/offers/ms-azr-0036p/)ilkelerini ihlal edin.
+
+Microsoft, şu durumlarda Market Relamarlerini iptal etme ve sonlandırma hakkını saklı tutar:
+
+* Satın alma yapan müşteri, yanlışlıkla ve satın alma işlemini iptal etmeyi istiyor. 
+* Müşteri, iş ortağının ürününü kullanmadan önce iptal eder.
 
 ### <a name="offer-availability"></a>Teklif kullanılabilirliği
 

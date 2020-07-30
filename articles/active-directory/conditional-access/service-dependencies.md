@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253197"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419742"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory hizmet bağımlılıkları nelerdir? 
 
@@ -27,7 +27,7 @@ Bir siteye veya hizmete doğrudan eriştiğinizde, ilgili bir ilkenin etkisinden
 > [!TIP]
 > Office [365 (Önizleme)](concept-conditional-access-cloud-apps.md#office-365-preview) uygulamasının kullanılması, Office yığınındaki hizmet bağımlılıklarıyla ilgili sorunları önlemek Için tüm Office uygulamalarını hedefleyecek.
 
-## <a name="policy-enforcement"></a>İlke zorlama 
+## <a name="policy-enforcement"></a>İlke zorlamaİlke zorlama 
 
 Yapılandırılmış bir hizmet bağımlılığı varsa, ilke erken veya geç bağlantılı zorlama kullanılarak uygulanabilir. 
 
@@ -51,6 +51,7 @@ Aşağıdaki tabloda, istemci uygulamalarının karşılaması gereken ek hizmet
 |                     | SharePoint                                  | Erken bağlantılı |
 | Microsoft Teams     | Exchange                                    | Erken bağlantılı |
 |                     | MS planlayıcısı                                  | Geç bağlantılı  |
+|                     | Microsoft Stream                            | Geç bağlantılı  |
 |                     | SharePoint                                  | Erken bağlantılı |
 |                     | Skype Kurumsal Çevrimiçi Sürüm                   | Erken bağlantılı |
 | Office portalı       | Exchange                                    | Geç bağlantılı  |

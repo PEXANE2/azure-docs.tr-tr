@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9084b486681ded0c194c93f07a404f5f5e88fa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf3cba5046a20b99212e89b378327765d22fa23
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728478"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421646"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini toplu kaldırma
 
@@ -68,7 +68,7 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 
 Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları** sayfasında görebilirsiniz.
 
-[![](media/groups-bulk-remove-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-remove-members/bulk-center.png#lightbox)
+[![Toplu Işlemler sonuçları sayfasındaki durumu denetleyin](media/groups-bulk-remove-members/bulk-center.png)](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
 Toplu işlemdeki her bir satır öğesi hakkında ayrıntılar için **# Success**, **# Failure**veya **Total Requests** sütunlarının altındaki değerleri seçin. Hatalar oluştuysa, başarısızlık nedenleri listelenecektir.
 

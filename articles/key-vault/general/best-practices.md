@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 16828435dc8913fff8da4717ee7f77cc701504ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93ada332fdf9179cf0f582195779afc085416e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213083"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386240"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault kullanmak için en iyi uygulamalar
 
@@ -56,5 +56,5 @@ Kasanızın [günlüğünü açın](logging.md) . Ayrıca uyarıları ayarlayın
 
 ## <a name="turn-on-recovery-options"></a>Kurtarma seçeneklerini aç
 
-1. [Geçici silme](overview-soft-delete.md)özelliğini açın.
+1. [Geçici silme](soft-delete-overview.md)özelliğini açın.
 2. Geçici silme etkin olduktan sonra bile gizli dizi/kasaların silinmesini zorlamak istiyorsanız Temizleme korumasını açın.

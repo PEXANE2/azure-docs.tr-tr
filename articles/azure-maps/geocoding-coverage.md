@@ -1,26 +1,29 @@
 ---
-title: Coğrafi kodlama kapsamı | Microsoft Azure haritaları
-description: Konum adresini Enlem ve boylam koordinatları olarak dönüştürme işlemi, coğrafi kodlama olarak bilinir. Bu makalede, Microsoft Azure Eşlemlerde coğrafi kodlama kapsamına sahip bölgeler hakkında bilgi edineceksiniz.
+title: Microsoft Azure Maps arama hizmetindeki coğrafi kodlama kapsamı
+description: Bu makalede, farklı ülkelerde/bölgelerde coğrafi kodlama kapsamını Microsoft Azure eşler hakkında bilgi edineceksiniz.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/31/2019
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 52c6cda800b535109d906fd6e6ae1aa8c709f23f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+manager: philmea
+ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132815"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386920"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure haritalar coğrafi kodlama kapsamı
 
-Azure haritalar ile bir konum aradığınızda Arama hizmeti, örneğin [arama adresi al](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), arama terimlerinizi alır ve enlem ve boylam koordinatlarını döndürür. Bu işleme geokodlamaya denir. Ancak, Azure Maps tüm bölgeler ve ülkeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Her bölgede güvenilir bir şekilde arama yapmak istediğiniz konum türlerini belirlemek için bu makaleyi kullanın. 
+Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) , coğrafi kodlamayı destekler, bu da API isteğinizin bir adres ya da bir konumun adı gibi arama koşullarına sahip olabileceği ve sonucu Enlem ve boylam koordinatları olarak döndürdüğü anlamına gelir. Örneğin, Azure Maps [alma arama adresi API 'si](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) , konum bilgilerini içeren sorguları alır ve sonuçları Enlem ve boylam koordinatları olarak döndürür.
 
-Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodlama hizmetinin coğrafi kodlama duyarlığına bağımlıdır. Aşağıdaki sınıflandırmalar, her ülkede/bölgede coğrafi kodlama desteğinin düzeyini belirler.
-* **Adres noktaları** -adresler verileri, adres alanı (özellik sınırı) içindeki bir Enlem/Boylam koordinatına çözümlenebilirler. Bazen ' Rooftop ' doğru olarak adlandırılır. Bu, adresler için kullanılabilen en yüksek doğruluk düzeyidir. 
+Ancak, Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) tüm bölgeler ve ülkeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Her bölgede güvenilir bir şekilde arama yapmak istediğiniz konum türlerini belirlemek için bu makaleyi kullanın.
+
+Bir ülkede/bölgede kodlamayı özelliği, coğrafi kodlama hizmetinin yol verileri kapsamına ve coğrafi kodlama duyarlığına bağımlıdır. Aşağıdaki sınıflandırmalar, her ülkede/bölgede coğrafi kodlama desteğinin düzeyini belirtmek için kullanılır.
+
+* Adres **noktaları** -adres verileri, adres ortasının (özellik sınırı) içindeki Enlem/Boylam koordinatlarına çözümlenebilirler. Adres noktaları genellikle, adresler için kullanılabilir en yüksek doğruluk düzeyi olan ' Rooftop ' doğru olarak adlandırılır.
 * **Ev numaraları** -adresler cadde üzerinde bir enlem/boylam koordinatı ile yapılır.
 * **Cadde düzeyi** -adresler, adresi içeren sokak 'nin Enlem/Boylam koordinatı olarak çözümlenir. Evin numarası işlenemiyor olabilir.
 * **Şehir düzeyi** -şehir yeri adları desteklenir.
@@ -214,7 +217,6 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Özbekistan                                          |                 |                |              |      ✓     |          ✓         |
 | Vatikan                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
-
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
 
 | Ülke/Bölge                                      | Adres noktaları |Ev numaraları | Cadde düzeyi | Şehir düzeyi | İlgi çekici noktaları |
@@ -295,11 +297,8 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Zambiya                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabve                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar coğrafi kodlama hakkında daha fazla bilgi için bkz. [arama](https://docs.microsoft.com/rest/api/maps/search) başvuru sayfaları.
-
-[Haritalar trafik hizmeti için kapsam bölgeleri](traffic-coverage.md)hakkında bilgi edinin. 
-
+Azure haritalar coğrafi kodlama hakkında daha fazla bilgi edinin:
+> [!div class="nextstepaction"]
+> [Azure haritalar arama hizmeti](https://docs.microsoft.com/rest/api/maps/search)

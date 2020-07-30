@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 648ec2d9fea3e4e112e65cec44a0518b653ddbea
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8694b766d98c6240d7745b814d13358debe714e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119982"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387056"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
@@ -67,15 +67,15 @@ Azure geçişi ile içeri aktarılan sunucuların değerlendirmesi için bu en i
  
 ### <a name="ftt-sizing-parameters-for-avs-assessments"></a>AVS değerlendirmesi için FTT boyutlandırma parametreleri
 
-AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri, sanal makineleriniz için depolama gereksinimlerini tanımlar. Bu ilkeler, depolama biriminin VM 'ye nasıl ayrılacağını tespit ettiğinden VM 'niz için gereken hizmet düzeyini garanti eder. Kullanılabilir FTT-RAID birleşimleri şunlardır: 
+AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri sanal makineleriniz için depolama gereksinimlerini tanımlar. Bu ilkeler sanal makineler için gerekli hizmet düzeyini garanti eder çünkü depolamanın sanal makineye nasıl ayrıldığını belirler. Kullanılabilir FTT-Raid Bileşimleri şunlardır: 
 
-**Tolerans sayısı (FTT)** | **RAID yapılandırması** | **Gerekli en düşük konaklar** | **Boyutlandırma değerlendirmesi**
+**Tolerans Hataları (FTT)** | **RAID Yapılandırması** | **Gereken Minimum Konak Sayısı** | **Boyutlandırmada dikkat edilmesi gerekenler**
 --- | --- | --- | --- 
-1 | RAID-1 (yansıtma) | 3 | 100'LIK bir VM 200GB tüketir.
-1 | RAID-5 (ERASURE kodlaması) | 4 | 100 GB 'lık bir VM 133.33 GB tüketir
-2 | RAID-1 (yansıtma) | 5 | 100 GB 'lık bir VM 300 GB tüketir.
-2 | RAID-6 (ERASURE kodlaması) | 6 | 100 GB 'lik bir VM, 150GB tüketir.
-3 | RAID-1 (yansıtma) | 7 | 100 GB 'lık bir VM 400 ' ü tüketir.
+1 | RAID-1 (Yansıtma) | 3 | 100 GB sanal makine 200 GB kullanır.
+1 | RAID-5 (Silinme Kodlaması) | 4 | 100 GB sanal makine 133,33 GB kullanır
+2 | RAID-1 (Yansıtma) | 5 | 100 GB sanal makine 300 GB kullanır.
+2 | RAID-6 (Silinme Kodlaması) | 6 | 100 GB sanal makine 150 GB kullanır.
+3 | RAID-1 (Yansıtma) | 7 | 100 GB sanal makine 400 GB kullanır.
 
 
 ## <a name="best-practices-for-confidence-ratings"></a>Güvenirlik derecelendirmeleri için en iyi uygulamalar
@@ -131,9 +131,9 @@ Bir değerlendirme, birkaç nedenden dolayı tüm veri noktalarına sahip olmaya
 
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>AVS değerlendirmesi için geçiş aracı Kılavuzu
 
-Azure VMware çözümü (AVS) değerlendirmesi için Azure hazırlık raporu ' nda, aşağıdaki önerilen araçları görebilirsiniz: 
-- VMware **HCX veya Enterprise**: VMware makineleri Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha fazla bilgi edinin](../azure-vmware/hybrid-cloud-extension-installation.md).
-- **Bilinmiyor**: bir CSV dosyası aracılığıyla içeri aktarılan makineler için varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
+Azure VMware Çözümü (AVS) değerlendirmesinin Azure için hazır olma raporunda aşağıdaki önerilen araçları görebilirsiniz: 
+- VMware **HCX veya Enterprise**: VMware makineleri Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha Fazla Bilgi Edinin](../azure-vmware/hybrid-cloud-extension-installation.md).
+- **Bilinmiyor**: CSV dosya yoluyla içeri aktarılan makinelerde, varsayılan geçiş aracı bilinmiyor. Ancak, VMware makinelerinde, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

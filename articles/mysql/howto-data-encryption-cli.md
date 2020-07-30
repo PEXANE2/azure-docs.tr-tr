@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: e6cb3e5db1c7fae3b0542557d2dae8239e0624f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f73910c528ff65a8c537e779a028860d64561d05
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114627"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386733"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı için veri şifreleme
 
@@ -34,13 +34,13 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
 
 * Mevcut bir anahtar kasasını kullanabilmeniz için, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliklere sahip olmalıdır:
 
-  * [Geçici silme](../key-vault/general/overview-soft-delete.md)
+  * [Geçici silme](../key-vault/general/soft-delete-overview.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Korumalı Temizleme](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [Korumalı Temizleme](../key-vault/general/soft-delete-overview.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

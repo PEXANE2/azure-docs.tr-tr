@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337356"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386699"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md) ve [bir Azure dosya eşitleme dağıtımı planlamayı](storage-sync-files-planning.md) kesinlikle öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure Dosya Eşitleme dağıtmak istediğiniz bölgedeki bir Azure dosya paylaşımıdır. Daha fazla bilgi için bkz.
     - Azure Dosya Eşitleme için [bölge kullanılabilirliği](storage-sync-files-planning.md#azure-file-sync-region-availability) .
     - Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım bir açıklama için [dosya paylaşma oluşturun](storage-how-to-create-file-share.md) .
@@ -218,6 +218,13 @@ Windows Server’ı bir Depolama Eşitleme Hizmeti’ne kaydetmek, sunucunuz (ve
 
 Sunucuyu kaydeden yönetici, belirtilen depolama eşitleme hizmeti için yönetim rolleri **sahibinin** veya **katkıda bulunan** bir üyesi olmalıdır. Bu, depolama eşitleme hizmeti için Azure portal **Access Control (IAM)** altında yapılandırılabilir.
 
+Ayrıca, yöneticilerin bir depolama eşitleme hizmetinde eşitleme yapılandırmasına izin verilen sunuculardan sunucu kaydedebilmesini de mümkündür. Bunun için, yalnızca sunucuları kaydettirebilir ve özel rolünüze aşağıdaki izinlerle izin verilen yöneticileri listelüünüzde özel bir rol oluşturmanız gerekir:
+
+* "Microsoft. Storagessync/storageSyncServices/registeredServers/Write"
+* "Microsoft. Storagessync/storageSyncServices/Read"
+* "Microsoft. Storagessync/storageSyncServices/iş akışları/okuma"
+* "Microsoft. Storagessync/storageSyncServices/iş akışları/işlemler/okuma"
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısının yüklenmesinden sonra otomatik olarak açılmalıdır. Açılmazsa, şu dosya konumundan kendiniz açabilirsiniz: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Sunucu kaydı kullanıcı arabirimi açıldığında başlamak için **oturum aç** ' ı seçin.
 
@@ -245,6 +252,8 @@ Bulut uç noktası, Azure dosya paylaşımının bir işaretçisidir. Tüm sunuc
 
 > [!Important]  
 > Eşitleme grubundaki herhangi bir bulut uç noktasında veya sunucu uç noktasında değişiklik yapabilir ve dosyalarınızı eşitleme grubundaki diğer uç noktalarla eşitler. Bulut uç noktasına (Azure dosya paylaşımında) doğrudan değişiklik yaparsanız, önce değişikliklerin Azure Dosya Eşitleme değişiklik algılama işi tarafından bulunması gerekir. Bir değişiklik algılama işi, her 24 saatte bir bulut uç noktası için başlatılır. Daha fazla bilgi için bkz. [Azure dosyaları hakkında sık sorulan sorular](storage-files-faq.md#afs-change-detection).
+
+Bulut uç noktasını oluşturan yöneticinin, bulut uç noktasının işaret ettiği Azure dosya paylaşımının bulunduğu depolama hesabı için yönetim rolü **sahibinin** bir üyesi olması gerekir. Bu, depolama hesabının Azure portal **Access Control (IAM)** altında yapılandırılabilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Bir eşitleme grubu oluşturmak için, [Azure Portal](https://portal.azure.com/)depolama eşitleme hizmetinize gidin ve **+ eşitleme grubu**' nu seçin:

@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 668b8d714c4d6c146d9b279d9e6a49599c04775c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870526"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423530"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Güvenli bağlantıları güvence altına almak için güvenli aktarım gerektir
 
@@ -51,7 +51,7 @@ Varsayılan olarak, bir depolama hesabı oluşturduğunuzda **Güvenli aktarım 
 
 ## <a name="require-secure-transfer-from-code"></a>Koddan güvenli aktarım gerektir
 
-Programlı olarak güvenli aktarım gerektirmek için depolama hesabındaki _supportsHttpsTrafficOnly_ özelliğini ayarlayın. Bu özelliği, depolama kaynak sağlayıcısı REST API, istemci kitaplıkları veya araçları kullanarak ayarlayabilirsiniz:
+Programlı olarak güvenli aktarım gerektirmek için, depolama hesabında _enableHttpsTrafficOnly_ özelliğini _true_ olarak ayarlayın. Bu özelliği, depolama kaynak sağlayıcısı REST API, istemci kitaplıkları veya araçları kullanarak ayarlayabilirsiniz:
 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)

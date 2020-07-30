@@ -3,12 +3,12 @@ title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c8c254b2156a6f710c7130503b7c2a18d7168b0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132934"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420524"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure Yönetim grupları nelerdir?
 
@@ -38,7 +38,7 @@ Yönetim gruplarını kullanacağınız başka bir senaryo ise birden fazla abon
 
 ## <a name="root-management-group-for-each-directory"></a>Her dizin için kök yönetim grubu
 
-Her dizinde "Kök" yönetim grubu olarak adlandırılan tek bir üst düzey yönetim grubu bulunur. Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu kök yönetim grubunun altındadır. Bu kök yönetim grubu, genel ilkelerin ve RBAC atamalarının dizin düzeyinde uygulanmasını sağlar. Başlangıçta Azure AD Genel Yöneticisinin bu kök grubunun Kullanıcı Erişimi Yönetici rolüne [kendisini yükseltmesi gerekir](../../role-based-access-control/elevate-access-global-admin.md). Yönetici, erişimi yükselttikten sonra hiyerarşiyi yönetmek için diğer dizin kullanıcılarına veya gruplara herhangi bir RBAC rolü atayabilir. Yönetici olarak, kendi hesabınızı kök yönetim grubunun sahibi olarak atayabilirsiniz.
+Her dizinde "Kök" yönetim grubu olarak adlandırılan tek bir üst düzey yönetim grubu bulunur. Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu kök yönetim grubunun altındadır. Bu kök yönetim grubu, genel ilkelerin ve Azure rol atamalarının dizin düzeyinde uygulanmasını sağlar. Başlangıçta Azure AD Genel Yöneticisinin bu kök grubunun Kullanıcı Erişimi Yönetici rolüne [kendisini yükseltmesi gerekir](../../role-based-access-control/elevate-access-global-admin.md). Yönetici, erişimi yükselttikten sonra hiyerarşiyi yönetmek için diğer dizin kullanıcılarına veya gruplara herhangi bir RBAC rolü atayabilir. Yönetici olarak, kendi hesabınızı kök yönetim grubunun sahibi olarak atayabilirsiniz.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Kök yönetim grubu hakkında önemli bilgiler
 

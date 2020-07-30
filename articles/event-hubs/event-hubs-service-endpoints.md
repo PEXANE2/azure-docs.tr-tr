@@ -2,15 +2,15 @@
 title: Sanal ağ hizmeti uç noktaları-Azure Event Hubs | Microsoft Docs
 description: Bu makalede bir sanal ağa Microsoft. EventHub hizmet uç noktası ekleme hakkında bilgi sağlanır.
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288017"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420472"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Event Hubs ile sanal ağ hizmet uç noktalarını kullanma
+# <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Event Hubs ad alanlarına erişime izin ver 
 
 [Sanal ağ (VNet) hizmet uç noktaları][vnet-sep] ile Event Hubs tümleştirmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
 
@@ -56,10 +56,19 @@ Sanal ağ kuralı, bir sanal ağ alt ağıyla Event Hubs ad alanının bir iliş
 Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nasıl kullanılacağı gösterilmektedir. Erişimi sınırlandırmak için, bu Event Hubs ad alanı için sanal ağ hizmet uç noktasını tümleştirmeniz gerekir.
 
 1. [Azure portal](https://portal.azure.com) **Event Hubs ad alanına** gidin.
-2. Sol taraftaki menüden **ağ** seçeneği ' ni seçin. **Tüm ağlar** seçeneğini belirlerseniz, Olay Hub 'ı HERHANGI bir IP adresinden gelen bağlantıları kabul eder. Bu ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
+4. Sol menüdeki **Ayarlar** altında **ağ** ' ı seçin. 
+
+    > [!NOTE]
+    > **Ağ** sekmesini yalnızca **Standart** veya **adanmış** ad alanları için görürsünüz. 
+
+    Varsayılan olarak, **Seçili ağlar** seçeneği seçilidir. Bu sayfaya bir IP güvenlik duvarı kuralı belirtmezseniz veya bir sanal ağ eklerseniz, ad alanına genel internet (erişim anahtarı kullanılarak) dahil olmak üzere tüm ağlardan erişilebilir. 
+
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Ağlar sekmesi-seçili ağlar seçeneği" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+
+    **Tüm ağlar** seçeneğini belirlerseniz, Olay Hub 'ı HERHANGI bir IP adresinden (erişim anahtarı kullanılarak) gelen bağlantıları kabul eder. Bu ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
 
     ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Belirli ağlara erişimi kısıtlamak için, sayfanın üst kısmındaki **Seçili ağlar** seçeneğini belirleyin.
+1. Belirli ağlara erişimi kısıtlamak için, henüz seçili değilse sayfanın en üstündeki **Seçili ağlar** seçeneğini belirleyin.
 2. Sayfanın **sanal ağ** bölümünde, * * + var olan sanal ağı ekle * * * seçeneğini belirleyin. Yeni bir VNet oluşturmak istiyorsanız **+ Yeni sanal ağ oluştur** ' u seçin. 
 
     ![var olan sanal ağı ekle](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -77,6 +86,8 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 
     ![Ağı kaydet](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
+    > [!NOTE]
+    > Belirli IP adresleri veya aralıklarına erişimi kısıtlamak için bkz. [belırlı IP adreslerinden veya aralıklardan erişime Izin ver](event-hubs-ip-filtering.md).
 
 ## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
 

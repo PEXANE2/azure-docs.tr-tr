@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 75e2ffcad4caeb6500f05ce3801797084c18a043
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321658"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407039"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Machine Learning için Azure Güvenlik duvarının arkasındaki çalışma alanını kullanın
 
@@ -60,9 +60,9 @@ Bu bölümdeki konaklar, Python paketlerini yüklemek için kullanılır. Geliş
 
 | **Konak adı** | **Amaç** |
 | ---- | ---- |
-| **anaconda.com** | Conda paketleri yüklenirken kullanılır |
-| **pypi.org** | PIP paketleri yüklenirken kullanılır |
-
+| **anaconda.com** | Varsayılan paketleri yüklemek için kullanılır. |
+| **\*. anaconda.org** | Depo verilerini almak için kullanılır. |
+| **pypi.org** | Varsa, varsayılan dizinden bağımlılıkları listelemek için kullanılır ve dizin, Kullanıcı ayarları tarafından üzerine yazılmaz. Dizinin üzerine yazılırsa, ** \* . pythonhosted.org**de izin vermeniz gerekir. |
 
 ## <a name="r-hosts"></a>R Konakları
 

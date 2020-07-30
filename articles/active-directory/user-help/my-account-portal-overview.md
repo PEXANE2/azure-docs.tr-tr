@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 878fbb81e05db058aa015f8b4a7eae42e8cfea2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742202"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422428"
 ---
 # <a name="what-is-the-my-account-portal"></a>Hesabım portalı nedir?
 
@@ -33,7 +33,7 @@ Hesabım **portalı,** kuruluşunuzun verilerinizi nasıl kullandığını gör�
 ![Hesabım portalı, genel bakış sayfası](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Bu makale, kullanıcıların güvenlik bilgilerini, cihaz bilgilerini, parolayı, bağlı kuruluşları, gizliliği veya önceki oturum açma bilgilerini güncelleştirmek için Hesabım portalına ulaşmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlarınız için kimlik doğrulaması ve diğer Azure Active Directory (Azure AD) özelliklerinin nasıl kullanılacağına ilişkin bilgi isteyen bir yöneticiyseniz, [Yöneticiler Için Azure AD belgelerine](https://docs.microsoft.com/azure/active-directory/)bakın.
+>Bu makale, güvenlik bilgilerini, cihaz bilgilerini, parolayı, bağlı kuruluşları, dil ayarlarını, gizliliği veya önceki oturum açma bilgilerini güncelleştirmek için Hesabım portalına ulaşmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlarınız için kimlik doğrulaması ve diğer Azure Active Directory (Azure AD) özelliklerinin nasıl kullanılacağına ilişkin bilgi isteyen bir yöneticiyseniz, [Yöneticiler Için Azure AD belgelerine](https://docs.microsoft.com/azure/active-directory/)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -46,6 +46,8 @@ Hesabım **portalı,** kuruluşunuzun verilerinizi nasıl kullandığını gör�
 - [Oturum açma etkinliğinizi](my-account-portal-sign-ins-page.md) görüntüleme
 
 - Kuruluşunuzun [gizlilikle ilgili verilerinizi nasıl kullandığını](my-account-portal-privacy-page.md) görüntüleme
+
+- [Hesap Portalı ayarlarınızı](my-account-portal-settings.md) değiştirme
 
 ## <a name="related-microsoft-office-content"></a>İlgili Microsoft Office içeriği
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 40a907cdeb4934b4518fb6b1923d69a004f14d8d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d0aebffa5f3d27a77928c2a1c7461384bf99ce8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291475"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387889"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Android istemcisiyle Windows sanal masaüstüne bağlanma
 
@@ -21,9 +21,6 @@ ms.locfileid: "87291475"
 
 >[!IMPORTANT]
 >Bu içerik Azure Resource Manager Windows sanal masaüstü nesneleri ile Windows sanal masaüstü için geçerlidir. Azure Resource Manager nesneleri olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/connect-android-2019.md)bakın.
-
->[!NOTE]
-> Android istemcisinden Windows sanal masaüstü kaynaklarına erişme özelliği şu anda önizleme aşamasındadır.
 
 Windows sanal masaüstü kaynaklarına, indirilebilir istemcimizi kullanarak Android cihazınızdan erişebilirsiniz. Google Play Store destekleyen Kmebook cihazlarında Android istemcisini de kullanabilirsiniz. Bu kılavuz, Android istemcisini nasıl ayarlayacağınızı bildirir.
 

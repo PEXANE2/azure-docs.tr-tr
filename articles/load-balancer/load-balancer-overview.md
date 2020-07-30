@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 08f7554ed9648df8b225fe9f205ee13b0f693c44
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170573"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420337"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -32,7 +32,7 @@ Azure Load Balancer, açık sistemler arası (OSı) modelin dört katmanında ç
 Yalnızca ön uç üzerinde özel IP 'Lerin gerekli olduğu bir **[iç (veya özel) yük dengeleyici](./components.md#frontend-ip-configurations)** kullanılır. İç yük dengeleyiciler, bir sanal ağ içindeki trafiğin yükünü dengelemek için kullanılır. Bir yük dengeleyici ön uca bir karma senaryoda şirket içi ağdan erişilebilir.
 
 <p align="center">
-  <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
+  <img src="./media/load-balancer-overview/load-balancer.svg" alt="Figure depicts both public and internal load balancers directing traffic to port 80 on multiple servers on a Web tier and port 443 on multiple servers on a business tier." width="512" title="Azure Load Balancer">
 </p>
 
 *Şekil: çok katmanlı uygulamaları hem genel hem de dahili Load Balancer kullanarak Dengeleme*

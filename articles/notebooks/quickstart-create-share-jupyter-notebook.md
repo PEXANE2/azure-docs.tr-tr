@@ -4,12 +4,12 @@ description: Azure Notebooks önizlemede hızlı bir şekilde bir Jupyter Not de
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec1a03cb1c05248458a47ec4b22a0243b31bafcd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832110"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423295"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede bir not defteri oluşturma ve paylaşma
 
@@ -43,7 +43,7 @@ Yok.
 
 1. Birkaç dakika sonra Azure Notebooks yeni projeye götürür. **+ Yeni** açılan listesini seçerek (yalnızca olarak görünebilen **+** ) ve ardından **Not defteri**' ni seçerek projeye bir not defteri ekleyin:
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    :::image type="content" source="media/quickstarts/empty-project-new-notebook-button.png" alt-text="Yeni, boş bir proje ve Not defteri Ekle komutu." lightbox="media/quickstarts/empty-project-new-notebook-button.png":::
 
 1. Görüntülenen **Yeni Not Defteri Oluştur** açılır penceresinde, Not defteriniz Için *Helloworldinpython. ipynb* (*. ipynb* ) gibi bir dosya adı girin ve dil için **Python 3,6** ' i ( *çekirdek*olarak da anılır) seçin:
 

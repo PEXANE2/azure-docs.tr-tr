@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374465"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387787"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -55,7 +55,7 @@ Kullanıcılarınızın uygulamalarınıza çoklu oturum açma imkanı sağlaman
 ### <a name="considerations-for-federation-based-sso"></a>Federasyon tabanlı SSO konuları
 
 - **OpenID Connect ve OAuth kullanarak** , bağlanmakta olduğunuz uygulama onu destekliyorsa, bu uygulama için SSO 'yu etkinleştirmek üzere OIDC/OAuth 2,0 yöntemini kullanın. Bu yöntem daha az yapılandırma gerektirir ve daha zengin bir kullanıcı deneyimi sunar. Daha fazla bilgi için bkz. [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [openıd Connect 1,0](../develop/v2-protocols-oidc.md)ve [Azure Active Directory Geliştirici Kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
-- **SAML tabanlı SSO Için uç nokta yapılandırması** -SAML kullanıyorsanız, geliştiricilerinizin uygulamayı yapılandırmadan önce belirli bilgilere ihtiyacı olacaktır. Daha fazla bilgi için bkz. [temel SAML yapılandırmasını düzenleme](configure-single-sign-on-non-gallery-applications.md).
+- **SAML tabanlı SSO Için uç nokta yapılandırması** -SAML kullanıyorsanız, geliştiricilerinizin uygulamayı yapılandırmadan önce belirli bilgilere ihtiyacı olacaktır. Daha fazla bilgi için bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md).
 - **SAML tabanlı SSO Için sertifika yönetimi** -UYGULAMANıZıN Federasyon SSO 'yu etkinleştirdiğinizde, Azure AD üç yıl için varsayılan olarak geçerli olan bir sertifika oluşturur. Gerekirse, bu sertifika için süre sonu tarihini özelleştirebilirsiniz. Sertifikaları, süresi dolduktan önce yenilediğinizden emin olun. Daha fazla bilgi için bkz. [Azure AD sertifikaları yönetme](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
 
 ### <a name="considerations-for-password-based-sso"></a>Parola tabanlı SSO konuları
@@ -235,11 +235,11 @@ Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek
 
 | Bilgisini| Roller | Azure AD rolü (gerekirse) |
 |--------|-------|-----------------------------|
-| Yardım Masası Yöneticisi | Katman 1 desteği | Hiçbiri |
+| Yardım Masası Yöneticisi | Katman 1 desteği | Yok |
 | Kimlik Yöneticisi | Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama | Genel yönetici |
-| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
+| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
 | Altyapı Yöneticileri | Sertifika aktarma sahibi | Genel yönetici |
-| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
+| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek üzere [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) kullanmanızı öneririz.
 

@@ -4,12 +4,12 @@ description: Bu öğreticide, bir kurtarma hizmetleri Kasası oluşturmayı, bir
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: af1a869c9253a9037c5ee38313de60311acb1e10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87278000"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372561"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
 
@@ -98,11 +98,11 @@ Kurtarma Hizmetleri kasasını oluşturduktan sonraki adım, veri türü için k
 
      Yedekleme ilkesini oluşturduktan sonra ilkeyi sanal makineler ile ilişkilendirin.
 
-1. **Sanal makineler**altında * * Ekle "yi seçin.
+1. **Sanal makineler**altında **Ekle**' yi seçin.
 
      ![Sanal makine Ekle](./media/tutorial-backup-vm-at-scale/add-virtual-machines.png)
 
-1. **Sanal makineler Seç** bölmesi açılır. yedekleme ilkesini sanal makinelere dağıtmak için *Myvm* ' yi seçin ve **Tamam** ' ı seçin.
+1. **Sanal makineler Seç** bölmesi açılır. Yedekleme ilkesini sanal makinelere dağıtmak için *Myvm* ' yi seçin ve **Tamam** ' ı seçin.
 
     Aynı konumda olan ve henüz bir yedekleme ilkesiyle ilişkili olmayan tüm sanal makineler görünür. *myVMH1* ve *myVMR1* seçilerek *Finans* ilkesiyle ilişkilendirilir.
 

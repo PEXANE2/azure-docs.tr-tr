@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74815583"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387991"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Cihaz: Roobo akıllı ses geliştirme seti
 
@@ -52,9 +52,9 @@ Bu makalede, Roobo Smart Audio Dev Kit için cihaza özgü bilgiler sağlanmakta
    ```
 
     > [!NOTE]
-    > Bu komutlar, Android Studio yüklemesinin bir `adb.exe`parçası olan Android Debug Bridge kullanır. Bu araç, C:\Users\[Kullanıcı adı] \AppData\Local\Android\Sdk\platform-Tools. içinde bulunur Bu dizini, çağrılmasını `adb`daha kolay hale getirmek için yolunuza ekleyebilirsiniz. Aksi takdirde, çağıran `adb`her komutta ADB. exe yüklemenizin tam yolunu belirtmeniz gerekir.
+    > Bu komutlar, `adb.exe` Android Studio yüklemesinin bir parçası olan Android Debug Bridge kullanır. Bu araç, C:\Users \[ Kullanıcı adı] \AppData\Local\Android\Sdk\platform-Tools. içinde bulunur Bu dizini, çağrılmasını daha kolay hale getirmek için yolunuza ekleyebilirsiniz `adb` . Aksi takdirde, öğesini çağıran her komutta adb.exe yüklemenizin tam yolunu belirtmeniz gerekir `adb` .
     >
-    > Bir hata `no devices/emulators found` GÖRÜRSENIZ, USB kablonuzun bağlı olduğunu ve yüksek kaliteli bir kablo olduğunu denetleyin. Bilgisayarınızın, cihaz `adb devices` listesini döndürdüğü için geliştirme seti ile konuştuğunu denetlemek için kullanabilirsiniz.
+    > Bir hata görürseniz, `no devices/emulators found` USB kablonuzun bağlı olduğunu ve yüksek kaliteli bir kablo olduğunu denetleyin. `adb devices`Bilgisayarınızın, cihaz listesini döndürdüğü için geliştirme seti ile konuştuğunu denetlemek için kullanabilirsiniz.
     >
     > [!TIP]
     > Geliştirme Seti mikrofonlarla çalıştığınızdan emin olmak için BILGISAYARıNıZıN mikrofonunu ve hoparlörünü kapatın. Bu şekilde, yanlışlıkla cihazı BILGISAYARDAN sesle tetikleymezsiniz.
@@ -69,7 +69,7 @@ Daha fazla geliştirme bilgisi için, [Roobo geliştirme kılavuzuna](http://dwn
 
 ## <a name="audio"></a>Ses
 
-Roobo, Flash belleğine tüm sesleri yakalayan bir araç sağlar. Ses sorunlarını gidermenize yardımcı olabilir. Her geliştirme seti yapılandırması için aracın bir sürümü sağlanır. [Roobo sitesinde](https://ddk.roobo.com/)cihazınızı seçin ve ardından sayfanın altındaki **roobo araçları** bağlantısını seçin.
+Roobo, Flash belleğine tüm sesleri yakalayan bir araç sağlar. Ses sorunlarını gidermenize yardımcı olabilir. Her geliştirme seti yapılandırması için aracın bir sürümü sağlanır. [Roobo sitesinde](http://ddk.roobo.com/)cihazınızı seçin ve ardından sayfanın altındaki **roobo araçları** bağlantısını seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
