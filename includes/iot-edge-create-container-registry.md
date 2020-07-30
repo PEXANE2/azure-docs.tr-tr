@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: f8cb734e8a57e3b0ee114ae20f454d0034e9cdc9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387633"
+ms.locfileid: "87406732"
 ---
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
@@ -33,7 +33,7 @@ Zaten bir kapsayıcı kayıt defteriniz yoksa, Azure 'da yeni bir tane oluşturm
 
 3. **Oluştur**’u seçin.
 
-4. Kapsayıcı kayıt defteriniz oluşturulduktan sonra, bu dosyaya gidin ve sol bölmeden **Ayarlar**' ın altında bulunan menüden **erişim tuşları** ' nı seçin.
+4. Kapsayıcı kayıt defteriniz oluşturulduktan sonra, bu dosyaya gidin ve sol bölmeden **Ayarlar**' ın altında bulunan menüden **erişim tuşları** ' nı seçin. 
 
 5. Yönetici kullanıcının kapsayıcı kayıt defteriniz için **Kullanıcı adını** ve **parolayı** görüntülemesini etkinleştirmek üzere tıklayın.
 

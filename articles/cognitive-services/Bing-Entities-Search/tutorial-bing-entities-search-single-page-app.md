@@ -10,12 +10,13 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d14681e07518188deabd9f48a04b80a489d858b8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184149"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407940"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
 
@@ -56,7 +57,7 @@ Bu öğreticide, kaynak kodun yalnızca seçilen bölümlerini açıklıyoruz. T
 > [!NOTE]
 > Bu öğretici, [tek sayfalı Bing Web Araması uygulaması öğreticisine](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) büyük ölçüde benzer, ancak yalnızca varlık araması sonuçlarını ele alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyle birlikte izlemek için Bing Arama API 'si ve Bing Haritalar API 'SI için abonelik anahtarlarına ihtiyacınız vardır. 
 

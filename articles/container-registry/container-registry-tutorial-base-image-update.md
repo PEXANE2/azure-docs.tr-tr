@@ -3,13 +3,13 @@ title: Öğretici-temel görüntü güncelleştirmesinde görüntü oluşturmay�
 description: Bu öğreticide, aynı kayıt defterinde bir temel görüntü güncelleştirildiği zaman buluttaki kapsayıcı görüntüsü yapılarını otomatik olarak tetiklemek üzere bir Azure Container Registry görevinin nasıl yapılandırılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 4797dd1f1fe19b98ab94c4743ad4af3c43ce0627
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 0efac34d05dfaf8877efec2e66f1f95a19ca95be
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78402865"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408008"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Öğretici: Azure Container Registry 'de temel görüntü güncelleştirildiği zaman kapsayıcı görüntüsü derlemelerini otomatikleştirin 
 
@@ -30,7 +30,7 @@ Bu öğreticide:
 
 Azure CLI’yı yerel olarak kullanmak istiyorsanız Azure CLI **2.0.46** veya sonraki bir sürüm yüklü olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="complete-the-previous-tutorials"></a>Önceki öğreticileri tamamlama
 
@@ -51,7 +51,7 @@ Daha önce yapmadıysanız, devam etmeden önce aşağıdaki öğreticilerini do
 
 Bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmelisiniz.
 
-[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell’i başlatma")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -97,7 +97,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Bu görev, [önceki öğreticide](container-registry-tutorial-build-task.md)oluşturulan görevle benzerdir. ACR Görevlerine, işlemeler `--context` tarafından belirtilen depoya gönderildiğinde bir görüntü derlemesi tetiklemesini bildirir. Önceki öğreticide görüntüyü oluşturmak için kullanılan Dockerfile, genel bir temel görüntü (`FROM node:9-alpine`), bu görevde Dockerfile, [dockerfile-App][dockerfile-app], aynı kayıt defterindeki bir temel görüntüyü belirtir:
+Bu görev, [önceki öğreticide](container-registry-tutorial-build-task.md)oluşturulan görevle benzerdir. ACR Görevlerine, işlemeler `--context` tarafından belirtilen depoya gönderildiğinde bir görüntü derlemesi tetiklemesini bildirir. Önceki öğreticide görüntüyü oluşturmak için kullanılan Dockerfile, genel bir temel görüntü ( `FROM node:9-alpine` ), bu görevde Dockerfile, [dockerfile-App][dockerfile-app], aynı kayıt defterindeki bir temel görüntüyü belirtir:
 
 ```dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -125,7 +125,7 @@ Cloud Shell'de değil de yerel olarak çalışıyorsanız ve Docker'ı yüklediy
 az acr login --name $ACR_NAME
 ```
 
-Şimdi `docker run` ile kapsayıcıyı yerel olarak çalıştırın. ** \<Run-ID\> ** ' i önceki adımdaki çıkışta bulunan çalıştırma kimliğiyle değiştirin (örneğin, "DA6"). Bu örnek, kapsayıcıyı `myapp` bir şekilde adlandırır ve `--rm` bunu durdurduğunuzda kapsayıcıyı kaldırmak için parametresini içerir.
+Şimdi `docker run` ile kapsayıcıyı yerel olarak çalıştırın. **\<run-id\>** Önceki adımdan alınan çıkışta bulunan çalıştırma kimliğiyle değiştirin (örneğin, "DA6"). Bu örnek, kapsayıcıyı bir `myapp` şekilde adlandırır ve `--rm` bunu durdurduğunuzda kapsayıcıyı kaldırmak için parametresini içerir.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>

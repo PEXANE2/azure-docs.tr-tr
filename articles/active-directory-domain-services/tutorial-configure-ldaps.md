@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024868"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404183"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -110,6 +110,7 @@ Güvenli LDAP kullanmak için ağ trafiği, ortak anahtar altyapısı (PKI) kull
 * Yönetilen etki alanına **özel** bir anahtar uygulanır.
     * Bu özel anahtar, Güvenli LDAP trafiğinin *şifresini çözmek* için kullanılır. Özel anahtar yalnızca yönetilen etki alanına uygulanmalıdır ve istemci bilgisayarlara yaygın olarak dağıtılmamalıdır.
     * Özel anahtarı içeren bir sertifika ' nı kullanır *. PFX* dosya biçimi.
+    * Sertifika için şifreleme algoritması, *TripleDES-SHA1*olmalıdır.
 * İstemci bilgisayarlara **ortak** anahtar uygulanır.
     * Bu ortak anahtar, Güvenli LDAP trafiğini *şifrelemek* için kullanılır. Ortak anahtar istemci bilgisayarlara dağıtılabilir.
     * Özel anahtarı olmayan Sertifikalar ' i kullanır *. CER* dosya biçimi.
@@ -149,7 +150,7 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 
 1. Bu sertifika verilerin şifresini çözmek için kullanıldığından, erişimi dikkatle kontrol etmeniz gerekir. Sertifika kullanımını korumak için bir parola kullanılabilir. Doğru parola olmadan sertifika bir hizmete uygulanamaz.
 
-    **Güvenlik** sayfasında, korumak için **parola** seçeneğini belirleyin *. PFX* sertifika dosyası. Bir parola girin ve onaylayın, ardından **İleri**' yi seçin. Bu parola, yönetilen etki alanınız için Güvenli LDAP özelliğini etkinleştirmek üzere bir sonraki bölümde kullanılır.
+    **Güvenlik** sayfasında, korumak için **parola** seçeneğini belirleyin *. PFX* sertifika dosyası. Şifreleme algoritması *TripleDES-SHA1*olmalıdır. Bir parola girin ve onaylayın, ardından **İleri**' yi seçin. Bu parola, yönetilen etki alanınız için Güvenli LDAP özelliğini etkinleştirmek üzere bir sonraki bölümde kullanılır.
 1. **Dışarı aktarılacak dosya** sayfasında, sertifikayı dışarı aktarmak istediğiniz dosya adını ve konumunu belirtin, örneğin *C:\Users\accountname\azure-AD-DS.pfx*. Parolasını ve konumunu bir yere göz önünde bulundurun *. *Bu bilgilerin sonraki adımlarda kullanılması IÇIN pfx dosyası.
 1. Gözden geçirme sayfasında, sertifikayı bir öğesine aktarmak için **son** ' u seçin *. PFX* sertifika dosyası. Sertifika başarıyla verildiğinde bir onay iletişim kutusu görüntülenir.
 1. Aşağıdaki bölümde MMC 'YI kullanılmak üzere açık bırakın.
@@ -210,7 +211,7 @@ Yönetilen etki alanı için Güvenli LDAP 'nin yapılandırılmakta olduğu bir
 
 Yönetilen etki alanınız için Güvenli LDAP 'nin etkinleştirilmesi birkaç dakika sürer. Sağladığınız Güvenli LDAP sertifikası gerekli ölçütlere uymuyorsa, yönetilen etki alanı için Güvenli LDAP 'yi etkinleştirme eylemi başarısız olur.
 
-Hata için bazı yaygın nedenler, etki alanı adı yanlış veya sertifikanın süresi yakında dolar veya zaten süresi dolmuşsa olur. Sertifikayı geçerli parametrelerle yeniden oluşturabilir ve ardından bu güncelleştirilmiş sertifikayı kullanarak Güvenli LDAP 'yi etkinleştirebilirsiniz.
+Hata için bazı yaygın nedenler, etki alanı adının hatalı olması, sertifika için şifreleme algoritmasının *üç aylık*olmaması veya sertifikanın süresi yakında sona ermesinin süresinin dolması veya zaten süresinin dolması olabilir. Sertifikayı geçerli parametrelerle yeniden oluşturabilir ve ardından bu güncelleştirilmiş sertifikayı kullanarak Güvenli LDAP 'yi etkinleştirebilirsiniz.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>İnternet üzerinden güvenli LDAP erişimini kilitleme
 
@@ -228,12 +229,12 @@ Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen g
     | Kaynak                            | IP Adresleri |
     | Kaynak IP adresleri/CıDR aralıkları | Ortamınız için geçerli bir IP adresi veya aralığı |
     | Kaynak bağlantı noktası aralıkları                | *            |
-    | Hedef                       | Herhangi biri          |
+    | Hedef                       | Herhangi bir          |
     | Hedef bağlantı noktası aralıkları           | 636          |
     | Protokol                          | TCP          |
     | Eylem                            | İzin Ver        |
     | Öncelik                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Ad                              | AllowLDAPS   |
 
 1. Hazırsanız, kuralı kaydetmek ve uygulamak için **Ekle** ' yi seçin.
 

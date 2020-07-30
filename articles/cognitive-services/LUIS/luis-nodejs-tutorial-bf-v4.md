@@ -3,12 +3,13 @@ title: 'Öğretici: Language Understanding bot Node.js v4'
 description: Node.js kullanarak, bu öğreticide dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturun. Bu sohbet robotu, bir robot çözümünü kısa sürede gerçekleştirmek için İnsan Kaynakları uygulamasını kullanır. Robot, Bot Framework sürümü 4 ve Azure Web uygulaması robotu ile geliştirilmiştir.
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f726034f18f834dcaf9b202ffbf03a45e5b6ce7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 522502a043778d6f482c1756506063dfa6515ca3
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443561"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405033"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Öğretici: Node.js Language Understanding ile etkin bir Web uygulaması bot kullanın
 
@@ -22,7 +23,7 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak için Node.js 
 > * Robotu ve öykünücüyü bilgisayarınızda yerel olarak başlatma
 > * Robotta konuşma sonuçlarını görüntüleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Robot öykünücüsü](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
@@ -31,7 +32,7 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak için Node.js 
 
 1. [Azure portalda](https://portal.azure.com)**Yeni kaynak oluştur**'u seçin.
 
-1. Arama kutusunda **Web Uygulaması Robotu**'nu arayın ve bunu seçin. **Oluştur**'u seçin.
+1. Arama kutusunda **Web Uygulaması Robotu**'nu arayın ve bunu seçin. **Oluştur**’u seçin.
 
 1. **Robot Hizmeti**'nde gerekli bilgileri sağlayın:
 
@@ -56,7 +57,7 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak için Node.js 
     |SDK dili|Robotun programlama dili|**Node.js**|
     |Hecesi|Robot türü|**Temel robot**|
 
-1. **Oluştur**'u seçin. Robot hizmetini oluşturur ve Azure'a dağıtır. Bu işlemin bir parçası olarak `luis-nodejs-bot-XXXX` adlı bir LUIS uygulaması oluşturulur. Bu ad/Azure bot hizmeti uygulama adını temel alır.
+1. **Oluştur**’u seçin. Robot hizmetini oluşturur ve Azure'a dağıtır. Bu işlemin bir parçası olarak `luis-nodejs-bot-XXXX` adlı bir LUIS uygulaması oluşturulur. Bu ad/Azure bot hizmeti uygulama adını temel alır.
 
     > [!div class="mx-imgBorder"]
     > [![Web uygulaması robotu oluşturma](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
@@ -74,7 +75,7 @@ Bot hizmeti oluşturma işlemi, amaçlar ve örnek dıklarla yeni bir LUO uygula
 |Kitap kolu|`Travel to Paris`|
 |İptal|`bye`|
 |Gethava durumu|`what's the weather like?`|
-|Hiçbiri|Uygulamanın etki alanı dışındaki her şey.|
+|Yok|Uygulamanın etki alanı dışındaki her şey.|
 
 ## <a name="test-the-bot-in-web-chat"></a>Web sohbetinde bot 'ı test etme
 
@@ -380,7 +381,7 @@ Kitap uçuş amacı için bir soru sorun.
 
     [![Öykünücüde temel bot yanıtı](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. **Evet**' i seçin. Bot, eylemlerinin bir özeti ile yanıt verir.
+1. **Evet**’i seçin. Bot, eylemlerinin bir özeti ile yanıt verir.
 1. Bot öykünücüsünün günlüğünden, dahil edilen satırı seçin `<- trace LuisV3 Trace` . Bu, deterance 'in amacı ve varlıkları için LUSıS 'den gelen JSON yanıtını görüntüler.
 
     [![Öykünücüde temel bot yanıtı](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
