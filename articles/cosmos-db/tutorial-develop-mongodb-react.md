@@ -1,5 +1,5 @@
 ---
-title: Azure için MongoDB, tepki verme ve Node. js öğreticisi
+title: Azure için MongoDB, tepki verme ve Node.js öğreticisi
 description: Video temelli bu öğretici serisiyle Azure Cosmos DB üzerinde React ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturmayı öğrenirsiniz.
 author: johnpapa
 ms.service: cosmos-db
@@ -9,12 +9,13 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8fbf06d6bd93de578039959d9f0235f1f55d448e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69614106"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424282"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React ve Azure Cosmos DB ile bir MongoDB uygulaması oluşturma  
 
@@ -34,7 +35,7 @@ Bu çok bölümlü öğretici aşağıdaki görevleri içerir:
 
 Aynı uygulamayı Angular ile oluşturmak ister misiniz? Bkz. [Angular öğretici video serisi](tutorial-develop-mongodb-nodejs.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Node.js](https://www.nodejs.org)
 
 ### <a name="finished-project"></a>Tamamlanmış Proje

@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 13c5ac4a9b4d1ac996eb4eadc0cecd626964b4e8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40a2cd5898ede7fc30db9a8475c5ab7cc68095ff
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101809"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337645"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI ile verileri görselleştirme
 
@@ -94,5 +94,6 @@ Power BI çalışma alanını Azure SYNAPSE çalışma alanınıza bağlayabilir
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure SYNAPSE Analytics (çalışma alanları Önizleme)](overview-what-is.md)
+> [İzleyici](get-started-monitor.md)
+                                 
 
