@@ -67,7 +67,9 @@
     - name: Geçici silme
       items:
         - name: Azure Key Vault geçici silme
-          href: overview-soft-delete.md
+          href: soft-delete-overview.md
+        - name: Varsayılan olarak etkin geçici silme
+          href: soft-delete-change.md
     - name: 'Kimlik doğrulaması, istekler ve yanıtlar'
       href: authentication-requests-and-responses.md
     - name: Azure Key Vault azaltma yönergeleri
