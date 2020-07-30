@@ -1,5 +1,5 @@
 ---
-title: Bir Node. js uygulaması derlemek için MongoDB için Azure Cosmos DB API 'sini kullanın
+title: Node.js uygulaması derlemek için MongoDB için Azure Cosmos DB API 'sini kullanın
 description: MongoDB için Azure Cosmos DB API 'sini kullanarak çevrimiçi bir veritabanı oluşturan bir öğretici.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,14 +8,15 @@ ms.topic: sample
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: deb0ca935cd01a0d86eea007711f65e439d4da00
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61330607"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421986"
 ---
-# <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Node. js ve Azure Cosmos DB API 'sini kullanarak uygulama oluşturma 
+# <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Node.js ve Azure Cosmos DB API 'sini kullanarak uygulama oluşturma 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -24,7 +25,7 @@ ms.locfileid: "61330607"
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
-Bu örnek, MongoDB için Node. js ve Azure Cosmos DB API 'sini kullanarak bir konsol uygulaması oluşturmayı gösterir.
+Bu örnek, MongoDB için Node.js ve Azure Cosmos DB API 'sini kullanarak bir konsol uygulaması oluşturmayı gösterir.
 
 Bu örneği kullanmak için yapmanız gerekenler:
 

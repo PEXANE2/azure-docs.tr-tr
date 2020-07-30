@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos veritabanındaki verileri yönetmek için Node. js örnekleri
+title: Azure Cosmos veritabanındaki verileri yönetmek için örnek Node.js
 description: CRUD işlemleri gibi Azure Cosmos DB'deki yaygın görevler için Github'da Node.js örnekleri bulabilirsiniz.
 author: deborahc
 ms.service: cosmos-db
@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: 89fc13f7391a3bd270730a6e95e0132305e04b68
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2c0e2b7a63f02559f95b647bc1b4ef46b8a157cd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683850"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421833"
 ---
-# <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB verileri yönetmek için Node. js örnekleri
+# <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB verileri yönetmek için örnek Node.js
 
 > [!div class="op_single_selector"]
 > * [.NET v2 SDK örnekleri](sql-api-dotnet-samples.md)

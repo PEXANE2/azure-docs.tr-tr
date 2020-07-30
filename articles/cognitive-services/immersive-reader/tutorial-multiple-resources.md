@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: birden çok modern okuyucu kaynağını tümleştirme'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, birden çok derinlikli okuyucu kaynağı kullanarak tam ekran okuyucuyu Başlatan bir Node. js uygulaması oluşturacaksınız.
+description: Bu öğreticide, birden çok derinlikli okuyucu kaynağı kullanarak tam ekran okuyucu Başlatan bir Node.js uygulaması oluşturacaksınız.
 author: skamal
 manager: nitinme
 ms.service: cognitive-services
@@ -9,16 +9,17 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 214d6d614fcc54a532766854f2e72ac45dbfa8ad
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267214"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407209"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Öğretici: birden çok modern okuyucu kaynağını tümleştirme
 
-[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. [Node. js hızlı başlangıç](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)bölümünde, tek bir kaynakla modern okuyucu kullanmayı öğrendiniz. Bu öğreticide, aynı uygulamadaki birden çok derinlikli okuyucu kaynağını tümleştirme ele alınmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. [Node.js hızlı](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)başlangıçta, tek bir kaynakla modern okuyucu kullanmayı öğrendiniz. Bu öğreticide, aynı uygulamadaki birden çok derinlikli okuyucu kaynağını tümleştirme ele alınmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Var olan bir kaynak grubu altında birden çok modern okuyucu kaynağı oluşturma
@@ -26,7 +27,7 @@ ms.locfileid: "84267214"
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * NodeJS ile modern okuyucuyu Başlatan bir Web uygulaması oluşturmak için [hızlı](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) başlangıcı izleyin. Bu hızlı başlangıçta, tek bir tam ekran okuyucu kaynağı yapılandırırsınız. Bu öğreticide bunun üzerine oluşturacağız.
 
@@ -78,7 +79,7 @@ SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 
 Ortak olmaması gereken gizli dizileri içerdiğinden, bu dosyayı kaynak denetimine yürütmemeyi unutmayın.
 
-Daha sonra, birden çok kaynakmuzu desteklemek için oluşturduğumuz _routes\ındex.js_ dosyasını değiştiririz. İçeriğini aşağıdaki kodla değiştirin.
+Daha sonra, oluşturduğum _routes\index.js_ dosyayı, birden çok kaynaklarımızı destekleyecek şekilde değiştirmektir. İçeriğini aşağıdaki kodla değiştirin.
 
 Daha önce olduğu gibi, bu kod hizmet sorumlusu parolanızı kullanarak bir Azure AD kimlik doğrulama belirteci alan bir API uç noktası oluşturur. Bu kez, kullanıcının bir kaynak konumu belirtmesini ve bunu bir sorgu parametresi olarak iletmesini sağlar. Ardından, belirteci ve ilgili alt etki alanını içeren bir nesne döndürür.
 

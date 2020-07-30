@@ -10,12 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: 83cdaecfb819fb1f4677b051f87e23e0e03daef2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f1b32a72d81b42e7a349f92dcdc7a141a013312d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80370109"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404046"
 ---
 # <a name="tutorial-create-a-visual-search-single-page-web-app"></a>Öğretici: Görsel Arama tek sayfalı Web uygulaması oluşturma
 
@@ -25,7 +26,7 @@ Bu öğreticide, Bing Resim Arama API'si için tek sayfalı bir Web uygulamasın
 
 Bu uygulama için tam kaynak kodu (Bing Görsel Arama API'si kullanmak üzere genişlettikten sonra), [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html)' da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
@@ -63,7 +64,7 @@ function handleVisualSearchResponse(){
 }
 ```
 
-Aşağıdaki kod, çağırmak `handleVisualSearchResponse()`için bir olay DINLEYICISI kullanarak API 'ye bir arama isteği gönderir:
+Aşağıdaki kod, çağırmak için bir olay dinleyicisi kullanarak API 'ye bir arama isteği gönderir `handleVisualSearchResponse()` :
 
 ```javascript
 function bingVisualSearch(insightsToken){
@@ -101,7 +102,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>İçgörü elde etme belirteci
 
-`searchItemsRenderer` Nesnesine aşağıdaki kodu ekleyin. Bu kod, tıklandığında `bingVisualSearch` işlevini çağıran bir **benzerlerini bulma** bağlantısı ekler. İşlevi bir bağımsız değişken `imageInsightsToken` olarak alır.
+Nesnesine aşağıdaki kodu ekleyin `searchItemsRenderer` . Bu kod, tıklandığında `bingVisualSearch` işlevini çağıran bir **benzerlerini bulma** bağlantısı ekler. İşlevi `imageInsightsToken` bir bağımsız değişken olarak alır.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
