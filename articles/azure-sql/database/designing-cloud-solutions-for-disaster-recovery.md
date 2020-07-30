@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 12/04/2018
-ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: a23330bb00fb06a3ed9d3dfe28666e8f27dae4fa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344654"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405050"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanarak küresel olarak kullanılabilir hizmetler tasarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,13 @@ B bölgesinde bir kesinti olursa, birincil ve ikincil veritabanı arasındaki ç
 > Olağanüstü durum kurtarma için, uygulama dağıtımı ile yapılandırmanın iki bölgeyle sınırlı olması önerilir. Bunun nedeni, Azure coğrafi bölümlerinin çoğunun yalnızca iki bölgedir. Bu yapılandırma, uygulamanızı her iki bölgenin de eş zamanlı olmayan arızasından korumaz. Bu tür bir başarısızlığın olası bir olayında, [coğrafi geri yükleme işlemini](disaster-recovery-guidance.md#recover-using-geo-restore)kullanarak veritabanlarınızı üçüncü bir bölgede kurtarabilirsiniz.
 >
 
- Kesinti azaltıldıktan sonra, ikincil veritabanı otomatik olarak birincil ile yeniden eşitlenir. Eşitleme sırasında birincili performansı etkilenebilir. Belirli etki, yük devretmeden bu yana yeni birincil alınan veri miktarına bağlıdır. Aşağıdaki diyagramda, İkincil bölgedeki bir kesinti gösterilmektedir:
+ Kesinti azaltıldıktan sonra, ikincil veritabanı otomatik olarak birincil ile yeniden eşitlenir. Eşitleme sırasında birincili performansı etkilenebilir. Belirli etki, yük devretmeden bu yana yeni birincil alınan veri miktarına bağlıdır. 
+
+> [!NOTE]
+> Kesinti azaltıldıktan sonra Traffic Manager, A bölgesindeki uygulamaya bağlantıları daha yüksek öncelikli bitiş noktası olarak yönlendirmeye başlar. Birincil bölge B bölgesinde bir süre boyunca saklamayı düşünüyorsanız, trafic Manager profilindeki öncelik tablosunu uygun şekilde değiştirmelisiniz. 
+>
+ 
+ Aşağıdaki diyagramda, İkincil bölgedeki bir kesinti gösterilmektedir:
 
 ![Senaryo 1. İkincil bölgedeki bir kesinti sonrasında yapılandırma.](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 

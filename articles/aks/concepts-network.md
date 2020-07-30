@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS), Kubernetes kullanan ve Azure C
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244659"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387770"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ağ kavramları
 
@@ -94,7 +94,7 @@ Kubernetes kullanan ve Azure CNı, AKS kümeleriniz için ağ bağlantısı sağ
 
 Kubernetes kullanan ve Azure CNı arasında aşağıdaki davranış farklılıkları vardır:
 
-| Yetenek                                                                                   | Kubernetes kullanan   | Azure CNı |
+| Özellik                                                                                   | Kubernetes kullanan   | Azure CNı |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
 | Kümeyi var olan veya yeni bir sanal ağda dağıt                                            | Desteklenen-UDRs el ile uygulandı | Desteklenir |
 | Pod-POD bağlantısı                                                                         | Desteklenir | Desteklenir |
@@ -105,7 +105,7 @@ Kubernetes kullanan ve Azure CNı arasında aşağıdaki davranış farklılıkl
 | Yük Dengeleyici Hizmeti, uygulama ağ geçidi veya giriş denetleyicisi kullanarak Kubernetes hizmetlerini kullanıma sunma | Desteklenir | Desteklenir |
 | Varsayılan Azure DNS ve özel bölgeler                                                          | Desteklenir | Desteklenir |
 
-Hem Kubernetes kullanan hem de Azure CNı eklentileri DNS ile ilgili olarak, AKS 'de çalışan bir Daemon kümesi olan CoreDNS tarafından sunulur. Kubernetes üzerinde CoreDNS hakkında daha fazla bilgi için bkz. [DNS hizmetini özelleştirme](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS, bilinmeyen etki alanlarını düğüm DNS sunucularına, diğer bir deyişle, AKS kümesinin dağıtıldığı Azure sanal ağının DNS işlevselliğine iletmek üzere varsayılan olarak yapılandırılır. Bu nedenle, Azure DNS ve özel bölgeler aks 'de çalışan Pod 'ler için çalışacaktır.
+Hem Kubernetes kullanan hem de Azure CNı eklentileri DNS ile ilgili olarak, kendi otomatik Scaler ile AKS 'de çalışan bir dağıtım olan CoreDNS tarafından sunulur. Kubernetes üzerinde CoreDNS hakkında daha fazla bilgi için bkz. [DNS hizmetini özelleştirme](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS, bilinmeyen etki alanlarını düğüm DNS sunucularına, diğer bir deyişle, AKS kümesinin dağıtıldığı Azure sanal ağının DNS işlevselliğine iletmek üzere varsayılan olarak yapılandırılır. Bu nedenle, Azure DNS ve özel bölgeler aks 'de çalışan Pod 'ler için çalışacaktır.
 
 ### <a name="support-scope-between-network-models"></a>Ağ modelleri arasındaki Destek kapsamı
 
@@ -114,7 +114,7 @@ Kullandığınız ağ modelinden bağımsız olarak, hem Kubernetes kullanan hem
 * Azure platformu, bir AKS kümesi oluştururken sanal ağ kaynaklarını otomatik olarak oluşturabilir ve yapılandırabilir.
 * Sanal ağ kaynaklarını el ile oluşturup yapılandırabilir ve AKS kümenizi oluştururken bu kaynaklara iliştirebilirsiniz.
 
-Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örnek:
+Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örneğin:
 
 * Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi UDRs veya hizmet uç noktalarınızı yapılandırırken bu kaynakları destekliyoruz.
 * Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturursa, kendi UDRs veya hizmet uç noktalarınızı yapılandırmak üzere bu AKS tarafından yönetilen kaynakları el ile değiştirmek desteklenmez.

@@ -7,12 +7,12 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d142206a9640ce53ea7463a2c68c5d1c8f64c354
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d1a16da5582e874cecc27443ff62878349c24575
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287187"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424197"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Hızlı Başlangıç: .NET için Azure Blob depolama istemci kitaplığı v12
 
@@ -20,7 +20,7 @@ ms.locfileid: "87287187"
 
 .NET için Azure Blob depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
 
-* Bir kapsayıcı oluşturma
+* Kapsayıcı oluşturma
 * Azure depolama 'ya blob yükleme
 * Bir kapsayıcıdaki tüm Blobları listeleme
 * Blobu yerel bilgisayarınıza indirme
@@ -35,7 +35,7 @@ Ek kaynaklar:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -130,7 +130,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Bu örnek kod parçacıkları, .NET için Azure Blob depolama istemci kitaplığı ile aşağıdakilerin nasıl gerçekleştirileceğini göstermektedir:
 
 * [Bağlantı dizesini alma](#get-the-connection-string)
-* [Bir kapsayıcı oluşturma](#create-a-container)
+* [Kapsayıcı oluşturma](#create-a-container)
 * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
 * [Blob’ları bir kapsayıcıda listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
@@ -154,7 +154,7 @@ Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
 string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir GUID değeri ekler.
 
@@ -230,9 +230,9 @@ Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 // Download the blob to a local file
-// Append the string "DOWNLOAD" before the .txt extension 
+// Append the string "DOWNLOADED" before the .txt extension 
 // so you can compare the files in the data directory
-string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOAD.txt");
+string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOADED.txt");
 
 Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
 

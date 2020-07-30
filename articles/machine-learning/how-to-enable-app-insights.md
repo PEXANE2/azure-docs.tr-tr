@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320230"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423822"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Uç noktanın çıkış verilerini ve yanıtını toplamaya ek olarak şunları 
 [Azure Application Insights hakkında daha fazla bilgi edinin](../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 
@@ -128,6 +128,8 @@ Bu verilere erişmek için doğrudan Azure Application Insights sorgulayabilir v
 
 3. Bir görüntü oluşturun ve [aks veya ACI](how-to-deploy-and-where.md)üzerinde dağıtın.
 
+Günlüğe kaydetme ve veri toplama hakkında daha fazla bilgi için bkz. [Azure Machine Learning oturum açmayı etkinleştirme](how-to-enable-logging.md) ve [üretimdeki modellerden veri toplama](how-to-enable-data-collection.md).
+
 ### <a name="disable-tracking-in-python"></a>Python 'da izlemeyi devre dışı bırak
 
 Azure Application Insights 'yi devre dışı bırakmak için aşağıdaki kodu kullanın:
@@ -166,7 +168,7 @@ Görüntülemek için:
 
     [![Application Insights URL 'sini bul](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Uygulama ve sol taraftaki listenin **genel bakış** sekmesinde veya __izleme__ bölümünde __Günlükler__' i seçin.
+1. Application Insights ' de, sol taraftaki listenin **genel bakış** sekmesinde veya __izleme__ bölümünde __Günlükler__' i seçin.
 
     [![İzlemenin Genel Bakış sekmesi](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 

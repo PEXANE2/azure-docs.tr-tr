@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025787"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428387"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) ' de cihaz yönetimiyle, Kullanıcıların kay
 > * Katılmış cihazları doğrulama
 > * Uygulamanızda sorun giderme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide hakkında bilgi sahibi olduğunuz varsayılmaktadır:
 
@@ -59,6 +59,9 @@ Bilgisayarların Azure AD 'ye kaydı için kuruluşunuzun ağındaki bilgisayarl
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * Kuruluşunuzun STS 'si (federe etki alanları için), kullanıcının yerel intranet ayarlarına dahil edilmelidir
+
+> [!WARNING]
+> Kuruluşunuz, veri kaybı önleme veya Azure AD kiracı kısıtlamaları gibi senaryolar için SSL trafiğini kesintiye uğratan ara sunucular kullanıyorsa, ' https://device.login.microsoftonline.com ' TRAFIĞININ TLS kesme ve İnceleme dışında dışlandığından emin olun. ' ' Dışlanmaması https://device.login.microsoftonline.com , istemci sertifikası kimlik doğrulaması ile kesintiye neden olabilir ve cihaz kaydı ve cihaz tabanlı koşullu erişimle ilgili sorunlara neden olabilir.
 
 Kuruluşunuz sorunsuz SSO kullanmayı planlıyorsa, aşağıdaki URL 'nin kuruluşunuzdaki bilgisayarlardan erişilebilir olması gerekir. Ayrıca, kullanıcının yerel intranet bölgesine de eklenmelidir.
 
@@ -112,7 +115,7 @@ Aşağıdaki Windows PowerShell betiğini kullanarak nesnenin varlığını doğ
    $scp.Keywords;
    ```
 
-**$SCP. Anahtar sözcük** çıkışları, Azure AD kiracı bilgilerini gösterir. Aşağıda bir örnek verilmiştir:
+**$SCP. Anahtar sözcük** çıkışları, Azure AD kiracı bilgilerini gösterir. İşte bir örnek:
 
    ```
    azureADName:microsoft.com
@@ -565,7 +568,7 @@ Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
 3. **Kayıtlı** sütun **bekliyor**Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz. Federasyon ortamlarında, bu durum yalnızca kayıt başarısız olduysa ve AAD Connect cihazları eşitlemek üzere yapılandırılmışsa gerçekleşebilir.
 4. **Kayıtlı** sütun bir **Tarih/saat**IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** kullanarak Azure kiracınızdaki cihaz kayıt durumunu doğrulayın. Bu cmdlet [Azure Active Directory PowerShell modülüdür](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
 

@@ -5,14 +5,14 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340442"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423431"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus Azure özel bağlantısıyla tümleştirin
+# <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Özel uç noktalar aracılığıyla Azure Service Bus ad alanlarına erişime izin ver
 
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Service Bus, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
 
@@ -46,7 +46,7 @@ Bir Service Bus ad alanını Azure özel bağlantısıyla bütünleştirmek içi
 
 - Bir Service Bus ad alanı.
 - Bir Azure sanal ağı.
-- Sanal ağdaki bir alt ağ.
+- Sanal ağdaki bir alt ağ. **Varsayılan** alt ağı kullanabilirsiniz. 
 - Hem Service Bus ad alanı hem de sanal ağ için sahip veya katkıda bulunan izinleri.
 
 Özel uç noktanız ve sanal ağınız aynı bölgede olmalıdır. Portalı kullanarak özel uç nokta için bir bölge seçtiğinizde bu, yalnızca o bölgedeki sanal ağları otomatik olarak filtreleyecek. Service Bus ad alanınız farklı bir bölgede olabilir. Ve özel uç noktanız sanal ağınızda özel bir IP adresi kullanıyor.
@@ -58,8 +58,19 @@ Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bi
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **Service Bus**yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
-4. **Ayarlar**altında **ağ** sekmesini seçin.
-5. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları** sekmesini seçin
+2. Sol taraftaki menüde, **Ayarlar**altında **ağ** seçeneği ' ni seçin. 
+
+    > [!NOTE]
+    > **Ağ** sekmesini yalnızca **Premium** ad alanları için görürsünüz.  
+    
+    Varsayılan olarak, **Seçili ağlar** seçeneği seçilidir. Bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Ağ sayfası-varsayılan" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    **Tüm ağlar** seçeneğini belirlerseniz, Service Bus ad alanınız HERHANGI bir IP adresinden gelen bağlantıları kabul eder (erişim anahtarı kullanılarak). Bu varsayılan ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
+
+    ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+5. Özel uç noktalar aracılığıyla ad alanına erişime izin vermek için sayfanın üst kısmındaki **Özel uç nokta bağlantıları** sekmesini seçin
 6. Sayfanın üst kısmındaki **+ Özel uç nokta** düğmesini seçin.
 
     ![Özel uç nokta Ekle düğmesi](./media/private-link-service/private-link-service-3.png)
@@ -169,16 +180,16 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
 |--|--|--|
-| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. Arama çubuğuna **Service Bus**yazın.
 1. Yönetmek istediğiniz **ad alanını** seçin.
 1. **Ağ** sekmesini seçin.

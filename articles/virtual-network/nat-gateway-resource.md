@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549632"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424077"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -28,7 +28,7 @@ NAT ağ geçidi kaynakları, [sanal ağ NAT](nat-overview.md) 'nin bir parçası
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Internet 'e giden sanal ağ NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Internet 'e giden sanal ağ NAT">
 </p>
 
 *Şekil: Internet 'e giden sanal ağ NAT*
@@ -54,7 +54,7 @@ Kaynak, şablon benzeri bir biçimde aşağıdaki Azure Resource Manager örneğ
 Aşağıdaki diyagramda farklı Azure Resource Manager kaynakları arasındaki yazılabilir başvurular gösterilmektedir.  Ok, başvurunun yazılabilir olduğu yerden kaynaklanan yönünün yönünü gösterir. Gözden geçirme 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="Sanal ağ NAT nesne modeli">
+  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Sanal ağ NAT nesne modeli">
 </p>
 
 *Şekil: sanal ağ NAT nesne modeli*
@@ -119,7 +119,7 @@ NAT ağ geçidi ile uyumludur:
 Yeni bir dağıtım geliştirilirken standart SKU 'Lar ile başlayın.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Internet 'e giden sanal ağ NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="Internet 'e giden sanal ağ NAT">
 </p>
 
 *Şekil: Internet 'e giden sanal ağ NAT*
@@ -129,7 +129,7 @@ NAT ağ geçidi tarafından sunulan yalnızca Internet giden senaryosu Internet 
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>Örnek düzeyi genel IP ile NAT ve VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="Örnek düzeyi genel IP 'si olan sanal ağ NAT ve VM">
+  <img src="media/nat-overview/flow-direction2.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP." width="300" title="Örnek düzeyi genel IP 'si olan sanal ağ NAT ve VM">
 </p>
 
 *Şekil: sanal ağ NAT ve örnek düzeyi genel IP 'si olan VM*
@@ -144,7 +144,7 @@ VM, giden için NAT Gateway kullanır.  Gelen kaynaklı etkilenmemektedir.
 #### <a name="nat-and-vm-with-public-load-balancer"></a>Ortak Load Balancer sahip NAT ve VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="Sanal ağ NAT ve ortak Load Balancer VM">
+  <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="Sanal ağ NAT ve ortak Load Balancer VM">
 </p>
 
 *Şekil: ortak Load Balancer sanal ağ NAT ve VM*
@@ -159,7 +159,7 @@ Yük Dengeleme kuralı veya giden kuralların herhangi bir giden yapılandırmas
 #### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>Örnek düzeyi genel IP ve ortak Load Balancer sahip NAT ve VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="Örnek düzeyi genel IP ve ortak Load Balancer sanal ağ NAT ve VM">
+  <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="Örnek düzeyi genel IP ve ortak Load Balancer sanal ağ NAT ve VM">
 </p>
 
 *Şekil: örnek düzeyinde genel IP ve genel Load Balancer sanal ağ NAT ve VM*
@@ -182,7 +182,7 @@ NAT ağ geçitleri, alt ağın giden senaryolarından önceliklidir. Temel yük 
 #### <a name="zone-isolation-with-zonal-stacks"></a>Bölgesel yığınları ile bölge yalıtımı
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Bölge yalıtımıyla sanal ağ NAT, birden çok oluşturma "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="Bölge yalıtımıyla sanal ağ NAT, birden çok oluşturma "zonal stacks"">
 </p>
 
 *Şekil: bölge yalıtımına sahip sanal ağ NAT, birden çok "zonal yığınları" oluşturma*
@@ -210,7 +210,7 @@ Senaryonuz gelen uç noktalar gerektiriyorsa iki seçeneğiniz vardır:
 #### <a name="cross-zone-outbound-scenarios-not-supported"></a>Bölgeler arası giden senaryolar desteklenmez
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="Sanal ağ NAT, bölge ile yayılan alt ağ ile uyumlu değil">
+  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="Sanal ağ NAT, bölge ile yayılan alt ağ ile uyumlu değil">
 </p>
 
 *Şekil: sanal ağ NAT, bölge ile yayılan alt ağ ile uyumlu değil*
@@ -268,7 +268,7 @@ NAT tarafından sunulan SNAT, çeşitli açılardan [Load Balancer](../load-bala
 NAT, yeni giden trafik akışları için isteğe bağlı SNAT bağlantı noktaları sağlar. Envanterdeki tüm kullanılabilir SNAT bağlantı noktaları, NAT ile yapılandırılmış alt ağlardaki tüm sanal makineler tarafından kullanılır. 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Sanal ağ NAT istek üzerine giden SNAT">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T." width="550" title="Sanal ağ NAT istek üzerine giden SNAT">
 </p>
 
 *Şekil: sanal ağ NAT istek üzerine giden SNAT*
@@ -276,7 +276,7 @@ NAT, yeni giden trafik akışları için isteğe bağlı SNAT bağlantı noktala
 Bir sanal makinenin herhangi bir IP yapılandırması, gerektiğinde istek üzerine giden akışlar oluşturabilir.  Örnek başına en kötü büyük/küçük harf sağlama de dahil olmak üzere ön tahsisi, gerekli değildir.  
 
 <p align="center">
-  <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="Tükenme senaryolarında farklılıklar">
+  <img src="media/nat-overview/exhaustion-threshold.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T with exhaustion threshold." width="550" title="Tükenme senaryolarında farklılıklar">
 </p>
 
 *Şekil: tükenme senaryolarında farklılıklar*

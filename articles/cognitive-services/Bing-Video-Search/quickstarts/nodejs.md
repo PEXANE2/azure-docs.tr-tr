@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: REST API ve Node. js ile videoları arayın-Bing Video Arama'
+title: 'Hızlı başlangıç: REST API ve Node.js kullanarak video arama Bing Video Arama'
 titleSuffix: Azure Cognitive Services
 description: JavaScript kullanarak Bing Video Arama REST API video arama istekleri göndermek için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -10,22 +10,23 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 693b8209498f07928c811fd084eaf259bcbcb5ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9658d488fac187e63d04ca435c9233629407ac07
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849646"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408110"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Video Arama REST API ve Node. js kullanarak video arama
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Video Arama REST API ve Node.js kullanarak video arayın
 
-Bing Video Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve JSON yanıtını görüntüler. Bu uygulama JavaScript 'te yazılmış ve Node. js ' yi kullandığından, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. 
+Bing Video Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve JSON yanıtını görüntüler. Bu uygulama JavaScript 'te yazılmış ve Node.js kullanıyor olsa da, API çoğu programlama dili ile uyumlu olan yeniden bir Web hizmetidir. 
 
 Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js)’da bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Node. js](https://nodejs.org/en/download/).
+* [Node.js](https://nodejs.org/en/download/).
 
 * JavaScript için Istek modülü. Kullanarak bu modülü yükler `npm install request` .
 

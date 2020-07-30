@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 69458a7a3f2555a301c1266addfe7c49cb111ef6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 532a2ce429899d3674a8f6d8308188e9b1f737b1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317765"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407957"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure sanal makineli teknik varlıklarınızı oluşturun
 
@@ -282,4 +282,4 @@ Yeni Azure tabanlı VHD 'nizi oluştururken zorluk yaşıyorsanız, bkz. [VHD ol
 
 Aksi durumda:.
 
-* [VM görüntünüzü onaylama](get-sas-uri.md) Azure *sertifikalı aracı Için sertifika test aracı* 'Nı nereden alacağınız ve VM görüntünüzü onaylamak için nasıl kullanılacağı dahil olmak üzere Azure MARKETI sertifikası için bir VM görüntüsünü test etme ve gönderme işlemlerinin nasıl yapılacağını açıklar.
+* [VHD 'den dağıtılan sınama sanal makinesi (VM)](azure-vm-image-certification.md) , Azure *sertifikalı aracı Için sertifika test aracı* 'Nı nereden alacağınız ve VM görüntünüzü onaylamak için nasıl kullanılacağı dahil olmak üzere Azure MARKETI sertifikası için bir VM görüntüsünü test etme ve gönderme işlemlerinin nasıl yapılacağını açıklar.

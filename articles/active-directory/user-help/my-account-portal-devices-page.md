@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 9badda1663947587b078c6bb808f4efdf2e10579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735965"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422496"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Cihazlar sayfasından bağlı cihazlarınızı yönetin
 
@@ -75,6 +75,8 @@ Bağlı cihazlarınızı görüntüledikten sonra şunları yapabilirsiniz:
 - [Oturum açma etkinliğinizi](my-account-portal-sign-ins-page.md)görüntüleyin.
 
 - Kuruluşunuzun [gizlilikle ilgili verilerinizi nasıl kullandığını](my-account-portal-privacy-page.md)görüntüleyin.
+
+- [Hesap Portalı ayarlarınızı](my-account-portal-settings.md) değiştirme
 
 ## <a name="related-office-content"></a>İlgili Office içeriği
 

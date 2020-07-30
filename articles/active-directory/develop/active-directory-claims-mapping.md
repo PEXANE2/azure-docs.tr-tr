@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027181"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428011"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -44,7 +44,7 @@ Talep eşleme ilkesi, belirli uygulamalar için verilen belirteçlerde yayılan 
 
 Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepler kümesi vardır.
 
-| Talep kümesi | Açıklama |
+| Talep kümesi | Description |
 |---|---|
 | Çekirdek talep kümesi | , İlkeden bağımsız olarak her belirteçte bulunur. Bu talepler de kısıtlı olarak değerlendirilir ve değiştirilemez. |
 | Temel talep kümesi | Belirteçleri için varsayılan olarak yayılan talepleri içerir (çekirdek talep kümesine ek olarak). Talepler eşleme ilkelerini kullanarak temel talepleri atlayabilir veya değiştirebilirsiniz. |
@@ -284,7 +284,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tablo 3: kaynak başına geçerli KIMLIK değerleri
 
-| Kaynak | ID | Açıklama |
+| Kaynak | ID | Description |
 |-----|-----|-----|
 | Kullanıcı | surname | Aile adı |
 | Kullanıcı | givenname | Verilen Ad |
@@ -359,7 +359,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tablo 4: dönüştürme yöntemleri ve beklenen girişler ve çıktılar
 
-|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
+|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Description|
 |-----|-----|-----|-----|
 |Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: " foo@bar.com ", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-posta veya UPN|ayıklanan dize|ExtensionAttributes 1-15 veya Kullanıcı için bir UPN ya da e-posta adresi değeri depolayan diğer şema uzantıları gibi johndoe@contoso.com . Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: " foo@bar.com " outputClaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
@@ -385,7 +385,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tablo 5: SAML NameID için veri kaynağı olarak izin verilen öznitelikler
 
-|Kaynak|ID|Açıklama|
+|Kaynak|ID|Description|
 |-----|-----|-----|
 | Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
@@ -436,7 +436,10 @@ Talep eşleme ilkeleri, yalnızca hizmet sorumlusu nesnelerine atanabilir.
 
 Azure AD 'de, belirli hizmet sorumluları için belirteçlerde yayılan talepleri özelleştirebilmeniz için birçok senaryo mümkündür. Bu bölümde, talep eşleme ilkesi türünü nasıl kullanacağınızı belirlemenize yardımcı olabilecek birkaç yaygın senaryoya kılavuzluk ederiz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+> [!NOTE]
+> Bir talep eşleme ilkesi oluştururken, belirteçlerdeki Dizin şeması uzantısı özniteliğinden bir talep da oluşturabilirsiniz. Öğesinde *ID* yerine Extension özniteliği Için *extensionID* kullanın `ClaimsSchema` .  Uzantı öznitelikleri hakkında daha fazla bilgi için bkz. [Dizin şeması uzantısı özniteliklerini kullanma](active-directory-schema-extensions.md).
+
+#### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki örneklerde, hizmet sorumluları için ilkeleri oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma hakkında bilgi](quickstart-create-new-tenant.md) almanızı öneririz.
 
@@ -527,4 +530,5 @@ Bu örnekte, bağlantılı hizmet sorumlularına verilen JWTs 'e "JoinedData" ö
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-SAML belirtecinde verilen talepleri Azure portal aracılığıyla özelleştirmeyi öğrenmek için bkz. [nasıl yapılır: kurumsal uygulamalar IÇIN SAML belirtecinde verilen talepleri özelleştirme](active-directory-saml-claims-customization.md)
+- SAML belirtecinde verilen talepleri Azure portal aracılığıyla özelleştirmeyi öğrenmek için bkz. [nasıl yapılır: kurumsal uygulamalar IÇIN SAML belirtecinde verilen talepleri özelleştirme](active-directory-saml-claims-customization.md)
+- Uzantı öznitelikleri hakkında daha fazla bilgi edinmek için bkz. [taleplerde Dizin şeması uzantısı özniteliklerini kullanma](active-directory-schema-extensions.md).

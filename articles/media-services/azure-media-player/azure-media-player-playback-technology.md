@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 85eaa04836774b838da67e073017f4af3d2fe179
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 56fd644e43b704eced4f5a97b82e4b07ab1b4db9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726490"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424094"
 ---
 # <a name="playback-technology-tech"></a>Kayıttan yürütme teknolojisi ("Tech") #
 
@@ -25,11 +26,11 @@ Kayıttan yürütme teknolojisi, video veya ses çalmak için kullanılan belirl
 
 ## <a name="tech-order"></a>Teknoloji siparişi ##
 
-Varlığınızın çok çeşitli cihazlarda yürütülebilir olmasını sağlamak için aşağıdaki teknik sipariş önerilir ve varsayılan olarak, `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` ve seçeneklerinde doğrudan `<video>` veya program aracılığıyla üzerinde ayarlanabilir:
+Varlığınızın çok çeşitli cihazlarda yürütülebilir olmasını sağlamak için aşağıdaki teknik sipariş önerilir ve varsayılan olarak, `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` ve `<video>` seçeneklerinde doğrudan veya program aracılığıyla üzerinde ayarlanabilir:
 
 `<video data-setup='{"techOrder": ["azureHtml5JS", "flashSS", "html5FairPlayHLS, "silverlightSS", "html5"]}`
 
-or
+veya
 
 ```javascript
     amp("vid1", {

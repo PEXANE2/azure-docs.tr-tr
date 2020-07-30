@@ -1,17 +1,14 @@
 ---
 title: Azure Işlevlerini Azure sanal ağıyla tümleştirme
 description: Bir Azure sanal ağına bir işlev bağlamayı gösteren adım adım öğretici
-author: alexkarcher-msft
 ms.topic: article
 ms.date: 4/23/2020
-ms.author: alkarche
-ms.reviewer: glenga
-ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122737"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387532"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Öğretici: İşlevleri bir Azure sanal ağı ile tümleştirme
 
@@ -63,7 +60,7 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
     | **Abonelik** | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. | 
     | **[Kaynak grubu](../azure-resource-manager/management/overview.md)**  | myResourceGroup | `myResourceGroup`İşlev uygulamanız ile oluşturduğunuz kaynak grubunu seçin. İşlev uygulaması, WordPress VM ve barındırma planı için aynı kaynak grubunu kullanmak, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
     | **Sanal makine adı** | VNET-WordPress | VM adının kaynak grubunda benzersiz olması gerekir |
-    | **[Geli](https://azure.microsoft.com/regions/)** | 'Ya Batı Avrupa | Size yakın veya sanal makineye erişen işlevlerin yakınında bir bölge seçin. |
+    | **[Bölge](https://azure.microsoft.com/regions/)** | 'Ya Batı Avrupa | Size yakın veya sanal makineye erişen işlevlerin yakınında bir bölge seçin. |
     | **Boyut** | B1S | **Boyutu Değiştir** ' i seçin ve ardından 1 vCPU ve 1 GB belleği olan B1S standart görüntüsünü seçin. |
     | **Kimlik doğrulaması türü** | Parola | Parola kimlik doğrulamasını kullanmak için bir **Kullanıcı adı**, güvenli bir **parola**belirtmeniz ve ardından **parolayı onaylamanız**gerekir. Bu öğreticide, sorun gidermenize gerek olmadığı takdirde VM 'de oturum açmanız gerekmez. |
 
@@ -75,7 +72,7 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | **Adı** | myResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
+    | **Ad** | myResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
     | **Adres aralığı** | 10.10.0.0/16 | Sanal ağ için tek bir adres aralığı kullanın. |
     | **Alt ağ adı** | Öğretici-net | Alt ağın adı. |
     | **Adres aralığı** (alt ağ) | 10.10.1.0/24   | Alt ağ boyutu, alt ağa kaç arabirim eklenebileceğini tanımlar. Bu alt ağ WordPress sitesi tarafından kullanılır.  Bir `/24` alt ağ 254 ana bilgisayar adresi sağlar. |
@@ -86,7 +83,7 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
 
 1. **Yönetim** sekmesini seçin ve ardından **Tanılama depolama hesabı**' nda, işlev uygulamanızla oluşturduğunuz depolama hesabını seçin.
 
-1. **İncele ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. VM oluşturma işlemi birkaç dakika sürer. Oluşturulan VM yalnızca sanal ağa erişebilir.
+1. **Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. VM oluşturma işlemi birkaç dakika sürer. Oluşturulan VM yalnızca sanal ağa erişebilir.
 
 1. VM oluşturulduktan sonra, yeni VM 'nizin sayfasını görüntülemek için **Kaynağa Git** ' i seçin ve ardından **Ayarlar**altında **ağ** ' ı seçin.
 
@@ -136,7 +133,7 @@ VNet tümleştirmesi etkinken, sanal ağda çalışan VM 'ye istekleri iletmek i
 
     | Ayar  | Önerilen değer  | Açıklama      |
     | -------- | ---------------- | ---------------- |
-    | **Adı** | Tesis | Ad herhangi bir değer olabilir. Proxy 'yi tanımlamak için kullanılır. |
+    | **Ad** | Tesis | Ad herhangi bir değer olabilir. Proxy 'yi tanımlamak için kullanılır. |
     | **Rota şablonu** | /bitki | Bir VM kaynağıyla eşleşen rota. |
     | **Arka uç URL'si** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/Assets/images/header.jpg | `<YOUR_VM_IP>`Daha önce oluşturduğunuz WordPress sanal MAKINENIZIN IP adresi ile değiştirin. Bu eşleme, siteden tek bir dosya döndürüyor. |
 

@@ -5,15 +5,15 @@ description: Azure CLı kullanarak Azure DNS bir DNS bölge dosyasını içeri v
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.date: 4/3/2019
+ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
-ms.openlocfilehash: bd40b3400b2a1c09be8fabd1201bedc7043bf19b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709105"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424231"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI’yı kullanarak DNS bölge dosyasını içeri ve dışarı aktarma
 
@@ -82,7 +82,7 @@ Bölge **contoso.com**için bir bölge dosyasını içeri aktarma.
 1. Henüz bir tane yoksa, bir Kaynak Yöneticisi kaynak grubu oluşturmanız gerekir.
 
     ```azurecli
-    az group create --group myresourcegroup -l westeurope
+    az group create --resource-group myresourcegroup -l westeurope
     ```
 
 2. **Contoso.com** bölgesini dosya **contoso.com.txt** **myresourcegroup**kaynak grubundaki yeni bir DNS bölgesine aktarmak için komutunu çalıştırın `az network dns zone import` .<BR>Bu komut, bölge dosyasını yükler ve ayrıştırır. Komutu, bölgeyi ve bölgedeki tüm kayıt kümelerini oluşturmak için Azure DNS hizmetinde bir dizi komut yürütür. Komut, ilerleme durumunu, hata veya uyarılarla birlikte konsol penceresinde bildirir. Kayıt kümeleri seri halinde oluşturulduğundan, büyük bir bölge dosyasının içe aktarılması birkaç dakika sürebilir.

@@ -7,12 +7,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: dbe64bdcbff5592d271c773eff1d5c99c585fcd7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 03b9cce0d8e4666630aa6568597e08d1f13386ff
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248025"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422819"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 'da Service Fabric kümelerine genel bakış
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makineye veya VM 'ye küme düğümü denir. Kümeler, binlerce düğüme ölçeklendirebilir. Kümeye yeni düğümler eklerseniz, hizmet bölümü çoğaltmaları ve örneklerinin artan düğüm sayısı genelinde yeniden dengelenmesi Service Fabric. Genel uygulama performansı, bellek düşüşlerine erişim için gelişir ve çekişmeyi geliştirir. Kümedeki düğümler verimli bir şekilde kullanılmıyorsa, kümedeki düğümlerin sayısını azaltabilirsiniz. Service Fabric, her düğümdeki donanımın daha iyi kullanılmasını sağlamak için bölüm çoğaltmalarını ve örnekleri, azaltılmış düğüm sayısı genelinde yeniden dengeler.
@@ -22,7 +22,7 @@ Düğüm türü, kümedeki bir dizi düğüm (sanal makine) için boyut, sayı v
 ## <a name="cluster-components-and-resources"></a>Küme bileşenleri ve kaynakları
 Azure 'daki bir Service Fabric kümesi, diğer Azure kaynaklarıyla birlikte kullanılan ve etkileşimde bulunan bir Azure kaynağıdır:
 * VM 'Ler ve sanal ağ kartları
-* sanal makine ölçek kümeleri
+* sanal anal makine ölçek kümeleri
 * sanal ağlar
 * yük dengeleyiciler
 * depolama hesapları
@@ -105,6 +105,7 @@ Bu işletim sistemlerini çalıştıran sanal makinelerde kümeler oluşturabili
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
+| Linux Ubuntu 18,04 | 7.1 |
 
 Daha fazla bilgi için bkz. [Azure 'Da desteklenen küme sürümleri](./service-fabric-versions.md#supported-operating-systems)
 

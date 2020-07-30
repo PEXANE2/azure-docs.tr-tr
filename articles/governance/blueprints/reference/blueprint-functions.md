@@ -3,12 +3,12 @@ title: Azure şemaları işlevleri
 description: Azure şemaları tanımlarında ve atamalarında şema yapıtları ile kullanılabilecek işlevleri açıklar.
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a52901060466692e7094cf74fa5acfcded5f1da
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970884"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422853"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure şemaları ile kullanım için işlevler
 
@@ -34,9 +34,9 @@ Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| artifactName |Evet |string |Şema yapıtı adı. |
+| artifactName |Yes |dize |Şema yapıtı adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -113,7 +113,7 @@ _Mytemplateyapıt_ örneğinden veri almaya ilişkin bazı örnekler şunlardır
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Dize | "dize değeri" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Nesne | {"MyProperty": "My value", "anotherProperty": true} |
 |`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Dize | "My value" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | Doğru |
 
 ## <a name="concat"></a>concat
 
@@ -123,10 +123,10 @@ Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| dize1 |Evet |string |Birleştirme için ilk değer. |
-| ek bağımsız değişkenler |Hayır |string |Birleştirme için ek değerler sıralı sırada |
+| dize1 |Yes |dize |Birleştirme için ilk değer. |
+| ek bağımsız değişkenler |No |dize |Birleştirme için ek değerler sıralı sırada |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -140,7 +140,7 @@ Azure Blueprint işlevi, yalnızca dizelerle çalışacak şekilde ARM şablon i
 
 `concat(parameters('organizationName'), '-vm')`
 
-## <a name="parameters"></a>parametreler
+## <a name="parameters"></a>parameters
 
 `parameters(parameterName)`
 
@@ -148,9 +148,9 @@ Bir şema parametre değeri döndürür. Belirtilen parametre adı, şema tanım
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Evet |string |Döndürülecek parametrenin adı. |
+| parameterName |Yes |dize |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -174,7 +174,7 @@ Azure Blueprint işlevi, yalnızca şema parametreleriyle birlikte çalışarak 
                 "type": "array",
                 "metadata": {
                     "displayName": "Principal IDs",
-                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the RBAC assignment.",
+                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the Azure role assignment.",
                     "strongType": "PrincipalId"
                 }
             }
@@ -269,9 +269,9 @@ Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. `resource
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Evet |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
+| placeholderName |Yes |dize |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

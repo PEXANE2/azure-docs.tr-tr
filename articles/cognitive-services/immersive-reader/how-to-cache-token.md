@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 70173e1904ce9d7a159532c8962932765060e4d9
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946171"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406954"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>Kimlik doğrulama belirtecini önbelleğe alma
 
@@ -22,7 +23,7 @@ Bu makalede, uygulamanızın performansını artırmak için kimlik doğrulama b
 
 ## <a name="using-aspnet"></a>ASP.NET kullanma
 
-Bir belirteci almak için kullanılan **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet paketini içeri aktarın. Daha sonra, [tam ekran okuyucu kaynağını](./how-to-create-immersive-reader.md)oluştururken aldığınız `AuthenticationResult`kimlik doğrulama değerlerini kullanarak bir elde etmek için aşağıdaki kodu kullanın.
+Bir belirteci almak için kullanılan **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet paketini içeri aktarın. Daha sonra, `AuthenticationResult` [tam ekran okuyucu kaynağını](./how-to-create-immersive-reader.md)oluştururken aldığınız kimlik doğrulama değerlerini kullanarak bir elde etmek için aşağıdaki kodu kullanın.
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,9 +35,9 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-`AuthenticationResult` Nesnesi, SDK 'Yı `AccessToken` kullanarak derinlikli okuyucu başlatılırken kullanacağınız gerçek belirteç olan bir özelliğine sahiptir. Ayrıca belirtecin ne zaman `ExpiresOn` sona ereceğini belirten bir özelliğine sahiptir. Tam ekran okuyucuyu başlatmadan önce belirtecin süresi dolup dolmadığını denetleyebilir ve yalnızca süresi dolmuşsa yeni bir belirteç elde edebilirsiniz.
+`AuthenticationResult`Nesnesi, `AccessToken` SDK 'Yı kullanarak derinlikli okuyucu başlatılırken kullanacağınız gerçek belirteç olan bir özelliğine sahiptir. Ayrıca `ExpiresOn` belirtecin ne zaman sona ereceğini belirten bir özelliğine sahiptir. Tam ekran okuyucuyu başlatmadan önce belirtecin süresi dolup dolmadığını denetleyebilir ve yalnızca süresi dolmuşsa yeni bir belirteç elde edebilirsiniz.
 
-## <a name="using-nodejs"></a>Node. JS kullanma
+## <a name="using-nodejs"></a>Node.JS kullanma
 
 [**İstek**](https://www.npmjs.com/package/request) NPM paketini projenize ekleyin. [Tam ekran okuyucu kaynağını](./how-to-create-immersive-reader.md)oluştururken aldığınız kimlik doğrulama değerlerini kullanarak bir belirteci almak için aşağıdaki kodu kullanın.
 
@@ -64,7 +65,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-`expires_on` Özelliği, belirtecin süresinin dolacağı tarih ve saat olarak 1 Ocak 1970 ' den bu yana saniye sayısı olarak ifade edilir. Yeni bir tane edinmeyi denemeden önce belirtecinizin süresi dolup gösterilmeyeceğini öğrenmek için bu değeri kullanın.
+`expires_on`Özelliği, belirtecin süresinin dolacağı tarih ve saat olarak 1 ocak 1970 ' den bu yana saniye sayısı olarak ifade edilir. Yeni bir tane edinmeyi denemeden önce belirtecinizin süresi dolup gösterilmeyeceğini öğrenmek için bu değeri kullanın.
 
 ```javascript
 async function getToken() {

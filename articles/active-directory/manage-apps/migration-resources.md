@@ -11,17 +11,16 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe21b6509080e88c63d9c02c8116f3882fb64dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 327e59d3fee6f23d2635b846e9fb5ab422e0139e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763117"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429026"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Azure Active Directory uygulamalara geçiş kaynakları
 
-Uygulama erişimini ve kimlik doğrulamasını Azure Active Directory (Azure AD) ile geçirmenize yardımcı olacak kaynaklar. Bu kısa ankete katılın ( https://aka.ms/AppsMigrationFeedback) geçiş için engelleyiciler dahil olmak üzere Azure AD 'ye uygulama geçirme, alet kullanımı/yönergeler veya şirket ıçı ıDP 'nizi sürdürme nedenleri dahil) hakkında geri bildirimde bulunmak için. 
+Uygulama erişimini ve kimlik doğrulamasını Azure Active Directory (Azure AD) ile geçirmenize yardımcı olacak kaynaklar.
 
 | Kaynak  | Açıklama  |
 |:-----------|:-------------|

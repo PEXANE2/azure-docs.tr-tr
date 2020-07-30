@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'teki (AKS) birimler, kalıcı birimler, d
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171387"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406971"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için depolama seçenekleri
 
@@ -75,6 +75,9 @@ parameters:
   storageaccounttype: Premium_LRS
   kind: Managed
 ```
+
+> [!NOTE]
+> AKS varsayılan depolama sınıflarını uzlaştırır ve bu depolama sınıflarında yaptığınız tüm değişikliklerin üzerine yazar.
 
 ## <a name="persistent-volume-claims"></a>Kalıcı birim talepleri
 

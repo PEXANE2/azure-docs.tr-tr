@@ -3,16 +3,16 @@ title: Microsoft ticari Market için coğrafi kullanılabilirlik ve para birimi 
 description: Ticari Market 'teki işlemlerin coğrafi kullanılabilirliği ve para birimi desteği
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 01/29/2020
-ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120016"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387447"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -43,12 +43,12 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Brezilya                              | BR        | BRL\*        |
 | Brunei                              | BN        | USD          |
 | Bulgaristan                            | BG        | EUR          |
+| Cabo Verde                          | CV        | USD          |
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
-| Cabo Verde                          | CV        | USD          |
 | Cayman Adaları                      | KY        | USD          |
 | Şili                               | CL        | USD          |
-| Arasında\**                            | CN        | YOK          |
+| Arasında\**                            | CN        | Yok          |
 | Kolombiya                            | CO        | USD          |
 | Kosta Rika                          | CR        | USD          |
 | Fildişi Sahili (Côte d'Ivoire)                       | CI        | USD          |
@@ -110,8 +110,8 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Namibya                             | NA        | USD          |
 | Nepal                               | NP        | USD          |
 | Hollanda                         | NL        | EUR          |
-| Nikaragua                           | NI        | USD          |
 | Yeni Zelanda                         | NZ        | NZD          |
+| Nikaragua                           | NI        | USD          |
 | Nijerya                             | NG        | USD          |
 | Norveç                              | NO        | NOK          |
 | Umman                                | OM        | USD          |
@@ -148,15 +148,15 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Tunus                             | TN        | USD          |
 | Türkiye                              | TR        | USD          |
 | Türkmenistan                        | TM        | USD          |
-| Vatikan Şehri (Pasee)             | VA        | EUR          |
-| Birleşik Devletler Virgin Adaları | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrayna                             | UA        | USD          |
 | Birleşik Arap Emirlikleri                | AE        | USD          |
 | Birleşik Krallık                      | GB        | GBP          |
 | Birleşik Devletler                       | ABD        | USD          |
+| ABD Virgin Adaları                 | VI        | USD          |
 | Uruguay                             | UY        | USD          |
 | Özbekistan                          | UZ        | USD          |
+| Vatikan Şehri (Pasee)             | VA        | EUR          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
 | Yemen                               | Vet        | USD          |

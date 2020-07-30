@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: f245b1baddad52f18f66e99fa98d9ec5f73c8011
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 99d8ab3b7edc2d32e580ec8de9132fef3ea3503a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130911"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424350"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
 
@@ -162,7 +162,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 ```
 
 > [!IMPORTANT]
-> Hem Kullanıcı temsili anahtarı hem de RBAC rol atamaları Azure Storage tarafından önbelleğe alınır. bu nedenle, iptal işlemini başlattığınızda ve var olan bir Kullanıcı temsili SAS geçersiz hale geldiğinde bir gecikme olabilir.
+> Hem Kullanıcı temsili anahtarı hem de Azure rolü atamaları Azure Storage tarafından önbelleğe alınır, bu nedenle iptal işlemini başlattığınızda ve mevcut bir Kullanıcı temsili SAS geçersiz hale geldiğinde bir gecikme olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

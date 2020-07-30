@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b43b20023aa0d96dcaa3ce79b626d61ec6f6752d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289227"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423840"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -97,7 +97,7 @@ Bu roller, bu kapsamların hiçbirinde güvenlik sorumlusuna atanabilir:
 Rolleri doğrulama ve atamayı öğrenmek için bkz. [Azure Portal Azure Blob 'a erişim Izni verme ve VERILERI RBAC ile sıraya](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)alma.
 
 > [!NOTE]
-> RBAC rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun.
+> Azure rol atamalarının yaymanın en fazla beş dakika sürebileceğini aklınızda bulundurun.
 
 Güvenlik sorumlunuz Hedef kapsayıcının veya dizinin erişim denetim listesine (ACL) eklendiyse güvenlik sorumlusuna bu rollerden birine sahip olmanız gerekmez. ACL 'de güvenlik sorumlunuz hedef dizinde yazma iznine sahip olmalıdır ve kapsayıcıda ve her üst dizinde yürütme iznini gerektirir.
 
@@ -121,7 +121,7 @@ azcopy login --tenant-id=<tenant-id>
 
 Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
 
-![Bir kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
+![Kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgilerinizi kullanarak Azure hesabınızda oturum açın. Başarıyla oturum açtıktan sonra, tarayıcı penceresini kapatabilir ve AzCopy kullanmaya başlayabilirsiniz.
 

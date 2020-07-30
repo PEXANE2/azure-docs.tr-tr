@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121682"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422870"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -52,7 +52,7 @@ Koşullu olarak Ready Internet Protokolü | Yalnızca Azure VMware Çözüm (AVS
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>İçeri aktarma temelli AVS değerlendirmesi bilinmeyen olarak işaretlenmiş olan önerilen geçiş aracı
 
-Bir CSV dosyası aracılığıyla içeri aktarılan makineler için, ve AVS değerlendirmesi için varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir. [Daha fazla bilgi edinin](../azure-vmware/hybrid-cloud-extension-installation.md).
+Bir CSV dosyası aracılığıyla içeri aktarılan makineler için, ve AVS değerlendirmesi için varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir. [Daha Fazla Bilgi Edinin](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux VM 'Leri, bir Azure VM değerlendirmesinde "koşullu olarak hazırlanıyor"
 
@@ -180,6 +180,9 @@ Bağımlılık görselleştirmesi etkinleştirilmiş makineleri Azure 'a geçird
 
 ## <a name="dependencies-export-csv-shows-unknown-process"></a>CSV dışarı aktarma bağımlılıkları "Bilinmeyen işlem" gösterir
 Aracısız bağımlılık analizinde, işlem adları en iyi çaba temelinde yakalanır. Belirli senaryolarda, kaynak ve hedef sunucu adları ve hedef bağlantı noktası yakalansa da, bağımlılığın her iki ucunda işlem adlarını belirlenmesi uygun değildir. Bu gibi durumlarda, işlem "Bilinmeyen işlem" olarak işaretlenir.
+
+## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-server-assessment"></a>Log Analytics çalışma alanım, sunucu değerlendirmesi 'nde çalışma alanını yapılandırmaya çalışırken listelenmez
+Azure Geçişi şu anda OMS çalışma alanı oluşturulmasını Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde desteklemektedir. Çalışma alanı başka bir bölgede Azure geçişi dışında oluşturulduysa, şu anda bir Azure geçiş projesiyle ilişkilendirilemez.
 
 
 ## <a name="capture-network-traffic"></a>Ağ trafiğini yakala

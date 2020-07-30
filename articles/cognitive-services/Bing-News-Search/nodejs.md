@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: node. js ile bir haber araması gerçekleştirme-Bing Haber Arama REST API'
+title: 'Hızlı başlangıç: Node.js Bing Haber Arama bir haber araması gerçekleştirin REST API'
 titleSuffix: Azure Cognitive Services
-description: Node. js kullanarak Bing Haber Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
+description: Node.js kullanarak REST API Bing Haber Arama bir istek göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 24dd1e719b9eb401038d47c4d1c42139258f36f9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: d0ed69aecf03e5c8e3a65e3ac532c02c89b65ba8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872062"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406614"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: node. js ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirin
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Node.js ve Bing Haber Arama kullanarak bir haber araması gerçekleştirin REST API
 
 Bing Haber Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir arama sorgusu gönderir ve JSON yanıtını görüntüler.
 
-Bu uygulama JavaScript 'te yazılmış ve Node. js ' de çalıştırılsa da API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bu uygulama JavaScript 'te yazılmış ve Node.js çalıştırılsa da, API birçok programlama dili ile uyumlu olan yeniden bir Web hizmetidir.
 
 Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js)' da kullanılabilir.
 

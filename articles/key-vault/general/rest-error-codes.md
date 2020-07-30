@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432066"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424384"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hata kodları
  
@@ -134,7 +134,7 @@ HTTP 403 genellikle müşterinin uygulaması müşterinin yaptığı istemci KIM
 
 ### <a name="troubleshooting-403"></a>403 sorunlarını giderme
 
-İlk olarak, günlüğü açın. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [Azure Key Vault Logging](logging.md)).
+İlk olarak, günlüğü açın. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [Azure Key Vault Logging](logging.md).
 
 Günlüğe kaydetme etkinleştirildikten sonra, 403 ' nin erişim ilkesi veya güvenlik duvarı ilkesi olup olmadığını belirleyebilirsiniz.
 

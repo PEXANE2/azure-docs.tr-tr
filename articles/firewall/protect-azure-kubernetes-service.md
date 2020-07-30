@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 81d65954197c0ebe0de77dc2fea63239d4c3f17b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056676"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412958"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Kubernetes hizmeti (AKS) dağıtımlarını korumak için Azure Güvenlik duvarını kullanma
 
@@ -50,7 +50,9 @@ Azure Güvenlik Duvarı, yapılandırmayı basitleştirmek için bir AKS FQDN et
       Daha belirgin olması için bkz. **. HCP. <location> . *aşağıdaki tabloda azmk8s.io ve adresler.
    - Ağ zaman Protokolü (NTP) zaman eşitleme (Linux düğümleri) için UDP bağlantı noktası 123.
    - API sunucusuna doğrudan erişiyorsanız, DNS için UDP bağlantı noktası 53 de gereklidir.
-- AzureMonitor ve Storage hizmeti etiketlerini yapılandırın. Azure Izleyici, Log Analytics verilerini alır. 
+
+   Daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) içindeki küme düğümleri Için denetim çıkış trafiği](../aks/limit-egress-traffic.md).
+- AzureMonitor ve Storage hizmeti etiketlerini yapılandırın. Azure Izleyici, Log Analytics verilerini alır.
 
    Ayrıca çalışma alanı URL 'nizin tek tek de izin verebilirsiniz: `<worksapceguid>.ods.opinsights.azure.com` ve `<worksapceguid>.oms.opinsights.azure.com` . Bunu aşağıdaki yollarla ele alabilirsiniz:
 

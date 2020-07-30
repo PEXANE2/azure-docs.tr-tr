@@ -4,18 +4,18 @@ description: Azure Container Instances hizmeti, sanal makinelerin yönetilmesi g
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 572557860f5d715d6c708acb640acc24e1dd4a35
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259515"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424163"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances nedir?
 
 Bulut uygulamalarını paketlemek, dağıtmak ve yönetmek için kapsayıcılar her geçen gün daha fazla tercih edilmektedir. Azure Container Instances, herhangi bir sanal makineyi yönetmek ve daha yüksek düzeyde bir hizmeti benimsemek zorunda kalmadan Azure içinde kapsayıcı çalıştırmanızın en hızlı ve en kolay yoludur.
 
-Yalıtılmış kapsayıcılarda çalışabileceğiniz senaryolar (basit uygulamalar, görev otomasyonu ve sürüm işleri gibi) için Azure Container Instances harika bir çözümdür. Eksiksiz bir kapsayıcı düzenlemesi gerektiren senaryolar (birden çok kapsayıcıda hizmet bulma, otomatik ölçeklendirme ve eşgüdümlü uygulama yükseltmeleri gibi) için [Azure Kubernetes Service (AKS)](../aks/index.yml) hizmetini öneririz.
+Yalıtılmış kapsayıcılarda çalışabileceğiniz senaryolar (basit uygulamalar, görev otomasyonu ve sürüm işleri gibi) için Azure Container Instances harika bir çözümdür. Birden çok kapsayıcıda hizmet bulma, otomatik ölçeklendirme ve eşgüdümlü uygulama yükseltmeleri dahil olmak üzere tam kapsayıcı düzenlemesi gerektiren senaryolar için [Azure Kubernetes hizmeti (AKS)](../aks/index.yml)önerilir.
 
 ## <a name="fast-startup-times"></a>Hızlı başlangıç süreleri
 
@@ -68,7 +68,7 @@ Azure Container Instances, bir konak makineyi, yerel ağı, depolamayı ve yaşa
 
 ## <a name="virtual-network-deployment"></a>Sanal ağ dağıtımı
 
-Şu anda Azure bölgelerinin bir alt kümesindeki üretim iş yükleri için kullanılabilir. bu Azure Container Instances özelliği, [kapsayıcı örneklerinin bir Azure sanal ağına dağıtılmasını](container-instances-vnet.md)mümkün hale getirmenizi sunar. Kapsayıcı örneklerini sanal ağınızdaki bir alt ağa dağıtarak şirket içindekiler dahil olmak üzere ([VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-introduction.md) aracılığıyla) sanal ağ içindeki diğer kaynaklarla güvenli bir şekilde iletişim kurmalarını sağlayabilirsiniz.
+Azure Container Instances [, kapsayıcı örneklerinin bir Azure sanal ağına dağıtılmasını](container-instances-vnet.md)mümkün hale getirmenizi. Sanal ağınız içindeki bir alt ağa dağıtıldığında, kapsayıcı örnekleri şirket içinde olan ( [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-introduction.md)aracılığıyla) sanal ağdaki diğer kaynaklarla güvenli bir şekilde iletişim kurabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

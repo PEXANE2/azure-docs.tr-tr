@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a74a5e2b8e80121324dc8b880d90f493d5b2ddfd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171740"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423958"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Yeni Azure Time Series Insights Gen2 API sürümlerine geçiş
 
@@ -286,7 +286,7 @@ Güncelleştirilmiş Istek gövdesi (tarafından kullanılır `2020-07-31` ):
 
 Alternatif olarak, `value` de olabilir `$event['Bar-Pressure-Offset'].Double` . Veri türü belirtilmemişse, veri türü her zaman çift olarak kabul edilir. Ayraç gösteriminin özel karakteri () atlamak için kullanılması gerekir `-` .
 
-#### <a name="getaggregateseries"></a>GetAggregateSeries
+#### <a name="aggregateseries"></a>AggregateSeries
 
 Eski Istek gövdesi (tarafından kullanılır `2018-11-01-preview` ):
 

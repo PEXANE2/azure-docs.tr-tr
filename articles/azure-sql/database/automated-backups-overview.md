@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 07/20/2020
-ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515145"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428233"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -50,7 +50,7 @@ Geri yükleme gerçekleştirmek için bkz. [veritabanlarını yedeklerden geri y
 
 Aşağıdaki örnekleri kullanarak yedekleme yapılandırma ve geri yükleme işlemlerini deneyebilirsiniz:
 
-| | Azure portal | Azure PowerShell |
+| | Azure portalı | Azure PowerShell |
 |---|---|---|
 | **Yedekleme bekletmesini değiştirme** | [Tek veritabanı](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Yönetilen örnek](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Tek veritabanı](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | **Uzun süreli yedekleme bekletmesini değiştirme** | [Tek veritabanı](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Yönetilen örnek-yok  | [Tek veritabanı](long-term-backup-retention-configure.md)<br/>Yönetilen örnek-yok  |
@@ -161,6 +161,9 @@ Yedekleme depolama maliyetlerini anlamak için Azure portal **maliyet yönetimi 
 **Hizmet adı**için bir filtre ekleyin ve ardından açılan listede **SQL veritabanı** ' nı seçin. Hizmetiniz için faturalandırma sayacını seçmek üzere **ölçüm alt kategori** filtresini kullanın. Tek bir veritabanı veya elastik veritabanı havuzu için, **tek/elastik havuz yedek depolama**' yı seçin. Yönetilen bir örnek için mı. **yedekleme depolama alanı**' nı seçin. **Depolama** ve **işlem** alt kategorileri sizi ilgilendirir, ancak yedekleme depolama maliyetleriyle ilişkili değildir.
 
 ![Yedekleme depolama maliyeti Analizi](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
+
+  >[!NOTE]
+  > Ölçümler yalnızca şu anda kullanımda olan sayaçlar için görülebilir. Bir sayaç yoksa, kategori Şu anda kullanılmıyor olabilir. Örneğin, yönetilen bir örnek dağıtılan müşteriler için yönetilen örnek sayaçları mevcut olmayacaktır. Benzer şekilde, depolama sayaçları, depolamayı tüketmeyen kaynaklar için görünür olmayacaktır. 
 
 ## <a name="encrypted-backups"></a>Şifrelenmiş yedeklemeler
 

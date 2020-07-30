@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207288"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423805"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın (Önizleme)
 
@@ -85,7 +85,7 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Ad | *Privateendpoint*girin. |
+    | Name | *Privateendpoint*girin. |
     | Bölge | **Yourregion**' ı seçin. |
     |||
 
@@ -132,15 +132,15 @@ Hizmet tüketicisinin Otomasyon kaynağında RBAC izinleri varsa, otomatik onay 
 
 ## <a name="set-public-network-access-flags"></a>Genel ağ erişim bayraklarını ayarla
 
-Bir Otomasyon hesabını tüm genel konfigürasyonları reddedecek şekilde yapılandırabilir ve yalnızca özel uç noktalar aracılığıyla ağ güvenliğini artırmak için bağlantılara izin verebilirsiniz. Otomasyon hesabına erişimi yalnızca VNet içinden kısıtlamak ve genel İnternet 'ten erişime izin vermek istiyorsanız `publicNetworkAccess` özelliği olarak ayarlayabilirsiniz `$true` .
+Bir Otomasyon hesabını tüm genel konfigürasyonları reddedecek şekilde yapılandırabilir ve yalnızca özel uç noktalar aracılığıyla ağ güvenliğini artırmak için bağlantılara izin verebilirsiniz. Otomasyon hesabına erişimi yalnızca VNet içinden kısıtlamak ve genel İnternet 'ten erişime izin vermek istiyorsanız `publicNetworkAccess` özelliği olarak ayarlayabilirsiniz `$false` .
 
-**Ortak ağ erişimini reddet** ayarı olarak ayarlandığında `true` , yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir ve genel uç noktalar aracılığıyla tüm bağlantılar bir hata iletisiyle reddedilir.
+**Genel ağ erişimi** ayarı olarak ayarlandığında `$false` , yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir ve genel uç noktalar aracılığıyla tüm bağlantılar, unathorized hata ILETISIYLE ve 401 http durumuyla reddedilir. 
 
 Aşağıdaki PowerShell betiği, `Get` `Set` Otomasyon hesabı düzeyinde nasıl ve **genel ağ erişim** özelliğinin nasıl yapılacağını gösterir:
 
 ```powershell
 $account = Get-AzResource -ResourceType Microsoft.Automation/automationAccounts -ResourceGroupName "<resourceGroupName>" -Name "<automationAccountName>" -ApiVersion "2020-01-13-preview"
-$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $true
+$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $false
 $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 ```
 

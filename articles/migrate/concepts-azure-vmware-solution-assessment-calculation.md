@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118826"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387957"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Azure geçişi 'nde AVS değerlendirmeleri: Sunucu değerlendirmesi
 
@@ -128,7 +128,7 @@ Sunucu değerlendirmesinde bir AVS değerlendirmesi aşağıda verilmiştir:
 **Yüzdebirlik kullanımı** | Sağ boyutlandırmanın kabul edileceği performans örneği kümesinin yüzdebirlik değerini belirtir. Bu özellik yalnızca boyutlandırma performans tabanlı olduğunda geçerlidir.
 **Konfor katsayısı** | Azure geçişi sunucu değerlendirmesi, değerlendirme sırasında bir arabellek (rahatetken) kabul eder. Bu tampon, VM’lerin makine kullanım verilerinin (CPU, bellek, disk ve ağ) üzerine uygulanır. Konfor katsayısı; sezona özgü kullanım, kısa performans geçmişi ve gelecek kullanımlarda oluşabilecek artışlar gibi konuları hesaba katar.<br/><br/> Örneğin, %20 kullanıma sahip 10 çekirdekli bir VM normalde 2 çekirdekli VM ile sonuçlanır. Ancak, 2.0x konfor katsayısı ile sonuç 4 çekirdekli VM olur. 
 **Teklif** | Kayıtlı olduğunuz [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) görüntüler. Azure Geçişi, buna göre bir maliyet tahmini oluşturur.
-**Para birimi** | Hesabınız için faturalandırma para birimini gösterir. 
+**Birimindeki** | Hesabınız için faturalandırma para birimini gösterir. 
 **İndirim (%)** | Azure teklifinin üzerine aldığınız aboneliğe özgü tüm indirimi listeler. Varsayılan ayar, %0’dır. 
 **Azure Hibrit Avantajı** | Yazılım Güvencesi olup olmadığını ve [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/)uygun olduğunu belirtir. Düğüm tabanlı fiyat nedeniyle Azure VMware Çözüm fiyatlandırması üzerinde hiçbir etkisi olmamasına karşın, müşteriler Azure hibrit avantajlarını kullanarak AVS 'ye şirket içi işletim sistemi lisanslarını (Microsoft tabanlı) uygulayabilir. Diğer yazılım işletim sistemi satıcılarının, RHEL gibi kendi lisans şartlarını sağlaması gerekecektir. 
 **vCPU fazla abonelik** | AVS düğümündeki bir fiziksel çekirdeğe bağlı sanal çekirdek sayısının oranını belirtir. Hesaplamalardaki varsayılan değer 4 vCPU: AVS 'de 1 fiziksel çekirdek olur. <br/><br/> API kullanıcıları bu değeri bir tamsayı olarak ayarlayabilir. VCPU fazla aboneliği > 4:1 ' nin, CPU kullanımına bağlı olarak iş yüklerini etkileyebileceğini unutmayın. 
@@ -152,7 +152,7 @@ Sunucu değerlendirmesi, Azure VMware çözümünde (AVS) çalışıp çalışma
 
 | **Özellik** | **Ayrıntılar** | **AVS hazırlık durumu** 
 | - | - | - 
-| **Internet Protokolü** | AVS Şu anda IPv6 internet adreslemesini desteklemiyor.<br/><br/> Makineniz IPv6 ile algılanıyorsa düzeltme kılavuzumuzu göstermek için yerel MSFT AVS GBB ekibinize başvurun.| Koşullu olarak Ready Internet Protokolü
+| **Internet Protokolü** | AVS şu anda IPv6 İnternet adreslemesini desteklememektedir.<br/><br/> Makinenizde IPv6 olduğu algılanırsa düzeltme yönergelerinde rehberlik için yerel MSFT AVS GBB ekibinize başvurun.| Koşullu olarak Ready Internet Protokolü
 
 
 ### <a name="guest-operating-system"></a>Konuk işletim sistemi
@@ -172,15 +172,15 @@ Bir makine AVS için uygun olarak işaretlendikten sonra, sunucu değerlendirmes
 
 ### <a name="ftt-sizing-parameters"></a>FTT boyutlandırma parametreleri
 
-AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri, sanal makineleriniz için depolama gereksinimlerini tanımlar. Bu ilkeler, depolama biriminin VM 'ye nasıl ayrılacağını tespit ettiğinden VM 'niz için gereken hizmet düzeyini garanti eder. Kullanılabilir FTT-RAID birleşimleri şunlardır: 
+AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri, sanal makineleriniz için depolama gereksinimlerini tanımlar. Bu ilkeler sanal makineler için gerekli hizmet düzeyini garanti eder çünkü depolamanın sanal makineye nasıl ayrıldığını belirler. Kullanılabilir FTT-RAID birleşimleri şunlardır: 
 
-**Tolerans sayısı (FTT)** | **RAID yapılandırması** | **Gerekli en düşük konaklar** | **Boyutlandırma değerlendirmesi**
+**Tolerans Hataları (FTT)** | **RAID Yapılandırması** | **Gereken Minimum Konak Sayısı** | **Boyutlandırmada dikkat edilmesi gerekenler**
 --- | --- | --- | --- 
-1 | RAID-1 (yansıtma) | 3 | 100'LIK bir VM 200GB tüketir.
-1 | RAID-5 (ERASURE kodlaması) | 4 | 100 GB 'lık bir VM 133.33 GB tüketir
-2 | RAID-1 (yansıtma) | 5 | 100 GB 'lık bir VM 300 GB tüketir.
-2 | RAID-6 (ERASURE kodlaması) | 6 | 100 GB 'lik bir VM, 150GB tüketir.
-3 | RAID-1 (yansıtma) | 7 | 100 GB 'lık bir VM 400 ' ü tüketir.
+1 | RAID-1 (Yansıtma) | 3 | 100 GB sanal makine 200 GB kullanır.
+1 | RAID-5 (Silinme Kodlaması) | 4 | 100 GB sanal makine 133,33 GB kullanır
+2 | RAID-1 (Yansıtma) | 5 | 100 GB sanal makine 300 GB kullanır.
+2 | RAID-6 (Silinme Kodlaması) | 6 | 100 GB sanal makine 150 GB kullanır.
+3 | RAID-1 (Yansıtma) | 7 | 100 GB sanal makine 400 GB kullanır.
 
 ### <a name="performance-based-sizing"></a>Performans tabanlı boyutlandırma
 
@@ -197,11 +197,11 @@ Etkin kullanım değeri saptandıktan sonra, depolama, ağ ve bilgi işlem boyut
 
 **Depolama boyutlandırma**: Azure geçişi, müşteriler tarafından seçilen FTT ayarının yanı sıra AVS vSAN depolama gereksinimlerini belirlemede bir hesaplama parametresi olarak toplam ŞIRKET içi VM disk alanını kullanır. FTT-tolerans başına en az sayıda düğüm gerektirme ve FTT seçeneği için gereken toplam vSAN depolama alanı, VM disk gereksinimiyle birlikte gerekli olan toplam vSAN depolamayı tespit eder.
 
-**Ağ boyutlandırma**: Sunucu değerlendirmesi Şu anda, AVS değerlendirmelerinde hiçbir ağ ayarı dikkate almaz.
+**Ağ boyutlandırma**: Sunucu Değerlendirmesi şu anda AVS Değerlendirmelerinde hiçbir ağ ayarını dikkate almamaktadır.
 
 **İşlem boyutlandırma**: depolama gereksinimlerini hesapladıktan sonra sunucu değerlendirmesi, düğüm türünü temel alan AVS için gereken düğüm SAYıSıNı belirlemede CPU ve bellek gereksinimlerini dikkate alır.
 
-- Sunucu değerlendirmesi, boyutlandırma ölçütlerine göre performans tabanlı VM verilerine veya şirket içi VM yapılandırmasına göre görünür. Rahatlık faktörü ayarı, kümenin büyüme faktörünü belirtmenize olanak tanır. Şu anda, hiper iş parçacığı oluşturma özelliği etkinleştirilmiştir ve bu nedenle 36 çekirdek düğümü 72 sanal çekirdeğe sahip olacaktır. fiziksel olarak 5 sanal çekirdek; VMware standardını kullanarak küme başına CPU eşiklerini belirleme, bakım veya hataların küme kullanılabilirliğine ödün vermeden işlenmesine izin vermek için kullanılan %80 kullanımı aşılmıyor. Şu anda, fazla abonelik değerlerini değiştirmek için kullanılabilecek geçersiz kılma yok ve bu, gelecekteki sürümlerde bu durum olabilir.
+- Sunucu değerlendirmesi, boyutlandırma ölçütlerine göre performans tabanlı VM verilerine veya şirket içi VM yapılandırmasına göre görünür. Rahatlık faktörü ayarı, kümenin büyüme faktörünü belirtmenize olanak tanır. Şu anda varsayılan olarak hyperthreading etkinleştirilmiştir ve bu nedenle 36 çekirdekli düğümlerin 72 sanal çekirdeği olur. Küme kullanılabilirliğini riske atmadan bakım sağlamak veya hataları işlemek üzere WMware'in %80 kullanımı aşmama standardını kullanarak küme başına CPU eşiklerini belirlemek için fiziksel disk başına 4 sanal çekirdek kullanılır. Şu anda, fazla abonelik değerlerini değiştirmek için kullanılabilecek geçersiz kılma yok ve bu, gelecekteki sürümlerde bu durum olabilir.
 
 ### <a name="as-on-premises-sizing"></a>Şirket içi boyutlandırma olarak
 
@@ -255,9 +255,9 @@ Azure VMware çözümü (AVS) önizlemede olduğu gibi, değerlendirmede düğü
 
 ## <a name="migration-tool-guidance"></a>Geçiş Aracı Kılavuzu
 
-Azure VMware çözümü (AVS) değerlendirmesi için Azure hazırlık raporu ' nda, aşağıdaki önerilen araçları görebilirsiniz: 
-- VMware **HCX veya Enterprise**: VMware makineleri Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha fazla bilgi edinin](../azure-vmware/hybrid-cloud-extension-installation.md).
-- **Bilinmiyor**: bir CSV dosyası aracılığıyla içeri aktarılan makineler için varsayılan geçiş aracı bilinmez. Ancak VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
+Azure VMware Çözümü (AVS) değerlendirmesinin Azure için hazır olma raporunda aşağıdaki önerilen araçları görebilirsiniz: 
+- VMware **HCX veya Enterprise**: VMware makineleri Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha Fazla Bilgi Edinin](../azure-vmware/hybrid-cloud-extension-installation.md).
+- **Bilinmiyor**: CSV dosya yoluyla içeri aktarılan makinelerde, varsayılan geçiş aracı bilinmiyor. Ancak VMware makinelerinde, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

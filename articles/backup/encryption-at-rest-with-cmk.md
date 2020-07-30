@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: c26466582cbe5a10610f6766160c2b0bc51a4828
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091105"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388008"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
@@ -92,7 +92,7 @@ Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure Key Vault geçici silme ve Temizleme korumasını etkinleştirme
 
-Şifreleme anahtarınızı depolayan Azure Key Vault **, geçici silme ve Temizleme korumasını etkinleştirmeniz** gerekir. Bunu aşağıda gösterildiği gibi Azure Key Vault kullanıcı arabiriminden yapabilirsiniz. (Alternatif olarak, Key Vault oluşturulurken bu özellikler ayarlanabilir). Bu [Key Vault özellikleri hakkında](../key-vault/general/overview-soft-delete.md)daha fazla bilgi edinin.
+Şifreleme anahtarınızı depolayan Azure Key Vault **, geçici silme ve Temizleme korumasını etkinleştirmeniz** gerekir. Bunu aşağıda gösterildiği gibi Azure Key Vault kullanıcı arabiriminden yapabilirsiniz. (Alternatif olarak, Key Vault oluşturulurken bu özellikler ayarlanabilir). Bu [Key Vault özellikleri hakkında](../key-vault/general/soft-delete-overview.md)daha fazla bilgi edinin.
 
 ![Geçici silme ve Temizleme korumasını etkinleştir](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 

@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: ded36eeecb14eeac0ce3de37c8d01d99bc31491f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078177"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423278"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
@@ -46,7 +47,7 @@ Tetikleyiciler, bazı isteğe bağlı olsa da, bu en üst düzey öğelere sahip
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*Tetikleyici-adı*> | Dize | Tetikleyicinin adı | 
 | <*tetikleyici-tür*> | Dize | "Http" veya "ApiConnection" gibi tetikleyici türü | 
@@ -57,7 +58,7 @@ Tetikleyiciler, bazı isteğe bağlı olsa da, bu en üst düzey öğelere sahip
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*dizi-koşul*> | Dizi | İş akışının çalıştırılıp çalıştırılmayacağını tespit eden bir veya daha fazla [koşul](#trigger-conditions) içeren bir dizi. Yalnızca Tetikleyiciler için kullanılabilir. | 
 | <*çalışma zamanı-yapılandırma-seçenekler*> | JSON Nesnesi | Özellikleri ayarlayarak tetikleyici çalışma zamanı davranışını değiştirebilirsiniz `runtimeConfiguration` . Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runtime-config-options). | 
@@ -71,7 +72,7 @@ Her tetikleyici türünün, tetikleyicisinin davranışını tanımlayan farklı
 
 ### <a name="built-in-triggers"></a>Yerleşik Tetikleyiciler
 
-| Tetikleyici türü | Açıklama | 
+| Tetikleyici türü | Description | 
 |--------------|-------------| 
 | [**HTTP**](#http-trigger) | Tüm uç noktaları denetler veya *yoklar* . Bu uç noktanın, `202` zaman uyumsuz bir model kullanılarak veya bir dizi döndürerek belirli bir tetikleyici sözleşmesine uyması gerekir. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Mantıksal uygulamanız için çağrılabilir bir uç nokta oluşturur, ancak kayıt veya kayıt silme için belirtilen URL 'YI çağırır. |
@@ -81,7 +82,7 @@ Her tetikleyici türünün, tetikleyicisinin davranışını tanımlayan farklı
 
 ### <a name="managed-api-triggers"></a>Yönetilen API Tetikleyicileri
 
-| Tetikleyici türü | Açıklama | 
+| Tetikleyici türü | Description | 
 |--------------|-------------| 
 | [**ApiConnection**](#apiconnection-trigger) | Bir uç noktayı [Microsoft tarafından yönetilen API 'ler](../connectors/apis-list.md)kullanarak denetler veya *yoklar* . | 
 | [**ApiConnectionWebhook**](#apiconnectionwebhook-trigger) | Abone ol ve abonelik kaldırma için [Microsoft tarafından yönetilen API 'ler](../connectors/apis-list.md) çağırarak mantıksal uygulamanız için çağrılabilir bir uç nokta oluşturur. | 
@@ -126,7 +127,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 
 *Gerekli*
 
-| Değer | Tür | Açıklama |
+| Değer | Tür | Description |
 |-------|------|-------------|
 | <*APIConnection_trigger_name*> | Dize | Tetikleyicinin adı |
 | <*bağlantı adı*> | Dize | İş akışının kullandığı yönetilen API bağlantısı için ad |
@@ -138,7 +139,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*yeniden deneme davranışı*> | JSON Nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*sorgu-Parametreler*> | JSON Nesnesi | API çağrısıyla birlikte içerilecek herhangi bir sorgu parametresi. Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi `?api-version=2018-01-01` çağrıya ekler. | 
@@ -150,7 +151,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 
 *Çıkışlar*
  
-| Öğe | Tür | Açıklama |
+| Öğe | Tür | Description |
 |---------|------|-------------|
 | bilgisinde | JSON Nesnesi | Yanıttaki üstbilgiler |
 | body | JSON Nesnesi | Yanıttaki gövde |
@@ -220,7 +221,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen BIR API](../connectors/apis-li
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*bağlantı adı*> | Dize | İş akışının kullandığı yönetilen API bağlantısı için ad | 
 | <*gövde-içerik*> | JSON Nesnesi | Yönetilen API 'ye yük olarak göndermek için herhangi bir ileti içeriği | 
@@ -228,7 +229,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen BIR API](../connectors/apis-li
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama |
+| Değer | Tür | Description |
 |-------|------|-------------|
 | <*yeniden deneme davranışı*> | JSON Nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
 | <*sorgu-Parametreler*> | JSON Nesnesi | API çağrısıyla birlikte içerilecek sorgu parametreleri <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi `?api-version=2018-01-01` çağrıya ekler. |
@@ -339,8 +340,8 @@ Mantıksal uygulamanızla iyi bir şekilde çalışmak için uç noktanın belir
 | Özellik | Gerekli | Açıklama |
 |----------|----------|-------------|
 | Durum kodu | Yes | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. |
-| Retry-After üst bilgisi | Hayır | Mantıksal uygulamanız bitiş noktasını yeniden yokladığı saniye sayısı |
-| Konum üst bilgisi | Hayır | Sonraki yoklama aralığında çağrılacak URL. Belirtilmemişse, özgün URL kullanılır. |
+| Retry-After üst bilgisi | No | Mantıksal uygulamanız bitiş noktasını yeniden yokladığı saniye sayısı |
+| Konum üst bilgisi | No | Sonraki yoklama aralığında çağrılacak URL. Belirtilmemişse, özgün URL kullanılır. |
 |||| 
 
 *Farklı istekler için örnek davranışlar*
@@ -397,7 +398,7 @@ Ayrıca, bir **Httpweb kancası** tetikleyicisi üzerinde [zaman uyumsuz sınır
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*Yöntem-tür*> | Dize | Abonelik isteği için kullanılacak HTTP yöntemi: "GET", "PUT", "POST", "PATCH" veya "DELETE" | 
 | <*uç nokta-abone ol-URL*> | Dize | Abonelik isteğinin gönderileceği uç nokta URL 'SI | 
@@ -405,7 +406,7 @@ Ayrıca, bir **Httpweb kancası** tetikleyicisi üzerinde [zaman uyumsuz sınır
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*Yöntem-tür*> | Dize | İptal isteği için kullanılacak HTTP yöntemi: "GET", "PUT", "POST", "PATCH" veya "DELETE" | 
 | <*uç nokta-abonelik-URL*> | Dize | İptal isteğinin gönderileceği uç nokta URL 'SI | 
@@ -419,7 +420,7 @@ Ayrıca, bir **Httpweb kancası** tetikleyicisi üzerinde [zaman uyumsuz sınır
 
 *Çıkışlar* 
 
-| Öğe | Tür | Açıklama |
+| Öğe | Tür | Description |
 |---------|------|-------------| 
 | bilgisinde | JSON Nesnesi | Yanıttaki üstbilgiler | 
 | body | JSON Nesnesi | Yanıttaki gövde | 
@@ -491,7 +492,7 @@ Bu tetikleyici, belirtilen yinelenme zamanlaması temelinde çalışır ve düze
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*zaman birimi*> | Dize | Tetikleyicinin ne sıklıkla çalıştığını açıklayan zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay" | 
 | <*zaman birimi sayısı*> | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. | 
@@ -499,7 +500,7 @@ Bu tetikleyici, belirtilen yinelenme zamanlaması temelinde çalışır ve düze
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*başlangıç-tarih-saat--biçimlendirme-YYYY-MM-DDThh: mm: ss*> | Dize | Bu biçimdeki başlangıç tarihi ve saati: <p>YYYY-MM-DDThh: mm: ss saat dilimi belirtirseniz <p>-veya- <p>YYYY-MM-DDThh: mm: ssZ saat dilimi belirtmezseniz <p>Örneğin, 18 Eylül 2017, 2:00 PM üzerinde istiyorsanız, "2017-09-18T14:00:00" belirtin ve "Pasifik Standart Saati" gibi bir saat dilimi belirtin ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu başlangıç saati, gelecekte en fazla 49 yıla sahiptir ve UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) UTC [Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC bir fark](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Saat dilimi belirtmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak karmaşık zamanlamalar için tetikleyici başlangıç zamanından daha önce harekete geçmez. Başlangıç tarihleri ve zamanları hakkında daha fazla bilgi için bkz. [düzenli olarak çalışan görevler oluşturma ve zamanlama](../connectors/connectors-native-recurrence.md). | 
 | <*Saat dilimi*> | Dize | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici [UTC sapmasını](https://en.wikipedia.org/wiki/UTC_offset)kabul etmez. Uygulamak istediğiniz saat dilimini belirtin. | 
@@ -600,7 +601,7 @@ Bu tetikleyiciyi çağırmak için, `listCallbackUrl` [Iş akışı hizmeti REST
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*Özellik adı*> | Dize | Yükü açıklayan JSON şemasında bir özelliğin adı | 
 | <*Özellik türü*> | Dize | Özelliğin türü | 
@@ -608,7 +609,7 @@ Bu tetikleyiciyi çağırmak için, `listCallbackUrl` [Iş akışı hizmeti REST
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*Yöntem-tür*> | Dize | Gelen isteklerin mantıksal uygulamanızı çağırmak için kullanması gereken Yöntem: "GET", "PUT", "POST", "PATCH", "DELETE" |
 | <*göreli-yol-for-kabul parametresi*> | Dize | Endpoint URL 'nizin kabul edebileceği parametrenin göreli yolu | 
@@ -772,7 +773,7 @@ Azure Logic Apps, her biri bir eylemin benzersiz davranışını tanımlayan far
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------|
 | <*eylem-ad*> | Dize | Eylemin adı | 
 | <*eylem-tür*> | Dize | Eylem türü, örneğin, "http" veya "ApiConnection"| 
@@ -783,7 +784,7 @@ Azure Logic Apps, her biri bir eylemin benzersiz davranışını tanımlayan far
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------|
 | <*yeniden deneme davranışı*> | JSON Nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. yeniden deneme ilkeleri. | 
 | <*çalışma zamanı-yapılandırma-seçenekler*> | JSON Nesnesi | Bazı eylemler için, özellikleri ayarlayarak eylemin çalışma zamanında davranışını değiştirebilirsiniz `runtimeConfiguration` . Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runtime-config-options). | 
@@ -816,18 +817,18 @@ Yaygın olarak kullanılan bazı eylem türleri şunlardır:
 
 ### <a name="built-in-actions"></a>Yerleşik eylemler
 
-| Eylem türü | Açıklama | 
+| Eylem türü | Description | 
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
 | [**JavaScript kodunu Yürüt**](#run-javascript-code) | Belirli ölçütlere uyan JavaScript kod parçacıklarını çalıştırın. Kod gereksinimleri ve daha fazla bilgi için bkz. [satır içi kod ile kod parçacıkları ekleme ve çalıştırma](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**İşlev**](#function-action) | Bir Azure Işlevi çağırır. | 
+| [**Çalışmayacaktır**](#function-action) | Bir Azure Işlevi çağırır. | 
 | [**HTTP**](#http-action) | Bir HTTP uç noktası çağırır. | 
 | [**Birleştir**](#join-action) | Dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirli bir sınırlayıcı karakterle ayırır. | 
 | [**JSON Ayrıştır**](#parse-json-action) | JSON içeriğindeki özelliklerden Kullanıcı dostu belirteçler oluşturur. Daha sonra, mantıksal uygulamanıza belirteçleri ekleyerek bu özelliklere başvurabilirsiniz. | 
 | [**Sorgu**](#query-action) | Bir koşula veya filtreye bağlı olarak başka bir dizideki öğelerden bir dizi oluşturur. | 
 | [**Yanıt**](#response-action) | Gelen çağrıya veya isteğe yanıt oluşturur. | 
 | [**Şunu seçin:**](#select-action) | Belirtilen haritaya göre başka bir diziden öğeleri dönüştürerek JSON nesneleriyle bir dizi oluşturur. | 
-| [**Tablosundan**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
+| [**Tablo**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
 | [**Terminate**](#terminate-action) | Etkin şekilde çalışan bir iş akışını sonlandırır. | 
 | [**Wait**](#wait-action) | İş akışınızı belirtilen süre veya belirtilen tarih ve saate kadar duraklatır. | 
 | [**Workflow**](#workflow-action) | Bir iş akışını başka bir iş akışı içinde bir şekilde alır. | 
@@ -837,7 +838,7 @@ Yaygın olarak kullanılan bazı eylem türleri şunlardır:
 
 ### <a name="managed-api-actions"></a>Yönetilen API eylemleri
 
-| Eylem türü | Açıklama | 
+| Eylem türü | Description | 
 |-------------|-------------|  
 | [**ApiConnection**](#apiconnection-action) | [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)kullanarak bir HTTP uç noktası çağırır. | 
 | [**ApiConnectionWebhook**](#apiconnectionwebhook-action) | HTTP Web kancası gibi çalışarak [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)kullanır. | 
@@ -849,7 +850,7 @@ Yaygın olarak kullanılan bazı eylem türleri şunlardır:
 
 Bu eylemler, iş akışı yürütmeyi denetlemenize ve diğer eylemleri dahil etmenize yardımcı olur. Denetim iş akışı eyleminin dışından, bu denetim iş akışı eyleminin içindeki eylemlere doğrudan başvurabilirsiniz. Örneğin, `Http` bir kapsam içinde bir eyleminiz varsa, `@body('Http')` ifadeye iş akışındaki herhangi bir yerden başvurabilirsiniz. Ancak, bir denetim iş akışı eyleminde bulunan eylemler yalnızca aynı denetim iş akışı yapısında yer alan diğer eylemlerden "daha sonra çalıştırılabilir".
 
-| Eylem türü | Açıklama | 
+| Eylem türü | Description | 
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Bir dizideki her öğe için aynı eylemleri döngüde çalıştırın. | 
 | [**Kullandıysanız**](#if-action) | Belirtilen koşulun doğru veya yanlış olduğunu temel alarak eylemleri çalıştırın. | 
@@ -888,7 +889,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*eylem-ad*> | Dize | Bağlayıcı tarafından belirtilen eylemin adı | 
 | <*api adı*> | Dize | Bağlantı için kullanılan Microsoft tarafından yönetilen API 'nin adı | 
@@ -898,7 +899,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*diğer eyleme özgü-giriş-Özellikler*> | JSON Nesnesi | Bu özel eylem için uygulanan diğer tüm giriş özellikleri | 
 | <*yeniden deneme davranışı*> | JSON Nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
@@ -968,7 +969,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*eylem-ad*> | Dize | Bağlayıcı tarafından belirtilen eylemin adı | 
 | <*Yöntem-tür*> | Dize | Bir uç noktadan abone olmak veya aboneliği kaldırmak için kullanılacak HTTP yöntemi: "GET", "PUT", "POST", "PATCH" veya "DELETE" | 
@@ -977,7 +978,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*API-abonelikten çıkma-URL*> | Dize | API 'den aboneliği kaldırma için kullanılacak URI | 
 | <*üst bilgi-içerik*> | JSON Nesnesi | İstekte gönderilen tüm üstbilgiler <p>Örneğin, bir istek için dili ve türü ayarlamak için: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
@@ -1007,7 +1008,7 @@ Bu eylem, ifadeler de dahil olmak üzere birden çok girişin tek bir çıkış�
 
 *Gerekli* 
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*oluşturma girişleri*> | Herhangi bir | Tek bir çıkış oluşturmak için girişler | 
 |||| 
@@ -1068,7 +1069,7 @@ Bu eylem bir JavaScript kod parçacığı çalıştırır ve sonuçları `Result
 
 *Gerekli*
 
-| Değer | Tür | Açıklama |
+| Değer | Tür | Description |
 |-------|------|-------------|
 | <*JavaScript-Code-kod parçacığı*> | Değişir | Çalıştırmak istediğiniz JavaScript kodu. Kod gereksinimleri ve daha fazla bilgi için bkz. [satır içi kod ile kod parçacıkları ekleme ve çalıştırma](../logic-apps/logic-apps-add-run-inline-code.md). <p>`code`Özniteliğinde, kod parçacığınızı `workflowContext` giriş olarak salt okunurdur. Bu nesne, kodunuzu tetikleyiciden gelen sonuçlara ve iş akışınızdan önceki eylemlere erişim sağlayan alt özellikler içerir. Nesnesi hakkında daha fazla bilgi için `workflowContext` bkz. [kodunuzda başvuru tetikleyicisi ve eylem sonuçları](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
 ||||
@@ -1079,7 +1080,7 @@ Bu eylem bir JavaScript kod parçacığı çalıştırır ve sonuçları `Result
 
 Özniteliği için `includeTrigger` , `true` veya `false` değerlerini belirtebilirsiniz.
 
-| Değer | Tür | Açıklama |
+| Değer | Tür | Description |
 |-------|------|-------------|
 | <*önceki eylemler*> | Dize dizisi | Belirtilen eylem isimlerinizi içeren bir dizi. İş akışı tanımınızda görünen eylem adlarını, eylem adlarında boşluk ("") değil, alt çizgi (_) kullanıldığı durumlarda kullanın. |
 ||||
@@ -1145,7 +1146,7 @@ Bu eylem, önceden oluşturulmuş bir [Azure işlevini](../azure-functions/funct
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------|  
 | <*Azure-işlev KIMLIĞI*> | Dize | Çağırmak istediğiniz Azure işlevinin kaynak KIMLIĞI. Bu değerin biçimi aşağıda verilmiştir:<p>"/Subscriptions/<*Azure-Subscription-ıd*>/resourceGroups/<*Azure-resource-group*>/Providers/Microsoft.Web/Sites/<*Azure-function-app-name*>/Functions/<*Azure-işlev-adı*>" | 
 | <*Yöntem-tür*> | Dize | İşlevi çağırmak için kullanılacak HTTP yöntemi: "GET", "PUT", "POST", "PATCH" veya "DELETE" <p>Belirtilmemişse, varsayılan "POST" yöntemidir. | 
@@ -1153,7 +1154,7 @@ Bu eylem, önceden oluşturulmuş bir [Azure işlevini](../azure-functions/funct
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------|  
 | <*üst bilgi-içerik*> | JSON Nesnesi | Çağrıya gönderecek tüm üstbilgiler <p>Örneğin, bir istek için dili ve türü ayarlamak için: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*gövde-içerik*> | JSON Nesnesi | İstekte göndermek için herhangi bir ileti içeriği | 
@@ -1223,7 +1224,7 @@ Bu eylem, belirtilen HTTP veya HTTPS uç noktasına bir istek gönderir ve iş a
 
 *Gerekli*
 
-| Özellik | Değer | Tür | Açıklama |
+| Özellik | Değer | Tür | Description |
 |----------|-------|------|-------------|
 | `method` | <*Yöntem-tür*> | Dize | Giden isteği göndermek için kullanılacak yöntem: "GET", "PUT", "POST", "PATCH" veya "DELETE" |
 | `uri` | <*HTTP-veya-HTTPS uç noktası-URL*> | Dize | Giden isteği göndermek istediğiniz HTTP veya HTTPS uç noktası URL 'SI. En büyük dize boyutu: 2 KB <p>Bir Azure hizmeti veya kaynağı için, bu URI söz dizimi kaynak KIMLIĞI ve erişmek istediğiniz kaynağın yolunu içerir. |
@@ -1231,7 +1232,7 @@ Bu eylem, belirtilen HTTP veya HTTPS uç noktasına bir istek gönderir ve iş a
 
 *İsteğe bağlı*
 
-| Özellik | Değer | Tür | Açıklama |
+| Özellik | Değer | Tür | Description |
 |----------|-------|------|-------------|
 | `headers` | <*üst bilgi-içerik*> | JSON Nesnesi | İsteğe dahil etmeniz gereken tüm üstbilgiler <p>Örneğin, dili ve türünü ayarlamak için: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <*sorgu-Parametreler*> | JSON Nesnesi | İstekte kullanmanız gereken herhangi bir sorgu parametresi <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi `?api-version=2018-01-01` çağrıya ekler. |
@@ -1275,7 +1276,7 @@ Bu eylem bir dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belir
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*dizide*> | Dizi | Kaynak öğeleri sağlayan dizi veya ifade. Bir ifade belirtirseniz, bu ifadeyi çift tırnak içine alın. | 
 | <*ayırıcı*> | Tek karakter dizesi | Dizedeki her öğeyi ayıran karakter | 
@@ -1319,7 +1320,7 @@ Bu eylem, JSON içeriğindeki özelliklerden Kullanıcı dostu alanları veya *b
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*JSON kaynağı*> | JSON Nesnesi | Ayrıştırmak istediğiniz JSON içeriği | 
 | <*JSON şeması*> | JSON Nesnesi | İşlemin, kaynak JSON içeriğini ayrıştırmak için kullandığı JSON içeriğini tanımlayan JSON şeması. <p>**İpucu**: Logic Apps tasarımcısında, bu şemayı sağlayabilir veya işlemin şemayı oluşturabilmesi için bir örnek yük sağlayabilirsiniz. | 
@@ -1421,7 +1422,7 @@ Bu eylem, belirtilen koşula veya filtreye bağlı olarak başka bir dizideki ö
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*dizide*> | Dizi | Kaynak öğeleri sağlayan dizi veya ifade. Bir ifade belirtirseniz, bu ifadeyi çift tırnak içine alın. |
 | <*koşul-or-filtre*> | Dize | Kaynak dizideki öğeleri filtrelemek için kullanılan koşul <p>**Note**: koşula uyan bir değer yoksa, eylem boş bir dizi oluşturur. |
@@ -1462,14 +1463,14 @@ Bu eylem bir HTTP isteğine yanıt için yük oluşturur.
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*Yanıt-durum kodu*> | Tamsayı | Gelen isteğe gönderilen HTTP durum kodu. Varsayılan kod "200 Tamam" dır, ancak kod, 2xx, 4xx veya 5xx ile başlayan ancak 3xxx ile birlikte olmayan geçerli bir durum kodu olabilir. | 
 |||| 
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*Yanıt-üst bilgiler*> | JSON Nesnesi | Yanıtla birlikte içerilecek bir veya daha fazla üst bilgi | 
 | <*yanıt gövdesi*> | Türlerini | Önceki bir eylemden dize, JSON nesnesi, hatta ikili içerik olabilen yanıt gövdesi | 
@@ -1537,7 +1538,7 @@ Bu eylem, belirtilen haritaya göre başka bir diziden öğeleri dönüştürere
 
 *Gerekli* 
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*dizide*> | Dizi | Kaynak öğeleri sağlayan dizi veya ifade. Bir ifadeyi çift tırnak işareti içine aldığınızdan emin olun. <p>**Note**: Kaynak dizisi boşsa, eylem boş bir dizi oluşturur. | 
 | <*anahtar adı*> | Dize | <*ifadeden* sonuca atanan özellik adı> <p>Çıkış dizisindeki tüm nesneler arasında yeni bir özellik eklemek için, bu özellik için bir <*anahtar adı*> ve özellik değeri için> <*ifadesi* sağlayın. <p>Dizideki tüm nesnelerden bir özelliği kaldırmak için, bu özellik için <*anahtar adı*> atlayın. | 
@@ -1635,7 +1636,7 @@ Bu eylem bir diziden CSV veya HTML tablosu oluşturur. JSON nesnelerine sahip di
 
 *Gerekli* 
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | \<CSV *or* HTML>| Dize | Oluşturmak istediğiniz tablo için biçim | 
 | <*dizide*> | Dizi | Tablo için kaynak öğeleri sağlayan dizi veya ifade <p>**Note**: Kaynak dizisi boşsa, eylem boş bir tablo oluşturur. | 
@@ -1645,7 +1646,7 @@ Bu eylem bir diziden CSV veya HTML tablosu oluşturur. JSON nesnelerine sahip di
 
 Sütun üst bilgilerini ve değerlerini belirtmek veya özelleştirmek için, `columns` diziyi kullanın. `header-value`Çiftler aynı üstbilgi adına sahip olduğunda, değerleri bu üst bilgi adı altındaki aynı sütunda görünür. Aksi takdirde, benzersiz üst bilgi benzersiz bir sütun tanımlar.
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*sütun-adı*> | Dize | Bir sütunun üst bilgi adı | 
 | <*sütun-değer*> | Herhangi bir | Bu sütundaki değer | 
@@ -1748,7 +1749,7 @@ Bu eylem bir iş akışı örneği için çalışmayı durduruyor, devam eden t�
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*durumlarına*> | Dize | Çalıştırma için döndürülecek durum: "başarısız", "Iptal edildi" veya "başarılı" |
 |||| 
@@ -1757,7 +1758,7 @@ Bu eylem bir iş akışı örneği için çalışmayı durduruyor, devam eden t�
 
 "RunStatus" nesnesinin özellikleri yalnızca "runStatus" özelliği "başarısız" durumuna ayarlandığında geçerlidir.
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*hata-kod veya-ad*> | Dize | Hata için kod veya ad |
 | <*hata-ileti*> | Dize | Hatayı açıklayan ileti veya metin ve uygulama kullanıcısının gerçekleştirebileceği eylemler | 
@@ -1818,7 +1819,7 @@ Bu eylem, belirtilen zaman aralığı veya belirtilen saate kadar iş akışı y
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*birim sayısı*> | Tamsayı | **Gecikme** eylemi için beklenecek birim sayısı | 
 | <*aralığında*> | Dize | **Gecikme** eylemi için beklenecek Aralık: "saniye", "dakika", "saat", "gün", "hafta", "ay" | 
@@ -1891,7 +1892,7 @@ Logic Apps motor çağırmak istediğiniz tetikleyiciye erişimi denetler, bu ne
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*iç içe mantık-uygulama adı*> | Dize | Çağırmak istediğiniz mantıksal uygulamanın adı | 
 | <*Tetikleyici-adı*> | Dize | Çağırmak istediğiniz iç içe mantıksal uygulamadaki tetikleyicinin adı | 
@@ -1902,7 +1903,7 @@ Logic Apps motor çağırmak istediğiniz tetikleyiciye erişimi denetler, bu ne
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------|  
 | <*üst bilgi-içerik*> | JSON Nesnesi | Çağrıya gönderecek tüm üstbilgiler | 
 | <*gövde-içerik*> | JSON Nesnesi | Çağrıyla gönderecek ileti içeriği | 
@@ -1968,7 +1969,7 @@ Bu döngü eylemi bir dizi boyunca yinelenir ve her dizi öğesinde eylemler ger
 
 *Gerekli* 
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*eylem-1... No*> | Dize | Her dizi öğesinde çalışan eylemlerin adları | 
 | <*eylem-tanım-1... No*> | JSON Nesnesi | Çalışan eylemlerin tanımları | 
@@ -1977,7 +1978,7 @@ Bu döngü eylemi bir dizi boyunca yinelenir ve her dizi öğesinde eylemler ger
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*biriktirme*> | Tamsayı | Varsayılan olarak, "for each" döngüsü yinelemeleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar (eşzamanlı veya paralel) aynı anda çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için, bkz. ["for each" döngüsü eşzamanlılık](#change-for-each-concurrency). | 
 | <*işlem-seçenek*> | Dize | Paralel yerine "for each" döngüsünü sırayla çalıştırmak için, <*Operation-option*> olarak ayarlayın `Sequential` veya <*Count*> `1` , her ikisini birden değil. Daha fazla bilgi için bkz. ["for each" döngülerini sırayla çalıştırma](#sequential-for-each). | 
@@ -2041,7 +2042,7 @@ Yalnızca tetikleyiciden çıkış olarak geçirilen bir diziyi belirtmek için,
 }
 ```
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*koşul*> | JSON Nesnesi | Değerlendirmek için bir ifade olabilen koşul | 
 | <*eylem-1*> | JSON Nesnesi | <*koşul*> doğru olarak değerlendirildiğinde çalıştırılacak eylem | 
@@ -2131,7 +2132,7 @@ Bu eylem, bu kapsamdaki eylemlerin çalışması bittikten sonra kendi durumlar�
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------|  
 | <*iç eylem-1... No*> | JSON Nesnesi | Kapsam içinde çalışan bir veya daha fazla eylem |
 | <*eylem-girişler*> | JSON Nesnesi | Her eyleme ait girişler |
@@ -2172,7 +2173,7 @@ Bu eylem, *Switch deyimleri*olarak da bilinen, diğer eylemleri *durumlar*halind
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*ifade-veya-belirteç*> | Değişir | Değerlendirilecek ifade, JSON nesnesi veya belirteç | 
 | <*eylem-ad*> | Dize | Eşleşen durum için çalıştırılacak eylemin adı | 
@@ -2182,7 +2183,7 @@ Bu eylem, *Switch deyimleri*olarak da bilinen, diğer eylemleri *durumlar*halind
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*varsayılan eylem-adı*> | Dize | Eşleşen bir durum yoksa çalıştırılacak varsayılan eylemin adı | 
 | <*varsayılan eylem-tanım*> | JSON Nesnesi | Eşleşen bir durum mevcut olmadığında çalıştırılacak eylemin tanımı | 
@@ -2298,7 +2299,7 @@ Bu döngü eylemi, belirtilen koşul doğru olana kadar çalışan eylemleri iç
 }
 ```
 
-| Değer | Tür | Açıklama | 
+| Değer | Tür | Description | 
 |-------|------|-------------| 
 | <*eylem-ad*> | Dize | Döngü içinde çalıştırmak istediğiniz eylemin adı | 
 | <*eylem-tür*> | Dize | Çalıştırmak istediğiniz eylem türü | 
@@ -2377,7 +2378,7 @@ Her iki tetikleyici ve eylem için, özelliği ekleyerek zaman uyumsuz düzenin 
 
 Bu `runtimeConfiguration` özellikleri tetikleyici veya eylem tanımına ekleyerek Tetikleyiciler ve eylemler için varsayılan çalışma zamanı davranışını değiştirebilirsiniz.
 
-| Özellik | Tür | Açıklama | Tetikleyici veya eylem | 
+| Özellik | Tür | Description | Tetikleyici veya eylem | 
 |----------|------|-------------|-------------------| 
 | `runtimeConfiguration.concurrency.runs` | Tamsayı | Aynı anda çalışabilecek iş akışı örnekleri sayısında [*varsayılan sınırı*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) değiştirin (eşzamanlı veya paralel). Bu değeri ayarlamak, arka uç sistemlerinin aldığı istek sayısını sınırlamanıza yardımcı olabilir. <p>`runs`Özelliği `1` özelliği olarak ayarlama ile aynı şekilde çalışacak şekilde ayarlamak `operationOptions` `SingleInstance` . Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p>Varsayılan sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık](#change-trigger-concurrency) veya [tetikleyici örneklerini sırayla](#sequential-trigger)değiştirme. | Tüm tetikleyiciler | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Tamsayı | Mantıksal uygulamanız zaten en fazla eşzamanlı örnekleri çalıştırıyorsa, çalıştırılacak şekilde beklemesi gereken iş akışı örneklerinin sayısı için [*varsayılan sınırı*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) değiştirin. <p>Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | Tüm tetikleyiciler | 
@@ -2393,7 +2394,7 @@ Bu `runtimeConfiguration` özellikleri tetikleyici veya eylem tanımına ekleyer
 
 Tetikleyiciler ve eylemler için varsayılan davranışı `operationOptions` tetikleyici veya eylem tanımındaki özelliği ile değiştirebilirsiniz.
 
-| İşlem seçeneği | Tür | Açıklama | Tetikleyici veya eylem | 
+| İşlem seçeneği | Tür | Description | Tetikleyici veya eylem | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | Dize | HTTP tabanlı eylemleri zaman uyumsuz yerine eşzamanlı olarak çalıştırın. <p><p>Bu seçeneği ayarlamak için bkz. [eylemleri zaman uyumlu olarak çalıştırma](#disable-asynchronous-pattern). | Eylem <p>[Apiconnection](#apiconnection-action), <br>[Http](#http-action), <br>[Response](#response-action) | 
 | `OptimizedForHighThroughput` | Dize | 5 dakika [default limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) başına eylem yürütmelerinin sayısı [üst sınırını en fazla](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)olacak şekilde değiştirin. <p><p>Bu seçeneği ayarlamak için bkz. [yüksek verimlilik modunda çalıştırma](#run-high-throughput-mode). | Tüm eylemler | 

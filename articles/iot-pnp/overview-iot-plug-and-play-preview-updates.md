@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: c2dcba05e3b1fc5cfc32d6f1b38c22b811b73626
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f212143d90b6a6bf9c8f1f597c276b9ab4100617
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352999"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406269"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>IoT Tak ve Kullan önizlemeyi yenileme
 
@@ -86,7 +86,7 @@ Service SDK [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/digitaltw
 
 [Azure IoT cihaz çalışma ekranı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) uzantısı, dtdl v1 için yazma desteği, model deposunun önceki sürümüyle tümleştirme ve kod oluşturma desteği sağlar.
 
-VS Code 'de DTDL v2 yazma desteği gerekiyorsa, yeni [dtdl uzantısını](https://github.com/azure/vscode-dtdl) vs Code ' ye yükleyebilirsiniz. Uzantı, model deposu veya kod oluşturma ile tümleştirme sağlamaz. Depodaki modelleri yönetmek artık bir [Web Kullanıcı arabirimi](https://aka.ms/iotmodelrepo)kullanılarak yapılır.
+VS Code 'de DTDL v2 yazma desteği gerekiyorsa, yeni [dtdl uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) vs Code ' ye yükleyebilirsiniz. Uzantı, model deposu veya kod oluşturma ile tümleştirme sağlamaz. Depodaki modelleri yönetmek artık bir [Web Kullanıcı arabirimi](https://aka.ms/iotmodelrepo)kullanılarak yapılır.
 
 ## <a name="digital-twin-service-side-rest-apis"></a>Digital ikizi hizmet tarafı REST API 'Leri
 

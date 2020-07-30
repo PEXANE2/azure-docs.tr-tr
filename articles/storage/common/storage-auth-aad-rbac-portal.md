@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 160833817150332b240ec17b2b700fbcb7a4456b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 28cb140293d449876cc05e3e5f9e59a04b8396e0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370657"
+ms.locfileid: "87423737"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Azure portalını kullanarak blob ve kuyruk verilerine erişim için RBAC rolü atama
 
@@ -99,7 +99,7 @@ Kullanıcının Azure portal bloblara erişebilmeleri için **okuyucu** rolünü
 
 - Depolama kaynakları için RBAC rolleri hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim kimlik doğrulaması](storage-auth-aad.md). 
 - RBAC hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
-- Azure PowerShell, Azure CLı veya REST API ile RBAC rol atamalarını atamayı ve yönetmeyi öğrenmek için şu makalelere bakın:
+- Azure rol atamalarını Azure PowerShell, Azure CLı veya REST API ile atamayı ve yönetmeyi öğrenmek için şu makalelere bakın:
     - [Rol tabanlı erişim denetimi 'ni (RBAC) Azure PowerShell ile yönetme](../../role-based-access-control/role-assignments-powershell.md)
     - [Rol tabanlı erişim denetimi 'ni (RBAC) Azure CLı ile yönetme](../../role-based-access-control/role-assignments-cli.md)
     - [Rol tabanlı erişim denetimi 'ni (RBAC) REST API ile yönetme](../../role-based-access-control/role-assignments-rest.md)

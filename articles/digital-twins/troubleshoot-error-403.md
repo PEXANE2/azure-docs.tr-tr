@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 95372d69f58249afc946f12ec74696507429e5c6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a971291dd423894e4d04158abe873a7222f9802c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125318"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405620"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Hizmet isteği başarısız oldu. Durum: 403 (yasak)
 
@@ -57,7 +57,7 @@ Abonelikte bir sahibiyseniz, bu komutu kendiniz çalıştırabilirsiniz. Değils
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Bu rol gereksinimi ve atama süreci hakkında daha fazla bilgi için bkz. *nasıl yapılır: bir örnek ve kimlik doğrulaması ayarlama (el ile)*. [ *Set up your user's access permissions* ](how-to-set-up-instance-manual.md#set-up-your-users-access-permissions)
+Bu rol gereksinimi ve atama süreci hakkında daha fazla bilgi için bkz. *nasıl yapılır: bir örnek ve kimlik doğrulaması ayarlama (CLI veya portal)*. [ *Set up your user's access permissions* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)
 
 Bu rol ataması zaten varsa ve yine de 403 sorunuyla karşılaşırsanız, sonraki çözüme geçin.
 
@@ -75,12 +75,12 @@ Bu rol ataması zaten varsa ve yine de 403 sorunuyla karşılaşırsanız, sonra
 
 #### <a name="fix-issues"></a>Sorunları giderme
 
-Bunlardan herhangi biri açıklanenden farklı görünüyorsa, *nasıl yapılır: bir örnek ve kimlik doğrulaması (el ile) ayarlama*konusunun [ *istemci uygulamaları için erişim izinlerini ayarlama* bölümünde](how-to-set-up-instance-manual.md#set-up-access-permissions-for-client-applications) bir uygulama kaydı ayarlama yönergelerini izleyin.
+Bunlardan herhangi biri açıklanenden farklı görünüyorsa, *nasıl yapılır: örnek ve kimlik doğrulaması (CLI veya portal) ayarlama*konusunun [ *istemci uygulamaları için erişim izinlerini ayarlama* bölümünde](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) bir uygulama kaydı ayarlama yönergelerini izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yeni bir Azure dijital TWINS örneği oluşturma ve kimlik doğrulama için kurulum adımlarını okuyun:
-* [*Nasıl yapılır: örnek ve kimlik doğrulaması ayarlama (El Ile)*](how-to-set-up-instance-manual.md)
+* [*Nasıl yapılır: örnek ve kimlik doğrulaması ayarlama (CLı)*](how-to-set-up-instance-cli.md)
 
 Azure dijital TWINS üzerinde güvenlik ve izinler hakkında daha fazla bilgi edinin:
 * [*Kavramlar: Azure dijital TWINS çözümleri için güvenlik*](concepts-security.md)

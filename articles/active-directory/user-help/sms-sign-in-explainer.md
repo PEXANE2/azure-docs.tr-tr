@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 361e8c63dc036443e527d1027fe3fd0cca784d9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747198"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423006"
 ---
 # <a name="use-your-phone-number-as-a-user-name-preview"></a>Telefon numaranızı Kullanıcı adı olarak kullanma (Önizleme)
 
@@ -52,11 +52,11 @@ Zaten bir kuruluşla telefon numarası kullanıyorsanız ve telefon numaranızı
 
 1. SMS oturum açma kullanılabilir olduğunda, SMS oturum açma için telefon numarasını etkinleştirmek isteyip istemediğinizi soran bir başlık görüntülenir:
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-banner.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    [![Telefon numarası için SMS oturum açma özelliğini etkinleştirmek için başlık.](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
 
 1. Ayrıca, telefon yöntemi kutucuğunda giriş işaretini seçerseniz bir **Etkinleştir** düğmesi görünür:
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-phone-method.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
+    [![Telefon numarası için SMS oturum açma özelliğini etkinleştirmek için başlık.](media/sms-sign-in-explainer/sms-sign-in-phone-method.png)](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
 
 1. Yöntemi etkinleştirmek için **Etkinleştir**' i seçin. Eylemi onaylamanız istenir:
 
@@ -68,7 +68,7 @@ Zaten bir kuruluşla telefon numarası kullanıyorsanız ve telefon numaranızı
 
 1. Telefon numarasını silmek için SMS oturum açma telefonu yöntemi kutucuğunda Sil düğmesini seçin.
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-delete-method.png "Banner to delete SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
+    [![Telefon numarası için SMS oturum açma silmek için başlık.](media/sms-sign-in-explainer/sms-sign-in-delete-method.png)](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
 
 2. Eylemi onaylamanız istendiğinde **Tamam**' ı seçin.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 58a63c9e11cf86318f0e9f051d034cbbaf7c40a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6411ec5a7e5e8af146eb2e906ea3d1c6ce7693ac
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76772258"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387634"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Öğretici: Windows cihazları için IoT Edge modülleri geliştirme
 
@@ -75,7 +75,7 @@ IoT Edge modüller kapsayıcı olarak paketlenir, bu nedenle kapsayıcıları de
 
 Geliştirme makinenize yüklemek için Docker belgelerini kullanın:
 
-* [Docker for Windows'u yükleme](https://docs.docker.com/docker-for-windows/install/)
+* [Docker Desktop for Windows'u yükleme](https://docs.docker.com/docker-for-windows/install/)
 
   * Windows için Docker Desktop 'ı yüklediğinizde, Linux veya Windows kapsayıcıları kullanmak isteyip istemediğiniz sorulur. Bu öğretici için **Windows kapsayıcıları**' nı kullanın. Daha fazla bilgi için bkz. [Windows ve Linux kapsayıcıları arasında geçiş](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
@@ -91,7 +91,7 @@ Bu öğretici, Visual Studio 2019 için geliştirme adımlarını öğretir. Vis
 
       * Azure geliştirme
       * C++ ile masaüstü geliştirme
-      * .NET Core çoklu platform geliştirme
+      * .NET Core platformlar arası geliştirme
 
    * Geliştirme makinenizde Visual Studio 2019 zaten varsa, gerekli iş yüklerini eklemek için [Visual Studio 'Yu değiştirme](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) bölümündeki adımları izleyin.
 
@@ -101,7 +101,7 @@ Bu öğretici, Visual Studio 2019 için geliştirme adımlarını öğretir. Vis
 
 3. Yüklemelerinizi tamamladığınızda, Visual Studio 2019 ' i açın ve **kod olmadan devam**' ı seçin.
 
-4. **Bulut Gezginini** **görüntüle** > ' yi seçin.
+4. **View**  >  **Bulut Gezginini**görüntüle ' yi seçin.
 
 5. Bulut Gezgini 'nde profil simgesini seçin ve henüz oturum açmadıysanız Azure hesabınızda oturum açın.
 
@@ -117,7 +117,7 @@ Bu öğretici, Visual Studio 2019 için geliştirme adımlarını öğretir. Vis
 
 Azure IoT Edge araçları uzantısı, Visual Studio 'da desteklenen tüm IoT Edge modül dilleri için proje şablonları sağlar. Bu şablonlar, IoT Edge test etmek için çalışan bir modül dağıtmak için ihtiyacınız olan tüm dosya ve koda sahiptir veya şablonu kendi iş mantığınızla özelleştirmek için bir başlangıç noktası sağlar.
 
-1. **Dosya** > **New**yeni > **proje...** öğesini seçin
+1. **Dosya**  >  **Yeni**  >  **proje...** öğesini seçin
 
 2. Yeni proje penceresinde, **IoT Edge** arayın ve **Azure IoT Edge (Windows amd64)** projesi seçin. **İleri**’ye tıklayın.
 
@@ -133,7 +133,7 @@ Azure IoT Edge araçları uzantısı, Visual Studio 'da desteklenen tüm IoT Edg
    | ----- | ----- |
    | Visual Studio şablonu | **C# modülünü**seçin. |
    | Modül Adı | Varsayılan **IotEdgeModule1**kabul edin. |
-   | Depo URL 'Si | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. **Oturum açma sunucusu** değerini, Azure Portal kapsayıcı kayıt defterinizin **genel bakış** sayfasından alabilirsiniz. <br><br> Son görüntü deposu, kayıt defteri \<adı\>. azurecr.io/iotedgemodule1 gibi görünür. |
+   | Depo URL 'Si | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **Localhost: 5000** ' i Azure Container kayıt defterinizin **oturum açma sunucusu** değeriyle değiştirin. Oturum açma sunucusu değerini, Azure portal kapsayıcı kayıt defterinizin genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu \<registry name\> . azurecr.io/iotedgemodule1 gibi görünüyor. |
 
       ![Projenizi hedef cihaz, modül türü ve kapsayıcı kayıt defteri için yapılandırma](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -144,18 +144,18 @@ Yeni projeniz Visual Studio penceresinde yüklendikten sonra, oluşturduğu dosy
 * **CSharpTutorialApp**adlı bir IoT Edge projesi.
   * **Modüller** klasörü, projeye dahil olan modüllerin işaretçilerini içerir. Bu durumda, yalnızca IotEdgeModule1 olmalıdır.
   * Gizli **. env** dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini tutar. Bu kimlik bilgileri, kapsayıcı görüntülerini çekmek için erişim sağlamak üzere IoT Edge cihazınızdan paylaşılır.
-  * Deployment **. Template. JSON** dosyası bir dağıtım bildirimi oluşturmanıza yardımcı olacak bir şablondur. *Dağıtım bildirimi* , bir cihaza hangi modüllerin dağıtılmasını, bunların nasıl yapılandırılacağını ve bunların birbirleriyle ve buluttan nasıl iletişim kurabildiğini tanımlayan bir dosyadır.
+  * Dosyadaki **deployment.template.js** , bir dağıtım bildirimi oluşturmanıza yardımcı olacak bir şablondur. *Dağıtım bildirimi* , bir cihaza hangi modüllerin dağıtılmasını, bunların nasıl yapılandırılacağını ve bunların birbirleriyle ve buluttan nasıl iletişim kurabildiğini tanımlayan bir dosyadır.
     > [!TIP]
     > Kayıt defteri bilgileri bölümünde, adres, çözümü oluşturduğunuzda verdiğiniz bilgilerden tekrar doldurulur. Ancak,. env dosyasında depolanan Kullanıcı adı ve parola başvuru değişkenleri. Bu,. env dosyası git yoksayıldı, ancak dağıtım şablonu olmadığı için güvenlik içindir.
 * **IotEdgeModule1**adlı bir IoT Edge modülü projesi.
   * **Program.cs** dosyası, proje şablonuyla birlikte gelen varsayılan C# modül kodunu içerir. Varsayılan modül bir kaynaktan giriş alır ve IoT Hub buna karşı geçirir.
-  * **Module. JSON** dosyası, tam görüntü deposu, görüntü sürümü ve desteklenen her platformda kullanılacak Dockerfile dahil olmak üzere modülle ilgili ayrıntıları tutar.
+  * Dosya **module.js** , tam görüntü deposu, görüntü sürümü ve desteklenen her platformda kullanılacak Dockerfile dahil olmak üzere modülle ilgili ayrıntıları tutar.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>IoT Edge aracısına kayıt defteri kimlik bilgilerinizi girin
 
 IoT Edge çalışma zamanının kapsayıcı görüntülerinizi IoT Edge cihaza çekmek için kayıt defteri kimlik bilgileriniz gerekir. IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri bilgilerinizi çekmeyi ve dağıtım şablonunda doldurmaya çalışır.
 
-1. Modül çözümünüzde **Deployment. Template. JSON** dosyasını açın.
+1. Modül çözümünüzdeki dosyada **deployment.template.js** açın.
 
 1. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. Kayıt defteri adresiniz, projeyi oluştururken verdiğiniz bilgilerden bir daha olmalıdır ve sonra Kullanıcı adı ve parola alanları değişken adlarını içermelidir. Örneğin:
 
@@ -179,7 +179,7 @@ IoT Edge çalışma zamanının kapsayıcı görüntülerinizi IoT Edge cihaza �
 
 Oluşturduğunuz çözüm şablonu, bir IoT Edge modülü için örnek kod içerir. Bu örnek modül yalnızca iletileri alır ve ardından üzerine geçirir. Ardışık düzen işlevselliği, modüllerin birbirleriyle iletişim kurduğu IoT Edge önemli bir kavramı gösterir.
 
-Her modülün kodunda birden çok *giriş* ve *Çıkış* kuyruğu olabilir. Cihazda çalışan IoT Edge hub 'ı bir modülün çıktısından gelen iletileri bir veya daha fazla modülün girdisine yönlendirir. Giriş ve çıkışları bildirmek için dile özgü dil diller arasında farklılık gösterir, ancak kavram tüm modüller arasında aynıdır. Modüller arasında yönlendirme hakkında daha fazla bilgi için bkz. [yolları bildirme](module-composition.md#declare-routes).
+Her modülün kodunda birden çok *giriş* ve *Çıkış* kuyruğu olabilir. Cihazda çalışan IoT Edge hub 'ı bir modülün çıktısından gelen iletileri bir veya daha fazla modülün girdisine yönlendirir. Giriş ve çıkışları bildirmek için özel kod diller arasında farklılık gösterir, ancak kavram tüm modüller arasında aynıdır. Modüller arasında yönlendirme hakkında daha fazla bilgi için bkz. [yolları bildirme](module-composition.md#declare-routes).
 
 Proje şablonuyla birlikte gelen örnek C# kodu, .NET için IoT Hub SDK 'sının [Moduleclient sınıfını](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) kullanır.
 
@@ -195,19 +195,19 @@ Proje şablonuyla birlikte gelen örnek C# kodu, .NET için IoT Hub SDK 'sının
 
    ![SendEventAsync oluşturucusunda çıkış adını bulma](./media/tutorial-develop-for-windows/declare-output-queue.png)
 
-5. **Deployment. Template. JSON** dosyasını açın.
+5. deployment.template.jsdosya **üzerinde** açın.
 
 6. $EdgeAgent istenen özelliklerin **modüller** özelliğini bulun.
 
-   Burada listelenen iki modül olmalıdır. İlk olarak, modüllerinizi test etmek için kullanabileceğiniz sanal sıcaklık verileri sağlamak üzere varsayılan olarak tüm şablonlara dahil olan **SimulatedTemperatureSensor**. İkincisi, bu projenin bir parçası olarak oluşturduğunuz **IotEdgeModule1** modülüdür.
+   Burada listelenen iki modül olmalıdır. Bunlardan biri, modüllerinizi test etmek için kullanabileceğiniz sanal sıcaklık verileri sağlamak üzere varsayılan olarak tüm şablonlara dahil olan **SimulatedTemperatureSensor** modülüdür. Diğeri, bu projenin bir parçası olarak oluşturduğunuz **IotEdgeModule1** modülüdür.
 
    Bu modüller özelliği, cihazınıza veya cihazlarınıza dağıtımda hangi modüllerin dahil edileceğini bildirir.
 
 7. $EdgeHub istenen özelliklerin **rotalar** özelliğini bulun.
 
-   IoT Edge hub modülünün işlevlerinden biri, iletileri bir dağıtımdaki tüm modüller arasında yönlendirmekte. Rotalar özelliğindeki değerleri gözden geçirin. İlk yol olan **IotEdgeModule1ToIoTHub**, IotEdgeModule1 modülündeki herhangi bir çıkış sırasından**\*** gelen herhangi bir iletiyi dahil etmek için bir joker karakteri () kullanır. Bu iletiler, IoT Hub belirten ayrılmış bir ad olan *$upstream*' a gider. İkinci yol, **sensorToIotEdgeModule1**, SimulatedTemperatureSensor modülünden gelen iletileri alır ve IotEdgeModule1 modülünün *input1* giriş kuyruğuna yönlendirir.
+   IoT Edge hub modülünün işlevlerinden biri, iletileri bir dağıtımdaki tüm modüller arasında yönlendirmekte. Rotalar özelliğindeki değerleri gözden geçirin. Bir yol, **IotEdgeModule1ToIoTHub**, **\*** IotEdgeModule1 modülündeki herhangi bir çıkış sırasından gelen herhangi bir iletiyi dahil etmek için bir joker karakteri () kullanır. Bu iletiler, IoT Hub belirten ayrılmış bir ad olan *$upstream*' a gider. Diğer yol, **sensorToIotEdgeModule1**, SimulatedTemperatureSensor modülünden gelen iletileri alır ve IotEdgeModule1 modülünün *input1* giriş kuyruğuna yönlendirir.
 
-   ![Dağıtım. Template. JSON içindeki yolları gözden geçirin](./media/tutorial-develop-for-windows/deployment-routes.png)
+   ![deployment.template.jsiçindeki yolları gözden geçirin](./media/tutorial-develop-for-windows/deployment-routes.png)
 
 ## <a name="build-and-push-your-solution"></a>Çözümünüzü derleyin ve gönderin
 
@@ -225,7 +225,7 @@ Kapsayıcı görüntünüzü kayıt defterinde depolanacak şekilde gönderebilm
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin`. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
+   Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin` . Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
 ### <a name="build-and-push"></a>Derleme ve gönderme
 
@@ -235,26 +235,26 @@ Geliştirme makinenizin artık kapsayıcı Kayıt defterinize erişimi vardır v
 
    ![IoT Edge modülleri oluşturun ve gönderin](./media/tutorial-develop-for-windows/build-and-push-modules.png)
 
-   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır `docker build` . Ardından, görüntü deposunu `docker push` kapsayıcı Kayıt defterinize göndermek için çalışır.
+   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, `docker build` hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır. Ardından, `docker push` görüntü deposunu kapsayıcı Kayıt defterinize göndermek için çalışır.
 
    Bu işlem ilk kez birkaç dakika sürebilir, ancak komutları bir sonraki çalıştırışınızda daha hızlıdır.
 
-2. Yeni oluşturulan yapılandırma klasöründe **Deployment. Windows-AMD64. JSON** dosyasını açın. (Yapılandırma klasörü, Visual Studio 'da Çözüm Gezgini görünmeyebilir. Bu durumda, Çözüm Gezgini görev çubuğundaki **tüm dosyaları göster** simgesini seçin.)
+2. Yeni oluşturulan yapılandırma klasöründeki dosya **deployment.windows-amd64.js** açın. (Yapılandırma klasörü, Visual Studio 'da Çözüm Gezgini görünmeyebilir. Bu durumda, Çözüm Gezgini görev çubuğundaki **tüm dosyaları göster** simgesini seçin.)
 
-3. IotEdgeModule1 bölümünün **image** parametresini bulun. Görüntüde, Module. JSON dosyasındaki Name, Version ve Architecture etiketiyle tam görüntü deposu bulunduğundan emin olun.
+3. IotEdgeModule1 bölümünün **image** parametresini bulun. Görüntüde, module.jsdosyadaki adı, sürümü ve mimari etiketiyle tam görüntü deposu bulunduğundan emin olun.
 
-4. IotEdgeModule1 klasöründeki **Module. JSON** dosyasını açın.
+4. IotEdgeModule1 klasöründeki dosya **module.js** açın.
 
 5. Modül görüntüsünün sürüm numarasını değiştirin. ($Schema sürümü değil sürümü.) Örneğin, modül kodunda küçük bir düzeltme yaptığımız gibi, düzeltme eki sürüm numarasını **0.0.2** olarak artırın.
 
    >[!TIP]
    >Modül sürümleri sürüm denetimini etkinleştirir ve güncelleştirmeleri üretime dağıtabilmeniz için küçük bir cihaz kümesinde değişiklikleri test etmeniz için izin verir. Derleme ve göndermeden önce modül sürümünü arttırmıyorsanız, depo kayıt defterinizde deponun üzerine yazarsınız.
 
-6. Değişikliklerinizi Module. JSON dosyasına kaydedin.
+6. Değişikliklerinizi dosyadaki module.jskaydedin.
 
 7. **CSharpTutorialApp** proje klasörünü yeniden sağ tıklatın ve **IoT Edge modüllerini yeniden oluştur ve Gönder** ' i seçin.
 
-8. **Deployment. Windows-AMD64. JSON** dosyasını yeniden açın. Build ve push komutunu yeniden çalıştırdığınızda yeni bir dosyanın oluşturulduğuna dikkat edin. Bunun yerine, aynı dosya değişiklikleri yansıtacak şekilde güncelleştirildi. IotEdgeModule1 görüntüsü artık kapsayıcının 0.0.2 sürümüne işaret ediyor. Dağıtım bildiriminde bu değişiklik, IoT Edge cihaza, çekme için bir modülün yeni bir sürümü olduğunu nasıl söyleirsiniz.
+8. Dosyayı yeniden **deployment.windows-amd64.js** açın. Build ve push komutunu yeniden çalıştırdığınızda yeni bir dosyanın oluşturulduğuna dikkat edin. Bunun yerine, aynı dosya değişiklikleri yansıtacak şekilde güncelleştirildi. IotEdgeModule1 görüntüsü artık kapsayıcının 0.0.2 sürümüne işaret ediyor. Dağıtım bildiriminde bu değişiklik, IoT Edge cihaza, çekme için bir modülün yeni bir sürümü olduğunu nasıl söyleirsiniz.
 
 9. Build ve push komutunun ne yaptığını daha fazla doğrulamak için [Azure Portal](https://portal.azure.com) gidin ve kapsayıcı Kayıt defterinize gidin.
 
@@ -266,8 +266,8 @@ Geliştirme makinenizin artık kapsayıcı Kayıt defterinize erişimi vardır v
 
 Modül görüntünüzü oluştururken ve gönderirken hatalarla karşılaşırsanız, genellikle geliştirme makinenizde Docker yapılandırması gerekir. Yapılandırmanızı gözden geçirmek için aşağıdaki denetimleri kullanın:
 
-* Komutu, `docker login` kapsayıcı Kayıt defterinizden kopyaladığınız kimlik bilgilerini kullanarak çalıştırdınız mı? Bu kimlik bilgileri, Azure 'da oturum açmak için kullandığınız olanlardan farklıdır.
-* Kapsayıcı deponuz doğru mu? Doğru kapsayıcı kayıt defteri adı ve doğru modülünüzün adı mı var? Denetlemek için IotEdgeModule1 klasöründeki **Module. JSON** dosyasını açın. Depo değeri, ** \<kayıt defteri adı\>. azurecr.io/iotedgemodule1**gibi görünmelidir.
+* `docker login`Komutu, kapsayıcı Kayıt defterinizden kopyaladığınız kimlik bilgilerini kullanarak çalıştırdınız mı? Bu kimlik bilgileri, Azure 'da oturum açmak için kullandığınız olanlardan farklıdır.
+* Kapsayıcı deponuz doğru mu? Doğru kapsayıcı kayıt defteri adı ve doğru modülünüzün adı mı var? Denetlemek için IotEdgeModule1 klasöründeki dosyadaki **module.js** açın. Depo değeri ** \<registry name\> . azurecr.io/iotedgemodule1**gibi görünmelidir.
 * Modülünüzün **IotEdgeModule1** 'den farklı bir ad kullandıysanız, bu ad çözüm genelinde tutarlıdır mi?
 * Makineniz, oluşturmakta olduğunuz kapsayıcı türünü çalıştırıyor mu? Bu öğretici Windows IoT Edge cihazları için olduğundan Visual Studio dosyalarınızda **Windows-AMD64** uzantısı olmalıdır ve Docker Desktop Windows kapsayıcıları çalıştırıyor olmalıdır.
 
@@ -281,9 +281,9 @@ Oluşturulan kapsayıcı görüntülerinin kapsayıcı kayıt defterinizde depol
 
    ![Tek bir cihaz için dağıtım oluşturma](./media/tutorial-develop-for-windows/create-deployment.png)
 
-3. Dosya Gezgini 'nde projenizin yapılandırma klasörüne gidin ve **Deployment. Windows-AMD64. JSON** dosyasını seçin. Bu dosya genellikle şu konumda bulunur:`C:\Users\<username>\source\repos\CSharpTutorialApp\CSharpTutorialApp\config\deployment.windows-amd64.json`
+3. Dosya Gezgini 'nde projenizin yapılandırma klasörüne gidin ve dosyadaki **deployment.windows-amd64.js** seçin. Bu dosya genellikle şu konumda bulunur:`C:\Users\<username>\source\repos\CSharpTutorialApp\CSharpTutorialApp\config\deployment.windows-amd64.json`
 
-   İçindeki tam modül görüntü değerlerine sahip olmayan Deployment. Template. json dosyasını kullanmayın.
+   Dosyasında tam modül görüntü değerlerini içermeyen deployment.template.jsdosyasını kullanmayın.
 
 4. Cihazınızdaki modülleri görmek için, Cloud Explorer 'da IoT Edge cihazınızın ayrıntılarını genişletin.
 
@@ -309,7 +309,7 @@ IotEdgeModule1 kodu iletileri giriş kuyruğu aracılığıyla alır ve bunları
 
 Cihazınızda neler olduğunu görmek isterseniz, cihazınızda çalışan IoT Edge çalışma zamanını ve modülleri incelemek için bu bölümdeki komutları kullanın.
 
-Bu bölümdeki komutlar, geliştirme makineniz değil IoT Edge cihazınıza yöneliktir. IoT Edge cihazınız için bir sanal makine kullanıyorsanız, şimdi bu sunucuya bağlanın. Azure 'da, sanal makinenin genel bakış sayfasına gidin ve uzak masaüstü bağlantısına erişmek için **Bağlan** ' ı seçin. Cihazda, `iotedge` komutları çalıştırmak için bir komut veya PowerShell penceresi açın.
+Bu bölümdeki komutlar, geliştirme makineniz değil IoT Edge cihazınıza yöneliktir. IoT Edge cihazınız için bir sanal makine kullanıyorsanız, şimdi bu sunucuya bağlanın. Azure 'da, sanal makinenin genel bakış sayfasına gidin ve uzak masaüstü bağlantısına erişmek için **Bağlan** ' ı seçin. Cihazda, komutları çalıştırmak için bir komut veya PowerShell penceresi açın `iotedge` .
 
 * Cihazınıza dağıtılan tüm modülleri görüntüleyin ve durumlarını denetleyin:
 
@@ -329,10 +329,18 @@ Bu bölümdeki komutlar, geliştirme makineniz değil IoT Edge cihazınıza yön
 
    SimulatedTemperatureSensor ve IotEdgeModule1 günlükleri işlendikleri iletileri göstermelidir. EdgeAgent modülü, diğer modüllerin başlatılmasından sorumludur, bu nedenle Günlükler dağıtım bildirimini uygulamayla ilgili bilgiler alacak. Herhangi bir modül listelenmemişse veya çalışmıyorsa, edgeAgent günlükleri muhtemelen hatalara sahip olur. EdgeHub modülü, modüller ve IoT Hub arasındaki iletişimlerden sorumludur. Modüller çalışır duruma geliyor ancak iletiler IoT Hub 'ınıza inmemişse, edgeHub günlükleri muhtemelen hatalara sahip olur.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bir sonraki önerilen makaleye geçmeyi planlıyorsanız, oluşturduğunuz kaynaklarla yapılandırmaları tutabilir ve yeniden kullanabilirsiniz. Aynı IoT Edge cihazını test cihazı olarak kullanmaya devam edebilirsiniz.
+
+Aksi takdirde, ücretlerden kaçınmak için bu makalede kullandığınız yerel konfigürasyonları ve Azure kaynaklarını silebilirsiniz.
+
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, geliştirme makinenizde Visual Studio 2019 kurulumunu ve ilk IoT Edge modülünüzü buradan dağıttığınızı görürsünüz. Temel kavramları öğrenmiş olduğunuza göre, bir modüle işlev eklemeyi deneyin. böylece bu, üzerinden geçen verileri analiz edebilir. Tercih ettiğiniz dili seçin:
 
 > [!div class="nextstepaction"]
-> [C](tutorial-c-module-windows.md)
-> [C#](tutorial-csharp-module-windows.md)
+> [C](tutorial-c-module-windows.md) 
+>  [C#](tutorial-csharp-module-windows.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: node. js kullanarak Bing Özel Arama uç noktanızı çağırma | Microsoft Docs'
+title: 'Hızlı başlangıç: Node.js kullanarak Bing Özel Arama uç noktanızı çağırın | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Node. js kullanarak Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın.
+description: Node.js kullanarak Bing Özel Arama örneğinizi arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,22 +10,23 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 34d64db9caefd26adc91471ed67e528a6e3196dc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-javascript
+ms.openlocfilehash: dcfb5ed0b7a7fe2ec004ef5ceebf9ee51112c67c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199832"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406461"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing Özel Arama uç noktanızı çağırma
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Hızlı başlangıç: Node.js kullanarak Bing Özel Arama uç noktanızı çağırma
 
 Bing Özel Arama örneğinden arama sonuçları isteme hakkında bilgi edinmek için bu hızlı başlangıcı kullanın. Bu uygulama JavaScript 'e yazılsa da, Bing Özel Arama API'si çoğu programlama dili ile uyumlu olan bir yeniden yazılmış Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js)' da kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md).
 
-- [Node. js JavaScript çalışma zamanı](https://www.nodejs.org/).
+- [Node.js JavaScript çalışma zamanı](https://www.nodejs.org/).
 
 - [JavaScript istek kitaplığı](https://github.com/request/request).
 

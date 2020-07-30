@@ -1,15 +1,14 @@
 ---
 title: Linux VM 'lerinin uygulamayla tutarlı yedeklemeleri
 description: Linux sanal makinelerinizin Azure 'da uygulamayla tutarlı yedeklerini oluşturun. Bu makalede, betik çerçevesinin Azure tarafından dağıtılan Linux VM 'lerini yedeklemek için yapılandırılması açıklanmaktadır. Bu makalede, sorun giderme bilgileri de yer alır.
-ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054848"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407107"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Uygulama ile tutarlı Azure Linux VM yedekleri
 
@@ -53,13 +52,13 @@ Framework, VM anlık görüntülerini alırken özel betik ve son betik çalış
 
     - **Postscriptparams**: betiğe geçirilmesi gereken isteğe bağlı parametreleri sağlayın. Tüm parametrelerin tırnak içinde olması gerekir. Birden çok parametre kullanıyorsanız, parametreleri virgülle ayırın.
 
-    - Tüm **denemeler**: sonlandırmadan önce herhangi bir hata oluşursa, ön betiğin yeniden denenme sayısını ayarlayın. Sıfır, bir hata varsa yalnızca bir try ve retry denemesi anlamına gelir.
+    - Tüm denemeler: sonlandırmadan önce herhangi bir hata oluşursa, ön betiğin **yeniden**denenme sayısını ayarlayın. Sıfır, bir hata varsa yalnızca bir try ve retry denemesi anlamına gelir.
 
     - **Postscriptnoofdenemeler**: sonlandırmadan önce herhangi bir hata oluşursa, post-SCRIPT ' ın yeniden denenme sayısını ayarlayın. Sıfır, bir hata varsa yalnızca bir try ve retry denemesi anlamına gelir.
 
     - **Timeoutınseconds**: ön betik ve son betik için zaman aşımlarını belirtin (maksimum değer 1800 olabilir).
 
-    - **devam Backuponfailure**: ön betikte veya betik sonrası başarısız olursa, Azure Backup bir dosya sistemine tutarlı/kilitlenmeyle tutarlı bir yedeklemeye geri döneceğini istiyorsanız bu değeri **true** olarak ayarlayın. Bunu **yanlış** olarak ayarlamak, komut dosyası hatası durumunda yedekleme işlemi başarısız olur (bu ayardan bağımsız olarak, kilitlenmeyle tutarlı yedeklemeye geri kalan tek disk sanal makinenizin olması dışında).
+    - **devam Backuponfailure**: ön betikte veya betik sonrası başarısız olursa, Azure Backup bir dosya sistemine tutarlı/kilitlenmeyle tutarlı bir yedeklemeye geri döneceğini istiyorsanız bu değeri **true** olarak ayarlayın. Betik hatası varsa, bunu **false** olarak ayarlamak yedeklemenin başarısız olmasına neden olur (bu ayardan bağımsız olarak kilitlenmeyle TUTARLı bir sanal makineye sahip olmanız dışında). **Devam Backuponfailure** değeri false olarak ayarlandığında yedekleme başarısız olursa, hizmette yeniden deneme mantığı temel alınarak yedekleme işlemi yeniden denenir (beklenen sayıda deneme sayısı için).
 
     - **Fsfreezeenabled**: dosya sistemi tutarlılığını sağlamak için VM anlık görüntüsünü alırken Linux fsfreeze 'in çağrılması gerekip gerekmediğini belirtin. Uygulamanızda fsfreeze devre dışı bırakma bağımlılığı yoksa, bu ayarın **true** olarak tutulmasını öneririz.
 

@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç: tarayıcıda JavaScript ile v10 arasındaki için 
 description: JavaScript ile v10 arasındaki SDK kullanarak blob 'ları bir HTML sayfasında karşıya yüklemeyi, listeleyeceğinizi ve silmeyi öğrenin.
 services: storage
 author: mhopkins-msft
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.service: storage
 ms.author: mhopkins
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 0db110d02211323f64e7ffe795f72e3a5003ec91
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3982e54d06f2e84c4e8e8703e70e9a26773c389a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282050"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429213"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, tamamen tarayıcıda çalışan JavaScript kodunu kul
 > [!NOTE]
 > Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: bir tarayıcıda JavaScript V12 SDK ile Blobları yönetme](quickstart-blobs-javascript-browser.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
@@ -64,7 +64,7 @@ Paylaşılan erişim imzası (SAS), Blob depolama alanına gönderilen istekleri
 
 Azure Cloud Shell aracılığıyla veya Azure portal ya da Azure Depolama Gezgini ile Azure CLı kullanarak bir SAS oluşturabilirsiniz. Aşağıdaki tabloda CLı ile SAS oluşturmak için değer sağlamanız gereken parametreler açıklanmaktadır.
 
-| Parametre      |Açıklama  | Yer tutucu |
+| Parametre      |Description  | Yer tutucu |
 |----------------|-------------|-------------|
 | *kaç*       | Erişim belirtecinin YYYY-AA-GG biçimindeki sona erme tarihi. Bu hızlı başlangıçta kullanmak için yarının tarihini girin. | *FUTURE_DATE* |
 | *hesap-adı* | Depolama hesabı adı. Daha önceki bir adımda ayrılan adı kullanın. | *YOUR_STORAGE_ACCOUNT_NAME* |

@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: f238a2a3c499cf1e36f5e7c40e087375b7db0a70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c8497d50f86155ef7df0de995864e74753542750
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726462"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422632"
 ---
 # <a name="url-rewriter"></a>URL yeniden yazıcı #
 
@@ -23,7 +24,7 @@ Azure Media Player, düz, TIRE, HLS v3 ve HLS v4 için akışlar sağlamak üzer
     </video>
 ```
 
-Bununla birlikte, URL yeniden yazıcısını kullanmak istemiyorsanız, `disableUrlRewriter` özelliği parametresine ekleyerek bunu yapabilirsiniz. Bu, kaynaklara iletilen tüm bilgilerin doğrudan Player 'a değişiklik yapılmadan geçirilme anlamına gelir.  İşte, DASH ve tek bir KESINTISIZ akış üzerinde iki kaynak eklemeye örnek verilmiştir.
+Bununla birlikte, URL yeniden yazıcısını kullanmak istemiyorsanız, özelliği parametresine ekleyerek bunu yapabilirsiniz `disableUrlRewriter` . Bu, kaynaklara iletilen tüm bilgilerin doğrudan Player 'a değişiklik yapılmadan geçirilme anlamına gelir.  İşte, DASH ve tek bir KESINTISIZ akış üzerinde iki kaynak eklemeye örnek verilmiştir.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -32,7 +33,7 @@ Bununla birlikte, URL yeniden yazıcısını kullanmak istemiyorsanız, `disable
     </video>
 ```
 
-or
+veya
 
 ```javascript
     myPlayer.src([
@@ -41,7 +42,7 @@ or
     ]);
 ```
 
-Ayrıca, isterseniz, `streamingFormats` parametresini kullanarak yeniden yazmak Azure Media Player istediğiniz belirli akış biçimlerini belirtebilirsiniz. Seçenekler şunlardır `DASH` `SMOOTH` `HLSv3`,,,, `HLS` `HLSv4` HLS ve HLSv3 & v4 arasındaki fark, HLS biçiminin FairPlay içeriğinin kayıttan yürütmesini destekliyor olması şeklindedir. v3 ve v4, FairPlay desteklemez. Kullanılabilir belirli bir protokol için teslim ilkeniz yoksa, bu faydalıdır.  İşte, varlığınız için bir DASH protokolünün etkin olmadığı bir örnektir.
+Ayrıca, isterseniz, parametresini kullanarak yeniden yazmak Azure Media Player istediğiniz belirli akış biçimlerini belirtebilirsiniz `streamingFormats` . Seçenekler şunlardır,,,, `DASH` `SMOOTH` `HLSv3` `HLSv4` `HLS` . HLS ve HLSv3 & v4 arasındaki fark, HLS biçiminin FairPlay içeriğinin kayıttan yürütmesini destekliyor olması şeklindedir. v3 ve v4, FairPlay desteklemez. Kullanılabilir belirli bir protokol için teslim ilkeniz yoksa, bu faydalıdır.  İşte, varlığınız için bir DASH protokolünün etkin olmadığı bir örnektir.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -49,7 +50,7 @@ Ayrıca, isterseniz, `streamingFormats` parametresini kullanarak yeniden yazmak 
     </video>
 ```
 
-or
+veya
 
 ```javascript
     myPlayer.src([

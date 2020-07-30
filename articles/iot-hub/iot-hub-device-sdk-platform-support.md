@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76045128"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423091"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT cihaz SDK 'Ları platform desteği
 
@@ -124,7 +124,7 @@ IoT Hub cihaz SDK 'Lardan birini kullanabiletirseniz, HTTPS istekleri ve yanıtl
 
 ## <a name="support-and-other-resources"></a>Destek ve diğer kaynaklar
 
-Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, destek almak için çeşitli yollar vardır. Aşağıdaki kanallardan birini deneyebilirsiniz:
+Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, aşağıda özetlenen desteği aramak için birkaç yol vardır. Tüm Destek seçenekleriniz hakkında tam bilgi için lütfen bkz. [Azure IoT desteği ve yardım seçenekleri](https://aka.ms/iothelp). 
 
 **Hataları raporlama** – cihaz SDK 'lerinde hatalar ilgili GitHub projesinin sorunlar sayfasında bildirilebilir. Düzeltmeler, ' deki projeden ürün güncelleştirmelerinde hızlı bir şekilde yapılır.
 
@@ -137,6 +137,8 @@ Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, dest
 * [Azure IoT Hub Node.js SDK sorunları](https://github.com/Azure/azure-iot-sdk-node/issues)
 
 * [Azure IoT Hub Python SDK sorunları](https://github.com/Azure/azure-iot-sdk-python/issues)
+
+**Teknik sorular** : hem [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html) hem de *Azure-ıot-SDK*etiketini kullanarak [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) Teknik sorular sorabilirsiniz.
 
 **Microsoft müşteri destek ekibi** – [Destek planına](https://azure.microsoft.com/support/plans/) sahip olan kullanıcılar, doğrudan [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)yeni bir destek isteği oluşturarak Microsoft müşteri destek ekibine geçebilir.
 

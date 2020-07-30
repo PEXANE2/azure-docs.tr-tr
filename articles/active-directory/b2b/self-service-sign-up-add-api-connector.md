@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88270d51bf50b2b175d9d8761685a8a2a8ae19b1
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027521"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428285"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
 
@@ -42,9 +42,16 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 8. API 'ye göndermek istediğiniz talepleri seçin.
 9. API 'den geri almayı planladığınız talepler ' ı seçin.
 
-   ![API Bağlayıcısı taleplerini ayarlama](./media/self-service-sign-up-add-api-connector/api-connector-claims.png)
+   <!-- ![Set API connector claims](./media/self-service-sign-up-add-api-connector/api-connector-claims.png) -->
 
 10. **Kaydet**'i seçin.
+
+### <a name="selection-of-claims-to-send-and-claims-to-receive"></a>' Gönderilen talepler ' ve ' alacak talepler ' seçimi
+> [!IMPORTANT]
+> Aşağıda gösterildiği gibi, varsayılan olarak seçilen tüm talepleri görebilirsiniz. Tüm API bağlayıcıları bu şekilde davranacak şekilde güncelleştirilecektir. API 'niz tüm kullanılabilir talepleri alacak ve API Bağlayıcısı tanımında yapılandırmadan önce desteklenen talepleri geri gönderebilirler. 
+
+![API Bağlayıcısı taleplerini ayarlama](./media/self-service-sign-up-add-api-connector/api-connector-claims-new.png)
+
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Kullanıcı akışında API bağlayıcısını etkinleştirme
 
@@ -137,8 +144,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
 | eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi**olarak seçilirse, belirteçte değerler döndürülür.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
+| \<builtInUserAttribute>                            | \<attribute-type> | No       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi**olarak seçilirse, belirteçte değerler döndürülür.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
 
 ### <a name="blocking-response"></a>Engelleme yanıtı
 
@@ -164,7 +171,7 @@ Content-type: application/json
 | sürüm     | Dize | Yes      | API sürümü.                                                    |
 | eylem      | Dize | Yes      | Değer olmalıdır`ShowBlockPage`                                              |
 | userMessage | Dize | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
-| kod        | Dize | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
+| kod        | Dize | No       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 #### <a name="end-user-experience-with-a-blocking-response"></a>Engelleyici bir Yanıt ile son kullanıcı deneyimi
 
@@ -195,7 +202,7 @@ Content-type: application/json
 | eylem      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
 | durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
 | userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
-| kod        | Dize  | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
+| kod        | Dize  | No       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 #### <a name="end-user-experience-with-a-validation-error-response"></a>Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi
 

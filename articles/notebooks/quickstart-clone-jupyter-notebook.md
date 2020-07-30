@@ -3,12 +3,12 @@ title: Azure Notebooks Preview ile bir Jupyter Not defterini GitHub 'dan kopyala
 description: Bir GitHub deposundan hızlı bir şekilde Jupyter Not defterini kopyalayın ve Azure Notebooks hesabınızda çalıştırın.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833095"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424486"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede bir not defteri kopyalama
 
@@ -49,7 +49,7 @@ Yok.
 
 1. Kopyalama işlemi tamamlandıktan sonra, Azure Notebooks tüm dosyaların kopyalarını görebileceğiniz yeni projeye götürür.
 
-    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
+    :::image type="content" source="media/quickstarts/completed-clone.png" alt-text="Tamamlanmış bir kopyanın görünümü." lightbox="media/quickstarts/completed-clone.png":::
 
 ## <a name="share-a-notebook"></a>Bir not defteri paylaşma
 

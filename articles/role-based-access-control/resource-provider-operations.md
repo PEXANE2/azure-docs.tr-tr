@@ -1,5 +1,5 @@
 ---
-title: Azure kaynak sağlayıcıları işlemleri
+title: Azure Kaynak sağlayıcısı işlemleri
 description: Azure kaynak sağlayıcıları için işlemleri listeler.
 services: active-directory
 ms.service: role-based-access-control
@@ -8,14 +8,14 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 07/16/2020
-ms.openlocfilehash: 0fc2039805b155535eeac1d653fc9ecb9e576d5d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d28f852ad4159472b7fcb3289a322db54be8af1e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496953"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387396"
 ---
-# <a name="azure-resource-providers-operations"></a>Azure kaynak sağlayıcıları işlemleri
+# <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
 Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının işlemleri listelenmektedir. Azure 'daki kaynaklara ayrıntılı erişim denetimi sağlamak için, bu işlemleri kendi [Azure özel rolleriniz](custom-roles.md) içinde kullanabilirsiniz. Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri almak için [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) veya [az Provider Operation List](/cli/azure/provider/operation#az-provider-operation-list)komutunu kullanın.
 
@@ -80,7 +80,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
-| **Blok Zinciri** |
+| **Blok zinciri** |
 | [Microsoft. Blockzinciri](#microsoftblockchain) |
 | **AI + makine öğrenimi** |
 | [Microsoft. BotService](#microsoftbotservice) |
@@ -4501,7 +4501,7 @@ Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/okuma | Stream Analytics Işi dönüşümünü oku |
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/yazma | Stream Analytics Işi dönüşümünü yaz |
 
-## <a name="blockchain"></a>Blok Zinciri
+## <a name="blockchain"></a>Blok zinciri
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
@@ -6929,7 +6929,7 @@ Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vcenters/Read | VMware vCenter özelliklerini alır |
 > | Microsoft. OffAzure/VMwareSites/vcenters/Write | VMware vCenter 'ı oluşturur veya güncelleştirir |
 
-## <a name="monitor"></a>İzleyici
+## <a name="monitor"></a>İzleme
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 

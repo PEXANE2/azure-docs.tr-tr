@@ -1,6 +1,6 @@
 ---
-title: Node. js kullanarak X. 509.440 cihazlarını Azure cihaz sağlama hizmeti 'ne kaydetme
-description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta, Node. js hizmeti SDK 'sını kullanarak X. 509.952 cihazlarını Azure IoT Hub cihaz sağlama hizmeti 'ne (DPS) kaydedecaksınız
+title: Node.js kullanarak X. 509.440 cihazlarını Azure cihaz sağlama hizmeti 'ne kaydetme
+description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta, Node.js hizmeti SDK 'sını kullanarak X. 509.952 cihazlarını Azure IoT Hub cihaz sağlama hizmeti 'ne (DPS) kaydedecaksınız
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc
-ms.openlocfilehash: 35f5cc4914689fd171cc3fa8ec7d809924127f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 0f6d18aa0ce4576db1618d17d8fb3866101f87b1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77605538"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424367"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Hızlı başlangıç: Node.js kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Bu hızlı başlangıçta, ara veya kök CA X. 509.440 sertifikaları kullanan bir kayıt grubunu programlı bir şekilde oluşturmak için Node. js ' yi kullanırsınız. Kayıt grubu Node.js için IoT SDK'sı ve örnek Node.js uygulaması kullanılarak oluşturulur.
+Bu hızlı başlangıçta, ara veya kök CA X. 509.440 sertifikaları kullanan bir kayıt grubunu programlı bir şekilde oluşturmak için Node.js kullanırsınız. Kayıt grubu Node.js için IoT SDK'sı ve örnek Node.js uygulaması kullanılarak oluşturulur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [IoT Hub cihaz sağlama hizmetini Azure Portal Ile ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org). Bu hızlı başlangıçta [Node. js Için ıOT SDK](https://github.com/Azure/azure-iot-sdk-node) yüklenir.
+- [Node.js v 4.0 +](https://nodejs.org). Bu hızlı başlangıçta aşağıdaki [Node.jsıOT SDK](https://github.com/Azure/azure-iot-sdk-node) yüklenir.
 - [Git](https://git-scm.com/download/).
 - [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
@@ -42,7 +42,7 @@ Bu test araçlarını kullanarak sertifika üretmek için aşağıdaki adımlar�
  
 1. Azure IoT C SDK 'sının [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
-2. Komut istemi veya Git Bash kabuğu açın ve makinenizdeki çalışma klasörüne geçin. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini `-b` parametre değeri olarak kullanın:
+2. Komut istemi veya Git Bash kabuğu açın ve makinenizdeki çalışma klasörüne geçin. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini parametre değeri olarak kullanın `-b` :
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -143,7 +143,7 @@ Kayıt grubu, sertifika zincirlerinde ortak imzalama sertifikasını paylaşan c
     ![Portaldaki kayıt özellikleri](./media/quick-enroll-device-x509-node/verify-enrollment-portal.png) 
  
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Node. js hizmet örneklerini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç tarafından oluşturulan tüm Azure kaynaklarını silmek için aşağıdaki adımları kullanın.
+Node.js hizmeti örneklerini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç tarafından oluşturulan tüm Azure kaynaklarını silmek için aşağıdaki adımları kullanın.
  
 1. Makinenizdeki Node.js örnek çıktı penceresini kapatın.
 2. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve ardından **kayıt grupları** sekmesini seçin. bu hızlı başlangıcı kullanarak kaydettiğiniz X. 509.440 cihazları için *Grup adının* yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın.    
@@ -153,7 +153,7 @@ Node. js hizmet örneklerini keşfetmeyi planlıyorsanız, bu hızlı başlangı
 
 Bu hızlı başlangıçta, Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak X. 509.952 ara veya kök CA sertifikası için bir grup kaydı oluşturdunuz. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin. 
 
-Ayrıca bkz. [Node. js cihaz sağlama örneği](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples).
+Ayrıca bkz. [cihaz sağlama örneğineNode.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples).
  
 > [!div class="nextstepaction"]
 > [Azure IoT Hub Cihazı Sağlama Hizmeti öğreticileri](./tutorial-set-up-cloud.md)

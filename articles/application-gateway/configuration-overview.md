@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068033"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428184"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -25,7 +25,7 @@ Bu görüntüde, üç dinleyici içeren bir uygulama gösterilmektedir. İlk iki
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure sanal ağı ve adanmış alt ağ
 
@@ -55,7 +55,7 @@ Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak bazı 
   - Varsayılan giden kurallarını kaldırmayın.
   - Giden bağlantıları reddeden diğer çıkış kuralları oluşturmayın.
 
-- **AzureLoadBalancer** etiketinin trafiğine izin verilmelidir.
+- Hedef alt ağa sahip **AzureLoadBalancer** etiketindeki trafiğe izin **verilmesi gerekir.**
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Birkaç kaynak IP 'ye Application Gateway erişime izin ver
 
@@ -74,7 +74,7 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
 
 - **v1**
 
-   V1 SKU 'SU için, Kullanıcı tanımlı yollar (UDRs), uçtan uca istek/yanıt iletişimini değiştirmediği sürece Application Gateway alt ağında desteklenir. Örneğin, paket incelemesi için bir güvenlik duvarı gereci işaret etmek üzere Application Gateway alt ağında bir UDR ayarlayabilirsiniz. Ancak, inceleme sonrasında paketin amaçlanan hedefe ulaşabildiğinizden emin olmanız gerekir. Bunun başarısız olması, sistem durumu araştırmasına veya trafik yönlendirme davranışına yol açabilir. Bu, Azure ExpressRoute veya sanal ağdaki VPN ağ geçitleri tarafından yayılan, öğrenilen yolları veya varsayılan 0.0.0.0/0 yollarını içerir.
+   V1 SKU 'SU için, Kullanıcı tanımlı yollar (UDRs), uçtan uca istek/yanıt iletişimini değiştirmediği sürece Application Gateway alt ağında desteklenir. Örneğin, paket incelemesi için bir güvenlik duvarı gereci işaret etmek üzere Application Gateway alt ağında bir UDR ayarlayabilirsiniz. Ancak, inceleme sonrasında paketin amaçlanan hedefe ulaşabildiğinizden emin olmanız gerekir. Bunun başarısız olması, sistem durumu araştırmasına veya trafik yönlendirme davranışına yol açabilir. Bu, Azure ExpressRoute veya sanal ağdaki VPN ağ geçitleri tarafından yayılan, öğrenilen yolları veya varsayılan 0.0.0.0/0 yollarını içerir. 0.0.0.0/0 ' ın şirket içinde yeniden yönlendirilmesi gereken (Zorlamalı tünel) her senaryo v1 için desteklenmez.
 
 - **v2**
 
@@ -279,7 +279,7 @@ Yeniden yönlendirme hakkında daha fazla bilgi için bkz.
 - [PowerShell kullanarak trafiği dış siteye yönlendirme](redirect-external-site-powershell.md)
 - [CLı kullanarak trafiği dış siteye yönlendirme](redirect-external-site-cli.md)
 
-### <a name="rewrite-http-headers-and-url"></a>HTTP üstbilgilerini ve URL 'YI yeniden yaz
+### <a name="rewrite-http-headers-and-url"></a>HTTP üst bilgilerini ve URL’sini yeniden yazma
 
 Yeniden yazma kurallarını kullanarak, HTTP (S) isteği ve yanıt üst bilgilerini ekleyebilir, kaldırabilir veya güncelleştirebilir, istek ve yanıt paketleri uygulama ağ geçidi aracılığıyla istemci ile arka uç havuzları arasında hareket edebilir.
 
@@ -388,7 +388,7 @@ Arka uç havuzunu dört tür arka uç üyesine işaret edebilirsiniz: belirli bi
 
 Bir arka uç havuzu oluşturduktan sonra, bir veya daha fazla istek yönlendirme kuralıyla ilişkilendirmeniz gerekir. Ayrıca, uygulama ağ geçidinizdeki her bir arka uç havuzu için sistem durumu araştırmalarını da yapılandırmanız gerekir. İstek yönlendirme kuralı koşulu karşılandığında, Application Gateway trafiği ilgili arka uç havuzundaki sağlıklı sunuculara (sistem durumu araştırmaları tarafından belirlendiği şekilde) iletir.
 
-## <a name="health-probes"></a>Durum yoklamaları
+## <a name="health-probes"></a>Sistem durumu araştırmaları
 
 Bir Application Gateway, varsayılan olarak arka uçtaki tüm kaynakların sistem durumunu izler. Ancak sistem durumu izleme üzerinde daha fazla denetim sağlamak için her bir arka uç HTTP ayarı için özel bir araştırma oluşturmanız önemle tavsiye ederiz. Özel bir araştırmanın nasıl yapılandırılacağını öğrenmek için bkz. [özel durum araştırma ayarları](application-gateway-probe-overview.md#custom-health-probe-settings).
 

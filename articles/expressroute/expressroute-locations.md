@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 72408b4f17aa5e8601095b27478806883739a7a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aac3d7a4bc2eb8bb83405155b345360f5d2c699
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031635"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407362"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı ortakları ve eşleme konumları
 
@@ -82,7 +82,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Aryaka Networks](https://www.aryaka.com/)** |Desteklenir |Desteklenir |Amsterdam, Chicago, Dallas, Hong Kong ÖIB, Sao Paulo, Seattle, Silicon Valley, Singapur, Tokyo, Washington DC |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |Desteklenir |Desteklenir |Sao Paulo |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Desteklenir |Desteklenir |Amsterdam, Chicago, Dallas, Frankfurt, Londra, Silicon Valley, Singapur, Sidney, Tokyo, Toron, Washington DC |
-| **[TOKYO 'DA](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Desteklenir | Desteklenir | Tokyo2 |
+| **[TOKYO 'DA](https://www.attokyo.com/connectivity/azure.html)** | Desteklenir | Desteklenir | Osaka, Tokyo2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Desteklenir | Desteklenir | Tokyo |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Desteklenir |Desteklenir |Cape Town, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Desteklenir |Desteklenir |Montreal, Toronto, Quebec City |
@@ -109,7 +109,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **Etisalat UAE** |Desteklenir |Desteklenir |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londra |
 | **FarEasTone** |Desteklenir |Desteklenir |Taipei|
-| **GÉANT** |Desteklenir |Desteklenir |Amsterdam, Dublin, Frankfurt, Marseille |
+| **GÉANT** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Dublin, Frankfurt, Marseille |
 | **GTT** |Desteklenir |Desteklenir |London2 |
 | **[Genel Bulut Değişimi (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Desteklenir| Desteklenir | Chennai, Mumbai |
 | **Intelsat** | Desteklenir | Desteklenir | Washington DC2 |

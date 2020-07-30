@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 75e20a4fb91b73bc353d347f0b34f9be8f7a8a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3c47a60a6cda074eba7b5c3292577c29f50c2ab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709955"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424060"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure sanal ağ NAT ölçümleri
 
 Azure sanal ağ NAT ağ geçidi kaynakları çok boyutlu ölçümler sağlar. Bu ölçümleri, işlemi gözlemlemek ve [sorun gidermek](troubleshoot-nat.md)için kullanabilirsiniz.  Uyarılar, SNAT tükenmesi gibi kritik sorunlar için yapılandırılabilir.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Internet 'e giden sanal ağ NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Internet 'e giden sanal ağ NAT">
 </p>
 
 *Şekil: Internet 'e giden sanal ağ NAT*
@@ -36,7 +36,7 @@ Azure sanal ağ NAT ağ geçidi kaynakları çok boyutlu ölçümler sağlar. Bu
 
 NAT ağ geçidi kaynakları, Azure Izleyici 'de aşağıdaki çok boyutlu ölçümleri sağlar:
 
-| Metric | Açıklama | Önerilen toplama | Boyutlar |
+| Ölçüm | Açıklama | Önerilen toplama | Boyutlar |
 |---|---|---|---|
 | Bayt | Gelen ve giden işlenen bayt sayısı | Toplam | Yön (Içinde; Out), protokol (6 TCP; 17 UDP) |
 | Paketleri | Gelen ve giden işlenen paketler | Toplam | Yön (Içinde; Out), protokol (6 TCP; 17 UDP) |

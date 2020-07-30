@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 248fcdc8d57ca2408ada01db4ecf3b8ee7712e4d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513634"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388081"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -30,7 +30,7 @@ Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/log-query/g
 - Şu anda, veriler en fazla 100 Log Analytics çalışma alanı (kiracılar arasında) üzerinde yedekleme raporlarında görüntülenebilir.
 - Şu anda raporlarda görüntülenmeyen günlük yedekleme işleri verileri.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Raporları kullanmaya başlamak için bu adımları izleyin.
 
@@ -70,28 +70,63 @@ Yedekleme raporu çalışma kitabını açmak için bu bağlantıyı seçin.
 
 Rapor çeşitli sekmeler içerir:
 
-- **Özet**: yedeklemeinize ilişkin üst düzey bir genel bakış almak için bu sekmeyi kullanın. Toplam yedekleme öğesi sayısı, tüketilen toplam bulut depolaması, korunan örnek sayısı ve iş yükü türü başına iş başarısı oranı hakkında hızlı bir bakış edinebilirsiniz. Belirli bir yedekleme yapıtı türü hakkında daha ayrıntılı bilgi için ilgili sekmelere gidin.
+##### <a name="summary"></a>Özet
+Yedeğinize ilişkin üst düzey bir genel bakış almak için bu sekmeyi kullanın. Toplam yedekleme öğesi sayısı, tüketilen toplam bulut depolaması, korunan örnek sayısı ve iş yükü türü başına iş başarısı oranı hakkında hızlı bir bakış edinebilirsiniz. Belirli bir yedekleme yapıtı türü hakkında daha ayrıntılı bilgi için ilgili sekmelere gidin.
 
    ![Özet sekmesi](./media/backup-azure-configure-backup-reports/summary.png)
 
-- **Yedekleme öğeleri**: bir yedekleme öğesi düzeyinde tüketilen Bulut depolamada bilgi ve eğilimleri görmek için bu sekmeyi kullanın. Örneğin, bir Azure VM yedeğine SQL kullanıyorsanız, yedeklenen her SQL veritabanı için kullanılan bulut depolama alanını görebilirsiniz. Ayrıca, belirli bir koruma durumunun yedekleme öğeleri için verileri görmeyi seçebilirsiniz. Örneğin, sekmenin en üstünde **koruma durdurulmuş** kutucuğun seçilmesi, yalnızca koruma durdurulmuş durumundaki yedekleme öğeleri için verileri göstermek üzere altındaki tüm pencere öğelerini filtrelemektir.
+##### <a name="backup-items"></a>Yedekleme Öğeleri
+Bir yedekleme öğesi düzeyinde tüketilen Bulut depolamada bilgi ve eğilimleri görmek için bu sekmeyi kullanın. Örneğin, bir Azure VM yedeğine SQL kullanıyorsanız, yedeklenen her SQL veritabanı için kullanılan bulut depolama alanını görebilirsiniz. Ayrıca, belirli bir koruma durumunun yedekleme öğeleri için verileri görmeyi seçebilirsiniz. Örneğin, sekmenin en üstünde **koruma durdurulmuş** kutucuğun seçilmesi, yalnızca koruma durdurulmuş durumundaki yedekleme öğeleri için verileri göstermek üzere altındaki tüm pencere öğelerini filtrelemektir.
 
    ![Yedekleme öğeleri sekmesi](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-- **Kullanım**: yedeklemelerinize ilişkin anahtar faturalandırma parametrelerini görüntülemek için bu sekmeyi kullanın. Bu sekmede gösterilen bilgiler bir faturalandırma varlığı (korumalı kapsayıcı) düzeyidir. Örneğin, Azure 'a yedeklenmekte olan bir DPM sunucusu söz konusu olduğunda, DPM sunucusu için kullanılan korumalı örneklerin ve bulut depolamanın eğilimini görüntüleyebilirsiniz. Benzer şekilde, Azure Backup ' de SQL kullanıyorsanız veya Azure Backup SAP HANA, bu sekme, bu veritabanlarının bulunduğu sanal makine düzeyinde kullanımla ilgili bilgiler sağlar.
+##### <a name="usage"></a>Kullanım
+Yedeklemeleriniz için anahtar faturalandırma parametrelerini görüntülemek için bu sekmeyi kullanın. Bu sekmede gösterilen bilgiler bir faturalandırma varlığı (korumalı kapsayıcı) düzeyidir. Örneğin, Azure 'a yedeklenmekte olan bir DPM sunucusu söz konusu olduğunda, DPM sunucusu için kullanılan korumalı örneklerin ve bulut depolamanın eğilimini görüntüleyebilirsiniz. Benzer şekilde, Azure Backup ' de SQL kullanıyorsanız veya Azure Backup SAP HANA, bu sekme, bu veritabanlarının bulunduğu sanal makine düzeyinde kullanımla ilgili bilgiler sağlar.
 
    ![Kullanım sekmesi](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
 > DPM iş yükleri için, kullanıcılar, kurtarma hizmetleri Kasası Genel Bakış sekmesinde gösterilen toplu kullanım değeriyle karşılaştırıldığında, raporlarda gösterilen kullanım değerleri arasında bir hafif fark (DPM sunucusu başına 20 MB) görebilirler. Bu fark, yedekleme için kaydedilen her DPM sunucusunun, raporlama için yapıt olarak ortaya çıkmış olan ilişkili bir ' Metadata ' veri kaynağına sahip olması açısından hesaba göre belirlenir.
 
-- **İşler**: her gün başarısız iş sayısı ve iş hatasının en üst nedenleri gibi işlere yönelik uzun süreli eğilimleri görüntülemek için bu sekmeyi kullanın. Bu bilgileri hem bir toplama düzeyinde hem de yedekleme öğesi düzeyinde görüntüleyebilirsiniz. Seçili zaman aralığında o yedekleme öğesinde tetiklenen her bir işle ilgili ayrıntılı bilgileri görüntülemek için kılavuzda belirli bir yedekleme öğesini seçin.
+##### <a name="jobs"></a>İşler
+Her gün başarısız iş sayısı ve iş hatasının en üst nedenleri gibi işlerde uzun süre çalışan eğilimleri görüntülemek için bu sekmeyi kullanın. Bu bilgileri hem bir toplama düzeyinde hem de yedekleme öğesi düzeyinde görüntüleyebilirsiniz. Seçili zaman aralığında o yedekleme öğesinde tetiklenen her bir işle ilgili ayrıntılı bilgileri görüntülemek için kılavuzda belirli bir yedekleme öğesini seçin.
 
    ![İşler sekmesi](./media/backup-azure-configure-backup-reports/jobs.png)
 
-- **İlkeler**: ilişkili öğe sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolama alanı gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemek için bu sekmeyi kullanın. İlişkili yedekleme öğelerinin her biri hakkındaki bilgileri görüntülemek için belirli bir ilkeyi seçin.
+##### <a name="policies"></a>İlkeler
+İlgili öğe sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolaması gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemek için bu sekmeyi kullanın. İlişkili yedekleme öğelerinin her biri hakkındaki bilgileri görüntülemek için belirli bir ilkeyi seçin.
 
    ![İlkeler sekmesi](./media/backup-azure-configure-backup-reports/policies.png)
+
+##### <a name="optimize"></a>İyileştirme
+Yedeklemelerinize yönelik potansiyel maliyet iyileştirme fırsatlarıyla ilgili görünürlük elde etmek için bu sekmeyi kullanın. En Iyileştirme sekmesinin Şu anda öngörü sağladığı senaryolar aşağıda verilmiştir:
+
+###### <a name="inactive-resources"></a>Etkin olmayan kaynaklar
+Bu görünümü kullanarak, önemli bir süre için başarılı bir yedekleme olmayan yedekleme öğelerini belirleyebilirsiniz. Bu, yedeklenen temel makinenin artık mevcut olmadığı anlamına gelir (ve bu nedenle başarısız olan yedeklemelere neden olur) veya makinenin, yedeklemelerin güvenilir bir şekilde alınmasını engelleyen bir sorunu vardır. 
+
+Etkin olmayan kaynakları görüntülemek için **en iyileştirme** sekmesine gidin ve **etkin olmayan kaynaklar** kutucuğuna tıklayın. Bu Kutucuğa tıkladığınızda seçili kapsamda mevcut olan tüm etkin olmayan kaynakların ayrıntılarını içeren bir kılavuz görüntülenir. Varsayılan olarak, kılavuz son 7 günde bir kurtarma noktası olmayan öğeleri gösterir. Farklı bir zaman aralığı için etkin olmayan kaynakları bulmak için sekmenin en üstünde **zaman aralığı** filtresini ayarlayabilirsiniz.
+
+Etkin olmayan bir kaynağı tanımladıktan sonra, bu kaynak için yedekleme öğesi panosuna veya Azure Kaynak dikey penceresine (varsa) giderek sorunu daha fazla inceleyebilirsiniz. Senaryonuza bağlı olarak, makinenin yedeklemesini durdurmayı (artık mevcut değilse) veya korumalı örnek maliyette tasarruf etmek ya da yedeklemelerin güvenilir bir şekilde alındığından emin olmak için makinedeki sorunları gidermek için seçeneğini kullanabilirsiniz.
+
+![Sekme ile etkin olmayan kaynakları iyileştirme](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
+
+###### <a name="backup-items-with-a-large-retention-duration"></a>Saklama süresi uzun olan Yedek Öğeleri
+Bu görünümü kullanarak, yedeklemeleriniz, kuruluşunuz tarafından gerekenden uzun bir süre boyunca korunan öğeleri belirleyebilirsiniz. 
+
+**Ilke iyileştirmeleri** kutucuğuna ve ardından **bekletme iyileştirmeleri** kutucuğuna tıkladığınızda, günlük, haftalık, aylık veya yıllık bekletme noktası (RP) saklama alanının belirtilen değerden büyük olduğu tüm yedekleme öğelerini içeren bir kılavuz görüntülenir. Varsayılan olarak, kılavuz seçilen kapsamdaki tüm yedekleme öğelerini görüntüler. Kılavuzu daha fazla filtrelemek ve yedeklemenin yedekleme depolama maliyetlerinde kaydedilecek şekilde azaltılacağı öğeleri belirlemek için günlük, haftalık, aylık ve yıllık RP saklama filtrelerini kullanabilirsiniz.
+
+SQL ve SAP HANA gibi veritabanı iş yükleri için kılavuzda gösterilen bekletme dönemleri, fark yedekleme noktalarında değil, tam yedekleme noktalarının bekletme dönemlerine karşılık gelir. Aynı zamanda bekletme filtreleri için de geçerlidir.  
+
+![En iyileştirme sekmesi-bekletme Iyileştirmeleri](./media/backup-azure-configure-backup-reports/optimize-retention.png)
+
+###### <a name="databases-configured-for-daily-full-backup"></a>Günlük tam yedekleme için yapılandırılmış veritabanları 
+Bu görünümü kullanarak günlük tam yedekleme için yapılandırılmış veritabanı iş yüklerini belirleyebilirsiniz. Genellikle, haftalık tam yedekleme ile birlikte günlük değişiklik yedeklemesi kullanılması daha düşük maliyetli bir iştir. 
+
+**Ilke iyileştirmeleri** kutucuğuna ve ardından **yedekleme zamanlaması iyileştirmeleri** kutucuğuna tıkladığınızda günlük tam yedekleme ilkesiyle tüm veritabanlarını içeren bir kılavuz görüntülenir. Belirli bir yedekleme öğesine gitmeyi ve günlük değişiklik yedeklemesini haftalık tam yedekleme kullanacak şekilde değiştirmeyi tercih edebilirsiniz.
+
+Kılavuzun veritabanı iş yüklerini beklendiği gibi görüntüleyebilmesi için, sekmenin en üstündeki **yedekleme yönetimi türü** FILTRESININ **Azure VM 'de SQL** ve **Azure VM 'de SAP HANA** ' nin seçili olması gerektiğini unutmayın.
+
+![Sekmeyi en iyi duruma getirme-yedekleme zamanlaması Iyileştirmeleri](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
 
 ## <a name="export-to-excel"></a>Excel'e aktar
 

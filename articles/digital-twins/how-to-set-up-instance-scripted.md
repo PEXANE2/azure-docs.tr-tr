@@ -1,18 +1,18 @@
 ---
 title: Örnek ayarlama ve kimlik doğrulaması (betik ile)
 titleSuffix: Azure Digital Twins
-description: Doğru kimlik doğrulaması da dahil olmak üzere Azure dijital TWINS hizmeti örneğini ayarlama bölümüne bakın. Betikleştirilmiş sürüm.
+description: Otomatikleştirilmiş bir dağıtım betiği çalıştırarak Azure dijital TWINS hizmeti örneğini ayarlama bölümüne bakın
 author: baanders
 ms.author: baanders
-ms.date: 7/22/2020
+ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 076bde9e2760a862822d80d63197e2c15a678d35
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337917"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407581"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -20,9 +20,12 @@ ms.locfileid: "87337917"
 
 Bu makalede, örneği oluşturma ve kimlik doğrulamasını ayarlama dahil olmak üzere **Yeni bir Azure dijital TWINS örneği ayarlama**adımları ele alınmaktadır. Bu makaleyi tamamladıktan sonra, programlamaya başlamak için kullanabileceğiniz bir Azure dijital TWINS örneğine sahip olursunuz.
 
-Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir dağıtım betiği** örneği](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) çalıştırarak bu adımları tamamlar. Komut dosyasının arka planda çalıştığı adımları el ile görüntülemek için, bu makalenin el ile sürümüne bakın: [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama (el ile)*](how-to-set-up-instance-manual.md).
+Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir dağıtım betiği** örneği](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) çalıştırarak bu adımları tamamlar. 
+* Betiğin arka planda çalıştığı el ile CLı adımlarını görüntülemek için, bu makalenin CLı sürümüne bakın: [*nasıl yapılır: bir örnek ve kimlik doğrulaması (CLI) ayarlama*](how-to-set-up-instance-cli.md).
+* Azure portal göre el ile adımları görüntülemek için, bu makalenin Portal sürümüne bakın: [*nasıl yapılır: bir örnek ve kimlik doğrulaması (portal) ayarlama*](how-to-set-up-instance-portal.md).
 
-[!INCLUDE [digital-twins-setup-starter.md](../../includes/digital-twins-setup-starter.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
 
 ## <a name="run-the-deployment-script"></a>Dağıtım betiğini çalıştırma
 
@@ -41,7 +44,7 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
  
 2. Oturum açtıktan sonra, Cloud Shell pencere simgesi çubuğuna bakın. "Dosyaları karşıya yükle/Indir" simgesini seçin ve "karşıya yükle" yi seçin.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell-upload.png" alt-text="Karşıya yükleme seçeneğinin seçimini gösteren Cloud Shell pencere":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme seçeneğinin seçimini gösteren Cloud Shell pencere":::
 
     Makinenizde _**deploy.ps1**_ dosyasına gidin ve "Aç" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
 
@@ -57,21 +60,38 @@ Betik bir Azure dijital TWINS örneği oluşturur, Azure kullanıcısını örne
 
 Betikten çıktı günlüğü alıntısı aşağıda verilmiştir:
 
-:::image type="content" source="media/how-to-set-up-instance/deployment-script-output.png" alt-text="Dağıtım betiği çalıştırıldığında giriş ve çıkış günlüğünü gösteren Cloud Shell pencere" lightbox="media/how-to-set-up-instance/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Dağıtım betiği çalıştırıldığında giriş ve çıkış günlüğünü gösteren Cloud Shell pencere" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Betik başarılı bir şekilde tamamlanırsa, nihai çıktıyı görürsünüz `Deployment completed successfully` . Aksi takdirde, hata iletisini adreslayın ve betiği yeniden çalıştırın. Bu işlem, önceden tamamladığınız adımları atlar ve kaldığınız yerden yeniden giriş istemeye başlar.
 
-Komut dosyası tamamlandıktan sonra, artık kullanıma hazır bir Azure dijital TWINS örneğiniz ve izinleri yönetmek için ayarlanmıştır.
+Komut dosyası tamamlandıktan sonra artık bir Azure dijital TWINS örneğine, bu dosyayı yönetme izinleri ile çalışmaya hazır olursunuz ve bir istemci uygulamasının bu uygulamaya erişmesi için izinleri ayarlayın.
+
+> [!NOTE]
+> Betik şu anda Azure dijital TWINS (*Azure dijital TWINS sahibi (Önizleme)*) içindeki gerekli yönetim rolünü, Cloud Shell betiği çalıştıran kullanıcıya atar. Bu rolü örneği yöneten başka birine atamanız gerekiyorsa, bunu şimdi Azure portal ([yönergeler](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) veya CLI ([yönergeler](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) yoluyla yapabilirsiniz.
 
 ## <a name="collect-important-values"></a>Önemli değerleri topla
 
-Uygulama kaydından, daha sonra [Azure dijital TWINS API 'lerinde istemci uygulamasının kimliğini doğrulamak](how-to-authenticate-client.md)için gerekli olan iki önemli değer vardır. 
+Azure dijital TWINS örneğiniz ile çalışmaya devam ederseniz, betikte, ihtiyacınız olabilecek bir dizi önemli değer vardır. Bu bölümde, bu değerleri toplamak için [Azure Portal](https://portal.azure.com) kullanacaksınız. Bunları güvenli bir yere kaydetmelisiniz veya daha sonra ihtiyacınız olduğunda bunları bulmak için bu bölüme geri dönebilirsiniz.
+
+Diğer kullanıcılar örnekle programlama yapacaktır, bu değerleri bunlarla de paylaşabilirsiniz.
+
+### <a name="collect-instance-values"></a>Örnek değerlerini topla
+
+[Azure Portal](https://portal.azure.com), Portal arama çubuğunda örneğinizin adını arayarak Azure dijital TWINS örneğinizi bulun.
+
+Bunu seçtiğinizde, örneğin *genel bakış* sayfası açılır. *Adına*, *kaynak grubuna*ve *ana bilgisayar adına göz önünde barının*. Daha sonra örneğinizi belirleyip daha sonra bu örneğe bağlanmanız gerekebilir.
+
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Örneğin genel bakış sayfasından önemli değerleri vurgulama":::
+
+### <a name="collect-app-registration-values"></a>Uygulama kayıt değerlerini topla 
+
+Uygulama kaydından, daha sonra [Azure Digital TWINS API 'leri için istemci uygulama kimlik doğrulama kodunu yazmak](how-to-authenticate-client.md)üzere gerekli olan iki önemli değer vardır. 
 
 Bunları bulmak için Azure portal Azure AD uygulama kaydına genel bakış sayfasına gitmek üzere [Bu bağlantıyı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) izleyin. Bu sayfa, aboneliğinizde oluşturulmuş tüm uygulama kayıtlarını gösterir.
 
 Bu listede yeni oluşturduğunuz uygulama kaydını görmeniz gerekir. Ayrıntılarını açmak için seçin:
 
-:::image type="content" source="media/how-to-set-up-instance/app-important-values.png" alt-text="Uygulama kaydı için önemli değerlerin Portal görünümü":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Uygulama kaydı için önemli değerlerin Portal görünümü":::
 
 **Sayfanızda gösterilen** *uygulama (istemci) kimliğini* ve *Dizin (kiracı) kimliğini* bir yere göz atın. İstemci uygulamaları için kod yazmak üzere bir kişi değilseniz, bu değerleri olacak kişiyle paylaşmanız gerekir.
 
@@ -86,6 +106,9 @@ Komut dosyası tarafından ayarlanan kaynaklarınızın ve izinlerin oluşturulm
 ### <a name="verify-user-role-assignment"></a>Kullanıcı rolü atamasını doğrula
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
+
+> [!NOTE]
+> Betiğin Şu anda bu gerekli rolü Cloud Shell betiği çalıştıran aynı kullanıcıya atadığını hatırlayın. Bu rolü örneği yöneten başka birine atamanız gerekiyorsa, bunu şimdi Azure portal ([yönergeler](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) veya CLI ([yönergeler](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) yoluyla yapabilirsiniz.
 
 ### <a name="verify-app-registration"></a>Uygulama kaydını doğrulama
 

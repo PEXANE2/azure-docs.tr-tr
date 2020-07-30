@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246526"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388127"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 Bu makale, oturum açma raporuna genel bir bakış sunar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
@@ -184,7 +184,7 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
 - **Başarılı**: oturum açma sırasında Kullanıcı ve uygulamaya (diğer koşullar olması gerekmez) uygulanan bir veya daha fazla koşullu erişim ilkesi. 
 
-- **Hata**: bir veya daha fazla koşullu erişim ilkesi uygulandı ve oturum açma sırasında karşılanmadı.
+- **Hata**: oturum açma, en az bir koşullu erişim ilkesinin Kullanıcı ve uygulama koşulunu karşıladı ve izin verme denetimleri karşılanmadı ya da erişimi engelle olarak ayarlı değil.
 
 
 
