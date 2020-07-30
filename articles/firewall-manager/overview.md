@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 37cbc3737b826060e96524528b065bc8d711bd8b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563745"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384778"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi nedir?
 
@@ -76,12 +76,12 @@ Azure Güvenlik Duvarı Ilkeleri bölgeler arasında kullanılabilir. Örneğin,
 
 Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 
-|Sorun  |Description  |Risk azaltma  |
+|Sorun  |Açıklama  |Risk azaltma  |
 |---------|---------|---------|
 |Trafik bölme şu anda desteklenmiyor.|Office 365 ve Azure genel PaaS trafik bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse ortak hizmet aracılığıyla tüm Azure genel PaaS ve Office 365 trafiği de gönderilir.|Hub 'da trafik bölmeyi araştırma.
 |Bölge başına bir güvenli sanal hub.|Bölge başına birden fazla güvenli sanal hub 'ınız olamaz.|Bir bölgede birden çok sanal WAN oluşturun.|
 |Temel ilkeler yerel ilkeyle aynı bölgede olmalıdır.|Tüm yerel ilkelerinizi temel ilkeyle aynı bölgede oluşturun. Başka bir bölgeden güvenli bir hub 'daki tek bir bölgede oluşturulmuş bir ilkeyi yine de uygulayabilirsiniz.|Araştırılıyor|
-|Güvenli sanal hub ile hub arası iletişim çalışmıyor|Güvenli sanal hub, güvenli sanal hub iletişimine henüz desteklenmiyor.|Araştırılıyor|
+|Güvenli sanal hub üzerinden iletişim kurmayan hub 'lar|Güvenli sanal hub, güvenli sanal hub iletişimine henüz desteklenmemiştir, ancak hub 'dan hub 'a iletişim çalışmaya devam edecektir.|Araştırılıyor|
 |Aynı sanal WAN 'ı paylaşan tüm güvenli sanal hub 'Lar aynı kaynak grubunda olmalıdır.|Bu davranış, bugün sanal WAN hub 'Ları ile hizalanır.|Farklı kaynak gruplarında güvenli sanal hub 'Ların oluşturulmasını sağlamak için birden çok sanal WAN oluşturun.|
 
 ## <a name="next-steps"></a>Sonraki adımlar

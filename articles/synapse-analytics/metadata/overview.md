@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496069"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387345"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure SYNAPSE Analytics paylaşılan meta verileri
 
@@ -40,7 +40,7 @@ Paylaşılan meta veri modeli, modern veri ambarı modelini aşağıdaki şekild
 
 Nesne eşitleme zaman uyumsuz olarak gerçekleştirilir. Nesneler, SQL bağlamında görünene kadar birkaç saniyelik bir gecikme olur. Bu olduklarında, bunlara erişimi olan SQL altyapılarını sorgulanabilir, ancak güncelleştirilemez veya değiştirilmez.
 
-## <a name="which-metadata-objects-are-shared"></a>Paylaşılan meta veri nesneleri
+## <a name="shared-metadata-objects"></a>Paylaşılan meta veri nesneleri
 
 Spark veritabanları, dış tablolar, yönetilen tablolar ve görünümler oluşturmanıza olanak sağlar. Spark görünümleri, tanımlayan Spark SQL ifadesini işlemek için bir Spark altyapısı gerektirdiğinden ve bir SQL altyapısı tarafından işlenemediği için, yalnızca veritabanları ve Parquet depolama biçimini kullanan dış ve yönetilen tabloları, çalışma alanı SQL altyapısıyla paylaşılır. Spark görünümleri yalnızca Spark havuz örnekleri arasında paylaşılır.
 

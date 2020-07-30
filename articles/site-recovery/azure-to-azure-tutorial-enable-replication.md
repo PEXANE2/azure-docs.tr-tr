@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e7f7535cf66da721e1738da6d0efbf335d97a6da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 50bf1ec7f21ccbc3a3fa8feaea02e45bd08a158a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134503"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421425"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
@@ -27,7 +27,7 @@ Bu öğreticide, Azure sanal makineleri için bir Azure bölgesinden diğerine �
 > [!NOTE]
 > Bu makale, en basit ayarlarla olağanüstü durum kurtarma dağıtımı için yönergeler sağlar. Özelleştirilmiş ayarlar hakkında bilgi edinmek istiyorsanız, [nasıl yapılır bölümündeki](azure-to-azure-how-to-enable-replication.md)makaleleri gözden geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -38,8 +38,8 @@ Bu öğreticiyi tamamlamak için:
 
 Kaynak bölgesi dışında herhangi bir bölgede kasayı oluşturun.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. Ardından, **Yönetim Araçları**  >  **yedeklemesi ve Site Recovery**& seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. Ardından, **Yönetim Araçları**  >  **yedeklemesi ve Site Recovery**& seçin.
 1. **Ad**alanında, kasayı tanımlamak için bir kolay ad belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 1. Kaynak grubu oluşturun veya var olan bir grubu seçin. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
 1. Panodan kasaya erişmek için **panoya sabitle** ' yi seçin ve ardından **Oluştur**' u seçin.
@@ -66,12 +66,12 @@ Site Recovery beklendiği gibi çalışması için, çoğaltmak istediğiniz VM 
 
 Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, bu URL 'Lere erişim izni verin:
 
-| **URL** | **Ayrıntılar** |
-| ------- | ----------- |
-| `*.blob.core.windows.net` | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
-| `login.microsoftonline.com` | Site Recovery hizmet URL’leri için yetkilendirme ve kimlik doğrulama özellikleri sağlar. |
-| `*.hypervrecoverymanager.windowsazure.com` | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
-| `*.servicebus.windows.net` | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
+| **Ad**                  | **Ticari**                               | **Devlet**                                 | **Açıklama** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery hizmet URL’leri için yetkilendirme ve kimlik doğrulama özellikleri sağlar. |
+| Çoğaltma               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP adresi aralıkları için giden bağlantı
 
@@ -94,7 +94,7 @@ Azure Site Recovery, Site Recovery yönetim işlemlerini denetlemek için üç y
 
 - **Site Recovery Okuyucusu** - Bu rol tüm Site Recovery yönetim işlemlerini görüntüleme iznine sahiptir. Bu rol, mevcut koruma durumunu izleyebilen ve destek biletleri oluşturabilen BT izleme yöneticisi için idealdir.
 
-[Azure RBAC yerleşik rolleri](../role-based-access-control/built-in-roles.md)hakkında daha fazla bilgi edinin.
+[Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="enable-replication-for-a-vm"></a>Sanal makine için çoğaltmayı etkinleştirme
 
@@ -152,7 +152,7 @@ Site Recovery, hedef bölge için varsayılan ayarları ve çoğaltma ilkesini o
    | **Uygulamayla tutarlı anlık görüntü sıklığı** | Varsayılan olarak, Site Recovery her 4 saatte bir uygulamayla tutarlı bir anlık görüntü alır. 1 ile 12 saat arasında bir değer yapılandırabilirsiniz.<br/><br/> Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin zaman içinde bir noktadaki anlık görüntüsüdür. Birim Gölge Kopyası Hizmeti (VSS), anlık görüntü alınırken VM’deki uygulamanın tutarlı bir durumda olmasını sağlar. |
    | **Çoğaltma grubu** | Uygulamanızın VM 'lerde çoklu VM tutarlılığı gerekiyorsa, bu VM 'Ler için bir çoğaltma grubu oluşturabilirsiniz. Seçilen VM’ler varsayılan olarak hiçbir çoğaltma grubunun parçası değildir. |
 
-1. Yeni veya mevcut bir çoğaltma grubuna VM 'Ler eklemek istiyorsanız, **Özelleştir**' de, çoklu VM tutarlılığı için **Evet** ' i seçin. Ardından **Tamam**'ı seçin.
+1. Yeni veya mevcut bir çoğaltma grubuna VM 'Ler eklemek istiyorsanız, **Özelleştir**' de, çoklu VM tutarlılığı için **Evet** ' i seçin. Ardından **Tamam**’ı seçin.
 
    > [!NOTE]
    > - Bir çoğaltma grubundaki tüm makineler, yük devredildiği zaman, paylaşılan kilitlenme ile tutarlı ve uygulamayla tutarlı kurtarma noktalarına sahiptir.
