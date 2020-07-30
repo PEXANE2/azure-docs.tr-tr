@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 385b06dd7756c3bebf6557f9ea0b518473a37d49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075898"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387328"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmalarını izlemek için SYNAPSE Studio 'Yu kullanma
 
@@ -22,7 +22,7 @@ Azure SYNAPSE Analytics ile çözümünüzdeki veri taşıma, veri dönüştürm
 
 Bu makalede, işlem hatlarınızın en son durumunu, sorunlarını ve ilerlemesini görmenizi sağlayan işlem hattı çalıştırmalarınızın nasıl izleneceği açıklanır.
 
-## <a name="access-the-list-of-pipeline-runs"></a>İşlem hattı çalıştırmaları listesine erişin
+## <a name="access-pipeline-runs-list"></a>Erişim işlem hattı çalıştırmaları listesi
 
 Çalışma alanınızdaki işlem hattı çalıştırmalarının listesini görmek için önce [SYNAPSE Studio 'yu açın](https://web.azuresynapse.net/) ve çalışma alanınızı seçin.
 
@@ -36,7 +36,7 @@ Bu makalede, işlem hatlarınızın en son durumunu, sorunlarını ve ilerlemesi
 
 ![İşlem hattı çalıştırmalarını seçin](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
-## <a name="filtering-your-pipeline-runs"></a>İşlem hattı çalıştırmalarınız filtreleniyor
+## <a name="filter-your-pipeline-runs"></a>İşlem hattı çalıştırmalarınızı filtreleyin
 
 İşlem hattı çalıştırmalarının listesini ilgilendiğiniz olanlarla filtreleyebilirsiniz. Ekranın üst kısmındaki filtreler, filtrelemek istediğiniz bir alan belirtmenize izin verir.
 
@@ -46,7 +46,7 @@ Bu makalede, işlem hatlarınızın en son durumunu, sorunlarını ve ilerlemesi
 
 ![Örnek filtre](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>Belirli bir işlem hattı çalıştırmasıyla ilgili ayrıntıları görüntüleme
+## <a name="view-details-about-a-specific-pipeline-run"></a>Belirli bir işlem hattı çalıştırmasıyla ilgili ayrıntıları görüntüleme
 
 İşlem hattı çalıştırınızla ilgili ayrıntıları görüntülemek için işlem hattı çalıştırmasını seçin. Sonra işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntüleyin. İşlem hattı çalışmaya devam ediyorsa, ilerlemeyi izleyebilirsiniz. 
   

@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b19427070d982918584c13c25518cffe55497000
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223338"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387294"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için çoklu oturum açma (SSO) ayarlama
 
 Azure Active Directory (Azure AD) kiracınıza eklediğiniz bir uygulama için çoklu oturum açma (SSO) ayarlayarak Basitleştirilmiş kullanıcı oturum açmaları ile çalışmaya başlayın. SSO 'yu ayarladıktan sonra kullanıcılarınız Azure AD kimlik bilgilerini kullanarak bir uygulamada oturum açabilir. SSO, ücretsiz Azure AD sürümüne dahildir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kiracınıza eklediğiniz bir uygulamaya yönelik SSO 'yu ayarlamak için şunlar gerekir:
 
@@ -55,6 +55,8 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
 
 1. SAML tabanlı SSO için Azure AD kullanmak üzere bir uygulamayı yapılandırma işlemi uygulamaya bağlı olarak değişir. GitHub Kılavuzu için bir bağlantı vardır. Diğer uygulamalara yönelik kılavuzlar bulmak için bkz. [SaaS uygulamalarını Azure Active Directory ile tümleştirmek Için öğreticiler](https://docs.microsoft.com/azure/active-directory/saas-apps/).
 1. Uygulamanın SSO 'yu ayarlamak için Kılavuzu izleyin. Birçok uygulamanın SSO işlevselliği için belirli abonelik gereksinimleri vardır. Örneğin, GitHub bir kurumsal abonelik gerektirir.
+    > [!TIP]
+    > SAML yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md).
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Ekran görüntüsü, GitHub fiyatlandırma sayfasının kurumsal aboneliğindeki çoklu oturum açma seçeneğini gösterir.":::
 

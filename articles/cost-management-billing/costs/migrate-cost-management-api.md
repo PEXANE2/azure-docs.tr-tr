@@ -3,16 +3,16 @@ title: EA'yı Microsoft Müşteri Sözleşmesi API'lerine geçirme - Azure
 description: Bu makale, Microsoft Kurumsal Anlaşma'dan (EA) Microsoft Müşteri Sözleşmesi'ne geçiş yapmanın sonuçlarını anlamanıza yardımcı olacaktır.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c556f2371ffba239ceee64fd4180143ae9b9230
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77201042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290046"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Kurumsal Anlaşma'dan Microsoft Müşteri Sözleşmesi API'lerine geçiş
 

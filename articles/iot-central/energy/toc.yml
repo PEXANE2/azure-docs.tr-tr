@@ -22,8 +22,6 @@
   items:
     - name: Cihazları bağlama
       items:
-        - name: MXChip IoT DevKit’i hazırlama ve bağlama
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Rigado Cascade 500'ü hazırlama ve bağlama
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Azure CLI'yı kullanarak cihaz bağlantısını izleme
@@ -86,7 +84,7 @@
       href: /azure/iot-fundamentals/iot-support-help
     - name: Azure IoT hizmetleri
       items:
-        - name: IoT Hub’ı
+        - name: IoT Hub
           href: /azure/iot-hub
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
@@ -100,14 +98,14 @@
           href: /azure/iot-pnp
         - name: Azure Haritalar
           href: /azure/azure-maps
-        - name: Zaman Serisi Öngörüleri
+        - name: Time Series Insights
           href: /azure/time-series-insights
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Müşteri verisi istekleri
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
     - name: Desteklenen tarayıcılar

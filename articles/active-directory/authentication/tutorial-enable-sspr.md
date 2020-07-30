@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035035"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419487"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Öğretici: kullanıcıların Self servis parola sıfırlama Azure Active Directory kullanarak hesaplarının kilidini açma veya parolaları sıfırlamalarını sağlama
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
-* En az deneme sürümü lisansı etkinleştirilmiş çalışan bir Azure AD kiracısına erişim.
+* En az bir Azure AD Premium P1 veya deneme lisansı etkin çalışan bir Azure AD kiracısı.
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
 * Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Son Kullanıcı SSPR deneyimini Bu öğreticide bu hesabı kullanarak test edersiniz.
@@ -60,7 +60,7 @@ Bu öğreticide, bir test grubundaki bir kullanıcı kümesi için SSPR 'yi yap�
 1. **Özellikler** sayfasında, *self servis parola sıfırlama etkin*seçeneği altında **Grup Seç** ' i seçin.
 1. *SSPR-test-Group*gıbı Azure AD grubunuza gözatıp seçin ve ardından *Seç*' i seçin.
 
-    [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
+    [![Self servis parola sıfırlama ](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png) için etkinleştirmek üzere Azure Portal bir grup seçin](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
 1. Select kullanıcıları için SSPR 'yi etkinleştirmek üzere **Kaydet**' i seçin.
 
