@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 09e32d5baa367b76c34ebca28adfdd20385e4e18
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6db571d64b0fd276519f15a3984848e80c4e18a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374592"
+ms.locfileid: "87387685"
 ---
 # <a name="view-and-understand-azure-digital-twins-metrics"></a>Azure dijital TWINS ölçümlerini görüntüleyin ve anlayın
 
@@ -36,7 +36,7 @@ Bu ölçümler, Azure aboneliğinizdeki Azure dijital TWINS kaynaklarının duru
 
     :::image type="content" source="media/how-to-view-metrics/diagnostic-settings.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
 
-    Bu işlem hakkında daha fazla bilgi için bkz. [*nasıl yapılır: tanılamayı ayarlama*](how-to-set-up-diagnostics.md).
+    Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure dijital TWINS ölçümleri ve bunların nasıl kullanılacağı
 
@@ -94,7 +94,7 @@ Boyutlar ölçümler hakkında daha fazla ayrıntı belirlemenize yardımcı olu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure dijital TWINS için kaydedilmiş ölçümleri yönetme hakkında daha fazla bilgi için bkz. [*nasıl yapılır: tanılamayı ayarlama*](how-to-set-up-diagnostics.md).
+Azure dijital TWINS için kaydedilmiş ölçümleri yönetme hakkında daha fazla bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).
 
 Ya da Azure dijital TWINS ölçümlerine genel bir bakış gördüğünüze göre, Azure dijital TWINS 'i yönetme hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları izleyin:
 

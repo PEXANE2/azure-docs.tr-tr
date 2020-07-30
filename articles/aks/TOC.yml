@@ -52,8 +52,12 @@
     - name: Erişim ve kimlik
       href: concepts-identity.md
     - name: Güvenlik
-      href: concepts-security.md
-      items: null
+      items:
+        - name: Uygulamalar ve kümeler için güvenlik
+          href: concepts-security.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: Ağ
       href: concepts-network.md
     - name: Depolama

@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 6edc6facc884fc6469b75b63216d6e5036321ea8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277795"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124585"
 ---
 ## <a name="configure-the-sample-project"></a>Örnek projeyi yapılandırma
 
-Ardından, Azure dijital TWINS örneğinizle etkileşime girebilen bir örnek istemci uygulaması ayarlayın. Örnek projeyi henüz indirmediyseniz, başlığın altındaki *ZIP 'ı indir* düğmesini seçerek [Azure Digital TWINS örnekleri](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) giriş sayfasından Şimdi alın.
+Ardından, Azure dijital TWINS örneğinizle etkileşime girebilen bir örnek istemci uygulaması ayarlayın. Örnek projeyi henüz indirmediyseniz, başlığın altındaki *ZIP 'ı indir* düğmesini seçerek [*Azure Digital TWINS örnekleri*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) giriş sayfasından Şimdi alın.
 
 Makinenizde indirilen dosyaya gidin ve dosyayı ayıklayın.
 

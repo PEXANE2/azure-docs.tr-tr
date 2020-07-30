@@ -3,16 +3,16 @@ title: Kanada Federal pbmm şema örnek denetimleri
 description: Kanada Federal pbmm şema örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: e9153972938a572f8d37610e5721f7b0a578157c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 65fcd016c749a66fbfca1c5edc9d425216545341
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085642"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419708"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal pbmm şema örneğinin denetim eşlemesi
 
-Aşağıdaki makalede, Azure şemaları Kanada Federal korunan B, Orta bütünlük, orta kullanılabilirlik (pbmm) şema örneği, Kanada Federal pbmm denetimlerine nasıl eşlenir. Denetimler hakkında daha fazla bilgi için bkz. [Kanada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4).
+Aşağıdaki makalede, Azure şemaları Kanada Federal korunan B, Orta bütünlük, orta kullanılabilirlik (pbmm) şema örneği, Kanada Federal pbmm denetimlerine nasıl eşlenir. Denetimler hakkında daha fazla bilgi için bkz. [Kanada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html).
 
 Aşağıdaki eşlemeler **Kanada Federal PBMM** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin ** \[ \] : Kanada Federal pbmm denetimleri denetim** yerleşik ilke girişim.
 

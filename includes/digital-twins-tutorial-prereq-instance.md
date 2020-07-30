@@ -5,19 +5,15 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: a456709fffd8b4bc0f1c7eb25281980daea2edb6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 29c386b7e12c24e712ee24e887b8e25609ffaeeb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537437"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124586"
 ---
 ### <a name="prepare-an-azure-digital-twins-instance"></a>Azure dijital TWINS örneği hazırlama
 
-Bu öğreticiyi tamamlayabilmeniz için, bir **Azure dijital TWINS örneğine** karşı programlama yapmanız gerekir. 
+Bu öğreticiyi tamamlayabilmeniz için, bir **Azure dijital TWINS örneğine** karşı programlama yapmanız gerekir. Önceki çalışmalardan daha önceden ayarlanmış bir Azure dijital TWINS örneğiniz varsa, bu örneği kullanabilir ve sonraki bölüme atlayabilirsiniz.
 
-Önceki çalışmalardan daha önceden ayarlanmış bir Azure dijital TWINS örneğiniz varsa, bu örneği kullanabilir ve sonraki bölüme atlayabilirsiniz.
-
-Aksi takdirde, örneğinizi ayarlamak için şu adımları izleyin:
-1. [*Nasıl yapılır: Azure dijital TWINS örneği oluşturma*](../articles/digital-twins/how-to-set-up-instance.md)bölümündeki yönergeleri kullanarak **bir örnek oluşturun** . 
-2. [*Nasıl yapılır: istemci uygulamasının kimliğini doğrulama konusundaki*](../articles/digital-twins/how-to-authenticate-client.md#create-an-app-registration) *uygulama kaydı oluşturma* bölümünde **örneğiniz Için bir Azure Active Directory uygulama kaydı ayarlayın** .
+Aksi takdirde, [*nasıl yapılır: bir örneği ve kimlik doğrulamasını ayarlama*](../articles/digital-twins/how-to-set-up-instance-scripted.md)konusundaki yönergeleri kullanarak **bir örnek ve kimlik doğrulaması ayarlayın** . Yönergeler Ayrıca, her adımı başarıyla tamamladığınızı ve yeni örneğinizi kullanarak üzerine geçmeye başlamaya yönelik adımları da içerir.
