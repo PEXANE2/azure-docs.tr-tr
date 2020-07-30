@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764834"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387277"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Uygulama proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma
 
@@ -47,7 +47,7 @@ Aşağıdaki protokol diyagramlarında, hem hizmet sağlayıcısı tarafından b
 
 4. Çoklu oturum açma yöntemi olarak **SAML** ' yi seçin.
 
-5. Önce SAML SSO 'yu kurumsal ağ üzerinde çalışırken çalışacak şekilde ayarlayın. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulamanın SAML tabanlı kimlik doğrulamasını yapılandırmak için [temel SAML yapılandırması girme](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) bölümündeki adımları izleyin.
+5. Şirket ağında çalışırken SAML SSO 'yu ilk kez ayarlamak için SAML tabanlı [Çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md) konusunun temel SAML yapılandırması bölümüne bakın.
 
 6. Uygulamaya en az bir kullanıcı ekleyin ve test hesabının uygulamaya erişimi olduğundan emin olun. Şirket ağına bağlıyken, uygulamada çoklu oturum açma olup olmadığını görmek için test hesabını kullanın. 
 
@@ -81,7 +81,7 @@ Aşağıdaki protokol diyagramlarında, hem hizmet sağlayıcısı tarafından b
 
 4. Varsayılan olarak işaretlemek için güncelleştirilmiş **yanıt URL 'sinin** yanındaki onay kutusunu işaretleyin.
 
-   * Gerekli **yanıt URL** 'sini varsayılan olarak işaretleyerek, Iç URL 'yi kullanan önceden YAPıLANDıRıLMıŞ **yanıt URL** 'sini de silebilirsiniz.
+   * Gerekli **yanıt URL** 'sini varsayılan olarak işaretledikten sonra, Iç URL 'yi kullanan önceden YAPıLANDıRıLMıŞ **yanıt URL** 'sini de silebilirsiniz.
 
    * SP tarafından başlatılan bir akış için, arka uç uygulamasının kimlik doğrulama belirtecini almak için doğru **yanıt URL** 'Sini veya onaylama tüketici hizmeti URL 'sini belirttiğinden emin olun.
 

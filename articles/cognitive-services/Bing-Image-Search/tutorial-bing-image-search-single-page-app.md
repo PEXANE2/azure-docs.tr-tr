@@ -10,12 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cc73dcf6376dc5a222b1b68d67e4f02090258807
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206471"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407872"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Öğretici: Bing Resim Arama API’sini kullanarak tek sayfalı uygulama oluşturma
 
@@ -31,7 +32,7 @@ Bing Resim Arama API’si, web’de yüksek kaliteli, alakalı görüntüleri ar
 
 Bu öğreticinin tam kaynak kodu, [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search)’da mevcuttur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/)'in en son sürümü.
 * Node.js için [Express.js](https://expressjs.com/) çerçevesi. Kaynak koda ilişkin yükleme yönergeleri GitHub örnek Benioku dosyasında bulunabilir.

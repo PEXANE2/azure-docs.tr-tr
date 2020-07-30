@@ -5,12 +5,13 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: Bu öğreticide Azure Dev Spaces ve Visual Studio Code Azure Kubernetes hizmetindeki çok Service Node.js uygulamasında hata ayıklama için nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 2c87dedda1db97a033526c809de735fe036120ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7a8f97df976b7e989021308385ef930e539a1e56
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006991"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414862"
 ---
 # <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: Azure Dev Spaces ile Node.js ve Visual Studio Code
 

@@ -10,13 +10,13 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 9721a00ef1f0df056b3300ababfee0d0d29bbddc
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: 2391b63cbc0539b9c2e505e8cf531aeb78eb9bfd
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801283"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406087"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Öğretici: tek sayfalı Web uygulaması oluşturma
 
@@ -109,7 +109,7 @@ Aşağıdaki şekilde sorgu metin kutusu ile bursla ilgili haberler için bir ar
 
 HTML formu, adları aşağıda gösterilen öğeleri içerir:
 
-|Öğe|Description|
+|Öğe|Açıklama|
 |-|-|
 | `where` | Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü. |
 | `query` | Arama terimlerinin girileceği metin alanı. |
@@ -323,7 +323,7 @@ function renderResults(items) {
 ```
 Bing Haber Arama API'si, her biri kendi üst düzey nesnesinin içinde olmak üzere en çok dört farklı türde ilgili sonuç döndürür. Bunlar:
 
-|İlişki|Description|
+|İlişki|Açıklama|
 |-|-|
 |`pivotSuggestions`|Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir.|
 |`queryExpansions`|Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.|

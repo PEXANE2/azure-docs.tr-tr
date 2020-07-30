@@ -3,12 +3,13 @@ title: Öğretici-özel temel görüntü güncelleştirmesine göre görüntü o
 description: Bu öğreticide, başka bir özel Azure Container Registry 'de bir temel görüntü güncelleştirilirken buluttaki kapsayıcı görüntüsü yapılarını otomatik olarak tetiklemek üzere bir Azure Container Registry görevi yapılandırırsınız.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.openlocfilehash: e8aae8a91288d470c801dc4d82cfa6b44369d832
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e28dc65f44f3d9997a59e6204451cc84b0e41e40
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77617705"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407141"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Öğretici: bir temel görüntü başka bir özel kapsayıcı kayıt defterinde güncelleştirildiği zaman kapsayıcı görüntüsü derlemelerini otomatikleştirin 
 
@@ -29,7 +30,7 @@ Bu öğreticide:
 
 Azure CLı 'yı yerel olarak kullanmak istiyorsanız, Azure CLı sürüm **2.0.68** veya sonraki bir sürümün yüklü olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="complete-the-previous-tutorials"></a>Önceki öğreticileri tamamlama
 
@@ -102,7 +103,7 @@ az acr task create \
 ```
 
 
-Bu görev, [önceki öğreticide](container-registry-tutorial-build-task.md)oluşturulan görevle benzerdir. ACR Görevlerine, işlemeler `--context` tarafından belirtilen depoya gönderildiğinde bir görüntü derlemesi tetiklemesini bildirir. Önceki öğreticide görüntüyü oluşturmak için kullanılan Dockerfile, genel bir temel görüntü (`FROM node:9-alpine`), bu görevde Dockerfile, [dockerfile-App][dockerfile-app], temel görüntü kayıt defterinde bir temel görüntü belirtir:
+Bu görev, [önceki öğreticide](container-registry-tutorial-build-task.md)oluşturulan görevle benzerdir. ACR Görevlerine, işlemeler `--context` tarafından belirtilen depoya gönderildiğinde bir görüntü derlemesi tetiklemesini bildirir. Önceki öğreticide görüntüyü oluşturmak için kullanılan Dockerfile, genel bir temel görüntü ( `FROM node:9-alpine` ), bu görevde Dockerfile, [dockerfile-App][dockerfile-app], temel görüntü kayıt defterinde bir temel görüntü belirtir:
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -132,7 +133,7 @@ az role assignment create \
 
 ## <a name="add-target-registry-credentials-to-the-task"></a>Göreve hedef kayıt defteri kimlik bilgilerini ekleyin
 
-Göreve kimlik bilgileri eklemek için [az ACR Task Credential Add][az-acr-task-credential-add] ' i çalıştırın. Görevin sistem `--use-identity [system]` tarafından atanan yönetilen kimliğin kimlik bilgilerine erişemeyeceğini belirtmek için parametresini geçirin.
+Göreve kimlik bilgileri eklemek için [az ACR Task Credential Add][az-acr-task-credential-add] ' i çalıştırın. `--use-identity [system]`Görevin sistem tarafından atanan yönetilen kimliğin kimlik bilgilerine erişemeyeceğini belirtmek için parametresini geçirin.
 
 ```azurecli-interactive
 az acr task credential add \
@@ -162,7 +163,7 @@ Cloud Shell'de değil de yerel olarak çalışıyorsanız ve Docker'ı yüklediy
 az acr login --name $ACR_NAME
 ```
 
-Şimdi `docker run` ile kapsayıcıyı yerel olarak çalıştırın. ** \<Run-ID\> ** ' i önceki adımdaki çıkışta bulunan çalıştırma kimliğiyle değiştirin (örneğin, "DA6"). Bu örnek, kapsayıcıyı `myapp` bir şekilde adlandırır ve `--rm` bunu durdurduğunuzda kapsayıcıyı kaldırmak için parametresini içerir.
+Şimdi `docker run` ile kapsayıcıyı yerel olarak çalıştırın. **\<run-id\>** Önceki adımdan alınan çıkışta bulunan çalıştırma kimliğiyle değiştirin (örneğin, "DA6"). Bu örnek, kapsayıcıyı bir `myapp` şekilde adlandırır ve `--rm` bunu durdurduğunuzda kapsayıcıyı kaldırmak için parametresini içerir.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>

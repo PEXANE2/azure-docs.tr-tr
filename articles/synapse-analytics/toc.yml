@@ -24,6 +24,8 @@
           href: get-started-pipelines.md
         - name: 7 Power BI ile görselleştirme
           href: get-started-visualize-power-bi.md
+        - name: 8 İzleme
+          href: get-started-monitor.md
     - name: Kopya kağıdı
       href: overview-cheat-sheet.md
     - name: SSS
@@ -847,6 +849,10 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Bağlayıcı sorunlarını giderme
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Veri Kopyalama aracında sorun giderme
+              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Şirket içinde barındırılan tümleştirme çalışma zamanlarında sorun giderme
+              href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Araçları Synapse Analytics’e bağlama
       items:
         - name: Synapse SQL

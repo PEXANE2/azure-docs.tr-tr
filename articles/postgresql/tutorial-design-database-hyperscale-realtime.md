@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76716321"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387583"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure veritabanı – hiper ölçek (Citus) kullanarak gerçek zamanlı analiz panosu tasarlama
 
@@ -28,7 +28,7 @@ Bu öğreticide, şu şekilde nasıl yapılacağını öğrenmek için PostgreSQ
 > * Ham ve toplanmış verileri sorgulama
 > * Süre sonu verisi
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -86,16 +86,18 @@ Yeni oluşturulan tabloları şu psql komutuyla birlikte Tablo listesinde göreb
 
 Bir hiper ölçek dağıtımı, tablo satırlarını Kullanıcı tarafından belirlenen bir sütunun değerine göre farklı düğümlere depolar. Bu "dağıtım sütunu", verilerin düğümler arasında nasıl parçalanmış olduğunu işaretler.
 
-Dağıtım sütununu site\_kimliği, parça anahtarı olacak şekilde ayarlayalim. Psql 'de şu işlevleri çalıştırın:
+Dağıtım sütununu site kimliği, parça anahtarı olacak şekilde ayarlayalim \_ . Psql 'de şu işlevleri çalıştırın:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
 SELECT create_distributed_table('http_request_1min', 'site_id');
 ```
 
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
+
 ## <a name="generate-sample-data"></a>Örnek veri oluşturma
 
-Artık sunucu grubumuz bazı verileri almaya hazır olmalıdır. Sürekli olarak veri eklemek için bağlantımızdan `psql` aşağıdakileri yerel olarak çalıştırabiliriz.
+Artık sunucu grubumuz bazı verileri almaya hazır olmalıdır. `psql`Sürekli olarak veri eklemek için bağlantımızdan aşağıdakileri yerel olarak çalıştırabiliriz.
 
 ```sql
 DO $$
@@ -122,7 +124,7 @@ DO $$
 END $$;
 ```
 
-Sorgu her saniye yaklaşık sekiz satır ekler. Satırlar, `site_id`dağıtım sütunuyla yönlendirildiği şekilde farklı çalışan düğümlerinde depolanır.
+Sorgu her saniye yaklaşık sekiz satır ekler. Satırlar, dağıtım sütunuyla yönlendirildiği şekilde farklı çalışan düğümlerinde depolanır `site_id` .
 
    > [!NOTE]
    > Veri oluşturma sorgusunu çalışır durumda bırakın ve bu öğreticideki geri kalan komutlar için ikinci bir psql bağlantısı açın.
@@ -155,7 +157,7 @@ ORDER BY minute ASC;
 
 Ham verileri düzenli olarak toplam bir tabloya aktararak panonuzun hızlı bir şekilde devam etmemesini sağlayabilirsiniz. Toplama süresi ile denemeler yapabilirsiniz. Dakika başına toplama tablosu kullandık, ancak bunun yerine verileri 5, 15 veya 60 dakikaya kesebilirsiniz.
 
-Bu toplaması daha kolay bir şekilde çalıştırmak için bunu bir plpgsql işlevine koyacağız. `rollup_http_request` İşlevi oluşturmak için psql 'de bu komutları çalıştırın.
+Bu toplaması daha kolay bir şekilde çalıştırmak için bunu bir plpgsql işlevine koyacağız. İşlevi oluşturmak için psql 'de bu komutları çalıştırın `rollup_http_request` .
 
 ```sql
 -- initialize to a time long ago

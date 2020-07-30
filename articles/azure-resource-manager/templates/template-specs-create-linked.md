@@ -3,12 +3,12 @@ title: Bağlantılı şablonlarla şablon belirtimi oluşturma
 description: Bağlantılı şablonlar içeren bir şablon spec oluşturmayı öğrenin.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c2648cb8a71be709406f314d02a226ed097be6f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099742"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387872"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Öğretici: bağlı şablonlar ile şablon belirtimi oluşturma (Önizleme)
 
@@ -33,7 +33,7 @@ Bağlantılı şablon **üzerindelinkedTemplate.js**çağrılır ve ana şablonu
 - `/artifacts/linkedTemplate.json`
 - `artifacts/linkedTemplate.json`
 
-Üzerinde linkedTemplate.jsçağrılan ve üzerinde linkedTemplate2.jsaynı yapıt alt klasöründe depolanan başka bir linkedTemplate2.jsvarsa, üzerinde linkedTemplate.jsbelirtilen relativePath de **linkedTemplate2.js**.
+`relativePath`Özelliği, her zaman bildirildiği şablon dosyasına görelidir `relativePath` . bu nedenle, üzerinde linkedTemplate.jsçağrılan ve üzerinde linkedTemplate2.jsaynı yapıt alt klasöründe depolanan başka bir linkedTemplate2.jsvarsa, üzerinde linkedTemplate.js' de belirtilen relativePath yalnızca ' dir `linkedTemplate2.json` .
 
 1. Aşağıdaki JSON ile ana şablon oluşturun. Ana şablonu yerel bilgisayarınıza **azuredeploy.js** olarak kaydedin. Bu öğretici bir yola **c:\Templates\linkedTS\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
 
