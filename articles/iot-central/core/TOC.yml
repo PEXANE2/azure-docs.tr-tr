@@ -43,8 +43,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: Cihaz bağlama (Python)
           href: tutorial-connect-device-python.md
-        - name: Tak Çalıştır (önizleme) cihazını bağlama
-          href: tutorial-connect-pnp-device.md
         - name: Ağ geçidi cihaz şablonu oluşturma
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge cihazına bağlanma
@@ -79,8 +77,6 @@
       items:
         - name: Cihaz şablonu ayarlama
           href: howto-set-up-template.md
-        - name: MXChip IoT DevKit’i hazırlama ve bağlama
-          href: howto-connect-devkit.md
         - name: Azure Sphere DevKit'i hazırlama ve bağlama
           href: howto-connect-sphere.md
         - name: RuuviTag cihazını hazırlama ve bağlama
