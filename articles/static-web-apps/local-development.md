@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259278"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432971"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için yerel geliştirmeyi ayarlama
 
@@ -46,7 +47,7 @@ Bir Web sitesinin nasıl oluşturulduğuna bağlı olarak, uygulamayı tarayıc�
 
 ### <a name="javascript-frameworks-and-libraries"></a>JavaScript çerçeveleri ve kitaplıkları
 
-- [Angular CLı](https://angular.io/cli)
+- [Angular CLI](https://angular.io/cli)
 - [Vue CLı](https://cli.vuejs.org/guide/creating-a-project.html)
 - [CLı 'ye tepki verme](https://create-react-app.dev/)
 
@@ -62,15 +63,15 @@ Sitenize hizmeti sağlamak için bir CLı aracı kullanıyorsanız, [API 'Yi ça
 
 Visual Studio Code için canlı sunucu uzantısı, statik içerik sunan yerel bir geliştirme Web sunucusu sağlar.
 
-#### <a name="create-a-repository"></a>Depo oluştur
+#### <a name="create-a-repository"></a>Depo oluşturma
 
 1. GitHub 'da oturum açtığınızdan emin olun ve [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) Bu şablonu kullanarak **Vanilla-API**adlı yeni bir GitHub projesi oluşturun ve ' a gidin.
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub yeni depo penceresi":::
 
-1. Visual Studio Code'u açın.
+1. Visual Studio Code’u açın.
 
-1. Komut paletini açmak için **F1** tuşuna basın.
+1. Komut Paletini açmak için **F1** tuşuna basın.
 
 1. Arama kutusuna **kopya** yazın ve **Git: Kopyala**' yı seçin.
 
@@ -92,7 +93,7 @@ Visual Studio Code klonlanan projeyi düzenleyicide açar.
 
 ### <a name="run-the-website-locally-with-live-server"></a>Web sitesini Live Server ile yerel olarak çalıştırın
 
-1. Komut paletini açmak için **F1** tuşuna basın.
+1. Komut Paletini açmak için **F1** tuşuna basın.
 
 1. Arama kutusuna **canlı sunucu** yazın ve **canlı sunucu: Live Server ile aç** ' ı seçin
 
@@ -193,7 +194,7 @@ CLı, sitenizi geliştirme modunda çalıştırmak veya üretim için siteyi olu
 
     :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Visual Studio komut paletinde canlı sunucu komutunu durdur":::
 
-1. Komut paletini açmak için **F1** tuşuna basın.
+1. Komut Paletini açmak için **F1** tuşuna basın.
 
 1. **Canlı** sunucu yazın ve canlı sunucu **: açık canlı sunucu**' yı seçin.
 

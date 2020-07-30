@@ -1,28 +1,28 @@
 ---
 title: Azure Cosmos DB'de kapsayıcı oluşturma
-description: Azure portal, .net, Java, Python, Node.js ve diğer SDK 'Ları kullanarak Azure Cosmos DB bir kapsayıcı oluşturmayı öğrenin.
+description: Azure portal, .NET, Java, Python, Node.js ve diğer SDK 'Ları kullanarak Azure Cosmos DB bir kapsayıcı oluşturmayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390899"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429700"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı oluşturma
 
-Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluşturmanın farklı yolları açıklanmaktadır. Bu için Azure portal, Azure CLı veya desteklenen SDK 'lar kullanabilirsiniz. Bu makalede bir kapsayıcı oluşturma, Bölüm anahtarını belirtme ve üretilen iş sağlama işlemlerinin nasıl yapılacağı gösterilir.
+Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kullanarak bir Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluşturmanın farklı yolları açıklanmaktadır. Bu makalede bir kapsayıcı oluşturma, Bölüm anahtarını belirtme ve üretilen iş sağlama işlemlerinin nasıl yapılacağı gösterilir.
 
 > [!NOTE]
 > Kapsayıcılar oluştururken, aynı ada ancak büyük küçük harflere sahip iki kapsayıcı oluşturmadığınızdan emin olun. Bunun nedeni, Azure platformunun bazı bölümlerinin büyük/küçük harfe duyarlı olmaması ve bu nedenle, bu tür adlara sahip kapsayıcılar ve telemetri ve eylemlerin karışmasına ve çakışmasına neden olabilir.
 
 ## <a name="create-a-container-using-azure-portal"></a>Azure portalını kullanarak kapsayıcı oluşturma
 
-### <a name="sql-api"></a><a id="portal-sql"></a>SQL APı 'SI
+### <a name="sql-api"></a><a id="portal-sql"></a>SQL API
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
@@ -111,7 +111,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 Aşağıdaki bağlantılar, Azure CLı kullanarak Azure Cosmos DB için kapsayıcı kaynakları oluşturmayı gösterir.
 
-Tüm Azure Cosmos DB API 'lerde tüm Azure CLı örneklerinin listesi için bkz. [SQL API](cli-samples.md), [Cassandra API](cli-samples-cassandra.md), [MongoDB API](cli-samples-mongodb.md), [Gremlin API](cli-samples-gremlin.md)ve [tablo API'si](cli-samples-table.md)
+Tüm Azure Cosmos DB API 'lerde tüm Azure CLı örneklerinin listelenmesi için bkz. [Azure Cosmos DB Için Azure CLI örnekleri](cli-samples.md).
 
 * [Azure CLı ile kapsayıcı oluşturma](manage-with-cli.md#create-a-container)
 * [Azure CLı ile MongoDB API 'SI için Azure Cosmos DB bir koleksiyon oluşturma](./scripts/cli/mongodb/create.md)
@@ -123,7 +123,7 @@ Tüm Azure Cosmos DB API 'lerde tüm Azure CLı örneklerinin listesi için bkz.
 
 Aşağıdaki bağlantılar, PowerShell kullanarak Azure Cosmos DB için kapsayıcı kaynaklarının nasıl oluşturulacağını gösterir.
 
-Tüm Azure Cosmos DB API 'lerde tüm Azure CLı örneklerinin listesi için bkz. [SQL API](powershell-samples-sql.md), [Cassandra API](powershell-samples-cassandra.md), [MongoDB API](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)ve [tablo API'si](powershell-samples-table.md)
+Tüm Azure Cosmos DB API 'lerde tüm PowerShell örneklerinin listelenmesi için bkz. [SQL API](powershell-samples-sql.md), [Cassandra API](powershell-samples-cassandra.md), [MongoDB API](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)ve [tablo API'si](powershell-samples-table.md)
 
 * [PowerShell ile kapsayıcı oluşturma](manage-with-powershell.md#create-container)
 * [PowerShell ile MongoDB API 'SI için Azure Cosmos DB bir koleksiyon oluşturma](./scripts/powershell/mongodb/ps-mongodb-create.md)

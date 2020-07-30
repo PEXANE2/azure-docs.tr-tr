@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371864"
+ms.locfileid: "87384880"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Uygulama yapılandırma verilerinizi şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 Azure Uygulama yapılandırması, [bekleyen gizli bilgileri şifreler](../security/fundamentals/encryption-atrest.md). Müşteri tarafından yönetilen anahtarların kullanımı, şifreleme anahtarlarınızı yönetmenize olanak tanıyarak gelişmiş veri koruması sağlar.  Yönetilen anahtar şifrelemesi kullanıldığında, uygulama yapılandırmasındaki tüm hassas bilgiler Kullanıcı tarafından sağlanmış bir Azure Key Vault anahtarıyla şifrelenir.  Bu, şifreleme anahtarını isteğe bağlı olarak döndürme olanağı sağlar.  Ayrıca, uygulama yapılandırma örneğinin anahtara erişimini iptal ederek Azure uygulama yapılandırmasının hassas bilgilere erişimini iptal etme olanağı da sağlar.
@@ -20,7 +20,7 @@ Azure Uygulama yapılandırması, [bekleyen gizli bilgileri şifreler](../securi
 Azure Uygulama yapılandırması, Microsoft tarafından sunulan 256 bitlik bir AES şifreleme anahtarı kullanarak bekleyen hassas bilgileri şifreler. Her uygulama yapılandırma örneğinin, hizmet tarafından yönetilen ve hassas bilgileri şifrelemek için kullandığı kendi şifreleme anahtarı vardır. Hassas bilgiler, anahtar-değer çiftleri içinde bulunan değerleri içerir.  Müşteri tarafından yönetilen anahtar özelliği etkinleştirildiğinde, uygulama yapılandırması Azure Active Directory kimlik doğrulaması yapmak için uygulama yapılandırma örneğine atanan yönetilen bir kimlik kullanır. Daha sonra yönetilen kimlik Azure Key Vault çağırır ve uygulama yapılandırma örneğinin şifreleme anahtarını sarmalanmış. Sarmalanan şifreleme anahtarı daha sonra saklanır ve sarmalanmamış şifreleme anahtarı bir saat için uygulama yapılandırması içinde önbelleğe alınır. Uygulama yapılandırması, uygulama yapılandırma örneğinin şifreleme anahtarının sarmalanmamış sürümünü her saat yeniler. Bu, normal işletim koşullarında kullanılabilirliği sağlar. 
 
 >[!IMPORTANT]
-> Uygulama yapılandırma örneğine atanan kimlik artık örneğin şifreleme anahtarını sarmalamadan yetkilendirilmemiş veya yönetilen anahtar kalıcı olarak silinirse, uygulama yapılandırma örneğinde depolanan hassas bilgilerin şifresini çözmek artık mümkün olmayacaktır. Azure Key Vault [geçici silme](../key-vault/general/overview-soft-delete.md) işlevini kullanmak, şifreleme anahtarınızı yanlışlıkla silme olasılığını azaltır.
+> Uygulama yapılandırma örneğine atanan kimlik artık örneğin şifreleme anahtarını sarmalamadan yetkilendirilmemiş veya yönetilen anahtar kalıcı olarak silinirse, uygulama yapılandırma örneğinde depolanan hassas bilgilerin şifresini çözmek artık mümkün olmayacaktır. Azure Key Vault [geçici silme](../key-vault/general/soft-delete-overview.md) işlevini kullanmak, şifreleme anahtarınızı yanlışlıkla silme olasılığını azaltır.
 
 Kullanıcılar, Azure uygulama yapılandırma örneğinde müşterinin yönettiği anahtar özelliğini etkinleştirdiklerinde, hizmetin hassas bilgilerine erişme yeteneğini denetler. Yönetilen anahtar, kök şifreleme anahtarı işlevi görür. Kullanıcı, Anahtar Kasası erişim ilkesini değiştirerek uygulama yapılandırma örneğinin kendi yönetilen anahtarına erişimini iptal edebilir. Bu erişim iptal edildiğinde, uygulama yapılandırması bir saat içinde Kullanıcı verilerinin şifresini çözme özelliğini kaybedecektir. Bu noktada, uygulama yapılandırma örneği tüm erişim girişimlerini yasaklayacaktır. Bu durum, yönetilen anahtara bir kez yeniden hizmet erişimi verilerek kurtarılabilir.  Bir saat içinde, uygulama yapılandırması Kullanıcı verilerinin şifresini çözebilir ve normal koşullarda çalışamaz.
 

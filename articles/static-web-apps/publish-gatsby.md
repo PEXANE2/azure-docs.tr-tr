@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 24d5ee132444f19118613f6b1b798fd763e46e3c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 192e939d21cae3b67cafe190e32e7202cd8bdb20
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299335"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429665"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Gatsby sitesi yayımlama
 
@@ -28,11 +29,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/).
 - GitHub hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://github.com/join).
-- [Node.js](https://nodejs.org) uygulamasının yüklenmiş olması.
+- [Node.js](https://nodejs.org) yüklendi.
 
 ## <a name="create-a-gatsby-app"></a>Bir Gatsby uygulaması oluşturma
 
@@ -84,10 +85,10 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 ### <a name="create-the-application"></a>Uygulama oluşturma
 
 1. [Azure Portal](https://portal.azure.com) gidin
-1. **Kaynak oluştur ' a** tıklayın
-1. **Statik Web Apps** ara
-1. **Statik Web Apps (Önizleme)** seçeneğine tıklayın
-1. **Oluştur** 'a tıklayın
+1. **Kaynak oluştur** seçeneğine tıklayın
+1. **Statik Web Uygulamaları** için arama yapın
+1. **Statik Web Uygulamaları (Önizleme)** seçeneğine tıklayın
+1. **Oluştur** seçeneğine tıklayın
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
 
@@ -117,7 +118,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 Sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandırma ayarlarını ekleyin.
 
-1. Derleme yapılandırmasını düzenlemek için **İleri: oluştur >** düğmesine tıklayın
+1. Derleme yapılandırmasını düzenlemek için **İleri: Derleme >** düğmesine tıklayın
 
 1. GitHub eylemlerdeki adımın ayarlarını yapılandırmak için _uygulama konumunu_ olarak ayarlayın **/** .
 

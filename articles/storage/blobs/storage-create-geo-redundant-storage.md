@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, tracking-python
+ms.custom: mvc, tracking-python, devx-track-javascript
 ms.subservice: blobs
-ms.openlocfilehash: f7c3ebb1a68d671f63e3239794266c8c24f5906a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 60829e7755c31fdc5204b74c278b8eed21946c60
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553194"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432653"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
@@ -26,7 +26,7 @@ Bu öğreticiyi tamamladığınızda, [Okuma Erişimli Coğrafi bölge-yedekli](
 
 Azure depolamada coğrafi yedeklilik, işlemleri birincil bir bölgeden zaman uyumsuz olarak yüzlerce mil olan ikincil bir bölgeye çoğaltır. Bu çoğaltma işlemi, ikincil bölgedeki verilerin nihai olarak tutarlı olmasını sağlar. Konsol uygulaması, hangi uç noktanın bağlanacağı için [devre kesici](/azure/architecture/patterns/circuit-breaker) modelini kullanır, otomatik olarak, başarısızlık ve kurtarmalar arasında uç noktalar arasında geçiş yapılır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
@@ -52,13 +52,13 @@ Bu öğreticiyi tamamlamak için:
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* [Node. js](https://nodejs.org)' i yükler.
+* [Node.js](https://nodejs.org)'i yükler.
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -70,16 +70,16 @@ Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak i
 2. **Yeni** sayfadan **depolama hesabı-blob, dosya, tablo, kuyruk ' ı** seçin.
 4. Aşağıdaki bilgileri kullanarak depolama hesabı formunu alttaki resimde gösterildiği gibi doldurun ve **Oluştur**’u seçin:
 
-   | Ayar       | Örnek değer | Description |
+   | Ayar       | Örnek değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Abonelik** | *Aboneliğim* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions). |
    | **Kaynak** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
-   | **Adı** | *mystorageaccount* | Depolama hesabınız için benzersiz bir ad. |
+   | **Ad** | *mystorageaccount* | Depolama hesabınız için benzersiz bir ad. |
    | **Konum** | *Doğu ABD* | Konum seçin. |
    | **Performans** | *Standart* | Standart performans, örnek senaryo için iyi bir seçenektir. |
    | **Hesap türü** | *StorageV2* | Genel amaçlı v2 depolama hesabı kullanılması önerilir. Azure depolama hesabı türleri hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md). |
    | **Çoğaltma**| *Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)* | Birincil bölge, bölgesel olarak yedekli olur ve ikincil bölgeye okuma erişimi olan ikincil bir bölgeye çoğaltılır. |
-   | **Erişim katmanı**| *Sık Erişimli* | Sık erişilen veriler için sık kullanılan katmanı kullanın. |
+   | **Erişim katmanı**| *Sık erişim* | Sık erişilen veriler için sık kullanılan katmanı kullanın. |
 
     ![depolama hesabı oluşturma](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -103,7 +103,7 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-[Örnek projeyi indirin](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) ve dosyayı ayıklayın. Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje, temel bir Node. js uygulaması içerir.
+[Örnek projeyi indirin](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) ve dosyayı ayıklayın. Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje, temel bir Node.js uygulaması içerir.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
@@ -194,7 +194,7 @@ Depolama nesnesi yeniden deneme işlevi, doğrusal bir yeniden deneme ilkesine a
 
 Örneği çalıştırmak için bir komut istemi açın, örnek klasöre gidin ve girin `node index.js` .
 
-Örnek, BLOB depolama hesabınızda bir kapsayıcı oluşturur, bu kapsayıcıya **HelloWorld. png** yükler ve sonra kapsayıcının ve görüntünün ikincil bölgeye çoğaltılıp çoğaltılmadığını sürekli olarak denetler. Çoğaltma sonrasında, indirmek veya çıkmak için **D** veya **Q** (sonra ENTER ile) girmenizi ister. Çıktın aşağıdaki örneğe benzer şekilde görünmesi gerekir:
+Örnek, BLOB depolama hesabınızda bir kapsayıcı oluşturur, kapsayıcıya **HelloWorld.png** yükler ve sonra kapsayıcının ve görüntünün ikincil bölgeye çoğaltılıp çoğaltılmadığını sürekli olarak denetler. Çoğaltma sonrasında, indirmek veya çıkmak için **D** veya **Q** (sonra ENTER ile) girmenizi ister. Çıktın aşağıdaki örneğe benzer şekilde görünmesi gerekir:
 
 ```
 Created container successfully: newcontainer1550799840726
@@ -317,7 +317,7 @@ def response_callback(response):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Node. js Ile v10 arasındaki SDK ile geri çağırma işleyicileri gereksizdir. Bunun yerine, örnek, yeniden deneme seçenekleriyle yapılandırılmış bir işlem hattı ve ikincil bir uç nokta oluşturur. Bu, birincil işlem hattı aracılığıyla verilerinize ulaşamazsa uygulamanın otomatik olarak ikincil işlem hattına geçiş yapmasına olanak tanır.
+Node.js Ile v10 arasındaki SDK ile geri çağırma işleyicileri gereksizdir. Bunun yerine, örnek, yeniden deneme seçenekleriyle yapılandırılmış bir işlem hattı ve ikincil bir uç nokta oluşturur. Bu, birincil işlem hattı aracılığıyla verilerinize ulaşamazsa uygulamanın otomatik olarak ikincil işlem hattına geçiş yapmasına olanak tanır.
 
 ```javascript
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;

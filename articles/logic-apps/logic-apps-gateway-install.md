@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078661"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386138"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidi yükleme
 
@@ -26,23 +26,22 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Bir Azure hesabı ve aboneliği Aboneliği olan bir Azure hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-  * Azure hesabınız tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır. Yerel bilgisayarınızda ağ geçidini yüklemek ve yönetmek için aynı Azure hesabını kullanmanız gerekir.
-
-  * Ağ geçidi yüklemesi sırasında, ağ geçidi yüklemenizi Azure hesabınıza ve yalnızca bu hesaba bağlayan Azure hesabınızla oturum açın. Daha sonra Azure portal, ağ geçidi yüklemenizi kaydeden ve talep eden bir Azure ağ geçidi kaynağı oluştururken aynı Azure hesabı ve Azure AD kiracısını kullanmanız gerekir. Azure Logic Apps, şirket içi Tetikleyiciler ve Eylemler ' de şirket içi veri kaynaklarına bağlanmak için ağ geçidi kaynağını kullanır.
+  * Azure hesabınızın, gibi görünen bir iş hesabı veya okul hesabı olması gerekir `username@contoso.com` . Azure B2B (konuk) hesaplarını veya veya gibi kişisel Microsoft hesaplarını kullanamazsınız @hotmail.com @outlook.com .
 
     > [!NOTE]
-    > Yalnızca bir ağ geçidi yüklemesini ve bir Azure Gateway kaynağını birbirlerine bağlayabilirsiniz. Aynı ağ geçidi yüklemesini birden çok Azure hesabına veya Azure Gateway kaynaklarına bağlayamazsınız. Bununla birlikte, bir Azure hesabı birden çok ağ geçidi yüklemelerine ve Azure Gateway kaynaklarına bağlanabilir. Şirket içi bir tetikleyici veya eylemde, çeşitli Azure aboneliklerinizden seçim yapabilir ve ardından ilişkili bir ağ geçidi kaynağı seçebilirsiniz.
+    > Office 365 teklifi için kaydolduysanız ve iş e-posta adresinizi sağlamadıysanız adresiniz gibi görünebilir `username@domain.onmicrosoft.com` . Hesabınız bir Azure AD kiracısında depolanıyor. Çoğu durumda, Azure hesabınız için Kullanıcı asıl adı (UPN) e-posta adresiniz ile aynıdır.
 
-  * Bir *kuruluş* hesabı olarak da bilinen bir iş hesabı veya okul hesabıyla oturum açmanız gerekir `username@contoso.com` . Azure B2B (konuk) hesaplarını veya veya gibi kişisel Microsoft hesaplarını kullanamazsınız @hotmail.com @outlook.com .
+    Microsoft hesabı ilişkili bir [Visual Studio standart aboneliğini](https://visualstudio.microsoft.com/vs/pricing/) kullanmak için, önce [bir Azure AD kiracısı oluşturun](../active-directory/develop/quickstart-create-new-tenant.md) veya varsayılan dizini kullanın. Dizine bir parolası olan bir kullanıcı ekleyin ve bu kullanıcıya Azure aboneliğinize erişim izni verin. Daha sonra bu Kullanıcı adı ve parolayla ağ geçidi yüklemesi sırasında oturum açabilirsiniz.
 
-    > [!TIP]
-    > Office 365 teklifi için kaydolduysanız ve iş e-posta adresinizi sağlamadıysanız adresiniz gibi görünebilir `username@domain.onmicrosoft.com` . Hesabınız bir Azure Active Directory kiracı içinde depolanır (Azure AD). Çoğu durumda, Azure AD hesabınız için Kullanıcı asıl adı (UPN) e-posta adresiniz ile aynıdır.
-    >
-    > Bir Microsoft hesabı bağlantılı [Visual Studio standart aboneliğini](https://visualstudio.microsoft.com/vs/pricing/) kullanmak için, önce [Azure AD 'de bir kiracı oluşturun](../active-directory/develop/quickstart-create-new-tenant.md) veya varsayılan dizini kullanın. Dizine bir parolası olan bir kullanıcı ekleyin ve bu kullanıcıya Azure aboneliğinize erişim izni verin. Daha sonra bu Kullanıcı adı ve parolayla ağ geçidi yüklemesi sırasında oturum açabilirsiniz.
+  * Azure hesabınız yalnızca tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır. Yerel bilgisayarınızda ağ geçidini yüklemek ve yönetmek için aynı Azure hesabını kullanmanız gerekir.
+
+  * Ağ geçidini yüklediğinizde, Azure hesabınızla oturum açın ve ağ geçidi yüklemenizi Azure hesabınıza ve yalnızca bu hesaba bağlar. Aynı ağ geçidi yüklemesini birden çok Azure hesabı veya Azure AD kiracısından bağlayamazsınız.
+
+  * Azure portal daha sonra, ağ geçidi yüklemenize bağlanan bir Azure ağ geçidi kaynağı oluşturmak için aynı Azure hesabını kullanmanız gerekir. Yalnızca bir ağ geçidi yüklemesini ve bir Azure Gateway kaynağını birbirlerine bağlayabilirsiniz. Ancak Azure hesabınız, Azure ağ geçidi kaynağıyla ilişkili farklı ağ geçidi yüklemelerine bağlanabilir. Mantıksal uygulamalarınız daha sonra bu ağ geçidi kaynağını, şirket içi veri kaynaklarına erişebilen Tetikleyiciler ve eylemlerde kullanabilir.
 
 * Yerel bilgisayarınız için gereksinimler şunlardır:
 

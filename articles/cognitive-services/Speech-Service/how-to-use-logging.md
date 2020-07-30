@@ -10,23 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 21f4494bedd824cef373a391c5635e35ec2600d0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74805799"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406886"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Konuşma SDK 'sında günlüğü etkinleştirme
 
-Dosyaya günlük kaydı, konuşma SDK 'Sı için isteğe bağlı bir özelliktir. Geliştirme günlüğü sırasında, konuşma SDK 'sının temel bileşenlerinden ek bilgi ve Tanılamalar sağlar. Bir konuşma yapılandırma nesnesi üzerindeki özelliği `Speech_LogFilename` günlük dosyasının konumu ve adı olarak ayarlanarak etkinleştirilebilir. Bu yapılandırmadan bir tanıyıcı oluşturulduktan sonra günlüğe kaydetme işlemi Global olarak etkinleştirilir ve daha sonra devre dışı bırakılamaz. Çalışan bir günlüğe kaydetme oturumu sırasında bir günlük dosyasının adını değiştiremezsiniz.
+Dosyaya günlük kaydı, konuşma SDK 'Sı için isteğe bağlı bir özelliktir. Geliştirme günlüğü sırasında, konuşma SDK 'sının temel bileşenlerinden ek bilgi ve Tanılamalar sağlar. `Speech_LogFilename`Bir konuşma yapılandırma nesnesi üzerindeki özelliği günlük dosyasının konumu ve adı olarak ayarlanarak etkinleştirilebilir. Bu yapılandırmadan bir tanıyıcı oluşturulduktan sonra günlüğe kaydetme işlemi Global olarak etkinleştirilir ve daha sonra devre dışı bırakılamaz. Çalışan bir günlüğe kaydetme oturumu sırasında bir günlük dosyasının adını değiştiremezsiniz.
 
 > [!NOTE]
 > JavaScript dışında, desteklenen tüm konuşma SDK 'Sı programlama dillerinde konuşma SDK sürümü 1.4.0 bu yana günlüğe kaydetme kullanılabilir.
 
 ## <a name="sample"></a>Örnek
 
-Günlük dosyası adı bir yapılandırma nesnesi üzerinde belirtilir. Örnek `SpeechConfig` olarak alma ve adında `config`bir örnek oluşturduğunuzu kabul eden:
+Günlük dosyası adı bir yapılandırma nesnesi üzerinde belirtilir. `SpeechConfig`Örnek olarak alma ve adında bir örnek oluşturduğunuzu kabul eden `config` :
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -51,7 +52,7 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 Config nesnesinden bir tanıyıcı oluşturabilirsiniz. Bu, tüm tanıyıcılar için günlüğe kaydetmeyi etkinleştirir.
 
 > [!NOTE]
-> Yapılandırma nesnesinden bir `SpeechSynthesizer` oluşturursanız, günlük kaydını etkinleştirmez. Ancak günlüğe kaydetme etkinse, ' dan tanılama da alacaksınız `SpeechSynthesizer`.
+> Yapılandırma nesnesinden bir oluşturursanız `SpeechSynthesizer` , günlük kaydını etkinleştirmez. Ancak günlüğe kaydetme etkinse, ' dan tanılama da alacaksınız `SpeechSynthesizer` .
 
 ## <a name="create-a-log-file-on-different-platforms"></a>Farklı platformlarda günlük dosyası oluşturma
 
@@ -79,9 +80,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Yukarıdaki kod, bir günlük dosyasını uygulamaya özgü bir dizinin kökündeki dış depolamaya kaydeder. Bir Kullanıcı Dosya Yöneticisi ile dosyaya erişebilir (genellikle içinde `Android/data/ApplicationName/logfile.txt`). Uygulama kaldırıldığında dosya silinir.
+Yukarıdaki kod, bir günlük dosyasını uygulamaya özgü bir dizinin kökündeki dış depolamaya kaydeder. Bir Kullanıcı Dosya Yöneticisi ile dosyaya erişebilir (genellikle içinde `Android/data/ApplicationName/logfile.txt` ). Uygulama kaldırıldığında dosya silinir.
 
-Bildirim dosyasında da izin istemeniz `WRITE_EXTERNAL_STORAGE` gerekir:
+`WRITE_EXTERNAL_STORAGE`Bildirim dosyasında da izin istemeniz gerekir:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -104,7 +105,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Oluşturulan bir dosyaya erişmek için, uygulamanın `Info.plist` özellik listesine aşağıdaki özellikleri ekleyin:
+Oluşturulan bir dosyaya erişmek için, uygulamanın özellik listesine aşağıdaki özellikleri ekleyin `Info.plist` :
 
 ```xml
 <key>UIFileSharingEnabled</key>

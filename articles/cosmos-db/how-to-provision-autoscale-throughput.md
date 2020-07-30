@@ -5,21 +5,22 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/10/2020
-ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.openlocfilehash: e8dadbad309a146500db342f55bee9339fde6172
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85118738"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430974"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Azure Cosmos DB veritabanında veya kapsayıcıda otomatik ölçeklendirme üretilen işi sağlama
 
-Bu makalede, Azure Cosmos DB bir veritabanında veya kapsayıcıda (koleksiyon, grafik veya tablo) otomatik ölçeklendirme işleme sağlama açıklanmaktadır. Tek bir kapsayıcıda otomatik ölçeklendirmeyi etkinleştirebilir veya bir veritabanında otomatik ölçeklendirme üretilen işi sağlayabilir ve veritabanındaki tüm kapsayıcılar arasında paylaşabilirsiniz. 
+Bu makalede, Azure Cosmos DB bir veritabanında veya kapsayıcıda (koleksiyon, grafik veya tablo) otomatik ölçeklendirme işleme sağlama açıklanmaktadır. Tek bir kapsayıcıda otomatik ölçeklendirmeyi etkinleştirebilir veya bir veritabanında otomatik ölçeklendirme üretilen işi sağlayabilir ve veritabanındaki tüm kapsayıcılar arasında paylaşabilirsiniz.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 ### <a name="create-new-database-or-container-with-autoscale"></a>Otomatik ölçeklendirme ile yeni veritabanı veya kapsayıcı oluşturma
+
 1. [Azure Portal](https://portal.azure.com) veya [Azure Cosmos DB Gezgininde](https://cosmos.azure.com/) oturum açın.
 
 1. Azure Cosmos DB hesabınıza gidin ve **Veri Gezgini** sekmesini açın.
@@ -51,12 +52,14 @@ Paylaşılan aktarım hızı veritabanında otomatik ölçeklendirme sağlamak i
 > Varolan bir veritabanı veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirdiğinizde, en fazla RU/sn için başlangıç değeri sistem tarafından belirlenir ve geçerli el ile sağlanan aktarım hızı ayarları ve depolama alanınızı temel alır. İşlem tamamlandıktan sonra gerekirse en fazla RU/sn 'yi değiştirebilirsiniz. [Daha fazla bilgi edinin.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
 ## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>SQL API için .NET v3 SDK Azure Cosmos DB
+
 Otomatik ölçeklendirme kaynaklarını yönetmek için SQL API için Azure Cosmos DB .NET SDK 'sının [sürüm 3,9 veya üstünü](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) kullanın. 
 
 > [!IMPORTANT]
 > Yeni otomatik ölçeklendirme kaynakları oluşturmak için .NET SDK 'sını kullanabilirsiniz. SDK, otomatik ölçeklendirme ve standart (el ile) aktarım hızı arasında geçişi desteklemez. Geçiş senaryosu şu anda yalnızca Azure portal desteklenir. 
 
 ### <a name="create-database-with-shared-throughput"></a>Paylaşılan verimlilik ile veritabanı oluşturma
+
 ```csharp
 // Create instance of CosmosClient
 CosmosClient cosmosClient = new CosmosClient(Endpoint, PrimaryKey);
@@ -69,6 +72,7 @@ database = await cosmosClient.CreateDatabaseAsync(DatabaseName, throughputProper
 ```
 
 ### <a name="create-container-with-dedicated-throughput"></a>Adanmış aktarım hızı ile kapsayıcı oluşturma
+
 ```csharp
 // Get reference to database that container will be created in
 Database database = await cosmosClient.GetDatabase("DatabaseName");
@@ -82,6 +86,7 @@ container = await database.CreateContainerAsync(autoscaleContainerProperties, au
 ```
 
 ### <a name="read-the-current-throughput-rus"></a>Geçerli aktarım hızını (RU/s) okuyun
+
 ```csharp
 // Get a reference to the resource
 Container container = cosmosClient.GetDatabase("DatabaseName").GetContainer("ContainerName");
@@ -97,16 +102,18 @@ int? currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
 ### <a name="change-the-autoscale-max-throughput-rus"></a>Otomatik ölçeklendirme maksimum aktarım hızını değiştirme (RU/s)
+
 ```csharp
 // Change the autoscale max throughput (RU/s)
 await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThroughput(newAutoscaleMaxThroughput));
 ```
 
 ## <a name="azure-cosmos-db-java-v4-sdk-for-sql-api"></a>SQL API için Java v4 SDK Azure Cosmos DB
-Otomatik ölçeklendirme kaynaklarını yönetmek için SQL API için Azure Cosmos DB Java SDK 'sının [4,0 veya sonraki bir sürümünü](https://mvnrepository.com/artifact/com.azure/azure-cosmos) kullanabilirsiniz. 
+
+Otomatik ölçeklendirme kaynaklarını yönetmek için SQL API için Azure Cosmos DB Java SDK 'sının [4,0 veya sonraki bir sürümünü](https://mvnrepository.com/artifact/com.azure/azure-cosmos) kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Yeni otomatik ölçeklendirme kaynakları oluşturmak için Java SDK 'sını kullanabilirsiniz. SDK, otomatik ölçeklendirme ve standart (el ile) aktarım hızı arasında geçişi desteklemez. Geçiş senaryosu şu anda yalnızca Azure portal desteklenir. 
+> Yeni otomatik ölçeklendirme kaynakları oluşturmak için Java SDK 'sını kullanabilirsiniz. SDK, otomatik ölçeklendirme ve standart (el ile) aktarım hızı arasında geçişi desteklemez. Geçiş senaryosu şu anda yalnızca Azure portal desteklenir.
 
 ### <a name="create-database-with-shared-throughput"></a>Paylaşılan verimlilik ile veritabanı oluşturma
 
@@ -233,18 +240,26 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput));
 ```
 
---- 
+---
 
-## <a name="cassandra-api"></a>Cassandra API’si 
-Otomatik ölçeklendirmeyi etkinleştirmek için [CQL komutlarının nasıl kullanılacağına](manage-scale-cassandra.md#use-autoscale) ilişkin bu makaleye bakın.
+## <a name="cassandra-api"></a>Cassandra API’si
 
-## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 
-Otomatik ölçeklendirmeyi etkinleştirmek için [MongoDB uzantı komutlarının nasıl kullanılacağına](mongodb-custom-commands.md) ilişkin bu makaleye bakın.
+Cassandra API için Azure Cosmos DB hesapları [CQL komutları](manage-scale-cassandra.md#use-autoscale), [Azure CLI](cli-samples.md)veya [Azure Resource Manager şablonları](resource-manager-samples.md)kullanılarak otomatik ölçeklendirme için sağlanabilir.
+
+## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API
+
+MongoDB API 'SI için Azure Cosmos DB hesapları, [MongoDB uzantı komutları](mongodb-custom-commands.md), [Azure CLI](cli-samples.md)veya [Azure Resource Manager şablonları](resource-manager-samples.md)kullanılarak otomatik ölçeklendirme için sağlanabilir.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-Her API için bir veritabanı veya kapsayıcıda otomatik ölçeklendirme üretilen işi sağlamak üzere bir Kaynak Yöneticisi şablonu kullanabilirsiniz. Örnek için bu [makaleye](manage-sql-with-resource-manager.md#azure-cosmos-account-with-autoscale-throughput) bakın.
+
+Azure Resource Manager şablonlar, tüm Azure Cosmos DB API 'Leri için veritabanında veya kapsayıcı düzeyindeki kaynaklarda otomatik ölçeklendirme üretilen işi sağlamak için kullanılabilir. Örnekler için [Azure Cosmos DB için bkz. Azure Resource Manager şablonları](resource-manager-samples.md) .
+
+## <a name="azure-cli"></a>Azure CLI
+
+Azure CLı, tüm Azure Cosmos DB API 'Leri için bir veritabanı veya kapsayıcı düzeyinde bir kaynak üzerinde otomatik ölçeklendirme üretilen işi sağlamak üzere kullanılabilir. Örnekler için bkz. [Azure CLI örnekleri Azure Cosmos DB](cli-samples.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Otomatik ölçeklendirme ile sağlanan aktarım hızının avantajları](provision-throughput-autoscale.md#benefits-of-autoscale)hakkında bilgi edinin.
 * [El ile ve otomatik ölçeklendirme üretimi arasından seçim](how-to-choose-offer.md)yapmayı öğrenin.
 * [Otomatik ÖLÇEKLENDIRME SSS](autoscale-faq.md)'sini inceleyin.

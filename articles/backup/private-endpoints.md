@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a50a655af02bc2bfa188225209024cfbaa82a7c
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503770"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432863"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -21,7 +21,7 @@ Bu makale, Azure Backup için özel uç noktalar oluşturma sürecini anlamanız
 - Özel uç noktalar yalnızca yeni kurtarma hizmetleri kasaları için oluşturulabilir (kasaya kayıtlı herhangi bir öğe yok). Bu nedenle, herhangi bir öğeyi kasaya korumayı denemeden önce özel uç noktaların oluşturulması gerekir.
 - Bir sanal ağ, birden çok kurtarma hizmetleri Kasası için özel uç noktalar içerebilir. Ayrıca, bir kurtarma hizmetleri kasasında birden çok sanal ağda özel uç noktalar bulunabilir. Ancak, bir kasa için oluşturulabilecek en fazla özel uç nokta sayısı 12 ' dir.
 - Kasa için özel bir uç nokta oluşturulduktan sonra kasa kilitlenir. Kasaların özel bir uç noktasını içeren ağlardan ayrı olarak erişilebilir olmayacaktır (yedeklemeler ve geri yüklemeler için). Kasa için tüm özel uç noktalar kaldırılırsa, kasaya tüm ağlardan erişilebilecektir.
-- Yedekleme için özel bir uç nokta bağlantısı, alt ağınızdaki toplam 11 özel IP 'yi kullanır. Bu sayı, belirli Azure bölgeleri için daha yüksek (15 ' e kadar) olabilir. Bu nedenle, yedekleme için özel uç noktalar oluşturmaya çalıştığınızda yeterli sayıda özel IP 'nin kullanılabilir olmasını öneririz.
+- Yedekleme için özel bir uç nokta bağlantısı, alt ağınızdaki toplam 11 özel IP 'yi kullanır. Bu sayı, belirli Azure bölgeleri için daha yüksek (25 ' e kadar) olabilir. Bu nedenle, yedekleme için özel uç noktalar oluşturmaya çalıştığınızda yeterli sayıda özel IP 'nin kullanılabilir olmasını öneririz.
 - Bir kurtarma hizmetleri Kasası (her ikisi de) Azure Backup ve Azure Site Recovery tarafından kullanıldığında, bu makalede yalnızca Azure Backup için özel uç noktaların kullanımı ele alınmaktadır.
 - Azure Active Directory şu anda özel uç noktaları desteklemez. Bu nedenle Azure Active Directory bir bölgede çalışması için gereken IP 'Leri ve FQDN 'lerin, Azure VM 'lerinde veritabanlarının yedeklenmesi sırasında ve MARS Aracısı kullanılarak yedeklendiğinden güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, geçerli olduğu şekilde Azure AD 'ye erişim izni vermek için NSG etiketlerini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz.
 - Ağ Ilkelerine sahip sanal ağlar özel uç noktalar için desteklenmez. Devam etmeden önce ağ Ilkelerini devre dışı bırakmanız gerekir.
@@ -111,7 +111,7 @@ Bölge kodları [listesine](https://download.microsoft.com/download/1/2/6/126a41
 
 Ulusal bölgelerdeki URL adlandırma kuralları için:
 
-- [Arasında](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Çin](/azure/china/resources-developer-guide#check-endpoints-in-azure)
 - [Almanya](../germany/germany-developer-guide.md#endpoint-mapping)
 - [US Gov](../azure-government/documentation-government-developer-guide.md)
 

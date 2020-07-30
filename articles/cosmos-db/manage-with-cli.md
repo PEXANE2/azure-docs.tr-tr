@@ -4,14 +4,14 @@ description: Azure Cosmos DB hesabınızı, veritabanınızı ve Kapsayıcılar�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/03/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 97b5118f74cbd098beea804c312ed08f1a152873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067174"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432841"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos kaynaklarını yönetme
 
@@ -19,7 +19,7 @@ Aşağıdaki kılavuzda Azure Cosmos DB hesaplarınız, veritabanlarınız ve ka
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.9.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos hesapları
 
@@ -307,13 +307,14 @@ az lock delete --ids $lockid
 
 Aşağıdaki bölümlerde aşağıdakiler dahil Azure Cosmos DB kapsayıcısının nasıl yönetileceği gösterilmektedir:
 
-* [Bir kapsayıcı oluşturma](#create-a-container)
+* [Kapsayıcı oluşturma](#create-a-container)
+* [Otomatik ölçeklendirme ile kapsayıcı oluşturma](#create-a-container-with-autoscale)
 * [TTL etkin olan bir kapsayıcı oluşturma](#create-a-container-with-ttl)
 * [Özel dizin ilkesiyle kapsayıcı oluşturma](#create-a-container-with-a-custom-index-policy)
 * [Kapsayıcı verimini değiştirme](#change-container-throughput)
 * [Bir kapsayıcıdaki kilitleri yönetme](#manage-lock-on-a-container)
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Varsayılan dizin ilkesi, bölüm anahtarı ve 400 RU/s ile Cosmos kapsayıcısı oluşturun.
 
@@ -330,6 +331,25 @@ az cosmosdb sql container create \
     -a $accountName -g $resourceGroupName \
     -d $databaseName -n $containerName \
     -p $partitionKey --throughput $throughput
+```
+
+### <a name="create-a-container-with-autoscale"></a>Otomatik ölçeklendirme ile kapsayıcı oluşturma
+
+Varsayılan dizin ilkesi, bölüm anahtarı ve 4000 otomatik ölçeklendirme RU/s ile Cosmos kapsayıcısı oluşturun.
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+maxThroughput=4000
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --max-throughput $maxThroughput
 ```
 
 ### <a name="create-a-container-with-ttl"></a>TTL ile kapsayıcı oluşturma

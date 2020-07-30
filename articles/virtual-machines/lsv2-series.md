@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4ca6d6647882e81dbf20a0dd39b1ae659b6a6ab6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284821"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432982"
 ---
 # <a name="lsv2-series"></a>Lsv2 serisi
 
@@ -52,7 +52,7 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 <sup>3</sup> Hyper-V NVMe Direct teknolojisi, Konuk VM alanı ile güvenli bir şekilde eşlenmiş yerel NVMe sürücülerine kısıtlı erişim sağlar.  En yüksek performansı elde etmek için Azure Marketi 'nden en son WS2019 Build veya Ubuntu 18,04 ya da 16,04 kullanılması gerekir.  Yazma performansı, GÇ boyutu, sürücü yükü ve kapasite kullanımına göre farklılık gösterir.
 
-<sup>4</sup> Lsv2 serisi VM 'Ler, Lsv2 iş yüklerini avantajına sahip olmadığından veri diski için konak önbelleği sunmaz.  Ancak, Lsv2 VM 'Leri Azure 'un kısa ömürlü VM OS disk seçeneğine (en fazla 30 GiB) uyum sağlayabilir.
+<sup>4</sup> Lsv2 serisi VM 'Ler, Lsv2 iş yüklerini avantajına sahip olmadığından veri diski için konak önbelleği sunmaz.
 
 <sup>5</sup> Lsv2 serisi VM 'ler, disk performansını aynı anda en fazla 30 dakika boyunca [aşırı](linux/disk-bursting.md) alabilir. 
 

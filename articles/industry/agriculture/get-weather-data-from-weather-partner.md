@@ -5,16 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281030"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429265"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Hava durumu ortaklarından Hava durumu verileri alın
 
-Azure Farmker, bir Docker tabanlı bağlayıcı çerçevesi kullanarak hava durumu veri sağlayıcılardan Hava durumu verilerini taşımanıza yardımcı olur. Bu çerçeveyi kullanarak, hava durumu veri sağlayıcıları Farmker 'Lar ile tümleştirilebilen bir Docker uygular. Şu anda yalnızca [DTN](https://www.dtn.com/dtn-content-integration/) Hava durumu veri sağlayıcısı destekleniyor.
+Azure Farmker, bir Docker tabanlı bağlayıcı çerçevesi kullanarak hava durumu veri sağlayıcılardan Hava durumu verilerini taşımanıza yardımcı olur. Bu çerçeveyi kullanarak, hava durumu veri sağlayıcıları Farmker 'Lar ile tümleştirilebilen bir Docker uygular. Şu anda, aşağıdaki Hava durumu veri sağlayıcısı desteklenmektedir.
+
+  ![Farmtempts iş ortakları](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+  
+   [DTN](https://www.dtn.com/dtn-content-integration/)
 
 Hava durumu verileri, eyleme dönüştürülebilir içgörüler oluşturmak ve Farmtempts 'de AI ya da ML modelleri oluşturmak için kullanılabilir.
 
@@ -147,7 +151,7 @@ Bir Farmtts REST API kullanarak hava durumu verilerini sorgulamak için:
 
 1. Farmrets Datahub [Swagger](https://yourdatahub.azurewebsites.net/swagger)' de,/dalgalı Iş datalocation API 'sine gidin ve bir get isteği yapın. Yanıt, işin çalıştırıldığı konum (Enlem ve Boylam) için oluşturulan/dalgalı therdatalocation nesnelerini içerir. Nesnelerin **kimliği** ve **dalgalı veri modukapağını** bir yere dikkat edin.
 
-2. Daha önce yaptığınız gibi **dalgalı veri ModelId** için/dalgalı therdatamodel API 'SINDE bir get/{ID} isteği yapın. Hava durumu veri modeli, alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları gösterir. Örneğin, hava durumu veri modeli nesnesinde, hava durumu ölçüsü, hava durumu bilgilerinin hangi türlerde ve birimlerde desteklenmekte olduğunu ayrıntılarıyla ayrıntılardır. Örnek:
+2. Daha önce yaptığınız gibi **dalgalı veri ModelId** için/dalgalı therdatamodel API 'SINDE bir get/{ID} isteği yapın. Hava durumu veri modeli, alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları gösterir. Örneğin, hava durumu veri modeli nesnesinde, hava durumu ölçüsü, hava durumu bilgilerinin hangi türlerde ve birimlerde desteklenmekte olduğunu ayrıntılarıyla ayrıntılardır. Örneğin:
 
    ```json
    {

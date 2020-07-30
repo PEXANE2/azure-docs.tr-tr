@@ -1,54 +1,42 @@
 ---
 title: Mevcut modelleri kullanma ve dağıtma
 titleSuffix: Azure Machine Learning
-description: Hizmetin dışında eğitilen modellerle Azure Machine Learning nasıl kullanabileceğinizi öğrenin. Azure Machine Learning dışında oluşturulan modelleri kaydedebilir ve sonra bunları bir Web hizmeti veya Azure IoT Edge modülü olarak dağıtabilirsiniz.
+description: Azure Machine Learning ile yerel olarak eğitilen ML modellerinizi Azure bulutuna nasıl getirebileceğinizi öğrenin.  Azure Machine Learning dışında oluşturulan modelleri kaydedebilir ve sonra bunları bir Web hizmeti veya Azure IoT Edge modülü olarak dağıtabilirsiniz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/17/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7dc58540cf78356021f1fa2d33dd498381f1da7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e9177fdbac6173040145ff6d84dda8a579ee1d9e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325840"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429415"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning var olan bir modeli kullanın
+# <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Mevcut modelinize Azure Machine Learning dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning ile mevcut makine öğrenimi modelini nasıl kullanacağınızı öğrenin.
+Bu makalede, Azure Machine Learning dışında eğitilen bir makine öğrenimi modelini kaydetmeyi ve dağıtmayı öğreneceksiniz. Bir Web hizmeti veya IoT Edge bir cihaza dağıtabilirsiniz.  Dağıtıldıktan sonra modelinizi izleyebilir ve Azure Machine Learning veri kayması tespit edebilirsiniz. 
 
-Azure Machine Learning dışında eğitilen bir makine öğrenimi modelinize sahipseniz, modeli bir Web hizmeti olarak veya bir IoT Edge cihazına dağıtmak için hizmetini kullanmaya devam edebilirsiniz. 
+Bu makaledeki kavramlar ve terimler hakkında daha fazla bilgi için bkz. [Machine Learning modellerini yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
 
-> [!TIP]
-> Bu makalede, var olan bir modeli kaydetme ve dağıtma hakkında temel bilgiler sağlanmaktadır. Dağıtıldıktan sonra, Azure Machine Learning modelinize yönelik izleme sağlar. Ayrıca, dağıtıma gönderilen giriş verilerini depolamanıza olanak tanır. Bu, veri DRI analizi veya modelin yeni sürümlerini eğitmek için kullanılabilir.
->
-> Burada kullanılan kavramlar ve terimler hakkında daha fazla bilgi için bkz. [Machine Learning modellerini yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
->
-> Dağıtım işlemi hakkında genel bilgi için bkz. [modelleri Azure Machine Learning Ile dağıtma](how-to-deploy-and-where.md).
+## <a name="prerequisites"></a>Ön koşullar
 
-## <a name="prerequisites"></a>Önkoşullar
+* [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
+  + Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar.
+  
+  + CLı örnekleri `myworkspace` , ve ' nin `myresourcegroup` , çalışma alanınızın adı ve onu içeren kaynak grubu ile değiştirmeniz gereken yer tutucuları kullanır.
 
-* Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [çalışma alanı oluşturma](how-to-manage-workspace.md).
-
-    > [!TIP]
-    > Bu makaledeki Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar.
-    >
-    > CLı örnekleri ve yer tutucusu kullanır `myworkspace` `myresourcegroup` . Bunları, çalışma alanınızın adı ve onu içeren kaynak grubu ile değiştirin.
-
-* [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
+* [Python SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md).
 
-* Eğitilen bir model. Model, geliştirme ortamınızda bir veya daha fazla dosyada kalıcı olmalıdır.
-
-    > [!NOTE]
-    > Azure Machine Learning dışında eğitilen bir modelin kaydını göstermek için, bu makaledeki örnek kod parçacıkları Paolo Ripamonti 'ın Twitter yaklaşım Analizi projesi tarafından oluşturulan modelleri kullanır: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) .
+* Eğitilen bir model. Model, geliştirme ortamınızda bir veya daha fazla dosyada kalıcı olmalıdır. <br><br>Eğitilen bir modelin kaydedilmesini göstermek için bu makaledeki örnek kod, [Paolo Ripamonti 'ın Twitter yaklaşım Analizi projesinden](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)modelleri kullanır.
 
 ## <a name="register-the-models"></a>Model (ler) i Kaydet
 
@@ -82,7 +70,7 @@ Model kaydı hakkında genel bilgi için bkz. [Machine Learning modellerini yön
 
 Çıkarım yapılandırması, dağıtılan modeli çalıştırmak için kullanılan ortamı tanımlar. Çıkarım yapılandırması, dağıtıldıktan sonra modeli çalıştırmak için kullanılan aşağıdaki varlıklara başvurur:
 
-* Giriş betiği. Bu dosya (adlandırılmış `score.py` ), dağıtılan hizmet başladığında modeli yükler. Verilerin alınması, modele geçirilmesi ve sonra bir yanıt döndürmesi da sorumludur.
+* Adlı bir giriş betiği, `score.py` dağıtılan hizmet başladığında modeli yükler. Bu betik, veri alma, modele geçirme ve sonra yanıt döndürme açısından de sorumludur.
 * Azure Machine Learning [ortamı](how-to-use-environments.md). Bir ortam, model ve giriş betiğini çalıştırmak için gereken yazılım bağımlılıklarını tanımlar.
 
 Aşağıdaki örnek, bir ortam oluşturmak için SDK 'nın nasıl kullanılacağını gösterir ve ardından bunu bir çıkarım yapılandırmasıyla kullanmaktır:
@@ -145,7 +133,7 @@ dependencies:
 
 Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
-### <a name="entry-script"></a>Giriş betiği
+### <a name="entry-script-scorepy"></a>Giriş betiği (score.py)
 
 Giriş betiği yalnızca iki zorunlu işleve sahiptir `init()` ve `run(data)` . Bu işlevler, başlatma sırasında hizmeti başlatmak ve bir istemci tarafından geçirilen istek verilerini kullanarak modeli çalıştırmak için kullanılır. Komut dosyasının geri kalanı, modeli yüklemeyi ve çalıştırmayı işler.
 
@@ -309,5 +297,4 @@ Dağıtılan hizmeti kullanma hakkında daha fazla bilgi için bkz. [Istemci olu
 
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
-* [Modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)
 * [Dağıtılan bir model için istemci oluşturma](how-to-consume-web-service.md)

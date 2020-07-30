@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147961"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432021"
 ---
 # <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
 
@@ -18,7 +18,8 @@ Bu bölüm, model dönüştürme seçeneklerini belgeler.
 
 ## <a name="settings-file"></a>Ayarlar dosyası
 
-Adlandırılmış bir dosya giriş `ConversionSettings.json` modelinin yanındaki giriş kapsayıcısında bulunursa, model dönüştürme işlemi için ek yapılandırma sağlamak üzere kullanılır.
+Adlandırılmış bir dosya giriş `<modelName>.ConversionSettings.json` modelinin yanındaki giriş kapsayıcısında bulunursa `<modelName>.<ext>` , model dönüştürme işlemi için ek yapılandırma sağlamak üzere kullanılacaktır.
+Örneğin, `box.ConversionSettings.json` dönüştürme sırasında kullanılır `box.gltf` .
 
 Dosyanın içeriği aşağıdaki JSON şemasını karşılamalıdır:
 
@@ -54,7 +55,7 @@ Dosyanın içeriği aşağıdaki JSON şemasını karşılamalıdır:
 }
 ```
 
-Örnek bir `ConversionSettings.json` dosya olabilir:
+Örnek bir dosya olabilir `box.ConversionSettings.json` :
 
 ```json
 {
@@ -66,15 +67,18 @@ Dosyanın içeriği aşağıdaki JSON şemasını karşılamalıdır:
 
 ### <a name="geometry-parameters"></a>Geometri parametreleri
 
-* `scaling`-Bu parametre bir modeli bir arada ölçeklendirir. Ölçek, bir modeli büyütmek veya küçültmek için kullanılabilir, örneğin, bir tablo üst kısmında bir yapı modeli görüntüler. İşleme altyapısı, ölçü birimi cinsinden uzunluklara izin beklediği için, bir model farklı birimlerde tanımlandığında bu parametrenin başka bir önemli kullanımı ortaya çıkar. Örneğin, bir model santimetre cinsinden tanımlanmışsa, 0,01 ölçeğini uygulamak modeli doğru boyutta işlemelidir.
+* `scaling`-Bu parametre bir modeli bir arada ölçeklendirir. Ölçek, bir modeli büyütmek veya küçültmek için kullanılabilir, örneğin, bir tablo üst kısmında bir yapı modeli görüntüler.
+İşleme altyapısı ölçüm gerektirdiğinden, bir model ölçüm dışındaki birimlerde tanımlandığında ölçekleme de önemlidir.
+Örneğin, bir model santimetre cinsinden tanımlanmışsa, 0,01 ölçeğini uygulamak modeli doğru boyutta işlemelidir.
 Bazı kaynak veri biçimleri (örneğin,. fbx) bir birim ölçekleme ipucu sağlar ve bu durumda dönüştürme, modeli ölçüm birimlerine dolaylı olarak ölçeklendirir. Kaynak biçimi tarafından sunulan örtük ölçekleme, ölçekleme parametresinin üzerine uygulanır.
 Son ölçeklendirme faktörü, geometri köşelerine ve sahne grafiği düğümlerinin yerel dönüşümlerine uygulanır. Kök varlığın dönüştürmesinin ölçeklendirilmesi değiştirilmemiş olarak kalır.
 
 * `recenterToOrigin`-Bir modelin, sınırlayıcı kutusunun kaynaktan ortalanmasını sağlamak için dönüştürülmesi gerektiğini belirtir.
-Kaynak modelin kaynağı kaynaktan uzakta olması durumunda ortalama, bu durumda kayan nokta duyarlık sorunları işleme yapıtlarına neden olabileceğinden önemlidir.
+Kaynak modelin kaynağı kaynaktan uzakta bulunuyorsa, kayan nokta duyarlık sorunları işleme yapıtlarına neden olabilir.
+Modelin ortalama olması bu durumda yardımcı olabilir.
 
 * `opaqueMaterialDefaultSidedness`-İşleme altyapısı, donuk malzemelerin çift taraflı olduğunu varsayar.
-Bu, amaçlanan davranış değilse, bu parametre "Singleyüzlü" olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [ :::no-loc text="single sided"::: işleme](../../overview/features/single-sided-rendering.md).
+Bu varsayım belirli bir modelin doğru değilse, bu parametre "Singletaraflý" olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [ :::no-loc text="single sided"::: işleme](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Malzeme geçersiz kılmaları
 
@@ -102,7 +106,7 @@ Bir model gama alanı kullanılarak tanımlanmışsa, bu seçenekler true olarak
   * `static`: Tüm nesneler API 'de kullanıma sunuldu ancak bağımsız olarak dönüştürülemez.
   * `none`: Sahne grafiği bir nesne olarak daraltılır.
 
-Her mod farklı çalışma zamanı performansına sahiptir. `dynamic`Modunda, hiçbir bölüm taşınmasa bile, performans maliyeti grafikteki [varlıkların](../../concepts/entities.md) sayısıyla doğrusal şekilde ölçeklendirilir. Uygulama için yalnızca parçalar ayrı olarak taşınırken kullanılmalıdır, örneğin ' Açılım görünümü ' animasyonu için.
+Her mod farklı çalışma zamanı performansına sahiptir. `dynamic`Modunda, hiçbir bölüm taşınmasa bile, performans maliyeti grafikteki [varlıkların](../../concepts/entities.md) sayısıyla doğrusal şekilde ölçeklendirilir. `dynamic`Yalnızca parçaları tek tek taşımak gerektiğinde kullanın, örneğin ' Açılım görünümü ' animasyonu için.
 
 `static`Mod tam sahne grafiğini dışa aktarır, ancak bu grafiğin içindeki bölümlerin kök parçasına göre sabit bir dönüştürmesi vardır. Ancak, nesnenin kök düğümü, önemli bir performans maliyeti olmadan taşınabilir, döndürülebilir veya ölçeklenmeye devam edebilir. Ayrıca, [uzamsal sorgular](../../overview/features/spatial-queries.md) tek tek bölümler döndürür ve her bölüm [durum geçersiz kılmaları](../../overview/features/override-hierarchical-state.md)aracılığıyla değiştirilebilir. Bu modda, nesne başına çalışma zamanı ek yükü göz ardı edilebilir değildir. Nesne başına incelemeden hala ihtiyacınız olan ancak nesne başına dönüşüm değişikliği olmadığında büyük sahneler için idealdir.
 
@@ -178,7 +182,7 @@ Bir bileşeni uygulamasına zorlayarak `NONE` , çıkış kafesinin ilgili akı�
 
 Biçimlerin bellek yazmalar aşağıdaki gibidir:
 
-| Biçim | Açıklama | Bayt başına:::no-loc text="vertex"::: |
+| Biçimlendir | Description | Bayt başına:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|iki bileşen tam kayan nokta duyarlığı|8
 |16_16_FLOAT|iki bileşenden oluşan yarı kayan nokta duyarlığı|4
@@ -278,6 +282,11 @@ Bu kullanım durumlarında, modeller genellikle küçük bir birim içinde çok 
 * Tek parçaların seçilebilir ve taşınabilir olması gerekir, bu nedenle `sceneGraphMode` sol tarafta olmalıdır `dynamic` .
 * Işın genellikle uygulamanın ayrılmaz bir parçası olduğundan, çakışma kafeslerinin oluşturulması gerekir.
 * Kesin olmayan düzlemleri, bayrağın etkin olduğunu daha iyi görünür `opaqueMaterialDefaultSidedness` .
+
+## <a name="deprecated-features"></a>Kullanım dışı bırakılan özellikler
+
+Modele özgü olmayan dosya adı kullanılarak ayarların sağlanması `conversionSettings.json` hala desteklenir ancak kullanım dışıdır.
+Lütfen bunun yerine modele özgü dosya adını kullanın `<modelName>.ConversionSettings.json` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

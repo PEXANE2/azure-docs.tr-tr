@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bf9e403fb8691f378558ef5f0403d132214ed187
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205416"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421782"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer bileşenleri
 
@@ -54,7 +54,7 @@ Yük dengeleyici, örnekleri yukarı veya aşağı ölçeklendirirseniz otomatik
 
 Arka uç havuzunuzu nasıl tasarlayacağınızı düşünürken, yönetim işlemlerinin uzunluğunu iyileştirmek için en az sayıda ayrı arka uç havuzu kaynağı tasarlayın. Veri düzlemi performansı veya ölçeği üzerinde farklılık yoktur.
 
-## <a name="health-probes"></a>Durum araştırmaları
+## <a name="health-probes"></a>Sistem durumu araştırmaları
 
 Bir sistem durumu araştırması, arka uç havuzundaki örneklerin sistem durumunu tespit etmek için kullanılır. Yük dengeleyici oluşturma sırasında, yük dengeleyicinin kullanması için bir sistem durumu araştırması yapılandırın.  Bu sistem durumu araştırması, bir örneğin sağlıklı olup olmadığını ve trafik alıp alamayacağını tespit eder.
 
@@ -75,7 +75,7 @@ Bir Load Balancer kuralı, gelen trafiğin arka uç havuzundaki **Tüm** örnekl
 Örneğin, ön uç IP 'nizden gelen trafiği arka uç örneklerinizin 80 numaralı bağlantı noktasına yönlendirmek için 80 numaralı bağlantı noktası için bir yük dengeleme kuralı kullanın.
 
 <p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Yük Dengeleme kuralları">
+  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="Yük Dengeleme kuralları">
 </p>
 
 *Şekil: Yük Dengeleme kuralları*
@@ -99,7 +99,7 @@ Yük Dengeleme kararı akış başına yapılır. Bu eylem aşağıdaki beş dem
 HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçleri (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Bu özellik, çok sayıda bağlantı noktasının yük dengeli olması gerektiğinde yardımcı olabilir.
 
 <p align="center">
-  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA bağlantı noktaları kuralları">
+  <img src="./media/load-balancer-components/harules.svg" alt="Figure depicts how Azure Load Balancer directs all frontend ports to three instances of all backend ports" width="512" title="HA bağlantı noktaları kuralları">
 </p>
 
 *Şekil: HA bağlantı noktası kuralları*
@@ -113,7 +113,7 @@ Gelen NAT kuralı, ön uç IP adresine ve bağlantı noktası birleşimine gönd
 Örneğin, bir arka uç havuzundaki sanal makine örneklerinin Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) oturumlarını istiyorsanız. Aynı ön uç IP adresindeki bağlantı noktalarıyla birden çok iç uç nokta eşlenebilir. Ön uç IP adresleri, ek bir sıçrama kutusu olmadan sanal makinelerinizi uzaktan yönetmek için kullanılabilir.
 
 <p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Gelen NAT kuralları">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="Gelen NAT kuralları">
 </p>
 
 *Şekil: gelen NAT kuralları*

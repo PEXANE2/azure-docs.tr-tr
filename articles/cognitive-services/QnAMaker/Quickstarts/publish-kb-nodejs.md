@@ -1,22 +1,22 @@
 ---
-title: "Hızlı başlangıç: node. js için REST API 'lerle Soru-Cevap Oluşturma"
-description: Bu hızlı başlangıçta, Node. js için Soru-Cevap Oluşturma REST API 'Leri ile çalışmaya başlama gösterilmektedir. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
+title: "Hızlı başlangıç: Node.js için REST API 'lerle Soru-Cevap Oluşturma"
+description: Bu hızlı başlangıçta, Node.js için Soru-Cevap Oluşturma REST API 'Lerine nasıl başlacağınız gösterilmektedir. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 18ccec5332e3751a86225ab087a1f68b0577cf96
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342740"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406104"
 ---
-# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Hızlı başlangıç: node. js için REST API 'Leri Soru-Cevap Oluşturma
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Hızlı başlangıç: Node.js için REST API 'Leri Soru-Cevap Oluşturma
 
-Node. js için Soru-Cevap Oluşturma REST API 'Leri ile çalışmaya başlayın. Temel görevler için örnek kodu denemek üzere bu adımları izleyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
+Node.js için Soru-Cevap Oluşturma REST API 'Leri ile çalışmaya başlayın. Temel görevler için örnek kodu denemek üzere bu adımları izleyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 
-Node. js için Soru-Cevap Oluşturma REST API 'Lerini kullanarak şunları yapın:
+Node.js için Soru-Cevap Oluşturma REST API 'Lerini kullanın:
 
 * Bilgi bankası oluşturma
 * Bilgi bankasını değiştirme
@@ -25,14 +25,14 @@ Node. js için Soru-Cevap Oluşturma REST API 'Lerini kullanarak şunları yapı
 * Bilgi Bankası indirin
 * İşlemin durumunu al
 
-[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node. js örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node.js örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* [Node. js](https://nodejs.org)' nin geçerli sürümü.
+* [Node.js](https://nodejs.org)geçerli sürümü.
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -65,7 +65,7 @@ npm install requestretry request --save
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, Node. js için Soru-Cevap Oluşturma REST API 'Leri ile aşağıdakilerin nasıl yapılacağını gösterir:
+Bu kod parçacıkları, Node.js için Soru-Cevap Oluşturma REST API 'Leri ile aşağıdakilerin nasıl yapılacağını gösterir:
 
 * [Bilgi bankası oluşturma](#create-a-knowledge-base)
 * [Bilgi bankasını değiştirme](#replace-a-knowledge-base)
