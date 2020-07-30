@@ -3,14 +3,13 @@ title: Azure Application Insights uygulama Haritası | Microsoft Docs
 description: Uygulama haritası ile karmaşık uygulama topolojilerini izleme
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367019"
+ms.locfileid: "87421306"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: dağıtılmış uygulamaları önceliklendirme
 
@@ -82,9 +81,12 @@ Etkin uyarıları ve uyarıların tetiklenmesi için temel kuralları görüntü
 
 ![Analiz deneyiminin ekran görüntüsü](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Bulut rolü adını ayarla
+## <a name="set-or-override-cloud-role-name"></a>Bulut rolü adını ayarlama veya geçersiz kılma
 
-Uygulama Haritası, eşlemedeki bileşenleri tanımlamak için **bulut rolü adı** özelliğini kullanır. Application Insights SDK, bulut rolü adı özelliğini bileşenlere göre yayılan telemetrisine otomatik olarak ekler. Örneğin, SDK, bulut rolü adı özelliğine bir Web sitesi adı veya hizmet rolü adı ekler. Ancak, varsayılan değeri geçersiz kılmak isteyebileceğiniz durumlar vardır. Bulut rolü adını geçersiz kılmak ve uygulama eşlemesinde görüntülenecek öğeleri değiştirmek için:
+Uygulama Haritası, eşlemedeki bileşenleri tanımlamak için **bulut rolü adı** özelliğini kullanır. Bulut rolü adını el ile ayarlamak veya geçersiz kılmak ve uygulama eşlemesinde görüntülenecek öğeleri değiştirmek için:
+
+> [!NOTE]
+> Application Insights SDK veya aracı, bulut rolü adı özelliğini otomatik olarak bir Azure App Service ortamındaki bileşenlere yayılan telemetrisine ekler.
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
@@ -266,7 +268,7 @@ Uygulama haritasını beklenen şekilde çalışacak bir sorun yaşıyorsanız, 
 
 3. C# ile Azure Işlevleri kullanıyorsanız, [Işlevler v2](../../azure-functions/functions-versions.md)'ye yükseltin.
 
-4. [Bulut rolü adının](#set-cloud-role-name) doğru şekilde yapılandırıldığını onaylayın.
+4. [Bulut rolü adının](#set-or-override-cloud-role-name) doğru şekilde yapılandırıldığını onaylayın.
 
 5. Bir bağımlılık eksikse, bunun [otomatik olarak toplanan bağımlılıklar](./auto-collect-dependencies.md) listesinde bulunduğundan emin olun. Listede yoksa, bunu yine de [izleme bağımlılık çağrısı](./api-custom-events-metrics.md#trackdependency) kullanarak el ile izleyebilirsiniz.
 
@@ -282,7 +284,7 @@ Bunu yapmak için, bulut rolü adı, bağımlılık türü ve bağımlılık hed
 
 * Bağımlılık türü, bağımlılığın mantıksal türünü temsil etmelidir. Örneğin, HTTP, SQL veya Azure blobu tipik bağımlılık türleridir. Benzersiz kimlikler içermemelidir.
 
-* Bulut rolü adının amacı [yukarıdaki bölümde](#set-cloud-role-name)açıklanmıştır.
+* Bulut rolü adının amacı [yukarıdaki bölümde](#set-or-override-cloud-role-name)açıklanmıştır.
 
 ## <a name="portal-feedback"></a>Portal geri bildirimi
 

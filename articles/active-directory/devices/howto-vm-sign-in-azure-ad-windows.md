@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282951"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419793"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -69,7 +69,7 @@ Azure 'da Windows sanal makinelerinize yönelik Azure AD kimlik doğrulamasını
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure 'da Windows VM için Azure AD oturum açmayı etkinleştirme
 
-Azure 'da Windows VM 'de Azure AD oturum açma 'yı kullanmak için, önce Windows VM 'niz için Azure AD oturum açma seçeneğini etkinleştirmeniz, sonra VM 'de oturum açma yetkisi olan kullanıcılar için RBAC rol atamalarını yapılandırmanız gerekir.
+Azure 'da Windows VM 'de Azure AD oturum açma 'yı kullanmak için, önce Windows VM 'niz için Azure AD oturum açma seçeneğini etkinleştirmeniz ve ardından VM 'de oturum açma yetkisi olan kullanıcılar için Azure rol atamalarını yapılandırmanız gerekir.
 Windows VM 'niz için Azure AD oturum açma özelliğini etkinleştirebilmenizin birden çok yolu vardır:
 
 - Windows VM oluştururken Azure portal deneyimini kullanma

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189484"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421748"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell & kısıtlamaları sorunlarını giderme
 
@@ -141,26 +141,6 @@ Bu işlemi yaparken dikkatli olun. bashrc, bunu yapmak Cloud Shell beklenmeyen h
 ### <a name="preview-version-of-azuread-module"></a>AzureAD modülünün önizleme sürümü
 
 Şu anda, `AzureAD.Standard.Preview` .NET Standard tabanlı bir modülün önizleme sürümü kullanılabilir. Bu modül ile aynı işlevleri sağlar `AzureAD` .
-
-### <a name="sqlserver-module-functionality"></a>`SqlServer`Modül işlevselliği
-
-`SqlServer`Cloud Shell eklenen modül yalnızca PowerShell Core için ön sürüm desteğine sahiptir. Özellikle, `Invoke-SqlCmd` henüz kullanılamaz.
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>Azure sürücüsünden oluşturulan varsayılan dosya konumu
-
-Kullanıcılar, PowerShell cmdlet 'lerini kullanarak Azure sürücüsünde dosya oluşturamaz. Kullanıcılar, VIM veya nano gibi diğer araçları kullanarak yeni dosyalar oluştururken, dosyalar varsayılan olarak ' a kaydedilir `$HOME` .
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Sekme tamamlama, PSReadline özel durumu oluşturabilir
-
-Kullanıcının PSReadline EditMode, Emacs olarak ayarlanırsa, Kullanıcı sekme tamamlama aracılığıyla tüm olasılıkları görüntülemeyi dener ve pencere boyutu tüm olasılıkları görüntüleyemeyecek kadar küçük, PSReadline işlenmemiş özel durum oluşturur.
-
-### <a name="large-gap-after-displaying-progress-bar"></a>İlerleme çubuğunu görüntülemeden sonra büyük boşluk
-
-Bir komut veya Kullanıcı eylemi, sürücüdeki sırada bir sekme gibi bir ilerleme çubuğu görüntülerse `Azure:` , imlecin düzgün şekilde ayarlanmamasına ve ilerleme çubuğunun daha önce olduğu bir boşluk belirme olasılığı vardır.
-
-### <a name="random-characters-appear-inline"></a>Rastgele karakterler satır içi görünür
-
-Örneğin, imleç konum sırası kodları `5;13R` Kullanıcı girişinde görünebilir. Karakterler el ile kaldırılabilir.
 
 ## <a name="personal-data-in-cloud-shell"></a>Cloud Shell kişisel veriler
 

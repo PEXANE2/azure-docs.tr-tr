@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373802"
+ms.locfileid: "87415032"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -28,20 +28,20 @@ ms.locfileid: "87373802"
 - **C#**: zaman uyumsuz konuşma dökümü için destek eklendi. [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription).  
 - **JavaScript**: hem [tarayıcı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) hem de [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition)için konuşmacı tanıma desteği eklendi.
 - **JavaScript**: otomatik dil algılama/dil kimliği desteği eklendi. [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript).
-- **Amaç-C**: Çok cihazlı konuşma ve konuşma dökümü için destek eklendi. 
+- **Amaç-C**: [Çok cihazlı konuşma](https://docs.microsoft.com/azure/cognitive-services/speech-service/multi-device-conversation) ve [konuşma dökümü](https://docs.microsoft.com/azure/cognitive-services/speech-service/conversation-transcription)için destek eklendi. 
 - **Python**: Windows ve Linux 'ta Python için sıkıştırılmış ses desteği eklendi. [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
 
 **Hata düzeltmeleri**
 - **Tümü**: bir tanımadan sonra keywordtanıyıcı 'e akış ilerlememesine neden olan bir sorun düzeltildi.
 - **Tümü**: bir KeywordRecognitionResult öğesinden elde edilen akışa neden olan bir sorun düzeltildi anahtar sözcüğünü içermemelidir.
 - **Tümü**: SendMessageAsync 'in, kullanıcıların bekleme süresinden önce iletiyi bir ileti göndermediği bir sorun düzeltildi.
-- **Tümü**: kullanıcılar birden çok VoiceProfileClient:: Hoparlörkerreckayıtları Profileasync olduğunda ve bunların bitmesini beklemediğinde konuşmacı tanıma API 'lerinde çökme düzeltildi.
+- **Tümü**: kullanıcılar, VoiceProfileClient:: Hoparlörkerreckayıtlarını Profileasync yöntemini birden çok kez çağırıyorsa ve çağrıların bitmesini beklemediğinde konuşmacı tanıma API 'lerinde çökme düzeltildi.
 - **Tümü**: sıkıştırılmış dosya günlüğü, VoiceProfileClient ve Hoparlörkertanıyıcı sınıflarında düzeltildi.
 - **JavaScript**: tarayıcı simge durumuna küçültüldüğünde azaltma ile ilgili bir [sorun](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) düzeltildi.
 - **JavaScript**: akışlarda bellek sızıntısı ile ilgili bir [sorun](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) düzeltildi.
 - **JavaScript**: NodeJS ' den OCSP yanıtları için önbelleğe alma eklendi.
 - **Java**: BigInteger alanlarının her zaman 0 döndürmesine neden olan bir sorun düzeltildi.
-- **iOS**: IOS uygulama mağazasındaki konuşma SDK 'sı tabanlı uygulamalar yayımlamayla ilgili [sorun](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) düzeltildi.
+- **iOS**: IOS uygulama mağazası 'nda konuşma SDK 'sı tabanlı uygulamalar yayımlamayla ilgili bir [sorun](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) düzeltildi.
 
 **Örnekler**
 - **C++**: [buraya](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)konuşmacı tanıma için örnek kod eklendi.
@@ -98,7 +98,7 @@ Sağlıklı olun!
 * Para birimi okuma
     * Ve için para birimi okumada sorun düzeltildi `es-ES``es-MX`
      
-    | Dil | Girdi | İyileştirmelerden sonra yeniden okuma |
+    | Dil | Giriş | İyileştirmelerden sonra yeniden okuma |
     |---|---|---|
     | `es-MX` | $1,58 | su cincuenta y Ocho centavos kaldır |
     | `es-ES` | $1,58 | dólar cincuenta y Ocho centavos 'yı kaldır |

@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371422"
+ms.locfileid: "87421901"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 
@@ -58,7 +58,7 @@ Uç noktaya erişim için, hizmet URL 'sine erişimi olan herkesin ve bir API an
 
 Rol atamaları aracılığıyla hizmet sağlama apparas haklarına yönelik haklar verilir. [Rol tabanlı erişim (RBAC)](../role-based-access-control/overview.md) , Azure kaynaklarının sağlanması için [Azure Resource Manager](../azure-resource-manager/management/overview.md) oluşturulan bir yetkilendirme sistemidir. 
 
-Azure Bilişsel Arama bağlamında, [RBAC rol atamaları](search-security-rbac.md) , [portalı](search-manage.md), [PowerShell](search-manage-powershell.md)'i veya [Yönetim REST API 'lerini](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)kullanıp kullanmadıklarından bağımsız olarak kimin hangi görevleri gerçekleştirebileceğini tespit eder:
+Azure Bilişsel Arama bağlamında, [Azure rol atamaları](search-security-rbac.md) , [Portal](search-manage.md), [PowerShell](search-manage-powershell.md)veya [Yönetim REST API 'lerini](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)kullanıp kullanmadıklarından bağımsız olarak kimin hangi görevleri gerçekleştirebileceğini tespit eder:
 
 * Hizmet oluşturma veya silme
 * Hizmeti ölçeklendirme

@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: aea093cbbb59824973c351f6df23113e1b51ab69
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319873"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420116"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'teki özel teklifler
 
@@ -43,6 +43,9 @@ Kurumsal müşteriler, bulut çözümlerini bulmak, denemek ve satın almak içi
 
 *Yalnızca özel planlar içeren yeni teklifler*için yayımcılar, tekliflerini başka bir teklif olarak oluşturabilir ve sonra planları özel olarak işaretleyebilir. Yalnızca özel planları olan teklifler, Microsoft ticari marketi veya teklifle ilişkilendirilmemiş müşteriler tarafından [Azure Portal](https://azure.microsoft.com/features/azure-portal/) bulunabilir veya erişilebilir olmayacaktır.
 
+>[!NOTE]
+>Yalnızca özel planları içeren bir teklif, genel Azure Market veya AppSource 'ta görünmez.
+
 ## <a name="targeting-customers-with-private-offers"></a>Özel tekliflerle müşterileri hedefleme
 
 Yayımcılar, hem yeni hem de mevcut özel teklifleriniz için abonelik tanımlayıcılarını kullanarak müşterileri hedefleyebilir. Bir sanal makine veya Azure Uygulama teklifi kullanan yayımcılar, özel bir planın kullanılabilirliğini tek bir Azure abonelik kimliğiyle kısıtlayabilir veya en fazla 20.000 Azure abonelik kimliği olan bir CSV 'yi karşıya yükleyebilir. SaaS uygulaması özel teklifi kullanılırken, yayımcılar, el ile veya CSV karşıya yükleme yaklaşımını kullanarak bir özel planın kullanılabilirliğini kısıtlamak için bir kiracı KIMLIĞINI ilişkilendirebilir.
@@ -61,6 +64,7 @@ Müşteriler, Azure portal oturum açtıktan sonra özel tekliflerinden erişmek
 
 >[!Note]
 >Özel teklifler, bulut çözümü sağlayıcısı (CSP) programının satıcısı aracılığıyla oluşturulan aboneliklerle desteklenmez.
+
 
 <!---
 ## Next steps

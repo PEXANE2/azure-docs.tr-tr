@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387023"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385220"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
 
@@ -28,7 +28,7 @@ Konuk kullanıcıları iş ortağı kuruluşlarınızdan Azure AD 'ye davet etme
 
 Aşağıdakilerden her ikisini de yapmanız gerekir:
 
-- [Azure Active Directory Uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](../manage-apps/configure-single-sign-on-non-gallery-applications.md)başlığı altında açıklandığı gıbı, SAML uygulamasını Galeri dışı uygulama şablonunu kullanarak tümleştirin. **Oturum açma URL 'si** değeri için ne kullanacağınızı aklınızda olduğunuzdan emin olun.
+- [SAML tabanlı çoklu oturum açma yapılandırma](../manage-apps/configure-saml-single-sign-on.md)başlığı altında açıklandığı gibi, uygulamayı SAML kullanarak tümleştirin. **Oturum açma URL 'si** değeri için ne kullanacağınızı aklınızda olduğunuzdan emin olun.
 -  Şirket içi uygulamayı, kimlik doğrulama kaynağı olarak yapılandırılmış **Azure Active Directory** birlikte yayımlamak için Azure AD uygulama ara sunucusu kullanın. Yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](../manage-apps/application-proxy-publish-azure-portal.md). 
 
    **Iç URL** ayarını yapılandırdığınızda, Galeri dışı uygulama şablonunda belirttiğiniz oturum açma URL 'sini kullanın. Bu şekilde, kullanıcılar uygulamaya kuruluş sınırının dışından erişebilir. Uygulama proxy 'Si, şirket içi uygulama için SAML çoklu oturum açma işlemini gerçekleştirir.

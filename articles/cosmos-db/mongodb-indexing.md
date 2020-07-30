@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260704"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420660"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
@@ -23,7 +24,7 @@ MongoDB için Azure Cosmos DB API 'SI, Azure Cosmos DB temel dizin yönetimi ola
 
 Azure Cosmos DB MongoDB Server sürüm 3,6 için API 'SI `_id` , alanı otomatik olarak dizinlenebilir ve bu bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . MongoDB için Azure Cosmos DB API 'sinde, parçalama ve dizin oluşturma ayrı kavramlardır. Parça anahtarınızı dizinlemek zorunda değilsiniz. Bununla birlikte, belgenizdeki diğer tüm özellikler gibi, bu özellik sorgularda ortak bir filtre ise, parça anahtarını dizinlemeniz önerilir.
 
-Ek alanlara dizin eklemek için MongoDB Dizin Yönetimi komutlarını uygularsınız. MongoDB 'de olduğu gibi, MongoDB için Azure Cosmos DB API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu varsayılan dizin oluşturma ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API 'sinden farklıdır.
+Ek alanları dizinlemek için MongoDB dizin yönetimi komutlarını uygularsınız. MongoDB 'de olduğu gibi, MongoDB için Azure Cosmos DB API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu varsayılan dizinleme ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API’sinden farklıdır.
 
 Bir sorguya sıralama uygulamak için sıralama işleminde kullanılan alanlarda bir dizin oluşturmanız gerekir.
 

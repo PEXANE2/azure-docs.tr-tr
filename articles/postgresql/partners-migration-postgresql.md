@@ -7,18 +7,18 @@ manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: f9b3cde8ff0f3a1b97d53a1de72cb6c5c48a800c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c2de10f5fbacd689a9ae92eb1f7295cccea3fb6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289790"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279270"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>PostgreSQL için Azure veritabanı geçiş iş ortakları
 PostgreSQL için Azure veritabanınızı büyük ölçüde desteklemek üzere sektör lideri çok çeşitli iş ortakları ve araçları arasından seçim yapabilirsiniz. Bu makalede, PostgreSQL için Azure veritabanı 'nı destekleyen geçiş çözümleriyle Microsoft iş ortakları vurgulanmaktadır.
 
 ## <a name="migration-partners"></a>Geçiş iş ortakları
-| İş Ortağı | Açıklama | Bağlantılar | Videolar |
+| İş Ortağı | Description | Bağlantılar | Videolar |
 | --- | --- | --- | --- |
 | ![SNP teknolojileri][1] |**SNP teknolojileri**<br>SNP Technologies, daha sonra işletmeler için güvenli ve güvenilir çözümler oluşturarak yalnızca bulut hizmet sağlayıcıdır. Şirket, işletmeniz için gerçek bir değer üretmeyi düşündüğü. Çalıştırmayı düşünmeden, SNP Technologies, istemcileri ile ortak bir amacı paylaşır ve bu da yatırımlarını avantajlarına dönüştürür.|[Web sitesi][snp_website]<br>[Twitter][snp_twitter]<br>[İrtibata][snp_contact] | |
 | ![En Iyi VERITABANı teknolojileri, LLC][2] |**En Iyi VERITABANı teknolojileri, LLC**<br>En Iyi VERITABANı, müşterilerin yönetilen bir Azure veritabanı hizmetinden En Iyi şekilde yararlanmanıza yardımcı olur. Şirket, [gelecekteki durum mimari tasarımı](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [Microsoft veri platformu için Veri Yönetimi Iyileştirme](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure dağıtım planlama hizmetleri](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)ve [Azure veri platformu hazırlık eğitimi](https://www.dbbest.com/services/azure-data-platform-readiness-training)dahil olmak üzere, başlamanıza olanak sağlayan çeşitli yollar sunar.|[Web sitesi][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[İrtibata][dbbest_contact] | |
@@ -28,7 +28,7 @@ PostgreSQL için Azure veritabanınızı büyük ölçüde desteklemek üzere se
 | ![Pactera][6] |**Pactera**<br>Pactera, dünyanın önde gelen kuruluşlara danışmanlık, dijital, teknoloji ve operasyon hizmetleri sunan küresel bir şirkettir. Mühendislerin üzerinde bulunan köklerinden en son dijital dönüşümde müşterilere rekabet eden bir kenar verirler. Kendini kanıtlamış Yöntemler ve araçlar verilerinizin güvenli, gerçek ve doğru olmasını güvence altına alırlar.|[Web sitesi][pactera_website]<br>[Twitter][pactera_twitter]<br>[İrtibata][pactera_contact] | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Microsoft 'un diğer iş ortaklarının bazıları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Iş ortağı sitesi](https://partner.microsoft.com/en-US/).
+Microsoft 'un diğer iş ortaklarının bazıları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Iş ortağı sitesi](https://partner.microsoft.com/).
 
 <!--Image references-->
 [1]: ./media/partner-migration-postgresql/SNP_Logo.png

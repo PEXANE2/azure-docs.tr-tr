@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453507"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420133"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps içinde satır içi kod kullanarak kod parçacıkları ekleme ve çalıştırma
 
@@ -32,7 +33,7 @@ Bu makalede, bir Office 365 Outlook hesabına yeni bir e-posta geldiğinde örne
 
 ![Örneğe genel bakış](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -205,7 +206,7 @@ Bu konunun örneğinde, `workflowContext` nesnesi kodunuzun erişebileceği şu 
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>Parametreleri Ekle
+## <a name="add-parameters"></a>Parametreler ekleme
 
 Bazı durumlarda, **satır Içi kod** eyleminin **tetikleyici veya** **eylem** parametrelerini ekleyerek tetikleyiciden gelen sonuçları veya kodun bağımlılıklar olarak başvurduğu belirli eylemleri içermesi gerekebilir. Bu seçenek, başvurulan sonuçların çalışma zamanında bulunamadığı senaryolar için yararlıdır.
 
@@ -216,7 +217,7 @@ Bazı durumlarda, **satır Içi kod** eyleminin **tetikleyici veya** **eylem** p
 
 Bu parametreleri eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz parametreleri seçin:
 
-   ![Parametreleri Ekle](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![Parametreler ekleme](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | Parametre | Açıklama |
    |-----------|-------------|

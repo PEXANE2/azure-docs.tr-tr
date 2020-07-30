@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090544"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386223"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -122,7 +122,7 @@ Bu makaleler, Key Vault kullanan veya ile tümleştirilebilen diğer senaryolar 
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault genel bakış ve kavramlar
 
-- [Key Vault geçici silme davranışı](overview-soft-delete.md)) silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu belirten silinen nesnelerin kurtarılmasına izin veren bir özelliği açıklar.
+- [Key Vault geçici silme davranışı](soft-delete-overview.md)) silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu belirten silinen nesnelerin kurtarılmasına izin veren bir özelliği açıklar.
 - [Key Vault istemci kısıtlama](overview-throttling.md) , sizi daraltma temel kavramlara yönlendirir ve uygulamanız için bir yaklaşım sunar.
 - [Key Vault depolama hesabı anahtarlarına genel bakış](../secrets/overview-storage-keys.md)) Key Vault tümleştirme Azure depolama hesapları anahtarlarını açıklar.
 - [Key Vault güvenliği](overview-security-worlds.md) , bölgeler ve güvenlik alanları arasındaki ilişkileri açıklar.

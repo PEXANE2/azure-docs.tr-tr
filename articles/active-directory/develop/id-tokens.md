@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313345"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418925"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -51,7 +51,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 ### <a name="header-claims"></a>Üst bilgi talepleri
 
-|İste | Biçimlendir | Açıklama |
+|İste | Biçimlendir | Description |
 |-----|--------|-------------|
 |`typ` | Dize-Always "JWT" | Belirtecin bir JWT belirteci olduğunu gösterir.|
 |`alg` | Dize | Belirteci imzalamak için kullanılan algoritmayı belirtir. Örnek: "RS256" |
@@ -62,7 +62,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (aksi belirtilmedikçe).  Bununla birlikte, uygulamanız id_token ek JWT talepleri istemek için [isteğe bağlı talepler](active-directory-optional-claims.md) kullanabilir.  Bunlar, `groups` kullanıcıdan kullanıcının adı hakkında bilgi talep edebilir.
 
-|İste | Biçimlendir | Açıklama |
+|İste | Biçimlendir | Description |
 |-----|--------|-------------|
 |`aud` |  Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. `id_tokens`' De hedef kitle, uygulamanızın Azure Portal uygulamanıza atanan uygulama kimliğidir. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
 |`iss` |  Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Belirteç v 2.0 uç noktası tarafından verildiyse, URI sona ermeyecektir `/v2.0` .  Kullanıcının Microsoft hesabı bir tüketici kullanıcısı olduğunu gösteren GUID `9188040d-6c67-4c5b-b112-36a304b66dad` . Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
@@ -71,7 +71,7 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 |`nbf` |  int, UNIX zaman damgası | "NBF" (before) talebi, JWT 'ın işlenmek üzere kabul edilmeden önce geçen süreyi tanımlar.|
 |`exp` |  int, UNIX zaman damgası | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir.  Bir kaynağın bu süreden önce belirteci reddedebileceğini unutmayın. Örneğin, kimlik doğrulamasında bir değişiklik gerekliyse veya bir belirteç iptali algılanırsa. |
 | `c_hash`| Dize |Kod karması, yalnızca KIMLIK belirteci bir OAuth 2,0 yetkilendirme koduyla verildiğinde KIMLIK belirteçlerine dahil edilir. Bir yetkilendirme kodunun gerçekliğini doğrulamak için kullanılabilir. Bu doğrulamayı gerçekleştirme hakkında daha fazla bilgi için [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html)bakın. |
-|`at_hash`| Dize |Erişim belirteci karması yalnızca KIMLIK belirteci bir OAuth 2,0 erişim belirteciyle verildiğinde KIMLIK belirteçlerine dahil edilir. Bir erişim belirtecinin orijinalliğini doğrulamak için kullanılabilir. Bu doğrulamayı gerçekleştirme hakkında daha fazla bilgi için [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html)bakın. |
+|`at_hash`| Dize |Erişim belirteci karması, kimlik belirteçlerine yalnızca KIMLIK belirteci `/authorize` bir OAuth 2,0 erişim belirtecine sahip uç noktadan verildiğinde dahil edilir. Bir erişim belirtecinin orijinalliğini doğrulamak için kullanılabilir. Bu doğrulamayı gerçekleştirme hakkında daha fazla bilgi için [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken)bakın. Bu, uç noktadan alınan KIMLIK belirteçlerinde döndürülmez `/token` . |
 |`aio` | Donuk dize | Azure AD tarafından belirteç yeniden kullanımı için veri kaydetmek üzere kullanılan bir iç talep. Göz ardı edilmelidir.|
 |`preferred_username` | Dize | Kullanıcıyı temsil eden birincil Kullanıcı adı. Belirtilen biçim olmadan bir e-posta adresi, telefon numarası veya genel Kullanıcı adı olabilir. Değeri değişebilir ve zaman içinde değişebilir. Değişebilir olduğundan, bu değer yetkilendirme kararları almak için kullanılmamalıdır. `profile`Kapsam bu talebi almak için gereklidir.|
 |`email` | Dize | `email`Talep, bir e-posta adresine sahip konuk hesapları için varsayılan olarak mevcuttur.  Uygulamanız, `email` [isteğe bağlı talebi](active-directory-optional-claims.md)kullanarak yönetilen kullanıcılar (kaynakla aynı kiracıya ait olanlar) için e-posta talebi talep edebilir.  V 2.0 uç noktasında, uygulamanız `email` OpenID Connect kapsamını da talep edebilir. talebi almak için hem isteğe bağlı talebi hem de kapsamı istemeniz gerekmez.  E-posta talebi yalnızca kullanıcının profil bilgilerinde adreslenebilir postaları destekler. |

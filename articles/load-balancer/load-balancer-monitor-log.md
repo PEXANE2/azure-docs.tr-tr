@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 351307132e231f1fc6639333e6839848ac933337
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809184"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420915"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Genel Temel Yük Dengeleyici için Azure İzleyici günlükleri
 
@@ -39,8 +39,8 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
 
 1. Portalda **kaynak grupları**' na tıklayın.
 2. **\<resource-group-name>** Yük dengeleyicinizin nerede olduğunu seçin.
-3. Yük dengeleyiciyi seçin.
-4. **İzleme**  >  **tanılama ayarlarını**seçin.
+3. Yük dengeleyicinizi seçin.
+4. **Etkinlik günlüğü**  >  **Tanılama ayarları**' nı seçin.
 5. **Tanılama ayarları** bölmesinde, **Tanılama ayarları**altında **+ Tanılama ayarı Ekle**' yi seçin.
 6. **Tanılama ayarları** oluşturma bölmesinde **ad** alanına **mylbdiagnostics** ' i girin.
 7. **Tanılama ayarları**için üç seçeneğiniz vardır.  Bunlardan birini, ikisini veya üçünü seçebilirsiniz ve her birini gereksinimleriniz için yapılandırabilirsiniz:

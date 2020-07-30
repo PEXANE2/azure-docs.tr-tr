@@ -44,7 +44,7 @@ Azure, arama yönetimi işlemlerine izin veren yerleşik roller sağlar. Azure d
 
 Depolama yönetimi işlemlerini çağırma izinleri veren yerleşik roller, aşağıdaki tabloda açıklanan rolleri içerir:
 
-|    RBAC rolü    |    Açıklama    |    Hesap anahtarlarına erişim de dahil edilsin mi?    |
+|    RBAC rolü    |    Description    |    Hesap anahtarlarına erişim de dahil edilsin mi?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Sahibi** | , Tüm depolama kaynaklarını yönetebilir ve kaynaklara erişebilir.  | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
 | **Katkıda Bulunan**  | Tüm depolama kaynaklarını yönetebilir, ancak kaynaklara ata 'yı yönetemez. | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dca320168805e9f7c8f6336b39c4f9394255f9b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067489"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416324"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -98,14 +98,14 @@ Veri kümesinde fiziksel olarak bulunan sütunlarda değil, değerlendirilen bir
 Heartbeat 
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | where IPRegion == "WestCoast"
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 ```Kusto
 //more efficient
 Heartbeat 
 | where RemoteIPLongitude  < -94
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Özetleme ve birleştirme bölümünde etkili toplama komutlarını ve boyutlarını kullanma
@@ -433,7 +433,7 @@ Paralellik 'i azaltan sorgu davranışları şunlardır:
 - Seri hale getirme [işleci](/azure/kusto/query/serializeoperator), [Next ()](/azure/kusto/query/nextfunction), [önceki ()](/azure/kusto/query/prevfunction)ve [Row](/azure/kusto/query/rowcumsumfunction) işlevleri gibi serileştirme ve pencere işlevlerinin kullanımı. Bu durumlarda zaman serisi ve Kullanıcı Analizi işlevleri kullanılabilir. Şu işleçler sorgu sonunda değilse, verimsiz serileştirme de oluşabilir: [Range](/azure/kusto/query/rangeoperator), [Sort](/azure/kusto/query/sortoperator), [Order](/azure/kusto/query/orderoperator), [top](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
 -    [DCount ()](/azure/kusto/query/dcount-aggfunction) toplama işlevinin kullanımı, sistemi farklı değerlerin merkezi kopyasına sahip olacak şekilde zorlar. Verilerin ölçeği yüksek olduğunda, doğruluğu azaltmak için DCount işlevi isteğe bağlı parametrelerini kullanmayı deneyin.
 -    Birçok durumda, [JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) işleci genel paralellik düşürür. Performans sorunlu olduğunda bir alternatif olarak karışık katılmayı inceleyin.
--    Kaynak kapsamı sorgularında, ön yürütme RBAC denetimleri çok fazla sayıda RBAC atamasının olduğu durumlarda kalabilir. Bu, daha uzun bir denetim oluşmasına neden olabilir ve bu da daha fazla paralellik sağlar. Örneğin, bir sorgu binlerce kaynağın bulunduğu bir abonelikte yürütülür ve her bir kaynağın abonelik veya kaynak grubunda değil kaynak düzeyinde birçok rol ataması vardır.
+-    Kaynak kapsamı sorgularında, ön yürütme RBAC denetimleri çok fazla sayıda Azure rol ataması olduğu durumlarda düşebilir. Bu, daha uzun bir denetim oluşmasına neden olabilir ve bu da daha fazla paralellik sağlar. Örneğin, bir sorgu binlerce kaynağın bulunduğu bir abonelikte yürütülür ve her bir kaynağın abonelik veya kaynak grubunda değil kaynak düzeyinde birçok rol ataması vardır.
 -    Bir sorgu küçük veri öbeklerini işlerse, sistem çok sayıda işlem düğümüne yayılmadığından paralelliği düşük olur.
 
 

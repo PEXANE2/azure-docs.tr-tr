@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f98df33b3efc697e349ddeae31439dd2fb701d91
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7023a2301b6b6137f7a0485523c68f21d72d67a9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202031"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385747"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault geçici silmeyi CLI ile kullanma
 
@@ -33,7 +33,7 @@ CLı için Key Vault özel başvuru bilgileri için bkz. [Azure clı Key Vault b
 
 Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığıyla aşağıdaki şekilde ayrı yönetilir:
 
-| İşlem | Açıklama | Kullanıcı izni |
+| İşlem | Description | Kullanıcı izni |
 |:--|:--|:--|
 |Liste|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
 |Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
@@ -245,6 +245,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>Diğer kaynaklar
 
-- Key Vault geçici silme özelliğine genel bakış için, bkz. [Azure Key Vault geçici silme genel bakış](overview-soft-delete.md)).
+- Key Vault geçici silme özelliğine genel bakış için, bkz. [Azure Key Vault geçici silme genel bakış](soft-delete-overview.md)).
 - Azure Key Vault kullanımı için genel bir bakış için bkz. [Azure Key Vault nedir?](overview.md)).
 

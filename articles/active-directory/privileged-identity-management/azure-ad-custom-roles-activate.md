@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f389bfe19eb6dde5416d8cba0b67d964e69bc860
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 398db465a6cc383f8869c549761afc0947e7ed03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743176"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421170"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management bir Azure AD özel rolünü etkinleştirin
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management artık kimlik v
 > [!NOTE]
 > Azure AD özel rolleri, önizleme sırasında yerleşik Dizin rolleriyle tümleştirilmiştir. Yetenek genel kullanıma sunulduğunda, rol yönetimi yerleşik roller deneyiminde gerçekleşmeyecektir. Aşağıdaki başlığı görürseniz, bu rollerin [yerleşik roller deneyiminde](pim-how-to-activate-role.md) yönetilmesi gerekir ve bu makale uygulanmaz:
 >
-> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> :::image type="content" source="media/pim-how-to-add-role-to-user/pim-new-version.png" alt-text="Azure AD 'de Privileged Identity Management ' yi seçin." lightbox="media/pim-how-to-add-role-to-user/pim-new-version.png":::
 
 ## <a name="activate-a-role"></a>Rol etkinleştirme
 
@@ -44,7 +44,7 @@ Bir Azure AD özel rolünü etkinleştirmeniz gerektiğinde, Privileged Identity
    ![Uygun Azure AD özel rol atamalarının listesini görüntüleyin](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
 
 > [!Note] 
->  Rol atamadan önce bir rol oluşturmanız/yapılandırmanız gerekir. AAD özel rollerini yapılandırma hakkında daha fazla bilgi için bkz. [buraya] (https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure)
+> Rol atamadan önce bir rol oluşturmanız/yapılandırmanız gerekir. AAD özel rollerini yapılandırma hakkında daha fazla bilgi için bkz. [Privileged Identity Management Azure AD özel rollerini yapılandırma](azure-ad-custom-roles-configure.md).
 
 1. **Azure AD özel roller (Önizleme)** sayfasında, ihtiyacınız olan atamayı bulun.
 1. **Etkinleştir** sayfasını açmak için **rolünüzü etkinleştir** ' i seçin.

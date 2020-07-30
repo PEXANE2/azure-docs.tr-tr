@@ -4,12 +4,12 @@ description: Azure CLı kullanarak Azure Kubernetes Service (AKS) içindeki bir 
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015638"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421255"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Azure CLı kullanarak Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 
@@ -94,8 +94,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> Parola doğrulama hatası alırsanız, kaynak grubunuzu başka bir bölgede oluşturmayı deneyin.
-> Ardından yeni kaynak grubuyla kümeyi oluşturmayı deneyin.
+> Parola doğrulama hatası alırsanız, *Windows-Admin-Password* parametresinin [Windows Server parola gereksinimlerini][windows-server-password]karşıladığını doğrulayın. Parolanız gereksinimleri karşılıyorsa, kaynak grubunuzu başka bir bölgede oluşturmayı deneyin. Ardından yeni kaynak grubuyla kümeyi oluşturmayı deneyin.
 
 Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgileri döndürür. Bazen kümenin sağlanması birkaç dakikadan uzun sürebilir. Bu durumlarda en fazla 10 dakika bekleyin.
 

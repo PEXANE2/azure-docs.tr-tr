@@ -6,25 +6,28 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337271"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421663"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure özel bağlantısı ile Redsıs için Azure önbelleği (Önizleme)
 Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen, özel olarak ve güvenli bir şekilde Azure önbelleğine bağlayan bir ağ arabirimidir. 
 
 Bu makalede, Azure portal kullanarak bir Azure önbelleği, Azure sanal ağı ve özel bir uç nokta oluşturmayı öğreneceksiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+> [!IMPORTANT]
+> Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz [. Microsoft Azure önizlemeleri Için ek kullanım koşulları.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
+> 
+
+## <a name="prerequisites"></a>Ön koşullar
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-  > Bu özellik şu anda önizleme aşamasındadır. ilgilendiğiniz durumlarda [bizimle iletişim kurun](mailto:azurecache@microsoft.com) .
-  >
-
+> Bu özellik şu anda önizleme aşamasındadır. ilgilendiğiniz durumlarda [bizimle iletişim kurun](mailto:azurecache@microsoft.com) .
+>
 
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 1. Önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin. 
@@ -73,7 +76,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Abonelik     | Açılır ve aboneliğinizi seçin.                                  |
     | Kaynak Grubu   | Açılır ve bir kaynak grubu seçin. |
     | **Örnek ayrıntıları** |                                                                 |
-    | Ad             | Girmesini**\<virtual-network-name>**                                    |
+    | Name             | Girmesini**\<virtual-network-name>**                                    |
     | Bölge           | Seçin**\<region-name>** |
 
 4. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
@@ -124,7 +127,7 @@ Bu bölümde, özel bir uç nokta oluşturacak ve daha önce oluşturduğunuz ö
     | Abonelik | Açılır ve aboneliğinizi seçin. |
     | Kaynak grubu | Açılır ve bir kaynak grubu seçin. |
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Ad |Özel uç noktanız için bir ad girin.  |
+    | Name |Özel uç noktanız için bir ad girin.  |
     | Bölge |Açılır ve bir konum seçin. |
     |||
 

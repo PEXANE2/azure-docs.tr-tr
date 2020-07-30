@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521114"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386274"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault yedekleme
 
@@ -27,7 +27,7 @@ Azure Key Vault, kullanılabilirliği korumanıza ve veri kaybını önlemenize 
 
 Key Vault olağanüstü durum senaryolarında kullanılabilirliği korur ve Kullanıcı müdahalesi olmadan eşleştirilmiş bir bölgeye istekleri otomatik olarak devreder. Daha fazla bilgi için bkz. [kullanılabilirlik ve yedeklilik Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
 
-Gizli dizileri yanlışlıkla veya kötü amaçlı olarak silmeye karşı koruma istiyorsanız, Anahtar Kasanızda geçici silme ve koruma özelliklerini temizleyin. Daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete).
+Gizli dizileri yanlışlıkla veya kötü amaçlı olarak silmeye karşı koruma istiyorsanız, Anahtar Kasanızda geçici silme ve koruma özelliklerini temizleyin. Daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -43,7 +43,7 @@ Ayrıca aşağıdaki sonuçları göz önünde bulundurun:
 
 Gizli dizi, anahtar veya sertifika gibi bir Anahtar Kasası nesnesini yedeklerken, yedekleme işlemi nesneyi şifreli bir blob olarak indirir. Bu Blobun Azure dışından şifresi çözülemiyor. Bu bloba kullanılabilir verileri almak için, blobu aynı Azure aboneliği ve [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)içindeki bir anahtar kasasında geri yüklemeniz gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir Anahtar Kasası nesnesini yedeklemek için, şunları yapmanız gerekir: 
 

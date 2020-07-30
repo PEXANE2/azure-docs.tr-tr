@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291866"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416511"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Sanal ağ eşlemesi oluşturma, değiştirme veya silme
 
@@ -118,7 +118,7 @@ Sanal ağların bazen iletişim kurmasını istiyorsanız, her zaman bir eşleme
 - Genel eşleme oluştururken, eşlenen sanal ağlar herhangi bir Azure genel bulut bölgesinde veya Çin bulut bölgelerinde veya kamu bulut bölgelerinde bulunabilir. Bulutlar arasında eşdüzey olamaz. Örneğin, Azure genel bulutundaki bir sanal ağ, Azure Çin bulutu 'ndaki bir VNet ile birleştirilemez.
 - Bir sanal ağ içindeki kaynaklar, genel olarak eşlenen sanal ağın Temel iç yük dengeleyicisinin ön uç IP adresiyle iletişim kuramaz. Temel Load Balancer için yalnızca aynı bölge içinde destek vardır. Hem Sanal Ağ Eşleme hem de Genel Sanal Ağ Eşleme için Standart Load Balancer desteği vardır. Küresel VNet eşlemesi üzerinden çalışmayan temel bir yük dengeleyici kullanan hizmetler [burada belgelenmiştir.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 - Uzak ağ geçitlerini kullanabilir veya genel olarak eşlenmiş sanal ağlarda ve yerel olarak eşlenmiş sanal ağlarda ağ geçidi aktarımına izin verebilirsiniz.
-- Sanal ağlar aynı veya farklı aboneliklerde olabilir. Farklı aboneliklerde sanal ağları eşler, her iki abonelik de aynı veya farklı Azure Active Directory kiracısıyla ilişkilendirilebilir. Zaten bir AD kiracınız yoksa, [bir tane oluşturabilirsiniz](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Farklı Azure Active Directory kiracılar ile ilişkili aboneliklerden sanal ağlar arasında eşleme desteği portalda kullanılamaz. CLı, PowerShell veya şablonları kullanabilirsiniz.
+- Sanal ağlar aynı veya farklı aboneliklerde olabilir. Farklı aboneliklerde sanal ağları eşler, her iki abonelik de aynı veya farklı Azure Active Directory kiracısıyla ilişkilendirilebilir. Zaten bir AD kiracınız yoksa, [bir tane oluşturabilirsiniz](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant).
 - Eşin sanal ağlarda çakışmayan IP adresi alanları olmalıdır.
 - Bir sanal ağ başka bir sanal ağla eşlendikten sonra sanal ağın adres alanından adres aralıklarını ekleyemez veya silemezsiniz. Adres aralıklarını ekleme veya kaldırma, eşlemeyi silme, adres aralıklarını ekleme veya kaldırma, sonra eşlemeyi yeniden oluşturma. Sanal ağlardan adres aralıklarını eklemek veya adres aralıklarını kaldırmak için bkz. [sanal ağları yönetme](manage-virtual-network.md).
 - Kaynak Yöneticisi üzerinden dağıtılmış iki sanal ağı veya klasik dağıtım modeli aracılığıyla dağıtılan bir sanal ağ ile Kaynak Yöneticisi aracılığıyla dağıtılan bir sanal ağı eşleyebilirsiniz. Klasik dağıtım modeliyle oluşturulan iki sanal ağı eşleyemezsiniz. Azure dağıtım modelleriyle ilgili bilgi sahibi değilseniz [Azure dağıtım modellerini anlama](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesini okuyun. Klasik dağıtım modeliyle oluşturulan iki sanal ağı bağlamak için [VPN Gateway](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) kullanabilirsiniz.
@@ -146,7 +146,7 @@ Sanal ağ eşlemesi ile çalışmak için kullandığınız hesapların aşağı
 
 Hesabınız önceki rollerden birine atanmamışsa, aşağıdaki tablodan gerekli eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
 
-| Eylem                                                          | Ad |
+| Eylem                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | A ile sanal ağ B 'ye bir eşleme oluşturmak için gereklidir. sanal ağ A 'nın sanal ağ olması gerekir (Kaynak Yöneticisi)          |
 | Microsoft. Network/virtualNetworks/eş/eylem                   | B (Kaynak Yöneticisi) sanal ağından A sanal ağına eşleme oluşturmak için gereklidir                                                       |

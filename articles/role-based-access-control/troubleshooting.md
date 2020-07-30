@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/24/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287205"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382585"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -61,7 +61,7 @@ $ras.Count
 
     "İşlemi tamamlamaya yönelik ayrıcalıklar yetersiz" hatasını alırsanız Azure CLı, Azure AD 'de atanan kimliği aramaya çalışıyor ve hizmet sorumlusu varsayılan olarak Azure AD 'yi okuyamıyor olabilir.
 
-    Bu hatayı çözebilecek iki yol vardır. İlk yöntem, Dizin [okuyucuları](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) rolünü, dizindeki verileri okuyabilmesi için hizmet sorumlusuna atamanız olur. Ayrıca, [Dizin. Read. All iznini](https://docs.microsoft.com/graph/permissions-reference) Microsoft Graph de verebilirsiniz.
+    Bu hatayı çözebilecek iki yol vardır. İlk yöntem, Dizin [okuyucuları](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) rolünü, dizindeki verileri okuyabilmesi için hizmet sorumlusuna atamanız olur.
 
     Bu hatayı çözmek için ikinci yöntem, yerine parametresini kullanarak rol atamasını oluşturmaktır `--assignee-object-id` `--assignee` . Kullanarak `--assignee-object-id` Azure CLI, Azure AD aramasını atlar. Rolü atamak istediğiniz kullanıcı, Grup veya uygulamanın nesne KIMLIĞINI almanız gerekir. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-cli.md#new-service-principal).
 

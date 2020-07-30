@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284413"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419810"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
 
@@ -44,19 +44,19 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 | Cihaz kimliği türü | Kimlik altyapısı | Windows cihazları | VDı platformu sürümü | Desteklenir |
 | --- | --- | --- | --- | --- |
 | Hibrit Azure AD'ye katılmış | Federasyon | Windows geçerli * * * ve Windows alt düzey * * * * | Kalıcı | Yes |
-|   |   | Windows geçerli | Kalıcı olmayan | Hayır |
+|   |   | Windows geçerli | Kalıcı olmayan | No |
 |   |   | Windows alt düzey | Kalıcı olmayan | Yes |
 |   | Yönetilen * * | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
-|   |   | Windows geçerli | Kalıcı olmayan | Hayır |
+|   |   | Windows geçerli | Kalıcı olmayan | No |
 |   |   | Windows alt düzey | Kalıcı olmayan | Yes |
-| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | Hayır |
-|   |   |   | Kalıcı olmayan | Hayır |
-|   | Yönetilen | Windows geçerli | Kalıcı | Hayır |
-|   |   |   | Kalıcı olmayan | Hayır |
+| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | No |
+|   |   |   | Kalıcı olmayan | No |
+|   | Yönetilen | Windows geçerli | Kalıcı | No |
+|   |   |   | Kalıcı olmayan | No |
 | Azure AD kayıtlı | Federe | Windows geçerli | Kalıcı | Geçerli değil |
-|   |   |   | Kalıcı olmayan | Hayır |
+|   |   |   | Kalıcı olmayan | Geçerli değil |
 |   | Yönetilen | Windows geçerli | Kalıcı | Geçerli değil |
-|   |   |   | Kalıcı olmayan | Hayır |
+|   |   |   | Kalıcı olmayan | Geçerli değil |
 
 \***Federal** kimlik altyapısı ortamı, AD FS veya diğer üçüncü taraf IDP gibi bir kimlik sağlayıcısı olan bir ortamı temsil eder.
 

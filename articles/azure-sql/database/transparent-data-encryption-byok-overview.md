@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514739"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387124"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 
 - Anahtar Kasası ve SQL veritabanı/yönetilen örnek aynı Azure Active Directory kiracısına ait olmalıdır. Platformlar arası anahtar kasası ve sunucu etkileşimleri desteklenmez. Kaynakları daha sonra taşımak için, AKV ile TDE yeniden yapılandırılması gerekir. [Kaynakları taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md)hakkında daha fazla bilgi edinin.
 
-- Anahtar kasasında [geçici silme](../../key-vault/general/overview-soft-delete.md) özelliğinin etkinleştirilmesi, veri kaybını korumak için yanlışlıkla anahtar (veya Anahtar Kasası) silme gerçekleşmelidir. Geçici olarak silinen kaynaklar, bu sırada müşteri tarafından kurtarılmaz veya temizlenmediği takdirde 90 gün boyunca tutulur. *Kurtarma* ve *Temizleme* eylemlerinin bir Anahtar Kasası erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır ve [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) veya [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)aracılığıyla etkinleştirilebilir. Azure portal aracılığıyla etkinleştirilemez.  
+- Anahtar kasasında [geçici silme](../../key-vault/general/soft-delete-overview.md) özelliğinin etkinleştirilmesi, veri kaybını korumak için yanlışlıkla anahtar (veya Anahtar Kasası) silme gerçekleşmelidir. Geçici olarak silinen kaynaklar, bu sırada müşteri tarafından kurtarılmaz veya temizlenmediği takdirde 90 gün boyunca tutulur. *Kurtarma* ve *Temizleme* eylemlerinin bir Anahtar Kasası erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır ve [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) veya [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)aracılığıyla etkinleştirilebilir. Azure portal aracılığıyla etkinleştirilemez.  
 
 - Azure Active Directory kimliğini kullanarak sunucuya veya yönetilen örnek için anahtar kasasına (Get, wrapKey, unwrapKey) erişim izni verin. Azure portal kullanılırken, Azure AD kimliği otomatik olarak oluşturulur. PowerShell veya CLı kullanırken, Azure AD kimliğinin açık bir şekilde oluşturulması ve tamamlanmasının doğrulanması gerekir. PowerShell kullanırken ayrıntılı adım adım yönergeler için bkz. [bYok Ile TDE yapılandırma](transparent-data-encryption-byok-configure.md) ve [SQL yönetilen örneği için bYok Ile TDE yapılandırma](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) .
 

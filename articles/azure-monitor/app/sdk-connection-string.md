@@ -5,13 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
+ms.custom: devx-track-javascript
 ms.reviewer: mbullwin
-ms.openlocfilehash: 56438389ea8a371335facd3cfd0b2d4161b421c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326571"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383639"
 ---
 # <a name="connection-strings"></a>Bağlantı dizeleri
 
@@ -57,7 +58,7 @@ Bağlantı desteklenen en fazla 4096 karakter uzunluğunda.
 
 Bağlantı dizesi, noktalı virgülle ayrılmış anahtar-değer çiftleri olarak temsil edilen ayarların bir listesini içerir:`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Sözdizimi
+#### <a name="syntax"></a>Syntax
 
 - `InstrumentationKey`(örn: 00000000-0000-0000-0000-000000000000)  Bağlantı dizesi **gerekli** bir alandır.
 - `Authorization`(örn: Ikey) (Bugün yalnızca Ikey yetkilendirmesini desteklediğimiz için bu ayar isteğe bağlıdır.)

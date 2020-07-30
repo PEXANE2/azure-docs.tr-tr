@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d31240cad709a156d7235f116c9cd2c8fb698b03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840562"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421153"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Ağ Izleyicisi yeteneklerini kullanmak için gereken rol tabanlı erişim denetimi izinleri
 
@@ -102,9 +102,9 @@ Azure rol tabanlı erişim denetimi (RBAC), kuruluşunuzun kendilerine atanan so
 
 Ağ Izleyicisi özellikleri aşağıdaki eylemleri de gerektirir:
 
-| Eylem (ler)                                                           | Açıklama                                                    |
+| Eylem (ler)                                                           | Description                                                    |
 | ---------                                                           | -------------                                                  |
-| Microsoft. Authorization/ \* /Read                                     | RBAC rol atamalarını ve ilke tanımlarını getirmek için kullanılır          |
+| Microsoft. Authorization/ \* /Read                                     | Azure rol atamalarını ve ilke tanımlarını getirmek için kullanılır          |
 | Microsoft. resources/abonelikler/resourceGroups/Read               | Bir abonelikteki tüm kaynak gruplarını listelemek için kullanılır    |
 | Microsoft. Storage/storageAccounts/Read                              | Belirtilen depolama hesabının özelliklerini almak için kullanılır   |
 | Microsoft. Storage/storageAccounts/listServiceSas/eylem, </br> Microsoft. Storage/storageAccounts/listAccountSas/eylem, <br> Microsoft. Storage/storageAccounts/listKeys/Action| [Depolama hesabına güvenli erişim](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) ve depolama hesabına yazma olanağı sağlayan paylaşılan erişim IMZALARıNı (SAS) getirmek için kullanılır |

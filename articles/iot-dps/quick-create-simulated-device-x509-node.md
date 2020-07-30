@@ -1,6 +1,6 @@
 ---
-title: Node. js kullanarak Azure IoT Hub sanal X. 509.440 cihazı sağlama
-description: Azure IoT Hub cihaz sağlama hizmeti (DPS) için Node. js cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturun ve sağlayın. Bu hızlı başlangıç, bireysel kayıtları kullanır.
+title: Node.js kullanarak sanal bir X. 509.952 cihazını Azure IoT Hub sağlama
+description: Azure IoT Hub cihaz sağlama hizmeti (DPS) için Node.js cihaz SDK 'sını kullanarak sanal bir X. 509.440 cihazı oluşturun ve sağlayın. Bu hızlı başlangıç, bireysel kayıtları kullanır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -8,26 +8,26 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc
-ms.openlocfilehash: 746f4adbf616f95c21874d7c1c48881f88c38d34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77605411"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422122"
 ---
-# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Node. js cihaz SDK 'sını kullanarak bir X. 509.952 sanal cihazı oluşturma ve sağlama
+# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Node.js cihaz SDK 'sını kullanarak bir X. 509.952 sanal cihazı oluşturma ve sağlama
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir X. 509.952 aygıtı oluşturacaksınız. Cihaz sağlama hizmeti (DPS) ile tek bir kayıt kullanarak bu sanal cihazı IoT Hub 'ınıza bağlamak için cihaz örnek Node. js kodunu kullanırsınız.
+Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir X. 509.952 aygıtı oluşturacaksınız. Cihaz sağlama hizmeti (DPS) ile tek bir kayıt kullanarak bu sanal cihazı IoT Hub 'ınıza bağlamak için cihaz örnek Node.js kodunu kullanırsınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md)gözden geçirme.
 - [Azure Portal Ile cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org).
+- [Node.js v 4.0 +](https://nodejs.org).
 - [Git](https://git-scm.com/download/).
 - [OpenSSL](https://www.openssl.org/).
 
@@ -123,8 +123,8 @@ Bu makalede, bireysel kayıtlar gösterilmektedir.
 
 4. **register\_x509.js** dosyasını düzenleyin. Aşağıdaki değişiklikleri yaptıktan sonra dosyayı kaydedin.
     - `provisioning host` öğesini yukarıdaki **1. Adım**’da belirtilen **_Genel Cihaz Uç Noktası_** ile değiştirin.
-    - Yukarıdaki `id scope` **1. adımda** belirtilen **_kimlik kapsamıyla_** değiştirin. 
-    - Önceki `registration id` bölümde BELIRTILEN **_kayıt kimliğiyle_** değiştirin.
+    - `id scope`Yukarıdaki **1. adımda** belirtilen **_kimlik kapsamıyla_** değiştirin. 
+    - `registration id`Önceki bölümde belirtilen **_kayıt kimliğiyle_** değiştirin.
     - `cert filename` ve `key filename` öğelerini yukarıdaki **2. Adım**’da kopyaladığınız dosyalarla değiştirin. 
 
 5. Betiği yürütün ve cihazın başarıyla sağlandığını doğrulayın.

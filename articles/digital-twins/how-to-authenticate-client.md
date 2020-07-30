@@ -1,5 +1,5 @@
 ---
-title: Uygulama kimlik doğrulama kodunu yaz
+title: Uygulama kimlik doğrulaması kodu yazma
 titleSuffix: Azure Digital Twins
 description: Bkz. bir istemci uygulamasında kimlik doğrulama kodu yazma
 author: baanders
@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4d235280ae4a600994eb93ec08c7a13630f9682f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1eebacefa2e91970263c301de4ff160ea7c9f2eb
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131591"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420354"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
@@ -24,7 +25,7 @@ Bu makaledeki örnek kodda iki yaklaşım vardır. Tercih ettiğiniz dile bağl�
 
 Azure dijital TWINS için API 'Ler ve SDK 'lar hakkında daha fazla bilgi için [*bkz. nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk olarak, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-scripted.md)bölümünde kurulum adımlarını doldurun. Bu, bir Azure dijital TWINS örneğiniz olduğundan, kullanıcılarınızın erişim izinlerine sahip olduğundan ve istemci uygulamaları için izinler ayarlamış olduğunuzdan emin olur. Tüm bu kurulumdan sonra, istemci uygulama kodunu yazmaya hazırsınızdır.
 
@@ -100,7 +101,7 @@ Ayrıca, bir işlevde kimlik doğrulamasını kullanmak için şunları unutmay�
 
 Bu bölümde, bu durumda nasıl kimlik doğrulaması yapılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 İlk olarak, [*nasıl yapılır: Azure dijital TWINS için özel*](how-to-create-custom-sdks.md)SDK 'lar oluşturma adımlarını kullanarak, oto Rest ile özel SDK oluşturma adımlarını tamamlamalısınız.
 

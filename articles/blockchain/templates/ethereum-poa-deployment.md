@@ -4,12 +4,13 @@ description: Azure 'da çok siteli bir konsorsiyumum ağını dağıtmak ve yap�
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d75b5348c49728d2a796257fa4000f6c3a36831d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124935"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386121"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
 
@@ -83,11 +84,11 @@ Sonraki bölümlerde, ağdaki ilk üyenin parmak izini nasıl yapılandıracağ�
 
 **Blok zinciri**  >  **Ethereum yetki kanıtlama Konsorsiyumu (Önizleme)** öğesini seçin.
 
-### <a name="basics"></a>Temel bilgiler
+### <a name="basics"></a>Temel Bilgiler
 
 **Temel bilgiler**altında herhangi bir dağıtım için standart parametrelerin değerlerini belirtin.
 
-![Temel bilgiler](./media/ethereum-poa-deployment/basic-blade.png)
+![Temel Bilgiler](./media/ethereum-poa-deployment/basic-blade.png)
 
 Parametre | Açıklama | Örnek değer
 ----------|-------------|--------------
@@ -560,7 +561,7 @@ Akıllı sözleşmeleri derlemek, dağıtmak ve test etmek için, Ethereum geli�
 
 Aşağıdaki örnekte basit bir akıllı sözleşme oluşturursunuz. Akıllı sözleşmeyi derlemek ve blok zinciri ağınıza dağıtmak için Truffle kullanırsınız. Dağıtıldıktan sonra bir işlem aracılığıyla akıllı sözleşme işlevini çağırabilirsiniz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Truffle ve Web3 için Python gereklidir. Yolunuza Python eklemek için Install seçeneğini seçin.
 * Truffle v 5.0.5 'i yükler `npm install -g truffle@v5.0.5` . Truffle, [Node.js](https://nodejs.org), [Git](https://git-scm.com/)gibi çeşitli araçların yüklenmesini gerektirir. Daha fazla bilgi için bkz. [Truffle belgeleri](https://github.com/trufflesuite/truffle).

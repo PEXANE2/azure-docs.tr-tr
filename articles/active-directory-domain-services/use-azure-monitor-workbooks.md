@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223049"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419606"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitaplarını kullanarak Azure Active Directory Domain Services güvenlik denetim olaylarını gözden geçirme
 
@@ -75,7 +75,7 @@ Güvenlik Genel Bakış raporunun çalışma kitabı şablonuna erişmek için a
 
 1. Grafiğin altındaki Güvenlik Genel Bakış raporunun alt bölümü, seçilen etkinlik türünü ayırır. Aşağıdaki örnek raporda gösterildiği gibi, sağ tarafta yer alan kullanıcı adlarıyla filtre uygulayabilirsiniz:
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Azure Izleyici çalışma kitaplarında hesap kilitlenmelerini ayrıntılarıyla.](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>Hesap etkinliği rapor çalışma kitabını kullan
 
@@ -93,7 +93,7 @@ Hesap etkinliği raporunun çalışma kitabı şablonuna erişmek için aşağı
 
     Aşağıdaki örnek raporda gösterildiği gibi, *Felix*gibi **hesap Kullanıcı adına**göre filtreleyebilirsiniz:
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    [![Azure Izleyici çalışma kitaplarında hesap etkinliği raporu.](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     Grafiğin altındaki alanda, etkinlik sonucu ve kaynak iş istasyonu gibi bilgilerle birlikte tek tek oturum açma olayları gösterilmektedir. Bu bilgiler, hesap kilitlenmelerini neden olabilecek veya olası bir saldırıyı gösterebilen oturum açma olaylarının yinelenen kaynaklarını belirlemesine yardımcı olabilir.
 

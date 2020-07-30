@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a0b63c130d7d1e72bd3320e40213ae3cb1069a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 264d4afb50904be17624f8801b7b79fe4b232030
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763253"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386818"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Çok kiracılı bir uygulama için Azure kiracısı oluşturma  
 
@@ -37,7 +37,7 @@ Azure aboneliğinizi ve Azure Active Directory 'nizi ücretsiz olarak oluşturab
 
    a. **OıDC veya Oath uygulamaları için**uygulamanızı çok kiracılı bir uygulama olarak [kaydedin](../develop/quickstart-register-app.md) . Desteklenen hesap türlerinde herhangi bir kurumsal dizin ve kişisel Microsoft hesabı seçeneğinde hesapları seçin
 
-   b. **SAML ve WS-Bessel tabanlı uygulamalar için**, Azure AD 'de genel bir SAML şablonu kullanarak [SAML tabanlı çoklu oturum açma uygulamalarını yapılandırırsınız](configure-single-sign-on-non-gallery-applications.md) .
+   b. **SAML ve WS-Bessel tabanlı uygulamalar için**, Azure AD 'de genel bir SAML şablonu kullanarak [SAML tabanlı çoklu oturum açma uygulamalarını yapılandırırsınız](configure-saml-single-sign-on.md) .
 
 Ayrıca, gerekirse [tek kiracılı bir uygulamayı birden çok kiracıya dönüştürebilirsiniz](../develop/howto-convert-app-to-be-multi-tenant.md) .
 

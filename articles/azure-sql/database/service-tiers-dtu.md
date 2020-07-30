@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281506"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382704"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,15 +36,14 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 
 ||Temel|Standart|Premium|
 | :-- | --: |--:| --:|
-|Hedef iş yükü|Geliştirme ve üretim|Geliştirme ve üretim|Geliştirme ve üretim|
-|Çalışma süresi SLA 'Sı|%99,99|%99,99|%99,99|
-|Maksimum yedekleme saklama|7 gün|35 gün|35 gün|
-|CPU|Düşük|Düşük, orta, yüksek|Orta, yüksek|
-|GÇ verimlilik (yaklaşık) |DTU başına 1-5 ıOPS| DTU başına 1-5 ıOPS | DTU başına 25 ıOPS|
-|GÇ gecikme süresi (yaklaşık)|5 ms (okuma), 10 MS (yazma)|5 ms (okuma), 10 MS (yazma)|2 ms (okuma/yazma)|
-|Columnstore dizin oluşturma |Yok|S3 ve üzeri|Desteklenir|
-|Bellek içi OLTP|Yok|Yok|Desteklenir|
-|||||
+|**Hedef iş yükü**|Geliştirme ve üretim|Geliştirme ve üretim|Geliştirme ve üretim|
+|**Çalışma süresi SLA 'Sı**|%99,99|%99,99|%99,99|
+|**Maksimum yedekleme saklama**|7 gün|35 gün|35 gün|
+|**CPU**|Düşük|Düşük, orta, yüksek|Orta, yüksek|
+|**GÇ verimlilik (yaklaşık)** |DTU başına 1-5 ıOPS| DTU başına 1-5 ıOPS | DTU başına 25 ıOPS|
+|**GÇ gecikme süresi (yaklaşık)**|5 ms (okuma), 10 MS (yazma)|5 ms (okuma), 10 MS (yazma)|2 ms (okuma/yazma)|
+|**Columnstore dizin oluşturma** |Yok|S3 ve üzeri|Desteklenir|
+|**Bellek içi OLTP**|Yok|Yok|Desteklenir|
 
 > [!IMPORTANT]
 > Temel, Standart S0, S1 ve S2 hizmet katmanları, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir. 
@@ -61,9 +60,8 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 
 ||Temel|Standart|Premium|
 | :-- | --: | --: | --: |
-| Maksimum depolama boyutu | 2 GB | 1 TB | 4 TB  |
-| En fazla DTU | 5 | 3000 | 4000 | 
-|||||
+| **Maksimum depolama boyutu** | 2 GB | 1 TB | 4 TB  |
+| **En fazla DTU** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
 > Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](file-space-manage.md).
@@ -72,12 +70,11 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 
 || **Temel** | **Standart** | **Premium** |
 | :-- | --: | --: | --: |
-| Veritabanı başına en fazla depolama boyutu  | 2 GB | 1 TB | 1 TB |
-| Havuz başına en fazla depolama boyutu | 156 GB | 4 TB | 4 TB |
-| Veritabanı başına en fazla eDTU | 5 | 3000 | 4000 |
-| Havuz başına en fazla eDTU | 1600 | 3000 | 4000 |
-| Havuz başına en fazla veritabanı sayısı | 500  | 500 | 100 |
-|||||
+| **Veritabanı başına en fazla depolama boyutu**  | 2 GB | 1 TB | 1 TB |
+| **Havuz başına en fazla depolama boyutu** | 156 GB | 4 TB | 4 TB |
+| **Veritabanı başına en fazla eDTU** | 5 | 3000 | 4000 |
+| **Havuz başına en fazla eDTU** | 1600 | 3000 | 4000 |
+| **Havuz başına en fazla veritabanı sayısı** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
 > Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeleri ve ABD Devlet Merkezi. Bu bölgelerde, Premium katmanda en fazla depolama alanı 1 TB ile sınırlıdır.  Daha fazla bilgi için bkz. [P11-P15 geçerli sınırlamalar](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
@@ -112,7 +109,7 @@ Veritabanı "ölçek faktörü" temelinde boyutlandırılır. Ölçek faktörü 
 
 İş yükü, aşağıdaki tabloda gösterildiği gibi dokuz işlem türünden oluşur. Her işlem, veritabanı altyapısı ve sistem donanımında belirli bir sistem özellikleri kümesini, diğer işlemlerden yüksek karşıtlığa göre vurgulamak için tasarlanmıştır. Bu yaklaşım, farklı bileşenlerin genel performansa etkilerini değerlendirmeyi kolaylaştırır. Örneğin, "okuma ağır" işlemi diskten önemli sayıda okuma işlemi üretir.
 
-| İşlem Türü | Açıklama |
+| İşlem Türü | Description |
 | --- | --- |
 | Lite 'ı oku |SEÇIN bellek içi; salt okunurdur |
 | Ortamı oku |SEÇIN genellikle bellek içi; salt okunurdur |

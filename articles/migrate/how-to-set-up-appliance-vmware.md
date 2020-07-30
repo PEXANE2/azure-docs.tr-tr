@@ -3,12 +3,12 @@ title: VMware için Azure geçişi gereci ayarlama
 description: VMware VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24ba978d776da375b417fb67823651727836cb22
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112825"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386750"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM 'Leri için bir gereç ayarlama
 
@@ -34,7 +34,7 @@ Bir OVA şablonunu kullanarak gereci ayarlamak için:
 ## <a name="download-the-ova-template"></a>OVA şablonunu indirin
 
 1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet 'e**tıklayın.
+2. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet**' e tıklayın.
 3. .OVA şablon dosyasını indirmek için **İndir**’e tıklayın.
 
   ![OVA dosyasını indirme seçimleri](./media/tutorial-assess-vmware/download-ova.png)
@@ -89,7 +89,7 @@ Gereci ilk kez ayarlayın. Gereci bir OVA şablonu yerine bir komut dosyası kul
         - Yalnızca HTTP proxy’si desteklenir.
     - **Zaman eşitleme**: Saat doğrulandı. Bulmanın düzgün çalışması için gerecin Internet saatine eşit olması gerekir.
     - **Güncelleştirmeleri yükleme**: Azure geçişi, en son gereç güncelleştirmelerinin yüklü olduğunu denetler.
-    - **VDDK 'Yi yükleme**: Azure geçişi, VMware vSphere sanal disk geliştirme seti 'nın (VDDK) yüklü olduğunu denetler.
+    - **VDDK 'Yi yükleme**: Azure geçişi VMware vSphere sanal disk geliştirme seti 'nın (VDDK) yüklü olduğunu denetler.
         - Azure geçişi, Azure 'a geçiş sırasında makineleri çoğaltmak için VDDK 'yi kullanır.
         - VMware 'den VDDK 6,7 ' i indirin ve indirilen ZIP içeriğini gereç üzerindeki belirtilen konuma ayıklayın.
 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 84166e5523cdbdb9ccebf9a0cbfc5e4dee0eb9e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981337"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387141"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve Azure CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQ
 - TDE için kullanmak üzere bir Azure Key Vault ve anahtar oluşturun.
   - [Donanım güvenlik modülü (HSM) ve Key Vault kullanımı için yönergeler](../../key-vault/keys/hsm-protected-keys.md)
     - Anahtar Kasası, TDE için aşağıdaki özelliğe sahip olmalıdır:
-  - [geçici-silme](../../key-vault/general/overview-soft-delete.md) ve Temizleme koruması
+  - [geçici-silme](../../key-vault/general/soft-delete-overview.md) ve Temizleme koruması
 - Anahtar, TDE için kullanılacak aşağıdaki özniteliklere sahip olmalıdır:
   - Sona erme tarihi yok
   - Devre dışı değil

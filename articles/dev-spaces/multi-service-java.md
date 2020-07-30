@@ -5,12 +5,13 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmeti 'nde çok sunuculu bir Java uygulamasında hata ayıklamak için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: beab91964cab9938a5d63584089326bb408f6efc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-java
+ms.openlocfilehash: 95bcc0b25ba937b8db96f006adf80226dee99968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438323"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374261"
 ---
 # <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: Java ve Azure Dev Spaces ile Visual Studio Code
 
@@ -65,7 +66,7 @@ Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://gi
 
 ### <a name="debug-across-multiple-services"></a>Birden çok hizmette hata ayıklama
 1. Bu noktada, `mywebapi` hizmetinin hata ayıklayıcısı ekli bir şekilde çalışmaya devam ediyor olması gerekir. Devam etmiyorsa, `mywebapi` projesinde F5'e basın.
-1. Proje `index()` yönteminde, `mywebapi` [ `Application.java` 19. satırda](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19) bir kesme noktası ayarlayın
+1. `index()` `mywebapi` Proje yönteminde, [ `Application.java` 19. satırda](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19) bir kesme noktası ayarlayın
 1. `webfrontend` projesinde, `mywebapi` konumuna GET isteği göndermeden hemen önce, `try` ile başlayan satırda bir kesme noktası ayarlayın.
 1. `webfrontend` projesinde F5’e basın (veya o sırada çalışıyorsa, hata ayıklayıcıyı yeniden başlatın).
 1. Web uygulamasını çağırın ve her iki hizmette de kodun üzerinden geçin.

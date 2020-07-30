@@ -3,12 +3,13 @@ title: Azure Relay node API 'Lerine genel bakış | Microsoft Docs
 description: Bu makalede Azure Relay hizmeti için Node.js API 'sine genel bakış sunulmaktadır. Ayrıca HYCO-WS düğüm paketinin nasıl kullanılacağını gösterir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 71faa2ee143488483aff4300152aab6d1e2b2a88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316736"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386257"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Geçiş Karma Bağlantılar node API 'sine genel bakış
 
@@ -120,7 +121,7 @@ Oluşturucu bağımsız değişkenleri:
 - `server`(gerekli)-genellikle WebSocket. createRelayListenUri () yardımcı yöntemiyle oluşturulan bir karma bağlantı adı için tam URI.
 - `token`(gerekli)-bu bağımsız değişken, önceden verilen bir belirteç dizesini veya böyle bir belirteç dizesini elde etmek için çağrılabilecek bir geri çağırma işlevini barındırır. Belirteç yenilemeyi sağladığından geri çağırma seçeneği tercih edilir.
 
-#### <a name="events"></a>Olaylar
+#### <a name="events"></a>Ekinlikler
 
 `RelayedServer`örnekler, gelen istekleri işleyebilmeniz, bağlantılar oluşturmanız ve hata koşullarını algılamanıza olanak tanıyan üç olay yayar. `connect`İletileri işlemek için olaya abone olmanız gerekir. 
 
@@ -199,5 +200,5 @@ WebSocket.relayedConnect(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Relay hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
-* [Azure Geçiş nedir?](relay-what-is-it.md)
+* [Azure Relay nedir?](relay-what-is-it.md)
 * [Kullanılabilir geçiş API 'Leri](relay-api-overview.md)

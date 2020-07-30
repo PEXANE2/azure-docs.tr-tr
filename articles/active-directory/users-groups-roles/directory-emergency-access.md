@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338289"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421731"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD 'de acil durum erişim hesaplarını yönetme
 
@@ -56,7 +56,7 @@ Ancak, acil durum erişim hesaplarınızdan en az birinin, diğer acil olmayan h
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Koşullu erişim ilkelerinden en az bir hesabı hariç tut
 
-Acil bir durum sırasında, bir ilkenin sorunu çözmesi için erişiminizi engelleyebileceği bir ilke istemezsiniz. Tüm koşullu erişim ilkelerinden en az bir acil durum erişim hesabı dışlanmalıdır. Bir [temel ilkesi](../conditional-access/baseline-protection.md)etkinleştirdiyseniz, acil durum erişim hesaplarınızı dışlayamazsınız.
+Acil bir durum sırasında, bir ilkenin sorunu çözmesi için erişiminizi engelleyebileceği bir ilke istemezsiniz. Tüm koşullu erişim ilkelerinden en az bir acil durum erişim hesabı dışlanmalıdır.
 
 ## <a name="federation-guidance"></a>Federasyon Kılavuzu
 
@@ -109,14 +109,14 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 
         ![Uyarı mantığı](./media/directory-emergency-access/alert-image2.png)
 
-    1. **Done** (Bitti) öğesini seçin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
+    1. **Bitti**'yi seçin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
 1. Uyarı tarafından bildirilecek Kullanıcı bir eylem grubu seçin. Bir tane oluşturmak isterseniz, bkz. [eylem grubu oluşturma](#create-an-action-group).
 1. Eylem grubunun üyelerine gönderilen e-posta bildirimini özelleştirmek için, **eylemleri Özelleştir**altında Eylemler ' i seçin.
 1. **Uyarı ayrıntıları**' nın altında, uyarı kuralı adını belirtin ve isteğe bağlı bir açıklama ekleyin.
 1. Etkinliğin **önem derecesi düzeyini** ayarlayın. Bunu **kritik (sev 0)** olarak ayarlamanızı öneririz.
 1. **Oluşturma sonrasında kuralı etkinleştir**altında, **Evet**olarak ayarlayın.
 1. Uyarıları bir süredir devre dışı bırakmak için **uyarıları bastır** onay kutusunu seçin ve uyarı vermeden önce bekleme süresini girip **Kaydet**' i seçin.
-1. **Uyarı kuralı oluştur**' a tıklayın.
+1. **Uyarı kuralı oluştur**’a tıklayın.
 
 ### <a name="create-an-action-group"></a>Bir eylem grubu oluşturun
 

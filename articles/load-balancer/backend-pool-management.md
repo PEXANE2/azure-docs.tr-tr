@@ -8,19 +8,19 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 7fe7c1473579c62b110548a2c5e98f9bdfaf6bf9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1ab0fd2ff4a2105cdfc4a19b7307cd9817878156
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131472"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421799"
 ---
 # <a name="backend-pool-management"></a>Arka uç havuzu yönetimi
 Arka uç havuzu, yük dengeleyicinin kritik bir bileşenidir. Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak kaynak grubunu tanımlar.
 
 Arka uç havuzunu yapılandırmanın iki yolu vardır:
 * Ağ arabirimi kartı (NIC)
-* Birleşik IP adresi ve sanal ağ (VNET) kaynak KIMLIĞI
+* IP adresi ve sanal ağ (VNET) kaynak KIMLIĞI birleşimi
 
 Mevcut sanal makineleri ve sanal makine ölçek kümelerini kullanırken arka uç havuzunuzu NIC ile yapılandırın. Bu yöntem, kaynağınız ile arka uç havuzu arasındaki en doğrudan bağlantıyı oluşturur. 
 

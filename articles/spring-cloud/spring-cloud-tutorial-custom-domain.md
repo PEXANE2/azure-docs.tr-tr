@@ -7,19 +7,19 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 426336802f55b5f68d8c3e04cdb932b984c2adc7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037228"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374210"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
-Dağıtılmış ad hizmeti (DNS), ağ düğümü adlarını ağ genelinde depolamanın bir tekniğidir. Bu öğretici, CNAME kaydı kullanarak www.contoso.com gibi bir etki alanını eşler. Özel etki alanının bir sertifikayla güvenliğini sağlar ve Güvenli Yuva Katmanı (SSL) olarak da bilinen Aktarım Katmanı Güvenliği 'ni (TLS) nasıl zorunlu hale kullanabileceğinizi gösterir. 
+Etki alanı adı hizmeti (DNS), ağ düğümü adlarını ağ genelinde depolamanın bir tekniğidir. Bu öğretici, CNAME kaydı kullanarak www.contoso.com gibi bir etki alanını eşler. Özel etki alanının bir sertifikayla güvenliğini sağlar ve Güvenli Yuva Katmanı (SSL) olarak da bilinen Aktarım Katmanı Güvenliği 'ni (TLS) nasıl zorunlu hale kullanabileceğinizi gösterir. 
 
 Sertifikalar Web trafiğini şifreler. Bu TLS/SSL sertifikaları, Azure Key Vault depolanabilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure yay bulutuna dağıtılan bir uygulama (bkz. [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart-launch-app-portal.md)veya mevcut bir uygulamayı kullanma).
 * GoDaddy gibi etki alanı sağlayıcısı için DNS kayıt defterine erişimi olan bir etki alanı adı.
 * Bir üçüncü taraf sağlayıcıdan özel bir sertifika (otomatik olarak imzalanan sertifikanız). Sertifika, etki alanıyla aynı olmalıdır.

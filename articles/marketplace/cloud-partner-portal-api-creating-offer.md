@@ -6,16 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292952"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420235"
 ---
-<a name="create-or-modify-an-offer"></a>Teklifi oluşturma veya değiştirme
-=========================
+# <a name="create-or-modify-an-offer"></a>Teklifi oluşturma veya değiştirme
 
 > [!NOTE]
 > Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
@@ -24,9 +23,7 @@ Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir ve
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
-
-<a name="uri-parameters"></a>URI parametreleri
---------------
+## <a name="uri-parameters"></a>URI parametreleri
 
 |  **Ad**         |  **Açıklama**                      |  **Veri türü**  |
 |  --------         |  ----------------                     |  -------------  |
@@ -35,8 +32,7 @@ Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir ve
 | api-sürümü       |  API 'nin en son sürümü            |   Tarih           |
 |  |  |  |
 
-<a name="header"></a>Üst bilgi
-------
+## <a name="header"></a>Üst bilgi
 
 |  **Ad**        |  **Değer**               |
 |  ---------       |  ----------              | 
@@ -44,9 +40,7 @@ Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir ve
 | Yetkilendirme    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
-
-<a name="body-example"></a>Gövde örneği
-------------
+## <a name="body-example"></a>Gövde örneği
 
 Aşağıdaki örnek OfferId ile bir teklif oluşturur `contosovirtualmachine` .
 
@@ -143,7 +137,6 @@ Aşağıdaki örnek OfferId ile bir teklif oluşturur `contosovirtualmachine` .
       "version": 5
   }
 ```
-
 
 ### <a name="response"></a>Yanıt
 
@@ -268,7 +261,6 @@ Aşağıdaki örnek OfferId ile bir teklif oluşturur `contosovirtualmachine` .
 > [!NOTE]
 > Bu teklifi değiştirmek için yukarıdaki isteğe bir **IF-Match** üst bilgisini * olarak ayarlayın. Yukarıdaki gibi aynı istek gövdesini kullanın, ancak değerleri istediğiniz şekilde değiştirin. 
 
-
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
 | **Kod**  |  **Açıklama**                                                                            |
@@ -281,8 +273,275 @@ Aşağıdaki örnek OfferId ile bir teklif oluşturur `contosovirtualmachine` .
 |  412      | Sunucu istekte bulunan istekten birini karşılamıyor. İstemci, istekle gönderilen ETAG öğesini denetlemelidir. |
 |  |  |
 
-
-<a name="uploading-artifacts"></a>Yapıtlar karşıya yükleniyor
--------------------
+## <a name="uploading-artifacts"></a>Yapıtlar karşıya yükleniyor
 
 Görüntüler ve amblemler gibi yapıtlar, Web üzerinde erişilebilir bir konuma karşıya yükleyerek ve ardından her biri, yukarıdaki örnekte olduğu gibi, PUT isteğinde bir URI olarak dahil olmak üzere paylaşılmalıdır. Sistem bu dosyaların Azure Market depolamada mevcut olup olmadığı tespit eder ve bu dosyaları depolama alanına indirir.  Sonuç olarak, gelecekteki GET isteklerinin bu dosyalar için bir Azure Market hizmeti URL 'SI döndürabileceğini görürsünüz.
+
+## <a name="categories-and-industries"></a>Kategoriler ve endüstriler
+
+Yeni bir teklif oluştururken, Market 'te teklifiniz için bir kategori belirtmeniz gerekir. İsteğe bağlı olarak, bazı teklif türleri için sektörlerin de belirtebilirsiniz. Teklif türüne bağlı olarak, aşağıdaki tablolardaki belirli anahtar değerlerini kullanarak teklif için geçerli olan kategorileri/endüstrileri sağlayın.
+
+### <a name="azure-marketplace-categories"></a>Azure Market Kategorileri
+
+Bu kategoriler ve ilgili anahtarları Azure uygulamaları, sanal makineler, çekirdek sanal makineler, kapsayıcılar, kapsayıcı uygulamaları, IoT Edge modüller ve SaaS teklif türleri için geçerlidir. Kalın italik ( ***analiz***gibi) öğeler Kategoriler ve standart metin öğeleri (Data-Insights gibi) bunların alt kategorileridir. Boşluk veya büyük harfleri değiştirmeden tam anahtar değerlerini kullanın.
+
+| Kategori | SaaS tuşları | Azure uygulama anahtarları | Sanal makine, kapsayıcılar, kapsayıcı uygulamaları, IoT Edge modülü, çekirdek sanal makine anahtarları |
+| --- | --- | --- | --- |
+| ***Analiz*** | ***analiz*** | ***Analytics-Azure-uygulamalar*** | ***Analiz-amp*** |
+| Veri öngörüleri | veri öngörüleri | veri öngörüleri | veri öngörüleri |
+| Veri Analizi | Veri Analizi | Veri Analizi | Veri Analizi |
+| Büyük Veri | büyük veri | bigData | büyük veri |
+| Tahmine Dayalı Analiz | tahmine dayalı analiz | tahmine dayalı analiz | tahmine dayalı analiz |
+| Gerçek zamanlı/Akış Analizi | gerçek zamanlı Akış Analizi | gerçek zamanlı Akış Analizi | gerçek zamanlı Akış Analizi |
+| Diğer | diğer | diğer analiz | diğer |
+| ***Yapay Zeka ve Makine Öğrenmesi*** | ***ArtificialIntelligence*** | ***AI-Plus-makine öğrenimi*** | ***AI-Plus-makine öğrenimi*** |
+| Bot Hizmetleri | bot-hizmetler | bot-hizmetler | bot-hizmetler |
+| Bilişsel Hizmetler | bilişsel hizmetler | bilişsel hizmetler | bilişsel hizmetler |
+| ML hizmeti | ml-hizmeti | ml-hizmeti | ml-hizmeti |
+| Otomatikleştirilmiş ML | otomatikleştirilen-ml | otomatikleştirilen-ml | otomatikleştirilen-ml |
+| İş/robot Işlem Otomasyonu | iş-robot-işlem-otomasyon | iş-robot-işlem-otomasyon | iş-robot-işlem-otomasyon |
+| Veri etiketlemeyi | veri etiketlemeyi | veri etiketlemeyi | veri etiketlemeyi |
+| Veri Hazırlama | veri hazırlama | veri hazırlama | veri hazırlama |
+| Bilgi madenciliği | bilgi-araştırma | bilgi-araştırma | bilgi-araştırma |
+| ML Işlemleri | ml-işlemler | ml-işlemler | ml-işlemler |
+| Diğer | diğer-AI-Plus-makine öğrenimi | diğer | diğer |
+| ***Blok zinciri*** | ***blok zinciri*** | ***blok zinciri*** | ***blok zinciri*** |
+| Uygulama hızlandırıcıları | uygulama-Hızlandırıcılar | uygulama-Hızlandırıcılar | uygulama-Hızlandırıcılar |
+| Tek düğümlü defter | tek düğümlü-defter | tek düğümlü-defter | tek düğümlü-defter |
+| Çok düğümlü defter | çok düğümlü-defter | çok düğümlü-defter | çok düğümlü-defter |
+| Araçlar | araçlar | araçlar | araçlar |
+| Diğer | diğer | diğer | diğer |
+| ***İşlem*** | ***işlem-SaaS*** | ***işlem-Azure-uygulamalar*** | ***hesaplamasını*** |
+| Uygulama altyapısı | appInfra | Appınfrastructure | uygulama altyapısı |
+| İşletim Sistemleri | clientOS | clientOS | işletim sistemleri |
+| Önbellek | cache | cache | cache |
+| Diğer | diğer işlem | diğer işlem | diğer |
+| ***Kapsayıcılar*** | ***kapsayıcıları*** | ***kapsayıcıları*** | ***kapsayıcıları*** |
+| Kapsayıcı uygulamaları | kapsayıcı-uygulamalar | kapsayıcı-uygulamalar | kapsayıcı-uygulamalar |
+| Kapsayıcı görüntüleri | kapsayıcı-görüntüler | kapsayıcı-görüntüler | kapsayıcı-görüntüler |
+| Kapsayıcıları kullanmaya başlama | ile çalışmaya başlama-kapsayıcılar | ile çalışmaya başlama-kapsayıcılar | ile çalışmaya başlama-kapsayıcılar |
+| Diğer | diğer | diğer | diğer |
+| ***Veritabanları*** | ***veritabanları-SaaS*** | ***veritabanınızı*** | ***erişebileceğiniz*** |
+| NoSQL veritabanları | NoSQL veritabanları | NoSQL veritabanları | NoSQL veritabanları |
+| İlişkisel Veritabanları | ilişkisel veritabanları | ilişkisel veritabanları | ilişkisel veritabanları |
+| Muhasebe/blok zinciri veritabanları | muhasebe-blok zinciri-veritabanları | muhasebe-blok zinciri-veritabanları | muhasebe-blok zinciri-veritabanları |
+| Veri Lakes | veri-Lakes | veri-Lakes | veri-Lakes |
+| Veri Ambarı | veri ambarı | veri ambarı | veri ambarı |
+| Diğer | diğer veritabanları | diğer veritabanları | diğer |
+| ***Geliştirici Araçları*** | ***Geliştirici-Araçlar-SaaS*** | ***Geliştirici-Araçlar-Azure-uygulamalar*** | ***geliştirici araçları*** |
+| Araçlar | Araçlar-Geliştirici-Araçlar | Araçlar-Geliştirici-Araçlar | Araçlar-Geliştirici-Araçlar |
+| Betikler | betikler | betikler | betikler |
+| Geliştirici hizmeti | devService | devService | geliştirici-hizmet |
+| Diğer | Diğer geliştirici araçları | Diğer geliştirici araçları | diğer |
+| ***DevOps*** | ***DevOps*** | ***DevOps*** | ***DevOps*** |
+| Diğer | diğer | diğer | diğer |
+| ***Kimlik*** | ***IDENTITY*** | ***IDENTITY*** | ***IDENTITY*** |
+| Erişim yönetimi | erişim-yönetim | erişim-yönetim | erişim-yönetim |
+| Diğer | diğer | diğer | diğer |
+| ***Tümleştirme*** | ***Tümleştirme*** | ***Tümleştirme*** | ***Tümleştirme*** |
+| Mesajlaşma | gönderip | gönderip | gönderip |
+| Diğer | diğer | diğer | diğer |
+| ***Nesnelerin İnterneti*** | ***IoT*** | ***Nesnelerin İnterneti-Azure-Apps*** | ***Nesnelerin İnterneti*** |
+| IoT Çekirdek Hizmetleri | Yok | IoT-Çekirdek Hizmetleri | IoT-Çekirdek Hizmetleri |
+| IoT Edge modüller | Yok | IoT-Edge-modüller | IoT-Edge-modüller |
+| IoT çözümleri | IoT-çözümler | IoT-çözümler | IoT-çözümler |
+| Veri Analizi & görselleştirme | veri analizi ve görselleştirme | veri analizi ve görselleştirme | veri analizi ve görselleştirme |
+| IoT bağlantısı | IoT-bağlantı | IoT-bağlantı | IoT-bağlantı |
+| Diğer | diğer-çeşitli şeyler | diğer-çeşitli şeyler | diğer |
+| ***BT & yönetim araçları*** | ***ITandAdministration*** | ***BT-ve-yönetim-araçlar-Azure-uygulamalar*** | ***BT ve yönetim araçları*** |
+| Yönetim Çözümleri | Yönetim-çözümler | Yönetim-çözümler | Yönetim-çözümler |
+| İş Uygulamaları | businessApplication | businessApplication | iş uygulamaları |
+| Diğer | diğer BT yönetimi araçları | diğer BT yönetimi araçları | diğer |
+| ***& tanılamayı izleme*** | ***izleme ve tanılama*** | ***izleme ve tanılama*** | ***izleme ve tanılama*** |
+| Diğer | diğer | diğer | diğer |
+| ***Medya*** | ***medyasını*** | ***medyasını*** | ***medyasını*** |
+| Media Services | media-services | media-services | media-services |
+| Content Protection | içerik koruma | içerik koruma | içerik koruma |
+| Isteğe bağlı akış & canlı | canlı ve isteğe bağlı akış | canlı ve isteğe bağlı akış | canlı ve isteğe bağlı akış |
+| Diğer | diğer | diğer | diğer |
+| ***Geçiş*** | ***geçiş*** | ***geçiş*** | ***geçiş*** |
+| Veri Taşıma | veri geçişi | veri geçişi | veri geçişi |
+| Diğer | diğer | diğer | diğer |
+| ***Karma Gerçeklik*** | ***Karma Gerçeklik*** | ***Karma Gerçeklik*** | ***Karma Gerçeklik*** |
+| Diğer | diğer | diğer | diğer |
+| ***Ağ*** | ***işlemleri*** | ***işlemleri*** | ***işlemleri*** |
+| Gereç yöneticileri | Gereç-Yöneticiler | Gereç-Yöneticiler | Gereç-Yöneticiler |
+| Bağlantı | bağlantı | bağlantı | bağlantı |
+| Güvenlik duvarları | duvar | duvar | duvar |
+| Yük Dengeleyiciler | yük dengeleyiciler | yük dengeleyiciler | yük dengeleyiciler |
+| Diğer | diğer | diğer | diğer |
+| ***Güvenlik*** | ***güven*** | ***güven*** | ***güven*** |
+| Kimlik & erişim yönetimi | kimlik ve erişim yönetimi | kimlik ve erişim yönetimi | kimlik ve erişim yönetimi |
+| Tehdit Koruması | tehdit koruması | tehdit koruması | tehdit koruması |
+| Information Protection | bilgi koruma | bilgi koruma | bilgi koruma |
+| Diğer | diğer | diğer | diğer |
+| ***Depolama*** | ***depolama-SaaS*** | ***depolama-Azure-uygulamalar*** | ***Depo*** |
+| Yedekleme & kurtarma | yedekleme | yedekleme | Yedekleme ve kurtarma |
+| Kurumsal karma depolama | Kurumsal karma depolama | Kurumsal karma depolama | Kurumsal karma depolama |
+| Dosya paylaşımı | dosya paylaşımı | dosya paylaşımı | dosya paylaşımı |
+| Veri yaşam döngüsü yönetimi | veri yaşam döngüsü yönetimi | veri yaşam döngüsü yönetimi | veri yaşam döngüsü yönetimi |
+| Diğer | diğer depolama alanı | diğer depolama alanı | diğer |
+| ***Web*** | ***Web*** | ***Web*** | ***Web*** |
+| Web günlükleri & CMSs | Bloglar-ve-CMSS | Bloglar-ve-CMSS | Bloglar-ve-CMSS |
+| Başlangıç Web Apps | Starter-Web-Apps | Starter-Web-Apps | Starter-Web-Apps |
+| E-ticaret | e-ticaret | e-ticaret | e-ticaret |
+| Web Apps çerçeveler | Web uygulamaları-çerçeveler | Web uygulamaları-çerçeveler | Web uygulamaları-çerçeveler |
+| Web Apps | Web uygulamaları | Web uygulamaları | Web uygulamaları |
+| Diğer | diğer | diğer | diğer |
+||||
+
+### <a name="microsoft-appsource-categories"></a>Microsoft AppSource kategorileri
+
+Bu kategoriler ve ilgili anahtarları SaaS, PowerBI uygulaması, Dynamics 365 İş Merkezi, müşteri katılımı için Dynamics 365 ve işlem teklifi türleri için Dynamics 365 için geçerlidir. Kalın italik ( ***analiz***gibi) öğeleri Kategoriler ve standart metin öğeleri (gelişmiş analiz gibi) bunların alt kategorileridir. Boşluk veya büyük harfleri değiştirmeden tam anahtar değerlerini kullanın.
+
+| Kategori | SaaS tuşları | Dynamics 365 İş Merkezi, müşteri katılımı için Dynamics 365, işlem anahtarları için Dynamics 365 | PowerBI uygulama anahtarları |
+| --- | --- | --- | --- |
+| ***Analiz*** | ***analiz*** | ***Analiz*** | ***Analiz*** |
+| Gelişmiş Analiz | Gelişmiş-analiz | Gelişmiş-analiz | Gelişmiş-analiz |
+| Görselleştirme & raporlama | görselleştirme-raporlama | görselleştirme-raporlama | görselleştirme-raporlama |
+| Diğer | diğer | diğer analiz | diğer analiz |
+| ***Yapay Zeka ve Makine Öğrenmesi*** | ***ArtificialIntelligence*** | ***AI-Plus-Machine-Learning-Dynamics*** | ***AI-Plus-makine-öğrenme-appsource*** |
+| Iş için AI | iş için AI | iş için AI | iş için AI |
+| Bot uygulamaları | bot-uygulamalar | bot-uygulamalar | bot-uygulamalar |
+| Diğer | diğer-AI-Plus-makine öğrenimi | diğer-AI-Plus-makine öğrenimi | diğer-AI-Plus-makine öğrenimi |
+| ***İşbirliği*** | ***İşbirliği*** | ***İşbirliği*** | ***iş*** |
+| & kişilerle iletişim kurun | kişi-kişiler | kişi-kişiler | kişi ve kişiler |
+| Toplantı Yönetimi | Toplantı-yönetim | Toplantı-yönetim | Toplantı-yönetim |
+| Site tasarımı & yönetimi | Site-Tasarım-yönetim | Site-Tasarım-yönetim | site tasarımı ve yönetimi |
+| Görev & proje yönetimi | görev-proje-yönetim | görev-proje-yönetim | görev-ve-proje-yönetim |
+| Sesli & görüntülü konferans | ses video konferansı | ses video konferansı | Ses ve video konferansı |
+| Diğer | diğer işbirliği | diğer işbirliği | diğer |
+| ***Uyumluluk & yasal*** | ***Uyumluluk*** | ***Uyumluluk*** | ***Uyumluluk-ve-yasal*** |
+| Vergi & denetimi | Vergi-Denetim | Vergi-Denetim | vergi ve-denetim |
+| Yasal Bildirim | Yasal Bildirim | Yasal Bildirim | kanun |
+| Veri, Idare & gizliliği | veri yönetimi-Gizlilik | veri yönetimi-Gizlilik | veri yönetimi ve Gizlilik |
+| Sistem durumu & güvenliği | sistem durumu-güvenlik | sistem durumu-güvenlik | sistem durumu ve güvenlik |
+| Diğer | diğer-uyumluluk-yasal | diğer-uyumluluk-yasal | diğer |
+| ***Customer Service*** | ***CustomerService*** | ***CustomerService*** | ***müşteri-hizmet*** |
+| Kişi Merkezi | İletişim Merkezi | İletişim Merkezi | İletişim Merkezi |
+| Yüz yüze hizmet | yüz yüze hizmet | yüz yüze hizmet | yüz yüze hizmet |
+| Arka ofis & çalışan hizmeti | arka ofis-çalışan-hizmet | arka ofis-çalışan-hizmet | arka ofis-ve-Employee-Service |
+| Bilgi & durum yönetimi | bilgi talebi-yönetim | bilgi talebi-yönetim | bilgi ve durum yönetimi |
+| Sosyal medya & omnichannel katılımı | Sosyal medya-omnichannel-katılım | Sosyal medya-omnichannel-katılım | Sosyal medya-ve-omnichannel-katılım |
+| Diğer | diğer müşteri hizmetleri | diğer müşteri hizmetleri | diğer |
+| ***Finans*** | ***Finans*** | ***Finans*** | ***Vade*** |
+| Muhasebe | accounting (muhasebe) | accounting (muhasebe) | accounting (muhasebe) |
+| Varlık Yönetimi | varlık yönetimi | varlık yönetimi | varlık yönetimi |
+| Analiz, birleştirme & raporlama | Analiz-birleştirme-raporlama | Analiz-birleştirme-raporlama | Analiz-birleştirme-ve-raporlama |
+| & koleksiyonları kredi | Kredi-Koleksiyonlar | Kredi-Koleksiyonlar | kredi ve koleksiyonlar |
+| Uyumluluk & risk yönetimi | Uyumluluk-risk yönetimi | Uyumluluk-risk yönetimi | Uyumluluk ve risk yönetimi |
+| Diğer | diğer finans | diğer finans | diğer |
+| ***Human Resources*** | ***Insankaynakları*** | ***Insankaynakları*** | ***insan kaynakları*** |
+| Taödünme alma | taödünçi alma | taödünçi alma | taödünçi alma |
+| Taödünme yönetimi | taödünme yönetimi | taödünme yönetimi | taödünme yönetimi |
+| HR Işlemleri | HR-işlemler | HR-işlemler | HR-işlemler |
+| İş gücü planlama & Analizi | iş gücü-planlama-analiz | iş gücü-planlama-analiz | iş gücü-planlama ve analiz |
+| Diğer | diğer insan kaynakları | diğer insan kaynakları | diğer |
+| ***Nesnelerin İnterneti*** | ***IoT*** | ***Nesnelerin İnterneti-Dynamics*** | ***Nesnelerin İnterneti-appsource*** |
+| Varlık yönetimi & Işlemleri | varlık yönetimi-işlemler | varlık yönetimi-işlemler | varlık yönetimi-ve-işlemler |
+| Bağlı ürünler | bağlı-ürünler | bağlı-ürünler | bağlı-ürünler |
+| Akıllı tedarik zinciri | Akıllı tedarik zinciri | Akıllı tedarik zinciri | Akıllı tedarik zinciri |
+| Tahmine Dayalı Bakım | tahmine dayalı-bakım | tahmine dayalı-bakım | tahmine dayalı-bakım |
+| Uzaktan İzleme | Uzaktan izleme | Uzaktan izleme | Uzaktan izleme |
+| Güvenlik & güvenliği | Güvenlik-güvenlik | Güvenlik-güvenlik | Güvenlik ve güvenlik |
+| Akıllı altyapı & kaynakları | akıllı altyapı-kaynaklar | akıllı altyapı-kaynaklar | akıllı altyapı-ve-kaynaklar |
+| & hareket eden araçlar | Araçlar-taşınabilirlik | Araçlar-taşınabilirlik | Araçlar-ve-taşınabilirlik |
+| Diğer | diğer-çeşitli şeyler | diğer-çeşitli şeyler | diğer |
+| ***BT & yönetim araçları*** | ***ITandAdministration*** | ***ITandAdministration*** | ***BT ve yönetim araçları*** |
+| Yönetim Çözümleri | Yönetim-çözümler | Yönetim-çözümler | Yönetim-çözümler |
+| İş Uygulamaları | businessApplication | businessApplication | iş uygulamaları |
+| Diğer | diğer BT yönetimi araçları | diğer BT yönetimi araçları | diğer |
+| ***Pazarlama*** | ***Pazarlama*** | ***Pazarlama*** | ***lamadaki*** |
+| Bildir | bildir | bildir | bildir |
+| Analiz | analiz-pazarlama | analiz-pazarlama | analiz-pazarlama |
+| Kampanya Yönetimi & Otomasyonu | kampanya-yönetim-Otomasyon | kampanya-yönetim-Otomasyon | kampanya-yönetim-ve otomasyon |
+| E-posta pazarlama | e-posta-pazarlama | e-posta-pazarlama | e-posta-pazarlama |
+| L2-Events & kaynak yönetimi | olaylar-kaynak yönetimi | olaylar-kaynak yönetimi | olaylar-ve-kaynak yönetimi |
+| Araştırma & Analizi | araştırma Analizi | araştırma Analizi | araştırma ve analiz |
+| Sosyal medya | Sosyal medya | Sosyal medya | Sosyal medya |
+| Diğer | diğer-pazarlama | diğer-pazarlama | diğer |
+| ***Operations & tedarik zinciri*** | ***Operationssupplyzincirde*** | ***Operationssupplyzincirde*** | ***işlemler ve tedarik zinciri*** |
+| Varlık & üretim yönetimi | varlık-üretim-yönetim | varlık-üretim-yönetim | varlık-ve-üretim-yönetim |
+| Talep Tahmini | talep tahmini | talep tahmini | talep tahmini |
+| Bilgi yönetimi & bağlantısı | bilgi-yönetim-bağlantı | bilgi-yönetim-bağlantı | bilgi-yönetim ve-bağlantı |
+| Planlama, satın alma & raporlama | planlama-satın alma-raporlama | planlama-satın alma-raporlama | Planlama-ve-raporlama |
+| Quality & hizmet yönetimi | kalite-hizmet yönetimi | kalite-hizmet yönetimi | kalite ve hizmet yönetimi |
+| Satış & sipariş yönetimi | Satış siparişi yönetimi | Satış siparişi yönetimi | Satış ve sipariş yönetimi |
+| Taşıma & ambarı yönetimi | taşıma-ambar-yönetim | taşıma-ambar-yönetim | taşıma ve ambar-yönetim |
+| Diğer | diğer işlemler-tedarik zinciri | diğer işlemler-tedarik zinciri | diğer |
+| ***Üretkenlik*** | ***Üretkenlik*** | ***Üretkenlik*** | ***kişilere*** |
+| İçerik oluşturma & yönetimi | içerik oluşturma-yönetim | içerik oluşturma-yönetim | içerik oluşturma ve yönetme |
+| Dil & çevirisi | dil çevirisi | dil çevirisi | dil ve çeviri |
+| Belge Yönetimi | belge yönetimi | belge yönetimi | belge yönetimi |
+| E-posta yönetimi | e-posta yönetimi | e-posta yönetimi | e-posta yönetimi |
+| & başvuru ara | arama başvurusu | arama başvurusu | Arama ve başvuru |
+| Diğer | diğer üretkenlik | diğer üretkenlik | diğer |
+| Oyunlaştırma | Oyunlaştırma | Oyunlaştırma | oyunlaştırma |
+| ***Sales*** | ***Sales*** | ***Sales*** | ***Sales*** |
+| Telesales | Telesales | Telesales | Telesales |
+| Yapılandırma, Fiyat, teklif (CPQ) | Configure-Price-quote | Configure-Price-quote | Configure-Price-quote |
+| Anlaşma Yönetimi | Sözleşme yönetimi | Sözleşme yönetimi | Sözleşme yönetimi |
+| CRM | crm | crm | crm |
+| E-ticaret | e-ticaret | e-ticaret | e-ticaret |
+| İş verileri zenginleştirme | İşletme verileri-zenginleştirme | İşletme verileri-zenginleştirme | İşletme verileri-zenginleştirme |
+| Satış etkinleştirme | Satış-etkinleştirme | Satış-etkinleştirme | Satış-etkinleştirme |
+| Diğer | diğer-satış | diğer-satış | diğer-satış |
+| ***Coğrafi Konum*** | ***konumu*** | ***konumu*** | ***konumu*** |
+| Haritalar | maps | maps | maps |
+| Haber & Hava durumu | Haberler-ve hava durumu | Haberler-ve hava durumu | Haberler-ve hava durumu |
+| Diğer | diğer-coğrafi konum | diğer-coğrafi konum | diğer-coğrafi konum |
+||||
+
+### <a name="microsoft-appsource-industries"></a>Microsoft AppSource endüstriler
+
+Bu endüstriler ve ilgili anahtarları SaaS, PowerBI uygulaması, Dynamics 365 İş Merkezi, müşteri katılımı için Dynamics 365 ve işlem teklifi türleri için Dynamics 365 için geçerlidir. Kalın italik (örneğin, ***oto***) içindeki öğeler Kategoriler ve standart metin öğeleri (AutomotiveL2 gibi) bunların alt kategorileridir. Boşluk veya büyük harfleri değiştirmeden tam anahtar değerlerini kullanın.
+
+| Sektör | SaaS, Dynamics 365 İş Merkezi, müşteri katılımı için Dynamics 365, işlem anahtarları için Dynamics 365 | PowerBI uygulama anahtarları |
+| --- | --- | --- |
+| ***Otomotiv*** | ***Otomotiv*** | ***Otomotiv*** |
+| Otomotiv | AutomotiveL2 | AutomotiveL2 |
+| ***Tarım*** | ***Tarım*** | ***Tarım*** |
+| Diğer-kesimli | Agric, \_ diğerunkesimli | diğer-kesimli |
+| ***Dağıtım*** | ***Dağıtım*** | ***dağılı*** |
+| Toplu | Toplu | toplu |
+| Paket Gönderimi & paket dağıtımı | ParcelAndPackageShipping | paket-ve-paket-gönderim |
+| ***Eğitim*** | ***Eğitim*** | ***öğrenim*** |
+| Daha yüksek eğitim | HigherEducation | daha yüksek eğitim |
+| Birincil & Ikincil Eğitim/K-12 | PrimaryAndSecondaryEducationK12 | birincil-ve-ikincil-eğitim |
+| Kitaplıklar & Museums | Kütüphaneiesandmuseums | Kitaplıklar-ve-Museums |
+| ***Finansal Hizmetler*** | ***Mali hizmetler*** | ***Finans-hizmetler*** |
+| Bankacılık & büyük pazarlar | BankingAndCapitalMarkets | Bankacılık-ve-sermaye-pazarlar |
+| Eleri | Eleri | eleri |
+| ***Kamu*** | ***Kamu*** | ***Devlet*** |
+| Savunma & zekası | DefenseAndIntelligence | Savunma ve zeka |
+| Genel güvenlik & de | Publicsafetyandlet | Ortak Güvenlik-ve-Let |
+| Cıvilian kamu | Cıvtik Ankamu | cıvilian-kamu |
+| ***Sağlık Hizmetleri*** | ***Healthgelişme ve kullanım ömrü*** | ***Sağlık*** |
+| Sistem durumu ödemi veya | HealthPayor | Sağlık-payor |
+| Sistem durumu sağlayıcısı | HealthProvider | sistem durumu-sağlayıcı |
+| Pharmaceuticals | Pharmaceuticals | Pharmaceuticals |
+| ***& kaynaklarını üretim*** | ***Üretim*** | ***üretim-ve-kaynaklar*** |
+| Kimyasal & Agrokimyasal | ChemicalAndAgrochemical | kimyasal ve-Agrokimyasal |
+| Ayrık üretim | DiscreteManufacturing | ayrık üretim |
+| Enerji | Enerji | energy |
+| ***Perakende & tüketici malları*** | ***RetailandConsumerGoods*** | ***Perakende ve tüketici-mallar*** |
+| Tüketici malları | Consumermallar | Tüketici-mallar |
+| Tercih | Tercih | tercih |
+| ***Medya & Iletişimleri*** | ***MediaAndCommunications*** | ***Medya-ve-iletişim*** |
+| Medya & eğlence | Mediaandenterlationment | Medya-ve-eğlence |
+| Telekomünikasyon | Telekomünikasyon | Telekomünikasyon |
+| ***Profesyonel hizmetler*** | ***ProfessionalServices*** | ***profesyonel hizmetler*** |
+| Yasal Bildirim | Yasal Bildirim | kanun |
+| İş ortağı profesyonel hizmetleri | PartnerProfessionalServices | iş ortağı-profesyonel hizmetler |
+| ***Mimari & oluşturma*** | ***Mimari Tureandinşaat*** | ***mimari ve oluşturma*** |
+| Diğer-kesimli | Mimari Tureandinşaat \_ otherunkesimli | diğer-kesimli |
+| ***& yolculuğu seyahat*** | ***Hospitalityandyolculuğu*** | ***hastanlık ve seyahat*** |
+|    Oteller & boş | Hotelsandboş | oteller-ve-boş |
+| Seyahat & ulaşım | Seyahat | seyahat ve ulaşım |
+| Restoran hizmetleri & Restoranlar | Restoran Antsandağdservices | Restoranlar-ve yiyecek hizmetleri |
+| ***Diğer kamu sektörü endüstrileri*** | ***Otherpublicsectorındustries*** | ***diğer kamu sektörü-sektör*** |
+| Ormancılık & | Forestryandfçılık | Ormancılık ve balıkçılık |
+| Şartlara | Şartlara | şartlara |
+| ***Emlak*** | ***RealEstate*** | ***gerçek emlak*** |
+| Diğer-kesimli | Reatastate \_ otherunkesimli | diğer-kesimli |
+|||

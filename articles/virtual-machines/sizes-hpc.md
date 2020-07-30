@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c347f637083d8dfdf39cbd032df97bc52973465f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372578"
+ms.locfileid: "87421374"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Yüksek performanslı bilgi işlem VM boyutları
 
@@ -46,9 +46,9 @@ Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden i
 
 - **InfiniBand ve RDMA sürücüleri** -InfiniBand etkinleştirilmiş VM 'LERDE, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. SR-ıOV etkin H ve N serisi VM 'lerde, bu, Mellanox [ıbanddriverlinux sanal makine uzantısı](./extensions/hpc-compute-infiniband-linux.md) , Mellanox Ed sürücüleri yüklemek ve InfiniBand 'yi etkinleştirmek için kullanılabilir. RDMA özellikli VM Sat [HPC Iş yükleri](./workloads/hpc/overview.md)üzerinde InfiniBand 'yi etkinleştirme hakkında daha fazla bilgi edinin.
 
-Windows 'da, [ınfinibanddriverwindows VM Uzantısı](./extensions/hpc-compute-infiniband-windows.md) , RDMA bağlantısı Için Windows ağ doğrudan SÜRÜCÜLERINI (SR-IOV olmayan VM 'lerde) veya (SR-IOV VM 'lerinde) A8 ve A9 örneklerinin bazı dağıtımlarında, HpcVmDrivers uzantısı otomatik olarak eklenir. HpcVmDrivers VM uzantısının kullanım dışı olduğunu unutmayın; güncellenmeyecektir.
+   Windows 'da, [ınfinibanddriverwindows VM Uzantısı](./extensions/hpc-compute-infiniband-windows.md) , RDMA bağlantısı Için Windows ağ doğrudan SÜRÜCÜLERINI (SR-IOV olmayan VM 'lerde) veya (SR-IOV VM 'lerinde) A8 ve A9 örneklerinin bazı dağıtımlarında, HpcVmDrivers uzantısı otomatik olarak eklenir. HpcVmDrivers VM uzantısının kullanım dışı olduğunu unutmayın; güncellenmeyecektir.
 
-VM uzantısını bir VM 'ye eklemek için [Azure PowerShell](/powershell/azure/) cmdlet 'lerini kullanabilirsiniz. Daha fazla bilgi için bkz. [sanal makine uzantıları ve özellikleri](./extensions/overview.md). [Klasik dağıtım modelinde](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)dağıtılan VM 'ler için uzantılara de çalışabilirsiniz.
+   VM uzantısını bir VM 'ye eklemek için [Azure PowerShell](/powershell/azure/) cmdlet 'lerini kullanabilirsiniz. Daha fazla bilgi için bkz. [sanal makine uzantıları ve özellikleri](./extensions/overview.md). [Klasik dağıtım modelinde](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)dağıtılan VM 'ler için uzantılara de çalışabilirsiniz.
 
 - **MPI** -Azure 'daki SR-ıOV etkin VM boyutları (HBv2, HB, HC, NCv3, NDv2), her türlü MPI 'ın Mellanox ile kullanılmasına izin verir.
 SR-ıOV olmayan VM 'lerde desteklenen MPı uygulamaları, VM 'Ler arasında iletişim kurmak için Microsoft ağ doğrudan (ND) arabirimini kullanır. Bu nedenle, yalnızca Microsoft MPı (MS-MPı) 2012 R2 veya üzeri ve Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir.
@@ -98,6 +98,6 @@ Azure, RDMA ağını kullanarak iletişim kurabilen Windows HPC VM kümeleri olu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- HPC uygulamanızı Azure için iyileştirme ve [HPC Iş yüklerinde](./workloads/hpc/overview.md) bazı örnekler hakkında daha fazla bilgi edinin 
+- Hpc uygulamalarınızı Azure için iyileştirme ve [HPC Iş yüklerinde](./workloads/hpc/overview.md)bazı örnekler hakkında daha fazla bilgi edinin.
 
-- Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
+- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.

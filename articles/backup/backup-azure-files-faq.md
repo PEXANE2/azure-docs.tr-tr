@@ -3,12 +3,12 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054964"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382721"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -34,13 +34,13 @@ Evet. Eşitleme gruplarına bağlanan Azure dosya paylaşımlarının koruması 
 
 Yedeklemeye çalışırken, BT içindeki dosya paylaşımlarını bulacak bir depolama hesabı seçmek, depolama hesabını bunun yapıldığı kasaya kaydeder. Dosya paylaşımlarını farklı bir kasala korumayı seçerseniz, seçili depolama hesabının kaydını bu kasadan [silin](manage-afs-backup.md#unregister-a-storage-account) .
 
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Dosya paylaşımının yedeklemesini yapılandırmak için kasayı neden değiştiremiyorum?
+
+Depolama hesabı zaten bir kasaya kaydedilmişse veya depolama hesabındaki diğer dosya paylaşımları bir kasa kullanılarak korunuyorsa, bir depolama hesabındaki tüm dosya paylaşımları yalnızca aynı kasa tarafından korunabilecek şekilde değiştirme seçeneği verilmemiş demektir. Kasayı değiştirmek istediğiniz durumlarda, bağlı kasadan [depolama hesabındaki tüm dosya paylaşımlarının korumasını durdurmanız](manage-afs-backup.md#stop-protection-on-a-file-share) , depolama hesabının [kaydını](manage-afs-backup.md#unregister-a-storage-account) kaldırmanız ve ardından koruma için farklı bir kasa seçmeniz gerekir.
+
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Dosya Paylaşımlarımı yedeklemediğim kasayı değiştirebilir miyim?
 
 Evet. Bununla birlikte, bağlı kasadan [dosya paylaşımında korumayı durdurmanız](manage-afs-backup.md#stop-protection-on-a-file-share) , bu depolama hesabının [kaydını](manage-afs-backup.md#unregister-a-storage-account) kaldırmanız ve ardından farklı bir kasadan korumanız gerekir.
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Kasada kaç tane Azure dosya paylaşımını koruyabilirim?
-
-Azure dosya paylaşımlarını her kasa için 50 depolama hesabından koruyabilirsiniz. Tek bir kasada en fazla 200 Azure dosya paylaşımını koruyabilirsiniz.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Aynı Depolama Hesabından, farklı Kasalara iki farklı dosya paylaşımını koruyabilir miyim?
 

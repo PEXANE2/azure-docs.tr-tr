@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c4e3e3e3b6aaca2f861a8c5aba528541dc4854
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 28b04828bc778a2b9076c9ea1970ce80f231fbe3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322202"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386019"
 ---
 # <a name="what-is-application-management"></a>Uygulama yönetimi nedir?
 
@@ -63,7 +63,7 @@ Azure AD, bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi s
 
 - **Özel geliştirmiş uygulamalar** – kendi iş kolu uygulamalarınızı oluştururken, çoklu oturum açmayı desteklemek Için BUNLARı Azure AD ile tümleştirebilirsiniz. Uygulamanızı Azure AD 'ye kaydederek, uygulamanın kimlik doğrulama ilkesi üzerinde denetiminiz vardır. Daha fazla bilgi için bkz. [geliştiricilere yönelik kılavuz](developer-guidance-for-integrating-applications.md).
 
-- **Galeri olmayan uygulamalar** – kendi uygulamalarınızı getirin! Azure AD 'ye ekleyerek diğer uygulamalar için çoklu oturum açmayı destekler. Bir uygulamayı tümleştirmenin birden çok yolu vardır ve bunlardan bazıları aşağıda listelenmiştir. Daha fazla bilgi için bkz. [Galeri dışı uygulamalar için çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md).
+- **Galeri olmayan uygulamalar** – kendi uygulamalarınızı getirin! Azure AD 'ye ekleyerek diğer uygulamalar için çoklu oturum açmayı destekler. Bir uygulamayı tümleştirmenin birden çok yolu vardır ve bunlardan bazıları aşağıda listelenmiştir. Daha fazla bilgi için bkz. [SAML çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md).
 
 >[!TIP]
 >Azure AD 'yi önceden yapılandırılmış olmasa ve uygulama galerisinde bile bir uygulamayla tümleştirebilirsiniz. **Azure AD 'yi** aşağıdakilerden biriyle tümleştirebilirsiniz
@@ -93,6 +93,6 @@ Insan kaynakları odaklı uygulamalar veya büyük bir kullanıcı kümesine sah
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD 'de uygulama yönetimi için hızlı başlangıç serisi](view-applications-portal.md)
+- [Azure AD 'de uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)
 - [Uygulama tümleştirmesini kullanmaya başlayın](plan-an-application-integration.md)
 - [Sağlamayı otomatikleştirmeyi öğrenin](../app-provisioning/user-provisioning.md)

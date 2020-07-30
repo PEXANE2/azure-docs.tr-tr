@@ -36,7 +36,7 @@ Bu örnek, [Python için Azure Cosmos DB Tablosu SDK'sını](https://pypi.python
 
 Bu örnekteki senaryolarda çalışırken [Python API'si için Azure Cosmos DB SDK'sı belgelerine](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python) başvurmanız önerilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği başarıyla tamamlamak için aşağıdakiler gerekir:
 

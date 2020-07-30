@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35aa75fcbd579c3e2c587b370b0926393b4e58c1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83199388"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383775"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory raporlarının etrafında sık sorulan sorular
 
@@ -145,7 +145,7 @@ Y **:** Koşullu erişim durumu aşağıdaki değerlere sahip olabilir:
 
 * **Uygulanmadı**: Bu, kapsamdaki Kullanıcı ve uygulamayla bir CA ilkesi olmadığı anlamına gelir. 
 * **Başarı**: Bu, kapsamdaki Kullanıcı ve uygulamayla bir CA ilkesi olduğu ve CA ilkelerinin başarıyla karşılanmadığı anlamına gelir. 
-* **Hata**: Bu, kapsamdaki Kullanıcı ve uygulamayla bir CA ilkesi olduğu ve CA ilkelerinin karşılanmadığı anlamına gelir. 
+* **Hata**: oturum açma, en az bir koşullu erişim ilkesinin Kullanıcı ve uygulama koşulunu karşıladı ve izin verme denetimleri karşılanmadı ya da erişimi engelle olarak ayarlı değil.
     
 **S: koşullu erişim ilkesi sonucu için olası tüm değerler nelerdir?**
 

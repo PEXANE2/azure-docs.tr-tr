@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7e1432cf74dc741a6e2f5d561e9dc203df95007c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072688"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386172"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
 
@@ -33,13 +33,13 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
 
 * ISE 'yi oluşturan HTTPS PUT isteğini gönderdikten sonra *30 dakika* içinde, [Ise 'nin sistem tarafından atanan kimliğe Anahtar Kasası erişimi vermeniz](#identity-access-to-key-vault)gerekir. Aksi takdirde, ıSE oluşturma işlemi başarısız olur ve bir izin hatası oluşturur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure portal bir ıSE oluşturduğunuzda, [Ise için erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [Önkoşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
 
 * **Geçici silme** ve **Temizleme** özellikleri etkin olan bir Azure Anahtar Kasası
 
-  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/overview-soft-delete.md) ve [müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](../storage/common/storage-encryption-keys-portal.md). Azure Key Vault yeni başladıysanız, Azure portal kullanarak veya Azure PowerShell komutu, [New-Azkeykasasını](/powershell/module/az.keyvault/new-azkeyvault)kullanarak [bir Anahtar Kasası oluşturmayı](../key-vault/secrets/quick-create-portal.md#create-a-vault) öğrenin.
+  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/soft-delete-overview.md) ve [müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](../storage/common/storage-encryption-keys-portal.md). Azure Key Vault yeni başladıysanız, Azure portal kullanarak veya Azure PowerShell komutu, [New-Azkeykasasını](/powershell/module/az.keyvault/new-azkeyvault)kullanarak [bir Anahtar Kasası oluşturmayı](../key-vault/secrets/quick-create-portal.md#create-a-vault) öğrenin.
 
 * Anahtar Kasanızda, bu özellik değerleriyle oluşturulmuş bir anahtar:
 

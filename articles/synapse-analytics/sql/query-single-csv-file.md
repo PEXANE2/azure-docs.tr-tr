@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214460"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383894"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgula
 
@@ -26,6 +26,72 @@ Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullana
 - Tırnak işaretleri olmayan ve tırnak içine alınmış değerler ve kaçış karakterleri
 
 Yukarıdaki tüm Çeşitlemeler aşağıda ele alınacaktır.
+
+## <a name="quickstart-example"></a>Hızlı başlangıç örneği
+
+`OPENROWSET`işlevi, dosyanıza URL ekleyerek CSV dosyasının içeriğini okumanızı sağlar.
+
+### <a name="reading-csv-file"></a>CSV dosyası okunuyor
+
+Dosyanızın içeriğini görmenin en kolay yolu, `CSV` işlev için dosya URL 'si sağlamaktır `OPENROWSET` , csv ve 2,0 ' i belirtmektir `FORMAT` `PARSER_VERSION` . Dosya herkese açık ise veya Azure AD kimliğiniz bu dosyaya erişebilirse, aşağıdaki örnekte gösterildiği gibi sorguyu kullanarak dosyanın içeriğini görmeniz gerekir:
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+`firstrow`Bu durumda üstbilgiyi temsil eden CSV dosyasındaki ilk satırı atlamak için seçeneği kullanılır. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa, [SQL oturum açma için sunucu düzeyi kimlik bilgisi](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kurulumunu yapmanız gerekir.
+
+### <a name="using-data-source"></a>Veri kaynağını kullanma
+
+Önceki örnek, dosyanın tam yolunu kullanır. Alternatif olarak, depolama alanının kök klasörünü işaret eden konum ile bir dış veri kaynağı oluşturabilirsiniz:
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+Bir veri kaynağı oluşturduktan sonra, bu veri kaynağını ve işlevindeki dosyanın göreli yolunu kullanabilirsiniz `OPENROWSET` :
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+Bir veri kaynağı SAS anahtarı veya özel kimlikle korunuyorsa, [veri kaynağını veritabanı kapsamlı kimlik](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)bilgileriyle yapılandırabilirsiniz.
+
+### <a name="explicitly-specify-schema"></a>Açıkça şema belirt
+
+`OPENROWSET`dosya kullanarak dosyadan okumak istediğiniz sütunları açıkça belirtmenize olanak sağlar `WITH` :
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+Tümce içindeki bir veri türünden sonraki sayılar `WITH` CSV dosyasındaki sütun dizinini temsil eder.
+
+Aşağıdaki bölümlerde, çeşitli CSV dosyası türlerini sorgulama hakkında bilgi alabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

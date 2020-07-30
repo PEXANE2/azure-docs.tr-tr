@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319601"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386461"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -185,11 +185,20 @@ Bu eylemler, Not defteri durumunu sıfırlayacaktır ve not defterindeki tüm de
 Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler 'leri otomatik olarak bulur.  İşlem örneğine bir çekirdek eklemek için:
 
 1. Not defteri araç çubuğunda [**Terminal aç**](#terminal) ' ı seçin.
-1. Yeni bir ortam oluşturmak için Terminal penceresini kullanın.
+1. Yeni bir ortam oluşturmak için Terminal penceresini kullanın.  Örneğin, aşağıdaki kod oluşturulur `newenv` :
+    ```shell
+    conda create --name newenv
+    ```
 1. Ortamı etkinleştirin.  Örneğin, oluşturduktan sonra `newenv` :
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. Yeni ortama privand ipykernel paketini yükleyip bu Conda env için bir çekirdek oluşturun
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

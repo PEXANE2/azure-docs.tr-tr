@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Web uç noktasına BLOB depolama olayları gönder
 description: 'Hızlı başlangıç: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure portal kullanın. Olayları bir Web kancasına gönderin.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103645"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421612"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Hızlı başlangıç: Blob Depolama olaylarını Azure portal web uç noktasına yönlendirme
 
@@ -36,7 +36,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure 
     1. Azure aboneliğinizi seçin. 
     2. **Kaynak grubu**için yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubunu seçin. 
     3. Depolama hesabınızın adını girin. 
-    4. **İncele ve oluştur**’u seçin. 
+    4. **Gözden geçir ve oluştur**’u seçin. 
 
        ![Başlangıç adımları](./media/blob-event-quickstart-portal/provide-blob-values.png)    
     5. **Gözden geçir + oluştur** sayfasında ayarları gözden geçirin ve **Oluştur**' u seçin. 
@@ -50,7 +50,7 @@ Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktay
 
 1. Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. **Özel dağıtım** sayfasında, aşağıdaki adımları uygulayın: 
     1. **Kaynak grubu**için, depolama hesabı oluştururken oluşturduğunuz kaynak grubunu seçin. Kaynak grubunu silerek öğreticiye tamamladıktan sonra temizlemeniz daha kolay olacaktır.  
     2. **Site adı**için, Web uygulaması için bir ad girin.
@@ -119,7 +119,7 @@ Dosya yükleyerek Blob depolaması için bir olay tetiklemiş olursunuz. Dosyan�
 
 1. Yeni kapsayıcınızı seçin.
 
-   ![Kapsayıcı seçme](./media/blob-event-quickstart-portal/select-container.png)
+   ![Kapsayıcıyı seçme](./media/blob-event-quickstart-portal/select-container.png)
 
 1. Dosya yüklemek için **Yükle**'yi seçin. **Blobu karşıya yükle** sayfasında, test için karşıya yüklemek istediğiniz bir dosyaya gözatıp seçin ve ardından bu sayfada **karşıya yükle** ' yi seçin. 
 

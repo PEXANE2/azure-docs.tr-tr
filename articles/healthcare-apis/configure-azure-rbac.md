@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: bf05ede858c86fa82e199c800ea42747745c9c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fbbfd931efb0e570bc96639bc6b7943fddc0237
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871920"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417684"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>FHıR için Azure RBAC 'yi yapılandırma 
 
@@ -26,7 +26,7 @@ Azure RBAC 'yi kullanmak için, FHıR için Azure API 'nizin, veri düzlemi içi
 
 **Yetkili** , aboneliğinizle Ilişkili Azure Active Directory kiracısına ayarlanmalıdır ve **Izin verilen nesne kimlikleri**etiketli kutuda GUID olmamalıdır. Ayrıca, kutunun devre dışı olduğunu ve bir etiketin veri düzlemi rollerini atamak için Azure RBAC 'nin kullanılması gerektiğini belirten bir etiket olduğunu fark edeceksiniz.
 
-## <a name="assign-roles"></a>Rol atama
+## <a name="assign-roles"></a>Rolleri atama
 
 Kullanıcıları, hizmet sorumlularını veya grupları FHıR veri düzlemine erişim izni vermek için **erişim denetimi (IAM)** öğesine tıklayın, ardından **rol atamaları** ' na tıklayın ve **+ Ekle**' ye tıklayın:
 
@@ -57,4 +57,3 @@ Bu makalede, FHıR veri düzlemi için Azure RBAC rolleri atamayı öğrendiniz.
  
 >[!div class="nextstepaction"]
 >[Ek ayarlar FHıR için Azure API](azure-api-for-fhir-additional-settings.md)
-
