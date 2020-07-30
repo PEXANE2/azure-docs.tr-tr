@@ -1,36 +1,37 @@
 ---
-title: 'Öğretici: Azure statik Web Apps üzerinde sunucu tarafından işlenmiş sonraki. js web sitelerini dağıtma'
-description: Azure statik Web Apps sonraki. js dinamik sitelerini oluşturun ve dağıtın.
+title: 'Öğretici: Azure statik Web Apps üzerinde sunucu tarafından işlenen Next.js Web siteleri dağıtma'
+description: Azure statik Web Apps ile Next.js dinamik siteler oluşturun ve dağıtın.
 services: static-web-apps
 author: christiannwamba
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: fe139921cb73ee0e224c995e2dd5eb5fc50f3979
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 80a38c069f937783b60ede46bc4319253798ff44
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599856"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431645"
 ---
-# <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenmiş sonraki. js web sitelerini dağıtma
+# <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenen Next.js Web sitelerini dağıtma
 
-Bu öğreticide, [Yeni bir. js](https://nextjs.org) tarafından oluşturulan statik Web sitesini [Azure statik Web Apps](overview.md)dağıtmayı öğreneceksiniz. Başlamak için sonraki bir. js uygulamasını ayarlamayı, yapılandırmayı ve dağıtmayı öğreneceksiniz. Bu işlem sırasında, genellikle bir sonraki. js ile statik sayfalar oluştururken ortaya çıkacak yaygın güçlüklerle uğraşmak için de bilgi edineceksiniz.
+Bu öğreticide, [Next.js](https://nextjs.org) üretilmiş bir statik Web sitesini [Azure statik Web Apps](overview.md)dağıtmayı öğreneceksiniz. Başlamak için Next.js uygulamasını ayarlamayı, yapılandırmayı ve dağıtmayı öğreneceksiniz. Bu işlem sırasında, genellikle Next.js ile statik sayfalar oluştururken ortaya çıkacak yaygın güçlüklerle uğraşmak üzere de öğrenirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 - GitHub hesabı. [Ücretsiz hesap oluşturun](https://github.com/join).
-- [Node.js](https://nodejs.org) uygulamasının yüklenmiş olması.
+- [Node.js](https://nodejs.org) yüklendi.
 
-## <a name="set-up-a-nextjs-app"></a>Sonraki. js uygulamasını ayarlama
+## <a name="set-up-a-nextjs-app"></a>Next.js uygulaması ayarlama
 
-Bir uygulama oluşturmak için sonraki. js CLı 'yı kullanmak yerine, var olan bir sonraki. js uygulamasını içeren bir başlangıç deposu kullanabilirsiniz. Bu depo, ortak bir dağıtım sorununu vurgulayan dinamik yollarla bir sonraki. js uygulamasını sunar. Dinamik yollara, bir süre içinde daha fazla bilgi edineceğinizi sağlayan ek bir dağıtım yapılandırması gerekir.
+Bir uygulama oluşturmak için Next.js CLı kullanmak yerine, var olan bir Next.js uygulamasını içeren bir başlangıç deposu kullanabilirsiniz. Bu depo, ortak bir dağıtım sorununu vurgulayan dinamik yollarla Next.js bir uygulama sunar. Dinamik yollara, bir süre içinde daha fazla bilgi edineceğinizi sağlayan ek bir dağıtım yapılandırması gerekir.
 
 Başlamak için, bir şablon deposundan GitHub hesabınızda yeni bir depo oluşturun. 
 
-1. Şuraya gidin<http://github.com/staticwebdev/nextjs-starter/generate>
+1. <http://github.com/staticwebdev/nextjs-starter/generate> sayfasına gidin
 1. Depoyu **nextjs-Starter** olarak adlandırın
 1. Sonra, yeni depoyu makinenize kopyalayın. Hesap adınızla değiştirdiğinizden emin olun `<YOUR_GITHUB_ACCOUNT_NAME>` .
 
@@ -38,7 +39,7 @@ Başlamak için, bir şablon deposundan GitHub hesabınızda yeni bir depo oluş
     git clone http://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/nextjs-starter
     ```
 
-1. Yeni kopyalanan sonraki. js uygulamasına gidin:
+1. Yeni kopyalanmış Next.js uygulamasına gidin:
 
    ```bash
    cd nextjs-starter
@@ -50,7 +51,7 @@ Başlamak için, bir şablon deposundan GitHub hesabınızda yeni bir depo oluş
     npm install
     ```
 
-1. Geliştirme sırasında sonraki. js uygulamasını Başlat:
+1. Geliştirme aşamasında Next.js uygulamayı Başlat:
 
     ```bash
     npm run dev
@@ -58,17 +59,17 @@ Başlamak için, bir şablon deposundan GitHub hesabınızda yeni bir depo oluş
 
 <http://localhost:3000>Aşağıdaki Web sitesini tercih ettiğiniz tarayıcınızda açık olarak görmeniz gereken uygulamayı açmak için şuraya gidin:
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="Sonraki. js uygulamasını Başlat":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="Next.js uygulamayı Başlat":::
 
 Bir çerçeveye/kitaplığa tıkladığınızda, seçili öğe hakkında bir Ayrıntılar sayfası görmeniz gerekir:
 
 :::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Ayrıntılar sayfası":::
 
-## <a name="generate-a-static-website-from-nextjs-build"></a>Sonraki. js derlemesinden statik bir Web sitesi oluşturma
+## <a name="generate-a-static-website-from-nextjs-build"></a>Next.js derlemeden statik bir Web sitesi oluşturma
 
-Kullanarak bir sonraki. js sitesi oluşturduğunuzda `npm run build` , uygulama statik bir site değil, geleneksel bir Web uygulaması olarak oluşturulur. Statik bir site oluşturmak için aşağıdaki uygulama yapılandırmasını kullanın.
+Kullanarak bir Next.js sitesi oluşturduğunuzda `npm run build` , uygulama statik bir site değil, geleneksel bir Web uygulaması olarak oluşturulur. Statik bir site oluşturmak için aşağıdaki uygulama yapılandırmasını kullanın.
 
-1. Statik yolları yapılandırmak için, projenizin kökünde _Next. config. js_ adlı bir dosya oluşturun ve aşağıdaki kodu ekleyin...
+1. Statik yolları yapılandırmak için, projenizin kökünde _next.config.js_ adlı dosya oluşturun ve aşağıdaki kodu ekleyin...
 
     ```javascript
     module.exports = {
@@ -81,9 +82,9 @@ Kullanarak bir sonraki. js sitesi oluşturduğunuzda `npm run build` , uygulama 
     };
     ```
     
-      Bu yapılandırma, `/` yol için sunulan `/` ve _Pages/index. js_ sayfa dosyası olan bir sonraki. js sayfasıyla eşlenir.
+      Bu yapılandırma `/` `/` , yol için sunulan ve sayfa _/index.js_ sayfa dosyası olan Next.js sayfasıyla eşlenir.
 
-1. Komutunu kullanarak, derlemeden sonra da bir statik site oluşturmak için _Package. JSON_derleme betiğini güncelleştirin `next export` . `export`Komut bir statik site oluşturur.
+1. Derleme betiği _üzerindepackage.js_, komutunu kullanarak derlemeden sonra da statik bir site oluşturmak için güncelleştirin `next export` . `export`Komut bir statik site oluşturur.
 
     ```json
     "scripts": {
@@ -134,10 +135,10 @@ Aşağıdaki adımlarda, az önce GitHub 'a gönderdiğiniz uygulamayı Azure st
 ### <a name="create-a-static-app"></a>Statik uygulama oluşturma
 
 1. [Azure Portal](https://portal.azure.com) gidin
-1. **Kaynak oluştur ' a** tıklayın
-1. **Statik Web Apps** ara
-1. **Statik Web Apps (Önizleme)** seçeneğine tıklayın
-1. **Oluştur** 'a tıklayın
+1. **Kaynak oluştur** seçeneğine tıklayın
+1. **Statik Web Uygulamaları** için arama yapın
+1. **Statik Web Uygulamaları (Önizleme)** seçeneğine tıklayın
+1. **Oluştur** seçeneğine tıklayın
 
 1. *Abonelik* açılan listesinden bir abonelik seçin veya varsayılan değeri kullanın.
 1. *Kaynak grubu açılır grubunun* altındaki **Yeni** bağlantıya tıklayın. *Yeni kaynak grubu adı*' nda **mystaticsite** yazın ve **Tamam** ' a tıklayın.
@@ -149,14 +150,14 @@ Aşağıdaki adımlarda, az önce GitHub 'a gönderdiğiniz uygulamayı Azure st
 
 ### <a name="add-a-github-repository"></a>GitHub deposu ekleme
 
-Yeni statik Web Apps hesabının, işleme otomatik olarak dağıtımı için bir sonraki. js uygulamasıyla depoya erişmesi gerekir.
+Yeni statik Web Apps hesabının, işleme otomatik olarak dağıtabilmesi için Next.js uygulamanızla depoya erişmesi gerekir.
 
 1. **GitHub Ile oturum aç düğmesine** tıklayın
-1. GitHub Kullanıcı adınız olabilecek bir sonraki. js projeniz için depoyu oluşturduğunuz **kuruluşu** seçin.
+1. GitHub Kullanıcı adınız olabilecek Next.js projeniz için depoyu oluşturduğunuz **kuruluşu** seçin.
 1. Daha önce oluşturduğunuz deponun adını bulun ve seçin.
 1. *Dal açılır listesinden* dal olarak **ana** öğesini seçin.
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="GitHub 'ı bağlama":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="GitHub'ı bağlama":::
 
 ### <a name="configure-the-build-process"></a>Yapı işlemini yapılandırma
 
@@ -196,11 +197,11 @@ Yeni dağıtılan siteye gidin ve Framework veya kitaplık logolarının birine 
 
 :::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="Dinamik yollarla 404":::
 
-Bu hatanın nedeni, Next. js ' nin yalnızca uygulama yapılandırmasına bağlı olarak giriş sayfasını üretmesinden kaynaklanır.
+Bu hatanın nedeni, Next.js yalnızca uygulama yapılandırmasına bağlı olarak giriş sayfasını ürettiğinden oluşur.
 
 ## <a name="generate-static-pages-from-dynamic-routes"></a>Dinamik yollardan statik sayfalar oluşturma
 
-1. Sonraki. js ' nin her bir çerçeve/kitaplık için statik sayfalar oluşturmak üzere kullanılabilir tüm verilerin bir listesini kullanması için _sonraki. config. js_ dosyasını güncelleştirin:
+1. _next.config.js_ dosyasını, Next.js her bir çerçeve/kitaplık için statik sayfalar oluşturmak üzere kullanılabilir tüm verilerin bir listesini kullanacak şekilde güncelleştirin:
 
    ```javascript
    const data = require('./utils/projectsData');

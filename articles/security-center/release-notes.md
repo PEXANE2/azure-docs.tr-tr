@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 66c8db580d0da29aa0be1193bf41b491f388e55a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083982"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430454"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -32,9 +32,27 @@ Bu sayfa düzenli olarak güncelleştirildiğinden, sık sık ziyaret edin. Alt�
 ## <a name="july-2020"></a>Temmuz 2020
 
 Temmuz ayında güncelleştirmeler şunları içerir:
+- [Sanal makineler Için güvenlik açığı değerlendirmesi artık Market olmayan görüntüler için otomatik olarak kullanılabilir](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)        
 - [Azure depolama için tehdit koruması Azure dosyaları ve Azure Data Lake Storage 2. içerecek şekilde genişletildi (Önizleme)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [Tehdit koruması özelliklerini etkinleştirmeye yönelik sekiz yeni öneri](#eight-new-recommendations-to-enable-threat-protection-features)
 - [Kapsayıcı güvenlik geliştirmeleri-daha hızlı kayıt defteri tarama ve yenilenen belgeler](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
+- [Uyarlamalı uygulama denetimleri kurallarınızı güncelleştirmek için yeni öneri](#new-recommendation-to-update-your-adaptive-application-controls-rules)
 - [SQL gelişmiş veri güvenliği için altı ilke kullanım dışı](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
+
+
+### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>Sanal makineler için güvenlik açığı değerlendirmesi artık Market olmayan görüntüler için kullanılabilir
+
+Güvenlik Merkezi bir güvenlik açığı değerlendirme çözümü dağıttığınızda, dağıtım öncesinde daha önce bir doğrulama denetimi gerçekleştirdi. Denetim, hedef sanal makinenin Market SKU 'sunu doğrulamamıştı. 
+
+Bu güncelleştirmeden denetim kaldırılmıştır ve artık ' özel ' Windows ve Linux makinelerine güvenlik açığı değerlendirme araçları dağıtabilirsiniz. Özel görüntüler, Market varsayılanlarından değiştirdiğiniz alanlardır.
+
+Artık tümleşik güvenlik açığı değerlendirmesi uzantısını (Qualys tarafından desteklenen) çok sayıda makineye dağıtabileceğiniz halde, destek yalnızca [Qualys yerleşik güvenlik açığı tarayıcısını dağıtırken](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)listelenen bir işletim sistemi kullanıyorsanız kullanılabilir.
+
+[Sanal makineler için tümleşik güvenlik açığı tarayıcısı (yalnızca Standart katman)](built-in-vulnerability-assessment.md)hakkında daha fazla bilgi edinin.
+
+Özel olarak lisanslanan güvenlik açığı değerlendirme çözümünüzü [bir iş ortağı güvenlik açığı tarama çözümü dağıtma](partner-vulnerability-assessment.md)konusunda Qualys veya Rapid7 'tan kullanma hakkında daha fazla bilgi edinin.
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure depolama için tehdit koruması Azure dosyaları ve Azure Data Lake Storage 2. içerecek şekilde genişletildi (Önizleme)
@@ -44,6 +62,39 @@ Azure depolama için tehdit koruması, Azure depolama hesaplarınızdaki zararl�
 Verileriniz, blob kapsayıcıları, dosya paylaşımları veya veri Lakes olarak depolanıp saklanmadığı için korunabilir. 
 
 [Azure depolama için tehdit koruması](threat-protection.md#threat-protection-for-azure-storage-)hakkında daha fazla bilgi edinin.
+
+
+
+
+### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>Tehdit koruması özelliklerini etkinleştirmeye yönelik sekiz yeni öneri
+
+Azure Güvenlik Merkezi 'nin tehdit koruması özelliklerinin aşağıdaki kaynak türleri için etkinleştirilmesi için basit bir yol sağlamak üzere sekiz yeni öneri eklenmiştir: sanal makineler, App Service planlar, Azure SQL veritabanı sunucuları, makinelerdeki SQL Server 'lar, Azure depolama hesapları, Azure Kubernetes hizmet kümeleri, Azure Container Registry kayıt defterleri ve Azure Key Vault kasaları.
+
+Yeni öneriler şunlardır:
+
+- **Azure SQL veritabanı sunucularında gelişmiş veri güvenliği etkinleştirilmelidir**
+- **Makinelerdeki SQL sunucularında gelişmiş veri güvenliği etkinleştirilmelidir**
+- **Gelişmiş tehdit koruması Azure App Service planlarda etkinleştirilmelidir**
+- **Gelişmiş tehdit koruması Azure Container Registry kayıt defterlerinde etkinleştirilmelidir**
+- **Gelişmiş tehdit koruması Azure Key Vault kasaları üzerinde etkinleştirilmelidir**
+- **Gelişmiş tehdit koruması, Azure Kubernetes hizmet kümelerinde etkinleştirilmelidir**
+- **Gelişmiş tehdit koruması, Azure depolama hesaplarında etkinleştirilmelidir**
+- **Gelişmiş tehdit koruması sanal makinelerde etkinleştirilmelidir**
+
+Bu yeni öneriler, **Gelişmiş tehdit koruması** güvenlik denetimini etkinleştir ' e aittir.
+
+Öneriler de hızlı düzelme özelliğini içerir. 
+
+> [!IMPORTANT]
+> Bu önerilerin herhangi birini yeniden yapmak, ilgili kaynakların korunması için ücretlendirmesiyle sonuçlanır. Geçerli abonelikte ilgili kaynaklarınız varsa, bu ücretler hemen başlayacaktır. Daha sonraki bir tarihte daha sonra ekleyebilirsiniz.
+> 
+> Örneğin, aboneliğinizde hiç Azure Kubernetes hizmet kümeniz yoksa ve tehdit korumasını etkinleştirirseniz, hiçbir ücret alınmaz. Gelecekte aynı aboneliğe bir küme eklerseniz, bu, otomatik olarak korunur ve ücretler bu anda başlayacaktır.
+
+[Güvenlik önerileri başvuru sayfasında](recommendations-reference.md)bunların her biri hakkında daha fazla bilgi edinin.
+
+[Azure Güvenlik Merkezi 'nde tehdit koruması](https://docs.microsoft.com/azure/security-center/threat-protection)hakkında daha fazla bilgi edinin.
+
+
 
 
 ### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>Kapsayıcı güvenlik geliştirmeleri-daha hızlı kayıt defteri tarama ve yenilenen belgeler
@@ -62,6 +113,15 @@ Aşağıdaki makalelerde Güvenlik Merkezi 'nin kapsayıcı güvenliği hakkınd
 - [Azure Kubernetes hizmet konakları için tehdit koruması özelliklerinden güvenlik uyarıları](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
 - [Kapsayıcılar için güvenlik önerileri](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
 
+
+
+### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>Uyarlamalı uygulama denetimleri kurallarınızı güncelleştirmek için yeni öneri
+
+Uyarlamalı uygulama denetimleri özelliği yapılandırılan gruplardaki makinelerin etkinliğini sürekli olarak izler. Bu güncelleştirmeden, daha önce izin verilmeyen ve hatalı pozitif uyarılara neden olabilecek olası yasal davranış hakkında bildirim verilecektir.
+
+**Uyarlamalı uygulama denetim ilkenizde yeni öneri, Allowlist kuralları güncellenmelidir**, uyarlamalı uygulama denetimleri ihlal uyarılarındaki hatalı pozitif sonuç sayısını azaltmak için mevcut ilkeye yeni kurallar eklemenizi ister.
+
+[Uyarlamalı uygulama denetimleri hakkında daha fazla bilgi edinin](security-center-adaptive-application.md).
 
 
 
@@ -185,9 +245,9 @@ Aşağıdaki yeni ilkeler ASC varsayılan girişimine eklenmiştir ve ilgili kay
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [Azure SQL veritabanı sunucularında gelişmiş veri güvenliği etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4CDD-8bd4-fd799c948cc2 |
 | [Makinelerdeki SQL sunucularında gelişmiş veri güvenliği etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105E-4418-827f-bd446d56421b |
-| [Gelişmiş tehdit koruması depolama hesaplarında etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [Gelişmiş tehdit koruması, Azure depolama hesaplarında etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
 | [Gelişmiş tehdit koruması Azure Key Vault kasaları üzerinde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
-| [Gelişmiş tehdit koruması App Service planlarda etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [Gelişmiş tehdit koruması Azure App Service planlarda etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
 | [Gelişmiş tehdit koruması Azure Container Registry kayıt defterlerinde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
 | [Gelişmiş tehdit koruması, Azure Kubernetes hizmet kümelerinde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492F-A539-13118b6d1e3a |
 | [Gelişmiş tehdit koruması sanal makinelerde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4ba35fc9-c9e7-4960-aec9-797fe7d9051d |
@@ -275,7 +335,7 @@ Güvenlik denetimleri ve bu geçiş, yeni güvenli puan deneyiminin bir parças�
 
 [Azure Güvenlik Merkezi 'Nde gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)bölümünde güvenlik denetimleri hakkında daha fazla bilgi edinin.
 
-!["Denetimlere göre gruplandır" öneriler için değiştirme](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+!["Denetimlere göre gruplandır" öneriler için değiştirme](./media/secure-score-security-controls/recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Genişletilmiş Güvenlik denetimi "en iyi güvenlik uygulamalarını uygulayın" 
 

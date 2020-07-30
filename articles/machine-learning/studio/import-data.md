@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: b04c9c1796491622a76e2c2a2fbfcdcc0c624dda
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c13c394f518482853762a3a5bf9a1a2a42ca658a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318547"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432410"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarın
 
-**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
 
 
 Bir tahmine dayalı analiz çözümü geliştirmek ve eğitebilmek için Machine Learning Studio (klasik) içinde kendi verilerinizi kullanmak için şu verileri kullanabilirsiniz: 
@@ -157,7 +157,7 @@ Desteklenen çevrimiçi veri kaynakları aşağıdaki tabloda listelenir. Bu tab
 ### <a name="supported-online-data-sources"></a>Desteklenen çevrimiçi veri kaynakları
 Azure Machine Learning Studio (klasik) **veri alma** modülü aşağıdaki veri kaynaklarını destekler:
 
-| veri kaynağı | Açıklama | Parametreler |
+| veri kaynağı | Description | Parametreler |
 | --- | --- | --- |
 | HTTP aracılığıyla Web URL 'SI |HTTP kullanan herhangi bir Web URL 'sinden, virgülle ayrılmış değerler (CSV), sekmeyle ayrılmış değerler (TSV), öznitelik ilişkisi dosya biçimi (ARFF) ve destek vektör makineleri (SVM-Light) biçimleri içindeki verileri okur |<b>URL</b>: herhangi bir uzantıya sahip site URL 'si ve dosya adı da dahil olmak üzere dosyanın tam adını belirtir. <br/><br/><b>Veri biçimi</b>: desteklenen veri biçimlerinden birini BELIRTIR: CSV, TSV, arff veya SVM-Light. Verilerin bir başlık satırı varsa, sütun adlarını atamak için kullanılır. |
 | Hadoop/bir |Hadoop 'daki dağıtılmış depolama alanından verileri okur. SQL benzeri bir sorgu dili olan HiveQL kullanarak istediğiniz verileri belirtirsiniz. HiveQL, verileri toplamak ve verileri Studio 'ya (klasik) eklemeden önce veri filtrelemeyi gerçekleştirmek için de kullanılabilir. |<b>Hive veritabanı sorgusu</b>: verileri oluşturmak Için kullanılan Hive sorgusunu belirtir.<br/><br/><b>Hcatalog sunucusu URI 'si</b> : Kümenizin adı, * &lt; Kümenizin adı &gt; . azurehdinsight.net* biçimi kullanılarak belirtildi.<br/><br/><b>Hadoop Kullanıcı hesabı adı</b>: kümeyi sağlamak Için kullanılan Hadoop Kullanıcı hesabının adını belirtir.<br/><br/><b>Hadoop Kullanıcı hesabı parolası</b> : küme sağlanırken kullanılan kimlik bilgilerini belirtir. Daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop kümeleri oluşturma](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Çıkış verilerinin konumu</b>: verilerin bir Hadoop Dağıtılmış dosya sistemi 'nde mi yoksa Azure 'da mı depolandığını belirtir. <br/><ul>Çıktı verilerini bir olarak depoladığınızda,,,,, bir sunucu URI 'sini belirtin. (HDInsight kümesi adını HTTPS://ön eki olmadan kullandığınızdan emin olun). <br/><br/>Çıktı verilerinizi Azure 'da depolarsanız, Azure depolama hesabı adı, depolama erişim anahtarı ve depolama kapsayıcısı adı ' nı belirtmeniz gerekir.</ul> |

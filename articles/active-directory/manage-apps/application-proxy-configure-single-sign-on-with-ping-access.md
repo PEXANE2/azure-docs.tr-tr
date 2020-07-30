@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077900"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431087"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Uygulama proxy 'Si ve PingAccess ile çoklu oturum açma için üst bilgi tabanlı kimlik doğrulaması
 
@@ -105,7 +105,7 @@ Kendi şirket içi uygulamanızı yayımlamak için:
    ![Kullanıcıların ve grupların listesini gösterir](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
 1. Uygulama testi için bir kullanıcı seçin ve **Seç**' i seçin. Bu sınama hesabının şirket içi uygulamaya erişimi olduğundan emin olun.
-1. **Ata**'yı seçin.
+1. **Ata**’yı seçin.
 1. Uygulama kenar çubuğundan **Çoklu oturum açma**  >  **üst bilgi tabanlı**' yı seçin.
 
    > [!TIP]
@@ -121,6 +121,11 @@ Yeniden yönlendirme URL 'nizin dış URL 'niz olarak ayarlandığından emin ol
 1. Uygulamanızı seçin.
 1. Web ve genel istemciler için ayarlanan yeniden yönlendirme URI 'lerinin sayısını göstererek **yeniden yönlendirme URI**'lerinin yanındaki bağlantıyı seçin. ** \<application name> -Kimlik doğrulama** sayfası görüntülenir.
 1. Daha önce uygulamanıza atadığınız dış URL 'nin **yeniden yönlendirme URI 'leri** listesinde olup olmadığını denetleyin. Değilse, bir **Web**yeniden yönlendirme URI 'si türü kullanarak dış URL 'yi hemen ekleyin ve **Kaydet**' i seçin.
+
+Dış URL 'nin yanı sıra, dış URL üzerindeki Azure Active Directory yetkilendirme uç noktası, yeniden yönlendirme URI 'Leri listesine eklenmelidir.
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
 
 Son olarak, kullanıcıların okuma erişiminin olması ve diğer uygulamaların okuma/yazma erişimine sahip olması için şirket içi uygulamanızı ayarlayın:
 

@@ -1,25 +1,26 @@
 ---
 title: JavaScript kullanarak Azure Storage örnekleri | Microsoft Docs
-description: Azure depolama için örnek kod ve uygulamaları görüntüleyin, indirin ve çalıştırın. JavaScript/Node. js depolama istemci kitaplıklarını kullanarak blob, kuyruk, tablo ve dosya kullanmaya başlama örneklerini bulun.
+description: Azure depolama için örnek kod ve uygulamaları görüntüleyin, indirin ve çalıştırın. JavaScript/Node.js depolama istemci kitaplıklarını kullanarak Bloblar, kuyruklar, tablolar ve dosyalar için kullanmaya başlama örneklerini bulun.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/19/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 466a1318dbe0a9299eebb9259ef8e0fe9bbbc0e7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77485854"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433095"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>V12 JavaScript istemci kitaplıklarını kullanan Azure depolama örnekleri
 
 Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara genel bir bakış sağlar. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
 
 > [!NOTE]
-> Bu örnekler en son Azure Storage JavaScript V12 kitaplığını kullanır. Eski v11 kodu için bkz. GitHub deposundaki [Node. js ' de Azure Blob hizmetini kullanmaya](https://github.com/Azure-Samples/storage-blob-node-getting-started) başlama.
+> Bu örnekler en son Azure Storage JavaScript V12 kitaplığını kullanır. Eski v11 kodu için bkz. GitHub deposunda [Node.jsAzure Blob hizmetini](https://github.com/Azure-Samples/storage-blob-node-getting-started) kullanmaya başlama.
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
@@ -67,7 +68,7 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Bir kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L53)
+      [Kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L53)
    :::column-end:::
    :::column span="":::
       [Paylaşılan anahtar kimlik bilgisi kullanarak kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
@@ -102,7 +103,7 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Blob indirme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L73)
+      [Blobu indirme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L73)
    :::column-end:::
    :::column span="":::
       [Yineleyici kullanarak Blobları listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
@@ -349,7 +350,7 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
       [Batch varlıkları](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
-      [Tablo oluştur](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
+      [Tablo oluşturma](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -389,7 +390,7 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
       [Tablo çıkış noktaları arası kaynak paylaşımı (CORS) kuralları](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
    :::column-end:::
    :::column span="":::
-      [Tablo Özellikleri](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
+      [Tablo özellikleri](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
    :::column-end:::
 :::row-end:::
 :::row:::

@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749690"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431287"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (sanal ağ geçidi) sanal WAN 'a bağlama
 
@@ -33,17 +33,19 @@ Azure Sanal Ağ
 
 * Sanal ağ geçitleri olmadan bir sanal ağ oluşturun. Şirket içi ağlarınızın alt ağlarının hiçbirinin, bağlanmak istediğiniz sanal ağlarla çakışmadığından emin olun. Azure portal bir sanal ağ oluşturmak için [hızlı](../virtual-network/quick-create-portal.md)başlangıca bakın.
 
-## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1. bir Azure sanal ağ geçidi oluşturun
+## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1. VPN Gateway sanal ağ geçidi oluşturun
 
-Sanal ağınız için etkin-etkin modda sanal ağınız için bir VPN Gateway sanal ağ geçidi oluşturun. Ağ geçidini oluştururken, ağ geçidinin iki örneği için mevcut genel IP adreslerini kullanabilir veya yeni genel IP 'Ler oluşturabilirsiniz. Sanal WAN sitelerini ayarlarken bu genel IP 'Leri kullanırsınız. Etkin-etkin mod hakkında daha fazla bilgi için bkz. [etkin-etkin bağlantıları yapılandırma](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
+Sanal ağınız için etkin-etkin modda **VPN Gateway** bir sanal ağ geçidi oluşturun. Ağ geçidini oluştururken, ağ geçidinin iki örneği için mevcut genel IP adreslerini kullanabilir veya yeni genel IP 'Ler oluşturabilirsiniz. Sanal WAN sitelerini ayarlarken bu genel IP 'Leri kullanacaksınız. Etkin-etkin VPN ağ geçitleri ve yapılandırma adımları hakkında daha fazla bilgi için bkz. [Active-ACTIVE VPN ağ geçitlerini yapılandırma](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>Etkin-etkin mod ayarı
 
-![etkin-edilgen](./media/connect-virtual-network-gateway-vwan/active.png "etkin-edilgen")
+Sanal ağ geçidi **yapılandırması** sayfasında etkin-etkin modunu etkinleştirin.
+
+![aktif/aktif](./media/connect-virtual-network-gateway-vwan/active.png "aktif/aktif")
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP ayarı
 
-BGP ASN 65515 olamaz. 66515, Azure sanal WAN tarafından kullanılacak.
+Sanal ağ geçidi **yapılandırması** SAYFASıNDA **BGP ASN**'yi yapılandırabilirsiniz. BGP ASN 'yi değiştirin. BGP ASN 65515 olamaz. 66515, Azure sanal WAN tarafından kullanılacak.
 
 ![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "b")
 
@@ -60,16 +62,16 @@ Sanal WAN VPN siteleri oluşturmak için sanal WAN 'ınızla gezinmek ve **bağl
 1. **+ Site oluştur**' u seçin.
 2. **VPN siteleri oluştur** sayfasında, aşağıdaki değerleri yazın:
 
-   * **Bölge** -(Azure VPN Gateway sanal ağ geçidi ile aynı bölge)
-   * **Cihaz satıcısı** -cihaz satıcısına (herhangi bir ad) girin
-   * **Özel adres alanı** -(BGP etkinleştirildiğinde bir değer girin veya boş bırakın)
-   * **Sınır Ağ Geçidi Protokolü** -(Azure VPN Gateway sanal ağ geçidinde BGP etkinse **etkinleştirilecek** şekilde ayarlanır)
-   * **Hub 'Lara bağlanma** (açılan menüden ön koşullarda oluşturduğunuz hub 'ı seçin)
+   * **Bölge** -Azure VPN Gateway sanal ağ geçidi ile aynı bölge.
+   * **Cihaz satıcısı** -cihaz satıcısına (herhangi bir ad) girin.
+   * **Özel adres alanı** -BGP etkinleştirildiğinde bir değer girin veya boş bırakın.
+   * **Sınır Ağ Geçidi Protokolü** -Azure VPN Gateway sanal ağ geçidinde BGP etkinse **etkinleştirilecek** şekilde ayarlanır.
+   * **Hub 'Lara bağlanma** -açılan listeden ön koşullarda oluşturduğunuz hub 'ı seçin. Bir hub görmüyorsanız, hub 'ınız için siteden siteye VPN ağ geçidi oluşturdunuz.
 3. **Bağlantılar**' ın altında, aşağıdaki değerleri girin:
 
-   * **Sağlayıcı adı** -bir bağlantı adı ve sağlayıcı adı girin (herhangi bir ad)
-   * **Hız** -hız (herhangi bir sayı)
-   * **IP adresi** -IP adresi girin ((VPN Gateway) sanal ağ geçidi özellikleri altında gösterilen Ilk genel IP adresi ile aynı)
+   * **Sağlayıcı adı** -bir bağlantı adı ve sağlayıcı adı (herhangi bir ad) girin.
+   * **Hız** -hız (herhangi bir sayı).
+   * **IP adresi** -IP adresi girin ((VPN Gateway) sanal ağ geçidi özellikleri altında gösterilen Ilk genel IP adresi ile aynı).
    * **BGP adresi** ve **ASN** -BGP adresi ve ASN. Bunlar, BGP eşi IP adreslerinden biri ile aynı olmalıdır ve [1. adımda](#vnetgw)yapılandırdığınız VPN Gateway sanal ağ geçidinden ASN.
 4. Siteyi oluşturmak için gözden geçirin ve **Onayla** ' yı seçin.
 5. VPN Gateway sanal ağ geçidinin ikinci örneğiyle eşleşecek ikinci siteyi oluşturmak için önceki adımları tekrarlayın. Aynı ayarları, ikinci genel IP adresi ve VPN Gateway yapılandırmasından ikinci BGP eşi IP adresi kullanılması dışında tutacaksınız.
@@ -114,12 +116,12 @@ Bu bölümde, VPN Gateway yerel ağ geçitleri ve sanal ağ geçidi arasında bi
    * **Yerel ağ geçidi:** Bu bağlantı, sanal ağ geçidini yerel ağ geçidine bağlayacaktır. Daha önce oluşturduğunuz yerel ağ geçitleri arasından birini seçin.
    * **Paylaşılan anahtar:** Paylaşılan bir anahtar girin.
    * **IKE protokolü:** IKE protokolünü seçin.
-   * **BGP:** Bağlantı BGP üzerinden ise **BGP 'Yi etkinleştir** ' i seçin.
 3. Bağlantınızı oluşturmak için **Tamam**’a tıklayın.
 4. Bağlantıyı sanal ağ geçidinin **Bağlantılar** sayfasında görüntüleyebilirsiniz.
 
    ![Bağlantı](./media/connect-virtual-network-gateway-vwan/connect.png "bağlantı")
 5. İkinci bir bağlantı oluşturmak için önceki adımları tekrarlayın. İkinci bağlantı için, oluşturduğunuz diğer yerel ağ geçidini seçin.
+6. Bağlantılar BGP üzerinden olursa, bağlantılarınızı oluşturduktan sonra bir bağlantıya gidip **yapılandırma**' yı seçin. **Yapılandırma** sayfasında **BGP**için **etkin**' i seçin. Ardından **Kaydet**' e tıklayın. İkinci bağlantı için tekrarlayın.
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. test bağlantıları
 

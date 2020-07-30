@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: d2308b57859a7f8eb0aa6519246fbb52ffdf9e81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e811d921d28ce33d7dbc9f2bb7996557838178ad
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318649"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429860"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model performansını değerlendir (klasik)
 
-**Uygulama hedefi:** ![ Hayır](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) 
+**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
 
 
 Bu makalede, Azure Machine Learning Studio (klasik) ' de model performansını izlemek için kullanabileceğiniz ölçümler hakkında bilgi edinebilirsiniz.  Bir modelin performansını değerlendirmek, veri bilimi işlemindeki temel aşamalardan biridir. Bir veri kümesinin Puanlama (tahminleri), eğitilen bir model tarafından ne kadar başarılı olduğunu gösterir. Azure Machine Learning Studio (klasik), ana makine öğrenimi modüllerinin ikisi aracılığıyla model değerlendirmesini destekler: 

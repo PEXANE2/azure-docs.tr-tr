@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6f5e05e9bfea6b14e46bbde8d17fba2d2a3b7b07
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298014"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429501"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye VuePress sitesi yayımlama
 
@@ -26,11 +27,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Azure statik Web Apps ayarlama
 > - VuePress uygulamasını Azure 'a dağıtma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/).
 - GitHub hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://github.com/join).
-- [Node.js](https://nodejs.org) uygulamasının yüklenmiş olması.
+- [Node.js](https://nodejs.org) yüklendi.
 
 ## <a name="create-a-vuepress-app"></a>VuePress uygulaması oluşturma
 
@@ -48,7 +49,7 @@ Komut satırı arabiriminden (CLı) bir VuePress uygulaması oluşturun:
    echo '# Hello From VuePress' > README.md
    ```
 
-1. _Package. JSON_ dosyasını başlatın.
+1. Dosyadaki _package.js_ başlatın.
 
    ```bash
    npm init -y
@@ -60,7 +61,7 @@ Komut satırı arabiriminden (CLı) bir VuePress uygulaması oluşturun:
    npm install --save-dev vuepress
    ```
 
-1. _Package. JSON_ dosyasını bir metin düzenleyicisinde açın ve bölümüne bir Build komutu ekleyin [`scripts`](https://docs.npmjs.com/cli-commands/run-script.html) .
+1. Dosyayı bir metin düzenleyicisinde _package.js_ açın ve bölümüne bir yapı komutu ekleyin [`scripts`](https://docs.npmjs.com/cli-commands/run-script.html) .
 
    ```json
    ...
@@ -109,10 +110,10 @@ Aşağıdaki adımlarda, yeni bir statik Web Apps uygulamasının nasıl oluştu
 ### <a name="create-the-application"></a>Uygulama oluşturma
 
 1. [Azure Portal](https://portal.azure.com) gidin
-1. **Kaynak oluştur ' a** tıklayın
-1. **Statik Web Apps** ara
-1. **Statik Web Apps (Önizleme)** seçeneğine tıklayın
-1. **Oluştur** 'a tıklayın
+1. **Kaynak oluştur** seçeneğine tıklayın
+1. **Statik Web Uygulamaları** için arama yapın
+1. **Statik Web Uygulamaları (Önizleme)** seçeneğine tıklayın
+1. **Oluştur** seçeneğine tıklayın
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
 
@@ -142,7 +143,7 @@ Aşağıdaki adımlarda, yeni bir statik Web Apps uygulamasının nasıl oluştu
 
 Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandırma ayarlarını eklersiniz. Aşağıdaki ayarlar GitHub eylemi iş akışı dosyasını yapılandırır.
 
-1. Derleme yapılandırmasını düzenlemek için **İleri: oluştur >** düğmesine tıklayın
+1. Derleme yapılandırmasını düzenlemek için **İleri: Derleme >** düğmesine tıklayın
 
 1. _Uygulama konumunu_ olarak ayarlayın **/** .
 

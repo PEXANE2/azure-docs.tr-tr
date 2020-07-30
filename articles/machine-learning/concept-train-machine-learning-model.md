@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b35f971d90f8cd74e2f5a60e34864d8e55a743c4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147049"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431923"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -23,7 +23,7 @@ Azure Machine Learning modellerinizi, otomatik makine öğrenimi ve görsel tasa
 
 + [Python IÇIN sdk Azure Machine Learning](#python-sdk): Python SDK, her biri farklı yeteneklere sahip modelleri eğitmek için çeşitli yollar sağlar.
 
-    | Eğitim yöntemi | Açıklama |
+    | Eğitim yöntemi | Description |
     | ----- | ----- |
     | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için genel bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmanız. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Bir çalıştırma yapılandırması, eğitim betiğinizi ve bir işlem hedefini (eğitim ortamı) alabilir ve bir eğitim işi çalıştırabilirsiniz. |
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize**olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
@@ -92,11 +92,33 @@ Machine Learning işlem hatları, daha önce bahsedilen eğitim yöntemlerini (�
 * [Örnekler: otomatik makine öğrenimiyle işlem hattı](https://aka.ms/pl-automl)
 * [Örnekler: tahmini ile işlem hattı](https://aka.ms/pl-estimator)
 
+### <a name="understand-what-happens-when-you-submit-a-training-job"></a>Eğitim işi gönderdiğinizde ne olacağını anlayın
+
+Azure eğitim yaşam döngüsü aşağıdakilerden oluşur:
+
+1. _. Amlignore_ veya _. gitignore_ içinde belirtilen dosyaları yoksayarak proje klasörünüzdeki dosyaları zipden gönderin
+1. İşlem kümenizi ölçeklendirme 
+1. Dockerfile 'ı işlem düğümüne derleme veya indirme 
+    1. Sistem bir karma değerini hesaplar: 
+        - Temel görüntü 
+        - Özel Docker adımları (bkz. [özel bir Docker temel görüntüsü kullanarak model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Conda tanımı YAML (bkz. [oluşturma & yazılım ortamlarını Azure Machine Learning kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Sistem bu karmayı, çalışma alanının aramasında anahtar olarak kullanır Azure Container Registry (ACR)
+    1. Bulunmazsa, genel ACR 'de bir eşleşme arar
+    1. Bulunamadıysanız, sistem yeni bir görüntü oluşturur (önbelleğe alınır ve çalışma alanı ACR 'ye kaydedilir)
+1. Daraltılmış proje dosyanızı işlem düğümündeki geçici depolamaya indirme
+1. Proje dosyasının sıkıştırması kaldırılıyor
+1. Yürütülen işlem düğümü`python <entry script> <arguments>`
+1. Günlükler, model dosyaları ve `./outputs` çalışma alanıyla ilişkili depolama hesabına yazılan diğer dosyalar kaydediliyor
+1. Geçici depolamayı kaldırma dahil olmak üzere ölçeği azaltma 
+
+Yerel makinenizde ("Yerel çalıştırma olarak yapılandırma") eğitme seçeneğini belirlerseniz Docker kullanmanız gerekmez. İsterseniz Docker 'ı yerel olarak kullanabilirsiniz (bir örnek için ML işlem hattını [yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) bölümüne bakın).
+
 ## <a name="r-sdk"></a>R SDK
 
 R SDK, Azure Machine Learning R dilini kullanmanıza olanak sağlar. SDK, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Öğretici: lojistik regresyon modeli oluşturma](tutorial-1st-r-experiment.md)
 * [R başvurusu için SDK Azure Machine Learning](https://azure.github.io/azureml-sdk-for-r/index.html)

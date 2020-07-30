@@ -5,23 +5,24 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681486"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433139"
 ---
 # <a name="override-materials-during-model-conversion"></a>Model dönüştürme sırasında malzemeleri geçersiz kılma
 
-Dönüştürme sırasında, kaynak modeldeki malzeme ayarları, işleyici tarafından kullanılan [PBR malzemelerini](../../overview/features/pbr-materials.md) tanımlamak için kullanılır.
+Kaynak modeldeki malzeme ayarları, işleyici tarafından kullanılan [PBR malzemelerini](../../overview/features/pbr-materials.md) tanımlamak için kullanılır.
 Bazen [varsayılan dönüştürme](../../reference/material-mapping.md) istenen sonuçlara izin vermez ve değişiklik yapmanız gerekir.
 Bir model Azure uzaktan Işlemede kullanılmak üzere dönüştürüldüğünde, malzeme dönüştürmesinin malzeme başına olarak nasıl yapılacağını özelleştirmek için bir malzeme geçersiz kılma dosyası sağlayabilirsiniz.
 [Model dönüştürmeyi yapılandırma](configure-model-conversion.md) bölümünde malzeme geçersiz kılma dosya adını bildirmek için yönergeler vardır.
 
 ## <a name="the-override-file-used-during-conversion"></a>Dönüştürme sırasında kullanılan geçersiz kılma dosyası
 
-Basit bir örnek olarak, bir kutu modelinin "varsayılan" olarak adlandırılan tek bir malzemenin olduğunu varsayalım. Albedo renginin ARR 'de kullanılmak üzere ayarlanması gerekir.
+Basit bir örnek olarak, bir kutu modelinin "varsayılan" olarak adlandırılan tek bir malzemenin olduğunu varsayalım.
+Ayrıca, Albedo renginin ARR 'de kullanılmak üzere ayarlanması gerektiğini varsayalım.
 Bu durumda, bir `box_materials_override.json` dosya aşağıdaki gibi oluşturulabilir:
 
 ```json
@@ -38,7 +39,7 @@ Bu durumda, bir `box_materials_override.json` dosya aşağıdaki gibi oluşturul
 ]
 ```
 
-`box_materials_override.json`Dosya, giriş kapsayıcısına yerleştirilir ve `ConversionSettings.json` üzerine, `box.fbx` geçersiz kılma dosyasını nerede bulacağını söyleyen dönüştürmeye bildirir (bkz [. model dönüştürmeyi yapılandırma](configure-model-conversion.md)):
+`box_materials_override.json`Dosya, giriş kapsayıcısına yerleştirilir ve `box.ConversionSettings.json` üzerine, `box.fbx` geçersiz kılma dosyasını nerede bulacağını söyleyen dönüştürmeye bildirir (bkz [. model dönüştürmeyi yapılandırma](configure-model-conversion.md)):
 
 ```json
 {
@@ -51,7 +52,7 @@ Model dönüştürüldüğünde yeni ayarlar uygulanır.
 ### <a name="color-materials"></a>Renk malzemeleri
 
 [Renk malzemesi](../../overview/features/color-materials.md) modeli ışıklanmaya bağımsız olan sürekli gölgeli bir yüzey tanımlar.
-Bu, örneğin, Photogrammetri algoritmalarının yaptığı varlıklar için yararlıdır.
+Renkli malzemeler, Photogrammetri algoritmalarının yaptığı varlıklar için yararlıdır.
 Malzeme geçersiz kılma dosyalarında, bir malzeme, olarak ayarlanarak bir renk malzemesi olarak bildirilebilecek `unlit` `true` .
 
 ```json

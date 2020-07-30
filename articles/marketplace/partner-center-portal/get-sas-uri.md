@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 07/14/2020
-ms.openlocfilehash: f3589fb9ae176e04f727f516cca7c18c87dad9e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317510"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431675"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM Görüntünüz için paylaşılan erişim imzası URI 'SI alın
 
@@ -31,17 +31,15 @@ VHD 'niz için SAS URI 'Leri oluştururken şu gereksinimleri izleyin:
 
 SAS adresi (URL) oluşturmak için kullanılan iki ortak araç vardır:
 
-* **Microsoft Depolama Gezgini** : Windows, MacOS ve Linux için kullanılabilen grafik araç.
+* **Microsoft Depolama Gezgini** -grafik araç Azure Portal kullanılabilir.
 * **MICROSOFT Azure CLI** : Windows dışı işletim sistemleri ve otomatikleştirilmiş veya sürekli tümleştirme ortamları için önerilir.
 
 ### <a name="use-microsoft-storage-explorer"></a>Microsoft Depolama Gezgini kullanma
 
-1. [Microsoft Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)indirin ve yükleyin.
-2. Gezginini açın ve sol taraftaki menüden **Hesap Ekle**' yi seçin. **Azure depolama 'Ya Bağlan** iletişim kutusu görüntülenir.
-3. **Azure hesabı ekle** ' yi seçin ve **oturum açın**. Azure hesabınızda oturum açmak için gerekli adımları uygulayın.
-4. Sol**Gezgin** bölmesinde, **depolama hesaplarınıza** gidin ve bu düğümü genişletin.
-5. VHD 'nize sağ tıklayın ve sonra **paylaşma erişimi Imzasını al**' ı seçin.
-6. **Paylaşılan erişim imzası** iletişim kutusu görüntülenir. Aşağıdaki alanları doldurun:
+1. Azure portal depolama hesabınıza gidin.
+2. Soldaki gezgin bölmesinde **Depolama Gezgini** (Önizleme) aracını açın.
+3. VHD 'nize sağ tıklayın ve **paylaşılan erişim Imzası al**' ı seçin.
+4. **Paylaşılan erişim imzası** iletişim kutusu görüntülenir. Aşağıdaki alanları doldurun:
 
     * **Başlangıç zamanı** – VHD erişimi için izin başlangıç tarihi. Geçerli tarihten bir gün önce bir tarih girin.
     * **Süre sonu** – VHD erişimi için izin sona erme tarihi. Geçerli tarihin ötesinde en az üç haftalık bir tarih girin.
@@ -50,20 +48,11 @@ SAS adresi (URL) oluşturmak için kullanılan iki ortak araç vardır:
 
         :::image type="content" source="media/create-sas-uri-storage-explorer.png" alt-text="Paylaşılan erişim Imzası iletişim kutusunu gösterir":::
 
-7. Bu VHD için ilişkili SAS URI 'SI oluşturmak için **Oluştur**' u seçin. İletişim kutusu yenilenir ve bu işlemle ilgili ayrıntıları gösterir.
-8. **URI** 'yi kopyalayın ve güvenli bir konumdaki bir metin dosyasına kaydedin.
+5. Bu VHD için ilişkili SAS URI 'SI oluşturmak için **Oluştur**' u seçin. İletişim kutusu yenilenir ve bu işlemle ilgili ayrıntıları gösterir.
+6. **URI** 'yi kopyalayın ve güvenli bir konumdaki bir metin dosyasına kaydedin.
 
     :::image type="content" source="media/create-sas-uri-shared-access-signature-details.png" alt-text="Paylaşılan erişim Imzası ayrıntıları kutusunu gösterir":::
-
-    Bu oluşturulan SAS URI 'SI kapsayıcı düzeyinde erişime yöneliktir. Özel hale getirmek için, VHD adını eklemek üzere metin dosyasını düzenleyin (sonraki adım).
-
-9. SAS URI 'sindeki VHD dizesinden sonra VHD adınızı ekleyin (eğik çizgi ekleyin). Son SAS URI 'SI şöyle görünmelidir:
-
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Örneğin, VDH 'nin adı ise `TestRGVM2.vhd` , elde EDILEN SAS URI 'si şöyle olacaktır:
-
-    `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-10. Yayımlayacağınız planlardaki her VHD için bu adımları tekrarlayın.
+7. Yayımlayacağınız planlardaki her VHD için bu adımları tekrarlayın.
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f80403946b3097e81678383c4829ef6606f26cd6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083999"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430350"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde gelişmiş güvenli puan
 
@@ -169,6 +169,10 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Denetim ve günlüğü etkinleştir (en fazla puan 1)</p></strong>Günlüğe kaydetme verileri, geçmiş sorunlara yönelik öngörüler sağlar, olası olanları önler, uygulama performansını iyileştirebilir ve aksi takdirde el ile gerçekleştirilen eylemleri otomatikleştirebilme yeteneği sağlar.<br>- <strong>Denetim ve yönetim günlükleri</strong> <a href="https://docs.microsoft.com/azure/azure-resource-manager/management/overview">Azure Resource Manager</a> işlemler hakkında bilgi sağlar.<br>- <strong>Veri düzlemi günlükleri</strong> , Azure Kaynak kullanımının bir parçası olarak oluşturulan olaylar hakkında bilgi sağlar.<br>- <strong>İşlenen olaylar</strong> , işlenmiş olan çözümlenen olaylar/uyarılar hakkında bilgi sağlar.</td>
     <td class="tg-lboi"; width=55%>-SQL Server üzerinde denetim etkinleştirilmelidir<br>-Uygulama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir<br>-Azure Data Lake Store tanılama günlükleri etkinleştirilmelidir<br>-Azure Stream Analytics tanılama günlükleri etkinleştirilmelidir<br>-Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir<br>-Data Lake Analytics tanılama günlükleri etkinleştirilmelidir<br>-Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir<br>-IoT Hub tanılama günlükleri etkinleştirilmelidir<br>-Key Vault tanılama günlükleri etkinleştirilmelidir<br>-Logic Apps tanılama günlükleri etkinleştirilmelidir<br>-Arama hizmetindeki tanılama günlükleri etkinleştirilmelidir<br>-Service Bus tanılama günlükleri etkinleştirilmelidir<br>-Sanal makine ölçek kümelerindeki tanılama günlükleri etkinleştirilmelidir<br>-Toplu Iş hesaplarında ölçüm uyarısı kuralları yapılandırılmalıdır<br>-SQL denetim ayarları, kritik etkinlikleri yakalamak için yapılandırılmış eylem grupları olmalıdır<br>-SQL Server 'lar 90 günden daha uzun denetim bekletme günlerindeki şekilde yapılandırılmalıdır.</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Gelişmiş tehdit korumasını etkinleştir (en fazla puan 0)</p></strong>Azure Güvenlik Merkezi 'nin tehdit koruması, ortamınız için kapsamlı savunma sağlar. Güvenlik Merkezi, ortamınızın herhangi bir alanında bir tehdit algıladığında bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır.<br>Her tehdit koruması paketi, bu güvenlik denetimindeki ilgili öneriyi kullanarak etkinleştirebileceğiniz ayrı, isteğe bağlı bir tekliftir.<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Güvenlik Merkezi 'nde tehdit koruması hakkında daha fazla bilgi edinin</a>.</td>
+    <td class="tg-lboi"; width=55%>-Azure SQL veritabanı sunucularında gelişmiş veri güvenliği etkinleştirilmelidir<br>-Makinelerdeki SQL sunucularında gelişmiş veri güvenliği etkinleştirilmelidir<br>-Gelişmiş tehdit koruması sanal makinelerde etkinleştirilmelidir<br>-Gelişmiş tehdit koruması Azure App Service planlarda etkinleştirilmelidir<br>-Gelişmiş tehdit koruması, Azure depolama hesaplarında etkinleştirilmelidir<br>-Gelişmiş tehdit koruması, Azure Kubernetes hizmet kümelerinde etkinleştirilmelidir<br>-Gelişmiş tehdit koruması Azure Container Registry kayıt defterlerinde etkinleştirilmelidir<br>-Gelişmiş tehdit koruması Azure Key Vault kasaları üzerinde etkinleştirilmelidir</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">En iyi güvenlik uygulamalarını uygulayın (en fazla puan 0)</p></strong>Modern güvenlik uygulamaları, ağ çevre ' ün ihlal olduğunu varsayar. Bu nedenle, bu denetimdeki en iyi uygulamalardan birçoğu kimlikleri yönetmeye odaklanmaktadır.<br>Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtarları,. pfx dosyalarını ve parolaları şifreleyerek anahtarları ve gizli dizileri <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> korur.<br>Sanal özel ağlar (VPN 'Ler), sanal makinelerinize erişmenin güvenli bir yoludur. VPN 'Ler kullanılamıyorsa, karmaşık parola ve <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a>gibi iki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulaması, yalnızca Kullanıcı adları ve parolalara bağlı olan zayıf yanları önler.<br>Güçlü kimlik doğrulama ve yetkilendirme platformlarının kullanılması, başka bir en iyi uygulamadır. Federal kimliklerin kullanılması, kuruluşların yetkili kimliklerin yönetimini temsilciliğini sağlar. Bu, çalışanlar sonlandırıldığı ve erişiminin iptal edilmesi gereken durumlarda da önemlidir.</td>

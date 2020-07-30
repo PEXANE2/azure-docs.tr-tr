@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: f7a792eea28c6a6d05c4f295241291fdf2449467
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a9aa58ec990170df99f330f67991fff7b61c2b49
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82859042"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429841"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Öğretici: birincil bölgeden verileri okurken hata benzetimi yap
 
@@ -23,7 +24,7 @@ Bu öğretici, bir dizinin ikinci bölümüdür. Bu durumda, hata benzetimi yapa
 
 Bir hatanın benzetimini yapmak için, [statik yönlendirme](#simulate-a-failure-with-an-invalid-static-route) veya [Fiddler](#simulate-a-failure-with-fiddler)kullanabilirsiniz. Her iki yöntem de, [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy.md) (ra-GZRS) depolama hesabınızın birincil uç noktasına yönelik isteklerin hata benzetimi yapmanıza olanak sağlar. bunun yerine ikincil uç noktadan okumak üzere uygulamayı önde görürsünüz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 Serinin ikinci bölümünde şunları öğrenirsiniz:
 
@@ -52,7 +53,7 @@ Fiddler kullanarak bir hatanın benzetimini yapmak için [Fiddler](https://www.t
 
 Uygulama duraklatıldığında, Windows 'da yönetici olarak bir komut istemi açın veya Linux üzerinde kök olarak Terminal çalıştırın.
 
-Bir komut istemine veya terminale aşağıdaki komutu girerek depolama hesabı birincil uç noktası etki alanı hakkında bilgi alın ve bunu depolama `STORAGEACCOUNTNAME` hesabınızın adıyla değiştirin.
+Bir komut istemine veya terminale aşağıdaki komutu girerek depolama hesabı birincil uç noktası etki alanı hakkında bilgi alın ve bunu `STORAGEACCOUNTNAME` depolama hesabınızın adıyla değiştirin.
 
 ```
 nslookup STORAGEACCOUNTNAME.blob.core.windows.net
@@ -62,7 +63,7 @@ Depolama hesabınızın IP adresini daha sonra kullanmak üzere bir metin düzen
 
 Yerel ana bilgisayarın IP adresini almak için Windows komut isteminde `ipconfig` veya Linux terminalinde `ifconfig` yazın.
 
-Bir hedef ana bilgisayar için statik bir yol eklemek üzere bir Windows komut isteminde veya Linux terminalinde aşağıdaki komutu yazın, depolama hesabınızın `<destination_ip>` IP adresi ile ve `<gateway_ip>` yerel ana bilgisayar IP adresiniz ile değiştirin.
+Bir hedef ana bilgisayar için statik bir yol eklemek üzere bir Windows komut isteminde veya Linux terminalinde aşağıdaki komutu yazın, `<destination_ip>` depolama HESABıNıZıN IP adresi ile ve `<gateway_ip>` yerel ana bilgisayar IP adresiniz ile değiştirin.
 
 #### <a name="linux"></a>Linux
 
@@ -108,9 +109,9 @@ Fiddler’ı açıp **Kurallar**’ı ve **Kuralları Özelleştir**’i seçin.
 
 ![Fiddler kurallarını özelleştirme](media/simulate-primary-region-failure/figure1.png)
 
-Fiddler ScriptEditor, **Samplerules. js** dosyasını başlatır ve görüntüler. Bu dosya, Fiddler’ı özelleştirmek için kullanılır.
+Fiddler ScriptEditor, **SampleRules.js** dosyasını başlatır ve görüntüler. Bu dosya, Fiddler’ı özelleştirmek için kullanılır.
 
-Aşağıdaki kod örneğini, depolama hesabınızın adıyla `OnBeforeResponse` değiştirerek `STORAGEACCOUNTNAME` işlevine yapıştırın. Örneğe bağlı olarak, indirilmekte olan test dosyası adıyla ( `HelloWorld` veya gibi `sampleFile`bir ön ek) öğesini de değiştirmeniz gerekebilir. Yeni kod, hemen çalıştırıldığından emin olmak için yorum yapılır.
+Aşağıdaki kod örneğini, `OnBeforeResponse` depolama hesabınızın adıyla değiştirerek işlevine yapıştırın `STORAGEACCOUNTNAME` . Örneğe bağlı olarak, `HelloWorld` indirilmekte olan test dosyası adıyla (veya gibi bir ön ek) öğesini de değiştirmeniz gerekebilir `sampleFile` . Yeni kod, hemen çalıştırıldığından emin olmak için yorum yapılır.
 
 Tamamlandıktan sonra, değişikliklerinizi kaydetmek için **Dosya** ' yı ve **Kaydet** ' i seçin. Aşağıdaki adımlarda kullanmak üzere ScriptEditor penceresini açık bırakın.
 
@@ -138,7 +139,7 @@ Tamamlandıktan sonra, değişikliklerinizi kaydetmek için **Dosya** ' yı ve *
 
 ### <a name="simulate-failure"></a>Hata benzetimi yapma
 
-Uygulama duraklatıldığında, Fiddler 'a geri dönün ve `OnBeforeResponse` işlevde kaydettiğiniz özel kuralın açıklamasını kaldırın. Kuralın etkili olabilmesi için **Dosya** ' yı seçtiğinizden emin olun ve **değişikliklerinizi kaydedin.** Bu kod RA-GZRS depolama hesabına yönelik istekleri arar ve yol örnek dosyanın adını içeriyorsa, yanıt kodu döndürür `503 - Service Unavailable`.
+Uygulama duraklatıldığında, Fiddler 'a geri dönün ve işlevde kaydettiğiniz özel kuralın açıklamasını kaldırın `OnBeforeResponse` . Kuralın etkili olabilmesi için **Dosya** ' yı seçtiğinizden emin olun ve **değişikliklerinizi kaydedin.** Bu kod RA-GZRS depolama hesabına yönelik istekleri arar ve yol örnek dosyanın adını içeriyorsa, yanıt kodu döndürür `503 - Service Unavailable` .
 
 Çalışan örneğe sahip pencerede, uygulamayı sürdürür veya örnek dosyayı indirmek için uygun anahtara basın ve ikincil depolama alanından geldiğini onaylayın. Daha sonra örneği yeniden duraklatabilir veya istem sırasında bekleyebilirsiniz.
 

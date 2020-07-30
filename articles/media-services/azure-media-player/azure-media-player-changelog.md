@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 07/27/2020
-ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281353"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432667"
 ---
 # <a name="changelog"></a>Değişiklik günlüğü #
 
@@ -57,13 +57,13 @@ ms.locfileid: "87281353"
 
 ### <a name="changes-234"></a>2.3.4 değişiklikleri
 
-- İOS ve MacOS Safari 'de HLS oynatılırken boş açıklamalı altyazı etiketi/izleme kaldırıldı
+- İOS ve macOS Safari 'de HLS oynatılırken boş açıklamalı altyazı etiketi/izleme kaldırıldı
 - IMSC1 açıklamalı alt yazıları için 412s sayısını azalttı
 - Canlı hata ayıklamaya yardımcı olmak için 10 ardışık boş IMSC1 açıklamalı alt yazı yanıtları için konsolda çıkış uyarısı
 
 ## <a name="232-official-update-october-9-2019"></a>2.3.2 (resmi güncelleştirme 9 2019 Ekim)
 
-### <a name="features"></a>Özellikler
+### <a name="features-232"></a>Özellikler 2.3.2
 
 -Berkum Edge tarayıcısı için kısa çizgi yürütmeye yönelik PlayReady desteği eklendi
 
@@ -101,7 +101,7 @@ ms.locfileid: "87281353"
 
 - Bir segmentDecryptError ve oynatıcı zaten canlı bir kenar üzerinde olduğunda, Player şimdi bir sonraki segmenti denemek yerine bildirimi yeniler
 - Tanılama için daha fazla günlüğe kaydetme eklendi
-- İOS Safari için Inlcude FairPlay desteğine güncelleştirilmiş belgeler
+- İOS Safari için FairPlay desteğini içerecek belgeler güncelleştirildi
 - IMSC1 seçeneğinin "srclang" için bir örnek eklendi
 - Metin parçaları için doldurma, textPadding, boxShadow geçersiz kılmaları eklendi.
 - Yalnızca 0x00200259 ' un ayrılması yerine internet olmaması nedeniyle kesim indirmenin başarısız olması için bir hata kodu (0x0020025B) eklendi
@@ -228,7 +228,7 @@ ms.locfileid: "87281353"
 
 ### <a name="changes-218"></a>2.1.8 değişiklikleri ###
 
-- Değişebilir Şu anda desteklenmediğinden, AES içeriği Flash 30 ile kayıttan yürütüldüğünde, 0x0600001 hatası güncelleştirildi. Daha fazla ayrıntı için lütfen [bilinen sorunlara](azure-media-player-known-issues.md) bakın
+- Değişebilir Şu anda desteklenmediğinden, AES içeriği Flash 30 ile kayıttan yürütüldüğünde görüntülenecek 0x0600001 hatası güncelleştirildi. Daha fazla ayrıntı için lütfen [bilinen sorunlara](azure-media-player-known-issues.md) bakın
 - Değişebilir Bildirim 404 istediğinde veya boş bildirimler döndürdüğünde canlı senaryolar için ek yeniden denemeler eklendi.
 
 ## <a name="217-official-update"></a>2.1.7 (resmi güncelleştirme) ##

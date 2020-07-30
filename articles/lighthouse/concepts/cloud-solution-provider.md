@@ -1,14 +1,14 @@
 ---
 title: Bulut Çözüm Sağlayıcısı programı hakkında önemli noktalar
 description: CSP iş ortakları için, Azure tarafından atanan kaynak yönetimi, ayrıntılı izinleri etkinleştirerek güvenliğin ve denetimin artırılmasına yardımcı olur.
-ms.date: 07/06/2020
+ms.date: 07/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 0ae7ef0b78f2f37708c6b442a9591fcbcce25646
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131502"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429445"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure açık Thouse ve bulut çözümü sağlayıcısı programı
 
@@ -32,6 +32,9 @@ Azure Athouse kullanarak, aşağıdaki diyagramda gösterildiği gibi farklı m�
 CSP programı aracılığıyla oluşturduğunuz bir aboneliği [eklemek, Azure 'da bir abonelik](../how-to/onboard-customer.md)ekleme ' de açıklanan adımları izler. Kiracınızda yönetici Aracısı rolüne sahip olan tüm kullanıcılar bu ekleme işlemini gerçekleştirebilir.
 
 ![AOI ve Azure tarafından atanan kaynak yönetimini kullanan Kiracı Yönetimi](../media/csp-2.jpg)
+
+> [!TIP]
+> Özel planlar içeren [yönetilen hizmet teklifleri](managed-services-offers.md) , bulut çözümü sağlayıcısı (CSP) programının satıcısı aracılığıyla oluşturulan aboneliklerle desteklenmez. Bu abonelikleri, [Azure Resource Manager şablonları kullanarak](../how-to/onboard-customer.md)Azure açık thouse öğesine ekleyebilirsiniz.
 
 > [!NOTE]
 > Azure portal [ **müşterilerimiz** sayfasında](../how-to/view-manage-customers.md) , [MICROSOFT Müşteri Sözleşmesi 'ni (MCA) imzalayan](/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](/partner-center/azure-plan-get-started)olan CSP müşterilerinin fatura bilgilerini ve kaynaklarını görüntüleyen bir **bulut çözümü sağlayıcısı (Önizleme)** bölümü vardır. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](../../cost-management-billing/understand/mpa-overview.md).

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d8ac2a8317343b1bc172eefa17c6eb0074c5c21f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292077"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432631"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -92,6 +92,9 @@ Taban çizgisi: %270
 
 ## <a name="q--a"></a>Soru-Cevap
 
+### <a name="q-what-happens-if-the-credits-run-out"></a>S: krediler tükendiğinde ne olur?
+**A**Y: krediler TÜKENDIĞINDE, VM taban çizgisi performansına geri döner.
+
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>S: bir VM 'den %135 temel performansı nasıl alırsınız?
 
 Y **:%** 135, VM boyutunu oluşturan 8 vCPU arasında paylaşılır. Örneğin, uygulamanız toplu işleme üzerinde çalışan 8 çekirdeğin 4 ' ü kullanıyorsa ve bu 4 vCPU 'nun her biri %30 ' da çalışıyorsa, toplam VM CPU performansı miktarı %120 değerine eşittir.  VM 'nizin, temel performansından %15 Delta temelinde kredi süresi oluşturması anlamına gelir.  Aynı zamanda, aynı VM 'nin tüm 8 vCPU 'nun %100 ' ü kullanmasını sağlayan kredilerin, %800 ' nin en yüksek CPU performansına sahip olduğu anlamına gelir.
@@ -103,7 +106,7 @@ Y **: önümüzdeki**haftalarda 2 yeni ölçüm tanıtıyoruz, **KREDI** ölçü
 
 Azure için ölçüm verilerine erişme hakkında daha fazla bilgi için, bkz. [Microsoft Azure ölçümlere genel bakış](../azure-monitor/platform/data-platform.md).
 
-### <a name="q-how-are-credits-accumulated"></a>S: krediler nasıl birikmiş?
+### <a name="q-how-are-credits-accumulated-and-consumed"></a>S: krediler nasıl birikmiş ve tüketildi?
 
 Y **: VM**birikmesi ve tüketim ücretleri, tam olarak kendi temel performans düzeyinde çalışan bir VM 'nin net birikmesi veya ücretsiz kredi tüketimine sahip olacağı şekilde ayarlanır.  Bir VM, temel performans düzeyinin altında çalıştığında kredilerin net artışına sahip olur ve VM CPU 'YU temel performans düzeyinden daha fazla kullandığında kredilerin net bir düşüş olur.
 

@@ -1,35 +1,36 @@
 ---
-title: 'Öğretici: Azure statik Web Apps sunucu tarafından işlenmiş Nuxt. js web sitelerini dağıtma'
-description: Azure statik Web Apps Nuxt. js dinamik siteleri oluşturun ve dağıtın.
+title: 'Öğretici: Azure statik Web Apps üzerinde sunucu tarafından işlenen Nuxt.js Web siteleri dağıtma'
+description: Azure statik Web Apps ile Nuxt.js dinamik siteler oluşturun ve dağıtın.
 services: static-web-apps
 author: christiannwamba
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: 8a4fb581b884d28c8366cbf9a50e001eadd027d9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9c7e03f5e658b8e15dcae1c5314b73dfbfdf0206
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599826"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430284"
 ---
-# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenmiş Nuxt. js web sitelerini dağıtma
+# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenen Nuxt.js Web sitelerini dağıtma
 
-Bu öğreticide, [NXT. js](https://nuxtjs.org) tarafından oluşturulan bir statik Web sitesini [Azure statik Web Apps](overview.md)dağıtmayı öğreneceksiniz. Başlamak için, Nuxt. js uygulamasını ayarlamayı, yapılandırmayı ve dağıtmayı öğreneceksiniz. Bu işlem sırasında, Nuxt. js ile statik sayfalar oluştururken sık karşılaşılan güçlüklerle başa çıkmak da öğreneceksiniz.
+Bu öğreticide, [Nuxt.js](https://nuxtjs.org) üretilmiş bir statik Web sitesini [Azure statik Web Apps](overview.md)dağıtmayı öğreneceksiniz. Başlamak için Nuxt.js uygulamasını ayarlamayı, yapılandırmayı ve dağıtmayı öğreneceksiniz. Bu işlem sırasında, genellikle Nuxt.js ile statik sayfalar oluştururken ortaya çıkacak yaygın güçlüklerle uğraşmak üzere de öğrenirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 - GitHub hesabı. [Ücretsiz hesap oluşturun](https://github.com/join).
-- [Node.js](https://nodejs.org) uygulamasının yüklenmiş olması.
+- [Node.js](https://nodejs.org) yüklendi.
 
-## <a name="set-up-a-nuxtjs-app"></a>Nuxt. js uygulaması ayarlama
+## <a name="set-up-a-nuxtjs-app"></a>Nuxt.js uygulaması ayarlama
 
-Kullanarak yeni bir Nuxt. js projesi ayarlayabilirsiniz `create-nuxt-app` . Yeni bir proje yerine, bu öğreticide mevcut bir depoyu kopyalayarak başlarsınız. Bu depo, dinamik bir Nuxt. js uygulamasının statik bir site olarak nasıl dağıtılacağını göstermek üzere ayarlanır.
+Kullanarak yeni bir Nuxt.js projesi ayarlayabilirsiniz `create-nuxt-app` . Yeni bir proje yerine, bu öğreticide mevcut bir depoyu kopyalayarak başlarsınız. Bu depo, dinamik bir Nuxt.js uygulamasının statik bir site olarak nasıl dağıtılacağını göstermek üzere ayarlanır.
 
 1. Bir şablon deposundan GitHub hesabınızda yeni bir depo oluşturun.
-1. Şuraya gidin<http://github.com/staticwebdev/nuxtjs-starter/generate>
+1. <http://github.com/staticwebdev/nuxtjs-starter/generate> sayfasına gidin
 1. Depoyu adlandırın **nuxtjs-Starter**
 1. Sonra, yeni depoyu makinenize kopyalayın. <YOUR_GITHUB_ACCOUNT_NAME> hesap adınızla değiştirdiğinizden emin olun.
 
@@ -37,7 +38,7 @@ Kullanarak yeni bir Nuxt. js projesi ayarlayabilirsiniz `create-nuxt-app` . Yeni
     git clone http://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/nuxtjs-starter
     ```
 
-1. Yeni kopyalanan Nuxt. js uygulamasına gidin:
+1. Yeni kopyalanmış Nuxt.js uygulamasına gidin:
 
    ```bash
    cd nuxtjs-starter
@@ -49,7 +50,7 @@ Kullanarak yeni bir Nuxt. js projesi ayarlayabilirsiniz `create-nuxt-app` . Yeni
     npm install
     ```
 
-1. Geliştirme sırasında Nuxt. js uygulamasını başlatın:
+1. Geliştirme aşamasında Nuxt.js uygulamayı Başlat:
 
     ```bash
     npm run dev
@@ -57,17 +58,17 @@ Kullanarak yeni bir Nuxt. js projesi ayarlayabilirsiniz `create-nuxt-app` . Yeni
 
 <http://localhost:3000>Aşağıdaki Web sitesini tercih ettiğiniz tarayıcınızda açık olarak görmeniz gereken uygulamayı açmak için şuraya gidin:
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-app.png" alt-text="Nuxt. js uygulamasını Başlat":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-app.png" alt-text="Nuxt.js uygulamayı Başlat":::
 
 Bir çerçeveye/kitaplığa tıkladığınızda, seçili öğe hakkında bir Ayrıntılar sayfası görmeniz gerekir:
 
 :::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Ayrıntılar sayfası":::
 
-## <a name="generate-a-static-website-from-nuxtjs-build"></a>Nuxt. js derlemesinden statik bir Web sitesi oluşturma
+## <a name="generate-a-static-website-from-nuxtjs-build"></a>Nuxt.js derlemeden statik bir Web sitesi oluşturma
 
-Kullanarak bir Nuxt. js sitesi oluşturduğunuzda `npm run build` , uygulama statik bir site değil, geleneksel bir Web uygulaması olarak oluşturulur. Statik bir site oluşturmak için aşağıdaki uygulama yapılandırmasını kullanın.
+Kullanarak bir Nuxt.js sitesi oluşturduğunuzda `npm run build` , uygulama statik bir site değil, geleneksel bir Web uygulaması olarak oluşturulur. Statik bir site oluşturmak için aşağıdaki uygulama yapılandırmasını kullanın.
 
-1. _Package. JSON_derleme betiğini yalnızca komutunu kullanarak bir statik site oluşturacak şekilde güncelleştirin `nuxt generate` :
+1. Derleme betikindeki _package.js_komutu kullanarak yalnızca statik bir site oluşturacak şekilde güncelleştirin `nuxt generate` :
 
     ```json
     "scripts": {
@@ -84,7 +85,7 @@ Kullanarak bir Nuxt. js sitesi oluşturduğunuzda `npm run build` , uygulama sta
     npm run build
     ```
 
-    Nuxt. js statik siteyi oluşturur ve çalışma dizininizin kökündeki bir _dağ_ klasörüne kopyalayacaktır.
+    Nuxt.js statik siteyi oluşturacak ve çalışma dizininizin kökündeki bir _dağ_ klasörüne kopyalayacaktır.
 
     > [!NOTE]
     > Dağıtım sırasında CI/CD tarafından oluşturulması gerektiğinden, bu klasör _. gitignore_ dosyasında listelenir.
@@ -118,10 +119,10 @@ Aşağıdaki adımlarda, az önce GitHub 'a gönderdiğiniz uygulamayı Azure st
 ### <a name="create-an-azure-static-web-apps-preview-resource"></a>Azure statik Web Apps önizleme kaynağı oluşturma
 
 1. [Azure Portal](https://portal.azure.com) gidin
-1. **Kaynak oluştur ' a** tıklayın
-1. **Statik Web Apps** ara
-1. **Statik Web Apps (Önizleme)** seçeneğine tıklayın
-1. **Oluştur** 'a tıklayın
+1. **Kaynak oluştur** seçeneğine tıklayın
+1. **Statik Web Uygulamaları** için arama yapın
+1. **Statik Web Uygulamaları (Önizleme)** seçeneğine tıklayın
+1. **Oluştur** seçeneğine tıklayın
 
 1. *Abonelik* açılan listesinden bir abonelik seçin veya varsayılan değeri kullanın.
 1. *Kaynak grubu açılır grubunun* altındaki **Yeni** bağlantıya tıklayın. *Yeni kaynak grubu adı*' nda **mystaticsite** yazın ve **Tamam** ' a tıklayın.
@@ -133,14 +134,14 @@ Aşağıdaki adımlarda, az önce GitHub 'a gönderdiğiniz uygulamayı Azure st
 
 ### <a name="add-a-github-repository"></a>GitHub deposu ekleme
 
-Yeni statik Web Apps hesabının, işleme otomatik olarak dağıtımı için Nuxt. js uygulamanız ile depoya erişmesi gerekir.
+Yeni statik Web Apps hesabının, işleme otomatik olarak dağıtabilmesi için Nuxt.js uygulamanızla depoya erişmesi gerekir.
 
 1. **GitHub Ile oturum aç düğmesine** tıklayın
-1. GitHub Kullanıcı adınız olabilecek NXT. js projeniz için depoyu oluşturduğunuz **kuruluşu** seçin.
+1. GitHub Kullanıcı adınız olabilecek Nuxt.js projeniz için depoyu oluşturduğunuz **kuruluşu** seçin.
 1. Daha önce oluşturduğunuz deponun adını bulun ve seçin.
 1. *Dal açılır listesinden* dal olarak **ana** öğesini seçin.
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="GitHub 'ı bağlama":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="GitHub'ı bağlama":::
 
 ### <a name="configure-the-build-process"></a>Yapı işlemini yapılandırma
 
@@ -179,13 +180,13 @@ Yeni dağıtılan siteye gidin ve Framework veya kitaplık logolarının birine 
 
 :::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="Dinamik yollarla 404":::
 
-Bunun nedeni, NXT. js ' nin statik siteyi üretme nedenidir. Bu, yalnızca giriş sayfası için. Nuxt. js `.html` her sayfa dosyası için eşdeğer statik dosyalar üretebilir `.vue` , ancak bir özel durum vardır. 
+Bunun nedeni, Nuxt.js statik site tarafından oluşturulmuştur, yalnızca giriş sayfası için. Nuxt.js `.html` her sayfa dosyası için eşdeğer statik dosyalar üretebilir `.vue` , ancak bir özel durum vardır. 
 
 Sayfa dinamik bir sayfa ise, örneğin `_id.vue` , bu dinamik sayfadan statik BIR HTML oluşturmak için yeterli bilgi olmayacaktır. Dinamik yollar için olası yolları açıkça sağlamanız gerekir.
 
 ## <a name="generate-static-pages-from-dynamic-routes"></a>Dinamik yollardan statik sayfalar oluşturma
 
-1. Nuxt. js ' nin her bir çerçeve/kitaplık için statik sayfalar oluşturmak üzere kullanılabilir tüm verilerin bir listesini kullanmasını sağlamak üzere _nuxt. config. js_ dosyasını güncelleştirin:
+1. _nuxt.config.js_ dosyasını, Nuxt.js her bir çerçeve/kitaplık için statik sayfalar oluşturmak üzere kullanılabilir tüm verilerin bir listesini kullanacak şekilde güncelleştirin:
 
    ```javascript
      import { projects } from "./utils/projectsData";

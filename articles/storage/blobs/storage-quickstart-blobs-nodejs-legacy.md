@@ -7,12 +7,13 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 01d9c2e2b822af607d7473206461b97dfa627c17
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cb1e1baa63e5a38a7f3db251c6c6d551e999befc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282033"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431067"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Hızlı başlangıç: Node.js içindeki JavaScript ile v10 arasındaki SDK ile Blobları yönetme
 
@@ -21,7 +22,7 @@ Bu hızlı başlangıçta, Node.js kullanarak blob 'ları yönetmeyi öğrenecek
 > [!NOTE]
 > Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: JavaScript V12 SDK ile Blobları yönetme Node.js](storage-quickstart-blobs-nodejs.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
@@ -221,7 +222,7 @@ Aborters, şu işlevleri sunarak istekler üzerinde denetim sahibi olmanızı sa
 - istekleri iptal etme
 - isteklerinizi birlikte zaman aşımına uğramak üzere durdurmak için *Aborter. None* statik üyesini kullanın
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Kapsayıcı oluşturmak için *ContainerURL*'nin *create* metodu kullanılır.
 

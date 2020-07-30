@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372119"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433225"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
 >
 > Ayrıca, Azure Machine Learning- [Yerel not defterine dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) ' ya başvurabilirsiniz
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -63,7 +63,11 @@ AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
 
 - Bu makaledeki __CLI__ kod parçacıkları bir belge oluşturduğunuzu varsayar `inferenceconfig.json` . Bu belgeyi oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
-- [API sunucusuna erişim için yetkilendirilmiş BIR IP aralığı etkin](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)olan bir aks kümesi eklerseniz, aks kümesi için AML CONTOL düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde ınleþlek kapsayan Pod dağıtır. API sunucusuna erişim olmadan, ıncallpods dağıtılamıyor. AKS kümesinde IP aralıklarını etkinleştirirken hem [eşleştirilmiş bölgeler]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) için [IP aralıklarını](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) kullanın
+- Temel Load Balancer (BLB) yerine kümenizde dağıtılan bir Standart Load Balancer (SLB) varsa, lütfen AKS portalında/CLı/SDK ' da bir küme oluşturun ve ardından AML çalışma alanına ekleyin.
+
+- [API sunucusuna erişim için yetkilendirilmiş BIR IP aralığı etkin](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)olan bir aks kümesi eklerseniz, aks kümesi için AML CONTOL düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde ınleþlek kapsayan Pod dağıtır. API sunucusuna erişim olmadan, ıncallpods dağıtılamıyor. Bir AKS kümesindeki IP aralıklarını etkinleştirirken, her iki [eşleştirilmiş bölge]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Için de [IP aralıklarını](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) kullanın.
+
+__Authpolanmış IP aralıkları yalnızca Standart Load Balancer ile kullanılabilir.__
  
  - İşlem adı bir çalışma alanı içinde benzersiz OLMALıDıR
    - Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.
@@ -73,7 +77,7 @@ AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
    
  - Modelleri GPU düğümlerine veya FPGA düğümlerine (ya da belirli bir SKU) dağıtmak istiyorsanız, belirli SKU 'ya sahip bir küme oluşturmanız gerekir. Mevcut bir kümede ikincil düğüm havuzu oluşturma ve ikincil düğüm havuzunda modelleri dağıtma desteği yoktur.
  
- - Temel Load Balancer (BLB) yerine kümenizde dağıtılan bir Standart Load Balancer (SLB) varsa, lütfen AKS portalında/CLı/SDK ' da bir küme oluşturun ve ardından AML çalışma alanına ekleyin. 
+ 
 
 
 
@@ -257,6 +261,30 @@ VS Code kullanımı hakkında bilgi için bkz. [vs Code uzantısı aracılığı
 
 > [!IMPORTANT]
 > VS Code aracılığıyla dağıtmak, AKS kümesinin önceden oluşturulmasını veya çalışma alanınıza eklenmesini gerektirir.
+
+### <a name="understand-the-deployment-processes"></a>Dağıtım süreçlerini anlama
+
+"Dağıtım" sözcüğü hem Kubernetes hem de Azure Machine Learning için kullanılır. "Dağıtım" Bu iki bağlamda çok farklı anlamlara sahiptir. Kubernetes içinde, `Deployment` bildirim temelli YAML dosyası ile belirtilen somut bir varlıktır. Bir Kubernetes `Deployment` , ve gibi diğer Kubernetes varlıklarına tanımlı bir yaşam döngüsüne ve somut ilişkilerine `Pods` sahiptir `ReplicaSets` . Kubernetes nedir [?,](https://aka.ms/k8slearning)docs ve videolardan Kubernetes hakkında bilgi edinebilirsiniz.
+
+Azure Machine Learning, "dağıtım" kullanılabilir hale getirme ve proje kaynaklarınızı temizleme konusunda genel anlamda kullanılır. Azure Machine Learning dağıtımın bir parçasını dikkate alan adımlar şunlardır:
+
+1. . Amlignore veya. gitignore içinde belirtilen dosyaları yoksayarak proje klasörünüzdeki dosyaları zipden gönderin
+1. İşlem kümenizi ölçeklendirme (Kubernetes ile Ilgilidir)
+1. Dockerfile 'ı işlem düğümüne derleme veya indirme (Kubernetes ile Ilgilidir)
+    1. Sistem bir karma değerini hesaplar: 
+        - Temel görüntü 
+        - Özel Docker adımları (bkz. [özel bir Docker temel görüntüsü kullanarak model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Conda tanımı YAML (bkz. [oluşturma & yazılım ortamlarını Azure Machine Learning kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Sistem bu karmayı, çalışma alanının aramasında anahtar olarak kullanır Azure Container Registry (ACR)
+    1. Bulunmazsa, genel ACR 'de bir eşleşme arar
+    1. Bulunamadıysanız, sistem yeni bir görüntü oluşturur (önbelleğe alınır ve çalışma alanı ACR 'ye kaydedilir)
+1. Daraltılmış proje dosyanızı işlem düğümündeki geçici depolamaya indirme
+1. Proje dosyasının sıkıştırması kaldırılıyor
+1. Yürütülen işlem düğümü`python <entry script> <arguments>`
+1. Günlükler, model dosyaları ve `./outputs` çalışma alanıyla ilişkili depolama hesabına yazılan diğer dosyalar kaydediliyor
+1. Geçici depolamayı kaldırma dahil olmak üzere ölçeği azaltma işlemi (Kubernetes ile Ilgilidir)
+
+AKS kullanırken, işlemin ölçeğini artırma ve azaltma, yukarıda açıklandığı şekilde oluşturulan veya bulunan dockerfile kullanılarak Kubernetes tarafından denetlenir. 
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Denetimli dağıtımı kullanarak AKS 'e model dağıtma (Önizleme)
 
