@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/07/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: b32465091f82fec0aeae288ee9bfd5540bfe8b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002055"
 ---
 ## <a name="create-a-device-template"></a>Cihaz şablonu oluşturma
 
@@ -79,12 +79,11 @@ Azure IoT Central uygulamanızda, önceki bölümde oluşturduğunuz cihaz şabl
 
 1. **Cihazlar** sayfasında, **çevresel algılayıcı** cihaz şablonunu seçin.
 
-    > [!TIP]
-    > **+ Yeni**' yi seçmeden önce kullanılacak şablonu seçtiğinizden emin olun, aksi takdirde ilişkilendirilmemiş bir cihaz oluşturacaksınız.
+1. **+ Yeni** seçeneğini belirleyin.
 
-1. **+ Yeni**seçeneğini belirleyin.
+1. **Yeni bir cihaz oluştur** iletişim kutusunda, **ortam algılayıcısı** 'nın şablon türü olduğundan ve **Bu cihazın benzetimini** yapıp yaptığınızdan emin olun. **Hayır**olarak ayarlanır.
 
-1. **Benzetimli** 'un **kapalı**olduğundan emin olun. Ardından **Oluştur**'u seçin.
+1. Ardından **Oluştur**’u seçin.
 
 Cihaz adına tıklayın ve ardından **Bağlan**' ı seçin. Cihaz **bağlantısı** sayfa **kimliği KAPSAMı**, **cihaz kimliği**ve **birincil anahtar**üzerindeki cihaz bağlantı bilgilerini bir yere unutmayın. Cihaz kodunuzu oluştururken bu değerlere ihtiyacınız vardır:
 

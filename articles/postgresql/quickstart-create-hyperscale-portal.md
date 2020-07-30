@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ff80330ab6244bc9d108b7f5a1d4e4e0dbd4feb
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241517"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387413"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal PostgreSQL için Azure veritabanı-hiper ölçek (Citus) oluşturma
 
@@ -62,21 +62,23 @@ CREATE TABLE github_users
 );
 ```
 
-`payload` Alanının bir jsonb veri türü `github_events` vardır. JSONB, Postgres 'de ikili biçimdeki JSON veri türüdür. Veri türü, esnek bir şemayı tek bir sütunda depolamayı kolaylaştırır.
+`payload`Alanının `github_events` BIR jsonb veri türü vardır. JSONB, Postgres 'de ikili biçimdeki JSON veri türüdür. Veri türü, esnek bir şemayı tek bir sütunda depolamayı kolaylaştırır.
 
-Postgres bu türde bir `GIN` dizin oluşturabilir ve bu, içindeki her anahtar ve değeri dizine alır. Bir dizin ile yükü çeşitli koşullarla sorgulamak hızlı ve kolay hale gelir. Biz de verilerimizi yüklemeden önce birkaç dizin oluşturalım. Psql 'de:
+Postgres `GIN` Bu türde bir dizin oluşturabilir ve bu, içindeki her anahtar ve değeri dizine alır. Bir dizin ile yükü çeşitli koşullarla sorgulamak hızlı ve kolay hale gelir. Biz de verilerimizi yüklemeden önce birkaç dizin oluşturalım. Psql 'de:
 
 ```sql
 CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Daha sonra, bu Postgres tablolarını düzenleyici düğümünde ele alacağız ve hiper ölçeğe çalışanlar genelinde onları parçalamayı söyler. Bunu yapmak için, üzerine gelecek anahtarı belirten her tablo için bir sorgu çalıştıracağız. Geçerli örnekte, hem olaylar hem de Kullanıcı tablosu ' `user_id`nu parçalara parçalarız:
+Daha sonra, bu Postgres tablolarını düzenleyici düğümünde ele alacağız ve hiper ölçeğe çalışanlar genelinde onları parçalamayı söyler. Bunu yapmak için, üzerine gelecek anahtarı belirten her tablo için bir sorgu çalıştıracağız. Geçerli örnekte, hem olaylar hem de Kullanıcı tablosu ' nu parçalara parçalarız `user_id` :
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
+
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
 
 Verileri yüklemeye hazırız. Hala psql 'de, dosyaları indirmek için Shell Out:
 
@@ -96,13 +98,13 @@ SET CLIENT_ENCODING TO 'utf8';
 
 ## <a name="run-queries"></a>Sorgu çalıştırma
 
-Şimdi eğlenceli parçanın süresi, aslında bazı sorgular çalıştırıyor. Ne kadar veri yüklediğimiz hakkında `count (*)` daha basit bir başlangıç yapın:
+Şimdi eğlenceli parçanın süresi, aslında bazı sorgular çalıştırıyor. `count (*)`Ne kadar veri yüklediğimiz hakkında daha basit bir başlangıç yapın:
 
 ```sql
 SELECT count(*) from github_events;
 ```
 
-Bu, işe yaramakta. Bu toplama sıralamasına bir bit içinde geri döneceğiz, ancak şimdilik diğer birkaç sorguya göz atalım. JSONB `payload` sütununun içinde iyi bir veri bulunur, ancak olay türüne göre farklılık gösterir. `PushEvent`olaylar, gönderim için ayrı yürütmelerin sayısını içeren bir boyut içerir. Saat başına toplam işleme sayısını bulmak için kullanabiliriz:
+Bu, işe yaramakta. Bu toplama sıralamasına bir bit içinde geri döneceğiz, ancak şimdilik diğer birkaç sorguya göz atalım. JSONB sütununun içinde `payload` iyi bir veri bulunur, ancak olay türüne göre farklılık gösterir. `PushEvent`olaylar, gönderim için ayrı yürütmelerin sayısını içeren bir boyut içerir. Saat başına toplam işleme sayısını bulmak için kullanabiliriz:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -113,9 +115,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Şimdiye kadar sorgular GitHub\_olaylarını özel olarak katıldı, ancak bu bilgileri GitHub\_kullanıcılarıyla birleştirebiliriz. Aynı tanımlayıcı (`user_id`) üzerinde hem Kullanıcı hem de olay paylaşdığımız için, eşleşen Kullanıcı kimliklerine sahip her iki tablonun satırları aynı veritabanı düğümlerine dahil [edilir ve](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) kolayca eklenebilir.
+Şimdiye kadar sorgular GitHub \_ olaylarını özel olarak katıldı, ancak bu bilgileri GitHub kullanıcılarıyla birleştirebiliriz \_ . Aynı tanımlayıcı () üzerinde hem Kullanıcı hem de olay paylaşdığımız için `user_id` , eşleşen Kullanıcı kimliklerine sahip her iki tablonun satırları aynı veritabanı düğümlerine dahil [edilir](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) ve kolayca eklenebilir.
 
-Katılırsanız `user_id`hiper ölçek, çalışan düğümlerinde paralel olarak yürütülmesi için JOIN yürütmesini parçalara parçalar halinde gönderebilir. Örneğin, en fazla sayıda depo oluşturan kullanıcıları bulalım:
+Katılırsanız `user_id` hiper ölçek, çalışan düğümlerinde paralel olarak yürütülmesi için JOIN yürütmesini parçalara parçalar halinde gönderebilir. Örneğin, en fazla sayıda depo oluşturan kullanıcıları bulalım:
 
 ```sql
 SELECT gu.login, count(*)

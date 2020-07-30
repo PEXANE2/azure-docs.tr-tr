@@ -3,24 +3,19 @@ title: Azure sanal makine kullanımını anlama
 description: Sanal makine kullanım ayrıntılarını anlayın
 services: virtual-machines
 documentationcenter: ''
-author: mmccrory
-manager: gwallace
-editor: ''
-tags: azure-virtual-machine
-ms.assetid: ''
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines-linux
-ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
-ms.author: memccror
-ms.openlocfilehash: 9abb6948a91545439b429316dc2b71c14a1792d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/28/2020
+ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284838"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387719"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure sanal makine kullanımını anlama
 Azure kullanım verilerinizi analiz ederek, güçlü tüketim öngörüleri, kuruluşunuzun tamamında daha iyi maliyet yönetimi ve ayırmayı olanaklı hale getirebilirler. Bu belge, Azure Işlem tüketimi ayrıntılarınız hakkında ayrıntılı bilgi sağlar. Genel Azure kullanımı hakkında daha fazla bilgi için [Faturanızı Anlama](../../cost-management-billing/understand/review-individual-bill.md)bölümüne gidin.
@@ -29,87 +24,86 @@ Azure kullanım verilerinizi analiz ederek, güçlü tüketim öngörüleri, kur
 Başlamak için [kullanım ayrıntılarınızı indirin](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Aşağıdaki tabloda, Azure Resource Manager aracılığıyla dağıtılan sanal makineler için kullanım tanımı ve örnek değerleri verilmiştir. Bu belge, klasik modelimiz aracılığıyla dağıtılan VM 'Ler için ayrıntılı bilgiler içermez.
 
 
-| Alanlar             | Anlamı                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Örnek değerler                                                                                                                                                                                                                                                                                                                                                   |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Kullanım Tarihi         | Kaynağın kullanıldığı tarih.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |  "11/23/2017"                                                                                                                                                                                                                                                                                                                                                     |
-| Ölçüm kimliği           | Bu kullanımın ait olduğu en üst düzey hizmeti belirler.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | "Sanal makineler"                                                                                                                                                                                                                                                                                                                                               |
-| Sayaç Alt Kategorisi | Faturalanan ölçüm tanımlayıcısı. <ul><li>Işlem saati kullanımı için, her VM boyutu + OS (Windows, Windows dışı) + bölgesi için bir ölçüm vardır.</li><li>Premium yazılım kullanımı için her yazılım türü için bir ölçüm vardır. Çoğu Premium yazılım görüntülerinin her çekirdek boyutu için farklı ölçümleri vardır. Daha fazla bilgi için, [Işlem fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/virtual-machines/) ziyaret edin.</li></ul>                                                                                                                                                                                                                                                                                                                                         | "2005544f-659d-49c9-9094-8e0aea1be3a5"                                                                                                                                                                                                                                                                                                                           |
-| Sayaç Adı         | Bu, Azure 'daki her hizmet için özeldir. İşlem için her zaman "İşlem Saatleri" olur.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | "İşlem Saatleri"                                                                                                                                                                                                                                                                                                                                                  |
-| Tarife Bölgesi       | Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |  "JA Doğu"                                                                                                                                                                                                                                                                                                                                                       |
-| Birim               | Hizmetin ücretlendirildiği birimi tanımlar. İşlem kaynakları saat başına faturalandırılır.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Saatlerinin                                                                                                                                                                                                                                                                                                                                                          |
-| Kullanılan           | O gün için tüketilen kaynağın miktarı. Işlem için, VM 'nin belirli bir saat boyunca çalıştığı her dakika için faturalandırırız (en fazla 6 ondalık doğruluk).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    "1", "0,5"                                                                                                                                                                                                                                                                                                                                                    |
-| Kaynak Konumu  | Kaynağın çalıştığı veri merkezini tanımlar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | "JA Doğu"                                                                                                                                                                                                                                                                                                                                                        |
-| Tüketim Hizmeti   | Kullandığınız Azure platform hizmeti.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Microsoft. COMPUTE"                                                                                                                                                                                                                                                                                                                                              |
-| Kaynak Grubu     | Dağıtılan kaynağın içinde çalıştığı kaynak grubu. Daha fazla bilgi için bkz [. Azure Resource Manager genel bakış.]()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    MyRG                                                                                                                                                                                                                                                                                                                                                        |
-| Örnek Kimliği        | Kaynak için tanımlayıcı. Tanımlayıcı, kaynağı oluştururken belirttiğiniz adı içerir. VM 'Ler için, örnek KIMLIĞI SubscriptionID, ResourceGroupName ve VMName (veya ölçek kümesi kullanımı için ölçek kümesi adı) içerecektir.                                                                                                                                                                                                                                                                                                                                                                                                                    | "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyRG/Providers/Microsoft. COMPUTE/virtualMachines/MyVM1"<br><br>veya<br><br>"/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyRG/Providers/Microsoft. COMPUTE/virtualMachineScaleSets/MyVMSS1"                                                                                           |
-| Etiketler               | Kaynağa atadığınız etikettir. Etiketleri kullanarak fatura kayıtlarını gruplayabilirsiniz. [Sanal makinelerinizi nasıl etiketleyeceğinizi öğrenin.](tag.md) Bu yalnızca Kaynak Yöneticisi VM 'Ler için kullanılabilir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{" myDepartment ":" RD "," myUser ":" myName "}"                                                                                                                                                                                                                                                                                                                        |
-| Ek Bilgi    | Hizmete özgü meta veriler. VM 'Ler için ek bilgi alanında aşağıdaki verileri doldurduk: <ul><li>Çalıştırdığınız görüntü türüne özgü görüntü. Aşağıda, görüntü türleri altında desteklenen dizelerin tam listesini bulun.</li><li>Hizmet türü: dağıttığınız boyut.</li><li>VMName: sanal makinenizin adı. Bu alan yalnızca ölçek kümesi VM 'Leri için doldurulur. Ölçek kümesi VM 'Leri için VM adınızın olması gerekiyorsa, bunu yukarıdaki örnek KIMLIĞI dizesinde bulabilirsiniz.</li><li>UsageType: Bu, temsil ettiği kullanım türünü belirtir.<ul><li>Bu, temel alınan VM için Standard_D1_v2 gibi Işlem saati kullanımdır.</li><li>ComputeHR_SW, sanal makine Microsoft R Server gibi Premium yazılım kullanıyorsa Premium yazılım ücretlendirilir.</li></ul></li></ul>    | Sanal makineler {"ImageType": "kurallı", "ServiceType": "Standard_DS1_v2", "VMName": "", "UsageType": "Bilgrir"}<br><br>Sanal Makine Ölçek Kümeleri {"ImageType": "kurallı", "ServiceType": "Standard_DS1_v2", "VMName": "myVM1", "UsageType": "Bilgır"}<br><br>Premium yazılım {"ImageType": "", "ServiceType": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR_SW"} |
+| Alanlar | Anlamı | Örnek değerler | 
+|---|---|---|
+| Kullanım Tarihi | Kaynağın kullanıldığı Tarih | `11/23/2017` |
+| Ölçüm kimliği | Bu kullanımın ait olduğu en üst düzey hizmeti belirler| `Virtual Machines`|
+| Sayaç Alt Kategorisi | Faturalanan ölçüm tanımlayıcısı. <br><br> Işlem saati kullanımı için, her VM boyutu + OS (Windows, Windows dışı) + bölgesi için bir ölçüm vardır. <br><br> Premium yazılım kullanımı için her yazılım türü için bir ölçüm vardır. Çoğu Premium yazılım görüntülerinin her çekirdek boyutu için farklı ölçümleri vardır. Daha fazla bilgi için, [Işlem fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/virtual-machines/) ziyaret edin</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
+| Sayaç Adı| Bu, Azure 'daki her hizmet için özeldir. İşlem için her zaman "İşlem Saatleri" olur.| `Compute Hours`|
+| Tarife Bölgesi| Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir.|  `JA East`|
+| Birim| Hizmetin ücretlendirildiği birimi tanımlar. İşlem kaynakları saat başına faturalandırılır.| `Hours`|
+| Kullanılan| O gün için tüketilen kaynağın miktarı. Işlem için, VM 'nin belirli bir saat boyunca çalıştığı her dakika için faturalandırırız (en fazla 6 ondalık doğruluk).| `1, 0.5`|
+| Kaynak Konumu  | Kaynağın çalıştığı veri merkezini tanımlar.| `JA East`|
+| Tüketim Hizmeti | Kullandığınız Azure platform hizmeti.| `Microsoft.Compute`|
+| Kaynak Grubu | Dağıtılan kaynağın içinde çalıştığı kaynak grubu. Daha fazla bilgi için bkz [. Azure Resource Manager genel bakış.](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)|`MyRG`|
+| Örnek Kimliği | Kaynak için tanımlayıcı. Tanımlayıcı, kaynağı oluştururken belirttiğiniz adı içerir. VM 'Ler için, örnek KIMLIĞI SubscriptionID, ResourceGroupName ve VMName (veya ölçek kümesi kullanımı için ölçek kümesi adı) içerecektir.| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>veya<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| Etiketler| Kaynağa atadığınız etikettir. Etiketleri kullanarak fatura kayıtlarını gruplayabilirsiniz. [Sanal makinelerinizi nasıl etiketleyeceğinizi öğrenin.](tag.md) Bu yalnızca Kaynak Yöneticisi VM 'Ler için kullanılabilir.| `{"myDepartment":"RD","myUser":"myName"}`|
+| Ek Bilgi | Hizmete özgü meta veriler. VM 'Ler için ek bilgi alanında aşağıdaki verileri doldurduk: <br><br> Çalıştırdığınız görüntü türüne özgü görüntü. Aşağıda, görüntü türleri altında desteklenen dizelerin tam listesini bulun.<br><br> Hizmet türü: dağıttığınız boyut.<br><br> VMName: sanal makinenizin adı. Bu alan yalnızca ölçek kümesi VM 'Leri için doldurulur. Ölçek kümesi VM 'Leri için VM adınızın olması gerekiyorsa, bunu yukarıdaki örnek KIMLIĞI dizesinde bulabilirsiniz.<br><br> UsageType: Bu, temsil ettiği kullanım türünü belirtir.<br><br> Bu, temel alınan VM için Standard_D1_v2 gibi Işlem saati kullanımdır.<br><br> ComputeHR_SW, sanal makine Microsoft R Server gibi Premium yazılım kullanıyorsa Premium yazılım ücretlendirilir. | Sanal Makineler<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Sanal Makine Ölçek Kümeleri<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium yazılım<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>Görüntü türü
 Azure galerisindeki bazı görüntülerde, görüntü türü ek bilgi alanında doldurulur. Bu, kullanıcıların sanal makinenize ne dağıttığlarını anlamalarına ve izlemesine olanak sağlar. Dağıttığınız görüntüye göre bu alana doldurulan aşağıdaki değerler:
-  - BitRock 
-  - Canonical 
-  - FreeBSD 
-  - Açık mantık 
-  - Oracle 
-  - SLES for SAP 
-  - SQL Server 14 Preview for Windows Server 2012 R2 Preview 
-  - SUSE
-  - SUSE Premium
-  - StorSimple Cloud Appliance 
-  - Red Hat
-  - SAP Business Applications için Red Hat     
-  - SAP HANA için Red Hat 
-  - Windows Istemcisi KLG 
-  - Windows Server KLG 
-  - Windows Server Önizleme 
+- BitRock 
+- Kurallı FreeBSD 
+- Açık mantık 
+- Oracle 
+- SLES for SAP 
+- SQL Server 14 Preview for Windows Server 2012 R2 Preview 
+- SUSE
+- SUSE Premium
+- StorSimple Cloud Appliance 
+- Red Hat
+- SAP Business Applications için Red Hat     
+- SAP HANA için Red Hat 
+- Windows Istemcisi KLG 
+- Windows Server KLG 
+- Windows Server Önizleme 
 
 ## <a name="service-type"></a>Hizmet Türü
-Ek bilgi alanındaki hizmet türü alanı, dağıttığınız tam VM boyutuna karşılık gelir. Premium depolama VM 'Leri (SSD tabanlı) ve Premium olmayan depolama VM 'Leri (HDD tabanlı) aynı şekilde fiyatlandırılır. Standart DS2 v2 gibi SSD tabanlı bir boyut dağıtırsanız, dizi \_ \_ alt KATEGORI sütununda SSD olmayan boyut (' standart \_ D2 \_ v2 VM ') ve ek bilgi alanındaki SSD boyutunu (' standart \_ DS2 \_ v2 ') görürsünüz.
+Ek bilgi alanındaki hizmet türü alanı, dağıttığınız tam VM boyutuna karşılık gelir. Premium depolama VM 'Leri (SSD tabanlı) ve Premium olmayan depolama VM 'Leri (HDD tabanlı) aynı şekilde fiyatlandırılır. Standart DS2 v2 gibi SSD tabanlı bir boyut dağıtırsanız \_ \_ , `Standard\_D2\_v2 VM` ölçüm alt kategorisi sütununda SSD olmayan boyut () ve `Standard\_DS2\_v2` ek bilgi alanındaki SSD boyutunu () görürsünüz.
 
 ## <a name="region-names"></a>Bölge adları
 Kullanım ayrıntılarında kaynak konumu alanında doldurulmuş bölge adı, Azure Resource Manager kullanılan bölge adından farklıdır. Bölge değerleri arasında bir eşleme aşağıda verilmiştir:
 
-|    **Kaynak Yöneticisi bölge adı**       |    **Kullanım ayrıntılarında kaynak konumu**    |
-|--------------------------|------------------------------------------|
-|    australiaeast         |    AU Doğu                               |
-|    australiasoutheast    |    AU Güneydoğu                          |
-|    brazilsouth           |    BR Güney                              |
-|    Canadaorta         |    CA Orta                            |
-|    Canadadoğu            |    CA Doğu                               |
-|    Merkezileştirme Hindistan          |    IN Orta                            |
-|    centralus             |    Central US                            |
-|    chinaeast             |    Doğu Çin                            |
-|    chinanorth            |    Kuzey Çin                           |
-|    eastasia              |    Doğu Asya                             |
-|    eastus                |    Doğu ABD                               |
-|    eastus2               |    Doğu ABD 2                             |
-|    Germanyorta        |    DE Orta                            |
-|    Germanykuzeydoğu      |    DE Kuzeydoğu                          |
-|    japaneast             |    JA Doğu                               |
-|    japanwest             |    JA Batı                               |
-|    KoreaCentral          |    KR Orta                            |
-|    Koreagüney            |    KR Güney                              |
-|    Kuzeydoğu ABD        |    Orta Kuzey ABD                      |
-|    northeurope           |    Kuzey Avrupa                          |
-|    southcentralus        |    Orta Güney ABD                      |
-|    southeastasia         |    Güneydoğu Asya                        |
-|    Güneydoğu            |    IN Güney                              |
-|    Ukkuzey               |    ABD Kuzey                              |
-|    uksouth               |    Güney Birleşik Krallık                              |
-|    UKSouth2              |    Güney Birleşik Krallık 2                            |
-|    ukbatı                |    Batı Birleşik Krallık                               |
-|    Usdodorta          |    Orta US DoD                        |
-|    USDoDEast             |    Doğu US DoD                           |
-|    USGovArizona          |    USGov Arizona                         |
-|    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    USGov Texas                           |
-|    usgovvirginia         |    USGov Virginia                        |
-|    Orta Batı ABD         |    ABD Orta Batı                       |
-|    westeurope            |    West Europe                           |
-|    WestIndia             |    IN Batı                               |
-|    westus                |    Batı ABD                               |
-|    westus2               |    ABD Batı 2                             |
+| **Kaynak Yöneticisi bölge adı** | **Kullanım ayrıntılarında kaynak konumu** |
+|---|---|
+| australiaeast |AU Doğu|
+| australiasoutheast | AU Güneydoğu|
+| brazilsouth | BR Güney|
+| Canadaorta | CA Orta|
+| Canadadoğu | CA Doğu|
+| Merkezileştirme Hindistan | IN Orta|
+| centralus | Central US|
+| chinaeast | Doğu Çin|
+| chinanorth | Kuzey Çin|
+| eastasia | Doğu Asya|
+| eastus | Doğu ABD|
+| eastus2 | Doğu ABD 2|
+| Germanyorta | DE Orta|
+| Germanykuzeydoğu | DE Kuzeydoğu|
+| japaneast | JA Doğu|
+| japanwest | JA Batı|
+| KoreaCentral | KR Orta|
+| Koreagüney | KR Güney|
+| Kuzeydoğu ABD | Orta Kuzey ABD|
+| northeurope | Kuzey Avrupa|
+| southcentralus | Orta Güney ABD|
+| southeastasia | Güneydoğu Asya|
+| Güneydoğu | IN Güney|
+| Ukkuzey | ABD Kuzey|
+| uksouth | Güney Birleşik Krallık|
+| UKSouth2 | Güney Birleşik Krallık 2|
+| ukbatı | Batı Birleşik Krallık|
+| Usdodorta | Orta US DoD|
+| USDoDEast | Doğu US DoD|
+| USGovArizona | USGov Arizona|
+| usgoviowa | USGov Iowa|
+| USGovTexas | USGov Texas|
+| usgovvirginia | USGov Virginia|
+| Orta Batı ABD | ABD Orta Batı|
+| westeurope | West Europe|
+| WestIndia | IN Batı|
+| westus | Batı ABD|
+| westus2 | ABD Batı 2|
 
 
 ## <a name="virtual-machine-usage-faq"></a>Sanal makine kullanımı SSS

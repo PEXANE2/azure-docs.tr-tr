@@ -1,6 +1,6 @@
 ---
 title: Bağlı bir hizmetin güvenliğini sağlama
-description: Yönetilen VNET ile bağlı bir hizmeti sağlamayı ve güvenliğini sağlama hakkında bilgi edinin
+description: Yönetilen VNet ile bağlı bir hizmeti sağlamayı ve güvenliğini sağlama hakkında bilgi edinin
 services: synapse-analytics
 author: acomet
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496086"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387259"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>Bağlı bir hizmetin özel bağlantılarla güvenliğini sağlama 
+# <a name="secure-a-linked-service-with-private-links"></a>Bağlı bir hizmetin özel bağlantılarla güvenliğini sağlama 
 
 Bu makalede, özel bir uç nokta ile SYNAPSE 'de bağlı bir hizmetin nasıl güvenli hale alınacağını öğreneceksiniz.
 
@@ -52,7 +52,7 @@ Bu durumda, yukarıdaki bağlantıyı sınarken köprüye tıklamadınız, aşa�
 1. **Oluştur**’u seçin
 1. Özel bağlantının oluşturulduğu saniye bekledikten sonra bir onay gerektiğini görmeniz gerekir.
 
-## <a name="approval-of-a-private-link"></a>Özel bir bağlantının onaylanması
+## <a name="private-link-approval"></a>Özel bağlantı onayı
 1. Yukarıda oluşturduğunuz özel uç noktayı seçin. Depolama hesabı düzeyinde özel uç noktasını onaylamanıza olanak sağlayacak bir köprü görebilirsiniz. *Alternatif olarak, Azure portal depolama hesabına doğrudan gidip **Özel uç nokta bağlantıları** dikey penceresine gidebilirsiniz.*
 1. Studio 'da oluşturduğunuz özel uç noktayı işaret edin ve **Onayla**' yı seçin.
 1. Bir açıklama ekleyin ve **Evet** ' e tıklayın.

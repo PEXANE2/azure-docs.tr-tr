@@ -49,6 +49,8 @@
       href: synchronization.md
     - name: Parola karması eşitleme nasıl çalışır?
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Sanal ağ konusunda dikkat edilmesi gerekenler
+      href: network-considerations.md
     - name: Klasik dağıtım geçişi avantajları
       href: concepts-migration-benefits.md
     - name: Azure Active Directory nedir?
@@ -65,10 +67,6 @@
           href: create-ou.md
         - name: Grup yönetilen hizmet hesabı (gMSA) oluşturma
           href: create-gmsa.md
-    - name: Azure AD DS planı
-      items:
-        - name: Sanal ağ konusunda dikkat edilmesi gerekenler
-          href: network-considerations.md
     - name: Azure AD DS'yi yönetme
       items:
         - name: Grup İlkesi yönetimi
