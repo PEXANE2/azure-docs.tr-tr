@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035005"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419640"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Öğretici: Azure Multi-Factor Authentication veya parola değişikliklerini tetiklemek için Kullanıcı oturum açma işlemlerinin risk algılamalarını kullanın
 
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
-* En az bir Azure AD Premium P2 deneme lisansı etkin olan çalışan bir Azure AD kiracısı.
+* En az bir Azure AD Premium P2 veya deneme lisansı etkin çalışan bir Azure AD kiracısı.
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
 * Self servis parola sıfırlama ve Azure Multi-Factor Authentication için yapılandırılmış Azure AD
