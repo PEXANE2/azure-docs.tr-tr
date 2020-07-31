@@ -1,5 +1,5 @@
 ---
-title: Azure VM boyutları adlandırma kuralları
+title: Azure VM boyutlarını adlandırma kuralları
 description: Azure VM boyutları için kullanılan adlandırma kurallarını açıklar
 ms.service: virtual-machines
 subservice: sizes
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 2059c6f374e4cd5c2518e2fc0ac0da5858b99825
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3af4387723f74c1e09597564bc5330183fe1df69
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131727"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439458"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Azure sanal makine boyutları adlandırma kuralları
 
@@ -29,7 +29,7 @@ Bu sayfada, Azure VM 'Leri için kullanılan adlandırma kuralları özetlenmekt
 | Family (Aile) | VM ailesi serisini belirtir| 
 | * Alt Aile | Yalnızca özel VM farklılıkları için kullanılır|
 | vCPU sayısı| VM 'nin sanal CPU sayısını belirtir |
-| Eklenebilir Özellikler | Bir veya daha fazla küçük harf, ek özellikleri gösterir, örneğin: <br> a = AMD tabanlı işlemci <br> d = disk (yerel geçici disk var); Bu, daha yeni Azure VM 'Leri için bkz. [Ddv4 and Ddsv4-Series](./ddv4-ddsv4-series.md) <br> h = hazırda bekleme özellikli <br> i = yalıtılmış <br> l = bellek yetersiz <br> d = bellek kullanımı <br> t = küçük bellek <br> r = RDMA <br> s = [Ultra SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) olası kullanımı da dahil olmak üzere Premium depolama kapasitesine sahiptir (örneğin, s özniteliği olmayan bazı yeni boyutlar Premium depolamayı desteklemeye devam edebilir, örn. M128, M64, vb.)<br> |
+| Eklenebilir Özellikler | Bir veya daha fazla küçük harf, ek özellikleri gösterir, örneğin: <br> a = AMD tabanlı işlemci <br> d = disk (yerel geçici disk var); Bu, daha yeni Azure VM 'Leri için bkz. [Ddv4 and Ddsv4-Series](./ddv4-ddsv4-series.md) <br> h = hazırda bekleme özellikli <br> i = yalıtılmış boyut <br> l = bellek yetersiz; bellek yoğunluğu boyutundan daha düşük bir bellek miktarı <br> d = bellek yoğunluğu; belirli boyuttaki en yüksek bellek miktarı <br> t = küçük bellek; belirli boyuttaki en küçük bellek miktarı <br> r = RDMA özellikli <br> s = [Ultra SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) olası kullanımı da dahil olmak üzere Premium depolama kapasitesine sahiptir (örneğin, s özniteliği olmayan bazı yeni boyutlar Premium depolamayı desteklemeye devam edebilir, örn. M128, M64, vb.)<br> |
 | * Hızlandırıcı türü | Özelleştirilmiş/GPU SKU 'Larında donanım hızlandırıcının türünü gösterir. Yalnızca S3 2020 ' den başlatılan yeni özelleştirilmiş/GPU SKU 'Larının adı içinde donanım hızlandırıcısı olacaktır. |
 | Sürüm | VM ailesi serisinin sürümünü belirtir |
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430454"
+ms.locfileid: "87438946"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -32,11 +32,11 @@ Bu sayfa düzenli olarak güncelleştirildiğinden, sık sık ziyaret edin. Alt�
 ## <a name="july-2020"></a>Temmuz 2020
 
 Temmuz ayında güncelleştirmeler şunları içerir:
-- [Sanal makineler Için güvenlik açığı değerlendirmesi artık Market olmayan görüntüler için otomatik olarak kullanılabilir](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)        
+- [Sanal makineler için güvenlik açığı değerlendirmesi artık Market olmayan görüntüler için kullanılabilir](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
 - [Azure depolama için tehdit koruması Azure dosyaları ve Azure Data Lake Storage 2. içerecek şekilde genişletildi (Önizleme)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [Tehdit koruması özelliklerini etkinleştirmeye yönelik sekiz yeni öneri](#eight-new-recommendations-to-enable-threat-protection-features)
 - [Kapsayıcı güvenlik geliştirmeleri-daha hızlı kayıt defteri tarama ve yenilenen belgeler](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
-- [Uyarlamalı uygulama denetimleri kurallarınızı güncelleştirmek için yeni öneri](#new-recommendation-to-update-your-adaptive-application-controls-rules)
+- [Uyarlamalı uygulama denetimleri, yol kurallarında joker karakterlere yönelik yeni bir öneri ve destek ile güncelleştirildi](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
 - [SQL gelişmiş veri güvenliği için altı ilke kullanım dışı](#six-policies-for-sql-advanced-data-security-deprecated)
 
 
@@ -115,11 +115,16 @@ Aşağıdaki makalelerde Güvenlik Merkezi 'nin kapsayıcı güvenliği hakkınd
 
 
 
-### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>Uyarlamalı uygulama denetimleri kurallarınızı güncelleştirmek için yeni öneri
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>Uyarlamalı uygulama denetimleri, yol kurallarında joker karakterlere yönelik yeni bir öneri ve destek ile güncelleştirildi
 
-Uyarlamalı uygulama denetimleri özelliği yapılandırılan gruplardaki makinelerin etkinliğini sürekli olarak izler. Bu güncelleştirmeden, daha önce izin verilmeyen ve hatalı pozitif uyarılara neden olabilecek olası yasal davranış hakkında bildirim verilecektir.
+Uyarlamalı uygulama denetimleri özelliği iki önemli güncelleştirme aldı:
 
-**Uyarlamalı uygulama denetim ilkenizde yeni öneri, Allowlist kuralları güncellenmelidir**, uyarlamalı uygulama denetimleri ihlal uyarılarındaki hatalı pozitif sonuç sayısını azaltmak için mevcut ilkeye yeni kurallar eklemenizi ister.
+- Yeni bir öneri, daha önce izin verilmeyen olası yasal davranışı tanımlar. **Uyarlamalı uygulama denetim ilkenizde yeni öneri, Allowlist kuralları güncellenmelidir**, uyarlamalı uygulama denetimleri ihlal uyarılarındaki hatalı pozitif sonuç sayısını azaltmak için mevcut ilkeye yeni kurallar eklemenizi ister.
+
+- Yol kuralları artık joker karakterleri destekliyor. Bu güncelleştirmeden, joker karakterleri kullanarak izin verilen yol kurallarını yapılandırabilirsiniz. Desteklenen iki senaryo vardır:
+
+    - Bu klasörde ve alt klasörlerde bulunan tüm yürütülebilir dosyalara izin vermek için yolun sonunda bir joker karakter kullanma
+    - Bilinen bir yürütülebilir adı, değişen bir klasör adıyla (örn. bilinen bir yürütülebiliri olan kişisel Kullanıcı klasörleri, otomatik olarak oluşturulan klasör adları, vb.) etkinleştirmek için yolun ortasında bir joker karakter kullanma. 
 
 [Uyarlamalı uygulama denetimleri hakkında daha fazla bilgi edinin](security-center-adaptive-application.md).
 

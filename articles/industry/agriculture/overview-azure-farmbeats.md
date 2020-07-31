@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80667317"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439559"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure Farmtts 'ye Genel Bakış (Önizleme)
 
 Azure Farm, Azure Marketi 'nde bulunan işletmeden işletmeye yönelik bir tekliftir. Sağlayıcılar arasında belirsiz veri kümelerinin toplanmasının mümkün olduğunu belirler. Azure Farmtts, fkullanılan veri kümelerine göre yapay zeka (AI) veya Machine Learning (ML) modelleri oluşturmanıza olanak sağlar. Azure Farmcts 'yi kullanarak, büyük ölçekli işletmeler, veri mühendisinin belirsiz bir şekilde kaldırılması yerine temel değere odaklanabilir.
 
 > [!NOTE]
-> Azure Farmtts Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Farmtts, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure Farmtempts forumunu](https://aka.ms/FarmBeatsMSDN ) kullanın.
+> Azure Farmtts Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Farmtts, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure Farmtts destek forumu](https://aka.ms/farmbeatssupport) ' nu kullanın.
 
 ![Proje grubu ları](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 

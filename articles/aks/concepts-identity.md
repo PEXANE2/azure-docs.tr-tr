@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f3eacbe6f93388756ce26324babeb2ca38bd09a5
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128667"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438889"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -74,8 +74,6 @@ AKS kümelerinin güvenliği Azure Active Directory (AD) Tümleştirmesi ile gel
 Azure AD ile tümleşik AKS kümeleri sayesinde, kullanıcılara veya gruplara bir ad alanı veya küme genelinde Kubernetes kaynaklarına erişim izni verebilirsiniz. Bir yapılandırma bağlamı elde etmek için `kubectl` , Kullanıcı [az aks Get-Credentials][az-aks-get-credentials] komutunu çalıştırabilir. Bir Kullanıcı daha sonra AKS kümesiyle etkileşime geçtiğinde `kubectl` Azure AD kimlik bilgileriyle oturum açması istenir. Bu yaklaşım Kullanıcı hesabı yönetimi ve parola kimlik bilgileri için tek bir kaynak sağlar. Kullanıcı yalnızca küme yöneticisi tarafından tanımlanan kaynaklara erişebilir.
 
 Azure AD kimlik doğrulaması, OpenID Connect ile AKS kümelerine sağlanır. OpenID Connect, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanıdır. OpenID Connect hakkında daha fazla bilgi için bkz. [Açık kimlik bağlantısı belgeleri][openid-connect]. Kubernetes kümesinin içinden, kimlik doğrulama belirteçlerini doğrulamak için [Web kancası belirteci kimlik doğrulaması][webhook-token-docs] kullanılır. Web kancası belirteci kimlik doğrulaması, AKS kümesinin bir parçası olarak yapılandırılır ve yönetilir.
-
-Kubernetes kümesinin içinden, kimlik doğrulama belirteçlerini doğrulamak için Web kancası belirteci kimlik doğrulaması kullanılır. Web kancası belirteci kimlik doğrulaması, AKS kümesinin bir parçası olarak yapılandırılır ve yönetilir.
 
 ### <a name="webhook-and-api-server"></a>Web kancası ve API sunucusu
 

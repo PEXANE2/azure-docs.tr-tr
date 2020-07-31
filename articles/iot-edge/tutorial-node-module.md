@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, tracking-python, devx-track-javascript
-ms.openlocfilehash: 01c7973efd2619a37ea77dfe4dad131b14144991
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c72cde577ee51353dc4193adaac0e3b5b585fa47
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420150"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439650"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için Node.js IoT Edge modülü geliştirme ve dağıtma
 
@@ -44,7 +44,7 @@ Node.js modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak 
 | **Linux AMD64** | ![Linux AMD64 üzerinde Node.js modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 'de Node.js modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticilerden birini tamamlayarak aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -86,13 +86,15 @@ Temel olarak kullanabileceğiniz bir Node.js çözüm şablonu oluşturmak için
    | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan **EdgeSolution**kabul edin. |
    | Modül şablonunu seçin | **Node.js modülünü**seçin. |
    | Modül adı sağlayın | Modülünüze **NodeModule** adını verin. |
-   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br>Son görüntü deposu \<registry name\> . azurecr.io/nodemodule gibi görünüyor. |
+   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **Localhost: 5000** ' i Azure Container kayıt defterinizin **oturum açma sunucusu** değeriyle değiştirin. Oturum açma sunucusunu Azure portal kapsayıcı kayıt defterinizin genel bakış sayfasından alabilirsiniz. <br><br>Son görüntü deposu \<registry name\> . azurecr.io/nodemodule gibi görünüyor. |
 
    ![Docker görüntü deposunu sağlama](./media/tutorial-node-module/repository.png)
 
 ### <a name="add-your-registry-credentials"></a>Kayıt defteri kimlik bilgilerinizi ekleme
 
 Ortam dosyası, kapsayıcı deponuzun kimlik bilgilerini depolar ve bu bilgileri IoT Edge çalışma zamanı ile paylaşır. Çalışma zamanı, özel görüntülerinizi IoT Edge cihazına çekmek için bu kimlik bilgilerine ihtiyaç duyar.
+
+IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi çekmeye ve ortam dosyasına doldurmaya çalışır. Kimlik bilgilerinizin zaten eklenmiş olup olmadığını denetleyin. Yoksa, şimdi ekleyin:
 
 1. VS Code gezgininde **.env** dosyasını açın.
 2. Alanları Azure kapsayıcı kayıt defterinizden kopyaladığınız **kullanıcı adı** ve **parola** değerleriyle güncelleştirin.
@@ -187,7 +189,7 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
 
 1. **Görünüm**terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  **Terminal**.
 
-1. Terminalde aşağıdaki komutu girerek Docker 'da oturum açın. Azure Container Registry 'nizden Kullanıcı adı, parola ve oturum açma sunucusu ile oturum açın. Azure portal kayıt defterinizin **erişim tuşları** bölümünden bu değerleri alabilirsiniz.
+2. Terminalde aşağıdaki komutu girerek Docker 'da oturum açın. Azure Container Registry 'nizden Kullanıcı adı, parola ve oturum açma sunucusu ile oturum açın. Azure portal kayıt defterinizin **erişim tuşları** bölümünden bu değerleri alabilirsiniz.
 
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -195,23 +197,27 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
 
    Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin` . Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
-1. VS Code Gezgini 'nde, dosya **üzerindedeployment.template.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
+3. VS Code Gezgini 'nde, dosya **üzerindedeployment.template.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
 
    Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, `docker build` hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır. Ardından, `docker push` görüntü deposunu kapsayıcı Kayıt defterinize göndermek için çalışır.
 
+   Bu işlem ilk kez birkaç dakika sürebilir, ancak komutları bir sonraki çalıştırışınızda daha hızlıdır.
+
 ## <a name="deploy-modules-to-device"></a>Modülleri cihaza dağıt
 
-Modül projesini IoT Edge cihazınıza dağıtmak için Visual Studio Code Gezginini ve Azure IoT araçları uzantısını kullanın. Senaryonuz için hazırlanan bir dağıtım bildiriminiz zaten var, config klasöründeki dosya **deployment.js** . Tek yapmanız gereken dağıtımı almak üzere bir cihaz seçmek.
+Modül projesini IoT Edge cihazınıza dağıtmak için Visual Studio Code Gezginini ve Azure IoT araçları uzantısını kullanın. Senaryonuz için hazırlanan bir dağıtım bildiriminiz zaten var, config klasöründeki dosya **deployment.amd64.js** . Tek yapmanız gereken dağıtımı almak üzere bir cihaz seçmek.
 
 IoT Edge cihazınızın çalışır ve çalışıyor olduğundan emin olun.
 
-1. IoT cihazlarınızın listesini görmek için Visual Studio Code Gezgini ' nde **Azure IoT Hub cihazlar** bölümünü genişletin.
+1. Visual Studio Code Gezgini ' nde, **Azure IoT Hub** bölümünde **aygıtlar** ' ı genişleterek IoT cihazları listesini görüntüleyin.
 
 2. IoT Edge cihazınızın adına sağ tıklayıp **Create Deployment for Single Device** (Tek bir cihaz için dağıtım oluştur) öğesini seçin.
 
-3. **config** klasöründeki **deployment.json** dosyasını seçin ve ardından **Select Edge Deployment Manifest** (Edge Dağıtım Bildirimini Seç) öğesine tıklayın. deployment.template.json dosyasını kullanmayın.
+3. **Config** klasöründeki dosya **deployment.amd64.js** seçin ve ardından **kenar dağıtım bildirimini Seç**' e tıklayın. deployment.template.json dosyasını kullanmayın.
 
-4. Yenile düğmesine tıklayın. **SimulatedTemperatureSensor** modülü ve **$edgeAgent** ve **$EdgeHub**birlikte çalışan yeni **nodemodule** görmeniz gerekir.
+4. Cihazınızın altında, dağıtılan ve çalışan modüllerin listesini görmek için **modüller** ' i genişletin. Yenile düğmesine tıklayın. **SimulatedTemperatureSensor** modülü ve **$edgeAgent** ve **$EdgeHub**birlikte çalışan yeni **nodemodule** görmeniz gerekir.
+
+    Modüllerin başlaması birkaç dakika sürebilir. IoT Edge çalışma zamanının yeni dağıtım bildirimini alması, kapsayıcı çalışma zamanından modül görüntülerini çekmek ve sonra her yeni modülü başlatması gerekir.
 
 ## <a name="view-the-generated-data"></a>Oluşturulan verileri görüntüleme
 

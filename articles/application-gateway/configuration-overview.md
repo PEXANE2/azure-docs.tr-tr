@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428184"
+ms.locfileid: "87438920"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -50,7 +50,7 @@ Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak bazı 
 
 - Application Gateway v1 SKU 'SU için 65503-65534 TCP bağlantı noktalarında gelen Internet trafiğine ve **Gatewaymanager** hizmet **etiketi ile hedef** alt ağa sahip v2 SKU 'su için TCP bağlantı noktaları 65200-65535 ' ye izin vermelisiniz. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Bu ağ geçitlerinin müşterileri de dahil olmak üzere dış varlıklar bu uç noktalar üzerinde iletişim kuramaz.
 
-- Giden internet bağlantısı engellenmiyor. NSG 'deki varsayılan giden kurallar internet bağlantısına izin verir. Şunları yapmanızı öneririz:
+- Giden Internet bağlantısı engellenmiyor. NSG 'deki varsayılan giden kurallar Internet bağlantısına izin verir. Şunları yapmanızı öneririz:
 
   - Varsayılan giden kurallarını kaldırmayın.
   - Giden bağlantıları reddeden diğer çıkış kuralları oluşturmayın.
@@ -65,7 +65,7 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
 2. Application Gateway v1 SKU 'SU için 65503-65534 olarak **kaynak ve hedef** bağlantı **noktası olarak kaynak** kaynaklı gelen isteklere ve [arka uç sistem durumu iletişimi](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)için v2 SKU 'su için 65200-65535 bağlantı noktalarına izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Uygun sertifikalar yerine, dış varlıklar bu uç noktalar üzerinde değişiklik başlatamaz.
 3. [Ağ güvenlik grubundaki](https://docs.microsoft.com/azure/virtual-network/security-overview)gelen Azure Load Balancer Araştırmaları (*AzureLoadBalancer* Tag) ve gelen sanal ağ trafiğine (*VirtualNetwork* etiketi) izin verin.
 4. Engelle-All kuralını kullanarak diğer tüm gelen trafiği engelleyin.
-5. Tüm hedefler için internet 'e giden trafiğe izin verin.
+5. Tüm hedefler için Internet 'e giden trafiğe izin verin.
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>Application Gateway alt ağında desteklenen kullanıcı tanımlı yollar
 
@@ -122,11 +122,19 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
 
 ## <a name="front-end-ip"></a>Ön uç IP 'si
 
-Uygulama ağ geçidini genel IP adresi, özel bir IP adresi veya her ikisine de sahip olacak şekilde yapılandırabilirsiniz. İstemcilerin internet 'e yönelik bir sanal IP (VIP) ile internet üzerinden erişmesi gereken bir arka ucu barındırdığınızda genel IP gereklidir. 
+Uygulama ağ geçidini genel IP adresi, özel bir IP adresi veya her ikisine de sahip olacak şekilde yapılandırabilirsiniz. İstemcilerin Internet 'e yönelik bir sanal IP (VIP) ile Internet üzerinden erişmesi gereken bir arka ucu barındırdığınızda genel IP gereklidir.
 
-İnternet 'e açık olmayan bir iç uç nokta için genel IP gerekli değildir. Bu, *iç yük dengeleyici* (ILB) uç noktası veya özel ön uç IP 'si olarak bilinir. Bir Application Gateway ıLB, internet 'e açık olmayan iç iş kolu uygulamaları için yararlıdır. Ayrıca, internet 'e açık olmayan ancak hepsini bir kez deneme yük dağıtımı, oturum sürekliliği veya TLS sonlandırma gerektiren bir güvenlik sınırı içinde çok katmanlı bir uygulamadaki hizmetler ve katmanlar için de kullanışlıdır.
+> [!NOTE]
+> Application Gateway v2 Şu anda yalnızca özel IP modunu desteklemiyor. Aşağıdaki birleşimleri destekler:
+>* Özel IP ve genel IP
+>* Yalnızca genel IP
+>
+> Daha fazla bilgi için bkz. [Application Gateway hakkında sık sorulan sorular](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address).
 
-Yalnızca 1 genel IP adresi veya bir özel IP adresi desteklenir. Uygulama ağ geçidini oluştururken ön uç IP 'sini seçersiniz.
+
+Internet 'e açık olmayan bir iç uç nokta için genel IP gerekli değildir. Bu, *iç yük dengeleyici* (ILB) uç noktası veya özel ön uç IP 'si olarak bilinir. Bir Application Gateway ıLB, Internet 'e açık olmayan iç iş kolu uygulamaları için yararlıdır. Ayrıca, Internet 'e açık olmayan ancak hepsini bir kez deneme yük dağıtımı, oturum sürekliliği veya TLS sonlandırma gerektiren bir güvenlik sınırı içinde çok katmanlı bir uygulamadaki hizmetler ve katmanlar için de kullanışlıdır.
+
+Yalnızca bir genel IP adresi veya bir özel IP adresi desteklenir. Uygulama ağ geçidini oluştururken ön uç IP 'sini seçersiniz.
 
 - Genel IP için, yeni bir genel IP adresi oluşturabilir veya uygulama ağ geçidi ile aynı konumda bulunan bir genel IP 'yi kullanabilirsiniz. Daha fazla bilgi için bkz. [statik ve dinamik genel IP adresi](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 

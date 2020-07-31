@@ -45,6 +45,9 @@
       items:
         - name: Güvenlik
           items:
+            - name: Azure İlkesi’ne göre güvenlik denetimleri
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Güvenlik temeli
               href: security-baseline.md
         - name: Kapsayıcı kayıt defteri katmanları ve sınırları

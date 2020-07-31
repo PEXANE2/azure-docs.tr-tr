@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: bd849a413d718ba5a25839c50c63ec2ad39be440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128106"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439218"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -168,7 +168,9 @@ Azure Güvenlik duvarının ilk üretilen iş verimlilik kapasitesi 2,5-3 Gbps v
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Güvenlik duvarının ölçeği ne kadar sürer?
 
-Ortalama üretilen iş veya CPU tüketimi %60 olduğunda Azure Güvenlik Duvarı aşamalı olarak ölçeklendirilir. Ölçeği genişletme beş ila yedi dakika sürer. Performans testi sırasında, en az 10 ila 15 dakika test ettiğinizden emin olun ve yeni oluşturulan güvenlik duvarı düğümlerinden yararlanmak için yeni bağlantılar başlatın.
+Ortalama üretilen iş veya CPU tüketimi %60 olduğunda Azure Güvenlik Duvarı aşamalı olarak ölçeklendirilir. Varsayılan dağıtım en yüksek aktarım hızı yaklaşık 2,5-3 Gbps ve bu sayının %60 ' e ulaştığında ölçeği ölçeklendirmeye başlar. Ölçeği genişletme beş ila yedi dakika sürer. 
+
+Performans testi sırasında, en az 10 ila 15 dakika test ettiğinizden emin olun ve yeni oluşturulan güvenlik duvarı düğümlerinden yararlanmak için yeni bağlantılar başlatın.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Güvenlik Duvarı varsayılan olarak Active Directory erişimine izin veriyor mu?
 
@@ -219,4 +221,4 @@ Hayır, şu anda Azure Güvenlik duvarını genel bir IP adresiyle dağıtmanız
 
 ## <a name="where-does-azure-firewall-store-customer-data"></a>Azure Güvenlik Duvarı müşteri verilerini nerede depolar?
 
-Azure Güvenlik Duvarı, müşteri verilerini dağıtıldığı bölgenin dışına taşımaz veya depolamaz.
+Azure Güvenlik Duvarı, müşteri verilerini ' de dağıtıldığı bölgeden taşımaz veya depolamaz.

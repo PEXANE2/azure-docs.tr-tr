@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/15/2020
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76167007"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439726"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Öğretici: Özel Görüntü İşleme Hizmeti ile uçta görüntü sınıflandırması gerçekleştirme
 
@@ -68,17 +68,17 @@ Görüntü sınıflandırıcıyı derleyip eğittikten sonra Docker kapsayıcıs
 
 2. **Sign in** (Oturum aç) öğesini seçin ve Azure kaynaklarına erişmek için kullandığınız hesapla oturum açın.
 
-3. **New project** (Yeni proje) öğesini seçin.
+3. **Yeni proje**'yi seçin.
 
 4. Aşağıdaki değerlerle bir proje oluşturun:
 
    | Alan | Değer |
    | ----- | ----- |
-   | Adı | Projeniz için bir ad belirleyin, örneğin: **EdgeTreeClassifier**. |
-   | Açıklama | İsteğe bağlı proje açıklaması. |
+   | Ad | Projeniz için bir ad belirleyin, örneğin: **EdgeTreeClassifier**. |
+   | Description | İsteğe bağlı proje açıklaması. |
    | Kaynak | Özel Görüntü İşleme Hizmeti kaynağı içeren Azure Kaynak gruplarınızdan birini seçin veya henüz bir tane eklemediyseniz yeni bir tane **oluşturun** . |
    | Proje Türleri | **Sınıflandırma** |
-   | Sınıflandırma Türleri | **Multiclass (single tag per image)** (Çok sınıflı (görüntü başına tek bir etiket)) |
+   | Sınıflandırma Türleri | **Birden çok Sınıf (görüntü başına tek etiket)** |
    | Etki Alanları | **General (compact)** (Genel (kompakt)) |
    | Verme özellikleri | **Temel platformlar (TensorFlow, CoreML, ONNX,...)** |
 
@@ -142,7 +142,7 @@ Artık geliştirme makinenizde görüntü sınıflandırıcınızın kapsayıcı
 
 Çözüm, tek bir IoT Edge dağıtımı için birden fazla modül geliştirmek ve düzenlemek için kullanabileceğiniz mantıksal bir yoldur. Bir çözümde bir veya daha fazla modülün kodunun yanı sıra bunların bir IoT Edge cihazında nasıl yapılandırılacağını bildiren dağıtım bildirimi bulunur. 
 
-1. VS Code komut paletini açmak için**komut paleti** **görüntüle** > ' yi seçin. 
+1. Visual Studio Code, **View**  >  vs Code komut paletini açmak için**komut paletini** görüntüle ' yi seçin. 
 
 1. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu girin ve çalıştırın. Komut paletinde çözümünüzü oluşturmak için aşağıdaki bilgileri girin: 
 
@@ -152,7 +152,7 @@ Artık geliştirme makinenizde görüntü sınıflandırıcınızın kapsayıcı
    | Çözüm adı sağlayın | Çözümünüz için **CustomVisionSolution** gibi açıklayıcı bir ad girin veya varsayılan değeri kabul edin. |
    | Modül şablonunu seçin | **Python Modülü**'nü seçin. |
    | Modül adı sağlayın | Modülünüze **classifier** adını verin.<br><br>Modül adının küçük harfli olması önemlidir. IoT Edge, modüllere başvururken büyük/küçük harfe duyarlıdır ve bu çözümde tüm istekleri küçük harf ile biçimlendiren bir kitaplık kullanılmaktadır. |
-   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı görüntünüz bir önceki adımdaki değerle önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz.<br><br>Son dize, ** \<kayıt defteri adı\>. azurecr.io/Classifier**gibi görünür. |
+   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı görüntünüz bir önceki adımdaki değerle önceden doldurulur. **Localhost: 5000** ' i Azure Container kayıt defterinizin **oturum açma sunucusu** değeriyle değiştirin. Oturum açma sunucusunu Azure portal kapsayıcı kayıt defterinizin genel bakış sayfasından alabilirsiniz.<br><br>Son dize ** \<registry name\> . azurecr.io/Classifier**gibi görünür. |
  
    ![Docker görüntü deposunu sağlama](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -161,6 +161,8 @@ Ardından Visual Studio Code penceresi IoT Edge çözümü çalışma alanınız
 ### <a name="add-your-registry-credentials"></a>Kayıt defteri kimlik bilgilerinizi ekleme
 
 Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu bilgileri IoT Edge çalışma zamanı ile paylaşır. Çalışma zamanı, özel görüntülerinizi IoT Edge cihazına çekmek için bu kimlik bilgilerine ihtiyaç duyar.
+
+IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi çekmeye ve ortam dosyasına doldurmaya çalışır. Kimlik bilgilerinizin zaten eklenmiş olup olmadığını denetleyin. Yoksa, şimdi ekleyin:
 
 1. VS Code gezgininde .env dosyasını açın.
 2. Alanları Azure kapsayıcı kayıt defterinizden kopyaladığınız **kullanıcı adı** ve **parola** değerleriyle güncelleştirin.
@@ -214,10 +216,10 @@ Bu bölümde aynı CustomVisionSolution öğesine yeni bir modül ekleyecek ve s
 
    | İstem | Değer | 
    | ------ | ----- |
-   | Dağıtım şablonu dosyasını seçin | CustomVisionSolution klasöründeki deployment.template.json dosyasını seçin. |
+   | Dağıtım şablonu dosyasını seçin | CustomVisionSolution klasöründeki dosya **deployment.template.js** seçin. |
    | Modül şablonunu seçin | **Python Modülü**'nü seçin |
    | Modül adı sağlayın | Modülünüze **cameraCapture** adını verin |
-   | Modül için Docker görüntü deposunu sağlama | **localhost:5000** yerine Azure kapsayıcı kayıt defterinizin oturum açma sunucusu değerini yazın.<br><br>Son dize, ** \<registryname\>. azurecr.io/cameracapture**gibi görünür. |
+   | Modül için Docker görüntü deposunu sağlama | **Localhost: 5000** ' i Azure Container Registry 'Nizin **oturum açma sunucusu** değeriyle değiştirin.<br><br>Son dize ** \<registryname\> . azurecr.io/cameracapture**gibi görünür. |
 
    VS Code penceresi yeni modülünüzü çözüm çalışma alanında yükler ve deployment.template.json dosyasını güncelleştirir. Bu noktada iki modül klasörü görmeniz gerekir: classifier ve cameraCapture. 
 
@@ -322,11 +324,11 @@ Bu bölümde aynı CustomVisionSolution öğesine yeni bir modül ekleyecek ve s
 
 Bu senaryoda görüntü beslemesi sağlamak için gerçek bir kamera kullanmak yerine tek bir test amaçlı görüntü kullanacağız. Bu öğreticinin önceki bölümlerinde eğitim görüntüleri için indirdiğiniz GitHub deposunda bir test görüntüsü bulunur. 
 
-1. Bilişsel **-customvision-Windows** / **örnek** / **görüntüleri** / **testinde**bulunan test görüntüsüne gidin. 
+1. Bilişsel **-customvision-Windows**  /  **örnek**  /  **görüntüleri**  /  **testinde**bulunan test görüntüsüne gidin. 
 
 2. **test_image.jpg** dosyasını kopyalayın 
 
-3. IoT Edge çözüm dizininize gidin ve test görüntüsünü **modüller** / **cameraCapture** klasörüne yapıştırın. Görüntü önceki bölümde düzenlediğiniz main.py dosyasıyla aynı klasörde olmalıdır. 
+3. IoT Edge çözüm dizininize gidin ve test görüntüsünü **modüller**  /  **cameraCapture** klasörüne yapıştırın. Görüntü önceki bölümde düzenlediğiniz main.py dosyasıyla aynı klasörde olmalıdır. 
 
 4. Visual Studio Code'da cameraCapture modülünün **Dockerfile.amd64** dosyasını açın.
 
@@ -364,7 +366,7 @@ Visual Studio Code için IoT Edge uzantısı dağıtım bildirimi oluşturmanız
 
     ```json
         "routes": {
-          "CameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
+          "cameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
         },
     ```
 
@@ -372,31 +374,51 @@ Visual Studio Code için IoT Edge uzantısı dağıtım bildirimi oluşturmanız
 
 7. **deployment.template.json** dosyasını kaydedin.
 
-## <a name="build-and-deploy-your-iot-edge-solution"></a>IoT Edge çözümünüzü oluşturma ve dağıtma
+## <a name="build-and-push-your-iot-edge-solution"></a>IoT Edge çözümünüzü derleyin ve gönderin
 
-İki modülü de oluşturduğunuza ve dağıtım bildirimi şablonunu yapılandırdığınıza göre kapsayıcı görüntülerini oluşturmaya ve kapsayıcı kayıt defterinize göndermeye hazırsınız. 
+İki modülü de oluşturduğunuza ve dağıtım bildirimi şablonunu yapılandırdığınıza göre kapsayıcı görüntülerini oluşturmaya ve kapsayıcı kayıt defterinize göndermeye hazırsınız.
 
 Görüntüleri kayıt defterinize gönderdikten sonra çözümü bir IoT Edge cihazına dağıtabilirsiniz. IoT Hub üzerinden bir cihazda modül ayarlayabilirsiniz ancak IoT Hub ve cihazlara Visual Studio Code aracılığıyla da erişebilirsiniz. Bu bölümde IoT Hub'ınıza erişim ayarlarını yapacak ve ardından çözümünüzü IoT Edge cihazınıza dağıtmak için VS Code uygulamasını kullanacaksınız.
 
-İlk olarak çözümünüzü oluşturun ve kapsayıcı kayıt defterinize gönderin. 
+İlk olarak çözümünüzü oluşturun ve kapsayıcı kayıt defterinize gönderin.
 
-1. VS Code gezgininde **deployment.template.json** dosyasına sağ tıklayıp **Build and push IoT Edge solution** (IoT Edge Çözümü Oluştur ve Gönder) öğesini seçin. Bu işlemin ilerleme durumunu VS Code tümleşik terminalinde izleyebilirsiniz. 
-2. Çözümünüze, **config**dosyasına yeni bir klasör eklendiğini unutmayın. Bu klasörü genişletin ve içinde **Deployment. JSON** dosyasını açın.
-3. deployment.json dosyasındaki bilgileri gözden geçirin. deployment.json dosyası; yapılandırdığınız dağıtım şablonu dosyasına ek olarak .env dosyası ve module.json dosyaları dahil olmak üzere çözümden alınan bilgilere göre otomatik olarak oluşturulur (veya güncelleştirilir). 
+1. **Görünüm**terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  **Terminal**.
 
-Sonra, cihazınızı seçin ve çözümünüzü dağıtın.
+2. Terminalde aşağıdaki komutu girerek Docker 'da oturum açın. Azure Container Registry 'nizden Kullanıcı adı, parola ve oturum açma sunucusu ile oturum açın. Azure portal kayıt defterinizin **erişim tuşları** bölümünden bu değerleri alabilirsiniz.
 
-1. VS Code gezgininde **Azure IoT Hub Devices** (Azure IoT Hub Cihazları) bölümünü seçin. 
-2. Dağıtımınızla hedeflemek istediğiniz cihaza sağ tıklayıp **Create deployment for single device** (Tek cihaz için dağıtım oluştur) öğesini seçin. 
-3. Dosya gezgininde çözümünüzün içindeki **config** klasörüne gidip **deployment.json** dosyasını seçin. **Kenar dağıtım bildirimini Seç**' e tıklayın. 
+   ```bash
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
+   ```
 
-Dağıtım başarılı olursa VS Code çıkışında onay iletisi yazdırılır. VS Code gezgininde bu dağıtım için kullandığınız IoT Edge cihazıyla ilgili ayrıntıları genişletin. Modüller hemen görüntülenmezse imleci **Azure IoT Hub Devices** (Azure IoT Hub Cihazlar) başlığının üzerine getirerek yenileme düğmesini etkinleştirin. Modüllerin başlayıp IoT Hub'a bildirimde bulunması birkaç dakika sürebilir. 
+   Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin` . Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
-Tüm modüllerin cihazınızda çalışıp çalışmadığını da kontrol edebilirsiniz. IoT Edge cihazında modüllerin durumunu görmek için aşağıdaki komutu çalıştırın. Modüllerin başlaması birkaç dakika sürebilir.
+3. VS Code Gezgini 'nde, dosya **üzerindedeployment.template.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
+
+   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi oluşturulan tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, `docker build` hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır. Ardından, `docker push` görüntü deposunu kapsayıcı Kayıt defterinize göndermek için çalışır.
+
+   Bu işlem ilk kez birkaç dakika sürebilir, ancak komutları bir sonraki çalıştırışınızda daha hızlıdır.
+
+## <a name="deploy-modules-to-device"></a>Modülleri cihaza dağıt
+
+Modül projesini IoT Edge cihazınıza dağıtmak için Visual Studio Code Gezginini ve Azure IoT araçları uzantısını kullanın. Senaryonuz için hazırlanan bir dağıtım bildiriminiz zaten var, config klasöründeki dosya **deployment.amd64.js** . Tek yapmanız gereken dağıtımı almak üzere bir cihaz seçmek.
+
+IoT Edge cihazınızın çalışır ve çalışıyor olduğundan emin olun.
+
+1. Visual Studio Code Gezgini ' nde, **Azure IoT Hub** bölümünde **aygıtlar** ' ı genişleterek IoT cihazları listesini görüntüleyin.
+
+2. IoT Edge cihazınızın adına sağ tıklayıp **Create Deployment for Single Device** (Tek bir cihaz için dağıtım oluştur) öğesini seçin.
+
+3. **Config** klasöründeki dosya **deployment.amd64.js** seçin ve ardından **kenar dağıtım bildirimini Seç**' e tıklayın. deployment.template.json dosyasını kullanmayın.
+
+4. Cihazınızın altında, dağıtılan ve çalışan modüllerin listesini görmek için **modüller** ' i genişletin. Yenile düğmesine tıklayın. **$EdgeAgent** ve **$edgeHub**birlikte çalışan yeni **sınıflandırıcının** ve **cameraCapture** modüllerinin görmeniz gerekir.  
+
+Tüm modüllerin cihazınızda çalışıp çalışmadığını da kontrol edebilirsiniz. IoT Edge cihazında modüllerin durumunu görmek için aşağıdaki komutu çalıştırın.
 
    ```bash
    iotedge list
    ```
+
+Modüllerin başlaması birkaç dakika sürebilir. IoT Edge çalışma zamanının yeni dağıtım bildirimini alması, kapsayıcı çalışma zamanından modül görüntülerini çekmek ve sonra her yeni modülü başlatması gerekir.
 
 ## <a name="view-classification-results"></a>Sınıflandırma sonuçlarını görüntüleme
 
@@ -410,7 +432,12 @@ Cihazdan cameraCapture modülü günlüklerini görüntüleyerek iletilerin gön
 
 Visual Studio Code, IoT Edge cihazınızın adına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktasını**seçin. 
 
-cameraCapture modülünden iletiler olarak gönderilen Özel Görüntü İşleme Hizmeti modülü sonuçları, görüntünün köknar veya kiraz ağacı olma ihtimalini içerir. Görüntü köknar ağacına ait olduğundan olasılık değeri 1.0 olmalıdır. 
+> [!NOTE]
+> Başlangıçta cameraCapture modülündeki çıktıda bazı bağlantı hataları görebilirsiniz. Bunun nedeni, dağıtılan ve başlatılan modüller arasındaki gecikmeden kaynaklanır.
+>
+> CameraCapture modülü başarılı olana kadar bağlantıyı otomatik olarak yeniden deneyecek. Daha sonra, aşağıda açıklanan beklenen görüntü sınıflandırma iletilerini görmeniz gerekir.
+
+cameraCapture modülünden iletiler olarak gönderilen Özel Görüntü İşleme Hizmeti modülü sonuçları, görüntünün köknar veya kiraz ağacı olma ihtimalini içerir. Görüntü köknar ağacına ait olduğundan olasılık değeri 1.0 olmalıdır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -14,20 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0e477b95f43c091bf17ec54d2fef9f971d5f6986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761a508543af79f3a242bfa2133e22a00b0ca689
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000169"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439604"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Depolama şifrelemesiyle içeriğinizi şifreleme 
 
 > [!NOTE]
 > Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
->   
-
-AES-256 bit şifrelemeyi kullanarak içeriğinizi yerel olarak şifrelemeniz ve sonra geri kalanı şifreli olarak depolandığı Azure depolama 'ya yüklemeniz kesinlikle önerilir.
+>
 
 Bu makale, AMS depolama şifrelemesi hakkında genel bir bakış sunar ve depolama şifreli içeriğini karşıya yükleme işleminin nasıl yapılacağını gösterir:
 
@@ -46,7 +44,7 @@ Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi ala
 
 ### <a name="storage-side-encryption"></a>Depolama tarafı şifrelemesi
 
-|Şifreleme seçeneği|Açıklama|Media Services v2|Media Services v3|
+|Şifreleme seçeneği|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
 |[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan, Azure veya müşteri tarafından yönetilen anahtar olan sunucu tarafı şifrelemesi|Desteklenir|Desteklenir|
@@ -113,7 +111,7 @@ Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içe
 
     Depolama şifrelemesi için, aşağıdaki özellikler istek gövdesine eklenmelidir.
 
-    İstek gövdesi özelliği    | Açıklama
+    İstek gövdesi özelliği    | Description
     ---|---
     Id | ContentKey KIMLIĞI, "NB: KID: UUID:" biçiminde şu biçim kullanılarak oluşturulur \<NEW GUID> .
     ContentKeyType | İçerik anahtar türü, anahtarı tanımlayan bir tamsayıdır. Depolama şifreleme biçimi için değer 1 ' dir.

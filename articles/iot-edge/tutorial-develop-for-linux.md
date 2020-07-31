@@ -4,17 +4,17 @@ description: Bu öğretici, Linux cihazları için Linux kapsayıcıları kullan
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ba10ed068e0a537d7a759f533dbada865f639e7b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419946"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439136"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Öğretici: Linux cihazları için IoT Edge modülleri geliştirme
 
@@ -57,7 +57,7 @@ Aşağıdaki tabloda Visual Studio Code ve Visual Studio 'da **Linux kapsayıcı
 
 Bu öğreticide Visual Studio Code için geliştirme adımları öğretilir. Visual Studio 'Yu kullanmayı tercih ediyorsanız, [Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak Için Visual studio 2019 kullanma](how-to-visual-studio-develop-module.md)bölümündeki yönergelere bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Geliştirme makinesi:
 

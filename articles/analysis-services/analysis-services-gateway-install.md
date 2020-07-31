@@ -4,15 +4,15 @@ description: Bir Azure Analysis Services sunucusundan şirket içi veri kaynakla
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062158"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438963"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Şirket içi veri ağ geçidini yükleme ve yapılandırma
 
@@ -22,7 +22,7 @@ Azure Analysis Services ağ geçidiyle nasıl çalıştığı hakkında daha faz
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-**Minimum Gereksinimler:**
+**Minimum gereksinimler:**
 
 * .NET 4.5 Framework
 * Windows 8/Windows Server 2012 R2 64-bit sürümü (veya üzeri)
@@ -44,11 +44,11 @@ Azure Analysis Services ağ geçidiyle nasıl çalıştığı hakkında daha faz
 * Azure 'da, ağ geçidini kaydetmekte olduğunuz abonelikle aynı [kiracı](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) IÇIN Azure AD 'de bir hesapla oturum açın. Bir ağ geçidini yüklerken ve kaydederken Azure B2B (konuk) hesapları desteklenmez.
 * Veri kaynakları bir Azure sanal ağı (VNet) üzerinde ise, [Alwaysusegateway](analysis-services-vnet-gateway.md) sunucusu özelliğini yapılandırmanız gerekir.
 
-## <a name="download"></a><a name="download"></a>İndir
+## <a name="download"></a>İndir
 
  [Ağ geçidini indirin](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 
-## <a name="install"></a><a name="install"></a>Yükleme
+## <a name="install"></a>Yükleme
 
 1. Kurulumu çalıştırın.
 
@@ -62,12 +62,12 @@ Azure Analysis Services ağ geçidiyle nasıl çalıştığı hakkında daha faz
 
 3. Azure'da oturum açın. Hesabın kiracınızın Azure Active Directory olması gerekir. Bu hesap, Ağ Geçidi Yöneticisi için kullanılır. Ağ geçidini yüklerken ve kaydederken Azure B2B (konuk) hesapları desteklenmez.
 
-   ![Azure'da oturum açma](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Azure’da oturum açma](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > Bir etki alanı hesabıyla oturum açarsanız, Azure AD 'de Kurumsal hesabınıza eşlenir. Kuruluş hesabınız ağ geçidi Yöneticisi olarak kullanılır.
 
-## <a name="register"></a><a name="register"></a>Kaydol
+## <a name="register"></a>Kaydol
 
 Azure 'da bir ağ geçidi kaynağı oluşturmak için, ağ geçidi bulut hizmeti ile yüklediğiniz yerel örneği kaydetmeniz gerekir. 
 
@@ -83,7 +83,7 @@ Azure 'da bir ağ geçidi kaynağı oluşturmak için, ağ geçidi bulut hizmeti
    ![Kaydol](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
-## <a name="create-an-azure-gateway-resource"></a><a name="create-resource"></a>Azure ağ geçidi kaynağı oluşturma
+## <a name="create-an-azure-gateway-resource"></a>Azure ağ geçidi kaynağı oluşturma
 
 Ağ geçidinizin yüklenip kaydolduktan sonra Azure 'da bir ağ geçidi kaynağı oluşturmanız gerekir. Ağ geçidini kaydederken kullandığınız hesapla Azure 'da oturum açın.
 
@@ -107,7 +107,12 @@ Ağ geçidinizin yüklenip kaydolduktan sonra Azure 'da bir ağ geçidi kaynağ�
 
      İşiniz bittiğinde **Oluştur**' a tıklayın.
 
-## <a name="connect-servers-to-the-gateway-resource"></a><a name="connect-servers"></a>Sunucuları ağ geçidi kaynağına bağlama
+## <a name="connect-gateway-resource-to-server"></a>Ağ Geçidi kaynağını sunucuya bağla
+
+> [!NOTE]
+> Sunucunuzdaki farklı bir abonelikte bulunan bir ağ geçidi kaynağına bağlanmak portalda desteklenmez, ancak PowerShell kullanılarak desteklenir.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Azure Analysis Services sunucunuza genel bakış ' da, Şirket **Içi veri ağ geçidi**' ne tıklayın.
 
@@ -125,10 +130,31 @@ Ağ geçidinizin yüklenip kaydolduktan sonra Azure 'da bir ağ geçidi kaynağ�
 
     ![Sunucuyu ağ geçidi kaynağına bağlama başarılı](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Ağ Geçidi RESOURCEID 'yi almak için [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) komutunu kullanın. Daha sonra [set-azanalysisservicesserver](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) veya [New-azanalysisservicesserver](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)içinde **-gatewayresourceıd** belirterek ağ geçidi kaynağını var olan veya yeni bir sunucuya bağlayın.
+
+Ağ Geçidi kaynak KIMLIĞINI almak için:
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforGateway -Environment "AzureCloud"
+$GatewayResourceId = $(Get-AzResource -ResourceType "Microsoft.Web/connectionGateways" -Name $gatewayName).ResourceId  
+
+```
+
+Var olan bir sunucuyu yapılandırmak için:
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforAzureAS -Environment "AzureCloud"
+Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -GatewayResourceId $GatewayResourceId
+
+```
+---
+
 İşte bu kadar. Bağlantı noktalarını açmanız veya sorun giderme yapmanız gerekiyorsa, [Şirket içi veri ağ geçidini](analysis-services-gateway.md)kullanıma aldığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Analysis Services’ı yönetme](analysis-services-manage.md)   
-* [Azure Analysis Services veri al](analysis-services-connect.md)   
+* [Azure Analysis Services'den veri alma](analysis-services-connect.md)   
 * [Azure Sanal Ağı üzerindeki veri kaynakları için ağ geçidi kullanma](analysis-services-vnet-gateway.md)

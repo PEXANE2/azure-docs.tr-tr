@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 8f6fa00f65a99798ee105852a269247d717ad75d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f89d21a252870befae7807d2dda96828aaaa1326
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513277"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439659"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -23,15 +23,15 @@ Bu öğreticide, Azure VM 'lerinde çalışan SAP HANA veritabanlarının Azure 
 Şu anda desteklediğimiz tüm senaryolar [aşağıda](sap-hana-backup-support-matrix.md#scenario-support) verilmiştir.
 
 >[!NOTE]
->RHEL için SAP HANA yedekleme önizlemesine (7,4, 7,6, 7,7 veya 8,1 [) başlayın.]() Daha fazla sorgu için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>1 Ağustos 2020 itibariyle, RHEL için SAP HANA yedekleme (7,4, 7,6, 7,7 & 8,1) genel kullanıma sunulmuştur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin olun:
 
 * SAP HANA çalıştıran VM ile aynı bölgede ve abonelikte bir [Kurtarma Hizmetleri Kasası](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) oluşturun veya oluşturun.
 * Aşağıdaki [ağ bağlantısı kurma](#set-up-network-connectivity) yordamında açıklandığı gibi, Azure 'a ULAŞABILMESI için VM 'den internet 'e bağlantıya izin verin.
-* SAP HANA sunucusu VM adı ve kaynak grubu adının toplam uzunluğunun Azure Kaynak Yöneticisi (ARM_ VM 'Ler için (ve klasik VM 'Ler için 77 karakter) 84 karakteri aşmadığından emin olun. Bu sınırlama, bazı karakterlerin hizmet tarafından ayrıldığı bir kısıtlamadır.
+* SAP HANA sunucusu VM adı ve kaynak grubu adının toplam uzunluğunun Azure Resource Manager (ARM_ VM 'Ler için (ve klasik VM 'Ler için 77 karakter) 84 karakteri aşmadığından emin olun. Bu sınırlama, bazı karakterlerin hizmet tarafından ayrıldığı bir kısıtlamadır.
 * **Hdbuserstore** içinde aşağıdaki ölçütlere uyan bir anahtar bulunmalıdır:
   * Varsayılan **hdbuserstore**içinde mevcut olmalıdır. Varsayılan değer `<sid>adm` SAP HANA yüklendiği hesaptır.
   * MDC için anahtar, **nameserver**SQL bağlantı noktasını göstermelidir. SDC söz konusu olduğunda, **dizin sunucusunun** SQL bağlantı noktasını işaret etmelidir
@@ -43,60 +43,59 @@ Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin ol
 
 ## <a name="set-up-network-connectivity"></a>Ağ bağlantısını ayarlama
 
-Tüm işlemler için SAP HANA VM, Azure genel IP adresleri için bağlantı gerektirir. VM işlemleri (veritabanı bulma, yedeklemeleri yapılandırma, yedeklemeleri zamanlama, kurtarma noktalarını geri yükleme vb.), Azure genel IP adreslerine bağlantı olmadan başarısız olur.
+Tüm işlemler için, bir Azure VM üzerinde çalışan bir SAP HANA veritabanı, Azure Backup hizmeti, Azure depolama ve Azure Active Directory bağlantı gerektirir. Bu, Özel uç noktalar kullanılarak veya gerekli genel IP adreslerine veya FQDN 'lere erişim izni vererek elde edilebilir. Gerekli Azure hizmetlerine doğru bağlantının yapılmasına izin verilmemesi, veritabanı bulma, yedeklemeyi yapılandırma, yedeklemeleri gerçekleştirme ve verileri geri yükleme gibi işlemlerde hata oluşmasına yol açabilir.
 
-Aşağıdaki seçeneklerden birini kullanarak bağlantı kurun:
+Aşağıdaki tabloda bağlantı kurmak için kullanabileceğiniz çeşitli alternatifler listelenmektedir:
 
-### <a name="allow-the-azure-datacenter-ip-ranges"></a>Azure veri merkezi IP aralıklarına izin ver
+| **Seçenek**                        | **Avantajlar**                                               | **Dezavantajlar**                                            |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Özel uç noktalar                 | Sanal ağ içindeki özel IP 'Lerde yedeklemelere izin ver  <br><br>   Ağ ve kasa tarafında ayrıntılı denetim sağlama | Standart özel uç nokta [maliyetleri](https://azure.microsoft.com/pricing/details/private-link/) |
+| NSG hizmet etiketleri                  | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi   <br><br>   Ek maliyet yok | Yalnızca NSG 'ler ile kullanılabilir  <br><br>    Hizmetin tamamına erişim sağlar |
+| Azure Güvenlik Duvarı FQDN etiketleri          | Gerekli FQDN 'Ler otomatik olarak yönetildiğinden bu yana yönetilmesi daha kolay | Yalnızca Azure Güvenlik Duvarı ile kullanılabilir                         |
+| Hizmet FQDN/IP 'lerine erişime izin ver | Ek maliyet yok   <br><br>  Tüm ağ güvenliği araçları ve güvenlik duvarları ile birlikte geçerlidir | Geniş bir IP veya FQDN kümesine erişilmesi gerekebilir   |
+| HTTP proxy kullanma                 | VM 'lere tek bir internet erişimi noktası                       | Proxy yazılımıyla VM çalıştırmak için ek maliyetler         |
 
-Bu seçenek, indirilen dosyadaki [IP aralıklarının](https://www.microsoft.com/download/details.aspx?id=41653) kullanılmasına izin verir. Bir ağ güvenlik grubuna (NSG) erişmek için set-AzureNetworkSecurityRule cmdlet 'ini kullanın. Güvenli Alıcılar listeniz yalnızca bölgeye özgü IP 'Leri içeriyorsa, kimlik doğrulamasını etkinleştirmek için Azure Active Directory (Azure AD) hizmet etiketini güvenli alıcılar listesini de güncelleştirmeniz gerekir.
+Bu seçenekleri kullanma hakkında daha fazla ayrıntı aşağıdaki şekilde paylaşılır:
 
-### <a name="allow-access-using-nsg-tags"></a>NSG etiketlerini kullanarak erişime izin ver
+### <a name="private-endpoints"></a>Özel uç noktalar
 
-Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup giden erişime izin vermek için AzureBackup Service Tag ' i kullanmanız gerekir. Ayrıca, Azure AD ve Azure Storage [kurallarını](../virtual-network/security-overview.md#service-tags) kullanarak kimlik doğrulama ve veri aktarımı için bağlantıya de izin vermeniz gerekir. Bu, Azure portal veya PowerShell aracılığıyla yapılabilir.
+Özel uç noktalar, bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde bağlanmanıza olanak tanır. Özel uç nokta, kasanızın VNET adres alanından bir IP kullanır. Sanal ağın ve kasadaki kaynaklarınız arasındaki ağ trafiği, sanal ağınız üzerinden ve Microsoft omurga ağında özel bir bağlantı üzerinden dolaşır. Bu, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. [Azure Backup için](./private-endpoints.md)özel uç noktalar hakkında daha fazla bilgi edinin.
 
-Portalı kullanarak bir kural oluşturmak için:
+### <a name="nsg-tags"></a>NSG etiketleri
 
-  1. **Tüm hizmetler**' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
-  2. **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
-  3. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** **hizmet etiketi** olarak ayarlandığından ve **hedef hizmet etiketinin** **AzureBackup**olarak ayarlandığından emin olun.
-  4. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle**' ye tıklayın.
+Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izin vermek için *AzureBackup* Service etiketini kullanın. Azure Backup etiketine ek olarak, *Azure AD* ve *Azure depolama*için benzer [NSG kuralları](../virtual-network/security-overview.md#service-tags) oluşturarak kimlik doğrulama ve veri aktarımı için de bağlantıya izin vermeniz gerekir.  Aşağıdaki adımlar Azure Backup etiketi için bir kural oluşturma işlemini anlatmaktadır:
 
-PowerShell kullanarak bir kural oluşturmak için:
+1. **Tüm hizmetler**' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
 
- 1. Azure hesabı kimlik bilgilerini ekleme ve ulusal bulutları güncelleştirme<br/>
-      `Add-AzureRmAccount`<br/>
+1. **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
 
- 2. NSG aboneliğini seçin<br/>
-      `Select-AzureRmSubscription "<Subscription Id>"`
+1. **Ekle**'yi seçin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
 
- 3. NSG 'yi seçin<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle** ' ye tıklayın.
 
- 4. Azure Backup hizmet etiketi için giden izin verme kuralı ekle<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+Benzer şekilde, Azure depolama ve Azure AD için NSG giden güvenlik kuralları oluşturabilirsiniz. Hizmet etiketleri hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)bakın.
 
- 5. Depolama hizmeti için giden kuralı izin ver etiketi ekle<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+### <a name="azure-firewall-tags"></a>Azure Güvenlik Duvarı etiketleri
 
- 6. AzureActiveDirectory Service etiketi için giden izin verme kuralı ekle<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+Azure Güvenlik duvarı kullanıyorsanız, *AzureBackup* [Azure Güvenlik Duvarı FQDN etiketini](../firewall/fqdn-tags.md)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup tüm giden erişimleri sağlar.
 
- 7. NSG 'yi kaydetme<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+### <a name="allow-access-to-service-ip-ranges"></a>Hizmet IP aralıklarına erişime izin ver
 
-**Azure Güvenlik Duvarı etiketlerini kullanarak erişime Izin verin**. Azure Güvenlik duvarı kullanıyorsanız, AzureBackup [FQDN etiketini](../firewall/fqdn-tags.md)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup giden erişimine izin verir.
+Erişim hizmeti IP 'lerine izin vermeyi seçerseniz, [burada](https://www.microsoft.com/download/confirmation.aspx?id=56519)KULLANILABILIR olan JSON dosyasındaki IP aralıklarına bakın. Azure Backup, Azure depolama ve Azure Active Directory karşılık gelen IP 'lere erişim izni vermeniz gerekir.
 
-**Trafiği yönlendirmek için BIR http proxy sunucusu dağıtın**. Azure VM 'de bir SAP HANA veritabanını yedeklerken, VM 'deki yedekleme uzantısı, Azure depolama 'ya Azure Backup ve verilere yönetim komutları göndermek için HTTPS API 'Lerini kullanır. Yedekleme uzantısı, kimlik doğrulaması için Azure AD 'yi de kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Uzantılar, genel internet erişimi için yapılandırılan tek bileşendir.
+### <a name="allow-access-to-service-fqdns"></a>Hizmet FQDN 'lere erişime izin ver
 
-Bağlantı seçenekleri aşağıdaki avantajları ve dezavantajları içerir:
+Sunucularınızdaki gerekli hizmetlere erişime izin vermek için aşağıdaki FQDN 'leri de kullanabilirsiniz:
 
-**Seçenek** | **Avantajlar** | **Dezavantajlar**
---- | --- | ---
-IP aralıklarına izin ver | Ek maliyet yok | IP adresi aralıkları zaman içinde değiştiğinden yönetilmesi karmaşıktır <br/><br/> Yalnızca Azure Storage değil Azure 'un tamamına erişim sağlar
-NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi <br/><br/> Ek maliyet yok <br/><br/> | Yalnızca NSG 'ler ile kullanılabilir <br/><br/> Hizmetin tamamına erişim sağlar
-Azure Güvenlik Duvarı FQDN etiketlerini kullanma | Gerekli FQDN 'Ler otomatik olarak yönetildiğinden yönetimi daha kolay | Yalnızca Azure Güvenlik Duvarı ile kullanılabilir
-HTTP proxy kullanma | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime izin verilir <br/><br/> VM 'lere tek bir internet erişimi noktası <br/><br/> Azure IP adresi değişikliklerine tabi değildir | Proxy yazılımıyla VM çalıştırmak için ek maliyetler
+| Hizmet    | Erişilecek etki alanı adları                             |
+| -------------- | ------------------------------------------------------------ |
+| Azure Backup  | `*.backup.windowsazure.com`                             |
+| Azure depolama | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Azure AD      | [Bu makaleye](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) göre 56 ve 59 bölümlerinde FQDN 'lere erişime izin ver |
+
+### <a name="use-an-http-proxy-server-to-route-traffic"></a>Trafiği yönlendirmek için bir HTTP proxy sunucusu kullanma
+
+Azure VM üzerinde çalışan bir SAP HANA veritabanını yedeklerken, VM 'deki yedekleme uzantısı, Azure depolama 'ya Azure Backup ve verilere yönetim komutları göndermek için HTTPS API 'Lerini kullanır. Yedekleme uzantısı, kimlik doğrulaması için Azure AD 'yi de kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Gerekli hizmetlere erişim izni vermek için yukarıda bahsedilen IP 'Ler ve FQDN 'lerin listesini kullanın. Kimliği doğrulanmış proxy sunucuları desteklenmez.
 
 ## <a name="what-the-pre-registration-script-does"></a>Ön kayıt betiği ne yapar
 

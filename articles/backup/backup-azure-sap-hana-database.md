@@ -3,12 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2f42b119c361eaddcb84dda738b50c8accc84f9c
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513889"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439741"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -25,13 +25,13 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * İsteğe bağlı yedekleme işi çalıştırma
 
 >[!NOTE]
->RHEL için SAP HANA yedekleme önizlemesine (7,4, 7,6, 7,7 veya 8,1 [) başlayın.](./tutorial-backup-sap-hana-db.md) Daha fazla sorgu için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>1 Ağustos 2020 itibariyle, RHEL için SAP HANA yedekleme (7,4, 7,6, 7,7 & 8,1) genel kullanıma sunulmuştur.
 
 >[!NOTE]
 >Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
 >Önizlemeye kaydolmak için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Önkoşulları](tutorial-backup-sap-hana-db.md#prerequisites) ve [ön kayıt betiği](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) , yedekleme için veritabanını ayarlama bölümlerine bakın.
 
@@ -63,11 +63,11 @@ Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izi
 
 1. **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
 
-1. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
+1. **Ekle**'yi seçin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
 
 1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle** ' ye tıklayın.
 
-Benzer şekilde, Azure depolama ve Azure AD için NSG giden güvenlik kuralları oluşturabilirsiniz.
+Benzer şekilde, Azure depolama ve Azure AD için NSG giden güvenlik kuralları oluşturabilirsiniz. Hizmet etiketleri hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)bakın.
 
 #### <a name="azure-firewall-tags"></a>Azure Güvenlik Duvarı etiketleri
 

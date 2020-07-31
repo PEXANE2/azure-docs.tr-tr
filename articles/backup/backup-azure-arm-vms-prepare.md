@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: c4fbafc63ce063159d0524ddf26bb936c53328df
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373985"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439706"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -88,7 +88,7 @@ Kasa için bir yedekleme ilkesi yapılandırın.
      !["Sanal makine seçin" bölmesi](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Kasadaki aynı bölgedeki ve abonelikteki tüm VM 'Ler, yedeklemeyi yapılandırmak için kullanılabilir. Yedeklemeyi yapılandırırken, bu VM 'lerde gerekli izne sahip olmadığınız halde sanal makine adına ve kaynak grubuna gidebilirsiniz.  
+    > Kasadaki aynı bölgedeki ve abonelikteki tüm VM 'Ler, yedeklemeyi yapılandırmak için kullanılabilir. Yedeklemeyi yapılandırırken, bu VM 'lerde gerekli izne sahip olmadığınız halde sanal makine adına ve kaynak grubuna gidebilirsiniz. VM 'niz geçici olarak silinmiş durumdaysa, bu listede görünür olmayacaktır. VM 'yi yeniden korumanız gerekiyorsa, geçici silme süresinin dolmasını veya geçici olarak silinen listeden VM 'yi geri silmeyi beklemeniz gerekir. Daha fazla bilgi için bkz. [VM 'ler için geçici silme makalesi](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. **Yedekleme**'de **yedeklemeyi etkinleştir**' i seçin. Bu, ilkeyi kasaya ve VM 'lere dağıtır ve yedekleme uzantısını Azure VM 'de çalışan VM aracısına kurar.
 
@@ -147,7 +147,7 @@ Aşağıda verilen şekilde **yedekleme işi** ayrıntıları bölmesinden denet
 
 **Görüntüye** | **Verileri kasaya aktar** | **İş Durumu**
 --- | --- | ---
-Tamamlandı | Devam ediyor | Devam ediyor
+Tamamlandı | Sürüyor | Sürüyor
 Tamamlandı | Atlandı | Tamamlandı
 Tamamlandı | Tamamlandı | Tamamlandı
 Tamamlandı | Başarısız | Uyarıyla tamamlandı

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525509"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439481"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux görüntülerine genel bakış
 
@@ -99,6 +99,9 @@ RHEL 7. x görüntüleri için birkaç farklı görüntü türü vardır. Aşağ
 |RedHat | RHEL | RHEL-SAP-HANA | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 7.3.2018051421) | SAP uygulamaları ve SAP HANA depoları SAP depolarında birleştirileceğinden, bu görüntüler güncel değildir. Bu görüntüler RHEL for SAP HANA görüntülerdir. Bunlar, SAP HANA depolarına ve temel RHEL depolarına erişim hakkına sahiptir.
 
 ## <a name="rhel-8-image-types"></a>RHEL 8 görüntü türleri
+
+>[!NOTE]
+> Red hat, RHEL 8 + içindeki çekirdek komut satırı parametrelerini yapılandırmak için grubby kullanılmasını önerir. Daha fazla ayrıntı [burada](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)bulunabilir.
 
 RHEL 8 görüntü türleri için Ayrıntılar aşağıda verilmiştir.
 

@@ -3,16 +3,16 @@ title: Öğretici-Azure IoT Edge kullanarak uç Stream Analytics
 description: Bu öğreticide, Azure Stream Analytics bir IoT Edge cihazına modül olarak dağıtırsınız
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220279"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439410"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Öğretici: Azure Stream Analytics IoT Edge modülü olarak dağıtma
 
@@ -68,7 +68,7 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
    | ----- | ----- |
    | Abonelik | IoT hub'ınızla aynı aboneliği seçin. |
    | Kaynak grubu | Hızlı başlangıç ve öğreticiler IoT Edge için tüm test kaynaklarınız için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
-   | Adı | Depolama hesabınıza benzersiz bir ad verin. |
+   | Name | Depolama hesabınıza benzersiz bir ad verin. |
    | Konum | Size yakın bir konum seçin. |
 
 1. Diğer alanlar için varsayılan değerleri tutun ve **gözden geçir + oluştur**' u seçin.
@@ -107,7 +107,7 @@ Bu bölümde giriş, çıkış ve sorgu öğelerini kullanarak IoT Edge cihazın
 
 1. **Yeni giriş** bölmesinde giriş diğer adı olarak **temperature** yazın.
 
-1. Diğer alanlar için varsayılan değerleri kullanın ve **Kaydet**'i seçin.
+1. Diğer alanların varsayılan değerlerini tutun ve **Kaydet**’i seçin.
 
 1. **İş Topolojisi**'nin altında **Çıkışlar**'ı açın ve **Ekle**'yi seçin.
 
@@ -117,9 +117,9 @@ Bu bölümde giriş, çıkış ve sorgu öğelerini kullanarak IoT Edge cihazın
 
 1. **Yeni çıkış** bölmesinde çıkış diğer adı olarak **alert** yazın.
 
-1. Diğer alanlar için varsayılan değerleri kullanın ve **Kaydet**'i seçin.
+1. Diğer alanların varsayılan değerlerini tutun ve **Kaydet**’i seçin.
 
-1. **İş Topolojisi**'nin altında **Sorgu**'yu seçin.
+1. **Iş topolojisi**altında **sorgu**' yı seçin.
 
 1. Varsayılan metni aşağıdaki sorguyla değiştirin. 30 saniyelik süre içindeki ortalama makine sıcaklığı 70 dereceye ulaşırsa SQL kodu uyarı çıkışına bir sıfırlama komutu gönderir. Sıfırlama komutu, gerçekleştirilebilecek bir eylem olarak önceden sensöre programlanmıştır.
 
@@ -134,7 +134,7 @@ Bu bölümde giriş, çıkış ve sorgu öğelerini kullanarak IoT Edge cihazın
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. **Kaydet**’i seçin.
+1. **Sorguyu Kaydet**' i seçin.
 
 ### <a name="configure-iot-edge-settings"></a>IoT Edge ayarlarını yapılandırma
 
@@ -189,7 +189,7 @@ Bu öğreticide iki modül dağıtacaksınız. Birincisi, sıcaklık ve nem sens
 
 1. **Güncelleştir** veya **iptal**' i seçin.
 
-1. Stream Analytics modülünüzün adını, bir sonraki adımda gerekli olacak şekilde bir yere unutmayın, ardından Ileri ' yi seçin: devam etmek için **yollar** .
+1. Bir sonraki adımda ihtiyaç duyacağınız için Stream Analytics modülünüzün adını unutmayın. Sonra, Ileri ' yi seçin: devam etmek için **yollar** .
 
 1. **Rotalar** sekmesinde, iletilerin modüller arasında nasıl geçtiğini tanımlar ve IoT Hub. İletiler ad/değer çiftleri kullanılarak oluşturulur. Default `route` ve `upstream` Name ve Values değerlerini aşağıdaki tabloda gösterilen çiftler ile değiştirin, aşağıdaki ad/değer çiftleri, _{moduleName}_ örneklerini Azure Stream Analytics modülünüzün adıyla değiştirir.
 

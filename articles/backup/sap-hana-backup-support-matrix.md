@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'lerde SAP HANA veritabanlarını yedeklemek 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: beea96180e9e8bc8d128e8970d0149922161398c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 674bbf968b42f66a4c421aec6653881c8fd52a8b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076980"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439573"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM’leri üzerinde SAP HANA veritabanlarının yedeklerine yönelik destek matrisi
 
@@ -24,7 +24,7 @@ Azure Backup, SAP HANA veritabanlarının Azure 'a yedeklenmesini destekler. Bu 
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topoloji**               | Yalnızca Azure Linux VM 'lerinde çalışan SAP HANA                    | HANA büyük örnekler (HLI)                                   |
 | **Bölgeler**                   | **GA**<br> **Kuzey** – Orta ABD, Doğu ABD 2, Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD 2, Orta Batı ABD, Batı ABD, Kanada Orta, Kanada Doğu, Brezilya Güney <br> **Asya Pasifik** – Avustralya Orta, Avustralya Orta 2, Avustralya Doğu, Avustralya Güneydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Doğu Asya, Güneydoğu Asya, Orta Hindistan, Güney Hindistan, Batı Hindistan, Çin Doğu, Çin Kuzey, Çin doğu2, Çin Kuzey 2 <br> **Avrupa** – Batı Avrupa, Kuzey Avrupa, Fransa Orta, UK Güney, UK Batı, Almanya Kuzey, Almanya Orta Batı, İsviçre Kuzey, İsviçre Batı, Orta İsviçre Kuzey, Norveç Doğu, Norveç Batı <br> **Afrika/ben** -Güney Afrika Kuzey, Güney Afrika Batı, BAE Kuzey, BAE Orta  <BR>  **Azure Kamu bölgeleri** | Fransa Güney, Almanya Orta, Almanya Kuzeydoğu, US Gov IOWA |
-| **İşletim sistemi sürümleri**            | SLES 12 with SP2, SP3 ve SP4; SP0 ve SP1 ile SLES 15 <br><br>   **Önizleme** -RHEL 7,4, 7,6, 7,7 ve 8,1  <br>     RHEL için SAP HANA yedekleme önizlemesine (7,4, 7,6, 7,7 ve 8,1 [) başlayın.](./tutorial-backup-sap-hana-db.md) Daha fazla sorgu için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .                |                                             |
+| **İşletim sistemi sürümleri**            | SLES 12 with SP2, SP3 ve SP4; SP0 ve SP1 ile SLES 15 <br><br>  1 Ağustos 2020 itibariyle, RHEL için SAP HANA yedekleme (7,4, 7,6, 7,7 & 8,1) genel kullanıma sunulmuştur.                |                                             |
 | **HANA sürümleri**          | Hana 1. x üzerindeki SDC, HANA 2. x <= SPS04 Rev 48, SPS05 (henüz şifreleme etkin senaryolar için onaylanmak üzere)      |                                                            |
 | **HANA dağıtımları**       | Tek bir Azure VM üzerinde SAP HANA-yalnızca ölçeği artırma. <br><br> Yüksek kullanılabilirlik dağıtımlarında iki farklı makinede bulunan düğümler ayrı veri zincirleriyle tek tek düğümler olarak değerlendirilir.               | Ölçeği genişletme <br><br> Yüksek kullanılabilirlik dağıtımlarında yedekleme, ikincil düğüme otomatik olarak yük devretmez. Yedeklemenin yapılandırılması her düğüm için ayrı olarak yapılmalıdır.                                           |
 | **HANA örnekleri**         | Tek bir Azure VM üzerinde tek bir SAP HANA örneği – yalnızca ölçeği büyütme | Tek bir VM 'de birden çok SAP HANA örneği                  |
@@ -44,7 +44,7 @@ Azure Backup, SAP HANA veritabanlarının Azure 'a yedeklenmesini destekler. Bu 
 
 
 > [!NOTE]
-> Artık Azure portal HANA yerel istemcilerinden (SAP HANA Studio/kokpit/DBA kokpiti) tetiklenen [yedekleme ve geri yükleme](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal) (aynı makineye) işlerini izleyebilirsiniz.
+> Artık Azure portal HANA yerel istemcilerinden (SAP HANA Studio/kokpit/DBA kokpiti) tetiklenen [yedekleme ve geri yükleme](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal) işlerini (aynı makineye) izleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

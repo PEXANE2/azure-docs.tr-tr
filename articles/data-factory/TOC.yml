@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Tümleştirme çalışma zamanı
       href: concepts-integration-runtime.md
-    - name: Yönetilen Sanal Ağ
-      href: managed-virtual-network-private-endpoint.md
     - name: Güvenlik
       items:
         - name: Güvenlik temeli
@@ -588,6 +586,8 @@
           href: data-factory-service-identity.md
         - name: Müşteri tarafından yönetilen anahtar şifrelemesi
           href: enable-customer-managed-key.md
+        - name: Yönetilen Sanal Ağ
+          href: managed-virtual-network-private-endpoint.md
     - name: İzleme ve yönetme
       items:
         - name: Görsel olarak izleme
@@ -732,6 +732,8 @@
           href: connector-troubleshoot-guide.md
         - name: Veri Akışları
           href: data-flow-troubleshoot-guide.md
+        - name: Veri Kopyalama aracı
+          href: copy-data-tool-troubleshoot-guide.md
         - name: Şirket içinde barındırılan Tümleştirme Çalışma Zamanları
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS Integration Runtime

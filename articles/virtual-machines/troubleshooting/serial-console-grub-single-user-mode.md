@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284719"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439537"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma
 Bir sanal makineyi (VM) önyüklerken gördüğünüz ilk şey, genel Birleşik önyükleme yükleyicisinden (GRUB) büyük olasılıkla karşılaşırsınız. İşletim sistemi başlatılmadan önce görüntülendiğinden, GRUB SSH aracılığıyla erişilebilir değildir. GRUB 'de, önyükleme yapılandırmanızı, diğer şeyler arasında tek kullanıcılı modda önyüklenecek şekilde değiştirebilirsiniz.
 
 Tek kullanıcılı mod, en az işlevselliğe sahip minimal bir ortamdır. Önyükleme sorunlarını, dosya sistemi sorunlarını veya ağ sorunlarını araştırmak için yararlı olabilir. Arka planda daha az hizmet çalıştırılabilir ve Runlevel 'a bağlı olarak, bir dosya sistemi de otomatik olarak takılmayabilir.
 
-Tek kullanıcılı mod, sanal makinenizin yalnızca oturum açma için SSH anahtarlarını kabul edecek şekilde yapılandırıldığı durumlarda da yararlıdır. Bu durumda, parola kimlik doğrulamasıyla bir hesap oluşturmak için tek kullanıcılı modu kullanabilirsiniz. 
+Tek kullanıcılı mod, sanal makinenizin yalnızca oturum açma için SSH anahtarlarını kabul edecek şekilde yapılandırıldığı durumlarda da yararlıdır. Bu durumda, parola kimlik doğrulamasıyla bir hesap oluşturmak için tek kullanıcılı modu kullanabilirsiniz.
 
 > [!NOTE]
 > Seri konsol hizmeti, yalnızca *katkıda bulunan* düzeyindeki veya daha yüksek izinlere sahip KULLANıCıLARıN bir VM 'nin seri konsoluna erişmesine izin verir.
@@ -66,6 +66,9 @@ RHEL, kutudan çıkar seçeneğiyle birlikte gelir. GRUB girmek için çalışt�
 
 **RHEL 8 için**
 
+>[!NOTE]
+> Red hat, RHEL 8 + içindeki çekirdek komut satırı parametrelerini yapılandırmak için grubby kullanılmasını önerir. Şu anda, GruBBy kullanarak grub zaman aşımı ve Terminal parametrelerini güncelleştirmek mümkün değildir. Tüm önyükleme girdilerinin GRUB_CMDLINE_LINUX bağımsız değişkenini güncelleştirmeyi değiştirmek için, çalıştırın `grubby --update-kernel=ALL --args="console=ttyS0,115200 console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"` . Daha fazla ayrıntı [burada](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)bulunabilir.
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
@@ -90,8 +93,7 @@ Kök kullanıcı varsayılan olarak devre dışıdır. RHEL 'de tek kullanıcıl
 1. Köke geçiş yapın.
 1. Aşağıdaki işlemleri gerçekleştirerek kök kullanıcı için parolayı etkinleştirin:
     * Çalıştır `passwd root` (güçlü bir kök parolası ayarlayın).
-1. Kök kullanıcının aşağıdakileri yaparak yalnızca ttyS0 aracılığıyla oturum açabildiğinden emin olun:  
-    a. `edit /etc/ssh/sshd_config`Öğesini çalıştırın ve Permitrootlogın 'in olarak ayarlandığından emin olun `no` .  
+1. Kök kullanıcının şunları yaparak yalnızca ttyS0 aracılığıyla oturum açabildiğinden emin olun: a. `edit /etc/ssh/sshd_config`Öğesini çalıştırın ve Permitrootlogın 'in olarak ayarlandığından emin olun `no` .
     b. `edit /etc/securetty file`Yalnızca ttyS0 aracılığıyla oturum açmaya izin vermek için çalıştırın.
 
 Artık sistem tek kullanıcı modunda önyükleniyorsa, kök parolasıyla oturum açabilirsiniz.
@@ -106,7 +108,7 @@ Yukarıdaki yönergeleri kullanarak GRUB ve kök erişim ayarladıysanız, aşa�
 1. Çekirdek satırını bulun. Azure 'da *linux16*ile başlar.
 1. Satırın sonuna gitmek için CTRL + E tuşlarına basın.
 1. Satırın sonunda *systemd. Unit = kurtarma. Target*' ı ekleyin.
-    
+
     Bu eylem sizi tek kullanıcılı modda önyükler. Acil durum modunu kullanmak istiyorsanız, satırın sonuna *systemd. Unit = acil durum. Target* ekleyin ( *systemd. Unit = kurtarma. Target*yerine).
 
 1. Çıkmak için CTRL + X tuşlarına basın ve uygulanan ayarlarla yeniden başlatın.
@@ -130,11 +132,11 @@ Yukarıdaki yönergeleri kullanarak GRUB ve kök erişim ayarladıysanız, aşa�
     Bu eylem, `initramfs` `systemd` [Red Hat belgelerinde](https://aka.ms/rhel7rootpassword)açıklandığı gibi, denetim öğesinden öğesine geçirilmeden önce önyükleme işlemini keser.
 1. Çıkmak için CTRL + X tuşlarına basın ve uygulanan ayarlarla yeniden başlatın.
 
-   ' Yi yeniden başlattıktan sonra, salt bir dosya sistemi ile acil durum moduna bırakılmışız. 
-   
+   ' Yi yeniden başlattıktan sonra, salt bir dosya sistemi ile acil durum moduna bırakılmışız.
+
 1. Kabukta `mount -o remount,rw /sysroot` kök dosya sistemini okuma/yazma izinleriyle yeniden bağlamak için girin.
 1. Tek kullanıcılı modda önyükleme yaptıktan sonra, `chroot /sysroot` Jail 'e geçiş yapmak için girin `sysroot` .
-1. Artık kökte olursunuz. `passwd`Önceki yönergeleri girerek ve ardından tek kullanıcılı mod girmek için kök parolanızı sıfırlayabilirsiniz. 
+1. Artık kökte olursunuz. `passwd`Önceki yönergeleri girerek ve ardından tek kullanıcılı mod girmek için kök parolanızı sıfırlayabilirsiniz.
 1. İşiniz bittiğinde `reboot -f` yeniden başlatmak için girin.
 
 ![Bir komut satırı arabirimini gösteren animasyonlu resim. Kullanıcı bir sunucu seçer, çekirdek çizginin sonunu bulur ve belirtilen komutları girer.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
