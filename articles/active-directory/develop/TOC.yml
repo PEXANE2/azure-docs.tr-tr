@@ -512,6 +512,8 @@
           href: active-directory-claims-mapping.md
         - name: İsteğe bağlı talepleri yapılandırma
           href: active-directory-optional-claims.md
+        - name: Taleplerde dizin şeması uzantısı özniteliklerini kullanma
+          href: active-directory-schema-extensions.md
         - name: Belirteç ömrünü yapılandırma
           href: active-directory-configurable-token-lifetimes.md
         - name: Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme

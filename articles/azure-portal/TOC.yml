@@ -12,9 +12,13 @@
   items:
     - name: Portalda VM oluşturma
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
-    - name: Pano oluşturma - ARM şablonu
-      displayName: Resource Manager
-      href: quick-create-template.md
+    - name: Pano oluşturma
+      items:
+        - name: Azure PowerShell
+          href: quickstart-portal-dashboard-powershell.md
+        - name: ARM şablonu
+          displayName: Resource Manager
+          href: quick-create-template.md
 - name: Kavramlar
   items:
     - name: Rol tabanlı erişim denetimi ile panoları paylaşma

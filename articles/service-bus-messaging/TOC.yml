@@ -220,11 +220,11 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Güvenlik
       items:
-        - name: Güvenlik duvarlarını yapılandırma
+        - name: Belirli IP adreslerinden erişime izin ver
           href: service-bus-ip-filtering.md
-        - name: Sanal ağ hizmet uç noktalarını yapılandırma
+        - name: Belirli sanal ağlardan erişime izin ver
           href: service-bus-service-endpoints.md
-        - name: Özel uç noktaları yapılandırma
+        - name: Özel uç noktalar aracılığıyla erişime izin ver
           href: private-link-service.md
         - name: Müşteri tarafından yönetilen anahtarları yapılandırma
           href: configure-customer-managed-key.md

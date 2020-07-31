@@ -42,6 +42,8 @@
   items:
     - name: Bilişsel Arama ile Form Tanıma
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+    - name: AI Builder ile Form Tanıma kullanma
+      href: tutorial-ai-builder.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Eğitim verileri kümesi oluşturma

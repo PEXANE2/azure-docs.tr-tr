@@ -51,6 +51,8 @@
       items:
         - name: Rezervasyonları ve kullanımı görüntüleme
           href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Rezervasyonları CSP olarak görüntüleme
+          href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Rezervasyonları yönetme
           href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: İyileştirme ayarlarını değiştirme

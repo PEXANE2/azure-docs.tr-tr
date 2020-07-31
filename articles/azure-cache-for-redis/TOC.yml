@@ -29,30 +29,36 @@
           href: cache-python-get-started.md
 - name: Öğreticiler
   items:
+    - name: ASP.NET
+      items:
+        - name: Oturum durumu sağlayıcısı kullanma
+          href: cache-aspnet-session-state-provider.md
+        - name: Çıkış önbelleği sağlayıcısı kullanma
+          href: cache-aspnet-output-cache-provider.md
+    - name: Java Spring
+      items:
+        - name: Spring Boot Başlatıcı uygulaması kullanma
+          href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Puan tabloları ile önbelleğe almayı kullanma
       href: cache-web-app-cache-aside-leaderboard.md
-- name: Örnekler
-  items:
-    - name: Redis için Azure Önbelleği örnekleri
-      href: cache-redis-samples.md
-    - name: Azure
+    - name: Azure PowerShell
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
-    - name: Güvenlik
-      items:
-        - name: Güvenlik temeli
-          href: security-baseline.md
     - name: Yük devretme ve yama uygulama
       href: cache-failover.md
     - name: En iyi uygulamalar
       href: cache-best-practices.md
-    - name: Önbelleğe alma İçin mimari açıdan en iyi uygulamalar
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
+    - name: Önbelleğe alma mimarisi
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Nasıl yapılır kılavuzları
   items:
@@ -86,18 +92,6 @@
           href: cache-redis-cache-arm-provision.md
         - name: Redis için Azure Önbelleği ile Web Uygulaması sağlama
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: Uygulama ile tümleştirme
-      items:
-        - name: ASP.NET
-          items:
-            - name: Oturum durumu sağlayıcısı kullanma
-              href: cache-aspnet-session-state-provider.md
-            - name: Çıkış önbelleği sağlayıcısı kullanma
-              href: cache-aspnet-output-cache-provider.md
-        - name: Java Spring
-          items:
-            - name: Spring Boot Başlatıcı uygulaması kullanma
-              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Yönetme
       items:
         - name: Azure portalında yapılandırma
@@ -136,35 +130,37 @@
           href: cache-how-to-premium-clustering.md
 - name: Başvuru
   items:
-    - name: Kod örnekleri
-      href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
-    - name: Azure PowerShell
-      href: /powershell/module/az.rediscache
-    - name: Azure CLI
-      href: /cli/azure/redis
+    - name: Redis için Azure Önbelleği örnekleri
+      href: cache-redis-samples.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
       href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis istemcileri
       href: 'https://redis.io/clients'
-    - name: Redis komutları
-      href: 'https://redis.io/commands#'
+    - name: Azure PowerShell
+      href: /powershell/module/az.rediscache
+    - name: Azure CLI
+      href: /cli/azure/redis
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/redis/'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.cache/allversions
+    - name: Azure İlkesi yerleşik ilkeler
+      href: ./policy-samples.md
+    - name: Redis komutları
+      href: 'https://redis.io/commands#'
 - name: Kaynaklar
   items:
-    - name: Microsoft Learn ile becerilerinizi geliştirin
-      href: /learn/browse/?products=azure-redis-cache
-    - name: Azure Yol Haritası
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Fiyatlandırma
-      href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Redis için Azure Önbelleği SSS
       href: cache-faq.md
     - name: Videolar
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft Soru-Cevap soru sayfası
       href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/cache/'
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: /learn/browse/?products=azure-redis-cache
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'

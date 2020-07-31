@@ -95,7 +95,7 @@
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: HDInsight üzerinde R Server kullanmaya başlayın
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
-        - name: Azure Machine Learning çalışma alanı
+        - name: Machine Learning Studio (klasik) çalışma alanı
           href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: İşletme ihtiyaçlarını çözümleme
       items:
@@ -192,8 +192,6 @@
       href: deploy-models-in-production.md
 - name: İlgili
   items:
-    - name: Azure Machine Learning
-      href: ../
     - name: Bilişsel Hizmetler
       href: 'https://docs.microsoft.com/azure/cognitive-services/'
     - name: Anormallik algılama

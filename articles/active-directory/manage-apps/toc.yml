@@ -8,6 +8,7 @@
     - name: Çoklu oturum açma (SSO) nedir?
       href: what-is-single-sign-on.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Uygulamalarınızı görüntüleme
       href: view-applications-portal.md
@@ -30,7 +31,7 @@
     - name: Uygulama Ara Sunucusu için Azure PowerShell örnekleri
       href: application-proxy-powershell-samples.md
 - name: Kavramlar
-  expanded: true
+  expanded: false
   items:
     - name: Uygulama yönetimi için en iyi yöntemler
       href: application-management-fundamentals.md
@@ -97,195 +98,177 @@
         - name: Uzaktan erişim çözümlerini karşılaştırma
           href: application-proxy-migration.md
 - name: Nasıl yapılır kılavuzları
-  expanded: true
+  expanded: false
   items:
-    - name: Bulut uygulamaları ve çoklu oturum açma
+    - name: Çoklu oturum açmayı yapılandırma
       items:
-        - name: Çoklu oturum açmayı yapılandırma
-          items:
-            - name: SAML tabanlı çoklu oturum açmayı yapılandırma
-              items:
-                - name: SAML tabanlı çoklu oturum açmayı yapılandırma
-                  href: configure-saml-single-sign-on.md
-                - name: Kullanıcı özniteliklerini ve taleplerini özelleştirme
-                  items:
-                    - name: Grup taleplerini yapılandırma
-                      href: /azure/active-directory/hybrid/how-to-connect-fed-group-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Rol taleplerini yapılandırma
-                      href: /azure/active-directory/develop/active-directory-enterprise-app-role-management?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Portalda talepleri özelleştirme
-                      href: /azure/active-directory/develop/active-directory-saml-claims-customization?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: PowerShell ile talepleri özelleştirme
-                      href: /azure/active-directory/develop/active-directory-claims-mapping?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: İsteğe bağlı talepleri yapılandırma
-                      href: /azure/active-directory/develop/active-directory-optional-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Belirteç ömrünü yapılandırma
-                      href: /azure/active-directory/develop/active-directory-configurable-token-lifetimes?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Parola tabanlı oturum açmayı yapılandırma
-              href: configure-password-single-sign-on-non-gallery-applications.md
-            - name: Bağlantılı oturum açmayı yapılandırma
-              href: configure-linked-sign-on.md
-        - name: Kullanıcı atama ve uygulamalara erişimi yönetme
-          items:
-            - name: Kullanıcı onayını yapılandırma
-              href: configure-user-consent.md
-            - name: Onay isteklerini yönetme ve değerlendirme
-              href: manage-consent-requests.md
-            - name: Kiracı genelinde yönetici onayı verme
-              href: grant-admin-consent.md
-            - name: Yönetici onayı iş akışını yapılandırma (önizleme)
-              href: configure-admin-consent-workflow.md
-            - name: Uygulamaya kullanıcı veya grup atama
-              href: assign-user-or-group-access-portal.md
-            - name: Uygulamalara verilen izinleri gözden geçirme
-              href: manage-application-permissions.md
-            - name: Uygulamalarım üzerinde koleksiyonlar oluşturma
-              href: access-panel-collections.md
-            - name: Self servis uygulama erişimini kullanma
-              href: access-panel-manage-self-service-access.md
-            - name: Bir kullanıcının uygulamaya erişimini kaldırma yöntemleri
-              href: methods-for-removing-user-access.md
-            - name: Kullanıcı veya grup erişimini kaldırma
-              href: remove-user-or-group-access-portal.md
-            - name: Kullanıcıdan uygulama gizleme
-              href: hide-application-from-user-portal.md
-            - name: Kullanıcılar için oturum açmayı devre dışı bırakma
-              href: disable-user-sign-in-portal.md
-            - name: Self servis uygulama atamasını yapılandırma
-              href: manage-self-service-access.md
-            - name: Giriş Bölgesi Bulma
-              href: configure-authentication-for-federated-users-portal.md
+        - name: SAML tabanlı çoklu oturum açmayı yapılandırma
+          href: configure-saml-single-sign-on.md
+        - name: Parola tabanlı oturum açmayı yapılandırma
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Bağlantılı oturum açmayı yapılandırma
+          href: configure-linked-sign-on.md
         - name: MS Graph API’lerini kullanarak SAML tabanlı çoklu oturum açmayı otomatikleştirme
           href: application-saml-sso-configure-api.md
-        - name: Uygulamaları Azure AD’ye geçirme
-          items:
-            - name: Geçiş kaynakları
-              href: migration-resources.md
-            - name: ADFS uygulamasını Azure’a geçirme
-              href: migrate-adfs-apps-to-azure.md
-            - name: AD FS uygulaması etkinlik raporunu kullanma (önizleme)
-              href: migrate-adfs-application-activity.md
-        - name: Sorun giderme
-          items:
-            - name: Uygulama ekleme sorunlarını giderme
-              items:
-                - name: Yaygın sorunlar - galeri uygulamaları
-                  href: adding-gallery-app-common-problems.md
-                - name: Yaygın sorunlar - galeri dışındaki uygulamalar
-                  href: adding-non-gallery-app-common-problems.md
-            - name: Kullanıcı oturum açma sorunlarını giderme
-              items:
-                - name: Beklenmeyen izin alma istemi
-                  href: application-sign-in-unexpected-user-consent-prompt.md
-                - name: Kullanıcı onayı hatası
-                  href: application-sign-in-unexpected-user-consent-error.md
-                - name: Özel portaldan oturum açma sorunları
-                  href: application-sign-in-other-problem-deeplink.md
-                - name: Özel bölmeden oturum açma sorunları
-                  href: application-sign-in-other-problem-access-panel.md
-                - name: Uygulama oturum açma sayfasında hata
-                  href: application-sign-in-problem-application-error.md
-                - name: Parolayla çoklu oturum açma sorunu - galeri dışındaki uygulama
-                  href: application-sign-in-problem-password-sso-non-gallery.md
-                - name: Parolayla çoklu oturum açma sorunu - galeri uygulaması
-                  href: application-sign-in-problem-password-sso-gallery.md
-                - name: Microsoft uygulamasında oturum açma sorunu
-                  href: application-sign-in-problem-first-party-microsoft.md
-                - name: Federasyonda çoklu oturum açma sorunu - galeri dışındaki uygulama
-                  href: application-sign-in-problem-federated-sso-non-gallery.md
-                - name: Federasyonda çoklu oturum açma sorunu - galeri uygulaması
-                  href: application-sign-in-problem-federated-sso-gallery.md
-                - name: Özel geliştirilmiş uygulama ile ilgili sorun
-                  href: application-sign-in-problem-custom-dev.md
-            - name: Çoklu oturum açma sorunlarını giderme
-              items:
-                - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri uygulamaları
-                  href: configure-federated-single-sign-on-gallery-applications-problems.md
-                - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri dışındaki uygulamalar
-                  href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-                - name: Parola yapılandırmayla ilgili yaygın sorunlar - galeri uygulamaları
-                  href: configure-password-single-sign-on-gallery-applications-problems.md
-                - name: Parola yapılandırmayla ilgili yaygın sorunlar - galeri dışındaki uygulamalar
-                  href: configure-password-single-sign-on-non-gallery-applications-problems.md
-            - name: Uygulama listesi ve atama sorunlarını giderme
-              items:
-                - name: Kiracınızın uygulama listesini yönetme
-                  href: application-types.md
-                - name: Beklenmeyen kullanıcı ataması
-                  href: ways-users-get-assigned-to-applications.md
-            - name: Erişim paneli sorunlarını giderme
-              items:
-                - name: Tarayıcı uzantısı yönetme
-                  href: manage-access-panel-browser-extension.md
-                - name: Uygulama görüntülenmiyor
-                  href: access-panel-troubleshoot-application-not-appearing.md
-                - name: Beklenmeyen uygulama görüntüleniyor
-                  href: access-panel-troubleshoot-unexpected-application.md
-                - name: Oturum açılamıyor
-                  href: access-panel-troubleshoot-web-sign-in-problem.md
-                - name: Tarayıcı uzantısı yüklenirken hata oluşuyor
-                  href: access-panel-extension-problem-installing.md
-                - name: Self servis uygulama erişiminin kullanırken hata oluşuyor
-                  href: access-panel-troubleshoot-self-service-access.md
-    - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
+    - name: Kullanıcı atama ve uygulamalara erişimi yönetme
       items:
-        - name: Bağlayıcıları yapılandırma
+        - name: Kullanıcı onayını yapılandırma
+          href: configure-user-consent.md
+        - name: Onay isteklerini yönetme ve değerlendirme
+          href: manage-consent-requests.md
+        - name: Kiracı genelinde yönetici onayı verme
+          href: grant-admin-consent.md
+        - name: Yönetici onayı iş akışını yapılandırma (önizleme)
+          href: configure-admin-consent-workflow.md
+        - name: Uygulamaya kullanıcı veya grup atama
+          href: assign-user-or-group-access-portal.md
+        - name: Uygulamalara verilen izinleri gözden geçirme
+          href: manage-application-permissions.md
+        - name: Uygulamalarım üzerinde koleksiyonlar oluşturma
+          href: access-panel-collections.md
+        - name: Self servis uygulama erişimini kullanma
+          href: access-panel-manage-self-service-access.md
+        - name: Bir kullanıcının uygulamaya erişimini kaldırma yöntemleri
+          href: methods-for-removing-user-access.md
+        - name: Kullanıcı veya grup erişimini kaldırma
+          href: remove-user-or-group-access-portal.md
+        - name: Kullanıcıdan uygulama gizleme
+          href: hide-application-from-user-portal.md
+        - name: Kullanıcılar için oturum açmayı devre dışı bırakma
+          href: disable-user-sign-in-portal.md
+        - name: Self servis uygulama atamasını yapılandırma
+          href: manage-self-service-access.md
+        - name: Giriş Bölgesi Bulma
+          href: configure-authentication-for-federated-users-portal.md
+    - name: Kimlik yönetimini Azure AD’ye geçirme
+      items:
+        - name: Geçiş kaynakları
+          href: migration-resources.md
+        - name: ADFS uygulamasını Azure’a geçirme
+          href: migrate-adfs-apps-to-azure.md
+        - name: AD FS uygulaması etkinlik raporunu kullanma (önizleme)
+          href: migrate-adfs-application-activity.md
+    - name: Şirket içi bağlayıcıları yapılandırma
+      items:
+        - name: Ara sunucularla yapılandırma
+          href: application-proxy-configure-connectors-with-proxy-servers.md
+        - name: Kayıt bağlayıcısı - sessiz yükleme
+          href: application-proxy-register-connector-powershell.md
+    - name: Şirket içi uygulama erişimini yapılandırma
+      items:
+        - name: Talep kullanan uygulamaları yapılandırma
+          href: application-proxy-configure-for-claims-aware-applications.md
+        - name: Mobil ve masaüstü uygulamalarının şirket içi API’lere erişmesine izin verme
+          href: application-proxy-secure-api-access.md
+        - name: Mobil ve masaüstü istemci uygulamalarını yapılandırma
+          href: application-proxy-configure-native-client-application.md
+        - name: Özel giriş sayfası yapılandırma
+          href: application-proxy-configure-custom-home-page.md
+        - name: Satır içi bağlantıları çevirme
+          href: application-proxy-configure-hard-coded-link-translation.md
+        - name: Tanımlama bilgisi ayarlarını yapılandırma
+          href: application-proxy-configure-cookie-settings.md
+        - name: Joker karakterleri kullanarak yayımlama
+          href: application-proxy-wildcard.md
+        - name: Kişisel verileri kaldırma
+          href: application-proxy-remove-personal-data.md
+        - name: Özel etki alanı yapılandırma
+          href: application-proxy-configure-custom-domain.md
+        - name: Uygulama Ara Sunucusu ile çoklu oturum açma
           items:
-            - name: Ara sunucularla yapılandırma
-              href: application-proxy-configure-connectors-with-proxy-servers.md
-            - name: Kayıt bağlayıcısı - sessiz yükleme
-              href: application-proxy-register-connector-powershell.md
-        - name: Uygulama erişimini yapılandırma
+            - name: Kerberos Kısıtlanmış Temsili (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: Parola kasası oluşturma
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: Üst bilgiler
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: SAML SSO
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+        - name: Uygulama teslim denetleyicileri veya ağlarla eski uygulamaları güvenli hale getirme
+          href: secure-hybrid-access.md
+        - name: Adım adım kılavuzlar yayımlama
           items:
-            - name: Talep kullanan uygulamaları yapılandırma
-              href: application-proxy-configure-for-claims-aware-applications.md
-            - name: Mobil ve masaüstü uygulamalarının şirket içi API’lere erişmesine izin verme
-              href: application-proxy-secure-api-access.md
-            - name: Mobil ve masaüstü istemci uygulamalarını yapılandırma
-              href: application-proxy-configure-native-client-application.md
-            - name: Özel giriş sayfası yapılandırma
-              href: application-proxy-configure-custom-home-page.md
-            - name: Satır içi bağlantıları çevirme
-              href: application-proxy-configure-hard-coded-link-translation.md
-            - name: Tanımlama bilgisi ayarlarını yapılandırma
-              href: application-proxy-configure-cookie-settings.md
-            - name: Joker karakterleri kullanarak yayımlama
-              href: application-proxy-wildcard.md
-            - name: Kişisel verileri kaldırma
-              href: application-proxy-remove-personal-data.md
-            - name: Özel etki alanı yapılandırma
-              href: application-proxy-configure-custom-domain.md
-            - name: Uygulama Ara Sunucusu ile çoklu oturum açma
-              items:
-                - name: Kerberos Kısıtlanmış Temsili (KCD)
-                  href: application-proxy-configure-single-sign-on-with-kcd.md
-                - name: Parola kasası oluşturma
-                  href: application-proxy-configure-single-sign-on-password-vaulting.md
-                - name: Üst bilgiler
-                  href: application-proxy-configure-single-sign-on-with-ping-access.md
-                - name: SAML SSO
-                  href: application-proxy-configure-single-sign-on-on-premises-apps.md
-            - name: Adım adım kılavuzlar yayımlama
-              items:
-                - name: NDES sunucusunda Uygulama Proxy’si ile tümleştirme
-                  href: active-directory-app-proxy-protect-ndes.md
-                - name: Azure AD Domain Services ile tümleştirme
-                  href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
-                - name: Power BI ile tümleştirme
-                  href: application-proxy-integrate-with-power-bi.md
-                - name: Cloud App Security ile tümleştirme
-                  href: application-proxy-integrate-with-microsoft-cloud-application-security.md
-                - name: Uzak Masaüstü ile tümleştirme
-                  href: application-proxy-integrate-with-remote-desktop-services.md
-                - name: SharePoint ile tümleştirme
-                  href: application-proxy-integrate-with-sharepoint-server.md
-                - name: Teams ile tümleştirme
-                  href: application-proxy-integrate-with-teams.md
-                - name: Tableau ile tümleştirme
-                  href: application-proxy-integrate-with-tableau.md
-                - name: Qlik ile tümleştirme
-                  href: application-proxy-qlik.md
-        - name: Uygulama Ara Sunucusu ile ilgili sorunları giderme
+            - name: NDES sunucusunda Uygulama Proxy’si ile tümleştirme
+              href: active-directory-app-proxy-protect-ndes.md
+            - name: Azure AD Domain Services ile tümleştirme
+              href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: Power BI ile tümleştirme
+              href: application-proxy-integrate-with-power-bi.md
+            - name: Cloud App Security ile tümleştirme
+              href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+            - name: Uzak Masaüstü ile tümleştirme
+              href: application-proxy-integrate-with-remote-desktop-services.md
+            - name: SharePoint ile tümleştirme
+              href: application-proxy-integrate-with-sharepoint-server.md
+            - name: Teams ile tümleştirme
+              href: application-proxy-integrate-with-teams.md
+            - name: Tableau ile tümleştirme
+              href: application-proxy-integrate-with-tableau.md
+            - name: Qlik ile tümleştirme
+              href: application-proxy-qlik.md
+    - name: Sorun giderme
+      items:
+        - name: Uygulama ekleme sorunlarını giderme
+          items:
+            - name: Yaygın sorunlar - galeri uygulamaları
+              href: adding-gallery-app-common-problems.md
+            - name: Yaygın sorunlar - galeri dışındaki uygulamalar
+              href: adding-non-gallery-app-common-problems.md
+        - name: Kullanıcı oturum açma sorunlarını giderme
+          items:
+            - name: Beklenmeyen izin alma istemi
+              href: application-sign-in-unexpected-user-consent-prompt.md
+            - name: Kullanıcı onayı hatası
+              href: application-sign-in-unexpected-user-consent-error.md
+            - name: Özel portaldan oturum açma sorunları
+              href: application-sign-in-other-problem-deeplink.md
+            - name: Özel bölmeden oturum açma sorunları
+              href: application-sign-in-other-problem-access-panel.md
+            - name: Uygulama oturum açma sayfasında hata
+              href: application-sign-in-problem-application-error.md
+            - name: Parolayla çoklu oturum açma sorunu - galeri dışındaki uygulama
+              href: application-sign-in-problem-password-sso-non-gallery.md
+            - name: Parolayla çoklu oturum açma sorunu - galeri uygulaması
+              href: application-sign-in-problem-password-sso-gallery.md
+            - name: Microsoft uygulamasında oturum açma sorunu
+              href: application-sign-in-problem-first-party-microsoft.md
+            - name: Federasyonda çoklu oturum açma sorunu - galeri dışındaki uygulama
+              href: application-sign-in-problem-federated-sso-non-gallery.md
+            - name: Federasyonda çoklu oturum açma sorunu - galeri uygulaması
+              href: application-sign-in-problem-federated-sso-gallery.md
+            - name: Özel geliştirilmiş uygulama ile ilgili sorun
+              href: application-sign-in-problem-custom-dev.md
+        - name: Çoklu oturum açma sorunlarını giderme
+          items:
+            - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri uygulamaları
+              href: configure-federated-single-sign-on-gallery-applications-problems.md
+            - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri dışındaki uygulamalar
+              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+            - name: Parola yapılandırmayla ilgili yaygın sorunlar - galeri uygulamaları
+              href: configure-password-single-sign-on-gallery-applications-problems.md
+            - name: Parola yapılandırmayla ilgili yaygın sorunlar - galeri dışındaki uygulamalar
+              href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: Uygulama listesi ve atama sorunlarını giderme
+          items:
+            - name: Kiracınızın uygulama listesini yönetme
+              href: application-types.md
+            - name: Beklenmeyen kullanıcı ataması
+              href: ways-users-get-assigned-to-applications.md
+        - name: Erişim paneli sorunlarını giderme
+          items:
+            - name: Tarayıcı uzantısı yönetme
+              href: manage-access-panel-browser-extension.md
+            - name: Uygulama görüntülenmiyor
+              href: access-panel-troubleshoot-application-not-appearing.md
+            - name: Beklenmeyen uygulama görüntüleniyor
+              href: access-panel-troubleshoot-unexpected-application.md
+            - name: Oturum açılamıyor
+              href: access-panel-troubleshoot-web-sign-in-problem.md
+            - name: Tarayıcı uzantısı yüklenirken hata oluşuyor
+              href: access-panel-extension-problem-installing.md
+            - name: Self servis uygulama erişiminin kullanırken hata oluşuyor
+              href: access-panel-troubleshoot-self-service-access.md
+        - name: Şirket içi uygulamalarda sorun giderme
           items:
             - name: Uygulama Ara Sunucusu sorunlarını giderme
               href: application-proxy-troubleshoot.md
@@ -319,10 +302,6 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Uygulama Ara Sunucusunda CORS sorunları
               href: application-proxy-understand-cors-issues.md
-    - name: Karma erişimi güvenli hale getirme (bulutta ve şirket içinde)
-      items:
-        - name: Uygulama teslim denetleyicileri veya ağlarla eski uygulamaları güvenli hale getirme
-          href: secure-hybrid-access.md
 - name: Başvuru
   items:
     - name: Uygulama Ara Sunucusu SSS

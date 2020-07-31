@@ -7,8 +7,6 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Bağlantı İzleyicisi (Önizleme)
-      href: connection-monitor-preview.md
     - name: VM trafik filtresi sorununu tanılama - Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: VM trafik filtresi sorununu tanılama - PowerShell
@@ -27,6 +25,8 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: Kavramlar
   items:
+    - name: Bağlantı İzleyicisi (Önizleme)
+      href: connection-monitor-preview.md
     - name: VM ağ trafiği filtre sorunlarını tanılama
       href: network-watcher-ip-flow-verify-overview.md
     - name: VM yönlendirme sorunlarını tanılama
@@ -67,7 +67,7 @@
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Giden bağlantı sorunlarını tanılama
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md
@@ -162,9 +162,13 @@
       href: view-relative-latencies.md
     - name: Ağ performansı izleyicisi
       href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+    - name: Kaynakları taşıma
+      items:
+        - name: Ağ İzleyicisi Kaynaklarını Taşıma
+          href: resource-move.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/network/watcher
     - name: Azure PowerShell
       href: /powershell/module/az.network/#network_watcher

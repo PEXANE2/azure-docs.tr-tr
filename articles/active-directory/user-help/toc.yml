@@ -68,7 +68,9 @@
       href: my-account-portal-privacy-page.md
     - name: Son oturum açma etkinliğinizi görüntüleme
       href: my-account-portal-sign-ins-page.md
-- name: Güvenlik bilgileri (önizleme) yardımı
+    - name: Portal ayarlarınızı değiştirme
+      href: my-account-portal-settings.md
+- name: Güvenlik bilgileri yardımı
   items:
     - name: Oturum açma sırasında güvenlik bilgileri ekleme
       href: security-info-setup-signin.md
