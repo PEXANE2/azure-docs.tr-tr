@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4e2557b114b5eb90b03e59dc64cbd6e69c7dd9a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4a618b00b211ce65b170379cc14d6b83a1183d28
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326588"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460372"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -78,7 +78,7 @@ Hedef birime ulaşmak için, oluşturulan telemetrinin bazıları atılır. Anca
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    Uyarlamalı algoritmanın **her bir sunucu konağı üzerinde**için kullandığı hedef hız. Web uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, Application Insights portalındaki hedef trafik ücretine devam etmek için küçültün.
+    Uyarlamalı algoritmaların **her bir sunucu konağında**toplanmasını sağlayan [mantıksal işlemlerin](./correlation.md#data-model-for-telemetry-correlation) hedef oranı. Web uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, Application Insights portalındaki hedef trafik ücretine devam etmek için küçültün.
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   

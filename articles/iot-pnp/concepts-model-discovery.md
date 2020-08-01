@@ -1,83 +1,48 @@
 ---
-title: IoT Tak ve Kullan önizleme modeli bulmayı uygulama | Microsoft Docs
-description: Çözüm Oluşturucu olarak, çözümünüzde IoT Tak ve Kullan modeli bulmayı nasıl uygulayabileceğinizi öğrenin.
-author: prashmo
-ms.author: prashmo
+title: Bir çözümde IoT Tak ve Kullan modellerini kullanma | Microsoft Docs
+description: Bir çözüm Oluşturucusu olarak IoT çözümünüzde IoT Tak ve Kullan modellerini nasıl kullanabileceğinizi öğrenin.
+author: arunmannengal
+ms.author: arunmann
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337390"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475252"
 ---
-# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Kullan önizleme modeli bulmayı uygulama
+# <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Kullan modellerini kullanma
 
-Bu makalede, bir IoT çözümünde IoT Tak ve Kullan önizleme modeli bulmayı nasıl uygulayabileceğinizi anlatan bir çözüm Oluşturucu olarak açıklanmaktadır. Model bulma şunları açıklar:
+Bu makalede, IoT çözümünde bir IoT Tak ve Kullan cihazının model KIMLIĞINI tanımlayabilir ve sonra model tanımını alabileceğinizi açıklanmaktadır.
 
-- IoT Tak ve Kullan cihazları, model KIMLIKLERINI kaydeder.
-- IoT çözümü, cihaz tarafından uygulanan arabirimleri alır.
+IoT çözümünün iki geniş kapsamlı kategorisi vardır:
 
-IoT çözümünün iki geniş kategorisi vardır:
+- *Amaç oluşturulmuş bir çözüm* , çözüme bağlanacak IoT Tak ve kullan cihazları için bilinen bir model kümesiyle çalışır. Çözümü geliştirirken bu modelleri kullanırsınız.
 
-- *Amaç oluşturulmuş bir IoT çözümü* , bilinen bir IoT Tak ve kullan cihaz modeli kümesiyle birlikte çalışmaktadır.
+- *Model temelli* bir çözüm, herhangi bir IoT Tak ve kullan cihazının modeliyle çalışabilir. Model temelli bir çözüm oluşturmak daha karmaşıktır, ancak çözümünüz gelecekte eklenebilecek tüm cihazlarla birlikte çalışmıdır. Model temelli bir IoT çözümü modeli alır ve cihazın uyguladığı telemetri, özellik ve komutları belirlemede kullanır.
 
-- *Model temelli bir IoT çözümü* , tüm IoT Tak ve kullan cihazlarla çalışabilir. Model temelli bir çözüm oluşturmak daha karmaşıktır, ancak çözümünüz gelecekte eklenen tüm cihazlarla birlikte çalışmıdır.
+IoT Tak ve Kullan modelini kullanmak için bir IoT çözümü:
 
-    Model temelli bir IoT çözümü oluşturmak için IoT Tak ve Kullan arabirimi temel elemanlarına karşı mantık oluşturmanız gerekir: telemetri, Özellikler ve komutlar. Çözümünüzün mantığı birden çok telemetri, özellik ve komut özelliklerini birleştirerek bir cihazı temsil eder.
+1. Çözüme bağlı IoT Tak ve Kullan cihazı tarafından uygulanan modelin model KIMLIĞINI tanımlar.
 
-Bu makalede her iki çözüm türünde model bulmanın nasıl uygulanacağı açıklanır.
+1. Model deposundan veya özel depodan bağlı cihazın model tanımını almak için model KIMLIĞINI kullanır.
 
-## <a name="model-discovery"></a>Model keşfi
+## <a name="identify-model-id"></a>Model KIMLIĞINI tanımla
 
-Bir cihazın uyguladığı modeli bulmak için, bir çözüm, olay tabanlı bulma veya ikizi tabanlı bulma kullanarak model KIMLIĞINI alabilir:
+IoT Tak ve Kullan bir cihaz IoT Hub bağlandığı zaman, IoT Hub uyguladığı modelin model KIMLIĞINI kaydeder.
 
-### <a name="event-based-discovery"></a>Olay tabanlı bulma
+IoT Hub cihaz bağlantı akışının bir parçası olarak çözümü cihaz modeli KIMLIĞIYLE bilgilendirir.
 
-IoT Tak ve Kullan bir cihaz IoT Hub bağlandığı zaman, onun uyguladığı modeli kaydeder. Bu kayıt, [dijital ikizi değişiklik olay](concepts-digital-twin.md#digital-twin-change-events) bildirimine neden olur. Dijital ikizi olayları için yönlendirmeyi nasıl etkinleştireceğinizi öğrenmek için bkz. [farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events).
+Bir çözüm, aşağıdaki üç yöntemden birini kullanarak IoT Tak ve Kullan cihazının model KIMLIĞINI alabilir:
 
-Çözüm, aşağıdaki kod parçacığında gösterilen olayı kullanarak bağlantı KIMLIĞINI bağlayan ve aldığı IoT Tak ve Kullan cihaz hakkında bilgi alabilir:
+### <a name="get-device-twin-api"></a>Cihaz Ikizi API 'sini al
 
-```json
-iothub-connection-device-id:sample-device
-iothub-enqueuedtime:7/22/2020 8:02:27 PM
-iothub-message-source:digitalTwinChangeEvents
-correlation-id:100f322dc2c5
-content-type:application/json-patch+json
-content-encoding:utf-8
-[
-  {
-    "op": "replace",
-    "path": "/$metadata/$model",
-    "value": "dtmi:com:example:TemperatureController;1"
-  }
-]
-```
+Çözüm, IoT Tak ve Kullan cihazının model KIMLIĞINI almak için [Device ikizi](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) API 'sini alabilir.
 
-Bu olay, cihaz modeli KIMLIĞI eklendiğinde veya güncelleştirilirken tetiklenir.
-
-### <a name="twin-based-discovery"></a>İkizi tabanlı bulma
-
-Çözüm, belirli bir cihazın yeteneklerini öğrenmek isterse, bu bilgileri almak için [Get Digital ikizi](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API 'sini kullanabilir.
-
-Aşağıdaki dijital ikizi kod parçacığında `$metadata.$model` ıot Tak ve kullan cihazının model kimliğini içerir:
-
-```json
-{
-    "$dtId": "sample-device",
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
-Çözüm, aşağıdaki kod parçacığında gösterildiği gibi cihaz ikizi 'dan model KIMLIĞINI almak için **Get ikizi** de kullanabilir:
+Aşağıdaki cihaz ikizi yanıt kod parçacığında, `modelId` ıot Tak ve kullan cihazının model kimliğini içerir:
 
 ```json
 {
@@ -101,16 +66,79 @@ Aşağıdaki dijital ikizi kod parçacığında `$metadata.$model` ıot Tak ve k
 }
 ```
 
-## <a name="model-resolution"></a>Model çözümleme
+### <a name="get-digital-twin-api"></a>Digital Ikizi API 'sini al
 
-Bir çözüm model KIMLIĞINDEN model oluşturan arabirimlere erişim sağlamak için model çözümleme kullanır. 
+Çözüm, IoT Tak ve Kullan cihazı tarafından uygulanan modelin model KIMLIĞINI almak için [Get Digital ikizi](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API 'sini kullanabilir.
 
-- Çözümler, bu arabirimleri yerel bir klasörde dosya olarak depolamayı tercih edebilir. 
-- Çözümler [model deposunu](concepts-model-repository.md)kullanabilir.
+Aşağıdaki Digital ikizi yanıt kod parçacığında, `$metadata.$model` ıot Tak ve kullan cihazının model kimliğini içerir:
+
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
+
+### <a name="digital-twin-change-event-notification"></a>Dijital ikizi değişiklik olayı bildirimi
+
+Bir cihaz bağlantısı, [dijital ikizi değişiklik olay](concepts-digital-twin.md#digital-twin-change-events) bildirimine neden olur. Bir çözümün bu olay bildirimine abone olması gerekir. Dijital ikizi olayları için yönlendirmeyi nasıl etkinleştireceğinizi öğrenmek için bkz. [farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events).
+
+Çözüm, şu kod parçacığında gösterilen olayı kullanarak bağlantı KIMLIĞINI bağlayan IoT Tak ve Kullan cihazı hakkında bilgi alabilir:
+
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
+
+## <a name="retrieve-a-model-definition"></a>Model tanımı alma
+
+Bir çözüm, karşılık gelen model tanımını almak için yukarıda tanımlanan model KIMLIĞINI kullanır.
+
+Bir çözüm, aşağıdaki seçeneklerden birini kullanarak model tanımını alabilir:
+
+### <a name="model-repository"></a>Model deposu
+
+Çözümler modelleri almak için [model deposunu](concepts-model-repository.md) kullanabilir. Çözümün onları alabilmesi için cihaz oluşturucular veya çözüm üreticileri, modellerini depoya önceden yüklemelisiniz.
+
+Yeni bir cihaz bağlantısı için model KIMLIĞINI tanımladıktan sonra aşağıdaki adımları izleyin:
+
+1. Model deposundaki model KIMLIĞINI kullanarak model tanımını alın. Daha fazla bilgi için bkz. [modelleri al](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
+
+1. Bağlı cihazın model tanımını kullanarak, cihazın yeteneklerini sıralayabilirsiniz.
+
+1. Cihazın numaralandırılmış yeteneklerini kullanarak, kullanıcıların [cihazla etkileşime](quickstart-service-node.md)girmesine izin verebilirsiniz.
+
+### <a name="custom-store"></a>Özel mağaza
+
+Çözümler, bu model tanımlarını bir yerel dosya sisteminde, ortak bir dosya deposunda saklayabilir veya özel bir uygulama kullanabilir.
+
+Yeni bir cihaz bağlantısı için model KIMLIĞINI tanımladıktan sonra aşağıdaki adımları izleyin:
+
+1. Özel deponuzdaki model KIMLIĞINI kullanarak model tanımını alın.
+
+1. Bağlı cihazın model tanımını kullanarak, cihazın yeteneklerini sıralayabilirsiniz. 
+
+1. Cihazın numaralandırılmış yeteneklerini kullanarak, kullanıcıların [cihazla etkileşime](quickstart-service-node.md)girmesine izin verebilirsiniz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir IoT çözümünü model bulma hakkında öğrendiğinize göre, çözümünüz için diğer özellikleri kullanmak üzere [Azure IoT Platformu](overview-iot-plug-and-play.md) hakkında daha fazla bilgi edinin.
+IoT çözümünde IoT Tak ve Kullan modellerini nasıl tümleştirileceğini öğrendiğinize göre, önerilen bazı sonraki adımlar şunlardır:
 
 - [Çözümünüzden bir cihazla etkileşim kurma](quickstart-service-node.md)
 - [IoT dijital Ikizi REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)

@@ -3,12 +3,12 @@ title: Azure Event Grid özel konularda olağanüstü durum kurtarma
 description: Bu öğreticide, Event Grid hizmeti bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak için nasıl ayarlanacağı konusunda size yol gösterilir.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: da796a9ac4d03f7ad6999b8fa4530fddfb60cbfe
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420269"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461689"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid özel konular için kendi olağanüstü durum kurtarmayı oluşturun
 Olağanüstü durum kurtarma, uygulama işlevselliğinin önemli bir kaybından kurtarılmasına odaklanır. Bu öğretici, Event Grid hizmeti belirli bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak üzere nasıl ayarlayabileceğinizi size yol gösterecektir.
@@ -207,4 +207,4 @@ Benzer şekilde, özel gereksinimlerinize göre yeniden çalışma mantığı uy
 
 - [Http uç noktasında olay alma](./receive-events.md) hakkında bilgi edinin
 - [Olayların karma bağlantılar nasıl yönlendirileceğini](./custom-event-to-hybrid-connection.md) öğrenin
-- [Azure DNS ve Traffic Manager kullanarak olağanüstü durum kurtarma](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager) hakkında bilgi edinin
+- [Azure DNS ve Traffic Manager kullanarak olağanüstü durum kurtarma](../networking/disaster-recovery-dns-traffic-manager.md) hakkında bilgi edinin

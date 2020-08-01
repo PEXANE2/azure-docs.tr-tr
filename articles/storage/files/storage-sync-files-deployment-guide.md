@@ -7,24 +7,35 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386699"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460635"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md) ve [bir Azure dosya eşitleme dağıtımı planlamayı](storage-sync-files-planning.md) kesinlikle öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar
-* Azure Dosya Eşitleme dağıtmak istediğiniz bölgedeki bir Azure dosya paylaşımıdır. Daha fazla bilgi için bkz.
+## <a name="prerequisites"></a>Önkoşullar
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Azure Dosya Eşitleme dağıtmak istediğiniz bölgedeki bir Azure dosya paylaşımıdır. Daha fazla bilgi için bkz.
     - Azure Dosya Eşitleme için [bölge kullanılabilirliği](storage-sync-files-planning.md#azure-file-sync-region-availability) .
     - Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım bir açıklama için [dosya paylaşma oluşturun](storage-how-to-create-file-share.md) .
-* Azure Dosya Eşitleme eşitlenecek Windows Server veya Windows Server kümesinin en az bir desteklenen örneği. Windows Server 'ın desteklenen sürümleri ve önerilen sistem kaynakları hakkında daha fazla bilgi için bkz. [Windows dosya sunucusu konuları](storage-sync-files-planning.md#windows-file-server-considerations).
-* Az PowerShell modülü, PowerShell 5,1 ya da PowerShell 6 + ile birlikte kullanılabilir. Windows olmayan sistemler de dahil olmak üzere desteklenen herhangi bir sistemde Azure Dosya Eşitleme için az PowerShell modülünü kullanabilirsiniz, ancak sunucu kayıt cmdlet 'i her zaman kaydolduğunuz Windows Server örneğinde çalıştırılmalıdır (Bu işlem doğrudan veya PowerShell uzaktan iletişim yoluyla yapılabilir). Windows Server 2012 R2 'de, en az PowerShell 5,1 kullandığınızı doğrulayabilirsiniz. \* **$PSVersionTable** nesnesinin **psversion** özelliğinin değerine bakarak:
+1. Azure Dosya Eşitleme eşitlenecek Windows Server veya Windows Server kümesinin en az bir desteklenen örneği. Windows Server 'ın desteklenen sürümleri ve önerilen sistem kaynakları hakkında daha fazla bilgi için bkz. [Windows dosya sunucusu konuları](storage-sync-files-planning.md#windows-file-server-considerations).
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Azure Dosya Eşitleme dağıtmak istediğiniz bölgedeki bir Azure dosya paylaşımıdır. Daha fazla bilgi için bkz.
+    - Azure Dosya Eşitleme için [bölge kullanılabilirliği](storage-sync-files-planning.md#azure-file-sync-region-availability) .
+    - Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım bir açıklama için [dosya paylaşma oluşturun](storage-how-to-create-file-share.md) .
+1. Azure Dosya Eşitleme eşitlenecek Windows Server veya Windows Server kümesinin en az bir desteklenen örneği. Windows Server 'ın desteklenen sürümleri ve önerilen sistem kaynakları hakkında daha fazla bilgi için bkz. [Windows dosya sunucusu konuları](storage-sync-files-planning.md#windows-file-server-considerations).
+
+1. Az PowerShell modülü, PowerShell 5,1 ya da PowerShell 6 + ile birlikte kullanılabilir. Windows olmayan sistemler de dahil olmak üzere desteklenen herhangi bir sistemde Azure Dosya Eşitleme için az PowerShell modülünü kullanabilirsiniz, ancak sunucu kayıt cmdlet 'i her zaman kaydolduğunuz Windows Server örneğinde çalıştırılmalıdır (Bu işlem doğrudan veya PowerShell uzaktan iletişim yoluyla yapılabilir). Windows Server 2012 R2 'de, en az PowerShell 5,1 kullandığınızı doğrulayabilirsiniz. \* **$PSVersionTable** nesnesinin **psversion** özelliğinin değerine bakarak:
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -37,7 +48,7 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
     > [!Important]  
     > Doğrudan PowerShell 'den kaydolmak yerine sunucu kaydı kullanıcı arabirimini kullanmayı planlıyorsanız, PowerShell 5,1 ' i kullanmanız gerekir.
 
-* PowerShell 5,1 kullanmayı tercih ettiyseniz, en az .NET 4.7.2 'ın yüklü olduğundan emin olun. Sisteminizde [.NET Framework sürümleri ve bağımlılıklar](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) hakkında daha fazla bilgi edinin.
+1. PowerShell 5,1 kullanmayı tercih ettiyseniz, en az .NET 4.7.2 'ın yüklü olduğundan emin olun. Sisteminizde [.NET Framework sürümleri ve bağımlılıklar](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) hakkında daha fazla bilgi edinin.
 
     > [!Important]  
     > Windows Server Core üzerinde .NET 4.7.2 + yüklüyorsanız, ve bayraklarıyla yüklemeniz gerekir, `quiet` `norestart` Aksi takdirde yükleme başarısız olur. Örneğin, .NET 4,8 ' i yüklüyorsanız, komut aşağıdaki gibi görünür:
@@ -45,10 +56,51 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülü: [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+1. Buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülü: [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > Az. Storagessync modülü artık az PowerShell modülünü yüklediğinizde otomatik olarak yüklenir.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Azure Dosya Eşitleme dağıtmak istediğiniz bölgedeki bir Azure dosya paylaşımıdır. Daha fazla bilgi için bkz.
+    - Azure Dosya Eşitleme için [bölge kullanılabilirliği](storage-sync-files-planning.md#azure-file-sync-region-availability) .
+    - Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım bir açıklama için [dosya paylaşma oluşturun](storage-how-to-create-file-share.md) .
+1. Azure Dosya Eşitleme eşitlenecek Windows Server veya Windows Server kümesinin en az bir desteklenen örneği. Windows Server 'ın desteklenen sürümleri ve önerilen sistem kaynakları hakkında daha fazla bilgi için bkz. [Windows dosya sunucusu konuları](storage-sync-files-planning.md#windows-file-server-considerations).
+
+1. [Azure CLI'yi yükleme](/cli/azure/install-azure-cli)
+
+   İsterseniz, bu öğreticideki adımları tamamlayabilmeniz için Azure Cloud Shell de kullanabilirsiniz.  Azure Cloud Shell, tarayıcınız aracılığıyla kullandığınız etkileşimli bir kabuk ortamıdır.  Aşağıdaki yöntemlerden birini kullanarak Cloud Shell başlatın:
+
+   - Kod bloğunun sağ üst köşesindeki **Deneyin**’i seçin. Azure Cloud Shell **açar,** ancak kodu Cloud Shell otomatik olarak kopyalamaz.
+
+   - Cloud Shell giderek açın[https://shell.azure.com](https://shell.azure.com)
+
+   - [Azure Portal](https://portal.azure.com) sağ üst köşedeki menü çubuğunda bulunan **Cloud Shell** düğmesini seçin
+
+1. Giriş yapın.
+
+   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
+
+   ```azurecli
+   az login
+   ```
+
+    Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+
+1. [Az FileSync](/cli/azure/ext/storagesync/storagesync) Azure CLI uzantısını yükler.
+
+   ```azurecli
+   az extension add --name storagesync
+   ```
+
+   **Storagessync** uzantı başvurusunu yükledikten sonra, aşağıdaki uyarıyı alırsınız.
+
+   ```output
+   The installed extension 'storagesync' is experimental and not covered by customer support. Please use with discretion.
+   ```
+
+---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Windows Server’ı Azure Dosya Eşitleme ile kullanmaya hazırlama
 Azure Dosya Eşitleme ile kullanmayı düşündüğünüz her sunucu için, bir yük devretme kümesindeki her sunucu düğümü dahil, **Internet Explorer Artırılmış güvenlik yapılandırmasını**devre dışı bırakın. Bu yalnızca ilk sunucu kaydı için gereklidir. Sunucu kaydedildikten sonra özelliği yeniden etkinleştirebilirsiniz.
@@ -87,6 +139,10 @@ if ($installType -ne "Server Core") {
     Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 }
 ``` 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal veya PowerShell için yönergeleri izleyin.
 
 ---
 
@@ -155,6 +211,10 @@ $storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal veya PowerShell için yönergeleri izleyin.
+
 ---
 
 ## <a name="install-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısını yükleme
@@ -207,6 +267,9 @@ Start-Process -FilePath "StorageSyncAgent.msi" -ArgumentList "/quiet" -Wait
 # You may remove the temp folder containing the MSI and the EXE installer
 Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal veya PowerShell için yönergeleri izleyin.
 
 ---
 
@@ -242,6 +305,9 @@ Uygun bilgileri seçtikten sonra, sunucu kaydını gerçekleştirmek için **Kay
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal veya PowerShell için yönergeleri izleyin.
 
 ---
 
@@ -312,6 +378,27 @@ New-AzStorageSyncCloudEndpoint `
     -AzureFileShareName $fileShare.Name
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Yeni bir eşitleme grubu oluşturmak için [az storagessync Sync-Group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) komutunu kullanın.  Tüm CLı komutları için bir kaynak grubuna varsayılan olarak, [az configure](/cli/azure/reference-index#az-configure)komutunu kullanın.
+
+```azurecli
+az storagesync sync-group create --resource-group myResourceGroupName \
+                                 --name myNewSyncGroupName \
+                                 --storage-sync-service myStorageSyncServiceName \
+```
+
+Yeni bir bulut uç noktası oluşturmak için [az storagessync Sync-Group Cloud-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) komutunu kullanın.
+
+```azurecli
+az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
+                                                --storage-sync-service myStorageSyncServiceName \
+                                                --sync-group-name mySyncGroupName \
+                                                --name myNewCloudEndpointName \
+                                                --storage-account mystorageaccountname \
+                                                --azure-file-share-name azure-file-share-name
+```
+
 ---
 
 ## <a name="create-a-server-endpoint"></a>Sunucu uç noktası oluşturma
@@ -363,6 +450,34 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath 
 }
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Yeni bir sunucu uç noktası oluşturmak için [az storagessync Sync-Group Server-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) komutunu kullanın.
+
+```azurecli
+# Create a new sync group server endpoint 
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --server-local-path d:\myPath
+                                                 --storage-sync-service myStorageSyncServiceNAme
+                                                 --sync-group-name mySyncGroupName
+
+# Create a new sync group server endpoint with additional optional parameters
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
+                                                 --server-local-path d:\myPath \
+                                                 --storage-sync-service myStorageSyncServiceName \
+                                                 --sync-group-name mySyncGroupName \
+                                                 --cloud-tiering on \
+                                                 --offline-data-transfer on \
+                                                 --offline-data-transfer-share-name myfilesharename \
+                                                 --tier-files-older-than-days 15 \
+                                                 --volume-free-space-percent 85 \
+
 ```
 
 ---

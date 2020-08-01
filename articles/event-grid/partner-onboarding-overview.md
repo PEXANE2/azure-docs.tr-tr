@@ -3,12 +3,12 @@ title: Azure Event Grid iş ortağı olarak ekleme
 description: Azure Event Grid iş ortağı konu türü olarak ekleme. İş ortağı konuları için kaynak modeli ve yayımlama akışını anlayın.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116123"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461264"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid iş ortağı olarak ekleme
 
@@ -105,7 +105,7 @@ CloudEvents 1,0 şemasını kullanarak olayları Azure Event Grid yayımlayın. 
 1.  Yayımlama hizmeti bir HTTP GÖNDERISINI `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 1.  İstekte, kimlik doğrulaması için bir anahtar içeren AEG-SAS-Key adlı bir başlık değeri ekleyin. Bu anahtar, iş ortağı ad alanının oluşturulması sırasında sağlanır. Örneğin, geçerli bir üst bilgi değeri AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = = olur.
 1.  Content-Type üstbilgisini "Application/cloudevents-Batch + JSON" olarak ayarlayın. charset = UTF-8A ".
-1.  Yayımlama URL 'sinde, bu bölgeye karşılık gelen bir olay toplu iş içeren bir HTTP POST işlemi gerçekleştirin. Örneğin:
+1.  Yayımlama URL 'sinde, bu bölgeye karşılık gelen bir olay toplu iş içeren bir HTTP POST işlemi gerçekleştirin. Örnek:
 
 ``` json
 [
@@ -145,7 +145,7 @@ PartnerNamespace uç noktasına gönderdikten sonra bir yanıt alırsınız. Yan
 | Sonuç                             | Yanıt              |
 |------------------------------------|-----------------------|
 | Başarılı                            | 200 TAMAM                |
-| Olay verileri hatalı biçime sahip    | 400 Hatalı Istek       |
+| Olay verileri hatalı biçime sahip    | 400 Hatalı İstek       |
 | Geçersiz erişim anahtarı                 | 401 Yetkisiz      |
 | Geçersiz uç nokta                 | 404 Bulunamadı         |
 | Dizi veya olay boyut sınırlarını aşıyor | 413 yükü çok büyük |
@@ -155,8 +155,8 @@ PartnerNamespace uç noktasına gönderdikten sonra bir yanıt alırsınız. Yan
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM şablonu](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
   * [ARM şablon şeması](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST API'leri](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [CLı uzantısı](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
+  * [REST API'leri](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
+  * [CLı uzantısı](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>SDK’lar
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

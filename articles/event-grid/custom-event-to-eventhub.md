@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Event Hubs için özel olaylar gönderme-Event Gri
 description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak için Azure Event Grid ve Azure CLı kullanın. Uç nokta için bir olay hub’ı kullanılır.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1d27ebe0151c6a49d21975216e146f1daa20e4e2
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104104"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462046"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid ile Azure Event Hubs özel olayları yönlendirme
 
@@ -97,8 +97,8 @@ Portalda event hub’a gidin ve Event Grid’in bu üç olayı event hub’a gö
 
 Genellikle, event hub’dan olayları alan bir uygulama oluşturursunuz. Event hub’dan iletileri alan bir uygulama oluşturmak için bkz:
 
-* [.NET Standard’da Olay İşlemcisi Ana Bilgisayarı ile iletiler almaya başlama](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Java kullanarak Azure Event Hubs’dan olayları alma](../event-hubs/event-hubs-java-get-started-receive-eph.md)
+* [.NET Standard’da Olay İşlemcisi Ana Bilgisayarı ile iletiler almaya başlama](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [Java kullanarak Azure Event Hubs’dan olayları alma](../event-hubs/event-hubs-java-get-started-send.md)
 * [Apache Storm kullanarak Event Hubs’dan olayları alma](../event-hubs/event-hubs-storm-getstarted-receive.md)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

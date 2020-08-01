@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 1abde88b653ae0f0ef3651b161e806047e143078
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418789"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461196"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>SAML tabanlı çoklu oturum açmayı yapılandırma
 
@@ -25,7 +25,7 @@ Uygulama yönetiminde [hızlı başlangıç serisinde](view-applications-portal.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Kimlik sağlayıcınız olarak Azure AD 'nin kullanılması ve çoklu oturum açma (SSO) ayarlama, kullanılan uygulamaya bağlı olarak basit veya karmaşık olabilir. Bazı uygulamalar yalnızca birkaç eylem ile ayarlanabilir. Başkalarının derinlemesine yapılandırılması gerekir. Hızlı bir şekilde hızlandırmak için uygulama yönetiminde [hızlı başlangıç serisini](view-applications-portal.md) gözden geçirebilirsiniz. Eklemekte olduğunuz uygulama basittir, büyük olasılıkla bu makaleyi okumanız gerekmez. Eklemekte olduğunuz uygulama SAML tabanlı SSO için özel yapılandırma gerektiriyorsa, bu makale sizin için de kullanılır.
+Kimlik sağlayıcınız (IDP) olarak Azure AD 'nin kullanılması ve çoklu oturum açma (SSO) ayarlama, kullanılan uygulamaya bağlı olarak basit veya karmaşık olabilir. Bazı uygulamalar yalnızca birkaç eylem ile ayarlanabilir. Başkalarının derinlemesine yapılandırılması gerekir. Hızlı bir şekilde hızlandırmak için uygulama yönetiminde [hızlı başlangıç serisini](view-applications-portal.md) gözden geçirebilirsiniz. Eklemekte olduğunuz uygulama basittir, büyük olasılıkla bu makaleyi okumanız gerekmez. Eklemekte olduğunuz uygulama SAML tabanlı SSO için özel yapılandırma gerektiriyorsa, bu makale sizin için de kullanılır.
 
 [Hızlı başlangıç serisinde](view-applications-portal.md), çoklu oturum açmayı yapılandırma hakkında bir makale vardır. Bu uygulamada, bir uygulamanın SAML yapılandırma sayfasına erişmeyi öğreneceksiniz. SAML yapılandırması sayfası beş bölümden oluşur. Bu bölümler, bu makalede ayrıntılı olarak ele alınmıştır.
 
@@ -44,7 +44,7 @@ Uygulama satıcısından değerleri almalısınız. Değerleri el ile girebilir 
 > [!TIP]
 > Birçok uygulama zaten Azure AD ile çalışacak şekilde önceden yapılandırılmıştır. Bu uygulamalar, Azure AD kiracınıza bir uygulama eklerken gözatabilmeniz gereken uygulamalar galerisinde listelenmiştir. [Hızlı başlangıç serisi](view-applications-portal.md) , süreç boyunca size yol gösterir. Galerideki uygulamalar için ayrıntılı, adım adım, kurulum yönergelerini bulacaksınız. Adımlara erişmek için, hızlı başlangıç serisinde açıklandığı şekilde uygulamanın SAML yapılandırması sayfasındaki bağlantıya tıklayabilir veya [SaaS uygulama yapılandırma öğreticilerinde](../saas-apps/tutorial-list.md)tüm uygulama yapılandırma öğreticilerinin listesine gidebilirsiniz.
 
-| Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Description |
+| Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Açıklama |
 |:--|:--|:--|:--|
 | **Tanımlayıcı (Varlık Kimliği)** | Bazı uygulamalar için gereklidir | Bazı uygulamalar için gereklidir | Uygulamayı benzersiz olarak tanımlar. Azure AD, kimliği, SAML belirtecinin hedef kitle parametresi olarak uygulamaya gönderir. Uygulamanın doğrulaması bekleniyordu. Bu değer ayrıca uygulama tarafından sağlanan SAML meta verilerinde Varlık Kimliği olarak da görünür. Şu kalıbı kullanan bir URL girin: ' https:// <subdomain> . contoso.com ' *Bu değeri, uygulama tarafından gönderilen **Authisteyner** (SAML isteği) içinde **veren** öğesi olarak bulabilirsiniz.* |
 | **Yanıt URL'si** | Gerekli | Gerekli | Uygulamanın SAML belirtecini almayı beklediği konumu belirtir. Yanıt URL'si, Onay Belgesi Tüketici Hizmeti (ACS) URL'si olarak da bilinir. Birden çok yanıt URL 'si belirtmek için ek yanıt URL 'si alanlarını kullanabilirsiniz. Örneğin, birden çok alt etki alanları için ek yanıt URL 'Leri gerekebilir. Ya da, sınama amaçları için aynı anda birden çok yanıt URL 'Si (yerel ana bilgisayar ve genel URL 'Ler) belirtebilirsiniz. |

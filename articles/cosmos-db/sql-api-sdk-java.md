@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a4d6f01271c5026463ac0dc946fb1b2991de09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2de46f050d17049848024d70f43bd23621b43b13
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323834"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461043"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Java SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -256,19 +256,11 @@ Bu, zaman uyumlu işlemleri destekleyen SQL API 'SI için özgün Azure Cosmos D
 * GA SDK
 
 ## <a name="release-and-retirement-dates"></a>Yayın ve emeklilik tarihleri
-Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır.
 
-Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir.
-
-Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet tarafından reddedilir.
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir.
 
 > [!WARNING]
-> Java için SQL SDK 'sının tüm **1. x** sürümleri **30 Mayıs 2020**tarihinde kullanımdan kaldırılacaktır.
-> 
->
-
-> [!WARNING]
-> Sürüm **1.0.0** öncesinde Java IÇIN SQL SDK 'nın tüm sürümleri **, 29 Şubat 2016**tarihinde devre dışı bırakıldı.
+> Java için SQL SDK 'sının tüm **1. x** sürümleri **30 Mayıs 2020**tarihinde kullanımdan kaldırılacaktır. Sürüm **1.0.0** öncesinde Java IÇIN SQL SDK 'nın tüm sürümleri **, 29 Şubat 2016**tarihinde devre dışı bırakıldı.
 > 
 > 
 

@@ -3,12 +3,12 @@ title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Doc
 description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321403"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475524"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -455,7 +455,9 @@ Bu SDK `HttpContext` , .NET Core 3. X çalışan hizmeti uygulamaları dahil olm
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 
-[Kodu okuyun ve koda katkıda bulunun](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+* [Kodu okuyun ve koda katkıda bulunun](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+
+En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakın](./release-notes.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

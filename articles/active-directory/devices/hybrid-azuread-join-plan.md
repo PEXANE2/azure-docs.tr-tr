@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025716"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461774"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -121,6 +121,9 @@ Karma Azure AD katılımı, UPN 'nin yönlendirilebilir veya yönlendirilemeyen 
 Yönetilen bir ortam, [kesintisiz çoklu oturum açma](/azure/active-directory/hybrid/how-to-connect-sso)Ile [Parola karması eşitlemesi (PHS)](/azure/active-directory/hybrid/whatis-phs) veya [doğrudan kimlik doğrulama (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) aracılığıyla dağıtılabilir.
 
 Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırmanızı gerektirmez.
+
+> [!NOTE]
+> [Hazırlanan dağıtım kullanılarak bulut kimlik doğrulaması](/hybrid/how-to-connect-staged-rollout) yalnızca Windows 10 1903 güncelleştirmesi ile desteklenir
 
 ### <a name="federated-environment"></a>Federasyon ortamı
 

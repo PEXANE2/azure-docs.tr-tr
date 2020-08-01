@@ -7,14 +7,14 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352419"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475677"
 ---
-# <a name="iot-plug-and-play-conventions"></a>IoT Tak ve Kullan kuralları
+# <a name="iot-plug-and-play-conventions"></a>IoT Tak Çalıştır kuralları
 
 IoT Tak ve Kullan önizleme aygıtları, bir IoT Hub ile ileti alışverişi yaparken bir dizi kural izlemelidir. IoT Tak ve Kullan önizleme Cihazları IoT Hub iletişim kurmak için MQTT protokolünü kullanır.
 
@@ -25,11 +25,11 @@ IoT Tak ve Kullan cihazının [dijital bir TWINS tanım dili v2 (DTDL)](https://
 
 Daha fazla bilgi için bkz. [modellerdeki ıot Tak ve kullan bileşenleri](concepts-components.md).
 
-## <a name="model-discovery"></a>Model keşfi
+## <a name="identify-the-model"></a>Modeli tanımla
 
 Uyguladığı modeli duyurmak için bir IoT Tak ve Kullan cihazı, alanına ekleyerek MQTT bağlantı paketindeki model KIMLIĞINI içerir `model-id` `USERNAME` .
 
-Bir cihazın uyguladığı modeli saptamak için, bir hizmet şu kaynaktan model KIMLIĞINI alabilir:
+Bir cihazın uyguladığı modeli belirlemek için, bir hizmet şu kaynaktan model KIMLIĞINI alabilir:
 
 - Device ikizi `modelId` alanı.
 - Digital ikizi `$metadata.$model` alanı.

@@ -3,12 +3,12 @@ title: Azure Application Insights ile ASP.NET Web uygulaması analizi ayarlama |
 description: Şirket içinde veya Azure 'da barındırılan ASP.NET Web siteniz için performans, kullanılabilirlik ve Kullanıcı davranışı analizi araçlarını yapılandırın.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 4e51fb43a9e088c991af2132b6a5d2257da8d78a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324225"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475541"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET web siteniz için Application Insights'ı ayarlama
 
@@ -112,7 +112,10 @@ Uygulamanızın telemetrisini alan Azure kaynağı bir *izleme anahtarı* ile ta
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>Gelecek SDK sürümlerine yükseltme
-[SDK’nın yeni bir sürümüne](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases) yükseltme yapmak için, **NuGet paket yöneticisini** açıp yüklü paketleri filtreleyin. **Microsoft. ApplicationInsights. Web**' i seçin ve **Yükselt**' i seçin.
+
+* [Sürüm Notları](./release-notes.md)
+
+SDK 'nın yeni bir sürümüne yükseltmek için, **NuGet Paket Yöneticisi**' ni açın ve yüklü paketleri filtreleyin. **Microsoft. ApplicationInsights. Web**' i seçin ve **Yükselt**' i seçin.
 
 ApplicationInsights.config’de herhangi bir özelleştirme gerçekleştirdiyseniz yükseltmeden önce dosyanın bir kopyasını kaydedin. Daha sonra, yaptığınız değişiklikleri yeni sürümle birleştirin.
 

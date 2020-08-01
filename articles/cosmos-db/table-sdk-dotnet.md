@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f735668e1519a6a12082537dabfe17be3e96ffdd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168157"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460023"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API 'SI: Indirme ve sürüm notları
 
@@ -82,10 +82,7 @@ Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için 
 
 `Microsoft.Azure.CosmosDB.Table`Kitaplık Şu anda yalnızca .NET Framework için kullanılabilir ve bakım modunda ve yakında kullanım dışı bırakılacak. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).NET Standard kitaplığına eklenir, bu nedenle [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)'a yükseltmeniz önerilir.
 
-[Windowsazure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) Önizleme paketi kullanım dışı bırakıldı. WindowsAzure. Storage-PremiumTable SDK, 15 Kasım 2018 tarihinde kullanımdan kaldırılacaktır, bu da kullanımdan kaldırılan SDK 'ya yönelik isteklere izin verilmez. 
-
-Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler hizmet tarafından reddedilir.
-<br/>
+[Windowsazure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) Önizleme paketi kullanım dışı bırakıldı. WindowsAzure. Storage-PremiumTable SDK, 15 Kasım 2018 tarihinde kullanımdan kaldırılacaktır, bu da kullanımdan kaldırılan SDK 'ya yönelik isteklere izin verilmez.
 
 | Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |

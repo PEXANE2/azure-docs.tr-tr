@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125199"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475815"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Leri dengelemek için yük dengeleyici oluşturma
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
 Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure portal kullanarak Azure Load Balancer kullanmaya başlayın.
 
@@ -36,7 +36,7 @@ Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure portal kulla
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Seçenek 1 (varsayılan): yük dengeleyici oluşturma (Standart SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[Seçenek 1 (varsayılan): ortak yük dengeleyici oluşturma (Standart SKU)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir.  SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
@@ -76,7 +76,7 @@ Bu bölümde şunları yapılandırırsınız:
 
 * Arka uç adres havuzu için yük dengeleyici ayarları.
 * Bir sistem durumu araştırması.
-* Yük dengeleyici kuralı ve otomatik giden kuralı.
+* Yük dengeleyici kuralı.
 
 ### <a name="create-a-backend-pool"></a>Arka uç havuzu oluşturma
 
@@ -160,7 +160,7 @@ Bu bölümde, adımlarda bulunan parametreleri aşağıdaki bilgilerle değişti
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLB |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Batı Avrupa      |
+| **\<region-name>**          | West Europe      |
 | **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.1.0.0 \ 24          |
@@ -253,15 +253,15 @@ Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağl
     | Ayar | Değer |
     | ------- | ----- |
     | Ad | **Mbir Boundrule**girin. |
-    | Ön uç IP adresi | **Yeni oluştur**’u seçin. </br> **Ad**alanına **LoadBalancerFrontEndOutbound**girin. </br> **IP adresi** veya **IP öneki**' ni seçin. </br> **Genel IP adresi** veya **genel IP ön eki**altında **Yeni oluştur** ' u seçin. </br> Ad için **Mypublicıpoıb Utbağlanmadı** veya **myPublicIPPrefixOutbound**girin. </br> **Tamam**’ı seçin. </br> **Ekle**’yi seçin.|
+    | Ön uç IP adresi | **Yeni oluştur**’u seçin. </br> **Ad**alanına **LoadBalancerFrontEndOutbound**girin. </br> **IP adresi** veya **IP öneki**' ni seçin. </br> **Genel IP adresi** veya **genel IP ön eki**altında **Yeni oluştur** ' u seçin. </br> Ad için **Mypublicıpoıb Utbağlanmadı** veya **myPublicIPPrefixOutbound**girin. </br> **Tamam**’ı seçin. </br> **Ekle**'yi seçin.|
     | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15 dakikaya**taşıyın.|
     | TCP sıfırlaması | **Etkin**'i seçin.|
-    | Arka uç havuzu | **Yeni oluştur**’u seçin. </br> **Ad**alanına **Mybackendpooloutbound** yazın. </br> **Ekle**’yi seçin. |
+    | Arka uç havuzu | **Yeni oluştur**’u seçin. </br> **Ad**alanına **Mybackendpooloutbound** yazın. </br> **Ekle**'yi seçin. |
     | Bağlantı noktası ayırma-> bağlantı noktası ayırma | **Giden bağlantı noktası sayısını el ile** seçin |
     | Giden bağlantı noktaları-> seçin | **Örnek başına bağlantı noktası** seçin |
     | Giden bağlantı noktaları-örnek başına > bağlantı noktaları | **10000**girin. |
 
-4. **Ekle**’yi seçin.
+4. **Ekle**'yi seçin.
 
 ### <a name="add-virtual-machines-to-outbound-pool"></a>Sanal makineleri giden havuzuna Ekle
 
@@ -277,11 +277,11 @@ Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağl
 
 6. **MyVM1**, **myVM2**ve **myVM3**' nin yanındaki kutuları işaretleyin. 
 
-7. **Ekle**’yi seçin.
+7. **Ekle**'yi seçin.
 
 8. **Kaydet**'i seçin.
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[2. seçenek: yük dengeleyici oluşturma (temel SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[2. seçenek: ortak yük dengeleyici oluşturma (temel SKU)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir.  SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
@@ -332,7 +332,7 @@ Bu bölümde, adımlarda bulunan parametreleri aşağıdaki bilgilerle değişti
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLB |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Batı Avrupa      |
+| **\<region-name>**          | West Europe      |
 | **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.1.0.0 \ 24          |
@@ -468,8 +468,9 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 5. **Yönetim** sekmesini seçin veya **İleri**  >  **Yönetim**' i seçin.
 
 6. **Yönetim** sekmesinde, şunu seçin veya girin:
+    
     | Ayar | Değer |
-    |-|-|
+    |---|---|
     | **İzleme** | |
     | Önyükleme tanılaması | Seçme **kapalı** |
 
@@ -484,6 +485,24 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Name |  **myVM2** |**myVM3**|
     | Kullanılabilirlik kümesi| **MyAvailabilitySet** seçin | **MyAvailabilitySet** seçin|
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin| Mevcut **Mynsg** 'yi seçin|
+
+### <a name="add-virtual-machines-to-the-backend-pool"></a>Arka uç havuzuna sanal makineler ekleme
+
+Önceki adımlarda oluşturulan VM 'Lerin **Myloadbalancer**arka uç havuzuna eklenmesi gerekir.
+
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myloadbalancer** ' ı seçin.
+
+2. **Ayarlar**altında **arka uç havuzları**' nı seçin ve ardından **mybackendpool**' u seçin.
+
+3. Ilişkili **sanal makineleri** seçin **Associated to**.
+
+4. **Sanal makineler** bölümünde **+ Ekle**' yi seçin.
+
+5. **MyVM1**, **myVM2**ve **myVM3**' nin yanındaki kutuları seçin.
+
+6. **Ekle**'yi seçin.
+
+7. **Kaydet**'i seçin.
 
 ---
 

@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514093"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475065"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -132,28 +132,96 @@ Bu bölümleri çevrimiçi duruma getirmek için aşağıdaki bölümlerde komut
 
 #### <a name="for-lvm-partitions"></a>LVM bölümleri için
 
-Fiziksel birim altındaki birim grubu adlarını listelemek için:
+Betik çalıştırıldığında, LVM bölümleri komut dosyası çıkışında belirtilen fiziksel birim/disk (ler) i içine bağlanır. İşlem şu şekilde yapılır
+
+1. Fiziksel birimler veya disklerden birim grubu adlarının benzersiz listesini al
+2. Ardından bu birim gruplarındaki mantıksal birimleri listeleyin
+3. Ardından mantıksal birimleri istenen yola bağlayın.
+
+##### <a name="listing-volume-group-names-from-physical-volumes"></a>Fiziksel birimlerden birim grubu adlarını listeleme
+
+Birim grubu adlarını listelemek için:
+
+```bash
+pvs -o +vguuid
+```
+
+Bu komut, tüm fiziksel birimleri (betiği çalıştırmadan önce mevcut olanlar dahil), bunlara karşılık gelen birim grubu adlarını ve birim grubunun benzersiz kullanıcı kimliklerini (UUID 'ler) listeler. Komutun örnek çıktısı aşağıda gösterilmiştir.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdf   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+
+  /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+```
+
+1. sütun (BD) fiziksel birimi gösterir, sonraki sütunlarda ilgili birim grubu adı, biçim, öznitelikler, boyut, boş alan ve birim grubunun benzersiz KIMLIĞI gösterilir. Komut çıktısı tüm fiziksel birimleri gösterir. Betik çıktısına başvurun ve yedeklemeyle ilgili birimleri tanımla. Yukarıdaki örnekte, betik çıktısı/dev/sdf ve/dev/sddtarafından gösterilirdi. Bu nedenle, datavg_db birim grubu betiğe ve Appvg_new birim grubu makineye aittir. Son fikir, benzersiz bir birim grubu adının 1 benzersiz KIMLIĞE sahip olmasını sağlamalıdır.
+
+###### <a name="duplicate-volume-groups"></a>Yinelenen birim grupları
+
+Toplu grup adlarının betiği çalıştırdıktan sonra 2 UUID 'ler sahip olduğu senaryolar vardır. Bu, makinenin, betiğin yürütüldüğü ve yedeklenen VM 'deki birim grubu adlarının aynı olduğu anlamına gelir. Ardından, yedeklenen VM 'Ler birim gruplarını yeniden adlandırdık. Aşağıdaki örneğe göz atın.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdg   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdh   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
+```
+
+Betik çıktısı,/dev/sdg,/dev/SDH,/dev/sdm2 eklenmiş olarak gösterilirdi. Bu nedenle, karşılık gelen VG adları Appvg_new ve kök VG ' dir. Ancak aynı adlar makinenin VG listesinde de bulunur. 1 VG adının 2 UUID 'ler olduğunu doğrulayabiliriz.
+
+Şimdi,/dev/sdg,/dev/SDH,/dev/sdm2, komut dosyası tabanlı birimler için VG adlarını yeniden adlandırdık. Birim grubunu yeniden adlandırmak için aşağıdaki komutu kullanın
+
+```bash
+vgimportclone -n rootvg_new /dev/sdm2
+vgimportclone -n APPVg_2 /dev/sdg /dev/sdh
+```
+
+Artık benzersiz kimlikler içeren tüm VG adlara sahip olduğumuz.
+
+###### <a name="active-volume-groups"></a>Etkin birim grupları
+
+Betiğin birimlerine karşılık gelen birim gruplarının etkin olduğundan emin olun. Aşağıdaki komut, etkin birim gruplarını göstermek için kullanılır. Betiğin ilgili birim gruplarının bu listede olup olmadığını denetleyin.
+
+```bash
+vgdisplay -a
+```  
+
+Aksi takdirde, aşağıdaki komutu kullanarak birim grubunu etkinleştirin.
 
 ```bash
 #!/bin/bash
-pvs <volume name as shown above in the script output>
+vgchange –a y  <volume-group-name>
 ```
 
-Bir birim grubundaki tüm mantıksal birimleri, adları ve bunların yollarını listelemek için:
+##### <a name="listing-logical-volumes-within-volume-groups"></a>Birim grupları içindeki mantıksal birimleri listeleme
+
+Betiğiyle ilgili benzersiz, etkin olan sanal grupların listesini aldıktan sonra, bu birim gruplarında bulunan mantıksal birimler aşağıdaki komutu kullanılarak listelenebilir.
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs commands results>
+lvdisplay <volume-group-name>
 ```
 
-Bu ```lvdisplay``` komut ayrıca birim gruplarının etkin olup olmadığını gösterir. Birim grubu devre dışı olarak işaretlenmişse, bağlanması için yeniden etkinleştirilmesi gerekir. Birim grubu devre dışı olarak gösteriliyorsa, etkinleştirmek için aşağıdaki komutu kullanın.
+Bu komut her mantıksal birimin yolunu ' LV yol ' olarak görüntüler.
 
-```bash
-#!/bin/bash
-vgchange –a y  <volume-group-name from the pvs commands results>
-```
-
-Birim grubu adı etkin olduktan sonra, ```lvdisplay``` ilgili tüm öznitelikleri görmek için komutu bir kez daha çalıştırın.
+##### <a name="mounting-logical-volumes"></a>Mantıksal birimleri bağlama
 
 Mantıksal birimleri tercih ettiğiniz yola bağlamak için:
 
@@ -161,6 +229,9 @@ Mantıksal birimleri tercih ettiğiniz yola bağlamak için:
 #!/bin/bash
 mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
+
+> [!WARNING]
+> ' Mount-a ' kullanmayın. Bu komut '/etc/fstab ' içinde açıklanan tüm cihazları takar. Bu, yinelenen cihazların bağlı olabileceği anlamına gelebilir. Veriler, verileri kalıcı hale getiremeyen komut dosyası tarafından oluşturulan cihazlara yönlendirilebilir ve bu nedenle veri kaybına neden olabilir.
 
 #### <a name="for-raid-arrays"></a>RAID dizileri için
 

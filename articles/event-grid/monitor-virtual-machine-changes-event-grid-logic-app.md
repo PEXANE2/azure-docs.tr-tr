@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 91ff67f886dbf54b93e9b91822b5f8535ea77e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079198"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461281"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Öğretici: Azure Event Grid ve Logic Apps'i kullanarak sanal makine değişikliklerini izleme
 
-Azure kaynaklarında veya üçüncü taraf kaynaklarda gerçekleşen belirli olayları izlemek ve yanıtlamak için, en az kod kullanan bir [mantıksal uygulama](../logic-apps/logic-apps-overview.md) oluşturarak görevleri otomatik hale getirebilir ve çalıştırabilirsiniz. Bu kaynaklar, olayları bir [Azure olay kılavuzunda](../event-grid/overview.md)yayımlayabilir. Olay kılavuzu da bu olayları uç nokta olarak kuyruk, web kancası veya [olay hub’ları](../event-hubs/event-hubs-what-is-event-hubs.md) olan abonelere gönderir. Abone olarak, mantıksal uygulamanız görevleri gerçekleştirmek için otomatik iş akışları çalıştırmadan önce olay kılavuzlarından bu olayları bekleyebilir.
+Azure kaynaklarında veya üçüncü taraf kaynaklarda gerçekleşen belirli olayları izlemek ve yanıtlamak için, en az kod kullanan bir [mantıksal uygulama](../logic-apps/logic-apps-overview.md) oluşturarak görevleri otomatik hale getirebilir ve çalıştırabilirsiniz. Bu kaynaklar, olayları bir [Azure olay kılavuzunda](../event-grid/overview.md)yayımlayabilir. Olay kılavuzu da bu olayları uç nokta olarak kuyruk, web kancası veya [olay hub’ları](../event-hubs/event-hubs-about.md) olan abonelere gönderir. Abone olarak, mantıksal uygulamanız görevleri gerçekleştirmek için otomatik iş akışları çalıştırmadan önce olay kılavuzlarından bu olayları bekleyebilir.
 
 Örneğin, yayımcıların Azure Event Grid hizmeti üzerinden abonelere gönderebileceği bazı olaylar şunlardır:
 
@@ -50,7 +50,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
   Bu öğretici, Office 365 Outlook hesabını kullanır. Farklı bir e-posta hesabı kullanırsanız genel adımlar aynı kalır, ancak kullanıcı arabiriminiz biraz farklı görünebilir.
 
   > [!IMPORTANT]
-  > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Tek başına kendi Azure Kaynak grubunda olan bir [sanal makine](https://azure.microsoft.com/services/virtual-machines) . Daha önce yapmadıysanız, [VM oluşturma öğreticisi](../virtual-machines/windows/quick-create-portal.md)aracılığıyla bir sanal makine oluşturun. Sanal makinenin olayları yayımlaması için, [başka bir işlem yapmanız gerekmez](../event-grid/overview.md).
 
@@ -148,7 +148,7 @@ Mantıksal uygulamanızı yalnızca belirli bir olay veya işlem gerçekleştiğ
 
       `triggerBody()?['data']['operationName']`
 
-      Örneğin:
+      Örnek:
 
       ![Logic Apps Tasarımcısı 'nın ekran görüntüsü, işlem adının ayıklanmasına yönelik deyim ile koşul Düzenleyicisi gösteriliyor.](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
 
@@ -176,7 +176,7 @@ Mantıksal uygulamanızı yalnızca belirli bir olay veya işlem gerçekleştiğ
 
    ![Koşul doğru olduğunda eylem eklemek için düğme gösteren Logic Apps tasarımcı koşulu düzenleyicisinin ekran görüntüsü.](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. **Eylem seçin**altında, arama kutusuna `send an email` filtreniz olarak girin. E-posta sağlayıcınıza uygun bağlayıcıyı bulun ve seçin. Ardından bağlayıcı için "e-posta gönder" eylemini seçin. Örneğin:
+1. **Eylem seçin**altında, arama kutusuna `send an email` filtreniz olarak girin. E-posta sağlayıcınıza uygun bağlayıcıyı bulun ve seçin. Ardından bağlayıcı için "e-posta gönder" eylemini seçin. Örnek:
 
    * Azure iş veya okul hesabı için Office 365 Outlook bağlayıcısını seçin.
 
@@ -203,7 +203,7 @@ Mantıksal uygulamanızı yalnızca belirli bir olay veya işlem gerçekleştiğ
    | -------- | -------- | ----- | ----------- |
    | **Hedef** | Yes | <*alıcı \@ etki alanı*> | Alıcının e-posta adresi girin. Test için kendi e-posta adresinizi kullanabilirsiniz. |
    | **Konu** | Yes | `Resource updated:`**Konu** | E-posta konusunun içeriğini girin. Bu öğretici için, belirtilen metni girin ve olayın **Konu** alanını seçin. Burada, e-postanızın konusu güncelleştirilen kaynağın (sanal makine) adını içerir. |
-   | **Gövde** | Yes | `Resource:` **Konu** <p>`Event type:`**Olay türü**<p>`Event ID:`**Kimliği**<p>`Time:`**Olay saati** | E-posta gövdesinin içeriğini girin. Bu öğretici için, belirtilen metni girin ve olay **konusunu**, olay **türünü**, **kimliği**ve **Olay saati** alanlarını seçerek e-postanız, güncelleştirme için olayı, olay türünü, olay zaman damgasını ve olay kimliğini tetikleyen kaynağı içerir. Bu öğretici için kaynak, tetikleyicide seçilen Azure Kaynak grubudur. <p>İçeriğinize boş satır eklemek için Shift + Enter tuşlarını kullanın. |
+   | **Gövde** | Yes | `Resource:` **Konu** <p>`Event type:`**Olay türü**<p>`Event ID:` **ID**<p>`Time:`**Olay saati** | E-posta gövdesinin içeriğini girin. Bu öğretici için, belirtilen metni girin ve olay **konusunu**, olay **türünü**, **kimliği**ve **Olay saati** alanlarını seçerek e-postanız, güncelleştirme için olayı, olay türünü, olay zaman damgasını ve olay kimliğini tetikleyen kaynağı içerir. Bu öğretici için kaynak, tetikleyicide seçilen Azure Kaynak grubudur. <p>İçeriğinize boş satır eklemek için Shift + Enter tuşlarını kullanın. |
    ||||
 
    > [!NOTE]
@@ -227,7 +227,7 @@ Mantıksal uygulamanızı yalnızca belirli bir olay veya işlem gerçekleştiğ
 
    Örneğin, Azure portalında sanal makinenizi yeniden boyutlandırabilir veya [VM’nizi Azure PowerShell ile yeniden boyutlandırabilirsiniz](../virtual-machines/windows/resize-vm.md).
 
-   Birkaç dakika sonra bir e-posta almanız gerekir. Örneğin:
+   Birkaç dakika sonra bir e-posta almanız gerekir. Örnek:
 
    ![Örneğin, VM güncelleştirmesiyle ilgili ayrıntıları gösteren Outlook e-postası örnek ekran görüntüsü.](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 

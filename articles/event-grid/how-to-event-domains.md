@@ -3,12 +3,12 @@ title: Olay etki alanlarıyla olayları Azure Event Grid ile yayımlama
 description: Azure Event Grid ' deki büyük konu kümelerinin nasıl yönetileceğini ve olay etki alanlarını kullanarak bu olaylara olayları nasıl yayımlayacağınızı gösterir.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: eae467c1c4cc1257e7a5205dd5efda40490f7908
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ce1cc9c2b09dd6b0c9508ad6b0597428bd355d4b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423652"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460567"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Olay etki alanlarını kullanarak konuları yönetme ve olayları yayımlama
 
@@ -78,7 +78,7 @@ Başarılı oluşturma aşağıdaki değerleri döndürür:
 
 ## <a name="manage-access-to-topics"></a>Konulara erişimi yönetin
 
-Konuların erişimini yönetme [rol ataması](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)aracılığıyla yapılır. Rol ataması, Azure kaynaklarındaki işlemleri belirli bir kapsamdaki yetkili kullanıcılarla sınırlamak için rol tabanlı erişim denetimi kullanır.
+Konuların erişimini yönetme [rol ataması](../role-based-access-control/role-assignments-cli.md)aracılığıyla yapılır. Rol ataması, Azure kaynaklarındaki işlemleri belirli bir kapsamdaki yetkili kullanıcılarla sınırlamak için rol tabanlı erişim denetimi kullanır.
 
 Event Grid, bir etki alanı içindeki çeşitli konularda belirli kullanıcılara erişim atamak için kullanabileceğiniz iki yerleşik rol içerir. Bu roller, `EventGrid EventSubscription Contributor (Preview)` aboneliklerin oluşturulmasına ve silinmesine izin veren ve `EventGrid EventSubscription Reader (Preview)` yalnızca olay abonelikleri listesine izin veren ve ' dir.
 

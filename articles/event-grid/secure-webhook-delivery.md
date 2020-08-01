@@ -3,16 +3,16 @@ title: Azure Event Grid 'de Azure AD ile güvenli Web kancası teslimi
 description: Azure Event Grid kullanılarak Azure Active Directory korunan HTTPS uç noktalarına olayların nasıl teslim edileceğini açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b0503d7da9e191e9d6764076392ead8faa5109a1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 90d06f203bc93177101a87a7a774d816b11b16f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119132"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460720"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Korunan uç noktalara Azure Active Directory olayları yayımlayın
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Olayları Azure Active Directory korumalı uç noktalara yayımlama
 
-Bu makalede, olay aboneliğiniz ve Web kancası uç noktanız arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından nasıl yararlanabilmeniz açıklanmaktadır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Bu makalede, olay aboneliğiniz ve Web kancası uç noktanız arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından nasıl yararlanabilmeniz açıklanmaktadır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](../active-directory/develop/v2-overview.md).
 
 Bu makale, tanıtım için Azure portal kullanır, ancak özellik CLı, PowerShell veya SDK 'lar kullanılarak da etkinleştirilebilir.
 
@@ -28,7 +28,7 @@ Korumalı uç noktanız için bir Azure AD uygulaması oluşturarak başlayın. 
 Azure AD uygulamanızda bir rol ve hizmet sorumlusu oluşturmak için aşağıdaki PowerShell betiğini kullanın. Azure AD uygulamanızdan kiracı KIMLIĞI ve nesne KIMLIĞI gerekir:
 
    > [!NOTE]
-   > Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) bir üyesi olmanız gerekir.
+   > Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) bir üyesi olmanız gerekir.
     
 1. Azure AD kiracı KIMLIĞINIZI kullanmak için PowerShell betiğinin $myTenantId değiştirin.
 1. PowerShell betiğinin $myAzureADApplicationObjectId Azure AD uygulamanızın nesne KIMLIĞINI kullanacak şekilde değiştirin

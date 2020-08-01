@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 07/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 43dc0020f64a80e10f179fd194c4878f2fec41ad
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243214"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461009"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme
 
@@ -49,8 +49,6 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
 1. Aşağıdaki biçimde bir istek alın:
    
    > *http: \/ /www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl = {kaynak sayfasının URL 'si} &anahtar = {String} &SIG = {String}*
-   > 
-   > 
    
     Oturum açma/kaydolma çalışması için sorgu parametreleri:
    
@@ -84,6 +82,7 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
 * **Parola**
 * **Değişiklik profili**
 * **CloseAccount**
+* **Oturum kapatma**
 
 Hesap yönetimi işlemleri için aşağıdaki sorgu parametrelerini geçirmeniz gerekir.
 
@@ -93,6 +92,7 @@ Hesap yönetimi işlemleri için aşağıdaki sorgu parametrelerini geçirmeniz 
 * **SIG**: kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Ürün aboneliğine temsilci seçme
+
 Ürün aboneliğine temsilci seçme, Kullanıcı oturum açma/kurma için de aynı şekilde çalışır. Son iş akışı aşağıdaki gibi olacaktır:
 
 1. Geliştirici API Management Geliştirici Portalında bir ürün seçer ve abone ol düğmesine tıklamalar.
@@ -114,9 +114,9 @@ Ardından, yetkilendirme uç noktasının aşağıdaki eylemleri kullandığınd
      * "Abone ol": kullanıcıyı sağlanan KIMLIĞE sahip belirli bir ürüne abone olma isteği (aşağıya bakın)
      * "Abonelikten çıkma": bir kullanıcının üründen aboneliğini kaldırma isteği
      * "Yenile": bir aboneliği yenileme isteği (örneğin, süresi dolacak)
-   * **ProductID**: kullanıcının abone olması için ISTEDIĞI ürünün kimliği
+   * **ProductID**: *Subscribe* -kullanıcının abone olması istediği ürünün kimliği
    * **SubscriptionID**: *abonelik kaldırma* ve *yenileme* -ürün aboneliğinin kimliği
-   * **UserID**: isteğin YAPıLDıĞı kullanıcının kimliği
+   * **Kullanıcı kimliği**: *abone ol* -isteğin yapıldığı kullanıcının kimliği
    * **anahtar**: güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
    * **SIG**: kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
 

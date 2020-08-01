@@ -5,22 +5,23 @@ services: azure-portal
 keywords: ayarlar, zaman aşımı, dil, bölgesel
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 07/30/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8ce638bf61c69fb732d94d537218aabaeaa9a7c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763967"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461959"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Azure portalı tercihlerinizi ayarlama
 
 Kendi tercihlerinizi karşılamak için Azure portal varsayılan ayarlarını değiştirebilirsiniz. Aşağıda listelenen ayarların her biri değiştirilebilir:
 
 * [Etkin olmayan oturum zaman aşımı](#change-the-idle-duration-for-inactive-sign-out)
+* [Varsayılan abonelik](#choose-your-default-subscription)
 * [Varsayılan görünüm](#choose-your-default-view)
 * [Portal menü modu](#choose-a-portal-menu-mode)
 * [Renk ve yüksek karşıtlık teması](#choose-a-theme)
@@ -54,6 +55,18 @@ Yöneticiniz, etkin olmama zaman aşımı ilkesini etkinleştirmişse **Dizin ey
 > [!NOTE]
 > Yönetici değilseniz ve Azure portal tüm kullanıcıları için etkin olmayan bir zaman aşımı ayarını zorlamak istiyorsanız, bkz [. Azure Portal kullanıcıları için Dizin düzeyi eylemsizlik zaman aşımını ayarlama](admin-timeout.md)
 >
+
+### <a name="choose-your-default-subscription"></a>Varsayılan aboneliğinizi seçin
+
+Azure portal oturum açtığınızda varsayılan olarak açılan aboneliği değiştirebilirsiniz. Bu, çalıştığınız bir birincil aboneliğiniz varsa ancak diğerlerini zaman zaman kullandıysanız yararlı olur. 
+
+:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="Kaynak listesini aboneliğe göre filtreleyin.":::
+
+1. Üstteki gezinmede dizin ve abonelik filtresi simgesini seçin.
+1. Portalı başlattığınızda varsayılan abonelikler olarak istediğiniz abonelikleri seçin. 
+
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Portalı başlattığınızda varsayılan abonelikler olarak istediğiniz abonelikleri seçin."::: 
+
 
 ### <a name="choose-your-default-view"></a>Varsayılan görünümünüzü seçin 
 

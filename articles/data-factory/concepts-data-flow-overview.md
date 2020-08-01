@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84635143"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475575"
 ---
 # <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
 
@@ -93,41 +93,9 @@ Her bir dönüşümün yapılandırma bölmesindeki ilk sekme, bu dönüştürme
 
 #### <a name="optimize"></a>İyileştirme
 
-**Optimizasyon** sekmesi, bölümleme düzenlerini yapılandırma ayarlarını içerir.
+**Optimizasyon** sekmesi, bölümleme düzenlerini yapılandırma ayarlarını içerir. Veri akışlarınızı iyileştirme hakkında daha fazla bilgi edinmek için bkz. [eşleme veri akışı performans Kılavuzu](concepts-data-flow-performance.md).
 
-![İyileştirme](media/data-flow/optimize1.png "İyileştirme")
-
-Varsayılan ayar **geçerli bölümleme kullanır**, bu, Azure Data Factory Spark üzerinde çalışan veri akışları için yerel bölümlendirme şemasını kullanmasını söyler. Çoğu senaryoda, bu ayar önerilir.
-
-Bölümlemeyi ayarlamak isteyebileceğiniz örnekler vardır. Örneğin, dönüştürmelerinizi Gölü tek bir dosyaya çıkarmak istiyorsanız, bir havuz dönüşümünde **tek bölüm** ' ü seçin.
-
-Bölümleme düzenlerini denetlemek isteyebileceğiniz başka bir durum da performansı iyileştiriliyor. Bölümlemenin ayarlanması, verilerin işlem düğümleri genelinde dağıtılması üzerinde denetim sağlar ve genel veri akışı performansından hem olumlu hem de olumsuz etkileri olabilir. Daha fazla bilgi için bkz. [veri akışı performans Kılavuzu](concepts-data-flow-performance.md).
-
-Herhangi bir dönüşümdeki Bölümlendirmeyi değiştirmek için, **optimizasyon** sekmesini seçin ve **bölümlendirme** radyo düğmesini seçin. Bölümlemeye yönelik bir dizi seçenek sunulur. Bölümlendirme en iyi yöntemi, veri birimleriniz, aday anahtarlarınız, null değerler ve kardinalite temelinde farklılık gösterir. 
-
-En iyi uygulama, varsayılan bölümlendirme ile başlamalı ve farklı bölümlendirme seçeneklerini denemelerdir. İşlem hattı hata ayıklama çalıştırmalarını kullanarak test edebilir ve izleme görünümündeki her bir dönüşüm gruplandırmasında yürütme süresini ve bölüm kullanımını görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [veri akışlarını izleme](concepts-data-flow-monitoring.md).
-
-Aşağıdaki bölümlendirme seçenekleri kullanılabilir.
-
-##### <a name="round-robin"></a>Hepsini bir kez deneme 
-
-Hepsini bir kez deneme, verileri bölümler arasında eşit olarak dağıtan basit bir bölümdür. Katı ve akıllı bölümlendirme stratejisi uygulamak için iyi bir ana aday olmadığında hepsini bir kez deneme kullanın. Fiziksel bölüm sayısını ayarlayabilirsiniz.
-
-##### <a name="hash"></a>Karma
-
-Azure Data Factory, benzer değerlere sahip satırlar aynı bölüme düşecek şekilde Tekdüzen bölümler oluşturmak için bir sütun karması üretir. Karma seçeneğini kullandığınızda olası bölüm eğsınaması için test edin. Fiziksel bölüm sayısını ayarlayabilirsiniz.
-
-##### <a name="dynamic-range"></a>Dinamik Aralık
-
-Dinamik Aralık, sağladığınız sütunlara veya ifadelere göre Spark dinamik aralıklarını kullanır. Fiziksel bölüm sayısını ayarlayabilirsiniz. 
-
-##### <a name="fixed-range"></a>Sabit Aralık
-
-Bölümlenmiş veri sütunlarınızın içindeki değerler için sabit bir Aralık sağlayan bir ifade oluşturun. Bölüm eğriliğini önlemek için, bu seçeneği kullanmadan önce verilerinizin iyi şekilde anlaşılmasını sağlayabilirsiniz. İfade için girdiğiniz değerler, bölüm işlevinin bir parçası olarak kullanılır. Fiziksel bölüm sayısını ayarlayabilirsiniz.
-
-##### <a name="key"></a>Anahtar
-
-Verilerinizin önem düzeyini iyi anlamak istiyorsanız anahtar bölümleme iyi bir strateji olabilir. Anahtar bölümleme, sütuninizdeki her benzersiz değer için bölümler oluşturur. Bu sayı, verilerdeki benzersiz değerleri temel aldığı için bölüm sayısını ayarlayamazsınız.
+![İyileştirme](media/data-flow/optimize.png "İyileştirme")
 
 #### <a name="inspect"></a>Bilgiyi
 

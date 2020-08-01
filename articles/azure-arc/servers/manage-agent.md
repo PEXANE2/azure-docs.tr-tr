@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80c133eceb6af419d0eb5aa35ff784a0f9321d37
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067710"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474963"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
@@ -181,6 +181,9 @@ Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) bağlantıyı k
 `azcmagent disconnect --tenant-id <tenantID>`
 
 ### <a name="reconnect"></a>Yeniden bağlan
+
+> [!WARNING]
+> `reconnect`Komut kullanım dışıdır ve kullanılmamalıdır. Komut gelecekteki bir aracı sürümünde kaldırılacak ve mevcut aracılar yeniden bağlanma isteğini tamamlayamayacak. Bunun yerine makinenizin [bağlantısını kesip](#disconnect) yeniden [bağlayın](#connect) .
 
 Bu parametre, zaten kayıtlı veya bağlı makineyi sunucular için Azure Arc (Önizleme) ile yeniden bağlar. Bu, makinenin süresi en az 45 gün, sertifikanın süresi dolduğunda gerekli olabilir. Bu parametre, bu makineyi temsil eden Azure Resource Manager kaynağına karşılık gelen yeni kimlik bilgilerini almak için belirtilen kimlik doğrulama seçeneklerini kullanır.
 

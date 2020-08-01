@@ -1,19 +1,19 @@
 ---
-title: Veri akışı görsel Izleme eşleme
-description: Azure Data Factory veri akışlarını görsel olarak izleme
+title: Eşleme veri akışlarını izleme
+description: Azure Data Factory eşleme verileri akışlarını görsel olarak izleme
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/03/2020
-ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958914"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475558"
 ---
 # <a name="monitor-data-flows"></a>Veri akışlarını izleme
 
@@ -27,7 +27,7 @@ Veri akışınızı oluşturma ve hata ayıklamayı tamamladıktan sonra, veri a
 
 Bu düzeyde istatistikler ve çalışma süreleri ve durumu da dahil olmak üzere istatistikleri görürsünüz. Etkinlik düzeyindeki çalıştırma KIMLIĞI, işlem hattı düzeyindeki çalıştırma KIMLIĞINDEN farklı. Önceki düzeydeki çalıştırma KIMLIĞI işlem hattı içindir. Duyun seçilmesi, veri akışı yürütmenize ilişkin ayrıntılı ayrıntılar sağlar.
 
-![Veri akışı Izleme](media/data-flow/mon002.png "Veri Akışını İzleme")
+![Veri akışı Izleme](media/data-flow/monitoring-details.png "Veri Akışını İzleme")
 
 Grafik düğüm izleme görünümünde olduğunuzda, veri akışı grafiklerinizin yalnızca Basitleştirilmiş bir görünüm sürümünü görebilirsiniz.
 

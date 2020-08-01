@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a01bb7d2f4aa3d31204d6235e955e82e471d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729056"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475796"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory 'de yönetim birimleri yönetimi (Önizleme)
 
@@ -74,26 +74,26 @@ Aşağıdaki tabloda, yönetim birimi senaryoları için geçerli destek açıkl
 
 İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi
 ----------- | ----------------------- | --------------- | -----------------
-Yönetim birimleri oluşturma ve silme   |    Destekleniyor    |   Destekleniyor   |    Desteklenmiyor
-Yönetim birimi üyelerini tek tek ekleme ve kaldırma    |   Destekleniyor    |   Destekleniyor   |    Desteklenmiyor
-. Csv dosyası kullanarak yönetim birimi üyelerini toplu ekleme ve kaldırma   |    Desteklenmiyor     |  Destekleniyor   |    Destekedilecek plan yok
-Yönetim birimi kapsamlı Yöneticiler atama  |     Destekleniyor    |   Destekleniyor    |   Desteklenmiyor
-AU üyelerini dinamik olarak özniteliklere göre ekleme ve kaldırma | Desteklenmiyor | Desteklenmiyor | Desteklenmiyor
+Yönetim birimleri oluşturma ve silme   |    Desteklenir    |   Desteklenir   |    Desteklenmez
+Yönetim birimi üyelerini tek tek ekleme ve kaldırma    |   Desteklenir    |   Desteklenir   |    Desteklenmez
+. Csv dosyası kullanarak yönetim birimi üyelerini toplu ekleme ve kaldırma   |    Desteklenmez     |  Desteklenir   |    Destekedilecek plan yok
+Yönetim birimi kapsamlı Yöneticiler atama  |     Desteklenir    |   Desteklenir    |   Desteklenmez
+AU üyelerini dinamik olarak özniteliklere göre ekleme ve kaldırma | Desteklenmez | Desteklenmez | Desteklenmez
 
 ### <a name="user-management"></a>Kullanıcı yönetimi
 
 İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi
 ----------- | ----------------------- | --------------- | -----------------
-Kullanıcı özelliklerinin, parolaların, lisansların yönetim birimi kapsamlı yönetimi   |    Destekleniyor     |  Destekleniyor   |   Destekleniyor
-yönetim birimi kapsamlı engelleme ve Kullanıcı oturum açma işlemleri engellemesini kaldırma    |   Destekleniyor   |    Destekleniyor   |    Destekleniyor
-Kullanıcı MFA kimlik bilgilerinin yönetim birimi kapsamlı yönetimi   |    Destekleniyor   |   Destekleniyor   |   Desteklenmiyor
+Kullanıcı özelliklerinin, parolaların, lisansların yönetim birimi kapsamlı yönetimi   |    Desteklenir     |  Desteklenir   |   Desteklenir
+yönetim birimi kapsamlı engelleme ve Kullanıcı oturum açma işlemleri engellemesini kaldırma    |   Desteklenir   |    Desteklenir   |    Desteklenir
+Kullanıcı MFA kimlik bilgilerinin yönetim birimi kapsamlı yönetimi   |    Desteklenir   |   Desteklenir   |   Desteklenmez
 
 ### <a name="group-management"></a>Grup yönetimi
 
 İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi
 ----------- | ----------------------- | --------------- | -----------------
-Grup özelliklerinin ve üyelerinin yönetim birimi kapsamlı yönetimi     |  Destekleniyor   |    Destekleniyor    |  Desteklenmiyor
-Grup lisanslamanın yönetim birimi kapsamlı yönetimi   |    Destekleniyor  |    Destekleniyor   |   Desteklenmiyor
+Grup özelliklerinin ve üyelerinin yönetim birimi kapsamlı yönetimi     |  Desteklenir   |    Desteklenir    |  Desteklenmez
+Grup lisanslamanın yönetim birimi kapsamlı yönetimi   |    Desteklenir  |    Desteklenir   |   Desteklenmez
 
 > [!NOTE]
 >

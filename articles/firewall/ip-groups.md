@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565551"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460227"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure Güvenlik duvarında IP grupları
 
@@ -27,7 +27,7 @@ Bir IP grubunun tek bir IP adresi, birden çok IP adresi veya bir veya daha fazl
 
 Azure 'daki bölgeler ve abonelikler arasında birden fazla güvenlik duvarı için Azure Güvenlik Duvarı DNAT, ağ ve uygulama kurallarında IP grupları yeniden kullanılabilir. Grup adları benzersiz olmalıdır. Azure portal, Azure CLı veya REST API bir IP grubu yapılandırabilirsiniz. Başlamanıza yardımcı olmak için örnek bir şablon sağlanır.
 
-## <a name="sample-format"></a>Örnek biçim
+## <a name="sample-format"></a>Örnek biçimi
 
 Aşağıdaki IPv4 adresi biçimi örnekleri IP gruplarında kullanılmak üzere geçerlidir:
 
@@ -70,43 +70,7 @@ IP grupları tüm genel bulut bölgelerinde kullanılabilir.
 
 ## <a name="ip-address-limits"></a>IP adresi sınırları
 
-50 IP grupları veya daha az için her güvenlik duvarı örneği başına en fazla 5000 ayrı IP adresi olabilir. 51 ile 100 IP grupları için her güvenlik duvarı örneği için her biri ayrı IP adresine 500 sahip olabilirsiniz.
-
-### <a name="examples"></a>Örnekler
-
-#### <a name="example-1-supported"></a>Örnek 1: desteklenir
-
-|IP Grupları  |# IP adresleri  |Gösterim  |Kural  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Rule1|
-|IPGroup3     |1|1.2.3.4|Rule1|
-|     |**Toplam 4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>Örnek 2: desteklenir
-
-|IP Grupları  |# IP adresleri  |Gösterim  |Kural  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule1|
-|     |**Toplam 8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>Örnek 3: desteklenmiyor
-
-|IP Grupları  |# IP adresleri  |Gösterim  |Kural  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Rule1|
-|     |**Toplam 8192**|||
-
-#### <a name="example-4-supported"></a>Örnek 4: desteklenir
-
-|IP Grupları  |# IP adresleri  |Gösterim  |Kural  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Bağlanma2|
-|     |**Toplam 8192**|         |         |
-
+Her bir IP grubu için en fazla 5000 ayrı IP adresi veya IP ön ekleri olan güvenlik duvarı başına en fazla 100 IP grubuna sahip olabilirsiniz.
 
 ## <a name="related-azure-powershell-cmdlets"></a>İlgili Azure PowerShell cmdlet 'leri
 

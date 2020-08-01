@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 599620c5fcc3ad1802527bd66e2dbead1b97d11d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28cd26532ca5bdf83902854b7910f7d6c18a4eab
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079023"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460159"
 ---
 # <a name="fqdn-filtering-in-network-rules-preview"></a>Ağ kurallarında FQDN filtrelemesi (Önizleme)
 
@@ -20,13 +20,16 @@ ms.locfileid: "87079023"
 > Ağ kurallarında FQDN filtrelemesi Şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tam etki alanı adı (FQDN), bir konağın etki alanı adını temsil eder. Bir etki alanı adı, tek veya birden çok IP adresi ile ilişkilendirilir. Uygulama kurallarında FQDN ve FQDN etiketlerine izin verebilir veya onları engelleyebilirsiniz. Özel DNS ve DNS proxy ayarlarını kullanarak, ağ kurallarında FQDN filtrelemeyi de kullanabilirsiniz.
+Tam etki alanı adı (FQDN), bir konağın veya IP adresinin etki alanı adını temsil eder. Azure Güvenlik Duvarı ve güvenlik duvarı ilkesinde DNS çözümüne bağlı olarak ağ kurallarında FQDN 'leri kullanabilirsiniz. Bu özellik, giden trafiği herhangi bir TCP/UDP protokolüyle (NTP, SSH, RDP ve daha fazlası dahil) filtrelemenizi sağlar. Ağ kurallarınızın FQDN 'lerini kullanması için DNS proxy 'yi etkinleştirmelisiniz. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı ILKESI DNS ayarları (Önizleme)](dns-settings.md).
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure Güvenlik Duvarı, DNS ayarlarını kullanarak FQDN 'yi bir IP adresine çevirir ve Azure DNS veya özel bir DNS yapılandırmasına göre kural işleme yapar.
+Kuruluşunuzun ihtiyaç duyacağı DNS sunucusunu (Azure DNS veya kendi özel DNS) tanımladıktan sonra Azure Güvenlik Duvarı, FQDN 'yi seçili DNS sunucusuna bağlı olarak bir IP adresine çevirir. Bu çeviri hem uygulama hem de ağ kuralı işleme için gerçekleşir.
 
-Ağ kurallarında FQDN 'leri kullanmak için DNS proxy 'yi etkinleştirmelisiniz. DNS proxy 'yi etkinleştirmezseniz güvenilir kural işleme riskidir. Etkin olduğunda DNS trafiği, özel DNS sunucunuzu yapılandırabileceğiniz Azure Güvenlik Duvarı 'na yönlendirilir. Daha sonra güvenlik duvarı ve istemciler aynı yapılandırılmış DNS sunucusunu kullanır. DNS proxy etkinleştirilmemişse, istemci ve güvenlik duvarı ad çözümlemesi için farklı sunucular kullanabileceğinden Azure Güvenlik Duvarı farklı bir yanıt üretebilir. İstemci ve güvenlik duvarı farklı DNS yanıtları alıyorsa ağ kurallarında FQDN filtrelemesi hatalı veya tutarsız olabilir.
+Uygulama kurallarında, ağ kurallarından karşılaştırılan etki alanı adları kullanma arasındaki fark nedir? 
+
+- HTTP/S ve MSSQL için uygulama kurallarında FQDN filtrelemesi, bir uygulama düzeyi saydam proxy ve SNı üst bilgisini temel alır. Bu nedenle, aynı IP adresine çözümlenen iki FQDN arasında bir ayırt edilebilir. Ağ kurallarında FQDN filtrelemede bu durum böyle değildir. Mümkün olduğunda her zaman uygulama kurallarını kullanın.
+- Uygulama kuralları ' nda, seçili protokollerinizin bulunduğu HTTP/S ve MSSQL ' yi kullanabilirsiniz. Ağ kuralları ' nda, hedef FQDN 'lerinizle herhangi bir TCP/UDP protokolünü kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

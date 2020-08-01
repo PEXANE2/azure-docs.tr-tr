@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f5eac1d331bd439ad4066d1dea1b9aa950fcce60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004502"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474351"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown UI öğesi
 
@@ -47,6 +47,7 @@ Filtreleme etkinken denetim, filtreleme değerini eklemek için bir metin kutusu
     "name": "element1",
     "type": "Microsoft.Common.DropDown",
     "label": "Example drop down",
+    "placeholder": "",
     "defaultValue": "Value two",
     "toolTip": "",
     "multiselect": true,  
@@ -90,6 +91,7 @@ Filtreleme etkinken denetim, filtreleme değerini eklemek için bir metin kutusu
 - `constraints.allowedValues`en az bir öğe olmalıdır.
 - Zorunlu olmayan bir değere öykünmek için, etiketi ve değeri `""` (boş dize) olan bir öğe ekleyin `constraints.allowedValues` .
 - `defaultDescription`Özelliği, açıklaması olmayan öğeler için kullanılır.
+- `placeholder`Özelliği, Kullanıcı düzenlenmeden çalışmaya başladığında kaybolması gereken yardım metindir. `placeholder`Ve `defaultValue` her ikisi de tanımlıysa, `defaultValue` öncelik alır ve gösterilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

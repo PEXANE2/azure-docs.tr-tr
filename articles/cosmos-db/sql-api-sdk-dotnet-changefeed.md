@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 679f3113cddbfe13370483f2678154f4dd1f8ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2c846298fecdc771dd5d9831a558b99c74b2737
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392072"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461077"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET değişiklik akışı Işlemcisi SDK 'Sı: Indirme ve sürüm notları
 
@@ -48,7 +48,11 @@ ms.locfileid: "85392072"
 
 ### <a name="v2-builds"></a>v2 derlemeleri
 
-### <a name="230"></a><a name="2.3.0"></a>2.3.0
+### <a name="231"></a><a name="2.3.1"/>2.3.1
+* `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` `FeedProcessing.IChangeFeedObserver.CloseAsync` Bölüm bulunamazsa veya hedef çoğaltma okuma oturumuyla güncel değilse, ' a bir kapatma nedeni gönderildiğinde bir durum düzeltildi. Bu durumlarda `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ve `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` kapatma nedenleri artık kullanılıyor.
+* `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable`Hedef çoğaltma, okuma oturumuna göre güncel olmadığında değişiklik akışı gözlemcisini kapatmak için gönderilen yeni bir kapatma nedeni eklendi.
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
 * Yeni bir yöntem `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` ve karşılık gelen ortak arabirim eklendi `ICheckpointPartitionProcessorFactory` . Bu, arabiriminin bir uygulamasının `IPartitionProcessor` yerleşik checkişaretleme mekanizması kullanmasına izin verir. Yeni fabrika, `IPartitionProcessorFactory` `Create` yöntemi için de aynı zamanda parametresini de alır `ILeaseCheckpointer` .
 * `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory`Aynı örnek için ya da iki yöntemden yalnızca biri `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` kullanılabilir `ChangeFeedProcessorBuilder` .
 
@@ -178,16 +182,16 @@ ms.locfileid: "85392072"
 
 ## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
 
-Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır.
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir.
 
-Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir. 
-
-Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet tarafından reddedilir.
+> [!WARNING]
+> 31 Ağustos 2022 ' den sonra Azure Cosmos DB artık hata düzeltmeleri yapamayacak, yeni özellikler ekleyecek ve SQL API 'SI için Azure Cosmos DB .NET veya .NET Core SDK sürümleri için destek sağlamalıdır. Yükseltmemeyi tercih ediyorsanız, SDK 'nın 1. x sürümünden gönderilen istekler Azure Cosmos DB hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
 
 <br/>
 
 | Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |30 Temmuz 2020 |--- |
 | [2.3.0](#2.3.0) |2 Nisan 2020 |--- |
 | [2.2.8](#2.2.8) |28 Ekim 2019 |--- |
 | [2.2.7](#2.2.7) |14 Mayıs 2019 |--- |

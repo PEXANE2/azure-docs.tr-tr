@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3699213fe61c64d7677ba026a8df54ccbbfe4b33
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352359"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475490"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükleyip kullanma
 
-[Azure CLI,](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) IoT Hub gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure CLı, Windows, Linux ve MacOS 'ta kullanılabilir. Azure CLı [Azure Cloud Shell](https://shell.azure.com)de önceden yüklenir. Azure CLı, herhangi bir uzantı yüklemeden Azure IoT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub 'ları yönetmenizi sağlar.
+[Azure CLI,](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) IoT Hub gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure CLı, Windows, Linux ve macOS 'ta kullanılabilir. Azure CLı, herhangi bir uzantı yüklemeden Azure IoT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub 'ları yönetmenizi sağlar.
 
 Azure CLı için Azure IoT uzantısı IoT Tak ve Kullan önizleme cihazlarını test etmeye ve bunlarla etkileşime yönelik bir komut satırı aracıdır. Uzantıyı şu şekilde kullanabilirsiniz:
 
@@ -44,16 +44,13 @@ Uzantıyı kaldırmak için `az extension remove --name azure-iot` kullanabilirs
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını kullanma
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğinizde oturum açmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli
 az login
 ```
-
-> [!NOTE]
-> Azure Cloud Shell kullanıyorsanız, otomatik olarak oturumunuz açık demektir ve önceki komutu çalıştırmanız gerekmez.
 
 Azure CLı için Azure IoT uzantısını kullanmak için şunlar gerekir:
 
@@ -109,6 +106,65 @@ Belirli bir cihazdan ve **$Default** Olay Hub 'ı tüketici grubuna giden arabir
 az iot hub monitor-events -n {iothub_name} -d {device_id} -i {interface_id}
 ```
 
+### <a name="manage-models-in-the-model-repository"></a>Model deposundaki modelleri yönetme
+
+Depodaki modelleri yönetmek için Azure CLı model deposu komutlarını kullanabilirsiniz.
+
+#### <a name="create-model-repository"></a>Model deposu oluştur
+
+Kiracınızdaki ilk Kullanıcı kullanıyorsanız kiracınız için yeni bir IoT Tak ve Kullan şirket deposu oluşturun:
+
+```azurecli
+az iot pnp repo create
+```
+
+#### <a name="manage-model-repository-tenant-roles"></a>Model deposu kiracı rollerini yönetme
+
+Belirli bir kaynağa bir kullanıcı veya hizmet sorumlusu için bir rol ataması oluşturun.
+
+Örneğin, user@consoso.com kiracı Için **Modelscreator** rolünü verin:
+
+```azurecli
+az iot pnp role-assignment create --resource-id {tenant_id} --resource-type Tenant --subject-id {user@contoso.com} --subject-type User --role ModelsCreator
+```
+
+Ya da user@consoso.com belirli bir model Için **Modeladministrator** rolünü verin:
+
+```azurecli
+az iot pnp role-assignment create --resource-id {model_id} --resource-type Model --subject-id {user@contoso.com} --subject-type User --role ModelAdministrator
+```
+
+#### <a name="create-a-model"></a>Bir model oluşturma
+
+Şirket deposunda yeni bir model oluşturun:
+
+```azurecli
+az iot pnp model create --model {model_json or path_to_file}
+```
+
+#### <a name="search-a-model"></a>Model Arama
+
+Belirli bir anahtar sözcükle eşleşen modelleri listeleyin:
+
+```azurecli
+az iot pnp model list -q {search_keyword}
+```
+
+#### <a name="publish-a-model"></a>Modeli yayımlama
+
+Şirket deposunda bulunan bir cihaz modelini ortak depoya yayımlayın.
+
+Örneğin, şu KIMLIĞE sahip modeli ortak yapın `dtmi:com:example:ClimateSensor;1` :
+
+```azurecli
+az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
+```
+
+Bir modeli yayımlamak için aşağıdaki gereksinimlerin karşılanması gerekir:
+
+- Şirket veya kuruluş kiracısı bir Microsoft Iş ortağı olmalıdır. 
+- Kullanıcı veya hizmet sorumlusu, depo kiracının **Yayımcı** rolünün bir üyesi olmalıdır.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır makalesinde, Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure CLı için Azure IoT uzantısını yüklemeyi ve kullanmayı öğrendiniz. Önerilen bir sonraki adım, [cihazlarınızla Azure IoT Explorer 'ın](./howto-use-iot-explorer.md)nasıl kullanılacağını öğrenirsiniz.
+Bu nasıl yapılır makalesinde IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure CLı için Azure IoT uzantısını yüklemeyi ve kullanmayı öğrendiniz. Önerilen bir sonraki adım, [cihazlarınızla Azure IoT Explorer 'ın](./howto-use-iot-explorer.md)nasıl kullanılacağını öğrenirsiniz.

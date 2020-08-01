@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337322"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475473"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi için terimler sözlüğü
 
@@ -95,13 +95,9 @@ IoT Hub sorgu dili birden çok amaçla kullanılır. Örneğin, IoT Hub 'ınıza
 
 IoT Tak ve Kullan cihazı genellikle veri toplayan veya diğer cihazları denetleyen ve bir [cihaz modeli](#device-model)uygulayan yazılım veya bellenim çalıştıran bir küçük ölçekli, tek başına bilgi işlem aygıtıdır.  Örneğin, bir IoT Tak ve Kullan cihazı, bir çevre izleme cihazı veya bir akıllı tarım sulama sistemi denetleyicisi olabilir. Komut, denetim ve IoT Tak ve Kullan cihazlarındaki verileri almak için bulutta barındırılan bir IoT çözümü yazabilirsiniz.
 
-## <a name="iot-plug-and-play-conventions"></a>IoT Tak ve Kullan kuralları
+## <a name="iot-plug-and-play-conventions"></a>IoT Tak Çalıştır kuralları
 
 IoT Tak ve Kullan [cihazların](#iot-plug-and-play-device) bir çözüm ile veri alışverişi yaparken bir dizi [kural](concepts-convention.md) izlemesi beklenir.
-
-## <a name="model-discovery"></a>Model keşfi
-
-[Iot Tak ve Kullan cihazı](#iot-plug-and-play-device) bir IoT çözümüne bağlanırsa, çözüm cihaz [modelini](#device-model)bularak cihazın yeteneklerini bulabilir. Bu çözüm, bir [model deposunda](#model-repository) veya başka bir konumda cihaz modeli bulabilir.
 
 ## <a name="model-id"></a>Model Kimliği
 

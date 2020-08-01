@@ -6,171 +6,277 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/06/2020
-ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114389"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475347"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory veri akışlarını eşleme, veri dönüştürmelerinin ölçeklendirilmesi, dağıtılması ve organize olması için kod içermeyen bir arabirim sağlar. Veri akışlarını eşleme konusunda bilgi sahibi değilseniz, [eşleme veri akışına genel bakış](concepts-data-flow-overview.md)bölümüne bakın.
+Azure Data Factory veri akışlarını eşleme, veri dönüştürmelerini bir ölçekte tasarlamak ve çalıştırmak için kod içermeyen bir arabirim sağlar. Veri akışlarını eşleme konusunda bilgi sahibi değilseniz, [eşleme veri akışına genel bakış](concepts-data-flow-overview.md)bölümüne bakın. Bu makalede, performans kıyaslamalarınızı karşılamak üzere veri akışlarınızı ayarlama ve iyileştirme için çeşitli yollar vurgulanmaktadır.
 
-ADF UX 'den veri akışları tasarlarken ve test ederken, bir kümenin ısınma süresini beklemeden veri akışlarınızı gerçek zamanlı olarak yürütmek için hata ayıklama modunda geçiş yaptığınızdan emin olun. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
+Veri akışları ile verileri dönüştüren bazı örnek zamanlamaların gösterildiği görmek için aşağıdaki videoyu izleyin.
 
-Bu videoda veri akışları ile verileri dönüştüren bazı örnek zamanlamalar gösterilmektedir:
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rNxM]
+
+## <a name="testing-data-flow-logic"></a>Veri akışı mantığını test etme
+
+ADF UX 'den veri akışları tasarlarken ve test ederken, hata ayıklama modu canlı bir Spark kümesine karşı etkileşimli olarak test etmenize olanak tanır. Bu sayede, verilerin önizlemesine ve veri akışlarınızı bir kümenin ısınma süresi olmadan yürütmeniz gerekir. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
 
 ## <a name="monitoring-data-flow-performance"></a>Veri akışı performansını izleme
 
-Eşleme veri akışları tasarlarken, yapılandırma panelinde veri önizleme sekmesine tıklayarak her bir dönüşüme birim test edebilirsiniz. Mantığınızı doğruladıktan sonra, bir işlem hattındaki etkinlik olarak veri akışınızı uçtan uca test edin. Bir veri akışı yürütme etkinliği ekleyin ve veri akışınızın performansını test etmek için Hata Ayıkla düğmesini kullanın. Veri akışınızın yürütme planını ve performans profilini açmak için, işlem hattınızdaki çıkış sekmesinde ' Eylemler ' altında bulunan göz gözlük simgesine tıklayın.
+Hata ayıklama modunu kullanarak dönüştürme mantığınızı doğruladıktan sonra, veri akışınızı bir işlem hattındaki etkinlik olarak uçtan uca çalıştırın. Veri akışları, [veri akışını Yürüt etkinliğinin](control-flow-execute-data-flow-activity.md)kullanıldığı bir işlem hattında çalışır. Veri akışı etkinliği, dönüştürme mantığının ayrıntılı bir yürütme planını ve performans profilini görüntüleyen diğer Azure Data Factory etkinlikleriyle karşılaştırıldığında benzersiz bir izleme deneyimine sahiptir. Bir veri akışının ayrıntılı izleme bilgilerini görüntülemek için, bir işlem hattının çıkış çıkışını Çalıştır simgesine tıklayın. Daha fazla bilgi için bkz. [eşleme veri akışlarını izleme](concepts-data-flow-monitoring.md).
 
-![Veri akışı Izleyicisi](media/data-flow/mon002.png "Veri akışı Izleyicisi 2")
+![Veri akışı Izleyicisi](media/data-flow/monitoring-details.png "Veri akışı Izleyicisi 2")
 
- Bu bilgileri, veri akışınızın farklı boyutlardaki veri kaynaklarına karşı performansını tahmin etmek için kullanabilirsiniz. Daha fazla bilgi için bkz. [eşleme veri akışlarını izleme](concepts-data-flow-monitoring.md).
+Veri akışı performansını izlerken, göz atmak için dört olası performans sorunu vardır:
 
-![Veri akışı Izleme](media/data-flow/mon003.png "Veri akışı Izleyicisi 3")
+* Küme başlangıç zamanı
+* Bir kaynaktan okuma
+* Dönüştürme saati
+* Bir havuza yazma 
 
- İşlem hattı hata ayıklama çalıştırmaları için, bir ısınma kümesi için genel performans hesaplamalarınızda bir dakikalık küme ayarlama zamanı gereklidir. Varsayılan Azure Integration Runtime başladıysanız, başlatma zamanı yaklaşık 4 dakika sürebilir.
+![Veri akışı Izleme](media/data-flow/monitoring-performance.png "Veri akışı Izleyicisi 3")
 
-## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime işlem boyutunu artırma
+Küme başlangıç zamanı, bir Apache Spark kümesi çalıştırmak için gereken süredir. Bu değer, izleme ekranının sağ üst köşesinde bulunur. Veri akışları, her işin yalıtılmış bir küme kullandığı tam zamanında bir modelde çalışır. Bu başlangıç zamanı genellikle 3-5 dakika sürer. Sıralı işler için, bu değer bir yaşam süresi değeri etkinleştirilerek azaltılabilir. Daha fazla bilgi için bkz. [Azure Integration Runtime iyileştirme](#ir).
 
-Daha fazla çekirdeğe sahip bir Integration Runtime Spark işlem ortamlarındaki düğümlerin sayısını artırır ve verilerinizi okumak, yazmak ve dönüştürmek için daha fazla işlem gücü sağlar. ADF veri akışları işlem altyapısı için Spark 'ı kullanır. Spark ortamı, bellek için iyileştirilmiş kaynaklarda çok iyi sonuç verir.
+Veri akışları, mümkün olduğunca hızlı bir şekilde gerçekleştirmek için iş mantığınızı yeniden sipariş eden ve çalıştıran bir Spark İyileştiriciyi kullanır. Veri akışınızın yazdığı her bir havuz için, izleme çıktısı her bir dönüştürme aşamasının süresini ve verilerin havuza yazılması için geçen süreyi listeler. En büyük olan süre büyük olasılıkla veri akışınız için performans sorununa neden olur. En büyük değeri alan dönüştürme aşaması bir kaynak içeriyorsa, okuma zamandan daha iyi bir şekilde bakmak isteyebilirsiniz. Bir dönüşüm uzun sürüyorsa, tümleştirme çalışma zamanının boyutunu yeniden bölümlendirmeniz veya artırmanız gerekebilir. Havuz işleme süresi büyükse, veritabanınızı ölçeklendirmeniz veya tek bir dosyaya çıktıları doğrulamanız gerekebilir.
 
-Üretim iş yükleri için en **Iyi duruma getirilmiş belleği** kullanmanızı öneririz. Bellekte daha fazla veri depolayabilecek ve bellek dışı hataları en aza indirmenize olanak sağlayacaksınız. Bellek için iyileştirilmiş, Işlem Iyileştirilenden çekirdek başına daha yüksek bir fiyat noktasına sahiptir, ancak büyük olasılıkla daha hızlı dönüştürme hızına ve daha başarılı işlem hattına neden olur. Verilerinizi çalıştırırken bellek hatalarından karşılaşırsanız bellek için iyileştirilmiş bir Azure IR yapılandırmasına geçin.
+Veri akışınız için performans sorunlarını tanımladıktan sonra, performansı artırmak için aşağıdaki iyileştirmeler stratejilerini kullanın.
 
-**İşlem Için iyileştirilmiş** , çok sayıda veri satırı için hata ayıklama ve veri önizlemesi için yeterli olacaktır. İşlem için Iyileştirilmiş, üretim iş yükleriyle büyük olasılıkla gerçekleştirmeyecektir.
+## <a name="optimize-tab"></a>İyileştirme sekmesi
 
-![Yeni IR](media/data-flow/ir-new.png "Yeni IR")
+**Optimizasyon** sekmesi, Spark kümesinin bölümleme şemasını yapılandırmak için ayarlar içerir. Bu sekme, veri akışının her dönüşümünde bulunur ve dönüştürme tamamlandıktan **sonra** verileri yeniden bölümlemek isteyip istemediğinizi belirtir. Bölümlemenin ayarlanması, verilerin işlem düğümleri genelinde dağıtılması üzerinde denetim sağlar ve genel veri akışı performansından hem olumlu hem de olumsuz etkileri olabilir.
+
+![İyileştirme](media/data-flow/optimize.png "İyileştirme")
+
+Varsayılan olarak, *geçerli bölümleme öğesini kullanın* ve bu, dönüşümün geçerli çıkış bölümlemesini Azure Data Factory. Yeniden bölümleme verileri zaman alıyorsa, Çoğu senaryoda *geçerli bölümleme kullanılması* önerilir. Verilerinizi yeniden bölümlemek isteyebileceğiniz senaryolar, verilerinizi önemli ölçüde eğmeden veya bir SQL DB 'de kaynak bölümlendirme kullanırken yer alan toplamalar ve birleşimlerden sonra dahil olabilir.
+
+Herhangi bir dönüşümdeki Bölümlendirmeyi değiştirmek için, **optimizasyon** sekmesini seçin ve **bölümlendirme** radyo düğmesini seçin. Bölümlemeye yönelik bir dizi seçenek sunulur. Bölümlendirme en iyi yöntemi, veri birimleriniz, aday anahtarlarınız, null değerler ve kardinalite temelinde farklılık gösterir. 
+
+> [!IMPORTANT]
+> Tek bölüm dağıtılan tüm verileri tek bir bölümde birleştirir. Bu, tüm aşağı akış dönüşümünü ve yazmaları önemli ölçüde etkileyerek de çok yavaş bir işlemdir. Azure Data Factory, bunu yapmak için açık bir iş nedeni olmadıkça, bu seçeneğin kullanılmasına ilişkin önemli ölçüde tavsiye edilir.
+
+Aşağıdaki bölümlendirme seçenekleri her dönüşümde kullanılabilir:
+
+### <a name="round-robin"></a>Hepsini bir kez deneme 
+
+Hepsini bir kez deneme, verileri bölümler arasında eşit olarak dağıtır. Katı ve akıllı bölümlendirme stratejisi uygulamak için iyi bir ana aday olmadığında hepsini bir kez deneme kullanın. Fiziksel bölüm sayısını ayarlayabilirsiniz.
+
+### <a name="hash"></a>Karma
+
+Azure Data Factory, benzer değerlere sahip satırlar aynı bölüme düşecek şekilde Tekdüzen bölümler oluşturmak için bir sütun karması üretir. Karma seçeneğini kullandığınızda olası bölüm eğsınaması için test edin. Fiziksel bölüm sayısını ayarlayabilirsiniz.
+
+### <a name="dynamic-range"></a>Dinamik Aralık
+
+Dinamik Aralık, sağladığınız sütunlara veya ifadelere göre Spark dinamik aralıklarını kullanır. Fiziksel bölüm sayısını ayarlayabilirsiniz. 
+
+### <a name="fixed-range"></a>Sabit Aralık
+
+Bölümlenmiş veri sütunlarınızın içindeki değerler için sabit bir Aralık sağlayan bir ifade oluşturun. Bölüm eğriliğini önlemek için, bu seçeneği kullanmadan önce verilerinizin iyi şekilde anlaşılmasını sağlayabilirsiniz. İfade için girdiğiniz değerler, bölüm işlevinin bir parçası olarak kullanılır. Fiziksel bölüm sayısını ayarlayabilirsiniz.
+
+### <a name="key"></a>Anahtar
+
+Verilerinizin önem düzeyini iyi anlamak istiyorsanız anahtar bölümleme iyi bir strateji olabilir. Anahtar bölümleme, sütuninizdeki her benzersiz değer için bölümler oluşturur. Bu sayı, verilerdeki benzersiz değerleri temel aldığı için bölüm sayısını ayarlayamazsınız.
+
+> [!TIP]
+> Veri reshuffles bölümlendirme şemasını el ile ayarlama ve Spark iyileştiricinin avantajlarını fark edebilir. En iyi uygulama, gerekmedikçe Bölümlendirmeyi el ile ayarlamanıza gerek kalmaz.
+
+## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a>Azure Integration Runtime iyileştirme
+
+Veri akışları, çalışma zamanında Esnetme yapan Spark kümelerinde çalışır. Kullanılan kümenin yapılandırması, etkinliğin tümleştirme çalışma zamanı 'nda (IR) tanımlanmıştır. Tümleştirme çalışma zamanını tanımlarken yapmanız gereken üç performans konusu vardır: küme türü, küme boyutu ve yaşam süresi.
 
 Integration Runtime oluşturma hakkında daha fazla bilgi için bkz. [Azure Data Factory Integration Runtime](concepts-integration-runtime.md).
 
-### <a name="increase-the-size-of-your-debug-cluster"></a>Hata ayıklama kümenizin boyutunu artırın
+### <a name="cluster-type"></a>Küme türü
 
-Varsayılan olarak, hata ayıklamayı açmak her bir veri fabrikası için otomatik olarak oluşturulan varsayılan Azure tümleştirme çalışma zamanını kullanır. Bu varsayılan Azure IR, genel Işlem özellikleri kullanılarak, bir sürücü düğümü için dört ve bir çalışan düğümü için dört adet olmak üzere sekiz çekirdek için ayarlanır. Daha büyük verilerle test ettiğinizde, daha büyük yapılandırmalara sahip bir Azure IR oluşturarak hata ayıklama kümenizin boyutunu artırabilir ve hata ayıklama sırasında bu yeni Azure IR seçebilirsiniz. Bu, ADF 'yi veri önizleme ve veri akışları ile ardışık düzen hata ayıklaması için bu Azure IR kullanmasını ister.
+Spark kümesinin türü için kullanılabilecek üç seçenek vardır: genel amaçlı, bellek için iyileştirilmiş ve işlem için iyileştirilmiş.
 
-### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>TTL ile küme hesaplama başlangıç süresini azaltma
+**Genel amaçlı** kümeler varsayılan seçimdir ve çoğu veri akışı iş yükü için ideal olacaktır. Bu, performans ve maliyet açısından en iyi dengeyi elde etmek için kullanılır.
 
-Azure IR, veri akışı özellikleri altında, fabrikanızın bir küme işlem kaynakları havuzunu kullanmanıza olanak sağlayacak bir özellik vardır. Bu havuz sayesinde, yürütme için veri akışı etkinliklerini sıralı olarak gönderebilirsiniz. Havuz kurulduktan sonra, sonraki her iş, isteğe bağlı Spark kümesinin işinizi yürütmesi için 1-2 dakika sürer. Kaynak havuzunun ilk kurulumu 4 dakika sürer. Kaynak havuzunu yaşam süresi (TTL) ayarında sürdürmek istediğiniz süreyi belirtin.
+Veri akışınız birçok birleşim ve arama içeriyorsa, **bellek için iyileştirilmiş** bir küme kullanmak isteyebilirsiniz. Bellek için iyileştirilmiş kümeler bellekte daha fazla veri saklayabilir ve alabileceğiniz bellek dışı hataları en aza indirir. En iyi duruma getirilmiş bellek, çekirdek başına en yüksek fiyat noktasıdır, ancak aynı zamanda daha başarılı işlem hatları elde edilmesine yol açabilir. Veri akışlarını yürütürken yetersiz bellek hatalarıyla karşılaşırsanız, bellek için iyileştirilmiş bir Azure IR yapılandırmasına geçin. 
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Azure SQL veritabanı ve Azure SQL veri ambarı SYNAPSE için iyileştirme
+**İşlem için iyileştirilmiş** , ETL iş akışları için ideal değildir ve çoğu üretim iş yükleri için Azure Data Factory ekibi tarafından önerilmez. Verilerin filtrelenmesi veya türetilmiş sütunlar eklenmesi gibi daha basit, bellek dışı yoğun olmayan veri dönüştürmeleri için, işlem için iyileştirilmiş kümeler çekirdek başına bir beleyici fiyatı üzerinden kullanılabilir.
 
-### <a name="partitioning-on-source"></a>Kaynakta bölümlendirme
+### <a name="cluster-size"></a>Küme boyutu
 
-1. **Optimizasyon** sekmesine gidin ve **bölümleme ayarla** ' yı seçin.
-1. **Kaynak**seçin.
-1. **Bölüm sayısı**altında, Azure SQL DB 'nize yönelik bağlantı sayısı üst sınırını ayarlayın. Veritabanınıza paralel bağlantı kazanmak için daha yüksek bir ayar deneyebilirsiniz. Ancak bazı durumlar, sınırlı sayıda bağlantıyla daha hızlı performans elde edebilir.
-1. Belirli bir tablo sütunuyla veya bir sorgu ile bölümleyip bölümlendirmeyeceğinizi seçin.
-1. **Sütun**' ı seçtiyseniz, Bölüm sütununu seçin.
-1. **Sorgu**' yı seçtiyseniz, veritabanı tablonuzun bölümleme düzeniyle eşleşen bir sorgu girin. Bu sorgu, kaynak veritabanı altyapısının Bölüm eleme özelliğinden yararlanmasını sağlar. Kaynak veritabanı tablolarınızın bölümlenmiş olması gerekmez. Kaynağınız zaten bölümlenmemişse ADF, kaynak dönüşümünde seçtiğiniz anahtara göre Spark dönüştürme ortamında veri bölümleme kullanır.
+Veri akışları, işlemleri paralel olarak gerçekleştirmek için bir Spark kümesindeki farklı düğümlere veri işlemeyi dağıtır. Daha fazla çekirdeğe sahip bir Spark kümesi, işlem ortamındaki düğümlerin sayısını artırır. Daha fazla düğüm, veri akışının işlem gücünü artırır. Küme boyutunun artırılması genellikle işlem süresini azaltmanın kolay bir yoludur.
 
-![Kaynak bölüm](media/data-flow/sourcepart3.png "Kaynak bölüm")
+Varsayılan küme boyutu, dört sürücü düğümü ve dört çalışan düğümtür.  Daha fazla veri işlemekle, daha büyük kümeler önerilir. Olası boyutlandırma seçenekleri aşağıda verilmiştir:
+
+| Çalışan çekirdekleri | Sürücü çekirdekleri | Toplam çekirdek | Notlar |
+| ------------ | ------------ | ----------- | ----- |
+| 4 | 4 | 8 | İşlem için iyileştirilmiş işlem için kullanılamaz |
+| 8 | 8 | 16 | |
+| 16 | 16 | 32 | |
+| 32 | 16 | 48 | |
+| 64 | 16 | 80 | |
+| 128 | 16 | 144 | |
+| 256 | 16 | 272 | |
+
+Veri akışları, sanal çekirdek-saat ' de fiyatlandırılır ve bu, küme boyutunun ve yürütme-zaman çarpanının buna göre belirlenir. Ölçeği azaltdıkça, dakika başına küme maliyetiniz artar, ancak genel bir süre kısalır.
+
+> [!TIP]
+> Bir kümenin boyutunun bir veri akışının performansını ne kadar etkilediğine ilişkin bir tavan vardır. Verilerinizin boyutuna bağlı olarak, bir kümenin boyutunu artırmanın performansı iyileştirmeye durulacağı bir nokta vardır. Örneğin, veri bölümlerinden daha fazla düğümünüz varsa, ek düğüm eklemek yardımcı olmaz. En iyi uygulama, küçük bir başlangıç yapmak ve performans ihtiyaçlarınızı karşılamak için ölçeği ölçeklendirmek olacaktır. 
+
+### <a name="time-to-live"></a>Yaşam süresi
+
+Varsayılan olarak, her veri akışı etkinliği IR yapılandırmasını temel alan yeni bir küme alır. Küme başlangıç saati birkaç dakika sürer ve veri işleme tamamlanana kadar başlayamaz. İşlem hatlarınız birden çok **sıralı** veri akışı içeriyorsa, yaşam SÜRESI (TTL) değerini etkinleştirebilirsiniz. Canlı değer için bir süre belirtmek, yürütme tamamlandıktan sonra belirli bir süre için kümeyi canlı tutar. TTL süresi boyunca yeni bir iş IR kullanmaya başlarsa, var olan kümeyi yeniden kullanacaktır ve başlangıç zamanı dakikalar içinde değil saniye içinde olur. İkinci iş tamamlandıktan sonra, küme TTL saati için de canlı kalır.
+
+Tek seferde tek bir küme üzerinde yalnızca bir iş çalışabilir. Kullanılabilir bir küme varsa, ancak iki veri akışı başladıysanız, yalnızca bir tane canlı kümeyi kullanacaktır. İkinci iş kendi yalıtılmış kümesini kullanacaktır.
+
+Veri akışlarınızın çoğunun paralel olarak yürütülmesi, TTL 'yi etkinleştirmeniz önerilmez. 
 
 > [!NOTE]
-> Kaynağınız için bölüm sayısını seçmenize yardımcı olacak iyi bir kılavuz, Azure Integration Runtime için ayarladığınız çekirdek sayısına bağlıdır ve bu sayıyı beş ile çarpın. Bu nedenle, örneğin, ADLS klasörlerinizdeki bir dizi dosyayı dönüştürüyorsanız ve 32 çekirdekli Azure IR kullanacaksanız, hedeflediğiniz bölüm sayısı 32 x 5 = 160 bölümlerdir.
+> Tümleştirme çalışma zamanı otomatik çözümle kullanılırken yaşam süresi kullanılamaz
 
-### <a name="source-batch-size-input-and-isolation-level"></a>Kaynak toplu iş boyutu, giriş ve yalıtım düzeyi
+## <a name="optimizing-sources"></a>Kaynakları iyileştirme
 
-Kaynak dönüşümünde **kaynak seçenekleri** altında aşağıdaki ayarlar performansı etkileyebilir:
+Azure SQL veritabanı hariç her kaynak için, seçili değer olarak **geçerli bölümleme kullanımını** tutmanız önerilir. Diğer tüm kaynak sistemlerden okurken veri akışları verilerin boyutuna göre verileri eşit şekilde otomatik olarak bölümler. Her 128 MB veri için yeni bir bölüm oluşturulur. Veri boyutunuz arttıkça bölüm sayısı artar.
 
-* Toplu iş boyutu, ADF 'yi satır satır yerine Spark belleğindeki kümeler halinde depolamasını ister. Toplu iş boyutu isteğe bağlı bir ayardır ve doğru boyutlandıralınmazlarsa, işlem düğümlerinde kaynakları çalıştırabilirsiniz. Bu özelliğin ayarlanması, Spark önbelleğe alma toplu varsayılanlarını kullanır.
-* Bir sorgu ayarlandığında, işleme için veri akışına geçmeden önce kaynakta satırları filtrelemenize izin verebilir. Bu, ilk veri alımını daha hızlı hale getirir. Bir sorgu kullanıyorsanız, Azure SQL DB 'niz için READ UNCOMMıTTED gibi isteğe bağlı sorgu ipuçları ekleyebilirsiniz.
-* Read UNCOMMITTED, kaynak dönüşümünde daha hızlı sorgu sonuçları sağlar
+Özel bölümlendirme, verilerdeki Spark okumalarının *ardından* oluşur ve veri akışı performansınızı olumsuz yönde etkiler. Veriler okuma sırasında eşit olarak bölümlenmiş olduğu için bu önerilmez. 
 
-![Kaynak](media/data-flow/source4.png "Kaynak")
+> [!NOTE]
+> Okuma hızları, kaynak sisteminizin verimi ile sınırlı olabilir.
 
-### <a name="sink-batch-size"></a>Havuz toplu iş boyutu
+### <a name="azure-sql-database-sources"></a>Azure SQL veritabanı kaynakları
 
-Veri akışlarınızın satır içi işlenmesini önlemek için, Azure SQL VERITABANı ve Azure SQL DW havuzları için ayarlar sekmesinde **toplu iş boyutunu** ayarlayın. Toplu iş boyutu ayarlandıysa, ADF, belirtilen boyuta göre veritabanı yazmaları toplu işlemlere işler. Bu özelliğin ayarlanması, Spark önbelleğe alma toplu varsayılanlarını kullanır.
+Azure SQL veritabanı ' kaynak ' bölümlendirme adlı benzersiz bir bölümlendirme seçeneğine sahiptir. Kaynak bölümlemenin etkinleştirilmesi, kaynak sistemde paralel bağlantıları etkinleştirerek Azure SQL DB 'den okuma saatlerinizi iyileştirebilir. Bölüm sayısını ve verilerinizin nasıl bölümlenmesi gerektiğini belirtin. Yüksek kardinalite içeren bir bölüm sütunu kullanın. Ayrıca, kaynak tablonuzun bölümleme düzeniyle eşleşen bir sorgu da girebilirsiniz.
 
-![Havuz](media/data-flow/sink4.png "Havuz")
+> [!TIP]
+> Kaynak bölümlendirme için, SQL Server g/ç işlemi performans sorununa yöneliktir. Çok fazla bölüm eklemek, Kaynak veritabanınızı gri bir şekilde gösterebilir. Bu seçenek kullanıldığında genellikle dört veya beş bölüm idealdir.
 
-### <a name="partitioning-on-sink"></a>Havuzda bölümlendirme
+![Kaynak bölümlendirme](media/data-flow/sourcepart3.png "Kaynak bölümlendirme")
 
-Verileriniz hedef Tablolarınızda bölümlenmemiş olsanız bile, verilerinizin havuz dönüşümünde bölümlenmesi önerilir. Bölümlenmiş veriler genellikle tüm bağlantıların tek bir düğüm/bölüm kullanmasına zorlanarak çok daha hızlı yüklenmesine neden olur. Havuzunuzda En Iyi duruma getirin sekmesine gidin ve havuzunuzda yazılacak ideal bölüm sayısını seçmek için bir *kez deneme* bölümlendirme seçeneğini belirleyin.
+#### <a name="isolation-level"></a>Yalıtım düzeyi
 
-### <a name="disable-indexes-on-write"></a>Yazma sırasında dizinleri devre dışı bırak
+Azure SQL kaynak sistemi üzerinde okunan yalıtım düzeyinin performansı üzerinde etkisi vardır. ' READ UNCOMMITTED ' seçeneğinin belirlenmesi en hızlı performansı sağlar ve tüm veritabanı kilitlerini önler. SQL yalıtım düzeyleri hakkında daha fazla bilgi için lütfen bkz. [yalıtım düzeylerini anlama](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
 
-İşlem hattınızda, Havuzınızdan yazılmış hedef tablolarınızdaki dizinleri devre dışı bırakan veri akışı etkinlikinizden önce bir [saklı yordam etkinliği](transform-data-using-stored-procedure.md) ekleyin. Veri akışı etkinliğinizi tamamladıktan sonra, bu dizinleri sağlayan başka bir saklı yordam etkinliği ekleyin. Ya da bir veritabanı havuzunda ön işleme ve işlem sonrası betikleri kullanın.
+#### <a name="read-using-query"></a>Sorguyu kullanarak oku
 
-### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Azure SQL DB ve DW 'nizin boyutunu artırın
+Azure SQL veritabanı 'ndan bir tablo veya SQL sorgusu kullanarak okuma yapabilirsiniz. Bir SQL sorgusu yürütüyorsunuz, dönüştürmenin başlaması için önce sorgunun tamamlanmalıdır. SQL sorguları, daha hızlı yürütülebileceği işlemleri iletmek ve SELECT, WHERE ve JOIN deyimleri gibi SQL Server okunan veri miktarını azaltmak için faydalı olabilir. İşlemleri geri alırken, veriler veri akışına gelmeden önce dönüşümlerinin kökenini ve performansını izleme imkanını kaybedersiniz.
+
+### <a name="azure-synapse-analytics-sources"></a>Azure SYNAPSE Analytics kaynakları
+
+Azure SYNAPSE Analytics kullanılırken, kaynak seçeneklerinde **hazırlama hazırlama** adlı bir ayar bulunur. Bu, ADF 'nin [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)kullanarak SYNAPSE okumasına izin verir ve bu da okuma performansını önemli ölçüde geliştirir. PolyBase 'i etkinleştirmek için veri akışı etkinlik ayarlarında bir Azure Blob depolama alanı veya Azure Data Lake Storage Gen2 hazırlama konumu belirtmeniz gerekir.
+
+![Hazırlamayı etkinleştirme](media/data-flow/enable-staging.png "Hazırlamayı etkinleştirme")
+
+### <a name="file-based-sources"></a>Dosya tabanlı kaynaklar
+
+Veri akışları çeşitli dosya türlerini destekleirken, Azure Data Factory en iyi okuma ve yazma süreleri için Spark-Native Parquet biçiminin kullanılmasını önerir.
+
+Aynı veri akışını bir dosya kümesinde çalıştırıyorsanız, joker karakterleri kullanarak veya bir dosya listesinden okurken bir klasörden okumanızı öneririz. Tek bir veri akışı etkinliği çalıştırması, toplu işteki tüm dosyalarınızı işleyebilir. Bu ayarları ayarlama hakkında daha fazla bilgi, [Azure Blob depolama](connector-azure-blob-storage.md#source-transformation)gibi bağlayıcı belgelerinde bulunabilir.
+
+Mümkünse, her bir bir dosya kümesi üzerinde veri akışı çalıştırmak için her etkinlik Için kullanmaktan kaçının. Bu, her bir için öğesinin her yinelemesinin kendi Spark kümesini (genellikle gerekli değildir ve pahalı olabilir) çalışmasına neden olur. 
+
+## <a name="optimizing-sinks"></a>Havuzları iyileştirme
+
+Veri akışları havuza yazarken, tüm özel bölümlendirme yazma işleminden hemen önce gerçekleşir. Kaynak gibi, çoğu durumda, seçili bölüm seçeneği olarak **geçerli bölümleme kullanımını** tutmanız önerilir. Bölümlenmiş veriler, bölümlenmemiş verilerden önemli ölçüde daha hızlı yazılır, hatta hedefi bölümlenmemiş olur. Aşağıda, çeşitli havuz türleri için tek tek noktalar verilmiştir. 
+
+### <a name="azure-sql-database-sinks"></a>Azure SQL veritabanı havuzları
+
+Azure SQL veritabanı ile, varsayılan bölümlendirme çoğu durumda çalışmalıdır. Havuzlarınızın SQL veritabanınızın işlemesi için çok fazla bölümü olabileceğinden emin olma olasılığı vardır. Bu sürümünde çalıştırıyorsanız, SQL veritabanı havuzunuzu tarafından outputpartitions sayısını azaltın.
+
+#### <a name="disabling-indexes-using-a-sql-script"></a>SQL betiği kullanarak dizinleri devre dışı bırakma
+
+SQL veritabanındaki bir yük için dizinlerin devre dışı bırakılması, tabloya yazma performansını önemli ölçüde iyileştirebilir. SQL havuzunuzu yazmadan önce aşağıdaki komutu çalıştırın.
+
+`ALTER INDEX ALL ON dbo.[Table Name] DISABLE`
+
+Yazma işlemi tamamlandıktan sonra, aşağıdaki komutu kullanarak dizinleri yeniden oluşturun:
+
+`ALTER INDEX ALL ON dbo.[Table Name] REBUILD`
+
+Bunlar her ikisi de Azure SQL VERITABANı veya SYNAPSE havuzu içindeki SQL öncesi ve sonrası komut dosyaları ile eşleme veri akışlarında yerel olarak yapılabilir.
+
+![Dizinleri devre dışı bırak](media/data-flow/disable-indexes-sql.png "Dizinleri devre dışı bırak")
+
+> [!WARNING]
+> Dizinler devre dışı bırakıldığında, veri akışı bir veritabanının denetimini etkili bir şekilde ele alınır ve sorguların Şu anda başarılı olması düşüktür. Sonuç olarak, bu çakışmayı önlemek için gece ortasında birçok ETL işi tetiklenir. Daha fazla bilgi için [dizinleri devre dışı bırakma kısıtlamaları](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) hakkında bilgi edinin
+
+#### <a name="scaling-up-your-database"></a>Veritabanınızı ölçeklendirme
 
 İşlem hattınızı artırmak ve DTU sınırlarına ulaştığınızda Azure azaltmayı en aza indirmek için, kaynağınızı yeniden boyutlandırmayı zamanlayın ve Azure SQL DB ve DW 'yi iş hattınızda çalıştırın. İşlem hattı yürütme tamamlandıktan sonra veritabanlarınızı normal çalışma hızına geri doğru yeniden boyutlandırın.
 
-* Tek bir türetilmiş sütun dönüştürmesi olan SQL DB kaynak tablosu, 887k satırları ve 74 sütunları olan SQL DB tablosu, bellek için iyileştirilmiş 80-Core hata ayıklama Azure IRS kullanarak 3 dakikalık uçtan uca sürer.
+### <a name="azure-synapse-analytics-sinks"></a>Azure SYNAPSE Analytics havuzları
 
-### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Yalnızca Azure SYNAPSE SQL DW] Polybase aracılığıyla verileri toplu olarak yüklemek için hazırlama kullanma
+Azure SYNAPSE Analytics 'e yazarken, **hazırlama etkinleştirmeyi etkinleştir** ' in true olarak ayarlandığından emin olun. Bu, ADF 'yi, verileri toplu olarak etkin bir şekilde yükleyen [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) kullanarak yazmasını sağlar. PolyBase kullanırken verileri hazırlamak için bir Azure Data Lake Storage Gen2 veya Azure Blob depolama hesabına başvurmanız gerekir.
 
-DW 'nize satır satır ekleme yapmaktan kaçınmak için, ADF 'nin [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)kullanabilmesi için havuz ayarlarınızda **hazırlama özelliğini etkinleştirin** ' i işaretleyin. PolyBase, ADF 'nin verileri toplu olarak yüklemesine olanak tanır.
-* Veri akışı etkinliğinizi bir işlem hattından yürüttüğünüzde, toplu yükleme sırasında verilerinizi hazırlamak için bir blob veya ADLS 2. depolama konumu seçmeniz gerekir.
+PolyBase dışında, Azure SYNAPSE Analytics için Azure SQL veritabanı olarak aynı en iyi uygulamalar geçerlidir.
 
-* 74 sütunlu bir Synapse tablosuna ve tek bir türetilmiş sütun dönüşümüne sahip 421Mb dosyasının dosya kaynağı, bellek için iyileştirilmiş 80-Core hata ayıklama Azure IRS kullanarak 4 dakikalık uçtan uca kadar sürer.
+### <a name="file-based-sinks"></a>Dosya tabanlı havuzlar 
 
-## <a name="optimizing-for-files"></a>Dosyalar için iyileştirme
+Veri akışları çeşitli dosya türlerini destekleirken, Azure Data Factory en iyi okuma ve yazma süreleri için Spark-Native Parquet biçiminin kullanılmasını önerir.
 
-Her dönüşümde, Data Factory 'nin en Iyileştirme sekmesinde kullanmasını istediğiniz bölümlendirme şemasını ayarlayabilirsiniz. İlk olarak dosya tabanlı havuzları test etmek, varsayılan bölümlendirme ve iyileştirmeleri korumak iyi bir uygulamadır. Bir dosya hedefinin havuzunda "geçerli bölümlendirme" olarak bölümlenmesini sağlamak Spark 'ın iş yükleriniz için uygun bir varsayılan bölümlendirme ayarlamaya izin verir. Varsayılan bölümlendirme, bölüm başına 128Mb kullanır.
+Veriler eşit şekilde dağıtılırsa, **geçerli bölümleme kullan** seçeneği, dosya yazmak için en hızlı bölümleme seçeneğidir.
 
-* Daha küçük dosyalar için, daha az bölüm seçmeyi fark edebilirsiniz.
-* Kaynak verileriniz hakkında yeterli bilgiye sahip değilseniz, *hepsini bir kez deneme* bölümlendirme ve bölüm sayısını ayarlama ' yı seçin.
-* Verilerinizde iyi bir karma anahtar olabilecek sütunlar varsa *karma bölümlendirme*' yi seçin.
+#### <a name="file-name-options"></a>Dosya adı seçenekleri
 
-* 74 sütunlu ve tek bir türetilmiş sütun dönüşümünde, 421Mb 'Lık bir dosyanın dosya havuzuna sahip dosya kaynağı, bellek için iyileştirilmiş 80-Core hata ayıklama Azure IRS kullanılarak yaklaşık 2 dakikalık uçtan uca sürer.
+Dosya yazarken, her birinin performans etkisi olan bir adlandırma seçenekleri seçeneğiniz vardır.
 
-Veri önizleme ve ardışık düzen Hata ayıklamasında hata ayıklarken, dosya tabanlı kaynak veri kümeleri için sınır ve örnekleme boyutları, okunan satır sayısı için yalnızca döndürülen satır sayısı için geçerlidir. Bu, hata ayıklama yürütmelerinin performansını etkileyebilir ve muhtemelen akışın başarısız olmasına neden olabilir.
-* Hata ayıklama kümeleri, varsayılan olarak tek düğümlü küçük kümelerdir ve hata ayıklama için örnek küçük dosyaları kullanmanızı öneririz. Hata ayıklama ayarları ' na gidin ve geçici bir dosya kullanarak verilerinizin küçük bir alt kümesini işaret edin.
+![Havuz seçenekleri](media/data-flow/file-sink-settings.png "havuz seçenekleri")
 
-    ![Hata ayıklama ayarları](media/data-flow/debugsettings3.png "Hata ayıklama ayarları")
+**Varsayılan** seçeneği belirlemek en hızlı şekilde yazar. Her bölüm Spark varsayılan adına sahip bir dosyaya karşılık gelir. Bu, yalnızca veri klasöründen okumanız durumunda yararlıdır.
 
-### <a name="file-naming-options"></a>Dosya adlandırma seçenekleri
+Adlandırma **deseninin** ayarlanması, her bölüm dosyasını daha kolay bir adla yeniden adlandıracaktır. Bu işlem, yazma işleminden sonra gerçekleşir ve varsayılanı seçmekten biraz daha yavaştır. Bölüm başına, her bölüme el ile ad vermenize olanak tanır.
 
-Blob veya ADLS dosya deposu yazma veri akışları eşleme içinde dönüştürülmüş verileri yazmanın en yaygın yolu. Havuzınızda, adlandırılmış bir dosya değil, bir kapsayıcıya veya klasöre işaret eden bir veri kümesi seçmelisiniz. Eşleme veri akışı, yürütme için Spark kullandığından, çıktılarınız bölümlendirme düzeninize göre birden fazla dosyanın üzerine bölünür.
+Bir sütun, verileri nasıl çıktısını almak istediğinizi içeriyorsa **sütunda veri olarak**seçebilirsiniz. Bu, verileri reshuffles ve sütunlar eşit olarak dağıtılmadığından performansı etkileyebilir.
 
-Ortak bölümlendirme şeması, tüm çıkış bölüm dosyalarını havuzinizdeki tek bir dosyada birleştiren _tek bir dosyaya çıkış_' ı seçmedir. Bu işlem, çıktının tek bir küme düğümünde tek bir bölüme azalttığını gerektirir. Birçok büyük kaynak dosyasını tek bir çıkış dosyasına birleştiriyorsanız, küme düğüm kaynakları ' nı çalıştırabilirsiniz.
+**Tek bir dosyaya çıkış** , tüm verileri tek bir bölümde birleştirir. Bu, özellikle büyük veri kümelerinde uzun yazma sürelerine yol açar. Azure Data Factory takım, bunu yapmak için açık bir iş nedeni olmadıkça bu **seçeneği seçmeyi kesinlikle** önerir.
 
-İşlem düğümü kaynaklarını tüketmenin önüne geçmek için, varsayılan, en iyi duruma getirilmiş şemayı veri akışında tutun ve işlem hattınızda, tüm bölüm dosyalarını çıkış klasöründen yeni tek bir dosyaya birleştiren bir kopyalama etkinliği ekleyin. Bu teknik, dönüştürme eylemini dosya birleştirmeden ayırır ve _çıktıyı tek bir dosyaya_ayarla ile aynı sonuca erişir.
+### <a name="cosmosdb-sinks"></a>CosmosDB havuzları
 
-### <a name="looping-through-file-lists"></a>Dosya listeleri aracılığıyla döngü
+CosmosDB 'ye yazarken, veri akışı yürütmesi sırasında aktarım hızını ve toplu iş boyutunu değiştirme performansı iyileştirebilir. Bu değişiklikler yalnızca veri akışı etkinliği çalıştırıldığında etkili olur ve sonuç olarak orijinal koleksiyon ayarlarına geri döner. 
 
-Kaynak dönüştürme her etkinlik Için kullanarak döngü yerine birden çok dosya üzerinde yineleme yaparken, bir eşleme veri akışı daha iyi yürütülür. Kaynak dönüşümünüze joker karakter veya dosya listesi kullanmanızı öneririz. Veri akışı işlemi, bu döngünün Spark kümesi içinde oluşmasına izin vererek daha hızlı yürütülür. Daha fazla bilgi için bkz. [kaynak dönüşümünde joker karakter](connector-azure-data-lake-storage.md#mapping-data-flow-properties)kullanımı.
+**Toplu iş boyutu:** Verilerinizin kaba satır boyutunu hesaplayın ve satır boyutu * toplu işlem boyutunun 2.000.000 ' den küçük olduğundan emin olun. Varsa, daha iyi aktarım hızı sağlamak için toplu iş boyutunu artırın
 
-Örneğin, 2019 Temmuz 'dan BLOB depolama alanındaki bir klasörde işlemek istediğiniz veri dosyaları listeniz varsa, aşağıdaki kaynak dönüşümünüze kullanabileceğiniz bir joker karakterdir.
+**Aktarım hızı:** Belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir üretilen iş ayarı ayarlayın. Yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
 
-```DateFiles/*_201907*.txt```
+**Yazma aktarım hızı bütçesi:** Dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark bölümünün bulunduğu bir veri akışınız varsa, bir bütçe üretilen işinin ayarlanması bu bölümlerde daha fazla bakiyeye izin verir.
 
-Joker karakter kullanımı ' nı kullanarak, işlem hattınız yalnızca bir veri akışı etkinliği içerir. Bu, içinde bir veri akışı yürütme etkinliği içeren bir ForEach kullanarak tüm eşleşen dosyalarda yineleme yapan blob deposuna karşı bir aramanın daha iyi bir şekilde gerçekleştirilir.
 
-Her biri paralel modda olan işlem hattı, yürütülen her veri akışı etkinliği için dönen iş kümelerine göre birden çok küme oluşturacak. Bu, yüksek sayıda eş zamanlı yürütmeler ile Azure hizmeti azaltmasına neden olabilir. Ancak, ardışık düzende sıralı kümesi olan her biri Için bir Için veri akışı yürütme kullanımı, azaltma ve kaynak tükenmesi yapmaktan kaçınacaktır. Bu, Data Factory her bir veri akışına karşı her dosyanızı yürütmek üzere zorlayacaktır.
+## <a name="optimizing-transformations"></a>Dönüşümleri iyileştirme
 
-Her biri Için bir veri akışı ile kullanıyorsanız, Azure Integration Runtime TTL ayarını kullanmanız önerilir. Bunun nedeni, her bir dosyanın yineleyicisinin içinde tam 4 dakikalık bir küme başlangıç süresi olacaktır.
+### <a name="optimizing-joins-exists-and-lookups"></a>Birleştirmeleri, mevcut ve aramaları iyileştirme
 
-### <a name="optimizing-for-cosmosdb"></a>CosmosDB için iyileştiriliyor
+#### <a name="broadcasting"></a>Yayınlar
 
-CosmosDB havuzları üzerinde üretilen iş ve Batch özelliklerinin ayarlanması yalnızca bu veri akışının işlem hattı veri akışı etkinliğinden yürütülmesi sırasında etkili olur. Özgün koleksiyon ayarları, veri akışı yürütmeden sonra CosmosDB tarafından kabul edilir.
+Birleşimler, aramalar ve mevcut dönüştürmelerde, bir veya iki veri akışı çalışan düğümü belleğine sığacak kadar küçükse, **yayını**etkinleştirerek performansı iyileştirebilirsiniz. Yayın, kümedeki tüm düğümlere küçük veri çerçeveleri gönderdiğinizde olur. Bu, Spark altyapısının büyük akıştaki verileri reshuffling olmadan bir JOIN gerçekleştirmesini sağlar. Varsayılan olarak, Spark altyapısı, birleştirmenin bir tarafını yayınlamayacağınıza otomatik olarak karar verir. Gelen verileriniz hakkında bilginiz varsa ve bir akışın diğerine göre önemli ölçüde daha küçük olacağını biliyorsanız, **sabit** yayınlama seçeneğini belirleyebilirsiniz. Sabit yayınlama, Spark 'ın seçili akışı yayınlamasını zorlar. 
 
-* Toplu iş boyutu: verilerinizin kaba satır boyutunu hesaplayın ve rowSize * toplu iş boyutunun 2.000.000 ' den küçük olduğundan emin olun. Varsa, daha iyi aktarım hızı sağlamak için toplu iş boyutunu artırın
-* Aktarım hızı: belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir verimlilik ayarı ayarlayın. Lütfen yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
-*   Yazma aktarım hızı bütçesi: dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark bölümünün bulunduğu bir veri akışınız varsa, bir bütçe üretilen işi ayarlandığında, bu bölümlerde daha fazla dengelemek olur.
+Verileri bulunan verilerin boyutu Spark düğümü için çok büyükse bellek yetersiz hatası alabilirsiniz. Bellek yetersiz hatalarından kaçınmak için **bellek için iyileştirilmiş** kümeleri kullanın. Veri akışı yürütmeleri sırasında yayın zaman aşımları yaşarsanız, yayın iyileştirmesini kapatabilirsiniz. Ancak bu, veri akışlarının daha yavaş gerçekleştirilmesine neden olur.
 
-## <a name="join-and-lookup-performance"></a>Katma ve arama performansı
+![Dönüştürme iyileştirmelerine Birleştir](media/data-flow/joinoptimize.png "Birleştirmeyi En Iyi duruma getirme")
 
-Veri akışınızdaki birleşimlerin performansını yönetmek, veri dönüştürmelerinizin yaşam döngüsü boyunca gerçekleştirdiğiniz çok yaygın bir işlemdir. ADF 'de, bu işlemler Spark 'ta Karma birleşimler olarak gerçekleştirilirken veri akışları verilerin birleşimlerden önce sıralanmasını gerektirmez. Ancak, birleştirmeler, mevcut ve arama dönüştürmeleri için geçerli olan "yayın" JOIN iyileştirmesi ile iyileştirilmiş performanstan yararlanabilirsiniz.
+#### <a name="cross-joins"></a>Çapraz birleşimler
 
-Bu, JOIN ilişkiniz taraflarınızın her iki tarafının içeriğini Spark düğümüne ileterek uçyana karışık hale uğramasını önler. Bu, başvuru aramaları için kullanılan daha küçük tablolar için iyi bir sonuç verir. Düğümün belleğine sığamayacak olabilecek daha büyük tablolar yayın iyileştirmesi için iyi aday değildir.
+JOIN koşullarınız için değişmez değer değerleri kullanırsanız veya bir birleştirmenin her iki tarafında birden fazla eşleşme varsa, Spark birleştirmeyi çapraz bir JOIN olarak çalıştırır. Çapraz katılım, daha sonra birleştirilmiş değerleri filtreleyerek tam bir Kartezyen üründür. Bu, diğer JOIN türlerinden önemli ölçüde daha yavaştır. Performans etkisini önlemek için, JOIN koşullarınızın her iki tarafında da sütun başvurularına sahip olduğunuzdan emin olun.
 
-Birçok JOIN işlemine sahip veri akışları için önerilen yapılandırma, iyileştirme 'nin "yayın" için "otomatik" olarak ayarlanmış olmasını ve ***bellek Için iyileştirilmiş*** bir Azure Integration Runtime yapılandırması kullanmasını kullanmaktır. Veri akışı yürütmeleri sırasında bellek hatalarından veya yayın zaman aşımlarından karşılaşıyorsanız, yayın iyileştirmesini kapatabilirsiniz. Ancak bu, veri akışlarının daha yavaş gerçekleştirilmesine neden olur. İsteğe bağlı olarak, veri akışına, birleştirmenin yalnızca sol veya sağ tarafını veya her ikisini de aşağı doğru aşağı itme için talimat verebilirsiniz.
+#### <a name="sorting-before-joins"></a>Birleşimlerden önce sıralama
 
-![Yayın ayarları](media/data-flow/newbroad.png "Yayın ayarları")
+SSIS gibi araçlarla birleştirme birleştirmesinin aksine, JOIN dönüşümü zorunlu bir birleştirme birleştirme işlemi değildir. JOIN anahtarları dönüşümden önce sıralama gerektirmez. Azure Data Factory ekibi, veri akışlarında eşleme dönüştürmelerinin kullanılmasını önermez.
 
-Başka bir birleştirme iyileştirmesi, birleşimlerinizi çapraz birleştirmeleri uygulamak için Spark 'un kullanım zamanlarını önleyecağından bu şekilde derlemenize olanak sağlar. Örneğin, JOIN koşullarınıza sabit değer değerleri dahil ettiğinizde Spark, önce tam bir Kartezyen ürün gerçekleştirmeye yönelik bir gereksinim olarak görebilir, sonra da birleştirilmiş değerleri filtreleyebiliriz. Ancak, birleştirme koşullarınızın her iki tarafında da sütun değerlerine sahip olduğunuzdan emin olduğunuzda, bu Spark kaynaklı Kartezyen ürünü kullanmaktan kaçınabilir ve birleşimlerinizin ve veri akışlarınızın performansını geliştirebilirsiniz.
+### <a name="repartitioning-skewed-data"></a>Asimetrik verileri yeniden bölümleme
+
+Birleşimler ve toplamalar gibi bazı dönüştürmeler, veri bölümlerinizi reshuffle ve zaman zaman asimetrik verilere yol açabilir. Eğilmiş veriler, verilerin bölümler arasında eşit dağıtılmayacağı anlamına gelir. Büyük ölçüde asimetrik veriler, daha yavaş aşağı akış dönüşümlerine ve havuz yazmaya yol açabilir. İzleme görünümü ' nde dönüşüme tıklayarak veri akışı çalıştırmasının herhangi bir noktasında verilerinizin çarpıklığını kontrol edebilirsiniz.
+
+![Çarpıklık ve basıklık](media/data-flow/skewness-kurtosis.png "Çarpıklık ve basıklık")
+
+İzleme ekranı, verilerin her bölümde iki ölçüm, çarpıklık ve basıklık ile birlikte nasıl dağıtıldığını gösterir. **Çarpıklık** , verilerin nasıl olduğu ve pozitif, sıfır, negatif veya tanımsız bir değere sahip olduğu bir ölçüdür. Negatif eğme, sol kuyruklu daha uzun olduğu anlamına gelir. **Basıklık** , verilerin ağır veya hafif olup olmadığı ölçüdür. Yüksek basıklık değerleri istenmez. -3 ve 3 arasındaki en iyi çarpıklık aralıkları 10 ' dan az olmalıdır. Bu sayıları yorumlamak için kolay bir yol, Bölüm grafiğine bakar ve 1 çubuğun Rest 'den önemli ölçüde daha büyük olup olmadığını görüyor.
+
+Bir dönüşümden sonra verileriniz eşit olarak bölünmemişse, yeniden bölümlemek için [en iyileştirme sekmesini](#optimize-tab) kullanabilirsiniz. Reshuffling verileri zaman alır ve veri akışı performansınızı iyileştiremeyebilir.
+
+> [!TIP]
+> Verilerinizi yeniden bölümleyip reshuffle bu verileri içeren aşağı akış dönüşümlerine sahipseniz, birleştirme anahtarı olarak kullanılan bir sütunda karma bölümlendirme kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Performansla ilgili diğer veri akışı makalelerine bakın:
 
-- [Veri akışı Iyileştirme sekmesi](concepts-data-flow-overview.md#optimize)
 - [Veri akışı etkinliği](control-flow-execute-data-flow-activity.md)
 - [Veri akışı performansını izleme](concepts-data-flow-monitoring.md)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056559"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475201"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>Desteklenen `kubectl` sürümler
+
+`kubectl` [Kubectl Için Kubernetes destek ilkesiyle](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl)tutarlı olan *kuin-apiserver* sürümünüze göre daha eski veya daha yeni bir sürümünü kullanabilirsiniz.
+
+Örneğin, *ku1,18* to *-apiserver* *1,17*ise, *1.16* `kubectl` Bu *kuin-apiserver*ile 1,16 arası sürümlerini kullanabilirsiniz.
+
+Sürümünüzü yüklemek veya güncelleştirmek için `kubectl` ' i çalıştırın `az aks install-cli` .
+
 ## <a name="release-and-deprecation-process"></a>Serbest bırakma ve kullanımdan kaldırma işlemi
 
 [Aks Kubernetes sürüm takviminde](#aks-kubernetes-release-calendar)yaklaşan sürüm yayınlarına ve kullanım dışı bırakılmaları için başvuru yapabilirsiniz.
@@ -121,7 +129,6 @@ Aboneliğiniz ve bölgeniz için şu anda hangi sürümlerin kullanılabildiğin
 az aks get-versions --location eastus --output table
 ```
 
-
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes Yayın takvimi
 
 Son sürüm geçmişi için [buraya](https://en.wikipedia.org/wiki/Kubernetes#History)bakın.
@@ -139,7 +146,7 @@ Son sürüm geçmişi için [buraya](https://en.wikipedia.org/wiki/Kubernetes#Hi
 
 **Bir Kullanıcı bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 
-*N-3* veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, destek ilkeleriniz dahilinde geri dönebilirsiniz. Örneğin:
+*N-3* veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, destek ilkeleriniz dahilinde geri dönebilirsiniz. Örnek:
 
 - Desteklenen en eski AKS sürümü *1.15. a* ise ve *1.14. b* veya daha eski bir sürümdaysanız, destek dışında olursunuz.
 - *1.14. b* 'den 1.15 'e yükseltme yapıldığında, ya da daha yüksek *bir* başarılı olduğunda, destek ilkilerimize geri dönebilirsiniz.

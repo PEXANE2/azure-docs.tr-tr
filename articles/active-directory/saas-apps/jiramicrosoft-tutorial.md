@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0c44953a33e6ccd0bbe406159e9636411695ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f06f0f376c1ecafcff833aa4b6bece0a0e35d10
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017106"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475405"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -42,7 +42,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 Azure AD tümleştirmesini Microsoft tarafından JıRA SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-- JIRA Core ve Software 6,4 for 8.8.0 veya JIRA Service Desk 3,0 to 4.8.0 Windows 64-bit sürümünde yüklenip yapılandırılmalıdır
+- JIRA Core ve Software 6,4 for 8.11.0 veya JIRA Service Desk 3,0 to 4.8.0 Windows 64-bit sürümünde yüklenip yapılandırılmalıdır
 - JıRA sunucusu HTTPS etkin
 - Aşağıdaki bölümde, JIRA eklentisinin desteklenen sürümlerinin bahsedildiğini aklınızda bulabilirsiniz.
 - JıRA sunucusuna, kimlik doğrulaması için özellikle Azure AD oturum açma sayfasında internet 'ten erişilebilir ve bu belirteci Azure AD 'den alabilmelidir
@@ -63,7 +63,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 ## <a name="supported-versions-of-jira"></a>Desteklenen JIRA sürümleri
 
-* JIRA Core ve Software: 6,4 ile 8.8.0
+* JIRA Core ve Software: 6,4 ile 8.11.0
 * JIRA Service Desk 3.0.0 to 4.8.0
 * JIRA Ayrıca 5,2 'yi destekler. Daha fazla ayrıntı için [Microsoft Azure Active Directory JIRA 5,2 için çoklu oturum açma](jira52microsoft-tutorial.md) 'yı tıklatın
 

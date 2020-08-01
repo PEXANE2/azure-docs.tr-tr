@@ -5,20 +5,20 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 07/20/2020
-ms.author: amsriva
+ms.author: surmb
 ms.topic: conceptual
-ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290983"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474334"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway birden çok site barındırma
 
-Birden çok site barındırma, bir uygulama ağ geçidinin aynı bağlantı noktasında birden fazla Web uygulaması yapılandırmanızı sağlar. Bir Application Gateway 'e en fazla 100 + web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin, üç etki alanı, contoso.com, fabrikam.com ve adatum.com, uygulama ağ geçidinin IP adresine işaret edin. Üç adet çok siteli dinleyici oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız. 
+Birden çok site barındırma, bir uygulama ağ geçidinin aynı bağlantı noktasında birden fazla Web uygulaması yapılandırmanızı sağlar. Bir uygulama ağ geçidine 100'den fazla web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin contoso.com, fabrikam.com ve adatum.com olmak üzere üç etki alanı, uygulama ağ geçidinin IP adresine işaret eder. Üç çoklu site dinleyicisi oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarına göre yapılandırabilirsiniz. 
 
-Ayrıca, çok siteli bir dinleyicide joker karakter ana bilgisayar adlarını ve dinleyici başına en fazla 5 ana bilgisayar adını tanımlayabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları](#wildcard-host-names-in-listener-preview).
+Ayrıca çoklu site dinleyicisinde joker karakter ana bilgisayar adı tanımlayabilir ve bunu dinleyici başına en fazla 5 ana bilgisayar adı için yapabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları](#wildcard-host-names-in-listener-preview).
 
 :::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Çok siteli Application Gateway":::
 
@@ -42,6 +42,7 @@ Ana bilgisayar adında bir joker karakter kullanarak, tek bir dinleyicide birden
 
 >[!NOTE]
 >Bu özellik şu anda yalnızca [Azure PowerShell](tutorial-multiple-sites-powershell.md) ve [Azure CLI](tutorial-multiple-sites-cli.md)üzerinden kullanılabilir. Portal desteği yakında geliyor.
+> Lütfen portal desteği tam olarak kullanılamadığından, yalnızca konak adları parametresini kullanıyorsanız, dinleyici portalda temel bir dinleyici olarak görünür ve dinleyici listesi görünümünün ana bilgisayar adı sütununda yapılandırılan ana bilgisayar adları gösterilmez. Joker bir dinleyicide yapılan herhangi bir değişiklik için, portalda desteklenene kadar Azure PowerShell veya CLı kullandığınızdan emin olun.
 
 [Azure PowerShell](tutorial-multiple-sites-powershell.md), yerine kullanmanız gerekir `-HostNames` `-HostName` . Ana bilgisayar adları ile, virgülle ayrılmış değerler olarak 5 adede kadar konak adı belirtebilir ve joker karakterler kullanabilirsiniz. Örneğin, `-HostNames "*.contoso.com,*.fabrikam.com"`
 

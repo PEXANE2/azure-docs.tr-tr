@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8486241d4de0025603b22b591f4a8f62901bd7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1875c9147f62619d8961096adb6a0f3986496b41
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203665"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459450"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
 
@@ -110,12 +110,12 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ServiceUrl | Evet | REST API uç noktasının URL 'SI. |
-| AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None` , `Basic` , `Bearer` veya `ClientCertificate` . `None`Değer REST API anonim olmadığını gösterir. `Basic`Değer, REST API http temel kimlik doğrulamasıyla güvenli hale getirildiğini gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate`(Önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. `Bearer`Değer, REST API Istemci OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. |
+| ServiceUrl | Yes | REST API uç noktasının URL 'SI. |
+| AuthenticationType | Yes | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None` , `Basic` , `Bearer` veya `ClientCertificate` . `None`Değer REST API adsız olduğunu gösterir. `Basic`Değer, REST API http temel kimlik doğrulamasıyla güvenli hale getirildiğini gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate`(Önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. `Bearer`Değer, REST API Istemci OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. |
 | Allowınsecureauthınproduction| Hayır| `AuthenticationType` `none` Uygulamasının üretim ortamında ( `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) olarak ayarlanmış veya belirtilmemiş) olarak ayarlanamayacağını gösterir `Production` . Olası değerler: true veya false (varsayılan). |
 | SendClaimsIn | Hayır | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form` , `Header` , veya `QueryString` . `Body`Değer, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form`Değer, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header`Değer, istek üstbilgisinde gönderilen giriş talebinde bulunur. `QueryString`Değer, istek sorgu dizesinde gönderilen giriş talebinde bulunur. Her biri tarafından çağrılan HTTP fiilleri aşağıdaki gibidir:<br /><ul><li>`Body`: GÖNDERI</li><li>`Form`: GÖNDERI</li><li>`Header`: Al</li><li>`QueryString`: Al</li></ul> |
 | ClaimsFormat | Hayır | Şu anda kullanılmıyor olabilir. |
@@ -156,8 +156,8 @@ Kimlik doğrulaması türü olarak ayarlandıysa `Basic` , **Cryptographickeys**
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Evet | Kimlik doğrulaması için kullanılan Kullanıcı adı. |
-| BasicAuthenticationPassword | Evet | Kimlik doğrulaması için kullanılan parola. |
+| BasicAuthenticationUsername | Yes | Kimlik doğrulaması için kullanılan Kullanıcı adı. |
+| BasicAuthenticationPassword | Yes | Kimlik doğrulaması için kullanılan parola. |
 
 Aşağıdaki örnek, temel kimlik doğrulaması ile bir teknik profil gösterir:
 
@@ -181,7 +181,7 @@ Kimlik doğrulaması türü olarak ayarlandıysa `ClientCertificate` , **Cryptog
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClientCertificate | Evet | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). |
+| ClientCertificate | Yes | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -237,11 +237,11 @@ REST API, ' Kullanıcı CRM sisteminde bulunamadı ' gibi bir hata iletisi dönd
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| sürüm | Evet | REST API sürümünüz. Örneğin: 1.0.1 |
-| durum | Evet | 409 olmalıdır |
+| sürüm | Yes | REST API sürümünüz. Örneğin: 1.0.1 |
+| durum | Yes | 409 olmalıdır |
 | kod | Hayır | Etkin olduğunda görünen, RESTAN uç nokta sağlayıcısından bir hata kodu `DebugMode` . |
 | No | Hayır | Etkinleştirildiğinde görünen, Restlen uç nokta sağlayıcısından gelen istek tanımlayıcısı `DebugMode` . |
-| userMessage | Evet | Kullanıcıya gösterilen bir hata iletisi. |
+| userMessage | Yes | Kullanıcıya gösterilen bir hata iletisi. |
 | developerMessage | Hayır | Sorunun ayrıntılı açıklaması ve nasıl düzeltileceğini, `DebugMode` etkinleştirildiğinde görüntülenir. |
 | daha fazla bilgi | Hayır | Etkinleştirildiğinde görüntülenen ek bilgilere işaret eden bir URI `DebugMode` . |
 

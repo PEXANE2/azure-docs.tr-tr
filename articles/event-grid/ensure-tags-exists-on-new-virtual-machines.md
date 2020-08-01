@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114525"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462012"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Öğretici: Azure Otomasyonu 'Nu Event Grid ve Microsoft ekipleriyle tümleştirin
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Bu öğreticiyi tamamlamak için, bir [Azure Otomasyonu hesabının](../automation/automation-offering-get-started.md) Azure Event Grid aboneliğinden tetiklenen runbook'u barındırması gerekir.
+Bu öğreticiyi tamamlamak için, bir [Azure Otomasyonu hesabının](../automation/index.yml) Azure Event Grid aboneliğinden tetiklenen runbook'u barındırması gerekir.
 
 * Otomasyon Hesabınıza `AzureRM.Tags` modülü yüklenmelidir. Modülleri Azure Otomasyonu'na aktarmayı öğrenmek için bkz. [Modülleri Azure Otomasyonu'na aktarma](../automation/automation-update-azure-modules.md).
 

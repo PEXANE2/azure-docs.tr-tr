@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: f212143d90b6a6bf9c8f1f597c276b9ab4100617
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 60ad7f5df4f13d626d7a2c24990c7f48db28d01d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406269"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475235"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>IoT Tak ve Kullan önizlemeyi yenileme
 
@@ -86,7 +86,7 @@ Service SDK [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/digitaltw
 
 [Azure IoT cihaz çalışma ekranı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) uzantısı, dtdl v1 için yazma desteği, model deposunun önceki sürümüyle tümleştirme ve kod oluşturma desteği sağlar.
 
-VS Code 'de DTDL v2 yazma desteği gerekiyorsa, yeni [dtdl uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) vs Code ' ye yükleyebilirsiniz. Uzantı, model deposu veya kod oluşturma ile tümleştirme sağlamaz. Depodaki modelleri yönetmek artık bir [Web Kullanıcı arabirimi](https://aka.ms/iotmodelrepo)kullanılarak yapılır.
+VS Code 'de DTDL v2 yazma desteği gerekiyorsa, yeni [dtdl uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) vs Code ' ye yükleyebilirsiniz. Uzantı, model deposu veya kod oluşturma ile tümleştirme sağlamaz. Depodaki modelleri yönetmek artık bir [Web Kullanıcı arabirimi](https://aka.ms/iotmodelrepo) veya [CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest)kullanılarak yapılır.
 
 ## <a name="digital-twin-service-side-rest-apis"></a>Digital ikizi hizmet tarafı REST API 'Leri
 
@@ -103,8 +103,6 @@ Mevcut REST API 'Leri bu sürümde desteklenmeye devam eder.
 Artık hem genel yayımlanan modelleri hem de özel RBAC korumalı şirket modellerini içeren tek bir model deposu vardır. Tüm modeller benzersiz bir tanımlayıcıya sahiptir ve oluşturulduktan sonra sabittir.
 
 Önceki sürümden mevcut şirket modeli depoları bu sürümde desteklenmez. Eski DTDL v1 modellerini yönetmek için [Azure Sertifikalı IoT](https://preview.catalog.azureiotsolutions.com/products) Web sitesini kullanmaya devam edebilirsiniz. Ancak, artık bu Web sitesini kullanarak cihazları kaydedebilir, test edebilir ve bunları onaylayamaz.
-
-Azure CLı için Azure IoT uzantısı, yeni model deposunu desteklemez. `az iot pnp`Komutlar yalnızca önceki sürümden model depoları çalışır.
 
 ## <a name="azure-iot-central"></a>Azure IoT Central
 

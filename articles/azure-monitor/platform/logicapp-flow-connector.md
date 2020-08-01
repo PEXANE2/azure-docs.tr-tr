@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081568"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475745"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Logic Apps ve Flow için Azure Izleyici günlükleri Bağlayıcısı
-[Azure Logic Apps](../../logic-apps/index.yml) ve [Güç otomatikleştirme](https://ms.flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps ve güç otomatikleştirme için Azure Izleyici günlükleri Bağlayıcısı
+[Azure Logic Apps](../../logic-apps/index.yml) ve [Güç otomatikleştirme](https://flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
 
 Örneğin, Azure Izleyici günlük verilerini Office 365 ' den bir e-posta bildiriminde kullanmak için bir mantıksal uygulama oluşturabilir, Azure DevOps 'da bir hata oluşturabilir veya bir bolluk iletisi postalayabilirsiniz.  Bir iş akışını basit bir zamanlamaya göre veya bir e-posta ya da tweet alınması gibi bağlı bir hizmette bazı bir eylemden tetikleyebilirsiniz. 
 
@@ -126,4 +126,4 @@ Mantıksal uygulama tamamlandığında, belirttiğiniz alıcının postasını k
 
 - [Azure izleyici 'de günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Logic Apps](../../logic-apps/index.yml) hakkında daha fazla bilgi edinin
-- [Microsoft Flow](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.
+- [Güç otomatikleştirme](https://flow.microsoft.com)hakkında daha fazla bilgi edinin.

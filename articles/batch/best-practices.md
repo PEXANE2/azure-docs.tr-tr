@@ -1,14 +1,14 @@
 ---
 title: Önerilen uygulamalar
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497786"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474912"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -56,6 +56,10 @@ Havuz ayırma arızaları, ilk ayırma veya sonraki yeniden boyutlandırmalarda 
 Toplu Iş havuzlarının Azure 'da kesinti süresi olaylarıyla karşılaşması mümkündür. Senaryonuzu veya Batch için iş akışınızı planlarken ve geliştirirken bunu göz önünde bulundurun.
 
 Bir düğümün başarısız olması durumunda, Batch otomatik olarak bu işlem düğümlerini sizin adınıza kurtarmaya çalışır. Bu, kurtarılan düğüm üzerinde çalışan herhangi bir görevin yeniden çizelgelenmesi tetiklenebilir. Kesilen görevler hakkında daha fazla bilgi edinmek için bkz. [yeniden denemeler tasarlama](#design-for-retries-and-re-execution) .
+
+### <a name="third-party-images"></a>Üçüncü taraf görüntüleri
+
+Havuzlar, Azure Marketi 'Nde yayınlanan üçüncü taraf görüntüleri kullanılarak oluşturulabilir. Kullanıcı aboneliği modu Batch hesaplarıyla, bazı üçüncü taraf görüntülerle bir havuz oluştururken "Market satın alma uygunluğu denetimi nedeniyle ayrılamadı" hatasını görebilirsiniz. Bu hatayı çözmek için görüntünün yayımcısı tarafından ayarlanan koşulları kabul edin. Bunu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) veya [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)kullanarak yapabilirsiniz.
 
 ### <a name="azure-region-dependency"></a>Azure bölge bağımlılığı
 

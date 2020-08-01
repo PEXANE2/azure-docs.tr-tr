@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1c26164ed7a2b7c335d3977e143fcef28c8955db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373751"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475830"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
 
@@ -64,7 +64,7 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 | ------------- | ------------- |
 |**Yüksek önem düzeyi bırakma veya fark özelliği yok*** |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
 |**Impute eksik değerler*** |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|
-|**Ek özellikler oluştur*** |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
+|**Ek özellikler oluştur*** |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br><br> *Tahmin görevleri için,* bu ek tarih saat özellikleri oluşturulur: ISO yılı, yarı yarı yıl, takvim ayı, dize, hafta günü, haftanın günü, ayın günü, yıl günü, yıl saati, yıl/saat (0 ' dan önce ise (12 PM), 1 yoksa, gün<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
 |**Dönüştür ve kodla***|Çok sayıda benzersiz değere sahip sayısal özellikleri kategorik Özellikler halinde dönüştürün.<br/><br/>Tek yönlü kodlama, düşük önemlilik kategorik özellikleri için kullanılır. Yüksek kardinalite kategorik özellikler için tek bir Hot-Hash kodlaması kullanılır.|
 |**Sözcük katıştırlamaları**|Bir metin özelliği, önceden eğitilen bir model kullanarak metin belirteçlerinin vektörlerini tümce vektörlerine dönüştürür. Belgedeki her bir sözcüğün katıştırma vektörü, bir belge özelliği vektörü oluşturmak için geri kalan ile toplanır.|
 |**Hedef kodlamalar**|Kategorik özellikler için, bu adım her bir kategoriyi gerileme sorunları için Ortalama bir hedef değerle ve sınıflandırma sorunları için her sınıf için sınıf olasılığa eşler. Sıklık tabanlı ağırlığa ve k katlamalı çapraz doğrulama, seyrek veri kategorilerinin neden olduğu eşlemenin ve gürültü üzerine fazla sığdırmayı azaltmak için uygulanır.|
@@ -163,9 +163,11 @@ text_transformations_used
 
 3. Özellik üst kısmında, oto ml, verilerin bir örneği üzerinde BERT 'yi (kelimeler özelliği ve önceden eğitilen kelime eklenebilir) ile karşılaştırır ve BERT 'in doğruluk iyileştirmeleri verip veremeyeceğini belirler. BERT 'in temelden daha iyi çalıştığını belirlerse, oto ve en iyi performans stratejisi olarak metin kullanımı için BERT 'yi kullanır ve verilerin tamamını kordoğru bir şekilde devam eder. Bu durumda, son modelde "Pretraınedtextdnntransformer" metnini görürsünüz.
 
+BERT genellikle diğer birçok farklı şekilde daha uzun çalışır. Kümenizde daha fazla işlem yaparak bu işlem yapılabilir. Oto (en fazla 8 düğüme kadar) varsa, oto ml, BERT eğitimini birden çok düğüm arasında dağıtır. Bu, [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 1 ' den yüksek olarak ayarlanarak yapılabilir. Daha iyi performans için, RDMA özelliklerine sahip SKU 'ların kullanılması önerilir ("STANDARD_NC24r" veya "STANDARD_NC24rs_V3" gibi)
+
 JML Şu anda 100 dil etrafında destek ve veri kümesinin diline bağlı olarak, oto ml uygun BERT modelini seçer. Almanya verileri için Almanca BERT modelini kullanıyoruz. Ingilizce için, Ingilizce BERT modelini kullanıyoruz. Diğer tüm diller için, çok dilli BERT modelini kullanırız.
 
-Aşağıdaki kodda, veri kümesi dili ' DEU ' olarak belirtildiğinden ve [ISO sınıflandırmasına](https://iso639-3.sil.org/code/hbs)göre Almanca için 3 harfli dil kodu olan, Almanya Bert modeli tetiklenir:
+Aşağıdaki kodda, veri kümesi dili ' DEU ' olarak belirtildiğinden ve [ISO sınıflandırmasına](https://iso639-3.sil.org/code/deu)göre Almanca için 3 harfli dil kodu olan, Almanya Bert modeli tetiklenir:
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

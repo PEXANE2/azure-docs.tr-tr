@@ -3,12 +3,12 @@ title: Karma bulut uzantısı 'nı (HCX) yükler
 description: Azure VMware çözümünüz (AVS) özel bulutunuz için VMware hibrit bulut uzantısı (HCX) çözümünü ayarlama
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539168"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475456"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware çözümü için HCX 'i yükler
 
@@ -19,7 +19,7 @@ Varsayılan yükleme, HCX gelişmiş, en fazla üç vCenter destekler. Üçten f
 
 [Başlamadan önce](#before-you-begin), [yazılım sürümü gereksinimlerinden](#software-version-requirements)ve [önkoşullardan](#prerequisites) önce ayrıntılı bir şekilde gözden geçirin. 
 
-Ardından, aşağıdakileri yapmak için gereken tüm yordamları ele aldık:
+Ardından, aşağıdakileri yapmak için gereken tüm yordamları inceleyeceğiz:
 
 > [!div class="checklist"]
 > * Şirket içi HCX OVA 'yı dağıtma
@@ -31,10 +31,10 @@ Kurulumu tamamladıktan sonra, bu makalenin sonunda sunulan önerilen sonraki ad
 
 ## <a name="before-you-begin"></a>Başlamadan önce
     
-* Temel AVS yazılım tanımlı veri merkezi (SDDC) [öğretici serisini](tutorial-network-checklist.md) gözden geçirin
-* HCX Kullanıcı Kılavuzu dahil [VMware HCX belgelerini](https://docs.vmware.com/en/VMware-HCX/index.html) gözden geçirin ve başvurun
-* VMware [HCX Ile sanal makineleri geçirme](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g) VMware docs
-* İsteğe bağlı olarak [VMware HCX dağıtım konularını](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html) gözden geçirin
+* Temel AVS yazılım tanımlı veri merkezi (SDDC) [öğretici serisini](tutorial-network-checklist.md)gözden geçirin.
+* HCX Kullanıcı Kılavuzu dahil [VMware HCX belgelerini](https://docs.vmware.com/en/VMware-HCX/index.html) inceleyin ve başvuru yapın.
+* VMware [HCX Ile sanal makinelerin geçişini](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)yapan VMware docs ' i inceleyin.
+* İsteğe bağlı olarak [VMware HCX dağıtım konularını](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)gözden geçirin.
 * HCX üzerinde VMware vSphere [blog serisi](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) gibi, isteğe bağlı olarak HCX üzerinde ilgili VMware malzemeleri gözden geçirin. 
 * AVS 'yi kullanarak bir AVS HCX Kurumsal etkinleştirmesi siparişi, kanalları destekler.
 
@@ -47,12 +47,12 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 | --- | --- | --- |
 | vCenter Server   | 5.1<br/><br/>5,5 U1 veya daha önceki bir sürümü kullanıyorsanız HCX işlemleri için tek başına HCX Kullanıcı arabirimini kullanın.  | 6,0 U2 ve üzeri   |
 | ESXi   | 5.0    | ESXi 6,0 ve üzeri   |
-| NSX    | Kaynaktaki mantıksal anahtarların HCX ağ uzantısı için: NSXv 6.2 + veya NSX-T 2.4 +   | NSXv 6.2 + veya NSX-T 2,4 +<br/><br/>HCX yakınlık yönlendirmesi için: NSXv 6.4 + (NSX-T ile yakınlık yönlendirmesi desteklenmez) |
+| NSX    | Kaynaktaki mantıksal anahtarların HCX ağ uzantısı için: NSXv 6.2 + veya NSX-T 2.4 +   | NSXv 6.2 + veya NSX-T 2,4 +<br/><br/>HCX yakınlık yönlendirmesi için: NSXv 6.4 + (yakınlık yönlendirme NSX-T ile desteklenmez) |
 | vCloud Direktörü   | Gerekli değildir-kaynak sitede vCloud Director ile birlikte çalışabilirlik yok | Hedef ortamı vCloud Director ile tümleştirdiğinizde, en az 9.1.0.2 olur.  |
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Şirket içi ve AVS SDDC ER devreleri arasında küresel erişim yapılandırılmalıdır.
+* ExpressRoute Global Reach, şirket içi ve AVS SDDC ExpressRoute devreleri arasında yapılandırılmalıdır.
 
 * Tüm gerekli bağlantı noktaları şirket içi ve AVS SDDC arasında açık olmalıdır (bkz. [VMware HCX belgeleri](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)).
 

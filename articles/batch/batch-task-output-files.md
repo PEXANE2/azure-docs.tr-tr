@@ -2,14 +2,14 @@
 title: Batch hizmeti API 'SI ile Azure depolama 'ya çıkış verilerini kalıcı hale getirme
 description: Batch görevi ve iş çıktısı verilerini Azure depolama 'ya kalıcı hale getirmek için Batch hizmeti API 'sini nasıl kullanacağınızı öğrenin.
 ms.topic: how-to
-ms.date: 03/05/2019
+ms.date: 07/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 964ffea2ed1536dc1851aefc03c735cb08ba7ed7
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143512"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475626"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch hizmeti API 'SI ile Azure depolama 'ya görev verilerini kalıcı hale getirme
 
@@ -19,6 +19,9 @@ Batch hizmeti API 'SI, sanal makine yapılandırmasıyla havuzlar üzerinde çal
 
 Görev çıktısını sürdürmek için Batch hizmeti API 'sini kullanmanın avantajı, görevin çalıştığı uygulamayı değiştirmenize gerek kalmaz. Bunun yerine, istemci uygulamanızda birkaç değişiklikle, görevi oluşturan aynı kodun içinden görevin çıkışını kalıcı hale getirebilirsiniz.
 
+> [!IMPORTANT]
+> Batch hizmeti API 'SI ile Azure depolama 'ya yönelik kalıcı görev verileri [, 1 şubat 2018 '](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204)den önce oluşturulan havuzlarla birlikte çalışmaz.
+
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Görev çıktısını sürdürmek için Batch hizmeti API 'sini ne zaman kullanabilirim?
 
 Azure Batch, görev çıkışını kalıcı hale getirmek için birden çok yol sağlar. Batch hizmeti API 'sini kullanmak, şu senaryolara en uygun olan kullanışlı bir yaklaşımdır:
@@ -26,9 +29,9 @@ Azure Batch, görev çıkışını kalıcı hale getirmek için birden çok yol 
 - Görevin çalıştığı uygulamayı değiştirmeden istemci uygulamanızın içinden görev çıkışını kalıcı hale getirmek için kod yazmak istiyorsunuz.
 - Sanal makine yapılandırmasıyla oluşturulan havuzlardaki toplu Iş görevlerinden ve iş Yöneticisi görevlerinin çıkışını kalıcı hale getirmek istiyorsunuz.
 - Çıktıyı bir Azure depolama kapsayıcısına rastgele bir adla kalıcı hale getirmek istiyorsunuz.
-- [Toplu Iş dosyası kuralları standardına](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)göre adlı bir Azure depolama kapsayıcısına çıktıyı kalıcı hale getirmek istiyorsunuz. 
+- [Toplu Iş dosyası kuralları standardına](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)göre adlı bir Azure depolama kapsayıcısına çıktıyı kalıcı hale getirmek istiyorsunuz.
 
-Senaryolarınız yukarıda listelenenlerden farklıysa, farklı bir yaklaşım düşünmeniz gerekebilir. Örneğin, Batch hizmeti API 'SI Şu anda, görev çalışırken Azure Storage 'a akış çıktısı desteklememektedir. Çıktıyı akışa almak için, .NET için kullanılabilen batch dosya kuralları kitaplığını kullanmayı düşünün. Diğer diller için kendi çözümünüzü uygulamanız gerekir. Kalıcı görev çıktısına yönelik diğer seçenekler hakkında daha fazla bilgi için bkz. [Azure Storage 'da iş ve görev çıkışını kalıcı hale](batch-task-output.md)getirme.
+Senaryolarınız yukarıda listelenenlerden farklıysa, farklı bir yaklaşım düşünmeniz gerekebilir. Örneğin, Batch hizmeti API 'SI Şu anda, görev çalışırken Azure Storage 'a akış çıktısı desteklememektedir. Çıktıyı akışa almak için, .NET için kullanılabilen batch dosya kuralları kitaplığını kullanmayı düşünün. Diğer diller için kendi çözümünüzü uygulamanız gerekir. Kalıcı görev çıktısına yönelik diğer seçenekler hakkında bilgi için bkz. [Azure Storage 'da iş ve görev çıkışını kalıcı hale](batch-task-output.md)getirme.
 
 ## <a name="create-a-container-in-azure-storage"></a>Azure depolama 'da kapsayıcı oluşturma
 
@@ -88,6 +91,9 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
             uploadCondition: OutputFileUploadCondition.TaskCompletion)),
 }
 ```
+
+> [!NOTE]
+> Linux ile bu örneği kullanıyorsanız, ters eğik çizgileri eğik çizgi ile değiştirmek için değiştirdiğinizden emin olun.
 
 ### <a name="specify-a-file-pattern-for-matching"></a>Eşleştirme için bir dosya kalıbı belirtin
 
@@ -169,7 +175,7 @@ C# dışında bir dilde geliştiriyorsanız, dosya kuralları standardını kend
 
 ## <a name="code-sample"></a>Kod örneği
 
-[Persistoutkoyar][github_persistoutputs] örnek proje, GitHub 'daki [Azure Batch kod örneklerinden][github_samples] biridir. Bu Visual Studio çözümü, görev çıkışını dayanıklı depolamaya devam ettirmek için .NET için Batch istemci kitaplığı 'nın nasıl kullanılacağını gösterir. Örneği çalıştırmak için aşağıdaki adımları izleyin:
+[Persistoutkoyar](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs) örnek proje, GitHub 'daki [Azure Batch kod örneklerinden](https://github.com/Azure/azure-batch-samples) biridir. Bu Visual Studio çözümü, görev çıkışını dayanıklı depolamaya devam ettirmek için .NET için Batch istemci kitaplığı 'nın nasıl kullanılacağını gösterir. Örneği çalıştırmak için aşağıdaki adımları izleyin:
 
 1. Projeyi **Visual Studio 2019**' de açın.
 2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft.Azure.Batch. Samples. Common projesindeki **accountsettings. Settings** ' e ekleyin.
@@ -181,8 +187,5 @@ C# dışında bir dilde geliştiriyorsanız, dosya kuralları standardını kend
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- .NET için dosya kuralları kitaplığı ile kalıcı görev çıktısı hakkında daha fazla bilgi için bkz. [.net Için toplu Işlem dosya kuralları kitaplığı ile iş ve görev verilerini Azure depolama 'Ya kalıcı hale](batch-task-output-file-conventions.md)getirme.
-- Azure Batch çıktı verilerine yönelik diğer yaklaşımlar hakkında daha fazla bilgi için bkz. [Azure Storage 'da iş ve görev çıkışını kalıcı hale](batch-task-output.md)getirme.
-
-[github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
-[github_samples]: https://github.com/Azure/azure-batch-samples
+- .NET için dosya kuralları kitaplığı ile kalıcı görev çıktısı hakkında daha fazla bilgi edinmek için bkz. [.net Için toplu Işlem dosya kuralları kitaplığı ile iş ve görev verilerini Azure depolama 'Ya kalıcı hale](batch-task-output-file-conventions.md)getirme.
+- Azure Batch çıktı verilerine yönelik diğer yaklaşımlar hakkında bilgi edinmek için bkz. [Azure Storage 'da iş ve görev çıkışını kalıcı hale](batch-task-output.md)getirme.

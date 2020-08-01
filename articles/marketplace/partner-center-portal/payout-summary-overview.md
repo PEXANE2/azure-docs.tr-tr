@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 0f19d63bd5f22dc7bc60ceb76ef5bdbeff717dbb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325738"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460397"
 ---
 # <a name="payout-summary-overview"></a>Ödeme özetine genel bakış
 
@@ -23,7 +23,7 @@ Azure Market 'te teklifler satmanız durumunda, ödeme özetinde başarılı öd
 > [!NOTE]
 > Ödemenizin uygun olması için, devam eden $50 [ödeme eşiğine](./payment-thresholds-methods-timeframes.md) ulaşmalıdır. Ödeme eşiği hakkında daha fazla bilgi için [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)' ne bakın.
 
-Transact yayımlama seçeneğine yönelik tüm raporlama ve Öngörüler, portalın sağ üst köşesinde bu simge kullanılarak erişilen Iş Ortağı Merkezi 'nin analiz bölümünde mevcuttur:
+Ödeme ayrıntılarını görüntülemek için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home) ' nde oturum açın ve ekranın sağ üst köşesindeki ödeme simgesini seçin:
 
 ![Iş Ortağı Merkezi portalının sağ üst köşesindeki ödeme simgesini gösterir.](./media/payout-overview.png)
 

@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f2d9407d9c7172839027e2650486695244f67889
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352348"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475694"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>IoT Tak ve Kullan önizleme mimarisi
+# <a name="iot-plug-and-play-preview-architecture"></a>IoT Tak Çalıştır mimarisi
 
 IoT Tak ve Kullan önizlemesi, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'ın temel tarafında, IoT Tak ve Kullan özellikli bir uygulama için bir cihazın yeteneklerini açıklayan bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir arabirimler kümesi olarak yapılandırılmıştır:
 
@@ -79,5 +79,5 @@ Arka uç çözümü, arabirim tanımlarındaki bilgileri kullanarak şunları ya
 IoT Tak ve Kullan çözümünün mimarisine genel bir bakış edinolduğunuza göre, sonraki adımlar hakkında daha fazla bilgi edinebilirsiniz:
 
 - [Model deposu](./concepts-model-repository.md)
-- [Model bulma işlemi](./concepts-model-discovery.md)
+- [Digital ikizi model tümleştirmesi](./concepts-model-discovery.md)
 - [IoT Tak ve Kullan için geliştirme](./concepts-developer-guide.md)

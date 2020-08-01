@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 23e98c40420a5f1ed9b048d5530eacfe5eedfb32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74887e6ee4656091aa647b481bc406dcc23b9c12
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413986"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460091"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.
@@ -40,16 +40,19 @@ Bulut katmanlaması, son erişim süresini izlemek için NTFS özelliğine bağl
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Katmana bir dosya için en küçük dosya boyutu nedir?
 
-Aracı sürümleri 9 ve daha yeni sürümlerde, bir dosyanın katmana en küçük dosya boyutu dosya sistemi kümesi boyutunu temel alır. Aşağıdaki tabloda, birim kümesi boyutuna bağlı olarak katmanlanılabilecek minimum dosya boyutları gösterilmektedir:
+Aracı sürümleri 9 ve daha yeni sürümlerde, bir dosyanın katmana en küçük dosya boyutu dosya sistemi kümesi boyutunu temel alır. Bulut katmanlaması için uygun olan minimum dosya boyutu, 2x küme boyutu ve en az 8 KB ile hesaplanır. Aşağıdaki tabloda, birim kümesi boyutuna bağlı olarak katmanlanılabilecek minimum dosya boyutları gösterilmektedir:
 
 |Birim kümesi boyutu (bayt) |Bu boyut veya daha büyük dosyalar katmanlı olabilir  |
 |----------------------------|---------|
-|4 KB (4096)                 | 8 KB    |
+|4 KB veya daha küçük (4096)      | 8 KB    |
 |8 KB (8192)                 | 16 KB   |
 |16 KB (16384)               | 32 KB   |
-|32 KB (32768) ve daha büyük    | 64 KB   |
+|32 KB (32768)               | 64 KB   |
+|64 KB (65536)               | 128 KB  |
 
-Windows tarafından kullanılan tüm dosya sistemleri, sabit diskinizi küme boyutuna (ayırma birimi boyutu olarak da bilinir) göre düzenler. Küme boyutu bir dosyayı tutmak için kullanılabilecek en küçük disk alanı miktarını temsil eder. Dosya boyutları küme boyutunun hatta daha fazla olmadığında, dosyayı tutmak için ek alan (küme boyutunun bir sonraki katı kadar) kullanılmalıdır.
+Windows Server 2019 ve Azure Dosya Eşitleme Agent sürümü 12 ve daha yeni sürümlerde, 2 MB 'a kadar olan küme boyutları da desteklenir ve bu büyük küme boyutları üzerinde katmanlama aynı şekilde çalışır. Daha eski işletim sistemi veya Aracı sürümleri, 64 KB 'a kadar küme boyutlarını destekler.
+
+Windows tarafından kullanılan tüm dosya sistemleri, sabit diskinizi küme boyutuna (ayırma birimi boyutu olarak da bilinir) göre düzenleyin. Küme boyutu bir dosyayı tutmak için kullanılabilecek en küçük disk alanı miktarını temsil eder. Dosya boyutları küme boyutunun hatta daha fazla olmadığında, dosyayı küme boyutunun bir sonraki katı olarak tutmak için ek alan kullanılmalıdır.
 
 Azure Dosya Eşitleme, Windows Server 2012 R2 ve daha yeni bir sürümü olan NTFS birimlerinde desteklenir. Aşağıdaki tabloda yeni bir NTFS birimi oluşturduğunuzda varsayılan küme boyutları açıklanmaktadır. 
 
@@ -60,9 +63,11 @@ Azure Dosya Eşitleme, Windows Server 2012 R2 ve daha yeni bir sürümü olan NT
 |32TB – 64 TB   | 16 KB         |
 |64TB – 128 TB  | 32 KB         |
 |128TB – 256 TB | 64 KB         |
-|> 256 TB       | Desteklenmiyor |
+|> 256 TB       | Desteklenmez |
 
-Birim oluşturulduktan sonra, birimi farklı bir küme (ayırma birimi) boyutuyla el ile biçimlendirmiş olabilirsiniz. Biriminiz Windows 'un eski bir sürümünden farklıysa, varsayılan küme boyutları da farklı olabilir. [Bu makalede varsayılan küme boyutları hakkında daha ayrıntılı bilgi bulunur.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat)
+Birim oluşturulduktan sonra, birimi farklı bir küme boyutuyla el ile biçimlendirmiş olursunuz. Biriminiz Windows 'un eski bir sürümünden farklıysa, varsayılan küme boyutları da farklı olabilir. [Bu makalede varsayılan küme boyutları hakkında daha ayrıntılı bilgi bulunur.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat) 4 KB 'tan daha küçük bir küme boyutu seçseniz bile, katmanlı olabilecek en küçük dosya boyutu olarak 8 KB 'lik bir sınır de geçerlidir. (Teknik açıdan 2x küme boyutu 8 KB 'tan daha az bir değer de olabilir.)
+
+Mutlak minimumın nedeni, NTFS 'nin son derece küçük dosyaları-1 KB-4 KB boyutlu dosyaları depoladığı şekilde bulunur. Birimin diğer parametrelerine bağlı olarak, küçük dosyaların diskte bulunan bir kümede depolanması mümkündür. Bu tür dosyaları doğrudan birimin ana dosya tablosunda veya "MFT kaydında" depolamak daha verimli olabilir. Bulut katmanlama yeniden ayrıştırma noktası her zaman diskte depolanır ve tam olarak bir küme alır. Bu küçük dosyaların katmanlaması, hiçbir boşluk tasarrufları olmadan sona geçirebilir. Olağanüstü durumlar, bulut katmanlaması etkinken daha fazla alan kullanmaya da daha fazla zaman açamaz. Bu şekilde korumak için, bulut katmanlaması katman olacak bir dosyanın en küçük boyutu 4 KB veya daha küçük bir küme boyutunda 8 KB 'tır.
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Birim boş alan katmanlama ilkesi nasıl çalışır?
@@ -95,7 +100,7 @@ Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
 
 Birim boş alanı ilkesinin her zaman öncelikli olduğunu ve birimde, tarih ilkesi tarafından açıklandığı şekilde çok sayıda gün olması için yeterli boş alan olmadığında Azure Dosya Eşitleme, birim boş alan yüzdesi karşılanana kadar en fazla gün sayısı ile devam eder.
 
-Örneğin, 60 günlük bir tarih tabanlı katmanlama ilkeniz ve %20 ' lik bir birim boş alan ilkesi olduğunu varsayalım. Tarih ilkesini uyguladıktan sonra birimde boş alan %20 ' den az olduğunda, birim boş alan ilkesi başlatılır ve Tarih ilkesini geçersiz kılar. Bu, daha fazla dosyanın katmanlı olmasını sağlar. bu şekilde, sunucuda tutulan verilerin miktarı 60 günlük veriler 45 güne azalabilir. Buna karşılık, bu ilke boş alan eşiğine ulaşamasanız bile zaman aralığınızı aşacak olan dosyaların katmanlamasını zorlar. bu nedenle, biriminiz boş olsa bile 61 gün öncesine sahip bir dosya katmanlanacaktır.
+Örneğin, 60 günlük bir tarih tabanlı katmanlama ilkeniz ve %20 ' lik bir birim boş alan ilkesi olduğunu varsayalım. Tarih ilkesini uyguladıktan sonra birimde boş alan %20 ' den daha az yer alır, birim boş alan ilkesi başlatılır ve Tarih ilkesini geçersiz kılar. Bu, daha fazla dosyanın katmanlı olmasını sağlar. bu şekilde, sunucuda tutulan verilerin miktarı 60 günlük veriler 45 güne azalabilir. Buna karşılık, bu ilke boş alan eşiğine ulaşamasanız bile zaman aralığınızı aşacak olan dosyaların katmanlamasını zorlar. bu nedenle, biriminiz boş olsa bile 61 gün öncesine sahip bir dosya katmanlanacaktır.
 
 <a id="volume-free-space-guidelines"></a>
 ### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Uygun birim boş alanı miktarını nasıl belirleyebilirim?

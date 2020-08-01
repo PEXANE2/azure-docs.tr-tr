@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063821"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474317"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. TextBox Kullanıcı arabirimi öğesi
 
@@ -29,6 +29,7 @@ Biçimlendirilmemiş metni düzenlemek için kullanılabilen bir denetim.
     "label": "Name",
     "defaultValue": "contoso123",
     "toolTip": "Use only allowed characters",
+    "placeholder": "",
     "constraints": {
         "required": true,
         "validations": [
@@ -60,6 +61,7 @@ Biçimlendirilmemiş metni düzenlemek için kullanılabilen bir denetim.
 - `isValid`Özelliği true veya false olarak değerlendirilen bir ifade içeriyor. İfade içinde, metin kutusunun geçerli olup olmadığını belirleyen koşulu tanımlarsınız.
 - `message`Özelliği, metin kutusunun değeri doğrulanamazsa görüntülenecek bir dizedir.
 - `regex` `required` **False**olarak ayarlandığında için bir değer belirtmek mümkündür. Bu senaryoda, metin kutusunun başarıyla doğrulanması için bir değer gerekli değildir. Belirtilmişse, normal ifade düzeniyle eşleşmesi gerekir.
+- `placeholder`Özelliği, Kullanıcı düzenlenmeden çalışmaya başladığında kaybolması gereken yardım metindir. `placeholder`Ve `defaultValue` her ikisi de tanımlıysa, `defaultValue` öncelik alır ve gösterilir.
 
 ## <a name="example"></a>Örnek
 

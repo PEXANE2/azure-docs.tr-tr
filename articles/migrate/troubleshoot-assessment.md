@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422870"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460992"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -66,6 +66,9 @@ VMware ve Hyper-V VM 'lerinde sunucu değerlendirmesi, sunucu değerlendirmesind
 
 Bu boşluk, VMware VM 'lerinde [uygulama bulma](./how-to-discover-applications.md) etkinleştirilerek çözülebilir. Sunucu değerlendirmesi, belirtilen konuk kimlik bilgilerini kullanarak VM 'den algılanan işletim sistemini kullanır. Bu işletim sistemi verileri, hem Windows hem de Linux VM 'lerinde doğru IŞLETIM sistemi bilgilerini tanımlar.
 
+## <a name="operating-system-version-not-available"></a>İşletim sistemi sürümü kullanılamıyor
+
+Fiziksel sunucular için işletim sistemi ikincil sürüm bilgileri kullanılabilir olmalıdır. Kullanılamıyorsa Microsoft Desteği başvurun. VMware makinelerinde, sunucu değerlendirmesi vCenter Server içinde VM için belirtilen işletim sistemi bilgilerini kullanır. Ancak, vCenter Server işletim sistemleri için ikincil sürüm sağlamaz. İkincil sürümü bulmak için, [uygulama bulmayı](./how-to-discover-applications.md)ayarlamanız gerekir. Hyper-V VM 'Leri için işletim sistemi ikincil sürüm keşfi desteklenmez. 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure VM değerlendirmesinde Azure SKU 'Ları Şirket içinden daha büyük
 

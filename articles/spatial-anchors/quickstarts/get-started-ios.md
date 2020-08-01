@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: iOS uygulaması oluşturma'
-description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak bir iOS uygulaması oluşturmayı öğreneceksiniz.
+description: Azure uzamsal bağlayıcılarını kullanarak Swift veya amaç-C ' d e program aracılığıyla bir iOS uygulaması oluşturmayı öğrenin.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 542b5168bb70d876d91f8a747a230f2b754568e9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 99f3b5bc763c6ffb43fd143cf394be9157b2c83f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873116"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460278"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla, Swift veya amaç-C ' d a iOS uygulaması oluşturma
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Swift veya amaç-C ' d e [Azure uzamsal bağlayıcıl
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
@@ -146,7 +146,7 @@ brew link --overwrite cocoapods
 
 İOS uygulamanızı bir kişisel sağlama profili/geliştirici hesabından iOS 10.3.1 üzerinde dağıtırsanız şu hatayı görebilirsiniz: `Library not loaded: @rpath/ADAL...` . 
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
 - Kişisel bir ekip profili (ücretli geliştirici hesabı) olmayan bir sağlama profili kullanın.
 - Uygulamanızı iOS 13,3 veya önceki bir sürümü çalıştıran bir iOS cihazına veya iOS 13,4 Beta ya da yayın sürümünü çalıştıran bir iOS cihazına dağıtın.

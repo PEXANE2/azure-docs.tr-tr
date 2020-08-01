@@ -4,12 +4,12 @@ description: Bu makale, Azure Event Grid özel bir konunun nasıl oluşturulaca�
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 951008a2bf3919f69429ca15382334a9618b912f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e6b4e1ff556af3140c52da041900fb7695b4b6d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171321"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460890"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Azure CLI ile Event Grid özel konusu oluşturma
 
@@ -29,10 +29,10 @@ Bu betik, özel konuyu oluşturmak için aşağıdaki komutu kullanır. Tablodak
 
 | Komut | Notlar |
 |---|---|
-| [az eventgrid topic create](https://docs.microsoft.com/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | Event Grid özel konusu oluşturun. |
+| [az eventgrid topic create](/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | Event Grid özel konusu oluşturun. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Abonelikleri sorgulama hakkında bilgi edinmek için bkz. [Event Grid aboneliklerini sorgulama](../query-event-subscriptions.md).
-* Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+* Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).

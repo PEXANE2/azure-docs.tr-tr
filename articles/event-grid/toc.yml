@@ -93,7 +93,7 @@
     - name: Resource Manager şablonları
       href: template-samples.md
     - name: Kod örnekleri
-      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+      href: /samples/browse/?term=Event+Grid
     - name: Azure İlkesi yerleşik ilkeler
       href: ./policy-samples.md
 - name: Kavramlar

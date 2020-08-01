@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46ff6fb26cf568474b24d941e4a174b425bf5207
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684685"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474368"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure portalında depolama hesabını izleme
 
@@ -141,7 +141,7 @@ Blob, tablo ve kuyruk Hizmetleri için okuma, yazma ve silme istekleri için Azu
     ![Azure portal günlüğe kaydetmeyi yapılandırın.](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. **Kaydet**’e tıklayın.
 
-Tanılama günlükleri, depolama hesabınızda *$logs* adlı bir blob kapsayıcısına kaydedilir. Günlük verilerini [Microsoft Depolama Gezgini](https://storageexplorer.com)gibi bir Depolama Gezgini ile veya program aracılığıyla depolama istemci kitaplığı veya PowerShell kullanarak görüntüleyebilirsiniz.
+Tanılama günlükleri, depolama hesabınızda *$logs* adlı bir blob kapsayıcısına kaydedilir. Günlük verilerini, [Microsoft Azure Depolama Gezgini](https://storageexplorer.com)gibi bir Depolama Gezgini kullanarak veya depolama istemci kitaplığı ya da PowerShell kullanarak program aracılığıyla görüntüleyebilirsiniz.
 
 $Logs kapsayıcısına erişme hakkında daha fazla bilgi için bkz. [Storage Analytics günlüğü](storage-analytics-logging.md).
 

@@ -2,20 +2,30 @@
 title: Azure Data Lake Analytics’e Genel Bakış
 description: Data Lake Analytics, herhangi bir ölçekteki bulut verilerinizden elde edilen içgörüleri kullanarak işinizi yönlendirmenize olanak tanır.
 services: data-lake-analytics
+author: saveenr
+ms.author: saveenr
+ms.reviewer: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: 01a38829056d8f96ddc1029fc4df5ec79414e8bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321014"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475128"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Azure Data Lake Analytics nedir?
 
 Azure Data Lake Analytics, büyük verileri kolaylaştıran, isteğe bağlı bir analiz işi hizmetidir. Donanım dağıtma, yapılandırma ve ayarlama işlemleri yerine, verilerinizi dönüştürmek ve değerli öngörüleri ayıklamak için sorgular yazarsınız. Analiz hizmeti sadece ne kadar güce ihtiyacınız olduğunu ayarlayarak her ölçekteki işin üstesinden gelmenizi sağlar. Yalnızca işiniz çalıştırıldığında ücret ödersiniz; bu da hizmeti uygun maliyetli kılar. 
+
+## <a name="azure-data-lake-analytics-recent-update-information"></a>Azure Data Lake Analytics son güncelleştirme bilgileri
+
+Azure Data Lake Analytics hizmeti belirli amaçlarla düzenli aralıklarla güncelleştirilir. Bu hizmet için bileşen güncelleştirme, bileşen Beta önizleme vb. desteği sağlamaya devam ediyoruz. 
+
+- Son güncelleştirme genel bilgileri için [Data Lake Analytics yenilikler nelerdir?](data-lake-analytics-whats-new.md)bölümüne bakın.
+- Her güncelleştirme ayrıntıları için [Azure Data Lake Analytics sürüm notuna](https://github.com/Azure/AzureDataLake/tree/master/docs/Release_Notes)bakın.
 
 ## <a name="dynamic-scaling"></a>Dinamik ölçeklendirme
   
@@ -41,8 +51,10 @@ Data Lake Analytics, büyük veri iş yüklerini çalıştırmaya yönelik uygun
   
 Data Lake Analytics en yüksek performans, aktarım hızı ve paralelleştirme için Azure Data Lake Storage ve Azure depolama Blobları, Azure SQL veritabanı, Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) ile birlikte kullanılabilir.
 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Azure Data Lake Analytics yenilikleri](data-lake-analytics-whats-new.md) kullanarak en son Azure Data Lake Analytics güncelleştirme bölümüne bakın.
 * [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md) kullanarak Data Lake Analytics kullanmaya başlama
 * Azure Data Lake Analytics [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)  |  [Azure .NET SDK 'sını](data-lake-analytics-manage-use-dotnet-sdk.md) kullanarak yönetin  |  [Node.js](data-lake-analytics-manage-use-nodejs.md)
 * [Data Lake Analytics ile maliyetleri denetleme ve tasarruf etme](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

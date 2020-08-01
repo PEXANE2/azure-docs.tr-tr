@@ -1,18 +1,18 @@
 ---
 title: Azure IoT model deposunun kavramlarını anlayın | Microsoft Docs
 description: Bir çözüm geliştiricisi veya BT uzmanı olarak, Azure IoT model deposunun temel kavramları hakkında bilgi edinin.
-author: JimacoMS3
-ms.author: v-jambra
+author: prashmo
+ms.author: prashmo
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 53ae5bf15c303f26d48550734f46e69ef1fcdd75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352488"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475507"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT model deposu
 
@@ -42,7 +42,7 @@ REST API kullanarak ortak modeli program aracılığıyla görüntülemek için 
 
 ```csharp
 var httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("<url>");
+httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
 var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
@@ -68,7 +68,7 @@ Bir Azure AD kiracısı ayarlama ve bir Azure AD kiracısında Kullanıcı veya 
 
 Aşağıdaki tabloda, şirket modeli deposundaki desteklenen yetenekler ve bunlarla ilişkili izinler özetlenmektedir:
 
-| Yetenek  | İzin| Açıklama|
+| Özellik  | İzin| Açıklama|
 |-------------|-----------|------------|
 |Modelleri oku|Modelleri oku|Varsayılan olarak, şirket kiracısındaki tüm kullanıcılar şirket modellerini görüntüleyebilir. Ayrıca, Kullanıcı aynı zamanda diğer şirketler tarafından bunlara paylaşılan özel model (ler) de görüntüleyebilir.|
 |Erişimi Yönetme|Erişimi Yönetme|Kuruluştaki diğer kullanıcılar için Kullanıcı rolü atamasını (ekleme veya kaldırma) yönetin.|
@@ -77,7 +77,7 @@ Aşağıdaki tabloda, şirket modeli deposundaki desteklenen yetenekler ve bunla
 
 Aşağıdaki tabloda, desteklenen roller ve erişim yönetimi için kullanılabilen model deposundaki özellikleri özetlenmektedir.
 
-|Rol|Yetenek|
+|Rol|Özellik|
 |----|----------|
 |TenantAdministrator|Erişimi yönetme, modelleri okuma|
 |Oluşturucu|Model oluşturma, modelleri okuma|

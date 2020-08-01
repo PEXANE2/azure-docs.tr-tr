@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 55ee6e99cdf6d77ea1e78799e016d4c276e85fcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 07/30/2020
+ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423873"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475439"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
 Bu makalede, Azure Bilişsel Arama içerik ve işlemleri koruyabilecek temel güvenlik özellikleri açıklanmaktadır. 
 
-+ Depolama katmanında, bekleyen şifreleme platform düzeyinde verilmiştir, ancak Bilişsel Arama Ayrıca, kullanıcıya ait ve Microsoft tarafından yönetilen anahtarların çift korumasını isteyen müşteriler için bir "Çift şifreleme" seçeneği sunar.
++ Depolama katmanında, bekleyen şifreleme platform düzeyinde verilir, ancak Bilişsel Arama ek bir şifreleme katmanı için Azure Key Vault aracılığıyla müşteri tarafından yönetilen anahtarlar da sunar.
 
 + Gelen güvenlik, arama hizmeti uç noktasını, güvenlik seviyelerine karşı koruma sağlar: istekteki API anahtarlarından, güvenlik duvarında gelen kurallara, genel İnternet 'ten hizmetinizi tamamen koruyan özel uç noktalara.
 
@@ -107,7 +107,7 @@ Bir Kullanıcı bir dizine nasıl eriştiğinde ve diğer nesneler istekteki API
 
 Arama sonuçları üzerinde ayrıntılı, Kullanıcı başına denetim istiyorsanız, sorgularda güvenlik filtreleri oluşturabilir, bu, belirli bir güvenlik kimliğiyle ilişkili belgeleri döndürür. Kimlik tabanlı erişim denetimi, önceden tanımlanmış roller ve rol atamaları yerine, belgelerin ve içeriğin arama sonuçlarını kimliklere göre kırpan bir *filtre* olarak uygulanır. Aşağıdaki tabloda yetkisiz içeriğin arama sonuçlarını kırpma için iki yaklaşım açıklanmaktadır.
 
-| Yaklaşım | Description |
+| Yaklaşım | Açıklama |
 |----------|-------------|
 |[Kimlik filtrelerine göre güvenlik kırpması](search-security-trimming-for-azure-search.md)  | Kullanıcı kimliği erişim denetimi uygulamak için temel iş akışını belgeler. Bir dizine güvenlik tanımlayıcıları eklenmesini ve sonra yasaklanmış içeriğin sonuçlarını kırpmak için bu alana karşı filtrelemeyi açıklar. |
 |[Azure Active Directory kimliklerine göre güvenlik kırpması](search-security-trimming-for-azure-search-with-aad.md)  | Bu makale, Azure bulut platformunda [ücretsiz hizmetlerden](https://azure.microsoft.com/free/) biri olan Azure ACTIVE DIRECTORY (AAD) ' den kimlik alma adımlarını sağlayan önceki makaleye genişletilir. |
@@ -124,6 +124,10 @@ Buna karşılık, bir dizin oluşturma veya silme yeteneği gibi, hizmette barı
 ## <a name="certifications-and-compliance"></a>Sertifikalamaları ve uyumluluk
 
 Azure Bilişsel Arama, genel bulut ve Azure Kamu için birden çok küresel, bölgesel ve sektöre özgü standartlar için sertifikalandırilmiştir. Tüm liste için, resmi denetim raporları sayfasından [ **Microsoft Azure uyumluluk teklifleri** teknik](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) incelemesini indirin.
+
+Uyumluluk için Azure [ilkesi](../governance/policy/overview.md) 'Ni kullanarak [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md)'nın yüksek güvenlikli en iyi yöntemlerini uygulamanıza yardımcı olabilirsiniz. Azure Güvenlik kıyaslaması, hizmet ve veri tehditlerini azaltmak için gerçekleştirmeniz gereken önemli eylemlerle eşlenen güvenlik denetimlerine yönelik güvenlik önerileri koleksiyonudur. [Ağ güvenliği](../security/benchmarks/security-control-network-security.md), [günlüğe kaydetme ve izleme](../security/benchmarks/security-control-logging-monitoring.md)dahil olmak üzere 11 güvenlik denetimi ve birkaç ad vermek için [veri koruması](../security/benchmarks/security-control-data-protection.md) vardır.
+
+Azure Ilkesi, Azure 'da yerleşik olarak bulunan ve Azure Güvenlik kıyaslaması dahil olmak üzere birden çok standart için uyumluluğu yönetmenize yardımcı olan bir özelliktir. İyi bilinen değerlendirmeler için Azure Ilkesi, ilkeleri daha kolay bir şekilde oluşturabilmeniz için yerleşik tanımlar sağlar. Azure Bilişsel Arama için, tanılama günlüğü için bir yerleşik tanım vardır. Bu, günlüğe kaydetme ve izleme güvenlik denetimiyle uyumlu olmayan herhangi bir arama hizmetini tanımlayan ve düzelten bir ilke atayabilmeniz anlamına gelir. Daha fazla bilgi için bkz. [Azure Ilke mevzuatı uyumluluk denetimleri bilişsel arama](security-controls-policy.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
