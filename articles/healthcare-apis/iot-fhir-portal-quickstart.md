@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: punagpal
-ms.openlocfilehash: bc85765666ba3baeae7ec795118f615f6b4b4368
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95f5b5f13401c224ccf67c5f013deedf00379de7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102375"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446814"
 ---
 # <a name="quickstart-deploy-iot-connector-preview-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak IoT bağlayıcısını dağıtma (Önizleme)
 
@@ -22,7 +22,7 @@ IoT Bağlayıcısı, FHıR için Azure API 'nin, tıbbi nesnelerin Interneti (Io
 - IoT bağlayıcısına veri göndermek için sanal cihaz kullanma
 - FHıR için Azure API üzerinde IoT Bağlayıcısı tarafından oluşturulan kaynakları görüntüleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - FHıR kaynağı için Azure API- [Azure Portal kullanarak fhır Için Azure API dağıtma](fhir-paas-portal-quickstart.md)
@@ -181,7 +181,7 @@ IoT Central Uygulamanızı dağıttıktan sonra, iki kullanıma hazır sanal ayg
 IoT Bağlayıcısı tarafından oluşturulan FHıR tabanlı gözlemler kaynağını, Postman kullanarak FHıR için Azure API üzerinde görüntüleyebilirsiniz. [Fhır Için Azure API 'sine erişmek üzere Postman](access-fhir-postman-tutorial.md) 'nizi ayarlayın ve `GET` `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` sinyal oranı değeri olan gözehır kaynaklarını görüntülemek için bir istek yapın. 
 
 > [!TIP]
-> Kullanıcının FHıR veri düzlemi için Azure API 'sine uygun erişimi olduğundan emin olun. Gerekli veri düzlemi rollerini atamak için [Azure rol tabanlı Access Control](configure-azure-rbac.md) kullanın.
+> Kullanıcının FHıR veri düzlemi için Azure API 'sine uygun erişimi olduğundan emin olun. Gerekli veri düzlemi rollerini atamak için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](configure-azure-rbac.md) kullanın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

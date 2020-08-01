@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: d956ce273a7ea630bfdcf900fbbba5e8be30b254
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 940a24aedb8592d0e809bc79dc1c8977bc3abd38
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288459"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448975"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Hızlı adımlar: Azure 'da Linux VM 'Ler için SSH genel-özel anahtar çifti oluşturma ve kullanma
 
@@ -37,10 +37,10 @@ Aşağıdaki komut RSA şifrelemesini ve 4096 bit uzunluğunu kullanarak bir SSH
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-[Az VM Create](/cli/azure/vm#az-vm-create) komutuyla VM 'nizi oluşturmak IÇIN [Azure CLI](/cli/azure) kullanıyorsanız, isteğe bağlı olarak, seçeneğini kullanarak SSH ortak ve özel anahtar dosyaları oluşturabilirsiniz `--generate-ssh-keys` . Anahtar dosyaları, seçeneğiyle, aksi belirtilmedikçe ~/PST SSH dizininde depolanır `--ssh-dest-key-path` . `--generate-ssh-keys`Bu seçenek, mevcut anahtar dosyalarının üzerine yazılmayacak, bunun yerine bir hata döndürüyor. Aşağıdaki komutta, *VMName* ve *RgName* değerlerini kendi değerlerinizle değiştirin:
+[Az VM Create](/cli/azure/vm#az-vm-create) komutuyla VM 'nizi oluşturmak IÇIN [Azure CLI](/cli/azure) kullanıyorsanız, isteğe bağlı olarak, seçeneğini kullanarak SSH ortak ve özel anahtar dosyaları oluşturabilirsiniz `--generate-ssh-keys` . Anahtar dosyaları, seçeneğiyle, aksi belirtilmedikçe ~/PST SSH dizininde depolanır `--ssh-dest-key-path` . Bir SSH anahtar çifti zaten varsa ve `--generate-ssh-keys` seçenek kullanılırsa, yeni bir anahtar çifti oluşturulmaz, bunun yerine var olan anahtar çifti kullanılacaktır. Aşağıdaki komutta, *VMName* ve *RgName* değerlerini kendi değerlerinizle değiştirin:
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --generate-ssh-keys 
+az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
 ```
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>VM dağıtımında SSH ortak anahtarı sağlama

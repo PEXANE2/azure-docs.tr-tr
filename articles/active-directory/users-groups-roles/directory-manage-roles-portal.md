@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221291"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448704"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory yönetici rollerini görüntüleme ve atama
 
@@ -56,6 +56,12 @@ Genel yönetici veya ayrıcalıklı rol yöneticisiyseniz, üyeleri kolayca ekle
 Rolün üyelerini görüntülerken, rol ataması tarafından verilen izinlerin tüm listesini görmek için **Açıklama** ' yı seçin. Sayfa, Dizin rollerini yönetirken size yol göstermeye yardımcı olacak ilgili belgelerin bağlantılarını içerir.
 
 ![Yönetici rolü için izin listesi](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="download-role-assignments"></a>Rol atamalarını indir
+
+Belirli bir rolün tüm atamalarını indirmek için, **Roller ve yöneticiler** sayfasında bir rol seçin ve ardından **rol atamalarını indir**' i seçin. Bu rolün tüm kapsamlarındaki atamaları listeleyen bir CSV dosyası indirilir.
+
+![bir rol için tüm atamaları indirin](./media/directory-manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>Rol atama
 

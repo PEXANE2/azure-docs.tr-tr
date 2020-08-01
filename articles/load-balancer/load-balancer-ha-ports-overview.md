@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920622"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447063"
 ---
 # <a name="high-availability-ports-overview"></a>Yüksek kullanılabilirlik bağlantı noktalarına genel bakış
 
@@ -32,7 +32,7 @@ HA bağlantı noktaları Yük Dengeleme kuralları, ön uç ve arka uç bağlant
 
 ## <a name="why-use-ha-ports"></a>HA bağlantı noktaları neden kullanılmalıdır?
 
-### <a name="network-virtual-appliances"></a><a name="nva"></a>Ağ sanal aletleri
+### <a name="network-virtual-appliances"></a><a name="nva"></a>Ağ sanal cihazları
 
 Azure iş yükünüzü birden çok güvenlik tehditlerine karşı korumaya yardımcı olmak için NVA 'lar kullanabilirsiniz. Bu senaryolarda NVA 'lar kullandığınızda, güvenilir ve yüksek oranda kullanılabilir olmaları ve isteğe bağlı olarak ölçeklendirilmesi gerekir.
 
@@ -99,5 +99,5 @@ Arka uç kaynakları için *bir* genel standart Load Balancer KAYNAĞıNı, ha b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Portal aracılığıyla ıLB 'niz için HA bağlantı noktalarını yapılandırma hakkında bilgi edinin (Tutorial-Load-Balancer-Standard-internal-Portal. mdl # Create-a-Load-dengeleyici-Rule), [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)veya [Şablonlar](load-balancer-get-started-ilb-arm-template.md).
+- Portal, [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)veya [Şablonlar](load-balancer-get-started-ilb-arm-template.md) [aracılığıyla ILB 'Niz için ha bağlantı noktalarını nasıl yapılandıracağınızı öğrenin](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule).
 - [Standart Load Balancer hakkında bilgi edinin](load-balancer-standard-overview.md)

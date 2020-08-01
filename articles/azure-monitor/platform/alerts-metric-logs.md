@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: b8e2f580bb21d2f432ce5dcbc3e06c15ba6f380b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327217"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446183"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Izleyici 'de Günlükler için ölçüm uyarıları oluşturma
 
@@ -25,7 +25,7 @@ Azure 'daki veya Şirket içindeki kaynaklar dahil olmak üzere günlüklerdeki 
 
 - Windows & Linux makineleri için [performans sayaçları](./data-sources-performance-counters.md)
 - [Aracı Durumu için sinyal kayıtları](../insights/solution-agenthealth.md)
-- [Yönetim kayıtlarını Güncelleştir](../../automation/automation-update-management.md)
+- [Yönetim kayıtlarını Güncelleştir](../../automation/update-management/update-mgmt-overview.md)
 - [Olay veri](./data-sources-windows-events.md) günlükleri
 
 Azure 'da sorgu tabanlı [günlük uyarıları](./alerts-log.md) üzerinde **Günlükler için ölçüm uyarılarını** kullanmanın birçok avantajı vardır; Bunlardan bazıları aşağıda listelenmiştir:
@@ -55,7 +55,7 @@ Log Analytics verilerinde toplanan Günlükler için ölçüm öncesinde, aşağ
 
 1. **Etkin Log Analytics çalışma alanı**: geçerli ve etkin bir Log Analytics çalışma alanı bulunmalıdır. Daha fazla bilgi için bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md).
 2. **Aracı Log Analytics çalışma alanı için yapılandırılmış**: Azure VM 'ler (ve/veya) Şirket Içi VM 'ler için, önceki adımda kullanılan Log Analytics çalışma alanına veri göndermek üzere aracının yapılandırılması gerekir. Daha fazla bilgi için bkz. [Log Analytics aracısına genel bakış](./agents-overview.md).
-3. **Desteklenen Log Analytics çözümleri yüklendi**: Log Analytics çözüm yapılandırılmalı ve Log Analytics çalışma alanında veri göndermesi gerekir-desteklenen çözümler, [Windows & Linux için performans sayaçlarıdır](./data-sources-performance-counters.md), aracı durumu, [güncelleştirme yönetimi](../../automation/automation-update-management.md)ve [Olay verileri](./data-sources-windows-events.md) [için sinyal kayıtları](../insights/solution-agenthealth.md).
+3. **Desteklenen Log Analytics çözümleri yüklendi**: Log Analytics çözüm yapılandırılmalı ve Log Analytics çalışma alanında veri göndermesi gerekir-desteklenen çözümler, [Windows & Linux için performans sayaçlarıdır](./data-sources-performance-counters.md), aracı durumu, [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)ve [Olay verileri](./data-sources-windows-events.md) [için sinyal kayıtları](../insights/solution-agenthealth.md).
 4. **Günlükleri göndermek için yapılandırılan Log Analytics çözümleri**: Log Analytics çözüm, [Log Analytics çalışma alanları için desteklenen ölçümlere](./metrics-supported.md#microsoftoperationalinsightsworkspaces) karşılık gelen gerekli günlüklere/verilere sahip olmalıdır. Örneğin, *% kullanılabilir bellek* sayacı için Ilk olarak [performans sayaçları](./data-sources-performance-counters.md) çözümünde yapılandırılması gerekir.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Günlükler için ölçüm uyarısını yapılandırma

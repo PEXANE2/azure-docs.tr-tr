@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387838"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448960"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -275,7 +275,7 @@ Microsoft, Azure DevTest Labs destekleyen temel kaynaklarda güvenlik açığı 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: otomatik işletim sistemi düzeltme eki yönetimi çözümünü dağıtma
 **Rehberlik:** DevTest Labs içinde barındırılan Windows ve Linux sanal makinelerinize en son güvenlik güncelleştirmelerinin yüklendiğinden emin olmak için Azure Güncelleştirme Yönetimi kullanın. Windows VM 'Leri için Windows Update etkinleştirildiğinden ve otomatik olarak güncelleştirilecek şekilde ayarlandığından emin olun. Bu ayar şu anda DevTest Labs aracılığıyla yapılandırma için kullanılamaz, ancak Laboratuvar Yöneticisi/abonelik Yöneticisi bu ayarı aboneliklerindeki temel alınan işlem VM 'lerinde yapılandırabilir. 
 
-- [Azure 'da VM 'Ler için Güncelleştirme Yönetimi Yapılandırma](../automation/automation-update-management.md)
+- [Azure 'da VM 'Ler için Güncelleştirme Yönetimi Yapılandırma](../automation/update-management/update-mgmt-overview.md)
 - [Güvenlik Merkezi tarafından izlenen Azure Güvenlik ilkelerini anlama](../security-center/security-center-policy-definitions.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
@@ -289,8 +289,8 @@ Tüm istenen yapılandırmalara göre düzenli olarak görüntü oluşturup dağ
 
 Abonelik Yöneticisi olarak, DevTest Labs VM 'Leri için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi çözümünü de kullanabilirsiniz. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak Configuration Manager kullanan makinelere yaması sağlar.
 
-- [Azure 'da Güncelleştirme Yönetimi çözümü](../automation/automation-update-management.md)
-- [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](../automation/automation-tutorial-update-management.md)
+- [Azure 'da Güncelleştirme Yönetimi çözümü](../automation/update-management/update-mgmt-overview.md)
+- [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../automation/update-management/update-mgmt-overview.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 

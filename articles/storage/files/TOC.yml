@@ -31,14 +31,6 @@
           href: storage-files-active-directory-overview.md
         - name: Doğrudan erişim için ağ konusunda dikkat edilmesi gerekenler
           href: storage-files-networking-overview.md
-        - name: Yanlışlıkla veri silinmesini engelleme
-          href: storage-files-prevent-file-share-deletion.md
-        - name: Dosya paylaşımlarını yedekleme
-          href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Bekleme sırasında şifreleme
-          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Müşteri tarafından yönetilen anahtarlarla bekleyen verileri şifreleme
-          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Olağanüstü durum kurtarma ve yük devretme
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure dosya paylaşımı anlık görüntüleri
@@ -69,6 +61,14 @@
           href: storage-sync-files-networking-overview.md
         - name: Bulutta katmanlama hakkında
           href: storage-sync-cloud-tiering.md
+    - name: Yanlışlıkla veri silinmesini engelleme
+      href: storage-files-prevent-file-share-deletion.md
+    - name: Dosya paylaşımlarını yedekleme
+      href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Bekleme sırasında şifreleme
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Müşteri tarafından yönetilen anahtarlarla bekleyen verileri şifreleme
+      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Ölçeklenebilirlik ve performans hedefleri
       href: storage-files-scale-targets.md
     - name: Uyumluluk teklifleri
@@ -85,6 +85,70 @@
           href: storage-files-how-to-create-large-file-share.md
         - name: Premium dosya paylaşımı oluşturma
           href: storage-how-to-create-premium-fileshare.md
+    - name: Dağıtma
+      items:
+        - name: Azure Dosyaları’nı dağıtma
+          href: storage-files-deployment-guide.md
+        - name: Azure Dosya Eşitleme’yi dağıtma
+          href: storage-sync-files-deployment-guide.md
+        - name: Premium dosya paylaşımları ile FCI SQL Server
+          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Bağlama
+      items:
+        - name: Azure Dosyaları'nı Windows ile kullanma
+          href: storage-how-to-use-files-windows.md
+        - name: Azure Dosyaları'nı Linux ile kullanma
+          href: storage-how-to-use-files-linux.md
+        - name: Azure Dosyaları'nı macOS ile kullanma
+          href: storage-how-to-use-files-mac.md
+    - name: Ağ
+      items:
+        - name: Azure Dosyaları
+          items:
+            - name: Azure Dosyalar ağ uç noktalarını yapılandırma
+              href: storage-files-networking-endpoints.md
+            - name: Azure Dosyalar için DNS iletmeyi yapılandırma
+              href: storage-files-networking-dns.md
+        - name: Azure Dosya Eşitleme
+          items:
+            - name: Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
+              href: storage-sync-files-networking-endpoints.md
+            - name: Dosya Eşitleme ara sunucu ve güvenli duvarı ayarlarını yapılandırma
+              href: storage-sync-files-firewall-and-proxy.md
+        - name: Siteden Siteye VPN’yi yapılandırma
+          href: storage-files-configure-s2s-vpn.md
+        - name: Windows’da Noktadan Siteye VPN’yi yapılandırma
+          href: storage-files-configure-p2s-vpn-windows.md
+        - name: Linux’ta Noktadan Siteye VPN’yi yapılandırma
+          href: storage-files-configure-p2s-vpn-linux.md
+    - name: Kimlik doğrulaması
+      items:
+        - name: Şirket içi AD DS kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
+          items:
+            - name: AD DS’ye genel bakış
+              href: storage-files-identity-auth-active-directory-enable.md
+            - name: AD DS kimlik doğrulamasını etkinleştirme
+              href: storage-files-identity-ad-ds-enable.md
+            - name: Paylaşım düzeyinde izinler atama
+              href: storage-files-identity-ad-ds-assign-permissions.md
+            - name: Dizin/dosya düzeyinde izinler atama
+              href: storage-files-identity-ad-ds-configure-permissions.md
+            - name: Dosya paylaşımını bağlama
+              href: storage-files-identity-ad-ds-mount-file-share.md
+            - name: Parola güncelleştirme
+              href: storage-files-identity-ad-ds-update-password.md
+        - name: Azure AD DS kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
+          href: storage-files-identity-auth-active-directory-domain-service-enable.md
+    - name: Yönetme
+      items:
+        - name: Azure Dosya Eşitleme ile bir sunucuyu kaydetme
+          href: storage-sync-files-server-registration.md
+        - name: Azure Dosya Eşitleme Sunucusu uç noktası ekleme
+          href: storage-sync-files-server-endpoint.md
+        - name: Azure bağımsız bulutlarında depolamayı yönetme
+          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Hesap yük devretmesi başlatma
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Veri koruma
       items:
         - name: Geçici silmeyi etkinleştirme
@@ -133,70 +197,6 @@
               href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: REST API
               href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Dağıtma
-      items:
-        - name: Azure Dosyaları’nı dağıtma
-          href: storage-files-deployment-guide.md
-        - name: Azure Dosya Eşitleme’yi dağıtma
-          href: storage-sync-files-deployment-guide.md
-        - name: Premium dosya paylaşımları ile FCI SQL Server
-          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Bağlama
-      items:
-        - name: Azure Dosyaları'nı Windows ile kullanma
-          href: storage-how-to-use-files-windows.md
-        - name: Azure Dosyaları'nı Linux ile kullanma
-          href: storage-how-to-use-files-linux.md
-        - name: Azure Dosyaları'nı macOS ile kullanma
-          href: storage-how-to-use-files-mac.md
-    - name: Ağ
-      items:
-        - name: Azure Dosyaları
-          items:
-            - name: Azure Dosyalar ağ uç noktalarını yapılandırma
-              href: storage-files-networking-endpoints.md
-            - name: Azure Dosyalar için DNS iletmeyi yapılandırma
-              href: storage-files-networking-dns.md
-        - name: Azure Dosya Eşitleme
-          items:
-            - name: Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
-              href: storage-sync-files-networking-endpoints.md
-            - name: Dosya Eşitleme ara sunucu ve güvenli duvarı ayarlarını yapılandırma
-              href: storage-sync-files-firewall-and-proxy.md
-        - name: Siteden Siteye VPN’yi yapılandırma
-          href: storage-files-configure-s2s-vpn.md
-        - name: Windows’da Noktadan Siteye VPN’yi yapılandırma
-          href: storage-files-configure-p2s-vpn-windows.md
-        - name: Linux’ta Noktadan Siteye VPN’yi yapılandırma
-          href: storage-files-configure-p2s-vpn-linux.md
-    - name: Yönetme
-      items:
-        - name: Azure Dosya Eşitleme ile bir sunucuyu kaydetme
-          href: storage-sync-files-server-registration.md
-        - name: Azure Dosya Eşitleme Sunucusu uç noktası ekleme
-          href: storage-sync-files-server-endpoint.md
-        - name: Azure bağımsız bulutlarında depolamayı yönetme
-          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Hesap yük devretmesi başlatma
-          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Kimlik doğrulaması
-      items:
-        - name: Şirket içi AD DS kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
-          items:
-            - name: AD DS’ye genel bakış
-              href: storage-files-identity-auth-active-directory-enable.md
-            - name: AD DS kimlik doğrulamasını etkinleştirme
-              href: storage-files-identity-ad-ds-enable.md
-            - name: Paylaşım düzeyinde izinler atama
-              href: storage-files-identity-ad-ds-assign-permissions.md
-            - name: Dizin/dosya düzeyinde izinler atama
-              href: storage-files-identity-ad-ds-configure-permissions.md
-            - name: Dosya paylaşımını bağlama
-              href: storage-files-identity-ad-ds-mount-file-share.md
-            - name: Parola güncelleştirme
-              href: storage-files-identity-ad-ds-update-password.md
-        - name: Azure AD DS kimlik doğrulamasını ve yetkilendirmeyi etkinleştirme
-          href: storage-files-identity-auth-active-directory-domain-service-enable.md
     - name: İzleme
       items:
         - name: Azure Dosya Eşitleme’yi izleme
@@ -247,6 +247,8 @@
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Depolama hesabı için altyapı şifrelemesini etkinleştirme
           href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json
+        - name: Gelişmiş tehdit koruması
+          href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Güvenlik duvarlarını ve sanal ağları yapılandırma
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Güvenli aktarım gerektir

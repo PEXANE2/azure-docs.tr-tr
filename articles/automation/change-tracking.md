@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185594"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447931"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -203,7 +203,7 @@ Değişiklik İzleme ve envanterin önemli bir özelliği, karma ortamınızın 
 
 - Otomasyon hesabından özelliği etkinleştirmek için bkz. [Otomasyon hesabından değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-auto-acct.md).
 
-- Azure portal göz atarak özelliği etkinleştirmek için, bkz. [Azure portal değişiklik izleme ve envanteri etkinleştirme](automation-onboard-solutions-from-browse.md).
+- Azure portal göz atarak özelliği etkinleştirmek için, bkz. [Azure portal değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-browse.md).
 
 - Bir runbook 'tan özelliği etkinleştirmek için, bkz. [runbook 'tan değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-runbook.md).
 

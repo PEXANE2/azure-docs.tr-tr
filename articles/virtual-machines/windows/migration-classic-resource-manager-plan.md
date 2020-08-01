@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: b1e550fde0d43b4d2c7bd1a64856edeac607cab3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14beaf4fc0f207abe652a9ed62c974f7ab4b8e79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999097"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449101"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>IaaS kaynaklarının klasik 'ten Windows 'da Azure Resource Manager geçişini planlama
 
@@ -26,7 +26,7 @@ Geçiş yolculuğunun dört genel aşaması vardır:<br>
 
 ![Geçiş aşamaları](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Planlama
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Teknik hususlar ve avantajları
 
@@ -197,7 +197,7 @@ Göz önüne almanız gerekenler:
 
 Artık Azure Resource Manager hangi hizmetlerde etkinleştirmek istediğinizi bilerek yapın.  Birçok müşteri, Azure ortamları için aşağıda etkileyici bilgi bulur:
 
-- [Rol tabanlı Access Control](../../role-based-access-control/overview.md).
+- [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
 - Daha [kolay ve daha denetimli dağıtıma yönelik şablonlar Azure Resource Manager](../../azure-resource-manager/templates/overview.md).
 - [Etiketler](../../azure-resource-manager/management/tag-resources.md).
 - [Etkinlik denetimi](../../azure-resource-manager/management/view-activity-logs.md)

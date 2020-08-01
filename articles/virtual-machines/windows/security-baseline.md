@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 11b532b5ece10c8a9ac6dad61e4ca64a9f19f901
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387022"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445206"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Sanal Makineleri için Azure Güvenlik temeli
 
@@ -620,9 +620,9 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 **Rehberlik**: sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure güncelleştirme yönetimi çözümünü kullanın. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak Configuration Manager kullanan makinelere yaması sağlar.
 
-* [Azure 'da Güncelleştirme Yönetimi çözümü](../../automation/automation-update-management.md)
+* [Azure 'da Güncelleştirme Yönetimi çözümü](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](../../automation/automation-tutorial-update-management.md)
+* [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -632,9 +632,9 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 **Rehberlik**: bir üçüncü taraf düzeltme eki yönetimi çözümü kullanabilirsiniz. Sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi çözümünü kullanabilirsiniz. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak Configuration Manager kullanan makinelere yaması sağlar.
 
-* [Azure 'da Güncelleştirme Yönetimi çözümü](../../automation/automation-update-management.md)
+* [Azure 'da Güncelleştirme Yönetimi çözümü](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](../../automation/automation-tutorial-update-management.md)
+* [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 

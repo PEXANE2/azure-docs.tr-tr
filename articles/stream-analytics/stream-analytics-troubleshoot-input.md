@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045085"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448877"
 ---
 # <a name="troubleshoot-input-connections"></a>Giriş bağlantısı sorunlarını giderme
 
@@ -71,7 +71,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Event Hubs örneğinize yeni bir tüketici grubu eklemek için aşağıdaki adımları izleyin:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. Olay Hub 'ınızı bulun.
 
@@ -160,6 +160,10 @@ UNION
 SELECT foo FROM DataTwo
 
 ```
+
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>Bölüm başına okuyucu IoT Hub sınırı aşıyor
+
+Stream Analytics işler, IoT Hub olayları bağlamak ve okumak için IoT Hub yerleşik [Olay Hub 'ı ile uyumlu uç noktasını](../iot-hub/iot-hub-devguide-messages-read-builtin.md) kullanır. Bölüm başına okuma, IoT Hub sınırlarını aşarsa, bu sorunu çözmek için [Olay Hub 'ı çözümlerini](#readers-per-partition-exceeds-event-hubs-limit) kullanabilirsiniz. Yerleşik uç nokta için IoT Hub Portal uç noktası oturumunda veya [IoT Hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)aracılığıyla bir tüketici grubu oluşturabilirsiniz.
 
 ## <a name="get-help"></a>Yardım alın
 

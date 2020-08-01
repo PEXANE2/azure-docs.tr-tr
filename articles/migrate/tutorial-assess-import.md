@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 98675b0f986ecb78ff122ed052a01d521aac1f6f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 40dd81b9eb7ff2b20abb1bf3ea4337b63fb2a831
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114219"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447077"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
 
@@ -103,31 +103,31 @@ Sunucu verilerini toplayın ve CSV dosyasına ekleyin.
 
 Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir:
 
-**Alan adı** | **Zorunlu** | **Ayrıntılar**
+**Alan adı** | **Girilmesi** | **Ayrıntılar**
 --- | --- | ---
 **Sunucu adı** | Yes | Tam etki alanı adını (FQDN) belirtmeyi öneririz.
-**IP adresi** | No | Sunucu adresi.
+**IP adresi** | Hayır | Sunucu adresi.
 **Çekirdekler** | Yes | Sunucuya ayrılan işlemci çekirdekleri sayısı.
 **Bellek** | Yes | Sunucuya ayrılan toplam RAM (MB).
 **İşletim sistemi adı** | Yes | Sunucu işletim sistemi. <br/> [Bu](#supported-operating-system-names) listedeki adları eşleşen veya içeren işletim sistemi adları değerlendirme tarafından tanınır.
-**İşletim sistemi sürümü** | No | Sunucu işletim sistemi sürümü.
-**İşletim sistemi mimarisi** | No | Sunucu işletim sistemi mimarisi <br/> Geçerli değerler şunlardır: x64, x86, AMD64, 32-bit veya 64 bit
-**Disk sayısı** | No | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
-**Disk 1 boyutu**  | No | Maksimum disk boyutu (GB cinsinden).<br/>Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
-**Disk 1 okuma Ops** | No | Saniye başına disk okuma işlemi.
-**Disk 1 yazma Ops** | No | Saniye başına disk yazma işlemi.
-**Disk 1 okuma aktarım hızı** | No | Diskten saniyede okunan veriler, MB/saniye cinsinden.
-**Disk 1 yazma aktarım hızı** | No | Saniyede diske yazılan veriler (MB/saniye).
-**CPU kullanım yüzdesi** | No | Kullanılan CPU yüzdesi.
-**Bellek kullanım yüzdesi** | No | Kullanılan RAM yüzdesi.
-**Toplam disk okuma Ops** | No | Saniye başına disk okuma işlemi.
-**Toplam disk yazma Ops** | No | Saniye başına disk yazma işlemi.
-**Toplam disk okuma performansı** | No | Diskten MB/saniye cinsinden okunan veriler.
-**Toplam disk yazma performansı** | No | Diske yazılan veriler MB/saniye cinsinden.
-**Aktarım sırasında ağ** | No | Sunucu tarafından saniyede MB cinsinden alınan veriler.
-**Ağ çıkış performansı** | No | Sunucu tarafından saniye başına MB cinsinden aktarılan veriler.
-**Bellenim türü** | No | Sunucu üretici yazılımı. Değerler "BIOS" veya "UEFı" olabilir.
-**MAC adresi**| No | Sunucu MAC adresi.
+**İşletim sistemi sürümü** | Hayır | Sunucu işletim sistemi sürümü.
+**İşletim sistemi mimarisi** | Hayır | Sunucu işletim sistemi mimarisi <br/> Geçerli değerler şunlardır: x64, x86, AMD64, 32-bit veya 64 bit
+**Disk sayısı** | Hayır | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
+**Disk 1 boyutu**  | Hayır | Maksimum disk boyutu (GB cinsinden).<br/>Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
+**Disk 1 okuma Ops** | Hayır | Saniye başına disk okuma işlemi.
+**Disk 1 yazma Ops** | Hayır | Saniye başına disk yazma işlemi.
+**Disk 1 okuma aktarım hızı** | Hayır | Diskten saniyede okunan veriler, MB/saniye cinsinden.
+**Disk 1 yazma aktarım hızı** | Hayır | Saniyede diske yazılan veriler (MB/saniye).
+**CPU kullanım yüzdesi** | Hayır | Kullanılan CPU yüzdesi.
+**Bellek kullanım yüzdesi** | Hayır | Kullanılan RAM yüzdesi.
+**Toplam disk okuma Ops** | Hayır | Saniye başına disk okuma işlemi.
+**Toplam disk yazma Ops** | Hayır | Saniye başına disk yazma işlemi.
+**Toplam disk okuma performansı** | Hayır | Diskten MB/saniye cinsinden okunan veriler.
+**Toplam disk yazma performansı** | Hayır | Diske yazılan veriler MB/saniye cinsinden.
+**Aktarım sırasında ağ** | Hayır | Sunucu tarafından saniyede MB cinsinden alınan veriler.
+**Ağ çıkış performansı** | Hayır | Sunucu tarafından saniye başına MB cinsinden aktarılan veriler.
+**Bellenim türü** | Hayır | Sunucu üretici yazılımı. Değerler "BIOS" veya "UEFı" olabilir.
+**MAC adresi**| Hayır | Sunucu MAC adresi.
 
 
 ### <a name="add-operating-systems"></a>İşletim sistemleri ekleme
@@ -182,7 +182,7 @@ Sunucu değerlendirmesi kullanarak iki tür değerlendirme oluşturabilirsiniz.
 
 **Değerlendirme türü** | **Ayrıntılar**
 --- | --- 
-**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. (concepts-assessment-calculation.md)
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz.
 **Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
 
 ### <a name="sizing-criteria"></a>Boyutlandırma ölçütü

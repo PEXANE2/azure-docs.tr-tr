@@ -848,7 +848,7 @@
         - name: Diske VHD yükleme - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Diski güvenli bir şekilde içeri/dışarı aktarma - Portal
-          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Bir diski yeniden boyutlandırma
           href: expand-os-disk.md
         - name: Diskleri yönetmek için Depolama Gezgini kullanma

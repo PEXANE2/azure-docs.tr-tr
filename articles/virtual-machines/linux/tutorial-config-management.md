@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fe53f400c1e03f0f3bb9d5e85891769d58320d84
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502002"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445808"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Linux sanal makinesini güncelleştirme
 
-Azure [değişiklik izleme](../../automation/change-tracking.md) , değişiklikleri kolayca tanımlamanızı ve [güncelleştirme yönetimi](../../automation/automation-update-management.md) Azure Linux sanal makinelerinize yönelik işletim sistemi güncelleştirmelerini yönetmenizi sağlar.
+Azure [değişiklik izleme](../../automation/change-tracking.md) , değişiklikleri kolayca tanımlamanızı ve [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md) Azure Linux sanal makinelerinize yönelik işletim sistemi güncelleştirmelerini yönetmenizi sağlar.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -114,11 +114,11 @@ Yeni bir güncelleştirme dağıtımı oluşturmak için **güncelleştirme dağ
 | Özellik | Açıklama |
 | --- | --- |
 | Ad |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
-|Operating System| Linux veya Windows|
-| Güncelleştirilecek gruplar |Azure makinelerinde, dağıtımınıza dahil etmek için dinamik bir Azure VM grubu oluşturmaya yönelik bir abonelik, kaynak grubu, konum ve etiket birleşimine göre bir sorgu tanımlayın. </br></br>Azure dışı makineler için, dağıtıma dahil edilecek bir Azure dışı makine grubu seçmek üzere mevcut kayıtlı bir aramayı seçin. </br></br>Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/automation-update-management-groups.md)|
+|İşletim Sistemi| Linux veya Windows|
+| Güncelleştirilecek gruplar |Azure makinelerinde, dağıtımınıza dahil etmek için dinamik bir Azure VM grubu oluşturmaya yönelik bir abonelik, kaynak grubu, konum ve etiket birleşimine göre bir sorgu tanımlayın. </br></br>Azure dışı makineler için, dağıtıma dahil edilecek bir Azure dışı makine grubu seçmek üzere mevcut kayıtlı bir aramayı seçin. </br></br>Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/update-management/update-mgmt-groups.md)|
 | Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select Machine seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |
 |Update classifications|İhtiyaç duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin|
-|Güncelleştirmeleri dahil et/Dışla|Bu, **dahil etme/hariç tutma** sayfasını açar. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) |
+|Güncelleştirmeleri dahil et/Dışla|Bu, **dahil etme/hariç tutma** sayfasını açar. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) |
 |Zamanlama ayarları|Başlatılacak saati seçin ve yinelenme için bir kez veya yineleme seçin|
 | Ön betikler + betikleri sonrası|Dağıtımdan önce ve sonra çalıştırılacak betikleri seçin|
 | Bakım penceresi |Güncelleştirmeler için ayarlanan dakika sayısı. Değer 30 dakikadan kısa olamaz ve 6 saatten fazla olamaz |

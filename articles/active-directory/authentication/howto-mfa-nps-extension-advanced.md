@@ -1,6 +1,6 @@
 ---
 title: Azure MFA NPS uzantısını Yapılandırma-Azure Active Directory
-description: NPS uzantısını yükledikten sonra, IP beyaz listesi ve UPN değiştirme gibi gelişmiş yapılandırma için bu adımları kullanın.
+description: NPS uzantısını yükledikten sonra, izin verilen IP listeleri ve UPN değiştirme gibi gelişmiş yapılandırma için bu adımları kullanın.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34d92af88106151e7efba679c53c5b5bd1c07dcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beaed8a3e23cba90b2afe476b1e993ed1f99dae7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653777"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445507"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication NPS uzantısı için gelişmiş yapılandırma seçenekleri
 
@@ -30,10 +30,10 @@ NPS uzantısı içinde, Azure Multi-Factor Authentication için UPN yerine kulla
 
 Alternatif oturum açma kimliklerini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMfa` aşağıdaki kayıt defteri değerlerini adresine gidin ve düzenleyin:
 
-| Name | Tür | Varsayılan değer | Açıklama |
+| Ad | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Olmamalıdır | UPN yerine kullanmak istediğiniz Active Directory özniteliğin adını belirleyin. Bu öznitelik AlternateLoginID özniteliği olarak kullanılır. Bu kayıt defteri değeri [geçerli bir Active Directory özniteliğine](https://msdn.microsoft.com/library/ms675090.aspx) ayarlandıysa (örneğin, posta veya DisplayName), kimlik doğrulaması IÇIN kullanıcının UPN 'si yerine özniteliğin değeri kullanılır. Bu kayıt defteri değeri boş veya yapılandırılmamışsa, AlternateLoginID devre dışıdır ve kullanıcının UPN 'si kimlik doğrulaması için kullanılır. |
-| LDAP_FORCE_GLOBAL_CATALOG | boole | False | AlternateLoginID aranırken LDAP aramaları için genel kataloğun kullanımını zorlamak üzere bu bayrağı kullanın. Bir etki alanı denetleyicisini genel katalog olarak yapılandırın, AlternateLoginID özniteliğini genel kataloğa ekleyin ve bu bayrağı etkinleştirin. <br><br> LDAP_LOOKUP_FORESTS yapılandırıldıysa (boş değil), kayıt defteri ayarı değeri ne olursa olsun, **Bu bayrak true olarak zorlanır**. Bu durumda, NPS uzantısı genel kataloğun her orman için AlternateLoginID özniteliğiyle yapılandırılmasını gerektirir. |
+| LDAP_FORCE_GLOBAL_CATALOG | boolean | Yanlış | AlternateLoginID aranırken LDAP aramaları için genel kataloğun kullanımını zorlamak üzere bu bayrağı kullanın. Bir etki alanı denetleyicisini genel katalog olarak yapılandırın, AlternateLoginID özniteliğini genel kataloğa ekleyin ve bu bayrağı etkinleştirin. <br><br> LDAP_LOOKUP_FORESTS yapılandırıldıysa (boş değil), kayıt defteri ayarı değeri ne olursa olsun, **Bu bayrak true olarak zorlanır**. Bu durumda, NPS uzantısı genel kataloğun her orman için AlternateLoginID özniteliğiyle yapılandırılmasını gerektirir. |
 | LDAP_LOOKUP_FORESTS | string | Olmamalıdır | Aranacak ormanların noktalı virgülle ayrılmış bir listesini sağlayın. Örneğin, *contoso. com; foobar. com*. Bu kayıt defteri değeri yapılandırılmışsa, NPS uzantısı tüm ormanları listelendikleri sırayla arar ve ilk başarılı AlternateLoginID değerini döndürür. Bu kayıt defteri değeri yapılandırılmamışsa, AlternateLoginID araması geçerli etki alanıyla sınırlandırlanır.|
 
 Alternatif oturum açma kimlikleriyle ilgili sorunları gidermek için, [Alternatif oturum açma kimliği hataları](howto-mfa-nps-extension-errors.md#alternate-login-id-errors)için önerilen adımları kullanın.
@@ -44,7 +44,7 @@ Sunucu kullanılabilirliğini izlemeniz gerekiyorsa, yük dengeleyiciler, iş y�
 
 IP izin verilen listesini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMfa` aşağıdaki kayıt defteri değerini adresine gidin ve yapılandırın:
 
-| Name | Tür | Varsayılan değer | Açıklama |
+| Ad | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Olmamalıdır | IP adreslerinin noktalı virgülle ayrılmış bir listesini sağlar. NAS/VPN sunucusu gibi hizmet isteklerinin gerçekleştiği makinelerin IP adreslerini ekleyin. IP aralıkları ve alt ağları desteklenmez. <br><br> Örneğin, *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 

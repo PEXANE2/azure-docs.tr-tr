@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289143"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447918"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -38,7 +38,7 @@ Uygulamalar veya işlevler hızlı bir şekilde yeni bir bağlantı açtığınd
 
 ## <a name="avoiding-the-problem"></a>Sorunu önleme
 
-Hedef, hizmet uç noktalarını destekleyen bir Azure hizmeti ise, [VNET tümleştirmesi](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) ve hizmet uç NOKTALARıNı kullanarak SNAT bağlantı noktası tükenmesi sorunlarından kaçınabilirsiniz. VNet tümleştirmesini kullandığınızda ve hizmet uç noktalarını tümleştirme alt ağına yerleştirdiğinizde, bu hizmetlere giden trafik giden trafiği giden SNAT bağlantı noktası kısıtlamalarına sahip olmaz.
+Hedef, hizmet uç noktalarını destekleyen bir Azure hizmeti ise, [Bölgesel VNET tümleştirmesi](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) ve hizmet uç noktalarını veya özel uç noktaları kullanarak SNAT bağlantı noktası tükenmesi sorunlarından kaçınabilirsiniz. Bölgesel VNet tümleştirmesi kullandığınızda ve hizmet uç noktalarını tümleştirme alt ağına yerleştirdiğinizde, bu hizmetlere giden trafik giden trafiği giden SNAT bağlantı noktası kısıtlamalarına sahip olmaz. Benzer şekilde, bölgesel VNet tümleştirmesi ve özel uç noktalar kullanırsanız, o hedefe giden bir SNAT bağlantı noktası sorununuz olmayacaktır. 
 
 SNAT bağlantı noktası sorununun önlenmeleri, yeni bağlantıların kaldı aynı konak ve bağlantı noktasına oluşturulmasını önleme anlamına gelir.
 

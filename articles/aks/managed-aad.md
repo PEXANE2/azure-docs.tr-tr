@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 06a97126df449b77bf3fcc48bd23231512c9dff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 896986775f0132ef08b17bdfefc00e5e06cf3d9f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056653"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448131"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -41,7 +41,7 @@ AKS tarafından yönetilen Azure Active Directory tümleştirme, [aks 'in destek
 > - [AKS destek Ilkeleri](support-policies.md) 
 > - [Azure desteği SSS](faq.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure CLı sürüm 2.9.0 veya üzeri
 * Minimum [1,18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) sürümü ile kubectl
@@ -146,7 +146,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-Kümeleriniz için ek güvenlik grupları yapılandırmak üzere [rol tabanlı Access Control (RBAC)](./azure-ad-rbac.md) yapılandırın.
+Kümeleriniz için ek güvenlik grupları yapılandırmak üzere [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](./azure-ad-rbac.md) yapılandırın.
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>Azure AD ile erişim sorunlarını giderme
 

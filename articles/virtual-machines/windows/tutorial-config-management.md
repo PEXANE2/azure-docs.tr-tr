@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cf01e4baf96e4403dae443fa6c98f74c571641a8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508329"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448864"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Windows sanal makinesini güncelleştirme
 
-Azure [değişiklik izleme](../../automation/change-tracking.md) ve [güncelleştirme yönetimi](../../automation/automation-update-management.md)ile Azure 'daki Windows sanal makinelerinizdeki değişiklikleri kolayca tanımlayabilir ve bu VM 'ler için işletim sistemi güncelleştirmelerini yönetebilirsiniz.
+Azure [değişiklik izleme](../../automation/change-tracking.md) ve [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)ile Azure 'daki Windows sanal makinelerinizdeki değişiklikleri kolayca tanımlayabilir ve bu VM 'ler için işletim sistemi güncelleştirmelerini yönetebilirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -112,10 +112,10 @@ VM için yeni bir güncelleştirme dağıtımı zamanlamak üzere güncelleştir
 | --- | --- |
 | **Ad** |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin. |
 |**İşletim sistemi**| **Linux** veya **Windows**' u seçin.|
-| **Güncelleştirilecek gruplar** |Azure üzerinde barındırılan VM 'Ler için abonelik, kaynak grubu, konum ve etiketlerin birleşimine göre bir sorgu tanımlayın. Bu sorgu, dağıtımınıza dahil etmek için Azure 'da barındırılan sanal makinelerin dinamik bir grubunu oluşturur. </br></br>Azure üzerinde barındırılmayan VM 'Ler için, var olan kayıtlı bir aramayı seçin. Bu aramayla, dağıtıma dahil etmek için bu VM 'lerin bir grubunu seçebilirsiniz. </br></br> Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/automation-update-management-groups.md).|
+| **Güncelleştirilecek gruplar** |Azure üzerinde barındırılan VM 'Ler için abonelik, kaynak grubu, konum ve etiketlerin birleşimine göre bir sorgu tanımlayın. Bu sorgu, dağıtımınıza dahil etmek için Azure 'da barındırılan sanal makinelerin dinamik bir grubunu oluşturur. </br></br>Azure üzerinde barındırılmayan VM 'Ler için, var olan kayıtlı bir aramayı seçin. Bu aramayla, dağıtıma dahil etmek için bu VM 'lerin bir grubunu seçebilirsiniz. </br></br> Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/update-management/update-mgmt-groups.md).|
 | **Güncelleştirilecek makineler** |**Kaydedilmiş arama**, **içeri aktarılan grup**veya **makineler**seçin.<br/><br/>**Makineler**' i seçerseniz, açılan listeden makineleri tek tek seçebilirsiniz. Her makinenin hazır olması, tablonun **GÜNCELLEŞTIRME ARACıSı hazırlık** sütununda gösterilir.</br></br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |
 |**Güncelleştirme sınıflandırmaları**|Tüm gerekli güncelleştirme sınıflandırmalarını seçin.|
-|**Güncelleştirmeleri dahil et/Dışla**|**Dahil et/hariç tut** bölmesini açmak için bu seçeneği belirleyin. Dahil edilecek güncelleştirmeler ve dışlanması gerekenler ayrı sekmelerde bulunur. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment). |
+|**Güncelleştirmeleri dahil et/Dışla**|**Dahil et/hariç tut** bölmesini açmak için bu seçeneği belirleyin. Dahil edilecek güncelleştirmeler ve dışlanması gerekenler ayrı sekmelerde bulunur. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment). |
 |**Zamanlama ayarları**|Başlatılacak saati seçin ve **bir** veya **tekrardan**birini seçin.|
 | **Ön betikler + betikleri sonrası**|Dağıtımdan önce ve sonra çalıştırılacak betikleri seçin.|
 | **Bakım penceresi** | Güncelleştirmeler için ayarlanan dakika sayısını girin. Geçerli değerler 30 ila 360 dakika arasındadır. |

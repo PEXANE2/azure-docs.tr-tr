@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011643"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448395"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 ve v3 karşılaştırması
 
@@ -83,7 +83,8 @@ V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Bo
     * Girişte ses olmadığında sessiz ses izi ekleme
     * Girişte video yoksa video izlemesi ekleme
 * Transkodlamaya sahip canlı olaylar şu anda kurşun ekleme orta akış ve ad işaretçisi ekleme işlemini API çağrısı aracılığıyla desteklemez. 
- 
+* `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git`V2 REST API kullanımı ile ilgili en iyi uygulamalar ve desenler için örnek koda bakın. NETCore SDK 'Sı.
+
 ## <a name="asset-specific-changes"></a>Varlığa özgü değişiklikler
 
 ### <a name="map-v3-asset-properties-to-v2"></a>V3 varlık özelliklerini v2 'ye eşleyin

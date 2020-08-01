@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7267da7db91e153190e98b09e9a3c505837bd042
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849960"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446317"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
@@ -34,7 +34,7 @@ Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimle
 | Gereksinim | Açıklama |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health, bir Azure AD Premium özelliği olup Azure AD Premium gerektirir. <br /><br />Daha fazla bilgi için bkz. [Azure AD Premium kullanmaya başlama](../fundamentals/active-directory-get-started-premium.md) <br />30 günlük ücretsiz denemeyi başlatmak için bkz. [Denemeyi başlatma.](https://azure.microsoft.com/trial/get-started-active-directory/) |
-| Azure AD Connect Health ile çalışmaya başlamak için Azure AD'nizin genel yöneticisi olmanız gerekir. |Varsayılan olarak yalnızca genel yöneticiler; çalışmaya başlamak üzere durum aracılarını yükleyip yapılandırabilir, portala erişebilir ve Azure AD Connect Health'te işlem gerçekleştirebilir. Daha fazla bilgi için bkz. [Azure AD dizininizi yönetme](../fundamentals/active-directory-administer.md). <br /><br /> Rol Tabanlı Erişim Denetimini kullanarak kuruluşunuzdaki diğer kullanıcılara Azure AD Connect Health erişim izni verebilirsiniz. Daha fazla bilgi için bkz [. Azure AD Connect Health Için rol tabanlı Access Control.](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Önemli:** Aracıları yüklerken kullanılan hesap bir iş veya okul hesabı olmalıdır. Bir Microsoft hesabı olamaz. Daha fazla bilgi için bkz. [Azure 'a kuruluş olarak kaydolma](../fundamentals/sign-up-organization.md) |
+| Azure AD Connect Health ile çalışmaya başlamak için Azure AD'nizin genel yöneticisi olmanız gerekir. |Varsayılan olarak yalnızca genel yöneticiler; çalışmaya başlamak üzere durum aracılarını yükleyip yapılandırabilir, portala erişebilir ve Azure AD Connect Health'te işlem gerçekleştirebilir. Daha fazla bilgi için bkz. [Azure AD dizininizi yönetme](../fundamentals/active-directory-administer.md). <br /><br /> Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kuruluşunuzdaki diğer kullanıcılara Azure AD Connect Health erişime izin verebilirsiniz. Daha fazla bilgi için bkz [. Azure AD Connect Health Için Azure rol tabanlı erişim denetimi (Azure RBAC).](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Önemli:** Aracıları yüklerken kullanılan hesap bir iş veya okul hesabı olmalıdır. Bir Microsoft hesabı olamaz. Daha fazla bilgi için bkz. [Azure 'a kuruluş olarak kaydolma](../fundamentals/sign-up-organization.md) |
 | Azure AD Connect Health Aracısı, hedeflenen tüm sunucularda yüklüdür | Azure AD Connect Health, veri almak ve İzleme ve Analiz özelliklerini sağlamak için hedeflenen sunucularda Sistem Durumu Aracılarının yüklü ve yapılandırılmış olmasını gerektirir. <br /><br />Örneğin, AD FS altyapınızdan veri alabilmek için AD FS sunucularında ve Web Uygulaması Proxy sunucularında aracının yüklü olması gerekir. Benzer şekilde, şirket içi AD DS altyapınızdaki verileri almak için aracının etki alanı denetleyicilerine yüklenmesi gerekir. <br /><br /> |
 | Azure hizmet uç noktalarına giden bağlantı | Yükleme ve çalışma zamanı sırasında, aracı ile Azure AD Connect Health hizmet uç noktaları arasında bağlantı kurulması gerekir. Giden bağlantı Güvenlik Duvarları kullanılarak engellenirse aşağıdaki uç noktaların izin verilenler listesine eklendiğinden emin olun. Bkz. [giden bağlantı uç noktaları](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |IP Adreslerini temel alan giden bağlantı | Güvenlik duvarlarında IP adresine göre filtreleme için bkz. [Azure IP Aralıkları](https://www.microsoft.com/download/details.aspx?id=41653).|
@@ -294,7 +294,7 @@ Uygun aracı setup.exe dosyasını yükledikten sonra role bağlı olarak aşağ
 Bu komutlar "Credential"’ı, kayıt işlemini etkileşimli olmayan bir şekilde veya bir Sunucu Çekirdeği makinesinde tamamlamaya yönelik bir parametre olarak kabul eder.
 * Credential, parametre olarak geçirilen bir PowerShell değişkeninde yakalanabilir.
 * Aracıları kaydetme erişimi olan ve MFA özelliği etkin olmayan herhangi bir Azure AD Kimliği sağlayabilirsiniz.
-* Varsayılan olarak, Genel Yöneticiler aracı kaydını gerçekleştirme erişimine sahiptir. Ayrıca, daha az ayrıcalıklı diğer kimliklerin bu adımı uygulamasına izin verebilirsiniz. [Rol Tabanlı Access Control](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) hakkında daha fazla bilgi edinin.
+* Varsayılan olarak, Genel Yöneticiler aracı kaydını gerçekleştirme erişimine sahiptir. Ayrıca, daha az ayrıcalıklı diğer kimliklerin bu adımı uygulamasına izin verebilirsiniz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)hakkında daha fazla bilgi edinin.
 
 ```powershell
     $cred = Get-Credential
@@ -318,7 +318,7 @@ Azure AD Connect Health Aracılarını bir HTTP Ara Sunucusunu kullanacak şekil
 Azure AD Connect Health Aracısını bir HTTP Ara Sunucusunu kullanacak şekilde yapılandırmak üzere aşağıdaki seçeneklere sahipsiniz.
 
 > [!NOTE]
-> Proxy ayarlarının güncelleştirilmesi için tüm Azure AD Connect Health Aracısı hizmetlerinin yeniden başlatılması gerekir. Şu komutu çalıştırın:<br />
+> Proxy ayarlarının güncelleştirilmesi için tüm Azure AD Connect Health Aracısı hizmetlerinin yeniden başlatılması gerekir. Aşağıdaki komutu çalıştırın:<br />
 > Restart-Service Azureadconnecthegizli *
 >
 >

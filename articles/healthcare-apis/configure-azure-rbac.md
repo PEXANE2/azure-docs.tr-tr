@@ -1,5 +1,5 @@
 ---
-title: FHıR için Azure API 'SI için Azure rol tabanlı Access Control (RBAC) yapılandırma
+title: FHıR için Azure API 'SI için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırma
 description: Bu makalede, FHıR veri düzlemi için Azure API 'SI için Azure RBAC 'nin nasıl yapılandırılacağı açıklanır.
 author: hansenms
 ms.service: healthcare-apis
@@ -7,16 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 3fbbfd931efb0e570bc96639bc6b7943fddc0237
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a3cdb5a640e09c0095db79f5e3a43b455a1a5705
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417684"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447170"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>FHıR için Azure RBAC 'yi yapılandırma 
 
-Bu makalede, FHıR veri düzlemi için Azure API 'sine erişim atamak üzere [Azure rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) kullanmayı öğreneceksiniz. Azure RBAC, veri düzlemi kullanıcıları Azure aboneliğinizle ilişkili Azure Active Directory kiracısında yönetildiğinde veri düzlemi erişimi atamaya yönelik tercih edilen yöntemlerdir. Dış Azure Active Directory kiracı kullanıyorsanız, [Yerel RBAC atama başvurusuna](configure-local-rbac.md)bakın.
+Bu makalede, FHıR veri düzlemi için Azure API 'sine erişim atamak üzere [Azure rol tabanlı erişim denetimi 'nin (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) nasıl kullanılacağını öğreneceksiniz. Azure RBAC, veri düzlemi kullanıcıları Azure aboneliğinizle ilişkili Azure Active Directory kiracısında yönetildiğinde veri düzlemi erişimi atamaya yönelik tercih edilen yöntemlerdir. Dış Azure Active Directory kiracı kullanıyorsanız, [Yerel RBAC atama başvurusuna](configure-local-rbac.md)bakın.
 
 ## <a name="confirm-azure-rbac-mode"></a>Azure RBAC modunu onaylama
 

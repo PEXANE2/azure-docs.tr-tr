@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b0e8de797d66b875b65c1b6b593852707c587e6e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385492"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446548"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Sanal Makineleri için Azure Güvenlik temeli
 
@@ -628,9 +628,9 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 **Rehberlik**: sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure güncelleştirme yönetimi çözümünü kullanın. Güncelleştirme Yönetimi, desteklenen sistemlere yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır.
 
-* [Azure 'da Güncelleştirme Yönetimi çözümü](../../automation/automation-update-management.md)
+* [Azure 'da Güncelleştirme Yönetimi çözümü](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](../../automation/automation-tutorial-update-management.md)
+* [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -640,9 +640,9 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 **Rehberlik**: bir üçüncü taraf düzeltme eki yönetimi çözümü kullanabilirsiniz. Sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi çözümünü kullanabilirsiniz. Güncelleştirme Yönetimi, desteklenen sistemlere yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır.
 
-* [Azure 'da Güncelleştirme Yönetimi çözümü](../../automation/automation-update-management.md)
+* [Azure 'da Güncelleştirme Yönetimi çözümü](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](../../automation/automation-tutorial-update-management.md)
+* [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 

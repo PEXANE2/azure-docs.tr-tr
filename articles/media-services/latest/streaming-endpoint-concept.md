@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 030a10e9138af32ee848009a14216c37567d9d2d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092006"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446218"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
 
@@ -46,6 +46,8 @@ Varsayılan akış uç noktası kullanılırken `servicename` URL: olarak atlan�
 ## <a name="types"></a>Türler
 
 İki **akış uç noktası** türü vardır: **Standart** (Önizleme) ve **Premium**. Tür, `scaleUnits` akış uç noktası için ayırdığınız ölçek birimi sayısıyla () tanımlanır.
+
+En fazla akış birimi sınırı genellikle 10 ' dur. Hesabınız için limiti yükseltmek üzere [buradaki](https://azure.microsoft.com/support/create-ticket/) bizimle iletişim kurun.
 
 Türler aşağıdaki tabloda açıklanmıştır:
 

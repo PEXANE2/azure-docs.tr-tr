@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9bd6a7ff943b5f3750ce8aaeada32010b88272c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745619"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447848"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Azure Izleyici günlüklerini güncelleştirme dağıtımlarını Azure portal 'ye geçirme
 
@@ -19,7 +19,7 @@ Operations Management Suite (OMS) portalı [kullanım dışı](../azure-monitor/
 ## <a name="key-information"></a>Önemli bilgiler
 
 * Mevcut dağıtımlar çalışmaya devam edecektir. Dağıtımı Azure 'da yeniden oluşturduktan sonra eski dağıtımınızı silebilirsiniz.
-* OMS 'de bulunan tüm mevcut özellikler Azure 'da kullanılabilir. Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için bkz. [güncelleştirme yönetimi genel bakış](automation-update-management.md).
+* OMS 'de bulunan tüm mevcut özellikler Azure 'da kullanılabilir. Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için bkz. [güncelleştirme yönetimi genel bakış](update-management/update-mgmt-overview.md).
 
 ## <a name="access-the-azure-portal"></a>Azure Portalına erişme
 
@@ -57,7 +57,7 @@ Kayıtlı olan bu aramayı kullanmak için şu adımları izleyin:
 
     | Özellik | Açıklama |
     | --- | --- |
-    |Name |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
+    |Ad |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
     |İşletim Sistemi| **Linux** veya **Windows**'u seçin.|
     |Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select makinesi seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md) |
     |Update classifications|İhtiyaç duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin. CentOS bu kutuyu desteklemiyor.|
@@ -74,4 +74,4 @@ Kayıtlı olan bu aramayı kullanmak için şu adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Otomasyonu 'nda Güncelleştirme Yönetimi hakkında daha fazla bilgi için bkz. [güncelleştirme yönetimi genel bakış](automation-update-management.md).
+Azure Otomasyonu 'nda Güncelleştirme Yönetimi hakkında daha fazla bilgi için bkz. [güncelleştirme yönetimi genel bakış](update-management/update-mgmt-overview.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749964"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448373"
 ---
 # <a name="azure-operational-security"></a>Azure operasyonel güvenlik
 ## <a name="introduction"></a>Giriş
@@ -108,7 +108,7 @@ Azure Backup'ta korunan veriler belirli bir coğrafi bölgede yer alan bir yedek
 
 ![Yönetim Çözümleri](./media/operational-security/azure-operational-security-fig4.png)
 
-Ek işlevsellik sağlamak için birden çok hizmet kullanan çözüme iyi bir örnek [güncelleştirme yönetimi çözümüdür](../../automation/automation-update-management.md). Bu çözüm, her aracıdaki gerekli güncelleştirmeler hakkında bilgi toplamak için Windows ve Linux için [Azure izleyici günlükleri](../../log-analytics/log-analytics-queries.md) Aracısı 'nı kullanır. Bu verileri, eklenen bir panoyla çözümleyebileceğiniz Azure Izleyici günlükleri deposuna yazar.
+Ek işlevsellik sağlamak için birden çok hizmet kullanan çözüme iyi bir örnek [güncelleştirme yönetimi çözümüdür](../../automation/update-management/update-mgmt-overview.md). Bu çözüm, her aracıdaki gerekli güncelleştirmeler hakkında bilgi toplamak için Windows ve Linux için [Azure izleyici günlükleri](../../log-analytics/log-analytics-queries.md) Aracısı 'nı kullanır. Bu verileri, eklenen bir panoyla çözümleyebileceğiniz Azure Izleyici günlükleri deposuna yazar.
 
 Bir dağıtım oluşturduğunuzda, gerekli güncelleştirmeleri yüklemek için [Azure Otomasyonu](../../automation/automation-intro.md) 'nda runbook 'lar kullanılır. Bu işlemi baştan sona portalda yönetirsiniz ve altyapısal ayrıntılar konusunda endişelenmeniz gerekmez.
 

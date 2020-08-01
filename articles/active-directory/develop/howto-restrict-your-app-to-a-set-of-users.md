@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da09f78817e1271832397b4a130195385207645f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e20b2f8c0e12fdb23668d16e2cbd7936cc4e48c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477796"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445456"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Nasıl yapılır: Azure AD kiracısındaki bir Kullanıcı kümesiyle Azure AD uygulamanızı kısıtlama
 
@@ -26,7 +26,7 @@ Bir Azure Active Directory (Azure AD) kiracısında kayıtlı uygulamalar, varsa
 
 Benzer şekilde, [çok kiracılı](howto-convert-app-to-be-multi-tenant.md) bir uygulama söz konusu olduğunda, bu uygulamanın SAĞLANDıĞı Azure AD kiracısındaki tüm kullanıcılar ilgili kiracısında başarıyla kimlik doğrulamasından sonra bu uygulamaya erişebilir.
 
-Kiracı yöneticileri ve geliştiricileri, genellikle bir uygulamanın belirli bir Kullanıcı kümesiyle kısıtlanması gereken gereksinimlere sahiptir. Geliştiriciler rol tabanlı Access Control (RBAC) gibi popüler yetkilendirme düzenlerini kullanarak aynısını gerçekleştirebilir, ancak bu yaklaşım geliştiricinin bir bölümünde önemli miktarda iş gerektirir.
+Kiracı yöneticileri ve geliştiricileri, genellikle bir uygulamanın belirli bir Kullanıcı kümesiyle kısıtlanması gereken gereksinimlere sahiptir. Geliştiriciler, Azure rol tabanlı erişim denetimi (Azure RBAC) gibi popüler yetkilendirme düzenlerini kullanarak aynısını gerçekleştirebilir, ancak bu yaklaşım, geliştiricinin bir bölümünde önemli miktarda iş gerektirir.
 
 Kiracı yöneticileri ve geliştiriciler, Azure AD 'nin bu yerleşik özelliğini kullanarak bir uygulamayı Kiracıdaki belirli bir kullanıcı veya güvenlik grubu kümesiyle kısıtlayabilir.
 

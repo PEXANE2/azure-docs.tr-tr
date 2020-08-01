@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03258bf204491afce4635828b3a33a06886aca2d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450046"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448399"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
@@ -84,7 +84,7 @@ Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, da
 Tüm şirket içi VM 'Ler gibi Azure sanal makineleri, Kullanıcı tarafından yönetilmek üzere tasarlanmıştır. Azure bunlara Windows güncelleştirmelerini göndermez. VM güncelleştirmelerinizi yönetmeniz gerekir.
 
 **En iyi yöntem**: VM 'lerinizi güncel tutun.   
-**Ayrıntı**: Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında dağıtılan Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek Için Azure otomasyonu 'nda [güncelleştirme yönetimi](../../automation/automation-update-management.md) çözümünü kullanın. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
+**Ayrıntı**: Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında dağıtılan Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek Için Azure otomasyonu 'nda [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md) çözümünü kullanın. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
 Güncelleştirme Yönetimi tarafından yönetilen bilgisayarlar değerlendirme ve güncelleştirme dağıtımı yapmak için aşağıdaki yapılandırmaları kullanır:
 

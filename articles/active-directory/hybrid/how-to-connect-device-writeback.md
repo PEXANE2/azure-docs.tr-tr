@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360138"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447095"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: cihaz geri yazmayı etkinleştirme
 > [!NOTE]
@@ -61,7 +61,7 @@ Bu, uygulamalara erişimin yalnızca güvenilen cihazlara verilme konusunda ek g
 
     a. **Kuruluş Yöneticisi kimlik bilgilerini sağlayın**: cihazların geri yazılması gereken orman için Kuruluş Yöneticisi kimlik bilgileri sağlanmışsa Azure AD Connect, cihaz geri yazma yapılandırması sırasında ormanı otomatik olarak hazırlar.
 
-    b. **PowerShell betiğini indir**: Azure AD Connect otomatik olarak, cihaz geri yazma için Active Directory 'yi hazırlayabileceğiniz bir PowerShell betiği oluşturur. Azure AD Connect ' de kuruluş yöneticisi kimlik bilgilerinin sağlanması durumunda, PowerShell betiğini indirmek önerilir. İndirilen PowerShell betiğini **Createdevicecontainer. PSQ** ' i, cihazların geri yazılacağı ormanın kurumsal yöneticisine girin.
+    b. **PowerShell betiğini indir**: Azure AD Connect otomatik olarak, cihaz geri yazma için Active Directory 'yi hazırlayabileceğiniz bir PowerShell betiği oluşturur. Azure AD Connect ' de kuruluş yöneticisi kimlik bilgilerinin sağlanması durumunda, PowerShell betiğini indirmek önerilir. İndirilen PowerShell betiğini, cihazların geri yazılacağı ormanın kurumsal yöneticisine **CreateDeviceContainer.ps1** sağlayın.
     ![Active Directory ormanını hazırlama](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Active Directory ormanını hazırlamaya yönelik aşağıdaki işlemler gerçekleştirilir:

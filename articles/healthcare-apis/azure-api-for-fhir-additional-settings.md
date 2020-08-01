@@ -8,12 +8,12 @@ ms.reviewer: mihansen
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
-ms.openlocfilehash: 896d5bafd879ff3ba09bd5b8922cde4cd8345689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64bdc60f8f9e291c4dc084b23f8ec5054cdc528f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871955"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447273"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>FHıR için Azure API için ek ayarlar
 
@@ -29,7 +29,7 @@ Varsayılan ayarların nasıl değiştirileceği hakkında daha fazla bilgi içi
 
 ## <a name="access-control"></a>Erişim denetimi
 
-FHıR için Azure API yalnızca yetkili kullanıcıların FHıR API 'sine erişmesine izin verir. Yetkili kullanıcıları iki farklı mekanizma aracılığıyla yapılandırabilirsiniz. Erişim denetimini yapılandırmanın birincil ve önerilen yolu, **erişim denetimi (IAM)** dikey penceresi aracılığıyla erişilebilen [Azure rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/)kullanmaktır. Azure RBAC yalnızca aboneliğinizle ilişkili Azure Active Directory kiracı kullanarak veri düzlemi erişimini güvenli hale getirmek istiyorsanız işe yarar. Farklı bir kiracı kullanmak istiyorsanız, FHıR için Azure API 'SI, yerel bir FHıR veri düzlemi erişim denetimi mekanizması sunar. Yapılandırma seçenekleri, yerel RBAC mekanizması kullanılırken zengin değildir. Ayrıntılar için aşağıdaki seçeneklerden birini belirleyin:
+FHıR için Azure API yalnızca yetkili kullanıcıların FHıR API 'sine erişmesine izin verir. Yetkili kullanıcıları iki farklı mekanizma aracılığıyla yapılandırabilirsiniz. Erişim denetimini yapılandırmanın birincil ve önerilen yolu, **erişim denetimi (IAM)** dikey penceresi aracılığıyla erişilebilen [Azure rol tabanlı erişim denetımı (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/)kullanmaktır. Azure RBAC yalnızca aboneliğinizle ilişkili Azure Active Directory kiracı kullanarak veri düzlemi erişimini güvenli hale getirmek istiyorsanız işe yarar. Farklı bir kiracı kullanmak istiyorsanız, FHıR için Azure API 'SI, yerel bir FHıR veri düzlemi erişim denetimi mekanizması sunar. Yapılandırma seçenekleri, yerel RBAC mekanizması kullanılırken zengin değildir. Ayrıntılar için aşağıdaki seçeneklerden birini belirleyin:
 
 * [FHıR veri düzlemi Için Azure RBAC](configure-azure-rbac.md). Aboneliğinizle ilişkili Azure Active Directory kiracı kullanırken bu tercih edilen seçenektir.
 * [Yerel fhır veri düzlemi erişim denetimi](configure-local-rbac.md). Bu seçeneği yalnızca veri düzlemi erişim denetimi için bir dış Azure Active Directory kiracısı kullanmanız gerektiğinde kullanın. 

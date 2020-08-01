@@ -3,12 +3,12 @@ title: 'Öğretici: karma bağlantıya özel olayları gönderme-Event Grid'
 description: 'Öğretici: Azure Event Grid ve Azure CLı kullanarak bir konu yayımlayın ve bu olaya abone olun. Uç nokta için karma bir bağlantı kullanılır.'
 ms.date: 07/07/2020
 ms.topic: tutorial
-ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: acb3f3021722a612d6f07ec83d344f4be62c60f3
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114916"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459530"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Öğretici: Azure CLı ve Event Grid ile Azure Relay Karma Bağlantılar özel olayları yönlendirme
 
@@ -16,7 +16,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Relay Karma 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede zaten bir karma bağlantınız ve dinleyici uygulamanız olduğu varsayılmıştır. Karma bağlantıları kullanmaya başlamak için bkz. [Relay Karma Bağlantılar’ı kullanmaya başlama - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) veya [Relay Karma Bağlantılar’ı kullanmaya başlama - Düğüm](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+Bu makalede zaten bir karma bağlantınız ve dinleyici uygulamanız olduğu varsayılmıştır. Karma bağlantıları kullanmaya başlamak için bkz. [Relay Karma Bağlantılar’ı kullanmaya başlama - .NET](/azure/azure-relay/relay-hybrid-connections-dotnet-get-started) veya [Relay Karma Bağlantılar’ı kullanmaya başlama - Düğüm](/azure/azure-relay/relay-hybrid-connections-node-get-started).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

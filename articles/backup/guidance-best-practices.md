@@ -1,14 +1,14 @@
 ---
-title: Rehberlik ve en iyi uygulamalar
+title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4a5f7e1f55eb5b4a68ee889ef6e1378eb573a6a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0ce7877ebd33385deb98977c9439bf8a05b5325
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100294"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447276"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -137,7 +137,7 @@ Yedekleme verilerinizi korumanıza ve işinizin güvenlik ihtiyaçlarını karş
 
 ### <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
-* Azure rol tabanlı Access Control (RBAC), takımınızda görev ayırma ve yalnızca işlerini gerçekleştirmek için gereken kullanıcılara erişim miktarı verme konusunda ayrıntılı erişim yönetimi sağlar. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md).
+* Azure rol tabanlı erişim denetimi (Azure RBAC), takımınızda görev ayırma ve yalnızca işlerini gerçekleştirmek için gereken kullanıcılara erişim miktarı verme konusunda ayrıntılı erişim yönetimi sağlar. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md).
 
 * Azure Backup, yedekleme yönetim işlemlerini denetlemek için üç yerleşik rol sağlar: yedek katkıda bulunanlar, işleçler ve okuyucular. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
 

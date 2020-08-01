@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085155"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449137"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
@@ -33,18 +33,19 @@ Yerel bilgisayarınızda işlevleri geliştirme ve temel araçları kullanarak b
 
 Azure Functions Core Tools üç sürümü vardır. Kullandığınız sürüm yerel geliştirme ortamınıza, [dil seçimine](supported-languages.md)ve gerekli destek düzeyine bağlıdır:
 
-+ **Sürüm 1. x**: Azure işlevleri çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://www.npmjs.com/package/azure-functions-core-tools)yüklenir.
-
 + [**Sürüm 3. x/2. x**](#v2): [Azure işlevleri çalışma zamanının sürüm 3. x veya 2. x](functions-versions.md)'i destekler. Bu sürümler [Windows](?tabs=windows#v2), [MacOS](?tabs=macos#v2)ve [Linux](?tabs=linux#v2) 'u destekler ve yükleme için platforma özgü paket yöneticilerini veya NPM 'yi kullanır.
 
++ **Sürüm 1. x**: Azure işlevleri çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://www.npmjs.com/package/azure-functions-core-tools)yüklenir.
+
 Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Azure Functions Core Tools Şu anda Azure hesabınızda kimlik doğrulaması için Azure CLı 'ye bağımlıdır. Bu, Azure CLı 'yı Azure Functions Core Tools 'ten [Azure 'a yayımlayabilmek](#publish) için [yerel olarak kurmanız](/cli/azure/install-azure-cli) gerektiği anlamına gelir. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools’u Yükleme
 
 [Azure Functions Core Tools] , yerel geliştirme bilgisayarınızda çalıştırabileceğiniz Azure işlevleri çalışma zamanını destekleyen aynı çalışma zamanının bir sürümünü içerir. Ayrıca işlevler oluşturmak, Azure 'a bağlanmak ve işlev projelerini dağıtmak için komutlar sağlar.
-
->[!IMPORTANT]
->Azure Functions Core Tools 'ten Azure 'a yayımlayabilmek için [Azure CLI](/cli/azure/install-azure-cli) 'nın yerel olarak yüklü olması gerekir.  
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>Sürüm 3. x ve 2. x
 
@@ -55,27 +56,12 @@ Araçların sürüm 3. x/2. x, .NET Core üzerinde oluşturulan Azure Işlevleri
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-Aşağıdaki adımlarda, Windows 'a temel araçları yüklemek için NPM kullanılır. [Chocolatey](https://chocolatey.org/)de kullanabilirsiniz. Daha fazla bilgi için bkz. [temel araçlar Benioku](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
+Aşağıdaki adımlarda, v3. x temel araçları yüklemek için bir Windows Installer (MSI) kullanılır. Çekirdek araçları v2. x ' i yüklemek için gereken diğer paket tabanlı yükleyiciler hakkında daha fazla bilgi için bkz. [temel araçlar Benioku](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. NPM içeren [Node.js]'yi yükler.
-    - Araçların sürüm 3. x için yalnızca Node.js 10 ve üzeri sürümler desteklenir.
-    - Araçların sürüm 2. x için yalnızca Node.js 8,5 ve üzeri sürümleri desteklenir.
+1. Windows sürümünüze bağlı olarak temel araçlar yükleyicisini indirip çalıştırın:
 
-1. Temel Araçlar paketini yükler:
-
-    ##### <a name="v3x-recommended"></a>v3. x (önerilir)
-
-    ```cmd
-    npm install -g azure-functions-core-tools@3
-    ```
-
-    ##### <a name="v2x"></a>v2. x
-
-    ```cmd
-    npm install -g azure-functions-core-tools@2
-    ```
-
-   NPM 'nin temel araçlar paketini indirmesi ve yüklemesi birkaç dakika sürebilir.
+    - [v3. x-Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2135274) (önerilir. [Visual Studio Code hata ayıklaması](functions-develop-vs-code.md#debugging-functions-locally) 64 bit gerektirir.)
+    - [v3. x-Windows 32-bit](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. [Uzantı paketleri](functions-bindings-register.md#extension-bundles)kullanmayı planlamıyorsanız, [Windows için .NET Core 3. x SDK 'sını](https://dotnet.microsoft.com/download)yükleyebilirsiniz.
 

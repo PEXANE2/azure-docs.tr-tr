@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: 684f85042fd09c14621801ec017fea0e632f2598
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f6c3b1f4c24ad2bce68c1cff7b22f0059d3534a2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84872680"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446059"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman ile FHıR için Azure API 'sine erişme
 
@@ -108,7 +108,7 @@ Erişim belirtecini gibi bir araçla [https://jwt.ms](https://jwt.ms) karşıla�
 }
 ```
 
-Sorun giderme durumlarında, doğru hedef kitleye ( `aud` talep) başlamak için iyi bir yerdir. Belirteciniz doğru sertifika verenden ( `iss` talep) ve doğru hedef kitleye ( `aud` talep) sahipse, ancak yıne de FHıR API 'sine erişemiyorsanız, Kullanıcı veya hizmet sorumlusu ( `oid` talep) fhır veri düzlemine erişemez. Kullanıcılara veri düzlemi rolleri atamak için [Azure rol tabanlı Access Control kullanmanızı](configure-azure-rbac.md) öneririz. Veri düzleiniz için harici, ikincil bir Azure Active Directory kiracısı kullanıyorsanız, [Yerel RBAC atamalarını yapılandırmanız](configure-local-rbac.md)gerekecektir.
+Sorun giderme durumlarında, doğru hedef kitleye ( `aud` talep) başlamak için iyi bir yerdir. Belirteciniz doğru sertifika verenden ( `iss` talep) ve doğru hedef kitleye ( `aud` talep) sahipse, ancak yıne de FHıR API 'sine erişemiyorsanız, Kullanıcı veya hizmet sorumlusu ( `oid` talep) fhır veri düzlemine erişemez. Kullanıcılara veri düzlemi rolleri atamak için [Azure rol tabanlı erişim denetimi (Azure RBAC) kullanmanızı](configure-azure-rbac.md) öneririz. Veri düzleiniz için harici, ikincil bir Azure Active Directory kiracısı kullanıyorsanız, [Yerel RBAC atamalarını yapılandırmanız](configure-local-rbac.md)gerekecektir.
 
 [Azure CLI kullanarak fhır Için Azure API için bir belirteç almak](get-healthcare-apis-access-token-cli.md)da mümkündür. Azure CLı ile alınan bir belirteç kullanıyorsanız, "taşıyıcı belirteci" Yetkilendirme türünü kullanmanız ve belirteci doğrudan yapıştırmanız gerekir.
 

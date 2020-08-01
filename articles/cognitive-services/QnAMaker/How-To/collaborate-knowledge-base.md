@@ -1,14 +1,14 @@
 ---
 title: Bilgi Bankası 'nda işbirliği-Soru-Cevap Oluşturma
-description: Soru-Cevap Oluşturma, bir Bilgi Bankası 'nda birden çok kişinin işbirliği yapmasına izin verir. Bu özellik Azure rol tabanlı Access Control sağlanır.
+description: Soru-Cevap Oluşturma, bir Bilgi Bankası 'nda birden çok kişinin işbirliği yapmasına izin verir. Bu özellik Azure rol tabanlı erişim denetimi (Azure RBAC) ile birlikte sağlanır.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20eb58f346322cb78bff85af3d6a0d366090763d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054093"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446937"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Yazarlar ve düzenleyicilerle işbirliği
 
@@ -36,7 +36,7 @@ Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar k
 
     ![Soru-Cevap Oluşturma ıAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. **Ekle**’yi seçin.
+1. **Ekle**'yi seçin.
 
     ![Soru-Cevap Oluşturma ıAM ekleme](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 

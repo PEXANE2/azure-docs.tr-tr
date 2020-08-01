@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326996"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457830"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında veri dönüştürme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -112,7 +112,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
     **Dosya biçimi**: CSV
 
     > [!NOTE]
-    > Bu makalede, geçerli Azure Machine Learning çalışma alanına kayıtlı bir veri deposuna erişiminizin olduğu varsayılır. Bir veri deposu ayarlama hakkında yönergeler için bkz. [Azure Storage Services 'A bağlanma](how-to-access-data.md#azure-machine-learning-studio).
+    > Bu makalede, geçerli Azure Machine Learning çalışma alanına kayıtlı bir veri deposuna erişiminizin olduğu varsayılır. Bir veri deposu ayarlama hakkında yönergeler için bkz. [Azure Storage Services 'A bağlanma](how-to-access-data.md#studio).
 
     Bir veri deposu yoksa, şimdi bir tane oluşturabilirsiniz. Örneğin, bu makalede veri kümeleri, çalışma alanıyla ilişkili varsayılan BLOB depolama hesabına kaydedilir. Veri kümelerini, `azureml` adlı yeni bir klasörde kapsayıcıya kaydeder `data` .
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187517"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448520"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti kullanılarak Azure SQL yönetilen örnek geçişleri için ağ topolojileri
 
@@ -39,7 +39,7 @@ Azure SQL yönetilen örneğiniz şirket içi ağınıza bağlıysa bu topolojiy
 Ortamınız aşağıdaki senaryolardan birini veya birkaçını gerektiriyorsa, bu ağ topolojisini kullanın:
 
 - SQL yönetilen örneği şirket içi bağlantıdan yalıtılmıştır, ancak Azure veritabanı geçiş hizmeti örneğiniz şirket içi ağa bağlanır.
-- Rol tabanlı Access Control (RBAC) ilkeleri yerleşiyorsa ve kullanıcıları SQL yönetilen örneği barındıran aynı aboneliğe erişmek üzere sınırlandırdıysanız.
+- Azure rol tabanlı erişim denetimi (Azure RBAC) ilkeleri yerleşiyorsa ve kullanıcıları SQL yönetilen örneği barındıran aynı aboneliğe erişecek şekilde sınırlandırlamanız gerekirse.
 - SQL yönetilen örneği ve Azure veritabanı geçiş hizmeti için kullanılan sanal ağlar farklı aboneliklerde.
 
 ![Şirket içi ağdan yalıtılmış yönetilen örnek için ağ topolojisi](media/resource-network-topologies/mi-isolated-workload.png)
@@ -64,7 +64,7 @@ Kaynak SQL Server bir Azure VM 'de barındırılıyorsa ve SQL yönetilen örne�
 Ortamınız aşağıdaki senaryolardan birini veya birkaçını gerektiriyorsa, bu ağ topolojisini kullanın:
 
 - SQL yönetilen örneği yalıtılmış bir sanal ağda sağlanır.
-- Rol tabanlı Access Control (RBAC) ilkeleri yerleşiyorsa ve kullanıcıları SQL yönetilen örneği barındıran aynı aboneliğe erişmek üzere sınırlandırdıysanız.
+- Azure rol tabanlı erişim denetimi (Azure RBAC) ilkeleri yerleşiyorsa ve kullanıcıları SQL yönetilen örneği barındıran aynı aboneliğe erişecek şekilde sınırlandırlamanız gerekirse.
 - SQL yönetilen örneği ve Azure veritabanı geçiş hizmeti için kullanılan sanal ağlar farklı aboneliklerde.
 
 ![Yalıtılmış VNet ile buluttan buluta geçişler için ağ topolojisi](media/resource-network-topologies/cloud-to-cloud-isolated.png)
@@ -77,18 +77,18 @@ Ortamınız aşağıdaki senaryolardan birini veya birkaçını gerektiriyorsa, 
 
 | **AD**   | **BAĞ** | **PROTOCOL** | **KAYNAKTAKI** | **HEDEFINE** | **ÖN** |
 |------------|----------|--------------|------------|-----------------|------------|
-| DMS_subnet | Herhangi biri      | Herhangi biri          | DMS ALT AĞı | Herhangi biri             | İzin Ver      |
+| DMS_subnet | Herhangi bir      | Herhangi biri          | DMS ALT AĞı | Herhangi biri             | İzin Ver      |
 
 ## <a name="outbound-security-rules"></a>Giden güvenlik kuralları
 
 | **AD**                  | **BAĞ**                                              | **PROTOCOL** | **KAYNAKTAKI** | **HEDEFINE**           | **ÖN** | **Kural nedeni**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| yönetim                | 443, 9354                                              | TCP          | Herhangi biri        | Herhangi biri                       | İzin Ver      | Service Bus ve Azure Blob depolama aracılığıyla yönetim düzlemi iletişimi. <br/>(Microsoft eşlemesi etkinse, bu kurala ihtiyaç duymayabilir.)                                                             |
-| Tanılama               | 12000                                                 | TCP          | Herhangi biri        | Herhangi biri                       | İzin Ver      | DMS, sorun giderme amacıyla tanılama bilgilerini toplamak için bu kuralı kullanır.                                                                                                                      |
-| SQL kaynak sunucusu         | 1433 (veya SQL Server dinlediği TCP IP bağlantı noktası) | TCP          | Herhangi biri        | Şirket içi adres alanı | İzin Ver      | DMS 'ten kaynak bağlantısı SQL Server <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir.)                                                                                       |
-| SQL Server adlandırılmış örnek | 1434                                                  | UDP          | Herhangi biri        | Şirket içi adres alanı | İzin Ver      | DMS 'ten adlandırılmış örnek kaynak bağlantısı SQL Server <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir.)                                                                        |
-| SMB paylaşma                 | 445                                                   | TCP          | Herhangi biri        | Şirket içi adres alanı | İzin Ver      | Azure SQL veritabanı mı ve Azure VM 'de SQL Server 'a geçiş için veritabanı yedekleme dosyalarını depolamak üzere DMS için SMB ağ paylaşımının <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir). |
-| DMS_subnet                | Herhangi biri                                                   | Herhangi biri          | Herhangi biri        | DMS_Subnet                | İzin Ver      |                                                                                                                                                                                                  |
+| yönetim                | 443, 9354                                              | TCP          | Herhangi bir        | Herhangi biri                       | İzin Ver      | Service Bus ve Azure Blob depolama aracılığıyla yönetim düzlemi iletişimi. <br/>(Microsoft eşlemesi etkinse, bu kurala ihtiyaç duymayabilir.)                                                             |
+| Tanılamalar               | 12000                                                 | TCP          | Herhangi bir        | Herhangi biri                       | İzin Ver      | DMS, sorun giderme amacıyla tanılama bilgilerini toplamak için bu kuralı kullanır.                                                                                                                      |
+| SQL kaynak sunucusu         | 1433 (veya SQL Server dinlediği TCP IP bağlantı noktası) | TCP          | Herhangi bir        | Şirket içi adres alanı | İzin Ver      | DMS 'ten kaynak bağlantısı SQL Server <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir.)                                                                                       |
+| SQL Server adlandırılmış örnek | 1434                                                  | UDP          | Herhangi bir        | Şirket içi adres alanı | İzin Ver      | DMS 'ten adlandırılmış örnek kaynak bağlantısı SQL Server <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir.)                                                                        |
+| SMB paylaşma                 | 445                                                   | TCP          | Herhangi bir        | Şirket içi adres alanı | İzin Ver      | Azure SQL veritabanı mı ve Azure VM 'de SQL Server 'a geçiş için veritabanı yedekleme dosyalarını depolamak üzere DMS için SMB ağ paylaşımının <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir). |
+| DMS_subnet                | Herhangi bir                                                   | Herhangi biri          | Herhangi biri        | DMS_Subnet                | İzin Ver      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

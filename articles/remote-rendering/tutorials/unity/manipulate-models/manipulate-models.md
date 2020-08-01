@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367639"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449043"
 ---
 # <a name="tutorial-manipulating-models"></a>Öğretici: modelleri düzenleme
 
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Uzamsal sorgularla raycast
 > * Uzaktan işlenen nesneler için basit animasyonlar ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici [öğretici: arabirimler ve özel modeller](../custom-models/custom-models.md)üzerinde oluşturulur.
 
@@ -332,18 +332,14 @@ Bir Ray cast, **remoterbir Pointerhandler**öğesinde başarıyla tamamlandığ�
 
 2. Daha önce oluşturulan **Testmodel** oyunobject ' te, hem **Remoterayyon pointerhandler** bileşeni hem de **remoteentityhelper** bileşenini ekleyin.
 1. `EntityToDebugLog`Olayına yöntemine atayın `OnRemoteEntityClicked` . Olayın çıkış türü ve yönteminin giriş türü eşleşiyorsa, Unity 'nin dinamik olay kancaı ' nı kullanarak olay değeri otomatik olarak yönteme geçer.
-    1. Yeni bir geri arama alanı oluştur \
-    ![Geri arama Ekle](./media/add-callback-remote-entity-clicked.png)
-    1. **Uzak varlık Yardımcısı** bileşenini, üst oyun nesnesine başvuracak şekilde nesne alanına sürükleyin.
-    ![Nesne ata](./media/assign-object.png)
-    1. `EntityToDebugLog`Geri arama olarak ata \
-    ![Geri arama ata](./media/remote-entity-event.png)
+    1. Yeni bir geri çağırma alanı oluştur ![ geri arama Ekle](./media/add-callback-remote-entity-clicked.png)
+    1. **Uzak varlık Yardımcısı** bileşenini nesne alanına, üst gameobject atama nesnesine başvuracak şekilde sürükleyin ![](./media/assign-object.png)
+    1. `EntityToDebugLog`Geri çağırma için geri çağırma ![ atama olarak atayın](./media/remote-entity-event.png)
 1. Unity düzenleyicisinde Yürüt ' e basarak sahneyi başlatın, uzak bir oturuma bağlanın ve test modelini yükleyin.
 1. MRTK 'nin el simülasyonu kullanarak sol SHIFT tuşuna basın ve basılı tutun.
 1. El ışın test modelini işaret ettiğinden, sanal bir yandan
 1. Bir AIR tap benzetimini yapmak için uzun tıklama `OnPointerClicked` olayı yürütülüyor.
-1. Seçili alt varlık adına sahip bir günlük iletisi için Unity konsolunu gözlemleyin. Örneğin: \
-![Alt varlık örneği](./media/child-entity-example.png)
+1. Seçili alt varlık adına sahip bir günlük iletisi için Unity konsolunu gözlemleyin. Örneğin: ![ alt varlık örneği](./media/child-entity-example.png)
 
 ## <a name="synchronizing-the-remote-object-graph-into-the-unity-hierarchy"></a>Uzak nesne grafiğini Unity hiyerarşisine eşitleme
 
@@ -351,9 +347,9 @@ Bu noktaya kadar, yalnızca modelin tamamını temsil eden tek bir yerel oyun ne
 
 1. Sahneyi başlatın ve test modelini yükleyin.
 1. Unity 'nin hiyerarşisinde **Testmodel** gameobject alt öğelerini genişletin ve **TestModel_Entity** gameobject ' i seçin.
-1. Denetçisinde *alt öğeleri göster* düğmesine tıklayın. \
+1. Denetçisinde *alt öğeleri göster* düğmesine tıklayın.
 ![Alt öğeleri göster](./media/show-remote-children.png)
-1. Hiyerarşide alt öğeleri genişletmeye ve alt öğelerin büyük bir listesi gösterilene kadar *alt öğeleri göster* ' e tıklayarak devam edin. \
+1. Hiyerarşide alt öğeleri genişletmeye ve alt öğelerin büyük bir listesi gösterilene kadar *alt öğeleri göster* ' e tıklayarak devam edin.
 ![Tüm alt öğeler](./media/test-model-children.png)
 
 Onlarca varlıkların listesi artık hiyerarşiyi dolduracaktır. Bunlardan birinin seçilmesi, `Transform` `RemoteEntitySyncObject` Inspector 'daki ve bileşenlerini gösterir. Varsayılan olarak, her bir varlık her karede otomatik olarak eşitlenmez, bu nedenle üzerinde yerel değişiklikler `Transform` sunucu ile eşitlenmez. *Her çerçevenin eşitlemesini* denetleyebilir ve sonra sahneyi sahne görünümünde taşıyabilir, ölçeklendirebilir veya döndürebilir, sahne görünümünde işlenen modeli görmezsiniz, modelin konum ve döndürme görsel güncelini görmek için oyun görünümünü izleyin.
@@ -371,13 +367,13 @@ Aynı işlem programlı bir şekilde yapılabilir ve belirli uzak varlıkları d
     }
     ```
 
-1. **Remoterayroyon Pointerhandler** olayına ek bir geri çağırma ekleyin `OnRemoteEntityClicked` ve bunu olarak ayarlayarak `MakeSyncedGameObject` . \
+1. **Remoterayyon Pointerhandler** olayına ek bir geri çağırma ekleyin `OnRemoteEntityClicked` ve bunu olarak ayarlayarak `MakeSyncedGameObject` .
 ![Ek geri arama](./media/additional-callback.png)
 1. MRTK 'nin el simülasyonu kullanarak sol SHIFT tuşuna basın ve basılı tutun.
 1. El ışın test modelini işaret ettiğinden, sanal bir yandan
 1. Bir AIR tap benzetimini yapmak için uzun tıklama `OnPointerClicked` olayı yürütülüyor.
-1. Tıklamış varlığı temsil eden yeni bir alt nesne görmek için hiyerarşiyi denetleyip genişletin. \
-![Oyunobject temsili](./media/gameobject-representing-entity.png)\
+1. Tıklamış varlığı temsil eden yeni bir alt nesne görmek için hiyerarşiyi denetleyip genişletin.
+![Oyunobject temsili](./media/gameobject-representing-entity.png)
 1. Test ettikten sonra, `MakeSyncedGameObject` Bu, daha sonra diğer efektlerin bir parçası olarak birleştireceğiz için geri çağırma işlemini kaldırın.
 
 > [!NOTE]

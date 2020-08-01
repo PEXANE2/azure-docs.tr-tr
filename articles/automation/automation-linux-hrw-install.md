@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fc7951411f1c8956b4816f9031a8b7c26594b42
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856137"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448012"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -28,7 +28,7 @@ Karma Runbook Worker rolü, rolü yüklemek ve yapılandırmak için bir Azure I
 
 Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md) gözden geçirin.
 
-Bir çalışma alanınız varsa, ancak Otomasyon hesabınıza bağlı değilse, Otomasyon özelliğinin etkinleştirilmesi, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınızda Azure Otomasyonu özelliklerinden birini etkinleştirdiğinizde, özellikle [güncelleştirme yönetimi](automation-update-management.md) veya [değişiklik izleme ve envanterinde](change-tracking.md), çalışan bileşenleri otomatik olarak aracı makinesine gönderilir.
+Bir çalışma alanınız varsa, ancak Otomasyon hesabınıza bağlı değilse, Otomasyon özelliğinin etkinleştirilmesi, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınızda Azure Otomasyonu özelliklerinden birini etkinleştirdiğinizde, özellikle [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) veya [değişiklik izleme ve envanterinde](change-tracking.md), çalışan bileşenleri otomatik olarak aracı makinesine gönderilir.
 
 Güncelleştirme Yönetimi özelliğini çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
@@ -80,9 +80,9 @@ Linux karma Runbook Worker için en düşük gereksinimler şunlardır:
 
 Linux hibrit runbook çalışanları, Azure Otomasyonu 'nda sınırlı sayıda runbook türü kümesini destekler ve aşağıdaki tabloda açıklanmıştır.
 
-|Runbook türü | Destekleniyor |
+|Runbook türü | Desteklenir |
 |-------------|-----------|
-|Python 2 |Evet |
+|Python 2 |Yes |
 |PowerShell |Evet<sup>1</sup> |
 |PowerShell İş Akışı |Hayır |
 |Grafik |Hayır |

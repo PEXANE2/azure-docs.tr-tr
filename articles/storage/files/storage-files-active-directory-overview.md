@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372339"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447255"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -44,7 +44,7 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD etki alanı hizmet kim
 
     Azure dosyaları ile şirket içi Active Directory Domain Services (AD DS) tümleştirmesi, ağ kullanıcıları ve yöneticiler tarafından kullanılabilir hale getirilmesi sırasında dizin verilerinin depolanması için yöntemler sağlar. Güvenlik, oturum açma kimlik doğrulaması ve dizindeki nesnelere erişim denetimi aracılığıyla AD DS tümleşiktir. Tek bir ağ oturumu açma ile yöneticiler, ağ genelinde dizin verilerini ve organizasyonu yönetebilir ve yetkili ağ kullanıcıları ağ üzerinde herhangi bir yerde kaynaklara erişebilir. AD DS genellikle şirket içi ortamlarda kuruluşlar tarafından benimsenmiştir ve erişim denetimi kimliği olarak AD DS kimlik bilgileri kullanılır. Daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
--   **Azure rol tabanlı Access Control (RBAC)**
+-   **Azure rol tabanlı erişim denetimi (Azure RBAC)**
 
     Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. RBAC kullanarak, kullanıcılara işlerini gerçekleştirmek için gereken en az izni vererek kaynaklara erişimi yönetebilirsiniz. RBAC hakkında daha fazla bilgi için bkz. [Azure 'Da Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
 

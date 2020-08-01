@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 634f200280a85ff865741cd03905101ff1e5c19f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015026"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448042"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -28,7 +28,7 @@ Karma Runbook Worker rolü, rolü yüklemek ve yapılandırmak için bir Azure I
 
 Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md) gözden geçirin.
 
-Bir çalışma alanınız varsa, ancak Otomasyon hesabınıza bağlı değilse, Otomasyon özelliğinin etkinleştirilmesi, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınızda Azure Otomasyonu özelliklerinden birini etkinleştirdiğinizde, özellikle [güncelleştirme yönetimi](automation-update-management.md) veya [değişiklik izleme ve envanterinde](change-tracking.md), çalışan bileşenleri otomatik olarak aracı makinesine gönderilir.
+Bir çalışma alanınız varsa, ancak Otomasyon hesabınıza bağlı değilse, Otomasyon özelliğinin etkinleştirilmesi, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınızda Azure Otomasyonu özelliklerinden birini etkinleştirdiğinizde, özellikle [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) veya [değişiklik izleme ve envanterinde](change-tracking.md), çalışan bileşenleri otomatik olarak aracı makinesine gönderilir.
 
    Güncelleştirme Yönetimi özelliğini çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
@@ -77,7 +77,7 @@ Karma Runbook Worker için daha fazla ağ gereksinimi almak üzere [ağınızı 
 Çalışan makineyi Otomasyon hesabınızdaki bir karma Runbook Worker grubuna ekleyebilirsiniz. Hem Azure Otomasyonu özelliği hem de karma runbook çalışanı grup üyeliği için aynı hesabı kullandığınız sürece Otomasyon Runbook 'larını desteketmeniz gerektiğini unutmayın. Bu işlev Karma Runbook Çalışanının 7.2.12024.0 sürümüne eklenmiştir.
 
 >[!NOTE]
->Azure Otomasyonu [güncelleştirme yönetimi](automation-update-management.md) etkinleştirilmesi, işletim sistemi güncelleştirmelerini yönetmeyi desteklemek için Log Analytics çalışma alanınıza karma runbook çalışanı olarak bağlı tüm Windows makineleri otomatik olarak yapılandırır. Ancak bu çalışan, Otomasyon hesabınızda zaten tanımlanmış olan karma Runbook Worker gruplarına kayıtlı değildir.
+>Azure Otomasyonu [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) etkinleştirilmesi, işletim sistemi güncelleştirmelerini yönetmeyi desteklemek için Log Analytics çalışma alanınıza karma runbook çalışanı olarak bağlı tüm Windows makineleri otomatik olarak yapılandırır. Ancak bu çalışan, Otomasyon hesabınızda zaten tanımlanmış olan karma Runbook Worker gruplarına kayıtlı değildir.
 
 ## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasıyla yönetimi için makineleri etkinleştirme
 
@@ -169,7 +169,7 @@ Heartbeat
 
 Arama sonuçlarında, makineye bağlı olduğunu ve hizmete raporlanmasını belirten, makinenin sinyal kayıtlarını görmeniz gerekir. Varsayılan olarak, her aracı atanmış çalışma alanına bir sinyal kaydını iletir. Aracı yüklemesini ve kurulumunu gerçekleştirmek için aşağıdaki adımları kullanın.
 
-1. Aracı makinesini eklemek için özelliği etkinleştirin. Güncelleştirme Yönetimi ve Azure VM 'Leri için bkz. [Azure VM 'Leri etkinleştirme](automation-onboard-solutions-from-automation-account.md#enable-azure-vms)ve Azure dışı VM 'ler için bkz. [çalışma alanındaki makineleri etkinleştirme](automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace). Değişiklik İzleme ve Azure VM 'Leri için bkz. [Azure VM 'Leri etkinleştirme](automation-enable-changes-from-auto-acct.md#enable-azure-vms)ve Azure dışı VM 'ler için bkz. [çalışma alanındaki makineleri etkinleştirme](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
+1. Aracı makinesini eklemek için özelliği etkinleştirin. Güncelleştirme Yönetimi ve Azure VM 'Leri için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-automation-account.md), [Azure portal göz atarak güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-portal.md), [runbook 'Tan GÜNCELLEŞTIRME YÖNETIMI etkinleştirme](update-management/update-mgmt-enable-runbook.md)veya [bir Azure VM 'den güncelleştirme yönetimi etkinleştirme](update-management/update-mgmt-enable-vm.md). Değişiklik İzleme ve Azure VM 'Leri için bkz. [Azure VM 'Leri etkinleştirme](automation-enable-changes-from-auto-acct.md#enable-azure-vms)ve Azure dışı VM 'ler için bkz. [çalışma alanındaki makineleri etkinleştirme](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
 
 2. Karma Runbook Worker sürümünü onaylamak için, `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` **Sürüm** alt klasörüne göz atarak göz atabilirsiniz.
 

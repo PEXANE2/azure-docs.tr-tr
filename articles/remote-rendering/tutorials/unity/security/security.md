@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207807"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445899"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
 
@@ -22,7 +22,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure uzaktan Işleme örneğinize erişmek için Azure AD ile kimlik doğrulama
 > * Azure uzaktan Işleme kimlik doğrulaması için Azure kimlik bilgilerini kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici [öğretici: malzemeleri, aydınlatmayı ve etkileri Iyileştirirken](..\materials-lighting-effects\materials-lighting-effects.md)Bu öğreticide oluşturulur.
 
@@ -143,7 +143,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     }
     ```
 
-    Bu kod, **Remoterenderingcoordinator** bileşeninizin üç ek dize değişkenini ekler. \
+    Bu kod, **Remoterenderingcoordinator** bileşenine üç ek dize değişkeni ekler.
     ![Bağlantılı model](./media/storage-account-linked-model.png)
 
 1. Değerlerinizi **Remoterenderingcoordinator** bileşenine ekleyin. [Model dönüştürme Için hızlı başlangıç](../../../quickstarts/convert-model.md)sonrasında değerlerinizin şu olması gerekir:
@@ -156,7 +156,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     > "-UseContainerSas" bağımsız değişkeni olmadan [ **Conversion.ps1** betiğini çalıştırırsanız](../../../quickstarts/convert-model.md#run-the-conversion) , komut dosyası, SAS belirteci yerine sizin için yukarıdaki tüm değerleri çıktı olarak çıkar. ![Bağlantılı model](./media/converted-output.png)
 1. Bu süre boyunca, özel modelinizin yüklenmesi için yer açmak amacıyla GameObject **Testmodel**' i kaldırın veya devre dışı bırakın.
 1. Sahneyi yürütün ve uzak bir oturuma bağlanın.
-1. **Remoterenderingcoordinator** ' a sağ tıklayıp **bağlı özel model yükle**' yi seçin. \
+1. **Remoterenderingcoordinator** ' a sağ tıklayıp **bağlı özel model yükle**' yi seçin.
     ![Bağlı modeli yükle](./media/load-linked-model.png)
 
 Bu adımlar, yerel uygulamadan SAS belirtecini kaldırarak uygulamanın güvenliğini artırmıştır.
@@ -176,16 +176,13 @@ AAD kimlik doğrulaması, ARR 'yi daha denetimli bir şekilde hangi bireylerin v
 1. [Nasıl yapılır: dağıtılan uygulamalar için kimlik doğrulama-kimlik doğrulamasını yapılandırma](../../../how-tos/authentication.md#authentication-for-deployed-applications), özellikle Azure uzamsal bağlayıcılarında listelenen YÖNERGELERI [Azure AD Kullanıcı kimlik doğrulaması](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)' nda takip edersiniz. Bu, yeni bir Azure Active Directory uygulamasının kaydolmasını ve ARR örneğinizin erişimini yapılandırmayı içerir.
 1. Yeni AAD uygulamasını yapılandırdıktan sonra AAD uygulamanızın aşağıdaki görüntüler gibi göründüğünü denetleyin:
 
-    **AAD uygulama-> kimlik doğrulaması**\
-    ![Uygulama kimlik doğrulaması](./media/app-authentication-public.png)
+    **AAD uygulama-> kimlik doğrulaması** ![ Uygulama kimlik doğrulaması](./media/app-authentication-public.png)
 
-    **AAD uygulama-> API Izinleri**\
-    ![Uygulama API 'Leri](./media/request-api-permissions-step-five.png)
+    **AAD uygulama-> API izinleri** ![ Uygulama API 'Leri](./media/request-api-permissions-step-five.png)
 
 1. Uzaktan Işleme Hesabınızı yapılandırdıktan sonra, yapılandırmanızın aşağıdaki görüntüde olduğu gibi göründüğünü denetleyin:
 
-    **AAR-> AccessControl (ıAM)**\
-    ![ARR rolü](./media/azure-remote-rendering-role-assignment-complete.png)
+    **AAR-> AccessControl (IAM)** ![ ARR rolü](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
     > *Sahip* rolü, istemci uygulaması aracılığıyla oturumları yönetmek için yeterli değildir. Oturumları yönetme olanağı vermek istediğiniz her kullanıcı için, rol **Uzaktan Işleme istemcisi**sağlamalısınız. Oturumları yönetmek ve modelleri dönüştürmek istediğiniz her kullanıcı için, rol **Uzaktan Işleme Yöneticisi**sağlamanız gerekir.
@@ -356,10 +353,8 @@ Unity düzenleyicisinde, AAD kimlik doğrulaması etkin olduğunda, uygulamayı 
 
 1. Unity düzenleyicisinde oynat ' a ve bir oturumu çalıştırmak için onay düğmesine basın.
     **Aadauthentication** bileşeninin bir görünüm denetleyicisi olduğundan, oturum yetkilendirme kalıcı panelinden sonra bir istem görüntülemek için otomatik olarak bağlanır.
-1. **Appmenu**'in sağındaki panelde bulunan yönergeleri izleyin. \
-    Şuna benzer bir şey görmeniz gerekir: \
-    ![AAD kimlik doğrulama bileşeni](./media/device-flow-instructions.png)\
-    İkincil cihazınıza (veya aynı cihaza gözatıcıya) verilen kodlanmış bir işlem ve kimlik bilgilerinizi kullanarak oturum açtıktan sonra, istenen uygulamaya bir erişim belirteci döndürülür, bu durumda Unity Düzenleyicisi.
+1. **Appmenu**'in sağındaki panelde bulunan yönergeleri izleyin.
+    Bu şuna benzer bir şey görmeniz gerekir: ![ AAD kimlik doğrulama bileşeni ](./media/device-flow-instructions.png) , ikincil cihazınıza (veya aynı cihazdaki gözatıcıya) girilen kodlanmış öğeyi girdikten ve kimlik bilgilerinizi kullanarak oturum açtıktan sonra, istekte bulunan uygulamaya bir erişim belirteci döndürülür, bu durumda Unity Düzenleyicisi olur.
 1. Bu noktadan sonra, uygulamadaki her şey normal olarak devam etmelidir. Evrelerin beklendiği gibi ilerlemeden devam ediyorsanız, Unity konsolunda herhangi bir hata olup olmadığını denetleyin.
 
 ## <a name="build-to-device"></a>Cihaza oluştur

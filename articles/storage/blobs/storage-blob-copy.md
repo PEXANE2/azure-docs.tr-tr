@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce0c16d43e6de9bada5d747949e370eb83f85826
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463459"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446863"
 ---
 # <a name="copy-a-blob-with-net"></a>.NET ile blob kopyalama
 
@@ -23,7 +23,7 @@ Bu makalede, bir blob 'un Azure Storage hesabıyla nasıl kopyalanacağı göste
 
 Aynı depolama hesabı içindeki bir blobu kopyaladığınızda, zaman uyumlu bir işlemdir. Hesaplar arasında kopyalama yaptığınızda zaman uyumsuz bir işlemdir. [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) ve [Startcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) yöntemleri, durumu denetlemek veya kopyalama işlemini durdurmak IÇIN kullanılan bir kopya kimliği değeri döndürür.
 
-Kopyalama işlemi için kaynak blobu bir Blok Blobu, bir ekleme blobu, Sayfa Blobu veya anlık görüntü olabilir. Hedef blobu zaten varsa, kaynak blobu ile aynı blob türünde olması gerekir. Var olan tüm hedef Blobun üzerine yazılacak. 
+Kopyalama işlemi için kaynak blobu bir Blok Blobu, bir ekleme blobu, Sayfa Blobu veya anlık görüntü olabilir. Hedef blobu zaten varsa, kaynak blobu ile aynı blob türünde olması gerekir. Var olan bir hedef Blobun üzerine yazılacak.
 
 Hedef blobu, bir kopyalama işlemi sürerken değiştirilemez. Hedef Blobun yalnızca bir adet bekleyen kopyalama blob işlemi olabilir. Diğer bir deyişle, bir blob birden çok bekleyen kopyalama işlemi için hedef olamaz.
 
@@ -35,18 +35,18 @@ Tüm blob türlerinde, kopyalama işleminin durumunu almak için hedef Blobun [C
 
 Kopyalama işlemi aşağıdaki formlardan herhangi birini gerçekleştirebilir:
 
-  - Kaynak blobu, farklı bir ada sahip bir hedef bloba kopyalayabilirsiniz. Hedef blobu aynı blob türünde (blok, ekleme veya sayfa) var olan bir BLOB olabilir veya kopyalama işlemi tarafından oluşturulan yeni bir BLOB olabilir.
-  - Kaynak blobu, hedef blobu etkin bir şekilde değiştirerek aynı ada sahip bir hedef bloba kopyalayabilirsiniz. Bu tür bir kopyalama işlemi, kaydedilmemiş blokları kaldırır ve hedef Blobun meta verilerinin üzerine yazar.
-  - Azure dosya hizmetindeki bir kaynak dosyayı hedef bloba kopyalayabilirsiniz. Hedef blobu varolan bir Blok Blobu olabilir veya kopyalama işlemi tarafından oluşturulan yeni bir Blok Blobu olabilir. Dosyalardan sayfa bloblarına veya ekleme bloblarına kopyalama desteklenmez.
-  - Bir anlık görüntüyü kendi temel blobundan kopyalayabilirsiniz. Bir anlık görüntüyü temel Blobun konumuna yükselterek bir blob 'un önceki bir sürümünü geri yükleyebilirsiniz.
-  - Bir anlık görüntüyü hedef bloba farklı bir adla kopyalayabilirsiniz. Elde edilen hedef blobu anlık görüntü değil yazılabilir bir Blobun.
+- Kaynak blobu, farklı bir ada sahip bir hedef bloba kopyalayabilirsiniz. Hedef blobu aynı blob türünde (blok, ekleme veya sayfa) var olan bir BLOB olabilir veya kopyalama işlemi tarafından oluşturulan yeni bir BLOB olabilir.
+- Kaynak blobu, hedef blobu etkin bir şekilde değiştirerek aynı ada sahip bir hedef bloba kopyalayabilirsiniz. Bu tür bir kopyalama işlemi, kaydedilmemiş blokları kaldırır ve hedef Blobun meta verilerinin üzerine yazar.
+- Azure dosya hizmetindeki bir kaynak dosyayı hedef bloba kopyalayabilirsiniz. Hedef blobu varolan bir Blok Blobu olabilir veya kopyalama işlemi tarafından oluşturulan yeni bir Blok Blobu olabilir. Dosyalardan sayfa bloblarına veya ekleme bloblarına kopyalama desteklenmez.
+- Bir anlık görüntüyü kendi temel blobundan kopyalayabilirsiniz. Bir anlık görüntüyü temel Blobun konumuna yükselterek bir blob 'un önceki bir sürümünü geri yükleyebilirsiniz.
+- Bir anlık görüntüyü hedef bloba farklı bir adla kopyalayabilirsiniz. Elde edilen hedef blobu anlık görüntü değil yazılabilir bir Blobun.
 
 ## <a name="copy-a-blob"></a>Blob kopyalama
 
 Bir blobu kopyalamak için aşağıdaki yöntemlerden birini çağırın:
 
- - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
- - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
 
 Aşağıdaki kod örneği, daha önce oluşturulan bir Blobun başvurusunu alır ve aynı kapsayıcıda yeni bir bloba kopyalar:
 

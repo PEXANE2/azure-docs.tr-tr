@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084066"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447344"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 
@@ -76,7 +76,7 @@ Azure RBAC, tüm kaynak türleri için uygulanan üç temel role sahiptir:
 
 - **Okuyucu** , mevcut Azure kaynaklarını görüntüleyebilir.
 
-![Azure Rol Tabanlı Erişim Denetimi](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure rol tabanlı erişim denetimi (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
 Azure 'daki RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin Sanal Makine Katılımcısı rolü, kullanıcının sanal makine oluşturmasını ve yönetmesini sağlar. Azure sanal ağına veya sanal makinenin bağlandığı alt ağa erişim vermez.
 
@@ -219,7 +219,7 @@ Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmas
 - Azure dosya paylaşımları için SMB 3,0 Şifrelemesi gibi bir [hat şifreleme](../../storage/blobs/security-recommendations.md).
 - Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](../../storage/blobs/security-recommendations.md).
 
-#### <a name="encryption-at-rest"></a>Bekleme Sırasında Şifreleme
+#### <a name="encryption-at-rest"></a>Bekleyen şifreleme
 
 Birçok kuruluş için, [bekleyen veri şifreleme](isolation-choices.md) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır. "Bekleyen" veri şifrelemesini sağlayan üç Azure özelliği vardır:
 

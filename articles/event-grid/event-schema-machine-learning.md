@@ -3,12 +3,12 @@ title: Event Grid kaynak olarak Azure Machine Learning
 description: Azure Event Grid Machine Learning Çalışma Alanı olaylar için belirtilen özellikleri açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e256dbcef8c4e4a1354455843e4466d666c7d7b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090680"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458051"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Machine Learning
 
@@ -257,11 +257,11 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 | Başlık | Açıklama |
 | ----- | ----- |
-| [Azure Machine Learning olaylarını tüketme](../machine-learning/concept-event-grid-integration.md) | Azure Machine Learning Event Grid tümleştirilmesine genel bakış. |
+| [Azure Machine Learning olaylarını tüketme](../machine-learning/how-to-use-event-grid.md) | Azure Machine Learning Event Grid tümleştirilmesine genel bakış. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
 * Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md)
-* Azure Machine Learning Azure Event Grid kullanmaya giriş için bkz. [Azure Machine Learning olaylarını](/azure/machine-learning/concept-event-grid-integration) kullanma
-* Azure Machine Learning Azure Event Grid kullanmanın bir örneği için bkz. [olay odaklı makine öğrenimi iş akışları oluşturma](/azure/machine-learning/how-to-use-event-grid)
+* Azure Machine Learning Azure Event Grid kullanmaya giriş için bkz. [Azure Machine Learning olaylarını](../machine-learning/how-to-use-event-grid.md) kullanma
+* Azure Machine Learning Azure Event Grid kullanmanın bir örneği için bkz. [olay odaklı makine öğrenimi iş akışları oluşturma](../machine-learning/how-to-use-event-grid.md)

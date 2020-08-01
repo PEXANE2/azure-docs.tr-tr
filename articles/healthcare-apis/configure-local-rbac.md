@@ -1,5 +1,5 @@
 ---
-title: FHıR için Azure API 'SI için yerel rol tabanlı Access Control (RBAC) yapılandırma
+title: FHıR için Azure API 'SI için yerel rol tabanlı erişim denetimi 'ni (yerel RBAC) yapılandırma
 description: Bu makalede, FHıR için Azure API 'sinin veri düzlemi için dış bir Azure AD kiracısı kullanacak şekilde nasıl yapılandırılacağı açıklanır.
 author: hansenms
 ms.service: healthcare-apis
@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 8aa454e272e0dbf4c69941c35a63ee036c16f78f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 11e7d31385140206070e3b415224ccca725d110f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422581"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446909"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>FHıR için yerel RBAC 'yi yapılandırma 
 

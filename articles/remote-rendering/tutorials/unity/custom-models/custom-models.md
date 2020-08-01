@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ae3d0ac6fb332fa17fbe938572b94c51e0785089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200752"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449015"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Öğretici: arabirimler ve özel modeller
 
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Model alımı için Azure Blob depolamayı yapılandırma
 > * Oluşturma için modelleri yükleme ve işleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici [öğretici: uzaktan işlenmiş bir modeli görüntüleme](../view-remote-models/view-remote-models.md).
 
@@ -75,14 +75,14 @@ Artık, geçerli oturum durumunu görsel geri bildirimde bulunmak için, sahneye
 1. *Varlıklar/Remoterenderingöğreticisi/Prefabs/appmenu* Içindeki **appmenu** prefab konumunu bulun
 1. **Appmenu** prefab ' i sahneye sürükleyin.
 1. Büyük olasılıkla bu, sahneye *metin ağı Pro* varlıkları dahil ettiğimiz Için **tmp İçeri Aktarıcı**için bir iletişim kutusu görürsünüz. **Tmp Essentials 'ı Içeri aktarmak**için istemleri izleyin. Ardından içeri aktarma iletişim kutusunu kapatın, örnekler ve ek özellikler gerekli değildir.
-1. **Appmenu** otomatik olarak yedeklenecek ve bir oturuma bağlanmaya yönelik kalıcı olarak, daha önce yerleştirilmiş olan atlamayı kaldırabilmemiz için yapılandırılır. **Remoterenderingcoordinator** oyunobject üzerinde, daha önce uyguladığımız yetkilendirme Için, **Yetkilendirme isteğinde bulunan üzerinde** '-' düğmesine basarak atlayın. \
- ![Atlamayı Kaldır ](./media/remove-bypass-event.png) . \
+1. **Appmenu** otomatik olarak yedeklenecek ve bir oturuma bağlanmaya yönelik kalıcı olarak, daha önce yerleştirilmiş olan atlamayı kaldırabilmemiz için yapılandırılır. **Remoterenderingcoordinator** oyunobject üzerinde, daha önce uyguladığımız yetkilendirme Için, **Yetkilendirme isteğinde bulunan üzerinde** '-' düğmesine basarak atlayın.
+ ![Atlamayı kaldırın ](./media/remove-bypass-event.png) .
 1. Unity düzenleyicisinde **oynat** ' a basarak görünüm denetleyicisini test edin.
 1. Düzenleyicide, şimdi MRTK 'nin yapılandırıldığından, görünümünüze konum değiştirmek ve sağ fare düğmesini basılı tutarak görünüm yönünü değiştirmek için fareyi hareket ettirmek için etıd anahtarlarını kullanabilirsiniz. Denetimler için bir fikir almak üzere sahne etrafında "itici" i deneyin.
 1. Cihazda, avunuzu **uygulama menüsü**' ne kadar, Unity düzenleyicisinde ise kısayol tuşu ' nı kullanarak aktarabilirsiniz.
 1. Menü hakkında görüş kaybı yaptıysanız, menüyü almak için 'M ' tuşuna basın. Menü kolay etkileşim için kameraya yerleştirilecektir.
-1. Yetkilendirme artık **Appmenu**'nin sağ tarafında bulunan bir istek olarak gösterilecek. Bu işlem, uygulamayı uzaktan işleme oturumlarını yönetmek üzere yetkilendirmek için kullanacaksınız. \
- ![UI yetkilendirme](./media/authorize-request-ui.png)\
+1. Yetkilendirme artık **Appmenu**'nin sağ tarafında bulunan bir istek olarak gösterilecek. Bu işlem, uygulamayı uzaktan işleme oturumlarını yönetmek üzere yetkilendirmek için kullanacaksınız.
+ ![UI yetkilendirme](./media/authorize-request-ui.png)
 1. Öğreticiye devam etmek için Unity 'yi oynamadan durdurun.
 
 ## <a name="manage-model-state"></a>Model durumunu Yönet
@@ -255,11 +255,11 @@ En temel koşullarda, **Remoterenderedmodel** , bir modeli yüklemek için gerek
 Test modelini yeniden yükleyerek yeni betiği test edelim. Betiği içerecek bir oyun nesnesi oluşturacağız ve test modelinin üst öğesi olması gerekir.
 
 1. Sahnede yeni bir boş oyun nesnesi oluşturun ve **Testmodel**olarak adlandırın.
-1. *Remoterenderedmodel* betiğini **testmodel**' e ekleyin. \
+1. *Remoterenderedmodel* betiğini **testmodel**' e ekleyin.
 ![RemoteRenderedModel bileşeni ekleme](./media/add-remote-rendered-model-script.png)
-1. `Model Display Name`Ve öğesini `Model Path` sırasıyla "*testmodel*" ve "*Builtin://Engine*" ile doldurur. \
+1. `Model Display Name`Ve öğesini `Model Path` sırasıyla "*testmodel*" ve "*Builtin://Engine*" ile doldurur.
 ![Model ayrıntılarını belirtin](./media/add-model-script.png)
-1. **Testmodel** nesnesini kameranın önüne, **x = 0, y = 0, z = 3**konumunda konumlandırın. \
+1. **X = 0, y = 0, z = 3**konumundaki **testmodel** nesnesini kameranın önüne konumlandırın.
 ![Konum nesnesi](./media/test-model-position.png)
 1. **Automaticallyload** 'un açık olduğundan emin olun.
 1. Uygulamayı test etmek için Unity düzenleyicisinde **oynat** ' a basın.
@@ -280,7 +280,7 @@ Uygulama durumlarında ilerlerken konsolu izleyin. Dikkat edin, bazı durumları
 ## <a name="load-and-rendering-a-custom-model"></a>Özel bir model yükleme ve işleme
 
 1. Sahnede yeni bir boş Oyunobject oluşturun ve özel modelinize benzer şekilde adlandırın.
-1. *Remoterenderedmodel* betiğini yeni oluşturulan oyunobject öğesine ekleyin. \
+1. *Remoterenderedmodel* betiğini yeni oluşturulan oyunobject öğesine ekleyin.
  ![RemoteRenderedModel bileşeni ekleme](./media/add-remote-rendered-model-script.png)
 1. `Model Display Name`Modelinize uygun bir adla girin.
 1. `Model Path`Yukarıdaki giriş adımlarında oluşturduğunuz modelin *paylaşılan erişim IMZASı (SAS)* URI 'siyle birlikte girin.

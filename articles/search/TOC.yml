@@ -110,6 +110,11 @@
           href: knowledge-store-projection-overview.md
         - name: Artımlı zenginleştirme
           href: cognitive-search-incremental-indexing-conceptual.md
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Dizinler ve yapılar oluşturma

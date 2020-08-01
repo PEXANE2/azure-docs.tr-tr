@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781642"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445643"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -50,7 +50,7 @@ Azure AD, Uygulama Galerisi menüsünde sağlanan şablonları kullanarak herhan
 
 Otomatik olarak sağlamak istediğiniz uygulamalar için uygun lisanslara sahip olmanız gerekir. Uygulamaya atanan kullanıcıların uygulama rolleri için uygun lisanslara sahip olup olmadığını uygulama sahipleriyle tartışın. Azure AD, rollere göre otomatik sağlamayı yönetirse, Azure AD 'de atanan roller uygulama lisanslarına göre hizalanmalıdır. Uygulamaya ait yanlış lisanslar, bir kullanıcının sağlanması/güncelleştirilmesi sırasında hatalara neden olabilir.
 
-### <a name="terms"></a>Terimler
+### <a name="terms"></a>Koşullar
 
 Bu makale aşağıdaki terimleri kullanır:
 
@@ -256,7 +256,7 @@ Otomatik Kullanıcı sağlama uygulamasının üretim ortamında istendiği şek
 
 Azure AD sağlama hizmeti ilk kez çalıştırıldığında, kaynak sistem ve hedef sistemlere yönelik ilk geçiş, her hedef sistem için tüm Kullanıcı nesnelerinin anlık görüntüsünü oluşturur.
 
-Bir uygulama için otomatik sağlamayı etkinleştirirken, ilk zaman 20 dakikadan birkaç saate kadar sürebilir. Süre, Azure AD dizininin boyutuna ve sağlama için kapsamdaki kullanıcı sayısına bağlıdır. Bkz. [sağlama performansını geliştirme](../app-provisioning/application-provisioning-when-will-provisioning-finish.md).
+Bir uygulama için otomatik sağlamayı etkinleştirirken, ilk zaman 20 dakikadan birkaç saate kadar sürebilir. Süre, Azure AD dizininin boyutuna ve sağlama için kapsamdaki kullanıcı sayısına bağlıdır.
 
 Sağlama Hizmeti, başlangıç döngüsünden sonra her iki sistemin durumunu depolar, sonraki artımlı döngülerin performansını geliştirir.
 
@@ -299,8 +299,6 @@ Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki bağla
 * [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](../app-provisioning/application-provisioning-config-problem.md)
 
 * [Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
-
-* [Azure AD Galeri uygulamasına Kullanıcı hazırlama saati veya daha fazlasını sürüyor](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
 
 * [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
 

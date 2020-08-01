@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 04f97dc7296dd2ca9e9f869373cbf82838aa79f5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230392"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445328"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -30,7 +30,7 @@ Konu |  Ayrıntılar
 --------- | --------- |
 Azure AD Connect yükseltme adımları | [Önceki bir sürümden en son](how-to-upgrade-previous-version.md) Azure AD Connect sürüme yükseltmek için farklı yöntemler.
 Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için bkz. [hesaplar ve izinler](reference-connect-accounts-permissions.md#upgrade).
-İndirme| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
+İndir| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Azure AD Connect yeni bir sürümünü serbest bırakmak, hizmetin işlem işlevlerini sağlamak için çeşitli kalite denetimi adımı gerektiren bir işlemdir ve bu işlemden sonra yeni bir yayının sürüm numarası ve yayın durumu en son durumu yansıtacak şekilde güncelleştirilir.
@@ -47,6 +47,20 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 >Eşitleme için Azure AD Connect etkinleştirdiyseniz, eski sürümlerden birini çalıştırırken yakında kullanım dışı bırakılıklar hakkında sizi uyaran sistem durumu bildirimlerini almaya hemen başlayacaksınız.
 >
 >Azure AD Connect en son sürüme nasıl yükselteceğiniz hakkında daha fazla bilgi edinmek için lütfen [Bu makaleye](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) bakın.
+
+## <a name="15450"></a>1.5.45.0
+
+### <a name="release-status"></a>Yayın durumu
+07/29/2020: indirilmek üzere yayınlandı
+
+### <a name="functional-changes"></a>İşlevsel değişiklikler
+Bu bir hata çözme sürümüdür. Bu sürümde işlevsel değişiklik yok.
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+
+- "Active Directory" içinde AZUREADSSOACC bilgisayar hesabı zaten mevcutsa, yöneticinin "sorunsuz çoklu oturum açma" özelliği etkinleştiremediğinde sorun düzeltildi.
+- Sistem durumu portalı aracılığıyla onarılan çakışan bir nesne için v2 API Delta içeri aktarma sırasında hazırlama hatasına neden olan bir sorun düzeltildi.
+- İçeri/dışarı aktarma yapılandırmasında devre dışı özel kuralın etkin olduğu şekilde içe aktarıldığı bir sorun düzeltildi.
 
 ## <a name="15420"></a>1.5.42.0
 
@@ -231,8 +245,8 @@ Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkışt�
 > Bu sorunu gidermek için **ADSync** modülünü içeri aktarmanız ve sonra `Set-ADSyncDirSyncConfiguration` Azure AD Connect sunucusunda PowerShell cmdlet 'ini çalıştırmanız gerekir.  Aşağıdaki adımları kullanabilirsiniz:
 >
 >1. PowerShell 'i erişiminizin engellenmediğinden modunda açın.
->2. Şu komutu çalıştırın: `Import-Module "ADSync"`.
->3. Şu komutu çalıştırın: `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`.
+>2. `Import-Module "ADSync"` öğesini çalıştırın.
+>3. `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` öğesini çalıştırın.
  
 ### <a name="release-status"></a>Yayın durumu 
 
@@ -585,7 +599,7 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Type     | Ad                          | Erişim               | Uygulanan Öğe
+Tür     | Name                          | Access               | Uygulanan Öğe
 ---------|-------------------------------|----------------------|--------------|
 İzin Ver    | SİSTEM                        | Tam Denetim         | Bu nesne  |
 İzin Ver    | Enterprise Admins             | Tam Denetim         | Bu nesne  |
@@ -1186,7 +1200,7 @@ Yayımlanma tarihi: Ağustos 2016
 
 * Eşitleme aralığında yapılan değişiklikler, bir sonraki eşitleme döngüsünün tamamlanmasından önce gerçekleşmez.
 * Azure AD Connect sihirbaz, Kullanıcı adı bir alt çizgi () ile başlayan bir Azure AD hesabını kabul etmez \_ .
-* Hesap parolası çok fazla özel karakter içeriyorsa Azure AD Connect sihirbaz Azure AD hesabının kimliğini doğrulayamazsa. Hata iletisi "kimlik bilgileri doğrulanamıyor. Beklenmeyen bir hata oluştu. " döndürülür.
+* Hesap parolası çok fazla özel karakter içeriyorsa Azure AD Connect sihirbaz Azure AD hesabının kimliğini doğrulayamazsa. Hata iletisi "kimlik bilgileri doğrulanamıyor. Beklenmeyen bir hata oluştu. " hatası döndürülür.
 * Hazırlama sunucusunu kaldırmak, Azure AD kiracısında parola eşitlemesini devre dışı bırakır ve parola eşitlemesinin etkin sunucu ile başarısız olmasına neden olur.
 * Kullanıcı üzerinde depolanan Parola karması olmadığında sık olmayan durumlarda parola eşitleme başarısız olur.
 * Azure AD Connect sunucusu hazırlama modu için etkinleştirildiğinde, parola geri yazma geçici olarak devre dışı bırakılır.

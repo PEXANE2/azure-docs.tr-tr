@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf3566e90802f73accdd27f1cd5435e4af7b9be
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281829"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446999"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
 
@@ -74,10 +74,8 @@ Bu sorun olduğunu doğrulamak için, ilk olarak geçişli kimlik doğrulama ara
 
 Aynı Kullanıcı adı/parola hatası alırsanız, bu, geçişli kimlik doğrulama aracısının düzgün çalıştığı ve sorun şirket içi UPN 'nin yönlendirilemeyen olabileceği anlamına gelir. Daha fazla bilgi için bkz. [Alternatif oturum açma kimliğini yapılandırma]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
 
-
-
-
-
+> [!IMPORTANT]
+> Azure AD Connect sunucusu etki alanına katılmış değilse, [Azure AD Connect: Önkoşullar](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites)bölümünde bahsedilen bir gereksinim, geçersiz Kullanıcı adı/parola sorunu oluşur.
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory Yönetim merkezinde oturum açma hatası nedenleri (Premium lisans gerekir)
 

@@ -3,12 +3,12 @@ title: Event Grid kaynak olarak Azure Blob depolama
 description: Azure Event Grid ile BLOB depolama olayları için sunulan özellikleri açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371286"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458952"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid kaynağı olarak Azure Blob depolama
 
@@ -25,7 +25,7 @@ Bu makalede, BLOB depolama olaylarına yönelik özellikler ve şema sağlanmakt
 Bu olaylar, bir istemci blob REST API 'Lerini çağırarak bir blobu oluşturduğunda, değiştirdiği veya sildiği zaman tetiklenir.
 
 > [!NOTE]
-> *`(abfss://URI) `* Hiyerarşik olmayan ad alanı etkin hesaplar için DFS uç noktasının kullanılması, olay oluşturmaz. Bu tür hesaplar için yalnızca blob uç noktası *`(wasb:// URI)`* olay oluşturacaktır.
+> `$logs`Ve `$blobchangefeed` kapsayıcıları Event Grid ile tümleştirmemişse, bu kapsayıcılardaki etkinlik olay oluşturmaz. Ayrıca, *`(abfss://URI) `* hiyerarşik olmayan ad alanı etkin hesaplar için DFS uç noktası kullanılması olay oluşturmaz, ancak blob uç noktası *`(wasb:// URI)`* olaylar oluşturur.
 
  |Olay adı |Açıklama|
  |----------|-----------|
@@ -33,7 +33,7 @@ Bu olaylar, bir istemci blob REST API 'Lerini çağırarak bir blobu oluşturdu�
  |**Microsoft. Storage. BlobDeleted** |Blob silindiğinde tetiklenir. <br>Özellikle, bu olay, istemci `DeleteBlob` Blob REST API kullanılabilir olan işlemi çağırdığında tetiklenir. |
 
 > [!NOTE]
-> **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız,, `CopyBlob` `PutBlob` ve REST API çağrıları için olayı filtreleyin `PutBlockList` . Bu API çağrıları, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız,, `CopyBlob` `PutBlob` ve REST API çağrıları için olayı filtreleyin `PutBlockList` . Bu API çağrıları, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](./how-to-filter-events.md).
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API 'Lerinin olayları listesi
 
@@ -49,7 +49,7 @@ Bu olaylar, depolama hesabında hiyerarşik bir ad alanı etkinleştirirseniz ve
 |**Microsoft. Storage. DirectoryDeleted**|Bir dizin silindiğinde tetiklenir. <br>Özellikle, istemciler `DeleteDirectory` Azure Data Lake Storage 2. REST API kullanılabilir olan işlemi kullandıklarında bu olay tetiklenir.|
 
 > [!NOTE]
-> **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız, REST API çağrısı için olayı filtreleyin `FlushWithClose` . Bu API çağrısı, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız, REST API çağrısı için olayı filtreleyin `FlushWithClose` . Bu API çağrısı, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](./how-to-filter-events.md).
 
 <a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>Olay yanıtının içeriği
@@ -293,32 +293,32 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| subject | dize | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| eventType | dize | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | dize | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| kimlik | dize | Etkinliğin benzersiz tanımlayıcısı. |
+| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
 | veriler | object | BLOB depolama olay verileri. |
-| dataVersion | dize | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
-| metadataVersion | dize | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| api | dize | Olayı tetikleyen işlem. |
-| Clientrequestıd 'ye sahip | dize | depolama API 'SI işlemi için istemci tarafından sağlanmış bir istek kimliği. Bu kimlik, günlüklerdeki "istemci-istek-kimliği" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve "x-MS-Client-Request-ID" üst bilgisi kullanılarak istemci isteklerinde sağlanabilirler. [Günlük biçimine](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)bakın. |
-| No | dize | Depolama API 'SI işlemi için hizmet tarafından oluşturulan istek kimliği. , Günlüklerdeki "istek-kimliği-üst bilgi" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve ' x-MS-Request-id ' üst bilgisinde API çağrısını başlatma işleminden döndürülür. [Günlük biçimine](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)bakın. |
-| Özelliği | dize | İşlemleri koşullu olarak gerçekleştirmek için kullanabileceğiniz değer. |
-| contentType | dize | Blob için belirtilen içerik türü. |
+| api | string | Olayı tetikleyen işlem. |
+| Clientrequestıd 'ye sahip | string | depolama API 'SI işlemi için istemci tarafından sağlanmış bir istek kimliği. Bu kimlik, günlüklerdeki "istemci-istek-kimliği" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve "x-MS-Client-Request-ID" üst bilgisi kullanılarak istemci isteklerinde sağlanabilirler. [Günlük biçimine](/rest/api/storageservices/storage-analytics-log-format)bakın. |
+| No | string | Depolama API 'SI işlemi için hizmet tarafından oluşturulan istek kimliği. , Günlüklerdeki "istek-kimliği-üst bilgi" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve ' x-MS-Request-id ' üst bilgisinde API çağrısını başlatma işleminden döndürülür. [Günlük biçimine](/rest/api/storageservices/storage-analytics-log-format)bakın. |
+| Özelliği | string | İşlemleri koşullu olarak gerçekleştirmek için kullanabileceğiniz değer. |
+| contentType | string | Blob için belirtilen içerik türü. |
 | contentLength | integer | Blobun bayt cinsinden boyutu. |
-| blobType | dize | Blob türü. Geçerli değerler "BlockBlob" ya da "PageBlob". |
+| blobType | string | Blob türü. Geçerli değerler "BlockBlob" ya da "PageBlob". |
 | Contenentoffset | sayı | Olay tetikleme uygulamasının dosyaya yazmayı tamamladığı noktada gerçekleştirilen bir yazma işleminin bayt cinsinden değeri. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir.|
-| Hedef URL |dize | İşlem tamamlandıktan sonra var olacak dosyanın URL 'si. Örneğin, bir dosya yeniden adlandırılırsa, `destinationUrl` özelliği yeni dosya adının URL 'sini içerir. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir.|
-| sourceUrl |dize | İşlemden önce var olan dosyanın URL 'si. Örneğin, bir dosya yeniden adlandırılırsa, `sourceUrl` yeniden adlandırma işleminden önce özgün dosya adının URL 'sini içerir. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir. |
-| url | dize | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
-| öz | dize | `True`tüm alt dizinlerde işlemi gerçekleştirmek için; Aksi takdirde `False` . <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir. |
-| yana | dize | Belirli bir blob adı için olayların mantıksal dizisini temsil eden donuk bir dize değeri.  Kullanıcılar, aynı blob adında iki olayın göreli sırasını anlamak için standart dize karşılaştırması kullanabilir. |
+| Hedef URL |string | İşlem tamamlandıktan sonra var olacak dosyanın URL 'si. Örneğin, bir dosya yeniden adlandırılırsa, `destinationUrl` özelliği yeni dosya adının URL 'sini içerir. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir.|
+| sourceUrl |string | İşlemden önce var olan dosyanın URL 'si. Örneğin, bir dosya yeniden adlandırılırsa, `sourceUrl` yeniden adlandırma işleminden önce özgün dosya adının URL 'sini içerir. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir. |
+| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
+| öz | string | `True`tüm alt dizinlerde işlemi gerçekleştirmek için; Aksi takdirde `False` . <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir. |
+| yana | string | Belirli bir blob adı için olayların mantıksal dizisini temsil eden donuk bir dize değeri.  Kullanıcılar, aynı blob adında iki olayın göreli sırasını anlamak için standart dize karşılaştırması kullanabilir. |
 | storageDiagnostics | object | Azure depolama hizmeti tarafından zaman içinde Tanılama verileri dahildir. Varsa, olay tüketicileri tarafından yok sayılacak. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları

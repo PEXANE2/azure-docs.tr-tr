@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: e358742635d9ed939bbc62bb0d54e8169382e7de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2845cd0fad8375db67d1aa86333f144222dc0aa
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043494"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446337"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services kotaları ve limitleri
@@ -28,14 +28,14 @@ Bu makalede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure M
 
 ## <a name="account-limits"></a>Hesap sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
 | Tek bir abonelikteki [hesapları Media Services](media-services-account-concept.md) | 25 (sabit) |
 
 ## <a name="asset-limits"></a>Varlık sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
 | Media Services hesap başına [varlık](assets-concept.md) sayısı | 1.000.000|
 
 ## <a name="storage-limits"></a>Depolama sınırları
@@ -86,9 +86,10 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 
 ## <a name="packaging--delivery-limits"></a>Paketleme & teslim limitleri
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
 | Media Services hesap başına [akış uç noktaları](streaming-endpoint-concept.md) (durdurulmuş veya çalışıyor)|2 |
+| Premium akış birimleri | 10 |
 | [Dinamik Bildirim Filtreleri](filters-dynamic-manifest-overview.md)|100|
 | [Akış Ilkeleri](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Tek seferde bir varlıkla ilişkili benzersiz [akış Konumlandırıcı](streaming-locators-concept.md) | 100<sup>(7)</sup> (Sabit) |

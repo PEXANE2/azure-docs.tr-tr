@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298610"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448541"
 ---
 # <a name="data-flow-script-dfs"></a>Veri akışı betiği (DFS)
 
@@ -195,13 +195,21 @@ Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Güncelleştirme sayısı, yukarı serts, ekler, siler
-Alter Row dönüşümünü kullanırken, bu sonucu alter Row ilkelerinizin içinde silen güncelleştirme sayısını saymak isteyebilirsiniz. Alter satırınızda bir toplama dönüştürmesi ekleyin ve bu veri akışı betiğini bu sayımlar için toplama tanımına yapıştırın:
+Alter Row dönüşümünü kullanırken, bu sonucu alter Row ilkelerinizin içinde silen güncelleştirme sayısını saymak isteyebilirsiniz. Değişiklik satırınızda bir toplama dönüştürmesi ekleyin ve bu veri akışı betiğini bu sayımlar için toplama tanımına yapıştırın.
 
 ```
 aggregate(updates = countIf(isUpdate(), 1),
         inserts = countIf(isInsert(), 1),
         upserts = countIf(isUpsert(), 1),
         deletes = countIf(isDelete(),1)) ~> RowCount
+```
+
+### <a name="distinct-row-using-all-columns"></a>Tüm sütunları kullanan ayrı satır
+Bu kod parçacığı, veri akışınıza tüm gelen sütunları alacak yeni bir toplam dönüşüm ekler, yinelemeleri ortadan kaldırmak için gruplandırma için kullanılan bir karma oluşturur ve ardından her tekrarın her yinelenmesinin çıkış olarak sağlanması gerekir. Sütunları açıkça yazmanız gerekmez, bunlar otomatik olarak gelen veri akışınızdan oluşturulur.
+
+```
+aggregate(groupBy(mycols = sha2(256,columns())),
+    each(match(true()), $$ = first($$))) ~> DistinctRows
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

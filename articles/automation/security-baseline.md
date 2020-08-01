@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045908"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447707"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -220,7 +220,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 * [Bağlı Log Analytics çalışma alanı için desteklenen bölgeler](./how-to/region-mappings.md)
 
-* [Güncelleştirme Yönetimi günlükleri sorgula](./automation-update-management-query-logs.md)
+* [Güncelleştirme Yönetimi günlükleri sorgula](./update-management/update-mgmt-query-logs.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -646,9 +646,9 @@ Karma runbook çalışanları kullanılırken, sanal makinelerdeki sanal diskler
 
 Azure sanal makineler tarafından desteklenen karma runbook çalışanları kullanıyorsanız, sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi kullanın. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak Configuration Manager kullanan makinelere yaması sağlar.
 
-* [Azure 'da Güncelleştirme Yönetimi](./automation-update-management.md)
+* [Azure 'da Güncelleştirme Yönetimi](./update-management/update-mgmt-overview.md)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](./automation-tutorial-update-management.md)
+* [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -660,9 +660,9 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 Azure sanal makineler tarafından desteklenen karma runbook çalışanları kullanıyorsanız, sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi kullanabilirsiniz. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo, Configuration Manager kullanan makinelerin üçüncü taraf yazılımla güncelleştirme deposu olarak Güncelleştirme Yönetimi yalamasını sağlar.
 
-* [Azure 'da Güncelleştirme Yönetimi çözümü](./automation-update-management.md)
+* [Azure 'da Güncelleştirme Yönetimi çözümü](./update-management/update-mgmt-overview.md)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](./automation-tutorial-update-management.md)
+* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

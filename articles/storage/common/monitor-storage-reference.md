@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: fa8838dd5eca03d9dd85e424f0163eb9ca8ed5e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28a127b4debeacd2562867008bc594897558d50d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077849"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446848"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure depolama izleme veri başvurusu
 
@@ -104,12 +104,12 @@ Azure depolama, Azure Izleyici 'de ölçümler için aşağıdaki boyutları des
 
 | Boyut adı | Açıklama |
 | ------------------- | ----------------- |
-| **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob**ve **Azure Data Lake Storage**. Append blobu BlockBlob 'a dahildir. |
+| **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob**ve **Azure Data Lake Storage**. Ekleme Blobları **Blockblob**'a dahildir. |
 | **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık**erişimli: etkin katman</li> <li>**Cool**: Cool Tier</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan**: genel amaçlı v1 depolama hesabı için katman türü</li> |
 | **GeoType** | Birincil veya Ikincil kümeden işlem. Kullanılabilir değerler **PRIMARY** ve **Secondary**' i içerir. İkincil kiracının nesnelerini okurken Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için geçerlidir. |
 | **ResponseType** | İşlem yanıt türü. Kullanılabilir değerler şunlardır: <br/><br/> <li>**ServerOtherError**: Açıklananlar hariç diğer tüm sunucu tarafı hatalar </li> <li>**ServerBusyError**: HTTP 503 durum kodu döndüren, kimliği doğrulanmış istek. </li> <li>**ServerTimeoutError**: HTTP 500 durum kodu döndüren, zaman aşımına uğramış ve kimliği doğrulanmış istek. Zaman aşımı bir sunucu hatası nedeniyle gerçekleşti. </li> <li>**AuthorizationError**: Yetkisiz veri erişimi veya yetkilendirme hatası nedeniyle başarısız olmuş bir kimliği doğrulanmış istek. </li> <li>**NetworkError**: Ağ hataları nedeniyle başarısız olmuş bir kimliği doğrulanmış istek. Çoğunlukla bir istemci, zaman aşımı süre sonundan önce bağlantıyı erkenden kapattığında gerçekleşir. </li><li>**ClientAccountBandwidthThrottlingError**: istek, [depolama hesabı ölçeklenebilirlik sınırlarını](scalability-targets-standard-account.md)aşan bant genişliği üzerinde kısıtlandı.</li><li>**Clientaccountrequestazaltıngerror**: istek, [depolama hesabı ölçeklenebilirlik sınırlarını](scalability-targets-standard-account.md)aşmamak için istek hızında kısıtlanıyor.<li>**Clientkısıtlar Lingerror**: diğer istemci tarafı azaltma hatası. ClientAccountBandwidthThrottlingError ve Clientaccountrequestkısıtlar Lingerror hariç tutulur.</li> <li>**ClientTimeoutError**: HTTP 500 durum kodu döndüren, zaman aşımına uğramış ve kimliği doğrulanmış istek. İstemcinin ağ zaman aşımı veya istek zaman aşımı depolama hizmetinin beklediğinden düşük bir değere ayarlanmışsa beklenen bir zaman aşımıdır. Aksi takdirde, bir ServerTimeoutError olarak bildirilir. </li> <li>**ClientOtherError**: Açıklananlar hariç diğer tüm istemci tarafı hatalar. </li> <li>**Success**: Başarılı istek</li> <li> Başarılı **azaltma**: bir SMB istemcisi ilk denemede azaltılırsa, ancak yeniden denemeler yapıldıktan sonra başarılı olan istek.</li> |
-| **ApiName** | İşlemin adı. Örneğin: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Tüm işlem adları için bkz. [belge](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| **Kimlik doğrulaması** | İşlemlerde kullanılan kimlik doğrulaması türü. Kullanılabilir değerler şunlardır: <br/> <li>**Accountkey**: işlem, depolama hesabı anahtarıyla doğrulanır.</li> <li>**SAS**: işlem, paylaşılan erişim imzaları ile doğrulanır.</li> <li>**OAuth**: Işlem, OAuth erişim belirteçleriyle doğrulanır.</li> <li>**Anonim**: işlem anonim olarak istendi. Bu, ön kontrol isteklerini içermez.</li> <li>**Anonymousbir ön**kontrol: işlem, ön kontrol isteği.</li> |
+| **ApiName** | İşlemin adı. Örnek: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Tüm işlem adları için bkz. [belge](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
+| **Kimlik Doğrulaması** | İşlemlerde kullanılan kimlik doğrulaması türü. Kullanılabilir değerler şunlardır: <br/> <li>**Accountkey**: işlem, depolama hesabı anahtarıyla doğrulanır.</li> <li>**SAS**: işlem, paylaşılan erişim imzaları ile doğrulanır.</li> <li>**OAuth**: Işlem, OAuth erişim belirteçleriyle doğrulanır.</li> <li>**Anonim**: işlem anonim olarak istendi. Bu, ön kontrol isteklerini içermez.</li> <li>**Anonymousbir ön**kontrol: işlem, ön kontrol isteği.</li> |
 
 Boyutları destekleyen ölçümler için, karşılık gelen ölçüm değerlerini görmek için boyut değerini belirtmeniz gerekir. Örneğin, başarılı yanıtlar için **işlem** değerine bakarsanız, **responseType** boyutunu **başarılı**olarak filtrelemeniz gerekir. Ya da Blok Blobu için **Blobcount** değerine bakarsanız, **Blobtype** boyutunu **blockblob**ile filtrelemeniz gerekir.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325347"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445301"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
 
@@ -29,7 +29,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 
 ### <a name="windows-agents"></a>Windows aracıları
 
-| | Tanılama<br>Uzantı (WAD) | Log Analytics<br>aracı | Bağımlılık<br>aracı |
+| | Tanılamalar<br>Uzantı (WAD) | Log Analytics<br>aracı | Bağımlılık<br>aracı |
 |:---|:---|:---|:---|
 | **Desteklenen ortamlar** | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
 | **Aracı gereksinimleri**  | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
@@ -39,7 +39,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 
 ### <a name="linux-agents"></a>Linux aracıları
 
-| | Tanılama<br>Uzantı (LAD) | Telegraf<br>aracı | Log Analytics<br>aracı | Bağımlılık<br>aracı |
+| | Tanılamalar<br>Uzantı (LAD) | Telegraf<br>aracı | Log Analytics<br>aracı | Bağımlılık<br>aracı |
 |:---|:---|:---|:---|:---|
 | **Desteklenen ortamlar** | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
 | **Aracı gereksinimleri**  | Hiçbiri | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
@@ -62,7 +62,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 * [Günlük sorguları](../log-query/log-query-overview.md)gibi [Azure izleyici günlükleri](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) tarafından desteklenen özelliklerden yararlanmak için bir Log Analytics çalışma alanına veri gönderin.
 * Sanal makinelerinizi ölçekli olarak izlemenize ve diğer kaynaklardaki ve dış süreçlerdeki işlem ve bağımlılıklarını izleyicmenize olanak tanıyan [VM'ler için Azure izleyici](../insights/vminsights-overview.md) kullanın.  
 * [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) veya [Azure Sentinel](../../sentinel/overview.md)kullanarak sanal makinelerinizin güvenliğini yönetin.
-* Azure sanal makinelerinizin kapsamlı bir şekilde yönetilmesini sağlamak için [Azure Otomasyonu güncelleştirme yönetimi](../../automation/automation-update-management.md), [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md)veya [Azure Otomasyonu değişiklik izleme ve envanterini](../../automation/change-tracking.md) kullanın
+* Azure sanal makinelerinizin kapsamlı bir şekilde yönetilmesini sağlamak için [Azure Otomasyonu güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md), [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md)veya [Azure Otomasyonu değişiklik izleme ve envanterini](../../automation/change-tracking.md) kullanın
 * Belirli bir hizmeti veya uygulamayı izlemek için farklı [çözümler](../monitor-reference.md#insights-and-core-solutions) kullanın.
 
 Log Analytics aracısının sınırlamaları şunlardır:
@@ -118,6 +118,6 @@ Bağımlılık aracısını kullanırken aşağıdakileri göz önünde bulundur
 Aracılardan her biri hakkında daha fazla ayrıntı için aşağıdaki adresten yararlanın:
 
 - [Log Analytics aracısına genel bakış](log-analytics-agent.md)
-- [Azure Tanılama uzantıya genel bakış](diagnostics-extension-overview.md)
+- [Azure Tanılama uzantısına genel bakış](diagnostics-extension-overview.md)
 - [Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı](collect-custom-metrics-linux-telegraf.md)
 

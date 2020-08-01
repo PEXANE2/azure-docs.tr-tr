@@ -3,12 +3,12 @@ title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
 description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus yüksek düzeyde bir genel bakış sunulmaktadır.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 8583996cde23b056261662a0640aa310e63d45a9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 5adcdf10898a7b0ee2d551a3a24b9f80195d645f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341657"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449111"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 
@@ -39,7 +39,7 @@ Kuyruklarda bulunan iletiler, varış noktasında sıralanır ve zaman damgalan�
 
 İleti göndermek ve almak için *konu başlıklarını* da kullanabilirsiniz. Bir kuyruk genellikle noktadan noktaya iletişim için kullanılır, buna karşın konu başlıkları yayımlama/abone olma senaryolarında yararlıdır.
 
-![Konu başlığı](./media/service-bus-messaging-overview/about-service-bus-topic.png)
+![Konu](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
 Konuların birden fazla ve bağımsız abonesi olabilir. Bir konu başlığının bir abonesi konu başlığına gönderilen her iletinin bir kopyasını alabilir. Abonelikler, varlıklar olarak adlandırılır. Abonelikler devam edebilir, ancak süreleri dolacak veya oto silebilir.
 
@@ -92,7 +92,7 @@ Bir hata, istemcinin bir gönderme işleminin sonucu hakkında şüpheli olması
 ### <a name="security-protocols"></a>Güvenlik protokolleri
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-Service Bus, [Paylaşılan Erişim İmzaları](service-bus-sas.md) (SAS), [Rol Tabanlı Erişim Denetimi](authenticate-application.md) (RBAC) ve [Azure kaynakları için Yönetilen kimlikler](service-bus-managed-service-identity.md) gibi güvenlik protokollerini destekler.
+Service Bus, [paylaşılan erişim imzaları](service-bus-sas.md) (SAS), [Azure rol tabanlı erişim denetımı (Azure RBAC)](authenticate-application.md) (RBAC) ve [Azure kaynakları için Yönetilen kimlikler](service-bus-managed-service-identity.md)gibi güvenlik protokollerini destekler.
 
 ### <a name="geo-disaster-recovery"></a>Coğrafi olağanüstü durum kurtarma
 

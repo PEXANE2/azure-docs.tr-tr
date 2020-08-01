@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 2e787bb494c1e919a235b762b4d8c5250c8cda61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a49497cbe71dddb8ab6e76be9b3679dd62b0cee
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321624"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449027"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -369,7 +369,7 @@ Bunlar ayrıca, [kaynak sağlayıcısı işlemleri](/azure/role-based-access-con
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>S. Azure RBAC kullanırken bazı yaygın tuzakları nedir?
 
-Azure rol tabanlı erişim denetimlerini kullanırken göz önünde bulundurmanız gereken birkaç nokta vardır:
+Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırken dikkat etmeniz gereken birkaç nokta aşağıda verilmiştir:
 
 - Azure 'da bir kaynak oluşturduğunuzda bir çalışma alanı söylediğinizde, doğrudan çalışma alanının sahibi değilsiniz. Rolünüz, bu abonelikte yetkilendirdiğiniz en yüksek kapsam rolünden devralınır. Örnek olarak, bir ağ yöneticisiyseniz ve bir Machine Learning çalışma alanı oluşturma izinlerine sahipseniz, bu çalışma alanına karşı ağ yöneticisi rolüne sahip olursunuz ve sahip rolü yoktur.
 - Aynı AAD kullanıcısına eylemlerin/NotActions çakışan bölümleri ile iki rol ataması olduğunda, NotActions 'de listelenen işlemleriniz, başka bir roldeki eylemler olarak listelendiklerinde etkili olmayabilir. Azure 'un rol atamalarını nasıl ayrıştırdığı hakkında daha fazla bilgi edinmek için, [kullanıcının bir kaynağa erişip erişemeyeceğini Azure RBAC 'Nin nasıl belirlediğini](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) okuyun

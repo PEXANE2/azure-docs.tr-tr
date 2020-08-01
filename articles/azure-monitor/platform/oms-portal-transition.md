@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077156"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446792"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS portalı Azure 'a taşınıyor
 
@@ -32,7 +32,7 @@ OMS portalının kullanımdan kalkması ile aşağıdaki değişiklikler duyurul
 - [OMS mobil uygulaması](#oms-mobile-app) kullanım dışı bırakılıyor. 
 - [NSG çözümü](#azure-network-security-group-analytics) , trafik analizi çözümü aracılığıyla kullanılabilen gelişmiş işlevlerle değiştiriliyor.
 - System Center Operations Manager Log Analytics ile yeni bağlantılar, [güncelleştirilmiş yönetim paketleri](#system-center-operations-manager)gerektirir.
-- [Güncelleştirme yönetimi](../../automation/automation-update-management.md)değişiklikler hakkında ayrıntılı bilgi için bkz. [OMS güncelleştirme dağıtımlarınızı Azure 'a geçirme](../../automation/migrate-oms-update-deployments.md) .
+- [Güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)değişiklikler hakkında ayrıntılı bilgi için bkz. [OMS güncelleştirme dağıtımlarınızı Azure 'a geçirme](../../automation/migrate-oms-update-deployments.md) .
 
 
 ## <a name="what-should-i-do-now"></a>Şimdi ne yapmam gerekir?

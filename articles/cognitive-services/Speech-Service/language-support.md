@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8e3f33e8f453ffd6eedaeb75a041af7ec11b4e39
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087155"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457813"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -38,33 +38,59 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Yerel Ayar  | Dil                          | Özelleştirmeler                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | Arapça (UAE)                      | No                                                |
+| `ar-AE` | Arapça (UAE)                      | Hayır                                                |
 | `ar-BH` | Arapça (Bahreyn), modern standart | Dil modeli                                    |
 | `ar-EG` | Arapça (Mısır)                    | Dil modeli                                    |
-| `ar-IL` | Arapça (Israil)                   | No                                                |
-| `ar-JO` | Arapça (Ürdün)                   | No                                                |
-| `ar-KW` | Arapça (Kuveyt)                   | No                                                |
-| `ar-LB` | Arapça (Lübnan)                  | No                                                |
-| `ar-PS` | Arapça (Filistin Yönetimi)                | No                                                |
-| `ar-QA` | Arapça (Qtor)                    | No                                                |
-| `ar-SA` | Arapça (Suudi Arabistan)             | No                                                |
+| `ar-IL` | Arapça (Israil)                   | Hayır                                                |
+| `ar-JO` | Arapça (Ürdün)                   | Hayır                                                |
+| `ar-KW` | Arapça (Kuveyt)                   | Hayır                                                |
+| `ar-LB` | Arapça (Lübnan)                  | Hayır                                                |
+| `ar-PS` | Arapça (Filistin Yönetimi)                | Hayır                                                |
+| `ar-QA` | Arapça (Qtor)                    | Hayır                                                |
+| `ar-SA` | Arapça (Suudi Arabistan)             | Hayır                                                |
 | `ar-SY` | Arapça (Suriye)                    | Dil modeli                                    |
 | `ca-ES` | Katalanca                           | Dil modeli                                    |
+| `cs-CZ` | Çekçe (Çek Cumhuriyeti)            | Dil modeli                                    | 
 | `da-DK` | Danca (Danimarka)                  | Dil modeli                                    |
 | `de-DE` | Almanca (Almanya)                  | Akustik model<br>Dil modeli<br>İşi |
 | `en-AU` | İngilizce (Avustralya)               | Akustik model<br>Dil modeli                  |
 | `en-CA` | İngilizce (Kanada)                  | Akustik model<br>Dil modeli                  |
 | `en-GB` | İngilizce (İngiltere)          | Akustik model<br>Dil modeli<br>İşi |
+| `en-HK` | İngilizce (Hong Kong)               | Dil modeli                                    | 
+| `en-IE` | İngilizce (İrlanda)                 | Dil modeli                                    | 
 | `en-IN` | İngilizce (Hindistan)                   | Akustik model<br>Dil modeli                  |
 | `en-NZ` | İngilizce (Yeni Zelanda)             | Akustik model<br>Dil modeli                  |
+| `en-PH` | İngilizce (Filipinler)             | Dil modeli                                    | 
+| `en-SG` | İngilizce (Singapur)               | Dil modeli                                    | 
 | `en-US` | İngilizce (ABD)           | Akustik model<br>Dil modeli<br>İşi |
+| `en-ZA` | İngilizce (Güney Afrika)            | Dil modeli                                    | 
+| `es-AR` | İspanyolca (Arjantin)               | Dil modeli                                    | 
+| `es-BO` | İspanyolca (Bolivya)                 | Dil modeli                                    | 
+| `es-CL` | İspanyolca (Şili)                   | Dil modeli                                    | 
+| `es-CO` | İspanyolca (Kolombiya)                | Dil modeli                                    | 
+| `es-CR` | İspanyolca (Kosta Rika)              | Dil modeli                                    | 
+| `es-CU` | İspanyolca (Küa)                    | Dil modeli                                    | 
+| `es-DO` | İspanyolca (Dominik Cumhuriyeti)      | Dil modeli                                    | 
+| `es-EC` | İspanyolca (Ekvador)                 | Dil modeli                                    | 
 | `es-ES` | İspanyolca (İspanya)                   | Akustik model<br>Dil modeli                  |
+| `es-GT` | İspanyolca (Guatemala)               | Dil modeli                                    | 
+| `es-HN` | İspanyolca (Honduras)                | Dil modeli                                    | 
 | `es-MX` | İspanyolca (Meksika)                  | Akustik model<br>Dil modeli                  |
+| `es-NI` | İspanyolca (Nikaragua)               | Dil modeli                                    | 
+| `es-PA` | İspanyolca (Panama)                  | Dil modeli                                    | 
+| `es-PE` | İspanyolca (Peru)                    | Dil modeli                                    | 
+| `es-PR` | İspanyolca (Porto Riko)             | Dil modeli                                    | 
+| `es-PY` | İspanyolca (Paraguay)                | Dil modeli                                    | 
+| `es-SV` | İspanyolca (El Salvador)             | Dil modeli                                    | 
+| `es-US` | İspanyolca (ABD)                     | Dil modeli                                    | 
+| `es-UY` | İspanyolca (Uruguay)                 | Dil modeli                                    | 
+| `es-VE` | İspanyolca (Venezuela)               | Dil modeli                                    | 
 | `fi-FI` | Fince (Finlandiya)                 | Dil modeli                                    |
 | `fr-CA` | Fransızca (Kanada)                   | Akustik model<br>Dil modeli                  |
 | `fr-FR` | Fransızca (Fransa)                   | Akustik model<br>Dil modeli<br>İşi |
 | `gu-IN` | Gucerat dili (Hindistan)                 | Dil modeli                                    |
 | `hi-IN` | Hintçe (Hindistan)                     | Akustik model<br>Dil modeli                  |
+| `hu-HU` | Macarca (Macaristan)               | Dil modeli                                    | 
 | `it-IT` | İtalyanca (İtalya)                   | Akustik model<br>Dil modeli<br>İşi |
 | `ja-JP` | Japonca (Japonya)                  | Dil modeli                                    |
 | `ko-KR` | Korece (Kore)                    | Dil modeli                                    |
@@ -78,7 +104,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `sv-SE` | İsveççe (İsviçre)                  | Dil modeli                                    |
 | `ta-IN` | Tamil dili (Hindistan)                     | Dil modeli                                    |
 | `te-IN` | Telugu dili (Hindistan)                    | Dil modeli                                    |
-| `th-TH` | Tayca (Tayland)                   | No                                                |
+| `th-TH` | Tayca (Tayland)                   | Hayır                                                |
 | `tr-TR` | Türkçe (Türkiye)                  | Dil modeli                                    |
 | `zh-CN` | Çince (Mandarin, Basitleştirilmiş)    | Akustik model<br>Dil modeli                  |
 | `zh-HK` | Çince (Cantoneo, geleneksel)  | Dil modeli                                    |

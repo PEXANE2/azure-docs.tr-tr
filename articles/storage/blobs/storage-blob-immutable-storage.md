@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561036"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448330"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
@@ -76,9 +76,9 @@ Aşağıdaki sınırlar bekletme ilkeleri için geçerlidir:
 
 ### <a name="allow-protected-append-blobs-writes"></a>Korumalı ekleme Blobları yazmaları sağlar
 
-Ekleme Blobları, veri bloklarından oluşur ve denetim ve günlük senaryoları için gereken veri ekleme işlemleri için iyileştirilmiştir. Tasarım, ekleme Blobları yalnızca Blobun sonuna yeni blokların eklenmesine izin verir. Değişiklik yapılarından bağımsız olarak, bir ekleme blobu içindeki mevcut blokların değiştirilmesine veya silinmesine göre temelde izin verilmez. Blob ekleme hakkında daha fazla bilgi için bkz. [BLOB ekleme blobu hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
+Ekleme Blobları, veri bloklarından oluşur ve denetim ve günlük senaryoları için gereken veri ekleme işlemleri için en iyi duruma getirilmiştir. Tasarım, ekleme Blobları yalnızca Blobun sonuna yeni blokların eklenmesine izin verir. Değişiklik yapılarından bağımsız olarak, bir ekleme blobu içindeki mevcut blokların değiştirilmesine veya silinmesine göre temelde izin verilmez. Blob ekleme hakkında daha fazla bilgi için bkz. [BLOB ekleme blobu hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
 
-Yalnızca zaman tabanlı bekletme ilkeleri `allowProtectedAppendWrites` , daha fazla koruma ve uyumluluk sağlarken, ek bir bloba yeni bloklar yazmaya olanak tanıyan bir ayara sahiptir. Etkinleştirilirse, ilkeyle korunan kapsayıcıda doğrudan bir ekleme blobu oluşturabilir ve *Appendblock* API 'sini kullanarak var olan ekleme bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve var olan tüm bloklar değiştirilemez veya silinemez. Zaman bekletme güvenilirlik koruması hala geçerlidir, etkin saklama süresi geçene kadar ekleme blobu silmeyi önler. Bu ayarın etkinleştirilmesi, blok Blobları veya sayfa Blobları için dengesterlebilirlik davranışını etkilemez.
+Yalnızca zaman tabanlı bekletme ilkeleri `allowProtectedAppendWrites` , daha fazla koruma ve uyumluluk sağlarken, ek bir bloba yeni bloklar yazmaya olanak tanıyan bir ayara sahiptir. Bu ayar etkinleştirilirse, ilkeyle korunan kapsayıcıda doğrudan bir ekleme blobu oluşturabilir ve *Appendblock* API 'sini kullanarak var olan ekleme bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve var olan tüm bloklar değiştirilemez veya silinemez. Zaman bekletme güvenilirlik koruması hala geçerlidir, etkin saklama süresi geçene kadar ekleme blobu silmeyi önler. Bu ayarın etkinleştirilmesi, blok Blobları veya sayfa Blobları için dengesterlebilirlik davranışını etkilemez.
 
 Bu ayar, zaman tabanlı bekletme ilkesinin bir parçası olduğundan, ekleme Blobları, *etkin* saklama dönemi süresince hala sabit durumda kalır. Yeni veriler ekleme Blobun ilk oluşturulduktan sonra eklenebileceği için, bekletme döneminin nasıl belirlendiği küçük bir farklılık vardır. Etkin saklama, ekleme blobunun **son değiştirilme zamanı** ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farktır. Benzer şekilde, saklama aralığı genişletildiğinde, sabit depolama, etkin saklama süresini hesaplamak için Kullanıcı tarafından belirtilen bekletme aralığının en son değerini kullanır.
 

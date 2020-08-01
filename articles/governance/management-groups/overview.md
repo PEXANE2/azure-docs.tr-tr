@@ -3,12 +3,12 @@ title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 8c8c254b2156a6f710c7130503b7c2a18d7168b0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7c6d5d752886f47da1321289696feb4261abe7e5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420524"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447113"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure Yönetim grupları nelerdir?
 
@@ -82,7 +82,7 @@ Bu geriye dönük doldurma işlemi hakkında sorularınız varsa şu adresten bi
   
 ## <a name="management-group-access"></a>Yönetim grubu erişimi
 
-Azure yönetim grupları tüm kaynak erişimleri ve rol tanımları için [Azure Rol Tabanlı Erişim Denetimi’ni (RBAC)](../../role-based-access-control/overview.md) destekler.
+Azure Yönetim grupları tüm kaynak erişimleri ve rol tanımları için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../../role-based-access-control/overview.md) destekler.
 Bu izinler, hiyerarşide mevcut olan alt kaynaklara devredilir. Herhangi bir RBAC rolü, hiyerarşiyi kaynaklara devralacak bir yönetim grubuna atanabilir. Örneğin, VM katılımcısı adlı RBAC rolü bir yönetim grubuna atanabilir. Bu rolün yönetim grubu üzerinde herhangi bir eylemi yoktur ancak o yönetim grubu altındaki tüm VM’lere devredilir.
 
 Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eylemler gösterilmektedir.

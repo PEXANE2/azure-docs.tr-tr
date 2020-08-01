@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024835"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448078"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -35,7 +35,7 @@ Disk alanı, bellek veya ağ yuvaları üzerinde birçok korumalı alan [sınır
 
 Karma Runbook Worker 'ı yüklemek için işlem işletim sistemine bağlıdır. Aşağıdaki tabloda dağıtım türleri tanımlanmaktadır.
 
-|Operating System  |Dağıtım türleri  |
+|İşletim Sistemi  |Dağıtım türleri  |
 |---------|---------|
 |Windows     | [Otomatik](automation-windows-hrw-install.md#automated-deployment)<br>[El ile](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
@@ -90,13 +90,13 @@ Azure Otomasyonu karma Runbook Worker, Azure Kamu 'da aşağıdaki iki yapıland
 
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde Güncelleştirme Yönetimi
 
-Azure Otomasyonu [güncelleştirme yönetimi](automation-update-management.md) etkinleştirildiğinde, Log Analytics çalışma alanınıza bağlı tüm makineler otomatik olarak karma runbook çalışanı olarak yapılandırılır. Her çalışan, güncelleştirme yönetimine hedeflenmiş runbook 'ları destekleyebilir.
+Azure Otomasyonu [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) etkinleştirildiğinde, Log Analytics çalışma alanınıza bağlı tüm makineler otomatik olarak karma runbook çalışanı olarak yapılandırılır. Her çalışan, güncelleştirme yönetimine hedeflenmiş runbook 'ları destekleyebilir.
 
 Bu şekilde yapılandırılan bir makine, Otomasyon hesabınızda zaten tanımlanmış olan bir karma Runbook Worker grubuna kayıtlı değildir. Makineyi bir karma Runbook Worker grubuna ekleyebilirsiniz, ancak hem Güncelleştirme Yönetimi hem de karma runbook çalışanı grup üyeliği için aynı hesabı kullanmanız gerekir. Bu işlev karma Runbook Worker 'ın 7.2.12024.0 sürümüne eklenmiştir.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Karma Runbook Worker için Güncelleştirme Yönetimi adresleri
 
-Karma Runbook Worker için gereken standart adreslerin ve bağlantı noktalarının üstünde, Güncelleştirme Yönetimi [ağ planlama](automation-update-management.md#ports) bölümünde açıklanan ek ağ yapılandırması gereksinimleri vardır.
+Karma Runbook Worker için gereken standart adreslerin ve bağlantı noktalarının üstünde, Güncelleştirme Yönetimi [ağ planlama](update-management/update-mgmt-overview.md#ports) bölümünde açıklanan ek ağ yapılandırması gereksinimleri vardır.
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde Azure Otomasyonu durum yapılandırması
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: dd5e3cf8ce9e52768c28598a819a28ad1ec4413c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525526"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448769"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -211,7 +211,7 @@ Bu kurulum, örnek düzeyinde veya kullanılabilirlik bölgesi düzeyinde bir ha
 
 Oracle iş yüklerinizi Azure 'a dağıttığınızda, Microsoft tüm ana bilgisayar işletim sistemi düzeyinde düzeltme eki uygulamayı üstlenir. Planlı tüm işletim sistemi düzeyinde bakım, müşterilere bu planlı bakım için izin vermek üzere önceden gönderilir. İki farklı Kullanılabilirlik Alanları iki sunucu aynı anda hiçbir şekilde Düzeltme Eki. VM bakımı ve düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../../virtual-machines/linux/manage-availability.md) . 
 
-Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure Otomasyonu](../../../automation/automation-tutorial-update-management.md)kullanılarak otomatikleştirilebilir. Oracle veritabanınızın düzeltme eki uygulama ve sürdürme, kapalı kalma süresini en aza indirmek için [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) veya [Azure Otomasyonu](../../../automation/automation-tutorial-update-management.md) kullanılarak otomatik ve zamanlanabilir. Oracle veritabanlarınızın bağlamında nasıl kullanılabileceğini anlamak için [sürekli teslim ve mavi/yeşil dağıtımlar](/azure/devops/learn/what-is-continuous-delivery) konusuna bakın.
+Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure otomasyonu güncelleştirme yönetimi](../../../automation/update-management/update-mgmt-overview.md)kullanılarak otomatikleştirilebilir. Devre dışı kalma süresini en aza indirmek için Oracle veritabanınızın düzeltme ve sürdürme [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) veya [Azure Otomasyonu güncelleştirme yönetimi](../../../automation/update-management/update-mgmt-overview.md) kullanılarak otomatik ve zamanlanmış olabilir. Oracle veritabanlarınızın bağlamında nasıl kullanılabileceğini anlamak için [sürekli teslim ve mavi/yeşil dağıtımlar](/azure/devops/learn/what-is-continuous-delivery) konusuna bakın.
 
 ## <a name="architecture-and-design-considerations"></a>Mimari ve tasarım konuları
 

@@ -3,12 +3,12 @@ title: Web uygulaması kullanma-kişiselleştirici
 description: Eylemler (özelliklerle birlikte) ve bağlam özellikleriyle bir kullanıcıya doğru içerik sağlamak için bir kişiselleştirme döngüsüyle bir C# .NET Web uygulamasını özelleştirin.
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: b8b5c005f7003f9b0d9ac228c5a5961c80c85599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133138"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446357"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Öğretici: bir .NET Web uygulamasına kişiselleştirici ekleme
 
@@ -41,7 +41,7 @@ Bu öğreticide, eylemler yiyecek türleridir:
 * ünüzü
 * çorba
 
-Kişiselleştiriciye, eylemleriniz hakkında bilgi edinin ve her bir derecelendirme API isteği ile özellik ve _bağlam özellikleriyle_ __eylemleri_ gönderin.
+Kişiselleştiriciye, eylemleriniz hakkında bilgi edinin ve her bir derecelendirme API isteği ile özellik ve _bağlam özellikleriyle_ _eylemleri_ gönderin.
 
 Modelin bir **özelliği** , Web uygulaması Kullanıcı tabanınızın üyeleri genelinde toplanabilecek eylem veya içerikle ilgili bilgiler. Bir özellik ayrı ayrı (Kullanıcı KIMLIĞI gibi) veya yüksek oranda özel (günün tam saati gibi) _değildir_ .
 

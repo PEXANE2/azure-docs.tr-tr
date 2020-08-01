@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 1063f7189de4bdf1aaca4a6d72c979476433c32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099957"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445792"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Sık sorulan sorular-Azure Key Vault sertifika içeri aktarma
 
@@ -64,6 +64,9 @@ Evet, herhangi bir CA 'dan sertifika içeri aktarabilirsiniz, ancak Anahtar Kasa
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>Bir sertifikayı bir iş ortağı CA 'dan içeri aktardığımda otomatik yenileme özelliği çalışmaya devam eder mi?
 Evet, karşıya yüklendikten sonra sertifikanın verme ilkesinde, tekrar döndürmeyi belirtdiğinizden emin olmanız gerekir. Ayrıca, değişiklikler sonraki döngüye veya sertifika sürümüne kadar yansıtılır.
+
+### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>Key Vault içeri aktarılan App Service Sertifikası göremiyor musunuz? 
+Sertifika başarıyla içeri aktarıldıysa, lütfen parolalar dikey penceresinde içinde gözden geçirin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

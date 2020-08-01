@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042190"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448205"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
@@ -126,15 +126,15 @@ Bir dış Ai kullandığınızda, Ao uygulamanızda yapılan uygulamalar Azure D
 
 Kendi DNS sunucunuzdaki DNS 'yi ıLB Ao 'ınızla yapılandırmak için:
 
-1. . appserviceenvironment.net için bir bölge oluşturun <ASE name>
+1. &lt;alname. appserviceenvironment.NET için bir bölge oluşturun &gt;
 1. Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
 1. Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
-1. <ASE name>. appserviceenvironment.NET içinde SCM adlı bir bölge oluşturun
+1. &lt;Ao Name &gt; . appserviceenvironment.net adlı SCM adlı bir bölge oluşturun
 1. SCM bölgesinde * ıLB IP adresine işaret eden bir kayıt oluşturun
 
 Azure DNS özel bölgelerde DNS 'yi yapılandırmak için:
 
-1. . appserviceenvironment.net adlı bir Azure DNS özel bölge oluşturun <ASE name>
+1. &lt;Ao Name. appserviceenvironment.net adlı bir Azure DNS özel bölge oluşturun &gt;
 1. Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
 1. Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
 1. Bu bölgede, ıLB IP adresine *. SCM 'yi işaret eden bir kayıt oluşturun

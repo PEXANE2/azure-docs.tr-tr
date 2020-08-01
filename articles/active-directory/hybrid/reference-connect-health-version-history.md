@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76897044"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446960"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Sürüm Yayınlama Geçmişi
 Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect Health düzenli olarak güncelleştirir. Bu makalede, yayımlanan sürümleri ve özellikler listelenir.  
@@ -217,7 +217,7 @@ Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşi
 ## <a name="november-2015"></a>Kasım 2015
 **Yeni Özellikler:**
 
-* [Rol tabanlı Access Control](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) için destek
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) desteği
 
 **Yeni Önizleme özellikleri:**
 
@@ -253,4 +253,3 @@ Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bulutta şirket içi kimlik altyapınızı ve eşitleme hizmetlerinizi izleme](whatis-hybrid-identity-health.md)hakkında daha fazla bilgi edinin.
-

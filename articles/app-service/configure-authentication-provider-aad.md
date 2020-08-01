@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d5348f8abe8d30c7f23882974b8c121af39636c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83860537"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448143"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service veya Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma
 
@@ -70,15 +70,15 @@ App Service uygulamanızı yapılandırırken aşağıdaki bilgiler gerekir:
 - İstemci parolası (isteğe bağlı)
 - Uygulama KIMLIĞI URI 'SI
 
-Aşağıdaki adımları uygulayın:
+Aşağıdaki adımları gerçekleştirin:
 
 1. [Azure Portal]oturum açın, **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanızın **URL 'sini**aklınızda edin. Azure Active Directory Uygulama kaydınızı yapılandırmak için kullanacaksınız.
 1. **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt**uygulama kayıtları Azure Active Directory seçin.
 1. **Uygulama kaydetme** sayfasında, uygulama kaydınız Için bir **ad** girin.
 1. **Yeniden yönlendirme URI 'si**içinde **Web** ' i seçin ve yazın `<app-url>/.auth/login/aad/callback` . Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. Uygulama kaydı oluşturulduktan sonra, daha sonra için **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliğini** kopyalayın.
-1. **Kimlik doğrulaması**' nı seçin. **Örtük izin**' ın altında, App Service **kimlik belirteçlerini** , OpenID kullanıcı oturum açma işlemlerinin izin verecek şekilde etkinleştirin.
+1. **Kimlik Doğrulaması**'nı seçin. **Örtük izin**' ın altında, App Service **kimlik belirteçlerini** , OpenID kullanıcı oturum açma işlemlerinin izin verecek şekilde etkinleştirin.
 1. Seçim **Marka**seçin. **Giriş sayfası URL 'si**' nde App Service uygulamanızın URL 'sini girin ve **Kaydet**' i seçin.
 1. **Bir API kümesini kullanıma**sunma ' yı seçin  >  **Set**. Tek kiracılı uygulama için App Service uygulamanızın URL 'sini yapıştırın ve **Kaydet** ' i seçin ve çok kiracılı uygulama için, kiracı tarafından doğrulanan etki alanlarından birini temel alan URL 'yi yapıştırın ve ardından **Kaydet**' i seçin.
 
@@ -103,7 +103,7 @@ Aşağıdaki adımları uygulayın:
     |Alan|Açıklama|
     |-|-|
     |İstemci Kimliği| Uygulama kaydının **uygulama (istemci) kimliğini** kullanın. |
-    |Veren URL 'Si| `<authentication-endpoint>/<tenant-id>/v2.0`' İ kullanın ve, *\<authentication-endpoint>* [bulut ortamınız için kimlik doğrulama uç noktası](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) ile değiştirin (örneğin, " https://login.microsoft.com Genel Azure için"), Ayrıca, *\<tenant-id>* uygulama KAYDıNıN oluşturulduğu **Dizin (kiracı) kimliğiyle** değiştirin. Bu değer, kullanıcıları doğru Azure AD kiracısına yönlendirmek için ve ilgili meta verileri, uygun belirteç imzalama anahtarları ve belirteç verenin talep değerini öğrenmek için indirmek için kullanılır. `/v2.0`Bölüm AAD v1 kullanan uygulamalar için atlanabilir. |
+    |Veren URL 'Si| `<authentication-endpoint>/<tenant-id>/v2.0`' İ kullanın ve, *\<authentication-endpoint>* [bulut ortamınız için kimlik doğrulama uç noktası](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) ile değiştirin (örneğin, " https://login.microsoft.com Genel Azure için"), Ayrıca, *\<tenant-id>* uygulama KAYDıNıN oluşturulduğu **Dizin (kiracı) kimliğiyle** değiştirin. Bu değer, kullanıcıları doğru Azure AD kiracısına yönlendirmek için ve ilgili meta verileri, uygun belirteç imzalama anahtarları ve belirteç verenin talep değerini öğrenmek için indirmek için kullanılır. Azure AD v1 ve Azure Işlevleri uygulamaları için kullanılan uygulamalar için `/v2.0` URL 'de atlayın.|
     |İstemci parolası (Isteğe bağlı)| Uygulama kaydında oluşturduğunuz istemci gizli anahtarını kullanın.|
     |İzin verilen belirteç Izleyicileri| Bu bir bulut veya sunucu uygulaması ise ve bir Web uygulamasından kimlik doğrulama belirteçlerine izin vermek istiyorsanız, Web uygulamasının **uygulama KIMLIĞI URI** 'sini buraya ekleyin. Yapılandırılan **ISTEMCI kimliği** *her zaman* örtük olarak izin verilen bir hedef kitle olarak kabul edilir. |
 
@@ -121,7 +121,7 @@ Artık App Service uygulamanızda kimlik doğrulaması için Azure Active Direct
 
     > [!NOTE]
     > Microsoft Store bir uygulama için, bunun yerine URI olarak [paket SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) 'sini kullanın.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. Uygulama kaydı oluşturulduktan sonra, **uygulama (istemci) kimliği**değerini kopyalayın.
 1. **API izinleri**Seç  >  **Add a permission**  >  **API 'lerim**izin Ekle.
 1. Daha önce App Service uygulamanız için oluşturduğunuz uygulama kaydını seçin. Uygulama kaydını görmüyorsanız, [App Service uygulamanız Için Azure AD 'de uygulama kaydı oluşturma](#register)bölümüne **user_impersonation** kapsamını eklediğinizden emin olun.
@@ -136,7 +136,7 @@ Uygulamanız, App Service veya Işlev uygulamanızda barındırılan bir Web API
 1. [Azure Portal] **Active Directory**  >  **App registrations**  >  **Yeni kayıt**uygulama kayıtları Active Directory seçin.
 1. **Uygulama kaydetme** sayfasında, Daemon uygulama kaydınız Için bir **ad** girin.
 1. Bir Daemon uygulaması için bir yeniden yönlendirme URI 'SI gerekmez, bu da boş bırakabilirsiniz.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. Uygulama kaydı oluşturulduktan sonra, **uygulama (istemci) kimliği**değerini kopyalayın.
 1. **Sertifikalar & gizli**  >  **anahtar Ekle yeni istemci parolası**' nı seçin  >  **Add**. Sayfada gösterilen istemci gizli değerini kopyalayın. Yeniden gösterilmeyecektir.
 
@@ -160,4 +160,4 @@ Artık kendi kimliğini kullanarak App Service uygulamanıza erişebilen bir Dae
 * [Öğretici: Azure App Service'te kullanıcıların kimliğini doğrulama ve kullanıcıları uçtan uca yetkilendirme](app-service-web-tutorial-auth-aad.md)
 <!-- URLs. -->
 
-[Azure portalındaki]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

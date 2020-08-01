@@ -10,12 +10,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261197"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447868"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
@@ -78,11 +78,11 @@ Kaldırılan özellikler ile otomasyon Hesabınızın bağlantısını kaldırma
 
 Alternatif olarak, çalışma alanınızın içindeki Otomasyon hesabınızdan çalışma alanınızın bağlantısını kaldırabilirsiniz.
 
-1. Çalışma alanında **Ilgili kaynaklar**altında **Otomasyon hesabı** ' nı seçin. 
+1. Çalışma alanında **Ilgili kaynaklar**altında **Otomasyon hesabı** ' nı seçin.
 2. Otomasyon hesabı sayfasında **Hesap bağlantısını kaldır**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Güncelleştirme yönetimi genel bakışta](../automation-update-management.md)güncelleştirme yönetimi hakkında bilgi edinin.
+* [Güncelleştirme yönetimi genel bakışta](../update-management/update-mgmt-overview.md)güncelleştirme yönetimi hakkında bilgi edinin.
 * [Değişiklik izleme ve envanterde genel bakış](../change-tracking.md)hakkında bilgi edinin değişiklik izleme.
 * [VM'leri çalışma saatleri dışında Başlat/Durdur genel bakışta](../automation-solution-vm-management.md)VM'leri çalışma saatleri dışında Başlat/Durdur hakkında bilgi edinin.
