@@ -3,15 +3,15 @@ title: Service Catalog ile yönetilen uygulama yayımlama
 description: Kuruluşunuzun üyelerine yönelik bir Azure yönetilen uygulaması oluşturmayı gösterir.
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249045"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497863"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Hızlı Başlangıç: Yönetilen uygulama tanımı oluşturma ve yayımlama
 
@@ -195,7 +195,7 @@ az storage blob upload \
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Azure Active Directory kullanıcı grubu veya uygulaması oluşturma
 
-Bir sonraki adım, müşterinin kaynaklarını yönetmek için bir Kullanıcı grubu, Kullanıcı veya uygulama seçmek içindir. Bu kimlik, atanan role göre yönetilen kaynak grubu üzerinde izinlere sahiptir. Rol, Sahip veya Katkıda Bulunan gibi herhangi bir yerleşik Rol Tabanlı Erişim Denetimi (RBAC) rolü olabilir. Yeni bir Active Directory kullanıcı grubu oluşturmak için bkz. [Azure Active Directory’de grup oluşturma ve üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Bir sonraki adım, müşterinin kaynaklarını yönetmek için bir Kullanıcı grubu, Kullanıcı veya uygulama seçmek içindir. Bu kimlik, atanan role göre yönetilen kaynak grubu üzerinde izinlere sahiptir. Rol, sahip veya katkıda bulunan gibi herhangi bir Azure yerleşik rolü olabilir. Yeni bir Active Directory kullanıcı grubu oluşturmak için bkz. [Azure Active Directory’de grup oluşturma ve üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Kaynakları yönetmek için kullanılacak kullanıcı grubunun nesne kimliği gerekir. 
 
@@ -311,7 +311,7 @@ Depolama hesabının kaynak KIMLIĞINI kopyalayın. Tanım dağıtıldığında 
 
 Yönetilen uygulama tanımınızın depolama hesabınıza dağıtılabilmesi için, yönetim dosyalarını depolama hesabınızın kapsayıcısına yazabilmesi için **gereç kaynak sağlayıcısı** rolüne katkıda bulunan izinleri vermeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
+1. [Azure portalında](https://portal.azure.com) depolama hesabınıza gidin.
 1. Depolama hesabının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
 1. **Rol ataması Ekle** penceresinde, **katkıda** bulunan rolünü seçin. 
 1. **Erişim ata** ALANıNDAN **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.

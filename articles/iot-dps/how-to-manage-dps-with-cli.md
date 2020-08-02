@@ -6,13 +6,14 @@ ms.author: menchi
 ms.date: 01/17/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: devx-track-azurecli
 services: iot-dps
-ms.openlocfilehash: e49f71c100911d9186a0e4693ef133f548e7bc66
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 72978636b878aac9120b356e7be5fe5c978d1738
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037979"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499798"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>IoT Hub cihaz sağlama hizmetini yönetmek için Azure CLı ve IoT uzantısını kullanma
 
@@ -30,7 +31,7 @@ Bu öğreticide ilk olarak Azure CLı ve IoT uzantısını ayarlama adımların�
 
 [Python 2.7x veya Python 3.x](https://www.python.org/downloads/) gereklidir.
 
-### <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
+### <a name="install-the-azure-cli"></a>Azure CLI'yi yükleme
 
 Ortamınızda Azure CLı 'yı kurmak için [yükleme yönergesini](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) izleyin. Azure CLı sürümünüz en azından 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az –version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar. Windows’a yüklemenin kolay bir yolu, [MSI](https://aka.ms/InstallAzureCliWindows) indirip yüklemektir.
 

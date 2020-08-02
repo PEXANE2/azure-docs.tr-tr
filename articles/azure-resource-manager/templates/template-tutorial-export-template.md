@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80408561"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497163"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Öğretici: Azure portal dışarıya aktarılmış şablon kullanma
 
@@ -32,7 +33,7 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
 
 ## <a name="create-app-service-plan"></a>App Service planı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Kaynak oluştur**’u seçin.
 1. **Markette ara**' te **App Service planı**girin ve **App Service planı**' nı seçin.  **App Service planı seçme (klasik)**
 1. **Oluştur**’u seçin.
@@ -42,7 +43,7 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
     - **Kaynak grubu**: **Yeni oluştur** ' u seçin ve ardından bir ad belirtin. Bu öğretici serisinde kullandığınızdan farklı bir kaynak grubu adı belirtin.
     - **Ad**: App Service planı için bir ad girin.
     - **Işletim sistemi**: **Linux**' u seçin.
-    - **Bölge**: bir Azure konumu seçin. Örneğin, **Orta ABD**.
+    - **Bölge**: bir Azure konumu seçin. Örneğin **Orta ABD**.
     - **Fiyatlandırma katmanı**: maliyetleri kaydetmek için SKU 'Yu **temel B1** (geliştirme/test altında) olarak değiştirin.
 
     ![Kaynak Yöneticisi şablonu dışarı aktarma şablonu portalı](./media/template-tutorial-export-template/resource-manager-template-export.png)
@@ -51,7 +52,7 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
 
 ## <a name="export-template"></a>Şablonu dışarı aktarma
 
-1. **Kaynağa Git**' i seçin.
+1. **Kaynağa git**’i seçin.
 
     ![Kaynağa git](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
@@ -97,7 +98,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
+Bu dağıtım komutunu çalıştırmak için Azure CLI’nın [en son sürümüne](/cli/azure/install-azure-cli) sahip olmanız gerekir.
 
 ```azurecli
 az deployment group create \
@@ -116,7 +117,7 @@ az deployment group create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Kaynak grubu, bir depolama hesabı ve bir App Service planı içerir.

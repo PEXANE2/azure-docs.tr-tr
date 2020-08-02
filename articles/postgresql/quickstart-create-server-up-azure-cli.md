@@ -7,19 +7,20 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 1dd20d94737df3e799876323d2aeb555dcb9a381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1a2b7ceea74091931c92d28f8fa47b9046b545fc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146804"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496585"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı-tek sunucu oluşturmak için az Postgres up (Önizleme) adlı bir Azure CLı komutu kullanın
 
 > [!IMPORTANT]
 > [Az Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI komutu önizlemededir.
 
-PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanları çalıştırmanızı, yönetmenizi ve ölçeklendirmenizi sağlayan ve yönetilen bir hizmettir. Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıç, Azure CLı kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere [az Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) komutunu nasıl kullanacağınızı gösterir. `az postgres up` Komut, sunucu oluşturmaya ek olarak bir örnek veritabanı, veritabanında bir kök kullanıcı oluşturur, Azure hizmetleri için güvenlik duvarını açar ve istemci bilgisayar için varsayılan güvenlik duvarı kuralları oluşturur. Bu varsayılanlar geliştirme sürecini hızlandırmeye yardımcı olur.
+PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanları çalıştırmanızı, yönetmenizi ve ölçeklendirmenizi sağlayan ve yönetilen bir hizmettir. Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıç, Azure CLı kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere [az Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) komutunu nasıl kullanacağınızı gösterir. Komut, sunucu oluşturmaya ek olarak `az postgres up` bir örnek veritabanı, veritabanında bir kök kullanıcı oluşturur, Azure hizmetleri için güvenlik duvarını açar ve istemci bilgisayar için varsayılan güvenlik duvarı kuralları oluşturur. Bu varsayılanlar geliştirme sürecini hızlandırmeye yardımcı olur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -65,16 +66,16 @@ geo-redundant-backup | Devre dışı | Coğrafi olarak yedekli yedeklemelerin bu
 location | westus2 | Sunucu için Azure konumu.
 ssl-enforcement | Devre dışı | Bu sunucu için TLS/SSL 'nin etkinleştirilmesi gerekip gerekmediğini belirtir.
 storage-size | 5120 | Sunucunun depolama kapasitesi (birim olan megabayt kullanılır).
-version | 10 | PostgreSQL ana sürümü.
+sürüm | 10 | PostgreSQL ana sürümü.
 admin-user | Sistem tarafından oluşturulan | Yöneticinin Kullanıcı adı.
 admin-password | Sistem tarafından oluşturulan | Yönetici kullanıcının parolası.
 
 > [!NOTE]
-> `az postgres up` Komutu ve ek parametreleri hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up).
+> Komutu ve ek parametreleri hakkında daha fazla bilgi için `az postgres up` bkz. [Azure CLI belgeleri](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up).
 
 Sunucunuz oluşturulduktan sonra, aşağıdaki ayarlarla birlikte gelir:
 
-- "Devbox" adlı bir güvenlik duvarı kuralı oluşturulur. Azure CLı, `az postgres up` komutun ÇALıŞTıRıLDıĞı makinenin IP adresini algılamaya çalışır ve o IP adresini beyaz listeler.
+- "Devbox" adlı bir güvenlik duvarı kuralı oluşturulur. Azure CLı, komutun çalıştırıldığı makinenin IP adresini algılamaya çalışır `az postgres up` ve o IP adresini beyaz listeler.
 - "Azure hizmetlerine erişime izin ver" ayarı açık olarak ayarlanmıştır. Bu ayar, sunucu güvenlik duvarını aboneliğinizdeki kaynaklar dahil olmak üzere tüm Azure kaynaklarından gelen bağlantıları kabul edecek şekilde yapılandırır.
 - "SampleDB" adlı boş bir veritabanı oluşturuldu
 - "SampleDB" ayrıcalıklarına sahip "root" adlı yeni bir Kullanıcı oluşturuldu
@@ -84,7 +85,7 @@ Sunucunuz oluşturulduktan sonra, aşağıdaki ayarlarla birlikte gelir:
 
 ## <a name="get-the-connection-information"></a>Bağlantı bilgilerini alma
 
-`az postgres up` Komut tamamlandıktan sonra, popüler programlama dillerinin bağlantı dizelerinin bir listesi size döndürülür. Bu bağlantı dizeleri, yeni oluşturulan PostgreSQL için Azure veritabanı sunucunuzun belirli öznitelikleriyle önceden yapılandırılmıştır.
+`az postgres up`Komut tamamlandıktan sonra, popüler programlama dillerinin bağlantı dizelerinin bir listesi size döndürülür. Bu bağlantı dizeleri, yeni oluşturulan PostgreSQL için Azure veritabanı sunucunuzun belirli öznitelikleriyle önceden yapılandırılmıştır.
 
 Bu bağlantı dizelerini yeniden listelemek için [az Postgres Show-Connection-String](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-show-connection-string) komutunu kullanabilirsiniz.
 

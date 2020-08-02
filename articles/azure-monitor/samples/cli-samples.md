@@ -6,17 +6,18 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 5433eeff4c01c136e62cb71a53fafcae3a81859b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: abfac23ad37d750a6d7ef84e5dec2559904ebb1f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081381"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496313"
 ---
 # <a name="azure-monitor-cli-samples"></a>Azure Izleyici CLı örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek komut satırı arabirimi (CLı) komutları gösterilmektedir. Azure Izleyici, Cloud Services, sanal makineleri ve Web Apps otomatik olarak ve yapılandırılmış telemetri verileri değerlerine göre uyarı bildirimleri göndermenizi veya Web URL 'Lerini çağırmayı sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure CLı 'yı henüz yüklemediyseniz [Azure CLI yükleme](/cli/azure/install-azure-cli)yönergelerini izleyin. Ayrıca, CLı 'yı tarayıcınızda etkileşimli bir deneyim olarak çalıştırmak için [Azure Cloud Shell](/azure/cloud-shell) de kullanabilirsiniz. [Azure IZLEYICI CLI başvurusu](/cli/azure/monitor?view=azure-cli-latest)'ndaki tüm kullanılabilir komutların tam başvurusuna bakın. 
 
@@ -149,7 +150,7 @@ az monitor log-profiles create --name <profile name> --location <location of pro
 az monitor log-profiles delete --name <profile name>
 ```
 
-## <a name="diagnostics"></a>Tanılama
+## <a name="diagnostics"></a>Tanılamalar
 
 Tanılama ayarlarıyla çalışmak için bu bölümdeki bilgileri kullanın.
 
@@ -183,7 +184,7 @@ az monitor diagnostic-settings delete --name <diagnostic name> \
     --resource <target resource ID>
 ```
 
-## <a name="autoscale"></a>Otomatik Ölçeklendirme
+## <a name="autoscale"></a>Otomatik ölçeklendirme
 
 Otomatik ölçeklendirme ayarlarıyla çalışmak için bu bölümdeki bilgileri kullanın. Bu örnekleri değiştirmeniz gerekir.
 

@@ -3,19 +3,20 @@ title: Azure Kubernetes hizmet kümenizi Izlemeyi durdurma | Microsoft Docs
 description: Bu makalede, Azure AKS kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi nasıl sonlandırabileceğiniz açıklanır.
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.openlocfilehash: caa932815ea46da2603c2621bef40e467fdf16c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: af5f49dfe5e668f39f105a62ad20858e273b34cb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499061"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489495"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici ile Azure Kubernetes Service (AKS) ortamınızı izlemeyi durdurma
 
 AKS kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istediğinize karar verirseniz kümeyi izlemeyi durdurabilirsiniz. Bu makalede, Azure CLı kullanılarak veya belirtilen Azure Resource Manager şablonlarıyla nasıl yapılacağı gösterilmektedir.  
 
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Kapsayıcılar için Azure Izleyicisini devre dışı bırakmak için [az aks Disable-addons](/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) komutunu kullanın. Komut, aracıyı küme düğümlerinden kaldırır, çözümü veya daha önce toplanan ve Azure Izleyici kaynağınız içinde depolanan verileri kaldırmaz.  
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130906"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498982"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Azure 'da şirket içi olağanüstü durum kurtarma için Azure 'u hazırlama
 
@@ -62,7 +62,7 @@ Bu görevleri tamamlamak için hesabınıza Sanal Makine Katkıda Bulunan yerle�
 6. **Bölge**bölümünde, kasasının bulunduğu bölgeyi seçin. **Batı Avrupa** kullanacağız.
 7. **Gözden geçir ve oluştur**’u seçin.
 
-   ![Yeni kasa oluştur](./media/tutorial-prepare-azure/new-vault-settings.png)
+   ![Kurtarma Hizmetleri Kasası oluşturma sayfasının ekran görüntüsü.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
    Yeni kasa artık **Pano**  >  **tüm kaynaklar**bölümünde ve ana **Kurtarma Hizmetleri kasaları** sayfasında listelenir.
 
@@ -81,7 +81,7 @@ Bu görevleri tamamlamak için hesabınıza Sanal Makine Katkıda Bulunan yerle�
 9. Temel DDoS korumasının varsayılan seçeneklerini hizmet uç noktası olmayan veya ağ üzerinde güvenlik duvarı olmadan terk ediyoruz.
 9. **Oluştur**’u seçin.
 
-   ![Sanal ağ oluşturma](media/tutorial-prepare-azure/create-network.png)
+   ![Sanal ağ oluşturma seçeneklerinin ekran görüntüsü.](media/tutorial-prepare-azure/create-network.png)
 
 Sanal ağın oluşturulması birkaç saniye sürer. Oluşturulduktan sonra, Azure portal panosunda görürsünüz.
 

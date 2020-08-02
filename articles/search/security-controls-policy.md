@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e030bc86dcdd36e6267345433510a79c5eb13bd0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b039073810b7b429a560485bcc55df3be569be17
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475014"
+ms.locfileid: "87494885"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Bilişsel Arama için Azure Ilke mevzuat uyumluluk denetimleri
 
-Azure [güvenlik kıyaslaması](../security/benchmarks/introduction.md)' nda önerileri zorlamak Için [Azure ilkesi](../governance/policy/overview.md) kullanıyorsanız, büyük olasılıkla uyumlu olmayan hizmetleri tanımlamak ve düzeltmek için ilkeler oluşturabileceğiniz zaten haberdar olabilirsiniz. Bu ilkeler özel olabilir veya uyumluluk ölçütlerini ve uygun çözümleri sağlayan yerleşik tanımları temel alabilir.
+Azure [güvenlik kıyaslaması](../security/benchmarks/introduction.md)' nda önerileri zorlamak Için [Azure ilkesi](../governance/policy/overview.md) kullanıyorsanız, büyük olasılıkla uyumlu olmayan hizmetleri tanımlamak ve düzeltmek için ilkeler oluşturabileceğiniz zaten haberdar olabilirsiniz. Bu ilkeler özel olabilir veya iyi anlaşılan en iyi uygulamalar için uyumluluk ölçütlerini ve uygun çözümleri sağlayan yerleşik tanımları temel alabilir.
 
-Azure Bilişsel Arama için, bir ilke atamasında kullanabileceğiniz bir yerleşik tanım vardır. Yerleşik, günlüğe kaydetme ve izleme içindir. [Oluşturduğunuz bir ilkede](../governance/policy/assign-policy-portal.md)bu yerleşik tanımı kullanarak, sistem, [tanılama günlüğü](search-monitor-logs.md)olmayan arama hizmetlerini tarar ve ardından buna uygun şekilde etkinleştirin.
+Azure Bilişsel Arama için, aşağıda listelenen ve bir ilke atamasında kullanabileceğiniz bir yerleşik tanım vardır. Yerleşik, günlüğe kaydetme ve izleme içindir. [Oluşturduğunuz bir ilkede](../governance/policy/assign-policy-portal.md)bu yerleşik tanımı kullanarak, sistem, [tanılama günlüğü](search-monitor-logs.md)olmayan arama hizmetlerini tarar ve ardından buna uygun şekilde etkinleştirin.
 
 [Azure Ilkesinde mevzuata uyumluluğu](../governance/policy/concepts/regulatory-compliance.md) , farklı uyumluluk standartlarıyla ilgili **Uyumluluk etki alanları** ve **güvenlik denetimleri** için _yerleşik_olarak bilinen Microsoft tarafından oluşturulan ve yönetilen girişim tanımlarını sağlar. Bu sayfada, Azure Bilişsel Arama için **Uyumluluk etki alanları** ve **güvenlik denetimleri** listelenmektedir. Azure kaynaklarınızı belirli bir standarda uygun hale getirmenize yardımcı olmak için, bir **güvenlik denetimi** için yerleşik bileşenleri atayabilirsiniz.
 

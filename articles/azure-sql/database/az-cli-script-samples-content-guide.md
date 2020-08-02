@@ -5,19 +5,19 @@ description: Azure SQL veritabanı ve Azure SQL yönetilen örneği oluşturup y
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.custom: overview-samples, mvc, sqldbrb=2
+ms.custom: overview-samples, mvc, sqldbrb=2, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 893ea607b322c2f9b2d8a4e8b5b087e21c476d98
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982814"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497180"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için Azure CLı örnekleri 
  
@@ -35,7 +35,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı i
 
 Aşağıdaki tabloda Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanlarını yönetmek için Azure CLı betik örneklerinin bağlantıları yer almaktadır. 
 
-|Alan|Description|
+|Alan|Açıklama|
 |---|---|
 |**Azure SQL veritabanı 'nda veritabanları oluşturma**||
 | [Tek bir veritabanı oluşturma ve güvenlik duvarı kuralını yapılandırma](scripts/create-and-configure-database-cli.md) | Bir SQL veritabanı oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır. |
@@ -63,7 +63,7 @@ Aşağıdaki tabloda Azure SQL veritabanı 'nda tek ve havuza alınmış veritab
 
 Aşağıdaki tabloda Azure SQL yönetilen örneği için Azure CLı betik örnekleri bağlantıları yer almaktadır.
 
-|Alan|Description|
+|Alan|Açıklama|
 |---|---|
 | **SQL yönetilen örneği oluşturma**||
 | [SQL yönetilen örneği oluşturma](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| Bir SQL yönetilen örneği oluşturur. |

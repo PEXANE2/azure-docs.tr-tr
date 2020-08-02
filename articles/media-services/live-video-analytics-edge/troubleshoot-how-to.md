@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285467"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486451"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>IoT Edge 'da canlı video analizi sorunlarını giderme
 
@@ -18,7 +18,7 @@ Bu makalede, Azure IoT Edge üzerindeki canlı video analizi (LVA) için sorun g
 
 ## <a name="troubleshoot-deployment-issues"></a>Dağıtım sorunlarını giderme
 
-### <a name="diagnostics"></a>Tanılama
+### <a name="diagnostics"></a>Tanılamalar
 
 Canlı video analizi dağıtımınızın bir parçası olarak, IoT Hub ve IoT Edge cihazları gibi Azure kaynaklarını ayarlarsınız. Sorunları tanılamaya yönelik ilk adım olarak, aşağıdaki yönergeleri izleyerek sınır cihazının düzgün şekilde ayarlandığından emin olun:
 
@@ -129,14 +129,14 @@ ModuleNotFoundError: No module named 'azure.mgmt.iothub.iot_hub_client'
     
 Bu sorunu düzeltmek için:
 
-1. Şu komutu çalıştırın:
+1. Aşağıdaki komutu çalıştırın:
 
     ```
     az --version
     ```
 1. Aşağıdaki uzantıların yüklü olduğundan emin olun. Bu makalenin yayımında, Uzantılar ve sürümleri şunlardır:
 
-    | Uzantı | Sürüm |
+    | Dahili numara | Sürüm |
     |---|---|
     |azure-cli   |      2.5.1|
     |komut-modüller-nspkg         |   2.0.3|
@@ -234,7 +234,7 @@ HTTP uzantısı işlemcisi aracılığıyla canlı video analizi, medya grafiği
 
     ![Azure IoT Hub 'de modüllerin çalışma durumunu gösteren ekran görüntüsü.](./media/troubleshoot-how-to/iot-hub.png)
 
-* Doğru URL uç noktasına olay gönderiyor olup olmadığınızı denetleyin. Dış AI kapsayıcısı, üzerinden bir URL ve bir bağlantı noktası kullanıma sunar ve POST isteklerinden verileri döndürür. Bu URL `endpoint: url` , http uzantısı işlemcisi için bir özellik olarak belirtilir. [TOPOLOJI URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)'sinde görüldüğü gibi, uç nokta, ıncobir URL parametresi olarak ayarlanır. [Parametresi](http://yolov3/score) için varsayılan değerin veya geçirilen değerin doğru olduğundan emin olun. Istemci URL 'SI (kıvrımlı) kullanarak çalışıp çalışmadığını görmek için test edebilirsiniz.  
+* Doğru URL uç noktasına olay gönderiyor olup olmadığınızı denetleyin. Dış AI kapsayıcısı, üzerinden bir URL ve bir bağlantı noktası kullanıma sunar ve POST isteklerinden verileri döndürür. Bu URL `endpoint: url` , http uzantısı işlemcisi için bir özellik olarak belirtilir. [TOPOLOJI URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)'sinde görüldüğü gibi, uç nokta, ıncobir URL parametresi olarak ayarlanır. Parametresi için varsayılan değerin veya geçirilen değerin doğru olduğundan emin olun. Istemci URL 'SI (kıvrımlı) kullanarak çalışıp çalışmadığını görmek için test edebilirsiniz.  
 
     Örnek olarak, 172.17.0.3 IP adresine sahip yerel makinede çalışan bir Yolo v3 kapsayıcısı aşağıda verilmiştir. IP adresini bulmak için Docker İnceleme ' i kullanın.
 

@@ -7,12 +7,13 @@ ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 64b71c135126ebb540d5ccf72f829f83c74ed0b3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477043"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495327"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
 
@@ -26,7 +27,7 @@ Microsoft Azure Red Hat OpenShift uygulamalarını derlemek ve çalıştırmak i
 
 Aşağıdaki yönergeler, bu önkoşulların tümünde size yol gösterecektir.
 
-## <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
+## <a name="install-the-azure-cli"></a>Azure CLI'yi yükleme
 
 Azure Red Hat OpenShift, Azure CLı 'nin sürüm 2.0.65 veya üstünü gerektirir. Azure CLı 'yi zaten yüklediyseniz, şunu çalıştırarak hangi sürüme sahip olmanız gerektiğini kontrol edebilirsiniz:
 

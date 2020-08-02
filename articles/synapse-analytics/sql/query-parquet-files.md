@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386631"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496245"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet dosyalarını sorgulama
 
@@ -24,7 +24,7 @@ Bu makalede, Parquet dosyalarını okuyacak, isteğe bağlı SQL (Önizleme) kul
 
 `OPENROWSET`işlevi, dosyanızın URL 'sini sağlayarak Parquet dosyasının içeriğini okumanızı sağlar.
 
-### <a name="reading-parquet-file"></a>Parquet dosyası okunuyor
+### <a name="read-parquet-file"></a>Parquet dosyasını okuyun
 
 Dosyanızın içeriğini görmenin en kolay yolu, `PARQUET` işlev için dosya URL 'si sağlamaktır `OPENROWSET` ve parquet ' i belirtmektir `FORMAT` . Dosya herkese açık ise veya Azure AD kimliğiniz bu dosyaya erişebilirse, aşağıdaki örnekte gösterildiği gibi sorguyu kullanarak dosyanın içeriğini görmeniz gerekir:
 
@@ -37,7 +37,7 @@ from openrowset(
 
 Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel Azure kimliğiyle korunuyorsa, [SQL oturum açma için sunucu düzeyi kimlik bilgisi](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kurulumunu yapmanız gerekir.
 
-### <a name="using-data-source"></a>Veri kaynağını kullanma
+### <a name="data-source-usage"></a>Veri kaynağı kullanımı
 
 Önceki örnek, dosyanın tam yolunu kullanır. Alternatif olarak, depolama alanının kök klasörünü işaret eden konum ile bir dış veri kaynağı oluşturabilir ve bu veri kaynağını ve işlevindeki dosyanın göreli yolunu kullanabilirsiniz `OPENROWSET` :
 

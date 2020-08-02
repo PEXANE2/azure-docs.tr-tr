@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367531"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500309"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure Uygulama yapılandırması en iyi uygulamaları
 
@@ -86,6 +86,10 @@ Uygulama yapılandırmasına yönelik aşırı istek, azaltma veya fazla kullan�
 ## <a name="importing-configuration-data-into-app-configuration"></a>Yapılandırma verilerini uygulama yapılandırmasına aktarma
 
 Uygulama yapılandırması, Azure portal veya CLı kullanarak geçerli yapılandırma dosyalarınızda yapılandırma ayarlarınızı toplu olarak [içeri aktarma](https://aka.ms/azconfig-importexport1) seçeneğini sunar. Aynı seçenekleri, örneğin ilgili mağazalar arasında uygulama yapılandırmasından değerleri dışarı aktarmak için de kullanabilirsiniz. GitHub deponuz ile devam eden bir eşitleme ayarlamak isterseniz, [GitHub eylemmizi](https://aka.ms/azconfig-gha2) kullanarak, uygulama yapılandırmasının avantajlarını alırken mevcut kaynak denetimi uygulamalarınızı kullanmaya devam edebilirsiniz.
+
+## <a name="multi-region-deployment-in-app-configuration"></a>Uygulama yapılandırmasında çok bölgeli dağıtım
+
+Uygulama yapılandırması bölgesel bir hizmettir. Bölge başına farklı yapılandırmalara sahip uygulamalar için, bu yapılandırmaların tek bir örnekte depolanması tek bir hata noktası oluşturabilir. Birden çok bölgede bölge başına bir uygulama yapılandırma örneği dağıtmak daha iyi bir seçenek olabilir. Bölgesel olağanüstü durum kurtarma, performans ve güvenlik siloing yardımcı olabilir. Bölgeye göre yapılandırma ayrıca gecikmeyi artırır ve daraltma, örnek başına olduğundan, ayrılmış azaltma kotaları kullanır. Olağanüstü durum kurtarma hafifletme uygulamak için [birden çok yapılandırma deposu](./concept-disaster-recovery.md)kullanabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

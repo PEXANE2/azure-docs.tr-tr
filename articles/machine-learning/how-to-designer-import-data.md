@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327013"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495380"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısına veri aktarma (Önizleme)
 
@@ -32,7 +32,7 @@ Verileri tasarımcıya aktarmak için veri [kümelerini](concept-data.md#dataset
 
 ### <a name="register-a-dataset"></a>Veri kümesini kaydetme
 
-Var olan veri kümelerini [SDK ile program aracılığıyla](how-to-create-register-datasets.md#use-the-sdk) veya [Azure Machine Learning Studio 'da görsel olarak](how-to-create-register-datasets.md#use-the-ui)kaydedebilirsiniz.
+Var olan veri kümelerini [SDK ile program aracılığıyla](how-to-create-register-datasets.md#datasets-sdk) veya [Azure Machine Learning Studio 'da görsel olarak](how-to-create-register-datasets.md#datasets-ui)kaydedebilirsiniz.
 
 Ayrıca, herhangi bir tasarımcı modülünün çıkışını bir veri kümesi olarak kaydedebilirsiniz.
 
@@ -59,7 +59,7 @@ Verileri içeri aktarmak için veri kümelerini kullanmanızı öneririz, ayrıc
 Veri alma modülünü kullanma hakkında ayrıntılı bilgi için bkz. [veri başvurusunu Içeri aktarma sayfası](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Veri kümenizin çok fazla sütunu varsa, aşağıdaki hatayla karşılaşabilirsiniz: "boyut sınırlaması nedeniyle doğrulama başarısız oldu". Bunu önlemek için [veri kümesini veri kümeleri arabirimine kaydedin](how-to-create-register-datasets.md#use-the-ui).
+> Veri kümenizin çok fazla sütunu varsa, aşağıdaki hatayla karşılaşabilirsiniz: "boyut sınırlaması nedeniyle doğrulama başarısız oldu". Bunu önlemek için [veri kümesini veri kümeleri arabirimine kaydedin](how-to-create-register-datasets.md#datasets-ui).
 
 ## <a name="supported-sources"></a>Desteklenen kaynaklar
 

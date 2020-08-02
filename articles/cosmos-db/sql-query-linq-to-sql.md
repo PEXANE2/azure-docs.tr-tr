@@ -4,18 +4,18 @@ description: Desteklenen LINQ işleçlerini ve LINQ sorgularının Azure Cosmos 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: 3f8753518e1d54ddba4fc15a5a030308d0c112a1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f2a7570b7ebed26a06e1bd075c2904bc29061c21
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042501"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498863"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL çevirisi
 
-Azure Cosmos DB sorgu sağlayıcısı, bir LINQ sorgusundan Cosmos DB SQL sorgusuna en iyi çaba eşlemesini gerçekleştirir. LINQ 'ya çevrilen SQL sorgusunu almak istiyorsanız `ToString()` oluşturulan nesnede yöntemini kullanın `IQueryable` . Aşağıdaki açıklamada, LINQ ile ilgili temel bir benzerlik varsayılmaktadır.
+Azure Cosmos DB sorgu sağlayıcısı, bir LINQ sorgusundan Cosmos DB SQL sorgusuna en iyi çaba eşlemesini gerçekleştirir. LINQ 'dan çevrilen SQL sorgusunu almak istiyorsanız `ToString()` oluşturulan nesnede yöntemini kullanın `IQueryable` . Aşağıdaki açıklamada, [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)ile ilgili temel bir benzerlik varsayılmaktadır.
 
 Sorgu sağlayıcısı tür sistemi yalnızca JSON ilkel türlerini destekler: numeric, Boolean, String ve null.
 
@@ -23,7 +23,7 @@ Sorgu sağlayıcısı aşağıdaki skaler ifadeleri destekler:
 
 - Sorgu değerlendirme sırasında temel veri türlerinin sabit değerleri de dahil olmak üzere sabit değerler.
   
-- Bir nesnenin veya dizi öğesinin özelliğine başvuran Özellik/dizi dizini ifadeleri. Örneğin:
+- Bir nesnenin veya dizi öğesinin özelliğine başvuran Özellik/dizi dizini ifadeleri. Örnek:
   
   ```
     family.Id;
@@ -32,7 +32,7 @@ Sorgu sağlayıcısı aşağıdaki skaler ifadeleri destekler:
     family.children[n].grade; //n is an int variable
   ```
   
-- Sayısal ve Boole değerlerinde ortak aritmetik ifadeler de dahil olmak üzere aritmetik ifadeler. Tüm liste için [Azure Cosmos db SQL belirtimine](https://go.microsoft.com/fwlink/p/?LinkID=510612)bakın.
+- Sayısal ve Boole değerlerinde ortak aritmetik ifadeler de dahil olmak üzere aritmetik ifadeler. Tüm liste için [Azure Cosmos db SQL belirtimine](sql-query-system-functions.md)bakın.
   
   ```
     2 * family.children[0].grade;
@@ -54,31 +54,52 @@ Sorgu sağlayıcısı aşağıdaki skaler ifadeleri destekler:
     new int[] { 3, child.grade, 5 };
   ```
 
+## <a name="using-linq"></a>LINQ kullanma
+
+İle LINQ sorgusu oluşturabilirsiniz `GetItemLinqQueryable` . Bu örnek, LINQ sorgu oluşturma ve zaman uyumsuz yürütmeyi bir ile gösterir `FeedIterator` :
+
+```csharp
+using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
+                      .Where(b => b.Title == "War and Peace")
+                      .ToFeedIterator<Book>())
+ {
+     //Asynchronous query execution
+     while (setIterator.HasMoreResults)
+     {
+         foreach(var item in await setIterator.ReadNextAsync()){
+         {
+             Console.WriteLine(item.cost);
+         }
+       }
+     }
+ }
+```
+
 ## <a name="supported-linq-operators"></a><a id="SupportedLinqOperators"></a>Desteklenen LINQ işleçleri
 
 SQL .NET SDK 'sına dahil edilen LINQ sağlayıcısı aşağıdaki işleçleri destekler:
 
-- **Seçim**: nesne oluşturma da dahil olmak üzere SQL SELECT için projeksiyonları çevir.
-- **Burada**: filtreler SQL ' e ÇEVIRIR ve `&&` `||` `!` SQL işleçleri arasındaki çeviriyi destekler
-- **SelectMany**: dizilerin SQL JOIN yan tümcesine geri sarılamadığına izin verir. Dizi öğelerinde filtrelemek için ifadeleri zincirlemek veya iç içe yerleştirmek için kullanın.
-- **OrderBy** ve **OrderByDescending**: ASC veya DESC ile order by 'a çevirin.
-- Toplama için **Count**, **Sum**, **Min**, **Max**ve **Average** işleçleri ve zaman uyumsuz eşdeğerleri **Countasync**, **SumAsync**, **minasync**, **maxasync**ve **averageasync**.
+- **Seçim**: nesne oluşturma dahil olmak üzere [Seçilecek](sql-query-select.md)projeksiyonler çeviri.
+- **Burada**: filtreler [nereye](sql-query-where.md)çeviriye çevirir ve `&&` ,, `||` ve ile `!` SQL işleçleri arasındaki çeviriyi destekler
+- **SelectMany**: dizilerin [JOIN](sql-query-join.md) yan tümcesine geri sarıya izin verir. Dizi öğelerinde filtrelemek için ifadeleri zincirlemek veya iç içe yerleştirmek için kullanın.
+- **OrderBy** ve **OrderByDescending**: ASC veya DESC ile [order by](sql-query-order-by.md) 'a çevirin.
+- [Toplama](sql-query-aggregates.md)için **Count**, **Sum**, **Min**, **Max**ve **Average** işleçleri ve zaman uyumsuz eşdeğerleri **countasync**, **SumAsync**, **minasync**, **maxasync**ve **averageasync**.
 - **CompareTo**: Aralık karşılaştırmaları ' ne çevirir. Genellikle dizeler için kullanılır, çünkü .NET ' de karşılaştırılabilir değildir.
-- **Atla** ve **Al**: bir sorgudaki sonuçları SıNıRLAYAN ve sayfalandırma yapan SQL 'e çevirir ve sınırla.
-- **Matematik işlevleri**: .net,,,,,,,, `Abs` `Acos` ,, `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` ve ile `Truncate` eşdeğer SQL yerleşik işlevlerine çeviriyi destekler.
-- **Dize işlevleri**: .net,,,,,,,,,,, `Concat` `Contains` `Count` `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` ve ile `TrimStart` eşdeğer SQL yerleşik işlevlerine çeviriyi destekler.
-- **Dizi işlevleri**: .net `Concat` , `Contains` ve ile `Count` eşdeğer SQL yerleşik işlevlerine çeviriyi destekler.
-- **Jeo-uzamsal uzantı işlevleri**: saplama yöntemlerinden, `Distance` , `IsValid` `IsValidDetailed` , ve `Within` eşdeğer SQL yerleşik işlevlerine çeviriyi destekler.
-- **Kullanıcı tanımlı Işlev uzantısı işlevi**: saplama yönteminden `UserDefinedFunctionProvider.Invoke` karşılık gelen Kullanıcı tanımlı işleve çeviriyi destekler.
-- **Çeşitli**: `Coalesce` ve koşullu işleçlerin çevirisini destekler. `Contains`İçeriğine bağlı olarak, Içinde DIZE içeren, ARRAY_CONTAINS veya SQL arasında çeviri yapabilir.
+- **Atla** ve **Al**: sorgunun sonuçlarını sınırlandırma ve sayfalandırma IŞLEMLERI için [uzaklığa ve sınıra](sql-query-offset-limit.md) çevirir.
+- **Matematik işlevleri**: .net,,,,,,,, `Abs` `Acos` ,, `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` ve ile `Truncate` eşdeğer [yerleşik matematik işlevlerine](sql-query-mathematical-functions.md)çeviriyi destekler.
+- **Dize işlevleri**: .net,,,,,,,, `Concat` `Contains` ,, `Count` `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` , `TrimEnd` ve ile `TrimStart` eşdeğer [yerleşik dize işlevlerine](sql-query-string-functions.md)çeviriyi destekler.
+- **Dizi işlevleri**: .net `Concat` , `Contains` ve ile `Count` eşdeğer [yerleşik dizi işlevlerine](sql-query-array-functions.md)çeviriyi destekler.
+- **Jeo-uzamsal uzantı işlevleri**: saplama yöntemlerinden, `Distance` , `IsValid` `IsValidDetailed` , ve `Within` eşdeğer [yerleşik Jeo uzamsal işlevlere](sql-query-geospatial-query.md)çeviriyi destekler.
+- **Kullanıcı tanımlı Işlev uzantısı işlevi**: saplama yönteminden `UserDefinedFunctionProvider.Invoke` karşılık gelen [Kullanıcı tanımlı işleve](sql-query-udfs.md)çeviriyi destekler.
+- **Çeşitli**: `Coalesce` ve koşullu [işleçlerin](sql-query-operators.md)çevirisini destekler. `Contains`İçeriğe bağlı olarak, ' nın içerdiği, ARRAY_CONTAINS veya Içinde dize ile çeviri yapılabilir.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örneklerde, bazı standart LINQ sorgu işleçlerinin Cosmos DB sorgulara nasıl çevrilebileceğini gösterir.
+Aşağıdaki örneklerde, bazı standart LINQ sorgu işleçlerinin Azure Cosmos DB içindeki sorgulara nasıl çevrilebileceğini gösterir.
 
 ### <a name="select-operator"></a>İşleç seç
 
-Sözdizimi `input.Select(x => f(x))` , burada `f` skaler bir ifadedir.
+Sözdizimi `input.Select(x => f(x))` , burada `f` skaler bir ifadedir. `input`Bu durumda, bir `IQueryable` nesnesi olur.
 
 **İşleç seç, örnek 1:**
 
@@ -95,7 +116,7 @@ Sözdizimi `input.Select(x => f(x))` , burada `f` skaler bir ifadedir.
       FROM Families f
     ```
   
-**İşleç seç, örnek 2:** 
+**İşleç seç, örnek 2:**
 
 - **LINQ lambda ifadesi**
   
@@ -122,7 +143,7 @@ Sözdizimi `input.Select(x => f(x))` , burada `f` skaler bir ifadedir.
     });
   ```
   
-- **SQL** 
+- **SQL**
   
   ```sql
       SELECT VALUE {"name":f.children[0].familyName,
@@ -320,7 +341,6 @@ Sözdizimi,, `input.SelectMany(x=>x.Q())` `Q` `Select` `SelectMany` veya `Where`
       JOIN c IN f.children
       WHERE c.familyName = f.parents[0].familyName
   ```
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

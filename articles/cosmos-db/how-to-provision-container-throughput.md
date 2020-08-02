@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e02b169cbaf515217b0a9fdbaa844b9022fb4e12
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: fa03ae10239be4ec735a2d450343bf98fde00e70
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422173"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497044"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısında standart (el ile) aktarım hızı sağlama
 
 Bu makalede, Azure Cosmos DB bir kapsayıcı (koleksiyon, grafik veya tablo) üzerinde standart (el ile) aktarım hızı sağlama açıklanmaktadır. Tek bir kapsayıcıda üretilen iş sağlama veya [bir veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md) ve veritabanı içindeki kapsayıcılar arasında paylaşma sağlayabilirsiniz. Azure portal, Azure CLı veya Azure Cosmos DB SDK 'Ları kullanarak bir kapsayıcıda aktarım hızı sağlayabilirsiniz.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
@@ -100,7 +100,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>MongoDB API’si
+### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>MongoDB API'si
 
 ```csharp
 // refer to MongoDB .NET Driver
@@ -121,7 +121,7 @@ mongoDatabase = mongoClient.GetDatabase("testdb");
 var result = mongoDatabase.RunCommand<BsonDocument>(@"{customAction: ""UpdateCollection"", collection: ""testcollection"", offerThroughput: 400}");
 ```
 
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API’si
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API'si
 
 Benzer komutlar, CQL uyumlu herhangi bir sürücü aracılığıyla verilebilir.
 

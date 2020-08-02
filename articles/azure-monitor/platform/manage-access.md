@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 630364a95c4ee427b71aa5e8b763b4447a41c962
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327897"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489461"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure İzleyici'deki günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -20,7 +20,7 @@ Azure Izleyici, [günlük](data-platform-logs.md) verilerini bir Log Analytics �
 Bu makalede, ' ye erişim verme dahil olmak üzere günlüklere erişimi yönetme ve bunları içeren çalışma alanlarını yönetme konuları açıklanmaktadır: 
 
 * Çalışma alanı izinlerini kullanarak çalışma alanı.
-* Azure rol tabanlı erişim denetimi (RBAC) kullanarak belirli kaynaklardan günlük verilerine erişmesi gereken kullanıcılar- [kaynak bağlamı](design-logs-deployment.md#access-mode) olarak da bilinir
+* Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak belirli kaynaklardan günlük verilerine erişmesi gereken kullanıcılar ( [kaynak bağlamı](design-logs-deployment.md#access-mode) olarak da bilinir)
 * Azure RBAC kullanarak çalışma alanındaki belirli bir tablodaki günlük verilerine erişmesi gereken kullanıcılar.
 
 RBAC ve erişim stratejilerinin çevresindeki günlük kavramlarını anlamak için, [Azure Izleyici günlükleri dağıtımınızı tasarlama](design-logs-deployment.md) konusunu okuyun
@@ -313,4 +313,3 @@ Bazen özel Günlükler, belirli bir kaynakla doğrudan ilişkili olmayan kaynak
 * Veri merkezinizdeki veya diğer bulut Ortamınızdaki bilgisayarlardan veri toplamak için [Log Analytics aracısına genel bakış](./log-analytics-agent.md) konusuna bakın.
 
 * Azure VM 'lerinden veri toplamayı yapılandırmak için bkz. [Azure sanal makineler hakkında veri toplama](../learn/quick-collect-azurevm.md) .
-

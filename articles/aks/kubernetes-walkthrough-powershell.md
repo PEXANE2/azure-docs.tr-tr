@@ -4,12 +4,13 @@ description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, uygulama
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 503011f2b9c595feb4d2f94a60e61dcd217c52b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 219772fd81617dc3e69b452057e0122eedef69f9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057003"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499866"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak bir Azure Kubernetes hizmet kümesi dağıtma
 
@@ -21,7 +22,7 @@ Windows Server düğüm havuzu oluşturma hakkında daha fazla bilgi edinmek iç
 
 Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini varsayar. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

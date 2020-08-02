@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4b82e02ecc009e587b89d1fd151fd13f75a4bcf8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 90d5c2688d20b62a4a5fda78eb67ed01777bc28c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80408501"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496891"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Öğretici: Azure hızlı başlangıç şablonlarını kullanma
 
@@ -36,7 +37,7 @@ Bu şablon, depolama hesapları ve App Service planlarını dağıtmak için ge�
 1. **Ara**' ya **Linux Web uygulaması dağıtma**yazın.
 1. **Temel bir Linux Web uygulaması dağıtma**başlığı ile birini seçin. Bulmakta sorun yaşıyorsanız, bu [doğrudan bağlantı](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)' ya tıklayın.
 1. **GitHub 'Da Araştır '** ı seçin.
-1. **Azuredeploy. JSON**öğesini seçin.
+1. **azuredeploy.js**seçin.
 1. Şablonu gözden geçirin. Özellikle, `Microsoft.Web/sites` kaynağı arayın.
 
     ![Kaynak Yöneticisi şablonu Hızlı Başlangıç Web sitesi](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
@@ -49,7 +50,7 @@ Hızlı başlangıç şablonunu mevcut şablonla birleştirin:
 
 Web uygulaması adının Azure genelinde benzersiz olması gerekir. Bir yinelenen ad olmaması için, **webappportalname** değişkeni **"webappportalname": "[Concat (Parameters (' webappname '), '-WebApp ')]"** yerine **"webappportalname": "[Concat (Parametreler (' Webappname '), benzersiz dize (resourceGroup (). ID)]"** olarak güncelleştirilmiştir.
 
-Tanımın sonuna `Microsoft.Web/serverfarms` bir virgül ekleyerek kaynak tanımını `Microsoft.Web/sites` tanımdan ayırın.
+Tanımın sonuna bir virgül ekleyerek `Microsoft.Web/serverfarms` kaynak tanımını `Microsoft.Web/sites` tanımdan ayırın.
 
 Bu yeni kaynakta dikkat edilmesi için birkaç önemli özellik vardır.
 
@@ -77,7 +78,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
+Bu dağıtım komutunu çalıştırmak için Azure CLI’nın [en son sürümüne](/cli/azure/install-azure-cli) sahip olmanız gerekir.
 
 ```azurecli
 az deployment group create \

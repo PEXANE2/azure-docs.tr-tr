@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: f08f9065b2a7361294a2f6257c85be772d0f7119
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79534856"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496092"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Öğretici: Azure CLı kullanarak MariaDB için Azure veritabanı tasarlama
 
@@ -51,9 +51,9 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>MariaDB için Azure Veritabanı sunucusu oluşturma
-`az mariadb server create` Komutuyla bir MariaDB sunucusu Için Azure veritabanı oluşturun. Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
+Komutuyla bir MariaDB sunucusu için Azure veritabanı oluşturun `az mariadb server create` . Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
 
-Aşağıdaki örnek, adıyla `westus` `myresourcegroup` `mydemoserver`kaynak grubunda bulunan MariaDB sunucusu için bir Azure veritabanı oluşturur. Sunucunun `myadmin` şeklinde bir oturum açma adı vardır. 2 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. `<server_admin_password>` değerini kendi değerinizle değiştirin.
+Aşağıdaki örnek, adıyla kaynak grubunda bulunan MariaDB sunucusu için bir Azure veritabanı oluşturur `westus` `myresourcegroup` `mydemoserver` . Sunucunun `myadmin` şeklinde bir oturum açma adı vardır. 2 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. `<server_admin_password>` değerini kendi değerinizle değiştirin.
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
@@ -70,7 +70,7 @@ Bölgeler ve katmanlar için geçerli olan değerleri anlamak için lütfen [fiy
 
 
 ## <a name="configure-firewall-rule"></a>Güvenlik duvarı kuralını yapılandırma
-`az mariadb server firewall-rule create` Komutuyla bir MariaDB sunucu düzeyi güvenlik duvarı kuralı Için Azure veritabanı oluşturun. Sunucu düzeyinde güvenlik duvarı kuralı, **MySQL** komut satırı aracı veya MySQL çalışma ekranı gibi bir dış uygulamanın Azure MariaDB hizmet güvenlik duvarı üzerinden sunucunuza bağlanmasını sağlar.
+Komutuyla bir MariaDB sunucu düzeyi güvenlik duvarı kuralı için Azure veritabanı oluşturun `az mariadb server firewall-rule create` . Sunucu düzeyinde güvenlik duvarı kuralı, **MySQL** komut satırı aracı veya MySQL çalışma ekranı gibi bir dış uygulamanın Azure MariaDB hizmet güvenlik duvarı üzerinden sunucunuza bağlanmasını sağlar.
 
 Aşağıdaki örnek `AllowMyIP` adında ve 192.168.0.1 IP adresinden gelen bağlantılara izin veren bir güvenlik duvarı kuralı oluşturur. IP adresini veya IP adresi aralıklarını bağlandığınız adreslere göre değiştirin.
 
@@ -188,7 +188,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
-| ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Zaman içinde geri yüklenecek bir nokta seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, `2017-04-13T05:59:00-08:00` şeklinde kendi yerel saat diliminizi ya da `2017-04-13T13:59:00Z` şeklindeki UTC Zulu biçimini kullanabilirsiniz. |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |
 

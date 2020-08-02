@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509991"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497639"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure dosya paylaşma oluşturma
 Premium dosya paylaşımları, katı hal disk (SSD) depolama medyasında sunulur ve barındırma veritabanları ve yüksek performanslı bilgi işlem (HPC) dahil olmak üzere GÇ yoğunluklu iş yükleri için kullanışlıdır. Premium dosya paylaşımları, FileStorage hesabı olarak adlandırılan özel bir amaç depolama hesabı türünde barındırılır. Premium dosya paylaşımları, yüksek performans ve kurumsal ölçekli uygulamalar için tasarlanmıştır; tutarlı düşük gecikme süresi, yüksek ıOPS ve yüksek verimlilik paylaşımları sağlar.
@@ -25,7 +26,7 @@ Premium Azure dosya paylaşımları dahil olmak üzere Azure kaynaklarına eriş
 
 ## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Azure portal kullanarak Premium dosya paylaşma oluşturma
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure’da oturum açma
 
 [Azure portalında](https://portal.azure.com/) oturum açın.
 
@@ -55,7 +56,7 @@ Her depolama hesabı bir Azure kaynak grubuna ait olmalıdır. Kaynak grubu, Azu
     ![Premium dosya paylaşımında depolama hesabı oluşturma](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Depolama hesabı kaynağınız oluşturulduktan sonra şuraya gidin.
 

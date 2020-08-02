@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
-ms.custom: mvc
-ms.openlocfilehash: 6bb3c25d4d4d24e626ad210c78c6ac64c560e43e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 32efda0c97bec10f2c8aa29d6f83a28538d64468
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614392"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496789"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Öğretici: PowerShell kullanarak MySQL için Azure veritabanı tasarlama
 
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Az. MySql PowerShell modülü önizlemedeyken, aşağıdaki komutu kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Az. MySql PowerShell modülü önizlemedeyken, aşağıdaki komutu kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Az. MySql PowerShell modülü genel kullanıma sunulduğunda, bu, gelecekteki az PowerShell modülü sürümlerinin bir parçası haline gelir ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
 
 MySQL için Azure veritabanı hizmetini ilk kez kullanıyorsanız, **Microsoft. Dbformyısql** kaynak sağlayıcısını kaydetmeniz gerekir.
@@ -64,7 +64,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>MySQL için Azure Veritabanı sunucusu oluşturma
 
-`New-AzMySqlServer` Cmdlet 'Ini kullanarak MySQL Için Azure veritabanı sunucusu oluşturun. Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
+Cmdlet 'ini kullanarak MySQL için Azure veritabanı sunucusu oluşturun `New-AzMySqlServer` . Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
 
 Aşağıdaki örnek, **myresourcegroup** kaynak grubundaki **demosunucum** adlı **Batı ABD** bölgesinde **myadmin**Sunucu Yöneticisi oturum açma bilgilerini içeren bir MySQL sunucusu oluşturur. 2 sanal çekirdek ve coğrafi olarak yedekli yedeklemeler etkin olan genel amaçlı fiyatlandırma katmanında bir gen 5 sunucusudur. Örnek, MySQL Server yönetici hesabının parolası olduğundan, örneğin ilk satırında kullanılan parolayı belgeleyin.
 
@@ -76,7 +76,7 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -GeoRedundantBackup Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-**SKU** parametresi değeri, aşağıdaki örneklerde gösterildiği gibi **fiyatlandırma katmanı\_işlem oluşturma\_sanal çekirdeklerini** izler.
+**SKU** parametresi değeri, aşağıdaki örneklerde gösterildiği gibi **fiyatlandırma katmanı \_ işlem oluşturma \_ sanal çekirdeklerini** izler.
 
 - `-Sku B_Gen5_1`Temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
 - `-Sku GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
@@ -91,7 +91,7 @@ Hafif işlem ve g/ç iş yükünüz için yeterli ise temel fiyatlandırma katma
 
 ## <a name="configure-a-firewall-rule"></a>Güvenlik duvarı kuralını yapılandırma
 
-`New-AzMySqlFirewallRule` Cmdlet 'Ini kullanarak MySQL Için Azure veritabanı sunucu düzeyinde güvenlik duvarı kuralı oluşturun. Sunucu düzeyinde bir güvenlik duvarı kuralı, `mysql` komut satırı aracı veya MySQL çalışma ekranı gibi bir dış uygulamanın, MySQL Için Azure veritabanı hizmeti güvenlik duvarı aracılığıyla sunucunuza bağlanmasını sağlar.
+Cmdlet 'ini kullanarak MySQL için Azure veritabanı sunucu düzeyinde güvenlik duvarı kuralı oluşturun `New-AzMySqlFirewallRule` . Sunucu düzeyinde bir güvenlik duvarı kuralı, `mysql` komut satırı aracı veya MySQL çalışma ekranı gibi bir dış uygulamanın, MySQL Için Azure veritabanı hizmeti güvenlik duvarı aracılığıyla sunucunuza bağlanmasını sağlar.
 
 Aşağıdaki örnek, belirli bir IP adresinden (192.168.0.1) gelen bağlantılara izin veren **Allowmyıp** adlı bir güvenlik duvarı kuralı oluşturur. Bağlanmakta olduğunuz konuma karşılık gelen bir IP adresini veya IP adresleri aralığını değiştirin.
 
@@ -119,7 +119,7 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>MySQL komut satırı aracını kullanarak sunucuya bağlanma
 
-`mysql` Komut satırı aracını kullanarak sunucunuza bağlanın. Komut satırı aracını indirip yüklemek için bkz. [MySQL Community İndirmeleri](https://dev.mysql.com/downloads/shell/). Ayrıca, bu makaledeki bir kod örneğinde **deneyin** düğmesini seçerek Azure Cloud Shell `mysql` komut satırı aracının önceden yüklenmiş bir sürümüne erişebilirsiniz. Azure Cloud Shell erişmek için diğer yollar Azure portal sağ üst araç çubuğunda veya [Shell.Azure.com](https://shell.azure.com/)ziyaret ederek **>_** düğmesini seçmenizi sağlar.
+Komut satırı aracını kullanarak sunucunuza bağlanın `mysql` . Komut satırı aracını indirip yüklemek için bkz. [MySQL Community İndirmeleri](https://dev.mysql.com/downloads/shell/). Ayrıca, `mysql` Bu makaledeki bir kod örneğinde **deneyin** düğmesini seçerek Azure Cloud Shell komut satırı aracının önceden yüklenmiş bir sürümüne erişebilirsiniz. Azure Cloud Shell erişmek için diğer yollar Azure portal sağ üst araç çubuğunda veya [Shell.Azure.com](https://shell.azure.com/)ziyaret ederek **>_** düğmesini seçmenizi sağlar.
 
 ```azurepowershell-interactive
 mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p

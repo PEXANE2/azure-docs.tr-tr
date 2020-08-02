@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c36df4745e276471e35addf4774470dbaaa9e150
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080718"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496211"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>SYNAPSE SQL için veritabanı harmanlama desteği
 
@@ -23,7 +23,7 @@ Yeni bir SQL havuzu veritabanı oluştururken Azure portal varsayılan veritaban
 
 CREATE DATABASE ifadesini kullanarak oluşturma sırasında varsayılan SYNAPSE SQL isteğe bağlı veritabanı harmanlamasını belirtebilirsiniz.
 
-## <a name="changing-collation"></a>Harmanlamayı değiştirme
+## <a name="change-collation"></a>Harmanlamayı değiştir
 SQL havuzu veritabanı için Varsayılan harmanlamayı değiştirmek üzere, sağlama deneyiminde harmanlama alanına basit bir güncelleştirme olursunuz. Örneğin, Varsayılan harmanlamayı büyük/küçük harfe duyarlı olarak değiştirmek isterseniz, harmanlamayı SQL_Latin1_General_CP1_CI_AS SQL_Latin1_General_CP1_CS_AS olarak yeniden adlandırmanız yeterlidir. 
 
 İsteğe bağlı SQL veritabanı için Varsayılan harmanlamayı değiştirmek üzere ALTER DATABASE deyimini kullanabilirsiniz.
@@ -104,7 +104,7 @@ Ayrıca, SQL havuzu aşağıdaki harmanlama türlerini desteklemez:
 *    SQL_EBCDIC277_2_CP1_CS_AS
 *    UTF-8
 
-## <a name="checking-the-current-collation"></a>Geçerli harmanlama denetleniyor
+## <a name="check-the-current-collation"></a>Geçerli harmanlamayı denetle
 Veritabanının geçerli harmanlamasını denetlemek için aşağıdaki T-SQL kod parçacığını çalıştırabilirsiniz:
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;

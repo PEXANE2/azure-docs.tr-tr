@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133911"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496007"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Mimari-ikincil siteye Hyper-V çoğaltma
 
@@ -32,7 +32,7 @@ Aşağıdaki tablo ve grafik, ikincil bir siteye Hyper-V çoğaltması için kul
 
 **Şirket içinden şirket içi mimari**
 
-![Şirket içinden şirket içine](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
+![Şirket içinden şirket içine korumayı gösteren diyagram.](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 

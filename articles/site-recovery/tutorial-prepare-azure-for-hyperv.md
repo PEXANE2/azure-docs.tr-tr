@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130977"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498999"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Hyper-V olağanüstü durum kurtarma için Azure kaynaklarını hazırlama
 
@@ -34,9 +34,9 @@ Bu öğreticide, şirket içi VM 'Leri (Hyper-V) Azure 'a çoğaltmak istediğin
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="sign-in"></a>Oturum açın
+## <a name="sign-in"></a>Oturum aç
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="verify-account-permissions"></a>Hesap izinlerini doğrulama
 
@@ -63,7 +63,7 @@ Bu görevleri gerçekleştirmek için hesabınıza sanal makine katılımcısı 
 9. **Konum**' da, depolama hesabınız için coğrafi konumu seçin. Bu öğretici için **Batı Avrupa**kullanın.
 10. Depolama hesabını oluşturmak için **Oluştur**’u seçin.
 
-   ![Depolama hesabı oluşturma](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Depolama hesabı oluşturma seçeneklerinin ekran görüntüsü.](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma hizmetleri kasası oluşturma
 
@@ -74,7 +74,7 @@ Bu görevleri gerçekleştirmek için hesabınıza sanal makine katılımcısı 
 3. **Konum**' da, kasasının bulunacağı bölgeyi seçin. Bu öğretici için **Batı Avrupa**kullanın.
 4. Panodan kasaya hızlıca erişmek için **panoya sabitle**  >  **Oluştur**' u seçin.
 
-![Yeni kasa oluştur](./media/tutorial-prepare-azure/new-vault-settings.png)
+![Kurtarma Hizmetleri Kasası oluşturma sayfasının ekran görüntüsü.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 Yeni kasa **Pano**  >  **tüm kaynaklar**' da ve ana **Kurtarma Hizmetleri kasaları** sayfasında görüntülenir.
 
@@ -91,7 +91,7 @@ Yük devretmeden sonra depolamadan Azure sanal makineleri oluşturulduğunda san
 7. Temel DDoS korumasının varsayılan seçeneklerini ağ üzerinde hizmet uç noktası olmadan bırakın.
 8. **Oluştur**’u seçin.
 
-![Sanal ağ oluşturma](media/tutorial-prepare-azure/create-network.png)
+![Sanal ağ oluşturma seçeneklerinin ekran görüntüsü.](media/tutorial-prepare-azure/create-network.png)
 
 Sanal ağın oluşturulması birkaç saniye sürer. Oluşturulduktan sonra, Azure portal panosunda görürsünüz.
 

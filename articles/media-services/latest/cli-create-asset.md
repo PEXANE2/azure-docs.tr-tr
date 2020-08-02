@@ -14,18 +14,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 41d983691204ab857b464fc338c43f843592a3c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 77264416affb582bb709ff747ebaa467927114c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092210"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494902"
 ---
 # <a name="cli-example-create-an-asset"></a>CLI örneği: Varlık oluşturma
 
 Bu makaledeki Azure CLI betiği, içine içerik yüklenebilecek bir Azure Media Services Varlığı oluşturmayı gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 [Media Services hesabı oluşturun](./create-account-howto.md).
 

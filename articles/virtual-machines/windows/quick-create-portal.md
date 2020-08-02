@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5cf23a9c66c76f778dbd5d2b126b28a5a577c978
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82098008"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494528"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalda Windows sanal makinesi oluşturma
 
@@ -32,38 +32,38 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 1. **Sanal makineler** sayfasında **Ekle**' yi seçin. 
 1. **Temel Bilgiler** sekmesinde, **Proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun, ardından **Yeni oluştur** kaynak grubunu seçin. Ad için *Myresourcegroup* yazın. 
 
-    ![VM'niz için yeni bir kaynak grubu oluşturma](./media/quick-create-portal/project-details.png)
+    ![Azure aboneliğini ve sanal makinenin kaynak grubunu nerede seçdiğinin gösterildiği proje ayrıntıları bölümünün ekran görüntüsü](./media/quick-create-portal/project-details.png)
 
 1. **Örnek ayrıntıları**' nın altında, **sanal makine adı** için *myvm* yazın ve **bölgeniz**Için *Doğu ABD* seçin ve ardından **görüntü**için *Windows Server 2019 Datacenter* ' u seçin. Diğer varsayılan değerleri bırakın.
 
-    ![Örnek ayrıntıları bölümü](./media/quick-create-portal/instance-details.png)
+    ![Sanal makine için bir ad verdiğiniz örnek ayrıntıları bölümünün ekran görüntüsü ve kendi bölgesini, görüntüsünü ve boyutunu seçebilirsiniz](./media/quick-create-portal/instance-details.png)
 
 1. **Yönetici hesabı** altında, *azureuser* gibi bir kullanıcı adı ve bir parola girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.
 
-    ![Kullanıcı adınızı ve parolanızı girin](./media/quick-create-portal/administrator-account.png)
+    ![Yönetici Kullanıcı adını ve parolasını sağladığınız yönetici hesabı bölümünün ekran görüntüsü](./media/quick-create-portal/administrator-account.png)
 
 1. **Gelen bağlantı noktası kuralları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılır listeden **RDP (3389)** ve **http (80)** seçeneğini belirleyin.
 
-    ![RDP ve HTTP için bağlantı noktaları açma](./media/quick-create-portal/inbound-port-rules.png)
+    ![Gelen bağlantılara izin verilen bağlantı noktalarını seçtiğiniz gelen bağlantı noktası kuralları bölümünün ekran görüntüsü](./media/quick-create-portal/inbound-port-rules.png)
 
 1. Kalan varsayılan ayarları bırakın, ardından sayfanın alt kısmındaki **Gözden geçir + oluştur** düğmesini seçin.
 
-    ![Gözden geçirme ve oluşturma](./media/quick-create-portal/review-create.png)
+    ![Sayfanın alt kısmındaki Inceleme ve oluşturma düğmesini gösteren ekran görüntüsü](./media/quick-create-portal/review-create.png)
 
 
 ## <a name="connect-to-virtual-machine"></a>Sanal makineye bağlanma
 
 Sanal makine ile bir uzak masaüstü bağlantısı oluşturun. Bu yönergeler VM’nize bir Windows bilgisayarından nasıl bağlanacağınızı gösterir. Mac bilgisayarlarda, Mac App Store’dan bu [Uzak Masaüstü İstemcisi](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) gibi bir RDP istemcisi indirmeniz gerekir.
 
-1. Sanal makinenizin Genel Bakış sayfasında **Bağlan** düğmesine tıklayın. 
+1. Sanal makinenizin Genel Bakış sayfasında **Bağlan** düğmesini seçin. 
 
-    ![Portaldan bir Azure sanal makinesine bağlanma](./media/quick-create-portal/portal-quick-start-9.png)
+    ![Bağlan düğmesinin konumunu gösteren sanal makineye Genel Bakış sayfasının ekran görüntüsü](./media/quick-create-portal/portal-quick-start-9.png)
     
 2. **Sanal makineye bağlan** sayfasında, bağlantı noktası 3389 ' den IP adresine göre bağlanmak için varsayılan seçenekleri tutun ve **RDP dosyasını indir**' e tıklayın.
 
 2. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan**’a tıklayın. 
 
-3. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını **localhost**\\*Kullanıcı adı*olarak yazın, sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**' a tıklayın.
+3. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını **localhost** \\ *Kullanıcı adı*olarak yazın, sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**' a tıklayın.
 
 4. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıyı oluşturmak için **Evet** veya **Devam**’a tıklayın.
 
@@ -82,7 +82,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 Portalda VM 'yi seçin ve VM 'ye Genel Bakış ' da, kopyalamak için **tıklayın** ve sonra da bir tarayıcı sekmesine yapıştırın. Varsayılan IIS karşılama sayfası açılır ve şöyle görünür:
 
-![Varsayılan IIS sitesi](./media/quick-create-powershell/default-iis-website.png)
+![Tarayıcıda IIS varsayılan sitesinin ekran görüntüsü](./media/quick-create-powershell/default-iis-website.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

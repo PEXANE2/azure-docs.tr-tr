@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80437825"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497554"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Öğretici: ARM şablonunuza parametreler ekleme
 
@@ -56,7 +57,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
+Bu dağıtım komutunu çalıştırmak için Azure CLI’nın [en son sürümüne](/cli/azure/install-azure-cli) sahip olmanız gerekir.
 
 ```azurecli
 az deployment group create \
@@ -72,7 +73,7 @@ az deployment group create \
 
 Önceki bölümde, daha önce oluşturduğunuz aynı ada sahip bir depolama hesabı dağıttınız. Kaynağın yeniden dağıtım tarafından nasıl etkilendiğini merak ediyor olabilirsiniz.
 
-Kaynak zaten varsa ve özelliklerde hiçbir değişiklik algılanırsa hiçbir işlem yapılmaz. Kaynak zaten varsa ve bir özellik değiştiyse, kaynak güncellenir. Kaynak yoksa, oluşturulur.
+Kaynak zaten varsa ve özelliklerde bir değişiklik algılanmazsa herhangi bir işlem uygulanmaz. Kaynak zaten varsa ve bir özellik değiştiyse, kaynak güncelleştirilir. Kaynak yoksa, oluşturulur.
 
 Güncelleştirmeleri işlemenin bu yolu, şablonunuz bir Azure çözümü için ihtiyaç duyduğunuz tüm kaynakları içerebileceği anlamına gelir. Şablonu güvenle yeniden gönderebilir ve kaynakların değiştirildiğini veya yalnızca gerektiğinde oluşturulduğunu bilirsiniz. Örneğin, depolama hesabınıza dosya eklediyseniz depolama hesabını bu dosyaları kaybetmeden yeniden dağıtabilirsiniz.
 

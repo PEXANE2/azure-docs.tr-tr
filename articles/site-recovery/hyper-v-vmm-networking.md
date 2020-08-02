@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021673"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495952"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Yük devretmeden sonra ikincil şirket içi bir siteye bağlanmak için IP adresi ayarlama
 
@@ -63,11 +63,11 @@ Aşağıdaki grafiklerde, yük devretmeden önce ve sonra alt ağlar gösterilme
 
 **Yük devretmeden önce**
 
-![Yük devretmeden önce](./media/hyper-v-vmm-networking/network-design2.png)
+![Yük devretmeden önce alt ağları gösteren diyagram.](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Yük devretmeden sonra**
 
-![Yük devretmeden sonra](./media/hyper-v-vmm-networking/network-design3.png)
+![Yük devretmeden sonra alt ağları gösteren diyagram.](./media/hyper-v-vmm-networking/network-design3.png)
 
 Yük devretmeden sonra, Site Recovery VM 'deki her bir ağ arabirimi için bir IP adresi ayırır. Adres, her bir sanal makine örneği için ilgili ağdaki statik IP adresi havuzundan ayrılır.
 
@@ -118,11 +118,11 @@ Bu örnekte, birincil ve ikincil sitelerde farklı IP adresliyoruz ve birincil v
 
 **Yük devretmeden önce**
 
-![Farklı IP adresi-yük devretmeden önce](./media/hyper-v-vmm-networking/network-design10.png)
+![Yük devretmeden önce farklı IP adreslerini gösteren diyagram.](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Yük devretmeden sonra**
 
-![Farklı IP adresi-yük devretme sonrası](./media/hyper-v-vmm-networking/network-design11.png)
+![Yük devretmeden sonra farklı IP adreslerini gösteren diyagram.](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -9,19 +9,19 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 6dc0bb08e3d824c1d3fea155d1b3d4c52e1af4a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765089"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499849"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
 
 Bir Azure SYNAPSE Analytics çalışma alanında (Önizleme) çalışma alanları, veriler ve işlem hatları için erişim denetimini yönetmeyi öğrenin.
 
 > [!NOTE]
-> GA için, SYNAPSE özgü Azure RBAC rollerinin tanıtımı aracılığıyla RBAC daha fazla geliştirilecektir.
+> GA için, SYNAPSE özgü Azure rollerinin tanıtımı aracılığıyla RBAC daha fazla geliştirilecektir.
 
 ## <a name="access-control-for-workspace"></a>Çalışma alanı için Access Control
 
@@ -47,7 +47,7 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 
 Çalışma alanınızı sağladığınızda, çalışma alanının kullanması için bir [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) hesabı ve FileSystem için bir kapsayıcı seçmeniz gerekiyordu.
 
-1. [Azure Portal](https://portal.azure.com) açın
+1. [Azure portalı](https://portal.azure.com) açın
 2. Azure Data Lake Storage 2. hesabına gidin
 3. Azure SYNAPSE çalışma alanı için seçtiğiniz kapsayıcıya (dosya sistemi) gidin
 4. **Access Control (IAM)** seçeneğine tıklayın

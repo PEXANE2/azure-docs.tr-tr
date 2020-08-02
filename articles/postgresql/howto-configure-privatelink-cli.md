@@ -6,12 +6,13 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: c957e2ee1d1e596ca8e3525e0f4a9802c4039107
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: adb3104fe5874ab80134f267553b90a4b8823039
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206817"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497996"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>For PostgreSQL için Azure veritabanı-CLı kullanarak tek sunucu için özel bağlantı oluşturma ve yönetme
 
@@ -20,7 +21,7 @@ ms.locfileid: "86206817"
 > [!NOTE]
 > Bu özellik, PostgreSQL için Azure veritabanı-tek sunucu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
@@ -156,7 +157,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. *Myvm*uzak masaüstünde PowerShell ' i açın.
 
-2.  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` yazın. 
+2. Şunu girin:  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`. 
 
     Şuna benzer bir ileti alacaksınız:
     ```azurepowershell
@@ -180,7 +181,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     |SSL|**Gerekli**' yi seçin.|
     ||
 
-5. Bağlan’ı seçin.
+5. Bağlan'ı seçin.
 
 6. Sol menüden veritabanlarına gözatamazsınız.
 

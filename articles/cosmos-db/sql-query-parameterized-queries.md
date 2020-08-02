@@ -4,18 +4,18 @@ description: SQL parametreli sorguların, Kullanıcı girişi için güçlü iş
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66bc89ef56dd0c2291903d531a4637210abd8df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74870828"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496993"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB parametreli sorgular
 
-Cosmos DB tanıdık @ gösterimi tarafından ifade edilen parametrelere sahip sorguları destekler. Parametreli SQL, Kullanıcı girişi için güçlü işleme ve kaçış sağlar ve SQL ekleme aracılığıyla verilerin yanlışlıkla açıklanmasını önler.
+Azure Cosmos DB tanıdık @ gösterimi tarafından ifade edilen parametrelere sahip sorguları destekler. Parametreli SQL, Kullanıcı girişi için güçlü işleme ve kaçış sağlar ve SQL ekleme aracılığıyla verilerin yanlışlıkla açıklanmasını önler.
 
 ## <a name="examples"></a>Örnekler
 
@@ -27,7 +27,7 @@ Cosmos DB tanıdık @ gösterimi tarafından ifade edilen parametrelere sahip so
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-Daha sonra bu isteği aşağıdaki gibi parametreli bir JSON sorgusu olarak Cosmos DB gönderebilirsiniz:
+Daha sonra bu isteği aşağıdaki gibi parametreli bir JSON sorgusu olarak Azure Cosmos DB gönderebilirsiniz:
 
 ```sql
     {
@@ -39,7 +39,7 @@ Daha sonra bu isteği aşağıdaki gibi parametreli bir JSON sorgusu olarak Cosm
     }
 ```
 
-Aşağıdaki örnek, en üstteki bağımsız değişkeni parametreli bir sorgu ile ayarlar: 
+Aşağıdaki örnek, en üstteki bağımsız değişkeni parametreli bir sorgu ile ayarlar:
 
 ```sql
     {
@@ -50,8 +50,14 @@ Aşağıdaki örnek, en üstteki bağımsız değişkeni parametreli bir sorgu i
     }
 ```
 
-Parametre değerleri geçerli bir JSON olabilir: dizeler, sayılar, Boole değerleri, null, hatta diziler veya iç içe geçmiş JSON. Cosmos DB şemaya daha az olduğundan, parametreler hiçbir türe göre doğrulanmaz.
+Parametre değerleri geçerli bir JSON olabilir: dizeler, sayılar, Boole değerleri, null, hatta diziler veya iç içe geçmiş JSON. Azure Cosmos DB şemaya daha az olduğundan, parametreler hiçbir türe göre doğrulanmaz.
 
+Her Azure Cosmos DB SDK 'sında parametreli sorgular için örnekler aşağıda verilmiştir:
+
+- [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L195)
+- [Java](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L392-L421)
+- [Node.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L58-L79)
+- [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

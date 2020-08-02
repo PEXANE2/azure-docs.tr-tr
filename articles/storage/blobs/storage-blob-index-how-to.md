@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: d4ea5889cbecbbb8609f90eed83ec9bd6b0032f9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448232"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500394"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Azure Blob depolama 'daki verileri yönetmek ve bulmak için blob Dizin etiketlerini (Önizleme) kullanın
 
@@ -32,11 +32,9 @@ Blob dizini hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizlem
 # <a name="net"></a>[.NET](#tab/net)
 Blob dizini genel önizlemede olduğundan, .NET depolama paketi önizleme NuGet akışında serbest bırakılır. Bu kitaplık, şu anda ve resmi olduğunda değişir. 
 
-1. Visual Studio 'da, `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` NuGet paket kaynaklarınıza URL 'yi ekleyin. 
+1. .NET için Azure Blob Storage istemci kitaplığı V12 kullanmaya başlamak için Visual Studio projenizi ayarlayın. Daha fazla bilgi için bkz. [.net hızlı başlangıç](storage-quickstart-blobs-dotnet.md)
 
-   Nasıl yapılacağını öğrenmek için bkz. [paket kaynakları](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
-
-2. NuGet Paket Yöneticisi ' nde, **Azure. Storage. blob** paketini bulun ve **12.5.0-dev. 20200422.2** sürümünü projenize yüklemek için. Komutunu da çalıştırabilirsiniz```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2```
+2. NuGet Paket Yöneticisi ' nde, **Azure. Storage. blob** paketi ' ni bulun ve **12.5.0-Preview. 6** sürümünü veya daha yeni sürümünü projenize yüklemek için. Komutunu da çalıştırabilirsiniz```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
 
    Nasıl yapılacağını öğrenmek için bkz. [paket bulma ve yüklemeyi oluşturma](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 

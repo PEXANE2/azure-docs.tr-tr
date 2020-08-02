@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4f2c0a51f7c8d2441c9ddff2520dae2f5cc13565
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608034"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495360"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Hızlı başlangıç: basit bir Azure CLı komutu kullanarak MySQL için Azure veritabanı oluşturma-az MySQL up (Önizleme)
 
@@ -22,7 +22,7 @@ ms.locfileid: "84608034"
 
 MySQL için Azure Veritabanı, bulutta yüksek oranda kullanılabilir olan MySQL veritabanları çalıştırmanızı, yönetmenizi ve ölçeklendirmenizi sağlayan ve yönetilen bir hizmettir. Azure CLı, komut satırından veya betiklerden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure CLı kullanarak MySQL için Azure veritabanı sunucusu oluşturmak üzere [az MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) komutunun nasıl kullanılacağı gösterilmektedir. Komut, sunucu oluşturmaya ek olarak `az mysql up` bir örnek veritabanı, veritabanında bir kök kullanıcı oluşturur, Azure hizmetleri için güvenlik duvarını açar ve istemci bilgisayar için varsayılan güvenlik duvarı kuralları oluşturur. Bu, geliştirme sürecini hızlandırmanıza yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

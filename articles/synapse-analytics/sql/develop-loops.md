@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965000"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495310"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>SYNAPSE SQL 'de T-SQL döngüleri kullanma
 Bu makalede T-SQL döngülerini kullanma, imleçler değiştirme ve SYNAPSE SQL 'de SQL havuzuyla ilgili çözümleri geliştirme konusunda temel ipuçları sunulmaktadır.
@@ -26,7 +26,7 @@ SYNAPSE SQL, sürekli olarak ekstre blokları yürütmeye yönelik [while](https
 
 SQL havuzundaki döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, [WHILE] döngüleri, imleçleri değiştirmek için harika bir alternatiftir.
 
-## <a name="replacing-cursors-in-sql-pool"></a>SQL havuzundaki imleçleri değiştirme
+## <a name="replace-cursors-in-sql-pool"></a>SQL havuzundaki imleçleri değiştirme
 
 ' De kullanılmadan önce, aşağıdaki soru göz önünde bulundurulmalıdır: "Bu imleç, küme tabanlı işlemleri kullanmak için yeniden yazılabilir mi?" Çoğu durumda, yanıt Evet 'tir ve sıklıkla en iyi yaklaşım olur. Küme temelli bir işlem, genellikle yinelemeli, satır satır yaklaşımına göre daha hızlı yürütülür.
 

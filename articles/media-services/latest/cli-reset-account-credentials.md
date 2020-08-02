@@ -14,18 +14,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0a1a5bf9f192a7128da8843b79b60be0175cec23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 16eaf5ab9b0af97e18a7253d132516a16003d25b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092142"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489988"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLı örneği: hesap kimlik bilgilerini sıfırlayın
 
 Bu makaledeki Azure CLI betiği, hesabınızın kimlik bilgilerini sıfırlamayı ve app.config ayarlarını geri almayı gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Media Services hesabı oluşturun](./create-account-howto.md).
 

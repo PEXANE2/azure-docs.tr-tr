@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 2ae8e170e3f31090b6babfee23e4505f5b736655
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319958"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496024"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -21,7 +21,7 @@ Market Retatileri, ilk müşterilerinizi almanıza yardımcı olmak üzere tanı
 
 Program olumlu bir geri bildirim döngüsü oluşturur: her büyüme aşamasındaki avantajlar bir sonraki aşamada ilerlemenize yardımcı olur. Bu, işletmenizin Microsoft 'un alanı ile Microsoft 'un sağladığı kurumsal Market 'ten yararlanarak Microsoft 'un kanalıyla ve Microsoft 'un kanalıyla yararlanmanızı sağlar.
 
-Avantajlarınız, teklifinizin [list, deneme veya Transact gibi](../determine-your-listing-type.md#choose-a-publishing-option)bir değer olup olmadığına göre farklılaştırılır.
+Avantajlarınız, teklifinizin [liste, deneme veya Transact](../determine-your-listing-type.md#choose-a-call-to-action)olduğundan farklılaştırılır.
 
 Teklifinizin, uygunluğunuzu temel alarak canlı kaldığında, bu ekibin bir üyesi tarafından iletişim kurulacaksınız.
 

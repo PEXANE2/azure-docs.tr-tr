@@ -3,12 +3,13 @@ title: Azure CLı betik örneği-Batch 'te Linux havuzu
 description: Bu betik, Azure Batch ' de bir Linux işlem düğümü havuzu oluşturmak ve yönetmek için Azure CLı 'de mevcut olan komutlardan bazılarını gösterir.
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 21236ef2f314cb1306adc7346e620b80db540034
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7aba6e64fdf39a069eb010ef032fcc5391fd47ee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964072"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494400"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI örneği: Azure Batch’te bir Linux havuzu oluşturma ve yönetme
 

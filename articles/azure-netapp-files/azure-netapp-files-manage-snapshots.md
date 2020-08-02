@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7d583172fe4021a2709a4d58b5488e9bc3898919
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281557"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497605"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
@@ -41,14 +41,28 @@ Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için is
 
     ![Yeni anlık görüntü](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. **Tamam** düğmesine tıklayın. 
+4. **Tamam**'a tıklayın. 
 
 ## <a name="manage-snapshot-policies"></a>Anlık görüntü ilkelerini yönetme
 
 Anlık görüntü ilkeleri kullanarak, birim anlık görüntülerinin otomatik olarak alınmasını zamanlayabilirsiniz. Ayrıca, gerektiğinde bir anlık görüntü ilkesini değiştirebilir veya artık ihtiyacınız olmayan bir anlık görüntü ilkesini silebilirsiniz.  
 
-> [!IMPORTANT] 
-> Anlık görüntü ilkesi işlevselliğinin kullanılması için beyaz listeye almanız gerekir. anffeedback@microsoft.comBu özelliği istemek için ABONELIK Kimliğiniz ile e-posta gönderin.
+### <a name="register-the-feature"></a>Özelliği kaydetme
+
+1. **Anlık görüntü ilkesi** özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, özelliği kullanmadan önce kaydedin: 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
+
+2. Özellik kaydının durumunu denetleyin: 
+
+    > [!NOTE]
+    > **Registrationstate** , üzerinde `Registering` değişiklik yapmadan önce birkaç dakika içinde olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
 
 ### <a name="create-a-snapshot-policy"></a>Anlık görüntü ilkesi oluşturma 
 
