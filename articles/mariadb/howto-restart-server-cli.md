@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 2c26412c37efbfcce340ce90753d0860307a08e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c1e7db129b29cfa1109b3c79bd8590a99779e361
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121155"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503098"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Azure CLı kullanarak MariaDB sunucusu için Azure veritabanı 'nı yeniden başlatma
 Bu konuda, MariaDB sunucusu için Azure veritabanı 'nı nasıl yeniden başlatabileceğinizi anlatmaktadır. Sunucu işlemi gerçekleştirdiğinden kısa süreli bir kesinti oluşmasına neden olan bakım nedenleriyle sunucunuzu yeniden başlatmanız gerekebilir.
@@ -20,7 +21,7 @@ Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sana
 
 Yeniden başlatmanın tamamlanması için gereken süre, MariaDB kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MariaDB sunucusu Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-cli.md)
 

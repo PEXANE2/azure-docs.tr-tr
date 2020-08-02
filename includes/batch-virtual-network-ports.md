@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506623"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507665"
 ---
 ### <a name="general-requirements"></a>Genel gereksinimler
 
@@ -89,7 +89,7 @@ Batch kendi NSG 'leri yapılandırdığından (yukarıya bakın), sanal ağ alt 
 
 `/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
-**İzinler** - `Microsoft Azure Batch` hizmet sorumlusu, belirtilen sanal ağ için `Classic Virtual Machine Contributor` Rol Tabanlı Erişim Denetimi (RBAC) rolüne sahip olmalıdır.
+**İzinler** - `Microsoft Azure Batch` hizmet sorumlusu `Classic Virtual Machine Contributor` belirtilen sanal ağ için Azure rolüne sahip olmalıdır.
 
 #### <a name="network-security-groups"></a>Ağ güvenlik grupları
 

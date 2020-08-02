@@ -8,15 +8,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: abf7e864398d48742e0cbf99a9a7b7dae56b9c5d
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100933"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503132"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Öğretici: Azure Key Vault sertifikayı Içeri aktarma
 
@@ -25,7 +25,7 @@ Azure Key Vault, gizli diziler için güvenli bir depolama sağlayan bulut hizme
 Öğretici şunların nasıl yapıldığını göstermektedir:
 
 > [!div class="checklist"]
-> * Bir anahtar kasası oluşturma.
+> * Anahtar kasası oluşturma.
 > * Portalı kullanarak Key Vault bir sertifikayı içeri aktarın.
 > * CLı kullanarak Key Vault bir sertifikayı içeri aktarın.
 > * PowerShell kullanarak Key Vault bir sertifikayı içeri aktarın.
@@ -78,7 +78,7 @@ Bir sertifikayı kasaya aktarmak için diskte olması gereken bir ped veya PFX S
     - **Sertifika adı**: örnek sertifikası.
     - **Sertifika dosyasını karşıya yükle**: diskten sertifika dosyasını seçin
     - **Parola** : parola korumalı bir sertifika dosyası yüklüyorsanız, bu parolayı burada belirtin. Aksi takdirde, boş bırakın. Sertifika dosyası başarıyla alındıktan sonra Anahtar Kasası bu parolayı kaldırır.
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 
 ![Sertifika Özellikleri](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -90,7 +90,7 @@ Sertifikanın başarıyla içeri aktarıldığını belirten iletiyi aldıktan s
 
 ## <a name="import-a-certificate-using-azure-cli"></a>Azure CLı kullanarak bir sertifikayı içeri aktarma
 
-Bir sertifikayı belirtilen bir anahtar kasasına aktarın. Özel bir anahtar içeren mevcut geçerli bir sertifikayı Azure Key Vault içine aktarmak için, içeri aktarılacak dosya PFX ya da ped biçiminde olabilir. Sertifika pek biçimindeyse, ped dosyası, x509 sertifikalarını ve anahtar içermelidir. Bu işlem sertifikaları/içeri aktarma iznini gerektirir.
+Bir sertifikayı belirtilen bir anahtar kasasına aktarın. Özel bir anahtar içeren mevcut geçerli bir sertifikayı Azure Key Vault içine aktarmak için, içeri aktarılacak dosya PFX ya da ped biçiminde olabilir. Sertifika pek biçimindeyse, ped dosyası, x509 sertifikalarını ve anahtar içermelidir. Bu işlem için sertifikalar/içeri aktarma izni gerekir.
 
 ```azurecli
 az keyvault certificate import --file

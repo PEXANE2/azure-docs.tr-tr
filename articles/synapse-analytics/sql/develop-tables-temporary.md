@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9e871b7959c11d7fbae650abf8394811b9088ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020569"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503217"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>SYNAPSE SQL 'de geçici tablolar
 
@@ -23,7 +23,7 @@ Bu makale, geçici tabloları kullanmaya yönelik temel bir kılavuz içerir ve 
 
 Hem SQL havuzu hem de SQL isteğe bağlı (Önizleme) kaynakları geçici tabloları kullanabilir. İsteğe bağlı SQL, bu makalenin sonunda ele alınan sınırlamalara sahiptir. 
 
-## <a name="what-are-temporary-tables"></a>Geçici tablolar nelerdir?
+## <a name="temporary-tables"></a>Geçici tablolar
 
 Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SYNAPSE SQL ile, geçici tablolar oturum düzeyinde bulunur.  Bunlar yalnızca oluşturuldukları oturum tarafından görülebilir. Bu nedenle, bu oturum kapattığında otomatik olarak bırakılır. 
 
@@ -33,7 +33,7 @@ SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldı
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
-Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örneğin:
+Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örnek:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -98,7 +98,7 @@ GROUP BY
 > 
 > 
 
-### <a name="dropping-temporary-tables"></a>Geçici tabloları bırakma
+### <a name="drop-temporary-tables"></a>Geçici tabloları bırak
 Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  Bununla birlikte, aynı ada sahip bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin başarılı olduğundan emin olmak için, `CREATE TABLE` ile basit bir ön varlık denetimi kullanın `DROP` : 
 
 ```sql
@@ -116,7 +116,7 @@ Saklı yordam geliştirmede, bu nesnelerin temizlendiğinden emin olmak için bi
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularizing-code"></a>Kodu modüle etme
+### <a name="modularize-code"></a>Kodu modüle leştir
 Geçici tablolar, kullanıcı oturumunda herhangi bir yerde kullanılabilir. Bu özellik daha sonra uygulama kodunuzu modüler hale getirmenize yardımcı olmak için kullanılabilir.  Göstermek için aşağıdaki saklı yordam DDL 'yi, veritabanındaki tüm istatistikleri istatistik adına göre güncelleştirmek üzere oluşturur:
 
 ```sql

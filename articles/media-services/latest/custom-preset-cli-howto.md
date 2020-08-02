@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3b718a0a67381e2b1eb19d2397ecf86e4a9c196d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4ea328cc21d849367d36342ed1b0953a7eb26c77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090136"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503897"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Özel bir dönüşümle kodlama-Azure CLı
 
@@ -30,7 +30,7 @@ Azure Media Services ile kodlarken, [akış dosyaları](stream-files-cli-quickst
 * AVC içeriğinde yükseklik ve genişlik değerlerinin tümü 4 ' ün katı olmalıdır.
 * Azure Media Services v3 'de, tüm kodlama bit fiyatları bit/saniye cinsinden. Bu, birim olarak kilobit/saniye kullanan v2 API 'lerimiz olan ön ayarlardan farklıdır. Örneğin, v2 'deki bit hızı 128 (kilobit/saniye) olarak belirtilmişse, v3 'de 128000 (bit/saniye) olarak ayarlanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Media Services hesabı oluşturun](./create-account-howto.md).
 

@@ -7,19 +7,20 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 42245a8e1c8ce726b925fccade3c62637abb4f12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118673"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503064"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure Güvenlik duvarı kuralları oluşturma ve yönetme
 Sunucu düzeyinde güvenlik duvarı kuralları, belirli bir IP adresinden veya bir IP adresi aralığından MySQL için Azure veritabanı sunucusuna erişimi yönetmek için kullanılabilir. Uygun Azure CLı komutlarını kullanarak sunucunuzu yönetmek için güvenlik duvarı kuralları oluşturabilir, güncelleştirebilir, silebilir, listeleyebilir ve gösterebilirsiniz. MySQL güvenlik duvarları için Azure veritabanı 'na genel bakış için bkz. [MySQL Için Azure veritabanı sunucu güvenlik duvarı kuralları](./concepts-firewall-rules.md).
 
 Sanal ağ (VNet) kuralları, sunucunuza erişimi güvenli hale getirmek için de kullanılabilir. [Azure CLI kullanarak sanal ağ hizmet uç noktaları ve kuralları oluşturma ve yönetme](howto-manage-vnet-using-cli.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [Azure CLI’yı yükleyin](https://docs.microsoft.com/cli/azure/install-azure-cli).
 * [MySQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-mysql-server-database-using-azure-cli.md).
 

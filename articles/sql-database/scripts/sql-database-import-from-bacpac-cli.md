@@ -4,19 +4,19 @@ description: Bir BACPAC dosyasını Azure SQL veritabanı 'nda bir veritabanına
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: load & move data
+ms.custom: load & move data, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 6477d8f59d66c053ced4ceebed98082d51f92c2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a8c544f1d3b7d1255cf5a0e6d05975ea5f5ec203
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076005"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503812"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>CLı kullanarak BACPAC dosyasını SQL veritabanı 'ndaki bir veritabanına aktarma
 
@@ -26,7 +26,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure
 
 ## <a name="sample-script"></a>Örnek betik
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure’da oturum açma
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

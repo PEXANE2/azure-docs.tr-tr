@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262489"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503744"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Işlevleri Zamanlayıcı tetikleyicisi kullanarak Azure Cosmos DB aktarım hızını ölçeklendirme
 
 Azure Cosmos hesabının performansı, saniye başına Istek birimi (RU/s) olarak ifade edilen sağlanan aktarım hızı miktarına bağlıdır. Sağlama ikinci bir ayrıntı düzeyine sahiptir ve saat başına en yüksek RU/sn 'ye göre faturalandırılır. Bu sağlanan kapasite modeli, hizmetin öngörülebilir ve tutarlı bir işleme, garantili düşük gecikme süresi ve yüksek kullanılabilirlik sağlamasına olanak sağlar. Çoğu üretim, bu özellikleri iş yükleri. Ancak, Azure Cosmos DB yalnızca çalışma saatlerinde kullanıldığı geliştirme ve test ortamlarında, sabah aktarım hızını ve çalışma saatleri sonrasında akşam geri doğru ölçeği azaltabilirsiniz.
 
-Aktarım hızını, çekirdek (SQL) API hesapları için [Azure Resource Manager şablonları](resource-manager-samples.md), [Azure CLI](cli-samples.md)ve [PowerShell](powershell-samples-sql.md)aracılığıyla ya da dile özgü Azure Cosmos DB SDK 'ları kullanarak ayarlayabilirsiniz. Kaynak Yöneticisi şablonlarını kullanmanın avantajı olan Azure CLı veya PowerShell, tüm Azure Cosmos DB modeli API 'Lerini destekledikleri bir avantajdır.
+Aktarım hızını, çekirdek (SQL) API hesapları için [Azure Resource Manager şablonları](resource-manager-samples.md), [Azure CLI](cli-samples.md)ve [PowerShell](powershell-samples.md)aracılığıyla ya da dile özgü Azure Cosmos DB SDK 'ları kullanarak ayarlayabilirsiniz. Kaynak Yöneticisi şablonlarını kullanmanın avantajı olan Azure CLı veya PowerShell, tüm Azure Cosmos DB modeli API 'Lerini destekledikleri bir avantajdır.
 
 ## <a name="throughput-scheduler-sample-project"></a>Aktarım hızı Zamanlayıcı örnek projesi
 

@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 562f265cccf444740c177a41e516f9066188613e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f058431c29a33c5824aa637a54394045e6269a88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74771644"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502231"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLı kullanarak bir MariaDB sunucusu için Azure veritabanını izleme ve ölçeklendirme
 Bu örnek CLı betiği, ölçümleri sorguladıktan sonra MariaDB sunucusu için tek bir Azure veritabanı için işlem ve depolamayı ölçeklendirir. İşlem ölçeği yukarı veya aşağı olabilir. Depolama alanı yalnızca ölçeği değiştirebilir.

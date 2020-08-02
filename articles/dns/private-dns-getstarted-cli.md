@@ -7,18 +7,19 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 34a9858ffbec2360a347b8c765d53551fd2d9fc0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8fdf78c0a3dd2f7a130d827751ce93c5539575df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76935420"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502968"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure özel DNS bölgesi oluşturma
 
 Bu hızlı başlangıç, Azure CLı kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturma adımlarında size yol gösterir.
 
-DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınızda özel bir DNS bölgesi yayımlamak için bölge içindeki kaynakları çözümleme izni olan sanal ağların listesini belirtmeniz gerekir.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
+DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınıza özel bir DNS bölgesi yayımlamak için, bölgedeki kayıtları çözümlemesine izin verilen sanal ağların listesini belirtirsiniz.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
@@ -144,7 +145,7 @@ Artık **Private.contoso.com** özel bölgeniz için ad çözümlemesini test ed
 Ad çözümlemesini test etmek için ping komutunu kullanabilirsiniz. Bunun için iki sanal makinedeki güvenlik duvarını da gelen ICMP paketlerine izin verecek şekilde yapılandırmanız gerekir.
 
 1. myVM01 adlı sanal makineye bağlanın, yönetici ayrıcalıklarıyla bir Windows PowerShell penceresi açın.
-2. Şu komutu çalıştırın:
+2. Aşağıdaki komutu çalıştırın:
 
    ```powershell
    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4

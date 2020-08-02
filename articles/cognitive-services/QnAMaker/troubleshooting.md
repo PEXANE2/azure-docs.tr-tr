@@ -3,12 +3,12 @@ title: Sorun giderme-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma hizmetiyle ilgili en sık sorulan soruların seçkin listesi, hizmeti daha hızlı ve daha iyi sonuçlarla benimsemenizi sağlayacak.
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131999"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502588"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Soru-Cevap Oluşturma için sorun giderme
 
@@ -87,7 +87,7 @@ Soru ve yanıt çiftleri, dosyalar, URL 'Ler, özel sorular ve yanıtlar, bilgi 
 <details>
 <summary><b>Bilgi Bankası 'nı değiştirmek için aynı AAD kiracısında olmayan bir katkıda bulunan bir Bilgi Bankası paylaşabilir misiniz?</b></summary>
 
-**Yanıt**: paylaşım, Azure rol tabanlı erişim denetimi 'NI (RBAC) temel alır. Azure 'da _herhangi_ bir kaynağı başka bir kullanıcıyla paylaşabilmek için soru-cevap oluşturma de paylaşabilirsiniz.
+**Yanıt**: paylaşım, Azure rol tabanlı erişim denetimi 'Ne (Azure RBAC) dayanır. Azure 'da _herhangi_ bir kaynağı başka bir kullanıcıyla paylaşabilmek için soru-cevap oluşturma de paylaşabilirsiniz.
 
 </details>
 

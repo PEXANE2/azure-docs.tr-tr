@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2ef54da76750617a77c4b2e117b694cb170ff752
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8631a411b26f91bc72e23ac7ff9fb2278f61168c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502903"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502894"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Azure CLı kullanarak yönetilen görüntüden görüntü sürümüne geçiş
 Paylaşılan görüntü galerisine geçirmek istediğiniz mevcut bir yönetilen görüntünüz varsa, doğrudan yönetilen görüntüden paylaşılan bir görüntü Galerisi görüntüsü oluşturabilirsiniz. Yeni görüntünüzü sınadıktan sonra, kaynak yönetilen görüntüyü silebilirsiniz. Ayrıca, [PowerShell](image-version-managed-image-powershell.md)kullanarak yönetilen bir görüntüden paylaşılan görüntü galerisine geçiş yapabilirsiniz.

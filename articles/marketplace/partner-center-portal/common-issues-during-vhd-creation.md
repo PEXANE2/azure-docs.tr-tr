@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324004"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504322"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD oluşturma sırasında sık karşılaşılan sorunlar
 
@@ -34,8 +34,8 @@ Yapamazsınız. Bir VM oluşturulduktan sonra kullanıcılar (sahipler dahil) an
 
 Bu makalelerde, Windows ve Linux tabanlı VM 'Ler için RDS sıfırlamaları gerçekleştirme açıklanmaktadır:
 
-* [Windows VM’sinde Uzak Masaüstü hizmetini veya oturum açma parolasını sıfırlama](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [Bir Linux VM parolasını veya SSH anahtarını sıfırlama, SSH yapılandırmasını çözme ve VMAccess uzantısını kullanarak disk tutarlılığını denetleme](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [Windows VM’sinde Uzak Masaüstü hizmetini veya oturum açma parolasını sıfırlama](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [Bir Linux VM parolasını veya SSH anahtarını sıfırlama, SSH yapılandırmasını çözme ve VMAccess uzantısını kullanarak disk tutarlılığını denetleme](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>Nasıl yaparım? yeni SSH sertifikaları mı oluşturulsun?
 
@@ -59,7 +59,7 @@ Evet, Azure üzerinde barındırılıyorsa. Azure, oluşturulan her yeni VM kayn
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>Bir VM 'de, başlangıç görevinde Özel Betik uzantısını nasıl yönetebilirim?
 
-Windows sistemlerinde Azure PowerShell modülünü, Azure Resource Manager şablonları ve sorun giderme adımlarını kullanarak özel betik uzantısının kullanımıyla ilgili ayrıntılar için, bkz. [Windows Için özel Betik uzantısı](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/).
+Windows sistemlerinde Azure PowerShell modülünü, Azure Resource Manager şablonları ve sorun giderme adımlarını kullanarak özel betik uzantısının kullanımıyla ilgili ayrıntılar için, bkz. [Windows Için özel Betik uzantısı](/azure/virtual-machines/extensions/custom-script-windows).
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>32 bitlik uygulamalar veya hizmetler Azure Marketi 'nde destekleniyor mu?
 

@@ -4,19 +4,19 @@ description: Azure Resource Manager şablonu kullanarak Azure SQL veritabanı 'n
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: subject-armqs sqldbrb=1
+ms.custom: subject-armqs sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4175792875b3bb60572ef9aa520b1fb09e00bbba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135639"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503030"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
 
@@ -24,11 +24,11 @@ Tek bir [veritabanı](single-database-overview.md) oluşturmak, Azure SQL verita
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 
 Tek bir veritabanı, iki [satın alma modelinden](purchasing-models.md)birini kullanarak tanımlı bir işlem, bellek, GÇ ve depolama kaynakları kümesine sahiptir. Tek bir veritabanı oluşturduğunuzda, bunu yönetmek için bir [sunucu](logical-servers.md) tanımlar ve belirli bir bölgedeki [Azure Kaynak grubu](../../active-directory-b2c/overview.md) içine yerleştirebilirsiniz.
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-sql-database/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-sql-database/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 

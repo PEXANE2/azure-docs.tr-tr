@@ -3,14 +3,15 @@ title: Azure Dev Spaces araçlarını yükseltme
 services: azure-dev-spaces
 ms.date: 07/03/2018
 ms.topic: conceptual
+ms.custom: devx-track-azurecli
 description: Azure Dev Spaces komut satırı araçlarını, Visual Studio Code uzantısını ve Visual Studio uzantısını nasıl yükselteceğinizi öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
-ms.openlocfilehash: af4ef92d335c350042b74ccfbfaf5266615f92a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: aebe81d58a1bcd44f5766d368dbafa53c81ed2b8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229286"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504339"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Azure Dev Spaces araçlarını yükseltme
 
@@ -25,7 +26,7 @@ En son Azure CLı 'yı güncelleştirdiğinizde, dev Spaces CLı uzantısının 
 
 ## <a name="update-the-dev-spaces-cli-extension-and-command-line-tools"></a>Geliştirme alanları CLı uzantısını ve komut satırı araçlarını güncelleştirme
 
-Şu komutu çalıştırın:
+Aşağıdaki komutu çalıştırın:
 
 ```azurecli
 az aks use-dev-spaces -n <your-aks-cluster> -g <your-aks-cluster-resource-group> --update

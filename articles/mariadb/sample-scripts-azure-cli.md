@@ -6,19 +6,19 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 3/18/2020
-ms.openlocfilehash: 8579f9294f55293cd32c8dfc1c13f9d4570aed67
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f73fd033f299ffe1656ea1f131bcd78181c026b0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110343"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502214"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı Azure CLı örnekleri 
 Aşağıdaki tabloda, MariaDB için Azure veritabanı 'na yönelik örnek Azure CLı betikleri bağlantıları yer almaktadır.
 
-| Örnek bağlantı | Description  |
+| Örnek bağlantı | Açıklama  |
 |---|---|
 |**Sunucu oluşturma**||
 | [Sunucu ve güvenlik duvarı kuralı oluşturma](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | MariaDB sunucusu için tek bir Azure veritabanı oluşturan ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandıran Azure CLı betiği. |

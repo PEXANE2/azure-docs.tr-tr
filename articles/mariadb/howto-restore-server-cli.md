@@ -7,18 +7,19 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
-ms.openlocfilehash: 3b1eb164d367aa968b599c6d3e92c48fd94b0098
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 5073cd33d9dada666324e92f3418b2548d9af374
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118724"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502571"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLı kullanarak MariaDB için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme
 
 MariaDB sunucuları için Azure veritabanı, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -69,7 +70,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 `az mariadb server restore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Description  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
 | name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
@@ -111,7 +112,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 
 `az mariadb server georestore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Description  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Yeni sunucunun ait olacağı kaynak grubunun adı.|
 |name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |

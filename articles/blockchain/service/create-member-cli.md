@@ -4,13 +4,13 @@ description: Azure CLı kullanarak bir blok zinciri Konsorsiyumu için Azure blo
 ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.custom: references_regions
-ms.openlocfilehash: 2514447eaceb83da0bee81c1475a3137f0d1af07
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: f97aab59d38e9b15838a78d0227bc2848615cd92
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170662"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504373"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure blok zinciri hizmeti blok zinciri üyesi oluşturma
 
@@ -85,7 +85,7 @@ az blockchain member create \
 | Parametre | Açıklama |
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. Önceki bölümde oluşturduğunuz kaynak grubunu kullanın.
-| **name** | Azure blok zinciri hizmeti blok zinciri üyesini tanımlayan benzersiz bir ad. Ad, genel uç nokta adresi için kullanılır. Örneğin, `myblockchainmember.blockchain.azure.com`.
+| **ada** | Azure blok zinciri hizmeti blok zinciri üyesini tanımlayan benzersiz bir ad. Ad, genel uç nokta adresi için kullanılır. Örneğin, `myblockchainmember.blockchain.azure.com`.
 | **konumuna** | Blok zinciri üyesinin oluşturulduğu Azure bölgesi. Örneğin, `westus2`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin. Özellikler, bazı bölgelerde kullanılamayabilir. Azure blok zinciri Veri Yöneticisi şu Azure bölgelerinde kullanılabilir: Doğu ABD ve Batı Avrupa.
 | **parola** | Üyenin varsayılan işlem düğümü için parola. Blok zinciri üyesinin varsayılan işlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
 | **Protocol** | Blok zinciri protokolü. Şu anda *çekirdek* protokol destekleniyor.

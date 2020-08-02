@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 19a7cf2ec3a8a7a95952fcebfcf3a127c4dfd013
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d416c6fdef85b83d91ca0e341659f87618d268e0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792192"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504526"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -41,7 +42,7 @@ Azure portal kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yap�
 5. Açılan yeni dikey pencerede, bu Anahtar Kasası 'na erişime izin vermek istediğiniz aboneliği, sanal ağları ve alt ağları seçin. Seçtiğiniz sanal ağlarda ve alt ağlarda hizmet uç noktaları etkinleştirilmemişse, hizmet uç noktalarını etkinleştirmek istediğinizi onaylayın ve **Etkinleştir**' i seçin. Etkili olması 15 dakika kadar sürebilir.
 6. **IP ağları**altında [CIDR (sınıfsız etki alanları arası yönlendirme) gösteriminde](https://tools.ietf.org/html/rfc4632) veya tek tek IP adreslerinde IPv4 adresi aralıklarını yazarak IPv4 adres aralıkları ekleyin.
 7. Microsoft güvenilen hizmetlerin Key Vault güvenlik duvarını atlamasına izin vermek istiyorsanız ' Evet ' seçeneğini belirleyin. Geçerli Key Vault güvenilen hizmetlerin tam listesi için lütfen aşağıdaki bağlantıya bakın. [Güvenilen Hizmetleri Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 Ayrıca yeni sanal ağlar ve alt ağlar ekleyebilir ve ardından **+ Yeni sanal ağ ekle**' yi seçerek yeni oluşturulan sanal ağlar ve alt ağlar için hizmet uç noktalarını etkinleştirebilirsiniz. Ardından istemleri izleyin.
 

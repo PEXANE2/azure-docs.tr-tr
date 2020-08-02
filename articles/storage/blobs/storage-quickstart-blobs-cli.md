@@ -9,12 +9,13 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: tamram
-ms.openlocfilehash: 471a8018a608da818f5961973f23123874c63427
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 623eb7cdc9b2ff3df6bf2cbf9f337c262fecf060
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434455"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501279"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme
 
@@ -22,7 +23,7 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -131,7 +132,7 @@ az storage blob list \
     --auth-mode login
 ```
 
-## <a name="download-a-blob"></a>Blob indirme
+## <a name="download-a-blob"></a>Blobu indirme
 
 Önceden karşıya yüklediğiniz bir blobu indirmek için [az storage blob download](/cli/azure/storage/blob) komutunu kullanın. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 

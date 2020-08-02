@@ -7,12 +7,13 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 6ba5e433839d1f27c9522749fd7a8831c7243aae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503149"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Öğretici: Azure CLı kullanarak HDInsight 'ta Apache Kafka REST proxy etkin kümesi oluşturma
 
@@ -34,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Kayıtlı uygulamanıza üye olarak bir Azure AD güvenlik grubu. Bu güvenlik grubu, REST proxy ile etkileşime girmesine izin verilen uygulamaları denetlemek için kullanılacaktır. Azure AD grupları oluşturma hakkında daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* Azure CLı. En az sürüm 2.0.79 sahip olduğunuzdan emin olun. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI. En az sürüm 2.0.79 sahip olduğunuzdan emin olun. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka kümesi oluşturma
 
@@ -57,8 +58,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     |storageAccount|STORAGEACCOUNTNAME ' i yeni depolama hesabınız için bir adla değiştirin.|
     |httpPassword|Küme oturum açma, **yönetici**için parola ile değiştirin.|
     |sshPassword|Secure Shell Kullanıcı adı, **sshuser**için parola ile değiştirin.|
-    |securityGroupName|SECURITYGROUPNAME öğesini Kafka Rest proxy için istemci AAD güvenlik grubu adıyla değiştirin. Değişkeni için `--kafka-client-group-name` `az-hdinsight-create`parametresine geçirilecek.|
-    |Securitygroupıd|SECURITYGROUPıD değerini Kafka Rest proxy için istemci AAD güvenlik grubu KIMLIĞIYLE değiştirin. Değişkeni için `--kafka-client-group-id` `az-hdinsight-create`parametresine geçirilecek.|
+    |securityGroupName|SECURITYGROUPNAME öğesini Kafka Rest proxy için istemci AAD güvenlik grubu adıyla değiştirin. Değişkeni `--kafka-client-group-name` için parametresine geçirilecek `az-hdinsight-create` .|
+    |Securitygroupıd|SECURITYGROUPıD değerini Kafka Rest proxy için istemci AAD güvenlik grubu KIMLIĞIYLE değiştirin. Değişkeni `--kafka-client-group-id` için parametresine geçirilecek `az-hdinsight-create` .|
     |storageContainer|Kümenin kullanacağı depolama kapsayıcısı, bu öğretici için olduğu gibi kalır. Bu değişken, kümenin adıyla ayarlanır.|
     |workernodeCount|Kümedeki çalışan düğümü sayısı, bu öğretici için olduğu gibi bırakın. Yüksek kullanılabilirlik sağlamak için, Kafka en az 3 çalışan düğümü gerektirir|
     |clusterType|HDInsight kümesinin türü, bu öğretici için olduğu gibi bırakın.|
@@ -142,9 +143,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
         |--sürüm|HDInsight kümesi sürümü en az 4,0 olmalıdır. Değer **$clusterVersion**değişkeninden geçirilir.|
         |--Bileşen-sürümü|Kafka sürümü en az 2,1 olmalıdır. Değer **$componentVersion**değişkeninden geçirilir.|
     
-        Kümeyi Rest proxy olmadan oluşturmak isterseniz `--kafka-management-node-size`,, ve `--kafka-client-group-id` `--kafka-client-group-name` `az hdinsight create` komutunu kaldırın.
+        Kümeyi REST proxy olmadan oluşturmak isterseniz,, `--kafka-management-node-size` `--kafka-client-group-id` ve `--kafka-client-group-name` komutunu kaldırın `az hdinsight create` .
 
-    1. Mevcut bir sanal ağınız varsa, parametreleri `--vnet-name` `--subnet`ve değerlerini ve değerlerini ekleyin.
+    1. Mevcut bir sanal ağınız varsa, parametreleri ve `--vnet-name` `--subnet` değerlerini ve değerlerini ekleyin.
 
     Kümeyi oluşturmak için aşağıdaki komutu girin:
 

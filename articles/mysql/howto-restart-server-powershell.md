@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: faefdfb93257521c9c687045c1467c5d2d0f84ab
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 71d10078a704b2905cf055347f5ed4272ca8ef72
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107946"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502792"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı sunucusunu yeniden başlatma
 
@@ -21,7 +22,7 @@ Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sana
 
 Yeniden başlatmayı tamamlaması için gereken süre, MySQL kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 

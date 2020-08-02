@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 980cbe17e982edb3aa72c3b58908f13a3d63a639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76021051"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507172"
 ---
 #### <a name="to-create-a-new-service"></a>Yeni hizmet oluşturmak için
 
@@ -29,7 +29,7 @@ ms.locfileid: "76021051"
 
    2. Açılan listeden bir **Abonelik** seçin. Abonelik fatura hesabınıza bağlıdır. Bu alan bir aboneliğiniz olmadığı sürece yoktur.
 
-   3. **Kaynak Grubu** için **Mevcut grubu kullanın** veya **Yeni grup oluşturun**. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. **Kaynak Grubu** için **Mevcut grubu kullanın** veya **Yeni grup oluşturun**. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](/azure/azure-resource-manager/management/manage-resource-groups-portal).
 
    4. Hizmetiniz için bir **Konum** sağlayın. Genel olarak, cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçmek istersiniz. Aşağıdaki konuları da hesaba katmak isteyebilirsiniz:
 

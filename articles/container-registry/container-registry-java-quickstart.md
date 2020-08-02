@@ -2,22 +2,22 @@
 title: Hızlı başlangıç-Maven ve JIB kullanarak Azure Container Registry Java kapsayıcı görüntülerini derleyin ve gönderin
 description: Kapsayıcılı bir Java uygulaması oluşturun ve Maven JIB eklentisini kullanarak Azure Container Registry gönderin.
 author: KarlErickson
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 9310fb92b4b0ad1163d343f13daf42c15923ec20
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e87e2d59dd70fbf96c04d9cd467594aa6576639b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327421"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501313"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Hızlı başlangıç: Java kapsayıcı görüntülerini derleyin ve Azure Container Registry gönderin
 
 Bu hızlı başlangıçta, kapsayıcılı bir Java uygulamasının nasıl oluşturulacağı ve Maven JIB eklentisini kullanarak Azure Container Registry nasıl göndergörüntüleneceği gösterilmektedir. Maven ve JIB kullanımı, bir Azure Container Registry ile etkileşim kurmak için geliştirici araçları kullanmanın bir örneğidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği; henüz Azure aboneliğiniz yoksa [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz Azure hesabı](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
 * [Azure Komut Satırı Arabirimi (CLI)](/cli/azure/overview).

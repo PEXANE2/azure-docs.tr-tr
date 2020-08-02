@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bd7917a96550d45b14eb5a5b5cae1ac957aa78b5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80411516"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502809"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Öğretici: ARM şablonunuzu dağıtmak için parametre dosyalarını kullanma
 
@@ -34,13 +35,13 @@ Bu şablon iyi sonuç verir, ancak artık şablon için geçirdiğiniz parametre
 
 Parametre dosyaları, şablonunuza benzer bir yapıya sahip JSON dosyalarıdır. Dosyasında, dağıtım sırasında geçirmek istediğiniz parametre değerlerini sağlarsınız.
 
-VS Code ' de, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy. Parameters. dev. JSON**adıyla kaydedin.
+VS Code ' de, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy.parameters.dev.js**adı ile kaydedin.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 Bu dosya, geliştirme ortamı için parametre dosyasıdır. Depolama hesabı için Standard_LRS kullandığına, kaynakları **dev** ön ekine göre isimettiğini ve **ortam** etiketini **dev**olarak ayarladığına dikkat edin.
 
-Yine, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy. Parameters. prod. JSON**adıyla kaydedin.
+Yine, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy.parameters.prod.js**adı ile kaydedin.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
@@ -71,7 +72,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
+Bu dağıtım komutunu çalıştırmak için Azure CLI’nın [en son sürümüne](/cli/azure/install-azure-cli) sahip olmanız gerekir.
 
 ```azurecli
 templateFile="{path-to-the-template-file}"
@@ -127,7 +128,7 @@ az deployment group create \
 
 Kaynak gruplarını Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Bu öğreticide dağıttığınız iki yeni kaynak grubunu görürsünüz.
 1. Kaynak grubu ' nu seçin ve dağıtılan kaynakları görüntüleyin. Bu ortam için parametre dosyanızda belirttiğiniz değerlerle eşleştiğine dikkat edin.
@@ -141,9 +142,9 @@ Kaynak gruplarını Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tebrikler, Azure 'a şablon dağıtmaya yönelik bu girişi tamamladınız. Geri bildirim bölümünde herhangi bir yorum ve öneri varsa bize bilgi verin. Teşekkür ederiz!
+Tebrikler, Azure 'a şablon dağıtmaya yönelik bu girişi tamamladınız. Geri bildirim bölümünde herhangi bir yorum ve öneri varsa bize bilgi verin. Teşekkürler!
 
 Sonraki öğretici serisi, şablonları dağıtma hakkında daha fazla ayrıntıya gider.
 
 > [!div class="nextstepaction"]
-> [Yerel şablon dağıtma](./deployment-tutorial-local-template.md)
+> [Yerel şablonu dağıtma](./deployment-tutorial-local-template.md)

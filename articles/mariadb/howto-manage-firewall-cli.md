@@ -7,19 +7,20 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ae15b98f593dc71c8ed63e867f224aad93f13a43
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 3edf6248d42878bb79115fad925ef38e3353c979
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101333"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502280"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure CLı kullanarak MariaDB güvenlik duvarı kuralları için Azure veritabanı oluşturma ve yönetme
 Sunucu düzeyinde güvenlik duvarı kuralları, belirli bir IP adresinden veya bir IP adresi aralığından MariaDB sunucusu için Azure veritabanı 'na erişimi yönetmek için kullanılabilir. Uygun Azure CLı komutlarını kullanarak sunucunuzu yönetmek için güvenlik duvarı kuralları oluşturabilir, güncelleştirebilir, silebilir, listeleyebilir ve gösterebilirsiniz. MariaDB güvenlik duvarları için Azure veritabanı 'na genel bakış için bkz. [MariaDB sunucusu Için Azure veritabanı güvenlik duvarı kuralları](./concepts-firewall-rules.md).
 
 Sanal ağ (VNet) kuralları, sunucunuza erişimi güvenli hale getirmek için de kullanılabilir. [Azure CLI kullanarak sanal ağ hizmet uç noktaları ve kuralları oluşturma ve yönetme](howto-manage-vnet-cli.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [Azure CLI’yı yükleyin](https://docs.microsoft.com/cli/azure/install-azure-cli).
 * [MariaDB sunucusu ve veritabanı Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-cli.md).
 

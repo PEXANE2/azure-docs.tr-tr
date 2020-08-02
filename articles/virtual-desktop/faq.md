@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075627"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504424"
 ---
-# <a name="windows-virtual-desktop-faq"></a>Windows sanal masaüstü hakkında SSS
+# <a name="windows-virtual-desktop-faq"></a>Windows Sanal Masaüstü hakkında SSS
 
 Bu makalede sık sorulan sorular yanıtlanmaktadır ve Windows sanal masaüstü için en iyi yöntemler açıklanmaktadır.
 
@@ -25,7 +25,7 @@ Konak havuzları ve diğer nesneler oluşturmak istiyorsanız, üzerinde çalı�
 
 Uygulama gruplarını kullanıcılara veya Kullanıcı gruplarına yayımlamak için, bir uygulama grubunda Kullanıcı erişimi Yöneticisi rolüne atanmalısınız.
 
-Bir yöneticinin kullanıcılara ileti gönderme, kullanıcıları imzalama vb. gibi yalnızca kullanıcı oturumlarını yönetmesine izin vermek için özel roller oluşturabilirsiniz. Örneğin: 
+Bir yöneticinin kullanıcılara ileti gönderme, kullanıcıları imzalama vb. gibi yalnızca kullanıcı oturumlarını yönetmesine izin vermek için özel roller oluşturabilirsiniz. Örnek: 
 
 ```powershell
 "actions": [
@@ -46,7 +46,7 @@ Bir yöneticinin kullanıcılara ileti gönderme, kullanıcıları imzalama vb. 
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Windows sanal masaüstü Azure Active Directory modellerini bölmeyi destekliyor mu?
 
-Bir Kullanıcı bir uygulama grubuna atandığında, hizmet basit bir Azure rol tabanlı erişim denetimi (RBAC) rol ataması yapar. Sonuç olarak, kullanıcının Azure Active Directory (AD) ve uygulama grubunun Azure AD aynı konumda olmalıdır. Konak havuzları, uygulama grupları ve çalışma alanları gibi tüm hizmet nesneleri aynı zamanda kullanıcıyla aynı Azure AD içinde olmalıdır.
+Bir Kullanıcı bir uygulama grubuna atandığında, hizmet basit bir Azure rolü atamasını yapar. Sonuç olarak, kullanıcının Azure Active Directory (AD) ve uygulama grubunun Azure AD aynı konumda olmalıdır. Konak havuzları, uygulama grupları ve çalışma alanları gibi tüm hizmet nesneleri aynı zamanda kullanıcıyla aynı Azure AD içinde olmalıdır.
 
 Aynı sanal ağdaki (VNET) Kullanıcı Azure AD ile Active Directory eşitlemedikçe, farklı bir Azure AD 'de sanal makineler (VM 'Ler) oluşturabilirsiniz.
 
@@ -62,7 +62,7 @@ Tüm hizmet kaynaklarının kendileriyle ilişkili bir konumu vardır. Konak hav
 
 Bir PowerShell cmdlet 'ini çalıştırdığınızda yalnızca kaynak adını ve konumunu görürsünüz.
 
-Örneğin:
+Örnek:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -74,7 +74,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 Bir kaynağın tüm özelliklerini görmek için `format-list` cmdlet 'inin sonuna veya sonuna ekleyin `fl` .
 
-Örneğin:
+Örnek:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -82,7 +82,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 Belirli özellikleri görmek için, veya sonrasında belirli özellik adlarını ekleyin `format-list` `fl` .
 
-Örneğin:
+Örnek:
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty

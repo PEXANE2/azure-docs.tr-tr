@@ -5,12 +5,13 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650033"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503761"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Özel bir sağlayıcı oluşturma ve kullanma
 
@@ -37,11 +38,11 @@ Bir uç nokta oluşturduktan sonra, sağlayıcı ve uç nokta arasında bir söz
 **routingType** | Hayır | Uç nokta sözleşme türü. Değer belirtilmezse, varsayılan olarak "proxy" olur.
 **bkz** | Yes | İsteklerin yönlendirileceği uç nokta. Bu uç nokta, isteğin yanıtını ve tüm yan etkilerini işler.
 
-**Uç noktanın** değeri, Azure işlevi uygulamasının tetikleyici URL 'sidir. `<yourapp>`, `<funcname>`, Ve `<functionkey>` yer tutucular, oluşturduğunuz işlev uygulamanızın değerleriyle değiştirilmelidir.
+**Uç noktanın** değeri, Azure işlevi uygulamasının tetikleyici URL 'sidir. `<yourapp>`, `<funcname>` , Ve `<functionkey>` yer tutucular, oluşturduğunuz işlev uygulamanızın değerleriyle değiştirilmelidir.
 
 ## <a name="define-custom-actions-and-resources"></a>Özel eylemleri ve kaynakları tanımlama
 
-Özel sağlayıcı, **Eylemler** ve **Resourcetypes** özellikleri kapsamında modellenen uç nokta tanımlarının bir listesini içerir. **Actions** özelliği özel sağlayıcı tarafından kullanıma sunulan özel eylemlerle eşlenir ve **Resourcetypes** özelliği özel kaynaklarıdır. Bu öğreticide, Özel sağlayıcının adlı bir **Actions** özelliği `myCustomAction` ve **resourcetypes** özelliği adlı `myCustomResources`bir.
+Özel sağlayıcı, **Eylemler** ve **Resourcetypes** özellikleri kapsamında modellenen uç nokta tanımlarının bir listesini içerir. **Actions** özelliği özel sağlayıcı tarafından kullanıma sunulan özel eylemlerle eşlenir ve **Resourcetypes** özelliği özel kaynaklarıdır. Bu öğreticide, Özel sağlayıcının adlı bir **Actions** özelliği `myCustomAction` ve **resourcetypes** özelliği adlı bir `myCustomResources` .
 
 ```JSON
 {
@@ -112,7 +113,7 @@ Bir uç nokta oluşturduktan sonra, sağlayıcı ve uç nokta arasında bir söz
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> Ve `{resourceGroupName}` yer tutucuları, `{subscriptionId}` özel sağlayıcıyı dağıttığınız aboneliğin ve kaynak grubuyla değiştirmelisiniz.
+> `{subscriptionId}`Ve `{resourceGroupName}` yer tutucuları, özel sağlayıcıyı dağıttığınız aboneliğin ve kaynak grubuyla değiştirmelisiniz.
 
 ```azurecli-interactive
 az resource invoke-action --action myCustomAction \
@@ -140,7 +141,7 @@ Yok.
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> Ve `{resourceGroupName}` yer tutucuları, `{subscriptionId}` özel sağlayıcıyı dağıttığınız aboneliğin ve kaynak grubuyla değiştirmelisiniz.
+> `{subscriptionId}`Ve `{resourceGroupName}` yer tutucuları, özel sağlayıcıyı dağıttığınız aboneliğin ve kaynak grubuyla değiştirmelisiniz.
 
 #### <a name="create-a-custom-resource"></a>Özel bir kaynak oluşturun
 
@@ -159,7 +160,7 @@ az resource create --is-full-object \
 Parametre | Gerekli | Açıklama
 ---|---|---
 *-Full-Object* | Yes | Özellikler nesnesinin konum, Etiketler, SKU veya plan gibi diğer seçenekleri içerip içermediğini gösterir.
-*numarasını* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
+*id* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
 *özelliklerinin* | Yes | Uç noktaya gönderilecek istek gövdesi.
 
 #### <a name="delete-a-custom-resource"></a>Özel bir kaynağı silme
@@ -170,7 +171,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-*numarasını* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
+*id* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
 
 #### <a name="retrieve-a-custom-resource"></a>Özel bir kaynak alma
 
@@ -180,7 +181,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-*numarasını* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
+*id* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
 
 # <a name="template"></a>[Şablon](#tab/template)
 
@@ -206,7 +207,7 @@ Parametre | Gerekli | Açıklama
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-*resourceTypeName* | Yes | Özel `name` sağlayıcıda tanımlanan **Resourcetypes** özelliğinin değeri.
+*resourceTypeName* | Yes | `name`Özel sağlayıcıda tanımlanan **Resourcetypes** özelliğinin değeri.
 *resourceProviderName* | Yes | Özel sağlayıcı örneği adı.
 *customResourceName* | Yes | Özel kaynak adı.
 

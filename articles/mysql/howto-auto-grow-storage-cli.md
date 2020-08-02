@@ -6,19 +6,20 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: fd7b9a809421aa33b83902960da2f02d4deabf9a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 91b4455c9485389f71d42448617668167579f437
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113275"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504288"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı depolama alanını otomatik olarak büyütme
 Bu makalede, bir MySQL için Azure veritabanı sunucusu depolama alanını, iş yükünü etkilemeden nasıl artırabileceğinizi açıklar.
 
 [Depolama sınırına ulaşan](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit)sunucu, salt okunurdur olarak ayarlanmıştır. Depolama otomatik büyüme, 100 GB 'tan az kullanılabilir depolama alanı olan sunucular için etkinleştirildiyse, boş depolama alanı sağlanan depolamanın en fazla 1 GB veya %10 ' u altındaysa, sağlanan depolama boyutu 5 GB artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun %5 ' inden az olduğunda sağlanan depolama boyutu %5 oranında artar. [Burada](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) belirtilen en fazla depolama sınırı geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı sunucusu](quickstart-create-mysql-server-database-using-azure-cli.md)
 

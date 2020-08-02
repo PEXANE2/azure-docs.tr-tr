@@ -6,12 +6,13 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 45876c8e176a4f81abfd927b0e2a8df8fc26ac25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106909"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502554"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>PowerShell kullanarak PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -21,7 +22,7 @@ Bu makalede, PowerShell kullanarak PostgreSQL için Azure veritabanı hizmetinde
 
 PowerShell kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -50,7 +51,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzPostgreSqlServerReplica`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulduğu kaynak grubu.  |
 | Name | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
@@ -79,7 +80,7 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMariaDReplica`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | aboneliğinde ve | mydemoserver | Ana sunucunun adı veya KIMLIĞI. |

@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: kumud
-ms.openlocfilehash: 43a3e7672a6bfdf89bce67ec54e4500cd84b6dcf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e4098d0f0e81ae2abe8146f0f8d5119173a04d8c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521641"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504560"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft eşlemesi için rota filtrelerini yapılandırma: Azure CLı
 
@@ -26,7 +27,7 @@ Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi a
 
 Exchange Online, SharePoint Online ve Skype Kurumsal gibi Office 365 hizmetlerine Microsoft eşlemesi aracılığıyla erişilebilir. ExpressRoute bağlantı hattındaki Microsoft eşlemesi yapılandırıldığında, bu hizmetlerle ilgili tüm önekler oluşturulan BGP oturumları aracılığıyla bildirilir. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerinin ve eşlendikleri hizmetlerin listesi için bkz. [BGP toplulukları](expressroute-routing.md#bgp).
 
-Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Şunları yapabilirsiniz:
+Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Seçenekleriniz şunlardır:
 
 * BGP topluluklarına rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Bu standart bir ağ uygulamasıdır ve genellikle birçok ağ içinde kullanılır.
 
