@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/11/2019
+ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce4574870ad8c0bfd945e49f129b82177b3138a1
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 9c7f0ead3a2f93d7f390106b8e7471d58b709023
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115708"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481572"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C parolalar için karmaşıklık gereksinimlerini yapılandırın
 
@@ -38,10 +38,10 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 
 ## <a name="configure-password-complexity"></a>Parola karmaşıklığını yapılandırma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
+4. **Kullanıcı akışları ' nı**seçin.
 2. Bir Kullanıcı akışı seçin ve **Özellikler**' e tıklayın.
 3. **Parola karmaşıklığı**bölümünde, bu kullanıcı akışının parola karmaşıklığını **basit**, **güçlü**veya **özel**olarak değiştirin.
 

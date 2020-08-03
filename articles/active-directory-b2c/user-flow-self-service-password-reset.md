@@ -7,22 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/30/2018
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 465643d21d3059cd41948ff682d7464b00f749c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c9edaf3356ea4c1a521a89f2ec60a4b6ba1a5ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384014"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481504"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Müşterileriniz için self servis parola sıfırlamayı ayarlama
 
 Self servis parola sıfırlama özelliği sayesinde, yerel hesaplara kaydolan müşterilerimiz parolalarını kendi kendilerine sıfırlayabilir. Bu, özellikle uygulamanızın milyonlarca müşteriyi düzenli olarak kullanıyorsa, destek personelinizdeki yükü önemli ölçüde azaltır. Şu anda, doğrulanmış bir e-posta adresi kullanmak desteklenen tek kurtarma yöntemidir.
 
 > [!NOTE]
-> Bu makale, kimlik sağlayıcısı olarak **yerel hesap oturumu açma** kullanan v1 **oturum açma** Kullanıcı akışı bağlamında kullanılan self servis parola sıfırlama için geçerlidir. Uygulamanızdan çağrılan, tamamen özelleştirilebilir parola sıfırlama Kullanıcı akışları gerekiyorsa, [Bu makaleye](user-flow-overview.md)bakın.
+> Bu makale, kimlik sağlayıcısı olarak **yerel hesap oturumu açma** kullanan standart **oturum açma** Kullanıcı akışı bağlamında kullanılan self servis parola sıfırlama için geçerlidir. Uygulamanızdan çağrılan, tamamen özelleştirilebilir parola sıfırlama Kullanıcı akışları gerekiyorsa, [Bu makaleye](user-flow-overview.md)bakın.
 >
 >
 

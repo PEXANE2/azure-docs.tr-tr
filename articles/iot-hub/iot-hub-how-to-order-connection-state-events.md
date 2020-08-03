@@ -7,12 +7,13 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726205"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488137"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure Cosmos DB'yi kullanarak Azure IoT Hub cihaz bağlantısı olaylarını sıralama
 
@@ -278,7 +279,7 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
 
    ![Örnek olay aboneliği formu](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
 
-   Olay aboneliğini kaydetmek için **Oluştur**'u seçin.
+   Olay aboneliğini kaydetmek için **Oluştur**’u seçin.
 
 ## <a name="observe-events"></a>Olayları gözlemleyin
 
@@ -286,13 +287,13 @@ Artık olay aboneliğiniz ayarlanmış olduğuna göre bir cihaz bağlayarak tes
 
 ### <a name="register-a-device-in-iot-hub"></a>IoT Hub bir cihazı kaydetme
 
-1. IoT Hub'ınızda **IoT Cihazları**'nı seçin.
+1. IoT Hub 'ınızdan **IoT cihazları**' nı seçin.
 
 2. Bölmenin en üstünde **+ Ekle** ' yi seçin.
 
-3. **Cihaz Kimliği** için `Demo-Device-1` girin.
+3. **Cihaz kimliği** için, `Demo-Device-1` girin.
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 5. Farklı cihaz kimliklerine sahip birden çok cihaz ekleyebilirsiniz.
 

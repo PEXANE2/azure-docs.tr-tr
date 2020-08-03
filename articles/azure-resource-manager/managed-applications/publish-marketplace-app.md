@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a5e2a3569c70404d64d24ecfc35a8258ea864a4f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054500"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480433"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Öğretici: market 'te Azure yönetilen uygulamaları yayımlama
 
@@ -98,7 +98,7 @@ SKU, marketteki ana teklifin altında görünür. Azure portalında kendi başı
 
      Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin. `*/read`Bu ayarı eklemeniz gerekmiyorsa eyleme otomatik olarak izin verilir.
    * **PrincipalId**: Bu özellik, müşterinin aboneliğindeki kaynaklara erişimin sağlandığı kullanıcı, kullanıcı grubu veya uygulamalanın Azure Active Directory (Azure AD) tanıtıcısıdır. Rol Tanımı izinleri açıklar.
-   * **Rol Tanımı**: Bu özellik, Azure AD tarafından sağlanan tüm yerleşik Rol Tabanlı Erişim Denetimi (RBAC) rollerinin bir listesidir. Müşteri adına kaynakları yönetmek için kullanılması en uygun olan rolü seçebilirsiniz.
+   * **Rol tanımı**: Bu özellik, Azure AD tarafından sunulan tüm Azure yerleşik rollerinin bir listesidir. Müşteri adına kaynakları yönetmek için kullanılması en uygun olan rolü seçebilirsiniz.
    * **İlke Ayarları**: Dağıtılan çözümlerde uyumluluk gereksinimlerini belirtmek için, yönetilen uygulamanıza bir [Azure İlkesi](../../governance/policy/overview.md) uygulayın. Kullanılabilir seçenekler arasından uygulanacak ilkeleri seçin. **İlke Parametreleri** için, parametre değerleriyle bir JSON dizesi sağlayın. İlke tanımları ve parametre değerlerinin biçimi için bkz. [Azure İlke Örnekleri](../../governance/policy/samples/index.md).
 
 Çeşitli yetkilendirmeler ekleyebilirsiniz. Bir AD kullanıcı grubu oluşturarak kimliğini **PrincipalId** olarak belirlemenizi öneririz. Bu şekilde SKU’yu güncelleştirme gereği olmadan kullanıcı grubuna daha fazla kullanıcı ekleyebilirsiniz.

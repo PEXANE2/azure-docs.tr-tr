@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/30/2020
 ms.custom: project-no-code, devx-track-javascript
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d85ffca8c72e7a247d5bbd1e593335fd7995b594
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 58ddca6bb7844288aae0370f035bc4dfa2dc942f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170151"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481706"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki JavaScript ve sayfa düzeni sürümleri
 
@@ -41,7 +41,7 @@ Kullanıcı akışı **özelliklerinde**JavaScript 'i etkinleştirebilirsiniz. J
 
 ## <a name="select-a-page-layout-version"></a>Sayfa düzeni sürümü seçin
 
-Kullanıcı akışınızın özelliklerinde JavaScript 'ı etkinleştirip etkinleştirmeyeceğinizi, Kullanıcı akış sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz. Kullanıcı akışını açın ve **sayfa düzenleri**' ni seçin. **Düzen adı**altında, bir Kullanıcı akış sayfası seçin ve **sayfa düzeni sürümünü**seçin.
+Kullanıcı akışınızın özelliklerinde JavaScript 'ı etkinleştirip etkinleştirmeyeceğinizi, Kullanıcı akış sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz. Kullanıcı akışını açın ve **sayfa düzenleri**' ni seçin. **Düzen adı**altında, bir Kullanıcı akış sayfası seçin ve **sayfa düzeni sürümünü (Önizleme)** seçin.
 
 Farklı sayfa düzeni sürümleri hakkında daha fazla bilgi için bkz. [sayfa düzeni sürümü değişiklik günlüğü](page-layout.md).
 

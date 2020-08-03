@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200410"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483838"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
 
@@ -68,7 +68,7 @@ Data Box hizmeti aşağıdaki özelliklerle korunur.
 
 - Data Box hizmetine erişim için kuruluşunuzun Data Box içeren bir Azure aboneliği olmalıdır. Aboneliğiniz, Azure portalında erişebildiğiniz özellikleri yönetir.
 - Data Box hizmeti Azure’da barındırıldığından, Azure güvenlik özellikleriyle korunur. Microsoft Azure tarafından sağlanan güvenlik özellikleri hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi](https://www.microsoft.com/TrustCenter/Security/default.aspx)’ne gidin.
-- Data Box sırasına erişim rol tabanlı Access Control (RBAC) rolleri kullanılarak denetlenebilir. Daha fazla bilgi için bkz. [Data Box Order için erişim denetimini ayarlama](data-box-logs.md#set-up-access-control-on-the-order)
+- Data Box sırasına erişim, Azure rolleri kullanılarak denetlenebilir. Daha fazla bilgi için bkz. [Data Box Order için erişim denetimini ayarlama](data-box-logs.md#set-up-access-control-on-the-order)
 - Data Box hizmeti, hizmette cihazın kilidini açmak için kullanılan kilit açma şifrelerini saklar.
 - Data Box hizmeti, hizmetteki sipariş ayrıntılarını ve durumunu depolar. Sipariş silindiğinde bu bilgiler de silinir.
 
@@ -84,7 +84,7 @@ Azure Data Box, hizmette şu anahtar örneklerinde kişisel bilgileri toplar ve 
   - Telefon numarası
   - E-posta
   - Açık adres
-  - City
+  - Şehir
   - Posta kodu
   - Durum
   - Ülke/İl/Bölge
@@ -102,7 +102,7 @@ Daha fazla bilgi için, [Güven Merkezi](https://www.microsoft.com/trustcenter)�
 
 Data Box’da aşağıdaki güvenlik yönergeleri uygulanmıştır: 
 
-|Yönerge   |Açıklama   |
+|Yönerge   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Su ve toz koruması için         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Olumsuz taşıma koşullarına dayanıklılık için          |

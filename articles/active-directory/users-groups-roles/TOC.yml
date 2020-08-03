@@ -175,6 +175,22 @@
               href: roles-custom-available-permissions.md
             - name: Uygulama yöneticisi izinlerine temsilci seçme
               href: roles-delegate-app-roles.md
+        - name: Rol atamalarını yönetmek için grupları kullanma
+          items:
+            - name: Grup tabanlı rol ataması önizlemesi
+              href: roles-groups-concept.md
+            - name: Rol atanabilir grup oluşturma
+              href: roles-groups-create-eligible.md
+            - name: Gruba rol atama
+              href: roles-groups-assign-role.md
+            - name: Gruptan rol atamalarını kaldırma
+              href: roles-groups-remove-assignment.md
+            - name: Grubun rol atamalarını görüntüleme
+              href: roles-groups-view-assignments.md
+            - name: PIM'de grubun role uygun olmasını sağlama
+              href: roles-groups-pim-eligible.md
+            - name: SSS ve sorun giderme
+              href: roles-groups-faq-troubleshooting.md
         - name: Göreve göre en az ayrıcalıklı roller
           href: roles-delegate-by-task.md
         - name: Microsoft 365 rolleri
@@ -189,11 +205,11 @@
           items:
             - name: Yönetim birimlerine genel bakış
               href: directory-administrative-units.md
-            - name: AU’ları ekleme ve yönetme
+            - name: AU'ları ekleme ve yönetme
               href: roles-admin-units-manage.md
-            - name: AU’larda kullanıcıları ekleme ve yönetme
+            - name: AU'larda kullanıcıları ekleme ve yönetme
               href: roles-admin-units-add-manage-users.md
-            - name: AU’larda grupları ekleme ve yönetme
+            - name: AU'larda grupları ekleme ve yönetme
               href: roles-admin-units-add-manage-groups.md
             - name: AU kapsamıyla rol atama
               href: roles-admin-units-assign-roles.md

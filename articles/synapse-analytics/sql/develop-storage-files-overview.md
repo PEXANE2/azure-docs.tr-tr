@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046878"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483561"
 ---
-# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>SYNAPSE SQL 'de dış depolamaya erişme (isteğe bağlı)
+# <a name="access-external-storage-in-synapse-sql-on-demand"></a>SYNAPSE SQL 'de dış depolamaya erişme (isteğe bağlı)
 
 Bu belgede, SYNAPSE SQL 'de (isteğe bağlı) Azure depolama 'da depolanan dosyalardaki verileri nasıl okuyabileceğinizi açıklar. Kullanıcılar depolamaya erişmek için aşağıdaki seçeneklere sahiptir:
 
@@ -59,7 +59,7 @@ URL ile eşleşen sunucu düzeyi KIMLIK BILGISI yoksa veya SQL kullanıcısı bu
 > [!NOTE]
 > OPENROWSET 'in bu sürümü, varsayılan kimlik doğrulaması kullanılarak hızlı ve kolay veri araştırması için tasarlanmıştır. Kimliğe bürünme veya yönetilen kimlik özelliğinden yararlanmak için, sonraki bölümde açıklanan VERI kaynağı ile OPENROWSET kullanın.
 
-### <a name="querying-data-sources-using-openrowset"></a>OPENROWSET kullanarak veri kaynaklarını sorgulama
+### <a name="query-data-sources-using-openrowset"></a>OPENROWSET kullanarak veri kaynaklarını sorgulama
 
 OPENROWSET, kullanıcının bazı dış veri kaynaklarına yerleştirilmiş dosyaları sorgulamasını sağlar:
 
@@ -91,7 +91,7 @@ VERITABANı KAPSAMLı KIMLIK BILGILERI, başvurulan veri kaynağındaki dosyalar
   - `ADMINISTER DATABASE BULK OPERATIONS`Veritabanı kapsamlı kullanıcının OPENROWSET işlevini yürütmesine olanak sağlar.
 - Dış VERI KAYNAĞıNDA başvurulan kimlik bilgileri için VERITABANı KAPSAMLı KIMLIK bılgısıne başvurur
 
-#### <a name="accessing-anonymous-data-sources"></a>Anonim veri kaynaklarına erişme
+#### <a name="access-anonymous-data-sources"></a>Anonim veri kaynaklarına erişin
 
 Kullanıcı, ortak erişim depolamasına başvuracak veya Azure AD PASSTHROUGH kimlik doğrulamasını kullanacak KIMLIK BILGISI olmadan dış VERI kaynağı oluşturabilir:
 
@@ -132,7 +132,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 
 VERITABANı KAPSAMLı KIMLIK BILGILERI başvurulan veri kaynağındaki dosyalara nasıl erişekullanacağınızı belirtir.
 
-### <a name="reading-external-files-with-external-table"></a>Dış tablo içeren dış dosyaları okuma
+### <a name="read-external-files-with-external-table"></a>Dış tablo içeren dış dosyaları okuma
 
 DıŞ tablo, standart SQL SELECT ifadesini kullanarak veri kaynağı aracılığıyla başvurulan dosyalardaki verileri okumanızı sağlar:
 

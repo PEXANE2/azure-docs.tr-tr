@@ -10,16 +10,16 @@ ms.date: 07/27/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 6e8e00d7f9f529010cf99ae5a180c1ecb0a74177
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e0edd688fa34033209798603ef15352b42cd9497
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374983"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451179"
 ---
 <a name="HOLTop"></a>
 
-[Başvuru belgeleri](https://aka.ms/azsdk-java-textanalytics-ref-docs)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Başvuru belgeleri](https://aka.ms/azsdk-java-textanalytics-ref-docs)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -33,7 +33,7 @@ ms.locfileid: "87374983"
 
 ### <a name="add-the-client-library"></a>İstemci kitaplığını ekleme
 
-Tercih ettiğiniz IDE veya geliştirme ortamınızda Maven projesi oluşturun. Sonra projenizin *pom.xml* dosyasına aşağıdaki bağımlılığı ekleyin. [Diğer derleme araçlarının](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0) uygulama sözdizimini çevrimiçi olarak bulabilirsiniz.
+Tercih ettiğiniz IDE veya geliştirme ortamınızda Maven projesi oluşturun. Sonra projenizin *pom.xml* dosyasına aşağıdaki bağımlılığı ekleyin. [Diğer derleme araçlarının](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) uygulama sözdizimini çevrimiçi olarak bulabilirsiniz.
 
 ```xml
 <dependencies>
@@ -94,7 +94,7 @@ Metin Analizi istemcisi, `TextAnalyticsClient` anahtarınızı kullanarak Azure 
 * [Dil algılama](#language-detection)
 * [Adlandırılmış varlık tanıma](#named-entity-recognition-ner) 
 * [Varlık bağlama](#entity-linking)
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 

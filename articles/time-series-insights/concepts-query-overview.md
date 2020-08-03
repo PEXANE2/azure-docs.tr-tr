@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a4b969ecbc92df45021b4a9ec711960171d77d4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495304"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486803"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 'dan veri sorgulama
 
@@ -37,7 +37,7 @@ Aşağıdaki temel API 'Ler desteklenir.
 
 ## <a name="environment-apis"></a>Ortam API 'Leri
 
-* [Ortamları al API 'si](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get): çağıranın erişim yetkisine sahip olduğu ortamların listesini döndürür.
+* [Ortamları al API 'si](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment): çağıranın erişim yetkisine sahip olduğu ortamların listesini döndürür.
 * [Ortamları al kullanılabilirlik API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): olay zaman damgasına olay sayısı dağılımını döndürür `$ts` . Bu API, varsa, varsa zaman aralıklarıyla oluşan olay sayısını döndürerek ortamda herhangi bir olay olup olmadığını belirlemenize yardımcı olur.
 * [Olay şeması API 'Si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): belirli bir arama yayılması için olay şeması meta verilerini döndürür. Bu API, belirtilen arama alanı için şemada bulunan tüm meta verileri ve özellikleri almaya yardımcı olur.
 

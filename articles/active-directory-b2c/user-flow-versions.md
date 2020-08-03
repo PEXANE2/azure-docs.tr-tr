@@ -7,48 +7,82 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acebf5239bf8a180f637e4c12c4e03509edb93c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67949c31c710d88a05e1e110860fe703caf66d04
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383997"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481334"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'daki Kullanıcı akışı sürümleri
 
-Azure Active Directory B2C (Azure AD B2C) Kullanıcı akışları, müşteri kimlik deneyimlerini tam olarak tanımlayan ortak [ilkeleri](user-flow-overview.md) ayarlamanıza yardımcı olur. Bu deneyimlere kaydolma, oturum açma, parola sıfırlama veya profil düzenlemesi dahildir. Azure AD B2C, hem önerilen Kullanıcı akışlarının bir koleksiyonundan seçim yapabilir hem de Kullanıcı akışlarını önizleyebilirsiniz.
+Azure Active Directory B2C (Azure AD B2C) Kullanıcı akışları, müşteri kimlik deneyimlerini tam olarak tanımlayan ortak [ilkeleri](user-flow-overview.md) ayarlamanıza yardımcı olur. Bu deneyimlere kaydolma, oturum açma, parola sıfırlama veya profil düzenlemesi dahildir. Aşağıdaki tablolarda Azure AD B2C bulunan Kullanıcı akışları açıklanır.
 
-Yeni Kullanıcı akışları yeni sürümler olarak eklenir. Kullanıcı akışları kararlı hale geldiğinde kullanım için tavsiye edilir. Kullanıcı akışları, tamamen test edilmiş olmaları durumunda **Önerilen** olarak işaretlenir. Kullanıcı akışları, önerilen olarak işaretlenene kadar önizleme olarak değerlendirilir. Herhangi bir üretim uygulaması için önerilen bir Kullanıcı akışı kullanın, ancak kullanılabilir hale geldiğinde yeni işlevselliği test etmek için diğer sürümlerden birini seçin. Önerilen Kullanıcı akışlarının eski sürümlerini kullanmamanız gerekir.
+> [!IMPORTANT]
+> Kullanıcı akış sürümlerine başvurduğumuz şekilde değiştirdik. Daha önce v1 (üretime Ready) sürümleri ve V 1.1 ve v2 (Önizleme) sürümlerini sunuyoruz. Artık Kullanıcı akışlarını iki sürüme birleştiriyoruz:
+>
+>- **Önerilen** Kullanıcı akışları, Kullanıcı akışlarının yeni önizleme sürümlerindedir. Kapsamlı olarak test edilmiştir ve eski **v2** ve **v 1.1** sürümlerinin tüm özelliklerini birleştirirler. İleri giderek, önerilen yeni Kullanıcı akışları korunur ve güncelleştirilir. Bu yeni önerilen Kullanıcı akışlarına taşıdıktan sonra, serbest bırakılanlar gibi yeni özelliklere erişebilirsiniz.
+>- Daha önce **v1**olarak bilinen **Standart** Kullanıcı akışları, genel olarak kullanılabilir, üretime hazır Kullanıcı akışıdır. Kullanıcı akışlarınız görev açısından kritiktir ve yüksek oranda kararlı sürümlere bağlıysa, standart Kullanıcı akışlarını kullanmaya devam edebilirsiniz ve bu sürümlerin korunmayacağını ve güncelleştirilmediğini da sürdürmez.
+>
+>Eski tüm önizleme Kullanıcı akışları (V 1.1 ve v2) **1 ağustos 2021 '** e kadar kullanımdan kalkmaya yönelik bir yoldur. Mümkün olan yerlerde, en son özelliklerden ve güncelleştirmelerden her zaman yararlanabilmeniz [için, **Önerilen** yeni sürümlere](#how-to-switch-to-a-new-recommended-user-flow) en kısa sürede geçmeniz önerilir. *Bu değişiklikler yalnızca Azure genel bulutu için geçerlidir. Diğer ortamlar [eski Kullanıcı akış sürümü oluşturmayı](user-flow-versions-legacy.md)kullanmaya devam edecektir.*
 
->[!IMPORTANT]
-> Bir Kullanıcı akışı **önerilmediği**sürece, *Önizleme*aşamasında olduğu kabul edilir. Üretim uygulamalarınız için yalnızca önerilen Kullanıcı akışlarını kullanmanız gerekir.
+## <a name="recommended-user-flows"></a>Önerilen Kullanıcı akışları
 
-## <a name="v1"></a>V1
+Önerilen Kullanıcı akışları, yeni özellikleri eski v2 ve V 1.1 özellikleriyle birleştiren önizleme sürümleridir. İleri giderek, önerilen Kullanıcı akışları korunur ve güncelleştirilir.
 
-| Kullanıcı akışı | Önerilen | Açıklama |
+| Kullanıcı akışı | Açıklama |
+| --------- | ----------- |
+| Parola sıfırlama (Önizleme) | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](custom-policy-multi-factor-authentication.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
+| Profil düzenlemesi (Önizleme) | Kullanıcının kullanıcı özniteliklerini yapılandırmasına olanak sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li></ul> |
+| Oturum aç (Önizleme) | Kullanıcının hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>Oturum açma sayfası özelleştirmesi</li></ul> |
+| Kaydolma (Önizleme) | Kullanıcının hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
+| Kaydolma ve oturum açma (Önizleme) | Kullanıcının hesabında hesap oluşturmasını veya oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](custom-policy-multi-factor-authentication.md)</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
+
+## <a name="standard-user-flows"></a>Standart Kullanıcı akışları
+
+Standart Kullanıcı akışları (daha önce v1 olarak adlandırılır) genel olarak kullanılabilir, üretime hazır Kullanıcı akışıdır. Standart Kullanıcı akışları bundan sonra güncelleştirilmeyecek.
+
+| Kullanıcı akışı | Açıklama |
 | --------- | ----------- | ----------- |
-| Parola sıfırlama | Evet | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
-| Profil düzenlemesi | Evet | Kullanıcının kullanıcı özniteliklerini yapılandırmasına olanak sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li></ul> |
-| ROPC kullanarak oturum açın | Hayır | Yerel bir hesaba sahip olan bir kullanıcının doğrudan yerel uygulamalarda oturum açmasını sağlar (tarayıcı gerekmez). Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li></ul> |
-| Oturum açın | Hayır | Kullanıcının hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>Oturum açmayı engelle</li><li>Parola sıfırlamayı zorla</li><li>Oturumumu Açık tut (KMSı)</ul><br>Kullanıcı arabirimini bu kullanıcı akışıyla özelleştiremezsiniz. |
-| Kaydolma | Hayır | Kullanıcının hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
-| Kaydolma ve oturum açma | Evet | Kullanıcının hesabı oluşturmasını veya hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul>|
+| Parola sıfırlama | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](custom-policy-multi-factor-authentication.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
+| Profil düzenlemesi | Kullanıcının kullanıcı özniteliklerini yapılandırmasına olanak sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li></ul> |
+| Oturum açın | Kullanıcının hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>Oturum açmayı engelle</li><li>Parola sıfırlamayı zorla</li><li>Oturumumu Açık tut (KMSı)</ul><br>Kullanıcı arabirimini bu kullanıcı akışıyla özelleştiremezsiniz. |
+| Kaydolma | Kullanıcının hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
+| Kaydolma ve oturum açma | Kullanıcının hesabı oluşturmasını veya hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul>|
 
-## <a name="v11"></a>V 1.1
 
-| Kullanıcı akışı | Önerilen | Açıklama |
-| --------- | ----------- | ----------- |
-| Parola sıfırlama v 1.1 | Hayır | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar (yeni sayfa düzeni kullanılabilir). Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
+## <a name="how-to-switch-to-a-new-recommended-user-flow"></a>Yeni bir önerilen Kullanıcı akışına geçme
 
-## <a name="v2"></a>V2
+Bir Kullanıcı akışının eski bir sürümünden yeni **Önerilen** önizleme sürümüne geçiş yapmak için şu adımları izleyin:
 
-| Kullanıcı akışı | Önerilen | Açıklama |
-| --------- | ----------- | ----------- |
-| Parola sıfırlama v2 | Hayır | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
-| Profil düzenlemesi v2 | Evet | Kullanıcının kullanıcı özniteliklerini yapılandırmasına olanak sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li></ul> |
-| Oturum açma v2 | Hayır | Kullanıcının hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>Oturum açma sayfası özelleştirmesi</li></ul> |
-| Kaydolma v2 | Hayır | Kullanıcının hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
-| Kaydolun ve oturum açın v2 | Hayır | Kullanıcının hesabında hesap oluşturmasını veya oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](user-flow-password-complexity.md)</li></ul> |
+1. [Öğretici: Azure Active Directory Kullanıcı akışları oluşturma](tutorial-create-user-flows.md)bölümündeki adımları izleyerek yeni bir Kullanıcı akış ilkesi oluşturun. Kullanıcı akışını oluştururken **Önerilen** sürümü seçin.
+
+3. Yeni Kullanıcı akışınızı, eski ilkede yapılandırılan ayarlarla yapılandırın.
+
+4. Uygulama oturum açma URL 'nizi yeni oluşturulan ilkeye güncelleştirin.
+
+5. Kullanıcı akışını test ettikten ve çalıştığını onayladıktan sonra, aşağıdaki adımları izleyerek eski kullanıcı akışını silin:
+   1. Azure AD B2C kiracı genel bakış menüsünde **Kullanıcı akışları**' nı seçin.
+   2. Silmek istediğiniz kullanıcı akışını bulun.
+   3. Son sütunda bağlam menüsünü (**...**) seçip **Sil**' i seçin.
+
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+### <a name="can-i-still-create-legacy-v2-and-v11-user-flows"></a>Hala eski v2 ve V 1.1 Kullanıcı akışları oluşturabilir miyim?
+
+Eski v2 ve V 1.1 sürümlerine göre Yeni Kullanıcı akışları oluşturamazsınız, ancak şu anda kullanmakta olduğunuz eski v2 ve V 1.1 Kullanıcı akışını okumaya, güncelleştirmeye ve silmeye devam edebilirsiniz.
+
+### <a name="is-there-any-reason-to-continue-using-legacy-v2-and-v11-user-flows"></a>Eski v2 ve V 1.1 Kullanıcı akışlarını kullanmaya devam etmek için herhangi bir neden var mı?
+
+Yanlış. Yeni **Önerilen** önizleme sürümleri, eski v2 ve v 1.1 sürümleriyle aynı işlevleri içerir. Hiçbir şey kaldırılmadı ve aslında artık ek özellikler içeriyor.
+
+### <a name="if-i-dont-switch-from-legacy-v2-and-v11-policies-how-will-it-impact-my-application"></a>Eski v2 ve V 1.1 ilkelerinden geçiş yapmam durumunda uygulamamı nasıl etkiler?
+
+Eski bir v2 veya V 1.1 Kullanıcı akışı kullanıyorsanız, uygulamanız bu sürüm oluşturma değişikliğinden etkilenmez. Ancak yeni özelliklere veya ilke değişikliklerine erişim sağlamak için, **Önerilen** yeni sürümlere geçmeniz gerekir.
+
+### <a name="will-microsoft-still-support-my-legacy-v2-or-v11-user-flow-policy"></a>Microsoft, eski v2 veya V 1.1 Kullanıcı akışı ilkenizi desteklemeye devam ediyor mu?
+
+Kullanıcı akışlarının eski v2 ve V 1.1 sürümleri tam olarak desteklenmeye devam edecektir.

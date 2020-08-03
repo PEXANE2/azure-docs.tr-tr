@@ -7,19 +7,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/08/2019
-ms.openlocfilehash: b5e26ef72d4be38c021cbedbcaf1fa919d7276d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/31/2020
+ms.openlocfilehash: eb533ef93f012e99d135c49725ef8add77b6f7ec
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511986"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484207"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
 ## <a name="summary"></a>Özet
 
 Azure HDInsight, Azure üzerinde açık kaynaklı Apache Hadoop ve Apache Spark analizlere yönelik kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
+
+## <a name="release-date-07132020"></a>Yayın tarihi: 07/13/2020
+
+Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
+
+### <a name="new-features"></a>Yeni özellikler
+#### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası desteği
+Azure HDInsight artık Azure Müşteri Kasası desteklemektedir. Müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Destek isteği sırasında Microsoft mühendis 'ın müşteri verilerine erişmesi gerektiğinde kullanılır. Daha fazla bilgi için bkz. [Microsoft Azure müşteri kasası](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview).
+
+#### <a name="service-endpoint-policies-for-storage"></a>Depolama için hizmet uç noktası ilkeleri
+Müşteriler artık HDInsight küme alt ağında hizmet uç noktası Ilkelerini (SEP) kullanabilir. [Azure hizmet uç noktası İlkesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)hakkında daha fazla bilgi edinin.
+
+### <a name="deprecation"></a>Kullanımdan kaldırma
+#### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3.6 Spark kümesinde Spark 2.1 ile 2.2’nin kullanımdan kaldırılması
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 3,6 üzerinde Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 3,6 ' ye 30 2020 göre Spark 2,3 ' ye geçmek için göz önünde bulundurun.
+ 
+#### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4.0 Spark kümesinde Spark 2.3’ün kullanımdan kaldırılması
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için 30 Haziran 2020’ye kadar HDInsight 4.0’da Spark 2.4’e geçmeyi göz önünde bulundurun.
+ 
+#### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4.0 Kafka kümesinde Kafka 1.1’i kullanımdan kaldırma
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için 30 Haziran 2020’ye kadar HDInsight 4.0’da Kafka 2.1’e geçmeyi göz önünde bulundurun.
+
+### <a name="behavior-changes"></a>Davranış değişiklikleri
+Dikkat etmeniz gereken davranış değişikliği yok.
+
+### <a name="upcoming-changes"></a>Yaklaşan değişiklikler
+Gelecek sürümlerde aşağıdaki değişiklikler olur. 
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Spark, Hadoop ve ML Hizmetleri için farklı Zookeeper SKU seçme özelliği
+HDInsight, Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper SKU 'sunu değiştirmeyi desteklememektedir. Zookeeper düğümleri için A2_v2/a2 SKU kullanır ve müşteriler bu kullanıcılara ücretlendirilmez. Gelecek sürümde, müşteriler Spark, Hadoop ve ML Hizmetleri için Zookeeper SKU 'sunu gerektiği gibi değiştirebilecektir. A2_v2/a2 dışındaki SKU 'ya sahip Zookeeper düğümleri ücretlendirilecektir. Varsayılan SKU, A2_V2/a2 ve ücretsiz olmaya devam edecektir.
+
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
+#### <a name="fixed-hive-warehouse-connector-issue"></a>Hive ambarı bağlayıcı sorunu düzeltildi
+Önceki sürümdeki Hive ambar Bağlayıcısı kullanılabilirliği için bir sorun oluştu. Sorun düzeltildi. 
+
+#### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>Sabit boyutlu Ppelin Not defteri, baştaki sıfır sorunu keser
+Zeppelin, dize biçimi için tablo çıktısında baştaki sıfırları yanlış bir şekilde kırpmıştı. Bu sorunu bu sürümde düzelttik.
+
+### <a name="component-version-change"></a>Bileşen sürümü değişikliği
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
 
 ## <a name="release-date-06112020"></a>Yayın tarihi: 06/11/2020
 
@@ -145,10 +186,10 @@ Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir.
 ### <a name="new-features"></a>Yeni özellikler
 
 #### <a name="service-tags"></a>Hizmet etiketleri
-Hizmet etiketleri, Azure hizmetlerine ağ erişimini kolayca kısıtlayabilmesini sağlayarak Azure sanal makineleri ve Azure sanal ağları için güvenliği basitleştirir. Ağ güvenlik grubu (NSG) kurallarınızın hizmet etiketlerini kullanarak belirli bir Azure hizmetine genel olarak veya Azure bölgesine giden trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Azure, her etiketi temel alan IP adreslerinin bakımını sağlar. Ağ güvenlik grupları (NSG 'ler) için HDInsight hizmet etiketleri, sistem durumu ve Yönetim Hizmetleri için IP adresi gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığına en aza indirmenize yardımcı olur. HDInsight müşterileri, Azure portalı, PowerShell ve REST API aracılığıyla hizmet etiketi etkinleştirebilir. Daha fazla bilgi için bkz. [Azure HDInsight Için ağ güvenlik grubu (NSG) hizmet etiketleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags).
+Hizmet etiketleri, Azure hizmetlerine ağ erişimini kolayca kısıtlayabilmesini sağlayarak Azure sanal makineleri ve Azure sanal ağları için güvenliği basitleştirir. Ağ güvenlik grubu (NSG) kurallarınızın hizmet etiketlerini kullanarak belirli bir Azure hizmetine genel olarak veya Azure bölgesine giden trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Azure, her etiketi temel alan IP adreslerinin bakımını sağlar. Ağ güvenlik grupları (NSG 'ler) için HDInsight hizmet etiketleri, sistem durumu ve Yönetim Hizmetleri için IP adresi gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığına en aza indirmenize yardımcı olur. HDInsight müşterileri, Service Tag 'i Azure portal, PowerShell ve REST API aracılığıyla etkinleştirebilir. Daha fazla bilgi için bkz. [Azure HDInsight Için ağ güvenlik grubu (NSG) hizmet etiketleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags).
 
 #### <a name="custom-ambari-db"></a>Özel Ambari DB
-HDInsight artık Apache ambarı için kendi SQL DB 'nizi kullanmanıza olanak tanır. Bu özel ambarı DB 'yi Azure portal veya Resource Manager şablonu aracılığıyla yapılandırabilirsiniz.  Bu özellik, işleme ve kapasite gereksinimleriniz için doğru SQL DB 'yi seçmenizi sağlar. Ayrıca, iş büyüme gereksinimlerini eşleştirmek için kolayca yükseltebilirsiniz. Daha fazla bilgi için bkz. [HDInsight kümelerini özel bir AMBARı DB Ile ayarlama](hdinsight-custom-ambari-db.md).
+HDInsight artık Apache ambarı için kendi SQL DB 'nizi kullanmanıza olanak tanır. Bu özel ambarı DB 'yi Azure portal veya Kaynak Yöneticisi şablonu aracılığıyla yapılandırabilirsiniz.  Bu özellik, işleme ve kapasite gereksinimleriniz için doğru SQL DB 'yi seçmenizi sağlar. Ayrıca, iş büyüme gereksinimlerini eşleştirmek için kolayca yükseltebilirsiniz. Daha fazla bilgi için bkz. [HDInsight kümelerini özel bir AMBARı DB Ile ayarlama](hdinsight-custom-ambari-db.md).
 
 ![Özel Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
 
@@ -992,7 +1033,7 @@ Bu sürüm, Ranger 0.7.0 ve aşağıdaki Apache düzeltme eklerini sağlar:
 
 -   [Ranger-2008](https://issues.apache.org/jira/browse/RANGER-2008): çok satırlı ilke koşulları için ilke değerlendirmesi başarısız oldu.
 
-#### <a name="slider"></a>Kaydırıcı
+#### <a name="slider"></a>Slider
 
 Bu sürüm, ek Apache düzeltme ekleri olmadan Kaydırıcı 0.92.0 sağlar.
 
@@ -1126,7 +1167,7 @@ Bu sürüm Spark 2.3.0 ve aşağıdaki Apache yamaları sağlar:
 
 Bu sürüm, ek Apache düzeltme ekleri olmadan Sqoop 1.4.6 sağlar.
 
-#### <a name="storm"></a>Storm
+#### <a name="storm"></a>Fırtına
 
 Bu sürüm, fırtınası 1.1.1 ve aşağıdaki Apache yamaları sağlar:
 
@@ -1160,7 +1201,7 @@ Bu sürüm, additionalApache düzeltme ekleri olmadan Zeppelin 0.7.3 sağlar.
 
 Bu sürüm, ZooKeeper 3.4.6 ve aşağıdaki Apache düzeltme eklerini sağlar:
 
--   [Zookeeper-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256): clientportbindtest Mac OS X başarısız oluyor.
+-   [Zookeeper-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256): MacOS X üzerinde clientportbindtest başarısız oluyor.
 
 -   [Zookeeper-1901](https://issues.apache.org/jira/browse/ZOOKEEPER-1901): \[ zaman \] uyumsuz Cops testlerinde karşılaştırma için alt öğeleri JDK8 sıralayın.
 
@@ -1529,7 +1570,7 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 | HATA-97864              | [HIVE-18833](https://issues.apache.org/jira/browse/HIVE-18833)   | "Dizini orcfile olarak ekle" olduğunda otomatik birleştirme başarısız olur                                      |
 | HATA-98814              | [, 13314](https://issues.apache.org/jira/browse/HDFS-13314)   | Süs Yot, FSIMAGE bozulmasını algılarsa, isteğe bağlı olarak çıkış                              |
 
-**Yükseltmenizi**
+**Yükseltme**
 
 | **Hortonçalışmalar hata KIMLIĞI** | **Apache JIRA**                                                                                                                | **Özet**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -1651,11 +1692,11 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 
 |**Apache bileşeni**|**Apache JIRA**|**Özet**|**Ayrıntılar**|
 |--|--|--|--|
-|**Spark 2,3** |**yok** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır.https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır.https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**Yok** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır.https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır.https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark işi başarıyla tamamlandı, ancak bir bu işlem için bir sürücü kotası dolu hatası var |**Senaryo:** Komutu çalıştıran kullanıcının çöp kutusu klasöründe bir kota ayarlandığında **Insert üzerine yazma** işlemi çalıştırılıyor.<br /><br />**Önceki davranış:** İş, verileri çöp kutusu 'na taşıyamasa bile başarılı oldu. Sonuç, tabloda daha önce varolan bazı verileri yanlışlıkla içerebilir.<br /><br />**Yeni davranış:** Çöp kutusu klasörüne taşıma başarısız olduğunda, dosyalar kalıcı olarak silinir.|
-|**Kafka 1,0**|**yok**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1,0**|**Yok**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |EKLEME ÜZERINE yazma için gereken ek Ranger Hive ilkeleri |**Senaryo:** **Ekleme ÜZERINE yazma** için gereken ek Ranger Hive ilkeleri<br /><br />**Önceki davranış:** Hive **ekleme ÜZERINE yazma** sorguları her zamanki gibi başarılı olur.<br /><br />**Yeni davranış:** VP-2.6. x sürümüne yükselttikten sonra Hive **ekleme ÜZERINE yazma** sorguları hata vererek beklenmedik şekilde başarısız oluyor:<br /><br />Bildiri derlenirken hata: başarısız oldu: HiveAccessControlException Izni reddedildi: Kullanıcı jtikan,/tmp/ \* (State = 42000, Code = 40000) ÜZERINDE yazma ayrıcalığına sahip değil<br /><br />HDP-2.6.0 itibariyle, Hive **ekleme üzerine** yazma sorguları, kullanıcının,, bir kullanıcı adına, bu, bir kullanıcı adına, bu da bir SAYGER ilkesi aracılığıyla verilen yazma ayrıcalığına sahip olsa bile,<br /><br />**Geçici çözüm/beklenen müşteri eylemi:**<br /><br />1. Hive deposu altında yeni bir ilke oluşturun.<br />2. veritabanını gördüğünüz açılan menüde URI 'yi seçin.<br />3. yolu güncelleştirin (örnek:/tmp/*)<br />4. kullanıcıları ve grubu ekleyin ve kaydedin.<br />5. ekleme sorgusunu yeniden deneyin.|
-|**HDFS**|**yok** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
+|**HDFS**|**Yok** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Zamanlayıcıyı devre dışı bırakma seçeneği |**Etkilenen bileşen:** Zeppelin-sunucu<br /><br />**Önceki davranış:** Zeppelin önceki sürümlerinde, Scheduler 'ı devre dışı bırakma seçeneği yoktu.<br /><br />**Yeni davranış:** Varsayılan olarak, varsayılan olarak devre dışı bırakıldığı için kullanıcılar artık Zamanlayıcı 'yı görmez.<br /><br />**Geçici çözüm/beklenen müşteri eylemi:** Zamanlayıcı 'yı etkinleştirmek istiyorsanız,, ambarı 'ndan Zeppelin ayarlarındaki özel Zeppelin sitesi altında, azeppelin. Not defteri. cron. Enable değerini true değeriyle eklemeniz gerekir.|
 
 ### <a name="known-issues"></a>Bilinen sorunlar

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed10a9258590f8f9037a574bd0322a82dd309a5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c47b0249824a3683b8f24cc01cc5eea5ccf32585
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385255"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482677"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de oturum davranışını yapılandırma
 
@@ -30,15 +30,15 @@ Web uygulaması oturumlarını yönetmek için aşağıdaki özellikleri kullana
     - En düşük (kapsamlı) = 15 dakika.
     - Maksimum (dahil) = 1440 dakika.
 - **Web uygulaması oturumu zaman aşımı** - [oturum süre sonu türü](session-overview.md#session-expiry-type), *yuvarlama*veya *mutlak*. 
-- **Çoklu oturum açma yapılandırması** -çoklu oturum açma (SSO) davranışının, Azure AD B2C kiracınızdaki birden çok uygulama ve Kullanıcı akışı üzerindeki [oturum kapsamı](session-overview.md#session-scope) . 
+- **Çoklu oturum açma yapılandırması** -çoklu oturum açma (SSO) davranışının, Azure AD B2C kiracınızdaki birden çok uygulama ve Kullanıcı akışı üzerindeki [oturum kapsamı](session-overview.md#session-scope) .
 
 
 ## <a name="configure-the-properties"></a>Özellikleri yapılandırma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
+4. **Kullanıcı akışları ' nı**seçin.
 5. Daha önce oluşturduğunuz kullanıcı akışını açın.
 6. **Özellikler**’i seçin.
 7. **Web uygulaması oturumu yaşam süresi (dakika)**, **Web uygulaması oturumu zaman aşımı**, **Çoklu oturum açma yapılandırması**yapılandırın ve gerektiğinde **oturum kapatma isteklerinde kimlik belirteci gerektir** .

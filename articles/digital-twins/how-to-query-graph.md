@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337611"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486672"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
 Bu makalede, bilgi için [ikizi grafiğini](concepts-twins-graph.md) sorgulamak üzere [Azure Digital TWINS sorgu deposu dilinin](concepts-query-language.md) kullanımıyla ilgili örnekler ve daha ayrıntılı bilgiler sunulmaktadır. Azure Digital TWINS [**sorgu API 'lerini**](how-to-use-apis-sdks.md)kullanarak grafikteki sorguları çalıştırırsınız.
 
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+
+Bu makalenin geri kalanında, bu işlemlerin nasıl kullanılacağına ilişkin örnekler verilmektedir.
+
 ## <a name="query-syntax"></a>Sorgu söz dizimi
 
-Sorgu dili yapısını gösteren ve olası sorgu işlemlerini gerçekleştiren bazı örnek sorgular aşağıda verilmiştir.
+Bu bölüm, sorgu dili yapısını gösteren ve olası sorgu işlemlerini gerçekleştiren örnek sorgular içerir.
 
 Özelliklere göre [dijital TWINS](concepts-twins-graph.md) al (kimlik ve meta veriler dahil):
 ```sql
@@ -31,16 +35,55 @@ AND T.$dtId in ['123', '456']
 AND T.Temperature = 70
 ```
 
-[Modele](concepts-models.md) göre dijital TWINS al
-```sql
-SELECT  * 
-FROM DigitalTwins T  
-WHERE IS_OF_MODEL(T , 'dtmi:com:contoso:Space;3')
-AND T.roomSize > 50
-```
-
 > [!TIP]
 > Dijital bir ikizi KIMLIĞI, meta veri alanı kullanılarak sorgulanır `$dtId` .
+
+Ayrıca, [dijital TWINS 'e etiket ekleme](how-to-use-tags.md)başlığı altında açıklandığı gibi, kendi *etiket* özelliklerine göre TWINS 'leri de edinebilirsiniz:
+```sql
+select * from digitaltwins where is_defined(tags.red) 
+```
+
+### <a name="select-top-items"></a>En üstteki öğeleri seç
+
+Yan tümcesini kullanarak bir sorgudaki birkaç "üst" öğeyi seçebilirsiniz `Select TOP` .
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE property = 42
+```
+
+### <a name="query-by-model"></a>Modele göre sorgu
+
+`IS_OF_MODEL`İşleci, ikizi 'in [modeline](concepts-models.md)göre filtrelemek için kullanılabilir. Devralmayı destekler ve birkaç aşırı yükleme seçeneği içerir.
+
+En basit kullanımı `IS_OF_MODEL` yalnızca bir parametre alır `twinTypeName` : `IS_OF_MODEL(twinTypeName)` .
+Bu parametreye bir değer geçiren sorgu örneği aşağıda verilmiştir:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+```
+
+Birden fazla olduğunda (örneğin kullanıldığında) arama yapılacak bir ikizi koleksiyonu belirtmek için `JOIN` , `twinCollection` parametresini ekleyin: `IS_OF_MODEL(twinCollection, twinTypeName)` .
+Bu parametre için bir değer ekleyen bir sorgu örneği aşağıda verilmiştir:
+
+```sql
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+```
+
+Tam eşleşme yapmak için şu `exact` parametreyi ekleyin: `IS_OF_MODEL(twinTypeName, exact)` .
+Bu parametre için bir değer ekleyen bir sorgu örneği aşağıda verilmiştir:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+```
+
+Üç bağımsız değişkeni de bir araya geçirebilirsiniz: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
+Aşağıda, üç parametre için bir değer belirten bir sorgu örneği verilmiştir:
+
+```sql
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+```
 
 ### <a name="query-based-on-relationships"></a>İlişkileri temel alan sorgu
 

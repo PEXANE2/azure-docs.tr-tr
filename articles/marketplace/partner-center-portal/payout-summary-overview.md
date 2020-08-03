@@ -7,21 +7,21 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460397"
+ms.locfileid: "87479821"
 ---
 # <a name="payout-summary-overview"></a>Ödeme özetine genel bakış
 
 [Ödeme Özeti](./payout-summary.md) , Microsoft ile kazandığınızı gösteren ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
 
-Azure Market 'te teklifler satmanız durumunda, ödeme özetinde başarılı ödemeler hakkındaki bilgileri de görürsünüz. Azure Marketi ödemesi hakkında daha fazla bilgi için bkz. [Azure Marketi Katılım İlkeleri](https://docs.microsoft.com/legal/marketplace/participation-policy) ve [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
+Azure Market 'te teklifler satmanız durumunda, ödeme özetinde başarılı ödemeler hakkındaki bilgileri de görürsünüz. Azure Marketi ödemesi hakkında daha fazla bilgi için bkz. [Azure Marketi Katılım İlkeleri](https://docs.microsoft.com/legal/marketplace/participation-policy) ve [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Ödemenizin uygun olması için, devam eden $50 [ödeme eşiğine](./payment-thresholds-methods-timeframes.md) ulaşmalıdır. Ödeme eşiği hakkında daha fazla bilgi için [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)' ne bakın.
+> Ödemenizin uygun olması için, devam eden $50 [ödeme eşiğine](./payment-thresholds-methods-timeframes.md) ulaşmalıdır. Ödeme eşiği hakkında daha fazla bilgi için [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)' ne bakın.
 
 Ödeme ayrıntılarını görüntülemek için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home) ' nde oturum açın ve ekranın sağ üst köşesindeki ödeme simgesini seçin:
 
@@ -51,7 +51,7 @@ Dönemleri, iş ortağı görünürlüğünü ve müşterinin bir kredi kartı v
 
 Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma çizgisi öğesinin indirilmesini sağlar. Bu, teşvikleri programıyla ilişkili tür, tarih, ilişkili işlem miktarı, müşteri, ürün ve diğer işlem ayrıntılarını içerir.
 
-| Sütun adı | Açıklama |
+| Sütun adı | Description |
 | --- | --- |
 | Eardokgıd | Her bir atma için benzersiz tanımlayıcı |
 | participantId | İş ortağının birincil kimliği program altında |

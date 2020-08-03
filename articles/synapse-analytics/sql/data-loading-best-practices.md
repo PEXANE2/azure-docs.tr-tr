@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963895"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486825"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Veri ambarına veri yüklemeye yönelik en iyi uygulamalar
 
 Verileri yüklemek için öneriler ve performans iyileştirmeleri
 
-## <a name="preparing-data-in-azure-storage"></a>Azure Depolama’da verileri hazırlama
+## <a name="prepare-data-in-azure-storage"></a>Azure Storage 'da verileri hazırlama
 
 Gecikme süresini en aza indirmek için depolama katmanınız ve veri ambarınızı birlikte bulundurun.
 
@@ -34,13 +34,13 @@ Tüm dosya biçimleri farklı performans özelliklerine sahiptir. En hızlı yü
 
 Büyük sıkıştırılmış dosyaları daha küçük sıkıştırılmış dosyalara bölün.
 
-## <a name="running-loads-with-enough-compute"></a>Yükleri yeterli işlemle çalıştırma
+## <a name="run-loads-with-enough-compute"></a>Yüklemeleri yeterli işlem ile Çalıştır
 
 En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bunu yapmak uygun değilse, en az sayıda yükü eşzamanlı olarak çalıştırın. Büyük bir yükleme işi bekleliyorsanız, yüklemeden önce SQL havuzunuzu ölçeklendirmeniz gerekir.
 
 Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her yükleme kullanıcısını belirli bir kaynak sınıfına veya iş yükü grubuna atayın. Yük çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının kaynak sınıfıyla çalıştırılır.  Bu yöntem bir kullanıcının kaynak sınıfını geçerli kaynak sınıfının ihtiyacına uygun olarak değiştirmeye çalışmaktan daha basittir.
 
-### <a name="example-of-creating-a-loading-user"></a>Yükleme kullanıcısı oluşturmayla ilgili örnek
+### <a name="create-a-loading-user"></a>Yükleme kullanıcısı oluşturma
 
 Bu örnekte, staticrc20 kaynak sınıfı için bir yükleme kullanıcısı oluşturulmaktadır. İlk adım, **ana öğeye bağlanmak** ve oturum açma bilgisi oluşturmaktır.
 
@@ -62,7 +62,7 @@ StaticRC20 kaynak sınıfları için kaynaklarla bir yük çalıştırmak için,
 
 Yükleri dinamik yerine statik kaynak sınıfları altında çalıştırın. Statik kaynak sınıflarının kullanılması, [veri ambarı birimlerinizde](resource-consumption-models.md)bağımsız olarak aynı kaynakları garanti eder. Bir dinamik kaynak sınıfı kullanırsanız, kaynaklar hizmet düzeyinize göre değişir. Dinamik sınıflar için, daha düşük bir hizmet düzeyi, yükleme kullanıcınız için daha büyük bir kaynak sınıfı kullanmanız gerektiğini gösteriyor olabilir.
 
-## <a name="allowing-multiple-users-to-load"></a>Birden çok kullanıcının yüklemesine izin verme
+## <a name="allow-multiple-users-to-load"></a>Birden çok kullanıcının yüklenmesine izin ver
 
 Genellikle bir veri ambarına veri yükleyebilen birden çok kullanıcı olması gerekir. [Select (Transact-SQL) olarak Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ile yükleme, veritabanının denetim izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir. Tüm yükleme kullanıcılarının tüm şemalarda denetim erişimine sahip olmasını istemeyebilirsiniz. İzinleri sınırlandırmak için, DENY CONTROL deyimini kullanabilirsiniz.
 
@@ -75,13 +75,13 @@ Genellikle bir veri ambarına veri yükleyebilen birden çok kullanıcı olması
 
 User_A ve user_B artık diğer bölüm şemasından kilitlidir.
 
-## <a name="loading-to-a-staging-table"></a>Hazırlama tablosuna yükleme
+## <a name="load-to-a-staging-table"></a>Hazırlama tablosuna yükleme
 
 Bir veri ambarı tablosuna verileri taşımak için en yüksek yükleme hızını elde etmek üzere verileri bir hazırlama tablosuna yükleyin.  Hazırlama tablosunu bir yığın olarak tanımlayın ve dağıtım seçeneği için hepsine bir kez yöntemini kullanın.
 
 Yüklemenin genellikle ilk olarak bir hazırlama tablosuna yüklediğiniz, daha sonra verileri bir üretim veri ambarı tablosuna eklediğiniz iki adımlı bir işlem olduğunu göz önünde bulundurun. Üretim tablosu bir karma dağıtım kullanıyorsa, hazırlama tablosunu karma dağıtımla tanımlamanız durumunda toplam yükleme ve ekleme süresi daha hızlı olabilir. Hazırlama tablosuna yükleme işlemi daha uzun sürer, ancak satırları üretim tablosuna eklemeyi içeren ikinci adım, dağıtımlar arasında veri hareketi oluşturmaz.
 
-## <a name="loading-to-a-columnstore-index"></a>Bir columnstore dizinine yükleme
+## <a name="load-to-a-columnstore-index"></a>Columnstore dizinine yükleme
 
 Columnstore dizinleri, verileri yüksek kaliteli satır grupları olarak sıkıştırmak için yüksek miktarlarda bellek gerektirir. En iyi sıkıştırma ve dizin verimliliği için, columnstore dizininin her satır grubunda en fazla 1.048.576 satırı sıkıştırması gerekir. Bellek baskısı olduğunda, columnstore dizini en yüksek sıkıştırma oranlarına ulaşamayabilir. Bu da sorgu performansını etkiler. Derinlemesine bir bakış için, bkz. [Columnstore bellek iyileştirmeleri](data-load-columnstore-compression.md).
 
@@ -92,19 +92,19 @@ Columnstore dizinleri, verileri yüksek kaliteli satır grupları olarak sıkı�
 
 Daha önce bahsedildiği gibi, PolyBase ile yükleme, SYNAPSE SQL Pool ile en yüksek verimlilik sağlar. Yüklemek için PolyBase 'i kullanamaz ve SQLBulkCopy API 'sini (veya BCP) kullanmanız gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı düşünmelisiniz. Thumb 'in iyi bir kuralı, 100K ila 1M satır arasında bir toplu iş boyutudur.
 
-## <a name="handling-loading-failures"></a>Yükleme hatalarını işleme
+## <a name="manage-loading-failures"></a>Yükleme başarısızlıklarını yönetme
 
 Bir dış tablo kullanan bir yük *"Sorgu iptal edildi-- dış bir kaynaktan okunurken en yüksek reddedilme sayısına ulaşıldı"* hatasıyla başarısız olabilir. Bu ileti, dış verilerinizin kirli kayıtlar içerdiğini gösterir. Veri türleri ve sütun sayısı dış tablonun sütun tanımlarıyla eşleşmiyorsa veya veriler belirtilen dış dosya biçimine uymuyorsa veri kaydı kirli olarak değerlendirilir.
 
 Kirli kayıtları düzeltmek için dış tablo ve dış dosya biçimlerinizin doğru olduğundan ve dış verilerinizin bu tanımlara uyduğundan emin olun. Dış verilerin alt kümesinin kirli olması durumunda, CREATE EXTERNAL TABLE içinde reddetme seçeneklerini kullanarak sorgularınız için bu kayıtları reddedebilirsiniz.
 
-## <a name="inserting-data-into-a-production-table"></a>Üretim tablosuna veri ekleme
+## <a name="insert-data-into-a-production-table"></a>Üretim tablosuna veri ekleme
 
 Küçük bir tabloya bir [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) deyimiyle tek seferlik yükleme yapmak veya `INSERT INTO MyLookup VALUES (1, 'Type 1')` gibi bir deyimle bir aramanın düzenli aralıklarla yeniden yüklenmesi yeterlidir.  Ancak, tekli ton eklemeleri toplu yükleme gerçekleştirmek kadar verimli değildir.
 
 Gün boyunca binlerce ekleme yapmanız gerekiyorsa, eklemeleri toplu olarak yüklemek için toplu iş haline getirin.  Bir dosyaya tekli eklemeleri eklemek için işlemlerinizi geliştirin ve ardından dosyayı düzenli olarak yükleyen başka bir işlem oluşturun.
 
-## <a name="creating-statistics-after-the-load"></a>Yüklemeden sonra istatistik oluşturma
+## <a name="create-statistics-after-the-load"></a>Yüklemeden sonra istatistik oluşturma
 
 Sorgu performansını geliştirmek için ilk yüklemeden veya verilerdeki önemli değişikliklerden sonra istatistiklerin tüm sütunlarda oluşturulması önemlidir.  Bu, el ile yapılabilir veya [otomatik oluşturma istatistiklerini](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)etkinleştirebilirsiniz.
 

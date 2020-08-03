@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757628"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482592"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçlere genel bakış
 
@@ -61,7 +61,7 @@ Aşağıdaki tabloda, KIMLIK belirteçleri ve Azure AD B2C tarafından verilen e
 | Kod karması | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Yalnızca belirteç bir OAuth 2,0 yetkilendirme koduyla birlikte verildiğinde KIMLIK belirtecine eklenen bir kod karması. Bir kod karması, bir yetkilendirme kodunun gerçekliğini doğrulamak için kullanılabilir. Bu doğrulamanın nasıl gerçekleştirileceği hakkında daha fazla bilgi için, [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html)bakın.  |
 | Erişim belirteci karması | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Yalnızca belirteç bir OAuth 2,0 erişim belirteciyle birlikte verildiğinde, KIMLIK belirtecine eklenen bir erişim belirteci karması. Erişim belirteci karması, bir erişim belirtecinin orijinalliğini doğrulamak için kullanılabilir. Bu doğrulamanın nasıl gerçekleştirileceği hakkında daha fazla bilgi için, [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html) bakın  |
 | Nonce | `nonce` | `12345` | Nonce, belirteç yeniden yürütme saldırılarını azaltmak için kullanılan bir stratejidir. Uygulamanız, sorgu parametresini kullanarak bir yetkilendirme isteğinde bir kerelik anahtar belirtebilir `nonce` . İstekte sağladığınız değer, `nonce` yalnızca BIR kimlik belirtecinin talebine değiştirilmemiş şekilde yayılır. Bu talep, uygulamanızın değeri istekte belirtilen değerle doğrulamasını sağlar. Uygulamanız, KIMLIK belirteci doğrulama işlemi sırasında bu doğrulamayı gerçekleştirmelidir. |
-| Özne | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Belirtecin, bir uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Bu, belirtecin bir kaynağa erişmek için ne zaman kullanıldığı gibi, güvenli bir şekilde, yetkilendirme denetimleri gerçekleştirmek için de kullanılabilir. Varsayılan olarak, konu talebi, dizindeki kullanıcının nesne KIMLIĞIYLE doldurulur. |
+| Konu | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Belirtecin, bir uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Bu, belirtecin bir kaynağa erişmek için ne zaman kullanıldığı gibi, güvenli bir şekilde, yetkilendirme denetimleri gerçekleştirmek için de kullanılabilir. Varsayılan olarak, konu talebi, dizindeki kullanıcının nesne KIMLIĞIYLE doldurulur. |
 | Kimlik doğrulama bağlamı sınıfı başvurusu | `acr` | Uygulanamaz | Yalnızca eski ilkelerle kullanılır. |
 | Güven çerçevesi ilkesi | `tfp` | `b2c_1_signupsignin1` | KIMLIK belirtecini almak için kullanılan ilkenin adı. |
 | Kimlik doğrulama zamanı | `auth_time` | `1438535543` | Bir kullanıcının en son girilen kimlik bilgileri dönem içinde temsil edildiği zaman. Bu kimlik doğrulaması arasında yeni bir oturum açma, çoklu oturum açma (SSO) oturumu veya başka bir oturum açma türü gibi bir ayırt edici yok. `auth_time`Uygulamanın (veya kullanıcının) Azure AD B2C karşı bir kimlik doğrulama denemesi başlattığı son zaman. Kimlik doğrulaması için kullanılan yöntem farklılaştırmıyor. |
@@ -97,7 +97,7 @@ Aşağıdaki özellikler, [belirteç uyumluluğunu yönetmek](configure-tokens.m
 
 ## <a name="pass-through"></a>Geçiş
 
-Kullanıcı yolculuğu başladığında Azure AD B2C bir kimlik sağlayıcısından erişim belirteci alır. Azure AD B2C, kullanıcı hakkındaki bilgileri almak için bu belirteci kullanır. [Kullanıcı akışındaki bir talebi etkinleştirir](idp-pass-through-user-flow.md) veya özel ilkenizde, belirteci aracılığıyla Azure AD B2C kayıt ettiğiniz uygulamalara geçiş yapmak için [bir talep tanımlayabilirsiniz](idp-pass-through-custom.md) . Uygulamanızı bir talep olarak geçirmenin avantajlarından yararlanmak için bir [V2 Kullanıcı akışı](user-flow-versions.md) kullanıyor olması gerekir.
+Kullanıcı yolculuğu başladığında Azure AD B2C bir kimlik sağlayıcısından erişim belirteci alır. Azure AD B2C, kullanıcı hakkındaki bilgileri almak için bu belirteci kullanır. [Kullanıcı akışındaki bir talebi etkinleştirir](idp-pass-through-user-flow.md) veya özel ilkenizde, belirteci aracılığıyla Azure AD B2C kayıt ettiğiniz uygulamalara geçiş yapmak için [bir talep tanımlayabilirsiniz](idp-pass-through-custom.md) . Uygulamanız, belirteci talep olarak geçirmenin avantajlarından yararlanmak için [Önerilen bir Kullanıcı akışı](user-flow-versions.md) kullanıyor olmalıdır.
 
 Azure AD B2C Şu anda yalnızca Facebook ve Google içeren OAuth 2,0 kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/12/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389607"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482864"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -30,20 +30,21 @@ Kaynak sahibi parola kimlik bilgileri (ROPC) akışı, uygulamanın, bağlı ola
 
 1. Azure portalda Azure AD B2C kiracınızın genel yöneticisi olarak oturum açın.
 2. Azure AD B2C kiracınıza geçiş yapmak için portalın sağ üst köşesindeki B2C dizinini seçin.
-3. **Kullanıcı akışları**' na tıklayın ve **Yeni Kullanıcı akışı**' nı seçin.
-4. **Tümü** sekmesine tıklayın ve **ropc 'Yi kullanarak oturum aç**' ı seçin.
-5. Kullanıcı akışı için *ROPC_Auth*gibi bir ad girin.
-6. **Uygulama talepleri**bölümünde **daha fazla göster**' e tıklayın.
-7. Uygulamanız için gereken görünen ad, e-posta adresi ve kimlik sağlayıcısı gibi uygulama taleplerini seçin.
-8. **Tamam**’ı ve ardından **Oluştur**’u seçin.
-9. **Kullanıcı akışını Çalıştır**' a tıklayın.
+3. **Kullanıcı akışları**' nı seçin ve **Yeni Kullanıcı akışı**' nı seçin.
+4. **Kaynak sahibi parola kimlik bilgilerini (ROPC) kullanarak oturum aç '** ı seçin.
+5. **Sürüm**altında **önizlemenin** seçili olduğundan emin olun ve ardından **Oluştur**' u seçin.
+7. Kullanıcı akışı için *ROPC_Auth*gibi bir ad girin.
+8. **Uygulama talepleri**bölümünde **daha fazla göster**' e tıklayın.
+9. Uygulamanız için gereken görünen ad, e-posta adresi ve kimlik sağlayıcısı gibi uygulama taleplerini seçin.
+10. **Tamam**’ı ve ardından **Oluştur**’u seçin.
+11. **Kullanıcı akışını Çalıştır**' a tıklayın.
 
    Daha sonra bu örnek gibi bir uç nokta görürsünüz:
 
    `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/v2.0/.well-known/openid-configuration`
 
 
-## <a name="register-an-application"></a>Uygulamaları kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
@@ -58,7 +59,7 @@ En sevdiğiniz API Geliştirme uygulamanızı kullanarak bir API çağrısı olu
 
 | Anahtar | Değer |
 | --- | ----- |
-| kullanıcı adı | leadiocl@outlook.com |
+| username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
 | scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
@@ -131,7 +132,3 @@ Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
 Azure AD B2C uygulama, ortak istemci kaynak sahibi parola kimlik bilgileri için OAuth 2,0 standartlarını karşılar ve çoğu istemci SDK 'Sı ile uyumlu olmalıdır. Bu akışı, üretimde, iOS için AppAuth ve Android için appauth ile kapsamlı bir şekilde test ediyoruz. En son bilgiler için bkz. [OAuth Için yerel uygulama SDK 'sı 2,0 ve OpenID Connect modern en iyi uygulamaları uygulama](https://appauth.io/).
 
 Android ve [iOS](https://aka.ms/aadb2ciosappauthropc) [için](https://aka.ms/aadb2cappauthropc) GitHub 'dan Azure AD B2C ile kullanılmak üzere yapılandırılmış çalışma örneklerini indirin.
-
-
-
-

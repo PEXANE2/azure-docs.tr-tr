@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 310527d8e98e474faa43f19406f037e1a3835756
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040274"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480416"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için kaynak ormanı kavramları ve özellikleri
 
@@ -23,10 +23,7 @@ Azure Active Directory Domain Services (Azure AD DS), eski, şirket içi ve iş 
 
 Güvenli ve ek güvenlik avantajları sunmakla birlikte, bazı kuruluşlar bu kullanıcı parolası karmalarını Azure AD veya Azure AD DS ile eşitleyemez. Kuruluştaki kullanıcılar, yalnızca akıllı kart kimlik doğrulamasını kullandıkları için parolasını bilmiyor olabilir. Bu sınırlamalar, bazı kuruluşların şirket içi klasik uygulamaları Azure 'a taşımak ve bunlara geçiş yapmak için Azure AD DS kullanmasını engeller.
 
-Bu ihtiyaçları ve kısıtlamaları ele almak için, kaynak ormanı kullanan bir yönetilen etki alanı oluşturabilirsiniz. Bu kavramsal makalede, ormanların ne olduğu ve güvenli bir kimlik doğrulama yöntemi sağlamak üzere diğer kaynaklara nasıl güvendikleri açıklanmaktadır. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
-
-> [!IMPORTANT]
-> Azure AD DS kaynak ormanları Şu anda Azure HDInsight veya Azure dosyalarını desteklememektedir. Varsayılan Azure AD DS kullanıcı ormanları bu ek hizmetlerden her ikisini de destekler.
+Bu ihtiyaçları ve kısıtlamaları ele almak için, kaynak ormanı kullanan bir yönetilen etki alanı oluşturabilirsiniz. Bu kavramsal makalede, ormanların ne olduğu ve güvenli bir kimlik doğrulama yöntemi sağlamak üzere diğer kaynaklara nasıl güvendikleri açıklanmaktadır.
 
 ## <a name="what-are-forests"></a>Ormanlar nelerdir?
 
@@ -36,7 +33,7 @@ Azure AD DS yönetilen bir etki alanında, orman yalnızca bir etki alanı içer
 
 Varsayılan olarak, yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılmış bir VM 'de oturum açmak gibi, yönetilen etki alanında doğrudan kimlik doğrulaması yapabilir. Parola karmaları eşitlenecekse ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemlerini kullanmadığı zaman bir Kullanıcı ormanı işe yarar.
 
-Yönetilen bir etki alanı *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü bir orman *güveni* üzerinden kimlik doğrular. Bu yaklaşımda, Kullanıcı nesneleri ve parola karmaları yönetilen etki alanı ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS bulunur. Bu yaklaşım, kuruluşların Azure 'da, LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı olan kaynakları ve uygulama platformlarını barındırmasına, ancak tüm kimlik doğrulama sorunları veya kaygıları kaldırılmasına olanak sağlar. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
+Yönetilen bir etki alanı *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü bir orman *güveni* üzerinden kimlik doğrular. Bu yaklaşımda, Kullanıcı nesneleri ve parola karmaları yönetilen etki alanı ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS bulunur. Bu yaklaşım, kuruluşların Azure 'da, LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı olan kaynakları ve uygulama platformlarını barındırmasına, ancak tüm kimlik doğrulama sorunları veya kaygıları kaldırılmasına olanak sağlar.
 
 Kaynak ormanları Ayrıca uygulamalarınızı tek seferde bir bileşen üzerinde kaldırma ve kaydırma özelliği de sağlar. Birçok eski şirket içi uygulama, genellikle bir Web sunucusu veya ön uç ve veritabanı ile ilgili birçok bileşeni kullanan çok katmanlı. Bu katmanlar, tek bir adımda uygulamanın tamamını buluta taşımak ve kaydırmak için çok daha fazlasını yapar. Kaynak ormanlarıyla uygulamanızı aşamalı yaklaşımda kaldırabilirsiniz. Bu, uygulamanızı Azure 'a taşımayı kolaylaştırır.
 
@@ -116,7 +113,7 @@ Güvenler, güvenen bir etki alanına geçirilen kimlik doğrulama isteklerini d
 
 Güvenler hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS orman güvenleri nasıl çalışır?][concepts-trust]
 
-Kaynak ormanı ile yönetilen bir etki alanı oluşturmaya başlamak için bkz. [Azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Ardından, [bir şirket içi etki alanına (Önizleme) giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
+Kaynak ormanı ile yönetilen bir etki alanı oluşturmaya başlamak için bkz. [Azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Daha sonra şirket [içi etki alanına giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

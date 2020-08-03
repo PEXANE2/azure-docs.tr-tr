@@ -7,25 +7,25 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390848"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486485"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB SQL API kaynaklarını yönetme
 
 Aşağıdaki kılavuzda hesap, veritabanı, kapsayıcı ve aktarım hızı gibi Azure Cosmos DB kaynaklarının yönetimine yönelik betik oluşturmak ve yönetimini otomatikleştirmek için PowerShell’in nasıl kullanılacağı açıklanır.
 
 > [!NOTE]
-> Bu makaledeki örneklerde [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) yönetim cmdlet 'leri kullanılır. En son değişiklikler için [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API başvuru sayfasına bakın.
+> Bu makaledeki örneklerde [az. CosmosDB](/powershell/module/az.cosmosdb) yönetim cmdlet 'leri kullanılır. En son değişiklikler için [az. CosmosDB](/powershell/module/az.cosmosdb) API başvuru sayfasına bakın.
 
 Azure Cosmos DB platformlar arası yönetimi için, `Az` ve `Az.CosmosDB` cmdlet 'lerini, [platformlar arası PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)Ile birlikte ve [Azure CLI](manage-with-cli.md), [REST API][rp-rest-api]veya [Azure Portal](create-sql-api-dotnet.md#create-account)birlikte kullanabilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>Kullanmaya Başlama
+## <a name="getting-started"></a>Başlarken
 
 PowerShell 'de Azure hesabınızda yüklemek ve oturum açmak için [Azure PowerShell yükleyip yapılandırma][powershell-install-configure] konusundaki yönergeleri izleyin.
 
@@ -475,6 +475,7 @@ Remove-AzResourceLock `
 Aşağıdaki bölümlerde aşağıdakiler dahil Azure Cosmos DB kapsayıcısının nasıl yönetileceği gösterilmektedir:
 
 * [Azure Cosmos DB kapsayıcısı oluşturma](#create-container)
+* [Otomatik ölçeklendirme ile Azure Cosmos DB kapsayıcısı oluşturma](#create-container-autoscale)
 * [Büyük bölüm anahtarı ile Azure Cosmos DB kapsayıcısı oluşturma](#create-container-big-pk)
 * [Azure Cosmos DB kapsayıcısının verimini al](#get-container-ru)
 * [Özel dizin oluşturma ile Azure Cosmos DB kapsayıcısı oluşturma](#create-container-custom-index)
@@ -496,6 +497,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
+$throughput = 400 #minimum = 400
 
 New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
@@ -503,7 +505,29 @@ New-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName `
     -PartitionKeyKind Hash `
-    -PartitionKeyPath $partitionKeyPath
+    -PartitionKeyPath $partitionKeyPath `
+    -Throughput $throughput
+```
+
+### <a name="create-an-azure-cosmos-db-container-with-autoscale"></a><a id="create-container-autoscale"></a>Otomatik ölçeklendirme ile Azure Cosmos DB kapsayıcısı oluşturma
+
+```azurepowershell-interactive
+# Create an Azure Cosmos DB container with default indexes and autoscale throughput at 4000 RU
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$autoscaleMaxThroughput = 4000 #minimum = 4000
+
+New-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -AutoscaleMaxThroughput $autoscaleMaxThroughput
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>Büyük bölüm anahtarı boyutuyla Azure Cosmos DB kapsayıcısı oluşturma

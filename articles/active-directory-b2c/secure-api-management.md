@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385425"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482847"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C ile Azure API Management API 'sinin güvenliğini sağlama
 
@@ -39,7 +39,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**' yi seçin ve ardından **sahip olunan uygulamalar** sekmesini seçin.
@@ -47,7 +47,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Yönet**altında uygulamalar ' ı **(eski)** seçin.
@@ -60,7 +60,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 Sonra, Azure AD B2C Kullanıcı akışlarınızdan biri için iyi bilinen yapılandırma URL 'sini alın. Ayrıca, Azure API Management 'da desteklemek istediğiniz belirteç verenin uç nokta URI 'sine ihtiyacınız vardır.
 
 1. [Azure portal](https://portal.azure.com)Azure AD B2C kiracınıza gidin.
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin.
+1. **İlkeler**altında **Kullanıcı akışları**' nı seçin.
 1. Mevcut bir ilkeyi seçin (örneğin *B2C_1_signupsignin1*) ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
 1. Sayfanın üst kısmındaki **Kullanıcı akış** başlığının altında görüntülenen köprüye URL 'yi kaydedin. Bu URL, Kullanıcı akışına yönelik OpenID Connect iyi bilinen bulma uç noktasıdır ve Azure API Management gelen ilkesini yapılandırırken sonraki bölümde kullanılır.
 
@@ -126,7 +126,7 @@ API 'yi çağırmak için hem Azure AD B2C tarafından verilen bir erişim belir
 İlk olarak, `Authorization` Postman 'daki üst bilgide kullanmak üzere Azure AD B2C tarafından verilen bir belirtece ihtiyacınız vardır. Kaydolma/oturum açma Kullanıcı akışınız için **Şimdi Çalıştır** özelliğini kullanarak bir tane, önkoşullardan biri olarak oluşturmuş olmanız gerekir.
 
 1. [Azure portal](https://portal.azure.com)Azure AD B2C kiracınıza gidin.
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin.
+1. **İlkeler**altında **Kullanıcı akışları**' nı seçin.
 1. Mevcut bir kaydolma/oturum açma Kullanıcı akışı seçin, örneğin *B2C_1_signupsignin1*.
 1. **Uygulama**için *WebApp1*öğesini seçin.
 1. **Yanıt URL 'si**için öğesini seçin `https://jwt.ms` .

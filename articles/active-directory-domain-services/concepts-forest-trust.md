@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040342"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480654"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Güven ilişkilerinin Azure Active Directory Domain Services içindeki kaynak ormanları için nasıl çalıştığı
 
@@ -280,7 +280,7 @@ Yöneticiler, güvenleri göstermek, oluşturmak, kaldırmak veya değiştirmek 
 
 Kaynak ormanları hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS orman güvenleri nasıl çalışır?][concepts-trust]
 
-Kaynak ormanı ile yönetilen bir etki alanı oluşturmaya başlamak için bkz. [Azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Ardından, [bir şirket içi etki alanına (Önizleme) giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
+Kaynak ormanı ile yönetilen bir etki alanı oluşturmaya başlamak için bkz. [Azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Daha sonra şirket [içi etki alanına giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

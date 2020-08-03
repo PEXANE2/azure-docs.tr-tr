@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111453b30a0c2fd7c0b2a2077b31b2cf16ebda06
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d981bad30bf57fde64d1f6e903039dda5007e526
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445675"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483918"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -3407,7 +3407,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) için Azure AD Privileged Ident
 
 * Yalnızca yeterli yönetimi kullanın.
 * Kaynak rollerini etkinleştirmek için onay gerektir.
-* Hem Azure AD hem de Azure RBAC rolleri için onay gerektiren bir rolün daha sonra etkinleştirilmesini zamanlayın.
+* Hem Azure AD hem de Azure rolleri için onay gerektiren bir rolün daha sonra etkinleştirilmesini zamanlayın.
 
 Daha fazla bilgi için bkz. [Azure kaynakları için Privileged Identity Management (Önizleme)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac).
 

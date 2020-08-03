@@ -38,6 +38,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: Yönetilen kimlik kullanarak Key Vault'u Azure Spring Cloud uygulamasına bağlama
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: Mikro hizmet uygulamaları için otomatik ölçeklendirmeyi ayarlama
+      href: spring-cloud-tutorial-setup-autoscale.md
 - name: Örnekler
   items:
     - name: Azure İlkesi yerleşik ilkeler

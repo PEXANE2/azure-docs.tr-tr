@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 62645e6252256079e27792b1905d60a073c1fa3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77c21dab8c1a4c2643db0a56b5052f33243f2f56
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080242"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460074"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -36,63 +36,27 @@ Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için yeni 
 > [!IMPORTANT]
 > Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın `maxShares` .
 
-#### <a name="cli"></a>CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
-
 az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku PremiumSSD_LRS --max-shares 2
-
 ```
 
-#### <a name="powershell"></a>PowerShell
-```azurepowershell-interactive
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+```azurepowershell-interactive
 $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType PremiumSSD_LRS -CreateOption Empty -MaxSharesCount 2
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
-
 ```
 
-#### <a name="azure-resource-manager"></a>Azure Resource Manager
+# <a name="resource-manager-template"></a>[Kaynak Yöneticisi şablonu](#tab/azure-resource-manager)
+
 Aşağıdaki şablonu kullanmadan önce,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` ve `[parameters('maxShares')]` değerlerini kendi değerlerinizle değiştirin.
 
-```json
-{ 
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "dataDiskName": {
-      "type": "string",
-      "defaultValue": "mySharedDisk"
-    },
-    "dataDiskSizeGB": {
-      "type": "int",
-      "defaultValue": 1024
-    },
-    "maxShares": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Compute/disks",
-      "name": "[parameters('dataDiskName')]",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2019-07-01",
-      "sku": {
-        "name": "Premium_LRS"
-      },
-      "properties": {
-        "creationData": {
-          "createOption": "Empty"
-        },
-        "diskSizeGB": "[parameters('dataDiskSizeGB')]",
-        "maxShares": "[parameters('maxShares')]"
-      }
-    }
-  ] 
-}
-```
+[Premium SSD paylaşılan disk şablonu](https://aka.ms/SharedPremiumDiskARMtemplate)
+
+---
 
 ### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Bir ultra diski paylaşılan disk olarak dağıtma
 
@@ -101,7 +65,11 @@ Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için, `max
 > [!IMPORTANT]
 > Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın `maxShares` .
 
-#### <a name="cli"></a>CLI
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+##### <a name="regional-disk-example"></a>Bölgesel disk örneği
+
 ```azurecli
 #Creating an Ultra shared Disk 
 az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1
@@ -113,93 +81,63 @@ az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-wr
 az disk show -g rg1 -n clidisk
 ```
 
-#### <a name="powershell"></a>PowerShell
-```azurepowershell-interactive
+##### <a name="zonal-disk-example"></a>Zonal disk örneği
 
+Bu örnek, kullanılabilirlik bölge 1 ' de bir disk oluşturmasının dışında, öncekiyle neredeyse aynıdır.
+
+```azurecli
+#Creating an Ultra shared Disk 
+az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1 --zone 1
+
+#Updating an Ultra shared Disk 
+az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-write 300 --set diskIopsReadOnly=100 --set diskMbpsReadOnly=1
+
+#Show shared disk properties:
+az disk show -g rg1 -n clidisk
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+##### <a name="regional-disk-example"></a>Bölgesel disk örneği
+
+```azurepowershell-interactive
 $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
-
 ```
 
-#### <a name="azure-resource-manager"></a>Azure Resource Manager
+##### <a name="zonal-disk-example"></a>Zonal disk örneği
 
-Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için, özelliğini kullanın `maxShares` ve 1 ' den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
+Bu örnek, kullanılabilirlik bölge 1 ' de bir disk oluşturmasının dışında, öncekiyle neredeyse aynıdır.
 
-> [!IMPORTANT]
-> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın `maxShares` .
+```azurepowershell-interactive
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5 -Zone 1
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+```
+
+# <a name="resource-manager-template"></a>[Kaynak Yöneticisi şablonu](#tab/azure-resource-manager)
+
+##### <a name="regional-disk-example"></a>Bölgesel disk örneği
 
 Aşağıdaki şablonu kullanmadan önce,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` ve `[parameters('diskMBpsReadOnly')]` değerlerini kendi değerlerinizle değiştirin.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "diskName": {
-      "type": "string",
-      "defaultValue": "uShared30"
-    },
-    "location": {
-        "type": "string",
-        "defaultValue": "westus",
-        "metadata": {
-                "description": "Location for all resources."
-        }
-    },
-    "dataDiskSizeGB": {
-      "type": "int",
-      "defaultValue": 1024
-    },
-    "maxShares": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "diskIOPSReadWrite": {
-      "type": "int",
-      "defaultValue": 2048
-    },
-    "diskMBpsReadWrite": {
-      "type": "int",
-      "defaultValue": 20
-    },    
-    "diskIOPSReadOnly": {
-      "type": "int",
-      "defaultValue": 100
-    },
-    "diskMBpsReadOnly": {
-      "type": "int",
-      "defaultValue": 1
-    }    
-  }, 
-  "resources": [
-    {
-        "type": "Microsoft.Compute/disks",
-        "name": "[parameters('diskName')]",
-        "location": "[parameters('location')]",
-        "apiVersion": "2019-07-01",
-        "sku": {
-            "name": "UltraSSD_LRS"
-        },
-        "properties": {
-            "creationData": {
-                "createOption": "Empty"
-            },
-            "diskSizeGB": "[parameters('dataDiskSizeGB')]",
-            "maxShares": "[parameters('maxShares')]",
-            "diskIOPSReadWrite": "[parameters('diskIOPSReadWrite')]",
-            "diskMBpsReadWrite": "[parameters('diskMBpsReadWrite')]",
-            "diskIOPSReadOnly": "[parameters('diskIOPSReadOnly')]",
-            "diskMBpsReadOnly": "[parameters('diskMBpsReadOnly')]"
-        }
-    }
-  ]
-}
-```
+[Bölgesel paylaşılan Ultra diskler şablonu](https://aka.ms/SharedUltraDiskARMtemplateRegional)
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Sanal makinelerinizdeki Azure Paylaşılan disklerini kullanma
+##### <a name="zonal-disk-example"></a>Zonal disk örneği
+
+Aşağıdaki şablonu kullanmadan önce,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` ve `[parameters('diskMBpsReadOnly')]` değerlerini kendi değerlerinizle değiştirin.
+
+[Zikzak paylaşılan Ultra diskler şablonu](https://aka.ms/SharedUltraDiskARMtemplateZonal)
+
+---
+
+## <a name="using-azure-shared-disks-with-your-vms"></a>Sanal makinelerinizdeki Azure Paylaşılan disklerini kullanma
 
 İle paylaşılan bir disk dağıttıktan sonra `maxShares>1` , diski sanal makinelerinizdeki bir veya daha fazlasına bağlayabilirsiniz.
+
+> [!NOTE]
+> Bir ultra disk dağıtıyorsanız, gerekli gereksinimlerle eşleştiğinden emin olun. Ayrıntılar için bkz. Ultra disk makalesinin [PowerShell](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) veya [CLI](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) bölümü.
 
 ```azurepowershell-interactive
 
@@ -259,3 +197,8 @@ PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Disketinizi dağıtmak için Azure Resource Manager şablonlarını kullanmayı tercih ediyorsanız, aşağıdaki örnek şablonlar kullanılabilir:
+- [Premium SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
+- [Bölgesel Ultra diskler](https://aka.ms/SharedUltraDiskARMtemplateRegional)
+- [Zonal Ultra diskler](https://aka.ms/SharedUltraDiskARMtemplateZonal)

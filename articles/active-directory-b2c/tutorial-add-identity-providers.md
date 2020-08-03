@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 746c406c4e6d458f699eb844156190e47d5c7a26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bdb7637624a1da5270eb1cba49e9f66e5042ccf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384915"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482014"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ' de uygulamalarınıza kimlik sağlayıcıları ekleme
 
@@ -45,7 +45,7 @@ Kimlik sağlayıcısı uygulamaları, Azure AD B2C kiracınızla iletişimi etki
 
 Azure AD 'den kullanıcıların oturum açma özelliğini etkinleştirmek için Azure AD kiracısı içinde bir uygulamayı kaydetmeniz gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -119,7 +119,7 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
     * **Soyadı**: *family_name*
     * **E-posta**: *unique_name*
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="add-the-facebook-identity-provider"></a>Facebook kimlik sağlayıcısını ekleme
 
@@ -127,15 +127,15 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
 1. Bir **ad**girin. Örneğin, *Facebook*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Facebook UYGULAMASıNıN uygulama kimliğini girin.
 1. **İstemci parolası**için, kaydettiğiniz uygulama gizli anahtarını girin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="update-the-user-flow"></a>Kullanıcı akışını güncelleştirme
 
 Önkoşulların bir parçası olarak tamamladığınız öğreticide, kayıt ve oturum açma için *B2C_1_signupsignin1*adlı bir Kullanıcı akışı oluşturdunuz. Bu bölümde, kimlik sağlayıcılarını *B2C_1_signupsignin1* Kullanıcı akışına eklersiniz.
 
-1. **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından *B2C_1_signupsignin1* Kullanıcı akışı ' nı seçin.
+1. **Kullanıcı akışları**' nı seçin ve ardından *B2C_1_signupsignin1* Kullanıcı akışı ' nı seçin.
 2. **Kimlik sağlayıcıları**' nı seçin, eklediğiniz **Facebook** ve **contoso Azure AD** kimlik sağlayıcılarını seçin.
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29a03f1d1b1007845c1df516192da22d74705af0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385034"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481742"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı deneyimlerinin arabirimini özelleştirme
 
@@ -139,7 +139,7 @@ Bu öğreticide, Azure AD B2C, depolama hesabında oluşturduğunuz dosyaları d
 ## <a name="update-the-user-flow"></a>Kullanıcı akışını güncelleştirme
 
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-2. **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından *B2C_1_signupsignin1* Kullanıcı akışı ' nı seçin.
+2. **Kullanıcı akışları**' nı seçin ve ardından *B2C_1_signupsignin1* Kullanıcı akışı ' nı seçin.
 3. **Sayfa düzenlerini**seçin ve ardından **Birleşik kaydolma veya oturum açma sayfası**altında, **özel sayfa içeriğini kullanmak**için **Evet** ' i tıklatın.
 4. **Özel sayfa URI 'si**içinde, daha önce kaydettiğiniz *custom-ui.html* dosyasının URI 'sini girin.
 5. Sayfanın en üstünde **Kaydet**' i seçin.

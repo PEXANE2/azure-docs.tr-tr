@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory B2C Kullanıcı akışları | Microsoft Docs
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C Genişletilebilir ilke çerçevesi ve çeşitli Kullanıcı akışları oluşturma hakkında daha fazla bilgi edinin.
 services: active-directory-b2c
 author: msmimart
@@ -7,24 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1dc0e297ca16bf2605993e36942de9d31c331680
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 7a7736602fafb740d1d76fa09fd26da25e4ff9f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115857"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481606"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı akışları
 
-Azure Active Directory B2C Genişletilebilir ilke çerçevesi (Azure AD B2C), hizmetin temel kuvvetsidir. İlkeler kaydolma, oturum açma veya profil düzenlemesi gibi kimlik deneyimlerini tamamen anlatmaktadır. En yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B2C portalı, **Kullanıcı akışları**adlı önceden tanımlanmış ve yapılandırılabilir ilkeler içerir.
-
-## <a name="what-are-user-flows"></a>Kullanıcı akışları nelerdir?
-
-Bir Kullanıcı akışı, aşağıdaki ayarları yapılandırarak uygulamalarınızdaki davranışları denetlemenizi sağlar:
+Uygulamalarınız için en yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B2C portalı, **Kullanıcı akışları**adlı önceden tanımlanmış ve yapılandırılabilir ilkeler içerir. Bir Kullanıcı akışı, kullanıcıların oturum açma, kaydolma, profil düzenleme veya bir parolayı sıfırlama gibi şeyler yaparken uygulamanızla nasıl etkileşime gireceğini belirlemenizi sağlar. Kullanıcı akışları ile aşağıdaki özellikleri kontrol edebilirsiniz:
 
 - Facebook veya yerel hesaplar gibi sosyal hesaplar gibi, oturum açma için kullanılan hesap türleri
 - Tüketiciden toplanacak öznitelikler (örneğin, ilk ad, posta kodu ve ayakkabı boyutu)
@@ -62,13 +59,21 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="user-flow-versions"></a>Kullanıcı akışı sürümleri
 
-Azure portal, [Kullanıcı akışlarının yeni sürümleri](user-flow-versions.md) her zaman ekleniyor. Azure AD B2C kullanmaya başladığınızda, test ettiğiniz Kullanıcı akışları kullanmanız önerilir. Yeni bir Kullanıcı akışı oluşturduğunuzda **Önerilen** sekmesinden ihtiyacınız olan kullanıcı akışını seçersiniz.
+Azure AD B2C çeşitli Kullanıcı akışı türlerini içerir:
 
-Şu anda aşağıdaki Kullanıcı akışları önerilir:
-
-- Kaydolma ve oturum açma deneyimlerinin her ikisi de tek bir yapılandırmayla kaydolun **ve oturum açın** . Kullanıcılar, bağlama göre doğru yolun altına alınır. Bu kullanıcı akışını bir **kaydolma** Kullanıcı akışı veya **oturum açma** Kullanıcı akışı üzerinden kullanmanız önerilir.
+- Kaydolma ve oturum açma deneyimlerinin her ikisi de tek bir yapılandırmayla kaydolun **ve oturum açın** . Kullanıcılar, bağlama göre doğru yolun altına alınır. Ayrıca, ayrı **kaydolma** veya **oturum açma** Kullanıcı akışıdır. Ancak, genellikle Birleşik oturum açma ve oturum açma kullanıcı akışını öneririz.
 - **Profil düzenleme** -kullanıcıların profil bilgilerini düzenlemesine olanak sağlar.
 - **Parola sıfırlama** -kullanıcıların parolalarını sıfırlayıp sıfırlayamayacağını ve bunların nasıl sıfırlanamayacağını yapılandırmanıza olanak sağlar.
+
+Çoğu Kullanıcı akış türü hem **Önerilen** bir sürüme hem de **Standart** sürüme sahiptir. Ayrıntılar için bkz. [Kullanıcı akış sürümleri](user-flow-versions.md).
+
+> [!IMPORTANT]
+> Daha önce Azure AD B2C Kullanıcı akışları ile çalıştıysanız, Kullanıcı akışı sürümlerine başvurduğumuz şekilde değiştirildiğini fark edeceksiniz. Daha önce v1 (üretime Ready) sürümleri ve V 1.1 ve v2 (Önizleme) sürümlerini sunuyoruz. Artık Kullanıcı akışlarını iki sürüme birleştiriyoruz:
+>
+>- **Önerilen** Kullanıcı akışları, Kullanıcı akışlarının yeni önizleme sürümlerindedir. Kapsamlı olarak test edilmiştir ve eski **v2** ve **v 1.1** sürümlerinin tüm özelliklerini birleştirirler. İleri giderek, önerilen yeni Kullanıcı akışları korunur ve güncelleştirilir. Bu yeni önerilen Kullanıcı akışlarına taşıdıktan sonra, serbest bırakılanlar gibi yeni özelliklere erişebilirsiniz.
+>- Daha önce **v1**olarak bilinen **Standart** Kullanıcı akışları, genel olarak kullanılabilir, üretime hazır Kullanıcı akışıdır. Kullanıcı akışlarınız görev açısından kritiktir ve yüksek oranda kararlı sürümlere bağlıysa, standart Kullanıcı akışlarını kullanmaya devam edebilirsiniz ve bu sürümlerin korunmayacağını ve güncelleştirilmediğini da sürdürmez.
+>
+>Eski tüm önizleme Kullanıcı akışları (V 1.1 ve v2) **1 ağustos 2021 '** e kadar kullanımdan kalkmaya yönelik bir yoldur. Mümkün olan yerlerde, en son özellikler ve güncelleştirmelerden her zaman faydalanabilir olması [için, **Önerilen** Yeni Kullanıcı akışlarına](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) en kısa sürede geçmeniz önerilir.
 
 ## <a name="linking-user-flows"></a>Kullanıcı akışlarını bağlama
 

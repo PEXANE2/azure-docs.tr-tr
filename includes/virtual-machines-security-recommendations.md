@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: msmbaldwin
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 30f852f1bf4994f525ccb65c3827af8f8ae02f96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e64e6b6abc921b1db6614ed36ba2e9c04fc86b1f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838938"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451218"
 ---
 Bu makale, Azure sanal makineler için güvenlik önerileri içerir. Paylaşılan sorumluluk için modelimizde açıklanan güvenlik yükümlülüklerinizi karşılamak üzere bu önerileri izleyin. Öneriler, Web uygulaması çözümleriniz için genel güvenliği iyileştirmenize de yardımcı olur. Hizmet sağlayıcı sorumluluklarını Microsoft 'un karşılama hakkında daha fazla bilgi için bkz. [bulut bilgi işlem Için paylaşılan sorumluluklar](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
@@ -26,7 +26,7 @@ Azure Güvenlik Merkezi hakkında genel bilgi için bkz. [Azure Güvenlik Merkez
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Özel VM görüntüleri oluştururken, en son güncelleştirmeleri uygulayın. | Görüntü oluşturmadan önce, işletim sistemi ve görüntünüzün bir parçası olacak tüm uygulamalar için en son güncelleştirmeleri yükleyebilirsiniz.  | - |
-| VM 'lerinizi güncel tutun. | Azure 'daki Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu 'nda [güncelleştirme yönetimi](../articles/automation/automation-update-management.md) çözümünü kullanabilirsiniz. | [Evet](../articles/security-center/security-center-apply-system-updates.md) |
+| VM 'lerinizi güncel tutun. | Azure 'daki Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu 'nda [güncelleştirme yönetimi](../articles/automation/update-management/update-mgmt-overview.md) çözümünü kullanabilirsiniz. | [Evet](../articles/security-center/security-center-apply-system-updates.md) |
 | VM 'lerinizi yedekleyin. | [Azure Backup](../articles/backup/backup-overview.md) , uygulama verilerinizin korunmasına yardımcı olur ve en düşük işletim maliyetlerine sahiptir. Uygulama hataları verilerinizi bozabilir ve insan hataları, uygulamalarınıza hata verebilir. Windows ve Linux çalıştıran sanal makinelerinizi korur Azure Backup. | - |
 | Daha büyük esnekliği ve kullanılabilirlik için birden fazla VM kullanın. | VM 'niz yüksek oranda kullanılabilir olması gereken uygulamalar çalıştırıyorsa, birden çok VM veya [kullanılabilirlik kümesi](../articles/virtual-machines/windows/manage-availability.md)kullanın. | - |
 | Bir iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejisini benimseyin. | Azure Site Recovery, iş sürekliliğini desteklemek için tasarlanan farklı seçenekler arasından seçim yapmanıza olanak tanır. Farklı çoğaltma ve yük devretme senaryolarını destekler. Daha fazla bilgi için bkz. [Site Recovery](../articles/site-recovery/site-recovery-overview.md). | - |

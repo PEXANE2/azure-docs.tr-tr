@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165337"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479855"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
 
@@ -36,7 +36,7 @@ Trafik Analizi aşağıdaki önkoşulları gerektirir:
 
 Trafik analizlerini etkinleştirmek için hesabınızın aşağıdakilerden birini karşılaması gerekir:
 
-- Hesabınız abonelik kapsamında şu rol tabanlı erişim denetimi (RBAC) rollerinden birine sahip olmalıdır: sahip, katkıda bulunan, okuyucu veya ağ katılımcısı.
+- Hesabınız abonelik kapsamında şu Azure rollerinden birine sahip olmalıdır: sahip, katkıda bulunan, okuyucu veya ağ katılımcısı.
 - Hesabınız daha önce listelenen rollerden birine atanmamışsa, abonelik düzeyinde aşağıdaki eylemlerin atandığı özel bir role atanması gerekir.
             
     - Microsoft. Network/Applicationgateway/Read
@@ -401,4 +401,3 @@ Sanal alt ağlar topolojisi sayfası iki ana bölüm içerir:
 - Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, `Shift+Right arrow` iletme hareketi anahtarını kullanın. 
 - Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
 - Bu tür düğümlerin seçimi üzerinde, bir diğeri olan tüm bağlantılarını, bir, bir, tuşuna basarak ziyaret edebilirsiniz `Shift+Left arrow` . Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak düğüme geri dönebilir `Shift+Right arrow` .    
-

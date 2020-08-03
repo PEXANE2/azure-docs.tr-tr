@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 447744f0436cb29e849a52694a02600183fd357a
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432809"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486519"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API bir hesabı ölçeklendirin
 
@@ -38,7 +38,7 @@ Gecikme süresini en aza indirmek isterseniz, Cassandra API ölçek ve sağlama 
 
 Aşağıdaki bölümlerde her yaklaşımın avantajları ve dezavantajları açıklanmaktadır. Daha sonra, çözümünüzün ölçeklendirme ihtiyaçlarını, genel maliyet ve gereksinimlerinize yönelik verimlilik ihtiyaçlarını dengelemek için en iyi stratejiye karar verebilirsiniz.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portal kullanın
 
 Azure Cosmos DB Cassandra API hesabındaki kaynakları Azure portal kullanarak ölçeklendirebilirsiniz. Daha fazla bilgi edinmek için [kapsayıcılar ve veritabanlarında üretilen Iş sağlama](set-throughput.md)başlıklı makaleye bakın. Bu makalede, Azure portal [veritabanı](set-throughput.md#set-throughput-on-a-database) ya da [kapsayıcı](set-throughput.md#set-throughput-on-a-container) düzeyinde üretilen işi ayarlamanın göreli avantajları açıklanmaktadır. Bu makalelerde bahsedilen "veritabanı" ve "kapsayıcı" terimleri, Cassandra API için sırasıyla "keyspace" ve "Table" ile eşlenir.
 
@@ -46,7 +46,7 @@ Bu yöntemin avantajı, veritabanında üretilen iş kapasitesini yönetmenin ko
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Denetim düzlemi 'ni kullanma
 
-Cassandra için Azure Cosmos DB API 'SI, çeşitli denetim düzlemi özelliklerimizi kullanarak aktarım hızını programlı bir şekilde ayarlama yeteneği sağlar. Rehberlik ve örnekler için [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [POWERSHELL](powershell-samples-cassandra.md)ve [Azure CLI](cli-samples.md) makalelerine bakın.
+Cassandra için Azure Cosmos DB API 'SI, çeşitli denetim düzlemi özelliklerimizi kullanarak aktarım hızını programlı bir şekilde ayarlama yeteneği sağlar. Rehberlik ve örnekler için [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [POWERSHELL](powershell-samples.md)ve [Azure CLI](cli-samples.md) makalelerine bakın.
 
 Bu yöntemin avantajı, yoğun etkinlik veya düşük etkinlik dönemlerinde hesaba bir Zamanlayıcı temelinde kaynakların ölçeğini artırma veya azaltma işlemlerini otomatikleştirebileceğiniz bir yöntemdir. Azure Işlevleri ve PowerShell kullanarak bunu [gerçekleştirmek için](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) örneğimize göz atın.
 

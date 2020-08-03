@@ -4,6 +4,8 @@
   items:
     - name: Data Lake Analytics nedir?
       href: data-lake-analytics-overview.md
+    - name: Data Lake Analytics'teki yenilikler
+      href: data-lake-analytics-whats-new.md
 - name: başlarken
   items:
     - name: Azure portal
@@ -25,6 +27,9 @@
   items:
     - name: Güvenlik
       items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
           href: security-baseline.md
 - name: Nasıl yapılır

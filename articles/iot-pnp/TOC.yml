@@ -4,87 +4,75 @@
   items:
     - name: IoT Tak Çalıştır nedir?
       href: overview-iot-plug-and-play.md
+    - name: Yenileme güncelleştirmelerini önizleme
+      href: overview-iot-plug-and-play-preview-updates.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Cihaz oluşturma
-      items:
-        - name: C Linux
-          href: quickstart-create-pnp-device-linux.md
-        - name: C Windows
-          href: quickstart-create-pnp-device-windows.md
     - name: IoT Hub’a cihaz bağlama
       items:
-        - name: C Linux
-          href: quickstart-connect-pnp-device-c-linux.md
-        - name: C Windows
-          href: quickstart-connect-pnp-device-c-windows.md
-        - name: C#
-          href: quickstart-connect-pnp-device-csharp.md
-        - name: Java
-          href: quickstart-connect-pnp-device-java.md
+        - name: C
+          href: quickstart-connect-device-c.md
         - name: Node.js
-          href: quickstart-connect-pnp-device-node.md
-    - name: IoT Central’a cihaz bağlama
-      href: ../iot-central/core/tutorial-connect-pnp-device.md
-    - name: Çözümünüzde bir cihaza bağlanma
+          href: quickstart-connect-device-node.md
+        - name: Python
+          href: quickstart-connect-device-python.md
+        - name: C#
+          href: quickstart-connect-device-csharp.md
+        - name: Java
+          href: quickstart-connect-device-java.md
+    - name: Çözümünüzden bir cihazla etkileşim kurma
       items:
-        - name: C#
-          href: quickstart-connect-pnp-device-solution-csharp.md
-        - name: Java
-          href: quickstart-connect-pnp-device-solution-java.md
         - name: Node.js
-          href: quickstart-connect-pnp-device-solution-node.md
+          href: quickstart-service-node.md
+        - name: Python
+          href: quickstart-service-python.md
 - name: Öğreticiler
   items:
-    - name: VS Code kullanarak cihaz oluşturma
-      href: tutorial-pnp-visual-studio-code.md
-    - name: Sertifikasyon için hazır cihaz oluşturma
-      href: tutorial-build-device-certification.md
-    - name: Cihazınız için sertifika alma
-      href: tutorial-certification-test.md
+    - name: Çok bileşenli bir cihaza bağlanma (C#)
+      href: tutorial-multiple-components-csharp.md
+    - name: Çok bileşenli bir cihaza bağlanma (Java)
+      href: tutorial-multiple-components-java.md
+    - name: Çok bileşenli bir cihaza bağlanma (Node.js)
+      href: tutorial-multiple-components-node.md
+    - name: Çok bileşenli bir cihaza bağlanma (Python)
+      href: tutorial-multiple-components-python.md
 - name: Kavramlar
   items:
-    - name: Sözlük
-      href: iot-plug-and-play-glossary.md
+    - name: Mimari
+      href: concepts-architecture.md
     - name: Geliştirici kılavuzu
       href: concepts-developer-guide.md
-    - name: Ortak arabirimler
-      href: concepts-common-interfaces.md
-    - name: Model keşfi
+    - name: Bileşenler
+      href: concepts-components.md
+    - name: IoT Tak Çalıştır kuralları
+      href: concepts-convention.md
+    - name: Digital Twins
+      href: concepts-digital-twin.md
+    - name: Model deposu
+      href: concepts-model-repository.md
+    - name: Çözümde modelleri kullanma
       href: concepts-model-discovery.md
+    - name: Model ayrıştırıcısı
+      href: concepts-model-parser.md
     - name: Limitler ve kotalar
       href: concepts-limits-quotas.md
+    - name: Sözlük
+      href: iot-plug-and-play-glossary.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Visual Studio ve Visual Studio Code ile geliştirme
-      href: howto-develop-with-vs-vscode.md
-    - name: IoT gezginini yükleme
-      href: howto-install-iot-explorer.md
-    - name: Azure CLI uzantısını yükleme
-      href: howto-install-pnp-cli.md
-    - name: IoT portalına ekleme
-      href: howto-onboard-portal.md
-    - name: Modelleri yönetme
-      href: howto-manage-models.md
-    - name: Cihaza bağlanma ve cihazla etkileşim kurma
-      href: howto-develop-solution.md
+    - name: IoT gezginini yükleme ve kullanma
+      href: howto-use-iot-explorer.md
+    - name: Azure IoT CLI uzantısını yükleme ve kullanma
+      href: howto-use-iot-pnp-cli.md
+    - name: Dijital ikizleri yönetme
+      href: howto-manage-digital-twin.md
 - name: Başvuru
   items:
     - name: Kitaplıklar ve SDK’lar
       href: libraries-sdks.md
-    - name: REST API
-      items:
-        - name: Dijital İkiz
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
-        - name: Dijital İkiz hizmeti
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
-        - name: Dijital İkiz model deposu
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
-        - name: REST güvenlik belirteci oluşturma
-          href: howto-generate-sas-token.md
-- name: Başvuru
-  items:
+    - name: Digital Twins REST API
+      href: 'https://aka.ms/iot-pnp-preview-rest'
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Kaynaklar

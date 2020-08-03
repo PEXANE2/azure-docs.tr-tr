@@ -13,12 +13,13 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 3efe9670d03a754cc90689c4b66d0843de4e275f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735513"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87485652"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure özel rolü oluşturma
 
@@ -34,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -51,7 +52,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 1. [Microsoft.Support kaynak sağlayıcısının](resource-provider-operations.md#microsoftsupport) işlem listesini gözden geçirin. İzinlerinizi oluşturmak için kullanabileceğiniz işlemleri bilmeniz yararlıdır.
 
-    | İşlem | Açıklama |
+    | İşlem | Description |
     | --- | --- |
     | Microsoft.Support/register/action | Destek Kaynağı Sağlayıcısı'na kayıt yapar |
     | Microsoft.Support/supportTickets/read | Durum, önem derecesi, kişi ayrıntıları ve iletişimler gibi Destek Biletleri ayrıntılarını alır veya aboneliklerdeki Destek Biletleri listesini alır. |

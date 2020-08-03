@@ -3,12 +3,12 @@ title: YAML başvurusu-ACR görevleri
 description: Görev özellikleri, adım türleri, adım özellikleri ve yerleşik değişkenler de dahil olmak üzere ACR görevleri için YAML görevlerini tanımlamaya yönelik başvuru.
 ms.topic: article
 ms.date: 07/08/2020
-ms.openlocfilehash: 1d680fd8512ec96fa4fb5762e4a3552e5e2e4dd3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4710afe0d10a81f2a84437a335d3a012f3bac326
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446933"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479787"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR görevleri başvurusu: YAML
 
@@ -77,13 +77,13 @@ Görev özellikleri genellikle bir dosyanın en üstünde görünür `acr-task.y
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Geçersiz kılma destekleniyor | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Yes | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | Hayır | Hiçbiri |
+| `version` | string | Yes | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | No | Hiçbiri |
 | `stepTimeout` | int (saniye) | Yes | Bir adımın çalıştırılacağı en fazla saniye sayısı. Özellik bir görevde belirtilmişse, `timeout` tüm adımların varsayılan özelliğini ayarlar. `timeout`Özellik bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Yes | 600 (10 dakika) |
 | `workingDirectory` | string | Yes | Çalışma zamanı sırasında kapsayıcının çalışma dizini. Özellik bir görevde belirtilmişse, `workingDirectory` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Yes | `/workspace` |
 | `env` | [dize, dize,...] | Yes |  `key=value`Görevin ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. Özellik bir görevde belirtilmişse, `env` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görevden devralınan tüm ortam değişkenlerini geçersiz kılar. | Yes | Hiçbiri |
-| `secrets` | [gizli, gizli,...] | Yes | [Gizli](#secret) nesneler dizisi. Hayır | Hiçbiri |
-| `networks` | [Ağ, ağ,...] | Yes | [Ağ](#network) nesneleri dizisi. Hayır | Hiçbiri |
-| `volumes` | [Birim, birim,...] | Yes | [Birim](#volume) nesnelerinin dizisi. Bir adıma bağlanacak kaynak içeriğe sahip birimleri belirtir. | Hayır | Hiçbiri |
+| `secrets` | [gizli, gizli,...] | Yes | [Gizli](#secret) nesneler dizisi. | No | Hiçbiri |
+| `networks` | [Ağ, ağ,...] | Yes | [Ağ](#network) nesneleri dizisi. | No | Hiçbiri |
+| `volumes` | [Birim, birim,...] | Yes | [Birim](#volume) nesnelerinin dizisi. Bir adıma bağlanacak kaynak içeriğe sahip birimleri belirtir. | No | Hiçbiri |
 
 ### <a name="secret"></a>gizli dizi
 
@@ -114,7 +114,7 @@ Birim nesnesi aşağıdaki özelliklere sahiptir.
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | dize | No | Takılacak birimin adı. Yalnızca alfasayısal karakterler, '-' ve ' _ ' içerebilir. | Hiçbiri |
-| `secret` | Map [dize] dizesi | Hayır | Haritanın her anahtarı oluşturulan ve birimde doldurulmuş bir dosyanın adıdır. Her değer, gizli dizinin dize sürümüdür. Gizli değerlerin Base64 kodlamalı olması gerekir. | Hiçbiri |
+| `secret` | Map [dize] dizesi | No | Haritanın her anahtarı oluşturulan ve birimde doldurulmuş bir dosyanın adıdır. Her değer, gizli dizinin dize sürümüdür. Gizli değerlerin Base64 kodlamalı olması gerekir. | Hiçbiri |
 
 ## <a name="task-step-types"></a>Görev adımı türleri
 
@@ -145,7 +145,7 @@ steps:
 | --------- | ----------- | :-------: |
 | `-t`&#124;`--image` | Oluşturulan görüntünün tam nitelikli olduğunu tanımlar `image:tag` .<br /><br />Görüntü, işlevsel testler gibi iç görev doğrulamaları için kullanılabilir, ancak tüm görüntülerin `push` bir kayıt defterine ihtiyacı yoktur. Ancak, bir görev yürütme içindeki bir görüntüyü örnek olarak, görüntünün başvuru için bir adı olması gerekir.<br /><br />Farklı olarak `az acr build` , ACR görevlerinin çalıştırılması varsayılan gönderme davranışı sağlamaz. ACR görevleri ile, varsayılan senaryo bir görüntüyü oluşturma, doğrulama ve gönderme özelliğini kabul eder. İsteğe bağlı olarak oluşturulan görüntüleri gönderme hakkında bilgi için bkz. [gönderim](#push) . | Yes |
 | `-f`&#124;`--file` | Geçirilen Dockerfile dosyasını belirtir `docker build` . Belirtilmemişse, bağlam kökündeki varsayılan Dockerfile varsayılır. Bir Dockerfile belirtmek için, dosya adını bağlamın köküne göre geçirin. | Yes |
-| `context` | Kök dizin geçildi `docker build` . Her görevin kök dizini paylaşılan bir [WorkingDirectory](#task-step-properties)olarak ayarlanır ve ilişkili git klonlanmış dizinin kökünü içerir. | Hayır |
+| `context` | Kök dizin geçildi `docker build` . Her görevin kök dizini paylaşılan bir [WorkingDirectory](#task-step-properties)olarak ayarlanır ve ilişkili git klonlanmış dizinin kökünü içerir. | No |
 
 ### <a name="properties-build"></a>Özellikler: derleme
 
@@ -423,7 +423,7 @@ Her adım türü, türü için uygun olan birkaç özelliği destekler. Aşağı
 | `timeout` | int (saniye) | Yes | Bir adımın sonlandırılmadan önce yürütebilmesi için gereken en fazla saniye sayısı. | 600 |
 | [`when`](#example-when) | [dize, dize,...] | Yes | Görevin içindeki bir veya daha fazla adım için bir adımın bağımlılığını yapılandırır. | Hiçbiri |
 | `user` | string | Yes | Bir kapsayıcının Kullanıcı adı veya UID 'SI | Hiçbiri |
-| `volumeMounts` | object | Hayır | [Volumemount](#volumemount) nesnelerinin dizisi. | Hiçbiri |
+| `volumeMounts` | object | No | [Volumemount](#volumemount) nesnelerinin dizisi. | Hiçbiri |
 | `workingDirectory` | string | Yes | Bir adım için çalışma dizinini ayarlar. Varsayılan olarak ACR görevleri, çalışma dizini olarak bir kök dizin oluşturur. Ancak, derlemeniz birkaç adım içeriyorsa, önceki adımlar aynı çalışma dizinini belirterek yapıtları sonraki adımlarla paylaşabilir. | `/workspace` |
 
 ### <a name="volumemount"></a>Birimbağlama
