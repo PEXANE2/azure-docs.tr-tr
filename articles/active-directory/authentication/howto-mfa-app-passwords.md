@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485605"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489801"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Uygulama parolalarını kullanarak eski uygulamalarla Azure Multi-Factor Authentication etkinleştirme ve kullanma
 
@@ -88,6 +88,12 @@ Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıc�
 5. **Hizmet ayarları** sayfasında, **kullanıcıların tarayıcı olmayan uygulamalara oturum açmak için uygulama parolaları oluşturmasına izin ver** seçeneğini belirleyin.
 
     ![Uygulama parolalarının kullanıcısına izin vermek için çok faktörlü kimlik doğrulamasının hizmet ayarlarını gösteren Azure portal ekran görüntüsü](media/concept-authentication-methods/app-password-authentication-method.png)
+    
+> [!NOTE]
+>
+> Kullanıcıların uygulama parolaları oluşturma yeteneğini devre dışı bıraktığınızda, mevcut uygulama parolaları çalışmaya devam eder. Ancak, bu özelliği devre dışı bıraktığınızda kullanıcılar mevcut uygulama parolalarını yönetemez veya silemez.
+>
+> Uygulama parolaları oluşturma özelliğini devre dışı bıraktığınızda, [eski kimlik doğrulamasının kullanımını devre dışı bırakmak için bir koşullu erişim ilkesi oluşturmanız](../conditional-access/block-legacy-authentication.md)da önerilir. Bu yaklaşım, mevcut uygulama parolalarının çalışmasını önler ve modern kimlik doğrulama yöntemlerinin kullanımını zorlar.
 
 ## <a name="create-an-app-password"></a>Uygulama parolası oluşturma
 

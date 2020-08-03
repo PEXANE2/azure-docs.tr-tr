@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 89d760e28025f64b8cd8940fc08f06d23c969e12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83655744"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500802"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu için Azure Güvenlik temeli
 
@@ -549,7 +549,7 @@ Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: PostgreSQL Için Azure veritabanı denetim düzlemi 'ne erişimi denetlemek için Azure rol tabanlı erişim denetimi 'NI (RBAC) kullanın (ör. Azure Portal). Veri düzlemi erişimi için (veritabanının kendisi içinde), SQL sorgularını kullanarak kullanıcı oluşturun ve Kullanıcı izinlerini yapılandırın. RBAC, veritabanı içindeki kullanıcı izinlerini etkilemez.
+**Rehberlik**: PostgreSQL Için Azure veritabanı denetim düzlemi 'ne erişimi denetlemek için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın (ör. Azure Portal). Veri düzlemi erişimi için (veritabanının kendisi içinde), SQL sorgularını kullanarak kullanıcı oluşturun ve Kullanıcı izinlerini yapılandırın. RBAC, veritabanı içindeki kullanıcı izinlerini etkilemez.
 
 Azure 'da RBAC 'yi yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 

@@ -3,13 +3,13 @@ title: Öğretici-kapsayıcı uygulamasını kapsayıcı örneğine dağıtma
 description: Azure Container Instances öğreticisi Bölüm 3/3-kapsayıcı uygulamayı Azure Container Instances dağıtma
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 2ea3d285f00d38df84587d9a7c15242fff38453b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78249966"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500581"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Öğretici: Azure Container Instances bir kapsayıcı uygulaması dağıtma
 
@@ -44,7 +44,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>Kapsayıcıyı dağıtma
 
-Şimdi kapsayıcıyı dağıtmak için [az container create][az-container-create] komutunu kullanın. Önceki `<acrLoginServer>` komuttan elde ettiğiniz değerle değiştirin. Ve `<service-principal-ID>` `<service-principal-password>` kayıt defterine erişmek IÇIN oluşturduğunuz hizmet sorumlusu kimliği ve parolasıyla değiştirin. İstenen `<aciDnsLabel>` bir DNS adıyla değiştirin.
+Şimdi kapsayıcıyı dağıtmak için [az container create][az-container-create] komutunu kullanın. `<acrLoginServer>`Önceki komuttan elde ettiğiniz değerle değiştirin. `<service-principal-ID>`Ve `<service-principal-password>` kayıt defterine erişmek için oluşturduğunuz HIZMET sorumlusu kimliği ve parolasıyla değiştirin. `<aciDnsLabel>`İstenen BIR DNS adıyla değiştirin.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -70,7 +70,7 @@ Dağıtım başarılı olduktan sonra, [az container show][az-container-show] ko
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Örneğin:
+Örnek:
 ```output
 "aci-demo.eastus.azurecontainer.io"
 ```

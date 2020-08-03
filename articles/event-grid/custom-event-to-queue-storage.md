@@ -3,12 +3,13 @@ title: 'Hızlı başlangıç: depolama kuyruğuna özel olayları gönderme-Even
 description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak için Azure Event Grid ve Azure CLı kullanın. Uç nokta için bir depolama kuyruğu kullanılır.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 18f2bf42941ddd8f71f70b132ad52a47a62fc854
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112128"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497367"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid ile Azure kuyruk depolama 'ya özel olayları yönlendirme
 

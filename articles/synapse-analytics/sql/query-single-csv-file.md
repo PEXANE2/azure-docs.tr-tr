@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383894"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489716"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgula
 
@@ -31,7 +31,7 @@ Yukarıdaki tüm Çeşitlemeler aşağıda ele alınacaktır.
 
 `OPENROWSET`işlevi, dosyanıza URL ekleyerek CSV dosyasının içeriğini okumanızı sağlar.
 
-### <a name="reading-csv-file"></a>CSV dosyası okunuyor
+### <a name="read-a-csv-file"></a>CSV dosyası okuma
 
 Dosyanızın içeriğini görmenin en kolay yolu, `CSV` işlev için dosya URL 'si sağlamaktır `OPENROWSET` , csv ve 2,0 ' i belirtmektir `FORMAT` `PARSER_VERSION` . Dosya herkese açık ise veya Azure AD kimliğiniz bu dosyaya erişebilirse, aşağıdaki örnekte gösterildiği gibi sorguyu kullanarak dosyanın içeriğini görmeniz gerekir:
 
@@ -46,7 +46,7 @@ from openrowset(
 
 `firstrow`Bu durumda üstbilgiyi temsil eden CSV dosyasındaki ilk satırı atlamak için seçeneği kullanılır. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa, [SQL oturum açma için sunucu düzeyi kimlik bilgisi](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kurulumunu yapmanız gerekir.
 
-### <a name="using-data-source"></a>Veri kaynağını kullanma
+### <a name="data-source-usage"></a>Veri kaynağı kullanımı
 
 Önceki örnek, dosyanın tam yolunu kullanır. Alternatif olarak, depolama alanının kök klasörünü işaret eden konum ile bir dış veri kaynağı oluşturabilirsiniz:
 
@@ -214,7 +214,7 @@ WHERE
 > [!NOTE]
 > FIELDQUOTE için varsayılan değer bir çift tırnak olduğundan, bu sorgu, FIELDQUOTE parametresini atlarsanız aynı sonuçları döndürür.
 
-## <a name="escaping-characters"></a>Kaçış karakterleri
+## <a name="escape-characters"></a>Kaçış karakterleri
 
 Aşağıdaki sorgu, bir üst bilgi satırıyla bir dosyanın nasıl okunacağını, UNIX stili yeni bir satır, virgülle ayrılmış sütunlar ve değer içinde alan sınırlayıcısı (virgül) için kullanılan kaçış karakteri gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumunu aklınızda yapın.
 
@@ -246,7 +246,7 @@ WHERE
 > [!NOTE]
 > "Slov, enıa" içindeki virgül, ülke/bölge adının bir parçası yerine alan sınırlayıcısı olarak değerlendirildiğinden, bu sorgu, ESCAPECHAR belirtilmemişse başarısız olur. "Slov, Enia" iki sütun olarak değerlendirilir. Bu nedenle, belirli satırda diğer satırlardan daha fazla bir sütun ve WıTH yan tümcesinde tanımladığınız bir sütun daha vardır.
 
-### <a name="escaping-quoting-characters"></a>Tırnak içine alma karakterlerini kaçış
+### <a name="escape-quoting-characters"></a>Tırnak işareti karakterlerini kaçış
 
 Aşağıdaki sorgu, bir üst bilgi satırıyla bir dosyanın nasıl okunacağını, UNIX stili yeni bir satır, virgülle ayrılmış sütunlar ve değerler içindeki bir kaçışlı çift tırnak karakteri gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumunu aklınızda yapın.
 
@@ -306,7 +306,7 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>Sütunların alt kümesi döndürülüyor
+## <a name="return-a-subset-of-columns"></a>Sütunların bir alt kümesini döndürür
 
 Şimdiye kadar, Ile kullanarak CSV dosya şemasını belirttiniz ve tüm sütunları listelediyseniz. Sorgunuz için gereken sütunları yalnızca gerekli her sütun için bir sıra numarası kullanarak belirtebilirsiniz. İlgilendiğiniz sütunları da atlayabilirsiniz.
 

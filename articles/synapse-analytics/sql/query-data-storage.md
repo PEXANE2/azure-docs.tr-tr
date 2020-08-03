@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386665"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489750"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 
@@ -90,7 +90,7 @@ WITH (
 ```
 
 Her sütun için, sütun adı ve Type ın yan tümcesini belirtmeniz gerekir `WITH` .
-Örnekler için, [tüm sütunları BELIRTMEDEN CSV dosyalarını oku](query-single-csv-file.md#returning-subset-of-columns)bölümüne bakın.
+Örnekler için, [tüm sütunları BELIRTMEDEN CSV dosyalarını oku](query-single-csv-file.md#return-a-subset-of-columns)bölümüne bakın.
 
 ## <a name="schema-inference"></a>Şema çıkarımı
 
@@ -248,7 +248,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 - İç içe geçmiş sütunlara sahip örnek Parquet dosyaları
 - JSON biçimindeki kitaplar
 
-| Klasör yolu                                                  | Description                                                  |
+| Klasör yolu                                                  | Açıklama                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV biçimindeki veriler için üst klasör                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Farklı CSV biçimlerinde popülasyon veri dosyaları içeren klasörler. |

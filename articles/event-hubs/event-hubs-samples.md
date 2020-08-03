@@ -3,12 +3,13 @@ title: Örnekler-Azure Event Hubs | Microsoft Docs
 description: Bu makale, GitHub 'da bulunan Azure Event Hubs örneklerinin bir listesini sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b6d7a40e399482af0ad3a501918a7e3307d724c5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2e0f8026683302f6b54924625b132e79cb194bad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512308"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499429"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Azure Event Hubs için örnek içeren Git depoları 
 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)üzerinde Event Hubs örnekleri bulabilirsiniz. Bu örnekler [Azure Event Hubs](./index.yml)'daki temel özellikleri gösterir. Bu makale, her birinin bağlantılarıyla birlikte kullanılabilir örnekleri kategorilere ayırır ve açıklar.

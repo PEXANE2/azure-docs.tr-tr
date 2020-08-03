@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e3acfb9552db9fa972b0a407e52cece014b45389
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025022"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489631"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -32,7 +32,7 @@ Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -118,7 +118,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 | */1433                     | Giden           | TCP                | VIRTUAL_NETWORK/SQL                 | **Azure SQL uç noktalarına erişim**                           | Dış & Iç  |
 | */5671, 5672, 443          | Giden           | TCP                | VIRTUAL_NETWORK/EventHub            | [Olay Hub 'ı ilkesine](api-management-howto-log-event-hubs.md) ve Izleme aracısına günlük bağımlılığı | Dış & Iç  |
 | */445                      | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | [GIT](api-management-configuration-repository-git.md) Için Azure dosya paylaşımında bağımlılık                      | Dış & Iç  |
-| */443                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Durum ve Izleme uzantısı         | Dış & Iç  |
+| */443, 12000                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Durum ve Izleme uzantısı         | Dış & Iç  |
 | */1886, 443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümlerini](api-management-howto-use-azure-monitor.md)yayımlayın, [kaynak durumu](../service-health/resource-health-overview.md) ve [Application Insights](api-management-howto-app-insights.md)                   | Dış & Iç  |
 | */25, 587, 25028                       | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
 | */6381-6383              | Gelen & giden | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [önbellek](api-management-caching-policies.md) Ilkeleri için Redsıs hizmetine erişme         | Dış & Iç  |
@@ -217,22 +217,22 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Güney Birleşik Krallık| 51.145.56.125|
 | Azure Genel| Batı Hindistan| 40.81.89.24|
 | Azure Genel| Doğu ABD| 52.224.186.99|
-| Azure Genel| Batı Avrupa| 51.145.179.78|
+| Azure Genel| West Europe| 51.145.179.78|
 | Azure Genel| Doğu Japonya| 52.140.238.179|
 | Azure Genel| Orta Fransa| 40.66.60.111|
 | Azure Genel| Doğu Kanada| 52.139.80.117|
 | Azure Genel| BAE Kuzey| 20.46.144.85|
-| Azure Genel| Brezilya Güney| 191.233.24.179|
+| Azure Genel| Güney Brezilya| 191.233.24.179|
 | Azure Genel| Güneydoğu Asya| 40.90.185.46|
 | Azure Genel| Güney Afrika Kuzey| 102.133.130.197|
 | Azure Genel| Orta Kanada| 52.139.20.34|
 | Azure Genel| Güney Kore - Güney| 40.80.232.185|
 | Azure Genel| Orta Hindistan| 13.71.49.1|
 | Azure Genel| Batı ABD| 13.64.39.16|
-| Azure Genel| Avustralya Güneydoğu| 20.40.160.107|
+| Azure Genel| Güneydoğu Avustralya| 20.40.160.107|
 | Azure Genel| Orta Avustralya| 20.37.52.67|
 | Azure Genel| Güney Hindistan| 20.44.33.246|
-| Azure Genel| Orta ABD| 13.86.102.66|
+| Azure Genel| Central US| 13.86.102.66|
 | Azure Genel| Doğu Avustralya| 20.40.125.155|
 | Azure Genel| Batı ABD 2| 51.143.127.203|
 | Azure Genel| EUAP Doğu ABD 2| 52.253.229.253|

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386648"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489733"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı SQL (Önizleme) kullanarak JSON dosyalarını sorgulama
 
@@ -22,7 +22,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullana
 - Birden çok JSON belgelerinin JSON dizisi olarak depolandığı standart JSON dosyaları.
 - JSON belgelerinin yeni satır karakteriyle ayrıldığı, satır ile ayrılmış JSON dosyaları. Bu dosya türleri için ortak uzantılar `jsonl` , ve ' dir `ldjson` `ndjson` .
 
-## <a name="reading-json-documents"></a>JSON belgelerini okuma
+## <a name="read-json-documents"></a>JSON belgelerini oku
 
 JSON dosyanızın içeriğini görmenin en kolay yolu, çalışmak için dosya URL 'SI sağlamak `OPENROWSET` , CSV belirtmeniz `FORMAT` ve ve değerlerini ayarlamanız sağlamaktır `0x0b` `fieldterminator` `fieldquote` . Satır için ayrılmış JSON dosyalarını okumanız gerekiyorsa, bu yeterli olur. Klasik JSON dosyanız varsa, değerlerini ayarlamanız gerekir `0x0b` `rowterminator` . `OPENROWSET`işlev, JSON 'ı ayrıştırır ve her belgeyi aşağıdaki biçimde döndürür:
 
@@ -60,7 +60,7 @@ from openrowset(
 
 Bu sorgu, her JSON belgesini sonuç kümesinin ayrı bir satırı olarak döndürür. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa [SQL oturum açma için sunucu düzeyi kimlik bilgilerini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)oluşturmanız gerekir. 
 
-### <a name="using-data-source"></a>Veri kaynağını kullanma
+### <a name="data-source-usage"></a>Veri kaynağı kullanımı
 
 Önceki örnek, dosyanın tam yolunu kullanır. Alternatif olarak, depolama alanının kök klasörünü işaret eden konum ile bir dış veri kaynağı oluşturabilir ve bu veri kaynağını ve işlevindeki dosyanın göreli yolunu kullanabilirsiniz `OPENROWSET` :
 

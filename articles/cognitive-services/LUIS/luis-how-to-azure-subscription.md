@@ -4,12 +4,13 @@ description: Language Understanding (LUU) ilk kez kullandığınızda, yazma ana
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144637"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496908"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -58,7 +59,7 @@ Yayımlama bölgeleri, yazma bölgelerinden farklıdır. İstemci uygulamanızı
 
 Kullanım sınırları, fiyatlandırma katmanını temel alır.
 
-İşlem/saniye (TPS) kotasını aşarsanız bir HTTP 429 hatası alırsınız. İşlem/saat (TPS) kotasını aşarsanız bir HTTP 403 hatası alırsınız.
+Saniye başına işlem (TPS) kotanızı aşarsanız HTTP 429 hatası alırsınız. Ay başına işlem sayısı (TPS) kotanızı aşarsanız bir HTTP 403 hatası alırsınız.
 
 
 ### <a name="reset-authoring-key"></a>Yazma anahtarını Sıfırla
@@ -206,7 +207,7 @@ Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kayna�
 
 1. [Lui portalında](https://www.luis.ai)oturum açın.
 1. Üst gezinti çubuğunda, en sağdaki kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
-1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**’i seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**'i seçin.
 
 ## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b28507c072f338342dc1a936cb1ab5f3910eea1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056738"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498115"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
@@ -283,7 +283,7 @@ az group delete -n MyResourceGroup
 
 - AKS kimlik doğrulaması, yetkilendirme [ve RBAC hakkında](concepts-identity.md)daha fazla bilgi edinin.
 - Azure [RBAC hakkında](../role-based-access-control/overview.md)daha fazla bilgi edinin.
-- [Buradan](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)Kubernetes yetkilendirmesi Için özel Azure RBAC rolleri tanımlamak üzere kullanabileceğiniz tüm eylemler hakkında daha fazla bilgi edinin.
+- [Burada](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)Kubernetes yetkilendirmesi Için özel Azure rolleri tanımlamak üzere kullanabileceğiniz tüm eylemler hakkında daha fazla bilgi edinin.
 
 
 <!-- LINKS - Internal -->

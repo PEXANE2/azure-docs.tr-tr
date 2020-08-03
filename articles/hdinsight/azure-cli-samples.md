@@ -7,25 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78207107"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499577"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLı örnekleri
 
 > [!div class="op_single_selector"]
-> [.NET örnekleri](hdinsight-sdk-dotnet-samples.md)
-> [Python örnekleri](hdinsight-sdk-python-samples.md)
-> [Java örnekleri](hdinsight-sdk-java-samples.md)
+> [.NET örnekleri](hdinsight-sdk-dotnet-samples.md) 
+>  [Python örnekleri](hdinsight-sdk-python-samples.md) 
+>  [Java örnekleri](hdinsight-sdk-java-samples.md)
 
 Bu makalede ortak görevler için örnek betikler sağlanmaktadır. Her örnek için, değişkenleri uygun değerlerle güncelleştirin ve ardından komutunu yürütün.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure CLı. Adımlar için bkz. [Azure CLI 'Yı yüklemeyin](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* Azure CLI. Adımlar için bkz. [Azure CLI 'Yı yüklemeyin](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 * İsteğe bağlı: Bash. Bu makaledeki örneklerde, Windows 10 ' da bash kabuğu kullanılır. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10) .  Örnekler, bazı hafif değişikliklerle bir Windows komut isteminden çalışır.
 

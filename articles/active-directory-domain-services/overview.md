@@ -10,18 +10,20 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6efd33b9f8825b5b5699b6106dadafec851ed454
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734563"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488559"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services nedir?
 
 Azure Active Directory Domain Services (Azure AD DS), etki alanına katılması, Grup ilkesi, Hafif Dizin Erişim Protokolü (LDAP) ve Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Bu etki alanı hizmetlerini, bulutta etki alanı denetleyicileri (DC) dağıtmak, yönetmek ve bunlara yama yapmak zorunda kalmadan kullanırsınız.
 
-Yönetilen etki alanı, DNS ad alanıdır ve eşleşen dizindir. Yönetilen etki alanı, mevcut Azure AD kiracınızla tümleştirilir, bu da kullanıcıların mevcut kimlik bilgilerini kullanarak oturum açmasını olanaklı kılar. Ayrıca, mevcut grupları ve Kullanıcı hesaplarını, kaynaklara erişimi güvenli hale getirmek için de kullanabilirsiniz. Bu, şirket içi kaynakların daha yumuşak bir şekilde daha iyi bir şekilde daha iyi bir şekilde daha iyi bir şekilde
+Azure AD DS yönetilen bir etki alanı oluşturduğunuzda, benzersiz bir ad alanı tanımlarsınız. Bu ad alanı, *aaddscontoso.com*gibi etki alanı adıdır ve iki etki alanı denetleyicisi (DC) seçili Azure bölgenize dağıtılır. Bu DC dağıtımı bir çoğaltma kümesi olarak bilinir. Yönetilen etki alanı, mevcut Azure AD kiracınızla tümleştirilir, bu da kullanıcıların mevcut kimlik bilgilerini kullanarak oturum açmasını olanaklı kılar. Ayrıca, mevcut grupları ve Kullanıcı hesaplarını, kaynaklara erişimi güvenli hale getirmek için de kullanabilirsiniz. Bu, şirket içi kaynakların daha yumuşak bir şekilde daha iyi bir şekilde daha iyi bir şekilde daha iyi bir şekilde
+
+Yönetilen bir etki alanını, Azure AD kiracısı başına birden fazla çoğaltma kümesine sahip olacak şekilde genişletebilirsiniz. Çoğaltma kümeleri, Azure AD DS 'yi destekleyen herhangi bir Azure bölgesindeki eşlenen herhangi bir sanal ağa eklenebilir. Farklı Azure bölgelerindeki ek çoğaltma kümeleri, bir Azure bölgesi çevrimdışı kalırsa eski uygulamalar için coğrafi olağanüstü durum kurtarma sağlar. Çoğaltma kümeleri Şu anda önizleme aşamasındadır. Daha fazla bilgi için bkz. [yönetilen etki alanları Için çoğaltma kümesi kavramları ve özellikleri][concepts-replica-sets].
 
 Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullanıcıların, mevcut kimlik bilgilerini kullanarak yönetilen etki alanına bağlı hizmet ve uygulamalar üzerinde oturum açmalarına olanak tanır. Kaynaklara erişimi güvenli hale getirmek için mevcut grupları ve Kullanıcı hesaplarını da kullanabilirsiniz. Bu özellikler, şirket içi kaynakların Azure 'a daha yumuşak bir şekilde daha iyi bir şekilde daha iyi şekilde kaymasını sağlar.
 
@@ -150,3 +152,4 @@ Başlamak için [Azure Portal kullanarak yönetilen bir etki alanı oluşturun][
 [forest-trusts]: concepts-resource-forest.md
 [administration-concepts]: administration-concepts.md
 [synchronization]: synchronization.md
+[concepts-replica-sets]: concepts-replica-sets.md

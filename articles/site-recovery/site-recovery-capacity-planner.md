@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129961"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490583"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM olağanüstü durum kurtarma için kapasiteyi planlayın 
 
@@ -47,7 +47,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
 2. **Planner türü seç** liste kutusunda **hızlı planlayıcısı**' nı seçin.
 
-   ![başlarken](./media/site-recovery-capacity-planner/getting-started.png)
+   ![Hızlı planlayıcısı seçiliyken Planner türü seç seçeneğinin ekran görüntüsü.](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. **Capacity Planner** çalışma sayfasında, gerekli bilgileri girin. Aşağıdaki ekran görüntüsünde, tüm alanları kırmızı renkte daire içine girin:
 
@@ -61,7 +61,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
    e. Her **bir sanal makine için ilk çoğaltmanın,** **ilk çoğaltma toplu işi başına sanal makine sayısını ve sayısını**tamamlaması gereken saat sayısı, ilk çoğaltma gereksinimlerini hesaplamak için kullanılan ayarları girin. Site Recovery dağıtıldığında, ilk veri kümesinin tamamı karşıya yüklenir.
 
-   ![Girişler](./media/site-recovery-capacity-planner/inputs.png)
+   ![Gerekli giriş bilgilerini gösteren Capacity Planner çalışma sayfasının ekran görüntüsü.](./media/site-recovery-capacity-planner/inputs.png)
 
 4. Kaynak ortam için değerleri girdikten sonra, görünen çıktı şunları içerir:
 
@@ -77,7 +77,7 @@ Aracı iki modda çalıştırabilirsiniz:
    * **Gerekli ek Işlem sunucusu sayısı**: yapılandırma sunucusunda varsayılan olarak çalışan işlem sunucusuna ek olarak, ek işlem sunucularının gerekli olup olmadığını gösterir.
    * **kaynak üzerinde %100 ek depolama alanı**: kaynak konumda ek depolamanın gerekli olup olmadığını gösterir.
 
-      ![Çıktı](./media/site-recovery-capacity-planner/output.png)
+      ![Belirtilen girişe göre, görünen çıkışın ekran görüntüsü.](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>Ayrıntılı planlayıcısı çalıştırın
 
@@ -85,7 +85,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
 2. **Planner türü seç**' te, liste kutusundan **ayrıntılı Planner** ' ı seçin.
 
-   ![Başlarken kılavuzu](./media/site-recovery-capacity-planner/getting-started-2.png)
+   ![Ayrıntılı Planner seçiliyken Planner türü seç seçeneğinin ekran görüntüsü.](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. **Iş yükü niteliği** çalışma sayfasında, gerekli bilgileri girin. Tüm işaretli alanları doldurmanız gerekir.
 
@@ -105,7 +105,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
    h. **Azure VM boyutunu eşleme**' de, eşlemek ISTEDIĞINIZ Azure VM boyutunu girin. Bunu el ile yapmak istemiyorsanız, **Işlem IaaS VM**'lerini seçin. El ile bir ayar girin ve ardından **IaaS VM 'leri**seçerseniz, el ile ayarının üzerine yazılabilir. İşlem işlemi, Azure VM boyutuyla en iyi eşleşmeyi otomatik olarak tanımlar.
 
-   ![İş yükü niteliği çalışma sayfası](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![Gerekli giriş bilgilerini gösteren Iş yükü niteliği çalışma sayfasının ekran görüntüsü.](./media/site-recovery-capacity-planner/workload-qualification.png)
 
 4. **Işlem IaaS VM 'leri**seçerseniz şunları yapın:
 
@@ -117,12 +117,12 @@ Aracı iki modda çalıştırabilirsiniz:
 
 AA-AE sütunları çıktı ve her VM için bilgi sağlar.
 
-![Çıkış sütunları AA-AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![AA-AE çıkış sütunlarını gösteren ekran görüntüsü.](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>Örnek
 Örnek olarak, tabloda gösterilen altı VM için, araç en iyi Azure VM eşleşmesi ve Azure depolama gereksinimlerini hesaplar ve atar.
 
-![İş yükü nitelendirme atamaları](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![Iş yükü niteliği atamalarını gösteren ekran görüntüsü.](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * Örnek çıktıda aşağıdakilere göz önünde yer verilmiştir:
 
@@ -144,7 +144,7 @@ Tüm bilgiler girildikten sonra Capacity Planner açmak için **planlayıcısı 
 
 2. Değişiklik yapmak istiyorsanız, **Iş yükü niteliği** çalışma sayfasını değiştirmeniz gerekir. Sonra **verileri Ajanda aracına yeniden gönder** ' i seçin.
 
-   ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![Capacity Planner çalışma sayfasındaki değiştirilen girişleri ve sonuç çıkışlarını gösteren ekran görüntüsü.](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kapasite planlama aracının [nasıl çalıştırılacağını öğrenin](./hyper-v-deployment-planner-overview.md) .

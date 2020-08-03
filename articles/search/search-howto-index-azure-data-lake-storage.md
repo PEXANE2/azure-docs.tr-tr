@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 880238558c03cca6a582960eef4e647c0e6875e8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe05a474f4f6ee70c07e0e19621487d51d92966d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084118"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490635"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. belgeleri dizine ekleme
 
@@ -44,7 +44,7 @@ Data Lake Storage 2. içerik dizini oluşturma, Azure Blob depolamada dizin olu�
 
 ## <a name="access-control"></a>Erişim denetimi
 
-Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir [erişim denetimi modeli](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) uygular. Data Lake Storage 2. içerik dizinlenirken, Azure Bilişsel Arama, içerikten RBAC ve ACL bilgilerini ayıklamaz. Sonuç olarak, bu bilgiler Azure Bilişsel Arama dizinine dahil edilmez.
+Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (Azure RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir [erişim denetimi modeli](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) uygular. Data Lake Storage 2. içerik dizinlenirken, Azure Bilişsel Arama, içerikten RBAC ve ACL bilgilerini ayıklamaz. Sonuç olarak, bu bilgiler Azure Bilişsel Arama dizinine dahil edilmez.
 
 Dizindeki her belge üzerinde erişim denetimini korumak önemli ise, [güvenlik kırpması](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)uygulamak için uygulama geliştiricisinin üzerine gelir.
 

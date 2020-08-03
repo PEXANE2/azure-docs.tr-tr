@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b834dda926b7da1241a325e1453143eccafaf30
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387839"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488780"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C uygulamasında uygulamanıza bir Kullanıcı akışı aracılığıyla erişim belirteci geçirin
 
@@ -24,9 +24,9 @@ Azure Active Directory B2C (Azure AD B2C) bir [Kullanıcı akışı](user-flow-o
 
 Azure AD B2C Şu anda yalnızca [Facebook](identity-provider-facebook.md) ve [Google](identity-provider-google.md)içeren [OAuth 2,0](authorization-code-flow.md) kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Uygulamanızın [V2 Kullanıcı akışı](user-flow-versions.md)kullanıyor olması gerekir.
+* Uygulamanız [Önerilen bir Kullanıcı akışı](user-flow-versions.md)kullanıyor olmalıdır.
 * Kullanıcı akışınız bir OAuth 2,0 kimlik sağlayıcısı ile yapılandırılır.
 
 ## <a name="enable-the-claim"></a>Talebi etkinleştir

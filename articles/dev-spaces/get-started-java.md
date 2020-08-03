@@ -2,19 +2,19 @@
 title: 'Kubernetes geliştirme alanı oluşturma: Visual Studio Code & Java'
 services: azure-dev-spaces
 author: stepro
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde bir Java uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e68b417365c1a68a159ea555e9261fe5418b828e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 927ad3b8f3535dbd905f06949b34e87d15394533
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323630"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496823"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturun: Azure Dev Spaces ile Visual Studio Code ve Java
 

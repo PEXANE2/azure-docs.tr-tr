@@ -4,12 +4,12 @@ description: AKS işletim sistemini ve veri disklerini şifrelemek için kendi a
 services: container-service
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f0b96b3f78adf4a7efb1d43626a5aaf82a5b5d43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057303"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499628"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
@@ -161,8 +161,7 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Kubernetes sürüm 1,17 ve üzeri ile desteklenen veri diski şifrelemesi   
-* Yalnızca BYOK 'ın desteklendiği bölgelerde kullanılabilir
+* Kubernetes sürüm 1,17 ve üzeri ile desteklenen veri diski şifrelemesi
 * Müşteri tarafından yönetilen anahtarlarla şifreleme Şu anda yalnızca yeni AKS kümelerine yöneliktir, mevcut kümeler yükseltilemez
 
 ## <a name="next-steps"></a>Sonraki adımlar

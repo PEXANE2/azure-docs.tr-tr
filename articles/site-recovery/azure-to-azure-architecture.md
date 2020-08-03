@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421459"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498625"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -34,7 +34,7 @@ Azure VM 'Leri için olağanüstü durum kurtarma ile ilgili bileşenler aşağ�
 **Önbellek depolama hesabı** | Kaynak ağda bir önbellek depolama hesabı gerekir. Çoğaltma sırasında, VM değişiklikleri hedef depolamaya gönderilmeden önce önbellekte depolanır.  Önbellek depolama hesaplarının standart olması gerekir.<br/><br/> Önbellek kullanmak, bir VM 'de çalışan üretim uygulamaları üzerinde en düşük etkiyi sağlar.<br/><br/> Önbellek depolama gereksinimleri hakkında [daha fazla bilgi edinin](azure-to-azure-support-matrix.md#cache-storage) . 
 **Hedef kaynaklar** | Hedef kaynaklar çoğaltma sırasında ve bir yük devretme gerçekleştiğinde kullanılır. Site Recovery, varsayılan olarak hedef kaynağı ayarlayabilir veya bunları oluşturabilir/özelleştirebilirsiniz.<br/><br/> Hedef bölgede, VM 'Ler oluşturabiliyor ve aboneliğinizin hedef bölgede gerekli olacak VM boyutlarını desteklemek için yeterli kaynağa sahip olup olmadığını denetleyin. 
 
-![Kaynak ve hedef çoğaltma](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![Kaynak ve hedef çoğaltmayı gösteren diyagram.](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Hedef kaynaklar
 
@@ -62,7 +62,7 @@ Hedef kaynakları aşağıdaki şekilde yönetebilirsiniz:
 
 Azure VM çoğaltmasını etkinleştirdiğinizde, varsayılan olarak Site Recovery tabloda özetlenen varsayılan ayarlarla yeni bir çoğaltma ilkesi oluşturur.
 
-**İlke ayarı** | **Ayrıntılar** | **Varsayılanını**
+**İlke ayarı** | **Ayrıntılar** | **Varsayılan**
 --- | --- | ---
 **Kurtarma noktası bekletme** | Site Recovery kurtarma noktalarını ne kadar süreyle tutacağını belirtir | 24 saat
 **Uygulamayla tutarlı anlık görüntü sıklığı** | Site Recovery ne sıklıkta uygulamayla tutarlı bir anlık görüntü alır. | Her dört saatte bir
@@ -116,7 +116,7 @@ Azure VM için çoğaltmayı etkinleştirdiğinizde aşağıdakiler olur:
 4. Site Recovery önbellekteki verileri işler ve hedef depolama hesabına veya çoğaltma ile yönetilen disklere gönderir.
 5. Veriler işlendikten sonra, kilitlenme tutarlı kurtarma noktaları beş dakikada bir oluşturulur. Uygulamayla tutarlı kurtarma noktaları, çoğaltma ilkesinde belirtilen ayara göre oluşturulur.
 
-![Çoğaltma işlemini etkinleştirme, 2. adım](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![Çoğaltma işlemini gösteren diyagram, 2. adım.](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Çoğaltma işlemi**
 
@@ -191,7 +191,7 @@ Site Recovery [giden bağlantı](azure-to-azure-about-networking.md#outbound-con
 
 Yük devretme başlattığınızda VM 'Ler hedef kaynak grubunda, hedef sanal ağda, hedef alt ağda ve hedef kullanılabilirlik kümesinde oluşturulur. Yük devretme sırasında, herhangi bir kurtarma noktası kullanabilirsiniz.
 
-![Yük devretme işlemi](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![Kaynak ve hedef ortamlarla yük devretme işlemini gösteren diyagram.](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: a3cdb5a640e09c0095db79f5e3a43b455a1a5705
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8e4b5fdecfc5b9fcb2deb68a482b084a6e6ed6d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447170"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496177"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>FHıR için Azure RBAC 'yi yapılandırma 
 
@@ -26,11 +26,11 @@ Azure RBAC 'yi kullanmak için, FHıR için Azure API 'nizin, veri düzlemi içi
 
 **Yetkili** , aboneliğinizle Ilişkili Azure Active Directory kiracısına ayarlanmalıdır ve **Izin verilen nesne kimlikleri**etiketli kutuda GUID olmamalıdır. Ayrıca, kutunun devre dışı olduğunu ve bir etiketin veri düzlemi rollerini atamak için Azure RBAC 'nin kullanılması gerektiğini belirten bir etiket olduğunu fark edeceksiniz.
 
-## <a name="assign-roles"></a>Rolleri atama
+## <a name="assign-roles"></a>Rol atama
 
 Kullanıcıları, hizmet sorumlularını veya grupları FHıR veri düzlemine erişim izni vermek için **erişim denetimi (IAM)** öğesine tıklayın, ardından **rol atamaları** ' na tıklayın ve **+ Ekle**' ye tıklayın:
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure RBAC rol ataması ekleme":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure rol ataması Ekle":::
 
 **Rol** seçiminde, fhır veri düzlemi için yerleşik rollerden birini arayın:
 
@@ -53,7 +53,7 @@ FHıR için Azure API 'SI, kararları 5 dakikaya kadar önbelleğe alacak. İzin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, FHıR veri düzlemi için Azure RBAC rolleri atamayı öğrendiniz. Daha sonra FHıR için Azure API 'SI için ek ayarlar hakkında bilgi edinin:
+Bu makalede, FHıR veri düzlemi için Azure rolleri atamayı öğrendiniz. Daha sonra FHıR için Azure API 'SI için ek ayarlar hakkında bilgi edinin:
  
 >[!div class="nextstepaction"]
 >[Ek ayarlar FHıR için Azure API](azure-api-for-fhir-additional-settings.md)

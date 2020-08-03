@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 60d184b3739d05063a0cddd108a2b2d7d49b57d7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6c52275735a6558a625e2118761d7ba98509dbe1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962790"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497078"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>SQL VM kaynak sağlayıcısı (RP) ile Azure 'da bir SQL Server VM kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -240,7 +241,7 @@ Aracı modunu tam olarak yükseltmek için:
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
 1. SQL Server VM seçin ve **genel bakış**' ı seçin. 
 1. NoAgent veya Lightweight IaaS modundaki sanal makineler SQL Server için, **SQL IaaS uzantı Iletisiyle tek lisans türünü seçin ve sürüm güncelleştirmelerini** seçin.
@@ -281,7 +282,7 @@ SQL Server VM Azure portal, Azure CLı veya PowerShell kullanarak SQL VM kaynak 
 
 ### <a name="azure-portal"></a>Azure portal 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 1. [SQL Server sanal](manage-sql-vm-portal.md)makinelerinize gidin.
 1. Listeden SQL Server VM seçin. SQL Server VM burada listelenmiyorsa, büyük olasılıkla SQL VM kaynak sağlayıcısına kayıtlı değildir. 
 1. **Durum**altındaki değeri görüntüleyin. **Durum** **başarılı**olursa, SQL Server VM SQL VM kaynak sağlayıcısına başarıyla kaydedildi. 

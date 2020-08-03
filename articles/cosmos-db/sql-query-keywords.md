@@ -4,14 +4,14 @@ description: Azure Cosmos DB için SQL anahtar kelimeleri hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261576"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496690"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB anahtar sözcükler
 
@@ -35,9 +35,6 @@ Bu makalede, Azure Cosmos DB SQL sorgularında kullanılabilecek anahtar sözcü
 ```
 
 SQL API 'de, ANSI SQL 'den farklı olarak, Aralık sorguları karışık türlerin özelliklerine göre ifade edebilirsiniz. Örneğin, `grade` `5` bazı öğeler ve diğerleri gibi bir dize gibi bir sayı olabilir `grade4` . Bu durumlarda, JavaScript 'de olduğu gibi, iki farklı tür arasındaki karşılaştırma ile sonuçlanır, bu `Undefined` nedenle öğe atlanır.
-
-> [!TIP]
-> Daha hızlı sorgu yürütme süreleri için, bir Aralık dizin türünü kullanan bir dizin oluşturma ilkesi oluşturun ve bu yan tümce filtre uygulayan herhangi bir sayısal özellik veya yol `BETWEEN` .
 
 ## <a name="distinct"></a>DISTINCT
 
@@ -76,7 +73,7 @@ Sonuçlar:
 ]
 ```
 
-DISTINCT, bir alt sorgu içindeki projeksiyde kullanılabilir:
+`DISTINCT`, bir alt sorgu içindeki projeksiyde kullanılabilir:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames

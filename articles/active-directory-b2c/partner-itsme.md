@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170131"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489524"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Itsme OpenID Connect 'i (OıDC) Azure Active Directory B2C ile yapılandırma
 
@@ -96,7 +96,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Soyadı | family_name |
    |E-posta | e-posta|
 
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 ### <a name="configure-a-user-flow"></a>Kullanıcı akışı yapılandırma
 
@@ -104,7 +104,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 2. **Yeni Kullanıcı akışı**' nı seçin.
 
-3. **Kaydolun ve oturum açın ' ı**seçin.
+3. **Kaydolun ve oturum açın**' ı seçin, bir sürüm seçin ve ardından **Oluştur**' u seçin.
 
 4. Bir **ad**girin.
 
@@ -119,7 +119,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    * **Erişim & kimliği belirteci yaşam sürelerini (dakika)** **5**' e değiştirin.
    * **Yenileme belirteci kayan pencere ömrünü** **süre sonu yok**olarak değiştirin.
 
-### <a name="register-an-application"></a>Uygulamayı kaydetme
+### <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 1. B2C kiracınızda, **Yönet**altında **App registrations**  >  **Yeni kayıt**uygulama kayıtları ' yi seçin.
 
@@ -131,7 +131,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    a. Sınama amacıyla **kimlik doğrulaması**' nı seçin ve **örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.  
 
-   b. **Kaydet**’i seçin.
+   b. **Kaydet**'i seçin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 

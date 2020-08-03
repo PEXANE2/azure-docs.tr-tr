@@ -7,12 +7,13 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77598604"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495784"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak Azure dosya paylaşımları oluşturma ve yönetme
 Bu kılavuzda, Azure CLI kullanarak [Azure dosya paylaşımları](storage-files-introduction.md) ile çalışmanın temel kuralları gösterilmektedir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler ve birden çok makine, uygulama ve örnek arasında dosya paylaşmayı olanaklı kılar. 
@@ -92,7 +93,7 @@ Azure Dosyaları, Azure dosya paylaşımınızdaki dosya ve klasörler ile çal�
 
 Bir dosya paylaşımını SMB ile bağlayabilmeniz için işletim sisteminize göre aşağıdaki belgeye bakın:
 - [Linux](storage-how-to-use-files-linux.md)
-- [Mac OS](storage-how-to-use-files-mac.md)
+- [macOS](storage-how-to-use-files-mac.md)
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Dosya REST protokolü ile bir Azure dosya paylaşımını kullanma 
@@ -119,7 +120,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
-[`az storage file upload`](/cli/azure/storage/file) Komutunu kullanarak bir dosyanın nasıl karşıya yükleneceğini göstermek için, önce Cloud Shell karalama sürücüsüne yüklenecek bir dosya oluşturun. Aşağıdaki örnekte dosyayı oluşturup karşıya yüklersiniz:
+Komutunu kullanarak bir dosyanın nasıl karşıya yükleneceğini göstermek için [`az storage file upload`](/cli/azure/storage/file) , önce Cloud Shell karalama sürücüsüne yüklenecek bir dosya oluşturun. Aşağıdaki örnekte dosyayı oluşturup karşıya yüklersiniz:
 
 ```azurecli-interactive
 cd ~/clouddrive/
@@ -135,7 +136,7 @@ az storage file upload \
 
 Azure CLI'yi yerel olarak çalıştırıyorsanız, `~/clouddrive` değerini makinenizde var olan bir yolla değiştirin.
 
-Dosyayı karşıya yükledikten sonra, dosyanın Azure dosya paylaşımınıza [`az storage file list`](/cli/azure/storage/file) yüklendiğinden emin olmak için komutunu kullanabilirsiniz:
+Dosyayı karşıya yükledikten sonra, [`az storage file list`](/cli/azure/storage/file) dosyanın Azure dosya paylaşımınıza yüklendiğinden emin olmak için komutunu kullanabilirsiniz:
 
 ```azurecli-interactive
 az storage file list \
@@ -147,7 +148,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>Dosya indirme
-Cloud Shell karalama sürücüsüne yüklediğiniz [`az storage file download`](/cli/azure/storage/file) dosyanın bir kopyasını indirmek için komutunu kullanabilirsiniz:
+[`az storage file download`](/cli/azure/storage/file)Cloud Shell karalama sürücüsüne yüklediğiniz dosyanın bir kopyasını indirmek için komutunu kullanabilirsiniz:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -202,7 +203,7 @@ az storage file list \
     --output table
 ```
 
-`az storage file copy start` Komut Azure dosya paylaşımları arasında dosya taşıma işlemleri için uygun olsa da, geçişler ve daha büyük veri hareketleri Için MacOS `rsync` ve Linux ve `robocopy` Windows üzerinde önerilir. `rsync`ve `robocopy` , DOSYASıEST API 'si yerine veri taşımalarını GERÇEKLEŞTIRMEK için SMB 'yi kullanın.
+`az storage file copy start`Komut Azure dosya paylaşımları arasında dosya taşıma işlemleri için uygun olsa da, geçişler ve daha büyük veri hareketleri Için `rsync` MacOS ve Linux ve `robocopy` Windows üzerinde önerilir. `rsync`ve, `robocopy` Dosyasıest API 'si yerine veri taşımalarını gerçekleştirmek IÇIN SMB 'yi kullanın.
 
 ## <a name="create-and-manage-share-snapshots"></a>Paylaşım anlık görüntülerini oluşturma ve yönetme
 Azure dosya paylaşımıyla yerine getirebileceğiniz bir diğer yararlı görev ise paylaşım anlık görüntüleri oluşturmaktır. Anlık görüntü, Azure dosya paylaşımının zamanın bir noktasındaki kopyasını saklar. Paylaşım anlık görüntüleri, zaten tanıyor olabileceğiniz bazı işletim sistemi teknolojilerine benzerdir:
@@ -211,7 +212,7 @@ Azure dosya paylaşımıyla yerine getirebileceğiniz bir diğer yararlı görev
 - MacOS için [Apple dosya sistemi (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) anlık görüntüleri.
 - NTFS ve ReFS gibi Windows dosya sistemleri için [birim gölge kopyası hizmeti (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) .
  
-Şu [`az storage share snapshot`](/cli/azure/storage/share) komutu kullanarak bir paylaşma anlık görüntüsü oluşturabilirsiniz:
+Şu komutu kullanarak bir paylaşma anlık görüntüsü oluşturabilirsiniz [`az storage share snapshot`](/cli/azure/storage/share) :
 
 ```azurecli-interactive
 snapshot=$(az storage share snapshot \
@@ -275,7 +276,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Paylaşım anlık görüntüsünü silme
-[`az storage share delete`](/cli/azure/storage/share) Komutunu kullanarak bir paylaşma anlık görüntüsünü silebilirsiniz. `--snapshot` parametresine `$SNAPSHOT` başvurusunu içeren değişkeni kullanın:
+Komutunu kullanarak bir paylaşma anlık görüntüsünü silebilirsiniz [`az storage share delete`](/cli/azure/storage/share) . `--snapshot` parametresine `$SNAPSHOT` başvurusunu içeren değişkeni kullanın:
 
 ```azurecli-interactive
 az storage share delete \

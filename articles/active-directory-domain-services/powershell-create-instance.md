@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 2d291af3cc6175b371f71fb63402ecb45afcba34
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9c2345c93a163464ea735400c9269e2e3fc27ecf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223474"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488185"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell kullanarak Azure Active Directory Domain Services etkinleştirme
 
@@ -154,9 +154,9 @@ Azure portal yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteri
 
 * Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
     * DNS 'yi yapılandırmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
-* Kullanılabilirlik Alanları destekleyen bir bölgede yönetilen bir etki alanı oluşturduysanız, yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturun. Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
-    * Ağ güvenlik grubu ve gerekli kuralları oluşturmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde ağ güvenlik grubunu otomatik olarak oluşturmanız ve yapılandırmanız istenir.
-* Son kullanıcıların şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açmasını sağlamak [için parola eşitlemesini Azure AD Domain Services etkinleştirin](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) .
+* Yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturun. Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
+    * Ağ güvenlik grubu ve gerekli kuralları oluşturmak için önce `New-AzureAddsNetworkSecurityGroup` komutu kullanarak betiği yükledikten `Install-Script -Name New-AaddsNetworkSecurityGroup` sonra komutunu çalıştırın `New-AaddsNetworkSecurityGroup` . Yönetilen etki alanı için gerekli kurallar sizin için oluşturulur.
+* [Azure AD DS parola eşitlemesini etkinleştirerek](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) son kullanıcıların, Şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açabilirler.
 
 ## <a name="complete-powershell-script"></a>PowerShell betiğini Tamam
 
@@ -241,9 +241,9 @@ Azure portal yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteri
 
 * Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
     * DNS 'yi yapılandırmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
-* Kullanılabilirlik Alanları destekleyen bir bölgede yönetilen bir etki alanı oluşturduysanız, yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturun. Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
-    * Ağ güvenlik grubu ve gerekli kuralları oluşturmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde ağ güvenlik grubunu otomatik olarak oluşturmanız ve yapılandırmanız istenir.
-* Son kullanıcıların şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açmasını sağlamak [için parola eşitlemesini Azure AD Domain Services etkinleştirin](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) .
+* Yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturun. Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
+    * Ağ güvenlik grubu ve gerekli kuralları oluşturmak için önce `New-AzureAddsNetworkSecurityGroup` komutu kullanarak betiği yükledikten `Install-Script -Name New-AaddsNetworkSecurityGroup` sonra komutunu çalıştırın `New-AaddsNetworkSecurityGroup` . Yönetilen etki alanı için gerekli kurallar sizin için oluşturulur.
+* [Azure AD DS parola eşitlemesini etkinleştirerek](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) son kullanıcıların, Şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açabilirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

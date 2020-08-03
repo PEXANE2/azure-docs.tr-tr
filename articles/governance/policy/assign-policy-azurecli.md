@@ -3,12 +3,13 @@ title: 'Hızlı başlangıç: Azure CLı ile yeni ilke ataması'
 description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Azure CLı 'yi kullanırsınız.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: 33db6b4098dc0a69f4dabbea62fc9627cdc948eb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2c289aa01362fcf0ede24bc1da7e8aef9e9be072
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85558935"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496704"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
@@ -19,7 +20,7 @@ Bu işlemin sonunda, yönetilen disk kullanmayan sanal makineleri başarılı bi
 
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını yönetmek veya bu kaynakları oluşturmak için kullanılır. Bu kılavuzda, Azure ortamınızda uyumlu olmayan kaynakları belirlemek ve bir ilke ataması oluşturmak için Azure CLI kullanılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -52,7 +53,7 @@ Yukarıdaki komutta aşağıdaki bilgiler kullanılmaktadır:
 - **Ad** - Atamanın gerçek adı. Bu örnekte _audit-vm-manageddisks_ kullanıldı.
 - **Görünen Ad** - Bu ilke atamasının görünen adı. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_kullanıyorsunuz demektir.
 - **İlke** - Bu, atamayı oluşturmak için kullandığınız ilke tanımı kimliğidir. Bu durumda, _yönetilen diskleri kullanmayan ilke tanımı denetim VM_'lerinin kimliğidir. İlke tanımı kimliğini almak için şu komutu çalıştırın: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
-- **Kapsam** - Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Abonelikten kaynak gruplarına kadar değişebilir. &lt;Kapsam&gt; yerine kaynak grubunuzun adını yazdığınızdan emin olun.
+- **Kapsam** - Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Bir abonelikten kaynak gruplarına kadar değişiklik gösterebilir. &lt;Kapsam&gt; yerine kaynak grubunuzun adını yazdığınızdan emin olun.
 
 ## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları belirleme
 

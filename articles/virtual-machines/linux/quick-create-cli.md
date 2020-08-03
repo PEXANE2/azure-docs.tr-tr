@@ -13,12 +13,13 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 103d4d2aec701dd7754d2a8e0046edf7eeab9a4c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-azurecli
+ms.openlocfilehash: 78ecd052c071835ef488882979a3bc5306c35365
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759272"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488985"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile Linux sanal makinesi oluşturma
 
@@ -28,11 +29,11 @@ Bu öğreticide Ubuntu 16.04 LTS sürümü yüklenmektedir. VM'nin çalıştığ
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ediyorsanız bu hızlı başlangıç için Azure CLI 2.0.30 veya sonraki bir sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
@@ -48,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 [az vm create](/cli/azure/vm) komutuyla bir sanal makine oluşturun.
 
-Aşağıdaki örnek, *myVM* adlı bir VM oluşturur ve *azureuser* adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys` Parametresi, otomatik olarak bir SSH anahtarı oluşturmak ve varsayılan anahtar konumuna (*~/PST*) koymak için kullanılır. Bunun yerine belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, *myVM* adlı bir VM oluşturur ve *azureuser* adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys`Parametresi, otomatik olarak BIR SSH anahtarı oluşturmak ve varsayılan anahtar konumuna (*~/PST*) koymak için kullanılır. Bunun yerine belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
 ```azurecli-interactive
 az vm create \

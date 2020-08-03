@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: f95c4256f4a0a3fdf410efecf9c22d578d1963a2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461808"
+ms.locfileid: "87500972"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning ile veri işlemeyi iyileştirme
 
@@ -64,7 +64,6 @@ Dizinleme | Size önem verdiğiniz verileri nerede bulabileceğinizi belirten bi
 * `Spark` `Dask` ' Bellek yetersiz ' verilerini işlemek için veya gibi bir çerçeve kullanın. Bu seçenekte, veri çerçevesi, son olarak toplanmakta olan son sonuçla birlikte bölüm tarafından RAM bölümüne yüklenir ve işlenir.  
 
 * Dağıtılmış bir çerçeve kullanarak bir kümeye Genişleme. Bu seçenekte, veri işleme yükleri, son olarak toplanan son sonuçla birlikte paralel olarak çalışan birden çok CPU üzerinde bölünür ve işlenir.
-
 
 ### <a name="recommended-distributed-frameworks"></a>Önerilen dağıtılmış çerçeveler
 

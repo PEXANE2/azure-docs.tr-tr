@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 9b2c1021f88eab15a1f8803a4439dc0cb9b6ed97
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 17a41030adeb302f2c85b1bd4576caad9e723544
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117653"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489767"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları oluşturma ve yönetme-tek sunucu
 Sunucu düzeyinde güvenlik duvarı kuralları, bir PostgreSQL için Azure veritabanı sunucusuna erişimi belirli bir IP adresinden veya IP adresi aralığından yönetmek için kullanılabilir. Uygun Azure CLı komutlarını kullanarak sunucunuzu yönetmek için güvenlik duvarı kuralları oluşturabilir, güncelleştirebilir, silebilir, listeleyebilir ve gösterebilirsiniz. PostgreSQL için Azure veritabanı güvenlik duvarı kurallarına genel bakış için bkz. [PostgreSQL Için Azure veritabanı sunucu güvenlik duvarı kuralları](concepts-firewall-rules.md).

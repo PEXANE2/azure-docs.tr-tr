@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 839aae2ccf9433dafec0ddee692c476611924aa0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74771737"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497401"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLı kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı geri yükleme
 Bu örnek CLı betiği, MariaDB sunucusu için tek bir Azure veritabanını zaman içinde önceki bir noktaya geri yükler.

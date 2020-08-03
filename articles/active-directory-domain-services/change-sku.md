@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 51f277827ac0865eaede141e5817962b04d2bd49
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a9954b0ddd446c4e39d85ab6d3e37402176236d6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221466"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489648"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Mevcut Azure Active Directory Domain Services yönetilen bir etki alanı için SKU 'YU değiştirme
 
-Azure Active Directory Domain Services (Azure AD DS) ' de, kullanılabilir performans ve Özellikler SKU türünü temel alır. Bu özellik farkları, tek yönlü giden orman güvenlerini (Şu anda önizleme aşamasında) yedekleme sıklığını veya en yüksek sayıyı içerir.
+Azure Active Directory Domain Services (Azure AD DS) ' de, kullanılabilir performans ve Özellikler SKU türünü temel alır. Bu özellik farkları, tek yönlü giden orman güvenlerini yedekleme sıklığını veya en yüksek sayıda içerir.
 
 Yönetilen etki alanını oluştururken bir SKU seçersiniz ve yönetilen etki alanı dağıtıldıktan sonra iş gereksinimleriniz değiştikçe STB 'leri yukarı veya aşağı doğru değiştirebilirsiniz. İş Gereksinimlerdeki değişiklikler, daha sık yedekleme ihtiyacını veya ek orman güvenleri oluşturmayı içerebilir. Farklı SKU 'ların sınırları ve fiyatları hakkında daha fazla bilgi için bkz. [azure AD DS SKU kavramlarına][concepts-sku] ve [Azure AD DS fiyatlandırma][pricing] sayfalarına bakın.
 
@@ -38,9 +38,9 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 
 ## <a name="sku-change-limitations"></a>SKU değişiklik sınırlamaları
 
-Yönetilen etki alanı dağıtıldıktan sonra SKU 'Ları yukarı veya aşağı doğru değiştirebilirsiniz. Ancak, bir kaynak ormanı (Şu anda önizleme aşamasında) kullanıyorsanız ve Azure AD DS 'den şirket içi AD DS ortamına tek yönlü bir giden orman güveni oluşturduysanız, SKU değişiklik işlemi için bazı sınırlamalar vardır. *Premium* ve *Kurumsal* SKU 'lar, oluşturabileceğiniz güven sayısı için bir sınır tanımlar. Yapılandırılmış olan en düşük sınıra sahip bir SKU 'ya geçiş yapamazsınız.
+Yönetilen etki alanı dağıtıldıktan sonra SKU 'Ları yukarı veya aşağı doğru değiştirebilirsiniz. Ancak, bir kaynak ormanı kullanıyorsanız ve Azure AD DS şirket içi AD DS ortamına tek yönlü bir giden orman güveni oluşturduysanız, SKU değişiklik işlemi için bazı sınırlamalar vardır. *Premium* ve *Kurumsal* SKU 'lar, oluşturabileceğiniz güven sayısı için bir sınır tanımlar. Yapılandırılmış olan en düşük sınıra sahip bir SKU 'ya geçiş yapamazsınız.
 
-Örneğin:
+Örnek:
 
 * *Premium* SKU 'sunda iki orman güveni oluşturduysanız, *Standart* SKU 'ya geçiş yapamazsınız. *Standart* SKU, orman güvenlerini desteklemez.
 * Veya *Premium* SKU 'sunda yedi güven oluşturduysanız, *Kurumsal* SKU 'ya geçiş yapamazsınız. *Enterprise* SKU 'su en fazla beş güveni destekler.
@@ -66,7 +66,7 @@ SKU türünü değiştirmek için bir dakika veya iki işlem olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir kaynak ormanınız varsa ve SKU değişikliğinden sonra ek güvenler oluşturmak istiyorsanız bkz. [AD DS Azure 'da şirket içi etki alanına giden orman güveni oluşturma (Önizleme)][create-trust].
+Bir kaynak ormanınız varsa ve SKU değişikliğinden sonra ek güvenler oluşturmak istiyorsanız bkz. [Azure AD DS şirket içi etki alanına giden orman güveni oluşturma][create-trust].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

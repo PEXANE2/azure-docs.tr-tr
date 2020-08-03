@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
-ms.openlocfilehash: 1e6108f3b15e90a71b4d1956c463a648c38eb937
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 27d1841458e8c5e1854d6fcd0810c36d4272cc1d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106904"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500547"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme
 
@@ -66,7 +67,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 `az mysql server restore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Description  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
 | name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
@@ -106,7 +107,7 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 
 `az mysql server georestore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Description  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Yeni sunucunun ait olacağı kaynak grubunun adı.|
 |name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |

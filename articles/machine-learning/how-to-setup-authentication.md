@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 867babcf7160ce6e589197be0a3186e5a2156238
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423584"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489886"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ Belgelerde ve örneklerde birçok örnek etkileşimli kimlik doğrulaması kulla
 
 ## <a name="service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulaması
 
-Hizmet sorumlusu (SP) kimlik doğrulamasını kullanmak için, önce SP 'yi oluşturmanız ve çalışma alanınıza erişim vermeniz gerekir. Daha önce belirtildiği gibi, erişimi denetlemek için Azure rol tabanlı erişim denetimi (RBAC) kullanılır, bu nedenle SP 'ye verilecek erişime de karar vermelisiniz.
+Hizmet sorumlusu (SP) kimlik doğrulamasını kullanmak için, önce SP 'yi oluşturmanız ve çalışma alanınıza erişim vermeniz gerekir. Daha önce belirtildiği gibi, erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılır, bu nedenle SP 'ye verilecek erişime de karar vermelisiniz.
 
 > [!IMPORTANT]
 > Hizmet sorumlusu kullanırken, için kullanılan __görev için gereken en düşük erişimi__ verin. Örneğin, için tümü bir Web dağıtımı için erişim belirtecini okumasından, bir hizmet sorumlusu sahibine veya katkıda bulunan erişime izin vermezsiniz.

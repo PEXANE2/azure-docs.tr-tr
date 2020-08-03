@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429700"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498370"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı oluşturma
 
@@ -24,7 +25,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
 
 ### <a name="sql-api"></a><a id="portal-sql"></a>SQL API
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya var olan bir hesabı seçin.
 
@@ -40,7 +41,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>MongoDB için Azure Cosmos DB API
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -56,7 +57,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API’si
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-cassandra-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -75,7 +76,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin API
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-graph-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -92,7 +93,7 @@ Bu makalede Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kul
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tablo API’si
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-table-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -119,17 +120,17 @@ Tüm Azure Cosmos DB API 'lerde tüm Azure CLı örneklerinin listelenmesi için
 * [Azure CLı ile Gremlin grafiği oluşturma](./scripts/cli/gremlin/create.md)
 * [Azure CLı ile Tablo API'si tablosu oluşturma](./scripts/cli/table/create.md)
 
-## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>PowerShell kullanarak kapsayıcı oluşturma<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershell"></a>PowerShell kullanarak kapsayıcı oluşturma
 
 Aşağıdaki bağlantılar, PowerShell kullanarak Azure Cosmos DB için kapsayıcı kaynaklarının nasıl oluşturulacağını gösterir.
 
-Tüm Azure Cosmos DB API 'lerde tüm PowerShell örneklerinin listelenmesi için bkz. [SQL API](powershell-samples-sql.md), [Cassandra API](powershell-samples-cassandra.md), [MongoDB API](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)ve [tablo API'si](powershell-samples-table.md)
+Tüm Azure Cosmos DB API 'lerde tüm PowerShell örneklerinin listesi için bkz. [PowerShell örnekleri](powershell-samples.md)
 
 * [PowerShell ile kapsayıcı oluşturma](manage-with-powershell.md#create-container)
-* [PowerShell ile MongoDB API 'SI için Azure Cosmos DB bir koleksiyon oluşturma](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [PowerShell ile Cassandra tablosu oluşturma](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [PowerShell ile Gremlin grafiği oluşturma](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [PowerShell ile Tablo API'si tablosu oluşturma](./scripts/powershell/table/ps-table-create.md)
+* [PowerShell ile MongoDB API 'SI için Azure Cosmos DB bir koleksiyon oluşturma](./scripts/powershell/mongodb/create.md)
+* [PowerShell ile Cassandra tablosu oluşturma](./scripts/powershell/cassandra/create.md)
+* [PowerShell ile Gremlin grafiği oluşturma](./scripts/powershell/gremlin/create.md)
+* [PowerShell ile Tablo API'si tablosu oluşturma](./scripts/powershell/table/create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>.NET SDK'sını kullanarak kapsayıcı oluşturma
 

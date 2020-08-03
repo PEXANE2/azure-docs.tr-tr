@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 538f3f18e1c8889834b9ee6588b85c9094dfbebe
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124740"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496721"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT oluşturmaya hazırlanma
 
@@ -32,7 +32,7 @@ Azure portal yeni bir Azure aboneliği oluşturmak için:
 
 Abonelik için sahip izinlerine sahip bir kullanıcının vFXT kümesini oluşturması gerekir. Küme oluşturma, bir sahibin yazılım hizmet koşullarını kabul etmesini ve değişiklikleri ağ ve depolama kaynaklarına yetkilendirmesine gerek duyar.
 
-Sahip olmayan bir Azure kümesi için avere vFXT oluşturma izni veren bazı geçici çözümler vardır. Bu senaryolar kaynakları kısıtlamayı ve oluşturucuya ek rol tabanlı erişim denetimi (RBAC) rolü atamayı içerir. Bu durumların tümünde, bir abonelik sahibi ayrıca [avere vFXT yazılım koşullarını](#accept-software-terms) zaman önüne kabul etmelidir.
+Sahip olmayan bir Azure kümesi için avere vFXT oluşturma izni veren bazı geçici çözümler vardır. Bu senaryolar, kaynakların kısıtlanması ve oluşturana ek Azure rolleri atanması ile ilgilidir. Bu durumların tümünde, bir abonelik sahibi ayrıca [avere vFXT yazılım koşullarını](#accept-software-terms) zaman önüne kabul etmelidir.
 
 | Senaryo | Kısıtlamalar | Avere vFXT kümesini oluşturmak için gereken erişim rolleri |
 |----------|--------|-------|

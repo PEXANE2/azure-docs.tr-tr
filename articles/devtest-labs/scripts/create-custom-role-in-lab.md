@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 242e2a2bf743777dd43a4c84194ebd894b5edd3c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c97d5d3119644a6426152b1b832fabac3dde4863
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290405"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498421"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'de laboratuarda özel bir rol oluşturmak için PowerShell kullanın
 
@@ -41,7 +41,7 @@ Bu betik şu komutları kullanır:
 | Komut | Notlar |
 |---|---|
 | [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Azure RBAC kullanılarak güvenliği sağlanabilir bir Azure Kaynak sağlayıcısı için işlemleri alır. |
-| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Atama için kullanılabilen tüm Azure RBAC rollerini listeler. |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Atama için kullanılabilen tüm Azure rollerini listeler. |
 | [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | Özel bir rol oluşturur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

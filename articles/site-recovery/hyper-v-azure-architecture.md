@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 6dfa162de02174ac4a1a8251457249bd5ea4d766
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416341"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495735"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V'den Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -36,7 +36,7 @@ Aşağıdaki tablo ve grafik, Hyper-V konakları VMM tarafından yönetilmediği
 
 **Hyper-V ' d e Azure mimarisine (VMM olmadan)**
 
-![Mimari](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![Şirket içi Hyper-V sitesini VMM olmadan Azure mimarisine gösteren diyagram.](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Mimari bileşenler-VMM ile Hyper-V
@@ -53,7 +53,7 @@ Aşağıdaki tablo ve grafik, Hyper-V konakları VMM bulutlarında yönetilmiyor
 
 **Hyper-V ' d e Azure mimarisine (VMM ile)**
 
-![Bileşenler](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![VMM ile şirket içi Hyper-V sitesini Azure mimarisine gösteren diyagram.](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>Giden ağ bağlantısını ayarlama
 
@@ -76,7 +76,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 
-![Hyper-V-Azure arası çoğaltma](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![Hyper-V ' d i Azure çoğaltma işlemini gösteren diyagram](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **Çoğaltma ve kurtarma işlemi**
 
@@ -86,7 +86,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 1. Azure portalında veya şirket içinde bir Hyper-V VM’si için koruma etkinleştirdikten sonra, **Korumayı etkinleştir** başlatılır.
 2. İş, makinenin önkoşullarla uyumlu olup olmadığını denetler, ardından, çoğaltmayı daha önce yapılandırdığınız ayarları uygulamak üzere [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) çağırır.
 3. İş, tam bir VM çoğaltması başlatmak için [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) yöntemini çağırarak ilk çoğaltmayı başlatır ve VM’lerin sanal disklerini Azure’a gönderir.
-4. İşi **işler** sekmesinde izleyebilirsiniz.      ![İşler listesi ](media/hyper-v-azure-architecture/image1.png) ![ Korumayı etkinleştirme detaya gitme](media/hyper-v-azure-architecture/image2.png)
+4. İşi **işler** sekmesinde izleyebilirsiniz.      ![İşler sekmesindeki işler listesinin ekran görüntüsü. ](media/hyper-v-azure-architecture/image1.png) ![Daha fazla ayrıntı ile korumayı etkinleştir ekranının ekran görüntüsü.](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>İlk veri çoğaltma
@@ -123,7 +123,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 2. Yeniden eşitleme sona erdikten sonra, normal değişim çoğaltması devam edecektir.
 3. Saatlerin dışında varsayılan yeniden eşitleme beklemek istemiyorsanız, bir VM 'yi el ile yeniden eşitleyebilirsiniz. Örneğin, bir kesinti oluşursa. Bunu yapmak için, Azure portal yeniden **eşitle**> VM 'yi seçin.
 
-    ![El ile yeniden eşitleme](./media/hyper-v-azure-architecture/image4-site.png)
+    ![Yeniden Eşitle seçeneğini gösteren ekran görüntüsü.](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>İşlemi yeniden dene

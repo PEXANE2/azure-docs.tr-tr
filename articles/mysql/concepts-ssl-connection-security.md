@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 97f9635cf6bba9ee276e6775c1718a5d83e9af3e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282135"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495089"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda SSL/TLS bağlantısı
 
 MySQL için Azure veritabanı, veritabanı sunucunuzu Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
 
 > [!NOTE]
-> `require_secure_transport`Sunucu parametre değerinin güncelleştirilmesi MySQL hizmetinin davranışını etkilemez. Bağlantılarını güvenli hale getirmek için bu makalede özetlenen SSL ve TLS zorlama özelliklerini kullanın.
+> `require_secure_transport`Sunucu parametre değerinin güncelleştirilmesi MySQL hizmetinin davranışını etkilemez. Veritabanınıza yönelik bağlantıları güvenli hale getirmek için bu makalede özetlenen SSL ve TLS zorlama özelliklerini kullanın.
 
 ## <a name="ssl-default-settings"></a>SSL varsayılan ayarları
 

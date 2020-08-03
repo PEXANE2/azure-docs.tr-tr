@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 880ccf9a69d5898da98aeabcfd89d05ff94e3b43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223015"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489818"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Active Directory Domain Services yönetilen etki alanı oluşturma
 
@@ -23,7 +23,7 @@ Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Dire
 
 Bu makalede, Azure Resource Manager şablonu kullanarak yönetilen bir etki alanının nasıl oluşturulacağı gösterilmektedir. Destekleyici kaynaklar Azure PowerShell kullanılarak oluşturulur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
@@ -126,7 +126,7 @@ Kaynak Yöneticisi kaynak tanımının bir parçası olarak, aşağıdaki yapıl
 | Etki              | Yönetilen etki alanınız için DNS etki alanı adı, ön eklerin ve çakışmaların adlandırılmasında önceki noktaları dikkate alır. |
 | filteredSync            | Azure AD DS, Azure AD 'de bulunan *Tüm* kullanıcıları ve grupları ya da yalnızca belirli grupların *kapsamlı* bir eşitlemesini eşitlemenize olanak tanır.<br /><br /> Kapsamlı eşitleme hakkında daha fazla bilgi için bkz. [Azure AD Domain Services kapsamlı eşitleme][scoped-sync].|
 | notificationSettings    | Yönetilen etki alanında oluşturulan herhangi bir uyarı varsa, e-posta bildirimleri gönderilebilir. <br /><br />Azure kiracının *genel yöneticileri* ve *AAD DC yöneticileri* grubunun üyeleri bu bildirimler için *etkinleştirilebilir* .<br /><br /> İsterseniz, dikkat gerektiren uyarılar olduğunda bildirim için ek alıcılar ekleyebilirsiniz.|
-| domainConfigurationType | Varsayılan olarak, yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Bir Kullanıcı Ormanı oluşturmak için bir *DomainConfiguration* değeri belirtmeniz gerekmez.<br /><br /> *Kaynak* ormanı yalnızca doğrudan Azure AD 'de oluşturulan kullanıcıları ve grupları eşitler. Kaynak ormanları Şu anda önizleme aşamasındadır. Kaynak ormanı oluşturmak için değeri *Resourcetrusting* olarak ayarlayın.<br /><br />*Kaynak* ormanları hakkında daha fazla bilgi için, bir tane kullanabilirsiniz ve şirket içi AD DS etki alanlarıyla orman güvenleri oluşturma hakkında daha fazla bilgi için bkz. [Azure AD DS kaynak ormanları genel bakış][resource-forests].|
+| domainConfigurationType | Varsayılan olarak, yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Bir Kullanıcı Ormanı oluşturmak için bir *DomainConfiguration* değeri belirtmeniz gerekmez.<br /><br /> *Kaynak* ormanı yalnızca doğrudan Azure AD 'de oluşturulan kullanıcıları ve grupları eşitler. Kaynak ormanı oluşturmak için değeri *Resourcetrusting* olarak ayarlayın.<br /><br />*Kaynak* ormanları hakkında daha fazla bilgi için, bir tane kullanabilirsiniz ve şirket içi AD DS etki alanlarıyla orman güvenleri oluşturma hakkında daha fazla bilgi için bkz. [Azure AD DS kaynak ormanları genel bakış][resource-forests].|
 
 Aşağıdaki sıkıştırılmış parametreler tanımı, bu değerlerin nasıl bildirildiği gösterilmektedir. *Aaddscontoso.com* adlı bir Kullanıcı ormanı, Azure AD 'deki tüm kullanıcılar yönetilen etki alanına eşitlenmiş olarak oluşturulur:
 

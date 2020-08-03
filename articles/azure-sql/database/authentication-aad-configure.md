@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 07/27/2020
-ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281166"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499186"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -188,7 +188,7 @@ Bir Azure AD yöneticisi sağlamak için aşağıdaki Azure PowerShell komutlar�
 
 SQL yönetilen örneğiniz için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler aşağıdaki tabloda listelenmiştir:
 
-| Cmdlet adı | Açıklama |
+| Cmdlet adı | Description |
 | --- | --- |
 | [Set-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikte SQL yönetilen örneği için bir Azure AD yöneticisi sağlar. (Geçerli abonelikte olmalıdır)|
 | [Remove-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikteki SQL yönetilen örneği için bir Azure AD yöneticisini kaldırır. |
@@ -277,7 +277,7 @@ PowerShell cmdlet 'lerini çalıştırmak için Azure PowerShell yüklü ve çal
 
 SQL veritabanı ve Azure SYNAPSE için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler:
 
-| Cmdlet adı | Açıklama |
+| Cmdlet adı | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory Yöneticisi sağlar. (Geçerli abonelikte olmalıdır) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory yöneticisini kaldırır.|
@@ -360,7 +360,7 @@ SQL yönetilen örneği Azure AD sunucu sorumlularını (oturumlar) desteklediğ
 Ancak, SQL veritabanı ve Azure SYNAPSE ile Azure Active Directory kimlik doğrulaması kullanmak için Azure AD kimliğine göre kapsanan veritabanı kullanıcılarının kullanılması gerekir. Kapsanan bir veritabanı kullanıcısının ana veritabanında oturum açma bilgileri yoktur ve Azure AD 'de veritabanıyla ilişkili bir kimlikle eşlenir. Azure AD kimliği, tek bir kullanıcı hesabı ya da bir grup olabilir. Kapsanan veritabanı kullanıcıları hakkında daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları-veritabanınızı taşınabilir hale getirme](https://msdn.microsoft.com/library/ff929188.aspx).
 
 > [!NOTE]
-> Veritabanı kullanıcıları (Yöneticiler hariç) Azure portal kullanılarak oluşturulamaz. RBAC rolleri SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE veritabanına yayılmaz. Azure RBAC rolleri, Azure kaynaklarını yönetmek için kullanılır ve veritabanı izinlerine uygulanmaz. Örneğin, **SQL Server katılımcısı** rolü SQL VERITABANı, SQL yönetilen örneği veya Azure SYNAPSE veritabanına bağlanmak için erişim vermez. Erişim izni doğrudan veritabanında Transact-SQL deyimleri kullanılarak verilmelidir.
+> Veritabanı kullanıcıları (Yöneticiler hariç) Azure portal kullanılarak oluşturulamaz. Azure rolleri SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE veritabanına yayılmaz. Azure rolleri, Azure kaynaklarını yönetmek için kullanılır ve veritabanı izinlerine uygulanmaz. Örneğin, **SQL Server katılımcısı** rolü SQL VERITABANı, SQL yönetilen örneği veya Azure SYNAPSE veritabanına bağlanmak için erişim vermez. Erişim izni doğrudan veritabanında Transact-SQL deyimleri kullanılarak verilmelidir.
 
 > [!WARNING]
 > `:` `&` T-SQL ve deyimlerdeki Kullanıcı adları olarak dahil edildiğinde iki nokta veya ve işareti gibi özel karakterler `CREATE LOGIN` `CREATE USER` desteklenmez.
@@ -544,4 +544,3 @@ Azure AD kimlik doğrulamasıyla ilgili sorunları gidermeye yönelik yönergele
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png
-

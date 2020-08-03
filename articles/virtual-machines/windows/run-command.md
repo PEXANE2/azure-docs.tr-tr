@@ -7,13 +7,14 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
+ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 76ff9ff9479351eb3ec2a0e973fe3c44562adf55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd1e20504d96b55d6a450512ea287b9352fb043a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508432"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496942"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Çalıştır komutunu kullanarak PowerShell betiklerini Windows sanal makinenizde çalıştırma
 
@@ -21,7 +22,7 @@ ms.locfileid: "86508432"
 
 
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Sanal makinelerinize birden çok şekilde erişebilirsiniz. Çalıştır komutu, sanal makinelerinizde VM aracısını kullanarak uzaktan betikleri çalıştırabilir. Windows VM 'Leri için Azure portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)veya [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) aracılığıyla Run komutunu kullanın.
 
@@ -61,7 +62,7 @@ The entity was not found in this Azure location
 |**ResetRDPCert**|RDP dinleyicisine bağlı TLS/SSL sertifikasını kaldırır ve RDP dinleyicisi güvenliğini varsayılana geri yükler. Sertifikayla ilgili herhangi bir sorun görürseniz bu betiği kullanın.|
 |**SetRDPPort**|Uzak Masaüstü bağlantıları için varsayılan veya Kullanıcı tarafından belirtilen bağlantı noktası numarasını ayarlar. Bağlantı noktasına gelen erişim için güvenlik duvarı kuralları sağlar.|
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Aşağıdaki örnek, bir Azure Windows sanal makinesinde kabuk betiği çalıştırmak için [az VM Run-Command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) komutunu kullanır.
 

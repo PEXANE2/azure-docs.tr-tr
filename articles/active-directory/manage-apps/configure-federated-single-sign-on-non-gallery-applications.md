@@ -15,19 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb4b9b3b93053756896dc60c61cdb15c7e521f5d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763559"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497248"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Galeri dışı bir uygulama için Federasyon çoklu oturum açmayı yapılandırma
 
-Galeri dışı bir uygulama için *kod yazmadan*çoklu oturum açmayı yapılandırmak için bir aboneliğiniz veya Azure AD Premium olması gerekir ve uygulamanın SAML 2,0 ' i desteklemesi gerekir. Azure AD sürümleri hakkında daha fazla bilgi için [Azure AD fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/)ziyaret edin.
-
-## <a name="overview-of-steps-required"></a>Gerekli adımlara genel bakış
-Galeri olmayan (ör. özel) bir uygulama için SAML 2,0 ile federe çoklu oturum açmayı yapılandırmak için gereken adımlara yüksek düzeyde bir genel bakış aşağıda verilmiştir.
+Bu makalede Galeri olmayan (ör. özel) bir uygulama için SAML 2,0 ile federe çoklu oturum açmayı yapılandırmak için gereken adımlara yüksek düzeyde bir genel bakış sunulmaktadır.
 
 -   Azure AD 'de uygulamanın meta veri değerlerini yapılandırma (oturum açma URL 'SI, tanımlayıcı, yanıt URL 'SI)
 

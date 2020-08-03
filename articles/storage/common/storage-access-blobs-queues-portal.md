@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: db65ba904cdce7bec83b851c6b50316c89fcedfd
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9d4097e847417f56c9881a3e18237e97dfee465e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128735"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501415"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Blob veya kuyruk verilerine erişmek için Azure portal kullanma
 
@@ -38,7 +38,7 @@ Blob ve kuyruk verilerine hesap erişim anahtarıyla erişmek için, **Microsoft
 Azure portal blob veya kuyruk verilerine erişmeyi denediğinizde, portal önce **Microsoft. Storage/storageAccounts/ListKeys/Action**ile bir rol atanıp atanmadığını denetler. Bu eylemle bir rol atanmışsa, Portal blob ve kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atanmamışsa, Portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
 
 > [!NOTE]
-> Klasik abonelik yöneticisi rolleri hizmet yöneticisi ve ortak yönetici, Azure Resource Manager [sahip](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. **Sahip** rolü, **Microsoft. Storage/storageaccounts/ListKeys/ACTION**dahil tüm eylemleri içerir, bu nedenle bu yönetim rollerinden birine sahip bir kullanıcı da hesap anahtarıyla blob ve kuyruk verilerine erişebilir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Klasik abonelik yöneticisi rolleri hizmet yöneticisi ve ortak yönetici, Azure Resource Manager [sahip](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. **Sahip** rolü, **Microsoft. Storage/storageaccounts/ListKeys/ACTION**dahil tüm eylemleri içerir, bu nedenle bu yönetim rollerinden birine sahip bir kullanıcı da hesap anahtarıyla blob ve kuyruk verilerine erişebilir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Azure AD hesabınızı kullanın
 

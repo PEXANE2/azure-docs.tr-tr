@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 2e12da29a8388bf4a232930c3737be7ddce80d12
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 55805402037edac230aa225b74ce2eeb731945b7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611951"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495412"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak MySQL için Azure veritabanı sunucusu oluşturma
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Az. MySql PowerShell modülü önizlemedeyken, aşağıdaki komutu kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Az. MySql PowerShell modülü önizlemedeyken, aşağıdaki komutu kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Az. MySql PowerShell modülü genel kullanıma sunulduğunda, bu, gelecekteki az PowerShell modülü sürümlerinin bir parçası haline gelir ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
 
 MySQL için Azure veritabanı hizmetini ilk kez kullanıyorsanız, **Microsoft. Dbformyısql** kaynak sağlayıcısını kaydetmeniz gerekir.
@@ -55,15 +55,15 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>MySQL için Azure Veritabanı sunucusu oluşturma
 
-`New-AzMySqlServer` Cmdlet 'Ini kullanarak MySQL Için Azure veritabanı sunucusu oluşturun. Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
+Cmdlet 'ini kullanarak MySQL için Azure veritabanı sunucusu oluşturun `New-AzMySqlServer` . Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
 
-Aşağıdaki tabloda, `New-AzMySqlServer` cmdlet 'inin yaygın olarak kullanılan parametrelerinin ve örnek değerlerinin bir listesi yer almaktadır.
+Aşağıdaki tabloda, cmdlet 'inin yaygın olarak kullanılan parametrelerinin ve örnek değerlerinin bir listesi yer almaktadır `New-AzMySqlServer` .
 
 |        **Ayar**         | **Örnek değer** |                                                                                                                                                             **Açıklama**                                                                                                                                                              |
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Adı                       | mydemoserver     | Azure 'da MySQL sunucusu için Azure veritabanınızı tanımlayan genel olarak benzersiz bir ad seçin. Sunucu adı yalnızca harf, sayı ve kısa çizgi (-) karakterini içerebilir. Belirtilen tüm büyük karakterler, oluşturma işlemi sırasında otomatik olarak küçük harfe dönüştürülür. 3 ila 63 karakter arası içermelidir. |
+| Name                       | mydemoserver     | Azure 'da MySQL sunucusu için Azure veritabanınızı tanımlayan genel olarak benzersiz bir ad seçin. Sunucu adı yalnızca harf, sayı ve kısa çizgi (-) karakterini içerebilir. Belirtilen tüm büyük karakterler, oluşturma işlemi sırasında otomatik olarak küçük harfe dönüştürülür. 3 ila 63 karakter arası içermelidir. |
 | ResourceGroupName          | myresourcegroup  | Azure kaynak grubunun adını sağlayın.                                                                                                                                                                                                                                                                                            |
-| Sku                        | GP_Gen5_2        | SKU'nun adı. Toplu olarak **fiyatlandırma katmanı\_işlem oluşturma\_sanal çekirdekleri** kuralına uyar. SKU parametresi hakkında daha fazla bilgi için bu tablodan sonraki bilgilere bakın.                                                                                                                                           |
+| Sku                        | GP_Gen5_2        | SKU'nun adı. Toplu olarak **fiyatlandırma katmanı \_ işlem oluşturma \_ sanal çekirdekleri** kuralına uyar. SKU parametresi hakkında daha fazla bilgi için bu tablodan sonraki bilgilere bakın.                                                                                                                                           |
 | BackupRetentionDay         | 7                | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. 7-35 aralığındadır.                                                                                                                                                                                                                                                                       |
 | GeoRedundantBackup         | Etkin          | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. Bu değer, temel fiyatlandırma katmanındaki sunucular için etkinleştirilemez ve sunucu oluşturulduktan sonra değiştirilemez. İzin verilen değerler: Etkin, Devre Dışı.                                                                                                      |
 | Konum                   | westus           | Sunucu için Azure bölgesi.                                                                                                                                                                                                                                                                                                         |
@@ -73,7 +73,7 @@ Aşağıdaki tabloda, `New-AzMySqlServer` cmdlet 'inin yaygın olarak kullanıla
 | Yönetici Kullanıcı adı      | myadmin          | Yöneticinin oturum açma kullanıcı adı. Şu değerler kullanılamaz: **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Güvenli bir dize biçimindeki yönetici kullanıcının parolası. 8 ile 128 arasında karakter içermelidir. Parolanız şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.                                       |
 
-**SKU** parametresi değeri, aşağıdaki örneklerde gösterildiği gibi **fiyatlandırma katmanı\_işlem oluşturma\_sanal çekirdeklerini** izler.
+**SKU** parametresi değeri, aşağıdaki örneklerde gösterildiği gibi **fiyatlandırma katmanı \_ işlem oluşturma \_ sanal çekirdeklerini** izler.
 
 - `-Sku B_Gen5_1`Temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
 - `-Sku GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
@@ -98,7 +98,7 @@ Hafif işlem ve g/ç iş yükünüz için yeterli ise temel fiyatlandırma katma
 
 ## <a name="configure-a-firewall-rule"></a>Güvenlik duvarı kuralını yapılandırma
 
-`New-AzMySqlFirewallRule` Cmdlet 'Ini kullanarak MySQL Için Azure veritabanı sunucu düzeyinde güvenlik duvarı kuralı oluşturun. Sunucu düzeyinde bir güvenlik duvarı kuralı, `mysql` komut satırı aracı veya MySQL çalışma ekranı gibi bir dış uygulamanın, MySQL Için Azure veritabanı hizmeti güvenlik duvarı aracılığıyla sunucunuza bağlanmasını sağlar.
+Cmdlet 'ini kullanarak MySQL için Azure veritabanı sunucu düzeyinde güvenlik duvarı kuralı oluşturun `New-AzMySqlFirewallRule` . Sunucu düzeyinde bir güvenlik duvarı kuralı, `mysql` komut satırı aracı veya MySQL çalışma ekranı gibi bir dış uygulamanın, MySQL Için Azure veritabanı hizmeti güvenlik duvarı aracılığıyla sunucunuza bağlanmasını sağlar.
 
 Aşağıdaki örnek, belirli bir IP adresinden (192.168.0.1) gelen bağlantılara izin veren **Allowmyıp** adlı bir güvenlik duvarı kuralı oluşturur. Bağlanmakta olduğunuz konuma karşılık gelen bir IP adresini veya IP adresleri aralığını değiştirin.
 
@@ -139,9 +139,9 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>MySQL komut satırı aracını kullanarak sunucuya bağlanma
 
-`mysql` Komut satırı aracını kullanarak sunucunuza bağlanın. Komut satırı aracını indirip yüklemek için bkz. [MySQL Community İndirmeleri](https://dev.mysql.com/downloads/shell/). Ayrıca, bu makaledeki bir kod örneğinde **deneyin** düğmesini seçerek Azure Cloud Shell `mysql` komut satırı aracının önceden yüklenmiş bir sürümüne erişebilirsiniz. Azure Cloud Shell erişmek için diğer yollar Azure portal sağ üst araç çubuğunda veya [Shell.Azure.com](https://shell.azure.com/)ziyaret ederek **>_** düğmesini seçmenizi sağlar.
+Komut satırı aracını kullanarak sunucunuza bağlanın `mysql` . Komut satırı aracını indirip yüklemek için bkz. [MySQL Community İndirmeleri](https://dev.mysql.com/downloads/shell/). Ayrıca, `mysql` Bu makaledeki bir kod örneğinde **deneyin** düğmesini seçerek Azure Cloud Shell komut satırı aracının önceden yüklenmiş bir sürümüne erişebilirsiniz. Azure Cloud Shell erişmek için diğer yollar Azure portal sağ üst araç çubuğunda veya [Shell.Azure.com](https://shell.azure.com/)ziyaret ederek **>_** düğmesini seçmenizi sağlar.
 
-1. `mysql` Komut satırı aracını kullanarak sunucuya bağlanın.
+1. Komut satırı aracını kullanarak sunucuya bağlanın `mysql` .
 
    ```azurepowershell-interactive
    mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p

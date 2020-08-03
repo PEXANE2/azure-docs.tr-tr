@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 03/27/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: b0b8cd79c464a101210d8ca56d09d9703abbc614
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: e62a60212495df033a2e967b3547f4ac98559cda
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088963"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499679"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile tek bölgeli bir sanal makine ölçek kümesi oluşturma
 Bu betik, tek bir Kullanılabilirlik Alanı’nda Ubuntu çalıştıran bir sanal makine ölçek kümesi oluşturur. Betiği çalıştırdıktan sonra sanal makineye RDP üzerinden erişebilirsiniz.

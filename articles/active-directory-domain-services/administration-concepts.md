@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4f1f6c60ef2e0ccdd3e166e2272fe917ead3ed2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735056"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489682"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları
 
@@ -70,7 +70,7 @@ Azure AD DS, orman yalnızca bir etki alanı içerir. Şirket içi AD DS ormanla
 
 Varsayılan olarak, yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılmış bir VM 'de oturum açmak gibi, yönetilen etki alanında doğrudan kimlik doğrulaması yapabilir. Parola karmaları eşitlenecekse ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemlerini kullanmadığı zaman bir Kullanıcı ormanı işe yarar.
 
-Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü bir orman *güveni* üzerinden kimlik doğrular. Bu yaklaşımda, Kullanıcı nesneleri ve parola karmaları Azure AD DS ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS bulunur. Bu yaklaşım, kuruluşların Azure 'da, LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı olan kaynakları ve uygulama platformlarını barındırmasına, ancak tüm kimlik doğrulama sorunları veya kaygıları kaldırılmasına olanak sağlar. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
+Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü bir orman *güveni* üzerinden kimlik doğrular. Bu yaklaşımda, Kullanıcı nesneleri ve parola karmaları Azure AD DS ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS bulunur. Bu yaklaşım, kuruluşların Azure 'da, LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı olan kaynakları ve uygulama platformlarını barındırmasına, ancak tüm kimlik doğrulama sorunları veya kaygıları kaldırılmasına olanak sağlar.
 
 Azure AD DS orman türleri hakkında daha fazla bilgi için bkz. [kaynak ormanları nelerdir?][concepts-forest] ve [orman güvenleri Azure AD DS nasıl çalışır?][concepts-trust]
 
@@ -81,7 +81,7 @@ Azure AD DS 'de, kullanılabilir performans ve Özellikler SKU 'YU temel alır. 
 | SKU adı   | En fazla nesne sayısı | Yedekleme sıklığı | En fazla giden orman güveni sayısı |
 |------------|----------------------|------------------|----|
 | Standart   | Sınırsız            | Her 7 günde bir     | 0  |
-| Enterprise | Sınırsız            | 3 günde bir     | 5  |
+| Kurumsal | Sınırsız            | 3 günde bir     | 5  |
 | Premium    | Sınırsız            | Günlük            | 10 |
 
 Bu Azure AD DS SKU 'larından önce, yönetilen etki alanındaki nesne sayısına (Kullanıcı ve bilgisayar hesapları) göre bir faturalandırma modeli kullanılmıştır. Yönetilen etki alanındaki nesne sayısına bağlı olarak artık değişken fiyatlandırma yoktur.
@@ -102,7 +102,7 @@ SKU düzeyi arttıkça, bu yedekleme anlık görüntülerinin sıklığı artar.
 
 ### <a name="outbound-forest-trusts"></a>Giden orman güvenleri
 
-Önceki bölümde, tek yönlü giden orman, yönetilen bir etki alanından şirket içi AD DS ortamına (Şu anda önizlemede) güvenir. SKU, yönetilen bir etki alanı için oluşturabileceğiniz en fazla orman güveni sayısını belirler. İhtiyacınız olan güvenin sayısını öğrenmek için iş ve uygulama gereksinimlerinizi gözden geçirin ve uygun Azure AD DS SKU 'sunu seçin. Yine, iş gereksinimleriniz değiştiğinde ve ek orman güvenleri oluşturmanız gerekiyorsa, farklı bir SKU 'ya geçiş yapabilirsiniz.
+Önceki bölümde, tek yönlü giden orman, yönetilen bir etki alanından şirket içi AD DS ortamına güvenir. SKU, yönetilen bir etki alanı için oluşturabileceğiniz en fazla orman güveni sayısını belirler. İhtiyacınız olan güvenin sayısını öğrenmek için iş ve uygulama gereksinimlerinizi gözden geçirin ve uygun Azure AD DS SKU 'sunu seçin. Yine, iş gereksinimleriniz değiştiğinde ve ek orman güvenleri oluşturmanız gerekiyorsa, farklı bir SKU 'ya geçiş yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

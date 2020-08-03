@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355667"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499883"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Blob dizini (Önizleme) ile Azure Blob depolama üzerinde verileri yönetme ve bulma
 
@@ -63,7 +63,7 @@ Verileri daha açıklayıcı bir şekilde yapmak için bloba birden çok etiket 
 > "Öncelik" = ' 01 ' 
 >
 
-Var olan dizin etiketi özniteliklerini değiştirmek için, önce var olan etiket özniteliklerini almalısınız, Tag özniteliklerini değiştirmeli ve öğesini SetBlobTags işlemiyle değiştirmelisiniz. Blob 'dan tüm dizin etiketlerini kaldırmak için, etiket öznitelikleri belirtilmemiş SetBlobTags işlemini çağırın. Blob dizin etiketleri blob veri içeriklerine bir alt kaynak olduğundan, SetBlobTags temeldeki içerikleri değiştirmez ve Blobun son değiştirilme zamanı veya ETag (varlık etiketi) öğesini değiştirmez. Tüm geçerli temel Bloblar ve önceki sürümler için dizin etiketleri oluşturabilir veya değiştirebilirsiniz; ancak anlık görüntülerle veya geçici olarak silinen bloblarda bulunan Etiketler değiştirilemez. 
+Var olan dizin etiketi özniteliklerini değiştirmek için, önce var olan etiket özniteliklerini almalısınız, Tag özniteliklerini değiştirmeli ve öğesini SetBlobTags işlemiyle değiştirmelisiniz. Blob 'dan tüm dizin etiketlerini kaldırmak için, etiket öznitelikleri belirtilmemiş SetBlobTags işlemini çağırın. Blob dizin etiketleri blob veri içeriklerine bir alt kaynak olduğundan, SetBlobTags temeldeki içerikleri değiştirmez ve Blobun son değiştirilme zamanı veya eTag (varlık etiketi) öğesini değiştirmez. Tüm geçerli temel Bloblar ve önceki sürümler için dizin etiketleri oluşturabilir veya değiştirebilirsiniz; ancak anlık görüntülerle veya geçici olarak silinen bloblarda bulunan Etiketler değiştirilemez. 
 
 Aşağıdaki sınırlar blob dizin etiketleri için geçerlidir:
 - Her blob en fazla 10 blob Dizin etiketine sahip olabilir
@@ -130,7 +130,7 @@ Aşağıdaki tabloda koşullu işlemlere yönelik tüm geçerli işleçler göst
 |     <      |  Küçüktür    | "Age" < ' 32 ' |
 |     <=     |  Küçüktür veya eşittir  | "Şirket" <= ' contoso ' |
 |    AND     |  Mantıksal and  | "Rank" >= ' 010 ' ve "Rank" < ' 100 ' |
-|     OR     |  Mantıksal or   | "Status" = ' bitti ' veya "Priority" >= ' 05 ' |
+|     VEYA     |  Mantıksal or   | "Status" = ' bitti ' veya "Priority" >= ' 05 ' |
 
 > [!NOTE]
 > Blob işlemi için koşullu x-MS-if-Tags üst bilgisinde izin verilen ancak FindBlobsByTags işleminde mevcut olmayan iki ek işleç vardır, buna eşittir ve mantıksal veya.
@@ -237,7 +237,7 @@ Ancak yalnızca blob dizini etiketleri otomatik olarak dizinlenir ve yerel blob 
 
 Aşağıdaki tabloda meta veriler ve BLOB dizin etiketleri arasındaki farklılıklar özetlenmektedir:
 
-|              |   Meta veri   |   Blob dizin etiketleri  |
+|              |   Meta Veriler   |   Blob dizin etiketleri  |
 |--------------|--------------|--------------------|
 | **Sınırlar**         | Sayısal sınır yok; 8 KB toplam; büyük/küçük harf duyarsız | blob Max başına 10 etiket; etiket başına 768 bayt; büyük/küçük harfe duyarlı |
 | **Güncelleştirmeler**      | Arşiv katmanında izin verilmiyor; SetBlobMetadata, mevcut tüm meta verileri değiştirir; SetBlobMetadata, Blobun son değiştirilme zamanını değiştirir | Tüm erişim katmanları için izin verilir; SetBlobTags tüm mevcut etiketlerin yerini alır; SetBlobTags Blobun son değiştirilme zamanını değiştirmez |
@@ -293,6 +293,7 @@ Bu bölümde, blob dizininin geçerli genel önizlemesinin bilinen sorunları ve
 -   Hesap yük devretmesi Şu anda desteklenmiyor. Blob dizini yük devretmeden sonra düzgün şekilde güncelleştirilemez.
 -   Yaşam döngüsü yönetimi şu anda yalnızca blob dizini eşleşmesi olan eşitlik denetimlerini destekliyor.
 -   CopyBlob, blob dizini etiketlerini kaynak blobundan yeni hedef bloba kopyalamaz. Kopyalama işlemi sırasında hedef bloba uygulanmasını istediğiniz etiketleri belirtebilirsiniz. 
+- Hedef Blobun üzerinde uygulanan etiketlere sahip başka bir depolama hesabından CopyBlob (Async Copy) Şu anda blob Dizin altyapısının, filtre kümesindeki blob 'u ve etiketlerini döndürmelerine neden oluyor. Geçici içindeki URL 'den (eşitleme kopyası) CopyBlob kullanılması önerilir.
 -   Anlık görüntü oluşturulurken Etiketler kalıcıdır; ancak anlık görüntünün yükseltme işlemi şu anda desteklenmiyor ve boş bir etiket kümesine neden olabilir.
 
 ## <a name="faq"></a>SSS
@@ -308,5 +309,7 @@ Hayır, Azure Resource Manager Etiketler, abonelikler, kaynak grupları ve depol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Blob dizini nasıl kullanacağınızı gösteren bir örneğe bakın. Bkz. [verileri yönetmek ve bulmak Için blob dizinini](storage-blob-index-how-to.md) kullanma
+Blob dizininin nasıl kullanılacağına ilişkin bir örnek için bkz. [verileri yönetmek ve bulmak Için blob dizinini](storage-blob-index-how-to.md)kullanma.
+
+[Yaşam döngüsü yönetimi](storage-lifecycle-management-concepts.md) hakkında bilgi edinin ve blob dizini eşleşmesi ile bir kural ayarlayın.
 

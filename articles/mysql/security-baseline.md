@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e73f53fe983c1ebe77044993a281847ad362a840
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83654781"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496782"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için Azure Güvenlik temeli
 
@@ -547,7 +547,7 @@ Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: MySQL Için Azure veritabanı denetim düzlemi (ör. Azure Portal) erişimini denetlemek için Azure rol tabanlı erişim denetimi 'NI (RBAC) kullanın. Veri düzlemi erişimi için (veritabanının kendisi içinde), SQL sorgularını kullanarak kullanıcı oluşturun ve Kullanıcı izinlerini yapılandırın. RBAC, veritabanı içindeki kullanıcı izinlerini etkilemez.
+**Rehberlik**: MySQL Için Azure veritabanı denetim düzlemi (ör. Azure Portal) erişimini denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın. Veri düzlemi erişimi için (veritabanının kendisi içinde), SQL sorgularını kullanarak kullanıcı oluşturun ve Kullanıcı izinlerini yapılandırın. RBAC, veritabanı içindeki kullanıcı izinlerini etkilemez.
 
 Azure 'da RBAC 'yi yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 

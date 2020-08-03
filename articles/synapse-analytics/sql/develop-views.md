@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a073c9539f2fb996ae59ef513525c217170f2e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84cd5c2de0b1a6d0909a31071506d98627966775
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428660"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500751"
 ---
 # <a name="t-sql-views-using-synapse-sql"></a>SYNAPSE SQL kullanarak T-SQL görünümleri
 Bu makalede T-SQL görünümlerini kullanma ve SYNAPSE SQL ile çözüm geliştirme hakkında ipuçları bulacaksınız. 
 
-## <a name="why-use-views"></a>Görünümler neden kullanılmalıdır?
+## <a name="why-use-views"></a>Görünümleri neden kullanılmalıdır?
 
 Görünümler, çözümünüzün kalitesini artırmak için çeşitli şekillerde kullanılabilir.  Bu makalede, çözümünüzü görünümlerle nasıl zenginleştirmenin birkaç örneği vurgulanmıştır ve göz önünde bulundurulması gereken sınırlamalar yer almaktadır.
 

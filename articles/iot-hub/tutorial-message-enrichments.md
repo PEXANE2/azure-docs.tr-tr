@@ -7,13 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-azurecli
+ms.openlocfilehash: b3a049d76f880f590060a999ddda00e3706bac94
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770075"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500223"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Öğretici: Azure IoT Hub ileti zenginleştirme kullanın
 
@@ -279,7 +279,7 @@ Bu noktada, kaynakların hepsi ayarlanır ve ileti yönlendirme yapılandırıl�
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak oluşturma ve yapılandırma
 Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşturmak ve yapılandırmak için bir Kaynak Yöneticisi şablonu kullanabilirsiniz.
 
-1. Azure Portal’da oturum açın. Arama kutusunu açmak için **+ kaynak oluştur** ' u seçin. *Şablon dağıtımını*girin ve arama yapın. Sonuçlar bölmesinde **şablon dağıtımı (özel şablon kullanarak Dağıt)** öğesini seçin.
+1. Azure portalında oturum açın. Arama kutusunu açmak için **+ kaynak oluştur** ' u seçin. *Şablon dağıtımını*girin ve arama yapın. Sonuçlar bölmesinde **şablon dağıtımı (özel şablon kullanarak Dağıt)** öğesini seçin.
 
    ![Azure portal Şablon dağıtımı](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -356,7 +356,7 @@ Uygulama, IoT hub'ına her saniye yeni bir cihazdan buluta iletisi gönderir. İ
 
 Birkaç depolama iletisi gönderildikten sonra verileri görüntüleyin.
 
-1. **Kaynak grupları**’nı seçin. **Contosoresourcesmsgen**kaynak grubunuzu bulun ve seçin.
+1. **Kaynak grupları**' nı seçin. **Contosoresourcesmsgen**kaynak grubunuzu bulun ve seçin.
 
 2. **Contosostorage**olan depolama hesabınızı seçin. Sonra sol bölmedeki **Depolama Gezgini (Önizleme)** öğesini seçin.
 

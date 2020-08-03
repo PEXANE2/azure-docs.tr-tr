@@ -6,18 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 977d67010f97b2cf29e6949b0e6fde1ac488f046
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ecc195017b99da576cba9944613c76bea3c31abf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370147"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498727"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Linux sanal makineleri için Azure CLI Örnekleri
 
 Aşağıdaki tablo, Azure CLI’si kullanılarak oluşturulan bash komut dosyalarına yönelik bağlantılar içerir.
 
-| Komut Dosyası | Açıklama |
+| Komut Dosyası | Description |
 |---|---|
 |**Sanal makineler oluşturma**||
 | [Sanal makine oluşturma](./../scripts/virtual-machines-linux-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | En az yapılandırmaya sahip bir Linux sanal makinesi oluşturur. |

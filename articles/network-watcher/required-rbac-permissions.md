@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: d31240cad709a156d7235f116c9cd2c8fb698b03
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421153"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497316"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Ağ Izleyicisi yeteneklerini kullanmak için gereken rol tabanlı erişim denetimi izinleri
 
-Azure rol tabanlı erişim denetimi (RBAC), kuruluşunuzun kendilerine atanan sorumlulukları tamamlaması için ihtiyaç duydukları üyelere yalnızca belirli eylemleri atamanızı sağlar. Ağ Izleyicisi yeteneklerini kullanmak için, Azure 'da oturum açarken kullandığınız hesap [sahibine](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [katkıda bulunan](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)veya [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) yerleşik rollerine atanmalıdır ya da izleyen bölümlerdeki her bir ağ izleyicisi özelliği için listelenen eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) atanmalıdır. Ağ Izleyicisi 'nin özellikleri hakkında daha fazla bilgi edinmek için bkz. [Ağ İzleyicisi nedir?](network-watcher-monitoring-overview.md).
+Azure rol tabanlı erişim denetimi (Azure RBAC), kuruluşunuzun kendilerine atanan sorumlulukları tamamlaması için ihtiyaç duydukları üyelere yalnızca belirli eylemleri atamanızı sağlar. Ağ Izleyicisi yeteneklerini kullanmak için, Azure 'da oturum açarken kullandığınız hesap [sahibine](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [katkıda bulunan](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)veya [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) yerleşik rollerine atanmalıdır ya da izleyen bölümlerdeki her bir ağ izleyicisi özelliği için listelenen eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) atanmalıdır. Ağ Izleyicisi 'nin özellikleri hakkında daha fazla bilgi edinmek için bkz. [Ağ İzleyicisi nedir?](network-watcher-monitoring-overview.md).
 
 ## <a name="network-watcher"></a>Ağ İzleyicisi
 
@@ -102,7 +102,7 @@ Azure rol tabanlı erişim denetimi (RBAC), kuruluşunuzun kendilerine atanan so
 
 Ağ Izleyicisi özellikleri aşağıdaki eylemleri de gerektirir:
 
-| Eylem (ler)                                                           | Description                                                    |
+| Eylem (ler)                                                           | Açıklama                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Authorization/ \* /Read                                     | Azure rol atamalarını ve ilke tanımlarını getirmek için kullanılır          |
 | Microsoft. resources/abonelikler/resourceGroups/Read               | Bir abonelikteki tüm kaynak gruplarını listelemek için kullanılır    |

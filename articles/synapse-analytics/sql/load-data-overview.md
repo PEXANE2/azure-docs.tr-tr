@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046778"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490294"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
+# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 
 Geleneksel SMP veri ambarları, verileri yüklemek için bir ayıklama, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SQL havuzu, bilgi işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan, yüksek düzeyde paralel işleme (MPP) mimarisidir. Ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanımı, MPP özelliğinden yararlanabilir ve yüklemeden önce verileri dönüştürmek için gereken kaynakları ortadan kaldırabilir.
 
@@ -25,7 +25,7 @@ SQL havuzu BCP ve SQL BulkCopy API gibi PolyBase seçenekleri de dahil olmak üz
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="what-is-elt"></a>ELT nedir?
+## <a name="extract-load-and-transform-elt"></a>Ayıklama, yükleme ve dönüştürme (ELT)
 
 Ayıklama, yükleme ve dönüştürme (ELT), verilerin bir kaynak sistemden ayıklandığı, bir veri ambarına yüklendiği ve sonra dönüştürülebileceği bir işlemdir.
 

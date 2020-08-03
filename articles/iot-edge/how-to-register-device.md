@@ -8,13 +8,14 @@ ms.date: 01/08/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
+ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 2ac6a38d99f588c9dbab7a40bc092aa01b27649a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f41dbb4e6231e804249c3fce3dfc8275dcc00aa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726018"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489019"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Azure IoT Edge cihazı kaydetme
 
@@ -122,7 +123,7 @@ Ayrıca, çıkış penceresindeki bağlantı dizesi dahil tüm cihaz bilgilerini
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Azure CLı ile IoT Edge cihaz oluşturma
 
-IoT Hub 'ınızda yeni bir cihaz kimliği oluşturmak için [az IoT Hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) komutunu kullanın. Örneğin:
+IoT Hub 'ınızda yeni bir cihaz kimliği oluşturmak için [az IoT Hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) komutunu kullanın. Örnek:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -138,7 +139,7 @@ Bu komut üç parametre içerir:
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>Azure CLı ile IoT Edge cihazları görüntüleme
 
-IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Identity List](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-list) komutunu kullanın. Örneğin:
+IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Identity List](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-list) komutunu kullanın. Örnek:
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]

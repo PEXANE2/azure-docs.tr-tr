@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 0fd875b2c02f5d61663339ac523fd6733732ad01
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dd15fe5d68a521293f279978c668bc88599115e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421000"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498302"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanarak elastik havuzlar için kaynak limitleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Azure SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hi
 
 Elastik havuzlardaki ayrı veritabanlarının kaynak sınırları, DTU 'lar ve hizmet katmanını temel alan havuzlar dışındaki tek veritabanları için genellikle aynıdır. Örneğin, bir S2 veritabanının en fazla eşzamanlı çalışanları 120 çalışandır. Bu nedenle, standart havuzdaki bir veritabanı için en fazla eş zamanlı çalışan, havuzdaki veritabanı başına maksimum DTU değeri 50 DTU ise (S2 ile eşdeğerdir) 120 çalışanlardır.
  
-Elastik havuz için belirtilen kaynaklar, aynı sayıda DTU için elastik havuz dışında tek bir veritabanına girilen kaynakları aşabilir. Bu, bir elastik havuzun eDTU kullanımının, iş yükü desenlerine bağlı olarak havuz içindeki veritabanları genelinde DTU kullanımının özetinden daha az olması mümkün olduğu anlamına gelir. Örneğin, veritabanı DTU kullanımının %100 olduğu elastik bir havuzda yalnızca bir veritabanı olan büyük bir durumda, belirli iş yükü desenleri için havuz eDTU kullanımının %50 olması mümkündür. Veritabanı başına açık bir en fazla DTU ayarlanmamışsa bile bu durum oluşabilir. Bu durumda, havuza alınmış veritabanı DTU tüketimi, eşleşen hizmet hedefine sahip tek bir veritabanının DTU tüketimiyle aynı şekilde sınırlandırılmıştır.
+Aynı sayıda DTU için, elastik bir havuza sunulan kaynaklar, elastik havuzun dışındaki tek bir veritabanına sunulan kaynakları aşabilir. Bu, bir elastik havuzun eDTU kullanımının, iş yükü desenlerine bağlı olarak havuz içindeki veritabanları genelinde DTU kullanımının özetinden daha az olması mümkün olduğu anlamına gelir. Örneğin, veritabanı DTU kullanımının %100 olduğu elastik bir havuzda yalnızca bir veritabanı olan büyük bir durumda, belirli iş yükü desenleri için havuz eDTU kullanımının %50 olması mümkündür. Veritabanı başına en fazla DTU, belirtilen havuz boyutu için desteklenen en yüksek değerde kalırsa bile bu durum oluşabilir.
 
 > [!NOTE]
 > Aşağıdaki tabloların her birinde havuz başına depolama kaynağı sınırı tempdb ve günlük depolama alanı içermez.
@@ -55,8 +55,8 @@ Elastik havuz için belirtilen kaynaklar, aynı sayıda DTU için elastik havuz 
 | Havuz başına en fazla veritabanı sayısı <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Her havuz <sup>2</sup> için maksimum eş zamanlı çalışan (istek) | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Her havuz için en fazla eşzamanlı oturum <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
-| Veritabanı başına en az eDTU seçimi | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
-| Veritabanı başına en fazla eDTU seçimi | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
+| Veritabanı seçenekleri başına en az DTU | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
+| Veritabanı seçenekleri başına en fazla DTU | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
 | Veritabanı başına maks. depolama alanı (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
 ||||||||
 
@@ -74,8 +74,8 @@ Elastik havuz için belirtilen kaynaklar, aynı sayıda DTU için elastik havuz 
 | Havuz başına en fazla veritabanı sayısı <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Havuz başına maksimum eş zamanlı çalışan (istek) <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Havuz başına en fazla eşzamanlı oturum <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Veritabanı başına en az eDTU seçimi | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
-| Veritabanı başına en fazla eDTU seçimi | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
+| Veritabanı seçenekleri başına en az DTU | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
+| Veritabanı seçenekleri başına en fazla DTU | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
 | Veritabanı başına maks. depolama alanı (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
@@ -95,8 +95,8 @@ Elastik havuz için belirtilen kaynaklar, aynı sayıda DTU için elastik havuz 
 | Havuz başına en fazla veritabanı sayısı <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
 | Havuz başına maksimum eş zamanlı çalışan (istek) <sup>3</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Havuz başına en fazla eşzamanlı oturum <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Veritabanı başına en az eDTU seçimi | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
-| Veritabanı başına en fazla eDTU seçimi | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
+| Veritabanı seçenekleri başına en az DTU | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
+| Veritabanı seçenekleri başına en fazla DTU | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Veritabanı başına maks. depolama alanı (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
@@ -137,8 +137,8 @@ Elastik havuz için belirtilen kaynaklar, aynı sayıda DTU için elastik havuz 
 | Havuz başına en fazla veritabanı sayısı <sup>2</sup> | 100 | 100 | 100 | 100 | 100 |
 | Havuz başına maksimum eş zamanlı çalışan (istek) <sup>3</sup> | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Havuz başına en fazla eşzamanlı oturum <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Veritabanı başına en az eDTU seçimi | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
-| Veritabanı başına en fazla eDTU seçimi | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
+| Veritabanı seçenekleri başına en az DTU | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
+| Veritabanı seçenekleri başına en fazla DTU | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
 | Veritabanı başına maks. depolama alanı (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 

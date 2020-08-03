@@ -4,14 +4,14 @@ description: Azure Cosmos DB tarafından desteklenen eşitlik, karşılaştırma
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063566"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498846"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB işleçler
 
@@ -21,7 +21,7 @@ Bu makalede Azure Cosmos DB tarafından desteklenen çeşitli işleçler ayrınt
 
 Aşağıdaki tabloda, iki JSON türü arasındaki SQL API 'sindeki eşitlik karşılaştırmalarının sonucu gösterilmektedir.
 
-| **Üs** | **Tanımlayan** | **Null** | **Boole** | **Sayı** | **Dize** | **Nesne** | **Dizi** |
+| **Üs** | **Tanımlayan** | **Null** | **Boole** | **Sayı** | **Dize** | **Nesne** | **Dizide** |
 |---|---|---|---|---|---|---|---|
 | **Tanımlayan** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
 | **Null** | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
@@ -29,11 +29,19 @@ Aşağıdaki tabloda, iki JSON türü arasındaki SQL API 'sindeki eşitlik kar�
 | **Sayı** | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan |
 | **Dize** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan |
 | **Nesne** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan |
-| **Dizi** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** |
+| **Dizide** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** |
 
 ,,, Ve gibi karşılaştırma işleçleri için, `>` `>=` `!=` `<` `<=` türler arasında veya iki nesne veya dizi arasında karşılaştırma üretir `Undefined` .  
 
 Skaler ifadenin sonucu ise, `Undefined` eşit olmadığı için öğe sonuca dahil değildir `Undefined` `true` .
+
+Örneğin, aşağıdaki sorgunun bir sayı ile dize değeri arasındaki karşılaştırması üretir `Undefined` . Bu nedenle, filtre herhangi bir sonuç içermez.
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
 
 ## <a name="logical-and-or-and-not-operators"></a>Mantıksal (ve, OR ve NOT) işleçleri
 
@@ -43,21 +51,21 @@ Mantıksal işleçler Boole değerleri üzerinde çalışır. Aşağıdaki tablo
 
 `true`Koşullardan biri olduğunda döndürür `true` .
 
-|  | **Değeri** | **Yanlýþ** | **Tanımlayan** |
+|  | **True** | **False** | **Tanımlayan** |
 | --- | --- | --- | --- |
-| **Değeri** |True |True |True |
-| **Yanlýþ** |True |False |Tanımlayan |
-| **Tanımlayan** |True |Tanımlayan |Tanımlayan |
+| **True** |Doğru |Doğru |Doğru |
+| **False** |Doğru |Yanlış |Tanımlayan |
+| **Tanımlayan** |Doğru |Tanımlayan |Tanımlayan |
 
 **AND işleci**
 
 `true`Her iki ifadenin de ne zaman olduğunu döndürür `true` .
 
-|  | **Değeri** | **Yanlýþ** | **Tanımlayan** |
+|  | **True** | **False** | **Tanımlayan** |
 | --- | --- | --- | --- |
-| **Değeri** |True |False |Tanımlayan |
-| **Yanlýþ** |False |False |False |
-| **Tanımlayan** |Tanımlayan |False |Tanımlayan |
+| **True** |Doğru |Yanlış |Tanımlayan |
+| **False** |Yanlış |Yanlış |Yanlış |
+| **Tanımlayan** |Tanımlayan |Yanlış |Tanımlayan |
 
 **NOT işleci**
 
@@ -65,8 +73,8 @@ Herhangi bir Boolean ifadesinin değerini tersine çevirir.
 
 |  | **BAŞLATıLMADı** |
 | --- | --- |
-| **Değeri** |False |
-| **Yanlýþ** |True |
+| **True** |Yanlış |
+| **False** |Doğru |
 | **Tanımlayan** |Tanımlayan |
 
 **İşleç önceliği**

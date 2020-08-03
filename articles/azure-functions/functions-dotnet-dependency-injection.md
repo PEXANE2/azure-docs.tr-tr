@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05b845f3284ea95dd2be595c4d59767e45149306
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082962"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500473"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -121,7 +121,7 @@ Azure Işlevleri uygulamaları, [ASP.net bağımlılığı ekleme](/aspnet/core/
 - **Kapsam**: kapsamlı hizmet ömrü bir işlev yürütme ömrü ile eşleşir. Kapsamlı hizmetler, her yürütme için bir kez oluşturulur. Yürütme sırasında o hizmetin sonraki istekleri, var olan hizmet örneğini yeniden kullanır.
 - Tekil **: tek**hizmet ömrü, ana bilgisayar ömrü ile eşleşir ve bu örnekteki işlev Yürütmelerinde yeniden kullanılır. Tek ömür Hizmetleri, bağlantılar ve istemciler için, örneğin `DocumentClient` veya örnekler için önerilir `HttpClient` .
 
-GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://aka.ms/functions/di-sample) görüntüleyin veya indirin.
+GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) görüntüleyin veya indirin.
 
 ## <a name="logging-services"></a>Günlüğe kaydetme hizmetleri
 

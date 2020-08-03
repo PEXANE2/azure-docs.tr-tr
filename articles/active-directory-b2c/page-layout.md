@@ -8,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4548b50e4168f260cb401c40dd4e61192cea1015
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78183984"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489546"
 ---
 # <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
 Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içerecek şekilde düzenli olarak güncelleştirilir. Aşağıdaki değişiklik günlüğü her sürümde tanıtılan değişiklikleri belirtir.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="210"></a>2.1.0
+
+- Otomatik olarak onaylanan sayfa ( `selfasserted` )
+  - Yerelleştirme ve erişilebilirlik düzeltmeleri.
+- Birleşik SSP sayfası ( `unifiedssp` )
+  - Birden çok kaydolma bağlantısı için destek eklendi.
+  - İlkede tanımlanan koşul kurallarına göre Kullanıcı girişi doğrulaması için destek eklendi.
 
 ## <a name="200"></a>2.0.0
 
@@ -40,6 +48,8 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
   - Chrome çevirisi desteği
 - Birleşik ve kendinden onaylanan sayfalar
   - Username/email ve Password alanları artık `form` Edge ve Internet Explorer 'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için HTML öğesini kullanır.
+- Otomatik olarak onaylanan sayfa
+  - Geliştirilmiş kullanıcı deneyimi için yapılandırılabilir bir kullanıcı girişi doğrulama gecikmesi eklendi.
 
 ## <a name="110"></a>1.1.0
 

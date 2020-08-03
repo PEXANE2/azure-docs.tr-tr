@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.openlocfilehash: aabb42dc8d86e500875819cbfc169bcc86733219
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/30/2020
+ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102288"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499560"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Logic Apps oluşturma ve yönetme
 
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, [Azure clı Logic Apps uzantısı](/cli/azure/ext/log
 > [!WARNING]
 > Azure CLı Logic Apps uzantısı Şu anda *deneysel* ve *müşteri desteği kapsamında değil*. Özellikle uzantıyı üretim ortamlarında kullanmayı seçerseniz, bu CLı uzantısını dikkatle kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Yerel bilgisayarınızda yüklü olan [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) .
@@ -271,3 +271,11 @@ Komutlarınız ile aşağıdaki isteğe bağlı Global Azure CLı parametrelerin
 | Hata ayıklama | `--debug` | Tüm hata ayıklama günlüklerini gösterir. |
 | Yardım iletisi | `--help -h` | Yardım iletişimini göster. |
 | Sorgu | `--query` | JSON çıktısı için bir JMESPath sorgu dizesi ayarlayın. |
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure/?view=azure-cli-latest).
+
+CLı aracılığıyla temel mantıksal uygulama oluşturma hakkında bir örnek için bkz. [örnek betik ve iş akışı tanımı](sample-logic-apps-cli-script.md).
+
+[Microsoft 'un kod örnekleri tarayıcısında](/samples/browse/?products=azure-logic-apps)daha fazla Logic Apps CLI betik örneği bulabilirsiniz.

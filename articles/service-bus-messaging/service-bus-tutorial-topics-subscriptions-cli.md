@@ -5,18 +5,19 @@ ms.date: 06/23/2020
 ms.topic: tutorial
 author: spelluru
 ms.author: spelluru
-ms.openlocfilehash: 5340ec8d3d7a479fb349ce5ed1d32f917668d0d8
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: cdbde84780ed7c64f9ad3f4284a74261d2f4a728
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340998"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500479"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Öğretici: CLI'yi ve konuları/abonelikleri kullanarak envanter güncelleştirme
 
 Microsoft Azure Service Bus, uygulamalar ve hizmetler arasında bilgi gönderen çok kiracılı bir bulut mesajlaşma hizmetidir. Zaman uyumsuz işlemler esnek ve aracılı mesajlaşmanın yanı sıra ilk giren ilk çıkar (FIFO) yöntemiyle yapılandırılmış mesajlaşma ve yayımlama/abonelik olanakları da sunar. Bu öğretici, bir perakende stok senaryosunda, Azure CLI ve Java kullanan yayımlama/abone olma kanallarıyla Service Bus konu başlıklarını ve abonelikleri kullanmayı göstermektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure CLI kullanarak bir Service Bus konu başlığı ve bu konu başlığına bir veya daha fazla abonelik oluşturma
 > * Azure CLI kullanarak konu başlığı filtreleri ekleme
@@ -30,7 +31,7 @@ Bu senaryonun bir örneği, birden çok perakende mağazası için stok sınıfl
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][] oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Java ile bir Service Bus uygulaması geliştirebilmeniz için şunlar yüklü olmalıdır:
 
@@ -46,7 +47,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için A
 
 Her [konu başlığı aboneliği](service-bus-messaging-overview.md#topics) her iletinin bir kopyasını alabilir. Konular, protokol ve anlam açılarından Service Bus kuyrukları ile tam olarak uyumludur. Service Bus konu başlıkları, filtreleme koşullarını ve ileti özelliklerini belirleyen veya değiştiren isteğe bağlı eylemleri olan geniş bir seçim kuralı yelpazesini destekler. Bir kural eşleştiğinde bir ileti oluşturulur. Kurallar, filtreler ve eylemler hakkında daha fazla bilgi edinmek için bu [bağlantıyı](topic-filters.md) izleyin.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure’da oturum açma
 
 CLI yüklendikten sonra bir komut istemi açın ve Azure'da oturum açmak için aşağıdaki komutları çalıştırın. Cloud Shell kullanıyorsanız, bu adımlar gerekli değildir:
 

@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: ca7feacf5d631b4e85a0b3f4e7a039bbb79abe45
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460210"
+ms.locfileid: "87496109"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage Services 'a bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,11 +92,11 @@ Veri depolama hesabınız bir **Sanal ağda**ise Azure Machine Learning verileri
 
 ### <a name="access-validation"></a>Erişim doğrulaması
 
-**İlk veri deposu oluşturma ve kaydetme işlemi kapsamında**, Azure Machine Learning otomatik olarak temel alınan depolama hizmetinin olduğunu ve belirtilen kullanıcı (Kullanıcı adı, hizmet sorumlusu veya SAS belirteci) belirtilen depolama alanına erişimi olduğunu doğrular.
+**İlk veri deposu oluşturma ve kaydetme işlemi kapsamında**, Azure Machine Learning otomatik olarak temel alınan depolama hizmetinin olduğunu ve belirtilen kullanıcının (Kullanıcı adı, hizmet sorumlusu veya SAS belirteci) belirtilen depolamaya erişimi olduğunu doğrular.
 
 **Veri deposu oluşturulduktan sonra**, bu doğrulama yalnızca, veri deposu nesneleri her alınışında **değil** , temeldeki depolama kapsayıcısına erişim gerektiren yöntemler için gerçekleştirilir. Örneğin, veri deposundan dosyaları indirmek isterseniz doğrulama gerçekleşir; ancak yalnızca varsayılan veri deposundan değişiklik yapmak istiyorsanız doğrulama gerçekleşmez.
 
-Temel depolama hizmetine erişiminizin kimliğini doğrulamak için, `register_azure_*()` oluşturmak istediğiniz veri deposu türünün karşılık gelen yönteminde hesap anahtarınızı, paylaşılan erişim imzaları (SAS) belirteçlerini veya hizmet sorumlusunu sağlayabilirsiniz. [Depolama türü matrisi](#matrix) , her veri deposu türüne karşılık gelen desteklenen kimlik doğrulama türlerini listeler.
+Temel depolama hizmetine erişiminizin kimlik doğrulamasını yapmak için, `register_azure_*()` oluşturmak istediğiniz veri deposu türünün karşılık gelen yönteminde hesap anahtarınızı, paylaşılan erişim imzaları (SAS) belirteçlerini veya hizmet sorumlusunu sağlayabilirsiniz. [Depolama türü matrisi](#matrix) , her veri deposu türüne karşılık gelen desteklenen kimlik doğrulama türlerini listeler.
 
 Hesap anahtarını, SAS belirtecini ve hizmet sorumlusu bilgilerini [Azure Portal](https://portal.azure.com)bulabilirsiniz.
 
@@ -113,7 +113,7 @@ Hesap anahtarını, SAS belirtecini ve hizmet sorumlusu bilgilerini [Azure Porta
 
 ### <a name="permissions"></a>İzinler
 
-Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimine sahip olduğundan emin olun. [Depolama Blobu veri okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)hakkında daha fazla bilgi edinin. 
+Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)hakkında daha fazla bilgi edinin. 
 
 <a name="python"></a>
 
@@ -202,7 +202,9 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 <a name="studio"></a>
 
+
 ## <a name="create-datastores-in-the-studio"></a>Studio 'da veri depoları oluşturma 
+
 
 Azure Machine Learning Studio ile birkaç adımda yeni bir veri deposu oluşturun.
 
@@ -212,14 +214,13 @@ Azure Machine Learning Studio ile birkaç adımda yeni bir veri deposu oluşturu
 1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 1. **Yönet**altında sol bölmedeki **veri depoları** ' nı seçin.
 1. **+ Yeni veri deposu**seçin.
-1. Yeni bir veri deposu için formu doldurun. Form, Azure depolama türü ve kimlik doğrulama türü seçimlerinize göre kendisini akıllıca güncelleştirir. Bu formu doldurduktan sonra kimlik doğrulama kimlik bilgilerini nerede bulacağınızı öğrenmek için [depolama erişimi ve izinler bölümüne](#access-validation) bakın.
+1. Yeni bir veri deposu için formu doldurun. Form, Azure depolama türü ve kimlik doğrulama türü seçimlerinize göre kendisini akıllıca güncelleştirir. Kimlik doğrulama kimlik bilgilerini nerede bulacağınızı öğrenmek için, bu formu doldurmanız gereken [depolama erişimi ve izinler bölümüne](#access-validation) bakın.
 
 Aşağıdaki örnek, bir **Azure blob veri deposu**oluştururken formun nasıl göründüğünü göstermektedir: 
     
 ![Yeni veri deposu için form](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
-
 ## <a name="use-data-in-your-datastores"></a>Veri Mağazalarınız içindeki verileri kullanma
 
 Bir veri deposu oluşturduktan sonra verilerinizle etkileşimde bulunmak için [bir Azure Machine Learning veri kümesi oluşturun](how-to-create-register-datasets.md) . Veri kümeleri, eğitim gibi makine öğrenimi görevleri için verilerinizi geç tarafından değerlendirilen bir tüketilebilir nesneye paketleyin. Ayrıca, Azure Blob depolama ve ADLS Gen 2 gibi Azure depolama hizmetlerinden herhangi bir biçimdeki dosyaları [indirme veya bağlama](how-to-train-with-datasets.md#mount-vs-download) olanağı da sağlar. Bunları bir Pandas veya Spark DataFrame 'e tablo verileri yüklemek için de kullanabilirsiniz.
@@ -258,7 +259,7 @@ Varsayılan veri deposunu aşağıdaki kodla da değiştirebilirsiniz. Bu özell
 
 Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu sağlar. Bu yöntemlerin bazıları veri depolarına erişim sağlamaz. Puanlama sırasında veri depolarına erişmenize izin veren yöntemleri anlamak için aşağıdaki tabloyu kullanın:
 
-| Yöntem | Veri deposu erişimi | Açıklama |
+| Yöntem | Veri deposu erişimi | Description |
 | ----- | :-----: | ----- |
 | [Toplu tahmin](how-to-use-parallel-run-step.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
 | [Web hizmeti](how-to-deploy-and-where.md) | &nbsp; | Modelleri bir Web hizmeti olarak dağıtın. |

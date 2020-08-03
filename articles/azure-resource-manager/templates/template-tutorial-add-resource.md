@@ -5,18 +5,19 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0163fcc62ea6c813af8e9e5693ca35fa0e650f96
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80411744"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497537"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Öğretici: ARM şablonunuza kaynak ekleme
 
-[Önceki öğreticide](template-tutorial-create-first-template.md)boş bir şablon oluşturmayı ve bunu dağıtmayı öğrendiniz. Şimdi, gerçek bir kaynağı dağıtmaya hazırsınız demektir. Bu öğreticide bir depolama hesabı eklersiniz. Bu öğreticiyi tamamlamaya yaklaşık **9 dakika** sürer.
+[Önceki öğreticide](template-tutorial-create-first-template.md)boş bir şablon oluşturmayı ve bunu dağıtmayı öğrendiniz. Şimdi gerçek bir kaynak dağıtmaya hazırsınız demektir. Bu öğreticide bir depolama hesabı eklersiniz. Bu öğreticiyi tamamlamaya yaklaşık **9 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Şablonlar hakkında giriş öğreticisini](template-tutorial-create-first-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -72,7 +73,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
+Bu dağıtım komutunu çalıştırmak için Azure CLI’nın [en son sürümüne](/cli/azure/install-azure-cli) sahip olmanız gerekir.
 
 ```azurecli
 az deployment group create \
@@ -124,4 +125,4 @@ Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekme
 Bir Azure depolama hesabı dağıtmak için basit bir şablon oluşturdunuz.  Sonraki öğreticilerde, bir şablona parametreler, değişkenler, kaynaklar ve çıktılar eklemeyi öğreneceksiniz. Bu özellikler, çok daha karmaşık şablonlar için yapı taşlarıdır.
 
 > [!div class="nextstepaction"]
-> [Parametreleri Ekle](template-tutorial-add-parameters.md)
+> [Parametreler ekleme](template-tutorial-add-parameters.md)

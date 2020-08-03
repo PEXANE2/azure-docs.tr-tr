@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e4ab560366a2d00773f9b186663831321b18566f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: 029c2ffa548c8c99030f630a90eb07ac8ba063a0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416528"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497010"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi yapılandırma
 
@@ -22,7 +22,7 @@ Azure Cosmos DB, kapsayıcı düzeyinde yaşam süresi (TTL) yapılandırmayı s
 
 Zaman aşımı olmadan bir kapsayıcıda canlı kalma süresini etkinleştirmek için aşağıdaki adımları kullanın. TTL 'nin öğe düzeyinde geçersiz kılınmasına izin vermek için bunu etkinleştirin. TTL 'yi saniye için sıfır olmayan bir değer girerek de ayarlayabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 
@@ -202,11 +202,11 @@ Bir kapsayıcıda yaşam için varsayılan bir zaman ayarlamaya ek olarak, bir �
 
 * TTL kapsayıcı düzeyinde devre dışıysa, kapsayıcıda TTL yeniden etkinleştirilene kadar öğedeki TTL alanı yok sayılır.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure portalı
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure portal
 
 Bir öğe üzerinde yaşam süresini etkinleştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 

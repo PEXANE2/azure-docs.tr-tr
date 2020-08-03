@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480448"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496398"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) 
 
@@ -31,7 +31,7 @@ Her Azure SYNAPSE Analytics çalışma alanı (Önizleme), Gölü verileri sorgu
 
 Veri işlem hattınızda Azure SYNAPSE için Apache Spark kullanıyorsanız, veri hazırlama, temizleme veya zenginleştirme için, işlem içinde oluşturduğunuz [Harici Spark tablolarını](develop-storage-files-spark-tables.md) doğrudan SQL isteğe bağlı olarak sorgulayabilirsiniz. SQL isteğe bağlı uç noktanızı [yönetilen çalışma alanı sanal](../security/synapse-workspace-managed-vnet.md)ağınıza taşımak Için [özel bağlantıyı](../security/how-to-connect-to-workspace-with-private-links.md) kullanın.  
 
-## <a name="who-is-sql-on-demand-for"></a>İçin SQL isteğe bağlı kim
+## <a name="sql-on-demand-benefits"></a>İsteğe bağlı SQL avantajları
 
 Veri Gölü verileri araştırmanıza, bundan Öngörüler elde etmeniz veya mevcut veri dönüştürme işlem hattınızı iyileştirmeniz gerekiyorsa, SQL 'i isteğe bağlı olarak kullanmaya yarar sağlayabilirsiniz. Aşağıdaki senaryolar için uygundur:
 
@@ -46,7 +46,7 @@ Farklı profesyonel roller, isteğe bağlı SQL 'den faydalanabilir:
 - Veri analistleri, tanıdık T-SQL dili veya en sevdiğiniz araçları kullanarak veri bilimcileri veya veri mühendisleri tarafından oluşturulan [veri ve Spark dış tablolarını](develop-storage-files-spark-tables.md) , Isteğe bağlı SQL 'e bağlanabilecek şekilde keşfedebilir.
 - Bı uzmanları, Gölü ve Spark tablolarındaki verilerin üzerine hızlı [bir şekilde Power BI raporlar oluşturabilir](tutorial-connect-power-bi-desktop.md) .
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>Kullanmaya başlamak için ne yapmam gerekir?
+## <a name="how-to-start-using-sql-on-demand"></a>İsteğe bağlı SQL 'i kullanmaya başlama
 
 SQL isteğe bağlı uç noktası her Azure SYNAPSE çalışma alanı içinde sağlanır. Bir çalışma alanı oluşturabilir ve tanıdığınız araçları kullanarak verileri anında sorgulamaya başlayabilirsiniz.
 
@@ -54,7 +54,7 @@ SQL isteğe bağlı uç noktası her Azure SYNAPSE çalışma alanı içinde sa�
 
 SQL isteğe bağlı, mevcut SQL geçici sorgulama ve iş zekası araçlarının Veri Gölü içine dokunmasına olanak sağlar. Tanıdık T-SQL söz dizimini sağladığından, TDS bağlantısı SQL teklifleri oluşturmaya yönelik herhangi bir araç, isteğe bağlı [SYNAPSE SQL 'e bağlanabilir ve sorgu](connect-overview.md) oluşturabilir. Azure Data Studio ile bağlanabilir, geçici sorgular çalıştırabilir veya birkaç dakika içinde Öngörüler elde etmek için Power BI ile bağlanabilirsiniz.
 
-## <a name="is-full-t-sql-supported"></a>Tam T-SQL destekleniyor mu?
+## <a name="t-sql-support"></a>T-SQL desteği
 
 SQL isteğe bağlı, yarı yapılandırılmış ve yapılandırılmamış verileri sorgulama konusunda deneyimlere uyum sağlamak için bazı yönlerde biraz gelişmiş/genişletilmiş olan T-SQL sorgulama yüzey alanı sunar. Ayrıca, SQL isteğe bağlı SQL 'in tasarımı nedeniyle, örnek olarak DML işlevselliği Şu anda desteklenmediğinden T-SQL dilinin bazı yönleri desteklenmez.
 
@@ -85,7 +85,7 @@ Desteklenen T-SQL:
 - Görünümler ve güvenlikle ilgili olanlar dışındaki DDL deyimleri
 - DML deyimleri
 
-### <a name="extensions"></a>Uzantıları
+### <a name="extensions"></a>Uzantılar
 
 Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı, aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini genişletir:
 
@@ -117,7 +117,7 @@ Verilerinize güvenli bir şekilde erişmek için SQL isteğe bağlı, mekanizma
 
 İsteğe bağlı SQL kimlik doğrulaması, kullanıcıların uç noktaya bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. İki tür kimlik doğrulaması desteklenir:
 
-- **SQL kimlik doğrulaması**
+- **SQL Kimlik Doğrulaması**
 
   Bu kimlik doğrulama yöntemi bir Kullanıcı adı ve parola kullanır.
 

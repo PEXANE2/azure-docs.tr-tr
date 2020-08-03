@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d87da234e675059ba2c170f4322d0ba53965dc89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075696"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500768"
 ---
-# <a name="using-transactions-in-sql-pool"></a>SQL havuzunda işlemleri kullanma
+# <a name="use-transactions-in-sql-pool"></a>SQL havuzunda işlemleri kullanma
 
 Çözümleri geliştirmek için SQL havuzunda (veri ambarı) işlem uygulama ipuçları.
 
@@ -183,7 +183,7 @@ Tüm değiştirilen işlem GERI ALMANıN, CATCH bloğundaki hata bilgilerinin ok
 
 Ayrıca, SQL havuzunun ERROR_LINE () işlevini uygulamamayı veya desteklemediğini de unutmayın. Kodunuzda bu varsa, SQL havuzuyla uyumlu olacak şekilde kaldırmanız gerekir. Eşdeğer işlevselliği uygulamak için kodunuzda sorgu etiketleri kullanın. Daha fazla ayrıntı için bkz. [etiket](develop-label.md) makalesi.
 
-## <a name="using-throw-and-raiserror"></a>THROW ve RAERROR kullanma
+## <a name="use-of-throw-and-raiserror"></a>THROW ve RAERROR kullanımı
 
 THROW, SQL havuzunda özel durumları oluşturmak için daha modern bir uygulama, ancak RAERROR da desteklenir. Bununla ilgili dikkat edilmesi gereken birkaç fark vardır.
 

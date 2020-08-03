@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
-ms.custom: akjosh
-ms.openlocfilehash: c0960d16fd5022d54804ae579d9154c540a17732
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: akjosh, devx-track-azurecli
+ms.openlocfilehash: 8f8384667eb9f0c3fc0b3368ac38cbb3e25e979b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494998"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499730"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli"></a>Azure CLI ile özel bir VM görüntüsünden sanal makine ölçek kümesi oluşturma
 Bu betik, VM örnekleri kaynağı olarak özel bir VM görüntüsü kullanan bir sanal makine ölçek kümesi oluşturur.

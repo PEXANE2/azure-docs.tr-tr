@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369025"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489580"
 ---
 # <a name="synapse-sql-resource-consumption"></a>SYNAPSE SQL kaynak tüketimi
 
@@ -27,7 +27,7 @@ Bu makalede, SYNAPSE SQL (Önizleme) kaynak tüketim modelleri açıklanmaktadı
 
 Fiyat ve performansı iyileştirmek için ideal sayıda veri ambarı birimi (DWU) seçmeye ve birim sayısını değiştirmeye yönelik öneriler.
 
-### <a name="what-are-data-warehouse-units"></a>Veri ambarı birimleri nedir?
+### <a name="data-warehouse-units"></a>Data Warehouse Birimleri
 
 SYNAPSE SQL havuzu, sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve GÇ birleşimi olarak tanımlanır. Bu üç kaynak, veri ambarı birimleri (DWU) adlı bilgi işlem ölçeği birimlerine paketlenmiştir. DWU, hesaplama kaynakları ve performansının soyut, normalleştirilmiş bir ölçümünü temsil eder. Hizmet düzeyinizdeki değişiklik, sistem tarafından kullanılabilen DWU sayısını değiştirir ve bu da sisteminizin performansını ve maliyetini ayarlar.
 
@@ -79,7 +79,7 @@ Veri ambarı birimlerini artırdıkça, bilgi işlem kaynaklarını daha erken a
 
 Her SQL Server (örneğin, myserver.database.windows.net), belirli sayıda veri ambarı birimine izin veren bir [veritabanı Işlem birimi (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kotasına sahiptir. Daha fazla bilgi için bkz. [iş yükü yönetim kapasitesi sınırları](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
-### <a name="how-many-data-warehouse-units-do-i-need"></a>Kaç veri ambarı birimine ihtiyacım var?
+### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>İhtiyacınız olan veri ambarı birimlerinin sayısını değerlendirin
 
 İdeal veri ambarı birimi sayısı, iş yükünüze ve sisteme yüklediğiniz veri miktarına çok fazla bağlıdır.
 

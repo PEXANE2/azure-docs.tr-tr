@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: f3eacbe6f93388756ce26324babeb2ca38bd09a5
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: f87e3f4add0cb5949036ec6caca2e361e2e88ea0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438889"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498132"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -119,7 +119,7 @@ Alternatif olarak, bir yandan yukarıdaki izinlerle ilgili genel [katkıda](../r
 
 ### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes yetkilendirmesi için Azure RBAC (Önizleme)
 
-Azure RBAC tümleştirmesiyle, AKS, Azure RBAC rol tanımı ve rol atamalarını kullanarak Azure AD ile tümleşik K8s küme kaynaklarının izinlerini ve atamalarını yönetmenizi sağlamak için Kubernetes yetkilendirme Web kancası sunucusunu kullanacaktır.
+Azure RBAC tümleştirmesiyle, AKS, Azure rol tanımı ve rol atamalarını kullanarak Azure AD ile tümleşik K8s küme kaynaklarının izinlerini ve atamalarını yönetmenizi sağlamak için Kubernetes yetkilendirme Web kancası sunucusunu kullanacaktır.
 
 ![Kubernetes yetkilendirme akışı için Azure RBAC](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 

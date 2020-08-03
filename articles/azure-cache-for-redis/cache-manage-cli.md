@@ -6,12 +6,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: c0e94c0bef5087665ca8746a65ccd34a0f61deef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829746"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500513"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure klasik CLı kullanılarak Redsıs için Azure önbelleği oluşturma ve yönetme
 > [!div class="op_single_selector"]
@@ -25,7 +26,7 @@ Azure klasik CLı, Azure altyapınızı herhangi bir platformdan yönetmenin har
 > [!NOTE]
 > En son Azure CLı örnek betikleri için bkz. [redsıs örnekleri Için Azure CLI Azure önbelleği](cli-samples.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure klasik CLı kullanarak Redsıs örnekleri için Azure önbelleği oluşturup yönetmek için aşağıdaki adımları gerçekleştirmeniz gerekir.
 
 * Azure hesabınız olmalıdır. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir [Hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.

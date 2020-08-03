@@ -112,6 +112,8 @@
           href: cognitive-search-incremental-indexing-conceptual.md
     - name: Güvenlik
       items:
+        - name: Güvenliğe genel bakış
+          href: search-security-overview.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -329,8 +331,6 @@
           href: search-api-migration.md
     - name: Güvenlik
       items:
-        - name: Genel Bakış
-          href: search-security-overview.md
         - name: Veri şifrelemesi
           items:
             - name: Müşteri tarafından yönetilen anahtarlar

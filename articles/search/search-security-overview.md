@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/30/2020
-ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475439"
+ms.locfileid: "87501500"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
@@ -125,9 +125,11 @@ Buna karşılık, bir dizin oluşturma veya silme yeteneği gibi, hizmette barı
 
 Azure Bilişsel Arama, genel bulut ve Azure Kamu için birden çok küresel, bölgesel ve sektöre özgü standartlar için sertifikalandırilmiştir. Tüm liste için, resmi denetim raporları sayfasından [ **Microsoft Azure uyumluluk teklifleri** teknik](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) incelemesini indirin.
 
-Uyumluluk için Azure [ilkesi](../governance/policy/overview.md) 'Ni kullanarak [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md)'nın yüksek güvenlikli en iyi yöntemlerini uygulamanıza yardımcı olabilirsiniz. Azure Güvenlik kıyaslaması, hizmet ve veri tehditlerini azaltmak için gerçekleştirmeniz gereken önemli eylemlerle eşlenen güvenlik denetimlerine yönelik güvenlik önerileri koleksiyonudur. [Ağ güvenliği](../security/benchmarks/security-control-network-security.md), [günlüğe kaydetme ve izleme](../security/benchmarks/security-control-logging-monitoring.md)dahil olmak üzere 11 güvenlik denetimi ve birkaç ad vermek için [veri koruması](../security/benchmarks/security-control-data-protection.md) vardır.
+Uyumluluk için Azure [ilkesi](../governance/policy/overview.md) 'Ni kullanarak [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md)için yüksek güvenlikli en iyi yöntemleri uygulayabilirsiniz. Azure Güvenlik kıyaslaması, hizmet ve veri tehditlerini azaltmak için gerçekleştirmeniz gereken önemli eylemlerle eşlenen güvenlik denetimlerine yönelik güvenlik önerileri koleksiyonudur. [Ağ güvenliği](../security/benchmarks/security-control-network-security.md), [günlüğe kaydetme ve izleme](../security/benchmarks/security-control-logging-monitoring.md)dahil olmak üzere 11 güvenlik denetimi ve birkaç ad vermek için [veri koruması](../security/benchmarks/security-control-data-protection.md) vardır.
 
-Azure Ilkesi, Azure 'da yerleşik olarak bulunan ve Azure Güvenlik kıyaslaması dahil olmak üzere birden çok standart için uyumluluğu yönetmenize yardımcı olan bir özelliktir. İyi bilinen değerlendirmeler için Azure Ilkesi, ilkeleri daha kolay bir şekilde oluşturabilmeniz için yerleşik tanımlar sağlar. Azure Bilişsel Arama için, tanılama günlüğü için bir yerleşik tanım vardır. Bu, günlüğe kaydetme ve izleme güvenlik denetimiyle uyumlu olmayan herhangi bir arama hizmetini tanımlayan ve düzelten bir ilke atayabilmeniz anlamına gelir. Daha fazla bilgi için bkz. [Azure Ilke mevzuatı uyumluluk denetimleri bilişsel arama](security-controls-policy.md).
+Azure Ilkesi, Azure 'da yerleşik olarak bulunan ve Azure Güvenlik kıyaslaması dahil olmak üzere birden çok standart için uyumluluğu yönetmenize yardımcı olan bir özelliktir. İyi bilinen kıyaslamalar için Azure Ilkesi, hem ölçütü hem de uyumsuz bir yanıt sağlayan yerleşik tanımları, uyumsuz olmayan bir yanıt sağlar. 
+
+Azure Bilişsel Arama için, şu anda bir yerleşik tanım vardır. Bu, tanılama günlüğe kaydetme içindir. Bu yerleşik ile, tanılama günlüğü eksik olan herhangi bir arama hizmetini tanımlayan bir ilke atayabilir ve sonra onu açabilir. Daha fazla bilgi için bkz. [Azure Ilke mevzuatı uyumluluk denetimleri bilişsel arama](security-controls-policy.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

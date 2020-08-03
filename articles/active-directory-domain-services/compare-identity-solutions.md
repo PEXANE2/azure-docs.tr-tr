@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555137"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489597"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırın
 
@@ -47,7 +47,7 @@ Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi 
 
 Azure AD DS ile çekirdek hizmet bileşenleri, Microsoft tarafından *yönetilen* etki alanı deneyimi olarak dağıtılır ve korunur. VM 'Ler, Windows Server işletim sistemi veya etki alanı denetleyicileri (DC 'Ler) gibi bileşenler için AD DS altyapısını dağıtmayın, yönetmeyin, yamazsınız ve güvende kalmazsınız.
 
-Azure AD DS, bazı tasarım ve yönetim karmaşıklığını azaltan geleneksel, otomatik olarak yönetilen AD DS ortamına yönelik daha küçük bir özellik alt kümesi sağlar. Örneğin, tasarlamak ve sürdürmek üzere AD Ormanı, etki alanı, siteler ve çoğaltma bağlantıları yoktur. [Azure AD DS ile şirket içi ortamlar arasında (Şu anda önizleme aşamasında) orman güvenleri de oluşturabilirsiniz][create-forest-trust].
+Azure AD DS, bazı tasarım ve yönetim karmaşıklığını azaltan geleneksel, otomatik olarak yönetilen AD DS ortamına yönelik daha küçük bir özellik alt kümesi sağlar. Örneğin, tasarlamak ve sürdürmek üzere AD Ormanı, etki alanı, siteler ve çoğaltma bağlantıları yoktur. [Azure AD DS ve şirket içi ortamlar arasında hala orman güvenleri oluşturabilirsiniz][create-forest-trust].
 
 Bulutta çalışan ve Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi gereken uygulamalar ve hizmetler için Azure AD DS, en düşük düzeyde yönetim yüküne sahip bir yönetilen etki alanı deneyimi sağlar. Daha fazla bilgi için bkz. [Azure AD DS kullanıcı hesapları, parolalar ve yönetim Için yönetim kavramları][administration-concepts].
 
@@ -106,7 +106,7 @@ Azure AD 'ye katılmış veya kayıtlı bir cihazda, Kullanıcı kimlik doğrula
 
 Azure AD DS katılmış cihazlarda, uygulamalar kimlik doğrulaması için Kerberos ve NTLM protokollerini kullanabilir, bu nedenle, yükseltme ve kaydırma stratejisinin bir parçası olarak Azure VM 'lerinde çalışacak şekilde geçirilen eski uygulamaları destekleyebilir. Aşağıdaki tabloda cihazların nasıl temsil edildiği ve dizinde kimlik doğrulayabileceği fark özetlenmektedir:
 
-| **Nitelik**                      | **Azure AD 'ye katılmış**                                 | **Azure AD DS 'a katılmış**                                                    |
+| **Görünüş**                      | **Azure AD 'ye katılmış**                                 | **Azure AD DS 'a katılmış**                                                    |
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Cihazı denetleyen            | Azure AD                                            | Azure AD DS yönetilen etki alanı                                                |
 | Dizindeki temsili | Azure AD dizinindeki cihaz nesneleri            | Azure AD DS yönetilen etki alanındaki bilgisayar nesneleri                        |

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 06/22/2020
-ms.openlocfilehash: 3d8692d3180e4164bff544f71a1216097a390773
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 37647a9591c0f686e4fc3f1fd858baa46e01f7ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103662"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498081"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
@@ -30,7 +30,7 @@ Bu makalede aşağıdakileri öğreneceksiniz:
 
 Aşağıdaki tabloda, Microsoft AppSource ve Azure Marketi 'nde teklif türleri için yayımlama seçenekleri gösterilmektedir.
 
-|   | **Liste (kişi)**  | **Liste (deneme)**  | **Ücretsiz** | **KLG** | **Transact**|
+|   | **Liste (kişi)**  | **Liste (deneme)**  | **Ücretsiz** | **KLG** | **İşlem**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
 | **Sanal Makine** |  |  |  | Azure Market |  Azure Market |
 | **Azure uygulamaları (çoklu VM)** |  |  | Azure Market | Azure Market | Azure Market  |
@@ -47,18 +47,7 @@ Microsoft AppSource SaaS uygulaması Transact tekliflerinin &#42; Şu anda yaln�
 
 &#42;&#42; Microsoft 365 teklifleri yüklenmeye ücretsizdir ve bir lisans hizmeti olarak SaaS teklifi aracılığıyla oluşturulabilir. Daha fazla bilgi için bkz. [Microsoft Commercial Market aracılığıyla Office 365 eklentilerinizi Moneleştirme](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-## <a name="selecting-a-storefront"></a>Storefront seçme
-
-Bir yayımlama seçeneği seçmeden önce, ticari Market çözümleri, uygulamalar ve hizmetler için storefront uygunluk gereksinimlerinin anlaşılması önemlidir. Her storefront benzersiz müşteri gereksinimlerine hizmet eder ve belirli izleyicileri hedefler. Teklif türü, Transact özellikleri ve kategori ya da sektörünüz, teklifinizin nerede yayımlanacağını saptacaktır.
-
-**Microsoft AppSource** uygulamalar, Azure veya yerleşik olarak kullanılabilecek iş kolu çözümleridir: Dynamics 365, Office 365, Power BI veya Power Apps. AppSource Danışmanlık Hizmetleri, müşterilerin Dynamics 365 ve Power BI kullanımını kullanmaya veya hızlandırmasına yardımcı olan profesyonel hizmet tekliflerdir.
-
-**Azure Market** uygulamaları, Azure için yerleşik veya yerleşik olarak bulunan ve BT ya da geliştirici kitlesi için tasarlanan teknik "derleme bloğu" çözümleridir. Azure Market Danışmanlık Hizmetleri, müşterilerin Azure kullanımını kullanmaya veya hızlandırmasına yardımcı olan profesyonel hizmet teklifleridir.
-
->[!Note]
->"Çapraz listeleme" (yalnızca SaaS uygulamaları için): SaaS teklifiniz bir teknik hedef kitle (Azure Marketi) ve bir iş kitlesi (AppSource) için tasarlanıyorsa, Stoporonts için geçerli bir kategori ve/veya alt kategori seçebilirsiniz. Teklifinizin "çapraz listeleme" amacını, her iki hedef kitleye genişleten bir değer teklifini temel almalıdır. Her storefront için geçerli olan kategorileri görüntülemek için [buraya](./gtm-offer-listing-best-practices.md#categories) tıklayın.
-
-## <a name="choose-a-publishing-option"></a>Yayımlama seçeneği seçin
+## <a name="choose-a-call-to-action"></a>Eyleme çağrı seçin
 
 Kullanılabilir yayımlama seçenekleri, müşteri adayı paylaşma ve [ticari Market avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)erişmenizi sağlarken farklılaştırılan müşteri katılımı sunar. Yayımlama seçeneğiyle karşılık gelen eylem çağrılarını unutmayın:
 
@@ -67,10 +56,47 @@ Kullanılabilir yayımlama seçenekleri, müşteri adayı paylaşma ve [ticari M
 | **Liste** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** eylemi çağrısı yoluyla müşteriyle bağlantı kurma isteğinde bulunan basit listesi. |
 | **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan çağrı eylemi, **ücretsiz deneme** veya **test sürücüsü**olabilir. |
 | **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Eyleme çağrı **Şimdi**alınır.
-| **Transact** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Eyleme çağrı **Şimdi**alınır.|
+| **İşlem** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Eyleme çağrı **Şimdi**alınır.|
 
 > [!Note]
 > Transact Publishing seçeneğini kullanırken, bir teklif türü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalama ve ödeme konularını anlamak önemlidir. Daha fazla bilgi edinmek için [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md)makalesine bakın.
+
+## <a name="selecting-a-storefront"></a>Storefront seçme
+
+Her storefront benzersiz müşteri gereksinimlerine hizmet eder ve belirli izleyicileri hedefler. Teklif türü, Transact özellikleri ve kategorili, teklifinizin nerede yayımlanacağını saptacaktır. Kategoriler ve alt kategoriler, hedef kitleye göre her storefront eşlenir:
+
+**Microsoft AppSource** , Dynamics 365, Microsoft 365 ve güç platformu için iş kolu veya sektör çözümleri ve danışmanlık hizmetleri arayan iş kullanıcılarını hedefler.
+
+Azure **marketi** , BT uzmanlarına ve geliştiricilere Azure 'un kullanımını hızlandırmaya yönelik danışmanlık hizmetleri ve Azure için oluşturulmuş çözümler arayan BT uzmanlarına ve geliştiricilere yöneliktir.
+
+Hedef kitlenize en uygun kategoriyi ve alt kategorisini seçin. Örneğin, Web uygulaması güvenlik duvarı, hedeflenen hedef kitle BT uzmanları olduğu için güvenlik kategorisi altında Azure Marketi 'Nde yayımlanmalıdır. Hedeflenen hedef kitle iş kullanıcıları olduğundan, bir sözleşme yönetimi uygulamasının satış kategorisi altında AppSource 'a yayımlanması gerekir. Yanlış kategori veya alt kategori seçilmesi, teklifinizin yanlış storefront yayımlanmasına neden olabilir.
+
+### <a name="publishing-to-both-storefronts-saas-offers-only"></a>Her iki Stoporonts 'e yayımlama (yalnızca SaaS teklifleri)
+
+SaaS teklifleri, Azure Market veya AppSource 'ta yayımlanabilir. SaaS teklifiniz hem teknik bir dinleyici (Azure Marketi) hem *de* iş kitlesi (appsource) için tasarlanıyorsa, her storefront için geçerli bir kategori ve/veya alt kategori seçin. Her iki Storede yayımlanan teklifler, BT uzmanlarına *ve* iş kullanıcılarına genişleyen bir değer teklifi içermelidir.
+
+> [!IMPORTANT]
+> Tarifeli faturalandırma ile SaaS teklifleri, Azure Marketi ve Azure portal aracılığıyla kullanılabilir. Yalnızca özel planlara sahip SaaS teklifleri Azure portal aracılığıyla kullanılabilir.
+
+| Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
+|---|---|---|---|
+| Yes             | Evet         | Hayır           | Azure Marketi ve Azure portal |
+| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
+| Yes             | No          | Yes          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
+
+&#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
+
+Örneğin, tarifeli faturalandırma ve yalnızca özel planı (genel plan olmadan) içeren bir teklif, Azure portal müşteriler tarafından satın alınacaktır. [Microsoft ticari Market 'Teki özel teklifler](private-offers.md)hakkında daha fazla bilgi edinin.
+
+### <a name="categories"></a>Kategoriler
+
+Kategoriler ve alt kategoriler, hedef kitleye göre her storefront eşlenir. Teklifinizi ve hedeflenen kitleyi en iyi şekilde hizalamanızı sağlayan kategorileri ve alt kategorileri seçin. Şunları seçebilirsiniz:
+
+- En az bir ve en fazla iki kategori. Birincil ve ikincil kategori seçme seçeneğiniz vardır.
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Herhangi bir alt kategori seçmezseniz, teklifiniz seçili kategori altında keşfedilebilir olmaya devam eder.
+
+[!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

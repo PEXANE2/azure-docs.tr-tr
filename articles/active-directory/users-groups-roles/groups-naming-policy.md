@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728155"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497095"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory 'de Office 365 gruplarında bir adlandırma ilkesi zorlaması
 
@@ -72,7 +72,7 @@ Engellenen sözcük listesi kuralları:
 Adlandırma ilkesini yapılandırmak için aşağıdaki rollerden biri gereklidir:
 - Genel yönetici
 - Grup Yöneticisi
-- Kullanıcı yöneticisi
+
 
 Seçili Yöneticiler, tüm grup iş yükleri ve uç noktalarında bu ilkelerden muaf tutulur. böylece, engellenen kelimeleri ve kendi adlandırma kurallarını kullanarak gruplar oluşturabilirler. Grup adlandırma ilkesinden muaf tutulan Yönetici rollerinin listesi aşağıda verilmiştir.
 
@@ -236,7 +236,7 @@ Azure AD 'de bir grup adlandırma ilkesi ayarladıktan sonra, bir Kullanıcı Of
 - Adlandırma ilkenize göre adın Önizlemesi (ön ekler ve son ekler), Kullanıcı Grup adında her türdedir
 - Kullanıcı engellenen sözcükleri girerse, engellenen kelimeleri kaldırabilmeleri için bir hata iletisi görür.
 
-İş yükü | Uyumluluk
+İş Yükü | Uyumluluk
 ----------- | -------------------------------
 Azure Active Directory portalları | Azure AD portalı ve erişim paneli portalı, Kullanıcı bir grup oluştururken veya düzenlenirken bir grup adı yazdığında adlandırma ilkesi Zorlanmış adı gösterir. Kullanıcı özel engellenen bir sözcüğe girdiğinde, kullanıcının kaldırabilmesi için engellenen sözcüğe sahip bir hata mesajı görüntülenir.
 Outlook Web Erişimi (OWA) | Kullanıcı bir grup adı veya grup diğer adı yazdığında Outlook Web Erişimi adlandırma ilkesi tarafından zorlanan adı gösterir. Bir kullanıcı özel engellenen bir sözcüğe girdiğinde, Kullanıcı arabirimini kaldırabilmesi için engellenen sözcükle birlikte Kullanıcı arabiriminde bir hata iletisi gösterilir.

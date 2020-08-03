@@ -3,12 +3,12 @@ title: Yönetilen hizmet kimliğiyle olay teslimi
 description: Bu makalede bir Azure olay Kılavuzu konusu için yönetilen hizmet kimliğinin nasıl etkinleştirileceği açıklanır. Olayları desteklenen hedeflere iletmek için kullanın.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: c05eb2e78595e962494a60b1ffa8ead899aa0109
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b437d519a076104b64fb2df5cba1cd61a865b1fc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371269"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499832"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Yönetilen bir kimlikle olay teslimi
 Bu makalede, Azure Event Grid konuları veya etki alanları için [yönetilen bir hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.
@@ -64,7 +64,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 Var olan bir etki alanını güncelleştirme komutu benzerdir ( `az eventgrid domain update` ).
 
 ## <a name="supported-destinations-and-rbac-roles"></a>Desteklenen hedefler ve RBAC rolleri
-Olay kılavuzunuzun konusu veya etki alanı için kimliği etkinleştirdikten sonra Azure, Azure Active Directory içinde otomatik olarak bir kimlik oluşturur. Bu kimliği uygun rol tabanlı erişim denetimi (RBAC) rollerine ekleyerek konunun veya etki alanının olayları desteklenen hedeflere iletebilmesini sağlayın. Örneğin, olay Kılavuzu konusunun olayları bu ad alanındaki Olay Hub 'larına iletebilmesi için, Azure Event Hubs ad alanı için **azure Event Hubs Data sender** rolüne kimliği ekleyin. 
+Olay kılavuzunuzun konusu veya etki alanı için kimliği etkinleştirdikten sonra Azure, Azure Active Directory içinde otomatik olarak bir kimlik oluşturur. Konunun veya etki alanının olayları desteklenen hedeflere iletebilmesi için bu kimliği uygun Azure rollerine ekleyin. Örneğin, olay Kılavuzu konusunun olayları bu ad alanındaki Olay Hub 'larına iletebilmesi için, Azure Event Hubs ad alanı için **azure Event Hubs Data sender** rolüne kimliği ekleyin. 
 
 Şu anda Azure Event Grid, olayları aşağıdaki hedeflere iletmek için sistem tarafından atanan yönetilen kimlikle yapılandırılmış konuları veya etki alanlarını destekler. Bu tabloda, konunun olayları iletebilmesi için kimliğin içinde olması gereken roller de sunulur.
 

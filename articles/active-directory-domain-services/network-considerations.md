@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a3694b08bee732e3e2d3e7c0c339e5e0d94fe418
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c811240beea896683f891d9513a657b0689b8824
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040036"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488661"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -110,9 +110,11 @@ Yönetilen etki alanı için kimlik doğrulama ve yönetim hizmetleri sağlamak 
 
 | Bağlantı noktası numarası | Protokol | Kaynak                             | Hedef | Eylem | Gerekli | Amaç |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Azure AD kiracınızla eşitleme. |
-| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Azure AD kiracınızla eşitleme. |
+| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
+
+Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir. Bu ağ güvenlik grubunu silmeyin. Yük dengeleyici bu olmadan düzgün çalışmaz.
 
 > [!WARNING]
 > Bu ağ kaynaklarını ve konfigürasyonları el ile düzenlemeyin. Yanlış yapılandırılmış bir ağ güvenlik grubunu veya Kullanıcı tanımlı bir yol tablosunu yönetilen etki alanının dağıtıldığı alt ağla ilişkilendirdiğinizde, Microsoft 'un etki alanını hizmet etme ve yönetme yeteneğini kesintiye uğratabilir. Azure AD kiracınız ile yönetilen etki alanınız arasında eşitleme de kesintiye uğrar.

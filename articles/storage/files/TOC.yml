@@ -246,7 +246,7 @@
                 - name: Azure CLI
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Depolama hesabı için altyapı şifrelemesini etkinleştirme
-          href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json
+          href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Gelişmiş tehdit koruması
           href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Güvenlik duvarlarını ve sanal ağları yapılandırma

@@ -12,15 +12,16 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-javascript
+- devx-track-azurecli
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 68ea8122164856b09558d9154abb523233f16cb7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f6ac83a0fc32b426a914b76d27c2920ff8ce6731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424503"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500257"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Öğretici: IoT hub’ınızla bağlantıyı test etmek için bir simülasyon cihazı kullanma
 
@@ -37,7 +38,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide çalıştırdığınız CLI betikleri [Azure CLI için Microsoft Azure IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) kullanır. Bu uzantıyı yüklemek için aşağıdaki CLI komutunu çalıştırın:
 

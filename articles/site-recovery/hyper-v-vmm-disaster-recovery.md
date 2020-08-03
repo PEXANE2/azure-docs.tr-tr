@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134008"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495989"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Hyper-V VM'leri için ikincil bir şirket içi siteye olağanüstü durum kurtarma ayarlama
 
@@ -29,7 +29,7 @@ Bu makalede System Center Virtual Machine Manager (VMM) bulutlarında yönetilen
 > * Sanal makine için çoğaltmayı etkinleştirme
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu senaryoyu tamamlamak için:
 
@@ -67,7 +67,7 @@ Neleri çoğaltmak istediğinizi ve bunları nereye çoğaltacağınızı seçin
 1. **Site Recovery**  >  **1. Adım: altyapı**  >  **koruma hedefini**hazırlama ' ya Site Recovery tıklayın.
 2. **Kurtarma sitesine**'yi ve **Evet, Hyper-V ile**'yi seçin.
 3. Hyper-V konaklarını yönetmek için VMM kullandığınızı belirtmek üzere **Evet**'i seçin.
-4. İkincil bir VMM sunucunuz varsa **Evet**'i seçin. Çoğaltmayı tek bir VMM sunucusu üzerindeki bulutlar arasında dağıtıyorsanız **Hayır**'ı seçin. Ardından **Tamam**'a tıklayın.
+4. İkincil bir VMM sunucunuz varsa **Evet**'i seçin. Çoğaltmayı tek bir VMM sunucusu üzerindeki bulutlar arasında dağıtıyorsanız **Hayır**'ı seçin. Daha sonra, **Tamam**'a tıklayın.
 
 
 ## <a name="set-up-the-source-environment"></a>Kaynak ortamı ayarlama
@@ -80,7 +80,7 @@ Azure Site Recovery Sağlayıcısı'nı VMM sunucularına yükleyin ve kasadaki 
 4. Azure Site Recovery Sağlayıcısı yükleme dosyasını indirin.
 5. Kayıt anahtarını indirin. Sağlayıcı'yı yüklediğinizde buna ihtiyacınız olacak. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 
-    ![Kaynağı ayarlama](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
+    ![Sağlayıcıyı ve kayıt anahtarını indirme seçeneklerinin ekran görüntüsü.](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
 
 6. Sağlayıcı'yı VMM sunucularına yükleyin. Hyper-V konaklarına yüklemeniz gereken herhangi bir şey yoktur.
 
@@ -94,7 +94,7 @@ Azure Site Recovery Sağlayıcısı'nı VMM sunucularına yükleyin ve kasadaki 
 4. **Yükleme** bölümünde varsayılan yükleme konumunu kabul edin veya değiştirin ve **Yükle**'ye tıklayın.
 5. Yükleme tamamlandıktan sonra sunucuyu kasaya kaydetmek için **Kaydet**'e tıklayın.
 
-    ![Yükleme konumu](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![Yükleme konumu dahil olmak üzere sağlayıcı yükleme ekranının ekran görüntüsü.](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. **Kasa adı** alanında, sunucunun kayıtlı olduğu kasanın adını doğrulayın. **İleri**’ye tıklayın.
 7. **Ara Sunucu Bağlantısı** bölümünde VMM sunucusunda çalışan Sağlayıcı'nın Azure'a nasıl bağlanacağını belirleyin.
    - Sağlayıcıyı doğrudan veya bir ara sunucu üzerinden internete bağlanacak şekilde ayarlayabilirsiniz. Ara sunucu ayarlarını gereken şekilde yapın.
@@ -105,7 +105,7 @@ Azure Site Recovery Sağlayıcısı'nı VMM sunucularına yükleyin ve kasadaki 
 10. **Sunucu adı** alanında, kasadaki VMM sunucusunu tanımlamak için bir kolay ad belirtin. Bir kümede VMM küme rolünün adını belirtin.
 11. **Bulut meta verilerini eşitle** bölümünde VMM sunucusundaki tüm bulutlar için meta verileri eşitlemek isteyip istemediğinizi seçin. Bu eylemin her sunucuda yalnızca bir kez gerçekleştirilmesi gerekir. Tüm bulutları eşitlemek istemiyorsanız bu ayarı işaretlemeden geçebilirsiniz. VMM konsolunun bulut özellikleri sayfasından her bulutu ayrı bir şekilde eşitleyebilirsiniz.
 12. İşlemi tamamlamak için **İleri**'ye tıklayın. Kayıttan sonra Site Recovery, VMM sunucusundan meta verileri alır. Sunucu, kasadaki **sunucular**  >  **VMM sunucuları** ' nda görüntülenir.
-13. Sunucu kasada göründükten sonra **kaynak**  >  **hazırlama kaynağı** ' nda VMM sunucusunu seçin ve Hyper-V konağının bulunduğu bulutu seçin. Ardından **Tamam**'a tıklayın.
+13. Sunucu kasada göründükten sonra **kaynak**  >  **hazırlama kaynağı** ' nda VMM sunucusunu seçin ve Hyper-V konağının bulunduğu bulutu seçin. Daha sonra, **Tamam**'a tıklayın.
 
 
 ## <a name="set-up-the-target-environment"></a>Hedef ortamı ayarlama
@@ -115,7 +115,7 @@ Hedef VMM sunucusunu ve bulutu seçin:
 1. **Altyapı hedefini hazırla**' ya tıklayın  >  **Target**ve hedef VMM sunucusunu seçin.
 2. Site Recovery ile eşitlenmiş olana VMM bulutları görüntülenir. Hedef bulutu seçin.
 
-   ![Hedef](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Hedef VMM sunucusunun ve bulut seçimlerinin ekran görüntüsü.](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Çoğaltma ilkesi ayarlama
@@ -136,9 +136,9 @@ Başlamadan önce ilkeyi kullanan tüm konakların aynı işletim sistemine sahi
     - **Uygulamayla tutarlı anlık görüntü**: VM’nin içindeki uygulama verilerinin belirli bir noktadaki anlık görüntüsünü alır. Birim Gölge Kopyası Hizmeti (VSS), anlık görüntü alınırken uygulamanın tutarlı bir durumda olmasını sağlar. Uygulamayla tutarlı anlık görüntüleri etkinleştirmek, kaynak VM'lerin uygulama performansını etkiler. Yapılandırdığınız ilave kurtarma noktası sayısından daha küçük bir değer belirleyin.
 4. **Veri aktarımı sıkıştırma** bölümünde aktarılan çoğaltma verilerinin sıkıştırılıp sıkıştırılmayacağını belirtin.
 5. Kaynak VM için korumayı devre dışı bırakırsanız çoğaltma sanal makinesinin silinmesini istiyorsanız **Çoğaltma VM'ini sil**'i seçin. Bu ayarı etkinleştirirseniz kaynak VM için korumayı devre dışı bıraktığınızda VM Site Recovery konsolundan kaldırılır, VMM Site Recovery ayarları VMM konsolundan kaldırılır ve çoğaltma silinir.
-6. **İlk çoğaltma yöntemi** alanında ağ üzerinden çoğaltma gerçekleştiriyorsanız ilk çoğaltma işleminin başlatılmasını seçin veya bir zamanlama belirleyin. Ağ bant genişliğini tüketmemek için kullanımın az olduğu saatlere göre zamanlamak isteyebilirsiniz. Ardından **Tamam**'a tıklayın.
+6. **İlk çoğaltma yöntemi** alanında ağ üzerinden çoğaltma gerçekleştiriyorsanız ilk çoğaltma işleminin başlatılmasını seçin veya bir zamanlama belirleyin. Ağ bant genişliğini tüketmemek için kullanımın az olduğu saatlere göre zamanlamak isteyebilirsiniz. Daha sonra, **Tamam**'a tıklayın.
 
-     ![Çoğaltma ilkesi](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![Çoğaltma İlkesi seçeneklerinin ekran görüntüsü.](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. Yeni ilke otomatik olarak VMM bulutu ile ilişkilendirilir. **Çoğaltma ilkesi** bölümünde **Tamam**'a tıklayın. 
 
@@ -146,7 +146,7 @@ Başlamadan önce ilkeyi kullanan tüm konakların aynı işletim sistemine sahi
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 
 1. **Uygulama kaynağını Çoğalt**' a tıklayın  >  **Source**. 
-2. **Kaynak** bölümünde VMM sunucusunu ve çoğaltmak istediğiniz Hyper-V konaklarının bulunduğu bulutu seçin. Ardından **Tamam**'a tıklayın.
+2. **Kaynak** bölümünde VMM sunucusunu ve çoğaltmak istediğiniz Hyper-V konaklarının bulunduğu bulutu seçin. Daha sonra, **Tamam**'a tıklayın.
 3. **Hedef** bölümünde ikincil VMM sunucusunu ve bulutu doğrulayın.
 4. **Sanal makineler** bölümündeki listeden korumak istediğiniz VM'leri seçin.
 

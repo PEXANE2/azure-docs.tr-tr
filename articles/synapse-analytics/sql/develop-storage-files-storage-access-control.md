@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2e13d00e48c83ff56cc21f23f513d17f545b4e4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283461"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496058"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -49,7 +49,7 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -219,7 +219,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>Örnekler
 
-**Genel kullanıma açık veri kaynağına erişme**
+### <a name="access-a-publicly-available-data-source"></a>**Genel kullanıma açık bir veri kaynağına erişme**
 
 Genel olarak kullanılabilir veri kaynağına erişen bir tablo oluşturmak için aşağıdaki betiği kullanın.
 
@@ -248,7 +248,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-**Kimlik bilgisi kullanarak veri kaynağına erişme**
+### <a name="access-a-data-source-using-credentials"></a>**Kimlik bilgilerini kullanarak bir veri kaynağına erişme**
 
 SAS belirtecini, Kullanıcı Azure AD kimliğini veya çalışma alanının yönetilen kimliğini kullanarak Azure depolama 'ya erişen bir dış tablo oluşturmak için aşağıdaki betiği değiştirin.
 

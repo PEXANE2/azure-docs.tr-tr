@@ -10,12 +10,13 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 3eda4cd8dc10bd9128186b2ff4f8d6ac0254fe5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-azurecli
+ms.openlocfilehash: b31fc9df5451665b79a41172286a0cc471b681fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770607"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501006"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 
@@ -36,7 +37,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * Uyarılar çalışmaya başlamadan önce uygulamayı çalıştırın. 
 > * Ölçüm sonuçlarını görüntüleyin ve tanılama günlüklerini denetleyin. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -292,7 +293,7 @@ Kodu Visual Studio'da açmak için çözüm dosyasına (SimulatedDevice.sln) çi
 
 ## <a name="run-and-test"></a>Çalıştırma ve test etme 
 
-Program.cs ' de, 1 `Task.Delay` saniyeden. 01 saniyeye ileti gönderme arasındaki süreyi azaltan 1000 olarak değiştirin. Bu gecikmeyi kısaltaştırma, gönderilen ileti sayısını artırır.
+Program.cs ' de, `Task.Delay` 1 saniyeden. 01 saniyeye ileti gönderme arasındaki süreyi azaltan 1000 olarak değiştirin. Bu gecikmeyi kısaltaştırma, gönderilen ileti sayısını artırır.
 
 ```csharp
 await Task.Delay(10);

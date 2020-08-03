@@ -3,12 +3,13 @@ title: Azure Service Fabric ağı uygulama gizli dizilerini yönetme
 description: Service Fabric bir kafes uygulamasını güvenli bir şekilde oluşturup dağıtabilmeniz için uygulama gizli dizilerini yönetin.
 ms.date: 4/2/2019
 ms.topic: conceptual
-ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 379560b73c38558fe0b712ed5e036c7a3736b600
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461924"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500717"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric kafes uygulama gizli dizilerini yönetme
 Service Fabric ağ, Azure kaynakları olarak gizli dizileri destekler. Service Fabric bir ağ parolası, depolama bağlantı dizeleri, parolalar veya güvenli bir şekilde depolanması ve aktarılması gereken diğer değerler gibi herhangi bir hassas metin bilgisi olabilir. Bu makalede, gizli dizileri dağıtmak ve korumak için Service Fabric Güvenli Depolama Hizmeti nasıl kullanılacağı gösterilmektedir.

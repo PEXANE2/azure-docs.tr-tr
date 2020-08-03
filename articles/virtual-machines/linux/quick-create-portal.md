@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392871"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499985"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında Linux sanal makinesi oluşturma
 
@@ -32,11 +32,11 @@ Henüz yapmadıysanız [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Sanal makineler** sayfasında **Ekle**' yi seçin. **Sanal makine oluştur** sayfası açılır.
 1. **Temel Bilgiler** sekmesinde, **Proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun, ardından **Yeni oluştur** kaynak grubunu seçin. Ad. * için *Myresourcegroup* yazın. 
 
-    ![VM'niz için yeni bir kaynak grubu oluşturma](./media/quick-create-portal/project-details.png)
+    ![Azure aboneliğini ve sanal makinenin kaynak grubunu nerede seçdiğinin gösterildiği proje ayrıntıları bölümünün ekran görüntüsü](./media/quick-create-portal/project-details.png)
 
 1. **Örnek ayrıntıları**' nın altında, **sanal makine adı**için *myvm* yazın, **bölgeniz**Için *Doğu ABD* seçin ve **görüntünüz**için *Ubuntu 18,04 LTS* ' yi seçin. Diğer varsayılan değerleri bırakın.
 
-    ![Örnek ayrıntıları bölümü](./media/quick-create-portal/instance-details.png)
+    ![Sanal makine için bir ad verdiğiniz örnek ayrıntıları bölümünün ekran görüntüsü ve kendi bölgesini, görüntüsünü ve boyutunu seçebilirsiniz](./media/quick-create-portal/instance-details.png)
 
 1. **Yönetici hesabı**altında **SSH ortak anahtarı**' nı seçin.
 
@@ -44,11 +44,11 @@ Henüz yapmadıysanız [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **SSH ortak anahtar kaynağı**için varsayılan değer **Oluştur yeni anahtar çiftini**bırakın ve **anahtar çifti adı**için *MyKey* yazın.
 
-    ![Yönetici hesabı](./media/quick-create-portal/administrator-account.png)
+    ![Bir kimlik doğrulama türü seçip yönetici kimlik bilgilerini sağlayan yönetici hesabı bölümünün ekran görüntüsü](./media/quick-create-portal/administrator-account.png)
 
 1. **Gelen bağlantı noktası kuralları**  >  **Genel gelen bağlantı noktaları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılan listeden **SSH (22)** ve **http (80)** seçeneğini belirleyin. 
 
-    ![RDP ve HTTP için bağlantı noktaları açma](./media/quick-create-portal/inbound-port-rules.png)
+    ![Gelen bağlantılara izin verilen bağlantı noktalarını seçtiğiniz gelen bağlantı noktası kuralları bölümünün ekran görüntüsü](./media/quick-create-portal/inbound-port-rules.png)
 
 1. Kalan varsayılan ayarları bırakın, ardından sayfanın alt kısmındaki **Gözden geçir + oluştur** düğmesini seçin.
 
@@ -61,7 +61,7 @@ Henüz yapmadıysanız [Azure Portal](https://portal.azure.com) oturum açın.
 1. Yeni sanal makinenizin sayfasında genel IP adresini seçin ve panonuza kopyalayın.
 
 
-    ![Genel IP adresini kopyalayın](./media/quick-create-portal/ip-address.png)
+    ![Sanal makinenin IP adresinin nasıl kopyalanacağını gösteren ekran görüntüsü](./media/quick-create-portal/ip-address.png)
 
 ## <a name="connect-to-virtual-machine"></a>Sanal makineye bağlanma
 
@@ -94,7 +94,7 @@ sudo apt-get -y install nginx
 
 İstediğiniz web tarayıcısını kullanarak varsayılan NGINX karşılama sayfasını görüntüleyin. Web adresi olarak VM 'nin genel IP adresini yazın. Genel IP adresini VM genel bakış sayfasında veya önceden kullandığınız SSH bağlantı dizesinde bulabilirsiniz.
 
-![Varsayılan NGINX sitesi](./media/quick-create-portal/nginx.png)
+![Bir tarayıcıda NGıNX varsayılan sitesini gösteren ekran görüntüsü](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

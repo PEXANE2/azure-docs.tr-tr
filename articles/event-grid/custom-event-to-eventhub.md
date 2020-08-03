@@ -3,12 +3,13 @@ title: 'Hızlı başlangıç: Event Hubs için özel olaylar gönderme-Event Gri
 description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak için Azure Event Grid ve Azure CLı kullanın. Uç nokta için bir olay hub’ı kullanılır.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 1d27ebe0151c6a49d21975216e146f1daa20e4e2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0965963e6527e625d0684821b977b05cb9f28657
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462046"
+ms.locfileid: "87497365"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid ile Azure Event Hubs özel olayları yönlendirme
 

@@ -4,12 +4,13 @@ description: Yerel bilgisayarınızdan Azure Resource Manager şablonu dağıtma
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3112c3940f9d2668f4825de3c2e57a63af009d92
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ef52d20b20446e3b8f3b761949bf255b99d358cc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118911"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499594"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Öğretici: yerel bir Azure Resource Manager şablonu dağıtma
 
@@ -25,7 +26,7 @@ Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, ba
 
 Şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps)
+- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 
@@ -46,7 +47,7 @@ Azure PowerShell veya Azure CLı yükledikten sonra, ilk kez oturum açarak emin
 
 Şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy.js. Bu şablonu öğreticide daha sonra dağıtırsınız.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure’da oturum açma
 
 Bir şablon dağıtmak için Azure PowerShell/Azure CLı ile çalışmaya başlamak için Azure kimlik bilgilerinizle oturum açın.
 
@@ -165,4 +166,4 @@ Kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
 Yerel bir şablon dağıtmayı öğrendiniz. Sonraki öğreticide, şablonu bir ana şablona ve bağlı bir şablona ayırdınız ve bağlantılı şablonu nasıl depolayacağınızı ve güvenli hale ayarlayacağınızı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Bağlı şablon dağıtma](./deployment-tutorial-linked-template.md)
+> [Bağlantılı şablonu dağıtma](./deployment-tutorial-linked-template.md)

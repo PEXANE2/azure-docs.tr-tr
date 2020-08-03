@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 45da3ec95167cbb4fa087435e0e88f85c0eb6463
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461060"
+ms.locfileid: "87500666"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 'SI için Java SDK v4 Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -63,7 +63,30 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 
 ## <a name="release-history"></a>Yayın geçmişi
 
+### <a name="440-beta1-unreleased"></a>4.4.0-Beta. 1 (serbest bırakılmamış)
+
+### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
+#### <a name="new-features"></a>Yeni Özellikler
+* Reaktör-çekirdek kitaplık sürümü sürümüne güncelleştirildi `3.3.8.RELEASE` . 
+* Reaktör-Netty kitaplık sürümü sürümüne güncelleştirildi `0.9.10.RELEASE` . 
+* Netty kitaplık sürümü olarak güncelleştirildi `4.1.51.Final` . 
+* İle için yeni aşırı yükleme API 'Leri eklendi `upsertItem` `partitionKey` . 
+* Açık telemetri izleme desteği eklendi. 
+#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+* Ağ GEÇIDI modundaki isteklerin iptali durumunda SSLException 'nın oluşturulduğu sorun düzeltildi.
+* Saklı yordamlar yürütülürken sabit kaynak kısıtlama yeniden deneme ilkesi.
+* SDK 'nın günlük düzeyi hata ayıklama modunda asılı olduğu sorun düzeltildi. 
+* Doğrudan modda gecikme süresi içinde düzeltilen düzenli artışlar. 
+* Yüksek istemci başlatma zamanı sorunu düzeltildi. 
+* İstemci doğrudan mod ve ağ geçidi moduyla özelleştirilirken düzeltilen http proxy hatası. 
+* Kullanıcılarda düzeltilen olası NPE, null seçenekleri geçiyor. 
+* Tanılama dizesinde timeUnit eklendi `requestLatency` .
+* Tanılama dizesinden yinelenen URI dizesi kaldırıldı. 
+* Nokta işlemleri için doğru JSON biçiminde sabit tanılama dizesi.
+* Operatör ile ilgili sorun düzeltildi `.single()` özel durum durumunda reaktör zincirinin geliyor 'a neden olması. 
+
 ### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+#### <a name="new-features"></a>Yeni Özellikler
 * Betik günlüğü etkin API öğesine eklendi `CosmosStoredProcedureRequestOptions` .
 * `DirectConnectionConfig`Varsayılan değer `idleEndpointTimeout` 1 ' dir ve varsayılan `connectTimeout` olarak 0,5 s olarak güncelleştirilir.
 #### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri

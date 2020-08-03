@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 07/31/2020
 ms.author: juliako
-ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090119"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489784"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -33,6 +33,8 @@ Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) (Origin
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Kaynak dosyalarınızı teslim edilmek üzere hazırlamak için
 
 Dinamik paketlemeden yararlanmak için, Mezzanine (kaynak) dosyanızı çoklu bit hızı MP4 (ISO tabanlı medya 14496-12) dosyaları kümesine [kodlamanız](encoding-concept.md) gerekir. Media Services dinamik paketleme için, kodlanmış MP4 ve akış yapılandırma [dosyalarını içeren bir](assets-concept.md) varlığınız olması gerekir. Bu MP4 dosyaları kümesinden, aşağıda açıklanan akış medya protokolleri aracılığıyla video teslim etmek için dinamik paketleme kullanabilirsiniz.
+
+Azure Media Services dinamik paketleme yalnızca MP4 kapsayıcı biçimindeki video ve ses dosyalarını destekler. Ses dosyalarının, Dolby gibi alternatif codec bileşenleri kullanılırken bir MP4 kapsayıcısına kodlanması gerekir.  
 
 > [!TIP]
 > MP4 ve akış yapılandırma dosyalarını almanın bir yolu, [Media Services ile Mezzanine dosyanızı kodlayakullanmaktır](#encode-to-adaptive-bitrate-mp4s). 
@@ -87,7 +89,7 @@ Aşağıdaki diyagramda, dinamik paketleme iş akışı ile isteğe bağlı akı
 
 ![Dinamik paketleme ile isteğe bağlı akış için bir iş akışının diyagramı](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-İndirme yolu yukarıdaki görüntüde bulunur ve yalnızca bir MP4 dosyasını doğrudan *akış uç noktası* (Origin) aracılığıyla indirebileceğiniz (akış bulucuda indirilebilir [akış ilkesini](streaming-policy-concept.md) belirtirsiniz).<br/>Dinamik Paketleyici dosyayı değiştirmez. 
+İndirme yolu yukarıdaki görüntüde bulunur ve yalnızca bir MP4 dosyasını doğrudan *akış uç noktası* (Origin) aracılığıyla indirebileceğiniz (akış bulucuda indirilebilir [akış ilkesini](streaming-policy-concept.md) belirtirsiniz).<br/>Dinamik Paketleyici dosyayı değiştirmez. İsteğe bağlı olarak, *akış uç noktası* (başlangıç) özelliklerini atlamak Istiyorsanız, Azure Blob depolama API 'lerini kullanarak doğrudan aşamalı indirme IÇIN bir MP4 yükleyebilirsiniz. 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>Uyarlamalı bit hızı MP4 'leri kodlama
 
@@ -123,17 +125,17 @@ Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bk
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Dinamik paketleme tarafından desteklenen video codec bileşenleri
 
-Dinamik paketleme, [h.](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) , (MPEG-4 AVC veya avc1) veya [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 veya hvc1) Ile kodlanmış video içeren MP4 dosyalarını destekler.
+Dinamik paketleme, MP4 kapsayıcı dosya biçimindeki video dosyalarını destekler ve [h.](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC veya avc1) veya [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 veya hvc1) ile kodlanmış bir video içerir.
 
 > [!NOTE]
 > En fazla 4K/60 kare hızına kadar olan çözünürlükler, *dinamik paketleme*ile test edilmiştir. [Premium kodlayıcı](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla H. 265 kodlamasını destekler.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Dinamik paketleme tarafından desteklenen ses codec bileşenleri
 
-Dinamik paketleme, aşağıdaki protokollerle kodlanmış sesi destekler:
+Dinamik paketleme Ayrıca, aşağıdaki codec bileşenlerinden birinde kodlanmış ses akışını içeren MP4 dosya kapsayıcısı biçiminde depolanan ses dosyalarını da destekler:
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 veya HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Gelişmiş AC-3 veya E-AC3)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 veya HE-AAC v2). 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Gelişmiş AC-3 veya E-AC3).  Kodlanmış sesin, dinamik paketleme ile çalışması için MP4 kapsayıcı biçiminde depolanması gerekir.
 * Dolby Atmos
 
    Ortak akış biçimi (CSF) veya ortak medya uygulaması biçimi (CMAF) ile MPEG-DASH protokolü, CMAF ile HTTP Canlı Akışı (HLS) aracılığıyla akış Dolby Atmos içeriği
@@ -146,6 +148,10 @@ Dinamik paketleme, aşağıdaki protokollerle kodlanmış sesi destekler:
     * DTS-HD kayıpsız (çekirdek yok) (dtsl)
 
 Dinamik paketleme birden çok codec ve dilde birden çok ses parçası olan akış varlıkları için DASH veya HLS (sürüm 4 veya üzeri) ile birden çok ses parçasını destekler.
+
+Yukarıdaki tüm ses codec bileşenleri için, kodlama sesinin, dinamik paketleme ile çalışmak için MP4 kapsayıcı biçiminde depolanması gerekir. Hizmet, blob depolamada ham basit akış dosya biçimlerini desteklemez (örneğin, aşağıdakiler desteklenmez-. Dts,. AC3.) 
+
+Ses paketleme için yalnızca. mp4 of. MP4A uzantısına sahip dosyalar desteklenir. 
 
 ### <a name="limitations"></a>Sınırlamalar
 

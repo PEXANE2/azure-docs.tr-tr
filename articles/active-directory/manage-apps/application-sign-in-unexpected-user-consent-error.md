@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763763"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499509"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Bir uygulamaya onay gerçekleştirilirken beklenmeyen hata oluştu
 
@@ -38,6 +38,8 @@ Bir kullanıcının bir uygulamanın gerektirdiği izinleri onaylaması için be
 Bu hata, şirket yöneticisi olmayan bir Kullanıcı, yalnızca bir yöneticinin verebileceği izinleri isteyen bir uygulamayı kullanmayı denediğinde oluşur. Bu hata, kuruluş adına uygulamaya erişim izni veren bir yönetici tarafından çözülebilir.
 
 Bu hata, Microsoft 'un izin isteğinin riskli olduğunu algılaması nedeniyle, bir kullanıcının bir uygulamaya katılmasının engellenmesinin önlenmesi durumunda da oluşabilir. Bu durumda, bir denetim olayı "ApplicationManagement" kategorisi, etkinlik türü "uygulamaya onay onayı" ve "riskli uygulama algılandı" durum nedeni ile de günlüğe kaydedilir.
+
+Bu hatanın gerçekleşebileceği başka bir senaryo da uygulama için Kullanıcı atamasının gerekli olduğu, ancak yönetici onayı sağlanmadığında oluşur. Bu durumda, yöneticinin önce yönetici onayı sağlaması gerekir.   
 
 ## <a name="policy-prevents-granting-permissions-error"></a>İlke, izin verilmesini engelliyor
 * **AADSTS90093:** Bir &lt; tenantdisplayname Yöneticisi, &gt; &lt; istenen izinleri uygulamanın adına vermemenizi önleyen bir ilke ayarladı &gt; . &lt; &gt; Bu uygulamaya sizin adınıza izin veren bir tenantdisplayname yöneticisiyle iletişim kurun.

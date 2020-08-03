@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6b7d40512fe3537610efa42ccc33c9f8e80212
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: ddfb0343e925354a57a54e02f3eb98b7a1d01bcb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484381"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495123"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
@@ -90,14 +90,14 @@ Azure AD ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden 
 |Kimlik| Kimliği doğrulanmış bir şey. Kimlik, Kullanıcı adı ve parola içeren bir kullanıcı olabilir. Kimlikler Ayrıca gizli anahtarlar veya sertifikalar aracılığıyla kimlik doğrulaması gerektirebilecek uygulamaları veya diğer sunucuları da içerir.|
 |Hesap| Kendisiyle ilişkili verilerin bulunduğu bir kimlik. Kimliği olmayan bir hesabınız olamaz.|
 |Azure AD hesabı| Azure AD veya Office 365 gibi başka bir Microsoft bulut hizmeti aracılığıyla oluşturulmuş bir kimlik. Kimlikler Azure AD 'de depolanır ve kuruluşunuzun bulut hizmeti aboneliklerinde erişilebilir. Bu hesaba bazen Iş veya okul hesabı da denir.|
-|Hesap Yöneticisi|Bu klasik abonelik Yöneticisi rolü, kavramsal olarak bir aboneliğin fatura sahibidir. Bu rolün [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) erişimi vardır ve bir hesaptaki tüm abonelikleri yönetmenizi sağlar. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rol tabanlı erişim denetimi (RBAC) rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Hizmet Yöneticisi|Bu klasik abonelik Yöneticisi rolü, erişim dahil olmak üzere tüm Azure kaynaklarını yönetmenizi sağlar. Bu rol, abonelik kapsamında sahip rolü atanan bir kullanıcıya eşdeğer erişime sahiptir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Sahip|Bu rol, erişim de dahil olmak üzere tüm Azure kaynaklarını yönetmenize yardımcı olur. Bu rol, Azure kaynaklarına ayrıntılı erişim yönetimi sağlayan, rol tabanlı erişim denetimi (RBAC) adlı yeni bir yetkilendirme sistemi üzerine kurulmuştur. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Hesap Yöneticisi|Bu klasik abonelik Yöneticisi rolü, kavramsal olarak bir aboneliğin fatura sahibidir. Bu rolün [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) erişimi vardır ve bir hesaptaki tüm abonelikleri yönetmenizi sağlar. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Hizmet Yöneticisi|Bu klasik abonelik Yöneticisi rolü, erişim dahil olmak üzere tüm Azure kaynaklarını yönetmenizi sağlar. Bu rol, abonelik kapsamında sahip rolü atanan bir kullanıcıya eşdeğer erişime sahiptir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Sahip|Bu rol, erişim de dahil olmak üzere tüm Azure kaynaklarını yönetmenize yardımcı olur. Bu rol, Azure kaynaklarına ayrıntılı erişim yönetimi sağlayan, rol tabanlı erişim denetimi (RBAC) adlı yeni bir yetkilendirme sistemi üzerine kurulmuştur. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Azure AD Genel yöneticisi|Bu yönetici rolü, Azure AD kiracısı tarafından oluşturulan çoğuna 'e otomatik olarak atanır. Genel Yöneticiler, Azure AD 'ye yönelik tüm yönetim işlevlerini ve Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi sürümü gibi Azure AD 'ye federe Hizmetleri gerçekleştirebilir. Birden çok genel yöneticisi olabilir, ancak yalnızca genel Yöneticiler yönetici rollerini (diğer genel yöneticileri atama dahil) kullanıcılara atayabilirler. Bu yönetici rolünün Azure portal genel yönetici olarak adlandırıldığına, ancak Microsoft Graph API ve Azure AD PowerShell 'de **Şirket Yöneticisi** olarak adlandırıldığına bakın. çeşitli yönetici rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md).|
 |Azure aboneliği| Azure bulut hizmetleri için ödeme yapmak üzere kullanılır. Birçok aboneliğiniz olabilir ve bunlar kredi kartıyla bağlantılıdır.|
 |Azure kiracısı| Kuruluşunuz, Microsoft Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmeti aboneliğine kaydolduğunda otomatik olarak oluşturulan adanmış ve güvenilir bir Azure AD örneğidir. Azure kiracısı tek kuruluşu temsil eder.|
 |Tek kiracılı| Ayrılmış bir ortamdaki diğer hizmetlere erişen Azure kiracılar tek kiracı olarak kabul edilir.|
-|Çok Kiracılı| Birden çok kuruluşta paylaşılan bir ortamdaki diğer hizmetlere erişen Azure kiracılar çok kiracılı olarak değerlendirilir.|
+|Çok kiracılı| Birden çok kuruluşta paylaşılan bir ortamdaki diğer hizmetlere erişen Azure kiracılar çok kiracılı olarak değerlendirilir.|
 |Azure AD dizini|Her Azure kiracının adanmış ve güvenilen bir Azure AD dizini vardır. Azure AD dizini, kiracının kullanıcılarını, gruplarını ve uygulamalarını içerir ve kiracı kaynakları için kimlik ve erişim yönetimi işlevleri gerçekleştirmek üzere kullanılır.|
 |Özel etki alanı|Her yeni Azure AD dizini, domainname.onmicrosoft.com ilk etki alanı adı ile gelir. Bu başlangıç adının yanı sıra, iş için kullandığınız adları ve kullanıcılarınızın kuruluşunuzun kaynaklarına erişmek için kullandığı adları içeren kuruluşunuzun etki alanı adlarını da ekleyebilirsiniz. Özel etki alanı adları eklemek, kullanıcılarınıza bildiğiniz Kullanıcı adlarını (örneğin,) oluşturmanıza yardımcı olur alain@contoso.com .|
 |Microsoft hesabı (da denir, MSA)|Müşteri odaklı Microsoft ürünlerine ve Outlook, OneDrive, Xbox LIVE veya Office 365 gibi bulut hizmetlerine erişim sağlayan kişisel hesaplar. Microsoft hesabı, Microsoft tarafından çalıştırılan Microsoft tüketici kimliği hesap sisteminde oluşturulur ve depolanır.|
