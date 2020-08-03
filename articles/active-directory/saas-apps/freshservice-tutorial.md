@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e08ef72dca09f873ad1cfcc91e132063b88406b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd85b66894afbd239954f5f32b8297757caddc44
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74227531"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513324"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Öğretici: tek oturum açma (SSO) öğesini en güncel hizmet ile tümleştirme Azure Active Directory
 
@@ -45,6 +44,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * En güncel hizmet **SP** tarafından başlatılan SSO 'yu destekler
+* Tek yapmanız gereken hizmeti yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-freshservice-from-the-gallery"></a>Galeriden bir hizmet ekleme
 
@@ -93,20 +93,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. En az hizmeti, SSO 'nun çalışmasını sağlamak için SHA-256 parmak izini gerektirir. SHA-256 parmak izini almak için aşağıdaki adımları gerçekleştirin:
-
-    ![Iziyle](./media/freshservice-tutorial/ic790821.png "Iziyle")
-
-    1. [Bağlantıyı](https://www.samltool.com/fingerprint.php) farklı bir Web tarayıcısında açın.
-
-    1. İndirilen sertifika (base64) dosyasını Not defteri 'nde açın ve içeriği **X. 509.440 CERT** metin kutusuna yapıştırın.
-
-    1. Algoritma için açılan listeden **SHA256** öğesini seçin.
-
-    1. **Parmak Izini hesapla**' ya tıklayın.
-
-    1. Oluşturulan **parmak izini** kopyalayıp bilgisayarınıza kaydetmek için Kopyala simgesine tıklayın.
-
 1. **Azure Portal** **en güncel hizmeti ayarla** bölümünde, GEREKSINIMINIZE göre uygun URL 'leri kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
@@ -119,9 +105,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -143,41 +129,38 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak en güncel hizme
 
 ## <a name="configure-freshservice-sso"></a>En güncel hizmet SSO 'SU yapılandırma
 
-1. Yapılandırma işlemini otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak yeni bir site şirket sitenizde oturum açın.
 
-    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+1. Soldaki menüden **yönetici** ' ye tıklayın ve **Genel ayarlar**' da **Yardım Masası güvenliği** ' ni seçin.
 
-2. Tarayıcıya Uzantı eklendikten sonra, **kurulumu** en sonra, bunu en doğru hizmet uygulamasına yönlendirirsiniz. Buradan, tek bir hizmette oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+    ![Yönetici](./media/freshservice-tutorial/configure-1.png "Yönetici")
 
-    ![Kurulum yapılandırması](common/setup-sso.png)
+1. **Güvenlik**' te, en uygun güvenlik **360 güvenliğine git ' e**tıklayın.
 
-3. Yeni bir hizmeti el ile ayarlamak isterseniz, yeni bir Web tarayıcı penceresi açın ve yeni bir Web tarayıcısı penceresi açın ve aşağıdaki adımları gerçekleştirin:
+    ![Güvenlik](./media/freshservice-tutorial/configure-2.png "Güvenlik")
 
-4. Üstteki menüden **yönetici**' ye tıklayın.
+1. **Güvenlik** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Yönetici](./media/freshservice-tutorial/ic790814.png "Yönetici")
+    ![Çoklu Oturum Açma](./media/freshservice-tutorial/configure-3.png "Çoklu Oturum Açma")
+  
+    a. **Çoklu oturum açma**için **Açık**' ı seçin.
 
-5. **Müşteri portalında** **güvenlik**' e tıklayın.
+    b. **Oturum açma yönteminde** **SAML SSO**' yı seçin.
 
-    ![Güvenlik](./media/freshservice-tutorial/ic790815.png "Güvenlik")
+    c. **IDP metin kutusu tarafından belirtilen VARLıK kimliğinde** , Azure Portal KOPYALADıĞıNıZ **varlık kimliği** değeri yapıştırın.
 
-6. **Güvenlik** bölümünde aşağıdaki adımları uygulayın:
+    d. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    ![Çoklu Oturum Açma](./media/freshservice-tutorial/ic790816.png "Çoklu Oturum Açma")
+    e. **Imzalama seçeneklerinde**, açılan listeden **yalnızca imzalı onayları** seçin.
 
-    a. **Çoklu oturum açmayı**değiştir.
+    f. **Oturum kapatma URL 'si** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
 
-    b. **SAML SSO**'yu seçin.
+    örneğin: **Güvenlik sertifikası** metin kutusu ' nda, daha önce edindiğiniz **sertifika (base64)** değerini yapıştırın.
+  
+    h. **Kaydet**’e tıklayın.
 
-    c. **SAML oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    d. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
-
-    e. **Güvenlik sertifikası parmak izi** metin kutusunda, daha önce oluşturduğunuz **parmak izi** değerini yapıştırın.
-
-    f. **Kaydet** 'e tıklayın
-
-### <a name="create-freshservice-test-user"></a>Yalnızca bir hizmet testi kullanıcısı oluştur
+## <a name="create-freshservice-test-user"></a>Yalnızca bir hizmet testi kullanıcısı oluştur
 
 Azure AD kullanıcılarının, tek bir hizmette oturum açmasını sağlamak için, bu kullanıcıların, tek bir hizmet olarak sağlanması gerekir. En güncel hizmet durumunda, sağlama el ile gerçekleştirilen bir görevdir.
 
@@ -185,32 +168,25 @@ Azure AD kullanıcılarının, tek bir hizmette oturum açmasını sağlamak iç
 
 1. Alternatif **hizmet** şirket sitenizde yönetici olarak oturum açın.
 
-2. Üstteki menüden **yönetici**' ye tıklayın.
-
-    ![Yönetici](./media/freshservice-tutorial/ic790814.png "Yönetici")
+2. Soldaki menüden **yönetici**' ye tıklayın.
 
 3. **Kullanıcı yönetimi** bölümünde, **istek sahipleri**' na tıklayın.
 
-    ![Sahiplerini](./media/freshservice-tutorial/ic790818.png "Sahiplerini")
+    ![Sahiplerini](./media/freshservice-tutorial/create-user-1.png "Sahiplerini")
 
 4. **Yeni Istek sahibi**öğesine tıklayın.
 
-    ![Yeni Istekcılar](./media/freshservice-tutorial/ic790819.png "Yeni Istekcılar")
+    ![Yeni Istekcılar](./media/freshservice-tutorial/create-user-2.png "Yeni Istekcılar")
 
-5. **Yeni Istek sahibi** bölümünde aşağıdaki adımları uygulayın:
-
-    ![Yeni Istek sahibi](./media/freshservice-tutorial/ic790820.png "Yeni Istek sahibi")  
-
-    a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure Active Directory hesabının **ad** ve **e-posta** özniteliklerini girin.
-
-    b. **Kaydet**’e tıklayın.
+5. **Yeni Istek sahibi** bölümünde gerekli alanları girin ve **Kaydet**' e tıklayın.
+    ![Yeni Istek sahibi](./media/freshservice-tutorial/create-user-3.png "Yeni Istek sahibi")  
 
     > [!NOTE]
     > Azure Active Directory hesap sahibi, hesabı etkin olmadan önce onaylamaya yönelik bir bağlantı içeren bir e-posta alır
     >  
 
-> [!NOTE]
-> Azure AD Kullanıcı hesapları sağlamak için, başka bir kullanıcı hesabı oluşturma aracını veya en güncel hizmet tarafından sunulan API 'Leri kullanabilirsiniz.
+    > [!NOTE]
+    > Azure AD Kullanıcı hesapları sağlamak için, başka bir kullanıcı hesabı oluşturma aracını veya en güncel hizmet tarafından sunulan API 'Leri kullanabilirsiniz.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

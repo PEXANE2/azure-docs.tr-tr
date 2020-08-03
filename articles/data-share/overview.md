@@ -1,17 +1,17 @@
 ---
 title: Azure Veri Paylaşımı nedir?
 description: Azure veri paylaşımı 'nı kullanarak birden çok müşteriye ve iş ortağına verileri kolayca paylaşma hakkında bilgi edinin.
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 07/10/2019
-ms.openlocfilehash: fa90f272a05b7449981ca5d4ccab161fb1e39e9e
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 07/30/2020
+ms.openlocfilehash: 0dd0fbdd9bcf4d4fab2ffe9f420264ab737a700b
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636792"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511930"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Veri Paylaşımı nedir?
 
@@ -25,7 +25,7 @@ Veri sağlayıcısı, veri paylaşımıyla ilgili kullanım koşulları belirtil
 
 Azure veri paylaşımında, üçüncü tarafların verileri zenginleştirerek analiz ve AI senaryolarına kadar zengin bir şekilde birleştirerek Öngörüler geliştirmeye yardımcı olur. Azure veri paylaşım kullanarak paylaşılan verileri hazırlamak, işlemek ve analiz etmek için Azure Analytics araçlarının gücünden kolayca yararlanabilirsiniz. 
 
-Veri sağlayıcısı ve veri tüketicisi, verileri paylaşmak ve almak için bir Azure aboneliğine sahip olmalıdır. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
+Veri sağlayıcısı ve veri tüketicisi, verileri paylaşmak ve almak için bir Azure aboneliğine sahip olmalıdır. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="scenarios-for-azure-data-share"></a>Azure veri paylaşımıyla ilgili senaryolar
 

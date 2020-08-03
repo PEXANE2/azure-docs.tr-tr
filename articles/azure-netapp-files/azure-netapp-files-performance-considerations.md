@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files için performans konuları | Microsoft Docs
-description: Azure NetApp Files için performans konularını açıklar.
+description: Kota ve aktarım hızı sınırı ve birim kotasını dinamik olarak artırma/azaltma dahil olmak üzere Azure NetApp Files için performans hakkında bilgi edinin.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f88b4755c7b4c0b20f27065cf9de2351251bc1c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691325"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513885"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Azure NetApp Files için performansla ilgili önemli noktalar
 

@@ -1,17 +1,17 @@
 ---
 title: 'Öğretici: & alma verileri kabul etme-Azure veri paylaşma'
 description: Öğretici-Azure veri paylaşımının kullanıldığı verileri kabul edin ve alın
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/10/2019
-ms.openlocfilehash: 4dff48f909cd3febbbb7e92dcf96070020b8f57c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/30/2020
+ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82145145"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512100"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Öğretici: Azure veri paylaşımının kullanıldığı verileri kabul edin ve alın  
 
@@ -29,7 +29,7 @@ Bir veri paylaşma davetini kabul etmeden önce, aşağıda listelenen birkaç A
 Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün tamamlandığından emin olun. 
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* Veri paylaşma daveti: "Azure Data Share davetiyesi **<yourdataprovider@domain.com>**" başlıklı konuyla bir Microsoft Azure daveti.
+* Veri paylaşma daveti: "Azure Data Share davetiyesi" başlıklı konuyla bir Microsoft Azure daveti **<yourdataprovider@domain.com>** .
 * [Microsoft. DataShare kaynak sağlayıcısını](concepts-roles-permissions.md#resource-provider-registration) , bir veri paylaşma kaynağı ve hedef Azure veri mağazalarınızın bulunduğu Azure aboneliğini oluşturacağınız Azure aboneliğine kaydedin.
 
 ### <a name="receive-data-into-a-storage-account"></a>Bir depolama hesabına veri alma: 
@@ -68,13 +68,13 @@ Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="open-invitation"></a>Daveti aç
 
 1. Daveti e-postayla veya doğrudan Azure portal açabilirsiniz. 
 
-   E-postadaki daveti açmak için, veri sağlayıcınızdan bir davet için gelen kutunuza bakın. Davet, ' **den <yourdataprovider@domain.com>Azure veri paylaşma daveti **başlıklı Microsoft Azure. Azure 'da davetinizi görmek için **daveti görüntüle** ' ye tıklayın. 
+   E-postadaki daveti açmak için, veri sağlayıcınızdan bir davet için gelen kutunuza bakın. Davet, ' **den <yourdataprovider@domain.com> Azure veri paylaşma daveti **başlıklı Microsoft Azure. Azure 'da davetinizi görmek için **daveti görüntüle** ' ye tıklayın. 
 
    Daveti doğrudan Azure portal açmak için Azure portal **veri paylaşma davetlerini** arayın. Bu, sizi veri paylaşma davetlerinin listesine götürür.
 
@@ -116,7 +116,7 @@ Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün 
 
    ![Anlık görüntü ayarları](./media/snapshot-settings.png "Anlık görüntü ayarları") 
 
-1. *Kaydet*’i seçin. 
+1. *Kaydet*'i seçin. 
 
 > [!IMPORTANT]
 > SQL tabanlı verileri alıyorsanız ve bu verileri SQL tabanlı bir kaynağa almak istiyorsanız, veri kümeniz için hedef olarak SQL Server yapılandırmayı öğrenmek üzere [bir veri kümesi eşleme](how-to-configure-mapping.md) nasıl yapılır Kılavuzu ' nu ziyaret edin. 

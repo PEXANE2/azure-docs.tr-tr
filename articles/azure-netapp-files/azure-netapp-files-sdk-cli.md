@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files SDK 'Ları ve CLı araçları | Microsoft Docs
-description: Azure NetApp Files tarafından desteklenen SDK 'Ları ve komut satırı (CLı) araçlarını listeler.
+description: "GitHub 'da Azure NetApp Files ve yayımlanmış konumları için desteklenen SDK 'lar ve desteklenen komut satırı araçları hakkında bilgi edinin: Azure CLı ve PowerShell."
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045476"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513630"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK’ları ve CLI araçları
 

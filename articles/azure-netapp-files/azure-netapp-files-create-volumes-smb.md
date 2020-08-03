@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files için bir SMB birimi oluşturun | Microsoft Docs
-description: Azure NetApp Files için SMB birimi oluşturmayı açıklar.
+description: Bu makalede, Azure NetApp Files içinde nasıl SMBv3 birimi oluşturacağınız gösterilmektedir. Active Directory bağlantıları ve etki alanı Hizmetleri için gereksinimler hakkında bilgi edinin.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169973"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513086"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -45,7 +45,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     |    AD Web Hizmetleri    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    Icmpv4             |    Yok       |    Yankı yanıtı    |
+    |    Icmpv4             |    YOK       |    Yankı yanıtı    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -163,8 +163,20 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
      * **Yedekleme ilkesi kullanıcıları**  
         Azure NetApp Files ile kullanım için oluşturulan bilgisayar hesabına yükseltilmiş ayrıcalıklar gerektiren ek hesaplar ekleyebilirsiniz. Belirtilen hesapların dosya veya klasör düzeyinde NTFS izinlerini değiştirmesine izin verilir. Örneğin, Azure NetApp Files bir SMB dosya paylaşımında veri geçirmek için kullanılan ayrıcalıklı olmayan bir hizmet hesabı belirtebilirsiniz.  
 
-        > [!IMPORTANT] 
-        > Yedekleme İlkesi Kullanıcı özelliğinin kullanılması için beyaz liste gerekir. anffeedback@microsoft.comBu özelliği istemek için ABONELIK Kimliğiniz ile e-posta gönderin. 
+        **Yedekleme ilkesi kullanıcıları** özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, özelliği kullanmadan önce kaydedin: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        Özellik kaydının durumunu denetleyin: 
+
+        > [!NOTE]
+        > **Registrationstate** , üzerinde `Registering` değişiklik yapmadan önce birkaç dakika içinde olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
 
     * **Kullanıcı adınız** ve **Parolanız** dahil kimlik bilgileri
 

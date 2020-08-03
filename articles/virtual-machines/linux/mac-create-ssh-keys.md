@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 940a24aedb8592d0e809bc79dc1c8977bc3abd38
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448975"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513698"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Hızlı adımlar: Azure 'da Linux VM 'Ler için SSH genel-özel anahtar çifti oluşturma ve kullanma
 
-Güvenli Kabuk (SSH) anahtar çifti ile Azure 'da kimlik doğrulaması için SSH anahtarları kullanan sanal makineler (VM 'Ler) oluşturabilir ve parolaların oturum açması gereksinimini ortadan kaldırabilirsiniz. Bu makalede, Linux VM 'Ler için SSH ortak özel anahtar dosya çiftinin hızlı bir şekilde nasıl oluşturulacağı ve kullanılacağı gösterilmektedir. Bu adımları Azure Cloud Shell, macOS veya Linux ana bilgisayarı, Linux için Windows alt sistemi ve OpenSSH 'yi destekleyen diğer araçları kullanarak tamamlayabilirsiniz. 
+Güvenli Kabuk (SSH) anahtar çifti ile Azure 'da kimlik doğrulaması için SSH anahtarları kullanan sanal makineler (VM 'Ler) oluşturabilirsiniz. Bu makalede, Linux VM 'Ler için SSH ortak özel anahtar dosya çiftinin hızlı bir şekilde nasıl oluşturulacağı ve kullanılacağı gösterilmektedir. Bu adımları Azure Cloud Shell, macOS veya Linux ana bilgisayarı ile tamamlayabilirsiniz. 
 
 > [!NOTE]
 > SSH anahtarları kullanılarak oluşturulan VM 'Ler, varsayılan olarak, bir deneme yanılma saldırısı zorluğunu büyük ölçüde artıran parolalar devre dışı olarak yapılandırılır. 

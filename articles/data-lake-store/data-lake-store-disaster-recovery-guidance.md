@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: 4931556aa6948b6b05b2bbbfa62e281e21aa6058
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ebcdeed608a5b9dc6202071869c4df1dcfd327a8
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367478"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512763"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Data Lake Storage 1. için yüksek kullanılabilirlik ve olağanüstü durum kurtarma Kılavuzu
 
@@ -34,11 +34,11 @@ Bölgesel bir kesinti oluşursa, verilerin kopyalandığı bölgedeki verilerini
 
 Data Lake Storage 1. otomatikleştirilmiş çoğaltmalar aracılığıyla veri dayanıklılığı sağlarken, bu, uygulamanızın (veya geliştiricilerin/kullanıcıların) verileri bozmasını veya yanlışlıkla silmesini engellemez.
 
-### <a name="best-practices"></a>En iyi uygulamalar
-
 Yanlışlıkla silinmeye engel olmak için, Data Lake Storage 1. hesabınız için ilk olarak doğru erişim ilkelerini ayarlamanızı öneririz. Bu, önemli kaynakları kilitlemek ve kullanılabilir [Data Lake Storage 1. güvenlik özelliklerini](data-lake-store-security-overview.md)kullanarak hesap ve dosya düzeyinde erişim denetimi uygulamak için [Azure kaynak kilitlerini](../azure-resource-manager/management/lock-resources.md) uygulamayı içerir. Ayrıca, başka bir Data Lake Storage 1. hesabı, klasörü veya Azure aboneliğine [AdlCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) veya [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) kullanarak kritik verilerinizin kopyalarını düzenli olarak oluşturmanızı öneririz. Bu yöntem, verilerin bozulması veya silinmesi durumunda kurtarılması için de kullanılabilir. Azure Data Factory, yinelenen bir düzende veri taşıma işlem hatları oluşturmak ve dağıtmak için kullanışlı bir hizmettir.
 
 Ayrıca, veri erişimi denetim izlerini toplamak üzere bir Data Lake Storage 1. hesabı için [Tanılama günlük kaydını](data-lake-store-diagnostic-logs.md) etkinleştirebilirsiniz. Denetim izleri bir dosyayı kimin silmiş veya güncelleştirmiş olabileceği hakkında bilgi sağlar.
+
+Data Lake Storage Gen 1 için [az. DataLakeStore](https://docs.microsoft.com/powershell/module/az.datalakestore/) Azure PowerShell modülünü kullanarak silinmiş bir öğeyi geri yüklemeyi deneyebilirsiniz. Özellikle [restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem) komutuna bakın. Bu komutu kullanmayı denemeden önce [Açıklama](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem#description) bölümünü gözden geçirdiğinizden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

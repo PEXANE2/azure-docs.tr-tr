@@ -5,19 +5,19 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 10/17/2018
+ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510336"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513460"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Hızlı Başlangıç: PowerShell ile Azure'da Linux sanal makinesi oluşturma
 
-Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülünü kullanarak Azure’da bir Linux sanal makinesinin (VM) nasıl dağıtılacağı gösterilir. Bu hızlı başlangıç Canonical’daki Ubuntu 16.04 LTS market görüntüsünü kullanmaktadır. Ayrıca VM'nizin çalıştığını görmek için SSH ile VM bağlantısı kurup NGINX web sunucusunu da yükleyeceksiniz.
+Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülünü kullanarak Azure’da bir Linux sanal makinesinin (VM) nasıl dağıtılacağı gösterilir. Bu hızlı başlangıçta Ubuntu 18,04 LTS Market görüntüsü kurallı olarak kullanılmaktadır. Ayrıca VM'nizin çalıştığını görmek için SSH ile VM bağlantısı kurup NGINX web sunucusunu da yükleyeceksiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -29,17 +29,18 @@ Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i se
 
 ## <a name="create-ssh-key-pair"></a>SSH anahtar çifti oluşturma
 
-Bu hızlı başlangıcı tamamlamak için bir SSH anahtar çifti gerekir. Bir SSH anahtar çiftiniz varsa bu adımı atlayabilirsiniz.
+SSH anahtar çifti oluşturmak için [SSH-keygen](https://www.ssh.com/ssh/keygen/) kullanın. Bir SSH anahtar çiftiniz varsa bu adımı atlayabilirsiniz.
 
-SSH anahtar çifti oluşturmak için bir Bash kabuğu açın ve [ssh-keygen](https://www.ssh.com/ssh/keygen/) komutunu kullanın. Yerel bilgisayarınızda Bash kabuğunuz yoksa [Azure Cloud Shell](https://shell.azure.com/bash)'i kullanabilirsiniz.  
 
 ```azurepowershell-interactive
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-PuTTy kullanımı dahil olmak üzere SSH anahtar çiftlerinin oluşturulması konusunda daha ayrıntılı bilgi edinmek için bkz. [Windows ile SSH anahtarları kullanma](ssh-from-windows.md).
+Anahtar çifti için bir dosya adı sağlamanız istenir veya varsayılan konumunu kullanmak için **ENTER** tuşuna basabilirsiniz `/home/<username>/.ssh/id_rsa` . İsterseniz anahtarlar için bir parola da oluşturabilirsiniz.
 
-SSH anahtar çiftinizi Cloud Shell'i kullanarak oluşturduğunuzda [Cloud Shell tarafından otomatik olarak oluşturulan bir depolama hesabında](../../cloud-shell/persisting-shell-storage.md) yer alan bir kapsayıcı görüntüsünde depolanır. Anahtarlarınızı alana kadar depolama hesabını veya içindeki dosya paylaşımını silmeyin. Aksi takdirde VM erişimini kaybedersiniz. 
+SSH anahtar çiftleri oluşturma hakkında daha ayrıntılı bilgi için bkz. [Windows Ile SSH anahtarlarını kullanma](ssh-from-windows.md).
+
+Cloud Shell kullanarak SSH anahtar çiftini oluşturursanız, [Cloud Shell tarafından otomatik olarak oluşturulan bir depolama hesabında](../../cloud-shell/persisting-shell-storage.md)depolanır. Anahtarlarınızı aldıktan veya VM 'ye erişiminizi kaybedecelene kadar depolama hesabını ya da bu dosyada paylaşılan dosyaları silmeyin. 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -147,7 +148,7 @@ Set-AzVMOperatingSystem `
 Set-AzVMSourceImage `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "18.04-LTS" `
   -Version "latest" | `
 Add-AzVMNetworkInterface `
   -Id $nic.Id
@@ -178,7 +179,7 @@ Genel IP adresini kullanarak VM ile bir SSH bağlantısı oluşturun. VM 'nin ge
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-SSH anahtar çiftini oluşturmak için kullandığınız Bash kabuğunu kullanarak ([Azure Cloud Shell](https://shell.azure.com/bash) veya yerel Bash kabuğunuz gibi) SSH bağlantı komutunu kabuğa yapıştırarak bir SSH oturumu oluşturun.
+SSH anahtar çiftini oluşturmak için kullandığınız kabuğu kullanarak, SSH oturumu oluşturmak için aşağıdaki komutu kabuğa yapıştırın. *10.111.12.123* değerini sanal makinenizin IP adresiyle değiştirin.
 
 ```bash
 ssh azureuser@10.111.12.123

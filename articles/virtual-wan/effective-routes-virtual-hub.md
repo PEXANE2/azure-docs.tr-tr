@@ -7,19 +7,19 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037775"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513715"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Sanal merkezin geçerli yollarını görüntüleme
 
 Sanal WAN hub 'ınızın tüm yollarını Azure portal görüntüleyebilirsiniz. Bu makalede, geçerli yolları görüntüleme adımlarında adım adım gösterilmektedir. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Azure portal, bu özelliklerden bazıları yine de kullanıma sunulmakta olabilir ve 3. 
+> Azure portal, bu özelliklerden bazıları yine de kullanıma sunulmakta olabilir ve 17 Ağustos ayına kadar kullanılamaz. 
 >
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Bağlantıları veya yol tablolarını seçme

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 07/31/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: c79bca86ba253217012abd24d509d365a076b183
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e7cedaea89e2ed3d998df6ffe0ecaa06115e265
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086039"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513800"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. bulunan BLOB depolama özellikleri
 
@@ -32,7 +32,7 @@ Bu tablo, Azure Data Lake Storage 2. ile kullanabileceğiniz BLOB depolama özel
 |---------------|-------------------|---|
 |Sık erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
 |Seyrek erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
-|Ekinlikler|Genel kullanıma sunuldu|Önizleme|[Blob depolama olaylarına yanıt verme](storage-blob-event-overview.md)|
+|Olaylar|Genel kullanıma sunuldu|Önizleme|[Blob depolama olaylarına yanıt verme](storage-blob-event-overview.md)|
 |Ölçümler (klasik)|Genel kullanıma sunuldu|Desteklenmez|[Azure Storage Analytics ölçümleri (klasik)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure İzleyicisi'nde ölçümler|Genel kullanıma sunuldu|Önizleme|[Azure İzleyici’de Azure Depolama ölçümleri](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB depolama PowerShell komutları|Genel kullanıma sunuldu|Önizleme|[Hızlı başlangıç: PowerShell ile Blobları karşıya yükleme, indirme ve listeleme](storage-quickstart-blobs-powershell.md)|
@@ -40,11 +40,11 @@ Bu tablo, Azure Data Lake Storage 2. ile kullanabileceğiniz BLOB depolama özel
 |BLOB depolama API 'Leri|Genel kullanıma sunuldu|Önizleme|[Hızlı Başlangıç: .NET için Azure Blob depolama istemci kitaplığı v12](storage-quickstart-blobs-dotnet.md)<br>[Hızlı başlangıç: Java V12 SDK ile Blobları yönetme](storage-quickstart-blobs-java.md)<br>[Hızlı başlangıç: Python V12 SDK ile Blobları yönetme](storage-quickstart-blobs-python.md)<br>[Hızlı başlangıç: Node.jsiçindeki JavaScript V12 SDK ile Blobları yönetme](storage-quickstart-blobs-nodejs.md)|
 |Tanılama günlükleri|Genel kullanıma sunuldu|Önizleme <div role="complementary" aria-labelledby="diagnostic-logging"><sup>1</sup></div> |[Azure Depolama analizi günlüğü](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Arşiv erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
+|Yaşam döngüsü yönetim ilkeleri|Genel kullanıma sunuldu|Henüz desteklenmiyor|[Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)|
 |Azure Izleyici 'de günlüğe kaydetme|Önizleme |Henüz desteklenmiyor|[Azure Storage 'ı izleme](../common/monitor-storage.md)|
 |Anlık Görüntüler|Önizleme<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Henüz desteklenmiyor|[Blob anlık görüntüleri](snapshots-overview.md)|
 |Statik web siteleri|Önizleme<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Henüz desteklenmiyor|[Azure Depolama'da statik web sitesi barındırma](storage-blob-static-website.md)|
 |Sabit depolama|Önizleme<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Henüz desteklenmiyor|[Sabit depolamayla iş açısından kritik blob verilerini depolayın](storage-blob-immutable-storage.md)|
-|Yaşam döngüsü yönetim ilkeleri|Önizleme|Henüz desteklenmiyor|[Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)|
 |Blobsigortası|Önizleme|Henüz desteklenmiyor|[Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama](storage-how-to-mount-container-linux.md)|
 |Akışı değiştirme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)|
 |Hesap yük devretmesi|Henüz desteklenmiyor|Henüz desteklenmiyor|[Olağanüstü durum kurtarma ve hesap yük devretme](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|

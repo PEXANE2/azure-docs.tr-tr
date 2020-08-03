@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171877"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513732"
 ---
 # <a name="about-virtual-hub-routing"></a>Sanal merkez yönlendirmesi hakkında
 
@@ -27,7 +27,7 @@ Yönlendirmeyi yapılandırmak için bkz. [sanal hub yönlendirmeyi yapılandır
 Aşağıdaki bölümlerde, sanal hub yönlendirmesinde temel kavramlar açıklanır.
 
 > [!NOTE]
-> Hub yol tablosu, ilişkilendirme, yayma ve bir sanal ağ bağlantısı içindeki statik yolların bu yeni kavramlarından bazıları yine de kullanıma sunulmakta ve 3. adımda tamamlanmayı beklenebilir.
+> Bir sanal ağ bağlantısındaki hub yol tablosu, ilişkilendirme, yayma ve statik yolların bu yeni kavramlarından bazıları yine de kullanıma alınıyor ve bu hafta 24 Mayıs 'ta tamamlanmalıdır.
 >
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Merkez yol tablosu
@@ -77,9 +77,9 @@ Yol tablolarında ilişkilendirme ve yayma özellikleri artık vardır. Önceden
 
 * **Sanal hub 'da önceden var olan yollara sahip standart sanal WAN müşterileri**:
 
-Yeni yol tablosu yeteneklerini kullanmak için lütfen Azure 'daki dışarı aktarmak için 3. adımda bekleyin. Azure portal Hub için yönlendirme bölümünde önceden var olan yollara sahipseniz, önce bunları silmeniz ve ardından yeni rota tabloları oluşturmayı denemeniz gerekir (Azure portal Hub için yönlendirme tabloları bölümünde kullanılabilir)
+Yeni yol tablosu yeteneklerini kullanmak için lütfen Azure 'daki dışarı aktarmak için 14 Ağustos 'Tan haftanın tamamlanmasını bekleyin. Azure portal Hub için yönlendirme bölümünde önceden var olan yollara sahipseniz, önce bunları silmeniz ve ardından yeni rota tabloları oluşturmayı denemeniz gerekir (Azure portal Hub için yönlendirme tabloları bölümünde kullanılabilir)
 
-* **Sanal hub 'da önceden var olan yollara sahip temel sanal WAN müşterileri**: yeni yol tablosu yeteneklerini kullanmak Için lütfen Azure 'daki dışarı aktarmak Için 3 Ağustos 'tan sonra tamamlanana kadar bekleyin. Azure portal Hub için yönlendirme bölümünde önceden mevcut olan yollar varsa öncelikle bunları silmeniz ve ardından temel sanal WAN 'ınızı standart sanal WAN 'a **yükseltmeniz** gerekir. Bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
+* **Sanal hub 'da önceden var olan yollara sahip temel sanal WAN müşterileri**: yeni rota tablosu yeteneklerini kullanmak Için lütfen Azure 'da kullanıma alma Için 14 Ağustos 'tan tamamlanana kadar bekleyin. Azure portal Hub için yönlendirme bölümünde önceden mevcut olan yollar varsa öncelikle bunları silmeniz ve ardından temel sanal WAN 'ınızı standart sanal WAN 'a **yükseltmeniz** gerekir. Bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
 
 ## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Sanal WAN yönlendirmesi konuları
 

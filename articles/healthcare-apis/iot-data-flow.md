@@ -1,30 +1,32 @@
 ---
-title: "Kavramlar: FHıR için Azure API 'sinin IoT Bağlayıcısı (Önizleme) özelliğinde veri akışı"
-description: IoT bağlayıcısının veri akışını anlayın. IoT Bağlayıcısı, verileri normalleştirir, gruplar, dönüştürür ve ıhır için Azure API 'sine yeniden sürdürür.
+title: "Kavramlar: FHıR için Azure API 'sinin FHIR (Önizleme) özelliği için Azure IoT Bağlayıcısı 'nda veri akışı"
+description: FHıR (Önizleme) veri akışı için Azure IoT bağlayıcısını anlayın. FHıR için Azure IoT Bağlayıcısı (Önizleme) FHAR için Azure API 'ye Azure API 'ye veri eklemek, onları normalleştirerek, dönüştürmektir ve devam ettirir.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: c2d150fcd35bc51478a1d7f4a0407abce1446c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100279"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513391"
 ---
-# <a name="iot-connector-preview-data-flow"></a>IoT Bağlayıcısı (Önizleme) veri akışı
+# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) veri akışı
 
-Bu makalede IoT Bağlayıcısı 'nda veri akışına genel bakış sunulmaktadır. IoT Bağlayıcısı 'nda cihaz verilerini FHıR tabanlı [izleme kaynaklarına dönüştüren](https://www.hl7.org/fhir/observation.html) farklı veri işleme aşamaları hakkında bilgi edineceksiniz.
+Bu makalede, FHIR * için Azure IoT Bağlayıcısı 'nda veri akışına genel bakış sunulmaktadır. Azure IoT Bağlayıcısı 'nda, cihaz verilerini FHıR tabanlı [gözlemleme](https://www.hl7.org/fhir/observation.html) kaynaklarına dönüştüren farklı veri işleme aşamaları hakkında bilgi edineceksiniz.
 
-![IoT Bağlayıcısı veri akışı](media/concepts-iot-data-flow/iot-connector-data-flow.png)
+![FHıR veri akışı için Azure IoT Bağlayıcısı](media/concepts-iot-data-flow/iot-connector-data-flow.png)
 
-Yukarıdaki diyagramda IoT Bağlayıcısı içindeki farklı veri akışı aşamaları gösterilmektedir. 
+Yukarıdaki diyagramda, FHAR için Azure IoT bağlayıcısını kullanan ortak veri akışları gösterilmektedir. 
+
+Aşağıda, verilerin FHıR için Azure IoT Bağlayıcısı tarafından alındıktan sonra geçen farklı aşamalar verilmiştir.
 
 ## <a name="ingest"></a>Alma
-Alma, cihaz verilerinin IoT bağlayıcısına alındığı ilk aşamadır. Cihaz verileri için alma uç noktası bir [Azure Olay Hub 'ında](https://docs.microsoft.com/azure/event-hubs/)barındırılır. Azure Olay Hub 'ı platformu, saniyede milyonlarca iletiyi alıp işleyebilme olanağı sunan yüksek ölçekli ve üretilen işi destekler. Ayrıca IoT bağlayıcısının iletileri zaman uyumsuz olarak kullanmasını sağlar ve cihaz verilerinin işlenmesi sırasında cihazların beklemesi gereksinimini ortadan kaldırır.
+Inest, cihaz verilerinin FHıR için Azure IoT Bağlayıcısı 'na alındığı ilk aşamadır. Cihaz verileri için alma uç noktası bir [Azure Olay Hub 'ında](https://docs.microsoft.com/azure/event-hubs/)barındırılır. Azure Olay Hub 'ı platformu, saniyede milyonlarca iletiyi alıp işleyebilme olanağı sunan yüksek ölçekli ve üretilen işi destekler. Ayrıca, FHıR için Azure IoT bağlayıcısının iletileri zaman uyumsuz olarak kullanmasını sağlar ve cihaz verilerinin işlenmesi sırasında cihazların beklemesi gereksinimini ortadan kaldırır.
 
 > [!NOTE]
 > JSON, cihaz verileri için şu anda desteklenen tek biçimdir.
@@ -37,7 +39,7 @@ Normalleştirme işlemi, sonraki aşamalarda yalnızca veri işlemeyi basitleşt
 ## <a name="group"></a>Grup
 Grup, önceki aşamada bulunan normalleştirilmiş iletilerin üç farklı parametre kullanılarak gruplandırıldığı bir sonraki aşamadır: cihaz kimliği, ölçüm türü ve zaman aralığı.
 
-Cihaz kimliği ve ölçüm türü gruplama, [Sampleddata](https://www.hl7.org/fhir/datatypes.html#SampledData) ölçüm türünün kullanımını etkinleştirir. Bu tür, FHıR 'deki bir cihazdan bir zaman tabanlı ölçüm serisini göstermek için kısa bir yol sağlar. Ve zaman aralığı, IoT Bağlayıcısı tarafından üretilen izleme kaynaklarının FHıR için Azure API 'sine yazıldığı gecikmeyi denetler.
+Cihaz kimliği ve ölçüm türü gruplama, [Sampleddata](https://www.hl7.org/fhir/datatypes.html#SampledData) ölçüm türünün kullanımını etkinleştirir. Bu tür, FHıR 'deki bir cihazdan bir zaman tabanlı ölçüm serisini göstermek için kısa bir yol sağlar. Ve zaman dilimi, FHıR için Azure IoT Bağlayıcısı tarafından üretilen izleme kaynaklarının FHıR için Azure API 'sine yazıldığı gecikmeyi denetler.
 
 > [!NOTE]
 > Zaman aralığı değeri 15 dakikaya ayarlanır ve önizleme için yapılandırılamaz.
@@ -50,7 +52,7 @@ Bu noktada, ilişkili [hasta](https://www.hl7.org/fhir/patient.html) kaynağıyl
 > [!NOTE]
 > Tüm kimlik arama işlemleri, FHıR sunucusundaki yükü azaltmak üzere çözümlendikten sonra önbelleğe alınır. Birden çok hastaya sahip cihazları yeniden kullanmak istiyorsanız, hasta 'e özgü bir sanal cihaz kaynağı oluşturmanız ve ileti yükünde sanal cihaz tanımlayıcısı göndermeniz önerilir. Sanal cihaz, asıl cihaz kaynağına bir üst öğe olarak bağlanabilir.
 
-FHıR sunucusunda belirli bir cihaz tanımlayıcısı için bir cihaz kaynağı yoksa, sonuç oluşturma sırasında ayarlanan değere bağlıdır `Resolution Type` . Olarak ayarlandığında `Lookup` , söz konusu ileti yok sayılır ve işlem hattı diğer gelen iletileri işlemeye devam eder. Olarak ayarlanırsa `Create` , IoT Bağlayıcısı fhır sunucusunda bir çıplak cihaz ve hasta kaynakları oluşturur.  
+FHıR sunucusunda belirli bir cihaz tanımlayıcısı için bir cihaz kaynağı yoksa, sonuç oluşturma sırasında ayarlanan değere bağlıdır `Resolution Type` . Olarak ayarlandığında `Lookup` , söz konusu ileti yok sayılır ve işlem hattı diğer gelen iletileri işlemeye devam eder. Olarak ayarlanırsa `Create` , fhır için Azure IoT Bağlayıcısı, fhır sunucusunda bir çıplak cihaz ve hasta kaynakları oluşturur.  
 
 ## <a name="persist"></a>Persist
 İzleme FHıR kaynağı dönüştürme aşamasında oluşturulduktan sonra, kaynak FHıR için Azure API 'sine kaydedilir. FHıR kaynağı yeni ise, sunucuda oluşturulur. FHıR kaynağı zaten mevcutsa, güncelleştirilir.
@@ -60,7 +62,8 @@ FHıR sunucusunda belirli bir cihaz tanımlayıcısı için bir cihaz kaynağı 
 Cihaz ve FHıR eşleme şablonlarının nasıl oluşturulacağını öğrenmek için sonraki adıma tıklayın.
 
 >[!div class="nextstepaction"]
->[IoT Bağlayıcısı eşleme şablonları](iot-mapping-templates.md)
+>[FHıR eşleme şablonları için Azure IoT Bağlayıcısı](iot-mapping-templates.md)
 
+* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
 
 FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 122a3e243f314395ea7b1d32b88a5e20b0965eef
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421374"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512015"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Yüksek performanslı bilgi işlem VM boyutları
 
@@ -42,9 +42,11 @@ Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden i
 > RDMA üzerinden RDMA, tüm RDMA özellikli VM 'Ler için desteklenir.
 > IB üzerinden IP yalnızca SR-ıOV etkinleştirilmiş VM 'lerde desteklenir.
 
-- **Işletim sistemi** -LINUX, HPC VM 'leri için çok iyi desteklenir; CentOS, RHEL, Ubuntu, SUSE gibi kaldırmalar yaygın olarak kullanılır. Windows desteği ile ilgili Windows Server 2016 ve daha yeni sürümler, tüm HPC serisi VM 'lerinde desteklenir. Windows Server 2012 R2, Windows Server 2012, SR-ıOV olmayan VM 'Ler (H16r, H16mr, A8 ve A9) üzerinde de desteklenir. [Windows Server 2012 R2 'Nin HBv2 'de ve 64 ' den fazla (sanal veya fiziksel) çekirdeğe sahip diğer VM 'lerde desteklenmediğini](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)unutmayın.
+- **Işletim sistemi** -LINUX, HPC VM 'leri için çok iyi desteklenir; CentOS, RHEL, Ubuntu, SUSE gibi kaldırmalar yaygın olarak kullanılır. Windows desteği ile ilgili Windows Server 2016 ve daha yeni sürümler, tüm HPC serisi VM 'lerinde desteklenir. Windows Server 2012 R2, Windows Server 2012, SR-ıOV olmayan VM 'Ler (H16r, H16mr, A8 ve A9) üzerinde de desteklenir. [Windows Server 2012 R2 'Nin HBv2 'de ve 64 ' den fazla (sanal veya fiziksel) çekirdeğe sahip diğer VM 'lerde desteklenmediğini](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)unutmayın. Market 'te desteklenen VM görüntülerinin listesi için [VM görüntülerini](./workloads/hpc/configure.md) ve bunların nasıl uygun şekilde yapılandırılabileceğini görün.
 
-- **InfiniBand ve RDMA sürücüleri** -InfiniBand etkinleştirilmiş VM 'LERDE, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. SR-ıOV etkin H ve N serisi VM 'lerde, bu, Mellanox [ıbanddriverlinux sanal makine uzantısı](./extensions/hpc-compute-infiniband-linux.md) , Mellanox Ed sürücüleri yüklemek ve InfiniBand 'yi etkinleştirmek için kullanılabilir. RDMA özellikli VM Sat [HPC Iş yükleri](./workloads/hpc/overview.md)üzerinde InfiniBand 'yi etkinleştirme hakkında daha fazla bilgi edinin.
+- **InfiniBand ve RDMA sürücüleri** -InfiniBand etkinleştirilmiş VM 'LERDE, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta hem SR-ıOV hem de SR-ıOV etkin olmayan VM 'Ler için, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. Kullanıma hazırlama VM Linux işletim sistemi görüntüleri hakkında daha fazla bilgi için bkz. [LINUX OS Için VM 'Leri yapılandırma ve iyileştirme](./workloads/hpc/configure.md) .
+
+   Linux 'ta, [ınfinibanddriverlinux sanal makine uzantısı](./extensions/hpc-compute-infiniband-linux.md) , The SR-IOV etkin H ve N serisi VM 'lerde [HPC Iş YÜKLERINDE](./workloads/hpc/enable-infiniband.md)RDMA özellikli VM 'lerde InfiniBand 'yi etkinleştirme hakkında daha fazla bilgi edinin.
 
    Windows 'da, [ınfinibanddriverwindows VM Uzantısı](./extensions/hpc-compute-infiniband-windows.md) , RDMA bağlantısı Için Windows ağ doğrudan SÜRÜCÜLERINI (SR-IOV olmayan VM 'lerde) veya (SR-IOV VM 'lerinde) A8 ve A9 örneklerinin bazı dağıtımlarında, HpcVmDrivers uzantısı otomatik olarak eklenir. HpcVmDrivers VM uzantısının kullanım dışı olduğunu unutmayın; güncellenmeyecektir.
 
@@ -99,5 +101,5 @@ Azure, RDMA ağını kullanarak iletişim kurabilen Windows HPC VM kümeleri olu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Hpc uygulamalarınızı Azure için iyileştirme ve [HPC Iş yüklerinde](./workloads/hpc/overview.md)bazı örnekler hakkında daha fazla bilgi edinin.
-
 - En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 166909f1e048ac54184ef5eee2ecee3bfedcdb02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0707d578f90f70318c2a01f324b50092d9962965
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284141"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513851"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -66,7 +66,7 @@ Bir Azure sanal ağındaki kaynaklara doğrudan erişmesi gereken Logic Apps iç
 > [!NOTE]
 > ISE ve bağlayıcılarında çalışan Logic Apps, bu bağlayıcıların çalıştığı durumlar ne olursa olsun, tüketim tabanlı fiyatlandırma planına karşı sabit bir fiyatlandırma planını takip edin. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) ve [Logic Apps fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Etiketle | Örnek | Açıklama |
+| Etiket | Örnek | Açıklama |
 |-------|---------|-------------|
 | **ÇEKIRDEĞIN** | ![Örnek ıSE Bağlayıcısı](./media/apis-list/example-core-connector.png) | Bu etiketle birlikte yerleşik Tetikleyiciler ve Eylemler, Logic Apps ile aynı ıSE 'de çalışır. |
 | **ISE** | ![Örnek ıSE Bağlayıcısı](./media/apis-list/example-ise-connector.png) | Bu etikete sahip yönetilen bağlayıcılar, Logic Apps ile aynı ıSE 'de çalışır. Azure sanal ağına bağlı bir şirket içi sisteminiz varsa, bir ıSE, Logic Apps 'in [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)olmadan bu sisteme doğrudan erişmesini sağlar. Bunun yerine, varsa, bu sistemin **Ise** bağlayıcısını kullanabilirsiniz, bir http eylemi veya [özel bağlayıcı](#custom). **Ise** bağlayıcıları olmayan şirket içi sistemler için şirket içi veri ağ geçidi kullanın. Kullanılabilir ıSE bağlayıcılarını gözden geçirmek için bkz. [Ise bağlayıcıları](#ise-connectors). |
@@ -153,11 +153,48 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 
 Şirket içi sistemlerdeki verilere ve kaynaklara erişmek için Logic Apps sağladığı yaygın olarak kullanılan bazı standart bağlayıcılar aşağıda verilmiştir. Şirket içi bir sisteme bağlantı oluşturabilmeniz için önce şirket [içi veri ağ geçidini indirmeniz, yüklemeniz ve ayarlamanız][gateway-doc]gerekir. Bu ağ geçidi, gerekli ağ altyapısını ayarlamak zorunda kalmadan güvenli bir iletişim kanalı sağlar.
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API simgesi ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc] | [![API simgesi ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc] | [![API simgesi ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API simgesi ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc] | [![API simgesi ][mysql-icon]<br> **MySQL**][mysql-doc] |
-| [![API simgesi ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc] | [![API simgesi ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc] | [![API simgesi ][sharepoint-server-icon]<br> **SharePoint <br> sunucusu**][sharepoint-server-doc] | [![API simgesi ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API simgesi ][teradata-icon]<br> **Teradata**][teradata-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API simgesi ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][mysql-icon]<br> **MySQL**][mysql-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][sharepoint-server-icon]<br> **SharePoint <br> sunucusu**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][teradata-icon]<br> **Teradata**][teradata-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="integration-account-connectors"></a>
 
@@ -165,12 +202,48 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 
 Logic Apps, Azure 'da Enterprise Integration Pack (EıP) aracılığıyla kullanılabilen bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)oluştururken ve ödeyerek, Logic Apps ile işletmeler arası (B2B) çözümleri oluşturmaya yönelik standart bağlayıcılar sağlar. Bu hesapla, ticaret ortakları, anlaşmalar, Haritalar, şemalar, sertifikalar vb. gibi B2B yapıtları oluşturabilir ve bunları kaydedebilirsiniz. Bu yapıtları kullanmak için, mantıksal uygulamalarınızı tümleştirme hesabınızla ilişkilendirin. Şu anda BizTalk Server kullanıyorsanız, bu bağlayıcılar zaten tanıdık görünebilir.
 
-|___|___|___|___|
-|---|---|---|---|
-| [![API simgesi ][as2-icon]<br> **AS2 <br> kod çözme**][as2-doc] | [![API simgesi ][as2-icon]<br> **AS2 <br> kodlaması**][as2-doc] | [![API simgesi ][edifact-icon]<br> **ediolgu <br> kod çözme**][edifact-decode-doc] | [![API simgesi ][edifact-icon]<br> **ediolgu <br> kodlaması**][edifact-encode-doc] |
-| [![API simgesi ][flat-file-decode-icon]<br> **düz dosya <br> kodu çözme**][flat-file-decode-doc] | [![API simgesi ][flat-file-encode-icon]<br> **düz dosya <br> kodlaması**][flat-file-encode-doc] | [![API simgesi ][integration-account-icon]<br> **tümleştirme <br> hesabı**][integration-account-doc] | [![API simgesi ][liquid-icon]<br> **likit** <br> **dönüşümler**][json-liquid-transform-doc] |
-| [![API simgesi ][x12-icon]<br> **x12 <br> kod çözme**][x12-decode-doc] | [![API simgesi ][x12-icon]<br> **x12 <br> kodlaması**][x12-encode-doc] | [![API simgesi ][xml-transform-icon]<br> **XML** <br> **dönüşümleri**][xml-transform-doc] | [![API simgesi ][xml-validate-icon]<br> **XML <br> doğrulaması**][xml-validate-doc] |
-|||||
+:::row:::
+    :::column:::
+        [![API simgesi ][as2-icon]<br> **AS2 <br> kod çözme**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][as2-icon]<br> **AS2 <br> kodlaması**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][edifact-icon]<br> **ediolgu <br> kod çözme**][edifact-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][edifact-icon]<br> **ediolgu <br> kodlaması**][edifact-encode-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][flat-file-decode-icon]<br> **düz dosya <br> kodu çözme**][flat-file-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][flat-file-encode-icon]<br> **düz dosya <br> kodlaması**][flat-file-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][integration-account-icon]<br> **tümleştirme <br> hesabı**][integration-account-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][liquid-icon]<br> **likit** <br> **dönüşümler**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][x12-icon]<br> **x12 <br> kod çözme**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][x12-icon]<br> **x12 <br> kodlaması**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][xml-transform-icon]<br> **XML** <br> **dönüşümleri**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][xml-validate-icon]<br> **XML <br> doğrulaması**][xml-validate-doc]
+    :::column-end:::
+:::row-end:::
 
 <a name="enterprise-connectors"></a>
 
@@ -178,10 +251,20 @@ Logic Apps, Azure 'da Enterprise Integration Pack (EıP) aracılığıyla kullan
 
 Logic Apps, SAP ve IBM MQ gibi kurumsal sistemlere erişmek için bu kurumsal bağlayıcıları sağlar:
 
-|___|___|___|
-|---|---|---|
-| [![API simgesi ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API simgesi ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API simgesi ][sap-icon]<br> **SAP**][sap-connector-doc] |
-|||
+:::row:::
+    :::column:::
+        [![API simgesi ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="ise-connectors"></a>
 
@@ -189,14 +272,90 @@ Logic Apps, SAP ve IBM MQ gibi kurumsal sistemlere erişmek için bu kurumsal ba
 
 Özel bir [tümleştirme hizmeti ortamında (ISE)](#integration-service-environment)oluşturduğunuz ve çalıştırdığınız mantıksal uygulamalar Için, mantıksal uygulama Tasarımcısı, **çekirdek** etiketi kullanılarak Ise içinde çalışan yerleşik Tetikleyicileri ve eylemleri belirler. ISE 'de çalışan yönetilen bağlayıcılar **Ise** etiketini görüntülerken genel, çok kiracılı Logic Apps hizmetinde çalışan bağlayıcılar her iki etiketi de görüntülemez. Bu liste şu anda ıSE sürümlerinin bulunduğu bağlayıcıları gösterir:
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API simgesi ][as2-icon]<br> **AS2**][as2-doc] | [![API simgesi ][azure-automation-icon]<br> **Azure <br> Otomasyonu**][azure-automation-doc] | [![API simgesi ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc] | [![API simgesi ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![API simgesi ][azure-event-hubs-icon]<br> **Azure olay <br> hub 'ları**][azure-event-hubs-doc] |
-| [![API simgesi ][azure-event-grid-icon]<br> **Azure olay <br> Kılavuzu**][azure-event-grid-doc] | [![API simgesi ][azure-file-storage-icon]<br> **Azure dosya <br> depolama**][azure-file-storage-doc] | [![API simgesi ][azure-key-vault-icon]<br> **Azure anahtar <br> Kasası**][azure-key-vault-doc] | [![API simgesi ][azure-monitor-logs-icon]<br> **Azure izleyici <br> günlükleri**][azure-monitor-logs-doc] | [![API simgesi ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc] |
-| [![API simgesi ][azure-sql-data-warehouse-icon]<br> **Azure SQL veri <br> ambarı**][azure-sql-data-warehouse-doc] | [![API simgesi ][azure-table-storage-icon]<br> **Azure Tablo <br> depolama**][azure-table-storage-doc] | [![API simgesi ][azure-queues-icon]<br> **Azure <br> kuyrukları**][azure-queues-doc] | [![API simgesi ][edifact-icon]<br> **ediolgu**][edifact-doc] | [![API simgesi ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc] |
-| [![API simgesi ][ftp-icon]<br> **FTP**][ftp-doc] | [![API simgesi ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API simgesi ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API simgesi ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API simgesi ][sap-icon]<br> **SAP**][sap-connector-doc] |
-| [![API simgesi ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | [![API simgesi ][smtp-icon]<br> **SMTP**][smtp-doc] | [![API simgesi ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API simgesi ][x12-icon]<br> **x12**][x12-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API simgesi ][as2-icon]<br> **AS2**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-automation-icon]<br> **Azure <br> Otomasyonu**][azure-automation-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][azure-event-hubs-icon]<br> **Azure olay <br> hub 'ları**][azure-event-hubs-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-event-grid-icon]<br> **Azure olay <br> Kılavuzu**][azure-event-grid-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-file-storage-icon]<br> **Azure dosya <br> depolama**][azure-file-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-key-vault-icon]<br> **Azure anahtar <br> Kasası**][azure-key-vault-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][azure-monitor-logs-icon]<br> **Azure izleyici <br> günlükleri**][azure-monitor-logs-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-sql-data-warehouse-icon]<br> **Azure SQL veri <br> ambarı**][azure-sql-data-warehouse-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][azure-table-storage-icon]<br> **Azure Tablo <br> depolama**][azure-table-storage-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][azure-queues-icon]<br> **Azure <br> kuyrukları**][azure-queues-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][edifact-icon]<br> **ediolgu**][edifact-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][ftp-icon]<br> **FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API simgesi ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][smtp-icon]<br> **SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API simgesi ][x12-icon]<br> **x12**][x12-doc]
+    :::column-end:::
+:::row-end:::
 
 Daha fazla bilgi için şu konulara bakın:
 

@@ -1,26 +1,26 @@
 ---
-title: "Kavramlar: FHıR için Azure API 'sinin IoT Bağlayıcısı (Önizleme) özelliğinde şablonları eşleme"
-description: IoT Bağlayıcısı 'nda iki tür eşleme şablonu oluşturmayı öğrenin. Cihaz eşleme şablonu, cihaz verilerini Normalleştirilmemiş bir şemaya dönüştürür. FHıR eşleme şablonu, normalleştirilmiş bir iletiyi FHıR tabanlı bir gözlem kaynağına dönüştürür.
+title: "Kavramlar: FHıR için Azure API 'sinin FHIR (Önizleme) özelliği için Azure IoT Bağlayıcısı 'nda şablonları eşleme"
+description: Azure IoT Bağlayıcısı 'nda FHıR (Önizleme) için iki tür eşleme şablonu oluşturmayı öğrenin. Cihaz eşleme şablonu, cihaz verilerini Normalleştirilmemiş bir şemaya dönüştürür. FHıR eşleme şablonu, normalleştirilmiş bir iletiyi FHıR tabanlı bir gözlem kaynağına dönüştürür.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: dadd14d4ca28f367eaa7fd07099514bf420af5af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc8b7d46e1018974c6a88cef9e4f4a9f9a09caa7
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100426"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513358"
 ---
-# <a name="iot-connector-preview-mapping-templates"></a>IoT Bağlayıcısı (Önizleme) eşleme şablonları
-Bu makalede, eşleme şablonları kullanılarak IoT bağlayıcısının nasıl yapılandırılacağı açıklanır.
+# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) eşleme şablonları
+Bu makalede, eşleme şablonları kullanılarak FHıR için Azure IoT bağlayıcısının nasıl yapılandırılacağı açıklanır.
 
-IoT Bağlayıcısı iki tür JSON tabanlı eşleme şablonu gerektirir. İlk tür olan **cihaz eşleme**, `devicedata` Azure Olay Hub 'ı uç noktasına gönderilen cihaz yüklerini eşleştirmekten sorumludur. Türleri, cihaz tanımlayıcılarını, ölçüm Tarih saatini ve ölçüm değerlerini ayıklar. İkinci tür olan **fhır eşleme**, fhır kaynağı için eşlemeyi denetler. Bu, izleme döneminin uzunluğunu, değerleri depolamak için kullanılan FHıR veri türünü ve terminoloji kodlarını yapılandırmanızı sağlar. 
+FHıR için Azure IoT Bağlayıcısı, iki tür JSON tabanlı eşleme şablonu gerektirir. İlk tür olan **cihaz eşleme**, `devicedata` Azure Olay Hub 'ı uç noktasına gönderilen cihaz yüklerini eşleştirmekten sorumludur. Türleri, cihaz tanımlayıcılarını, ölçüm Tarih saatini ve ölçüm değerlerini ayıklar. İkinci tür olan **fhır eşleme**, fhır kaynağı için eşlemeyi denetler. Bu, izleme döneminin uzunluğunu, değerleri depolamak için kullanılan FHıR veri türünü ve terminoloji kodlarını yapılandırmanızı sağlar. 
 
-Eşleme şablonları, türlerine göre bir JSON belgesinde oluşur. Bu JSON belgeleri daha sonra Azure portal aracılığıyla IoT bağlayıcınıza eklenir. Cihaz eşleme belgesi, **cihaz eşlemesini Yapılandır** sayfası ve fhır eşleme belgesi aracılığıyla **Fhır eşlemesini Yapılandır** sayfasından eklenir.
+Eşleme şablonları, türlerine göre bir JSON belgesinde oluşur. Bu JSON belgeleri daha sonra Azure portal aracılığıyla FHıR için Azure IoT bağlayıcınıza eklenir. Cihaz eşleme belgesi, **cihaz eşlemesini Yapılandır** sayfası ve fhır eşleme belgesi aracılığıyla **Fhır eşlemesini Yapılandır** sayfasından eklenir.
 
 > [!NOTE]
 > Eşleme şablonları temel alınan bir BLOB depolama alanında depolanır ve işlem yürütme başına blob 'dan yüklenir. Güncelleştirildikten sonra hemen etkili olmaları gerekir. 
@@ -562,10 +562,11 @@ Fhır veri türü [miktarını](http://hl7.org/fhir/datatypes.html#Quantity) tem
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın
+FHıR (Önizleme) için Azure IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın.
 
 >[!div class="nextstepaction"]
->[IoT Bağlayıcısı SSS](fhir-faq.md#iot-connector-preview)
+>[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md#iot-connector-preview)
 
+* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
 
 FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2018
-ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649386"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511947"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki işlevleri kullanma
 
@@ -23,7 +23,7 @@ Başka bir sorguyla bir günlük sorgusu kullanmak için, bunu bir işlev olarak
 
 | Ayar | Açıklama |
 |:---|:---|
-| Name           | Sorgu **Gezgini**'nde sorgu için görünen ad. |
+| Ad           | Sorgu **Gezgini**'nde sorgu için görünen ad. |
 | Farklı kaydet        | İşlev |
 | İşlev diğer adı | Diğer sorgularda işlevi kullanmak için kısa ad. Boşluk içeremez ve benzersiz olmalıdır. |
 | Kategori       | **Sorgu Gezgini**'nde Kaydedilmiş sorguları ve işlevleri düzenlemek için bir kategori. |
@@ -33,6 +33,9 @@ Başka bir sorguyla bir günlük sorgusu kullanmak için, bunu bir işlev olarak
 
 ## <a name="use-a-function"></a>Bir işlev kullanın
 Diğer bir sorguya diğer adını ekleyerek bir işlev kullanın. Diğer tablolar gibi kullanılabilir.
+
+## <a name="function-parameters"></a>İşlev parametreleri 
+Bir işleve parametreler ekleyerek belirli değişkenler için değer sağlayabilmenizi sağlayabilirsiniz. Şu anda parametrelere sahip bir işlev oluşturmanın tek yolu Kaynak Yöneticisi şablonunu kullanmaktır. Bir örnek için bkz. [Azure izleyici 'de günlük sorguları için Kaynak Yöneticisi şablonu örnekleri](../samples/resource-manager-log-queries.md#parameterized-function) .
 
 ## <a name="example"></a>Örnek
 Aşağıdaki örnek sorgu, son gün içinde bildirilen tüm eksik güvenlik güncelleştirmelerini döndürür. Bu sorguyu, _security_updates_last_day_diğer adıyla bir işlev olarak kaydedin. 
