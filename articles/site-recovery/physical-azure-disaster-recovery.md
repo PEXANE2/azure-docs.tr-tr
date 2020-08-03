@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1fdfe57c2995628855ea8e068c4f8eb2f2ac466a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130182"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500445"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Şirket içi fiziksel sunucular için Azure 'da olağanüstü durum kurtarmayı ayarlama
 
@@ -111,7 +111,7 @@ Yapılandırma sunucusunu ayarlayın, kasaya kaydedin ve VM 'Leri bulun.
 4. Site Recovery Birleşik kurulum yükleme dosyasını indirin.
 5. Kasa kayıt anahtarını indirin. Birleşik kurulumu çalıştırdığınızda buna ihtiyacınız vardır. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 
-   ![Kaynağı ayarlama](./media/physical-azure-disaster-recovery/source-environment.png)
+   ![Yükleme dosyasını ve kayıt anahtarını indirme seçeneklerini gösteren ekran görüntüsü.](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>Yapılandırma sunucusunu kasaya kaydetme
@@ -136,7 +136,6 @@ Yapılandırma sunucusunu yüklemek için Birleşik kurulumu yerel yönetici ola
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Kayıt tamamlandıktan sonra, yapılandırma sunucusu kasadaki **Ayarlar**  >  **sunucular** sayfasında görüntülenir.
 
 ## <a name="set-up-the-target-environment"></a>Hedef ortamı ayarlama
 
@@ -146,7 +145,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 2. Hedef dağıtım modelini belirtin.
 3. Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağınızın olup olmadığını denetler.
 
-   ![Hedef](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Hedef ortamı ayarlama seçeneklerinin ekran görüntüsü.](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
@@ -157,7 +156,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 4. **Kurtarma noktası bekletme** bölümünde, her kurtarma noktası için bekletme süresinin ne kadar olacağını (saat) belirtin. Çoğaltılan VM’ler bir aralıktaki herhangi bir noktaya kurtarılabilir. Premium depolama alanına çoğaltılan makineler için 24 saate, standart depolama için de 72 saate kadar bekletme desteklenir.
 5. Uygulamayla **tutarlı anlık görüntü sıklığı**' nda, uygulamayla tutarlı anlık görüntüler içeren kurtarma noktalarının ne sıklıkta oluşturulacağını (dakika cinsinden) belirtin. İlkeyi oluşturmak için **Tamam**’a tıklayın.
 
-    ![Çoğaltma ilkesi](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Çoğaltma ilkesi oluşturma seçeneklerinin ekran görüntüsü.](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 İlke, yapılandırma sunucusu ile otomatik olarak ilişkilendirilir. Eşleşen bir ilke, varsayılan olarak yeniden çalışma için otomatik oluşturulur. Örneğin, çoğaltma ilkesi **rep-Policy** ise, bir yeniden çalışma ilkesi olan **rep-Policy-yeniden çalışma** oluşturulur. Bu ilke Azure’dan bir yeniden çalışma başlatılana kadar kullanılmaz.
@@ -172,7 +171,7 @@ Her sunucu için çoğaltmayı etkinleştirin.
 1. **Uygulama kaynağını Çoğalt**' a tıklayın  >  **Source**.
 2. **Kaynak** bölümünde yapılandırma sunucusunu seçin.
 3. **Makine türü**' nde **fiziksel makineler**' i seçin.
-4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Ardından **Tamam**'a tıklayın.
+4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Daha sonra, **Tamam**'a tıklayın.
 5. **Hedef**bölümünde, yük devretmeden sonra Azure VM 'leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Azure 'da kullanmak istediğiniz dağıtım modelini (klasik veya kaynak yönetimi) seçin.
 6. Verileri çoğaltmak için kullanmak istediğiniz Azure depolama hesabını seçin. 
 7. Yük devretme sonrasında oluşturulan Azure VM'lerinin bağlanacağı Azure ağını ve alt ağını seçin.

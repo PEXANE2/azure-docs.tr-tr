@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204310"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498812"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box ve Azure Data Box Heavy içeri aktarma siparişiniz için izleme ve olay günlüğü
 
@@ -24,7 +24,7 @@ Aşağıdaki tabloda Data Box veya Data Box Heavy içeri aktarma sırası adıml
 | Data Box içeri aktarma siparişi aşaması       | İzlenecek ve denetlenecek araç                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Sipariş oluşturma               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order)                                                    |
-| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portalı </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
+| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)                                              |
 | Cihaza veri kopyalama        | Veri kopyası için [ *error.xml* dosyalarını görüntüle](#view-error-log-during-data-copy)                                                             |
 | Göndermeye hazırlama            | Cihazdaki [bom dosyalarını](#inspect-bom-during-prepare-to-ship) veya bildirim dosyalarını inceleyin                                      |
@@ -35,7 +35,7 @@ Bu makalede, Data Box veya Data Box Heavy içeri aktarma sırasını izlemek ve 
 
 ## <a name="set-up-access-control-on-the-order"></a>Sıraya göre erişim denetimi ayarlama
 
-Sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini kontrol edebilirsiniz. Data Box sırasına erişimi denetlemek için çeşitli kapsamlardaki rol tabanlı Access Control (RBAC) rolleri ayarlayın. RBAC rolü, erişim türünü, okuma-yazma, salt okunurdur, okuma-yazma işlemlerini bir işlem alt kümesine belirler.
+Sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini kontrol edebilirsiniz. Data Box sırasına erişimi denetlemek için çeşitli kapsamlardaki Azure rollerini ayarlayın. Bir Azure rolü, erişim türünü, okuma-yazma, salt okunurdur, okuma-yazma işlemlerini bir işlem alt kümesine belirler.
 
 Azure Data Box hizmeti için tanımlanabilir iki rol şunlardır:
 

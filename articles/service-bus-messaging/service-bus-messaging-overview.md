@@ -3,12 +3,12 @@ title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
 description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus yüksek düzeyde bir genel bakış sunulmaktadır.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 5adcdf10898a7b0ee2d551a3a24b9f80195d645f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449111"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501483"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 
@@ -92,7 +92,7 @@ Bir hata, istemcinin bir gönderme işleminin sonucu hakkında şüpheli olması
 ### <a name="security-protocols"></a>Güvenlik protokolleri
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-Service Bus, [paylaşılan erişim imzaları](service-bus-sas.md) (SAS), [Azure rol tabanlı erişim denetımı (Azure RBAC)](authenticate-application.md) (RBAC) ve [Azure kaynakları için Yönetilen kimlikler](service-bus-managed-service-identity.md)gibi güvenlik protokollerini destekler.
+Service Bus, [paylaşılan erişim imzaları](service-bus-sas.md) (SAS), [Azure rol tabanlı erişim denetımı (Azure RBAC)](authenticate-application.md) ve [Azure kaynakları için Yönetilen kimlikler](service-bus-managed-service-identity.md)gibi güvenlik protokollerini destekler.
 
 ### <a name="geo-disaster-recovery"></a>Coğrafi olağanüstü durum kurtarma
 

@@ -1,14 +1,14 @@
 ---
 title: Kanada Federal pbmm şema örnek denetimleri
 description: Kanada Federal pbmm şema örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 05/08/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: 65fcd016c749a66fbfca1c5edc9d425216545341
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3022dc32f689d1cbfc8b5b6545d1252ce47ca33d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419708"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500138"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal pbmm şema örneğinin denetim eşlemesi
 
@@ -116,8 +116,8 @@ Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](
 Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve analizi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
 
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
 - \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 
@@ -126,8 +126,9 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve anal
 Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur. Bu ilke tanımları, Azure sanal makinelerinde Log Analytics aracısının dağıtımını ve diğer Azure Kaynak türleri için denetim ayarları yapılandırmasını denetler ve uygular. Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlamak için tanılama günlüklerinin yapılandırmasını denetler. Ayrıca, denetim ve gelişmiş veri güvenliği SQL Server 'lar üzerinde yapılandırılır.
 
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
+- VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- VM için Log Analytics çalışma alanını denetleme-rapor 
+
 - \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
@@ -167,25 +168,25 @@ Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş olan sahip v
 
 Bu şema, parola olmadan hesaplardan uzak bağlantılara izin veren ve/veya passwd dosyasında yanlış izinlere sahip olan Linux sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atar. Bu şema Ayrıca, Windows sanal makineleri için parola şifreleme türünün yapılandırılmasını denetleyen ilke tanımları atar. Bu göstergeleri izlemek, sistem kimlik doğrulamasının kuruluşunuzun kimlik ve kimlik doğrulama ilkesiyle uyumlu olmasını sağlamanıza yardımcı olur.
 
-- \[Önizleme \] : passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : parola olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme \] : parola olmayan hesaplara sahip Linux VM 'lerini denetlemek için gereksinimleri dağıtın
+- Passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını göster
+- Parolası olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
+- Passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
+- Parolaları olmayan hesaplara sahip Linux sanal makinelerini denetlemek için gereksinimleri dağıtma
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Authenticator yönetimi | Parola tabanlı kimlik doğrulaması
 
 Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden sanal makinelerin farkında olmak, tüm sanal makine Kullanıcı hesaplarının parolalarının kuruluşunuzun parola ilkesiyle uyumlu olmasını sağlamak için düzeltici eylemler almanıza yardımcı olur.
 
-- \[Önizleme \] : önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : en fazla 70 gün parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : en az 1 günlük parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : parola karmaşıklığı ayarı etkin olmayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Önizleme \] : önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme \] : 70 gün maksimum parola yaşı olmayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme \] : en az 1 günlük parola yaşı olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme \] : parola karmaşıklığı ayarı etkin olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme \] : en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- Önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerinden denetim sonuçlarını göster
+- Maksimum parola yaşı 70 gün olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- En az 1 günlük parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- Parola karmaşıklığı ayarı etkin olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- Minimum parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerinden denetim sonuçlarını göster
+- Önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- Maksimum parola yaşı 70 gün olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
+- En az 1 günlük parola yaşı olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
+- Parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtma
+- En az parola uzunluğu 14 karakter olan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 
 ## <a name="ia-8-100-identification-and-authentication-non-organizational-users--identity-and-credential-assurance-levels"></a>IA-8 (100) tanımlama ve kimlik doğrulaması (kurumsal olmayan kullanıcılar) | Kimlik ve kimlik bilgisi güvence düzeyleri
 
@@ -289,7 +290,7 @@ Bu şema, Azure Güvenlik Merkezi 'ndeki sanal makinelerde eksik uç nokta korum
 Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyerek ve zorunlu tutarak sisteminizi izlemenize yardımcı olur. Özellikle, Log Analytics aracısının dağıtımını denetleme ve uygulamaya zorlama ve SQL veritabanları, depolama hesapları ve ağ kaynakları için gelişmiş güvenlik ayarları atanmış ilkeleridir. Bu yetenekler, uygun işlemleri yapabilmeniz için anormal davranışları ve saldırı göstergelerini tespit etmenize yardımcı olabilir.
 
 - \[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Önizleme \] : VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
+- VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
 - \[Önizleme \] : VM için Log Analytics çalışma alanını denetleme-rapor uyumsuzluğu
 - \[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma
 - \[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma

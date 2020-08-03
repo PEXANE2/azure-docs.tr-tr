@@ -4,24 +4,24 @@ description: Azure SQL veritabanı 'nda Azure portal, PowerShell veya Azure CLı
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: ad4ef93b34639abffaf15c806fd86d550e03f0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045267"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496347"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Öğretici: bir Azure SQL veritabanını bir oto yük devretme grubuna ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Yük devretme grubu](auto-failover-group-overview.md) , birden çok coğrafi çoğaltılan veritabanını gruplamayı sağlayan, bildirime dayalı bir soyutlama katmanıdır. Azure SQL veritabanı için bir yük devretme grubu yapılandırmayı ve Azure portal, PowerShell veya Azure CLı kullanarak yük devretmeyi test yapmayı öğrenin.  Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+[Yük devretme grubu](auto-failover-group-overview.md) , birden çok coğrafi çoğaltılan veritabanını gruplamayı sağlayan, bildirime dayalı bir soyutlama katmanıdır. Azure SQL veritabanı için bir yük devretme grubu yapılandırmayı ve Azure portal, PowerShell veya Azure CLı kullanarak yük devretmeyi test yapmayı öğrenin.  Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >

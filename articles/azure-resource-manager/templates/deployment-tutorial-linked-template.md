@@ -4,12 +4,13 @@ description: Bağlı bir şablonu dağıtmayı öğrenin
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 63383f810b6f5643bad9feb86360745cd2f9b000
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80672930"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501142"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Öğretici: bağlı bir şablon dağıtma
 
@@ -35,7 +36,7 @@ Aşağıdaki şablon ana şablondur.  Vurgulanan **Microsoft. resources/dağıt�
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Ana şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy. JSON. Bağlantılı şablonun bir kopyasını kaydetmeniz gerekmez.  Bağlantılı şablon bir GitHub deposundan bir depolama hesabına kopyalanacak.
+Ana şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy.js. Bağlantılı şablonun bir kopyasını kaydetmeniz gerekmez.  Bağlantılı şablon bir GitHub deposundan bir depolama hesabına kopyalanacak.
 
 ## <a name="store-the-linked-template"></a>Bağlı şablonu depola
 

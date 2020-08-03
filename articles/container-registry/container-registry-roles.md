@@ -1,14 +1,14 @@
 ---
 title: RBAC rolleri ve izinleri
-description: Azure Container Registry 'deki kaynaklara yönelik ayrıntılı izinler sağlamak için Azure rol tabanlı erişim denetimi (RBAC) ve kimlik ve erişim yönetimi (ıAM) kullanın.
+description: Azure Container Registry 'deki kaynaklara yönelik ayrıntılı izinler sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) ve kimlik ve erişim yönetimi (ıAM) kullanın.
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bf6059698191c975b212bee7f45d21977478b49
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74893493"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497758"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roller ve izinler
 

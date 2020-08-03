@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130146"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496126"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için CI/CD işlem hattı ayarlama  
 
@@ -35,7 +35,7 @@ Bir U-SQL projesi, karşılık gelen parametreler geçirerek Microsoft Build Eng
 
 U-SQL projesi için bir yapı görevi ayarlamadan önce, U-SQL projesinin en son sürümüne sahip olduğunuzdan emin olun. Düzenleyicinizde U-SQL proje dosyasını açın ve şu içeri aktarma öğelerine sahip olduğunuzu doğrulayın:
 
-```   
+```xml
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
 <Import Project="UsqlSDKBuild.targets" Condition="Exists('UsqlSDKBuild.targets')" />
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
@@ -66,14 +66,14 @@ U-SQL projesindeki u-SQL betikleri U-SQL veritabanı nesneleri için sorgu deyim
 [U-SQL veritabanı projesi](data-lake-analytics-data-lake-tools-develop-usql-database.md)hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
->DROP deyimleri kaza silme sorununa neden olabilir. DROP deyiminizi etkinleştirmek için MSBuild bağımsız değişkenlerini açıkça belirtmeniz gerekir. **Allowdropdeyimin** bırakma derlemesi ve bırakma tablosu değerli işlevi gibi verilerle ılgılı olmayan bırakma işlemi etkinleştirilir. **Allowdatadropdeyimin** bırakma tablosu ve bırakma şeması gibi veri Ile ilgili bırakma işlemi etkinleştirilir. Allowdatadropdeyimin kullanılmadan önce Allowdropdeyiminizi etkinleştirmeniz gerekir.
+> DROP deyimleri yanlışlıkla silinmeye neden olabilir. DROP deyiminizi etkinleştirmek için MSBuild bağımsız değişkenlerini açıkça belirtmeniz gerekir. **Allowdropdeyimin** bırakma derlemesi ve bırakma tablosu değerli işlevi gibi verilerle ılgılı olmayan bırakma işlemi etkinleştirilir. **Allowdatadropdeyimin** bırakma tablosu ve bırakma şeması gibi veri Ile ilgili bırakma işlemi etkinleştirilir. Allowdatadropdeyimin kullanılmadan önce Allowdropdeyiminizi etkinleştirmeniz gerekir.
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>MSBuild komut satırı ile bir U-SQL projesi oluşturma
 
 Önce projeyi geçirin ve NuGet paketini alın. Ardından, U-SQL projenizi derlemek için aşağıdaki ek bağımsız değişkenlerle standart MSBuild komut satırını çağırın: 
 
-``` 
+```console
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
@@ -100,7 +100,7 @@ Komut satırına ek olarak, Azure Pipelines ' de U-SQL projeleri oluşturmak iç
 
     ![U-SQL projesi için CI/CD MSBuild değişkenlerini tanımlama](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
-    ```
+    ```console
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
@@ -109,9 +109,7 @@ Komut satırına ek olarak, Azure Pipelines ' de U-SQL projeleri oluşturmak iç
 Bir derlemeyi çalıştırdıktan sonra, U-SQL projesindeki tüm betikler oluşturulur ve adlı bir ZIP dosyasına çıktı `USQLProjectName.usqlpack` . Projenizdeki klasör yapısı daraltılmış derleme çıkışında tutulur.
 
 > [!NOTE]
->
 > Her U-SQL betiği için arka plan kod dosyaları, betik oluşturma çıktısına bir satır içi deyim olarak birleştirilir.
->
 
 ## <a name="test-u-sql-scripts"></a>U-SQL betiklerini test etme
 
@@ -229,6 +227,10 @@ Function Main()
 
 Main
 ```
+
+>[!NOTE]
+> Ve komutları, `Submit-AzDataLakeAnalyticsJob` `Wait-AzDataLakeAnalyticsJob` hem Azure Resource Manager çerçevesinde Azure Data Lake Analytics için Azure PowerShell cmdlet 'lardır. Azure PowerShell yüklü bir iş istasyonu aşağıdakileri yapmanız. Daha fazla komut ve örnek için [komut listesine](https://docs.microsoft.com/powershell/module/Az.DataLakeAnalytics/?view=azps-4.3.0) bakabilirsiniz.
+>
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>U-SQL işlerini Azure Data Factory aracılığıyla dağıtma
 
@@ -472,7 +474,7 @@ Azure Pipelines bir veritabanı dağıtım görevi ayarlamak için aşağıdaki 
 |---------|-----------|-------------|--------|
 |Hesap|Hesap adına göre dağıtılacak Azure Data Lake Analytics hesabını belirtir.|null|true|
 |ResourceGroup|Azure Data Lake Analytics hesabının Azure Kaynak grubu adı.|null|true|
-|SubscriptionId|Azure Data Lake Analytics hesabının Azure abonelik KIMLIĞI.|null|true|
+|kaynak grubundaki|Azure Data Lake Analytics hesabının Azure abonelik KIMLIĞI.|null|true|
 |Kiracı|Kiracı adı Azure Active Directory (Azure AD) etki alanı adıdır. Azure portal abonelik yönetimi sayfasında bulun.|null|true|
 |AzureSDKPath|Azure SDK 'da bağımlı derlemelerin aranacağı yol.|null|true|
 |Etkileşimli|Kimlik doğrulaması için etkileşimli mod kullanılıp kullanılmayacağını belirtir.|yanlış|yanlış|

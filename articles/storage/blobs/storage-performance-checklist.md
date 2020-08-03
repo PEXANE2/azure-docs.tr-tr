@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4471994f7e691466449125a74cf3f7d46607be01
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80473938"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495140"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -36,8 +36,8 @@ Bu makale, blob Storage uygulamanızı geliştirirken izleyebileceğiniz bir den
 | &nbsp; |Ağ |[İstemci tarafı cihazların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
 | &nbsp; |Ağ |[İstemci uygulaması, depolama hesabıyla aynı bölgede mi?](#location) |
 | &nbsp; |Doğrudan istemci erişimi |[Azure Storage 'a doğrudan erişim sağlamak için paylaşılan erişim imzaları (SAS) ve çıkış noktaları arası kaynak paylaşımı (CORS) kullanıyor musunuz?](#sas-and-cors) |
-| &nbsp; |Önbelleğe Alma |[Uygulamanızın önbelleğe alınması sık erişilen ve nadiren değiştirilen verilerinize mı sahip?](#reading-data) |
-| &nbsp; |Önbelleğe Alma |[Uygulamanız, güncelleştirmeleri istemcide önbelleğe alarak ve daha sonra bunları daha büyük kümelere karşıya yükleyerek toplu olarak güncelleştirir mı?](#uploading-data-in-batches) |
+| &nbsp; |Önbelleğe alma |[Uygulamanızın önbelleğe alınması sık erişilen ve nadiren değiştirilen verilerinize mı sahip?](#reading-data) |
+| &nbsp; |Önbelleğe alma |[Uygulamanız, güncelleştirmeleri istemcide önbelleğe alarak ve daha sonra bunları daha büyük kümelere karşıya yükleyerek toplu olarak güncelleştirir mı?](#uploading-data-in-batches) |
 | &nbsp; |.NET yapılandırması |[En iyi performans için .NET Core 2,1 veya üstünü mi kullanıyorsunuz?](#use-net-core) |
 | &nbsp; |.NET yapılandırması |[İstemcinizi yeterli sayıda eşzamanlı bağlantı kullanacak şekilde yapılandırdınız mı?](#increase-default-connection-limit) |
 | &nbsp; |.NET yapılandırması |[.NET uygulamaları için, .NET 'i yeterli sayıda iş parçacığı kullanacak şekilde yapılandırdınız mı?](#increase-minimum-number-of-threads) |
@@ -65,7 +65,7 @@ Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bk
 Belirli bir abonelik/bölge birleşimi için izin verilen en fazla depolama hesabı sayısına yaklaşdıysanız, senaryonuzu değerlendirin ve aşağıdaki koşullardan herhangi birinin uygulanıp uygulanmadığını saptayın:
 
 - Yönetilmeyen diskleri depolamak ve bu diskleri sanal makinelerinize (VM 'Ler) eklemek için depolama hesapları kullanıyor musunuz? Bu senaryo için, Microsoft yönetilen disklerin kullanılmasını önerir. Yönetilen diskler, tek tek depolama hesapları oluşturma ve yönetmeye gerek kalmadan otomatik olarak ve sizin için ölçeklendirilir. Daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](../../virtual-machines/windows/managed-disks-overview.md)
-- Veri yalıtımı amacıyla müşteri başına bir depolama hesabı kullanıyor musunuz? Bu senaryo için, Microsoft tüm depolama hesabı yerine her müşteri için bir blob kapsayıcısı kullanılmasını önerir. Azure depolama artık kapsayıcı temelinde rol tabanlı erişim denetimi (RBAC) rolleri atamanıza olanak tanır. Daha fazla bilgi için, [Azure Portal RBAC Ile Azure Blob ve kuyruk verilerine erişim verme](../common/storage-auth-aad-rbac-portal.md)bölümüne bakın.
+- Veri yalıtımı amacıyla müşteri başına bir depolama hesabı kullanıyor musunuz? Bu senaryo için, Microsoft tüm depolama hesabı yerine her müşteri için bir blob kapsayıcısı kullanılmasını önerir. Azure depolama artık Azure rollerini kapsayıcı başına temelinde atamanıza olanak tanır. Daha fazla bilgi için, [Azure Portal RBAC Ile Azure Blob ve kuyruk verilerine erişim verme](../common/storage-auth-aad-rbac-portal.md)bölümüne bakın.
 - Giriş, çıkış, saniye başına g/ç işlemi (ıOPS) veya kapasiteyi artırmak için birden fazla depolama hesabı kullanıyor musunuz? Bu senaryoda, Microsoft, mümkünse iş yükünüz için gereken depolama hesabı sayısını azaltmak üzere depolama hesapları için artan limitlerin avantajlarından yararlanmanızı öneriyor. Depolama Hesabınıza yönelik daha fazla limit istemek için [Azure desteğine](https://azure.microsoft.com/support/options/) başvurun. Daha fazla bilgi için bkz. daha [büyük, daha yüksek ölçekli depolama hesapları duyurusu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapasite ve işlem hedefleri
@@ -151,7 +151,7 @@ Genellikle, bir Web tarayıcısı, başka bir etki alanına yazma işlemleri gib
   
 Hem SAS hem de CORS, Web uygulamanızda gereksiz yükün oluşmasını önlemenize yardımcı olabilir.  
 
-## <a name="caching"></a>Önbelleğe Alma
+## <a name="caching"></a>Önbelleğe alma
 
 Önbelleğe alma, performans açısından önemli bir rol oynar. Aşağıdaki bölümlerde, önbelleğe alma en iyi yöntemleri ele alınmaktadır.
 

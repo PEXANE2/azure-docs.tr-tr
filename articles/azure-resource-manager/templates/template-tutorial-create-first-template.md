@@ -5,12 +5,13 @@ author: mumian
 ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 140eb73cdf6d5bb701c08b0dd8d5f85b6f137df6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102082"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497486"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma
 
@@ -20,7 +21,7 @@ Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bi
 
 Şablon kullanmanın avantajları hakkında bilgi edinmek istiyorsanız ve şablonları ile dağıtımı otomatikleştirmeniz gerekiyorsa, bkz. [Azure Resource Manager şablonları](overview.md).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="get-tools"></a>Araçları al
 
@@ -34,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Ayrıca, şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Azure CLı kullanıyorsanız, en son sürüme sahip olmanız gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps)
+- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 - [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)
@@ -138,7 +139,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın. Oluşturduğunuz kaynak grubunu kullanın. Dağıtım geçmişinde kolayca tanımlayabilmeniz için dağıtıma bir ad verin. Kolaylık sağlaması için, şablon dosyasının yolunu depolayan bir değişken de oluşturun. Bu değişken, dağıtım komutlarını çalıştırmanızı kolaylaştırır, çünkü her dağıttığınız zaman yolu yeniden yazmanız gerekmez.
+Şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın. Oluşturduğunuz kaynak grubunu kullanın. Dağıtım geçmişinde kolayca tanımlayabilmeniz için dağıtıma bir ad verin. Kolaylık sağlaması için, şablon dosyasının yolunu depolayan bir değişken de oluşturun. Her dağıtım yaptığınızda yolu yeniden yazmanız gerekmediğinden bu değişken, dağıtım komutlarını çalıştırmanızı kolaylaştırır.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -152,7 +153,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
+Bu dağıtım komutunu çalıştırmak için Azure CLI’nın [en son sürümüne](/cli/azure/install-azure-cli) sahip olmanız gerekir.
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -183,7 +184,7 @@ Dağıtım komutu sonuçları döndürür. `ProvisioningState`Dağıtımın baş
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **kaynak grupları**' nı seçin.
 

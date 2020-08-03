@@ -5,18 +5,19 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e4984b286bf031b66272919a487d09a90f972ce0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: fe6185f0e7d6ee570c1491f3b21b6aebe4f090ae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80410970"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497571"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Öğretici: ARM şablonunuza şablon işlevleri ekleme
 
 Bu öğreticide, Azure Resource Manager (ARM) şablonunuza [Şablon işlevleri](template-functions.md) eklemeyi öğreneceksiniz. Değerleri dinamik olarak oluşturmak için işlevlerini kullanırsınız. Sistem tarafından sağlanmış bu şablon işlevlerine ek olarak, [Kullanıcı tanımlı işlevler](./template-user-defined-functions.md)de oluşturabilirsiniz. Bu öğreticinin tamamlana **7 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Parametreler hakkında öğreticiyi](template-tutorial-add-parameters.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -60,7 +61,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
+Bu dağıtım komutunu çalıştırmak için Azure CLI’nın [en son sürümüne](/cli/azure/install-azure-cli) sahip olmanız gerekir.
 
 ```azurecli
 az deployment group create \
@@ -79,7 +80,7 @@ az deployment group create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabı kaynağının dağıtıldığını ve kaynak grubuyla aynı konuma sahip olduğunu görürsünüz.

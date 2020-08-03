@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 15cf4aa6adda26991e76ec8a5e7378766fe2a21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6234e9efe4f6dd122a22ee834ef9c35269eea95f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552633"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500989"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
 
@@ -67,14 +67,17 @@ Azure 'da, veri depoları olarak kaydedilenebilir desteklenen bulut tabanlı dep
 
 ## <a name="datasets"></a>Veri kümeleri
 
-Azure Machine Learning veri kümeleri, depolama hizmetinizdeki verileri işaret eden başvurulardır. Verilerinizin kopyaları olmadığından, ek depolama maliyeti tahakkuk etmemektedir. Depolama alanındaki verilerinizle etkileşim kurmak için, verilerinizi makine öğrenimi görevleri için tüketilebilir bir nesneye paketlemek üzere [bir veri kümesi oluşturun](how-to-create-register-datasets.md) . Veri alma karmaşıklıkları olmadan farklı denemeleri genelinde paylaşmak ve yeniden kullanmak için veri kümesini çalışma alanınıza kaydedin.
+Azure Machine Learning veri kümeleri, depolama hizmetinizdeki verileri işaret eden başvurulardır. Verilerinizin kopyası olmadıklarından, hiçbir ek depolama maliyeti tahakkuk etmemektedir ve özgün veri kaynaklarınızın bütünlüğü risk altında değildir.
+
+ Depolama alanındaki verilerinizle etkileşim kurmak için, verilerinizi makine öğrenimi görevleri için tüketilebilir bir nesneye paketlemek üzere [bir veri kümesi oluşturun](how-to-create-register-datasets.md) . Veri alma karmaşıklıkları olmadan farklı denemeleri genelinde paylaşmak ve yeniden kullanmak için veri kümesini çalışma alanınıza kaydedin.
 
 Veri kümeleri yerel dosyalardan, genel URL 'lerden, [Azure açık veri](https://azure.microsoft.com/services/open-datasets/)kümelerinden veya veri depoları aracılığıyla Azure Storage hizmetlerinden oluşturulabilir. Bellek Pandas dataframe 'ten bir veri kümesi oluşturmak için, verileri bir Parquet gibi yerel bir dosyaya yazın ve veri kümenizi bu dosyadan oluşturun.  
 
 2 tür veri kümesini destekliyoruz: 
-+ [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Daha fazla düzenleme ve temizleme için TabularDataset ' i Pandas veya Spark veri çerçevesine yükleyebilirsiniz. ' Den Tabulardataset 'ler oluşturabileceğiniz veri biçimlerinin tamamen listesi için, [Tabulardatasetfactory sınıfına](https://aka.ms/tabulardataset-api-reference)bakın.
 
-+ Bir [dosya veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Dosya veri kümeleri tarafından başvurulan dosyaları, işlem hedeflerinize [indirebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
++ Bir [dosya veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Verileriniz zaten Temizleme ve eğitim denemeleri ' de kullanıma hazırsa, dosya veri kümeleri tarafından başvurulan dosyaları işlem Hedefinizle [karşıdan yükleyebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
+
++ [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Daha fazla düzenleme ve temizleme için TabularDataset ' i Pandas veya Spark veri çerçevesine yükleyebilirsiniz. ' Den Tabulardataset 'ler oluşturabileceğiniz veri biçimlerinin tamamen listesi için, [Tabulardatasetfactory sınıfına](https://aka.ms/tabulardataset-api-reference)bakın.
 
 Ek veri kümesi özellikleri aşağıdaki belgelerde bulunabilir:
 

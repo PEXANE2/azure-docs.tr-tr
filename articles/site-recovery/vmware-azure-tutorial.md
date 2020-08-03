@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290660"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501210"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Şirket içi VMware VM’leri için Azure’da olağanüstü durum kurtarmayı ayarlama
 
@@ -87,7 +87,7 @@ Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket iç
 1. VMware vSphere Istemcisiyle VMware vCenter sunucusunda veya vSphere ESXi konağında oturum açın.
 2. **Dosya** menüsünde **OVF Şablonunu Dağıt** seçeneğini belirleyerek **OVF Şablonu Dağıtma Sihirbazı**’nı başlatın.
 
-     ![OVF şablonu](./media/vmware-azure-tutorial/vcenter-wizard.png)
+     ![VMWare vSphere Istemcisinde OVF şablonu dağıtma komutunun ekran görüntüsü.](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
 3. **Kaynak seçin** bölümünde, indirilen OVF’nin konumunu girin.
 4. **Değerlendirme ayrıntıları** bölümünde **İleri** seçeneğini belirleyin.
@@ -153,7 +153,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 1. **Altyapı hedefini hazırla**' yı seçin  >  **Target**. Kullanmak istediğiniz Azure aboneliğini seçin. Bir Kaynak Yöneticisi modeli kullanıyoruz.
 2. Site Recovery bir veya daha fazla sanal ağınız olduğunu denetler. Bu öğretici serisindeki [ilk öğreticide](tutorial-prepare-azure.md) Azure bileşenlerini ayarladığınızda bunları edinmeniz gerekir.
 
-   ![Hedef sekmesi](./media/vmware-azure-tutorial/storage-network.png)
+   ![Altyapıyı hazırlama > hedef seçeneklerinin ekran görüntüsü.](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
 
@@ -165,7 +165,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 6. **Kurtarma noktası tutma** içinde, her bir kurtarma noktasının ne kadar tutulacağını belirtin. Bu öğretici için 72 saat değerini kullanıyoruz. Çoğaltılan VM’ler bir tutma penceresindeki herhangi bir noktaya kurtarılabilir.
 7. **Uygulamayla tutarlı anlık görüntü sıklığı** içinde, uygulamayla tutarlı anlık görüntülerin oluşturulma sıklığını belirtin. Varsayılan 60 dakikayı kullanıyoruz. İlkeyi oluşturmak için **Tamam**’ı seçin.
 
-   ![Çoğaltma ilkesi oluşturma](./media/vmware-azure-tutorial/replication-policy.png)
+   ![Çoğaltma ilkesi oluşturma seçeneğinin ekran görüntüsü.](./media/vmware-azure-tutorial/replication-policy.png)
 
 - İlke, yapılandırma sunucusu ile otomatik olarak ilişkilendirilir.
 - Yeniden çalışma için varsayılan olarak, eşleşen bir ilke otomatik olarak oluşturulur. Örneğin, çoğaltma ilkesi **rep-policy** şeklindeyse yeniden çalışma ilkesi **rep-policy-failback** şeklindedir. Bu ilke Azure’dan bir yeniden çalışma başlatılana kadar kullanılmaz.

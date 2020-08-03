@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d1de40944b4ab15268cda576f477c08fc179f1df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85256059"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497333"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box için Azure Güvenlik temeli
 
@@ -216,7 +216,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
-**Rehberlik**: Azure Data Box yönetici erişimine sahip kullanıcı hesaplarının envanterini saklayın. Rol tabanlı erişim denetimi 'ni (RBAC) yapılandırmak için, aboneliğiniz için Azure portal kimlik ve erişim denetimi (ıAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini denetleyebilirsiniz. Data Box sırasına erişimi denetlemek için çeşitli kapsamlardaki rol tabanlı Access Control (RBAC) rolleri ayarlayın. RBAC rolü, erişim türünü, okuma-yazma, salt okunurdur, okuma-yazma işlemlerini bir işlem alt kümesine belirler.
+**Rehberlik**: Azure Data Box yönetici erişimine sahip kullanıcı hesaplarının envanterini saklayın. Rol tabanlı erişim denetimi 'ni (RBAC) yapılandırmak için, aboneliğiniz için Azure portal kimlik ve erişim denetimi (ıAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini denetleyebilirsiniz. Data Box sırasına erişimi denetlemek için çeşitli kapsamlardaki Azure rollerini ayarlayın. Bir Azure rolü, erişim türünü, okuma-yazma, salt okunurdur, okuma-yazma işlemlerini bir işlem alt kümesine belirler.
 
 * [Özel rolleri anlama](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 

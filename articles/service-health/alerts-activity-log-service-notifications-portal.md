@@ -3,29 +3,29 @@ title: Azure portal kullanarak Azure hizmet bildirimlerinde etkinlik günlüğü
 description: Azure hizmeti gerçekleştiğinde SMS, e-posta veya Web Kancası aracılığıyla bildirim alın.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a8723698cddfb519687525820475517b93219a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85569007"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499303"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Azure portal kullanarak hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma
 ## <a name="overview"></a>Genel Bakış
 
 Bu makalede, Azure portal kullanarak hizmet durumu bildirimlerine yönelik etkinlik günlüğü uyarılarını ayarlamak için Azure portal nasıl kullanılacağı gösterilmektedir.  
 
-Hizmet durumu bildirimleri, etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verilen [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md) depolanır, hizmet durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştırmak için ayrı bir kullanıcı arabirimi vardır. 
+Hizmet durumu bildirimleri [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md)depolanır. Etkinlik günlüğünde depolanan büyük bilgi hacmi verildiğinde, hizmet durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştıran ayrı bir kullanıcı arabirimi vardır. 
 
 Azure, Azure aboneliğinize hizmet durumu bildirimleri gönderdiğinde bir uyarı alabilirsiniz. Uyarıyı temel alarak yapılandırabilirsiniz:
 
-- Hizmet durumu bildirimi sınıfı (hizmet sorunları, planlı bakım, sağlık danışma belgeleri).
+- Hizmet durumu bildirimi sınıfı (hizmet sorunları, planlı bakım, sağlık danışmanları, Güvenlik Danışma belgeleri).
 - Abonelik etkilendi.
 - Hizmet (ler) i etkilendi.
 - Bu bölgeler etkilendi.
 
 > [!NOTE]
-> Hizmet durumu bildirimleri, kaynak sistem durumu olaylarıyla ilgili bir uyarı göndermez.
+> Hizmet durumu bildirimleri, kaynak sistem durumu olayları için uyarı göndermez.
 
 Ayrıca, uyarının kime gönderileceğini de yapılandırabilirsiniz:
 
@@ -40,7 +40,7 @@ Azure Resource Manager şablonları kullanarak hizmet durumu bildirim uyarılar�
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="alert-and-new-action-group-using-azure-portal"></a>Azure portal kullanarak uyarı ve yeni eylem grubu
+## <a name="create-service-health-alert-using-azure-portal"></a>Azure portal kullanarak hizmet durumu uyarısı oluşturma
 1. [Portalda](https://portal.azure.com) **hizmet durumu**' nu seçin.
 
     !["Hizmet durumu" hizmeti](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -49,54 +49,31 @@ Azure Resource Manager şablonları kullanarak hizmet durumu bildirim uyarılar�
 
     !["Sistem durumu uyarıları" sekmesi](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. **Hizmet sistem durumu uyarısı oluştur** ' u seçin ve alanları girin.
+1. **Hizmet durumu uyarısı Ekle** ' yi seçin ve alanları girin.
 
     !["Hizmet sistem durumu uyarısı oluştur" komutu](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. Uyarı almak istediğiniz **abonelik**, **hizmet**ve **bölgeleri** seçin.
+1. Uyarılmak istediğiniz **abonelik**, **hizmet**ve **bölgeleri** seçin.
 
-    !["Etkinlik günlüğü uyarısı Ekle" iletişim kutusu](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
+    [!["Etkinlik günlüğü uyarısı Ekle" iletişim kutusu](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png#lightbox)
 
-    > [!NOTE]
-    > Bu abonelik, etkinlik günlüğü uyarısını kaydetmek için kullanılır. Uyarı kaynağı bu aboneliğe dağıtılır ve etkinlik günlüğündeki olayları izler.
+> [!NOTE]
+>Bu abonelik, etkinlik günlüğü uyarısını kaydetmek için kullanılır. Uyarı kaynağı bu aboneliğe dağıtılır ve etkinlik günlüğündeki olayları izler.
 
-1. Uyarı almak istediğiniz **olay türlerini** seçin: *hizmet sorunu*, *Planlı bakım*ve *sistem durumu Danışma belgeleri* 
+5. Uyarı almak istediğiniz **olay türlerini** seçin: *hizmet sorunu*, *Planlı bakım*, *sağlık belgeleri*ve *Güvenlik Danışmanlığı*.
 
-1. Uyarı **kuralları adı** ve **açıklaması**girerek uyarı ayrıntılarınızı tanımlayın.
+6. Mevcut bir eylem grubunu seçmek veya yeni bir eylem grubu oluşturmak için **Eylem grubunu Seç** ' e tıklayın. Eylem grupları hakkında daha fazla bilgi için [Azure Portal eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md)konusuna bakın.
 
-1. Uyarının kaydedilmesini istediğiniz **kaynak grubunu** seçin.
 
-1. **Yeni eylem grubu**' nu seçerek yeni bir eylem grubu oluşturun. **Eylem grubu adı** kutusuna bir ad girin ve **kısa ad** kutusuna bir ad girin. Bu uyarı tetiklendiğinde gönderilen bildirimlerde kısa ada başvurulur.
+7. Uyarı **kuralları adı** ve **açıklaması**girerek uyarı ayrıntılarınızı tanımlayın.
 
-    ![Yeni bir eylem grubu oluştur](media/alerts-activity-log-service-notifications/action-group-creation.png)
+8. Uyarının kaydedilmesini istediğiniz **kaynak grubunu** seçin.
 
-1. Alıcının bir listesini, alıcıların şunları sağlayarak tanımlayın:
 
-    a. **Ad**: alıcının adını, diğer adını veya tanımlayıcıyı girin.
-
-    b. **Eylem türü**: SMS, e-posta, Web kancası, Azure uygulaması ve daha fazlasını seçin.
-
-    c. **Ayrıntılar**: seçilen eylem türüne bağlı olarak bir telefon numarası, e-posta adresi, Web kancası URI 'si vb. girin.
-
-1. Eylem grubunu oluşturmak için **Tamam** ' ı seçin ve sonra uyarılarınızı gerçekleştirmek için **Uyarı kuralı oluşturun** .
 
 Birkaç dakika içinde, uyarı etkin olur ve oluşturma sırasında belirttiğiniz koşullara göre tetiklemeye başlar.
 
 [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin. Etkinlik günlüğü uyarıları için Web kancası şeması hakkında bilgi için bkz. [Azure etkinlik günlüğü uyarıları Için Web kancaları](../azure-monitor/platform/activity-log-alerts-webhook.md).
-
->[!NOTE]
->Bu adımlarda tanımlanan eylem grubu, gelecekteki tüm uyarı tanımları için mevcut bir eylem grubu olarak yeniden kullanılabilir.
->
-
-## <a name="alert-with-existing-action-group-using-azure-portal"></a>Azure portal kullanarak mevcut eylem grubuyla uyar
-
-1. Service Health bildirimini oluşturmak için önceki bölümde bulunan 1 ile 6 arasındaki adımları izleyin. 
-
-1. **Eylem grubunu tanımla**altında **eylem grubu seç** düğmesine tıklayın. Uygun eylem grubunu seçin.
-
-1. Eylem grubunu eklemek için **Ekle** ' yi seçin ve sonra uyarılarınızı tamamlamaya yönelik **Uyarı kuralını oluşturun** .
-
-Birkaç dakika içinde, uyarı etkin olur ve oluşturma sırasında belirttiğiniz koşullara göre tetiklemeye başlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 0fce972b6b0ceb426ab4b08ab26e664d068af16f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089286"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498931"
 ---
-# <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark nedir?
+# <a name="apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark
 
 Apache Spark, büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen paralel bir işleme çerçevesidir. Azure SYNAPSE Analytics 'te Apache Spark, Microsoft 'un buluttaki Apache Spark uygulamalarından biridir. Azure SYNAPSE, Azure 'da Spark Havuzu (Önizleme) oluşturmayı ve yapılandırmayı kolaylaştırır. Azure SYNAPSE ' deki Spark havuzları, Azure depolama ve Azure Data Lake 2. nesil depolama ile uyumludur. Böylece, Azure 'da depolanan verilerinizi işlemek için Azure Spark havuzlarını kullanabilirsiniz.
 

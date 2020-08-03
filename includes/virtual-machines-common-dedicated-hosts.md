@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 691293d0f7ecf5bb2ad83a3f292ad2c9b873e31e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133935"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386546"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
 
-## <a name="benefits"></a>Avantajlar 
+## <a name="benefits"></a>Yararları 
 
 Tüm konağın rezerve etmek aşağıdaki avantajları sağlar:
 
@@ -53,7 +53,7 @@ Bir kullanılabilirlik bölgesine bir konak grubu atarsanız, bu konakta oluştu
 
 Bir konak, belirli bir hata etki alanında oluşturulabilir. Bir ölçek kümesi veya kullanılabilirlik kümesindeki VM gibi, farklı hata etki alanlarında bulunan konaklar da veri merkezindeki farklı fiziksel raflara yerleştirilir. Bir konak grubu oluşturduğunuzda, hata etki alanı sayısını belirtmeniz gerekir. Konak grubu içinde konaklar oluştururken, her konak için hata etki alanı atarsınız. VM 'Ler herhangi bir hata etki alanı ataması gerektirmez.
 
-Hata etki alanları collocation ile aynı değildir. Aynı hata etki alanının iki ana bilgisayar için olması, birbirleriyle yakınlardır.
+Hata etki alanları birlikte bulundurma ile aynı değildir. Aynı hata etki alanının iki ana bilgisayar için olması, birbirleriyle yakınlardır.
 
 Hata etki alanları konak grubunun kapsamına alınır. İki konak grubu arasında benzeşim önleme (farklı kullanılabilirlik bölgelerinde olmadıkları durumlar dışında) konusunda herhangi bir varsayım yapmayın.
 
@@ -121,7 +121,7 @@ Boyutlar ve donanım türleri bölgeye göre farklılık gösterir. Daha fazla b
 
 Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
 
-| Sistem Durumu   | Açıklama       |
+| Sistem Durumu   | Description       |
 |----------|----------------|
 | Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
 | Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |

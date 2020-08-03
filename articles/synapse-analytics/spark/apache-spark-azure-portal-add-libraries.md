@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b0231b28894ea7233e5f6e588300f03cb8784e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0d34d80df77b5c6fcdefc39b3bc3b1619a93705
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036463"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496262"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıklar ekleme ve yönetme
 
@@ -21,7 +21,7 @@ Apache Spark işlevselliği sağlamak için birçok kitaplıklara bağımlıdır
 
 Python paketleri Spark Havuzu (Önizleme) düzeyinde eklenebilir ve. jar tabanlı paketler Spark iş tanımı düzeyine eklenebilir.
 
-## <a name="adding-or-updating-python-libraries"></a>Python kitaplıklarını ekleme veya güncelleştirme
+## <a name="add-or-update-python-libraries"></a>Python kitaplıklarını ekleme veya güncelleştirme
 
 Azure SYNAPSE Analytics 'teki Apache Spark, tam bir anacondas yüklemesi ve ek kitaplıklar içerir. Tam kitaplıklar listesi, [Apache Spark sürüm desteği](apache-spark-version-support.md)' nde bulunabilir.
 
@@ -51,7 +51,7 @@ Sayfanın **paketler** bölümündeki dosya seçicisini kullanarak ortam yapıla
 
 ![Python kitaplıklarını ekleme](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Python kitaplıklarını ekleme")
 
-### <a name="verifying-installed-libraries"></a>Yüklü kitaplıklar doğrulanıyor
+### <a name="verify-installed-libraries"></a>Yüklü kitaplıkları doğrulama
 
 Doğru kitaplıkların doğru sürümlerinin yüklenip yüklenmediğini doğrulamak için aşağıdaki kodu çalıştırın
 

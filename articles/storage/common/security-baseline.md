@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371694"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501381"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -292,7 +292,7 @@ Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkin
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
 
-**Rehberlik**: Azure depolama hesapları veya Azure Active Directory, varsayılan veya boş parola kavramıdır. Azure depolama, Azure rol tabanlı erişim denetimi 'ni (RBAC) ve paylaşılan anahtar ve paylaşılan erişim Imzalarını (SAS) destekleyen bir erişim denetimi modeli uygular. Paylaşılan anahtar ve SAS kimlik doğrulamasının bir özelliği, çağıran ile hiçbir kimliğin ilişkilendirilmediği ve bu nedenle güvenlik sorumlusu izin tabanlı yetkilendirmenin gerçekleştirilemediği bir özelliğidir. 
+**Rehberlik**: Azure depolama hesapları veya Azure Active Directory, varsayılan veya boş parola kavramıdır. Azure depolama, Azure rol tabanlı erişim denetimi (Azure RBAC) ve paylaşılan anahtar ve paylaşılan erişim Imzaları (SAS) destekleyen bir erişim denetimi modeli uygular. Paylaşılan anahtar ve SAS kimlik doğrulamasının bir özelliği, çağıran ile hiçbir kimliğin ilişkilendirilmediği ve bu nedenle güvenlik sorumlusu izin tabanlı yetkilendirmenin gerçekleştirilemediği bir özelliğidir. 
 
 - [Azure depolama 'daki verilere erişimi yetkilendirme](https://docs.microsoft.com/azure/storage/common/storage-auth)
 

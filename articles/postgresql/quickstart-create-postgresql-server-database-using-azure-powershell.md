@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.custom: mvc
-ms.openlocfilehash: 844b9a725a74034b8970e344cc1907eeec42ccc4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 76c5bac600f05094f2e2a354cd5cf5895d9d45d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740424"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496619"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak tek sunuculu bir PostgreSQL için Azure veritabanı oluşturma
 
@@ -171,7 +171,7 @@ pgAdmin, PostgreSQL ile kullanılan açık kaynak bir araçtır. pgAdmin'i [pgAd
 
    !["Bağlantı" sekmesi](./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png)
 
-    pgAdmin parametresi |Değer|Description
+    pgAdmin parametresi |Değer|Açıklama
     ---|---|---
     Konak adı/adresi | Sunucu adı | PostgreSQL için Azure Veritabanı sunucusunu oluştururken kullandığınız sunucu adı değeri. Örnek sunucumuz: **mydemoserver.postgres.database.azure.com.** Örnekte gösterildiği gibi tam etki alanı adını (** \* . Postgres.Database.Azure.com**) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin.
     Bağlantı noktası | 5432 | PostgreSQL için Azure Veritabanı sunucusuna bağlanırken kullanılacak bağlantı noktası.
@@ -181,7 +181,7 @@ pgAdmin, PostgreSQL ile kullanılan açık kaynak bir araçtır. pgAdmin'i [pgAd
     Rol | Boş bırakın | Bu noktada bir rol adı sağlamanız gerekmez. Alanı boş bırakın.
     SSL modu | *Gerektirme* | PgAdmin 'in SSL sekmesinde TLS/SSL modunu ayarlayabilirsiniz. Varsayılan olarak, tüm PostgreSQL sunucuları için Azure veritabanı sunucuları, açık olan TLS ile oluşturulur. TLS zorlamayı devre dışı bırakmak için bkz. [TLS zorlamayı yapılandırma](./concepts-ssl-connection-security.md#configure-enforcement-of-tls).
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. Sol taraftaki **Tarayıcı** bölmesinde **Sunucular** düğümünü genişletin. Sunucunuzu (örneğin, **mydemoserver**) seçin. Bu sunucuya bağlanmak için tıklayın.
 

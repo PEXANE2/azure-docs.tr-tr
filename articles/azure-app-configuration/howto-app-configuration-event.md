@@ -9,18 +9,19 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: dc816f54a690a4c72c44d70ecbf2cc0156ac84ed
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672150"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498319"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure CLı ile Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme
 
 Bu makalede, bir Web uç noktasına anahtar-değer değiştirme olayları göndermek için Azure uygulama yapılandırma olay aboneliklerinin nasıl ayarlanacağını öğreneceksiniz. Azure uygulama yapılandırma kullanıcıları, anahtar değerleri değiştirildiğinde verilmiş olaylara abone olabilir. Bu olaylar Web kancalarını, Azure Işlevlerini, Azure depolama kuyruklarını veya Azure Event Grid tarafından desteklenen herhangi bir olay işleyicisini tetikleyebilirler. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/). İsteğe bağlı olarak Azure Cloud Shell kullanabilirsiniz.
 

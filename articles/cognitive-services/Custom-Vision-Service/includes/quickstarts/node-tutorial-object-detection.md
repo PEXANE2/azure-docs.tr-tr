@@ -3,18 +3,19 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: cc4cd4b099a37ef103e2da79b8c15269008e7423
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837920"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407327"
 ---
-Bu makalede bir nesne algılama modeli oluşturmak için Node. js ile Özel Görüntü İşleme SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi Node. js uygulamanızı oluşturmak için bir şablon olarak kullanın.
+Bu makalede bir nesne algılama modeli oluşturmak için Node.js ile Özel Görüntü İşleme SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Bu örneği, kendi Node.js uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- [Node. js 8](https://www.nodejs.org/en/download/) veya üzeri yüklü.
+- [Node.js 8](https://www.nodejs.org/en/download/) veya üzeri yüklü.
 - [NPM](https://www.npmjs.com/) yüklendi.
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
@@ -25,7 +26,7 @@ Bu makalede bir nesne algılama modeli oluşturmak için Node. js ile Özel Gör
 
 ## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
 
-Projenize Node. js için Özel Görüntü İşleme Hizmeti SDK 'Ları yüklemek için aşağıdaki komutları çalıştırın:
+Projenizdeki Node.js için Özel Görüntü İşleme Hizmeti SDK 'larını yüklemek için aşağıdaki komutları çalıştırın:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -34,7 +35,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>Kod ekleme
 
-Tercih ettiğiniz proje dizininde *Sample. js* adlı yeni bir dosya oluşturun.
+Tercih ettiğiniz proje dizininizde *sample.js* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
@@ -79,7 +80,7 @@ async function asyncForEach (array, callback) {
 
 ### <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
 
-Projenize sınıflandırma etiketleri oluşturmak için, *Sample. js*' nin sonuna aşağıdaki kodu ekleyin:
+Projenize sınıflandırma etiketleri oluşturmak için, *sample.js*sonuna aşağıdaki kodu ekleyin:
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
@@ -216,7 +217,7 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-*Sample. js*' i çalıştırın.
+*sample.js*çalıştırın.
 
 ```shell
 node sample.js

@@ -4,16 +4,16 @@ description: Bu öğreticide, Azure CLı kullanarak ilk PostgreSQL için Azure v
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: c79e64fddaf404b459dd2215e4a2e9236f1bc221
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1ab057c34a89bfa39a298805216af89b2327622
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75459997"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500785"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir PostgreSQL için Azure veritabanı tasarlama-tek sunucu 
 Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (komut satırı arabirimi) ve diğer yardımcı programları kullanırsınız:
@@ -132,7 +132,7 @@ Sonuç JSON biçimindedir. **administratorLogin** ve **fullyQualifiedDomainName*
    ```
 
    > [!TIP]
-   > Postgres 'e bağlanmak için bir URL yolu kullanmayı tercih ediyorsanız, URL, Kullanıcı adında @ işaretini ile `%40`kodlayın. Örneğin, psql için bağlantı dizesi,
+   > Postgres 'e bağlanmak için bir URL yolu kullanmayı tercih ediyorsanız, URL, Kullanıcı adında @ işaretini ile kodlayın `%40` . Örneğin, psql için bağlantı dizesi,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -202,7 +202,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
-| ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Zaman içinde geri yüklenecek bir nokta seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, `2017-04-13T05:59:00-08:00` şeklinde kendi yerel saat diliminizi ya da `2017-04-13T13:59:00Z` şeklindeki UTC Zulu biçimini kullanabilirsiniz. |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |
 

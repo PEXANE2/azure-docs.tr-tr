@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: banders
-ms.openlocfilehash: 2d8b529683f4d07bc47010711d65ca40536823fb
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996556"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039757"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure aboneliğinizi iptal etme
 
@@ -25,7 +25,7 @@ Microsoft, gerekli olmasa da aboneliğinizi iptal etmeden önce aşağıdaki iş
 * Hizmetlerinizi kapatın. [Yönetim portalında kaynaklar sayfasına](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources) gidin ve tüm çalışan sanal makineleri, uygulamaları ve diğer hizmetleri **Durdurun**.
 * Verilerinizi geçirmeyi düşünün. Bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 * Tüm kaynakları ve tüm kaynak gruplarını silin.
-* `AssignableScopes` içinde bu aboneliğe başvuran özel bir rolünüz varsa, aboneliği kaldırmak için bu özel rolleri güncelleştirmeniz gerekir. Bir aboneliği iptal ettikten sonra özel bir rolü güncelleştirmeye çalışırsanız bir hata alabilirsiniz. Daha fazla bilgi için bkz. [Özel rollerle ilgili sorunları giderme](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles) ve [Azure kaynakları için özel roller](../../role-based-access-control/custom-roles.md).
+* `AssignableScopes` içinde bu aboneliğe başvuran özel bir rolünüz varsa, aboneliği kaldırmak için bu özel rolleri güncelleştirmeniz gerekir. Bir aboneliği iptal ettikten sonra özel bir rolü güncelleştirmeye çalışırsanız bir hata alabilirsiniz. Daha fazla bilgi için bkz. [Özel rollerle ilgili sorunları giderme](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles) ve [Azure özel rolleri](../../role-based-access-control/custom-roles.md).
 
 Ücretli bir Azure Desteği planını iptal ederseniz abonelik döneminin kalan bölümü için faturalandırılırsınız. Daha fazla bilgi için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/).
 

@@ -2,14 +2,14 @@
 title: Azure 'da sunucusuz kapsayıcılar
 description: Azure Container Instances hizmeti, sanal makinelerin yönetilmesi gerekmeden ve daha üst düzey bir Orchestrator 'ı benimsemek zorunda kalmadan, yalıtılmış kapsayıcıları Azure 'da çalıştırmanın en hızlı ve en kolay yolunu sunar.
 ms.topic: overview
-ms.date: 04/25/2019
+ms.date: 07/28/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 572557860f5d715d6c708acb640acc24e1dd4a35
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424163"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498693"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances nedir?
 
@@ -20,6 +20,11 @@ Yalıtılmış kapsayıcılarda çalışabileceğiniz senaryolar (basit uygulama
 ## <a name="fast-startup-times"></a>Hızlı başlangıç süreleri
 
 Kapsayıcılar, sanal makinelerde (VM) önemli başlangıç süresi avantajları sunar. Azure Container Instances, sanal makineleri sağlamaya ve yönetmeye gerek kalmadan saniyeler içinde Azure’da kapsayıcıları başlatabilir.
+
+Linux veya Windows kapsayıcı görüntülerini Docker Hub 'dan, özel bir [Azure Container Registry](../container-registry/index.yml)'den veya başka bir bulut tabanlı Docker kayıt defterinden taşıyın. Azure Container Instances, özel uygulama görüntülerinin dağıtımını hızlandırmaya yardımcı olan birkaç ortak temel işletim sistemi görüntüsünü önbelleğe alır.
+
+> [!NOTE]
+> Şu anda, şirket içi bir kayıt defterinden Azure Container Instances için bir görüntü dağıtamazsınız.
 
 ## <a name="container-access"></a>Kapsayıcı erişimi
 

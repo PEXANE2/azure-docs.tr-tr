@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/25/2019
-ms.openlocfilehash: 7df870d76fa62d341821cfc2d7d30b4a7694ad82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49acce96012df0a45bc1833ae0397a3d989142ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119795"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500649"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
 
@@ -68,7 +69,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Description  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
 | name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
@@ -108,7 +109,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 `az postgres server georestore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Description  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Yeni sunucunun ait olacağı kaynak grubunun adı.|
 |name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |

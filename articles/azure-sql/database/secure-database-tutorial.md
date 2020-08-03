@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092941"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496925"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Öğretici: Azure SQL veritabanında bir veritabanını güvenli hale getirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğine genel b
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, [Azure SQL veritabanı 'nda veritabanınızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)hakkında bilgi edinmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -190,7 +190,7 @@ SQL kimlik doğrulaması ile bir kullanıcı eklemek için:
 Azure Active Directory kimlik doğrulaması, veritabanı kullanıcılarının kapsanan olarak oluşturulmasını gerektirir. Kapsanan bir veritabanı kullanıcısı, veritabanıyla ilişkili Azure AD dizinindeki bir kimlikle eşlenir ve *ana* veritabanında oturum açma bilgileri yoktur. Azure AD kimliği, tek bir kullanıcı veya grup için olabilir. Daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları, veritabanınızı taşınabilir hale getirme](/sql/relational-databases/security/contained-database-users-making-your-database-portable) ve Azure ad kullanarak kimlik doğrulaması yapma hakkında [Azure AD öğreticisini](authentication-aad-configure.md) İnceleme.
 
 > [!NOTE]
-> Veritabanı kullanıcıları (Yöneticiler hariç) Azure portal kullanılarak oluşturulamaz. Azure RBAC rolleri SQL Server, veritabanlarına veya veri ambarlarına yayılmaz. Bunlar yalnızca Azure kaynaklarını yönetmek için kullanılır ve veritabanı izinleri için uygulanmaz.
+> Veritabanı kullanıcıları (Yöneticiler hariç) Azure portal kullanılarak oluşturulamaz. Azure rolleri SQL Server, veritabanlarına veya veri ambarlarına yayılmaz. Bunlar yalnızca Azure kaynaklarını yönetmek için kullanılır ve veritabanı izinleri için uygulanmaz.
 >
 > Örneğin, *SQL Server katkıda bulunan* rolü bir veritabanına veya veri ambarına bağlanmak için erişim vermez. Bu izin, T-SQL deyimleri kullanılarak veritabanı içinde verilmelidir.
 

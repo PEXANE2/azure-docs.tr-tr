@@ -4,14 +4,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: bb7bc07bf7aa24af5ed45a5615457d71b3173868
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5ab742e7ce2d198a321e15118522e6866bd1d104
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87103102"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405882"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../get-started.md).
 

@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c24023bdd3540785dec58ebeaa14d99ab659ab1
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848370"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501023"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Uygulamaya kiracı genelinde yönetici onayı verme
 
@@ -25,15 +25,22 @@ Bir uygulamaya kiracı genelinde yönetici onayı vererek Kullanıcı deneyimini
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kiracı genelinde yönetici onayı verme, [genel yönetici](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)veya [bulut uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)olarak oturum açmanızı gerektirir.
 
 > [!IMPORTANT]
 > Bir uygulamaya kiracı genelinde yönetici onayı verildiğinde, Kullanıcı Ataması gerektirecek şekilde yapılandırılmadığı takdirde tüm kullanıcılar uygulamada oturum açabilirler. Hangi kullanıcıların bir uygulamada oturum açmasını kısıtlamak için Kullanıcı Ataması gerekli kılın ve ardından uygulamaya Kullanıcı veya grup atayabilirsiniz. Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](methods-for-assigning-users-and-groups.md).
+>
+> Microsoft Graph API 'SI için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
+>
+
 
 > [!WARNING]
 > Bir uygulamaya kiracı genelinde yönetici onayı verilmesi, uygulamanın ve uygulamanın yayımcısının kuruluşunuzun verilerine erişmesini sağlar. İzin vermeden önce uygulamanın istediği izinleri dikkatle gözden geçirin.
+>
+> Microsoft Graph API 'SI için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
+>
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Azure portal yönetici onayı verme
 

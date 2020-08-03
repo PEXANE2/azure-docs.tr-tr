@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1c5ce50a3736d6e96620e25cf084c5c66c456a5f
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85375121"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498353"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Bilişsel hizmetler için Azure Güvenlik temeli
 
@@ -28,7 +28,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: sanal ağlar içindeki Azure kaynaklarını koruma
 
-**Kılavuz**: Azure bilişsel hizmetler, katmanlı bir güvenlik modeli sağlar. Bu model, bilişsel hizmetler hesaplarınızı belirli bir ağ alt kümesiyle korumanıza olanak sağlar. Ağ kuralları yapılandırıldığında, yalnızca belirtilen ağ kümesi üzerinde veri isteyen uygulamalar hesaba erişebilir. Yalnızca belirtilen IP adreslerinden, IP aralıklarından veya Azure sanal ağlardaki alt ağlar listesinden kaynaklanan isteklere izin veren istek filtreleme ile kaynaklarınıza erişimi sınırlayabilirsiniz.
+**Kılavuz**: Azure bilişsel hizmetler, katmanlı bir güvenlik modeli sağlar. Bu model, Bilişsel Hizmetler hesaplarınızı belirli bir ağ alt kümesinde güvenlik altına almanızı sağlar. Ağ kuralları yapılandırıldığında yalnızca belirli bir ağ kümesi üzerinden veri isteğinde bulunan uygulamalar hesaba erişim sağlayabilir. Yalnızca belirtilen IP adreslerinden, IP aralıklarından veya Azure sanal ağlardaki alt ağlar listesinden kaynaklanan isteklere izin veren istek filtreleme ile kaynaklarınıza erişimi sınırlayabilirsiniz.
 
 Bilişsel hizmetler için sanal ağ ve hizmet uç noktası desteği belirli bir bölge kümesiyle sınırlıdır.
 
@@ -73,7 +73,7 @@ Ayrıca, bilişsel hizmetler kapsayıcılarının Microsoft sunucuları için ku
 **Rehberlik**: sanal makineler, Azure bilişsel hizmetler Kapsayıcınız ile aynı sanal ağda dağıtıldığında, Azure ilkesiyle ilgili ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Redsıs örnekleri için Azure önbelleğinizin ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için, "Microsoft. Biliveservices" ve "Microsoft. Network" ad alanlarında Azure Ilke diğer adlarını kullanın. Ayrıca, gibi yerleşik ilke tanımlarından da yararlanabilirsiniz:
 - DDoS koruma standardı etkinleştirilmelidir
 
-Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (RBAC) ve ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
+Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve ilkeler gibi temel ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
 
 Bir kapsayıcı içinde bilişsel hizmetler kullanıyorsanız, kapsayıcı dağıtımınızı kötü amaçlı trafiğe filtre uygulayan ve uçtan uca TLS şifrelemesini destekleyen ve kapsayıcı uç noktasının özel ve güvenli kalmasını sağlayan bir ön taraftaki Web uygulaması güvenlik duvarı çözümü ile dağıtabilirsiniz.
 

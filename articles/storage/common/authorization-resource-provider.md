@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d2e84cf06019c592a726564768f9b332ab5ed610
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5b171c5ff5bc848a0005fad5a2e0b6c0ca548724
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372306"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496082"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma
 
@@ -36,7 +36,7 @@ Her Azure aboneliğinin kullanıcıları, grupları ve uygulamaları yöneten il
 
 Bir güvenlik sorumlusuna RBAC rolü atadığınızda, rol tarafından verilen izinlerin etkin olduğu kapsamı da belirtirsiniz. Yönetim işlemleri için abonelik, kaynak grubu veya depolama hesabı düzeyinde bir rol atayabilirsiniz. [Azure Portal](https://portal.azure.com/), [Azure CLI araçları](../../cli-install-nodejs.md), [PowerShell](/powershell/azure/)veya [Azure depolama kaynak sağlayıcısı REST API](/rest/api/storagerp)kullanarak bir güvenlik sorumlusuna RBAC rolü atayabilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md) [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md) ve [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ### <a name="built-in-roles-for-management-operations"></a>Yönetim işlemleri için yerleşik roller
 

@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528423"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498608"
 ---
 # <a name="blob-versioning-preview"></a>Blob sürümü oluşturma (Önizleme)
 
@@ -176,7 +177,7 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Description | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
+| Açıklama | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blobu veri Katılımcısı |
 | Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blobu veri sahibi |
@@ -196,7 +197,7 @@ Aşağıdaki tabloda bir blob sürümünü silmek için SAS üzerinde gereken iz
 Blob sürümü oluşturma, önizleme aşamasında aşağıdaki bölgelerde kullanılabilir:
 
 - Doğu ABD 2
-- Orta ABD
+- Central US
 - Kuzey Avrupa
 - Batı Avrupa
 - Orta Fransa

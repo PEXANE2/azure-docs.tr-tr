@@ -7,15 +7,16 @@ ms.custom:
 - iot-send-telemetry-cli
 - iot-p0-scenario
 - 'Role: Cloud Development'
+- devx-track-azurecli
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 9ab2074816198499b749416298298c44605b9818
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2b8eecc629e9da75ea15815ee38844c48abb019
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317918"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499917"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve Azure CLı ile izleme
 
@@ -23,7 +24,7 @@ ms.locfileid: "87317918"
 
 IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, bir IoT Hub ve sanal cihaz oluşturmak, hub 'a cihaz telemetrisi göndermek ve buluttan cihaza ileti göndermek için Azure CLı 'yi kullanırsınız. Cihaz ölçümlerini görselleştirmek için Azure portal de kullanabilirsiniz. Bu, IoT Hub bir uygulamayla etkileşim kurmak için CLı kullanan geliştiriciler için temel bir iş akışıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - Azure CLI. Bu hızlı başlangıçta, tarayıcınızda çalışan etkileşimli bir CLı kabuğu olan Azure Cloud Shell kullanarak tüm komutları çalıştırabilirsiniz. Cloud Shell kullanıyorsanız, herhangi bir şey yüklemeniz gerekmez. CLı 'yi yerel olarak kullanmayı tercih ediyorsanız bu hızlı başlangıç, Azure CLı sürüm 2.0.76 veya üstünü gerektirir. Sürümü bulmak için az --version komutunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
 

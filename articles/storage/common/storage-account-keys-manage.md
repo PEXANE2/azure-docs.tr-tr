@@ -8,12 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 79712c50a5ad46d7d435868606011f458fe48e2e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8fda0384dacaf1183458e90688b1f6b63cc63a35
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370760"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501347"
 ---
 # <a name="manage-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yönetme
 
@@ -65,7 +66,7 @@ az storage account keys list \
 
 Azure depolama 'ya erişmek için iki anahtardan birini kullanabilirsiniz, ancak genel olarak ilk anahtarı kullanmak iyi bir uygulamadır ve anahtarları döndürürken ikinci anahtarın kullanımını ayırabilirsiniz.
 
-Hesabın erişim anahtarlarını görüntülemek veya okumak için, kullanıcının bir hizmet yöneticisi olması ya da **Microsoft. Storage/storageAccounts/ListKeys/Action**IÇEREN bir RBAC rolü atanması gerekir. Bu eylemi içeren bazı Azure yerleşik rolleri, **sahip**, **katkıda**bulunan ve **depolama hesabı anahtar operatörü hizmeti rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md). Azure depolama için yerleşik roller hakkında ayrıntılı bilgi için Azure [RBAC Için Azure yerleşik rollerinin](../../role-based-access-control/built-in-roles.md#storage) **depolama** bölümüne bakın.
+Hesabın erişim anahtarlarını görüntülemek veya okumak için, kullanıcının bir hizmet yöneticisi olması ya da **Microsoft. Storage/storageAccounts/ListKeys/Action**Içeren bir Azure rolü atanması gerekir. Bu eylemi içeren bazı Azure yerleşik rolleri, **sahip**, **katkıda**bulunan ve **depolama hesabı anahtar operatörü hizmeti rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md). Azure depolama için yerleşik roller hakkında ayrıntılı bilgi için Azure [RBAC Için Azure yerleşik rollerinin](../../role-based-access-control/built-in-roles.md#storage) **depolama** bölümüne bakın.
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Erişim anahtarlarınızı yönetmek için Azure Key Vault kullanın
 
@@ -132,7 +133,7 @@ Depolama hesabı erişim anahtarlarınızı Azure CLı ile döndürmek için:
 > [!NOTE]
 > Microsoft, tüm uygulamalarınızda aynı anda yalnızca bir tane anahtar kullanılmasını önerir. Anahtar 1 ' i bazı yerlerde ve anahtar 2 ' de kullanırsanız, bazı uygulama erişimi kaybetmeksizin anahtarlarınızı döndüremezsiniz.
 
-Bir hesabın erişim anahtarlarını döndürmek için, kullanıcının bir hizmet yöneticisi olması veya **Microsoft. Storage/storageAccounts/RegenerateKey/Action**IÇEREN bir RBAC rolü atanması gerekir. Bu eylemi içeren bazı Azure yerleşik rolleri, **sahip**, **katkıda**bulunan ve **depolama hesabı anahtar operatörü hizmeti rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md). Azure depolama için Azure yerleşik rolleri hakkında ayrıntılı bilgi için Azure [RBAC Için Azure yerleşik rollerinin](../../role-based-access-control/built-in-roles.md#storage) **depolama** bölümüne bakın.
+Bir hesabın erişim anahtarlarını döndürmek için, kullanıcının bir hizmet yöneticisi olması veya **Microsoft. Storage/storageAccounts/RegenerateKey/Action**Içeren bir Azure rolü atanması gerekir. Bu eylemi içeren bazı Azure yerleşik rolleri, **sahip**, **katkıda**bulunan ve **depolama hesabı anahtar operatörü hizmeti rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md). Azure depolama için Azure yerleşik rolleri hakkında ayrıntılı bilgi için Azure [RBAC Için Azure yerleşik rollerinin](../../role-based-access-control/built-in-roles.md#storage) **depolama** bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

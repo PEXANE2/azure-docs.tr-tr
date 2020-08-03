@@ -3,14 +3,15 @@ title: 'Kubernetes geliştirme alanı oluşturma: Visual Studio Code & .NET Core
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
+ms.custom: devx-track-azurecli
 description: Bu öğreticide, Azure Kubernetes hizmetinde bir .NET Core uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 9c73c191054c9eee183a762d0a029d6c8dc431ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4202ef63f77571e279114525fa6f14178821e9c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013649"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499492"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturun: Azure Dev Spaces ile Visual Studio Code ve .NET Core
 

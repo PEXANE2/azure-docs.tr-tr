@@ -13,12 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: bddb45be9232ff33629a4df0a5976e7b3c2e30b0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a830f6eb604bb1173a7a552ad5f81c936f02d5fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369926"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500530"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Azure 'da Linux sanal makinesini etiketleme
 Bu makalede, Azure 'daki bir Linux sanal makinesini Kaynak Yöneticisi dağıtım modeliyle etiketlemek için farklı yollar açıklanmaktadır. Etiketler, doğrudan bir kaynağa veya bir kaynak grubuna yerleştirilebilecek Kullanıcı tanımlı anahtar/değer çiftleridir. Azure Şu anda kaynak ve kaynak grubu başına en fazla 50 etiketi desteklemektedir. Etiketler, oluşturma sırasında veya var olan bir kaynağa eklenen bir kaynağa yerleştirilebilir. Lütfen, Etiketler yalnızca Kaynak Yöneticisi dağıtım modeli aracılığıyla oluşturulan kaynaklar için desteklenir.

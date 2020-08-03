@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066340"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495616"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı eylemlerini veya işlem dizilerini tekrarlayacak döngüler oluşturma
 
@@ -24,7 +24,7 @@ Bir koşul karşılanana veya bir durum değişikliği yapılıncaya kadar eylem
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
+* Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
@@ -32,11 +32,11 @@ Bir koşul karşılanana veya bir durum değişikliği yapılıncaya kadar eylem
 
 ## <a name="foreach-loop"></a>"Foreach" döngüsü
 
-"Foreach döngüsü", her dizi öğesinde bir veya daha fazla eylemi yineler ve yalnızca diziler üzerinde kullanılabilir. Bir "foreach" döngüsünde yinelemeler paralel olarak çalışır. Ancak, [sıralı bir "foreach" döngüsü](#sequential-foreach-loop)ayarlayarak yinelemeleri tek seferde çalıştırabilirsiniz. 
+"Foreach döngüsü", her dizi öğesinde bir veya daha fazla eylemi yineler ve yalnızca diziler üzerinde kullanılabilir. "Foreach" döngüleri kullandığınızda bazı konular aşağıda verilmiştir:
 
-"Foreach" döngüleri kullandığınızda bazı konular aşağıda verilmiştir:
+* Varsayılan olarak, bir "foreach" döngüsünde yinelemeler aynı anda veya paralel olarak çalışır. Bu davranış, yineleme her seferinde bir kez çalıştırılan veya ardışık olarak çalışan [ **her** döngüde Power otomatikleştirmenin](/power-automate/apply-to-each) bir farklılık gösterir. Ancak [sıralı "foreach" döngüsü yinelemelerini ayarlayabilirsiniz](#sequential-foreach-loop). Örneğin, [gecikme eylemini](../connectors/connectors-native-delay.md)kullanarak bir sonraki yinelemeyi bir "foreach" döngüsünde duraklatmak istiyorsanız, döngüyü sırayla çalışacak şekilde ayarlamanız gerekir.
 
-* İç içe Döngülerde yinelemeler her zaman paralel olarak değil, sırayla çalıştırılır. İç içe geçmiş bir döngüdeki öğeler için işlemleri paralel olarak çalıştırmak için [bir alt mantıksal uygulama](../logic-apps/logic-apps-http-endpoint.md)oluşturun ve çağırın.
+  Varsayılan davranışın özel durumu, tekrarlarının her zaman ardışık olarak değil, her zaman sırayla çalıştırıldığı iç içe döngülerdir. İç içe geçmiş bir döngüdeki öğeler için işlemleri paralel olarak çalıştırmak için [bir alt mantıksal uygulama](../logic-apps/logic-apps-http-endpoint.md)oluşturun ve çağırın.
 
 * Her döngü yinelemesi sırasında değişkenlerdeki işlemlerden öngörülebilir sonuçlar almak için, bu döngüleri sırayla çalıştırın. Örneğin, eşzamanlı olarak çalışan bir döngü sona erdiğinde, artırma, azaltma ve değişken işlemlerine ekleme işlemi öngörülebilir sonuçlar döndürür. Ancak, eşzamanlı çalışan döngüde her yineleme sırasında, bu işlemler öngörülemeyen sonuçlar döndürebilir. 
 
@@ -247,7 +247,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
 "Until" döngüsünün, bu koşullardan biri gerçekleşiyorsa yürütmeyi durduran varsayılan limitleri vardır:
 
-| Özellik | Varsayılan değer | Açıklama | 
+| Özellik | Varsayılan değer | Description | 
 | -------- | ------------- | ----------- | 
 | **Biriktirme** | 60 | Döngüden önce çalışan en yüksek döngü sayısı. Varsayılan değer 60 döngüdir. | 
 | **Aş** | PT1H | Döngünün çıkış yapmadan önce bir döngü çalıştırmak için en fazla süre. Varsayılan değer bir saattir ve ISO 8601 biçiminde belirtilir. <p>Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz. | 

@@ -5,13 +5,13 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219228"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497588"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
@@ -235,3 +235,7 @@ Azure Red Hat OpenShift 4 kümelerinde, veriler varsayılan olarak şifrelenmez,
 4. x kümelerinde, Azure disk (Premium_LRS) varsayılan depolama sınıfı olarak yapılandırılır. Ek depolama sağlayıcıları ve yapılandırma ayrıntıları için (Azure dosyası dahil), [kalıcı depolamada](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html)Red Hat belgelerine bakın.
 
 3,11 kümesi için, varsayılan olarak iki depolama sınıfı sağlanır: bir Azure disk (Premium_LRS) ve bir Azure dosyası için.
+
+## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>ARO, tüm müşteri verilerini kümenin bölgesi dışında depolar mi?
+
+Hayır. Bir ARO kümesinde oluşturulan tüm veriler kümenin bölgesi içinde tutulur.

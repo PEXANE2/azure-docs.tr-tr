@@ -4,12 +4,12 @@ description: Farklı Azure bölgelerindeki Azure Container Instances hizmeti iç
 ms.topic: article
 ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583881"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500615"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Container Instances kaynak kullanılabilirliği
 
@@ -54,9 +54,6 @@ Aşağıdaki bölgeler ve en fazla kaynaklar, bir [Azure sanal ağında](contain
 ## <a name="availability---gpu-resources-preview"></a>Kullanılabilirlik-GPU kaynakları (Önizleme)
 
 Aşağıdaki bölgeler ve en fazla kaynaklar, [GPU kaynaklarıyla](container-instances-gpu.md) dağıtılan bir kapsayıcı grubu için kullanılabilir (Önizleme).
-
-> [!IMPORTANT]
-> GPU kaynakları yalnızca istek üzerine kullanılabilir. GPU kaynaklarına erişim istemek için lütfen bir [Azure destek isteği][azure-support]gönderebilirsiniz.
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]

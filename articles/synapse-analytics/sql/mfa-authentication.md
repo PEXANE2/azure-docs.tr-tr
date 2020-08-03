@@ -9,14 +9,14 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: a1f6548a83736cfb0e519559fd22e16d4527ae0b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c578958616e4b4d2d7d3aef1de1650566e0bd40e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197669"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496415"
 ---
-# <a name="using-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor AAD kimlik doğrulamasını SYNAPSE SQL ile kullanma (MFA için SSMS desteği)
+# <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor AAD kimlik doğrulamasını SYNAPSE SQL ile kullanma (MFA için SSMS desteği)
 
 *Active Directory evrensel kimlik doğrulaması*kullanarak SQL Server Management Studio (SSMS) üzerinden SQL destek bağlantılarını SYNAPSE. 
 
@@ -84,13 +84,13 @@ UserGroup, varsayılan olarak yalnızca Connect iznine ve normal şekilde verilm
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>SYNAPSE SQL için evrensel kimlik doğrulama sınırlamaları
 
-- SSMS ve SqlPackage. exe, şu anda Active Directory evrensel kimlik doğrulaması aracılığıyla MFA için etkinleştirilen tek araçlardır.
+- SSMS ve SqlPackage.exe, şu anda Active Directory evrensel kimlik doğrulaması aracılığıyla MFA için etkinleştirilen tek araçlardır.
 - SSMS sürüm 17,2, MFA ile evrensel kimlik doğrulaması kullanarak çok kullanıcılı eşzamanlı erişimi destekler. Sürüm 17,0 ve 17,1, evrensel kimlik doğrulaması kullanan SSMS örnekleri için tek bir Azure Active Directory hesabıyla bir oturum açmayı kısıtlamalıdır. Başka bir Azure AD hesabı olarak oturum açmak için SSMS 'nin başka bir örneğini kullanmanız gerekir. (Bu kısıtlama Active Directory evrensel kimlik doğrulaması ile sınırlıdır; Active Directory parola kimlik doğrulaması, Active Directory tümleşik kimlik doğrulaması veya SQL Server kimlik doğrulaması kullanarak farklı sunucularda oturum açabilirsiniz).
 - SSMS, Nesne Gezgini, sorgu Düzenleyicisi ve sorgu deposu görselleştirmesi için Active Directory evrensel kimlik doğrulamasını destekler.
 - SSMS sürüm 17,2, veri veritabanını dışa/ayıklamayı/dağıtmayı sağlayan DacFx Sihirbazı desteği sağlar. Belirli bir kullanıcının kimliği, evrensel kimlik doğrulaması kullanılarak ilk kimlik doğrulama iletişim kutusu aracılığıyla doğrulandıktan sonra, DacFx Sihirbazı diğer tüm kimlik doğrulama yöntemleri için aynı şekilde çalışır.
 - SSMS Tablo Tasarımcısı evrensel kimlik doğrulamasını desteklemez.
 - Active Directory evrensel kimlik doğrulaması için ek yazılım gereksinimi yoktur, ancak desteklenen bir SSMS sürümü kullanmanız gerekir.  
-- Evrensel kimlik doğrulaması için Active Directory Authentication Library (ADAL) sürümü en son ADAL. dll 3.13.9 kullanılabilir yayımlanmış sürümü olarak güncelleştirildi. Bkz. [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
+- Evrensel kimlik doğrulaması için Active Directory Authentication Library (ADAL) sürümü en son ADAL.dll kullanılabilir yayımlanmış sürüme güncelleştirildi. Bkz. [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi için bkz. [SYNAPSE SQL Ile bağlanma SQL Server Management Studio](get-started-ssms.md) makalesi. 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2a534bd0cb89e837ff2315cb3fb9cfe70ad01f5f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab1cba455f93abe4d603f417f8d0a00dda0e315e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078995"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497656"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma
 
@@ -36,12 +36,12 @@ Depolama için Data Lake Storage 2. kullanan bir HDInsight kümesi oluşturmak i
 
 Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **Kullanıcı atandı** yazın ve **Kullanıcı tarafından atanan yönetilen kimlik**' e tıklayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. Yönetilen Kimliğiniz için bir ad girin, doğru aboneliği, kaynak grubunu ve konumu seçin.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](hdinsight-managed-identities.md).
 
@@ -51,17 +51,17 @@ Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha
 
 Azure Data Lake Storage 2. depolama hesabı oluşturun.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **depolama** yazın ve **depolama hesabı**' na tıklayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. **Depolama hesabı oluştur** ekranında:
     1. Doğru aboneliği ve kaynak grubunu seçin.
     1. Data Lake Storage 2. hesabınız için bir ad girin.
     1. **Gelişmiş** sekmesine tıklayın.
     1. **Data Lake Storage 2.** altındaki **hiyerarşik ad alanı** ' nın yanında **etkin** ' e tıklayın.
     1. **Gözden geçir ve oluştur**’a tıklayın.
-    1. **Oluştur** 'a tıklayın
+    1. **Oluştur** seçeneğine tıklayın
 
 Depolama hesabı oluşturma sırasında diğer seçenekler hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
@@ -159,7 +159,7 @@ Data Lake Storage 2. hem rol tabanlı erişim denetimi (RBAC) hem de POSIX benze
 
 RBAC, Azure kaynakları için kullanıcılara, gruplara ve hizmet sorumlularına izin kümelerini etkili bir şekilde uygulamak için rol atamaları kullanır. Genellikle, bu Azure kaynakları en üst düzey kaynaklarla (örneğin, Azure depolama hesapları) kısıtlanır. Azure depolama ve ayrıca Data Lake Storage 2., bu mekanizma dosya sistemi kaynağına genişletilmiştir.
 
- RBAC ile dosya izinleri hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
+ RBAC ile dosya izinleri hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
 
 ACL 'lerle ilgili dosya izinleri hakkında daha fazla bilgi için bkz. [dosya ve dizinlerdeki erişim denetim listeleri](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

@@ -3,12 +3,13 @@ title: Kaynak sağlayıcısı kayıt hataları
 description: Azure Resource Manager ile kaynak dağıtılırken Azure Kaynak sağlayıcısı kayıt hatalarının nasıl çözümlendiğini açıklar.
 ms.topic: troubleshooting
 ms.date: 02/15/2019
-ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 19b3fa661f25f72e80b4ecc5b8423d1931ce5e5c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706567"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499934"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Kaynak sağlayıcısı kaydı hatalarını giderme
 

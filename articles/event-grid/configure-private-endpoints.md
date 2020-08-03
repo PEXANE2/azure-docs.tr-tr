@@ -3,12 +3,13 @@ title: Azure Event Grid konuları veya etki alanları için özel uç noktaları
 description: Bu makalede, Azure Event Grid konular veya etki alanı için özel uç noktaların nasıl yapılandırılacağı açıklanır.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: ace3f7f59e4f26388652d7bda1a5ee28800a414b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7796c4160cbf40a241db901e31cc91edc361b00d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115344"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495293"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma
 [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanarak doğrudan sanal ağınızdan, genel İnternet üzerinden geçmeden [özel bir bağlantı](../private-link/private-link-overview.md) üzerinden konulara ve etki alanlarına olay girişi sağlayabilirsiniz. Özel uç nokta, konu veya etki alanınız için VNet adres alanından bir IP adresi kullanır. Daha fazla kavramsal bilgi için bkz. [ağ güvenliği](network-security.md).
@@ -77,7 +78,7 @@ Dört sağlama durumu vardır:
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını yönetme
 Aşağıdaki bölümlerde, özel bir uç nokta bağlantısını onaylama veya reddetme işlemlerinin nasıl yapılacağı gösterilmektedir. 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Arama çubuğuna **Event Grid konuları** ' nı veya **Event Grid etki alanlarını**yazın.
 1. Yönetmek istediğiniz **konuyu** veya **etki alanını** seçin.
 1. **Ağ** sekmesini seçin.

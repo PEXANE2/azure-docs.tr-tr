@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47f412dae6b467518fb1b51518716625c1395717
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035834"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495667"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -174,7 +174,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
    3. Yedekleme/geri yükleme sırasını ve zamanlamasını test edin ve gerekirse düzeltmeler yapın. Yedekleme sürelerinin yeterli olduğundan emin olun. Geri yükleme ve zaman geri yükleme etkinliklerini de test etmeniz gerekir. RTO SLA 'larınızın bir veritabanı veya VM geri yükleme işlemini temel aldığından emin olun.
    4. Bölgeler arası DR işlevlerini ve mimarisini test edin.
 1. Güvenlik denetimleri.
-   1. Azure rol tabanlı erişim denetimi (RBAC) mimarinizin geçerliliğini test edin. Amaç, farklı takımların erişimini ve izinlerini ayırmak ve sınırlamak. Örneğin, SAP tabanlı ekip üyeleri VM 'Leri dağıtıp Azure depolama 'dan belirli bir Azure sanal ağına disk atayabilmelidir. Ancak SAP tabanlı ekibin kendi sanal ağlarını oluşturamayacak veya mevcut sanal ağların ayarlarını değiştirememesi gerekir. Ağ ekibinin üyeleri, SAP uygulaması ve DBMS VM 'lerinin çalıştığı sanal ağlarda VM 'Leri dağıtabilmelidir. Ya da bu ekibin üyeleri sanal makinelerin özniteliklerini değiştirebilir veya hatta VM 'Leri ya da diskleri silebilir.  
+   1. Azure rol tabanlı erişim denetimi (Azure RBAC) mimarinizin geçerliliğini test edin. Amaç, farklı takımların erişimini ve izinlerini ayırmak ve sınırlamak. Örneğin, SAP tabanlı ekip üyeleri VM 'Leri dağıtıp Azure depolama 'dan belirli bir Azure sanal ağına disk atayabilmelidir. Ancak SAP tabanlı ekibin kendi sanal ağlarını oluşturamayacak veya mevcut sanal ağların ayarlarını değiştirememesi gerekir. Ağ ekibinin üyeleri, SAP uygulaması ve DBMS VM 'lerinin çalıştığı sanal ağlarda VM 'Leri dağıtabilmelidir. Ya da bu ekibin üyeleri sanal makinelerin özniteliklerini değiştirebilir veya hatta VM 'Leri ya da diskleri silebilir.  
    1.  [Ağ güvenlik grubu ve ASC](../../../virtual-network/security-overview.md) kurallarının beklenen şekilde çalıştığını ve korunan kaynakları koruduğuna emin olun.
    1.  Şifrelenmesi gereken tüm kaynakların şifrelendiğinden emin olun. Sertifikaları yedeklemek, bu sertifikaları depolamak ve erişmek ve şifrelenmiş varlıkları geri yüklemek için süreçler tanımlayın ve uygulayın.
    1.  Bir işletim sistemi destek noktasından mümkün olduğunda, işletim sistemi diskleri için [Azure disk şifrelemesi](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) kullanın.

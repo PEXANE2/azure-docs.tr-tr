@@ -8,12 +8,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: e93bae91827b2807ef577d7659924a5d37454fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6cb1c8ad41ccd5f16c4a68b0b8ef4ace768bde8b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987118"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495650"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI kullanarak sanal ağlar arası VPN ağ geçidi bağlantısı yapılandırma
 
@@ -22,7 +23,7 @@ Bu makale, sanal ağlar arası bağlantı türünü kullanarak sanal ağları ba
 Bu makaledeki adımlar Resource Manager dağıtım modeli için geçerlidir ve Azure CLI kullanılır. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-vnet-vnet-portal-classic.md)

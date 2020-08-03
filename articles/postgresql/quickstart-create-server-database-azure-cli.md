@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
-ms.custom: mvc
-ms.openlocfilehash: d103ed0ebd565df77032237638c775991324ea44
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cb88f085e18526a17621d3c4960a5aad6db727ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030190"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496602"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir PostgreSQL için Azure veritabanı oluşturma-tek sunucu
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, beş dakika içinde PostgreSQL için Azure veritaban�
 >[!Note]
 >CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, Azure CLı sürüm 2,0 veya üstünü yerel olarak çalıştırıyor olmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 [Az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğine** başvuran **ID** özelliğine göz önüne alın. 

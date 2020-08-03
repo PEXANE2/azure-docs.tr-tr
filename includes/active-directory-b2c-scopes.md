@@ -14,7 +14,7 @@ ms.locfileid: "84680329"
 ---
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
 
-1. **Uygulama kayıtları**'nı seçin.
+1. **Uygulama kayıtları**’nı seçin.
 1. **Genel bakış** sayfasını açmak için *webapi1* uygulamasını seçin.
 1. **Yönet**altında **bir API 'yi kullanıma**sunma ' yı seçin.
 1. **Uygulama kimliği URI 'sinin**yanındaki **Ayarla** bağlantısını seçin.

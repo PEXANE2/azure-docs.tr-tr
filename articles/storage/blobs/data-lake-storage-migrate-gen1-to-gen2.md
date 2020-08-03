@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466026"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496432"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Gen1 'den Gen2 'e geçiş Azure Data Lake Storage
 
@@ -81,7 +81,7 @@ Tercih ettiğiniz kalıbı kullanarak verileri, iş yüklerini ve uygulamaları 
    
 6. `adl://`Kod dosyalarında dize veya Databricks Not defterleri, Apache Hive HQL dosyaları ya da iş yüklerinizin bir parçası olarak kullanılan başka bir dosya IÇEREN URI başvurularını arayın. Bu başvuruları, yeni depolama hesabınızın [Gen2 BIÇIMLI URI](data-lake-storage-introduction-abfs-uri.md) 'siyle değiştirin. Örneğin: Gen1 URI: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` olabilir `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` . 
 
-7. [Rol tabanlı erişim denetimi (RBAC) rolleri](../common/storage-auth-aad-rbac-portal.md), [dosya ve klasör düzeyi güvenliği](data-lake-storage-access-control.md)ve [Azure Storage güvenlik duvarları ve sanal ağlar](../common/storage-network-security.md)dahil olmak üzere hesabınızdaki güvenliği yapılandırın.
+7. [Azure rolleri](../common/storage-auth-aad-rbac-portal.md), [dosya ve klasör düzeyinde güvenlik](data-lake-storage-access-control.md)ve [Azure Storage güvenlik duvarları ve sanal ağlar](../common/storage-network-security.md)dahil olmak üzere hesabınızdaki güvenliği yapılandırın.
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>4. Adım: Gen1 'den Gen2 'ye cutover
 
@@ -207,4 +207,3 @@ Bu en basit modeldir.
 - Bir depolama hesabı için güvenliği ayarlamanın çeşitli bölümleri hakkında bilgi edinin. Bkz. [Azure Storage Güvenlik Kılavuzu](../common/storage-security-guide.md).
 - Data Lake Store performansını iyileştirin. Bkz. [performans için Azure Data Lake Storage 2. iyileştirme](data-lake-storage-performance-tuning-guidance.md)
 - Data Lake Store yönetmek için en iyi uygulamaları gözden geçirin. Bkz. [Azure Data Lake Storage 2. kullanımı Için en iyi uygulamalar](data-lake-storage-best-practices.md)
-

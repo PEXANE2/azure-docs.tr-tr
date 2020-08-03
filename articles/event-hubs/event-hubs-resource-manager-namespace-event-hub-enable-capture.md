@@ -3,12 +3,13 @@ title: Yakalama etkinken bir olay hub 'ı oluşturma-Azure Event Hubs | Microsof
 description: Bir olay hub'ı ile bir Azure Event Hubs ad alanı oluşturma ve Azure Resource Manager şablonu kullanarak Yakalamayı etkinleştirme
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 7308d951cf48d8123df050bdf58772ec914aac3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7d8c8913cfe674c04f90fe02b88fc9739b2404aa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087603"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499475"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Olay hub’ı ile bir ad alanı oluşturma ve şablon kullanarak Yakalamayı etkinleştirm
 
@@ -419,7 +420,7 @@ Event Hubs Yakalama özelliğini [Azure portalı](https://portal.azure.com) üze
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Event Hubs genel bakış](./event-hubs-about.md)
-* [Olay Hub 'ı oluşturma](event-hubs-create.md)
+* [Olay hub’ı oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md

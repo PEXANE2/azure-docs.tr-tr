@@ -9,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: article
 ms.date: 04/11/2020
-ms.openlocfilehash: e6a39a7967c061a90e75d717402cf63da15b06b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 438595096e808646da990e1871cab07d1a795372
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087637"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499084"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Öğretici: Azure CLı aracılığıyla DMS kullanarak PostgreSQL için PostgreSQL için Azure DB 'ye geçiş yapma
 
@@ -38,7 +38,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!IMPORTANT]
 > En iyi geçiş deneyimi için, Microsoft, hedef veritabanıyla aynı Azure bölgesinde Azure veritabanı geçiş hizmeti örneği oluşturulmasını önerir. Verileri bölgeler veya coğrafyalar arasında taşımak, geçiş sürecini yavaşlatabilir ve hatalara neden olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 

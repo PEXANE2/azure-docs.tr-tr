@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 9f20f4cced74c5607fbfea2119e22cface0a8e03
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79536471"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499067"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI kullanarak MariaDB için Azure Veritabanı sunucusu oluşturma
 
@@ -47,15 +47,15 @@ az group create --name myresourcegroup --location westus
 
 Ayar | Örnek değer | Açıklama
 ---|---|---
-ad | **mydemoserver** | MariaDB için Azure Veritabanı sunucunuzu tanımlayan benzersiz bir ad girin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.
+name | **mydemoserver** | MariaDB için Azure Veritabanı sunucunuzu tanımlayan benzersiz bir ad girin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.
 resource-group | **myresourcegroup** | Azure kaynak grubunun adını girin.
-sku-name | **GP_Gen5_2** | SKU'nun adı. *Fiyatlandırma katmanı*\_*işlem oluşturma*\_*sanal çekirdeklerini* toplu olarak izleyin. **sku-name** parametresi hakkında daha fazla bilgi için bu tablonun altındaki bölüme bakın.
-backup-retention | **7@@** | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. Aralık: 7-35. 
+sku-name | **GP_Gen5_2** | SKU'nun adı. *Fiyatlandırma katmanı* \_ *işlem oluşturma* \_ *sanal çekirdeklerini* toplu olarak izleyin. **sku-name** parametresi hakkında daha fazla bilgi için bu tablonun altındaki bölüme bakın.
+backup-retention | **7** | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. Aralık: 7-35. 
 geo-redundant-backup | **Devre dışı** | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **Devre Dışı**.
 location | **westus** | Sunucu için Azure konumu.
 ssl-enforcement | **Etkin** | Bu sunucu için SSL'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **Devre Dışı**.
 storage-size | **51200** | Sunucunun depolama kapasitesi (birim olarak megabayt kullanılır). Geçerli depolama boyutları 5.120 MB (minimum) ile başlar ve 1.024 MB artar. Depolama boyutu sınırları hakkında daha fazla bilgi için bkz. [Fiyatlandırma katmanları](./concepts-pricing-tiers.md). 
-version | **10.2** | MariaDB büyük altyapı sürümü.
+sürüm | **10,2** | MariaDB büyük altyapı sürümü.
 admin-user | **myadmin** | Yöneticinin oturum açma kullanıcı adı. **admin-user** parametresi **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public** olamaz.
 admin-password | *Parolanız* | Yönetici kullanıcının parolası. Parolanız 8 ile 128 arasında karakter içermelidir. Şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.
 
@@ -216,7 +216,7 @@ mysql komut satırı aracını kullanarak sunucuya bağlanmak için:
    | Bağlantı Yöntemi | **Standart (TCP/IP)** | MariaDB için Azure Veritabanı'na bağlanmak için TCP/IP protokolünü kullanın |
    | Ana Bilgisayar Adı | **mydemoserver.mariadb.database.azure.com** | Daha önceden not aldığınız sunucu adı. |
    | Bağlantı noktası | **3306** | MariaDB için Azure Veritabanı'nın varsayılan bağlantı noktası. |
-   | Kullanıcı adı | **myadmin\@demosunucum** | Daha önceden not aldığınız sunucu yöneticisi oturum açma bilgileri. |
+   | Kullanıcı adı | **myadmin \@ demosunucum** | Daha önceden not aldığınız sunucu yöneticisi oturum açma bilgileri. |
    | Parola | *Parolanız* | Önceden belirlediğiniz yönetici parolasını kullanın. |
 
 3. Tüm parametrelerin doğru yapılandırılıp yapılandırılmadığını denetlemek için **Test Connection** (Bağlantıyı Sına) öğesini seçin.

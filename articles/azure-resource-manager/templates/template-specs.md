@@ -2,28 +2,34 @@
 title: Şablon özelliklerine genel bakış
 description: Şablon özelliklerinin nasıl oluşturulduğunu ve kuruluşunuzdaki diğer kullanıcılarla nasıl paylaşılacağını açıklar.
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/31/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47dcf44b35ad5c0b77dd0b88d683071a7f2f4ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099738"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497809"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager şablonu özellikleri (Önizleme)
 
-Şablon belirtimi, daha sonra dağıtım için Azure 'da bir Azure Resource Manager şablonu (ARM şablonu) depolamaya yönelik yeni bir kaynak türüdür. Bu kaynak türü, ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmanıza olanak sağlar. Diğer tüm Azure kaynakları gibi, şablon belirtimini paylaşmak için rol tabanlı erişim denetimi (RBAC) kullanabilirsiniz. kullanıcıların şablonunu dağıtmak için yalnızca şablon belirtimine okuma erişimi olması gerekir, böylece şablonu başkalarının değiştirmesine izin vermeden paylaşabilirsiniz.
+Şablon belirtimi, daha sonra dağıtım için Azure 'da bir Azure Resource Manager şablonu (ARM şablonu) depolamaya yönelik yeni bir kaynak türüdür. Bu kaynak türü, ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmanıza olanak sağlar. Tıpkı diğer Azure kaynakları gibi, şablon belirtimini paylaşmak için rol tabanlı erişim denetimi (RBAC) kullanabilirsiniz.
 
 **Microsoft. resources/Templatespec** , şablon özelliklerine yönelik yeni kaynak türüdür. Ana şablondan ve herhangi bir sayıda bağlantılı şablondan oluşur. Azure, şablon özelliklerini kaynak gruplarında güvenli bir şekilde depolar. Şablon özellikleri [sürümü oluşturmayı](#versioning)destekler.
 
 Şablon belirtimini dağıtmak için PowerShell, Azure CLı, Azure portal, REST ve diğer desteklenen SDK 'lar ve istemciler gibi standart Azure araçlarını kullanırsınız. Aynı komutları kullanır ve şablon için aynı parametreleri geçirin.
 
-Şablon özelliklerini kullanmanın avantajı, kuruluşunuzdaki ekiplerin ortak senaryolar için şablonları yeniden oluşturmak veya kopyalamak zorunda kalmaz. Kurallı şablonlar oluşturur ve bunları paylaşabilirsiniz. Bir Template spec 'e dahil ettiğiniz şablonlar, kuruluşunuzun gereksinimlerini ve kılavuzunu izlemek için kuruluşunuzdaki yöneticiler tarafından doğrulanmalıdır.
-
 > [!NOTE]
 > Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için, [bekleme listesine kaydolmanız](https://aka.ms/templateSpecOnboarding)gerekir.
+
+## <a name="why-use-template-specs"></a>Şablon özellikleri neden kullanılmalıdır?
+
+Şu anda bir GitHub deposu veya depolama hesabında şablonunuz varsa, şablonları paylaşmaya ve kullanmaya çalışırken çeşitli güçlükler çalıştırın. Bir kullanıcının dağıtması için, şablonun yerel olması ya da şablonun URL 'SI herkese açık olmalıdır. Bu kısıtlamayı aşmak için, şablonun kopyalarını dağıtması gereken kullanıcılarla paylaşabilir veya depo veya depolama hesabına erişim açmanız gerekebilir. Kullanıcılar bir şablonun yerel kopyalarına sahip olduğunda, bu kopyalar sonunda özgün şablondan ayrılmış olabilir. Bir depoyu veya depolama hesabını genel olarak erişilebilir yaptığınızda, istenmeyen kullanıcıların şablona erişmesine izin verebilirsiniz.
+
+Şablon özelliklerini kullanmanın avantajı, kurallı şablonlar oluşturabileceğiniz ve bunları kuruluşunuzdaki ekiplerle paylaşabilir. Şablon özellikleri güvenli hale getiriyoruz çünkü dağıtım için Azure Resource Manager, ancak RBAC izni olmayan kullanıcılar tarafından erişilemez durumda. Kullanıcıların şablonunu dağıtmak için yalnızca şablon belirtimine okuma erişimi olması gerekir, böylece şablonu başkalarının değiştirmesine izin vermeden paylaşabilirsiniz.
+
+Bir Template spec 'e dahil ettiğiniz şablonlar, kuruluşunuzun gereksinimlerini ve kılavuzunu izlemek için kuruluşunuzdaki yöneticiler tarafından doğrulanmalıdır.
 
 ## <a name="create-template-spec"></a>Şablon belirtimi oluşturma
 
@@ -188,7 +194,7 @@ Aşağıdaki örnek, önceki örneğe benzerdir, ancak `id` özelliğini kullana
 
 Şablon özelliklerinin bağlanması hakkında daha fazla bilgi için bkz. [öğretici: şablon belirtimini bağlantılı şablon olarak dağıtma](template-specs-deploy-linked-template.md).
 
-## <a name="versioning"></a>Sürüm Oluşturma
+## <a name="versioning"></a>Sürüm oluşturma
 
 Bir şablon belirtimi oluşturduğunuzda, bunun için bir sürüm numarası sağlarsınız. Şablon kodu üzerinde yineleme yaparken, var olan bir sürümü güncelleştirebilir (düzeltmeler için) veya yeni bir sürüm yayımlayabilirsiniz. Sürüm bir metin dizesidir. Anlamsal sürüm oluşturma da dahil olmak üzere tüm sürüm oluşturma sistemini izlemeyi tercih edebilirsiniz. Şablon belirtiminin kullanıcıları, dağıtma sırasında kullanmak istedikleri sürüm numarasını sağlayabilir.
 

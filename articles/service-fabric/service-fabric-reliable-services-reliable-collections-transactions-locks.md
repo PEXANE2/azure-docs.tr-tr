@@ -4,12 +4,12 @@ description: Azure Service Fabric güvenilir durum Yöneticisi ve güvenilir kol
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245118"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500291"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric güvenilir koleksiyonlardaki işlemler ve kilit modları
 
@@ -68,16 +68,16 @@ Güncelleştirme kilidi, birden çok işlem, olası güncelleştirmeler için ka
 
 Kilit uyumluluğu matrisi aşağıdaki tabloda bulunabilir:
 
-| İstek \ verildi | Yok | Paylaşılan | Güncelleştirme | Özel |
+| İstek \ verildi | Hiçbiri | Paylaşılan | Güncelleştir | Özel |
 | --- |:--- |:--- |:--- |:--- |
 | Paylaşılan |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
-| Güncelleştirme |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
+| Güncelleştir |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
 | Özel |Çakışma yok |Çakışma |Çakışma |Çakışma |
 
 Güvenilir koleksiyonlar API 'Lerinde zaman aşımı bağımsız değişkeni, kilitlenme algılama için kullanılır.
 Örneğin, iki işlem (T1 ve T2) K1 okumayı ve güncelleştirmeyi deniyor.
 Her ikisi de paylaşılan kilide bulunduğundan kilitlenmeleri mümkündür.
-Bu durumda, işlemlerden biri veya her ikisi zaman aşımına uğrar. Bu senaryo, bir güncelleştirme kilidi böyle bir kilitlenmeyi önleyebilir.
+Bu durumda, işlemlerden biri veya her ikisi zaman aşımına uğrar. Bu senaryoda, bir güncelleştirme kilidi böyle bir kilitlenmeyi önleyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

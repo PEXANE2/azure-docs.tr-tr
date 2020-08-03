@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-network
 author: jimdial
 ms.service: virtual-network
@@ -16,7 +16,7 @@ ms.lasthandoff: 07/02/2020
 ms.locfileid: "75646406"
 ---
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
+> * [Azure Portal](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
 > * [PowerShell](../articles/virtual-network/virtual-network-multiple-ip-addresses-powershell.md)
 > * [Azure CLI](../articles/virtual-network/virtual-network-multiple-ip-addresses-cli.md)
 >

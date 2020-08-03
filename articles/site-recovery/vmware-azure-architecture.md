@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 65778d0a6ba3bd5cdc719609ae4c2d18bf05aab9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424418"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498961"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 'den Azure 'a olağanüstü durum kurtarma mimarisi
 
@@ -30,9 +30,7 @@ Aşağıdaki tablo ve grafik, Azure 'da VMware olağanüstü durum kurtarma içi
 **VMware sunucuları** | VMware VM 'Leri, şirket içi vSphere ESXi sunucularında barındırılır. Konakları yönetmek için bir vCenter sunucusu önerilir. | Site Recovery dağıtımı sırasında, kurtarma hizmetleri kasasına VMware sunucuları eklersiniz.
 **Çoğaltılan makineler** | Mobility hizmeti, çoğaltılan her VMware VM 'ye yüklenir. | İşlem sunucusundan otomatik yüklemeye izin vermeniz önerilir. Alternatif olarak, hizmeti el ile yükleyebilir veya Configuration Manager gibi bir otomatik dağıtım yöntemi kullanabilirsiniz.
 
-**VMware-Azure arası mimari**
-
-![Bileşenler](./media/vmware-azure-architecture/arch-enhanced.png)
+![VMware 'den Azure 'a çoğaltma mimarisi ilişkilerini gösteren diyagram.](./media/vmware-azure-architecture/arch-enhanced.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>Giden ağ bağlantısını ayarlama
 
@@ -71,9 +69,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
     - İşlem sunucusu çoğaltma verilerini alır, bu verileri iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.
 5. Çoğaltma verileri günlüğü, ilk olarak Azure 'da bir önbellek depolama hesabında yer açar. Bu Günlükler işlenir ve veriler bir Azure yönetilen diskinde depolanır (ASR çekirdek diski olarak adlandırılır). Kurtarma noktaları bu diskte oluşturulur.
 
-**VMware 'den Azure 'a çoğaltma işlemi**
-
-![Çoğaltma işlemi](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+![VMware 'den Azure 'a çoğaltma işlemini gösteren diyagram.](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="resynchronization-process"></a>Yeniden eşitleme işlemi
 
@@ -108,9 +104,8 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
     - 3. Aşama: iş yükleri yeniden başlatıldıktan sonra, şirket içi VM 'Ler için çoğaltmayı yeniden etkinleştirin.
     
  
-**Azure 'dan VMware yeniden çalışma**
 
-![Yeniden çalışma](./media/vmware-azure-architecture/enhanced-failback.png)
+![Azure 'dan VMware yeniden çalışma gösteren diyagram.](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

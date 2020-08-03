@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78933761"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496449"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>StorSimple Veri Yöneticisi hizmetini Azure portal yönetme
 
@@ -42,13 +42,13 @@ StorSimple Veri Yöneticisi bir hizmet oluşturmak için aşağıdaki adımları
 
    2. Açılan listeden bir **abonelik** seçin. Abonelik fatura hesabınıza bağlıdır. Yalnızca bir aboneliğiniz varsa, bu alan otomatik olarak doldurulur (ve seçilemez).
 
-   3. Var olan bir kaynak grubunu seçin veya yeni bir grup oluşturun. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. Var olan bir kaynak grubunu seçin veya yeni bir grup oluşturun. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](/azure/azure-resource-manager/management/manage-resource-groups-portal).
 
    4. Hizmetinizin depolama hesaplarınızın ve StorSimple Veri Yöneticisi hizmetinizin barındırıldığı **konumu** belirtin. StorSimple Aygıt Yöneticisi hizmetiniz, Veri Yöneticisi hizmetiniz ve ilişkili depolama hesabı, tümünün desteklenen bölgelerde olması gerekir.
     
    5. Panonuzda bu hizmetin bağlantısını almak için **panoya sabitle**' yi seçin.
     
-   6. **Oluştur**'a tıklayın.
+   6. **Oluştur**’a tıklayın.
 
       ![StorSimple Veri Yöneticisi hizmeti oluşturma 3](./media/storsimple-data-manager-ui/create-service-4.png)
 

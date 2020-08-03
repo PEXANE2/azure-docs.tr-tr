@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbcc82d3ec4b50cf51210f8a4319bbf374185a88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367589"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498098"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL veritabanı ve Azure SYNAPSE 'de mantıksal SQL Server nedir?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ SQL veritabanı ve Azure 'da bir sunucu SYNAPSE:
 - Veritabanları, elastik havuzlar ve veri ambarları için üst kaynaktır
 - Veritabanları, elastik havuzlar ve veri ambarı veritabanı için bir ad alanı sağlar
 - Güçlü yaşam süresi semantiğinin bulunduğu mantıksal bir kapsayıcıdır; bir sunucuyu silin ve veritabanlarını, elastik havuzları ve SQK havuzlarını siler
-- [Azure rol tabanlı erişim denetimi (RBAC)](/azure/role-based-access-control/overview) ile bir sunucu içindeki veritabanları, elastik havuzlar ve veri ambarı veritabanına katılıyorsa sunucudan erişim haklarını devralır
+- [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview) -bir sunucu içindeki veritabanları, elastik havuzlar ve veri ambarı veritabanı, sunucudan erişim haklarını devralır
 - , Azure Kaynak Yönetimi amaçları için veritabanları, elastik havuzlar ve veri ambarı veritabanı kimliğinin yüksek sıralı bir öğesidir (bkz. veritabanları ve havuzlar için URL şeması)
 - Bir bölgedeki kaynakları birlikte bulundurur
 - Veritabanı erişimi için bağlantı uç noktası sağlar (`<serverName>`.database.windows.net)

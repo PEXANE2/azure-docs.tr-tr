@@ -7,12 +7,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: 38015d62077350e0e6f6ed8e7a43f748db58d213
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01e84ab1d67206d1d0eb54b0813756a29fea4685
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086996"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496738"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway bağlantısını doğrulama
 
@@ -28,7 +29,7 @@ PowerShell kullanarak Kaynak Yöneticisi dağıtım modeli için bir VPN ağ ge�
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı kullanarak Kaynak Yöneticisi dağıtım modeli için bir VPN ağ geçidi bağlantısını doğrulamak için, [CLI komutlarının](https://docs.microsoft.com/cli/azure/install-azure-cli) en son sürümünü (2,0 veya üzeri) yüklemelisiniz.
 

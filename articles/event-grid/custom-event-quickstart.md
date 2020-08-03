@@ -3,12 +3,13 @@ title: 'Hızlı başlangıç: Event Grid ve Azure CLı ile özel olaylar gönder
 description: Hızlı başlangıç, özel bir konu yayımlamak ve bu konu için olaylara abone olmak üzere Azure Event Grid ve Azure CLı kullanır. Olaylar bir Web uygulaması tarafından işlenir.
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: ecf7e753df4f6fb3de6095ba295a07fd57b458cf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 46341a9cd4f7880333cb2653691328f4969f1fb4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101741"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497384"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid özel olayları Web uç noktasına yönlendirme
 

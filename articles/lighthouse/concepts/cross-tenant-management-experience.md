@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 07/24/2020
+ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371048"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500887"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -33,9 +33,7 @@ Azure Athouse, farklı kiracılarda farklı hesaplarda oturum açmak zorunda kal
 
 Temsilcili kaynaklar üzerinde doğrudan portalda veya API 'Ler ile yönetim araçlarını kullanarak (Azure CLı ve Azure PowerShell) yönetim görevleri gerçekleştirebilirsiniz. Tüm mevcut API 'Ler, işlevsellik çapraz Kiracı Yönetimi için desteklendiği ve Kullanıcı uygun izinlere sahip olduğu sürece, temsilcili kaynaklarla çalışırken kullanılabilir.
 
-[Get-AzSubscription cmdlet 'i](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) `tenantID` her abonelik için öğesini gösterir. Bu, bir döndürülen aboneliğin hizmet sağlayıcı kiracınıza veya yönetilen bir müşteri kiracısına ait olup olmadığını tanımlamanızı sağlar. Azure PowerShell
-
-Benzer şekilde, [az Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) gıbı Azure CLI komutları **Hometenantid** ve **managedbykiracılar** özniteliklerini gösterir.
+[Az Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) gıbı Azure CLI komutları, her abonelik Için **Hometenantid** ve **managedbykiracılar** özniteliklerini gösterir ve bu da bir döndürülen aboneliğin hizmet sağlayıcı kiracınıza veya yönetilen bir müşteri kiracısına ait olduğunu tanımlamanızı sağlar.
 
 > [!TIP]
 > Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak Önbelleğinizi temizlemeyi deneyin `az account clear` `az login --identity` .
@@ -70,7 +68,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 [Azure maliyet yönetimi + faturalandırma](../../cost-management-billing/index.yml):
 
-- Yönetim kiracısından, CSP iş ortakları, Azure planı kapsamındaki müşteriler için vergi öncesi tüketim maliyetlerini (satın almalara dahil değil) görüntüleyebilir, yönetebilir ve analiz edebilir. Maliyet, perakende tariflerine ve iş ortağının müşterinin aboneliğine sahip olduğu Azure rol tabanlı erişim denetimi (RBAC) erişimine göre yapılır.
+- Yönetim kiracısından, CSP iş ortakları, Azure planı kapsamındaki müşteriler için vergi öncesi tüketim maliyetlerini (satın almalara dahil değil) görüntüleyebilir, yönetebilir ve analiz edebilir. Maliyet, perakende tariflerine ve iş ortağının müşterinin aboneliğine sahip olduğu Azure rol tabanlı erişim denetimi (Azure RBAC) erişimine göre yapılır.
 
 [Azure Kubernetes hizmeti (AKS)](../../aks/index.yml):
 

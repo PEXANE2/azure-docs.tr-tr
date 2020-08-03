@@ -9,12 +9,13 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 556e56991d59eb65f789fde4d705706a03a63be9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: devx-track-javascript
+ms.openlocfilehash: dc01600d052752d4558e22fe5c5ca48fb84a8121
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073228"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405509"
 ---
 <a name="HOLTop"></a>
 
@@ -71,7 +72,7 @@ Ardından, bir işlev tanımlayın `computerVision` ve birincil işlev ve geri �
 
 Aşağıdaki sınıflar ve arabirimler, Görüntü İşleme Node.js SDK 'nın bazı önemli özelliklerini işler.
 
-|Name|Açıklama|
+|Ad|Açıklama|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir **Visualfeaturetypes** değeri kümesi belirtirsiniz. |

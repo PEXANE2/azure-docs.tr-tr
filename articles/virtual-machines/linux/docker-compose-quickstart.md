@@ -6,12 +6,13 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 1e28ea47f0f99d3690fdfcf8b5d4370fcbb334e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e9f824a3b7e1e5e482bbc04c448ca4930bf88678
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289806"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500955"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Azure 'da çok kapsayıcılı bir uygulama tanımlamak ve çalıştırmak için Docker ve Compose kullanmaya başlama
 [Oluşturma](https://github.com/docker/compose)ile birden çok Docker kapsayıcılarından oluşan bir uygulamayı tanımlamak için basit bir metin dosyası kullanın. Sonra uygulamanızı, tanımlı ortamınızı dağıtmak üzere her şeyi yapan tek bir komutta çalıştırabilirsiniz. Örnek olarak, bu makalede bir Ubuntu VM üzerinde bir arka uç MariaDB SQL veritabanı ile bir WordPress blogunu hızlı bir şekilde nasıl ayarlayabileceğinizi gösterir. Ayrıca, daha karmaşık uygulamalar oluşturmak için Oluştur ' a da yararlanabilirsiniz.

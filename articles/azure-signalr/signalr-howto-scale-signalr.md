@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
-ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75659296"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500496"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure SignalR hizmet örneğini ölçeklendirme
 Bu makalede, Azure SignalR hizmeti örneğinizin nasıl ölçeklenmesi gösterilmektedir. Ölçeklendirme, ölçek artırma ve genişleme için iki senaryo vardır.

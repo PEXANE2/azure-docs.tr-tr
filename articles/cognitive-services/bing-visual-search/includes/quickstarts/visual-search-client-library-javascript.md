@@ -8,16 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
-ms.openlocfilehash: 404529bf269f899603b92c6c23b0d95cd2749ee5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3a6c89c3932adb4f9465172ca64b9356db1f624a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80550026"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407021"
 ---
 JavaScript istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)' da bulunabilir. 
 
-[Başvuru belge](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Ön koşullar
 * [Node.js](https://www.nodejs.org/)
@@ -55,7 +56,7 @@ JavaScript istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden gö
 
 ## <a name="search-for-images"></a>Görüntü ara
 
-1. Resim `fs.createReadStream()` dosyanızı okumak için kullanın ve arama isteğiniz ve sonuçlarınız için değişkenler oluşturun. Ardından, görüntüleri aramak için istemcisini kullanın.
+1. `fs.createReadStream()`Resim dosyanızı okumak için kullanın ve arama isteğiniz ve sonuçlarınız için değişkenler oluşturun. Ardından, görüntüleri aramak için istemcisini kullanın.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);

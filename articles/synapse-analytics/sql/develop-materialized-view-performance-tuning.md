@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955072"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495701"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
 
@@ -36,11 +36,11 @@ Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünü
 |Tanımı görüntüleme                 | Azure veri ambarı 'nda depolanır.              | Azure veri ambarı 'nda depolanır.
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında Azure veri ambarı 'nda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
-|Karmaşık sorgulardan Görünüm verilerini alma hızı     | Dığını                                         | Hızlı  
-|Ek depolama                   | Hayır                                           | Evet
+|Karmaşık sorgulardan Görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
+|Ek depolama                   | Hayır                                           | Yes
 |Syntax                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
-## <a name="benefits-of-using-materialized-views"></a>Gerçekleştirilmiş görünümleri kullanmanın avantajları
+## <a name="benefits-of-materialized-views"></a>Gerçekleştirilmiş görünümlerin avantajları
 
 Düzgün şekilde tasarlanan gerçekleştirilmiş bir görünüm aşağıdaki avantajları sağlar:
 
@@ -58,7 +58,7 @@ Diğer veri ambarı sağlayıcılarına kıyasla, SQL havuzunda uygulanan gerçe
 - Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 - Sorguya özgü gerçekleştirilmiş görünüm önerisi için destek.  Bkz. [açıkla (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Yaygın senaryolar  
+## <a name="common-scenarios"></a>Genel senaryolar  
 
 Gerçekleştirilmiş görünümler genellikle aşağıdaki senaryolarda kullanılır:
 
