@@ -12,7 +12,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
 ms.locfileid: "87407855"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
