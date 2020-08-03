@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281285"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503829"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 çalıştıran sunucuları Azure'a geçirme
 
@@ -104,7 +104,7 @@ Azure aboneliğini ve şirket içi VMware/Fiziksel ortamı hazırlamak için aş
 5. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
 6. Panodan kasaya hızlıca erişmek için önce **Panoya sabitle** seçeneğine ve sonra **Oluştur**’a tıklayın.
 
-   ![Yeni kasa](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
+   ![Yeni kasa oluşturma seçeneklerini gösteren ekran görüntüsü.](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
 Yeni kasa, **Pano**’da **Tüm kaynaklar** bölümüne ve ana **Kurtarma Hizmetleri kasaları** sayfasına eklenir.
 
@@ -136,15 +136,15 @@ Hedef kaynaklarını seçin ve doğrulayın.
 > [!WARNING]
 > Çoğaltma ilkesinin Uygulamayla tutarlı anlık görüntü sıklığı ayarını **KAPALI** olarak belirlediğinizden emin olun. Windows Server 2008 çalıştıran sunucularının çoğaltılması sırasında yalnızca kilitlenmeyle tutarlı kurtarma noktaları desteklenir. Uygulamayla tutarlı anlık görüntü sıklığı için başka bir değer belirtmek, uygulamayla tutarlı kurtarma noktalarının olmaması nedeniyle sunucunun çoğaltma durumunu kritik olarak açıp hatalı uyarılarla sonuçlanır.
 
-   ![Çoğaltma ilkesi oluşturma](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![Çoğaltma ilkesi oluşturma seçeneklerini gösteren ekran görüntüsü.](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ### <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 
 Geçirilen Windows Server 2008 SP2/Windows Server 2008 R2 SP1 sunucusu için [çoğaltmayı etkinleştirin](physical-azure-disaster-recovery.md#enable-replication).
    
-   ![Fiziksel sunucu ekleme](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
+   ![Fiziksel makine ekleme seçeneklerini gösteren ekran görüntüsü.](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
 
-   ![Çoğaltmayı etkinleştirme](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
+   ![Çoğaltmayı etkinleştirme seçeneklerini gösteren ekran görüntüsü.](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
 ### <a name="run-a-test-migration"></a>Geçiş testi çalıştırma
 
@@ -152,7 +152,7 @@ Geçirilen Windows Server 2008 SP2/Windows Server 2008 R2 SP1 sunucusu için [ç
 
 Her şeyin beklendiği gibi çalıştığından emin olmak için bir Azure’a [yük devretme testi](tutorial-dr-drill-azure.md) çalıştırın.
 
-   ![Yük devretme testi](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Sınama yük devretmesi komutunu gösteren ekran görüntüsü.](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ### <a name="migrate-to-azure"></a>Azure’a geçiş
@@ -168,7 +168,7 @@ Geçirmek istediğiniz makineler için yük devretmeyi çalıştırın.
     - Geçiş işlemini sonlandırır, sunucu için çoğaltmayı durduruyor ve hizmeti için Site Recovery faturalandırmayı durduruyor.
     - Bu adım, çoğaltma verilerini temizler. Geçirilen VM 'Leri silmez.
 
-   ![Geçişi tamamlama](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Tüm geçiş komutunu gösteren ekran görüntüsü.](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]

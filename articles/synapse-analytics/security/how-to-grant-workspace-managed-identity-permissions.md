@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b11f11ac8a0d4f3a0623c2903dfc9355e875d14
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089456"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501942"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Çalışma alanı yönetilen kimliğine izin ver (Önizleme)
 
@@ -22,7 +22,7 @@ Bu makalede, Azure SYNAPSE çalışma alanındaki yönetilen kimliğe nasıl izi
 >[!NOTE]
 >Bu çalışma alanı yönetilen kimliği, bu belgenin geri kalanı aracılığıyla yönetilen kimlik olarak anılacaktır.
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>SQL havuzuna yönetilen kimlik izinleri verme
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>SQL havuzuna yönetilen kimlik izinleri verme
 
 Yönetilen kimlik, çalışma alanındaki SQL havuzlarına izinler verir. İzinler verildiğinde, SQL havuzuyla ilgili etkinlikleri gerçekleştiren işlem hatlarını düzenleyebilirsiniz. Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturduğunuzda, SQL havuzlarında yönetilen kimlik denetımı izinleri verebilirsiniz.
 

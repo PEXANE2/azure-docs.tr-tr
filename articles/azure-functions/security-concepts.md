@@ -3,12 +3,12 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079698"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502690"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
@@ -26,7 +26,7 @@ Bu bölüm, işlev uygulamanızı mümkün olduğunca güvenli şekilde yapılan
 
 Güvenlik Merkezi, portaldaki işlev uygulamanızla tümleştirilir. Yapılandırma ile ilgili olası güvenlik açıklarına yönelik hızlı bir değerlendirme sağlar. Adanmış bir planda çalışan işlev uygulamaları, ek bir maliyet için Güvenlik Merkezi 'nin gerçek zamanlı güvenlik özelliklerini de kullanabilir. Daha fazla bilgi edinmek için bkz. [Azure App Service Web uygulamalarınızı ve API 'Lerinizi koruma](../security-center/security-center-app-services.md). 
 
-### <a name="log-and-monitor"></a>Günlüğe kaydet ve izle
+### <a name="log-and-monitor"></a>Günlüğe kaydetme ve izleme
 
 Saldırıları tespit etmek için bir tane, etkinlik izleme etkinliği ve günlüğe kaydetme analizinden biridir. İşlevler, işlev uygulamanız için günlüğü, performansı ve hata verilerini toplamak üzere Application Insights ile tümleşir. Application Insights, performans bozuklularını otomatik olarak algılar ve sorunları tanılamanıza ve işlevlerinizin nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
@@ -83,7 +83,7 @@ Herhangi bir uygulama veya hizmette olduğu gibi, amaç, işlev uygulamanızı e
 
 #### <a name="user-management-permissions"></a>Kullanıcı yönetimi izinleri
 
-İşlevler, yerleşik [Azure rol tabanlı erişim denetimini (RBAC)](../role-based-access-control/overview.md)destekler. Işlevler tarafından desteklenen RBAC rolleri [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor), [sahip](../role-based-access-control/built-in-roles.md#owner)ve [okuyucu](../role-based-access-control/built-in-roles.md#owner). 
+İşlevler, yerleşik [Azure rol tabanlı erişim denetimini (Azure RBAC)](../role-based-access-control/overview.md)destekler. Işlevler tarafından desteklenen Azure rolleri [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor), [sahip](../role-based-access-control/built-in-roles.md#owner)ve [okuyucudur](../role-based-access-control/built-in-roles.md#owner). 
 
 İzinler, işlev uygulama düzeyinde etkilidir. Birçok işlev uygulama düzeyi görevi gerçekleştirmek için katkıda bulunan rolü gereklidir. Bir işlev uygulamasını yalnızca sahip rolü silebilir. 
 
@@ -207,4 +207,3 @@ Erişim kısıtlamaları, uygulamanıza gelen trafiği denetlemek için izin ver
 
 + [Azure Işlevleri için Azure Güvenlik temeli](security-baseline.md)
 + [Azure Işlevleri tanılaması](functions-diagnostics.md)
-        

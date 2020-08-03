@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 0ef3135f572b00176ff2a114fd02db82c7a05bca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258403"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494494"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box için izleme ve olay günlüğü oluşturma ve Azure Data Box Heavy siparişleri dışarı aktarma
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, Data Box dışa aktarma sırası adımlarının bir özeti
 | Data Box dışarı aktarma siparişi aşaması       | İzlenecek ve denetlenecek araç                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Sipariş oluşturma               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order) <br> [Ayrıntılı günlüğü sırayla etkinleştirin](#enable-verbose-log-in-the-order)                                                    |
-| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
+| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portalı </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)              |
 | Cihazdan veri kopyalama        | [Kopyalama günlüklerini gözden geçirme](#copy-log) <br> Verileri kopyalayabilmeniz için önce [ayrıntılı günlükleri gözden geçirin](#verbose-log)            |
 | Cihazdan veri ernure   | Denetim günlükleri ve sıra geçmişi dahil [, gözetim günlüklerinin zincirini görüntüleme](#get-chain-of-custody-logs-after-data-erasure)                |
@@ -34,7 +34,7 @@ Aşağıdaki tabloda, Data Box dışa aktarma sırası adımlarının bir özeti
 
 ## <a name="set-up-access-control-on-the-order"></a>Sıraya göre erişim denetimi ayarlama
 
-Sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini kontrol edebilirsiniz. Data Box sırasına erişimi denetlemek için çeşitli kapsamlardaki rol tabanlı Access Control (RBAC) rolleri ayarlayın. RBAC rolü, erişim türünü, okuma-yazma, salt okunurdur, okuma-yazma işlemlerini bir işlem alt kümesine belirler.
+Sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini kontrol edebilirsiniz. Data Box sırasına erişimi denetlemek için çeşitli kapsamlardaki Azure rollerini ayarlayın. Bir Azure rolü, erişim türünü, okuma-yazma, salt okunurdur, okuma-yazma işlemlerini bir işlem alt kümesine belirler.
 
 Azure Data Box hizmeti için tanımlanabilir iki rol şunlardır:
 
@@ -306,7 +306,3 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Data Box ve Data Box Heavy ilgili sorunları nasıl giderebileceğinizi](data-box-troubleshoot.md)öğrenin.
-
-
-
-

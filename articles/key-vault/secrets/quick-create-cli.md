@@ -8,15 +8,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7b41c401a411abf47579f74fdd612ca431130ecd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8559e0adf1adf549d5bf3933dbb243c02a6d3ad9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81425045"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494613"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
@@ -74,7 +74,7 @@ Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu pa
 az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-Artık Azure Key Vault'a eklediğiniz bu parolaya URI'sini kullanarak başvurabilirsiniz. Geçerli **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword** sürümü almak için kullanın. 
+Artık Azure Key Vault'a eklediğiniz bu parolaya URI'sini kullanarak başvurabilirsiniz. **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword**Geçerli sürümü almak için kullanın. 
 
 Gizli dizi içindeki değeri düz metin olarak görüntülemek için:
 

@@ -10,15 +10,15 @@ keywords: azure media services, akış
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a90e1fdc50a6e2b1544a06f587362bf43b80369
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80382792"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504458"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlama ve videoyu akışa oluşturma-Azure CLı
 
@@ -44,11 +44,11 @@ Media Services hesabınız ve tüm ilişkili depolama hesaplarınız aynı Azure
 az group create -n amsResourceGroup -l westus2
 ```
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
+### <a name="create-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
 
 Bu örnekte, genel amaçlı v2 standart LRS hesabı oluşturacağız.
 
-Depolama hesaplarıyla denemek istiyorsanız kullanın `--sku Standard_LRS`. Üretim için bir SKU seçerken, iş sürekliliği için coğrafi çoğaltma `--sku Standard_RAGRS`sağlayan kullanmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [depolama hesapları](/cli/azure/storage/account).
+Depolama hesaplarıyla denemek istiyorsanız kullanın `--sku Standard_LRS` . Üretim için bir SKU seçerken `--sku Standard_RAGRS` , iş sürekliliği için coğrafi çoğaltma sağlayan kullanmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [depolama hesapları](/cli/azure/storage/account).
 
 ```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
@@ -187,12 +187,12 @@ Aşağıdakine benzer bir yanıt alırsınız:
 
 İşleri işlem videolarına gönderdiğinizde, Media Services Giriş videosunu nerede bulacağınızı söylemeniz gerekir. Bir seçenek, bu örnekte gösterildiği gibi, iş girişi olarak bir HTTPS URL 'SI belirtmektir.
 
-Çalıştırdığınızda `az ams job start`, iş çıktısında bir etiket ayarlayabilirsiniz. Daha sonra, çıktı varlığının ne için olduğunu tanımlamak için etiketini kullanabilirsiniz.
+Çalıştırdığınızda `az ams job start` , iş çıktısında bir etiket ayarlayabilirsiniz. Daha sonra, çıktı varlığının ne için olduğunu tanımlamak için etiketini kullanabilirsiniz.
 
 - Etikete bir değer atarsanız, '--output-varlıklar ' öğesini "assetname = Label" olarak ayarlayın.
 - Etikete bir değer atamadıysanız, '--output-varlıklar ' öğesini "assetname =" olarak ayarlayın.
 
-  ' A "=" eklediğimiz konusunda dikkat `output-assets`edin.
+  ' A "=" eklediğimiz konusunda dikkat edin `output-assets` .
 
 ```azurecli-interactive
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
@@ -308,7 +308,7 @@ Aşağıdakine benzer bir yanıt alırsınız:
 }
 ```
 
-HTTP canlı akış (HLS) yolunu kopyalayın. Bu durumda, `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
+HTTP canlı akış (HLS) yolunu kopyalayın. Bu durumda, `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)` .
 
 ## <a name="build-the-url"></a>URL 'YI oluşturma
 
@@ -318,13 +318,13 @@ HTTP canlı akış (HLS) yolunu kopyalayın. Bu durumda, `/e01b2be1-5ea4-42ca-ae
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
 
-`hostName` Değeri kopyalayın. Bu durumda, `amsaccount-usw22.streaming.media.azure.net`.
+Değeri kopyalayın `hostName` . Bu durumda, `amsaccount-usw22.streaming.media.azure.net` .
 
 ### <a name="assemble-the-url"></a>URL 'YI birleştirme
 
-"https://" + &lt;hostname değer&gt; + &lt;HLS yol değeri&gt;
+"https://" + &lt; hostname değer &gt;  +  &lt; HLS yol değeri&gt;
 
-Bir örneği aşağıda verilmiştir:
+Aşağıda bir örnek verilmiştir:
 
 `https://amsaccount-usw22.streaming.media.azure.net/7f19e783-927b-4e0a-a1c0-8a140c49856c/ignite.ism/manifest(format=m3u8-aapl)`
 
@@ -333,7 +333,7 @@ Bir örneği aşağıda verilmiştir:
 > [!NOTE]
 > Bir oynatıcı HTTPS sitesinde barındırılıyorsa, URL 'YI "https" ile başlattığınızdan emin olun.
 
-1. Bir Web tarayıcısı açın ve adresine gidin [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Bir Web tarayıcısı açın ve adresine gidin [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. **URL** kutusunda, önceki bölümde oluşturduğunuz URL 'yi yapıştırın. URL 'yi HLS, Dash veya düz biçimde yapıştırabilirsiniz. Azure Media Player, cihazınızda kayıttan yürütmek için otomatik olarak uygun bir akış protokolü kullanacaktır.
 3. **Oynatıcıyı Güncelleştir**' i seçin.
 

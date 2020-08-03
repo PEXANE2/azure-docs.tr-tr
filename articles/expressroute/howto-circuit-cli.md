@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 56af984ef83d2e237f0aa05af5cfef4dd6205256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2d8ad6b90f533161835ab12a43865b177c24c14e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738337"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503591"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI kullanarak ExpressRoute bağlantı hattını oluşturma ve değiştirme
 
@@ -20,7 +21,7 @@ ms.locfileid: "84738337"
 Bu makalede komut satırı arabirimi (CLı) kullanılarak Azure ExpressRoute bağlantı hattı oluşturma açıklanır. Bu makalede ayrıca, durumu denetleme, güncelleştirme veya silme ve devre sağlamayı kaldırma işlemlerinin nasıl yapılacağı gösterilir. ExpressRoute devreleri ile çalışmak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden makaleyi seçebilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)

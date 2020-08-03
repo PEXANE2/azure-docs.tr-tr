@@ -7,7 +7,7 @@ author: mgoedtel
 manager: evansma
 editor: ''
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
-ms.openlocfilehash: edf1fce488bf3bb8aa107a295cf3488243775192
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9b609fd81c9f1013d2308dccd8ed22fb82aac149
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010929"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503353"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration uzantısı işleyicisine giriş
 
@@ -36,7 +37,7 @@ Sanal makinede yerel olarak bulunmayan sürekli raporlama yok.
 
 Bu makalede her iki senaryo hakkında bilgi verilmektedir: Otomasyon ekleme için DSC uzantısını kullanma ve DSC uzantısını Azure SDK kullanarak VM 'lere yapılandırma atamak için bir araç olarak kullanma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Yerel makine**: Azure VM uzantısıyla etkileşim kurmak için Azure Portal ya da Azure PowerShell SDK 'sını kullanmanız gerekir.
 - **Konuk Aracısı**: DSC yapılandırması tarafından YAPıLANDıRıLAN Azure VM, Windows Management Framework (WMF) 4,0 veya üstünü destekleyen bir işletim sistemi olmalıdır. Desteklenen işletim sistemi sürümlerinin tam listesi için [DSC Uzantısı Sürüm geçmişine](../../automation/automation-dsc-extension-history.md)bakın.

@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: ceaca3b7d91bf27262f1326000796cd605b0c3c4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84738303"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494596"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -32,11 +32,11 @@ Hizmet Ayrıca, bilinen derin öğrenme ve pekiştirmeye dayalı açık kaynakl�
 > **Ücretsiz deneme!**  Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin. Azure hizmetlerinde harcayabileceğiniz krediler alırsınız. Krediler bittikten sonra hesabı tutabilir ve [ücretsiz Azure hizmetlerini](https://azure.microsoft.com/free/) kullanabilirsiniz. Açıkça ayarlarınızı değiştirip ücretlendirme istemediğiniz sürece kredi kartınız asla ücretlendirilmez.
 
 
-## <a name="what-is-machine-learning"></a>Machine learning nedir?
+## <a name="what-is-machine-learning"></a>Makine öğrenmesi nedir?
 
 Makine öğrenimi; bilgisayarların var olan verileri kullanarak gelecekteki davranışları, sonuçları ve eğilimleri öngörmelerini sağlayan bir veri bilimi tekniğidir. Makine öğrenimini kullanarak bilgisayarlar açıkça programlamadan öğreniyor.
 
-Makine öğreniminin öngörüleri veya tahminleri, uygulama ve cihazları daha akıllı hale getirir. Örneğin, çevrimiçi alışveriş yaparken makine öğrenimi, satın aldığınız ürüne göre istediğiniz diğer ürünleri önermenize yardımcı olur. Veya kredi kartınız makineden geçirildiğinde, makine öğrenimi işlemi bir işlem veritabanıyla karşılaştırır ve sahtekarlıkların saptanmasına yardımcı olur. Elektrikli süpürge robotunuz bir odayı temizlediğinde ise, makine öğrenimi robotunuzun işin tamamlanıp tamamlanmadığına karar vermesine yardımcı olur.
+Makine öğreniminin öngörüleri veya tahminleri, uygulama ve cihazları daha akıllı hale getirir. Örneğin, çevrimiçi alışveriş yaparken makine öğrenimi, satın aldığınız ürüne göre istediğiniz diğer ürünleri önermenize yardımcı olur. Ya da kredi kartınızdan çekim yapıldığında makine öğrenmesi işlemi bir işlem veritabanıyla karşılaştırır ve dolandırıcılığın tespit edilmesine yardımcı olur. Elektrikli süpürge robotunuz bir odayı temizlediğinde ise, makine öğrenimi robotunuzun işin tamamlanıp tamamlanmadığına karar vermesine yardımcı olur.
 
 ## <a name="machine-learning-tools-to-fit-each-task"></a>Her göreve uyacak makine öğrenimi araçları 
 
@@ -51,7 +51,7 @@ Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş
 
 + [Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md)
 
-+ [Machine Learning CLı](reference-azure-machine-learning-cli.md)
++ [Machine learning CLI](reference-azure-machine-learning-cli.md)
 
 + PyTorch, TensorFlow ve scikit-öğrenme gibi açık kaynaklı çerçeveler ve çok daha fazlası
 
@@ -110,7 +110,7 @@ Azure Machine Learning Azure platformunda diğer hizmetlerle çalışır ve ayr�
 + __Azure Kubernetes hizmeti__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__ve __Azure HDInsight__gibi işlem hedefleri. İşlem hedefleri hakkında daha fazla bilgi için bkz. [işlem hedefleri nelerdir?](concept-compute-target.md).
 + __Azure Event Grid__. Daha fazla bilgi için bkz. [Azure Machine Learning olayları](concept-event-grid-integration.md)kullanma.
 + __Azure izleyici__. Daha fazla bilgi için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
-+ __Azure depolama hesapları__, __Azure Data Lake Storage__, __Azure SQL veritabanı__, __PostgreSQL Için Azure veritabanı__ve __Azure açık veri kümeleri__gibi veri depoları. Daha fazla bilgi için bkz. Azure [Storage hizmetlerindeki verilere erişme](how-to-access-data.md) ve [Azure açık veri kümeleri Ile veri kümeleri oluşturma](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets).
++ __Azure depolama hesapları__, __Azure Data Lake Storage__, __Azure SQL veritabanı__, __PostgreSQL Için Azure veritabanı__ve __Azure açık veri kümeleri__gibi veri depoları. Daha fazla bilgi için bkz. Azure [Storage hizmetlerindeki verilere erişme](how-to-access-data.md) ve [Azure açık veri kümeleri Ile veri kümeleri oluşturma](how-to-create-register-datasets.md).
 + __Azure sanal ağları__. Daha fazla bilgi için bkz. [sanal ağdaki güvenli deneme ve çıkarım](how-to-enable-virtual-network.md).
 + __Azure Pipelines__. Daha fazla bilgi için bkz. [makine öğrenimi modellerini eğitme ve dağıtma](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Git deposu günlükleri__. Daha fazla bilgi için bkz. [Git tümleştirmesi](concept-train-model-git-integration.md).

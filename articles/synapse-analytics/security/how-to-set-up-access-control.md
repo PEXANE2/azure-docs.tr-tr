@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089320"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501925"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
 
@@ -82,7 +82,7 @@ Azure portal, bir Synapse çalışma alanı oluşturun:
   - SYNAPSE Spark yöneticilerine **WS1 \_ mini Yöneticiler** atama
   - SYNAPSE SQL yöneticilerine **WS1 \_ SQLAdmins** atama
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. Adım: SYNAPSE çalışma alanı tarafından kullanılmak üzere Data Lake Storage 2. yapılandırma
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. Adım: SYNAPSE çalışma alanı tarafından kullanılmak üzere Data Lake Storage 2. yapılandırma
 
 SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevleri gerçekleştirmek için STG1 ve CNT1 için erişim gerektirir.
 
@@ -100,7 +100,7 @@ SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevle
 - **Ayarlar**altında, **SQL Active Directory Yöneticisi** ' ne tıklayın.
 - **Yönetici ayarla** ' ya tıklayın ve WS1 SQLAdmins ' yi seçin \_
 
-## <a name="step-6-maintaining-access-control"></a>6. Adım: erişim denetimini koruma
+## <a name="step-6-maintain-access-control"></a>6. Adım: erişim denetimini koruma
 
 Yapılandırma tamamlandı.
 

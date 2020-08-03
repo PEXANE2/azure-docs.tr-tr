@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87103070"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507330"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -41,7 +41,7 @@ Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-
 
 ### <a name="granular-access-control"></a>Ayrıntılı erişim denetimi
 
-[Azure rol tabanlı erişim denetimi 'ni (RBAC)](../articles/role-based-access-control/overview.md) , yönetilen bir disk için bir veya daha fazla kullanıcıya belirli izinler atamak üzere kullanabilirsiniz. Yönetilen diskler, okuma, yazma (oluşturma/güncelleştirme), silme ve disk için [paylaşılan erişim imzası (SAS) URI 'sini](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) alma gibi çeşitli işlemler sunar. Yalnızca bir kişinin işini gerçekleştirmesi için ihtiyaç duyacağı işlemlere erişim izni verebilirsiniz. Örneğin, bir kişinin yönetilen bir diski bir depolama hesabına kopyalamasını istemiyorsanız, bu yönetilen disk için dışarı aktarma eylemine erişim izni vermemeye izin vermeyi tercih edebilirsiniz. Benzer şekilde, bir kişinin yönetilen bir diski kopyalamak için SAS URI 'sini kullanmasını istemiyorsanız, bu izni yönetilen diske vermemenizi tercih edebilirsiniz.
+Yönetilen bir disk için belirli izinleri bir veya daha fazla kullanıcıya atamak üzere [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../articles/role-based-access-control/overview.md) kullanabilirsiniz. Yönetilen diskler, okuma, yazma (oluşturma/güncelleştirme), silme ve disk için [paylaşılan erişim imzası (SAS) URI 'sini](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) alma gibi çeşitli işlemler sunar. Yalnızca bir kişinin işini gerçekleştirmesi için ihtiyaç duyacağı işlemlere erişim izni verebilirsiniz. Örneğin, bir kişinin yönetilen bir diski bir depolama hesabına kopyalamasını istemiyorsanız, bu yönetilen disk için dışarı aktarma eylemine erişim izni vermemeye izin vermeyi tercih edebilirsiniz. Benzer şekilde, bir kişinin yönetilen bir diski kopyalamak için SAS URI 'sini kullanmasını istemiyorsanız, bu izni yönetilen diske vermemenizi tercih edebilirsiniz.
 
 ### <a name="upload-your-vhd"></a>VHD 'nizi karşıya yükleyin
 

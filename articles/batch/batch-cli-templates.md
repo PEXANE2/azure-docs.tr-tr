@@ -3,13 +3,13 @@ title: Şablonları kullanarak işleri uçtan uca Çalıştır
 description: Yalnızca CLı komutlarıyla, bir havuz oluşturabilir, giriş verilerini karşıya yükleyebilir, işler ve ilişkili görevler oluşturabilir ve elde edilen çıkış verilerini indirebilirsiniz.
 ms.topic: how-to
 ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83816005"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494936"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLı şablonlarını ve dosya aktarımını kullanın
 
@@ -139,7 +139,7 @@ Aşağıda, FFmpeg yüklenmiş bir Linux VM havuzu oluşturan bir şablon örne�
 az batch pool create --template pool-ffmpeg.json
 ```
 
-CLı, ve parametreleri için değer vermenizi ister `poolId` `nodeCount` . Ayrıca, parametreleri bir JSON dosyasında da sağlayabilirsiniz. Örneğin:
+CLı, ve parametreleri için değer vermenizi ister `poolId` `nodeCount` . Ayrıca, parametreleri bir JSON dosyasında da sağlayabilirsiniz. Örnek:
 
 ```json
 {

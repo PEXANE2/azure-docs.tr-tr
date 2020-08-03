@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529040"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495072"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
@@ -44,14 +44,14 @@ Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) 
 
 1. Kasada, **Tanılama ayarları**  >  **Tanılama ayarı Ekle**' ye tıklayın.
 
-    ![Kaynak günlüğünü seçin](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Tanılama ayarı Ekle seçeneğini gösteren ekran görüntüsü.](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. **Tanılama ayarları**' nda bir ad belirtin ve kutuyu **Log Analytics gönder**' i işaretleyin.
 3. Azure Izleyici günlük aboneliğini ve Log Analytics çalışma alanını seçin.
 4. Geçiş **Azure tanılama** seçin.
 5. Günlük listesinden, **Azuresterecovery**ön ekine sahip tüm günlükleri seçin. Daha sonra, **Tamam**'a tıklayın.
 
-    ![Çalışma alanını seçme](./media/monitoring-log-analytics/select-workspace.png)
+    ![Tanılama ayarı ekranının ekran görüntüsü.](./media/monitoring-log-analytics/select-workspace.png)
 
 Site Recovery Günlükler seçili çalışma alanındaki bir tabloya (**AzureDiagnostics**) akışa başlar.
 
@@ -125,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![Sorgu RPO 'SU](./media/monitoring-log-analytics/example1.png)
+![Site Recovery ile çoğaltılan Azure VM 'lerinin çubuk grafiğini gösteren ekran görüntüsü.](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>Site Recovery işleri sorgula
 
@@ -190,7 +190,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Makine RPO 'SU sorgula](./media/monitoring-log-analytics/example2.png)
+![Belirli bir Azure VM 'nin RPO 'sunu izleyen bir eğilim grafiğinin ekran görüntüsü.](./media/monitoring-log-analytics/example2.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Bir Azure VM için sorgu verileri değişiklik hızı (karmaşıklık) ve karşıya yükleme oranı
 
@@ -207,7 +207,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![Sorgu verileri değişikliği](./media/monitoring-log-analytics/example3.png)
+![belirli bir Azure VM için bir eğilim grafiğinin ekran görüntüsü.](./media/monitoring-log-analytics/example3.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>VMware veya fiziksel makine için sorgu veri değişim oranı (karmaşıklık) ve karşıya yükleme oranı
 

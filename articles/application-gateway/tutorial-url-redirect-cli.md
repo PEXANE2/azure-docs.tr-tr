@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 87f6febaf89f82c2c81b397c94d744229b3f4b34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: daee09de544e12d07b28d4e88a4847f71bd2e01f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239501"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502724"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Öğretici: Azure CLI kullanarak URL yolu tabanlı yeniden yönlendirme ile bir uygulama ağ geçidi oluşturma
 
@@ -284,7 +284,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [az Network public-IP Show](/cli/azure/network/public-ip#az-network-public-ip-show)kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin,,, veya `http://40.121.222.19:8081/images/test.htm` `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm`
+Uygulama ağ geçidinin genel IP adresini almak için [az Network public-IP Show](/cli/azure/network/public-ip#az-network-public-ip-show)kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin,, `http://40.121.222.19` , `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm` veya `http://40.121.222.19:8081/images/test.htm` .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -296,15 +296,15 @@ az network public-ip show \
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-URL 'YI IP adresi için&lt; &lt;&gt;ıp adresinizi http://&gt;IP adresi: 8080/images/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL 'YI IP adresi &lt; için IP adresinizi http://IP adresi &gt; : 8080/ımages/test.html olacak şekilde değiştirin &lt; &gt; ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-URL 'YI IP adresi için&lt; &lt;&gt;ıp adresinizi http://&gt;IP adresi: 8080/video/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL 'YI IP adresi &lt; için IP adresinizi http://IP adresi &gt; : 8080/video/test.html olacak şekilde değiştirin &lt; &gt; ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Video URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Şimdi,&lt;URL 'yi IP&gt; &lt;&gt;adresi için IP adresinizi http://IP adresi: 8081/images/test.htm olarak değiştirin ve http://&lt;IP adresi&gt;: 8080/Images konumundaki görüntüler arka uç havuzuna yeniden yönlendirilen trafiği görmeniz gerekir.
+Şimdi, URL 'YI http:// &lt; IP-adresi &gt; : 8081/ımages/test.htm olarak değiştirin, IP adresinizi IP adresi için değiştirin &lt; &gt; ve http:// &lt; IP adresi &gt; : 8080/Images konumundaki görüntüler arka uç havuzuna geri yönlendirilen trafiği görmeniz gerekir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

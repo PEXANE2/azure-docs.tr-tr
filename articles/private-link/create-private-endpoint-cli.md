@@ -7,12 +7,13 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: df01108a1cb103fc7392b1a599961a99a453a160
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e7c098ba06086781306960f76978aac9e4fa06bc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265514"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502673"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel uç nokta oluşturma
 
@@ -53,7 +54,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 
-## <a name="create-the-vm"></a>Sanal makine oluşturma
+## <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
 Az VM Create ile bir VM oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola girin. Bu örnek, *myvm*ADLı bir VM oluşturur:
 
@@ -135,7 +136,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. İndirilen. rdp * dosyasını açın.
 

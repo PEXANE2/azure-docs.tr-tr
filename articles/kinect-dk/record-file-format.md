@@ -7,17 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, algılayıcı, SDK, derinlik, RGB, kayıt, kayıttan yürütme, Matroska, MKV
-ms.openlocfilehash: d0f7653afe3cc92e059b2615ebef18312faa716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277666"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501789"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Dosya biçimini kaydetmek için Azure Kinect algılayıcı SDK 'sını kullanma
 
-Algılayıcı verilerini kaydetmek için, birden çok parça depolanmasını sağlayan Matroska (. MKV) kapsayıcı biçimi kullanılır.
-çok çeşitli codec bileşenleri kullanma. Kayıt dosyası renk, derinlik, IR görüntüleri ve ıMU depolama için izler içerir.
+Algılayıcı verilerini kaydetmek için, birden çok izlemelerin çok sayıda codec kullanılarak depolanmasını sağlayan Matroska (. MKV) kapsayıcı biçimi kullanılır. Kayıt dosyası renk, derinlik, IR görüntüleri ve ıMU depolama için izler içerir.
 
 . MKV kapsayıcı biçiminin alt düzey ayrıntıları [Matroska Web sitesinde](https://www.matroska.org/index.html)bulunabilir.
 

@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ef87d5da2c2d56a4fdc3873410bb5a6e5c711d01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075706"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503200"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>SQL havuzundaki işlemleri iyileştirme
+# <a name="optimize-transactions-in-sql-pool"></a>SQL havuzundaki işlemleri iyileştirme
 
 Uzun geri göndermeler riskini en aza indirerek SQL havuzundaki işlem kodunuzun performansını nasıl iyileştireceğinizi öğrenin.
 
@@ -82,7 +82,7 @@ CTAS ve INSERT... Her iki toplu yükleme işlemi de SEÇIN. Ancak, her ikisi de 
 
 Verilerin kümelenmiş bir dizine sahip boş olmayan bir tabloya yüklenmesi genellikle tam olarak günlüğe kaydedilen ve en düşük düzeyde günlüğe kaydedilen satırlardan oluşan bir karışımı içerebilir. Kümelenmiş dizin, sayfaların dengeli bir ağacıdır (b-Tree). Yazılan sayfa zaten başka bir işlemden satırlar içeriyorsa, bu yazma işlemleri tam olarak günlüğe kaydedilir. Ancak, sayfa boşsa, bu sayfaya yazma işlemi en düşük düzeyde günlüğe kaydedilir.
 
-## <a name="optimizing-deletes"></a>Silmeleri iyileştirme
+## <a name="optimize-deletes"></a>Silmeleri iyileştirme
 
 SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle tutmak istediğiniz verilere daha anlamlı hale gelir ve bu, en `SELECT` düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ' ı kullanın.
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimizing-updates"></a>Güncelleştirmeleri iyileştirme
+## <a name="optimize-updates"></a>Güncelleştirmeleri iyileştirme
 
 GÜNCELLEŞTIRME, tam olarak günlüğe kaydedilmiş bir işlemdir.  Bir tabloda veya bölümde çok sayıda satırı güncelleştirmeniz gerekiyorsa, bu, genellikle [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) gibi en düşük düzeyde günlüğe kaydedilmiş bir işlemin kullanılması çok daha verimli olabilir.
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > Büyük tabloları yeniden oluşturmak, SQL havuzu iş yükü yönetimi özelliklerini kullanmanın avantajlarından yararlanabilir. Daha fazla bilgi için bkz. [iş yükü yönetimi Için kaynak sınıfları](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-## <a name="optimizing-with-partition-switching"></a>Bölüm değiştirme ile iyileştirme
+## <a name="optimize-with-partition-switching"></a>Bölüm değiştirme ile iyileştirme
 
 Bir [tablo bölümü](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)içinde büyük ölçekli değişikliklerle karşılaşırsanız, bölüm değiştirme deseninin mantıklı olması gerekir. Veri değişikliği önemli ise ve birden çok bölüme yayılıyorsa, bölümler üzerinde yineleme aynı sonuca ulaşır.
 

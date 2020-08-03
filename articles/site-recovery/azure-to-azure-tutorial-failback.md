@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 432c92bcfa8a2e0df26adf1516f5bdc9ee73d267
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289301"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502384"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure bölgeleri arasında Azure VM geri dönme
 
@@ -42,7 +42,7 @@ VM 'Ler yeniden korunduktan sonra, gerekirse birincil bölgeye yeniden yük devr
 
 1. Kasada **çoğaltılan öğeler**' i seçin ve ardından YENIDEN korunan VM 'yi seçin.
 
-    ![Birincili yeniden çalışma](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![Azure portal birincil için yeniden çalışmayı gösteren ekran görüntüsü.](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
 2. **Çoğaltılan öğeler**' de VM ' yi seçin ve ardından **Yük devretme**' yı seçin.
 3. **Yük devretme**bölümünde yük devretmek için bir kurtarma noktası seçin:
@@ -55,7 +55,7 @@ VM 'Ler yeniden korunduktan sonra, gerekirse birincil bölgeye yeniden yük devr
 7. Yük devretmeyi doğruladıktan sonra **Yük devretmeyi Yürüt**' ü seçin. Yürütülüyor, tüm kullanılabilir kurtarma noktalarını siler. Kurtarma noktasını Değiştir seçeneği artık kullanılamıyor.
 8. VM, yük devredildi ve geri başarısız olarak göstermelidir.
 
-    ![Birincil ve ikincil bölgelerde VM](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+    ![Birincil ve ikincil bölgelerde VM 'yi gösteren ekran görüntüsü.](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
 > Yönetilen diskleri kullanan makinelerde ve Site Recovery uzantısı sürümü 9.28. x. x onler [güncelleştirme paketi 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery, yeniden çalışma tamamlandıktan ve VM 'ler yeniden korunduktan sonra ikincil olağanüstü durum kurtarma bölgesindeki makineleri temizler. İkincil bölgedeki VM 'Leri ve NIC 'leri el ile silmeniz gerekmez. Yönetilmeyen disklere sahip VM 'Lerin temizlenmediğini lütfen unutmayın. Çoğaltmayı geri aldıktan sonra tamamen devre dışı bırakırsanız, Site Recovery VM 'Ler ve NIC 'Lerin yanı sıra olağanüstü durum kurtarma bölgesindeki diskleri temizler.

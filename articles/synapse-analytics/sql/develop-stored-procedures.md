@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958387"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495004"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>SQL havuzunda saklı yordamları kullanma
 
@@ -27,7 +27,7 @@ SQL havuzu SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler.
 
 Ancak, SQL havuzunun ölçeğini ve performansını korumak için, davranış farklılıkları ve bazıları desteklenmeyen bazı özellikler ve işlevler de vardır.
 
-## <a name="introducing-stored-procedures"></a>Saklı yordamları tanıtma
+## <a name="stored-procedures-in-sql-pool"></a>SQL havuzunda saklı yordamlar
 
 Saklı yordamlar, SQL kodunuzu kapsüllemek için harika bir yoldur; veri ambarındaki verilerinize yakın bir şekilde depolanın. Saklı yordamlar, geliştiricilerin kodu yönetilebilir birimlere kapsülleyerek çözümlerini modüler hale getirmenize yardımcı olur; kodun daha fazla yeniden kullanılabilirliğini kolaylaştırın. Her saklı yordam aynı zamanda parametreleri daha da esnek hale getirmek için kabul edebilir.
 

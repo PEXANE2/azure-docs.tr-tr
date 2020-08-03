@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 624b8e18f8c0fb523c27c41ce9c10af93c8b6190
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 865263d22d6f92dec74ef2820e80481e1a308804
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446664"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494562"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -30,17 +30,11 @@ Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="storage-account-support"></a>Depolama hesabı desteği
+## <a name="availability-and-pricing"></a>Kullanılabilirlik ve fiyatlandırma
 
-Yaşam döngüsü yönetimi ilkesi Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).  
-
-## <a name="pricing"></a>Fiyatlandırma
+Yaşam döngüsü yönetimi özelliği, Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları için tüm Azure bölgelerinde kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).  
 
 Yaşam döngüsü yönetimi özelliği ücretsizdir. Müşteriler, [BLOB katmanı](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API çağrıları kümesi için normal işlem maliyeti üzerinden ücretlendirilir. Silme işlemi ücretsizdir. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Blok Blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/).
-
-## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
-
-Yaşam döngüsü yönetimi özelliği tüm Azure bölgelerinde kullanılabilir.
 
 ## <a name="add-or-remove-a-policy"></a>İlke ekleme veya kaldırma
 
@@ -67,7 +61,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 #### <a name="azure-portal-list-view"></a>Azure portal liste görünümü
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Azure portal, depolama hesabınızı arayıp seçin. 
 
@@ -88,7 +82,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 9. Yeni ilkeyi eklemek için **Ekle** ' yi seçin.
 
 #### <a name="azure-portal-code-view"></a>Azure portal kod görünümü
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Azure portal, depolama hesabınızı arayıp seçin.
 
@@ -293,11 +287,11 @@ Filtreler aşağıdakileri içerir:
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın şunları destekler `blockBlob` . | Yes |
-| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | Hayır |
-| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
+| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | No |
+| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
 
 > [!NOTE]
-> Blob dizini genel önizlemededir ve **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
+> Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta**ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Kural eylemleri
 

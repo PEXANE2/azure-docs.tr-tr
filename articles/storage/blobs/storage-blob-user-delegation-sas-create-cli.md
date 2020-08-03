@@ -10,12 +10,13 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: edfdbef2dd0cbfe264ae6a52741413ca28d70864
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e3ba428c0e3564f724f02652fc77c6ce84947bd6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424469"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494579"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Azure CLı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
 

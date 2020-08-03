@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.custom: devx-track-java
-ms.openlocfilehash: 64da0e62850433233c00f430b104121adc1979c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 53e27e4fafaf4468c9c2f4a1ce24ace3d317dada
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021520"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503268"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Java Spring uygulaması başlatma
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 >[!Note]
 > Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.

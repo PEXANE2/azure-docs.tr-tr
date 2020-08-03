@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 103a5534c143e5edf87f70570eb941dfa72bd45b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8148163dc969920b473f12a7162c6f317d85b3c8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317833"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503234"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketi 'nde Azure Container teklifi oluşturma
 
@@ -133,7 +133,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -151,7 +151,7 @@ Teklifinizin kısa bir açıklaması. Bu, 100 karakter uzunluğunda olabilir ve 
 
 Teklifinizin daha ayrıntılı bir açıklaması. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -284,9 +284,7 @@ Bu sekme, planın kullanılabildiği bulutu seçmenize olanak sağlar. Bu sekmed
 
 Azure Container teklifleri için tüm planlar otomatik olarak **Azure genel**'de kullanıma sunulmuştur.  Planınız, ticari Market kullanan tüm genel Azure bölgelerinde bulunan müşteriler tarafından kullanılabilir. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](../marketplace-geo-availability-currencies.md).
 
-Çözümünüzü burada görünmesini sağlamak için [**Azure Kamu**](../../azure-government/documentation-government-welcome.md) seçeneğini belirleyin. Bu, ABD Federal, S] (..) müşterileri için denetimli erişime sahip bir kamu topluluk bulutunu. /Pazar Place-Geo-kullanılabilirliği bility-currenciesem MD) em. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
-
-Azure Kamu 'da [yayımlamadan](../../azure-government/documentation-government-manage-marketplace-partners.md) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü oluşturmak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
+Çözümünüzü burada görünmesini sağlamak için [Azure Kamu](../../azure-government/documentation-government-welcome.md) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır. Azure Kamu 'da [yayımlamadan](../../azure-government/documentation-government-manage-marketplace-partners.md) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü oluşturmak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
 > [!NOTE]
 > Planınız yayımlandıktan ve belirli bir bölgede kullanılabilir olduktan sonra bu bölgeyi kaldıramazsınız.

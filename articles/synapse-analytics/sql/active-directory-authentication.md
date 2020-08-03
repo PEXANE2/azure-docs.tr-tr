@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9c1b694d3a50759dcf49222f4e6b27ac7b34f9e5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021662"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502163"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>SYNAPSE SQL ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma
 
@@ -99,7 +99,7 @@ Tüm Azure AD kimlik doğrulaması yalnızca Azure AD yöneticisi SYNAPSE SQL i�
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-## <a name="connecting-using-azure-ad-identities"></a>Azure AD kimliklerini kullanarak bağlanma
+## <a name="connect-using-azure-ad-identities"></a>Azure AD kimliklerini kullanarak bağlanma
 
 Azure Active Directory kimlik doğrulaması, Azure AD kimliklerini kullanarak bir veritabanına bağlanmak için aşağıdaki yöntemleri destekler:
 

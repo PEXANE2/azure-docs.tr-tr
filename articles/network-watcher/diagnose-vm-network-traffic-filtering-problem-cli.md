@@ -17,13 +17,13 @@ ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 9fcc26d17b9bb1d67d85a1775c4df191fe3524f0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80382860"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502066"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Hızlı Başlangıç: Sanal makine ağ trafiği filtreleme sorununu tanılama - Azure CLI
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya üstünü çalıştırıyor olmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). Azure CLı sürümünü doğruladıktan sonra, Azure ile bağlantı `az login` oluşturmak için öğesini çalıştırın. Bu hızlı başlangıçta Azure CLı komutları Bash kabuğunda çalışacak şekilde biçimlendirilir.
+Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya üstünü çalıştırıyor olmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). Azure CLı sürümünü doğruladıktan sonra, `az login` Azure ile bağlantı oluşturmak için öğesini çalıştırın. Bu hızlı başlangıçta Azure CLı komutları Bash kabuğunda çalışacak şekilde biçimlendirilir.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 

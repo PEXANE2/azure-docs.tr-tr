@@ -3,18 +3,18 @@ title: Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
 description: Bu makale, Azure Event Hubs kimlik doğrulama ve yetkilendirme sorunlarını giderme hakkında bilgi sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c053f60c877cdd26655948c37ab81a5e4d61cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322426"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502112"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
 [Bağlantı sorunlarını giderme](troubleshooting-guide.md) makalesinde, Azure Event Hubs bağlantı sorunlarını gidermeye yönelik ipuçları verilmektedir. Bu makalede, Azure Event Hubs kimlik doğrulama ve yetkilendirme sorunlarını gidermeye yönelik ipuçları ve öneriler sağlanmaktadır. 
 
 ## <a name="if-you-are-using-azure-active-directory"></a>Azure Active Directory kullanıyorsanız
-Azure Event Hubs kimlik doğrulaması yapmak ve yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, Olay Hub 'ına erişen kimliğin doğru **kaynak kapsamında** (Tüketici grubu, Olay Hub 'ı, ad alanı, kaynak grubu veya abonelik) doğru **rol tabanlı ERIŞIM denetimi (RBAC) rolünün** bir üyesi olduğunu doğrulayın.
+Azure Event Hubs kimlik doğrulaması yapmak ve yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, Olay Hub 'ına erişen kimliğin doğru **kaynak kapsamında** (Tüketici grubu, Olay Hub 'ı, ad alanı, kaynak grubu veya abonelik) doğru **Azure rolünün** bir üyesi olduğunu doğrulayın.
 
 ### <a name="rbac-roles"></a>RBAC rolleri
 - Event Hubs kaynaklara yönelik tüm erişim için [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) .

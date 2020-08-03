@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 07/31/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1d14ee849c89e6c3807636d0a728157abd9de97a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc2393cfe87e2639ce40e66e6053d4d430518719
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650668"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515329"
 ---
 ## <a name="1-download-the-file"></a>1. dosyayı indirin
 
@@ -31,7 +31,7 @@ Zip dosyasını ayıklayın. Dosya aşağıdaki klasörleri içerir:
 
 * AzureVPN
 * Genel
-* OpenVPN (ağ geçidinde OpenVPN ve Azure AD kimlik doğrulaması ayarlarını etkinleştirdiyseniz). VPN Gateway için bkz. [kiracı oluşturma](../articles/vpn-gateway/openvpn-azure-ad-tenant.md). Sanal WAN için bkz. [kiracı oluşturma-VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
+* OpenVPN ( **Azure sertifikası** Ile OpenVPN 'i veya ağ geçidinde **RADIUS kimlik doğrulama** ayarlarını etkinleştirdiyseniz). VPN Gateway için bkz. [kiracı oluşturma](../articles/vpn-gateway/openvpn-azure-ad-tenant.md). Sanal WAN için bkz. [kiracı oluşturma-VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
 
 ## <a name="3-retrieve-information"></a>3. bilgileri alma
 

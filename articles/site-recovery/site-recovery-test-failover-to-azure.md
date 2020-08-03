@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699065"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503506"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Azure 'a yük devretme testi (olağanüstü durum kurtarma detayına) çalıştırma 
 
@@ -25,7 +25,7 @@ Veri kaybı veya kapalı kalma süresi olmadan çoğaltma ve olağanüstü durum
 ## <a name="run-a-test-failover"></a>Yük devretme testi çalıştırma
 Bu yordam, bir kurtarma planı için yük devretme testi çalıştırma işlemini açıklar. Tek bir VM için yük devretme testi çalıştırmak istiyorsanız, [burada](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm) açıklanan adımları izleyin.
 
-![Test Yük Devretmesi](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Azure portal yük devretme testi sayfasının ekran görüntüsü.](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. Azure Portal Site Recovery ' de, **Recovery Plans**  >  *recoveryplan_name*  >  **Yük devretme testi**recoveryplan_name kurtarma planları ' na tıklayın.
@@ -48,7 +48,7 @@ Bu yordam, bir kurtarma planı için yük devretme testi çalıştırma işlemin
 8. **Notlar**’da, yük devretme testiyle ilişkili gözlemlerinizi kaydedin ve saklayın.
 
 
-![Test Yük Devretmesi](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![Test yük devretmesi Işleri sekmesinin ekran görüntüsü.](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 Yük devretme testi tetiklendiğinde aşağıdakiler gerçekleşir:
 

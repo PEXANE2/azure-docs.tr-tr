@@ -3,12 +3,13 @@ title: Azure CLI (az) ve Azure Service Fabric CLI (sfctl) Örnekleri
 description: Kümeleri, uygulamaları ve hizmetleri yönetmek için Azure CLı (az) ve Azure Service Fabric CLı (sfctl) örnekleri.
 ms.topic: sample
 ms.date: 04/09/2018
-ms.openlocfilehash: b54efcf6ca6ef66beb655c423283ea1ad0a59d72
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 12a48c525d1458b2d920f6a25d91d67e58749a96
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182823"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502435"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) ve Azure Service Fabric CLI (sfctl) Örnekleri
 

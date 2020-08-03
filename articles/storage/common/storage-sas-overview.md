@@ -10,12 +10,12 @@ ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077872"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502180"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -58,7 +58,7 @@ SAS 'yi iki şekilde imzalayabilirsiniz:
 
 - Azure Active Directory (Azure AD) kimlik bilgileri kullanılarak oluşturulan bir *Kullanıcı temsili anahtarıyla* . Kullanıcı temsili SAS, Kullanıcı temsili anahtarıyla imzalanır.
 
-    Kullanıcı temsilci anahtarını almak ve SAS oluşturmak için, Azure AD güvenlik sorumlusuna **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren rol tabanlı erişim denetımı (RBAC) rolü atanmalıdır. Kullanıcı temsilciliğini almak için izinleri olan RBAC rolleri hakkında ayrıntılı bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
+    Kullanıcı temsilci anahtarını almak ve SAS oluşturmak için, bir Azure AD güvenlik sorumlusuna **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini Içeren bir Azure rolü atanmalıdır. Kullanıcı temsilciliğini almaya yönelik izinlere sahip Azure rolleri hakkında ayrıntılı bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
 - Depolama hesabı anahtarıyla. Depolama hesabı anahtarıyla bir hizmet SAS ve hesap SAS 'si imzalanır. Hesap anahtarı ile imzalanmış bir SAS oluşturmak için, bir uygulamanın hesap anahtarına erişimi olması gerekir.
 

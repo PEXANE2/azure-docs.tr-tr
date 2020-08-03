@@ -6,13 +6,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-java
-ms.openlocfilehash: 26748b6847ab7061b0038ef9ca18f1b721d320e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: e962047c08dec336ba293aee96eadc0c96d1fc0f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320774"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504475"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Azure CLı kullanarak Service Bus kuyruğu oluşturma
 Bu hızlı başlangıçta, Azure CLı ve Service Bus Java kitaplığı kullanılarak Service Bus ile ileti gönderme ve alma işlemlerinin nasıl yapılacağı açıklanır. Son olarak, daha teknik ayrıntılarla ilgileniyorsanız örnek kodun temel öğeleriyle ilgili [bir açıklamayı okuyabilirsiniz](#understand-the-sample-code).

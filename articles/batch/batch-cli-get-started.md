@@ -3,13 +3,13 @@ title: Batch için Azure CLı ile çalışmaya başlama
 description: Azure Batch hizmet kaynaklarını yönetmek üzere Azure CLI’daki Batch komutlarına hızlı bir giriş yapın
 ms.topic: how-to
 ms.date: 07/24/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b07045bc0a756c5565356bb0a674188cf84c8785
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
+ms.openlocfilehash: ea3f91615a488a1013ac4821ce7ba14b2006c14a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960869"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494953"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch kaynaklarını Azure CLI ile yönetme
 
@@ -17,7 +17,7 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 Bu makalede Batch ile [Azure CLI sürüm 2.0](/cli/azure) kullanımına genel bakışa yer verilmiştir. Azure ile CLI kullanımı hakkında bilgi için bkz. [Azure CLI kullanmaya başlama](/cli/azure/get-started-with-azure-cli).
 
-## <a name="set-up-the-azure-cli"></a>Azure CLI'yı kurma
+## <a name="set-up-the-azure-cli"></a>Azure CLI'yı ayarlama
 
 En son Azure CLI sürümünü [Azure Cloud Shell](../cloud-shell/overview.md)'de çalıştırabilirsiniz. Azure CLI'yı yerel ortamınıza yüklemek için [Azure CLI'yı yükleme](/cli/azure/install-azure-cli) sayfasındaki adımları izleyin.
 
@@ -28,7 +28,7 @@ En son Azure CLI sürümünü [Azure Cloud Shell](../cloud-shell/overview.md)'de
 
 ## <a name="command-help"></a>Komut yardımı
 
-Komuttan sonra `-h` ekleyerek Azure CLI'daki her komut için yardım metni görüntüleyebilirsiniz. Diğer seçenekleri atın. Örneğin:
+Komuttan sonra `-h` ekleyerek Azure CLI'daki her komut için yardım metni görüntüleyebilirsiniz. Diğer seçenekleri atın. Örnek:
 
 * `az` komutuyla ilgili yardım almak için şunu girin: `az -h`
 * CLI’daki tüm Batch komutlarının listesini almak için şunu kullanın: `az batch -h`
@@ -111,7 +111,7 @@ Ortak görevleri gerçekleştirmek üzere Batch için [CLI betik örneklerini](c
 
 ## <a name="json-files-for-resource-creation"></a>Kaynak oluşturmak için JSON dosyaları
 
-Havuzlar ve işler gib Batch kaynakları oluşturduğunuzda parametrelerini komut satırı seçenekleri olarak geçirmek yerine yeni kaynağın yapılandırmasını içeren bir JSON dosyası belirtebilirsiniz. Örneğin:
+Havuzlar ve işler gib Batch kaynakları oluşturduğunuzda parametrelerini komut satırı seçenekleri olarak geçirmek yerine yeni kaynağın yapılandırmasını içeren bir JSON dosyası belirtebilirsiniz. Örnek:
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -141,7 +141,7 @@ Batch hizmetini bir `list` işlemiyle sorguladığınızda döndürülen veri mi
 
 Aşağıdaki tabloda Batch hizmeti tarafından desteklenen OData yan tümceleri listelenmiştir:
 
-| Yan Tümce | Açıklama |
+| Yan Tümce | Description |
 |---|---|
 | `--select-clause [select-clause]` | Her varlık için bir özellik alt kümesi döndürür. |
 | `--filter-clause [filter-clause]` | Yalnızca belirtilen OData ifadesiyle eşleşen varlıklar döndürür. |

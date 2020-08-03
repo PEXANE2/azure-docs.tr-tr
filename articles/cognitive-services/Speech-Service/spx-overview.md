@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
-ms.openlocfilehash: 3fb0b71cbb82b3b9acad1d1ce093baa86c700a51
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ab019250e03feb9a776d628c06e792b884252260
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800332"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501823"
 ---
-# <a name="what-is-the-speech-cli"></a>Konuşma CLı nedir?
+# <a name="what-is-the-speech-cli"></a>Konuşma CLI’si nedir?
 
 Konuşma CLı, herhangi bir kod yazmadan konuşma hizmetini kullanmaya yönelik bir komut satırı aracıdır. Konuşma CLı, en az kurulum gerektirir ve kullanım durumlarınızın karşılanıp karşılanmadığını görmek için konuşma hizmetinin temel özellikleriyle denemeye hemen başlamak kolaydır. Dakikalar içinde, bir dosya dizininden Batch konuşma tanıma gibi basit test iş akışlarını çalıştırabilir veya bir dosyadaki dizeler koleksiyonunda metinden konuşmaya dönüştürebilirsiniz. Basit iş akışlarının ötesinde, konuşma CLı, üretime hazırdır ve otomatikleştirilmiş veya kabuk betikleri kullanılarak daha büyük süreçler çalıştırmak için ölçeklendirilebilir `.bat` .
 

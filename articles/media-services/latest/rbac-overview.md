@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1872d0dd56a0459988e65852340c36493ee53f9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c75b6e67932cfd26a3374eab3f3efa34ceade577
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132254"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504492"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Media Services hesapları için rol tabanlı erişim denetimi (RBAC)
 
@@ -40,7 +40,7 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Klasik abonelik yönetici rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 - [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md)
 - [Erişimi yönetmek için RBAC kullanma](../../role-based-access-control/role-assignments-rest.md)
 - [Media Services kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)

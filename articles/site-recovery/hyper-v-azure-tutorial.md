@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134099"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504237"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V sanal makineleri için Azure’da olağanüstü durum kurtarma ayarlama
 
@@ -51,14 +51,14 @@ Bu, serideki üçüncü öğreticidir. Önceki öğreticilerdeki görevleri zate
 6. İçinde, **Hyper-V konaklarınızı yönetmek Için System Center VMM kullanıyorsunuz musunuz?**, **Hayır**' ı seçin.
 7. **Tamam**’ı seçin.
 
-    ![Çoğaltma hedefi](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![Altyapıyı hazırlama bölümünde koruma hedefi seçeneklerinin ekran görüntüsü.](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>Dağıtım planlamasını onaylama
 
 1. **Dağıtım planlaması**' nda, büyük bir dağıtım planlıyorsanız, Hyper-V ' y i dağıtım planlayıcısı sayfadaki bağlantıdan indirin. Hyper-V dağıtım planlaması hakkında [daha fazla bilgi edinin](hyper-v-deployment-planner-overview.md) .
 2. Bu öğretici için Dağıtım Planlayıcısı gerekli değildir. **Dağıtım planlamasını tamamladınız mı?**, **daha sonra yapacağım**' i seçin ve ardından **Tamam**' ı seçin.
 
-    ![Dağıtım planlaması](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![Altyapıyı hazırlama bölümünde dağıtım planlama seçeneklerinin ekran görüntüsü.](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>Kaynak ortamı ayarlama
 
@@ -68,17 +68,17 @@ Kaynak ortamı ayarlamak için bir Hyper-V sitesi oluşturup bu siteye, çoğalt
 2. **Kaynağı hazırla**bölümünde **+ Hyper-V sitesi**' ni seçin.
 3. **Hyper-V sitesi oluştur**' da, site adını belirtin. **Contosohypervsite**kullanıyorsunuz.
 
-    ![Hyper-V sitesi](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![Altyapıyı hazırlama bölümünde Hyper-V site seçiminin ekran görüntüsü.](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. Site oluşturulduktan sonra **kaynak hazırlama**  >  **adımı 1: Hyper-V sitesi**' ni seçin, oluşturduğunuz siteyi seçin.
 5. **+ Hyper-V sunucusu**' nu seçin.
 
-    ![Hyper-V sunucusu](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![Altyapıyı hazırlama bölümünde Hyper-V sunucu seçiminin ekran görüntüsü.](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. Microsoft Azure Site Recovery sağlayıcısı için yükleyiciyi indirin.
 7. Kasa kayıt anahtarını indirin. Sağlayıcıyı yüklemek için bu anahtara ihtiyacınız vardır. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 
-    ![Sağlayıcıyı ve kayıt anahtarını indirin](./media/hyper-v-azure-tutorial/download.png)
+    ![Sağlayıcıyı ve kayıt anahtarını indirme seçeneklerinin ekran görüntüsü.](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>Sağlayıcıyı yükleyin

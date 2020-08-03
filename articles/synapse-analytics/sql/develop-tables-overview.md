@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431884"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494834"
 ---
 # <a name="design-tables-using-synapse-sql"></a>SYNAPSE SQL kullanarak tabloları tasarlama
 
@@ -25,7 +25,7 @@ Bu belgede, SQL havuzu ve isteğe bağlı SQL (Önizleme) ile tablo tasarlamaya 
 
 Aşağıdaki tabloda SQL havuzu ile ilgili konular ve isteğe bağlı SQL karşılaştırması listelenmektedir:
 
-| Konu başlığı                                                        | SQL havuzu | İsteğe bağlı SQL |
+| Konu                                                        | SQL havuzu | İsteğe bağlı SQL |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
 | [Tablo kategorisini belirleme](#determine-table-category)        | Evet                | Hayır                      |
 | [Şema adları](#schema-names)                                | Yes                | Yes                     |
@@ -45,7 +45,7 @@ Aşağıdaki tabloda SQL havuzu ile ilgili konular ve isteğe bağlı SQL karş�
 | [İstatistikler](#statistics)                                    | Yes                | Yes                     |
 | [Birincil anahtar ve benzersiz anahtar](#primary-key-and-unique-key)    | Evet                | Hayır                      |
 | [Tablo oluşturma komutları](#commands-for-creating-tables) | Evet                | Hayır                      |
-| [Veri ambarıyla kaynak verileri hizalama](#aligning-source-data-with-the-data-warehouse) | Evet                | Hayır                      |
+| [Veri ambarıyla kaynak verileri hizalama](#align-source-data-with-the-data-warehouse) | Evet                | Hayır                      |
 | [Desteklenmeyen tablo özellikleri](#unsupported-table-features)    | Evet                | Hayır                      |
 | [Tablo boyutu sorguları](#table-size-queries)                    | Evet                | Hayır                      |
 
@@ -214,7 +214,7 @@ Yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesi
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Bir SELECT ifadesinin sonuçlarıyla yeni bir tablo doldurur. Tablo sütunları ve veri türleri SELECT ifadesinin sonuçlarını temel alır. Bu ifade, verileri içeri aktarmak için bir dış tablodan seçim yapabilir. |
 | [DıŞ TABLOYU SEÇ OLARAK OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Bir SELECT ifadesinin sonuçlarını dış konuma aktararak yeni bir dış tablo oluşturur.  Konum, Azure Blob depolama veya Azure Data Lake Storage. |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>Veri ambarıyla kaynak verileri hizalama
+## <a name="align-source-data-with-the-data-warehouse"></a>Kaynak verileri veri ambarına hizalayın
 
 Veri ambarı tabloları, başka bir veri kaynağından veri yükleyerek doldurulur. Başarılı bir yük elde etmek için, kaynak verilerdeki sütunların sayısı ve veri türleri, veri ambarındaki tablo tanımıyla hizalanmalıdır.
 

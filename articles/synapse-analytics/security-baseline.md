@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370283"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501959"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>SYNAPSE Analytics için Azure Güvenlik temeli
 
@@ -584,7 +584,7 @@ Ayrıca, Azure portal bir dinamik veri maskeleme (DDM) ilkesi ayarlayabilirsiniz
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
 
-**Kılavuz**: SYNAPSE SQL HAVUZUNUZDAKI Azure SQL veritabanlarına erişimi yönetmek için Azure rol tabanlı erişim denetimi 'NI (RBAC) kullanın.
+**Kılavuz**: SYNAPSE SQL HAVUZUNUZDAKI Azure SQL veritabanlarına erişimi yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
 Yetkilendirme, Kullanıcı hesabınızın veritabanı rolü üyelikleri ve nesne düzeyi izinleri tarafından denetlenir. En iyi uygulama olarak, kullanıcılarınıza gerekli olan en düşük ayrıcalıkları tanımanız gerekir.
 
@@ -1014,7 +1014,7 @@ App Service, Data Lake Storage, BLOB depolama, Azure SQL Server vb. gibi işlem 
 
 **Kılavuz**: SYNAPSE SQL havuzunuzun anlık görüntüleri, yedi gün boyunca kullanılabilen geri yükleme noktaları oluşturma gününde otomatik olarak alınır. Bu saklama dönemi değiştirilemez. SQL havuzu sekiz saatlik bir kurtarma noktası hedefini (RPO) destekler. Son yedi gün içinde alınan anlık görüntülerden herhangi birinden, birincil bölgedeki veri Ambarınızı geri yükleyebilirsiniz. Gerekirse, anlık görüntüleri el ile de tetikleyebileceğinizi unutmayın.
 
-* [Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: tanmaygore
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77192961"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507302"
 ---
 Bu makalede, bir hizmet olarak altyapı (IaaS) kaynaklarını klasik 'dan Kaynak Yöneticisi dağıtım modelleriyle geçirme ve sanal ağ siteden siteye ağ geçitleri kullanılarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama ayrıntıları açıklanmaktadır. [Azure Resource Manager özellikleri ve avantajları](../articles/azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
 
@@ -22,10 +22,10 @@ Kaynak Yöneticisi, şablonlar aracılığıyla karmaşık uygulamaların dağı
 
 Klasik dağıtım modelinden neredeyse tüm özellikler Azure Resource Manager altında işlem, ağ ve depolama için desteklenir. Azure Resource Manager yeni yeteneklerin avantajlarından yararlanmak için, mevcut dağıtımları klasik dağıtım modelinden geçirebilirsiniz.
 
-## <a name="supported-resources-for-migration"></a>Geçiş için desteklenen kaynaklar
-Bu klasik IaaS kaynakları geçiş sırasında desteklenir
+## <a name="supported-resources--configurations-for-migration"></a>Geçiş için desteklenen kaynaklar & yapılandırma
 
-* Virtual Machines
+### <a name="supported-resources-for-migration"></a>Geçiş için desteklenen kaynaklar
+* Sanal Makineler
 * Kullanılabilirlik Kümeleri
 * Depolama Hesapları
 * Sanal Ağlar
@@ -34,6 +34,13 @@ Bu klasik IaaS kaynakları geçiş sırasında desteklenir
 * Ağ Güvenlik Grupları
 * Yönlendirme Tabloları
 * Ayrılmış IP’ler
+
+## <a name="supported-configurations-for-migration"></a>Geçiş için desteklenen konfigürasyonlar
+Bu klasik IaaS kaynakları geçiş sırasında desteklenir
+
+| Hizmet | Yapılandırma |
+| --- | --- |
+| Azure AD Domain Services | [Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
 
 ## <a name="supported-scopes-of-migration"></a>Desteklenen geçiş kapsamları
 İşlem, ağ ve depolama kaynaklarının geçişini tamamlamaya yönelik dört farklı yol vardır:
@@ -129,5 +136,4 @@ Aşağıdaki yapılandırma Şu anda desteklenmiyor.
 | Azure App Service |App Service ortamları içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Azure HDInsight |HDInsight hizmetlerini içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Microsoft Dynamics yaşam döngüsü Hizmetleri |Dynamics yaşam döngüsü Hizmetleri tarafından yönetilen sanal makineleri içeren sanal ağlar |Bu şu anda desteklenmiyor. |
-| Azure AD Domain Services |Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Azure API Management |Azure API Management dağıtımlarını içeren sanal ağlar |Bu şu anda desteklenmiyor. IaaS VNET 'i geçirmek için, kesinti süresi olmayan bir işlem olan API Management dağıtımının VNET 'i değiştirin. |

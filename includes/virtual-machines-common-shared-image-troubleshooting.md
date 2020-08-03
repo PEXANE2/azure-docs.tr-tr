@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c043cfb6cf437ab55cc4a48ced716798738adbef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226385"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507398"
 ---
 Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürümleri ile ilgili işlem yaparken sorunlarla karşılaşıyorsanız başarısız olan komutları hata ayıklama modunda yeniden çalıştırın. `--debug`Anahtar CLI ve anahtarı PowerShell ile geçirerek hata ayıklama modu etkinleştirilir `-Debug` . Hatayı bulduktan sonra, hataları gidermek için bu belgeyi izleyin.
 
@@ -76,7 +76,7 @@ Olası nedenler:
 
 *VM veya sanal makine ölçek kümesi oluşturmaya çalışan kullanıcının görüntü sürümüne okuma erişimi yok.*
 
-Abonelik sahibine başvurarak, [rol tabanlı Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) aracılığıyla görüntü sürümüne veya üst kaynaklara (paylaşılan görüntü Galerisi veya görüntü tanımı gibi) okuma erişimi vermesini isteyin. 
+Abonelik sahibine başvurarak, [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)aracılığıyla görüntü sürümüne veya üst kaynaklara (paylaşılan görüntü Galerisi veya görüntü tanımı gibi) okuma erişimi vermesini isteyin. 
 
 *Görüntü sürümü bulunamadı.*
 
@@ -97,6 +97,3 @@ Belirtilen tüm hedef bölgelere yönelik çoğaltmanın tamamlanıp tamamlanmad
 ## <a name="azure-limits-and-quotas"></a>Azure limitleri ve kotaları 
 
 [Azure Limitleri ve kotaları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) tüm paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü kaynakları için geçerlidir. Aboneliklerinizin sınırları dahilinde olduğunuzdan emin olun. 
-
-
-

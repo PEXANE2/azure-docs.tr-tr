@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: aa8fd911aaf5c61fc8c33ca469798291fca3d3d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259108"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502129"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 
@@ -41,7 +42,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | Kaynak grubunu seçin.|
     | **Örnek ayrıntıları** |  |
-    | Ad | Özel uç noktanız için herhangi bir ad girin. Bu ad alındıysanız, benzersiz bir tane oluşturun. |
+    | Name | Özel uç noktanız için herhangi bir ad girin. Bu ad alındıysanız, benzersiz bir tane oluşturun. |
     |Bölge| Özel bağlantı dağıtmak istediğiniz bölgeyi seçin. Özel uç noktayı, sanal ağınızın bulunduğu aynı konumda oluşturun.|
     |||
 1. **Sonraki: kaynak**' ı seçin.
@@ -52,7 +53,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     |Bağlantı yöntemi  | **Dizinimde bir Azure kaynağına bağlan '** ı seçin. <br/><br/> Daha sonra, özel bağlantı kurmak için kaynaklarınızdan birini seçebilirsiniz. Veya sizinle paylaştığınız bir kaynak KIMLIĞI veya diğer ad kullanarak başka birisinin kaynağına bağlanabilirsiniz.|
     | Abonelik| Aboneliğinizi seçin. |
     | Kaynak türü | **Microsoft. Azumisinizsmosdb/databaseAccounts**' ı seçin. |
-    | Resource |Azure Cosmos hesabınızı seçin. |
+    | Kaynak |Azure Cosmos hesabınızı seçin. |
     |Hedef alt kaynak |Eşlemek istediğiniz Azure Cosmos DB API türünü seçin. Bu, varsayılan olarak SQL, MongoDB ve Cassandra API 'Leri için yalnızca bir seçeneğe sahiptir. Gremlin ve tablo API 'Leri için bu API 'Ler SQL API 'SI ile birlikte çalışabilen **SQL** ' i de seçebilirsiniz. |
     |||
 

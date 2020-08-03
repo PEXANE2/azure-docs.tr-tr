@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ca13cbd8bdba911882f7452e34c45cbc7918dd7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b02296d5d9aed5866c0efcdf85fa1c9946617d0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077699"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501908"
 ---
 # <a name="introduction"></a>Giriş
 
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 İçeri aktarma deyimleri gerekli değildir, Not defteri deneyimi için önceden içeri aktarırlar.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Çalışma alanıyla eklenmiş bir SQL havuzuna veya veri aktarımı
+### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Çalışma alanıyla eklenmiş bir SQL havuzuna veya veri aktarımı
 
 > [!NOTE]
 > **Not defteri deneyiminde içeri aktarmalar gerekmez**
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Bir SQL havuzuna veya çalışma alanı dışında bir veritabanına veri aktardıysanız
+### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Bir SQL havuzuna veya çalışma alanı dışında bir veritabanına veri aktarırsanız
 
 > [!NOTE]
 > Not defteri deneyiminde içeri aktarmalar gerekmez
@@ -160,7 +160,7 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-sql-auth-instead-of-aad"></a>AAD yerine SQL auth kullanma
+### <a name="use-sql-auth-instead-of-aad"></a>AAD yerine SQL auth kullan
 
 #### <a name="read-api"></a>API 'YI oku
 
@@ -184,7 +184,7 @@ option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-the-pyspark-connector"></a>PySpark bağlayıcısını kullanma
+### <a name="use-the-pyspark-connector"></a>PySpark bağlayıcısını kullanma
 
 > [!NOTE]
 > Bu örnek yalnızca akılda tutulan Not defteri deneyimiyle verilmiştir.
@@ -208,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 Benzer şekilde, okuma senaryosunda, Scala kullanarak verileri okuyun ve geçici bir tabloya yazın ve geçici tabloyu bir veri çerçevesinde sorgulamak için PySpark içinde Spark SQL kullanın.
 
-## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Diğer kullanıcıların, Azure SYNAPSE Apache Spark, çalışma alanınızdaki SQL bağlayıcısını SYNAPSE için kullanmasına izin verme
+## <a name="allow-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Diğer kullanıcıların, çalışma alanınızdaki SQL bağlayıcısını SYNAPSE için Azure SYNAPSE Apache Spark kullanmasına izin ver
 
 Diğer kullanıcıların eksik izinlerini değiştirmek için, çalışma alanına bağlı ADLS 2. depolama hesabında Depolama Blobu veri sahibi olmanız gerekir. Kullanıcının çalışma alanına erişimi olduğundan ve not defterlerini çalıştırma izinlerine sahip olduğundan emin olun.
 

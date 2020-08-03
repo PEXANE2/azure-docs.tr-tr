@@ -3,12 +3,12 @@ title: Apache Kafka App 'ten Olay Hub 'ı kullanma-Azure Event Hubs | Microsoft 
 description: Bu makalede, Azure Event Hubs tarafından Apache Kafka desteği hakkında bilgi sağlanır.
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94e0993c192cb735d6a4f0f3f7ec484c830902e9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002487"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501602"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka uygulamalardan Azure Event Hubs kullanma
 Event Hubs, kendi Kafka kümenizi çalıştırmaya alternatif olarak, var olan Kafka tabanlı uygulamalarınız tarafından kullanılabilecek bir Kafka uç noktası sağlar. Event Hubs, [Apache Kafka protokol 1,0 ve üstünü](https://kafka.apache.org/documentation/)destekler ve mirrormaker da dahil olmak üzere var olan Kafka uygulamalarınızla birlikte kullanılabilir.  
@@ -65,6 +65,9 @@ security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
+
+> [!NOTE]
+> SAS kimlik doğrulaması Kafka istemcilerle kullanılırken, SAS anahtarı yeniden üretildiğinde kurulan bağlantıların bağlantısı kesilmez. 
 
 #### <a name="samples"></a>Örnekler 
 Bir olay hub 'ı oluşturmak ve SAS veya OAuth kullanarak buna erişmek için adım adım yönergeler içeren bir **öğretici** için bkz. [hızlı başlangıç: Kafka protokolünü kullanarak Event Hubs veri akışı](event-hubs-quickstart-kafka-enabled-event-hubs.md).

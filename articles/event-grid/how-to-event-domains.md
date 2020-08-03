@@ -3,12 +3,13 @@ title: Olay etki alanlarıyla olayları Azure Event Grid ile yayımlama
 description: Azure Event Grid ' deki büyük konu kümelerinin nasıl yönetileceğini ve olay etki alanlarını kullanarak bu olaylara olayları nasıl yayımlayacağınızı gösterir.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: ce1cc9c2b09dd6b0c9508ad6b0597428bd355d4b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460567"
+ms.locfileid: "87502044"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Olay etki alanlarını kullanarak konuları yönetme ve olayları yayımlama
 

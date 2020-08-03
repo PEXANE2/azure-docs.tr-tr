@@ -4,15 +4,15 @@ description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077448"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503608"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services’ta desteklenen veri kaynakları
 
@@ -71,7 +71,7 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 |SQL Server |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |SQL Server veri ambarı |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase Veritabanı     |  Evet | Hayır |  |
-|Teradata | Yes  | Yes  | <sup>[10](#teradata)</sup> |
+|Teradata | Yes  | Yes  | <sup>[(](#teradata)</sup> |
 |TXT dosyası  |Evet | Hayır |  |
 |XML tablosu    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 | | | |
@@ -80,7 +80,7 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 yalnızca <a name="tab1400b">6</a> tablolu 1400 ve daha yüksek modeller.  
 <a name="sqlim">7</a> -tabular 1200 ve üzeri modellerde *sağlayıcı* veri kaynağı olarak belirtildiğinde, SQL Server Msoledbsql için Microsoft OLE DB sürücüsü (önerilen), SQL Server Native Client 11,0 veya veri sağlayıcısı için .NET Framework SQL Server belirtin.  
 <a name="instgw">8</a> -veri sağlayıcısı olarak MSOLEDBSQL belirtildiğinde, [SQL Server Için Microsoft OLE DB sürücüsünü](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) şirket içi veri ağ geçidiyle aynı bilgisayara indirip yüklemek gerekebilir.  
-<a name="oracle">9</a> -tabular 1200 modelleri için ya da tablosal 1400 + modelleriyle bir *sağlayıcı* veri kaynağı olarak, .NET için Oracle veri sağlayıcısı belirtin.  
+<a name="oracle">9</a> -tabular 1200 modelleri için ya da tablosal 1400 + modelleriyle bir *sağlayıcı* veri kaynağı olarak, .NET için Oracle veri sağlayıcısı belirtin. Yapılandırılmış bir veri kaynağı olarak belirtilmişse, [Oracle yönetilen sağlayıcısını](#enable-oracle-managed-provider)etkinleştirdiğinizden emin olun.   
 <a name="teradata">10</a> tablolu 1200 modellerdeki veya tablo 1400 + modelleriyle bir *sağlayıcı* veri kaynağı olarak, .NET için Teradata veri sağlayıcısı belirtin.  
 <a name="filesSP">11</a> -şirket içi SharePoint 'teki dosyalar desteklenmez.
 
@@ -123,6 +123,43 @@ Bulut veri kaynakları için:
 Bellek içi modu, Azure SQL veritabanı, Azure Synapse (eski adıyla SQL veri ambarı), Dynamics 365 ve SharePoint listesi ile 1400 ve daha yüksek uyumluluk düzeyinde tablolu modeller için OAuth kimlik bilgilerini destekler. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için SSMS kullanarak kimlik bilgilerini ayarlayın.
 
 OAuth kimlik bilgileriyle doğrudan sorgu modu desteklenmez.
+
+## <a name="enable-oracle-managed-provider"></a>Oracle yönetilen sağlayıcısını etkinleştir
+
+Bazı durumlarda, bir Oracle veri kaynağına yönelik DAX sorguları beklenmedik sonuçlar döndürebilir. Bu, veri kaynağı bağlantısı için kullanılan sağlayıcıdan kaynaklanıyor olabilir.
+
+[Sağlayıcıları anlama](#understanding-providers) bölümünde açıklandığı gibi, tablo modelleri veri kaynaklarına *yapılandırılmış* bir veri kaynağı veya bir *sağlayıcı* veri kaynağı olarak bağlanır. Sağlayıcı veri kaynağı olarak belirtilen Oracle veri kaynağına sahip modeller için, belirtilen sağlayıcının .NET için Oracle Veri Sağlayıcısı (Oracle. DataAccess. Client) olduğundan emin olun. 
+
+Oracle veri kaynağı yapılandırılmış bir veri kaynağı olarak belirtilmişse **Mdataengine\usemanagedoracleprovider** sunucu özelliğini etkinleştirin. Bu özelliğin ayarlanması, modelinizin .NET tarafından yönetilen sağlayıcı için önerilen Oracle Veri Sağlayıcısı kullanarak Oracle veri kaynağına bağlanmasını sağlar.
+ 
+Oracle yönetilen sağlayıcısını etkinleştirmek için:
+
+1. SQL Server Management Studio, sunucunuza bağlanın.
+2. Aşağıdaki betiği içeren bir XMLA sorgusu oluşturun. **ServerName** öğesini tam sunucu adıyla değiştirip sorguyu yürütün.
+
+    ```xml
+    <Alter AllowCreate="true" ObjectExpansion="ObjectProperties" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+        <Object />
+        <ObjectDefinition>
+            <Server xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" 
+    xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" 
+    xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" 
+    xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500">
+                <ID>ServerName</ID>
+                <Name>ServerName</Name>
+                <ServerProperties>
+                    <ServerProperty>
+                        <Name>MDataEngine\UseManagedOracleProvider</Name>
+                        <Value>1</Value>
+                    </ServerProperty>
+                </ServerProperties>
+            </Server>
+        </ObjectDefinition>
+    </Alter>
+    ```
+
+3. Sunucuyu yeniden başlatın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

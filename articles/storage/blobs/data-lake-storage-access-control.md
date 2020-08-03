@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4b52fe22e455f5b0ebce6960b40bcc80c46079c3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eab2beecc4153bdb2b74ca81bb43f86e2e29a778
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421357"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504152"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de Erişim Denetimi
 
-Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir erişim denetimi modeli uygular. Bu makalede Data Lake Storage 2. için erişim denetimi modelinin temelleri özetlenmektedir.
+Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (Azure RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir erişim denetimi modeli uygular. Bu makalede Data Lake Storage 2. için erişim denetimi modelinin temelleri özetlenmektedir.
 
 <a id="azure-role-based-access-control-rbac"></a>
 

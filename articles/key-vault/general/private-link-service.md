@@ -7,12 +7,13 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521097"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494698"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
 
@@ -22,7 +23,7 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 
 Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir anahtar kasasını Azure özel bağlantısıyla bütünleştirmek için şunlar gerekir:
 
@@ -155,7 +156,7 @@ az network private-endpoint show --resource-group {RG} --name {Private Endpoint 
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi sağla | Hizmet tüketicisi özel uç nokta durumu | Description |
+| Hizmet eylemi sağla | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
 | Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
@@ -233,6 +234,38 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
+
+## <a name="troubleshooting-guide"></a>Sorun Giderme Kılavuzu
+
+* Özel uç noktanın onaylanmış durumda olduğundan emin olmak için denetleyin. 
+    1. Azure portal bunu denetleyebilir ve giderebilirsiniz. Key Vault kaynağını açın ve ağ seçeneğine tıklayın. 
+    2. Ardından özel uç nokta bağlantıları sekmesini seçin. 
+    3. Bağlantı durumunun onaylanmış ve sağlama durumunun başarılı olduğundan emin olun. 
+    4. Ayrıca, Özel uç nokta kaynağına gidebilir ve aynı özellikleri orada gözden geçirebilir ve sanal ağın kullandığınız bir ile eşleşip eşleşmediğini iki kez kontrol edebilirsiniz.
+
+* Özel DNS bölge kaynağınız olduğundan emin olun. 
+    1. Tam adı olan bir Özel DNS Zone kaynağınız olmalıdır: privatelink.vaultcore.azure.net. 
+    2. Bu ayarı nasıl ayarlayacağınızı öğrenmek için lütfen aşağıdaki bağlantıya bakın. [Özel DNS bölgeler](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    
+* Özel DNS bölgesinin sanal ağla bağlantılı olmadığından emin olmak için denetleyin. Hala genel IP adresini almaya devam ediyorsanız bu sorun olabilir. 
+    1. Özel bölge DNS sanal ağa bağlı değilse, sanal ağdan kaynaklanan DNS sorgusu, anahtar kasasının genel IP adresini döndürür. 
+    2. Azure portal Özel DNS bölgesi kaynağına gidin ve sanal ağ bağlantıları seçeneğine tıklayın. 
+    4. Anahtar kasasına çağrı gerçekleştirecek sanal ağın listelenmesi gerekir. 
+    5. Bu yoksa, ekleyin. 
+    6. Ayrıntılı adımlar için, [sanal ağın özel DNS bölgeye bağlanması için](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) aşağıdaki belgeye bakın
+
+* Özel DNS bölgesinde Anahtar Kasası için bir kaydın eksik olmadığından emin olun. 
+    1. Özel DNS bölgesi sayfasına gidin. 
+    2. Genel Bakış ' A tıklayın ve anahtar kasanızın (ör. fabrikam) basit adına sahip bir kayıt olup olmadığını kontrol edin. Herhangi bir sonek belirtmeyin.
+    3. Yazımı denetlediğinizden emin olun ve bir kayıt oluşturun ya da onarın. 3600 TTL (1 saat) kullanabilirsiniz. 
+    4. Doğru özel IP adresini belirttiğinizden emin olun. 
+    
+* Bir kaydın doğru IP adresine sahip olduğundan emin olun. 
+    1. Azure portal ' de özel uç nokta kaynağını açarak IP adresini doğrulayabilirsiniz 
+    2. Azure portal (Key Vault kaynağında değil) Microsoft. Network/privateEndpoints kaynağına gidin
+    3. Genel Bakış sayfasında ağ arabirimi ' ne bakın ve bu bağlantıya tıklayın. 
+    4. Bağlantı, özel IP adresi özelliğini içeren NIC kaynağına genel bakışı gösterir. 
+    5. Bunun, A kaydında belirtilen doğru IP adresi olduğunu doğrulayın.
 
 ## <a name="limitations-and-design-considerations"></a>Sınırlamalar ve tasarım konuları
 

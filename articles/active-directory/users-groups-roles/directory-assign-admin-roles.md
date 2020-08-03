@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f87f732fbfff23e71096a89a7c04c65d1bd7959
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432343"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502486"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -87,7 +87,7 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 [Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale verebilir.
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -274,7 +274,7 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 * Rapor okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve yardım masası yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir yardım masası Yöneticisi, bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -392,7 +392,7 @@ Bu role sahip kullanıcılar, genel yöneticiler dahil olmak üzere tüm kullan�
 
 ### <a name="privileged-role-administrator"></a>[Ayrıcalıklı rol yöneticisi](#privileged-role-administrator-permissions)
 
-Bu role sahip kullanıcılar, Azure Active Directory ve Azure AD Privileged Identity Management içindeki rol atamalarını yönetebilir. Ayrıca, bu rol Privileged Identity Management ve yönetim birimlerinin tüm yönlerinin yönetimine izin verir.
+Bu role sahip kullanıcılar, Azure Active Directory ve Azure AD Privileged Identity Management içindeki rol atamalarını yönetebilir. Azure AD rollerine atanabilecek grupları oluşturabilir ve yönetebilir. Ayrıca, bu rol Privileged Identity Management ve yönetim birimlerinin tüm yönlerinin yönetimine izin verir.
 
 > [!IMPORTANT]
 > Bu rol, genel yönetici rolü dahil olmak üzere tüm Azure AD rolleri için atamaları yönetme olanağı verir. Bu rol, Azure AD 'de Kullanıcı oluşturma veya güncelleştirme gibi başka ayrıcalıklı yetenekler içermez. Ancak, bu role atanan kullanıcılar, ek roller atayarak kendilerine veya başkalarına ek ayrıcalık verebilir.
@@ -510,7 +510,7 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 | Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Grup Yöneticisi<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Parola Yöneticisi<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve Kullanıcı yöneticilerine başka bir yerde izin verilmez. Bu yoldan, bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -748,6 +748,9 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | DirectoryRoleTemplates oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Domains/allProperties/allTasks | Etki alanlarını oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Groups/allProperties/allTasks | Grupları oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+| Microsoft. Directory/Groupsastifbletoroles/allProperties/Update | Azure Active Directory, ısastifbletorole özelliği true olarak ayarlanan grupları güncelleştirin. |
+| Microsoft. Directory/Groupsastifbletoroles/Create | Azure Active Directory ' de ısastifbletorole özelliği true olarak ayarlanan gruplar oluşturun. |
+| Microsoft. Directory/Groupsastifbletoroles/Delete | Iastifbletorole özelliği Azure Active Directory olan grupları silin. |
 | Microsoft. Directory/groupSettings/allProperties/allTasks | GroupSettings oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/groupSettingTemplates/allProperties/allTasks | GroupSettingTemplates oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Logınantmarkalaması/allProperties/allTasks | Logınantmarkalaması oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
@@ -1582,7 +1585,10 @@ Herhangi bir Kullanıcı (yönetici veya yönetici olmayan) için kimlik doğrul
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |
-| Microsoft. AAD. Privilegedıdentitymanagement/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. AAD. Privilegedıdentitymanagement içindeki standart özellikleri okuyun ve güncelleştirin. |
+| Microsoft. Directory/Groupsastifbletoroles/allProperties/Update | Azure Active Directory, ısastifbletorole özelliği true olarak ayarlanan grupları güncelleştirin. |
+| Microsoft. Directory/Groupsastifbletoroles/Create | Azure Active Directory ' de ısastifbletorole özelliği true olarak ayarlanan gruplar oluşturun. |
+| Microsoft. Directory/Groupsastifbletoroles/Delete | Iastifbletorole özelliği Azure Active Directory olan grupları silin. |
+| Microsoft. Directory/privilegedIdentityManagement/allEntities/allTasks | Tüm kaynakları oluşturup silin ve Microsoft. AAD. Privilegedıdentitymanagement içindeki standart özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/allTasks | Azure Active Directory Servicesorumlularını. appRoleAssignedTo özelliğini okuyun ve yapılandırın. |
 | Microsoft. Directory/Servicesorumlularını/oAuth2PermissionGrants/allTasks | Azure Active Directory Servicesorumlularını. oAuth2PermissionGrants özelliğini okuyun ve yapılandırın. |
 | Microsoft. Directory/Yönetimtiveunits/allProperties/allTasks | Yönetim birimleri oluşturma ve yönetme (Üyeler dahil) |

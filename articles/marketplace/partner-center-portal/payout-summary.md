@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: dc690e29129f5be68456e6a9dc075ba72f11b121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318241"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502639"
 ---
 # <a name="payout-summaries"></a>Ödeme özetleri
 
 Ödeme Özeti, Microsoft ile kazandığınızı gösteren ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
 
-Ürünleri Azure Marketi 'nde satmanız durumunda, ödeme özetinde başarılı ödemeler hakkındaki bilgileri de görürsünüz. Ayrıntılar için bkz. [katılım ilkeleri](https://docs.microsoft.com/legal/marketplace/participation-policy) ve [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)Microsoft Azure Market.
+Ürünleri Azure Marketi 'nde satmanız durumunda, ödeme özetinde başarılı ödemeler hakkındaki bilgileri de görürsünüz. Ayrıntılar için bkz. [katılım ilkeleri](https://docs.microsoft.com/legal/marketplace/participation-policy) ve [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)Microsoft Azure Market.
 
 > [!NOTE]
 > Ödemenizin uygun olması için, devam eden $50 [ödeme eşiğine](payment-thresholds-methods-timeframes.md) ulaşmalıdır. Ödeme eşiği hakkında daha fazla bilgi için bu sayfaya bakın ve uygulama geliştirici sözleşmesini gözden geçirin.
@@ -43,7 +43,7 @@ Bu sayfadaki herhangi bir işlem verisini dışarı aktarmak için, **verileri d
 
 ## <a name="payments-page"></a>Ödemeler sayfası
 
-Bu sayfadaki toplamlar, katıldığınızda tüm programları temsil eder. Katılımcı KIMLIĞI, program, ödeme KIMLIĞI ve kazanç türüne göre filtreleme yapabilirsiniz. Tutarlar ABD Doları cinsinden verilir. Ödenen değer ayrıca para birimiyle öde ' de de görüntülenir.
+Bu sayfadaki toplamlar, katıldığınızda tüm programları temsil eder. Katılımcı kimliği, Program, Ödeme kimliği ve Kazanç türüne göre filtreleyebilirsiniz. Tutarlar ABD doları cinsinden verilir. Ödenen değer, ödeme yapılan para biriminde görüntülenir.
 
 | Alan                   | Açıklama                                                                                |
 |------------------------|---------------------------------------------------------------------------------------------|
@@ -68,18 +68,18 @@ Bu sayfadaki herhangi bir işlem verisini dışarı aktarmak için **dışarı**
 
 | Kazanç durumu           | Neden                                                                                                                                      | İş ortağı eylemi gerekli mi?                                   |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| İşlenmemiş              | Kazanç ödeme için uygun. Bu durum, bir soğutma dönemi için, ister program kılavuzunda, ister program kılavuzumuza göre tanımlanan bu durumda kalır. | Hayır                                                         |
-| İlerideki                 | Ödeme işlenmeden önce bekleyen dahili incelemeler için ödeme siparişi oluşturuldu                                                               | Hayır                                                         |
+| İşlenmemiş              | Kazanç ödeme için uygun. Bu durum, bir soğutma dönemi için, ister program kılavuzunda, ister program kılavuzumuza göre tanımlanan bu durumda kalır. | No                                                         |
+| İlerideki                 | Ödeme işlenmeden önce bekleyen dahili incelemeler için ödeme siparişi oluşturuldu                                                               | No                                                         |
 | Bekleyen vergi faturası      | Vergi faturanızda eksik veya geçersiz                                                                                                  | Ödeme yapabilmeniz için vergi faturanızı güncelleştirmeniz gerekir |
 | İnceleme sırasında reddedildi   | Ödeme, gözden geçirme sırasında reddedildi                                                                                                     | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support) 'e başvurun                      |
 | Başarısız                   | Ödeme, bir Microsoft Sistem hatası nedeniyle başarısız oldu                                                                                         | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support) 'e başvurun                      |
-| Devam ediyor              | Ödeme devam ediyor                                                                                                                 | Hayır                                                         |
-| Yanlış ödeme        | Ödeme kurtarma devam ediyor                                                                                                       | Hayır                                                         |
-| Gönderilen                     | Ödeme, bankanızla gönderilmiştir                                                                                                     | Hayır                                                         |
-| Yeniden işleme             | Ödeme bir Microsoft sistem hatasıyla karşılaştı ve yeniden işleniyor                                                                  | Hayır                                                         |
-| Reversed                 | Ödeme, bankanızla tersine çevrildi ve sonraki ödeme aşamasında yeniden gönderilecek                                                     | Hayır                                                         |
+| Sürüyor              | Ödeme devam ediyor                                                                                                                 | No                                                         |
+| Yanlış ödeme        | Ödeme kurtarma devam ediyor                                                                                                       | No                                                         |
+| Gönderilen                     | Ödeme, bankanızla gönderilmiştir                                                                                                     | No                                                         |
+| Yeniden işleme             | Ödeme bir Microsoft sistem hatasıyla karşılaştı ve yeniden işleniyor                                                                  | No                                                         |
+| Reversed                 | Ödeme, bankanızla tersine çevrildi ve sonraki ödeme aşamasında yeniden gönderilecek                                                     | No                                                         |
 | Vergi faturası reddedildi     | Vergi faturanızda gözden geçirme sırasında reddedildi. Tüm bekleyen ödemeler, vergi faturası incelemesi tamamlanana kadar beklemeye alınacaktır.                 | Ayrıntılar için [Microsoft destek](https://developer.microsoft.com/windows/support) 'e başvurun                      |
-| Gözden geçirme kapsamında vergi faturası | Vergi faturanızda İnceleme uygulanıyor. Vergi faturası onaylandıktan sonra ödeme serbest bırakılır.                                   | Hayır                                                         |
+| Gözden geçirme kapsamında vergi faturası | Vergi faturanızda İnceleme uygulanıyor. Vergi faturası onaylandıktan sonra ödeme serbest bırakılır.                                   | No                                                         |
 | Reddedildi                 | Ödeme, bankanızla reddedildi                                                                                                      | Ayrıntılar için bankanızla görüşün.                             |
 |||
 

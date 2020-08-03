@@ -7,12 +7,13 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: 49c91a2b96ebf02ec87637c3176e9263302184bf
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 35359c63b79d9eea6f8f6ad688bd040428a39eb8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460941"
+ms.locfileid: "87503455"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme
 
@@ -20,7 +21,7 @@ Azure Event Grid, aşağı akış iş uygulamalarınızda eylemler tetikleyerek 
 
 Bu makalede IoT Hub ve Event Grid kullanan bir örnek yapılandırma gösterilmektedir. Son olarak, IoT Hub 'ınıza bir cihaz eklendiğinde bildirim e-postası gönderecek şekilde ayarlanmış bir Azure mantıksal uygulamanız vardır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin bir Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
 

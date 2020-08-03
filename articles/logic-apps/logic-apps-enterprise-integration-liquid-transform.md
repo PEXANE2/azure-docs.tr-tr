@@ -1,46 +1,55 @@
 ---
-title: JSON verilerini sıvı dönüştürmeleri ile Dönüştür
-description: Logic Apps ve sıvı şablonu kullanarak gelişmiş JSON dönüştürmeleri için dönüşümler veya haritalar oluşturma
+title: JSON ve XML 'yi likit şablonlar ile dönüştürme
+description: Azure Logic Apps 'de haritalar olarak sıvı şablonları kullanarak JSON ve XML dönüştürme
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 04/01/2020
-ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 5aa6b3717925146607f3785ad5ea5fb940e8c236
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879182"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503414"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps'te Liquid şablonlarıyla gelişmiş JSON dönüşümleri gerçekleştirme
+# <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Azure Logic Apps 'de haritalar olarak sıvı şablonları kullanarak JSON ve XML dönüştürme
 
-Mantıksal uygulamalarınızda, JSON **oluşturma** veya **ayrıştırma**gibi yerel veri Işleme eylemleriyle temel JSON dönüşümleri gerçekleştirebilirsiniz. Gelişmiş JSON dönüştürmeleri gerçekleştirmek için, esnek Web uygulamalarına yönelik açık kaynaklı bir şablon dili olan [likit](https://shopify.github.io/liquid/)ile şablonlar veya haritalar oluşturabilirsiniz. Liquid şablonları, JSON çıktısının nasıl dönüştürüleceğini tanımlar ve yinelemeler, denetim akışları ve değişkenler gibi daha karmaşık JSON dönüşümlerini destekler.
+Mantıksal uygulamalarınızda temel JSON dönüştürmeleri gerçekleştirmek istediğinizde, JSON **oluşturma** veya **ayrıştırma**gibi yerel [veri işlemlerini](../logic-apps/logic-apps-perform-data-operations.md) kullanabilirsiniz. Yinelemeler, denetim akışları ve değişkenler gibi öğelere sahip olan JSON dönüşümlerine gelişmiş ve karmaşık JSON için, [sıvı](https://shopify.github.io/liquid/) açık kaynak şablon dilini kullanarak bu dönüşümleri tanımlayan şablonlar oluşturun ve kullanın. Ayrıca, örneğin JSON-Text, XML-JSON ve XML 'den metne [diğer dönüşümler de gerçekleştirebilirsiniz](#other-transformations).
 
-Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için önce JSON ile JSON eşlemeyi bir sıvı şablonuyla tanımlamanız ve bu eşlemeyi tümleştirme hesabınızda depolamanız gerekir. Bu makalede, bu likit şablon veya haritanın nasıl oluşturulduğu ve kullanılacağı gösterilir.
+Mantıksal uygulamanızda bir sıvı dönüştürmesi gerçekleştirebilmek için önce istediğiniz eşlemeyi tanımlayan bir likit şablon oluşturmanız gerekir. Ardından, şablonu [tümleştirme hesabınıza](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) [bir eşleme olarak yüklersiniz](../logic-apps/logic-apps-enterprise-integration-maps.md) . Mantıksal uygulamanıza **JSON 'Yı JSON-likit** eylemini ekleyerek, kullanılacak eyleme yönelik harita olarak sıvı şablonu ' nu seçebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+Bu makalede, bu görevlerin nasıl tamamlanacağı gösterilmektedir:
+
+* Bir likit şablon oluşturun.
+* Şablonu tümleştirme hesabınıza ekleyin.
+* Mantıksal uygulamanıza likit dönüştürme eylemi ekleyin.
+* Kullanmak istediğiniz eşleme olarak şablonu seçin.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
-* Temel bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [Tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
 * [Sıvı şablonu dili](https://shopify.github.io/liquid/) hakkında temel bilgi
 
-## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tümleştirme hesabınız için likit şablon veya eşleme oluşturma
+  > [!NOTE]
+  > **JSON 'DAN JSON 'A dönüştürme-sıvı** eylemi, sıvı için [Shopify uygulamasının](https://shopify.github.io/liquid)belirli durumlarında farklı olan [sıvı için dotlikit uygulamasını](https://github.com/dotliquid/dotliquid)izler. Daha fazla bilgi için bkz. [sıvı şablonu konuları](#template-considerations).
 
-1. Bu örnekte, bu adımda açıklanan örnek likit şablonunu oluşturun. Sıvı şablonunuzda, [dotlikit](https://github.com/dotliquid/dotliquid) ve C# adlandırma kurallarını kullanan [sıvı filtrelerini](https://shopify.github.io/liquid/basics/introduction/#filters)kullanabilirsiniz.
+## <a name="create-the-template"></a>Şablonu oluşturma
 
-   > [!NOTE]
-   > Filtre adlarının şablonunuzda *tümce* kullanmasına dikkat edin. Aksi takdirde, filtreler çalışmaz. Ayrıca, haritalar [Dosya boyutu sınırlarına](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)sahiptir.
+1. JSON dönüştürmesi için eşleme olarak kullandığınız likit şablonu oluşturun. İstediğiniz herhangi bir düzenleyici aracı kullanabilirsiniz.
+
+   Bu örnek için, bu bölümde açıklandığı gibi örnek likit şablonu oluşturun:
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
-   
+
    {
       "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
       "firstNameUpperCase": "{{content.firstName | Upcase}}",
@@ -52,12 +61,18 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
             {%- else -%}
             "{{device}}",
             {%- endif -%}
-        {%- endfor -%}
-        ]
+         {%- endfor -%}
+      ]
    }
    ```
 
-1. [Azure Portal](https://portal.azure.com)Azure Arama kutusuna girin `integration accounts` ve **tümleştirme hesapları**' nı seçin.
+1. Uzantıyı kullanarak şablonu kaydedin `.liquid` . Bu örnekte, kullanılır `SimpleJsonToJsonTemplate.liquid` .
+
+## <a name="upload-the-template"></a>Şablonu karşıya yükle
+
+1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
+
+1. Azure portal arama kutusuna `integration accounts` , **tümleştirme hesapları**' nı girin ve seçin.
 
    !["Tümleştirme hesaplarını" bul](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -71,16 +86,16 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
 
 1. **Haritalar** bölmesinde **Ekle** ' yi seçin ve Haritalarınız için bu ayrıntıları sağlayın:
 
-   | Özellik | Değer | Açıklama | 
+   | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | `JsonToJsonTemplate` | Bu örnekteki "JsonToJsonTemplate" olan haritaınızın adı | 
-   | **Eşleme türü** | **sıvı** | Haritalarınızın türü. JSON-JSON dönüştürmesi için **likit**' i seçmeniz gerekir. | 
+   | **Ad** | `JsonToJsonTemplate` | Bu örnekteki "JsonToJsonTemplate" olan haritaınızın adı |
+   | **Eşleme türü** | **sıvı** | Haritalarınızın türü. JSON-JSON dönüştürmesi için **likit**' i seçmeniz gerekir. |
    | **Harita** | `SimpleJsonToJsonTemplate.liquid` | Bu örnekte "SimpleJsonToJsonTemplate. sıvı" olan dönüştürme için kullanılacak mevcut bir likit şablon veya eşleme dosyası. Bu dosyayı bulmak için dosya seçiciyi kullanabilirsiniz. Harita boyutu sınırları için bkz. [sınırlara ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
-   ||| 
+   |||
 
    ![Likit Şablon Ekle](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
-    
-## <a name="add-the-liquid-action-for-json-transformation"></a>JSON dönüştürmesi için likit eylemi ekleme
+
+## <a name="add-the-liquid-transformation-action"></a>Sıvı dönüştürme eylemini ekleme
 
 1. Azure portal [boş bir mantıksal uygulama oluşturmak](../logic-apps/quickstart-create-first-logic-app-workflow.md)için aşağıdaki adımları izleyin.
 
@@ -117,51 +132,119 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
 
 ## <a name="test-your-logic-app"></a>Mantıksal uygulamanızı test etme
 
-JSON girişini [Postman](https://www.getpostman.com/postman) veya benzer bir araçtan mantıksal uygulamanıza gönderin. Mantıksal uygulamanızdan dönüştürülmüş JSON çıktısı şu örneğe benzer şekilde görünür:
-  
+[Postman](https://www.getpostman.com/postman) veya benzer bir aracı kullanarak, MANTıKSAL uygulamanıza JSON girişi gönderin. Mantıksal uygulamanızdan dönüştürülmüş JSON çıktısı şu örneğe benzer şekilde görünür:
+
 ![Örnek çıkış](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
-## <a name="more-liquid-action-examples"></a>Diğer likit eylem örnekleri
-Sıvı yalnızca JSON dönüşümlerine sınırlı değildir. Aşağıda, sıvı kullanan diğer kullanılabilir dönüştürme eylemleri verilmiştir.
+<a name="template-considerations"></a>
 
-* JSON 'ı metne Dönüştür
-  
-  Bu örnek için kullanılan likit şablon aşağıda verilmiştir:
-   
-   ``` json
-   {{content.firstName | Append: ' ' | Append: content.lastName}}
-   ```
-   Örnek girişler ve çıktılar aşağıda verilmiştir:
-  
-   ![Örnek çıkış JSON-Text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+## <a name="liquid-template-considerations"></a>Sıvı şablonu konuları
 
-* XML 'i JSON 'ye Dönüştür
-  
-  Bu örnek için kullanılan likit şablon aşağıda verilmiştir:
-   
-   ``` json
-   [{% JSONArrayFor item in content -%}
-        {{item}}
-    {% endJSONArrayFor -%}]
-   ```
-   Örnek girişler ve çıktılar aşağıda verilmiştir:
+* Likit şablonlar, Azure Logic Apps [haritalar için dosya boyutu sınırlarını](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits) izler.
 
-   ![Örnek çıkış XML-JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+* **JSON 'DAN JSON 'A dönüştürme-sıvı** eylemi, [sıvı için dotlikit uygulamasını](https://github.com/dotliquid/dotliquid)izler. Bu uygulama, [sıvı Shopify uygulamasındaki](https://shopify.github.io/liquid/) .NET Framework bir bağlantı noktasıdır ve [belirli durumlarda](https://github.com/dotliquid/dotliquid/issues)farklılık gösterir.
 
-* XML 'e metin dönüştürme
-  
-  Bu örnek için kullanılan likit şablon aşağıda verilmiştir:
+  Bilinen farklar şunlardır:
 
-   ``` json
-   {{content.firstName | Append: ' ' | Append: content.lastName}}
-   ```
+  * JSON 'dan **JSON 'A dönüştürme-sıvı** EYLEMI, JSON, XML, HTML vb. içerebilen bir dizeyi yerel olarak verir. Sıvı eylemi yalnızca sıvı şablonundan beklenen metin çıkışının bir JSON dizesi olduğunu gösterir. Bu eylem mantıksal uygulamanızı girişi bir JSON nesnesi olarak ayrıştırmasını ve likit 'in JSON yapısını yorumlayabilmesi için bir sarmalayıcı uygular. Dönüşümden sonra eylem, mantıksal uygulamanızı, sıvı geri 'den JSON 'a doğru metin çıkışını ayrıştırmasını söyler.
 
-   Örnek girişler ve çıktılar aşağıda verilmiştir:
+    Dotlikit, JSON 'u yerel olarak anlamıyor, bu nedenle ters eğik çizgi karakteri ( `\` ) ve diğer tüm ayrılmış JSON karakterlerini attığınızdan emin olun.
 
-   ![Örnek çıkış XML-Text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
+  * Şablonunuz [likit filtreler](https://shopify.github.io/liquid/basics/introduction/#filters)kullanıyorsa, cümle büyük/ *küçük harf*kullanan [dotlikit ve C# adlandırma kurallarını](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing)izlediğinizden emin olun. Tüm sıvı dönüştürmeleri için, şablonunuzda filtre adlarında Ayrıca tümce büyük/küçük harf de kullandığınızdan emin olun. Aksi takdirde, filtreler çalışmaz.
+
+    Örneğin, filtresini kullandığınızda, öğesini `replace` kullanın `Replace` `replace` . Aynı kural, [Dotsıvı online](http://dotliquidmarkup.org/try-online)'da örnekleri denerseniz geçerli olur. Daha fazla bilgi için bkz. [Shopify sıvı Filters](https://shopify.dev/docs/themes/liquid/reference/filters) ve [dotsıvı sıvı Filters](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters). Shopify belirtimi her bir filtreye yönelik örnekleri içerir, bu nedenle karşılaştırma için bu örnekleri Dotlikit ' de deneyebilirsiniz [-çevrimiçi deneyin](https://dotliquidmarkup.org/try-online).
+
+  * `json`Shopify uzantı filtrelerinden gelen filtre Şu anda [dotlikit içinde uygulanmıyor](https://github.com/dotliquid/dotliquid/issues/384). Genellikle, bu filtreyi JSON dize ayrıştırması için metin çıktısı hazırlamak üzere kullanabilirsiniz, ancak bunun yerine filtreyi kullanmanız gerekir `Replace` .
+
+  * `Replace` [Dotlikit](https://github.com/dotliquid/dotliquid/blob/b6a7d992bf47e7d7dcec36fb402f2e0d70819388/src/DotLiquid/StandardFilters.cs#L425) uygulamasındaki standart filtre, [normal ifade (Regex) eşleştirmeyi](/dotnet/standard/base-types/regular-expression-language-quick-reference)kullanır, ancak [Shopify uygulamasının](https://shopify.github.io/liquid/filters/replace/) [basit dize eşlemesi](https://github.com/Shopify/liquid/issues/202)kullanır. Her iki uygulama da, bir RegEx ayrılmış karakteri ya da Match parametresinde bir kaçış karakteri kullanana kadar aynı şekilde çalışır.
+
+    Örneğin, RegEx ile ayrılmış ters eğik çizgi ( `\` ) kaçış karakterini atlamak için, `| Replace: '\\', '\\'` ve kullanın `| Replace: '\', '\\'` . Bu örnekler, `Replace` ters eğik çizgiden çıkmak istediğinizde filtrenin farklı davrandığını gösterir. Bu sürüm başarıyla çalışırken:
+
+    `{ "SampleText": "{{ 'The quick brown fox "jumped" over the sleeping dog\\' | Replace: '\\', '\\' | Replace: '"', '\"'}}"}`
+
+    Bu sonuçla:
+
+    `{ "SampleText": "The quick brown fox \"jumped\" over the sleeping dog\\\\"}`
+
+    Bu sürüm başarısız olur:
+
+    `{ "SampleText": "{{ 'The quick brown fox "jumped" over the sleeping dog\\' | Replace: '\', '\\' | Replace: '"', '\"'}}"}`
+
+    Bu hatayla:
+
+    `{ "SampleText": "Liquid error: parsing "\" - Illegal \ at end of pattern."}`
+
+    Daha fazla bilgi için bkz [. Replace standart filtresi Regex model eşleştirmeyi kullanır...](https://github.com/dotliquid/dotliquid/issues/385)
+
+  * `Sort` [Dotlikit uygulamasındaki](https://github.com/dotliquid/dotliquid/blob/b6a7d992bf47e7d7dcec36fb402f2e0d70819388/src/DotLiquid/StandardFilters.cs#L326) filtre, bir dizi veya koleksiyondaki öğeleri özelliğe göre sıralar, ancak şu farklılıklar vardır:<p>
+
+    * [Shopify 'in sıralama davranışını](https://shopify.github.io/liquid/filters/sort/)değil, [Shopify sort_natural davranışını](https://shopify.github.io/liquid/filters/sort_natural/)izler.
+
+    * Yalnızca dize alfasayısal düzeninde sıralar. Daha fazla bilgi için bkz. [sayısal sıralama](https://github.com/Shopify/liquid/issues/980).
+
+    * Büyük/küçük harfe duyarlı sıra değil, *büyük/küçük harfe duyarsız* sırayı kullanır. Daha fazla bilgi için bkz. [sıralama filtresi, Shopify 'ın belirtiminden büyük/küçük harf davranışını izlemez]( https://github.com/dotliquid/dotliquid/issues/393).
+
+<a name="other-transformations"></a>
+
+## <a name="other-transformations-using-liquid"></a>Sıvı kullanan diğer dönüşümler
+
+Sıvı yalnızca JSON dönüşümlerine sınırlı değildir. Ayrıca, diğer dönüştürmeleri gerçekleştirmek için likit de kullanabilirsiniz. Örneğin:
+
+* [JSON-metin](#json-text)
+* [XML-JSON](#xml-json)
+* [XML 'den metne](#xml-text)
+
+<a name="json-text"></a>
+
+### <a name="transform-json-to-text"></a>JSON 'ı metne Dönüştür
+
+Bu örnek için kullanılan likit şablon aşağıda verilmiştir:
+
+```json
+{{content.firstName | Append: ' ' | Append: content.lastName}}
+```
+
+Örnek girişler ve çıktılar aşağıda verilmiştir:
+
+![Örnek çıkış JSON-Text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+
+<a name="xml-json"></a>
+
+### <a name="transform-xml-to-json"></a>XML 'i JSON 'ye Dönüştür
+
+Bu örnek için kullanılan likit şablon aşağıda verilmiştir:
+
+``` json
+[{% JSONArrayFor item in content -%}
+      {{item}}
+  {% endJSONArrayFor -%}]
+```
+
+`JSONArrayFor`Döngü, sondaki virgülden KAÇıNACAK JSON yükleri oluşturabilmeniz IÇIN XML girişi için özel bir döngü mekanizmasıdır. Ayrıca, `where` Bu özel döngü mekanizmasının koşulu, diğer likit filtreleri gibi öğenin değeri yerine karşılaştırma IÇIN XML öğesinin adını kullanır. Daha fazla bilgi için bkz. [Set-Body Policy-nesnelerin koleksiyonları](https://azure.microsoft.com/blog/deep-dive-on-set-body-policy).
+
+Örnek girişler ve çıktılar aşağıda verilmiştir:
+
+![Örnek çıkış XML-JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+
+<a name="xml-text"></a>
+
+### <a name="transform-xml-to-text"></a>XML 'e metin dönüştürme
+
+Bu örnek için kullanılan likit şablon aşağıda verilmiştir:
+
+``` json
+{{content.firstName | Append: ' ' | Append: content.lastName}}
+```
+
+Örnek girişler ve çıktılar aşağıda verilmiştir:
+
+![Örnek çıkış XML-Text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Enterprise Integration Pack hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack hakkında bilgi edinin")  
-* [Haritalar hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-maps.md "Kurumsal tümleştirme haritaları hakkında bilgi edinin")  
-
+* [Shopify sıvı dili ve örnekleri](https://shopify.github.io/liquid/basics/introduction/)
+* [Dotlikit](http://dotliquidmarkup.org/)
+* [Dotsıvı-çevrimiçi deneyin](https://dotliquidmarkup.org/try-online)
+* [Dotsıvı GitHub](https://github.com/dotliquid/dotliquid)
+* [Dotlikit GitHub sorunları](https://github.com/dotliquid/dotliquid/issues/)
+* [Haritalar](../logic-apps/logic-apps-enterprise-integration-maps.md) hakkında daha fazla bilgi edinin

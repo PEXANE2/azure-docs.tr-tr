@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 33c3cf4b9da33b15d7a7d1c14b0c3fb892b60121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317816"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503574"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
 ## <a name="transactions-by-publishing-option"></a>Yayımlama seçeneğine göre işlemler
 
-Yayımcı veya Microsoft, ticari Market 'teki teklifler için yazılım lisansı işlemlerini yönetmekten sorumludur. Teklifiniz için seçtiğiniz yayımlama seçeneği, işlemi kimin yönettiğini belirleyeceğini tespit eder. Her yayımlama seçeneğinin kullanılabilirliği ve açıklamaları için [Yayımlama seçeneğinizi belirleme](./determine-your-listing-type.md#choose-a-publishing-option) konusuna bakın.
+Yayımcı veya Microsoft, ticari Market 'teki teklifler için yazılım lisansı işlemlerini yönetmekten sorumludur. Teklifiniz için seçtiğiniz yayımlama seçeneği, işlemi kimin yönettiğini belirleyeceğini tespit eder. Her yayımlama seçeneğinin kullanılabilirliği ve açıklamaları için [Yayımlama seçeneğinizi belirleme](./determine-your-listing-type.md#choose-a-call-to-action) konusuna bakın.
 
 ### <a name="list-trial-and-byol-publishing-options"></a>List, deneme ve KLG yayımlama seçenekleri
 
@@ -136,7 +136,7 @@ Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır 
 |Microsoft, lisans maliyetinizi %80 oranında ödetir <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %90 oranında ödetir   |   $80,00/ay <br> \*$90,00/ay    |
 |Microsoft, lisans maliyetlerinizin %20 ' sini tutar <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %10 oranında tutar.  |  $20,00/ay <br> \*$10,00     |
 
-Microsoft, ticari Market 'te yayımladığınız bazı tekliflerle ilgili Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incetivized olarak belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized SaaS, VM 'Ler, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için geçerlidir.
+Microsoft, ticari Market 'te yayımladığınız bazı tekliflerle ilgili Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized SaaS, VM 'Ler, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için geçerlidir.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Müşteri Faturalama, ödeme, faturalandırma ve koleksiyonlar
 
@@ -163,7 +163,7 @@ Müşteriler genellikle Kurumsal Anlaşma veya kredi kartı etkin bir Kullandık
 
 #### <a name="billing-questions-and-support"></a>Faturalandırma soruları ve destek
 
-Daha fazla bilgi ve yasal ilkeler için bkz. [Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (Iş Ortağı Merkezi 'nde kullanılabilir).
+Daha fazla bilgi ve yasal ilkeler için bkz. [Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (Iş Ortağı Merkezi 'nde kullanılabilir).
 
 Faturalandırma soruları hakkında yardım almak için [ticari Market yayımcı desteği](https://aka.ms/marketplacepublishersupport)'ne başvurun.
 

@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 40dd7f1b177fd1319b145036c8263ba2c6e30137
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024681"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492165"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Öğretici: Azure Active Directory Domain Services (Önizleme) içinde şirket içi etki alanına giden bir orman güveni oluşturma
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Öğretici: Azure Active Directory Domain Services ' de şirket içi etki alanına giden bir orman güveni oluşturma
 
-Parola karmalarını eşitleyemeyen ortamlarda veya parolasını bilmiyor olmaları için akıllı kartlar kullanarak özel olarak oturum açma kullanıcılarına sahip olduğunuz ortamlarda, Azure Active Directory Domain Services (Azure AD DS) içinde bir kaynak ormanı kullanabilirsiniz. Kaynak ormanı, Azure AD DS bir veya daha fazla şirket içi AD DS ortamına tek yönlü bir giden güven kullanır. Bu güven ilişkisi, kullanıcıların, uygulamaların ve bilgisayarların Azure AD DS yönetilen etki alanındaki şirket içi bir etki alanında kimlik doğrulaması yapmasını sağlar. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
+Parola karmalarını eşitleyemeyen ortamlarda veya parolasını bilmiyor olmaları için akıllı kartlar kullanarak özel olarak oturum açma kullanıcılarına sahip olduğunuz ortamlarda, Azure Active Directory Domain Services (Azure AD DS) içinde bir kaynak ormanı kullanabilirsiniz. Kaynak ormanı, Azure AD DS bir veya daha fazla şirket içi AD DS ortamına tek yönlü bir giden güven kullanır. Bu güven ilişkisi, kullanıcıların, uygulamaların ve bilgisayarların Azure AD DS yönetilen etki alanındaki şirket içi bir etki alanında kimlik doğrulaması yapmasını sağlar. Bir kaynak ormanında, şirket içi parola karmaları hiçbir zaman eşitlenmez.
 
 ![Azure AD DS şirket içi AD DS orman güveninin diyagramı](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 

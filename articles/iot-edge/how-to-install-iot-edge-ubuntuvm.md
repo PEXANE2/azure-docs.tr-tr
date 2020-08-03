@@ -9,16 +9,17 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e70b22b3edaae96e00306d5d0a93d229e11aac41
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800571"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494086"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
 
-Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürür. Çalışma zamanı, cihazlarda Raspberry Pi kadar küçük veya endüstriyel sunucu olarak büyük olarak dağıtılabilir. Bir cihaz IoT Edge çalışma zamanına göre yapılandırıldıktan sonra, buluta iş mantığı dağıtmaya başlayabilirsiniz.
+Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürür. Çalışma zamanı, cihazlarda Raspberry Pi kadar küçük veya endüstriyel sunucu olarak büyük olarak dağıtılabilir. Bir cihaz IoT Edge çalışma zamanıyla yapılandırıldığında, buluttan cihaza iş mantığını dağıtmaya başlayabilirsiniz.
 
 IoT Edge çalışma zamanının nasıl çalıştığı ve hangi bileşenlerin dahil olduğu hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
@@ -32,14 +33,14 @@ Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yü
 [Azure 'A dağıt düğmesi](../azure-resource-manager/templates/deploy-to-azure-button.md) , GitHub 'da tutulan [Azure Resource Manager şablonlarının](../azure-resource-manager/templates/overview.md) kolaylaştırılmış şekilde dağıtılmasını sağlar.  Bu bölümde, [ıotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) proje deposunda bulunan Azure 'A dağıt düğmesinin kullanımı gösterilmektedir.  
 
 
-1. İotedge-VM-Deploy Azure Resource Manager şablonunu kullanarak Azure IoT Edge etkinleştirilmiş bir Linux sanal makinesi dağıtacağız.  Başlamak için aşağıdaki düğmeye tıklayın:
+1. İotedge-VM-Deploy Azure Resource Manager şablonunu kullanarak Azure IoT Edge etkinleştirilmiş bir Linux sanal makinesi dağıtacağız.  Başlangıç olarak aşağıdaki düğmeye tıklayın:
 
-    [![Iotedge-VM-Deploy için Azure 'a dağıtma düğmesi](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+    [![iotedge-vm-deploy için Azure Düğmesini dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 1. Yeni başlatılan penceresinde, kullanılabilir form alanlarını girin:
 
     > [!div class="mx-imgBorder"]
-    > [![İotedge-VM-Deploy şablonunu gösteren ekran görüntüsü](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
+    > [![iotedge-vm-deploy şablonunu gösteren ekran görüntüsü](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
 
     **Abonelik**: sanal makineyi dağıtmak Için etkin Azure aboneliği.
 
@@ -63,9 +64,9 @@ Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yü
 
     Tüm alanlar doldurulduktan sonra, koşulları kabul etmek için sayfanın altındaki onay kutusunu seçin ve dağıtımı başlatmak için **satın al** ' ı seçin.
 
-1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Bir sanal makine kaynağı seçili kaynak grubuna dağıtılmış olmalıdır.  Makine adını, bu biçimde olmalıdır `vm-0000000000000` . Ayrıca, ilişkili **DNS adını**, biçiminde olması gereken bir yere göz atın `<dnsLabelPrefix>` . `<location>` cloudapp.azure.com.
+1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Seçilen kaynak grubuna bir sanal makine kaynağı dağıtılmış olmalıdır.  Makine adını, bu biçimde olmalıdır `vm-0000000000000` . Ayrıca ilişkili **DNS Adı**’nı da not alın; bu ad `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com biçiminde olmalıdır.
 
-    **DNS adı** , Azure Portal içindeki yeni dağıtılan sanal makinenin **genel bakış** bölümünden elde edilebilir.
+    **DNS Adı**, Azure portalında yeni dağıtılan sanal makinenin **Genel Bakış** bölümünden alınabilir.
 
     > [!div class="mx-imgBorder"]
     > [![İotedge VM 'sinin DNS adını gösteren ekran görüntüsü](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
@@ -138,7 +139,7 @@ Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yü
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
     ```
 
-1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Bir sanal makine kaynağı seçili kaynak grubuna dağıtılmış olmalıdır.  Makine adını, bu biçimde olmalıdır `vm-0000000000000` . Ayrıca, ilişkili **DNS adını**, biçiminde olması gereken bir yere göz atın `<dnsLabelPrefix>` . `<location>` cloudapp.azure.com.
+1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Seçilen kaynak grubuna bir sanal makine kaynağı dağıtılmış olmalıdır.  Makine adını, bu biçimde olmalıdır `vm-0000000000000` . Ayrıca ilişkili **DNS Adı**’nı da not alın; bu ad `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com biçiminde olmalıdır.
 
     **DNS adı** , önceki ADıMDA bulunan JSON biçimli çıktısından, **Genel SSH** girişinin bir parçası olarak **çıktılar** bölümünde elde edilebilir.  Bu girdinin değeri, yeni dağıtılan makineye SSH eklemek için kullanılabilir.
 

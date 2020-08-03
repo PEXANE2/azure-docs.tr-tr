@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplı�
 description: Bu hızlı başlangıçta, .NET için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlama gösterilmektedir. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 06aaf8861a263711ab3d01e6355bc161538a3311
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0dfabfa1357543e4011412c0a9f63061e8856019
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114580"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507187"
 ---
 .NET için Soru-Cevap Oluşturma istemci kitaplığı 'nı kullanın:
 
@@ -109,7 +109,7 @@ Bir JSON nesnesi göndererek bilgi bankaınızı yönetin. Anında işlemler iç
 
 Tahmin Soru-Cevap Oluşturma istemcisi, Bilgi Bankası yayımlandıktan sonra yazma istemci çağrısından döndürülen tahmin çalışma zamanı anahtarınızı içeren Microsoft. Rest. ServiceClientCredentials kullanarak Azure 'da kimlik doğrulayan bir [Qnamakerruntimeclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) nesnesidir `client.EndpointKeys.GetKeys` .
 
-Sorgu çalışma zamanından bir yanıt almak için [generateanswer](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswer?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_RuntimeExtensions_GenerateAnswer_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_IRuntime_System_String_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_) metodunu kullanın.
+Sorgu çalışma zamanından bir yanıt almak için [generateanswer](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions) metodunu kullanın.
 
 ## <a name="code-examples"></a>Kod örnekleri
 

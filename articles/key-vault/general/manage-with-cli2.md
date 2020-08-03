@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 127f0cdfc8cecf9789a68210f4b7ce1927333cc8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: dc60d2b6cef8ad19526c5ec243ae1c43529954a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422588"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504543"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLı kullanarak Key Vault yönetme 
 
@@ -38,7 +39,7 @@ Azure Anahtar Kasası çoğu bölgede kullanılabilir. Daha fazla bilgi için bk
 
 Azure Key Vault genel bir bakış için bkz. [Azure Key Vault nedir?](overview.md)) Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki Azure CLı komutlarını kullanmak için aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -115,9 +116,9 @@ az account list-locations
 az provider register -n Microsoft.KeyVault
 ```
 
-### <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
+### <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
 
-Bir anahtar `az keyvault create` Kasası oluşturmak için komutunu kullanın. Bu betik üç zorunlu parametreye sahiptir: bir kaynak grubu adı, bir Anahtar Kasası adı ve coğrafi konum.
+`az keyvault create`Bir Anahtar Kasası oluşturmak için komutunu kullanın. Bu betik üç zorunlu parametreye sahiptir: bir kaynak grubu adı, bir Anahtar Kasası adı ve coğrafi konum.
 
 **Contosokeykasası**adında yeni bir kasa oluşturmak için, **Doğu Asya** konumunda bulunan **contosoresourcegroup**kaynak grubunda şunu yazın: 
 
@@ -128,7 +129,7 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 Bu komutun çıktısı, oluşturduğunuz anahtar kasasının özelliklerini gösterir. En önemli iki özellik şunlardır:
 
 * **ad**: örnekte, Contosokeykasası adı. Bu adı diğer Key Vault komutları için kullanacaksınız.
-* **Vaulturi**: örnekte URI kullanılır https://contosokeyvault.vault.azure.net. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+* **Vaulturi**: örnekte URI kullanılır https://contosokeyvault.vault.azure.net . REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Azure hesabınız artık bu anahtar kasasında herhangi bir işlemi gerçekleştirmeye yetkilidir. Henüz hiç olmadığı için, başka hiç kimse yetkili değil.
 
@@ -146,7 +147,7 @@ az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" -
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Artık oluşturduğunuz veya Azure Key Vault ' a yüklediğiniz anahtara URI 'sini kullanarak başvurabilirsiniz. Her **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** zaman geçerli sürümü almak için kullanın. Bu belirli sürümü almak için https://[keykasası-Name]. kasa. Azure. net/Keys/[KeyName]/[key-Unique-ID] kullanın. Örneğin, **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+Artık oluşturduğunuz veya Azure Key Vault ' a yüklediğiniz anahtara URI 'sini kullanarak başvurabilirsiniz. **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey**Her zaman geçerli sürümü almak için kullanın. Bu belirli sürümü almak için https://[keykasası-Name]. kasa. Azure. net/Keys/[KeyName]/[key-Unique-ID] kullanın. Örneğin, **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
 
 Kasaya bir gizli dizi ekleyin, bu, SQLPassword adlı bir paroladır ve "hVFkk965BuUv" değerini Azure Anahtar Kasası 'na taşır. 
 
@@ -154,7 +155,7 @@ Kasaya bir gizli dizi ekleyin, bu, SQLPassword adlı bir paroladır ve "hVFkk965
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Bu parolaya URI 'sini kullanarak başvurun. Bu **https://ContosoVault.vault.azure.net/secrets/SQLPassword** belirli sürümü almak için her zaman geçerli sürümü almak için kullanın ve https://[keykasaadı]. kasa. Azure. net/Secret/[gizli-adı]/[gizli-Unique-ID]. Örneğin, **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
+Bu parolaya URI 'sini kullanarak başvurun. **https://ContosoVault.vault.azure.net/secrets/SQLPassword**Bu belirli sürümü almak için her zaman geçerli sürümü almak için kullanın ve https://[keykasaadı]. kasa. Azure. net/Secret/[gizli-adı]/[gizli-Unique-ID]. Örneğin, **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
 
 . Pek veya. pfx kullanarak kasaya bir sertifika aktarın.
 
@@ -191,7 +192,7 @@ Bir anahtar kasası kullanan uygulamaların, Azure Active Directory'den bir beli
 - **Uygulama kimliği** (AAD istemci kimliği veya AppID olarak da bilinir)
 - **Kimlik doğrulaması anahtarı** (paylaşılan gizli dizi olarak da bilinir). 
 
-Uygulamanın bir belirteç almak için bu değerlerin her ikisini de Azure Active Directory'ye sunması gerekir. Bir uygulama belirteç almak üzere yapılandırıldığında uygulamaya bağlı olur. [Key Vault örnek uygulaması](https://www.microsoft.com/download/details.aspx?id=45343)için uygulama sahibi bu değerleri App. config dosyasında ayarlar.
+Uygulamanın bir belirteç almak için bu değerlerin her ikisini de Azure Active Directory'ye sunması gerekir. Bir uygulama belirteç almak üzere yapılandırıldığında uygulamaya bağlı olur. [Key Vault örnek uygulaması](https://www.microsoft.com/download/details.aspx?id=45343)için uygulama sahibi bu değerleri app.config dosyasında ayarlar.
 
 Bir uygulamayı Azure Active Directory ile kaydetme hakkında ayrıntılı adımlar için, [uygulamaları Azure Active Directory Ile tümleştirme](../../active-directory/develop/active-directory-integrating-applications.md)başlıklı makaleleri gözden geçirmeniz, [portala erişebilecek bir Azure Active Directory uygulaması ve hizmet sorumlusu oluşturmak](../../active-directory/develop/howto-create-service-principal-portal.md)ve [Azure CLI Ile bir Azure hizmet sorumlusu oluşturmak](/cli/azure/create-an-azure-service-principal-azure-cli)için Portal 'ı kullanmanız gerekir.
 
@@ -274,7 +275,7 @@ Bu BYOK paketini oluşturma hakkında daha ayrıntılı yönergeler için bkz. [
 
 ## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>Anahtar kasasını ve ilişkili anahtarları ve gizli dizileri silme
 
-Artık anahtar kasası ve anahtarları veya gizli dizileri gerekmiyorsa, şu `az keyvault delete` komutu kullanarak anahtar kasasını silebilirsiniz:
+Artık anahtar kasası ve anahtarları veya gizli dizileri gerekmiyorsa, şu komutu kullanarak anahtar kasasını silebilirsiniz `az keyvault delete` :
 
 ```azurecli
 az keyvault delete --name "ContosoKeyVault"

@@ -1,5 +1,5 @@
 ---
-title: Dahili Load Balancer oluşturma-Azure CLı
+title: İç Load Balancer oluşturma - Azure CLI
 titleSuffix: Azure Load Balancer
 description: Bu makalede, Azure CLı kullanarak iç yük dengeleyici oluşturmayı öğrenin
 services: load-balancer
@@ -8,17 +8,17 @@ author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 2557ac6f3fb8e9091faad5c9c219db529838495d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 9a1587efc07cf852fe9389cc9bf39e693373ef89
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921712"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502333"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI kullanarak sanal makinelerin yük dengelemesi için iç yük dengeleyici oluşturma
 
