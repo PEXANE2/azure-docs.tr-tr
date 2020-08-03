@@ -1,5 +1,5 @@
 ---
-title: Node. js ' de REST çağrısıyla amacı al
+title: Node.js REST çağrısıyla amacı alın
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,16 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 05142c1d98906a591fae41658c5c7b9d36cdb8c4
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0c8217ba2c8c6c7681e649f4e519ef14ced6f596
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418077"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405287"
 ---
 [Başvuru belgeleri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Örnek](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-predict-with-rest/predict.js)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/) programlama dili
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -26,9 +27,9 @@ ms.locfileid: "84418077"
 
 [!INCLUDE [Create pizza app](get-started-get-intent-create-pizza-app.md)]
 
-## <a name="create-the-nodejs-project"></a>Node. js projesini oluşturma
+## <a name="create-the-nodejs-project"></a>Node.js projesi oluşturma
 
-1. Node. js projenizi (gibi) tutmak için yeni bir klasör oluşturun `node-predict-with-rest` .
+1. Node.js projenizi barındırmak için yeni bir klasör oluşturun (örneğin,) `node-predict-with-rest` .
 
 1. Yeni bir komut Istemi açın, oluşturduğunuz klasöre gidin ve aşağıdaki komutu yürütün:
 
@@ -48,7 +49,7 @@ ms.locfileid: "84418077"
 
 ## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
-[Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucu almak için Node. js ' i kullanın.
+[Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucu almak için Node.js kullanın.
 
 1. Aşağıdaki kod parçacığını adlı bir dosyaya kopyalayın `predict.js` :
 

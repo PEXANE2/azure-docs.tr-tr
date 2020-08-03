@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85570223"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425189"
 ---
 Bu adımda, kaç tane Azure dosya paylaşımının gerekli olduğunu değerlendirirsiniz. Tek bir Windows Server örneği (veya kümesi), 30 adede kadar Azure dosya paylaşımını eşitleyebilir.
 
@@ -68,7 +68,7 @@ Sizin durumunuzda, bir klasör kümesi aynı Azure dosya paylaşımıyla mantık
 
 :::row:::
     :::column:::
-        [![](media/storage-files-migration-namespace-mapping/namespace-mapping.png "An example of a mapping table. Download the file below to experience and use the content of this image.")](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
+        [![Eşleme tablosuna bir örnek. Bu görüntünün içeriğini denemek ve kullanmak için aşağıdaki dosyayı indirin.](media/storage-files-migration-namespace-mapping/namespace-mapping.png)](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
     :::column-end:::
     :::column:::
         Kaç Azure dosya paylaşımının gerekli olduğunu ve mevcut verilerinizin hangi bölümlerinin Azure dosya paylaşımında biteceğini belirlemede yardımcı olması için önceki kavramların birleşimini kullanın.

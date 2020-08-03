@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.openlocfilehash: ac2f83c824014e16cfbe9ab18483b914ed8b077d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f5a3b48fd6be48d468b66009a77de100962be10d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136770"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405084"
 ---
 JavaScript için Bing Varlık Arama istemci kitaplığıyla varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)' da bulunabilir.
 
@@ -21,12 +22,12 @@ JavaScript için Bing Varlık Arama istemci kitaplığıyla varlıkları aramaya
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 
-* [Node. js için Bing varlık arama SDK 'sı](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
+* [Node.jsiçin BING VARLıK arama SDK](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 
 Bing Varlık Arama SDK 'sını yüklemek için:
 
-1. Geliştirme `npm install ms-rest-azure` ortamınızda çalıştırın.
-2. Geliştirme `npm install @azure/cognitiveservices-entitysearch` ortamınızda çalıştırın.
+1. `npm install ms-rest-azure`Geliştirme ortamınızda çalıştırın.
+2. `npm install @azure/cognitiveservices-entitysearch`Geliştirme ortamınızda çalıştırın.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -40,7 +41,7 @@ Bing Varlık Arama SDK 'sını yüklemek için:
     const EntitySearchAPIClient = require('@azure/cognitiveservices-entitysearch');
     ```
 
-2. Abonelik anahtarınızı `CognitiveServicesCredentials` kullanarak bir örnek oluşturun. Ardından, bununla birlikte arama istemcisinin bir örneğini oluşturun.
+2. `CognitiveServicesCredentials`Abonelik anahtarınızı kullanarak bir örnek oluşturun. Ardından, bununla birlikte arama istemcisinin bir örneğini oluşturun.
 
     ```javascript
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
@@ -49,7 +50,7 @@ Bing Varlık Arama SDK 'sını yüklemek için:
 
 ## <a name="send-a-request-and-receive-a-response"></a>İstek gönderme ve yanıt alma
 
-1. İle `entitiesOperations.search()`bir varlık arama isteği gönderin. Bir yanıt aldıktan sonra, döndürülen sonuç sayısını `queryContext`ve ilk sonucun açıklamasını yazdırın.
+1. İle bir varlık arama isteği gönderin `entitiesOperations.search()` . Bir yanıt aldıktan sonra, `queryContext` döndürülen sonuç sayısını ve ilk sonucun açıklamasını yazdırın.
 
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 07/28/2020
 ms.topic: include
-ms.custom: include file
+ms.custom: include file, devx-track-javascript
 ms.author: diberry
-ms.openlocfilehash: 6d805dfc15264a34abe1f177f688dae96d4a49f7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 88a9c2f18237974a0188f6cf387bf98ebfa2b211
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369464"
+ms.locfileid: "87425121"
 ---
 Node.js için Language Understanding (LUSıS) yazma istemci kitaplığını kullanın:
 
@@ -27,7 +27,7 @@ Node.js için Language Understanding (LUSıS) yazma istemci kitaplığını kull
 
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring)  |  [Yazma paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [çalışma zamanı paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Language Understanding yazma kaynağı: [Azure Portal bir tane oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
@@ -65,7 +65,7 @@ Language Understanding (LUSıS) yazma istemcisi, yazma anahtarınızı içeren A
 
 Bu kod parçacıkları, Node.js için Language Understanding (LUSıS) yazma istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
 
-* [Uygulama oluşturma](#create-a-luis-app)
+* [Uygulama oluşturun](#create-a-luis-app)
 * [Varlık ekleme](#create-entities-for-the-app)
 * [Hedef ekleme](#create-intent-for-the-app)
 * [Örnek konuşmalar ekleme](#add-example-utterance-to-intent)

@@ -3,26 +3,25 @@ title: Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler 
 description: Azure Ayrılmış Sanal Makine Örnekleri’ni nasıl değiştirebileceğinizi veya para iadesi alabileceğinizi öğrenin.
 author: yashesvi
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 07/01/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 3f41f26e6934e156ab38340a74e2c070b26cefb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807698"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287645"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Rezervasyonları için self servis değişimler ve para iadeleri
 
-Azure Ayrılmış Sanal Makine Örnekleri, değişen ihtiyaçlarınızın karşılanmasına yardımcı olma esnekliği sağlar. Bir rezervasyonu aynı türdeki başka bir rezervasyonla değiştirebilirsiniz; diğer bir deyişle sanal makine rezervasyonu, herhangi bir sanal makine boyutu veya bölgesi için rezervasyon almak üzere değiştirilebilir. Benzer şekilde SQL PaaS Veritabanı rezervasyonu, herhangi bir SQL PaaS Veritabanı türü veya bölgesi için rezervasyon satın almak üzere değiştirilebilir. Ayrıca rezervasyonlar için para iadesi de alabilirsiniz ama 12 aylık bir zaman penceresinde iptal edilen rezervasyon taahhüdünün toplamı 50.000 ABD Dolarını aşamaz. Azure Databricks ayrılmış kapasitesi, CloudSimple Azure VMware çözümü rezervasyonu, Azure Red Hat Açık Vardiya rezervasyonu, Red Hat planları ve SUSE Linux planları para iadesine uygun değildir.
+Azure Ayrılmış Sanal Makine Örnekleri, değişen ihtiyaçlarınızın karşılanmasına yardımcı olma esnekliği sağlar. Bir rezervasyonu aynı türdeki başka bir rezervasyonla değiştirebilirsiniz. Örneğin, bir sanal makine rezervasyonunu değiştirerek başka bir sanal makine boyutu veya bölgesi için başka bir rezervasyon satın alabilirsiniz. Benzer şekilde SQL PaaS Veritabanı rezervasyonu, başka bir SQL PaaS Veritabanı türü veya bölgesi için rezervasyon satın almak üzere değiştirilebilir. Ayrıca rezervasyonlar için para iadesi de alabilirsiniz ama faturalama kapsamınızdaki (EA; Microsoft Müşteri Sözleşmesi ve Microsoft İş Ortağı Sözleşmesi gibi) tüm iptal edilen rezervasyon taahhütlerinin toplamı son 12 aylık hareketli zaman penceresinde 50.000 ABD Dolarını aşamaz. Azure Databricks ayrılmış kapasitesi, CloudSimple Azure VMware çözümü rezervasyonu, Azure Red Hat Açık Vardiya rezervasyonu, Red Hat planları ve SUSE Linux planları para iadesine uygun değildir.
 
 Self servis değişim ve iptal özelliği US Government Kurumsal Anlaşma müşterileri tarafından kullanılamaz. Kullandıkça Öde ve Bulut Çözümü Sağlayıcısı (CSP) da dahil olmak üzere diğer US Government abonelik türleri desteklenir.
 
-Mevcut rezervasyonu değiştirmek veya para iadesi almak için Rezervasyon Siparişi üzerinde sahip erişiminiz olmalıdır. [Rezervasyonu yönetebilecek kullanıcıları ekleyebilir veya değiştirebilirsiniz](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
-
 > [!NOTE]
-> Microsoft şu anda rezervasyon para iadelerinde erken sonlandırma ücretlerini almamaktadır. Gelecekte yapılacak para iadelerinde ücretleri alabiliriz. Şu anda bu ücretin etkinleştirileceği tarihi belirlemedik.
+> - **Mevcut rezervasyonu değiştirmek veya para iadesi almak için Rezervasyon Siparişi üzerinde sahip erişiminiz olmalıdır**. [Rezervasyonu yönetebilecek kullanıcıları ekleyebilir veya değiştirebilirsiniz](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - Microsoft şu anda rezervasyon para iadelerinde erken sonlandırma ücretlerini almamaktadır. Gelecekte yapılacak para iadelerinde ücretleri alabiliriz. Şu anda bu ücretin etkinleştirileceği tarihi belirlemedik.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Mevcut rezervasyonu değiştirme veya rezervasyon için para iadesi alma
 
@@ -76,7 +75,8 @@ Azure, iptaller, değişimler ve para iadeleri için aşağıdaki ilkelere sahip
 **Para iadesi ilkeleri**
 
 - Şu anda erken sonlandırma ücreti almıyoruz ama gelecekte iptaller için %12 erken sonlandırma ücreti uygulanabilir.
-- Toplam iptal edilen taahhüt 12 aylık zaman penceresinde 50.000 ABD dolarını aşamaz. Örnek: Aylık 100 ABD Doları tutarında olan ve 18. ayda para iadesi yapılan üç yıllık bir rezervasyon için, iptal edilen taahhüt 1.800 ABD Dolarıdır. Para iadesinden sonra, yeni kullanılabilir para iadesi limitiniz 48.200 ABD Doları olur. Bu para iadesinden 365 gün sonra 48.200 ABD Doları limiti 1.800 ABD Doları daha artırılarak yeni havuzunuz 50.000 ABD Doları olur. Diğer tüm rezervasyon iptalleri aynı havuzdan düşülür ve aynı yenileme mantığı uygulanır.
+- Faturalama profili veya tek bir kayıt için iptal edilen toplam taahhüt son 12 aylık hareketli zaman penceresinde 50.000 ABD Dolarını aşamaz. Örneğin aylık 100 ABD Doları tutarında olan ve 18. ayda para iadesi yapılan üç yıllık bir rezervasyon için, iptal edilen taahhüt 1.800 ABD Dolarıdır. Para iadesinden sonra, yeni kullanılabilir para iadesi limitiniz 48.200 ABD Doları olur. Para iadesinden 365 gün sonra 48.200 ABD Doları tutarındaki limit 1.800 ABD Doları daha artırılarak yeni havuzunuz 50.000 ABD Doları olur. Faturalama profili veya EA kaydı için diğer tüm rezervasyon iptalleri aynı havuzdan düşülür ve aynı yenileme mantığı uygulanır.
+- Azure bir faturalama profili veya EA kaydı için son 12 aylık sürede 50.000 ABD Doları sınırını aşan hiçbir para iadesini işlemez.
 - Para iadeleri, satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır.
 - Yalnızca rezervasyon siparişi sahipleri para iadesini işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 

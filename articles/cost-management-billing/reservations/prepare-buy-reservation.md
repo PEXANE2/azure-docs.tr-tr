@@ -4,15 +4,15 @@ description: Azure rezervasyonu satın almanıza yardımcı olan önemli noktala
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 05/04/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 68bcf725a6043b8ab19717845fa8005de2f88e35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807792"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287631"
 ---
 # <a name="buy-a-reservation"></a>Ayırma satın alma
 
@@ -34,9 +34,12 @@ Bir rezervasyonu bir abonelik veya kaynak gruplarının kapsamına alabilirsiniz
 
 Gereksinimlerinize bağlı olarak bir rezervasyonu kapsama almak için üç seçeneğiniz vardır:
 
-- **Tek kaynak grubu kapsamı**—Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.
-- **Tek abonelik kapsamı**—Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.
-- **Paylaşılan kapsam**—Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. Kurumsal Anlaşma müşterileri için faturalama bağlamı kayıttır. Microsoft Müşteri Sözleşmesi müşterileri için faturalama kapsamı, faturalama profilidir. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
+- **Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.
+- **Tek abonelik kapsamı**: Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.
+- **Paylaşılan kapsam**: Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular.
+    - Kurumsal Anlaşma müşterileri için faturalama bağlamı kayıttır. Rezervasyon paylaşılan kapsamı bir kayıttaki birden fazla Active Directory kiracısını içerebilir.
+    - Microsoft Müşteri Sözleşmesi müşterileri için faturalama kapsamı, faturalama profilidir.
+    - Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
 
 Kullanımınıza rezervasyon indirimleri uygulanırken, Azure rezervasyonu aşağıdaki sırayla işler:
 

@@ -3,12 +3,13 @@ title: 'Hızlı başlangıç: Node.js için Soru-Cevap Oluşturma istemci kitapl
 description: Bu hızlı başlangıçta, Node.js için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlama gösterilmektedir.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 7b3c5e69e820951896cb00b82295dc07ba698c94
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114570"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404098"
 ---
 Node.js için Soru-Cevap Oluşturma istemci kitaplığını kullanın:
 

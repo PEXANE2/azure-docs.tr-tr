@@ -1,5 +1,5 @@
 ---
-title: Modern okuyucu Node. js istemci kitaplığı hızlı başlangıç
+title: Modern okuyucu Node.js istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturup tam ekran okuyucusu API işlevini eklersiniz.
 services: cognitive-services
@@ -9,12 +9,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2092ccbedd95ee13ac4ad929f052afd1d85729ec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d0d5c77fde24b705dbfa7ac44b0d32f0967d1526
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268724"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425261"
 ---
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
@@ -22,15 +23,15 @@ Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturur ve tam ekra
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
-* [Node. js](https://nodejs.org/) ve [Yarn](https://yarnpkg.com)
+* [Node.js](https://nodejs.org/) ve [Yarn](https://yarnpkg.com)
 * [Visual Studio Code](https://code.visualstudio.com/) gıbı bir IDE
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Express ile Node. js web uygulaması oluşturma
+## <a name="create-a-nodejs-web-app-with-express"></a>Express ile Node.js Web uygulaması oluşturma
 
-Araçla bir Node. js web uygulaması oluşturun `express-generator` .
+Araçla bir Node.js Web uygulaması oluşturun `express-generator` .
 
 ```bash
 npm install express-generator -g
@@ -62,14 +63,14 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 Ortak olmaması gereken gizli dizileri içerdiğinden, bu dosyayı kaynak denetimine yürütmemeyi unutmayın.
 
-Sonra _app. js_ dosyasını açın ve dosyanın en üstüne aşağıdakileri ekleyin. Bu,. env dosyasında tanımlanan özellikleri, düğümüne ortam değişkenleri olarak yükler.
+Sonra, _app.js_ açın ve aşağıdaki dosyayı dosyanın en üstüne ekleyin. Bu,. env dosyasında tanımlanan özellikleri, düğümüne ortam değişkenleri olarak yükler.
 
 ```javascript
 require('dotenv').config();
 ```
 
 ### <a name="update-the-router-to-acquire-the-token"></a>Belirteci almak için yönlendiriciyi güncelleştirme
-_Routes\ındex.js_ dosyasını açın ve otomatik olarak oluşturulan kodu aşağıdaki kodla değiştirin.
+_routes\index.js_ dosyasını açın ve otomatik olarak oluşturulan kodu aşağıdaki kodla değiştirin.
 
 Bu kod, hizmet sorumlusu parolanızı kullanarak bir Azure AD kimlik doğrulama belirteci alan bir API uç noktası oluşturur. Alt etki alanı da alır. Sonra belirteci ve alt etki alanını içeren bir nesne döndürür.
 
@@ -235,7 +236,7 @@ script(type="text/javascript").
 
 Metnin tümünde, metnin dillerini açıklayan bir **lang** özniteliği olduğuna dikkat edin. Bu öznitelik, modern okuyucunun ilgili dil ve dil bilgisi özelliklerini sağlamasına yardımcı olur.
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
 Web Uygulamam artık hazır. Uygulamayı çalıştırarak başlatın:
 

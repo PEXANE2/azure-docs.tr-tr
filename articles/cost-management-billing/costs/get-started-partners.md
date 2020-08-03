@@ -3,17 +3,17 @@ title: İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 description: Bu makalede iş ortaklarının Azure Maliyet Yönetimi özelliklerini nasıl kullanacağı ve müşterileri için Maliyet Yönetimi'ni nasıl etkinleştirebilecekleri anlatılmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849854"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372153"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -123,9 +123,9 @@ Sağlayıcının genel yöneticileri ve yönetici temsilcileri, aboneliğe ve ka
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Azure kullanımı ücretlerini görüntülemek için ilkeyi etkinleştirme
 
-Müşterilerin Azure kullanımı ücretlerini görüntülemeleri için gerekli ilkeyi etkinleştirmek isteyen iş ortaklarının aşağıdaki bilgileri kullanmaları gerekir.
+İlkeyi görüntülemek ve güncelleştirmek için **yönetici temsilcisi** grubunun üyesi olmalısınız. Müşterilerin Azure kullanım ücretlerini görüntülemelerine olanak tanıyan ilkeyi etkinleştirmek için aşağıdaki bilgileri kullanın.
 
-Azure portalında iş ortağı kiracısında oturum açıp **Maliyet Yönetimi + Faturalandırma**'yı seçin. İlgili Microsoft İş Ortağı Sözleşmesi ödeme hesabını ve ardından **Müşteriler**'i seçin. Müşteri listesi, ödeme hesabıyla ilişkilendirilir.
+Azure portalında iş ortağı kiracısında oturum açıp **Maliyet Yönetimi + Faturalandırma**'yı seçin. Faturalama Kapsamı alanında uygun faturalama kapsamını seçin ve sonra **Müşteriler**'i seçin. Müşteri listesi, ödeme hesabıyla ilişkilendirilir.
 
 Müşteri listesinde maliyetleri görüntülemesine izin vermek istediğiniz müşteriyi seçin.
 

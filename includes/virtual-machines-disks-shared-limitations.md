@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2cf7dbcd97c8f740447607eaf443bc3ea4a6733
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6175a797b14077cafacaca1f2fd48f36e945d9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500623"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425011"
 ---
 Paylaşılan disklerin etkinleştirilmesi yalnızca disk türlerinin bir alt kümesi tarafından kullanılabilir. Şu anda yalnızca Ultra diskler ve Premium SSD 'Ler, Paylaşılan diskleri etkinleştirebilir. Paylaşılan diskleri olan her yönetilen disk, disk türüne göre düzenlenmiş aşağıdaki sınırlamalara tabidir:
 
@@ -25,6 +25,8 @@ Ultra diskler paylaştırdığınızda, bunlar aşağıdaki ek sınırlamalara s
 
 - Şu anda Azure Resource Manager veya SDK desteğiyle sınırlı. 
 - Yalnızca temel diskler bazı Windows Server yük devretme kümesi sürümleriyle kullanılabilir. Ayrıntılar için bkz. [Yük Devretme Kümelemesi Donanım gereksinimleri ve depolama seçenekleri](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
+
+Paylaşılan Ultra diskler, varsayılan olarak Ultra diskleri destekleyen tüm bölgelerde kullanılabilir ve bunları kullanmaya erişmek için kaydolmanız gerekmez.
 
 ### <a name="premium-ssds"></a>Premium SSD’ler
 
@@ -38,4 +40,4 @@ Ultra diskler paylaştırdığınızda, bunlar aşağıdaki ek sınırlamalara s
 - Yalnızca temel diskler bazı Windows Server yük devretme kümesi sürümleriyle kullanılabilir. Ayrıntılar için bkz. [Yük Devretme Kümelemesi Donanım gereksinimleri ve depolama seçenekleri](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
 - Azure Backup ve Azure Site Recovery desteği henüz kullanılamıyor.
 
-Paylaşılan diskler gerçekleştirmeye ilgileniyorsanız, [erişim için kaydolun](https://aka.ms/AzureSharedDiskGASignUp).
+Paylaşılan Premium SSD 'Ler gerçekleştirmeye ilgileniyorsanız, [erişim için kaydolun](https://aka.ms/AzureSharedDiskGASignUp).

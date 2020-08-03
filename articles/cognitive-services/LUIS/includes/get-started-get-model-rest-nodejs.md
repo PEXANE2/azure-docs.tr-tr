@@ -1,5 +1,5 @@
 ---
-title: "C 'de REST çağrısıyla model al #"
+title: Node.js REST çağrısıyla model al
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: a1a72d9be339ed1ee0a1c525ee426047b1768f2f
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d2dd43366068c8b0d5f280a4c5c22ac774824f59
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416444"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407276"
 ---
 [Başvuru belgeleri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Örnek](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-model-with-rest/model.js)
 
@@ -26,9 +27,9 @@ ms.locfileid: "84416444"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="create-the-nodejs-project"></a>Node. js projesini oluşturma
+## <a name="create-the-nodejs-project"></a>Node.js projesi oluşturma
 
-1. Node. js projenizi (gibi) tutmak için yeni bir klasör oluşturun `node-model-with-rest` .
+1. Node.js projenizi barındırmak için yeni bir klasör oluşturun (örneğin,) `node-model-with-rest` .
 
 1. Yeni bir komut Istemi açın, oluşturduğunuz klasöre gidin ve aşağıdaki komutu yürütün:
 
@@ -48,7 +49,7 @@ ms.locfileid: "84416444"
 
 ## <a name="change-model-programmatically"></a>Modeli program aracılığıyla değiştirme
 
-1. `model.js` adlı yeni bir dosya oluşturun. Aşağıdaki kodu ekleyin:
+1. `model.js` adlı yeni bir dosya oluşturun. Şu kodu ekleyin:
 
     [!code-javascript[Code snippet](~/cognitive-services-quickstart-code/javascript/LUIS/node-model-with-rest/model.js)]
 

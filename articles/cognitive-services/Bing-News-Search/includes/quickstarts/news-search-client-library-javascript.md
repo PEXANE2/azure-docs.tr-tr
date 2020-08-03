@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
-ms.openlocfilehash: 858e6b9e0e40ab988a4cdf04b31580c1ca28d40a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cc96233ea6e2d02f3c3a2036466e3934aa234f5b
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503898"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407991"
 ---
 JavaScript için Bing Haber Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js)' da bulunabilir.
 
@@ -22,8 +23,8 @@ JavaScript için Bing Haber Arama istemci kitaplığıyla haberleri aramaya baş
 * [Node.js](https://nodejs.org/en/)
 
 Bing Haber Arama istemci kitaplığını kullanarak bir konsol uygulaması ayarlamak için:
-1. Geliştirme `npm install ms-rest-azure` ortamınızda çalıştırın.
-2. Geliştirme `npm install azure-cognitiveservices-newssearch` ortamınızda çalıştırın.
+1. `npm install ms-rest-azure`Geliştirme ortamınızda çalıştırın.
+2. `npm install azure-cognitiveservices-newssearch`Geliştirme ortamınızda çalıştırın.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]

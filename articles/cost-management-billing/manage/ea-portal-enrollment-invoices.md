@@ -3,16 +3,16 @@ title: Azure Kurumsal kayıt faturaları
 description: Bu makalede Azure Kurumsal faturanızı nasıl yöneteceğiniz ve işleme alacağınız açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5276780d06671b8358f615b1fcb6447c8e1310f9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 13e2aeb23402aa1ce9e8aa3756ca33b322243576
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044881"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371337"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Kurumsal kayıt faturaları
 
@@ -228,7 +228,7 @@ Aynı veri merkezinde barındırılan hizmetler arasındaki veri çıkışından
 
 ### <a name="azure-prepayment-and-unbilled-usage"></a>Azure Ön Ödeme kullanımı ve faturalandırılmamış kullanım
 
-Azure Ön Ödeme, Azure hizmetleri için önceden ödenmiş tutardır. Hizmetler kullanıldıkça Azure Ön Ödeme tüketilir. Azure Ön Ödeme, birinci taraf Azure hizmetleri için faturalandırılır. Ancak bazı ücretler ayrıca faturalandırılır ve Azure Market hizmetleri Azure Ön Ödemeyi kullanmaz.
+Azure Ön Ödeme, Azure hizmetleri için önceden ödenen tutardır. Hizmetler kullanıldıkça Azure Ön Ödeme tüketilir. Azure Ön Ödeme, birinci taraf Azure hizmetleri için faturalandırılır. Ancak bazı ücretler ayrıca faturalandırılır ve Azure Market hizmetleri Azure Ön Ödemeyi kullanmaz.
 
 ### <a name="charges-billed-separately"></a>Ayrı olarak faturalandırılan ücretler
 

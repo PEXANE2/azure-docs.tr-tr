@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: tamram
-ms.openlocfilehash: c222869df561a9a36ebd69eb9ae09fa688ba0086
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 644d58c3d1c60611b0d22d2757da089313fa12b6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518698"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423736"
 ---
 Bir güvenlik sorumlusuna RBAC rolü atamadan önce, güvenlik sorumlusunun sahip olması gereken erişimin kapsamını saptayın. En iyi uygulamalar, yalnızca en dar olası kapsamı sağlamak için her zaman en iyi seçenektir.
 
@@ -24,4 +24,4 @@ Aşağıdaki listede, en dar kapsamdan başlayarak Azure Blob ve kuyruk kaynakla
 - **Abonelik.** Bu kapsamda, bir rol ataması, abonelikteki tüm kaynak gruplarındaki tüm depolama hesaplarında tüm kapsayıcılar veya kuyruklar için geçerlidir.
 - **Bir yönetim grubu.** Bu kapsamda, bir rol ataması, yönetim grubundaki tüm aboneliklerdeki tüm kaynak gruplarındaki tüm depolama hesaplarında tüm kapsayıcılar veya kuyruklar için geçerlidir.
 
-RBAC rol atamaları ve kapsamı hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../articles/role-based-access-control/overview.md).
+Azure rol atamaları ve kapsamı hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../articles/role-based-access-control/overview.md).

@@ -19,7 +19,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)
 
@@ -49,7 +49,7 @@ PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uy
    > Azure PostgreSQL sunucusu, 5432 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 5432 numaralı bağlantı noktasını açmadığı müddetçe Hyperscale (Citus) kümenize bağlanamazsınız.
    >
 
-9. Sunucuyu sağlamak için **gözden geçir + oluştur** ' a ve ardından **Oluştur** ' a tıklayın. Sağlama birkaç dakika sürer.
+9. Sunucuyu sağlamak için **gözden geçir + oluştur** ' a ve ardından **Oluştur** ' a tıklayın. Sağlama işlemi birkaç dakika sürer.
 10. Sayfa dağıtımı izlemeye yeniden yönlendirilir. **Dağıtımınızdan** canlı durum değişikliği **dağıtımınız tamamlandığında**, sayfanın solundaki **çıktılar** menü öğesine tıklayın.
 11. Çıktılar sayfası, değeri panoya kopyalamak için düğmenin yanında bir düğme içeren bir düzenleyici ana bilgisayar adı içerecektir. Bu bilgileri daha sonra kullanmak üzere kaydedin.
 
@@ -63,7 +63,7 @@ PostgreSQL için Azure veritabanı sunucusunu oluştururken, **citus** adlı var
    psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
-   Dizeyi kopyalayın. "{\_Password}" öğesini, daha önce seçtiğiniz yönetici parolasıyla değiştirmeniz gerekir. Sistem düz metin parolanızı depolamaz, bağlantı dizesinde sizin için görüntüleyemez.
+   Dizeyi kopyalayın. "{ \_ Password}" öğesini, daha önce seçtiğiniz yönetici parolasıyla değiştirmeniz gerekir. Sistem düz metin parolanızı depolamaz, bağlantı dizesinde sizin için görüntüleyemez.
 
 2. Yerel bilgisayarınızda bir Terminal penceresi açın.
 

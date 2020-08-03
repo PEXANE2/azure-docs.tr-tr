@@ -23,7 +23,7 @@ ms.locfileid: "84680275"
 1. **Izin Ekle**' yi seçin.
 1. **Yönetici onayı ver ' i (kiracı adınız)** seçin.
 1. Bir hesap seçmeniz istenirse, şu anda oturum açmış olan yönetici hesabınızı seçin veya Azure AD B2C kiracınızda en azından *bulut uygulama Yöneticisi* rolüne atanan bir hesapla oturum açın.
-1. **Evet**' i seçin.
+1. **Evet**’i seçin.
 1. **Yenile**' yi seçin ve ardından "verilen..." öğesini doğrulayın Her iki kapsam için **durum** altında görünür.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)

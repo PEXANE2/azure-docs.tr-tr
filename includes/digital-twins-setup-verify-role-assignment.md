@@ -5,13 +5,15 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: e5e4bced12ffe9dc674b25a9a6513218cf8989e4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e651b02bf72ced58b6cba637a68ace3258514176
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099890"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405604"
 ---
-Rol atamasını başarıyla ayarladığınızı kontrol etmenin bir yolu, Azure portal Azure Digital TWINS örneği için rol atamalarını görüntüleyeyöneliktir. [Azure dijital TWINS örnekleri](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances)Portal sayfasından denetlemek istediğiniz örneğin adını seçin. Daha sonra, *erişim denetimi (IAM)* altında atanan tüm rolleri rol atamaları > görüntüleyin. Kullanıcının bir *Azure dijital TWINS sahibi (Önizleme)* rolüyle listede gösterilmesi gerekir. 
+Rol atamasını başarıyla ayarladığınızı kontrol etmenin bir yolu, [Azure Portal](https://portal.azure.com)Azure Digital TWINS örneği için rol atamalarını görüntüleyeyöneliktir. Portalın [Azure dijital TWINS örnekleri](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda arama yapabilir) ve denetlemek istediğiniz örneğin adını seçebilirsiniz. 
 
-:::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/verify-role-assignment.png" alt-text="Azure portal bir Azure dijital TWINS örneği için rol atamalarının görünümü":::
+Daha sonra, *erişim denetimi (IAM)* altında atanan tüm rolleri rol atamaları > görüntüleyin. Kullanıcının bir *Azure dijital TWINS sahibi (Önizleme)* rolüyle listede gösterilmesi gerekir. 
+
+:::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal bir Azure dijital TWINS örneği için rol atamalarının görünümü":::

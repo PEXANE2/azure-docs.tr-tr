@@ -10,18 +10,19 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 86fb18270496212054f1f2a32ccfa893f8e2d0bd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e5c83b4b8e579223fa8bc00e1347e5cb2f92fca1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980203"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406442"
 ---
 Bu kılavuzda, NodeJS ile kullanılmak üzere JavaScript için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız, `npm install microsoft-cognitiveservices-speech-sdk` mevcut projenizden öğesini çalıştırın.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
@@ -33,7 +34,7 @@ Yeni bir dizin oluşturun ve `npm init` komut istemlerini çalıştırın ve ger
 
 ## <a name="add-the-speech-sdk-package"></a>Konuşma SDK 'Sı paketini ekleme
 
-`npm install microsoft-cognitiveservices-speech-sdk` öğesini çalıştırın
+`npm install microsoft-cognitiveservices-speech-sdk` komutunu çalıştırın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
