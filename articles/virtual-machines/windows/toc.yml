@@ -403,6 +403,13 @@
           href: ps-template.md
         - name: Bir VM’ye bağlanma
           href: connect-logon.md
+        - name: Linux VM’lere bağlanma
+          displayName: ssh keygen ssk-key putty
+          items:
+            - name: Portalda
+              href: ../ssh-keys-portal.md
+            - name: Windows üzerinde
+              href: ../linux/ssh-from-windows.md
         - name: Azure Hibrit Avantajı lisansını kullanma
           href: hybrid-use-benefit-licensing.md
         - name: Windows 10 için Çok Kiracılı Barındırma Kuralları’nı kullanma

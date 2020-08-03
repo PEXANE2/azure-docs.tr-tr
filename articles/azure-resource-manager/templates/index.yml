@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 07/07/2020
-  ms.openlocfilehash: 4a40b64c72946c84d034e13f3a22b7cda2b9c6aa
-  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.date: 07/30/2020
+  ms.openlocfilehash: 6a21841d24fcafefe25473e428e1926849f5e9cf
+  ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86118877"
+  ms.lasthandoff: 07/30/2020
+  ms.locfileid: "87446730"
 landingContent:
 - title: ARM şablonları hakkında
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
       url: template-best-practices.md
     - text: Sık sorulan sorular
       url: frequently-asked-questions.md
+    - text: Şablon belirtimleri
+      url: template-specs.md
     - text: Dağıtım modları
       url: deployment-modes.md
     - text: Bağlı şablonlar
@@ -47,18 +49,18 @@ landingContent:
       url: quickstart-create-templates-use-the-portal.md
     - text: Şablon oluşturma - VS Code
       url: quickstart-create-templates-use-visual-studio-code.md
-    - text: Şablon oluşturma - Visual Studio
-      url: create-visual-studio-deployment-project.md
   - linkListType: tutorial
     links:
     - text: Başlangıç öğretileri
       url: template-tutorial-create-first-template.md
-    - text: Birden çok örnek dağıtma
-      url: template-tutorial-create-multiple-instances.md
-    - text: Dağıtım sırasını ayarlama
-      url: template-tutorial-create-templates-with-dependent-resources.md
-    - text: Anahtar kasasını tümleştirme
-      url: template-tutorial-use-key-vault.md
+    - text: Dağıtım
+      url: deployment-tutorial-local-template.md
+  - linkListType: learn
+    links:
+    - text: Tutarlı altyapı
+      url: /learn/modules/create-azure-resource-manager-template-vs-code/
+    - text: Birden çok ortam
+      url: /learn/modules/modify-azure-resource-manager-template-reuse/
 - title: Şablon geliştirme
   linkLists:
   - linkListType: how-to-guide
@@ -91,6 +93,8 @@ landingContent:
       url: deploy-portal.md
     - text: REST API
       url: deploy-rest.md
+    - text: Azure'a Dağıt düğmesi
+      url: deploy-to-azure-button.md
     - text: Durum çözümlemesi dağıtımı
       url: template-deploy-what-if.md
 - title: Kapsamlı dağıtımlar
@@ -103,6 +107,8 @@ landingContent:
       url: deploy-to-management-group.md
     - text: Kiracı
       url: deploy-to-tenant.md
+    - text: Kapsamlar arası dağıtımlar
+      url: cross-scope-deployment.md
 - title: Başvuru içeriğini keşfetme
   linkLists:
   - linkListType: reference
@@ -125,6 +131,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Test araç seti
+      url: test-toolkit.md
     - text: Şablonları dışarı aktarma
       url: export-template-portal.md
     - text: CI/CD

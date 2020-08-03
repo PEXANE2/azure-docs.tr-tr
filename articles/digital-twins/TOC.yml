@@ -40,12 +40,14 @@
       items:
         - name: Azure Digital Twins CLI’sini kullanma
           href: how-to-use-cli.md
-        - name: Örnek ayarlama ve kimlik doğrulaması (betik ile)
-          href: how-to-set-up-instance-scripted.md
-        - name: Örnek ayarlama ve kimlik doğrulaması (CLI)
-          href: how-to-set-up-instance-cli.md
-        - name: Örnek ayarlama ve kimlik doğrulaması (portal)
-          href: how-to-set-up-instance-portal.md
+        - name: Örnek ayarlama ve kimlik doğrulaması
+          items:
+            - name: Betikleştirilmiş sürüm
+              href: how-to-set-up-instance-scripted.md
+            - name: CLI sürümü
+              href: how-to-set-up-instance-cli.md
+            - name: Portal sürümü
+              href: how-to-set-up-instance-portal.md
         - name: Uygulama kimlik doğrulaması kodu yazma
           href: how-to-authenticate-client.md
     - name: Tasarım modelleri

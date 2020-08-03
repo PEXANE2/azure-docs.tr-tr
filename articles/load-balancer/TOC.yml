@@ -10,14 +10,16 @@
       href: load-balancer-faqs.md
 - name: Hızlı Başlangıç
   items:
-    - name: Load Balancer oluşturma - Portal
+    - name: Genel yük dengeleyici oluşturma - Portal
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Load Balancer oluşturma - Azure CLI
+    - name: Genel yük dengeleyici oluşturma - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Load Balancer oluşturma - Azure PowerShell
+    - name: Genel yük dengeleyici oluşturma - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Load Balancer oluşturma - ARM şablonu
+    - name: Genel yük dengeleyici oluşturma - ARM şablonu
       href: quickstart-load-balancer-standard-public-template.md
+    - name: İç yük dengeleyici oluşturma - Portal
+      href: quickstart-load-balancer-standard-internal-portal.md
   expanded: true
 - name: Öğreticiler
   items:

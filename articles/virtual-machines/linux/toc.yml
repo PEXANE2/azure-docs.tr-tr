@@ -634,6 +634,8 @@
               href: mac-create-ssh-keys.md
             - name: Windows üzerinde
               href: ssh-from-windows.md
+            - name: Portalda
+              href: ../ssh-keys-portal.md
             - name: Ayrıntılı adımlar
               href: create-ssh-keys-detailed.md
     - name: VM’leri koruma

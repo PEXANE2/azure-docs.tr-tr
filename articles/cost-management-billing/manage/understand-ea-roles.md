@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045153"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124349"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure kurumsal rollerini yönetme
 
@@ -32,7 +32,7 @@ Kayıt sağlama sırasında ayarlanan ilk kayıt yöneticisi, Fatura ilgili kiş
 
 Örneğin ilk kimlik doğrulaması türü Karma olarak ayarlandıysa, EA bir Microsoft hesabı olarak eklenir ve Fatura ilgili kişisi salt okunur EA yönetici ayrıcalıklarına sahip olur. EA yöneticisi mevcut Fatura ilgili kişisi için Microsoft hesabı yetkilendirmesini onaylamazsa, EA yöneticisi söz konusu kullanıcıyı silebilir ve müşteriden kullanıcıyı EA portalında yalnızca kayıt düzeyinde ayarlanan bir İş veya Okul hesabıyla salt okunur yönetici olarak yeniden eklemesini isteyebilir.
 
-Bu roller, Azure Kurumsal Anlaşmaları yönetmeye özgüdür ve kaynaklara erişimi denetlemeye yönelik Azure’da yer alan yerleşik rollere ek olarak sunulmuştur. Daha fazla bilgi için bkz. [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md).
+Bu roller, Azure Kurumsal Anlaşmaları yönetmeye özgüdür ve kaynaklara erişimi denetlemeye yönelik Azure’da yer alan yerleşik rollere ek olarak sunulmuştur. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
 Aşağıdaki bölümlerde her bir rolün sınırlamaları ve özellikleri açıklanmaktadır.
 
@@ -121,4 +121,4 @@ Kuruluş yöneticisi rolünü ve ücretleri görüntüleme ilkelerini Enterprise
 
 - [Azure için faturalama bilgilerine erişimi yönetme](manage-billing-access.md)
 - [RBAC ve Azure portalı kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md)
-- [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md)
+- [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)

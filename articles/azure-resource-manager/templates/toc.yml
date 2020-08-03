@@ -10,7 +10,7 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Şablon oluşturma - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Şablon belirtimi oluşturma ve dağıtma
+    - name: Şablon belirtimlerini oluşturma ve dağıtma
       href: quickstart-create-template-specs.md
     - name: Azure hizmetleri
       items:
@@ -210,8 +210,10 @@
     - name: Şablon Belirtimleri
       items:
         - name: Bağlı şablonlar ile oluşturma
+          displayName: template specs
           href: template-specs-create-linked.md
         - name: Bağlı şablon olarak dağıtma
+          displayName: template specs
           href: template-specs-deploy-linked-template.md
     - name: Gelişmiş şablonlar
       items:
@@ -366,8 +368,8 @@
           href: deploy-to-management-group.md
         - name: Kiracı
           href: deploy-to-tenant.md
-        - name: Kaynak grupları arası
-          href: cross-resource-group-deployment.md
+        - name: Kapsamlar arası dağıtımlar
+          href: cross-scope-deployment.md
     - name: Parametreleri sağlama
       items:
         - name: Parametre dosyası oluşturma

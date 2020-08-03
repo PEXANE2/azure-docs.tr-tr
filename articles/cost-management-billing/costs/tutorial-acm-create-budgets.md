@@ -3,23 +3,23 @@ title: 'Öğretici: Azure bütçesi oluşturma ve yönetme'
 description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle ilgili plan yapmanıza yardımcı olmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 07/15/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3572cbb3f8c4a4f20c0141ac1fae5f0aa6fbd216
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559316"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044994"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
 Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kültürünü planlamanıza ve güçlendirmenize yardımcı olur. Bütçeleri kullanarak belirli bir dönem içinde kullandığınız veya abone olduğunuz Azure hizmetlerini takip edebilirsiniz. Bütçeler, maliyetleri önceden yönetmek için diğer kullanıcıları harcamaları konusunda bilgilendirmenize ve zaman içindeki harcamayı izlemenize yardımcı olur. Oluşturduğunuz bütçe eşikleri aşıldığında yalnızca bildirimler tetiklenir. Kaynaklarınızın hiçbiri etkilenmez ve tüketiminiz durdurulmaz. Bütçeleri kullanarak maliyet analizi sırasında harcamaları karşılaştırabilir ve izleyebilirsiniz.
 
-Maliyet ve kullanım verileri genellikle 12-16 saat içinde kullanıma sunulur ve bütçeler, dört saatte bir bu maliyetlere göre değerlendirilir. E-posta bildirimleri normal şartlarda 12-16 saat içinde gönderilir.
+Maliyet ve kullanım verileri genellikle 20 saat içinde kullanıma sunulur ve bütçeler 12-14 saatte bir bu maliyetlere göre değerlendirilir. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle değerlendirmeyi izleyen bir saat içinde gönderilir.
 
 Gelecekte bir son kullanma tarihi seçtiğinizde bütçeler, dönem sonunda (ay, üç ay veya yıl) otomatik olarak aynı bütçe tutarına geri döner. Aynı bütçe tutarına geri döndükleri için bütçedeki para birimlerinin ilerleyen dönemlerde farklı olması halinde ayrı bütçeler oluşturmanız gerekir.
 
@@ -101,11 +101,13 @@ Bütçede şu ana kadar seçtiğiniz alanlara bağlı olarak, bütçeniz için k
 
 ![Aylık maliyet verileriyle bütçe oluşturma işlemini gösteren örnek ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Bütçe tutarını yapılandırdıktan sonra bütçe uyarılarını yapılandırmak için **İleri**'yi seçin. Bütçeler için en az bir maliyet eşiği (bütçe yüzdesi) ve buna karşılık gelen bir e-posta adresi gerekir. İsteğe bağlı olarak tek bir bütçeye en fazla beş eşik ve beş e-posta adresi ekleyebilirsiniz. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle 20 saatten az bir sürede alınır.
+Bütçe tutarını yapılandırdıktan sonra bütçe uyarılarını yapılandırmak için **İleri**'yi seçin. Bütçeler için en az bir maliyet eşiği (bütçe yüzdesi) ve buna karşılık gelen bir e-posta adresi gerekir. İsteğe bağlı olarak tek bir bütçeye en fazla beş eşik ve beş e-posta adresi ekleyebilirsiniz. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle değerlendirmeyi izleyen bir saat içinde gönderilir.
 
 E-posta almak istiyorsanız, e-postaların önemsiz e-posta klasörünüze gitmemesi için azure-noreply@microsoft.com adresini onaylı gönderenler listenize ekleyin. Bildirimleri hakkında daha fazla bilgi için, bkz. [Maliyeti uyarılarını kullanma](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
 
 Aşağıdaki örnekte, bütçenin %90'ına ulaşıldığında bir e-posta uyarısı oluşturulmuştur. Bütçeler API'si ile bütçe oluşturduğunuzda kullanıcılara uyarı gönderilmesi için roller de atayabilirsiniz. Kişilere rol atama işlemi Azure portalında gerçekleştirilemez. Azure Bütçeler API'si hakkında daha fazla bilgi için bkz. [Bütçeler API'si](/rest/api/consumption/budgets).
+
+Uyarı sınırları, sağladığınız bütçe eşiğinin %0,01’i ile %1000'i arasındaki değerleri destekler.
 
 ![Uyarı koşullarını gösteren örnek](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 

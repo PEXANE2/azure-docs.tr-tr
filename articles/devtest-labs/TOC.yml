@@ -232,10 +232,12 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: Yapıtları uygulamayla ilgili sorunları giderme
           href: devtest-lab-troubleshoot-apply-artifacts.md
-    - name: Laboratuvarlar tarafından kullanılan depolama alanı ve işletim sistemi disklerini şifreleme
+    - name: Laboratuvar kaynaklarını şifreleme
       items:
         - name: Laboratuvar tarafından kullanılan depolama alanını şifreleme
           href: encrypt-storage.md
+        - name: Müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi disklerini şifreleme
+          href: encrypt-disks-customer-managed-keys.md
     - name: CI/CD ile tümleştirme
       items:
         - name: Azure Pipelines CI/CD ardışık düzeninizi laboratuvarlarla tümleştirme

@@ -452,6 +452,8 @@
       displayName: security
     - name: Kullanıcı akışı sürümleri
       href: user-flow-versions.md
+    - name: Eski kullanıcı akışı sürümleri
+      href: user-flow-versions-legacy.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

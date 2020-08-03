@@ -28,6 +28,8 @@
       href: tutorial-process-email-attachments-workflow.md
 - name: Örnekler
   items:
+    - name: Mantıksal uygulama oluşturma - örnek betik
+      href: sample-logic-apps-cli-script.md
     - name: Azure kod örnekleri
       href: /samples/browse/?products=azure-logic-apps
     - name: Resource Manager hızlı başlangıç şablonları

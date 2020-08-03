@@ -78,7 +78,7 @@
     - name: Python örnekleri
       href: sql-api-python-samples.md
     - name: PowerShell
-      href: powershell-samples-sql.md
+      href: powershell-samples.md
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
@@ -458,12 +458,6 @@
         - name: Parametre tabanlı sorgu
           displayName: 'parameterized query, parameterized, parameter, parameters'
           href: sql-query-parameterized-queries.md
-        - name: Sql sorgusu yürütme
-          displayName: 'query performance, query execution'
-          href: sql-query-execution.md
-        - name: Sayfalandırma
-          displayName: 'page, paging, continuation, token, pagination'
-          href: sql-query-pagination.md
         - name: LINQ to SQL
           displayName: 'linq, .NET'
           href: sql-query-linq-to-sql.md
@@ -592,6 +586,8 @@
           href: policy.md
     - name: Hizmet kotaları
       href: concepts-limits.md
+    - name: Otomatik öneriler
+      href: automated-recommendations.md
 - name: 'Cassandra, MongoDB ve diğer API''ler'
   expanded: true
   items:
@@ -672,7 +668,7 @@
               href: manage-cassandra-with-resource-manager.md
               displayName: ARM
             - name: PowerShell kullanarak yönetme
-              href: powershell-samples-cassandra.md
+              href: powershell-samples.md
             - name: Azure CLI kullanarak yönetme
               href: cli-samples.md
     - name: MongoDB API’si
@@ -766,7 +762,7 @@
               href: manage-mongodb-with-resource-manager.md
               displayName: ARM
             - name: PowerShell kullanarak yönetme
-              href: powershell-samples-mongodb.md
+              href: powershell-samples.md
             - name: Azure CLI kullanarak yönetme
               href: cli-samples.md
             - name: Yaygın sorunları giderme
@@ -826,7 +822,7 @@
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
             - name: PowerShell kullanarak yönetme
-              href: powershell-samples-gremlin.md
+              href: powershell-samples.md
             - name: Azure CLI kullanarak yönetme
               href: cli-samples.md
         - name: Başvuru
@@ -897,7 +893,7 @@
               href: manage-table-with-resource-manager.md
               displayName: ARM
             - name: PowerShell kullanarak yönetme
-              href: powershell-samples-table.md
+              href: powershell-samples.md
             - name: Azure CLI kullanarak yönetme
               href: cli-samples.md
         - name: Başvuru

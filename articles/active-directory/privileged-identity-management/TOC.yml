@@ -45,7 +45,7 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Azure AD rollerini yönetme
       items:
-        - name: Özellik güncelleştirmesi
+        - name: Özelliklere genel bakış
           href: azure-ad-roles-features.md
         - name: Azure AD rolleri için PowerShell
           href: powershell-for-azure-ad-roles.md
@@ -87,6 +87,22 @@
           href: azure-pim-resource-rbac.md
         - name: Özel rolleri kullanma
           href: pim-resource-roles-custom-role-policy.md
+    - name: Ayrıcalıklı erişim gruplarını yönetme (Önizleme)
+      items:
+        - name: Ayrıcalıklı erişime genel bakış
+          href: groups-features.md
+        - name: Grupları keşfetme
+          href: groups-discover-groups.md
+        - name: Üye veya sahip atama
+          href: groups-assign-member-owner.md
+        - name: İstekleri onaylama
+          href: groups-approval-workflow.md
+        - name: Atamaları genişletme veya yenileme
+          href: groups-renew-extend.md
+        - name: Rol ayarlarını yapılandırma
+          href: groups-role-settings.md
+        - name: Denetim geçmişini görüntüleme
+          href: groups-audit.md
     - name: PIM sorunlarını giderme
       href: pim-troubleshoot.md
     - name: Erişim gözden geçirmeleri

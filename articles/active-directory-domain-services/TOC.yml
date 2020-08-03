@@ -9,7 +9,7 @@
 - name: Öğreticiler
   expanded: true
   items:
-    - name: Temel yönetilen etki alanı oluşturma
+    - name: Yönetilen etki alanı oluşturma
       href: tutorial-create-instance.md
     - name: Uygulamalar için sanal ağı yapılandırma
       href: tutorial-configure-networking.md
@@ -21,9 +21,11 @@
       href: tutorial-configure-ldaps.md
     - name: Parola karması eşitlemeyi yapılandırma
       href: tutorial-configure-password-hash-sync.md
-    - name: Gelişmiş yönetilen etki alanı oluşturma
+    - name: Çoğaltma kümesi oluşturma (önizleme)
+      href: tutorial-create-replica-set.md
+    - name: Özelleştirilmiş yönetilen etki alanı oluşturma
       href: tutorial-create-instance-advanced.md
-    - name: Orman güveni oluşturma (önizleme)
+    - name: Orman güveni oluşturma
       href: tutorial-create-forest-trust.md
 - name: Örnekler
   items:
@@ -33,12 +35,16 @@
       href: template-create-instance.md
     - name: Azure AD PowerShell kullanarak kapsamlı eşitlemeyi yapılandırma
       href: powershell-scoped-synchronization.md
+    - name: Azure PowerShell kullanarak kaynak ormanı ve güveni oluşturma
+      href: create-resource-forest-powershell.md
 - name: Kavramlar
   items:
     - name: Yönetim temel bilgileri
       href: administration-concepts.md
     - name: Yaygın dağıtım senaryoları
       href: scenarios.md
+    - name: Çoğaltma kümeleri (önizleme)
+      href: concepts-replica-sets.md
     - name: Ormanlar ve güvenler
       items:
         - name: Kaynak ormanları
